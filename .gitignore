@@ -1,0 +1,13 @@
+.tools/
+build/
+__pycache__/
+*.srm
+*.oops
+*.000
+*.001
+*.freeze
+*.log
+.DS_Store
+dist/*.zip
+docs/screenshots/audio-sample.wav
+assets/generated/soundbank.h

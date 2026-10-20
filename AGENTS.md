@@ -1,0 +1,19 @@
+# Project instructions
+
+This is a native SNES fighting game. The authoritative deliverable is
+`dist/abaqus-after-hours.sfc`, built with PVSnesLib 4.6.0 from C and 65816 assembly.
+Preserve the native emulator requirement when extending the project.
+
+- Read `docs/DEVELOPMENT.md` before changing memory layout or hardware transfers.
+- Build with `Build.cmd`; regenerate assets with `Build.cmd --assets`.
+- Run `Test.cmd` after gameplay, graphics-transfer, audio or progression changes.
+  It runs the actual ROM in Snes9x and records the tested ROM hash.
+- Keep the one-actor-per-vblank transfer budget, 32 KiB LoROM bank boundaries,
+  OBJ scanline limits and reserved palette banks in mind.
+- Keep original art masters and prompts in the repository. Do not import
+  commercial game ROMs, Capcom sprites, or commercial game audio.
+- The initial roster uses shared base animations. Describe that honestly and
+  treat individual animation sets as a planned art pass.
+- Do not commit `.tools/`, emulator saves, build intermediates or release ZIPs.
+- Rebuild the offline package with `tools/package.py` only after tests pass
+  against the exact current ROM. Keep third-party license notices intact.

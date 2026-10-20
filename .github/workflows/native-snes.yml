@@ -1,0 +1,29 @@
+name: Native SNES ROM
+
+on: [push, pull_request, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-emulate:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install pinned project-local tools
+        shell: powershell
+        run: .\tools\setup.ps1
+      - name: Build and verify the committed cartridge hash
+        shell: powershell
+        run: |
+          $expectedHash = (Get-Content dist/manifest.json | ConvertFrom-Json).sha256
+          & .\.tools\python\python.exe tools/build.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $actualHash = (Get-Content dist/manifest.json | ConvertFrom-Json).sha256
+          if ($actualHash -ne $expectedHash) { throw 'Committed ROM differs from the source build. Run Build.cmd and commit the updated dist files.' }
+      - name: Run integration tests in Snes9x
+        shell: powershell
+        run: |
+          & .\.tools\python\python.exe -u tools/test_rom.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

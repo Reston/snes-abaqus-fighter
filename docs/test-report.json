@@ -1,0 +1,1088 @@
+{
+  "emulator": "Official Snes9x 1.63 x64 libretro core",
+  "rom_sha256": "396ad902c7b4b05eaa6091dac34cea9cd997cd766ab0d5124728ba04506895e4",
+  "passed": 108,
+  "elapsed_seconds": 35.72,
+  "checks": [
+    {
+      "check": "Cold boot to title",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Difficulty can cycle without leaving the title",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Roster slot 1 is selectable",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Roster slot 2 is selectable",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Roster slot 3 is selectable",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Roster slot 4 is selectable",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Roster slot 5 is selectable",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Roster slot 6 is selectable",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Roster slot 7 is selectable",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Roster slot 8 is selectable",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Roster slot 9 is selectable",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Roster slot 10 is selectable",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Roster slot 11 is selectable",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Roster slot 12 is selectable",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Roster wraps after all twelve fighters",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 0,
+        "stage": 0
+      }
+    },
+    {
+      "check": "Arena loads in the emulator",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "All ten sprite rows reach VRAM for fighter 1",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 1,
+        "stage": 1
+      }
+    },
+    {
+      "check": "Arena loads in the emulator",
+      "passed": true,
+      "details": 1
+    },
+    {
+      "check": "All ten sprite rows reach VRAM for fighter 2",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 2,
+        "stage": 2
+      }
+    },
+    {
+      "check": "Arena loads in the emulator",
+      "passed": true,
+      "details": 2
+    },
+    {
+      "check": "All ten sprite rows reach VRAM for fighter 3",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 3,
+        "stage": 0
+      }
+    },
+    {
+      "check": "Arena loads in the emulator",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "All ten sprite rows reach VRAM for fighter 4",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 4,
+        "stage": 1
+      }
+    },
+    {
+      "check": "Arena loads in the emulator",
+      "passed": true,
+      "details": 1
+    },
+    {
+      "check": "All ten sprite rows reach VRAM for fighter 5",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 5,
+        "stage": 2
+      }
+    },
+    {
+      "check": "Arena loads in the emulator",
+      "passed": true,
+      "details": 2
+    },
+    {
+      "check": "All ten sprite rows reach VRAM for fighter 6",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 6,
+        "stage": 0
+      }
+    },
+    {
+      "check": "Arena loads in the emulator",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "All ten sprite rows reach VRAM for fighter 7",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 7,
+        "stage": 1
+      }
+    },
+    {
+      "check": "Arena loads in the emulator",
+      "passed": true,
+      "details": 1
+    },
+    {
+      "check": "All ten sprite rows reach VRAM for fighter 8",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 8,
+        "stage": 2
+      }
+    },
+    {
+      "check": "Arena loads in the emulator",
+      "passed": true,
+      "details": 2
+    },
+    {
+      "check": "All ten sprite rows reach VRAM for fighter 9",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 9,
+        "stage": 0
+      }
+    },
+    {
+      "check": "Arena loads in the emulator",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "All ten sprite rows reach VRAM for fighter 10",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 10,
+        "stage": 1
+      }
+    },
+    {
+      "check": "Arena loads in the emulator",
+      "passed": true,
+      "details": 1
+    },
+    {
+      "check": "All ten sprite rows reach VRAM for fighter 11",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 11,
+        "stage": 2
+      }
+    },
+    {
+      "check": "Arena loads in the emulator",
+      "passed": true,
+      "details": 2
+    },
+    {
+      "check": "All ten sprite rows reach VRAM for fighter 12",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 0,
+        "stage": 0
+      }
+    },
+    {
+      "check": "Gameplay maintains NTSC frame cadence",
+      "passed": true,
+      "details": {
+        "emulated_frames": 600,
+        "game_ticks": 597
+      }
+    },
+    {
+      "check": "Jump moves fighter above the floor",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Jump lands back on the floor",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Crouch has a dedicated pose",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "SNES button Y starts attack 1",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "SNES button X starts attack 2",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "SNES button L starts attack 3",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "SNES button B starts attack 4",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "SNES button A starts attack 5",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "SNES button R starts attack 6",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Special launches a projectile and spends meter",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Uppercut leaves the ground",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Quarter-circle forward plus punch recognizes a motion input",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Pause freezes combat",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "A resumes a paused fight",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "SPC music and sound produce non-silent audio",
+      "passed": true,
+      "details": {
+        "peak": 4889,
+        "samples": 2105680
+      }
+    },
+    {
+      "check": "Match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 0,
+        "stage": 0
+      }
+    },
+    {
+      "check": "Confirmed light punch cancels into a medium-punch combo",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 3,
+        "frame": 458,
+        "mode": 1,
+        "hp1": 128,
+        "hp2": 109,
+        "x1": 1856,
+        "x2": 2483,
+        "y1": 0,
+        "y2": 0,
+        "action1": 2,
+        "action2": 0,
+        "wins1": 0,
+        "wins2": 0,
+        "arena": 0,
+        "round": 1,
+        "intro": 0,
+        "paused": 0,
+        "energy1": 90,
+        "energy2": 74,
+        "wave1": 0,
+        "wave2": 0,
+        "selected": 0,
+        "selected2": 1,
+        "arcade": 0,
+        "seconds": 97,
+        "pose1": 6,
+        "pose2": 10,
+        "round_end": 0,
+        "hitstop": 0,
+        "combo": 2,
+        "champion": 0
+      }
+    },
+    {
+      "check": "Match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 0,
+        "stage": 1
+      }
+    },
+    {
+      "check": "Player two can select a fighter with controller two",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller two moves player two",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Holding back blocks a medium punch",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Blocking keeps the defensive animation",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Low attack beats a standing guard",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Crouch block stops a low attack",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Close forward plus heavy punch throws through guard",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 0,
+        "stage": 0
+      }
+    },
+    {
+      "check": "Two round wins finish a best-of-three local match",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 4,
+        "frame": 1780,
+        "mode": 1,
+        "hp1": 128,
+        "hp2": 0,
+        "x1": 3356,
+        "x2": 3744,
+        "y1": 0,
+        "y2": 0,
+        "action1": 9,
+        "action2": 0,
+        "wins1": 2,
+        "wins2": 0,
+        "arena": 0,
+        "round": 2,
+        "intro": 0,
+        "paused": 0,
+        "energy1": 96,
+        "energy2": 88,
+        "wave1": 0,
+        "wave2": 0,
+        "selected": 0,
+        "selected2": 1,
+        "arcade": 0,
+        "seconds": 93,
+        "pose1": 11,
+        "pose2": 14,
+        "round_end": 0,
+        "hitstop": 5,
+        "combo": 3,
+        "champion": 0
+      }
+    },
+    {
+      "check": "Rematch resets round wins",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 0,
+        "fighter": 4,
+        "stage": 0
+      }
+    },
+    {
+      "check": "Arcade CPU match reaches a result",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 4,
+        "frame": 2809,
+        "mode": 0,
+        "hp1": 22,
+        "hp2": 0,
+        "x1": 3326,
+        "x2": 3744,
+        "y1": 0,
+        "y2": 0,
+        "action1": 9,
+        "action2": 0,
+        "wins1": 2,
+        "wins2": 1,
+        "arena": 0,
+        "round": 3,
+        "intro": 0,
+        "paused": 0,
+        "energy1": 96,
+        "energy2": 96,
+        "wave1": 0,
+        "wave2": 0,
+        "selected": 4,
+        "selected2": 5,
+        "arcade": 0,
+        "seconds": 91,
+        "pose1": 11,
+        "pose2": 14,
+        "round_end": 0,
+        "hitstop": 5,
+        "combo": 1,
+        "champion": 0
+      }
+    },
+    {
+      "check": "Arcade victory advances opponent and arena",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Arcade ladder match 2 reaches a result",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 4,
+        "frame": 4593,
+        "mode": 0,
+        "hp1": 127,
+        "hp2": 0,
+        "x1": 3222,
+        "x2": 3660,
+        "y1": 0,
+        "y2": 0,
+        "action1": 9,
+        "action2": 0,
+        "wins1": 2,
+        "wins2": 0,
+        "arena": 1,
+        "round": 2,
+        "intro": 0,
+        "paused": 0,
+        "energy1": 96,
+        "energy2": 88,
+        "wave1": 0,
+        "wave2": 0,
+        "selected": 4,
+        "selected2": 5,
+        "arcade": 1,
+        "seconds": 93,
+        "pose1": 11,
+        "pose2": 14,
+        "round_end": 0,
+        "hitstop": 5,
+        "combo": 1,
+        "champion": 0
+      }
+    },
+    {
+      "check": "Controller-only player wins ladder match 2",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Arcade ladder match 3 reaches a result",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 4,
+        "frame": 5808,
+        "mode": 0,
+        "hp1": 128,
+        "hp2": 0,
+        "x1": 3306,
+        "x2": 3744,
+        "y1": 0,
+        "y2": 0,
+        "action1": 9,
+        "action2": 0,
+        "wins1": 2,
+        "wins2": 0,
+        "arena": 2,
+        "round": 2,
+        "intro": 0,
+        "paused": 0,
+        "energy1": 96,
+        "energy2": 79,
+        "wave1": 0,
+        "wave2": 0,
+        "selected": 4,
+        "selected2": 5,
+        "arcade": 2,
+        "seconds": 95,
+        "pose1": 11,
+        "pose2": 14,
+        "round_end": 0,
+        "hitstop": 5,
+        "combo": 6,
+        "champion": 0
+      }
+    },
+    {
+      "check": "Controller-only player wins ladder match 3",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Arcade ladder match 4 reaches a result",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 4,
+        "frame": 7611,
+        "mode": 0,
+        "hp1": 128,
+        "hp2": 0,
+        "x1": 3202,
+        "x2": 3668,
+        "y1": 0,
+        "y2": 0,
+        "action1": 9,
+        "action2": 0,
+        "wins1": 2,
+        "wins2": 0,
+        "arena": 0,
+        "round": 2,
+        "intro": 0,
+        "paused": 0,
+        "energy1": 96,
+        "energy2": 87,
+        "wave1": 0,
+        "wave2": 0,
+        "selected": 4,
+        "selected2": 5,
+        "arcade": 3,
+        "seconds": 93,
+        "pose1": 11,
+        "pose2": 14,
+        "round_end": 0,
+        "hitstop": 5,
+        "combo": 4,
+        "champion": 0
+      }
+    },
+    {
+      "check": "Controller-only player wins ladder match 4",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Arcade ladder match 5 reaches a result",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 4,
+        "frame": 9714,
+        "mode": 0,
+        "hp1": 123,
+        "hp2": 0,
+        "x1": 2965,
+        "x2": 3437,
+        "y1": 0,
+        "y2": 0,
+        "action1": 9,
+        "action2": 0,
+        "wins1": 2,
+        "wins2": 0,
+        "arena": 1,
+        "round": 2,
+        "intro": 0,
+        "paused": 0,
+        "energy1": 96,
+        "energy2": 96,
+        "wave1": 0,
+        "wave2": 0,
+        "selected": 4,
+        "selected2": 5,
+        "arcade": 4,
+        "seconds": 89,
+        "pose1": 11,
+        "pose2": 14,
+        "round_end": 0,
+        "hitstop": 5,
+        "combo": 1,
+        "champion": 0
+      }
+    },
+    {
+      "check": "Controller-only player wins ladder match 5",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Arcade ladder match 6 reaches a result",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 4,
+        "frame": 11078,
+        "mode": 0,
+        "hp1": 128,
+        "hp2": 0,
+        "x1": 3288,
+        "x2": 3742,
+        "y1": 0,
+        "y2": 0,
+        "action1": 9,
+        "action2": 0,
+        "wins1": 2,
+        "wins2": 0,
+        "arena": 2,
+        "round": 2,
+        "intro": 0,
+        "paused": 0,
+        "energy1": 96,
+        "energy2": 81,
+        "wave1": 0,
+        "wave2": 0,
+        "selected": 4,
+        "selected2": 5,
+        "arcade": 5,
+        "seconds": 95,
+        "pose1": 11,
+        "pose2": 14,
+        "round_end": 0,
+        "hitstop": 5,
+        "combo": 6,
+        "champion": 0
+      }
+    },
+    {
+      "check": "Controller-only player wins ladder match 6",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Arcade ladder match 7 reaches a result",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 4,
+        "frame": 12763,
+        "mode": 0,
+        "hp1": 123,
+        "hp2": 0,
+        "x1": 2928,
+        "x2": 3368,
+        "y1": 0,
+        "y2": 0,
+        "action1": 9,
+        "action2": 0,
+        "wins1": 2,
+        "wins2": 0,
+        "arena": 0,
+        "round": 2,
+        "intro": 0,
+        "paused": 0,
+        "energy1": 96,
+        "energy2": 96,
+        "wave1": 0,
+        "wave2": 0,
+        "selected": 4,
+        "selected2": 5,
+        "arcade": 6,
+        "seconds": 88,
+        "pose1": 11,
+        "pose2": 14,
+        "round_end": 0,
+        "hitstop": 5,
+        "combo": 1,
+        "champion": 0
+      }
+    },
+    {
+      "check": "Controller-only player wins ladder match 7",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Arcade ladder match 8 reaches a result",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 4,
+        "frame": 14502,
+        "mode": 0,
+        "hp1": 127,
+        "hp2": 0,
+        "x1": 3308,
+        "x2": 3744,
+        "y1": 0,
+        "y2": 0,
+        "action1": 9,
+        "action2": 0,
+        "wins1": 2,
+        "wins2": 0,
+        "arena": 1,
+        "round": 2,
+        "intro": 0,
+        "paused": 0,
+        "energy1": 96,
+        "energy2": 87,
+        "wave1": 0,
+        "wave2": 0,
+        "selected": 4,
+        "selected2": 5,
+        "arcade": 7,
+        "seconds": 93,
+        "pose1": 11,
+        "pose2": 14,
+        "round_end": 0,
+        "hitstop": 5,
+        "combo": 4,
+        "champion": 0
+      }
+    },
+    {
+      "check": "Controller-only player wins ladder match 8",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Arcade ladder match 9 reaches a result",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 4,
+        "frame": 16162,
+        "mode": 0,
+        "hp1": 106,
+        "hp2": 0,
+        "x1": 3176,
+        "x2": 3626,
+        "y1": 0,
+        "y2": 0,
+        "action1": 9,
+        "action2": 0,
+        "wins1": 2,
+        "wins2": 0,
+        "arena": 2,
+        "round": 2,
+        "intro": 0,
+        "paused": 0,
+        "energy1": 96,
+        "energy2": 72,
+        "wave1": 0,
+        "wave2": 0,
+        "selected": 4,
+        "selected2": 5,
+        "arcade": 8,
+        "seconds": 91,
+        "pose1": 11,
+        "pose2": 14,
+        "round_end": 0,
+        "hitstop": 5,
+        "combo": 1,
+        "champion": 0
+      }
+    },
+    {
+      "check": "Controller-only player wins ladder match 9",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Arcade ladder match 10 reaches a result",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 4,
+        "frame": 17935,
+        "mode": 0,
+        "hp1": 125,
+        "hp2": 0,
+        "x1": 2784,
+        "x2": 3243,
+        "y1": 0,
+        "y2": 0,
+        "action1": 9,
+        "action2": 0,
+        "wins1": 2,
+        "wins2": 0,
+        "arena": 0,
+        "round": 2,
+        "intro": 0,
+        "paused": 0,
+        "energy1": 96,
+        "energy2": 96,
+        "wave1": 0,
+        "wave2": 0,
+        "selected": 4,
+        "selected2": 5,
+        "arcade": 9,
+        "seconds": 88,
+        "pose1": 11,
+        "pose2": 14,
+        "round_end": 0,
+        "hitstop": 5,
+        "combo": 4,
+        "champion": 0
+      }
+    },
+    {
+      "check": "Controller-only player wins ladder match 10",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Arcade ladder match 11 reaches a result",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 4,
+        "frame": 19351,
+        "mode": 0,
+        "hp1": 128,
+        "hp2": 0,
+        "x1": 3308,
+        "x2": 3744,
+        "y1": 0,
+        "y2": 0,
+        "action1": 9,
+        "action2": 0,
+        "wins1": 2,
+        "wins2": 0,
+        "arena": 1,
+        "round": 2,
+        "intro": 0,
+        "paused": 0,
+        "energy1": 96,
+        "energy2": 91,
+        "wave1": 0,
+        "wave2": 0,
+        "selected": 4,
+        "selected2": 5,
+        "arcade": 10,
+        "seconds": 92,
+        "pose1": 11,
+        "pose2": 14,
+        "round_end": 0,
+        "hitstop": 5,
+        "combo": 5,
+        "champion": 1
+      }
+    },
+    {
+      "check": "Controller-only player wins ladder match 11",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Defeating all eleven opponents awards Office Champion",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Champion returns to the title",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 0,
+        "stage": 0
+      }
+    },
+    {
+      "check": "A tied timeout starts another round without awarding a win",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 3,
+        "frame": 6784,
+        "mode": 1,
+        "hp1": 128,
+        "hp2": 128,
+        "x1": 1056,
+        "x2": 3040,
+        "y1": 0,
+        "y2": 0,
+        "action1": 0,
+        "action2": 0,
+        "wins1": 0,
+        "wins2": 0,
+        "arena": 0,
+        "round": 1,
+        "intro": 0,
+        "paused": 0,
+        "energy1": 81,
+        "energy2": 81,
+        "wave1": 0,
+        "wave2": 0,
+        "selected": 0,
+        "selected2": 1,
+        "arcade": 0,
+        "seconds": 95,
+        "pose1": 0,
+        "pose2": 0,
+        "round_end": 0,
+        "hitstop": 0,
+        "combo": 0,
+        "champion": 0
+      }
+    }
+  ]
+}
