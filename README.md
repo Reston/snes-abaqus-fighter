@@ -2,7 +2,9 @@
 
 An original six-button fighting game for the **Super Nintendo**, inspired by the arcade structure of Street Fighter II and the people and places of Abaqus in Santiago.
 
-**First playable release: v0.1.0.** The cartridge is a 1 MiB NTSC FastROM LoROM image, compiled from C and 65816 assembly. It runs in Snes9x with ordinary SNES controllers.
+**Cartoon arcade release: v0.2.0.** The cartridge is a 1 MiB NTSC FastROM LoROM image, compiled from C and 65816 assembly. It runs in Snes9x with ordinary SNES controllers.
+
+The current art direction uses illustrated character portraits, exaggerated fists and shoulders, bold ink outlines, bright costume palettes and cel-shaded stage art. Public team photos serve as identity references; the character-select screen uses original cartoon portraits.
 
 ![Abaqus After Hours](docs/screenshots/fight.png)
 
@@ -10,7 +12,7 @@ An original six-button fighting game for the **Super Nintendo**, inspired by the
 
 On Windows, double-click **[Play.cmd](Play.cmd)**. The launcher downloads the official Snes9x 1.63 release into `.tools/` on its first run, verifies its SHA256, and opens the game. No administrator account or global installation is needed. The tools are already present in this checkout.
 
-For offline play, extract `dist/Abaqus-After-Hours-v0.1.0-Windows.zip` and run its `Play.cmd`. The package contains the ROM, emulator, default controls, guide and credits.
+For offline play, extract `dist/Abaqus-After-Hours-v0.2.0-Windows.zip` and run its `Play.cmd`. The package contains the ROM, emulator, default controls, guide and credits.
 
 On other platforms, open **[dist/abaqus-after-hours.sfc](dist/abaqus-after-hours.sfc)** in a SNES emulator. No BIOS or commercial ROM is required.
 
@@ -32,7 +34,7 @@ See the [player guide](docs/PLAYER-GUIDE.md) for SNES button mappings, player tw
 
 ## Included
 
-- All 12 requested roster slots, with public team portraits, individual names, palette and head details, movement/power values, move names and victory lines.
+- All 12 requested roster slots, with illustrated portraits based on the public team references, individual names, palette and head details, movement/power values, move names and victory lines.
 - Las Condes, El Castillo and La Oficina, illustrated as original pixel-art stages from the supplied location references.
 - Arcade Shift: fight the other 11 coworkers across the three locations and become Office Champion.
 - Local Versus: two controllers, independent input, best-of-three matches and rematches.
@@ -74,6 +76,6 @@ A Windows GitHub Actions workflow builds the cartridge, checks its hash against 
 | `dist/` | Playable ROM and release manifest |
 | `docs/` | Controls, technical notes, art prompts, credits and QA evidence |
 
-Git tracks the source, master art, generated cartridge assets and ROM. Downloaded toolchains and release ZIPs stay outside history. The initial release is committed and tagged `v0.1.0`; no remote repository is configured by this project.
+Git tracks the source, master art, generated cartridge assets and ROM. Downloaded toolchains and release ZIPs stay outside history. The original release is tagged `v0.1.0`; the cartoon art update is tagged `v0.2.0`. No remote repository is configured by this project.
 
 Team references: [Abaqus Solutions](https://abaqus.io/es/abaqus-solutions/team) and [Abaqus Wealth Care](https://abaqus.io/es/wealth-care/about-us). See [credits and asset provenance](docs/CREDITS.md), [art prompts](docs/ART-DIRECTION.md), and [technical notes](docs/DEVELOPMENT.md).

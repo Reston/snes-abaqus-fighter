@@ -1,6 +1,6 @@
 # Polish roadmap
 
-The v0.1 release establishes a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage.
+The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass adds a coherent cartoon arcade style across fighter sprites, all twelve portraits, the stages and interface colors.
 
 ## Next art pass
 

@@ -1,13 +1,29 @@
 # Art direction and image generation
 
+## Current direction: v0.2 cartoon arcade
+
+The user requested a more cartoon-like Street Fighter II aesthetic. The current masters replace the realistic suit rendering and photographic selection portraits with original illustrated arcade art: oversized expressive faces and fists, broader silhouettes, clean navy outlines, cel shading and saturated costume colors. The [official Capcom reference](https://captown.capcom.com/en/classic_games/22) informed the visual direction; no commercial sprites were imported.
+
+Current project-bound masters, generated with the **built-in imagegen** tool:
+
+- `assets/art/fighter-atlas-cartoon.png` — sixteen newly illustrated poses.
+- `assets/art/stage-atlas-cartoon.png` — brighter illustrated Las Condes, El Castillo and La Oficina.
+- `assets/art/portraits-cartoon.png` — all twelve cartoon portraits, in the team reference order.
+
+The exact final prompt set and reference roles are saved in [`assets/art/cartoon-prompts.json`](../assets/art/cartoon-prompts.json). The original two atlases below are retained as historical references and are no longer compiled into the current ROM.
+
+The native asset pipeline preserves hard edges with nearest-neighbor scaling. Fighters use an authored fifteen-color palette with separate material ramps for coat, trousers, skin and shirt. Coat colors match the illustrated roster portraits. Source silhouettes are isolated by component labels before cropping so neighboring poses cannot leak pixels into a frame. Native code-authored hair, beard and glasses details remain shared-template identity variations.
+
+## Historical direction: v0.1
+
 Mode: **built-in imagegen**, using the `imagegen` skill. No image-generation API keys or fallback CLI were used.
 
-Final project-bound masters:
+Original project-bound masters:
 
 - `assets/art/stage-atlas.png` — original three-location pixel-art backdrop atlas.
 - `assets/art/fighter-atlas.png` — original Damián-based sixteen-pose animation master, generated with his public headshot as the appearance reference.
 
-Native derivatives live in `assets/generated/`; `tools/make_assets.py` documents the exact deterministic processing. The stage atlas is split into three panoramas, reduced to 256×224 and six local palettes. The animation atlas is separated by connected silhouettes, normalized to a consistent scale, reduced to 64×80 and encoded to 4bpp. Code-authored head details and palette variants form the initial roster. Menus use the supplied public team portraits. This shared template is an explicit v0.1 art limitation.
+Native derivatives live in `assets/generated/`; `tools/make_assets.py` documents the deterministic processing. The original release used the supplied public team photos on the selection screen. The current release replaces those with the illustrated portrait atlas above. The shared base animation template remains an explicit art limitation.
 
 ## Stage master — final prompt
 

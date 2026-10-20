@@ -23,7 +23,9 @@ The PPU uses Mode 1. BG1 holds the stage; BG2 holds the interface. Stage tiles u
 
 Each actor uses twenty 16×16 hardware sprites. The 65816 renderer writes an actor's OAM entries in one call. A strided DMA routine uploads ten 256-byte rows for one pose. Each vblank streams at most one actor frame, alternating priority if both change together. The second actor can visually trail its requested pose by one video frame; combat state stays independent of that upload queue.
 
-Master sprites are extracted by connected silhouette, scaled consistently, quantized to a stable 15-color palette and divided into two eight-pose ROM banks per fighter. This keeps each contiguous data section below the LoROM 32 KiB bank boundary. The roster shares a base animation template with palette and head-detail variations.
+Master sprites are isolated by connected-component labels, scaled consistently, quantized to an authored 15-color palette and divided into two eight-pose ROM banks per fighter. Isolating the alpha mask avoids stray pixels from adjacent poses inside a crop rectangle. Separate coat, trousers, skin and shirt ramps preserve the illustrated cel shading and allow vivid roster colors. This keeps each contiguous data section below the LoROM 32 KiB bank boundary. The roster shares a base animation template with palette and head-detail variations.
+
+The v0.2 stage and portrait masters are cartoon illustrations. Selection portraits come from an even 4×3 atlas, replacing the photographic cards. Images are reduced with nearest-neighbor sampling to keep hard pixel edges.
 
 ## Simulation
 

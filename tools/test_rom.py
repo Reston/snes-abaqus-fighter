@@ -140,23 +140,29 @@ for _ in range(220):
     s=e.state();forward='right' if s['x1']<s['x2'] else 'left'
     e.run(3,p1=[forward,'l']);e.run(26,p1=[forward])
 check(e.state()['screen']==4,'Arcade CPU match reaches a result',e.state())
-if e.state()['wins1']==2:
-    press(e,'a');wait(e,3)
-    check(e.state()['arcade']==1 and e.state()['arena']==1,'Arcade victory advances opponent and arena')
-    for match in range(1,11):
-        for attempt in range(8):
-            play_cpu(e)
-            if e.state()['wins1']==2:break
-            press(e,'a');wait(e,3)
-        check(e.state()['screen']==4,'Arcade ladder match '+str(match+1)+' reaches a result',e.state())
-        check(e.state()['wins1']==2,'Controller-only player wins ladder match '+str(match+1))
-        if match<10:press(e,'a');wait(e,3)
-    check(e.state()['champion']==1,'Defeating all eleven opponents awards Office Champion')
-    e.shot('champion.png');press(e,'a');wait(e,0)
-    check(e.state()['screen']==0,'Champion returns to the title')
-else:
+if e.state()['wins1']!=2:
     press(e,'a');wait(e,3)
     check(e.state()['wins1']==0 and e.state()['wins2']==0,'Arcade continue restarts a lost match')
+    # A different art-bank layout can shift boot timing and the CPU's PRNG path.
+    # A bot loss must exercise continue, never silently skip the entire ladder.
+    for attempt in range(8):
+        play_cpu(e)
+        if e.state()['wins1']==2:break
+        press(e,'a');wait(e,3)
+    check(e.state()['wins1']==2,'Arcade player wins after continuing')
+press(e,'a');wait(e,3)
+check(e.state()['arcade']==1 and e.state()['arena']==1,'Arcade victory advances opponent and arena')
+for match in range(1,11):
+    for attempt in range(8):
+        play_cpu(e)
+        if e.state()['wins1']==2:break
+        press(e,'a');wait(e,3)
+    check(e.state()['screen']==4,'Arcade ladder match '+str(match+1)+' reaches a result',e.state())
+    check(e.state()['wins1']==2,'Controller-only player wins ladder match '+str(match+1))
+    if match<10:press(e,'a');wait(e,3)
+check(e.state()['champion']==1,'Defeating all eleven opponents awards Office Champion')
+e.shot('champion.png');press(e,'a');wait(e,0)
+check(e.state()['screen']==0,'Champion returns to the title')
 e.close()
 
 e=boot(1);e.run(6400)

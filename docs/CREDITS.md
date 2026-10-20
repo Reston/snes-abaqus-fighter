@@ -8,7 +8,7 @@ Game code, UI, tile pipeline, combat implementation, tracker compositions and sy
 
 ## People
 
-Portraits and public names were sourced from the user-provided [Solutions team page](https://abaqus.io/es/abaqus-solutions/team) and [Wealth Care page](https://abaqus.io/es/wealth-care/about-us). Their images remain subject to the original owners' rights. Download URLs are retained in `assets/references/team.json` and `wealth.json`.
+Identity photographs and public names were sourced from the user-provided [Solutions team page](https://abaqus.io/es/abaqus-solutions/team) and [Wealth Care page](https://abaqus.io/es/wealth-care/about-us). The v0.2 selection portraits are original cartoon illustrations generated from those identity references. The source photographs remain subject to the original owners' rights. Download URLs are retained in `assets/references/team.json` and `wealth.json`.
 
 | Game slot | Public reference | User-supplied nickname |
 | --- | --- | --- |

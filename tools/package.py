@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 manifest=json.loads((ROOT/'dist/manifest.json').read_text())
 report=json.loads((ROOT/'docs/test-report.json').read_text())
 assert report['rom_sha256']==manifest['sha256'],'Run tests on the current ROM before packaging.'
-archive=ROOT/'dist/Abaqus-After-Hours-v0.1.0-Windows.zip'
+archive=ROOT/'dist'/('Abaqus-After-Hours-v'+manifest['version']+'-Windows.zip')
 files={
  'abaqus-after-hours.sfc':ROOT/'dist/abaqus-after-hours.sfc',
  'emulator/snes9x-x64.exe':ROOT/'.tools/snes9x/snes9x-x64.exe',
