@@ -1457,6 +1457,112 @@ def check_training_inertness() -> None:
         e.close()
 
 
+def counter_banner_row(e: Emulator, attacker: int) -> list[int]:
+    """Read the exact BG2 row-9 banner cells for one attacker side."""
+
+    memory = vram_bytes(e)
+    origin = 20 if attacker else 2
+    return [bg2_tile(memory, origin + index, 9) for index in range(8)]
+
+
+def check_counter_banner() -> dict[str, object]:
+    """Verify a real counter event, cadence, and native COUNTER! banner."""
+
+    expected = [ord(character) | 0x2000 for character in "COUNTER!"]
+    results: dict[str, object] = {}
+    for attacker in (0, 1):
+        defender = 1 - attacker
+        e = boot(1)
+        try:
+            close_players(e)
+            initial = trace(e)
+            initial_frame = initial["frame"]
+            # P1's Y jab beats P2's slower R heavy, then mirror the exact
+            # edge-triggered fixture on port two.  Holding both for one native
+            # tick gives captureInput an unambiguous edge on each port.
+            if attacker == 0:
+                e.run(1, p1=["y"], p2=["r"])
+            else:
+                e.run(1, p1=["r"], p2=["y"])
+            samples = [trace(e)]
+            rows = [counter_banner_row(e, attacker)]
+            previous_frame = initial_frame
+            deltas = [(samples[0]["frame"] - previous_frame) & 0xffff]
+            counter_index: int | None = None
+
+            # Keep every native frame through contact plus the five-tick
+            # frozen window.  The first banner DMA is intentionally deferred
+            # into hitstop, so VRAM is sampled on every frame here.
+            for _ in range(28):
+                previous = samples[-1]
+                e.run(1)
+                sample = trace(e)
+                samples.append(sample)
+                rows.append(counter_banner_row(e, attacker))
+                deltas.append((sample["frame"] - previous["frame"]) & 0xffff)
+                if counter_index is None and \
+                        event_field(sample, "counter", attacker) == 1 and \
+                        event_field(sample, "connected", attacker) == 2 and \
+                        sample[f"hp{defender + 1}"] < initial[f"hp{defender + 1}"]:
+                    counter_index = len(samples) - 1
+
+            evidence = {
+                "initial": initial,
+                "counter_index": counter_index,
+                "samples": [{
+                    "frame": sample["frame"],
+                    "hitstop": sample["hitstop"],
+                    "counter": event_field(sample, "counter", attacker),
+                    "connected": event_field(sample, "connected", attacker),
+                    "hp1": sample["hp1"], "hp2": sample["hp2"],
+                } for sample in samples[:12]],
+                "banner_rows": rows[:12],
+                "expected": expected,
+                "deltas": deltas[:12],
+            }
+            prefix = f"P{attacker + 1} counter"
+            check(counter_index is not None,
+                  f"{prefix} produces a real counter contact and damage",
+                  evidence)
+            if counter_index is None:
+                results[f"p{attacker + 1}"] = evidence
+                continue
+
+            contact = samples[counter_index]
+            counter_end = min(counter_index + 5, len(samples) - 1)
+            banner_indices = [index for index, row in enumerate(rows)
+                              if row == expected]
+            first_banner = min(banner_indices) if banner_indices else None
+            check(all(delta == 1 for delta in deltas[:counter_end + 1]),
+                  f"{prefix} keeps one native frame cadence through hitstop",
+                  {"contact_index": counter_index,
+                   "deltas": deltas[:counter_end + 1],
+                   "contact": contact})
+            check(first_banner is not None and
+                  counter_index <= first_banner <= counter_index + 3,
+                  f"{prefix} shows COUNTER! within three frozen ticks",
+                  {"contact_index": counter_index,
+                   "first_banner": first_banner,
+                   "contact_hitstop": contact["hitstop"],
+                   "rows": rows[counter_index:counter_end + 1]})
+            check(first_banner is not None and
+                  all(rows[index] == expected
+                      for index in range(first_banner, counter_end + 1)),
+                  f"{prefix} keeps the exact side-correct COUNTER! row",
+                  {"first_banner": first_banner,
+                   "rows": rows[first_banner:counter_end + 1],
+                   "expected": expected})
+            results[f"p{attacker + 1}"] = {
+                **evidence,
+                "first_banner": first_banner,
+                "counter_hitstop": contact["hitstop"],
+                "banner_origin_x": 20 if attacker else 2,
+            }
+        finally:
+            e.close()
+    return results
+
+
 def check_contact_classification() -> None:
     """Only real, unblocked contact opens a normal cancel window."""
 
@@ -2991,6 +3097,67 @@ def check_cpu_special_spacing() -> dict[str, object]:
     return results
 
 
+def check_cpu_natural_wave_specials() -> dict[str, object]:
+    """Ensure wave/projectile CPUs use their signature move in neutral.
+
+    This deliberately uses the ordinary arcade boot phase and neutral P1
+    input.  It must not phase-align the global CPU cadence: a live action-7
+    trace and its launched wave are the observable contract.  Action recovery
+    may overlap the wave lifetime, so this check does not reject that normal
+    overlap or attempt to count casts from it.
+    """
+
+    # The family IDs are projectile=0 and groundwave=2 in characters.h.  The
+    # trace exposes wave_low2, where 0 is a projectile and 1 is a low wave.
+    wave_cpus = (
+        (0, 0), (1, 0), (4, 1), (6, 1),
+        (8, 1), (9, 0), (11, 1),
+    )
+    results: dict[str, object] = {}
+    for difficulty in (0, 1, 2):
+        for cpu_id, expected_low in wave_cpus:
+            e, initial = _cpu_boot(cpu_id, difficulty, None)
+            samples: list[dict[str, int]] = []
+            try:
+                # Keep this window fixed and controller-only.  A round should
+                # remain live for the opening neutral exchange; treating an
+                # early result transition as a failure makes the regression
+                # explainable instead of silently testing a menu/result page.
+                for _ in range(180):
+                    samples.append(trace(e))
+                    e.run(1)
+            finally:
+                e.close()
+
+            live = [sample for sample in samples
+                    if sample["screen"] == 3 and not sample["round_end"]]
+            actions = [sample for sample in live if sample["action2"] == 7]
+            waves = [sample for sample in live if sample["wave2"]]
+            correct_waves = [sample for sample in waves
+                             if sample["wave_low2"] == expected_low]
+            evidence = {
+                "initial": _cpu_summary(initial),
+                "live_ticks": len(live),
+                "action7_frames": len(actions),
+                "wave_frames": len(waves),
+                "wave_low": sorted(set(sample["wave_low2"]
+                                        for sample in waves)),
+                "expected_low": expected_low,
+                "action7": [_cpu_summary(sample) for sample in actions[:4]],
+                "wave": [_cpu_summary(sample) for sample in waves[:4]],
+            }
+            prefix = f"CPU d{difficulty} fighter {cpu_id} natural wave"
+            check(len(live) == 180,
+                  f"{prefix} keeps the 180-tick live opening", evidence)
+            check(bool(actions),
+                  f"{prefix} emits a special without phase alignment",
+                  evidence)
+            check(bool(waves) and len(correct_waves) == len(waves),
+                  f"{prefix} launches the correct wave family", evidence)
+            results[f"d{difficulty}-cpu{cpu_id:02}"] = evidence
+    return results
+
+
 def check_cpu_lowwave_guard() -> dict[str, object]:
     """Normal/Hard CPU crouch-blocks a genuine incoming low wave."""
 
@@ -3090,9 +3257,50 @@ def check_cpu_regressions() -> dict[str, object]:
     return {
         "matrix": check_cpu_matrix(),
         "special_spacing": check_cpu_special_spacing(),
+        "natural_wave_specials": check_cpu_natural_wave_specials(),
         "lowwave_guard": check_cpu_lowwave_guard(),
         "wake": check_cpu_wake(),
     }
+
+
+def check_pause_transition_cadence() -> dict[str, object]:
+    """Pause-card construction must preserve native cadence on either pad.
+
+    The long-session roster route exposed a missed frame on the first Start
+    edge. Check every callback around pause/resume in each mode, including
+    the expensive card-construction tick rather than only the settled screen.
+    """
+    results = {}
+    for mode in (0, 1, 2):
+        for port in (0, 1):
+            e = boot(mode)
+            key = f"mode{mode}-pad{port + 1}"
+            phases = []
+            try:
+                previous = trace(e)
+                for wanted in (1, 0):
+                    deltas = []
+                    for tick in range(18):
+                        held = ["start"] if tick < 3 else []
+                        e.run(1, **({"p1": held} if port == 0 else {"p2": held}))
+                        current = trace(e)
+                        deltas.append((current["frame"] - previous["frame"]) & 0xffff)
+                        previous = current
+                    check(all(delta == 1 for delta in deltas),
+                          "pause/resume card keeps unit native cadence", {
+                              "case": key, "wanted_paused": wanted, "deltas": deltas,
+                          })
+                    check(current["screen"] == 3 and current["paused"] == wanted,
+                          "either controller pauses and resumes the active mode", {
+                              "case": key, "wanted_paused": wanted,
+                              "screen": current["screen"], "paused": current["paused"],
+                          })
+                    phases.append({"paused": wanted, "frames": len(deltas),
+                                   "deltas": deltas})
+                results[key] = phases
+            finally:
+                e.close()
+    return results
 
 
 def main() -> int:
@@ -3109,6 +3317,7 @@ def main() -> int:
         "two_controller_stress": {},
         "resident_sfx_audio": {},
         "status_bars": {},
+        "counter_banner": {},
         "throw_interrupt": {},
         "throw_startup_escape": {},
         "down_floor_guard": {},
@@ -3137,9 +3346,11 @@ def main() -> int:
             e.close()
 
         check_pause_intro_discard()
+        report["pause_transition_cadence"] = check_pause_transition_cadence()
         check_training_inertness()
         check_training_reset()
         report["status_bars"] = check_guard_timing()
+        report["counter_banner"] = check_counter_banner()
         check_contact_classification()
         check_held_back_combo_and_block_string()
         check_stale_prehit_buffer()

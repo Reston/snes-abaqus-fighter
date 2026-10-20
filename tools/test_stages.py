@@ -161,6 +161,21 @@ def actor_contract(e: Emulator, expected_floor: int | None = None,
               "ambient patch preserves the actor support floor", {
                   "floors": floors, "expected_floor": expected_floor,
               })
+    for side, pieces in enumerate((p1, p2)):
+        # Ground shadows keep the actor's horizontal pivot while it jumps.
+        # Check the actual OAM, including the shared high-table size/X9 bits.
+        left = (pieces[0]["x"] - (80 if pieces[0]["attr"] & 0x40 else 0)) & 511
+        if left >= 256:
+            left -= 512
+        shadows = [oam_entry(raw, 64 + side * 2 + index) for index in range(2)]
+        check(all(shadow["x"] == left + 36 + index * 12 and
+                  shadow["y"] == 202 and shadow["tile"] == 430 and
+                  shadow["attr"] == (0x25 if index == 0 else 0x65) and
+                  shadow["x9"] == 0 and shadow["size"] == 1
+                  for index, shadow in enumerate(shadows)),
+              "floor shadows preserve pivot, visibility and native attributes", {
+                  "side": side, "actor_left": left, "shadows": shadows,
+              })
     return {"floor": floor, "floors": floors,
             "active_sprites": len(all_entries), "raw_tail": raw[256:]}
 

@@ -1,6 +1,7 @@
 """Package the tested ROM with the official Windows emulator for offline play."""
 from pathlib import Path
 import hashlib, json, zipfile
+from release_evidence import EXTRA_REPORTS, validate_release_evidence
 ROOT=Path(__file__).resolve().parents[1]
 manifest=json.loads((ROOT/'dist/manifest.json').read_text())
 report=json.loads((ROOT/'docs/test-report.json').read_text())
@@ -24,7 +25,12 @@ for evidence in (report,roster_report,presentation_report,input_report,stage_rep
 compatibility_report=json.loads((ROOT/'docs/compatibility-test-report.json').read_text())
 assert compatibility_report['status']=='passed','Run the independent-engine smoke check before packaging.'
 assert compatibility_report['rom']['sha256']==manifest['sha256'],'Compatibility smoke evidence must match the current ROM.'
-assert hashlib.sha256((ROOT/'dist/abaqus-after-hours.sfc').read_bytes()).hexdigest()==manifest['sha256'],'ROM differs from its manifest.'
+rom_sha256=hashlib.sha256((ROOT/'dist/abaqus-after-hours.sfc').read_bytes()).hexdigest()
+assert rom_sha256==manifest['sha256'],'ROM differs from its manifest.'
+# These release-scale reports are deliberately separate from Test.cmd.  Keep
+# their validation shared with audit_release.py so a stale or partial report
+# can never enter the offline package.
+validate_release_evidence(ROOT, rom_sha256)
 archive=ROOT/'dist'/('Abaqus-After-Hours-v'+manifest['version']+'-Windows.zip')
 files={
  'abaqus-after-hours.sfc':ROOT/'dist/abaqus-after-hours.sfc',
@@ -43,6 +49,10 @@ files={
  'qa/stages.json':ROOT/'docs/stage-test-report.json',
  'qa/stage-dynamics.json':ROOT/'assets/generated/stage-dynamics.json',
  'qa/compatibility.json':ROOT/'docs/compatibility-test-report.json',
+ 'qa/matchups.json':ROOT/EXTRA_REPORTS['matchups'],
+ 'qa/independent-combat.json':ROOT/EXTRA_REPORTS['independent_combat'],
+ 'qa/endurance.json':ROOT/EXTRA_REPORTS['endurance'],
+ 'qa/fresh-build.json':ROOT/EXTRA_REPORTS['fresh_build'],
  'COMPATIBILITY.md':ROOT/'docs/COMPATIBILITY.md',
  'ANIMATION-CONTRACT.md':ROOT/'docs/ANIMATION-CONTRACT.md',
  'COMBAT-ANIMATION-CONTRACT.md':ROOT/'docs/COMBAT-ANIMATION-CONTRACT.md',

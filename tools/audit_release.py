@@ -5,6 +5,7 @@ import json
 import zipfile
 
 from PIL import Image
+from release_evidence import EXTRA_REPORTS, validate_release_evidence
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / 'docs/release-audit.json'
@@ -37,6 +38,12 @@ def main():
         complement = int.from_bytes(rom[0x7fdc:0x7fde], 'little')
         check(checksum == sum(rom) & 0xffff and checksum ^ complement == 0xffff,
               'SNES checksum and complement are valid')
+
+        # Release-scale evidence is intentionally separate from the bounded
+        # Test.cmd smoke suites.  Use the same validator as package.py so the
+        # audit and the ZIP gate enforce identical current-ROM, source-freeze,
+        # endurance, independent-combat and full-matchup contracts.
+        result['release_evidence'] = validate_release_evidence(ROOT, sha(rom), check)
 
         suites = {}
         reports = ['test-report.json', 'character-test-report.json',
@@ -153,6 +160,16 @@ def main():
             check(json.loads(package.read('qa/compatibility.json')) == compatibility and
                   package.read('COMPATIBILITY.md') == (ROOT / 'docs/COMPATIBILITY.md').read_bytes(),
                   'packaged independent-engine smoke evidence and scope')
+            for key, relative in EXTRA_REPORTS.items():
+                archive_name = {
+                    'matchups': 'qa/matchups.json',
+                    'independent_combat': 'qa/independent-combat.json',
+                    'endurance': 'qa/endurance.json',
+                    'fresh_build': 'qa/fresh-build.json',
+                }[key]
+                check(package.read(archive_name) == (ROOT / relative).read_bytes() and
+                      json.loads(package.read(archive_name)).get('status') == 'passed',
+                      'packaged release evidence: ' + key)
         check((ROOT / 'dist/release-sha256.txt').read_text().split()[0] == sha(archive.read_bytes()),
               'offline archive matches its published checksum')
         result['status'] = 'passed'
