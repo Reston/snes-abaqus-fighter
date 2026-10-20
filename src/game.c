@@ -5,6 +5,7 @@
 #include <snes.h>
 #include "assets.h"
 #include "characters.h"
+#include "menu_portraits.h"
 
 #define TITLE 0
 #define SELECT 1
@@ -17,6 +18,20 @@
 #define PUNCHES (KEY_Y|KEY_X|KEY_L)
 #define ATTACKS (PUNCHES|KEY_B|KEY_A|KEY_R)
 #define TRACE ((volatile u16 *)0x7fff00)
+
+/* Native fighter render contract (shared with tools/fighter_assets.py). */
+#define ACTOR_FRAME_W 96
+#define ACTOR_FRAME_H 80
+#define ACTOR_ROW_BYTES 384
+#define ACTOR_ROW_STRIDE_BYTES 512
+#define ACTOR_POSE_BYTES 3840
+#define ACTOR_VRAM0 0x6000
+#define ACTOR_VRAM1 0x6a00
+#define ACTOR_OAM0 0
+#define ACTOR_OAM1 128
+#define OAM_SHADOW_BASE 256
+#define OAM_EFFECT_BASE 276
+#define OAM_WAVE_BASE 280
 
 typedef struct {
     s16 x, y, vy;
@@ -38,6 +53,11 @@ u8 arcade, roundNumber, seconds, secondTick, intro, roundEnd, winner, paused;
 u8 hitstop, shake, flash, fxLife, fxX, fxY, fxType, resultWin, champion;
 u8 hudDirty, bannerDirty, fullDirty, musicIndex, musicOn;
 u8 cpuTick;
+u8 portraitDirty, portraitId;
+u8 actorUploadDirty;
+u8 *actorUploadSource;
+u16 actorUploadDestination;
+u8 hudHp[2], hudEnergy[2], hudWins[2], hudSeconds;
 brrsamples sounds[4];
 extern char SOUNDBANK__;
 extern void drawActorFast(u16 byteSlot,s16 x,s16 y,u8 flip,u8 palette);
@@ -142,6 +162,8 @@ void music(u8 index) {
     spcStop();spcLoad(index);spcSetModuleVolume(86);spcPlay(0);musicIndex=index;
 }
 void commonScreen(void) {
+    portraitDirty=0;
+    actorUploadDirty=0;
     oamClear(0,128);
     dmaCopyVram(&ui_tiles,0x4000,UI_TILES_SIZE);
     dmaCopyCGram(&ui_pal,0,UI_PAL_SIZE);
@@ -163,50 +185,88 @@ void loadBackground(u8 which) {
     }
 }
 void finishScreen(void) { dmaCopyVram((u8 *)ui,0x5800,2048);fullDirty=0;setScreenOn(); }
-void showTitle(void) {
-    setScreenOff();screen=TITLE;commonScreen();loadBackground(3);paused=0;
+void drawTitle(void) {
+    clearUi();
     word(9,20,"ARCADE SHIFT");word(9,22,"LOCAL VERSUS");word(9,24,"TRAINING");
     word(7,20+menu*2,">");word(3,25,"L/R LEVEL");put(13,25,'1'+difficulty);
+    word(18,25,difficulty==0?"EASY":(difficulty==1?"NORMAL":"HARD"));
+}
+void showTitle(void) {
+    setScreenOff();screen=TITLE;commonScreen();loadBackground(3);paused=0;
+    drawTitle();
     music(0);finishScreen();
 }
 void drawSelect(void) {
-    u8 id,speedValue;
+    u8 id,x,y,family;
     clearUi();id=selectPlayer ? selected2:selected;
-    cursor(1+(id%6)*5-(id%6>2 ? 0:0),6,5,7);
-    /* Card grid uses 38-pixel spacing; align the outline with the card's tile cells. */
-    clearUi();cursor((15+(id%6)*38)/8,(57+(id/6)*57)/8,5,6);
-    speedValue=profileFor(id)->walkSpeed-15;
-    panel(21,5);word(2,21,selectPlayer ? "PLAYER 2":"PLAYER 1");word(15,21,characterNames[id]);
-    word(2,23,"POWER");put(9,23,'0'+power[id]);word(14,23,"SPEED");
-    if(speedValue>9)number(21,23,speedValue);else put(21,23,'0'+speedValue);
-    word(2,24,"STYLE");word(8,24,characterStyleNames[id]);
-    center(25,characterSpecialNames[id]);fullDirty=1;
+    cursor(1+(id%4)*5,6+(id/4)*6,5,6);
+    /* Dedicated source-master portrait: eight by ten BG2 tiles. */
+    for(y=0;y<10;y++)for(x=0;x<8;x++)
+        ui[(u16)(y+6)*32+x+23]=(160+(u16)y*8+x)|0x2400;
+    word(1,5,selectPlayer ? "PLAYER 2":"PLAYER 1");
+    word(22,17,characterNames[id]);
+    family=profileFor(id)->specialFamily;
+    if(family==SPECIAL_PROJECTILE)word(22,19,"PROJECTILE");
+    else if(family==SPECIAL_RUSH)word(22,19,"RUSH");
+    else if(family==SPECIAL_GROUNDWAVE)word(22,19,"LOW WAVE");
+    else word(22,19,"RISING");
+    word(22,21,"POWER");put(29,21,'0'+power[id]);
+    word(22,23,"SPEED");number(29,23,profileFor(id)->walkSpeed);
+    center(25,characterSpecialNames[id]);
+    center(27,"D-PAD SELECT  A OK  B BACK");
+    portraitId=id;portraitDirty=1;fullDirty=1;
+}
+void uploadMenuPortrait(void) {
+    dmaCopyVram(menuPortraitTiles(portraitId),0x4a00,2560);
+    dmaCopyCGram(menuPortraitPalette(portraitId),16,32);
+    portraitDirty=0;
 }
 void showSelect(void) {
-    setScreenOff();screen=SELECT;arcade=0;champion=0;commonScreen();loadBackground(4);selectPlayer=0;drawSelect();music(0);finishScreen();
+    setScreenOff();screen=SELECT;arcade=0;champion=0;commonScreen();loadBackground(4);selectPlayer=0;drawSelect();uploadMenuPortrait();music(0);finishScreen();
 }
 void drawArenas(void) { clearUi();cursor(1,5+arena*7,30,7);fullDirty=1; }
 void showArenas(void) { setScreenOff();screen=ARENA;commonScreen();loadBackground(5);drawArenas();finishScreen(); }
 
 void hud(void) {
-    u8 p,i,filled,amount,x;
-    number(15,0,seconds);
+    u8 p,i,filled,amount,x,first,last,old;
+    if(hudSeconds!=seconds){number(15,0,seconds);hudSeconds=seconds;hudDirty=1;}
     for(p=0;p<2;p++) {
-        amount=((u16)fighters[p].hp*88)>>7;
-        for(i=0;i<11;i++) {
-            filled=amount>8 ? 8:amount;
-            x=p ? 30-i:1+i;
-            ui[32+x]=(129+filled)|(p ? 0x6000:0x2000);
-            amount-=filled;
+        if(hudHp[p]!=fighters[p].hp) {
+            hudHp[p]=fighters[p].hp;
+            amount=((u16)fighters[p].hp*88)>>7;
+            for(i=0;i<11;i++) {
+                filled=amount>8 ? 8:amount;
+                x=p ? 30-i:1+i;
+                ui[32+x]=(129+filled)|(p ? 0x6000:0x2000);
+                amount-=filled;
+            }
+            hudDirty=1;
         }
         amount=fighters[p].energy;
-        for(i=0;i<12;i++) {
-            filled=amount>8 ? 8:amount;
-            ui[96+(p ? 30-i:1+i)]=(138+filled)|(p ? 0x6000:0x2000);amount-=filled;
+        old=hudEnergy[p];
+        if(old!=amount) {
+            /* Regeneration usually changes one partial tile. Avoid rebuilding
+             * two complete bars on every sixteenth simulation tick. */
+            if(old==255){first=0;last=11;}
+            else {
+                first=(old<amount?old:amount)>>3;
+                last=(old>amount?old:amount)>>3;
+                if(last>11)last=11;
+            }
+            hudEnergy[p]=amount;
+            for(i=first;i<=last;i++) {
+                filled=amount>i*8?amount-i*8:0;
+                if(filled>8)filled=8;
+                ui[96+(p ? 30-i:1+i)]=(138+filled)|(p ? 0x6000:0x2000);
+            }
+            hudDirty=1;
         }
-        ui[64+(p?29:1)]=(fighters[p].won>0?147:148)|0x2000;ui[64+(p?30:2)]=(fighters[p].won>1?147:148)|0x2000;
+        if(hudWins[p]!=fighters[p].won) {
+            hudWins[p]=fighters[p].won;
+            ui[64+(p?29:1)]=(fighters[p].won>0?147:148)|0x2000;ui[64+(p?30:2)]=(fighters[p].won>1?147:148)|0x2000;
+            hudDirty=1;
+        }
     }
-    hudDirty=1;
 }
 void resetRound(void) {
     u8 p;
@@ -220,6 +280,8 @@ void resetRound(void) {
         waves[p].active=0;waves[p].low=0;waves[p].speed=0;
     }
     seconds=99;secondTick=0;intro=110;roundEnd=0;hitstop=0;shake=0;fxLife=0;
+    hudHp[0]=255;hudHp[1]=255;hudEnergy[0]=255;hudEnergy[1]=255;
+    hudWins[0]=255;hudWins[1]=255;hudSeconds=255;
     panel(0,5);word(1,0,characterNames[fighters[0].id]);word(20,0,characterNames[fighters[1].id]);
     put(15,1,'K');put(16,1,'O');word(13,2,"ROUND");put(19,2,'0'+roundNumber);
     if(mode==2)word(12,4,"TRAINING");
@@ -235,8 +297,11 @@ void beginMatch(void) {
     fighters[0].won=0;fighters[1].won=0;roundNumber=1;paused=0;
     dmaCopyCGram(fighterPalette(fighters[0].id),128,32);dmaCopyCGram(fighterPalette(fighters[1].id),144,32);
     dmaCopyCGram(&effects_pal,160,32);dmaCopyVram(&effects,0x7800,EFFECTS_SIZE);
-    oamInitGfxAttr(0x6000,OBJ_SIZE16_L32);
-    for(i=0;i<10;i++)oamMemory[512+i]=0;
+    oamInitGfxAttr(0x6000,OBJ_SIZE8_L16);
+    /* Clear the sixteen packed high-table bytes covering both padded actor
+     * blocks.  drawActorFast restores the 16x16 size bit and signed X9 bit
+     * for each of the thirty live entries on every render. */
+    for(i=0;i<16;i++)oamMemory[512+i]=0;
     resetRound();panel(26,2);center(26,"6 BUTTONS / DOWN+P: SPECIAL");center(27,"BACK GUARD   START PAUSE");
     music(arena+1);finishScreen();
 }
@@ -476,33 +541,34 @@ u8 poseFor(u8 p) {
 }
 void drawFighter(u8 p) {
     Fighter *f=&fighters[p];
-    u8 r,c;u16 id,t;
     s16 x,y;
     f->pose=poseFor(p);
-    x=(f->x>>4)-32;y=FLOOR+(f->y>>4)-80;
+    /* The gameplay pivot is the center of a uniform 96x80 canvas.  Keep the
+     * signed left edge intact so the ninth OAM X bit can wrap a whole body
+     * cleanly at either screen edge. */
+    x=(f->x>>4)-(ACTOR_FRAME_W/2);y=FLOOR+(f->y>>4)-ACTOR_FRAME_H;
     if(!f->action && !f->hurt && !roundEnd && !f->y && !f->duck)y-=((frame>>4)&1);
-    if(x<0)x=0;if(x>192)x=192;
-    drawActorFast(p*80,x,y,f->face?0:1,p);
-    oamSet(160+p*8,(f->x>>4)-12,FLOOR-5,0,0,0,430,2);oamSetEx(160+p*8,0,OBJ_SHOW);
-    oamSet(164+p*8,(f->x>>4),FLOOR-5,0,1,0,430,2);oamSetEx(164+p*8,0,OBJ_SHOW);
+    drawActorFast(p ? ACTOR_OAM1:ACTOR_OAM0,x,y,f->face?0:1,p);
+    oamSet(OAM_SHADOW_BASE+p*8,(f->x>>4)-12,FLOOR-5,0,0,0,430,2);oamSetEx(OAM_SHADOW_BASE+p*8,1,OBJ_SHOW);
+    oamSet(OAM_SHADOW_BASE+4+p*8,(f->x>>4),FLOOR-5,0,1,0,430,2);oamSetEx(OAM_SHADOW_BASE+4+p*8,1,OBJ_SHOW);
 }
 void drawFight(void) {
     u8 p;
     drawFighter(0);drawFighter(1);
     if(fxLife) {
-        fxLife--;oamSet(180,fxX-8,fxY-8,3,frame&1,0,384+(fxType?6:(fxLife&3)*2),2);oamSetEx(180,0,OBJ_SHOW);
-    } else oamSetVisible(180,OBJ_HIDE);
+        fxLife--;oamSet(OAM_EFFECT_BASE,fxX-8,fxY-8,3,frame&1,0,384+(fxType?6:(fxLife&3)*2),2);oamSetEx(OAM_EFFECT_BASE,1,OBJ_SHOW);
+    } else oamSetVisible(OAM_EFFECT_BASE,OBJ_HIDE);
     for(p=0;p<2;p++) {
-        if(waves[p].active){oamSet(184+p*4,(waves[p].x>>4)-8,waves[p].y,2,waves[p].face?0:1,0,392+(frame%3)*2,2);oamSetEx(184+p*4,0,OBJ_SHOW);}
-        else oamSetVisible(184+p*4,OBJ_HIDE);
+        if(waves[p].active){oamSet(OAM_WAVE_BASE+p*4,(waves[p].x>>4)-8,waves[p].y,2,waves[p].face?0:1,0,392+(frame%3)*2,2);oamSetEx(OAM_WAVE_BASE+p*4,1,OBJ_SHOW);}
+        else oamSetVisible(OAM_WAVE_BASE+p*4,OBJ_HIDE);
     }
 }
-void streamFighter(u8 p) {
-    u8 row;u8 *source;
+void queueFighter(u8 p) {
     Fighter *f=&fighters[p];
     if(f->pose==f->oldpose)return;
-    source=f->pose<8 ? fighterData(f->id)+(u16)f->pose*2560 : fighterDataB(f->id)+(u16)(f->pose-8)*2560;
-    uploadActor(source,0x6000+p*128);
+    actorUploadSource=f->pose<8 ? fighterData(f->id)+(u16)f->pose*ACTOR_POSE_BYTES : fighterDataB(f->id)+(u16)(f->pose-8)*ACTOR_POSE_BYTES;
+    actorUploadDestination=p ? ACTOR_VRAM1:ACTOR_VRAM0;
+    actorUploadDirty=1;
     f->oldpose=f->pose;
 }
 
@@ -541,17 +607,18 @@ void fightTick(void) {
 void menuTick(void) {
     u8 *choice;
     if(screen==TITLE) {
-        if(edge0&KEY_DOWN){menu=(menu+1)%3;sound(0);showTitle();}
-        if(edge0&KEY_UP){menu=(menu+2)%3;sound(0);showTitle();}
-        if(edge0&KEY_L){difficulty=(difficulty+2)%3;sound(0);showTitle();}
-        if(edge0&KEY_R){difficulty=(difficulty+1)%3;sound(0);showTitle();}
+        if(edge0&KEY_DOWN){menu=(menu+1)%3;sound(0);drawTitle();}
+        if(edge0&KEY_UP){menu=(menu+2)%3;sound(0);drawTitle();}
+        if(edge0&KEY_L){difficulty=(difficulty+2)%3;sound(0);drawTitle();}
+        if(edge0&KEY_R){difficulty=(difficulty+1)%3;sound(0);drawTitle();}
         if(edge0&(KEY_START|KEY_A)){mode=menu;arcade=0;champion=0;sound(3);showSelect();}
     } else if(screen==SELECT) {
         if(selectPlayer)edge0|=edge1;
         choice=selectPlayer?&selected2:&selected;
         if(edge0&KEY_RIGHT)*choice=(*choice+1)%12;
         if(edge0&KEY_LEFT)*choice=(*choice+11)%12;
-        if(edge0&(KEY_UP|KEY_DOWN))*choice=(*choice+6)%12;
+        if(edge0&KEY_UP)*choice=(*choice+8)%12;
+        if(edge0&KEY_DOWN)*choice=(*choice+4)%12;
         if(edge0&(KEY_RIGHT|KEY_LEFT|KEY_UP|KEY_DOWN)){sound(0);drawSelect();}
         if(edge0&KEY_B){if(selectPlayer){selectPlayer=0;drawSelect();}else showTitle();}
         if(edge0&(KEY_A|KEY_START)) {
@@ -624,14 +691,16 @@ int main(void) {
     while(1) {
         pad0=padsCurrent(0);pad1=padsCurrent(1);edge0=padsDown(0);edge1=padsDown(1);
         if(screen==FIGHT)fightTick();else menuTick();
-        trace();spcProcess();WaitForVBlank();
         if(screen==FIGHT) {
-            /* At most one animation frame is streamed per vblank: 2560 bytes.
-             * When both actors change pose, alternate priority for one-frame fairness. */
+            /* Resolve bank pointers and pose offsets during active display.
+             * Vblank only executes the already prepared 3840-byte upload. */
             sx=frame&1;
-            if(fighters[sx].pose!=fighters[sx].oldpose)streamFighter(sx);
-            else streamFighter(1-sx);
+            if(fighters[sx].pose!=fighters[sx].oldpose)queueFighter(sx);
+            else queueFighter(1-sx);
         }
+        trace();spcProcess();WaitForVBlank();
+        if(actorUploadDirty){uploadActor(actorUploadSource,actorUploadDestination);actorUploadDirty=0;}
+        if(screen==SELECT && portraitDirty)uploadMenuPortrait();
         if(fullDirty){dmaCopyVram((u8*)ui,0x5800,2048);fullDirty=0;hudDirty=0;bannerDirty=0;}
         else {
             if(hudDirty){dmaCopyVram((u8*)ui,0x5800,320);hudDirty=0;}

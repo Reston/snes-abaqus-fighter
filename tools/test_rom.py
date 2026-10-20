@@ -10,6 +10,16 @@ sys.path.insert(0,str(Path(__file__).parent))
 from emulator import Emulator, ROOT
 
 checks=[]
+# Native fighter frames are 96x80 (six 16x16 OBJ pieces by five rows),
+# encoded as twelve 8x8 4bpp tiles per physical 384-byte row.  Each VRAM page
+# is 16 tiles wide, so the next row begins 512 bytes later.  Actor 1 starts at
+# byte $D400 (VRAM word $6A00), leaving the two actors independent.
+POSE_BYTES=3840
+VRAM_ACTOR_BASE=0xC000
+VRAM_ACTOR_STRIDE=0x1400
+VRAM_ROW_STRIDE=0x200
+VRAM_ROW_BYTES=0x180
+
 def check(ok,label,details=None):
     assert ok, (label,details)
     checks.append({'check':label,'passed':True,'details':details})
@@ -73,8 +83,11 @@ for i in range(12):
     check(e.state()['arena']==i%3,'Arena loads in the emulator',i%3)
     # Compare every streamed OBJ row against the exact cartridge asset bytes.
     vram=C.string_at(e.core.retro_get_memory_data(3),65536)
-    expected=(ROOT/f'assets/generated/fighter{i:02}.bin').read_bytes()[:2560]
-    check(all(vram[0xc000+r*512:0xc000+r*512+256]==expected[r*256:r*256+256] for r in range(10)),
+    expected=(ROOT/f'assets/generated/fighter{i:02}.bin').read_bytes()[:POSE_BYTES]
+    check(all(vram[VRAM_ACTOR_BASE+r*VRAM_ROW_STRIDE:
+                   VRAM_ACTOR_BASE+r*VRAM_ROW_STRIDE+VRAM_ROW_BYTES]
+              == expected[r*VRAM_ROW_BYTES:(r+1)*VRAM_ROW_BYTES]
+              for r in range(10)),
           'All ten sprite rows reach VRAM for fighter '+str(i+1))
     e.shot('arena-'+str(i%3)+'.png')
     if i==0:e.shot('fight.png')
@@ -109,6 +122,15 @@ e.shot('combo.png');e.close()
 
 e=boot(1,0,1,10)
 check(e.state()['selected2']==10,'Player two can select a fighter with controller two')
+# P2 uses its own $D400 actor page; compare the complete 384-byte payload of
+# every physical row so a truncated lower half cannot pass as a valid sprite.
+vram=C.string_at(e.core.retro_get_memory_data(3),65536)
+expected=(ROOT/'assets/generated/fighter10.bin').read_bytes()[:POSE_BYTES]
+check(all(vram[VRAM_ACTOR_BASE+VRAM_ACTOR_STRIDE+r*VRAM_ROW_STRIDE:
+           VRAM_ACTOR_BASE+VRAM_ACTOR_STRIDE+r*VRAM_ROW_STRIDE+VRAM_ROW_BYTES]
+          == expected[r*VRAM_ROW_BYTES:(r+1)*VRAM_ROW_BYTES]
+          for r in range(10)),
+      'All ten sprite rows reach the independent P2 VRAM page')
 s=e.state();e.run(20,p2=['left']);check(e.state()['x2']<s['x2'],'Controller two moves player two')
 close_in(e)
 e.run(12,p1=['x'],p2=['right'])
@@ -169,7 +191,9 @@ e=boot(1);e.run(6400)
 check(e.state()['seconds']>=90 and e.state()['wins1']==0 and e.state()['wins2']==0,'A tied timeout starts another round without awarding a win',e.state())
 e.close()
 
-report={'emulator':'Official Snes9x 1.63 x64 libretro core','rom_sha256':json.loads((ROOT/'dist/manifest.json').read_text())['sha256'],
+manifest=json.loads((ROOT/'dist/manifest.json').read_text())
+check(manifest.get('bytes')==2*1024*1024,'Native ROM uses the 2 MiB FastROM image',manifest)
+report={'emulator':'Official Snes9x 1.63 x64 libretro core','rom_sha256':manifest['sha256'],'rom_bytes':manifest.get('bytes'),
         'passed':len(checks),'elapsed_seconds':round(time.time()-started,2),'checks':checks}
 (ROOT/'docs/test-report.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps({'passed':len(checks),'seconds':report['elapsed_seconds'],'frame_cadence':advance,'report':'docs/test-report.json'}))

@@ -1,0 +1,48 @@
+{
+  "asset": "title-backdrop.png",
+  "version": "v0.4-menu-direction-1",
+  "use_case": "stylized-concept",
+  "asset_type": "original SNES title-screen background plate",
+  "generator": {
+    "mode": "built-in imagegen",
+    "tool": "image_gen.imagegen",
+    "generated_path": "C:/Users/user/.codex/generated_images/01a1572e-bb2d-7e81-af00-9ca1b12ccefc/exec-f71938b3-162a-42be-94d8-e64c568c6710.png",
+    "input_images": [],
+    "transparent_background": false
+  },
+  "prompt": "Use case: stylized-concept\nAsset type: original SNES title-screen background plate\nPrimary request: an original 16-bit arcade fighting-game backdrop for a 256x224 pixel-art title screen, designed to be reduced with nearest-neighbor sampling\nScene/backdrop: a dramatic Santiago, Chile evening skyline with layered Andes silhouettes, a broad dark navy sky, a few geometric office-tower shapes, subtle rooftop antennae, and a low horizon band that leaves clean dark negative space in the central upper-middle area for code-authored logo text\nSubject: environment only, no people, no fighters\nStyle/medium: hand-painted cartoon arcade background, bold clean shapes, limited color blocks, crisp edges, 1990s console game key-art mood, no photorealism\nComposition/framing: wide 3:2 landscape, skyline low in frame, strong diagonal cloud and light streak accents, uncluttered center and lower-center areas for overlay typography and menu UI\nLighting/mood: electric twilight, warm sunset rim on the Andes and buildings, deep blue-violet shadows, energetic but readable\nColor palette: deep navy, indigo, cyan, teal, violet, hot magenta accents, sunset gold and orange\nMaterials/textures: subtle halftone and hand-painted brush texture that survives pixel reduction, layered silhouettes, a few tiny window lights\nText (verbatim): \"\"\nConstraints: original artwork with no logos, no signage, no legible text, no watermark, no copied game assets; keep the central negative space calm for a title overlay\nAvoid: photorealism, 3D render, realistic faces, detailed crowds, excessive neon glow, busy text-like marks, generic cyberpunk city, Capcom or Street Fighter branding",
+  "source_validation": {
+    "master_dimensions": [1536, 1024],
+    "master_mode": "RGB",
+    "sha256": "2b8aaf5038b548232992a64e80e0a8efffe6a923d495f637e73d7fd574ea1c61",
+    "native_crop": "Pillow ImageOps.fit to 256x224, LANCZOS, centering=(0.5,0.43), then darkened and palette-authored by tools/menu_assets.py",
+    "text_policy": "No generated text is used; all title and menu text is authored with the project's pixel glyph callback.",
+    "commercial_assets": false,
+    "watermark_observed": false
+  },
+  "layout_contract": {
+    "native_size": [256, 224],
+    "title_menu_rows": [160, 176, 192],
+    "title_footer_row": 200,
+    "selection_grid": {
+      "columns": 4,
+      "rows": 3,
+      "outer_cell_size": [40, 48],
+      "portrait_size": [32, 40],
+      "card_size": [38, 46],
+      "origin": [8, 48],
+      "stride": [40, 48],
+      "frame_offset": [1, 1],
+      "portrait_offset": [4, 4],
+      "cursor_offset": [0, 0]
+    },
+    "selection_profile_panel": [176, 0, 255, 223],
+    "selection_large_portrait_slot": [184, 48, 247, 127],
+    "arena_cards": {
+      "box": [16, 48, 240, 96],
+      "stride_y": 56,
+      "preview_size": [224, 48],
+      "cursor_strip": [8, 40, 38, 47]
+    }
+  }
+}

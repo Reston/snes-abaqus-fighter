@@ -4,6 +4,8 @@ cd /d "%~dp0"
 if errorlevel 1 goto failed
 ".tools\python\python.exe" "tools\test_characters.py"
 if errorlevel 1 goto failed
+".tools\python\python.exe" "tools\test_presentation.py"
+if errorlevel 1 goto failed
 exit /b 0
 :failed
 pause

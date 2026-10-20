@@ -1,0 +1,45 @@
+{
+  "character_id": 10,
+  "display_name": "Roxana Espínola",
+  "asset": "atlas.png",
+  "revision": "likeness-v2",
+  "mode": "built-in imagegen edit",
+  "use_case": "identity-preserve",
+  "input_images": [
+    {
+      "path": "assets/art/characters/10-roxana/atlas.png",
+      "role": "edit target",
+      "description": "Existing transparent 4x4 sixteen-pose Roxana atlas; preserve all body poses, costume, placement, scale, and alpha gaps."
+    },
+    {
+      "path": "assets/references/fighter-10.jpg",
+      "role": "supporting identity reference",
+      "description": "Reference photo used for Roxana's mature facial geometry, dark chestnut-brown hair, side part, fringe, and earrings."
+    }
+  ],
+  "source_references": [
+    "assets/references/fighter-10.jpg",
+    "assets/art/characters/10-roxana/atlas.png"
+  ],
+  "generated_at": "2026-10-20",
+  "generator_output": "C:/Users/user/.codex/generated_images/01a1572e-06d2-7201-922b-fc0d822c6c41/exec-a35e95c2-b71d-459f-b5bc-18522c2ba023.png",
+  "provenance": "Selected direct output from the built-in imagegen edit workflow; copied into the project as the replacement atlas without compositing or paint-over.",
+  "sha256": "d37ae9b06c848d24d8c9789028879c17dd123e52155a7eba6c5bd0de09d977a7",
+  "prompt": "Use case: identity-preserve\nAsset type: native SNES fighting-game character sprite atlas\nInput images: Image 1 is the EDIT TARGET: current 4x4 sixteen-pose Roxana sprite atlas; Image 2 is the SUPPORTING IDENTITY REFERENCE: official reference photo of Roxana\nPrimary request: edit only Roxana's face and hair across every one of the sixteen existing sprite poses so the character is recognizable as the mature woman in Image 2. Replace the current generic angular anime-young head with fuller, more mature facial geometry: middle-aged adult woman, fuller oval face, soft cheeks, rounded chin, natural arched brows, normal rounder eyes, longer straight nose, composed confident closed mouth. Use shoulder-length dark chestnut-brown hair, deep side part, full side-swept fringe, softly outward-turned ends, and small drop earrings. Keep the bespoke woman body, exact body poses, exact costume, exact silhouette, exact frame layout, exact scale, and right-facing orientation for all poses except the existing KO head-left orientation.\nStyle/medium: original 1993 arcade fighting-game cartoon, Street Fighter II-inspired cel-shaded chunky pixel art; crisp dark ink contours, limited warm palette, readable SNES sprite detail. This is an original character asset, not a copy of any commercial sprite.\nComposition/framing: preserve the existing 1254x1254 transparent 4x4 atlas canvas and each existing pose's placement. Preserve the exact sixteen pose order: idle, front walk, back walk, crouch, jump, jab, cross, high kick, sweep, block, hurt, victory, cast, uppercut, KO, rush.\nLighting/mood: even arcade sprite lighting, clear face planes, confident office-fighter attitude\nColor palette: magenta office jacket, pale blouse, dark navy wide-leg slacks, practical dark shoes, dark chestnut hair, warm natural skin; keep current costume colors and palette identity\nMaterials/textures: flat cel shading and pixel-friendly clustered highlights, no photographic texture\nConstraints: change only face, hair, and small earrings; keep all sixteen bodies, hands, limbs, clothing, accessories, costume colors, pose order, canvas size, transparent background, and all empty gaps unchanged. Keep true transparency in gaps. No content added and no pose merged. Every pose must have the same character head proportions and consistent scale.\nAvoid: photorealism, digitized photo, Mortal Kombat realism, sexualization, glamour retouching, teenage face, overly pointed chin, giant anime eyes, pompadour, blonde hair, black hair, missing earrings, extra limbs, changed pose, changed costume, background, text, watermark, copied Capcom art.",
+  "validation": {
+    "tool": "tools/fighter_assets.py::extract_atlas",
+    "command": ".tools/python/python.exe with alpha_threshold=200",
+    "status": "passed",
+    "canvas": [1254, 1254],
+    "mode": "RGBA",
+    "alpha_min": 0,
+    "alpha_max": 255,
+    "figures": 16,
+    "poses": [
+      "idle", "walk-forward", "walk-back", "crouch", "jump", "jab",
+      "cross", "kick", "sweep", "block", "hurt", "victory", "cast",
+      "uppercut", "knockout", "rush"
+    ],
+    "notes": "All sixteen silhouettes remain separate at alpha threshold 200; transparent gaps are retained and pose extraction succeeds in the shared row-major contract."
+  }
+}

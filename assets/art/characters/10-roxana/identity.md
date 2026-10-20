@@ -1,8 +1,8 @@
 # Roxana Espínola
 
-Roxana is a confident, athletic adult fighter with a distinct feminine silhouette and composed expression based on `assets/references/fighter-10.jpg`. Her bespoke costume uses a magenta tailored jacket with rolled sleeves, a pale blouse, dark wide-leg slacks, and practical low shoes.
+Roxana is a confident, athletic middle-aged adult fighter with a distinct feminine silhouette and a composed, recognizable expression based on `assets/references/fighter-10.jpg`. Her bespoke costume uses a magenta tailored jacket with rolled sleeves, a pale blouse, dark wide-leg slacks, practical low shoes, and small drop earrings. The likeness pass uses a fuller oval face, soft cheeks, rounded chin, natural arched brows, normal rounder eyes, and a longer straight nose. Her shoulder-length dark chestnut-brown hair has a deep side part, a full side-swept fringe, and softly outward-turned ends.
 
-The atlas is an original transparent 4×4 SNES-era cartoon sprite sheet. All figures face right and use the row-major pose contract consumed by the character-art extraction pass:
+The atlas is an original transparent 4×4 SNES-era cartoon sprite sheet. All figures face right except the existing KO head-left orientation and use the row-major pose contract consumed by the character-art extraction pass:
 
 1. idle guard; front walk; back walk; low crouch guard
 2. tucked jump; extended jab; crosspunch; high sidekick

@@ -1,8 +1,9 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "6e17c3fd8e34b4ccb1553d3d881af1768846ecb1f36564263f6185fc854f677b",
+  "rom_sha256": "e8b3d5eeda6fe57ec025abcbacd772d129e26d38440f5ea74b86e1ac0754141e",
+  "rom_bytes": 2097152,
   "passed": 110,
-  "elapsed_seconds": 51.52,
+  "elapsed_seconds": 38.9,
   "checks": [
     {
       "check": "Cold boot to title",
@@ -321,7 +322,7 @@
       "passed": true,
       "details": {
         "emulated_frames": 600,
-        "game_ticks": 597
+        "game_ticks": 600
       }
     },
     {
@@ -417,12 +418,12 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 456,
+        "frame": 463,
         "mode": 1,
         "hp1": 128,
         "hp2": 109,
         "x1": 1876,
-        "x2": 2497,
+        "x2": 2506,
         "y1": 0,
         "y2": 0,
         "action1": 2,
@@ -494,6 +495,11 @@
       "details": null
     },
     {
+      "check": "All ten sprite rows reach the independent P2 VRAM page",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "Controller two moves player two",
       "passed": true,
       "details": null
@@ -538,11 +544,11 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 1765,
+        "frame": 1758,
         "mode": 1,
         "hp1": 128,
         "hp2": 0,
-        "x1": 3356,
+        "x1": 3324,
         "x2": 3744,
         "y1": 0,
         "y2": 0,
@@ -555,18 +561,18 @@
         "intro": 0,
         "paused": 0,
         "energy1": 96,
-        "energy2": 90,
+        "energy2": 89,
         "wave1": 0,
         "wave2": 0,
         "selected": 0,
         "selected2": 1,
         "arcade": 0,
-        "seconds": 92,
+        "seconds": 93,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
         "hitstop": 5,
-        "combo": 3,
+        "combo": 5,
         "champion": 0,
         "fighter_id1": 0,
         "fighter_id2": 1,
@@ -620,18 +626,18 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 2400,
+        "frame": 2431,
         "mode": 0,
-        "hp1": 0,
-        "hp2": 41,
-        "x1": 2095,
-        "x2": 2638,
+        "hp1": 42,
+        "hp2": 0,
+        "x1": 2440,
+        "x2": 3095,
         "y1": 0,
         "y2": 0,
-        "action1": 0,
+        "action1": 3,
         "action2": 0,
-        "wins1": 1,
-        "wins2": 2,
+        "wins1": 2,
+        "wins2": 1,
         "arena": 0,
         "round": 3,
         "intro": 0,
@@ -644,11 +650,11 @@
         "selected2": 5,
         "arcade": 0,
         "seconds": 94,
-        "pose1": 14,
-        "pose2": 11,
+        "pose1": 11,
+        "pose2": 14,
         "round_end": 0,
         "hitstop": 5,
-        "combo": 1,
+        "combo": 2,
         "champion": 0,
         "fighter_id1": 4,
         "fighter_id2": 5,
@@ -683,16 +689,6 @@
       }
     },
     {
-      "check": "Arcade continue restarts a lost match",
-      "passed": true,
-      "details": null
-    },
-    {
-      "check": "Arcade player wins after continuing",
-      "passed": true,
-      "details": null
-    },
-    {
       "check": "Arcade victory advances opponent and arena",
       "passed": true,
       "details": null
@@ -703,12 +699,12 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 6712,
+        "frame": 4014,
         "mode": 0,
-        "hp1": 126,
+        "hp1": 125,
         "hp2": 0,
-        "x1": 2773,
-        "x2": 3218,
+        "x1": 2896,
+        "x2": 3367,
         "y1": 0,
         "y2": 0,
         "action1": 9,
@@ -720,13 +716,13 @@
         "intro": 0,
         "paused": 0,
         "energy1": 96,
-        "energy2": 96,
+        "energy2": 93,
         "wave1": 0,
         "wave2": 0,
         "selected": 4,
         "selected2": 5,
         "arcade": 1,
-        "seconds": 88,
+        "seconds": 92,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
@@ -762,7 +758,7 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 99
+        "wave_life2": 85
       }
     },
     {
@@ -776,12 +772,12 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 8254,
+        "frame": 5380,
         "mode": 0,
         "hp1": 127,
         "hp2": 0,
-        "x1": 2977,
-        "x2": 3435,
+        "x1": 3068,
+        "x2": 3517,
         "y1": 0,
         "y2": 0,
         "action1": 9,
@@ -793,18 +789,18 @@
         "intro": 0,
         "paused": 0,
         "energy1": 96,
-        "energy2": 81,
+        "energy2": 88,
         "wave1": 0,
         "wave2": 0,
         "selected": 4,
         "selected2": 5,
         "arcade": 2,
-        "seconds": 94,
+        "seconds": 93,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
         "hitstop": 5,
-        "combo": 5,
+        "combo": 1,
         "champion": 0,
         "fighter_id1": 4,
         "fighter_id2": 7,
@@ -835,7 +831,7 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 99
+        "wave_life2": 85
       }
     },
     {
@@ -849,12 +845,12 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 9995,
+        "frame": 7554,
         "mode": 0,
-        "hp1": 128,
+        "hp1": 113,
         "hp2": 0,
-        "x1": 2787,
-        "x2": 3266,
+        "x1": 2762,
+        "x2": 3199,
         "y1": 0,
         "y2": 0,
         "action1": 9,
@@ -872,7 +868,7 @@
         "selected": 4,
         "selected2": 5,
         "arcade": 3,
-        "seconds": 89,
+        "seconds": 88,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
@@ -908,7 +904,7 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 99
+        "wave_life2": 85
       }
     },
     {
@@ -922,12 +918,12 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 12073,
+        "frame": 8898,
         "mode": 0,
-        "hp1": 122,
+        "hp1": 125,
         "hp2": 0,
-        "x1": 2452,
-        "x2": 2894,
+        "x1": 2837,
+        "x2": 3277,
         "y1": 0,
         "y2": 0,
         "action1": 9,
@@ -939,18 +935,18 @@
         "intro": 0,
         "paused": 0,
         "energy1": 96,
-        "energy2": 96,
+        "energy2": 89,
         "wave1": 0,
         "wave2": 0,
         "selected": 4,
         "selected2": 5,
         "arcade": 4,
-        "seconds": 91,
+        "seconds": 93,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
         "hitstop": 5,
-        "combo": 4,
+        "combo": 2,
         "champion": 0,
         "fighter_id1": 4,
         "fighter_id2": 9,
@@ -981,7 +977,7 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 99
+        "wave_life2": 85
       }
     },
     {
@@ -995,15 +991,15 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 14117,
+        "frame": 11406,
         "mode": 0,
-        "hp1": 123,
+        "hp1": 111,
         "hp2": 0,
-        "x1": 2993,
-        "x2": 3467,
+        "x1": 2370,
+        "x2": 2860,
         "y1": 0,
         "y2": 0,
-        "action1": 9,
+        "action1": 0,
         "action2": 0,
         "wins1": 2,
         "wins2": 0,
@@ -1012,18 +1008,18 @@
         "intro": 0,
         "paused": 0,
         "energy1": 96,
-        "energy2": 71,
+        "energy2": 96,
         "wave1": 0,
         "wave2": 0,
         "selected": 4,
         "selected2": 5,
         "arcade": 5,
-        "seconds": 89,
+        "seconds": 82,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
         "hitstop": 5,
-        "combo": 2,
+        "combo": 1,
         "champion": 0,
         "fighter_id1": 4,
         "fighter_id2": 10,
@@ -1054,7 +1050,7 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 99
+        "wave_life2": 85
       }
     },
     {
@@ -1068,12 +1064,12 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 15472,
+        "frame": 13521,
         "mode": 0,
-        "hp1": 126,
+        "hp1": 118,
         "hp2": 0,
-        "x1": 2900,
-        "x2": 3339,
+        "x1": 2374,
+        "x2": 2826,
         "y1": 0,
         "y2": 0,
         "action1": 9,
@@ -1085,13 +1081,13 @@
         "intro": 0,
         "paused": 0,
         "energy1": 96,
-        "energy2": 84,
+        "energy2": 96,
         "wave1": 0,
         "wave2": 0,
         "selected": 4,
         "selected2": 5,
         "arcade": 6,
-        "seconds": 95,
+        "seconds": 81,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
@@ -1127,7 +1123,7 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 99
+        "wave_life2": 85
       }
     },
     {
@@ -1141,12 +1137,12 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 16994,
+        "frame": 14898,
         "mode": 0,
-        "hp1": 123,
+        "hp1": 126,
         "hp2": 0,
-        "x1": 2775,
-        "x2": 3219,
+        "x1": 2758,
+        "x2": 3228,
         "y1": 0,
         "y2": 0,
         "action1": 9,
@@ -1158,18 +1154,18 @@
         "intro": 0,
         "paused": 0,
         "energy1": 96,
-        "energy2": 96,
+        "energy2": 85,
         "wave1": 0,
         "wave2": 0,
         "selected": 4,
         "selected2": 5,
         "arcade": 7,
-        "seconds": 90,
+        "seconds": 93,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
         "hitstop": 5,
-        "combo": 3,
+        "combo": 2,
         "champion": 0,
         "fighter_id1": 4,
         "fighter_id2": 0,
@@ -1200,7 +1196,7 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 99
+        "wave_life2": 85
       }
     },
     {
@@ -1214,12 +1210,12 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 18811,
+        "frame": 16417,
         "mode": 0,
-        "hp1": 123,
+        "hp1": 127,
         "hp2": 0,
-        "x1": 2639,
-        "x2": 3098,
+        "x1": 3056,
+        "x2": 3537,
         "y1": 0,
         "y2": 0,
         "action1": 9,
@@ -1231,18 +1227,18 @@
         "intro": 0,
         "paused": 0,
         "energy1": 96,
-        "energy2": 96,
+        "energy2": 80,
         "wave1": 0,
         "wave2": 0,
         "selected": 4,
         "selected2": 5,
         "arcade": 8,
-        "seconds": 89,
+        "seconds": 95,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
         "hitstop": 5,
-        "combo": 2,
+        "combo": 5,
         "champion": 0,
         "fighter_id1": 4,
         "fighter_id2": 1,
@@ -1273,7 +1269,7 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 99
+        "wave_life2": 112
       }
     },
     {
@@ -1287,12 +1283,12 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 20626,
+        "frame": 18307,
         "mode": 0,
-        "hp1": 125,
+        "hp1": 126,
         "hp2": 0,
-        "x1": 2871,
-        "x2": 3322,
+        "x1": 2407,
+        "x2": 2881,
         "y1": 0,
         "y2": 0,
         "action1": 9,
@@ -1310,7 +1306,7 @@
         "selected": 4,
         "selected2": 5,
         "arcade": 9,
-        "seconds": 90,
+        "seconds": 85,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
@@ -1346,7 +1342,7 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 99
+        "wave_life2": 112
       }
     },
     {
@@ -1360,12 +1356,12 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 22239,
+        "frame": 20051,
         "mode": 0,
-        "hp1": 126,
+        "hp1": 123,
         "hp2": 0,
-        "x1": 2770,
-        "x2": 3221,
+        "x1": 2704,
+        "x2": 3175,
         "y1": 0,
         "y2": 0,
         "action1": 9,
@@ -1377,18 +1373,18 @@
         "intro": 0,
         "paused": 0,
         "energy1": 96,
-        "energy2": 59,
+        "energy2": 96,
         "wave1": 0,
         "wave2": 0,
         "selected": 4,
         "selected2": 5,
         "arcade": 10,
-        "seconds": 92,
+        "seconds": 89,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
         "hitstop": 5,
-        "combo": 1,
+        "combo": 3,
         "champion": 1,
         "fighter_id1": 4,
         "fighter_id2": 3,
@@ -1419,7 +1415,7 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 99
+        "wave_life2": 112
       }
     },
     {
@@ -1452,7 +1448,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 6782,
+        "frame": 6788,
         "mode": 1,
         "hp1": 128,
         "hp2": 128,
@@ -1512,6 +1508,21 @@
         "wave_speed2": 0,
         "wave_life1": 85,
         "wave_life2": 85
+      }
+    },
+    {
+      "check": "Native ROM uses the 2 MiB FastROM image",
+      "passed": true,
+      "details": {
+        "title": "Abaqus: After Hours",
+        "version": "0.4.0",
+        "rom": "abaqus-after-hours.sfc",
+        "bytes": 2097152,
+        "sha256": "e8b3d5eeda6fe57ec025abcbacd772d129e26d38440f5ea74b86e1ac0754141e",
+        "checksum": "61F3",
+        "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
+        "mapping": "2 MiB FastROM LoROM",
+        "region": "NTSC 60 Hz"
       }
     }
   ]

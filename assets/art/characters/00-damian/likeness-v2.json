@@ -1,0 +1,37 @@
+{
+  "character_id": "00",
+  "character": "Damián Damian Gelerstein",
+  "asset": "atlas.png",
+  "mode": "built-in imagegen edit",
+  "generated_image": "C:/Users/user/.codex/generated_images/01a1572d-386c-7140-a313-1805d0322a61/exec-73e8081d-b055-4fee-a5b5-7a9ee360e889.png",
+  "references": [
+    {
+      "path": "atlas.png",
+      "role": "edit target; preserve the existing 1254x1254 atlas, 4x4 layout, pose order, body, costume, silhouettes, and transparent gaps"
+    },
+    {
+      "path": "../../../references/fighter-00.jpg",
+      "role": "identity reference only; broad bald, smiling adult likeness cues"
+    }
+  ],
+  "output": {
+    "size": "1254x1254",
+    "format": "RGBA PNG",
+    "background": "transparent",
+    "layout": "4 columns x 4 rows, 16 disconnected full-body poses",
+    "pose_order": [
+      "idle", "walk-forward", "walk-back", "crouch", "jump", "jab", "cross", "kick",
+      "sweep", "block", "hurt", "victory", "cast", "uppercut", "knockout", "rush"
+    ]
+  },
+  "validation": {
+    "extractor": "tools/fighter_assets.py:extract_atlas",
+    "alpha_threshold": 200,
+    "large_connected_silhouettes": 16,
+    "rgba": true,
+    "transparent_gaps": true,
+    "sha256": "42873a0aa39ad99b9d026ff927328cc264fb9c840e83ff07f021006f900495bf",
+    "visual_review": "16 pose cells present; friendly wide smile, long oval bald head, prominent ears, gentle eyelids, arched brows, rounded nose, and cobalt jacket retained"
+  },
+  "prompt": "Use case: identity-preserve\nAsset type: original native SNES fighting-game character sprite atlas edit.\n\nInput images:\n- Image 1, edit target: the existing Damian atlas. Preserve its exact 1254x1254 transparent 4-column x 4-row grid, exact 16 pose order and pose silhouettes, cobalt rolled-sleeve jacket, white open collar shirt, navy trousers, black shoes, right-facing standing/action orientation, horizontal KO head-left orientation, transparent gaps, and all attached limbs.\n- Image 2, identity reference: Damian's portrait photo. Use it only for broad cartoon likeness cues, never as a photoreal texture or copied portrait.\n\nPrimary request: revise only the character's face and head likeness across all 16 existing poses so the fictional cartoon fighter clearly resembles the supplied Damian reference. Damian should read as a bald, clean-shaven adult with a long oval head, prominent ears, gentle eyelids, arched natural brows, slightly long rounded nose, and a friendly wide smile with visible teeth. Remove the generic angry brow, scowl, and cartoon military square jaw. Keep a warm peach skin ramp and the same cobalt-blue jacket identity.\n\nStyle/medium: original 1993 arcade fighting-game-inspired chunky cel-shaded cartoon sprite illustration, bold hand-inked navy contour, crisp hard-edged 2-4 tone planes, exaggerated but coherent anatomy, approximately 15-color SNES-readable palette. Cartoon likeness, never photorealistic, never a digitized face, never anime, never Mortal Kombat realism, never any existing commercial fighter.\n\nComposition/framing: keep the existing atlas canvas size, exact 4x4 cell placement, exact row-major pose contract, one disconnected full-body figure per cell, generous genuinely transparent gaps, no overlaps, no visible grid. Maintain consistent head/body proportions across every pose; do not stretch, crop, redraw the pose actions, or change scale. Keep the existing body proportions, hands, feet, costume, action timing silhouettes, and right-facing orientation. The KO stays horizontal with head left.\n\nPose order must remain exactly: idle, front walk, back walk, crouch, jump, jab, cross, high kick, sweep, block, hurt, victory, cast, uppercut, KO head-left, rush.\n\nLighting/mood: bright theatrical arcade cel shading with friendly determined expression.\nConstraints: change only face/head likeness and small hair/ear/eye/brow/nose/mouth details needed for identity; preserve the existing sprite atlas layout, transparent alpha, costume, body/actions, and all 16 poses. No text, logo, watermark, floor, shadow, projectile, effect, background, or extra figures.\nAvoid: angry scowl, heavy military jaw, beard, hair, hats, weapons, gore, blood, extra limbs, detached hands, merged figures, checkerboard, opaque background, photorealism, photographic texture, 3D render, anime hero face, generic angry game character."
+}

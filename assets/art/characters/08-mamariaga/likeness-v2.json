@@ -1,0 +1,38 @@
+{
+  "character_id": "08-mamariaga",
+  "character_name": "Ignacio \"Mamariaga\" Madariaga",
+  "asset": "atlas.png",
+  "generation_mode": "built-in image_gen edit",
+  "generated_at": "2026-10-19",
+  "transparent_background": true,
+  "source_references": [
+    {
+      "path": "assets/art/characters/08-mamariaga/atlas.png",
+      "role": "edit target; existing 4x4 Mamariaga atlas and pose/layout source"
+    },
+    {
+      "path": "assets/references/fighter-08.jpg",
+      "role": "identity reference portrait; correct adult face, hair, glasses, and expression"
+    }
+  ],
+  "provenance": {
+    "initial_likeness_output": "C:/Users/user/.codex/generated_images/01a1572d-c217-7601-b9f7-f895e184b48e/exec-502a7a06-a87b-406c-a689-b652a9cac10f.png",
+    "layout_repair_output": "C:/Users/user/.codex/generated_images/01a1572d-c217-7601-b9f7-f895e184b48e/exec-a5d9ae2b-9ef4-4cbe-870b-75d99cef4971.png",
+    "selected_output": "layout repair output; direct replacement of atlas.png",
+    "tool": "built-in image_gen",
+    "edit_sequence": [
+      "targeted identity-preserve edit",
+      "targeted precise-object-edit spacing repair after alpha-threshold extraction found a connected pair"
+    ]
+  },
+  "prompt_text": "Use case: precise-object-edit\nAsset type: original native SNES fighting-game character sprite atlas master\nInput image: the newly revised Mamariaga 4x4 atlas is the edit target. Recreate the same revised Mamariaga atlas with the corrected adult face, thin rounded rectangular metal glasses, dark brown nearly-black loose side-swept fringe, chartreuse hoodie, dark shirt, charcoal trousers, light sneakers, cel-shaded arcade style, and all 16 pose contents in the exact same order. Repair only the spacing so the parent extractor can identify exactly 16 separate figures. Keep the exact 1254x1254 transparent square canvas and invisible 4 columns by 4 rows. Keep one complete connected figure per cell. Increase the transparent gap between every neighboring figure and especially between row 3 low-sweep and row 3 raised-block; no opaque or alpha-over-200 pixels may touch across any cell boundary. Keep at least 60 transparent pixels between adjacent figures where possible. Slightly scale or reposition figures within their original cells if needed, while keeping every head, hand, foot, and shoe fully inside its cell, preserving the same baselines, pose order, body proportions, right-facing orientation, and the KO pose head-left. Exact order: idle guard, front walk, back walk, crouch; tucked jump, jab, cross, high side kick; low sweep, raised block, hurt recoil, victory; empty-hand cast, rising uppercut, horizontal KO head-left, forward shoulder lunge. Preserve true transparency. No grid, text, labels, watermark, logo, background, floor, external shadow, projectile, energy effect, sparks, extra people, detached limbs, cropped anatomy, new poses, or costume redesign. This is a targeted spacing repair, not a redesign.",
+  "validation": {
+    "tool": "tools/fighter_assets.py::extract_atlas",
+    "alpha_threshold": 200,
+    "separate_figures": 16,
+    "canvas": [1254, 1254],
+    "alpha_range": [0, 255],
+    "sha256": "1b4bf6749d497e9abcdd10ecce4ae1dfb38813818c2bc2caf03b146a32f60f35",
+    "status": "passed"
+  }
+}

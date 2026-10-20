@@ -1,0 +1,35 @@
+{
+  "character_id": "09-reston",
+  "character_name": "Jose David \"Reston\" Ordonez",
+  "asset": "atlas.png",
+  "generation_mode": "built-in image_gen edit",
+  "generated_at": "2026-10-19",
+  "transparent_background": true,
+  "source_references": [
+    {
+      "path": "assets/art/characters/09-reston/atlas.png",
+      "role": "edit target; existing 4x4 Reston atlas and pose/layout source"
+    },
+    {
+      "path": "assets/references/fighter-09.jpg",
+      "role": "identity reference portrait; correct hairline, face, brows, nose, and beard"
+    }
+  ],
+  "provenance": {
+    "selected_output": "C:/Users/user/.codex/generated_images/01a1572d-c217-7601-b9f7-f895e184b48e/exec-6f30dd9e-d8c7-4b1f-a255-95cda47334ef.png",
+    "tool": "built-in image_gen",
+    "edit_sequence": [
+      "targeted identity-preserve edit"
+    ]
+  },
+  "prompt_text": "Use case: identity-preserve\nAsset type: original native SNES fighting-game character sprite atlas master\nInput images: Image 1 is the existing 4x4 Reston atlas edit target; preserve its exact transparent 1254x1254 canvas, 4 columns by 4 rows, 16 pose cells, pose order, right-facing orientation except the existing KO pose with head left, body silhouette, costume colors, scale, baselines, cell spacing, and all action silhouettes. Image 2 is the identity reference portrait for Jose David Reston Ordonez; use it only to correct the character's head, hairline, eyebrows, eyes, nose, mouth, beard, and adult face identity. Make a targeted likeness revision. Replace the generic full-hair hero head with a high receding hairline and balding crown, very short dark hair only at the sides/back, broad oval adult face with full cheeks, broad straight nose, thick dark brows, normal calm eyes, calm firm mouth, and a full neatly trimmed black beard and moustache extending across the jaw. Keep the beard as an intentional graphic shape rather than a random dark mask. Keep the copper/red-orange waist-length jacket, pale cream collar and cuffs, dark charcoal shirt, dark navy trousers, dark shoes with copper highlights, warm skin, navy contour lines, bright arcade cel-shaded ramps, broad medium-heavy body, heavy shoulders, compact guard, and oversized readable fists. Exact order: idle guard, front walk, back walk, crouch; tucked jump, jab, cross, high side kick; low sweep, raised block, hurt recoil, victory; empty-hand cast, rising uppercut, horizontal KO head-left, forward shoulder lunge. Transparent background with true alpha; same 1254x1254 square canvas; exact 4x4 layout; exactly 16 connected full-body figures; at least 40 transparent pixels between neighboring figures/rows; hands, feet, and heads inside cells; preserve existing spacing, silhouette proportions, and baseline. Keep all 16 figures right-facing except the existing KO pose. No grid, text, labels, watermark, logo, background, floor, shadow outside the figures, projectile, energy orb, sparks, extra people, detached limbs, cropped body parts, or added poses. Use original chunky 1993 arcade fighting-game cartoon cel shading, crisp dark navy outline, limited material ramps, bold readable shapes at 64x80 SNES scale, playful and expressive, clearly not photorealistic, not Mortal Kombat realism, not anime generic. Change only the identity details needed for Reston likeness; preserve the atlas structure and costume exactly.",
+  "validation": {
+    "tool": "tools/fighter_assets.py::extract_atlas",
+    "alpha_threshold": 200,
+    "separate_figures": 16,
+    "canvas": [1254, 1254],
+    "alpha_range": [0, 255],
+    "sha256": "76b6340c2efd8accb29b64ffb19324170c1d151d9217721b613bfcf802b7949f",
+    "status": "passed"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "character_id": "03",
+  "character": "José Ignacio Cote Villarroel",
+  "asset": "atlas.png",
+  "mode": "built-in imagegen edit",
+  "generated_image": "C:/Users/user/.codex/generated_images/01a1572d-386c-7140-a313-1805d0322a61/exec-470e5118-e66f-4cd9-b9ca-bb61486e2e9c.png",
+  "references": [
+    {
+      "path": "atlas.png",
+      "role": "edit target; preserve the existing 1254x1254 atlas, 4x4 layout, pose order, body, costume, silhouettes, and transparent gaps"
+    },
+    {
+      "path": "../../../references/fighter-03.jpg",
+      "role": "identity reference only; broad short ginger hair, full beard, pale skin, and long oval face cues"
+    }
+  ],
+  "output": {
+    "size": "1254x1254",
+    "format": "RGBA PNG",
+    "background": "transparent",
+    "layout": "4 columns x 4 rows, 16 disconnected full-body poses",
+    "pose_order": [
+      "idle", "walk-forward", "walk-back", "crouch", "jump", "jab", "cross", "kick",
+      "sweep", "block", "hurt", "victory", "cast", "uppercut", "knockout", "rush"
+    ]
+  },
+  "validation": {
+    "extractor": "tools/fighter_assets.py:extract_atlas",
+    "alpha_threshold": 200,
+    "large_connected_silhouettes": 16,
+    "rgba": true,
+    "transparent_gaps": true,
+    "sha256": "fa1cd50ab9f750b6c8b4bf087f9c1c6c47bf6d1e90b70f8ab016c10b4038887b",
+    "visual_review": "16 pose cells present; short copper/ginger swept hair, full rounded ginger beard and moustache, pale long-oval face, normal eyes, calm mouth, and crimson waistcoat retained"
+  },
+  "prompt": "Use case: identity-preserve\nAsset type: original native SNES fighting-game character sprite atlas edit.\n\nInput images:\n- Image 1, edit target: the existing Cote atlas. Preserve its exact 1254x1254 transparent 4-column x 4-row grid, exact 16 pose order and pose silhouettes, crimson waistcoat, pale rolled sleeves, dark trousers, brown shoes, right-facing standing/action orientation, horizontal KO head-left orientation, transparent gaps, and all attached limbs.\n- Image 2, identity reference: Cote's portrait photo. Use it only for broad cartoon likeness cues, never as a photoreal texture or copied portrait.\n\nPrimary request: revise only the character's face, hair, and beard likeness across all 16 existing poses so the fictional cartoon fighter clearly resembles the supplied Cote reference. Cote should read as an adult with short natural swept copper/ginger hair, a full rounded ginger beard and moustache, paler skin, a long oval face, high forehead, normal eyes, and a calm confident mouth. Keep the beard full and rounded rather than a tiny goatee or sharp angular beard. Preserve the crimson waistcoat and pale sleeves as the strongest costume identity.\n\nStyle/medium: original 1993 arcade fighting-game-inspired chunky cel-shaded cartoon sprite illustration, bold hand-inked navy contour, crisp hard-edged 2-4 tone planes, exaggerated but coherent anatomy, approximately 15-color SNES-readable palette. Cartoon likeness, never photorealistic, never a digitized face, never anime, never Mortal Kombat realism, never any existing commercial fighter.\n\nComposition/framing: keep the existing atlas canvas size, exact 4x4 cell placement, exact row-major pose contract, one disconnected full-body figure per cell, generous genuinely transparent gaps, no overlaps, no visible grid. Maintain consistent head/body proportions across every pose; do not stretch, crop, redraw the pose actions, or change scale. Keep the existing body proportions, hands, feet, costume, action timing silhouettes, right-facing orientation, and full rounded ginger beard/hair details in every pose. The KO stays horizontal with head left.\n\nPose order must remain exactly: idle, front walk, back walk, crouch, jump, jab, cross, high kick, sweep, block, hurt, victory, cast, uppercut, KO head-left, rush.\n\nLighting/mood: bright theatrical arcade cel shading with a calm, friendly, confident expression.\nConstraints: change only face/hair/beard likeness and small eye/brow/nose/mouth details needed for identity; preserve the existing sprite atlas layout, transparent alpha, costume, body/actions, and all 16 poses. No text, logo, watermark, floor, shadow, projectile, effect, background, or extra figures.\nAvoid: black hair, blond hair, shaved head, tiny beard, goatee, moustacheless face, angry scowl, photorealism, photographic texture, 3D render, anime hero face, weapons, gore, blood, extra limbs, detached hands, merged figures, checkerboard, opaque background, duplicate poses, left-facing standing figures, logos, trademarks, copied Capcom/Street Fighter silhouettes."
+}

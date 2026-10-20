@@ -19,9 +19,12 @@ from __future__ import annotations
 import ctypes as C
 import hashlib
 import json
+import re
 import sys
 import time
 from pathlib import Path
+
+from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).parent))
 from emulator import Emulator, ROOT
@@ -38,14 +41,26 @@ NAMES = (
 SPECIAL_FAMILY = (0, 0, 1, 1, 2, 3, 2, 3, 2, 0, 3, 2)
 FAMILY_NAMES = ("projectile", "rush", "groundwave", "rising")
 
-# A pose is a 64x80 actor frame (2,560 bytes).  Eight poses are kept in each
-# LoROM-friendly bank, and the renderer interleaves ten 256-byte rows in VRAM.
-POSE_BYTES = 2560
+# A pose is a 96x80 actor frame (3,840 bytes).  The six 16x16 OBJ columns are
+# stored as twelve 8x8 tiles per row.  Eight poses are kept in each
+# LoROM-friendly bank; each physical VRAM row occupies a 16-tile page (512
+# bytes), with the final four tiles left as padding for predictable OAM IDs.
+POSE_WIDTH = 96
+POSE_HEIGHT = 80
+POSE_BYTES = POSE_WIDTH * POSE_HEIGHT // 2
 BANK_BYTES = POSE_BYTES * 8
 VRAM_ACTOR_BASE = 0xC000
-VRAM_ACTOR_STRIDE = 0x100
+VRAM_ACTOR_STRIDE = 0x1400
 VRAM_ROW_STRIDE = 0x200
-VRAM_ROW_BYTES = 0x100
+VRAM_ROW_BYTES = 0x180
+VRAM_PAGE_BYTES = 0x200
+OAM_ENTRY_BYTES = 4
+OAM_HIGH_BYTES = 32
+ACTOR_SPRITE_COLUMNS = 6
+ACTOR_SPRITE_ROWS = 5
+ACTOR_SPRITES = ACTOR_SPRITE_COLUMNS * ACTOR_SPRITE_ROWS
+ACTOR_OAM_SLOTS = 32
+OAM_ACTOR_BASE = (0, ACTOR_OAM_SLOTS)
 
 checks: list[dict[str, object]] = []
 
@@ -177,6 +192,393 @@ def vram(e: Emulator) -> bytes:
     return C.string_at(ptr, size)
 
 
+def _symbol_wram_offset(name: str) -> int | None:
+    """Resolve a linker symbol into an offset in libretro's WRAM window.
+
+    PVSnesLib's ``.sym`` file records WRAM symbols as 24-bit SNES addresses
+    (normally ``$7Exxxx``).  Keeping this lookup in the test host means the
+    test can inspect the native OAM staging buffer without adding a gameplay
+    trace field or writing any emulated memory.  A fixed fallback covers the
+    current SDK's stable OAM declaration while still preferring the symbol
+    emitted by a future linker layout.
+    """
+
+    candidates = [ROOT / "dist/abaqus-after-hours.sym", ROOT / "build/abaqus-after-hours.sym"]
+    pattern = re.compile(r"^\s*([0-9a-fA-F]{6,8})\s+" + re.escape(name) + r"\s*$")
+    for path in candidates:
+        if not path.exists():
+            continue
+        for line in path.read_text(errors="replace").splitlines():
+            match = pattern.match(line)
+            if not match:
+                continue
+            address = int(match.group(1), 16)
+            if 0x7E0000 <= address < 0x800000:
+                return address - 0x7E0000
+            if address < 0x20000:
+                return address
+    return None
+
+
+def oam_memory(e: Emulator) -> bytes:
+    """Read the native 512-byte OAM table plus its 32-byte high table."""
+
+    offset = _symbol_wram_offset("oamMemory")
+    if offset is None:
+        # PVSnesLib's standard sprite RAM section currently starts at $7E9010.
+        # This is only a read-only compatibility fallback; the symbol remains
+        # authoritative whenever the linker emits one.
+        offset = 0x9010
+    return C.string_at(e.ram + offset, 128 * OAM_ENTRY_BYTES + OAM_HIGH_BYTES)
+
+
+def oam_entry(raw: bytes, index: int) -> dict[str, int]:
+    """Decode one SNES OAM entry, including its ninth tile-number bit."""
+
+    offset = index * OAM_ENTRY_BYTES
+    x, y, tile_low, attr = raw[offset:offset + OAM_ENTRY_BYTES]
+    high = raw[512 + index // 4]
+    pair = (index & 3) * 2
+    x9 = (high >> pair) & 1
+    size = (high >> (pair + 1)) & 1
+    # The ninth tile bit lives in OAM attribute bit 0.  The adjacent high-table
+    # bit is the 16x16 size flag, which must remain separate from tile IDs.
+    tile = tile_low | ((attr & 1) << 8)
+    raw_x = x | (x9 << 8)
+    # OAM stores a 9-bit unsigned coordinate, but the left-edge probe can
+    # straddle the 0/255 byte wrap: -24 is low byte $E8 with X9 set, while a
+    # right-edge coordinate such as 264 is low byte $08 with X9 set.  Keep the
+    # raw value for the X9 assertion and expose the unwrapped screen coordinate
+    # for row spacing/geometry checks.
+    signed_x = x - 256 if x9 and x >= 0x80 else raw_x
+    return {"x": raw_x, "x_signed": signed_x, "y": y, "tile": tile,
+            "attr": attr, "x9": x9, "size": size}
+
+
+def _oam_actor_entries(raw: bytes, side: int) -> list[dict[str, int]]:
+    base = OAM_ACTOR_BASE[side]
+    return [oam_entry(raw, base + index) for index in range(ACTOR_SPRITES)]
+
+
+def verify_oam_geometry(e: Emulator, side: int, label: str,
+                        expected_floor: int | None = None) -> dict[str, object]:
+    """Validate the 6x5 native metasprite layout and floor support.
+
+    The old 64x80 renderer could silently overlap P2's OAM block and clip
+    bottom rows.  This assertion reads only the cartridge's WRAM OAM buffer and
+    checks the geometry that the PPU will actually scan: six columns at 16px,
+    five rows at 16px, fixed tile strides, palette/flip attributes, and a
+    stable bottom edge.  P2 rows 3 and 4 deliberately cross tile bit 8 because
+    its VRAM page begins at tile 160.
+    """
+
+    raw = oam_memory(e)
+    entries = _oam_actor_entries(raw, side)
+    check(len(entries) == ACTOR_SPRITES, "native OAM exposes thirty actor sprites", {
+        "side": side, "label": label, "count": len(entries),
+    })
+
+    # All actor entries should be visible at the centered boot position.  The
+    # x9 bit is allowed to be set for a later edge probe, but coordinates must
+    # remain within the signed 9-bit SNES sprite range.
+    check(all(entry["x"] <= 0x1FF and entry["y"] < 0xF0 for entry in entries),
+          "actor OAM entries stay in the visible geometry range", {
+              "side": side, "label": label,
+              "x": [entry["x"] for entry in entries],
+              "y": [entry["y"] for entry in entries],
+          })
+
+    rows = [entries[row * ACTOR_SPRITE_COLUMNS:(row + 1) * ACTOR_SPRITE_COLUMNS]
+            for row in range(ACTOR_SPRITE_ROWS)]
+    x_values = [[entry["x_signed"] for entry in row] for row in rows]
+    y_values = [[entry["y"] for entry in row] for row in rows]
+    for row, values in enumerate(x_values):
+        check(all(abs(values[col + 1] - values[col]) == 16
+                  for col in range(ACTOR_SPRITE_COLUMNS - 1)),
+              "actor OAM columns advance by sixteen pixels", {
+                  "side": side, "label": label, "row": row, "x": values,
+              })
+    row_tops = [values[0] for values in y_values]
+    check(all(row_tops[row + 1] - row_tops[row] == 16
+              for row in range(ACTOR_SPRITE_ROWS - 1)),
+          "actor OAM rows advance by sixteen pixels", {
+              "side": side, "label": label, "row_tops": row_tops,
+          })
+    check(all(len(set(values)) == 1 for values in y_values),
+          "actor OAM rows share a common y origin", {
+              "side": side, "label": label, "y": y_values,
+          })
+
+    tile_rows = [[entry["tile"] for entry in row] for row in rows]
+    for row, values in enumerate(tile_rows):
+        check(all(values[col + 1] - values[col] == 2
+                  for col in range(ACTOR_SPRITE_COLUMNS - 1)),
+              "actor OAM columns use two-tile 16px steps", {
+                  "side": side, "label": label, "row": row, "tiles": values,
+              })
+    tile_tops = [values[0] for values in tile_rows]
+    check(all(tile_tops[row + 1] - tile_tops[row] == 32
+              for row in range(ACTOR_SPRITE_ROWS - 1)),
+          "actor OAM rows use the sixteen-tile page stride", {
+              "side": side, "label": label, "tile_tops": tile_tops,
+          })
+
+    expected_flip = 0 if side == 0 else 0x40
+    check(all((entry["attr"] & 0x40) == expected_flip for entry in entries),
+          "actor OAM preserves the horizontal orientation", {
+              "side": side, "label": label, "expected_flip": expected_flip,
+              "attributes": sorted(set(entry["attr"] & 0x40 for entry in entries)),
+          })
+    check(all(((entry["attr"] >> 1) & 7) == side for entry in entries),
+          "actor OAM keeps each fighter palette separate", {
+              "side": side, "label": label,
+              "palettes": sorted(set((entry["attr"] >> 1) & 7 for entry in entries)),
+          })
+    check(all(entry["size"] == 1 for entry in entries),
+          "actor OAM marks every piece as a 16x16 sprite", {
+              "side": side, "label": label,
+              "size_bits": sorted(set(entry["size"] for entry in entries)),
+          })
+
+    if side == 1:
+        bottom_tiles = [tile for row in tile_rows[3:5] for tile in row]
+        check(all(tile & 0x100 for tile in bottom_tiles),
+              "P2 bottom actor rows preserve the ninth tile bit", {
+                  "side": side, "label": label, "tiles": bottom_tiles,
+              })
+
+    floor = max(row_tops) + 16
+    if expected_floor is not None:
+        check(abs(floor - expected_floor) <= 1,
+              "actor keeps a stable support-floor baseline", {
+                  "side": side, "label": label, "floor": floor,
+                  "expected_floor": expected_floor,
+              })
+    return {"floor": floor, "x": x_values, "y": y_values,
+            "tiles": tile_rows, "flip": expected_flip}
+
+
+POSE_NAMES = (
+    "idle", "walk-forward", "walk-back", "crouch", "jump", "jab",
+    "cross", "kick", "sweep", "block", "hurt", "victory", "cast",
+    "uppercut", "knockout", "rush",
+)
+NON_KO_POSES = tuple(index for index, name in enumerate(POSE_NAMES)
+                     if name != "knockout")
+SCALE_KEYS = ("physical_scale", "global_scale", "uniform_scale", "scale")
+
+
+def _numeric_scale(value: object) -> float | None:
+    """Accept the scalar or {x,y} form used by different asset manifests."""
+
+    if isinstance(value, (int, float)) and not isinstance(value, bool):
+        return float(value)
+    if isinstance(value, dict):
+        for key in ("x", "value", "pixels_per_source", "source_to_native"):
+            candidate = value.get(key)
+            if isinstance(candidate, (int, float)) and not isinstance(candidate, bool):
+                return float(candidate)
+    return None
+
+
+def _manifest_scales(entry: dict[str, object]) -> tuple[list[float], str]:
+    """Extract the physical scale contract, including per-frame annotations."""
+
+    frames = entry.get("frames")
+    frame_scales: list[float] = []
+    if isinstance(frames, list):
+        for frame in frames:
+            if not isinstance(frame, dict):
+                continue
+            for key in SCALE_KEYS:
+                if key in frame:
+                    value = _numeric_scale(frame[key])
+                    if value is not None:
+                        frame_scales.append(value)
+                        break
+    if frame_scales:
+        return frame_scales, "frames"
+
+    for key in SCALE_KEYS:
+        if key in entry:
+            value = _numeric_scale(entry[key])
+            if value is not None:
+                return [value] * len(POSE_NAMES), key
+    raise AssertionError((
+        "character manifest must record one physical global scale per fighter",
+        entry.get("id"), sorted(entry),
+    ))
+
+
+def _native_pose_boxes(fighter: int) -> tuple[Image.Image, list[tuple[int, int, int, int]]]:
+    """Decode the actual generated native pose sheet into per-pose boxes."""
+
+    path = ROOT / f"assets/generated/fighter{fighter:02}.png"
+    check(path.exists(), "native pose preview exists", {"fighter": fighter, "path": str(path)})
+    image = Image.open(path).convert("RGBA")
+    check(image.size == (POSE_WIDTH * len(POSE_NAMES), POSE_HEIGHT),
+          "native pose preview uses the 96x80 frame contract", {
+              "fighter": fighter, "size": image.size,
+          })
+    boxes: list[tuple[int, int, int, int]] = []
+    for pose in range(len(POSE_NAMES)):
+        crop = image.crop((pose * POSE_WIDTH, 0,
+                           (pose + 1) * POSE_WIDTH, POSE_HEIGHT))
+        box = crop.getchannel("A").getbbox()
+        check(box is not None, "native pose has opaque pixels", {
+            "fighter": fighter, "pose": POSE_NAMES[pose],
+        })
+        boxes.append(box)
+    return image, boxes
+
+
+def verify_rendered_actor(e: Emulator, fighter: int, side: int,
+                          geometry: dict[str, object]) -> dict[str, object]:
+    """Confirm that the PPU output contains the native actor silhouette.
+
+    OAM flags alone can report a 16x16 sprite while OBJSEL is configured with
+    the wrong large-size mode, which makes the cartridge render blank or
+    expand every piece to 32x32.  Compare the captured RGB frame against the
+    generated stage plate at the actor's opaque native pixels.  The stage
+    plate and Snes9x output differ by the expected <=8-level SNES palette
+    rounding; a larger difference in the native silhouette is therefore a
+    rendered actor pixel.  The bounds check also rejects a large-size bleed
+    outside the 96x80 actor canvas.
+    """
+
+    check(e.frame is not None, "actor render probe has a video frame", {
+        "fighter": fighter, "side": side,
+    })
+    stage_index = int(state(e).get("arena", 0))
+    stage_path = ROOT / f"assets/generated/stage{stage_index}.png"
+    check(stage_path.exists(), "render probe has the native stage plate", {
+        "fighter": fighter, "stage": stage_index, "path": str(stage_path),
+    })
+    stage = Image.open(stage_path).convert("RGB")
+    frame = e.frame.convert("RGB")
+    native, boxes = _native_pose_boxes(fighter)
+    alpha = native.crop((0, 0, POSE_WIDTH, POSE_HEIGHT)).getchannel("A")
+    alpha_pixels = [(x, y) for y in range(POSE_HEIGHT) for x in range(POSE_WIDTH)
+                    if alpha.getpixel((x, y))]
+    x_rows = geometry["x"]
+    y_rows = geometry["y"]
+    assert isinstance(x_rows, list) and isinstance(y_rows, list)
+    frame_left = min(int(x) for row in x_rows for x in row)
+    frame_top = min(int(y) for row in y_rows for y in row)
+    changed: list[tuple[int, int]] = []
+    for source_x, source_y in alpha_pixels:
+        screen_x = frame_left + (POSE_WIDTH - 1 - source_x if side else source_x)
+        screen_y = frame_top + source_y
+        if not (0 <= screen_x < 256 and 0 <= screen_y < 224):
+            continue
+        actual = frame.getpixel((screen_x, screen_y))
+        plate = stage.getpixel((screen_x, screen_y))
+        if max(abs(actual[channel] - plate[channel]) for channel in range(3)) > 16:
+            changed.append((screen_x, screen_y))
+
+    expected_box = boxes[0]
+    if side:
+        expected_box = (POSE_WIDTH - expected_box[2], expected_box[1],
+                        POSE_WIDTH - expected_box[0], expected_box[3])
+    expected_screen = (frame_left + expected_box[0], frame_top + expected_box[1],
+                       frame_left + expected_box[2], frame_top + expected_box[3])
+    minimum = max(24, len(alpha_pixels) // 20)
+    check(len(changed) >= minimum,
+          "captured PPU frame contains the native actor pixels", {
+              "fighter": fighter, "side": side, "changed_pixels": len(changed),
+              "opaque_pixels": len(alpha_pixels), "minimum": minimum,
+          })
+    if changed:
+        observed = (min(x for x, _ in changed), min(y for _, y in changed),
+                    max(x for x, _ in changed) + 1, max(y for _, y in changed) + 1)
+        check(all(abs(observed[index] - expected_screen[index]) <= 8
+                  for index in range(4)),
+              "captured actor bounds stay on the native 96x80 canvas", {
+                  "fighter": fighter, "side": side,
+                  "expected": expected_screen, "observed": observed,
+              })
+    else:
+        observed = None
+    return {"expected": expected_screen, "observed": observed,
+            "changed_pixels": len(changed), "opaque_pixels": len(alpha_pixels)}
+
+
+def verify_native_proportions() -> dict[str, object]:
+    """Check shared-scale source geometry before any emulator is launched.
+
+    The old pipeline fit each pose independently to a 64x80 frame, making a
+    jab or kick visibly taller or shorter than idle.  This review intentionally
+    checks the generated native image and manifest rather than a duplicated
+    source constant: all sixteen frames must advertise the same physical
+    scale, stay inside the 96x80 canvas, and share one support-floor baseline.
+    """
+
+    manifest_path = ROOT / "assets/generated/character-manifest.json"
+    entries = json.loads(manifest_path.read_text())
+    check(len(entries) == len(NAMES), "character manifest contains all twelve fighters", {
+        "count": len(entries),
+    })
+    results: dict[str, object] = {}
+    for fighter, entry in enumerate(entries):
+        check(int(entry.get("id", -1)) == fighter, "manifest roster order is stable", {
+            "fighter": fighter, "id": entry.get("id"),
+        })
+        scales, scale_source = _manifest_scales(entry)
+        check(len(scales) == len(POSE_NAMES), "fighter records one scale for every pose", {
+            "fighter": fighter, "count": len(scales), "source": scale_source,
+        })
+        scale_span = max(scales) - min(scales)
+        check(scale_span <= 1e-6, "all sixteen poses use one uniform physical scale", {
+            "fighter": fighter, "scale": scales[0], "span": scale_span,
+        })
+
+        _, boxes = _native_pose_boxes(fighter)
+        for pose, box in enumerate(boxes):
+            left, top, right, bottom = box
+            check(left > 0 and top >= 0 and right < POSE_WIDTH and bottom <= POSE_HEIGHT,
+                  "native pose stays inside its 96x80 canvas", {
+                      "fighter": fighter, "pose": POSE_NAMES[pose], "box": box,
+                  })
+
+        baselines = [boxes[pose][3] for pose in NON_KO_POSES]
+        check(max(baselines) - min(baselines) <= 1,
+              "non-knockout poses share a support-floor baseline", {
+                  "fighter": fighter, "baselines": baselines,
+              })
+        standing_height = entry.get("standing_height")
+        idle_height = boxes[0][3] - boxes[0][1]
+        if isinstance(standing_height, (int, float)):
+            check(abs(idle_height - float(standing_height)) <= 2,
+                  "manifest standing height matches native idle geometry", {
+                      "fighter": fighter, "manifest": standing_height,
+                      "idle_pixels": idle_height,
+                  })
+
+        # These representative frames are the ones most likely to expose a
+        # per-pose fit: jab reaches forward, kick extends vertically, and cast
+        # raises both arms.  Their torso/standing geometry must remain close to
+        # idle even when the outer silhouette grows.
+        for pose in (5, 7, 12):
+            height = boxes[pose][3] - boxes[pose][1]
+            # A raised arm or a kick can change the silhouette's top edge by
+            # several pixels.  The meaningful invariant is that the native
+            # body was not independently shrunk to fit that pose: keep a
+            # broad but explicit 65% lower bound and reject an unexpected
+            # over-sized frame as well.
+            check(idle_height * 0.65 <= height <= idle_height + 12,
+                  "attack pose keeps a comparable body height to idle", {
+                      "fighter": fighter, "pose": POSE_NAMES[pose],
+                      "idle_height": idle_height, "pose_height": height,
+                  })
+        results[f"{fighter:02}"] = {
+            "scale": scales[0], "scale_source": scale_source,
+            "idle_box": boxes[0], "jab_box": boxes[5],
+            "kick_box": boxes[7], "cast_box": boxes[12],
+            "baseline": baselines[0],
+        }
+    return results
+
+
 def expected_bank(fighter: int, bank: int) -> bytes:
     suffix = "" if bank == 0 else "b"
     data = (ROOT / f"assets/generated/fighter{fighter:02}{suffix}.bin").read_bytes()
@@ -217,6 +619,27 @@ def wait_for_uploaded_pose(e: Emulator, fighter: int, side: int = 0,
     pose = s["pose1" if side == 0 else "pose2"]
     bank = 0 if pose < 8 else 1
     return s, bank
+
+
+def stream_pose(e: Emulator, fighter: int, side: int, expected_pose: int,
+                label: str, max_frames: int = 48) -> dict[str, int]:
+    """Wait for one controller-driven pose and compare its complete VRAM page."""
+
+    state_key = "pose1" if side == 0 else "pose2"
+    for _ in range(max_frames):
+        sample = state(e)
+        pose = sample[state_key]
+        bank = 0 if pose < 8 else 1
+        if pose == expected_pose and actor_rows(e, fighter, side, bank, pose):
+            check(True, label + " streams its complete native pose", {
+                "fighter": fighter, "side": side, "pose": pose, "bank": bank,
+            })
+            return {"pose": pose, "bank": bank}
+        e.run(1)
+    raise AssertionError((label + " did not stream its expected native pose", {
+        "fighter": fighter, "side": side, "expected_pose": expected_pose,
+        "last": state(e),
+    }))
 
 
 def capture(e: Emulator, fighter: int, label: str) -> Path:
@@ -479,7 +902,17 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
         check(actor_rows(e, fighter, 0, 0), "all ten idle sprite rows reach actor VRAM", {
             "fighter": fighter,
         })
+        idle_oam = verify_oam_geometry(e, 0, "idle")
+        idle_render = verify_rendered_actor(e, fighter, 0, idle_oam)
         idle_path = capture(e, fighter, "idle")
+
+        # The crouch, jump, and all six normal buttons must each upload the
+        # exact native pose selected by the controller.  This catches a
+        # renderer that only validates idle/special banks while a normal move
+        # still points at a stale 64x80 or wrong-bank frame.
+        e.run(3, p1=["down"])
+        crouch_stream = stream_pose(e, fighter, 0, 3, "crouch")
+        e.run(4)
 
         x0 = signed16(s0["x1"])
         movement = []
@@ -496,6 +929,7 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
         })
 
         e.run(3, p1=["up"])
+        jump_stream = stream_pose(e, fighter, 0, 4, "jump")
         jump_samples = []
         for _ in range(8):
             jump_samples.append(state(e))
@@ -508,6 +942,44 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
             e.run(1)
             if signed16(state(e)["y1"]) == 0:
                 break
+        # A grounded return must put the complete metasprite back on exactly
+        # the same support line as idle.  This catches per-pose y fitting and
+        # a stale OAM row that a VRAM-only comparison cannot see.
+        landed_oam = verify_oam_geometry(e, 0, "landed", idle_oam["floor"])
+
+        normal_streams: dict[str, dict[str, int]] = {}
+        for key, action, pose in (
+            ("y", 1, 5), ("x", 2, 6), ("l", 3, 6),
+            ("b", 4, 7), ("a", 5, 7), ("r", 6, 7),
+        ):
+            e.run(1, p1=[key])
+            check(state(e)["action1"] == action,
+                  "normal button starts action " + key.upper(), {
+                      "fighter": fighter, "action": state(e)["action1"],
+                  })
+            normal_streams[key] = stream_pose(
+                e, fighter, 0, pose, "normal " + key.upper())
+            e.run(50)
+
+        e.run(1, p1=["down", "l"])
+        check(state(e)["action1"] == 8, "down plus heavy starts the uppercut", {
+            "fighter": fighter, "action": state(e)["action1"],
+        })
+        uppercut_stream = stream_pose(e, fighter, 0, 13, "uppercut")
+        e.run(70)
+
+        # Drive P1 to the gameplay clamp so the left edge exercises signed X9
+        # coordinates and the native flip/palette bits, still through input.
+        for _ in range(90):
+            e.run(1, p1=["left"])
+        edge_oam = verify_oam_geometry(e, 0, "left-edge")
+        edge_entries = _oam_actor_entries(oam_memory(e), 0)
+        check(any(entry["x9"] for entry in edge_entries),
+              "left screen edge preserves signed OAM X9 pixels", {
+                  "fighter": fighter,
+                  "x9_entries": [index for index, entry in enumerate(edge_entries)
+                                 if entry["x9"]],
+              })
 
         special = assert_special_family(e, fighter)
         s_special, bank1 = wait_for_uploaded_pose(e, fighter, 0)
@@ -527,6 +999,11 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
             "movement_samples": movement, "jump_height": jump_height,
             "speed_trace": profile_speed, "jump_trace": profile_jump,
             "special": special, "idle_screenshot": str(idle_path),
+            "idle_render": idle_render,
+            "crouch_stream": crouch_stream, "jump_stream": jump_stream,
+            "normal_streams": normal_streams, "uppercut_stream": uppercut_stream,
+            "idle_floor": idle_oam["floor"], "landed_floor": landed_oam["floor"],
+            "edge_floor": edge_oam["floor"],
         }
     finally:
         e.close()
@@ -544,6 +1021,8 @@ def verify_p2_orientation(fighter: int) -> dict[str, object]:
         check(actor_rows(e, fighter, 1, 0), "player two receives this fighter's native idle rows", {
             "fighter": fighter,
         })
+        idle_oam = verify_oam_geometry(e, 1, "idle")
+        idle_render = verify_rendered_actor(e, fighter, 1, idle_oam)
         face = side_field(s0, 1, "face", "facing", "direction")
         if face is not None:
             check(face == 0, "player two starts facing left for horizontal flip", {
@@ -581,7 +1060,8 @@ def verify_p2_orientation(fighter: int) -> dict[str, object]:
                 "fighter": fighter, "face2": face_end,
             })
         return {"name": NAMES[fighter], "movement_delta": x_delta,
-                "jump_height": min_y, "face2": face_end, "bank": bank0}
+                "jump_height": min_y, "face2": face_end, "bank": bank0,
+                "idle_floor": idle_oam["floor"], "idle_render": idle_render}
     finally:
         e.close()
 
@@ -591,7 +1071,9 @@ def main() -> int:
     report: dict[str, object] = {
         "emulator": "Official Snes9x 1.63 x64 libretro core",
         "rom_sha256": None,
+        "rom_bytes": None,
         "checks": checks,
+        "proportions": {},
         "characters": {},
         "player_two": {},
         "guard_checks": {},
@@ -600,6 +1082,13 @@ def main() -> int:
     try:
         manifest = json.loads((ROOT / "dist/manifest.json").read_text())
         report["rom_sha256"] = manifest["sha256"]
+        report["rom_bytes"] = manifest.get("bytes")
+        check(manifest.get("bytes") == 2 * 1024 * 1024,
+              "release manifest records the 2 MiB FastROM image", {
+                  "bytes": manifest.get("bytes"),
+                  "mapping": manifest.get("mapping"),
+              })
+        report["proportions"] = verify_native_proportions()
         verify_asset_identity()
 
         character_results: dict[str, object] = {}

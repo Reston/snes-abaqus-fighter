@@ -1,12 +1,20 @@
 # Art direction and image generation
 
-## v0.3.1 likeness correction
+## v0.4.0 proportion and presentation polish
+
+The v0.4 pass keeps twelve individual illustrated masters and tightens the native presentation around them. Seven likeness v2 masters were refreshed with the built-in imagegen edit workflow for Damián, Cote, Negger, Fernando, Mamariaga, Reston and Roxana; the five earlier likeness v2 masters for Ivo, Cristóbal, David, Cristián and Lars remain selected. All twelve now have close 32×40 selection cards and 64×80 profile portraits derived from their own source masters.
+
+Every fighter uses one uniform physical scale across all sixteen poses. The renderer places the result inside a 96×80 native canvas with a 94×77 safe area, so the effective standing height may reduce when another pose is wider or taller. This keeps head, torso, hands and feet at a consistent scale between idle, attacks, jumps, blocks, knockouts and rushes while preserving the shared pose-index contract. Further in-between frames remain future work.
+
+The three stages are now independent PNG masters under `assets/art/stages/`, described by `assets/art/stages/stages.json`. The home screen, four-by-three fighter selection and arena menu use new original plates under `assets/art/menu/`; the complete image-generation prompt set is `assets/art/menu/prompts.json`. Menu lettering is rendered from original project glyphs rather than Arial or another system font. The selected fighter's 64×80 profile portrait is transferred to BG2 at word `$4A00–$4EFF` with palette 1.
+
+## Historical direction: v0.3.1 likeness correction
 
 The user requested closer face likenesses for Ivo, Cristóbal, David, Cristián and Lars, explicitly specifying black hair for Cristóbal and darker black hair for David. Five focused **built-in imagegen** edits use each person's public headshot as the identity reference and their v0.3 atlas as the edit target. The selected masters remain at the character paths below. Each revised character directory includes `likeness-v2.json` with the full edit prompt, input roles and provenance.
 
 The pass emphasizes Ivo's mature facial proportions and natural short hair; Cristóbal's cropped black hair and full black beard; David's black tied-back hair, moustache and goatee; Cristián's fuller clean-shaven face and short black hair; and Lars's broad clean-shaven face and wavy side-swept fringe. The original cartoon arcade style, costumes and sixteen-pose contract continue. Matching select portraits are regenerated from the revised masters.
 
-## Current direction: v0.3 individual cartoon roster
+## Historical direction: v0.3 individual cartoon roster
 
 The roster now uses twelve separate illustrated masters with individual bodies, costumes, facial features and silhouettes. Six art subagents each developed two fighters using the **built-in imagegen** tool, public appearance references and the existing cartoon style reference. The shared sixteen-pose layout supports the same native renderer; it does not imply a shared recolored body. Roxana has her own woman character design and poses.
 
@@ -27,9 +35,9 @@ Each directory contains `atlas.png`, the complete generation prompt/provenance i
 | Roxana | `assets/art/characters/10-roxana/` | Magenta jacket, wide-leg slacks |
 | Lars | `assets/art/characters/11-lars/` | Ice-blue jacket |
 
-The sixteen key poses are idle, two walk steps, crouch, jump, jab, cross, high kick, sweep, block, hurt, victory, cast, rising uppercut, knockout and rush. Each master is isolated and reduced to the unchanged 64×80 native stream format. Every fighter gets one shared fifteen-color palette across their frames; source-master crops provide matching selection portraits. Native previews, extraction boxes and hashes are saved under `assets/generated/`. Source fixes are recorded in each prompt file; earlier source variants are preserved beside the selected master when applicable.
+The sixteen key poses are idle, two walk steps, crouch, jump, jab, cross, high kick, sweep, block, hurt, victory, cast, rising uppercut, knockout and rush. The v0.3 runtime used a 64×80 frame; v0.4 supersedes that with a 96×80 canvas and one uniform per-fighter scale across all sixteen poses. Every fighter gets one shared fifteen-color palette across their frames; source-master crops provide matching selection portraits. Native previews, extraction boxes and hashes are saved under `assets/generated/`. Source fixes are recorded in each prompt file; earlier source variants are preserved beside the selected master when applicable.
 
-The stages retain the bright illustrated v0.2 masters. No CLI/API image-generation fallback or commercial game sprites were used. More in-between animation and more individualized hit effects remain future art work.
+The v0.3 stages retained the bright illustrated v0.2 masters. The v0.4 stage pass reorganizes them as three independent PNG masters and adds the redesigned menu plates. No CLI/API image-generation fallback or commercial game sprites were used. More in-between animation, individualized hit effects and stage parallax remain future art work.
 
 ## Historical direction: v0.2 cartoon arcade
 

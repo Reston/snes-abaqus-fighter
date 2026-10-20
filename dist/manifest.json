@@ -1,11 +1,11 @@
 {
   "title": "Abaqus: After Hours",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "rom": "abaqus-after-hours.sfc",
-  "bytes": 1048576,
-  "sha256": "6e17c3fd8e34b4ccb1553d3d881af1768846ecb1f36564263f6185fc854f677b",
-  "checksum": "EBC1",
+  "bytes": 2097152,
+  "sha256": "e8b3d5eeda6fe57ec025abcbacd772d129e26d38440f5ea74b86e1ac0754141e",
+  "checksum": "61F3",
   "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
-  "mapping": "1 MiB FastROM LoROM",
+  "mapping": "2 MiB FastROM LoROM",
   "region": "NTSC 60 Hz"
 }

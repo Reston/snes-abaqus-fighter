@@ -1,14 +1,14 @@
 # Polish roadmap
 
-The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass added the cartoon arcade direction. The v0.3 roster pass adds twelve individual sixteen-pose atlases, matching portraits, individual movement and frame data, and four tuned special families.
+The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass added the cartoon arcade direction. The v0.3 pass introduced twelve individual sixteen-pose atlases and likeness correction. The v0.4.0 pass moves the cartridge to 2 MiB FastROM LoROM, standardizes all fighters on one 96×80 physical scale, adds 32×40 and 64×80 source portraits, redraws the home/select/arena presentation and separates the three stage masters.
 
-## Next art pass
+## Future art and animation
 
-- Approve each person's recognizable likeness, outfit and playful character concept.
-- Refine the twelve individual silhouettes and add in-between idle, walk, landing, recovery, throw and knockout frames beyond the current sixteen-key-pose contract.
+- Review the seven v0.4 likeness v2 edits and the five retained v2 masters with the team, making targeted identity revisions only where human review finds a mismatch.
+- Add in-between idle, walk, landing, recovery, throw and knockout frames beyond the current sixteen-key-pose contract.
 - Align hands and feet more closely to gameplay contact points and add per-pose hitboxes.
-- Make the three stage layouts more architecturally faithful to the supplied photos, with layered parallax and animated coworkers.
-- Add large versus portraits, a dedicated champion illustration and richer end-of-match presentation.
+- Extend the three independent stage compositions with layered parallax and animated coworkers while preserving the native tile and vblank budgets.
+- Add a dedicated champion illustration and richer end-of-match presentation beyond the current large selection portraits.
 
 ## Next combat pass
 
@@ -20,6 +20,7 @@ The v0.1 release established a playable native cartridge, the requested roster a
 
 ## Release-quality validation
 
+- Run the gameplay, roster and presentation suites against the exact current 2 MiB ROM; each report must retain that ROM's SHA256 before packaging.
 - Playtest with two controllers and several keyboard layouts, including keyboard rollover constraints.
 - Profile worst-case combat frames, audio streaming and vblank use across Snes9x, Mesen and bsnes.
 - Test an original SNES or Super Famicom through a flash cartridge.

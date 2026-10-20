@@ -21,8 +21,8 @@ if '--assets' in sys.argv or not (ROOT/'assets/generated/data.asm').exists():
 
 template = (SDK/'devkitsnes/include/hdr.asm.in').read_text()
 values = dict(HIROMDEF='', FASTROMDEF='.DEFINE FASTROM 1', ROMTITLE='ABAQUS AFTER HOURS',
-              CARTRIDGETYPE='00', ROMSIZE='0A', SRAMSIZE='00', COUNTRY='01',
-              LICENSEECODE='00', VERSION='00', ROMBANKS='32', ROMBANKSIZE='8000',
+              CARTRIDGETYPE='00', ROMSIZE='0B', SRAMSIZE='00', COUNTRY='01',
+              LICENSEECODE='00', VERSION='00', ROMBANKS='64', ROMBANKSIZE='8000',
               ROMMODE='LOROM', ROMSPEED='FASTROM')
 for key,value in values.items(): template = template.replace('@'+key+'@', value)
 (ROOT/'build/hdr.asm').write_text(template)
@@ -41,12 +41,12 @@ objects = [BUILD/'header.obj',BUILD/'game.obj',BUILD/'hardware.obj',BUILD/'asset
 rom = ROOT/'dist/abaqus-after-hours.sfc'
 run(binary/'wlalink.exe','-d','-s','-A','-c','-L',lib,BUILD/'linkfile',rom)
 data = rom.read_bytes()
-assert len(data)==1024*1024, 'Expected 1 MiB LoROM'
+assert len(data)==2*1024*1024, 'Expected 2 MiB LoROM'
 assert data[0x7fd5] == 0x30, 'Expected FastROM LoROM header'
 checksum = int.from_bytes(data[0x7fde:0x7fe0],'little')
 assert checksum == (sum(data)&65535), 'ROM checksum mismatch'
-manifest = {'title':'Abaqus: After Hours','version':'0.3.1','rom':rom.name,'bytes':len(data),
+manifest = {'title':'Abaqus: After Hours','version':'0.4.0','rom':rom.name,'bytes':len(data),
             'sha256':hashlib.sha256(data).hexdigest(),'checksum':f'{checksum:04X}',
-            'toolchain':'PVSnesLib 4.6.0 / 816-tcc / WLA-DX','mapping':'1 MiB FastROM LoROM','region':'NTSC 60 Hz'}
+            'toolchain':'PVSnesLib 4.6.0 / 816-tcc / WLA-DX','mapping':'2 MiB FastROM LoROM','region':'NTSC 60 Hz'}
 (ROOT/'dist/manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
 print('Built',rom.name, len(data),'bytes; SHA256',manifest['sha256'])

@@ -4,10 +4,11 @@ Generated raster art is resized/quantized only for the hardware asset pipeline.
 UI, typography, effects and animation metadata are authored here as code assets.
 """
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFont, ImageEnhance
+from PIL import Image, ImageDraw
 import json, math, random, struct, subprocess, sys
 sys.path.insert(0, str(Path(__file__).parent))
 from fighter_assets import prepare_roster
+from menu_assets import make_menu_images
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT/'assets/generated'
@@ -127,60 +128,34 @@ def background(name,im):
     preview.save(OUT/(name+'.png'))
     return preview
 
-atlas=Image.open(ROOT/'assets/art/stage-atlas-cartoon.png').convert('RGB')
-aw,ah=atlas.size
-boxes=[(0,0,aw,round(ah/3)),(0,round(ah/3),aw,round(ah*2/3)),(0,round(ah*2/3),aw,ah)]
 stages=[]
-for i,box in enumerate(boxes):
-    im=atlas.crop(box).resize((256,224),Image.Resampling.NEAREST)
-    # Keep a clean visible fighting line and useful foreground under the HUD.
+for i,slug in enumerate(('00-las-condes','01-castillo','02-oficina')):
+    im=Image.open(ROOT/f'assets/art/stages/{slug}.png').convert('RGB').resize((256,224),Image.Resampling.NEAREST)
     stages.append(im)
     background(f'stage{i}',im)
 
-title=Image.new('RGB',(256,224),'#0c1429')
-base=stages[0].resize((256,224))
-title=ImageEnhance.Brightness(base).enhance(.55)
-d=ImageDraw.Draw(title)
-text(title,(128,15),'SANTIAGO  /  AFTER THE BELL',(101,214,202),center=True)
-font=ImageFont.truetype('C:/Windows/Fonts/arialbi.ttf',43)
-mask=Image.new('L',(256,60));md=ImageDraw.Draw(mask)
-md.text((14,-2),'ABAQUS',font=font,fill=255,stroke_width=1)
-layer=Image.new('RGB',title.size)
-ld=ImageDraw.Draw(layer)
-for y in range(60):ld.line((0,y+43,255,y+43),fill=(255, max(100,223-y*2),70))
-mask2=Image.new('L',title.size);mask2.paste(mask,(0,43));title.paste(layer,(0,0),mask2)
-d=ImageDraw.Draw(title);d.line((25,99,228,99),fill='#e8b85b',width=2)
-text(title,(128,106),'AFTER HOURS',(230,239,237),scale=2,center=True)
-text(title,(128,137),'THE OFFICE WORLD WARRIORS',(130,173,184),center=True)
-text(title,(128,212),'ABAQUS  /  ORIGINAL HOMEBREW',(127,151,169),center=True)
-background('title',title)
-
 roster=prepare_roster(ROOT,OUT)
+for name,image in make_menu_images(ROOT,stages,roster,text).items():
+    background(name,image)
 
-names=['DAMIAN','IVO','CRISTOBAL','COTE','NEGGER','DAVID','FERNANDO','CRISTIAN','MAMARIAGA','RESTON','ROXANA','LARS']
-select=Image.new('RGB',(256,224),'#0c1429');d=ImageDraw.Draw(select)
-for y in range(224):d.line((0,y,255,y),fill=(12+y//20,20+y//12,41+y//9))
-text(select,(128,13),'CHOOSE YOUR FIGHTER',(247,206,119),center=True)
-text(select,(128,29),'ABAQUS AFTER HOURS',(98,199,188),center=True)
-for n,name in enumerate(names):
-    p=roster[n]['portrait']
-    x,y=17+(n%6)*38,59+(n//6)*57
-    d.rectangle((x-2,y-2,x+33,y+41),outline='#5d7990')
-    select.paste(p,(x,y))
-    text(select,(x+16,y+44),str(n+1).zfill(2),(137,164,185),center=True)
-text(select,(128,211),'D-PAD SELECT  /  A CONFIRM',(112,167,180),center=True)
-background('select',select)
+# Selected faces have a dedicated BG2 palette and 80 tiles, independent of the
+# six background palettes. Source-master crops retain more facial detail than
+# scaling up a small selection card or the fifteen-color combat sprite.
+for n,fighter in enumerate(roster):
+    im=fighter['portrait_large'].convert('RGB')
+    quantized=im.quantize(colors=15,method=Image.Quantize.MEDIANCUT)
+    p=quantized.getpalette()[:45]
+    colors=[(0,0,0)]+[tuple(p[k:k+3]) for k in range(0,45,3)]
+    ids=[v+1 for v in quantized.get_flattened_data()]
+    data=bytearray()
+    for ty in range(10):
+        for tx in range(8):
+            data+=tile([ids[(ty*8+y)*64+tx*8+x] for y in range(8) for x in range(8)])
+    assert len(data)==2560
+    asset(f'portrait{n:02}_tiles',data)
+    asset(f'portrait{n:02}_pal',palbytes(colors))
 
-stage_select=Image.new('RGB',(256,224),'#0c1429')
-for i,stage in enumerate(stages):
-    thumb=stage.resize((224,50),Image.Resampling.LANCZOS)
-    stage_select.paste(ImageEnhance.Brightness(thumb).enhance(.72),(16,41+i*56))
-    text(stage_select,(27,62+i*56),['LAS CONDES','EL CASTILLO','LA OFICINA'][i],(255,232,179))
-text(stage_select,(128,15),'CHOOSE YOUR ARENA',(247,206,119),center=True)
-text(stage_select,(128,213),'UP / DOWN  -  A TO FIGHT',(112,167,180),center=True)
-background('arenas',stage_select)
-
-# Interface tiles share fixed palette 0; palette 1 is an alternate cursor palette.
+# Interface tiles use fixed palette 0; selection portraits occupy palette 1.
 ui=bytearray()
 for code in range(128):
     pix=[1 if code>=32 else 0]*64
@@ -219,16 +194,16 @@ asset('ui_tiles',ui)
 asset('ui_pal',palbytes(UI_COLORS+[(0,0,0),(15,24,41),(96,235,212)]+UI_COLORS[3:]))
 
 # Each fighter has independent illustrated frames and a fifteen-color palette.
-# Preserve the original 64x80 stream format and two LoROM-safe eight-pose banks.
+# Uniform 96x80 poses fit into two LoROM-safe eight-pose banks.
 for n,fighter in enumerate(roster):
     data=bytearray()
     for ids in fighter['indices']:
         for ty in range(10):
-            for tx in range(8):
-                data+=tile([ids[(ty*8+y)*64+tx*8+x] for y in range(8) for x in range(8)])
-    assert len(data)==40960
-    asset(f'fighter{n:02}',data[:20480])
-    asset(f'fighter{n:02}b',data[20480:])
+            for tx in range(12):
+                data+=tile([ids[(ty*8+y)*96+tx*8+x] for y in range(8) for x in range(8)])
+    assert len(data)==61440
+    asset(f'fighter{n:02}',data[:30720])
+    asset(f'fighter{n:02}b',data[30720:])
     asset(f'fighter{n:02}_pal',palbytes(fighter['palette']))
 
 # Universal 16x16 impact, projectile, and ground-shadow sprite tiles.

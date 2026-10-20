@@ -1,0 +1,41 @@
+{
+  "character_id": "06-fernando",
+  "display_name": "Fernando Pérez",
+  "asset": "atlas.png",
+  "mode": "built-in image_gen edit",
+  "input_images": [
+    {
+      "path": "assets/art/characters/06-fernando/atlas.png",
+      "role": "edit target; preserve the existing 4x4 pose atlas, body, outfit, orientation, and transparent layout"
+    },
+    {
+      "path": "assets/references/fighter-06.jpg",
+      "role": "reference image for face, hair, brows, and friendly identity cues only"
+    }
+  ],
+  "generated_paths": [
+    "C:/Users/user/.codex/generated_images/01a1572d-811e-7932-a579-efcb909fc06a/exec-93e5614c-0533-4f30-b88f-42ac7b4f37ed.png",
+    "C:/Users/user/.codex/generated_images/01a1572d-811e-7932-a579-efcb909fc06a/exec-98ec8562-574a-40bb-b016-b8ea9fd21e40.png",
+    "C:/Users/user/.codex/generated_images/01a1572d-811e-7932-a579-efcb909fc06a/exec-3ba2fe54-b052-48dc-acf4-127dff898d65.png"
+  ],
+  "selected_generated_path": "C:/Users/user/.codex/generated_images/01a1572d-811e-7932-a579-efcb909fc06a/exec-3ba2fe54-b052-48dc-acf4-127dff898d65.png",
+  "prompts": {
+    "identity_edit": "Use case: identity-preserve\nAsset type: original native SNES fighting-game character sprite atlas\nInput images: Image 1 is the EDIT TARGET: the existing Fernando Pérez transparent 4x4 atlas. Image 2 is the REFERENCE IMAGE for identity cues only: use the person's face, hair, brows, and friendly expression as visual authority, never copy the photograph's clothing, logos, or background.\n\nEdit only the character faces, hair, and tiny facial-hair details across all 16 poses in Image 1. Preserve everything else exactly: the original 4 columns x 4 rows layout, cell spacing, transparent background, pose order, pose geometry, stocky broad-shouldered body, teal open field jacket with white collar and rolled cuffs, charcoal trousers, dark shoes, navy contour, and bright 1993 arcade fighting-game cartoon cel-shaded style. Keep all 16 figures fully disconnected, right-facing, except the existing KO pose head-left. Do not crop, resize, rotate, mirror, merge, or add any figure.\n\nIdentity target for Fernando Pérez, based on Image 2: broad round-oval adult face with full cheeks and a soft chin; dense black natural side-parted hair with modest lift, not a tall quiff; thick dark brows; soft normal eyes; clean-shaven or only the gentlest tiny stubble; friendly calm mouth. Make the broad cheeks, soft jaw and side-parted hair readable at SNES sprite scale. Do not turn him into an angular angry anime hero. Keep the face relaxed and approachable.\n\nStyle constraints: original 1993 Street Fighter II-inspired bright comic-book pixel-cartoon/cel-shaded illustration, chunky navy contours and limited palette; no photorealistic skin, no digitized photo head, no Mortal Kombat realism, no gore, no text, no logo, no watermark, no new props, no projectile. Return a genuinely transparent PNG atlas with exactly 16 separate poses in the same cells and consistent anatomical scale.",
+    "separation_repair": "Use case: precise-object-edit\nAsset type: original native SNES fighting-game character sprite atlas\nInput images: Image 1 is the EDIT TARGET: Fernando Pérez's revised transparent 4x4 fighting-game atlas. Image 2 is the REFERENCE IMAGE for identity cues only.\n\nPerform a surgical cleanup of Image 1. Keep the revised Fernando face and hair exactly: broad round-oval face, full cheeks, soft chin, dense black natural side-parted hair with modest lift, thick dark brows, soft eyes, calm friendly mouth. Keep the teal field jacket, stocky body, every pose, every outfit color, orientation, cell positions, transparent canvas, and 1993 arcade cartoon cel-shaded style unchanged.\n\nFix only the atlas separation: ensure exactly 16 disconnected full-body silhouettes, one per 4x4 cell, with a clear transparent gap between every neighboring pose. In particular, separate the vertically touching silhouettes in the second column between the raised-block pose in row 3 and the rising-uppercut pose in row 4; do not delete anatomy or change the action. Also preserve the existing small blue energy glow on the row-4 cast pose and do not add a projectile.\n\nDo not resize, crop, rotate, mirror, add text, logo, grid, border, scenery, shadow, or new objects. Return a genuinely transparent RGBA PNG with exactly 16 separate figures and the same readable right-facing orientation (KO head-left). Original SNES-friendly bright comic-book pixel art only; no photorealism or Mortal Kombat realism."
+  },
+  "provenance": {
+    "source_reference": "assets/references/fighter-06.jpg",
+    "tool": "image_gen",
+    "selection": "selected after visual inspection; final pass is the separation repair; no compositing or repainting"
+  },
+  "validation": {
+    "command": ".tools/python/python.exe with tools.fighter_assets.extract_atlas(atlas.png, alpha_threshold=200)",
+    "alpha_threshold": 200,
+    "figures": 16,
+    "dimensions": [1217, 1293],
+    "mode": "RGBA",
+    "alpha_range": [0, 255],
+    "pose_order": ["idle", "walk-forward", "walk-back", "crouch", "jump", "jab", "cross", "kick", "sweep", "block", "hurt", "victory", "cast", "uppercut", "knockout", "rush"],
+    "sha256": "2effcc94d918b989d9f13f96d6ef483cb54d29186afb46d0459a6655687d8eb8"
+  }
+}

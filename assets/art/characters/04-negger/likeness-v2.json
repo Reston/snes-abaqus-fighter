@@ -1,0 +1,33 @@
+{
+  "character_id": "04-negger",
+  "display_name": "Gonzalo \"Negger\" Reyes",
+  "asset": "atlas.png",
+  "mode": "built-in image_gen edit",
+  "input_images": [
+    {
+      "path": "assets/art/characters/04-negger/atlas.png",
+      "role": "edit target; preserve the existing 4x4 pose atlas, body, outfit, orientation, and transparent layout"
+    },
+    {
+      "path": "assets/references/fighter-04.jpg",
+      "role": "reference image for face, hair, and light-stubble identity cues only"
+    }
+  ],
+  "selected_generated_path": "C:/Users/user/.codex/generated_images/01a1572d-811e-7932-a579-efcb909fc06a/exec-bf811283-e910-40de-8daa-6f0799e2a7b0.png",
+  "prompt": "Use case: identity-preserve\nAsset type: original native SNES fighting-game character sprite atlas\nInput images: Image 1 is the EDIT TARGET: the existing Gonzalo \"Negger\" Reyes transparent 4x4 atlas. Image 2 is the REFERENCE IMAGE for identity cues only: use the person's face and hair as visual authority, never copy the photograph or its clothing, logos, or background.\n\nEdit only the character faces, hair, and subtle facial hair across all 16 poses in Image 1. Preserve everything else exactly: the original 4 columns x 4 rows layout, cell spacing, transparent background, pose order, pose geometry, body proportions, broad heavy bruiser silhouette, purple bomber jacket, white shirt, charcoal trousers, shoes, navy outline and bright 1993 arcade fighting-game cartoon cel-shaded style. Keep all 16 figures fully disconnected, right-facing, except the existing KO pose head-left. Do not crop, resize, rotate, mirror, merge, or add any figure.\n\nIdentity target for Gonzalo \"Negger\" Reyes, based on Image 2: short nearly-black dark-brown slightly wavy hair with a high natural hairline and a small loose fringe; a longer rectangular adult face with broad cheeks, a straighter prominent nose, normal eyelids and thicker brows; light short patchy stubble on the jaw and moustache. Keep a calm serious mouth. Make the face recognizable at SNES sprite scale. Use light short stubble only: NOT a big full beard. Keep the expression readable and non-angry.\n\nStyle constraints: original 1993 Street Fighter II-inspired bright comic-book pixel-cartoon/cel-shaded illustration, chunky navy contours and limited palette; no photorealistic skin, no digitized photo head, no Mortal Kombat realism, no gore, no text, no logo, no watermark, no new props, no projectile. Return a genuinely transparent PNG atlas with exactly 16 separate poses in the same cells and consistent anatomical scale.",
+  "provenance": {
+    "source_reference": "assets/references/fighter-04.jpg",
+    "tool": "image_gen",
+    "selection": "selected after visual inspection; no compositing or repainting"
+  },
+  "validation": {
+    "command": ".tools/python/python.exe with tools.fighter_assets.extract_atlas(atlas.png, alpha_threshold=200)",
+    "alpha_threshold": 200,
+    "figures": 16,
+    "dimensions": [1254, 1254],
+    "mode": "RGBA",
+    "alpha_range": [0, 255],
+    "pose_order": ["idle", "walk-forward", "walk-back", "crouch", "jump", "jab", "cross", "kick", "sweep", "block", "hurt", "victory", "cast", "uppercut", "knockout", "rush"],
+    "sha256": "dec420bc21d5c130b59b8196a021330bb7d3be40d2972b5f63ea4d7a57fcc509"
+  }
+}

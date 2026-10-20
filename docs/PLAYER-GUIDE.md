@@ -10,7 +10,9 @@ Extract the Windows release ZIP and double-click `Play.cmd`, or run `Play.cmd` f
 
 **Training:** a passive opponent recovers health, the clock stays at 99, and you can practice moves. Press Start, then B, to change fighters.
 
-On the title screen, L/R cycles three CPU difficulty levels. The default is level 2.
+On the home screen, L/R cycles three CPU difficulty levels. The default is level 2.
+
+The fighter select screen uses a four-by-three card layout. Left and right move across the roster; Up and Down move by four cards between rows and wrap around. The highlighted fighter's large profile portrait updates beside the cards. The arena menu uses the same row-based navigation for Las Condes, El Castillo and La Oficina.
 
 ## Controls
 
@@ -38,7 +40,7 @@ Player two uses **I/J/K/L** for up/left/down/right, **numpad 7/8/9** for punches
 
 Health is shown in gold. Energy is shown in teal. Win two rounds to take a match. At timeout, the fighter with more health wins; a tie restarts the round without awarding a round win.
 
-All twelve fighters have individual movement, jump arcs, normal attack speed and reach, throws and special tuning. See [CHARACTERS.md](CHARACTERS.md) for the complete roster and each move's frame data.
+All twelve fighters have individual movement, jump arcs, normal attack speed and reach, throws and special tuning. Their sixteen poses share a 96×80 native canvas and one consistent physical scale per fighter, so a fighter's standing height can be slightly reduced to keep every attack and recovery pose inside the safe area. See [CHARACTERS.md](CHARACTERS.md) for the complete roster and each move's frame data.
 
 ## Emulator options
 

@@ -11,7 +11,14 @@ from PIL import Image, ImageOps
 SLUGS = ('damian', 'ivo', 'cristobal', 'cote', 'negger', 'david',
          'fernando', 'cristian', 'mamariaga', 'reston', 'roxana', 'lars')
 HEIGHTS = (69, 72, 68, 69, 72, 68, 67, 73, 66, 70, 68, 74)
-FACE_PORTRAITS = (1, 2, 5, 7, 11)
+# Native OBJ frames are six 16x16 pieces by five rows.  Keep a small safety
+# margin inside the 96x80 canvas so a one-pixel rounding difference never
+# clips an extended hand or kick at the frame edge.
+FRAME_WIDTH = 96
+FRAME_HEIGHT = 80
+FIT_WIDTH = 94
+FIT_HEIGHT = 77
+BASELINE_Y = 78
 POSES = ('idle', 'walk-forward', 'walk-back', 'crouch', 'jump', 'jab',
          'cross', 'kick', 'sweep', 'block', 'hurt', 'victory', 'cast',
          'uppercut', 'knockout', 'rush')
@@ -86,15 +93,54 @@ def prepare_roster(root, output):
         source = root / f'assets/art/characters/{fighter:02}-{slug}/atlas.png'
         assert source.exists(), f'Missing individual fighter master: {source}'
         figures, metadata = extract_atlas(source)
+        # One fighter scale is shared by every pose.  The idle figure sets the
+        # desired standing height; the all-frame guard only reduces it when an
+        # extended kick, jump, KO, etc. would exceed the native canvas.
         base_scale = HEIGHTS[fighter] / figures[0].height
+        max_width = max(figure.width for figure in figures)
+        max_height = max(figure.height for figure in figures)
+        uniform_scale = min(base_scale, FIT_WIDTH / max_width,
+                            FIT_HEIGHT / max_height)
+
+        # PIL's round() can promote a .5 result above the guard by one pixel.
+        # Re-evaluate once using the rounded dimensions so the manifest's
+        # recorded scale and the actual native raster agree exactly.
+        for _ in range(3):
+            sizes = [(max(1, round(figure.width * uniform_scale)),
+                      max(1, round(figure.height * uniform_scale)))
+                     for figure in figures]
+            rounded_width = max(width for width, _ in sizes)
+            rounded_height = max(height for _, height in sizes)
+            if rounded_width <= FIT_WIDTH and rounded_height <= FIT_HEIGHT:
+                break
+            uniform_scale *= min(FIT_WIDTH / rounded_width,
+                                 FIT_HEIGHT / rounded_height)
+        else:
+            raise AssertionError(f'{slug}: could not fit all poses in the native canvas')
+
         frames = []
-        for figure in figures:
-            scale = min(base_scale, 62 / figure.width, 77 / figure.height)
-            resized = figure.resize((max(1, round(figure.width * scale)),
-                                     max(1, round(figure.height * scale))), Image.Resampling.NEAREST)
-            frame = Image.new('RGBA', (64, 80))
-            frame.alpha_composite(resized, ((64 - resized.width) // 2, 78 - resized.height))
+        for pose, figure in enumerate(figures):
+            resized_size = (max(1, round(figure.width * uniform_scale)),
+                            max(1, round(figure.height * uniform_scale)))
+            assert resized_size[0] <= FIT_WIDTH and resized_size[1] <= FIT_HEIGHT, \
+                f'{slug}/{POSES[pose]} exceeds {FIT_WIDTH}x{FIT_HEIGHT}: {resized_size}'
+            resized = figure.resize(resized_size, Image.Resampling.NEAREST)
+            frame = Image.new('RGBA', (FRAME_WIDTH, FRAME_HEIGHT))
+            frame.alpha_composite(resized,
+                                  ((FRAME_WIDTH - resized.width) // 2,
+                                   BASELINE_Y - resized.height))
             frames.append(frame)
+            alpha_box = frame.getchannel('A').getbbox()
+            assert alpha_box and alpha_box[1] >= 0 and alpha_box[3] <= FRAME_HEIGHT, \
+                f'{slug}/{POSES[pose]} clipped in {FRAME_WIDTH}x{FRAME_HEIGHT} canvas'
+            metadata[pose]['scale'] = uniform_scale
+            metadata[pose]['native_size'] = list(resized_size)
+            metadata[pose]['native_box'] = list(alpha_box)
+            metadata[pose]['effective_width'] = alpha_box[2] - alpha_box[0]
+            metadata[pose]['effective_height'] = alpha_box[3] - alpha_box[1]
+            metadata[pose]['frame_canvas'] = [FRAME_WIDTH, FRAME_HEIGHT]
+            metadata[pose]['baseline_y'] = BASELINE_Y
+            metadata[pose]['clipped'] = False
         # Build a per-fighter palette from opaque pixels only. Transparent black
         # cannot consume a color; all sixteen frames share the same CGRAM bank.
         opaque = [pixel[:3] for frame in frames for pixel in frame.get_flattened_data() if pixel[3]]
@@ -107,35 +153,61 @@ def prepare_roster(root, output):
         quantizer = Image.new('P', (1, 1))
         quantizer.putpalette(sum((list(c) for c in colors), []) + list(colors[-1]) * 241)
         indices = []
-        preview = Image.new('RGBA', (64 * 16, 80))
+        preview = Image.new('RGBA', (FRAME_WIDTH * 16, FRAME_HEIGHT))
         for pose, frame in enumerate(frames):
             indexed = frame.convert('RGB').quantize(palette=quantizer, dither=Image.Dither.NONE)
             ids = [min(color, 14) + 1 if alpha else 0
                    for color, alpha in zip(indexed.get_flattened_data(), frame.getchannel('A').get_flattened_data())]
             indices.append(ids)
-            raster = Image.new('RGBA', (64, 80))
+            raster = Image.new('RGBA', (FRAME_WIDTH, FRAME_HEIGHT))
             raster.putdata([((0, 0, 0, 0) if not value else colors[value - 1] + (255,)) for value in ids])
-            preview.paste(raster, (pose * 64, 0))
-            metadata[pose]['native_box'] = raster.getbbox()
+            preview.paste(raster, (pose * FRAME_WIDTH, 0))
+            native_box = raster.getchannel('A').getbbox()
+            metadata[pose]['native_box'] = list(native_box) if native_box else None
+            metadata[pose]['effective_width'] = (native_box[2] - native_box[0]) if native_box else 0
+            metadata[pose]['effective_height'] = (native_box[3] - native_box[1]) if native_box else 0
             metadata[pose]['pixels_sha256'] = hashlib.sha256(bytes(ids)).hexdigest()
         assert len({bytes(ids) for ids in indices}) >= 14, f'{slug}: animation poses were duplicated'
         preview.save(output / f'fighter{fighter:02}.png')
         # Reuse the same illustrated face and costume for the select portrait.
-        # This is a source-master crop, not an enlarged 64x80 runtime sprite.
+        # These are close face crops for every roster member.  The large copy
+        # is intentionally made from the source-derived idle figure rather
+        # than enlarging the 32x40 card, so menu and review art share details.
         idle = figures[0]
-        # The likeness pass gives the corrected faces more of the select card.
-        # Keep enough collar and hair visible to preserve recognition cues.
-        portrait_fraction = .40 if fighter in FACE_PORTRAITS else .56
-        portrait_center = .68 if fighter in FACE_PORTRAITS else .58
-        upper = idle.crop((0, 0, idle.width, round(idle.height * portrait_fraction)))
-        portrait = ImageOps.fit(upper, (32, 40), Image.Resampling.NEAREST, centering=(portrait_center, .18))
+        portrait_fraction = .44
+        portrait_center = .50
+        upper = idle.crop((0, 0, idle.width,
+                           max(1, round(idle.height * portrait_fraction))))
+        portrait = ImageOps.fit(upper, (32, 40), Image.Resampling.NEAREST,
+                                centering=(portrait_center, .18))
+        portrait_large = ImageOps.fit(upper, (64, 80), Image.Resampling.NEAREST,
+                                      centering=(portrait_center, .18))
         backdrop = Image.new('RGB', (32, 40), colors[0])
         backdrop.paste(portrait, (0, 0), portrait.getchannel('A'))
+        backdrop_large = Image.new('RGB', (64, 80), colors[0])
+        backdrop_large.paste(portrait_large, (0, 0), portrait_large.getchannel('A'))
         backdrop.save(output / f'portrait{fighter:02}.png')
-        fighters.append({'indices': indices, 'palette': [(0, 0, 0)] + colors, 'portrait': backdrop})
+        backdrop_large.save(output / f'portrait{fighter:02}-large.png')
+        effective_standing_height = metadata[0]['effective_height']
+        effective_height = max(item['effective_height'] for item in metadata)
+        effective_width = max(item['effective_width'] for item in metadata)
+        fighters.append({'indices': indices, 'palette': [(0, 0, 0)] + colors,
+                         'portrait': backdrop, 'portrait_large': backdrop_large,
+                         'scale': uniform_scale, 'portrait_face': backdrop,
+                         'portrait_face_large': backdrop_large})
         manifests.append({'id': fighter, 'name': slug, 'source': str(source.relative_to(root)).replace('\\', '/'),
                           'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
-                          'standing_height': HEIGHTS[fighter], 'palette': [(0, 0, 0)] + colors, 'frames': metadata})
+                          'standing_height': HEIGHTS[fighter],
+                          'desired_standing_height': HEIGHTS[fighter],
+                          'effective_height': effective_height,
+                          'effective_standing_height': effective_standing_height,
+                          'effective_width': effective_width,
+                          'scale': uniform_scale,
+                          'uniform_scale': uniform_scale,
+                          'frame_canvas': [FRAME_WIDTH, FRAME_HEIGHT],
+                          'fit_bounds': [FIT_WIDTH, FIT_HEIGHT],
+                          'baseline_y': BASELINE_Y,
+                          'palette': [(0, 0, 0)] + colors, 'frames': metadata})
         print(f'Prepared {slug}: 16 individual frames, 15-color OBJ palette', flush=True)
     assert len({tuple(f['indices'][0]) for f in fighters}) == 12, 'Roster must have twelve distinct idle drawings'
     (output / 'character-manifest.json').write_text(json.dumps(manifests, indent=2) + '\n')

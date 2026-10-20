@@ -7,10 +7,20 @@ the rolled white sleeves, dark trousers, and navy contours keep his body parts
 separate after reduction to SNES sprite size.
 
 The face and hair are cartoon design cues derived from
-`assets/references/fighter-03.jpg`: short warm red hair, a trimmed red beard,
-and a warm light complexion. The atlas is original game art and depicts a
-fictional fighter, not a realistic employee portrait or an assigned real-world
-role.
+`assets/references/fighter-03.jpg`: short naturally swept copper/ginger hair,
+a full rounded ginger beard and moustache, paler skin, a long oval face, and a
+high forehead. His eyes stay normal and his mouth stays calm and confident.
+The atlas is original game art and depicts a fictional fighter, not a realistic
+employee portrait or an assigned real-world role.
+
+## Likeness revision
+
+The v2 likeness pass uses `assets/references/fighter-03.jpg` only as a broad
+identity reference. It keeps the original fictional cartoon fighter, crimson
+waistcoat, pale sleeves, body, and all sixteen pose silhouettes while refining
+the hair, beard, and head cues across every cell. The selected source was
+generated with the built-in imagegen edit workflow and is recorded in
+`likeness-v2.json`.
 
 Readability targets:
 

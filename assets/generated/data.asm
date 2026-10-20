@@ -89,6 +89,126 @@ arenas_pal:
 .incbin "assets/generated/arenas_pal.bin"
 arenas_pal_end:
 .ends
+.section "asset_portrait00_tiles" superfree
+portrait00_tiles:
+.incbin "assets/generated/portrait00_tiles.bin"
+portrait00_tiles_end:
+.ends
+.section "asset_portrait00_pal" superfree
+portrait00_pal:
+.incbin "assets/generated/portrait00_pal.bin"
+portrait00_pal_end:
+.ends
+.section "asset_portrait01_tiles" superfree
+portrait01_tiles:
+.incbin "assets/generated/portrait01_tiles.bin"
+portrait01_tiles_end:
+.ends
+.section "asset_portrait01_pal" superfree
+portrait01_pal:
+.incbin "assets/generated/portrait01_pal.bin"
+portrait01_pal_end:
+.ends
+.section "asset_portrait02_tiles" superfree
+portrait02_tiles:
+.incbin "assets/generated/portrait02_tiles.bin"
+portrait02_tiles_end:
+.ends
+.section "asset_portrait02_pal" superfree
+portrait02_pal:
+.incbin "assets/generated/portrait02_pal.bin"
+portrait02_pal_end:
+.ends
+.section "asset_portrait03_tiles" superfree
+portrait03_tiles:
+.incbin "assets/generated/portrait03_tiles.bin"
+portrait03_tiles_end:
+.ends
+.section "asset_portrait03_pal" superfree
+portrait03_pal:
+.incbin "assets/generated/portrait03_pal.bin"
+portrait03_pal_end:
+.ends
+.section "asset_portrait04_tiles" superfree
+portrait04_tiles:
+.incbin "assets/generated/portrait04_tiles.bin"
+portrait04_tiles_end:
+.ends
+.section "asset_portrait04_pal" superfree
+portrait04_pal:
+.incbin "assets/generated/portrait04_pal.bin"
+portrait04_pal_end:
+.ends
+.section "asset_portrait05_tiles" superfree
+portrait05_tiles:
+.incbin "assets/generated/portrait05_tiles.bin"
+portrait05_tiles_end:
+.ends
+.section "asset_portrait05_pal" superfree
+portrait05_pal:
+.incbin "assets/generated/portrait05_pal.bin"
+portrait05_pal_end:
+.ends
+.section "asset_portrait06_tiles" superfree
+portrait06_tiles:
+.incbin "assets/generated/portrait06_tiles.bin"
+portrait06_tiles_end:
+.ends
+.section "asset_portrait06_pal" superfree
+portrait06_pal:
+.incbin "assets/generated/portrait06_pal.bin"
+portrait06_pal_end:
+.ends
+.section "asset_portrait07_tiles" superfree
+portrait07_tiles:
+.incbin "assets/generated/portrait07_tiles.bin"
+portrait07_tiles_end:
+.ends
+.section "asset_portrait07_pal" superfree
+portrait07_pal:
+.incbin "assets/generated/portrait07_pal.bin"
+portrait07_pal_end:
+.ends
+.section "asset_portrait08_tiles" superfree
+portrait08_tiles:
+.incbin "assets/generated/portrait08_tiles.bin"
+portrait08_tiles_end:
+.ends
+.section "asset_portrait08_pal" superfree
+portrait08_pal:
+.incbin "assets/generated/portrait08_pal.bin"
+portrait08_pal_end:
+.ends
+.section "asset_portrait09_tiles" superfree
+portrait09_tiles:
+.incbin "assets/generated/portrait09_tiles.bin"
+portrait09_tiles_end:
+.ends
+.section "asset_portrait09_pal" superfree
+portrait09_pal:
+.incbin "assets/generated/portrait09_pal.bin"
+portrait09_pal_end:
+.ends
+.section "asset_portrait10_tiles" superfree
+portrait10_tiles:
+.incbin "assets/generated/portrait10_tiles.bin"
+portrait10_tiles_end:
+.ends
+.section "asset_portrait10_pal" superfree
+portrait10_pal:
+.incbin "assets/generated/portrait10_pal.bin"
+portrait10_pal_end:
+.ends
+.section "asset_portrait11_tiles" superfree
+portrait11_tiles:
+.incbin "assets/generated/portrait11_tiles.bin"
+portrait11_tiles_end:
+.ends
+.section "asset_portrait11_pal" superfree
+portrait11_pal:
+.incbin "assets/generated/portrait11_pal.bin"
+portrait11_pal_end:
+.ends
 .section "asset_ui_tiles" superfree
 ui_tiles:
 .incbin "assets/generated/ui_tiles.bin"
