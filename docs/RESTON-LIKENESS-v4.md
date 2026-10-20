@@ -2,8 +2,9 @@
 
 Reston's v0.8.1 revision adds a fuller, very short dark buzz cap over the crown
 and temples while retaining his mature high forehead, beard and costume. All
-64 frames passed native-size visual review for integration. Human likeness
-feedback and public-use approval remain pending.
+64 frames passed native-size visual review for integration. On 2026-10-20 the
+user confirmed that the revised buzz cut looks closer to Reston: "Yes, closer."
+Final team likeness review and public-use approval remain pending.
 
 ## Saved art and full prompts
 
