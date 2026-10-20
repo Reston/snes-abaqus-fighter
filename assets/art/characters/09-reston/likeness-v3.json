@@ -1,0 +1,41 @@
+{
+  "character_id": "09-reston",
+  "character_name": "Jose David \"Reston\" Ordonez",
+  "asset": "atlas.png",
+  "generation_mode": "built-in image_gen edit",
+  "generated_at": "2026-10-20",
+  "transparent_background": true,
+  "source_references": [
+    {
+      "path": "assets/art/characters/09-reston/atlas-v2.png",
+      "role": "edit target; previous selected v2 atlas, retained unchanged",
+      "sha256": "76b6340c2efd8accb29b64ffb19324170c1d151d9217721b613bfcf802b7949f"
+    },
+    {
+      "path": "C:/Users/user/.t3/userdata/attachments/52a10d60-8bd7-44e8-88be-c4667e065c96-66d5a037-0af9-4aee-baff-547f1c5a2641.png",
+      "role": "user-provided Reston hair reference; not copied into the project asset tree"
+    }
+  ],
+  "provenance": {
+    "tool": "built-in image_gen",
+    "selected_output": "C:/Users/user/.codex/generated_images/01a156ae-1193-7dc2-919a-5a8c499f8988/exec-2c5374d2-fcfb-4aff-a406-288556fe1329.png",
+    "processing": "Direct tool output copied to atlas.png; no manual hair painting or compositing. Native pipeline only isolates/scales/quantizes."
+  },
+  "prompt_text": "Use case: precise-object-edit\nAsset type: existing original cartoon SNES fighting-game 4x4 transparent character atlas.\nInput images: Image 1 is the exact existing Reston sprite atlas EDIT TARGET. Image 2 is the user's new Reston photograph, HAIR REFERENCE ONLY.\nPrimary request: Reston is too bald. Change only his hair in all sixteen poses to resemble Image 2: very short dark near-black buzz-cut hair across the crown AND top, a high but moderately receding front hairline, dense cropped sides, some fine thinning on the upper/front scalp. He has close-cropped hair, not a bare shiny bald crown. Give him a restrained continuous dark cropped hair cap extending further forward over the scalp than the edit target; retain his naturally high forehead. At the tiny native sprite scale the top hair should read as dark charcoal/near-black, with a few lighter scalp/short-hair highlights, not a large bare orange forehead-to-crown dome. Do not give him long hair, a pompadour, bangs or a full low youthful hairline. The edit is modest and reference-faithful, not a new hairstyle.\nInvariants: keep the exact 1254x1254 transparent canvas, 4 columns by 4 rows, all sixteen full-body figures, exact pose positions, body anatomy and proportions, existing heads/face identity and beard, orange/copper jacket and cream cuffs/collar, navy trousers and shoes, material colors, navy outlines, crisp original 1993 arcade cartoon cel shading, right-facing orientation, pose order and baselines. Only the scalp hair changes. Keep generous fully transparent gaps between every figure, including hands/feet. Never merge adjacent poses. Preserve the KO pose head-left feet-right at row4 column3. Preserve all silhouettes and actions. No background, grid, shadows, labels, text, watermark, energy effects or detached parts.\nPose order unchanged: idle, walk-forward, walk-back, crouch; jump, jab, cross, kick; sweep, block, hurt, victory; cast, uppercut, horizontal knockout, rush.\nOutput: same transparent RGBA 1254x1254 production atlas. Change only Reston's hair consistently across all sixteen poses.",
+  "validation": {
+    "tool": "tools/fighter_assets.py::extract_atlas",
+    "alpha_threshold": 200,
+    "separate_figures": 16,
+    "canvas": [
+      1254,
+      1254
+    ],
+    "alpha_range": [
+      0,
+      255
+    ],
+    "sha256": "da764ee7b65773065d5f05d32b6f5e20e3f3b3d18c5012006c33d83f0fdde622",
+    "maximum_pose_box_edge_change": 4,
+    "status": "passed"
+  }
+}

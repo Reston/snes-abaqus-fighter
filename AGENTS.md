@@ -27,6 +27,8 @@ Preserve the native emulator requirement when extending the project.
   Damián, Cote, Negger, Fernando, Mamariaga, Reston and Roxana; the earlier v2
   masters for Ivo, Cristóbal, David, Cristián and Lars remain selected. All
   twelve have matching 32×40 card and 64×80 profile portraits.
+  Reston's subsequent short-hair correction is recorded in
+  `assets/art/characters/09-reston/likeness-v3.json`; retain the earlier atlas.
 - The v0.4 presentation uses three independent stage PNGs described by
   `assets/art/stages/stages.json`, plus original home/select/arena menu art
   under `assets/art/menu/`. Keep `assets/art/menu/prompts.json` with the source

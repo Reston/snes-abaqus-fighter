@@ -45,7 +45,7 @@ assert len(data)==2*1024*1024, 'Expected 2 MiB LoROM'
 assert data[0x7fd5] == 0x30, 'Expected FastROM LoROM header'
 checksum = int.from_bytes(data[0x7fde:0x7fe0],'little')
 assert checksum == (sum(data)&65535), 'ROM checksum mismatch'
-manifest = {'title':'Abaqus: After Hours','version':'0.4.0','rom':rom.name,'bytes':len(data),
+manifest = {'title':'Abaqus: After Hours','version':'0.4.1','rom':rom.name,'bytes':len(data),
             'sha256':hashlib.sha256(data).hexdigest(),'checksum':f'{checksum:04X}',
             'toolchain':'PVSnesLib 4.6.0 / 816-tcc / WLA-DX','mapping':'2 MiB FastROM LoROM','region':'NTSC 60 Hz'}
 (ROOT/'dist/manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')

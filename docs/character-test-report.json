@@ -1,6 +1,6 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "e8b3d5eeda6fe57ec025abcbacd772d129e26d38440f5ea74b86e1ac0754141e",
+  "rom_sha256": "f5b431bc68db8f5f2b909c1c95e40edb62e2518ca06c8671ce6d7f44ab209e4b",
   "rom_bytes": 2097152,
   "checks": [
     {
@@ -4180,7 +4180,7 @@
       "passed": true,
       "details": {
         "fighter": 9,
-        "scale": 0.23102310231023102,
+        "scale": 0.2280130293159609,
         "span": 0.0
       }
     },
@@ -4352,7 +4352,7 @@
         "fighter": 9,
         "pose": "walk-forward",
         "box": [
-          17,
+          18,
           8,
           78,
           78
@@ -4381,7 +4381,7 @@
         "pose": "crouch",
         "box": [
           23,
-          28,
+          27,
           73,
           78
         ]
@@ -4395,7 +4395,7 @@
         "pose": "jump",
         "box": [
           21,
-          26,
+          25,
           75,
           78
         ]
@@ -4408,7 +4408,7 @@
         "fighter": 9,
         "pose": "jab",
         "box": [
-          12,
+          13,
           15,
           83,
           78
@@ -4423,7 +4423,7 @@
         "pose": "cross",
         "box": [
           12,
-          15,
+          16,
           83,
           78
         ]
@@ -4437,7 +4437,7 @@
         "pose": "kick",
         "box": [
           15,
-          15,
+          16,
           80,
           78
         ]
@@ -4450,7 +4450,7 @@
         "fighter": 9,
         "pose": "sweep",
         "box": [
-          8,
+          9,
           35,
           87,
           78
@@ -4479,7 +4479,7 @@
         "pose": "hurt",
         "box": [
           17,
-          23,
+          24,
           78,
           78
         ]
@@ -4492,7 +4492,7 @@
         "fighter": 9,
         "pose": "victory",
         "box": [
-          21,
+          22,
           18,
           74,
           78
@@ -4508,7 +4508,7 @@
         "box": [
           17,
           28,
-          79,
+          78,
           78
         ]
       }
@@ -4521,7 +4521,7 @@
         "pose": "uppercut",
         "box": [
           29,
-          20,
+          21,
           67,
           78
         ]
@@ -4535,7 +4535,7 @@
         "pose": "knockout",
         "box": [
           8,
-          57,
+          58,
           88,
           78
         ]
@@ -4605,7 +4605,7 @@
         "fighter": 9,
         "pose": "kick",
         "idle_height": 70,
-        "pose_height": 63
+        "pose_height": 62
       }
     },
     {
@@ -22217,8 +22217,8 @@
       "details": {
         "fighter": 9,
         "side": 0,
-        "changed_pixels": 2303,
-        "opaque_pixels": 2310,
+        "changed_pixels": 2300,
+        "opaque_pixels": 2309,
         "minimum": 115
       }
     },
@@ -33468,8 +33468,8 @@
       "details": {
         "fighter": 9,
         "side": 1,
-        "changed_pixels": 2243,
-        "opaque_pixels": 2310,
+        "changed_pixels": 2280,
+        "opaque_pixels": 2309,
         "minimum": 115
       }
     },
@@ -35545,7 +35545,7 @@
       "baseline": 78
     },
     "09": {
-      "scale": 0.23102310231023102,
+      "scale": 0.2280130293159609,
       "scale_source": "frames",
       "idle_box": [
         18,
@@ -35554,21 +35554,21 @@
         78
       ],
       "jab_box": [
-        12,
+        13,
         15,
         83,
         78
       ],
       "kick_box": [
         15,
-        15,
+        16,
         80,
         78
       ],
       "cast_box": [
         17,
         28,
-        79,
+        78,
         78
       ],
       "baseline": 78
@@ -36448,8 +36448,8 @@
           96,
           198
         ],
-        "changed_pixels": 2303,
-        "opaque_pixels": 2310
+        "changed_pixels": 2300,
+        "opaque_pixels": 2309
       },
       "crouch_stream": {
         "pose": 3,
@@ -36903,8 +36903,8 @@
           220,
           199
         ],
-        "changed_pixels": 2243,
-        "opaque_pixels": 2310
+        "changed_pixels": 2280,
+        "opaque_pixels": 2309
       }
     },
     "10": {
@@ -37067,6 +37067,6 @@
     }
   },
   "passed": 2714,
-  "elapsed_seconds": 24.52,
+  "elapsed_seconds": 18.83,
   "status": "passed"
 }

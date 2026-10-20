@@ -2,7 +2,7 @@
 
 An original six-button fighting game for the **Super Nintendo**, inspired by the arcade structure of Street Fighter II and the people and places of Abaqus in Santiago.
 
-**Presentation and proportion polish release: v0.4.0.** The cartridge is a 2 MiB NTSC FastROM LoROM image across 64 banks, compiled from C and 65816 assembly. It runs in Snes9x with ordinary SNES controllers.
+**Presentation and proportion polish release: v0.4.1.** Reston's short dark hair now follows the newly supplied photo. The cartridge is a 2 MiB NTSC FastROM LoROM image across 64 banks, compiled from C and 65816 assembly. It runs in Snes9x with ordinary SNES controllers.
 
 The [release notes](docs/RELEASE-v0.4.md) cover the art and renderer changes and the 2,985 passing headless checks on the exact release ROM.
 
@@ -14,7 +14,7 @@ Each of the twelve fighters has an individual illustrated sixteen-pose atlas, si
 
 On Windows, double-click **[Play.cmd](Play.cmd)**. The launcher downloads the official Snes9x 1.63 release into `.tools/` on its first run, verifies its SHA256, and opens the game. No administrator account or global installation is needed. The tools are already present in this checkout.
 
-For offline play, extract `dist/Abaqus-After-Hours-v0.4.0-Windows.zip` and run its `Play.cmd`. The package contains the ROM, emulator, default controls, guide, character profiles and credits.
+For offline play, extract `dist/Abaqus-After-Hours-v0.4.1-Windows.zip` and run its `Play.cmd`. The package contains the ROM, emulator, default controls, guide, character profiles and credits.
 
 On other platforms, open **[dist/abaqus-after-hours.sfc](dist/abaqus-after-hours.sfc)** in a SNES emulator. No BIOS or commercial ROM is required.
 

@@ -5421,14 +5421,14 @@
     "id": 9,
     "name": "reston",
     "source": "assets/art/characters/09-reston/atlas.png",
-    "source_sha256": "76b6340c2efd8accb29b64ffb19324170c1d151d9217721b613bfcf802b7949f",
+    "source_sha256": "da764ee7b65773065d5f05d32b6f5e20e3f3b3d18c5012006c33d83f0fdde622",
     "standing_height": 70,
     "desired_standing_height": 70,
     "effective_height": 70,
     "effective_standing_height": 70,
     "effective_width": 80,
-    "scale": 0.23102310231023102,
-    "uniform_scale": 0.23102310231023102,
+    "scale": 0.2280130293159609,
+    "uniform_scale": 0.2280130293159609,
     "frame_canvas": [
       96,
       80
@@ -5470,19 +5470,19 @@
         64
       ],
       [
-        88,
+        96,
         16,
         24
       ],
       [
         24,
-        40,
+        48,
         96
       ],
       [
         32,
         48,
-        96
+        104
       ],
       [
         56,
@@ -5490,8 +5490,8 @@
         80
       ],
       [
-        224,
-        24,
+        232,
+        32,
         0
       ],
       [
@@ -5500,13 +5500,13 @@
         0
       ],
       [
-        208,
+        184,
         96,
-        48
+        56
       ],
       [
         248,
-        128,
+        120,
         48
       ],
       [
@@ -5524,14 +5524,14 @@
       {
         "pose": "idle",
         "source_box": [
-          24,
-          39,
-          285,
-          342
+          23,
+          36,
+          287,
+          343
         ],
-        "opaque_pixels": 43349,
+        "opaque_pixels": 44399,
         "alpha_threshold": 200,
-        "scale": 0.23102310231023102,
+        "scale": 0.2280130293159609,
         "native_size": [
           60,
           70
@@ -5550,30 +5550,30 @@
         ],
         "baseline_y": 78,
         "clipped": false,
-        "pixels_sha256": "efee39bbb0140346b841fd35bddeca1ff64fda255da16a76feba2007692b7f3a"
+        "pixels_sha256": "e9ad48d75a109fd732ffe71d4500a68924e7d30e28d24eeafc9382d9f7cf173e"
       },
       {
         "pose": "walk-forward",
         "source_box": [
           361,
-          39,
-          623,
-          342
+          36,
+          624,
+          343
         ],
-        "opaque_pixels": 43452,
+        "opaque_pixels": 44577,
         "alpha_threshold": 200,
-        "scale": 0.23102310231023102,
+        "scale": 0.2280130293159609,
         "native_size": [
-          61,
+          60,
           70
         ],
         "native_box": [
-          17,
+          18,
           8,
           78,
           78
         ],
-        "effective_width": 61,
+        "effective_width": 60,
         "effective_height": 70,
         "frame_canvas": [
           96,
@@ -5581,19 +5581,19 @@
         ],
         "baseline_y": 78,
         "clipped": false,
-        "pixels_sha256": "4da5134287fca730e1431d60ebc9ccfc7e5ab61635e8f5e307e2f392cb6a0cfe"
+        "pixels_sha256": "149bda74298133f34526a8787003f51c3e6e597a5f1084c7a1d5fd3c6a3c014d"
       },
       {
         "pose": "walk-back",
         "source_box": [
-          684,
-          41,
-          940,
-          343
+          683,
+          38,
+          941,
+          344
         ],
-        "opaque_pixels": 43468,
+        "opaque_pixels": 44695,
         "alpha_threshold": 200,
-        "scale": 0.23102310231023102,
+        "scale": 0.2280130293159609,
         "native_size": [
           59,
           70
@@ -5612,92 +5612,92 @@
         ],
         "baseline_y": 78,
         "clipped": false,
-        "pixels_sha256": "d3acebad79dfa881516868474142a65a5e9fa4cb01edee209f7fd2ed1358e0c8"
+        "pixels_sha256": "ed80212ab38f79db7b855a4bbef8ead552724656ce3d4884def0b2e92f79dd68"
       },
       {
         "pose": "crouch",
         "source_box": [
-          1006,
-          126,
-          1221,
-          343
+          1005,
+          122,
+          1223,
+          345
         ],
-        "opaque_pixels": 32568,
+        "opaque_pixels": 33614,
         "alpha_threshold": 200,
-        "scale": 0.23102310231023102,
+        "scale": 0.2280130293159609,
         "native_size": [
           50,
-          50
+          51
         ],
         "native_box": [
           23,
-          28,
+          27,
           73,
           78
         ],
         "effective_width": 50,
-        "effective_height": 50,
+        "effective_height": 51,
         "frame_canvas": [
           96,
           80
         ],
         "baseline_y": 78,
         "clipped": false,
-        "pixels_sha256": "7f2ed7f9934a523aa828db55d6032933f583cd63fdd16b54065cc29df73ddde0"
+        "pixels_sha256": "1084000f89351d5e414784037c602d0a24df53a8f8164608ef25f1a61e4bfafd"
       },
       {
         "pose": "jump",
         "source_box": [
-          30,
-          387,
-          265,
-          614
+          29,
+          384,
+          266,
+          616
         ],
-        "opaque_pixels": 35934,
+        "opaque_pixels": 36814,
         "alpha_threshold": 200,
-        "scale": 0.23102310231023102,
+        "scale": 0.2280130293159609,
         "native_size": [
           54,
-          52
+          53
         ],
         "native_box": [
           21,
-          26,
+          25,
           75,
           78
         ],
         "effective_width": 54,
-        "effective_height": 52,
+        "effective_height": 53,
         "frame_canvas": [
           96,
           80
         ],
         "baseline_y": 78,
         "clipped": false,
-        "pixels_sha256": "a8cb33dce405f2ad0eb1e2c8244026c60cec0f94987fd1034270dd008e3269a5"
+        "pixels_sha256": "06709e2a659f8d784c132b8701bb7f50577fbda74213eb62de2cf612deee12c3"
       },
       {
         "pose": "jab",
         "source_box": [
-          331,
-          392,
-          638,
-          665
+          330,
+          389,
+          639,
+          666
         ],
-        "opaque_pixels": 41820,
+        "opaque_pixels": 43043,
         "alpha_threshold": 200,
-        "scale": 0.23102310231023102,
+        "scale": 0.2280130293159609,
         "native_size": [
-          71,
+          70,
           63
         ],
         "native_box": [
-          12,
+          13,
           15,
           83,
           78
         ],
-        "effective_width": 71,
+        "effective_width": 70,
         "effective_height": 63,
         "frame_canvas": [
           96,
@@ -5705,92 +5705,92 @@
         ],
         "baseline_y": 78,
         "clipped": false,
-        "pixels_sha256": "73cf04a750821ce2c49d5620bf5f3ead155d24738edb56f2b8f405aabdecc762"
+        "pixels_sha256": "a1155f2f3de79dbabc148254d30a981324eaa80c472aa21ed10b0ea3edf66b42"
       },
       {
         "pose": "cross",
         "source_box": [
           645,
-          395,
-          954,
-          666
+          393,
+          956,
+          667
         ],
-        "opaque_pixels": 42622,
+        "opaque_pixels": 43801,
         "alpha_threshold": 200,
-        "scale": 0.23102310231023102,
+        "scale": 0.2280130293159609,
         "native_size": [
           71,
-          63
+          62
         ],
         "native_box": [
           12,
-          15,
+          16,
           83,
           78
         ],
         "effective_width": 71,
-        "effective_height": 63,
+        "effective_height": 62,
         "frame_canvas": [
           96,
           80
         ],
         "baseline_y": 78,
         "clipped": false,
-        "pixels_sha256": "8dd7a119e07c8c2fdf08d19a5fffb4dedea6654a5334111230ab46014e7eb75b"
+        "pixels_sha256": "adc7385796c0ffc506b76f141a82665e9e049163becad0014e5af64c49c129ec"
       },
       {
         "pose": "kick",
         "source_box": [
-          968,
-          394,
-          1250,
-          665
+          967,
+          392,
+          1253,
+          666
         ],
-        "opaque_pixels": 34081,
+        "opaque_pixels": 35061,
         "alpha_threshold": 200,
-        "scale": 0.23102310231023102,
+        "scale": 0.2280130293159609,
         "native_size": [
           65,
-          63
+          62
         ],
         "native_box": [
           15,
-          15,
+          16,
           80,
           78
         ],
         "effective_width": 65,
-        "effective_height": 63,
+        "effective_height": 62,
         "frame_canvas": [
           96,
           80
         ],
         "baseline_y": 78,
         "clipped": false,
-        "pixels_sha256": "fea567b646ea244f7bf3aaf5b4f9c3cf36c1d39f3c3a587d0aee5723618f5717"
+        "pixels_sha256": "230fa7cde72f0ba1a4de2153cb0dd7dc2505feea5f9240345882bcc8e2353edb"
       },
       {
         "pose": "sweep",
         "source_box": [
-          25,
-          773,
-          366,
-          958
+          24,
+          771,
+          367,
+          959
         ],
-        "opaque_pixels": 34850,
+        "opaque_pixels": 35724,
         "alpha_threshold": 200,
-        "scale": 0.23102310231023102,
+        "scale": 0.2280130293159609,
         "native_size": [
-          79,
+          78,
           43
         ],
         "native_box": [
-          8,
+          9,
           35,
           87,
           78
         ],
-        "effective_width": 79,
+        "effective_width": 78,
         "effective_height": 43,
         "frame_canvas": [
           96,
@@ -5798,19 +5798,19 @@
         ],
         "baseline_y": 78,
         "clipped": false,
-        "pixels_sha256": "d3f5107e7d54eabfba39a887199d40559cb33ae7b052bea0b43ad14e08317b4b"
+        "pixels_sha256": "aa34cac525d60f94a3cac9242baf937afb150c5d99bfcd6b3df876abb16cc01a"
       },
       {
         "pose": "block",
         "source_box": [
-          382,
-          710,
-          637,
-          955
+          381,
+          706,
+          639,
+          957
         ],
-        "opaque_pixels": 33214,
+        "opaque_pixels": 34414,
         "alpha_threshold": 200,
-        "scale": 0.23102310231023102,
+        "scale": 0.2280130293159609,
         "native_size": [
           59,
           57
@@ -5829,61 +5829,61 @@
         ],
         "baseline_y": 78,
         "clipped": false,
-        "pixels_sha256": "e5464baf89513153a9e98ec9453a79a8611668a2c90fc54fe6e287132447a5cc"
+        "pixels_sha256": "5a19fc3f2e6e0ad4eee0deb2c5f00326b4025196a6809df80bd5addd23f1b03b"
       },
       {
         "pose": "hurt",
         "source_box": [
-          684,
-          720,
-          950,
-          956
+          683,
+          719,
+          952,
+          958
         ],
-        "opaque_pixels": 35832,
+        "opaque_pixels": 36918,
         "alpha_threshold": 200,
-        "scale": 0.23102310231023102,
+        "scale": 0.2280130293159609,
         "native_size": [
           61,
-          55
+          54
         ],
         "native_box": [
           17,
-          23,
+          24,
           78,
           78
         ],
         "effective_width": 61,
-        "effective_height": 55,
+        "effective_height": 54,
         "frame_canvas": [
           96,
           80
         ],
         "baseline_y": 78,
         "clipped": false,
-        "pixels_sha256": "1602719e826fc3d811d00c7acf238f97ffaa2cb10375b426549cf1c617954101"
+        "pixels_sha256": "5c097c093c17b844f0ee4b248adbf807b5ef27dfe41ba6d2830d5cd350f932b2"
       },
       {
         "pose": "victory",
         "source_box": [
           1009,
-          695,
-          1237,
-          956
+          694,
+          1238,
+          957
         ],
-        "opaque_pixels": 36886,
+        "opaque_pixels": 38230,
         "alpha_threshold": 200,
-        "scale": 0.23102310231023102,
+        "scale": 0.2280130293159609,
         "native_size": [
-          53,
+          52,
           60
         ],
         "native_box": [
-          21,
+          22,
           18,
           74,
           78
         ],
-        "effective_width": 53,
+        "effective_width": 52,
         "effective_height": 60,
         "frame_canvas": [
           96,
@@ -5891,30 +5891,30 @@
         ],
         "baseline_y": 78,
         "clipped": false,
-        "pixels_sha256": "ba61d04e96d8c8cef20140487e857b0d8603497b1827d5b0e625f9cd474b11a1"
+        "pixels_sha256": "2c9c1562d2da1720a3a036b84a0f5d99b3edf11b42e541aede2d58a8968f3842"
       },
       {
         "pose": "cast",
         "source_box": [
           30,
-          1033,
-          298,
-          1251
+          1031,
+          299,
+          1252
         ],
-        "opaque_pixels": 31874,
+        "opaque_pixels": 32695,
         "alpha_threshold": 200,
-        "scale": 0.23102310231023102,
+        "scale": 0.2280130293159609,
         "native_size": [
-          62,
+          61,
           50
         ],
         "native_box": [
           17,
           28,
-          79,
+          78,
           78
         ],
-        "effective_width": 62,
+        "effective_width": 61,
         "effective_height": 50,
         "frame_canvas": [
           96,
@@ -5922,81 +5922,81 @@
         ],
         "baseline_y": 78,
         "clipped": false,
-        "pixels_sha256": "5f97d0038fce3d17a4085565d0e288d1ac2cda2e567ac71428e090110f6f1c1b"
+        "pixels_sha256": "a717f73171c1d086a765750e8e0e64b91922ac42b361ce8f4e8286a03b641cc1"
       },
       {
         "pose": "uppercut",
         "source_box": [
-          417,
-          1000,
-          580,
-          1249
+          416,
+          999,
+          581,
+          1251
         ],
-        "opaque_pixels": 25375,
+        "opaque_pixels": 26142,
         "alpha_threshold": 200,
-        "scale": 0.23102310231023102,
+        "scale": 0.2280130293159609,
         "native_size": [
           38,
-          58
+          57
         ],
         "native_box": [
           29,
-          20,
+          21,
           67,
           78
         ],
         "effective_width": 38,
-        "effective_height": 58,
+        "effective_height": 57,
         "frame_canvas": [
           96,
           80
         ],
         "baseline_y": 78,
         "clipped": false,
-        "pixels_sha256": "8407c48ef50147f90efc281db78fbc2bc5f929f5e060f067214a93212cff966d"
+        "pixels_sha256": "32d7cdbd0e83361adea0ead44377bc7993d115bbd0d54c79ef42cc1c884e0cf7"
       },
       {
         "pose": "knockout",
         "source_box": [
-          604,
+          603,
           1159,
-          952,
+          953,
           1248
         ],
-        "opaque_pixels": 23386,
+        "opaque_pixels": 23807,
         "alpha_threshold": 200,
-        "scale": 0.23102310231023102,
+        "scale": 0.2280130293159609,
         "native_size": [
           80,
-          21
+          20
         ],
         "native_box": [
           8,
-          57,
+          58,
           88,
           78
         ],
         "effective_width": 80,
-        "effective_height": 21,
+        "effective_height": 20,
         "frame_canvas": [
           96,
           80
         ],
         "baseline_y": 78,
         "clipped": false,
-        "pixels_sha256": "2da97a4bd9d7dafe1d3b9e2f99fdee199a586c149a78606e79c2d3efeeb2c79f"
+        "pixels_sha256": "9b567c2f73a732a73880c2b531a2d5052359d652b8890e82df0341f54efc23a5"
       },
       {
         "pose": "rush",
         "source_box": [
-          991,
-          1029,
-          1242,
-          1249
+          990,
+          1026,
+          1243,
+          1251
         ],
-        "opaque_pixels": 33950,
+        "opaque_pixels": 34908,
         "alpha_threshold": 200,
-        "scale": 0.23102310231023102,
+        "scale": 0.2280130293159609,
         "native_size": [
           58,
           51
@@ -6015,7 +6015,7 @@
         ],
         "baseline_y": 78,
         "clipped": false,
-        "pixels_sha256": "553e79145f94f90902dc90b1ea4ca6a2333c28cc1be1879bb2f8ce42985bcaed"
+        "pixels_sha256": "e91c264cad55712e919a5ce0cd19336837f8a5e01dc8acc5508c0cc64177cf5c"
       }
     ]
   },

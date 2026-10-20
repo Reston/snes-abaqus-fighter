@@ -1,4 +1,12 @@
-# v0.4.0 — likeness, proportions and presentation
+# v0.4.1 — likeness, proportions and presentation
+
+The v0.4.1 patch gives Reston short dark buzz-cut hair across the top and crown,
+with a moderately receding hairline matching the user's newly supplied photo.
+All sixteen poses and both selection portraits use the corrected master.
+The previous atlas is retained beside it, and `likeness-v3.json` records the
+complete built-in imagegen edit prompt and validation.
+
+The wider v0.4 presentation and proportion improvements continue below.
 
 The seven remaining face revisions complete a likeness pass across all twelve
 fighters. Each person keeps an individual cartoon atlas, costume and palette;
@@ -34,7 +42,7 @@ Official Snes9x 1.63 x64 libretro, silently and headlessly:
 The idle cadence probe measured 600 simulation ticks per 600 emulated NTSC
 frames. All three reports record the exact tested SHA256:
 
-`e8b3d5eeda6fe57ec025abcbacd772d129e26d38440f5ea74b86e1ac0754141e`
+`f5b431bc68db8f5f2b909c1c95e40edb62e2518ca06c8671ce6d7f44ab209e4b`
 
 The complete source-assets build reproduces the same cartridge. Screenshots in
 `docs/screenshots/` come from the actual core. No emulator window was opened or

@@ -1,5 +1,14 @@
 # Art direction and image generation
 
+## v0.4.1 Reston hair correction
+
+The user's new photo shows a short dark buzz cut across Reston's top and crown,
+with a receding hairline. A targeted built-in imagegen edit replaces the
+overly bald depiction in all sixteen poses. The previous master is retained
+as `assets/art/characters/09-reston/atlas-v2.png`; the selected `atlas.png` and
+full prompt/provenance are recorded in that folder's `likeness-v3.json`.
+Matching card and profile portraits are regenerated from the revised master.
+
 ## v0.4.0 proportion and presentation polish
 
 The v0.4 pass keeps twelve individual illustrated masters and tightens the native presentation around them. Seven likeness v2 masters were refreshed with the built-in imagegen edit workflow for Damián, Cote, Negger, Fernando, Mamariaga, Reston and Roxana; the five earlier likeness v2 masters for Ivo, Cristóbal, David, Cristián and Lars remain selected. All twelve now have close 32×40 selection cards and 64×80 profile portraits derived from their own source masters.
