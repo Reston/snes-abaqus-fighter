@@ -1,6 +1,6 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee",
+  "rom_sha256": "e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84",
   "rom_bytes": 4194304,
   "animation_manifest": [
     {
@@ -89,7 +89,7 @@
     }
   ],
   "passed": 2595,
-  "elapsed_seconds": 31.51,
+  "elapsed_seconds": 31.67,
   "checks": [
     {
       "check": "64-frame character manifest contains twelve fighters",
@@ -22764,7 +22764,7 @@
       "check": "SPC music and sound produce non-silent audio",
       "passed": true,
       "details": {
-        "peak": 3453,
+        "peak": 3483,
         "samples": 2103548
       }
     },
@@ -26120,11 +26120,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.6.1",
+        "version": "0.7.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee",
-        "checksum": "4D89",
+        "sha256": "e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84",
+        "checksum": "0953",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"

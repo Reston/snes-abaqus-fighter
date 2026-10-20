@@ -92,6 +92,19 @@ interface transfer yields to an actor upload, so impact feedback or an empty
 combo banner can settle one to three video frames after the event without
 changing its damage, guard or combo result.
 
+## Stage motion and effects
+
+The v0.7 presentation pass adds subtle ambient motion into each location: leaf
+shimmer and glass reflection in Las Condes, string lights and
+window light at El Castillo, and monitor changes in La Oficina. Original strike,
+guard, high-wave and ground-wave effects also gain small phase changes. The
+motion runs during live combat and holds still during the intro, pause, hitstop
+and round-end screens, so it never changes controls, collisions or timing.
+The v0.7 stage/effect work is present and verified in the current 4 MiB ROM.
+The v0.7.0 Windows development package passes 214 technical audit checks and
+repeated packaging produces identical ZIP bytes. Public-release review remains
+open.
+
 ## Emulator options
 
 The included configuration uses a sharp 4x image with no smoothing. Snes9x supports fullscreen with Alt+Enter. Its Input Configuration menu supports controllers and custom keyboard mappings. If you change controls, the emulator saves them in its own folder.

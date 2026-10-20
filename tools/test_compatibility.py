@@ -1,4 +1,4 @@
-"""Independent-engine smoke and neutral 600-frame cadence test.
+"""Independent-engine smoke, stage dynamics, and neutral cadence test.
 
 The pinned path is deliberately fixed to the official Libretro
 bsnes2014 Accuracy Windows x64 core.  This host drives only the standard
@@ -26,6 +26,7 @@ CORE_ARCHIVE = COMPAT_ROOT / "bsnes2014_accuracy_libretro.dll.zip"
 CORE_PATH = COMPAT_ROOT / "bsnes2014-accuracy" / "bsnes2014_accuracy_libretro.dll"
 CAPTURE_ROOT = ROOT / "docs" / "screenshots" / "compatibility"
 REPORT_PATH = ROOT / "docs" / "compatibility-test-report.json"
+STAGE_MANIFEST_PATH = ROOT / "assets" / "generated" / "stage-dynamics.json"
 
 CORE_URL = (
     "https://buildbot.libretro.com/nightly/windows/x86_64/latest/"
@@ -35,9 +36,15 @@ CORE_ARCHIVE_SHA256 = "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A6
 CORE_DLL_SHA256 = "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
 ROM_BYTES = 4 * 1024 * 1024
 TRACE_OFFSET = 0x1FF00
-TRACE_WORDS = 114
+TRACE_WORDS = 119
 TRACE_BYTES = TRACE_WORDS * 2
-SCOPE = "independent-engine smoke, neutral600frame cadence"
+PHASE_COUNT = 4
+PHASE_PERIOD_FRAMES = 16
+STAGE_COUNT = 3
+SCOPE = (
+    "independent-engine smoke, stage ambient/effects freeze, "
+    "synchronized low-wave, neutral600frame cadence"
+)
 
 BUTTONS = {
     "b": 0,
@@ -78,6 +85,8 @@ TRACE_NAMES = (
     "throw_owner1", "throw_owner2", "air_action1", "air_action2",
     "throw_victim1", "throw_victim2", "wake_action1", "wake_action2",
     "wake_age1", "wake_age2", "wake_jump1", "wake_jump2",
+    "ppu_stat", "ambient_phase", "ambient_clock", "ambient_pending_phase",
+    "ambient_phase_age",
 )
 
 
@@ -112,6 +121,343 @@ def require(condition: bool, message: str) -> None:
 def signed16(value: int) -> int:
     value &= 0xFFFF
     return value - 0x10000 if value & 0x8000 else value
+
+
+TRACE_DEFAULTS = {
+    "ppu_stat": 114,
+    "ambient_phase": 115,
+    "ambient_clock": 116,
+    "ambient_pending_phase": 117,
+    "ambient_phase_age": 118,
+}
+
+
+def normalize_patch_cells(value: object) -> list[int]:
+    """Normalize manifest BG1 map cells to 32x32 word indices."""
+
+    cells: list[int] = []
+    if not isinstance(value, list):
+        return cells
+    for item in value:
+        if isinstance(item, int):
+            cells.append(item)
+        elif isinstance(item, (list, tuple)) and len(item) >= 2:
+            cells.append(int(item[1]) * 32 + int(item[0]))
+        elif isinstance(item, dict) and "x" in item and "y" in item:
+            cells.append(int(item["y"]) * 32 + int(item["x"]))
+    return sorted(set(cells))
+
+
+def stage_patch_rects(record: dict[str, object]) -> list[tuple[int, int, int, int]]:
+    """Return native 256x224 screen rectangles affected by the ambient patch."""
+
+    configured = record.get("screen_rects", record.get("patch_rects", []))
+    rects: list[tuple[int, int, int, int]] = []
+    if isinstance(configured, list):
+        for item in configured:
+            if isinstance(item, (list, tuple)) and len(item) == 4:
+                rects.append(tuple(int(value) for value in item))
+    if rects:
+        return rects
+
+    cells = normalize_patch_cells(record.get(
+        "patch_cells", record.get("map_cells",
+                                    record.get("dynamic_cells", record.get("cells", [])))))
+    return [((cell % 32) * 8, (cell // 32) * 8,
+             (cell % 32 + 1) * 8, (cell // 32 + 1) * 8)
+            for cell in cells]
+
+
+def stage_phase_probe_rects(record: dict[str, object]) -> list[tuple[int, int, int, int]]:
+    """Use manifest changed-pixel bounds to avoid actor/effect pixels in freezes."""
+
+    cells = record.get("cells", [])
+    high_slots: set[int] | None = None
+    if isinstance(cells, list):
+        selected: set[int] = set()
+        for cell in cells:
+            if not isinstance(cell, dict) or "slot" not in cell:
+                continue
+            try:
+                slot = int(cell["slot"])
+                native_y = int(cell.get("native_y", int(cell.get("y", 0)) * 8))
+            except (TypeError, ValueError):
+                continue
+            # Keep only the unobscured high patch for actual video matching:
+            # y48 tree, y80 lights, and y104 monitors.  Ground reflection
+            # cells are intentionally excluded because actor/effect OBJ can
+            # cover them during a freeze.
+            if native_y <= 104:
+                selected.add(slot)
+        if selected:
+            high_slots = selected
+
+    rects: list[tuple[int, int, int, int]] = []
+    phases = record.get("phases", [])
+    if isinstance(phases, list):
+        for phase in phases[1:]:
+            if not isinstance(phase, dict):
+                continue
+            cells = phase.get("cells", [])
+            if not isinstance(cells, list):
+                continue
+            for cell in cells:
+                if not isinstance(cell, dict):
+                    continue
+                if high_slots is not None:
+                    try:
+                        if int(cell.get("slot", -1)) not in high_slots:
+                            continue
+                    except (TypeError, ValueError):
+                        continue
+                bounds = cell.get("pixel_bounds")
+                if not isinstance(bounds, dict):
+                    continue
+                try:
+                    left = int(bounds["left"])
+                    top = int(bounds["top"])
+                    right = int(bounds["right"]) + 1
+                    bottom = int(bounds["bottom"]) + 1
+                except (KeyError, TypeError, ValueError):
+                    continue
+                if 0 <= left < right <= 256 and 0 <= top < bottom <= 224:
+                    rects.append((left, top, right, bottom))
+    return rects or stage_patch_rects(record)
+
+
+def stage_slug(record: dict[str, object], stage_id: int) -> str:
+    default = ("las-condes", "el-castillo", "la-oficina")[stage_id]
+    value = record.get("slug", record.get("name", default))
+    return str(value).lower().replace(" ", "-")
+
+
+def load_stage_dynamics() -> tuple[dict[str, object], dict[str, int], dict[int, dict[str, object]]]:
+    """Validate the generated stage contract before starting the core."""
+
+    require(STAGE_MANIFEST_PATH.exists(),
+            f"missing stage dynamics manifest: {STAGE_MANIFEST_PATH}")
+    manifest = json.loads(STAGE_MANIFEST_PATH.read_text(encoding="utf-8"))
+    require(int(manifest.get("phase_count", PHASE_COUNT)) == PHASE_COUNT,
+            "stage dynamics manifest must declare four ambient phases")
+    require(int(manifest.get("tile_count", 0)) == 8,
+            "stage dynamics manifest must declare eight streamed tiles")
+    require(int(manifest.get("bytes_per_phase", 0)) == 256,
+            "stage dynamics manifest must declare 256 bytes per phase")
+    require(int(manifest.get("ambient_vram_word", 0)) == 0x3C00,
+            "stage dynamics must upload at BG1 VRAM word $3C00")
+    phase_period = manifest.get(
+        "phase_period_frames",
+        manifest.get("clock_frames_per_phase",
+                     manifest.get("phase_period",
+                                  manifest.get("phase_ticks",
+                                              manifest.get("clock_frames", PHASE_PERIOD_FRAMES)))))
+    require(int(phase_period) == PHASE_PERIOD_FRAMES,
+            f"stage ambient clock must hold each phase for {PHASE_PERIOD_FRAMES} live frames")
+    trace_map = dict(TRACE_DEFAULTS)
+    configured_trace = manifest.get("trace", {})
+    if isinstance(configured_trace, dict):
+        aliases = {
+            "ppu_stat": ("ppu_stat", "status"),
+            "ambient_phase": ("ambient_phase", "uploaded_phase"),
+            "ambient_clock": ("ambient_clock",),
+            "ambient_pending_phase": ("ambient_pending_phase", "pending_phase"),
+            "ambient_phase_age": ("ambient_phase_age", "pending_age"),
+        }
+        for name, keys in aliases.items():
+            for key in keys:
+                if key in configured_trace:
+                    trace_map[name] = int(configured_trace[key])
+                    break
+    require(trace_map == TRACE_DEFAULTS,
+            f"stage telemetry must use trace words 114..118: {trace_map!r}")
+
+    raw_stages = manifest.get("stages")
+    require(isinstance(raw_stages, list) and len(raw_stages) == STAGE_COUNT,
+            "stage dynamics manifest must contain exactly three stages")
+    records: dict[int, dict[str, object]] = {}
+    assert isinstance(raw_stages, list)
+    for raw in raw_stages:
+        require(isinstance(raw, dict), "stage dynamics entries must be objects")
+        assert isinstance(raw, dict)
+        stage_id = int(raw.get("id", raw.get("stage_id", raw.get("record_id", -1))))
+        require(0 <= stage_id < STAGE_COUNT,
+                f"stage dynamics id is outside 0..{STAGE_COUNT - 1}: {stage_id}")
+        require(stage_id not in records,
+                f"stage dynamics repeats stage id {stage_id}")
+        phases = raw.get("phases", raw.get("phase_assets", []))
+        require(isinstance(phases, list) and len(phases) == PHASE_COUNT,
+                f"stage {stage_id} must declare four phase assets")
+        require(int(raw.get("tile_count", 0)) == 8 and
+                int(raw.get("bytes_per_phase", 0)) == 256 and
+                int(raw.get("ambient_vram_word", 0)) == 0x3C00,
+                f"stage {stage_id} has an invalid native ambient upload contract")
+        phase_hashes = [item.get("sha256") for item in phases
+                        if isinstance(item, dict)]
+        require(len(phase_hashes) == PHASE_COUNT and
+                len(set(phase_hashes)) == PHASE_COUNT,
+                f"stage {stage_id} phase assets are not four distinct blocks")
+        cells = raw.get("cells", [])
+        require(isinstance(cells, list) and len(cells) == 8,
+                f"stage {stage_id} must declare eight ambient map cells")
+        rects = stage_patch_rects(raw)
+        require(bool(rects), f"stage {stage_id} must declare ambient screen rects or map cells")
+        require(all(0 <= left < right <= 256 and 0 <= top < bottom <= 224
+                    for left, top, right, bottom in rects),
+                f"stage {stage_id} has an invalid 256x224 ambient screen rect")
+        records[stage_id] = raw
+    require(set(records) == set(range(STAGE_COUNT)),
+            f"stage dynamics ids are not exactly 0, 1, 2: {sorted(records)}")
+    return manifest, trace_map, records
+
+
+def patch_digest(image: Image.Image | None,
+                 rects: list[tuple[int, int, int, int]]) -> str:
+    """Hash only the authored ambient patch in the actual video callback."""
+
+    require(image is not None, "independent core produced no PPU frame")
+    require(bool(rects), "ambient patch has no screen rectangles")
+    assert image is not None
+    rgb = image.convert("RGB")
+    # Libretro may expose the native 256-wide picture or a 2x horizontal
+    # callback.  Manifest rectangles are always expressed in native pixels.
+    x_scale = rgb.width / 256.0
+    chunks: list[bytes] = []
+    for left, top, right, bottom in rects:
+        x0 = max(0, min(rgb.width, int(round(left * x_scale))))
+        x1 = max(0, min(rgb.width, int(round(right * x_scale))))
+        y0 = max(0, min(rgb.height, int(top)))
+        y1 = max(0, min(rgb.height, int(bottom)))
+        require(x0 < x1 and y0 < y1, "ambient patch rectangle is outside the PPU frame")
+        chunks.append(rgb.crop((x0, y0, x1, y1)).tobytes())
+    return hashlib.sha256(b"".join(chunks)).hexdigest()
+
+
+def camera_aligned_patch_match(before: Image.Image | None,
+                               after: Image.Image | None,
+                               rects: list[tuple[int, int, int, int]]) -> int | None:
+    """Find one global native-pixel alignment for all ambient patch rects."""
+
+    require(before is not None and after is not None,
+            "independent core produced no PPU frame for camera normalization")
+    require(before.size == after.size, "camera normalization received different PPU sizes")
+    assert before is not None and after is not None
+    before_rgb = before.convert("RGB")
+    after_rgb = after.convert("RGB")
+    x_scale = before_rgb.width / 256.0
+    for shift in (-4, -2, 0, 2, 4):
+        matched = True
+        for left, top, right, bottom in rects:
+            bx0 = int(round(left * x_scale))
+            bx1 = int(round(right * x_scale))
+            by0, by1 = int(top), int(bottom)
+            ax0 = int(round((left + shift) * x_scale))
+            ax1 = int(round((right + shift) * x_scale))
+            if ax0 < 0 or ax1 > after_rgb.width:
+                matched = False
+                break
+            if before_rgb.crop((bx0, by0, bx1, by1)).tobytes() != \
+                    after_rgb.crop((ax0, by0, ax1, by1)).tobytes():
+                matched = False
+                break
+        if matched:
+            return shift
+    return None
+
+
+def static_plate_color_agreement(core: "Probe", stage_id: int,
+                                 record: dict[str, object]) -> dict[str, object]:
+    """Compare the unobscured upper stage plate with its native RGB master.
+
+    The generated stage PNG is the decoded native 256x224 plate.  The
+    independent core currently duplicates each native pixel horizontally in a
+    512-wide callback, so compare the mean of the callback pixels covering
+    each native x coordinate.  The y40..100 band stays above the fighters and
+    interface; all eight authored ambient cells are excluded even when they
+    are below that band.  SNES RGB quantization is accepted up to eight levels
+    per channel, with a sixteen-level guard for a small residual mismatch.
+    """
+
+    master_path = ROOT / "assets" / "generated" / f"stage{stage_id}.png"
+    require(master_path.exists(), f"missing generated stage master: {master_path}")
+    expected = Image.open(master_path).convert("RGB")
+    require(expected.size == (256, 224),
+            f"stage {stage_id} master is not native 256x224: {expected.size}")
+    require(core.frame_image is not None,
+            f"stage {stage_id} produced no video frame for static plate check")
+    observed = core.frame_image.convert("RGB")
+    require(observed.height >= 101 and observed.width >= 256,
+            f"stage {stage_id} callback is too small for static plate check: {observed.size}")
+    x_scale = observed.width / 256.0
+    dynamic: list[tuple[int, int, int, int]] = []
+    cells = record.get("cells", [])
+    if isinstance(cells, list):
+        for cell in cells:
+            if not isinstance(cell, dict):
+                continue
+            try:
+                left_value = cell.get("native_x")
+                top_value = cell.get("native_y")
+                if left_value is None:
+                    left_value = int(cell["x"]) * 8
+                if top_value is None:
+                    top_value = int(cell["y"]) * 8
+                left = int(left_value)
+                top = int(top_value)
+            except (KeyError, TypeError, ValueError):
+                continue
+            dynamic.append((left, top, left + 8, top + 8))
+
+    def in_dynamic(x: int, y: int) -> bool:
+        return any(left <= x < right and top <= y < bottom
+                   for left, top, right, bottom in dynamic)
+
+    count = 0
+    within8 = 0
+    within16 = 0
+    max_delta = 0
+    total_delta = 0
+    for y in range(40, 101):
+        for x in range(256):
+            if in_dynamic(x, y):
+                continue
+            x0 = max(0, min(observed.width - 1, int(round(x * x_scale))))
+            x1 = max(x0 + 1, min(observed.width, int(round((x + 1) * x_scale))))
+            pixels = [observed.getpixel((sample_x, y))
+                      for sample_x in range(x0, x1)]
+            actual = tuple(sum(pixel[channel] for pixel in pixels) // len(pixels)
+                           for channel in range(3))
+            wanted = expected.getpixel((x, y))
+            delta = max(abs(actual[channel] - wanted[channel]) for channel in range(3))
+            total_delta += delta
+            max_delta = max(max_delta, delta)
+            count += 1
+            within8 += delta <= 8
+            within16 += delta <= 16
+    require(count >= 10000,
+            f"stage {stage_id} static plate sample is too small: {count}")
+    ratio8 = within8 / count
+    ratio16 = within16 / count
+    require(ratio8 >= 0.99,
+            f"stage {stage_id} static plate RGB agreement below 99% at <=8: "
+            f"{within8}/{count} ({ratio8:.4f})")
+    require(ratio16 == 1.0,
+            f"stage {stage_id} static plate has >16 RGB error: "
+            f"{within16}/{count} ({ratio16:.4f})")
+    return {
+        "master": str(master_path.relative_to(ROOT)).replace("\\", "/"),
+        "region_native": [0, 40, 256, 101],
+        "excluded_dynamic_cells": len(dynamic),
+        "sample_count": count,
+        "within_8": within8,
+        "within_16": within16,
+        "match_ratio_le_8": ratio8,
+        "match_ratio_le_16": ratio16,
+        "max_channel_delta": max_delta,
+        "mean_max_channel_delta": total_delta / count,
+        "callback_width": observed.width,
+        "horizontal_scale": x_scale,
+        "passed": True,
+    }
 
 
 def verify_manifest_and_pinned_core() -> dict[str, object]:
@@ -171,6 +517,9 @@ class Probe:
         self.width = 0
         self.height = 0
         self.pitch = 0
+        self.raw_prefix = b""
+        self.last_raw = b""
+        self.video_format_history: list[dict[str, int]] = []
         self.video_callbacks = 0
         self.audio_samples = 0
         self.audio_energy = 0
@@ -212,7 +561,23 @@ class Probe:
             if not data or not width or not height:
                 return
             raw = C.string_at(data, pitch * height)
-            if self.pixel_format == 1:  # XRGB8888
+            self.raw_prefix = raw[:64]
+            self.last_raw = raw
+            self.video_format_history.append({
+                "pixel_format": int(self.pixel_format),
+                "width": int(width),
+                "height": int(height),
+                "pitch": int(pitch),
+            })
+            # bsnes2014 Accuracy reports RETRO_PIXEL_FORMAT_0RGB1555 but
+            # this Windows build supplies four bytes per callback pixel.  The
+            # callback stride is authoritative: decoding it as a 16-bit
+            # buffer produces alternating vertical stripes.  On the actual
+            # pinned DLL the four bytes are little-endian B,G,R,X.
+            if pitch >= int(width) * 4:
+                image = Image.frombytes("RGB", (width, height), raw,
+                                        "raw", "BGRX", pitch)
+            elif self.pixel_format == 1:  # XRGB8888
                 image = Image.frombytes("RGB", (width, height), raw,
                                         "raw", "BGRX", pitch)
             elif self.pixel_format == 2:  # RGB565
@@ -297,12 +662,17 @@ class Probe:
 
     def state(self) -> dict[str, int]:
         require(not self.closed, "cannot read a closed core")
-        data = C.string_at(self.ram + TRACE_OFFSET, TRACE_BYTES)
+        words = self.trace_words()
+        return dict(zip(TRACE_NAMES, words))
+
+    def trace_words(self, count: int = TRACE_WORDS) -> list[int]:
+        require(not self.closed, "cannot read a closed core")
+        data = C.string_at(self.ram + TRACE_OFFSET, count * 2)
         words = [
             int.from_bytes(data[offset:offset + 2], "little")
-            for offset in range(0, TRACE_BYTES, 2)
+            for offset in range(0, count * 2, 2)
         ]
-        return dict(zip(TRACE_NAMES, words))
+        return words
 
     def frame_signature(self) -> dict[str, object]:
         require(self.frame_image is not None, "independent core produced no video")
@@ -321,6 +691,30 @@ class Probe:
         }
         require(signature["nonblank"], "independent core produced a blank PPU frame")
         return signature
+
+    def video_contract(self) -> dict[str, object]:
+        """Describe the callback layout and the host's channel conversion."""
+
+        require(self.video_callbacks > 0, "independent core produced no video callbacks")
+        bytes_per_pixel = self.pitch / self.width if self.width else 0
+        if self.pitch >= self.width * 4:
+            decoded_packing = "BGRX-8888 (stride-authoritative)"
+        elif self.pixel_format == 2:
+            decoded_packing = "RGB565 little-endian"
+        elif self.pixel_format == 0:
+            decoded_packing = "0RGB1555 little-endian"
+        else:
+            decoded_packing = "XRGB8888"
+        return {
+            "pixel_format_enum": self.pixel_format,
+            "width": self.width,
+            "height": self.height,
+            "pitch": self.pitch,
+            "bytes_per_pixel": bytes_per_pixel,
+            "callbacks": self.video_callbacks,
+            "decoded_packing": decoded_packing,
+            "raw_prefix_hex": self.raw_prefix.hex(),
+        }
 
     def capture(self, name: str) -> str:
         require(self.frame_image is not None, f"no PPU frame for {name}")
@@ -360,6 +754,356 @@ def wait_screen(core: Probe, wanted: int, limit: int = 600) -> dict[str, int]:
     raise AssertionError(f"screen {wanted} did not arrive: {core.state()}")
 
 
+def traced_state(core: Probe, trace_map: dict[str, int]) -> dict[str, int]:
+    current = core.state()
+    words = core.trace_words(max(TRACE_WORDS, max(trace_map.values(), default=0) + 1))
+    for name, index in trace_map.items():
+        current[name] = words[index]
+    return current
+
+
+def capture_stage_frame(core: Probe, name: str) -> str:
+    require(core.frame_image is not None, f"no PPU frame for {name}")
+    return core.capture(name)
+
+
+def boot_match(core: Probe, stage_id: int, trace_map: dict[str, int],
+               rects: list[tuple[int, int, int, int]],
+               low_wave_pair: bool = False) -> dict[str, object]:
+    """Enter local versus and return the settled live fight plus intro evidence."""
+
+    core.run(120)
+    title = core.state()
+    require(title["magic"] == 0xAABA and title["screen"] == 0,
+            f"stage boot title state is wrong: {title}")
+    # Title menu item 1 is local versus, which gives both ports real controls.
+    press(core, "down")
+    press(core, "a")
+    select = wait_screen(core, 1)
+    if low_wave_pair:
+        # Negger (4) and Fernando (6) are the authored low-wave pair.
+        press(core, "down")
+        press(core, "a")
+        # The second fighter is confirmed by port 1; keeping the input on
+        # port 0 leaves the selection screen active and eventually times out.
+        press(core, "down", 1)
+        press(core, "right", 1)
+        press(core, "a", 1)
+    else:
+        press(core, "a")
+        press(core, "a", 1)
+    arena = wait_screen(core, 2)
+    require(arena["arena"] == 0,
+            f"stage arena did not start at 0: {arena}")
+    for _ in range(stage_id):
+        press(core, "down")
+    press(core, "a")
+    fight = wait_screen(core, 3)
+    require(fight["arena"] == stage_id,
+            f"stage selection did not reach {stage_id}: {fight}")
+
+    intro_samples: list[dict[str, object]] = []
+    for _ in range(16):
+        current = traced_state(core, trace_map)
+        if current["intro"] == 0:
+            break
+        intro_samples.append({
+            "clock": current["ambient_clock"],
+            "phase": current["ambient_phase"],
+            "pending": current["ambient_pending_phase"],
+            "age": current["ambient_phase_age"],
+            "ppu": patch_digest(core.frame_image, rects),
+        })
+        core.run(1)
+    require(len(intro_samples) >= 4,
+            f"stage intro was too short for a freeze sample: {intro_samples}")
+    # The first frame may finish the initial upload.  The settled tail must
+    # remain unchanged while intro countdown is still active.
+    intro_tail = intro_samples[-4:]
+    require(len({(item["clock"], item["phase"], item["pending"], item["age"])
+                 for item in intro_tail}) == 1,
+            f"ambient trace advanced during intro: {intro_tail}")
+    require(len({item["ppu"] for item in intro_tail}) == 1,
+            f"ambient PPU patch changed during intro: {intro_tail}")
+    while core.state()["intro"]:
+        core.run(1)
+    live = traced_state(core, trace_map)
+    require(live["screen"] == 3 and live["intro"] == 0,
+            f"live fight state is wrong after intro: {live}")
+    if low_wave_pair:
+        require(live["selected"] == 4 and live["selected2"] == 6 and
+                live["family1"] == 2 and live["family2"] == 2,
+                f"low-wave control fixture selected the wrong fighters: {live}")
+    return {
+        "title": title,
+        "select": select,
+        "arena": arena,
+        "fight": live,
+        "intro_samples": intro_tail,
+    }
+
+
+def verify_stage_phases(core: Probe, stage_id: int,
+                        record: dict[str, object],
+                        trace_map: dict[str, int]) -> dict[str, object]:
+    rects = stage_phase_probe_rects(record)
+    max_frames = int(record.get("phase_capture_frames", 160))
+    require(max_frames >= PHASE_COUNT * PHASE_PERIOD_FRAMES,
+            f"stage {stage_id} phase capture window is too short")
+    phase_observations: dict[int, dict[str, object]] = {}
+    previous_clock: int | None = None
+    for _ in range(max_frames):
+        current = traced_state(core, trace_map)
+        require(0 <= current["ambient_phase"] < PHASE_COUNT,
+                f"stage {stage_id} uploaded phase is outside 0..3: {current}")
+        if previous_clock is not None:
+            clock_delta = (current["ambient_clock"] - previous_clock) & 0xFFFF
+            require(clock_delta in (0, 1),
+                    f"stage {stage_id} ambient clock jumped by {clock_delta}")
+        previous_clock = current["ambient_clock"]
+        phase = current["ambient_phase"]
+        if phase not in phase_observations:
+            # The Accuracy core presents the frame callback before the native
+            # vblank DMA that publishes the trace phase.  Advance one neutral
+            # callback frame so the observed phase and PPU image refer to the
+            # same completed upload.
+            core.run(1)
+            current = traced_state(core, trace_map)
+            require(current["ambient_phase"] == phase,
+                    f"stage {stage_id} phase changed during upload observation: {current}")
+            previous_clock = current["ambient_clock"]
+            image = core.frame_image.copy() if core.frame_image is not None else None
+            digest = patch_digest(image, rects)
+            capture = capture_stage_frame(core, f"stage{stage_id}-ambient-phase{phase}")
+            phase_observations[phase] = {
+                "phase": phase,
+                "clock": current["ambient_clock"],
+                "pending": current["ambient_pending_phase"],
+                "age": current["ambient_phase_age"],
+                "ppu_patch_sha256": digest,
+                "capture": capture,
+            }
+        if len(phase_observations) == PHASE_COUNT:
+            break
+        core.run(1)
+    require(set(phase_observations) == set(range(PHASE_COUNT)),
+            f"stage {stage_id} did not expose all four uploaded phases: "
+            f"{sorted(phase_observations)}")
+    phase_digests = [phase_observations[index]["ppu_patch_sha256"]
+                     for index in range(PHASE_COUNT)]
+    require(len(set(phase_digests)) == PHASE_COUNT,
+            f"stage {stage_id} ambient phases are not distinct in actual PPU pixels: "
+            f"{phase_observations}")
+    return {
+        "stage_id": stage_id,
+        "screen_rects": stage_patch_rects(record),
+        "ppu_probe_rects": rects,
+        "phase_count": PHASE_COUNT,
+        "phase_period_frames": PHASE_PERIOD_FRAMES,
+        "phases": phase_observations,
+        "ppu_patch_distinct": len(set(phase_digests)),
+    }
+
+
+def verify_pause_freeze(core: Probe, trace_map: dict[str, int],
+                        rects: list[tuple[int, int, int, int]]) -> dict[str, object]:
+    core.run(3, p1=["start"])
+    core.run(3)
+    paused = traced_state(core, trace_map)
+    require(paused["paused"] != 0, f"pause did not enter native paused state: {paused}")
+    before = {
+        "clock": paused["ambient_clock"],
+        "phase": paused["ambient_phase"],
+        "pending": paused["ambient_pending_phase"],
+        "age": paused["ambient_phase_age"],
+        "ppu_patch_sha256": patch_digest(core.frame_image, rects),
+    }
+    core.run(12)
+    after = traced_state(core, trace_map)
+    after_digest = patch_digest(core.frame_image, rects)
+    require((after["ambient_clock"], after["ambient_phase"],
+             after["ambient_pending_phase"], after["ambient_phase_age"]) ==
+            (before["clock"], before["phase"], before["pending"], before["age"]),
+            f"ambient trace advanced while paused: before={before}, after={after}")
+    require(after_digest == before["ppu_patch_sha256"],
+            f"actual PPU ambient patch changed while paused: {before} -> {after_digest}")
+    core.run(3, p1=["start"])
+    core.run(3)
+    released = traced_state(core, trace_map)
+    require(released["paused"] == 0,
+            f"pause did not release through the native controller: {released}")
+    return {"before": before, "after": after, "released": released}
+
+
+def close_players(core: Probe) -> None:
+    for _ in range(180):
+        current = core.state()
+        if abs(current["x1"] - current["x2"]) < 28 * 16:
+            return
+        p1 = "right" if current["x1"] < current["x2"] else "left"
+        p2 = "left" if p1 == "right" else "right"
+        core.run(1, p1=[p1], p2=[p2])
+    raise AssertionError(f"controllers could not close fighters: {core.state()}")
+
+
+def verify_hitstop_freeze(core: Probe, trace_map: dict[str, int],
+                          rects: list[tuple[int, int, int, int]]) -> dict[str, object]:
+    close_players(core)
+    core.run(3, p1=["y"])
+    core.run(1)
+    hit = None
+    for _ in range(100):
+        current = traced_state(core, trace_map)
+        if current["hitstop"]:
+            hit = current
+            break
+        core.run(1)
+    require(hit is not None, "controls-only hitstop fixture did not produce contact")
+    assert hit is not None
+    before_frame = core.frame_image.copy() if core.frame_image is not None else None
+    before_digest = patch_digest(before_frame, rects)
+    before_clock = hit["ambient_clock"]
+    before_phase = hit["ambient_phase"]
+    held = 0
+    alignments: list[int] = []
+    while traced_state(core, trace_map)["hitstop"] and held < 20:
+        core.run(1)
+        current = traced_state(core, trace_map)
+        require(current["ambient_clock"] == before_clock and
+                current["ambient_phase"] == before_phase,
+                f"ambient trace advanced during hitstop: {current}")
+        after_frame = core.frame_image.copy() if core.frame_image is not None else None
+        after_digest = patch_digest(after_frame, rects)
+        alignment = camera_aligned_patch_match(before_frame, after_frame, rects)
+        require(alignment is not None,
+                f"actual PPU ambient patch changed during hitstop after camera "
+                f"normalization: before={before_digest}, after={after_digest}, "
+                f"trace={current}")
+        assert alignment is not None
+        alignments.append(alignment)
+        held += 1
+    require(held >= 2, f"hitstop freeze was too short to inspect: {held}")
+    return {"hitstop": hit, "held_ticks": held,
+            "ppu_patch_sha256": before_digest,
+            "camera_alignments_native_px": sorted(set(alignments))}
+
+
+def verify_round_end_freeze(core: Probe, trace_map: dict[str, int],
+                            rects: list[tuple[int, int, int, int]]) -> dict[str, object]:
+    # Repeated real Y-button attacks are sufficient to reach a round end with
+    # the local-versus fixture.  No WRAM or save-state shortcut is permitted.
+    attempts = 0
+    while attempts < 80 and not core.state()["round_end"]:
+        close_players(core)
+        core.run(3, p1=["y"])
+        core.run(20)
+        attempts += 1
+    current = traced_state(core, trace_map)
+    require(current["round_end"] != 0,
+            f"controls-only round-end fixture did not reach a KO: {current}")
+    before_frame = core.frame_image.copy() if core.frame_image is not None else None
+    before = {
+        "round_end": current["round_end"],
+        "clock": current["ambient_clock"],
+        "phase": current["ambient_phase"],
+        "pending": current["ambient_pending_phase"],
+        "age": current["ambient_phase_age"],
+        "ppu_patch_sha256": patch_digest(before_frame, rects),
+    }
+    frozen_frames = 0
+    alignments: list[int] = []
+    for _ in range(8):
+        core.run(1)
+        after = traced_state(core, trace_map)
+        require(after["ambient_clock"] == before["clock"] and
+                after["ambient_phase"] == before["phase"] and
+                after["ambient_pending_phase"] == before["pending"] and
+                after["ambient_phase_age"] == before["age"],
+                f"ambient trace advanced during round end: {after}")
+        after_frame = core.frame_image.copy() if core.frame_image is not None else None
+        alignment = camera_aligned_patch_match(before_frame, after_frame, rects)
+        require(alignment is not None,
+                "actual PPU ambient patch changed during round end after camera normalization")
+        alignments.append(alignment)
+        frozen_frames += 1
+    return {"attempts": attempts, "frozen_frames": frozen_frames, "before": before,
+            "camera_alignments_native_px": alignments}
+
+
+def boot_low_wave_match(core: Probe, trace_map: dict[str, int],
+                        rects: list[tuple[int, int, int, int]]) -> dict[str, int]:
+    result = boot_match(core, 0, trace_map, rects, low_wave_pair=True)
+    live = result["fight"]
+    assert isinstance(live, dict)
+    return live
+
+
+def verify_synchronized_low_wave(trace_map: dict[str, int],
+                                 rects: list[tuple[int, int, int, int]]) -> dict[str, object]:
+    core = Probe()
+    try:
+        live = boot_low_wave_match(core, trace_map, rects)
+        core.run(3, p1=["down", "y"], p2=["down", "y"])
+        core.run(3)
+        synchronized: list[dict[str, int]] = []
+        for _ in range(80):
+            current = traced_state(core, trace_map)
+            if (current["wave1"] and current["wave2"] and
+                    current["wave_low1"] and current["wave_low2"]):
+                synchronized.append(current)
+                break
+            core.run(1)
+        require(synchronized, "controls-only fixture did not synchronize two low waves")
+
+        previous_frame = core.state()["frame"]
+        deltas: list[int] = []
+        stat_values: set[int] = set()
+        stat_overflow_values: set[int] = set()
+        sync_frames = 0
+        for offset in range(600):
+            # Reissue the same real controller command at a conservative cadence
+            # so both specials can be observed without any emulated-memory write.
+            controls = ["down", "y"] if offset % 96 == 0 else []
+            current = core.run(1, p1=controls, p2=controls)
+            delta = (current["frame"] - previous_frame) & 0xFFFF
+            deltas.append(delta)
+            previous_frame = current["frame"]
+            raw_stat = current["ppu_stat"] & 0xFF
+            stat_values.add(raw_stat)
+            overflow_bits = raw_stat & 0xC0
+            stat_overflow_values.add(overflow_bits)
+            # STAT77 low revision bits are core/PPU-defined (the pinned
+            # Accuracy callback reports 0x11 on some frames).  The native
+            # safety contract is the range/time overflow bits 7 and 6.
+            require(overflow_bits == 0,
+                    f"STAT77 trace word 114 reports OAM range/time overflow "
+                    f"during low-wave cadence: {current}")
+            if (current["wave1"] and current["wave2"] and
+                    current["wave_low1"] and current["wave_low2"]):
+                sync_frames += 1
+        require(all(delta == 1 for delta in deltas),
+                f"low-wave cadence contains non-one frame deltas: {sorted(set(deltas))}")
+        return {
+            "fighters": {
+                "p1": live["fighter_id1"], "p2": live["fighter_id2"],
+                "family1": live["family1"], "family2": live["family2"],
+            },
+            "synchronized_initial_frames": len(synchronized),
+            "synchronized_frames_in_600": sync_frames,
+            "stat77_values": sorted(stat_values),
+            "stat77_overflow_bits": sorted(stat_overflow_values),
+            "stat77_overflow_mask": "0xC0",
+            "requested_frames": 600,
+            "observed_deltas": len(deltas),
+            "delta_min": min(deltas),
+            "delta_max": max(deltas),
+            "non_one_deltas": sum(delta != 1 for delta in deltas),
+            "passed": True,
+        }
+    finally:
+        core.close()
+
+
 def stage_state(label: str, state: dict[str, int], frame: dict[str, object],
                 capture: str) -> dict[str, object]:
     fields: dict[str, object] = {
@@ -380,6 +1124,34 @@ def stage_state(label: str, state: dict[str, int], frame: dict[str, object],
             "hp2": state["hp2"],
         })
     return fields
+
+
+def run_stage_engine_check(stage_id: int, record: dict[str, object],
+                           trace_map: dict[str, int]) -> dict[str, object]:
+    rects = stage_phase_probe_rects(record)
+    core = Probe()
+    try:
+        boot = boot_match(core, stage_id, trace_map, rects)
+        # Let the native FIGHT! banner and the first interface settle before
+        # comparing the upper, unobscured stage plate.  This still uses only
+        # neutral controller frames and leaves ambient cells excluded below.
+        core.run(40)
+        plate = static_plate_color_agreement(core, stage_id, record)
+        phases = verify_stage_phases(core, stage_id, record, trace_map)
+        pause = verify_pause_freeze(core, trace_map, rects)
+        result: dict[str, object] = {
+            "stage_id": stage_id,
+            "slug": stage_slug(record, stage_id),
+            "boot": boot,
+            "static_plate_color": plate,
+            "ambient_phases": phases,
+            "pause_freeze": pause,
+        }
+        result["hitstop_freeze"] = verify_hitstop_freeze(core, trace_map, rects)
+        result["round_end_freeze"] = verify_round_end_freeze(core, trace_map, rects)
+        return result
+    finally:
+        core.close()
 
 
 def main() -> int:
@@ -410,6 +1182,15 @@ def main() -> int:
         pinned_inputs = verify_manifest_and_pinned_core()
         report["checks"]["pinned_inputs"] = pinned_inputs
         report["rom"]["sha256"] = pinned_inputs["rom_sha256"]
+        stage_manifest, trace_map, stage_records = load_stage_dynamics()
+        report["stage_dynamics"] = {
+            "manifest": str(STAGE_MANIFEST_PATH.relative_to(ROOT)).replace("\\", "/"),
+            "manifest_sha256": sha256(STAGE_MANIFEST_PATH),
+            "phase_count": PHASE_COUNT,
+            "phase_period_frames": PHASE_PERIOD_FRAMES,
+            "trace": trace_map,
+            "stage_count": STAGE_COUNT,
+        }
         core = Probe()
         require(core.library_name == "bsnes2014",
                 f"unexpected independent core name: {core.library_name!r}")
@@ -424,6 +1205,7 @@ def main() -> int:
         })
 
         title = core.run(120)
+        report["core"]["video"] = core.video_contract()
         title_frame = core.frame_signature()
         title_capture = core.capture("title")
         require(title["magic"] == 0xAABA and title["screen"] == 0,
@@ -516,6 +1298,21 @@ def main() -> int:
             "peak": core.audio_peak,
             "passed": True,
         }
+        core.close()
+        core = None
+
+        stage_results: dict[str, object] = {}
+        for stage_id in range(STAGE_COUNT):
+            record = stage_records[stage_id]
+            stage_results[stage_slug(record, stage_id)] = run_stage_engine_check(
+                stage_id, record, trace_map)
+        report["checks"]["stage_ambient_and_freeze"] = {
+            "manifest_phase_count": int(stage_manifest.get("phase_count", PHASE_COUNT)),
+            "stages": stage_results,
+            "passed": True,
+        }
+        report["checks"]["synchronized_low_wave"] = verify_synchronized_low_wave(
+            trace_map, stage_phase_probe_rects(stage_records[0]))
         report["status"] = "passed"
     except Exception as exc:
         report["errors"].append(repr(exc))

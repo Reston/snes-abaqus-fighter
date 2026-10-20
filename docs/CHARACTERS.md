@@ -101,11 +101,17 @@ roster contract begins at offset `32` (16-bit words):
 | 108 / 109 | Buffered wake action ID |
 | 110 / 111 | Wake age |
 | 112 / 113 | Buffered wake jump flag |
+| 114 | Post-wait PPU `STAT77` status; bit 7 is the OBJ overflow flag |
+| 115 | Completed BG1 ambient phase, `0..3` |
+| 116 | Live ambient clock |
+| 117 | Pending BG1 ambient phase, `255` when none is pending |
+| 118 | Pending ambient phase age in live ticks |
 
 The trace remains under the reserved 256-byte region and is read-only from the
-test host. `src/trace.asm` writes these fields directly at stable offsets
-`0..113`; changing the packed `Fighter` or `Wave` layout requires updating its
-assembly offsets and this trace table together.
+test host. `src/trace.asm` writes the Fighter/Wave contract directly at stable
+offsets `0..113` and ambient fields at `115..118`; `main` samples post-wait PPU
+`STAT77` into `114` before DMA. Changing the packed `Fighter` or `Wave` layout
+requires updating its assembly offsets and this trace table together.
 
 ## Remaining limitations
 
@@ -115,16 +121,30 @@ most one 3,840-byte actor frame per vblank. The requested trace frame can lead
 the uploaded frame by one video frame when both actors change together.
 Per-fighter animation clocks, dedicated air attacks and throw/knockdown/wake
 transitions are included. Per-frame hit silhouettes remain future polish work.
-The current canonical silent v0.6.1 batch passes all four suites against ROM
-SHA256
-`945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee`. CPU
-coverage spans three difficulties and four special families for 600 live ticks
-each, with explicit spacing, low-guard, wake and no-KO lookahead cases. The
-separate pinned bsnes2014 Accuracy smoke passes against the same ROM. The CPU
-pass keeps the profile tables, art and native ABI unchanged. Human balance
-playtesting, independent full-combat runs and real-hardware testing remain
-outstanding.
+The current canonical silent v0.7.0 batch passes all five native suites against
+ROM SHA256
+`e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84`, with
+2,595 gameplay, 18,085 roster, 215 presentation, 854 focused-input and 4,537
+stage checks in the current report snapshot. The canonical `Test.cmd` stage
+portion recorded 4,528 checks; a focused extension added nine patch-only PPU
+assertions and reran the unchanged ROM/engine. CPU coverage spans three
+difficulties and four special families for 600 live ticks each, with explicit
+spacing, low-guard, wake and no-KO lookahead cases. The separate pinned
+bsnes2014 Accuracy smoke passes against the same ROM and covers all three
+ambient stage roles, freeze behavior and synchronized low-wave cadence. The
+CPU and stage passes keep the profile tables, fighter art and native ABI
+unchanged. Human balance playtesting, independent full-combat/soak runs and
+real-hardware testing remain outstanding.
 Actor-bank and action-timing selection, as well as unchanged OAM
 and shadow work, are cached by the native fast path. Interface impact feedback
 may settle one to three video frames later when its DMA yields to an actor
 upload; hitstop keeps combat state frozen.
+
+The v0.7 stage/effect integration adds four-phase ambient stage tiles and
+original strike, guard, high-wave and ground-wave effect variants without
+changing the fighter profiles, the `0..113` combat ABI or the one-actor
+transfer budget. The stage report and expanded compatibility smoke pass against
+the current ROM. The archive passes 214 technical checks and repeated packaging
+produces identical bytes. No public,
+human-balance, independent full-combat/soak or real-console release claim is
+made here.

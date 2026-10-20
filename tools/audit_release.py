@@ -40,7 +40,8 @@ def main():
 
         suites = {}
         reports = ['test-report.json', 'character-test-report.json',
-                   'presentation-test-report.json', 'input-test-report.json']
+                   'presentation-test-report.json', 'input-test-report.json',
+                   'stage-test-report.json']
         for name in reports:
             report = json.loads((ROOT / 'docs' / name).read_text())
             check(report['rom_sha256'] == manifest['sha256'] and
@@ -51,6 +52,21 @@ def main():
             suites[name] = report['passed']
         result['native_suite_checks'] = sum(suites.values())
         result['suites'] = suites
+
+        stage_report = json.loads((ROOT / 'docs/stage-test-report.json').read_text())
+        stages = stage_report['stages']
+        check(set(stages) == {'las-condes', 'el-castillo', 'la-oficina'},
+              'stage evidence covers all three locations')
+        for name, stage in stages.items():
+            waves, stress = stage['two_waves'], stage['oam_stress']
+            check(set(stage['phase_results']) == {'0', '1', '2', '3'} and
+                  waves['wave1_frames'] > 0 and waves['wave2_frames'] > 0 and
+                  waves['max_tiles'] <= 34 and waves['max_sprites'] <= 32 and
+                  all((status & 0xc0) == 0 for status in waves['ppu_stat']) and
+                  stress['frames'] == 600 and stress['max_tiles'] <= 34 and
+                  stress['max_scanline'] <= 32 and
+                  all((status & 0xc0) == 0 for status in stress['statuses']),
+                  'ambient phases and measured OBJ budget: ' + name)
 
         compatibility = json.loads((ROOT / 'docs/compatibility-test-report.json').read_text())
         cadence = compatibility['checks']['cadence']
@@ -64,6 +80,20 @@ def main():
             'scope': compatibility['scope'], 'core': compatibility['core'],
             'cadence': cadence,
         }
+        independent_stages = compatibility['checks']['stage_ambient_and_freeze']
+        check(independent_stages['passed'] and set(independent_stages['stages']) == set(stages),
+              'independent engine covers all three ambient stage loops')
+        for name, stage in independent_stages['stages'].items():
+            plate, phases = stage['static_plate_color'], stage['ambient_phases']
+            check(plate['passed'] and plate['sample_count'] >= 10000 and
+                  plate['match_ratio_le_8'] >= 0.99 and
+                  phases['phase_count'] == 4 and phases['ppu_patch_distinct'] == 4,
+                  'independent PPU colors and four visible phases: ' + name)
+        low_wave = compatibility['checks']['synchronized_low_wave']
+        check(low_wave['passed'] and low_wave['synchronized_frames_in_600'] > 0 and
+              low_wave['observed_deltas'] == 600 and low_wave['non_one_deltas'] == 0 and
+              all((status & 0xc0) == 0 for status in low_wave['stat77_values']),
+              'independent low-wave combat cadence and PPU overflow check')
 
         entries = json.loads((ROOT / 'assets/generated/character-manifest.json').read_text())
         check(len(entries) == 12, 'all twelve fighters have manifests')
@@ -113,9 +143,13 @@ def main():
                       ['Play.cmd', 'LICENSE', 'CREDITS.md', 'emulator/LICENSE',
                        'licenses/PVSnesLib.txt', 'licenses/SNESMod.txt', 'licenses/Snes9x.txt']),
                   'offline launcher and license notices are present')
-            for name in ['gameplay', 'characters', 'presentation', 'inputs']:
+            for name in ['gameplay', 'characters', 'presentation', 'inputs', 'stages']:
                 check(json.loads(package.read(f'qa/{name}.json'))['rom_sha256'] == manifest['sha256'],
                       'packaged exact-ROM evidence: ' + name)
+            check(package.read('qa/stage-dynamics.json') ==
+                  (ROOT / 'assets/generated/stage-dynamics.json').read_bytes() and
+                  package.read('OBJ-BUDGET.md') == (ROOT / 'docs/OBJ-BUDGET.md').read_bytes(),
+                  'packaged stage animation contract and OBJ budget evidence')
             check(json.loads(package.read('qa/compatibility.json')) == compatibility and
                   package.read('COMPATIBILITY.md') == (ROOT / 'docs/COMPATIBILITY.md').read_bytes(),
                   'packaged independent-engine smoke evidence and scope')

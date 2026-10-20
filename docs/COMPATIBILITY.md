@@ -1,12 +1,26 @@
 # Independent-engine compatibility
 
-The pinned smoke check has the bounded scope `independent-engine smoke, neutral600frame cadence`.
-It is a separate Libretro host from the canonical Snes9x tests. The host loads
-the frozen 4 MiB candidate ROM through the official Windows x64
-`bsnes2014_accuracy` Libretro DLL, drives the title/select/arena/fight path
-with SNES controller callbacks, captures PPU and PCM callbacks, reads the
-public WRAM trace, and checks 600 consecutive neutral runs for a one-frame
-trace increment.
+The pinned smoke check has the bounded scope `independent-engine smoke, stage
+ambient/effects freeze, synchronized low-wave, neutral600frame cadence`. It is
+a separate Libretro host from the canonical Snes9x tests. The host loads the
+current 4 MiB ROM through the official Windows x64 `bsnes2014_accuracy`
+Libretro DLL, drives the title/select/arena/fight path with real SNES
+controller callbacks, captures PPU and PCM callbacks, and reads the public
+WRAM trace without writing emulated memory.
+
+When `assets/generated/stage-dynamics.json` is present, the same independent
+host also exercises all three stages. It waits for each of the four authored
+ambient phases, hashes the declared patch rectangles from the actual PPU video
+callback, and saves one review frame per stage/phase. The intro, pause, combat
+hitstop, and round-end checks require the ambient trace and actual PPU patch to
+remain frozen in their respective state. A controls-only Negger/Fernando
+fixture then synchronizes both low waves, requires the STAT77 OAM range/time
+overflow bits (`0xC0`) to stay clear on every frame, and checks every observed
+frame delta is one. The raw low revision/status values remain recorded in the
+report because those bits are core/PPU-defined.
+This remains a bounded pinned smoke check: it does not cover full combat
+correctness, the roster suite, long endurance/soak behavior, human play, real
+hardware, or public-release readiness.
 
 The pinned source archive is the official [Libretro buildbot
 artifact](https://buildbot.libretro.com/nightly/windows/x86_64/latest/bsnes2014_accuracy_libretro.dll.zip).
@@ -26,15 +40,26 @@ powershell -ExecutionPolicy Bypass -File tools/setup-compat.ps1
 ```
 
 The tracked result is [compatibility-test-report.json](compatibility-test-report.json).
-The four callback captures are under
-`docs/screenshots/compatibility/`. The report records the exact ROM hash,
-core identity and hashes, PPU signatures, controller movement/jump evidence,
-PCM sample/energy/peak checks, and the per-frame cadence result.
+The title/select/arena/fight callback captures and stage ambient review frames
+are under `docs/screenshots/compatibility/`. The report records the exact ROM
+hash, core identity and hashes, PPU signatures and patch digests, controller
+movement/jump evidence, freeze observations, PCM sample/energy/peak checks,
+and the per-frame cadence results. The host records the callback's reported
+pixel format, dimensions and pitch. The pinned Accuracy DLL reports the
+0RGB1555 enum while emitting a four-byte BGRX callback, so the host selects
+the decoder from the stride before checking the title/fight images. Each
+stage also compares an unobscured native `y=40..100` plate band against its
+generated stage master at <=8 RGB levels per channel (with a <=16 guard),
+excluding the eight authored ambient cells.
 
-This smoke test does not cover full combat correctness, the roster suite,
-long endurance/soak behavior, human play, real hardware, or public-release
-readiness. The core is a test prerequisite fetched into `.tools/compat`; it is
-not bundled in the public ZIP.
+The v0.6.1 smoke host used the reported 16-bit format and produced striped,
+incorrectly colored review images. Its WRAM, controller, PCM and cadence
+observations remain separate evidence; those older images must not be used
+as proof of visual accuracy. The v0.7 host corrects the decoding, replaces
+the captures and requires the static plate color agreement above.
+
+The generated stage manifest and the core are test prerequisites. The core is
+fetched into `.tools/compat`; it is not bundled in the public ZIP.
 
 The primary source and license references for this specific core are the
 [libretro/bsnes2014 source repository](https://github.com/libretro/bsnes2014/tree/libretro),

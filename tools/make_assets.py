@@ -9,6 +9,8 @@ import hashlib, json, math, random, struct, subprocess, sys
 sys.path.insert(0, str(Path(__file__).parent))
 from fighter_assets import prepare_roster
 from menu_assets import make_menu_images
+from effect_assets import make_effect_sheet
+from stage_assets import build_stage_animation
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT/'assets/generated'
@@ -132,10 +134,20 @@ def background(name,im):
     return preview
 
 stages=[]
+stage_dynamics=[]
 for i,slug in enumerate(('00-las-condes','01-castillo','02-oficina')):
     im=Image.open(ROOT/f'assets/art/stages/{slug}.png').convert('RGB').resize((256,224),Image.Resampling.NEAREST)
     stages.append(im)
     background(f'stage{i}',im)
+    base_gfx=(OUT/f'stage{i}_tiles.bin').read_bytes()
+    base_map=(OUT/f'stage{i}_map.bin').read_bytes()
+    palette=(OUT/f'stage{i}_pal.bin').read_bytes()
+    dynamic=build_stage_animation(f'stage{i}',base_gfx,base_map,palette)
+    # The phase-zero tiles are source-identical, so the native preview remains
+    # unchanged while the runtime map points the selected cells at $3C00.
+    (OUT/f'stage{i}_map.bin').write_bytes(dynamic['map'])
+    asset(f'stage{i}_ambient',dynamic['ambient'])
+    stage_dynamics.append(dynamic['manifest'])
 
 roster=prepare_roster(ROOT,OUT)
 for name,image in make_menu_images(ROOT,stages,roster,text).items():
@@ -215,14 +227,7 @@ for n,fighter in enumerate(roster):
     asset(f'fighter{n:02}_pal',palbytes(fighter['palette']))
 
 # Universal 16x16 impact, projectile, and ground-shadow sprite tiles.
-effects=Image.new('P',(128,32),0);ed=ImageDraw.Draw(effects)
-for i in range(4):
-    cx=i*16+8
-    ed.polygon([(cx,1),(cx+2,5),(cx+7,3),(cx+4,8),(cx+7,12),(cx+2,11),(cx,15),(cx-2,10),(cx-7,12),(cx-4,8),(cx-7,3),(cx-2,5)],fill=3+i%2)
-    ed.ellipse((cx-2,6,cx+2,10),fill=2)
-for i in range(4,7):
-    x=i*16;ed.ellipse((x+1,3,x+14,12),fill=4);ed.ellipse((x+5,5,x+14,10),fill=2);ed.line((x,7,x+9,7),fill=3,width=2)
-ed.ellipse((112,22,127,27),fill=8)
+effects=make_effect_sheet()
 eg=bytearray()
 for ty in range(4):
     for tx in range(16):eg+=tile([effects.getpixel((tx*8+x,ty*8+y)) for y in range(8) for x in range(8)])
@@ -377,6 +382,15 @@ effect_report=r.stdout.split('Adding module, Filename:',2)
 if len(effect_report)<2 or 'Samples: [4/64]' not in effect_report[1]:
     raise RuntimeError('SMConv did not retain all four resident effect samples')
 for i,h in enumerate(effect_hashes):print(f'Effects PCM {i}: {h}')
+(OUT/'stage-dynamics.json').write_text(json.dumps({
+    'version':'0.1.0','tile_index_base':960,'tile_count':8,
+    'bytes_per_phase':256,'phase_count':4,
+    'ambient_vram_word':0x3C00,'phase_ticks':16,'max_phase_age':15,
+    'phase_capture_frames':128,
+    'trace':{'status':114,'uploaded_phase':115,'ambient_clock':116,
+             'pending_phase':117,'pending_age':118},
+    'stages':stage_dynamics
+},indent=2)+'\n')
 (OUT/'data.asm').write_text('\n'.join(asm)+'\n')
 (OUT/'assets.h').write_text('\n'.join(header)+'\n')
 print('Encoded six backgrounds, 768 fighter frames, UI, effects, 4 music tracks and 4 sounds.')

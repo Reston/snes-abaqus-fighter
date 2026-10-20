@@ -1,0 +1,1402 @@
+{
+  "version": "0.1.0",
+  "tile_index_base": 960,
+  "tile_count": 8,
+  "bytes_per_phase": 256,
+  "phase_count": 4,
+  "ambient_vram_word": 15360,
+  "phase_ticks": 16,
+  "max_phase_age": 15,
+  "phase_capture_frames": 128,
+  "trace": {
+    "status": 114,
+    "uploaded_phase": 115,
+    "ambient_clock": 116,
+    "pending_phase": 117,
+    "pending_age": 118
+  },
+  "stages": [
+    {
+      "version": "0.1.0",
+      "record_id": 0,
+      "name": "stage0",
+      "slug": "las-condes",
+      "phase_count": 4,
+      "phase_ticks": 16,
+      "max_phase_age": 15,
+      "phase_capture_frames": 128,
+      "tile_count": 8,
+      "bytes_per_tile": 32,
+      "bytes_per_phase": 256,
+      "ambient_bytes": 1024,
+      "ambient_vram_word": 15360,
+      "ambient_file": "assets/generated/stage0_ambient.bin",
+      "trace": {
+        "status": 114,
+        "uploaded_phase": 115,
+        "ambient_clock": 116,
+        "pending_phase": 117,
+        "pending_age": 118
+      },
+      "tile_index_base": 960,
+      "source": {
+        "gfx_sha256": "1719e6f6fefb7493246d2ff7f89c5858d962480aac8caee9d3a6800aba21e2d1",
+        "map_sha256": "408d3ef8d213a6a1313d6d3a8de0156253cfd80a1e6186ee625cc59e93b0522b",
+        "palette_sha256": "486861231b7b8f79a987787b742685c8d1a2e772f7509b8d04ff5421d89b71b2",
+        "palette_write": false
+      },
+      "ambient_sha256": "69514543a0be59c5a619ccf3e54f8b0ec60cfacead0739230788464ef7c78df7",
+      "phase_offsets": [
+        0,
+        256,
+        512,
+        768
+      ],
+      "phase_sha256": [
+        "721aec09f011d277b502ac87ca27059f7290cf66f6a31484c2b944e743113c77",
+        "2639337cce1ac83386bd62a6d46b44ad66f8cb2907f22b75d3e29a1373d4341b",
+        "3cdc909ad1a7becf4d419e6b8bb485152d989ea9841afd475ffd0fd0784a0bec",
+        "3ee7343bb5ae473ca4338d01afed00b725bcc31f3ab4dcbc31a995985d83d5ff"
+      ],
+      "cells": [
+        {
+          "slot": 0,
+          "x": 28,
+          "y": 6,
+          "native_x": 224,
+          "native_y": 48,
+          "role": "tree_leaf_shimmer",
+          "source_tile": 220,
+          "dynamic_tile": 960,
+          "palette": 5,
+          "map_word_before": 5340,
+          "map_word_after": 6080,
+          "source_sha256": "9ce0030dd7f55f67f933d23181f8a15fe5b54459a8d6ace8969aa20c89f500b6"
+        },
+        {
+          "slot": 1,
+          "x": 29,
+          "y": 6,
+          "native_x": 232,
+          "native_y": 48,
+          "role": "tree_leaf_shimmer",
+          "source_tile": 221,
+          "dynamic_tile": 961,
+          "palette": 5,
+          "map_word_before": 5341,
+          "map_word_after": 6081,
+          "source_sha256": "600e0c57d827bfeceb6d9088f0d5c499d7f10dc07c8af833cf6af9fa975b0eee"
+        },
+        {
+          "slot": 2,
+          "x": 28,
+          "y": 7,
+          "native_x": 224,
+          "native_y": 56,
+          "role": "tree_leaf_shimmer",
+          "source_tile": 252,
+          "dynamic_tile": 962,
+          "palette": 5,
+          "map_word_before": 5372,
+          "map_word_after": 6082,
+          "source_sha256": "fa68073c93c193130232c8ac9289f4af78bb39502a5f5f2a165537ad616f734d"
+        },
+        {
+          "slot": 3,
+          "x": 29,
+          "y": 7,
+          "native_x": 232,
+          "native_y": 56,
+          "role": "tree_leaf_shimmer",
+          "source_tile": 253,
+          "dynamic_tile": 963,
+          "palette": 5,
+          "map_word_before": 5373,
+          "map_word_after": 6083,
+          "source_sha256": "bcb64db62c4ce4f47b9921135480c59be1f0645bdecf2a4be9e1fceee101535a"
+        },
+        {
+          "slot": 4,
+          "x": 16,
+          "y": 21,
+          "native_x": 128,
+          "native_y": 168,
+          "role": "glass_reflection",
+          "source_tile": 687,
+          "dynamic_tile": 964,
+          "palette": 7,
+          "map_word_before": 7855,
+          "map_word_after": 8132,
+          "source_sha256": "63fa494127fb4a3cecbd76274e50fcf8d0fd4effd7a48f58f230350b1edf1844"
+        },
+        {
+          "slot": 5,
+          "x": 17,
+          "y": 21,
+          "native_x": 136,
+          "native_y": 168,
+          "role": "glass_reflection",
+          "source_tile": 688,
+          "dynamic_tile": 965,
+          "palette": 7,
+          "map_word_before": 7856,
+          "map_word_after": 8133,
+          "source_sha256": "c4df63b0b277262883a50ea95d6e3efeef33cd22561262dc5c0664113ef9734d"
+        },
+        {
+          "slot": 6,
+          "x": 16,
+          "y": 22,
+          "native_x": 128,
+          "native_y": 176,
+          "role": "glass_reflection",
+          "source_tile": 719,
+          "dynamic_tile": 966,
+          "palette": 2,
+          "map_word_before": 2767,
+          "map_word_after": 3014,
+          "source_sha256": "d7374fbeb7ad7ceae519818a4e0c31bf5f6a23c33956ab4e6252e39635163c88"
+        },
+        {
+          "slot": 7,
+          "x": 17,
+          "y": 22,
+          "native_x": 136,
+          "native_y": 176,
+          "role": "glass_reflection",
+          "source_tile": 720,
+          "dynamic_tile": 967,
+          "palette": 7,
+          "map_word_before": 7888,
+          "map_word_after": 8135,
+          "source_sha256": "ccf4ea5d6cc7eda761ad189d922146d5c21bcd978d69264ce956d1596a5972be"
+        }
+      ],
+      "phases": [
+        {
+          "index": 0,
+          "offset": 0,
+          "bytes": 256,
+          "sha256": "721aec09f011d277b502ac87ca27059f7290cf66f6a31484c2b944e743113c77",
+          "changed_pixels": 0,
+          "pixel_bounds": null,
+          "cells": [
+            {
+              "slot": 0,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 1,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 2,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 3,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 4,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 5,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 6,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 7,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "offset": 256,
+          "bytes": 256,
+          "sha256": "2639337cce1ac83386bd62a6d46b44ad66f8cb2907f22b75d3e29a1373d4341b",
+          "changed_pixels": 17,
+          "pixel_bounds": {
+            "left": 133,
+            "top": 50,
+            "right": 233,
+            "bottom": 179
+          },
+          "cells": [
+            {
+              "slot": 0,
+              "changed_pixels": 2,
+              "pixel_bounds": {
+                "left": 226,
+                "top": 50,
+                "right": 227,
+                "bottom": 50
+              }
+            },
+            {
+              "slot": 1,
+              "changed_pixels": 1,
+              "pixel_bounds": {
+                "left": 233,
+                "top": 50,
+                "right": 233,
+                "bottom": 50
+              }
+            },
+            {
+              "slot": 2,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 3,
+              "changed_pixels": 2,
+              "pixel_bounds": {
+                "left": 232,
+                "top": 59,
+                "right": 233,
+                "bottom": 59
+              }
+            },
+            {
+              "slot": 4,
+              "changed_pixels": 3,
+              "pixel_bounds": {
+                "left": 133,
+                "top": 170,
+                "right": 135,
+                "bottom": 170
+              }
+            },
+            {
+              "slot": 5,
+              "changed_pixels": 3,
+              "pixel_bounds": {
+                "left": 136,
+                "top": 171,
+                "right": 138,
+                "bottom": 171
+              }
+            },
+            {
+              "slot": 6,
+              "changed_pixels": 3,
+              "pixel_bounds": {
+                "left": 133,
+                "top": 178,
+                "right": 135,
+                "bottom": 178
+              }
+            },
+            {
+              "slot": 7,
+              "changed_pixels": 3,
+              "pixel_bounds": {
+                "left": 136,
+                "top": 179,
+                "right": 138,
+                "bottom": 179
+              }
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "offset": 512,
+          "bytes": 256,
+          "sha256": "3cdc909ad1a7becf4d419e6b8bb485152d989ea9841afd475ffd0fd0784a0bec",
+          "changed_pixels": 18,
+          "pixel_bounds": {
+            "left": 131,
+            "top": 51,
+            "right": 233,
+            "bottom": 180
+          },
+          "cells": [
+            {
+              "slot": 0,
+              "changed_pixels": 2,
+              "pixel_bounds": {
+                "left": 225,
+                "top": 51,
+                "right": 226,
+                "bottom": 51
+              }
+            },
+            {
+              "slot": 1,
+              "changed_pixels": 2,
+              "pixel_bounds": {
+                "left": 232,
+                "top": 51,
+                "right": 233,
+                "bottom": 51
+              }
+            },
+            {
+              "slot": 2,
+              "changed_pixels": 1,
+              "pixel_bounds": {
+                "left": 226,
+                "top": 60,
+                "right": 226,
+                "bottom": 60
+              }
+            },
+            {
+              "slot": 3,
+              "changed_pixels": 1,
+              "pixel_bounds": {
+                "left": 232,
+                "top": 60,
+                "right": 232,
+                "bottom": 60
+              }
+            },
+            {
+              "slot": 4,
+              "changed_pixels": 3,
+              "pixel_bounds": {
+                "left": 131,
+                "top": 171,
+                "right": 133,
+                "bottom": 171
+              }
+            },
+            {
+              "slot": 5,
+              "changed_pixels": 3,
+              "pixel_bounds": {
+                "left": 136,
+                "top": 172,
+                "right": 138,
+                "bottom": 172
+              }
+            },
+            {
+              "slot": 6,
+              "changed_pixels": 3,
+              "pixel_bounds": {
+                "left": 131,
+                "top": 179,
+                "right": 133,
+                "bottom": 179
+              }
+            },
+            {
+              "slot": 7,
+              "changed_pixels": 3,
+              "pixel_bounds": {
+                "left": 136,
+                "top": 180,
+                "right": 138,
+                "bottom": 180
+              }
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "offset": 768,
+          "bytes": 256,
+          "sha256": "3ee7343bb5ae473ca4338d01afed00b725bcc31f3ab4dcbc31a995985d83d5ff",
+          "changed_pixels": 18,
+          "pixel_bounds": {
+            "left": 129,
+            "top": 50,
+            "right": 233,
+            "bottom": 181
+          },
+          "cells": [
+            {
+              "slot": 0,
+              "changed_pixels": 2,
+              "pixel_bounds": {
+                "left": 225,
+                "top": 50,
+                "right": 226,
+                "bottom": 50
+              }
+            },
+            {
+              "slot": 1,
+              "changed_pixels": 1,
+              "pixel_bounds": {
+                "left": 233,
+                "top": 50,
+                "right": 233,
+                "bottom": 50
+              }
+            },
+            {
+              "slot": 2,
+              "changed_pixels": 1,
+              "pixel_bounds": {
+                "left": 225,
+                "top": 59,
+                "right": 225,
+                "bottom": 59
+              }
+            },
+            {
+              "slot": 3,
+              "changed_pixels": 2,
+              "pixel_bounds": {
+                "left": 232,
+                "top": 59,
+                "right": 233,
+                "bottom": 59
+              }
+            },
+            {
+              "slot": 4,
+              "changed_pixels": 3,
+              "pixel_bounds": {
+                "left": 129,
+                "top": 172,
+                "right": 131,
+                "bottom": 172
+              }
+            },
+            {
+              "slot": 5,
+              "changed_pixels": 3,
+              "pixel_bounds": {
+                "left": 136,
+                "top": 173,
+                "right": 138,
+                "bottom": 173
+              }
+            },
+            {
+              "slot": 6,
+              "changed_pixels": 3,
+              "pixel_bounds": {
+                "left": 129,
+                "top": 180,
+                "right": 131,
+                "bottom": 180
+              }
+            },
+            {
+              "slot": 7,
+              "changed_pixels": 3,
+              "pixel_bounds": {
+                "left": 136,
+                "top": 181,
+                "right": 138,
+                "bottom": 181
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.1.0",
+      "record_id": 1,
+      "name": "stage1",
+      "slug": "el-castillo",
+      "phase_count": 4,
+      "phase_ticks": 16,
+      "max_phase_age": 15,
+      "phase_capture_frames": 128,
+      "tile_count": 8,
+      "bytes_per_tile": 32,
+      "bytes_per_phase": 256,
+      "ambient_bytes": 1024,
+      "ambient_vram_word": 15360,
+      "ambient_file": "assets/generated/stage1_ambient.bin",
+      "trace": {
+        "status": 114,
+        "uploaded_phase": 115,
+        "ambient_clock": 116,
+        "pending_phase": 117,
+        "pending_age": 118
+      },
+      "tile_index_base": 960,
+      "source": {
+        "gfx_sha256": "932a156854379ad7ad472ee8a5b839249105a39144c0ed10664a0ebe38feae44",
+        "map_sha256": "286d5f6a3c92c7df0871d68592bbbcfdf466cab76ed375a8d9f4bb89b75d31dc",
+        "palette_sha256": "df1bc9a50d24258aff8ed8f0b89ce0cf2c6f7a043805eb7c4421ef52f7bf286b",
+        "palette_write": false
+      },
+      "ambient_sha256": "6bf52d6447f5daa2f5e0e7a9a990c6853f57c2a0dd3e89ec2beebbf5d449a773",
+      "phase_offsets": [
+        0,
+        256,
+        512,
+        768
+      ],
+      "phase_sha256": [
+        "951a44728ec095c4e7e3d32260f3b11729115322e36bd8775150e6b97c3a2e39",
+        "49a8fcc021cc1bea072bacb95ed359518f7ca46de9b27919e1c91d512f2688be",
+        "f2cd869bba6e3d499ac0e339a8f36f0e7b0266a84c55a0db9fa48408f49d0dda",
+        "99c72e16276a957902b8e4d6c69646feea3b70f515ed41b930e9b9f98560ca66"
+      ],
+      "cells": [
+        {
+          "slot": 0,
+          "x": 5,
+          "y": 10,
+          "native_x": 40,
+          "native_y": 80,
+          "role": "stringlight",
+          "source_tile": 315,
+          "dynamic_tile": 960,
+          "palette": 4,
+          "map_word_before": 4411,
+          "map_word_after": 5056,
+          "source_sha256": "6b83134e6bfb80ed106239ae1a423df9e66af2a22920d490e14e73beadb814e5"
+        },
+        {
+          "slot": 1,
+          "x": 9,
+          "y": 10,
+          "native_x": 72,
+          "native_y": 80,
+          "role": "stringlight",
+          "source_tile": 319,
+          "dynamic_tile": 961,
+          "palette": 3,
+          "map_word_before": 3391,
+          "map_word_after": 4033,
+          "source_sha256": "8d6cf514bed3c63af6a94148d92e10a132a98af60ddd8b01e8a5239fcec903ea"
+        },
+        {
+          "slot": 2,
+          "x": 16,
+          "y": 14,
+          "native_x": 128,
+          "native_y": 112,
+          "role": "party_gesture",
+          "source_tile": 454,
+          "dynamic_tile": 962,
+          "palette": 3,
+          "map_word_before": 3526,
+          "map_word_after": 4034,
+          "source_sha256": "5df6d2ae16cff5065fcd945719f7267c12bdf414c40c7ee6367c2b1d34618a6e"
+        },
+        {
+          "slot": 3,
+          "x": 17,
+          "y": 14,
+          "native_x": 136,
+          "native_y": 112,
+          "role": "party_gesture",
+          "source_tile": 455,
+          "dynamic_tile": 963,
+          "palette": 4,
+          "map_word_before": 4551,
+          "map_word_after": 5059,
+          "source_sha256": "117f5f40b2096fe464323789d22044a78ff9604adedc262cb0fa1fcffdaceb41"
+        },
+        {
+          "slot": 4,
+          "x": 16,
+          "y": 15,
+          "native_x": 128,
+          "native_y": 120,
+          "role": "party_gesture",
+          "source_tile": 486,
+          "dynamic_tile": 964,
+          "palette": 4,
+          "map_word_before": 4582,
+          "map_word_after": 5060,
+          "source_sha256": "261e21d37b50f327223d1667c19c15050ca3f1d4afabf8cad239f4b7431736ec"
+        },
+        {
+          "slot": 5,
+          "x": 17,
+          "y": 15,
+          "native_x": 136,
+          "native_y": 120,
+          "role": "party_gesture",
+          "source_tile": 487,
+          "dynamic_tile": 965,
+          "palette": 4,
+          "map_word_before": 4583,
+          "map_word_after": 5061,
+          "source_sha256": "00f9b5dc1fbee9c8b126e2bd672844f6076190590bad95324558540c9c78c937"
+        },
+        {
+          "slot": 6,
+          "x": 27,
+          "y": 10,
+          "native_x": 216,
+          "native_y": 80,
+          "role": "window_light",
+          "source_tile": 337,
+          "dynamic_tile": 966,
+          "palette": 5,
+          "map_word_before": 5457,
+          "map_word_after": 6086,
+          "source_sha256": "b853d8f003d4cfb17c81d70ae6b2bc2f310bc95df2a14efdad1478f0aa7fbf06"
+        },
+        {
+          "slot": 7,
+          "x": 28,
+          "y": 10,
+          "native_x": 224,
+          "native_y": 80,
+          "role": "window_light",
+          "source_tile": 338,
+          "dynamic_tile": 967,
+          "palette": 5,
+          "map_word_before": 5458,
+          "map_word_after": 6087,
+          "source_sha256": "cd1a2d3b46e2d0b45bc8af2f68f1e186ff48446881ccbfee9da4f3e3c2634f87"
+        }
+      ],
+      "phases": [
+        {
+          "index": 0,
+          "offset": 0,
+          "bytes": 256,
+          "sha256": "951a44728ec095c4e7e3d32260f3b11729115322e36bd8775150e6b97c3a2e39",
+          "changed_pixels": 0,
+          "pixel_bounds": null,
+          "cells": [
+            {
+              "slot": 0,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 1,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 2,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 3,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 4,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 5,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 6,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 7,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "offset": 256,
+          "bytes": 256,
+          "sha256": "49a8fcc021cc1bea072bacb95ed359518f7ca46de9b27919e1c91d512f2688be",
+          "changed_pixels": 13,
+          "pixel_bounds": {
+            "left": 41,
+            "top": 82,
+            "right": 229,
+            "bottom": 122
+          },
+          "cells": [
+            {
+              "slot": 0,
+              "changed_pixels": 2,
+              "pixel_bounds": {
+                "left": 41,
+                "top": 86,
+                "right": 44,
+                "bottom": 86
+              }
+            },
+            {
+              "slot": 1,
+              "changed_pixels": 1,
+              "pixel_bounds": {
+                "left": 74,
+                "top": 82,
+                "right": 74,
+                "bottom": 82
+              }
+            },
+            {
+              "slot": 2,
+              "changed_pixels": 2,
+              "pixel_bounds": {
+                "left": 134,
+                "top": 114,
+                "right": 135,
+                "bottom": 114
+              }
+            },
+            {
+              "slot": 3,
+              "changed_pixels": 2,
+              "pixel_bounds": {
+                "left": 136,
+                "top": 114,
+                "right": 137,
+                "bottom": 114
+              }
+            },
+            {
+              "slot": 4,
+              "changed_pixels": 2,
+              "pixel_bounds": {
+                "left": 133,
+                "top": 122,
+                "right": 134,
+                "bottom": 122
+              }
+            },
+            {
+              "slot": 5,
+              "changed_pixels": 2,
+              "pixel_bounds": {
+                "left": 137,
+                "top": 122,
+                "right": 138,
+                "bottom": 122
+              }
+            },
+            {
+              "slot": 6,
+              "changed_pixels": 1,
+              "pixel_bounds": {
+                "left": 218,
+                "top": 82,
+                "right": 218,
+                "bottom": 82
+              }
+            },
+            {
+              "slot": 7,
+              "changed_pixels": 1,
+              "pixel_bounds": {
+                "left": 229,
+                "top": 82,
+                "right": 229,
+                "bottom": 82
+              }
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "offset": 512,
+          "bytes": 256,
+          "sha256": "f2cd869bba6e3d499ac0e339a8f36f0e7b0266a84c55a0db9fa48408f49d0dda",
+          "changed_pixels": 16,
+          "pixel_bounds": {
+            "left": 41,
+            "top": 80,
+            "right": 225,
+            "bottom": 121
+          },
+          "cells": [
+            {
+              "slot": 0,
+              "changed_pixels": 4,
+              "pixel_bounds": {
+                "left": 41,
+                "top": 85,
+                "right": 44,
+                "bottom": 85
+              }
+            },
+            {
+              "slot": 1,
+              "changed_pixels": 3,
+              "pixel_bounds": {
+                "left": 72,
+                "top": 80,
+                "right": 75,
+                "bottom": 81
+              }
+            },
+            {
+              "slot": 2,
+              "changed_pixels": 2,
+              "pixel_bounds": {
+                "left": 134,
+                "top": 113,
+                "right": 135,
+                "bottom": 113
+              }
+            },
+            {
+              "slot": 3,
+              "changed_pixels": 3,
+              "pixel_bounds": {
+                "left": 136,
+                "top": 113,
+                "right": 138,
+                "bottom": 113
+              }
+            },
+            {
+              "slot": 4,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 5,
+              "changed_pixels": 2,
+              "pixel_bounds": {
+                "left": 138,
+                "top": 121,
+                "right": 139,
+                "bottom": 121
+              }
+            },
+            {
+              "slot": 6,
+              "changed_pixels": 1,
+              "pixel_bounds": {
+                "left": 219,
+                "top": 83,
+                "right": 219,
+                "bottom": 83
+              }
+            },
+            {
+              "slot": 7,
+              "changed_pixels": 1,
+              "pixel_bounds": {
+                "left": 225,
+                "top": 83,
+                "right": 225,
+                "bottom": 83
+              }
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "offset": 768,
+          "bytes": 256,
+          "sha256": "99c72e16276a957902b8e4d6c69646feea3b70f515ed41b930e9b9f98560ca66",
+          "changed_pixels": 13,
+          "pixel_bounds": {
+            "left": 41,
+            "top": 82,
+            "right": 228,
+            "bottom": 122
+          },
+          "cells": [
+            {
+              "slot": 0,
+              "changed_pixels": 2,
+              "pixel_bounds": {
+                "left": 41,
+                "top": 86,
+                "right": 44,
+                "bottom": 86
+              }
+            },
+            {
+              "slot": 1,
+              "changed_pixels": 1,
+              "pixel_bounds": {
+                "left": 74,
+                "top": 82,
+                "right": 74,
+                "bottom": 82
+              }
+            },
+            {
+              "slot": 2,
+              "changed_pixels": 2,
+              "pixel_bounds": {
+                "left": 134,
+                "top": 114,
+                "right": 135,
+                "bottom": 114
+              }
+            },
+            {
+              "slot": 3,
+              "changed_pixels": 2,
+              "pixel_bounds": {
+                "left": 136,
+                "top": 114,
+                "right": 137,
+                "bottom": 114
+              }
+            },
+            {
+              "slot": 4,
+              "changed_pixels": 2,
+              "pixel_bounds": {
+                "left": 133,
+                "top": 122,
+                "right": 134,
+                "bottom": 122
+              }
+            },
+            {
+              "slot": 5,
+              "changed_pixels": 2,
+              "pixel_bounds": {
+                "left": 137,
+                "top": 122,
+                "right": 138,
+                "bottom": 122
+              }
+            },
+            {
+              "slot": 6,
+              "changed_pixels": 1,
+              "pixel_bounds": {
+                "left": 218,
+                "top": 84,
+                "right": 218,
+                "bottom": 84
+              }
+            },
+            {
+              "slot": 7,
+              "changed_pixels": 1,
+              "pixel_bounds": {
+                "left": 228,
+                "top": 84,
+                "right": 228,
+                "bottom": 84
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "0.1.0",
+      "record_id": 2,
+      "name": "stage2",
+      "slug": "la-oficina",
+      "phase_count": 4,
+      "phase_ticks": 16,
+      "max_phase_age": 15,
+      "phase_capture_frames": 128,
+      "tile_count": 8,
+      "bytes_per_tile": 32,
+      "bytes_per_phase": 256,
+      "ambient_bytes": 1024,
+      "ambient_vram_word": 15360,
+      "ambient_file": "assets/generated/stage2_ambient.bin",
+      "trace": {
+        "status": 114,
+        "uploaded_phase": 115,
+        "ambient_clock": 116,
+        "pending_phase": 117,
+        "pending_age": 118
+      },
+      "tile_index_base": 960,
+      "source": {
+        "gfx_sha256": "f404464347bd152510e55c172e1fccada7c97cd82189ab55a849bcbb1d7bc697",
+        "map_sha256": "b9415610826bcfc0192d51312ffae01025f6b4d365c4ddac47da0fef994da9ca",
+        "palette_sha256": "39c31f63946881b7552220432f76a43587acc9ced9d086af5770a56129cef660",
+        "palette_write": false
+      },
+      "ambient_sha256": "189fdc3f39783425e83a8fee345aed55bf63a1a392bf01fdd1f366fa05b213d2",
+      "phase_offsets": [
+        0,
+        256,
+        512,
+        768
+      ],
+      "phase_sha256": [
+        "7427c9278ba957b07747afad41953890fc80e385c4ab7556b24ad40e440ca015",
+        "e77bb9e82a4694ac90ece496ed06327111ab0eaa883b1a95dcc727ac2702b48b",
+        "5f7cadcde078c45f23422ef921ddf6d30a9a696f12d0d959d2bb2c08e1b59698",
+        "d2b715896d3011a2e78fed4e04e469b42bf802cc796374e13db95395af4de810"
+      ],
+      "cells": [
+        {
+          "slot": 0,
+          "x": 7,
+          "y": 13,
+          "native_x": 56,
+          "native_y": 104,
+          "role": "monitor_left",
+          "source_tile": 415,
+          "dynamic_tile": 960,
+          "palette": 7,
+          "map_word_before": 7583,
+          "map_word_after": 8128,
+          "source_sha256": "75729aadc0a7830749f28ed3d6daae0b3a17ea6a4d1e634ed02aa5af3a05f607"
+        },
+        {
+          "slot": 1,
+          "x": 8,
+          "y": 13,
+          "native_x": 64,
+          "native_y": 104,
+          "role": "monitor_left",
+          "source_tile": 416,
+          "dynamic_tile": 961,
+          "palette": 7,
+          "map_word_before": 7584,
+          "map_word_after": 8129,
+          "source_sha256": "ff5548b4ab10e50179a15140356fcfbbaa3b289d280fb6ec4ff5383a58a7c13d"
+        },
+        {
+          "slot": 2,
+          "x": 7,
+          "y": 14,
+          "native_x": 56,
+          "native_y": 112,
+          "role": "monitor_left",
+          "source_tile": 447,
+          "dynamic_tile": 962,
+          "palette": 7,
+          "map_word_before": 7615,
+          "map_word_after": 8130,
+          "source_sha256": "2e124a1293ec8e4e1269719dca4c0d050ab3b1e5202b8a897532f295b9a572a5"
+        },
+        {
+          "slot": 3,
+          "x": 8,
+          "y": 14,
+          "native_x": 64,
+          "native_y": 112,
+          "role": "monitor_left",
+          "source_tile": 448,
+          "dynamic_tile": 963,
+          "palette": 7,
+          "map_word_before": 7616,
+          "map_word_after": 8131,
+          "source_sha256": "15d2239496953df318cc0889915d5f743cb358649839695e02b1ccc44a81932a"
+        },
+        {
+          "slot": 4,
+          "x": 19,
+          "y": 13,
+          "native_x": 152,
+          "native_y": 104,
+          "role": "monitor_right",
+          "source_tile": 427,
+          "dynamic_tile": 964,
+          "palette": 7,
+          "map_word_before": 7595,
+          "map_word_after": 8132,
+          "source_sha256": "465894b004e81ac06e4beedfd0b617a2ef4f7512aae789bdb65e6d713079952a"
+        },
+        {
+          "slot": 5,
+          "x": 20,
+          "y": 13,
+          "native_x": 160,
+          "native_y": 104,
+          "role": "monitor_right",
+          "source_tile": 428,
+          "dynamic_tile": 965,
+          "palette": 7,
+          "map_word_before": 7596,
+          "map_word_after": 8133,
+          "source_sha256": "2e6a57d129f88fbe1c0d29008aac4cd4ae52597b8c11858431ec47944f0f5f57"
+        },
+        {
+          "slot": 6,
+          "x": 19,
+          "y": 14,
+          "native_x": 152,
+          "native_y": 112,
+          "role": "monitor_right",
+          "source_tile": 459,
+          "dynamic_tile": 966,
+          "palette": 7,
+          "map_word_before": 7627,
+          "map_word_after": 8134,
+          "source_sha256": "308c4c0af7e5bdd5f325b2e3228e75e1e5915009293c82b66819569e98e78a46"
+        },
+        {
+          "slot": 7,
+          "x": 20,
+          "y": 14,
+          "native_x": 160,
+          "native_y": 112,
+          "role": "monitor_right",
+          "source_tile": 460,
+          "dynamic_tile": 967,
+          "palette": 7,
+          "map_word_before": 7628,
+          "map_word_after": 8135,
+          "source_sha256": "df5dbfc2ecd66ce3b34ba27f3e0e52b1be43df8078b392c489227e3bbfb46f5f"
+        }
+      ],
+      "phases": [
+        {
+          "index": 0,
+          "offset": 0,
+          "bytes": 256,
+          "sha256": "7427c9278ba957b07747afad41953890fc80e385c4ab7556b24ad40e440ca015",
+          "changed_pixels": 0,
+          "pixel_bounds": null,
+          "cells": [
+            {
+              "slot": 0,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 1,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 2,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 3,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 4,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 5,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 6,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 7,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "offset": 256,
+          "bytes": 256,
+          "sha256": "e77bb9e82a4694ac90ece496ed06327111ab0eaa883b1a95dcc727ac2702b48b",
+          "changed_pixels": 8,
+          "pixel_bounds": {
+            "left": 56,
+            "top": 113,
+            "right": 153,
+            "bottom": 114
+          },
+          "cells": [
+            {
+              "slot": 0,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 1,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 2,
+              "changed_pixels": 4,
+              "pixel_bounds": {
+                "left": 56,
+                "top": 113,
+                "right": 57,
+                "bottom": 114
+              }
+            },
+            {
+              "slot": 3,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 4,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 5,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 6,
+              "changed_pixels": 4,
+              "pixel_bounds": {
+                "left": 152,
+                "top": 113,
+                "right": 153,
+                "bottom": 114
+              }
+            },
+            {
+              "slot": 7,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "offset": 512,
+          "bytes": 256,
+          "sha256": "5f7cadcde078c45f23422ef921ddf6d30a9a696f12d0d959d2bb2c08e1b59698",
+          "changed_pixels": 8,
+          "pixel_bounds": {
+            "left": 61,
+            "top": 113,
+            "right": 158,
+            "bottom": 114
+          },
+          "cells": [
+            {
+              "slot": 0,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 1,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 2,
+              "changed_pixels": 4,
+              "pixel_bounds": {
+                "left": 61,
+                "top": 113,
+                "right": 62,
+                "bottom": 114
+              }
+            },
+            {
+              "slot": 3,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 4,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 5,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 6,
+              "changed_pixels": 4,
+              "pixel_bounds": {
+                "left": 157,
+                "top": 113,
+                "right": 158,
+                "bottom": 114
+              }
+            },
+            {
+              "slot": 7,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "offset": 768,
+          "bytes": 256,
+          "sha256": "d2b715896d3011a2e78fed4e04e469b42bf802cc796374e13db95395af4de810",
+          "changed_pixels": 8,
+          "pixel_bounds": {
+            "left": 66,
+            "top": 113,
+            "right": 163,
+            "bottom": 114
+          },
+          "cells": [
+            {
+              "slot": 0,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 1,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 2,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 3,
+              "changed_pixels": 4,
+              "pixel_bounds": {
+                "left": 66,
+                "top": 113,
+                "right": 67,
+                "bottom": 114
+              }
+            },
+            {
+              "slot": 4,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 5,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 6,
+              "changed_pixels": 0,
+              "pixel_bounds": null
+            },
+            {
+              "slot": 7,
+              "changed_pixels": 4,
+              "pixel_bounds": {
+                "left": 162,
+                "top": 113,
+                "right": 163,
+                "bottom": 114
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

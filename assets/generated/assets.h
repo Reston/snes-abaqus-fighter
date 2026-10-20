@@ -5,18 +5,24 @@ extern char stage0_map, stage0_map_end;
 #define STAGE0_MAP_SIZE 2048
 extern char stage0_pal, stage0_pal_end;
 #define STAGE0_PAL_SIZE 192
+extern char stage0_ambient, stage0_ambient_end;
+#define STAGE0_AMBIENT_SIZE 1024
 extern char stage1_tiles, stage1_tiles_end;
 #define STAGE1_TILES_SIZE 28352
 extern char stage1_map, stage1_map_end;
 #define STAGE1_MAP_SIZE 2048
 extern char stage1_pal, stage1_pal_end;
 #define STAGE1_PAL_SIZE 192
+extern char stage1_ambient, stage1_ambient_end;
+#define STAGE1_AMBIENT_SIZE 1024
 extern char stage2_tiles, stage2_tiles_end;
 #define STAGE2_TILES_SIZE 28416
 extern char stage2_map, stage2_map_end;
 #define STAGE2_MAP_SIZE 2048
 extern char stage2_pal, stage2_pal_end;
 #define STAGE2_PAL_SIZE 192
+extern char stage2_ambient, stage2_ambient_end;
+#define STAGE2_AMBIENT_SIZE 1024
 extern char title_tiles, title_tiles_end;
 #define TITLE_TILES_SIZE 8000
 extern char title_map, title_map_end;

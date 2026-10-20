@@ -30,18 +30,43 @@ throw/down/wake state.
 The home, fighter-select and arena menus follow a clean royal-navy, white and
 gold direction with a single cursor, original project glyphs, the four-by-three
 roster grid and one large selected portrait. Profile power, speed and family
-statistics are no longer the visual focus of selection. The current v0.6.1
-canonical silent `Test.cmd` batch passes all four suites against ROM SHA
-`945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee`; the
-separate pinned bsnes2014 Accuracy smoke passes against the same image. The CPU
-correctness pass introduces no art or profile changes. Public release, human art
-review, independent-emulator combat review and real-console gates remain open.
+statistics are no longer the visual focus of selection. The current v0.7.0
+canonical silent `Test.cmd` batch passes all five native suites against ROM SHA
+`e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84`; the
+separate pinned bsnes2014 Accuracy smoke passes against the same image. The
+focused stage extension adds nine patch-only PPU assertions to the canonical
+4,528 stage checks, producing the current 4,537-check stage report without an
+engine change. Public release, human art/balance review, independent-emulator
+combat review and real-console gates remain open.
 
 The authored art remains inside the existing 96x80, fifteen-color OBJ and
 reserved-interface palette contracts. Native health and energy bars keep their
 original glyph formulas. During hitstop, interface DMA yields to actor uploads,
 so an impact cue or cleared banner can appear one to three video frames after
 the event while the fight state and animation remain frozen.
+
+## v0.7 stage and effect direction (verified source integration)
+
+The v0.7 pass adds restrained ambient motion while keeping the art masters
+original and separate. Each stage supplies four code-native phases built from
+eight BG1 tiles at indices `960..967` in VRAM `$3C00-$3C7F`; the source stage
+masters, encoded graphics and palettes are unchanged; eight runtime map cells
+point to the dynamic block. Las Condes uses leaf shimmer and
+glass reflection, El Castillo uses string lights, a party gesture and window
+light, and La Oficina uses left and right monitor changes. The phase request
+advances during live combat and freezes for intro, pause, hitstop and round end.
+Ambient transfers yield to actor and interface work and use no additional OBJ
+sprites.
+
+The effect pass authors small phase variants in the existing native cells for
+strike, guard contact, high projectile and ground wave. The floor shadow's
+blank top rows were removed so its visible ellipse sits on the floor with the
+updated OAM position and priority, preserving its intended on-screen footprint. These changes
+preserve the original palette and native transfer contracts; they do not add
+new illustrated masters. The v0.7 stage/effect build and stage report pass on
+the current ROM; the archive passes 214 technical checks and repeated
+packaging produces identical bytes. This source evidence does not
+close the public, human, independent full-combat/soak or real-console gates.
 
 ## v0.4.1 Reston hair correction
 
@@ -89,7 +114,7 @@ Each directory contains `atlas.png`, the complete generation prompt/provenance i
 
 The sixteen key poses are idle, two walk steps, crouch, jump, jab, cross, high kick, sweep, block, hurt, victory, cast, rising uppercut, knockout and rush. The v0.3 runtime used a 64×80 frame; v0.4 supersedes that with a 96×80 canvas and one uniform per-fighter scale across all sixteen poses. Every fighter gets one shared fifteen-color palette across their frames; source-master crops provide matching selection portraits. Native previews, extraction boxes and hashes are saved under `assets/generated/`. Source fixes are recorded in each prompt file; earlier source variants are preserved beside the selected master when applicable.
 
-The v0.3 stages retained the bright illustrated v0.2 masters. The v0.4 stage pass reorganizes them as three independent PNG masters and adds the redesigned menu plates. No CLI/API image-generation fallback or commercial game sprites were used. Review of the new airborne, throw and wake drawings, more character-specific in-between art, individualized hit effects and stage parallax remain future art work.
+The v0.3 stages retained the bright illustrated v0.2 masters. The v0.4 stage pass reorganizes them as three independent PNG masters and adds the redesigned menu plates. No CLI/API image-generation fallback or commercial game sprites were used. Review of the new airborne, throw and wake drawings, more character-specific in-between art, layered stage parallax and richer effect variants remain future art work beyond the v0.7 source integration.
 
 ## Historical direction: v0.2 cartoon arcade
 

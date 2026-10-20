@@ -278,6 +278,17 @@ traceActorsFast:
     lda.l fighters+121
     and #$00ff
     sta.l $7fffe2 ; TRACE[113]
+    lda.l ambientPhase
+    and #$00ff
+    sta.l $7fffe6 ; TRACE[115], completed BG1 ambient upload
+    lda.l ambientClock
+    sta.l $7fffe8 ; TRACE[116], live-only ambient clock
+    lda.l ambientWanted
+    and #$00ff
+    sta.l $7fffea ; TRACE[117], pending phase / 255 none
+    lda.l ambientAge
+    and #$00ff
+    sta.l $7fffec ; TRACE[118], pending live ticks
     plp
     rtl
 .ends

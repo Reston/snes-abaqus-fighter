@@ -14,7 +14,10 @@ assert presentation_report['rom_sha256']==manifest['sha256'],'Presentation verif
 input_report=json.loads((ROOT/'docs/input-test-report.json').read_text())
 assert input_report['status']=='passed','Run the focused input suite before packaging.'
 assert input_report['rom_sha256']==manifest['sha256'],'Input verification must match the current ROM.'
-for evidence in (report,roster_report,presentation_report,input_report):
+stage_report=json.loads((ROOT/'docs/stage-test-report.json').read_text())
+assert stage_report['status']=='passed','Run the stage and OBJ-budget suite before packaging.'
+assert stage_report['rom_sha256']==manifest['sha256'],'Stage verification must match the current ROM.'
+for evidence in (report,roster_report,presentation_report,input_report,stage_report):
     assert evidence.get('status','passed')=='passed','A verification suite failed.'
     assert evidence['passed']==len(evidence['checks']) and evidence['passed']>0,'Incomplete verification report.'
     assert all(check['passed'] for check in evidence['checks']),'A reported check failed.'
@@ -37,6 +40,8 @@ files={
  'qa/characters.json':ROOT/'docs/character-test-report.json',
  'qa/presentation.json':ROOT/'docs/presentation-test-report.json',
  'qa/inputs.json':ROOT/'docs/input-test-report.json',
+ 'qa/stages.json':ROOT/'docs/stage-test-report.json',
+ 'qa/stage-dynamics.json':ROOT/'assets/generated/stage-dynamics.json',
  'qa/compatibility.json':ROOT/'docs/compatibility-test-report.json',
  'COMPATIBILITY.md':ROOT/'docs/COMPATIBILITY.md',
  'ANIMATION-CONTRACT.md':ROOT/'docs/ANIMATION-CONTRACT.md',
@@ -46,6 +51,7 @@ files={
  'BALANCE-AUDIT-v0.6.md':ROOT/'docs/BALANCE-AUDIT-v0.6.md',
  'PROPORTIONS.md':ROOT/'docs/PROPORTIONS.md',
  'MENU-DESIGN.md':ROOT/'docs/MENU-DESIGN.md',
+ 'OBJ-BUDGET.md':ROOT/'docs/OBJ-BUDGET.md',
  'RELEASE.md':ROOT/f"docs/RELEASE-v{manifest['version']}.md",
  'LICENSE':ROOT/'LICENSE',
  'licenses/PVSnesLib.txt':ROOT/'licenses/PVSnesLib.txt',

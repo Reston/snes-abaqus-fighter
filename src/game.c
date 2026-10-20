@@ -37,6 +37,8 @@
 #define OAM_SHADOW_BASE 256
 #define OAM_EFFECT_BASE 276
 #define OAM_WAVE_BASE 280
+#define AMBIENT_VRAM 0x3c00
+#define AMBIENT_BYTES 256
 #define INPUT_BUFFER_TICKS 6
 #define BODY_HALF_WIDTH 10
 #define DOWN_FREE 0
@@ -116,6 +118,10 @@ u16 actorUploadDestination;
 u8 hudHp[2], hudEnergy[2], hudWins[2], hudSeconds;
 u8 animationAdvance;
 u16 fightClock;
+/* Eight BG1 tiles animate independently of OBJ and actor pose uploads. */
+u8 *ambientData,*ambientUploadSource;
+u16 ambientClock;
+u8 ambientPhase,ambientWanted,ambientAge;
 const u8 effectVolpan[4]={0x88,0xd8,0xa8,0x98};
 extern char SOUNDBANK__;
 extern void drawActorFast(u16 byteSlot,s16 x,s16 y,u8 flip,u8 palette);
@@ -240,6 +246,7 @@ void music(u8 index) {
 void commonScreen(void) {
     portraitDirty=0;
     actorUploadDirty=0;
+    ambientClock=0;ambientPhase=0;ambientWanted=255;ambientAge=0;
     oamClear(0,128);
     dmaCopyVram(&ui_tiles,0x4000,UI_TILES_SIZE);
     dmaCopyCGram(&ui_pal,0,UI_PAL_SIZE);
@@ -258,6 +265,12 @@ void loadBackground(u8 which) {
     case 3:dmaCopyVram(&title_tiles,0,TITLE_TILES_SIZE);dmaCopyVram(&title_map,0x3800,2048);dmaCopyCGram(&title_pal,32,192);break;
     case 4:dmaCopyVram(&select_tiles,0,SELECT_TILES_SIZE);dmaCopyVram(&select_map,0x3800,2048);dmaCopyCGram(&select_pal,32,192);break;
     default:dmaCopyVram(&arenas_tiles,0,ARENAS_TILES_SIZE);dmaCopyVram(&arenas_map,0x3800,2048);dmaCopyCGram(&arenas_pal,32,192);break;
+    }
+    if(which<3) {
+        if(which==0)ambientData=&stage0_ambient;
+        else if(which==1)ambientData=&stage1_ambient;
+        else ambientData=&stage2_ambient;
+        dmaCopyVram(ambientData,AMBIENT_VRAM,AMBIENT_BYTES);
     }
 }
 void finishScreen(void) { dmaCopyVram((u8 *)ui,0x5800,2048);fullDirty=0;footerDirty=0;setScreenOn(); }
@@ -957,19 +970,23 @@ void drawFighter(u8 p) {
     if(redraw) {
         drawActorFast(p ? ACTOR_OAM1:ACTOR_OAM0,x,y,f->face?0:1,p);
         actorRenderX[p]=x;actorRenderY[p]=y;actorRenderFace[p]=f->face;actorRenderValid[p]=1;
-        oamSet(OAM_SHADOW_BASE+p*8,(f->x>>4)-12,FLOOR-5,0,0,0,430,2);oamSetEx(OAM_SHADOW_BASE+p*8,1,OBJ_SHOW);
-        oamSet(OAM_SHADOW_BASE+4+p*8,(f->x>>4),FLOOR-5,0,1,0,430,2);oamSetEx(OAM_SHADOW_BASE+4+p*8,1,OBJ_SHOW);
+        /* The ellipse starts on its first tile row, below the actor page.
+         * Transparent padding must not compete with low waves for OBJ fetch.
+         * Priority 2 keeps the floor shadow above the opaque stage plate. */
+        oamSet(OAM_SHADOW_BASE+p*8,(f->x>>4)-12,FLOOR+1,2,0,0,430,2);oamSetEx(OAM_SHADOW_BASE+p*8,1,OBJ_SHOW);
+        oamSet(OAM_SHADOW_BASE+4+p*8,(f->x>>4),FLOOR+1,2,1,0,430,2);oamSetEx(OAM_SHADOW_BASE+4+p*8,1,OBJ_SHOW);
     }
 }
 void drawFight(void) {
-    u8 p;
+    u8 p,phase;
     drawFighter(0);drawFighter(1);
     if(fxLife) {
         if(animationAdvance)fxLife--;
-        oamSet(OAM_EFFECT_BASE,fxX-8,fxY-8,3,fightClock&1,0,384+(fxType?6:(fxLife&3)*2),2);oamSetEx(OAM_EFFECT_BASE,1,OBJ_SHOW);
+        phase=(10-fxLife)>>1;if(phase>3)phase=3;
+        oamSet(OAM_EFFECT_BASE,fxX-8,fxY-8,3,fightClock&1,0,fxType?(fxLife>4?416:418):384+(phase<<1),2);oamSetEx(OAM_EFFECT_BASE,1,OBJ_SHOW);
     } else oamSetVisible(OAM_EFFECT_BASE,OBJ_HIDE);
     for(p=0;p<2;p++) {
-        if(waves[p].active){oamSet(OAM_WAVE_BASE+p*4,(waves[p].x>>4)-8,waves[p].y,2,waves[p].face?0:1,0,392+(fightClock%3)*2,2);oamSetEx(OAM_WAVE_BASE+p*4,1,OBJ_SHOW);}
+        if(waves[p].active){oamSet(OAM_WAVE_BASE+p*4,(waves[p].x>>4)-8,waves[p].y,2,waves[p].face?0:1,0,(waves[p].low?420:392)+(fightClock%3)*2,2);oamSetEx(OAM_WAVE_BASE+p*4,1,OBJ_SHOW);}
         else oamSetVisible(OAM_WAVE_BASE+p*4,OBJ_HIDE);
     }
 }
@@ -1028,7 +1045,15 @@ void fightTick(void) {
         else if(impactBannerPending){clearBanner();impactBannerPending=0;}
         hitstop--;
     }
-    else {combat();animationAdvance=1;}
+    else {
+        combat();animationAdvance=1;
+        /* Four restrained phases, one beat per sixteen live fight ticks.
+         * Intro, pause, impact freeze and round results keep the scene still. */
+        ambientClock++;
+        if(ambientWanted<4 && ambientAge<255)ambientAge++;
+        if(((ambientClock>>4)&3)!=ambientPhase)ambientWanted=(ambientClock>>4)&3;
+        else {ambientWanted=255;ambientAge=0;}
+    }
     if(animationAdvance)fightClock++;
     if((frame&15)==0)hud();
     drawFight();
@@ -1085,7 +1110,7 @@ void traceProfiles(void) {
     TRACE[54]=c0->throwRange;TRACE[55]=c1->throwRange;
 }
 int main(void) {
-    u8 sx,actorTransferred;
+    u8 sx,actorTransferred,interfaceTransferred,ambientReady;
     randomseed=0xABA;frame=0;menu=0;mode=0;difficulty=1;selected=0;selected2=1;arena=0;
     combatProfiles[0]=&characterProfiles[0];combatProfiles[1]=&characterProfiles[0];
     traceProfiles();
@@ -1103,10 +1128,23 @@ int main(void) {
             if(fighters[sx].animFrame!=fighters[sx].oldFrame)queueFighter(sx);
             else queueFighter(1-sx);
         }
+        ambientReady=0;
+        if(screen==FIGHT && !paused) {
+            if(!hitstop && !roundEnd) {
+                if(ambientWanted<4 && animationAdvance && !intro) {
+                    ambientUploadSource=ambientData+((u16)ambientWanted<<8);
+                    ambientReady=1;
+                }
+            }
+        }
         traceActorsFast();
         if(pendingSound){spcEffect(2,pendingSound-1,effectVolpan[pendingSound-1]);pendingSound=0;}
         spcProcess();WaitForVBlank();
+        /* STAT77 retains the completed picture's OBJ overflow flags until
+         * the end of vblank. Read it before DMA; the host never pokes PPU. */
+        TRACE[114]=REG_STAT77;
         actorTransferred=actorUploadDirty;
+        interfaceTransferred=fullDirty|hudDirty|bannerDirty|footerDirty;
         if(actorUploadDirty){uploadActor(actorUploadSource,actorUploadDestination);actorUploadDirty=0;}
         if(screen==SELECT && portraitDirty)uploadMenuPortrait();
         if(fullDirty){dmaCopyVram((u8*)ui,0x5800,2048);fullDirty=0;hudDirty=0;bannerDirty=0;footerDirty=0;}
@@ -1116,6 +1154,12 @@ int main(void) {
             if(hudDirty){dmaCopyVram((u8*)ui,0x5800,320);hudDirty=0;}
             if(bannerDirty){dmaCopyVram((u8*)&ui[9*32],0x5800+9*32,320);bannerDirty=0;}
             if(footerDirty){dmaCopyVram((u8*)&ui[26*32],0x5800+26*32,128);footerDirty=0;}
+        }
+        if(ambientReady && !actorTransferred && !interfaceTransferred) {
+            dmaCopyVram(ambientUploadSource,AMBIENT_VRAM,AMBIENT_BYTES);
+            ambientPhase=ambientWanted;ambientWanted=255;ambientAge=0;
+            /* Publish completed transfer ownership with the actual VRAM. */
+            TRACE[115]=ambientPhase;TRACE[117]=255;TRACE[118]=0;
         }
         if(shake && screen==FIGHT){shake--;sx=shake&1?2:254;bgSetScroll(0,sx==254?510:2,511);}
         else bgSetScroll(0,0,511);

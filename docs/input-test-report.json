@@ -2,7 +2,7 @@
   "emulator": "Official Snes9x 1.63 x64 libretro core",
   "suite": "input-feel",
   "status": "passed",
-  "rom_sha256": "945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee",
+  "rom_sha256": "e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84",
   "rom_bytes": 4194304,
   "checks": [
     {
@@ -10,11 +10,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.6.1",
+        "version": "0.7.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee",
-        "checksum": "4D89",
+        "sha256": "e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84",
+        "checksum": "0953",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -1190,8 +1190,8 @@
       "passed": true,
       "details": {
         "cue": "normal-contact",
-        "differing_bytes": 5951,
-        "compared_bytes": 8532
+        "differing_bytes": 5934,
+        "compared_bytes": 8528
       }
     },
     {
@@ -1200,9 +1200,9 @@
       "details": {
         "cue": "normal-contact",
         "metrics": {
-          "bytes": 8532,
-          "samples": 4266,
-          "nonzero": 4266,
+          "bytes": 8528,
+          "samples": 4264,
+          "nonzero": 4264,
           "peak": 3041,
           "clipped": false
         }
@@ -1214,16 +1214,16 @@
       "details": {
         "cue": "normal-contact",
         "quiet": {
-          "bytes": 8532,
-          "samples": 4266,
-          "nonzero": 4263,
+          "bytes": 8528,
+          "samples": 4264,
+          "nonzero": 4261,
           "peak": 1329,
           "clipped": false
         },
         "triggered": {
-          "bytes": 8532,
-          "samples": 4266,
-          "nonzero": 4266,
+          "bytes": 8528,
+          "samples": 4264,
+          "nonzero": 4264,
           "peak": 3041,
           "clipped": false
         }
@@ -1257,8 +1257,8 @@
       "passed": true,
       "details": {
         "cue": "special",
-        "differing_bytes": 8934,
-        "compared_bytes": 17064
+        "differing_bytes": 8904,
+        "compared_bytes": 17056
       }
     },
     {
@@ -1267,9 +1267,9 @@
       "details": {
         "cue": "special",
         "metrics": {
-          "bytes": 17064,
-          "samples": 8532,
-          "nonzero": 8526,
+          "bytes": 17056,
+          "samples": 8528,
+          "nonzero": 8522,
           "peak": 2860,
           "clipped": false
         }
@@ -1281,16 +1281,16 @@
       "details": {
         "cue": "special",
         "quiet": {
-          "bytes": 17064,
-          "samples": 8532,
-          "nonzero": 8524,
+          "bytes": 17056,
+          "samples": 8528,
+          "nonzero": 8520,
           "peak": 1329,
           "clipped": false
         },
         "triggered": {
-          "bytes": 17064,
-          "samples": 8532,
-          "nonzero": 8526,
+          "bytes": 17056,
+          "samples": 8528,
+          "nonzero": 8522,
           "peak": 2860,
           "clipped": false
         }
@@ -225502,20 +225502,20 @@
         "ratio": 1.0
       },
       "quiet_window": {
-        "bytes": 8532,
-        "samples": 4266,
-        "nonzero": 4263,
+        "bytes": 8528,
+        "samples": 4264,
+        "nonzero": 4261,
         "peak": 1329,
         "clipped": false
       },
       "triggered_window": {
-        "bytes": 8532,
-        "samples": 4266,
-        "nonzero": 4266,
+        "bytes": 8528,
+        "samples": 4264,
+        "nonzero": 4264,
         "peak": 3041,
         "clipped": false
       },
-      "differing_bytes": 5951
+      "differing_bytes": 5934
     },
     "special": {
       "cue": "special",
@@ -225526,20 +225526,20 @@
         "ratio": 1.0
       },
       "quiet_window": {
-        "bytes": 17064,
-        "samples": 8532,
-        "nonzero": 8524,
+        "bytes": 17056,
+        "samples": 8528,
+        "nonzero": 8520,
         "peak": 1329,
         "clipped": false
       },
       "triggered_window": {
-        "bytes": 17064,
-        "samples": 8532,
-        "nonzero": 8526,
+        "bytes": 17056,
+        "samples": 8528,
+        "nonzero": 8522,
         "peak": 2860,
         "clipped": false
       },
-      "differing_bytes": 8934
+      "differing_bytes": 8904
     }
   },
   "status_bars": {
@@ -227194,5 +227194,5 @@
     }
   },
   "passed": 854,
-  "elapsed_seconds": 51.391
+  "elapsed_seconds": 51.344
 }

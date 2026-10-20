@@ -14,6 +14,11 @@ stage0_pal:
 .incbin "assets/generated/stage0_pal.bin"
 stage0_pal_end:
 .ends
+.section "asset_stage0_ambient" superfree
+stage0_ambient:
+.incbin "assets/generated/stage0_ambient.bin"
+stage0_ambient_end:
+.ends
 .section "asset_stage1_tiles" superfree
 stage1_tiles:
 .incbin "assets/generated/stage1_tiles.bin"
@@ -29,6 +34,11 @@ stage1_pal:
 .incbin "assets/generated/stage1_pal.bin"
 stage1_pal_end:
 .ends
+.section "asset_stage1_ambient" superfree
+stage1_ambient:
+.incbin "assets/generated/stage1_ambient.bin"
+stage1_ambient_end:
+.ends
 .section "asset_stage2_tiles" superfree
 stage2_tiles:
 .incbin "assets/generated/stage2_tiles.bin"
@@ -43,6 +53,11 @@ stage2_map_end:
 stage2_pal:
 .incbin "assets/generated/stage2_pal.bin"
 stage2_pal_end:
+.ends
+.section "asset_stage2_ambient" superfree
+stage2_ambient:
+.incbin "assets/generated/stage2_ambient.bin"
+stage2_ambient_end:
 .ends
 .section "asset_title_tiles" superfree
 title_tiles:

@@ -4,7 +4,7 @@ The active public-release target and evidence gates are in
 [PUBLIC-RELEASE.md](PUBLIC-RELEASE.md). Treat this roadmap as the work backlog;
 the release gates decide when the public candidate is actually ready.
 
-The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass set the cartoon arcade direction. v0.3 introduced twelve individual sixteen-pose atlases and likeness correction. v0.4 standardized the 96x80 physical scale and rebuilt the presentation. v0.5.0 adds animation, simpler menus and buffered inputs. v0.5.1 tightens contact, hit-confirm and combo rules, clears live-fight instructions, adds result scores and corrects emulator scaling. The v0.6.0 source integration adds the final airborne, throw, knockdown and wake frame range and combat flow. The v0.6.1 CPU-correctness pass now has four-suite and pinned compatibility evidence on one ROM SHA, with public gates still open.
+The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass set the cartoon arcade direction. v0.3 introduced twelve individual sixteen-pose atlases and likeness correction. v0.4 standardized the 96x80 physical scale and rebuilt the presentation. v0.5.0 adds animation, simpler menus and buffered inputs. v0.5.1 tightens contact, hit-confirm and combo rules, clears live-fight instructions, adds result scores and corrects emulator scaling. The v0.6.0 source integration adds the final airborne, throw, knockdown and wake frame range and combat flow. The v0.6.1 CPU-correctness pass has four-suite and pinned compatibility evidence on one ROM SHA, with public gates still open. v0.7.0 stage/effect integration has a verified ROM, a 214-check archive audit and reproducible development packaging.
 
 ## v0.5 baseline
 
@@ -108,6 +108,40 @@ Real KO contact resolution keeps damage, winner selection, timers and layout
 unchanged; `roundBannerPending` defers panel/name/HUD transfer until the first
 frozen `roundEnd` tick to avoid a contact-time stall.
 
+## v0.7.0 stage/effect integration (verified source milestone)
+
+The current source pass adds restrained, code-native motion to the three stage
+masters without changing their original graphics or palettes:
+
+- Four ambient phases per stage use eight BG1 tiles at indices `960..967`,
+  uploaded in the `$3C00-$3C7F` dynamic tile window as 256 bytes per phase.
+- Las Condes animates leaves and glass reflection; El Castillo animates string
+  lights, a party gesture and a window light; La Oficina animates its monitors.
+- The phase request advances every 16 live combat frames and freezes during
+  intro, pause, hitstop and round end. Ambient DMA yields to actor and
+  interface transfers and uses no additional OBJ sprites.
+- Original native effect cells gain small authored phases for strike, guard
+  contact, high projectile and ground wave. The floor shadow's blank top rows
+  are removed and its visible ellipse is moved to the floor with higher OAM
+  priority while preserving the lower ink rows.
+- `main` records post-wait `STAT77` at `TRACE[114]`; `TRACE[115..118]` record
+  completed phase, live clock, pending phase and pending age. The Fighter/Wave ABI at
+  `0..113` remains unchanged.
+
+The current v0.7.0 ROM is SHA256
+`e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84` with
+header checksum `0953`. Five native reports pass with 2,595 gameplay, 18,085
+roster, 215 presentation, 854 focused-input and 4,537 stage checks (26,286 in
+the current report snapshot). The canonical `Test.cmd` run recorded 4,528
+stage checks; a focused extension added nine patch-only PPU assertions and
+reran the unchanged ROM/engine. The expanded compatibility smoke also passes
+against the same SHA. The v0.7 archive passes 214 technical checks and repeated
+packaging produces identical ZIP bytes. Public, human-balance, independent full-combat/soak and real-console
+gates remain open.
+The phase captures changed `17/18/18`, `13/16/13` and `8/8/8` pixels across
+the three stages (phases 1-3); the synchronized two-wave check peaked at 28
+tiles / 14 sprites with `STAT77` `0x01` and overflow mask `0xC0` clear.
+
 ## Next combat pass
 
 - Tune frame data, reach, damage, push boxes, jump arcs, throw ranges and meter
@@ -123,16 +157,20 @@ frozen `roundEnd` tick to avoid a contact-time stall.
 
 ## Release-quality validation
 
-- Keep running the gameplay, roster, presentation and focused input suites after
-  changes. The current v0.6.1 reports share ROM SHA
-  `945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee`, and the
+- Keep running the gameplay, roster, presentation, focused input and stage
+  suites after changes. The current v0.7.0 reports share ROM SHA
+  `e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84`, and the
   separate pinned compatibility report matches it. The exact-ROM evidence gate
-  for packaging is satisfied; archive creation, audit and ZIP reproducibility
-  remain pending. Human playtesting, independent full-combat, real-console and
+  is satisfied; the focused stage extension is supplemental to the canonical
+  4,528 stage checks and brings the current stage report to 4,537. The v0.6.1
+  development ZIP retains its completed 202-check archive audit and repeated
+  packaging reproducibility. The v0.7 archive passes 214 technical checks and
+  repeated packaging produces identical ZIP bytes. Human playtesting, independent full-combat/soak, real-console and
   public-release review remain open.
 - Playtest with two controllers and several keyboard layouts, including keyboard rollover constraints, SOCD edge cases, motion buffering and hitstop inputs.
-- Profile worst-case combat frames, eight-bank animation uploads, audio
-  streaming and vblank use across Snes9x, Mesen and bsnes.
+- Profile worst-case combat frames, eight-bank animation uploads, resident
+  audio effects, dynamic stage uploads, `STAT77`/OBJ overflow and vblank use
+  across Snes9x, Mesen and bsnes.
 - Test an original SNES or Super Famicom through a flash cartridge. Real-console and flash-cartridge testing have not yet been performed.
 - Record regression movies, verify every arcade ending and run longer stability sessions.
 - Review branding and portrait usage with the team before a public release.

@@ -44,12 +44,62 @@
       "details": 854
     },
     {
+      "check": "exact-ROM suite is complete: stage-test-report.json",
+      "passed": true,
+      "details": 4537
+    },
+    {
+      "check": "stage evidence covers all three locations",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "ambient phases and measured OBJ budget: las-condes",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "ambient phases and measured OBJ budget: el-castillo",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "ambient phases and measured OBJ budget: la-oficina",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "independent-engine smoke matches the current cartridge",
       "passed": true,
       "details": null
     },
     {
       "check": "independent-engine neutral cadence is 600 unit steps",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "independent engine covers all three ambient stage loops",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "independent PPU colors and four visible phases: las-condes",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "independent PPU colors and four visible phases: el-castillo",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "independent PPU colors and four visible phases: la-oficina",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "independent low-wave combat cadence and PPU overflow check",
       "passed": true,
       "details": null
     },
@@ -1292,6 +1342,16 @@
       "details": null
     },
     {
+      "check": "packaged exact-ROM evidence: stages",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "packaged stage animation contract and OBJ budget evidence",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "packaged independent-engine smoke evidence and scope",
       "passed": true,
       "details": null
@@ -1302,17 +1362,18 @@
       "details": null
     }
   ],
-  "version": "0.6.1",
-  "rom_sha256": "945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee",
-  "native_suite_checks": 21749,
+  "version": "0.7.0",
+  "rom_sha256": "e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84",
+  "native_suite_checks": 26286,
   "suites": {
     "test-report.json": 2595,
     "character-test-report.json": 18085,
     "presentation-test-report.json": 215,
-    "input-test-report.json": 854
+    "input-test-report.json": 854,
+    "stage-test-report.json": 4537
   },
   "independent_engine_smoke": {
-    "scope": "independent-engine smoke, neutral600frame cadence",
+    "scope": "independent-engine smoke, stage ambient/effects freeze, synchronized low-wave, neutral600frame cadence",
     "core": {
       "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
       "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4",
@@ -1320,7 +1381,17 @@
       "library_version": "v094 (Accuracy) 3c1394e",
       "system_ram_bytes": 131072,
       "trace_offset": "0x1FF00",
-      "trace_words": 114
+      "trace_words": 119,
+      "video": {
+        "pixel_format_enum": 0,
+        "width": 512,
+        "height": 224,
+        "pitch": 2048,
+        "bytes_per_pixel": 4.0,
+        "callbacks": 120,
+        "decoded_packing": "BGRX-8888 (stride-authoritative)",
+        "raw_prefix_hex": "42180800421808004218080042180800421808004218080042180800421808004218080042180800421808004218080042180800421808004218080042180800"
+      }
     },
     "cadence": {
       "requested_frames": 600,
@@ -1337,5 +1408,5 @@
     "source_atlases_verified": 48
   },
   "remaining_release_gates": "docs/PUBLIC-RELEASE.md",
-  "audit_checks": 202
+  "audit_checks": 214
 }
