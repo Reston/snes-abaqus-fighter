@@ -166,6 +166,11 @@ def main():
             check(package.read('emulator/snes9x.conf') ==
                   (ROOT / 'tools/snes9x.conf').read_bytes(),
                   'offline package contains the current controls/display defaults')
+            for report_name in ('compatibility-test-report.json',
+                                'compatibility-combat-test-report.json'):
+                check(package.read(report_name) ==
+                      (ROOT / 'docs' / report_name).read_bytes(),
+                      'offline compatibility guide report link: ' + report_name)
             check(all(name in package.namelist() for name in
                       ['Play.cmd', 'LICENSE', 'CREDITS.md', 'emulator/LICENSE',
                        'licenses/PVSnesLib.txt', 'licenses/SNESMod.txt', 'licenses/Snes9x.txt']),

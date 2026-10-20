@@ -61,6 +61,10 @@ files={
  'qa/training.json':training_source,
  'qa/stage-dynamics.json':ROOT/'assets/generated/stage-dynamics.json',
  'qa/compatibility.json':ROOT/'docs/compatibility-test-report.json',
+ # The compatibility guide links these report names in the repository.
+ # Keep the same links usable in the offline archive.
+ 'compatibility-test-report.json':ROOT/'docs/compatibility-test-report.json',
+ 'compatibility-combat-test-report.json':ROOT/'docs/compatibility-combat-test-report.json',
  'qa/matchups.json':ROOT/EXTRA_REPORTS['matchups'],
  'qa/independent-combat.json':ROOT/EXTRA_REPORTS['independent_combat'],
  'qa/endurance.json':ROOT/EXTRA_REPORTS['endurance'],
