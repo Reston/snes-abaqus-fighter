@@ -93,7 +93,12 @@ def write_entry(package,name,data):
     package.writestr(entry,data,compresslevel=9)
 
 with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED,compresslevel=9) as z:
-    for name,path in files.items():write_entry(z,name,path.read_bytes())
+    for name,path in files.items():
+        data=path.read_bytes()
+        # Build.cmd writes Windows newlines while Git exports LF.  Manifest
+        # whitespace must not make the same cartridge produce a different ZIP.
+        if name=='manifest.json':data=(json.dumps(manifest,indent=2)+'\n').encode('utf-8')
+        write_entry(z,name,data)
     write_entry(z,'Play.cmd',b'@echo off\r\ncd /d "%~dp0emulator"\r\nstart "Abaqus After Hours" "snes9x-x64.exe" "..\\abaqus-after-hours.sfc"\r\n')
 digest=hashlib.sha256(archive.read_bytes()).hexdigest()
 (ROOT/'dist/release-sha256.txt').write_text(digest+'  '+archive.name+'\n')

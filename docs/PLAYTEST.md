@@ -11,8 +11,8 @@ Do not infer roster consent or public-release approval from a completed table.
 - Source freeze commit: `48f3ccb539492247b83f4360a50bdc020bad9dd6`, tree
   `e571aca40019b868bf224bb619390f5ea651434e`.
 - [v0.8.0 Windows package](../dist/Abaqus-After-Hours-v0.8.0-Windows.zip).
-  Extract its cartridge for a frozen review. The 6,546,556-byte archive has
-  SHA256 `1b7b685264a867f54ab4b05203cf168b0ddf6353f26ce4da419b9823e21ee359`.
+  Extract its cartridge for a frozen review. The 6,546,551-byte archive has
+  SHA256 `44f92c041563badc1a6b903e859ad4dd5258b5bd85f6d253cdf74b5c06641869`.
   Repository tag: `v0.8.0`.
 - [Verified ROM](../dist/abaqus-after-hours.sfc) SHA256:
   `53ef44225c83bd52ee0eea3910ba74ade5ba949af7aa7440c74d959812c13090`,

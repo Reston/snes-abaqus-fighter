@@ -124,5 +124,5 @@ Preserve the native emulator requirement when extending the project.
   The v0.7.1 offline archive and its 6,153-check audit are historical. The
   v0.8.0 package passes 7,471 technical audit checks. Keep third-party
   license notices intact. Two consecutive runs produce identical ZIP bytes:
-  6,546,556 bytes, SHA256
-  `1b7b685264a867f54ab4b05203cf168b0ddf6353f26ce4da419b9823e21ee359`.
+  6,546,551 bytes, SHA256
+  `44f92c041563badc1a6b903e859ad4dd5258b5bd85f6d253cdf74b5c06641869`.

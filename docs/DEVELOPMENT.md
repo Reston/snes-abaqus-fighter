@@ -406,8 +406,8 @@ v0.7.1 offline package and its 6,153-check audit remain historical.
 Human balance sessions, art review, real-console/flash-cartridge testing and
 public-release review remain separate open gates.
 
-Two consecutive final packaging runs produce the same 6,546,556-byte v0.8.0
+Two consecutive final packaging runs produce the same 6,546,551-byte v0.8.0
 Windows archive, SHA256
-`1b7b685264a867f54ab4b05203cf168b0ddf6353f26ce4da419b9823e21ee359`.
+`44f92c041563badc1a6b903e859ad4dd5258b5bd85f6d253cdf74b5c06641869`.
 The final technical archive audit passes 7,471 checks with
 `public_release_certified=false`.

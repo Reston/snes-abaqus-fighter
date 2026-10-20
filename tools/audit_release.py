@@ -161,8 +161,9 @@ def main():
         with zipfile.ZipFile(archive) as package:
             check(package.testzip() is None, 'offline package CRC check')
             check(package.read('abaqus-after-hours.sfc') == rom and
-                  json.loads(package.read('manifest.json')) == manifest,
-                  'offline package contains the exact cartridge')
+                  package.read('manifest.json') ==
+                  (json.dumps(manifest, indent=2) + '\n').encode('utf-8'),
+                  'offline package contains the exact cartridge and canonical manifest')
             check(package.read('emulator/snes9x.conf') ==
                   (ROOT / 'tools/snes9x.conf').read_bytes(),
                   'offline package contains the current controls/display defaults')

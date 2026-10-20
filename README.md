@@ -73,8 +73,8 @@ For offline Windows play, extract
 and launch its `Play.cmd`. It includes the exact tested cartridge, Snes9x,
 player manual, licenses and QA reports, and passes 7,471 technical audit checks.
 The [archive checksum](dist/release-sha256.txt) identifies the package.
-Two consecutive packaging runs produced the same 6,546,556-byte ZIP, SHA256
-`1b7b685264a867f54ab4b05203cf168b0ddf6353f26ce4da419b9823e21ee359`.
+Two consecutive packaging runs produced the same 6,546,551-byte ZIP, SHA256
+`44f92c041563badc1a6b903e859ad4dd5258b5bd85f6d253cdf74b5c06641869`.
 
 On other platforms, open **[dist/abaqus-after-hours.sfc](dist/abaqus-after-hours.sfc)** in a SNES emulator. No BIOS or commercial ROM is required.
 
