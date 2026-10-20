@@ -4,7 +4,8 @@ import hashlib, json, sys, zipfile
 
 # The pinned embeddable Python does not add the script directory to sys.path.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from release_evidence import EXTRA_REPORTS, validate_release_evidence
+from release_evidence import (EXTRA_REPORTS, training_report_path,
+                               validate_release_evidence)
 ROOT=Path(__file__).resolve().parents[1]
 manifest=json.loads((ROOT/'dist/manifest.json').read_text())
 report=json.loads((ROOT/'docs/test-report.json').read_text())
@@ -21,10 +22,17 @@ assert input_report['rom_sha256']==manifest['sha256'],'Input verification must m
 stage_report=json.loads((ROOT/'docs/stage-test-report.json').read_text())
 assert stage_report['status']=='passed','Run the stage and OBJ-budget suite before packaging.'
 assert stage_report['rom_sha256']==manifest['sha256'],'Stage verification must match the current ROM.'
+training_source=training_report_path(ROOT)
+training_report=json.loads(training_source.read_text())
+assert training_report['status']=='passed','Run the native Training suite before packaging.'
+assert training_report['suite']=='training','Training evidence must identify its suite.'
+assert training_report['rom_sha256']==manifest['sha256'],'Training verification must match the current ROM.'
 for evidence in (report,roster_report,presentation_report,input_report,stage_report):
     assert evidence.get('status','passed')=='passed','A verification suite failed.'
     assert evidence['passed']==len(evidence['checks']) and evidence['passed']>0,'Incomplete verification report.'
     assert all(check['passed'] for check in evidence['checks']),'A reported check failed.'
+assert training_report['passed']==len(training_report['checks']) and training_report['passed']>0,'Incomplete Training verification report.'
+assert all(check['passed'] for check in training_report['checks']),'A Training verification check failed.'
 compatibility_report=json.loads((ROOT/'docs/compatibility-test-report.json').read_text())
 assert compatibility_report['status']=='passed','Run the independent-engine smoke check before packaging.'
 assert compatibility_report['rom']['sha256']==manifest['sha256'],'Compatibility smoke evidence must match the current ROM.'
@@ -50,6 +58,7 @@ files={
  'qa/presentation.json':ROOT/'docs/presentation-test-report.json',
  'qa/inputs.json':ROOT/'docs/input-test-report.json',
  'qa/stages.json':ROOT/'docs/stage-test-report.json',
+ 'qa/training.json':training_source,
  'qa/stage-dynamics.json':ROOT/'assets/generated/stage-dynamics.json',
  'qa/compatibility.json':ROOT/'docs/compatibility-test-report.json',
  'qa/matchups.json':ROOT/EXTRA_REPORTS['matchups'],

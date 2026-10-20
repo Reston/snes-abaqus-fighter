@@ -1,10 +1,10 @@
-"""Strict, read-only validation for the v0.7.1 release evidence bundle.
+"""Strict, read-only validation for the current technical release evidence.
 
 The native package and the technical audit use the same checks so that a ZIP
 cannot pass one gate while the other accepts a different interpretation of
-the long-running evidence.  This module never starts an emulator; it only
-reads JSON, hashes files, and checks the committed source relationship used by
-the fresh-build report.
+the long-running evidence, including the sixth native Training suite.  This
+module never starts an emulator; it only reads JSON, hashes files, and checks
+the committed source relationship used by the fresh-build report.
 """
 
 from __future__ import annotations
@@ -25,6 +25,11 @@ EXTRA_REPORTS: dict[str, str] = {
     "endurance": "docs/endurance-test-report.json",
     "fresh_build": "docs/fresh-build-test-report.json",
 }
+
+# Training is a native suite and therefore has an authoritative committed
+# report of its own.  Candidate runs may use build/training-test-report.json,
+# but that ignored file is deliberately excluded from release validation.
+TRAINING_REPORT = "docs/training-test-report.json"
 
 FIGHTERS = 12
 STAGES = 3
@@ -47,6 +52,37 @@ EXPECTED_INDEPENDENT_CORE = {
     "archive_sha256": "cb1211ae6b6838ed60beb7cc8ae5ad8074327733f1042ccc8baba32a62c6d18c",
     "dll_sha256": "f2aac1ddb314a001467a26b56604020f0a29c3a4dd1658b072884ace75343cf4",
 }
+
+TRAINING_CORE_OPTIONS = {"snes9x_up_down_allowed": "enabled"}
+TRAINING_CONTRACT_FLAGS = (
+    "strict_trace_cadence",
+    "strict_fight_pause_guide_cadence",
+    "bounded_menu_load_duplicates",
+    "opaque_guide_tiles",
+    "native_same_pad_socd_input",
+    "paused_contact_hud_truth",
+)
+TRAINING_TRACE_OFFSETS = {
+    "ppu_stat": 114,
+    "ambient_phase": 115,
+    "ambient_clock": 116,
+    "ambient_pending_phase": 117,
+    "ambient_pending_age": 118,
+    "pause_page": 119,
+    "guide_build": 120,
+    "training_dummy": 121,
+    "guide_dirty": 122,
+}
+TRAINING_SPECIAL_NAMES = (
+    "KERNEL BURST", "CAPITAL WAVE", "ATOMIC PUSH", "BALANCE BREAK",
+    "MACRO SHOCK", "AUDIT STRIKE", "LEGACY FLASH", "RISK REVERSAL",
+    "MERGE FORCE", "CLOUD CRASH", "CLOSE OUT", "NORDIC BYTE",
+)
+TRAINING_SPECIAL_FAMILY_NAMES = (
+    "FORWARD PROJECTILE", "ADVANCING STRIKE",
+    "LOW SHOCKWAVE", "RISING STRIKE",
+)
+TRAINING_SPECIAL_FAMILIES = (0, 0, 1, 1, 2, 3, 2, 3, 2, 0, 3, 2)
 
 BASE_COVERAGE_KEYS = frozenset({
     "attack", "air", "throw", "guard", "special", "down", "wake",
@@ -125,7 +161,7 @@ def _sha_constants(path: Path, names: tuple[str, ...]) -> dict[str, str]:
     values: dict[str, str] = {}
     for name in names:
         match = re.search(
-            rf"(?m)^\s*{re.escape(name)}\s*=\s*[\"']([0-9A-Fa-f]{{64}})[\"']",
+            rf"(?ms)^\s*{re.escape(name)}\s*=\s*(?:\(\s*)?[\"']([0-9A-Fa-f]{{64}})[\"']",
             text,
         )
         require(match is not None, "pinned-core source hash constant exists",
@@ -182,6 +218,28 @@ def load_report(root: Path, relative: str) -> dict[str, Any]:
                               repr(error))) from error
     require(isinstance(value, dict), "release evidence report is an object", relative)
     return value
+
+
+def training_report_path(root: Path) -> Path:
+    """Return the authoritative committed Training report path.
+
+    The test driver can redirect candidate output under ``build`` while
+    developing a run. Release evidence must come from the
+    committed ``docs`` report, so there is intentionally no build fallback.
+    """
+
+    path = root / TRAINING_REPORT
+    require(path.is_file(), "native Training evidence report exists", TRAINING_REPORT)
+    return path
+
+
+def _training_harness_sha256(root: Path) -> str:
+    digest = hashlib.sha256()
+    for relative in ("tools/test_training.py", "tools/emulator.py"):
+        path = root / relative
+        require(path.is_file(), "Training harness source exists", relative)
+        digest.update(path.read_bytes())
+    return digest.hexdigest()
 
 
 def _int(value: Any, label: str) -> int:
@@ -405,6 +463,293 @@ def validate_independent_combat(report: dict[str, Any], rom_sha256: str,
     _validate_core_identity(report.get("core"), EXPECTED_INDEPENDENT_CORE,
                             label + " pinned independent core", recorder)
     return {"cases": len(cases), "frames": INDEPENDENT_TOTAL_FRAMES}
+
+
+def _training_hex_digest(value: Any, label: str,
+                         recorder: Recorder | None) -> None:
+    digest = str(value).lower()
+    require(re.fullmatch(r"[0-9a-f]{64}", digest) is not None,
+            label + " is a SHA-256 digest", value, recorder)
+
+
+def _training_state(value: Any, label: str,
+                    recorder: Recorder | None,
+                    screen: int | None = None) -> dict[str, Any]:
+    require(isinstance(value, dict), label + " state exists", value, recorder)
+    require(_int(value.get("magic", -1), label + " magic") == 0xAABA,
+            label + " publishes the native trace magic", value.get("magic"), recorder)
+    if screen is not None:
+        require(_int(value.get("screen", -1), label + " screen") == screen,
+                label + " screen", value.get("screen"), recorder)
+    for field in ("fighter_id1", "fighter_id2"):
+        fighter = _int(value.get(field, -1), label + " " + field)
+        require(0 <= fighter < FIGHTERS, label + " fighter identity", fighter, recorder)
+    return value
+
+
+def _training_bar_record(value: Any, label: str,
+                         recorder: Recorder | None) -> None:
+    require(isinstance(value, dict), label + " bar record exists", value, recorder)
+    sample = value.get("sample")
+    require(isinstance(sample, dict), label + " sample exists", sample, recorder)
+    require(_int(sample.get("paused", 0), label + " sample paused") == 1,
+            label + " sample is paused", sample.get("paused"), recorder)
+    require(_int(sample.get("pause_page", -1), label + " sample page") in (0, 1, 2) and
+            _int(sample.get("hitstop", -1), label + " sample hitstop") >= 0,
+            label + " sample pause metadata", sample, recorder)
+    for field in ("hp1", "hp2", "energy1", "energy2"):
+        _int(sample.get(field, -1), label + " sample " + field)
+    for meter in ("health", "energy"):
+        for side in ("p1", "p2"):
+            actual = value.get(meter + "_" + side)
+            expected = value.get("expected_" + meter + "_" + side)
+            require(isinstance(actual, list) and len(actual) > 0,
+                    label + " " + meter + " " + side + " samples", actual, recorder)
+            require(actual == expected,
+                    label + " " + meter + " " + side + " matches expected HUD",
+                    {"actual": actual, "expected": expected}, recorder)
+
+
+def _validate_training_modes(report: dict[str, Any],
+                             recorder: Recorder | None) -> None:
+    label = "native Training mode coverage"
+    modes = report.get("modes")
+    require(isinstance(modes, list) and len(modes) == 3,
+            label + " contains modes 0, 1 and 2", modes, recorder)
+    seen: set[int] = set()
+    for mode in modes:
+        require(isinstance(mode, dict), label + " mode record is an object", mode, recorder)
+        mode_id = _int(mode.get("mode", -1), label + " mode id")
+        require(mode_id in (0, 1, 2) and mode_id not in seen,
+                label + " has a unique valid mode id", mode_id, recorder)
+        seen.add(mode_id)
+        for field in ("fighter1", "fighter2"):
+            fighter = _int(mode.get(field, -1), label + " " + field)
+            require(0 <= fighter < FIGHTERS,
+                    label + " fighter identity", {"mode": mode_id, field: fighter}, recorder)
+        for page in ("controls", "specials"):
+            card = mode.get(page)
+            card_label = label + " mode " + str(mode_id) + " " + page
+            require(isinstance(card, dict), card_label + " card exists", card, recorder)
+            require(card.get("label") == f"mode{mode_id}-{page}",
+                    card_label + " label", card.get("label"), recorder)
+            total = _int(card.get("total", 0), card_label + " total")
+            nonblank = _int(card.get("nonblank", 0), card_label + " nonblank")
+            require(total > 0 and nonblank == total,
+                    card_label + " is fully populated", {"total": total, "nonblank": nonblank}, recorder)
+            require(isinstance(card.get("text"), str) and card["text"].strip(),
+                    card_label + " text exists", card.get("text"), recorder)
+            _training_hex_digest(card.get("vram_sha256"), card_label + " VRAM digest", recorder)
+        history = mode.get("page_history")
+        require(isinstance(history, list) and len(history) > 0,
+                label + " page history exists", history, recorder)
+        for entry in history:
+            require(isinstance(entry, dict), label + " page history record", entry, recorder)
+            page = _int(entry.get("page", -1), label + " page history page")
+            build = _int(entry.get("build", -1), label + " page history build")
+            dirty = _int(entry.get("dirty", -1), label + " page history dirty")
+            require(page in (0, 1, 2) and 0 <= build <= 3 and dirty in (0, 1),
+                    label + " page history values", entry, recorder)
+    require(seen == {0, 1, 2}, label + " covers all three modes", seen, recorder)
+
+
+def _validate_training_pause_hud(report: dict[str, Any],
+                                 recorder: Recorder | None) -> None:
+    label = "native Training mirrored pause HUD"
+    evidence = report.get("pause_hud_after_contacts")
+    require(isinstance(evidence, dict), label + " evidence exists", evidence, recorder)
+    cases = evidence.get("cases")
+    require(isinstance(cases, list) and len(cases) == 2,
+            label + " has both attacker-side cases", cases, recorder)
+    attackers: set[int] = set()
+    for case in cases:
+        require(isinstance(case, dict), label + " case is an object", case, recorder)
+        attacker = _int(case.get("attacker", 0), label + " attacker")
+        require(attacker in (1, 2) and attacker not in attackers,
+                label + " covers a unique P1/P2 attacker", attacker, recorder)
+        attackers.add(attacker)
+        initial = _training_state(case.get("initial"), label + " initial", recorder, screen=3)
+        impact = _training_state(case.get("impact"), label + " impact", recorder, screen=3)
+        paused = _training_state(case.get("paused"), label + " paused", recorder, screen=3)
+        require(_int(initial.get("paused", -1), label + " initial pause") == 0 and
+                _int(impact.get("paused", -1), label + " impact pause") == 0 and
+                _int(paused.get("paused", -1), label + " paused flag") == 1,
+                label + " transitions into pause after contact", case, recorder)
+        require((initial.get("hp1"), initial.get("hp2")) !=
+                (impact.get("hp1"), impact.get("hp2")),
+                label + " records real contact damage", case, recorder)
+        for field in ("hp1", "hp2", "energy1", "energy2"):
+            require(paused.get(field) == impact.get(field),
+                    label + " freezes " + field, {
+                        "impact": impact.get(field), "paused": paused.get(field),
+                    }, recorder)
+        for phase in ("entry_bars", "settled_bars"):
+            _training_bar_record(case.get(phase), label + " " + phase, recorder)
+        page_bars = case.get("page_bars")
+        require(isinstance(page_bars, dict) and set(page_bars) == {"0", "1", "2"},
+                label + " covers guide pages 0, 1 and 2", page_bars, recorder)
+        for page, bars in page_bars.items():
+            _training_bar_record(bars, label + " guide page " + page, recorder)
+        require(_int(case.get("sample_count", 0), label + " sample count") > 0,
+                label + " has pause samples", case.get("sample_count"), recorder)
+    require(attackers == {1, 2}, label + " covers both controller sides", attackers, recorder)
+
+
+def validate_training_evidence(root: Path, rom_sha256: str,
+                               recorder: Recorder | None = None) -> dict[str, Any]:
+    """Validate the authoritative native Training report for the current ROM."""
+
+    label = "native Training suite"
+    report = load_report(root, TRAINING_REPORT)
+    _exact_rom(report, rom_sha256, label, recorder)
+    require(report.get("suite") == "training", label + " suite identity", report.get("suite"), recorder)
+    checks = report.get("checks")
+    require(isinstance(checks, list) and len(checks) > 0,
+            label + " has non-empty checks", checks, recorder)
+    passed = _int(report.get("passed", -1), label + " passed count")
+    require(passed == len(checks) and passed > 0,
+            label + " passed count covers every check", {
+                "passed": passed, "checks": len(checks),
+            }, recorder)
+    for index, item in enumerate(checks):
+        require(isinstance(item, dict) and item.get("passed") is True,
+                label + " check passed", index, recorder)
+
+    training_pins = _sha_constants(
+        root / "tools/test_training.py", ("CORE_ARCHIVE_SHA256", "CORE_MEMBER_SHA256"))
+    require(training_pins == {
+        "CORE_ARCHIVE_SHA256": EXPECTED_NATIVE_CORE["archive_sha256"],
+        "CORE_MEMBER_SHA256": EXPECTED_NATIVE_CORE["member_sha256"],
+    }, label + " source core pins are the release pins", training_pins, recorder)
+    _validate_core_identity(report.get("core"), EXPECTED_NATIVE_CORE,
+                            label + " pinned native core", recorder)
+    harness = str(report.get("harness_sha256", "")).lower()
+    require(harness == _training_harness_sha256(root),
+            label + " harness matches current test sources", harness, recorder)
+    require(report.get("core_options") == TRAINING_CORE_OPTIONS,
+            label + " core options are pinned", report.get("core_options"), recorder)
+
+    flags = report.get("contract_flags")
+    require(isinstance(flags, dict) and set(flags) == set(TRAINING_CONTRACT_FLAGS),
+            label + " contract flag schema", flags, recorder)
+    require(all(flags[name] is True for name in TRAINING_CONTRACT_FLAGS),
+            label + " contract flags are complete", flags, recorder)
+    for field in ("cadence_failures", "guide_failures"):
+        failures = report.get(field)
+        require(isinstance(failures, list) and failures == [],
+                label + " " + field, failures, recorder)
+    require(report.get("trace_offsets") == TRAINING_TRACE_OFFSETS,
+            label + " trace offsets are stable", report.get("trace_offsets"), recorder)
+
+    _validate_training_modes(report, recorder)
+
+    specials = report.get("all_special_names")
+    require(isinstance(specials, list) and len(specials) == FIGHTERS,
+            label + " includes all twelve special-name records", specials, recorder)
+    seen_specials: set[int] = set()
+    for item in specials:
+        require(isinstance(item, dict), label + " special-name record", item, recorder)
+        fighter = _int(item.get("fighter", -1), label + " special fighter")
+        require(fighter in range(FIGHTERS) and fighter not in seen_specials,
+                label + " special-name fighter IDs", fighter, recorder)
+        seen_specials.add(fighter)
+        require(item.get("special") == TRAINING_SPECIAL_NAMES[fighter],
+                label + " special-name mapping", item, recorder)
+        for field in ("p1", "p2"):
+            value = _int(item.get(field, -1), label + " special " + field)
+            require(0 <= value < FIGHTERS,
+                    label + " special fighter selection", {field: value}, recorder)
+        require(isinstance(item.get("text"), str) and item["text"].strip(),
+                label + " special page text", item, recorder)
+        require(TRAINING_SPECIAL_FAMILY_NAMES[TRAINING_SPECIAL_FAMILIES[fighter]]
+                in item["text"],
+                label + " special family text", item, recorder)
+    require(seen_specials == set(range(FIGHTERS)),
+            label + " covers every fighter special", seen_specials, recorder)
+
+    dummy = report.get("dummy_and_contacts")
+    require(isinstance(dummy, dict), label + " dummy/contact evidence exists", dummy, recorder)
+    require(_int(dummy.get("dummy_jump_samples", 0), label + " dummy jump samples") > 0,
+            label + " records real dummy jumps", dummy.get("dummy_jump_samples"), recorder)
+    for field, expected in (("high_wave_damage", 24), ("low_wave_damage", 1),
+                            ("air_damage", 8)):
+        require(_int(dummy.get(field, -1), label + " " + field) == expected,
+                label + " " + field, dummy.get(field), recorder)
+    throws = dummy.get("throw_samples")
+    require(isinstance(throws, list) and len(throws) > 0,
+            label + " records a native throw", throws, recorder)
+    for sample in throws:
+        state = _training_state(sample, label + " throw sample", recorder, screen=3)
+        require(_int(state.get("action1", 0), label + " throw action1") != 0 or
+                _int(state.get("action2", 0), label + " throw action2") != 0,
+                label + " throw sample reaches an action", state, recorder)
+
+    socd = report.get("paused_directional_socd")
+    require(isinstance(socd, dict), label + " paused directional SOCD evidence", socd, recorder)
+    require(_int(socd.get("page", -1), label + " SOCD page") == 1 and
+            _int(socd.get("same_pad_raw_keys1", -1), label + " SOCD raw bits") == 768 and
+            _int(socd.get("dummy_before", -1), label + " SOCD dummy before") == 1 and
+            _int(socd.get("dummy_after_held_edge", -1), label + " SOCD dummy after") == 1,
+            label + " same-pad opposite directions stay neutral", socd, recorder)
+
+    freeze = report.get("pause_projectile_crossup")
+    require(isinstance(freeze, dict), label + " projectile/cross-up evidence", freeze, recorder)
+    projectile = freeze.get("projectile_samples")
+    require(isinstance(projectile, list) and len(projectile) > 0,
+            label + " samples an active projectile", projectile, recorder)
+    for sample in projectile:
+        _training_state(sample, label + " projectile sample", recorder, screen=3)
+    require(any(_int(sample.get("wave1", 0), label + " wave1") > 0 or
+                _int(sample.get("wave2", 0), label + " wave2") > 0
+                for sample in projectile),
+            label + " observes an active wave", projectile, recorder)
+    crossup = freeze.get("crossup_samples")
+    require(isinstance(crossup, list) and len(crossup) > 0,
+            label + " samples an airborne cross-up", crossup, recorder)
+    for sample in crossup:
+        _training_state(sample, label + " cross-up sample", recorder, screen=3)
+    require(any(_int(sample.get("y1", 0), label + " cross-up y1") != 0
+                for sample in crossup) and
+            any(_int(sample.get("landing1", 0), label + " cross-up landing") != 0
+                for sample in crossup) and
+            len({_int(sample.get("face2", -1), label + " cross-up face2")
+                 for sample in crossup}) > 1,
+            label + " observes airborne arc, landing and facing restoration", crossup, recorder)
+
+    quick = report.get("quick_reset")
+    require(isinstance(quick, dict), label + " quick reset evidence", quick, recorder)
+    quick_state = _training_state(quick.get("state"), label + " quick reset", recorder, screen=3)
+    require(_int(quick_state.get("intro", -1), label + " quick reset intro") == 0 and
+            _int(quick_state.get("training_dummy", -1), label + " quick reset dummy") == 2,
+            label + " preserves live Training reset", quick_state, recorder)
+
+    roster = report.get("roster_return")
+    require(isinstance(roster, dict), label + " roster return evidence", roster, recorder)
+    require(_int(roster.get("screen", -1), label + " roster return screen") == 1,
+            label + " returns to roster", roster, recorder)
+    roster_state = _training_state(roster.get("state"), label + " roster return", recorder, screen=1)
+    require(_int(roster_state.get("selected", -1), label + " roster selected") in range(FIGHTERS) and
+            _int(roster_state.get("selected2", -1), label + " roster selected2") in range(FIGHTERS),
+            label + " roster selections remain valid", roster_state, recorder)
+
+    _validate_training_pause_hud(report, recorder)
+    captures = report.get("captures")
+    require(isinstance(captures, list) and len(captures) == 8,
+            label + " has eight native review captures", captures, recorder)
+    for index, capture in enumerate(captures):
+        require(isinstance(capture, dict) and
+                capture.get("check") == "native PPU capture is 256x224" and
+                capture.get("passed") is True,
+                label + " capture record", index, recorder)
+        details = capture.get("details")
+        require(isinstance(details, dict) and details.get("size") == [256, 224],
+                label + " capture geometry", details, recorder)
+    capture_paths = report.get("capture_paths")
+    require(isinstance(capture_paths, list) and len(capture_paths) == len(captures) and
+            all(isinstance(path, str) and path for path in capture_paths),
+            label + " capture paths", capture_paths, recorder)
+    return {"checks": passed, "report": TRAINING_REPORT, "modes": 3,
+            "captures": len(captures)}
 
 
 def _strict_flags(value: Any, label: str, recorder: Recorder | None) -> None:
@@ -636,5 +981,6 @@ def validate_release_evidence(root: Path, rom_sha256: str,
         "endurance": validate_endurance(reports["endurance"], rom_sha256,
                                          recorder, root),
         "fresh_build": validate_fresh_build(reports["fresh_build"], rom_sha256, root, recorder),
+        "training": validate_training_evidence(root, rom_sha256, recorder),
     }
     return summaries

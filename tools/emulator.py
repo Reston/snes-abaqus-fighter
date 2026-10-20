@@ -14,9 +14,12 @@ BUTTONS={'b':0,'y':1,'select':2,'start':3,'up':4,'down':5,'left':6,'right':7,'a'
 class GameInfo(C.Structure):
     _fields_=[('path',C.c_char_p),('data',C.c_void_p),('size',C.c_size_t),('meta',C.c_char_p)]
 
+class CoreVariable(C.Structure):
+    _fields_=[('key',C.c_char_p),('value',C.c_char_p)]
+
 class Emulator:
     _active_instance = None
-    def __init__(self,rom=None):
+    def __init__(self,rom=None,core_options=None):
         if Emulator._active_instance is not None:
             raise RuntimeError('Snes9x allows one active Emulator per process; close it before booting another.')
         self.closed=False
@@ -24,6 +27,10 @@ class Emulator:
         self.held=[set(),set()];self.pixel_format=0;self.frame=None;self.frames=0
         self.audio_peak=0;self.audio_samples=0;self.audio_energy=0;self.pcm=bytearray()
         self.directory=str(ROOT/'.tools/core').encode()
+        # Optional frontend configuration, never an emulated-memory write.
+        # Keep bytes alive for libretro's borrowed retro_variable pointers.
+        self.core_options={str(k).encode():str(v).encode()
+                           for k,v in (core_options or {}).items()}
         ENV=C.CFUNCTYPE(C.c_bool,C.c_uint,C.c_void_p)
         VIDEO=C.CFUNCTYPE(None,C.c_void_p,C.c_uint,C.c_uint,C.c_size_t)
         AUDIO=C.CFUNCTYPE(None,C.c_int16,C.c_int16)
@@ -35,7 +42,12 @@ class Emulator:
             if cmd==10:self.pixel_format=C.cast(data,C.POINTER(C.c_uint))[0];return True
             if cmd==3:C.cast(data,C.POINTER(C.c_bool))[0]=True;return True
             if cmd in (9,31,30):C.cast(data,C.POINTER(C.c_char_p))[0]=self.directory;return True
-            if cmd==15:return False
+            if cmd==15:
+                variable=C.cast(data,C.POINTER(CoreVariable)).contents
+                value=self.core_options.get(variable.key)
+                if value is None:return False
+                variable.value=value
+                return True
             if cmd==17:C.cast(data,C.POINTER(C.c_bool))[0]=False;return True
             if cmd==47:C.cast(data,C.POINTER(C.c_int))[0]=3;return True
             if cmd==39:C.cast(data,C.POINTER(C.c_uint))[0]=0;return True

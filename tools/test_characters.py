@@ -1028,7 +1028,8 @@ def capture_animation_gif(e: Emulator, fighter: int, label: str,
 def observe_animation_loop(e: Emulator, fighter: int, side: int,
                            label: str, inputs: tuple[str, ...],
                            expected: set[int], frames: int = 32,
-                           gif_label: str | None = None) -> dict[str, object]:
+                           gif_label: str | None = None,
+                           minimum_distinct: int = 3) -> dict[str, object]:
     """Observe distinct uploaded frames and a stable floor while moving."""
 
     visual_frames: list[int] = []
@@ -1051,8 +1052,8 @@ def observe_animation_loop(e: Emulator, fighter: int, side: int,
         floors.append(max(entry["y"] for entry in entries) + 16)
         e.run(1, p1=list(inputs) if side == 0 else [],
               p2=list(inputs) if side == 1 else [])
-    check(len(set(expected_frames)) >= 3,
-          label + " exposes at least three distinct native animation frames", {
+    check(len(set(expected_frames)) >= minimum_distinct,
+          label + f" exposes at least {minimum_distinct} distinct native animation frames", {
               "fighter": fighter, "side": side,
               "frames": sorted(set(expected_frames)),
           })
@@ -1365,8 +1366,10 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
         e.run(3)
         idle_path = capture(e, fighter, "idle")
         idle_loop = observe_animation_loop(
-            e, fighter, 0, "idle breathing", (), {0, 16, 17, 18, 19},
-            frames=32, gif_label="idle-animation",
+            # Four 16-tick phases take 64 ticks. A half-cycle observation can
+            # contain only two phases depending on the entry/DMA phase.
+            e, fighter, 0, "idle breathing", (), {16, 17, 18, 19},
+            frames=64, gif_label="idle-animation", minimum_distinct=4,
         )
         seen_banks.update(frame // 8 for frame in idle_loop["frames"])
 

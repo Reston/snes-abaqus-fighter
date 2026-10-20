@@ -3205,29 +3205,67 @@ def check_cpu_lowwave_guard() -> dict[str, object]:
 def check_cpu_wake() -> dict[str, object]:
     """Normal/Hard CPU wakes with its single UP edge after a knockdown."""
 
+    induction_limit = 260
+    observation_limit = 120
     results: dict[str, object] = {}
     for difficulty in (1, 2):
         e = boot(0, fighter=1, difficulty=difficulty)
         samples: list[dict[str, int]] = []
         down_seen = False
+        down_index: int | None = None
+        wake_index: int | None = None
+        attack_pulses = 0
+        scene_violations: list[dict[str, int]] = []
         try:
             close_players(e)
-            for index in range(260):
+            # Induce exactly one knockdown within the historical bounded
+            # window.  Once the victim enters any down state, stop all P1
+            # attacks so a second hit or KO cannot hide wake behavior.
+            for index in range(induction_limit):
                 current = trace(e)
                 keys = (["down", "r"] if index % 32 < 4 and
-                        current["action1"] == 0 and
+                        not down_seen and current["action1"] == 0 and
                         current["down_state1"] == 0 else [])
+                if keys:
+                    attack_pulses += 1
                 e.run(1, p1=keys)
                 sample = trace(e)
+                if sample["screen"] != 3 or sample["round_end"] or \
+                        sample["hp1"] == 0 or sample["hp2"] == 0:
+                    scene_violations.append({
+                        "phase": 0, "index": index,
+                        "screen": sample["screen"],
+                        "round_end": sample["round_end"],
+                        "hp1": sample["hp1"], "hp2": sample["hp2"],
+                    })
                 if sample["down_state2"]:
                     down_seen = True
-                if down_seen and (sample["down_state2"] == 5 or
-                                  sample["wake_jump2"] or
-                                  sample["down_state2"] == 0):
+                    down_index = index
                     samples.append(sample)
-                if down_seen and sample["down_state2"] == 0 and \
-                        signed16(sample["y2"]) < 0:
                     break
+
+            # Observe lift, flight, floor, get-up and wake separately.  This
+            # phase sends no input, leaving the CPU's single wake edge as the
+            # only source of the jump buffer.
+            if down_seen:
+                for observation in range(observation_limit):
+                    sample = trace(e)
+                    samples.append(sample)
+                    if sample["screen"] != 3 or sample["round_end"] or \
+                            sample["hp1"] == 0 or sample["hp2"] == 0:
+                        scene_violations.append({
+                            "phase": 1, "index": observation,
+                            "screen": sample["screen"],
+                            "round_end": sample["round_end"],
+                            "hp1": sample["hp1"], "hp2": sample["hp2"],
+                        })
+                    if (wake_index is None and sample["down_state2"] == 5
+                            and sample["down_tick2"] == 1):
+                        wake_index = observation
+                    if sample["down_state2"] == 0 and \
+                            signed16(sample["y2"]) < 0:
+                        break
+                    e.run(1)
         finally:
             e.close()
         wake_edge = [sample for sample in samples
@@ -3235,6 +3273,10 @@ def check_cpu_wake() -> dict[str, object]:
         airborne = [sample for sample in samples if signed16(sample["y2"]) < 0]
         check(down_seen, f"CPU d{difficulty} enters a real downed state",
               [_cpu_summary(sample) for sample in samples[:8]])
+        check(not scene_violations,
+              f"CPU d{difficulty} wake fixture stays in live non-KO FIGHT",
+              {"violations": scene_violations,
+               "down_index": down_index, "wake_index": wake_index})
         check(any(sample["raw_keys2"] & 2048 for sample in wake_edge),
               f"CPU d{difficulty} samples a single UP wake edge",
               [_cpu_summary(sample) for sample in wake_edge])
@@ -3247,6 +3289,12 @@ def check_cpu_wake() -> dict[str, object]:
             "wake_edge": [_cpu_summary(sample) for sample in wake_edge],
             "airborne": [_cpu_summary(sample) for sample in airborne[:8]],
             "down_seen": down_seen,
+            "down_index": down_index,
+            "wake_index": wake_index,
+            "induction_limit": induction_limit,
+            "observation_limit": observation_limit,
+            "attack_pulses_before_down": attack_pulses,
+            "scene_violations": scene_violations,
         }
     return results
 

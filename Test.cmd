@@ -10,6 +10,8 @@ if errorlevel 1 goto failed
 if errorlevel 1 goto failed
 ".tools\python\python.exe" "tools\test_stages.py"
 if errorlevel 1 goto failed
+".tools\python\python.exe" "tools\test_training.py"
+if errorlevel 1 goto failed
 exit /b 0
 :failed
 pause

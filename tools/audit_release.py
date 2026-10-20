@@ -7,7 +7,8 @@ import zipfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from PIL import Image
-from release_evidence import EXTRA_REPORTS, validate_release_evidence
+from release_evidence import (EXTRA_REPORTS, training_report_path,
+                               validate_release_evidence)
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / 'docs/release-audit.json'
@@ -53,6 +54,7 @@ def main():
         # audit and the ZIP gate enforce identical current-ROM, source-freeze,
         # endurance, independent-combat and full-matchup contracts.
         result['release_evidence'] = validate_release_evidence(ROOT, sha(rom), check)
+        training_source = training_report_path(ROOT)
 
         suites = {}
         reports = ['test-report.json', 'character-test-report.json',
@@ -66,6 +68,15 @@ def main():
                   all(item['passed'] for item in report['checks']),
                   'exact-ROM suite is complete: ' + name, report['passed'])
             suites[name] = report['passed']
+        training_report = json.loads(training_source.read_text())
+        check(training_report['rom_sha256'] == manifest['sha256'] and
+              training_report['suite'] == 'training' and
+              training_report['status'] == 'passed' and
+              training_report['passed'] == len(training_report['checks']) > 0 and
+              all(item['passed'] for item in training_report['checks']),
+              'exact-ROM suite is complete: training-test-report.json',
+              training_report['passed'])
+        suites['training-test-report.json'] = training_report['passed']
         result['native_suite_checks'] = sum(suites.values())
         result['suites'] = suites
 
@@ -159,9 +170,19 @@ def main():
                       ['Play.cmd', 'LICENSE', 'CREDITS.md', 'emulator/LICENSE',
                        'licenses/PVSnesLib.txt', 'licenses/SNESMod.txt', 'licenses/Snes9x.txt']),
                   'offline launcher and license notices are present')
-            for name in ['gameplay', 'characters', 'presentation', 'inputs', 'stages']:
-                check(json.loads(package.read(f'qa/{name}.json'))['rom_sha256'] == manifest['sha256'],
-                      'packaged exact-ROM evidence: ' + name)
+            native_package_sources = {
+                'gameplay': ROOT / 'docs/test-report.json',
+                'characters': ROOT / 'docs/character-test-report.json',
+                'presentation': ROOT / 'docs/presentation-test-report.json',
+                'inputs': ROOT / 'docs/input-test-report.json',
+                'stages': ROOT / 'docs/stage-test-report.json',
+                'training': training_source,
+            }
+            for name, source in native_package_sources.items():
+                packaged = package.read(f'qa/{name}.json')
+                check(packaged == source.read_bytes() and
+                      json.loads(packaged)['rom_sha256'] == manifest['sha256'],
+                      'packaged exact-ROM evidence and byte identity: ' + name)
             check(package.read('qa/stage-dynamics.json') ==
                   (ROOT / 'assets/generated/stage-dynamics.json').read_bytes() and
                   package.read('OBJ-BUDGET.md') == (ROOT / 'docs/OBJ-BUDGET.md').read_bytes(),
