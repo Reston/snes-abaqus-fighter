@@ -48,6 +48,9 @@
 #define DOWN_RISE 4
 #define DOWN_WAKE 5
 
+/* refreshFighterOam and drawShadowsFast encode this fixed native geometry. */
+typedef char NativeOamGeometryMustMatch[(ACTOR_FRAME_W==96 && ACTOR_FRAME_H==80 && FLOOR==201)?1:-1];
+
 typedef struct {
     s16 x, y, vy, vx;
     u16 keys, oldkeys;
@@ -76,6 +79,7 @@ CHECK_OFFSET(Fighter,connected,18);CHECK_OFFSET(Fighter,hurt,19);CHECK_OFFSET(Fi
 CHECK_OFFSET(Fighter,pose,23);CHECK_OFFSET(Fighter,won,25);CHECK_OFFSET(Fighter,motion,26);
 CHECK_OFFSET(Fighter,combo,28);CHECK_OFFSET(Fighter,combotime,29);CHECK_OFFSET(Fighter,counter,30);
 CHECK_OFFSET(Fighter,rawKeys,32);
+CHECK_OFFSET(Fighter,bufferKeys,36);
 CHECK_OFFSET(Fighter,bufferedAction,40);CHECK_OFFSET(Fighter,bufferAge,41);
 CHECK_OFFSET(Fighter,jumpBuffer,42);CHECK_OFFSET(Fighter,landing,43);
 CHECK_OFFSET(Fighter,animFrame,44);
@@ -109,6 +113,7 @@ u8 hitstop, shake, flash, fxLife, fxX, fxY, fxType, resultWin, champion;
 u8 hudDirty, bannerDirty, footerDirty, fullDirty, musicIndex, musicOn;
 u8 impactHudPending,impactBannerPending;
 u8 impactBannerPlayer,impactBannerCombo,impactBannerCounter;
+u8 impactSettle,resetFooterPending;
 u8 roundBannerPending;
 u8 pendingSound;
 u8 cpuTick;
@@ -123,12 +128,19 @@ u16 fightClock;
 u8 *ambientData,*ambientUploadSource;
 u16 ambientClock;
 u8 ambientPhase,ambientWanted,ambientAge;
+u8 roundUiPending;
 const u8 effectVolpan[4]={0x88,0xd8,0xa8,0x98};
 extern char SOUNDBANK__;
 extern void drawActorFast(u16 byteSlot,s16 x,s16 y,u8 flip,u8 palette);
+extern void drawShadowsFast(u16 byteSlot,s16 centerX);
+extern void refreshFighterOam(u8 player);
+extern void queueFighter(u8 player);
+extern void processResidentAudioReady(void);
 extern void uploadActor(u8 *source,u16 destination);
 extern void traceActorsFast(void);
 extern void clearBanner(void);
+extern void fillBannerPanel(void);
+extern void applyHitReaction(u8 defender,u8 damage);
 extern void refreshHealthBar(u8 player);
 extern void refreshEnergyBar(u8 player);
 void releaseHeldVictim(u8 owner);
@@ -330,7 +342,7 @@ void hud(void) {
         }
     }
 }
-void resetRound(void) {
+void resetRoundState(void) {
     u8 p;
     for(p=0;p<2;p++) {
         fighters[p].x=(p ? 190:66)*16;fighters[p].y=0;fighters[p].vy=0;fighters[p].vx=0;
@@ -354,16 +366,21 @@ void resetRound(void) {
         waves[p].x=0;waves[p].y=0;waves[p].face=0;waves[p].owner=p;
     }
     seconds=99;secondTick=0;intro=110;roundEnd=0;hitstop=0;shake=0;fxLife=0;
+    fightClock=0;
     impactHudPending=0;impactBannerPending=0;roundBannerPending=0;
     impactBannerPlayer=0;impactBannerCombo=0;impactBannerCounter=0;
+    impactSettle=0;resetFooterPending=0;roundUiPending=0;
     pendingSound=0;
     hudHp[0]=255;hudHp[1]=255;hudEnergy[0]=255;hudEnergy[1]=255;
     hudWins[0]=255;hudWins[1]=255;hudSeconds=255;
+}
+void resetRound(void) {
+    resetRoundState();
     panel(0,5);word(1,0,characterNames[fighters[0].id]);word(20,0,characterNames[fighters[1].id]);
     put(15,1,'K');put(16,1,'O');word(13,2,"ROUND");put(19,2,'0'+roundNumber);
     if(mode==2)word(12,4,"TRAINING");
     else word(12,4,mode==1 ? "P1 VS P2":"P1 VS CPU");
-    clearBanner();panel(10,3);center(10,"GET READY");center(12,arenaNames[arena]);hud();
+    clearBanner();fillBannerPanel();center(10,"GET READY");center(12,arenaNames[arena]);hud();
 }
 void beginMatch(void) {
     u8 i;
@@ -453,8 +470,10 @@ u16 cpuKeys(void) {
         if(c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE) {
             /* Do not walk out of the opening band while waiting for the
              * global cadence. The meter cost makes this opening cast one-shot. */
-            if(distance>110 && f->energy>=64)return KEY_DOWN|KEY_X;
-            if(distance>95 && ((frame+f->id*13)%97==0))return KEY_DOWN|KEY_X;
+            if(!waves[1].active) {
+                if(distance>110 && f->energy>=64)return KEY_DOWN|KEY_X;
+                if(distance>95 && ((frame+f->id*13)%97==0))return KEY_DOWN|KEY_X;
+            }
         } else if((frame+f->id*13)%97==0) {
             if(c->specialFamily==SPECIAL_RUSH) {
                 specialMax=c->specialReach+BODY_HALF_WIDTH;
@@ -669,17 +688,14 @@ u8 hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
         /* Only an uninterrupted hit reaction links a true combo.  The
          * display timer is cosmetic and must never establish a link. */
         if(d->hurt && !d->guard && a->combo)a->combo++;else a->combo=1;
-        a->combotime=45;d->hurt=12+dmg/3;d->action=0;d->tick=0;d->guard=0;
-        d->combo=0;d->combotime=0;d->counter=0;
-        d->bufferedAction=0;d->bufferAge=0;d->bufferKeys=0;d->jumpBuffer=0;
-        d->airAction=0;d->wakeAction=0;d->wakeAge=0;d->wakeJump=0;d->wakeKeys=0;
+        a->combotime=45;applyHitReaction(defender,dmg);
         fxType=0;hitstop=5;shake=6;
         a->energy=a->energy+8>ENERGY_MAX?ENERGY_MAX:a->energy+8;
         impactBannerCombo=a->combo;impactBannerCounter=a->counter;
     }
     /* Snapshot feedback now; construct its tilemap after the first frozen
      * HUD tick, away from contact physics and the new actor pose uploads. */
-    impactBannerPlayer=attacker;impactBannerPending=1;
+    impactBannerPlayer=attacker;impactBannerPending=1;impactSettle=1;
     if(dmg>=d->hp)d->hp=0;else d->hp-=dmg;
     if(blocked)d->x+=a->face?16:-16;
     else d->x+=a->face?32:-32;
@@ -855,7 +871,7 @@ void combat(void) {
             if(winner<2)fighters[winner].won++;
             /* Resolve the result now, but build its panel on the next
              * frozen tick so KO contact and pose DMA keep their budget. */
-            roundBannerPending=1;impactHudPending=0;impactBannerPending=0;
+            roundBannerPending=2;impactHudPending=0;impactBannerPending=0;
             shake=10;sound(3);
         }
     }
@@ -959,29 +975,11 @@ void animateFighter(u8 p) {
 }
 void drawFighter(u8 p) {
     Fighter *f=&fighters[p];
-    s16 x,y;
-    u8 redraw=0;
     f->pose=poseFor(p);
     if(animationAdvance)animateFighter(p);
-    /* The gameplay pivot is the center of a uniform 96x80 canvas.  Keep the
-     * signed left edge intact so the ninth OAM X bit can wrap a whole body
-     * cleanly at either screen edge. */
-    x=(f->x>>4)-(ACTOR_FRAME_W/2);y=FLOOR+(f->y>>4)-ACTOR_FRAME_H;
-    /* Every streamed frame uses the same tile geometry. OAM persists while
-     * its integer position/facing is unchanged; VRAM uploads remain live. */
-    if(!actorRenderValid[p])redraw=1;
-    if(actorRenderX[p]!=x)redraw=1;
-    if(actorRenderY[p]!=y)redraw=1;
-    if(actorRenderFace[p]!=f->face)redraw=1;
-    if(redraw) {
-        drawActorFast(p ? ACTOR_OAM1:ACTOR_OAM0,x,y,f->face?0:1,p);
-        actorRenderX[p]=x;actorRenderY[p]=y;actorRenderFace[p]=f->face;actorRenderValid[p]=1;
-        /* The ellipse starts on its first tile row, below the actor page.
-         * Transparent padding must not compete with low waves for OBJ fetch.
-         * Priority 2 keeps the floor shadow above the opaque stage plate. */
-        oamSet(OAM_SHADOW_BASE+p*8,(f->x>>4)-12,FLOOR+1,2,0,0,430,2);oamSetEx(OAM_SHADOW_BASE+p*8,1,OBJ_SHOW);
-        oamSet(OAM_SHADOW_BASE+4+p*8,(f->x>>4),FLOOR+1,2,1,0,430,2);oamSetEx(OAM_SHADOW_BASE+4+p*8,1,OBJ_SHOW);
-    }
+    /* Signed geometry and the unchanged-position cache are native hot paths.
+     * Pose selection and the independent VRAM queue retain their contracts. */
+    refreshFighterOam(p);
 }
 void drawFight(void) {
     u8 p,phase;
@@ -996,15 +994,6 @@ void drawFight(void) {
         else oamSetVisible(OAM_WAVE_BASE+p*4,OBJ_HIDE);
     }
 }
-void queueFighter(u8 p) {
-    Fighter *f=&fighters[p];
-    if(f->animFrame==f->oldFrame)return;
-    actorUploadSource=actorBanks[(p<<3)+(f->animFrame>>3)]+actorFrameOffsets[f->animFrame&7];
-    actorUploadDestination=p ? ACTOR_VRAM1:ACTOR_VRAM0;
-    actorUploadDirty=1;
-    f->oldFrame=f->animFrame;
-}
-
 void fightTick(void) {
     animationAdvance=0;
     if((edge0|edge1)&KEY_START) {
@@ -1020,19 +1009,24 @@ void fightTick(void) {
         drawFight();return;
     }
     if(mode==2 && (edge0&KEY_SELECT)) {
-        resetRound();intro=0;clearBanner();clearFightHint();animationAdvance=1;drawFight();return;
+        /* The same actors and labels remain loaded. Reset their simulation
+         * now and let the two idle uploads settle before rebuilding bars. */
+        resetRoundState();intro=0;hitstop=3;impactSettle=1;
+        impactHudPending=1;impactBannerPending=1;resetFooterPending=1;
+        animationAdvance=1;drawFight();return;
     }
     if(roundEnd) {
         animationAdvance=1;
-        if(roundBannerPending) {
-            roundBannerPending=0;clearBanner();panel(10,3);
+        if(roundBannerPending>1)roundBannerPending--;
+        else if(roundBannerPending) {
+            roundBannerPending=0;clearBanner();fillBannerPanel();
             center(10,seconds?"K.O.":"TIME OVER");
             if(winner<2)center(12,characterNames[fighters[winner].id]);
             else center(12,"DOUBLE K.O.");
             hud();
         }
         roundEnd--;
-        if(roundEnd==100) {clearBanner();panel(10,3);center(10,winner<2?characterNames[fighters[winner].id]:"DRAW");center(12,winner<2?"WINS THE ROUND":"TRY AGAIN");}
+        if(roundEnd==100) {clearBanner();fillBannerPanel();center(10,winner<2?characterNames[fighters[winner].id]:"DRAW");center(12,winner<2?"WINS THE ROUND":"TRY AGAIN");}
         if(!roundEnd) {
             if(fighters[0].won>=2 || fighters[1].won>=2) {
                 resultWin=fighters[0].won>=2;
@@ -1040,19 +1034,33 @@ void fightTick(void) {
                 showResult(resultWin);return;
             }
             if(winner<2)roundNumber++;
-            resetRound();
+            /* Two idle uploads precede the next round's panel. The labels
+             * and backdrop stay loaded; expensive UI work belongs to intro. */
+            resetRoundState();roundUiPending=1;impactHudPending=1;
         }
     } else if(intro) {
         intro--;
-        if(intro==50){clearBanner();panel(10,3);center(11,"FIGHT!");sound(3);}
+        if(roundUiPending==1 && intro==108) {
+            clearBanner();fillBannerPanel();center(10,"GET READY");center(12,arenaNames[arena]);
+            put(19,2,'0'+roundNumber);hudDirty=1;roundUiPending=2;
+        } else if(roundUiPending==2 && intro==107) {
+            hud();impactHudPending=0;roundUiPending=0;
+        }
+        if(intro==50){clearBanner();fillBannerPanel();center(11,"FIGHT!");sound(3);}
         if(!intro){clearBanner();clearFightHint();}
     } else if(hitstop) {
-        if(impactHudPending){hud();impactHudPending=0;}
-        else if(impactBannerPending) {
-            clearBanner();impactBannerPending=0;
-            if(impactBannerCombo>1 || impactBannerCounter) {
-                word(impactBannerPlayer?20:2,9,impactBannerCounter?"COUNTER!":"COMBO!");
-                if(impactBannerCombo>1)put(impactBannerPlayer?28:10,9,'0'+(impactBannerCombo%10));
+        if(impactSettle)impactSettle=0;
+        else {
+            /* Both actor uploads have settled. Build the small interface
+             * ranges together so the banner is visible within hitstop. */
+            if(impactHudPending){hud();impactHudPending=0;}
+            if(impactBannerPending) {
+                clearBanner();impactBannerPending=0;
+                if(impactBannerCombo>1 || impactBannerCounter) {
+                    word(impactBannerPlayer?20:2,9,impactBannerCounter?"COUNTER!":"COMBO!");
+                    if(impactBannerCombo>1)put(impactBannerPlayer?28:10,9,'0'+(impactBannerCombo%10));
+                }
+                if(resetFooterPending){clearFightHint();resetFooterPending=0;}
             }
         }
         hitstop--;
@@ -1067,7 +1075,7 @@ void fightTick(void) {
         else {ambientWanted=255;ambientAge=0;}
     }
     if(animationAdvance)fightClock++;
-    if((frame&15)==0)hud();
+    if((frame&15)==0 && !impactHudPending && !roundBannerPending)hud();
     drawFight();
 }
 void menuTick(void) {
@@ -1151,7 +1159,7 @@ int main(void) {
         }
         traceActorsFast();
         if(pendingSound){spcEffect(2,pendingSound-1,effectVolpan[pendingSound-1]);pendingSound=0;}
-        spcProcess();WaitForVBlank();
+        processResidentAudioReady();WaitForVBlank();
         /* STAT77 retains the completed picture's OBJ overflow flags until
          * the end of vblank. Read it before DMA; the host never pokes PPU. */
         TRACE[114]=REG_STAT77;
