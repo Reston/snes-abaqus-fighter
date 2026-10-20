@@ -24,9 +24,15 @@ peak SPC six, zero stable FIGHT lag and empty failure arrays. `validate_release_
 passes. The v0.8.1 offline package passes 7,471 technical audit checks; v0.8.0
 remains historical evidence.
 Reston's full64 native visual review accepts the v4 art for integration; see the
-[Reston v4 likeness review](docs/RESTON-LIKENESS-v4.md). Actual human
-likeness/consent, balance, listening, controller, real-console and branding
-gates remain open; `public_release_certified` remains false.
+[Reston v4 likeness review](docs/RESTON-LIKENESS-v4.md). The user confirmed the
+revised buzz cut looks closer; final team likeness/consent, balance, listening,
+controller, real-console and branding gates remain open;
+`public_release_certified` remains false.
+
+A supplemental [audio review](docs/AUDIO-REVIEW.md) provides matched native cue
+captures and measured score repetition from the same ROM. Its listening ZIP
+and PCM checks support human review; they do not establish listening approval
+or replace the six canonical suites.
 
 The [v0.6.0 development notes](docs/RELEASE-v0.6.0.md) describe the packaged
 64-frame roster, air attacks, throws and recovery. The

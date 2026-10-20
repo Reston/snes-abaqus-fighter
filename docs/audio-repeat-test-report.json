@@ -1,0 +1,33 @@
+{
+  "suite": "audio-reproducibility",
+  "status": "passed",
+  "rom_sha256": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466",
+  "harness_sha256": "149ea29339b203c2b3135fac50b14312491e25c2a9beeeff9c1fa8c0d9afbceb",
+  "core": {
+    "archive": ".tools\\core.zip",
+    "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
+    "member": "snes9x_libretro.dll",
+    "member_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
+    "dll": ".tools\\core\\snes9x_libretro.dll",
+    "dll_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343"
+  },
+  "scope": "Two complete invocations of the same silent native audio audit.",
+  "full_runs": 2,
+  "archives": [
+    {
+      "file": "dist/Abaqus-After-Hours-v0.8.1-Audio-Review.zip",
+      "bytes": 15449631,
+      "sha256": "5c66aeba230fded8e27507784a47fb72a918d1f854d57c7a983911a925871205"
+    },
+    {
+      "file": "dist/Abaqus-After-Hours-v0.8.1-Audio-Review.zip",
+      "bytes": 15449631,
+      "sha256": "5c66aeba230fded8e27507784a47fb72a918d1f854d57c7a983911a925871205"
+    }
+  ],
+  "zip_bytes_identical": true,
+  "capture_files_verified": 12,
+  "all_archive_capture_bytes_identical": true,
+  "human_listening_approved": false,
+  "method": "Compare both whole-archive SHA256/size records, then each current ZIP entry against its manifest; compare active cue and music WAV hashes across the two runs."
+}
