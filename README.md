@@ -2,7 +2,7 @@
 
 An original six-button fighting game for the **Super Nintendo**, inspired by the arcade structure of Street Fighter II and the people and places of Abaqus in Santiago.
 
-**Current release: v0.5.1.** The cartridge is a 4 MiB NTSC FastROM LoROM image across 128 banks, compiled from C and 65816 assembly. It runs in Snes9x with ordinary SNES controllers. Silent native verification passes 5,073 checks across gameplay, roster animation, presentation and input feel.
+**Current development build: v0.5.1.** The cartridge is a 4 MiB NTSC FastROM LoROM image across 128 banks, compiled from C and 65816 assembly. It runs in Snes9x with ordinary SNES controllers. Silent native verification passes 5,073 checks across gameplay, roster animation, presentation and input feel. The active goal is a high-standard public release; [release-quality gates](docs/PUBLIC-RELEASE.md) track the remaining work.
 
 The [v0.5.1 release notes](docs/RELEASE-v0.5.1.md) cover clearer fight/results screens, more consistent contact rules, truthful hit confirms and sharp emulator defaults. The [v0.5 notes](docs/RELEASE-v0.5.md) describe the 48-frame roster animation and buffered inputs.
 

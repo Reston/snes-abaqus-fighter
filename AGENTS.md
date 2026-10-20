@@ -5,6 +5,11 @@ This is a native SNES fighting game. The authoritative deliverable is
 assembly. The v0.5 target is a 4 MiB NTSC FastROM LoROM image across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+- The active objective is a high-standard public release, with Capcom-era arcade
+  polish as the benchmark. Follow `docs/PUBLIC-RELEASE.md`; the current v0.x builds
+  are development baselines. Automated checks alone do not certify public
+  readiness. The next milestone follows `docs/COMBAT-ANIMATION-CONTRACT.md`.
+
 - Read `docs/DEVELOPMENT.md` before changing memory layout or hardware transfers.
 - Build with `Build.cmd`; regenerate assets with `Build.cmd --assets`.
 - Run `Test.cmd` after gameplay, graphics-transfer, audio, menu, presentation or
