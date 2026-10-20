@@ -1,0 +1,49 @@
+{
+  "character": "Jose Ignacio Cote Villarroel",
+  "character_id": 3,
+  "mode": "built-in imagegen with local master and action atlas references",
+  "input_roles": {
+    "assets/art/characters/03-cote/atlas.png": "primary identity, costume, face, palette and original idle proportion reference",
+    "assets/art/characters/03-cote/animation-actions.png": "secondary anatomy, linework and animation-style reference",
+    "docs/COMBAT-ANIMATION-CONTRACT.md": "frames 48..63, physical safe-area and role constraints"
+  },
+  "output": {
+    "path": "assets/art/characters/03-cote/animation-airborne.png",
+    "source": "C:/Users/user/.codex/generated_images/01a1574c-9e47-7360-81d8-471b54e39131/exec-89ef3e9b-6db7-4c4a-8fa0-91c9bb083ef9.png",
+    "sha256": "623544901e23041533b5da4bacd439f317c4e4ce299b75536910737d43c08edd",
+    "frames": "48..63",
+    "frame_order": [
+      "upright neutral guard anchor",
+      "air-punch anticipation",
+      "air-punch active extension",
+      "air-punch retract",
+      "air-kick anticipation",
+      "air-kick active extension",
+      "air-kick retract",
+      "compact apex guard",
+      "thrower contact/grip",
+      "thrower release/turn",
+      "victim lifted/off balance",
+      "victim ground impact head left",
+      "knockdown launch/recoil",
+      "knockdown fall head left",
+      "grounded get-up",
+      "wake-up guard"
+    ],
+    "extractor_validation": {
+      "size": [1254, 1254],
+      "mode": "RGBA",
+      "alpha_threshold": 200,
+      "alpha_values": [0, 255],
+      "connected_figures": 16,
+      "figure_sizes": [[225,318],[205,274],[285,286],[191,281],[207,298],[317,257],[193,281],[191,244],[301,261],[293,266],[280,265],[298,102],[260,225],[320,177],[272,209],[226,267]]
+    }
+  },
+  "prompt": "Use case: stylized-concept\nAsset type: native SNES fighting-game airborne and throw animation sprite atlas\nInput image 1: the attached existing Jose Ignacio Cote atlas is the primary identity, costume, face, body proportion and palette reference.\nInput image 2: the attached Cote action animation atlas is a secondary style and anatomy reference.\nPrimary request: create a brand-new transparent 1254 x 1254 RGBA sprite sheet named animation-airborne.png containing exactly sixteen separate full-body Cote figures in a strict 4-column by 4-row grid, row-major order, for native frames 48 through 63. Preserve the original fictional cartoon fighter: adult pale long oval face with high forehead, short naturally swept COPPER/GINGER hair, full rounded GINGER beard and moustache, calm normal eyes, crimson/burgundy waistcoat, rolled white sleeves, charcoal trousers, brown shoes and deep navy outlines.\nStyle/medium: polished hand-drawn 16-bit arcade fighting-game art with a friendly slightly cartoon look, bold readable outlines, consistent head/torso/pelvis/limb anatomy and the same source scale as the existing atlases. The first figure is the sole upright normalization anchor. Do not alter or regenerate the existing atlas or action frames.\nComposition: every figure is fully separated by generous transparent gaps inside its own quarter cell. Keep the current 96x80 native safe-area intent: new figures should be compact enough to fit a 94x77 region at the same physical scale. Do not extend arms straight vertically above the existing standing-height silhouette; do not shrink or resize individual poses to make them fit. Feet and body pivots should remain coherent. Figures face RIGHT except frames 59 and 61 whose knocked-down heads clearly point LEFT.\nExact row-major frame content: 48 upright neutral standing guard matching the original idle height and proportions exactly; 49 visibly airborne air-punch anticipation with compact knees and fists prepared; 50 visibly airborne air-punch active with one fist extended forward, compact readable silhouette; 51 visibly airborne air-punch retract returning toward airborne guard; 52 visibly airborne air-kick anticipation with knee raised and body tucked; 53 visibly airborne air-kick active with one leg extended forward but contained within the cell; 54 visibly airborne air-kick retract with bent leg returning; 55 compact neutral airborne/apex guard with knees bent; 56 thrower contact/grip with both arms reaching toward an opponent position while remaining a single fighter and no opponent or prop; 57 thrower release/turn with clear torso rotation and throwing force, no opponent or prop; 58 victim lifted and off balance with contained limbs, single fighter only; 59 victim ground impact with head LEFT; 60 knockdown launch/recoil; 61 knockdown fall diagonally with head LEFT; 62 grounded get-up with planted hand and foot; 63 wake-up guard returning to neutral.\nAnimation requirements: genuine anatomical in-between drawings, visibly airborne frames have bent knees and clear separation from the floor line, thrower and victim silhouettes are distinct, fall/get-up figures do not touch neighboring rows. Preserve clothing construction, copper/ginger hair and beard and crimson waistcoat in every frame. No translated duplicate body, no programmatic limb deformation, no fake silhouette, no relabeled grounded pose.\nHard constraints: actual transparency with alpha, exactly 16 connected figures, 4x4 layout, no labels, text, watermark, shadows, projectile, energy, motion streaks, extra characters, opponent, props, cropped limbs, black background or photorealism. Keep every frame original artwork inspired only by arcade animation rhythm, not copied commercial sprites.",
+  "reference_comparison": {
+    "legacy_idle_box": [222, 313],
+    "airborne_anchor_box": [225, 318],
+    "note": "The existing atlas.png and animation-actions.png were left unchanged; new figures use a shared source scale and the upright frame remains at the legacy idle height."
+  },
+  "validation_notes": "No code, generated native assets, build, ROM, emulator, UI or audio was changed."
+}

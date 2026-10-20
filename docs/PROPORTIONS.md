@@ -2,8 +2,9 @@
 
 The runtime treats every fighter as a **96x80 native canvas**. The canvas is
 six 16x16 OBJ pieces wide and five pieces high. Every pose for one fighter is
-rendered with one scale chosen over that fighter's complete 48-frame set; a wide kick or
-an extended arm cannot silently shrink the whole fighter for one animation.
+rendered with one scale chosen over that fighter's original 48-frame set and
+locked across the expanded 64 frames. A wide kick or an extended arm cannot
+silently shrink the whole fighter for one animation.
 
 The source art remains free to use different pose silhouettes. Crouches,
 jumps, attacks, victory poses, and knockouts can have different opaque bounds,
@@ -11,7 +12,8 @@ but they share the same floor pivot and native canvas. The asset manifest
 records the source scale and effective standing height so visual review can
 distinguish intentional pose variation from a changed fighter scale. Each new
 motion/action source atlas is normalized once against the legacy idle height
-before this common scale is selected. The six eight-frame banks and full
+before this common scale is selected. The airborne atlas is normalized once
+using upright frame 48 and must fit at that same scale. The eight eight-frame banks and full
 pipeline are described in [ANIMATION-PIPELINE.md](ANIMATION-PIPELINE.md).
 
 ## Native transfer layout

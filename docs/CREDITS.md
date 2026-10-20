@@ -26,6 +26,14 @@ No commercial game ROM, sprite sheet, animation frame, font, music or source
 code was imported. These references do not grant rights to Capcom or Nintendo
 assets.
 
+The v0.6 pass adds twelve original built-in ImageGen airborne/throw/recovery
+atlases, one per fighter. Full prompts, input roles, source paths and hashes
+are in each character's `animation-airborne.json`. Frames 48-63 share the
+existing physical scale and palette; native frames 0-47 remain unchanged.
+The four original synthesized sound cues are also encoded as resident SPC
+effects to avoid transferring sample data during combat. No outside audio
+was added.
+
 ## People
 
 Identity photographs and public names were sourced from the user-provided [Solutions team page](https://abaqus.io/es/abaqus-solutions/team) and [Wealth Care page](https://abaqus.io/es/wealth-care/about-us). The twelve individual fighter atlases are original cartoon illustrations generated from those references, with matching 32×40 selection cards and 64×80 profile portraits cropped from each master. The v0.4 likeness pass refreshed Damián, Cote, Negger, Fernando, Mamariaga, Reston and Roxana with built-in imagegen v2 edits; the earlier v2 masters for Ivo, Cristóbal, David, Cristián and Lars remain selected. Full prompts and identity notes accompany every character under `assets/art/characters/`. The source photographs remain subject to the original owners' rights. Download URLs are retained in `assets/references/team.json` and `wealth.json`.

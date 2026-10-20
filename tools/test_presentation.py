@@ -6,7 +6,7 @@ navigation contract, selected portrait updates, and all three fight stages.
 Frames are captured from the core's video callback for human review; no window
 or audio device is opened and the host never writes emulated memory.
 
-Run after the 4 MiB animation native build with::
+Run after the 4 MiB 64-frame animation native build with::
 
     python tools/test_presentation.py
 """
@@ -19,6 +19,8 @@ import json
 import sys
 import time
 from pathlib import Path
+
+from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).parent))
 from emulator import Emulator, ROOT
@@ -90,6 +92,35 @@ def vram_bytes(e: Emulator) -> bytes:
     pointer = e.core.retro_get_memory_data(3)
     size = e.core.retro_get_memory_size(3)
     return C.string_at(pointer, size)
+
+
+def verify_animation_artifact() -> dict[str, object]:
+    """Keep presentation captures tied to the current 64-frame art package."""
+
+    path = ROOT / "assets/generated/character-manifest.json"
+    entries = json.loads(path.read_text())
+    check(len(entries) == 12, "presentation build keeps twelve fighter manifests", {
+        "count": len(entries),
+    })
+    proof: list[dict[str, object]] = []
+    for fighter, entry in enumerate(entries):
+        check(int(entry.get("frame_count", 0)) == 64,
+              "presentation package records 64 fighter frames", {
+                  "fighter": fighter, "frame_count": entry.get("frame_count"),
+              })
+        preview = ROOT / "assets/generated" / f"fighter{fighter:02}.png"
+        check(preview.exists(), "presentation package includes fighter preview", {
+            "fighter": fighter, "path": str(preview),
+        })
+        if preview.exists():
+            image = Image.open(preview)
+            check(image.mode == "RGBA" and image.size == (6144, 80),
+                  "presentation package uses the 64-frame native preview strip", {
+                      "fighter": fighter, "mode": image.mode, "size": image.size,
+                  })
+        proof.append({"fighter": fighter, "frame_count": entry.get("frame_count"),
+                      "preview": str(preview)})
+    return {"fighters": proof, "frame_count": 64}
 
 
 def ui_row(e: Emulator, row: int) -> list[int]:
@@ -407,6 +438,7 @@ def main() -> int:
         report["rom_bytes"] = manifest.get("bytes")
         check(manifest.get("bytes") == 4 * 1024 * 1024,
               "presentation build uses the 4 MiB animation ROM", manifest)
+        report["animation_artifact"] = verify_animation_artifact()
         footer_lifecycle()
         report["captures"] = {
             "menus": title_and_select(),

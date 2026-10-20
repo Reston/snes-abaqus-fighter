@@ -249,6 +249,16 @@ fighter00f:
 .incbin "assets/generated/fighter00f.bin"
 fighter00f_end:
 .ends
+.section "asset_fighter00g" superfree
+fighter00g:
+.incbin "assets/generated/fighter00g.bin"
+fighter00g_end:
+.ends
+.section "asset_fighter00h" superfree
+fighter00h:
+.incbin "assets/generated/fighter00h.bin"
+fighter00h_end:
+.ends
 .section "asset_fighter00_pal" superfree
 fighter00_pal:
 .incbin "assets/generated/fighter00_pal.bin"
@@ -283,6 +293,16 @@ fighter01e_end:
 fighter01f:
 .incbin "assets/generated/fighter01f.bin"
 fighter01f_end:
+.ends
+.section "asset_fighter01g" superfree
+fighter01g:
+.incbin "assets/generated/fighter01g.bin"
+fighter01g_end:
+.ends
+.section "asset_fighter01h" superfree
+fighter01h:
+.incbin "assets/generated/fighter01h.bin"
+fighter01h_end:
 .ends
 .section "asset_fighter01_pal" superfree
 fighter01_pal:
@@ -319,6 +339,16 @@ fighter02f:
 .incbin "assets/generated/fighter02f.bin"
 fighter02f_end:
 .ends
+.section "asset_fighter02g" superfree
+fighter02g:
+.incbin "assets/generated/fighter02g.bin"
+fighter02g_end:
+.ends
+.section "asset_fighter02h" superfree
+fighter02h:
+.incbin "assets/generated/fighter02h.bin"
+fighter02h_end:
+.ends
 .section "asset_fighter02_pal" superfree
 fighter02_pal:
 .incbin "assets/generated/fighter02_pal.bin"
@@ -353,6 +383,16 @@ fighter03e_end:
 fighter03f:
 .incbin "assets/generated/fighter03f.bin"
 fighter03f_end:
+.ends
+.section "asset_fighter03g" superfree
+fighter03g:
+.incbin "assets/generated/fighter03g.bin"
+fighter03g_end:
+.ends
+.section "asset_fighter03h" superfree
+fighter03h:
+.incbin "assets/generated/fighter03h.bin"
+fighter03h_end:
 .ends
 .section "asset_fighter03_pal" superfree
 fighter03_pal:
@@ -389,6 +429,16 @@ fighter04f:
 .incbin "assets/generated/fighter04f.bin"
 fighter04f_end:
 .ends
+.section "asset_fighter04g" superfree
+fighter04g:
+.incbin "assets/generated/fighter04g.bin"
+fighter04g_end:
+.ends
+.section "asset_fighter04h" superfree
+fighter04h:
+.incbin "assets/generated/fighter04h.bin"
+fighter04h_end:
+.ends
 .section "asset_fighter04_pal" superfree
 fighter04_pal:
 .incbin "assets/generated/fighter04_pal.bin"
@@ -423,6 +473,16 @@ fighter05e_end:
 fighter05f:
 .incbin "assets/generated/fighter05f.bin"
 fighter05f_end:
+.ends
+.section "asset_fighter05g" superfree
+fighter05g:
+.incbin "assets/generated/fighter05g.bin"
+fighter05g_end:
+.ends
+.section "asset_fighter05h" superfree
+fighter05h:
+.incbin "assets/generated/fighter05h.bin"
+fighter05h_end:
 .ends
 .section "asset_fighter05_pal" superfree
 fighter05_pal:
@@ -459,6 +519,16 @@ fighter06f:
 .incbin "assets/generated/fighter06f.bin"
 fighter06f_end:
 .ends
+.section "asset_fighter06g" superfree
+fighter06g:
+.incbin "assets/generated/fighter06g.bin"
+fighter06g_end:
+.ends
+.section "asset_fighter06h" superfree
+fighter06h:
+.incbin "assets/generated/fighter06h.bin"
+fighter06h_end:
+.ends
 .section "asset_fighter06_pal" superfree
 fighter06_pal:
 .incbin "assets/generated/fighter06_pal.bin"
@@ -493,6 +563,16 @@ fighter07e_end:
 fighter07f:
 .incbin "assets/generated/fighter07f.bin"
 fighter07f_end:
+.ends
+.section "asset_fighter07g" superfree
+fighter07g:
+.incbin "assets/generated/fighter07g.bin"
+fighter07g_end:
+.ends
+.section "asset_fighter07h" superfree
+fighter07h:
+.incbin "assets/generated/fighter07h.bin"
+fighter07h_end:
 .ends
 .section "asset_fighter07_pal" superfree
 fighter07_pal:
@@ -529,6 +609,16 @@ fighter08f:
 .incbin "assets/generated/fighter08f.bin"
 fighter08f_end:
 .ends
+.section "asset_fighter08g" superfree
+fighter08g:
+.incbin "assets/generated/fighter08g.bin"
+fighter08g_end:
+.ends
+.section "asset_fighter08h" superfree
+fighter08h:
+.incbin "assets/generated/fighter08h.bin"
+fighter08h_end:
+.ends
 .section "asset_fighter08_pal" superfree
 fighter08_pal:
 .incbin "assets/generated/fighter08_pal.bin"
@@ -563,6 +653,16 @@ fighter09e_end:
 fighter09f:
 .incbin "assets/generated/fighter09f.bin"
 fighter09f_end:
+.ends
+.section "asset_fighter09g" superfree
+fighter09g:
+.incbin "assets/generated/fighter09g.bin"
+fighter09g_end:
+.ends
+.section "asset_fighter09h" superfree
+fighter09h:
+.incbin "assets/generated/fighter09h.bin"
+fighter09h_end:
 .ends
 .section "asset_fighter09_pal" superfree
 fighter09_pal:
@@ -599,6 +699,16 @@ fighter10f:
 .incbin "assets/generated/fighter10f.bin"
 fighter10f_end:
 .ends
+.section "asset_fighter10g" superfree
+fighter10g:
+.incbin "assets/generated/fighter10g.bin"
+fighter10g_end:
+.ends
+.section "asset_fighter10h" superfree
+fighter10h:
+.incbin "assets/generated/fighter10h.bin"
+fighter10h_end:
+.ends
 .section "asset_fighter10_pal" superfree
 fighter10_pal:
 .incbin "assets/generated/fighter10_pal.bin"
@@ -633,6 +743,16 @@ fighter11e_end:
 fighter11f:
 .incbin "assets/generated/fighter11f.bin"
 fighter11f_end:
+.ends
+.section "asset_fighter11g" superfree
+fighter11g:
+.incbin "assets/generated/fighter11g.bin"
+fighter11g_end:
+.ends
+.section "asset_fighter11h" superfree
+fighter11h:
+.incbin "assets/generated/fighter11h.bin"
+fighter11h_end:
 .ends
 .section "asset_fighter11_pal" superfree
 fighter11_pal:

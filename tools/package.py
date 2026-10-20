@@ -35,18 +35,29 @@ files={
  'qa/presentation.json':ROOT/'docs/presentation-test-report.json',
  'qa/inputs.json':ROOT/'docs/input-test-report.json',
  'ANIMATION-CONTRACT.md':ROOT/'docs/ANIMATION-CONTRACT.md',
+ 'COMBAT-ANIMATION-CONTRACT.md':ROOT/'docs/COMBAT-ANIMATION-CONTRACT.md',
  'ANIMATION-PIPELINE.md':ROOT/'docs/ANIMATION-PIPELINE.md',
+ 'PUBLIC-RELEASE.md':ROOT/'docs/PUBLIC-RELEASE.md',
+ 'BALANCE-AUDIT-v0.6.md':ROOT/'docs/BALANCE-AUDIT-v0.6.md',
  'PROPORTIONS.md':ROOT/'docs/PROPORTIONS.md',
  'MENU-DESIGN.md':ROOT/'docs/MENU-DESIGN.md',
- 'RELEASE.md':ROOT/'docs/RELEASE-v0.5.1.md',
+ 'RELEASE.md':ROOT/'docs/RELEASE-v0.6.0.md',
  'LICENSE':ROOT/'LICENSE',
  'licenses/PVSnesLib.txt':ROOT/'licenses/PVSnesLib.txt',
  'licenses/SNESMod.txt':ROOT/'licenses/SNESMod.txt',
  'licenses/Snes9x.txt':ROOT/'licenses/Snes9x.txt',
 }
+def write_entry(package,name,data):
+    # Source mtimes and the host OS must not change the archive checksum.
+    entry=zipfile.ZipInfo(name,date_time=(2026,1,1,0,0,0))
+    entry.create_system=0
+    entry.external_attr=0x20
+    entry.compress_type=zipfile.ZIP_DEFLATED
+    package.writestr(entry,data,compresslevel=9)
+
 with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED,compresslevel=9) as z:
-    for name,path in files.items():z.write(path,name)
-    z.writestr('Play.cmd','@echo off\r\ncd /d "%~dp0emulator"\r\nstart "Abaqus After Hours" "snes9x-x64.exe" "..\\abaqus-after-hours.sfc"\r\n')
+    for name,path in files.items():write_entry(z,name,path.read_bytes())
+    write_entry(z,'Play.cmd',b'@echo off\r\ncd /d "%~dp0emulator"\r\nstart "Abaqus After Hours" "snes9x-x64.exe" "..\\abaqus-after-hours.sfc"\r\n')
 digest=hashlib.sha256(archive.read_bytes()).hexdigest()
 (ROOT/'dist/release-sha256.txt').write_text(digest+'  '+archive.name+'\n')
 print('Packaged',archive.name,archive.stat().st_size,'bytes')

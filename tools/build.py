@@ -1,12 +1,22 @@
 """Reproducible native SNES build using PVSnesLib 4.6.0."""
 from pathlib import Path
-import hashlib, json, os, subprocess, sys
+import hashlib, json, os, re, subprocess, sys
 
 ROOT = Path(__file__).resolve().parents[1]
 SDK = Path(os.environ.get('PVSNESLIB_HOME', ROOT/'.tools/sdk/pvsneslib')).resolve()
 BUILD = ROOT/'build'
 BUILD.mkdir(exist_ok=True)
 os.chdir(ROOT)
+
+# Pinned 816-tcc mislowers three-way short-circuit OR gates. Reject new
+# occurrences before they silently bypass hurt/down/air eligibility checks.
+for source in sorted((ROOT/'src').glob('*')):
+    if source.suffix not in ('.c','.h'):continue
+    code=re.sub(r'/\*.*?\*/|//[^\n]*', '', source.read_text(), flags=re.S)
+    for line in code.splitlines():
+        if line.lstrip().startswith('#'):continue
+        if line.count('||')>=2:
+            raise SystemExit(f'{source.name}: use explicit branches instead of chained three-way || (816-tcc).')
 
 def run(*args):
     args = [str(x) for x in args]
@@ -33,10 +43,10 @@ for unit in ['game']:
     run(binary/'816-tcc.exe', *includes, '-Wall','-c',ROOT/f'src/{unit}.c','-F','-o',BUILD/f'{unit}.ps')
     run(tool/'816-opt.exe','-i',BUILD/f'{unit}.ps','-o',BUILD/f'{unit}.asm')
     run(binary/'wla-65816.exe','-I',BUILD,'-d','-s','-x','-o',BUILD/f'{unit}.obj',BUILD/f'{unit}.asm')
-for name,path in [('header', BUILD/'hdr.asm'), ('hardware',ROOT/'src/hardware.asm'), ('assets',ROOT/'assets/generated/data.asm'), ('soundbank',ROOT/'assets/generated/soundbank.asm')]:
+for name,path in [('header', BUILD/'hdr.asm'), ('hardware',ROOT/'src/hardware.asm'), ('trace',ROOT/'src/trace.asm'), ('assets',ROOT/'assets/generated/data.asm'), ('soundbank',ROOT/'assets/generated/soundbank.asm')]:
     run(binary/'wla-65816.exe','-I',BUILD,'-d','-s','-x','-o',BUILD/f'{name}.obj',path)
 lib = SDK/'pvsneslib/lib/LoROM_FastROM'
-objects = [BUILD/'header.obj',BUILD/'game.obj',BUILD/'hardware.obj',BUILD/'assets.obj',BUILD/'soundbank.obj'] + sorted(lib.glob('*.obj'))
+objects = [BUILD/'header.obj',BUILD/'game.obj',BUILD/'hardware.obj',BUILD/'trace.obj',BUILD/'assets.obj',BUILD/'soundbank.obj'] + sorted(lib.glob('*.obj'))
 (BUILD/'linkfile').write_text('[objects]\n'+'\n'.join(str(p).replace('\\','/') for p in objects)+'\n')
 rom = ROOT/'dist/abaqus-after-hours.sfc'
 run(binary/'wlalink.exe','-d','-s','-A','-c','-L',lib,BUILD/'linkfile',rom)
@@ -45,7 +55,7 @@ assert len(data)==4*1024*1024, 'Expected 4 MiB LoROM'
 assert data[0x7fd5] == 0x30, 'Expected FastROM LoROM header'
 checksum = int.from_bytes(data[0x7fde:0x7fe0],'little')
 assert checksum == (sum(data)&65535), 'ROM checksum mismatch'
-manifest = {'title':'Abaqus: After Hours','version':'0.5.1','rom':rom.name,'bytes':len(data),
+manifest = {'title':'Abaqus: After Hours','version':'0.6.0','rom':rom.name,'bytes':len(data),
             'sha256':hashlib.sha256(data).hexdigest(),'checksum':f'{checksum:04X}',
             'toolchain':'PVSnesLib 4.6.0 / 816-tcc / WLA-DX','mapping':'4 MiB FastROM LoROM','region':'NTSC 60 Hz'}
 (ROOT/'dist/manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')

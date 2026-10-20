@@ -1,7 +1,7 @@
 # Next combat-animation milestone
 
-This is the implementation target after v0.5.1, not a description of the current
-48-frame ROM. Add one original transparent four-by-four atlas per fighter,
+This defines the v0.6 combat-animation expansion from the v0.5.1 baseline.
+Each fighter adds one original transparent four-by-four atlas,
 `animation-airborne.png`, with full prompts/provenance in
 `animation-airborne.json`. The new range is 48-63; old indices 0-47 stay stable.
 
@@ -57,6 +57,22 @@ with code-growth headroom; verify the actual linked result before acceptance.
 - Throws need separate attacker/victim state. A bounded launch/downed/get-up
   sequence defines control lock, contact eligibility and the wake transition.
   State changes, pause, hitstop, round end and Training reset must be explicit.
+- Resolve contacts from one snapshot. Mutual throws tech with six ticks of
+  separation stun; an active throw beats a simultaneous normal, while an
+  active direct special beats a throw. Ordinary strikes may trade. Projectiles
+  resolve afterward and may interrupt a thrower during lift, safely releasing
+  the victim without applying the pending throw damage.
+- A throw has six live lift ticks, followed by ballistic flight. Damage applies
+  exactly once on impact. Floor, get-up and wake durations are 18, 10 and 6
+  live ticks. A knockout finishes its flight before the result card. Downed
+  actors cannot act, guard, separate bodies or receive another contact.
+  During lift/flight/floor, the render-facing field follows the launch
+  direction so head-left impact/fall drawings mirror correctly. Gameplay
+  facing is restored toward the opponent for wake commands.
+- Wake restores opponent-facing commands and captures only new attack/jump
+  edges in the final six ticks. Pre-down inputs are discarded. Pause/hitstop
+  freeze the separate wake buffer. Four free ticks of contact invulnerability
+  follow wake; holding UP before the knockdown cannot cause a ghost jump.
 - New telemetry appends after TRACE[93]; stable offsets 0-93 must not move.
 - All 64 metadata records share the same physical scale, with complete hashes,
   source roles and bounds. Air, throw and recovery groups must remain visibly

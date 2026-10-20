@@ -35,6 +35,24 @@ Low shockwaves are defeated by crouch guard; rising strikes count as airborne
 attacks; rush strikes advance during startup and active frames; projectiles
 travel independently after their startup.
 
+## v0.6 combat presentation
+
+Each fighter's native animation set now has 64 frames across eight banks. Frames
+48-63 provide dedicated air punch and air kick anticipation, active and recovery
+cycles, separate thrower and victim roles, and distinct knockdown and wake
+drawings. A successful throw delays its damage until the victim reaches the
+floor; simultaneous throws tech without damage. Heavy uppercuts, heavy low
+kicks and rising specials can begin the lift, flight, floor, get-up and wake
+sequence. Wake grants four invulnerability ticks, and its final six ticks
+accept buffered attack or jump input. Training health recovery waits until a
+fighter is free of hurt, downed and wake-invulnerable states; Select resets the
+round and clears pending throw/down/wake state.
+
+The original 48 frame pixels and shared fifteen-color palette bytes remain
+locked. Each fighter keeps one physical scale and feet baseline across all 64
+frames, so air, throw, knockdown and wake poses do not independently resize the
+character.
+
 ## Verification trace
 
 The read-only WRAM trace keeps the existing fields at offsets `0..31`. The
@@ -57,7 +75,7 @@ roster contract begins at offset `32` (16-bit words):
 | 56 / 57 | Active wave low flag |
 | 58 / 59 | Active wave speed |
 | 60 / 61 | Active wave life |
-| 62 / 63 | Requested native animation frame, `0..47` |
+| 62 / 63 | Requested native animation frame, `0..63` |
 | 64 / 65 | Animation state |
 | 66 / 67 | Per-fighter animation tick |
 | 68 / 69 | Buffered action ID |
@@ -73,17 +91,35 @@ roster contract begins at offset `32` (16-bit words):
 | 88 / 89 | Current displayed combo count |
 | 90 / 91 | Cosmetic combo/counter banner ticks, independent of hit linking |
 | 92 / 93 | Counter-hit flag |
+| 94 / 95 | Downed state (`0` free, `1` lift, `2` flight, `3` floor, `4` rise, `5` wake) |
+| 96 / 97 | Downed-state tick |
+| 98 / 99 | Remaining invulnerability ticks |
+| 100 / 101 | Delayed down/throw damage |
+| 102 / 103 | Downed-state owner fighter ID |
+| 104 / 105 | Air-action flag |
+| 106 / 107 | Throw-victim fighter ID |
+| 108 / 109 | Buffered wake action ID |
+| 110 / 111 | Wake age |
+| 112 / 113 | Buffered wake jump flag |
 
 The trace remains under the reserved 256-byte region and is read-only from the
-test host.
+test host. `src/trace.asm` writes these fields directly at stable offsets
+`0..113`; changing the packed `Fighter` or `Wave` layout requires updating its
+assembly offsets and this trace table together.
 
 ## Remaining limitations
 
 Logical combat poses retain their sixteen-index contract. The renderer maps
-them to 48 native animation frames per fighter across six banks, streaming at
+them to 64 native animation frames per fighter across eight banks, streaming at
 most one 3,840-byte actor frame per vblank. The requested trace frame can lead
 the uploaded frame by one video frame when both actors change together.
-Per-fighter animation clocks and drawn transitions are included; dedicated
-aerial attack art, per-frame hit silhouettes and human balance playtesting
-remain future polish work. The ROM is verified in the official Snes9x
-libretro core; real-hardware testing is still outstanding.
+Per-fighter animation clocks, dedicated air attacks and throw/knockdown/wake
+transitions are included. Per-frame hit silhouettes remain future polish work.
+The canonical silent v0.6 batch passes all four suites against ROM SHA256
+`0d907717d284c9d0056434e69da0a265c2b09cf4c84761aa32998b4fc0bbd5ae`. Human
+balance playtesting, independent-emulator runs and real-hardware testing remain
+outstanding.
+Actor-bank and action-timing selection, as well as unchanged OAM
+and shadow work, are cached by the native fast path. Interface impact feedback
+may settle one to three video frames later when its DMA yields to an actor
+upload; hitstop keeps combat state frozen.

@@ -19,6 +19,11 @@ from emulator import Emulator, ROOT
 
 
 checks: list[dict[str, object]] = []
+BG2_MAP_BYTE = 0x5800 * 2
+HEALTH_TILE = 129
+ENERGY_TILE = 138
+P1_STATUS_ATTR = 0x2000
+P2_STATUS_ATTR = 0x6000
 
 
 def signed16(value: int) -> int:
@@ -37,11 +42,12 @@ def check(ok: bool, label: str, details: object | None = None) -> None:
 def trace(e: Emulator) -> dict[str, int]:
     """Decode the public trace, including the input-feel extension."""
 
-    # The v0.5.1 combat classification extension occupies words 82..93.
+    # The v0.6 airborne/throw/knockdown extension occupies words 94..113
+    # after the v0.5.1 combat classification words 82..93.
     # Keep this decoder local to the focused suite; the shared emulator host
     # remains deliberately backward-compatible with older ROMs until the
     # parent integrates the new trace aliases.
-    data = C.string_at(e.ram + 0x1FF00, 188)
+    data = C.string_at(e.ram + 0x1FF00, 228)
     words = [int.from_bytes(data[i:i + 2], "little")
              for i in range(0, len(data), 2)]
     names = (
@@ -66,8 +72,77 @@ def trace(e: Emulator) -> dict[str, int]:
         "hurt1", "hurt2", "guard1", "guard2",
         "connected1", "connected2", "combo_link1", "combo_link2",
         "chain_timer1", "chain_timer2", "counter1", "counter2",
+        "down_state1", "down_state2", "down_tick1", "down_tick2",
+        "invuln1", "invuln2", "pending_throw_damage1", "pending_throw_damage2",
+        "throw_owner1", "throw_owner2", "air_action1", "air_action2",
+        "throw_victim1", "throw_victim2", "wake_action1", "wake_action2",
+        "wake_age1", "wake_age2", "wake_jump1", "wake_jump2",
     )
     return dict(zip(names, words))
+
+
+def vram_bytes(e: Emulator) -> bytes:
+    """Read native VRAM without writing to the emulated machine."""
+
+    pointer = e.core.retro_get_memory_data(3)
+    size = e.core.retro_get_memory_size(3)
+    return C.string_at(pointer, size)
+
+
+def bg2_tile(memory: bytes, x: int, y: int) -> int:
+    """Decode one 16-bit BG2 map entry from the native VRAM snapshot."""
+
+    offset = BG2_MAP_BYTE + (y * 32 + x) * 2
+    return int.from_bytes(memory[offset:offset + 2], "little")
+
+
+def status_bar_expected(value: int, count: int, base: int,
+                        attributes: int, scale_health: bool) -> list[int]:
+    """Build the native eight-pixel status glyph sequence."""
+
+    remaining = (value * 88) // 128 if scale_health else value
+    return [attributes + base + min(8, max(0, remaining - index * 8))
+            for index in range(count)]
+
+
+def check_status_bars(e: Emulator, sample: dict[str, int], label: str) -> dict[str, object]:
+    """Compare mirrored BG2 health/energy bars to the public trace values."""
+
+    memory = vram_bytes(e)
+    health_p1 = status_bar_expected(sample["hp1"], 11, HEALTH_TILE,
+                                     P1_STATUS_ATTR, True)
+    health_p2 = status_bar_expected(sample["hp2"], 11, HEALTH_TILE,
+                                     P2_STATUS_ATTR, True)
+    energy_p1 = status_bar_expected(sample["energy1"], 12, ENERGY_TILE,
+                                    P1_STATUS_ATTR, False)
+    energy_p2 = status_bar_expected(sample["energy2"], 12, ENERGY_TILE,
+                                    P2_STATUS_ATTR, False)
+    actual_health_p1 = [bg2_tile(memory, 1 + index, 1)
+                        for index in range(11)]
+    actual_health_p2 = [bg2_tile(memory, 30 - index, 1)
+                        for index in range(11)]
+    actual_energy_p1 = [bg2_tile(memory, 1 + index, 3)
+                        for index in range(12)]
+    actual_energy_p2 = [bg2_tile(memory, 30 - index, 3)
+                        for index in range(12)]
+    check(actual_health_p1 == health_p1 and actual_health_p2 == health_p2,
+          "native mirrored health bars match trace HP after " + label, {
+              "sample": sample, "p1": actual_health_p1,
+              "expected_p1": health_p1, "p2": actual_health_p2,
+              "expected_p2": health_p2,
+          })
+    check(actual_energy_p1 == energy_p1 and actual_energy_p2 == energy_p2,
+          "native mirrored energy bars match trace meter after " + label, {
+              "sample": sample, "p1": actual_energy_p1,
+              "expected_p1": energy_p1, "p2": actual_energy_p2,
+              "expected_p2": energy_p2,
+          })
+    return {
+        "label": label, "hp": [sample["hp1"], sample["hp2"]],
+        "energy": [sample["energy1"], sample["energy2"]],
+        "health_p1": actual_health_p1, "health_p2": actual_health_p2,
+        "energy_p1": actual_energy_p1, "energy_p2": actual_energy_p2,
+    }
 
 
 def event_field(sample: dict[str, int], name: str, port: int,
@@ -104,15 +179,20 @@ def wait_screen(e: Emulator, wanted: int) -> None:
     raise AssertionError(("screen did not arrive", wanted, trace(e)))
 
 
-def boot(mode: int = 2, wait_intro: bool = True) -> Emulator:
+def boot(mode: int = 2, wait_intro: bool = True,
+         fighter: int = 0, fighter2: int = 1) -> Emulator:
     e = Emulator()
     e.run(120)
     for _ in range(mode):
         press(e, "down")
     press(e, "a")
     wait_screen(e, 1)
+    for _ in range(fighter):
+        press(e, "right")
     press(e, "a")
     if mode == 1:
+        for _ in range((fighter2 - 1) % 12):
+            press(e, "right", 1)
         press(e, "a", 1)
     wait_screen(e, 2)
     press(e, "a")
@@ -135,6 +215,431 @@ def close_players(e: Emulator) -> None:
         p1 = "right" if s["x1"] < s["x2"] else "left"
         p2 = "left" if p1 == "right" else "right"
         e.run(1, p1=[p1], p2=[p2])
+
+
+def _stress_press(e: Emulator, key: str, port: int = 0) -> None:
+    """Use the release stress probe's 20-frame menu tap cadence."""
+
+    e.tap(key, port)
+    e.run(20)
+
+
+def _stress_wait_screen(e: Emulator, wanted: int,
+                        max_frames: int = 600) -> None:
+    """Match the roster stress harness's settled menu transition."""
+
+    for _ in range(max_frames // 10):
+        if trace(e)["screen"] == wanted:
+            e.run(10)
+            return
+        e.run(10)
+    raise AssertionError(("stress boot did not reach screen", wanted, trace(e)))
+
+
+def _stress_boot(mode: int, fighter: int = 0, fighter2: int = 1,
+                 quiet_frames: int = 3) -> Emulator:
+    """Boot with the exact cadence used by build/stress64.py/stress_two.py."""
+
+    e = Emulator()
+    e.run(120)
+    for _ in range(mode):
+        _stress_press(e, "down")
+    _stress_press(e, "a")
+    _stress_wait_screen(e, 1)
+    for _ in range(fighter):
+        _stress_press(e, "right")
+    _stress_press(e, "a")
+    if mode == 1:
+        for _ in range((fighter2 - 1) % 12):
+            _stress_press(e, "right", 1)
+        _stress_press(e, "a", 1)
+    _stress_wait_screen(e, 2)
+    _stress_press(e, "a")
+    _stress_wait_screen(e, 3)
+    for _ in range(160):
+        if trace(e)["intro"] == 0:
+            break
+        e.run(1)
+    check(trace(e)["intro"] == 0, "stress boot reaches live combat", {
+        "mode": mode, "fighter": fighter, "fighter2": fighter2,
+    })
+    e.run(quiet_frames)
+    return e
+
+
+def _cadence_boot(cadence: str, mode: int, fighter: int = 0,
+                  fighter2: int = 1) -> Emulator:
+    """Select one of the two intentionally distinct stress boot cadences."""
+
+    if cadence == "original":
+        return boot(mode, fighter=fighter, fighter2=fighter2)
+    return _stress_boot(mode, fighter=fighter, fighter2=fighter2)
+
+
+def _run_transition_stress(cadence: str, fighter: int) -> dict[str, object]:
+    """Run one four-family stress case without normalizing its phase."""
+
+    e = _cadence_boot(cadence, 2, fighter=fighter)
+    try:
+        start = trace(e)["frame"]
+        drops: list[dict[str, int]] = []
+        banks: set[int] = set()
+        down_states: set[int] = set()
+        for index in range(600):
+            phase = index % 150
+            if phase < 38:
+                keys = ["right"]
+            elif phase < 44:
+                keys = ["right", "l"]
+            elif phase < 50:
+                keys = ["up", "x"]
+            elif phase < 80:
+                keys = ["down", "r"]
+            elif phase < 110:
+                keys = ["down", "x"]
+            else:
+                keys = []
+            old = trace(e)["frame"]
+            e.run(1, p1=keys)
+            current = trace(e)
+            delta = (current["frame"] - old) & 0xFFFF
+            if delta != 1:
+                drops.append({
+                    "index": index, "delta": delta,
+                    "frame": current["frame"],
+                    "anim_frame1": current["anim_frame1"],
+                    "anim_frame2": current["anim_frame2"],
+                    "action1": current["action1"],
+                    "down_state2": current["down_state2"],
+                })
+            banks.add(current["anim_frame1"] // 8)
+            banks.add(current["anim_frame2"] // 8)
+            down_states.add(current["down_state2"])
+        result = {
+            "boot_cadence": cadence,
+            "fighter": fighter,
+            "emulated_frames": 600,
+            "game_ticks": (trace(e)["frame"] - start) & 0xFFFF,
+            "nonunit_steps": drops,
+            "banks": sorted(banks),
+            "down_states": sorted(down_states),
+        }
+        check(result["game_ticks"] == 600 and not drops,
+              cadence + " transition stress advances exactly 600 native ticks",
+              result)
+        check(set(banks) == set(range(8)),
+              cadence + " transition stress visits all eight animation banks",
+              result)
+        check(set(down_states) == set(range(6)),
+              cadence + " transition stress visits every down-state", result)
+        return result
+    finally:
+        e.close()
+
+
+def check_transition_stress() -> dict[str, object]:
+    """Run the fixed 600-tick two-actor transition cadence probe.
+
+    The four representatives exercise every special family and the complete
+    animation/knockdown path under the same controller schedule used by the
+    release stress probe.  Every libretro step must advance exactly one native
+    frame; the run must also visit all eight animation banks and every public
+    down-state.  Inputs stay controller-only and deliberately match the
+    gameplay cadence rather than being widened to hide a missed tick.
+    """
+
+    representatives = (0, 2, 4, 10)
+    results: dict[str, object] = {}
+    for cadence in ("original", "settled"):
+        for fighter in representatives:
+            results[f"{cadence}-{fighter:02}"] = _run_transition_stress(
+                cadence, fighter)
+    return results
+
+
+def _run_combo_cadence_stress(cadence: str) -> dict[str, object]:
+    """Keep the confirmed Y->X combo/UI path live for 600 native ticks."""
+
+    e = _cadence_boot(cadence, 2, fighter=0)
+    try:
+        initial = trace(e)
+        start = initial["frame"]
+        drops: list[dict[str, int]] = []
+        maximum_combo = 0
+        for index in range(600):
+            sample = trace(e)
+            phase = index % 100
+            keys: list[str] = []
+            if phase < 30 and abs(sample["x1"] - sample["x2"]) > 29 * 16:
+                keys = ["right" if sample["x1"] < sample["x2"] else "left"]
+            elif 30 <= phase < 37:
+                keys = ["y"]
+            elif 42 <= phase < 45:
+                keys = ["x"]
+            old = sample["frame"]
+            e.run(1, p1=keys)
+            current = trace(e)
+            combo = event_field(current, "combo_link", 0)
+            maximum_combo = max(maximum_combo, combo)
+            delta = (current["frame"] - old) & 0xFFFF
+            if delta != 1:
+                drops.append({
+                    "index": index, "delta": delta,
+                    "frame": current["frame"],
+                    "combo": combo,
+                    "hp2": current["hp2"],
+                })
+        result = {
+            "boot_cadence": cadence, "emulated_frames": 600,
+            "game_ticks": (trace(e)["frame"] - start) & 0xFFFF,
+            "nonunit_steps": drops, "max_combo": maximum_combo,
+            "final_hp": [current["hp1"], current["hp2"]],
+        }
+        check(result["game_ticks"] == 600 and not drops,
+              cadence + " combo cadence stress advances 600 native ticks",
+              result)
+        check(maximum_combo >= 2,
+              cadence + " combo cadence stress confirms a Y-to-X chain", result)
+        return result
+    finally:
+        e.close()
+
+
+def check_combo_cadence_stress() -> dict[str, object]:
+    """Run the combo cadence probe under both documented boot phases."""
+
+    return {
+        cadence: _run_combo_cadence_stress(cadence)
+        for cadence in ("original", "settled")
+    }
+
+
+def _run_two_controller_stress(cadence: str, scenario: str) -> dict[str, object]:
+    """Run one simultaneous two-controller scenario at its native phase."""
+
+    e = _cadence_boot(cadence, 1, fighter=0, fighter2=0)
+    try:
+        start = trace(e)["frame"]
+        initial = trace(e)
+        drops: list[dict[str, int]] = []
+        impact_frames = 0
+        air_action_frames = [0, 0]
+        air_frames = [0, 0]
+        air_x_drift = [0, 0]
+        final: dict[str, int] = {}
+        for index in range(600):
+            sample = trace(e)
+            phase = index % 80
+            if scenario == "air":
+                p1 = (["up"] if phase < 3 else
+                      ["x"] if phase < 10 else
+                      ["r"] if 25 <= phase < 29 else [])
+                p2 = (["up"] if phase < 3 else
+                      ["y"] if phase < 10 else
+                      ["a"] if 25 <= phase < 29 else [])
+            else:
+                p1: list[str] = []
+                p2: list[str] = []
+                if phase < 20 and abs(sample["x1"] - sample["x2"]) > 26 * 16:
+                    p1 = ["right" if sample["x1"] < sample["x2"] else "left"]
+                    p2 = ["left" if sample["x1"] < sample["x2"] else "right"]
+                if 20 <= phase < 24:
+                    p1 = p2 = ["y"]
+            old = sample["frame"]
+            e.run(1, p1=p1, p2=p2)
+            current = trace(e)
+            delta = (current["frame"] - old) & 0xFFFF
+            if delta != 1:
+                drops.append({
+                    "index": index, "delta": delta,
+                    "frame": current["frame"],
+                    "action1": current["action1"],
+                    "action2": current["action2"],
+                    "hp1": current["hp1"], "hp2": current["hp2"],
+                })
+            if current["hitstop"]:
+                impact_frames += 1
+            if scenario == "air":
+                for port in range(2):
+                    suffix = str(port + 1)
+                    if current[f"air_action{suffix}"]:
+                        air_action_frames[port] += 1
+                        if signed16(current[f"y{suffix}"]) < 0:
+                            air_frames[port] += 1
+                            air_x_drift[port] = max(
+                                air_x_drift[port],
+                                abs(current[f"x{suffix}"] - initial[f"x{suffix}"]),
+                            )
+            final = current
+        result = {
+            "boot_cadence": cadence, "scenario": scenario,
+            "emulated_frames": 600,
+            "game_ticks": (trace(e)["frame"] - start) & 0xFFFF,
+            "nonunit_steps": drops, "impact_frames": impact_frames,
+            "final_hp": [final.get("hp1"), final.get("hp2")],
+        }
+        if scenario == "air":
+            result.update({
+                "air_action_frames": air_action_frames,
+                "air_frames": air_frames,
+                "air_x_drift": air_x_drift,
+            })
+        check(result["game_ticks"] == 600 and not drops,
+              cadence + " two-controller " + scenario +
+              " stress advances 600 native ticks", result)
+        if scenario == "air":
+            check(all(value > 0 for value in air_action_frames) and
+                  all(value > 0 for value in air_frames),
+                  cadence + " two-controller air stress executes both air normals",
+                  result)
+            check(air_x_drift == [0, 0],
+                  cadence + " two-controller air normals preserve takeoff X",
+                  result)
+            check(result["final_hp"] == [128, 128],
+                  cadence + " two-controller air stress leaves both HP intact",
+                  result)
+        else:
+            check(impact_frames > 0,
+                  cadence + " two-controller trades stress reaches combat hitstop",
+                  result)
+        return result
+    finally:
+        e.close()
+
+
+def check_two_controller_stress() -> dict[str, object]:
+    """Run simultaneous air-normal and close-trade cadence scenarios."""
+
+    results: dict[str, object] = {}
+    for cadence in ("original", "settled"):
+        for scenario in ("air", "trades"):
+            results[f"{cadence}-{scenario}"] = _run_two_controller_stress(
+                cadence, scenario)
+    return results
+
+
+def _pcm_values(data: bytes) -> list[int]:
+    """Decode captured little-endian signed PCM samples."""
+
+    usable = len(data) & ~1
+    return [int.from_bytes(data[index:index + 2], "little", signed=True)
+            for index in range(0, usable, 2)]
+
+
+def _pcm_metrics(data: bytes) -> dict[str, int | bool]:
+    values = _pcm_values(data)
+    peak = max((abs(value) for value in values), default=0)
+    return {
+        "bytes": len(data), "samples": len(values),
+        "nonzero": sum(value != 0 for value in values),
+        "peak": peak, "clipped": peak >= 32767,
+    }
+
+
+def _pcm_prefix_alignment(left: bytes, right: bytes,
+                          window: int = 4096,
+                          max_shift_bytes: int = 128) -> dict[str, int | float]:
+    """Find a sample-aligned matching prefix for two fresh audio captures."""
+
+    best = {"shift_bytes": 0, "compared_bytes": 0,
+            "equal_bytes": 0, "ratio": 0.0}
+    for shift in range(-max_shift_bytes, max_shift_bytes + 1, 2):
+        left_start = max(0, shift)
+        right_start = max(0, -shift)
+        compared = min(len(left) - left_start, len(right) - right_start, window)
+        if compared <= 0:
+            continue
+        equal = sum(left[left_start + index] == right[right_start + index]
+                    for index in range(compared))
+        ratio = equal / compared
+        if ratio > float(best["ratio"]):
+            best = {"shift_bytes": shift, "compared_bytes": compared,
+                    "equal_bytes": equal, "ratio": ratio}
+    return best
+
+
+def _audio_branch(cue: str, triggered: bool) -> tuple[bytes, bytes]:
+    """Capture one fresh branch while only one Snes9x core is alive.
+
+    The libretro Snes9x DLL keeps core/audio callback state globally, so two
+    Emulator instances cannot be advanced concurrently.  Sequential fresh
+    boots preserve the paired comparison without routing one branch's PCM to
+    the other branch or invalidating teardown.
+    """
+
+    e = _cadence_boot("original", 2, fighter=0)
+    try:
+        close_players(e)
+        e.pcm = bytearray()
+        e.run(12)
+        prefix = bytes(e.pcm)
+        e.pcm = bytearray()
+        if cue == "normal-contact":
+            if triggered:
+                e.run(4, p1=["y"])
+            else:
+                e.run(4)
+        elif cue == "special":
+            if triggered:
+                e.run(3, p1=["down"])
+                e.run(3, p1=["down", "x"])
+                e.run(2)
+            else:
+                e.run(8)
+        else:
+            raise AssertionError(("unknown audio cue", cue))
+        return prefix, bytes(e.pcm)
+    finally:
+        e.close()
+
+
+def _audio_pair(cue: str) -> dict[str, object]:
+    """Compare a cue window with a fresh, otherwise identical silent input."""
+
+    quiet_prefix, quiet_window = _audio_branch(cue, False)
+    triggered_prefix, triggered_window = _audio_branch(cue, True)
+    alignment = _pcm_prefix_alignment(quiet_prefix, triggered_prefix)
+    check(float(alignment["ratio"]) >= 0.99 and
+          int(alignment["compared_bytes"]) >= 1024,
+          cue + " audio pre-trigger PCM prefix matches or phase-aligns", {
+              "cue": cue, "alignment": alignment,
+          })
+
+    quiet_metrics = _pcm_metrics(quiet_window)
+    triggered_metrics = _pcm_metrics(triggered_window)
+    compared = min(len(quiet_window), len(triggered_window))
+    differing = sum(quiet_window[index] != triggered_window[index]
+                    for index in range(compared))
+    check(differing > 0,
+          cue + " cue window differs from its no-input control", {
+              "cue": cue, "differing_bytes": differing,
+              "compared_bytes": compared,
+          })
+    check(triggered_metrics["nonzero"] > 0 and
+          triggered_metrics["peak"] > 0,
+          cue + " cue window contains captured PCM", {
+              "cue": cue, "metrics": triggered_metrics,
+          })
+    check(not quiet_metrics["clipped"] and not triggered_metrics["clipped"],
+          cue + " cue audio stays below signed-PCM clipping", {
+              "cue": cue, "quiet": quiet_metrics,
+              "triggered": triggered_metrics,
+          })
+    return {
+        "cue": cue, "prefix": alignment,
+        "quiet_window": quiet_metrics,
+        "triggered_window": triggered_metrics,
+        "differing_bytes": differing,
+    }
+
+
+def check_resident_sfx_audio() -> dict[str, object]:
+    """Prove resident normal/contact and special cues reach the PCM callback."""
+
+    return {
+        "normal_contact": _audio_pair("normal-contact"),
+        "special": _audio_pair("special"),
+    }
 
 
 def check_socd_and_p2(e: Emulator) -> None:
@@ -774,10 +1279,11 @@ def check_training_reset() -> None:
         e.close()
 
 
-def check_guard_timing() -> None:
+def check_guard_timing() -> dict[str, object]:
     """Guard impact keeps chip low, pushback light, and stun finite."""
 
     e = boot(1)
+    status_bar_results: list[dict[str, object]] = []
     try:
         close_players(e)
         start = trace(e)
@@ -804,7 +1310,7 @@ def check_guard_timing() -> None:
                   "start": start, "samples": samples,
               })
         if blocked_hit is None:
-            return
+            return {"status_bars": status_bar_results}
         blocked_samples = [sample for sample in samples
                            if sample["pose2"] == 9]
         blocked_dx = blocked_hit["x2"] - (blocked_previous or start)["x2"]
@@ -852,8 +1358,49 @@ def check_guard_timing() -> None:
                       "guarded_dx_12_4": blocked_dx,
                       "unblocked_dx_12_4": real_dx,
                   })
+
+            # The health DMA is intentionally deferred into hitstop.  Read
+            # the live trace only after that queue has settled, then verify
+            # both native mirrored bars against the exact BG2 map entries.
+            e.run(8)
+            settled = trace(e)
+            status_bar_results.append(check_status_bars(
+                e, settled, "the real hit"))
+
+            # Spend meter through the public down+X shortcut in the same
+            # round.  Wait for a grounded, neutral control tick so this edge
+            # cannot be confused with the previous normal's recovery.
+            for _ in range(80):
+                ready = trace(e)
+                if (ready["action1"] == 0 and ready["hurt1"] == 0 and
+                        ready["hitstop"] == 0 and signed16(ready["y1"]) == 0):
+                    break
+                e.run(1)
+            special_before = trace(e)
+            drive(e, 0, ["down"], 3)
+            drive(e, 0, ["down", "x"], 3)
+            special_spent: dict[str, int] | None = None
+            for _ in range(80):
+                special_sample = trace(e)
+                if special_sample["energy1"] < special_before["energy1"]:
+                    special_spent = special_sample
+                    break
+                e.run(1)
+            check(special_spent is not None,
+                  "public special input spends player one's meter", {
+                      "before": special_before,
+                      "after": special_spent or trace(e),
+                  })
+            if special_spent is not None:
+                # Allow periodic HUD refresh and any impact hitstop DMA to
+                # complete before comparing the current trace to VRAM.
+                e.run(18)
+                status_bar_results.append(check_status_bars(
+                    e, trace(e), "the special meter spend"))
     finally:
         e.close()
+
+    return {"status_bars": status_bar_results}
 
 
 def check_training_inertness() -> None:
@@ -943,6 +1490,83 @@ def check_contact_classification() -> None:
         check(event_field(blocked_cancel, "combo_link", 0) == 0 and
               event_field(blocked_cancel, "counter", 0) == 0,
               "blocked contact does not start a combo or counter", blocked_cancel)
+    finally:
+        e.close()
+
+
+def check_held_back_combo_and_block_string() -> None:
+    """Keep true links real while a hurt defender holds back, and keep a
+    continuous guard string blocked after the first impact.
+
+    Holding back is sampled during hitstun in the SNES input path.  It must
+    not turn the next confirmed hit into a block merely because the defender
+    is still holding the guard direction.  The companion probe keeps guard
+    held across two separate normals and requires both contacts to remain
+    blocked, preserving the normal block-string behavior.
+    """
+
+    e = boot(1)
+    try:
+        close_players(e)
+        start_normal(e, 0, "y")
+        first, history = wait_connected(e, 0)
+        check(first is not None and event_field(first or {}, "connected", 0) == 2,
+              "held-back combo starts from a real jab", {
+                  "event": first, "history": history,
+              })
+        if first is not None:
+            defender_back = ["right" if first["face2"] == 0 else "left"]
+            # Keep the defender's back direction held through hitstop and the
+            # next attack's active window.  The first hit's hurt timer must
+            # still be live when the second contact is observed.
+            for _ in range(30):
+                live = trace(e)
+                if not live["hitstop"]:
+                    break
+                e.run(1, p2=defender_back)
+            drive(e, 0, ["x"], 3)
+            second, second_history = wait_connected(e, 0, defender_back)
+            check(second is not None and
+                  event_field(second or {}, "connected", 0) == 2 and
+                  event_field(second or {}, "guard", 1) == 0 and
+                  event_field(second or {}, "hurt", 1) > 0,
+                  "held-back defender stays a real hit during hurt continuity", {
+                      "first": first, "second": second,
+                      "history": second_history,
+                  })
+    finally:
+        e.close()
+
+    e = boot(1)
+    try:
+        close_players(e)
+        guard = ["down", "right"]
+        start_normal(e, 0, "y", guard)
+        first, first_history = wait_connected(e, 0, guard)
+        check(first is not None and event_field(first or {}, "connected", 0) == 1,
+              "continuous block string starts with blocked contact", {
+                  "event": first, "history": first_history,
+              })
+        if first is not None:
+            initial_hp = first["hp2"]
+            # Release the first attack's recovery while keeping the guard
+            # direction sampled, then issue a second normal into the same
+            # standing guard.
+            for _ in range(40):
+                sample = trace(e)
+                if sample["action1"] == 0 and sample["hurt1"] == 0:
+                    break
+                e.run(1, p2=guard)
+            start_normal(e, 0, "x", guard)
+            second, second_history = wait_connected(e, 0, guard)
+            check(second is not None and
+                  event_field(second or {}, "connected", 0) == 1 and
+                  event_field(second or {}, "guard", 1) > 0 and
+                  second["hp2"] >= initial_hp - 1,
+                  "continuous guard string keeps the second contact blocked", {
+                      "first": first, "second": second,
+                      "history": second_history,
+                  })
     finally:
         e.close()
 
@@ -1139,6 +1763,762 @@ def check_mirrored_throw_range() -> None:
         e.close()
 
 
+def _airborne_normal_probe(e: Emulator, port: int, key: str) -> dict[str, object]:
+    """Trigger one airborne normal and retain its public action latch."""
+
+    suffix = str(port + 1)
+    y_key = f"y{suffix}"
+    face_key = f"face{suffix}"
+    action_key = f"air_action{suffix}"
+    drive(e, port, ["up"], 3)
+    takeoff = None
+    for _ in range(20):
+        sample = trace(e)
+        if signed16(sample[y_key]) < 0:
+            takeoff = sample
+            break
+        drive(e, port, [])
+    check(takeoff is not None, f"P{suffix} airborne {key.upper()} starts above the floor", {
+        "key": key, "trace": trace(e),
+    })
+    if takeoff is None:
+        return {"key": key, "air_action": 0, "airborne": False}
+    face = takeoff[face_key]
+    drive(e, port, [key], 3)
+    samples: list[dict[str, int]] = []
+    for _ in range(36):
+        sample = trace(e)
+        samples.append(sample)
+        if sample[action_key] and signed16(sample[y_key]) < 0:
+            check(sample[face_key] == face,
+                  f"P{suffix} airborne {key.upper()} preserves facing", sample)
+        drive(e, port, [])
+    latched = [sample[action_key] for sample in samples if sample[action_key]]
+    check(bool(latched), f"P{suffix} airborne {key.upper()} exposes an action latch", {
+        "key": key, "samples": samples,
+    })
+    for _ in range(100):
+        sample = trace(e)
+        if signed16(sample[y_key]) == 0:
+            break
+        drive(e, port, [])
+    landed = trace(e)
+    check(landed[f"action{suffix}"] == 0 and landed[action_key] == 0,
+          f"P{suffix} airborne {key.upper()} completes on landing", landed)
+    return {"key": key, "air_action": latched[0] if latched else 0,
+            "latch_values": sorted(set(latched)),
+            "airborne": any(signed16(sample[y_key]) < 0 for sample in samples)}
+
+
+def check_air_normals_both_sides() -> None:
+    """All six airborne normals work for right- and left-facing players."""
+
+    e = boot(1)
+    try:
+        results: dict[str, object] = {}
+        for port in (0, 1):
+            for key in ("y", "x", "l", "b", "a", "r"):
+                results[f"p{port + 1}-{key}"] = _airborne_normal_probe(e, port, key)
+        check(len(results) == 12, "both controller directions cover six airborne normals", results)
+    finally:
+        e.close()
+
+
+def check_air_contact_window() -> None:
+    """Air contact is classified on the active drawing and ends on landing."""
+
+    # Keep one punch and one kick in separate fresh local-versus rounds so the
+    # first connected edge remains unambiguous.  The trace's animation frame
+    # is the source of truth; a persistent connected=2 value during recovery
+    # must not be mistaken for a second active hit.
+    cases = ((0, "y", 50), (1, "b", 53))
+    for port, key, active_frame in cases:
+        e = boot(1)
+        try:
+            close_players(e)
+            suffix = str(port + 1)
+            y_key = f"y{suffix}"
+            face_key = f"face{suffix}"
+            drive(e, port, ["up"], 3)
+            for _ in range(12):
+                if signed16(trace(e)[y_key]) < 0:
+                    break
+                drive(e, port, [])
+            takeoff = trace(e)
+            check(signed16(takeoff[y_key]) < 0,
+                  f"P{suffix} air-contact probe reaches ascent", takeoff)
+            takeoff_face = takeoff[face_key]
+            drive(e, port, [key], 6)
+            previous_connected = 0
+            contact = None
+            samples: list[dict[str, int]] = []
+            for _ in range(48):
+                sample = trace(e)
+                samples.append(sample)
+                connected = event_field(sample, "connected", port)
+                if contact is None and connected == 2 and previous_connected != 2:
+                    contact = sample
+                previous_connected = connected
+                drive(e, port, [])
+            check(contact is not None,
+                  f"P{suffix} airborne {key.upper()} reaches a real contact", {
+                      "port": port, "key": key, "samples": samples,
+                  })
+            if contact is not None:
+                check(contact[f"anim_frame{suffix}"] == active_frame,
+                      f"P{suffix} airborne contact occurs on active frame {active_frame}",
+                      contact)
+                check(contact[face_key] == takeoff_face,
+                      f"P{suffix} airborne contact keeps takeoff facing", contact)
+            landed = None
+            for _ in range(80):
+                sample = trace(e)
+                if signed16(sample[y_key]) == 0:
+                    landed = sample
+                    break
+                drive(e, port, [])
+            check(landed is not None and landed[f"action{suffix}"] == 0 and
+                  landed[f"air_action{suffix}"] == 0,
+                  f"P{suffix} airborne action clears on landing", landed or trace(e))
+        finally:
+            e.close()
+
+
+def _close_for_throw(e: Emulator) -> None:
+    for _ in range(180):
+        sample = trace(e)
+        # The engine's throw contact is strict '< throwRange'.  Use the
+        # smaller live profile range so mirrored P2 probes cannot settle at
+        # an exactly-equal 25px edge and accidentally start a normal.
+        limit = min(sample["throw_range1"], sample["throw_range2"]) * 16
+        if abs(sample["x1"] - sample["x2"]) < limit:
+            return
+        if sample["x1"] < sample["x2"]:
+            e.run(1, p1=["right"], p2=["left"])
+        else:
+            e.run(1, p1=["left"], p2=["right"])
+    raise AssertionError(("throw probe could not close players", trace(e)))
+
+
+def _observe_throw(e: Emulator, attacker: int) -> dict[str, object]:
+    """Return the complete delayed throw/downed trace for one attacker."""
+
+    _close_for_throw(e)
+    before = trace(e)
+    victim = 1 - attacker
+    a_suffix = str(attacker + 1)
+    v_suffix = str(victim + 1)
+    forward = "right" if before[f"face{a_suffix}"] else "left"
+    drive(e, attacker, [forward, "l"], 3)
+    samples: list[dict[str, int]] = []
+    first_down = None
+    damage_state = None
+    damage_hp = None
+    saw_floor = False
+    saw_wake = False
+    initial_hp = before[f"hp{v_suffix}"]
+    for _ in range(140):
+        sample = trace(e)
+        samples.append(sample)
+        if first_down is None and sample[f"down_state{v_suffix}"]:
+            first_down = sample
+        if sample[f"down_state{v_suffix}"] == 3:
+            saw_floor = True
+        if sample[f"down_state{v_suffix}"] == 5:
+            saw_wake = True
+        if damage_state is None and sample[f"hp{v_suffix}"] < initial_hp:
+            damage_state = sample[f"down_state{v_suffix}"]
+            damage_hp = sample[f"hp{v_suffix}"]
+        # Keep a normal held through floor/get-up/wake.  The native contact
+        # path must reject it while the defender is down, proving no OTG
+        # damage without writing game memory or using a test hook.
+        attacker_keys = ["y"] if sample[f"down_state{v_suffix}"] in (3, 4, 5) else []
+        if first_down is not None and saw_wake and sample[f"down_state{v_suffix}"] == 0:
+            break
+        drive(e, attacker, attacker_keys)
+    check(first_down is not None, f"P{v_suffix} enters a downed state after P{a_suffix} throw", {
+        "attacker": attacker, "samples": samples,
+    })
+    check(all(0 <= sample[f"down_state{v_suffix}"] <= 5 for sample in samples),
+          "throw down-state telemetry stays within 0..5", {
+              "attacker": attacker,
+              "states": sorted(set(sample[f"down_state{v_suffix}"] for sample in samples)),
+          })
+    states = {sample[f"down_state{v_suffix}"] for sample in samples}
+    check({1, 2, 3, 4, 5}.issubset(states),
+          "throw visits lift, flight, floor, get-up, and wake states", {
+              "attacker": attacker, "states": sorted(states),
+          })
+    if damage_state is not None:
+        check(damage_state >= 3, "throw damage waits until victim ground impact", {
+            "attacker": attacker, "damage_state": damage_state,
+        })
+    check(saw_floor, "throw reaches a grounded floor state before wake", {
+        "attacker": attacker, "states": sorted(states),
+    })
+    if damage_hp is not None:
+        check(all(sample[f"hp{v_suffix}"] == damage_hp
+                  for sample in samples
+                  if sample[f"down_state{v_suffix}"] in (3, 4, 5)
+                  and sample[f"hp{v_suffix}"] <= damage_hp),
+              "downed victim rejects subsequent OTG damage", {
+                  "attacker": attacker, "damage_hp": damage_hp,
+              })
+    pending = [sample for sample in samples
+               if sample[f"pending_throw_damage{v_suffix}"] or
+               sample[f"pending_throw_damage{a_suffix}"]]
+    check(pending and any(
+        sample[f"throw_owner{v_suffix}"] == attacker or
+        sample[f"throw_owner{a_suffix}"] == attacker for sample in pending),
+          "throw telemetry exposes delayed damage and its owner", {
+              "attacker": attacker, "pending": pending[:5],
+          })
+    check(any(sample[f"throw_victim{a_suffix}"] == victim for sample in pending),
+          "throw telemetry identifies the distinct victim role", {
+              "attacker": attacker, "victim": victim,
+              "pending": pending[:5],
+          })
+    return {"attacker": attacker, "victim": victim, "samples": samples,
+            "first_down": first_down, "damage_state": damage_state,
+            "damage_hp": damage_hp}
+
+
+def check_throw_knockdown_wake() -> None:
+    """Verify distinct throw roles, bounded wake, no OTG, pause, and reset."""
+
+    e = boot(1)
+    try:
+        result = _observe_throw(e, 0)
+    finally:
+        e.close()
+
+    # Use a fresh throw for the timing-sensitive part.  The complete probe
+    # above deliberately runs through wake; this one pauses on the floor and
+    # captures a fresh UP edge during the six-tick wake state.
+    e = boot(1)
+    try:
+        _close_for_throw(e)
+        before = trace(e)
+        forward = "right" if before["face1"] else "left"
+        drive(e, 0, [forward, "l"], 3)
+        paused_checked = False
+        queued = False
+        queued_trace: dict[str, int] | None = None
+        wake_pause_checked = False
+        woke = False
+        woke_trace: dict[str, int] | None = None
+        for _ in range(160):
+            sample = trace(e)
+            down = sample["down_state2"]
+            if down == 3 and not paused_checked:
+                # START is edge sampled by the SNES core.  A one-frame tap
+                # can land in the same hitstop poll that produced FLOOR;
+                # use the established three-frame pulse so the pause edge
+                # is observed without advancing the paused simulation.
+                e.run(3, p1=["start"])
+                paused = trace(e)
+                e.run(20)
+                still = trace(e)
+                check(paused["paused"] == 1 and
+                      still["down_state2"] == paused["down_state2"] and
+                      still["down_tick2"] == paused["down_tick2"],
+                      "pause freezes downed-state timing", {
+                          "paused": paused, "still": still,
+                      })
+                e.run(3, p1=["start"])
+                paused_checked = True
+            elif down == 5 and not queued:
+                e.run(1, p2=["up"])
+                queued_trace = trace(e)
+                queued = queued_trace["wake_jump2"] > 0
+                e.run(1, p2=[])
+            elif down == 5 and queued and not wake_pause_checked:
+                e.run(3, p1=["start"])
+                wake_paused = trace(e)
+                e.run(20)
+                wake_still = trace(e)
+                check(wake_paused["paused"] == 1 and
+                      wake_still["down_state2"] == wake_paused["down_state2"] and
+                      wake_still["down_tick2"] == wake_paused["down_tick2"] and
+                      wake_still["wake_jump2"] == wake_paused["wake_jump2"],
+                      "pause freezes wake timing and buffered jump age", {
+                          "paused": wake_paused, "still": wake_still,
+                      })
+                e.run(3, p1=["start"])
+                wake_pause_checked = True
+            elif down == 0 and queued:
+                woke = signed16(sample["y2"]) < 0
+                if woke:
+                    woke_trace = sample
+                if woke:
+                    break
+            e.run(1)
+        check(paused_checked, "pause probe reaches the downed floor state", trace(e))
+        check(queued, "wake-up jump edge is captured during the wake state", {
+            "queued": queued_trace,
+        })
+        check(wake_pause_checked, "pause probe freezes a queued wake edge", trace(e))
+        check(woke, "wake-up buffer becomes actionable after get-up", trace(e))
+        if woke_trace is not None:
+            invuln = [woke_trace["invuln2"]]
+            for _ in range(3):
+                e.run(1)
+                invuln.append(trace(e)["invuln2"])
+            check(invuln == [4, 3, 2, 1],
+                  "wake transition grants exactly four free invulnerability ticks", {
+                      "trace": woke_trace, "invuln": invuln,
+                  })
+    finally:
+        e.close()
+
+    e = boot(1)
+    try:
+        mirrored = _observe_throw(e, 1)
+        check(mirrored["victim"] == 0 and mirrored["first_down"] is not None,
+              "P2 mirrored throw produces an independent victim sequence", mirrored)
+    finally:
+        e.close()
+
+    # Training reset must clear an active downed state and delayed throw data.
+    e = boot(2)
+    try:
+        _close_for_throw(e)
+        before = trace(e)
+        drive(e, 0, ["right", "l"], 3)
+        down = None
+        for _ in range(80):
+            sample = trace(e)
+            if sample["down_state2"]:
+                down = sample
+                break
+            e.run(1)
+        check(down is not None, "Training probe reaches a downed victim", down)
+        e.run(3, p1=["select"])
+        e.run(12)
+        reset = trace(e)
+        check(reset["down_state1"] == 0 and reset["down_state2"] == 0 and
+              reset["pending_throw_damage1"] == 0 and
+              reset["pending_throw_damage2"] == 0 and
+              reset["throw_owner1"] == 255 and reset["throw_owner2"] == 255 and
+              reset["throw_victim1"] == 255 and reset["throw_victim2"] == 255,
+              "Training reset clears knockdown and delayed throw state", {
+                  "before": before, "down": down, "reset": reset,
+              })
+    finally:
+        e.close()
+
+
+def check_simultaneous_throw_tech() -> None:
+    """Attempt the symmetric throw edge and reject one-sided damage."""
+
+    e = boot(1)
+    try:
+        _close_for_throw(e)
+        initial = trace(e)
+        f1 = "right" if initial["face1"] else "left"
+        f2 = "right" if initial["face2"] else "left"
+        for _ in range(4):
+            e.run(1, p1=[f1, "l"], p2=[f2, "l"])
+        e.run(20)
+        after = trace(e)
+        check(after["hp1"] == initial["hp1"] and after["hp2"] == initial["hp2"] and
+              after["down_state1"] == 0 and after["down_state2"] == 0,
+              "simultaneous throw inputs resolve without one-sided damage", {
+                  "initial": initial, "after": after,
+              })
+    finally:
+        e.close()
+
+    # A throw and a normal on the same contact frame resolve in favor of the
+    # throw.  This is a separate case from symmetric throw tech: it must show
+    # one concrete action-9/down-state outcome rather than merely no damage.
+    e = boot(1)
+    try:
+        _close_for_throw(e)
+        initial = trace(e)
+        f1 = "right" if initial["face1"] else "left"
+        for _ in range(4):
+            e.run(1, p1=[f1, "l"], p2=["y"])
+        resolved = trace(e)
+        check(resolved["down_state2"] in (1, 2, 3, 4, 5) and
+              resolved["hp1"] == initial["hp1"],
+              "grounded throw beats a simultaneous normal", {
+                  "initial": initial, "resolved": resolved,
+              })
+    finally:
+        e.close()
+
+    # A rush-family special remains a grounded, moving action.  This catches
+    # the close-contact path accidentally treating its down+P edge as a throw
+    # or losing horizontal motion at the floor.
+    e = boot(1, fighter=2, fighter2=1)
+    try:
+        _close_for_throw(e)
+        initial = trace(e)
+        drive(e, 0, ["down", "x"], 3)
+        samples = []
+        for _ in range(18):
+            sample = trace(e)
+            samples.append(sample)
+            e.run(1)
+        check(any(sample["action1"] == 7 and signed16(sample["y1"]) == 0
+                  for sample in samples),
+              "rush special starts from the grounded state", {
+                  "initial": initial, "samples": samples,
+              })
+        check(max(sample["x1"] for sample in samples) - initial["x1"] >= 8,
+              "grounded rush special carries horizontal motion", {
+                  "initial_x": initial["x1"],
+                  "samples": samples,
+              })
+    finally:
+        e.close()
+
+
+def check_throw_startup_escape() -> dict[str, object]:
+    """A jump begun on throw startup makes the target ineligible.
+
+    Both controller edges are sampled on the same frame: P1 commits the
+    forward+L throw input while P2 presses UP.  The thrower may remain in its
+    native action-9 startup/recovery sequence, but the airborne target must
+    stay free and unharmed.  This exercises the compiler-safe ``enemy->y``
+    gate in both action selection and contact resolution.
+    """
+
+    e = boot(1)
+    try:
+        _close_for_throw(e)
+        initial = trace(e)
+        forward = "right" if initial["face1"] else "left"
+        initial_hp = (initial["hp1"], initial["hp2"])
+
+        # Keep both edges live for the poll window; the P2 UP edge starts the
+        # jump before the contact snapshot can accept a grounded throw.
+        e.run(3, p1=[forward, "l"], p2=["up"])
+        samples: list[dict[str, int]] = []
+        for _ in range(48):
+            sample = trace(e)
+            samples.append(sample)
+            e.run(1)
+
+        throw_active = [sample for sample in samples if sample["action1"] == 9]
+        airborne_throw = [sample for sample in throw_active
+                          if signed16(sample["y2"]) < 0 and
+                          sample["down_state2"] == 0]
+        grounded_free = [sample for sample in samples
+                         if signed16(sample["y2"]) == 0 and
+                         sample["down_state2"] == 0 and
+                         sample["action1"] == 0]
+        check(bool(throw_active),
+              "P1 commits the native throw action while P2 jumps", {
+                  "initial": initial, "samples": samples,
+              })
+        check(bool(airborne_throw),
+              "airborne P2 cannot be grabbed during P1 throw startup", {
+                  "initial": initial, "airborne_throw": airborne_throw,
+              })
+        check(all(sample["down_state2"] == 0 for sample in samples) and
+              not any(sample["connected1"] == 2 for sample in samples),
+              "escaped throw leaves P2 in DOWN_FREE without throw contact", {
+                  "states": sorted(set(sample["down_state2"] for sample in samples)),
+                  "contacts": sorted(set(sample["connected1"] for sample in samples)),
+              })
+        check(all((sample["hp1"], sample["hp2"]) == initial_hp
+                  for sample in samples),
+              "escaped throw causes no damage to either fighter", {
+                  "initial_hp": initial_hp,
+                  "hp": sorted(set((sample["hp1"], sample["hp2"])
+                                   for sample in samples)),
+              })
+        check(bool(grounded_free),
+              "escaped throw returns both fighters to grounded free state", {
+                  "last": samples[-1],
+              })
+        return {
+            "initial": initial,
+            "throw_frames": len(throw_active),
+            "airborne_throw_frames": len(airborne_throw),
+            "grounded_free": bool(grounded_free),
+        }
+    finally:
+        e.close()
+
+
+def check_projectile_interrupts_throw() -> dict[str, object]:
+    """A live projectile cancels a pending throw without delayed damage.
+
+    This uses the deterministic late-special contact from the native input
+    path: P2 (Ivo, the default local-versus opponent) is held in projectile
+    startup tick 10 while P1 closes with heavy punch.  The contact resolver
+    must release the victim's pending throw before LIFT becomes observable,
+    then let the victim finish its bounded flight.  The wave may hurt P1, but
+    the cancelled throw must never damage P2 at the later ground impact.
+    """
+
+    e = boot(1)
+    try:
+        close_players(e)
+        drive(e, 1, ["down"], 3)
+        drive(e, 1, ["down", "x"], 3)
+
+        # Ivo's projectile startup is long enough for a late throw edge to
+        # overlap it.  Keep the controller released between samples so this
+        # probe observes the engine's actual action/tick schedule.
+        startup: list[dict[str, int]] = []
+        ready: dict[str, int] | None = None
+        for _ in range(20):
+            sample = trace(e)
+            startup.append(sample)
+            if sample["action2"] == 7 and sample["anim_tick2"] >= 10:
+                ready = sample
+                break
+            drive(e, 1, [])
+        check(ready is not None,
+              "P2 projectile reaches the late startup tick for throw interruption", {
+                  "startup": startup,
+                  "trace": ready or trace(e),
+              })
+        if ready is None:
+            return {"status": "unreached", "startup": startup}
+
+        before = ready
+        forward = "right" if before["face1"] else "left"
+        samples: list[dict[str, int]] = []
+        # The five-tick heavy edge is long enough for Snes9x's poll phase but
+        # remains a controller-only contact attempt, not a state mutation.
+        for _ in range(5):
+            drive(e, 0, [forward, "l"])
+            samples.append(trace(e))
+
+        # Keep collecting until the released victim returns to FREE, proving
+        # both that FLIGHT is bounded and that no delayed throw damage appears
+        # after the wave/throw contact snapshot.
+        free: dict[str, int] | None = None
+        for _ in range(120):
+            sample = trace(e)
+            samples.append(sample)
+            if sample["down_state2"] == 0:
+                free = sample
+                break
+            drive(e, 0, [])
+
+        flight = [sample for sample in samples if sample["down_state2"] == 2]
+        released = [sample for sample in flight
+                    if sample["pending_throw_damage2"] == 0 and
+                    sample["throw_owner2"] == 255]
+        check(bool(flight),
+              "projectile contact releases the victim into bounded FLIGHT", {
+                  "before": before, "samples": samples,
+              })
+        check(bool(released),
+              "projectile cancellation clears pending throw ownership", {
+                  "before": before, "flight": flight,
+              })
+        check(any(sample["hp1"] < before["hp1"] and
+                  sample["action1"] == 0 for sample in released),
+              "projectile still resolves its hit on the thrower", {
+                  "before": before, "released": released,
+              })
+        check(all(sample["hp2"] == before["hp2"] for sample in samples),
+              "cancelled throw never applies delayed victim damage", {
+                  "before_hp2": before["hp2"],
+                  "states": sorted(set(sample["down_state2"] for sample in samples)),
+                  "samples": samples,
+              })
+        check(free is not None,
+              "projectile-released victim returns to FREE within a bounded flight", {
+                  "free": free, "last": samples[-1] if samples else trace(e),
+              })
+        return {
+            "before": {key: before[key] for key in
+                       ("frame", "hp1", "hp2", "action2", "anim_tick2")},
+            "states": sorted(set(sample["down_state2"] for sample in samples)),
+            "flight_samples": len(flight),
+            "free_frame": free["frame"] if free is not None else None,
+        }
+    finally:
+        e.close()
+
+
+def check_attack_knockdowns() -> None:
+    """Real sweep, uppercut, and rising hits enter the down-state machine."""
+
+    cases = (
+        (0, ["down", "r"], "crouching heavy sweep"),
+        (0, ["down", "l"], "uppercut"),
+        (5, ["down", "x"], "rising special"),
+    )
+    for fighter, keys, label in cases:
+        e = boot(1, fighter=fighter, fighter2=1)
+        try:
+            close_players(e)
+            initial = trace(e)
+            drive(e, 0, keys, 3)
+            samples: list[dict[str, int]] = []
+            for _ in range(100):
+                sample = trace(e)
+                samples.append(sample)
+                if sample["down_state2"]:
+                    break
+                e.run(1)
+            check(any(event_field(sample, "connected", 0) == 2
+                      for sample in samples) or
+                  any(sample["down_state2"] for sample in samples),
+                  label + " produces a real contact", {
+                      "fighter": fighter, "initial": initial,
+                      "samples": samples,
+                  })
+            check(any(sample["down_state2"] in (1, 2, 3, 4, 5)
+                      for sample in samples),
+                  label + " real hit enters bounded knockdown", {
+                      "fighter": fighter, "states": sorted(
+                          set(sample["down_state2"] for sample in samples)),
+                  })
+        finally:
+            e.close()
+
+    # A guarded sweep is a blocked contact and must never launch the defender.
+    e = boot(1, fighter=0, fighter2=1)
+    try:
+        close_players(e)
+        drive(e, 0, ["down", "r"], 3)
+        guarded: list[dict[str, int]] = []
+        for _ in range(40):
+            # Keep the defender stationary at close range while crouch
+            # guarding; a back-only hold can walk out of the sweep's reach
+            # before its active tick and turn this into a movement test.
+            e.run(1, p2=["down", "right"])
+            sample = trace(e)
+            guarded.append(sample)
+            if sample["connected1"] == 1:
+                break
+        check(any(sample["connected1"] == 1 for sample in guarded),
+              "crouch-guarded sweep produces blocked contact", guarded)
+        check(not any(sample["down_state2"] for sample in guarded),
+              "blocked sweep does not cause knockdown", guarded)
+    finally:
+        e.close()
+
+
+def check_down_floor_input_guard() -> dict[str, object]:
+    """Downed input cannot act, jump, or re-hit at a close floor position.
+
+    Lars's long heavy reach makes the OTG portion non-vacuous: after his
+    uppercut launches P2, P1 waits until its action is free, then holds R
+    while P2 is still down.  The actual active frame must overlap a downed
+    state inside the 71px normal-contact envelope without changing P2 HP.
+    """
+
+    e = boot(1, fighter=11, fighter2=0)
+    try:
+        close_players(e)
+        initial = trace(e)
+        launch_face: int | None = None
+        impact_hp: int | None = None
+        heavy_at: int | None = None
+        samples: list[dict[str, int]] = []
+        active: list[dict[str, int]] = []
+        floor: list[dict[str, int]] = []
+        rise: list[dict[str, int]] = []
+        states: set[int] = set()
+        violations: list[dict[str, object]] = []
+
+        drive(e, 0, ["down", "l"], 3)
+        for index in range(120):
+            sample = trace(e)
+            down = sample["down_state2"]
+            states.add(down)
+            if down:
+                samples.append(sample)
+                if launch_face is None:
+                    launch_face = sample["face2"]
+                    impact_hp = sample["hp2"]
+                if sample["hp2"] != impact_hp:
+                    violations.append({"kind": "hp", "sample": sample})
+                if sample["action2"] != 0 or sample["jump_buffer2"] != 0:
+                    violations.append({"kind": "victim_input", "sample": sample})
+                down_y = signed16(sample["y2"])
+                if (down in (1, 2) and down_y >= 0) or (down in (3, 4, 5) and
+                                                        down_y != 0):
+                    violations.append({"kind": "down_y", "sample": sample})
+                if down in (1, 2, 3) and sample["face2"] != launch_face:
+                    violations.append({"kind": "launch_face", "sample": sample})
+                if down == 3:
+                    floor.append(sample)
+                if down == 4:
+                    rise.append(sample)
+                if sample["action1"] == 6 and sample["anim_frame1"] == 7:
+                    active.append({
+                        "frame": sample["frame"],
+                        "down_state2": down,
+                        "distance": abs(sample["x1"] - sample["x2"]),
+                        "hp2": sample["hp2"],
+                    })
+            if heavy_at is None and down and sample["y1"] == 0 and sample["action1"] == 0:
+                heavy_at = index
+            p1 = ["r"] if heavy_at is not None and heavy_at <= index < heavy_at + 4 else []
+            p2 = ["up", "y"] if launch_face is not None else []
+            e.run(1, p1=p1, p2=p2)
+
+        check(bool(samples),
+              "close uppercut produces a trace-visible down-state sequence", {
+                  "initial": initial, "states": sorted(states),
+              })
+        check({2, 3, 4, 5}.issubset(states),
+              "downed control probe reaches flight, floor, rise, and wake", {
+                  "states": sorted(states),
+              })
+        check(bool(floor),
+              "downed victim reaches a grounded FLOOR state", {
+                  "states": sorted(states), "floor": floor[:3],
+              })
+        if floor:
+            check(all(abs(sample["x1"] - sample["x2"]) <= 71 * 16
+                      for sample in floor),
+                  "FLOOR input probe stays inside Lars's normal contact envelope", {
+                      "floor": floor[:4],
+                  })
+        check(not violations,
+              "held UP+Y cannot act, jump, re-hit, or flip a downed victim", {
+                  "violations": violations[:8],
+                  "sample_count": len(samples),
+              })
+        check(bool(active),
+              "attacker's actual heavy active frame overlaps a downed victim", {
+                  "active": active,
+                  "states": sorted(states),
+              })
+        check(all(sample["distance"] <= 71 * 16 for sample in active),
+              "downed victim remains inside the active heavy contact envelope", {
+                  "active": active,
+              })
+        check(impact_hp is not None and all(sample["hp2"] == impact_hp
+                                            for sample in active),
+              "downed victim takes no OTG damage from the active heavy", {
+                  "impact_hp": impact_hp, "active": active,
+              })
+        check(bool(rise),
+              "downed victim reaches RISE before wake", {
+                  "states": sorted(states),
+              })
+        if rise and launch_face is not None:
+            expected_face = 1 if rise[0]["x2"] < rise[0]["x1"] else 0
+            check(rise[0]["face2"] == expected_face and
+                  rise[0]["face2"] != launch_face,
+                  "victim facing updates only when RISE begins", {
+                      "launch_face": launch_face,
+                      "rise": rise[0],
+                      "expected_face": expected_face,
+                  })
+        return {
+            "states": sorted(states), "launch_face": launch_face,
+            "impact_hp": impact_hp, "floor_frames": len(floor),
+            "active": active, "rise_frame": rise[0]["frame"] if rise else None,
+        }
+    finally:
+        e.close()
+
+
 def check_landing_buffer_boundary() -> None:
     """The oldest valid six-tick jump edge survives into the landing tick."""
 
@@ -1257,6 +2637,14 @@ def main() -> int:
         "rom_sha256": None,
         "rom_bytes": None,
         "checks": checks,
+        "transition_stress": {},
+        "combo_cadence_stress": {},
+        "two_controller_stress": {},
+        "resident_sfx_audio": {},
+        "status_bars": {},
+        "throw_interrupt": {},
+        "throw_startup_escape": {},
+        "down_floor_guard": {},
     }
     try:
         manifest = json.loads((ROOT / "dist/manifest.json").read_text())
@@ -1264,6 +2652,11 @@ def main() -> int:
         report["rom_bytes"] = manifest.get("bytes")
         check(manifest.get("bytes") == 4 * 1024 * 1024,
               "input-feel probe uses the 4 MiB animation ROM", manifest)
+
+        report["transition_stress"] = check_transition_stress()
+        report["combo_cadence_stress"] = check_combo_cadence_stress()
+        report["two_controller_stress"] = check_two_controller_stress()
+        report["resident_sfx_audio"] = check_resident_sfx_audio()
 
         # Local versus is required for controller-two checks.  Training mode
         # intentionally supplies CPU keys on port two and would mask a P2
@@ -1278,11 +2671,20 @@ def main() -> int:
         check_pause_intro_discard()
         check_training_inertness()
         check_training_reset()
-        check_guard_timing()
+        report["status_bars"] = check_guard_timing()
         check_contact_classification()
+        check_held_back_combo_and_block_string()
         check_stale_prehit_buffer()
         check_combo_lifecycle()
         check_mirrored_throw_range()
+        check_air_normals_both_sides()
+        check_air_contact_window()
+        check_attack_knockdowns()
+        report["down_floor_guard"] = check_down_floor_input_guard()
+        check_throw_knockdown_wake()
+        check_simultaneous_throw_tech()
+        report["throw_startup_escape"] = check_throw_startup_escape()
+        report["throw_interrupt"] = check_projectile_interrupts_throw()
 
         e = boot(1)
         try:

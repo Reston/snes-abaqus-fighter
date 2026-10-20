@@ -1,0 +1,42 @@
+{
+  "schema": "abaqus-combat-animation-source/v1",
+  "fighter": "10-roxana",
+  "character": "Roxana Espinola",
+  "frames": "48-63",
+  "generated_at": "2026-10-20",
+  "generation_mode": "built-in image_gen",
+  "source_anchor": {
+    "frame": 48,
+    "role": "upright neutral guard and source-resolution normalization anchor; matches the legacy idle",
+    "reference_path": "assets/art/characters/10-roxana/atlas.png",
+    "reference_sha256": "d37ae9b06c848d24d8c9789028879c17dd123e52155a7eba6c5bd0de09d977a7"
+  },
+  "atlas": {
+    "path": "assets/art/characters/10-roxana/animation-airborne.png",
+    "generated_source": "C:/Users/user/.codex/generated_images/01a1574d-3c7a-7531-aad4-7fb1d4b99479/exec-792819bf-777a-4333-bdb8-163118283b9e.png",
+    "sha256": "e368fb573834a298ddd4b6835d1e835468657d24ac38ff970d4eaf2015e2f320",
+    "input_roles": [
+      {"path": "assets/art/characters/10-roxana/atlas.png", "role": "identity, costume, palette, facial likeness and upright idle anchor reference"},
+      {"path": "assets/art/characters/10-roxana/animation-actions.png", "role": "approved action anatomy, style, scale and shading reference"}
+    ],
+    "full_prompt": [
+      "Use case: stylized-concept; asset type: original source sprite atlas for a native SNES fighting game. Input Image 1 is Roxana's existing 16-pose key atlas and identity/costume reference. Input Image 2 is her approved action-transition atlas and secondary anatomy/style reference. Preserve the same mature woman with recognizable face, shoulder-length dark chestnut hair with deep side part and swept fringe, earrings, magenta jacket over white blouse, dark navy wide-leg slacks, black shoes, feminine body proportions, crisp dark outline, warm cel shading and right-facing three-quarter cartoon fighting-game style.",
+      "Create a new transparent 1254x1254 RGBA atlas with exactly a clean 4-column by 4-row grid of 16 separate connected full-body figures, one figure per cell, generous transparent gaps, no figure touching the row above, no labels, text, floor, shadow, effects, props, background, watermark or detached parts. All characters face right unless the required fall/impact pose explicitly says head left. Keep one fixed source scale and fixed standing-foot baseline; the upright first frame is the normalization anchor. Draw genuine anatomical poses; never copy, translate, stretch or mirror a whole body to fake a frame. Raised hands and extended legs must remain compact enough for the cell and the 94x77 native safe area after reduction.",
+      "This is Roxana's animation-airborne atlas, frames 48 through 63 in row-major order. Frame 48 is an upright neutral standing guard exactly matching the old idle height, foot placement, face, hair, magenta jacket and wide-leg trouser proportions; it is the source-resolution normalization anchor and thrower recovery pose.",
+      "Draw the exact frame order: 48 upright neutral guard matching old idle; 49 visibly airborne air-punch anticipation with slightly tucked knees and one fist loading; 50 visibly airborne air-punch active extension with compact forward punch; 51 visibly airborne air-punch retract toward airborne guard; 52 visibly airborne air-kick anticipation with compact raised knee and guarded torso; 53 visibly airborne air-kick active extension with one leg forward but contained; 54 visibly airborne air-kick retract with leg folding under the body; 55 compact neutral air/apex guard with bent knees and both fists up; 56 thrower contact/grip with planted feet and arms reaching toward an undrawn opponent; 57 thrower release/turn with planted stance, torso turn and readable throwing force; 58 victim lifted/off balance with contained limbs and tipped-back torso; 59 victim ground impact, diagonal collapsed body with head clearly left; 60 knockdown launch/recoil with head left and no effect; 61 knockdown fall, diagonal backward fall with head left and full body visible; 62 grounded get-up with planted hand and foot; 63 wake-up guard returning toward neutral with replanted feet and raised fists.",
+      "For frames 56-57 draw Roxana as the thrower; for frames 58-61 draw Roxana as the victim. Keep the woman recognizable in every frame, including airborne and fallen poses. Preserve long dark hair, feminine silhouette and wide-leg trousers. Use polished original 16-bit arcade fighting-game cartoon illustration, readable at a native 96x80 reduction. Never shrink the standing anchor or old source proportions to accommodate a new pose.",
+      "Strict constraints: actual transparent alpha; exactly 16 separate connected full-body figures; no touching figures, row-boundary merges, floor, smoke, projectiles, effects, props, logos, lettering, watermark, photorealism, 3D, copied commercial sprites, missing limbs, extra limbs, fused figures or independent cell resizing."
+    ]
+  },
+  "validation": {
+    "validated_at": "2026-10-20",
+    "tool": "tools/fighter_assets.py:extract_atlas",
+    "alpha_threshold": 200,
+    "size": [1254, 1254],
+    "mode": "RGBA",
+    "alpha_min_max": [0, 255],
+    "figures": 16,
+    "opaque_pixels": [40322, 34796, 36712, 33166, 36065, 36908, 32110, 29327, 40742, 40438, 36769, 23729, 33590, 37050, 34276, 37210],
+    "status": "passed"
+  }
+}

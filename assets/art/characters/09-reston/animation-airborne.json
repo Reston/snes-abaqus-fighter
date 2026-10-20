@@ -1,0 +1,49 @@
+{
+  "schema": "abaqus-animation-source/v1",
+  "fighter": "09-reston",
+  "character": "Jose David Ordonez",
+  "generation": {
+    "mode": "built-in imagegen",
+    "tool": "image_gen.imagegen",
+    "transparent_background": true,
+    "output_size": [1254, 1254]
+  },
+  "atlas": {
+    "path": "assets/art/characters/09-reston/animation-airborne.png",
+    "frames": "48-63",
+    "generated_source": "C:/Users/user/.codex/generated_images/01a1574d-1db8-7cd2-acf1-cf76fc611f0c/exec-77532064-2c99-4195-9463-094258416386.png",
+    "sha256": "a2bfe67f6f864a86ef8620d7961d9fe8a62e26f1b83d48ddfa3a0f02a7dffd0e",
+    "frame_labels": [
+      "neutral-anchor", "air-punch-anticipation", "air-punch-active", "air-punch-retract",
+      "air-kick-anticipation", "air-kick-active", "air-kick-retract", "air-apex-guard",
+      "thrower-contact", "thrower-release", "victim-lifted", "victim-impact-head-left",
+      "knockdown-launch", "knockdown-fall-head-left", "get-up", "wake-guard"
+    ],
+    "full_prompt": [
+      "Use case: stylized-concept; asset type: native SNES fighting-game airborne and throw animation source atlas.",
+      "Input Image 1 is the corrected Reston key-pose atlas and identity reference. Input Image 2 is the approved Reston action atlas and secondary anatomy/style reference. Preserve the broad adult face and nose, thick brows, full black trimmed beard, bright copper-orange jacket with cream collar and cuffs, dark shirt, deep navy trousers, black shoes and original palette.",
+      "Most important identity invariant: a SHORT DARK BUZZ CUT visibly covers the TOP and CROWN with only a moderate receding hairline. Reston is NOT BALD and must retain visible hair across the upper head in every frame, including airborne, impact and fall poses.",
+      "Create a new transparent 1254x1254 square 4-column by 4-row atlas for frames 48-63 with exactly sixteen separately drawn connected full-body figures, one per cell. Every ordinary figure faces right. Use generous transparent gaps, especially around airborne, impact, falling and get-up poses. No labels, shadows, props, effects, opponents or background.",
+      "Frame 48 is an upright neutral guard matching the existing original idle height, foot placement and body proportions. It is the source-resolution normalization anchor and thrower recovery. Keep the same compact source scale for all cells so the existing 96x80 native canvas, 94x77 safe area, standing baseline and roster scale remain valid. Draw genuine anatomical in-betweens; never transform, stretch, mirror, duplicate or translate one body to fake motion.",
+      "Row-major frame order: 48 upright neutral guard anchor; 49 visibly airborne air-punch anticipation with slightly tucked knees and fists preparing; 50 visibly airborne air-punch active extension with one fist forward; 51 airborne air-punch retract toward airborne guard. 52 airborne air-kick anticipation with compact bent legs; 53 airborne air-kick active extension with one leg extended; 54 airborne air-kick retract; 55 compact neutral air/apex guard with bent knees. 56 thrower contact and grip with arms toward an imaginary opponent and balanced torso; 57 thrower release and turn with readable throwing force through hips and arms; 58 victim lifted and off balance with limbs contained within the cell; 59 victim ground impact with head clearly pointing left; 60 knockdown launch and recoil with the body arcing away; 61 knockdown fall with head clearly pointing left; 62 grounded get-up with one planted hand and foot; 63 wake-up guard returning toward neutral.",
+      "Style: polished hand-drawn 16-bit arcade fighting-game cartoon matching the references, bold dark outline, saturated cel shading and readable silhouettes at a 96x80 SNES reduction. Airborne poses visibly leave the ground. Thrower and victim drawings are distinct roles. Keep the short dark buzz cut over the crown, moderate hairline, beard, face, jacket, hands, shoes, anatomy and palette consistent, and keep all poses compact without excessive height or width.",
+      "Strict constraints: actual transparent alpha; exactly sixteen separate full-body figures in a clean 4x4 grid; no bald or shaved scalp, hairless crown or exaggerated receding hairline; no touching figures, cropped heads or feet, fused figures, disconnected fragments, missing limbs, extra characters, opponent bodies, weapons, projectiles, magic, smoke, motion trails, text, logos, watermarks, photorealism, 3D, independent resizing, relabeled grounded poses or copied commercial sprites."
+    ],
+    "input_roles": [
+      {"path": "assets/art/characters/09-reston/atlas.png", "role": "corrected identity, idle-height anchor and original cartoon style reference"},
+      {"path": "assets/art/characters/09-reston/animation-actions.png", "role": "approved action anatomy, costume and palette reference"}
+    ]
+  },
+  "validation": {
+    "validated_at": "2026-10-20",
+    "tool": "tools/fighter_assets.py:extract_atlas",
+    "alpha_threshold": 200,
+    "size": [1254, 1254],
+    "mode": "RGBA",
+    "alpha_min_max": [0, 255],
+    "figures": 16,
+    "anchor_source_box": [22, 42, 287, 337],
+    "original_idle_source_box": [23, 36, 287, 343],
+    "opaque_pixels": [42370, 35263, 38830, 34373, 33894, 41905, 33683, 31604, 38007, 41165, 35488, 28199, 36414, 29642, 34158, 36455]
+  }
+}

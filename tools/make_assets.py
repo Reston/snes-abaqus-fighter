@@ -5,7 +5,7 @@ UI, typography, effects and animation metadata are authored here as code assets.
 """
 from pathlib import Path
 from PIL import Image, ImageDraw
-import json, math, random, struct, subprocess, sys
+import hashlib, json, math, random, struct, subprocess, sys
 sys.path.insert(0, str(Path(__file__).parent))
 from fighter_assets import prepare_roster
 from menu_assets import make_menu_images
@@ -202,15 +202,15 @@ asset('ui_tiles',ui)
 asset('ui_pal',palbytes(UI_COLORS+[(0,0,0),(15,24,41),(96,235,212)]+UI_COLORS[3:]))
 
 # Each fighter has independent illustrated frames and a fifteen-color palette.
-# Forty-eight uniform 96x80 frames use six LoROM-safe eight-frame banks.
+# Sixty-four uniform 96x80 frames use eight LoROM-safe eight-frame banks.
 for n,fighter in enumerate(roster):
     data=bytearray()
     for ids in fighter['indices']:
         for ty in range(10):
             for tx in range(12):
                 data+=tile([ids[(ty*8+y)*96+tx*8+x] for y in range(8) for x in range(8)])
-    assert len(data)==184320
-    for bank,suffix in enumerate(('', 'b', 'c', 'd', 'e', 'f')):
+    assert len(data)==245760
+    for bank,suffix in enumerate(('', 'b', 'c', 'd', 'e', 'f', 'g', 'h')):
         asset(f'fighter{n:02}{suffix}',data[bank*30720:(bank+1)*30720])
     asset(f'fighter{n:02}_pal',palbytes(fighter['palette']))
 
@@ -239,6 +239,7 @@ def brr(samples):
         data.append((shift<<4)|(1 if i+16==len(samples) else 0))
         data.extend((vals[k]<<4)|vals[k+1] for k in range(0,16,2))
     return data
+sfx_pcm=[]
 for n,dur in enumerate([.055,.095,.16,.12]):
     samples=[]
     for k in range(int(8000*dur)):
@@ -249,7 +250,60 @@ for n,dur in enumerate([.055,.095,.16,.12]):
         elif n==2:v=(noise*.3+math.sin(2*math.pi*(500+900*t)*t)*.7)*e
         else:v=math.sin(2*math.pi*880*t)*e*.8
         samples.append(int(v*12000))
+    # Retain the exact synthesized cues for the resident IT effects module.
+    # This stores no extra random values, preserving the existing music ITs.
+    sfx_pcm.append(samples[:])
     asset('sfx'+str(n),brr(samples))
+
+def pcm8(samples):
+    # Preserve the synthesized signed-16 amplitude when reducing to the
+    # resident module's signed 8-bit sample format.
+    return bytes(max(-128,min(127,round(value/256)))&0xff for value in samples)
+
+def make_effects_it(path, cues):
+    """Write the resident first IT module containing the four original cues.
+
+    The pattern is deliberately silent: instruments and sample headers are
+    still complete, so SMConv can retain all four non-looping samples for
+    spcLoadEffect().
+    """
+    sample_data=[pcm8(cue) for cue in cues]
+    ordnum,insnum,smpnum,patnum=2,4,4,1
+    hdr=bytearray(b'IMPM'+b'Abaqus Effects'.ljust(26,b'\0')+bytes([4,16]))
+    hdr+=struct.pack('<8H',ordnum,insnum,smpnum,patnum,0x214,0x214,13,0)
+    hdr+=bytes([100,64,6,125,128,0])+struct.pack('<HII',0,0,0)
+    hdr+=bytes([128]*64)+bytes([64]*64)
+    assert len(hdr)==192
+    pos=192+ordnum+insnum*4+smpnum*4+patnum*4
+    insoff=[pos+i*554 for i in range(insnum)];pos+=insnum*554
+    smpoff=[pos+i*80 for i in range(smpnum)];pos+=smpnum*80
+    # One valid, completely silent 64-row pattern. The sample table is
+    # independent of pattern use so all four effects stay resident.
+    pattern=struct.pack('<HHI',64,64,0)+(b'\0'*64)
+    patoff=[pos];pos+=len(pattern)
+    dataoff=[]
+    for data in sample_data:
+        dataoff.append(pos);pos+=len(data)
+    result=hdr+bytes([0,255])+struct.pack('<4I',*insoff)+struct.pack('<4I',*smpoff)+struct.pack('<I',*patoff)
+    for i in range(insnum):
+        ins=bytearray(554);ins[:4]=b'IMPI'
+        ins[4:16]=('sfx'+str(i)).encode().ljust(12,b'\0')
+        ins[20:22]=struct.pack('<H',256)
+        ins[23]=60;ins[24]=128;ins[25]=32;ins[28:30]=struct.pack('<H',0x214);ins[30]=1
+        ins[32:58]=('Abaqus SFX '+str(i)).encode().ljust(26,b'\0')
+        for note in range(120):
+            ins[64+note*2]=note
+            ins[65+note*2]=i+1
+        result+=ins
+    for i,data in enumerate(sample_data):
+        sh=b'IMPS'+('sfx'+str(i)).encode().ljust(12,b'\0')+bytes([0,64,1,50])
+        sh+=('Abaqus cue '+str(i)).encode().ljust(26,b'\0')+bytes([1,32])
+        sh+=struct.pack('<7I',len(data),0,0,8000,0,0,dataoff[i])+bytes(4)
+        assert len(sh)==80
+        result+=sh
+    result+=pattern+b''.join(sample_data)
+    path.write_bytes(result)
+    return [hashlib.sha256(data).hexdigest() for data in sample_data]
 
 def make_it(path,transpose=0):
     # Impulse Tracker 2.14, sample mode, four original patterns, five synth samples.
@@ -313,10 +367,16 @@ def make_it(path,transpose=0):
     result+=b''.join(patterns)+b''.join(sample_data)
     path.write_bytes(result)
 for i in range(4):make_it(OUT/f'music{i}.it',[0,0,3,-2][i])
+effects_it=OUT/'effects.it'
+effect_hashes=make_effects_it(effects_it,sfx_pcm)
 smconv=ROOT/'.tools/sdk/pvsneslib/devkitsnes/tools/smconv.exe'
-r=subprocess.run([str(smconv),'-s','-o','assets/generated/soundbank','-b','24',*[str(OUT/f'music{i}.it') for i in range(4)]],cwd=ROOT,capture_output=True,text=True)
+r=subprocess.run([str(smconv),'-s','-o','assets/generated/soundbank','-b','24','-f','-V',str(effects_it),*[str(OUT/f'music{i}.it') for i in range(4)]],cwd=ROOT,capture_output=True,text=True)
 if r.returncode:raise RuntimeError(r.stdout+r.stderr)
 print(r.stdout)
+effect_report=r.stdout.split('Adding module, Filename:',2)
+if len(effect_report)<2 or 'Samples: [4/64]' not in effect_report[1]:
+    raise RuntimeError('SMConv did not retain all four resident effect samples')
+for i,h in enumerate(effect_hashes):print(f'Effects PCM {i}: {h}')
 (OUT/'data.asm').write_text('\n'.join(asm)+'\n')
 (OUT/'assets.h').write_text('\n'.join(header)+'\n')
-print('Encoded six backgrounds, 576 fighter frames, UI, effects, 4 music tracks and 4 sounds.')
+print('Encoded six backgrounds, 768 fighter frames, UI, effects, 4 music tracks and 4 sounds.')

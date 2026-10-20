@@ -6,6 +6,7 @@ VRAM and actual emulator audio / video output. Run after tools/build.py.
 from pathlib import Path
 import ctypes as C
 import json, sys, time, wave
+from PIL import Image
 sys.path.insert(0,str(Path(__file__).parent))
 from emulator import Emulator, ROOT
 
@@ -15,7 +16,7 @@ checks=[]
 # is 16 tiles wide, so the next row begins 512 bytes later.  Actor 1 starts at
 # byte $D400 (VRAM word $6A00), leaving the two actors independent.
 POSE_BYTES=3840
-ANIMATION_BANK_SUFFIXES=('', 'b', 'c', 'd', 'e', 'f')
+ANIMATION_BANK_SUFFIXES=('', 'b', 'c', 'd', 'e', 'f', 'g', 'h')
 BANK_BYTES=POSE_BYTES*8
 VRAM_ACTOR_BASE=0xC000
 VRAM_ACTOR_STRIDE=0x1400
@@ -54,6 +55,93 @@ def close_in(e,distance=31):
         if abs(s['x1']-s['x2'])<distance*16:break
         e.run(1,p1=['right'] if s['x1']<s['x2'] else ['left'],p2=['left'] if s['x1']<s['x2'] else ['right'])
     e.run(3)
+def close_for_guarded_throw(e):
+    """Put P1 inside its live throw range while P2 holds back at the edge.
+
+    A delayed throw cannot be proved by walking P2 toward the attacker: if
+    the input poll misses the one-frame L edge, the defender can simply leave
+    the range during the delayed-damage wait.  Holding P2's back direction
+    keeps the defender standing and guarding at the stage clamp while P1
+    closes the gap.  The range and facing are read from the public trace so
+    this remains valid for every selected profile.
+    """
+    for _ in range(240):
+        s=e.state()
+        dx=s['x2']-s['x1']
+        limit=s['throw_range1']*16
+        if dx >= 0:
+            # First anchor the defender at the right clamp.  If the previous
+            # guard probe already left both players inside throw range, a
+            # direct return would let P2 walk out during the input edge.
+            if s['x2'] < 232*16:
+                e.run(1,p2=['right'])
+            elif dx >= limit:
+                e.run(1,p1=['right'],p2=['right'])
+            elif s['face1']==1 and s['face2']==0 and s['guard2']:
+                return s
+            else:
+                e.run(1,p2=['right'])
+        else:
+            if s['x2'] > 24*16:
+                e.run(1,p2=['left'])
+            elif -dx >= limit:
+                e.run(1,p1=['left'],p2=['left'])
+            elif s['face1']==0 and s['face2']==1 and s['guard2']:
+                return s
+            else:
+                e.run(1,p2=['left'])
+    raise AssertionError(('Could not position a guarded throw',e.state()))
+def record_ko_flight(s, flights, violations):
+    """Record zero-HP lift/flight samples before a round result is shown."""
+    for side in (1, 2):
+        if s['hp' + str(side)] == 0 and s['down_state' + str(side)] in (1, 2):
+            sample = {
+                'frame': s['frame'], 'side': side,
+                'hp': s['hp' + str(side)],
+                'down_state': s['down_state' + str(side)],
+                'down_tick': s['down_tick' + str(side)],
+                'round_end': s['round_end'],
+            }
+            flights.append(sample)
+            if s['round_end'] != 0:
+                violations.append(sample)
+
+def check_zero_hp_knockdown():
+    """Prove a controller-created KO waits for a committed flight to land."""
+    e=boot(1)
+    flights=[];violations=[];history=[]
+    try:
+        # A crouching heavy sweep is a real knockdown attack.  Repeating it
+        # after each complete recovery lowers P2 without any WRAM/test hook;
+        # the eighth contact reaches zero HP while DOWN_FLIGHT is active.
+        for hit in range(12):
+            close_in(e)
+            before=e.state()
+            for _ in range(3):
+                e.run(1,p1=['down','r'])
+                sample=e.state();history.append(sample)
+                record_ko_flight(sample,flights,violations)
+            for _ in range(100):
+                sample=e.state();history.append(sample)
+                record_ko_flight(sample,flights,violations)
+                if flights or sample['round_end'] or sample['screen']==4:
+                    break
+                if (_>12 and sample['action1']==0 and
+                        sample['hurt2']==0 and sample['down_state2']==0):
+                    break
+                e.run(1)
+            if flights or e.state()['round_end'] or e.state()['screen']==4:
+                break
+        check(bool(flights),'A zero-HP committed knockdown is observed before its round result',{
+            'samples':flights[:8],'sample_count':len(flights),
+            'last':e.state(),'history_tail':history[-8:],
+        })
+        check(not violations,'KO result waits until a zero-HP victim reaches grounded impact',{
+            'violations':violations[:8],'sample_count':len(flights),
+        })
+    finally:
+        e.close()
+
 def play_cpu(e):
     for _ in range(10000):
         s=e.state()
@@ -80,7 +168,7 @@ def trace_word(e,index):
     return int.from_bytes(data,'little')
 
 def animation_payloads(fighter):
-    """Load all 48 native frames used by the expanded animation cartridge."""
+    """Load all 64 native frames used by the expanded animation cartridge."""
     payloads=[]
     for suffix in ANIMATION_BANK_SUFFIXES:
         data=(ROOT/f'assets/generated/fighter{fighter:02}{suffix}.bin').read_bytes()
@@ -89,6 +177,47 @@ def animation_payloads(fighter):
         payloads.extend(data[offset:offset+POSE_BYTES]
                         for offset in range(0,BANK_BYTES,POSE_BYTES))
     return payloads
+
+def verify_animation_manifest():
+    """Prove the 64-frame asset contract before launching the cartridge."""
+    entries=json.loads((ROOT/'assets/generated/character-manifest.json').read_text())
+    check(len(entries)==12,'64-frame character manifest contains twelve fighters',{'count':len(entries)})
+    proof=[]
+    for fighter,entry in enumerate(entries):
+        check(int(entry.get('id',-1))==fighter,'64-frame manifest roster order is stable',{'fighter':fighter})
+        check(int(entry.get('frame_count',0))==64,'Manifest records 64 native animation frames',{
+            'fighter':fighter,'frame_count':entry.get('frame_count')})
+        preview=ROOT/f'assets/generated/fighter{fighter:02}.png'
+        image=Image.open(preview)
+        check(image.size==(6144,80) and image.mode=='RGBA','64-frame preview has native dimensions',{
+            'fighter':fighter,'size':image.size,'mode':image.mode})
+        frames=entry.get('frames')
+        check(isinstance(frames,list) and len(frames)==64,'Manifest carries all frame metadata',{
+            'fighter':fighter,'frames':len(frames) if isinstance(frames,list) else None})
+        old_hashes=[];new_hashes=[]
+        if isinstance(frames,list):
+            for index,item in enumerate(frames):
+                check(item.get('global_index',item.get('globalindex'))==index,
+                      'Frame metadata keeps the stable global index',{'fighter':fighter,'frame':index})
+                source_kind=item.get('source_kind',item.get('source_role'))
+                expected='legacy' if index<16 else 'motion' if index<32 else 'actions' if index<48 else 'airborne'
+                check(source_kind==expected,'Frame metadata keeps its source role',{
+                    'fighter':fighter,'frame':index,'expected':expected,'actual':source_kind})
+                frame_hash=item.get('native_hash',item.get('hash'))
+                check(isinstance(frame_hash,str) and len(frame_hash)==64,'Frame metadata has a native hash',{
+                    'fighter':fighter,'frame':index,'hash':frame_hash})
+                if isinstance(frame_hash,str):
+                    (old_hashes if index<48 else new_hashes).append(frame_hash)
+        palette=entry.get('palette'); palette_path=ROOT/f'assets/generated/fighter{fighter:02}_pal.bin'
+        check(isinstance(palette,list) and len(palette)==16 and palette_path.exists(),
+              '64-frame fighter palette is present',{'fighter':fighter})
+        palette_bytes=palette_path.read_bytes() if palette_path.exists() else b''
+        check(len(palette_bytes)>=32,'Native palette keeps fifteen OBJ colors',{
+            'fighter':fighter,'bytes':len(palette_bytes)})
+        proof.append({'fighter':fighter,'old_frame_hashes':len(old_hashes),
+                      'new_frame_hashes':len(new_hashes),'palette_bytes':len(palette_bytes),
+                      'banks':len(ANIMATION_BANK_SUFFIXES)})
+    return proof
 
 def verify_uploaded_animation(e,fighter,side=0):
     payload=actor_payload(e,side)
@@ -99,6 +228,7 @@ def verify_uploaded_animation(e,fighter,side=0):
     return matches
 
 started=time.time()
+animation_manifest=verify_animation_manifest()
 e=Emulator();e.run(120)
 check(e.state()['magic']==0xaaba and e.state()['screen']==0,'Cold boot to title')
 e.shot('title.png');press(e,'r');press(e,'r');press(e,'r')
@@ -165,20 +295,49 @@ e.shot('block.png');e.run(60);close_in(e)
 e.run(12,p1=['down','b'],p2=['right'])
 check(e.state()['hp2']<128,'Low attack beats a standing guard');e.run(65);close_in(e)
 hp=e.state()['hp2'];e.run(12,p1=['down','b'],p2=['down','right'])
-check(e.state()['hp2']==hp,'Crouch block stops a low attack');e.run(65);close_in(e,23)
-hp=e.state()['hp2'];e.run(8,p1=['right','l'],p2=['right'])
-check(e.state()['hp2']<hp,'Close forward plus heavy punch throws through guard');e.run(65)
+check(e.state()['hp2']==hp,'Crouch block stops a low attack');e.run(65)
+# Keep the standing defender at the right wall while P1 closes.  The public
+# profile range is authoritative; this avoids turning a missed input edge
+# into a normal while the delayed throw impact is being observed.
+positioned=close_for_guarded_throw(e)
+hp=e.state()['hp2']
+throw_started=False
+for _ in range(4):
+    e.run(1,p1=['right','l'],p2=['right'])
+    s=e.state()
+    if s['action1']==9 or s['down_state2'] in (1,2,3,4,5):
+        throw_started=True
+        break
+check(throw_started,'Close forward plus heavy punch enters the throw state',s)
+# Throw damage is deliberately deferred until the victim reaches ground
+# impact, so wait through LIFT/FLIGHT while P2 keeps standing guard.
+throw_hit=False
+for _ in range(120):
+    s=e.state()
+    if s['hp2']<hp:
+        throw_hit=True
+        break
+    e.run(1,p2=['right'])
+check(throw_hit,'Close forward plus heavy punch throws through guard',{
+    'positioned':positioned,'before_hp':hp,'state':e.state()})
+e.run(65)
 e.close()
 
 e=boot(1)
 for _ in range(110):
-    if e.state()['screen']==4:break
-    s=e.state();forward='right' if s['x1']<s['x2'] else 'left'
-    e.run(3,p1=[forward,'l']);e.run(28,p1=[forward])
+    s=e.state()
+    if s['screen']==4:break
+    forward='right' if s['x1']<s['x2'] else 'left'
+    for _ in range(3):
+        e.run(1,p1=[forward,'l'])
+    for _ in range(28):
+        e.run(1,p1=[forward])
 check(e.state()['screen']==4 and e.state()['wins1']==2,'Two round wins finish a best-of-three local match',e.state())
 e.shot('victory.png');press(e,'a');wait(e,3)
 check(e.state()['wins1']==0 and e.state()['round']==1,'Rematch resets round wins')
 e.close()
+
+check_zero_hp_knockdown()
 
 e=boot(0,4,difficulty=0)
 # Controller-only bot: close the gap and throw, observing the same rules as a player.
@@ -219,6 +378,7 @@ e.close()
 manifest=json.loads((ROOT/'dist/manifest.json').read_text())
 check(manifest.get('bytes')==4*1024*1024,'Native ROM uses the 4 MiB animation FastROM image',manifest)
 report={'emulator':'Official Snes9x 1.63 x64 libretro core','rom_sha256':manifest['sha256'],'rom_bytes':manifest.get('bytes'),
+        'animation_manifest':animation_manifest,
         'passed':len(checks),'elapsed_seconds':round(time.time()-started,2),'checks':checks}
 (ROOT/'docs/test-report.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps({'passed':len(checks),'seconds':report['elapsed_seconds'],'frame_cadence':advance,'report':'docs/test-report.json'}))

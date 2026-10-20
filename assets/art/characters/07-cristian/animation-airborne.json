@@ -1,0 +1,38 @@
+{
+  "schema": "abaqus-combat-animation-source/v1",
+  "fighter": "07-cristian",
+  "character": "Cristian Valdes",
+  "frame_range": "48-63",
+  "generation": {"mode": "built-in image_gen", "tool": "image_gen", "transparent_background": true},
+  "atlas": {
+    "path": "assets/art/characters/07-cristian/animation-airborne.png",
+    "frames": "48-63",
+    "generated_source": "C:/Users/user/.codex/generated_images/01a1574c-eeb9-7771-8d1b-2adef76adc9a/exec-39514fb5-9f35-4d5f-8e1d-377b9378d66e.png",
+    "sha256": "daa47d481771a97379bf6c480197ee57808955bbc6f6ef24c58f5c21d98904a6",
+    "full_prompt": [
+      "Use case: illustration-story. Asset type: transparent 2D fighting-game animation sprite atlas.",
+      "Create an original airborne, throw and knockdown source sheet for the same fictional SNES fighter shown in the reference images. Preserve Cristian's exact identity: broad soft adult face with full cheeks and substantial rounded chin, thick dark brows, calm narrower eyes, broad nose, clean-shaven jaw, short dense near-black hair brushed forward, navy sleeveless sweater vest over pale rolled sleeves and collar, dark trousers, dark shoes, tall lean proportions, and polished cartoon fighting-game rendering. The existing 16-pose atlas is the identity and legacy proportion reference. The existing action atlas is a secondary anatomy and costume reference.",
+      "Composition/framing: exact transparent 1254x1254 RGBA square, strict 4-column by 4-row grid, exactly 16 separately drawn full-body figures, row-major frames 48 through 63. Use ample transparent gaps and keep every silhouette fully inside its cell. Frame 48 is an upright neutral guard matching the original idle's standing height, feet baseline, face, costume and proportions; it is the normalization anchor. Keep the existing 96x80 native canvas relationship, 94x77 safe region, baseline 78 and current physical scale. Keep all new figures compact: no extreme vertical arms, no excessively wide legs, no clipping, no touching figures, no shadows or props.",
+      "Required row-major drawings: 48 upright neutral guard, matching original idle and serving as standing-height normalization anchor. 49 visibly airborne air-punch anticipation, knees tucked modestly and fists preparing, body facing right. 50 visibly airborne air-punch active extension, one punch extended to the right, compact contained legs. 51 visibly airborne air-punch retract toward an airborne guard. 52 visibly airborne air-kick anticipation, bent knee raised with balance contained. 53 visibly airborne air-kick active extension to the right, compact readable silhouette. 54 visibly airborne air-kick retract toward an airborne guard. 55 compact neutral air/apex guard with bent knees, no extreme height. 56 thrower contact/grip pose, arms reaching toward an implied opponent off-frame to the right, no opponent drawn. 57 thrower release/turn pose, readable throwing force, body still a single fighter and facing right. 58 victim lifted and off balance, limbs contained within the cell, no second character or prop. 59 victim ground impact, body low with head clearly toward the left and right-facing identity still recognizable, no gore. 60 knockdown launch/recoil, compact backward reaction, head moving left. 61 knockdown fall, diagonal backward collapse with head toward the left, full body visible and no gore. 62 grounded get-up with one planted hand and foot, torso rising. 63 wake-up guard returning to neutral, matching frame 48.",
+      "Style/medium: original polished 16-bit arcade fighting-game cartoon, consistent dark contour, restrained cel shading, clear anatomy and readable action silhouettes at native SNES size. Draw genuine anatomical in-betweens for limbs, torso, hips and balance; do not make whole-body translations, duplicated bodies, or transformed copies. All ordinary poses face right, including frames 56 and 57; only natural victim/fall orientations place the head toward the left.",
+      "Color palette and materials: preserve Cristian's navy vest, pale rolled sleeves, dark trousers, dark shoes, near-black hair and warm skin exactly. Keep the character's face and tall lean body identity consistent across all 16 figures.",
+      "Constraints: actual transparent background; no text, labels, numbers, borders, grid lines, scenery, cast shadows, smoke, energy, projectiles, hit sparks, opponent, props, extra characters, duplicated figures, merged figures, extra limbs, cropped heads or feet, extreme vertical poses, extreme horizontal splits, photorealism, 3D, anime exaggeration, watermark, commercial sprites or copied game art."
+    ],
+    "input_roles": [
+      {"path": "assets/art/characters/07-cristian/atlas.png", "role": "identity, legacy idle normalization, costume and original style reference"},
+      {"path": "assets/art/characters/07-cristian/animation-actions.png", "role": "secondary action anatomy, proportions and costume reference"}
+    ]
+  },
+  "validation": {
+    "validated_at": "2026-10-20",
+    "tool": "tools/fighter_assets.py:extract_atlas",
+    "alpha_threshold": 200,
+    "size": [1254, 1254],
+    "mode": "RGBA",
+    "alpha_min_max": [0, 255],
+    "figures": 16,
+    "sha256": "daa47d481771a97379bf6c480197ee57808955bbc6f6ef24c58f5c21d98904a6",
+    "opaque_pixels": [40360, 32653, 33982, 32788, 37594, 37819, 29915, 32715, 37420, 40103, 34117, 24223, 29201, 33031, 33281, 33539],
+    "source_boxes": [[25, 34, 276, 348], [358, 33, 587, 293], [657, 54, 978, 321], [1020, 59, 1210, 330], [44, 357, 266, 675], [330, 358, 654, 620], [686, 361, 887, 627], [1012, 375, 1207, 626], [17, 700, 318, 970], [343, 675, 631, 971], [649, 709, 964, 933], [964, 829, 1240, 956], [37, 1027, 316, 1216], [326, 1072, 652, 1229], [671, 1026, 938, 1231], [984, 963, 1222, 1239]]
+  }
+}

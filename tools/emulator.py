@@ -2,6 +2,7 @@
 
 This host drives real SNES controller input and captures PPU frames, SPC audio and
 read-only WRAM telemetry. No gameplay state is modified by the test host.
+The DLL has process-global core state, so paired probes must boot sequentially.
 """
 import ctypes as C
 import math
@@ -14,7 +15,11 @@ class GameInfo(C.Structure):
     _fields_=[('path',C.c_char_p),('data',C.c_void_p),('size',C.c_size_t),('meta',C.c_char_p)]
 
 class Emulator:
+    _active_instance = None
     def __init__(self,rom=None):
+        if Emulator._active_instance is not None:
+            raise RuntimeError('Snes9x allows one active Emulator per process; close it before booting another.')
+        self.closed=False
         self.core=C.CDLL(str(ROOT/'.tools/core/snes9x_libretro.dll'))
         self.held=[set(),set()];self.pixel_format=0;self.frame=None;self.frames=0
         self.audio_peak=0;self.audio_samples=0;self.audio_energy=0;self.pcm=bytearray()
@@ -66,18 +71,21 @@ class Emulator:
         self.core.retro_set_controller_port_device(0,1);self.core.retro_set_controller_port_device(1,1)
         self.ram=self.core.retro_get_memory_data(2)
         assert self.core.retro_get_memory_size(2)==131072
+        Emulator._active_instance=self
     def run(self,n=1,p1=(),p2=()):
+        if self.closed:raise RuntimeError('Cannot run a closed Emulator.')
         self.held=[{BUTTONS[x] for x in p1},{BUTTONS[x] for x in p2}]
         for _ in range(n):self.core.retro_run();self.frames+=1
         return self.state()
     def tap(self,key,port=0):
         self.run(3,**({'p1':[key]} if port==0 else {'p2':[key]}));return self.run(3)
     def state(self):
+        if self.closed:raise RuntimeError('Cannot read a closed Emulator.')
         # The first 32 words are the original public trace.  The roster
         # upgrade appends ten read-only words for per-character identity,
         # special family, movement profile and facing.  Reading the larger
         # window is harmless with an older ROM and keeps callers compatible.
-        data=C.string_at(self.ram+0x1ff00,188)
+        data=C.string_at(self.ram+0x1ff00,228)
         vals=[int.from_bytes(data[i:i+2],'little') for i in range(0,64,2)]
         names=['magic','screen','frame','mode','hp1','hp2','x1','x2','y1','y2','action1','action2','wins1','wins2','arena','round','intro','paused','energy1','energy2','wave1','wave2','selected','selected2','arcade','seconds','pose1','pose2','round_end','hitstop','combo','champion']
         result=dict(zip(names,vals))
@@ -97,6 +105,12 @@ class Emulator:
         contact=['hurt1','hurt2','guard1','guard2','connected1','connected2',
                  'combo1','combo2','combo_display1','combo_display2','counter1','counter2']
         result.update(dict(zip(contact,[int.from_bytes(data[i:i+2],'little') for i in range(164,188,2)])))
+        recovery=['down_state1','down_state2','down_tick1','down_tick2',
+                  'invuln1','invuln2','pending_throw_damage1','pending_throw_damage2',
+                  'throw_owner1','throw_owner2','air_action1','air_action2',
+                  'throw_victim1','throw_victim2','wake_action1','wake_action2',
+                  'wake_age1','wake_age2','wake_jump1','wake_jump2']
+        result.update(dict(zip(recovery,[int.from_bytes(data[i:i+2],'little') for i in range(188,228,2)])))
         return result
     def shot(self,name):
         path=ROOT/'docs/screenshots'/name;path.parent.mkdir(exist_ok=True,parents=True)
@@ -104,7 +118,9 @@ class Emulator:
         self.frame.save(path)
         return path
     def close(self):
-        self.core.retro_unload_game();self.core.retro_deinit()
+        if self.closed:return
+        self.core.retro_unload_game();self.core.retro_deinit();self.closed=True
+        if Emulator._active_instance is self:Emulator._active_instance=None
 
 if __name__=='__main__':
     e=Emulator();print(e.run(180));print(e.shot('title.png'))

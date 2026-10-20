@@ -6,8 +6,10 @@ for readability, responsiveness, animation and completeness. The Abaqus roster,
 places and cartoon identities remain the game's own. Commercial sprites, ROMs,
 music and an implication of Capcom affiliation are outside this project.
 
-v0.5.1 is a verified development baseline. Passing its automated suites is
-necessary evidence, not a claim that the public-release bar has been met.
+v0.6.0 is the current verified development baseline. Its four native suites
+cover the 64-frame roster, air attacks, throws, knockdown and wake rules.
+Passing these suites is necessary evidence, not a claim that the public-release
+bar has been met.
 The public candidate will be designated v1.0 only after the gates below close.
 Do not turn a passing check count into a substitute for visual or play review.
 
@@ -16,8 +18,8 @@ Do not turn a passing check count into a substitute for visual or play review.
 | Gate | Required evidence | Baseline status |
 | --- | --- | --- |
 | Native correctness | Reproducible cartridge, valid header/checksum, all four exact-ROM suites, no known critical/high defects | Automated baseline verified; expand regression coverage as features land |
-| Fighter identity and animation | All twelve likenesses reviewed at native size; stable anatomy, costume, palette and floor pivot; readable ground, air, throw, hit, downed and wake sequences in both directions | Ground sets present; aerial and throw/knockdown presentation incomplete |
-| Combat agreement | Visible active attacks match contact and hurt regions; coherent guard, trade, facing, corner, cancel, throw and wake rules; no repeatable uncontrolled damage or input exploits | Core regression coverage present; air/throw/wake work required |
+| Fighter identity and animation | All twelve likenesses reviewed at native size; stable anatomy, costume, palette and floor pivot; readable ground, air, throw, hit, downed and wake sequences in both directions | All 64-frame sets present with native motion captures; team likeness and human motion review pending |
+| Combat agreement | Visible active attacks match contact and hurt regions; coherent guard, trade, facing, corner, cancel, throw and wake rules; no repeatable uncontrolled damage or input exploits | Controller-driven air/throw/down/wake and guard regressions present; human matchup/contact review pending |
 | Balance and CPU | Documented profile envelope; scripted all-pair matchup sweep; CPU approaches, defends and punishes predictably by difficulty; human sessions cover every fighter and all four special families | Profiles and full ladder work; strategic CPU and balance review pending |
 | Stage and interface craft | Three readable locations with finished floor/depth, purposeful ambient motion and cohesive effects; clean selection, pause, results and champion flow; no obstructive instructions | Menus/floor/results improved; stage motion, effects and ending review pending |
 | Audio | Original or cleared assets, readable distinct cues, coherent levels, clean loops, no clipping/dropouts under load; listening review recorded | Original audio and captured-sample checks present; mix/listening review pending |
@@ -35,11 +37,14 @@ player-facing behavior is finished and the decision is explicit.
 
 1. **Air attacks, throws and recovery.** Separate the aerial visual path from
    planted normals. Give throws distinct attacker/victim feedback and implement
-   bounded downed/wake states. The next art target is 64 frames per fighter;
-   [COMBAT-ANIMATION-CONTRACT.md](COMBAT-ANIMATION-CONTRACT.md) fixes the handoff.
+   bounded downed/wake states. v0.6 implements the 64-frame sets and native
+   controller regressions; human motion review remains open.
+   [COMBAT-ANIMATION-CONTRACT.md](COMBAT-ANIMATION-CONTRACT.md) defines the rules.
 2. **Combat and opponent quality.** Align contact with the finished drawings,
    review profile envelopes and meter/throw/cancel behavior, improve active-window
    defense and anti-air decisions, and add reproducible matchup/Training probes.
+   [BALANCE-AUDIT-v0.6.md](BALANCE-AUDIT-v0.6.md) records the current profile
+   envelope and concrete CPU spacing, special-family, low-guard and wake gaps.
 3. **Presentation and audio finish.** Review every fighter in motion; add staged
    ambient life and effects within the hardware budget; finish onboarding,
    Training information, audio mix/loops and champion presentation.
@@ -58,6 +63,9 @@ controller probes and regression evidence must agree.
   deliberately does not certify the qualitative and human gates above.
 - Keep every report tied to the current cartridge hash. Maintain native review
   captures and reproducible controller sequences for defects.
+- Include an explicit OBJ scanline-budget probe before the public candidate:
+  both fighters, both low projectiles, floor shadows and hit effects must be
+  reviewed together, with PPU overflow evidence rather than idle-only captures.
 - Preserve original masters, full prompts, generation provenance and licenses.
   Refine source art when it fails the physical-scale contract; do not hide a
   mismatch by resizing an individual move.

@@ -63,6 +63,38 @@ u8 *fighterDataF(u8 id) {
     default:return &fighter11f;
     }
 }
+u8 *fighterDataG(u8 id) {
+    switch(id) {
+    case 0:return &fighter00g;
+    case 1:return &fighter01g;
+    case 2:return &fighter02g;
+    case 3:return &fighter03g;
+    case 4:return &fighter04g;
+    case 5:return &fighter05g;
+    case 6:return &fighter06g;
+    case 7:return &fighter07g;
+    case 8:return &fighter08g;
+    case 9:return &fighter09g;
+    case 10:return &fighter10g;
+    default:return &fighter11g;
+    }
+}
+u8 *fighterDataH(u8 id) {
+    switch(id) {
+    case 0:return &fighter00h;
+    case 1:return &fighter01h;
+    case 2:return &fighter02h;
+    case 3:return &fighter03h;
+    case 4:return &fighter04h;
+    case 5:return &fighter05h;
+    case 6:return &fighter06h;
+    case 7:return &fighter07h;
+    case 8:return &fighter08h;
+    case 9:return &fighter09h;
+    case 10:return &fighter10h;
+    default:return &fighter11h;
+    }
+}
 u8 *fighterFrameBank(u8 id,u8 bank) {
     switch(bank) {
     case 0:return fighterData(id);
@@ -70,6 +102,8 @@ u8 *fighterFrameBank(u8 id,u8 bank) {
     case 2:return fighterDataC(id);
     case 3:return fighterDataD(id);
     case 4:return fighterDataE(id);
-    default:return fighterDataF(id);
+    case 5:return fighterDataF(id);
+    case 6:return fighterDataG(id);
+    default:return fighterDataH(id);
     }
 }

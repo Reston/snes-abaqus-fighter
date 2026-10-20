@@ -26,22 +26,22 @@
     {
       "check": "exact-ROM suite is complete: test-report.json",
       "passed": true,
-      "details": 188
+      "details": 2595
     },
     {
       "check": "exact-ROM suite is complete: character-test-report.json",
       "passed": true,
-      "details": 4574
+      "details": 18085
     },
     {
       "check": "exact-ROM suite is complete: presentation-test-report.json",
       "passed": true,
-      "details": 178
+      "details": 215
     },
     {
       "check": "exact-ROM suite is complete: input-test-report.json",
       "passed": true,
-      "details": 133
+      "details": 604
     },
     {
       "check": "all twelve fighters have manifests",
@@ -64,6 +64,11 @@
       "details": null
     },
     {
+      "check": "source provenance hash: assets/art/characters/00-damian/animation-airborne.png",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "complete frame contract",
       "passed": true,
       "details": 0
@@ -124,6 +129,22 @@
       "details": {
         "fighter": 0,
         "bank": 5
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "bank": 6
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "bank": 7
       }
     },
     {
@@ -142,6 +163,11 @@
       "details": null
     },
     {
+      "check": "source provenance hash: assets/art/characters/01-ivo/animation-airborne.png",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "complete frame contract",
       "passed": true,
       "details": 1
@@ -202,6 +228,22 @@
       "details": {
         "fighter": 1,
         "bank": 5
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "bank": 6
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "bank": 7
       }
     },
     {
@@ -220,6 +262,11 @@
       "details": null
     },
     {
+      "check": "source provenance hash: assets/art/characters/02-cristobal/animation-airborne.png",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "complete frame contract",
       "passed": true,
       "details": 2
@@ -280,6 +327,22 @@
       "details": {
         "fighter": 2,
         "bank": 5
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "bank": 6
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "bank": 7
       }
     },
     {
@@ -298,6 +361,11 @@
       "details": null
     },
     {
+      "check": "source provenance hash: assets/art/characters/03-cote/animation-airborne.png",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "complete frame contract",
       "passed": true,
       "details": 3
@@ -358,6 +426,22 @@
       "details": {
         "fighter": 3,
         "bank": 5
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "bank": 6
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "bank": 7
       }
     },
     {
@@ -376,6 +460,11 @@
       "details": null
     },
     {
+      "check": "source provenance hash: assets/art/characters/04-negger/animation-airborne.png",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "complete frame contract",
       "passed": true,
       "details": 4
@@ -436,6 +525,22 @@
       "details": {
         "fighter": 4,
         "bank": 5
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "bank": 6
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "bank": 7
       }
     },
     {
@@ -454,6 +559,11 @@
       "details": null
     },
     {
+      "check": "source provenance hash: assets/art/characters/05-david/animation-airborne.png",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "complete frame contract",
       "passed": true,
       "details": 5
@@ -514,6 +624,22 @@
       "details": {
         "fighter": 5,
         "bank": 5
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "bank": 6
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "bank": 7
       }
     },
     {
@@ -532,6 +658,11 @@
       "details": null
     },
     {
+      "check": "source provenance hash: assets/art/characters/06-fernando/animation-airborne.png",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "complete frame contract",
       "passed": true,
       "details": 6
@@ -592,6 +723,22 @@
       "details": {
         "fighter": 6,
         "bank": 5
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "bank": 6
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "bank": 7
       }
     },
     {
@@ -610,6 +757,11 @@
       "details": null
     },
     {
+      "check": "source provenance hash: assets/art/characters/07-cristian/animation-airborne.png",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "complete frame contract",
       "passed": true,
       "details": 7
@@ -670,6 +822,22 @@
       "details": {
         "fighter": 7,
         "bank": 5
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "bank": 6
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "bank": 7
       }
     },
     {
@@ -688,6 +856,11 @@
       "details": null
     },
     {
+      "check": "source provenance hash: assets/art/characters/08-mamariaga/animation-airborne.png",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "complete frame contract",
       "passed": true,
       "details": 8
@@ -748,6 +921,22 @@
       "details": {
         "fighter": 8,
         "bank": 5
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "bank": 6
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "bank": 7
       }
     },
     {
@@ -766,6 +955,11 @@
       "details": null
     },
     {
+      "check": "source provenance hash: assets/art/characters/09-reston/animation-airborne.png",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "complete frame contract",
       "passed": true,
       "details": 9
@@ -826,6 +1020,22 @@
       "details": {
         "fighter": 9,
         "bank": 5
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "bank": 6
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "bank": 7
       }
     },
     {
@@ -844,6 +1054,11 @@
       "details": null
     },
     {
+      "check": "source provenance hash: assets/art/characters/10-roxana/animation-airborne.png",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "complete frame contract",
       "passed": true,
       "details": 10
@@ -904,6 +1119,22 @@
       "details": {
         "fighter": 10,
         "bank": 5
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "bank": 6
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "bank": 7
       }
     },
     {
@@ -922,6 +1153,11 @@
       "details": null
     },
     {
+      "check": "source provenance hash: assets/art/characters/11-lars/animation-airborne.png",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "complete frame contract",
       "passed": true,
       "details": 11
@@ -982,6 +1218,22 @@
       "details": {
         "fighter": 11,
         "bank": 5
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "bank": 6
+      }
+    },
+    {
+      "check": "complete LoROM-safe fighter bank",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "bank": 7
       }
     },
     {
@@ -1035,20 +1287,20 @@
       "details": null
     }
   ],
-  "version": "0.5.1",
-  "rom_sha256": "cbacf3fd8f13412bed0d756de233c7fb7ad49625170be2a32a5de40854e6a201",
-  "native_suite_checks": 5073,
+  "version": "0.6.0",
+  "rom_sha256": "0d907717d284c9d0056434e69da0a265c2b09cf4c84761aa32998b4fc0bbd5ae",
+  "native_suite_checks": 21499,
   "suites": {
-    "test-report.json": 188,
-    "character-test-report.json": 4574,
-    "presentation-test-report.json": 178,
-    "input-test-report.json": 133
+    "test-report.json": 2595,
+    "character-test-report.json": 18085,
+    "presentation-test-report.json": 215,
+    "input-test-report.json": 604
   },
   "roster": {
     "fighters": 12,
-    "frames": 576,
-    "source_atlases_verified": 36
+    "frames": 768,
+    "source_atlases_verified": 48
   },
   "remaining_release_gates": "docs/PUBLIC-RELEASE.md",
-  "audit_checks": 163
+  "audit_checks": 199
 }

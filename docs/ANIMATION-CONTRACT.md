@@ -1,5 +1,10 @@
 # Animation expansion contract
 
+This document defines the preserved v0.5 frames 0-47. The current 64-frame
+contract adds frames 48-63 in
+[COMBAT-ANIMATION-CONTRACT.md](COMBAT-ANIMATION-CONTRACT.md); the original
+forty-eight native frames and palettes remain byte-for-byte unchanged.
+
 Native frames stay 96×80, with one physical fighter scale, baseline 78 and a
 94×77 safety region. Frames 0–15 retain the existing key-pose indices. Two new
 transparent 4×4 atlases per fighter add genuine drawn animation, giving 48

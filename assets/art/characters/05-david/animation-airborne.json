@@ -1,0 +1,34 @@
+{
+  "schema": "abaqus-combat-animation-source/v1",
+  "fighter": "05-david",
+  "character": "David Ponce",
+  "frame_range": "48-63",
+  "generation": {
+    "mode": "built-in imagegen",
+    "generated_source": "C:/Users/user/.codex/generated_images/01a1574c-bf5b-7a00-8edf-52c9b177642b/exec-f6c00914-5532-4abf-9172-6f8bc9e3f758.png",
+    "input_roles": [
+      {"path": "assets/art/characters/05-david/atlas.png", "role": "identity, costume, original idle height and body-proportion anchor"},
+      {"path": "assets/art/characters/05-david/animation-actions.png", "role": "approved David action anatomy and cartoon rendering reference"}
+    ],
+    "full_prompt": [
+      "Use case: stylized-concept; asset type: native SNES fighting-game airborne and throw animation source atlas.",
+      "Create one brand-new transparent 1254x1254 RGBA four-column by four-row sprite atlas for David Ponce, exactly sixteen separately drawn full-body right-facing figures, frames 48 through 63. Do not alter, overwrite or reproduce the existing 0-47 sheets as a substitute.",
+      "Preserve David's long oval face, calm focused eyes, near-black hair tied into a compact low bun, black moustache and short goatee, amber-gold button shirt with dark suspenders, deep navy trousers and cream sneakers. Use original polished hand-drawn 16-bit arcade fighting-game cartoon style, clean dark contour and restrained cel shading; never photorealistic and no commercial game sprites.",
+      "Use a completely transparent background, generous gaps and one complete connected figure per 313x313 cell. Every ordinary figure faces right. Frame 48 is the upright neutral guard matching the original idle at the same standing height, baseline and body proportions and is the source normalization anchor. Apply one common physical scale to all cells. Keep airborne and fall poses compact enough for a 96x80 native frame with 94x77 safe area; repair anatomy rather than shrinking the anchor.",
+      "Exact row-major order: 48 upright neutral guard, normal standing height and thrower recovery anchor; 49 visibly airborne punch anticipation with knees slightly tucked and fists preparing; 50 visibly airborne punch active extension with one arm extended and body balanced; 51 visibly airborne punch retract toward compact airborne guard. 52 visibly airborne kick anticipation with knee chambered; 53 visibly airborne kick active extension with one leg extended and torso counterbalanced; 54 visibly airborne kick retract with leg returning under the body; 55 compact neutral air/apex guard with bent knees and fists protecting the face. 56 thrower contact/grip in grounded right-facing stance with arms reaching toward an opponent position, no opponent or prop; 57 thrower release/turn with readable rotation and throwing force; 58 victim lifted off balance with limbs contained in its cell and face still right-facing; 59 victim ground impact, body horizontal with head left. 60 knockdown launch/recoil, grounded body recoiling upward/backward; 61 knockdown fall, diagonal backward collapse with head left; 62 grounded get-up with one planted hand and one planted foot, torso rising; 63 wake-up guard returning to neutral.",
+      "Draw genuine anatomical in-betweens for torso, hips, limbs, hands, shirt folds, suspenders, trousers, sneakers and tied-back bun. Air punch/kick must visibly leave the ground and differ from the legacy jump. Thrower and victim are distinct roles. Do not copy/paste, whole-body translate, programmatically deform, duplicate bodies, add extra limbs, use gore, effects, labels, borders, shadows, floor, watermark or unrelated fighters."
+    ]
+  },
+  "path": "assets/art/characters/05-david/animation-airborne.png",
+  "sha256": "e4bb51c97abb43aff06696cdbe3ab49b595709e1f17b30186ecf9f619321467f",
+  "validation": {
+    "validated_at": "2026-10-20",
+    "tool": "tools/fighter_assets.py:extract_atlas",
+    "alpha_threshold": 200,
+    "size": [1254, 1254],
+    "mode": "RGBA",
+    "alpha_min_max": [0, 255],
+    "figures": 16,
+    "opaque_pixels": [36240, 32235, 36518, 30387, 29794, 37387, 31506, 30324, 35223, 38981, 31827, 21018, 32396, 26255, 29932, 35131]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema": "abaqus-combat-animation-source/v1",
+  "fighter": "01-ivo",
+  "character": "Ivo Kovacevic",
+  "range": "48-63",
+  "atlas": {
+    "path": "assets/art/characters/01-ivo/animation-airborne.png",
+    "layout": "4x4 row-major",
+    "generated_source": "C:/Users/user/.codex/generated_images/01a1574b-ef0f-7ee3-86a3-004546b507fc/exec-d2f3dbed-9298-4651-a401-c70a24c9a426.png",
+    "sha256": "1cf0aee0312ebf85261b0a22bf242c2bbf038d6c5f8d063e48d00d196d14bc40",
+    "input_roles": [
+      {"path": "assets/art/characters/01-ivo/atlas.png", "role": "identity, costume, original idle anchor and cartoon style reference"},
+      {"path": "assets/art/characters/01-ivo/animation-actions.png", "role": "approved action anatomy, palette and motion style reference"}
+    ],
+    "full_prompt": [
+      "Use case: stylized-concept; asset type: original SNES-style fighting-game airborne, throw and recovery source atlas.",
+      "Input Image 1 is the existing Ivo 16-pose master and identity reference. Image 2 is the approved Ivo action-transition atlas and secondary anatomy/style reference. Preserve Ivo's mature rectangular long face, broad cheeks and softly square chin, straight nose, heavier upper lids, clean-shaven jaw, short near-black charcoal hair with natural side part and modest front lift, emerald tailored rolled-sleeve jacket, dark charcoal shirt and trousers, dark shoes, warm light-olive skin, long-legged medium-athletic anatomy, limited cel shading and deep green/navy outline.",
+      "Create a new transparent 1254x1254 square 4-column by 4-row sprite atlas with exactly sixteen separately drawn full-body figures for frames 48 through 63. Every cell is a complete connected fighter with generous transparent separation and space around prone figures. All figures face right except frame 59 ground impact and frame 61 knockdown fall, whose head is clearly to the left.",
+      "Frame 48 must be an upright neutral standing guard matching Ivo's original atlas idle in head-to-feet height, long-legged body proportions, mature side-parted hair, emerald jacket and guarded stance. It is the single normalization anchor. Keep all airborne and recovery poses compact enough for the existing 96x80 native canvas and 94x77 safe region; never exceed the width of Ivo's existing long side kick or KO pose.",
+      "Row-major order: 48 upright neutral standing guard; 49 visibly airborne air-punch anticipation with knees lifted; 50 visibly airborne air-punch active extension; 51 visibly airborne air-punch retract toward airborne guard. 52 visibly airborne air-kick anticipation with knee chambered; 53 visibly airborne air-kick active extension; 54 visibly airborne air-kick retract; 55 compact neutral air/apex guard with bent knees. 56 thrower contact/grip reaching both arms toward an implied opponent beyond the cell; 57 thrower release/turn with readable hip and shoulder force; 58 victim lifted and off balance with contained limbs; 59 victim ground impact with body low and head left. 60 compact knockdown launch/recoil with face right; 61 diagonal knockdown fall with head left; 62 grounded get-up with one planted hand and one planted foot; 63 wake-up guard returning to upright neutral.",
+      "Style: polished hand-drawn 16-bit arcade fighting-game cartoon with original readable silhouettes, two-to-four value cel shading, strong dark contour, natural anatomy and weight. Keep Ivo's mature facial likeness, short dark side-parted hair, emerald jacket and long-legged body consistent. Redraw joints, torso, hips, limbs and balance for every in-between; do not translate, stretch, mirror or copy whole bodies.",
+      "Strict constraints: actual transparent alpha; exactly 16 separate figures in a 4x4 grid; at least 40 pixels of transparent separation; no figures touching or crossing cells; no labels, text, shadows, floor, projectile, energy, smoke, effects, props, opponent, logos or watermark; no cropped head, hands or feet, fused figures, extra limbs, independent cell shrinking, photorealism, 3D, generic fighters or copied commercial sprites."
+    ]
+  },
+  "frames": [
+    "48 upright neutral standing guard anchor",
+    "49 airborne air-punch anticipation",
+    "50 airborne air-punch active extension",
+    "51 airborne air-punch retract",
+    "52 airborne air-kick anticipation",
+    "53 airborne air-kick active extension",
+    "54 airborne air-kick retract",
+    "55 compact neutral air/apex guard",
+    "56 thrower contact/grip",
+    "57 thrower release/turn",
+    "58 victim lifted/off balance",
+    "59 victim ground impact, head left",
+    "60 knockdown launch/recoil, face right",
+    "61 knockdown fall, head left",
+    "62 grounded get-up",
+    "63 wake-up guard"
+  ],
+  "validation": {
+    "validated_at": "2026-10-20",
+    "tool": "tools/fighter_assets.py:extract_atlas",
+    "alpha_threshold": 200,
+    "size": [1254, 1254],
+    "mode": "RGBA",
+    "alpha_min_max": [0, 255],
+    "figures": 16,
+    "opaque_pixels": [35331, 32575, 37662, 29653, 33233, 32654, 30719, 28731, 34285, 35450, 31297, 17761, 29707, 27201, 25699, 29961],
+    "component_order": "48-63 row-major",
+    "transparent_separation_reviewed": true,
+    "native_safe_area_reviewed": true
+  }
+}

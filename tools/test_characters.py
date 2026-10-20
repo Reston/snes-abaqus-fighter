@@ -12,7 +12,7 @@ Run after a native build with::
 
 The script is intended to be useful while the user has another game in the
 foreground: it never opens a window, plays audio, or takes focus.  It checks
-the 4 MiB six-bank animation cartridge and preserves the 16 logical combat
+the 4 MiB eight-bank animation cartridge and preserves the 16 logical combat
 pose trace for gameplay assertions.
 """
 
@@ -50,10 +50,10 @@ FAMILY_NAMES = ("projectile", "rush", "groundwave", "rising")
 POSE_WIDTH = 96
 POSE_HEIGHT = 80
 POSE_BYTES = POSE_WIDTH * POSE_HEIGHT // 2
-ANIMATION_FRAME_COUNT = 48
-ANIMATION_BANK_COUNT = 6
+ANIMATION_FRAME_COUNT = 64
+ANIMATION_BANK_COUNT = 8
 BANK_BYTES = POSE_BYTES * 8
-ANIMATION_BANK_SUFFIXES = ("", "b", "c", "d", "e", "f")
+ANIMATION_BANK_SUFFIXES = ("", "b", "c", "d", "e", "f", "g", "h")
 VRAM_ACTOR_BASE = 0xC000
 VRAM_ACTOR_STRIDE = 0x1400
 VRAM_ROW_STRIDE = 0x200
@@ -83,7 +83,7 @@ def signed16(value: int) -> int:
     return value - 0x10000 if value & 0x8000 else value
 
 
-def raw_trace_words(e: Emulator, count: int = 80) -> list[int]:
+def raw_trace_words(e: Emulator, count: int = 114) -> list[int]:
     """Return trace words without mutating the emulated WRAM.
 
     The first 32 words predate the individualized roster.  The optional words
@@ -132,6 +132,19 @@ def state(e: Emulator) -> dict[str, int]:
         "command_stage1": raw[74], "command_stage2": raw[75],
         "raw_keys1": raw[76], "raw_keys2": raw[77],
         "landing1": raw[78], "landing2": raw[79],
+        # v0.6 airborne/throw/knockdown telemetry.  Keep the stable 0..93
+        # offsets untouched; these aliases are read-only and optional until
+        # the next native ROM is released.
+        "down_state1": raw[94], "down_state2": raw[95],
+        "down_tick1": raw[96], "down_tick2": raw[97],
+        "invuln1": raw[98], "invuln2": raw[99],
+        "pending_throw_damage1": raw[100], "pending_throw_damage2": raw[101],
+        "throw_owner1": raw[102], "throw_owner2": raw[103],
+        "air_action1": raw[104], "air_action2": raw[105],
+        "throw_victim1": raw[106], "throw_victim2": raw[107],
+        "wake_action1": raw[108], "wake_action2": raw[109],
+        "wake_age1": raw[110], "wake_age2": raw[111],
+        "wake_jump1": raw[112], "wake_jump2": raw[113],
     }
     for key, value in extension.items():
         result.setdefault(key, value)
@@ -385,9 +398,9 @@ POSE_NAMES = (
     "cross", "kick", "sweep", "block", "hurt", "victory", "cast",
     "uppercut", "knockout", "rush",
 )
-# The contract lists frames 16..47 in the motion/action atlases.  Keeping the
-# logical labels separate from the 16 legacy gameplay poses lets the tests
-# verify actual VRAM animation without changing the long-standing action trace.
+# Keeping the logical labels separate from the 16 legacy gameplay poses lets
+# the tests verify actual VRAM animation without changing the long-standing
+# action trace.  Frames 48..63 are the airborne/throw/knockdown atlas.
 ANIMATION_FRAME_NAMES = tuple("legacy-" + name for name in POSE_NAMES) + (
     "idle-guard", "idle-inhale", "idle-exhale", "idle-return",
     "walk-forward-contact", "walk-forward-pass", "walk-forward-under",
@@ -400,6 +413,12 @@ ANIMATION_FRAME_NAMES = tuple("legacy-" + name for name in POSE_NAMES) + (
     "hurt-recovery", "special-charge", "cast-recovery",
     "uppercut-anticipation", "uppercut-recovery", "victory-transition",
     "knockout-fall",
+    "upright-neutral", "air-punch-anticipation", "air-punch-active",
+    "air-punch-recovery", "air-kick-anticipation", "air-kick-active",
+    "air-kick-recovery", "compact-apex-guard", "thrower-grip",
+    "thrower-release", "victim-lift", "victim-impact",
+    "knockdown-launch", "knockdown-fall", "grounded-getup",
+    "wakeup-guard",
 )
 NON_KO_POSES = tuple(index for index, name in enumerate(POSE_NAMES)
                      if name != "knockout")
@@ -411,8 +430,13 @@ COMPARABLE_STANDING_FRAMES = (
     16, 17, 18, 19,
     20, 21, 22, 23, 24, 25, 26, 27,
     32, 33, 34, 35, 36, 37,
-    42, 43,
+    42, 43, 48, 56, 57, 63,
 )
+# Air, victim and knockdown frames intentionally do not share the standing
+# support line: their feet are in flight, impact, or a bounded get-up state.
+# Keep baseline checks strict for every upright/support pose while allowing
+# those explicit physical roles to move within the 96x80 canvas.
+SUPPORT_BASELINE_FRAMES = tuple(range(0, 47)) + (48, 56, 57, 62, 63)
 SCALE_KEYS = ("physical_scale", "global_scale", "uniform_scale", "scale")
 
 
@@ -459,7 +483,7 @@ def _manifest_scales(entry: dict[str, object]) -> tuple[list[float], str]:
 
 
 def _native_pose_boxes(fighter: int) -> tuple[Image.Image, list[tuple[int, int, int, int]]]:
-    """Decode the generated 48-frame native animation sheet into boxes."""
+    """Decode the generated 64-frame native animation sheet into boxes."""
 
     path = ROOT / f"assets/generated/fighter{fighter:02}.png"
     check(path.exists(), "native pose preview exists", {"fighter": fighter, "path": str(path)})
@@ -470,7 +494,7 @@ def _native_pose_boxes(fighter: int) -> tuple[Image.Image, list[tuple[int, int, 
           })
     image = source_image.convert("RGBA")
     check(image.size == (POSE_WIDTH * ANIMATION_FRAME_COUNT, POSE_HEIGHT),
-          "native animation preview uses the 48-frame 96x80 contract", {
+          "native animation preview uses the 64-frame 96x80 contract", {
               "fighter": fighter, "size": image.size,
           })
     boxes: list[tuple[int, int, int, int]] = []
@@ -569,8 +593,11 @@ def verify_native_proportions() -> dict[str, object]:
     The old pipeline fit each pose independently to a 64x80 frame, making a
     jab or kick visibly taller or shorter than idle.  This review intentionally
     checks the generated native image and manifest rather than a duplicated
-    source constant: all forty-eight frames must advertise the same physical
-    scale, stay inside the 96x80 canvas, and share one support-floor baseline.
+    source constant: all sixty-four frames must advertise the same physical
+    scale, stay inside the 96x80 canvas, and keep one support-floor baseline
+    for every upright/support role.  Air and knockdown roles are checked for
+    bounds and distinct source/native hashes instead of being forced onto the
+    standing baseline.
     """
 
     manifest_path = ROOT / "assets/generated/character-manifest.json"
@@ -584,7 +611,7 @@ def verify_native_proportions() -> dict[str, object]:
             "fighter": fighter, "id": entry.get("id"),
         })
         check(int(entry.get("frame_count", 0)) == ANIMATION_FRAME_COUNT,
-              "manifest records all forty-eight native animation frames", {
+              "manifest records all sixty-four native animation frames", {
                   "fighter": fighter, "frame_count": entry.get("frame_count"),
               })
         scales, scale_source = _manifest_scales(entry)
@@ -593,11 +620,102 @@ def verify_native_proportions() -> dict[str, object]:
             "fighter": fighter, "count": len(scales), "source": scale_source,
         })
         scale_span = max(scales) - min(scales)
-        check(scale_span <= 1e-6, "all forty-eight frames use one uniform physical scale", {
+        check(scale_span <= 1e-6, "all sixty-four frames use one uniform physical scale", {
             "fighter": fighter, "scale": scales[0], "span": scale_span,
         })
 
         _, boxes = _native_pose_boxes(fighter)
+        metadata_frames = entry.get("frames")
+        check(isinstance(metadata_frames, list) and
+              len(metadata_frames) == ANIMATION_FRAME_COUNT,
+              "manifest contains complete metadata for all 64 frames", {
+                  "fighter": fighter,
+                  "count": len(metadata_frames) if isinstance(metadata_frames, list) else None,
+              })
+        frame_hashes: list[str] = []
+        if isinstance(metadata_frames, list):
+            for pose, item in enumerate(metadata_frames):
+                check(isinstance(item, dict), "frame metadata record is an object", {
+                    "fighter": fighter, "frame": pose,
+                })
+                if not isinstance(item, dict):
+                    continue
+                global_index = item.get("global_index", item.get("globalindex"))
+                check(int(global_index if global_index is not None else -1) == pose,
+                      "frame metadata preserves stable global index", {
+                          "fighter": fighter, "frame": pose,
+                          "global_index": global_index,
+                      })
+                expected_kind = ("legacy" if pose < 16 else
+                                 "motion" if pose < 32 else
+                                 "actions" if pose < 48 else "airborne")
+                source_kind = item.get("source_kind", item.get("source_role"))
+                check(source_kind == expected_kind,
+                      "frame metadata preserves its source role", {
+                          "fighter": fighter, "frame": pose,
+                          "expected": expected_kind, "actual": source_kind,
+                      })
+                source_file = item.get("source_file", item.get("sourcefile"))
+                source_hash = item.get("source_hash", item.get("sourcehash"))
+                native_hash = item.get("native_hash", item.get("hash"))
+                pixel_hash = item.get("pixels_sha256", native_hash)
+                check(isinstance(source_file, str) and bool(source_file) and
+                      isinstance(source_hash, str) and len(source_hash) == 64,
+                      "frame metadata retains source file and hash", {
+                          "fighter": fighter, "frame": pose,
+                          "source_file": source_file, "source_hash": source_hash,
+                      })
+                check(isinstance(native_hash, str) and len(native_hash) == 64 and
+                      isinstance(pixel_hash, str) and len(pixel_hash) == 64,
+                      "frame metadata retains native pixel hashes", {
+                          "fighter": fighter, "frame": pose,
+                          "native_hash": native_hash, "pixels_sha256": pixel_hash,
+                      })
+                if isinstance(native_hash, str):
+                    frame_hashes.append(native_hash)
+                native_box = item.get("native_box", item.get("nativebox"))
+                check(native_box == list(boxes[pose]),
+                      "frame metadata bounds match the native preview", {
+                          "fighter": fighter, "frame": pose,
+                          "metadata": native_box, "preview": boxes[pose],
+                      })
+
+        # The authored source ranges must include the new airborne atlas while
+        # retaining the original 0..47 source split.
+        sources = entry.get("animation_sources")
+        check(isinstance(sources, list) and len(sources) >= 3,
+              "manifest records motion, action, and airborne sources", {
+                  "fighter": fighter, "sources": sources,
+              })
+        if isinstance(sources, list):
+            ranges = [tuple(item.get("frame_range", ())) for item in sources
+                      if isinstance(item, dict)]
+            check((16, 31) in ranges and (32, 47) in ranges and (48, 63) in ranges,
+                  "manifest keeps stable old ranges and adds airborne 48-63", {
+                      "fighter": fighter, "ranges": ranges,
+                  })
+
+        # Palette bytes are a compatibility boundary.  Compare the emitted
+        # OBJ binary to the manifest's fifteen-color palette so a new atlas
+        # cannot silently reorder or recolor the established base palette.
+        palette = entry.get("palette")
+        palette_path = ROOT / "assets/generated" / f"fighter{fighter:02}_pal.bin"
+        check(isinstance(palette, list) and len(palette) == 16 and
+              palette_path.exists(), "fighter palette metadata and binary exist", {
+                  "fighter": fighter, "palette": palette_path.name,
+              })
+        if isinstance(palette, list) and len(palette) == 16 and palette_path.exists():
+            expected_palette = bytearray()
+            for color in palette:
+                if isinstance(color, list) and len(color) >= 3:
+                    red, green, blue = [int(value) for value in color[:3]]
+                    snes = (red >> 3) | ((green >> 3) << 5) | ((blue >> 3) << 10)
+                    expected_palette.extend(snes.to_bytes(2, "little"))
+            actual_palette = palette_path.read_bytes()[:len(expected_palette)]
+            check(bytes(expected_palette) == actual_palette,
+                  "native OBJ palette bytes match manifest ordering", {
+                      "fighter": fighter, "bytes": len(actual_palette),
+                  })
         for pose, box in enumerate(boxes):
             left, top, right, bottom = box
             check(left > 0 and top >= 0 and right < POSE_WIDTH and bottom <= POSE_HEIGHT,
@@ -605,12 +723,11 @@ def verify_native_proportions() -> dict[str, object]:
                       "fighter": fighter, "pose": ANIMATION_FRAME_NAMES[pose], "box": box,
                   })
 
-        # Frame 47 is the only deliberate exception: the knockout fall is
-        # allowed to settle above the support line while the fighter is down.
-        baselines = [boxes[pose][3] for pose in range(ANIMATION_FRAME_COUNT - 1)]
+        baselines = [boxes[pose][3] for pose in SUPPORT_BASELINE_FRAMES]
         check(max(baselines) - min(baselines) <= 1,
-              "non-knockout animation frames share a support-floor baseline", {
-                  "fighter": fighter, "baselines": baselines,
+              "upright/support animation frames share a support-floor baseline", {
+                  "fighter": fighter, "frames": SUPPORT_BASELINE_FRAMES,
+                  "baselines": baselines,
               })
         baseline_y = entry.get("baseline_y")
         if isinstance(baseline_y, (int, float)):
@@ -654,6 +771,17 @@ def verify_native_proportions() -> dict[str, object]:
                       "fighter": fighter, "frame": ANIMATION_FRAME_NAMES[frame],
                       "idle_height": idle_height, "frame_height": height,
                   })
+        if len(frame_hashes) == ANIMATION_FRAME_COUNT:
+            for start, end, minimum, role in (
+                    (16, 20, 3, "breathing"), (20, 24, 3, "forward walk"),
+                    (24, 28, 3, "backward walk"), (48, 52, 3, "air punch"),
+                    (52, 56, 3, "air kick"), (56, 60, 3, "throw"),
+                    (60, 64, 3, "knockdown/recovery")):
+                check(len(set(frame_hashes[start:end])) >= minimum,
+                      "native " + role + " frames remain visibly distinct", {
+                          "fighter": fighter, "frames": [start, end],
+                          "unique": len(set(frame_hashes[start:end])),
+                      })
         results[f"{fighter:02}"] = {
             "scale": scales[0], "scale_source": scale_source,
             "idle_box": boxes[0], "jab_box": boxes[5],
@@ -726,20 +854,45 @@ def animation_group_for_pose(pose: int) -> set[int]:
         1: {1, 20, 21, 22, 23},
         2: {2, 24, 25, 26, 27},
         3: {3, 28},
-        4: {4, 29, 30, 31},
+        4: {4, 29, 30, 31, 55},
         5: {5, 32, 33, 34, 35},
         6: {6, 32, 33, 34, 35},
         7: {7, 36, 37, 38, 39},
         8: {8, 38, 39},
-        9: {9, 40},
-        10: {10, 41},
+        9: {9, 40, 63},
+        10: {10, 41, 58, 59, 60, 61, 62},
         11: {11, 46},
         12: {12, 42, 43},
         13: {13, 44, 45},
-        14: {14, 47},
-        15: {15, 32, 33, 34, 35},
+        # The logical KO pose may settle on the native head-left floor frame
+        # after a knockdown; keep both legacy KO art and the v0.6 floor frame.
+        14: {14, 47, 59},
+        15: {15, 32, 33, 34, 35, 48, 56, 57},
     }
     return groups.get(pose, {pose})
+
+
+AIR_PUNCH_FRAMES = set(range(49, 52))
+AIR_KICK_FRAMES = set(range(52, 55))
+THROW_FRAMES = set(range(56, 60))
+KNOCKDOWN_FRAMES = set(range(60, 64))
+
+
+def observed_animation_frames(e: Emulator, fighter: int, side: int,
+                              frames: int = 48) -> set[int]:
+    """Collect exact native VRAM frame IDs while a controller action runs."""
+
+    seen: set[int] = set()
+    for _ in range(frames):
+        actual = uploaded_frame_id(e, fighter, side)
+        if actual is not None:
+            seen.add(actual)
+            check(actor_rows(e, fighter, side, actual // 8, actual),
+                  "observed animation frame has all ten native VRAM rows", {
+                      "fighter": fighter, "side": side, "frame": actual,
+                  })
+        e.run(1)
+    return seen
 
 
 def actor_rows(e: Emulator, fighter: int, side: int, bank: int,
@@ -793,7 +946,8 @@ def wait_for_uploaded_pose(e: Emulator, fighter: int, side: int = 0,
 
 
 def stream_pose(e: Emulator, fighter: int, side: int, expected_pose: int,
-                label: str, max_frames: int = 48) -> dict[str, int]:
+                label: str, max_frames: int = 48,
+                hold: tuple[str, ...] = ()) -> dict[str, int]:
     """Wait for a logical pose and compare its complete animated VRAM frame."""
 
     state_key = "pose1" if side == 0 else "pose2"
@@ -820,7 +974,8 @@ def stream_pose(e: Emulator, fighter: int, side: int, expected_pose: int,
                 "fighter": fighter, "side": side, "pose": pose, "bank": bank,
             })
             return {"pose": pose, "frame": pose, "bank": bank}
-        e.run(1)
+        e.run(1, p1=list(hold) if side == 0 else [],
+              p2=list(hold) if side == 1 else [])
     raise AssertionError((label + " did not stream its expected native pose", {
         "fighter": fighter, "side": side, "expected_pose": expected_pose,
         "last": state(e),
@@ -837,16 +992,10 @@ def capture(e: Emulator, fighter: int, label: str) -> Path:
     return path
 
 
-def capture_animation_gif(e: Emulator, fighter: int, label: str,
-                          inputs: tuple[str, ...] = (),
-                          frames: int = 24) -> Path:
-    """Save source-actual PPU frames for a human animation review."""
+def save_animation_gif(fighter: int, label: str,
+                       images: list[Image.Image]) -> Path:
+    """Save callback-captured PPU frames at their native 60 Hz cadence."""
 
-    images: list[Image.Image] = []
-    for _ in range(frames):
-        if e.frame is not None:
-            images.append(e.frame.copy())
-        e.run(1, p1=list(inputs))
     check(len(images) >= 4, "animation capture contains native PPU frames", {
         "fighter": fighter, "label": label, "frames": len(images),
     })
@@ -860,6 +1009,20 @@ def capture_animation_gif(e: Emulator, fighter: int, label: str,
                    duration=list(durations[:len(images)]), loop=0,
                    optimize=False)
     return path
+
+
+def capture_animation_gif(e: Emulator, fighter: int, label: str,
+                          inputs: tuple[str, ...] = (),
+                          frames: int = 24, side: int = 0) -> Path:
+    """Save source-actual PPU frames for a human animation review."""
+
+    images: list[Image.Image] = []
+    for _ in range(frames):
+        if e.frame is not None:
+            images.append(e.frame.copy())
+        e.run(1, p1=list(inputs) if side == 0 else [],
+              p2=list(inputs) if side == 1 else [])
+    return save_animation_gif(fighter, label, images)
 
 
 def observe_animation_loop(e: Emulator, fighter: int, side: int,
@@ -946,6 +1109,7 @@ def trigger_special(e: Emulator, expected_family: int,
                 actual = uploaded_frame_id(e, fighter, 0)
                 if actual is not None:
                     visual_frames.add(actual)
+        manifested_at: int | None = None
         for _ in range(40):
             sample = state(e)
             samples.append(sample)
@@ -958,12 +1122,20 @@ def trigger_special(e: Emulator, expected_family: int,
             # waiting until the animation has already returned to idle.
             displacement = abs(signed16(sample["x1"]) - signed16(before["x1"]))
             rising = signed16(sample["y1"]) < 0
-            if sample["wave1"] or (
+            manifested = sample["wave1"] or (
                 expected_family == 1 and sample["pose1"] >= 8 and displacement >= 8
             ) or (
                 expected_family == 3 and sample["pose1"] >= 8 and rising
-            ):
-                break
+            )
+            if manifested:
+                # The renderer uploads one actor per vblank.  Keep sampling
+                # a few frames after the trace-visible manifestation so the
+                # exact active/cast bank can settle into VRAM before the
+                # caller records its native frame ID.
+                if manifested_at is None:
+                    manifested_at = len(samples)
+                elif len(samples) - manifested_at >= 4:
+                    break
             e.run(1)
         # A trace-visible action, projectile, vertical movement, or rush
         # displacement is stronger evidence than merely pressing a button.
@@ -1157,7 +1329,7 @@ def verify_asset_identity() -> None:
                  for bank in range(ANIMATION_BANK_COUNT)]
         digests.append(hashlib.sha256(b"".join(banks)).hexdigest())
         check(len(banks) == ANIMATION_BANK_COUNT,
-              "fighter has six complete animation banks", {
+              "fighter has eight complete animation banks", {
                   "fighter": fighter, "banks": ANIMATION_BANK_COUNT,
               })
     check(len(set(digests)) == len(NAMES), "all twelve fighters have distinct native animation assets", {
@@ -1167,7 +1339,7 @@ def verify_asset_identity() -> None:
 
 def verify_p1_fighter(fighter: int) -> dict[str, object]:
     # Capture the first live frame before the slow idle loop can leave the
-    # legacy frame-0 bank.  This keeps all six native banks observable through
+    # legacy frame-0 bank.  This keeps all six legacy native banks observable through
     # real controller transitions while later captures remain banner-free.
     e = boot(2, fighter, fighter % 3, quiet_frames=0)
     try:
@@ -1203,7 +1375,7 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
         # renderer that only validates idle/special banks while a normal move
         # still points at a stale 64x80 or wrong-bank frame.
         e.run(3, p1=["down"])
-        crouch_stream = stream_pose(e, fighter, 0, 3, "crouch")
+        crouch_stream = stream_pose(e, fighter, 0, 3, "crouch", hold=("down",))
         seen_banks.add(crouch_stream["bank"])
         e.run(4)
 
@@ -1232,7 +1404,7 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
         seen_banks.update(frame // 8 for frame in walk_back["frames"])
 
         e.run(3, p1=["up"])
-        jump_stream = stream_pose(e, fighter, 0, 4, "jump")
+        jump_stream = stream_pose(e, fighter, 0, 4, "jump", hold=("up",))
         seen_banks.add(jump_stream["bank"])
         jump_samples = []
         for _ in range(8):
@@ -1256,13 +1428,17 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
             ("y", 1, 5), ("x", 2, 6), ("l", 3, 6),
             ("b", 4, 7), ("a", 5, 7), ("r", 6, 7),
         ):
-            e.run(1, p1=[key])
+            # A one-frame edge can land between the libretro poll callbacks
+            # at this point in the long roster stream.  Hold the physical
+            # button for three frames, then release it while the action's
+            # native startup/recovery remains edge-triggered.
+            e.run(3, p1=[key])
             check(state(e)["action1"] == action,
                   "normal button starts action " + key.upper(), {
                       "fighter": fighter, "action": state(e)["action1"],
                   })
             normal_streams[key] = stream_pose(
-                e, fighter, 0, pose, "normal " + key.upper())
+                e, fighter, 0, pose, "normal " + key.upper(), hold=(key,))
             seen_banks.add(normal_streams[key]["bank"])
             e.run(50)
 
@@ -1272,7 +1448,8 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
         check(state(e)["action1"] == 8, "down plus heavy starts the uppercut", {
             "fighter": fighter, "action": state(e)["action1"],
         })
-        uppercut_stream = stream_pose(e, fighter, 0, 13, "uppercut")
+        uppercut_stream = stream_pose(e, fighter, 0, 13, "uppercut",
+                                      hold=("down", "l"))
         seen_banks.add(uppercut_stream["bank"])
         e.run(70)
         attack_gif = capture_animation_gif(e, fighter, "attack-animation", ("y",), 24)
@@ -1311,8 +1488,8 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
               })
         capture(e, fighter, "special")
 
-        check(seen_banks == set(range(ANIMATION_BANK_COUNT)),
-              "controller transitions stream all six native animation banks", {
+        check(set(range(6)).issubset(seen_banks),
+              "controller transitions stream all six legacy animation banks", {
                   "fighter": fighter, "seen_banks": sorted(seen_banks),
               })
 
@@ -1401,6 +1578,245 @@ def verify_p2_orientation(fighter: int) -> dict[str, object]:
         e.close()
 
 
+def _drive_side(e: Emulator, side: int, keys: tuple[str, ...] | list[str],
+                frames: int = 1) -> None:
+    kwargs = {"p1" if side == 0 else "p2": list(keys)}
+    e.run(frames, **kwargs)
+
+
+def _wait_grounded(e: Emulator, side: int, max_frames: int = 100) -> None:
+    key = "y1" if side == 0 else "y2"
+    for _ in range(max_frames):
+        if signed16(state(e)[key]) == 0:
+            return
+        _drive_side(e, side, ())
+    raise AssertionError(("fighter did not return to the floor", side, state(e)))
+
+
+def _air_normal(e: Emulator, fighter: int, side: int, key: str,
+                expected: set[int], capture_gif: bool = False) -> dict[str, object]:
+    """Capture one airborne normal's anticipation, active, and recovery art."""
+
+    suffix = str(side + 1)
+    y_key = f"y{suffix}"
+    face_key = f"face{suffix}"
+    action_index = ("y", "x", "l", "b", "a", "r").index(key) + 1
+    before = state(e)
+    face = before[face_key]
+    _drive_side(e, side, ("up",), 3)
+    airborne = False
+    for _ in range(20):
+        sample = state(e)
+        if signed16(sample[y_key]) < 0:
+            airborne = True
+            break
+        _drive_side(e, side, ())
+    check(airborne, f"P{suffix} {key.upper()} jump reaches airborne state", {
+        "fighter": fighter, "side": side, "trace": state(e),
+    })
+
+    seen: set[int] = set()
+    latch_samples: list[dict[str, int]] = []
+    captured: list[Image.Image] = []
+
+    def observe(sample: dict[str, int]) -> None:
+        if capture_gif and e.frame is not None:
+            captured.append(e.frame.copy())
+        actual = uploaded_frame_id(e, fighter, side)
+        if actual is not None:
+            seen.add(actual)
+            if actual in expected:
+                check(actor_rows(e, fighter, side, actual // 8, actual),
+                      f"P{suffix} {key.upper()} air frame has exact native rows", {
+                          "fighter": fighter, "side": side, "frame": actual,
+                      })
+        air_action = side_field(sample, side, "air_action", "airAction")
+        if air_action:
+            latch_samples.append(sample)
+        if signed16(sample[y_key]) < 0 and air_action:
+            check(sample[face_key] == face,
+                  f"P{suffix} {key.upper()} air normal keeps takeoff facing", {
+                      "fighter": fighter, "side": side, "face": sample[face_key],
+                  })
+
+    # Sustain the edge long enough for every libretro poll phase, while
+    # observing each uploaded frame.  A three-frame hold can begin on the
+    # final poll and otherwise hide the short anticipation drawing 49/52.
+    for _ in range(6):
+        _drive_side(e, side, (key,))
+        observe(state(e))
+    _drive_side(e, side, ())
+    for _ in range(48):
+        sample = state(e)
+        observe(sample)
+        _drive_side(e, side, ())
+    check(expected.issubset(seen),
+          f"P{suffix} {key.upper()} streams air anticipation/active/recovery", {
+              "fighter": fighter, "side": side, "expected": sorted(expected),
+              "seen": sorted(seen),
+          })
+    # The native latch is intentionally a boolean: the action itself remains
+    # available in TRACE[10/11], while this field answers whether an airborne
+    # normal is currently latched.  Do not infer a strength ID from it.
+    check(any(side_field(sample, side, "air_action", "airAction") == 1
+              for sample in latch_samples),
+          f"P{suffix} {key.upper()} exposes its airborne action latch", {
+              "fighter": fighter, "side": side, "air_action": 1,
+              "samples": latch_samples[:4],
+          })
+    _wait_grounded(e, side)
+    landed = state(e)
+    check(landed[f"action{suffix}"] == 0 and
+          (side_field(landed, side, "air_action", "airAction") or 0) == 0,
+          f"P{suffix} {key.upper()} air attack finishes on landing", landed)
+    gif_path = None
+    if captured:
+        gif_path = str(save_animation_gif(
+            fighter, f"p{side + 1}-air-{key}", captured))
+    return {"key": key, "action": action_index, "frames": sorted(seen),
+            "latch_samples": len(latch_samples), "facing": face,
+            "gif": gif_path}
+
+
+def _close_for_throw(e: Emulator) -> int:
+    """Bring both idle actors inside the strict throw range."""
+
+    for _ in range(220):
+        sample = state(e)
+        distance = abs(signed16(sample["x2"]) - signed16(sample["x1"]))
+        # canHit() uses a strict '< throwRange' comparison.  Closing against
+        # a generic 26px threshold leaves Cristobal and other 25px profiles
+        # exactly on the rejected edge, especially for left-facing P2.
+        limit = min(sample["throw_range1"], sample["throw_range2"]) * 16
+        if distance < limit:
+            return distance
+        if sample["x1"] < sample["x2"]:
+            e.run(1, p1=["right"], p2=["left"])
+        else:
+            e.run(1, p1=["left"], p2=["right"])
+    raise AssertionError(("fighters did not reach throw range", state(e)))
+
+
+def _throw_sequence(e: Emulator, fighter: int, attacker: int,
+                    capture_gif: bool = False) -> dict[str, object]:
+    """Observe distinct thrower/victim frames and delayed ground damage."""
+
+    distance = _close_for_throw(e)
+    before = state(e)
+    attacker_suffix = str(attacker + 1)
+    victim = 1 - attacker
+    victim_suffix = str(victim + 1)
+    forward = "right" if before[f"face{attacker_suffix}"] else "left"
+    _drive_side(e, attacker, (forward, "l"), 3)
+    frames_attacker: set[int] = set()
+    frames_victim: set[int] = set()
+    down_states: list[int] = []
+    hp_before = before[f"hp{victim_suffix}"]
+    hp_drop_state: int | None = None
+    pending_samples: list[dict[str, int]] = []
+    captured: list[Image.Image] = []
+    for _ in range(120):
+        sample = state(e)
+        if capture_gif and e.frame is not None:
+            captured.append(e.frame.copy())
+        actual_attacker = uploaded_frame_id(e, fighter, attacker)
+        actual_victim = uploaded_frame_id(e, fighter, victim)
+        if actual_attacker is not None:
+            frames_attacker.add(actual_attacker)
+        if actual_victim is not None:
+            frames_victim.add(actual_victim)
+        down = sample[f"down_state{victim_suffix}"]
+        down_states.append(down)
+        if sample[f"hp{victim_suffix}"] < hp_before and hp_drop_state is None:
+            hp_drop_state = down
+        if (sample[f"pending_throw_damage{victim_suffix}"] or
+                sample[f"pending_throw_damage{attacker_suffix}"]):
+            pending_samples.append(sample)
+        if down == 0 and frames_victim and len(down_states) > 12:
+            break
+        _drive_side(e, attacker, ())
+    check(frames_attacker & THROW_FRAMES,
+          f"P{attacker_suffix} thrower streams distinct grip/release frames", {
+              "fighter": fighter, "frames": sorted(frames_attacker),
+          })
+    check(frames_victim & {58, 59},
+          f"P{victim_suffix} victim streams lifted/impact frames", {
+              "fighter": fighter, "frames": sorted(frames_victim),
+          })
+    check(frames_victim & KNOCKDOWN_FRAMES,
+          f"P{victim_suffix} victim streams bounded knockdown/get-up frames", {
+              "fighter": fighter, "frames": sorted(frames_victim),
+          })
+    check(any(state_value in (1, 2, 3, 4, 5) for state_value in down_states),
+          f"P{victim_suffix} enters a bounded downed/wake state", {
+              "fighter": fighter, "states": down_states,
+          })
+    check(set(down_states).issubset({0, 1, 2, 3, 4, 5}),
+          f"P{victim_suffix} downed state stays within the public enum", {
+              "fighter": fighter, "states": sorted(set(down_states)),
+          })
+    if hp_drop_state is not None:
+        check(hp_drop_state >= 3,
+              f"P{victim_suffix} throw damage waits for ground impact", {
+                  "fighter": fighter, "down_state_at_damage": hp_drop_state,
+              })
+    check(pending_samples and any(
+        sample[f"throw_owner{victim_suffix}"] == attacker or
+        sample[f"throw_owner{attacker_suffix}"] == attacker
+        for sample in pending_samples),
+          f"P{victim_suffix} exposes delayed throw owner/damage telemetry", {
+              "fighter": fighter,
+              "pending": pending_samples[:5],
+          })
+    check(any(sample[f"throw_victim{attacker_suffix}"] == victim
+              for sample in pending_samples),
+          f"P{attacker_suffix} exposes the distinct throw victim role", {
+              "fighter": fighter, "victim": victim,
+              "pending": pending_samples[:5],
+          })
+    gif_path = None
+    if captured:
+        gif_path = str(save_animation_gif(
+            fighter, f"p{attacker + 1}-throw-sequence", captured))
+    return {"attacker": attacker, "victim": victim, "distance_12_4": distance,
+            "attacker_frames": sorted(frames_attacker),
+            "victim_frames": sorted(frames_victim),
+            "down_states": down_states, "damage_state": hp_drop_state,
+            "gif": gif_path}
+
+
+def verify_airborne_and_throw(fighter: int) -> dict[str, object]:
+    """Exercise all six air normals in both facings and both throw roles."""
+
+    e = boot(1, fighter, fighter % 3, fighter)
+    try:
+        air_results: dict[str, object] = {}
+        for side in (0, 1):
+            for key in ("y", "x", "l"):
+                air_results[f"p{side + 1}-{key}"] = _air_normal(
+                    e, fighter, side, key, AIR_PUNCH_FRAMES,
+                    capture_gif=(key == "y" and (side == 0 or fighter == 0)))
+            for key in ("b", "a", "r"):
+                air_results[f"p{side + 1}-{key}"] = _air_normal(
+                    e, fighter, side, key, AIR_KICK_FRAMES,
+                    capture_gif=(key == "b" and (side == 0 or fighter == 0)))
+        # Every fighter gets a source-actual PPU throw capture for the review
+        # set; the separate P2 representative below keeps the flipped OAM
+        # block covered without doubling the full twelve-fighter run.
+        throw_results = [_throw_sequence(e, fighter, 0, capture_gif=True)]
+    finally:
+        e.close()
+
+    # A fresh round makes P2 the thrower, preserving an independent victim
+    # sequence and proving the flipped G/H art in the other OAM block.
+    e = boot(1, fighter, fighter % 3, fighter)
+    try:
+        throw_results.append(_throw_sequence(e, fighter, 1, capture_gif=(fighter == 0)))
+    finally:
+        e.close()
+    return {"air_normals": air_results, "throws": throw_results}
+
+
 def main() -> int:
     started = time.time()
     report: dict[str, object] = {
@@ -1411,6 +1827,7 @@ def main() -> int:
         "proportions": {},
         "characters": {},
         "player_two": {},
+        "airborne_throw": {},
         "guard_checks": {},
         "player_two_specials": {},
     }
@@ -1435,6 +1852,15 @@ def main() -> int:
         for fighter in range(len(NAMES)):
             p2_results[f"{fighter:02}"] = verify_p2_orientation(fighter)
         report["player_two"] = p2_results
+
+        # Every fighter's G/H banks are exercised through controller-driven
+        # air normals in both facings, followed by distinct thrower/victim
+        # sequences.  The exact payload checks remain in uploaded_frame_id and
+        # actor_rows; this result only records the observed native frame IDs.
+        airborne_results: dict[str, object] = {}
+        for fighter in range(len(NAMES)):
+            airborne_results[f"{fighter:02}"] = verify_airborne_and_throw(fighter)
+        report["airborne_throw"] = airborne_results
 
         # Verify the frame-level guard rules against actual HP changes.  These
         # probes deliberately use local-versus P2 input so no CPU behaviour or

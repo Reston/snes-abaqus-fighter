@@ -2,6 +2,126 @@
 ; comfortably inside the SNES frame / vblank budgets.
 .include "hdr.asm"
 
+; A real contact or expired combo clears exactly five interface rows. The
+; compiler's indexed 160-word C loop can consume a combat frame by itself.
+.section "ui_clear_banner_fast" superfree
+clearBanner:
+    php
+    rep #$20
+    lda #$0000
+    .rept 160 index cell
+        sta.l ui+576+cell*2
+    .endr
+    sep #$20
+    lda #$01
+    sta.l bannerDirty
+    plp
+    rtl
+.ends
+
+; Exact original eleven-tile health bars: floor(hp*88/128) filled pixels.
+; Fighter stride is compile-time checked at 64 bytes in game.c.
+.section "health_bar_fast" superfree
+refreshHealthBar:
+    php
+    phx
+    phy
+    rep #$30
+    lda 9,s
+    and #$00ff
+    beq +
+    ldx #124
+    lda #$6000
+    sta.b tcc__r2
+    lda #$fffe
+    sta.b tcc__r3
+    lda.l fighters+78
+    bra ++
+    +:
+    ldx #66
+    lda #$2000
+    sta.b tcc__r2
+    lda #$0002
+    sta.b tcc__r3
+    lda.l fighters+14
+    ++:
+    and #$00ff
+    sta.b tcc__r0
+    asl a
+    asl a
+    asl a
+    sta.b tcc__r1
+    lda.b tcc__r0
+    asl a
+    clc
+    adc.b tcc__r0
+    clc
+    adc.b tcc__r1
+    lsr a
+    lsr a
+    lsr a
+    lsr a
+    sta.b tcc__r0
+    ldy #11
+    lda #129
+    sta.b tcc__r4
+    bra drawStatusBarLoop
+refreshEnergyBar:
+    php
+    phx
+    phy
+    rep #$30
+    lda 9,s
+    and #$00ff
+    beq +
+    ldx #252
+    lda #$6000
+    sta.b tcc__r2
+    lda #$fffe
+    sta.b tcc__r3
+    lda.l fighters+79
+    bra ++
+    +:
+    ldx #194
+    lda #$2000
+    sta.b tcc__r2
+    lda #$0002
+    sta.b tcc__r3
+    lda.l fighters+15
+    ++:
+    and #$00ff
+    sta.b tcc__r0
+    ldy #12
+    lda #138
+    sta.b tcc__r4
+drawStatusBarLoop:
+    -:
+    lda.b tcc__r0
+    cmp #9
+    bcc +
+    lda #8
+    +:
+    sta.b tcc__r1
+    clc
+    adc.b tcc__r4
+    ora.b tcc__r2
+    sta.l ui,x
+    lda.b tcc__r0
+    sec
+    sbc.b tcc__r1
+    sta.b tcc__r0
+    txa
+    clc
+    adc.b tcc__r3
+    tax
+    dey
+    bne -
+    ply
+    plx
+    plp
+    rtl
+.ends
+
 .section "actor_render_fast" superfree
 ; void drawActorFast(u16 byteSlot, s16 x, s16 y, u8 flip, u8 palette)
 ;
