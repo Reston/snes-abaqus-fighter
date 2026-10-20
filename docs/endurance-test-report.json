@@ -1,0 +1,662 @@
+{
+  "suite": "endurance",
+  "status": "passed",
+  "rom_sha256": "64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022",
+  "rom_bytes": 4194304,
+  "target_live_frames_per_mode": 216356,
+  "native_fps": 60.098811862348406,
+  "hours_per_mode": 1.0000012816649464,
+  "benchmark_contract": {
+    "strict_live_cadence": true,
+    "strict_stable_fight_native_timing": true,
+    "strict_resident_spc_fifo": true,
+    "strict_ambient_cadence": true,
+    "strict_trace_bounds": true,
+    "strict_oam_bounds": true,
+    "strict_video_geometry": true,
+    "strict_video_fps": true,
+    "strict_pcm_callback": true,
+    "strict_trace_magic": true,
+    "coverage_complete": false
+  },
+  "contract_flags": {
+    "strict_live_cadence": true,
+    "strict_stable_fight_native_timing": true,
+    "strict_resident_spc_fifo": true,
+    "strict_ambient_cadence": true,
+    "strict_trace_bounds": true,
+    "strict_oam_bounds": true,
+    "strict_video_geometry": true,
+    "strict_video_fps": true,
+    "strict_pcm_callback": true,
+    "strict_trace_magic": true,
+    "worker_video_fps_match": true,
+    "video_fps_epsilon": 1e-06
+  },
+  "harness_sha256": "b78e432a2c29762184569e09ce55fe6da9a3dec33049de2183ea1de2983932e9",
+  "core": {
+    "archive": ".tools\\core.zip",
+    "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
+    "member": "snes9x_libretro.dll",
+    "member_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
+    "dll": ".tools\\core\\snes9x_libretro.dll",
+    "dll_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343"
+  },
+  "modes": {
+    "0": {
+      "mode": 0,
+      "mode_name": "arcade",
+      "status": "passed",
+      "frames": 305644,
+      "target_live_frames": 216356,
+      "coverage_required": true,
+      "live_frames": 216356,
+      "live_segments": 299,
+      "elapsed_seconds": 164.844,
+      "rosters": [
+        {
+          "fighter1": 0,
+          "fighter2": 1,
+          "stage": 0,
+          "route": "initial"
+        },
+        {
+          "fighter1": 8,
+          "fighter2": 11,
+          "stage": 1,
+          "route": "champion-title"
+        }
+      ],
+      "stages": [
+        0,
+        1,
+        2
+      ],
+      "events": {
+        "attack": 201039,
+        "air": 100006,
+        "throw": 36480,
+        "guard": 26462,
+        "special": 3201,
+        "wake": 18352,
+        "down": 131011,
+        "round_change": 298,
+        "result": 134,
+        "pause": 0,
+        "reset": 0,
+        "result_continue": 121,
+        "arcade_ladder": 12,
+        "champion": 1,
+        "champion_restart": 1,
+        "menu_roster": 0,
+        "real_contact": 3202,
+        "damage": 3697
+      },
+      "required_coverage": {
+        "attack": true,
+        "air": true,
+        "throw": true,
+        "guard": true,
+        "special": true,
+        "down": true,
+        "wake": true,
+        "round_progress": true,
+        "three_stages": true,
+        "six_normal_actions": true,
+        "real_damage": true,
+        "arcade_ladder": true,
+        "champion": true,
+        "champion_restart": true
+      },
+      "normal_action_starts": {
+        "1": 800,
+        "2": 611,
+        "3": 1711,
+        "4": 461,
+        "5": 433,
+        "6": 566
+      },
+      "live_fraction": 0.707869,
+      "native_frame_wraps": 4,
+      "ambient_clock_wraps": 0,
+      "lag_frame_counter_last": 2061,
+      "lag_frame_counter_wraps": 0,
+      "lag_frame_counter_increments": 2010,
+      "stable_fight_lag_increments": 0,
+      "nonfight_lag_increments": 2010,
+      "cadence_failures": [],
+      "native_timing_failures": [],
+      "ambient_failures": [],
+      "ppu_overflow_frames": [],
+      "max_spc_backlog": 6,
+      "spc_backlog_nonzero_samples": 28,
+      "spc_drain_events": 28,
+      "spc_drain_bytes": 84,
+      "max_spc_growth_streak": 1,
+      "max_spc_stable_nonzero_streak": 0,
+      "max_spc_no_audio_streak": 1,
+      "spc_fifo_failures": [],
+      "spc_fread": 228,
+      "spc_fwrite": 228,
+      "spc_read_advance_bytes": 37062,
+      "spc_write_advance_bytes": 37062,
+      "spc_read_pointer_wraps": 144,
+      "spc_write_pointer_wraps": 144,
+      "spc_fifo_thresholds": {
+        "max_backlog": 32,
+        "max_growth_streak": 8,
+        "max_stable_no_audio_streak": 120
+      },
+      "snes_vblank_count_last": 43782,
+      "snes_vblank_counter_wraps": 4,
+      "vblank_flag_samples": 303634,
+      "native_screen_final": 3,
+      "native_screen_mismatch_samples": 2278,
+      "native_screen_mismatch_segments": 271,
+      "max_native_screen_mismatch_streak": 16,
+      "input_counts": {
+        "right": 173802,
+        "l": 33402,
+        "left": 162047,
+        "down": 54718,
+        "y": 35764,
+        "b": 29765,
+        "x": 19989,
+        "a": 25358,
+        "r": 14351,
+        "up": 29833
+      },
+      "max_nonfight_streak": 402,
+      "max_down_tick": 33,
+      "max_down_state_duration": [
+        76,
+        82
+      ],
+      "max_pending_throw_damage": 29,
+      "wake_buffer_handoffs": 0,
+      "max_oam_visible_actor_pieces": 30,
+      "max_oam_sprites": 30,
+      "position_bounds": {
+        "min": 384,
+        "max": 3712
+      },
+      "video_samples": 2550,
+      "video_nonblank_samples": 2534,
+      "video_geometry": [
+        256,
+        224
+      ],
+      "audio_samples": 163096872,
+      "audio_nonzero_batches": 2198,
+      "audio_peak_sampled": 3535,
+      "trace_magic_samples": 305644,
+      "video_fps": 60.098811862348406,
+      "audio_sample_rate": 32040.0,
+      "rom_sha256": "64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022",
+      "benchmark": false,
+      "core_frames_including_boot": 305928,
+      "core": {
+        "archive": ".tools\\core.zip",
+        "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
+        "member": "snes9x_libretro.dll",
+        "member_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
+        "dll": ".tools\\core\\snes9x_libretro.dll",
+        "dll_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343"
+      },
+      "uninterrupted_session": true,
+      "core_boots": 1,
+      "core_unloads": 1,
+      "core_reboots": 0
+    },
+    "1": {
+      "mode": 1,
+      "mode_name": "local_vs",
+      "status": "passed",
+      "frames": 289348,
+      "target_live_frames": 216356,
+      "coverage_required": true,
+      "live_frames": 216356,
+      "live_segments": 244,
+      "elapsed_seconds": 157.594,
+      "rosters": [
+        {
+          "fighter1": 3,
+          "fighter2": 4,
+          "stage": 1,
+          "route": "initial"
+        },
+        {
+          "fighter1": 7,
+          "fighter2": 10,
+          "stage": 0,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 11,
+          "fighter2": 2,
+          "stage": 2,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 11,
+          "fighter2": 2,
+          "stage": 2,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 9,
+          "fighter2": 0,
+          "stage": 1,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 5,
+          "fighter2": 8,
+          "stage": 2,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 1,
+          "fighter2": 4,
+          "stage": 0,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 9,
+          "fighter2": 0,
+          "stage": 1,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 5,
+          "fighter2": 8,
+          "stage": 2,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 1,
+          "fighter2": 4,
+          "stage": 0,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 3,
+          "fighter2": 6,
+          "stage": 1,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 11,
+          "fighter2": 2,
+          "stage": 2,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 11,
+          "fighter2": 2,
+          "stage": 2,
+          "route": "pause-b-select"
+        }
+      ],
+      "stages": [
+        0,
+        1,
+        2
+      ],
+      "events": {
+        "attack": 170894,
+        "air": 100613,
+        "throw": 13204,
+        "guard": 36316,
+        "special": 1199,
+        "wake": 8224,
+        "down": 58701,
+        "round_change": 239,
+        "result": 106,
+        "pause": 12,
+        "reset": 0,
+        "result_continue": 106,
+        "arcade_ladder": 0,
+        "champion": 0,
+        "champion_restart": 0,
+        "menu_roster": 12,
+        "real_contact": 3240,
+        "damage": 3310
+      },
+      "required_coverage": {
+        "attack": true,
+        "air": true,
+        "throw": true,
+        "guard": true,
+        "special": true,
+        "down": true,
+        "wake": true,
+        "round_progress": true,
+        "three_stages": true,
+        "six_normal_actions": true,
+        "real_damage": true,
+        "menu_roster": true
+      },
+      "normal_action_starts": {
+        "1": 2477,
+        "2": 1185,
+        "3": 772,
+        "4": 952,
+        "5": 789,
+        "6": 675
+      },
+      "live_fraction": 0.747736,
+      "native_frame_wraps": 4,
+      "ambient_clock_wraps": 0,
+      "lag_frame_counter_last": 2132,
+      "lag_frame_counter_wraps": 0,
+      "lag_frame_counter_increments": 2056,
+      "stable_fight_lag_increments": 0,
+      "nonfight_lag_increments": 2056,
+      "cadence_failures": [],
+      "native_timing_failures": [],
+      "ambient_failures": [],
+      "ppu_overflow_frames": [],
+      "max_spc_backlog": 6,
+      "spc_backlog_nonzero_samples": 48,
+      "spc_drain_events": 48,
+      "spc_drain_bytes": 144,
+      "max_spc_growth_streak": 1,
+      "max_spc_stable_nonzero_streak": 0,
+      "max_spc_no_audio_streak": 1,
+      "spc_fifo_failures": [],
+      "spc_fread": 172,
+      "spc_fwrite": 172,
+      "spc_read_advance_bytes": 29814,
+      "spc_write_advance_bytes": 29814,
+      "spc_read_pointer_wraps": 116,
+      "spc_write_pointer_wraps": 116,
+      "spc_fifo_thresholds": {
+        "max_backlog": 32,
+        "max_growth_streak": 8,
+        "max_stable_no_audio_streak": 120
+      },
+      "snes_vblank_count_last": 27639,
+      "snes_vblank_counter_wraps": 4,
+      "vblank_flag_samples": 287292,
+      "native_screen_final": 3,
+      "native_screen_mismatch_samples": 2164,
+      "native_screen_mismatch_segments": 248,
+      "max_native_screen_mismatch_streak": 16,
+      "input_counts": {
+        "right": 180691,
+        "left": 159776,
+        "y": 47083,
+        "b": 23930,
+        "x": 25355,
+        "a": 17270,
+        "r": 14184,
+        "l": 40031,
+        "up": 31324,
+        "down": 71151,
+        "start": 36
+      },
+      "max_nonfight_streak": 587,
+      "max_down_tick": 33,
+      "max_down_state_duration": [
+        62,
+        82
+      ],
+      "max_pending_throw_damage": 24,
+      "wake_buffer_handoffs": 123,
+      "max_oam_visible_actor_pieces": 30,
+      "max_oam_sprites": 30,
+      "position_bounds": {
+        "min": 384,
+        "max": 3712
+      },
+      "video_samples": 2415,
+      "video_nonblank_samples": 2391,
+      "video_geometry": [
+        256,
+        224
+      ],
+      "audio_samples": 154490684,
+      "audio_nonzero_batches": 2047,
+      "audio_peak_sampled": 3041,
+      "trace_magic_samples": 289348,
+      "video_fps": 60.098811862348406,
+      "audio_sample_rate": 32040.0,
+      "rom_sha256": "64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022",
+      "benchmark": false,
+      "core_frames_including_boot": 289785,
+      "core": {
+        "archive": ".tools\\core.zip",
+        "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
+        "member": "snes9x_libretro.dll",
+        "member_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
+        "dll": ".tools\\core\\snes9x_libretro.dll",
+        "dll_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343"
+      },
+      "uninterrupted_session": true,
+      "core_boots": 1,
+      "core_unloads": 1,
+      "core_reboots": 0
+    },
+    "2": {
+      "mode": 2,
+      "mode_name": "training",
+      "status": "passed",
+      "frames": 218624,
+      "target_live_frames": 216356,
+      "coverage_required": true,
+      "live_frames": 216356,
+      "live_segments": 10,
+      "elapsed_seconds": 124.188,
+      "rosters": [
+        {
+          "fighter1": 6,
+          "fighter2": 7,
+          "stage": 2,
+          "route": "initial"
+        },
+        {
+          "fighter1": 8,
+          "fighter2": 11,
+          "stage": 0,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 10,
+          "fighter2": 1,
+          "stage": 1,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 0,
+          "fighter2": 3,
+          "stage": 2,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 2,
+          "fighter2": 5,
+          "stage": 0,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 4,
+          "fighter2": 7,
+          "stage": 1,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 6,
+          "fighter2": 9,
+          "stage": 2,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 8,
+          "fighter2": 11,
+          "stage": 0,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 10,
+          "fighter2": 1,
+          "stage": 1,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 0,
+          "fighter2": 3,
+          "stage": 2,
+          "route": "pause-b-select"
+        }
+      ],
+      "stages": [
+        0,
+        1,
+        2
+      ],
+      "events": {
+        "attack": 121846,
+        "air": 63141,
+        "throw": 11367,
+        "guard": 28984,
+        "special": 141,
+        "wake": 15568,
+        "down": 65286,
+        "round_change": 0,
+        "result": 0,
+        "pause": 9,
+        "reset": 26,
+        "result_continue": 0,
+        "arcade_ladder": 0,
+        "champion": 0,
+        "champion_restart": 0,
+        "menu_roster": 9,
+        "real_contact": 3258,
+        "damage": 3388
+      },
+      "required_coverage": {
+        "attack": true,
+        "air": true,
+        "throw": true,
+        "guard": true,
+        "special": true,
+        "down": true,
+        "wake": true,
+        "round_progress": true,
+        "three_stages": true,
+        "six_normal_actions": true,
+        "real_damage": true,
+        "menu_roster": true,
+        "training_reset": true
+      },
+      "normal_action_starts": {
+        "1": 1439,
+        "2": 951,
+        "3": 972,
+        "4": 242,
+        "5": 66,
+        "6": 430
+      },
+      "live_fraction": 0.989626,
+      "native_frame_wraps": 3,
+      "ambient_clock_wraps": 0,
+      "lag_frame_counter_last": 473,
+      "lag_frame_counter_wraps": 0,
+      "lag_frame_counter_increments": 396,
+      "stable_fight_lag_increments": 0,
+      "nonfight_lag_increments": 396,
+      "cadence_failures": [],
+      "native_timing_failures": [],
+      "ambient_failures": [],
+      "ppu_overflow_frames": [],
+      "max_spc_backlog": 6,
+      "spc_backlog_nonzero_samples": 36,
+      "spc_drain_events": 36,
+      "spc_drain_bytes": 108,
+      "max_spc_growth_streak": 1,
+      "max_spc_stable_nonzero_streak": 0,
+      "max_spc_no_audio_streak": 1,
+      "spc_fifo_failures": [],
+      "spc_fread": 150,
+      "spc_fwrite": 150,
+      "spc_read_advance_bytes": 26205,
+      "spc_write_advance_bytes": 26205,
+      "spc_read_pointer_wraps": 102,
+      "spc_write_pointer_wraps": 102,
+      "spc_fifo_thresholds": {
+        "max_backlog": 32,
+        "max_growth_streak": 8,
+        "max_stable_no_audio_streak": 120
+      },
+      "snes_vblank_count_last": 22468,
+      "snes_vblank_counter_wraps": 3,
+      "vblank_flag_samples": 218228,
+      "native_screen_final": 3,
+      "native_screen_mismatch_samples": 351,
+      "native_screen_mismatch_segments": 27,
+      "max_native_screen_mismatch_streak": 16,
+      "input_counts": {
+        "right": 163835,
+        "r": 9702,
+        "left": 142066,
+        "down": 118713,
+        "x": 99758,
+        "up": 19559,
+        "y": 21380,
+        "l": 18475,
+        "b": 16352,
+        "a": 3210,
+        "select": 78,
+        "start": 27
+      },
+      "max_nonfight_streak": 252,
+      "max_down_tick": 33,
+      "max_down_state_duration": [
+        0,
+        82
+      ],
+      "max_pending_throw_damage": 29,
+      "wake_buffer_handoffs": 0,
+      "max_oam_visible_actor_pieces": 30,
+      "max_oam_sprites": 30,
+      "position_bounds": {
+        "min": 384,
+        "max": 3712
+      },
+      "video_samples": 1826,
+      "video_nonblank_samples": 1816,
+      "video_geometry": [
+        256,
+        224
+      ],
+      "audio_samples": 116795226,
+      "audio_nonzero_batches": 1563,
+      "audio_peak_sampled": 3172,
+      "trace_magic_samples": 218624,
+      "video_fps": 60.098811862348406,
+      "audio_sample_rate": 32040.0,
+      "rom_sha256": "64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022",
+      "benchmark": false,
+      "core_frames_including_boot": 219078,
+      "core": {
+        "archive": ".tools\\core.zip",
+        "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
+        "member": "snes9x_libretro.dll",
+        "member_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
+        "dll": ".tools\\core\\snes9x_libretro.dll",
+        "dll_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343"
+      },
+      "uninterrupted_session": true,
+      "core_boots": 1,
+      "core_unloads": 1,
+      "core_reboots": 0
+    }
+  },
+  "total_frames_per_mode": {
+    "0": 305644,
+    "1": 289348,
+    "2": 218624
+  },
+  "elapsed_seconds": 164.968
+}

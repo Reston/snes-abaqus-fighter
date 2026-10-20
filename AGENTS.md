@@ -6,21 +6,39 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
-- The current verified source/evidence milestone is v0.7.0 stage/effect
-  integration. All five native reports and the separate pinned bsnes2014
-  Accuracy smoke report pass against ROM SHA256
-  `e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84`, a
-  4 MiB image with header checksum `0953`: 2,595 gameplay, 18,085 roster,
-  215 presentation, 854 focused-input and 4,537 stage checks (26,286 total in
-  the current report snapshot). The canonical `Test.cmd` run passed with
-  4,528 stage checks; a focused stage extension added nine patch-only PPU
-  assertions and reran against the unchanged ROM/engine for the current 4,537
-  stage report. The CPU distance/reaction corrections, crouch-guard pose
-  selection and stage/effect checks are verified. Human balance, public-release,
-  independent full-combat/soak and real-console gates remain open. The v0.7.0
-  offline archive passes 214 technical audit checks and reproduces byte for
-  byte from identical inputs. Follow
+- The current verified technical source/evidence milestone is v0.7.1. The
+  canonical ROM is SHA256
+  `64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022`, header
+  checksum `9496`; all five native reports point to it: 2,595 gameplay, 18,085
+  roster, 215 presentation, 999 focused-input and 8,143 stage checks (30,037
+  total). The input suite includes 30 mirrored both-pad pause/cadence
+  regressions and bounded `clearFightHint`/`fillPausePanel` coverage. Full
+  native 288-case x 600-frame coverage plus four replays passes; the
+  independent bsnes smoke and bounded 48 x 600 (28,800-frame) run pass too.
+  Fresh export validation matches the exact ROM, manifest, 214 assets and
+  symbols in 63.25 seconds. Native endurance passes 216,356 live frames in
+  each of three modes at 60.098811862 FPS, one boot/unload with zero reboots,
+  wraps 4/4/3, all coverage true and all five failure arrays empty; video and
+  PCM are healthy, SPC peaks at six and drains, and stable FIGHT lag is zero.
+  `validate_release_evidence` passes. The offline package passes 6,153 technical
+  audit checks. Human likeness and balance, listening, controller, real-console
+  and branding gates remain open;
+  `public_release_certified` stays false. Follow
   `docs/COMBAT-ANIMATION-CONTRACT.md` for the native contract.
+
+- The v0.7.1 source freeze is commit
+`6d756749dbc3fa176e26217f2f59525c9af360d8`, tree
+  `fa15fea48b5cc2a09608da199810db885872e434`. It retains the long-range
+  projectile/low-wave opening above phase 97, skips a CPU-owned wave while it
+  is active, and keeps the family bands. The first impact-freeze tick is quiet
+  for the second actor upload; HUD and `COUNTER!`/`COMBO!` construction run
+  together on the second frozen tick. KO cards are quiet first/panel second;
+  intro ticks 109, 108 and 107 are quiet, `GET READY`, and HUD. Training Select
+  applies `RoundState` immediately, flushes HUD/banner/footer over three frozen
+  reset frames, and resets `fightClock` to zero. The current test driver uses
+  the shortest four-by-three grid with at most three pulses per fighter; its
+  720 timeout, loaded-ID, stage and cadence checks are unchanged, reducing
+  test overhead rather than changing the game.
 
 - Read `docs/DEVELOPMENT.md` before changing memory layout or hardware transfers.
 - Build with `Build.cmd`; regenerate assets with `Build.cmd --assets`.
@@ -41,10 +59,8 @@ Preserve the native emulator requirement when extending the project.
   `docs/stage-test-report.json`. The package gate also requires
   `docs/compatibility-test-report.json` to pass against that same SHA. It is a
   separate pinned bsnes2014 Accuracy smoke, not part of the five-suite
-  `Test.cmd` batch. The current v0.7 native reports and compatibility smoke
-  point to the exact SHA above. The focused stage extension is a supplemental
-  nine-check rerun on the same unchanged ROM; it does not change the canonical
-  `Test.cmd` stage count.
+  `Test.cmd` batch. The current v0.7.1 reports point to the exact SHA above;
+  all 8,143 stage checks are part of the current canonical run.
 - The v0.6 fast path caches actor-bank and per-action timing selection, uses the
   compile-checked `Fighter` stride 64 and `Wave` stride 16 layouts, and caches
   unchanged OAM/shadow work by integer position and facing. Native health and
@@ -96,6 +112,9 @@ Preserve the native emulator requirement when extending the project.
 - Do not commit `.tools/`, emulator saves, build intermediates or release ZIPs.
 - Rebuild the offline package with `tools/package.py` only after all five native
   suites and the matching compatibility smoke pass against the exact current
-  ROM. The v0.7 offline archive passes 214 technical checks and repeated
-  packaging produces identical ZIP bytes. Keep third-party license notices
+  ROM. It also requires the current full matchup matrix, bounded independent
+  combat, three native live-hour sessions and isolated source rebuild through
+  `tools/release_evidence.py`. Run `tools/audit_release.py` on the result.
+  The v0.7.1 offline archive passes 6,153 technical checks and two consecutive
+  packaging runs produce identical ZIP bytes. Keep third-party license notices
   intact.

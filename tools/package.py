@@ -1,6 +1,9 @@
 """Package the tested ROM with the official Windows emulator for offline play."""
 from pathlib import Path
-import hashlib, json, zipfile
+import hashlib, json, sys, zipfile
+
+# The pinned embeddable Python does not add the script directory to sys.path.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from release_evidence import EXTRA_REPORTS, validate_release_evidence
 ROOT=Path(__file__).resolve().parents[1]
 manifest=json.loads((ROOT/'dist/manifest.json').read_text())

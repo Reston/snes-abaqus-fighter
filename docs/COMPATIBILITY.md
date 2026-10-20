@@ -1,5 +1,8 @@
 # Independent-engine compatibility
 
+The current v0.7.1 smoke and bounded combat reports both pass against cartridge
+SHA256 `64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022`.
+
 The pinned smoke check has the bounded scope `independent-engine smoke, stage
 ambient/effects freeze, synchronized low-wave, neutral600frame cadence`. It is
 a separate Libretro host from the canonical Snes9x tests. The host loads the
@@ -59,7 +62,31 @@ as proof of visual accuracy. The v0.7 host corrects the decoding, replaces
 the captures and requires the static plate color agreement above.
 
 The generated stage manifest and the core are test prerequisites. The core is
-fetched into `.tools/compat`; it is not bundled in the public ZIP.
+fetched into `.tools/compat`; it is not bundled in the offline ZIP.
+
+## Bounded independent combat
+
+`tools/test_compatibility_combat.py` complements the smoke test with 48 cases
+of 600 combat frames each (28,800 frames total): every fighter as P1 and P2,
+neighbor pairs and their mirrors, all three stages, and two deterministic
+controller policies. The host checks actual selected IDs/stage, unit video
+and TRACE cadence, state bounds, nonblank video and captured PCM. It records
+realized attacks, damage, throws, air actions, down and wake events.
+
+Its exact-ROM evidence is
+[compatibility-combat-test-report.json](compatibility-combat-test-report.json).
+Run it silently with the pinned interpreter:
+
+```powershell
+& .\.tools\python\python.exe tools/test_compatibility_combat.py
+```
+
+This is bounded second-engine combat evidence. The full 144-pair/two-policy
+matrix belongs to the native Snes9x suite; the uninterrupted hour per mode
+also runs on that native test core. These scopes do not establish an
+independent full ordered-pair sweep, independent per-mode hour, human balance,
+listening quality, controller hardware or physical-console compatibility.
+The [public-release gates](PUBLIC-RELEASE.md) remain the readiness criteria.
 
 The primary source and license references for this specific core are the
 [libretro/bsnes2014 source repository](https://github.com/libretro/bsnes2014/tree/libretro),

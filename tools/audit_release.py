@@ -2,8 +2,10 @@
 from pathlib import Path
 import hashlib
 import json
+import sys
 import zipfile
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from PIL import Image
 from release_evidence import EXTRA_REPORTS, validate_release_evidence
 
@@ -20,6 +22,13 @@ def check(condition, label, details=None):
 
 def sha(data):
     return hashlib.sha256(data).hexdigest()
+
+
+def json_value(value):
+    # Evidence checks use sets for complete matrix/coverage comparisons.
+    if isinstance(value, (set, frozenset)):
+        return sorted(value)
+    raise TypeError(f'Unsupported audit detail: {type(value).__name__}')
 
 
 def main():
@@ -179,7 +188,7 @@ def main():
         raise
     finally:
         result['audit_checks'] = len(checks)
-        REPORT.write_text(json.dumps(result, indent=2) + '\n')
+        REPORT.write_text(json.dumps(result, indent=2, default=json_value) + '\n')
     print(json.dumps({key: result[key] for key in
                       ['status', 'version', 'rom_sha256', 'native_suite_checks',
                        'audit_checks', 'public_release_certified']}))

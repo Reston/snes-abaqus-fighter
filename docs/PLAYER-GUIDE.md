@@ -84,13 +84,15 @@ attack or jump edge. The clock advances with simulation and distance travelled,
 and freezes during pause and hitstop so game and animation state remain aligned.
 
 Training restores health only while a fighter is free of hurt, knockdown and
-wake-invulnerability state. Select performs a complete round reset and clears
-pending throw, downed and wake input state.
+wake-invulnerability state. Select applies a complete round reset immediately,
+then uses three frozen reset frames to flush the HUD, banner and footer while
+clearing pending throw, downed and wake input state.
 
-During hitstop the fight state and animation clocks remain frozen. The native
-interface transfer yields to an actor upload, so impact feedback or an empty
-combo banner can settle one to three video frames after the event without
-changing its damage, guard or combo result.
+During hitstop the fight state and animation clocks remain frozen. The first
+impact-freeze tick yields to the other actor upload; the HUD and any
+`COUNTER!`/`COMBO!` banner update together on the second frozen tick without
+changing damage, guard or combo result. A KO card uses the same rhythm: quiet
+first, panel second.
 
 ## Stage motion and effects
 
@@ -100,10 +102,25 @@ window light at El Castillo, and monitor changes in La Oficina. Original strike,
 guard, high-wave and ground-wave effects also gain small phase changes. The
 motion runs during live combat and holds still during the intro, pause, hitstop
 and round-end screens, so it never changes controls, collisions or timing.
-The v0.7 stage/effect work is present and verified in the current 4 MiB ROM.
+The v0.7 stage/effect work is present and verified in the v0.7.0 baseline 4 MiB ROM.
 The v0.7.0 Windows development package passes 214 technical audit checks and
 repeated packaging produces identical ZIP bytes. Public-release review remains
 open.
+
+## v0.7.1 verified technical feel changes
+
+The verified CPU can open with a projectile or low wave at long neutral range
+when it has enough energy, while its established cadence and family spacing stay
+the same. A CPU does not issue another wave while its own wave is still active.
+After a counter or combo contact, the first frozen impact tick stays quiet for
+the other actor's upload, then the HUD and `COUNTER!`/`COMBO!` label update
+together on the second tick. Training Select resets the round immediately, then
+gives the interface three frozen reset frames to clear HUD, banner and footer
+state and resets the fight clock. Intro ticks 109, 108 and 107 are quiet,
+`GET READY`, and HUD. Damage, hit timing and combo rules do not change. The
+technical suites, independent smoke and native endurance pass; the offline
+package passes 6,153 technical audit checks. Human likeness/balance, listening, controller, real-console and branding
+gates remain open.
 
 ## Emulator options
 

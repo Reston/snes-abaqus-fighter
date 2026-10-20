@@ -2,23 +2,26 @@
 
 An original six-button fighting game for the **Super Nintendo**, inspired by the arcade structure of Street Fighter II and the people and places of Abaqus in Santiago.
 
-**Current verified development snapshot: v0.7.0 stage/effect integration.** The
-native source targets a 4 MiB NTSC FastROM LoROM cartridge across 128 banks,
-compiled from C and 65816 assembly. All five native reports and the separate
-pinned bsnes2014 Accuracy smoke pass against ROM SHA256
-`e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84`, with
-header checksum `0953`: 2,595 gameplay, 18,085 roster, 215 presentation, 854
-focused-input and 4,537 stage checks, or 26,286 in the current report snapshot.
-Public-release, human balance, independent full-combat/soak and real-console
-gates remain open.
+**Current verified technical snapshot: v0.7.1.** The native source targets a
+4 MiB NTSC FastROM LoROM cartridge across 128 banks, compiled from C and 65816
+assembly. All five native reports point to ROM SHA256
+`64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022`, header
+checksum `9496`: 2,595 gameplay, 18,085 roster, 215 presentation, 999
+focused-input and 8,143 stage checks (30,037 total). The input suite includes
+30 mirrored both-pad pause/cadence regressions and bounded
+`clearFightHint`/`fillPausePanel` coverage. Full native 288-case x 600-frame
+coverage plus four replays passes. The independent bsnes smoke and bounded
+48 x 600 (28,800-frame) run pass as well.
 
-A separate pinned bsnes2014 Accuracy smoke report passes against the same ROM:
-title, select, arena and fight captures; controller movement and jump; all
-three stages across four ambient phases with intro/pause/hitstop/round-end
-freeze; synchronized low-wave combat; 600 neutral frames with one-tick
-cadence; and captured audio. It is an independent smoke check rather than full
-combat, soak or human verification. The CPU reaction, crouch-guard and
-stage/effect corrections are verified without changing the fighter profile ABI.
+Fresh export validation matches the exact ROM, manifest, 214 assets and symbols
+in 63.25 seconds. Native endurance passes 216,356 live frames in each of three
+modes at 60.098811862 FPS, one boot/unload with zero reboots, wraps 4/4/3,
+all coverage true and all five failure arrays empty; video and PCM are healthy,
+SPC peaks at six and drains, and stable FIGHT lag is zero. The full accelerated
+run took 164.968 seconds, and `validate_release_evidence` passes. The offline
+package passes 6,153 technical audit checks. Human likeness/balance, listening, controller,
+real-console and branding gates remain open, so `public_release_certified` is
+false.
 
 The [v0.6.0 development notes](docs/RELEASE-v0.6.0.md) describe the packaged
 64-frame roster, air attacks, throws and recovery. The
@@ -28,12 +31,24 @@ crouch-guard corrections. That historical offline package passes 202 technical a
 checks; identical packaging inputs produce identical ZIP bytes.
 Public-release gates remain open.
 
-The v0.7.0 stage/effect integration is verified in the current ROM. It adds
+The v0.7.0 stage/effect integration is verified in the v0.7.0 baseline ROM. It adds
 restrained code-native ambient motion to the three stages and original strike,
 guard, high-wave and ground-wave effect phases while preserving the native
 actor and interface budgets. The v0.7 offline package passes 214 technical
 audit checks and repeated packaging produces identical ZIP bytes. See the
 [v0.7.0 development notes](docs/RELEASE-v0.7.0.md).
+
+The v0.7.1 source freeze is commit
+`6d756749dbc3fa176e26217f2f59525c9af360d8`, tree
+`fa15fea48b5cc2a09608da199810db885872e434`. The canonical ROM above includes
+the long-range projectile/low-wave opening, the active-own-wave guard and the
+quiet-first/combined-second impact transfer. Training reset, KO-card and intro
+sequencing remain bounded at three reset frames, quiet-first/panel-second and
+intro ticks 109/108/107 respectively. The test driver now uses the shortest
+four-by-three grid with at most three pulses per fighter; all 720 timeout,
+loaded-ID, stage and cadence checks remain unchanged, so this only reduces test
+overhead. Technical validation and packaging are complete; human likeness,
+balance, listening, controller, real-console and branding gates remain open.
 
 ![Abaqus After Hours](docs/screenshots/fight.png)
 
@@ -42,9 +57,15 @@ audit checks and repeated packaging produces identical ZIP bytes. See the
 On Windows, double-click **[Play.cmd](Play.cmd)**. The launcher downloads the official Snes9x 1.63 release into `.tools/` on its first run, verifies its SHA256, and opens the game. No administrator account or global installation is needed. The tools are already present in this checkout.
 
 For offline Windows play, extract the verified development package
-[Abaqus-After-Hours-v0.7.0-Windows.zip](dist/Abaqus-After-Hours-v0.7.0-Windows.zip).
+[Abaqus-After-Hours-v0.7.1-Windows.zip](dist/Abaqus-After-Hours-v0.7.1-Windows.zip).
 Run its `Play.cmd`. It includes the current ROM, Snes9x, control defaults,
-native reports, independent-engine smoke evidence, guides and license notices.
+native and independent-engine reports, endurance and source-rebuild evidence,
+guides and license notices. See the [v0.7.1 release notes](docs/RELEASE-v0.7.1.md).
+
+The archive is 6,452,958 bytes. Two consecutive packaging runs produced identical
+bytes, SHA256 `6ab177a1ef5a101a6f60086fd651c9b7f3f92e3276d519385c3227cb10061a38`.
+The [technical audit](docs/release-audit.json) passes 6,153 checks and keeps
+public-release certification false.
 
 On other platforms, open **[dist/abaqus-after-hours.sfc](dist/abaqus-after-hours.sfc)** in a SNES emulator. No BIOS or commercial ROM is required.
 
@@ -78,7 +99,10 @@ See the [player guide](docs/PLAYER-GUIDE.md) for SNES button mappings, player tw
 - Health, regenerating energy, round counters, timer, hitstop, impact effects, camera shake, pause, four original tracker music arrangements and four resident SPC combat effects using the same synthesized cues.
 - v0.7.0 integration work for four-phase stage ambient motion and original
   combat-effect cells. The source stage masters and palettes remain unchanged;
-  the current ROM and native/compatibility reports verify this milestone.
+  the verified v0.7.0 baseline ROM and native/compatibility reports verify this milestone.
+- v0.7.1 source-freeze CPU opening, active-wave guard and staged impact/reset
+  feedback are included in the verified technical snapshot and offline package
+  above. Human/listening/controller/console/branding gates remain open.
 
 The renderer keeps the 96x80 canvas, 94x77 safe area, native baseline 78 and
 one physical scale per fighter across all 64 frames. The legacy 48 frame
@@ -105,7 +129,7 @@ Windows x64:
 .\Build.cmd --assets
 ```
 
-The v0.7 `Test.cmd` batch runs five native suites silently and headlessly in the official Snes9x libretro core: gameplay, roster, presentation, focused input and stage dynamics. They send controller input and read WRAM/VRAM, rendered frames and captured audio without playing it. Each report records the exact tested ROM hash. The canonical batch passed against the current image; it included 4,528 stage checks. A focused stage extension then added nine patch-only PPU assertions and reran against the unchanged ROM and engine, producing the current stage report with 4,537 checks. The separate pinned compatibility smoke also matches the same SHA and runs outside the five-suite `Test.cmd` batch:
+The verified v0.7.1 `Test.cmd` batch runs five native suites silently and headlessly in the official Snes9x libretro core: gameplay, roster, presentation, focused input and stage dynamics. They send controller input and read WRAM/VRAM, rendered frames and captured audio without playing it. Each report records the exact tested ROM hash. Its canonical batch passes against the v0.7.1 source-freeze image with 8,143 stage checks; the separate pinned compatibility smoke also matches that SHA and runs outside the five-suite `Test.cmd` batch:
 
 - `docs/test-report.json`
 - `docs/character-test-report.json`
@@ -115,21 +139,20 @@ The v0.7 `Test.cmd` batch runs five native suites silently and headlessly in the
 - `docs/stage-test-report.json`
 
 The [manifest](dist/manifest.json) includes the ROM SHA256 and header checksum.
-The current v0.7.0 snapshot has all five native reports passing against
-`e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84`: 2,595
-gameplay, 18,085 roster, 215 presentation, 854 focused-input and 4,537 stage
-checks, or 26,286 total in the current report snapshot. The canonical silent
-`Test.cmd` batch passed against this exact image, including both boot phases,
-two-controller air/trades/combo cadence, resident-audio probes, CPU coverage
-across three difficulties and four special families for 600 live ticks each
-(7,200 total), and its 4,528 stage checks. The focused stage extension added
-nine actual patch-only PPU assertions and reran the unchanged ROM/engine; it is
-included in the current 4,537-check stage report. The input suite also covers
-near-special, far-negative, 29-46 approach, low-guard and wake cases with
-strict no-KO lookahead. Native screenshots and animation review captures are
-retained under `docs/screenshots/`.
+The current v0.7.1 snapshot has all five native reports passing against
+`64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022`: 2,595
+gameplay, 18,085 roster, 215 presentation, 999 focused-input and 8,143 stage
+checks, or 30,037 total. Thirty mirrored both-pad pause/cadence regressions and
+bounded `clearFightHint`/`fillPausePanel` coverage are included. The native
+batch covers both boot phases, two-controller air/trades/combo cadence,
+resident-audio probes, CPU coverage across three difficulties and four special
+families for 600 live ticks each (7,200 total), and the full 288-case x 600-frame
+run plus four replays. The input suite also covers near-special, far-negative,
+29-46 approach, low-guard and wake cases with strict no-KO lookahead. Native
+screenshots and animation review captures are retained under
+`docs/screenshots/`.
 
-The separate pinned bsnes2014 Accuracy report passes against the same v0.7.0
+The separate pinned bsnes2014 Accuracy report passes against the same v0.7.1
 SHA with title/select/arena/fight captures, controller movement and jump, all
 three stages across four actual PPU ambient phases with freeze checks,
 synchronized low-wave combat, 600 one-tick cadence frames and captured audio.
@@ -141,14 +164,26 @@ channel levels (maximum delta 7). It is an independent smoke only; it does not
 replace full combat, soak or human verification. Run it with PowerShell
 `tools/setup-compat.ps1` followed by `python tools/test_compatibility.py`.
 
-An earlier four-family 600-frame probe was too narrow to characterize worst-case
-timing; the current input suite expands it to three difficulties, four special
-families and 7,200 live ticks with explicit spacing, guard, wake and no-KO
-lookahead checks. The independent bsnes smoke remains narrower than full
-combat, soak and human review. Public-release gates remain open after the
-resident-effect audio migration. The compatibility host decodes the pinned
-core's actual 512x224, 2048-byte-pitch BGRX callbacks using stride; its prior
-pixel-format metadata mismatch no longer masks the stage color assertions.
+The earlier four-family 600-frame probe remains historical v0.7.0 evidence. The
+current input suite covers 288 native cases at 600 frames each plus four
+replays, and adds 30 mirrored both-pad pause/cadence regressions. The
+independent bsnes smoke and bounded 48 x 600 (28,800-frame) run pass; video
+and PCM remain healthy, with bounded SPC effects. The compatibility host
+decodes the pinned core's actual 512x224, 2048-byte-pitch BGRX callbacks using
+stride; its prior pixel-format metadata mismatch no longer masks the stage
+color assertions.
+
+The v0.7.1 QA paths are bounded and silent: `python tools/test_matchups.py`
+runs the ordered 12-by-12 local-versus matrix across all three stages;
+`python tools/test_endurance.py --benchmark` precedes the uninterrupted
+per-mode hour gate run with `python tools/test_endurance.py`; and
+`python tools/test_fresh_build.py` rebuilds a committed source export with
+freshly extracted pinned tools. Fresh export validation passes in 63.25 seconds
+with exact ROM/manifest and 214 asset/symbol matches. The full native endurance
+passes 216,356 live frames in each of three modes at 60.098811862 FPS, with one
+boot/unload, zero reboots, wraps 4/4/3, all coverage true, empty failure arrays,
+stable FIGHT lag 0, healthy video/PCM and SPC maximum six drained. The
+accelerated run took 164.968 seconds; `validate_release_evidence` passes.
 
 The v0.6 native fast path caches actor-bank and per-action timing selection,
 uses compile-checked `Fighter` stride 64 and `Wave` stride 16 layouts, and
@@ -159,13 +194,25 @@ frame is uploaded; the engine and VRAM contract stay unchanged. As a result,
 interface impact feedback may settle one to three video frames after the combat
 event while hitstop keeps the fight state frozen.
 
-Real KO contact resolution keeps damage, winner selection, timers and layout
-unchanged. `roundBannerPending` defers the panel, name and HUD transfer until
-the first frozen `roundEnd` tick, avoiding a contact-time stall.
+The current source freeze keeps one resident ready-only FIFO record in `main`
+for native work; there is no polling or streaming path, and SDK loading is
+unchanged. The streamed API and nonzero `AllocateRegion` remain future stream
+service prerequisites. `applyHitReaction` uses a 256-entry ROM lookup of
+`12 + floor(final_u8_damage/3)` for every wrapped `u8` damage value and resets
+reaction fields; `fillBannerPanel` writes exact 96-word rows 10-12. Native geometry/cache refreshes `refreshFighterOam`, OAM
+uses packed XY words, and `queueFighter` preserves its four-byte pointer while
+uploading 3,840 bytes. The source-freeze OAM audit passes 746 controller frames,
+comparing the full 544 OAM bytes and geometry for each frame.
 
-`Build.cmd --assets` reproduced the current ROM SHA after the canonical pass.
-Archive audit and ZIP reproducibility are recorded separately after package
-creation.
+Real KO contact resolution keeps damage, winner selection, timers and layout
+unchanged. `roundBannerPending` keeps the first frozen `roundEnd` tick quiet,
+then transfers the panel, name and HUD on the second tick, avoiding a
+contact-time stall.
+
+Fresh source export validation reproduced the v0.7.1 source-freeze ROM SHA with
+the exact manifest and 214 asset/symbol matches in 63.25 seconds.
+The archive passes 6,153 technical audit checks; its checksum is recorded in
+`dist/release-sha256.txt`.
 
 Combat sound effects now load as four resident SPC slots alongside the music:
 `effects.it` is soundbank module 0 and music modules remain IDs 1-4. Scene load
@@ -186,9 +233,12 @@ the streamed-BRR path that stalled under two simultaneous attack/impact cases.
 | `assets/art/` | Original character masters, animation atlases, independent stage PNGs and menu art |
 | `assets/generated/` | Reproducible SNES tiles, eight fighter banks, palettes, music and resident effect data |
 | `tools/` | Bootstrap, encoding, build, stage/effect generation, emulator tests and packaging |
+| `tools/test_matchups.py` | Bounded ordered local-versus matrix for candidate balance evidence |
+| `tools/test_endurance.py` / `tools/longrun_host.py` | Silent uninterrupted hour/mode endurance gate and callback host |
+| `tools/test_fresh_build.py` | Fresh pinned-tool extraction and committed-source rebuild gate |
 | `dist/` | Playable ROM and release manifest |
 | `docs/` | Controls, technical notes, animation contract, art prompts, credits, roadmap and QA evidence |
 
-Git tracks the source, master art, generated cartridge assets and ROM. Downloaded toolchains and release ZIPs stay outside history. Prior releases are tagged `v0.1.0`, `v0.2.0`, `v0.3.0`, `v0.3.1`, `v0.4.0`, `v0.4.1`, `v0.5.0` and `v0.5.1`; `v0.6.0` records the animation baseline, `v0.6.1` the CPU update, and `v0.7.0` the stage/effect update with its verified development package. No remote repository is configured by this project.
+Git tracks the source, master art, generated cartridge assets and ROM. Downloaded toolchains and release ZIPs stay outside history. Prior releases are tagged `v0.1.0`, `v0.2.0`, `v0.3.0`, `v0.3.1`, `v0.4.0`, `v0.4.1`, `v0.5.0` and `v0.5.1`; `v0.6.0` records the animation baseline, `v0.6.1` the CPU update, and `v0.7.0` the verified stage/effect update and development package. v0.7.1 records the verified technical CPU/impact-feedback snapshot and development package; public gates remain open. No remote repository is configured by this project.
 
 Team references: [Abaqus Solutions](https://abaqus.io/es/abaqus-solutions/team) and [Abaqus Wealth Care](https://abaqus.io/es/wealth-care/about-us). See [credits and asset provenance](docs/CREDITS.md), [art prompts](docs/ART-DIRECTION.md), and [technical notes](docs/DEVELOPMENT.md).

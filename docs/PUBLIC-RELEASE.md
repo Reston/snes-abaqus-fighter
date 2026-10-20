@@ -6,14 +6,20 @@ for readability, responsiveness, animation and completeness. The Abaqus roster,
 places and cartoon identities remain the game's own. Commercial sprites, ROMs,
 music and an implication of Capcom affiliation are outside this project.
 
-v0.7.0 is the current verified development baseline. Its five native suites
-cover the 64-frame roster, air attacks, throws, knockdown, wake and bounded CPU
-policy, stage animation and the measured OBJ budget. A separate bsnes2014
-Accuracy probe covers basic operation, the three ambient loops, palette colors
-and synchronized low waves; its bounded scope is recorded in
+v0.7.1 is the current verified technical development baseline. The cartridge
+SHA256 is `64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022`.
+Its five native suites pass 30,037 checks covering the 64-frame roster,
+combat, CPU policy, interface, stage animation and measured OBJ budget. The
+same cartridge passes 288 native matchup cases and four deterministic replays,
+three uninterrupted native live-hour sessions, and an isolated committed-source
+rebuild. Pinned bsnes2014 Accuracy smoke and 48 bounded combat cases provide
+second-engine evidence; their scope is recorded in
 [COMPATIBILITY.md](COMPATIBILITY.md).
 Passing these suites is necessary evidence, not a claim that the public-release
 bar has been met.
+The stricter matchup and uninterrupted-session probes exposed frame overruns
+missed by the shorter baseline suites. Bounded native rendering, interface
+updates and resident-audio dispatch close those observed failures in v0.7.1.
 The public candidate will be designated v1.0 only after the gates below close.
 Do not turn a passing check count into a substitute for visual or play review.
 
@@ -21,16 +27,16 @@ Do not turn a passing check count into a substitute for visual or play review.
 
 | Gate | Required evidence | Baseline status |
 | --- | --- | --- |
-| Native correctness | Reproducible cartridge, valid header/checksum, all four exact-ROM suites, no known critical/high defects | Automated baseline verified; expand regression coverage as features land |
+| Native correctness | Reproducible cartridge, valid header/checksum, all five exact-ROM suites, no known critical/high defects | v0.7.1 exact-ROM suites and isolated rebuild pass; no known critical/high defect in the verified scopes |
 | Fighter identity and animation | All twelve likenesses reviewed at native size; stable anatomy, costume, palette and floor pivot; readable ground, air, throw, hit, downed and wake sequences in both directions | All 64-frame sets present with native motion captures; team likeness and human motion review pending |
 | Combat agreement | Visible active attacks match contact and hurt regions; coherent guard, trade, facing, corner, cancel, throw and wake rules; no repeatable uncontrolled damage or input exploits | Controller-driven air/throw/down/wake and guard regressions present; human matchup/contact review pending |
-| Balance and CPU | Documented profile envelope; scripted all-pair matchup sweep; CPU approaches, defends and punishes predictably by difficulty; human sessions cover every fighter and all four special families | Profile envelope, bounded policy and three-difficulty/four-family probes present; strategic CPU, all-pair and human balance review pending |
+| Balance and CPU | Documented profile envelope; scripted all-pair matchup sweep; CPU approaches, defends and punishes predictably by difficulty; human sessions cover every fighter and all four special families | Profile envelope, bounded CPU probes and 144 ordered pairs under two policies pass; strategic CPU and human balance review pending |
 | Stage and interface craft | Three readable locations with finished floor/depth, purposeful ambient motion and cohesive effects; clean selection, pause, results and champion flow; no obstructive instructions | Menus/floor/results and first ambient/effects pass implemented; human presentation and ending review pending |
 | Audio | Original or cleared assets, readable distinct cues, coherent levels, clean loops, no clipping/dropouts under load; listening review recorded | Original audio and captured-sample checks present; mix/listening review pending |
 | Player experience | Both player layouts work from a fresh package; quick onboarding and accessible move guidance; useful, deterministic Training; clear pause/rematch/reset paths | Basic modes and controls work; onboarding and Training depth pending |
-| Compatibility and endurance | Same release candidate validated in at least two independent SNES engines; worst-case cadence/upload checks and at least one emulated hour per mode without softlocks or corrupt output | Snes9x canonical suites and bsnes2014 Accuracy stage/low-wave probes present; second-engine full combat/roster and endurance matrix pending |
+| Compatibility and endurance | Same release candidate validated in at least two independent SNES engines; worst-case cadence/upload checks and at least one emulated hour per mode without softlocks or corrupt output | Native five-suite/matchup gates, one live hour in each native mode, and bsnes2014 Accuracy smoke plus 48 combat cases pass. Independent full ordered-pair/hour coverage remains outside this evidence; final release-platform acceptance remains open |
 | Controller and console checks | Recorded two-controller play sessions; real-console/flash-cartridge result or an explicit release-platform decision | Requires human equipment/play sessions; not yet verified |
-| Distribution | Fresh-checkout build and offline ZIP verified; current guide/credits/licenses; complete source provenance; recorded team approval for public branding and roster use | Development packaging/provenance present; public approval and final package review pending |
+| Distribution | Fresh-checkout build and offline ZIP verified; current guide/credits/licenses; complete source provenance; recorded team approval for public branding and roster use | Isolated source rebuild and offline ZIP audit pass; human package review and public approval pending |
 
 For the code freeze, critical/high defects must be closed. Other known issues
 need a recorded disposition, owner and rationale; unspecified "polish later"
@@ -66,11 +72,24 @@ controller probes and regression evidence must agree.
 
 ## Evidence and working rules
 
-- Run `tools/audit_release.py` after the four suites and package generation to
+- Run `tools/audit_release.py` after the five suites and package generation to
   summarize the current technical baseline in `release-audit.json`. The audit
   deliberately does not certify the qualitative and human gates above.
 - Keep every report tied to the current cartridge hash. Maintain native review
   captures and reproducible controller sequences for defects.
+- The expanded development-package gate requires the full native ordered-pair
+  report (144 pairs under two policies, 288 cases), the separate pinned bsnes
+  combat report (48 cases, 28,800 frames), the three native uninterrupted
+  per-mode hour sessions, and the isolated committed-source rebuild. The
+  independent combat report is bounded second-engine evidence; it is neither
+  an independent full ordered-pair matrix nor an independent hour-per-mode soak.
+  These reports close only their recorded technical scopes. They do not close
+  the human likeness, balance, listening, controller, physical-console or
+  public branding/roster approval gates.
+- Freeze the cartridge inputs in Git before the fresh-source build. Record its
+  source commit and tree; package validation rejects changes to those inputs
+  after that commit. Documentation, report and package-output commits may
+  follow without changing the cartridge source freeze.
 - Include an explicit OBJ scanline-budget probe before the public candidate:
   both fighters, both low projectiles, floor shadows and hit effects must be
   reviewed together, with PPU overflow evidence rather than idle-only captures.

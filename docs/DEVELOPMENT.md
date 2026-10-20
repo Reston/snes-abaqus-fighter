@@ -4,20 +4,18 @@
 
 Supported build host: Windows x64. `tools/setup.ps1` downloads pinned official release archives into `.tools/` and verifies their SHA256. `tools/build.py` invokes 816-tcc, 816-opt, WLA-65816 and WLALINK directly, so a separate Make/MSYS installation is unnecessary.
 
-The v0.7.0 integration targets a 4 MiB FastROM LoROM image across 128 banks,
-NTSC, with no coprocessor or SRAM requirement. WLALINK writes the SNES
-header/checksum. The build independently checks the FastROM LoROM mapping byte,
-image size and calculated checksum before writing `dist/manifest.json`. The
-current ROM SHA256 is
-`e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84`, with
-header checksum `0953`. The five native reports pass with 2,595 gameplay,
-18,085 roster, 215 presentation, 854 focused-input and 4,537 stage checks
-(26,286 total in the current report snapshot). The separate pinned bsnes2014
-Accuracy smoke report passes against the same SHA. `Build.cmd --assets` has
-reproduced this SHA. The CPU distance/reaction, crouch-guard and stage/effect
-checks are verified without changing fighter profile data or the native ABI.
-The offline archive passes 214 technical audit checks and repeated packaging
-produces identical ZIP bytes.
+The v0.7.1 source freeze is commit
+`6d756749dbc3fa176e26217f2f59525c9af360d8`, tree
+`fa15fea48b5cc2a09608da199810db885872e434`. It targets a 4 MiB FastROM LoROM
+image across 128 banks, NTSC, with no coprocessor or SRAM requirement. WLALINK
+writes the SNES header/checksum. The canonical ROM SHA256 is
+`64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022`, header
+checksum `9496`. All five native reports pass against it: 2,595 gameplay,
+18,085 roster, 215 presentation, 999 focused-input and 8,143 stage checks
+(30,037 total). The input report adds 30 mirrored both-pad pause/cadence
+regressions; native `clearFightHint` and `fillPausePanel` remain bounded.
+`Build.cmd --assets` and `validate_release_evidence` pass for this technical
+snapshot. The offline package passes 6,153 technical audit checks.
 
 `Build.cmd` rebuilds from committed native assets. `Build.cmd --assets` regenerates the full asset set first. Source portrait downloads can be refreshed with `tools/fetch_references.py`; rebuilding the game does not require fetching the team pages.
 
@@ -63,7 +61,7 @@ are not a safe layout change. The Fighter/Wave ABI at `0..113` is unchanged.
 
 ### v0.7 stage/effect integration notes
 
-The stage/effect pass is implemented and verified in the current ROM. Each of
+The stage/effect pass is implemented and verified in the v0.7.0 baseline ROM. Each of
 the three stages has four original,
 code-native ambient phases. A phase is eight 4bpp BG1 tiles (256 bytes) at
 indices `960..967`, uploaded at VRAM word `$3C00`; each 256-byte phase occupies
@@ -80,13 +78,14 @@ in `TRACE[114]`; `TRACE[115..118]` expose completed phase, live clock, pending p
 and pending age for read-only diagnostics.
 
 The original native effect cells now have authored phase variants for strike,
-guard contact, high projectile and ground wave. The shadow ellipse was moved
-down to the floor-visible rows and raised in OAM priority while retaining its
-lower ink rows. `tools/stage_assets.py`, `tools/effect_assets.py` and
+guard contact, high projectile and ground wave. The shadow source ellipse moves
+from cell rows `Y22..27` to `Y16..21` (up six pixels); its OAM position moves
+from `Y196` to `Y202` (down six pixels), retaining visible screen rows
+`202..207` at priority 2. `tools/stage_assets.py`, `tools/effect_assets.py` and
 `tools/test_stages.py` document the deterministic asset and verification paths.
 The instrumented `STAT77` bit-7 overflow baseline has ROM SHA prefix `868f7dc` with
 two low waves. The v0.7 native stage report records 4,537 checks against the
-current SHA, including the nine focused patch-only PPU assertions added after
+verified v0.7.0 baseline SHA, including the nine focused patch-only PPU assertions added after
 the canonical `Test.cmd` run's 4,528 stage checks. The separate compatibility
 smoke covers all three stages and actual PPU phases, freeze behavior and
 synchronized low-wave combat against the same SHA. The v0.7 archive passes
@@ -97,6 +96,58 @@ Las Condes, `13/16/13` for El Castillo and `8/8/8` for La Oficina across
 phases 1-3; phase 0 is the source-identical baseline. The synchronized
 two-wave check peaked at 28 tiles (14 sprites), with `STAT77` equal to `0x01`
 and overflow mask `0xC0` clear.
+
+### v0.7.1 verified technical snapshot
+
+The source freeze is commit
+`6d756749dbc3fa176e26217f2f59525c9af360d8`, tree
+`fa15fea48b5cc2a09608da199810db885872e434`. The canonical ROM is SHA256
+`64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022`, header
+checksum `9496`; all five native reports point to it: 2,595 gameplay, 18,085
+roster, 215 presentation, 999 focused-input and 8,143 stage checks (30,037
+total). Thirty mirrored both-pad pause/cadence regressions and bounded
+`clearFightHint`/`fillPausePanel` coverage are included. All native 288-case x
+600-frame checks plus four replays pass, as do the independent bsnes smoke and
+bounded 48 x 600 (28,800-frame) run.
+
+- Projectile and low-wave CPU profiles choose their natural neutral opening when
+  distance is greater than 110 native pixels and energy is at least 64, before
+  the existing phase-97 cadence. Remaining cadence and family-distance bands
+  are unchanged. The CPU skips this command while its own wave is active.
+- The first frozen impact tick is quiet so the second actor upload can settle;
+  HUD and counter/combo banner construction run together on the second frozen
+  tick from the contact snapshot. Pending banner state clears on pause and
+  reset. Damage, hit timing, combo linking and round outcomes are unchanged.
+- Training Select applies `resetRoundState()` immediately and holds three frozen
+  reset frames to flush HUD, banner and footer state; `fightClock` resets to zero.
+  Unchanged labels are not rebuilt. KO cards are quiet first/panel second, and
+  intro ticks 109, 108 and 107 are quiet, `GET READY`, and HUD.
+- Native hot paths keep one resident ready-only FIFO record in `main`, with no
+  poll or stream path and unchanged SDK loading. The streamed API and nonzero
+  `AllocateRegion` require future stream service. `applyHitReaction` uses the
+  256-entry ROM lookup of `12 + floor(final_u8_damage/3)` for every wrapped
+  `u8` damage value and resets reaction fields;
+  `fillBannerPanel` writes exact 96-word rows 10-12. Native geometry/cache
+  refreshes `refreshFighterOam`, packed XY words feed OAM, and `queueFighter`
+  preserves its four-byte pointer while uploading 3,840 bytes. The OAM audit
+  passes 746 controller frames, comparing the full 544 OAM bytes and geometry
+  for each frame.
+- Fresh export validation matches the exact ROM and manifest plus 214 assets and
+  symbols in 63.25 seconds; the invalid external SDK override was removed and
+  source-local SDK tree pins are used. Native endurance passes 216,356 live
+  frames in each of three modes at 60.098811862 FPS, one boot/unload with zero
+  reboots, wraps 4/4/3, all coverage true and all five failure arrays empty.
+  Video and PCM are healthy, SPC peaks at six and drains, stable FIGHT lag is
+  zero, maximum non-fight windows are 402/587/252, and the accelerated run took
+  164.968 seconds. `validate_release_evidence` passes.
+- The test driver now uses the shortest four-by-three grid with at most three
+  pulses per fighter; all 720 timeout, loaded-ID, stage and cadence checks remain
+  unchanged, so this fixes test overhead rather than game behavior.
+
+Packaging and audit pass. Package guards require the extra exact
+reports plus source-freeze and runtime/input-unchanged validation;
+`public_release_certified` remains false while human likeness/balance,
+listening, controller, real-console and branding gates stay open.
 
 ### Fighter animation contract
 
@@ -219,20 +270,19 @@ and all three stage plates. The v0.7 `tools/test_stages.py` suite adds native
 checks for the four-phase BG1 ambient tiles, dynamic map entries, source
 palette/graphics preservation, live-only phase timing, actor/interface DMA
 yields, pause/hitstop/round-end freezes and stage effect/OAM behavior. It has
-passed against the current ROM. The canonical `Test.cmd` stage portion recorded
-4,528 checks; a focused extension added nine patch-only PPU assertions and
-reran the unchanged ROM/engine, so the current stage report records 4,537.
+passed against the verified v0.7.1 source-freeze ROM; the current stage report
+records 8,143 checks, including exact shadow geometry and the focused PPU
+assertions.
 `tools/test_inputs.py` covers SOCD neutralization,
 buffered attacks and jumps, true and shortcut motion commands, hitstop input
 capture, hit-confirm cancels, guard timing, animation freezing and the Training
-Select reset. The current v0.7.0 snapshot has all five native reports passing
+Select reset. The current v0.7.1 snapshot has all five native reports passing
 against ROM SHA256
-`e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84`:
-2,595 gameplay, 18,085 roster, 215 presentation, 854 focused-input and 4,537
-stage checks (26,286 total in the current report snapshot). The canonical
-silent `Test.cmd` batch passed on that image; its stage portion recorded 4,528
-checks, then the focused stage extension added nine patch-only PPU assertions
-and reran the unchanged ROM/engine. All five suites capture audio data without
+`64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022`:
+2,595 gameplay, 18,085 roster, 215 presentation, 999 focused-input and 8,143
+stage checks (30,037 total). Thirty mirrored both-pad pause/cadence regressions
+and bounded `clearFightHint`/`fillPausePanel` coverage are included. All five
+suites capture audio data without
 opening an audio device or a native window and preserve the user's foreground
 focus. Input coverage spans three difficulties and four special families for
 600 live ticks each (7,200 total), plus near-special, far-negative, 29-46
@@ -250,13 +300,13 @@ full combat, soak or human verification. Run it with PowerShell
 `tools/setup-compat.ps1` followed by `python tools/test_compatibility.py`.
 
 The five native reports and compatibility report now carry the same current
-v0.7.0 SHA. The compatibility host uses the pinned core's actual 512x224,
+v0.7.1 SHA. The compatibility host uses the pinned core's actual 512x224,
 2048-byte-pitch BGRX callbacks with stride-authoritative decoding; this fixes
 the prior pixel-format metadata limitation and makes the stage color assertions
-meaningful. The v0.7 archive passes 214 technical checks and reproduces byte
-for byte, while human balance,
-art review, independent full-combat/soak, real-console and public-release
-gates remain open.
+meaningful. The current technical snapshot records 30,037 native checks,
+independent smoke plus bounded 28,800-frame coverage, and the full native
+endurance run. Human balance, art review, real-console and public-release
+gates remain open; the offline package passes 6,153 technical audit checks.
 
 Each suite stores the tested ROM SHA256 in its report:
 
@@ -268,20 +318,21 @@ Each suite stores the tested ROM SHA256 in its report:
 - `docs/stage-test-report.json`
 
 The reports are authoritative for the exact ROM SHA recorded in each file. The
-current v0.7.0 native reports and compatibility report point to
-`e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84`; the native
+current v0.7.1 native reports and compatibility report point to
+`64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022`; the native
 batch covers both boot phases, two-controller air/trades/combo cadence,
 resident-audio probes, CPU reactions and stage/effect PPU behavior. The cadence
 probe and native screenshot/GIF evidence remain tied to their recorded ROM hash
-and must not be reused after a hash change. The v0.6.1 four-suite snapshot
-remains historical evidence for the earlier SHA.
+and must not be reused after a hash change. Earlier v0.7.0 and v0.6.1 snapshots
+remain historical evidence for their respective SHAs.
 
 An earlier four-family 600-frame probe was too narrow to characterize worst-case
-audio or UI timing. The current input suite expands CPU coverage to three
-difficulties, four families and 7,200 live ticks, with explicit spacing,
-low-guard, wake and no-KO lookahead cases. The independent bsnes report remains
-a narrower smoke rather than full combat or soak evidence. Broader human and
-independent-engine review remains part of the open polish gates.
+audio or UI timing. The current input suite covers three difficulties, four
+families and 7,200 live ticks, with explicit spacing, low-guard, wake and no-KO
+lookahead cases; the full native run also covers 288 cases at 600 frames plus
+four replays. The independent bsnes report remains a narrower smoke rather than
+full combat or soak evidence. Broader human and independent-engine review
+remains part of the open polish gates.
 
 Two issues found during earlier integration shaped the implementation:
 
@@ -296,15 +347,16 @@ Two issues found during earlier integration shaped the implementation:
    downed control, facing, round, timeout and arcade outcomes.
 
 3. Real KO contact resolution keeps damage, winner selection, timers and layout
-   unchanged. `roundBannerPending` defers the panel, name and HUD transfer until
-   the first frozen `roundEnd` tick, avoiding a contact-time stall.
+   unchanged. `roundBannerPending` keeps the first frozen `roundEnd` tick quiet,
+   then transfers the panel, name and HUD on the second tick, avoiding a
+   contact-time stall.
 
-The v0.6.1 packager run required its four native reports and the separate
-compatibility report to match the earlier ROM; its offline package passed 202
-technical audit checks and repeated packaging with identical inputs produced
-identical ZIP bytes. The current v0.7.0 five native reports plus compatibility
-match the exact SHA above. The v0.7 archive passes 214 technical checks;
-repeated packaging with identical inputs produces identical ZIP bytes.
+The v0.6.1 packager run and its 202-check audit remain historical. The current
+v0.7.1 five native reports plus compatibility match the exact SHA above, and
+the source-freeze, fresh-export and endurance evidence passes are complete.
+The offline package passes 6,153 technical audit checks. Two consecutive runs
+of `tools/package.py` produce the same 6,452,958-byte archive, SHA256
+`6ab177a1ef5a101a6f60086fd651c9b7f3f92e3276d519385c3227cb10061a38`.
 Human balance sessions, art review, independent Mesen/bsnes combat runs,
 real-console/flash-cartridge testing and public-release review remain separate
 open gates.

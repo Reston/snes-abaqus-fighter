@@ -121,11 +121,11 @@ most one 3,840-byte actor frame per vblank. The requested trace frame can lead
 the uploaded frame by one video frame when both actors change together.
 Per-fighter animation clocks, dedicated air attacks and throw/knockdown/wake
 transitions are included. Per-frame hit silhouettes remain future polish work.
-The current canonical silent v0.7.0 batch passes all five native suites against
+The historical v0.7.0 canonical silent batch passes all five native suites against
 ROM SHA256
 `e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84`, with
 2,595 gameplay, 18,085 roster, 215 presentation, 854 focused-input and 4,537
-stage checks in the current report snapshot. The canonical `Test.cmd` stage
+stage checks in the v0.7.0 report snapshot. The canonical `Test.cmd` stage
 portion recorded 4,528 checks; a focused extension added nine patch-only PPU
 assertions and reran the unchanged ROM/engine. CPU coverage spans three
 difficulties and four special families for 600 live ticks each, with explicit
@@ -140,11 +140,27 @@ and shadow work, are cached by the native fast path. Interface impact feedback
 may settle one to three video frames later when its DMA yields to an actor
 upload; hitstop keeps combat state frozen.
 
-The v0.7 stage/effect integration adds four-phase ambient stage tiles and
+The historical v0.7 stage/effect integration adds four-phase ambient stage tiles and
 original strike, guard, high-wave and ground-wave effect variants without
 changing the fighter profiles, the `0..113` combat ABI or the one-actor
 transfer budget. The stage report and expanded compatibility smoke pass against
-the current ROM. The archive passes 214 technical checks and repeated packaging
+the verified v0.7.0 baseline ROM. The archive passes 214 technical checks and repeated packaging
 produces identical bytes. No public,
 human-balance, independent full-combat/soak or real-console release claim is
 made here.
+
+The v0.7.1 verified technical snapshot leaves all twelve combat profiles,
+movement values and native frame data unchanged. The source freeze is commit
+`6d756749dbc3fa176e26217f2f59525c9af360d8`, tree
+`fa15fea48b5cc2a09608da199810db885872e434`; the canonical ROM is
+`64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022`. The
+five native reports record 2,595 gameplay, 18,085 roster, 215 presentation,
+999 focused-input and 8,143 stage checks (30,037 total). Full 288-case native
+coverage at 600 frames plus four replays passes, as do the independent smoke
+and bounded 28,800-frame run. Its CPU neutral opening skips an already active
+own wave, while impact feedback uses a quiet first frozen tick and combined
+second-tick HUD/banner construction. Training Select applies the round state
+immediately and flushes HUD, banner and footer over three frozen reset frames.
+Fresh export, full native endurance and the package audit pass. Human
+likeness/balance, listening, controller, real-console and branding gates remain
+open.

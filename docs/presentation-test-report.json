@@ -1,6 +1,6 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84",
+  "rom_sha256": "64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022",
   "rom_bytes": 4194304,
   "status": "passed",
   "checks": [
@@ -9,11 +9,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.7.0",
+        "version": "0.7.1",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84",
-        "checksum": "0953",
+        "sha256": "64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022",
+        "checksum": "9496",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -450,7 +450,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 314,
+        "frame": 315,
         "mode": 1,
         "hp1": 128,
         "hp2": 128,
@@ -652,7 +652,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 326,
+        "frame": 328,
         "mode": 2,
         "hp1": 128,
         "hp2": 128,
@@ -716,8 +716,8 @@
         "anim_frame2": 16,
         "anim_state1": 0,
         "anim_state2": 0,
-        "anim_tick1": 13,
-        "anim_tick2": 16,
+        "anim_tick1": 12,
+        "anim_tick2": 15,
         "buffered_action1": 0,
         "buffered_action2": 0,
         "buffer_age1": 0,
@@ -2221,9 +2221,9 @@
       "check": "the three stage fights render distinct native architecture plates",
       "passed": true,
       "details": {
-        "las-condes": "150c236b7335caddcab9c3378579ad9fc9734e821ecd6e5d70f653cbcff8dc7e",
-        "el-castillo": "17b0172082b250ef410ce540f9949b632713c5d17b4cad1b0c2c262b653f40a6",
-        "la-oficina": "cf100e5df1dfdc9bfc4dea824584c7ad38df726a726bcf63e098f3803043f767"
+        "las-condes": "ccec3a71f5051c0bfd201ccfbf1e3651abb2db5fc2ff78eb9066257ef3100d5f",
+        "el-castillo": "9029c5efbc1cfbf313f155934157b86dd91f976d904de7ecc91ffb8f3db37f11",
+        "la-oficina": "a446645f6d556965bc047286c350a8c2306e3a7d915730a0642f46cf74154951"
       }
     },
     {
@@ -2763,5 +2763,5 @@
     "frame_count": 64
   },
   "passed": 215,
-  "elapsed_seconds": 4.46
+  "elapsed_seconds": 4.54
 }

@@ -30,14 +30,13 @@ throw/down/wake state.
 The home, fighter-select and arena menus follow a clean royal-navy, white and
 gold direction with a single cursor, original project glyphs, the four-by-three
 roster grid and one large selected portrait. Profile power, speed and family
-statistics are no longer the visual focus of selection. The current v0.7.0
-canonical silent `Test.cmd` batch passes all five native suites against ROM SHA
-`e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84`; the
-separate pinned bsnes2014 Accuracy smoke passes against the same image. The
-focused stage extension adds nine patch-only PPU assertions to the canonical
-4,528 stage checks, producing the current 4,537-check stage report without an
-engine change. Public release, human art/balance review, independent-emulator
-combat review and real-console gates remain open.
+statistics are no longer the visual focus of selection. The v0.7.1 technical
+snapshot passes all five native suites against ROM SHA
+`64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022`: 2,595
+gameplay, 18,085 roster, 215 presentation, 999 focused-input and 8,143 stage
+checks. The independent bsnes smoke and bounded 28,800-frame run also pass.
+The package passes 6,153 technical audit checks. Human likeness and balance, listening, controller,
+real-console and branding gates remain open.
 
 The authored art remains inside the existing 96x80, fifteen-color OBJ and
 reserved-interface palette contracts. Native health and energy bars keep their
@@ -59,14 +58,32 @@ Ambient transfers yield to actor and interface work and use no additional OBJ
 sprites.
 
 The effect pass authors small phase variants in the existing native cells for
-strike, guard contact, high projectile and ground wave. The floor shadow's
-blank top rows were removed so its visible ellipse sits on the floor with the
-updated OAM position and priority, preserving its intended on-screen footprint. These changes
+strike, guard contact, high projectile and ground wave. The shadow source
+ellipse moves from cell rows `Y22..27` to `Y16..21` (up six pixels); its OAM
+position moves from `Y196` to `Y202` (down six pixels), retaining visible screen
+rows `202..207` at priority 2. These changes
 preserve the original palette and native transfer contracts; they do not add
 new illustrated masters. The v0.7 stage/effect build and stage report pass on
-the current ROM; the archive passes 214 technical checks and repeated
+the verified v0.7.0 baseline ROM; the archive passes 214 technical checks and repeated
 packaging produces identical bytes. This source evidence does not
 close the public, human, independent full-combat/soak or real-console gates.
+
+## v0.7.1 verified technical feedback timing
+
+The source freeze is commit `6d756749dbc3fa176e26217f2f59525c9af360d8`, tree
+`fa15fea48b5cc2a09608da199810db885872e434`; its canonical ROM is
+`64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022`. The
+canonical batch records 30,037 native checks. The technical snapshot keeps the v0.7.0
+art masters, palettes and native effect cells unchanged. Its impact path leaves
+the first frozen tick quiet for the second actor upload, then updates the HUD
+and constructs the `COUNTER!` or `COMBO!` tile row together on the second
+frozen tick. KO cards use quiet-first/panel-second timing. Training Select
+applies the round reset immediately, then uses three frozen reset frames to
+flush HUD, banner and footer state without rebuilding unchanged labels. Intro
+ticks 109, 108 and 107 are quiet, `GET READY`, and HUD. Fresh export, native
+endurance and independent smoke evidence pass, as does the package audit. Human
+likeness/balance, listening, controller, real-console and branding gates remain
+open.
 
 ## v0.4.1 Reston hair correction
 

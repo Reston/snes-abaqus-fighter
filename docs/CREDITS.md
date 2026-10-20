@@ -34,6 +34,13 @@ The four original synthesized sound cues are also encoded as resident SPC
 effects to avoid transferring sample data during combat. No outside audio
 was added.
 
+The v0.7.1 resident-command adapter follows the FIFO/acknowledgement protocol
+in [PVSnesLib 4.6 SNESMod](https://github.com/alekmaul/pvsneslib/blob/4.6.0/pvsneslib/source/snesmodwla.asm).
+It services at most one ready command per frame; the SDK still owns boot,
+module/sample loading and scene-load flushes. The game does not use streamed
+sample playback. PVSnesLib and SNESMod license notices remain included below
+and in the offline package.
+
 ## People
 
 Identity photographs and public names were sourced from the user-provided [Solutions team page](https://abaqus.io/es/abaqus-solutions/team) and [Wealth Care page](https://abaqus.io/es/wealth-care/about-us). The twelve individual fighter atlases are original cartoon illustrations generated from those references, with matching 32×40 selection cards and 64×80 profile portraits cropped from each master. The v0.4 likeness pass refreshed Damián, Cote, Negger, Fernando, Mamariaga, Reston and Roxana with built-in imagegen v2 edits; the earlier v2 masters for Ivo, Cristóbal, David, Cristián and Lars remain selected. Full prompts and identity notes accompany every character under `assets/art/characters/`. The source photographs remain subject to the original owners' rights. Download URLs are retained in `assets/references/team.json` and `wealth.json`.

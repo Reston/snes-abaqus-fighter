@@ -4,7 +4,7 @@ The active public-release target and evidence gates are in
 [PUBLIC-RELEASE.md](PUBLIC-RELEASE.md). Treat this roadmap as the work backlog;
 the release gates decide when the public candidate is actually ready.
 
-The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass set the cartoon arcade direction. v0.3 introduced twelve individual sixteen-pose atlases and likeness correction. v0.4 standardized the 96x80 physical scale and rebuilt the presentation. v0.5.0 adds animation, simpler menus and buffered inputs. v0.5.1 tightens contact, hit-confirm and combo rules, clears live-fight instructions, adds result scores and corrects emulator scaling. The v0.6.0 source integration adds the final airborne, throw, knockdown and wake frame range and combat flow. The v0.6.1 CPU-correctness pass has four-suite and pinned compatibility evidence on one ROM SHA, with public gates still open. v0.7.0 stage/effect integration has a verified ROM, a 214-check archive audit and reproducible development packaging.
+The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass set the cartoon arcade direction. v0.3 introduced twelve individual sixteen-pose atlases and likeness correction. v0.4 standardized the 96x80 physical scale and rebuilt the presentation. v0.5.0 adds animation, simpler menus and buffered inputs. v0.5.1 tightens contact, hit-confirm and combo rules, clears live-fight instructions, adds result scores and corrects emulator scaling. The v0.6.0 source integration adds the final airborne, throw, knockdown and wake frame range and combat flow. The v0.6.1 CPU-correctness pass has four-suite and pinned compatibility evidence on one ROM SHA, with public gates still open. v0.7.0 stage/effect integration has a verified ROM, a 214-check archive audit and reproducible development packaging. v0.7.1 native technical evidence is complete on one ROM SHA; the offline package passes 6,153 technical audit checks; human likeness/balance, listening, controller, console and branding gates remain open.
 
 ## v0.5 baseline
 
@@ -105,8 +105,8 @@ one-tick cadence frames and captured audio. These are correctness and smoke
 checks; they do not establish strategic AI or complete human balance tuning.
 
 Real KO contact resolution keeps damage, winner selection, timers and layout
-unchanged; `roundBannerPending` defers panel/name/HUD transfer until the first
-frozen `roundEnd` tick to avoid a contact-time stall.
+unchanged; `roundBannerPending` keeps the first frozen `roundEnd` tick quiet,
+then transfers panel/name/HUD on the second tick to avoid a contact-time stall.
 
 ## v0.7.0 stage/effect integration (verified source milestone)
 
@@ -121,18 +121,18 @@ masters without changing their original graphics or palettes:
   intro, pause, hitstop and round end. Ambient DMA yields to actor and
   interface transfers and uses no additional OBJ sprites.
 - Original native effect cells gain small authored phases for strike, guard
-  contact, high projectile and ground wave. The floor shadow's blank top rows
-  are removed and its visible ellipse is moved to the floor with higher OAM
-  priority while preserving the lower ink rows.
+  contact, high projectile and ground wave. The shadow source ellipse moves
+  from cell rows `Y22..27` to `Y16..21`; OAM moves from `Y196` to `Y202`,
+  retaining visible screen rows `202..207` at priority 2.
 - `main` records post-wait `STAT77` at `TRACE[114]`; `TRACE[115..118]` record
   completed phase, live clock, pending phase and pending age. The Fighter/Wave ABI at
   `0..113` remains unchanged.
 
-The current v0.7.0 ROM is SHA256
+The historical v0.7.0 ROM is SHA256
 `e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84` with
 header checksum `0953`. Five native reports pass with 2,595 gameplay, 18,085
 roster, 215 presentation, 854 focused-input and 4,537 stage checks (26,286 in
-the current report snapshot). The canonical `Test.cmd` run recorded 4,528
+the v0.7.0 report snapshot). The canonical `Test.cmd` run recorded 4,528
 stage checks; a focused extension added nine patch-only PPU assertions and
 reran the unchanged ROM/engine. The expanded compatibility smoke also passes
 against the same SHA. The v0.7 archive passes 214 technical checks and repeated
@@ -141,6 +141,42 @@ gates remain open.
 The phase captures changed `17/18/18`, `13/16/13` and `8/8/8` pixels across
 the three stages (phases 1-3); the synchronized two-wave check peaked at 28
 tiles / 14 sprites with `STAT77` `0x01` and overflow mask `0xC0` clear.
+
+## v0.7.1 verified technical snapshot
+
+Source freeze commit:
+`6d756749dbc3fa176e26217f2f59525c9af360d8`; tree:
+`fa15fea48b5cc2a09608da199810db885872e434`.
+Canonical ROM SHA256:
+`64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022`, header
+checksum `9496`. The canonical `Test.cmd` batch passes all five native suites:
+2,595 gameplay, 18,085 roster, 215 presentation, 999 focused-input and 8,143
+stage checks (30,037 total). Thirty mirrored both-pad pause/cadence regressions
+and bounded `clearFightHint`/`fillPausePanel` coverage are included. Full native
+288-case x 600-frame coverage plus four replays passes; the independent bsnes
+smoke and bounded 48 x 600 (28,800-frame) run pass too.
+
+The CPU keeps the natural long-range projectile/low-wave opening above phase
+97, skips a CPU-owned wave while active, and preserves family bands. The first
+frozen impact tick is quiet for the second actor upload; HUD and
+`COUNTER!`/`COMBO!` construction run together on the second tick. KO cards are
+quiet first/panel second. Training Select applies the round state immediately,
+flushes HUD/banner/footer over three frozen reset frames and resets `fightClock`
+to zero. Intro ticks 109, 108 and 107 are quiet, `GET READY`, and HUD.
+
+Fresh export validation matches the exact ROM/manifest plus 214 assets and
+symbols in 63.25 seconds. Native endurance passes 216,356 live frames in each
+of three modes at 60.098811862 FPS, one boot/unload with zero reboots, wraps
+4/4/3, all coverage true and all five failure arrays empty. Video and PCM are
+healthy, SPC peaks at six and drains, stable FIGHT lag is zero, maximum
+non-fight windows are 402/587/252, and the accelerated run took 164.968
+seconds. `validate_release_evidence` passes. The test driver uses the shortest
+four-by-three grid with at most three pulses per fighter; all 720 timeout,
+loaded-ID, stage and cadence checks remain unchanged, so this is test overhead
+only.
+
+The package passes 6,153 technical audit checks. Human likeness and balance, listening, controller,
+real-console and branding gates remain open; no public-readiness claim is made.
 
 ## Next combat pass
 
@@ -158,7 +194,7 @@ tiles / 14 sprites with `STAT77` `0x01` and overflow mask `0xC0` clear.
 ## Release-quality validation
 
 - Keep running the gameplay, roster, presentation, focused input and stage
-  suites after changes. The current v0.7.0 reports share ROM SHA
+  suites after changes. The historical v0.7.0 reports share ROM SHA
   `e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84`, and the
   separate pinned compatibility report matches it. The exact-ROM evidence gate
   is satisfied; the focused stage extension is supplemental to the canonical
