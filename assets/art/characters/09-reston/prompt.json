@@ -1,0 +1,23 @@
+{
+  "character_id": "09-reston",
+  "character_name": "Jos\u00e9 David \u201cReston\u201d Ordo\u00f1ez",
+  "asset": "atlas.png",
+  "generation_mode": "built-in image_gen",
+  "generated_at": "2026-10-19",
+  "transparent_background": true,
+  "source_references": [
+    {
+      "path": "assets/references/fighter-08.jpg",
+      "role": "supporting reference shown to the generator but explicitly excluded from Reston identity"
+    },
+    {
+      "path": "assets/references/fighter-09.jpg",
+      "role": "identity reference portrait; preserve close-cropped/receding dark hair and prominent beard"
+    },
+    {
+      "path": "assets/art/fighter-atlas-cartoon.png",
+      "role": "style and technical reference for proportions and pose readability only"
+    }
+  ],
+  "prompt_text": "Use case: stylized-concept\nAsset type: original native SNES fighting-game character sprite atlas master\nInput images: Image 1 is the identity reference portrait for Ignacio \u201cMamariaga\u201d Madariaga and must not be used for this character; Image 2 is the identity reference portrait for Jos\u00e9 David \u201cReston\u201d Ordo\u00f1ez; Image 3 is the existing project cartoon fighter atlas as style and technical reference only.\nPrimary request: Create one original character sprite atlas for the fictional game character RESTON, based on the second portrait only. It must be an exact 4 columns by 4 rows layout containing exactly 16 separate full-body poses, one pose per cell, with no text or labels. All poses face RIGHT in profile or three-quarter profile. Character identity: medium-heavy forward-pressure office fighter, preserve the second portrait's close-cropped/receding dark hair, broad face, and prominent neatly trimmed beard as readable cartoon traits. Costume: playful copper/red-orange waist-length jacket with a pale cream collar and pale cuffs over a dark charcoal shirt, dark navy trousers, dark shoes with warm copper highlights. Strong grounded stance, heavy shoulders, large exaggerated fists, assertive forward motion and expressive eyebrows.\nStyle/medium: original 1993-style arcade fighting-game illustration, chunky hand-drawn cartoon pixel/cel shading, crisp navy-blue outline, limited approximately 15-color material ramps per character, bold flat shapes, readable at 64x80 pixels, stylized and playful, clearly not photorealistic, no gore, no realism. Use the existing atlas only for proportions, silhouette clarity, and pose readability; do not copy any Capcom character, sprite, logo, or design.\nComposition/framing: square transparent canvas, generous true-alpha gap between cells, consistent scale and baseline across all cells, complete connected anatomy in every cell, hands and feet inside cell bounds. The four columns and four rows are an invisible layout guide only; do not draw grid lines.\nLighting/mood: bright arcade readability with cel-shaded highlight planes and deep navy contour shadows.\nColor palette: copper/red-orange jacket with brick-red shadow and orange highlight, pale cream collar/cuffs, charcoal shirt, dark navy trousers, dark shoes, warm skin, dark hair and beard, navy outlines.\nMaterials/textures: simple graphic fabric folds and clean cel-shaded ramps, no photographic texture.\nExact row order, left to right:\nRow 1: idle guard; front walk; back walk; low crouch guard.\nRow 2: tucked jump; extended jab; cross punch; high side kick.\nRow 3: low sweep; raised block; hurt recoil; victory pose.\nRow 4: two-hand energy cast with empty hands and no projectile/effect; rising uppercut; horizontal lying KO with HEAD LEFT; forward shoulder lunge.\nConstraints: transparent background, no background scene, no floor, no shadows outside the character, no projectile, no energy orb, no sparks, no text, no watermark, no logo, no border, no grid, no UI, no extra people, exactly 16 complete figures, one disconnected figure per cell, consistent costume and identity, right-facing across all poses.\nAvoid: photorealism, digitized actors, Mortal Kombat look, realistic anatomy, muddy black costume, unconnected floating limbs, cropped heads/feet, duplicate poses, left-facing figures, Capcom or Street Fighter character likenesses."
+}

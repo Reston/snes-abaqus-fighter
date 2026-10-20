@@ -1,0 +1,29 @@
+{
+  "character_id": "07",
+  "character": "Cristian Valdés",
+  "asset": "atlas.png",
+  "mode": "built-in imagegen",
+  "generated_image": "C:/Users/user/.codex/generated_images/01a156f6-2523-7272-9ee2-1fd09c08758e/exec-d50c49de-8229-4934-b6f9-db5bdbec182a.png",
+  "references": [
+    {
+      "path": "assets/references/fighter-07.jpg",
+      "role": "face and hair reference; broad identity cues only"
+    },
+    {
+      "path": "assets/art/fighter-atlas-cartoon.png",
+      "role": "existing original cartoon SNES atlas style and scale reference"
+    },
+    {
+      "path": "assets/art/characters/06-fernando/atlas.png",
+      "role": "same-pass generated style and cell-scale reference; keep Cristian visibly distinct"
+    }
+  ],
+  "output": {
+    "format": "PNG",
+    "size": [1182, 1330],
+    "mode": "RGBA",
+    "alpha": "genuinely transparent outside the figures",
+    "layout": "4 columns by 4 rows, 16 independent poses"
+  },
+  "prompt": "Use case: stylized-concept\nAsset type: original native SNES fighting-game character sprite atlas\nPrimary request: Create one clean sprite-sheet atlas for Cristian Valdés, a fictional cartoon fighting-game character inspired by a Chilean software-company coworker. Exactly 4 columns by 4 rows, exactly 16 equal square cells, one full-body pose centered in each cell with generous transparent separation. Each cell must be a single connected character silhouette with hands attached to arms and feet attached to legs. The output must be a real transparent PNG with no opaque backdrop.\nInput images: Image 1 is Fernando's face reference and is not Cristian; Image 2 is the facial reference for Cristian, preserving his short dark hair, broad eyebrows, calm square face and friendly composed expression as cartoon traits. Image 3 is the project's existing original cel-shaded sprite-sheet style reference only; match its readability and SNES-era proportions without copying its character. Image 4 is a generated coworker sprite-sheet style/scale reference only; keep Cristian visibly distinct.\nSubject: Cristian is a tall, defensive counter fighter with long reach, a lean upright silhouette, composed expression, disciplined guard and extended limbs. Outfit: slate navy sleeveless sweater vest over pale rolled-sleeve shirt, dark tailored trousers, simple dark shoes. Keep the outfit consistent in every cell; no logos or readable lettering. Make the vest and pale sleeves read clearly at small SNES scale.\nStyle/medium: original 1993 arcade fighting-game cartoon pixel/cel-shaded illustration, chunky athletic proportions adapted to a taller frame, bold dark navy outlines, hard-edged cel-shading with a limited palette of about 15 colors, clean material ramps, expressive face and fists, suitable for nearest-neighbor reduction to 64x80 SNES sprites. It should feel like a bright comic-book arcade game, never a photorealistic digitized fighter and never Mortal Kombat. Avoid copying any commercial character or sprite.\nComposition/framing: all 16 cells show Cristian facing right in side view, full body visible from hair to shoes, consistent baseline and scale. Use this exact reading order, left to right then top to bottom:\n1 idle guard; 2 forward walk; 3 backward walk; 4 crouch guard;\n5 tucked jump; 6 straight jab; 7 cross punch; 8 high side kick;\n9 low sweep; 10 raised block; 11 hurt recoil; 12 victory;\n13 two-hand energy cast with both palms together and a small glow between hands but absolutely no projectile; 14 rising uppercut;\n15 lying KO with head on the left and feet on the right; 16 forward shoulder lunge.\nMake the action silhouettes distinct and readable, with no overlap between cells. Long reach must be visible in the jab, cross punch, kick and lunge while keeping every hand and foot inside its cell.\nLighting/mood: bright confident arcade presentation, crisp highlights on slate vest, pale sleeves and skin, no cast shadow.\nColor palette: deep navy outline, slate/navy vest material ramps, pale warm gray shirt, dark trousers, warm skin, dark hair, tiny restrained accent colors.\nMaterials/textures: flat hand-inked cel shading, clean knit vest texture simplified to a few bands, simple cloth folds and shoe highlights.\nText (verbatim): none.\nConstraints: exact 4x4 grid of 16 poses; transparent background; no frame borders, no grid lines, no captions, no watermarks, no speech bubbles, no logos, no background scenery, no extra objects, no projectile. Preserve one consistent character and outfit in all cells.\nAvoid: realism, photographic skin, gore, blood, weapons, extra limbs, disconnected hands, duplicated body parts, cropped feet or head, dramatic perspective, 3D render, soft airbrush, noisy texture, black background, checkerboard background."
+}

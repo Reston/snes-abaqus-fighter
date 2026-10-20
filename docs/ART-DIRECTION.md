@@ -1,18 +1,43 @@
 # Art direction and image generation
 
-## Current direction: v0.2 cartoon arcade
+## Current direction: v0.3 individual cartoon roster
+
+The roster now uses twelve separate illustrated masters with individual bodies, costumes, facial features and silhouettes. Six art subagents each developed two fighters using the **built-in imagegen** tool, public appearance references and the existing cartoon style reference. The shared sixteen-pose layout supports the same native renderer; it does not imply a shared recolored body. Roxana has her own woman character design and poses.
+
+Each directory contains `atlas.png`, the complete generation prompt/provenance in `prompt.json`, and `identity.md` describing the fictional costume and recognition cues:
+
+| Fighter | Master directory | Costume |
+| --- | --- | --- |
+| Damián | `assets/art/characters/00-damian/` | Cobalt rolled-sleeve blazer |
+| Ivo | `assets/art/characters/01-ivo/` | Emerald jacket, charcoal shirt |
+| Cristóbal | `assets/art/characters/02-cristobal/` | Orange work jacket |
+| Cote | `assets/art/characters/03-cote/` | Crimson waistcoat, pale sleeves |
+| Negger | `assets/art/characters/04-negger/` | Purple bomber jacket |
+| David | `assets/art/characters/05-david/` | Amber shirt, suspenders |
+| Fernando | `assets/art/characters/06-fernando/` | Teal field jacket |
+| Cristián | `assets/art/characters/07-cristian/` | Navy sweater vest |
+| Mamariaga | `assets/art/characters/08-mamariaga/` | Chartreuse hoodie, glasses |
+| Reston | `assets/art/characters/09-reston/` | Copper jacket, pale collar |
+| Roxana | `assets/art/characters/10-roxana/` | Magenta jacket, wide-leg slacks |
+| Lars | `assets/art/characters/11-lars/` | Ice-blue jacket |
+
+The sixteen key poses are idle, two walk steps, crouch, jump, jab, cross, high kick, sweep, block, hurt, victory, cast, rising uppercut, knockout and rush. Each master is isolated and reduced to the unchanged 64×80 native stream format. Every fighter gets one shared fifteen-color palette across their frames; source-master crops provide matching selection portraits. Native previews, extraction boxes and hashes are saved under `assets/generated/`. Source fixes are recorded in each prompt file; earlier source variants are preserved beside the selected master when applicable.
+
+The stages retain the bright illustrated v0.2 masters. No CLI/API image-generation fallback or commercial game sprites were used. More in-between animation and more individualized hit effects remain future art work.
+
+## Historical direction: v0.2 cartoon arcade
 
 The user requested a more cartoon-like Street Fighter II aesthetic. The current masters replace the realistic suit rendering and photographic selection portraits with original illustrated arcade art: oversized expressive faces and fists, broader silhouettes, clean navy outlines, cel shading and saturated costume colors. The [official Capcom reference](https://captown.capcom.com/en/classic_games/22) informed the visual direction; no commercial sprites were imported.
 
-Current project-bound masters, generated with the **built-in imagegen** tool:
+Project-bound masters generated for v0.2 with the **built-in imagegen** tool:
 
-- `assets/art/fighter-atlas-cartoon.png` — sixteen newly illustrated poses.
+- `assets/art/fighter-atlas-cartoon.png` — historical shared sixteen-pose style reference.
 - `assets/art/stage-atlas-cartoon.png` — brighter illustrated Las Condes, El Castillo and La Oficina.
-- `assets/art/portraits-cartoon.png` — all twelve cartoon portraits, in the team reference order.
+- `assets/art/portraits-cartoon.png` — historical twelve-portrait atlas.
 
 The exact final prompt set and reference roles are saved in [`assets/art/cartoon-prompts.json`](../assets/art/cartoon-prompts.json). The original two atlases below are retained as historical references and are no longer compiled into the current ROM.
 
-The native asset pipeline preserves hard edges with nearest-neighbor scaling. Fighters use an authored fifteen-color palette with separate material ramps for coat, trousers, skin and shirt. Coat colors match the illustrated roster portraits. Source silhouettes are isolated by component labels before cropping so neighboring poses cannot leak pixels into a frame. Native code-authored hair, beard and glasses details remain shared-template identity variations.
+The v0.2 asset pipeline used nearest-neighbor scaling, an authored fifteen-color material palette and native head-detail variations on a shared body. The v0.3 pipeline replaces that approach with the individual masters above.
 
 ## Historical direction: v0.1
 
@@ -23,7 +48,7 @@ Original project-bound masters:
 - `assets/art/stage-atlas.png` — original three-location pixel-art backdrop atlas.
 - `assets/art/fighter-atlas.png` — original Damián-based sixteen-pose animation master, generated with his public headshot as the appearance reference.
 
-Native derivatives live in `assets/generated/`; `tools/make_assets.py` documents the deterministic processing. The original release used the supplied public team photos on the selection screen. The current release replaces those with the illustrated portrait atlas above. The shared base animation template remains an explicit art limitation.
+Native derivatives live in `assets/generated/`; `tools/make_assets.py` documents the deterministic processing. The original release used the supplied public team photos on the selection screen. The v0.2 release replaced those with its illustrated portrait atlas and retained a shared base body. The individual v0.3 masters supersede both fighter approaches.
 
 ## Stage master — final prompt
 

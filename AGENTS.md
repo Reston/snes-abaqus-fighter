@@ -16,8 +16,9 @@ Preserve the native emulator requirement when extending the project.
   OBJ scanline limits and reserved palette banks in mind.
 - Keep original art masters and prompts in the repository. Do not import
   commercial game ROMs, Capcom sprites, or commercial game audio.
-- The initial roster uses shared base animations. Describe that honestly and
-  treat individual animation sets as a planned art pass.
+- The v0.3 roster uses twelve individual illustrated sixteen-pose atlases,
+  with a shared pose-index contract and renderer. Keep their identities and
+  palettes separate; further in-between animation and balance work remains.
 - Do not commit `.tools/`, emulator saves, build intermediates or release ZIPs.
 - Rebuild the offline package with `tools/package.py` only after tests pass
   against the exact current ROM. Keep third-party license notices intact.

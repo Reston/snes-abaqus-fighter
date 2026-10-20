@@ -4,6 +4,7 @@
  */
 #include <snes.h>
 #include "assets.h"
+#include "characters.h"
 
 #define TITLE 0
 #define SELECT 1
@@ -24,10 +25,12 @@ typedef struct {
     u8 hurt, guard, duck, walking, pose, oldpose, won;
     u8 motion, downbuffer, combo, combotime, counter;
 } Fighter;
-typedef struct { s16 x,y; u8 active,face,life,owner; } Wave;
+typedef struct { s16 x,y; u8 active,face,life,owner,speed,low; } Wave;
 
 Fighter fighters[2];
 Wave waves[2];
+/* Cached for the live match; menu/trace code still resolves IDs explicitly. */
+const CharacterProfile *combatProfiles[2];
 u16 ui[1024];
 u16 frame, randomseed, pad0, pad1, edge0, edge1;
 u8 screen, mode, difficulty, menu, selected, selected2, selectPlayer, arena;
@@ -40,17 +43,58 @@ extern char SOUNDBANK__;
 extern void drawActorFast(u16 byteSlot,s16 x,s16 y,u8 flip,u8 palette);
 extern void uploadActor(u8 *source,u16 destination);
 
-const char names[12][12] = {"DAMIAN","IVO","CRISTOBAL","COTE","NEGGER","DAVID","FERNANDO","CRISTIAN","MAMARIAGA","RESTON","ROXANA","LARS"};
-const char specialNames[12][17] = {"KERNEL BURST","CAPITAL WAVE","ATOMIC PUSH","BALANCE BREAK","MACRO SHOCK","AUDIT STRIKE","LEGACY FLASH","RISK REVERSAL","MERGE FORCE","CLOUD CRASH","CLOSE OUT","NORDIC BYTE"};
-const char quotes[12][32] = {"IT WORKS ON MY MACHINE.","COMPOUNDING THE COMBO.","ATOMIC. CONSISTENT. VICTORY.","THE BALANCE IS IN MY FAVOR.","THAT WAS A MACRO MOVE.","YOUR GUARD FAILED THE AUDIT.","LEGACY NEVER GOES DOWN.","RISK: UNDER CONTROL.","MERGED WITHOUT CONFLICTS.","DEPLOYED TO THE TOP.","THE BOOKS ARE NOW CLOSED.","COLD CODE. WARM VICTORY."};
 const char arenaNames[3][12] = {"LAS CONDES","EL CASTILLO","LA OFICINA"};
-const u8 speeds[12] = {20,18,23,21,18,20,19,18,24,21,23,20};
 const u8 power[12] = {3,4,2,3,5,4,4,4,2,3,3,4};
 const u8 startup[10] = {0,4,6,9,5,7,10,10,6,4};
 const u8 active[10] = {0,3,4,5,4,5,6,1,8,1};
 const u8 recovery[10] = {0,9,12,18,10,15,21,23,24,20};
 const u8 damage[10] = {0,7,10,15,8,12,16,15,18,18};
 const u8 reach[10] = {0,28,33,38,35,41,46,0,31,22};
+
+const CharacterProfile *profileFor(u8 id) {
+    /* Keep profile selection explicit for 816-tcc and for trace readability. */
+    switch(id) {
+    case 0:return &characterProfiles[0];
+    case 1:return &characterProfiles[1];
+    case 2:return &characterProfiles[2];
+    case 3:return &characterProfiles[3];
+    case 4:return &characterProfiles[4];
+    case 5:return &characterProfiles[5];
+    case 6:return &characterProfiles[6];
+    case 7:return &characterProfiles[7];
+    case 8:return &characterProfiles[8];
+    case 9:return &characterProfiles[9];
+    case 10:return &characterProfiles[10];
+    default:return &characterProfiles[11];
+    }
+}
+
+u8 attackStartup(const CharacterProfile *c,u8 action) {
+    if(action==7)return c->specialStartup;
+    if(action>=1 && action<=6)return c->normalStartup[action-1];
+    return startup[action];
+}
+u8 attackActive(const CharacterProfile *c,u8 action) {
+    if(action==7)return c->specialActive;
+    return active[action];
+}
+u8 attackRecovery(const CharacterProfile *c,u8 action) {
+    if(action==7)return c->specialRecovery;
+    if(action>=1 && action<=6)return c->normalRecovery[action-1];
+    return recovery[action];
+}
+u8 attackDamage(const CharacterProfile *c,u8 id,u8 action) {
+    if(action==7)return c->specialDamage+power[id]-2;
+    if(action==9)return c->throwDamage+power[id]-2;
+    if(action>=1 && action<=6)return c->normalDamage[action-1]+power[id]-2;
+    return damage[action]+power[id]-2;
+}
+u8 attackReach(const CharacterProfile *c,u8 action) {
+    if(action==7)return c->specialReach;
+    if(action==9)return c->throwRange;
+    if(action>=1 && action<=6)return c->normalReach[action-1];
+    return reach[action];
+}
 
 u16 rng(void) { randomseed = randomseed * 109 + 89; return randomseed; }
 s16 abs16(s16 v) { return v<0 ? -v:v; }
@@ -126,14 +170,17 @@ void showTitle(void) {
     music(0);finishScreen();
 }
 void drawSelect(void) {
-    u8 id;
+    u8 id,speedValue;
     clearUi();id=selectPlayer ? selected2:selected;
     cursor(1+(id%6)*5-(id%6>2 ? 0:0),6,5,7);
     /* Card grid uses 38-pixel spacing; align the outline with the card's tile cells. */
     clearUi();cursor((15+(id%6)*38)/8,(57+(id/6)*57)/8,5,6);
-    panel(21,5);word(2,21,selectPlayer ? "PLAYER 2":"PLAYER 1");word(15,21,names[id]);
-    word(2,23,"POWER");put(9,23,'0'+power[id]);word(14,23,"SPEED");put(21,23,'0'+(speeds[id]-15));
-    center(25,specialNames[id]);fullDirty=1;
+    speedValue=profileFor(id)->walkSpeed-15;
+    panel(21,5);word(2,21,selectPlayer ? "PLAYER 2":"PLAYER 1");word(15,21,characterNames[id]);
+    word(2,23,"POWER");put(9,23,'0'+power[id]);word(14,23,"SPEED");
+    if(speedValue>9)number(21,23,speedValue);else put(21,23,'0'+speedValue);
+    word(2,24,"STYLE");word(8,24,characterStyleNames[id]);
+    center(25,characterSpecialNames[id]);fullDirty=1;
 }
 void showSelect(void) {
     setScreenOff();screen=SELECT;arcade=0;champion=0;commonScreen();loadBackground(4);selectPlayer=0;drawSelect();music(0);finishScreen();
@@ -170,10 +217,10 @@ void resetRound(void) {
         fighters[p].hurt=0;fighters[p].guard=0;fighters[p].duck=0;fighters[p].walking=0;
         fighters[p].oldpose=255;fighters[p].pose=0;fighters[p].combo=0;fighters[p].combotime=0;
         fighters[p].motion=0;fighters[p].downbuffer=0;fighters[p].keys=0;fighters[p].oldkeys=0;
-        waves[p].active=0;
+        waves[p].active=0;waves[p].low=0;waves[p].speed=0;
     }
     seconds=99;secondTick=0;intro=110;roundEnd=0;hitstop=0;shake=0;fxLife=0;
-    panel(0,5);word(1,0,names[fighters[0].id]);word(20,0,names[fighters[1].id]);
+    panel(0,5);word(1,0,characterNames[fighters[0].id]);word(20,0,characterNames[fighters[1].id]);
     put(15,1,'K');put(16,1,'O');word(13,2,"ROUND");put(19,2,'0'+roundNumber);
     if(mode==2)word(12,4,"TRAINING");
     else word(12,4,mode==1 ? "P1 VS P2":"P1 VS CPU");
@@ -184,20 +231,21 @@ void beginMatch(void) {
     setScreenOff();screen=FIGHT;commonScreen();loadBackground(arena);
     fighters[0].id=selected;
     fighters[1].id=mode==0 ? (selected+1+arcade)%12:selected2;
+    combatProfiles[0]=profileFor(fighters[0].id);combatProfiles[1]=profileFor(fighters[1].id);
     fighters[0].won=0;fighters[1].won=0;roundNumber=1;paused=0;
     dmaCopyCGram(fighterPalette(fighters[0].id),128,32);dmaCopyCGram(fighterPalette(fighters[1].id),144,32);
     dmaCopyCGram(&effects_pal,160,32);dmaCopyVram(&effects,0x7800,EFFECTS_SIZE);
     oamInitGfxAttr(0x6000,OBJ_SIZE16_L32);
     for(i=0;i<10;i++)oamMemory[512+i]=0;
-    resetRound();panel(26,2);center(26,"6 BUTTONS / DOWN+P: WAVE");center(27,"BACK GUARD   START PAUSE");
+    resetRound();panel(26,2);center(26,"6 BUTTONS / DOWN+P: SPECIAL");center(27,"BACK GUARD   START PAUSE");
     music(arena+1);finishScreen();
 }
 void showResult(u8 won) {
     setScreenOff();screen=RESULT;resultWin=won;commonScreen();loadBackground(arena);
     panel(7,15);
     center(8,champion?"OFFICE CHAMPION":(won?"SHIFT COMPLETE":"SHIFT OVER"));
-    center(11,names[won ? fighters[0].id:fighters[1].id]);center(13,"WINS THE MATCH");
-    center(16,quotes[won ? fighters[0].id:fighters[1].id]);
+    center(11,characterNames[won ? fighters[0].id:fighters[1].id]);center(13,"WINS THE MATCH");
+    center(16,characterQuotes[won ? fighters[0].id:fighters[1].id]);
     center(19,mode==0 && !champion ? (won?"A: NEXT CHALLENGER":"A: CONTINUE"):"A: REMATCH");
     center(21,"B: CHARACTER SELECT");sound(3);finishScreen();
 }
@@ -227,16 +275,22 @@ u16 cpuKeys(void) {
     return k;
 }
 
-void attackStart(Fighter *f,u8 a) {
+void attackStart(Fighter *f,u8 a,const CharacterProfile *c) {
     f->action=a;f->tick=0;f->connected=0;f->guard=0;f->counter=0;
-    if(a==7) {f->energy-=32;f->motion=0;f->downbuffer=0;sound(2);}
-    else if(a==8) {f->vy=-70;f->y=-1;sound(0);}
+    if(a==7) {
+        f->energy-=32;f->motion=0;f->downbuffer=0;
+        if(c->specialFamily==SPECIAL_RISING){f->vy=c->specialVy;f->y=-1;f->duck=0;}
+        sound(2);
+    }
+    else if(a==8) {f->vy=c->uppercutVy;f->y=-1;sound(0);}
     else sound(0);
 }
 void controls(u8 p,u16 keys) {
     Fighter *f=&fighters[p];Fighter *enemy=&fighters[1-p];
+    const CharacterProfile *c;
     u16 edge,forward,back;
     u8 a;
+    c=combatProfiles[p];
     f->oldkeys=f->keys;f->keys=keys;edge=keys & ~f->oldkeys;
     f->walking=0;
     if(f->motion)f->motion--;
@@ -254,26 +308,27 @@ void controls(u8 p,u16 keys) {
     }
     f->duck=(keys&KEY_DOWN) && !f->y;
     f->guard=(keys&back) && !f->y;
-    if((edge&KEY_UP) && !f->y) {f->vy=-91;f->y=-1;f->duck=0;}
+    if((edge&KEY_UP) && !f->y) {f->vy=c->jumpVy;f->y=-1;f->duck=0;}
     if(edge&ATTACKS) {
         if((edge&PUNCHES) && (f->motion || (keys&KEY_DOWN)) && f->energy>=32 && !f->y && !(edge&KEY_L))a=7;
         else if((edge&KEY_L) && (keys&KEY_DOWN) && !f->y)a=8;
-        else if((edge&KEY_L) && (keys&forward) && !f->y && !enemy->y && abs16(f->x-enemy->x)<27*16)a=9;
+        else if((edge&KEY_L) && (keys&forward) && !f->y && !enemy->y && abs16(f->x-enemy->x)<c->throwRange*16)a=9;
         else if(edge&KEY_L)a=3;
         else if(edge&KEY_R)a=6;
         else if(edge&KEY_X)a=2;
         else if(edge&KEY_A)a=5;
         else if(edge&KEY_Y)a=1;
         else a=4;
-        attackStart(f,a);
+        attackStart(f,a,c);
     } else if(!(keys&KEY_DOWN) || f->y) {
-        if(keys&forward){f->x+=f->face?speeds[f->id]:-speeds[f->id];f->walking=1;}
-        else if(keys&back){f->x+=f->face?-14:14;f->walking=1;}
+        if(keys&forward){f->x+=f->face?c->walkSpeed:-c->walkSpeed;f->walking=1;}
+        else if(keys&back){f->x+=f->face?-c->backSpeed:c->backSpeed;f->walking=1;}
     }
 }
 
 void hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
     Fighter *a=&fighters[attacker];Fighter *d=&fighters[defender];
+    const CharacterProfile *dc=combatProfiles[defender];
     u16 back;
     u8 blocked;
     back=d->face?KEY_LEFT:KEY_RIGHT;
@@ -283,7 +338,7 @@ void hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
     if(blocked) {
         d->guard=1;d->hurt=10;dmg=dmg>14?1:0;fxType=1;hitstop=3;
     } else {
-        if(d->action && d->tick<startup[d->action]) {dmg+=3;a->counter=1;}
+        if(d->action && d->tick<attackStartup(dc,d->action)) {dmg+=3;a->counter=1;}
         if(a->combotime)a->combo++;else a->combo=1;
         a->combotime=45;d->hurt=12+dmg/3;d->action=0;d->tick=0;d->guard=0;
         fxType=0;hitstop=5;shake=6;
@@ -298,6 +353,7 @@ void hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
 
 void updateFighter(u8 p) {
     Fighter *f=&fighters[p];Wave *w=&waves[p];
+    const CharacterProfile *c=combatProfiles[p];
     if(f->combotime) {f->combotime--;if(!f->combotime){f->combo=0;f->counter=0;clearBanner();}}
     if(f->hurt) {
         f->hurt--;
@@ -305,37 +361,43 @@ void updateFighter(u8 p) {
         if(!f->hurt)f->guard=0;
     }
     if(f->y || f->vy) {
-        f->y+=f->vy;f->vy+=5;
+        f->y+=f->vy;f->vy+=c->gravity;
         if(f->y>=0){f->y=0;f->vy=0;if(f->action==8)f->action=0;}
     }
     if(f->action) {
         f->tick++;
-        if(f->action==7 && f->tick==startup[7] && !w->active) {
-            w->active=1;w->owner=p;w->face=f->face;w->x=f->x+(f->face?22*16:-22*16);w->y=FLOOR-39;w->life=100;
+        if(f->action==7 && c->specialFamily==SPECIAL_RUSH && f->tick<=c->specialStartup+c->specialActive) {
+            f->x+=f->face?c->specialSpeed:-c->specialSpeed;
         }
-        if(f->action==6 && f->tick<startup[6])f->x+=f->face?16:-16;
-        if(f->tick>=startup[f->action]+active[f->action]+recovery[f->action]) {f->action=0;f->tick=0;f->duck=0;}
+        if(f->action==7 && (c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE) && f->tick==c->specialStartup && !w->active) {
+            w->active=1;w->owner=p;w->face=f->face;w->speed=c->specialSpeed;w->low=c->specialFamily==SPECIAL_GROUNDWAVE;
+            w->x=f->x+(f->face?22*16:-22*16);w->y=w->low?FLOOR-18:FLOOR-39;w->life=c->specialLife;
+        }
+        if(f->action==6 && f->tick<attackStartup(c,6))f->x+=f->face?16:-16;
+        if(f->tick>=attackStartup(c,f->action)+attackActive(c,f->action)+attackRecovery(c,f->action)) {f->action=0;f->tick=0;f->duck=0;}
     }
     if((frame&15)==0 && f->energy<ENERGY_MAX){f->energy++;hudDirty=1;}
     if(f->x<24*16)f->x=24*16;if(f->x>232*16)f->x=232*16;
 }
 u8 canHit(u8 p) {
     Fighter *f=&fighters[p];Fighter *d=&fighters[1-p];
+    const CharacterProfile *c=combatProfiles[p];
     if(!f->action)return 0;
-    if(f->action==7)return 0;
+    if(f->action==7 && (c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE))return 0;
     if(f->connected)return 0;
     if(f->hurt)return 0;
     if(!d->hp)return 0;
-    if(f->tick<startup[f->action] || f->tick>=startup[f->action]+active[f->action])return 0;
+    if(f->tick<attackStartup(c,f->action) || f->tick>=attackStartup(c,f->action)+attackActive(c,f->action))return 0;
     if((d->x>f->x) != (f->face!=0))return 0;
-    if(abs16(f->x-d->x)>(reach[f->action]+10)*16)return 0;
+    if(abs16(f->x-d->x)>(attackReach(c,f->action)+10)*16)return 0;
     if(abs16(f->y-d->y)>38*16)return 0;
     if(f->action==9 && (d->y || d->hurt))return 0;
     return 1;
 }
 void combat(void) {
-    u8 a0,a1,m0,m1,p,finished;
+    u8 a0,a1,m0,m1,p,finished,low0,low1,air0,air1;
     s16 distance;
+    const CharacterProfile *c0,*c1,*cw;
     controls(0,pad0);controls(1,mode==1?pad1:cpuKeys());
     updateFighter(0);updateFighter(1);
     distance=fighters[1].x-fighters[0].x;
@@ -343,20 +405,27 @@ void combat(void) {
         if(distance>=0){fighters[0].x-=12;fighters[1].x+=12;}else{fighters[0].x+=12;fighters[1].x-=12;}
     }
     a0=canHit(0);a1=canHit(1);m0=fighters[0].action;m1=fighters[1].action;
-    if(a0){fighters[0].connected=1;hurt(0,1,damage[m0]+power[fighters[0].id]-2,fighters[0].duck && m0>=4,fighters[0].y<0,m0==9);}
-    if(a1){fighters[1].connected=1;hurt(1,0,damage[m1]+power[fighters[1].id]-2,fighters[1].duck && m1>=4,fighters[1].y<0,m1==9);}
+    c0=combatProfiles[0];c1=combatProfiles[1];
+    low0=(m0==7)?(c0->specialFamily==SPECIAL_GROUNDWAVE):(fighters[0].duck && m0>=4);
+    low1=(m1==7)?(c1->specialFamily==SPECIAL_GROUNDWAVE):(fighters[1].duck && m1>=4);
+    air0=(m0==7)?(c0->specialFamily==SPECIAL_RISING):(fighters[0].y<0);
+    air1=(m1==7)?(c1->specialFamily==SPECIAL_RISING):(fighters[1].y<0);
+    if(a0){fighters[0].connected=1;hurt(0,1,attackDamage(c0,fighters[0].id,m0),low0,air0,m0==9);}
+    if(a1){fighters[1].connected=1;hurt(1,0,attackDamage(c1,fighters[1].id,m1),low1,air1,m1==9);}
     for(p=0;p<2;p++) {
         if(waves[p].active) {
-            waves[p].x+=waves[p].face?45:-45;
+            cw=p?c1:c0;
+            waves[p].x+=waves[p].face?waves[p].speed:-waves[p].speed;
             waves[p].life--;
-            if(!waves[p].life || waves[p].x<0 || waves[p].x>256*16)waves[p].active=0;
-            else if(abs16(waves[p].x-fighters[1-p].x)<19*16 && fighters[1-p].y>-40*16) {
-                hurt(p,1-p,15+power[fighters[p].id],0,0,0);waves[p].active=0;
+            if(!waves[p].life || waves[p].x<0 || waves[p].x>256*16){waves[p].active=0;waves[p].low=0;waves[p].speed=0;}
+            else if(abs16(waves[p].x-fighters[1-p].x)<(cw->specialReach+4)*16 && fighters[1-p].y>-40*16) {
+                hurt(p,1-p,attackDamage(cw,fighters[p].id,7),waves[p].low,0,0);waves[p].active=0;waves[p].low=0;waves[p].speed=0;
             }
         }
     }
     if(waves[0].active && waves[1].active && abs16(waves[0].x-waves[1].x)<16*16) {
-        fxX=waves[0].x>>4;fxY=waves[0].y;fxLife=10;fxType=0;waves[0].active=0;waves[1].active=0;sound(1);
+        fxX=waves[0].x>>4;fxY=waves[0].y;fxLife=10;fxType=0;
+        waves[0].active=0;waves[1].active=0;waves[0].low=0;waves[1].low=0;waves[0].speed=0;waves[1].speed=0;sound(1);
     }
     if(mode==2) {
         seconds=99;
@@ -371,11 +440,12 @@ void combat(void) {
         if(seconds==0)finished=1;
         if(finished) {
             roundEnd=180;waves[0].active=0;waves[1].active=0;
+            waves[0].low=0;waves[1].low=0;waves[0].speed=0;waves[1].speed=0;
             if(fighters[0].hp==fighters[1].hp)winner=2;
             else winner=fighters[0].hp>fighters[1].hp?0:1;
             if(winner<2)fighters[winner].won++;
             clearBanner();panel(10,3);center(10,seconds?"K.O.":"TIME OVER");
-            if(winner<2){center(12,names[fighters[winner].id]);}else center(12,"DOUBLE K.O.");
+            if(winner<2){center(12,characterNames[fighters[winner].id]);}else center(12,"DOUBLE K.O.");
             shake=10;sound(3);hud();
         }
     }
@@ -383,6 +453,7 @@ void combat(void) {
 
 u8 poseFor(u8 p) {
     Fighter *f=&fighters[p];
+    const CharacterProfile *c=combatProfiles[p];
     if(roundEnd) {if(!f->hp)return 14;if(winner==p)return 11;return 10;}
     if(f->hurt)return f->guard?9:10;
     if(f->action) {
@@ -391,7 +462,10 @@ u8 poseFor(u8 p) {
         case 2:return f->tick<4?0:6;
         case 3:return f->tick<6?0:6;
         case 4:case 5:case 6:return f->tick<4?0:(f->duck?8:7);
-        case 7:return 12;
+        case 7:
+            if(c->specialFamily==SPECIAL_RUSH)return 15;
+            if(c->specialFamily==SPECIAL_RISING)return 13;
+            return 12;
         case 8:return 13;
         default:return 15;
         }
@@ -445,7 +519,7 @@ void fightTick(void) {
     }
     if(roundEnd) {
         roundEnd--;
-        if(roundEnd==100) {clearBanner();panel(10,3);center(10,winner<2?names[fighters[winner].id]:"DRAW");center(12,winner<2?"WINS THE ROUND":"TRY AGAIN");}
+        if(roundEnd==100) {clearBanner();panel(10,3);center(10,winner<2?characterNames[fighters[winner].id]:"DRAW");center(12,winner<2?"WINS THE ROUND":"TRY AGAIN");}
         if(!roundEnd) {
             if(fighters[0].won>=2 || fighters[1].won>=2) {
                 resultWin=fighters[0].won>=2;
@@ -501,6 +575,9 @@ void menuTick(void) {
 }
 
 void trace(void) {
+    const CharacterProfile *c0,*c1;
+    if(screen==FIGHT){c0=combatProfiles[0];c1=combatProfiles[1];}
+    else {c0=profileFor(fighters[0].id);c1=profileFor(fighters[1].id);}
     TRACE[0]=0xaaba;TRACE[1]=screen;TRACE[2]=frame;TRACE[3]=mode;
     TRACE[4]=fighters[0].hp;TRACE[5]=fighters[1].hp;
     TRACE[6]=fighters[0].x;TRACE[7]=fighters[1].x;
@@ -514,10 +591,28 @@ void trace(void) {
     TRACE[26]=fighters[0].pose;TRACE[27]=fighters[1].pose;
     TRACE[28]=roundEnd;TRACE[29]=hitstop;TRACE[30]=fighters[0].combo;
     TRACE[31]=champion;
+    /* Character contract for headless roster verification. */
+    TRACE[32]=fighters[0].id;TRACE[33]=fighters[1].id;
+    TRACE[34]=c0->specialFamily;TRACE[35]=c1->specialFamily;
+    TRACE[36]=c0->walkSpeed;TRACE[37]=c1->walkSpeed;
+    TRACE[38]=c0->jumpVy;TRACE[39]=c1->jumpVy;
+    TRACE[40]=fighters[0].face;TRACE[41]=fighters[1].face;
+    /* Additional tuning/state fields are kept after the stable contract. */
+    TRACE[42]=c0->backSpeed;TRACE[43]=c1->backSpeed;
+    TRACE[44]=c0->specialStartup;TRACE[45]=c1->specialStartup;
+    TRACE[46]=c0->specialActive;TRACE[47]=c1->specialActive;
+    TRACE[48]=c0->specialRecovery;TRACE[49]=c1->specialRecovery;
+    TRACE[50]=c0->specialDamage;TRACE[51]=c1->specialDamage;
+    TRACE[52]=c0->specialReach;TRACE[53]=c1->specialReach;
+    TRACE[54]=c0->throwRange;TRACE[55]=c1->throwRange;
+    TRACE[56]=waves[0].low;TRACE[57]=waves[1].low;
+    TRACE[58]=waves[0].speed;TRACE[59]=waves[1].speed;
+    TRACE[60]=waves[0].life;TRACE[61]=waves[1].life;
 }
 int main(void) {
     u8 sx;
     randomseed=0xABA;frame=0;menu=0;mode=0;difficulty=1;selected=0;selected2=1;arena=0;
+    combatProfiles[0]=&characterProfiles[0];combatProfiles[1]=&characterProfiles[0];
     musicIndex=255;musicOn=1;
     spcBoot();spcSetBank(&SOUNDBANK__);spcAllocateSoundRegion(24);
     spcSetSoundEntry(8,8,4,SFX0_SIZE,&sfx0,&sounds[0]);

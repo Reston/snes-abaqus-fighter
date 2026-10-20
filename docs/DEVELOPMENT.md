@@ -23,9 +23,9 @@ The PPU uses Mode 1. BG1 holds the stage; BG2 holds the interface. Stage tiles u
 
 Each actor uses twenty 16×16 hardware sprites. The 65816 renderer writes an actor's OAM entries in one call. A strided DMA routine uploads ten 256-byte rows for one pose. Each vblank streams at most one actor frame, alternating priority if both change together. The second actor can visually trail its requested pose by one video frame; combat state stays independent of that upload queue.
 
-Master sprites are isolated by connected-component labels, scaled consistently, quantized to an authored 15-color palette and divided into two eight-pose ROM banks per fighter. Isolating the alpha mask avoids stray pixels from adjacent poses inside a crop rectangle. Separate coat, trousers, skin and shirt ramps preserve the illustrated cel shading and allow vivid roster colors. This keeps each contiguous data section below the LoROM 32 KiB bank boundary. The roster shares a base animation template with palette and head-detail variations.
+`tools/fighter_assets.py` prepares twelve separate master atlases under `assets/art/characters/`. Master sprites are isolated by connected-component labels, scaled to individual standing heights of 66–74 pixels, quantized to fifteen opaque colors per fighter, and divided into two eight-pose ROM banks. Isolating each alpha mask avoids neighboring pose pixels inside a crop rectangle. Translucent source fringes are rejected before isolation. Each palette is derived from that fighter's opaque pixels across all sixteen poses, and the native preview uses the SNES's five-bit color precision. Each contiguous pose bank stays at 20,480 bytes, below the LoROM 32 KiB boundary.
 
-The v0.2 stage and portrait masters are cartoon illustrations. Selection portraits come from an even 4×3 atlas, replacing the photographic cards. Images are reduced with nearest-neighbor sampling to keep hard pixel edges.
+The v0.2 stages retain their cartoon illustrations. The v0.3 selection portraits crop the upper body from each individual art master, so faces and costumes match the runtime fighter. Images use nearest-neighbor reduction to retain hard edges. `assets/generated/character-manifest.json` records source hashes, palette values, extracted source boxes and native pose hashes for review.
 
 ## Simulation
 
@@ -33,7 +33,9 @@ Combat uses integer 12.4 fixed-point positions. Each attack has startup, active 
 
 The game has title, fighter selection, arena selection, match and result screens. Matches contain intro, live combat, pause and round-end phases. Arcade selects the eleven other roster entries and rotates the three arenas.
 
-The CPU uses distance, opponent attack state, projectiles, a deterministic PRNG and three difficulty levels. It obeys the same attack startup, energy and hit rules as the player.
+The CPU uses distance, opponent attack state, projectiles, a deterministic PRNG and three difficulty levels. It obeys the same attack startup, energy and hit rules as the player. `src/characters.h` provides individual normal frame data, movement, jumps, throws and tuned projectile/rush/low-shockwave/rising specials; the rules and pose indices remain shared.
+
+The match caches both active profile pointers when loading the fighters. Combat helpers reuse them instead of resolving a twelve-way roster lookup for every timing, collision and trace read. This restored the measured idle cadence to 597 simulation ticks per 600 emulated NTSC frames after the profile pass.
 
 ## Audio
 
@@ -43,7 +45,9 @@ The generator writes original Impulse Tracker modules with five synthesized samp
 
 `tools/emulator.py` hosts the official Snes9x 1.63 x64 libretro core. `tools/test_rom.py` supplies SNES controller inputs, captures actual video/audio and reads telemetry from reserved WRAM `$7FFF00`. The host never writes game memory. Sprite checks compare actual emulated VRAM with the cartridge's encoded bytes.
 
-The report stores the tested ROM SHA256. Release packaging refuses a ROM whose hash differs from the report. Screenshots under `docs/screenshots/` come from the emulator, not composited game mockups.
+`tools/test_characters.py` adds controller-driven verification of each fighter on both player sides, movement and jump differences, observable special-family behavior and exact rows from both sprite banks. Both suites capture audio data without opening an audio device or a native window. They preserve the user's foreground focus.
+
+Both reports store the tested ROM SHA256. Release packaging refuses a ROM whose hash differs from either report or its manifest. Screenshots under `docs/screenshots/` come from the emulator, not composited game mockups.
 
 Two issues found during integration testing shaped the implementation:
 

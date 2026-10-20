@@ -4,9 +4,10 @@ Generated raster art is resized/quantized only for the hardware asset pipeline.
 UI, typography, effects and animation metadata are authored here as code assets.
 """
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFont, ImageOps, ImageEnhance
-import json, math, random, struct, subprocess
-from array import array
+from PIL import Image, ImageDraw, ImageFont, ImageEnhance
+import json, math, random, struct, subprocess, sys
+sys.path.insert(0, str(Path(__file__).parent))
+from fighter_assets import prepare_roster
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT/'assets/generated'
@@ -154,16 +155,15 @@ text(title,(128,137),'THE OFFICE WORLD WARRIORS',(130,173,184),center=True)
 text(title,(128,212),'ABAQUS  /  ORIGINAL HOMEBREW',(127,151,169),center=True)
 background('title',title)
 
+roster=prepare_roster(ROOT,OUT)
+
 names=['DAMIAN','IVO','CRISTOBAL','COTE','NEGGER','DAVID','FERNANDO','CRISTIAN','MAMARIAGA','RESTON','ROXANA','LARS']
-portraits=Image.open(ROOT/'assets/art/portraits-cartoon.png').convert('RGB')
-pw,ph=portraits.size
 select=Image.new('RGB',(256,224),'#0c1429');d=ImageDraw.Draw(select)
 for y in range(224):d.line((0,y,255,y),fill=(12+y//20,20+y//12,41+y//9))
 text(select,(128,13),'CHOOSE YOUR FIGHTER',(247,206,119),center=True)
 text(select,(128,29),'ABAQUS AFTER HOURS',(98,199,188),center=True)
 for n,name in enumerate(names):
-    box=((n%4)*pw//4,(n//4)*ph//3,(n%4+1)*pw//4,(n//4+1)*ph//3)
-    p=ImageOps.fit(portraits.crop(box),(32,40),Image.Resampling.NEAREST,centering=(.5,.33))
+    p=roster[n]['portrait']
     x,y=17+(n%6)*38,59+(n//6)*57
     d.rectangle((x-2,y-2,x+33,y+41),outline='#5d7990')
     select.paste(p,(x,y))
@@ -218,112 +218,18 @@ for i in range(128,160):
 asset('ui_tiles',ui)
 asset('ui_pal',palbytes(UI_COLORS+[(0,0,0),(15,24,41),(96,235,212)]+UI_COLORS[3:]))
 
-# Sprite frames: 64x80 pixels, 8 tiles across, ten tile rows.
-# Extract connected silhouettes so a raised hand can cross an atlas grid line.
-sheet_path=ROOT/'assets/art/fighter-atlas-cartoon.png'
-assert sheet_path.exists(), 'Generate assets/art/fighter-atlas-cartoon.png first'
-sheet=Image.open(sheet_path).convert('RGBA')
-sw,sh=sheet.size
-alpha=bytes(sheet.getchannel('A').point(lambda v:255 if v>128 else 0).get_flattened_data())
-seen=bytearray(len(alpha));labels=array('I',[0])*len(alpha);components=[];component=0
-for i,v in enumerate(alpha):
-    if not v or seen[i]:continue
-    component+=1
-    seen[i]=1;stack=[i];count=0;xmin=sw;ymin=sh;xmax=0;ymax=0
-    while stack:
-        k=stack.pop();x=k%sw;y=k//sw;count+=1
-        labels[k]=component
-        xmin=min(xmin,x);xmax=max(xmax,x);ymin=min(ymin,y);ymax=max(ymax,y)
-        for j in (k-1,k+1,k-sw,k+sw):
-            if 0<=j<len(alpha) and alpha[j] and not seen[j]:seen[j]=1;stack.append(j)
-    if count>700:components.append((count,(xmin,ymin,xmax+1,ymax+1),component))
-selected=sorted(components,reverse=True)[:16]
-assert len(selected)==16, 'The fighter atlas must contain sixteen complete silhouettes'
-selected.sort(key=lambda c:c[1][3]);ordered=[]
-for i in range(0,16,4):ordered+=sorted(selected[i:i+4],key=lambda c:c[1][0])
-base_scale=69/(ordered[0][1][3]-ordered[0][1][1])
-frames=[]
-for p in range(16):
-    _,box,label=ordered[p]
-    cell=sheet.crop(box)
-    isolated=Image.new('L',cell.size)
-    isolated.putdata([255 if labels[y*sw+x]==label else 0 for y in range(box[1],box[3]) for x in range(box[0],box[2])])
-    cell.putalpha(isolated)
-    frame=Image.new('RGBA',(64,80))
-    factor=min(base_scale,62/cell.width,77/cell.height)
-    cell=cell.resize((max(1,round(cell.width*factor)),max(1,round(cell.height*factor))),Image.Resampling.NEAREST)
-    frame.alpha_composite(cell,((64-cell.width)//2,78-cell.height))
-    frames.append(frame)
-
-# Deliberate material ramps keep the cartoon art graphic at native resolution.
-# Index 0 is transparent; outlines, four coat tones, trousers, three skin tones,
-# two shirt tones, hair and an accent fill the fifteen opaque SNES colors.
-basepal=list(map(rgb,['000000','111936','133368','2457bb','358bff','88d5ff',
-                      '151e41','293c70','4a659c','b25c42','f0a062','ffdc9c',
-                      '91b5d4','f5f7e8','352334','ffdb45']))
-pal=sum((list(c) for c in basepal[1:]),[])
-quant=Image.new('P',(1,1));quant.putpalette(pal+pal[-3:]*(256-15))
-baseindices=[]
-for f in frames:
-    iq=f.convert('RGB').quantize(palette=quant,dither=Image.Dither.NONE)
-    baseindices.append([min(c,14)+1 if alpha>100 else 0 for c,alpha in zip(iq.get_flattened_data(),f.getchannel('A').get_flattened_data())])
-# These correspond to the illustrated portrait costumes, not a photo tint.
-coat_colors=[(53,139,255),(30,193,169),(225,65,77),(54,117,234),
-             (70,172,83),(49,99,173),(60,119,241),(144,82,211),
-             (28,188,223),(184,56,91),(197,65,165),(34,148,213)]
-def skin_head(ids,pose):
-    remaining={i for i,v in enumerate(ids) if v in (9,10,11)}
-    candidates=[]
-    while remaining:
-        start=remaining.pop();stack=[start];points=[start]
-        while stack:
-            i=stack.pop()
-            for j in (i-1,i+1,i-64,i+64):
-                if j in remaining:remaining.remove(j);stack.append(j);points.append(j)
-        if len(points)<9:continue
-        xs=[i%64 for i in points];ys=[i//64 for i in points]
-        box=(min(xs),min(ys),max(xs)+1,max(ys)+1)
-        x,y,r,b=box
-        if pose==13 and y<14:continue  # rising fist is above the head
-        if pose==14 and x>32:continue  # knockout face is at the left
-        score=len(points)-abs((r-x)-(b-y))*3-abs((x+r)/2-31)*1.1-y*.5
-        # Neck and nearby arms can join the face. Use the upper facial band.
-        upper=[i for i in points if i//64<y+10]
-        left=min(i%64 for i in upper);right=min(max(i%64 for i in upper)+1,left+18)
-        candidates.append((score,(left,y,right,min(b,y+16))))
-    return max(candidates)[1] if candidates else None
-head_boxes=[skin_head(ids,p) for p,ids in enumerate(baseindices)]
-(OUT/'head-boxes.json').write_text(json.dumps(head_boxes))
-for n in range(12):
-    colors=basepal[:]
-    for index,factor in zip((2,3,4,5),(.36,.66,1,1.4)):
-        base=coat_colors[n]
-        colors[index]=tuple(round(c*factor) if factor<=1 else round(c+(255-c)*.48) for c in base)
-    if n==3:colors[14]=(113,61,38)
-    if n==10:colors[14]=(76,40,42)
-    data=bytearray();roster_preview=Image.new('RGBA',(64*16,80))
-    for p,baseids in enumerate(baseindices):
-        ids=baseids[:]
-        frame=Image.new('P',(64,80));frame.putdata(ids)
-        if n!=0:
-            # Identity details are native pixels with exact palette indices.
-            box=head_boxes[p]
-            if box and p!=14:
-                left,top,right,bottom=box
-                fd=ImageDraw.Draw(frame)
-                fd.rectangle((left,top-2,right-2,top+1),fill=14)
-                fd.rectangle((left,top,right-5,top+4),fill=14)
-                if n in (2,3,5,9):fd.line((left+2,bottom-3,right-1,bottom-1),fill=14,width=2)
-                if n==8:fd.line((left+1,top+5,right-1,top+5),fill=1,width=1)
-                if n==10:
-                    fd.rectangle((left-2,top+2,left+1,bottom+4),fill=14)
-                    fd.rectangle((right-1,top+2,right+1,bottom+3),fill=14)
-            ids=list(frame.get_flattened_data())
+# Each fighter has independent illustrated frames and a fifteen-color palette.
+# Preserve the original 64x80 stream format and two LoROM-safe eight-pose banks.
+for n,fighter in enumerate(roster):
+    data=bytearray()
+    for ids in fighter['indices']:
         for ty in range(10):
-            for tx in range(8):data+=tile([ids[(ty*8+y)*64+tx*8+x] for y in range(8) for x in range(8)])
-        preview=Image.new('RGBA',(64,80));preview.putdata([colors[v]+(255 if v else 0,) for v in ids]);roster_preview.paste(preview,(p*64,0))
-    asset(f'fighter{n:02}',data[:20480]);asset(f'fighter{n:02}b',data[20480:]);asset(f'fighter{n:02}_pal',palbytes(colors))
-    roster_preview.save(OUT/f'fighter{n:02}.png')
+            for tx in range(8):
+                data+=tile([ids[(ty*8+y)*64+tx*8+x] for y in range(8) for x in range(8)])
+    assert len(data)==40960
+    asset(f'fighter{n:02}',data[:20480])
+    asset(f'fighter{n:02}b',data[20480:])
+    asset(f'fighter{n:02}_pal',palbytes(fighter['palette']))
 
 # Universal 16x16 impact, projectile, and ground-shadow sprite tiles.
 effects=Image.new('P',(128,32),0);ed=ImageDraw.Draw(effects)

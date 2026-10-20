@@ -8,7 +8,7 @@ Game code, UI, tile pipeline, combat implementation, tracker compositions and sy
 
 ## People
 
-Identity photographs and public names were sourced from the user-provided [Solutions team page](https://abaqus.io/es/abaqus-solutions/team) and [Wealth Care page](https://abaqus.io/es/wealth-care/about-us). The v0.2 selection portraits are original cartoon illustrations generated from those identity references. The source photographs remain subject to the original owners' rights. Download URLs are retained in `assets/references/team.json` and `wealth.json`.
+Identity photographs and public names were sourced from the user-provided [Solutions team page](https://abaqus.io/es/abaqus-solutions/team) and [Wealth Care page](https://abaqus.io/es/wealth-care/about-us). The v0.3 individual fighter atlases are original cartoon illustrations generated from those references, with matching selection portraits cropped from the masters. Six art subagents covered two fighters each, with separate combat and headless-verification work integrated into the native build. Full prompts and identity notes accompany every character under `assets/art/characters/`. The source photographs remain subject to the original owners' rights. Download URLs are retained in `assets/references/team.json` and `wealth.json`.
 
 | Game slot | Public reference | User-supplied nickname |
 | --- | --- | --- |

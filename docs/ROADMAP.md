@@ -1,19 +1,18 @@
 # Polish roadmap
 
-The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass adds a coherent cartoon arcade style across fighter sprites, all twelve portraits, the stages and interface colors.
+The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass added the cartoon arcade direction. The v0.3 roster pass adds twelve individual sixteen-pose atlases, matching portraits, individual movement and frame data, and four tuned special families.
 
 ## Next art pass
 
 - Approve each person's recognizable likeness, outfit and playful character concept.
-- Replace shared base animations with individual silhouettes, body proportions and full per-character animation sets.
-- Add more idle, walk, landing, recovery, throw and knockout frames; align hands and feet to gameplay contact points.
-- Give Roxana and the other fighters bespoke body and pose designs instead of template variations.
+- Refine the twelve individual silhouettes and add in-between idle, walk, landing, recovery, throw and knockout frames beyond the current sixteen-key-pose contract.
+- Align hands and feet more closely to gameplay contact points and add per-pose hitboxes.
 - Make the three stage layouts more architecturally faithful to the supplied photos, with layered parallax and animated coworkers.
 - Add large versus portraits, a dedicated champion illustration and richer end-of-match presentation.
 
 ## Next combat pass
 
-- Give every fighter a distinct special-move family instead of the shared wave/uppercut mechanics.
+- Extend the current four special families with individual effect art, command variations and additional moves.
 - Tune frame data, reach, damage, push boxes, jump arcs, throw ranges and meter gain through human playtesting.
 - Add input buffering, more reliable command priority, training hitbox display and frame-step tools.
 - Improve CPU spacing, anti-air behavior, defensive variety and difficulty progression.

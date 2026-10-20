@@ -1,0 +1,25 @@
+{
+  "character_id": "03",
+  "character": "José Ignacio \"Cote\" Villarroel",
+  "asset": "atlas.png",
+  "mode": "built-in imagegen",
+  "generated_image": "C:/Users/user/.codex/generated_images/01a156f5-c88c-7382-8422-049c45d94d4a/exec-29f42351-d979-4d39-a38e-ac614fc9163a.png",
+  "references": [
+    {
+      "path": "assets/references/fighter-03.jpg",
+      "role": "face and hair reference; broad identity cues only"
+    },
+    {
+      "path": "assets/art/fighter-atlas-cartoon.png",
+      "role": "style reference for the project's existing cartoon SNES atlas"
+    }
+  ],
+  "output": {
+    "format": "PNG",
+    "size": [1254, 1254],
+    "mode": "RGBA",
+    "alpha": "genuinely transparent outside the figures",
+    "layout": "4 columns by 4 rows, 16 independent poses"
+  },
+  "prompt": "Use case: stylized-concept\nAsset type: original native SNES fighting-game fighter animation atlas\nInput images: Image 1 is a face and hair reference for José Ignacio “Cote” Villarroel; preserve the broad identity cues (short warm red hair, trimmed red beard, warm light complexion) while transforming him into an original cartoon fighter.\nPrimary request: create a single transparent PNG sprite sheet for an original character named JOSÉ IGNACIO “COTE” VILLARROEL, shown as sixteen complete connected full-body animation poses in an exact 4-column by 4-row grid. This is game fiction, not a portrait or a realistic employee depiction.\nSubject: sturdy upright close-range fighter with squared fists and confident posture, short warm red hair and neat red beard, exaggerated expressive face, broad shoulders, big readable hands and feet. His costume is a crimson waistcoat over a white rolled-sleeve shirt, dark fitted trousers, dark shoes, and a small neutral belt accent. Use crimson and burgundy waistcoat shading, white and cream sleeve highlights, charcoal trousers, warm skin tones, and deep navy outlines.\nStyle/medium: original 1993 arcade fighting-game cartoon sprite art, chunky hand-painted pixel-art look, bold cel-shaded material ramps, slightly exaggerated anatomy, clean navy contour, crisp hard-edged shapes, high readability at tiny SNES resolution. Warm lively arcade colors. Do not imitate any specific existing fighter or copy commercial game artwork.\nComposition/framing: 1024x1024 transparent canvas; exactly four columns and four rows with equal implied cells but no visible grid. Each cell contains exactly one fully disconnected full figure with generous genuinely transparent gaps on every side. Keep consistent scale, head size, proportions, and feet baseline across standing poses. Every figure faces right. The horizontal KO pose may be rotated and its head points LEFT as specified. No overlap between cells.\nPose rows, left to right, exactly:\nrow 1: idle guard; front walk; back walk; low crouch guard.\nrow 2: tucked jump; extended jab; cross punch; high side kick.\nrow 3: low sweep; raised block; hurt recoil; victory with both fists high.\nrow 4: two-hand energy cast with empty hands and no projectile; rising uppercut; horizontal lying KO with head LEFT; forward shoulder lunge.\nLighting/mood: bright arcade key light, clear readable cel-shaded planes, playful determined expression.\nColor palette: limited approximately 15-color palette per character/material, deep navy outline, crimson waistcoat ramp, dark trousers, warm skin ramp, white shirt ramp, no gradients.\nMaterials/textures: flat cel-shaded waistcoat cloth and shirt folds, simple trousers and shoes, no photoreal texture.\nText (verbatim): none.\nConstraints: genuinely transparent background; no shadows, no floor, no effects, no projectile, no smoke, no text, no watermark, no logos, no UI, no border, no grid lines; preserve the face/hair cues only as cartoon design guidance; every pose must be a complete one-piece readable fighter.\nAvoid: photorealism, Mortal Kombat realism, gore, bruises, blood, weapons, armor, extra characters, detached hands, cropped limbs, merged neighboring figures, visible white/black background, checkerboard pattern, duplicate poses, left-facing standing figures, logos, trademarks, copied Capcom character silhouettes."
+}

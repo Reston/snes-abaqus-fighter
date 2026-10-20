@@ -30,13 +30,15 @@ Player two uses **I/J/K/L** for up/left/down/right, **numpad 7/8/9** for punches
 ## Fighting
 
 - Hold **away from your opponent** to block. Crouch while holding away to block low kicks. Jump attacks beat crouch guard.
-- Perform an **energy wave** with down, then toward your opponent, then a punch. The accessible shortcut is **Down + Y/X**. A wave costs 32 meter; energy slowly regenerates and successful hits add more.
+- Perform your **character special** with down, then toward your opponent, then Y/X. The accessible shortcut is **Down + Y/X**. It costs 32 meter; energy slowly regenerates and successful hits add more. The selection screen shows the move family: projectile, advancing rush, low shockwave or rising strike. Low shockwaves require crouch guard; rising attacks beat crouch guard.
 - Press **Down + L** for a rising uppercut.
 - Press **toward + L** at close range to throw through a guard.
 - A confirmed light punch can cancel into medium or heavy punch. Light/medium kicks can cancel into a heavier kick. Release and press the next attack during the hit reaction.
 - Punches and kicks also work while jumping. Crouching kicks are low attacks.
 
 Health is shown in gold. Energy is shown in teal. Win two rounds to take a match. At timeout, the fighter with more health wins; a tie restarts the round without awarding a round win.
+
+All twelve fighters have individual movement, jump arcs, normal attack speed and reach, throws and special tuning. See [CHARACTERS.md](CHARACTERS.md) for the complete roster and each move's frame data.
 
 ## Emulator options
 

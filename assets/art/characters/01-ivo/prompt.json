@@ -1,0 +1,44 @@
+{
+  "character": "Ivo Kovacevic",
+  "roster_id": 1,
+  "asset": "atlas.png",
+  "generator": "built-in imagegen",
+  "source_output": "C:/Users/user/.codex/generated_images/01a156f5-a0df-77b1-92ad-13197d84da89/exec-5aceec2a-fc18-4912-8294-58ca928aaed9.png",
+  "source_atlas_v1": "atlas-v1.png",
+  "repair_history": [
+    {
+      "source_output": "C:/Users/user/.codex/generated_images/01a156f5-a0df-77b1-92ad-13197d84da89/exec-929e325f-0c67-4a43-9c29-8008734f5da8.png",
+      "result": "initial Ivo atlas preserved as atlas-v1.png"
+    },
+    {
+      "source_output": "C:/Users/user/.codex/generated_images/01a156f5-a0df-77b1-92ad-13197d84da89/exec-89e241f1-82db-460b-b1a8-d21e8f857809.png",
+      "result": "layout edit restored 16 silhouettes but left a sub-40-pixel row gap"
+    },
+    {
+      "source_output": "C:/Users/user/.codex/generated_images/01a156f5-a0df-77b1-92ad-13197d84da89/exec-5aceec2a-fc18-4912-8294-58ca928aaed9.png",
+      "result": "selected final repair: 16 silhouettes and 43-pixel critical row gap"
+    }
+  ],
+  "references": [
+    {
+      "path": "../../../references/fighter-01.jpg",
+      "role": "identity reference: taller composed dark-haired man"
+    },
+    {
+      "path": "../../../art/fighter-atlas-cartoon.png",
+      "role": "style and SNES sprite readability reference"
+    }
+  ],
+  "output": {
+    "size": "1254x1254",
+    "format": "RGBA PNG",
+    "background": "transparent",
+    "layout": "4 columns x 4 rows, 16 full-body poses",
+    "validation": {
+      "large_connected_silhouettes": 16,
+      "critical_row_3_block_to_row_4_uppercut_gap_pixels": 43,
+      "transparent_corner": true
+    }
+  },
+  "prompt": "Create a fresh original transparent 4x4 native SNES fighting-game sprite atlas for fictional Ivo Kovacevic. Use the supplied Ivo portrait only for identity cues and the existing cartoon sprite atlas only for style. Keep Ivo visibly taller and long-legged with short swept dark hair, calm focused expression, emerald rolled-sleeve tailored jacket, dark charcoal shirt and trousers, dark shoes, warm light-olive skin, deep green/navy outline. Original 1993 arcade cel-shaded cartoon pixel art, chunky contours, flat limited SNES palette, no photorealism, no Mortal Kombat realism, no commercial character likeness.\n\nHARD PRODUCTION LAYOUT: exactly 16 full-body figures, exactly four columns and four rows, one pose in every cell, 1254x1254 transparent RGBA canvas. Every figure must be scaled small enough to occupy no more than 68% of its cell. Leave a completely empty transparent moat of at least 40 pixels around every figure and between every neighboring cell. No opaque/semi-transparent pixel may touch or cross the x=313,314,627,628,940,941 or y=313,314,627,628,940,941 boundary bands. Do not crop any body part. Do not omit any pose. Keep blank space visibly abundant.\n\nPose order row-major, exactly one figure per cell:\n1 idle guard; 2 front walking step; 3 back walking step; 4 low crouch guard;\n5 knees-tucked jump; 6 extended jab; 7 cross punch; 8 high side kick;\n9 low sweep; 10 raised block; 11 hurt recoil; 12 victory with both fists raised;\n13 two-hand energy cast with empty hands and no projectile; 14 rising uppercut; 15 horizontal lying KO with head LEFT; 16 forward shoulder lunge.\n\nMake pose 15 the clearly visible horizontal KO figure in row 4 column 3, with head LEFT, fully inside its own cell and separated from pose 14. Keep pose 14 the clearly visible rising uppercut in row 4 column 2, with fist up and separated from pose 15. Keep pose 13 in row 4 column 1 and pose 16 in row 4 column 4. All bodies face RIGHT except the required KO head direction. Preserve connected anatomy, hands attached, feet attached, full head/hair/jacket in every cell. No grid, floor, shadow, background, text, logo, watermark, checkerboard, effects."
+}

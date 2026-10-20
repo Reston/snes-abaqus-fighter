@@ -1,0 +1,28 @@
+{
+  "character": "Damián Damian Gelerstein",
+  "roster_id": 0,
+  "asset": "atlas.png",
+  "generator": "built-in imagegen",
+  "source_output": "C:/Users/user/.codex/generated_images/01a156f5-a0df-77b1-92ad-13197d84da89/exec-1fb441d5-2009-4d27-a41f-d991d9b0df04.png",
+  "references": [
+    {
+      "path": "../../../references/fighter-00.jpg",
+      "role": "identity reference: bald, smiling, compact man in a suit"
+    },
+    {
+      "path": "../../../art/fighter-atlas-cartoon.png",
+      "role": "style and SNES sprite readability reference"
+    }
+  ],
+  "output": {
+    "size": "1254x1254",
+    "format": "RGBA PNG",
+    "background": "transparent",
+    "layout": "4 columns x 4 rows, 16 full-body poses",
+    "validation": {
+      "large_connected_silhouettes": 16,
+      "transparent_corner": true
+    }
+  },
+  "prompt": "Use case: stylized-concept\nAsset type: original native SNES fighting-game character sprite atlas\nPrimary request: Create one production-ready transparent fighter atlas for the fictional character Damián \"Damian\" Gelerstein, inspired by the supplied portrait reference image and the supplied existing cartoon atlas only for proportions and sprite readability. This must be an original design, not any existing game character.\nSubject: a bald, expressive, compact and powerfully built veteran man with a friendly confident grin, exaggerated arcade-game face and large readable hands. Distinctive cobalt-blue rolled-sleeve blazer jacket over an open white collar shirt, navy tailored trousers, black shoes, warm peach skin, dark navy contour. Strong shoulders and compact center of gravity.\nStyle/medium: original 1993-style Japanese arcade fighting-game cel-shaded cartoon pixel-art illustration, chunky hand-inked outlines, crisp 2-4 tone material ramps, high-contrast highlights, bold simplified anatomy and hands, saturated SNES-friendly palette of about 15 flat colors. Clearly cartoon and game-like, never photorealistic, never gritty, never Mortal Kombat realism, no Capcom or Street Fighter character likeness.\nComposition/framing: exactly one square 4-column x 4-row sprite atlas, 16 evenly spaced rectangular cells on a completely transparent background. One disconnected full-body figure in every cell, no overlaps between cells, generous transparent gaps, figure fully inside its cell, full body visible, consistently standing on the same baseline where applicable. Character faces and body face RIGHT in every pose. Atlas should be at least 1024x1024 and legible when each pose is reduced to roughly 64x80 pixels. No grid lines, no frame borders, no floor, no cast shadow, no background, no text, no logo, no watermark.\nPose order, row-major exactly:\nRow 1: idle guard; front walking step; back walking step; low crouch guard.\nRow 2: knees-tucked jump; extended jab; cross punch; high side kick.\nRow 3: low sweep; raised block; hurt recoil; victory with both fists raised.\nRow 4: two-hand energy cast with empty hands and no projectile; rising uppercut; horizontal lying KO with head LEFT; forward shoulder lunge.\nPose notes: keep all poses anatomically connected, hands attached to arms and feet attached to legs, maintain the cobalt blazer and bald head in every pose, show readable silhouette and deliberate weight shifts. The energy-cast hands may glow very subtly but must contain no projectile or detached effect. The KO pose is horizontal with the bald head clearly on the LEFT. Shoulder lunge travels RIGHT.\nLighting/mood: bright theatrical arcade cel shading, clean rim highlights, playful determined energy.\nColor palette: cobalt blazer with deep blue shadow and royal blue highlight, white shirt, navy trousers, warm peach/orange skin, near-black navy outline, small gold belt buckle.\nConstraints: preserve identity cues from the Damian reference; original fictional fighting-game art; transparent alpha channel in all empty areas; exact 4x4 row order.\nAvoid: photorealism, photographic texture, 3D render, realistic anatomy, gore, blood, weapons, extra limbs, disconnected hands, motion blur, duplicated poses, cropped feet or head, black checkerboard background, opaque white background, any words or lettering, grids, UI, projectiles, existing Capcom/Street Fighter/Ryu/Ken/Chun-Li likenesses."
+}

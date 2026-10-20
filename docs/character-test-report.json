@@ -1,0 +1,4006 @@
+{
+  "emulator": "Official Snes9x 1.63 x64 libretro core",
+  "rom_sha256": "4a5ac703023d2ef3d5c325d452176a6301f83ef8ba4b4f7e7828468cb2380753",
+  "checks": [
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter has distinct pose banks",
+      "passed": true,
+      "details": {
+        "fighter": 0
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter has distinct pose banks",
+      "passed": true,
+      "details": {
+        "fighter": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter has distinct pose banks",
+      "passed": true,
+      "details": {
+        "fighter": 2
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter has distinct pose banks",
+      "passed": true,
+      "details": {
+        "fighter": 3
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter has distinct pose banks",
+      "passed": true,
+      "details": {
+        "fighter": 4
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter has distinct pose banks",
+      "passed": true,
+      "details": {
+        "fighter": 5
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter has distinct pose banks",
+      "passed": true,
+      "details": {
+        "fighter": 6
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter has distinct pose banks",
+      "passed": true,
+      "details": {
+        "fighter": 7
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter has distinct pose banks",
+      "passed": true,
+      "details": {
+        "fighter": 8
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter has distinct pose banks",
+      "passed": true,
+      "details": {
+        "fighter": 9
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter has distinct pose banks",
+      "passed": true,
+      "details": {
+        "fighter": 10
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "fighter has distinct pose banks",
+      "passed": true,
+      "details": {
+        "fighter": 11
+      }
+    },
+    {
+      "check": "all twelve fighters have distinct native animation assets",
+      "passed": true,
+      "details": {
+        "unique_assets": 12
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 0,
+        "fighter2": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "menu selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "selected": 0
+      }
+    },
+    {
+      "check": "idle frame uses the first pose bank",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "pose": 0,
+        "bank": 0
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten idle sprite rows reach actor VRAM",
+      "passed": true,
+      "details": {
+        "fighter": 0
+      }
+    },
+    {
+      "check": "controller one moves the fighter forward",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "delta_12_4": 160
+      }
+    },
+    {
+      "check": "forward movement uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "pose": 1
+      }
+    },
+    {
+      "check": "controller one jump leaves the floor",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "min_y_12_4": -686
+      }
+    },
+    {
+      "check": "fighter exposes a special family in read-only trace",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "expected": 0,
+        "trace_keys": [
+          "family1",
+          "family2"
+        ]
+      }
+    },
+    {
+      "check": "fighter reports its contracted special family",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "expected": 0,
+        "observed": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "check": "special family produces an observable combat event",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "family": "projectile",
+        "action": true,
+        "projectile": true,
+        "rush": false,
+        "rise": false
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "special reaches a second-bank pose",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "pose": 12,
+        "bank": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten special sprite rows reach the second actor bank",
+      "passed": true,
+      "details": {
+        "fighter": 0
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 1,
+        "fighter2": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "menu selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "selected": 1
+      }
+    },
+    {
+      "check": "idle frame uses the first pose bank",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "pose": 0,
+        "bank": 0
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten idle sprite rows reach actor VRAM",
+      "passed": true,
+      "details": {
+        "fighter": 1
+      }
+    },
+    {
+      "check": "controller one moves the fighter forward",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "delta_12_4": 136
+      }
+    },
+    {
+      "check": "forward movement uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "pose": 2
+      }
+    },
+    {
+      "check": "controller one jump leaves the floor",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "min_y_12_4": -616
+      }
+    },
+    {
+      "check": "fighter exposes a special family in read-only trace",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "expected": 0,
+        "trace_keys": [
+          "family1",
+          "family2"
+        ]
+      }
+    },
+    {
+      "check": "fighter reports its contracted special family",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "expected": 0,
+        "observed": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "check": "special family produces an observable combat event",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "family": "projectile",
+        "action": true,
+        "projectile": true,
+        "rush": false,
+        "rise": false
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "special reaches a second-bank pose",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "pose": 12,
+        "bank": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten special sprite rows reach the second actor bank",
+      "passed": true,
+      "details": {
+        "fighter": 1
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 2,
+        "fighter2": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "menu selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "selected": 2
+      }
+    },
+    {
+      "check": "idle frame uses the first pose bank",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "pose": 0,
+        "bank": 0
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten idle sprite rows reach actor VRAM",
+      "passed": true,
+      "details": {
+        "fighter": 2
+      }
+    },
+    {
+      "check": "controller one moves the fighter forward",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "delta_12_4": 192
+      }
+    },
+    {
+      "check": "forward movement uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "pose": 2
+      }
+    },
+    {
+      "check": "controller one jump leaves the floor",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "min_y_12_4": -736
+      }
+    },
+    {
+      "check": "fighter exposes a special family in read-only trace",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "expected": 1,
+        "trace_keys": [
+          "family1",
+          "family2"
+        ]
+      }
+    },
+    {
+      "check": "fighter reports its contracted special family",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "expected": 1,
+        "observed": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "check": "special family produces an observable combat event",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "family": "rush",
+        "action": true,
+        "projectile": false,
+        "rush": true,
+        "rise": false
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "special reaches a second-bank pose",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "pose": 15,
+        "bank": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten special sprite rows reach the second actor bank",
+      "passed": true,
+      "details": {
+        "fighter": 2
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 3,
+        "fighter2": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "menu selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "selected": 3
+      }
+    },
+    {
+      "check": "idle frame uses the first pose bank",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "pose": 0,
+        "bank": 0
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten idle sprite rows reach actor VRAM",
+      "passed": true,
+      "details": {
+        "fighter": 3
+      }
+    },
+    {
+      "check": "controller one moves the fighter forward",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "delta_12_4": 168
+      }
+    },
+    {
+      "check": "forward movement uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "pose": 1
+      }
+    },
+    {
+      "check": "controller one jump leaves the floor",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "min_y_12_4": -676
+      }
+    },
+    {
+      "check": "fighter exposes a special family in read-only trace",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "expected": 1,
+        "trace_keys": [
+          "family1",
+          "family2"
+        ]
+      }
+    },
+    {
+      "check": "fighter reports its contracted special family",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "expected": 1,
+        "observed": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "check": "special family produces an observable combat event",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "family": "rush",
+        "action": true,
+        "projectile": false,
+        "rush": true,
+        "rise": false
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "special reaches a second-bank pose",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "pose": 15,
+        "bank": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten special sprite rows reach the second actor bank",
+      "passed": true,
+      "details": {
+        "fighter": 3
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 4,
+        "fighter2": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "menu selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "selected": 4
+      }
+    },
+    {
+      "check": "idle frame uses the first pose bank",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "pose": 0,
+        "bank": 0
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten idle sprite rows reach actor VRAM",
+      "passed": true,
+      "details": {
+        "fighter": 4
+      }
+    },
+    {
+      "check": "controller one moves the fighter forward",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "delta_12_4": 128
+      }
+    },
+    {
+      "check": "forward movement uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "pose": 2
+      }
+    },
+    {
+      "check": "controller one jump leaves the floor",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "min_y_12_4": -641
+      }
+    },
+    {
+      "check": "fighter exposes a special family in read-only trace",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "expected": 2,
+        "trace_keys": [
+          "family1",
+          "family2"
+        ]
+      }
+    },
+    {
+      "check": "fighter reports its contracted special family",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "expected": 2,
+        "observed": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "check": "special family produces an observable combat event",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "family": "groundwave",
+        "action": true,
+        "projectile": true,
+        "rush": false,
+        "rise": false
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "special reaches a second-bank pose",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "pose": 12,
+        "bank": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten special sprite rows reach the second actor bank",
+      "passed": true,
+      "details": {
+        "fighter": 4
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 5,
+        "fighter2": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "menu selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "selected": 5
+      }
+    },
+    {
+      "check": "idle frame uses the first pose bank",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "pose": 0,
+        "bank": 0
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten idle sprite rows reach actor VRAM",
+      "passed": true,
+      "details": {
+        "fighter": 5
+      }
+    },
+    {
+      "check": "controller one moves the fighter forward",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "delta_12_4": 160
+      }
+    },
+    {
+      "check": "forward movement uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "pose": 1
+      }
+    },
+    {
+      "check": "controller one jump leaves the floor",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "min_y_12_4": -685
+      }
+    },
+    {
+      "check": "fighter exposes a special family in read-only trace",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "expected": 3,
+        "trace_keys": [
+          "family1",
+          "family2"
+        ]
+      }
+    },
+    {
+      "check": "fighter reports its contracted special family",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "expected": 3,
+        "observed": [
+          3,
+          3
+        ]
+      }
+    },
+    {
+      "check": "special family produces an observable combat event",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "family": "rising",
+        "action": true,
+        "projectile": false,
+        "rush": false,
+        "rise": true
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "special reaches a second-bank pose",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "pose": 13,
+        "bank": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten special sprite rows reach the second actor bank",
+      "passed": true,
+      "details": {
+        "fighter": 5
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 6,
+        "fighter2": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "menu selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "selected": 6
+      }
+    },
+    {
+      "check": "idle frame uses the first pose bank",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "pose": 0,
+        "bank": 0
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten idle sprite rows reach actor VRAM",
+      "passed": true,
+      "details": {
+        "fighter": 6
+      }
+    },
+    {
+      "check": "controller one moves the fighter forward",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "delta_12_4": 136
+      }
+    },
+    {
+      "check": "forward movement uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "pose": 2
+      }
+    },
+    {
+      "check": "controller one jump leaves the floor",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "min_y_12_4": -621
+      }
+    },
+    {
+      "check": "fighter exposes a special family in read-only trace",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "expected": 2,
+        "trace_keys": [
+          "family1",
+          "family2"
+        ]
+      }
+    },
+    {
+      "check": "fighter reports its contracted special family",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "expected": 2,
+        "observed": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "check": "special family produces an observable combat event",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "family": "groundwave",
+        "action": true,
+        "projectile": true,
+        "rush": false,
+        "rise": false
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "special reaches a second-bank pose",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "pose": 12,
+        "bank": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten special sprite rows reach the second actor bank",
+      "passed": true,
+      "details": {
+        "fighter": 6
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 7,
+        "fighter2": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "menu selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "selected": 7
+      }
+    },
+    {
+      "check": "idle frame uses the first pose bank",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "pose": 0,
+        "bank": 0
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten idle sprite rows reach actor VRAM",
+      "passed": true,
+      "details": {
+        "fighter": 7
+      }
+    },
+    {
+      "check": "controller one moves the fighter forward",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "delta_12_4": 144
+      }
+    },
+    {
+      "check": "forward movement uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "pose": 1
+      }
+    },
+    {
+      "check": "controller one jump leaves the floor",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "min_y_12_4": -649
+      }
+    },
+    {
+      "check": "fighter exposes a special family in read-only trace",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "expected": 3,
+        "trace_keys": [
+          "family1",
+          "family2"
+        ]
+      }
+    },
+    {
+      "check": "fighter reports its contracted special family",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "expected": 3,
+        "observed": [
+          3,
+          3
+        ]
+      }
+    },
+    {
+      "check": "special family produces an observable combat event",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "family": "rising",
+        "action": true,
+        "projectile": false,
+        "rush": false,
+        "rise": true
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "special reaches a second-bank pose",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "pose": 13,
+        "bank": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten special sprite rows reach the second actor bank",
+      "passed": true,
+      "details": {
+        "fighter": 7
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 8,
+        "fighter2": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "menu selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "selected": 8
+      }
+    },
+    {
+      "check": "idle frame uses the first pose bank",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "pose": 0,
+        "bank": 0
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten idle sprite rows reach actor VRAM",
+      "passed": true,
+      "details": {
+        "fighter": 8
+      }
+    },
+    {
+      "check": "controller one moves the fighter forward",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "delta_12_4": 208
+      }
+    },
+    {
+      "check": "forward movement uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "pose": 1
+      }
+    },
+    {
+      "check": "controller one jump leaves the floor",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "min_y_12_4": -751
+      }
+    },
+    {
+      "check": "fighter exposes a special family in read-only trace",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "expected": 2,
+        "trace_keys": [
+          "family1",
+          "family2"
+        ]
+      }
+    },
+    {
+      "check": "fighter reports its contracted special family",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "expected": 2,
+        "observed": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "check": "special family produces an observable combat event",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "family": "groundwave",
+        "action": true,
+        "projectile": true,
+        "rush": false,
+        "rise": false
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "special reaches a second-bank pose",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "pose": 12,
+        "bank": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten special sprite rows reach the second actor bank",
+      "passed": true,
+      "details": {
+        "fighter": 8
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 9,
+        "fighter2": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "menu selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "selected": 9
+      }
+    },
+    {
+      "check": "idle frame uses the first pose bank",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "pose": 0,
+        "bank": 0
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten idle sprite rows reach actor VRAM",
+      "passed": true,
+      "details": {
+        "fighter": 9
+      }
+    },
+    {
+      "check": "controller one moves the fighter forward",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "delta_12_4": 144
+      }
+    },
+    {
+      "check": "forward movement uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "pose": 2
+      }
+    },
+    {
+      "check": "controller one jump leaves the floor",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "min_y_12_4": -571
+      }
+    },
+    {
+      "check": "fighter exposes a special family in read-only trace",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "expected": 0,
+        "trace_keys": [
+          "family1",
+          "family2"
+        ]
+      }
+    },
+    {
+      "check": "fighter reports its contracted special family",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "expected": 0,
+        "observed": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "check": "special family produces an observable combat event",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "family": "projectile",
+        "action": true,
+        "projectile": true,
+        "rush": false,
+        "rise": false
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "special reaches a second-bank pose",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "pose": 12,
+        "bank": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten special sprite rows reach the second actor bank",
+      "passed": true,
+      "details": {
+        "fighter": 9
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 10,
+        "fighter2": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "menu selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "selected": 10
+      }
+    },
+    {
+      "check": "idle frame uses the first pose bank",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "pose": 0,
+        "bank": 0
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten idle sprite rows reach actor VRAM",
+      "passed": true,
+      "details": {
+        "fighter": 10
+      }
+    },
+    {
+      "check": "controller one moves the fighter forward",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "delta_12_4": 192
+      }
+    },
+    {
+      "check": "forward movement uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "pose": 1
+      }
+    },
+    {
+      "check": "controller one jump leaves the floor",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "min_y_12_4": -711
+      }
+    },
+    {
+      "check": "fighter exposes a special family in read-only trace",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "expected": 3,
+        "trace_keys": [
+          "family1",
+          "family2"
+        ]
+      }
+    },
+    {
+      "check": "fighter reports its contracted special family",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "expected": 3,
+        "observed": [
+          3,
+          3
+        ]
+      }
+    },
+    {
+      "check": "special family produces an observable combat event",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "family": "rising",
+        "action": true,
+        "projectile": false,
+        "rush": false,
+        "rise": true
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "special reaches a second-bank pose",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "pose": 13,
+        "bank": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten special sprite rows reach the second actor bank",
+      "passed": true,
+      "details": {
+        "fighter": 10
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "fighter": 11,
+        "fighter2": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "menu selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "selected": 11
+      }
+    },
+    {
+      "check": "idle frame uses the first pose bank",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "pose": 0,
+        "bank": 0
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten idle sprite rows reach actor VRAM",
+      "passed": true,
+      "details": {
+        "fighter": 11
+      }
+    },
+    {
+      "check": "controller one moves the fighter forward",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "delta_12_4": 133
+      }
+    },
+    {
+      "check": "forward movement uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "pose": 2
+      }
+    },
+    {
+      "check": "controller one jump leaves the floor",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "min_y_12_4": -681
+      }
+    },
+    {
+      "check": "fighter exposes a special family in read-only trace",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "expected": 2,
+        "trace_keys": [
+          "family1",
+          "family2"
+        ]
+      }
+    },
+    {
+      "check": "fighter reports its contracted special family",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "expected": 2,
+        "observed": [
+          2,
+          2
+        ]
+      }
+    },
+    {
+      "check": "special family produces an observable combat event",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "family": "groundwave",
+        "action": true,
+        "projectile": true,
+        "rush": false,
+        "rise": false
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "special reaches a second-bank pose",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "pose": 12,
+        "bank": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "bank": 1,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "all ten special sprite rows reach the second actor bank",
+      "passed": true,
+      "details": {
+        "fighter": 11
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 0,
+        "fighter2": 0
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "controller two selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "selected2": 0
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "player two receives this fighter's native idle rows",
+      "passed": true,
+      "details": {
+        "fighter": 0
+      }
+    },
+    {
+      "check": "player two starts facing left for horizontal flip",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "face2": 0
+      }
+    },
+    {
+      "check": "controller two moves its flipped fighter toward player one",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "delta_12_4": -140
+      }
+    },
+    {
+      "check": "player two flipped actor uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "pose2": 2
+      }
+    },
+    {
+      "check": "controller two can jump the flipped fighter",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "min_y_12_4": -686
+      }
+    },
+    {
+      "check": "player two keeps left-facing flip while moving left",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "face2": 0
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 0,
+        "fighter2": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "controller two selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "selected2": 1
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "player two receives this fighter's native idle rows",
+      "passed": true,
+      "details": {
+        "fighter": 1
+      }
+    },
+    {
+      "check": "player two starts facing left for horizontal flip",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "face2": 0
+      }
+    },
+    {
+      "check": "controller two moves its flipped fighter toward player one",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "delta_12_4": -119
+      }
+    },
+    {
+      "check": "player two flipped actor uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "pose2": 1
+      }
+    },
+    {
+      "check": "controller two can jump the flipped fighter",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "min_y_12_4": -616
+      }
+    },
+    {
+      "check": "player two keeps left-facing flip while moving left",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "face2": 0
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 0,
+        "fighter2": 2
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "controller two selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "selected2": 2
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "player two receives this fighter's native idle rows",
+      "passed": true,
+      "details": {
+        "fighter": 2
+      }
+    },
+    {
+      "check": "player two starts facing left for horizontal flip",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "face2": 0
+      }
+    },
+    {
+      "check": "controller two moves its flipped fighter toward player one",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "delta_12_4": -168
+      }
+    },
+    {
+      "check": "player two flipped actor uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "pose2": 1
+      }
+    },
+    {
+      "check": "controller two can jump the flipped fighter",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "min_y_12_4": -685
+      }
+    },
+    {
+      "check": "player two keeps left-facing flip while moving left",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "face2": 0
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 0,
+        "fighter2": 3
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "controller two selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "selected2": 3
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "player two receives this fighter's native idle rows",
+      "passed": true,
+      "details": {
+        "fighter": 3
+      }
+    },
+    {
+      "check": "player two starts facing left for horizontal flip",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "face2": 0
+      }
+    },
+    {
+      "check": "controller two moves its flipped fighter toward player one",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "delta_12_4": -147
+      }
+    },
+    {
+      "check": "player two flipped actor uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "pose2": 2
+      }
+    },
+    {
+      "check": "controller two can jump the flipped fighter",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "min_y_12_4": -676
+      }
+    },
+    {
+      "check": "player two keeps left-facing flip while moving left",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "face2": 0
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 0,
+        "fighter2": 4
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "controller two selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "selected2": 4
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "player two receives this fighter's native idle rows",
+      "passed": true,
+      "details": {
+        "fighter": 4
+      }
+    },
+    {
+      "check": "player two starts facing left for horizontal flip",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "face2": 0
+      }
+    },
+    {
+      "check": "controller two moves its flipped fighter toward player one",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "delta_12_4": -112
+      }
+    },
+    {
+      "check": "player two flipped actor uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "pose2": 2
+      }
+    },
+    {
+      "check": "controller two can jump the flipped fighter",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "min_y_12_4": -641
+      }
+    },
+    {
+      "check": "player two keeps left-facing flip while moving left",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "face2": 0
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 0,
+        "fighter2": 5
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "controller two selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "selected2": 5
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "player two receives this fighter's native idle rows",
+      "passed": true,
+      "details": {
+        "fighter": 5
+      }
+    },
+    {
+      "check": "player two starts facing left for horizontal flip",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "face2": 0
+      }
+    },
+    {
+      "check": "controller two moves its flipped fighter toward player one",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "delta_12_4": -140
+      }
+    },
+    {
+      "check": "player two flipped actor uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "pose2": 1
+      }
+    },
+    {
+      "check": "controller two can jump the flipped fighter",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "min_y_12_4": -731
+      }
+    },
+    {
+      "check": "player two keeps left-facing flip while moving left",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "face2": 0
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 0,
+        "fighter2": 6
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "controller two selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "selected2": 6
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "player two receives this fighter's native idle rows",
+      "passed": true,
+      "details": {
+        "fighter": 6
+      }
+    },
+    {
+      "check": "player two starts facing left for horizontal flip",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "face2": 0
+      }
+    },
+    {
+      "check": "controller two moves its flipped fighter toward player one",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "delta_12_4": -119
+      }
+    },
+    {
+      "check": "player two flipped actor uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "pose2": 1
+      }
+    },
+    {
+      "check": "controller two can jump the flipped fighter",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "min_y_12_4": -577
+      }
+    },
+    {
+      "check": "player two keeps left-facing flip while moving left",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "face2": 0
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 0,
+        "fighter2": 7
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "controller two selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "selected2": 7
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "player two receives this fighter's native idle rows",
+      "passed": true,
+      "details": {
+        "fighter": 7
+      }
+    },
+    {
+      "check": "player two starts facing left for horizontal flip",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "face2": 0
+      }
+    },
+    {
+      "check": "controller two moves its flipped fighter toward player one",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "delta_12_4": -126
+      }
+    },
+    {
+      "check": "player two flipped actor uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "pose2": 2
+      }
+    },
+    {
+      "check": "controller two can jump the flipped fighter",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "min_y_12_4": -701
+      }
+    },
+    {
+      "check": "player two keeps left-facing flip while moving left",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "face2": 0
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 0,
+        "fighter2": 8
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "controller two selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "selected2": 8
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "player two receives this fighter's native idle rows",
+      "passed": true,
+      "details": {
+        "fighter": 8
+      }
+    },
+    {
+      "check": "player two starts facing left for horizontal flip",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "face2": 0
+      }
+    },
+    {
+      "check": "controller two moves its flipped fighter toward player one",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "delta_12_4": -182
+      }
+    },
+    {
+      "check": "player two flipped actor uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "pose2": 2
+      }
+    },
+    {
+      "check": "controller two can jump the flipped fighter",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "min_y_12_4": -751
+      }
+    },
+    {
+      "check": "player two keeps left-facing flip while moving left",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "face2": 0
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 0,
+        "fighter2": 9
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "controller two selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "selected2": 9
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "player two receives this fighter's native idle rows",
+      "passed": true,
+      "details": {
+        "fighter": 9
+      }
+    },
+    {
+      "check": "player two starts facing left for horizontal flip",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "face2": 0
+      }
+    },
+    {
+      "check": "controller two moves its flipped fighter toward player one",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "delta_12_4": -126
+      }
+    },
+    {
+      "check": "player two flipped actor uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "pose2": 1
+      }
+    },
+    {
+      "check": "controller two can jump the flipped fighter",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "min_y_12_4": -571
+      }
+    },
+    {
+      "check": "player two keeps left-facing flip while moving left",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "face2": 0
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 0,
+        "fighter2": 10
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "controller two selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "selected2": 10
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "player two receives this fighter's native idle rows",
+      "passed": true,
+      "details": {
+        "fighter": 10
+      }
+    },
+    {
+      "check": "player two starts facing left for horizontal flip",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "face2": 0
+      }
+    },
+    {
+      "check": "controller two moves its flipped fighter toward player one",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "delta_12_4": -168
+      }
+    },
+    {
+      "check": "player two flipped actor uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "pose2": 1
+      }
+    },
+    {
+      "check": "controller two can jump the flipped fighter",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "min_y_12_4": -667
+      }
+    },
+    {
+      "check": "player two keeps left-facing flip while moving left",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "face2": 0
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 0,
+        "fighter2": 11
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "controller two selects requested fighter",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "selected2": 11
+      }
+    },
+    {
+      "check": "fighter bank has 8 complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "bank": 0,
+        "bytes": 20480
+      }
+    },
+    {
+      "check": "player two receives this fighter's native idle rows",
+      "passed": true,
+      "details": {
+        "fighter": 11
+      }
+    },
+    {
+      "check": "player two starts facing left for horizontal flip",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "face2": 0
+      }
+    },
+    {
+      "check": "controller two moves its flipped fighter toward player one",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "delta_12_4": -133
+      }
+    },
+    {
+      "check": "player two flipped actor uses a walk pose",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "pose2": 2
+      }
+    },
+    {
+      "check": "controller two can jump the flipped fighter",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "min_y_12_4": -681
+      }
+    },
+    {
+      "check": "player two keeps left-facing flip while moving left",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "face2": 0
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 0,
+        "fighter2": 1
+      }
+    },
+    {
+      "check": "P1 faces the left-facing P2 before the special",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "face1": 1,
+        "face2": 0
+      }
+    },
+    {
+      "check": "P2 remains left-facing for the guard check",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "face2": 0
+      }
+    },
+    {
+      "check": "guard probe sees the contracted special family",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "family": 0
+      }
+    },
+    {
+      "check": "held standing/crouch guard limits special to chip damage",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "family": "projectile",
+        "guard": "standing",
+        "hp_delta": 1
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 2,
+        "fighter2": 1
+      }
+    },
+    {
+      "check": "P1 faces the left-facing P2 before the special",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "face1": 1,
+        "face2": 0
+      }
+    },
+    {
+      "check": "P2 remains left-facing for the guard check",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "face2": 0
+      }
+    },
+    {
+      "check": "guard probe sees the contracted special family",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "family": 1
+      }
+    },
+    {
+      "check": "held standing/crouch guard limits special to chip damage",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "family": "rush",
+        "guard": "standing",
+        "hp_delta": 1
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 4,
+        "fighter2": 1
+      }
+    },
+    {
+      "check": "P1 faces the left-facing P2 before the special",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "face1": 1,
+        "face2": 0
+      }
+    },
+    {
+      "check": "P2 remains left-facing for the guard check",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "face2": 0
+      }
+    },
+    {
+      "check": "guard probe sees the contracted special family",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "family": 2
+      }
+    },
+    {
+      "check": "special breaks the intended guard and deals real damage",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "family": "groundwave",
+        "guard": "standing",
+        "hp_delta": 24
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 4,
+        "fighter2": 1
+      }
+    },
+    {
+      "check": "P1 faces the left-facing P2 before the special",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "face1": 1,
+        "face2": 0
+      }
+    },
+    {
+      "check": "P2 remains left-facing for the guard check",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "face2": 0
+      }
+    },
+    {
+      "check": "guard probe sees the contracted special family",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "family": 2
+      }
+    },
+    {
+      "check": "held standing/crouch guard limits special to chip damage",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "family": "groundwave",
+        "guard": "crouching",
+        "hp_delta": 1
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 10,
+        "fighter2": 1
+      }
+    },
+    {
+      "check": "P1 faces the left-facing P2 before the special",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "face1": 1,
+        "face2": 0
+      }
+    },
+    {
+      "check": "P2 remains left-facing for the guard check",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "face2": 0
+      }
+    },
+    {
+      "check": "guard probe sees the contracted special family",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "family": 3
+      }
+    },
+    {
+      "check": "held standing/crouch guard limits special to chip damage",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "family": "rising",
+        "guard": "standing",
+        "hp_delta": 1
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 10,
+        "fighter2": 1
+      }
+    },
+    {
+      "check": "P1 faces the left-facing P2 before the special",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "face1": 1,
+        "face2": 0
+      }
+    },
+    {
+      "check": "P2 remains left-facing for the guard check",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "face2": 0
+      }
+    },
+    {
+      "check": "guard probe sees the contracted special family",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "family": 3
+      }
+    },
+    {
+      "check": "special breaks the intended guard and deals real damage",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "family": "rising",
+        "guard": "crouching",
+        "hp_delta": 19
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 1,
+        "fighter2": 0
+      }
+    },
+    {
+      "check": "P2 representative starts left-facing",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "face2": 0
+      }
+    },
+    {
+      "check": "P2 representative reports its special family",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "family": 0
+      }
+    },
+    {
+      "check": "left-facing P2 special reaches passive P1",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "family": "projectile",
+        "hp_delta": 16
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 1,
+        "fighter2": 2
+      }
+    },
+    {
+      "check": "P2 representative starts left-facing",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "face2": 0
+      }
+    },
+    {
+      "check": "P2 representative reports its special family",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "family": 1
+      }
+    },
+    {
+      "check": "left-facing P2 special reaches passive P1",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "family": "rush",
+        "hp_delta": 18
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 1,
+        "fighter2": 4
+      }
+    },
+    {
+      "check": "P2 representative starts left-facing",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "face2": 0
+      }
+    },
+    {
+      "check": "P2 representative reports its special family",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "family": 2
+      }
+    },
+    {
+      "check": "left-facing P2 special reaches passive P1",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "family": "groundwave",
+        "hp_delta": 24
+      }
+    },
+    {
+      "check": "match intro completes",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "fighter": 1,
+        "fighter2": 10
+      }
+    },
+    {
+      "check": "P2 representative starts left-facing",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "face2": 0
+      }
+    },
+    {
+      "check": "P2 representative reports its special family",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "family": 3
+      }
+    },
+    {
+      "check": "left-facing P2 special reaches passive P1",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "family": "rising",
+        "hp_delta": 19
+      }
+    },
+    {
+      "check": "roster has at least three observed movement profiles",
+      "passed": true,
+      "details": {
+        "movement_deltas": [
+          160,
+          136,
+          192,
+          168,
+          128,
+          160,
+          136,
+          144,
+          208,
+          144,
+          192,
+          133
+        ]
+      }
+    }
+  ],
+  "characters": {
+    "00": {
+      "name": "DAMIAN",
+      "movement_delta": 160,
+      "movement_samples": [
+        20,
+        40,
+        60,
+        80,
+        100,
+        120,
+        140,
+        160
+      ],
+      "jump_height": -686,
+      "speed_trace": 20,
+      "jump_trace": 65445,
+      "special": {
+        "expected": "projectile",
+        "observed": [
+          0,
+          0
+        ],
+        "action": true,
+        "projectile": true,
+        "rush": false,
+        "rise": false
+      },
+      "idle_screenshot": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\characters\\00.png"
+    },
+    "01": {
+      "name": "IVO",
+      "movement_delta": 136,
+      "movement_samples": [
+        17,
+        34,
+        51,
+        68,
+        85,
+        102,
+        119,
+        136
+      ],
+      "jump_height": -616,
+      "speed_trace": 17,
+      "jump_trace": 65452,
+      "special": {
+        "expected": "projectile",
+        "observed": [
+          0,
+          0
+        ],
+        "action": true,
+        "projectile": true,
+        "rush": false,
+        "rise": false
+      },
+      "idle_screenshot": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\characters\\01.png"
+    },
+    "02": {
+      "name": "CRISTOBAL",
+      "movement_delta": 192,
+      "movement_samples": [
+        24,
+        48,
+        72,
+        96,
+        120,
+        144,
+        168,
+        192
+      ],
+      "jump_height": -736,
+      "speed_trace": 24,
+      "jump_trace": 65440,
+      "special": {
+        "expected": "rush",
+        "observed": [
+          1,
+          1
+        ],
+        "action": true,
+        "projectile": false,
+        "rush": true,
+        "rise": false
+      },
+      "idle_screenshot": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\characters\\02.png"
+    },
+    "03": {
+      "name": "COTE",
+      "movement_delta": 168,
+      "movement_samples": [
+        21,
+        42,
+        63,
+        84,
+        105,
+        126,
+        147,
+        168
+      ],
+      "jump_height": -676,
+      "speed_trace": 21,
+      "jump_trace": 65446,
+      "special": {
+        "expected": "rush",
+        "observed": [
+          1,
+          1
+        ],
+        "action": true,
+        "projectile": false,
+        "rush": true,
+        "rise": false
+      },
+      "idle_screenshot": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\characters\\03.png"
+    },
+    "04": {
+      "name": "NEGGER",
+      "movement_delta": 128,
+      "movement_samples": [
+        16,
+        32,
+        48,
+        64,
+        80,
+        96,
+        112,
+        128
+      ],
+      "jump_height": -641,
+      "speed_trace": 16,
+      "jump_trace": 65454,
+      "special": {
+        "expected": "groundwave",
+        "observed": [
+          2,
+          2
+        ],
+        "action": true,
+        "projectile": true,
+        "rush": false,
+        "rise": false
+      },
+      "idle_screenshot": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\characters\\04.png"
+    },
+    "05": {
+      "name": "DAVID",
+      "movement_delta": 160,
+      "movement_samples": [
+        20,
+        40,
+        60,
+        80,
+        100,
+        120,
+        140,
+        160
+      ],
+      "jump_height": -685,
+      "speed_trace": 20,
+      "jump_trace": 65436,
+      "special": {
+        "expected": "rising",
+        "observed": [
+          3,
+          3
+        ],
+        "action": true,
+        "projectile": false,
+        "rush": false,
+        "rise": true
+      },
+      "idle_screenshot": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\characters\\05.png"
+    },
+    "06": {
+      "name": "FERNANDO",
+      "movement_delta": 136,
+      "movement_samples": [
+        17,
+        34,
+        51,
+        68,
+        85,
+        102,
+        119,
+        136
+      ],
+      "jump_height": -621,
+      "speed_trace": 17,
+      "jump_trace": 65456,
+      "special": {
+        "expected": "groundwave",
+        "observed": [
+          2,
+          2
+        ],
+        "action": true,
+        "projectile": true,
+        "rush": false,
+        "rise": false
+      },
+      "idle_screenshot": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\characters\\06.png"
+    },
+    "07": {
+      "name": "CRISTIAN",
+      "movement_delta": 144,
+      "movement_samples": [
+        18,
+        36,
+        54,
+        72,
+        90,
+        108,
+        126,
+        144
+      ],
+      "jump_height": -649,
+      "speed_trace": 18,
+      "jump_trace": 65448,
+      "special": {
+        "expected": "rising",
+        "observed": [
+          3,
+          3
+        ],
+        "action": true,
+        "projectile": false,
+        "rush": false,
+        "rise": true
+      },
+      "idle_screenshot": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\characters\\07.png"
+    },
+    "08": {
+      "name": "MAMARIAGA",
+      "movement_delta": 208,
+      "movement_samples": [
+        26,
+        52,
+        78,
+        104,
+        130,
+        156,
+        182,
+        208
+      ],
+      "jump_height": -751,
+      "speed_trace": 26,
+      "jump_trace": 65434,
+      "special": {
+        "expected": "groundwave",
+        "observed": [
+          2,
+          2
+        ],
+        "action": true,
+        "projectile": true,
+        "rush": false,
+        "rise": false
+      },
+      "idle_screenshot": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\characters\\08.png"
+    },
+    "09": {
+      "name": "RESTON",
+      "movement_delta": 144,
+      "movement_samples": [
+        18,
+        36,
+        54,
+        72,
+        90,
+        108,
+        126,
+        144
+      ],
+      "jump_height": -571,
+      "speed_trace": 18,
+      "jump_trace": 65452,
+      "special": {
+        "expected": "projectile",
+        "observed": [
+          0,
+          0
+        ],
+        "action": true,
+        "projectile": true,
+        "rush": false,
+        "rise": false
+      },
+      "idle_screenshot": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\characters\\09.png"
+    },
+    "10": {
+      "name": "ROXANA",
+      "movement_delta": 192,
+      "movement_samples": [
+        24,
+        48,
+        72,
+        96,
+        120,
+        144,
+        168,
+        192
+      ],
+      "jump_height": -711,
+      "speed_trace": 24,
+      "jump_trace": 65438,
+      "special": {
+        "expected": "rising",
+        "observed": [
+          3,
+          3
+        ],
+        "action": true,
+        "projectile": false,
+        "rush": false,
+        "rise": true
+      },
+      "idle_screenshot": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\characters\\10.png"
+    },
+    "11": {
+      "name": "LARS",
+      "movement_delta": 133,
+      "movement_samples": [
+        19,
+        19,
+        38,
+        57,
+        76,
+        95,
+        114,
+        133
+      ],
+      "jump_height": -681,
+      "speed_trace": 19,
+      "jump_trace": 65450,
+      "special": {
+        "expected": "groundwave",
+        "observed": [
+          2,
+          2
+        ],
+        "action": true,
+        "projectile": true,
+        "rush": false,
+        "rise": false
+      },
+      "idle_screenshot": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\characters\\11.png"
+    }
+  },
+  "player_two": {
+    "00": {
+      "name": "DAMIAN",
+      "movement_delta": -140,
+      "jump_height": -686,
+      "face2": 0,
+      "bank": 0
+    },
+    "01": {
+      "name": "IVO",
+      "movement_delta": -119,
+      "jump_height": -616,
+      "face2": 0,
+      "bank": 0
+    },
+    "02": {
+      "name": "CRISTOBAL",
+      "movement_delta": -168,
+      "jump_height": -685,
+      "face2": 0,
+      "bank": 0
+    },
+    "03": {
+      "name": "COTE",
+      "movement_delta": -147,
+      "jump_height": -676,
+      "face2": 0,
+      "bank": 0
+    },
+    "04": {
+      "name": "NEGGER",
+      "movement_delta": -112,
+      "jump_height": -641,
+      "face2": 0,
+      "bank": 0
+    },
+    "05": {
+      "name": "DAVID",
+      "movement_delta": -140,
+      "jump_height": -731,
+      "face2": 0,
+      "bank": 0
+    },
+    "06": {
+      "name": "FERNANDO",
+      "movement_delta": -119,
+      "jump_height": -577,
+      "face2": 0,
+      "bank": 0
+    },
+    "07": {
+      "name": "CRISTIAN",
+      "movement_delta": -126,
+      "jump_height": -701,
+      "face2": 0,
+      "bank": 0
+    },
+    "08": {
+      "name": "MAMARIAGA",
+      "movement_delta": -182,
+      "jump_height": -751,
+      "face2": 0,
+      "bank": 0
+    },
+    "09": {
+      "name": "RESTON",
+      "movement_delta": -126,
+      "jump_height": -571,
+      "face2": 0,
+      "bank": 0
+    },
+    "10": {
+      "name": "ROXANA",
+      "movement_delta": -168,
+      "jump_height": -667,
+      "face2": 0,
+      "bank": 0
+    },
+    "11": {
+      "name": "LARS",
+      "movement_delta": -133,
+      "jump_height": -681,
+      "face2": 0,
+      "bank": 0
+    }
+  },
+  "guard_checks": {
+    "00-standing": {
+      "fighter": "DAMIAN",
+      "family": "projectile",
+      "guard": "standing",
+      "expected_blocked": true,
+      "distance_12_4": 624,
+      "initial_hp2": 128,
+      "final_hp2": 127,
+      "damage": 1,
+      "hit_frame": 385
+    },
+    "02-standing": {
+      "fighter": "CRISTOBAL",
+      "family": "rush",
+      "guard": "standing",
+      "expected_blocked": true,
+      "distance_12_4": 640,
+      "initial_hp2": 128,
+      "final_hp2": 127,
+      "damage": 1,
+      "hit_frame": 408
+    },
+    "04-standing": {
+      "fighter": "NEGGER",
+      "family": "groundwave",
+      "guard": "standing",
+      "expected_blocked": false,
+      "distance_12_4": 640,
+      "initial_hp2": 128,
+      "final_hp2": 104,
+      "damage": 24,
+      "hit_frame": 484
+    },
+    "04-crouching": {
+      "fighter": "NEGGER",
+      "family": "groundwave",
+      "guard": "crouching",
+      "expected_blocked": true,
+      "distance_12_4": 640,
+      "initial_hp2": 128,
+      "final_hp2": 127,
+      "damage": 1,
+      "hit_frame": 484
+    },
+    "10-standing": {
+      "fighter": "ROXANA",
+      "family": "rising",
+      "guard": "standing",
+      "expected_blocked": true,
+      "distance_12_4": 640,
+      "initial_hp2": 128,
+      "final_hp2": 127,
+      "damage": 1,
+      "hit_frame": 567
+    },
+    "10-crouching": {
+      "fighter": "ROXANA",
+      "family": "rising",
+      "guard": "crouching",
+      "expected_blocked": false,
+      "distance_12_4": 640,
+      "initial_hp2": 128,
+      "final_hp2": 109,
+      "damage": 19,
+      "hit_frame": 567
+    }
+  },
+  "player_two_specials": {
+    "00": {
+      "fighter": "DAMIAN",
+      "family": "projectile",
+      "distance_12_4": 624,
+      "initial_hp1": 128,
+      "final_hp1": 112,
+      "damage": 16,
+      "hit_frame": 625,
+      "face2": 0
+    },
+    "02": {
+      "fighter": "CRISTOBAL",
+      "family": "rush",
+      "distance_12_4": 640,
+      "initial_hp1": 128,
+      "final_hp1": 110,
+      "damage": 18,
+      "hit_frame": 408,
+      "face2": 0
+    },
+    "04": {
+      "fighter": "NEGGER",
+      "family": "groundwave",
+      "distance_12_4": 640,
+      "initial_hp1": 128,
+      "final_hp1": 104,
+      "damage": 24,
+      "hit_frame": 484,
+      "face2": 0
+    },
+    "10": {
+      "fighter": "ROXANA",
+      "family": "rising",
+      "distance_12_4": 640,
+      "initial_hp1": 128,
+      "final_hp1": 109,
+      "damage": 19,
+      "hit_frame": 567,
+      "face2": 0
+    }
+  },
+  "passed": 396,
+  "elapsed_seconds": 21.83,
+  "status": "passed"
+}

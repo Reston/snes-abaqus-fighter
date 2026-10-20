@@ -1,0 +1,17 @@
+{
+  "character_id": "09-reston",
+  "edit_type": "targeted layout repair",
+  "source": "atlas-v1.png",
+  "output": "revisedatlas.png",
+  "promoted_to": "atlas.png",
+  "generation_mode": "built-in image_gen edit",
+  "generated_at": "2026-10-19",
+  "transparent_background": true,
+  "validation": {
+    "tool": "tools/fighter_assets.py::extract_atlas",
+    "alpha_threshold": 200,
+    "separate_figures": 16,
+    "status": "passed"
+  },
+  "prompt_text": "Use case: precise-object-edit\nAsset type: original native SNES fighting-game character sprite atlas master\nInput image: the single provided image is the existing RESTON 4x4 sprite atlas and is the edit target.\nPrimary request: Repair the atlas layout only. Recreate the same original RESTON character atlas as a clean exact 4 columns by 4 rows sheet with exactly 16 separate full-body figures, one figure per cell. Preserve the existing character identity, face, close-cropped/receding dark hair, prominent neat beard, broad medium-heavy body, copper/red-orange waist-length jacket, pale cream collar and cuffs, dark charcoal shirt, dark navy trousers, dark shoes with copper highlights, navy outlines, cel-shaded cartoon rendering, scale, right-facing orientation, and every pose's content and order. Preserve the existing 1993 arcade cartoon style and approximately 15-color material ramps.\nCritical layout repair: create at least 40 fully transparent pixels of vertical separation between every row, with special attention to the boundary between row 3 raised-block pose and row 4 rising-uppercut pose in column 2. The bottom of the raised-block fighter's shoes must end well above the top of the rising-uppercut fist; no opaque or semi-transparent pixels may touch or cross that boundary. Ensure the entire row 4 starts clearly below row 3, and keep a generous transparent gap between all neighboring cells. If necessary, scale the figures slightly smaller within the same canvas to guarantee gaps while keeping all heads, hands, fists, shoes, and the horizontal KO figure inside their cells.\nKeep the exact row order, left to right:\nRow 1: idle guard; front walk; back walk; low crouch guard.\nRow 2: tucked jump; extended jab; cross punch; high side kick.\nRow 3: low sweep; raised block; hurt recoil; victory pose.\nRow 4: two-hand energy cast with empty hands and no projectile/effect; rising uppercut; horizontal lying KO with HEAD LEFT; forward shoulder lunge.\nPreserve true transparency. Do not draw or add grid lines, cell borders, labels, text, watermark, logo, floor, background, shadows outside figures, projectile, energy orb, sparks, extra people, disconnected limbs, cropped body parts, or additional poses. This is a targeted spacing edit to the supplied atlas, not a redesign."
+}

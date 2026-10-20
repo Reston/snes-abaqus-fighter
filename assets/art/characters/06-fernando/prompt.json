@@ -1,0 +1,29 @@
+{
+  "character_id": "06",
+  "character": "Fernando Pérez",
+  "asset": "atlas.png",
+  "mode": "built-in imagegen",
+  "generated_image": "C:/Users/user/.codex/generated_images/01a156f6-2523-7272-9ee2-1fd09c08758e/exec-8851f2ae-a1a4-408f-addf-781c3e0c3bbd.png",
+  "references": [
+    {
+      "path": "assets/references/fighter-06.jpg",
+      "role": "face and hair reference; broad identity cues only"
+    },
+    {
+      "path": "assets/references/fighter-07.jpg",
+      "role": "context reference shown during generation; not copied into the character"
+    },
+    {
+      "path": "assets/art/fighter-atlas-cartoon.png",
+      "role": "existing original cartoon SNES atlas style and scale reference"
+    }
+  ],
+  "output": {
+    "format": "PNG",
+    "size": [1182, 1330],
+    "mode": "RGBA",
+    "alpha": "genuinely transparent outside the figures",
+    "layout": "4 columns by 4 rows, 16 independent poses"
+  },
+  "prompt": "Use case: stylized-concept\nAsset type: original native SNES fighting-game character sprite atlas\nPrimary request: Create one clean sprite-sheet atlas for Fernando Pérez, a fictional cartoon fighting-game character inspired by a Chilean software-company coworker. Exactly 4 columns by 4 rows, exactly 16 equal square cells, one full-body pose centered in each cell with generous transparent separation. Each cell must be a single connected character silhouette with hands attached to arms and feet attached to legs. The output must be a real transparent PNG with no opaque backdrop.\nInput images: Image 1 is a facial reference for Fernando; preserve his short dark hair, broad friendly face, eyebrows and calm features as cartoon traits. Image 2 is another coworker reference and should not be copied as a character. Image 3 is the project's existing original cel-shaded sprite-sheet style reference only; match its readability and SNES-era proportions without copying its character.\nSubject: Fernando is a stockier, grounded veteran fighter with a compact anchored guard, broad torso, sturdy legs and exaggerated expressive fists. Outfit: teal open field jacket with rolled sleeves, white open collar, sturdy dark charcoal trousers, dark work shoes. Keep the outfit consistent in every cell; no logos or readable lettering.\nStyle/medium: original 1993 arcade fighting-game cartoon pixel/cel-shaded illustration, chunky athletic proportions, bold dark navy outlines, hard-edged cel-shading with a limited palette of about 15 colors, clean material ramps, expressive face and fists, suitable for nearest-neighbor reduction to 64x80 SNES sprites. It should feel like a bright comic-book arcade game, never a photorealistic digitized fighter and never Mortal Kombat. Avoid copying any commercial character or sprite.\nComposition/framing: all 16 cells show Fernando facing right in side view, full body visible from hair to shoes, consistent baseline and scale. Use this exact reading order, left to right then top to bottom:\n1 idle guard; 2 forward walk; 3 backward walk; 4 crouch guard;\n5 tucked jump; 6 straight jab; 7 cross punch; 8 high side kick;\n9 low sweep; 10 raised block; 11 hurt recoil; 12 victory;\n13 two-hand energy cast with both palms together and a small glow between hands but absolutely no projectile; 14 rising uppercut;\n15 lying KO with head on the left and feet on the right; 16 forward shoulder lunge.\nMake the action silhouettes distinct and readable, with no overlap between cells.\nLighting/mood: bright confident arcade presentation, crisp highlights on teal cloth and skin, no cast shadow.\nColor palette: deep navy outline, teal/cyan jacket material ramps, white collar, charcoal trousers, warm skin, dark hair, small restrained accent colors.\nMaterials/textures: flat hand-inked cel shading, clean fabric folds, simple leather shoe highlights.\nText (verbatim): none.\nConstraints: exact 4x4 grid of 16 poses; transparent background; no frame borders, no grid lines, no captions, no watermarks, no speech bubbles, no logos, no background scenery, no extra objects, no projectile. Preserve one consistent character and outfit in all cells.\nAvoid: realism, photographic skin, gore, blood, weapons, extra limbs, disconnected hands, duplicated body parts, cropped feet or head, dramatic perspective, 3D render, soft airbrush, noisy texture, black background, checkerboard background."
+}

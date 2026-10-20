@@ -27,3 +27,5 @@ jobs:
         run: |
           & .\.tools\python\python.exe -u tools/test_rom.py
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & .\.tools\python\python.exe -u tools/test_characters.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }

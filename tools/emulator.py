@@ -73,10 +73,22 @@ class Emulator:
     def tap(self,key,port=0):
         self.run(3,**({'p1':[key]} if port==0 else {'p2':[key]}));return self.run(3)
     def state(self):
-        data=C.string_at(self.ram+0x1ff00,64)
+        # The first 32 words are the original public trace.  The roster
+        # upgrade appends ten read-only words for per-character identity,
+        # special family, movement profile and facing.  Reading the larger
+        # window is harmless with an older ROM and keeps callers compatible.
+        data=C.string_at(self.ram+0x1ff00,124)
         vals=[int.from_bytes(data[i:i+2],'little') for i in range(0,64,2)]
         names=['magic','screen','frame','mode','hp1','hp2','x1','x2','y1','y2','action1','action2','wins1','wins2','arena','round','intro','paused','energy1','energy2','wave1','wave2','selected','selected2','arcade','seconds','pose1','pose2','round_end','hitstop','combo','champion']
-        return dict(zip(names,vals))
+        result=dict(zip(names,vals))
+        extension=['fighter_id1','fighter_id2','family1','family2','speed1','speed2','jump1','jump2','face1','face2',
+                   'back_speed1','back_speed2','special_startup1','special_startup2',
+                   'special_active1','special_active2','special_recovery1','special_recovery2',
+                   'special_damage1','special_damage2','special_reach1','special_reach2',
+                   'throw_range1','throw_range2','wave_low1','wave_low2',
+                   'wave_speed1','wave_speed2','wave_life1','wave_life2']
+        result.update(dict(zip(extension,[int.from_bytes(data[i:i+2],'little') for i in range(64,124,2)])))
+        return result
     def shot(self,name):
         path=ROOT/'docs/screenshots'/name;path.parent.mkdir(exist_ok=True,parents=True)
         assert self.frame is not None

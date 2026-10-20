@@ -5,6 +5,10 @@ ROOT=Path(__file__).resolve().parents[1]
 manifest=json.loads((ROOT/'dist/manifest.json').read_text())
 report=json.loads((ROOT/'docs/test-report.json').read_text())
 assert report['rom_sha256']==manifest['sha256'],'Run tests on the current ROM before packaging.'
+roster_report=json.loads((ROOT/'docs/character-test-report.json').read_text())
+assert roster_report['status']=='passed','Run the complete roster suite before packaging.'
+assert roster_report['rom_sha256']==manifest['sha256'],'Roster verification must match the current ROM.'
+assert hashlib.sha256((ROOT/'dist/abaqus-after-hours.sfc').read_bytes()).hexdigest()==manifest['sha256'],'ROM differs from its manifest.'
 archive=ROOT/'dist'/('Abaqus-After-Hours-v'+manifest['version']+'-Windows.zip')
 files={
  'abaqus-after-hours.sfc':ROOT/'dist/abaqus-after-hours.sfc',
@@ -15,6 +19,9 @@ files={
  'CREDITS.md':ROOT/'docs/CREDITS.md',
  'manifest.json':ROOT/'dist/manifest.json',
  'ART-DIRECTION.md':ROOT/'docs/ART-DIRECTION.md',
+ 'CHARACTERS.md':ROOT/'docs/CHARACTERS.md',
+ 'qa/gameplay.json':ROOT/'docs/test-report.json',
+ 'qa/characters.json':ROOT/'docs/character-test-report.json',
  'LICENSE':ROOT/'LICENSE',
  'licenses/PVSnesLib.txt':ROOT/'licenses/PVSnesLib.txt',
  'licenses/SNESMod.txt':ROOT/'licenses/SNESMod.txt',

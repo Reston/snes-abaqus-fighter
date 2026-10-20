@@ -1,0 +1,24 @@
+{
+  "character_id": "04-negger",
+  "display_name": "Gonzalo \"Negger\" Reyes",
+  "asset": "atlas.png",
+  "generated_by": "built-in image_gen",
+  "generated_at": "2026-10-19",
+  "source_generated_path": "C:/Users/user/.codex/generated_images/01a156f5-f82b-7e60-b902-623384a05ba4/exec-c67c91c9-b119-4756-bece-7857f7bd87a7.png",
+  "reference_images": [
+    {
+      "path": "assets/references/fighter-04.jpg",
+      "role": "reference image for identity cues only",
+      "observed_identity": "short dark hair and light stubble"
+    }
+  ],
+  "output": {
+    "background": "transparent",
+    "dimensions": "1254x1254",
+    "grid": "4 columns x 4 rows",
+    "poses": 16,
+    "orientation": "right-facing",
+    "margin": "generous transparent margins; one disconnected figure per cell"
+  },
+  "prompt": "Use case: stylized-concept\nAsset type: native SNES fighting-game character sprite atlas\nPrimary request: Create one original transparent sprite-sheet atlas for Gonzalo “Negger” Reyes, a fictionalized corporate-office fighting-game character based on the supplied reference portrait for face and hair identity only. The final image must be a clean 4 columns by 4 rows grid containing exactly 16 separate full-body fighting poses, one figure centered in each cell, all facing RIGHT. Each pose must be fully disconnected from every neighboring cell with generous transparent margins; no grid lines, no labels, no text, no background, no shadows, no projectiles.\nInput images: Image 1: reference image for identity cues only; do not copy the photo or its clothing/logo.\nScene/backdrop: genuinely transparent background.\nSubject: broad, heavy bruiser silhouette; large shoulders, thick forearms, oversized fists, sturdy legs, low planted center of gravity; recognizable short dark hair and light stubble from the reference. Outfit is an original purple bomber-style office jacket worn open over a plain white shirt, dark charcoal trousers and sturdy shoes. No logos or readable text.\nStyle/medium: 1993 arcade fighting-game pixel cartoon, chunky hand-pixeled silhouette, strong navy contour, crisp cel-shaded blocks, expressive oversized face and fists, playful energetic exaggeration, original SNES-era sprite art. Match the supplied existing cartoon fighter atlas in visual weight and readability without tracing or copying any pose or costume.\nComposition/framing: square atlas, 4x4 cells, consistent scale and baseline; every person fully visible head-to-shoe and comfortably inside its cell. Right-facing profile or three-quarter view throughout. Row order, exactly one pose per cell:\nrow 1: idle fighting stance; front walk; back walk; low crouch guard\nrow 2: knees-tucked jump; extended jab; cross punch; high sidekick\nrow 3: low sweep; raised block; hurt recoil; victory pose with fists raised\nrow 4: two-hand energy-cast windup with empty hands and no projectile; rising uppercut; horizontal lying KO with head LEFT; forward shoulder lunge\nLighting/mood: bold, readable arcade cel shading, upbeat competitive mood.\nColor palette: fixed compact palette with navy outlines, deep violet shadows, medium purple jacket, lavender highlights, white shirt, charcoal trousers, warm skin tones, dark hair; about 15 colors per material family.\nMaterials/textures: clean connected anatomy and hard pixel-like color blocks, no photoreal texture.\nConstraints: preserve the supplied person's short dark hair and light-stubble identity cues; keep all 16 poses in the exact row order; transparent alpha; one disconnected figure per cell; right-facing; consistent character scale.\nAvoid: photorealism, Mortal Kombat realism, gore, blood, weapons, firearms, copied Capcom or Street Fighter costumes, recognizable commercial logos, watermarks, text, grids, borders, extra limbs, fused characters, detached hands or heads, cropped feet, background scenery, shadows, flames, visible energy projectile."
+}
