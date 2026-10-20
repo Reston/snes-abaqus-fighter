@@ -11,6 +11,7 @@ from PIL import Image, ImageOps
 SLUGS = ('damian', 'ivo', 'cristobal', 'cote', 'negger', 'david',
          'fernando', 'cristian', 'mamariaga', 'reston', 'roxana', 'lars')
 HEIGHTS = (69, 72, 68, 69, 72, 68, 67, 73, 66, 70, 68, 74)
+FACE_PORTRAITS = (1, 2, 5, 7, 11)
 POSES = ('idle', 'walk-forward', 'walk-back', 'crouch', 'jump', 'jab',
          'cross', 'kick', 'sweep', 'block', 'hurt', 'victory', 'cast',
          'uppercut', 'knockout', 'rush')
@@ -122,8 +123,12 @@ def prepare_roster(root, output):
         # Reuse the same illustrated face and costume for the select portrait.
         # This is a source-master crop, not an enlarged 64x80 runtime sprite.
         idle = figures[0]
-        upper = idle.crop((0, 0, idle.width, round(idle.height * .56)))
-        portrait = ImageOps.fit(upper, (32, 40), Image.Resampling.NEAREST, centering=(.58, .18))
+        # The likeness pass gives the corrected faces more of the select card.
+        # Keep enough collar and hair visible to preserve recognition cues.
+        portrait_fraction = .40 if fighter in FACE_PORTRAITS else .56
+        portrait_center = .68 if fighter in FACE_PORTRAITS else .58
+        upper = idle.crop((0, 0, idle.width, round(idle.height * portrait_fraction)))
+        portrait = ImageOps.fit(upper, (32, 40), Image.Resampling.NEAREST, centering=(portrait_center, .18))
         backdrop = Image.new('RGB', (32, 40), colors[0])
         backdrop.paste(portrait, (0, 0), portrait.getchannel('A'))
         backdrop.save(output / f'portrait{fighter:02}.png')

@@ -4,10 +4,15 @@ This is the game-fiction identity sheet for roster slot 01. The source portrait 
 
 ## Appearance and outfit
 
-- Short neatly swept dark brown hair and a calm, focused expression.
+- Adult middle-aged face with a rectangular/long shape, broad cheekbones, softly square chin, strong straight nose, rounded eyes with heavier upper lids, subtle expression lines, and a clean-shaven jaw.
+- Short near-black charcoal hair with a natural side part, modest front lift, and a low silhouette instead of a tall pompadour.
 - Taller, medium-athletic, long-legged strategist silhouette with a narrower waist and precise guarded posture.
 - Emerald tailored rolled-sleeve jacket over a dark charcoal button shirt, deep charcoal trousers, dark shoes, warm light-olive skin, and a deep green/navy contour.
-- The emerald jacket, dark hair, long legs, and composed stance are the primary recognition cues at SNES fighting distance.
+- The adult face, short dark side-parted hair, emerald jacket, long legs, and composed stance are the primary recognition cues at SNES fighting distance.
+
+## Likeness revision
+
+`atlas.png` was revised with a built-in imagegen identity-preserving edit on 2026-10-19. The edit changes only the illustrated head treatment across all sixteen poses: the previous tall pompadour and youthful angular face are replaced with Ivo's shorter side-parted charcoal hair and mature rectangular facial proportions. The real portrait remains an identity reference only and is not shipped as game art. See `likeness-v2.json` for the complete prompt, input roles, provenance, and extractor validation.
 
 ## Readability notes
 

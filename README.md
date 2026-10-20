@@ -2,7 +2,7 @@
 
 An original six-button fighting game for the **Super Nintendo**, inspired by the arcade structure of Street Fighter II and the people and places of Abaqus in Santiago.
 
-**Individual roster release: v0.3.0.** The cartridge is a 1 MiB NTSC FastROM LoROM image, compiled from C and 65816 assembly. It runs in Snes9x with ordinary SNES controllers.
+**Character likeness release: v0.3.1.** The cartridge is a 1 MiB NTSC FastROM LoROM image, compiled from C and 65816 assembly. It runs in Snes9x with ordinary SNES controllers.
 
 Each of the twelve fighters now has an individual illustrated sixteen-pose atlas, silhouette, costume and palette in the cartoon arcade style. Matching selection portraits come from the new art masters. Public team photos serve as appearance references.
 
@@ -12,7 +12,7 @@ Each of the twelve fighters now has an individual illustrated sixteen-pose atlas
 
 On Windows, double-click **[Play.cmd](Play.cmd)**. The launcher downloads the official Snes9x 1.63 release into `.tools/` on its first run, verifies its SHA256, and opens the game. No administrator account or global installation is needed. The tools are already present in this checkout.
 
-For offline play, extract `dist/Abaqus-After-Hours-v0.3.0-Windows.zip` and run its `Play.cmd`. The package contains the ROM, emulator, default controls, guide, character profiles and credits.
+For offline play, extract `dist/Abaqus-After-Hours-v0.3.1-Windows.zip` and run its `Play.cmd`. The package contains the ROM, emulator, default controls, guide, character profiles and credits.
 
 On other platforms, open **[dist/abaqus-after-hours.sfc](dist/abaqus-after-hours.sfc)** in a SNES emulator. No BIOS or commercial ROM is required.
 
@@ -78,6 +78,6 @@ A Windows GitHub Actions workflow builds the cartridge, checks its hash against 
 | `dist/` | Playable ROM and release manifest |
 | `docs/` | Controls, technical notes, art prompts, credits and QA evidence |
 
-Git tracks the source, master art, generated cartridge assets and ROM. Downloaded toolchains and release ZIPs stay outside history. Prior releases are tagged `v0.1.0` and `v0.2.0`; this roster pass is `v0.3.0`. No remote repository is configured by this project.
+Git tracks the source, master art, generated cartridge assets and ROM. Downloaded toolchains and release ZIPs stay outside history. Prior releases are tagged `v0.1.0`, `v0.2.0` and `v0.3.0`; the five-character face correction is `v0.3.1`. No remote repository is configured by this project.
 
 Team references: [Abaqus Solutions](https://abaqus.io/es/abaqus-solutions/team) and [Abaqus Wealth Care](https://abaqus.io/es/wealth-care/about-us). See [credits and asset provenance](docs/CREDITS.md), [art prompts](docs/ART-DIRECTION.md), and [technical notes](docs/DEVELOPMENT.md).

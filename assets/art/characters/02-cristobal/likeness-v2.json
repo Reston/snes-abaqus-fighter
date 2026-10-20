@@ -1,0 +1,67 @@
+{
+  "character_id": "02",
+  "character": "Cristóbal Mackenzie",
+  "asset": "atlas.png",
+  "mode": "built-in imagegen",
+  "generated_image": "C:/Users/user/.codex/generated_images/01a15713-0fc7-7bd0-b0ec-07e669de2edb/exec-e1f0b47b-961b-460c-852e-224e8f2da35f.png",
+  "references": [
+    {
+      "path": "assets/art/characters/02-cristobal/atlas.png",
+      "role": "edit target; preserve the existing 4x4 pose layout, action silhouettes, costume, proportions, and transparent gaps"
+    },
+    {
+      "path": "assets/references/fighter-02.jpg",
+      "role": "identity reference; broad adult facial geometry, beard shape, ears, nose, eyes, and brows only"
+    }
+  ],
+  "input_roles": {
+    "image_1": "edit target",
+    "image_2": "face and hair identity reference",
+    "photo_authority": "broad facial identity cues",
+    "user_override": "hair and beard are jet black; this overrides any brown or warm cast in the photo"
+  },
+  "provenance": {
+    "original_asset_preserved": "git:75548bf:assets/art/characters/02-cristobal/atlas.png",
+    "final_sha256": "3901149b3eef2ee2bcab9be815c46f577669751c7b3787186e2a49b6e9698a3d",
+    "edit_scope": "facial geometry, hairline, hair color, beard and moustache shape repeated across all 16 poses",
+    "unchanged_scope": "orange jacket, dark trousers, body proportions, pose order, right-facing actions, KO head-left exception, transparent gaps"
+  },
+  "prompt": "Use case: identity-preserve edit of a native SNES fighter atlas. Asset type: original 1993 Street Fighter II-inspired cartoon pixel-art sprite sheet for Abaqus: After Hours. Input images and roles: Image 1 is the EDIT TARGET, the existing Cristóbal 4x4 transparent fighter atlas; preserve its exact canvas, 4 columns by 4 rows, 16 disconnected full-body poses, pose order, right-facing action silhouettes, orange jacket, dark trousers, feet baselines, and transparent gaps. Image 2 is the IDENTITY REFERENCE, a photo of Cristóbal Mackenzie; use it only for broad facial identity cues and do not copy the photo, clothing, background, lighting, or realism. Primary request: edit only Cristóbal's face, hair, beard, moustache, brows, ears, and repeated facial geometry across all sixteen poses so the character reads clearly as the same adult person. Make the face an adult slightly long oval with a high forehead and slightly receding natural hairline; short cropped JET-BLACK hair, never brown or orange; fuller rounded BLACK beard and moustache; natural dark brows; prominent ears; straight nose; calmer confident eyes. Remove the generic angular squinting hero look. Keep the face as original cartoon game art, not a realistic portrait. Hard invariants: preserve the exact existing 4x4 atlas layout and 16 pose actions; do not add, remove, merge, split, crop, or reorder figures. Preserve full connected bodies, orange rolled-sleeve work jacket, pale shirt opening, dark navy trousers, dark shoes, body proportions, pose silhouettes, right-facing standing poses, and the horizontal KO head-left exception. Preserve genuinely transparent gaps and alpha outside every figure. Use the existing original cartoon 1993 arcade fighter style: chunky hand-painted pixel-art impression, bold clean dark navy outlines, hard cel-shaded planes, approximately 15 usable colors, readable at 64x80. Change no costume color except leave the existing orange jacket exactly as orange. Hair and beard must be distinctly black so they do not read brown, auburn, or orange. No visible grid, text, shadows, background, effects, projectile, props, logos, watermark, gore, blood, photorealistic or digitized skin, or copied Capcom art. Keep each figure isolated in its original cell with no overlap.",
+  "validation": {
+    "command": ".tools/python/python.exe -c \"import sys; sys.path.insert(0, 'tools'); from fighter_assets import extract_atlas; extract_atlas('assets/art/characters/02-cristobal/atlas.png', alpha_threshold=200)\"",
+    "tool": "tools/fighter_assets.py:extract_atlas",
+    "alpha_threshold": 200,
+    "status": "passed",
+    "size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "components": 16,
+    "pose_order": [
+      "idle",
+      "walk-forward",
+      "walk-back",
+      "crouch",
+      "jump",
+      "jab",
+      "cross",
+      "kick",
+      "sweep",
+      "block",
+      "hurt",
+      "victory",
+      "cast",
+      "uppercut",
+      "knockout",
+      "rush"
+    ]
+  },
+  "source_revision": "75548bf",
+  "compiled_asset": "atlas.png",
+  "compiled_asset_sha256": "3901149b3eef2ee2bcab9be815c46f577669751c7b3787186e2a49b6e9698a3d"
+}

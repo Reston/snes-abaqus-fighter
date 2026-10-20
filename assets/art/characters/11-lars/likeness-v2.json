@@ -1,0 +1,65 @@
+{
+  "character_id": 11,
+  "display_name": "Rodrigo \"Lars\" Lartiga",
+  "asset": "atlas.png",
+  "mode": "built-in imagegen",
+  "intent": "identity-preserve / precise-object-edit",
+  "input_roles": {
+    "image_1": {
+      "role": "edit target",
+      "path": "assets/art/characters/11-lars/atlas.png (previous atlas supplied to imagegen as the first edit target)"
+    },
+    "image_2": {
+      "role": "identity reference photo",
+      "path": "assets/references/fighter-11.jpg"
+    }
+  },
+  "generated_inputs": [
+    "C:/Users/user/.codex/generated_images/01a15713-b801-7601-a73b-97ad2b9fff1a/exec-37ce06c8-0b5e-4b06-b0c9-1f04aff045bf.png",
+    "C:/Users/user/.codex/generated_images/01a15713-b801-7601-a73b-97ad2b9fff1a/exec-4e27b30d-79e9-4978-87c4-6a7d16499015.png",
+    "C:/Users/user/.codex/generated_images/01a15713-b801-7601-a73b-97ad2b9fff1a/exec-ec6ae7b0-7e44-475d-a697-9ec6d467cb2e.png"
+  ],
+  "selected_provenance": {
+    "source": "exec-ec6ae7b0-7e44-475d-a697-9ec6d467cb2e.png",
+    "tool": "built-in image_gen",
+    "transparent_background": true,
+    "output_sha256": "16eb9059e3809047d95b5d4af0e2bfeaf4577ea5d17fa50a100f5590062a3cc5"
+  },
+  "prompt": "Use case: precise-object-edit / identity-preserve. Image 1 is a generated 4x4 Lars sprite atlas with the desired broad mature face and side-swept forehead curl, but its silhouettes overlap. Image 2 is the Rodrigo Lars Lartiga identity reference photo. Repair the atlas layout and return a transparent PNG. Hard structural requirements: exact square 4-column by 4-row layout; exactly 16 separate disconnected full-body silhouettes; each pose must stay entirely inside its own 1/4-width by 1/4-height cell with at least a visible 10-pixel transparent gutter on every side; no pixels may touch or cross into a neighboring cell; preserve row-major pose order, right-facing direction, pose actions, baseline, scale, and transparent background. Do not merge poses, crop feet or heads, add figures, add grid lines, or add any background. Preserve the desired Lars likeness from Image 1 and Image 2: a mature broad full oval / softly square face with full cheeks, blunt rounded square jaw, broad straight nose, thick dark brows, calm serious eyes, clean-shaven chin, and dense wavy near-black hair with an unmistakable forward side-swept fringe and one curved lock on the forehead. Keep that same face/hair identity across all sixteen figures. Hair must not revert to a small angular head, spiky crew cut, pompadour, flat cap, or anime wedge. Change only the face/head/hair and the layout separation needed to make the sixteen existing figures extractable. Preserve body poses, tall long-reaching proportions, ice-blue open jacket, pale collar and sleeves, navy trousers, dark shoes, all actions and hands/feet. Keep original bright 1993 arcade/SNES cartoon pixel art, bold navy contours, hard cel shading, limited palette, no photorealism, digitized Mortal Kombat realism, 3D, copied commercial sprites, text, labels, logos, shadows, scenery, props, projectile, energy orb or watermark. Return genuine alpha transparency.",
+  "validation": {
+    "command": ".tools/python/python.exe -c \"from tools.fighter_assets import extract_atlas; extract_atlas('assets/art/characters/11-lars/atlas.png', alpha_threshold=200)\"",
+    "alpha_threshold": 200,
+    "status": "passed",
+    "figures": 16,
+    "image_size": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "opaque_pixels_per_pose": [
+      42500,
+      41683,
+      41281,
+      35740,
+      36450,
+      42481,
+      42999,
+      35759,
+      38173,
+      37884,
+      40567,
+      39054,
+      36370,
+      32151,
+      25899,
+      37358
+    ]
+  },
+  "source_revision": "75548bf",
+  "compiled_asset": "atlas.png",
+  "compiled_asset_sha256": "16eb9059e3809047d95b5d4af0e2bfeaf4577ea5d17fa50a100f5590062a3cc5"
+}

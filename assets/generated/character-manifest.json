@@ -382,14 +382,9 @@
     "id": 1,
     "name": "ivo",
     "source": "assets/art/characters/01-ivo/atlas.png",
-    "source_sha256": "02543c2196dfc60d4ac1363447cb144ba6ac2bd7e72bbcd3f25df93f60b5f41c",
+    "source_sha256": "064e7b676f4049d00c265c1feb279a175589a9b7141836bcebf5419801f6c485",
     "standing_height": 72,
     "palette": [
-      [
-        0,
-        0,
-        0
-      ],
       [
         0,
         0,
@@ -403,79 +398,84 @@
       [
         0,
         0,
-        16
-      ],
-      [
-        0,
-        16,
         24
       ],
       [
         16,
         8,
-        16
-      ],
-      [
-        24,
-        24,
-        40
-      ],
-      [
-        40,
-        32,
-        40
-      ],
-      [
-        32,
-        48,
-        48
-      ],
-      [
-        64,
-        32,
         32
       ],
       [
         0,
-        80,
+        16,
+        48
+      ],
+      [
+        24,
+        24,
         56
       ],
       [
         48,
-        48,
+        40,
         56
+      ],
+      [
+        32,
+        64,
+        64
       ],
       [
         72,
-        56,
-        56
+        40,
+        48
       ],
       [
-        56,
-        88,
-        56
-      ],
-      [
-        208,
-        136,
+        0,
+        104,
         72
       ],
       [
-        232,
-        176,
-        104
+        56,
+        56,
+        64
+      ],
+      [
+        88,
+        64,
+        64
+      ],
+      [
+        72,
+        112,
+        72
+      ],
+      [
+        248,
+        168,
+        88
+      ],
+      [
+        208,
+        168,
+        136
+      ],
+      [
+        208,
+        168,
+        136
       ]
     ],
     "frames": [
       {
         "pose": "idle",
         "source_box": [
-          38,
-          26,
-          282,
-          336
+          35,
+          24,
+          284,
+          337
         ],
-        "opaque_pixels": 34254,
+        "opaque_pixels": 35833,
         "alpha_threshold": 200,
         "native_box": [
           3,
@@ -483,89 +483,107 @@
           60,
           78
         ],
-        "pixels_sha256": "61e40e270fc5618068a1ffa45e6ccf1adc27851eb69b7233dccd2c7c6d2c42c0"
+        "pixels_sha256": "b69a22349c152eacb4d83128895a0560054bac45cf5f9bcb4534c98d861bf397"
       },
       {
         "pose": "walk-forward",
         "source_box": [
-          367,
-          26,
-          607,
-          339
+          366,
+          23,
+          612,
+          340
         ],
-        "opaque_pixels": 34274,
+        "opaque_pixels": 36156,
         "alpha_threshold": 200,
         "native_box": [
-          4,
+          3,
           5,
           60,
           78
         ],
-        "pixels_sha256": "d123b710ffd49d8d801b6de8231f5ae248ffbe88811720eae4f18844d41cb7f5"
+        "pixels_sha256": "12e0a1c7b25fc5a90d302e2c2cdb979ebe81da518f8b379ffc71589e864dbf20"
       },
       {
         "pose": "walk-back",
         "source_box": [
-          677,
-          28,
-          917,
-          339
+          685,
+          26,
+          934,
+          340
         ],
-        "opaque_pixels": 34332,
+        "opaque_pixels": 37119,
         "alpha_threshold": 200,
         "native_box": [
-          4,
+          3,
           6,
           60,
           78
         ],
-        "pixels_sha256": "cba5256469ae3c45b74d6842ae65eb615a1467ca19842463d946915d40fe4766"
+        "pixels_sha256": "ac04d3812a8e689de3d868f66f91a3a8dc9d026a29bc1d73f2997c23559defca"
       },
       {
         "pose": "crouch",
         "source_box": [
-          1008,
-          129,
-          1213,
-          338
+          1006,
+          126,
+          1218,
+          339
         ],
-        "opaque_pixels": 27010,
+        "opaque_pixels": 28737,
         "alpha_threshold": 200,
         "native_box": [
-          8,
+          7,
           29,
           56,
           78
         ],
-        "pixels_sha256": "365db3533eaf1b773fbffb8ed43e9d0c95100e3eec4f4814a41b15de534b715d"
+        "pixels_sha256": "fd0c6a5f546af1d5150f16fd1d9756c1e134a65dd87710d6dee22cc9063329a4"
       },
       {
         "pose": "jump",
         "source_box": [
-          36,
-          354,
-          259,
-          604
+          34,
+          353,
+          263,
+          606
         ],
-        "opaque_pixels": 32210,
+        "opaque_pixels": 33223,
         "alpha_threshold": 200,
         "native_box": [
-          6,
+          5,
           20,
           58,
           78
         ],
-        "pixels_sha256": "d262e3323bcfd8241536c5553ddf3aa54e52b2e833e5cb26e660582d6d3b43de"
+        "pixels_sha256": "a89f5196d1fa44b485aea851301368d95db738fd347f8f3a35b658e61914823c"
       },
       {
         "pose": "jab",
         "source_box": [
-          335,
-          398,
-          615,
-          670
+          331,
+          396,
+          621,
+          672
         ],
-        "opaque_pixels": 32815,
+        "opaque_pixels": 34364,
+        "alpha_threshold": 200,
+        "native_box": [
+          1,
+          19,
+          63,
+          78
+        ],
+        "pixels_sha256": "8b4703aeb673a03dc20182d69a5930b969ed64f09a86cc3b1aae3d8bbbc138d5"
+      },
+      {
+        "pose": "cross",
+        "source_box": [
+          648,
+          394,
+          937,
+          672
+        ],
+        "opaque_pixels": 36196,
         "alpha_threshold": 200,
         "native_box": [
           1,
@@ -573,187 +591,169 @@
           63,
           78
         ],
-        "pixels_sha256": "d21c3bb194f4245806f7435e6219acbef1cde68f3e946113d4584635008cac63"
-      },
-      {
-        "pose": "cross",
-        "source_box": [
-          650,
-          398,
-          934,
-          670
-        ],
-        "opaque_pixels": 34672,
-        "alpha_threshold": 200,
-        "native_box": [
-          1,
-          19,
-          63,
-          78
-        ],
-        "pixels_sha256": "b92073972a2c14bf0d1b17a0d61e57ea262529a99c137d60d9c8297f45c20f0d"
+        "pixels_sha256": "25816e45a5096b10fbe1fa4f16c8043f9234cb551a818f23290db54de3305a78"
       },
       {
         "pose": "kick",
         "source_box": [
-          969,
-          381,
-          1239,
-          666
+          971,
+          380,
+          1242,
+          668
         ],
-        "opaque_pixels": 28626,
+        "opaque_pixels": 29531,
         "alpha_threshold": 200,
         "native_box": [
           1,
-          13,
+          12,
           63,
           78
         ],
-        "pixels_sha256": "446a4e01fd691a3d78f2f4a4fd26d9f0d939de9a283f76687e0b283fceac0051"
+        "pixels_sha256": "78a46a26dca3dc4cbd65f5d9c4d37944c6daf4cc647a9560df2a4f37ac5c747e"
       },
       {
         "pose": "sweep",
         "source_box": [
-          14,
-          795,
-          352,
-          975
+          12,
+          789,
+          354,
+          978
         ],
-        "opaque_pixels": 28466,
+        "opaque_pixels": 30215,
         "alpha_threshold": 200,
         "native_box": [
           1,
-          45,
+          44,
           63,
           78
         ],
-        "pixels_sha256": "0b83b003ff75f075c86185b7550ae94e28e92eb72cc9c4c1f741738cde2dbe80"
+        "pixels_sha256": "bbc714dc9ffc128392c888462fc5ce1c74c6392c8b4f9548c4673fefdbcd0c9d"
       },
       {
         "pose": "block",
         "source_box": [
-          373,
-          712,
-          609,
-          968
+          370,
+          707,
+          613,
+          971
         ],
-        "opaque_pixels": 27807,
+        "opaque_pixels": 30353,
         "alpha_threshold": 200,
         "native_box": [
           4,
-          19,
-          59,
+          17,
+          60,
           78
         ],
-        "pixels_sha256": "6f8bbf3d2ade25d8ccd939d95d0d31d13222ea9e4c348e9f7fd7b88a6d54f3d9"
+        "pixels_sha256": "c1ea045c330ba6f17fc4046eb865108076607de6f54565913ca699a608332557"
       },
       {
         "pose": "hurt",
         "source_box": [
-          681,
-          708,
-          947,
+          682,
+          700,
+          950,
           971
         ],
-        "opaque_pixels": 34784,
+        "opaque_pixels": 36617,
         "alpha_threshold": 200,
         "native_box": [
           1,
-          17,
+          16,
           63,
           78
         ],
-        "pixels_sha256": "39222496f3519519e1639cd474fc72129cf2c530d2738eaced2b6a2e66d848fe"
+        "pixels_sha256": "05cd3726231d7c13de275edb7b5f6b852e2f24b34edafa5fb942a156b78a8a6e"
       },
       {
         "pose": "victory",
         "source_box": [
-          1018,
-          672,
-          1251,
-          971
+          1014,
+          671,
+          1253,
+          972
         ],
-        "opaque_pixels": 35169,
+        "opaque_pixels": 37926,
         "alpha_threshold": 200,
         "native_box": [
-          5,
+          4,
           9,
           59,
           78
         ],
-        "pixels_sha256": "382a2619475fed75540804d40a0a21f708421d2e3c64af4962636e1e8fb72c95"
+        "pixels_sha256": "0150321cee4087515d117e66765334572f3fd7909b9c31e97558d22251cc2405"
       },
       {
         "pose": "cast",
         "source_box": [
-          15,
-          994,
-          298,
-          1239
+          12,
+          985,
+          301,
+          1242
         ],
-        "opaque_pixels": 29706,
+        "opaque_pixels": 32105,
         "alpha_threshold": 200,
         "native_box": [
           1,
-          24,
+          23,
           63,
           78
         ],
-        "pixels_sha256": "e8ced5563d756be4f3d116da617a3c27abef7c9ef37e33f0470a6477cebb7c7d"
+        "pixels_sha256": "13c08e401e8495e55c0c59a3c061cbb7dbfdfffc36fcb1e9914303db1fb878e0"
       },
       {
         "pose": "uppercut",
         "source_box": [
-          422,
-          1013,
+          420,
+          1011,
           582,
-          1239
+          1240
         ],
-        "opaque_pixels": 20494,
+        "opaque_pixels": 22528,
         "alpha_threshold": 200,
         "native_box": [
           13,
-          26,
+          25,
           50,
           78
         ],
-        "pixels_sha256": "837fe4b8a88eac983642a23805aa07d3f2f6a4e00206959496957c14bdc383b9"
+        "pixels_sha256": "6a20ed7cba66effc007fc333e19176ace8e95ce857848da085408ae1ba9f7f9b"
       },
       {
         "pose": "knockout",
         "source_box": [
-          629,
+          626,
           1138,
-          937,
-          1220
+          947,
+          1222
         ],
-        "opaque_pixels": 19130,
+        "opaque_pixels": 20755,
         "alpha_threshold": 200,
         "native_box": [
           1,
-          61,
+          62,
           63,
           78
         ],
-        "pixels_sha256": "516bd4ab3a5408d9a1ba8004d89fb83b02fee1dac30d3455361c1063dc6a13c4"
+        "pixels_sha256": "ab6138e3b2b62e9df63c7dad4a9b461e301045a1536cd5a938daf4beaa6c503c"
       },
       {
         "pose": "rush",
         "source_box": [
-          981,
-          1003,
-          1235,
-          1238
+          980,
+          987,
+          1239,
+          1241
         ],
-        "opaque_pixels": 31929,
+        "opaque_pixels": 34392,
         "alpha_threshold": 200,
         "native_box": [
           2,
-          23,
-          61,
+          20,
+          62,
           78
         ],
-        "pixels_sha256": "9b134fbe4ce468db1100d19b9d8a68d5305184567ef0fd6d6f1f90fc76c93ddf"
+        "pixels_sha256": "6dbec9af19dbce9ac2fce4f132acf79b421e2269436d34b64ae232cbc844cbee"
       }
     ]
   },
@@ -761,7 +761,7 @@
     "id": 2,
     "name": "cristobal",
     "source": "assets/art/characters/02-cristobal/atlas.png",
-    "source_sha256": "1e08ea890838b0457b7a1adb838815af7db77580e8a005aa45ad4910866c9371",
+    "source_sha256": "3901149b3eef2ee2bcab9be815c46f577669751c7b3787186e2a49b6e9698a3d",
     "standing_height": 68,
     "palette": [
       [
@@ -775,11 +775,6 @@
         32
       ],
       [
-        8,
-        0,
-        32
-      ],
-      [
         16,
         8,
         32
@@ -787,7 +782,7 @@
       [
         24,
         24,
-        48
+        40
       ],
       [
         40,
@@ -796,65 +791,70 @@
       ],
       [
         64,
-        32,
-        24
+        40,
+        40
       ],
       [
         48,
-        40,
-        48
+        48,
+        56
       ],
       [
-        112,
+        120,
         40,
         16
       ],
       [
         64,
-        56,
-        56
-      ],
-      [
-        152,
         64,
-        24
-      ],
-      [
-        232,
-        80,
-        0
-      ],
-      [
-        200,
-        120,
         64
       ],
       [
+        72,
+        72,
+        72
+      ],
+      [
+        160,
+        72,
+        24
+      ],
+      [
+        240,
+        88,
+        0
+      ],
+      [
+        208,
+        128,
+        72
+      ],
+      [
         248,
-        120,
-        32
+        128,
+        40
       ],
       [
         240,
-        168,
-        88
+        176,
+        96
       ],
       [
         240,
-        192,
-        136
+        200,
+        144
       ]
     ],
     "frames": [
       {
         "pose": "idle",
         "source_box": [
-          49,
-          31,
-          264,
-          318
+          48,
+          30,
+          267,
+          320
         ],
-        "opaque_pixels": 30964,
+        "opaque_pixels": 32607,
         "alpha_threshold": 200,
         "native_box": [
           6,
@@ -862,53 +862,53 @@
           57,
           78
         ],
-        "pixels_sha256": "3a2ebc58824ff74e3169f286170cd87ca9e0c9672b55286cd143da78b155bfdb"
+        "pixels_sha256": "f832185f8043be7a2449519afecfe10728e037a7ac34aaeb5c314333debf9a58"
       },
       {
         "pose": "walk-forward",
         "source_box": [
           381,
-          25,
-          585,
-          318
+          23,
+          587,
+          320
         ],
-        "opaque_pixels": 28117,
+        "opaque_pixels": 29610,
         "alpha_threshold": 200,
         "native_box": [
           8,
-          9,
+          8,
           56,
           78
         ],
-        "pixels_sha256": "d6dc66063a275cdd4bc0eb090c9eff7cdf635e283b035dca27154987984148cd"
+        "pixels_sha256": "1fb49552adcc1510a1ae080c1123f14000518952803f300952c0be5fbd3f2eb1"
       },
       {
         "pose": "walk-back",
         "source_box": [
-          695,
-          33,
-          894,
-          320
+          694,
+          34,
+          897,
+          322
         ],
-        "opaque_pixels": 27315,
+        "opaque_pixels": 28690,
         "alpha_threshold": 200,
         "native_box": [
           8,
           10,
-          55,
+          56,
           78
         ],
-        "pixels_sha256": "d552a6bb5178696bbcaaaf2a9bc9d56ade67a2dc42f7417c9b9f087dc633b779"
+        "pixels_sha256": "4afd95ff358ddb8a7efa2b195e9d6872b9dfaba81bacfe044bcfefc258aeba5b"
       },
       {
         "pose": "crouch",
         "source_box": [
-          1011,
+          1009,
           111,
-          1209,
-          318
+          1211,
+          321
         ],
-        "opaque_pixels": 26364,
+        "opaque_pixels": 27621,
         "alpha_threshold": 200,
         "native_box": [
           8,
@@ -916,35 +916,35 @@
           55,
           78
         ],
-        "pixels_sha256": "6fc7b3361ba815b7b5f673e391647b3d57eff694a9a1ac68b73a27ab12e937af"
+        "pixels_sha256": "80cbd0e5008f3c2fba37daaced8be51c115c4082bdfa8a7cb01d579eb4b56774"
       },
       {
         "pose": "jump",
         "source_box": [
           31,
-          335,
-          286,
-          571
+          337,
+          287,
+          572
         ],
-        "opaque_pixels": 29512,
+        "opaque_pixels": 29867,
         "alpha_threshold": 200,
         "native_box": [
           2,
-          22,
+          23,
           62,
           78
         ],
-        "pixels_sha256": "b57d6174119f253ebff6520d6f193c3efd97b7fafdf6bddbbb5a1f707d4961ea"
+        "pixels_sha256": "97dc4f076f2d81cfa0fdc7140be49ea4ae997b8bf56c7e55e518a3186d6b32b7"
       },
       {
         "pose": "jab",
         "source_box": [
           310,
-          361,
-          621,
-          626
+          358,
+          623,
+          628
         ],
-        "opaque_pixels": 32134,
+        "opaque_pixels": 33965,
         "alpha_threshold": 200,
         "native_box": [
           1,
@@ -952,17 +952,17 @@
           63,
           78
         ],
-        "pixels_sha256": "c5ed94b36f7b7a3f34feb119fce28665a9574aa2f112cc5b735dfb1d0f325d29"
+        "pixels_sha256": "81c08d627d827f6f475c14542065124bec9fcaf720d9f5afa2aeddf4d9a1ae35"
       },
       {
         "pose": "cross",
         "source_box": [
-          648,
-          361,
-          951,
-          626
+          645,
+          360,
+          952,
+          628
         ],
-        "opaque_pixels": 32390,
+        "opaque_pixels": 33653,
         "alpha_threshold": 200,
         "native_box": [
           1,
@@ -970,17 +970,17 @@
           63,
           78
         ],
-        "pixels_sha256": "08237e7242af033708a9bd68f7de2b6b8dcd311479f3d653b9ddd5e8db82decf"
+        "pixels_sha256": "74e8d54998e435f46c973549618bb512a7baa0d699463eb8e2565ffbaefa6676"
       },
       {
         "pose": "kick",
         "source_box": [
-          973,
+          971,
           348,
-          1237,
-          621
+          1239,
+          623
         ],
-        "opaque_pixels": 26535,
+        "opaque_pixels": 27489,
         "alpha_threshold": 200,
         "native_box": [
           1,
@@ -988,17 +988,17 @@
           63,
           78
         ],
-        "pixels_sha256": "d8c2633f37e04b5c43dfd9927975034db08594687dfa5fe4b3e1eab57fda3dc4"
+        "pixels_sha256": "43bb5e67c1dad2d041a7934b3427d1e36d001a74c5136f23161e2844a3c48b95"
       },
       {
         "pose": "sweep",
         "source_box": [
-          22,
+          21,
           730,
-          347,
-          921
+          353,
+          922
         ],
-        "opaque_pixels": 26760,
+        "opaque_pixels": 27326,
         "alpha_threshold": 200,
         "native_box": [
           1,
@@ -1006,17 +1006,17 @@
           63,
           78
         ],
-        "pixels_sha256": "50146f6bf036db551b1f78f55d785f005375c113689a4b75d3781a2a76790334"
+        "pixels_sha256": "02dc0b6e35c154305eea3d076e830c09e5e44237c3fe1f55dd9437d8120d9e09"
       },
       {
         "pose": "block",
         "source_box": [
-          368,
+          367,
           643,
-          587,
-          922
+          590,
+          924
         ],
-        "opaque_pixels": 28039,
+        "opaque_pixels": 29087,
         "alpha_threshold": 200,
         "native_box": [
           6,
@@ -1024,17 +1024,17 @@
           58,
           78
         ],
-        "pixels_sha256": "04bc72880083d768f2c6fc00625899489ed5e11d1f3440c4a3d6239cbec0e240"
+        "pixels_sha256": "22795a3cc6a3ab689534dc0faf059caa2bf879a601524bdf7d2519dc0486fb4b"
       },
       {
         "pose": "hurt",
         "source_box": [
-          690,
-          660,
-          918,
-          925
+          689,
+          658,
+          919,
+          928
         ],
-        "opaque_pixels": 32248,
+        "opaque_pixels": 33494,
         "alpha_threshold": 200,
         "native_box": [
           5,
@@ -1042,17 +1042,17 @@
           59,
           78
         ],
-        "pixels_sha256": "e42b2943388f8d7962e13cf3d0e2348b336d1fc718a76325ee5164e21da89462"
+        "pixels_sha256": "9f14a24beb1ef764fdc8039c93531f7c07b10385920e65157b9c793675e3af8b"
       },
       {
         "pose": "victory",
         "source_box": [
           1007,
-          635,
-          1226,
-          935
+          634,
+          1227,
+          936
         ],
-        "opaque_pixels": 30979,
+        "opaque_pixels": 32314,
         "alpha_threshold": 200,
         "native_box": [
           6,
@@ -1060,17 +1060,17 @@
           58,
           78
         ],
-        "pixels_sha256": "ee38b950bb6aeec4cd636f89e5b8434f7a87c229be3b2c81aae87986313f8f5e"
+        "pixels_sha256": "577c3c381dd84b19163d89d370b2132823bd75073e2c46b8fcfb69f3f391dcca"
       },
       {
         "pose": "cast",
         "source_box": [
-          20,
-          966,
-          335,
-          1223
+          21,
+          965,
+          337,
+          1225
         ],
-        "opaque_pixels": 31122,
+        "opaque_pixels": 32372,
         "alpha_threshold": 200,
         "native_box": [
           1,
@@ -1078,35 +1078,35 @@
           63,
           78
         ],
-        "pixels_sha256": "2eb2893e25758b35ce83f2088b7a4c47cf74da063021eb226d77b6f6dc9d9a99"
+        "pixels_sha256": "2fa8618683177aa6dc118140a1fc82fefe98e1dead4b14ee72f0068b178c5a31"
       },
       {
         "pose": "uppercut",
         "source_box": [
-          397,
-          936,
-          555,
-          1229
+          395,
+          935,
+          556,
+          1231
         ],
-        "opaque_pixels": 27381,
+        "opaque_pixels": 28454,
         "alpha_threshold": 200,
         "native_box": [
           13,
           9,
-          50,
+          51,
           78
         ],
-        "pixels_sha256": "02ee52711fef6ebf2df136ec61e4987d240d4b522def028e4f2e62e25382a148"
+        "pixels_sha256": "38a182091261c05734145b4f12ece72481b77d72f81717eafba41303c819545c"
       },
       {
         "pose": "knockout",
         "source_box": [
-          612,
-          1114,
-          950,
-          1207
+          611,
+          1113,
+          952,
+          1208
         ],
-        "opaque_pixels": 20836,
+        "opaque_pixels": 21493,
         "alpha_threshold": 200,
         "native_box": [
           1,
@@ -1114,17 +1114,17 @@
           63,
           78
         ],
-        "pixels_sha256": "e4425fef1d5d971dd27cdaea6deb932abad2b876c12bce7dc74417d88a078d46"
+        "pixels_sha256": "e9baa35d957f5e6ba112f0cddb99b42a9674a3c62fbe905006fc43904085612c"
       },
       {
         "pose": "rush",
         "source_box": [
-          970,
-          984,
-          1234,
-          1213
+          969,
+          982,
+          1236,
+          1214
         ],
-        "opaque_pixels": 28951,
+        "opaque_pixels": 30129,
         "alpha_threshold": 200,
         "native_box": [
           1,
@@ -1132,7 +1132,7 @@
           63,
           78
         ],
-        "pixels_sha256": "8bfd693a68bbc1daf1576eb8d18920d7173630b2e62b51b175dcf16d9bca2b5e"
+        "pixels_sha256": "08d564be7961dc72a9709ddd519da0297b069309f015ab676372a9f61d9bc633"
       }
     ]
   },
@@ -1898,7 +1898,7 @@
     "id": 5,
     "name": "david",
     "source": "assets/art/characters/05-david/atlas.png",
-    "source_sha256": "de471a500fd078ec487f6902b2bd490a480bfffcd1b5787ddc43f971bd86cd7e",
+    "source_sha256": "676f251ca74bd45f634d4f2eb9ae42428581db1784e00f04f3c154b77fdbb89b",
     "standing_height": 68,
     "palette": [
       [
@@ -1912,69 +1912,69 @@
         24
       ],
       [
-        0,
-        0,
-        32
+        8,
+        8,
+        40
+      ],
+      [
+        16,
+        16,
+        40
       ],
       [
         8,
         16,
-        48
-      ],
-      [
-        16,
-        16,
-        40
-      ],
-      [
-        16,
-        24,
-        64
-      ],
-      [
-        24,
-        24,
         56
       ],
       [
-        56,
-        24,
-        32
-      ],
-      [
-        40,
-        40,
-        80
-      ],
-      [
-        56,
         48,
-        80
+        32,
+        40
       ],
       [
-        144,
-        72,
-        24
+        24,
+        32,
+        72
       ],
       [
-        200,
-        96,
+        32,
+        32,
+        64
+      ],
+      [
+        40,
+        48,
+        88
+      ],
+      [
+        64,
+        56,
+        72
+      ],
+      [
+        160,
+        80,
         16
       ],
       [
-        208,
+        200,
+        104,
+        24
+      ],
+      [
+        216,
         128,
-        32
+        40
       ],
       [
         240,
-        136,
-        40
+        144,
+        48
       ],
       [
         248,
         160,
-        48
+        56
       ],
       [
         240,
@@ -1988,28 +1988,28 @@
         "source_box": [
           42,
           14,
-          268,
+          267,
           301
         ],
-        "opaque_pixels": 32769,
+        "opaque_pixels": 32069,
         "alpha_threshold": 200,
         "native_box": [
           5,
           10,
-          59,
+          58,
           78
         ],
-        "pixels_sha256": "abc20c16ee1448bfe90403f0af7f0cf50a5cc1e4df1650bda3b5f2d11115bc9c"
+        "pixels_sha256": "51d5c4f4cc76745bea9773b559c619cafe6fc146a848888e97a2ad7d12709092"
       },
       {
         "pose": "walk-forward",
         "source_box": [
           388,
-          11,
-          594,
-          301
+          10,
+          593,
+          302
         ],
-        "opaque_pixels": 30639,
+        "opaque_pixels": 29907,
         "alpha_threshold": 200,
         "native_box": [
           7,
@@ -2017,17 +2017,17 @@
           56,
           78
         ],
-        "pixels_sha256": "67657770c6d04af8460bf0cc0246f619a65718a324148c63f59261d046397179"
+        "pixels_sha256": "22719f214dd3a40ca99cced13a7f570cb4b7d6f7931ddddb5a1650c3739eefc9"
       },
       {
         "pose": "walk-back",
         "source_box": [
           699,
-          14,
-          909,
-          301
+          15,
+          908,
+          302
         ],
-        "opaque_pixels": 30430,
+        "opaque_pixels": 29694,
         "alpha_threshold": 200,
         "native_box": [
           7,
@@ -2035,71 +2035,71 @@
           57,
           78
         ],
-        "pixels_sha256": "092ec94d719e1d05d03583dda8d989b4c8dc5ba969ec9707125cd715364f07e0"
+        "pixels_sha256": "e0b35ada5e2b472176c7f34d2ec59913cd34094d062911ca006b5e094595abcb"
       },
       {
         "pose": "crouch",
         "source_box": [
-          1005,
-          84,
-          1217,
+          1006,
+          81,
+          1216,
           301
         ],
-        "opaque_pixels": 27664,
+        "opaque_pixels": 27501,
         "alpha_threshold": 200,
         "native_box": [
           7,
-          27,
+          26,
           57,
           78
         ],
-        "pixels_sha256": "27e9a96375eb9f9a94f0e7f6bce530dd2ffd69e61160a96b3f0ac16cf81c7af4"
+        "pixels_sha256": "169b0077e9082eb539337a5bef796ae4f86aca83af780a8db04aa1d04f697166"
       },
       {
         "pose": "jump",
         "source_box": [
-          54,
-          321,
-          247,
+          56,
+          320,
+          246,
           580
         ],
-        "opaque_pixels": 27464,
+        "opaque_pixels": 26958,
         "alpha_threshold": 200,
         "native_box": [
           9,
-          17,
-          55,
+          16,
+          54,
           78
         ],
-        "pixels_sha256": "bd21a0f4e1d55de57992f3cf57c38f5aa4e837f512af959506303a5dbb0a6091"
+        "pixels_sha256": "1ec17b4f6bca02ac266dacc8085e09e9ab9a0da64dff62acb41b7b4f9515eb8c"
       },
       {
         "pose": "jab",
         "source_box": [
-          312,
-          347,
-          627,
+          313,
+          346,
+          626,
           613
         ],
-        "opaque_pixels": 32485,
+        "opaque_pixels": 31778,
         "alpha_threshold": 200,
         "native_box": [
           1,
-          26,
+          25,
           63,
           78
         ],
-        "pixels_sha256": "12e10bd1bdd7d6bac6d3b945c1d1f0dd42ea6aa9362f046904c64198f8b5cf37"
+        "pixels_sha256": "221d52b2e45eabb7d5385b55e9bf964585a0dd8e53c2a26bbc8c5398c93db5d5"
       },
       {
         "pose": "cross",
         "source_box": [
           647,
-          350,
+          347,
           940,
           613
         ],
-        "opaque_pixels": 31802,
+        "opaque_pixels": 31242,
         "alpha_threshold": 200,
         "native_box": [
           1,
@@ -2107,17 +2107,17 @@
           63,
           78
         ],
-        "pixels_sha256": "0c036e38301be5c59751db6dba5879f621cf5827775ef16e558597fddf625de7"
+        "pixels_sha256": "d72706af8a26e75d583eb96c645d5e43e2eedec3752f114d6f33afe09894b66c"
       },
       {
         "pose": "kick",
         "source_box": [
-          951,
-          350,
+          953,
+          351,
           1243,
           613
         ],
-        "opaque_pixels": 30035,
+        "opaque_pixels": 29413,
         "alpha_threshold": 200,
         "native_box": [
           1,
@@ -2125,71 +2125,71 @@
           63,
           78
         ],
-        "pixels_sha256": "7f66679ddcf81cd5cea02695c265c64d9918e55404b1164e52e385295dfd485c"
+        "pixels_sha256": "a8abda720a0b1011f3a0f740d3d24fd35c7433676278460dc7ed4635bbbf64ed"
       },
       {
         "pose": "sweep",
         "source_box": [
-          20,
-          732,
-          346,
-          927
+          22,
+          729,
+          345,
+          926
         ],
-        "opaque_pixels": 29539,
+        "opaque_pixels": 28740,
         "alpha_threshold": 200,
         "native_box": [
           1,
-          41,
+          40,
           63,
           78
         ],
-        "pixels_sha256": "a7921dff1a18a6379c4c442ff81a5924b4816e28b7ceb4a9aac1caa979d09b74"
+        "pixels_sha256": "72a708d79032cc04e58f10dd24b5fef8f3395a3dc0d89a8366001d4774edfe30"
       },
       {
         "pose": "block",
         "source_box": [
           371,
-          641,
-          600,
+          642,
+          598,
           922
         ],
-        "opaque_pixels": 28829,
+        "opaque_pixels": 28224,
         "alpha_threshold": 200,
         "native_box": [
           5,
-          11,
+          12,
           59,
           78
         ],
-        "pixels_sha256": "682ee503e5151b02fb172ea6521cde38480290a5d3edf34e59bf0d48d112ec18"
+        "pixels_sha256": "9e90c3e6285808fb719d5160436aa6b63898dfddcf41d98196124dc54e5c40c4"
       },
       {
         "pose": "hurt",
         "source_box": [
-          689,
-          642,
+          693,
+          639,
           926,
           925
         ],
-        "opaque_pixels": 34183,
+        "opaque_pixels": 33196,
         "alpha_threshold": 200,
         "native_box": [
           4,
-          11,
-          60,
+          10,
+          59,
           78
         ],
-        "pixels_sha256": "734559755fb8a8bcce8edd90e60ee0af560b337e59057699baff9cc7826b6766"
+        "pixels_sha256": "c0d9196c57fa295b1a748626efdf9ba6e31bd03aac40f5767d6462cefce73e48"
       },
       {
         "pose": "victory",
         "source_box": [
-          998,
-          623,
-          1222,
+          999,
+          624,
+          1221,
           927
         ],
-        "opaque_pixels": 32830,
+        "opaque_pixels": 32320,
         "alpha_threshold": 200,
         "native_box": [
           5,
@@ -2197,53 +2197,53 @@
           58,
           78
         ],
-        "pixels_sha256": "5493b8b17ddf5f80ba7a0b1835328cab117ca3fc7dd6a5fe0effc30d63f5f837"
+        "pixels_sha256": "7143f4cca5795593dd8e91c7777d889a975da9fb7aa314ec9990238f157fed11"
       },
       {
         "pose": "cast",
         "source_box": [
-          18,
+          19,
           978,
-          293,
+          292,
           1240
         ],
-        "opaque_pixels": 32887,
+        "opaque_pixels": 31850,
         "alpha_threshold": 200,
         "native_box": [
           1,
-          19,
+          18,
           63,
           78
         ],
-        "pixels_sha256": "6f893f64fbd7f95368938c460d82198f12a4e9858699a11da5928cc2ceec6c74"
+        "pixels_sha256": "54c41ba2e4c49e9ffffd3885701a9b32992d30b94c852ab71021eef367c80bbb"
       },
       {
         "pose": "uppercut",
         "source_box": [
-          378,
-          922,
-          558,
+          379,
+          923,
+          556,
           1244
         ],
-        "opaque_pixels": 30329,
+        "opaque_pixels": 29448,
         "alpha_threshold": 200,
         "native_box": [
-          10,
+          11,
           2,
           53,
           78
         ],
-        "pixels_sha256": "c9ebbb19e8e6e5cad788457d54ef6e3d3a6adf922934f43946dfb83f4e958d03"
+        "pixels_sha256": "7f23a598604fd29860b36557359527f3ee4fa0e0a867f3aa1b1f086863e0ba94"
       },
       {
         "pose": "knockout",
         "source_box": [
-          594,
-          1135,
+          595,
+          1136,
           939,
           1229
         ],
-        "opaque_pixels": 23843,
+        "opaque_pixels": 23013,
         "alpha_threshold": 200,
         "native_box": [
           1,
@@ -2251,17 +2251,17 @@
           63,
           78
         ],
-        "pixels_sha256": "2286cb4f81e26b48046b8a8c694623d74473cd3c9abd6021106f8af4df6c7039"
+        "pixels_sha256": "0300ab521dad1c65bc27a18ac540847afcee6d5fa6085a10f87c04ae266b9895"
       },
       {
         "pose": "rush",
         "source_box": [
-          955,
-          979,
-          1244,
+          956,
+          980,
+          1243,
           1229
         ],
-        "opaque_pixels": 34058,
+        "opaque_pixels": 33102,
         "alpha_threshold": 200,
         "native_box": [
           1,
@@ -2269,7 +2269,7 @@
           63,
           78
         ],
-        "pixels_sha256": "9d52bf4bb24b04ad9522936a692fbe51176390772cb1b5987a36cec6ef4c3bbf"
+        "pixels_sha256": "6310087c8ab0b4a8109030a8da47b3b257816ddde4ba6fa13414b2e58f83e9c5"
       }
     ]
   },
@@ -2656,7 +2656,7 @@
     "id": 7,
     "name": "cristian",
     "source": "assets/art/characters/07-cristian/atlas.png",
-    "source_sha256": "32f413d5a2446755f6eb5357e8accbdb20a532b954f01078a16991d1cca81b12",
+    "source_sha256": "bfd12e02ec2ed3111162f23268e7862313ca7f4f42975180c89aff324cee0674",
     "standing_height": 73,
     "palette": [
       [
@@ -2670,19 +2670,9 @@
         24
       ],
       [
-        0,
-        0,
-        32
-      ],
-      [
         8,
         8,
         32
-      ],
-      [
-        8,
-        16,
-        56
       ],
       [
         24,
@@ -2690,23 +2680,28 @@
         40
       ],
       [
+        16,
         24,
-        32,
+        56
+      ],
+      [
+        24,
+        40,
         80
       ],
       [
         32,
-        32,
+        40,
         72
       ],
       [
-        40,
+        48,
         40,
         64
       ],
       [
-        40,
         48,
+        56,
         88
       ],
       [
@@ -2715,41 +2710,46 @@
         88
       ],
       [
-        120,
-        80,
+        152,
+        88,
         80
       ],
       [
-        200,
-        144,
+        208,
+        152,
         120
       ],
       [
         248,
-        160,
-        80
+        168,
+        88
       ],
       [
-        200,
-        200,
-        216
+        224,
+        192,
+        168
       ],
       [
-        240,
-        208,
-        176
+        232,
+        224,
+        232
+      ],
+      [
+        232,
+        224,
+        232
       ]
     ],
     "frames": [
       {
         "pose": "idle",
         "source_box": [
-          26,
-          39,
-          278,
+          25,
+          35,
+          279,
           351
         ],
-        "opaque_pixels": 38771,
+        "opaque_pixels": 39295,
         "alpha_threshold": 200,
         "native_box": [
           2,
@@ -2757,17 +2757,17 @@
           61,
           78
         ],
-        "pixels_sha256": "0bbfb7751f35864dae9ad71a488208543ca0193681986b468135a2523a21f627"
+        "pixels_sha256": "3aab71bd9124bbb8dda25e43887bd58ca74dfb0082f613cfd44053d9f0ceb4dd"
       },
       {
         "pose": "walk-forward",
         "source_box": [
           345,
-          35,
-          594,
-          353
+          34,
+          596,
+          354
         ],
-        "opaque_pixels": 36772,
+        "opaque_pixels": 37140,
         "alpha_threshold": 200,
         "native_box": [
           3,
@@ -2775,17 +2775,17 @@
           61,
           78
         ],
-        "pixels_sha256": "139d2c88228607eebfdcb195b13048e41935cfcbe611ae4ca2d725f8f7b3f15c"
+        "pixels_sha256": "44de47da495bba469366ad2e35480d4295a4df0b54895d0ae38547c6ccacb125"
       },
       {
         "pose": "walk-back",
         "source_box": [
-          638,
-          39,
-          883,
-          353
+          641,
+          36,
+          888,
+          354
         ],
-        "opaque_pixels": 37348,
+        "opaque_pixels": 37790,
         "alpha_threshold": 200,
         "native_box": [
           3,
@@ -2793,53 +2793,53 @@
           60,
           78
         ],
-        "pixels_sha256": "07ae628113df9f6766bbfdbe94775b788f4f45fad6a2d7c36e9ec63ca3c8c26c"
+        "pixels_sha256": "53f7a17a87762c036697c560d3b063718ba5e781f60f1a16283c837d062b75bc"
       },
       {
         "pose": "crouch",
         "source_box": [
-          942,
-          136,
-          1152,
+          946,
+          135,
+          1158,
           353
         ],
-        "opaque_pixels": 29483,
+        "opaque_pixels": 29672,
         "alpha_threshold": 200,
         "native_box": [
           7,
-          27,
+          28,
           56,
           78
         ],
-        "pixels_sha256": "c28e7fa3b420c6495f7a947fea9b11c4d17d41cd602edc246683e91c7eb31a02"
+        "pixels_sha256": "3bbf34646b020eb1bad1970773ddc2da322b3ab347b03742e50f1954c5f825c7"
       },
       {
         "pose": "jump",
         "source_box": [
           30,
-          366,
+          365,
           261,
-          597
+          598
         ],
-        "opaque_pixels": 32643,
+        "opaque_pixels": 32704,
         "alpha_threshold": 200,
         "native_box": [
           5,
           24,
-          59,
+          58,
           78
         ],
-        "pixels_sha256": "98cc92822c2481b49994fba0b0333695976544919780b4f8551a40d75cfe0197"
+        "pixels_sha256": "635cb6498fdabf25244c9905fd7767a9aa11a122462063b1483dea7eac02af3b"
       },
       {
         "pose": "jab",
         "source_box": [
           303,
-          387,
-          596,
-          675
+          385,
+          597,
+          676
         ],
-        "opaque_pixels": 35656,
+        "opaque_pixels": 35880,
         "alpha_threshold": 200,
         "native_box": [
           1,
@@ -2847,89 +2847,89 @@
           63,
           78
         ],
-        "pixels_sha256": "3608324fdb233d23642f9ca8bbf34a8f7caf549fcc65281b3952a83cadb4e28c"
+        "pixels_sha256": "e76470cc5f67612a90af084115f224804fdb57cde7c134f7bc9ebd4664165a82"
       },
       {
         "pose": "cross",
         "source_box": [
-          593,
-          392,
-          903,
-          677
+          595,
+          389,
+          905,
+          678
         ],
-        "opaque_pixels": 37163,
+        "opaque_pixels": 37529,
         "alpha_threshold": 200,
         "native_box": [
           1,
-          21,
+          20,
           63,
           78
         ],
-        "pixels_sha256": "f11c759724ce6ff9aa50e1115cbb996dce1807b54b6f3b1b570bf6d7162c256a"
+        "pixels_sha256": "a287213b69460522e63902e180c7e023bc74bdb2077575384b0dd38c25e046b9"
       },
       {
         "pose": "kick",
         "source_box": [
-          911,
+          915,
           384,
-          1169,
-          675
+          1176,
+          676
         ],
-        "opaque_pixels": 30202,
+        "opaque_pixels": 30561,
         "alpha_threshold": 200,
         "native_box": [
           2,
-          10,
+          11,
           62,
           78
         ],
-        "pixels_sha256": "d6cce57a37085b527cd7b75fa69277621246ace7001c4c42ca434e43890db47a"
+        "pixels_sha256": "9012c519d7a99ede1f6257902ab8838ec1ca63df35dbc7ef61e3058a9b13e4e3"
       },
       {
         "pose": "sweep",
         "source_box": [
-          8,
-          779,
-          361,
-          981
+          9,
+          777,
+          362,
+          982
         ],
-        "opaque_pixels": 31399,
+        "opaque_pixels": 31596,
         "alpha_threshold": 200,
         "native_box": [
           1,
-          43,
+          42,
           63,
           78
         ],
-        "pixels_sha256": "b049d5ee347463f8e2720e9ddb55e41d4004c781562040891533a9f7ec01dc68"
+        "pixels_sha256": "b24749592956434a8f7690ec6bb150830f7eb29c557a5856b10ab87a6210e99c"
       },
       {
         "pose": "block",
         "source_box": [
-          354,
-          692,
-          601,
-          978
+          355,
+          691,
+          603,
+          979
         ],
-        "opaque_pixels": 32820,
+        "opaque_pixels": 32938,
         "alpha_threshold": 200,
         "native_box": [
           3,
           11,
-          61,
+          60,
           78
         ],
-        "pixels_sha256": "1d2e1714ec3c30ef3853c7e91fb98fd340dfe41a7ca59ddb1ee319be6ae0b646"
+        "pixels_sha256": "ef313973fb782a474b17cb02a34e3a1dbbd55248f93a30ee9be04a164dbfea18"
       },
       {
         "pose": "hurt",
         "source_box": [
-          639,
-          700,
-          910,
-          980
+          642,
+          702,
+          913,
+          982
         ],
-        "opaque_pixels": 36005,
+        "opaque_pixels": 36084,
         "alpha_threshold": 200,
         "native_box": [
           1,
@@ -2937,71 +2937,71 @@
           63,
           78
         ],
-        "pixels_sha256": "6ad6169b29715efb0c63e7a28701feb44c344f51af5af99a0f941a8fc3d351fa"
+        "pixels_sha256": "b970ba2a44be3b03a853a6dcfd825f437e98b92b2de3f05a08f32e26d0ad013e"
       },
       {
         "pose": "victory",
         "source_box": [
-          952,
+          955,
           685,
-          1172,
-          982
+          1178,
+          983
         ],
-        "opaque_pixels": 35177,
+        "opaque_pixels": 35482,
         "alpha_threshold": 200,
         "native_box": [
           6,
           9,
-          57,
+          58,
           78
         ],
-        "pixels_sha256": "47584096dbe8d05d610ce266815dbdc3b85801dcf790a6a4773dc977c2d35c1b"
+        "pixels_sha256": "bbfe88ab3a12f27b3a23007243947ab64bf46a597e2b8a3dc9ff39e9bcdd3ef9"
       },
       {
         "pose": "cast",
         "source_box": [
           16,
-          1022,
-          302,
-          1292
+          1023,
+          290,
+          1295
         ],
-        "opaque_pixels": 36237,
+        "opaque_pixels": 33820,
         "alpha_threshold": 200,
         "native_box": [
           1,
-          19,
+          16,
           63,
           78
         ],
-        "pixels_sha256": "ed07bb9c0d210d5e4c0d8db98db4547e62294216c84c33d30c9e9b6d920fe1bf"
+        "pixels_sha256": "41dc227b559be97791e73fefc31e8b891612042df8e4b3ee5af79ad5f60790f7"
       },
       {
         "pose": "uppercut",
         "source_box": [
-          355,
-          977,
-          536,
-          1292
+          356,
+          979,
+          537,
+          1295
         ],
-        "opaque_pixels": 30888,
+        "opaque_pixels": 31343,
         "alpha_threshold": 200,
         "native_box": [
           11,
-          4,
+          5,
           53,
           78
         ],
-        "pixels_sha256": "d242400cb458bb6d7fbbc31201dc3d3d85b38c18f735835554f0994e6ec6a767"
+        "pixels_sha256": "301d0ce818fc2abe897cf87374e23d4f5e71b7cfd8b18d5a2c78c4f684cf353c"
       },
       {
         "pose": "knockout",
         "source_box": [
-          524,
-          1207,
-          860,
-          1290
+          525,
+          1210,
+          863,
+          1292
         ],
-        "opaque_pixels": 21870,
+        "opaque_pixels": 21898,
         "alpha_threshold": 200,
         "native_box": [
           1,
@@ -3009,25 +3009,25 @@
           63,
           78
         ],
-        "pixels_sha256": "ffd69fe671807ea76cfd085ae97c4bc2e7377a8008c4e13b20bb859a566150f1"
+        "pixels_sha256": "b75f7f72a87cc71b4394cf33e945ad3aec2ad263edea2cd52cc0dcb0130b32da"
       },
       {
         "pose": "rush",
         "source_box": [
-          870,
+          873,
           1040,
           1182,
-          1290
+          1292
         ],
-        "opaque_pixels": 34321,
+        "opaque_pixels": 34677,
         "alpha_threshold": 200,
         "native_box": [
           1,
-          28,
+          27,
           63,
           78
         ],
-        "pixels_sha256": "e6b6c81c3eeaeb76c0b2d7dab4e5bb2f33592af5ad8fa8abcbc43f92f08d7745"
+        "pixels_sha256": "dfb22e7c5bb962696b9e9689be8125b3c8d3b15853a4758b41ad1ea1fe9e99a3"
       }
     ]
   },
@@ -4172,7 +4172,7 @@
     "id": 11,
     "name": "lars",
     "source": "assets/art/characters/11-lars/atlas.png",
-    "source_sha256": "532bc5cba6fdddc8ddfabe3fc300596fd48b883921a2c56ac08082fa72aa49e8",
+    "source_sha256": "16eb9059e3809047d95b5d4af0e2bfeaf4577ea5d17fa50a100f5590062a3cc5",
     "standing_height": 74,
     "palette": [
       [
@@ -4188,56 +4188,51 @@
       [
         0,
         0,
-        16
+        8
       ],
       [
-        8,
-        8,
+        16,
+        16,
         32
-      ],
-      [
-        16,
-        16,
-        48
       ],
       [
         8,
         24,
+        64
+      ],
+      [
+        56,
+        32,
+        48
+      ],
+      [
+        24,
+        40,
         80
       ],
       [
         16,
-        40,
-        96
-      ],
-      [
-        24,
-        40,
-        88
-      ],
-      [
         48,
-        40,
-        64
+        104
       ],
       [
-        24,
+        32,
         72,
-        160
+        144
       ],
       [
-        40,
-        96,
+        16,
+        80,
         176
       ],
       [
         216,
-        120,
-        72
+        112,
+        64
       ],
       [
-        72,
-        176,
+        48,
+        168,
         248
       ],
       [
@@ -4246,26 +4241,31 @@
         88
       ],
       [
-        120,
-        192,
+        96,
+        184,
         240
       ],
       [
         240,
         224,
-        200
+        208
+      ],
+      [
+        240,
+        224,
+        208
       ]
     ],
     "frames": [
       {
         "pose": "idle",
         "source_box": [
-          26,
-          33,
-          277,
-          353
+          25,
+          29,
+          283,
+          357
         ],
-        "opaque_pixels": 38983,
+        "opaque_pixels": 42500,
         "alpha_threshold": 200,
         "native_box": [
           3,
@@ -4273,35 +4273,35 @@
           61,
           78
         ],
-        "pixels_sha256": "548cc80cc6811bff6bdd8a8322c0264d7632cca9f1c83e7a46336edb687481ea"
+        "pixels_sha256": "873ed6e61e0e52d0a3f3f0113baacca96aa06390b6507cf4da828bed6685b3e6"
       },
       {
         "pose": "walk-forward",
         "source_box": [
           359,
-          32,
-          613,
-          353
+          30,
+          614,
+          357
         ],
-        "opaque_pixels": 38330,
+        "opaque_pixels": 41683,
         "alpha_threshold": 200,
         "native_box": [
-          2,
+          3,
           4,
           61,
           78
         ],
-        "pixels_sha256": "e71bf90457787d3f37cb05ab528f1aa8ee116003439c7fb6bb4f1f3d1e0b797c"
+        "pixels_sha256": "98d8add42976f9e7b7bc659501b7a2252d5ea9239ae0960402ba9d1c43dbeaf9"
       },
       {
         "pose": "walk-back",
         "source_box": [
-          666,
-          32,
-          926,
-          353
+          667,
+          30,
+          931,
+          357
         ],
-        "opaque_pixels": 37406,
+        "opaque_pixels": 41281,
         "alpha_threshold": 200,
         "native_box": [
           2,
@@ -4309,143 +4309,143 @@
           62,
           78
         ],
-        "pixels_sha256": "7cbd0a567054af068613338caa2a71ff6555fef9fd2306d2c8b72fd4cb8807e2"
+        "pixels_sha256": "11cb26c2cb3631145a6ab1934a53539a4db9bfb4ebd6459838cbaab74b5c4ab2"
       },
       {
         "pose": "crouch",
         "source_box": [
-          994,
-          114,
-          1219,
-          353
+          1001,
+          108,
+          1227,
+          357
         ],
-        "opaque_pixels": 33585,
+        "opaque_pixels": 35740,
         "alpha_threshold": 200,
         "native_box": [
           6,
-          23,
-          58,
+          22,
+          57,
           78
         ],
-        "pixels_sha256": "3f90372938bb296db8d4a70ed1ea7c6190b58794fc33072fd7285c0797e18a03"
+        "pixels_sha256": "4f13ab346bf4af34bc75762927b7e0b0b4d251b2f09d5b6aa905f907fd1215c0"
       },
       {
         "pose": "jump",
         "source_box": [
-          17,
-          370,
-          267,
-          603
+          23,
+          383,
+          273,
+          625
         ],
-        "opaque_pixels": 34562,
+        "opaque_pixels": 36450,
         "alpha_threshold": 200,
         "native_box": [
-          3,
-          24,
-          61,
+          4,
+          23,
+          60,
           78
         ],
-        "pixels_sha256": "aabb3f7c38e84f0330d68b58ccd86ddc3765d3838603c0d722670dd0ef4f4299"
+        "pixels_sha256": "1beea6229b1b36f0348715e244fcf4065b2a9fc5c6da0443eaae3840567095f7"
       },
       {
         "pose": "jab",
         "source_box": [
-          318,
-          373,
+          327,
+          382,
           641,
-          670
+          679
         ],
-        "opaque_pixels": 40570,
+        "opaque_pixels": 42481,
         "alpha_threshold": 200,
         "native_box": [
           1,
-          21,
+          19,
           63,
           78
         ],
-        "pixels_sha256": "08b86271ca8a04a05617a419492ee6cd89f1979896922845dd84419e6ec31d3a"
+        "pixels_sha256": "cff7936e8fbb093766f3fb39d8e32ed9e4c982647b3554cc3b6360bb7214995f"
       },
       {
         "pose": "cross",
         "source_box": [
-          632,
-          373,
-          953,
-          670
+          637,
+          381,
+          950,
+          679
         ],
-        "opaque_pixels": 41475,
+        "opaque_pixels": 42999,
         "alpha_threshold": 200,
         "native_box": [
           1,
-          21,
+          19,
           63,
           78
         ],
-        "pixels_sha256": "6f8827c1ad8b6d2603f011fc0bd07131ec38d8182135bf127a93bffbae8e3705"
+        "pixels_sha256": "7cdb4963e4a0330cad6ab64434ab53730dc473f8215680e8ef88dc2e8856841b"
       },
       {
         "pose": "kick",
         "source_box": [
-          965,
-          370,
-          1243,
-          670
+          970,
+          380,
+          1240,
+          679
         ],
-        "opaque_pixels": 34781,
+        "opaque_pixels": 35759,
         "alpha_threshold": 200,
         "native_box": [
           1,
           11,
-          63,
+          62,
           78
         ],
-        "pixels_sha256": "7caa5c228ced6abae063185d09d3ed75d26445a4705a5ae6da0221cade68e0d3"
+        "pixels_sha256": "fd70521561a9962e736cceef648f6d6cb0ea64812f971c73af968d010fc3318e"
       },
       {
         "pose": "sweep",
         "source_box": [
-          14,
-          746,
-          377,
-          969
+          16,
+          756,
+          369,
+          979
         ],
-        "opaque_pixels": 38168,
+        "opaque_pixels": 38173,
         "alpha_threshold": 200,
         "native_box": [
           1,
-          40,
+          39,
           63,
           78
         ],
-        "pixels_sha256": "90907282d177eb722d5923dcac00191e850ee547c1b26d3ec4cfd3fad3cc5bfc"
+        "pixels_sha256": "27b758bf0af5896f99f140b5b92803dc457fc41d36c0f9e071978ff5db53d9bd"
       },
       {
         "pose": "block",
         "source_box": [
-          377,
-          674,
-          639,
-          968
+          378,
+          687,
+          641,
+          978
         ],
-        "opaque_pixels": 36507,
+        "opaque_pixels": 37884,
         "alpha_threshold": 200,
         "native_box": [
-          1,
-          10,
-          62,
+          2,
+          12,
+          61,
           78
         ],
-        "pixels_sha256": "a66a5f0dd80523ab5ca819aebfad8872b124ab22f709434e78a0ffbc3279d2dc"
+        "pixels_sha256": "6251275b49da9b7aa7b5adc2f150ad7f3d1290853a086162456d07ae6bb7d1f0"
       },
       {
         "pose": "hurt",
         "source_box": [
-          682,
-          686,
-          955,
-          968
+          683,
+          694,
+          960,
+          979
         ],
-        "opaque_pixels": 38398,
+        "opaque_pixels": 40567,
         "alpha_threshold": 200,
         "native_box": [
           1,
@@ -4453,35 +4453,89 @@
           63,
           78
         ],
-        "pixels_sha256": "46552599280b8c588f07ee21b61a09fb2c38567c380c59184b01b0583b80f00b"
+        "pixels_sha256": "d417b4beb67eabb5b8681ac19f0c49a646d310c128d73782bc64c82816b93dcf"
       },
       {
         "pose": "victory",
         "source_box": [
-          1020,
-          661,
-          1248,
-          970
+          1019,
+          680,
+          1252,
+          978
         ],
-        "opaque_pixels": 36993,
+        "opaque_pixels": 39054,
         "alpha_threshold": 200,
         "native_box": [
           5,
-          7,
+          11,
           58,
           78
         ],
-        "pixels_sha256": "1fc8037d508a2622cfa6abde62c1dc811f204b8f390bf8679a1cd4cfd74e0fe3"
+        "pixels_sha256": "602a12c2c84541cb90885c67da4e2da8ca5506094be19decd5cb3777499fcab6"
       },
       {
         "pose": "cast",
         "source_box": [
-          18,
-          979,
-          308,
+          17,
+          990,
+          309,
+          1242
+        ],
+        "opaque_pixels": 36370,
+        "alpha_threshold": 200,
+        "native_box": [
+          1,
+          24,
+          63,
+          78
+        ],
+        "pixels_sha256": "dc22a8893c55c8373b0bfd5791b9b1c054cbb0b8e71ba766cefd7280990f3ba5"
+      },
+      {
+        "pose": "uppercut",
+        "source_box": [
+          392,
+          972,
+          592,
+          1244
+        ],
+        "opaque_pixels": 32151,
+        "alpha_threshold": 200,
+        "native_box": [
+          9,
+          17,
+          54,
+          78
+        ],
+        "pixels_sha256": "49b801715383d5d2df1cced53b0b327b06f8f6917bce08c4bc41a528c5360625"
+      },
+      {
+        "pose": "knockout",
+        "source_box": [
+          571,
+          1153,
+          942,
+          1244
+        ],
+        "opaque_pixels": 25899,
+        "alpha_threshold": 200,
+        "native_box": [
+          1,
+          63,
+          63,
+          78
+        ],
+        "pixels_sha256": "10af24a746566e9d0541d17c2feb0046bbc4b1fc75f4f7b61ff2e57de8920267"
+      },
+      {
+        "pose": "rush",
+        "source_box": [
+          967,
+          993,
+          1243,
           1241
         ],
-        "opaque_pixels": 35548,
+        "opaque_pixels": 37358,
         "alpha_threshold": 200,
         "native_box": [
           1,
@@ -4489,61 +4543,7 @@
           63,
           78
         ],
-        "pixels_sha256": "a9fa32ea1f2ed26d1f1550a2e145dcd3db752007fcf860ba1698aff4b01ffa29"
-      },
-      {
-        "pose": "uppercut",
-        "source_box": [
-          396,
-          958,
-          594,
-          1241
-        ],
-        "opaque_pixels": 31366,
-        "alpha_threshold": 200,
-        "native_box": [
-          9,
-          13,
-          55,
-          78
-        ],
-        "pixels_sha256": "140ea854349f932e0d57df2febff3b26ed03dcb8f07706c6fd9822272aa62dd7"
-      },
-      {
-        "pose": "knockout",
-        "source_box": [
-          573,
-          1154,
-          943,
-          1241
-        ],
-        "opaque_pixels": 24591,
-        "alpha_threshold": 200,
-        "native_box": [
-          1,
-          63,
-          63,
-          78
-        ],
-        "pixels_sha256": "5dce553dc7d43e27e2ba1c226cc0a22d37de52b54b641c72a0a3303e9b58fabe"
-      },
-      {
-        "pose": "rush",
-        "source_box": [
-          963,
-          986,
-          1239,
-          1241
-        ],
-        "opaque_pixels": 36537,
-        "alpha_threshold": 200,
-        "native_box": [
-          1,
-          21,
-          63,
-          78
-        ],
-        "pixels_sha256": "7cbd11d681ce2dcc706e1fe331ad00e1a0be7b7f7bd09726b967701bb740a15a"
+        "pixels_sha256": "9b86adde418fc06a5919df3a2361b8e0aa1682ff305585411b839d69f759268d"
       }
     ]
   }

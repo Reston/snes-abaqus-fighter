@@ -1,0 +1,52 @@
+{
+  "character_id": "07",
+  "character": "Cristian Valdés",
+  "asset": "atlas.png",
+  "mode": "built-in imagegen edit",
+  "edit_intent": "identity-preserve; head, face, hair and immediate neck contour only",
+  "generated_image": "C:/Users/user/.codex/generated_images/01a15713-84d8-7a61-bcc3-f4f16ba94f0b/exec-e2290d36-82f4-4236-a72d-2f5638239a1e.png",
+  "input_images": [
+    {
+      "path": "assets/art/characters/07-cristian/atlas.png",
+      "role": "edit target; preserve exact 4x4 pose layout, body, costume, orientation and alpha"
+    },
+    {
+      "path": "assets/references/fighter-07.jpg",
+      "role": "identity reference; broad cartoon face and hair cues only, never photo or clothing source"
+    }
+  ],
+  "output": {
+    "format": "PNG",
+    "size": [
+      1182,
+      1330
+    ],
+    "mode": "RGBA",
+    "alpha": "genuinely transparent outside the figures",
+    "layout": "4 columns by 4 rows, 16 independent right-facing poses",
+    "palette_and_costume": "preserved slate/navy vest, pale rolled sleeves, dark trousers, dark shoes and warm cartoon skin ramps"
+  },
+  "provenance": {
+    "generator": "built-in image_gen",
+    "source_atlas_before_sha256": "32f413d5a2446755f6eb5357e8accbdb20a532b954f01078a16991d1cca81b12",
+    "identity_reference_sha256": "5edcd42a4afcdbd2ab1e341a25b7ad65884bbf417b5a47396d2de2cff651d19c",
+    "final_atlas_sha256": "bfd12e02ec2ed3111162f23268e7862313ca7f4f42975180c89aff324cee0674"
+  },
+  "validation": {
+    "alpha_threshold": 200,
+    "large_connected_silhouettes": 16,
+    "transparent_corner": true,
+    "body_and_pose_invariants": "locked by edit prompt; no code, build, emulator or UI changes",
+    "likeness_targets": [
+      "broad round-square face",
+      "fuller cheeks and rounded substantial chin",
+      "short dense BLACK hair with modest natural front-brushed shape",
+      "thick dark brows and calm narrower eyes",
+      "broader nose, clean-shaven jaw, neutral friendly confident mouth"
+    ]
+  },
+  "prompt": "Use case: identity-preserve\nAsset type: original native SNES fighting-game character sprite atlas\nInput images: Image 1 is the EDIT TARGET, the current Cristian atlas; preserve its exact 4-by-4 layout, all 16 pose silhouettes, body proportions, right-facing orientation, navy sleeveless sweater vest, pale rolled sleeves, dark trousers, shoes, cel-shaded palette, and transparent gaps. Image 2 is the IDENTITY REFERENCE, Cristian's employee photo; use it only for broad cartoon identity cues and do not copy the photo, clothing, or background.\nPrimary request: repair Cristian Valdés' face and hair likeness consistently across all sixteen existing poses. He is an adult man with a broad round-square face, fuller cheeks, a rounded substantial chin, short dense BLACK hair with a natural modest front-brushed shape and low clean hairline, thick dark brows, calm slightly narrower eyes, a broader nose, clean-shaven cheeks and jaw, and a neutral friendly confident mouth. The previous face was too generic, angular and anime-like; make the face visibly broader and softer while keeping it readable at 64x80 SNES sprite scale.\nStyle/medium: original 1993 Street Fighter II-inspired bright cartoon pixel/cel-shaded arcade sprite art, hand-inked comic-book shapes, bold deep-navy contour, hard cel-shading, limited approximately 15-color palette, clearly fictional and non-photorealistic. No Mortal Kombat digitized realism and no copied commercial character.\nComposition/framing: exactly the same 4 columns by 4 rows, exactly 16 independent full-body poses in the same positions and sizes, every figure fully inside its original cell, generous genuinely transparent separation. Maintain all existing limb connections and pose anatomy.\nColor/material invariants: preserve slate/navy vest, pale rolled shirt sleeves and collar, dark trousers, dark shoes, warm skin ramp, navy outlines and existing highlights. Hair must be near-black with restrained dark-brown/navy cel highlights, never brown or blond.\nConstraints: change only face/head/hair features and the immediate neck-to-head contour; preserve costume, hands, arms, torso, legs, shoes, pose, scale, orientation, cell spacing, alpha and background. No text, grid lines, captions, watermark, logo, scenery, glow, projectile, extra figures, extra limbs, cropped head or feet, disconnected silhouette, gore or realism. Do not make a spiky high anime pompadour. Keep each pose a single connected silhouette and make the facial treatment consistent across all 16 cells.",
+  "source_revision": "75548bf",
+  "compiled_asset": "atlas.png",
+  "compiled_asset_sha256": "bfd12e02ec2ed3111162f23268e7862313ca7f4f42975180c89aff324cee0674"
+}

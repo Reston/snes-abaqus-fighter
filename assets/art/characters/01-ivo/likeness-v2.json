@@ -1,0 +1,57 @@
+{
+  "character": "Ivo Kovacevic",
+  "roster_id": 1,
+  "asset": "atlas.png",
+  "revision": "likeness-v2",
+  "mode": "built-in imagegen edit",
+  "use_case": "identity-preserve",
+  "created": "2026-10-19",
+  "input_images": [
+    {
+      "path": "atlas.png",
+      "role": "edit target: existing transparent 4x4 sixteen-pose Ivo atlas"
+    },
+    {
+      "path": "../../../references/fighter-01.jpg",
+      "role": "identity reference: adult Ivo Kovacevic appearance cues"
+    }
+  ],
+  "provenance": {
+    "generator": "built-in imagegen",
+    "source_output": "C:/Users/user/.codex/generated_images/01a15712-d326-7471-8851-8e7c4e9fa5e3/exec-a2a586ec-e8e8-484e-9374-d8f706b810df.png",
+    "final_sha256": "064e7b676f4049d00c265c1feb279a175589a9b7141836bcebf5419801f6c485",
+    "reference_is_shipped": false
+  },
+  "prompt": "Use case: identity-preserve\nAsset type: native SNES fighting-game character sprite atlas\nInput images: Image 1 is the EDIT TARGET: Ivo's existing transparent 4x4 atlas with exactly 16 action poses. Image 2 is the IDENTITY REFERENCE: a real adult middle-aged man, Ivo.\nPrimary request: edit ONLY the face, head shape, and hair of the fighter in every one of the 16 existing sprite poses so the character is recognizably Ivo. Keep all pose silhouettes and body positions identical.\nSubject identity from Image 2: adult middle-aged man with a rectangular/long face, broad cheekbones, softly square chin, strong straight nose, normal rounded eyes with heavier upper lids, subtle expression lines, clean-shaven. Short dark-brown nearly-black side-parted hair with a modest front lift and natural hairline. Hair must read black/charcoal with cool highlights, never brown-orange.\nStyle/medium: original 1993 arcade fighting-game cartoon/cel-shaded sprite art, bold navy contour, clean readable planes, playful Street Fighter II-era energy without copying any existing character or commercial sprite.\nComposition/framing: preserve the exact Image 1 4-column by 4-row atlas layout, exact canvas dimensions, exact cell spacing, exact transparent gaps, exact right-facing orientation, and all 16 existing action poses in their original cell locations. Make the head sufficiently oversized and readable for 64x80 SNES quantized sprites, while keeping the existing body scale.\nLighting/mood: preserve the existing cel-shaded lighting and dramatic arcade readability.\nColor palette: preserve emerald/teal jacket, dark charcoal trousers, gray shirt, white cuffs, gold belt, navy outline, and all existing body colors exactly; use near-black charcoal hair with restrained cool highlights.\nConstraints: change ONLY head/face/hair pixels. Preserve the jacket, shirt, belt, trousers, shoes, gloves/hands, limbs, pose, silhouette below the neck, cell coordinates, orientation, transparency, and atlas grid. Keep all sixteen poses present and separated. Do not add objects, text, logos, background, or watermark. Return a transparent PNG at the same atlas dimensions.\nAvoid: generic young angular anime hero, tall pompadour, giant sculpted quiff, orange/brown hair, beard or moustache, photorealism, 3D rendering, anatomy changes, costume changes, cropped poses, rearranged cells, merged figures, duplicate poses, background fill, Capcom or Street Fighter copyrighted character imitation.",
+  "output": {
+    "size": "1254x1254",
+    "format": "RGBA PNG",
+    "background": "transparent",
+    "layout": "4 columns x 4 rows, 16 full-body poses",
+    "hair_palette": "near-black charcoal with restrained cool highlights",
+    "identity_cues": [
+      "adult middle-aged presentation",
+      "rectangular/long face",
+      "broad cheekbones and softly square chin",
+      "strong straight nose",
+      "rounded eyes with heavier upper lids",
+      "clean-shaven",
+      "short side-parted natural hairline"
+    ]
+  },
+  "validation": {
+    "command": ".tools/python/python.exe with sys.path.insert(0, 'tools'); fighter_assets.extract_atlas('assets/art/characters/01-ivo/atlas.png', alpha_threshold=200)",
+    "large_connected_silhouettes": 16,
+    "extracted_figures": 16,
+    "extracted_metadata": 16,
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "transparent_corners": true,
+    "rom_build_or_emulator_run": false
+  },
+  "source_revision": "75548bf",
+  "compiled_asset": "atlas.png",
+  "compiled_asset_sha256": "064e7b676f4049d00c265c1feb279a175589a9b7141836bcebf5419801f6c485"
+}

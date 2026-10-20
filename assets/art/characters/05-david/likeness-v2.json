@@ -1,0 +1,71 @@
+{
+  "character_id": "05-david",
+  "display_name": "David Ponce",
+  "asset": "atlas.png",
+  "mode": "edit",
+  "tool": "built-in imagegen",
+  "generated_at": "2026-10-19",
+  "source_generated_path": "C:/Users/user/.codex/generated_images/01a15713-4b40-7920-90a5-a06f01280711/exec-f7785814-19e8-425e-85bb-b87b6e7686cb.png",
+  "input_images": [
+    {
+      "path": "assets/art/characters/05-david/atlas.png",
+      "role": "edit target; existing transparent 4x4 atlas with sixteen disconnected full-body poses"
+    },
+    {
+      "path": "assets/references/fighter-05.jpg",
+      "role": "identity reference; facial likeness and hair only"
+    }
+  ],
+  "identity_direction": {
+    "complexion": "warm olive",
+    "face": "longer oval face with narrower relaxed eyes and heavy upper lids, straight nose",
+    "facial_hair": "black moustache, pointed goatee, light jaw beard",
+    "hair": "black or charcoal black slicked-back hair tied low at the back in a small bun or ponytail with a natural hairline",
+    "hair_avoid": [
+      "brown",
+      "ginger",
+      "orange",
+      "gold",
+      "gray highlights"
+    ]
+  },
+  "prompt": "Use case: identity-preserve\nAsset type: native SNES fighting-game character sprite atlas\nInput images: Image 1 is the EDIT TARGET: David's existing transparent 4x4 atlas containing exactly 16 disconnected full-body fighter poses. Image 2 is the IDENTITY REFERENCE photo for David's facial likeness and hair only.\nEdit ONLY the face/head/hair regions of every one of the 16 figures in Image 1. Preserve the exact original pose geometry, body proportions, hands, clothing, suspenders, amber collared shirt, navy trousers, shoes, transparent alpha, 4x4 grid placement, spacing, and all non-head pixels. Keep every pose facing right as in the source. The final atlas must still contain exactly sixteen disconnected full-body figures and no added elements.\nIdentity direction from Image 2: adult Chilean man with warm olive complexion, longer oval face, narrower relaxed eyes with heavy upper lids, straight nose, black moustache, pointed goatee with light jaw beard. Hair must be BLACK or charcoal black, slicked back and tied low at the back into a small bun/ponytail, with a natural hairline. Use black/charcoal hair tones only: absolutely no brown, ginger, orange, gold, or gray highlights. Make the same recognizable face and hair silhouette consistent across all 16 poses, adapted to 1993 Street Fighter II-inspired cartoon cel-shaded pixel art. Keep the existing athletic fighter body and amber shirt/suspenders.\nStyle/medium: original bright 16-bit arcade sprite art, chunky readable pixel clusters, clean dark navy contours, cel-shaded, slightly exaggerated Street Fighter II-era cartoon proportions. Native SNES readability at 64x80 per frame with a compact 15-color palette.\nComposition/framing: preserve the source 4-column by 4-row atlas and exact transparent canvas bounds.\nConstraints: change only face/head/hair; preserve pose silhouettes and all non-head pixels; preserve transparent background and all 16 disconnected figures; no text, border, watermark, extra effects, background, or additional characters.\nAvoid: photorealistic or digitized heads, realistic skin texture, copied commercial characters, brown/ginger/orange/gray hair, large redesigns, body/cloth changes, merged silhouettes, cropped limbs, new poses, or altered spacing.",
+  "final_processing": {
+    "method": "Selected the built-in imagegen edit directly; the native asset pipeline isolates alpha, scales with nearest-neighbor sampling and quantizes to the SNES palette."
+  },
+  "validation": {
+    "dimensions": "1254x1254",
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "alpha_threshold": 200,
+    "disconnected_figures": 16,
+    "pose_order": [
+      "idle",
+      "walk-forward",
+      "walk-back",
+      "crouch",
+      "jump",
+      "jab",
+      "cross",
+      "kick",
+      "sweep",
+      "block",
+      "hurt",
+      "victory",
+      "cast",
+      "uppercut",
+      "knockout",
+      "rush"
+    ],
+    "orientation": "right-facing except knockout is head-left as required by the shared pose contract",
+    "native_palette_target": "15 opaque colors plus transparent index"
+  },
+  "provenance": "Original David Ponce reference photo is used only for identity cues. The result is an original cartoon sprite edit and contains no commercial game sprites, logos, text, or audio.",
+  "source_revision": "75548bf",
+  "final_sha256": "676f251ca74bd45f634d4f2eb9ae42428581db1784e00f04f3c154b77fdbb89b",
+  "compiled_asset": "atlas.png",
+  "compiled_asset_sha256": "676f251ca74bd45f634d4f2eb9ae42428581db1784e00f04f3c154b77fdbb89b"
+}

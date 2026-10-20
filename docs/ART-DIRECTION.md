@@ -1,5 +1,11 @@
 # Art direction and image generation
 
+## v0.3.1 likeness correction
+
+The user requested closer face likenesses for Ivo, Cristóbal, David, Cristián and Lars, explicitly specifying black hair for Cristóbal and darker black hair for David. Five focused **built-in imagegen** edits use each person's public headshot as the identity reference and their v0.3 atlas as the edit target. The selected masters remain at the character paths below. Each revised character directory includes `likeness-v2.json` with the full edit prompt, input roles and provenance.
+
+The pass emphasizes Ivo's mature facial proportions and natural short hair; Cristóbal's cropped black hair and full black beard; David's black tied-back hair, moustache and goatee; Cristián's fuller clean-shaven face and short black hair; and Lars's broad clean-shaven face and wavy side-swept fringe. The original cartoon arcade style, costumes and sixteen-pose contract continue. Matching select portraits are regenerated from the revised masters.
+
 ## Current direction: v0.3 individual cartoon roster
 
 The roster now uses twelve separate illustrated masters with individual bodies, costumes, facial features and silhouettes. Six art subagents each developed two fighters using the **built-in imagegen** tool, public appearance references and the existing cartoon style reference. The shared sixteen-pose layout supports the same native renderer; it does not imply a shared recolored body. Roxana has her own woman character design and poses.

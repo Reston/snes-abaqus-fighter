@@ -7,10 +7,13 @@ guard is lively, and the animation shapes keep the hands and feet large enough
 to read after reduction to SNES sprite size.
 
 The face and hair are cartoon design cues derived from
-`assets/references/fighter-02.jpg`: close-cropped dark hair, a full dark beard,
-and a warm light complexion. The atlas is original game art and depicts a
-fictional fighter, not a realistic employee portrait or an assigned real-world
-role.
+`assets/references/fighter-02.jpg`: an adult slightly long oval face, high
+forehead with a slightly receding natural hairline, short cropped **jet-black**
+hair, a fuller rounded **black** beard and moustache, natural dark brows,
+prominent ears, straight nose, and calm confident eyes. The user-specified
+black hair and beard color is authoritative; neither may read brown, auburn, or
+orange. The atlas is original game art and depicts a fictional fighter, not a
+realistic employee portrait or an assigned real-world role.
 
 Readability targets:
 
