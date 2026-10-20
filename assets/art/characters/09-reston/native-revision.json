@@ -1,0 +1,231 @@
+{
+  "schema": 1,
+  "fighter_id": 9,
+  "slug": "reston",
+  "revision": "v4-short-buzz-cap",
+  "baseline": {
+    "file": "assets/art/roster-baseline-v0.8.json",
+    "sha256": "386a430db966c7f5c843811d78d9e06043838d8893f166bdc58637ddde773bd5"
+  },
+  "old_sources": {
+    "actions": {
+      "file": "assets/art/characters/09-reston/animation-actions.png",
+      "sha256": "5da2291d9cbc40f09253bfcaaddb62bce1975874f005fe00dca46256b095f3cf",
+      "source_normalization": 1.0233333333333334
+    },
+    "airborne": {
+      "file": "assets/art/characters/09-reston/animation-airborne.png",
+      "sha256": "a2bfe67f6f864a86ef8620d7961d9fe8a62e26f1b83d48ddfa3a0f02a7dffd0e",
+      "source_normalization": 1.040677966101695
+    },
+    "airborne_metadata": {
+      "file": "assets/art/characters/09-reston/animation-airborne.json",
+      "sha256": "89054a6afdfcf61210bd72d3ed15883d054bead68737416db3a0c4a35659671d"
+    },
+    "legacy": {
+      "file": "assets/art/characters/09-reston/atlas.png",
+      "sha256": "da764ee7b65773065d5f05d32b6f5e20e3f3b3d18c5012006c33d83f0fdde622",
+      "source_normalization": 1.0
+    },
+    "motion": {
+      "file": "assets/art/characters/09-reston/animation-motion.png",
+      "sha256": "38d0e74b9ada46fce88606d51de8217b30e6dc5db11dbf9505768792ffee269f",
+      "source_normalization": 1.0336700336700337
+    }
+  },
+  "new_sources": {
+    "legacy": {
+      "file": "assets/art/characters/09-reston/atlas-v4.png",
+      "sha256": "3ad4d55b83e780de1d48de5a026bc42fad3b08527eb9704d8a6ffc6f03a4afb0"
+    },
+    "motion": {
+      "file": "assets/art/characters/09-reston/animation-motion-v4.png",
+      "sha256": "12b9335e1690b4da9f32aecbe570a230cc167ac0cb430f2e85c0788adeaa6298"
+    },
+    "actions": {
+      "file": "assets/art/characters/09-reston/animation-actions-v4.png",
+      "sha256": "af50bdef2057d2afc4b45cd1f2fdabe79bc0c17e6af65386ed852f16209e2dd6"
+    },
+    "airborne": {
+      "file": "assets/art/characters/09-reston/animation-airborne-v4.png",
+      "sha256": "b22af9ea2ad8a6e72fad6987fc2e0400e7bb76e01bb344a61e41002ae5a1dc87"
+    },
+    "airborne_metadata": {
+      "file": "assets/art/characters/09-reston/animation-airborne-v4.json",
+      "sha256": "ea7173ca3c4f48c8a9da97a6e96ba6ed4caf1b18e5285c7f468bdac45dfeb088"
+    }
+  },
+  "source_normalization": {
+    "legacy": 1.0,
+    "motion": 1.0336700336700337,
+    "actions": 1.0233333333333334,
+    "airborne": 1.040677966101695
+  },
+  "old_native": {
+    "frame_hashes": [
+      "ecf7af55e7c4fdeb62df0125cdc2bc72d6f35f151a80ec9f15f5dc5f3bacc02a",
+      "66f1abf48073834919bc4579d8340ce3bd524fd978c114266eb53a4c7e499c0b",
+      "4c414038f4e6e6b591eabdc324c04e22bf05900c633e731f9b1fe5499925bd74",
+      "8747aaab3593c49e0fbd488dd5428800016c61c83a9ebad21b23facd44804f47",
+      "c0bb781f9961cbd9a517cd5c0bcb305d3bf56dc77f72d6d4fc43255fd6f9ff57",
+      "100f5ae0b36d291ba387b7abb8a23057658fd9fc26bbc9b1684818c3605e01de",
+      "111a5303329dd2e54a672dcb6e8a7967bd6d364353fb8852a86170def40f646b",
+      "d16224467e7b9fc30aeb93a899c7839496d999862a8836ac67935bbfe36c6884",
+      "646bcd894c82d8a209e2552881de96e4350fd0e3e2dbd0dd3a1037c2b0595904",
+      "50f48c619338ac2d390dca45cc832e3764540e4862f810b013426da0da386413",
+      "2533615c11261ffc5a1fc5413822b814183cb84da378166a8a023bc8ed29539e",
+      "25f8fdd593f0584d8608afa2a405398b54c28f67128a07c5f8860957ee4daf44",
+      "88d264764d42c5e08e3eb6ba4f162aaa38b26782ad49d3a1804e0338bd4f5f74",
+      "918412b8d026bba46785d70698f8922919c213530e88dbb5c52741b55a5f5429",
+      "4477cf1397771b48f1ca02e7f3efc0b651c9a4aa38d7b18acbf1a859f7e7988e",
+      "4088ee4b484c8819d32ad8854b6ebd5368168ffdf26415a9c20aacf0eaadf537",
+      "e07b61b73195a3f7e923b7321c1738aa53ad4bd49c5af2bc4d4ca29cbb40b73a",
+      "4eb4b5d54cbb57492963feaae55f7454d47e030b6a8fce414b82c195bb656ee6",
+      "af415b48345262445a071f7fba18a4729ac947f92b5dd87a6a87da4cdacc7660",
+      "2d2e9c3b3e1d4015ab95c41908b3bc333751d60094f15a18ba5d4f6050f134f1",
+      "3c3fdb7c4d403f9774b3d41ab4ff83c2e6a50364854c703771a7a631edcb6d54",
+      "f7022553e3bece6635a023143461131c4384a233639f4aa974489a60a35ca524",
+      "a42e5998f0b648655c49c657d35c30b53d497d49c40cdb1c03b8cbc9c2b56733",
+      "bb929d17cc4cfcb4ed3e3d0ef991e26d6ee9f3cf1ff495af7a467d38b518f255",
+      "e65557caa659eb7afdccd06aa50ced322cf2875afd2266423054f27ddf5fd12b",
+      "8bc92c44f7a76512f5937ab0b990f8786e0d60096c328287835ed3227011c8d4",
+      "9765bda2a33281616741b295e0c32dfb4a4b31556fb84ee5407d3a57d897b2c1",
+      "8d32aedd7e8deb08e14d52a8ad5cfacd6c849196a19056cad2187d53f3308587",
+      "56222f3a8ceb51564a394c4cd38b699cd58f4c33bad3edd2ae0372e7103c2f73",
+      "6e03357cc5b27744cea31bbc4203988b3a9c77cc7ab6fe288a462e012c160fb0",
+      "292eff33abea831733d8bc5b298cec7b3d36ffaca4b453e568e4deab7f4f43f4",
+      "6791153c39ca604706e4e08c2e11a350324781be837bfc7f812353b150b20379",
+      "1f2a19c8062fb83164954363674551d9a2349617401e874c07c042ca5ff7f6ec",
+      "e917e8a3f43773b4de748a37ab99d595fdfc9f5776f790a1c202e58369e7899a",
+      "68400c80b7108b21c393192ac68dd9ba3d6717fe5349fa0c4a0ad83e404258d4",
+      "5182d16cc3789cf4f9e78c3bc1fbdd9704f1c8fafb15916262a40c687ce314b6",
+      "2173dff5b62a1346f62719578d6da30cdeb932e3b49408bd08f5e129750b6eaf",
+      "243cc13759be163b2f90e5d8d71ce09c814c29a7651e04061300741c2ee2b3b3",
+      "5c4eb13cb32fe726b3632cf61050610c7452daa9a711c8651c8d72aacf3f2b45",
+      "fc506aa45b8b13dafe7f5ba6ec4f3fbedc2fb4d77c098a1100c1a89a41400fd2",
+      "f39b3946464e56e9e0a67a02e785dc3566cf37ea3ddfb4e69acede77d162491a",
+      "b5d8de641fbf1df6fe8f45bb4298169ef7bbf21f104de8e0d462efd359d3e1c0",
+      "c485e2516a5d27b955955eaebd9aafc59418183b9f686f2f870173e7cf259af5",
+      "e2f1fb3146887c972cb7422bed160b200c2ba8682f2094e873240079501f832d",
+      "6b30532e5426dfe33483a2ccaebee35249f672c1a4a05af867c439ab30d90f80",
+      "f100e28c56c55a9d5bb10c9a990e2e5f55b8bdcd0436c8ef651f3aca57c78c9c",
+      "eb41dc77dd34f339c983dd3875ca2fdf3adc433d5abc4f89f8213a8b3cd619da",
+      "0065125eb8d3ed71b4f2496a36dc5bd73124c469fb615e14a3fd511685815155",
+      "66d0a71bb295bf2c5165e3710b738e1b304e584fe4ce8d01872b413a8d518116",
+      "c1203bf8e59c5610b270a71116dd7eecdb1370b435626b034a4f69484caae363",
+      "69f3784158bb9fc32272ca7fbe0b93a05c8995cd368f8b5b4f900586da387a18",
+      "94aa0faf0692ff8a124af33420c333dba4de4179cac38c0914758efbd504109a",
+      "5d43d7c896402f0b46adac5090dc44591d74cc13ceeaf061f0476135c78bdb9b",
+      "6c8d8a759c7b10a7356c5e7de513d4f24e9cd1ad9fafbef41c53e817f05d8484",
+      "ad41e679c5036aa1d135cfa76f7382f7a8a7f9542109b98fff4e0d62ed024ccc",
+      "80f726fe215cfd87bddcb0b4fb5ca77aad12e9914bb02682cfbed1abee691cc7",
+      "7bfc48f8eb3ca676e1f070ac69567b056627c2b7f016eab4e1751d6abc213eae",
+      "cd7d4a7e6b3145b96ff870fec8f3b103feb6a43b956120c3b6005716a75ae899",
+      "f5c920911a70a13eb14cd12e581fee32e5b0a07822d2ab1719ba32db69731804",
+      "65188bea2cf0730f6b982dd5c75ec97ef58e53adc8e66d2f95f5372157205afa",
+      "dbd3d71097e48e84faa95b59d1d81888ca4d535c96786e85db42ced54c56dc89",
+      "a1229e48102def4b8f6c44f728e36a23c5bf1ff1821b4be100695c0afd8ce2b0",
+      "93573f77f2296d83e166765d5bd28d5f9d30be4ad260bfc366187147636cb5f4",
+      "352a88548e530ff74130f388ad251f7f2aa86730ccba7008e44128bd1515a57d"
+    ],
+    "frame_hashes_sha256": "923ba3c963c3204d74c22a3f8fb0ce8d363ef84b8b21b17f25ace1e42d66d5c4",
+    "palette_hex": "00000000200c4310612083204e0cc430c434da049e00771dff197f225e575e57",
+    "palette_sha256": "0fa34b1d226a993d001bd2df79e0b4f69827c214668446fe7b3b19bb3c64aa1d",
+    "uniform_scale": 0.2280130293159609,
+    "physical_scale": 0.2280130293159609
+  },
+  "expected_native": {
+    "frame_hashes": [
+      "ebe31a6e1f75a9d5799aeda891b7449877d6ca3125c74ed7825af051039ab6b7",
+      "c19d422ebcccb7c19bc1d76e6747f49eed4f41652daab3932cf688b2abad932b",
+      "9f87fead90a5dd838fb61f3306b22624f2654750d0ef3e5548e5a9b1818aaaab",
+      "e2b2a235c066e777f28bdc5965eb136c446834b1fab068722348baf3f350a985",
+      "2d6ae0fd2c237ebae7b4fa26c293cc8d62077c47c11c4c683ef3345e29d19ab2",
+      "506f60186246cc2f27dddbb328bb40869b30bd42902b2c3ca4a3802fa8777f6a",
+      "cff875c249e44c38255b172f94338f2321123fa1aa86b40ff53e96323eb2d034",
+      "809d03b6a4ec4c88c002ac2a10d33194bef6525243fa49251821e78f88077a84",
+      "ff5b48a6726a5bd06f10b9235b43e7acda2c9d9f43d2dadc5a73ef41a8e55430",
+      "93e38b6c48ad7a180e70424b11db7a6414d2d92dfa7cfb0e6076b49380802e21",
+      "b90af0ad70719071a8aae33d5216da0b6cddd84cfb9d09bdf950ef16213c978e",
+      "1a7b747592842212b3aec5344d61028002c39c04a8cd364db2e826e00a4d08cd",
+      "5ac957399f4fb6b808302a6a3e59224e9a8b77beb86ab206c240117a330643d7",
+      "a40f58ccd6b002e6b9b52b405f0de0d8f2c47233b093e7ca07ea66f17e874c08",
+      "c4ac26ae81da6136c66336d629a05b7df9be50e8a80fa8cc85b0268190276c77",
+      "035d986ec6562d50036c1b2ef361675e36eb5bea43bfb669c4920a362dc7e9c7",
+      "8eada6cb8867c75e9f0720b60ce43508a5ee54d97541735e5657cb5e59c92db5",
+      "b46a9d33cbd1eb0f80484ea3a5b0d14574e9b1860b01556baf0e3535516869c1",
+      "7985ee168befb3750d3cdb135c962ddf52b48530836c85215c406587e607d118",
+      "fd98250a438438a3bf9813f77d330bb6309ebd4496c548dfe28c1b2736480d96",
+      "9c08ba0cc81e61e64c8279f306a58620e107f496429ec51104473fadae53d646",
+      "e6c4f2fa21ba82d6906de844151fa943b43e7c002dd88b5cd99e1e3b39d5d0eb",
+      "0bac06c43280b325c0ea9dfbc73fdbce3d1d5ecc813aa9965804dce79ddaab68",
+      "c3c9237c9afff79a619c5ce29f11a981e5086aaca9fa780ad355186f09e83e8f",
+      "3687a8e2a6c9988f41663bd33ef6c80b794c7296a7e47e6eb5fa67e15f8a341b",
+      "3aadc4e1e01a7d86c6eee20d8b2d594db6f8560f0e4666bd4b29daf4f9689fdd",
+      "7fa250ccc9f91c7efa3a70127d003cb7862a4b77aa612bc42d781bb94c510c2c",
+      "b6a7a4da81b84b80d5df772be00f44db0544b71debcbdedf46dc6fb65dd0f4fd",
+      "32e6010a83f74744eaab4f9e8a44210dfc1642fe136ef1aea769404809427cae",
+      "6f0e31aa250f1399c1c9365249e98c1b5410af3c68f8bd7933aafb1890d13c9c",
+      "4506b1ac29a2de908493daf659aa80462ee4edfc90530a9bbdbe00d5d8eada7a",
+      "25f1d83d35e217e65e870551566d8e40255f1c5d3c5cf47682d3954fb75f175d",
+      "465d027094e419ea31a39a9e589218cfd5d5fb030f3c8bccb9604f6f7a5a037a",
+      "0b14f7d2d7683df74cd6eee0d211ea1da20d703032292b2d716a73f01684d1d9",
+      "6b00bb7e4b531bc2ac363dc38084955fbf45929d4a7341ea15ec388aad00b908",
+      "3a13509100b4cb4a143b675acd3e4f7dee21502375239b90439c1f8d036af77f",
+      "91d8fd01d02dda2a74c3ae8044cd0a9a1694728d69bb25beb7efaf24da2b38ed",
+      "3457b1899052d24966f1dc7bcf39837f3e553f2bd4431f1d4921aad1d1273f4b",
+      "2ba8f56ca83f4a3cc5bfa956b810846523d95cd33cb94fb987b0f9bf33104c14",
+      "1348a4e291117ee065fc9437a89194c5fbe8f9feff950aaca2f6a961f50dd35b",
+      "68e0476a90d5727f6708a80cdd3d1ad866550616c0787cbc224cd59c577d47b6",
+      "f2c1bf8b8b5193c71c6993c58c83fec90e91539af878f375c1d10b6f69517782",
+      "ddae58d8589c8be6698e2c85ea0b56a134c7671187edc94717c9cf9dceb66d32",
+      "89b73166bb062ea158db3f9c8237e70e37df25040c545e57484e2a8114e987be",
+      "6d8efb7801336c88b75b80ce1263957245b6a93edf93a3d9e36b9bdc6886b4ea",
+      "b3b32c37615f7c14cf4d40ad5aa2079d537d8504cbd59c8a15f0ac9901459a05",
+      "ca7274a9aab7ca2720888bf2226fda0b537882bb3793d5b57a4f3b28115e0302",
+      "69cd68fd06bdc5fa491cb3f425fe3652e6c36a8c6e178ed310dbdf56ac835288",
+      "6e35c4c38b7ea463f4bb4ae3bbcaa64735eaa2acf6d20adaa6a8cc99f34a9c1c",
+      "b16028e8fab6745944f4cc57c062c1c31fba70faf8391f5e48e1e39c2572c128",
+      "4942693d45d76c76b56dcde68b88853cf0d34d4fa631e5531a90631aff105968",
+      "06d9496ef562a3333f54436feb60e4a119b72add9ff8a3eced2cd02aa6b595ab",
+      "e59a9799321ff88c749522143f47d165abaf70eeee498287e18b6349befa8df7",
+      "224f7544157a6934a4c7bc64e079acba202b21e09860382dac677c94f507be01",
+      "0255b9fd6d00e2d6c2fb4b970cd4684e6f4847315dadceaa84e6a791c6d7c45a",
+      "1d35c663999af9b1d38b19e4adf4a36c184bed71c0bd44a89cb2b24fc2637034",
+      "78d53b1728e04de9bac78600fa18858d574c24d9b898be0ad06eebe6d52d738a",
+      "380c0b535b5e3a548ab71f8d6938ed837df9a32f273964c33b89cc025ecbd4a2",
+      "b0fa72344ec6224fec49598c4b06feb2fcc2db6fc3d29df439141438a8a6b7c1",
+      "b9cdf6c7d31bd5aefc3da8e2bc1548e3430461e983f785a9968fe6595fec8217",
+      "964ff7d5e34927b58cc579dd27b374177a5c128077b37086c5aa529f8d243a46",
+      "048b8b56a989bfa33cd824827b9df32b625cdfeec82dfa9aa9d4a66cf71d0348",
+      "9692034aa26a0f01ea5d87658f3773fb3e52706336b0a13323b21a818f651eaa",
+      "ca08eb62b4b8195946d3ebc972b5c04d8884574e9a3f1631fdc9472907f7767c"
+    ],
+    "frame_hashes_sha256": "7fe74ce9c1d771203191606d8f9ea05398eebb2507f7ab7dc538c766c274bfda",
+    "palette_hex": "00000000200c4310612083204e0cc430c434da049e00771dff197f225e575e57",
+    "palette_sha256": "0fa34b1d226a993d001bd2df79e0b4f69827c214668446fe7b3b19bb3c64aa1d",
+    "uniform_scale": 0.2280130293159609,
+    "physical_scale": 0.2280130293159609
+  },
+  "provenance_files": [
+    {
+      "file": "assets/art/characters/09-reston/likeness-v4.json",
+      "sha256": "43b6bf515de0bbf16bb4210773881b02357f17d716e70659d1a2ad7f3ab6ea1e"
+    },
+    {
+      "file": "assets/art/characters/09-reston/animation-v4.json",
+      "sha256": "10eff3270c1c7d5df69b8fce7bc76b780b5dce251be5663a266d80e8bc74a535"
+    },
+    {
+      "file": "assets/art/characters/09-reston/animation-airborne-v4.json",
+      "sha256": "ea7173ca3c4f48c8a9da97a6e96ba6ed4caf1b18e5285c7f468bdac45dfeb088"
+    }
+  ],
+  "review": {
+    "scope": "all64 source-compiled native frames and source-derived64x80 portrait",
+    "source_request": "User requested Reston a little less bald using supplied photograph.",
+    "mode": "agent-native-visual-review",
+    "human_approval": false,
+    "outcome": "Accepted for native integration; fuller very short crown cap, mature forehead and face retained."
+  }
+}

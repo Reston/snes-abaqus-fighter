@@ -1,0 +1,66 @@
+{
+  "schema": "abaqus-animation-source/v1",
+  "fighter": "09-reston",
+  "character": "Jose David Ordonez",
+  "generation": {
+    "mode": "built-in imagegen edit",
+    "tool": "image_gen.imagegen",
+    "transparent_background": true,
+    "output_size": [
+      1254,
+      1254
+    ]
+  },
+  "atlas": {
+    "path": "assets/art/characters/09-reston/animation-airborne-v4.png",
+    "frames": "48-63",
+    "generated_source": "C:/Users/user/.codex/generated_images/01a156ae-1193-7dc2-919a-5a8c499f8988/exec-57089bc6-d996-48cf-8e7c-bde8a37fd8c2.png",
+    "full_prompt": [
+      "Use case: precise-object-edit.\nAsset: existing original transparent 4x4 SNES cartoon airborne/throw/recovery sprite atlas for Reston.\nImage 1 is the EDIT TARGET, the existing animation-airborne.png. Image 2 is the APPROVED V4 HAIR reference atlas-v4.png, not a new pose guide.\nChange ONLY the scalp hair in each of the sixteen existing figures so it matches Image 2: visibly fuller very short near-black buzz cap across TOP and CROWN, modestly forward frontal hairline, dense cropped sides, mature high forehead. Replace the thin rear-only cap/bare orange crown impression with a continuous clearly defined short dark shape. Use dark charcoal/near-black like his beard, not faint wispy gray/brown texture that disappears at 96x80. Keep his broad mature face, nose, brows, beard and original head silhouette/angle. No bangs, pompadour, long hair or low youthful hairline.\nSTRICT INVARIANTS: keep the exact 1254x1254 true transparent RGBA canvas, regular four columns/four rows, sixteen distinct full-body figures in the same positions with exactly the same poses, sizes, feet and orientation. Only the scalp hair/hairline changes. Retain every pixel-shape of the body, hands, legs, broad anatomy, copper-orange jacket with cream collar/cuffs, charcoal shirt, navy trousers, belt and shoes; retain original saturated 1993 arcade cartoon cel shading and dark outlines. Do not redesign, reposition or resize characters. Keep generous fully transparent gaps; do not join neighbors or separate components.\nExisting row-major frame roles remain: 48 upright neutral guard;49 air punch prep;50 air punch active;51 retract;52 air kick prep;53 air kick active;54 retract;55 compact apex guard;56 thrower grip;57 thrower release;58 victim lift;59 victim impact head LEFT;60 knockdown launch;61 falling head LEFT;62 planted-hand get-up;63 wake guard. Do not change or add these actions. Hair must follow each existing head angle, including lifted and lying figures.\nNo background, shadows, floor, effects, props, opponents, text, labels, grid or watermark. Transparent background. Targeted consistent hair-only edit, keeping this exact production atlas."
+    ],
+    "input_roles": [
+      {
+        "path": "assets/art/characters/09-reston/animation-airborne.png",
+        "role": "edit target; original airborne/throw/knockdown poses retained"
+      },
+      {
+        "path": "assets/art/characters/09-reston/atlas-v4.png",
+        "role": "approved short-buzz-cap visual reference"
+      }
+    ],
+    "frame_labels": [
+      "neutral-anchor",
+      "air-punch-anticipation",
+      "air-punch-active",
+      "air-punch-retract",
+      "air-kick-anticipation",
+      "air-kick-active",
+      "air-kick-retract",
+      "air-apex-guard",
+      "thrower-contact",
+      "thrower-release",
+      "victim-lifted",
+      "victim-impact-head-left",
+      "knockdown-launch",
+      "knockdown-fall-head-left",
+      "get-up",
+      "wake-guard"
+    ],
+    "sha256": "b22af9ea2ad8a6e72fad6987fc2e0400e7bb76e01bb344a61e41002ae5a1dc87"
+  },
+  "processing": "Direct built-in output copied unchanged. Native pipeline performs only deterministic silhouette isolation, fixed normalization, nearest-neighbor resize, palette quantization and SNES encoding. Old v3 master is retained.",
+  "validation": {
+    "extractor": "tools/fighter_assets.py::extract_atlas",
+    "alpha_threshold": 200,
+    "figures": 16,
+    "canvas": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_range": [
+      0,
+      255
+    ]
+  }
+}

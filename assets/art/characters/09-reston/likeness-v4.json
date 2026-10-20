@@ -1,0 +1,81 @@
+{
+  "schema": "abaqus-likeness-revision/v1",
+  "fighter_id": 9,
+  "slug": "reston",
+  "revision": "v4-short-buzz-cap",
+  "requested_change": "The user requested Reston's hair be a little fuller and less bald while matching the supplied photograph.",
+  "mode": "built-in image_gen edit",
+  "transparent_background": true,
+  "legacy": {
+    "file": "assets/art/characters/09-reston/atlas-v4.png",
+    "generated_source": "C:/Users/user/.codex/generated_images/01a156ae-1193-7dc2-919a-5a8c499f8988/exec-dcf2361e-09de-4274-a216-a9c7c4f499c3.png",
+    "full_prompt": "Use case: precise-object-edit.\nAsset: an existing original cartoon SNES fighting-game transparent 4x4 atlas.\nInput Image 1 is the EDIT TARGET: Reston's current sixteen-pose atlas. Input Image 2 is the user's PHOTO REFERENCE for his short hair only.\nPrimary request: correct the too-bald native sprite reading. In ALL SIXTEEN figures give Reston visibly fuller, continuous very short near-black buzz-cut hair over the TOP and CROWN, extending the frontal hairline a modest amount forward. Keep a mature moderately high/receding forehead, but eliminate the broad bare orange scalp dome and thin rear-only hair cap. The top and forward crown must be a clearly defined dark charcoal/near-black mass using the same dark tones as his beard; not wispy brown/gray texture that disappears when shrunk to 96x80. The reference man has short hair over his head, not a shaved bald top. Preserve his closely cropped sides and his mature broad face, brows, nose and full trimmed black beard. No long hair, bangs, pompadour, youthful low hairline or different face.\nSTRICT INVARIANTS: Edit ONLY scalp hair and its immediate hairline in each existing pose. Retain exact 1254x1254 RGBA transparent canvas, regular 4 columns x 4 rows, sixteen separate full-body figures, all positions, pose order, sizes, anatomy, body/head silhouette, foot baselines and right-facing orientation. Preserve copper-orange jacket, cream collar/cuffs, charcoal shirt, navy trousers, shoes and belt. Preserve existing outlines and original saturated 1993 arcade cartoon shading. Do not redraw or reinterpret limbs, clothes, poses, face or beard. Keep empty transparent gaps between every figure. Row4 col3 remains horizontal KO head left. No backgrounds, labels, grids, shadows, extra parts, effects, weapons, text or watermark.\nThe change must remain plainly visible at tiny SNES sprite resolution: a short dark cropped cap extending across the upper head rather than a bare forehead-to-crown dome. Keep all sixteen poses and canvas exactly as supplied. Genuine transparent background.",
+    "input_roles": [
+      {
+        "path": "assets/art/characters/09-reston/atlas.png",
+        "role": "edit target; v3 master retained unchanged",
+        "sha256": "da764ee7b65773065d5f05d32b6f5e20e3f3b3d18c5012006c33d83f0fdde622"
+      },
+      {
+        "path": "C:/Users/user/.t3/userdata/attachments/52a10d60-8bd7-44e8-88be-c4667e065c96-66d5a037-0af9-4aee-baff-547f1c5a2641.png",
+        "role": "user-provided short-hair likeness reference; no photograph pixels composited into sprites",
+        "sha256": "8c50b173ee29b605348cb354158ba97e1bddfaaec373372b0a40b77a03c6bccb"
+      }
+    ],
+    "sha256": "3ad4d55b83e780de1d48de5a026bc42fad3b08527eb9704d8a6ffc6f03a4afb0"
+  },
+  "animation_provenance_files": [
+    "assets/art/characters/09-reston/animation-v4.json",
+    "assets/art/characters/09-reston/animation-airborne-v4.json"
+  ],
+  "invariants": [
+    "All four v3 atlases and their metadata remain untouched.",
+    "Exactly sixteen separately extracted figures per v4 atlas; original pose order and costume retained.",
+    "Palette bytes, physical scale, per-atlas source normalization, 96x80 canvas and baseline78 are locked to v0.8.",
+    "Only original built-in imagegen artwork is used; no commercial sprites or manual raster hair painting."
+  ],
+  "processing": "Direct built-in outputs copied unchanged; existing deterministic native extraction/normalization/quantization/encoding only.",
+  "review": {
+    "mode": "agent source and native-resolution visual review",
+    "scope": "Fuller very short near-black buzz cap across the crown with a mature high forehead, existing beard, face, costume and all64 poses.",
+    "human_approval": false
+  },
+  "native_preview": {
+    "frames": 64,
+    "physical_scale": 0.2280130293159609,
+    "palette_sha256": "0fa34b1d226a993d001bd2df79e0b4f69827c214668446fe7b3b19bb3c64aa1d",
+    "indexed_frame_hashes_sha256": "7fe74ce9c1d771203191606d8f9ea05398eebb2507f7ab7dc538c766c274bfda",
+    "max_frame_size": [
+      80,
+      73
+    ],
+    "canvas": [
+      96,
+      80
+    ],
+    "safe_area": [
+      94,
+      77
+    ],
+    "baseline_y": 78,
+    "ppu_verification": "Native source conversion review only at authoring; exact-ROM emulator evidence is recorded separately after integration."
+  },
+  "atlas_validation": {
+    "alpha_threshold": 200,
+    "canvas": [
+      1254,
+      1254
+    ],
+    "mode": "RGBA",
+    "alpha_range": [
+      0,
+      255
+    ],
+    "figures_per_atlas": 16,
+    "atlas_count": 4
+  },
+  "provenance_hashes": {
+    "assets/art/characters/09-reston/animation-v4.json": "10eff3270c1c7d5df69b8fce7bc76b780b5dce251be5663a266d80e8bc74a535",
+    "assets/art/characters/09-reston/animation-airborne-v4.json": "ea7173ca3c4f48c8a9da97a6e96ba6ed4caf1b18e5285c7f468bdac45dfeb088"
+  }
+}

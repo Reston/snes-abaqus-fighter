@@ -39,6 +39,13 @@ atlas once against its upright anchor. Apply the same physical scale to all
 shrinking the old roster. Preserve and compare all old native frame hashes and
 palette bytes. The source atlas may not silently recolor the old 48 frames.
 
+An intentional likeness replacement uses a separate, reviewed per-fighter
+native revision contract. Reston's v4 hair correction keeps the v0.8 palette,
+physical scale and per-atlas normalization, retains every old master, and pins
+all 64 replacement frame hashes. The immutable v0.8 baseline continues to
+protect all 64 frames of the other eleven fighters. This explicit art revision
+does not waive the preservation rule for an animation-range expansion.
+
 The preview becomes 6144x80 RGBA. Eight 30,720-byte banks hold each fighter:
 `fighterXX.bin`, then `fighterXXb.bin` through `fighterXXh.bin`. VRAM/OAM pages,
 thirty 16x16 pieces per actor and the one-3,840-byte-upload-per-vblank budget

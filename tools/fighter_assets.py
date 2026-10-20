@@ -6,6 +6,7 @@ not paint substitute anatomy or recolor a shared body to stand in for a fighter.
 from array import array
 import hashlib
 import json
+import math
 from pathlib import Path
 from PIL import Image, ImageOps
 
@@ -54,6 +55,24 @@ ANIMATION_POSES = MOTION_POSES + ACTION_POSES + AIRBORNE_POSES
 ANIMATION_FRAME_COUNT = len(POSES) + len(ANIMATION_POSES)
 ANIMATION_BANK_COUNT = ANIMATION_FRAME_COUNT // 8
 ANIMATION_BANK_BYTES = 30720
+
+# The v0.8 roster baseline is an immutable review artifact.  It is deliberately
+# separate from assets/generated: a failed or partially completed generation
+# must never be able to make its own output the next compatibility baseline.
+NATIVE_BASELINE_PATH = 'assets/art/roster-baseline-v0.8.json'
+NATIVE_BASELINE_SHA256 = '386a430db966c7f5c843811d78d9e06043838d8893f166bdc58637ddde773bd5'
+
+# Art revisions are allowlisted by exact contract hash.  The empty hash is a
+# fail-closed placeholder until the reviewed Reston contract is supplied by
+# the art owner.  There is intentionally no CLI switch that bypasses this.
+NATIVE_REVISION_REGISTRY = {
+    9: {
+        'contract_file': 'assets/art/characters/09-reston/native-revision.json',
+        'contract_sha256': '9b45e7dcb253a485faa28fb3c287a01399728cfafc23e7808f3bbb3f3b972dbc',
+    },
+}
+REVISION_SOURCE_ROLES = ('legacy', 'motion', 'actions', 'airborne',
+                         'airborne_metadata')
 
 
 def extract_atlas(path, alpha_threshold=200, pose_names=None):
@@ -129,6 +148,42 @@ def _sha256(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def _native_frame_hashes(indices):
+    """Return ordered hashes for the 96x80 indexed frame planes."""
+    assert len(indices) == ANIMATION_FRAME_COUNT
+    assert all(len(frame) == FRAME_WIDTH * FRAME_HEIGHT for frame in indices)
+    return [hashlib.sha256(bytes(frame)).hexdigest() for frame in indices]
+
+
+def _frame_hash_summary(frame_hashes):
+    """Summarize ordered per-frame hashes without re-encoding tile banks."""
+    assert len(frame_hashes) == ANIMATION_FRAME_COUNT
+    assert all(isinstance(value, str) and len(value) == 64
+               for value in frame_hashes)
+    return hashlib.sha256(''.join(frame_hashes).encode('ascii')).hexdigest()
+
+
+def _palette_colors_from_bytes(data):
+    """Decode the exact sixteen-color SNES palette used by a revision."""
+    assert len(data) == 32, f'OBJ palette must contain sixteen little-endian colors: {len(data)}'
+    colors = []
+    for offset in range(0, len(data), 2):
+        value = int.from_bytes(data[offset:offset + 2], 'little')
+        colors.append(((value & 0x1f) << 3,
+                       ((value >> 5) & 0x1f) << 3,
+                       ((value >> 10) & 0x1f) << 3))
+    return colors
+
+
+def _assert_same_scale(actual, expected, label):
+    assert isinstance(actual, (int, float)) and math.isfinite(float(actual)), \
+        f'{label}: invalid uniform scale {actual!r}'
+    assert isinstance(expected, (int, float)) and math.isfinite(float(expected)), \
+        f'{label}: invalid baseline uniform scale {expected!r}'
+    assert float(actual) == float(expected), \
+        f'{label}: uniform scale changed ({actual!r} != {expected!r})'
+
+
 def _palette_bytes(colors):
     """Encode RGB colors as the little-endian SNES 15-bit OBJ palette."""
     data = bytearray()
@@ -174,6 +229,19 @@ def _normalize_animation(figures, reference_height):
     assert normalized[0].height >= max(1, round(reference_height * .96)), \
         f'animation neutral normalized to {normalized[0].height}, expected about {reference_height}'
     return normalized, source_scale
+
+
+def _normalize_animation_locked(figures, source_scale, label):
+    """Normalize an approved revision with its prior atlas scale exactly."""
+    assert figures and figures[0].height > 0
+    assert isinstance(source_scale, (int, float)) and math.isfinite(float(source_scale)) \
+        and source_scale > 0, f'{label}: invalid locked source normalization'
+    normalized = []
+    for figure in figures:
+        size = (max(1, round(figure.width * source_scale)),
+                max(1, round(figure.height * source_scale)))
+        normalized.append(figure.resize(size, Image.Resampling.NEAREST))
+    return normalized
 
 
 def _fit_uniform_scale(figures, desired_scale):
@@ -240,49 +308,252 @@ def _assert_native_animation_cycles(slug, indices):
             f'{slug}: native {name} cycle has only {unique} distinct indexed frames'
 
 
-def _load_v05_baseline(root, output):
-    """Load the committed 48-frame artifacts before writing the new manifest.
-
-    The first 48 frames and OBJ palette are a compatibility boundary.  Keeping
-    this check against the checked-in v0.5.1 manifest/binaries catches a subtle
-    palette-order or rounding change even when a regenerated image still looks
-    plausible.  It is loaded once, before any output is replaced.
-    """
-    manifest_path = output / 'character-manifest.json'
-    if not manifest_path.exists():
-        manifest_path = root / 'assets/generated/character-manifest.json'
-    assert manifest_path.exists(), (
-        'v0.5.1 character-manifest.json is required to preserve base-48 hashes; '
-        'restore the committed generated assets before preparing the roster')
-    baseline = json.loads(manifest_path.read_text())
-    assert len(baseline) == len(SLUGS), 'v0.5.1 roster baseline must contain twelve fighters'
+def _load_native_baseline(root):
+    """Load the reviewed v0.8 64-frame baseline before any output writes."""
+    path = root / NATIVE_BASELINE_PATH
+    assert path.exists(), f'Missing immutable native roster baseline: {path}'
+    actual_hash = _sha256(path)
+    assert actual_hash == NATIVE_BASELINE_SHA256, \
+        f'Native roster baseline hash changed ({actual_hash} != {NATIVE_BASELINE_SHA256})'
+    data = json.loads(path.read_text())
+    assert data.get('schema') == 1 and data.get('kind') == 'native-roster-baseline', \
+        f'Unsupported native roster baseline schema: {path}'
+    assert data.get('version') == 'v0.8', f'Unexpected native roster baseline version: {data.get("version")}'
+    assert data.get('frame_count') == ANIMATION_FRAME_COUNT
+    assert data.get('frame_bytes') == FRAME_WIDTH * FRAME_HEIGHT
+    assert data.get('encoded_bank_count') == ANIMATION_BANK_COUNT
+    assert data.get('encoded_bank_bytes') == ANIMATION_BANK_COUNT * ANIMATION_BANK_BYTES
+    assert data.get('frame_canvas') == [FRAME_WIDTH, FRAME_HEIGHT]
+    assert data.get('fit_bounds') == [FIT_WIDTH, FIT_HEIGHT]
+    assert data.get('baseline_y') == BASELINE_Y
+    entries = data.get('fighters')
+    assert isinstance(entries, list) and len(entries) == len(SLUGS), \
+        'Native roster baseline must contain twelve fighters'
     result = {}
-    generated = root / 'assets/generated'
-    for fighter, entry in enumerate(baseline):
-        assert entry.get('id') == fighter, f'v0.5.1 baseline fighter order changed at {fighter}'
-        assert entry.get('frame_count', 0) >= 48 and len(entry.get('frames', [])) >= 48, \
-            f'v0.5.1 baseline for fighter {fighter} has fewer than 48 frames'
-        palette_path = generated / f'fighter{fighter:02}_pal.bin'
-        assert palette_path.exists(), f'Missing v0.5.1 palette baseline: {palette_path}'
+    for fighter, entry in enumerate(entries):
+        assert entry.get('id') == fighter and entry.get('slug') == SLUGS[fighter], \
+            f'Native roster baseline fighter order changed at {fighter}'
+        assert entry.get('frame_count') == ANIMATION_FRAME_COUNT
+        assert entry.get('frame_bytes') == FRAME_WIDTH * FRAME_HEIGHT
+        assert entry.get('frame_canvas') == [FRAME_WIDTH, FRAME_HEIGHT]
+        assert entry.get('fit_bounds') == [FIT_WIDTH, FIT_HEIGHT]
+        assert entry.get('baseline_y') == BASELINE_Y
+        frame_hashes = entry.get('frame_hashes')
+        assert isinstance(frame_hashes, list) and len(frame_hashes) == ANIMATION_FRAME_COUNT
+        assert all(isinstance(value, str) and len(value) == 64
+                   for value in frame_hashes)
+        assert _frame_hash_summary(frame_hashes) == entry.get('frame_hashes_sha256'), \
+            f'{SLUGS[fighter]}: invalid baseline frame-hash summary'
+        palette_hex = entry.get('palette_hex')
+        assert isinstance(palette_hex, str) and len(palette_hex) == 64
+        palette_bytes = bytes.fromhex(palette_hex)
+        assert hashlib.sha256(palette_bytes).hexdigest() == entry.get('palette_sha256'), \
+            f'{SLUGS[fighter]}: invalid baseline palette hash'
+        assert len(palette_bytes) == 32
+        source_files = entry.get('source_files')
+        assert isinstance(source_files, dict) and set(source_files) == set(REVISION_SOURCE_ROLES), \
+            f'{SLUGS[fighter]}: baseline source-role set changed'
+        for role in REVISION_SOURCE_ROLES:
+            descriptor = source_files[role]
+            assert isinstance(descriptor, dict)
+            assert isinstance(descriptor.get('file'), str)
+            assert isinstance(descriptor.get('sha256'), str) and len(descriptor['sha256']) == 64
+            if role != 'airborne_metadata':
+                scale = descriptor.get('source_normalization')
+                assert isinstance(scale, (int, float)) and math.isfinite(float(scale)) and scale > 0
         result[fighter] = {
-            'frames': entry['frames'][:48],
-            'palette_bytes': palette_path.read_bytes(),
+            'id': fighter,
+            'slug': SLUGS[fighter],
+            'source_files': source_files,
+            'frame_hashes': frame_hashes,
+            'frame_hashes_sha256': entry['frame_hashes_sha256'],
+            'palette_hex': palette_hex,
+            'palette_bytes': palette_bytes,
+            'palette_sha256': entry['palette_sha256'],
+            'uniform_scale': entry.get('uniform_scale'),
+            'physical_scale': entry.get('physical_scale'),
+            'encoded_bank_sha256': entry.get('encoded_bank_sha256'),
         }
+        _assert_same_scale(entry.get('uniform_scale'), entry.get('physical_scale'),
+                           f'{SLUGS[fighter]} baseline')
     return result
 
 
-def _assert_v05_legacy(slug, fighter, indices, palette, baseline):
-    """Assert that every old native pixel hash and palette byte is unchanged."""
+def _resolve_checked_source(root, directory, descriptor, role):
+    """Resolve a contract source and reject paths outside its fighter folder."""
+    assert isinstance(descriptor, dict), f'{role}: source descriptor must be an object'
+    relative = descriptor.get('file')
+    expected_hash = descriptor.get('sha256')
+    assert isinstance(relative, str) and relative and not Path(relative).is_absolute(), \
+        f'{role}: source file must be a relative repository path'
+    assert isinstance(expected_hash, str) and len(expected_hash) == 64, \
+        f'{role}: source SHA256 is required'
+    path = (root / relative).resolve()
+    try:
+        path.relative_to(directory.resolve())
+    except ValueError:
+        raise AssertionError(f'{role}: source escapes fighter directory: {relative}')
+    assert path.exists() and path.is_file(), f'{role}: missing source file: {path}'
+    actual_hash = _sha256(path)
+    assert actual_hash == expected_hash, \
+        f'{role}: source hash changed ({actual_hash} != {expected_hash})'
+    return path
+
+
+def _assert_baseline_sources(root, directory, baseline_entry, slug):
+    """Require every selected v0.8 source/provenance file to be unchanged."""
+    for role in REVISION_SOURCE_ROLES:
+        descriptor = baseline_entry['source_files'][role]
+        path = _resolve_checked_source(root, directory, descriptor,
+                                       f'{slug} baseline {role}')
+        expected = (root / descriptor['file']).resolve()
+        assert path == expected, f'{slug}: baseline source path changed for {role}'
+
+
+def _validate_revision_native_block(block, baseline_entry, label):
+    """Validate old/expected native values carried by a revision contract."""
+    assert isinstance(block, dict), f'{label}: native block must be an object'
+    frame_hashes = block.get('frame_hashes')
+    assert isinstance(frame_hashes, list) and len(frame_hashes) == ANIMATION_FRAME_COUNT
+    assert all(isinstance(value, str) and len(value) == 64 for value in frame_hashes)
+    summary = block.get('frame_hashes_sha256')
+    assert _frame_hash_summary(frame_hashes) == summary, f'{label}: invalid frame hash summary'
+    palette_hex = block.get('palette_hex')
+    assert isinstance(palette_hex, str) and len(palette_hex) == 64
+    palette = bytes.fromhex(palette_hex)
+    assert len(palette) == 32
+    palette_hash = block.get('palette_sha256')
+    assert hashlib.sha256(palette).hexdigest() == palette_hash, \
+        f'{label}: invalid palette hash'
+    scale = block.get('uniform_scale')
+    _assert_same_scale(scale, block.get('physical_scale', scale), f'{label} scale')
+    return {'frame_hashes': frame_hashes, 'frame_hashes_sha256': summary,
+            'palette_hex': palette_hex, 'palette_bytes': palette,
+            'palette_sha256': palette_hash, 'uniform_scale': scale,
+            'physical_scale': block.get('physical_scale', scale)}
+
+
+def _load_revision_sources(root, fighter, slug, directory, baseline_entry):
+    """Resolve the sole allowlisted four-atlas revision, if present."""
+    registry = NATIVE_REVISION_REGISTRY.get(fighter)
+    candidates = [directory / f'{stem}-v4{suffix}'
+                  for stem, suffix in (('atlas', '.png'),
+                                       ('animation-motion', '.png'),
+                                       ('animation-actions', '.png'),
+                                       ('animation-airborne', '.png'),
+                                       ('animation-airborne', '.json'))]
+    contract_path = root / registry['contract_file'] if registry else None
+    if not registry:
+        assert not any(path.exists() for path in candidates), \
+            f'{slug}: versioned art exists but this fighter has no approved revision slot'
+        return None
+    if not contract_path.exists() and not any(path.exists() for path in candidates):
+        return None
+    assert registry and contract_path, f'{slug}: art revisions are not registered'
+    assert contract_path.exists(), f'{slug}: versioned art exists without native-revision.json'
+    approved_hash = registry.get('contract_sha256')
+    actual_contract_hash = _sha256(contract_path)
+    assert approved_hash, f'{slug}: native art revision is present but unapproved'
+    assert actual_contract_hash == approved_hash, \
+        f'{slug}: native revision contract hash is not allowlisted'
+    contract = json.loads(contract_path.read_text())
+    assert contract.get('schema') == 1
+    assert contract.get('fighter_id') == fighter and contract.get('slug') == slug
+    assert contract.get('baseline', {}).get('file') == NATIVE_BASELINE_PATH
+    assert contract.get('baseline', {}).get('sha256') == NATIVE_BASELINE_SHA256
+    provenance_files = contract.get('provenance_files')
+    expected_provenance_names = (
+        'likeness-v4.json', 'animation-v4.json', 'animation-airborne-v4.json')
+    assert isinstance(provenance_files, list) and len(provenance_files) == 3, \
+        f'{slug}: revision must pin exactly three provenance descriptors'
+    provenance_paths = []
+    folder = str(directory.relative_to(root)).replace('\\', '/')
+    for descriptor, expected_name in zip(provenance_files, expected_provenance_names):
+        assert descriptor.get('file') == f'{folder}/{expected_name}', \
+            f'{slug}: provenance path must be the reviewed same-folder {expected_name}'
+        provenance_paths.append(_resolve_checked_source(
+            root, directory, descriptor, f'{slug} provenance {expected_name}'))
+    old_sources = contract.get('old_sources')
+    new_sources = contract.get('new_sources')
+    assert isinstance(old_sources, dict) and set(old_sources) == set(REVISION_SOURCE_ROLES), \
+        f'{slug}: revision old_sources must cover every atlas and provenance file'
+    assert isinstance(new_sources, dict) and set(new_sources) == set(REVISION_SOURCE_ROLES), \
+        f'{slug}: revision new_sources must cover every atlas and provenance file'
+    resolved_old = {}
+    resolved_new = {}
+    expected_new_names = {
+        'legacy': 'atlas-v4.png',
+        'motion': 'animation-motion-v4.png',
+        'actions': 'animation-actions-v4.png',
+        'airborne': 'animation-airborne-v4.png',
+        'airborne_metadata': 'animation-airborne-v4.json',
+    }
+    for role in REVISION_SOURCE_ROLES:
+        old = old_sources[role]
+        expected_old = baseline_entry['source_files'][role]
+        assert old.get('file') == expected_old['file'] and old.get('sha256') == expected_old['sha256'], \
+            f'{slug}: revision old {role} source does not match immutable baseline'
+        resolved_old[role] = _resolve_checked_source(root, directory, old, f'{slug} old {role}')
+        assert Path(new_sources[role].get('file', '')).name == expected_new_names[role], \
+            f'{slug}: revision {role} must use the versioned v4 source name'
+        resolved_new[role] = _resolve_checked_source(root, directory, new_sources[role],
+                                                     f'{slug} new {role}')
+    old_native = _validate_revision_native_block(
+        contract.get('old_native'), baseline_entry, f'{slug} old_native')
+    assert old_native['frame_hashes'] == baseline_entry['frame_hashes']
+    assert old_native['palette_hex'] == baseline_entry['palette_hex']
+    _assert_same_scale(old_native['uniform_scale'], baseline_entry['uniform_scale'],
+                       f'{slug} old_native')
+    expected_native = _validate_revision_native_block(
+        contract.get('expected_native'), baseline_entry, f'{slug} expected_native')
+    assert expected_native['palette_hex'] == baseline_entry['palette_hex'], \
+        f'{slug}: revised palette must remain the immutable v0.8 OBJ palette'
+    _assert_same_scale(expected_native['uniform_scale'], baseline_entry['uniform_scale'],
+                       f'{slug} expected_native')
+    scales = contract.get('source_normalization')
+    assert isinstance(scales, dict) and set(scales) == set(REVISION_SOURCE_ROLES) - {'airborne_metadata'}
+    for role in ('legacy', 'motion', 'actions', 'airborne'):
+        expected_scale = baseline_entry['source_files'][role]['source_normalization']
+        _assert_same_scale(scales.get(role), expected_scale,
+                           f'{slug} {role} source normalization')
+    return {
+        'contract_file': str(contract_path.relative_to(root)).replace('\\', '/'),
+        'contract_sha256': actual_contract_hash,
+        'contract': contract,
+        'old_sources': resolved_old,
+        'new_sources': resolved_new,
+        'old_native': old_native,
+        'expected_native': expected_native,
+        'source_normalization': scales,
+        'provenance_files': provenance_paths,
+    }
+
+
+def _assert_native_baseline64(slug, fighter, indices, palette, uniform_scale, baseline):
+    """Assert that an unchanged fighter still matches every v0.8 native frame."""
     expected = baseline[fighter]
-    assert len(indices) >= 48
-    for index, ids in enumerate(indices[:48]):
-        digest = hashlib.sha256(bytes(ids)).hexdigest()
-        old = expected['frames'][index]
-        old_hash = old.get('native_hash') or old.get('pixels_sha256') or old.get('hash')
-        assert digest == old_hash, \
-            f'{slug}: base frame {index} native hash changed ({digest} != {old_hash})'
-    assert _palette_bytes(palette) == expected['palette_bytes'], \
-        f'{slug}: base-48 OBJ palette bytes changed; preserve v0.5.1 palette ordering'
+    frame_hashes = _native_frame_hashes(indices)
+    assert frame_hashes == expected['frame_hashes'], \
+        f'{slug}: one or more native 64-frame hashes changed'
+    assert _frame_hash_summary(frame_hashes) == expected['frame_hashes_sha256']
+    palette_bytes = _palette_bytes(palette)
+    assert palette_bytes == expected['palette_bytes'], \
+        f'{slug}: v0.8 OBJ palette bytes changed'
+    _assert_same_scale(uniform_scale, expected['uniform_scale'], f'{slug} physical scale')
+
+
+def _assert_reviewed_revision(slug, fighter, indices, palette, uniform_scale, revision):
+    """Assert Reston output equals the reviewed native revision contract."""
+    expected = revision['expected_native']
+    frame_hashes = _native_frame_hashes(indices)
+    assert frame_hashes == expected['frame_hashes'], \
+        f'{slug}: native revision frame hashes differ from reviewed expectations'
+    assert _frame_hash_summary(frame_hashes) == expected['frame_hashes_sha256']
+    palette_bytes = _palette_bytes(palette)
+    assert palette_bytes == expected['palette_bytes'], \
+        f'{slug}: native revision palette differs from reviewed palette'
+    _assert_same_scale(uniform_scale, expected['uniform_scale'],
+                       f'{slug} reviewed physical scale')
 
 
 def validate_airborne_atlas(root, fighter):
@@ -303,11 +574,23 @@ def validate_airborne_atlas(root, fighter):
         assert 0 <= fighter_id < len(SLUGS), f'fighter id out of range: {fighter_id}'
     slug = SLUGS[fighter_id]
     directory = root / f'assets/art/characters/{fighter_id:02}-{slug}'
-    source = directory / 'atlas.png'
-    motion_source = directory / 'animation-motion.png'
-    action_source = directory / 'animation-actions.png'
-    airborne_source = directory / 'animation-airborne.png'
-    airborne_metadata_source = directory / 'animation-airborne.json'
+    baseline = _load_native_baseline(root)
+    baseline_entry = baseline[fighter_id]
+    _assert_baseline_sources(root, directory, baseline_entry, slug)
+    revision = _load_revision_sources(root, fighter_id, slug, directory,
+                                      baseline_entry)
+    if revision:
+        source = revision['new_sources']['legacy']
+        motion_source = revision['new_sources']['motion']
+        action_source = revision['new_sources']['actions']
+        airborne_source = revision['new_sources']['airborne']
+        airborne_metadata_source = revision['new_sources']['airborne_metadata']
+    else:
+        source = directory / 'atlas.png'
+        motion_source = directory / 'animation-motion.png'
+        action_source = directory / 'animation-actions.png'
+        airborne_source = directory / 'animation-airborne.png'
+        airborne_metadata_source = directory / 'animation-airborne.json'
     for required in (source, motion_source, action_source, airborne_source):
         assert required.exists(), f'Missing airborne validation source: {required}'
     assert airborne_metadata_source.exists(), \
@@ -320,19 +603,43 @@ def validate_airborne_atlas(root, fighter):
     airborne_figures, airborne_metadata = extract_atlas(
         airborne_source, pose_names=AIRBORNE_POSES)
     reference_height = figures[0].height
-    motion_figures, _ = _normalize_animation(motion_figures, reference_height)
-    action_figures, _ = _normalize_animation(action_figures, reference_height)
+    if revision:
+        scales = revision['source_normalization']
+        motion_source_scale = scales['motion']
+        action_source_scale = scales['actions']
+        source_scale = scales['airborne']
+        motion_figures = _normalize_animation_locked(
+            motion_figures, motion_source_scale, f'{slug}/motion-v4')
+        action_figures = _normalize_animation_locked(
+            action_figures, action_source_scale, f'{slug}/actions-v4')
+        airborne_figures = _normalize_animation_locked(
+            airborne_figures, source_scale, f'{slug}/airborne-v4')
+        uniform_scale = baseline_entry['uniform_scale']
+    else:
+        motion_figures, motion_source_scale = _normalize_animation(
+            motion_figures, reference_height)
+        action_figures, action_source_scale = _normalize_animation(
+            action_figures, reference_height)
+        uniform_scale = _fit_uniform_scale(
+            figures + motion_figures + action_figures,
+            HEIGHTS[fighter_id] / reference_height)
+        airborne_figures, source_scale = _normalize_animation(
+            airborne_figures, reference_height)
     base_figures = figures + motion_figures + action_figures
-    uniform_scale = _fit_uniform_scale(
-        base_figures, HEIGHTS[fighter_id] / reference_height)
-    airborne_figures, source_scale = _normalize_animation(
-        airborne_figures, reference_height)
     all_figures = base_figures + airborne_figures
     assert len(all_figures) == ANIMATION_FRAME_COUNT
     _assert_animation_cycles(slug, all_figures)
 
     overflow = []
     frames = []
+    if revision:
+        for index, figure in enumerate(base_figures):
+            size = (max(1, round(figure.width * uniform_scale)),
+                    max(1, round(figure.height * uniform_scale)))
+            if size[0] > FIT_WIDTH or size[1] > FIT_HEIGHT:
+                overflow.append({'global_index': index,
+                                 'required_native_size': list(size),
+                                 'fit_bounds': [FIT_WIDTH, FIT_HEIGHT]})
     for offset, (figure, item) in enumerate(zip(airborne_figures, airborne_metadata)):
         index = 48 + offset
         size = (max(1, round(figure.width * uniform_scale)),
@@ -363,6 +670,8 @@ def validate_airborne_atlas(root, fighter):
         'source_scale': source_scale,
         'physical_scale': uniform_scale,
         'uniform_scale': uniform_scale,
+        'palette_sha256': (revision['expected_native']['palette_sha256']
+                           if revision else baseline_entry['palette_sha256']),
         'frame_count': 16,
         'frames': frames,
     }
@@ -371,24 +680,38 @@ def validate_airborne_atlas(root, fighter):
 def prepare_roster(root, output):
     """Prepare twelve fighters with the stable 48 plus 16 combat frames.
 
-    Frames 0..47 retain the v0.5.1 source order, physical scale, palette and
-    indexed pixels.  ``animation-airborne.png`` supplies frames 48..63.  Its
-    first upright-neutral figure is source-normalized once to the legacy idle
-    height; the already-selected base-48 scale is then applied to every new
-    figure without any per-pose fitting or old-frame shrink.
+    The immutable v0.8 baseline keeps all 64 frames, palettes and scales stable.
+    Only an exact, reviewed fighter-09 contract may select versioned masters;
+    its replacement still uses the old normalization, palette and physical
+    scale. ``animation-airborne.png`` supplies frames 48..63. Its first
+    upright-neutral figure is source-normalized once to the legacy idle height;
+    the selected base scale is then applied to every new figure without any
+    per-pose fitting or old-frame shrink.
     """
     root = root.resolve()
+    baseline = _load_native_baseline(root)
     output.mkdir(parents=True, exist_ok=True)
-    baseline = _load_v05_baseline(root, output)
     fighters = []
     manifests = []
+    pending_images = []
     for fighter, slug in enumerate(SLUGS):
         directory = root / f'assets/art/characters/{fighter:02}-{slug}'
-        source = directory / 'atlas.png'
-        motion_source = directory / 'animation-motion.png'
-        action_source = directory / 'animation-actions.png'
-        airborne_source = directory / 'animation-airborne.png'
-        airborne_metadata_source = directory / 'animation-airborne.json'
+        baseline_entry = baseline[fighter]
+        _assert_baseline_sources(root, directory, baseline_entry, slug)
+        revision = _load_revision_sources(root, fighter, slug, directory,
+                                           baseline_entry)
+        if revision:
+            source = revision['new_sources']['legacy']
+            motion_source = revision['new_sources']['motion']
+            action_source = revision['new_sources']['actions']
+            airborne_source = revision['new_sources']['airborne']
+            airborne_metadata_source = revision['new_sources']['airborne_metadata']
+        else:
+            source = directory / 'atlas.png'
+            motion_source = directory / 'animation-motion.png'
+            action_source = directory / 'animation-actions.png'
+            airborne_source = directory / 'animation-airborne.png'
+            airborne_metadata_source = directory / 'animation-airborne.json'
         assert source.exists(), f'Missing individual fighter master: {source}'
         assert motion_source.exists(), f'Missing motion animation atlas: {motion_source}'
         assert action_source.exists(), f'Missing action animation atlas: {action_source}'
@@ -410,20 +733,45 @@ def prepare_roster(root, output):
             airborne_source, pose_names=AIRBORNE_POSES)
         assert len(airborne_figures) == 16 and len(airborne_metadata) == 16
 
-        # Base-48 normalization and fitting are unchanged.  The new source is
-        # normalized exactly once using frame 48's upright neutral as its
-        # anchor, with the legacy idle height as the target source unit.
+        # Base-48 normalization and fitting are unchanged for the normal path.
+        # An approved art revision instead uses the old per-atlas conversions
+        # and physical scale exactly, so a taller replacement hair silhouette
+        # cannot resize or recolor the established body.
         reference_height = figures[0].height
-        motion_figures, motion_source_scale = _normalize_animation(
-            motion_figures, reference_height)
-        action_figures, action_source_scale = _normalize_animation(
-            action_figures, reference_height)
-        desired_scale = HEIGHTS[fighter] / reference_height
         base_figures = figures + motion_figures + action_figures
+        if revision:
+            source_normalization = revision['source_normalization']
+            motion_source_scale = source_normalization['motion']
+            action_source_scale = source_normalization['actions']
+            airborne_source_scale = source_normalization['airborne']
+            motion_figures = _normalize_animation_locked(
+                motion_figures, motion_source_scale, f'{slug}/motion-v4')
+            action_figures = _normalize_animation_locked(
+                action_figures, action_source_scale, f'{slug}/actions-v4')
+            airborne_figures = _normalize_animation_locked(
+                airborne_figures, airborne_source_scale, f'{slug}/airborne-v4')
+            base_figures = figures + motion_figures + action_figures
+            uniform_scale = baseline_entry['uniform_scale']
+        else:
+            motion_figures, motion_source_scale = _normalize_animation(
+                motion_figures, reference_height)
+            action_figures, action_source_scale = _normalize_animation(
+                action_figures, reference_height)
+            desired_scale = HEIGHTS[fighter] / reference_height
+            motion_figures = motion_figures
+            action_figures = action_figures
+            base_figures = figures + motion_figures + action_figures
+            uniform_scale = _fit_uniform_scale(base_figures, desired_scale)
+            airborne_figures, airborne_source_scale = _normalize_animation(
+                airborne_figures, reference_height)
         assert len(base_figures) == ANIMATION_FRAME_COUNT - len(AIRBORNE_POSES)
-        uniform_scale = _fit_uniform_scale(base_figures, desired_scale)
-        airborne_figures, airborne_source_scale = _normalize_animation(
-            airborne_figures, reference_height)
+        if revision:
+            for index, figure in enumerate(base_figures):
+                size = (max(1, round(figure.width * uniform_scale)),
+                        max(1, round(figure.height * uniform_scale)))
+                assert size[0] <= FIT_WIDTH and size[1] <= FIT_HEIGHT, (
+                    f'{slug}/frame{index} exceeds locked physical scale '
+                    f'{uniform_scale}: {size}; repair the revised art')
         all_figures = base_figures + airborne_figures
         assert len(all_figures) == ANIMATION_FRAME_COUNT
         _assert_animation_cycles(slug, all_figures)
@@ -496,18 +844,27 @@ def prepare_roster(root, output):
         opaque = [pixel[:3] for frame in base_frames
                   for pixel in frame.get_flattened_data() if pixel[3]]
         assert opaque, f'{slug}: no opaque base animation pixels after normalization'
-        strip = Image.new('RGB', (len(opaque), 1))
-        strip.putdata(opaque)
-        palette = strip.quantize(colors=15, method=Image.Quantize.MEDIANCUT).getpalette()[:45]
-        colors = sorted({tuple((channel >> 3) << 3 for channel in palette[i:i + 3])
-                         for i in range(0, 45, 3)}, key=lambda c: (sum(c), c))
-        assert colors, f'{slug}: palette quantization returned no colors'
-        source_color_count = len({pixel for pixel in opaque})
-        assert source_color_count >= 3, \
-            f'{slug}: source art has only {source_color_count} opaque RGB colors'
-        assert len(colors) >= 3, \
-            f'{slug}: native palette collapsed to {len(colors)} unique colors'
-        colors += [colors[-1]] * (15 - len(colors))
+        if revision:
+            # A reviewed likeness edit is quantized into the old palette.  It
+            # may add hair pixels but cannot reorder or recolor the fighter's
+            # established fifteen OBJ colors.
+            locked_palette = revision['expected_native']['palette_bytes']
+            assert locked_palette == baseline_entry['palette_bytes']
+            colors = _palette_colors_from_bytes(locked_palette)[1:]
+            assert len(colors) == 15
+        else:
+            strip = Image.new('RGB', (len(opaque), 1))
+            strip.putdata(opaque)
+            palette = strip.quantize(colors=15, method=Image.Quantize.MEDIANCUT).getpalette()[:45]
+            colors = sorted({tuple((channel >> 3) << 3 for channel in palette[i:i + 3])
+                             for i in range(0, 45, 3)}, key=lambda c: (sum(c), c))
+            assert colors, f'{slug}: palette quantization returned no colors'
+            source_color_count = len({pixel for pixel in opaque})
+            assert source_color_count >= 3, \
+                f'{slug}: source art has only {source_color_count} opaque RGB colors'
+            assert len(colors) >= 3, \
+                f'{slug}: native palette collapsed to {len(colors)} unique colors'
+            colors += [colors[-1]] * (15 - len(colors))
         quantizer = Image.new('P', (1, 1))
         quantizer.putpalette(sum((list(c) for c in colors), []) + list(colors[-1]) * 241)
         indices = []
@@ -534,12 +891,17 @@ def prepare_roster(root, output):
             metadata[index]['native_hash'] = frame_hash
             metadata[index]['hash'] = frame_hash
 
-        _assert_v05_legacy(slug, fighter, indices, [(0, 0, 0)] + colors,
-                           baseline)
+        fighter_palette = [(0, 0, 0)] + colors
+        if revision:
+            _assert_reviewed_revision(slug, fighter, indices, fighter_palette,
+                                      uniform_scale, revision)
+        else:
+            _assert_native_baseline64(slug, fighter, indices, fighter_palette,
+                                      uniform_scale, baseline)
         _assert_native_animation_cycles(slug, indices)
         assert len({bytes(ids) for ids in indices[:16]}) >= 14, \
             f'{slug}: legacy key poses were duplicated'
-        preview.save(output / f'fighter{fighter:02}.png')
+        pending_images.append((output / f'fighter{fighter:02}.png', preview))
 
         # Reuse the same illustrated face and costume for the select portrait.
         idle = figures[0]
@@ -555,13 +917,12 @@ def prepare_roster(root, output):
         backdrop.paste(portrait, (0, 0), portrait.getchannel('A'))
         backdrop_large = Image.new('RGB', (64, 80), colors[0])
         backdrop_large.paste(portrait_large, (0, 0), portrait_large.getchannel('A'))
-        backdrop.save(output / f'portrait{fighter:02}.png')
-        backdrop_large.save(output / f'portrait{fighter:02}-large.png')
+        pending_images.append((output / f'portrait{fighter:02}.png', backdrop))
+        pending_images.append((output / f'portrait{fighter:02}-large.png', backdrop_large))
 
         effective_standing_height = metadata[0]['effective_height']
         effective_height = max(item['effective_height'] for item in metadata)
         effective_width = max(item['effective_width'] for item in metadata)
-        fighter_palette = [(0, 0, 0)] + colors
         fighters.append({
             'indices': indices,
             'palette': fighter_palette,
@@ -575,7 +936,7 @@ def prepare_roster(root, output):
             'portrait_face': backdrop,
             'portrait_face_large': backdrop_large,
         })
-        manifests.append({
+        manifest_entry = {
             'id': fighter,
             'name': slug,
             'source': str(source.relative_to(root)).replace('\\', '/'),
@@ -617,9 +978,28 @@ def prepare_roster(root, output):
             'baseline_y': BASELINE_Y,
             'palette': fighter_palette,
             'frames': metadata,
-        })
+        }
+        if revision:
+            manifest_entry['revision'] = {
+                'contract_file': revision['contract_file'],
+                'contract_sha256': revision['contract_sha256'],
+                'baseline_native64_sha256': revision['old_native']['frame_hashes_sha256'],
+                'expected_native64_sha256': revision['expected_native']['frame_hashes_sha256'],
+                'replacement_sources': {
+                    role: {
+                        'file': str(path.relative_to(root)).replace('\\', '/'),
+                        'sha256': _sha256(path),
+                    }
+                    for role, path in revision['new_sources'].items()
+                },
+            }
+        manifests.append(manifest_entry)
         print(f'Prepared {slug}: 64 individual frames, 15-color OBJ palette', flush=True)
     assert len({tuple(f['indices'][0]) for f in fighters}) == 12, \
         'Roster must have twelve distinct idle drawings'
+    # All twelve native frames, palettes, bounds and cycle checks have passed
+    # before any review image or generated manifest is published.
+    for path, image in pending_images:
+        image.save(path)
     (output / 'character-manifest.json').write_text(json.dumps(manifests, indent=2) + '\n')
     return fighters

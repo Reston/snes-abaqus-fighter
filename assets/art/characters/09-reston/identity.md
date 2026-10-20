@@ -1,7 +1,8 @@
 # Reston — José David Ordoñez
 
 Native roster slot: `09`
-Asset: `atlas.png`
+Selected identity source: `atlas-v4.png`, selected by `native-revision.json`.
+The original v3 `atlas.png` and all three v3 animation sheets remain unchanged.
 Atlas layout: 4 columns × 4 rows, 16 full-body poses, all facing right.
 
 Reston is the medium-heavy forward-pressure fighter. His silhouette is broad and grounded, with heavy shoulders, a compact guard, large fists, and strong forward motion. The updated user photograph guides his very short dark buzz cut across the crown and top, moderately receding high hairline, and dense cropped sides. The scalp has subtle thinning rather than a bare bald dome. His broad oval face with full cheeks, broad straight nose, thick dark brows, calm normal eyes, firm mouth, and full neatly trimmed black beard and moustache remain. These cues are simplified into readable small-SNES cartoon shapes and repeat across all 16 poses.
@@ -27,4 +28,18 @@ Pose order is fixed for the parent importer:
 15. horizontal lying KO, head left
 16. forward shoulder lunge
 
-The v3 hair correction is an original cartoon edit generated with built-in image_gen and preserved true alpha. `likeness-v3.json` records the full prompt, source roles, provenance, hash, and extractor validation. The former v2 master remains at `atlas-v2.png` with its earlier provenance in `likeness-v2.json`. It is not a digitized photograph and contains no commercial game sprite, logo, projectile, or background. The native importer extracts the 16 figures and reduces them to the shared 96×80 canvas at one physical scale.
+The v4 correction gives Reston a fuller, very short near-black buzz cap over
+the top and crown, with a modestly forward hairline and his mature high
+forehead retained. It applies consistently to all 64 poses. Beard, broad face,
+costume, pose order and source layout remain intact. The native palette,
+physical scale and per-atlas normalization are locked to the v0.8 baseline.
+
+`likeness-v4.json`, `animation-v4.json` and `animation-airborne-v4.json` retain
+the full built-in imagegen prompts, source roles, output hashes and extraction
+validation. The native revision contract pins the reviewed replacement frame
+hashes and preserved palette/scale. This is an agent-reviewed original cartoon
+edit with true alpha, not a digitized photograph or human likeness approval.
+There are no commercial sprites, logos, effects or backgrounds in the atlases.
+
+Historical v3 provenance remains in `likeness-v3.json`; the earlier v2 master
+and provenance remain at `atlas-v2.png` and `likeness-v2.json`.

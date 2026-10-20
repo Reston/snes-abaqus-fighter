@@ -36,10 +36,88 @@ new frame must fit at that existing scale. A drawing over 94×77 raises an
 actionable error naming the fighter, frame and measured size; the pipeline
 never globally shrinks the old roster to hide an oversized new drawing.
 
-Before replacing generated output, `prepare_roster()` loads the committed
-v0.5.1 manifest and OBJ palette binaries. It compares all 48 old indexed-pixel
-hashes and palette bytes for every fighter. A changed legacy hash or palette
-ordering is a hard failure.
+Before replacing generated output, `prepare_roster()` loads the immutable
+`assets/art/roster-baseline-v0.8.json` and verifies its pinned SHA-256. It
+compares all 64 old indexed-pixel hashes, the exact OBJ palette bytes and the
+uniform physical scale for every fighter. A changed source, native frame,
+palette ordering or scale is a hard failure; the generated manifest is never
+used as its own baseline.
+
+## Reviewed art revisions
+
+An intentional likeness revision is an explicit, per-fighter contract. The
+only registered slot is fighter 09 (Reston), and the resolver remains closed
+until its contract SHA-256 is added to the registry in
+`tools/fighter_assets.py`. There is no command-line bypass. All other fighters
+reject versioned alternate masters and must continue to match the complete
+64-frame baseline.
+
+The adjacent `native-revision.json` contract uses this schema:
+
+```json
+{
+  "schema": 1,
+  "fighter_id": 9,
+  "slug": "reston",
+  "baseline": {
+    "file": "assets/art/roster-baseline-v0.8.json",
+    "sha256": "<pinned baseline SHA-256>"
+  },
+  "old_sources": {
+    "legacy": {"file": ".../atlas.png", "sha256": "..."},
+    "motion": {"file": ".../animation-motion.png", "sha256": "..."},
+    "actions": {"file": ".../animation-actions.png", "sha256": "..."},
+    "airborne": {"file": ".../animation-airborne.png", "sha256": "..."},
+    "airborne_metadata": {"file": ".../animation-airborne.json", "sha256": "..."}
+  },
+  "new_sources": {
+    "legacy": {"file": ".../atlas-v4.png", "sha256": "..."},
+    "motion": {"file": ".../animation-motion-v4.png", "sha256": "..."},
+    "actions": {"file": ".../animation-actions-v4.png", "sha256": "..."},
+    "airborne": {"file": ".../animation-airborne-v4.png", "sha256": "..."},
+    "airborne_metadata": {"file": ".../animation-airborne-v4.json", "sha256": "..."}
+  },
+  "provenance_files": [
+    {"file": ".../likeness-v4.json", "sha256": "..."},
+    {"file": ".../animation-v4.json", "sha256": "..."},
+    {"file": ".../animation-airborne-v4.json", "sha256": "..."}
+  ],
+  "source_normalization": {
+    "legacy": 1.0,
+    "motion": "<old manifest source scale>",
+    "actions": "<old manifest source scale>",
+    "airborne": "<old manifest source scale>"
+  },
+  "old_native": {
+    "frame_hashes": ["<64 ordered SHA-256 values>"],
+    "frame_hashes_sha256": "<SHA of concatenated ASCII hashes>",
+    "palette_hex": "<exact 32-byte SNES palette>",
+    "palette_sha256": "...",
+    "uniform_scale": "<old scale>",
+    "physical_scale": "<old scale>"
+  },
+  "expected_native": {
+    "frame_hashes": ["<64 reviewed indexed-frame SHA-256 values>"],
+    "frame_hashes_sha256": "<SHA of concatenated ASCII hashes>",
+    "palette_hex": "<unchanged baseline palette>",
+    "palette_sha256": "...",
+    "uniform_scale": "<locked old scale>",
+    "physical_scale": "<locked old scale>"
+  }
+}
+```
+
+Each indexed frame hash covers one 96×80 (7,680-byte) plane. The summary hash
+covers the 64 frame hashes in order. The encoded eight banks remain 245,760
+bytes; the revision guard does not re-encode them to establish approval.
+The contract must match the immutable old sources and old native block, and
+the generated replacement must match its reviewed expected block. Previews,
+portraits and the manifest are held in memory until all twelve fighters pass,
+then published together. `provenance_files` is exactly the three same-folder
+JSON records `likeness-v4.json`, `animation-v4.json` and
+`animation-airborne-v4.json`; each path and SHA-256 is checked before any
+replacement atlas is extracted, so the full prompt/provenance set cannot drift
+independently of the approved source hash.
 
 ## Palette, metadata and review output
 

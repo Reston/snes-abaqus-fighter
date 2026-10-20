@@ -1,0 +1,107 @@
+{
+  "schema": "abaqus-animation-source/v1",
+  "revision": "reston-v4-hair-only",
+  "fighter": "09-reston",
+  "character": "Jose David Ordonez",
+  "generation": {
+    "mode": "built-in imagegen edit",
+    "tool": "image_gen.imagegen",
+    "transparent_background": true,
+    "output_size": [1254, 1254],
+    "edit_scope": "scalp hair and hairline only; all body, face, beard, costume, pose, scale and cell placement preserved"
+  },
+  "identity_reference": {
+    "path": "assets/art/characters/09-reston/atlas-v4.png",
+    "role": "approved Reston v4 fuller very-short buzz-cap identity and hair reference",
+    "sha256": "3ad4d55b83e780de1d48de5a026bc42fad3b08527eb9704d8a6ffc6f03a4afb0"
+  },
+  "preserved_sources": {
+    "legacy_master": {
+      "path": "assets/art/characters/09-reston/atlas.png",
+      "role": "selected legacy identity master; unchanged",
+      "sha256": "da764ee7b65773065d5f05d32b6f5e20e3f3b3d18c5012006c33d83f0fdde622"
+    },
+    "motion_original": {
+      "path": "assets/art/characters/09-reston/animation-motion.png",
+      "role": "original motion edit target; retained unchanged",
+      "sha256": "38d0e74b9ada46fce88606d51de8217b30e6dc5db11dbf9505768792ffee269f"
+    },
+    "actions_original": {
+      "path": "assets/art/characters/09-reston/animation-actions.png",
+      "role": "original action edit target; retained unchanged",
+      "sha256": "5da2291d9cbc40f09253bfcaaddb62bce1975874f005fe00dca46256b095f3cf"
+    },
+    "airborne_original": {
+      "path": "assets/art/characters/09-reston/animation-airborne.png",
+      "role": "airborne/throw/knockdown source; unchanged by this revision",
+      "sha256": "a2bfe67f6f864a86ef8620d7961d9fe8a62e26f1b83d48ddfa3a0f02a7dffd0e"
+    },
+    "airborne_metadata": {
+      "path": "assets/art/characters/09-reston/animation-airborne.json",
+      "role": "airborne provenance; unchanged by this revision",
+      "sha256": "89054a6afdfcf61210bd72d3ed15883d054bead68737416db3a0c4a35659671d"
+    }
+  },
+  "atlases": {
+    "motion": {
+      "path": "assets/art/characters/09-reston/animation-motion-v4.png",
+      "frames": "16-31",
+      "generated_source": "C:/Users/user/.codex/generated_images/01a1596a-d5e1-7611-8ef2-e7f9767db37e/exec-aad2530a-9375-4815-9ed9-de5ba768fb01.png",
+      "sha256": "12b9335e1690b4da9f32aecbe570a230cc167ac0cb430f2e85c0788adeaa6298",
+      "full_prompt": [
+        "Use case: identity-preserve.",
+        "Asset type: native SNES fighter animation source atlas.",
+        "Input images: Image 1 is the EDIT TARGET, Reston's existing animation-motion.png with exactly 16 motion/transition poses in fixed cells and order. Image 2 is the IDENTITY/HAIR REFERENCE, the approved Reston atlas-v4.png.",
+        "Edit only the hair/scalp treatment in the existing motion atlas. Give Reston a fuller, very short dense near-black buzz cap: dark coverage from both temples over the crown, with a modest forward hairline, while retaining the mature high forehead. Apply the same hair silhouette consistently to all 16 poses.",
+        "Preserve the same middle-aged broad-faced bearded Reston fighter in every existing cell. Preserve the exact 1254x1254 square canvas, 4x4 cell grid, cell placement, pose order, figure positions, scale, feet baseline and transparent margins.",
+        "Retain the existing copper/orange jacket with cream trim, black shirt, navy pants and shoes; hair must read as dense near-black/dark charcoal at native resolution.",
+        "Change only scalp hair coverage and hairline. Preserve every body pixel, face structure, beard, eyes, nose, jaw, costume, limbs, hands, shoes, shadows, pose anatomy, and all frame spacing. Preserve true RGBA transparency and 16 clearly separated connected figures. Keep the hair short and close-cropped.",
+        "Avoid bangs, pompadour, long hair, gray/brown wispy strands, facial redesign, younger hairline, effects, labels, text, watermark, pose drift, repainting of clothing or body, altered canvas/grid, inconsistent per-pose hair, bald crescent, exposed crown, halo, extra characters or background. Output a transparent RGBA atlas suitable for deterministic 4x4 extraction."
+      ],
+      "input_roles": [
+        {"path": "assets/art/characters/09-reston/animation-motion.png", "role": "edit target; original 16 motion/transition poses and layout"},
+        {"path": "assets/art/characters/09-reston/atlas-v4.png", "role": "approved identity/hair reference; not a pose replacement"}
+      ]
+    },
+    "actions": {
+      "path": "assets/art/characters/09-reston/animation-actions-v4.png",
+      "frames": "32-47",
+      "generated_source": "C:/Users/user/.codex/generated_images/01a1596a-d5e1-7611-8ef2-e7f9767db37e/exec-8c0f6ef5-7d1e-46cd-960b-91e1b52ba59f.png",
+      "sha256": "af50bdef2057d2afc4b45cd1f2fdabe79bc0c17e6af65386ed852f16209e2dd6",
+      "full_prompt": [
+        "Use case: identity-preserve.",
+        "Asset type: native SNES fighter animation source atlas.",
+        "Input images: Image 1 is the EDIT TARGET, Reston's existing animation-actions.png with exactly 16 action poses in fixed cells and order. Image 2 is the IDENTITY/HAIR REFERENCE, the approved Reston atlas-v4.png.",
+        "Edit only the hair/scalp treatment in the existing action atlas. Give Reston a fuller, very short dense near-black buzz cap: dark coverage from both temples over the crown, with a modest forward hairline, while retaining the mature high forehead. Apply the same hair silhouette consistently to all 16 poses.",
+        "Preserve the same middle-aged broad-faced bearded Reston fighter in every existing cell. Preserve the exact 1254x1254 square canvas, 4x4 cell grid, cell placement, pose order, figure positions, scale, feet baseline and transparent margins.",
+        "Retain the existing copper/orange jacket with cream trim, black shirt, navy pants and shoes; hair must read as dense near-black/dark charcoal at native resolution.",
+        "Change only scalp hair coverage and hairline. Preserve every body pixel, face structure, beard, eyes, nose, jaw, costume, limbs, hands, shoes, shadows, pose anatomy, and all frame spacing. Preserve true RGBA transparency and 16 clearly separated connected figures. Keep the hair short and close-cropped.",
+        "Avoid bangs, pompadour, long hair, gray/brown wispy strands, facial redesign, younger hairline, effects, labels, text, watermark, pose drift, repainting of clothing or body, altered canvas/grid, inconsistent per-pose hair, bald crescent, exposed crown, halo, extra characters or background. Output a transparent RGBA atlas suitable for deterministic 4x4 extraction."
+      ],
+      "input_roles": [
+        {"path": "assets/art/characters/09-reston/animation-actions.png", "role": "edit target; original 16 action poses and layout"},
+        {"path": "assets/art/characters/09-reston/atlas-v4.png", "role": "approved identity/hair reference; not a pose replacement"}
+      ]
+    }
+  },
+  "frame_labels": {
+    "motion": ["breath-neutral", "breath-inhale", "breath-exhale", "breath-return", "walk-forward-contact", "walk-forward-pass", "walk-forward-rear-pass", "walk-forward-opposite", "walk-back-contact", "walk-back-pass", "walk-back-lead-pass", "walk-back-opposite", "crouch-halfway", "jump-anticipation", "jump-extension", "landing-compression"],
+    "actions": ["ready-guard", "jab-retract", "cross-windup", "cross-retract", "kick-windup", "kick-retract", "sweep-windup", "sweep-recovery", "block-impact", "hurt-recovery", "special-charge", "cast-recovery", "uppercut-anticipation", "uppercut-recovery", "victory-transition", "knockout-fall"]
+  },
+  "validation": {
+    "validated_at": "2026-10-20",
+    "tool": "tools/fighter_assets.py::extract_atlas",
+    "interpreter": ".tools/python/python.exe",
+    "alpha_threshold": 200,
+    "motion_figures": 16,
+    "action_figures": 16,
+    "motion_canvas": [1254, 1254],
+    "action_canvas": [1254, 1254],
+    "motion_mode": "RGBA",
+    "action_mode": "RGBA",
+    "motion_alpha_range": [0, 255],
+    "action_alpha_range": [0, 255],
+    "motion_opaque_pixels": [43431, 43518, 41919, 42649, 44035, 40156, 37981, 41640, 39583, 39590, 30977, 39418, 34667, 33554, 36109, 34753],
+    "action_opaque_pixels": [43695, 43483, 46107, 41826, 38923, 35681, 40128, 31505, 39610, 40764, 41745, 38294, 33730, 35619, 39255, 32720]
+  }
+}
