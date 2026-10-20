@@ -30,13 +30,13 @@ throw/down/wake state.
 The home, fighter-select and arena menus follow a clean royal-navy, white and
 gold direction with a single cursor, original project glyphs, the four-by-three
 roster grid and one large selected portrait. Profile power, speed and family
-statistics are no longer the visual focus of selection. The v0.7.1 technical
-snapshot passes all five native suites against ROM SHA
+statistics are no longer the visual focus of selection. The historical v0.7.1
+technical snapshot passed all five native suites against ROM SHA
 `64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022`: 2,595
 gameplay, 18,085 roster, 215 presentation, 999 focused-input and 8,143 stage
 checks. The independent bsnes smoke and bounded 28,800-frame run also pass.
-The package passes 6,153 technical audit checks. Human likeness and balance, listening, controller,
-real-console and branding gates remain open.
+The historical package passed 6,153 technical audit checks. Human likeness and
+balance, listening, controller, real-console and branding gates remain open.
 
 The authored art remains inside the existing 96x80, fifteen-color OBJ and
 reserved-interface palette contracts. Native health and energy bars keep their
@@ -68,7 +68,7 @@ the verified v0.7.0 baseline ROM; the archive passes 214 technical checks and re
 packaging produces identical bytes. This source evidence does not
 close the public, human, independent full-combat/soak or real-console gates.
 
-## v0.7.1 verified technical feedback timing
+## v0.7.1 historical technical feedback timing
 
 The source freeze is commit `6d756749dbc3fa176e26217f2f59525c9af360d8`, tree
 `fa15fea48b5cc2a09608da199810db885872e434`; its canonical ROM is
@@ -81,9 +81,38 @@ frozen tick. KO cards use quiet-first/panel-second timing. Training Select
 applies the round reset immediately, then uses three frozen reset frames to
 flush HUD, banner and footer state without rebuilding unchanged labels. Intro
 ticks 109, 108 and 107 are quiet, `GET READY`, and HUD. Fresh export, native
-endurance and independent smoke evidence pass, as does the package audit. Human
-likeness/balance, listening, controller, real-console and branding gates remain
-open.
+endurance and independent smoke evidence passed, as did the package audit.
+Human likeness/balance, listening, controller, real-console and branding gates
+remained open.
+
+## v0.8.0 verified pause-guide direction
+
+The verified v0.8.0 source-freeze snapshot keeps the twelve fighter masters,
+costumes, palettes, 64-frame atlases, native proportions and all stage masters
+unchanged. Reston's residual hair/likeness review remains open; this snapshot
+does not turn that review into an approval.
+
+The pause overlay follows the established minimal royal-navy, white and gold
+language and uses opaque original glyphs 256-383 in the reserved interface
+window `$5000-$57FF`. It adds a Normal card plus Controls and Specials pages,
+with one simple page cursor rather than a new statistics panel. The Specials
+page shows both live fighter names, special names and family types. The Controls
+page shows the six-button layout, throws, uppercut, confirmed heavier attacks,
+the true twelve-tick quarter-circle motion and 32-energy cost. The selected
+profile portrait remains at `$4A00`; the BG2 map remains at `$5800`.
+
+Guide rows 5-27 publish over three paused ticks and yield to actor uploads.
+Pause camera shake is frozen, and the first quiet paused tick after contact
+settles the actual health display. Training adds four clear dummy states:
+Stand, Guard High, Guard Low and Jump. Guard holds relative back without
+retreat, while the Jump dummy automatically jumps again after landing. The
+fighter art is unchanged; visual review of the guide and Reston's remaining
+likeness issue is still required.
+
+The six native suites pass on the verified ROM SHA with 30,641 checks. Matching
+compatibility, matchup, bounded independent-combat, endurance and fresh-source
+evidence also pass. The offline package passes 7,471 technical audit checks; human likeness,
+balance, listening, controller, real-console and branding review remain open.
 
 ## v0.4.1 Reston hair correction
 

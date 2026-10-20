@@ -1,7 +1,7 @@
 # Independent-engine compatibility
 
-The current v0.7.1 smoke and bounded combat reports both pass against cartridge
-SHA256 `64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022`.
+The current v0.8.0 smoke and bounded combat reports both pass against cartridge
+SHA256 `53ef44225c83bd52ee0eea3910ba74ade5ba949af7aa7440c74d959812c13090`.
 
 The pinned smoke check has the bounded scope `independent-engine smoke, stage
 ambient/effects freeze, synchronized low-wave, neutral600frame cadence`. It is
@@ -87,6 +87,12 @@ also runs on that native test core. These scopes do not establish an
 independent full ordered-pair sweep, independent per-mode hour, human balance,
 listening quality, controller hardware or physical-console compatibility.
 The [public-release gates](PUBLIC-RELEASE.md) remain the readiness criteria.
+
+The v0.8 pause move guides, dummy choices, opposite-direction navigation and
+contact-to-pause HUD regression have a separate native Snes9x suite,
+`tools/test_training.py`. The two bsnes reports above retain their recorded
+smoke/combat scope; they do not claim a full second-engine guide or Training
+matrix.
 
 The primary source and license references for this specific core are the
 [libretro/bsnes2014 source repository](https://github.com/libretro/bsnes2014/tree/libretro),

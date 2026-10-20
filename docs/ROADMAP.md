@@ -4,7 +4,7 @@ The active public-release target and evidence gates are in
 [PUBLIC-RELEASE.md](PUBLIC-RELEASE.md). Treat this roadmap as the work backlog;
 the release gates decide when the public candidate is actually ready.
 
-The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass set the cartoon arcade direction. v0.3 introduced twelve individual sixteen-pose atlases and likeness correction. v0.4 standardized the 96x80 physical scale and rebuilt the presentation. v0.5.0 adds animation, simpler menus and buffered inputs. v0.5.1 tightens contact, hit-confirm and combo rules, clears live-fight instructions, adds result scores and corrects emulator scaling. The v0.6.0 source integration adds the final airborne, throw, knockdown and wake frame range and combat flow. The v0.6.1 CPU-correctness pass has four-suite and pinned compatibility evidence on one ROM SHA, with public gates still open. v0.7.0 stage/effect integration has a verified ROM, a 214-check archive audit and reproducible development packaging. v0.7.1 native technical evidence is complete on one ROM SHA; the offline package passes 6,153 technical audit checks; human likeness/balance, listening, controller, console and branding gates remain open.
+The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass set the cartoon arcade direction. v0.3 introduced twelve individual sixteen-pose atlases and likeness correction. v0.4 standardized the 96x80 physical scale and rebuilt the presentation. v0.5.0 adds animation, simpler menus and buffered inputs. v0.5.1 tightens contact, hit-confirm and combo rules, clears live-fight instructions, adds result scores and corrects emulator scaling. The v0.6.0 source integration adds the final airborne, throw, knockdown and wake frame range and combat flow. The v0.6.1 CPU-correctness pass has four-suite and pinned compatibility evidence on one ROM SHA, with public gates still open. v0.7.0 stage/effect integration has a verified ROM, a 214-check archive audit and reproducible development packaging. The historical v0.7.1 package has a 6,153-check audit. v0.8.0 is the current verified pause-guide and Training snapshot; its six native suites and broader technical evidence pass, while the 7,471-check archive audit passes and human likeness/balance, listening, controller, console and branding gates remain open.
 
 ## v0.5 baseline
 
@@ -142,7 +142,7 @@ The phase captures changed `17/18/18`, `13/16/13` and `8/8/8` pixels across
 the three stages (phases 1-3); the synchronized two-wave check peaked at 28
 tiles / 14 sprites with `STAT77` `0x01` and overflow mask `0xC0` clear.
 
-## v0.7.1 verified technical snapshot
+## v0.7.1 historical technical snapshot
 
 Source freeze commit:
 `6d756749dbc3fa176e26217f2f59525c9af360d8`; tree:
@@ -175,8 +175,46 @@ four-by-three grid with at most three pulses per fighter; all 720 timeout,
 loaded-ID, stage and cadence checks remain unchanged, so this is test overhead
 only.
 
-The package passes 6,153 technical audit checks. Human likeness and balance, listening, controller,
-real-console and branding gates remain open; no public-readiness claim is made.
+The package passed 6,153 technical audit checks. Human likeness and balance,
+listening, controller, real-console and branding gates remained open; no
+public-readiness claim was made.
+
+## v0.8.0 verified pause-guide and Training snapshot
+
+The verified source-freeze snapshot is commit
+`48f3ccb539492247b83f4360a50bdc020bad9dd6`, tree
+`e571aca40019b868bf224bb619390f5ea651434e`. Its 4 MiB ROM is SHA256
+`53ef44225c83bd52ee0eea3910ba74ade5ba949af7aa7440c74d959812c13090`, header
+`6A21`.
+
+- Pause now cycles Normal, Controls and Specials with Select. Left/Right toggles
+  guide pages. Start resumes first; otherwise B returns to the roster, A resumes
+  and Select cycles pages. The Specials page reads both live fighter names, special names and
+  family types. The Controls page documents the six buttons, throws, uppercut,
+  confirmed heavier attacks, the true twelve-tick quarter-circle and 32-energy
+  cost.
+- Training pause Up/Down cycles Stand, Guard High, Guard Low and Jump. Guard
+  holds relative back without retreat, and the Jump dummy automatically jumps
+  again after landing. Live Select resets the round while preserving the dummy choice. A new
+  Training match starts at Stand. Pause camera shake freezes and the first quiet
+  paused tick after contact settles the actual HP bar.
+- The guide uses original opaque glyphs 256-383 in VRAM `$5000-$57FF`, leaves
+  the portrait at `$4A00` and the BG2 map at `$5800`, and publishes rows 5-27
+  over three paused ticks while yielding to actor DMA. Fighter assets and the
+  Fighter/Wave layout remain unchanged. Trace fields 119-122 expose pause page,
+  guide build stage, dummy mode and guide dirty state after the unchanged
+  fields 0-118.
+- `tools/test_training.py` is the sixth required `Test.cmd` suite. All six
+  reports pass on the exact ROM SHA with 30,641 checks: 2,595 gameplay, 18,081
+  roster, 215 presentation, 997 focused-input, 8,131 stage and 622 Training.
+  Matching compatibility, matchup, bounded independent-combat, endurance and
+  fresh-source evidence also pass. The training host enables
+  `snes9x_up_down_allowed`; the offline `Controls::AllowLeftRight` preference
+  does not change existing user settings.
+
+Reston's remaining likeness review and human balance/listening/controller,
+real-console and branding review stay open. The offline package passes 7,471
+technical audit checks; this section records evidence, not public approval.
 
 ## Next combat pass
 
@@ -193,16 +231,13 @@ real-console and branding gates remain open; no public-readiness claim is made.
 
 ## Release-quality validation
 
-- Keep running the gameplay, roster, presentation, focused input and stage
-  suites after changes. The historical v0.7.0 reports share ROM SHA
-  `e44a739488bd549cfcffbe35bbb32bb5e71d9d2dce12bea6562ebd3dd0c15b84`, and the
-  separate pinned compatibility report matches it. The exact-ROM evidence gate
-  is satisfied; the focused stage extension is supplemental to the canonical
-  4,528 stage checks and brings the current stage report to 4,537. The v0.6.1
-  development ZIP retains its completed 202-check archive audit and repeated
-  packaging reproducibility. The v0.7 archive passes 214 technical checks and
-  repeated packaging produces identical ZIP bytes. Human playtesting, independent full-combat/soak, real-console and
-  public-release review remain open.
+- Keep running gameplay, roster, presentation, focused input, stage and
+  Training suites after changes. The verified v0.8.0 reports all match ROM SHA
+  `53ef44225c83bd52ee0eea3910ba74ade5ba949af7aa7440c74d959812c13090` and record
+  30,641 checks; matching compatibility, matchup, bounded independent-combat,
+  endurance and fresh-source evidence also pass. The offline package passes 7,471 technical audit checks. Human playtesting, real-console and
+  public-release review remain open. Use [PLAYTEST.md](PLAYTEST.md) for the
+  human review route.
 - Playtest with two controllers and several keyboard layouts, including keyboard rollover constraints, SOCD edge cases, motion buffering and hitstop inputs.
 - Profile worst-case combat frames, eight-bank animation uploads, resident
   audio effects, dynamic stage uploads, `STAT77`/OBJ overflow and vblank use

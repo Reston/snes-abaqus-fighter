@@ -81,3 +81,34 @@ with code-growth headroom; verify the actual linked result before acceptance.
   output through controller input. Recheck all old 48 frames and special timing.
 - Preserve the four exact-ROM suites, add air/throw/wake regressions, capture
   native animation for review and check cadence under two-actor combat load.
+
+## v0.8 pause and Training extension
+
+The v0.6 requirements above remain the animation contract. Current cartridge
+verification has six native suites: gameplay, roster, presentation, focused
+input, stage/effects, and Training/guide. All must pass against the same ROM.
+
+The guide uses the existing paused FIGHT screen. Simulation, actor animation,
+effect clocks, ambient timing and camera shake freeze; a queued actor upload
+may finish. A one-shot HUD refresh settles resolved contact HP/energy without
+advancing combat. Guide construction spans three paused ticks; its publication
+is one 1,472-byte BG2 transfer over rows 5-27, yielding to actor DMA. HUD rows
+0-4 remain separate. Closing, switching or abandoning a partly built guide
+must clear or supersede its pending region before publication.
+
+Opposite navigation axes resolve to neutral after combining both pads' held
+directions, then intersecting with input edges. START, A, B and SELECT retain
+their button priority. Training guard dummies hold position while using normal
+guard/contact rules. The jump dummy releases UP in the air to provide a fresh
+edge after landing. Quick reset preserves the dummy selection; a new match
+restores Stand.
+
+Stable TRACE words 0-118 and the Fighter/Wave layouts are unchanged. The UI
+extension appends these read-only words:
+
+| TRACE word | Meaning |
+| --- | --- |
+| 119 | Pause page: 0 normal, 1 controls, 2 special moves |
+| 120 | Guide build: 0 settled, 1-3 construction stage |
+| 121 | Training dummy: 0 Stand, 1 Guard High, 2 Guard Low, 3 Jump |
+| 122 | Guide dirty: 0 settled, 1 awaiting publication |

@@ -1,129 +1,120 @@
 # Abaqus: After Hours - player guide
 
-Extract the Windows release ZIP and double-click `Play.cmd`, or run `Play.cmd` from the project checkout. Click the Snes9x window, then press **Enter**.
+## Current version
+
+This manual describes the verified v0.8.0 technical snapshot. The matching ROM is the 4 MiB
+NTSC file `abaqus-after-hours.sfc`, SHA256 prefix
+`53ef44225c83bd52...12c13090`, header checksum `6A21`. Verify the complete
+SHA256 in the accompanying manifest before recording feedback for a build.
+Packaging and archive audit are pending the next package run. Human review of
+likeness, balance, audio, controllers, branding and real hardware is still open.
+
+## Launch
+
+From the project checkout, run `Play.cmd`, focus the Snes9x window and press
+**Enter**. You can also open `abaqus-after-hours.sfc` directly in Snes9x.
+For a quiet session, mute Snes9x or the system before launching; this does not
+change game input. Snes9x supports fullscreen with **Alt+Enter** and controller
+assignment through **Input -> Input Configuration**.
 
 ## Modes
 
-**Arcade Shift:** defeat the other 11 coworkers. Each match is best of three rounds. A victory advances to another opponent and location. Losing offers a continue. Finishing the ladder awards Office Champion.
+**Arcade Shift**: defeat the other eleven coworkers in best-of-three matches.
+Each victory advances to another opponent and location. A continue is offered
+after a loss; completing the ladder awards Office Champion.
 
-**Local Versus:** player one selects a fighter, then player two selects using either controller. Choose an arena and fight a best-of-three match. Both controllers use the same SNES button layout.
+**Local Versus**: choose a fighter for each player, choose an arena and play a
+best-of-three match. Both controller ports use the same six-button layout.
 
-**Training:** a passive opponent recovers health, the clock stays at 99, and you can practice moves. Press **Select** for a quick round reset. Press Start, then B, to change fighters.
+**Training**: practice against a configurable opponent with a clock fixed at 99.
+Press **Select** for a live round reset. Press **Start**, then **B**, to return
+to fighter select and change the matchup.
 
-On the home screen, L/R cycles three CPU difficulty levels. The default is level 2. Menus use a single cursor, a four-by-three roster grid and one large selected portrait; the fighter cards do not display a statistics panel.
+At home, **L/R** changes CPU difficulty between Easy, Normal and Hard. Easy is
+the recommended starting point. Normal and Hard defend and recover more often.
 
-Choose Easy to learn the controls. Normal and Hard react more often, crouch
-guard incoming low waves, and can jump after recovering from a knockdown.
-Opponents choose specials at ranges suited to their move family.
+## Fighters and stages
 
-The fighter select screen uses a four-by-three card layout. Left and right move across the roster; Up and Down move by four cards between rows and wrap around. The highlighted fighter's large profile portrait updates beside the cards. The arena menu uses the same row-based navigation for Las Condes, El Castillo and La Oficina.
+The roster has twelve illustrated coworkers:
+
+Damian, Ivo, Cristobal, Jose "Cote" Ignacio, Gonzalo "Negger" Reyes, David
+Ponce, Fernando Perez, Cristian, Ignacio "Mamariaga", Jose "Reston" Ordonez,
+Roxana and Rodrigo "Lars" Lartiga.
+
+Fighter select uses a four-by-three grid. **Left/Right** moves one card;
+**Up/Down** moves by four cards and wraps around. The selected fighter appears
+in the large portrait. Choose from the three arenas: **Las Condes**, **El
+Castillo** and **La Oficina**. In the arena menu, **Up/Down** chooses the row.
 
 ## Controls
 
 | SNES input | Included P1 keyboard | Action |
 | --- | --- | --- |
-| Left / right | Arrow keys | Move; hold away to guard |
-| Up | Up arrow | Jump; a short press buffers for a few simulation ticks |
-| Down | Down arrow | Crouch; combine with away to crouch guard |
+| Left / Right | Arrow keys | Move; hold away from the opponent to guard |
+| Up | Up arrow | Jump |
+| Down | Down arrow | Crouch; combine with away for low guard |
 | Y / X / L | A / S / D | Light / medium / heavy punch |
 | B / A / R | Z / X / C | Light / medium / heavy kick |
 | A | X | Confirm menus / resume pause |
 | B | Z | Back in menus / roster from pause |
 | Start | Enter | Confirm / pause |
-| Select | Shift | Quick reset in Training |
+| Select | Shift | Training reset / pause page cycle |
 
-Player two uses **I/J/K/L** for up/left/down/right, **numpad 7/8/9** for punches, **numpad 1/2/3** for kicks, **Space** for Start and **Q** for Select. Enable Num Lock. Any USB controller can be assigned through Snes9x's Input Configuration menu.
+Player two's included keyboard uses **I/J/K/L** for Up/Left/Down/Right,
+numpad **7/8/9** for punches, numpad **1/2/3** for kicks, **Space** for
+Start and **Q** for Select. In menus and pause, numpad **2** is A
+(confirm/resume) and numpad **1** is B (back/roster). Enable Num Lock. Assign
+controllers through Snes9x **Input Configuration**.
 
-When opposite directions are held on the same axis, the input is neutral for that axis. This keeps keyboard rollover and controller SOCD behavior predictable.
+Holding Left and Right together neutralizes that axis. A short attack or jump
+press remains buffered briefly, so use a clean press when checking a move.
+
+## Pause guide and Training dummy
+
+Press **Start** during a match to pause. **Start** resumes first from either
+controller. If Start is not pressed, **B** returns to the roster; otherwise
+**A** resumes and **Select** changes the guide page.
+
+The pause card has three pages:
+
+- **Normal** shows pause status and the current Training dummy mode.
+- **Controls** lists movement, guard, six-button attacks, throw, uppercut,
+  confirmed attacks and the pause shortcuts.
+- **Specials** shows the live P1/P2 names, each special and its family.
+
+**Select** advances Normal -> Controls -> Specials -> Normal. **Left/Right**
+also toggles the guide pages. The guide names the actual fighters in the
+match, rather than showing a generic roster description.
+
+In Training, pause on **Normal** and press **Up/Down** to choose **Stand**,
+**Guard High**, **Guard Low** or **Jump**. Guard holds relative back without
+retreating. The Jump dummy automatically jumps again after landing. A live **Select** reset keeps
+the chosen dummy mode; starting a new Training match returns the dummy to
+Stand.
 
 ## Fighting
 
-- Hold **away from your opponent** to block. Crouch while holding away to block low kicks; the crouched guard pose is used while the low guard is active. Jumping attacks beat crouch guard.
-- Perform your character special with a true quarter-circle motion: **Down -> Down + toward -> toward + Y or X** within the motion window. The accessible shortcut is **Down + Y/X**. **Down + away + Y/X is not a special.** It costs 32 meter; energy slowly regenerates and successful hits add more. The character guide lists the move families: projectile, advancing rush, low shockwave or rising strike.
+- Hold **away from the opponent** to block. Hold Down as well to crouch guard
+  low attacks. A jump-in attack can beat crouch guard.
 - Press **Down + L** for a rising uppercut.
-- Press **toward + L** at close range to throw through a guard. A successful
-  throw lifts the defender, launches them, and applies throw damage at ground
-  impact. If both players throw on the same contact snapshot, the throws tech
-  and neither player takes throw damage.
-- Attack and jump edges are buffered for six simulation ticks. A held Up input can carry a buffered jump through the landing transition, which makes short controller taps easier to perform without changing the jump arc.
-- A diagonal jump commits its horizontal momentum at takeoff. Releasing or reversing the direction in midair does not steer the jump; facing updates on landing. A neutral jump stays vertical.
-- A confirmed light or medium normal can cancel into the next heavier normal. A confirmed normal can also cancel into a character special during its cancel window. Press the next attack while the hit confirmation is active.
-- A guarded strike does not enable a hit-confirm cancel. Combo counts describe
-  uninterrupted hits; blocking or being interrupted breaks the chain. Receiving
-  a real hit clears old queued attacks and jumps, while new hitstop taps are
-  still sampled.
-- Punches and kicks also work while jumping. Air punches and air kicks each use
-  their own anticipation, active and recovery drawings. Crouching kicks are low
-  attacks.
+- Press **toward + L** at close range to throw through a guard. A throw applies
+  damage when the defender reaches the floor. Simultaneous throws tech.
+- Perform a special with **Down -> Down + toward -> toward + Y/X** within the
+  twelve-tick motion window. **Down + Y/X** is the quick shortcut. **Down +
+  away + Y/X** is not a special. A special costs 32 energy; energy regenerates
+  slowly and successful hits add more.
+- A confirmed light or medium normal can cancel into a heavier normal. A
+  confirmed normal can cancel into a special during its cancel window.
+- Punches and kicks work in the air. Crouching kicks are low attacks. Keep an
+  eye on the gold health bar and teal energy bar.
 
-Guard stun lasts eight simulation ticks and blocked impact moves the defender one pixel. A real hit starts with a two-pixel impact and continues through a longer recoil reaction. Blocked specials may deal at most one chip point, while an unblocked special deals its normal damage.
+Win two rounds to take the match. At timeout, the fighter with more health
+wins; a tie restarts the round without awarding a round win.
 
-Health is shown in gold. Energy is shown in teal. Win two rounds to take a match. At timeout, the fighter with more health wins; a tie restarts the round without awarding a round win.
+## Human review note
 
-The first fight intro shows a short control hint, then clears it to leave the
-floor visible. Match results include the actual P1/P2 round score.
-
-All twelve fighters have individual movement, jump arcs, normal attack speed and
-reach, throws and special tuning. Each fighter now has 64 animation frames in
-the shared 96x80 canvas: legacy key poses, motion transitions, action
-windup/active/recovery frames, dedicated airborne attacks, throw roles and
-knockdown/wake recovery. The original 48 frame pixels and palette stay locked;
-the physical scale and feet baseline stay fixed across the full set. See
-[CHARACTERS.md](CHARACTERS.md) for the roster and frame data.
-
-## Animation and timing
-
-Idle, forward gait, backward gait, crouch, jump and landing transitions use a
-per-fighter animation clock. Actions expose windup, active and recovery frames
-for normals, specials, guard, hurt, victory and knockout. Air normals select
-dedicated punch or kick cycles. Throws select separate attacker and victim
-roles, followed by lift, flight, floor, get-up and wake states. A downed player
-cannot be hit again during the recovery sequence; four invulnerability ticks
-start after waking. The final six ticks of the wake state accept one buffered
-attack or jump edge. The clock advances with simulation and distance travelled,
-and freezes during pause and hitstop so game and animation state remain aligned.
-
-Training restores health only while a fighter is free of hurt, knockdown and
-wake-invulnerability state. Select applies a complete round reset immediately,
-then uses three frozen reset frames to flush the HUD, banner and footer while
-clearing pending throw, downed and wake input state.
-
-During hitstop the fight state and animation clocks remain frozen. The first
-impact-freeze tick yields to the other actor upload; the HUD and any
-`COUNTER!`/`COMBO!` banner update together on the second frozen tick without
-changing damage, guard or combo result. A KO card uses the same rhythm: quiet
-first, panel second.
-
-## Stage motion and effects
-
-The v0.7 presentation pass adds subtle ambient motion into each location: leaf
-shimmer and glass reflection in Las Condes, string lights and
-window light at El Castillo, and monitor changes in La Oficina. Original strike,
-guard, high-wave and ground-wave effects also gain small phase changes. The
-motion runs during live combat and holds still during the intro, pause, hitstop
-and round-end screens, so it never changes controls, collisions or timing.
-The v0.7 stage/effect work is present and verified in the v0.7.0 baseline 4 MiB ROM.
-The v0.7.0 Windows development package passes 214 technical audit checks and
-repeated packaging produces identical ZIP bytes. Public-release review remains
-open.
-
-## v0.7.1 verified technical feel changes
-
-The verified CPU can open with a projectile or low wave at long neutral range
-when it has enough energy, while its established cadence and family spacing stay
-the same. A CPU does not issue another wave while its own wave is still active.
-After a counter or combo contact, the first frozen impact tick stays quiet for
-the other actor's upload, then the HUD and `COUNTER!`/`COMBO!` label update
-together on the second tick. Training Select resets the round immediately, then
-gives the interface three frozen reset frames to clear HUD, banner and footer
-state and resets the fight clock. Intro ticks 109, 108 and 107 are quiet,
-`GET READY`, and HUD. Damage, hit timing and combo rules do not change. The
-technical suites, independent smoke and native endurance pass; the offline
-package passes 6,153 technical audit checks. Human likeness/balance, listening, controller, real-console and branding
-gates remain open.
-
-## Emulator options
-
-The included configuration uses a sharp 4x image with no smoothing. Snes9x supports fullscreen with Alt+Enter. Its Input Configuration menu supports controllers and custom keyboard mappings. If you change controls, the emulator saves them in its own folder.
-
-The project ROM also runs independently of the launcher: open `abaqus-after-hours.sfc` in Snes9x. It is an NTSC image and needs no additional game files.
+Use the build's exact SHA when recording feedback. Check all twelve faces and
+both facing directions, idle/walk/attack proportions, guard/throw/special
+response, all three arenas, both controller ports, keyboard rollover and the
+music/effects mix. Record a repeatable example for any issue. A review result
+does not by itself grant likeness consent or public-release approval.

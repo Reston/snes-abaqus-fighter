@@ -7,11 +7,11 @@
     "pre_extracted_tools_reused": false,
     "build_intermediates_reused": false
   },
-  "source_commit": "6d756749dbc3fa176e26217f2f59525c9af360d8",
-  "source_tree": "fa15fea48b5cc2a09608da199810db885872e434",
-  "rom_sha256": "64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022",
-  "work_directory": "build/fresh-build/6d756749-jdwf_jhj",
-  "source_archive_sha256": "11bdeb36a724f5a707e45b291ecc3096ab3c3c083308ee9a3add608b9fea4cf9",
+  "source_commit": "48f3ccb539492247b83f4360a50bdc020bad9dd6",
+  "source_tree": "e571aca40019b868bf224bb619390f5ea651434e",
+  "rom_sha256": "53ef44225c83bd52ee0eea3910ba74ade5ba949af7aa7440c74d959812c13090",
+  "work_directory": "build/fresh-build/48f3ccb5-8std3fku",
+  "source_archive_sha256": "4111a06b01784b26a23c1f3a77fcb4da60c77be3ac7370aff3bdd4896a68b76a",
   "cached_archives_reused": [
     "snes9x.zip",
     "pvsneslib.zip",
@@ -28,7 +28,7 @@
     "sdk_tree_sha256": "0cd7a571b0a020394ead285b887c81b717c55c39540335abd8c7774b55bccb7b"
   },
   "build_exit_code": 0,
-  "build_log": "build/fresh-build/6d756749-jdwf_jhj/build.log",
+  "build_log": "build/fresh-build/48f3ccb5-8std3fku/build.log",
   "bootstrap_archives": [
     {
       "name": "snes9x.zip",
@@ -55,7 +55,7 @@
     "python": "3.12.10",
     "pillow": "13.0.0"
   },
-  "rebuilt_rom_sha256": "64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022",
+  "rebuilt_rom_sha256": "53ef44225c83bd52ee0eea3910ba74ade5ba949af7aa7440c74d959812c13090",
   "generated_assets": [
     {
       "file": "assets/generated/arenas.png",
@@ -79,7 +79,7 @@
     },
     {
       "file": "assets/generated/assets.h",
-      "sha256": "dce9d435d8e33d2babbe27a8579850d35e2329c84d3b8608e07345cc0fb472f0",
+      "sha256": "cbbd49a615a3e8f299bb9c6de73d012707f5a3cf307bf687e0e82b6a38ce4982",
       "comparison": "LF-normalized text"
     },
     {
@@ -1124,11 +1124,11 @@
     },
     {
       "file": "assets/generated/ui_tiles.bin",
-      "sha256": "09f289084189778b90dded28f5f89d5ed1ddb6c9d0d845be54fe937c4a25f44e",
+      "sha256": "4f59151f514c9d6894ac9b0f51e0134ac263c069551ff6f635dbed883a60ab2e",
       "comparison": "exact bytes"
     }
   ],
   "generated_assets_verified": 214,
   "symbols_equal_after_source_path_normalization": true,
-  "elapsed_seconds": 63.25
+  "elapsed_seconds": 78.375
 }

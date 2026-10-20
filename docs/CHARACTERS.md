@@ -106,12 +106,18 @@ roster contract begins at offset `32` (16-bit words):
 | 116 | Live ambient clock |
 | 117 | Pending BG1 ambient phase, `255` when none is pending |
 | 118 | Pending ambient phase age in live ticks |
+| 119 | v0.8 pause page: `0` normal, `1` controls, `2` specials |
+| 120 | v0.8 guide build stage: `0` settled, `1..3` staged |
+| 121 | v0.8 Training dummy: `0` stand, `1` guard high, `2` guard low, `3` jump |
+| 122 | v0.8 guide dirty flag: `0` settled, `1` pending |
 
 The trace remains under the reserved 256-byte region and is read-only from the
 test host. `src/trace.asm` writes the Fighter/Wave contract directly at stable
 offsets `0..113` and ambient fields at `115..118`; `main` samples post-wait PPU
 `STAT77` into `114` before DMA. Changing the packed `Fighter` or `Wave` layout
-requires updating its assembly offsets and this trace table together.
+requires updating its assembly offsets and this trace table together. The v0.8
+fields append after the unchanged Fighter/Wave and ambient contract; they do not
+change the packed `Fighter` or `Wave` layout.
 
 ## Remaining limitations
 
@@ -149,7 +155,31 @@ produces identical bytes. No public,
 human-balance, independent full-combat/soak or real-console release claim is
 made here.
 
-The v0.7.1 verified technical snapshot leaves all twelve combat profiles,
+## v0.8.0 verified profile and guide contract
+
+The verified v0.8.0 source-freeze snapshot leaves all twelve combat profiles, movement
+values, special families and native fighter frame data unchanged. The pause
+Specials page reads the two live fighter IDs and displays each character name,
+special name and family type; it does not copy a static roster table into the
+fight. The Controls page documents the same six-button rules, including the
+twelve-tick quarter-circle and 32-energy cost.
+
+Training's pause dummy modes are Stand, Guard High, Guard Low and Jump. Guard
+holds relative back without retreat, and the Jump dummy automatically jumps
+again after landing. Live Select resets the round while preserving the chosen dummy; a new
+Training match starts at Stand. These controls are a review target, not a
+balance or release approval.
+
+The verified source freeze is commit
+`48f3ccb539492247b83f4360a50bdc020bad9dd6`, tree
+`e571aca40019b868bf224bb619390f5ea651434e`; its ROM is
+`53ef44225c83bd52ee0eea3910ba74ade5ba949af7aa7440c74d959812c13090`, header
+`6A21`. All six native reports pass on the exact SHA with 30,641 checks. Matching
+compatibility, matchup, bounded independent-combat, endurance and fresh-source
+evidence also pass. The offline package passes 7,471 technical audit checks; Reston's
+remaining likeness review and the other human gates remain open.
+
+The v0.7.1 historical technical snapshot leaves all twelve combat profiles,
 movement values and native frame data unchanged. The source freeze is commit
 `6d756749dbc3fa176e26217f2f59525c9af360d8`, tree
 `fa15fea48b5cc2a09608da199810db885872e434`; the canonical ROM is
