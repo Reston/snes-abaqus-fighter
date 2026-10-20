@@ -33,6 +33,37 @@ fillBannerPanel:
     rtl
 .ends
 
+.section "fight_footer_fast" superfree
+; Exact clearFightHint() footer range: rows 26-27, 64 u16 tilemap cells.
+; Keep the dirty flag side effect in native code so the C footer loop leaves
+; the pause/contact frame with the same queued 128-byte DMA.
+clearFightHint:
+    php
+    rep #$20
+    lda #$0000
+    .rept 64 index cell
+        sta.l ui+1664+cell*2
+    .endr
+    sep #$20
+    lda #$01
+    sta.l footerDirty
+    plp
+    rtl
+
+; Exact panel(10,4) tile contents used by the pause overlay: 128 u16 cells.
+; The caller handles the surrounding text writes; this helper changes no
+; dirty flag, matching panel()'s original behavior.
+fillPausePanel:
+    php
+    rep #$20
+    lda #$2080
+    .rept 128 index cell
+        sta.l ui+640+cell*2
+    .endr
+    plp
+    rtl
+.ends
+
 ; void applyHitReaction(u8 defender, u8 damage)
 ; Preserve the C hurt() transition exactly, including 12+floor(damage/3)
 ; for every possible byte damage. Direct indexed stores replace repeated

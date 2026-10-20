@@ -139,7 +139,9 @@ extern void processResidentAudioReady(void);
 extern void uploadActor(u8 *source,u16 destination);
 extern void traceActorsFast(void);
 extern void clearBanner(void);
+extern void clearFightHint(void);
 extern void fillBannerPanel(void);
+extern void fillPausePanel(void);
 extern void applyHitReaction(u8 defender,u8 damage);
 extern void refreshHealthBar(u8 player);
 extern void refreshEnergyBar(u8 player);
@@ -232,7 +234,6 @@ void word(u8 x,u8 y,const char *s) { while(*s && x<32) put(x++,y,*s++); }
 void center(u8 y,const char *s) { u8 n=0; const char *p=s; while(*p++)n++; word((32-n)/2,y,s); }
 void number(u8 x,u8 y,u8 n) { put(x,y,'0'+n/10); put(x+1,y,'0'+n%10); }
 void clearUi(void) { u16 i; for(i=0;i<1024;i++)ui[i]=0; fullDirty=1; }
-void clearFightHint(void) { u16 i; for(i=26*32;i<28*32;i++)ui[i]=0; footerDirty=1; }
 void panel(u8 y,u8 rows) { u16 i; for(i=(u16)y*32;i<(u16)(y+rows)*32;i++)ui[i]=128|0x2000; }
 void cursor(u8 x,u8 y,u8 w,u8 h) {
     u8 i;
@@ -998,7 +999,7 @@ void fightTick(void) {
     animationAdvance=0;
     if((edge0|edge1)&KEY_START) {
         paused=!paused;impactBannerPending=0;clearBanner();
-        if(paused){clearFightHint();panel(10,4);center(10,"PAUSED");center(12,"A RESUME   B ROSTER");}
+        if(paused){clearFightHint();fillPausePanel();center(10,"PAUSED");center(12,"A RESUME   B ROSTER");}
         sound(0);
     }
     if(paused) {
