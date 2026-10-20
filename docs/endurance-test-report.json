@@ -1,7 +1,7 @@
 {
   "suite": "endurance",
   "status": "passed",
-  "rom_sha256": "53ef44225c83bd52ee0eea3910ba74ade5ba949af7aa7440c74d959812c13090",
+  "rom_sha256": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466",
   "rom_bytes": 4194304,
   "target_live_frames_per_mode": 216356,
   "native_fps": 60.098811862348406,
@@ -52,7 +52,7 @@
       "coverage_required": true,
       "live_frames": 216356,
       "live_segments": 328,
-      "elapsed_seconds": 264.719,
+      "elapsed_seconds": 261.078,
       "rosters": [
         {
           "fighter1": 0,
@@ -192,7 +192,7 @@
       "trace_magic_samples": 313617,
       "video_fps": 60.098811862348406,
       "audio_sample_rate": 32040.0,
-      "rom_sha256": "53ef44225c83bd52ee0eea3910ba74ade5ba949af7aa7440c74d959812c13090",
+      "rom_sha256": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466",
       "benchmark": false,
       "core_frames_including_boot": 313899,
       "core": {
@@ -217,7 +217,7 @@
       "coverage_required": true,
       "live_frames": 216356,
       "live_segments": 223,
-      "elapsed_seconds": 243.437,
+      "elapsed_seconds": 240.359,
       "rosters": [
         {
           "fighter1": 3,
@@ -416,7 +416,7 @@
       "trace_magic_samples": 281948,
       "video_fps": 60.098811862348406,
       "audio_sample_rate": 32040.0,
-      "rom_sha256": "53ef44225c83bd52ee0eea3910ba74ade5ba949af7aa7440c74d959812c13090",
+      "rom_sha256": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466",
       "benchmark": false,
       "core_frames_including_boot": 282383,
       "core": {
@@ -441,7 +441,7 @@
       "coverage_required": true,
       "live_frames": 216356,
       "live_segments": 10,
-      "elapsed_seconds": 197.671,
+      "elapsed_seconds": 195.156,
       "rosters": [
         {
           "fighter1": 6,
@@ -630,7 +630,7 @@
       "trace_magic_samples": 218606,
       "video_fps": 60.098811862348406,
       "audio_sample_rate": 32040.0,
-      "rom_sha256": "53ef44225c83bd52ee0eea3910ba74ade5ba949af7aa7440c74d959812c13090",
+      "rom_sha256": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466",
       "benchmark": false,
       "core_frames_including_boot": 219058,
       "core": {
@@ -652,5 +652,5 @@
     "1": 281948,
     "2": 218606
   },
-  "elapsed_seconds": 264.844
+  "elapsed_seconds": 261.203
 }

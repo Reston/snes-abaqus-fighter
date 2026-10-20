@@ -2,22 +2,31 @@
 
 An original six-button fighting game for the **Super Nintendo**, inspired by the arcade structure of Street Fighter II and the people and places of Abaqus in Santiago.
 
-**Current technical snapshot: v0.8.0; native verification passed.** The native
+**Current verified technical snapshot: v0.8.1.** The native
 source targets a 4 MiB NTSC FastROM LoROM cartridge across 128 banks, compiled
 from C and 65816 assembly. The source freeze is commit
-`48f3ccb539492247b83f4360a50bdc020bad9dd6`, tree
-`e571aca40019b868bf224bb619390f5ea651434e`. The ROM at
+`fe05e5fd1391a1db20f1b66f1e9f6e699445e77a`, tree
+`46e1af160ffb8ab6cb768e3d9deec1352d77ae83`. The ROM at
 [dist/abaqus-after-hours.sfc](dist/abaqus-after-hours.sfc) is SHA256
-`53ef44225c83bd52ee0eea3910ba74ade5ba949af7aa7440c74d959812c13090`, header
-checksum `6A21`; [dist/manifest.json](dist/manifest.json) records the same
-identity.
+`76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`, header
+checksum `A358`; [dist/manifest.json](dist/manifest.json) records the
+identity. Native C/ASM, controls, gameplay and audio are unchanged.
 
 `Test.cmd` exits 0 with all six reports on that SHA: 2,595 gameplay, 18,081
 roster, 215 presentation, 997 focused-input, 8,131 stage and 622 Training
-checks (30,641 total). The matching compatibility smoke, matchup matrix,
-bounded independent-combat evidence, three live-hour sessions and fresh-source
-rebuild also pass. The v0.8.0 offline package passes 7,471 technical audit checks. Human likeness and balance, listening, controller, real-console
-and branding gates remain open, and `public_release_certified` remains false.
+checks (30,641 total). Fresh committed export validation reproduces the ROM,
+manifest, 214 assets and symbols in 76.344 seconds. The 288-by-600 native
+matchup, all-three-stage, two-policy, four-replay and symmetry checks pass. The
+pinned bsnes smoke matches this SHA with 600/600 cadence, healthy PPU/PCM and
+ambient freeze; the bounded 48-by-600 run also passes. Native endurance passes
+216,356 live frames in each of three modes at 60.0988118623 FPS, wraps 4/4/3,
+peak SPC six, zero stable FIGHT lag and empty failure arrays. `validate_release_evidence`
+passes. The v0.8.1 offline package passes 7,471 technical audit checks; v0.8.0
+remains historical evidence.
+Reston's full64 native visual review accepts the v4 art for integration; see the
+[Reston v4 likeness review](docs/RESTON-LIKENESS-v4.md). Actual human
+likeness/consent, balance, listening, controller, real-console and branding
+gates remain open; `public_release_certified` remains false.
 
 The [v0.6.0 development notes](docs/RELEASE-v0.6.0.md) describe the packaged
 64-frame roster, air attacks, throws and recovery. The
@@ -53,6 +62,12 @@ trace offsets `0..118` and all fighter assets remain unchanged; v0.8 appends
 and `[122]` guide dirty. The complete v0.7.1 snapshot remains documented below
 as historical evidence; it is not a v0.8 verification claim.
 
+The v0.8.1 snapshot keeps the v0.8.0 native pause, Training and menu behavior
+unchanged. Its art-only revision replaces Reston's full 64-frame set and
+portrait with the v4 short-buzz-cap sources, retaining the v3 sources and all
+shared palette, scale and gameplay contracts. Native visual review accepted the
+revision for integration; human likeness review is still pending.
+
 Pause and Training review captures: [Arcade controls](docs/screenshots/training/mode0-controls.png),
 [Arcade specials](docs/screenshots/training/mode0-specials.png),
 [Versus controls](docs/screenshots/training/mode1-controls.png),
@@ -68,12 +83,17 @@ Pause and Training review captures: [Arcade controls](docs/screenshots/training/
 
 On Windows, double-click **[Play.cmd](Play.cmd)**. The launcher downloads the official Snes9x 1.63 release into `.tools/` on its first run, verifies its SHA256, and opens the game. No administrator account or global installation is needed. The tools are already present in this checkout.
 
-For offline Windows play, extract
-[Abaqus-After-Hours-v0.8.0-Windows.zip](dist/Abaqus-After-Hours-v0.8.0-Windows.zip)
-and launch its `Play.cmd`. It includes the exact tested cartridge, Snes9x,
+For offline Windows play, extract the current v0.8.1 package
+[Abaqus-After-Hours-v0.8.1-Windows.zip](dist/Abaqus-After-Hours-v0.8.1-Windows.zip)
+and launch its `Play.cmd`. It includes the exact verified cartridge, Snes9x,
 player manual, licenses and QA reports, and passes 7,471 technical audit checks.
-The [archive checksum](dist/release-sha256.txt) identifies the package.
-Two consecutive packaging runs produced the same 6,546,551-byte ZIP, SHA256
+Two consecutive runs produce identical 6,546,645-byte archives, SHA256
+`04d951c3abef278afada5a666f9eec8a04d140650354bd82506e750e2849e0b6`.
+The [archive checksum](dist/release-sha256.txt) identifies this build.
+The v0.8.0 package remains a historical archive; its prior checksum and size
+are recorded in the historical evidence below.
+
+Historical v0.8.0 packaging produced a 6,546,551-byte ZIP with SHA256
 `44f92c041563badc1a6b903e859ad4dd5258b5bd85f6d253cdf74b5c06641869`.
 
 On other platforms, open **[dist/abaqus-after-hours.sfc](dist/abaqus-after-hours.sfc)** in a SNES emulator. No BIOS or commercial ROM is required.
@@ -99,7 +119,7 @@ combos. Controllers can be mapped in Snes9x under **Input -> Input Configuration
 
 ## Included
 
-- All 12 requested fighters, with individual illustrated identities, costumes and legacy key poses. Their identity masters remain unchanged through v0.6, including Reston's v3 short-hair correction.
+- All 12 requested fighters, with individual illustrated identities, costumes and legacy key poses. The v0.8.0 baseline pins all prior 64-frame banks; the v0.8.1 snapshot updates only Reston's complete set and portrait to the v4 short-buzz-cap art, with the v3 sources retained.
 - Sixty-four uniform 96x80 native frames per fighter: legacy frames 0-15, motion and transition frames 16-31, action frames 32-47, and airborne/throw/knockdown frames 48-63. Twelve new airborne atlases supply dedicated air punch and air kick anticipation, active and recovery drawings plus throw and wake art; each keeps its `animation-airborne.json` prompt and provenance.
 - Las Condes, El Castillo and La Oficina, illustrated as original pixel-art stages from the supplied location references.
 - Arcade Shift: fight the other 11 coworkers across the three locations and become Office Champion.
@@ -118,7 +138,8 @@ combos. Controllers can be mapped in Snes9x under **Input -> Input Configuration
   the verified v0.7.0 baseline ROM and native/compatibility reports verify this milestone.
 - v0.7.1 source-freeze CPU opening, active-wave guard and staged impact/reset
   feedback remain historical behavior. The v0.8.0 pause/help integration is
-  verified in the current six-report technical snapshot.
+  verified in the historical six-report baseline and unchanged in the verified
+  v0.8.1 snapshot.
 
 The renderer keeps the 96x80 canvas, 94x77 safe area, native baseline 78 and
 one physical scale per fighter across all 64 frames. The legacy 48 frame
@@ -159,7 +180,7 @@ that SHA and ran outside the five-suite `Test.cmd` batch:
 - `docs/input-test-report.json`
 - `docs/compatibility-test-report.json`
 - `docs/stage-test-report.json`
-- `docs/training-test-report.json` (v0.8.0 verified Training suite)
+- `docs/training-test-report.json` (v0.8.1 verified Training suite)
 
 The [manifest](dist/manifest.json) includes the ROM SHA256 and header checksum.
 The historical v0.7.1 snapshot had all five native reports passing against
@@ -188,10 +209,12 @@ replace full combat, soak or human verification. Run it with PowerShell
 `tools/setup-compat.ps1` followed by `python tools/test_compatibility.py`.
 
 The earlier four-family 600-frame probe remains historical v0.7.0 evidence. The
-verified v0.8.0 snapshot adds `tools/test_training.py` as the sixth required
-`Test.cmd` suite. The six reports pass on the exact SHA with 30,641 checks;
-matching compatibility, matchup, bounded independent-combat, live-hour and
-fresh-source evidence also pass.
+verified v0.8.0 snapshot added `tools/test_training.py` as the sixth required
+`Test.cmd` suite. The current v0.8.1 reports pass on the exact SHA with 30,641
+checks: 2,595 gameplay, 18,081 roster, 215 presentation, 997 focused-input,
+8,131 stage and 622 Training. Matching compatibility, matchup, bounded
+independent-combat, live-hour, replay, symmetry and fresh-source evidence also
+pass. The v0.8.1 package and archive audit pass 7,471 technical checks.
 The training host enables `snes9x_up_down_allowed` so same-pad and cross-pad
 SOCD cases reach the native cleaner; the offline `Controls::AllowLeftRight`
 preference is not changed for existing users.
@@ -233,8 +256,11 @@ unchanged. `roundBannerPending` keeps the first frozen `roundEnd` tick quiet,
 then transfers the panel, name and HUD on the second tick, avoiding a
 contact-time stall.
 
-The verified v0.8.0 snapshot keeps the same resident-audio and native transfer
-contracts. Its manifest records the ROM SHA above; the offline package passes 7,471 technical audit checks.
+The verified v0.8.1 snapshot keeps the same resident-audio and native transfer
+contracts. Its manifest records the current ROM SHA above; the v0.8.1 package
+passes 7,471 technical audit checks. The v0.8.0 package is historical evidence.
+The v0.8.1 snapshot changes the Reston art sources only and leaves those native
+contracts unchanged.
 
 Combat sound effects now load as four resident SPC slots alongside the music:
 `effects.it` is soundbank module 0 and music modules remain IDs 1-4. Scene load
@@ -264,6 +290,6 @@ the streamed-BRR path that stalled under two simultaneous attack/impact cases.
 | `dist/` | Playable ROM and release manifest |
 | `docs/` | Controls, technical notes, animation contract, art prompts, credits, roadmap and QA evidence |
 
-Git tracks the source, master art, generated cartridge assets and ROM. Downloaded toolchains and release ZIPs stay outside history. Prior releases are tagged `v0.1.0`, `v0.2.0`, `v0.3.0`, `v0.3.1`, `v0.4.0`, `v0.4.1`, `v0.5.0` and `v0.5.1`; `v0.6.0` records the animation baseline, `v0.6.1` the CPU update, and `v0.7.0` the verified stage/effect update and development package. v0.7.1 is historical; v0.8.0 is the current verified technical snapshot with a 7,471-check offline archive audit. No remote repository is configured by this project.
+Git tracks the source, master art, generated cartridge assets and ROM. Downloaded toolchains and release ZIPs stay outside history. Prior releases are tagged `v0.1.0`, `v0.2.0`, `v0.3.0`, `v0.3.1`, `v0.4.0`, `v0.4.1`, `v0.5.0` and `v0.5.1`; `v0.6.0` records the animation baseline, `v0.6.1` the CPU update, and `v0.7.0` the verified stage/effect update and development package. v0.7.1 is historical; v0.8.0 remains historical, and v0.8.1 is the current verified packaged technical snapshot with a 7,471-check archive audit. No remote repository is configured by this project.
 
 Team references: [Abaqus Solutions](https://abaqus.io/es/abaqus-solutions/team) and [Abaqus Wealth Care](https://abaqus.io/es/wealth-care/about-us). See [credits and asset provenance](docs/CREDITS.md), [art prompts](docs/ART-DIRECTION.md), and [technical notes](docs/DEVELOPMENT.md).

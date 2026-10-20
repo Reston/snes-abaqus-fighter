@@ -6,17 +6,24 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
-- The current verified technical snapshot is v0.8.0. Its source freeze is
-  commit `48f3ccb539492247b83f4360a50bdc020bad9dd6`, tree
-  `e571aca40019b868bf224bb619390f5ea651434e`; the ROM is SHA256
-  `53ef44225c83bd52ee0eea3910ba74ade5ba949af7aa7440c74d959812c13090`, header
-  checksum `6A21`. `Test.cmd` exits 0 with all six reports on that SHA:
-  2,595 gameplay, 18,081 roster, 215 presentation, 997 focused-input, 8,131
-  stage and 622 Training checks (30,641 total). The matching compatibility,
-  matchup, bounded independent-combat, endurance and fresh-source evidence also
-  passes. The offline package passes 7,471 technical audit checks; human
-  likeness/balance, listening, controller, real-console and branding gates stay
-  open.
+- The current verified technical snapshot is v0.8.1. Its source freeze is
+  commit `fe05e5fd1391a1db20f1b66f1e9f6e699445e77a`, tree
+  `46e1af160ffb8ab6cb768e3d9deec1352d77ae83`; the ROM is SHA256
+  `76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`, header
+  checksum `A358`. Native C/ASM, controls, gameplay and audio are unchanged.
+  `Test.cmd` exits 0 with all six reports on that SHA: 2,595 gameplay, 18,081
+  roster, 215 presentation, 997 focused-input, 8,131 stage and 622 Training
+  checks (30,641 total). Fresh committed export validation reproduces the ROM,
+  manifest, 214 assets and symbols in 76.344 seconds. The 288-by-600 native
+  matchup, stage, policy, replay and symmetry checks pass; the pinned bsnes
+  smoke matches this SHA with 600/600 cadence and healthy PPU/PCM/ambient
+  freeze, and its bounded 48-by-600 run passes. Native endurance passes 216,356
+  live frames in each of three modes at 60.0988118623 FPS, wraps 4/4/3, peak
+  SPC six, zero stable FIGHT lag and empty failure arrays. `validate_release_evidence`
+  passes. The v0.8.1 offline package and its 7,471-check audit pass; the
+  v0.8.0 package is historical. Full64 native visual review accepts Reston's v4 art
+  for integration, but human likeness/consent, balance, listening, controller,
+  real-console and branding gates remain open.
 
 - v0.8.0 adds a pause overlay with Normal, Controls and Specials pages. Select
   cycles the pages, and Left/Right toggles the guide pages. Start resumes
@@ -34,7 +41,7 @@ Preserve the native emulator requirement when extending the project.
   selected portrait remains at `$4A00`. Its rows 5-27 publish as a 1,472-byte
   staged panel over three paused ticks and yield to actor DMA. `drawGuideWord`
   and the native full-clear UI path are part of the hardware contract. The
-  Fighter/Wave layout and fighter assets are unchanged. Stable trace offsets
+  Fighter/Wave layout and native fighter contracts are unchanged. Stable trace offsets
   `0..118` remain unchanged; v0.8 appends `TRACE[119]` pause page,
   `[120]` guide build stage, `[121]` Training dummy mode and `[122]` guide dirty.
 
@@ -58,8 +65,10 @@ Preserve the native emulator requirement when extending the project.
   package gate also requires `docs/compatibility-test-report.json` to pass
   against that same SHA. The compatibility report is a separate pinned
   bsnes2014 Accuracy smoke, not part of the six-suite `Test.cmd` batch. The
-  current v0.8.0 reports all match the verified SHA and record 30,641 passed
-  checks. The compatibility report is also matched; package and audit pass 7,471 technical checks.
+  current v0.8.1 reports all match the verified SHA and record 30,641 passed
+  checks; the pinned compatibility report is also matched. The v0.8.1 package
+  and audit pass 7,471 technical checks. The v0.8.0 reports and package are
+  historical evidence.
 - The v0.6 fast path caches actor-bank and per-action timing selection, uses the
   compile-checked `Fighter` stride 64 and `Wave` stride 16 layouts, and caches
   unchanged OAM/shadow work by integer position and facing. Native health and
@@ -97,9 +106,12 @@ Preserve the native emulator requirement when extending the project.
 - Keep twelve individual illustrated fighter masters and their identities,
   palettes and costumes separate. The v0.6 animation pass adds twelve new
   built-in-imagegen `animation-airborne.png` atlases while leaving all twelve
-  identity masters unchanged. Reston's selected master remains the v3 short-hair
-  correction. Keep every airborne atlas's full prompt and provenance in its
-  adjacent `animation-airborne.json`; retain the earlier motion/action metadata.
+  identity masters unchanged. The v0.8.1 snapshot updates Reston's complete
+  64-frame set and portrait to the v4 short-buzz-cap sources
+  (`atlas-v4.png`, `animation-motion-v4.png`, `animation-actions-v4.png` and
+  `animation-airborne-v4.png`); the original v3 sources remain retained. Keep
+  the three v4 provenance JSON files and `native-revision.json` with the art;
+  retain the earlier motion/action metadata.
 - The v0.5 presentation uses three independent stage PNGs described by
   `assets/art/stages/stages.json`, plus original home/select/arena menu art
   under `assets/art/menu/`. Keep `assets/art/menu/prompts.json` with the source
@@ -111,10 +123,11 @@ Preserve the native emulator requirement when extending the project.
   commercial game ROMs, Capcom sprites, or commercial game audio.
 - Preserve future scope for art review, balance tuning, stage parallax, human
   playtesting and real-console/flash-cartridge verification; do not imply those
-  roadmap items are complete. The v0.8.0 verified snapshot keeps fighter assets
-  unchanged; Reston's remaining hair/likeness review is still future work.
-  Evidence is tied to the exact ROM above; public-release gates still govern
-  public readiness.
+  roadmap items are complete. The v0.8.0 verified snapshot remains the
+  historical evidence baseline. Reston's v4 art is accepted for native
+  integration by the full64 visual review, while actual human likeness and
+  consent review remains future work. Current evidence is tied to the exact
+  ROM above; public-release gates still govern public readiness.
 - Do not commit `.tools/`, emulator saves, build intermediates or release ZIPs.
 - Rebuild the offline package with `tools/package.py` only after all six native
   suites and the matching compatibility smoke pass against the exact current
@@ -122,7 +135,11 @@ Preserve the native emulator requirement when extending the project.
   combat, three native live-hour sessions and isolated source rebuild through
   `tools/release_evidence.py`. Run `tools/audit_release.py` on the result.
   The v0.7.1 offline archive and its 6,153-check audit are historical. The
-  v0.8.0 package passes 7,471 technical audit checks. Keep third-party
-  license notices intact. Two consecutive runs produce identical ZIP bytes:
+  historical v0.8.0 package passes 7,471 technical audit checks. The current
+  v0.8.1 package also passes 7,471 technical audit checks. Keep third-party
+  license notices intact. Two consecutive v0.8.1 packaging runs produce identical
+  6,546,645-byte ZIPs, SHA256
+  `04d951c3abef278afada5a666f9eec8a04d140650354bd82506e750e2849e0b6`.
+  Historical v0.8.0 packaging produced identical ZIP bytes:
   6,546,551 bytes, SHA256
   `44f92c041563badc1a6b903e859ad4dd5258b5bd85f6d253cdf74b5c06641869`.

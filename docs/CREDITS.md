@@ -11,8 +11,8 @@ Game code, UI, tile pipeline, combat implementation, tracker compositions and sy
 The v0.5 animation pass adds 24 original built-in imagegen atlases, two for
 each fighter (`animation-motion.png` and `animation-actions.png`). They provide
 32 new drawn in-between frames per fighter while preserving each fighter's
-legacy identity master, costume, palette and source portrait. The selected
-Reston master remains the v3 short-hair correction. Every atlas keeps its full
+legacy identity master, costume, palette and source portrait. Reston's v3
+short-hair correction is retained as the pre-v0.8.1 source. Every atlas keeps its full
 prompt, reference role and provenance in the adjacent `animation.json`.
 
 Official reference material was used only for menu structure, controller
@@ -40,6 +40,15 @@ It services at most one ready command per frame; the SDK still owns boot,
 module/sample loading and scene-load flushes. The game does not use streamed
 sample playback. PVSnesLib and SNESMod license notices remain included below
 and in the offline package.
+
+The v0.8.1 likeness pass uses four built-in imagegen edits for Reston's fuller
+short buzz cap across all 64 poses and derived portraits. The selected sources
+are `atlas-v4.png`, `animation-motion-v4.png`, `animation-actions-v4.png` and
+`animation-airborne-v4.png` in his character folder. Full prompts, input roles
+and output hashes are retained in `likeness-v4.json`, `animation-v4.json` and
+`animation-airborne-v4.json`; `native-revision.json` pins the reviewed output.
+The original sources remain intact. This technical art review does not imply
+the depicted person's approval or public-use consent.
 
 ## People
 

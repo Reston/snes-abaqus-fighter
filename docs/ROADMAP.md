@@ -4,7 +4,7 @@ The active public-release target and evidence gates are in
 [PUBLIC-RELEASE.md](PUBLIC-RELEASE.md). Treat this roadmap as the work backlog;
 the release gates decide when the public candidate is actually ready.
 
-The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass set the cartoon arcade direction. v0.3 introduced twelve individual sixteen-pose atlases and likeness correction. v0.4 standardized the 96x80 physical scale and rebuilt the presentation. v0.5.0 adds animation, simpler menus and buffered inputs. v0.5.1 tightens contact, hit-confirm and combo rules, clears live-fight instructions, adds result scores and corrects emulator scaling. The v0.6.0 source integration adds the final airborne, throw, knockdown and wake frame range and combat flow. The v0.6.1 CPU-correctness pass has four-suite and pinned compatibility evidence on one ROM SHA, with public gates still open. v0.7.0 stage/effect integration has a verified ROM, a 214-check archive audit and reproducible development packaging. The historical v0.7.1 package has a 6,153-check audit. v0.8.0 is the current verified pause-guide and Training snapshot; its six native suites and broader technical evidence pass, while the 7,471-check archive audit passes and human likeness/balance, listening, controller, console and branding gates remain open.
+The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass set the cartoon arcade direction. v0.3 introduced twelve individual sixteen-pose atlases and likeness correction. v0.4 standardized the 96x80 physical scale and rebuilt the presentation. v0.5.0 adds animation, simpler menus and buffered inputs. v0.5.1 tightens contact, hit-confirm and combo rules, clears live-fight instructions, adds result scores and corrects emulator scaling. The v0.6.0 source integration adds the final airborne, throw, knockdown and wake frame range and combat flow. The v0.6.1 CPU-correctness pass has four-suite and pinned compatibility evidence on one ROM SHA, with public gates still open. v0.7.0 stage/effect integration has a verified ROM, a 214-check archive audit and reproducible development packaging. The historical v0.7.1 package has a 6,153-check audit. v0.8.0 remains the historical pause-guide and Training baseline. v0.8.1 is the current verified Reston art snapshot; its six native and expanded technical evidence pass, its 7,471-check package audit passes, and human/public gates remain open.
 
 ## v0.5 baseline
 
@@ -179,7 +179,7 @@ The package passed 6,153 technical audit checks. Human likeness and balance,
 listening, controller, real-console and branding gates remained open; no
 public-readiness claim was made.
 
-## v0.8.0 verified pause-guide and Training snapshot
+## v0.8.0 historical verified pause-guide and Training snapshot
 
 The verified source-freeze snapshot is commit
 `48f3ccb539492247b83f4360a50bdc020bad9dd6`, tree
@@ -214,7 +214,35 @@ The verified source-freeze snapshot is commit
 
 Reston's remaining likeness review and human balance/listening/controller,
 real-console and branding review stay open. The offline package passes 7,471
-technical audit checks; this section records evidence, not public approval.
+technical audit checks; this section records historical evidence, not public
+approval.
+
+## v0.8.1 verified Reston v4 art integration
+
+The verified source freeze is commit
+`fe05e5fd1391a1db20f1b66f1e9f6e699445e77a`, tree
+`46e1af160ffb8ab6cb768e3d9deec1352d77ae83`. Its 4 MiB ROM is SHA256
+`76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`, header
+`A358`. The revision changes Reston's art sources only: all 64 frames and the
+portrait use `atlas-v4.png`, `animation-motion-v4.png`,
+`animation-actions-v4.png` and `animation-airborne-v4.png`; the original v3
+sources remain retained.
+
+The immutable v0.8.0 baseline pins all twelve old 64-frame sets. The other
+eleven fighter bank bytes are identical, all twelve palettes and uniform scales
+are unchanged, and Reston's source normalization, palette and scale are locked.
+`likeness-v4.json`, `animation-v4.json`, `animation-airborne-v4.json` and
+`native-revision.json` retain imagegen provenance and expected native hashes.
+Full64 native visual review accepted the revision for integration, while actual
+human likeness and consent feedback remains pending. Native C/ASM, controls,
+gameplay and audio are unchanged.
+
+All six native reports pass on this SHA: 2,595 gameplay, 18,081 roster, 215
+presentation, 997 focused-input, 8,131 stage and 622 Training checks (30,641
+total). Fresh committed export, 288-by-600 matchup/stage/policy/replay/symmetry,
+pinned bsnes, bounded independent and three-mode endurance evidence also pass.
+The v0.8.1 package and its 7,471-check audit pass; the v0.8.0 reports and
+package remain historical evidence.
 
 ## Next combat pass
 
@@ -232,12 +260,12 @@ technical audit checks; this section records evidence, not public approval.
 ## Release-quality validation
 
 - Keep running gameplay, roster, presentation, focused input, stage and
-  Training suites after changes. The verified v0.8.0 reports all match ROM SHA
-  `53ef44225c83bd52ee0eea3910ba74ade5ba949af7aa7440c74d959812c13090` and record
+  Training suites after changes. The verified v0.8.1 reports all match ROM SHA
+  `76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466` and record
   30,641 checks; matching compatibility, matchup, bounded independent-combat,
-  endurance and fresh-source evidence also pass. The offline package passes 7,471 technical audit checks. Human playtesting, real-console and
-  public-release review remain open. Use [PLAYTEST.md](PLAYTEST.md) for the
-  human review route.
+  endurance and fresh-source evidence also pass. The package and 7,471-check
+  archive audit pass. Human playtesting, real-console and public-release review
+  remain open. Use [PLAYTEST.md](PLAYTEST.md) for the human review route.
 - Playtest with two controllers and several keyboard layouts, including keyboard rollover constraints, SOCD edge cases, motion buffering and hitstop inputs.
 - Profile worst-case combat frames, eight-bank animation uploads, resident
   audio effects, dynamic stage uploads, `STAT77`/OBJ overflow and vblank use

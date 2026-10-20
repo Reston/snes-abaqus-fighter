@@ -1,7 +1,9 @@
 # Independent-engine compatibility
 
-The current v0.8.0 smoke and bounded combat reports both pass against cartridge
-SHA256 `53ef44225c83bd52ee0eea3910ba74ade5ba949af7aa7440c74d959812c13090`.
+The current v0.8.1 smoke and bounded combat reports both pass against cartridge
+SHA256 `76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`.
+This snapshot updates Reston's art and portraits; the native engine and
+compatibility hosts retain the v0.8 behavior and contracts.
 
 The pinned smoke check has the bounded scope `independent-engine smoke, stage
 ambient/effects freeze, synchronized low-wave, neutral600frame cadence`. It is

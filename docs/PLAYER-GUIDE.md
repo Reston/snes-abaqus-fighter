@@ -2,12 +2,15 @@
 
 ## Current version
 
-This manual describes the verified v0.8.0 technical snapshot. The matching ROM is the 4 MiB
-NTSC file `abaqus-after-hours.sfc`, SHA256 prefix
-`53ef44225c83bd52...12c13090`, header checksum `6A21`. Verify the complete
+This manual describes the verified v0.8.1 technical snapshot. Its 4 MiB NTSC ROM is
+`abaqus-after-hours.sfc`, SHA256 prefix
+`76b456d1ac75471a...f36e52904466`, header checksum `A358`. Verify the complete
 SHA256 in the accompanying manifest before recording feedback for a build.
-Packaging and archive audit are pending the next package run. Human review of
-likeness, balance, audio, controllers, branding and real hardware is still open.
+The six native reports and matching compatibility smoke pass on this exact SHA;
+the v0.8.1 package passes its 7,471-check technical audit. The v0.8.0 package
+is historical evidence. Native controls, gameplay and audio are unchanged. Reston's
+v4 art was accepted for native integration review, while human likeness/consent,
+balance, audio, controllers, branding and real hardware review remain open.
 
 ## Launch
 

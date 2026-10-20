@@ -155,7 +155,7 @@ produces identical bytes. No public,
 human-balance, independent full-combat/soak or real-console release claim is
 made here.
 
-## v0.8.0 verified profile and guide contract
+## v0.8.0 historical profile and guide contract
 
 The verified v0.8.0 source-freeze snapshot leaves all twelve combat profiles, movement
 values, special families and native fighter frame data unchanged. The pause
@@ -170,7 +170,7 @@ again after landing. Live Select resets the round while preserving the chosen du
 Training match starts at Stand. These controls are a review target, not a
 balance or release approval.
 
-The verified source freeze is commit
+The verified v0.8.0 source freeze is commit
 `48f3ccb539492247b83f4360a50bdc020bad9dd6`, tree
 `e571aca40019b868bf224bb619390f5ea651434e`; its ROM is
 `53ef44225c83bd52ee0eea3910ba74ade5ba949af7aa7440c74d959812c13090`, header
@@ -194,3 +194,30 @@ immediately and flushes HUD, banner and footer over three frozen reset frames.
 Fresh export, full native endurance and the package audit pass. Human
 likeness/balance, listening, controller, real-console and branding gates remain
 open.
+
+## v0.8.1 verified Reston v4 art
+
+The verified v0.8.1 snapshot changes Reston's art sources only. Combat profile data,
+special family, movement, jump, throw, normal timing and native gameplay remain
+unchanged. Reston's complete 64-frame set and selected portrait use
+`atlas-v4.png`, `animation-motion-v4.png`, `animation-actions-v4.png` and
+`animation-airborne-v4.png`, with the original v3 sources retained. The adjacent
+`likeness-v4.json`, `animation-v4.json`, `animation-airborne-v4.json` and
+`native-revision.json` preserve imagegen provenance and the source/native
+revision record.
+
+The immutable v0.8.0 baseline pins all twelve prior 64-frame sets. The other
+eleven fighter bank bytes are identical, all twelve palettes and uniform scales
+are unchanged, and Reston's source normalization, palette and scale remain
+locked. The expected v4 native frame-hash digest is
+`7fe74ce9c1d771203191606d8f9ea05398eebb2507f7ab7dc538c766c274bfda`; the
+palette SHA256 remains
+`0fa34b1d226a993d001bd2df79e0b4f69827c214668446fe7b3b19bb3c64aa1d`, with
+uniform/physical scale `0.2280130293159609`.
+
+Full64 native visual review accepted Reston v4 for integration. Actual human
+likeness and consent feedback remains pending. All six native reports and
+matching expanded evidence pass against ROM SHA256
+`76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`, header
+`A358`. The v0.8.1 package and its 7,471-check audit pass; balance, listening,
+controller, real-console and branding gates remain open.

@@ -1,6 +1,6 @@
-# v0.8.0 human playtest guide
+# v0.8.1 verified human playtest guide
 
-This is a short review route for the verified v0.8.0 technical snapshot. It
+This is a short review route for the verified v0.8.1 technical snapshot. It
 collects human feedback on likeness, motion, fighting feel, pause help,
 Training behavior, presentation, audio and onboarding; it is not a release
 approval form. Leave an item blank or mark it unknown when it was not reviewed.
@@ -8,23 +8,29 @@ Do not infer roster consent or public-release approval from a completed table.
 
 ## Snapshot under review
 
-- Source freeze commit: `48f3ccb539492247b83f4360a50bdc020bad9dd6`, tree
-  `e571aca40019b868bf224bb619390f5ea651434e`.
-- [v0.8.0 Windows package](../dist/Abaqus-After-Hours-v0.8.0-Windows.zip).
-  Extract its cartridge for a frozen review. The 6,546,551-byte archive has
-  SHA256 `44f92c041563badc1a6b903e859ad4dd5258b5bd85f6d253cdf74b5c06641869`.
-  Repository tag: `v0.8.0`.
+- Source freeze commit: `fe05e5fd1391a1db20f1b66f1e9f6e699445e77a`,
+  tree `46e1af160ffb8ab6cb768e3d9deec1352d77ae83`.
 - [Verified ROM](../dist/abaqus-after-hours.sfc) SHA256:
-  `53ef44225c83bd52ee0eea3910ba74ade5ba949af7aa7440c74d959812c13090`,
-  header checksum `6A21` in the [manifest](../dist/manifest.json). Verify the
+  `76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`,
+  header checksum `A358` in the [manifest](../dist/manifest.json). Verify the
   SHA before a session because the checkout's `dist/` files are mutable.
+- [v0.8.1 Windows package](../dist/Abaqus-After-Hours-v0.8.1-Windows.zip) is
+  the current packaged snapshot. Its archive audit passes 7,471 technical
+  checks. Two packaging runs produce identical 6,546,645-byte archives, SHA256
+  `04d951c3abef278afada5a666f9eec8a04d140650354bd82506e750e2849e0b6`.
+- The [v0.8.0 Windows package](../dist/Abaqus-After-Hours-v0.8.0-Windows.zip)
+  is historical. Its 6,546,551-byte archive has SHA256
+  `44f92c041563badc1a6b903e859ad4dd5258b5bd85f6d253cdf74b5c06641869` and
+  repository tag `v0.8.0`; its archive audit passed 7,471 checks.
 - The [v0.7.1 Windows package](../dist/Abaqus-After-Hours-v0.7.1-Windows.zip)
-  is historical; use the v0.8.0 archive for this review.
-- The six native suites and matching compatibility evidence pass on this SHA;
-  the broader matchup, independent-combat, endurance and fresh-source evidence
-  also pass. The offline package passes 7,471 technical audit checks. Human likeness,
+  is historical; use the v0.8.1 archive for this review.
+- All six native reports pass on this SHA with 30,641 checks. Fresh committed
+  export, matchup, stage, policy, replay, symmetry, pinned bsnes, bounded
+  independent and endurance evidence also pass. Native C/ASM, controls,
+  gameplay and audio are unchanged. Reston's full64 native visual review
+  accepted v4 for integration, but actual human likeness and consent feedback,
   balance, listening, controller, real-console and branding review still need
-  explicit human results.
+  explicit human results. The v0.8.1 package audit passes 7,471 checks.
 - [Review captures](screenshots/) include the [title](screenshots/title.png),
   [select](screenshots/select.png), [arenas](screenshots/arenas.png),
   [fight](screenshots/fight.png), [block](screenshots/block.png),
@@ -54,7 +60,7 @@ keyboard mappings.
 | Time | Route | Record |
 |---|---|---|
 | 0-2 min | Boot the exact verified ROM, read the first control hint, open fighter select and arena select, then confirm and back out once. | Is the first action clear? Are confirm, back and pause consistent? |
-| 2-8 min | Sweep all twelve fighters. On each card, check the face, hair, costume colors, feet baseline and apparent size. In a short match or Training reset, make each fighter idle, walk forward/back, crouch, jump and perform one normal. Put each fighter on P1 once and P2 once so both right- and left-facing renders are seen. | Note likeness, proportions, silhouette changes and any fighter that needs a second look. Use the capture index below for native motion references. |
+| 2-8 min | Sweep all twelve fighters. On each card, check the face, hair, costume colors, feet baseline and apparent size. In a short match or Training reset, make each fighter idle, walk forward/back, crouch, jump and perform one normal. Put each fighter on P1 once and P2 once so both right- and left-facing renders are seen. For Reston, compare the fuller short buzz cap in the v4 portrait and all 64 native poses. | Note likeness, proportions, silhouette changes and any fighter that needs a second look. Use the capture index below for native motion references. Record Reston likeness feedback separately from the art-integration review. |
 | 8-13 min | Play the fundamentals: walk into standing guard, crouch guard a low kick or wave, take a real hit, jump forward and neutral, press light/medium/heavy normals, then repeat after the opponent blocks. | Does input feel immediate? Are pushback, hitstop, guard stun, chip and recovery readable? Any accidental attacks or missed edges? |
 | 13-17 min | Verify the four special families with Damian (projectile), Cristobal (rush), Negger (low shockwave) and Roxana (rising strike). Try a confirmed normal into a heavier normal and then a special. At close range, throw a guarding opponent; attempt simultaneous throws once. | Record command reliability, cancel timing, special readability, throw timing and whether blocked/unblocked results make sense. |
 | 17-21 min | Pause during a live exchange. Cycle Normal -> Controls -> Specials with Select, toggle pages with Left/Right, resume with Start/A and return to the roster with B when Start is not pressed. Confirm both live fighter names, special names and family labels appear. | Record guide clarity, page timing, stale text, Start/B/A/Select priority and whether the pause camera and HP display remain stable. |

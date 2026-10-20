@@ -1,0 +1,147 @@
+{
+  "status": "passed",
+  "scope": "native generation preservation, not emulator execution",
+  "rom_sha256": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466",
+  "baseline_sha256": "386a430db966c7f5c843811d78d9e06043838d8893f166bdc58637ddde773bd5",
+  "contract_sha256": "9b45e7dcb253a485faa28fb3c287a01399728cfafc23e7808f3bbb3f3b972dbc",
+  "fighters": [
+    {
+      "fighter_id": 0,
+      "frame_hashes_match": true,
+      "palette_preserved": true,
+      "physical_scale_preserved": true,
+      "encoded_bytes": 245760,
+      "encoded_sha256": "d2d09ccfc876ec75e445ad8a04de71328ef177dd304b5a1d625e8c1e067e0c5b",
+      "unchanged_from_v08": true
+    },
+    {
+      "fighter_id": 1,
+      "frame_hashes_match": true,
+      "palette_preserved": true,
+      "physical_scale_preserved": true,
+      "encoded_bytes": 245760,
+      "encoded_sha256": "87987c09e06c1babe6ec9fa47c5e91cc383a46d2140999e6d1887bd6fcac7528",
+      "unchanged_from_v08": true
+    },
+    {
+      "fighter_id": 2,
+      "frame_hashes_match": true,
+      "palette_preserved": true,
+      "physical_scale_preserved": true,
+      "encoded_bytes": 245760,
+      "encoded_sha256": "4ab1d84d8b72240fcd6fc4d3ac5bbdb876ab7519e5f2b6453d8eeab6a5fff775",
+      "unchanged_from_v08": true
+    },
+    {
+      "fighter_id": 3,
+      "frame_hashes_match": true,
+      "palette_preserved": true,
+      "physical_scale_preserved": true,
+      "encoded_bytes": 245760,
+      "encoded_sha256": "d97c27ff740a71000732d850f3afbac36d6ea6cc4db23acb72df852493c9a20c",
+      "unchanged_from_v08": true
+    },
+    {
+      "fighter_id": 4,
+      "frame_hashes_match": true,
+      "palette_preserved": true,
+      "physical_scale_preserved": true,
+      "encoded_bytes": 245760,
+      "encoded_sha256": "1c11c79ef1f4cf2dd03ea7f97e5ba2aa6c10b139818261e14dac77d8a65958cf",
+      "unchanged_from_v08": true
+    },
+    {
+      "fighter_id": 5,
+      "frame_hashes_match": true,
+      "palette_preserved": true,
+      "physical_scale_preserved": true,
+      "encoded_bytes": 245760,
+      "encoded_sha256": "15b219fe623e16f691711082c63a6c3b7015fdf077c42fb6b77511d3af419e4a",
+      "unchanged_from_v08": true
+    },
+    {
+      "fighter_id": 6,
+      "frame_hashes_match": true,
+      "palette_preserved": true,
+      "physical_scale_preserved": true,
+      "encoded_bytes": 245760,
+      "encoded_sha256": "6aa0936d716c5c9d3f28a56266ff8962780749e44ad0a0b9d2ebaa69f8c2c385",
+      "unchanged_from_v08": true
+    },
+    {
+      "fighter_id": 7,
+      "frame_hashes_match": true,
+      "palette_preserved": true,
+      "physical_scale_preserved": true,
+      "encoded_bytes": 245760,
+      "encoded_sha256": "a7d951dd927ae21d219838c7c650ec784bb9f2f4042e0d91e4ab269156557ef3",
+      "unchanged_from_v08": true
+    },
+    {
+      "fighter_id": 8,
+      "frame_hashes_match": true,
+      "palette_preserved": true,
+      "physical_scale_preserved": true,
+      "encoded_bytes": 245760,
+      "encoded_sha256": "f73ee4763fb7d4a6f3bd6b4432995f4a32feb1aea8b7d4c2ea22f85d6452ec56",
+      "unchanged_from_v08": true
+    },
+    {
+      "fighter_id": 9,
+      "frame_hashes_match": true,
+      "palette_preserved": true,
+      "physical_scale_preserved": true,
+      "encoded_bytes": 245760,
+      "encoded_sha256": "20c9178676a4fa606b96c043b8b4924502f5eb3384914c47b2040180fa5f9235",
+      "unchanged_from_v08": false
+    },
+    {
+      "fighter_id": 10,
+      "frame_hashes_match": true,
+      "palette_preserved": true,
+      "physical_scale_preserved": true,
+      "encoded_bytes": 245760,
+      "encoded_sha256": "7f9289bae4169ca837dcc88e62de11a01e22c85a3b51fdaabd5815bec886eb54",
+      "unchanged_from_v08": true
+    },
+    {
+      "fighter_id": 11,
+      "frame_hashes_match": true,
+      "palette_preserved": true,
+      "physical_scale_preserved": true,
+      "encoded_bytes": 245760,
+      "encoded_sha256": "f7fc3acfb5a912aa73daaa7969501a4554d970372b5f68c12871e053171bbb67",
+      "unchanged_from_v08": true
+    }
+  ],
+  "reston": {
+    "reviewed_frames": 64,
+    "physical_scale": 0.2280130293159609,
+    "palette_sha256": "0fa34b1d226a993d001bd2df79e0b4f69827c214668446fe7b3b19bb3c64aa1d",
+    "native_bounds_max": [
+      80,
+      73
+    ],
+    "expected_frame_hashes_sha256": "7fe74ce9c1d771203191606d8f9ea05398eebb2507f7ab7dc538c766c274bfda"
+  },
+  "human_approval": false,
+  "source_commit": "fe05e5fd1391a1db20f1b66f1e9f6e699445e77a",
+  "source_tree": "46e1af160ffb8ab6cb768e3d9deec1352d77ae83",
+  "visual_review": {
+    "scope": "native 64-frame art and portrait review for integration",
+    "accepted_for_integration": true,
+    "human_approval": false
+  },
+  "runtime_captures": [
+    {
+      "capture": "reston-v4-p1",
+      "file": "docs/screenshots/likeness/reston-v4-p1.png",
+      "sha256": "400feeac4ef964bc96482f0a6f06f1e3c8158437faca791af27c395d55b8d71f"
+    },
+    {
+      "capture": "reston-v4-p2",
+      "file": "docs/screenshots/likeness/reston-v4-p2.png",
+      "sha256": "e75b5fb297e86b6a8ebc30d03d9998e867e09584f10665f066aac781c29642c4"
+    }
+  ]
+}

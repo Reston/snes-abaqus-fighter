@@ -85,12 +85,12 @@ endurance and independent smoke evidence passed, as did the package audit.
 Human likeness/balance, listening, controller, real-console and branding gates
 remained open.
 
-## v0.8.0 verified pause-guide direction
+## v0.8.0 historical pause-guide direction
 
-The verified v0.8.0 source-freeze snapshot keeps the twelve fighter masters,
+The verified v0.8.0 source-freeze snapshot kept the twelve fighter masters,
 costumes, palettes, 64-frame atlases, native proportions and all stage masters
-unchanged. Reston's residual hair/likeness review remains open; this snapshot
-does not turn that review into an approval.
+unchanged. Reston's hair/likeness review remained open; that snapshot did not
+turn the review into an approval.
 
 The pause overlay follows the established minimal royal-navy, white and gold
 language and uses opaque original glyphs 256-383 in the reserved interface
@@ -109,10 +109,41 @@ retreat, while the Jump dummy automatically jumps again after landing. The
 fighter art is unchanged; visual review of the guide and Reston's remaining
 likeness issue is still required.
 
-The six native suites pass on the verified ROM SHA with 30,641 checks. Matching
-compatibility, matchup, bounded independent-combat, endurance and fresh-source
-evidence also pass. The offline package passes 7,471 technical audit checks; human likeness,
-balance, listening, controller, real-console and branding review remain open.
+The six native suites passed on the verified v0.8.0 ROM SHA with 30,641 checks.
+Matching compatibility, matchup, bounded independent-combat, endurance and
+fresh-source evidence also passed. The offline package passed 7,471 technical
+audit checks; human likeness, balance, listening, controller, real-console and
+branding review remained open.
+
+## v0.8.1 verified Reston v4 direction
+
+The verified v0.8.1 snapshot is an art-only source revision. Reston's complete 64-frame
+set and selected portrait use a fuller very-short near-black buzz cap across the
+top and crown, with the mature forehead and face retained. The versioned source
+files are `atlas-v4.png`, `animation-motion-v4.png`,
+`animation-actions-v4.png` and `animation-airborne-v4.png`; the original v3
+sources remain retained. `likeness-v4.json`, `animation-v4.json`,
+`animation-airborne-v4.json` and `native-revision.json` preserve the three
+imagegen provenance records, source hashes, expected native hashes and review
+scope.
+
+The immutable v0.8.0 baseline pins all twelve prior 64-frame sets. The other
+eleven fighter bank bytes are identical, all twelve palettes and uniform scales
+are unchanged, and Reston's source normalization, palette and scale are locked
+to the established values. The native revision records expected frame-hash
+digest `7fe74ce9c1d771203191606d8f9ea05398eebb2507f7ab7dc538c766c274bfda`,
+the unchanged palette SHA256
+`0fa34b1d226a993d001bd2df79e0b4f69827c214668446fe7b3b19bb3c64aa1d` and
+uniform/physical scale `0.2280130293159609`.
+
+Full64 native visual review accepted the revision for integration. Actual human
+likeness/consent feedback remains pending. Native C/ASM, controls, gameplay and
+audio are unchanged. All six native reports and matching expanded evidence pass
+for ROM SHA256 `76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`
+(header `A358`), including fresh export, matchup, stage, policy, replay,
+symmetry, pinned bsnes and endurance checks. The v0.8.1 package and its
+7,471-check audit pass; public, human-balance, listening, controller,
+real-console and branding gates stay open.
 
 ## v0.4.1 Reston hair correction
 

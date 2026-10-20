@@ -6,16 +6,17 @@ for readability, responsiveness, animation and completeness. The Abaqus roster,
 places and cartoon identities remain the game's own. Commercial sprites, ROMs,
 music and an implication of Capcom affiliation are outside this project.
 
-v0.8.0 is the current verified technical development snapshot. Its cartridge
-SHA256 is `53ef44225c83bd52ee0eea3910ba74ade5ba949af7aa7440c74d959812c13090`.
-Its six native suites pass 30,641 checks covering the 64-frame roster,
-combat, CPU policy, interface, stage animation, measured OBJ budget and
-Training/guide behavior. The
-same cartridge passes 288 native matchup cases and four deterministic replays,
-three uninterrupted native live-hour sessions, and an isolated committed-source
-rebuild. Pinned bsnes2014 Accuracy smoke and 48 bounded combat cases provide
+v0.8.1 is the current verified technical snapshot, cartridge SHA256
+`76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`.
+Its six native suites pass 30,641 checks. The same cartridge passes 288 native
+matchup cases and four deterministic replays, three uninterrupted native
+live-hour sessions, and a fresh-source rebuild reproducing 214 generated
+assets. Pinned bsnes2014 Accuracy smoke and 48 bounded combat cases provide
 second-engine evidence; their scope is recorded in
 [COMPATIBILITY.md](COMPATIBILITY.md).
+The snapshot keeps the native engine unchanged and revises Reston's
+64-frame art and portraits under a pinned per-fighter contract. All other
+fighters' native bank bytes, and every fighter's palette and scale, are retained.
 Passing these suites is necessary evidence, not a claim that the public-release
 bar has been met.
 The stricter matchup and uninterrupted-session probes exposed frame overruns
@@ -30,15 +31,15 @@ offers Stand, Guard High, Guard Low and repeated Jump. Opposite pause directions
 resolve to neutral across both controllers. Pausing after contact refreshes the
 actual health bars without advancing combat. The new sixth native suite,
 `tools/test_training.py`, passes alongside the original five suites and is
-required before packaging. All current reports identify the exact v0.8
-cartridge; the preceding v0.7.1 reports and package remain historical.
+required before packaging. All current reports identify the exact v0.8.1
+cartridge; preceding snapshots remain historical.
 
 ## Release gates
 
 | Gate | Required evidence | Baseline status |
 | --- | --- | --- |
-| Native correctness | Reproducible cartridge, valid header/checksum, all six exact-ROM suites, no known critical/high defects | v0.8 six-suite, expanded technical evidence and isolated rebuild pass; no known critical/high defect in the verified scopes |
-| Fighter identity and animation | All twelve likenesses reviewed at native size; stable anatomy, costume, palette and floor pivot; readable ground, air, throw, hit, downed and wake sequences in both directions | All 64-frame sets present with native motion captures; automated geometry and visual continuity review found no clipping/scale defect. Reston's thin crown/high forehead remains a likeness refinement; team likeness and human motion approval pending |
+| Native correctness | Reproducible cartridge, valid header/checksum, all six exact-ROM suites, no known critical/high defects | v0.8.1 six-suite, expanded technical evidence and isolated rebuild pass; no known critical/high defect in the verified scopes |
+| Fighter identity and animation | All twelve likenesses reviewed at native size; stable anatomy, costume, palette and floor pivot; readable ground, air, throw, hit, downed and wake sequences in both directions | All 64-frame sets present with native motion captures; geometry and visual continuity review found no clipping/scale defect. Reston v4's fuller short buzz cap is accepted for integration; team likeness and human motion approval remain pending |
 | Combat agreement | Visible active attacks match contact and hurt regions; coherent guard, trade, facing, corner, cancel, throw and wake rules; no repeatable uncontrolled damage or input exploits | Controller-driven air/throw/down/wake and guard regressions present; human matchup/contact review pending |
 | Balance and CPU | Documented profile envelope; scripted all-pair matchup sweep; CPU approaches, defends and punishes predictably by difficulty; human sessions cover every fighter and all four special families | Profile envelope, bounded CPU probes and 144 ordered pairs under two policies pass; strategic CPU and human balance review pending |
 | Stage and interface craft | Three readable locations with finished floor/depth, purposeful ambient motion and cohesive effects; clean selection, pause, results and champion flow; no obstructive instructions | Menus/floor/results and first ambient/effects pass implemented; human presentation and ending review pending |
