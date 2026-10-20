@@ -1085,9 +1085,18 @@ def assert_loaded_state(current: dict[str, int], mode: int, fighter: int,
 
 def move_cursor(host: LongRunHost, runner: EnduranceRun,
                 current: int, desired: int, port: int = 0) -> None:
-    steps = (int(desired) - int(current)) % 12
-    for _ in range(steps):
-        tracked_pulse(host, runner, "right", port)
+    # The roster is a 4x3 grid: vertical edges move four slots. A forward-only
+    # sweep can issue 22 deliberate cursor pulses for two fighters and spend
+    # longer than the softlock allowance in a healthy menu. Use its real grid
+    # controls, retaining every per-transition timeout and loaded-ID check.
+    routes = (
+        (), ("right",), ("right", "right"), ("down", "left"),
+        ("down",), ("down", "right"), ("down", "right", "right"),
+        ("up", "left"), ("up",), ("up", "right"),
+        ("left", "left"), ("left",),
+    )
+    for key in routes[(int(desired) - int(current)) % 12]:
+        tracked_pulse(host, runner, key, port)
 
 
 def move_arena_cursor(host: LongRunHost, runner: EnduranceRun,
