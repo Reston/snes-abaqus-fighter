@@ -108,6 +108,7 @@ u8 arcade, roundNumber, seconds, secondTick, intro, roundEnd, winner, paused;
 u8 hitstop, shake, flash, fxLife, fxX, fxY, fxType, resultWin, champion;
 u8 hudDirty, bannerDirty, footerDirty, fullDirty, musicIndex, musicOn;
 u8 impactHudPending,impactBannerPending;
+u8 impactBannerPlayer,impactBannerCombo,impactBannerCounter;
 u8 roundBannerPending;
 u8 pendingSound;
 u8 cpuTick;
@@ -354,6 +355,7 @@ void resetRound(void) {
     }
     seconds=99;secondTick=0;intro=110;roundEnd=0;hitstop=0;shake=0;fxLife=0;
     impactHudPending=0;impactBannerPending=0;roundBannerPending=0;
+    impactBannerPlayer=0;impactBannerCombo=0;impactBannerCounter=0;
     pendingSound=0;
     hudHp[0]=255;hudHp[1]=255;hudEnergy[0]=255;hudEnergy[1]=255;
     hudWins[0]=255;hudWins[1]=255;hudSeconds=255;
@@ -447,17 +449,22 @@ u16 cpuKeys(void) {
         return back | (enemy->duck?KEY_DOWN:0);
     /* A special is only issued while the CPU is grounded and free.  The
      * family bands avoid sending rush/rising attacks from projectile range. */
-    if(!f->action && !f->hurt && !f->y && f->energy>=32 && ((frame+f->id*13)%97==0)) {
+    if(!f->action && !f->hurt && !f->y && f->energy>=32) {
         if(c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE) {
-            if(distance>95)return KEY_DOWN|KEY_X;
-        } else if(c->specialFamily==SPECIAL_RUSH) {
-            specialMax=c->specialReach+BODY_HALF_WIDTH;
-            specialMax+=((u16)c->specialSpeed*c->specialActive)>>4;
-            if(specialMax>90)specialMax=90;
-            if(distance>=45 && distance<=specialMax)return KEY_DOWN|KEY_X;
-        } else if(c->specialFamily==SPECIAL_RISING) {
-            if(distance<=c->specialReach+BODY_HALF_WIDTH &&
-               (enemy->y<0 || enemyActive))return KEY_DOWN|KEY_X;
+            /* Do not walk out of the opening band while waiting for the
+             * global cadence. The meter cost makes this opening cast one-shot. */
+            if(distance>110 && f->energy>=64)return KEY_DOWN|KEY_X;
+            if(distance>95 && ((frame+f->id*13)%97==0))return KEY_DOWN|KEY_X;
+        } else if((frame+f->id*13)%97==0) {
+            if(c->specialFamily==SPECIAL_RUSH) {
+                specialMax=c->specialReach+BODY_HALF_WIDTH;
+                specialMax+=((u16)c->specialSpeed*c->specialActive)>>4;
+                if(specialMax>90)specialMax=90;
+                if(distance>=45 && distance<=specialMax)return KEY_DOWN|KEY_X;
+            } else if(c->specialFamily==SPECIAL_RISING) {
+                if(distance<=c->specialReach+BODY_HALF_WIDTH &&
+                   (enemy->y<0 || enemyActive))return KEY_DOWN|KEY_X;
+            }
         }
     }
     if(distance>46) {
@@ -654,7 +661,7 @@ u8 hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
     if(blocked) {
         d->guard=1;d->hurt=8;dmg=dmg>14?1:0;fxType=1;hitstop=3;
         a->combo=0;a->combotime=0;a->counter=0;
-        impactBannerPending=1;
+        impactBannerCombo=0;impactBannerCounter=0;
     } else {
         a->counter=0;
         releaseHeldVictim(defender);
@@ -668,12 +675,11 @@ u8 hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
         d->airAction=0;d->wakeAction=0;d->wakeAge=0;d->wakeJump=0;d->wakeKeys=0;
         fxType=0;hitstop=5;shake=6;
         a->energy=a->energy+8>ENERGY_MAX?ENERGY_MAX:a->energy+8;
-        if(a->combo>1 || a->counter) {
-            clearBanner();impactBannerPending=0;
-            word(attacker?20:2,9,a->counter?"COUNTER!":"COMBO!");
-            if(a->combo>1)put(attacker?28:10,9,'0'+(a->combo%10));
-        } else impactBannerPending=1;
+        impactBannerCombo=a->combo;impactBannerCounter=a->counter;
     }
+    /* Snapshot feedback now; construct its tilemap after the first frozen
+     * HUD tick, away from contact physics and the new actor pose uploads. */
+    impactBannerPlayer=attacker;impactBannerPending=1;
     if(dmg>=d->hp)d->hp=0;else d->hp-=dmg;
     if(blocked)d->x+=a->face?16:-16;
     else d->x+=a->face?32:-32;
@@ -1002,7 +1008,7 @@ void queueFighter(u8 p) {
 void fightTick(void) {
     animationAdvance=0;
     if((edge0|edge1)&KEY_START) {
-        paused=!paused;clearBanner();
+        paused=!paused;impactBannerPending=0;clearBanner();
         if(paused){clearFightHint();panel(10,4);center(10,"PAUSED");center(12,"A RESUME   B ROSTER");}
         sound(0);
     }
@@ -1042,7 +1048,13 @@ void fightTick(void) {
         if(!intro){clearBanner();clearFightHint();}
     } else if(hitstop) {
         if(impactHudPending){hud();impactHudPending=0;}
-        else if(impactBannerPending){clearBanner();impactBannerPending=0;}
+        else if(impactBannerPending) {
+            clearBanner();impactBannerPending=0;
+            if(impactBannerCombo>1 || impactBannerCounter) {
+                word(impactBannerPlayer?20:2,9,impactBannerCounter?"COUNTER!":"COMBO!");
+                if(impactBannerCombo>1)put(impactBannerPlayer?28:10,9,'0'+(impactBannerCombo%10));
+            }
+        }
         hitstop--;
     }
     else {
