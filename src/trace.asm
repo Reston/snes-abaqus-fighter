@@ -289,6 +289,18 @@ traceActorsFast:
     lda.l ambientAge
     and #$00ff
     sta.l $7fffec ; TRACE[118], pending live ticks
+    lda.l pausePage
+    and #$00ff
+    sta.l $7fffee ; TRACE[119], paused move-guide page (0/1/2)
+    lda.l guideBuild
+    and #$00ff
+    sta.l $7ffff0 ; TRACE[120], staged guide build (0 settled)
+    lda.l trainingDummy
+    and #$00ff
+    sta.l $7ffff2 ; TRACE[121], stand/high/low/jump dummy
+    lda.l guideDirty
+    and #$00ff
+    sta.l $7ffff4 ; TRACE[122], pending guide-range upload
     plp
     rtl
 .ends

@@ -109,6 +109,8 @@ u16 ui[1024];
 u16 frame, randomseed, pad0, pad1, edge0, edge1;
 u8 screen, mode, difficulty, menu, selected, selected2, selectPlayer, arena;
 u8 arcade, roundNumber, seconds, secondTick, intro, roundEnd, winner, paused;
+u8 pausePage,guideBuild,guideDirty,trainingDummy;
+u8 pauseHudPending;
 u8 hitstop, shake, flash, fxLife, fxX, fxY, fxType, resultWin, champion;
 u8 hudDirty, bannerDirty, footerDirty, fullDirty, musicIndex, musicOn;
 u8 impactHudPending,impactBannerPending;
@@ -139,9 +141,13 @@ extern void processResidentAudioReady(void);
 extern void uploadActor(u8 *source,u16 destination);
 extern void traceActorsFast(void);
 extern void clearBanner(void);
+extern void clearUi(void);
 extern void clearFightHint(void);
 extern void fillBannerPanel(void);
 extern void fillPausePanel(void);
+extern void fillGuidePanel(void);
+extern void clearGuidePanel(void);
+extern void drawGuideWord(u16 byteOffset,const char *text);
 extern void applyHitReaction(u8 defender,u8 damage);
 extern void refreshHealthBar(u8 player);
 extern void refreshEnergyBar(u8 player);
@@ -233,7 +239,6 @@ void put(u8 x,u8 y,u16 t) { if(x<32 && y<32) ui[(u16)y*32+x]=t|0x2000; }
 void word(u8 x,u8 y,const char *s) { while(*s && x<32) put(x++,y,*s++); }
 void center(u8 y,const char *s) { u8 n=0; const char *p=s; while(*p++)n++; word((32-n)/2,y,s); }
 void number(u8 x,u8 y,u8 n) { put(x,y,'0'+n/10); put(x+1,y,'0'+n%10); }
-void clearUi(void) { u16 i; for(i=0;i<1024;i++)ui[i]=0; fullDirty=1; }
 void panel(u8 y,u8 rows) { u16 i; for(i=(u16)y*32;i<(u16)(y+rows)*32;i++)ui[i]=128|0x2000; }
 void cursor(u8 x,u8 y,u8 w,u8 h) {
     u8 i;
@@ -258,6 +263,7 @@ void music(u8 index) {
     spcSetModuleVolume(86);spcPlay(0);musicIndex=index;
 }
 void commonScreen(void) {
+    pausePage=0;guideBuild=0;guideDirty=0;trainingDummy=0;pauseHudPending=0;
     portraitDirty=0;
     actorUploadDirty=0;
     ambientClock=0;ambientPhase=0;ambientWanted=255;ambientAge=0;
@@ -372,6 +378,7 @@ void resetRoundState(void) {
     impactBannerPlayer=0;impactBannerCombo=0;impactBannerCounter=0;
     impactSettle=0;resetFooterPending=0;roundUiPending=0;
     pendingSound=0;
+    pauseHudPending=0;
     hudHp[0]=255;hudHp[1]=255;hudEnergy[0]=255;hudEnergy[1]=255;
     hudWins[0]=255;hudWins[1]=255;hudSeconds=255;
 }
@@ -410,7 +417,7 @@ void beginMatch(void) {
      * blocks.  drawActorFast restores the 16x16 size bit and signed X9 bit
      * for each of the thirty live entries on every render. */
     for(i=0;i<16;i++)oamMemory[512+i]=0;
-    resetRound();panel(26,2);center(26,"6 BUTTONS / DOWN+P: SPECIAL");center(27,"BACK GUARD   START PAUSE");
+    resetRound();panel(26,2);center(26,"Y/X/L PUNCH   B/A/R KICK");center(27,"START PAUSE > SELECT GUIDE");
     music(arena+1);finishScreen();
 }
 void showResult(u8 won) {
@@ -424,13 +431,15 @@ void showResult(u8 won) {
     center(21,"B: CHARACTER SELECT");sound(3);finishScreen();
 }
 
+#include "pause_guide.h"
+
 u16 cpuKeys(void) {
     s16 distance;
     u16 k=0,forward,back,waveDistance,specialMax;
     u8 chance,enemyActive,waveApproaching;
     Fighter *f=&fighters[1];Fighter *enemy=&fighters[0];
     const CharacterProfile *c=combatProfiles[1];
-    if(mode==2)return 0;
+    if(mode==2)return trainingKeys();
     if(!enemy->hp)return 0;
     if(f->downState && f->downState!=DOWN_WAKE)return 0;
     /* Wake input is a single edge at the start of the six-tick wake window.
@@ -647,6 +656,11 @@ void controls(u8 p) {
     }
     f->duck=(keys&KEY_DOWN) && !f->y;
     f->guard=(keys&back) && !f->y;
+    /* Guard dummies hold their position rather than walking away. Recoil,
+     * separation, jump and downed physics still use the ordinary rules. */
+    if(mode==2 && p==1) {
+        if(trainingDummy==1 || trainingDummy==2)return;
+    }
     if(a<7 && !f->y) {
         if(((keys&KEY_UP) && !f->wakeLock) || f->jumpBuffer) {
             f->vy=c->jumpVy;f->y=-1;f->duck=0;f->jumpBuffer=0;f->landing=0;
@@ -996,17 +1010,37 @@ void drawFight(void) {
     }
 }
 void fightTick(void) {
+    u16 pauseKeys=edge0|edge1,pauseDirections;
     animationAdvance=0;
-    if((edge0|edge1)&KEY_START) {
+    if(pauseKeys&KEY_START) {
         paused=!paused;impactBannerPending=0;clearBanner();
-        if(paused){clearFightHint();fillPausePanel();center(10,"PAUSED");center(12,"A RESUME   B ROSTER");}
+        if(paused){pausePage=0;guideBuild=0;pauseHudPending=1;clearFightHint();drawPauseCard();}
+        else {closePauseGuide();settlePausedHud();}
         sound(0);
     }
     if(paused) {
+        pauseDirections=cleanDirections(pad0|pad1)&pauseKeys;
+        if(!(pauseKeys&KEY_START))settlePausedHud();
         fighters[0].bufferedAction=0;fighters[0].bufferAge=0;fighters[0].jumpBuffer=0;
         fighters[1].bufferedAction=0;fighters[1].bufferAge=0;fighters[1].jumpBuffer=0;
-        if(edge0&KEY_A){paused=0;clearBanner();}
-        if(edge0&KEY_B){showSelect();return;}
+        if(!(pauseKeys&KEY_START)) {
+            if(pauseKeys&KEY_B){closePauseGuide();showSelect();return;}
+            if(pauseKeys&KEY_A){paused=0;closePauseGuide();clearBanner();}
+            else if(pauseKeys&KEY_SELECT) {
+                if(pausePage==2){closePauseGuide();drawPauseCard();}
+                else openPauseGuide(pausePage+1);
+                sound(0);
+            } else if(pausePage) {
+                if(pauseDirections&(KEY_LEFT|KEY_RIGHT)) {
+                    openPauseGuide(pausePage==1?2:1);sound(0);
+                }
+            } else if(mode==2 && (pauseDirections&(KEY_UP|KEY_DOWN))) {
+                if(pauseDirections&KEY_DOWN)trainingDummy=(trainingDummy+1)%4;
+                else trainingDummy=(trainingDummy+3)%4;
+                drawPauseCard();sound(0);
+            }
+        }
+        if(paused && guideBuild)buildPauseGuide();
         drawFight();return;
     }
     if(mode==2 && (edge0&KEY_SELECT)) {
@@ -1165,16 +1199,21 @@ int main(void) {
          * the end of vblank. Read it before DMA; the host never pokes PPU. */
         TRACE[114]=REG_STAT77;
         actorTransferred=actorUploadDirty;
-        interfaceTransferred=fullDirty|hudDirty|bannerDirty|footerDirty;
+        interfaceTransferred=fullDirty|hudDirty|bannerDirty|footerDirty|guideDirty;
         if(actorUploadDirty){uploadActor(actorUploadSource,actorUploadDestination);actorUploadDirty=0;}
         if(screen==SELECT && portraitDirty)uploadMenuPortrait();
         if(fullDirty){dmaCopyVram((u8*)ui,0x5800,2048);fullDirty=0;hudDirty=0;bannerDirty=0;footerDirty=0;}
         else if(!actorTransferred) {
-            /* Keep interface DMAs out of the 3840-byte actor-upload blank.
-             * Dirty ranges remain queued; hitstop flushes impact bars/text. */
-            if(hudDirty){dmaCopyVram((u8*)ui,0x5800,320);hudDirty=0;}
-            if(bannerDirty){dmaCopyVram((u8*)&ui[9*32],0x5800+9*32,320);bannerDirty=0;}
-            if(footerDirty){dmaCopyVram((u8*)&ui[26*32],0x5800+26*32,128);footerDirty=0;}
+            if(guideDirty) {
+                dmaCopyVram((u8*)&ui[5*32],0x5800+5*32,1472);
+                guideDirty=0;bannerDirty=0;footerDirty=0;
+            } else {
+                /* Keep interface DMAs out of the 3840-byte actor-upload blank.
+                 * Dirty ranges remain queued; hitstop flushes impact bars/text. */
+                if(hudDirty){dmaCopyVram((u8*)ui,0x5800,320);hudDirty=0;}
+                if(bannerDirty){dmaCopyVram((u8*)&ui[9*32],0x5800+9*32,320);bannerDirty=0;}
+                if(footerDirty){dmaCopyVram((u8*)&ui[26*32],0x5800+26*32,128);footerDirty=0;}
+            }
         }
         if(ambientReady && !actorTransferred && !interfaceTransferred) {
             dmaCopyVram(ambientUploadSource,AMBIENT_VRAM,AMBIENT_BYTES);
@@ -1182,7 +1221,7 @@ int main(void) {
             /* Publish completed transfer ownership with the actual VRAM. */
             TRACE[115]=ambientPhase;TRACE[117]=255;TRACE[118]=0;
         }
-        if(shake && screen==FIGHT){shake--;sx=shake&1?2:254;bgSetScroll(0,sx==254?510:2,511);}
+        if(shake && screen==FIGHT){if(!paused)shake--;sx=shake&1?2:254;bgSetScroll(0,sx==254?510:2,511);}
         else bgSetScroll(0,0,511);
         frame++;
     }

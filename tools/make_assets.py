@@ -210,6 +210,16 @@ for i in range(128,160):
     elif i==154:
         for x in range(8):pix[x]=3
     ui+=tile(pix)
+# Portraits retain slots 160..239. Opaque guide glyphs use the otherwise free
+# slots 256..383, ending exactly before the BG2 map at VRAM word $5800.
+ui+=bytes((256-160)*32)
+for code in range(128):
+    pix=[1]*64
+    for y,row in enumerate(GLYPHS.get(chr(code),[])):
+        for x,c in enumerate(row):
+            if c=='1':pix[y*8+x+1]=2
+    ui+=tile(pix)
+assert len(ui)==384*32
 asset('ui_tiles',ui)
 asset('ui_pal',palbytes(UI_COLORS+[(0,0,0),(15,24,41),(96,235,212)]+UI_COLORS[3:]))
 

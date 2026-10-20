@@ -90,7 +90,7 @@ extern char portrait11_tiles, portrait11_tiles_end;
 extern char portrait11_pal, portrait11_pal_end;
 #define PORTRAIT11_PAL_SIZE 32
 extern char ui_tiles, ui_tiles_end;
-#define UI_TILES_SIZE 5120
+#define UI_TILES_SIZE 12288
 extern char ui_pal, ui_pal_end;
 #define UI_PAL_SIZE 64
 extern char fighter00, fighter00_end;

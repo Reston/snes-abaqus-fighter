@@ -2,6 +2,23 @@
 ; comfortably inside the SNES frame / vblank budgets.
 .include "hdr.asm"
 
+; Menu redraws clear the full tilemap. Do this once with bounded stores rather
+; than the compiler's per-cell far-pointer loop, including on a title edge.
+.section "ui_clear_full_fast" superfree
+clearUi:
+    php
+    rep #$20
+    lda #$0000
+    .rept 1024 index cell
+        sta.l ui+cell*2
+    .endr
+    sep #$20
+    lda #$01
+    sta.l fullDirty
+    plp
+    rtl
+.ends
+
 ; A real contact or expired combo clears exactly five interface rows. The
 ; compiler's indexed 160-word C loop can consume a combat frame by itself.
 .section "ui_clear_banner_fast" superfree
@@ -60,6 +77,72 @@ fillPausePanel:
     .rept 128 index cell
         sta.l ui+640+cell*2
     .endr
+    plp
+    rtl
+.ends
+
+; The paused move guide owns BG2 rows 5-27 only. Its 1472-byte DMA yields
+; to actor uploads; filling in native code avoids a long indexed C loop.
+.section "pause_guide_panel_fast" superfree
+; void drawGuideWord(u16 byteOffset, const char *text)
+; PHP/PHX/PHY -> byteOffset at 9,s and the four-byte far pointer at 11,s.
+; Tile 256+ASCII is the solid-navy version of the original project glyph.
+; The row boundary caps every write even if a caller supplies a long line.
+drawGuideWord:
+    php
+    phx
+    phy
+    rep #$30
+    lda 11,s
+    sta.b tcc__r0
+    lda 13,s
+    sta.b tcc__r0h
+    lda 9,s
+    tax
+    and #$ffc0
+    clc
+    adc #$0040
+    sta.b tcc__r1
+    ldy #$0000
+    -:
+    cpx.b tcc__r1
+    beq +
+    sep #$20
+    lda [tcc__r0],y
+    beq +
+    rep #$20
+    and #$00ff
+    ora #$2100
+    sta.l ui,x
+    inx
+    inx
+    iny
+    bra -
+    +:
+    rep #$30
+    ply
+    plx
+    plp
+    rtl
+fillGuidePanel:
+    php
+    rep #$20
+    lda #$2080
+    .rept 736 index cell
+        sta.l ui+320+cell*2
+    .endr
+    plp
+    rtl
+clearGuidePanel:
+    php
+    rep #$20
+    lda #$0000
+    .rept 736 index cell
+        sta.l ui+320+cell*2
+    .endr
+    sep #$20
+    lda #$01
+    sta.l guideDirty
     plp
     rtl
 .ends
