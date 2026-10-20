@@ -8,6 +8,10 @@ Preserve the native emulator requirement when extending the project.
 - Build with `Build.cmd`; regenerate assets with `Build.cmd --assets`.
 - Run `Test.cmd` after gameplay, graphics-transfer, audio or progression changes.
   It runs the actual ROM in Snes9x and records the tested ROM hash.
+- Run agent verification silently and headlessly. The libretro test host may
+  capture audio data for assertions, but must not play it through the speakers.
+  Do not launch, reopen, refocus, or bring emulator windows forward for testing;
+  the user may be playing another game in fullscreen. Keep their focus intact.
 - Keep the one-actor-per-vblank transfer budget, 32 KiB LoROM bank boundaries,
   OBJ scanline limits and reserved palette banks in mind.
 - Keep original art masters and prompts in the repository. Do not import
