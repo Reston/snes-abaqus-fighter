@@ -4,15 +4,17 @@
 
 Supported build host: Windows x64. `tools/setup.ps1` downloads pinned official release archives into `.tools/` and verifies their SHA256. `tools/build.py` invokes 816-tcc, 816-opt, WLA-65816 and WLALINK directly, so a separate Make/MSYS installation is unnecessary.
 
-The v0.6.0 integration targets a 4 MiB FastROM LoROM image across 128 banks,
+The v0.6.1 integration targets a 4 MiB FastROM LoROM image across 128 banks,
 NTSC, with no coprocessor or SRAM requirement. WLALINK writes the SNES
 header/checksum. The build independently checks the FastROM LoROM mapping byte,
 image size and calculated checksum before writing `dist/manifest.json`. The
-latest four reports pass against ROM SHA256
-`0d907717d284c9d0056434e69da0a265c2b09cf4c84761aa32998b4fc0bbd5ae`. The
-canonical silent `Test.cmd` batch passes on that image.
-`Build.cmd --assets` subsequently reproduced the same ROM SHA, confirming
-deterministic source/asset output for this evidence snapshot.
+four canonical reports pass against ROM SHA256
+`945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee`: 2,595
+gameplay, 18,085 roster, 215 presentation and 854 focused-input checks
+(21,749 total). The separate pinned bsnes2014 Accuracy smoke report passes
+against the same SHA. `Build.cmd --assets` reproduced this ROM SHA after the
+canonical pass. The CPU distance/reaction corrections and crouch-guard pose
+selection are verified without changing art, profile data or the native ABI.
 
 `Build.cmd` rebuilds from committed native assets. `Build.cmd --assets` regenerates the full asset set first. Source portrait downloads can be refreshed with `tools/fetch_references.py`; rebuilding the game does not require fetching the team pages.
 
@@ -126,7 +128,21 @@ Fight hints occupy BG2 rows 26-27 during the first intro only. A separate dirty
 flag clears these 128 bytes without forcing a full interface transfer alongside
 the actor upload. Results place the P1/P2 round score on row 15 and quote on 17.
 
-The CPU samples one decision per live tick using distance, opponent attack state, projectiles, a deterministic PRNG and three difficulty levels. Its neutral facing is updated before that decision. It obeys the same attack startup, active and recovery rules as the player. Fighter selection, arcade progression, training reset and menu navigation remain native controller actions.
+The CPU samples one decision per live tick using distance, opponent attack
+state, projectiles, a deterministic PRNG and three difficulty levels. Its
+neutral facing is updated before that decision. The verified v0.6.1 logic checks
+the opponent's upcoming active window at `tick+1` because controller capture
+precedes physics, prioritizes approaching waves within 96 native pixels, and
+uses family-specific special distance bands. Normal and Hard crouch-guard low
+waves, while the same levels send a wake jump edge at `DOWN_WAKE` tick 0. The
+approach branch closes the 29-46 pixel gap, and throw decisions use each
+profile's `throwRange`. Crouch guard selects animation frame 3 so the visible
+pose matches logical guard pose 9. Input coverage exercises all three
+difficulties and four special families for 600 live ticks each, with near/far,
+approach, low-guard, wake and strict no-KO lookahead cases. These are CPU
+correctness checks, not a strategic-AI or balance-completion claim.
+Fighter selection, arcade progression, training reset and menu navigation remain
+native controller actions.
 
 ## Audio
 
@@ -143,8 +159,9 @@ the synthesized cues while avoiding per-hit BRR streaming stalls.
 If several cues arrive on the same simulation frame, the sound path coalesces
 them by priority: round, impact, special, then swing. The generated effects-first
 module order is checked at compile time; scene loading reloads the four effect
-slots after replacing the music module. The resident-effect migration is part of
-the unverified v0.6 integration.
+slots after replacing the music module. The resident-effect migration is
+included in the verified v0.6.1 baseline; the CPU pass does not change the
+audio path.
 
 ## Verification
 
@@ -158,12 +175,22 @@ four-by-three selection navigation, all twelve 64x80 profile portrait transfers
 and all three stage plates. `tools/test_inputs.py` covers SOCD neutralization,
 buffered attacks and jumps, true and shortcut motion commands, hitstop input
 capture, hit-confirm cancels, guard timing, animation freezing and the Training
-Select reset. The latest v0.6 snapshot has all four reports passing against
-ROM SHA256 `0d907717d284c9d0056434e69da0a265c2b09cf4c84761aa32998b4fc0bbd5ae`:
-2,595 gameplay, 18,085 roster, 215 presentation and 604 focused-input checks
-(21,499 total). The canonical silent `Test.cmd` batch passed on that image; all
+Select reset. The current v0.6.1 snapshot has all four reports passing against
+ROM SHA256 `945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee`:
+2,595 gameplay, 18,085 roster, 215 presentation and 854 focused-input checks
+(21,749 total). The canonical silent `Test.cmd` batch passed on that image; all
 four suites capture audio data without opening an audio device or a native
-window and preserve the user's foreground focus.
+window and preserve the user's foreground focus. Input coverage spans three
+difficulties and four special families for 600 live ticks each (7,200 total),
+plus near-special, far-negative, 29-46 approach, low-guard, wake and strict
+no-KO lookahead cases.
+
+The separate `docs/compatibility-test-report.json` passes against the same ROM
+SHA using the pinned bsnes2014 Accuracy core. Its scope is an independent smoke:
+title/select/arena/fight captures, controller movement and jump, neutral 600
+frame cadence with every delta equal to one, and captured audio. It is not full
+combat, soak or human verification. Run it with PowerShell
+`tools/setup-compat.ps1` followed by `python tools/test_compatibility.py`.
 
 Each suite stores the tested ROM SHA256 in its report:
 
@@ -171,20 +198,22 @@ Each suite stores the tested ROM SHA256 in its report:
 - `docs/character-test-report.json`
 - `docs/presentation-test-report.json`
 - `docs/input-test-report.json`
+- `docs/compatibility-test-report.json`
 
 The reports are authoritative for the exact ROM SHA recorded in each file. The
-canonical v0.6.0 batch points all four reports to
-`0d907717d284c9d0056434e69da0a265c2b09cf4c84761aa32998b4fc0bbd5ae`; the
-batch covers both boot phases, two-controller air/trades/combo cadence and
-resident-audio probes. The cadence probe and native screenshot/GIF evidence
+canonical v0.6.1 batch points all four native reports to
+`945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee`; the batch
+covers both boot phases, two-controller air/trades/combo cadence, resident-audio
+probes and CPU reactions. The cadence probe and native screenshot/GIF evidence
 remain tied to their recorded ROM hash and must not be reused after a hash
 change.
 
 An earlier four-family 600-frame probe was too narrow to characterize worst-case
-audio or UI timing. Two-actor attack/impact scenarios exposed additional lag,
-which is why that probe is not used as worst-case evidence. The canonical batch
-covers the current suite evidence; broader human and independent-engine review
-remains part of the open polish gates.
+audio or UI timing. The current input suite expands CPU coverage to three
+difficulties, four families and 7,200 live ticks, with explicit spacing,
+low-guard, wake and no-KO lookahead cases. The independent bsnes report remains
+a narrower smoke rather than full combat or soak evidence. Broader human and
+independent-engine review remains part of the open polish gates.
 
 Two issues found during earlier integration shaped the implementation:
 
@@ -198,8 +227,14 @@ Two issues found during earlier integration shaped the implementation:
    blockable; real hits also clear guard. Native tests cover contact, guard,
    downed control, facing, round, timeout and arcade outcomes.
 
-The packager requires all four successful reports to match the current ROM before
-producing the offline archive; the canonical snapshot satisfies that exact-ROM
-evidence gate. Human balance sessions, art review, independent Mesen/bsnes runs,
-real-console/flash-cartridge testing and public-release review remain separate
-open gates.
+3. Real KO contact resolution keeps damage, winner selection, timers and layout
+   unchanged. `roundBannerPending` defers the panel, name and HUD transfer until
+   the first frozen `roundEnd` tick, avoiding a contact-time stall.
+
+The packager requires all four native reports and the separate compatibility
+report to match the current ROM before producing the offline archive. The
+v0.6.1 reports satisfy that exact-ROM evidence gate. The offline package passes
+202 technical audit checks, and repeated packaging with identical inputs
+produces identical ZIP bytes. Human balance sessions, art review,
+independent Mesen/bsnes combat runs, real-console/flash-cartridge testing and
+public-release review remain separate open gates.

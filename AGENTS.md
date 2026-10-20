@@ -2,16 +2,19 @@
 
 This is a native SNES fighting game. The authoritative deliverable is
 `dist/abaqus-after-hours.sfc`, built with PVSnesLib 4.6.0 from C and 65816
-assembly. The v0.6.0 integration targets a 4 MiB NTSC FastROM LoROM image
+assembly. The v0.6.x integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
-- The active source and evidence milestone is v0.6.0 combat-animation
-  integration. The latest four reports pass against ROM SHA256
-  `0d907717d284c9d0056434e69da0a265c2b09cf4c84761aa32998b4fc0bbd5ae`. The
-  canonical silent `Test.cmd` batch passes on that image. This evidence does
-  not close the public-release, human-playtest, independent-emulator or
-  real-console gates. Follow `docs/COMBAT-ANIMATION-CONTRACT.md` for the native
+- The active source and evidence milestone is v0.6.1 CPU correctness. The four
+  canonical reports pass against ROM SHA256
+  `945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee`:
+  2,595 gameplay, 18,085 roster, 215 presentation and 854 focused-input
+  checks (21,749 total). The separate pinned bsnes2014 Accuracy smoke report
+  passes against that same SHA. The CPU distance/reaction corrections and
+  crouch-guard pose selection are verified; art, profile data and the native
+  ABI remain unchanged. Human balance, public-release and real-console gates
+  remain open. Follow `docs/COMBAT-ANIMATION-CONTRACT.md` for the native
   contract.
 
 - Read `docs/DEVELOPMENT.md` before changing memory layout or hardware transfers.
@@ -29,6 +32,9 @@ Preserve the native emulator requirement when extending the project.
   ROM reports point to the exact same ROM SHA256:
   `docs/test-report.json`, `docs/character-test-report.json`,
   `docs/presentation-test-report.json` and `docs/input-test-report.json`.
+- The package gate also requires `docs/compatibility-test-report.json` to pass
+  against that same SHA. It is a separate pinned bsnes2014 Accuracy smoke, not
+  part of the four-suite `Test.cmd` batch.
 - The v0.6 fast path caches actor-bank and per-action timing selection, uses the
   compile-checked `Fighter` stride 64 and `Wave` stride 16 layouts, and caches
   unchanged OAM/shadow work by integer position and facing. Native health and
@@ -71,4 +77,5 @@ Preserve the native emulator requirement when extending the project.
   exact ROM above; public-release gates still govern public readiness.
 - Do not commit `.tools/`, emulator saves, build intermediates or release ZIPs.
 - Rebuild the offline package with `tools/package.py` only after all four suites
-  pass against the exact current ROM. Keep third-party license notices intact.
+  and the matching compatibility smoke pass against the exact current ROM.
+  Keep third-party license notices intact.

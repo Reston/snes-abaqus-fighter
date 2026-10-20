@@ -4,7 +4,7 @@ The active public-release target and evidence gates are in
 [PUBLIC-RELEASE.md](PUBLIC-RELEASE.md). Treat this roadmap as the work backlog;
 the release gates decide when the public candidate is actually ready.
 
-The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass set the cartoon arcade direction. v0.3 introduced twelve individual sixteen-pose atlases and likeness correction. v0.4 standardized the 96x80 physical scale and rebuilt the presentation. v0.5.0 adds animation, simpler menus and buffered inputs. v0.5.1 tightens contact, hit-confirm and combo rules, clears live-fight instructions, adds result scores and corrects emulator scaling. The v0.6.0 source integration adds the final airborne, throw, knockdown and wake frame range and combat flow; the canonical silent batch now passes on one ROM SHA, with public gates still open.
+The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass set the cartoon arcade direction. v0.3 introduced twelve individual sixteen-pose atlases and likeness correction. v0.4 standardized the 96x80 physical scale and rebuilt the presentation. v0.5.0 adds animation, simpler menus and buffered inputs. v0.5.1 tightens contact, hit-confirm and combo rules, clears live-fight instructions, adds result scores and corrects emulator scaling. The v0.6.0 source integration adds the final airborne, throw, knockdown and wake frame range and combat flow. The v0.6.1 CPU-correctness pass now has four-suite and pinned compatibility evidence on one ROM SHA, with public gates still open.
 
 ## v0.5 baseline
 
@@ -63,12 +63,12 @@ v0.5.1 baseline:
   `effects.it` at scene load, keeps music module IDs 1-4, uses `spcEffect` at
   pitch 2 and 8 kHz with the existing mix values, and coalesces same-frame cues
   by round, impact, special, then swing priority.
-- The latest four reports pass against ROM SHA256
+- The v0.6.0 baseline reports pass against ROM SHA256
   `0d907717d284c9d0056434e69da0a265c2b09cf4c84761aa32998b4fc0bbd5ae`:
   2,595 gameplay, 18,085 roster, 215 presentation and 604 focused-input
-  checks (21,499 total). The canonical silent `Test.cmd` batch passes on that
-  image; this evidence does not close public, human-playtest,
-  independent-emulator or real-console gates.
+  checks (21,499 total). The current v0.6.1 evidence supersedes that baseline;
+  it does not close public, human-playtest, independent-emulator or real-console
+  gates.
 
 ## Future art and animation
 
@@ -78,12 +78,44 @@ v0.5.1 baseline:
 - Extend the three independent stage compositions with layered parallax and animated coworkers while preserving the native tile, OBJ and vblank budgets.
 - Add a dedicated champion illustration and richer end-of-match presentation beyond the current large selection portraits.
 
+## v0.6.1 CPU-correctness pass
+
+The current verified source is ROM SHA256
+`945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee`. It keeps
+the v0.6.0 art, character profiles and native ABI unchanged while correcting
+CPU timing and reaction cases:
+
+- CPU attack defense checks the opponent's upcoming active window at `tick+1`,
+  because controller capture precedes physics.
+- Incoming waves have priority within a 96-pixel approach window; Normal and
+  Hard crouch-guard low waves.
+- Special decisions use family-specific distance bands, the approach branch
+  closes the 29-46 pixel gap, and throw decisions use each profile's
+  `throwRange`.
+- Normal and Hard send a wake jump edge at `DOWN_WAKE` tick 0. Crouch guard
+  selects its crouched pose so the visible frame matches the logical guard.
+
+The four native reports pass with 2,595 gameplay, 18,085 roster, 215
+presentation and 854 focused-input checks (21,749 total). CPU coverage spans
+three difficulties and four special families for 600 live ticks each, with
+near-special, far-negative, 29-46 approach, low-guard, wake and strict no-KO
+lookahead cases. A separate pinned bsnes2014 Accuracy smoke passes on the same
+ROM for title/select/arena/fight captures, controller movement and jump, 600
+one-tick cadence frames and captured audio. These are correctness and smoke
+checks; they do not establish strategic AI or complete human balance tuning.
+
+Real KO contact resolution keeps damage, winner selection, timers and layout
+unchanged; `roundBannerPending` defers panel/name/HUD transfer until the first
+frozen `roundEnd` tick to avoid a contact-time stall.
+
 ## Next combat pass
 
 - Tune frame data, reach, damage, push boxes, jump arcs, throw ranges and meter
   gain through human playtesting. The v0.6 values are an integration baseline,
   not a balance conclusion.
-- Improve CPU spacing, anti-air behavior, defensive variety and difficulty progression.
+- Continue human tuning of CPU spacing, anti-air behavior, defensive variety and
+  difficulty progression after the correctness pass; the new distance bands and
+  wave/wake reactions do not establish strategic AI or balance completion.
 - Add training hitbox display, frame-step tools, command history and more rematch options.
 - Extend the four special families with individual effect art, command variations and additional moves.
 - Audit aerial normal collision, throw contact and wake input timing against the
@@ -92,9 +124,11 @@ v0.5.1 baseline:
 ## Release-quality validation
 
 - Keep running the gameplay, roster, presentation and focused input suites after
-  changes. The latest reports share the exact SHA above and the canonical silent
-  `Test.cmd` batch passes, so the exact-ROM evidence gate for packaging is
-  satisfied. Human playtesting, independent-emulator, real-console and
+  changes. The current v0.6.1 reports share ROM SHA
+  `945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee`, and the
+  separate pinned compatibility report matches it. The exact-ROM evidence gate
+  for packaging is satisfied; archive creation, audit and ZIP reproducibility
+  remain pending. Human playtesting, independent full-combat, real-console and
   public-release review remain open.
 - Playtest with two controllers and several keyboard layouts, including keyboard rollover constraints, SOCD edge cases, motion buffering and hitstop inputs.
 - Profile worst-case combat frames, eight-bank animation uploads, audio

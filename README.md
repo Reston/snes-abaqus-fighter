@@ -2,16 +2,27 @@
 
 An original six-button fighting game for the **Super Nintendo**, inspired by the arcade structure of Street Fighter II and the people and places of Abaqus in Santiago.
 
-**Current evidence snapshot: v0.6.0 combat-animation integration.** The native
+**Current verified development snapshot: v0.6.1 CPU correctness.** The native
 source targets a 4 MiB NTSC FastROM LoROM cartridge across 128 banks, compiled
-from C and 65816 assembly. The latest four reports pass against ROM SHA256
-`0d907717d284c9d0056434e69da0a265c2b09cf4c84761aa32998b4fc0bbd5ae`; the
-canonical silent `Test.cmd` batch passes on that image. Public-release, human,
-independent-emulator and real-console gates remain open.
+from C and 65816 assembly. The four canonical reports pass against ROM SHA256
+`945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee`: 2,595
+gameplay, 18,085 roster, 215 presentation and 854 focused-input checks, or
+21,749 total. Public-release, human balance, independent full-combat and
+real-console gates remain open.
 
-The [v0.6.0 development notes](docs/RELEASE-v0.6.0.md) describe the current
+A separate pinned bsnes2014 Accuracy smoke report passes against the same ROM:
+title, select, arena and fight captures; controller movement and jump; 600
+frames with one-tick cadence; and captured audio. It is an independent smoke
+check rather than full combat, soak or human verification. The CPU reaction and
+crouch-guard corrections are verified without changing art, profile data or the
+native ABI.
+
+The [v0.6.0 development notes](docs/RELEASE-v0.6.0.md) describe the packaged
 64-frame roster, air attacks, throws and recovery. The
 [v0.5.1 notes](docs/RELEASE-v0.5.1.md) retain the previous baseline's evidence.
+The [v0.6.1 development notes](docs/RELEASE-v0.6.1.md) describe the CPU and
+crouch-guard corrections. The offline package passes 202 technical audit
+checks; identical packaging inputs produce identical ZIP bytes.
 Public-release gates remain open.
 
 ![Abaqus After Hours](docs/screenshots/fight.png)
@@ -21,9 +32,9 @@ Public-release gates remain open.
 On Windows, double-click **[Play.cmd](Play.cmd)**. The launcher downloads the official Snes9x 1.63 release into `.tools/` on its first run, verifies its SHA256, and opens the game. No administrator account or global installation is needed. The tools are already present in this checkout.
 
 For offline Windows play, extract the verified development package
-[Abaqus-After-Hours-v0.6.0-Windows.zip](dist/Abaqus-After-Hours-v0.6.0-Windows.zip)
-and run its `Play.cmd`. It includes the current ROM, emulator, controls,
-four exact-ROM reports and license notices. Public-release gates remain open.
+[Abaqus-After-Hours-v0.6.1-Windows.zip](dist/Abaqus-After-Hours-v0.6.1-Windows.zip).
+Run its `Play.cmd`. It includes the current ROM, Snes9x, control defaults,
+native reports, independent-engine smoke evidence, guides and license notices.
 
 On other platforms, open **[dist/abaqus-after-hours.sfc](dist/abaqus-after-hours.sfc)** in a SNES emulator. No BIOS or commercial ROM is required.
 
@@ -81,26 +92,38 @@ Windows x64:
 .\Build.cmd --assets
 ```
 
-The four verification suites run the actual ROM silently and headlessly in the official Snes9x libretro core: gameplay, roster, presentation and focused input. They send controller input and read WRAM/VRAM, rendered frames and captured audio without playing it. Each report records the exact tested ROM hash. After the v0.6.0 build, all four reports must point to the same current ROM SHA256 before packaging:
+The four verification suites run the actual ROM silently and headlessly in the official Snes9x libretro core: gameplay, roster, presentation and focused input. They send controller input and read WRAM/VRAM, rendered frames and captured audio without playing it. Each report records the exact tested ROM hash. After every candidate build, all four reports must point to the same current ROM SHA256 before packaging. The separate pinned compatibility smoke must also match that SHA; it runs outside the four-suite `Test.cmd` batch. The current v0.6.1 reports are:
 
 - `docs/test-report.json`
 - `docs/character-test-report.json`
 - `docs/presentation-test-report.json`
 - `docs/input-test-report.json`
+- `docs/compatibility-test-report.json`
 
 The [manifest](dist/manifest.json) includes the ROM SHA256 and header checksum.
-The latest v0.6.0 snapshot has all four reports passing against
-`0d907717d284c9d0056434e69da0a265c2b09cf4c84761aa32998b4fc0bbd5ae`: 2,595
-gameplay, 18,085 roster, 215 presentation and 604 focused-input checks, or
-21,499 total. The canonical silent `Test.cmd` batch passed against this exact
-snapshot, including both boot phases, two-controller air/trades/combo cadence
-and resident-audio probes. Native screenshots and animation review captures are
-retained under `docs/screenshots/`.
+The current v0.6.1 snapshot has all four reports passing against
+`945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee`: 2,595
+gameplay, 18,085 roster, 215 presentation and 854 focused-input checks, or
+21,749 total. The canonical silent `Test.cmd` batch passed against this exact
+snapshot, including both boot phases, two-controller air/trades/combo cadence,
+resident-audio probes and CPU coverage across three difficulties and four
+special families for 600 live ticks each (7,200 total). The input suite also
+covers near-special, far-negative, 29-46 approach, low-guard and wake cases
+with strict no-KO lookahead. Native screenshots and animation review captures
+are retained under `docs/screenshots/`.
+
+The separate pinned bsnes2014 Accuracy report passes against the same SHA with
+title/select/arena/fight captures, controller movement and jump, 600 one-tick
+cadence frames and captured audio. It is an independent smoke only; it does not
+replace full combat, soak or human verification. Run it with PowerShell
+`tools/setup-compat.ps1` followed by `python tools/test_compatibility.py`.
 
 An earlier four-family 600-frame probe was too narrow to characterize worst-case
-timing. Two-actor attack/impact scenarios exposed additional audio and interface
-lag, so that probe is not treated as worst-case evidence. Public-release gates
-remain open after the resident-effect audio migration.
+timing; the current input suite expands it to three difficulties, four special
+families and 7,200 live ticks with explicit spacing, guard, wake and no-KO
+lookahead checks. The independent bsnes smoke remains narrower than full
+combat, soak and human review. Public-release gates remain open after the
+resident-effect audio migration.
 
 The v0.6 native fast path caches actor-bank and per-action timing selection,
 uses compile-checked `Fighter` stride 64 and `Wave` stride 16 layouts, and
@@ -110,6 +133,14 @@ clears continue through hitstop ticks, while interface DMA yields when an actor
 frame is uploaded; the engine and VRAM contract stay unchanged. As a result,
 interface impact feedback may settle one to three video frames after the combat
 event while hitstop keeps the fight state frozen.
+
+Real KO contact resolution keeps damage, winner selection, timers and layout
+unchanged. `roundBannerPending` defers the panel, name and HUD transfer until
+the first frozen `roundEnd` tick, avoiding a contact-time stall.
+
+`Build.cmd --assets` reproduced the current ROM SHA after the canonical pass.
+Archive audit and ZIP reproducibility are recorded separately after package
+creation.
 
 Combat sound effects now load as four resident SPC slots alongside the music:
 `effects.it` is soundbank module 0 and music modules remain IDs 1-4. Scene load
@@ -133,6 +164,6 @@ the streamed-BRR path that stalled under two simultaneous attack/impact cases.
 | `dist/` | Playable ROM and release manifest |
 | `docs/` | Controls, technical notes, animation contract, art prompts, credits, roadmap and QA evidence |
 
-Git tracks the source, master art, generated cartridge assets and ROM. Downloaded toolchains and release ZIPs stay outside history. Prior releases are tagged `v0.1.0`, `v0.2.0`, `v0.3.0`, `v0.3.1`, `v0.4.0`, `v0.4.1`, `v0.5.0` and `v0.5.1`; `v0.6.0` records the current verified development milestone, with public-release gates still open. No remote repository is configured by this project.
+Git tracks the source, master art, generated cartridge assets and ROM. Downloaded toolchains and release ZIPs stay outside history. Prior releases are tagged `v0.1.0`, `v0.2.0`, `v0.3.0`, `v0.3.1`, `v0.4.0`, `v0.4.1`, `v0.5.0` and `v0.5.1`; `v0.6.0` records the animation baseline and `v0.6.1` records the verified CPU update and development package. No remote repository is configured by this project.
 
 Team references: [Abaqus Solutions](https://abaqus.io/es/abaqus-solutions/team) and [Abaqus Wealth Care](https://abaqus.io/es/wealth-care/about-us). See [credits and asset provenance](docs/CREDITS.md), [art prompts](docs/ART-DIRECTION.md), and [technical notes](docs/DEVELOPMENT.md).

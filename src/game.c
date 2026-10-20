@@ -106,6 +106,7 @@ u8 arcade, roundNumber, seconds, secondTick, intro, roundEnd, winner, paused;
 u8 hitstop, shake, flash, fxLife, fxX, fxY, fxType, resultWin, champion;
 u8 hudDirty, bannerDirty, footerDirty, fullDirty, musicIndex, musicOn;
 u8 impactHudPending,impactBannerPending;
+u8 roundBannerPending;
 u8 pendingSound;
 u8 cpuTick;
 u8 portraitDirty, portraitId;
@@ -339,7 +340,7 @@ void resetRound(void) {
         waves[p].x=0;waves[p].y=0;waves[p].face=0;waves[p].owner=p;
     }
     seconds=99;secondTick=0;intro=110;roundEnd=0;hitstop=0;shake=0;fxLife=0;
-    impactHudPending=0;impactBannerPending=0;
+    impactHudPending=0;impactBannerPending=0;roundBannerPending=0;
     pendingSound=0;
     hudHp[0]=255;hudHp[1]=255;hudEnergy[0]=255;hudEnergy[1]=255;
     hudWins[0]=255;hudWins[1]=255;hudSeconds=255;
@@ -392,26 +393,71 @@ void showResult(u8 won) {
 
 u16 cpuKeys(void) {
     s16 distance;
-    u16 k=0,forward,back;
-    u8 chance;
+    u16 k=0,forward,back,waveDistance,specialMax;
+    u8 chance,enemyActive,waveApproaching;
     Fighter *f=&fighters[1];Fighter *enemy=&fighters[0];
+    const CharacterProfile *c=combatProfiles[1];
     if(mode==2)return 0;
-    if(f->downState || !enemy->hp)return 0;
+    if(!enemy->hp)return 0;
+    if(f->downState && f->downState!=DOWN_WAKE)return 0;
+    /* Wake input is a single edge at the start of the six-tick wake window.
+     * captureInput() owns the buffer and applies it after DOWN_WAKE exits. */
+    if(f->downState==DOWN_WAKE) {
+        if(difficulty>0 && f->downTick==0)return KEY_UP;
+        return 0;
+    }
     forward=f->face?KEY_RIGHT:KEY_LEFT;back=f->face?KEY_LEFT:KEY_RIGHT;
     distance=abs16(f->x-enemy->x)>>4;
     chance=(rng()>>8)&31;
-    if(enemy->action && distance<64 && chance<8+difficulty*6)return back | ((enemy->duck)?KEY_DOWN:0);
-    if(waves[0].active && distance>60 && chance<18)return back;
+    enemyActive=0;
+    /* Pads are sampled before updateFighter advances the attack clock.
+     * Guard the contact window of the upcoming tick, including its first
+     * active frame, rather than reacting one simulation tick too late. */
+    if(enemy->action && enemy->tick+1>=enemy->actionStartup) {
+        if(enemy->tick+1<enemy->actionActiveEnd)enemyActive=1;
+    }
+    /* React to an incoming wave before ordinary attack guarding.  The
+     * direction test prevents a wave that has already passed from pinning
+     * the CPU, while the 96px window gives the slower low wave time to guard. */
+    waveApproaching=0;
+    if(waves[0].active && waves[0].face && waves[0].x<f->x)waveApproaching=1;
+    if(waves[0].active && !waves[0].face && waves[0].x>f->x)waveApproaching=1;
+    if(waveApproaching) {
+        waveDistance=abs16(waves[0].x-f->x)>>4;
+        if(waveDistance<96) {
+            if(waves[0].low) {
+                if(difficulty>0 || chance<10)return back|KEY_DOWN;
+            } else if(chance<18)return back;
+        }
+    }
+    if(enemyActive && distance<64 && chance<8+difficulty*6)
+        return back | (enemy->duck?KEY_DOWN:0);
+    /* A special is only issued while the CPU is grounded and free.  The
+     * family bands avoid sending rush/rising attacks from projectile range. */
+    if(!f->action && !f->hurt && !f->y && f->energy>=32 && ((frame+f->id*13)%97==0)) {
+        if(c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE) {
+            if(distance>95)return KEY_DOWN|KEY_X;
+        } else if(c->specialFamily==SPECIAL_RUSH) {
+            specialMax=c->specialReach+BODY_HALF_WIDTH;
+            specialMax+=((u16)c->specialSpeed*c->specialActive)>>4;
+            if(specialMax>90)specialMax=90;
+            if(distance>=45 && distance<=specialMax)return KEY_DOWN|KEY_X;
+        } else if(c->specialFamily==SPECIAL_RISING) {
+            if(distance<=c->specialReach+BODY_HALF_WIDTH &&
+               (enemy->y<0 || enemyActive))return KEY_DOWN|KEY_X;
+        }
+    }
     if(distance>46) {
         k=forward;
-        if(distance>95 && f->energy>=32 && ((frame+f->id*13)%97==0))k=KEY_DOWN|KEY_X;
         if(distance>65 && difficulty>0 && (frame%143==0))k|=KEY_UP;
     } else if(!f->action && !f->hurt && frame%(23-difficulty*5)==0) {
         chance=chance%6;
         if(chance==0)k=KEY_Y;else if(chance==1)k=KEY_X;else if(chance==2)k=KEY_L;
         else if(chance==3)k=KEY_B;else if(chance==4)k=KEY_A;else k=KEY_R;
-        if(distance<26 && difficulty>0)k=forward|KEY_L;
+        if(distance<c->throwRange && difficulty>0)k=forward|KEY_L;
         else if(chance==3)k|=KEY_DOWN;
+    } else if(!f->action && !f->hurt && distance>=29) {
+        k=forward;
     } else if(distance<29 && chance<12)k=back;
     return k;
 }
@@ -788,9 +834,10 @@ void combat(void) {
             if(fighters[0].hp==fighters[1].hp)winner=2;
             else winner=fighters[0].hp>fighters[1].hp?0:1;
             if(winner<2)fighters[winner].won++;
-            clearBanner();panel(10,3);center(10,seconds?"K.O.":"TIME OVER");
-            if(winner<2){center(12,characterNames[fighters[winner].id]);}else center(12,"DOUBLE K.O.");
-            shake=10;sound(3);hud();
+            /* Resolve the result now, but build its panel on the next
+             * frozen tick so KO contact and pose DMA keep their budget. */
+            roundBannerPending=1;impactHudPending=0;impactBannerPending=0;
+            shake=10;sound(3);
         }
     }
 }
@@ -854,7 +901,12 @@ void animateFighter(u8 p) {
         else if(f->animTick<6)f->animFrame=30;
         else if(f->vy>32 && f->y>-24*16)f->animFrame=31;
         else f->animFrame=55;
-    } else if(state==6)f->animFrame=f->animTick<3?40:9;
+    } else if(state==6) {
+        /* A low guard keeps the crouched body and raised hands; standing
+         * guard art would contradict the low hurtbox during blockstun. */
+        if(f->duck)f->animFrame=3;
+        else f->animFrame=f->animTick<3?40:9;
+    }
     else if(state==7)f->animFrame=f->animTick<6?10:41;
     else if(state==8)f->animFrame=(f->animTick%40)<10?46:11;
     else if(state==9) {
@@ -949,6 +1001,13 @@ void fightTick(void) {
     }
     if(roundEnd) {
         animationAdvance=1;
+        if(roundBannerPending) {
+            roundBannerPending=0;clearBanner();panel(10,3);
+            center(10,seconds?"K.O.":"TIME OVER");
+            if(winner<2)center(12,characterNames[fighters[winner].id]);
+            else center(12,"DOUBLE K.O.");
+            hud();
+        }
         roundEnd--;
         if(roundEnd==100) {clearBanner();panel(10,3);center(10,winner<2?characterNames[fighters[winner].id]:"DRAW");center(12,winner<2?"WINS THE ROUND":"TRY AGAIN");}
         if(!roundEnd) {

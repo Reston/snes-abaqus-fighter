@@ -1,6 +1,6 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "0d907717d284c9d0056434e69da0a265c2b09cf4c84761aa32998b4fc0bbd5ae",
+  "rom_sha256": "945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee",
   "rom_bytes": 4194304,
   "status": "passed",
   "checks": [
@@ -9,11 +9,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.6.0",
+        "version": "0.6.1",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "0d907717d284c9d0056434e69da0a265c2b09cf4c84761aa32998b4fc0bbd5ae",
-        "checksum": "38EF",
+        "sha256": "945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee",
+        "checksum": "4D89",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -2763,5 +2763,5 @@
     "frame_count": 64
   },
   "passed": 215,
-  "elapsed_seconds": 4.41
+  "elapsed_seconds": 4.44
 }

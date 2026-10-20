@@ -180,9 +180,21 @@ def wait_screen(e: Emulator, wanted: int) -> None:
 
 
 def boot(mode: int = 2, wait_intro: bool = True,
-         fighter: int = 0, fighter2: int = 1) -> Emulator:
+         fighter: int = 0, fighter2: int = 1,
+         difficulty: int | None = None, title_delay: int = 0) -> Emulator:
     e = Emulator()
     e.run(120)
+    if title_delay:
+        # This is only used by deterministic CPU probes to align the native
+        # frame modulo with an AI decision phase.  The default remains the
+        # established boot cadence used by all legacy controller checks.
+        e.run(title_delay)
+    if difficulty is not None:
+        check(difficulty in (0, 1, 2), "CPU probe difficulty is valid", difficulty)
+        if difficulty < 1:
+            press(e, "l")
+        elif difficulty > 1:
+            press(e, "r")
     for _ in range(mode):
         press(e, "down")
     press(e, "a")
@@ -237,11 +249,20 @@ def _stress_wait_screen(e: Emulator, wanted: int,
 
 
 def _stress_boot(mode: int, fighter: int = 0, fighter2: int = 1,
-                 quiet_frames: int = 3) -> Emulator:
+                 quiet_frames: int = 3, difficulty: int | None = None,
+                 title_delay: int = 0) -> Emulator:
     """Boot with the exact cadence used by build/stress64.py/stress_two.py."""
 
     e = Emulator()
     e.run(120)
+    if title_delay:
+        e.run(title_delay)
+    if difficulty is not None:
+        check(difficulty in (0, 1, 2), "CPU stress difficulty is valid", difficulty)
+        if difficulty < 1:
+            _stress_press(e, "l")
+        elif difficulty > 1:
+            _stress_press(e, "r")
     for _ in range(mode):
         _stress_press(e, "down")
     _stress_press(e, "a")
@@ -268,12 +289,15 @@ def _stress_boot(mode: int, fighter: int = 0, fighter2: int = 1,
 
 
 def _cadence_boot(cadence: str, mode: int, fighter: int = 0,
-                  fighter2: int = 1) -> Emulator:
+                  fighter2: int = 1, difficulty: int | None = None,
+                  title_delay: int = 0) -> Emulator:
     """Select one of the two intentionally distinct stress boot cadences."""
 
     if cadence == "original":
-        return boot(mode, fighter=fighter, fighter2=fighter2)
-    return _stress_boot(mode, fighter=fighter, fighter2=fighter2)
+        return boot(mode, fighter=fighter, fighter2=fighter2,
+                    difficulty=difficulty, title_delay=title_delay)
+    return _stress_boot(mode, fighter=fighter, fighter2=fighter2,
+                        difficulty=difficulty, title_delay=title_delay)
 
 
 def _run_transition_stress(cadence: str, fighter: int) -> dict[str, object]:
@@ -2628,6 +2652,449 @@ def check_cross_up_jump() -> None:
         e.close()
 
 
+# CPU coverage deliberately stays bounded.  The arcade menu is the only
+# supported way to select a CPU difficulty; the probes below use the roster
+# relationship in the cartridge (CPU id = P1 id + 1) and never write RAM.
+CPU_REPRESENTATIVES = (0, 2, 4, 5)
+CPU_FAMILIES = {0: 0, 2: 1, 4: 2, 5: 3}
+
+
+def _cpu_summary(sample: dict[str, int]) -> dict[str, int]:
+    """Keep CPU report evidence compact while retaining the causal fields."""
+
+    names = (
+        "frame", "fighter_id1", "fighter_id2", "family2", "hp1", "hp2",
+        "x1", "x2", "y1", "y2", "action1", "action2", "anim_frame1",
+        "anim_frame2", "anim_tick1", "anim_tick2", "anim_state2", "raw_keys2",
+        "wave1", "wave2", "guard2", "hurt2", "connected1", "down_state2",
+        "down_tick2", "wake_jump2", "invuln2",
+    )
+    return {name: sample[name] for name in names if name in sample}
+
+
+def _cpu_boot(cpu_id: int, difficulty: int, target_phase: int | None = None) -> tuple[Emulator, dict[str, int]]:
+    """Boot arcade with one CPU representative, optionally phase-aligned."""
+
+    fighter = (cpu_id - 1) % 12
+    if target_phase is None:
+        e = boot(0, fighter=fighter, difficulty=difficulty)
+        return e, trace(e)
+
+    calibration = boot(0, fighter=fighter, difficulty=difficulty)
+    initial = trace(calibration)
+    calibration.close()
+    phase = (initial["frame"] + cpu_id * 13) % 97
+    delay = (target_phase - phase) % 97
+    e = boot(0, fighter=fighter, difficulty=difficulty,
+             title_delay=delay)
+    return e, trace(e)
+
+
+def _cpu_live_segment(cpu_id: int, difficulty: int,
+                      limit: int = 180) -> dict[str, object]:
+    """Collect a live AI segment and stop before a round-end transition."""
+
+    e, initial = _cpu_boot(cpu_id, difficulty)
+    ticks = 0
+    ended = False
+    drops: list[dict[str, int]] = []
+    down_violations: list[dict[str, int]] = []
+    try:
+        check(initial["mode"] == 0 and initial["screen"] == 3 and
+              initial["intro"] == 0,
+              "arcade CPU segment starts in live combat", _cpu_summary(initial))
+        check(initial["fighter_id2"] == cpu_id and
+              initial["family2"] == CPU_FAMILIES[cpu_id],
+              "arcade CPU segment selects the requested fighter family", {
+                  "requested": cpu_id, "sample": _cpu_summary(initial),
+              })
+        attempt = 0
+        while ticks < limit:
+            index = attempt
+            attempt += 1
+            before = trace(e)
+            e.run(1, p1=["left", "down"])
+            current = trace(e)
+            # A KO/round transition is outside the live AI cadence window.
+            if current["round_end"] or current["hp1"] == 0 or current["screen"] != 3:
+                ended = True
+                break
+            delta = (current["frame"] - before["frame"]) & 0xffff
+            if delta != 1:
+                drops.append({
+                    "index": index, "delta": delta,
+                    "frame": current["frame"],
+                    "action2": current["action2"],
+                    "down_state2": current["down_state2"],
+                })
+            if current["down_state2"] and current["action2"]:
+                down_violations.append({
+                    "index": index, "frame": current["frame"],
+                    "action2": current["action2"],
+                    "down_state2": current["down_state2"],
+                })
+            ticks += 1
+        return {
+            "ticks": ticks, "drops": drops,
+            "down_violations": down_violations,
+            "ended": ended,
+            "start_frame": initial["frame"],
+            "end": _cpu_summary(trace(e)),
+        }
+    finally:
+        e.close()
+
+
+def check_cpu_matrix() -> dict[str, object]:
+    """Run 600 live native ticks for every CPU family and difficulty."""
+
+    results: dict[str, object] = {}
+    for difficulty in (0, 1, 2):
+        for cpu_id in CPU_REPRESENTATIVES:
+            remaining = 600
+            segments: list[dict[str, object]] = []
+            # Start with the full 600-tick live window.  If the CPU actually
+            # ends the round, reboot only then and count the remaining live
+            # ticks in a new round; fixed-size restarts would repeatedly reuse
+            # the same opening PRNG phase and hide cadence problems.
+            for _ in range(8):
+                if remaining <= 0:
+                    break
+                segment = _cpu_live_segment(cpu_id, difficulty, remaining)
+                segments.append(segment)
+                remaining -= int(segment["ticks"])
+                if int(segment["ticks"]) == 0 or not segment["ended"]:
+                    break
+            key = f"d{difficulty}-cpu{cpu_id:02}"
+            total = 600 - remaining
+            result = {
+                "difficulty": difficulty, "cpu_id": cpu_id,
+                "family": CPU_FAMILIES[cpu_id],
+                "ticks": total, "segments": segments,
+                "nonunit_steps": [drop for segment in segments
+                                   for drop in segment["drops"]],
+                "down_violations": [violation for segment in segments
+                                     for violation in segment["down_violations"]],
+            }
+            check(total == 600 and not result["nonunit_steps"],
+                  f"CPU d{difficulty} fighter {cpu_id} advances 600 live ticks",
+                  {**result, "segments": [
+                      {**segment, "end": segment["end"]}
+                      for segment in segments
+                  ]})
+            check(not result["down_violations"],
+                  f"CPU d{difficulty} fighter {cpu_id} has no active downed state",
+                  result)
+            results[key] = result
+    return results
+
+
+def _capture_cpu_special(cpu_id: int, difficulty: int,
+                         target_phase: int, keys_fn, limit: int = 100,
+                         require_active: bool = True) -> dict[str, object]:
+    """Capture one CPU special from controller-only spacing inputs."""
+
+    e, initial = _cpu_boot(cpu_id, difficulty, target_phase)
+    samples: list[dict[str, int]] = []
+    try:
+        for index in range(limit):
+            sample = trace(e)
+            samples.append(sample)
+            e.run(1, p1=keys_fn(index, sample))
+        family = CPU_FAMILIES[cpu_id]
+        active = [sample for sample in samples if sample["action2"] == 7]
+        if require_active:
+            check(bool(active),
+                  f"CPU d{difficulty} fighter {cpu_id} manifests its special", {
+                      "initial": _cpu_summary(initial),
+                      "active": [_cpu_summary(sample) for sample in active[:8]],
+                  })
+            check(all(sample["family2"] == family for sample in active),
+                  f"CPU fighter {cpu_id} special reports its family",
+                  [_cpu_summary(sample) for sample in active[:8]])
+        else:
+            check(all(sample["family2"] == family for sample in samples),
+                  f"CPU fighter {cpu_id} far-window trace keeps its family",
+                  [_cpu_summary(sample) for sample in samples[:8]])
+        return {"initial": initial, "active": active,
+                "wave": [sample for sample in samples if sample["wave2"]],
+                "samples": samples}
+    finally:
+        e.close()
+
+
+def _capture_cpu_approach(difficulty: int) -> dict[str, object]:
+    """Bring a CPU into the documented 29..46px neutral approach interval."""
+
+    e, initial = _cpu_boot(2, difficulty)
+    try:
+        for index in range(100):
+            sample = trace(e)
+            distance = abs(sample["x1"] - sample["x2"]) / 16
+            if 29 <= distance <= 46:
+                after: list[dict[str, int]] = []
+                for _ in range(3):
+                    e.run(1)
+                    after.append(trace(e))
+                return {"initial": initial, "start": sample,
+                        "after": after, "index": index}
+            e.run(1, p1=["right"] if sample["x1"] < sample["x2"]
+                  else ["left"])
+    finally:
+        e.close()
+    raise AssertionError(("CPU approach never enters 29..46px spacing",
+                          {"difficulty": difficulty,
+                           "initial": _cpu_summary(initial)}))
+
+
+def check_cpu_special_spacing() -> dict[str, object]:
+    """Exercise all four CPU families in their intended distance bands."""
+
+    results: dict[str, object] = {}
+    for difficulty in (0, 1, 2):
+        # A rush or rising strike must never be selected from the wave band.
+        # Keep this short window entirely beyond 95px so the negative result
+        # proves the distance gate rather than a missing target condition.
+        for cpu_id in (2, 5):
+            far = _capture_cpu_special(
+                cpu_id, difficulty, 0,
+                lambda _index, _sample: ["left", "down"], 12,
+                require_active=False)
+            far_samples = far["samples"]
+            far_distances = [abs(sample["x1"] - sample["x2"]) / 16
+                             for sample in far_samples]
+            check(bool(far_samples) and min(far_distances) > 95,
+                  f"CPU d{difficulty} fighter {cpu_id} far-window stays beyond 95px",
+                  {"distances_px": far_distances,
+                   "samples": [_cpu_summary(sample)
+                               for sample in far_samples[:8]]})
+            check(not any(sample["action2"] == 7 for sample in far_samples),
+                  f"CPU d{difficulty} fighter {cpu_id} never rushes/rises from far range",
+                  [_cpu_summary(sample) for sample in far_samples])
+            results[f"d{difficulty}-cpu{cpu_id:02}-far"] = {
+                "family": CPU_FAMILIES[cpu_id],
+                "min_distance_px": min(far_distances),
+                "active_frames": sum(sample["action2"] == 7
+                                      for sample in far_samples),
+            }
+
+        # Projectile and groundwave are only allowed from far spacing.  P1 is
+        # held at the left clamp while the CPU approaches from the right.
+        for cpu_id in (0, 4):
+            captured = _capture_cpu_special(
+                cpu_id, difficulty, 0,
+                lambda _index, _sample: ["left", "down"], 70)
+            active = captured["active"]
+            first = active[0]
+            check(abs(first["x1"] - first["x2"]) >= 95 * 16,
+                  f"CPU d{difficulty} fighter {cpu_id} far special stays beyond 95px",
+                  _cpu_summary(first))
+            check(bool(captured["wave"]),
+                  f"CPU d{difficulty} fighter {cpu_id} produces a live wave",
+                  {"wave": [_cpu_summary(sample)
+                            for sample in captured["wave"][:8]]})
+            results[f"d{difficulty}-cpu{cpu_id:02}"] = {
+                "family": CPU_FAMILIES[cpu_id],
+                "first_distance_px": abs(first["x1"] - first["x2"]) / 16,
+                "wave_frames": len(captured["wave"]),
+            }
+
+        # Rush begins only after the CPU has approached into its bounded
+        # 45..90px band.  Raw X is fixed point; the minimum displacement is
+        # intentionally modest so it catches a missing lunge without tying
+        # the test to a particular sprite upload cadence.
+        rush = _capture_cpu_special(
+            2, difficulty, 58,
+            lambda _index, _sample: ["left", "down"], 90)
+        rush_active = rush["active"]
+        first = rush_active[0]
+        samples = rush["samples"]
+        active_index = next(index for index, sample in enumerate(samples)
+                            if sample["action2"] == 7)
+        # cpuKeys samples positions before updateFighter advances the actor.
+        # The first visible action-7 trace is therefore one update late; use
+        # the preceding decision sample for the spacing band.
+        decision = samples[max(0, active_index - 1)]
+        last_active = [sample for sample in rush_active
+                       if sample["anim_tick2"] <=
+                       sample["special_startup2"] + sample["special_active2"]][-1]
+        decision_distance_px = abs(decision["x1"] - decision["x2"]) / 16
+        displacement = abs(last_active["x2"] - decision["x2"])
+        check(45 <= decision_distance_px < 95,
+              f"CPU d{difficulty} rush starts in its near spacing band",
+              {"decision": _cpu_summary(decision),
+               "first_active": _cpu_summary(first),
+               "distance_px": decision_distance_px})
+        check(displacement >= 45 and displacement < 95 * 16,
+              f"CPU d{difficulty} rush has bounded forward travel", {
+                  "decision": _cpu_summary(decision),
+                  "first": _cpu_summary(first),
+                  "last": _cpu_summary(last_active),
+                  "displacement_fixed": displacement,
+                  "travel_px": displacement / 16,
+              })
+        results[f"d{difficulty}-cpu02"] = {
+            "family": 1, "start_distance_px": decision_distance_px,
+            "decision_distance_px": decision_distance_px,
+            "displacement_fixed": displacement,
+            "travel_px": displacement / 16,
+        }
+
+        approach = _capture_cpu_approach(difficulty)
+        approach_start = approach["start"]
+        approach_after = approach["after"]
+        approach_distance = abs(approach_start["x1"] -
+                                approach_start["x2"]) / 16
+        check(29 <= approach_distance <= 46,
+              f"CPU d{difficulty} enters the 29..46px approach interval",
+              _cpu_summary(approach_start))
+        check(bool(approach_after) and
+              abs(approach_after[0]["x1"] - approach_after[0]["x2"]) <
+              abs(approach_start["x1"] - approach_start["x2"]),
+              f"CPU d{difficulty} closes the 29..46px approach gap", {
+                  "start": _cpu_summary(approach_start),
+                  "after": [_cpu_summary(sample)
+                            for sample in approach_after],
+              })
+        results[f"d{difficulty}-approach"] = {
+            "start_distance_px": approach_distance,
+            "after_distance_px": [abs(sample["x1"] - sample["x2"]) / 16
+                                   for sample in approach_after],
+            "ticks_to_interval": approach["index"],
+        }
+
+        # Rising is sampled while P1 is airborne and inside the CPU's close
+        # anti-air band.  The fresh jump edge is controller-only.
+        rising = _capture_cpu_special(
+            5, difficulty, 60,
+            lambda index, sample: (
+                ["right"] if abs(sample["x1"] - sample["x2"]) / 16 > 44
+                else (["up", "right"] if index < 38 else [])
+            ), 85)
+        rising_active = rising["active"]
+        airborne = [sample for sample in rising_active
+                     if signed16(sample["y1"]) < 0]
+        first = rising_active[0]
+        check(bool(airborne),
+              f"CPU d{difficulty} rising special reacts to an airborne target",
+              {"first": _cpu_summary(first),
+               "airborne": [_cpu_summary(sample) for sample in airborne[:8]]})
+        check(abs(first["x1"] - first["x2"]) <=
+              (first["special_reach2"] + 10) * 16,
+              f"CPU d{difficulty} rising special stays in its anti-air range",
+              _cpu_summary(first))
+        results[f"d{difficulty}-cpu05"] = {
+            "family": 3,
+            "airborne_frames": len(airborne),
+            "start_distance_px": abs(first["x1"] - first["x2"]) / 16,
+        }
+    return results
+
+
+def check_cpu_lowwave_guard() -> dict[str, object]:
+    """Normal/Hard CPU crouch-blocks a genuine incoming low wave."""
+
+    results: dict[str, object] = {}
+    for difficulty in (1, 2):
+        e = boot(0, fighter=4, difficulty=difficulty)
+        samples: list[dict[str, int]] = []
+        try:
+            drive(e, 0, ["down"], 3)
+            drive(e, 0, ["down", "x"], 3)
+            for _ in range(80):
+                sample = trace(e)
+                samples.append(sample)
+                e.run(1)
+        finally:
+            e.close()
+        wave = [sample for sample in samples if sample["wave1"]]
+        impact = [sample for sample in samples
+                  if sample["hp2"] < 128 and sample["guard2"]]
+        check(bool(wave), f"CPU d{difficulty} sees a genuine incoming low wave", {
+            "wave": [_cpu_summary(sample) for sample in wave[:8]],
+        })
+        check(bool(impact) and all(sample["hp2"] >= 127 for sample in impact),
+              f"CPU d{difficulty} low-wave guard takes at most one chip", {
+                  "impact": [_cpu_summary(sample) for sample in impact[:8]],
+              })
+        back = 512 if impact and impact[0]["face2"] else 256
+        guarded = [sample for sample in impact
+                   if sample["raw_keys2"] & 1024 and sample["raw_keys2"] & back]
+        check(bool(guarded),
+              f"CPU d{difficulty} low-wave guard holds DOWN plus back",
+              [_cpu_summary(sample) for sample in guarded[:8]])
+        check(any(sample["anim_frame2"] == 3 and sample["anim_state2"] == 6
+                  for sample in guarded),
+              f"CPU d{difficulty} low-wave guard renders the crouched posture",
+              [_cpu_summary(sample) for sample in guarded[:8]])
+        results[f"difficulty-{difficulty}"] = {
+            "wave_frames": len(wave),
+            "impact": [_cpu_summary(sample) for sample in impact[:8]],
+            "chip": 128 - min((sample["hp2"] for sample in impact), default=128),
+        }
+    return results
+
+
+def check_cpu_wake() -> dict[str, object]:
+    """Normal/Hard CPU wakes with its single UP edge after a knockdown."""
+
+    results: dict[str, object] = {}
+    for difficulty in (1, 2):
+        e = boot(0, fighter=1, difficulty=difficulty)
+        samples: list[dict[str, int]] = []
+        down_seen = False
+        try:
+            close_players(e)
+            for index in range(260):
+                current = trace(e)
+                keys = (["down", "r"] if index % 32 < 4 and
+                        current["action1"] == 0 and
+                        current["down_state1"] == 0 else [])
+                e.run(1, p1=keys)
+                sample = trace(e)
+                if sample["down_state2"]:
+                    down_seen = True
+                if down_seen and (sample["down_state2"] == 5 or
+                                  sample["wake_jump2"] or
+                                  sample["down_state2"] == 0):
+                    samples.append(sample)
+                if down_seen and sample["down_state2"] == 0 and \
+                        signed16(sample["y2"]) < 0:
+                    break
+        finally:
+            e.close()
+        wake_edge = [sample for sample in samples
+                     if sample["down_state2"] == 5 and sample["down_tick2"] == 1]
+        airborne = [sample for sample in samples if signed16(sample["y2"]) < 0]
+        check(down_seen, f"CPU d{difficulty} enters a real downed state",
+              [_cpu_summary(sample) for sample in samples[:8]])
+        check(any(sample["raw_keys2"] & 2048 for sample in wake_edge),
+              f"CPU d{difficulty} samples a single UP wake edge",
+              [_cpu_summary(sample) for sample in wake_edge])
+        check(any(sample["wake_jump2"] > 0 for sample in wake_edge),
+              f"CPU d{difficulty} buffers the wake jump",
+              [_cpu_summary(sample) for sample in wake_edge])
+        check(bool(airborne), f"CPU d{difficulty} leaves wake airborne",
+              [_cpu_summary(sample) for sample in airborne[:8]])
+        results[f"difficulty-{difficulty}"] = {
+            "wake_edge": [_cpu_summary(sample) for sample in wake_edge],
+            "airborne": [_cpu_summary(sample) for sample in airborne[:8]],
+            "down_seen": down_seen,
+        }
+    return results
+
+
+def check_cpu_regressions() -> dict[str, object]:
+    """Run the bounded CPU 0.6.1 matrix and its behavior fixtures."""
+
+    return {
+        "matrix": check_cpu_matrix(),
+        "special_spacing": check_cpu_special_spacing(),
+        "lowwave_guard": check_cpu_lowwave_guard(),
+        "wake": check_cpu_wake(),
+    }
+
+
 def main() -> int:
     started = time.monotonic()
     report: dict[str, object] = {
@@ -2645,6 +3112,7 @@ def main() -> int:
         "throw_interrupt": {},
         "throw_startup_escape": {},
         "down_floor_guard": {},
+        "cpu_regressions": {},
     }
     try:
         manifest = json.loads((ROOT / "dist/manifest.json").read_text())
@@ -2685,6 +3153,7 @@ def main() -> int:
         check_simultaneous_throw_tech()
         report["throw_startup_escape"] = check_throw_startup_escape()
         report["throw_interrupt"] = check_projectile_interrupts_throw()
+        report["cpu_regressions"] = check_cpu_regressions()
 
         e = boot(1)
         try:

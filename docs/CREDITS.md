@@ -64,6 +64,7 @@ The user supplied three photographs: the Las Condes glass entrance marked 140; E
 - [PVSnesLib 4.6.0](https://github.com/alekmaul/pvsneslib/releases/tag/4.6.0), Alekmaul and contributors: C toolchain and SNES hardware library. License: `licenses/PVSnesLib.txt`.
 - SNESMod by mukunda, with WLA conversion by KungFuFurby and PVSnesLib adaptations: SPC700 audio driver, bundled with PVSnesLib. License notice: `licenses/SNESMod.txt`.
 - [Snes9x 1.63](https://github.com/snes9xgit/snes9x/releases/tag/1.63), the Snes9x team: official Windows player and libretro test core. License: `licenses/Snes9x.txt`; the offline player ZIP includes its original license.
+- [bsnes2014 Accuracy](https://github.com/libretro/bsnes2014/tree/libretro), byuu and Libretro contributors: optional independent-engine smoke testing. This GPLv3 core is downloaded separately and is not included in the player ZIP; source, license and pinned hashes are recorded in [COMPATIBILITY.md](COMPATIBILITY.md).
 - [Python 3.12.10](https://www.python.org/downloads/release/python-31210/) and [Pillow](https://python-pillow.github.io/): local build/asset tooling, downloaded separately.
 - Menu lettering uses original project-authored bitmap glyphs; no Arial or other system font is used or redistributed.
 

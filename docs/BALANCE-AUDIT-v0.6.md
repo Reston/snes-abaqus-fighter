@@ -30,10 +30,10 @@ The review found a correctness defect: back input could guard during a real hit
 reaction. The v0.6 fix permits guarding only when free or already in guard stun;
 real hitstun cannot break a true combo by holding back.
 
-## Next opponent-quality milestone
+## Opponent findings in v0.6.0
 
-The current CPU is a deterministic distance/random policy. Concrete limitations
-remain before a public candidate:
+The v0.6.0 CPU is a deterministic distance/random policy. The review identified
+these concrete limitations:
 
 - Special selection beyond 95 pixels suits waves, but rushes travel only about
   39 pixels and rising strikes have no horizontal movement. Use family-specific
@@ -47,3 +47,30 @@ remain before a public candidate:
 Keep Training passive and resettable. Require deterministic controller probes,
 profile-envelope checks and human sessions before treating CPU or roster
 balance as complete; see [PUBLIC-RELEASE.md](PUBLIC-RELEASE.md).
+
+## Verified v0.6.1 correction
+
+The bounded policy update keeps the profile values and deterministic PRNG. It
+checks approaching waves within 96 pixels of the CPU before ordinary attack
+guarding. Normal and Hard hold crouch guard for low waves; Easy remains
+fallible. A passed wave no longer keeps the CPU pinned in guard.
+
+Special decisions retain their 97-tick opportunity cadence, require a free,
+grounded fighter with sufficient meter, and use separate engagement bands:
+
+- Projectile and groundwave: greater than 95 pixels.
+- Rush: 45 pixels through `min(90, reach + 10 + (speed * active >> 4))`.
+- Rising: within `reach + 10` against an airborne or active opponent.
+
+The attack-window prediction uses the upcoming simulation tick because input
+capture runs before action clocks advance. Normal and Hard send one jump edge
+at wake tick zero; all other down-state ticks remain input-inert. Free fighters
+advance through the former 29-46 pixel spacing gap and use their profile's throw
+range. Crouch guard retains crouched art during blockstun.
+
+Native verification includes a three-difficulty/four-family controller matrix,
+special-range and approach probes, low-wave guard/chip and wake checks, and all
+four canonical suites on one ROM hash. See [RELEASE-v0.6.1.md](RELEASE-v0.6.1.md)
+for the evidence. These corrections do not provide a complete strategic
+opponent: anti-air anticipation, recovery punishes, varied wake and throw
+defense, all-pair matchup sweeps and human balance review remain future work.

@@ -30,10 +30,12 @@ throw/down/wake state.
 The home, fighter-select and arena menus follow a clean royal-navy, white and
 gold direction with a single cursor, original project glyphs, the four-by-three
 roster grid and one large selected portrait. Profile power, speed and family
-statistics are no longer the visual focus of selection. The canonical silent
-`Test.cmd` batch passes all four suites against the same ROM SHA. Public
-release, human art review, independent-emulator and real-console gates remain
-open.
+statistics are no longer the visual focus of selection. The current v0.6.1
+canonical silent `Test.cmd` batch passes all four suites against ROM SHA
+`945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee`; the
+separate pinned bsnes2014 Accuracy smoke passes against the same image. The CPU
+correctness pass introduces no art or profile changes. Public release, human art
+review, independent-emulator combat review and real-console gates remain open.
 
 The authored art remains inside the existing 96x80, fifteen-color OBJ and
 reserved-interface palette contracts. Native health and energy bars keep their

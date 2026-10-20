@@ -115,9 +115,14 @@ most one 3,840-byte actor frame per vblank. The requested trace frame can lead
 the uploaded frame by one video frame when both actors change together.
 Per-fighter animation clocks, dedicated air attacks and throw/knockdown/wake
 transitions are included. Per-frame hit silhouettes remain future polish work.
-The canonical silent v0.6 batch passes all four suites against ROM SHA256
-`0d907717d284c9d0056434e69da0a265c2b09cf4c84761aa32998b4fc0bbd5ae`. Human
-balance playtesting, independent-emulator runs and real-hardware testing remain
+The current canonical silent v0.6.1 batch passes all four suites against ROM
+SHA256
+`945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee`. CPU
+coverage spans three difficulties and four special families for 600 live ticks
+each, with explicit spacing, low-guard, wake and no-KO lookahead cases. The
+separate pinned bsnes2014 Accuracy smoke passes against the same ROM. The CPU
+pass keeps the profile tables, art and native ABI unchanged. Human balance
+playtesting, independent full-combat runs and real-hardware testing remain
 outstanding.
 Actor-bank and action-timing selection, as well as unchanged OAM
 and shadow work, are cached by the native fast path. Interface impact feedback

@@ -52,6 +52,19 @@ def main():
         result['native_suite_checks'] = sum(suites.values())
         result['suites'] = suites
 
+        compatibility = json.loads((ROOT / 'docs/compatibility-test-report.json').read_text())
+        cadence = compatibility['checks']['cadence']
+        check(compatibility['status'] == 'passed' and compatibility['pinned_core'] and
+              compatibility['rom']['sha256'] == manifest['sha256'],
+              'independent-engine smoke matches the current cartridge')
+        check(cadence['observed_deltas'] == 600 and cadence['delta_min'] == 1 and
+              cadence['delta_max'] == 1 and cadence['non_one_deltas'] == 0,
+              'independent-engine neutral cadence is 600 unit steps')
+        result['independent_engine_smoke'] = {
+            'scope': compatibility['scope'], 'core': compatibility['core'],
+            'cadence': cadence,
+        }
+
         entries = json.loads((ROOT / 'assets/generated/character-manifest.json').read_text())
         check(len(entries) == 12, 'all twelve fighters have manifests')
         source_count = 0
@@ -103,6 +116,9 @@ def main():
             for name in ['gameplay', 'characters', 'presentation', 'inputs']:
                 check(json.loads(package.read(f'qa/{name}.json'))['rom_sha256'] == manifest['sha256'],
                       'packaged exact-ROM evidence: ' + name)
+            check(json.loads(package.read('qa/compatibility.json')) == compatibility and
+                  package.read('COMPATIBILITY.md') == (ROOT / 'docs/COMPATIBILITY.md').read_bytes(),
+                  'packaged independent-engine smoke evidence and scope')
         check((ROOT / 'dist/release-sha256.txt').read_text().split()[0] == sha(archive.read_bytes()),
               'offline archive matches its published checksum')
         result['status'] = 'passed'

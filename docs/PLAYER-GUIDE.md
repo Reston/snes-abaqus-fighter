@@ -12,6 +12,10 @@ Extract the Windows release ZIP and double-click `Play.cmd`, or run `Play.cmd` f
 
 On the home screen, L/R cycles three CPU difficulty levels. The default is level 2. Menus use a single cursor, a four-by-three roster grid and one large selected portrait; the fighter cards do not display a statistics panel.
 
+Choose Easy to learn the controls. Normal and Hard react more often, crouch
+guard incoming low waves, and can jump after recovering from a knockdown.
+Opponents choose specials at ranges suited to their move family.
+
 The fighter select screen uses a four-by-three card layout. Left and right move across the roster; Up and Down move by four cards between rows and wrap around. The highlighted fighter's large profile portrait updates beside the cards. The arena menu uses the same row-based navigation for Las Condes, El Castillo and La Oficina.
 
 ## Controls
@@ -34,7 +38,7 @@ When opposite directions are held on the same axis, the input is neutral for tha
 
 ## Fighting
 
-- Hold **away from your opponent** to block. Crouch while holding away to block low kicks. Jumping attacks beat crouch guard.
+- Hold **away from your opponent** to block. Crouch while holding away to block low kicks; the crouched guard pose is used while the low guard is active. Jumping attacks beat crouch guard.
 - Perform your character special with a true quarter-circle motion: **Down -> Down + toward -> toward + Y or X** within the motion window. The accessible shortcut is **Down + Y/X**. **Down + away + Y/X is not a special.** It costs 32 meter; energy slowly regenerates and successful hits add more. The character guide lists the move families: projectile, advancing rush, low shockwave or rising strike.
 - Press **Down + L** for a rising uppercut.
 - Press **toward + L** at close range to throw through a guard. A successful

@@ -1,0 +1,120 @@
+{
+  "status": "passed",
+  "scope": "independent-engine smoke, neutral600frame cadence",
+  "pinned_core": true,
+  "source_url": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/bsnes2014_accuracy_libretro.dll.zip",
+  "rom": {
+    "sha256": "945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee",
+    "bytes": 4194304
+  },
+  "core": {
+    "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
+    "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4",
+    "library_name": "bsnes2014",
+    "library_version": "v094 (Accuracy) 3c1394e",
+    "system_ram_bytes": 131072,
+    "trace_offset": "0x1FF00",
+    "trace_words": 114
+  },
+  "checks": {
+    "pinned_inputs": {
+      "rom_sha256": "945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee",
+      "manifest_sha256": "945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee",
+      "rom_bytes": 4194304,
+      "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
+      "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
+    },
+    "title": {
+      "screen": 0,
+      "frame": {
+        "width": 512,
+        "height": 224,
+        "pitch": 2048,
+        "sha256_rgb": "819db6248d6034cdd85a7836f1d7736c1327990245d1c590077057b047ac82d6",
+        "distinct_sampled_rgb": 74,
+        "nonzero_bytes": 203800,
+        "nonblank": true
+      },
+      "capture": "docs/screenshots/compatibility/title.png"
+    },
+    "select": {
+      "screen": 1,
+      "frame": {
+        "width": 512,
+        "height": 224,
+        "pitch": 2048,
+        "sha256_rgb": "45664b6a69c39b17f68ef0f1dcb29c9f042c6fe1618aac54d91fa2a247d2a570",
+        "distinct_sampled_rgb": 582,
+        "nonzero_bytes": 190720,
+        "nonblank": true
+      },
+      "capture": "docs/screenshots/compatibility/select.png",
+      "selected": 0
+    },
+    "arena": {
+      "screen": 2,
+      "frame": {
+        "width": 512,
+        "height": 224,
+        "pitch": 2048,
+        "sha256_rgb": "f05bc24db17732639d01f85269955dc40303c3990bf6dcd5b9b7798dde218154",
+        "distinct_sampled_rgb": 566,
+        "nonzero_bytes": 199650,
+        "nonblank": true
+      },
+      "capture": "docs/screenshots/compatibility/arena.png",
+      "arena": 0
+    },
+    "fight": {
+      "screen": 3,
+      "frame": {
+        "width": 512,
+        "height": 224,
+        "pitch": 2048,
+        "sha256_rgb": "cef48b08164788479b8ddfdeeb921a561d0d5ae389af0b61647c7c8f1465d50e",
+        "distinct_sampled_rgb": 881,
+        "nonzero_bytes": 263814,
+        "nonblank": true
+      },
+      "capture": "docs/screenshots/compatibility/fight.png",
+      "intro": 0,
+      "fighter_id1": 0,
+      "fighter_id2": 1,
+      "hp1": 128,
+      "hp2": 128
+    },
+    "ppu_distinct": {
+      "passed": true,
+      "stage_count": 4,
+      "distinct_sha256_rgb": 4
+    },
+    "controller": {
+      "right_x_before": 1056,
+      "right_x_after": 1456,
+      "jump_y_signed": -259,
+      "passed": true
+    },
+    "cadence": {
+      "requested_frames": 600,
+      "observed_deltas": 600,
+      "delta_min": 1,
+      "delta_max": 1,
+      "non_one_deltas": 0,
+      "passed": true
+    },
+    "audio": {
+      "samples": 1038388,
+      "energy": 195792963861,
+      "peak": 3038,
+      "passed": true
+    }
+  },
+  "errors": [],
+  "host_contract": {
+    "emulated_memory_writes": 0,
+    "savestate_calls": 0,
+    "audio_device_opened": false,
+    "frontend_window_created": false,
+    "pcm_callback_capture_only": true
+  }
+}

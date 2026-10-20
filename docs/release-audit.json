@@ -41,7 +41,17 @@
     {
       "check": "exact-ROM suite is complete: input-test-report.json",
       "passed": true,
-      "details": 604
+      "details": 854
+    },
+    {
+      "check": "independent-engine smoke matches the current cartridge",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "independent-engine neutral cadence is 600 unit steps",
+      "passed": true,
+      "details": null
     },
     {
       "check": "all twelve fighters have manifests",
@@ -1282,19 +1292,44 @@
       "details": null
     },
     {
+      "check": "packaged independent-engine smoke evidence and scope",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "offline archive matches its published checksum",
       "passed": true,
       "details": null
     }
   ],
-  "version": "0.6.0",
-  "rom_sha256": "0d907717d284c9d0056434e69da0a265c2b09cf4c84761aa32998b4fc0bbd5ae",
-  "native_suite_checks": 21499,
+  "version": "0.6.1",
+  "rom_sha256": "945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee",
+  "native_suite_checks": 21749,
   "suites": {
     "test-report.json": 2595,
     "character-test-report.json": 18085,
     "presentation-test-report.json": 215,
-    "input-test-report.json": 604
+    "input-test-report.json": 854
+  },
+  "independent_engine_smoke": {
+    "scope": "independent-engine smoke, neutral600frame cadence",
+    "core": {
+      "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
+      "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4",
+      "library_name": "bsnes2014",
+      "library_version": "v094 (Accuracy) 3c1394e",
+      "system_ram_bytes": 131072,
+      "trace_offset": "0x1FF00",
+      "trace_words": 114
+    },
+    "cadence": {
+      "requested_frames": 600,
+      "observed_deltas": 600,
+      "delta_min": 1,
+      "delta_max": 1,
+      "non_one_deltas": 0,
+      "passed": true
+    }
   },
   "roster": {
     "fighters": 12,
@@ -1302,5 +1337,5 @@
     "source_atlases_verified": 48
   },
   "remaining_release_gates": "docs/PUBLIC-RELEASE.md",
-  "audit_checks": 199
+  "audit_checks": 202
 }
