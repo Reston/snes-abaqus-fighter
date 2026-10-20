@@ -2,9 +2,9 @@
 
 An original six-button fighting game for the **Super Nintendo**, inspired by the arcade structure of Street Fighter II and the people and places of Abaqus in Santiago.
 
-**Current release: v0.5.0.** The cartridge is a 4 MiB NTSC FastROM LoROM image across 128 banks, compiled from C and 65816 assembly. It runs in Snes9x with ordinary SNES controllers. Silent native verification passes 5,020 checks across gameplay, roster animation, presentation and input feel.
+**Current release: v0.5.1.** The cartridge is a 4 MiB NTSC FastROM LoROM image across 128 banks, compiled from C and 65816 assembly. It runs in Snes9x with ordinary SNES controllers. Silent native verification passes 5,073 checks across gameplay, roster animation, presentation and input feel.
 
-The [v0.5 release notes](docs/RELEASE-v0.5.md) describe the 48-frame animation contract for every fighter, buffered motion input, cleaner menus and focused input suite. The [v0.4 notes](docs/RELEASE-v0.4.md) cover the earlier presentation and proportion pass.
+The [v0.5.1 release notes](docs/RELEASE-v0.5.1.md) cover clearer fight/results screens, more consistent contact rules, truthful hit confirms and sharp emulator defaults. The [v0.5 notes](docs/RELEASE-v0.5.md) describe the 48-frame roster animation and buffered inputs.
 
 ![Abaqus After Hours](docs/screenshots/fight.png)
 
@@ -12,7 +12,7 @@ The [v0.5 release notes](docs/RELEASE-v0.5.md) describe the 48-frame animation c
 
 On Windows, double-click **[Play.cmd](Play.cmd)**. The launcher downloads the official Snes9x 1.63 release into `.tools/` on its first run, verifies its SHA256, and opens the game. No administrator account or global installation is needed. The tools are already present in this checkout.
 
-For offline Windows play, extract [Abaqus-After-Hours-v0.5.0-Windows.zip](dist/Abaqus-After-Hours-v0.5.0-Windows.zip) and run its `Play.cmd`.
+For offline Windows play, extract [Abaqus-After-Hours-v0.5.1-Windows.zip](dist/Abaqus-After-Hours-v0.5.1-Windows.zip) and run its `Play.cmd`.
 
 On other platforms, open **[dist/abaqus-after-hours.sfc](dist/abaqus-after-hours.sfc)** in a SNES emulator. No BIOS or commercial ROM is required.
 
@@ -69,7 +69,7 @@ The four verification suites run the actual ROM silently and headlessly in the o
 - `docs/presentation-test-report.json`
 - `docs/input-test-report.json`
 
-The [manifest](dist/manifest.json) includes the ROM SHA256 and header checksum. The v0.5.0 reports match that exact image: 188 gameplay checks, 4,574 roster/animation checks, 161 presentation checks and 97 focused input checks. The cadence probe records 600 game ticks across 600 emulated frames. Native screenshots and 36 animation GIFs are retained under `docs/screenshots/`.
+The [manifest](dist/manifest.json) includes the ROM SHA256 and header checksum. The v0.5.1 reports match that exact image: 188 gameplay checks, 4,574 roster/animation checks, 178 presentation checks and 133 focused input checks. The cadence probe records 600 game ticks across 600 emulated frames. Native screenshots and 36 animation GIFs are retained under `docs/screenshots/`.
 
 ## Project map
 
@@ -85,6 +85,6 @@ The [manifest](dist/manifest.json) includes the ROM SHA256 and header checksum. 
 | `dist/` | Playable ROM and release manifest |
 | `docs/` | Controls, technical notes, animation contract, art prompts, credits, roadmap and QA evidence |
 
-Git tracks the source, master art, generated cartridge assets and ROM. Downloaded toolchains and release ZIPs stay outside history. Prior releases are tagged `v0.1.0`, `v0.2.0`, `v0.3.0`, `v0.3.1`, `v0.4.0` and `v0.4.1`; the current release is tagged `v0.5.0`. No remote repository is configured by this project.
+Git tracks the source, master art, generated cartridge assets and ROM. Downloaded toolchains and release ZIPs stay outside history. Prior releases are tagged `v0.1.0`, `v0.2.0`, `v0.3.0`, `v0.3.1`, `v0.4.0`, `v0.4.1` and `v0.5.0`; the current release is tagged `v0.5.1`. No remote repository is configured by this project.
 
 Team references: [Abaqus Solutions](https://abaqus.io/es/abaqus-solutions/team) and [Abaqus Wealth Care](https://abaqus.io/es/wealth-care/about-us). See [credits and asset provenance](docs/CREDITS.md), [art prompts](docs/ART-DIRECTION.md), and [technical notes](docs/DEVELOPMENT.md).

@@ -38,7 +38,7 @@ files={
  'ANIMATION-PIPELINE.md':ROOT/'docs/ANIMATION-PIPELINE.md',
  'PROPORTIONS.md':ROOT/'docs/PROPORTIONS.md',
  'MENU-DESIGN.md':ROOT/'docs/MENU-DESIGN.md',
- 'RELEASE.md':ROOT/'docs/RELEASE-v0.5.md',
+ 'RELEASE.md':ROOT/'docs/RELEASE-v0.5.1.md',
  'LICENSE':ROOT/'LICENSE',
  'licenses/PVSnesLib.txt':ROOT/'licenses/PVSnesLib.txt',
  'licenses/SNESMod.txt':ROOT/'licenses/SNESMod.txt',

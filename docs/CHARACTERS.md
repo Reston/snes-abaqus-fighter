@@ -67,6 +67,12 @@ roster contract begins at offset `32` (16-bit words):
 | 76 / 77 | Raw controller keys, before opposite-direction cleaning |
 | 78 / 79 | Landing transition ticks remaining |
 | 80 / 81 | Committed horizontal jump velocity, raw signed `u16` |
+| 82 / 83 | Remaining hurt/guard-stun ticks |
+| 84 / 85 | Guard state |
+| 86 / 87 | Direct contact outcome: `0` none, `1` guard, `2` real hit |
+| 88 / 89 | Current displayed combo count |
+| 90 / 91 | Cosmetic combo/counter banner ticks, independent of hit linking |
+| 92 / 93 | Counter-hit flag |
 
 The trace remains under the reserved 256-byte region and is read-only from the
 test host.

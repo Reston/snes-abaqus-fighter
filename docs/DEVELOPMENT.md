@@ -4,7 +4,7 @@
 
 Supported build host: Windows x64. `tools/setup.ps1` downloads pinned official release archives into `.tools/` and verifies their SHA256. `tools/build.py` invokes 816-tcc, 816-opt, WLA-65816 and WLALINK directly, so a separate Make/MSYS installation is unnecessary.
 
-The v0.5.0 ROM target is a 4 MiB FastROM LoROM image across 128 banks, NTSC, with no coprocessor or SRAM requirement. WLALINK writes the SNES header/checksum. The build independently checks the FastROM LoROM mapping byte, image size and calculated checksum before writing `dist/manifest.json`.
+The v0.5.1 ROM target is a 4 MiB FastROM LoROM image across 128 banks, NTSC, with no coprocessor or SRAM requirement. WLALINK writes the SNES header/checksum. The build independently checks the FastROM LoROM mapping byte, image size and calculated checksum before writing `dist/manifest.json`.
 
 `Build.cmd` rebuilds from committed native assets. `Build.cmd --assets` regenerates the full asset set first. Source portrait downloads can be refreshed with `tools/fetch_references.py`; rebuilding the game does not require fetching the team pages.
 
@@ -49,15 +49,26 @@ The v0.5 stage pipeline loads three independent PNG masters from `assets/art/sta
 
 ## Simulation
 
-Combat uses integer 12.4 fixed-point positions. Each attack has startup, active and recovery durations. Push boxes, direction, height, guard type and one-hit confirmation determine contact. Both normal-hit candidates are collected before resolving damage, allowing trades. Projectiles have independent lifetime, position and collision.
+Combat uses integer 12.4 fixed-point positions. Standing, crouching and airborne bodies use feet-relative contact rectangles independent of the 96x80 art canvas. The body half-width is ten pixels; action-specific vertical bands intersect the standing or crouching body. Throws use their exact profile range without the normal-attack reach padding. Equal-center overlaps and post-impact stage clamps are symmetric. Each attack has startup, active and recovery durations. Push boxes, direction, height, guard type and one-hit confirmation determine contact. Both normal-hit candidates are collected before resolving damage, allowing trades. Projectiles have independent lifetime, position and collision.
 
-Input is sampled every simulation tick. Opposite horizontal or vertical directions resolve to neutral before movement and command recognition. Attack and jump edges have a six-tick buffer; a held Up input can carry a buffered jump through landing. A character special accepts a true twelve-tick Down -> Down+Forward -> Forward + punch motion, while the accessible Down + punch shortcut remains. The shortcut requires no Back direction, so Down + Back + punch is not treated as a special. Confirmed normals can cancel into heavier normals or a character special during their cancel window.
+Input is sampled every simulation tick. Opposite horizontal or vertical directions resolve to neutral before movement and command recognition. Attack and jump edges have a six-tick buffer; a held Up input can carry a buffered jump through landing. A character special accepts a true twelve-tick Down -> Down+Forward -> Forward + punch motion, while the accessible Down + punch shortcut remains. The shortcut requires no Back direction, so Down + Back + punch is not treated as a special. Normals confirmed by real damage can cancel into heavier normals or a character special during their cancel window; a guarded contact does not enable these hit-confirm cancels.
 
 Hitstop freezes combat expiry, movement, animation clocks and effect clocks while input edges continue to be sampled for the buffer. Guard stun is eight ticks with approximately one pixel of blocked pushback; a real hit uses approximately two pixels. The air-normal path uses a legacy attack key pose plus a generic transition frame; dedicated air-specific art remains future work.
 
 The game caches both active profile pointers when loading the fighters. Combat helpers reuse them instead of resolving a twelve-way roster lookup for every timing, collision and trace read. The rules and frame-data tables remain shared while every fighter keeps individual movement, jump, throw, normal and special tuning.
 
-The CPU uses distance, opponent attack state, projectiles, a deterministic PRNG and three difficulty levels. It obeys the same attack startup, active and recovery rules as the player. Fighter selection, arcade progression, training reset and menu navigation remain native controller actions.
+Direct contact outcomes are `0` none, `1` guarded and `2` real damage. Projectile
+impacts do not mark an unrelated current normal as confirmed. A combo links only
+while the defender remains in unblocked hit stun; its 45-tick banner timer is
+cosmetic. Blocking breaks the attacking chain, and receiving a real hit clears
+the defender's previous chain and stale input buffers. Inputs sampled after the
+impact during hitstop retain the existing six-tick buffering semantics.
+
+Fight hints occupy BG2 rows 26-27 during the first intro only. A separate dirty
+flag clears these 128 bytes without forcing a full interface transfer alongside
+the actor upload. Results place the P1/P2 round score on row 15 and quote on 17.
+
+The CPU samples one decision per live tick using distance, opponent attack state, projectiles, a deterministic PRNG and three difficulty levels. Its neutral facing is updated before that decision. It obeys the same attack startup, active and recovery rules as the player. Fighter selection, arcade progression, training reset and menu navigation remain native controller actions.
 
 ## Audio
 
@@ -76,7 +87,7 @@ Each suite stores the tested ROM SHA256 in its report:
 - `docs/presentation-test-report.json`
 - `docs/input-test-report.json`
 
-The reports are authoritative only when all four point to the exact current 4 MiB ROM. v0.5.0 passes 5,020 checks: 188 gameplay, 4,574 roster/animation, 161 presentation and 97 input. The cadence probe records 600 game ticks over 600 emulated frames. Screenshots and the 36 animation GIFs under `docs/screenshots/` come from the emulator, not composited game mockups.
+The reports are authoritative only when all four point to the exact current 4 MiB ROM. v0.5.1 passes 5,073 checks: 188 gameplay, 4,574 roster/animation, 178 presentation and 133 input. The cadence probe records 600 game ticks over 600 emulated frames. Screenshots and the 36 animation GIFs under `docs/screenshots/` come from the emulator, not composited game mockups.
 
 Two issues found during earlier integration shaped the implementation:
 

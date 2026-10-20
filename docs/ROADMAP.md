@@ -1,6 +1,6 @@
 # Polish roadmap
 
-The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass set the cartoon arcade direction. v0.3 introduced twelve individual sixteen-pose atlases and likeness correction. v0.4 standardized the 96x80 physical scale and rebuilt the presentation. v0.5.0 adds animation, simpler menus and buffered inputs, verified by four silent suites against the same native ROM.
+The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass set the cartoon arcade direction. v0.3 introduced twelve individual sixteen-pose atlases and likeness correction. v0.4 standardized the 96x80 physical scale and rebuilt the presentation. v0.5.0 adds animation, simpler menus and buffered inputs. v0.5.1 tightens contact, hit-confirm and combo rules, clears live-fight instructions, adds result scores and corrects emulator scaling. Four silent suites verify the current native ROM.
 
 ## v0.5.0 integration pass
 
@@ -34,7 +34,7 @@ These changes preserve the native emulator requirement and the fixed actor canva
 
 ## Release-quality validation
 
-- Keep running the gameplay, roster, presentation and focused input suites after changes. The four reports must retain the exact current ROM's SHA256 before packaging; v0.5.0 passes all four.
+- Keep running the gameplay, roster, presentation and focused input suites after changes. The four reports must retain the exact current ROM's SHA256 before packaging; v0.5.1 passes all four.
 - Playtest with two controllers and several keyboard layouts, including keyboard rollover constraints, SOCD edge cases, motion buffering and hitstop inputs.
 - Profile worst-case combat frames, six-bank animation uploads, audio streaming and vblank use across Snes9x, Mesen and bsnes.
 - Test an original SNES or Super Famicom through a flash cartridge. Real-console and flash-cartridge testing have not yet been performed.

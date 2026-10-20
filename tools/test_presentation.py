@@ -92,6 +92,48 @@ def vram_bytes(e: Emulator) -> bytes:
     return C.string_at(pointer, size)
 
 
+def ui_row(e: Emulator, row: int) -> list[int]:
+    """Decode one BG2 interface tile-map row from native VRAM."""
+
+    memory = vram_bytes(e)
+    offset = BG2_MAP_BYTE + row * 32 * 2
+    return [int.from_bytes(memory[offset + x * 2:offset + x * 2 + 2], "little")
+            for x in range(32)]
+
+
+def verify_footer_blank(e: Emulator, label: str) -> None:
+    """Rows 26/27 are permanent breathing room after combat UI settles."""
+
+    rows = {str(row): ui_row(e, row) for row in (26, 27)}
+    check(all((entry & 0x03FF) == 0 for values in rows.values()
+              for entry in values),
+          "combat footer rows 26-27 remain blank after " + label, rows)
+
+
+def verify_result_score(e: Emulator) -> dict[str, object]:
+    """The result line reports the trace's actual best-of-three score."""
+
+    current = state(e)
+    check(current["screen"] == 4, "local match reaches the native result screen", current)
+    check(current["wins1"] == 2 and current["wins2"] == 0,
+          "result trace exposes the truthful best-of-three score", current)
+    row = ui_row(e, 15)
+    digits = [entry & 0x03FF for entry in row]
+    expected = [ord("0") + current["wins1"], ord("0") + current["wins2"]]
+    check(digits.count(expected[0]) >= 1 and digits.count(expected[1]) >= 1,
+          "result row 15 contains both trace score digits", {
+              "wins1": current["wins1"], "wins2": current["wins2"],
+              "row15": digits,
+          })
+    if expected[0] == expected[1]:
+        check(digits.count(expected[0]) >= 2,
+              "tied result scores render both score digits", {
+                  "row15": digits,
+              })
+    return {"wins1": current["wins1"], "wins2": current["wins2"],
+            "row15": digits}
+
+
 def verify_large_portrait(e: Emulator, fighter: int) -> dict[str, object]:
     """Verify the selected 64x80 portrait transfer and its BG2 map anchor.
 
@@ -230,6 +272,93 @@ def title_and_select() -> dict[str, object]:
         e.close()
 
 
+def boot_fight(mode: int = 1, stage: int = 0) -> Emulator:
+    """Enter one native fight screen without opening a frontend window."""
+
+    e = Emulator()
+    e.run(120)
+    for _ in range(mode):
+        press(e, "down")
+    press(e, "a")
+    wait_screen(e, SELECT)
+    press(e, "a")
+    if mode == 1:
+        press(e, "a", 1)
+    wait_screen(e, ARENA)
+    for _ in range(stage):
+        press(e, "down")
+    press(e, "a")
+    wait_screen(e, FIGHT)
+    for _ in range(180):
+        if state(e)["intro"] == 0:
+            break
+        e.run(1)
+    check(state(e)["intro"] == 0, "presentation fight reaches live combat", {
+        "mode": mode, "stage": stage,
+    })
+    e.run(3)
+    return e
+
+
+def footer_lifecycle() -> None:
+    """Check footer clearing after intro, Training reset, and pause."""
+
+    e = boot_fight(1)
+    try:
+        verify_footer_blank(e, "the intro")
+        e.run(3, p1=["start"])
+        paused = state(e)
+        check(paused["paused"] == 1, "START opens the native pause panel", paused)
+        e.run(12)
+        verify_footer_blank(e, "pause")
+    finally:
+        e.close()
+
+    e = boot_fight(2)
+    try:
+        e.run(3, p1=["select"])
+        e.run(12)
+        reset = state(e)
+        check(reset["intro"] == 0 and reset["action1"] == 0 and
+              reset["action2"] == 0,
+              "Training Select reset returns to an idle live round", reset)
+        verify_footer_blank(e, "Training reset")
+    finally:
+        e.close()
+
+
+def result_score_capture() -> dict[str, object]:
+    """Win two local rounds and inspect the score line on the result screen."""
+
+    e = boot_fight(1)
+    try:
+        # This is the same controller-only close/throw cadence covered by the
+        # gameplay suite.  P2 is passive in local-versus, so no AI state is
+        # involved in the result score assertion.
+        for _ in range(520):
+            current = state(e)
+            if current["screen"] == 4:
+                break
+            if current["intro"] or current["round_end"] or current["paused"]:
+                e.run(1)
+                continue
+            forward = "right" if current["x1"] < current["x2"] else "left"
+            e.run(3, p1=[forward, "l"])
+            e.run(28, p1=[forward])
+        # The second win enters the native 180-tick round-end presentation;
+        # the attack cadence above may finish exactly on that transition.
+        for _ in range(220):
+            if state(e)["screen"] == 4:
+                break
+            e.run(1)
+        score = verify_result_score(e)
+        path = capture(e, "result-score.png")
+        score["capture"] = str(path)
+        return score
+    finally:
+        e.close()
+
+
 def fight_stage_captures() -> dict[str, str]:
     captures: dict[str, str] = {}
     digests: dict[str, str] = {}
@@ -253,6 +382,7 @@ def fight_stage_captures() -> dict[str, str]:
                 "stage": stage,
             })
             e.run(3)
+            verify_footer_blank(e, "the stage intro")
             path = capture(e, f"stage-{stage_index}.png")
             captures[stage] = str(path)
             digests[stage] = frame_digest(e)
@@ -277,9 +407,11 @@ def main() -> int:
         report["rom_bytes"] = manifest.get("bytes")
         check(manifest.get("bytes") == 4 * 1024 * 1024,
               "presentation build uses the 4 MiB animation ROM", manifest)
+        footer_lifecycle()
         report["captures"] = {
             "menus": title_and_select(),
             "stages": fight_stage_captures(),
+            "result": result_score_capture(),
         }
         report["status"] = "passed"
     except Exception as exc:

@@ -41,11 +41,18 @@ When opposite directions are held on the same axis, the input is neutral for tha
 - Attack and jump edges are buffered for six simulation ticks. A held Up input can carry a buffered jump through the landing transition, which makes short controller taps easier to perform without changing the jump arc.
 - A diagonal jump commits its horizontal momentum at takeoff. Releasing or reversing the direction in midair does not steer the jump; facing updates on landing. A neutral jump stays vertical.
 - A confirmed light or medium normal can cancel into the next heavier normal. A confirmed normal can also cancel into a character special during its cancel window. Press the next attack while the hit confirmation is active.
+- A guarded strike does not enable a hit-confirm cancel. Combo counts describe
+  uninterrupted hits; blocking or being interrupted breaks the chain. Receiving
+  a real hit clears old queued attacks and jumps, while new hitstop taps are
+  still sampled.
 - Punches and kicks also work while jumping. The aerial strike uses the legacy attack key pose with a generic transition frame; it does not have a separate air-specific illustration yet. Crouching kicks are low attacks.
 
 Guard stun lasts eight simulation ticks and blocked impact moves the defender one pixel. A real hit starts with a two-pixel impact and continues through a longer recoil reaction. Blocked specials may deal at most one chip point, while an unblocked special deals its normal damage.
 
 Health is shown in gold. Energy is shown in teal. Win two rounds to take a match. At timeout, the fighter with more health wins; a tie restarts the round without awarding a round win.
+
+The first fight intro shows a short control hint, then clears it to leave the
+floor visible. Match results include the actual P1/P2 round score.
 
 All twelve fighters have individual movement, jump arcs, normal attack speed and reach, throws and special tuning. Each fighter now has 48 animation frames in the shared 96x80 canvas: legacy key poses, motion transitions and action windup/active/recovery frames. The physical scale and feet baseline stay fixed across the full set. See [CHARACTERS.md](CHARACTERS.md) for the roster and frame data.
 

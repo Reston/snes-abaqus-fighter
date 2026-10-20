@@ -37,7 +37,11 @@ def check(ok: bool, label: str, details: object | None = None) -> None:
 def trace(e: Emulator) -> dict[str, int]:
     """Decode the public trace, including the input-feel extension."""
 
-    data = C.string_at(e.ram + 0x1FF00, 164)
+    # The v0.5.1 combat classification extension occupies words 82..93.
+    # Keep this decoder local to the focused suite; the shared emulator host
+    # remains deliberately backward-compatible with older ROMs until the
+    # parent integrates the new trace aliases.
+    data = C.string_at(e.ram + 0x1FF00, 188)
     words = [int.from_bytes(data[i:i + 2], "little")
              for i in range(0, len(data), 2)]
     names = (
@@ -59,8 +63,32 @@ def trace(e: Emulator) -> dict[str, int]:
         "buffer_age2", "jump_buffer1", "jump_buffer2", "command_stage1",
         "command_stage2", "raw_keys1", "raw_keys2", "landing1", "landing2",
         "jump_vx1", "jump_vx2",
+        "hurt1", "hurt2", "guard1", "guard2",
+        "connected1", "connected2", "combo_link1", "combo_link2",
+        "chain_timer1", "chain_timer2", "counter1", "counter2",
     )
     return dict(zip(names, words))
+
+
+def event_field(sample: dict[str, int], name: str, port: int,
+                default: int = 0) -> int:
+    """Read a per-player v0.5.1 event field with stable alias fallback."""
+
+    suffix = str(port + 1)
+    names = [name]
+    if name == "combo_link":
+        names.extend(("combo", "combo_trace"))
+    for alias in names:
+        for candidate in (f"{alias}{suffix}", f"{alias}_state{suffix}",
+                          f"{alias}_trace{suffix}"):
+            if candidate in sample:
+                return sample[candidate]
+    # The legacy combo word is a P1-only field at TRACE[30].  It is useful as
+    # a read-only fallback for an intermediate ROM, but never shadows the
+    # new per-player words when they are available.
+    if name == "combo_link" and port == 0 and "combo" in sample:
+        return sample["combo"]
+    return default
 
 
 def press(e: Emulator, key: str, port: int = 0) -> None:
@@ -433,6 +461,54 @@ def port_field(s: dict[str, int], name: str, port: int) -> int:
     return s[f"{name}{port + 1}"]
 
 
+def wait_connected(e: Emulator, attacker: int, hold_defender: list[str] | None = None,
+                   max_frames: int = 80) -> tuple[dict[str, int] | None,
+                                                  list[dict[str, int]]]:
+    """Return the first classified contact sample and the trace history.
+
+    Contact is an event, so callers must retain the first sample rather than
+    waiting for the next state transition.  The optional defender hold keeps
+    a local-versus guard active while the attacker reaches its active frame.
+    """
+
+    hold_defender = hold_defender or []
+    samples: list[dict[str, int]] = []
+    for _ in range(max_frames):
+        sample = trace(e)
+        samples.append(sample)
+        if event_field(sample, "connected", attacker) != 0:
+            return sample, samples
+        if attacker == 0:
+            e.run(1, p2=hold_defender)
+        else:
+            e.run(1, p1=hold_defender)
+    return None, samples
+
+
+def wait_live(e: Emulator) -> dict[str, int]:
+    """Advance through hitstop and return the first live trace sample."""
+
+    for _ in range(30):
+        sample = trace(e)
+        if not sample["hitstop"]:
+            return sample
+        e.run(1)
+    return trace(e)
+
+
+def start_normal(e: Emulator, attacker: int = 0, key: str = "y",
+                 hold_defender: list[str] | None = None) -> None:
+    """Start one edge-triggered normal and release its button."""
+
+    hold_defender = hold_defender or []
+    if attacker == 0:
+        e.run(3, p1=[key], p2=hold_defender)
+        e.run(1, p2=hold_defender)
+    else:
+        e.run(3, p1=hold_defender, p2=[key])
+        e.run(1, p1=hold_defender)
+
+
 def check_qcf_case(port: int, wrong_back: bool = False) -> None:
     """Exercise a real QCF on either facing and reject down-back shortcuts."""
 
@@ -780,6 +856,289 @@ def check_guard_timing() -> None:
         e.close()
 
 
+def check_training_inertness() -> None:
+    """Training's second port stays inert and cannot inject CPU actions."""
+
+    e = boot(2)
+    try:
+        initial = trace(e)
+        for _ in range(90):
+            e.run(1)
+        idle = trace(e)
+        check(idle["x2"] == initial["x2"] and idle["action2"] == 0 and
+              idle["wave2"] == 0 and idle["hp2"] == initial["hp2"],
+              "Training opponent remains inert while P1 is idle", {
+                  "initial": initial, "idle": idle,
+              })
+
+        # Port two is physically driven here even though Training must use
+        # the CPU-neutral path.  A leaked local-versus pad would move or make
+        # the opponent attack, which is visible without peeking at WRAM.
+        e.run(3, p2=["left", "y"])
+        e.run(20, p2=[])
+        driven = trace(e)
+        check(driven["x2"] == initial["x2"] and driven["action2"] == 0 and
+              driven["wave2"] == 0 and driven["hp2"] == initial["hp2"],
+              "Training ignores controller-two movement and attack input", {
+                  "initial": initial, "driven": driven,
+              })
+    finally:
+        e.close()
+
+
+def check_contact_classification() -> None:
+    """Only real, unblocked contact opens a normal cancel window."""
+
+    # A confirmed hit may cancel during the short post-hit active window.
+    e = boot(1)
+    try:
+        close_players(e)
+        start_normal(e, 0, "y")
+        real, history = wait_connected(e, 0)
+        check(real is not None and event_field(real or {}, "connected", 0) == 2,
+              "close punch is classified as a real hit", {
+                  "event": real, "history": history,
+              })
+        if real is not None:
+            check(event_field(real, "guard", 1) == 0 and
+                  event_field(real, "hurt", 1) > 0,
+                  "real hit exposes hurt without guard state", real)
+        wait_live(e)
+        e.run(1)
+        drive(e, 0, ["x"], 3)
+        cancel = trace(e)
+        check(cancel["action1"] == 2,
+              "real hit confirmation cancels into a medium punch", {
+                  "event": real, "cancel": cancel,
+              })
+    finally:
+        e.close()
+
+    # A blocked jab still produces hitstop, but it must never be treated as a
+    # hit confirm.  The immediate sample matters because a buffered medium
+    # may legitimately execute later after the jab returns to neutral.
+    e = boot(1)
+    try:
+        close_players(e)
+        guard = ["down", "right"]
+        start_normal(e, 0, "y", guard)
+        blocked, history = wait_connected(e, 0, guard)
+        check(blocked is not None and
+              event_field(blocked or {}, "connected", 0) == 1,
+              "guarded punch is classified as blocked contact", {
+                  "event": blocked, "history": history,
+              })
+        if blocked is not None:
+            check(event_field(blocked, "guard", 1) > 0 and
+                  blocked["pose2"] == 9,
+                  "blocked contact exposes guard-stun state", blocked)
+        wait_live(e)
+        e.run(1, p2=guard)
+        drive(e, 0, ["x"], 3)
+        blocked_cancel = trace(e)
+        check(blocked_cancel["action1"] != 2,
+              "blocked jab cannot hit-confirm cancel into medium", {
+                  "event": blocked, "trace": blocked_cancel,
+              })
+        check(event_field(blocked_cancel, "combo_link", 0) == 0 and
+              event_field(blocked_cancel, "counter", 0) == 0,
+              "blocked contact does not start a combo or counter", blocked_cancel)
+    finally:
+        e.close()
+
+
+def check_stale_prehit_buffer() -> None:
+    """A defender's pre-hit command clears while fresh hitstop input remains."""
+
+    e = boot(1)
+    try:
+        close_players(e)
+        # P1 starts a slow heavy normal.  X is buffered during its startup,
+        # then P2's faster jab lands while P1 is still the defender.  This
+        # exercises the contract's defender-side stale-buffer clearing path.
+        e.run(1, p1=["l"], p2=["y"])
+        prehit: list[dict[str, int]] = []
+        for _ in range(3):
+            e.run(1, p1=["x"])
+            prehit.append(trace(e))
+        e.run(1, p1=[])
+        check(any(s["buffered_action1"] == 2 and
+                  event_field(s, "hurt", 1) == 0 for s in prehit),
+              "defender pre-hit medium input is visibly buffered", prehit)
+
+        event, history = wait_connected(e, 1)
+        check(event is not None and event_field(event or {}, "connected", 1) == 2,
+              "buffer probe reaches a real hit on the defender", {
+                  "event": event, "history": history,
+              })
+        if event is None:
+            return
+        check(event["buffered_action1"] == 0 and event["buffer_age1"] == 0,
+              "real impact clears the defender's stale pre-hit command", event)
+
+        # Release the pre-hit button for a full sampled tick so the deliberate
+        # hitstop tap is a new edge, then hold it for the host's three-frame
+        # polling window.  Buffer expiry remains frozen during hitstop.  P1 is
+        # still hurt after the freeze, so execution is covered by the normal
+        # hitstop-capture test rather than being required here.
+        e.run(1, p1=[])
+        tap_samples: list[dict[str, int]] = []
+        for _ in range(3):
+            e.run(1, p1=["x"])
+            tap_samples.append(trace(e))
+        tap = tap_samples[-1]
+        hitstop_taps = [s for s in tap_samples if s["hitstop"]]
+        check(any(s["buffered_action1"] == 2 and s["buffer_age1"] > 0
+                  for s in hitstop_taps),
+              "new hitstop medium tap is captured after stale input clears", {
+                  "event": event, "tap": tap_samples,
+              })
+        check(bool(hitstop_taps) and
+              len({s["buffer_age1"] for s in hitstop_taps}) == 1,
+              "defender input-buffer age freezes through hitstop", {
+                  "event": event, "tap": tap_samples,
+              })
+    finally:
+        e.close()
+
+
+def _seed_two_hit_combo(e: Emulator) -> tuple[dict[str, int] | None,
+                                               dict[str, int] | None]:
+    """Create a real light/medium chain and return both contact samples."""
+
+    close_players(e)
+    start_normal(e, 0, "y")
+    first, _ = wait_connected(e, 0)
+    if first is None:
+        return None, None
+    wait_live(e)
+    e.run(1)
+    drive(e, 0, ["x"], 3)
+    second, _ = wait_connected(e, 0)
+    return first, second
+
+
+def check_combo_lifecycle() -> None:
+    """Combo linkage follows true hurt continuity and attacker interruption."""
+
+    e = boot(1)
+    try:
+        first, second = _seed_two_hit_combo(e)
+        check(first is not None and second is not None and
+              event_field(second or {}, "connected", 0) == 2,
+              "two-hit combo reaches its second real contact", {
+                  "first": first, "second": second,
+              })
+        if second is not None:
+            check(event_field(second, "combo_link", 0) >= 2 and
+                  event_field(second, "chain_timer", 0) > 0,
+                  "same defender hurt continuity increments combo linkage", second)
+
+        # Let the defender recover while the display timer is still alive.
+        for _ in range(60):
+            sample = trace(e)
+            if event_field(sample, "hurt", 1) == 0 and not sample["hitstop"]:
+                break
+            e.run(1)
+        close_players(e)
+        start_normal(e, 0, "y")
+        recovered, _ = wait_connected(e, 0)
+        check(recovered is not None and event_field(recovered or {}, "connected", 0) == 2,
+              "post-recovery punch reaches the defender", recovered)
+        if recovered is not None:
+            check(event_field(recovered, "combo_link", 0) == 1,
+                  "combo restarts after the defender leaves hurt state", recovered)
+    finally:
+        e.close()
+
+    # A defender interrupt must also break the link, even if the attacker's
+    # display lifetime has not yet reached zero.
+    e = boot(1)
+    try:
+        _, second = _seed_two_hit_combo(e)
+        check(second is not None and event_field(second or {}, "combo_link", 0) >= 2,
+              "interrupt probe starts from an active combo", second)
+        for _ in range(60):
+            sample = trace(e)
+            if event_field(sample, "hurt", 1) == 0 and not sample["hitstop"]:
+                break
+            e.run(1)
+        close_players(e)
+        start_normal(e, 1, "y")
+        interrupted, _ = wait_connected(e, 1)
+        check(interrupted is not None and
+              event_field(interrupted or {}, "connected", 1) == 2 and
+              event_field(interrupted or {}, "hurt", 0) > 0,
+              "defender can interrupt the former attacker", interrupted)
+        for _ in range(40):
+            sample = trace(e)
+            if event_field(sample, "hurt", 0) == 0 and not sample["hitstop"]:
+                break
+            e.run(1)
+        close_players(e)
+        start_normal(e, 0, "y")
+        restarted, _ = wait_connected(e, 0)
+        check(restarted is not None and
+              event_field(restarted or {}, "connected", 0) == 2 and
+              event_field(restarted or {}, "combo_link", 0) == 1,
+              "combo restarts after the attacker is interrupted", restarted)
+    finally:
+        e.close()
+
+
+def check_mirrored_throw_range() -> None:
+    """Player one and two share the same exact throw-range/contact edge."""
+
+    e = boot(1)
+    try:
+        close_players(e)
+        inside = trace(e)
+        check(abs(inside["x1"] - inside["x2"]) < inside["throw_range1"] * 16,
+              "P1 throw probe starts inside its published range", inside)
+        forward = "right" if inside["face1"] else "left"
+        drive(e, 0, [forward, "l"], 3)
+        p1_throw = trace(e)
+        check(p1_throw["action1"] == 9 or
+              event_field(p1_throw, "connected", 0) == 2,
+              "P1 throw connects at the close contact edge", p1_throw)
+    finally:
+        e.close()
+
+    e = boot(1)
+    try:
+        close_players(e)
+        inside = trace(e)
+        check(abs(inside["x1"] - inside["x2"]) < inside["throw_range2"] * 16,
+              "P2 throw probe starts inside its published range", inside)
+        forward = "right" if inside["face2"] else "left"
+        drive(e, 1, [forward, "l"], 3)
+        p2_throw = trace(e)
+        check(p2_throw["action2"] == 9 or
+              event_field(p2_throw, "connected", 1) == 2,
+              "P2 mirrored throw connects at the close contact edge", p2_throw)
+    finally:
+        e.close()
+
+    e = boot(1)
+    try:
+        close_players(e)
+        initial = trace(e)
+        back = "left" if initial["face1"] else "right"
+        drive(e, 0, [back], 8)
+        outside = trace(e)
+        check(abs(outside["x1"] - outside["x2"]) >= outside["throw_range1"] * 16,
+              "P1 range probe reaches the outside side of the throw edge", outside)
+        forward = "right" if outside["face1"] else "left"
+        drive(e, 0, [forward, "l"], 3)
+        no_throw = trace(e)
+        check(no_throw["action1"] != 9,
+              "P1 heavy input outside throw range falls back to a normal", {
+                  "outside": outside, "trace": no_throw,
+              })
+    finally:
+        e.close()
+
+
 def check_landing_buffer_boundary() -> None:
     """The oldest valid six-tick jump edge survives into the landing tick."""
 
@@ -917,8 +1276,13 @@ def main() -> int:
             e.close()
 
         check_pause_intro_discard()
+        check_training_inertness()
         check_training_reset()
         check_guard_timing()
+        check_contact_classification()
+        check_stale_prehit_buffer()
+        check_combo_lifecycle()
+        check_mirrored_throw_range()
 
         e = boot(1)
         try:

@@ -49,6 +49,12 @@ special-move labels are omitted. Cursor tiles use one gold accent, and text
 uses transparent glyphs with a one-pixel navy shadow. The title footer reads
 `PRESS START`; the arena heading has no extra right-side hint.
 
+The v0.5.1 live fight clears the intro hint at tile rows 26-27 when combat
+begins, on pause and on Training reset. This restores the bottom sixteen native
+pixels to the arena. A dedicated 128-byte dirty-region upload handles the clear.
+The result panel shows `P1  0 - 0  P2` at row 15 with the actual round wins;
+the fighter quote moves to row 17, retaining actions at rows 19 and 21.
+
 Horizontal movement remains one card at a time.  Up and down move by four
 entries, preserving the natural 4x3 reading order.
 

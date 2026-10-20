@@ -10,10 +10,12 @@ Preserve the native emulator requirement when extending the project.
 - Run `Test.cmd` after gameplay, graphics-transfer, audio, menu, presentation or
   progression changes. It runs the actual ROM in Snes9x and records the tested
   ROM hash for the gameplay, roster, presentation and focused-input suites.
-- Run agent verification silently and headlessly. The libretro test host may
-  capture audio data for assertions, but must not play it through the speakers.
-  Do not launch, reopen, refocus, or bring emulator windows forward for testing;
-  the user may be playing another game in fullscreen. Keep their focus intact.
+- Run automated verification silently and headlessly. The libretro test host
+  may capture audio for assertions, but must not play it through the speakers.
+  The user has also authorized muted live emulator review now that they are
+  no longer playing another fullscreen game. Keep GUI review muted and separate
+  from the reproducible headless suites. Default to preserving foreground focus
+  during future automated work.
 - Do not report emulator pass counts or release readiness until all four current
   ROM reports point to the exact same ROM SHA256:
   `docs/test-report.json`, `docs/character-test-report.json`,
