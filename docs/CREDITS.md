@@ -6,6 +6,26 @@ Abaqus: After Hours is an original homebrew fighting game created for this proje
 
 Game code, UI, tile pipeline, combat implementation, tracker compositions and synthesized BRR effects were authored for this repository. Pixel-art master atlases were created with the built-in image generation tool, then converted to SNES tiles and palettes. Prompts and processing notes are in [ART-DIRECTION.md](ART-DIRECTION.md).
 
+## v0.5 animation references and art
+
+The v0.5 animation pass adds 24 original built-in imagegen atlases, two for
+each fighter (`animation-motion.png` and `animation-actions.png`). They provide
+32 new drawn in-between frames per fighter while preserving each fighter's
+legacy identity master, costume, palette and source portrait. The selected
+Reston master remains the v3 short-hair correction. Every atlas keeps its full
+prompt, reference role and provenance in the adjacent `animation.json`.
+
+Official reference material was used only for menu structure, controller
+mapping and the broad six-button fighting-game vocabulary:
+
+- [Capcom Town: Street Fighter II](https://captown.capcom.com/en/classic_games/22)
+- [Capcom Town: Super Street Fighter II](https://captown.capcom.com/en/classic_games/30)
+- [Nintendo Super NES developer interview](https://www.nintendo.com/en-gb/News/2017/September/Nintendo-Classic-Mini-SNES-developer-interview-Volume-1-Star-Fox-+Star-Fox-2-1273086.html)
+
+No commercial game ROM, sprite sheet, animation frame, font, music or source
+code was imported. These references do not grant rights to Capcom or Nintendo
+assets.
+
 ## People
 
 Identity photographs and public names were sourced from the user-provided [Solutions team page](https://abaqus.io/es/abaqus-solutions/team) and [Wealth Care page](https://abaqus.io/es/wealth-care/about-us). The twelve individual fighter atlases are original cartoon illustrations generated from those references, with matching 32×40 selection cards and 64×80 profile portraits cropped from each master. The v0.4 likeness pass refreshed Damián, Cote, Negger, Fernando, Mamariaga, Reston and Roxana with built-in imagegen v2 edits; the earlier v2 masters for Ivo, Cristóbal, David, Cristián and Lars remain selected. Full prompts and identity notes accompany every character under `assets/art/characters/`. The source photographs remain subject to the original owners' rights. Download URLs are retained in `assets/references/team.json` and `wealth.json`.

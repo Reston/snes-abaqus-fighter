@@ -1,0 +1,48 @@
+{
+  "schema": "abaqus-animation-source/v1",
+  "fighter": "05-david",
+  "character": "David Ponce",
+  "atlases": {
+    "motion": {
+      "path": "assets/art/characters/05-david/animation-motion.png",
+      "frames": "16-31",
+      "generated_source": "C:/Users/user/.codex/generated_images/01a1574c-bf5b-7a00-8edf-52c9b177642b/exec-0f2c114c-57be-46e8-97fc-a7ef9b4b57ea.png",
+      "sha256": "5b205771458238a844c3ffb9c256065342df3321effad715ea0895903c20aa27",
+      "full_prompt": [
+        "Use case: stylized-concept; asset type: native SNES fighting-game motion sprite atlas.",
+        "Input Image 1 is the existing David Ponce key-pose atlas, the identity, costume and original cartoon-style reference. Input Image 2 is David's reference portrait, used for identity only.",
+        "Create a brand-new transparent 1254x1254 square 4-column by 4-row sprite atlas with exactly sixteen separately drawn full-body right-facing motion figures. Preserve David Ponce: near-black hair tied back into a compact low bun, black moustache and short goatee, long oval face, calm focused eyes, amber-gold button shirt with dark suspenders, deep navy trousers and cream sneakers.",
+        "Use one common source scale and baseline established by the first upright guard, with generous transparent gaps and no independent pose resizing. Row-major order: 16 neutral upright guard matching original idle; 17 gentle inhale with small chest and shoulder rise and wrist movement, feet planted; 18 exhale with subtle weight settling, feet planted; 19 return guard. 20 forward walk lead-foot contact; 21 passing weight over planted lead foot; 22 rear foot passes beneath hips; 23 opposite contact. 24 backward walk rear-foot contact with guard maintained; 25 weight onto planted rear foot; 26 lead foot passes beneath hips; 27 opposite contact, all still facing right. 28 halfway crouch; 29 jump anticipation with compact knee compression; 30 early jump extension distinct from the legacy tucked jump; 31 landing compression.",
+        "Draw genuine anatomical in-betweens for arms, hands, torso, hips, knees, feet, tied-back hair bun, suspenders, trousers and sneakers. Keep each connected figure separate with no labels, text, borders, floor, shadows, effects, props, watermark, photorealism, 3D or commercial game sprites."
+      ],
+      "input_roles": [
+        {"path": "assets/art/characters/05-david/atlas.png", "role": "identity, costume, original key-pose proportions and cartoon style reference"},
+        {"path": "assets/references/fighter-05.jpg", "role": "facial and hair identity reference"}
+      ]
+    },
+    "actions": {
+      "path": "assets/art/characters/05-david/animation-actions.png",
+      "frames": "32-47",
+      "generated_source": "C:/Users/user/.codex/generated_images/01a1574c-bf5b-7a00-8edf-52c9b177642b/exec-8119b5ec-2617-481f-834f-bc46550f6ff9.png",
+      "sha256": "52afbbbbb5c48c6dc5b2a2c69edcdbc31ff05df81ed74f6b590e892d3eb15ab3",
+      "full_prompt": [
+        "Use case: stylized-concept; asset type: native SNES fighting-game action-transition sprite atlas.",
+        "Input Image 1 is the existing David Ponce key-pose atlas, the identity, costume and original cartoon-style reference. Input Image 2 is David's reference portrait, used for identity only.",
+        "Create a brand-new transparent 1254x1254 square 4-column by 4-row atlas with exactly sixteen separately drawn full-body right-facing action figures. Preserve David Ponce: near-black hair tied back into a compact low bun, black moustache and short goatee, long oval face, calm focused eyes, amber-gold button shirt with dark suspenders, deep navy trousers and cream sneakers. Establish one uniform source scale from the first upright guard.",
+        "Exact row-major frame order: 32 upright ready guard with slight fist preparation; 33 jab retracts halfway toward guard; 34 cross windup with torso and hips turning and fist drawn back; 35 cross retracts toward guard. 36 kick windup with bent knee raised; 37 kick retracts with bent leg returning under body; 38 sweep windup in a low crouch with leg tucked; 39 sweep recovery into crouch. 40 block-impact brace with firm forearms and shoulders absorbing force; 41 hurt recovery toward balanced guard; 42 special charge with both empty hands near waist and no effect; 43 cast recovery with arms folding back after extension and no projectile. 44 uppercut anticipation with crouch and fist near waist; 45 uppercut recovery; 46 victory transition with arms partway raised; 47 diagonal backward knockout fall with head left.",
+        "Draw genuine anatomical in-betweens for limbs, torso, hands, tied-back hair bun, suspenders, trousers and sneakers. Keep all figures complete, connected and separate with transparent gaps. No copied or translated bodies, duplicate poses, motion streaks, sparks, projectiles, shadows, effects, labels, text, props, watermark or commercial game sprites. Keep the KO naturally low without shrinking its physical scale."
+      ],
+      "input_roles": [
+        {"path": "assets/art/characters/05-david/atlas.png", "role": "identity, costume, original key-pose proportions and cartoon style reference"},
+        {"path": "assets/references/fighter-05.jpg", "role": "facial and hair identity reference"}
+      ]
+    }
+  },
+  "validation": {
+    "validated_at": "2026-10-20",
+    "tool": "tools/fighter_assets.py:extract_atlas",
+    "alpha_threshold": 200,
+    "motion": {"size": [1254, 1254], "mode": "RGBA", "alpha_min_max": [0, 255], "figures": 16, "sha256": "5b205771458238a844c3ffb9c256065342df3321effad715ea0895903c20aa27", "opaque_pixels": [32024, 30441, 30830, 31263, 30419, 27586, 27015, 30895, 29385, 27631, 27098, 28464, 28933, 25950, 29230, 28585]},
+    "actions": {"size": [1254, 1254], "mode": "RGBA", "alpha_min_max": [0, 255], "figures": 16, "sha256": "52afbbbbb5c48c6dc5b2a2c69edcdbc31ff05df81ed74f6b590e892d3eb15ab3", "opaque_pixels": [34100, 35056, 35756, 32923, 32118, 30909, 29780, 28192, 33904, 37059, 35228, 33093, 34219, 34508, 36496, 31688]}
+  }
+}

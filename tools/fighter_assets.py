@@ -23,13 +23,41 @@ POSES = ('idle', 'walk-forward', 'walk-back', 'crouch', 'jump', 'jab',
          'cross', 'kick', 'sweep', 'block', 'hurt', 'victory', 'cast',
          'uppercut', 'knockout', 'rush')
 
+# The original atlas remains the gameplay key-pose set.  The two new atlases
+# deliberately use names that describe the source art rather than pretending
+# they are additional gameplay states.  The native renderer can select these
+# frames for the animation clock while the combat state continues to use the
+# legacy pose indices above.
+MOTION_POSES = ('breath-neutral', 'breath-inhale', 'breath-exhale',
+                'breath-return', 'walk-forward-contact',
+                'walk-forward-pass', 'walk-forward-rear-pass',
+                'walk-forward-opposite', 'walk-back-contact',
+                'walk-back-pass', 'walk-back-lead-pass',
+                'walk-back-opposite', 'crouch-halfway',
+                'jump-anticipation', 'jump-extension',
+                'landing-compression')
+ACTION_POSES = ('ready-guard', 'jab-retract', 'cross-windup',
+                 'cross-retract', 'kick-windup', 'kick-retract',
+                 'sweep-windup', 'sweep-recovery', 'block-impact',
+                 'hurt-recovery', 'special-charge', 'cast-recovery',
+                 'uppercut-anticipation', 'uppercut-recovery',
+                 'victory-transition', 'knockout-fall')
+ANIMATION_POSES = MOTION_POSES + ACTION_POSES
 
-def extract_atlas(path, alpha_threshold=200):
+
+def extract_atlas(path, alpha_threshold=200, pose_names=None):
     """Label opaque silhouettes, retaining only the selected figure's pixels.
 
     Sorting by foot baseline before the four-column row ordering also handles
     raised fists and kicks that extend beyond the nominal source cell edges.
+
+    ``pose_names`` is intentionally optional: art-review tools and existing
+    callers still receive the original sixteen key-pose names, while the
+    animation atlases can provide their own sixteen-frame name set.  The
+    extraction algorithm and its alpha-threshold semantics remain unchanged.
     """
+    names = tuple(POSES if pose_names is None else pose_names)
+    assert len(names) == 16, f'{path}: an atlas must contain exactly sixteen pose names'
     sheet = Image.open(path).convert('RGBA')
     width, height = sheet.size
     # Reject translucent generation fringes: those can bridge neighboring hands
@@ -74,7 +102,7 @@ def extract_atlas(path, alpha_threshold=200):
         ordered.extend(sorted(selected[row:row + 4], key=lambda item: item[1][0]))
     figures = []
     metadata = []
-    for pose, (count, box, component) in zip(POSES, ordered):
+    for pose, (count, box, component) in zip(names, ordered):
         figure = sheet.crop(box)
         mask = Image.new('L', figure.size)
         mask.putdata([255 if labels[y * width + x] == component else 0
@@ -86,93 +114,240 @@ def extract_atlas(path, alpha_threshold=200):
     return figures, metadata
 
 
+def _sha256(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _normalize_animation(figures, reference_height):
+    """Convert one animation atlas into the legacy atlas's source units.
+
+    This is deliberately the only resize performed before the shared native
+    scale is selected.  In particular, individual walk or attack figures are
+    never fitted separately to the hardware canvas: doing that is what makes
+    a character appear to grow and shrink from pose to pose.
+    """
+    assert figures and figures[0].height > 0
+    source_scale = reference_height / figures[0].height
+    normalized = []
+    for figure in figures:
+        size = (max(1, round(figure.width * source_scale)),
+                max(1, round(figure.height * source_scale)))
+        normalized.append(figure.resize(size, Image.Resampling.NEAREST))
+    # The neutral frame is the reference for the conversion.  A one-pixel
+    # rounding difference is acceptable for the source raster, but a missing
+    # or implausibly tiny neutral figure is a generation error, not something
+    # the native pipeline should hide by compressing all other poses.
+    assert normalized[0].height >= max(1, round(reference_height * .96)), \
+        f'animation neutral normalized to {normalized[0].height}, expected about {reference_height}'
+    return normalized, source_scale
+
+
+def _fit_uniform_scale(figures, desired_scale):
+    """Choose one physical scale for all 48 figures and rounded rasters."""
+    max_width = max(figure.width for figure in figures)
+    max_height = max(figure.height for figure in figures)
+    uniform_scale = min(desired_scale, FIT_WIDTH / max_width,
+                        FIT_HEIGHT / max_height)
+
+    # PIL's round() can promote a .5 result above the guard by one pixel.
+    # Re-evaluate using the rounded dimensions so the manifest's one scale and
+    # the actual native rasters agree exactly.
+    for _ in range(8):
+        sizes = [(max(1, round(figure.width * uniform_scale)),
+                  max(1, round(figure.height * uniform_scale)))
+                 for figure in figures]
+        rounded_width = max(width for width, _ in sizes)
+        rounded_height = max(height for _, height in sizes)
+        if rounded_width <= FIT_WIDTH and rounded_height <= FIT_HEIGHT:
+            return uniform_scale
+        uniform_scale *= min(FIT_WIDTH / rounded_width,
+                             FIT_HEIGHT / rounded_height)
+    raise AssertionError('could not fit all 48 poses in the native canvas with one scale')
+
+
+def _assert_animation_cycles(slug, figures):
+    """Reject empty or duplicated generated cycles before quantization."""
+    signatures = [figure.getchannel('A').tobytes() for figure in figures]
+    cycles = ((16, 20, 3, 'breathing'),
+              (20, 24, 3, 'forward walk'),
+              (24, 28, 3, 'backward walk'),
+              (28, 32, 3, 'movement transitions'),
+              (32, 36, 3, 'jab/cross'),
+              (36, 40, 3, 'kick/sweep'),
+              (40, 44, 3, 'block/hurt/charge'),
+              (44, 48, 3, 'recovery/results'))
+    for start, end, minimum, name in cycles:
+        unique = len(set(signatures[start:end]))
+        assert unique >= minimum, \
+            f'{slug}: {name} has only {unique} distinct source figures; review animation art'
+
+
+def _assert_native_animation_cycles(slug, indices):
+    """Require distinct frames after palette quantization and tile encoding."""
+    cycles = ((16, 20, 'breathing'),
+              (20, 24, 'forward walk'),
+              (24, 28, 'backward walk'))
+    for start, end, name in cycles:
+        unique = len({bytes(frame) for frame in indices[start:end]})
+        assert unique >= 3, \
+            f'{slug}: native {name} cycle has only {unique} distinct indexed frames'
+
+
 def prepare_roster(root, output):
+    """Prepare twelve fighters with 16 legacy and 32 animation frames.
+
+    The returned ``indices`` list contains all 48 native 96x80 frames in
+    global order.  The first sixteen retain the original gameplay pose order;
+    frames 16..31 come from ``animation-motion.png`` and frames 32..47 from
+    ``animation-actions.png``.  Callers that still consume the legacy first
+    bank therefore see the same data, while the expanded asset writer can
+    divide the list into six eight-frame LoROM-safe banks.
+    """
     fighters = []
     manifests = []
     for fighter, slug in enumerate(SLUGS):
-        source = root / f'assets/art/characters/{fighter:02}-{slug}/atlas.png'
+        directory = root / f'assets/art/characters/{fighter:02}-{slug}'
+        source = directory / 'atlas.png'
+        motion_source = directory / 'animation-motion.png'
+        action_source = directory / 'animation-actions.png'
         assert source.exists(), f'Missing individual fighter master: {source}'
-        figures, metadata = extract_atlas(source)
-        # One fighter scale is shared by every pose.  The idle figure sets the
-        # desired standing height; the all-frame guard only reduces it when an
-        # extended kick, jump, KO, etc. would exceed the native canvas.
-        base_scale = HEIGHTS[fighter] / figures[0].height
-        max_width = max(figure.width for figure in figures)
-        max_height = max(figure.height for figure in figures)
-        uniform_scale = min(base_scale, FIT_WIDTH / max_width,
-                            FIT_HEIGHT / max_height)
+        assert motion_source.exists(), f'Missing motion animation atlas: {motion_source}'
+        assert action_source.exists(), f'Missing action animation atlas: {action_source}'
+        legacy_hash = _sha256(source)
+        motion_hash = _sha256(motion_source)
+        action_hash = _sha256(action_source)
 
-        # PIL's round() can promote a .5 result above the guard by one pixel.
-        # Re-evaluate once using the rounded dimensions so the manifest's
-        # recorded scale and the actual native raster agree exactly.
-        for _ in range(3):
-            sizes = [(max(1, round(figure.width * uniform_scale)),
-                      max(1, round(figure.height * uniform_scale)))
-                     for figure in figures]
-            rounded_width = max(width for width, _ in sizes)
-            rounded_height = max(height for _, height in sizes)
-            if rounded_width <= FIT_WIDTH and rounded_height <= FIT_HEIGHT:
-                break
-            uniform_scale *= min(FIT_WIDTH / rounded_width,
-                                 FIT_HEIGHT / rounded_height)
-        else:
-            raise AssertionError(f'{slug}: could not fit all poses in the native canvas')
+        figures, legacy_metadata = extract_atlas(source)
+        motion_figures, motion_metadata = extract_atlas(
+            motion_source, pose_names=MOTION_POSES)
+        action_figures, action_metadata = extract_atlas(
+            action_source, pose_names=ACTION_POSES)
+
+        # Normalize each new atlas once against the original idle height.  The
+        # normalized source figures then join the legacy figures and receive a
+        # single physical scale chosen over all 48 frames.
+        reference_height = figures[0].height
+        motion_figures, motion_source_scale = _normalize_animation(
+            motion_figures, reference_height)
+        action_figures, action_source_scale = _normalize_animation(
+            action_figures, reference_height)
+        all_figures = figures + motion_figures + action_figures
+        _assert_animation_cycles(slug, all_figures)
+
+        desired_scale = HEIGHTS[fighter] / reference_height
+        uniform_scale = _fit_uniform_scale(all_figures, desired_scale)
+
+        specs = []
+        for index, (figure, item) in enumerate(zip(figures, legacy_metadata)):
+            specs.append((index, item['pose'], figure, 'legacy', source,
+                          legacy_hash, 1.0, item))
+        for index, (figure, item) in enumerate(zip(motion_figures, motion_metadata), 16):
+            specs.append((index, item['pose'], figure, 'motion', motion_source,
+                          motion_hash, motion_source_scale, item))
+        for index, (figure, item) in enumerate(zip(action_figures, action_metadata), 32):
+            specs.append((index, item['pose'], figure, 'actions', action_source,
+                          action_hash, action_source_scale, item))
+        assert len(specs) == 48
 
         frames = []
-        for pose, figure in enumerate(figures):
+        metadata = []
+        for index, pose, figure, source_kind, source_path, frame_source_hash, source_scale, item in specs:
             resized_size = (max(1, round(figure.width * uniform_scale)),
                             max(1, round(figure.height * uniform_scale)))
             assert resized_size[0] <= FIT_WIDTH and resized_size[1] <= FIT_HEIGHT, \
-                f'{slug}/{POSES[pose]} exceeds {FIT_WIDTH}x{FIT_HEIGHT}: {resized_size}'
+                f'{slug}/{pose} exceeds {FIT_WIDTH}x{FIT_HEIGHT}: {resized_size}'
             resized = figure.resize(resized_size, Image.Resampling.NEAREST)
             frame = Image.new('RGBA', (FRAME_WIDTH, FRAME_HEIGHT))
             frame.alpha_composite(resized,
                                   ((FRAME_WIDTH - resized.width) // 2,
                                    BASELINE_Y - resized.height))
-            frames.append(frame)
             alpha_box = frame.getchannel('A').getbbox()
-            assert alpha_box and alpha_box[1] >= 0 and alpha_box[3] <= FRAME_HEIGHT, \
-                f'{slug}/{POSES[pose]} clipped in {FRAME_WIDTH}x{FRAME_HEIGHT} canvas'
-            metadata[pose]['scale'] = uniform_scale
-            metadata[pose]['native_size'] = list(resized_size)
-            metadata[pose]['native_box'] = list(alpha_box)
-            metadata[pose]['effective_width'] = alpha_box[2] - alpha_box[0]
-            metadata[pose]['effective_height'] = alpha_box[3] - alpha_box[1]
-            metadata[pose]['frame_canvas'] = [FRAME_WIDTH, FRAME_HEIGHT]
-            metadata[pose]['baseline_y'] = BASELINE_Y
-            metadata[pose]['clipped'] = False
-        # Build a per-fighter palette from opaque pixels only. Transparent black
-        # cannot consume a color; all sixteen frames share the same CGRAM bank.
-        opaque = [pixel[:3] for frame in frames for pixel in frame.get_flattened_data() if pixel[3]]
+            assert alpha_box and alpha_box[0] >= 0 and alpha_box[1] >= 0 \
+                and alpha_box[2] <= FRAME_WIDTH and alpha_box[3] <= FRAME_HEIGHT, \
+                f'{slug}/{pose} clipped in {FRAME_WIDTH}x{FRAME_HEIGHT} canvas'
+            frames.append(frame)
+            entry = dict(item)
+            entry.update({
+                'global_index': index,
+                'globalindex': index,
+                'pose': pose,
+                'source_kind': source_kind,
+                'source_file': str(source_path.relative_to(root)).replace('\\', '/'),
+                'source_hash': frame_source_hash,
+                'source_sha256': frame_source_hash,
+                'source_scale': source_scale,
+                'source_normalization': source_scale,
+                'physical_scale': uniform_scale,
+                'global_scale': uniform_scale,
+                'uniform_scale': uniform_scale,
+                'scale': uniform_scale,
+                'native_size': list(resized_size),
+                'native_box': list(alpha_box),
+                'nativebox': list(alpha_box),
+                'effective_width': alpha_box[2] - alpha_box[0],
+                'effective_height': alpha_box[3] - alpha_box[1],
+                'frame_canvas': [FRAME_WIDTH, FRAME_HEIGHT],
+                'baseline_y': BASELINE_Y,
+                'clipped': False,
+            })
+            entry['sourcefile'] = entry['source_file']
+            entry['sourcehash'] = frame_source_hash
+            metadata.append(entry)
+
+        # Build a single per-fighter palette from all opaque pixels.  The same
+        # fifteen OBJ colors are therefore valid for legacy poses and every
+        # animation frame; transparent pixels never consume a color.
+        opaque = [pixel[:3] for frame in frames
+                  for pixel in frame.get_flattened_data() if pixel[3]]
+        assert opaque, f'{slug}: no opaque animation pixels after normalization'
         strip = Image.new('RGB', (len(opaque), 1))
         strip.putdata(opaque)
         palette = strip.quantize(colors=15, method=Image.Quantize.MEDIANCUT).getpalette()[:45]
         colors = sorted({tuple((channel >> 3) << 3 for channel in palette[i:i + 3])
                          for i in range(0, 45, 3)}, key=lambda c: (sum(c), c))
+        assert colors, f'{slug}: palette quantization returned no colors'
+        source_color_count = len({pixel for pixel in opaque})
+        assert source_color_count >= 3, \
+            f'{slug}: source art has only {source_color_count} opaque RGB colors'
+        assert len(colors) >= 3, \
+            f'{slug}: native palette collapsed to {len(colors)} unique colors'
         colors += [colors[-1]] * (15 - len(colors))
         quantizer = Image.new('P', (1, 1))
         quantizer.putpalette(sum((list(c) for c in colors), []) + list(colors[-1]) * 241)
         indices = []
-        preview = Image.new('RGBA', (FRAME_WIDTH * 16, FRAME_HEIGHT))
-        for pose, frame in enumerate(frames):
+        preview = Image.new('RGBA', (FRAME_WIDTH * 48, FRAME_HEIGHT))
+        for index, frame in enumerate(frames):
             indexed = frame.convert('RGB').quantize(palette=quantizer, dither=Image.Dither.NONE)
             ids = [min(color, 14) + 1 if alpha else 0
-                   for color, alpha in zip(indexed.get_flattened_data(), frame.getchannel('A').get_flattened_data())]
+                   for color, alpha in zip(indexed.get_flattened_data(),
+                                            frame.getchannel('A').get_flattened_data())]
             indices.append(ids)
             raster = Image.new('RGBA', (FRAME_WIDTH, FRAME_HEIGHT))
-            raster.putdata([((0, 0, 0, 0) if not value else colors[value - 1] + (255,)) for value in ids])
-            preview.paste(raster, (pose * FRAME_WIDTH, 0))
+            raster.putdata([((0, 0, 0, 0) if not value else colors[value - 1] + (255,))
+                            for value in ids])
+            preview.paste(raster, (index * FRAME_WIDTH, 0))
             native_box = raster.getchannel('A').getbbox()
-            metadata[pose]['native_box'] = list(native_box) if native_box else None
-            metadata[pose]['effective_width'] = (native_box[2] - native_box[0]) if native_box else 0
-            metadata[pose]['effective_height'] = (native_box[3] - native_box[1]) if native_box else 0
-            metadata[pose]['pixels_sha256'] = hashlib.sha256(bytes(ids)).hexdigest()
-        assert len({bytes(ids) for ids in indices}) >= 14, f'{slug}: animation poses were duplicated'
+            assert native_box, f'{slug}/frame{index}: quantization erased the figure'
+            metadata[index]['native_box'] = list(native_box)
+            metadata[index]['nativebox'] = list(native_box)
+            metadata[index]['effective_width'] = native_box[2] - native_box[0]
+            metadata[index]['effective_height'] = native_box[3] - native_box[1]
+            frame_hash = hashlib.sha256(bytes(ids)).hexdigest()
+            metadata[index]['pixels_sha256'] = frame_hash
+            metadata[index]['native_hash'] = frame_hash
+            metadata[index]['hash'] = frame_hash
+
+        _assert_native_animation_cycles(slug, indices)
+
+        # Keep the old strong identity check and add cycle-level checks that
+        # catch an art export accidentally filled with repeated placeholders.
+        assert len({bytes(ids) for ids in indices[:16]}) >= 14, \
+            f'{slug}: legacy key poses were duplicated'
         preview.save(output / f'fighter{fighter:02}.png')
+
         # Reuse the same illustrated face and costume for the select portrait.
-        # These are close face crops for every roster member.  The large copy
-        # is intentionally made from the source-derived idle figure rather
-        # than enlarging the 32x40 card, so menu and review art share details.
+        # The large copy is derived from the source idle figure, never from the
+        # small card, so menu and review art retain the source details.
         idle = figures[0]
         portrait_fraction = .44
         portrait_center = .50
@@ -188,27 +363,61 @@ def prepare_roster(root, output):
         backdrop_large.paste(portrait_large, (0, 0), portrait_large.getchannel('A'))
         backdrop.save(output / f'portrait{fighter:02}.png')
         backdrop_large.save(output / f'portrait{fighter:02}-large.png')
+
         effective_standing_height = metadata[0]['effective_height']
         effective_height = max(item['effective_height'] for item in metadata)
         effective_width = max(item['effective_width'] for item in metadata)
-        fighters.append({'indices': indices, 'palette': [(0, 0, 0)] + colors,
-                         'portrait': backdrop, 'portrait_large': backdrop_large,
-                         'scale': uniform_scale, 'portrait_face': backdrop,
-                         'portrait_face_large': backdrop_large})
-        manifests.append({'id': fighter, 'name': slug, 'source': str(source.relative_to(root)).replace('\\', '/'),
-                          'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
-                          'standing_height': HEIGHTS[fighter],
-                          'desired_standing_height': HEIGHTS[fighter],
-                          'effective_height': effective_height,
-                          'effective_standing_height': effective_standing_height,
-                          'effective_width': effective_width,
-                          'scale': uniform_scale,
-                          'uniform_scale': uniform_scale,
-                          'frame_canvas': [FRAME_WIDTH, FRAME_HEIGHT],
-                          'fit_bounds': [FIT_WIDTH, FIT_HEIGHT],
-                          'baseline_y': BASELINE_Y,
-                          'palette': [(0, 0, 0)] + colors, 'frames': metadata})
-        print(f'Prepared {slug}: 16 individual frames, 15-color OBJ palette', flush=True)
-    assert len({tuple(f['indices'][0]) for f in fighters}) == 12, 'Roster must have twelve distinct idle drawings'
+        fighters.append({
+            'indices': indices,
+            'palette': [(0, 0, 0)] + colors,
+            'portrait': backdrop,
+            'portrait_large': backdrop_large,
+            'scale': uniform_scale,
+            'uniform_scale': uniform_scale,
+            'physical_scale': uniform_scale,
+            'frame_count': 48,
+            'pose_names': [item['pose'] for item in metadata],
+            'portrait_face': backdrop,
+            'portrait_face_large': backdrop_large,
+        })
+        manifests.append({
+            'id': fighter,
+            'name': slug,
+            'source': str(source.relative_to(root)).replace('\\', '/'),
+            'source_sha256': legacy_hash,
+            'source_legacy': {
+                'file': str(source.relative_to(root)).replace('\\', '/'),
+                'sha256': legacy_hash,
+                'frame_range': [0, 15],
+            },
+            'animation_sources': [
+                {'file': str(motion_source.relative_to(root)).replace('\\', '/'),
+                 'sha256': motion_hash, 'frame_range': [16, 31],
+                 'source_scale': motion_source_scale},
+                {'file': str(action_source.relative_to(root)).replace('\\', '/'),
+                 'sha256': action_hash, 'frame_range': [32, 47],
+                 'source_scale': action_source_scale},
+            ],
+            'frame_count': 48,
+            'standing_height': HEIGHTS[fighter],
+            'desired_standing_height': HEIGHTS[fighter],
+            'effective_height': effective_height,
+            'effective_standing_height': effective_standing_height,
+            'effective_width': effective_width,
+            'scale': uniform_scale,
+            'physical_scale': uniform_scale,
+            'global_scale': uniform_scale,
+            'uniform_scale': uniform_scale,
+            'frame_canvas': [FRAME_WIDTH, FRAME_HEIGHT],
+            'fit_bounds': [FIT_WIDTH, FIT_HEIGHT],
+            'baseline_y': BASELINE_Y,
+            'palette': [(0, 0, 0)] + colors,
+            # Keep the original manifest shape (``frames`` is a list) so
+            # review tooling can inspect each frame without a version fork.
+            'frames': metadata,
+        })
+        print(f'Prepared {slug}: 48 individual frames, 15-color OBJ palette', flush=True)
+    assert len({tuple(f['indices'][0]) for f in fighters}) == 12, \
+        'Roster must have twelve distinct idle drawings'
     (output / 'character-manifest.json').write_text(json.dumps(manifests, indent=2) + '\n')
     return fighters

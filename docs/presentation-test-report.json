@@ -1,21 +1,21 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "f5b431bc68db8f5f2b909c1c95e40edb62e2518ca06c8671ce6d7f44ab209e4b",
-  "rom_bytes": 2097152,
+  "rom_sha256": "e0c733a607abe6db27b9aaf68056d5153ef8cc43d4a82bf3d83e8d87135eeccc",
+  "rom_bytes": 4194304,
   "status": "passed",
   "checks": [
     {
-      "check": "presentation build uses the 2 MiB native ROM",
+      "check": "presentation build uses the 4 MiB animation ROM",
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.4.1",
+        "version": "0.5.0",
         "rom": "abaqus-after-hours.sfc",
-        "bytes": 2097152,
-        "sha256": "f5b431bc68db8f5f2b909c1c95e40edb62e2518ca06c8671ce6d7f44ab209e4b",
-        "checksum": "0B77",
+        "bytes": 4194304,
+        "sha256": "e0c733a607abe6db27b9aaf68056d5153ef8cc43d4a82bf3d83e8d87135eeccc",
+        "checksum": "9713",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
-        "mapping": "2 MiB FastROM LoROM",
+        "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
       }
     },
@@ -118,7 +118,7 @@
       "details": {
         "fighter": 0,
         "vram_word": "0x4a00",
-        "sha256": "c7fc74eace801a8e5cb4eb8f3fa3f7ad523d922aa54a6e4c3acd2d171c2ad317"
+        "sha256": "0a14c89e208ad529792340073e86b16b0f6baf0e9d391f892e7b3f9cecfb0028"
       }
     },
     {
@@ -188,7 +188,7 @@
       "details": {
         "fighter": 1,
         "vram_word": "0x4a00",
-        "sha256": "62f93da598112d2740109ca3cc023aa6e2a71214c6a070628d92a1b4e3d90645"
+        "sha256": "158d294237b3c26cb45ec147a22974cc9d9a7f8cdbe6bc9410573fb28b462fb6"
       }
     },
     {
@@ -258,7 +258,7 @@
       "details": {
         "fighter": 2,
         "vram_word": "0x4a00",
-        "sha256": "dde1e3395699c17a679e68a8598979dcd280f21159b2a44bbca12e90ea17d2a0"
+        "sha256": "93a6e58f5c20810f3135af4f49e15793aec512e3cfb86575dd09354d91cf7ebb"
       }
     },
     {
@@ -468,7 +468,7 @@
       "details": {
         "fighter": 5,
         "vram_word": "0x4a00",
-        "sha256": "c0ecb5ab94d2bafefe2b9d6b55a4bf5aabce68a90fdc23a04ed39e354dbb3c0c"
+        "sha256": "33161be8430a8fe6e50fb4cc044f4553bf8c9e459071d30e439a58b263fd7606"
       }
     },
     {
@@ -678,7 +678,7 @@
       "details": {
         "fighter": 8,
         "vram_word": "0x4a00",
-        "sha256": "2917064c5a1c8262b344bea08d9aac57b00ebb3005d0bf8f8fdc1bc490ba6b9d"
+        "sha256": "d0ffc39a4632f80ff240009a138864061f40149ef98b6d7175f72aa38081f752"
       }
     },
     {
@@ -748,7 +748,7 @@
       "details": {
         "fighter": 9,
         "vram_word": "0x4a00",
-        "sha256": "72aca58b009d9d3b313349344012476798840ef9cdff3a9b9ad3861fa7c5e3c4"
+        "sha256": "a9b357622acae15b90418d21dd4ad7c89be4dab03fe890e979be5195406e1e44"
       }
     },
     {
@@ -818,7 +818,7 @@
       "details": {
         "fighter": 10,
         "vram_word": "0x4a00",
-        "sha256": "2843c8e2dfe79155f17387f7ce6f8bc21aa3bd544b35610942ba4a0010681eda"
+        "sha256": "17b2167ba6f99e6979c30bb6353f40721d242cfb6bfa8b24218bfdf7c8d274b6"
       }
     },
     {
@@ -1178,9 +1178,9 @@
       "check": "the three stage fights render distinct native architecture plates",
       "passed": true,
       "details": {
-        "las-condes": "8e41021b400d6f751a8692ec91c764983b0001d6c66f94a48722afe2510a1ce8",
-        "el-castillo": "2792f27c2bdd950a76ebb877d48bae63dca658f3f7c78cfd7aa4d95077fbf5b0",
-        "la-oficina": "e11229ddb0f92f7905033258247ab9d39050d2aee24a86e768ce955ce6dd9178"
+        "las-condes": "d1d1e46404a8a0b071f8766463c529cf7e0359bab83fb314dfeb0db4cd74f091",
+        "el-castillo": "8be8d0e15baf0b240de11f96ebf705c8e547a93121f4089fed3d875e86caf0e0",
+        "la-oficina": "48666257852af6ed26a502efc3a1b9dd99c11b5987a3b6fa1e54c3613e0298af"
       }
     }
   ],
@@ -1204,21 +1204,21 @@
       "portrait_vram": {
         "00": {
           "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait00_tiles.bin",
-          "sha256": "c7fc74eace801a8e5cb4eb8f3fa3f7ad523d922aa54a6e4c3acd2d171c2ad317",
+          "sha256": "0a14c89e208ad529792340073e86b16b0f6baf0e9d391f892e7b3f9cecfb0028",
           "map_entry": 9376,
           "tile": 160,
           "palette": 1
         },
         "01": {
           "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_tiles.bin",
-          "sha256": "62f93da598112d2740109ca3cc023aa6e2a71214c6a070628d92a1b4e3d90645",
+          "sha256": "158d294237b3c26cb45ec147a22974cc9d9a7f8cdbe6bc9410573fb28b462fb6",
           "map_entry": 9376,
           "tile": 160,
           "palette": 1
         },
         "02": {
           "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait02_tiles.bin",
-          "sha256": "dde1e3395699c17a679e68a8598979dcd280f21159b2a44bbca12e90ea17d2a0",
+          "sha256": "93a6e58f5c20810f3135af4f49e15793aec512e3cfb86575dd09354d91cf7ebb",
           "map_entry": 9376,
           "tile": 160,
           "palette": 1
@@ -1239,7 +1239,7 @@
         },
         "05": {
           "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait05_tiles.bin",
-          "sha256": "c0ecb5ab94d2bafefe2b9d6b55a4bf5aabce68a90fdc23a04ed39e354dbb3c0c",
+          "sha256": "33161be8430a8fe6e50fb4cc044f4553bf8c9e459071d30e439a58b263fd7606",
           "map_entry": 9376,
           "tile": 160,
           "palette": 1
@@ -1260,21 +1260,21 @@
         },
         "08": {
           "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait08_tiles.bin",
-          "sha256": "2917064c5a1c8262b344bea08d9aac57b00ebb3005d0bf8f8fdc1bc490ba6b9d",
+          "sha256": "d0ffc39a4632f80ff240009a138864061f40149ef98b6d7175f72aa38081f752",
           "map_entry": 9376,
           "tile": 160,
           "palette": 1
         },
         "09": {
           "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait09_tiles.bin",
-          "sha256": "72aca58b009d9d3b313349344012476798840ef9cdff3a9b9ad3861fa7c5e3c4",
+          "sha256": "a9b357622acae15b90418d21dd4ad7c89be4dab03fe890e979be5195406e1e44",
           "map_entry": 9376,
           "tile": 160,
           "palette": 1
         },
         "10": {
           "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait10_tiles.bin",
-          "sha256": "2843c8e2dfe79155f17387f7ce6f8bc21aa3bd544b35610942ba4a0010681eda",
+          "sha256": "17b2167ba6f99e6979c30bb6353f40721d242cfb6bfa8b24218bfdf7c8d274b6",
           "map_entry": 9376,
           "tile": 160,
           "palette": 1
@@ -1293,9 +1293,9 @@
         "la-oficina": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\arena-2.png"
       },
       "arena_digests": [
-        "71e50cc93d0d0fa78733ddad0d1607392874c07de79d34d4e613886b49631f1d",
-        "d0edde0ae085b90b72686cb706f01b1ccb94337b65595835ea7b757e8d173cc8",
-        "4f9e10a9897d181f96249368a62e1f3ddf4cf10f7cf962fbfa09aa66ac7df9ca"
+        "786e9458a0e726436f4c93196e4f436ae8c06c0ded19333dd4e06d2208a40102",
+        "7db880a0898dfde5584420c99073b9c4e77fb0b69536b821501e753228985720",
+        "c47386182c3693a50210251a21b106cbd26e660f3ebb60d1edb3c44d75776b3b"
       ]
     },
     "stages": {
@@ -1305,5 +1305,5 @@
     }
   },
   "passed": 161,
-  "elapsed_seconds": 1.35
+  "elapsed_seconds": 1.32
 }

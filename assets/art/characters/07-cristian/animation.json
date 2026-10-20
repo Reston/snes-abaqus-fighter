@@ -1,0 +1,49 @@
+{
+  "schema": "abaqus-animation-source/v1",
+  "fighter": "07-cristian",
+  "character": "Cristian Valdes",
+  "atlases": {
+    "motion": {
+      "path": "assets/art/characters/07-cristian/animation-motion.png",
+      "frames": "16-31",
+      "generated_source": "C:/Users/user/.codex/generated_images/01a1574c-eeb9-7771-8d1b-2adef76adc9a/exec-8349e621-0098-494b-86f1-2cbc945e275a.png",
+      "sha256": "e8bbe78349335778d8ee631af0ffc523670f7a9fb316749967144ca73169217d",
+      "full_prompt": [
+        "Use case: illustration-story. Asset type: transparent 2D fighting-game animation sprite atlas.",
+        "Use the existing Cristian atlas as the identity and style reference. Preserve the broad soft adult face with full cheeks and substantial rounded chin, thick dark brows, calm narrower eyes, broad nose, clean-shaven jaw, short dense near-black hair brushed forward, navy sleeveless sweater vest, pale rolled sleeves and collar, dark trousers, shoes, palette, tall lean anatomy, right-facing orientation and original polished cartoon fighting-game rendering.",
+        "Create a new transparent 1254x1254 square sprite sheet with exactly sixteen separately drawn full-body figures in a strict 4-column by 4-row grid, read left-to-right then top-to-bottom. Keep ample transparent gaps, no shadows, no labels and no borders. The first figure is an upright neutral guard matching the original idle body height, feet baseline, costume and silhouette; it establishes one uniform source resolution and scale for the whole sheet. Redraw anatomy and limbs for each pose instead of translating or stretching a complete body.",
+        "Row-major frames: 16 upright neutral guard; 17 gentle inhale with slight chest and shoulder rise and small wrist movement, feet planted; 18 exhale with subtle weight settling, feet planted; 19 return guard completing a quiet breathing loop. 20 forward walk lead-foot contact; 21 forward walk weight passing over planted lead foot; 22 rear foot passes beneath hips; 23 opposite contact preparing a seamless repeat. 24 backward walk rear-foot contact with guard maintained, still facing right; 25 weight moves onto planted rear foot; 26 lead foot passes beneath hips; 27 opposite contact, still facing right. 28 halfway into crouch with natural knees; 29 jump anticipation with compact knee compression; 30 early jump extension distinct from the legacy tucked jump; 31 landing compression preparing to stand.",
+        "Style: polished original 16-bit arcade fighting-game cartoon, clean readable anatomy, consistent contour and lighting, limited cel shading and clear silhouettes at native 96x80 reduction. All figures face right, including backward walking. Keep Cristian's navy vest, pale sleeves, dark trousers, shoes, face and hair consistent.",
+        "Strict constraints: genuinely transparent RGBA output; exact 1254x1254 canvas; exactly 16 separate connected figures; no touching figures, scenery, floor, cast shadows, effects, projectiles, props, extra limbs, cropped heads or feet, merged poses, mirrored left-facing fighters, photorealism, 3D, anime exaggeration, watermark or copied commercial sprites."
+      ],
+      "input_roles": [
+        {"path": "assets/art/characters/07-cristian/atlas.png", "role": "identity, costume, original idle proportion and cartoon style reference"}
+      ]
+    },
+    "actions": {
+      "path": "assets/art/characters/07-cristian/animation-actions.png",
+      "frames": "32-47",
+      "generated_source": "C:/Users/user/.codex/generated_images/01a1574c-eeb9-7771-8d1b-2adef76adc9a/exec-8b0d80c3-8e4e-42b6-bda3-b69270e09f83.png",
+      "sha256": "22569dfc92042e46cc29a6a8146d82d80af28fa39f13c5ae6fd2d5883540a203",
+      "full_prompt": [
+        "Use case: illustration-story. Asset type: transparent 2D fighting-game animation sprite atlas.",
+        "Use the existing Cristian atlas as the identity/style reference and the approved Cristian motion sheet as a secondary anatomy reference. Preserve the broad soft adult face with full cheeks and substantial rounded chin, thick brows, calm narrower eyes, broad nose, clean-shaven jaw, short dense near-black hair brushed forward, navy sleeveless sweater vest, pale rolled sleeves and collar, dark trousers, shoes, palette, tall lean proportions and right-facing orientation.",
+        "Create a new transparent 1254x1254 square 4-column by 4-row atlas with exactly sixteen separately redrawn full-body action-transition figures. Use one uniform source scale established by the first upright guard and ample transparent gaps. This is a sprite atlas, not a lineup or collage; no labels or text. Redraw torso, hips, limbs and balance for each transition rather than translating or stretching the whole body.",
+        "Row-major frames: 32 upright ready guard matching the original idle with slight fist preparation; 33 jab retracts halfway toward guard; 34 cross windup with torso and hips turned and fist drawn back; 35 cross retracts as torso returns toward guard. 36 high kick windup with bent raised knee; 37 kick retract with bent leg returning under body; 38 sweep windup in a low crouch with leg tucked; 39 sweep recovery with weight returning into crouch. 40 block impact brace with firm forearms and shoulders absorbing force; 41 hurt recovery toward balanced guard; 42 special charge with both empty hands near the waist and no effect; 43 cast recovery after arm extension with no projectile. 44 uppercut anticipation with loaded crouch and fist near waist; 45 uppercut recovery with raised arm lowering and legs descending; 46 victory transition with arms partway raised; 47 diagonal backward knockout fall with head toward the left and no gore.",
+        "Style: polished original 16-bit arcade fighting-game cartoon, readable at native 96x80 reduction, consistent cel shading and strong dark contour. All ordinary bodies face right; the KO is a natural backward collapse with the head left. Preserve Cristian's face, hair, navy vest, pale sleeves, trousers and shoes.",
+        "Strict constraints: genuinely transparent RGBA output; exact 1254x1254 canvas; exactly 16 separate connected figures; no touching figures, scenery, floor, shadows, energy, projectiles, effects, props, extra limbs, cropped heads or feet, merged poses, photorealism, 3D, watermark or copied commercial sprites."
+      ],
+      "input_roles": [
+        {"path": "assets/art/characters/07-cristian/atlas.png", "role": "identity, costume and original idle proportion reference"},
+        {"path": "assets/art/characters/07-cristian/animation-motion.png", "role": "approved motion-sheet anatomy and style reference"}
+      ]
+    }
+  },
+  "validation": {
+    "validated_at": "2026-10-20",
+    "tool": "tools/fighter_assets.py:extract_atlas",
+    "alpha_threshold": 200,
+    "motion": {"size": [1254, 1254], "mode": "RGBA", "alpha_min_max": [0, 255], "figures": 16, "sha256": "e8bbe78349335778d8ee631af0ffc523670f7a9fb316749967144ca73169217d", "opaque_pixels": [38873, 37135, 37514, 38603, 39033, 38563, 33363, 38271, 34979, 35559, 35707, 34995, 32542, 29341, 29972, 30384]},
+    "actions": {"size": [1254, 1254], "mode": "RGBA", "alpha_min_max": [0, 255], "figures": 16, "sha256": "22569dfc92042e46cc29a6a8146d82d80af28fa39f13c5ae6fd2d5883540a203", "opaque_pixels": [40488, 40653, 41426, 40346, 37841, 36235, 35612, 34076, 38275, 39472, 39813, 34747, 35024, 35945, 37073, 33331]}
+  }
+}

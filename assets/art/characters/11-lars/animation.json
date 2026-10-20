@@ -1,0 +1,54 @@
+{
+  "schema": "abaqus-animation-source/v1",
+  "fighter": "11-lars",
+  "character": "Rodrigo \"Lars\" Lartiga",
+  "generated_at": "2026-10-20",
+  "generation_mode": "built-in image_gen",
+  "atlases": {
+    "motion": {
+      "path": "assets/art/characters/11-lars/animation-motion.png",
+      "frames": "16-31",
+      "generated_source": "C:/Users/user/.codex/generated_images/01a1574d-3c7a-7531-aad4-7fb1d4b99479/exec-f0c48754-41fb-42d1-9f33-2040afae602e.png",
+      "sha256": "bfb7dac5a2107d648cf388aedcea0846956b0f795875b34d93272f53356877ca",
+      "full_prompt": [
+        "Use case: stylized-concept; asset type: source sprite atlas for a native SNES fighting game. The supplied local Lars atlas is the identity, costume, palette, art-style and body-proportion reference. Preserve the same broad mature clean-shaven man, dense wavy near-black hair with forward side-swept forehead lock, strong brows, ice-blue jacket over white shirt, deep blue trousers, dark shoes and right-facing three-quarter cartoon fighting-game rendering.",
+        "Create a new transparent 1254x1254 RGBA sprite atlas with exactly a strict 4-column by 4-row grid: 16 separate full-body figures, one centered in each cell, ample transparent gaps, no overlap, labels, text, shadows, effects, ground or background. Keep one consistent source scale and a fixed foot/floor baseline in every frame; never independently resize or crop poses. All figures face right.",
+        "This is Lars's animation-motion atlas, frames 16 through 31 in row-major order: 16 neutral breathing guard matching the original idle; 17 gentle inhale with slight chest and shoulder rise and subtle wrist movement; 18 exhale with subtle weight settling and feet planted; 19 return guard; 20 forward-walk lead-foot contact; 21 forward-walk passing over the planted lead foot; 22 rear foot passes beneath the hips; 23 opposite contact preparing a seamless repeat; 24 backward-walk rear-foot contact with guard maintained; 25 weight moves onto the planted rear foot; 26 lead foot passes beneath the hips; 27 opposite contact; 28 halfway into crouch with natural knee bend; 29 jump anticipation with compact knee compression; 30 early jump extension distinct from the legacy tucked jump; 31 landing compression preparing to stand.",
+        "Keep Lars's broad mature masculine anatomy and ice-blue jacket silhouette in every frame. Use polished hand-drawn 16-bit arcade fighting-game cartoon illustration: clean dark ink contour, warm skin shading, crisp readable silhouette and limited saturated palette. The first cell must match the original idle's scale and neutral guard proportions. Every figure must be fully inside the canvas.",
+        "Strict constraints: actual transparent alpha; exactly 16 separate full-body figures; no touching figures, floor, smoke, projectiles, effects, props, logos, lettering, watermark, photorealism, 3D, copied commercial sprites, missing limbs, extra limbs, fused figures or independent cell resizing. Draw genuine anatomical in-betweens; do not translate, stretch or mirror one body to fake motion."
+      ],
+      "input_roles": [
+        {"path": "assets/art/characters/11-lars/atlas.png", "role": "identity, costume, palette, original key-pose style and body-proportion reference"}
+      ]
+    },
+    "actions": {
+      "path": "assets/art/characters/11-lars/animation-actions.png",
+      "frames": "32-47",
+      "generated_source": "C:/Users/user/.codex/generated_images/01a1574d-3c7a-7531-aad4-7fb1d4b99479/exec-633d5d3f-388d-4c0f-8cda-82a01c22a087.png",
+      "sha256": "c8d7769835799ab49415e1a66117b8b949eb03b170ce8b29d902803446f91924",
+      "full_prompt": [
+        "Use case: stylized-concept; asset type: source sprite atlas for a native SNES fighting game. The supplied local Lars atlas is the identity, costume, palette, art-style and body-proportion reference. Preserve the same broad mature clean-shaven man, dense wavy near-black hair with forward side-swept forehead lock, strong brows, ice-blue jacket over white shirt, deep blue trousers, dark shoes and right-facing three-quarter cartoon fighting-game rendering.",
+        "Create a new transparent 1254x1254 RGBA sprite atlas with exactly a strict 4-column by 4-row grid: 16 separate full-body figures, one centered in each cell, ample transparent gaps, no overlap, labels, text, shadows, effects, ground or background. Keep one consistent source scale and a fixed foot/floor baseline in every frame; never independently resize or crop poses. All figures face right.",
+        "This is Lars's animation-actions atlas, frames 32 through 47 in row-major order: 32 upright ready guard matching the original idle with slight fist preparation; 33 jab retracts halfway to guard; 34 cross windup with torso and hip turn and fist drawn back; 35 cross retracts with torso returning toward guard; 36 kick windup with bent knee raised; 37 kick retracts with bent leg returning under the body; 38 sweep windup in a crouch with leg tucked; 39 sweep recovery with weight returning into crouch; 40 block-impact brace with firm forearms and shoulders absorbing force; 41 hurt recovery with torso returning toward balanced guard; 42 special charge with both empty hands near the waist and no projectile or visual effect; 43 cast recovery with arms folding back after an extended strike; 44 uppercut anticipation with crouch and fist near the waist; 45 uppercut recovery with raised arm lowering and legs descending; 46 victory transition with arms partway raised; 47 diagonal backward knockout fall with head to the left.",
+        "Keep Lars's broad mature masculine anatomy and ice-blue jacket silhouette in every frame. The knockout is the one exception to upright stance: preserve a clear diagonal fall while maintaining the same character scale. Use polished hand-drawn 16-bit arcade fighting-game cartoon illustration: clean dark ink contour, warm skin shading, crisp readable silhouette and limited saturated palette. The first cell must match the original idle's scale and neutral guard proportions.",
+        "Strict constraints: actual transparent alpha; exactly 16 separate full-body figures; no touching figures, floor, smoke, projectiles, effects, props, logos, lettering, watermark, photorealism, 3D, copied commercial sprites, missing limbs, extra limbs, fused figures or independent cell resizing. Draw genuine anatomical in-betweens; do not translate, stretch or mirror one body to fake motion."
+      ],
+      "input_roles": [
+        {"path": "assets/art/characters/11-lars/atlas.png", "role": "identity, costume, palette, original key-pose style and body-proportion reference"}
+      ]
+    }
+  },
+  "validation": {
+    "validated_at": "2026-10-20",
+    "tool": "tools/fighter_assets.py:extract_atlas",
+    "alpha_threshold": 200,
+    "size": [1254, 1254],
+    "mode": "RGBA",
+    "alpha_min_max": [0, 255],
+    "motion_figures": 16,
+    "action_figures": 16,
+    "motion_opaque_pixels": [38938, 39863, 38729, 38689, 38281, 37500, 37555, 36610, 36061, 35316, 31822, 34845, 28596, 24950, 29348, 26429],
+    "action_opaque_pixels": [42709, 40394, 45014, 40088, 38016, 35002, 36155, 31290, 36714, 38659, 37369, 39930, 28853, 34140, 35930, 29178],
+    "status": "passed"
+  }
+}

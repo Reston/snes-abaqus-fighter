@@ -1,0 +1,59 @@
+{
+  "schema": "abaqus-animation-source/v1",
+  "fighter": "10-roxana",
+  "character": "Roxana Espinola",
+  "generated_at": "2026-10-20",
+  "generation_mode": "built-in image_gen",
+  "atlases": {
+    "motion": {
+      "path": "assets/art/characters/10-roxana/animation-motion.png",
+      "frames": "16-31",
+      "generated_source": "C:/Users/user/.codex/generated_images/01a1574d-3c7a-7531-aad4-7fb1d4b99479/exec-dfb46784-450a-4a28-a8b8-01eba0a12c35.png",
+      "initial_generated_source": "C:/Users/user/.codex/generated_images/01a1574d-3c7a-7531-aad4-7fb1d4b99479/exec-bbb5cb3c-15ed-4383-a337-08f7b7be23cd.png",
+      "sha256": "04684ab4a96cf360426073bdb98e737f9b0002aa87871abe0b7ced3ccdcc7923",
+      "full_prompt": [
+        "Use case: stylized-concept; asset type: source sprite atlas for a native SNES fighting game. The supplied local Roxana atlas is the identity, costume, palette, art-style and body-proportion reference. Preserve the same mature woman, facial features, shoulder-length dark chestnut hair with deep side part and swept fringe, magenta jacket over white blouse, dark navy wide-leg slacks, black shoes, earrings and right-facing three-quarter cartoon fighting-game rendering.",
+        "Create a new transparent 1254x1254 RGBA sprite atlas with exactly a strict 4-column by 4-row grid: 16 separate full-body figures, one centered in each cell, ample transparent gaps, no overlap, labels, text, shadows, effects, ground or background. Keep one consistent source scale and a fixed foot/floor baseline in every frame; never independently resize or crop poses. All figures face right.",
+        "This is Roxana's animation-motion atlas, frames 16 through 31 in row-major order: 16 neutral breathing guard matching the original idle; 17 gentle inhale with slight chest and shoulder rise and subtle wrist movement; 18 exhale with subtle weight settling and feet planted; 19 return guard; 20 forward-walk lead-foot contact; 21 forward-walk passing over the planted lead foot; 22 rear foot passes beneath the hips; 23 opposite contact preparing a seamless repeat; 24 backward-walk rear-foot contact with guard maintained; 25 weight moves onto the planted rear foot; 26 lead foot passes beneath the hips; 27 opposite contact; 28 halfway into crouch with natural knee bend; 29 jump anticipation with compact knee compression; 30 early jump extension distinct from the legacy tucked jump; 31 landing compression preparing to stand.",
+        "Keep Roxana's feminine anatomy and wide-leg trouser silhouette in every frame. Use polished hand-drawn 16-bit arcade fighting-game cartoon illustration: clean dark ink contour, warm skin shading, crisp readable silhouette and limited saturated palette. The first cell must match the original idle's scale and neutral guard proportions. Do not turn her into a male fighter or narrow her clothing. Every figure must be fully inside the canvas.",
+        "Strict constraints: actual transparent alpha; exactly 16 separate full-body figures; no touching figures, floor, smoke, projectiles, effects, props, logos, lettering, watermark, photorealism, 3D, copied commercial sprites, missing limbs, extra limbs, fused figures or independent cell resizing. Draw genuine anatomical in-betweens; do not translate, stretch or mirror one body to fake motion."
+      ],
+      "input_roles": [
+        {"path": "assets/art/characters/10-roxana/atlas.png", "role": "identity, costume, palette, original key-pose style and body-proportion reference"}
+      ],
+      "repair": {
+        "generated_source": "C:/Users/user/.codex/generated_images/01a1574d-3c7a-7531-aad4-7fb1d4b99479/exec-dfb46784-450a-4a28-a8b8-01eba0a12c35.png",
+        "prompt": "Repair this existing Roxana animation-motion sprite atlas with one targeted change only. Preserve all 15 other figures, their artwork, colors, anatomy, scale, cell positions and transparent background. The only issue is the frame-30 jump-extension figure in the third column of the fourth row: its top touches or overlaps the bottom of the frame-22 figure directly above, causing the two silhouettes to be extracted as one component. Redraw that one frame as a clean early-jump extension with Roxana's same face, chestnut hair, magenta jacket, white blouse, wide-leg navy trousers and shoes, keeping its existing character scale and right-facing pose, but place the entire figure safely inside its bottom-row cell with a clearly visible transparent gap above it and below the figure above. Keep the atlas exactly 1254x1254 RGBA, 4 columns by 4 rows, 16 separate figures, no labels, no shadows, no effects, no background. Do not change any other cell."
+      }
+    },
+    "actions": {
+      "path": "assets/art/characters/10-roxana/animation-actions.png",
+      "frames": "32-47",
+      "generated_source": "C:/Users/user/.codex/generated_images/01a1574d-3c7a-7531-aad4-7fb1d4b99479/exec-8956f63e-f11e-4318-a6ed-38c7e89e77ec.png",
+      "sha256": "b32fee4240559241c18a71eb8bdd3dff90d926fc4dfeb01ef6a9e53ce29d439a",
+      "full_prompt": [
+        "Use case: stylized-concept; asset type: source sprite atlas for a native SNES fighting game. The supplied local Roxana atlas is the identity, costume, palette, art-style and body-proportion reference. Preserve the same mature woman, facial features, shoulder-length dark chestnut hair with deep side part and swept fringe, magenta jacket over white blouse, dark navy wide-leg slacks, black shoes, earrings and right-facing three-quarter cartoon fighting-game rendering.",
+        "Create a new transparent 1254x1254 RGBA sprite atlas with exactly a strict 4-column by 4-row grid: 16 separate full-body figures, one centered in each cell, ample transparent gaps, no overlap, labels, text, shadows, effects, ground or background. Keep one consistent source scale and a fixed foot/floor baseline in every frame; never independently resize or crop poses. All figures face right.",
+        "This is Roxana's animation-actions atlas, frames 32 through 47 in row-major order: 32 upright ready guard matching the original idle with slight fist preparation; 33 jab retracts halfway to guard; 34 cross windup with torso and hip turn and fist drawn back; 35 cross retracts with torso returning toward guard; 36 kick windup with bent knee raised; 37 kick retracts with bent leg returning under the body; 38 sweep windup in a crouch with leg tucked; 39 sweep recovery with weight returning into crouch; 40 block-impact brace with firm forearms and shoulders absorbing force; 41 hurt recovery with torso returning toward balanced guard; 42 special charge with both empty hands near the waist and no projectile or visual effect; 43 cast recovery with arms folding back after an extended strike; 44 uppercut anticipation with crouch and fist near the waist; 45 uppercut recovery with raised arm lowering and legs descending; 46 victory transition with arms partway raised; 47 diagonal backward knockout fall with head to the left.",
+        "Keep Roxana's feminine anatomy and wide-leg trouser silhouette in every frame. The knockout is the one exception to upright stance: preserve a clear diagonal fall while maintaining the same character scale. Use polished hand-drawn 16-bit arcade fighting-game cartoon illustration: clean dark ink contour, warm skin shading, crisp readable silhouette and limited saturated palette. The first cell must match the original idle's scale and neutral guard proportions.",
+        "Strict constraints: actual transparent alpha; exactly 16 separate full-body figures; no touching figures, floor, smoke, projectiles, effects, props, logos, lettering, watermark, photorealism, 3D, copied commercial sprites, missing limbs, extra limbs, fused figures or independent cell resizing. Draw genuine anatomical in-betweens; do not translate, stretch or mirror one body to fake motion."
+      ],
+      "input_roles": [
+        {"path": "assets/art/characters/10-roxana/atlas.png", "role": "identity, costume, palette, original key-pose style and body-proportion reference"}
+      ]
+    }
+  },
+  "validation": {
+    "validated_at": "2026-10-20",
+    "tool": "tools/fighter_assets.py:extract_atlas",
+    "alpha_threshold": 200,
+    "size": [1254, 1254],
+    "mode": "RGBA",
+    "alpha_min_max": [0, 255],
+    "motion_figures": 16,
+    "action_figures": 16,
+    "motion_opaque_pixels": [38792, 38394, 38152, 38080, 38413, 38607, 36951, 36835, 34046, 35019, 32960, 33994, 33530, 26400, 34088, 30684],
+    "action_opaque_pixels": [37119, 35600, 39231, 36705, 35679, 31870, 34923, 27536, 36271, 36339, 36148, 35166, 31431, 35263, 37259, 34637],
+    "status": "passed"
+  }
+}

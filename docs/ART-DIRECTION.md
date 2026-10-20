@@ -1,5 +1,33 @@
 # Art direction and image generation
 
+## v0.5 animation and menu direction
+
+The v0.5 pass keeps all twelve legacy identity masters separate and unchanged,
+including Reston's selected v3 short-hair correction. It adds 24 new built-in
+imagegen atlases: `animation-motion.png` and `animation-actions.png` in each
+fighter directory. Each 1254x1254 source atlas contains sixteen separate figures;
+the pipeline converts them into 96x80 native frames. Every fighter now has
+48 frames: legacy key poses 0-15, motion and transition frames 16-31,
+and action frames 32-47. The 32 new frames per fighter cover idle, forward and
+backward gait, crouch, jump and landing transitions, followed by attack
+windup/active/recovery, guard, hurt, victory and knockout transitions. The
+existing aerial strike remains a legacy key pose with a generic transition;
+dedicated air-specific art is future work.
+
+Each new atlas begins with a neutral frame normalized once against the old idle
+pose. That establishes one physical scale for the full 48-frame set inside a
+96x80 canvas, a 94x77 safe area and a feet baseline at native height 78. The
+generated 4,608x80 review strip and six 30,720-byte native banks use one shared
+fifteen-color OBJ palette per fighter. The authoritative prompts, input roles,
+and generation provenance remain beside the atlases in `animation.json`.
+
+Motion timing is driven by a private per-fighter clock and distance travelled,
+so gait has a natural step cadence while idle, pause and hitstop remain stable.
+The home, fighter-select and arena menus follow a clean royal-navy, white and
+gold direction with a single cursor, original project glyphs, the four-by-three
+roster grid and one large selected portrait. Profile power, speed and family
+statistics are no longer the visual focus of selection.
+
 ## v0.4.1 Reston hair correction
 
 The user's new photo shows a short dark buzz cut across Reston's top and crown,
@@ -13,7 +41,7 @@ Matching card and profile portraits are regenerated from the revised master.
 
 The v0.4 pass keeps twelve individual illustrated masters and tightens the native presentation around them. Seven likeness v2 masters were refreshed with the built-in imagegen edit workflow for Damián, Cote, Negger, Fernando, Mamariaga, Reston and Roxana; the five earlier likeness v2 masters for Ivo, Cristóbal, David, Cristián and Lars remain selected. All twelve now have close 32×40 selection cards and 64×80 profile portraits derived from their own source masters.
 
-Every fighter uses one uniform physical scale across all sixteen poses. The renderer places the result inside a 96×80 native canvas with a 94×77 safe area, so the effective standing height may reduce when another pose is wider or taller. This keeps head, torso, hands and feet at a consistent scale between idle, attacks, jumps, blocks, knockouts and rushes while preserving the shared pose-index contract. Further in-between frames remain future work.
+Every fighter uses one uniform physical scale across all sixteen legacy poses. The renderer places the result inside a 96×80 native canvas with a 94×77 safe area, so the effective standing height may reduce when another legacy pose is wider or taller. This keeps head, torso, hands and feet at a consistent scale between idle, attacks, jumps, blocks, knockouts and rushes while preserving the shared legacy pose-index contract. The v0.5 animation atlases now add the separate motion and action ranges described above.
 
 The three stages are now independent PNG masters under `assets/art/stages/`, described by `assets/art/stages/stages.json`. The home screen, four-by-three fighter selection and arena menu use new original plates under `assets/art/menu/`; the complete image-generation prompt set is `assets/art/menu/prompts.json`. Menu lettering is rendered from original project glyphs rather than Arial or another system font. The selected fighter's 64×80 profile portrait is transferred to BG2 at word `$4A00–$4EFF` with palette 1.
 

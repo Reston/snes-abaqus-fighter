@@ -57,15 +57,27 @@ roster contract begins at offset `32` (16-bit words):
 | 56 / 57 | Active wave low flag |
 | 58 / 59 | Active wave speed |
 | 60 / 61 | Active wave life |
+| 62 / 63 | Requested native animation frame, `0..47` |
+| 64 / 65 | Animation state |
+| 66 / 67 | Per-fighter animation tick |
+| 68 / 69 | Buffered action ID |
+| 70 / 71 | Attack buffer ticks remaining |
+| 72 / 73 | Jump buffer ticks remaining |
+| 74 / 75 | Quarter-circle command stage |
+| 76 / 77 | Raw controller keys, before opposite-direction cleaning |
+| 78 / 79 | Landing transition ticks remaining |
+| 80 / 81 | Committed horizontal jump velocity, raw signed `u16` |
 
 The trace remains under the reserved 256-byte region and is read-only from the
 test host.
 
 ## Remaining limitations
 
-The pose index contract stays at sixteen poses per fighter so the native
-renderer can stream at most one 2,560-byte actor frame per vblank. The profile
-pass gives every roster slot distinct combat behavior, while bespoke
-frame-by-frame hit silhouettes, individual animation timing, and human balance
-playtesting remain future polish work. The ROM is verified in the official
-Snes9x libretro core; real-hardware testing is still outstanding.
+Logical combat poses retain their sixteen-index contract. The renderer maps
+them to 48 native animation frames per fighter across six banks, streaming at
+most one 3,840-byte actor frame per vblank. The requested trace frame can lead
+the uploaded frame by one video frame when both actors change together.
+Per-fighter animation clocks and drawn transitions are included; dedicated
+aerial attack art, per-frame hit silhouettes and human balance playtesting
+remain future polish work. The ROM is verified in the official Snes9x
+libretro core; real-hardware testing is still outstanding.

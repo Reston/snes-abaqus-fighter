@@ -77,7 +77,7 @@ class Emulator:
         # upgrade appends ten read-only words for per-character identity,
         # special family, movement profile and facing.  Reading the larger
         # window is harmless with an older ROM and keeps callers compatible.
-        data=C.string_at(self.ram+0x1ff00,124)
+        data=C.string_at(self.ram+0x1ff00,164)
         vals=[int.from_bytes(data[i:i+2],'little') for i in range(0,64,2)]
         names=['magic','screen','frame','mode','hp1','hp2','x1','x2','y1','y2','action1','action2','wins1','wins2','arena','round','intro','paused','energy1','energy2','wave1','wave2','selected','selected2','arcade','seconds','pose1','pose2','round_end','hitstop','combo','champion']
         result=dict(zip(names,vals))
@@ -88,6 +88,12 @@ class Emulator:
                    'throw_range1','throw_range2','wave_low1','wave_low2',
                    'wave_speed1','wave_speed2','wave_life1','wave_life2']
         result.update(dict(zip(extension,[int.from_bytes(data[i:i+2],'little') for i in range(64,124,2)])))
+        animation=['anim_frame1','anim_frame2','anim_state1','anim_state2',
+                   'anim_tick1','anim_tick2','buffered_action1','buffered_action2',
+                   'buffer_age1','buffer_age2','jump_buffer1','jump_buffer2',
+                   'command_stage1','command_stage2','raw_keys1','raw_keys2','landing1','landing2',
+                   'jump_vx1','jump_vx2']
+        result.update(dict(zip(animation,[int.from_bytes(data[i:i+2],'little') for i in range(124,164,2)])))
         return result
     def shot(self,name):
         path=ROOT/'docs/screenshots'/name;path.parent.mkdir(exist_ok=True,parents=True)

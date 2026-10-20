@@ -1,0 +1,49 @@
+{
+  "schema": "abaqus-animation-source/v1",
+  "fighter": "04-negger",
+  "character": "Gonzalo \"Negger\" Reyes",
+  "atlases": {
+    "motion": {
+      "path": "assets/art/characters/04-negger/animation-motion.png",
+      "frames": "16-31",
+      "generated_source": "C:/Users/user/.codex/generated_images/01a1574c-bf5b-7a00-8edf-52c9b177642b/exec-f4e5de6a-f20d-40c1-beab-718bdcfc8efb.png",
+      "sha256": "2db154d636a25aa91cb758209d23a06a7b1a770270fd6e9124cf9a4efba16c02",
+      "full_prompt": [
+        "Use case: stylized-concept; asset type: native SNES fighting-game motion sprite atlas.",
+        "Input Image 1 is the existing Negger key-pose atlas, the identity, costume and original cartoon-style reference. Input Image 2 is Negger's reference portrait, used for identity only.",
+        "Create a fresh transparent 1254x1254 RGBA 4-column by 4-row atlas with exactly sixteen individually redrawn full-body right-facing figures. Preserve Gonzalo Negger Reyes: long rectangular face, prominent nose, natural short dark slightly wavy hair with higher hairline and loose fringe, light short stubble only, purple bomber jacket over white shirt, dark charcoal trousers and violet shoes.",
+        "Hard layout rule: every figure stays entirely inside its own 313x313 cell with at least 25 pixels of fully transparent space on every side. No figure crosses a cell boundary or touches a figure above or below; row 3 column 3 ends above y=915 and row 4 column 3 begins below y=970. Keep the neutral guard body height and baseline consistent across the sheet with one common scale; never independently resize a pose to fit.",
+        "Exact row-major frame order: 16 neutral upright guard matching original idle; 17 gentle inhale with small chest and shoulder rise and wrist adjustment, feet planted; 18 exhale with slight weight settling, feet planted; 19 return guard. 20 forward walk lead-foot contact; 21 forward walk passing weight over planted lead foot; 22 rear foot passes beneath hips; 23 opposite contact. 24 backward walk rear-foot contact, guard maintained; 25 weight onto planted rear foot; 26 lead foot passes beneath hips; 27 opposite contact, all still facing right. 28 halfway crouch; 29 jump anticipation with compact knees; 30 early jump extension distinct from the legacy tucked jump; 31 landing compression.",
+        "Draw genuine anatomical in-betweens for arms, hands, torso, hips, knees, feet, jacket folds and hair. Keep figures separate and recognizable. Do not copy or paste, translate a whole body, add labels, borders, floor, shadows, effects, props, watermark or commercial game sprites."
+      ],
+      "input_roles": [
+        {"path": "assets/art/characters/04-negger/atlas.png", "role": "identity, costume, original key-pose proportions and cartoon style reference"},
+        {"path": "assets/references/fighter-04.jpg", "role": "facial identity reference"}
+      ]
+    },
+    "actions": {
+      "path": "assets/art/characters/04-negger/animation-actions.png",
+      "frames": "32-47",
+      "generated_source": "C:/Users/user/.codex/generated_images/01a1574c-bf5b-7a00-8edf-52c9b177642b/exec-b41916f5-4fee-440d-8a3b-2655fac4d3f9.png",
+      "sha256": "532fb9bb5089c22550b950d874b599b43acf3f15b6cf416f88016b93fb2d1f09",
+      "full_prompt": [
+        "Use case: stylized-concept; asset type: native SNES fighting-game action-transition sprite atlas.",
+        "Input Image 1 is the existing Negger key-pose atlas, the identity, costume and original cartoon-style reference. Input Image 2 is Negger's reference portrait, used for identity only.",
+        "Create a brand-new transparent 1254x1254 square 4-column by 4-row atlas with exactly sixteen separately drawn full-body right-facing action figures. Preserve Gonzalo Negger Reyes: long rectangular face, prominent nose, natural short dark slightly wavy hair with higher hairline and loose fringe, light short stubble only, purple bomber jacket over white shirt, dark charcoal trousers and violet shoes. Establish one uniform source scale from the first upright guard.",
+        "Exact row-major frame order: 32 upright ready guard with slight fist preparation; 33 jab retracts halfway toward guard; 34 cross windup with torso and hips turning and fist drawn back; 35 cross retracts toward guard. 36 kick windup with bent knee raised; 37 kick retracts with bent leg returning under body; 38 sweep windup, crouched with leg tucked; 39 sweep recovery into crouch. 40 block-impact brace with firm forearms and shoulders absorbing force; 41 hurt recovery toward balanced guard; 42 special charge with both empty hands near waist and no effect; 43 cast recovery with arms folding back after extension and no projectile. 44 uppercut anticipation with crouch and fist near waist; 45 uppercut recovery; 46 victory transition with arms partway raised; 47 diagonal backward knockout fall with head left.",
+        "Draw genuine anatomical in-betweens for limbs, torso, hands, jacket folds, trousers and shoes. All figures remain complete, connected and separate with generous transparent gaps. No copied or translated bodies, mannequin figures, duplicate poses, motion streaks, sparks, projectiles, shadows, effects, labels, text, props, watermark or commercial game sprites. Keep the KO naturally low without shrinking its physical scale."
+      ],
+      "input_roles": [
+        {"path": "assets/art/characters/04-negger/atlas.png", "role": "identity, costume, original key-pose proportions and cartoon style reference"},
+        {"path": "assets/references/fighter-04.jpg", "role": "facial identity reference"}
+      ]
+    }
+  },
+  "validation": {
+    "validated_at": "2026-10-20",
+    "tool": "tools/fighter_assets.py:extract_atlas",
+    "alpha_threshold": 200,
+    "motion": {"size": [1254, 1254], "mode": "RGBA", "alpha_min_max": [0, 255], "figures": 16, "sha256": "2db154d636a25aa91cb758209d23a06a7b1a770270fd6e9124cf9a4efba16c02", "opaque_pixels": [35595, 35495, 34406, 34060, 34611, 31550, 32382, 33261, 32211, 30360, 31105, 33749, 30984, 30754, 33821, 30994]},
+    "actions": {"size": [1254, 1254], "mode": "RGBA", "alpha_min_max": [0, 255], "figures": 16, "sha256": "532fb9bb5089c22550b950d874b599b43acf3f15b6cf416f88016b93fb2d1f09", "opaque_pixels": [37481, 36429, 38908, 35359, 32317, 30263, 31908, 28527, 35283, 35559, 36226, 34821, 32691, 35807, 40283, 27413]}
+  }
+}

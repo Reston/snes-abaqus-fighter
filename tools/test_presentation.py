@@ -6,7 +6,7 @@ navigation contract, selected portrait updates, and all three fight stages.
 Frames are captured from the core's video callback for human review; no window
 or audio device is opened and the host never writes emulated memory.
 
-Run after the 2 MiB native build with::
+Run after the 4 MiB animation native build with::
 
     python tools/test_presentation.py
 """
@@ -275,8 +275,8 @@ def main() -> int:
         manifest = json.loads((ROOT / "dist/manifest.json").read_text())
         report["rom_sha256"] = manifest.get("sha256")
         report["rom_bytes"] = manifest.get("bytes")
-        check(manifest.get("bytes") == 2 * 1024 * 1024,
-              "presentation build uses the 2 MiB native ROM", manifest)
+        check(manifest.get("bytes") == 4 * 1024 * 1024,
+              "presentation build uses the 4 MiB animation ROM", manifest)
         report["captures"] = {
             "menus": title_and_select(),
             "stages": fight_stage_captures(),

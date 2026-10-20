@@ -109,6 +109,9 @@ def background(name,im):
         canvas=Image.new('RGB',(8,len(strips)*8))
         for i,t in enumerate(strips):canvas.paste(t,(0,i*8))
         p=canvas.quantize(colors=15,method=Image.Quantize.MEDIANCUT).getpalette()[:45]
+        # Flat menu fields can contain fewer than fifteen distinct colors.
+        # Pad the local palette to its complete hardware bank explicitly.
+        p += (p[-3:] or [0,0,0]) * ((45-len(p))//3)
         palette=[(0,0,0)]+[tuple(p[k:k+3]) for k in range(0,45,3)]
         pals+=palette
         q=Image.new('P',(1,1));q.putpalette(sum((list(c) for c in palette[1:]),[])+list(p[-3:])*(256-15))
@@ -158,7 +161,12 @@ for n,fighter in enumerate(roster):
 # Interface tiles use fixed palette 0; selection portraits occupy palette 1.
 ui=bytearray()
 for code in range(128):
-    pix=[1 if code>=32 else 0]*64
+    pix=[0]*64
+    # Transparent menu lettering with a one-pixel navy shadow. Combat and
+    # result panels still supply their own solid background tiles.
+    for y,row in enumerate(GLYPHS.get(chr(code),[])):
+        for x,c in enumerate(row):
+            if c=='1' and y+1<8 and x+2<8:pix[(y+1)*8+x+2]=1
     for y,row in enumerate(GLYPHS.get(chr(code),[])):
         for x,c in enumerate(row):
             if c=='1':pix[y*8+x+1]=2
@@ -184,26 +192,26 @@ for i in range(128,160):
     elif i in (149,150,151,152):
         for y in range(8):
             for x in range(8):
-                if (i==149 and (x==0 or y==0)) or (i==150 and (x==7 or y==0)) or (i==151 and (x==0 or y==7)) or (i==152 and (x==7 or y==7)):pix[y*8+x]=4
+                if (i==149 and (x==0 or y==0)) or (i==150 and (x==7 or y==0)) or (i==151 and (x==0 or y==7)) or (i==152 and (x==7 or y==7)):pix[y*8+x]=3
     elif i==153:
-        for y in range(8):pix[y*8]=4
+        for y in range(8):pix[y*8]=3
     elif i==154:
-        for x in range(8):pix[x]=4
+        for x in range(8):pix[x]=3
     ui+=tile(pix)
 asset('ui_tiles',ui)
 asset('ui_pal',palbytes(UI_COLORS+[(0,0,0),(15,24,41),(96,235,212)]+UI_COLORS[3:]))
 
 # Each fighter has independent illustrated frames and a fifteen-color palette.
-# Uniform 96x80 poses fit into two LoROM-safe eight-pose banks.
+# Forty-eight uniform 96x80 frames use six LoROM-safe eight-frame banks.
 for n,fighter in enumerate(roster):
     data=bytearray()
     for ids in fighter['indices']:
         for ty in range(10):
             for tx in range(12):
                 data+=tile([ids[(ty*8+y)*96+tx*8+x] for y in range(8) for x in range(8)])
-    assert len(data)==61440
-    asset(f'fighter{n:02}',data[:30720])
-    asset(f'fighter{n:02}b',data[30720:])
+    assert len(data)==184320
+    for bank,suffix in enumerate(('', 'b', 'c', 'd', 'e', 'f')):
+        asset(f'fighter{n:02}{suffix}',data[bank*30720:(bank+1)*30720])
     asset(f'fighter{n:02}_pal',palbytes(fighter['palette']))
 
 # Universal 16x16 impact, projectile, and ground-shadow sprite tiles.
@@ -311,4 +319,4 @@ if r.returncode:raise RuntimeError(r.stdout+r.stderr)
 print(r.stdout)
 (OUT/'data.asm').write_text('\n'.join(asm)+'\n')
 (OUT/'assets.h').write_text('\n'.join(header)+'\n')
-print('Encoded six backgrounds, 192 fighter frames, UI, effects, 4 music tracks and 4 sounds.')
+print('Encoded six backgrounds, 576 fighter frames, UI, effects, 4 music tracks and 4 sounds.')

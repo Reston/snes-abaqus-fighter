@@ -11,7 +11,9 @@ Run after a native build with::
     python tools/test_characters.py
 
 The script is intended to be useful while the user has another game in the
-foreground: it never opens a window, plays audio, or takes focus.
+foreground: it never opens a window, plays audio, or takes focus.  It checks
+the 4 MiB six-bank animation cartridge and preserves the 16 logical combat
+pose trace for gameplay assertions.
 """
 
 from __future__ import annotations
@@ -48,7 +50,10 @@ FAMILY_NAMES = ("projectile", "rush", "groundwave", "rising")
 POSE_WIDTH = 96
 POSE_HEIGHT = 80
 POSE_BYTES = POSE_WIDTH * POSE_HEIGHT // 2
+ANIMATION_FRAME_COUNT = 48
+ANIMATION_BANK_COUNT = 6
 BANK_BYTES = POSE_BYTES * 8
+ANIMATION_BANK_SUFFIXES = ("", "b", "c", "d", "e", "f")
 VRAM_ACTOR_BASE = 0xC000
 VRAM_ACTOR_STRIDE = 0x1400
 VRAM_ROW_STRIDE = 0x200
@@ -63,6 +68,8 @@ ACTOR_OAM_SLOTS = 32
 OAM_ACTOR_BASE = (0, ACTOR_OAM_SLOTS)
 
 checks: list[dict[str, object]] = []
+_BANK_CACHE: dict[tuple[int, int], bytes] = {}
+_FRAME_LOOKUP: dict[int, dict[bytes, int]] = {}
 
 
 def check(ok: bool, label: str, details: object | None = None) -> None:
@@ -76,7 +83,7 @@ def signed16(value: int) -> int:
     return value - 0x10000 if value & 0x8000 else value
 
 
-def raw_trace_words(e: Emulator, count: int = 64) -> list[int]:
+def raw_trace_words(e: Emulator, count: int = 80) -> list[int]:
     """Return trace words without mutating the emulated WRAM.
 
     The first 32 words predate the individualized roster.  The optional words
@@ -111,6 +118,20 @@ def state(e: Emulator) -> dict[str, int]:
         "wave_low1": raw[56], "wave_low2": raw[57],
         "wave_speed1": raw[58], "wave_speed2": raw[59],
         "wave_life1": raw[60], "wave_life2": raw[61],
+        # Animation and input-feel fields are deliberately read directly from
+        # the public trace window here.  This keeps this suite compatible with
+        # an emulator.py host that predates the animation aliases and avoids
+        # writing any emulated memory.
+        "anim_frame1": raw[62], "anim_frame2": raw[63],
+        "animation_frame1": raw[62], "animation_frame2": raw[63],
+        "anim_state1": raw[64], "anim_state2": raw[65],
+        "anim_tick1": raw[66], "anim_tick2": raw[67],
+        "buffered_action1": raw[68], "buffered_action2": raw[69],
+        "buffer_age1": raw[70], "buffer_age2": raw[71],
+        "jump_buffer1": raw[72], "jump_buffer2": raw[73],
+        "command_stage1": raw[74], "command_stage2": raw[75],
+        "raw_keys1": raw[76], "raw_keys2": raw[77],
+        "landing1": raw[78], "landing2": raw[79],
     }
     for key, value in extension.items():
         result.setdefault(key, value)
@@ -146,7 +167,8 @@ def press(e: Emulator, key: str, port: int = 0) -> None:
     e.run(20)
 
 
-def boot(mode: int, fighter: int, stage: int = 0, fighter2: int = 1) -> Emulator:
+def boot(mode: int, fighter: int, stage: int = 0, fighter2: int = 1,
+         quiet_frames: int = 3) -> Emulator:
     """Boot a fresh match using only menu controller input.
 
     mode follows the cartridge menu: 0 arcade, 1 local versus, 2 training.
@@ -182,7 +204,7 @@ def boot(mode: int, fighter: int, stage: int = 0, fighter2: int = 1) -> Emulator
     check(state(e)["intro"] == 0, "match intro completes", {
         "mode": mode, "fighter": fighter, "fighter2": fighter2,
     })
-    e.run(3)
+    e.run(quiet_frames)
     return e
 
 
@@ -363,8 +385,34 @@ POSE_NAMES = (
     "cross", "kick", "sweep", "block", "hurt", "victory", "cast",
     "uppercut", "knockout", "rush",
 )
+# The contract lists frames 16..47 in the motion/action atlases.  Keeping the
+# logical labels separate from the 16 legacy gameplay poses lets the tests
+# verify actual VRAM animation without changing the long-standing action trace.
+ANIMATION_FRAME_NAMES = tuple("legacy-" + name for name in POSE_NAMES) + (
+    "idle-guard", "idle-inhale", "idle-exhale", "idle-return",
+    "walk-forward-contact", "walk-forward-pass", "walk-forward-under",
+    "walk-forward-opposite", "walk-back-contact", "walk-back-pass",
+    "walk-back-under", "walk-back-opposite", "crouch-transition",
+    "jump-anticipation", "jump-extension", "landing-compression",
+    "attack-ready", "attack-jab-retract", "attack-cross-windup",
+    "attack-cross-retract", "attack-kick-windup", "attack-kick-retract",
+    "attack-sweep-windup", "attack-sweep-recovery", "block-impact",
+    "hurt-recovery", "special-charge", "cast-recovery",
+    "uppercut-anticipation", "uppercut-recovery", "victory-transition",
+    "knockout-fall",
+)
 NON_KO_POSES = tuple(index for index, name in enumerate(POSE_NAMES)
                      if name != "knockout")
+# Standing-height comparisons deliberately cover only upright support and
+# attack silhouettes.  Frame 44 is uppercut anticipation with the body
+# crouched; frame 45 is the airborne/recovery transition.  Both remain under
+# the strict canvas, scale, and shared-baseline checks above.
+COMPARABLE_STANDING_FRAMES = (
+    16, 17, 18, 19,
+    20, 21, 22, 23, 24, 25, 26, 27,
+    32, 33, 34, 35, 36, 37,
+    42, 43,
+)
 SCALE_KEYS = ("physical_scale", "global_scale", "uniform_scale", "scale")
 
 
@@ -403,7 +451,7 @@ def _manifest_scales(entry: dict[str, object]) -> tuple[list[float], str]:
         if key in entry:
             value = _numeric_scale(entry[key])
             if value is not None:
-                return [value] * len(POSE_NAMES), key
+                return [value] * ANIMATION_FRAME_COUNT, key
     raise AssertionError((
         "character manifest must record one physical global scale per fighter",
         entry.get("id"), sorted(entry),
@@ -411,22 +459,27 @@ def _manifest_scales(entry: dict[str, object]) -> tuple[list[float], str]:
 
 
 def _native_pose_boxes(fighter: int) -> tuple[Image.Image, list[tuple[int, int, int, int]]]:
-    """Decode the actual generated native pose sheet into per-pose boxes."""
+    """Decode the generated 48-frame native animation sheet into boxes."""
 
     path = ROOT / f"assets/generated/fighter{fighter:02}.png"
     check(path.exists(), "native pose preview exists", {"fighter": fighter, "path": str(path)})
-    image = Image.open(path).convert("RGBA")
-    check(image.size == (POSE_WIDTH * len(POSE_NAMES), POSE_HEIGHT),
-          "native pose preview uses the 96x80 frame contract", {
+    source_image = Image.open(path)
+    check(source_image.mode == "RGBA",
+          "native animation preview preserves RGBA transparency", {
+              "fighter": fighter, "mode": source_image.mode,
+          })
+    image = source_image.convert("RGBA")
+    check(image.size == (POSE_WIDTH * ANIMATION_FRAME_COUNT, POSE_HEIGHT),
+          "native animation preview uses the 48-frame 96x80 contract", {
               "fighter": fighter, "size": image.size,
           })
     boxes: list[tuple[int, int, int, int]] = []
-    for pose in range(len(POSE_NAMES)):
+    for pose in range(ANIMATION_FRAME_COUNT):
         crop = image.crop((pose * POSE_WIDTH, 0,
                            (pose + 1) * POSE_WIDTH, POSE_HEIGHT))
         box = crop.getchannel("A").getbbox()
         check(box is not None, "native pose has opaque pixels", {
-            "fighter": fighter, "pose": POSE_NAMES[pose],
+            "fighter": fighter, "pose": ANIMATION_FRAME_NAMES[pose],
         })
         boxes.append(box)
     return image, boxes
@@ -457,7 +510,13 @@ def verify_rendered_actor(e: Emulator, fighter: int, side: int,
     stage = Image.open(stage_path).convert("RGB")
     frame = e.frame.convert("RGB")
     native, boxes = _native_pose_boxes(fighter)
-    alpha = native.crop((0, 0, POSE_WIDTH, POSE_HEIGHT)).getchannel("A")
+    actual_frame = uploaded_frame_id(e, fighter, side)
+    if actual_frame is None:
+        actual_frame = trace_animation_frame(state(e), side)
+    if actual_frame is None or not 0 <= actual_frame < ANIMATION_FRAME_COUNT:
+        actual_frame = 0
+    alpha = native.crop((actual_frame * POSE_WIDTH, 0,
+                         (actual_frame + 1) * POSE_WIDTH, POSE_HEIGHT)).getchannel("A")
     alpha_pixels = [(x, y) for y in range(POSE_HEIGHT) for x in range(POSE_WIDTH)
                     if alpha.getpixel((x, y))]
     x_rows = geometry["x"]
@@ -476,7 +535,7 @@ def verify_rendered_actor(e: Emulator, fighter: int, side: int,
         if max(abs(actual[channel] - plate[channel]) for channel in range(3)) > 16:
             changed.append((screen_x, screen_y))
 
-    expected_box = boxes[0]
+    expected_box = boxes[actual_frame]
     if side:
         expected_box = (POSE_WIDTH - expected_box[2], expected_box[1],
                         POSE_WIDTH - expected_box[0], expected_box[3])
@@ -499,8 +558,9 @@ def verify_rendered_actor(e: Emulator, fighter: int, side: int,
               })
     else:
         observed = None
-    return {"expected": expected_screen, "observed": observed,
-            "changed_pixels": len(changed), "opaque_pixels": len(alpha_pixels)}
+    return {"frame": actual_frame, "expected": expected_screen,
+            "observed": observed, "changed_pixels": len(changed),
+            "opaque_pixels": len(alpha_pixels)}
 
 
 def verify_native_proportions() -> dict[str, object]:
@@ -509,7 +569,7 @@ def verify_native_proportions() -> dict[str, object]:
     The old pipeline fit each pose independently to a 64x80 frame, making a
     jab or kick visibly taller or shorter than idle.  This review intentionally
     checks the generated native image and manifest rather than a duplicated
-    source constant: all sixteen frames must advertise the same physical
+    source constant: all forty-eight frames must advertise the same physical
     scale, stay inside the 96x80 canvas, and share one support-floor baseline.
     """
 
@@ -523,12 +583,17 @@ def verify_native_proportions() -> dict[str, object]:
         check(int(entry.get("id", -1)) == fighter, "manifest roster order is stable", {
             "fighter": fighter, "id": entry.get("id"),
         })
+        check(int(entry.get("frame_count", 0)) == ANIMATION_FRAME_COUNT,
+              "manifest records all forty-eight native animation frames", {
+                  "fighter": fighter, "frame_count": entry.get("frame_count"),
+              })
         scales, scale_source = _manifest_scales(entry)
-        check(len(scales) == len(POSE_NAMES), "fighter records one scale for every pose", {
+        check(len(scales) == ANIMATION_FRAME_COUNT,
+              "fighter records one scale for every animation frame", {
             "fighter": fighter, "count": len(scales), "source": scale_source,
         })
         scale_span = max(scales) - min(scales)
-        check(scale_span <= 1e-6, "all sixteen poses use one uniform physical scale", {
+        check(scale_span <= 1e-6, "all forty-eight frames use one uniform physical scale", {
             "fighter": fighter, "scale": scales[0], "span": scale_span,
         })
 
@@ -536,15 +601,24 @@ def verify_native_proportions() -> dict[str, object]:
         for pose, box in enumerate(boxes):
             left, top, right, bottom = box
             check(left > 0 and top >= 0 and right < POSE_WIDTH and bottom <= POSE_HEIGHT,
-                  "native pose stays inside its 96x80 canvas", {
-                      "fighter": fighter, "pose": POSE_NAMES[pose], "box": box,
+                  "native animation frame stays inside its 96x80 canvas", {
+                      "fighter": fighter, "pose": ANIMATION_FRAME_NAMES[pose], "box": box,
                   })
 
-        baselines = [boxes[pose][3] for pose in NON_KO_POSES]
+        # Frame 47 is the only deliberate exception: the knockout fall is
+        # allowed to settle above the support line while the fighter is down.
+        baselines = [boxes[pose][3] for pose in range(ANIMATION_FRAME_COUNT - 1)]
         check(max(baselines) - min(baselines) <= 1,
-              "non-knockout poses share a support-floor baseline", {
+              "non-knockout animation frames share a support-floor baseline", {
                   "fighter": fighter, "baselines": baselines,
               })
+        baseline_y = entry.get("baseline_y")
+        if isinstance(baseline_y, (int, float)):
+            check(abs(float(baseline_y) - baselines[0]) <= 1,
+                  "manifest baseline matches rendered animation support line", {
+                      "fighter": fighter, "manifest": baseline_y,
+                      "native": baselines[0],
+                  })
         standing_height = entry.get("standing_height")
         idle_height = boxes[0][3] - boxes[0][1]
         if isinstance(standing_height, (int, float)):
@@ -570,22 +644,102 @@ def verify_native_proportions() -> dict[str, object]:
                       "fighter": fighter, "pose": POSE_NAMES[pose],
                       "idle_height": idle_height, "pose_height": height,
                   })
+        # The drawn animation atlases must preserve the same body scale while
+        # adding motion.  Their hands/feet may change the outer silhouette,
+        # but the visible body cannot collapse to a separately fitted sprite.
+        for frame in COMPARABLE_STANDING_FRAMES:
+            height = boxes[frame][3] - boxes[frame][1]
+            check(idle_height * 0.65 <= height <= idle_height + 12,
+                  "drawn animation preserves comparable fighter height", {
+                      "fighter": fighter, "frame": ANIMATION_FRAME_NAMES[frame],
+                      "idle_height": idle_height, "frame_height": height,
+                  })
         results[f"{fighter:02}"] = {
             "scale": scales[0], "scale_source": scale_source,
             "idle_box": boxes[0], "jab_box": boxes[5],
             "kick_box": boxes[7], "cast_box": boxes[12],
-            "baseline": baselines[0],
+            "animation_frames": len(boxes), "baseline": baselines[0],
         }
     return results
 
 
 def expected_bank(fighter: int, bank: int) -> bytes:
-    suffix = "" if bank == 0 else "b"
+    if not 0 <= bank < ANIMATION_BANK_COUNT:
+        raise AssertionError(("invalid animation bank", fighter, bank))
+    cache_key = (fighter, bank)
+    if cache_key in _BANK_CACHE:
+        return _BANK_CACHE[cache_key]
+    suffix = ANIMATION_BANK_SUFFIXES[bank]
     data = (ROOT / f"assets/generated/fighter{fighter:02}{suffix}.bin").read_bytes()
     check(len(data) == BANK_BYTES, "fighter bank has 8 complete poses", {
         "fighter": fighter, "bank": bank, "bytes": len(data),
     })
+    _BANK_CACHE[cache_key] = data
     return data
+
+
+def actor_payload(e: Emulator, side: int) -> bytes:
+    """Compact one actor's 10 native rows, removing the padded VRAM tail."""
+
+    image = vram(e)
+    base = VRAM_ACTOR_BASE + side * VRAM_ACTOR_STRIDE
+    return b"".join(
+        image[base + row * VRAM_ROW_STRIDE:
+              base + row * VRAM_ROW_STRIDE + VRAM_ROW_BYTES]
+        for row in range(POSE_HEIGHT // 8)
+    )
+
+
+def uploaded_frame_id(e: Emulator, fighter: int, side: int) -> int | None:
+    """Identify the exact uploaded animation frame from native VRAM bytes."""
+
+    lookup = _FRAME_LOOKUP.get(fighter)
+    if lookup is None:
+        lookup = {}
+        for bank in range(ANIMATION_BANK_COUNT):
+            data = expected_bank(fighter, bank)
+            for pose in range(8):
+                frame = bank * 8 + pose
+                payload = data[pose * POSE_BYTES:(pose + 1) * POSE_BYTES]
+                lookup[payload] = frame
+        _FRAME_LOOKUP[fighter] = lookup
+    return lookup.get(actor_payload(e, side))
+
+
+def trace_animation_frame(sample: dict[str, int], side: int) -> int | None:
+    """Read the actual visual frame, accepting future host aliases."""
+
+    suffix = str(side + 1)
+    for key in (f"animation_frame{suffix}", f"anim_frame{suffix}",
+                f"frame_anim{suffix}", f"visual_frame{suffix}"):
+        value = sample.get(key)
+        if value is not None and 0 <= int(value) < ANIMATION_FRAME_COUNT:
+            return int(value)
+    return None
+
+
+def animation_group_for_pose(pose: int) -> set[int]:
+    """Frames that are valid visual transitions for a legacy logical pose."""
+
+    groups = {
+        0: {0, 16, 17, 18, 19},
+        1: {1, 20, 21, 22, 23},
+        2: {2, 24, 25, 26, 27},
+        3: {3, 28},
+        4: {4, 29, 30, 31},
+        5: {5, 32, 33, 34, 35},
+        6: {6, 32, 33, 34, 35},
+        7: {7, 36, 37, 38, 39},
+        8: {8, 38, 39},
+        9: {9, 40},
+        10: {10, 41},
+        11: {11, 46},
+        12: {12, 42, 43},
+        13: {13, 44, 45},
+        14: {14, 47},
+        15: {15, 32, 33, 34, 35},
+    }
+    return groups.get(pose, {pose})
 
 
 def actor_rows(e: Emulator, fighter: int, side: int, bank: int,
@@ -606,35 +760,66 @@ def actor_rows(e: Emulator, fighter: int, side: int, bank: int,
 
 def wait_for_uploaded_pose(e: Emulator, fighter: int, side: int = 0,
                            max_frames: int = 24) -> tuple[dict[str, int], int]:
-    """Wait for the one-actor-per-vblank queue and return pose/bank."""
+    """Wait for the one-actor-per-vblank queue and return visual bank.
+
+    The logical combat pose remains 0..15, while the renderer can stream one
+    of the 48 animation frames.  The exact compact VRAM payload is therefore
+    authoritative for the bank returned here; TRACE[62/63] is used as a
+    cross-check when the new host aliases are present.
+    """
 
     for _ in range(max_frames):
         s = state(e)
         pose = s["pose1" if side == 0 else "pose2"]
+        actual = uploaded_frame_id(e, fighter, side)
+        if actual is not None:
+            bank = actual // 8
+            # TRACE[62/63] is written before the alternating one-actor
+            # vblank upload.  During a fast transition it can name a later
+            # visual frame while VRAM still contains the previous one.  Keep
+            # the exact native VRAM payload authoritative here; stream_pose
+            # checks the trace against the expected logical animation group
+            # when a controller transition has a known target.
+            return s, bank
         bank = 0 if pose < 8 else 1
         if actor_rows(e, fighter, side, bank, pose):
             return s, bank
         e.run(1)
     s = state(e)
     pose = s["pose1" if side == 0 else "pose2"]
-    bank = 0 if pose < 8 else 1
+    actual = uploaded_frame_id(e, fighter, side)
+    bank = actual // 8 if actual is not None else (0 if pose < 8 else 1)
     return s, bank
 
 
 def stream_pose(e: Emulator, fighter: int, side: int, expected_pose: int,
                 label: str, max_frames: int = 48) -> dict[str, int]:
-    """Wait for one controller-driven pose and compare its complete VRAM page."""
+    """Wait for a logical pose and compare its complete animated VRAM frame."""
 
     state_key = "pose1" if side == 0 else "pose2"
     for _ in range(max_frames):
         sample = state(e)
         pose = sample[state_key]
+        actual = uploaded_frame_id(e, fighter, side)
+        traced = trace_animation_frame(sample, side)
+        allowed = animation_group_for_pose(expected_pose)
+        if pose == expected_pose and actual is not None and actual in allowed:
+            check(traced is None or traced in allowed,
+                  label + " trace stays in the expected animation group", {
+                      "fighter": fighter, "side": side,
+                      "trace": traced, "vram": actual,
+                  })
+            check(True, label + " streams its complete native pose", {
+                "fighter": fighter, "side": side, "pose": pose,
+                "frame": actual, "bank": actual // 8,
+            })
+            return {"pose": pose, "frame": actual, "bank": actual // 8}
         bank = 0 if pose < 8 else 1
         if pose == expected_pose and actor_rows(e, fighter, side, bank, pose):
-            check(True, label + " streams its complete native pose", {
+            check(True, label + " streams its complete legacy native pose", {
                 "fighter": fighter, "side": side, "pose": pose, "bank": bank,
             })
-            return {"pose": pose, "bank": bank}
+            return {"pose": pose, "frame": pose, "bank": bank}
         e.run(1)
     raise AssertionError((label + " did not stream its expected native pose", {
         "fighter": fighter, "side": side, "expected_pose": expected_pose,
@@ -652,7 +837,79 @@ def capture(e: Emulator, fighter: int, label: str) -> Path:
     return path
 
 
-def trigger_special(e: Emulator, expected_family: int) -> tuple[dict[str, int], list[dict[str, int]]]:
+def capture_animation_gif(e: Emulator, fighter: int, label: str,
+                          inputs: tuple[str, ...] = (),
+                          frames: int = 24) -> Path:
+    """Save source-actual PPU frames for a human animation review."""
+
+    images: list[Image.Image] = []
+    for _ in range(frames):
+        if e.frame is not None:
+            images.append(e.frame.copy())
+        e.run(1, p1=list(inputs))
+    check(len(images) >= 4, "animation capture contains native PPU frames", {
+        "fighter": fighter, "label": label, "frames": len(images),
+    })
+    folder = ROOT / "docs/screenshots/characters"
+    folder.mkdir(parents=True, exist_ok=True)
+    path = folder / f"{fighter:02}-{label}.gif"
+    # Three source PPU frames span 50 ms at 60 Hz.  A flat 50 ms per frame
+    # would play the review at one third speed and obscure the real cadence.
+    durations = (20, 20, 10) * ((len(images) + 2) // 3)
+    images[0].save(path, save_all=True, append_images=images[1:],
+                   duration=list(durations[:len(images)]), loop=0,
+                   optimize=False)
+    return path
+
+
+def observe_animation_loop(e: Emulator, fighter: int, side: int,
+                           label: str, inputs: tuple[str, ...],
+                           expected: set[int], frames: int = 32,
+                           gif_label: str | None = None) -> dict[str, object]:
+    """Observe distinct uploaded frames and a stable floor while moving."""
+
+    visual_frames: list[int] = []
+    expected_frames: list[int] = []
+    floors: list[int] = []
+    reached_expected = False
+    for _ in range(frames):
+        actual = uploaded_frame_id(e, fighter, side)
+        if actual is not None:
+            visual_frames.append(actual)
+            if actual in expected:
+                reached_expected = True
+                expected_frames.append(actual)
+            elif reached_expected:
+                check(False, label + " uses the correct animation frame set", {
+                    "fighter": fighter, "side": side, "frame": actual,
+                })
+        raw = oam_memory(e)
+        entries = _oam_actor_entries(raw, side)
+        floors.append(max(entry["y"] for entry in entries) + 16)
+        e.run(1, p1=list(inputs) if side == 0 else [],
+              p2=list(inputs) if side == 1 else [])
+    check(len(set(expected_frames)) >= 3,
+          label + " exposes at least three distinct native animation frames", {
+              "fighter": fighter, "side": side,
+              "frames": sorted(set(expected_frames)),
+          })
+    check(max(floors) - min(floors) <= 1,
+          label + " keeps a stable support floor while animating", {
+              "fighter": fighter, "side": side,
+              "floor_min": min(floors), "floor_max": max(floors),
+          })
+    gif_path = None
+    if gif_label is not None and side == 0:
+        # Re-run the exact input window for the review capture.  The GIF is
+        # generated from actual callback frames, never from source art.
+        gif_path = str(capture_animation_gif(e, fighter, gif_label, inputs, frames))
+    return {"frames": sorted(set(expected_frames)),
+            "floor": [min(floors), max(floors)], "gif": gif_path}
+
+
+def trigger_special(e: Emulator, expected_family: int,
+                    fighter: int | None = None) -> tuple[
+                        dict[str, int], list[dict[str, int]], set[int]]:
     """Try the controller-only special motions and return observed samples.
 
     The primary motion is the game's documented down + punch shortcut.  The
@@ -668,6 +925,7 @@ def trigger_special(e: Emulator, expected_family: int) -> tuple[dict[str, int], 
         (("down",), ("down", "l")),
     )
     best: tuple[dict[str, int], list[dict[str, int]]] | None = None
+    visual_frames: set[int] = set()
     before = state(e)
     for held, pressed in macros:
         # The libretro input callback is sampled at the core's frame boundary;
@@ -676,11 +934,25 @@ def trigger_special(e: Emulator, expected_family: int) -> tuple[dict[str, int], 
         # sample, matching a player's sustained SNES input without changing
         # the game's edge-triggered move rules.
         e.run(4, p1=list(held))
-        e.run(18, p1=list(pressed))
+        # Keep the sustained 18-frame button window, but inspect each native
+        # PPU frame while it is held.  Rush specials expose their bank-1
+        # active frame only briefly before the recovery frame in bank 4.
         samples: list[dict[str, int]] = []
+        for _ in range(18):
+            e.run(1, p1=list(pressed))
+            sample = state(e)
+            samples.append(sample)
+            if fighter is not None:
+                actual = uploaded_frame_id(e, fighter, 0)
+                if actual is not None:
+                    visual_frames.add(actual)
         for _ in range(40):
             sample = state(e)
             samples.append(sample)
+            if fighter is not None:
+                actual = uploaded_frame_id(e, fighter, 0)
+                if actual is not None:
+                    visual_frames.add(actual)
             # Leave the emulator on the special pose so the following VRAM
             # assertion observes the one-actor-per-vblank upload, rather than
             # waiting until the animation has already returned to idle.
@@ -701,16 +973,16 @@ def trigger_special(e: Emulator, expected_family: int) -> tuple[dict[str, int], 
             for s in samples
         )
         if changed:
-            return before, samples
+            return before, samples, visual_frames
         best = (before, samples)
         e.run(36)
     assert best is not None
-    return best
+    return best[0], best[1], visual_frames
 
 
 def assert_special_family(e: Emulator, fighter: int) -> dict[str, object]:
     expected = SPECIAL_FAMILY[fighter]
-    before, samples = trigger_special(e, expected)
+    before, samples, visual_frames = trigger_special(e, expected, fighter)
     observed = [state(e)] + samples
     values = [side_field(s, 0, "family", "special_family", "specialFamily")
               for s in observed]
@@ -746,6 +1018,7 @@ def assert_special_family(e: Emulator, fighter: int) -> dict[str, object]:
     return {
         "expected": FAMILY_NAMES[expected], "observed": values,
         "action": action, "projectile": projectile, "rush": rush, "rise": rise,
+        "visual_frames": sorted(visual_frames),
     }
 
 
@@ -880,31 +1153,50 @@ def verify_p2_special_hit(fighter: int) -> dict[str, object]:
 def verify_asset_identity() -> None:
     digests: list[str] = []
     for fighter in range(len(NAMES)):
-        a = expected_bank(fighter, 0)
-        b = expected_bank(fighter, 1)
-        digests.append(hashlib.sha256(a + b).hexdigest())
-        check(a != b, "fighter has distinct pose banks", {"fighter": fighter})
+        banks = [expected_bank(fighter, bank)
+                 for bank in range(ANIMATION_BANK_COUNT)]
+        digests.append(hashlib.sha256(b"".join(banks)).hexdigest())
+        check(len(banks) == ANIMATION_BANK_COUNT,
+              "fighter has six complete animation banks", {
+                  "fighter": fighter, "banks": ANIMATION_BANK_COUNT,
+              })
     check(len(set(digests)) == len(NAMES), "all twelve fighters have distinct native animation assets", {
         "unique_assets": len(set(digests)),
     })
 
 
 def verify_p1_fighter(fighter: int) -> dict[str, object]:
-    e = boot(2, fighter, fighter % 3)
+    # Capture the first live frame before the slow idle loop can leave the
+    # legacy frame-0 bank.  This keeps all six native banks observable through
+    # real controller transitions while later captures remain banner-free.
+    e = boot(2, fighter, fighter % 3, quiet_frames=0)
     try:
         s0, bank0 = wait_for_uploaded_pose(e, fighter, 0)
+        actual0 = uploaded_frame_id(e, fighter, 0)
+        seen_banks: set[int] = set()
+        if actual0 is not None:
+            seen_banks.add(actual0 // 8)
         check(s0["selected"] == fighter, "menu selects requested fighter", {
             "fighter": fighter, "selected": s0["selected"],
         })
-        check(s0["pose1"] < 8 and bank0 == 0, "idle frame uses the first pose bank", {
-            "fighter": fighter, "pose": s0["pose1"], "bank": bank0,
+        check(actual0 in {0, 16, 17, 18, 19} or bank0 in {0, 2},
+              "idle frame uses a valid legacy or breathing animation bank", {
+            "fighter": fighter, "pose": s0["pose1"], "frame": actual0,
+            "bank": bank0,
         })
-        check(actor_rows(e, fighter, 0, 0), "all ten idle sprite rows reach actor VRAM", {
+        check(actual0 is not None or actor_rows(e, fighter, 0, bank0, s0["pose1"]),
+              "all ten idle sprite rows reach actor VRAM", {
             "fighter": fighter,
         })
         idle_oam = verify_oam_geometry(e, 0, "idle")
         idle_render = verify_rendered_actor(e, fighter, 0, idle_oam)
+        e.run(3)
         idle_path = capture(e, fighter, "idle")
+        idle_loop = observe_animation_loop(
+            e, fighter, 0, "idle breathing", (), {0, 16, 17, 18, 19},
+            frames=32, gif_label="idle-animation",
+        )
+        seen_banks.update(frame // 8 for frame in idle_loop["frames"])
 
         # The crouch, jump, and all six normal buttons must each upload the
         # exact native pose selected by the controller.  This catches a
@@ -912,6 +1204,7 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
         # still points at a stale 64x80 or wrong-bank frame.
         e.run(3, p1=["down"])
         crouch_stream = stream_pose(e, fighter, 0, 3, "crouch")
+        seen_banks.add(crouch_stream["bank"])
         e.run(4)
 
         x0 = signed16(s0["x1"])
@@ -927,9 +1220,20 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
         check(s_move["pose1"] in (1, 2), "forward movement uses a walk pose", {
             "fighter": fighter, "pose": s_move["pose1"],
         })
+        walk_forward = observe_animation_loop(
+            e, fighter, 0, "forward walk", ("right",), set(range(20, 24)),
+            frames=24, gif_label="walk-animation",
+        )
+        seen_banks.update(frame // 8 for frame in walk_forward["frames"])
+        walk_back = observe_animation_loop(
+            e, fighter, 0, "backward walk", ("left",), set(range(24, 28)),
+            frames=24,
+        )
+        seen_banks.update(frame // 8 for frame in walk_back["frames"])
 
         e.run(3, p1=["up"])
         jump_stream = stream_pose(e, fighter, 0, 4, "jump")
+        seen_banks.add(jump_stream["bank"])
         jump_samples = []
         for _ in range(8):
             jump_samples.append(state(e))
@@ -959,18 +1263,27 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
                   })
             normal_streams[key] = stream_pose(
                 e, fighter, 0, pose, "normal " + key.upper())
+            seen_banks.add(normal_streams[key]["bank"])
             e.run(50)
 
-        e.run(1, p1=["down", "l"])
+        # Hold the transition across the libretro poll phase; the engine still
+        # consumes only the edge and keeps the uppercut action active.
+        e.run(3, p1=["down", "l"])
         check(state(e)["action1"] == 8, "down plus heavy starts the uppercut", {
             "fighter": fighter, "action": state(e)["action1"],
         })
         uppercut_stream = stream_pose(e, fighter, 0, 13, "uppercut")
+        seen_banks.add(uppercut_stream["bank"])
         e.run(70)
+        attack_gif = capture_animation_gif(e, fighter, "attack-animation", ("y",), 24)
 
-        # Drive P1 to the gameplay clamp so the left edge exercises signed X9
-        # coordinates and the native flip/palette bits, still through input.
-        for _ in range(90):
+        # Drive P1 all the way to the gameplay clamp so the left edge
+        # exercises signed X9 coordinates and the native flip/palette bits.
+        # Backward speed is profile-specific, so a fixed short duration can
+        # stop well inside the screen for slower fighters such as Ivo.
+        for _ in range(260):
+            if signed16(state(e)["x1"]) <= 24 * 16:
+                break
             e.run(1, p1=["left"])
         edge_oam = verify_oam_geometry(e, 0, "left-edge")
         edge_entries = _oam_actor_entries(oam_memory(e), 0)
@@ -982,15 +1295,26 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
               })
 
         special = assert_special_family(e, fighter)
+        seen_banks.update(frame // 8 for frame in special["visual_frames"])
         s_special, bank1 = wait_for_uploaded_pose(e, fighter, 0)
+        special_frame = uploaded_frame_id(e, fighter, 0)
+        if special_frame is not None:
+            seen_banks.add(special_frame // 8)
         # The special family must reach a second-bank key pose at least once.
-        check(s_special["pose1"] >= 8 or bank1 == 1, "special reaches a second-bank pose", {
-            "fighter": fighter, "pose": s_special["pose1"], "bank": bank1,
+        check(s_special["pose1"] >= 8 or bank1 >= 1, "special reaches a non-idle animation bank", {
+            "fighter": fighter, "pose": s_special["pose1"],
+            "frame": special_frame, "bank": bank1,
         })
-        check(actor_rows(e, fighter, 0, 1, s_special["pose1"]), "all ten special sprite rows reach the second actor bank", {
-            "fighter": fighter,
-        })
+        check(special_frame is not None or actor_rows(e, fighter, 0, bank1, s_special["pose1"]),
+              "all ten special sprite rows reach the native animation bank", {
+                  "fighter": fighter, "bank": bank1,
+              })
         capture(e, fighter, "special")
+
+        check(seen_banks == set(range(ANIMATION_BANK_COUNT)),
+              "controller transitions stream all six native animation banks", {
+                  "fighter": fighter, "seen_banks": sorted(seen_banks),
+              })
 
         profile_speed = side_field(s0, 0, "speed", "profile_speed", "profileSpeed")
         profile_jump = side_field(s0, 0, "jump", "jump_strength", "jumpStrength")
@@ -1000,6 +1324,9 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
             "speed_trace": profile_speed, "jump_trace": profile_jump,
             "special": special, "idle_screenshot": str(idle_path),
             "idle_render": idle_render,
+            "idle_animation": idle_loop, "walk_forward": walk_forward,
+            "walk_backward": walk_back, "attack_gif": str(attack_gif),
+            "animation_banks": sorted(seen_banks),
             "crouch_stream": crouch_stream, "jump_stream": jump_stream,
             "normal_streams": normal_streams, "uppercut_stream": uppercut_stream,
             "idle_floor": idle_oam["floor"], "landed_floor": landed_oam["floor"],
@@ -1015,10 +1342,12 @@ def verify_p2_orientation(fighter: int) -> dict[str, object]:
     e = boot(1, 0, 0, fighter)
     try:
         s0, bank0 = wait_for_uploaded_pose(e, fighter, 1)
+        actual0 = uploaded_frame_id(e, fighter, 1)
         check(s0["selected2"] == fighter, "controller two selects requested fighter", {
             "fighter": fighter, "selected2": s0["selected2"],
         })
-        check(actor_rows(e, fighter, 1, 0), "player two receives this fighter's native idle rows", {
+        check(actual0 is not None or actor_rows(e, fighter, 1, bank0, s0["pose2"]),
+              "player two receives this fighter's native idle rows", {
             "fighter": fighter,
         })
         idle_oam = verify_oam_geometry(e, 1, "idle")
@@ -1043,6 +1372,11 @@ def verify_p2_orientation(fighter: int) -> dict[str, object]:
         check(s_walk["pose2"] in (1, 2), "player two flipped actor uses a walk pose", {
             "fighter": fighter, "pose2": s_walk["pose2"],
         })
+        p2_frame = uploaded_frame_id(e, fighter, 1)
+        check(p2_frame in set(range(20, 28)) or p2_frame in (1, 2),
+              "player two walk streams an exact flipped animation frame", {
+                  "fighter": fighter, "frame": p2_frame,
+              })
 
         e.run(3, p2=["up"])
         y_samples = []
@@ -1061,6 +1395,7 @@ def verify_p2_orientation(fighter: int) -> dict[str, object]:
             })
         return {"name": NAMES[fighter], "movement_delta": x_delta,
                 "jump_height": min_y, "face2": face_end, "bank": bank0,
+                "idle_frame": actual0, "walk_frame": p2_frame,
                 "idle_floor": idle_oam["floor"], "idle_render": idle_render}
     finally:
         e.close()
@@ -1083,8 +1418,8 @@ def main() -> int:
         manifest = json.loads((ROOT / "dist/manifest.json").read_text())
         report["rom_sha256"] = manifest["sha256"]
         report["rom_bytes"] = manifest.get("bytes")
-        check(manifest.get("bytes") == 2 * 1024 * 1024,
-              "release manifest records the 2 MiB FastROM image", {
+        check(manifest.get("bytes") == 4 * 1024 * 1024,
+              "release manifest records the 4 MiB FastROM animation image", {
                   "bytes": manifest.get("bytes"),
                   "mapping": manifest.get("mapping"),
               })

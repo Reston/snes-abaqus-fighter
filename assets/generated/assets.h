@@ -18,19 +18,19 @@ extern char stage2_map, stage2_map_end;
 extern char stage2_pal, stage2_pal_end;
 #define STAGE2_PAL_SIZE 192
 extern char title_tiles, title_tiles_end;
-#define TITLE_TILES_SIZE 19584
+#define TITLE_TILES_SIZE 8000
 extern char title_map, title_map_end;
 #define TITLE_MAP_SIZE 2048
 extern char title_pal, title_pal_end;
 #define TITLE_PAL_SIZE 192
 extern char select_tiles, select_tiles_end;
-#define SELECT_TILES_SIZE 17568
+#define SELECT_TILES_SIZE 12608
 extern char select_map, select_map_end;
 #define SELECT_MAP_SIZE 2048
 extern char select_pal, select_pal_end;
 #define SELECT_PAL_SIZE 192
 extern char arenas_tiles, arenas_tiles_end;
-#define ARENAS_TILES_SIZE 20384
+#define ARENAS_TILES_SIZE 18560
 extern char arenas_map, arenas_map_end;
 #define ARENAS_MAP_SIZE 2048
 extern char arenas_pal, arenas_pal_end;
@@ -91,72 +91,168 @@ extern char fighter00, fighter00_end;
 #define FIGHTER00_SIZE 30720
 extern char fighter00b, fighter00b_end;
 #define FIGHTER00B_SIZE 30720
+extern char fighter00c, fighter00c_end;
+#define FIGHTER00C_SIZE 30720
+extern char fighter00d, fighter00d_end;
+#define FIGHTER00D_SIZE 30720
+extern char fighter00e, fighter00e_end;
+#define FIGHTER00E_SIZE 30720
+extern char fighter00f, fighter00f_end;
+#define FIGHTER00F_SIZE 30720
 extern char fighter00_pal, fighter00_pal_end;
 #define FIGHTER00_PAL_SIZE 32
 extern char fighter01, fighter01_end;
 #define FIGHTER01_SIZE 30720
 extern char fighter01b, fighter01b_end;
 #define FIGHTER01B_SIZE 30720
+extern char fighter01c, fighter01c_end;
+#define FIGHTER01C_SIZE 30720
+extern char fighter01d, fighter01d_end;
+#define FIGHTER01D_SIZE 30720
+extern char fighter01e, fighter01e_end;
+#define FIGHTER01E_SIZE 30720
+extern char fighter01f, fighter01f_end;
+#define FIGHTER01F_SIZE 30720
 extern char fighter01_pal, fighter01_pal_end;
 #define FIGHTER01_PAL_SIZE 32
 extern char fighter02, fighter02_end;
 #define FIGHTER02_SIZE 30720
 extern char fighter02b, fighter02b_end;
 #define FIGHTER02B_SIZE 30720
+extern char fighter02c, fighter02c_end;
+#define FIGHTER02C_SIZE 30720
+extern char fighter02d, fighter02d_end;
+#define FIGHTER02D_SIZE 30720
+extern char fighter02e, fighter02e_end;
+#define FIGHTER02E_SIZE 30720
+extern char fighter02f, fighter02f_end;
+#define FIGHTER02F_SIZE 30720
 extern char fighter02_pal, fighter02_pal_end;
 #define FIGHTER02_PAL_SIZE 32
 extern char fighter03, fighter03_end;
 #define FIGHTER03_SIZE 30720
 extern char fighter03b, fighter03b_end;
 #define FIGHTER03B_SIZE 30720
+extern char fighter03c, fighter03c_end;
+#define FIGHTER03C_SIZE 30720
+extern char fighter03d, fighter03d_end;
+#define FIGHTER03D_SIZE 30720
+extern char fighter03e, fighter03e_end;
+#define FIGHTER03E_SIZE 30720
+extern char fighter03f, fighter03f_end;
+#define FIGHTER03F_SIZE 30720
 extern char fighter03_pal, fighter03_pal_end;
 #define FIGHTER03_PAL_SIZE 32
 extern char fighter04, fighter04_end;
 #define FIGHTER04_SIZE 30720
 extern char fighter04b, fighter04b_end;
 #define FIGHTER04B_SIZE 30720
+extern char fighter04c, fighter04c_end;
+#define FIGHTER04C_SIZE 30720
+extern char fighter04d, fighter04d_end;
+#define FIGHTER04D_SIZE 30720
+extern char fighter04e, fighter04e_end;
+#define FIGHTER04E_SIZE 30720
+extern char fighter04f, fighter04f_end;
+#define FIGHTER04F_SIZE 30720
 extern char fighter04_pal, fighter04_pal_end;
 #define FIGHTER04_PAL_SIZE 32
 extern char fighter05, fighter05_end;
 #define FIGHTER05_SIZE 30720
 extern char fighter05b, fighter05b_end;
 #define FIGHTER05B_SIZE 30720
+extern char fighter05c, fighter05c_end;
+#define FIGHTER05C_SIZE 30720
+extern char fighter05d, fighter05d_end;
+#define FIGHTER05D_SIZE 30720
+extern char fighter05e, fighter05e_end;
+#define FIGHTER05E_SIZE 30720
+extern char fighter05f, fighter05f_end;
+#define FIGHTER05F_SIZE 30720
 extern char fighter05_pal, fighter05_pal_end;
 #define FIGHTER05_PAL_SIZE 32
 extern char fighter06, fighter06_end;
 #define FIGHTER06_SIZE 30720
 extern char fighter06b, fighter06b_end;
 #define FIGHTER06B_SIZE 30720
+extern char fighter06c, fighter06c_end;
+#define FIGHTER06C_SIZE 30720
+extern char fighter06d, fighter06d_end;
+#define FIGHTER06D_SIZE 30720
+extern char fighter06e, fighter06e_end;
+#define FIGHTER06E_SIZE 30720
+extern char fighter06f, fighter06f_end;
+#define FIGHTER06F_SIZE 30720
 extern char fighter06_pal, fighter06_pal_end;
 #define FIGHTER06_PAL_SIZE 32
 extern char fighter07, fighter07_end;
 #define FIGHTER07_SIZE 30720
 extern char fighter07b, fighter07b_end;
 #define FIGHTER07B_SIZE 30720
+extern char fighter07c, fighter07c_end;
+#define FIGHTER07C_SIZE 30720
+extern char fighter07d, fighter07d_end;
+#define FIGHTER07D_SIZE 30720
+extern char fighter07e, fighter07e_end;
+#define FIGHTER07E_SIZE 30720
+extern char fighter07f, fighter07f_end;
+#define FIGHTER07F_SIZE 30720
 extern char fighter07_pal, fighter07_pal_end;
 #define FIGHTER07_PAL_SIZE 32
 extern char fighter08, fighter08_end;
 #define FIGHTER08_SIZE 30720
 extern char fighter08b, fighter08b_end;
 #define FIGHTER08B_SIZE 30720
+extern char fighter08c, fighter08c_end;
+#define FIGHTER08C_SIZE 30720
+extern char fighter08d, fighter08d_end;
+#define FIGHTER08D_SIZE 30720
+extern char fighter08e, fighter08e_end;
+#define FIGHTER08E_SIZE 30720
+extern char fighter08f, fighter08f_end;
+#define FIGHTER08F_SIZE 30720
 extern char fighter08_pal, fighter08_pal_end;
 #define FIGHTER08_PAL_SIZE 32
 extern char fighter09, fighter09_end;
 #define FIGHTER09_SIZE 30720
 extern char fighter09b, fighter09b_end;
 #define FIGHTER09B_SIZE 30720
+extern char fighter09c, fighter09c_end;
+#define FIGHTER09C_SIZE 30720
+extern char fighter09d, fighter09d_end;
+#define FIGHTER09D_SIZE 30720
+extern char fighter09e, fighter09e_end;
+#define FIGHTER09E_SIZE 30720
+extern char fighter09f, fighter09f_end;
+#define FIGHTER09F_SIZE 30720
 extern char fighter09_pal, fighter09_pal_end;
 #define FIGHTER09_PAL_SIZE 32
 extern char fighter10, fighter10_end;
 #define FIGHTER10_SIZE 30720
 extern char fighter10b, fighter10b_end;
 #define FIGHTER10B_SIZE 30720
+extern char fighter10c, fighter10c_end;
+#define FIGHTER10C_SIZE 30720
+extern char fighter10d, fighter10d_end;
+#define FIGHTER10D_SIZE 30720
+extern char fighter10e, fighter10e_end;
+#define FIGHTER10E_SIZE 30720
+extern char fighter10f, fighter10f_end;
+#define FIGHTER10F_SIZE 30720
 extern char fighter10_pal, fighter10_pal_end;
 #define FIGHTER10_PAL_SIZE 32
 extern char fighter11, fighter11_end;
 #define FIGHTER11_SIZE 30720
 extern char fighter11b, fighter11b_end;
 #define FIGHTER11B_SIZE 30720
+extern char fighter11c, fighter11c_end;
+#define FIGHTER11C_SIZE 30720
+extern char fighter11d, fighter11d_end;
+#define FIGHTER11D_SIZE 30720
+extern char fighter11e, fighter11e_end;
+#define FIGHTER11E_SIZE 30720
+extern char fighter11f, fighter11f_end;
+#define FIGHTER11F_SIZE 30720
 extern char fighter11_pal, fighter11_pal_end;
 #define FIGHTER11_PAL_SIZE 32
 extern char effects, effects_end;

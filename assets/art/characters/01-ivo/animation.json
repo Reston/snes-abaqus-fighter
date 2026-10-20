@@ -1,0 +1,54 @@
+{
+  "schema": "abaqus-animation-source/v1",
+  "fighter": "01-ivo",
+  "character": "Ivo Kovacevic",
+  "atlases": {
+    "motion": {
+      "path": "assets/art/characters/01-ivo/animation-motion.png",
+      "frames": "16-31",
+      "generated_source": "C:/Users/user/.codex/generated_images/01a1574b-ef0f-7ee3-86a3-004546b507fc/exec-54b2d262-507c-443e-af51-6b676b357412.png",
+      "sha256": "96b59557d668292d62d9a846fff7f4322c36ee2eaddd1c908e68f0b470daf337",
+      "full_prompt": [
+        "Use case: stylized-concept; asset type: original SNES-style fighting-game animation source atlas.",
+        "Input Image 1 is the existing Ivo 16-pose master and identity/style reference. Preserve Ivo's mature rectangular long face, broad cheeks and softly square chin, straight nose, heavier upper lids, clean-shaven jaw, short near-black charcoal hair with a natural side part and modest front lift, emerald tailored rolled-sleeve jacket, dark charcoal shirt and trousers, dark shoes, warm light-olive skin, long-legged medium-athletic proportions, and deep green/navy contour.",
+        "Create a new transparent 1254x1254 square 4-column by 4-row atlas with exactly sixteen separately drawn full-body animation figures, all facing right. The first upright neutral guard establishes one uniform source resolution and body scale for every cell. Keep at least 40 pixels of transparent gap; every cell is a complete connected figure with natural anatomical in-betweens and no labels or text.",
+        "Row-major order: 16 upright neutral guard; 17 gentle inhale with slight chest and shoulder rise and wrist movement; 18 quiet exhale with weight settling and feet planted; 19 return guard. 20 forward-walk lead-foot contact; 21 passing weight over planted lead foot; 22 rear foot passing beneath hips; 23 opposite contact. 24 backward-walk rear-foot contact with guard maintained; 25 weight onto planted rear foot; 26 lead foot passing beneath hips; 27 opposite contact. 28 halfway crouch; 29 jump anticipation with compact knees; 30 early jump extension distinct from the old tucked jump; 31 landing compression preparing to stand.",
+        "Style: polished hand-drawn 16-bit arcade fighting-game cartoon, readable at a 96x80 native reduction, limited two-to-four-step cel shading, clean dark outline and controlled motion rhythm. Keep Ivo recognizable through the adult composed face, dark side-parted hair and emerald jacket. Redraw torso, hips, arms and legs; do not translate or stretch the whole body.",
+        "Strict constraints: actual transparent alpha; exactly 16 separate full-body figures in a clean 4x4 grid; no touching figures, floor, shadows, projectiles, smoke, effects, props, logos, lettering or watermark; no cropped heads or feet, fused figures, extra limbs, photorealism, 3D, unrelated fighters, or copied commercial sprites."
+      ],
+      "input_roles": [
+        {"path": "assets/art/characters/01-ivo/atlas.png", "role": "identity and original cartoon style reference"}
+      ]
+    },
+    "actions": {
+      "path": "assets/art/characters/01-ivo/animation-actions.png",
+      "frames": "32-47",
+      "generated_source": "C:/Users/user/.codex/generated_images/01a1574b-ef0f-7ee3-86a3-004546b507fc/exec-25ff0d1f-3251-491c-bb16-2f7ace403e28.png",
+      "sha256": "a122dcb4e0ce49936fd51caa2fb072669bb88320d4d303e45b0c299cc893b6ba",
+      "full_prompt": [
+        "Use case: stylized-concept; asset type: original SNES-style fighting-game animation source atlas.",
+        "Input Image 1 is the existing Ivo 16-pose master and identity/style reference. Image 2 is the approved Ivo motion atlas and secondary anatomy/style reference. Preserve Ivo's mature rectangular face, broad cheeks, softly square chin, straight nose, heavier upper lids, clean-shaven jaw, short near-black charcoal side-parted hair with modest front lift, emerald tailored rolled-sleeve jacket, dark charcoal shirt and trousers, dark shoes, warm light-olive skin, long-legged athletic anatomy and deep green/navy outline.",
+        "Create a new transparent 1254x1254 square 4-column by 4-row action-transition atlas with exactly sixteen separately redrawn full-body figures, all facing right. Establish one uniform source scale from the first upright guard, use at least 40 pixels of separation, and keep each figure complete and connected with stable head and feet proportions. No labels or text.",
+        "Row-major order: 32 upright ready guard with slight fist preparation; 33 jab retracts halfway toward guard; 34 cross windup with torso and hips turning and fist drawn back; 35 cross retracts toward guard. 36 kick windup with raised knee and planted balance leg; 37 kick retracts under body; 38 sweep windup in a low crouch with leg tucked; 39 sweep recovery into crouch. 40 block-impact brace with firm forearms; 41 hurt recovery toward balanced guard; 42 special charge with both empty hands near waist and no energy; 43 cast recovery after arm extension with no projectile. 44 uppercut anticipation with loaded crouch and fist near waist; 45 uppercut recovery; 46 victory transition with arms partway raised; 47 diagonal backward knockout fall with head clearly left and full body visible.",
+        "Style: polished hand-drawn 16-bit arcade fighting-game cartoon, readable at a 96x80 native reduction, limited cel shading, clean dark contour and clear action silhouettes. Redraw torso, hips, limbs, balance and clothing folds for each transition; never independently resize, translate or stretch the whole body.",
+        "Strict constraints: actual transparent alpha; exactly 16 separate full-body figures in a clean 4x4 grid; no touching figures, floor, shadows, projectiles, smoke, effects, props, logos, lettering or watermark; no cropped heads or feet, fused figures, extra limbs, photorealism, 3D, generic fighters, or copied commercial sprites."
+      ],
+      "input_roles": [
+        {"path": "assets/art/characters/01-ivo/atlas.png", "role": "identity and original cartoon style reference"},
+        {"path": "assets/art/characters/01-ivo/animation-motion.png", "role": "approved motion-sheet anatomy and style reference"}
+      ]
+    }
+  },
+  "validation": {
+    "validated_at": "2026-10-20",
+    "tool": "tools/fighter_assets.py:extract_atlas",
+    "alpha_threshold": 200,
+    "size": [1254, 1254],
+    "mode": "RGBA",
+    "alpha_min_max": [0, 255],
+    "motion_figures": 16,
+    "action_figures": 16,
+    "motion_opaque_pixels": [33851, 33873, 33258, 33671, 34037, 32433, 31661, 33436, 32248, 31776, 30768, 31481, 30501, 29057, 34776, 30644],
+    "action_opaque_pixels": [37115, 35658, 39492, 35674, 32960, 29931, 32153, 28179, 35229, 36134, 36933, 37323, 33437, 34246, 38755, 24138]
+  }
+}

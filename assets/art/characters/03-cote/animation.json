@@ -1,0 +1,47 @@
+{
+  "character": "José Ignacio Cote Villarroel",
+  "character_id": 3,
+  "mode": "built-in imagegen with local master reference",
+  "input_roles": {
+    "assets/art/characters/03-cote/atlas.png": "identity, costume, face, palette and existing pose proportion reference",
+    "assets/art/characters/03-cote/identity.md": "character and pose-order constraints",
+    "docs/ANIMATION-CONTRACT.md": "native frame layout and animation contract"
+  },
+  "outputs": [
+    {
+      "path": "assets/art/characters/03-cote/animation-motion.png",
+      "source": "C:/Users/user/.codex/generated_images/01a1574c-9e47-7360-81d8-471b54e39131/exec-fe90d141-40a8-4520-a1e7-87ec0fd7ff58.png",
+      "sha256": "9d34c5c18674584d7008738bd7dc3f79c8aef6d772b4d939779151c90a742cc9",
+      "frames": "16..31",
+      "frame_order": ["neutral guard", "inhale", "exhale", "return guard", "forward contact", "forward passing", "forward rear pass", "forward opposite contact", "backward rear contact", "backward weight transfer", "backward lead pass", "backward opposite contact", "crouch entry", "jump anticipation", "jump extension", "landing compression"],
+      "extractor_validation": {
+        "size": [1254, 1254],
+        "mode": "RGBA",
+        "alpha_threshold": 200,
+        "alpha_values": [0, 255],
+        "connected_figures": 16,
+        "figure_sizes": [[226,313],[228,312],[233,312],[229,313],[250,307],[217,309],[233,307],[249,308],[226,301],[200,301],[181,305],[243,305],[244,262],[242,230],[266,270],[227,232]]
+      }
+    },
+    {
+      "path": "assets/art/characters/03-cote/animation-actions.png",
+      "source": "C:/Users/user/.codex/generated_images/01a1574c-9e47-7360-81d8-471b54e39131/exec-6d439ca2-430e-45d9-b7eb-dea513cade11.png",
+      "sha256": "b9bc878a83c449997176babe5e4610e80803c1bd5af7481fea6df13ee33ae481",
+      "frames": "32..47",
+      "frame_order": ["ready guard", "jab retract", "cross windup", "cross retract", "kick windup", "kick recovery", "sweep windup", "sweep recovery", "block brace", "hurt recovery", "special charge", "cast recovery", "uppercut anticipation", "uppercut recovery", "victory transition", "knockout fall head left"],
+      "extractor_validation": {
+        "size": [1254, 1254],
+        "mode": "RGBA",
+        "alpha_threshold": 200,
+        "alpha_values": [0, 255],
+        "connected_figures": 16,
+        "figure_sizes": [[234,312],[288,305],[274,310],[246,310],[208,300],[208,295],[313,231],[223,226],[240,272],[246,293],[277,291],[258,299],[260,235],[251,315],[233,280],[351,174]]
+      }
+    }
+  ],
+  "prompts": {
+    "motion": "Use case: stylized-concept\nAsset type: native SNES fighting-game animation sprite atlas\nInput image: the attached Jose Ignacio Cote current atlas is the identity and costume reference only; preserve his adult pale face, short naturally swept COPPER/GINGER hair, full rounded GINGER beard and moustache, long oval face, high forehead, calm normal eyes, crimson/burgundy waistcoat, rolled white sleeves, charcoal trousers, brown shoes, navy cartoon outlines and overall proportions.\nPrimary request: create a brand-new transparent 1254 x 1254 RGBA sprite sheet named animation-motion.png containing exactly sixteen separate full-body Cote animation figures in a strict 4-column by 4-row grid, row-major order, with wide transparent gaps. This is original illustrated game art, not a photoreal portrait.\nStyle/medium: polished hand-drawn 16-bit arcade fighting-game character art with a slightly cartoon look, bold clean outlines, readable hands, shoes and face; keep every figure on the same source scale and upright guard proportions.\nComposition/framing: each figure fully inside its own quarter cell, all figures face RIGHT, feet aligned to a common baseline; no figure may be independently resized. The FIRST figure must be an upright neutral guard matching the current atlas idle height and body proportions exactly, and it is the normalization anchor for all other figures.\nFrame content in exact row-major order: 1 neutral guard; 2 gentle inhale with a small chest/shoulder rise and wrist shift; 3 exhale with subtle weight settling while both feet stay planted; 4 return to neutral guard; 5 forward walk lead-foot contact; 6 forward walk passing phase; 7 forward walk rear foot passing beneath hips; 8 forward walk opposite contact; 9 backward walk rear-foot contact while guard is maintained; 10 backward walk weight transfer; 11 backward walk lead foot passing under hips; 12 backward walk opposite contact; 13 halfway into crouch with natural knee bend; 14 jump anticipation with compact knee compression; 15 early jump extension, different from the existing tucked jump; 16 landing compression preparing to stand.\nStyle/animation constraints: draw genuine anatomical in-between poses with consistent head, torso, pelvis, limbs, waistcoat, beard, hair and shoes. Feet planted for breathing; walk phases must show real weight transfer; no programmatic limb deformation, no duplicated whole-body shifts, no fake silhouettes.\nHard constraints: actual transparent background with alpha, exactly 16 connected figures, 4x4 layout, ample transparent separation, no labels, no text, no watermark, no shadows, no projectile, no energy effects, no motion streaks, no extra people or props, no cropped limbs, no black background. Keep Cote's hair and beard distinctly copper/ginger, never black, never orange jacket.\n",
+    "actions": "Use case: stylized-concept\nAsset type: native SNES fighting-game animation sprite atlas\nInput image: the attached Jose Ignacio Cote current atlas is the identity and costume reference only; preserve his adult pale face, short naturally swept COPPER/GINGER hair, full rounded GINGER beard and moustache, long oval face, high forehead, calm normal eyes, crimson/burgundy waistcoat, rolled white sleeves, charcoal trousers, brown shoes, navy cartoon outlines and overall proportions.\nPrimary request: create a brand-new transparent 1254 x 1254 RGBA sprite sheet named animation-actions.png containing exactly sixteen separate full-body Cote action figures in a strict 4-column by 4-row grid, row-major order, with wide transparent gaps. This is original illustrated game art, not a photoreal portrait.\nStyle/medium: polished hand-drawn 16-bit arcade fighting-game character art with a slightly cartoon look, bold clean outlines, readable hands, shoes and face; keep every figure on the same source scale and upright guard proportions.\nComposition/framing: each figure fully inside its own quarter cell, all figures face RIGHT except the last knockout fall whose head points LEFT, feet aligned to the existing neutral guard baseline whenever standing; no figure may be independently resized. The FIRST figure must be an upright neutral guard matching the current atlas idle height and body proportions exactly, and it is the normalization anchor for all other figures.\nFrame content in exact row-major order: 1 upright ready guard with slight fist preparation; 2 jab retracts halfway to guard; 3 cross windup with torso and hip turn and fist drawn back; 4 cross retracts toward guard; 5 kick windup with bent knee raised; 6 kick recovery with bent leg returning under body; 7 sweep windup, crouched with leg tucked; 8 sweep recovery, weight returning into crouch; 9 block impact brace with forearms firm and shoulders absorbing force; 10 hurt recovery with torso returning toward balanced guard; 11 special charge with both empty hands near waist and no effects; 12 cast recovery with arms folded back after extension; 13 uppercut anticipation with crouch and fist near waist; 14 uppercut recovery with raised arm lowering and legs descending; 15 victory transition with arms partway raised; 16 knockout fall, diagonal backward collapse, head clearly pointing LEFT.\nStyle/animation constraints: draw genuine anatomical in-between poses with consistent head, torso, pelvis, limbs, waistcoat, beard, hair and shoes. Show readable anticipation and recovery silhouettes. Keep the same physical proportions and source scale across every frame; preserve natural feet baseline for grounded frames.\nHard constraints: actual transparent background with alpha, exactly 16 connected figures, 4x4 layout, ample transparent separation, no labels, no text, no watermark, no shadows, no projectile, no energy effects, no motion streaks, no extra people or props, no cropped limbs, no black background. Keep Cote's hair and beard distinctly copper/ginger, never black, never orange jacket."
+  },
+  "validation_notes": "The existing atlas.png was left unchanged. The first motion and action figures remain upright neutral guards at near-identical source height to legacy idle (226/234x313/312 versus 222x313); the action sheet's last frame is a diagonal head-left fall. No code, generated native assets, build, ROM, emulator, UI or audio was changed."
+}

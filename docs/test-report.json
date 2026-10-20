@@ -1,9 +1,9 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "f5b431bc68db8f5f2b909c1c95e40edb62e2518ca06c8671ce6d7f44ab209e4b",
-  "rom_bytes": 2097152,
-  "passed": 110,
-  "elapsed_seconds": 30.22,
+  "rom_sha256": "e0c733a607abe6db27b9aaf68056d5153ef8cc43d4a82bf3d83e8d87135eeccc",
+  "rom_bytes": 4194304,
+  "passed": 188,
+  "elapsed_seconds": 27.71,
   "checks": [
     {
       "check": "Cold boot to title",
@@ -95,9 +95,69 @@
       "details": 0
     },
     {
-      "check": "All ten sprite rows reach VRAM for fighter 1",
+      "check": "Animation bank has eight complete poses",
       "passed": true,
-      "details": null
+      "details": {
+        "fighter": 0,
+        "suffix": "",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "suffix": "b",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "suffix": "c",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "suffix": "d",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "suffix": "e",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "suffix": "f",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Actor VRAM contains an exact native animation frame",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "side": 0,
+        "frames": [
+          17
+        ]
+      }
     },
     {
       "check": "Match intro completes",
@@ -114,9 +174,69 @@
       "details": 1
     },
     {
-      "check": "All ten sprite rows reach VRAM for fighter 2",
+      "check": "Animation bank has eight complete poses",
       "passed": true,
-      "details": null
+      "details": {
+        "fighter": 1,
+        "suffix": "",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "suffix": "b",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "suffix": "c",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "suffix": "d",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "suffix": "e",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "suffix": "f",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Actor VRAM contains an exact native animation frame",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "side": 0,
+        "frames": [
+          18
+        ]
+      }
     },
     {
       "check": "Match intro completes",
@@ -133,9 +253,69 @@
       "details": 2
     },
     {
-      "check": "All ten sprite rows reach VRAM for fighter 3",
+      "check": "Animation bank has eight complete poses",
       "passed": true,
-      "details": null
+      "details": {
+        "fighter": 2,
+        "suffix": "",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "suffix": "b",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "suffix": "c",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "suffix": "d",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "suffix": "e",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "suffix": "f",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Actor VRAM contains an exact native animation frame",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "side": 0,
+        "frames": [
+          18
+        ]
+      }
     },
     {
       "check": "Match intro completes",
@@ -152,9 +332,69 @@
       "details": 0
     },
     {
-      "check": "All ten sprite rows reach VRAM for fighter 4",
+      "check": "Animation bank has eight complete poses",
       "passed": true,
-      "details": null
+      "details": {
+        "fighter": 3,
+        "suffix": "",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "suffix": "b",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "suffix": "c",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "suffix": "d",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "suffix": "e",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "suffix": "f",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Actor VRAM contains an exact native animation frame",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "side": 0,
+        "frames": [
+          18
+        ]
+      }
     },
     {
       "check": "Match intro completes",
@@ -171,9 +411,69 @@
       "details": 1
     },
     {
-      "check": "All ten sprite rows reach VRAM for fighter 5",
+      "check": "Animation bank has eight complete poses",
       "passed": true,
-      "details": null
+      "details": {
+        "fighter": 4,
+        "suffix": "",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "suffix": "b",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "suffix": "c",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "suffix": "d",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "suffix": "e",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "suffix": "f",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Actor VRAM contains an exact native animation frame",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "side": 0,
+        "frames": [
+          18
+        ]
+      }
     },
     {
       "check": "Match intro completes",
@@ -190,9 +490,69 @@
       "details": 2
     },
     {
-      "check": "All ten sprite rows reach VRAM for fighter 6",
+      "check": "Animation bank has eight complete poses",
       "passed": true,
-      "details": null
+      "details": {
+        "fighter": 5,
+        "suffix": "",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "suffix": "b",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "suffix": "c",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "suffix": "d",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "suffix": "e",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "suffix": "f",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Actor VRAM contains an exact native animation frame",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "side": 0,
+        "frames": [
+          18
+        ]
+      }
     },
     {
       "check": "Match intro completes",
@@ -209,9 +569,69 @@
       "details": 0
     },
     {
-      "check": "All ten sprite rows reach VRAM for fighter 7",
+      "check": "Animation bank has eight complete poses",
       "passed": true,
-      "details": null
+      "details": {
+        "fighter": 6,
+        "suffix": "",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "suffix": "b",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "suffix": "c",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "suffix": "d",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "suffix": "e",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "suffix": "f",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Actor VRAM contains an exact native animation frame",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "side": 0,
+        "frames": [
+          18
+        ]
+      }
     },
     {
       "check": "Match intro completes",
@@ -228,9 +648,69 @@
       "details": 1
     },
     {
-      "check": "All ten sprite rows reach VRAM for fighter 8",
+      "check": "Animation bank has eight complete poses",
       "passed": true,
-      "details": null
+      "details": {
+        "fighter": 7,
+        "suffix": "",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "suffix": "b",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "suffix": "c",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "suffix": "d",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "suffix": "e",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "suffix": "f",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Actor VRAM contains an exact native animation frame",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "side": 0,
+        "frames": [
+          19
+        ]
+      }
     },
     {
       "check": "Match intro completes",
@@ -247,9 +727,69 @@
       "details": 2
     },
     {
-      "check": "All ten sprite rows reach VRAM for fighter 9",
+      "check": "Animation bank has eight complete poses",
       "passed": true,
-      "details": null
+      "details": {
+        "fighter": 8,
+        "suffix": "",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "suffix": "b",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "suffix": "c",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "suffix": "d",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "suffix": "e",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "suffix": "f",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Actor VRAM contains an exact native animation frame",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "side": 0,
+        "frames": [
+          19
+        ]
+      }
     },
     {
       "check": "Match intro completes",
@@ -266,9 +806,69 @@
       "details": 0
     },
     {
-      "check": "All ten sprite rows reach VRAM for fighter 10",
+      "check": "Animation bank has eight complete poses",
       "passed": true,
-      "details": null
+      "details": {
+        "fighter": 9,
+        "suffix": "",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "suffix": "b",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "suffix": "c",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "suffix": "d",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "suffix": "e",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "suffix": "f",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Actor VRAM contains an exact native animation frame",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "side": 0,
+        "frames": [
+          19
+        ]
+      }
     },
     {
       "check": "Match intro completes",
@@ -285,9 +885,69 @@
       "details": 1
     },
     {
-      "check": "All ten sprite rows reach VRAM for fighter 11",
+      "check": "Animation bank has eight complete poses",
       "passed": true,
-      "details": null
+      "details": {
+        "fighter": 10,
+        "suffix": "",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "suffix": "b",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "suffix": "c",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "suffix": "d",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "suffix": "e",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "suffix": "f",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Actor VRAM contains an exact native animation frame",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "side": 0,
+        "frames": [
+          19
+        ]
+      }
     },
     {
       "check": "Match intro completes",
@@ -304,9 +964,69 @@
       "details": 2
     },
     {
-      "check": "All ten sprite rows reach VRAM for fighter 12",
+      "check": "Animation bank has eight complete poses",
       "passed": true,
-      "details": null
+      "details": {
+        "fighter": 11,
+        "suffix": "",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "suffix": "b",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "suffix": "c",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "suffix": "d",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "suffix": "e",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "suffix": "f",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Actor VRAM contains an exact native animation frame",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "side": 0,
+        "frames": [
+          19
+        ]
+      }
     },
     {
       "check": "Match intro completes",
@@ -386,7 +1106,7 @@
       "details": null
     },
     {
-      "check": "Pause freezes combat",
+      "check": "Pause freezes combat and animation",
       "passed": true,
       "details": null
     },
@@ -399,8 +1119,8 @@
       "check": "SPC music and sound produce non-silent audio",
       "passed": true,
       "details": {
-        "peak": 5135,
-        "samples": 2105680
+        "peak": 5239,
+        "samples": 2103548
       }
     },
     {
@@ -418,7 +1138,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 463,
+        "frame": 464,
         "mode": 1,
         "hp1": 128,
         "hp2": 109,
@@ -477,7 +1197,27 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 85
+        "wave_life2": 85,
+        "anim_frame1": 6,
+        "anim_frame2": 41,
+        "anim_state1": 5,
+        "anim_state2": 7,
+        "anim_tick1": 15,
+        "anim_tick2": 12,
+        "buffered_action1": 0,
+        "buffered_action2": 0,
+        "buffer_age1": 0,
+        "buffer_age2": 0,
+        "jump_buffer1": 0,
+        "jump_buffer2": 0,
+        "command_stage1": 0,
+        "command_stage2": 0,
+        "raw_keys1": 0,
+        "raw_keys2": 0,
+        "landing1": 0,
+        "landing2": 0,
+        "jump_vx1": 0,
+        "jump_vx2": 0
       }
     },
     {
@@ -495,9 +1235,69 @@
       "details": null
     },
     {
-      "check": "All ten sprite rows reach the independent P2 VRAM page",
+      "check": "Animation bank has eight complete poses",
       "passed": true,
-      "details": null
+      "details": {
+        "fighter": 10,
+        "suffix": "",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "suffix": "b",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "suffix": "c",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "suffix": "d",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "suffix": "e",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Animation bank has eight complete poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "suffix": "f",
+        "bytes": 30720
+      }
+    },
+    {
+      "check": "Actor VRAM contains an exact native animation frame",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "side": 1,
+        "frames": [
+          19
+        ]
+      }
     },
     {
       "check": "Controller two moves player two",
@@ -544,11 +1344,11 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 1758,
+        "frame": 2344,
         "mode": 1,
         "hp1": 128,
         "hp2": 0,
-        "x1": 3324,
+        "x1": 3356,
         "x2": 3744,
         "y1": 0,
         "y2": 0,
@@ -561,13 +1361,13 @@
         "intro": 0,
         "paused": 0,
         "energy1": 96,
-        "energy2": 89,
+        "energy2": 96,
         "wave1": 0,
         "wave2": 0,
         "selected": 0,
         "selected2": 1,
         "arcade": 0,
-        "seconds": 93,
+        "seconds": 88,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
@@ -603,7 +1403,27 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 85
+        "wave_life2": 85,
+        "anim_frame1": 11,
+        "anim_frame2": 14,
+        "anim_state1": 8,
+        "anim_state2": 9,
+        "anim_tick1": 180,
+        "anim_tick2": 180,
+        "buffered_action1": 0,
+        "buffered_action2": 0,
+        "buffer_age1": 0,
+        "buffer_age2": 0,
+        "jump_buffer1": 0,
+        "jump_buffer2": 0,
+        "command_stage1": 0,
+        "command_stage2": 0,
+        "raw_keys1": 256,
+        "raw_keys2": 0,
+        "landing1": 0,
+        "landing2": 0,
+        "jump_vx1": 0,
+        "jump_vx2": 0
       }
     },
     {
@@ -626,24 +1446,24 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 2431,
+        "frame": 1640,
         "mode": 0,
-        "hp1": 42,
+        "hp1": 91,
         "hp2": 0,
-        "x1": 2440,
-        "x2": 3095,
+        "x1": 2041,
+        "x2": 2759,
         "y1": 0,
         "y2": 0,
         "action1": 3,
         "action2": 0,
         "wins1": 2,
-        "wins2": 1,
+        "wins2": 0,
         "arena": 0,
-        "round": 3,
+        "round": 2,
         "intro": 0,
         "paused": 0,
         "energy1": 96,
-        "energy2": 96,
+        "energy2": 77,
         "wave1": 0,
         "wave2": 0,
         "selected": 4,
@@ -685,7 +1505,27 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 85
+        "wave_life2": 85,
+        "anim_frame1": 11,
+        "anim_frame2": 14,
+        "anim_state1": 8,
+        "anim_state2": 9,
+        "anim_tick1": 180,
+        "anim_tick2": 180,
+        "buffered_action1": 0,
+        "buffered_action2": 0,
+        "buffer_age1": 0,
+        "buffer_age2": 0,
+        "jump_buffer1": 0,
+        "jump_buffer2": 0,
+        "command_stage1": 0,
+        "command_stage2": 0,
+        "raw_keys1": 256,
+        "raw_keys2": 0,
+        "landing1": 0,
+        "landing2": 0,
+        "jump_vx1": 0,
+        "jump_vx2": 0
       }
     },
     {
@@ -699,12 +1539,12 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 4014,
+        "frame": 3148,
         "mode": 0,
-        "hp1": 125,
+        "hp1": 126,
         "hp2": 0,
-        "x1": 2896,
-        "x2": 3367,
+        "x1": 2752,
+        "x2": 3196,
         "y1": 0,
         "y2": 0,
         "action1": 9,
@@ -716,18 +1556,18 @@
         "intro": 0,
         "paused": 0,
         "energy1": 96,
-        "energy2": 93,
+        "energy2": 85,
         "wave1": 0,
         "wave2": 0,
         "selected": 4,
         "selected2": 5,
         "arcade": 1,
-        "seconds": 92,
+        "seconds": 94,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
         "hitstop": 5,
-        "combo": 1,
+        "combo": 3,
         "champion": 0,
         "fighter_id1": 4,
         "fighter_id2": 6,
@@ -758,7 +1598,27 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 85
+        "wave_life2": 102,
+        "anim_frame1": 11,
+        "anim_frame2": 14,
+        "anim_state1": 8,
+        "anim_state2": 9,
+        "anim_tick1": 180,
+        "anim_tick2": 180,
+        "buffered_action1": 0,
+        "buffered_action2": 0,
+        "buffer_age1": 0,
+        "buffer_age2": 0,
+        "jump_buffer1": 0,
+        "jump_buffer2": 0,
+        "command_stage1": 0,
+        "command_stage2": 0,
+        "raw_keys1": 0,
+        "raw_keys2": 0,
+        "landing1": 0,
+        "landing2": 0,
+        "jump_vx1": 0,
+        "jump_vx2": 0
       }
     },
     {
@@ -772,12 +1632,12 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 5380,
+        "frame": 4933,
         "mode": 0,
-        "hp1": 127,
+        "hp1": 123,
         "hp2": 0,
-        "x1": 3068,
-        "x2": 3517,
+        "x1": 2306,
+        "x2": 2766,
         "y1": 0,
         "y2": 0,
         "action1": 9,
@@ -789,13 +1649,13 @@
         "intro": 0,
         "paused": 0,
         "energy1": 96,
-        "energy2": 88,
+        "energy2": 96,
         "wave1": 0,
         "wave2": 0,
         "selected": 4,
         "selected2": 5,
         "arcade": 2,
-        "seconds": 93,
+        "seconds": 88,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
@@ -831,7 +1691,27 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 85
+        "wave_life2": 102,
+        "anim_frame1": 11,
+        "anim_frame2": 14,
+        "anim_state1": 8,
+        "anim_state2": 9,
+        "anim_tick1": 180,
+        "anim_tick2": 180,
+        "buffered_action1": 0,
+        "buffered_action2": 0,
+        "buffer_age1": 0,
+        "buffer_age2": 0,
+        "jump_buffer1": 0,
+        "jump_buffer2": 0,
+        "command_stage1": 0,
+        "command_stage2": 0,
+        "raw_keys1": 0,
+        "raw_keys2": 0,
+        "landing1": 0,
+        "landing2": 0,
+        "jump_vx1": 0,
+        "jump_vx2": 0
       }
     },
     {
@@ -845,12 +1725,12 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 7554,
+        "frame": 6903,
         "mode": 0,
-        "hp1": 113,
+        "hp1": 120,
         "hp2": 0,
-        "x1": 2762,
-        "x2": 3199,
+        "x1": 3177,
+        "x2": 3667,
         "y1": 0,
         "y2": 0,
         "action1": 9,
@@ -868,7 +1748,7 @@
         "selected": 4,
         "selected2": 5,
         "arcade": 3,
-        "seconds": 88,
+        "seconds": 91,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
@@ -904,7 +1784,27 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 85
+        "wave_life2": 102,
+        "anim_frame1": 11,
+        "anim_frame2": 14,
+        "anim_state1": 8,
+        "anim_state2": 9,
+        "anim_tick1": 180,
+        "anim_tick2": 180,
+        "buffered_action1": 0,
+        "buffered_action2": 0,
+        "buffer_age1": 0,
+        "buffer_age2": 0,
+        "jump_buffer1": 0,
+        "jump_buffer2": 0,
+        "command_stage1": 0,
+        "command_stage2": 0,
+        "raw_keys1": 0,
+        "raw_keys2": 0,
+        "landing1": 0,
+        "landing2": 0,
+        "jump_vx1": 0,
+        "jump_vx2": 0
       }
     },
     {
@@ -918,12 +1818,12 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 8898,
+        "frame": 8737,
         "mode": 0,
-        "hp1": 125,
+        "hp1": 122,
         "hp2": 0,
-        "x1": 2837,
-        "x2": 3277,
+        "x1": 2602,
+        "x2": 3040,
         "y1": 0,
         "y2": 0,
         "action1": 9,
@@ -935,18 +1835,18 @@
         "intro": 0,
         "paused": 0,
         "energy1": 96,
-        "energy2": 89,
+        "energy2": 96,
         "wave1": 0,
         "wave2": 0,
         "selected": 4,
         "selected2": 5,
         "arcade": 4,
-        "seconds": 93,
+        "seconds": 89,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
         "hitstop": 5,
-        "combo": 2,
+        "combo": 3,
         "champion": 0,
         "fighter_id1": 4,
         "fighter_id2": 9,
@@ -977,7 +1877,27 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 85
+        "wave_life2": 102,
+        "anim_frame1": 11,
+        "anim_frame2": 14,
+        "anim_state1": 8,
+        "anim_state2": 9,
+        "anim_tick1": 180,
+        "anim_tick2": 180,
+        "buffered_action1": 0,
+        "buffered_action2": 0,
+        "buffer_age1": 0,
+        "buffer_age2": 0,
+        "jump_buffer1": 0,
+        "jump_buffer2": 0,
+        "command_stage1": 0,
+        "command_stage2": 0,
+        "raw_keys1": 0,
+        "raw_keys2": 0,
+        "landing1": 0,
+        "landing2": 0,
+        "jump_vx1": 0,
+        "jump_vx2": 0
       }
     },
     {
@@ -991,15 +1911,15 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 11406,
+        "frame": 10571,
         "mode": 0,
-        "hp1": 111,
+        "hp1": 123,
         "hp2": 0,
-        "x1": 2370,
-        "x2": 2860,
+        "x1": 2760,
+        "x2": 3238,
         "y1": 0,
         "y2": 0,
-        "action1": 0,
+        "action1": 9,
         "action2": 0,
         "wins1": 2,
         "wins2": 0,
@@ -1014,7 +1934,7 @@
         "selected": 4,
         "selected2": 5,
         "arcade": 5,
-        "seconds": 82,
+        "seconds": 90,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
@@ -1050,7 +1970,27 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 85
+        "wave_life2": 102,
+        "anim_frame1": 11,
+        "anim_frame2": 14,
+        "anim_state1": 8,
+        "anim_state2": 9,
+        "anim_tick1": 180,
+        "anim_tick2": 180,
+        "buffered_action1": 0,
+        "buffered_action2": 0,
+        "buffer_age1": 0,
+        "buffer_age2": 0,
+        "jump_buffer1": 0,
+        "jump_buffer2": 0,
+        "command_stage1": 0,
+        "command_stage2": 0,
+        "raw_keys1": 0,
+        "raw_keys2": 0,
+        "landing1": 0,
+        "landing2": 0,
+        "jump_vx1": 0,
+        "jump_vx2": 0
       }
     },
     {
@@ -1064,12 +2004,12 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 13521,
+        "frame": 11931,
         "mode": 0,
-        "hp1": 118,
+        "hp1": 123,
         "hp2": 0,
-        "x1": 2374,
-        "x2": 2826,
+        "x1": 2746,
+        "x2": 3202,
         "y1": 0,
         "y2": 0,
         "action1": 9,
@@ -1081,13 +2021,13 @@
         "intro": 0,
         "paused": 0,
         "energy1": 96,
-        "energy2": 96,
+        "energy2": 94,
         "wave1": 0,
         "wave2": 0,
         "selected": 4,
         "selected2": 5,
         "arcade": 6,
-        "seconds": 81,
+        "seconds": 91,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
@@ -1123,7 +2063,27 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 85
+        "wave_life2": 102,
+        "anim_frame1": 11,
+        "anim_frame2": 14,
+        "anim_state1": 8,
+        "anim_state2": 9,
+        "anim_tick1": 180,
+        "anim_tick2": 180,
+        "buffered_action1": 0,
+        "buffered_action2": 0,
+        "buffer_age1": 0,
+        "buffer_age2": 0,
+        "jump_buffer1": 0,
+        "jump_buffer2": 0,
+        "command_stage1": 0,
+        "command_stage2": 0,
+        "raw_keys1": 0,
+        "raw_keys2": 0,
+        "landing1": 0,
+        "landing2": 0,
+        "jump_vx1": 0,
+        "jump_vx2": 0
       }
     },
     {
@@ -1137,12 +2097,12 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 14898,
+        "frame": 13221,
         "mode": 0,
-        "hp1": 126,
+        "hp1": 128,
         "hp2": 0,
-        "x1": 2758,
-        "x2": 3228,
+        "x1": 3042,
+        "x2": 3502,
         "y1": 0,
         "y2": 0,
         "action1": 9,
@@ -1154,18 +2114,18 @@
         "intro": 0,
         "paused": 0,
         "energy1": 96,
-        "energy2": 85,
+        "energy2": 87,
         "wave1": 0,
         "wave2": 0,
         "selected": 4,
         "selected2": 5,
         "arcade": 7,
-        "seconds": 93,
+        "seconds": 94,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
         "hitstop": 5,
-        "combo": 2,
+        "combo": 1,
         "champion": 0,
         "fighter_id1": 4,
         "fighter_id2": 0,
@@ -1196,7 +2156,27 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 85
+        "wave_life2": 102,
+        "anim_frame1": 11,
+        "anim_frame2": 14,
+        "anim_state1": 8,
+        "anim_state2": 9,
+        "anim_tick1": 180,
+        "anim_tick2": 180,
+        "buffered_action1": 0,
+        "buffered_action2": 0,
+        "buffer_age1": 0,
+        "buffer_age2": 0,
+        "jump_buffer1": 0,
+        "jump_buffer2": 0,
+        "command_stage1": 0,
+        "command_stage2": 0,
+        "raw_keys1": 0,
+        "raw_keys2": 0,
+        "landing1": 0,
+        "landing2": 0,
+        "jump_vx1": 0,
+        "jump_vx2": 0
       }
     },
     {
@@ -1210,12 +2190,12 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 16417,
+        "frame": 14619,
         "mode": 0,
-        "hp1": 127,
+        "hp1": 126,
         "hp2": 0,
-        "x1": 3056,
-        "x2": 3537,
+        "x1": 2942,
+        "x2": 3408,
         "y1": 0,
         "y2": 0,
         "action1": 9,
@@ -1227,18 +2207,18 @@
         "intro": 0,
         "paused": 0,
         "energy1": 96,
-        "energy2": 80,
+        "energy2": 89,
         "wave1": 0,
         "wave2": 0,
         "selected": 4,
         "selected2": 5,
         "arcade": 8,
-        "seconds": 95,
+        "seconds": 93,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
         "hitstop": 5,
-        "combo": 5,
+        "combo": 1,
         "champion": 0,
         "fighter_id1": 4,
         "fighter_id2": 1,
@@ -1269,7 +2249,27 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 112
+        "wave_life2": 102,
+        "anim_frame1": 11,
+        "anim_frame2": 14,
+        "anim_state1": 8,
+        "anim_state2": 9,
+        "anim_tick1": 180,
+        "anim_tick2": 180,
+        "buffered_action1": 0,
+        "buffered_action2": 0,
+        "buffer_age1": 0,
+        "buffer_age2": 0,
+        "jump_buffer1": 0,
+        "jump_buffer2": 0,
+        "command_stage1": 0,
+        "command_stage2": 0,
+        "raw_keys1": 0,
+        "raw_keys2": 0,
+        "landing1": 0,
+        "landing2": 0,
+        "jump_vx1": 0,
+        "jump_vx2": 0
       }
     },
     {
@@ -1283,12 +2283,12 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 18307,
+        "frame": 16257,
         "mode": 0,
-        "hp1": 126,
+        "hp1": 120,
         "hp2": 0,
-        "x1": 2407,
-        "x2": 2881,
+        "x1": 2665,
+        "x2": 3145,
         "y1": 0,
         "y2": 0,
         "action1": 9,
@@ -1306,12 +2306,12 @@
         "selected": 4,
         "selected2": 5,
         "arcade": 9,
-        "seconds": 85,
+        "seconds": 92,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
         "hitstop": 5,
-        "combo": 1,
+        "combo": 2,
         "champion": 0,
         "fighter_id1": 4,
         "fighter_id2": 2,
@@ -1342,7 +2342,27 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 112
+        "wave_life2": 102,
+        "anim_frame1": 11,
+        "anim_frame2": 14,
+        "anim_state1": 8,
+        "anim_state2": 9,
+        "anim_tick1": 180,
+        "anim_tick2": 180,
+        "buffered_action1": 0,
+        "buffered_action2": 0,
+        "buffer_age1": 0,
+        "buffer_age2": 0,
+        "jump_buffer1": 0,
+        "jump_buffer2": 0,
+        "command_stage1": 0,
+        "command_stage2": 0,
+        "raw_keys1": 0,
+        "raw_keys2": 0,
+        "landing1": 0,
+        "landing2": 0,
+        "jump_vx1": 0,
+        "jump_vx2": 0
       }
     },
     {
@@ -1356,12 +2376,12 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 20051,
+        "frame": 17728,
         "mode": 0,
-        "hp1": 123,
+        "hp1": 125,
         "hp2": 0,
-        "x1": 2704,
-        "x2": 3175,
+        "x1": 2672,
+        "x2": 3128,
         "y1": 0,
         "y2": 0,
         "action1": 9,
@@ -1373,13 +2393,13 @@
         "intro": 0,
         "paused": 0,
         "energy1": 96,
-        "energy2": 96,
+        "energy2": 92,
         "wave1": 0,
         "wave2": 0,
         "selected": 4,
         "selected2": 5,
         "arcade": 10,
-        "seconds": 89,
+        "seconds": 92,
         "pose1": 11,
         "pose2": 14,
         "round_end": 0,
@@ -1415,7 +2435,27 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 112
+        "wave_life2": 102,
+        "anim_frame1": 11,
+        "anim_frame2": 14,
+        "anim_state1": 8,
+        "anim_state2": 9,
+        "anim_tick1": 180,
+        "anim_tick2": 180,
+        "buffered_action1": 0,
+        "buffered_action2": 0,
+        "buffer_age1": 0,
+        "buffer_age2": 0,
+        "jump_buffer1": 0,
+        "jump_buffer2": 0,
+        "command_stage1": 0,
+        "command_stage2": 0,
+        "raw_keys1": 0,
+        "raw_keys2": 0,
+        "landing1": 0,
+        "landing2": 0,
+        "jump_vx1": 0,
+        "jump_vx2": 0
       }
     },
     {
@@ -1507,21 +2547,41 @@
         "wave_speed1": 0,
         "wave_speed2": 0,
         "wave_life1": 85,
-        "wave_life2": 85
+        "wave_life2": 85,
+        "anim_frame1": 16,
+        "anim_frame2": 16,
+        "anim_state1": 0,
+        "anim_state2": 0,
+        "anim_tick1": 3,
+        "anim_tick2": 6,
+        "buffered_action1": 0,
+        "buffered_action2": 0,
+        "buffer_age1": 0,
+        "buffer_age2": 0,
+        "jump_buffer1": 0,
+        "jump_buffer2": 0,
+        "command_stage1": 0,
+        "command_stage2": 0,
+        "raw_keys1": 0,
+        "raw_keys2": 0,
+        "landing1": 0,
+        "landing2": 0,
+        "jump_vx1": 0,
+        "jump_vx2": 0
       }
     },
     {
-      "check": "Native ROM uses the 2 MiB FastROM image",
+      "check": "Native ROM uses the 4 MiB animation FastROM image",
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.4.1",
+        "version": "0.5.0",
         "rom": "abaqus-after-hours.sfc",
-        "bytes": 2097152,
-        "sha256": "f5b431bc68db8f5f2b909c1c95e40edb62e2518ca06c8671ce6d7f44ab209e4b",
-        "checksum": "0B77",
+        "bytes": 4194304,
+        "sha256": "e0c733a607abe6db27b9aaf68056d5153ef8cc43d4a82bf3d83e8d87135eeccc",
+        "checksum": "9713",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
-        "mapping": "2 MiB FastROM LoROM",
+        "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
       }
     }

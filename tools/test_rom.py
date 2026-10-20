@@ -15,6 +15,8 @@ checks=[]
 # is 16 tiles wide, so the next row begins 512 bytes later.  Actor 1 starts at
 # byte $D400 (VRAM word $6A00), leaving the two actors independent.
 POSE_BYTES=3840
+ANIMATION_BANK_SUFFIXES=('', 'b', 'c', 'd', 'e', 'f')
+BANK_BYTES=POSE_BYTES*8
 VRAM_ACTOR_BASE=0xC000
 VRAM_ACTOR_STRIDE=0x1400
 VRAM_ROW_STRIDE=0x200
@@ -66,6 +68,36 @@ def play_cpu(e):
         else:e.run(1,p1=[forward,'l']);e.run(1,p1=[forward])
     raise AssertionError(('CPU match did not finish',e.state()))
 
+def actor_payload(e,side=0):
+    """Read one actor's ten compact rows, skipping its padded VRAM tail."""
+    vram=C.string_at(e.core.retro_get_memory_data(3),65536)
+    base=VRAM_ACTOR_BASE+side*VRAM_ACTOR_STRIDE
+    return b''.join(vram[base+r*VRAM_ROW_STRIDE:base+r*VRAM_ROW_STRIDE+VRAM_ROW_BYTES]
+                    for r in range(10))
+
+def trace_word(e,index):
+    data=C.string_at(e.ram+0x1ff00+index*2,2)
+    return int.from_bytes(data,'little')
+
+def animation_payloads(fighter):
+    """Load all 48 native frames used by the expanded animation cartridge."""
+    payloads=[]
+    for suffix in ANIMATION_BANK_SUFFIXES:
+        data=(ROOT/f'assets/generated/fighter{fighter:02}{suffix}.bin').read_bytes()
+        check(len(data)==BANK_BYTES,'Animation bank has eight complete poses',{
+            'fighter':fighter,'suffix':suffix,'bytes':len(data)})
+        payloads.extend(data[offset:offset+POSE_BYTES]
+                        for offset in range(0,BANK_BYTES,POSE_BYTES))
+    return payloads
+
+def verify_uploaded_animation(e,fighter,side=0):
+    payload=actor_payload(e,side)
+    frames=animation_payloads(fighter)
+    matches=[index for index,data in enumerate(frames) if data==payload]
+    check(matches,'Actor VRAM contains an exact native animation frame',{
+        'fighter':fighter,'side':side,'frames':matches})
+    return matches
+
 started=time.time()
 e=Emulator();e.run(120)
 check(e.state()['magic']==0xaaba and e.state()['screen']==0,'Cold boot to title')
@@ -83,12 +115,7 @@ for i in range(12):
     check(e.state()['arena']==i%3,'Arena loads in the emulator',i%3)
     # Compare every streamed OBJ row against the exact cartridge asset bytes.
     vram=C.string_at(e.core.retro_get_memory_data(3),65536)
-    expected=(ROOT/f'assets/generated/fighter{i:02}.bin').read_bytes()[:POSE_BYTES]
-    check(all(vram[VRAM_ACTOR_BASE+r*VRAM_ROW_STRIDE:
-                   VRAM_ACTOR_BASE+r*VRAM_ROW_STRIDE+VRAM_ROW_BYTES]
-              == expected[r*VRAM_ROW_BYTES:(r+1)*VRAM_ROW_BYTES]
-              for r in range(10)),
-          'All ten sprite rows reach VRAM for fighter '+str(i+1))
+    verify_uploaded_animation(e,i,0)
     e.shot('arena-'+str(i%3)+'.png')
     if i==0:e.shot('fight.png')
     e.close()
@@ -105,10 +132,14 @@ before=e.state()['energy1'];e.run(18,p1=['down','x'])
 check(e.state()['wave1']==1 and e.state()['energy1']<before,'Special launches a projectile and spends meter')
 e.shot('special.png');e.run(85)
 e.run(4,p1=['down','l']);check(e.state()['action1']==8 and e.state()['y1']>32767,'Uppercut leaves the ground');e.run(75)
-e.run(4,p1=['down']);e.run(3,p1=['right']);before=e.state()['energy1'];e.run(14,p1=['right','y'])
+# Use the same sustained, facing-aware QCF sampled by the focused input suite.
+# A one-frame phase is too short for the libretro/Snes9x pad poll and can turn
+# this check into an accidental normal attack.
+s=e.state();forward='right' if s['x1']<s['x2'] else 'left'
+e.run(3,p1=['down']);e.run(3,p1=['down',forward]);before=e.state()['energy1'];e.run(3,p1=[forward,'y']);e.run(10)
 check(e.state()['wave1']==1 and e.state()['energy1']<before,'Quarter-circle forward plus punch recognizes a motion input');e.run(90)
-press(e,'start');s=e.state();e.run(60)
-check(e.state()['paused']==1 and e.state()['seconds']==s['seconds'] and e.state()['x1']==s['x1'],'Pause freezes combat')
+press(e,'start');s=e.state();paused_anim=trace_word(e,62);e.run(60)
+check(e.state()['paused']==1 and e.state()['seconds']==s['seconds'] and e.state()['x1']==s['x1'] and trace_word(e,62)==paused_anim,'Pause freezes combat and animation')
 e.shot('pause.png');press(e,'a');check(e.state()['paused']==0,'A resumes a paused fight')
 check(e.audio_peak>1000 and e.audio_samples>10000,'SPC music and sound produce non-silent audio',{'peak':e.audio_peak,'samples':e.audio_samples})
 with wave.open(str(ROOT/'docs/screenshots/audio-sample.wav'),'wb') as f:
@@ -124,13 +155,7 @@ e=boot(1,0,1,10)
 check(e.state()['selected2']==10,'Player two can select a fighter with controller two')
 # P2 uses its own $D400 actor page; compare the complete 384-byte payload of
 # every physical row so a truncated lower half cannot pass as a valid sprite.
-vram=C.string_at(e.core.retro_get_memory_data(3),65536)
-expected=(ROOT/'assets/generated/fighter10.bin').read_bytes()[:POSE_BYTES]
-check(all(vram[VRAM_ACTOR_BASE+VRAM_ACTOR_STRIDE+r*VRAM_ROW_STRIDE:
-           VRAM_ACTOR_BASE+VRAM_ACTOR_STRIDE+r*VRAM_ROW_STRIDE+VRAM_ROW_BYTES]
-          == expected[r*VRAM_ROW_BYTES:(r+1)*VRAM_ROW_BYTES]
-          for r in range(10)),
-      'All ten sprite rows reach the independent P2 VRAM page')
+verify_uploaded_animation(e,10,1)
 s=e.state();e.run(20,p2=['left']);check(e.state()['x2']<s['x2'],'Controller two moves player two')
 close_in(e)
 e.run(12,p1=['x'],p2=['right'])
@@ -192,7 +217,7 @@ check(e.state()['seconds']>=90 and e.state()['wins1']==0 and e.state()['wins2']=
 e.close()
 
 manifest=json.loads((ROOT/'dist/manifest.json').read_text())
-check(manifest.get('bytes')==2*1024*1024,'Native ROM uses the 2 MiB FastROM image',manifest)
+check(manifest.get('bytes')==4*1024*1024,'Native ROM uses the 4 MiB animation FastROM image',manifest)
 report={'emulator':'Official Snes9x 1.63 x64 libretro core','rom_sha256':manifest['sha256'],'rom_bytes':manifest.get('bytes'),
         'passed':len(checks),'elapsed_seconds':round(time.time()-started,2),'checks':checks}
 (ROOT/'docs/test-report.json').write_text(json.dumps(report,indent=2)+'\n')

@@ -1,0 +1,47 @@
+{
+  "character": "Cristobal Mackenzie",
+  "character_id": 2,
+  "mode": "built-in imagegen with local master reference",
+  "input_roles": {
+    "assets/art/characters/02-cristobal/atlas.png": "identity, costume, face, palette and existing pose proportion reference",
+    "assets/art/characters/02-cristobal/identity.md": "character and pose-order constraints",
+    "docs/ANIMATION-CONTRACT.md": "native frame layout and animation contract"
+  },
+  "outputs": [
+    {
+      "path": "assets/art/characters/02-cristobal/animation-motion.png",
+      "source": "C:/Users/user/.codex/generated_images/01a1574c-9e47-7360-81d8-471b54e39131/exec-379653ec-88f9-4d26-8c1f-e7991783e858.png",
+      "sha256": "7f4f412d9e9bfcb08fc884b3126a7c779523333975aac4f404d30faff858d4d5",
+      "frames": "16..31",
+      "frame_order": ["neutral guard", "inhale", "exhale", "return guard", "forward contact", "forward passing", "forward rear pass", "forward opposite contact", "backward rear contact", "backward weight transfer", "backward lead pass", "backward opposite contact", "crouch entry", "jump anticipation", "jump extension", "landing compression"],
+      "extractor_validation": {
+        "size": [1254, 1254],
+        "mode": "RGBA",
+        "alpha_threshold": 200,
+        "alpha_values": [0, 255],
+        "connected_figures": 16,
+        "figure_sizes": [[221,293],[220,294],[209,280],[221,289],[245,295],[207,289],[172,290],[229,292],[234,287],[155,289],[178,281],[230,283],[245,240],[225,217],[220,285],[210,228]]
+      }
+    },
+    {
+      "path": "assets/art/characters/02-cristobal/animation-actions.png",
+      "source": "C:/Users/user/.codex/generated_images/01a1574c-9e47-7360-81d8-471b54e39131/exec-fbaf9655-7e48-41ce-8e4e-5766a1be52a9.png",
+      "sha256": "c6ead7c15b2f3b45eb34e8349a87ae41f2ef97dc6f27fcfed9adcccc085d5957",
+      "frames": "32..47",
+      "frame_order": ["ready guard", "jab retract", "cross windup", "cross retract", "kick windup", "kick recovery", "sweep windup", "sweep recovery", "block brace", "hurt recovery", "special charge", "cast recovery", "uppercut anticipation", "uppercut recovery", "victory transition", "knockout fall head left"],
+      "extractor_validation": {
+        "size": [1254, 1254],
+        "mode": "RGBA",
+        "alpha_threshold": 200,
+        "alpha_values": [0, 255],
+        "connected_figures": 16,
+        "figure_sizes": [[222,295],[278,288],[257,284],[239,282],[187,301],[190,288],[242,194],[225,212],[244,268],[237,287],[248,286],[265,286],[254,227],[166,301],[232,295],[322,115]]
+      }
+    }
+  ],
+  "prompts": {
+    "motion": "Use case: stylized-concept\nAsset type: native SNES fighting-game animation sprite atlas\nInput image: the attached Cristobal current atlas is the identity and costume reference only; preserve his adult face, high forehead, short cropped JET-BLACK hair, full rounded BLACK beard and moustache, orange rolled-sleeve jacket, pale shirt, charcoal trousers, brown shoes, navy cartoon outlines and overall proportions.\nPrimary request: create a brand-new transparent 1254 x 1254 RGBA sprite sheet named animation-motion.png containing exactly sixteen separate full-body Cristobal animation figures in a strict 4-column by 4-row grid, row-major order, with wide transparent gaps. This is original illustrated game art, not a photoreal portrait.\nStyle/medium: polished hand-drawn 16-bit arcade fighting-game character art with a slightly cartoon look, bold clean outlines, readable hands, shoes and face; keep every figure on the same source scale and upright guard proportions.\nComposition/framing: each figure fully inside its own quarter cell, all figures face RIGHT, feet aligned to a common baseline; no figure may be independently resized. The FIRST figure must be an upright neutral guard matching the current atlas idle height and body proportions exactly, and it is the normalization anchor for all other figures.\nFrame content in exact row-major order: 1 neutral guard; 2 gentle inhale with a small chest/shoulder rise and wrist shift; 3 exhale with subtle weight settling while both feet stay planted; 4 return to neutral guard; 5 forward walk lead-foot contact; 6 forward walk passing phase; 7 forward walk rear foot passing beneath hips; 8 forward walk opposite contact; 9 backward walk rear-foot contact while guard is maintained; 10 backward walk weight transfer; 11 backward walk lead foot passing under hips; 12 backward walk opposite contact; 13 halfway into crouch with natural knee bend; 14 jump anticipation with compact knee compression; 15 early jump extension, different from the existing tucked jump; 16 landing compression preparing to stand.\nStyle/animation constraints: draw genuine anatomical in-between poses with consistent head, torso, pelvis, limbs, jacket, beard, hair and shoes. Feet planted for breathing; walk phases must show real weight transfer; no programmatic limb deformation, no duplicated whole-body shifts, no fake silhouettes.\nHard constraints: actual transparent background with alpha, exactly 16 connected figures, 4x4 layout, ample transparent separation, no labels, no text, no watermark, no shadows, no projectile, no energy effects, no motion streaks, no extra people or props, no cropped limbs, no black background. Keep Cristobal's hair and beard unmistakably black, never brown or orange.",
+    "actions": "Use case: stylized-concept\nAsset type: native SNES fighting-game animation sprite atlas\nInput image: the attached Cristobal current atlas is the identity and costume reference only; preserve his adult face, high forehead, short cropped JET-BLACK hair, full rounded BLACK beard and moustache, orange rolled-sleeve jacket, pale shirt, charcoal trousers, brown shoes, navy cartoon outlines and overall proportions.\nPrimary request: create a brand-new transparent 1254 x 1254 RGBA sprite sheet named animation-actions.png containing exactly sixteen separate full-body Cristobal action figures in a strict 4-column by 4-row grid, row-major order, with wide transparent gaps. This is original illustrated game art, not a photoreal portrait.\nStyle/medium: polished hand-drawn 16-bit arcade fighting-game character art with a slightly cartoon look, bold clean outlines, readable hands, shoes and face; keep every figure on the same source scale and upright guard proportions.\nComposition/framing: each figure fully inside its own quarter cell, all figures face RIGHT except the last knockout fall whose head points LEFT, feet aligned to the existing neutral guard baseline whenever standing; no figure may be independently resized. The FIRST figure must be an upright neutral guard matching the current atlas idle height and body proportions exactly, and it is the normalization anchor for all other figures.\nFrame content in exact row-major order: 1 upright ready guard with slight fist preparation; 2 jab retracts halfway to guard; 3 cross windup with torso and hip turn and fist drawn back; 4 cross retracts toward guard; 5 kick windup with bent knee raised; 6 kick recovery with bent leg returning under body; 7 sweep windup, crouched with leg tucked; 8 sweep recovery, weight returning into crouch; 9 block impact brace with forearms firm and shoulders absorbing force; 10 hurt recovery with torso returning toward balanced guard; 11 special charge with both empty hands near waist and no effects; 12 cast recovery with arms folded back after extension; 13 uppercut anticipation with crouch and fist near waist; 14 uppercut recovery with raised arm lowering and legs descending; 15 victory transition with arms partway raised; 16 knockout fall, diagonal backward collapse, head clearly pointing LEFT.\nStyle/animation constraints: draw genuine anatomical in-between poses with consistent head, torso, pelvis, limbs, jacket, beard, hair and shoes. Show readable anticipation and recovery silhouettes. Keep the same physical proportions and source scale across every frame; preserve natural feet baseline for grounded frames.\nHard constraints: actual transparent background with alpha, exactly 16 connected figures, 4x4 layout, ample transparent separation, no labels, no text, no watermark, no shadows, no projectile, no energy effects, no motion streaks, no extra people or props, no cropped limbs, no black background. Keep Cristobal's hair and beard unmistakably black, never brown or orange."
+  },
+  "validation_notes": "The existing atlas.png was left unchanged. The first motion and action figures remain upright neutral guards at near-identical source height to legacy idle (221/222x293/295 versus 219x290); the action sheet's last frame is a diagonal head-left fall. No code, generated native assets, build, ROM, emulator, UI or audio was changed."
+}

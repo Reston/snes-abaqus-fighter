@@ -1,4 +1,4 @@
-# Abaqus: After Hours — player guide
+# Abaqus: After Hours - player guide
 
 Extract the Windows release ZIP and double-click `Play.cmd`, or run `Play.cmd` from the project checkout. Click the Snes9x window, then press **Enter**.
 
@@ -8,9 +8,9 @@ Extract the Windows release ZIP and double-click `Play.cmd`, or run `Play.cmd` f
 
 **Local Versus:** player one selects a fighter, then player two selects using either controller. Choose an arena and fight a best-of-three match. Both controllers use the same SNES button layout.
 
-**Training:** a passive opponent recovers health, the clock stays at 99, and you can practice moves. Press Start, then B, to change fighters.
+**Training:** a passive opponent recovers health, the clock stays at 99, and you can practice moves. Press **Select** for a quick round reset. Press Start, then B, to change fighters.
 
-On the home screen, L/R cycles three CPU difficulty levels. The default is level 2.
+On the home screen, L/R cycles three CPU difficulty levels. The default is level 2. Menus use a single cursor, a four-by-three roster grid and one large selected portrait; the fighter cards do not display a statistics panel.
 
 The fighter select screen uses a four-by-three card layout. Left and right move across the roster; Up and Down move by four cards between rows and wrap around. The highlighted fighter's large profile portrait updates beside the cards. The arena menu uses the same row-based navigation for Las Condes, El Castillo and La Oficina.
 
@@ -18,32 +18,43 @@ The fighter select screen uses a four-by-three card layout. Left and right move 
 
 | SNES input | Included P1 keyboard | Action |
 | --- | --- | --- |
-| Left / right | Arrow keys | Move |
-| Up | Up arrow | Jump; combine with a direction to travel |
-| Down | Down arrow | Crouch |
+| Left / right | Arrow keys | Move; hold away to guard |
+| Up | Up arrow | Jump; a short press buffers for a few simulation ticks |
+| Down | Down arrow | Crouch; combine with away to crouch guard |
 | Y / X / L | A / S / D | Light / medium / heavy punch |
 | B / A / R | Z / X / C | Light / medium / heavy kick |
 | A | X | Confirm menus / resume pause |
 | B | Z | Back in menus / roster from pause |
 | Start | Enter | Confirm / pause |
+| Select | Shift | Quick reset in Training |
 
-Player two uses **I/J/K/L** for up/left/down/right, **numpad 7/8/9** for punches, **numpad 1/2/3** for kicks and **Space** for Start. Enable Num Lock. Any USB controller can be assigned through Snes9x's Input Configuration menu.
+Player two uses **I/J/K/L** for up/left/down/right, **numpad 7/8/9** for punches, **numpad 1/2/3** for kicks, **Space** for Start and **Q** for Select. Enable Num Lock. Any USB controller can be assigned through Snes9x's Input Configuration menu.
+
+When opposite directions are held on the same axis, the input is neutral for that axis. This keeps keyboard rollover and controller SOCD behavior predictable.
 
 ## Fighting
 
-- Hold **away from your opponent** to block. Crouch while holding away to block low kicks. Jump attacks beat crouch guard.
-- Perform your **character special** with down, then toward your opponent, then Y/X. The accessible shortcut is **Down + Y/X**. It costs 32 meter; energy slowly regenerates and successful hits add more. The selection screen shows the move family: projectile, advancing rush, low shockwave or rising strike. Low shockwaves require crouch guard; rising attacks beat crouch guard.
+- Hold **away from your opponent** to block. Crouch while holding away to block low kicks. Jumping attacks beat crouch guard.
+- Perform your character special with a true quarter-circle motion: **Down -> Down + toward -> toward + Y or X** within the motion window. The accessible shortcut is **Down + Y/X**. **Down + away + Y/X is not a special.** It costs 32 meter; energy slowly regenerates and successful hits add more. The character guide lists the move families: projectile, advancing rush, low shockwave or rising strike.
 - Press **Down + L** for a rising uppercut.
 - Press **toward + L** at close range to throw through a guard.
-- A confirmed light punch can cancel into medium or heavy punch. Light/medium kicks can cancel into a heavier kick. Release and press the next attack during the hit reaction.
-- Punches and kicks also work while jumping. Crouching kicks are low attacks.
+- Attack and jump edges are buffered for six simulation ticks. A held Up input can carry a buffered jump through the landing transition, which makes short controller taps easier to perform without changing the jump arc.
+- A diagonal jump commits its horizontal momentum at takeoff. Releasing or reversing the direction in midair does not steer the jump; facing updates on landing. A neutral jump stays vertical.
+- A confirmed light or medium normal can cancel into the next heavier normal. A confirmed normal can also cancel into a character special during its cancel window. Press the next attack while the hit confirmation is active.
+- Punches and kicks also work while jumping. The aerial strike uses the legacy attack key pose with a generic transition frame; it does not have a separate air-specific illustration yet. Crouching kicks are low attacks.
+
+Guard stun lasts eight simulation ticks and blocked impact moves the defender one pixel. A real hit starts with a two-pixel impact and continues through a longer recoil reaction. Blocked specials may deal at most one chip point, while an unblocked special deals its normal damage.
 
 Health is shown in gold. Energy is shown in teal. Win two rounds to take a match. At timeout, the fighter with more health wins; a tie restarts the round without awarding a round win.
 
-All twelve fighters have individual movement, jump arcs, normal attack speed and reach, throws and special tuning. Their sixteen poses share a 96×80 native canvas and one consistent physical scale per fighter, so a fighter's standing height can be slightly reduced to keep every attack and recovery pose inside the safe area. See [CHARACTERS.md](CHARACTERS.md) for the complete roster and each move's frame data.
+All twelve fighters have individual movement, jump arcs, normal attack speed and reach, throws and special tuning. Each fighter now has 48 animation frames in the shared 96x80 canvas: legacy key poses, motion transitions and action windup/active/recovery frames. The physical scale and feet baseline stay fixed across the full set. See [CHARACTERS.md](CHARACTERS.md) for the roster and frame data.
+
+## Animation and timing
+
+Idle, forward gait, backward gait, crouch, jump and landing transitions use a per-fighter animation clock. Actions expose windup, active and recovery frames for normals, specials, guard, hurt, victory and knockout. The clock advances with simulation and distance travelled, and freezes during pause and hitstop so the game state and the animation state remain aligned.
 
 ## Emulator options
 
-The included configuration uses a sharp 4× image with no smoothing. Snes9x supports fullscreen with Alt+Enter. Its Input Configuration menu supports controllers and custom keyboard mappings. If you change controls, the emulator saves them in its own folder.
+The included configuration uses a sharp 4x image with no smoothing. Snes9x supports fullscreen with Alt+Enter. Its Input Configuration menu supports controllers and custom keyboard mappings. If you change controls, the emulator saves them in its own folder.
 
 The project ROM also runs independently of the launcher: open `abaqus-after-hours.sfc` in Snes9x. It is an NTSC image and needs no additional game files.
