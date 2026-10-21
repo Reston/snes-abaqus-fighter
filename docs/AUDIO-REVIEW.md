@@ -89,15 +89,26 @@ replace the tested game package. This is an optional supplement to `Test.cmd`.
 
 ## Human listening record
 
-Record actual observations; leave unreviewed items blank.
+The user requested a replay after not hearing the earlier material. An
+explicitly requested Windows playback presented a 13.948-second preview at
+the captures' original gain: title music from seconds 24-36, then the impact
+and special captures, separated by 0.4 seconds of silence. The user replied:
+**"I heard it; no issue noticed."** The playback device was not specified.
+The [feedback record](review-feedback.json) pins the source archive, preview
+hash, exact sample ranges and response. The original twelve WAVs and ZIP
+remain unchanged.
+
+This records a successful brief listening check. The four complete scores,
+other cue classes and a busy live exchange still need listening review.
+Record actual observations below; leave unreviewed items blank.
 
 | Item | Listener observation |
 | --- | --- |
-| Listener, date, ROM and audio ZIP SHA256 | |
-| Playback device/software and gain setting | |
-| Swing/impact/special/confirmation distinction and timing | |
-| Music remains clear through effects | |
-| Music balance, repetition and transitions | |
+| Listener, date, ROM and audio ZIP SHA256 | User; recorded 2026-10-21 UTC; same ROM/ZIP identified above |
+| Playback device/software and gain setting | Device not specified; Windows default output; original capture gain and unchanged system volume |
+| Swing/impact/special/confirmation distinction and timing | Brief title/impact/special preview heard with no issue reported; other cues unreviewed |
+| Music remains clear through effects | No issue reported in the preview; busy live exchange unreviewed |
+| Music balance, repetition and transitions | No issue reported in the title excerpt; full four-score listening unreviewed |
 | Loop seam, clicks, harshness or pumping | |
 | Comfortable level and clarity on the intended setup | |
 | Blocking defect and reproduction, or requested mix change | |

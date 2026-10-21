@@ -25,6 +25,14 @@ updates and resident-audio dispatch close those observed failures in v0.7.1.
 The public candidate will be designated v1.0 only after the gates below close.
 Do not turn a passing check count into a substitute for visual or play review.
 
+The user has since selected **emulators first; hardware support stays
+unverified** for the first public release. Original SNES/flash-cartridge
+support is future validation, outside that selected first-release scope.
+Physical controller and human play sessions still need results. A short audio
+replay was heard with no issue noticed; full listening remains open. Gameplay
+has not yet been playtested by the user. These review updates do not certify
+the public release or change the frozen technical package.
+
 The v0.8.0 snapshot adds native pause move guides and selectable Training
 dummies. SELECT opens controls and the live fighters' special moves; Training
 offers Stand, Guard High, Guard Low and repeated Jump. Opposite pause directions
@@ -43,10 +51,10 @@ cartridge; preceding snapshots remain historical.
 | Combat agreement | Visible active attacks match contact and hurt regions; coherent guard, trade, facing, corner, cancel, throw and wake rules; no repeatable uncontrolled damage or input exploits | Controller-driven air/throw/down/wake and guard regressions present; human matchup/contact review pending |
 | Balance and CPU | Documented profile envelope; scripted all-pair matchup sweep; CPU approaches, defends and punishes predictably by difficulty; human sessions cover every fighter and all four special families | Profile envelope, bounded CPU probes and 144 ordered pairs under two policies pass; strategic CPU and human balance review pending |
 | Stage and interface craft | Three readable locations with finished floor/depth, purposeful ambient motion and cohesive effects; clean selection, pause, results and champion flow; no obstructive instructions | Menus/floor/results and first ambient/effects pass implemented; human presentation and ending review pending |
-| Audio | Original or cleared assets, readable distinct cues, coherent levels, clean loops, no clipping/dropouts under load; listening review recorded | Original audio and captured-sample checks present; mix/listening review pending |
+| Audio | Original or cleared assets, readable distinct cues, coherent levels, clean loops, no clipping/dropouts under load; listening review recorded | Original audio and captured-sample checks present; user heard the short title/impact/special preview with no issue noticed. Full score/cue and busy-exchange listening remains pending |
 | Player experience | Both player layouts work from a fresh package; quick onboarding and accessible move guidance; useful, deterministic Training; clear pause/rematch/reset paths | v0.8 two-page move guide, four deterministic dummy choices and frozen truthful HUD pass native controller/PPU regressions; human onboarding and fresh-package play review pending |
-| Compatibility and endurance | Same release candidate validated in at least two independent SNES engines; worst-case cadence/upload checks and at least one emulated hour per mode without softlocks or corrupt output | Native six-suite/matchup gates, one live hour in each native mode, and bsnes2014 Accuracy smoke plus 48 combat cases pass. Independent full ordered-pair/hour coverage remains outside this evidence; final release-platform acceptance remains open |
-| Controller and console checks | Recorded two-controller play sessions; real-console/flash-cartridge result or an explicit release-platform decision | Requires human equipment/play sessions; not yet verified |
+| Compatibility and endurance | Same release candidate validated in at least two independent SNES engines; worst-case cadence/upload checks and at least one emulated hour per mode without softlocks or corrupt output | Native six-suite/matchup gates, one live hour in each native mode, and bsnes2014 Accuracy smoke plus 48 combat cases pass. Independent full ordered-pair/hour coverage remains outside this evidence. Emulator-first release scope is recorded; user compatibility acceptance remains pending |
+| Controller and console checks | Recorded two-controller play sessions; real-console/flash-cartridge result or an explicit release-platform decision | Emulator-first decision recorded; original hardware support stays unverified future work. Human two-controller sessions still need results |
 | Distribution | Fresh-checkout build and offline ZIP verified; current guide/credits/licenses; complete source provenance; recorded team approval for public branding and roster use | Isolated source rebuild and offline ZIP audit pass; human package review and public approval pending |
 
 For the code freeze, critical/high defects must be closed. Other known issues

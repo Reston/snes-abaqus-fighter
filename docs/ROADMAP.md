@@ -266,8 +266,11 @@ package remain historical evidence.
   `76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466` and record
   30,641 checks; matching compatibility, matchup, bounded independent-combat,
   endurance and fresh-source evidence also pass. The package and 7,471-check
-  archive audit pass. Human playtesting, real-console and public-release review
-  remain open. Use [PLAYTEST.md](PLAYTEST.md) for the human review route.
+  archive audit pass. Human playtesting, controller and public-release review
+  remain open. The user selected an emulator-first release; original-console
+  support stays unverified future work. Use [PLAYTEST.md](PLAYTEST.md) for the
+  human review route and [review-feedback.json](review-feedback.json) for the
+  actual platform, gameplay and brief-listening responses.
 - Playtest with two controllers and several keyboard layouts, including keyboard rollover constraints, SOCD edge cases, motion buffering and hitstop inputs.
 - Profile worst-case combat frames, eight-bank animation uploads, resident
   audio effects, dynamic stage uploads, `STAT77`/OBJ overflow and vblank use
@@ -282,8 +285,9 @@ package remain historical evidence.
 
 The [audio listening pack](AUDIO-REVIEW.md) now provides reproducible native
 captures, mixed-cue comparisons and measured score repetition on the same ROM.
-Human mix, cue clarity and loop-seam judgments remain open; the pack gives that
-review concrete material without changing the cartridge. The current
+The user heard the short title/impact/special replay with no issue noticed;
+full four-score, cue-clarity and busy-exchange judgments remain open. The pack
+gives that review concrete material without changing the cartridge. The current
 [playtest guide](PLAYTEST.md#review-already-received) distinguishes the actual
 Reston response from unreviewed gameplay, audio, equipment and public-use gates.
 

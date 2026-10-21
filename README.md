@@ -25,8 +25,11 @@ passes. The v0.8.1 offline package passes 7,471 technical audit checks; v0.8.0
 remains historical evidence.
 Reston's full64 native visual review accepts the v4 art for integration; see the
 [Reston v4 likeness review](docs/RESTON-LIKENESS-v4.md). The user confirmed the
-revised buzz cut looks closer; final team likeness/consent, balance, listening,
-controller, real-console and branding gates remain open;
+revised buzz cut looks closer; final team likeness/consent, balance, full listening,
+controller and branding gates remain open. The user selected **emulators first**
+for the first public release; original SNES/flash-cartridge support stays
+unverified. The [review record](docs/review-feedback.json) also records a brief
+audio preview heard with no issue noticed and gameplay not yet tested;
 `public_release_certified` remains false.
 
 A supplemental [audio review](docs/AUDIO-REVIEW.md) provides matched native cue

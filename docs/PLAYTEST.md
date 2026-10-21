@@ -24,8 +24,9 @@ Do not infer roster consent or public-release approval from a completed table.
   gameplay and audio are unchanged. Reston's full64 native visual review
   accepted v4 for integration. The user subsequently confirmed the revised
   buzz cut looks closer; see the scoped record below. Final team likeness and
-  consent, balance, listening, controller, real-console and branding review
-  still need explicit human results.
+  consent, balance, full listening, controller and branding review still need
+  explicit human results. The first release is emulator-first by user choice;
+  original-console/flash-cartridge support stays unverified.
 - The separate [Mesen-S review](MESEN-REVIEW.md) passes 48 bounded combat cases,
   mode/guide checks and all three stages on this same ROM. The
   [audio review](AUDIO-REVIEW.md) supplies twelve captured WAVs and measured
@@ -55,15 +56,17 @@ results from this guide to a later build.
 | Review | Actual response | Scope still open |
 |---|---|---|
 | Reston's revised short buzz cut, 2026-10-20 | User: "Yes, closer" | Final team likeness review, motion approval and public-use consent |
-| Combat feel, balance and onboarding | No session result recorded | Human play on the exact package, including both player layouts and all twelve fighters |
-| Music and effect mix | No listening result recorded | Listen to the captured material and a busy live exchange on the intended setup |
-| Physical controllers / original console | No equipment result recorded | Two-controller session and either console evidence or an explicit release-platform decision |
+| Combat feel, balance and onboarding | User: "havent tested" | Human play on the exact package, including both player layouts and all twelve fighters |
+| Music and effect mix | User heard the 14-second replay: "I heard it; no issue noticed" | Full score/cue and busy-exchange listening; playback device was not specified |
+| First public-release platforms | User: "Emulators first; hardware support stays unverified" | Original hardware remains unverified future work; it is outside the selected first-release support scope |
+| Physical controllers | No equipment result recorded | Two-controller session on the intended emulator setup |
 | Public names, portraits and branding | No approval recorded | Review by the people/team responsible for those uses |
 
-The [Reston feedback record](reston-likeness-report.json) preserves the exact
-question and response. A positive hair comparison does not approve the rest
+The [Reston feedback record](reston-likeness-report.json) and
+[platform/play/listening record](review-feedback.json) preserve the exact
+questions and responses. A positive hair comparison does not approve the rest
 of the roster, gameplay, audio or public distribution. The other rows record
-missing evidence; they are not reported defects.
+the remaining review scope; unreviewed items are not reported defects.
 
 ## A 20-30 minute route
 
@@ -189,9 +192,11 @@ should identify the person/reference and the exact pose or orientation. A name,
 face or branding concern must be reviewed by the team before any public use;
 this document records the concern and does not grant consent.
 
-## Optional real-console record
+## Future real-console record
 
-Keep this separate from the emulator session. If a flash cartridge and original
+The user selected emulators for the first public release. Original hardware
+support stays unverified; this record is for later hardware validation.
+Keep it separate from the emulator session. If a flash cartridge and original
 hardware are available, record the SNES/Super Famicom model and region, flash
 cart and firmware, display, controller ports, audio path, ROM SHA, date and
 whether the result was complete or partial. Check boot, both controllers, all

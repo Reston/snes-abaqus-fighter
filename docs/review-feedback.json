@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "recorded_at_utc": "2026-10-21T02:28:39Z",
+  "version": "0.8.1",
+  "rom_sha256": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466",
+  "public_release_certified": false,
+  "first_release_platforms": {
+    "question": "Which platforms should the first public release support? The current build is verified in Snes9x and bsnes; original SNES/flash-cartridge testing has not been done.",
+    "response": "Emulators first; hardware support stays unverified",
+    "decision_recorded": true,
+    "scope": "Emulators for the first public release; original SNES and flash-cartridge support remains unverified.",
+    "original_hardware_test_result": null,
+    "two_controller_human_session_result": null,
+    "public_distribution_approval": null
+  },
+  "gameplay": {
+    "question": "After a short Local Versus match in v0.8.1, how do the controls and combat feel? If something feels wrong, name the fighter, move and what happened.",
+    "response": "havent tested",
+    "status": "not_tested",
+    "human_gameplay_approved": null
+  },
+  "audio": {
+    "replay_request": "do it again I didn't hear it",
+    "question_after_replay": "Did you hear the replay just now? Please name your playback device and note any music/effect balance or loop-transition issue.",
+    "response": "I heard it; no issue noticed",
+    "preview_heard": true,
+    "preview_issue_reported": false,
+    "playback_device_reported": null,
+    "scope": "Only the 13.948-second replay preview: title music excerpt, impact-active capture and special-active capture, at their original gain.",
+    "full_four_score_listening_completed": false,
+    "busy_live_exchange_listening_completed": false,
+    "overall_audio_review_complete": false,
+    "replay": {
+      "file": "build/audio-review/replay-preview.wav",
+      "sha256": "c40838d36c90a3711c045d4d3a406f09ce67c888bed1c015c0e37637b2662b53",
+      "source_archive": "dist/Abaqus-After-Hours-v0.8.1-Audio-Review.zip",
+      "source_archive_sha256": "5c66aeba230fded8e27507784a47fb72a918d1f854d57c7a983911a925871205",
+      "sample_rate": 32040,
+      "channels": 2,
+      "sample_width_bytes": 2,
+      "sample_frames": 446896,
+      "duration_seconds": 13.948064918851436,
+      "source_gain_unchanged": true,
+      "system_volume_changed": false,
+      "playback_method": "Explicitly requested Windows winsound.PlaySound replay to the default output; no emulator or automated test was launched.",
+      "playback_api_completed": true,
+      "segments": [
+        {
+          "source": "music-title.wav",
+          "start_sample_frame": 768960,
+          "sample_frames": 384480
+        },
+        {
+          "source": "silence",
+          "sample_frames": 12816
+        },
+        {
+          "source": "impact-active.wav",
+          "start_sample_frame": 0,
+          "sample_frames": 23990
+        },
+        {
+          "source": "silence",
+          "sample_frames": 12816
+        },
+        {
+          "source": "special-active.wav",
+          "start_sample_frame": 0,
+          "sample_frames": 12794
+        }
+      ]
+    }
+  },
+  "related_likeness_feedback": "docs/reston-likeness-report.json#/user_feedback",
+  "team_likeness_approval": null,
+  "public_names_and_branding_approval": null
+}

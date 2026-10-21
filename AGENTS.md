@@ -6,6 +6,13 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+- The user selected **emulators first; hardware support stays unverified** for
+  the first public release. Original SNES/flash-cartridge validation is future
+  work outside that support scope. Human gameplay, physical-controller,
+  full-listening and team/public-use reviews remain required. Record actual
+  responses in `docs/review-feedback.json`; a brief audio replay was heard with
+  no issue noticed, while gameplay has not yet been tested by the user.
+
 - The current verified technical snapshot is v0.8.1. Its source freeze is
   commit `fe05e5fd1391a1db20f1b66f1e9f6e699445e77a`, tree
   `46e1af160ffb8ab6cb768e3d9deec1352d77ae83`; the ROM is SHA256
@@ -22,8 +29,8 @@ Preserve the native emulator requirement when extending the project.
   SPC six, zero stable FIGHT lag and empty failure arrays. `validate_release_evidence`
   passes. The v0.8.1 offline package and its 7,471-check audit pass; the
   v0.8.0 package is historical. Full64 native visual review accepts Reston's v4 art
-  for integration, but human likeness/consent, balance, listening, controller,
-  real-console and branding gates remain open.
+  for integration, but human likeness/consent, balance, full listening,
+  controller and branding gates remain open.
 
 - v0.8.0 adds a pause overlay with Normal, Controls and Specials pages. Select
   cycles the pages, and Left/Right toggles the guide pages. Start resumes
