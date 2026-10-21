@@ -1,28 +1,69 @@
-# v0.9.0 human playtest guide
+# v0.10.0 human playtest guide
 
-This is a short review route for the v0.9.0 presentation-correction candidate.
-It records the live v0.8.1 presentation findings and collects human feedback on
-likeness, motion, fighting feel, pause help, Training behavior, presentation,
-audio and onboarding; it is not a release approval form. Leave an item blank or
-mark it unknown when it was not reviewed. Do not infer roster consent or
-public-release approval from a completed table.
+This is a short review route for the v0.10.0 cartoon-stage and menu candidate.
+It records the live v0.8.1 presentation findings, the historical v0.9.0
+correction evidence and the new stage/menu review targets while collecting
+human feedback on likeness, motion, fighting feel, pause help, Training
+behavior, presentation, audio and onboarding. It is not a release approval
+form. Leave an item blank or mark it unknown when it was not reviewed. Do not
+infer roster consent or public-release approval from a completed table.
 
 ## Snapshot under review
 
-- The [v0.9.0 candidate ROM](../dist/abaqus-after-hours.sfc) currently has
+- The frozen v0.10.0 candidate is commit
+  `8536bb6956212952c17302a62cc6c1de7e12a65d`, tree
+  `d524d3f960600dc5c9ff83578ac73675f9798735`; its ROM is SHA256
+  `a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445`, header
+  `BE19`. Native PPU review accepted all three stage scenes and the arena
+  picker; focused presentation, stage and menu probes pass. `Test.cmd` exits 0
+  with all six reports matching this SHA: 2,595 gameplay, 18,081 roster, 1,756
+  presentation, 1,020 focused-input, 8,131 stage and 622 Training checks
+  (32,205 total). Fresh committed export validation passes 214 assets and
+  symbols in 62.031 seconds. Endurance passes all three modes at 216,356 live
+  frames each at 60.098811862348406 FPS, with wraps 4/4/3, peak SPC backlog 6
+  and empty cadence, native-timing, ambient, PPU-overflow and SPC-FIFO failure
+  arrays. The technical audio report passes 1,262/1,262 capture-only checks;
+  all four cues and four scores are unclipped, four music captures run
+  60.899688-63.079432 seconds, and no near-zero interval reaches 0.5 seconds.
+  The 288-by-600 matchup/stage/policy/replay/symmetry run with four replays
+  across all three stages, pinned bsnes smoke at 600/600 plus the independent
+  28,800-frame run, and `validate_release_evidence` also pass. The current
+  [v0.10.0 Windows package](../dist/Abaqus-After-Hours-v0.10.0-Windows.zip)
+  is available and its archive audit passes 7,472 checks. Human listening,
+  gameplay, controller, likeness/consent and public-use review remain open,
+  with `public_release_certified=false`.
+- It refreshes all three stage masters with original bold-navy cel-cartoon art,
+  keeps complete matching art in each arena thumbnail, and retains the existing
+  ambient cell/trace contracts. It also carries bounded menu-only correctness
+  polish: cleaned directional edges, both-pad navigation only for the P2 roster
+  case, Start > B > A menu priority, and immediate return after Back. The
+  [stage pass note](STAGE-CARTOON-v2.md) and [cartoon preservation report](cartoon-preservation-report.json)
+  record the source and preservation details, including 192 generated files
+  retained from v0.9. Ambient change counts by phase are Las Condes
+  `[0,20,20,20]`, El Castillo `[0,18,18,18]` and La Oficina `[0,6,6,6]`;
+  the office keeps one 3-pixel monitor segment per monitor at `y114` while
+  protecting the monitor digits.
+- Candidate stage sources are `00-las-condes-cartoon-v2.png`,
+  `01-castillo-cartoon-v2.png` and `02-oficina-cartoon-v2.png` under
+  `assets/art/stages/`, with adjacent exact-basename JSON and raw inputs under
+  `assets/art/stages/source-v2/`. `stages.json` is schema 2 and
+  `stages-v0.4.json` is historical input.
+
+- The [historical v0.9.0 ROM](../dist/abaqus-after-hours.sfc) has
   SHA256 `bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639`
   and header checksum `6D41` in the [manifest](../dist/manifest.json). Verify
   the SHA before a session because the checkout's `dist/` files are mutable.
-- Candidate source freeze: commit
+- Historical v0.9.0 source freeze: commit
   `76f0a08a7562800df01507db83c6877745c3bdcf`, tree
   `f37852da57a42d2d6819374db5d23278d12587a5`.
-- All six native reports pass on the candidate SHA: 2,595 gameplay, 18,081
+- All six historical v0.9.0 reports pass on its SHA: 2,595 gameplay, 18,081
   roster, 1,756 presentation, 997 focused-input, 8,131 stage and 622 Training
   checks (32,182 total). Matching compatibility, matchup, bounded independent
   combat, endurance, fresh-source and `validate_release_evidence` evidence also
-  pass. `Test.cmd` exits 0. The [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
-  is available and its archive audit passes 7,471 checks. Do not attach historical v0.8.1 results
-  to this candidate.
+  pass. `Test.cmd` exits 0. The historical [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
+  is available and its archive audit passes 7,471 checks. Keep historical
+  v0.8.1 and v0.9.0 results separate from the current v0.10.0 reports; use the
+  frozen SHA above for this candidate.
 - The [last verified v0.8.1 ROM](../dist/abaqus-after-hours.sfc) is SHA256
   `76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`, header
   checksum `A358`; its source freeze and package evidence are historical. Native
@@ -33,8 +74,8 @@ public-release approval from a completed table.
   combat cases, mode/guide checks and all three stages on the v0.8.1 ROM. The
   historical [audio review](AUDIO-REVIEW.md) supplies twelve captured WAVs and
   measured score repetition for listening. These supplements leave the packaged
-  game unchanged and do not constitute v0.9.0 evidence or human play/listening
-  approval.
+  game unchanged and do not constitute v0.9.0 or v0.10.0 evidence or human
+  play/listening approval.
 - Historical [review captures](screenshots/) include the [title](screenshots/title.png),
   [select](screenshots/select.png), [arenas](screenshots/arenas.png),
   [fight](screenshots/fight.png), [block](screenshots/block.png),
@@ -60,6 +101,7 @@ results from this guide to a later build.
 |---|---|---|
 | Reston's revised short buzz cut, 2026-10-20 | User: "Yes, closer" | Final team likeness review, motion approval and public-use consent |
 | Live v0.8.1 presentation review | User reported clipped selection faces, Damian did not resemble the supplied photo closely enough, the arena picker looked ugly, and stage scenery showed through HUD/result lettering | Native v0.9.0 correction checks now pass on the exact SHA; human likeness/consent and broader gameplay review remain open |
+| v0.10.0 cartoon-stage and menu candidate | No human response recorded yet | Review all three matched stage thumbnails, stage readability and menu edge/priority behavior on frozen SHA `a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445`; native and extended technical evidence pass, while human approval remains open |
 | Combat feel, balance and onboarding | Not covered by the presentation review | Human play on the exact candidate, including both player layouts and all twelve fighters |
 | Music and effect mix | User heard the 14-second replay: "I heard it; no issue noticed" | Full score/cue and busy-exchange listening; playback device was not specified |
 | First public-release platforms | User: "Emulators first; hardware support stays unverified" | Original hardware remains unverified future work; it is outside the selected first-release support scope |
@@ -89,10 +131,26 @@ The live presentation findings are retained as four separate review targets:
 - Stage scenery showed through HUD and result lettering. FIGHT and RESULT now
   use opaque glyphs 256-383 for ASCII 32-127, while round markers 147/148 use
   the panel background at palette index 1.
+- The v0.10.0 candidate refreshes all three stage masters in one bold-navy
+  cel-cartoon direction and uses the same complete art in each arena thumbnail.
+  Native PPU review accepted all three live scenes and the arena picker, and
+  focused stage probes pass. Review stage identity, floor readability, contrast
+  and consistency across the picker and live arena. The candidate's source
+  provenance and schema-2 manifest are recorded in the [stage pass note](STAGE-CARTOON-v2.md).
+- The candidate also carries bounded menu-only correctness polish: cleaned
+  directional edges, both-pad navigation only for the P2 roster case, Start
+  confirm before B back before A confirm, and an immediate return after Back.
+  Check that one edge cannot trigger two scene actions.
 
-The native presentation suite and matching technical evidence now pass on the
-candidate SHA. The [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
-is available and its archive audit passes 7,471 checks. The observations above are actual live feedback;
+The historical v0.9.0 presentation suite and matching technical evidence pass on
+its SHA. The historical [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
+is available and its archive audit passes 7,471 checks. The v0.10.0 candidate's
+six native reports, endurance, technical audio capture, matchup, pinned
+bsnes/independent compatibility evidence and `validate_release_evidence` pass on
+its frozen SHA. The current [v0.10.0 Windows package](../dist/Abaqus-After-Hours-v0.10.0-Windows.zip)
+is available and its archive audit passes 7,472 checks; human review remains
+open with `public_release_certified=false`. The observations above are actual
+live feedback;
 they do not establish human likeness/consent or public-use approval.
 
 ## A 20-30 minute route
@@ -104,13 +162,13 @@ keyboard mappings.
 
 | Time | Route | Record |
 |---|---|---|
-| 0-2 min | Boot the exact candidate ROM after recording its SHA, read the first control hint, open fighter select and arena select, then confirm and back out once. | Is the first action clear? Are confirm, back and pause consistent? |
+| 0-2 min | Boot the frozen v0.10.0 candidate at SHA `a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445`, read the first control hint, open fighter select and arena select, then confirm and back out once. | Is the first action clear? Are confirm, back and pause consistent? Do directional edges and Start/B/A priority produce one menu action? |
 | 2-8 min | Sweep all twelve fighters. On each card, check the face, hair, costume colors, feet baseline and apparent size. In a short match or Training reset, make each fighter idle, walk forward/back, crouch, jump and perform one normal. Put each fighter on P1 once and P2 once so both right- and left-facing renders are seen. For Reston, compare the fuller short buzz cap in the v4 portrait and all 64 native poses. | Note likeness, proportions, silhouette changes and any fighter that needs a second look. Use the capture index below for native motion references. Record Reston likeness feedback separately from the art-integration review. |
 | 8-13 min | Play the fundamentals: walk into standing guard, crouch guard a low kick or wave, take a real hit, jump forward and neutral, press light/medium/heavy normals, then repeat after the opponent blocks. | Does input feel immediate? Are pushback, hitstop, guard stun, chip and recovery readable? Any accidental attacks or missed edges? |
 | 13-17 min | Verify the four special families with Damian (projectile), Cristobal (rush), Negger (low shockwave) and Roxana (rising strike). Try a confirmed normal into a heavier normal and then a special. At close range, throw a guarding opponent; attempt simultaneous throws once. | Record command reliability, cancel timing, special readability, throw timing and whether blocked/unblocked results make sense. |
 | 17-21 min | Pause during a live exchange. Cycle Normal -> Controls -> Specials with Select, toggle pages with Left/Right, resume with Start/A and return to the roster with B when Start is not pressed. Confirm both live fighter names, special names and family labels appear. | Record guide clarity, page timing, stale text, Start/B/A/Select priority and whether the pause camera and HP display remain stable. |
 | 21-24 min | In Training, pause on Normal and cycle Stand, Guard High, Guard Low and Jump with Up/Down. Test a guarded dummy's relative back hold, the Jump dummy's automatic repeat after landing and live Select reset; start a new Training match. | Record dummy behavior, retreat or jump-repeat errors, preserved/reset dummy state and any way to act through pause. |
-| 24-27 min | Play one short round on each stage: Las Condes, El Castillo and La Oficina. Let the round run long enough to see ambient motion; pause, hitstop and round-end once. | Check floor readability, contrast, stage identity, ambient motion, freeze behavior, effects and any busy area behind the fighters. |
+| 24-27 min | Play one short round on each stage: Las Condes, El Castillo and La Oficina. Compare the live scenes with their complete arena thumbnails. Let the round run long enough to see ambient motion; pause, hitstop and round-end once. | Check floor readability, contrast, stage identity, matched thumbnail art, ambient motion, freeze behavior, effects and any busy area behind the fighters. |
 | 27-30 min | Swap controller ports or mappings, run a two-player exchange, then listen to title/menu music, stage music and several hit, guard, throw, special, round and KO cues at a comfortable volume. | Record rollover/SOCD problems, stuck or cross-wired inputs, missing/clipped sounds, cue priority, mix balance and whether a new player could recover without coaching. |
 
 Do not rush through a failing step to finish the route. Capture the smallest
@@ -189,6 +247,7 @@ writing a long explanation in the table.
 | Cancels, specials and input response |  |  |
 | Las Condes / El Castillo / La Oficina |  |  |
 | v0.9.0 portrait, arena and HUD/result corrections |  |  |
+| v0.10.0 cartoon stages and menu edge/priority contract |  |  |
 | Controller ports and keyboard rollover |  |  |
 | Music, effects and mix |  |  |
 | Onboarding and accessibility |  |  |

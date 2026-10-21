@@ -24,6 +24,7 @@ HEALTH_TILE = 129
 ENERGY_TILE = 138
 P1_STATUS_ATTR = 0x2000
 P2_STATUS_ATTR = 0x6000
+MENU_CORE_OPTIONS = {"snes9x_up_down_allowed": "enabled"}
 
 
 def signed16(value: int) -> int:
@@ -177,6 +178,293 @@ def wait_screen(e: Emulator, wanted: int) -> None:
             return
         e.run(10)
     raise AssertionError(("screen did not arrive", wanted, trace(e)))
+
+
+def menu_press(e: Emulator, keys: list[str], port: int = 0,
+               hold: int = 12, release: int = 4) -> None:
+    """Send one settled controller edge without opening a frontend.
+
+    Scene loaders can publish the target TRACE scene several callbacks after
+    the direct screen transition. Twelve frames is still one menu edge and
+    lets that snapshot settle; direction/SOCD probes use shorter holds.
+    """
+
+    kwargs = {"p1" if port == 0 else "p2": keys}
+    e.run(hold, **kwargs)
+    e.run(release)
+
+
+def menu_title() -> Emulator:
+    """Boot the title with the core option that exposes native SOCD input."""
+
+    e = Emulator(core_options=MENU_CORE_OPTIONS)
+    e.run(120)
+    check(trace(e)["screen"] == 0, "menu regression boots at the title", trace(e))
+    return e
+
+
+def menu_select(e: Emulator, mode: int = 1) -> None:
+    """Open the roster for Arcade or Local Versus."""
+
+    for _ in range(mode):
+        menu_press(e, ["down"])
+    menu_press(e, ["a"])
+    wait_screen(e, 1)
+
+
+def menu_arena(e: Emulator, mode: int = 1) -> None:
+    """Select both local fighters and settle on the arena screen."""
+
+    menu_select(e, mode)
+    if mode == 1:
+        menu_press(e, ["a"])
+        wait_screen(e, 1)
+        menu_press(e, ["a"])
+    else:
+        menu_press(e, ["a"])
+    wait_screen(e, 2)
+
+
+def menu_result() -> Emulator:
+    """Reach a result card through controller-only local-versus play."""
+
+    e = Emulator(core_options=MENU_CORE_OPTIONS)
+    e.run(120)
+    menu_press(e, ["down"])
+    menu_press(e, ["a"])
+    wait_screen(e, 1)
+    menu_press(e, ["a"])
+    wait_screen(e, 1)
+    menu_press(e, ["a"])
+    wait_screen(e, 2)
+    menu_press(e, ["a"])
+    wait_screen(e, 3)
+    for _ in range(180):
+        if trace(e)["intro"] == 0:
+            break
+        e.run(1)
+    check(trace(e)["intro"] == 0,
+          "menu result probe reaches live local combat", trace(e))
+    for _ in range(2200):
+        sample = trace(e)
+        if sample["screen"] == 4:
+            return e
+        if sample["intro"] or sample["round_end"] or sample["paused"]:
+            e.run(1)
+            continue
+        forward = "right" if sample["x1"] < sample["x2"] else "left"
+        e.run(3, p1=[forward, "l"])
+        e.run(28, p1=[forward])
+    last = trace(e)
+    e.close()
+    raise AssertionError(("menu result probe did not reach a result card", last))
+
+
+def check_menu_regressions() -> dict[str, object]:
+    """Exercise native menu SOCD and confirm/back priority at every screen."""
+
+    results: dict[str, object] = {}
+
+    # Title: keep DOWN held while adding UP.  cleanDirections(raw) must make
+    # that new opposite edge neutral, so the following confirm selects Local
+    # Versus (menu row 1), rather than returning to Arcade row 0.
+    e = menu_title()
+    try:
+        menu_press(e, ["down"], hold=4, release=0)
+        e.run(4, p1=["down", "up"])
+        e.run(4)
+        menu_press(e, ["a"])
+        title_state = trace(e)
+        check(title_state["screen"] == 1 and title_state["mode"] == 1,
+              "title held-opposite direction stays neutral before confirm",
+              title_state)
+        results["title_socd"] = title_state
+    finally:
+        e.close()
+
+    # P1 roster: opposite directions on the same pad must not move the
+    # selection after the first RIGHT edge has been held.
+    e = menu_title()
+    try:
+        menu_select(e, 0)
+        initial = trace(e)
+        menu_press(e, ["right"], hold=4, release=0)
+        after_right = trace(e)
+        e.run(4, p1=["right", "left"])
+        e.run(4)
+        after_mixed = trace(e)
+        check(after_right["selected"] == (initial["selected"] + 1) % 12,
+              "P1 roster accepts one clean RIGHT edge", {
+                  "initial": initial, "after_right": after_right,
+              })
+        check(after_mixed["selected"] == after_right["selected"],
+              "P1 roster neutralizes held opposite directions", {
+                  "after_right": after_right, "after_mixed": after_mixed,
+              })
+        results["roster_p1_socd"] = {
+            "initial": initial["selected"],
+            "after_right": after_right["selected"],
+            "after_mixed": after_mixed["selected"],
+        }
+    finally:
+        e.close()
+
+    # P2 roster merges the two pads by contract, so test the same held
+    # opposite sequence on port 2 while selectPlayer is active.
+    e = menu_title()
+    try:
+        menu_select(e, 1)
+        menu_press(e, ["a"])
+        wait_screen(e, 1)
+        initial = trace(e)
+        menu_press(e, ["right"], port=1, hold=4, release=0)
+        after_right = trace(e)
+        e.run(4, p2=["right", "left"])
+        e.run(4)
+        after_mixed = trace(e)
+        check(after_right["selected2"] == (initial["selected2"] + 1) % 12,
+              "P2 roster accepts one clean RIGHT edge", {
+                  "initial": initial, "after_right": after_right,
+              })
+        check(after_mixed["selected2"] == after_right["selected2"],
+              "P2 roster neutralizes held opposite directions", {
+                  "after_right": after_right, "after_mixed": after_mixed,
+              })
+        results["roster_p2_socd"] = {
+            "initial": initial["selected2"],
+            "after_right": after_right["selected2"],
+            "after_mixed": after_mixed["selected2"],
+        }
+    finally:
+        e.close()
+
+    e = menu_title()
+    try:
+        menu_arena(e, 1)
+        before = trace(e)
+        menu_press(e, ["down"], hold=4, release=0)
+        after_down = trace(e)
+        e.run(4, p1=["down", "up"])
+        e.run(4)
+        after_mixed = trace(e)
+        check(after_down["arena"] == (before["arena"] + 1) % 3,
+              "ARENA accepts one clean DOWN edge", {
+                  "before": before, "after_down": after_down,
+              })
+        check(after_mixed["arena"] == after_down["arena"],
+              "ARENA neutralizes held opposite directions", {
+                  "after_down": after_down, "after_mixed": after_mixed,
+              })
+        results["arena_socd"] = {
+            "before": before["arena"],
+            "after_down": after_down["arena"],
+            "after_mixed": after_mixed["arena"],
+        }
+    finally:
+        e.close()
+
+    # Confirm has priority over Back.  These cases are intentionally distinct
+    # because the old sequential menu branches could briefly load another
+    # screen and then consume the same edge again.
+    e = menu_title()
+    try:
+        menu_arena(e, 1)
+        before = trace(e)
+        menu_press(e, ["b", "start"])
+        after = trace(e)
+        check(after["screen"] == 3,
+              "ARENA START confirm wins over simultaneous B back", {
+                  "before": before, "after": after,
+              })
+        results["arena_confirm_priority"] = {
+            "before_screen": before["screen"], "after_screen": after["screen"],
+        }
+    finally:
+        e.close()
+
+    e = menu_title()
+    try:
+        menu_select(e, 1)
+        menu_press(e, ["a"])
+        wait_screen(e, 1)
+        before = trace(e)
+        menu_press(e, ["b", "a"])
+        after = trace(e)
+        check(after["screen"] == 1,
+              "P2 roster B back wins over simultaneous A confirm", {
+                  "before": before, "after": after,
+              })
+        results["roster_p2_back_priority"] = {
+            "before_screen": before["screen"], "after_screen": after["screen"],
+        }
+    finally:
+        e.close()
+
+    e = menu_title()
+    try:
+        menu_arena(e, 1)
+        before = trace(e)
+        menu_press(e, ["b", "a"])
+        after = trace(e)
+        check(after["screen"] == 1,
+              "ARENA B back wins over simultaneous A confirm", {
+                  "before": before, "after": after,
+              })
+        results["arena_back_priority"] = {
+            "before_screen": before["screen"], "after_screen": after["screen"],
+        }
+    finally:
+        e.close()
+
+    e = menu_title()
+    try:
+        menu_select(e, 1)
+        menu_press(e, ["a"])
+        wait_screen(e, 1)
+        before = trace(e)
+        menu_press(e, ["b", "start"])
+        after = trace(e)
+        check(after["screen"] == 2,
+              "P2 roster START confirm wins over simultaneous B back", {
+                  "before": before, "after": after,
+              })
+        results["roster_p2_confirm_priority"] = {
+            "before_screen": before["screen"], "after_screen": after["screen"],
+        }
+    finally:
+        e.close()
+
+    e = menu_result()
+    try:
+        before = trace(e)
+        menu_press(e, ["b", "start"])
+        after = trace(e)
+        check(after["screen"] == 3,
+              "RESULT START rematch wins over simultaneous B back", {
+                  "before": before, "after": after,
+              })
+        results["result_confirm_priority"] = {
+            "before_screen": before["screen"], "after_screen": after["screen"],
+        }
+    finally:
+        e.close()
+
+    e = menu_result()
+    try:
+        before = trace(e)
+        menu_press(e, ["b", "a"])
+        after = trace(e)
+        check(after["screen"] == 1,
+              "RESULT B back wins over simultaneous A confirm", {
+                  "before": before, "after": after,
+              })
+        results["result_back_priority"] = {
+            "before_screen": before["screen"], "after_screen": after["screen"],
+        }
+    finally:
+        e.close()
+
+    return results
 
 
 def boot(mode: int = 2, wait_intro: bool = True,
@@ -3370,6 +3658,7 @@ def main() -> int:
         "throw_startup_escape": {},
         "down_floor_guard": {},
         "cpu_regressions": {},
+        "menu_regressions": {},
     }
     try:
         manifest = json.loads((ROOT / "dist/manifest.json").read_text())
@@ -3397,6 +3686,7 @@ def main() -> int:
         report["pause_transition_cadence"] = check_pause_transition_cadence()
         check_training_inertness()
         check_training_reset()
+        report["menu_regressions"] = check_menu_regressions()
         report["status_bars"] = check_guard_timing()
         report["counter_banner"] = check_counter_banner()
         check_contact_classification()

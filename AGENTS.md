@@ -16,7 +16,46 @@ Preserve the native emulator requirement when extending the project.
   lettering), and heard a brief audio replay with no issue noticed. Full combat
   playtesting and the other human gates remain open.
 
-- The current verified technical snapshot is the v0.9.0 native presentation
+- The current verified technical snapshot is the v0.10.0 cartoon-stage
+  candidate, source-frozen for
+  review at commit `8536bb6956212952c17302a62cc6c1de7e12a65d`, tree
+  `d524d3f960600dc5c9ff83578ac73675f9798735`; its ROM is SHA256
+  `a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445`, header
+  checksum `BE19`. Native PPU review accepted all three stage scenes and the
+  arena picker; focused presentation, stage and menu probes pass. `Test.cmd`
+  exits 0 with all six reports matching this SHA: 2,595 gameplay, 18,081
+  roster, 1,756 presentation, 1,020 focused-input, 8,131 stage and 622
+  Training checks (32,205 total). Fresh committed export validation passes 214
+  assets and symbols in 62.031 seconds. The [stage pass note](docs/STAGE-CARTOON-v2.md)
+  and [preservation report](docs/cartoon-preservation-report.json) record the
+  source/art details. The candidate adds three versioned original
+  built-in-imagegen stage masters and adapts the existing feature-driven
+  ambient art to the candidate palette and map. It also carries bounded
+  menu-only correctness polish: cleaned directional edges, both-pad navigation
+  only for the P2 roster case, Start > B > A priority and immediate return
+  after Back. Active combat, Fighter/Wave ABI, fighters, portraits, audio,
+  existing four-phase 256-byte ambient cells and `TRACE[115..118]` remain
+  unchanged. Endurance passes all three modes at 216,356 live frames each at
+  60.098811862348406 FPS, with native wraps 4/4/3, peak SPC backlog 6 and
+  empty cadence, native-timing, ambient, PPU-overflow and SPC-FIFO failure
+  arrays. The technical audio report passes 1,262/1,262 capture-only checks:
+  all four cues and four scores are unclipped, the four music captures run
+  60.899688-63.079432 seconds, and no near-zero interval reaches 0.5 seconds
+  (longest near-silence 0.075499-0.078652 seconds). Its separate listening
+  pack is 15,447,456 bytes with SHA256
+  `5afec27e3022f87580e21991beb6785b9366dfb9bf16bf2abb45a08400309c70`.
+  The 288-by-600 matchup/stage/policy/replay/symmetry run with four replays
+  across all three stages, pinned bsnes smoke at 600/600 plus the independent
+  28,800-frame run, and `validate_release_evidence` all pass on this SHA.
+  The current [v0.10.0 Windows package](dist/Abaqus-After-Hours-v0.10.0-Windows.zip)
+  is available and `tools/audit_release.py` passes 7,472 checks against it.
+  Two consecutive final packaging runs produce identical 6,592,864-byte ZIPs,
+  SHA256 `8402f8be6f4c928e5b56cf22955d990c8bb6c4e2107262d489d2b3fc84036a99`.
+  Human listening, gameplay, physical-controller, likeness/consent and
+  team/public-use review gates remain open, and `public_release_certified`
+  remains false.
+
+- The historical v0.9.0 native presentation
   pass. Its corrected source freeze is commit
   `76f0a08a7562800df01507db83c6877745c3bdcf`, tree
   `f37852da57a42d2d6819374db5d23278d12587a5`; the ROM is SHA256
@@ -31,7 +70,7 @@ Preserve the native emulator requirement when extending the project.
   matchup/stage/policy/replay/symmetry checks pass; the pinned bsnes smoke and
   bounded 48-by-600 run pass; native endurance passes 216,356 live frames in
   each of three modes; and `validate_release_evidence` passes. The native all64
-  review accepts the corrected Damian set. The [v0.9.0 Windows package](dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
+  review accepts the corrected Damian set. The historical [v0.9.0 Windows package](dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
   is available and `tools/audit_release.py` passes 7,471 checks against it.
   Two consecutive packages are identical: 6,578,152 bytes, SHA256
   `8203ffab8d27b4205e25ebfcc2e74e09f5af199641b281a925a9b981c4d1f97e`.
@@ -55,7 +94,7 @@ Preserve the native emulator requirement when extending the project.
   the v0.8.0 package is historical. Full64 native visual review accepted
   Reston's v4 art for integration, but human likeness/consent, balance, full
   listening, controller and branding gates remain open. These results are
-  historical evidence and do not identify the current v0.9.0 candidate.
+  historical evidence and do not identify the current v0.10.0 candidate.
 
 - v0.8.0 adds a pause overlay with Normal, Controls and Specials pages. Select
   cycles the pages, and Left/Right toggles the guide pages. Start resumes
@@ -97,10 +136,10 @@ Preserve the native emulator requirement when extending the project.
   package gate also requires `docs/compatibility-test-report.json` to pass
   against that same SHA. The compatibility report is a separate pinned
   bsnes2014 Accuracy smoke, not part of the six-suite `Test.cmd` batch. The
-  current v0.9.0 reports all match the corrected SHA and record 32,182 passed
-  checks; the pinned compatibility report is also matched. The v0.9.0 package
-  and audit pass 7,471 technical checks. The v0.8.1 reports, package and audit
-  are historical evidence.
+  historical v0.9.0 reports all match the corrected SHA and record 32,182
+  passed checks; the pinned compatibility report is also matched. The historical
+  v0.9.0 package and audit pass 7,471 technical checks. The v0.8.1 reports,
+  package and audit are historical evidence.
 - The v0.6 fast path caches actor-bank and per-action timing selection, uses the
   compile-checked `Fighter` stride 64 and `Wave` stride 16 layouts, and caches
   unchanged OAM/shadow work by integer position and facing. Native health and
@@ -157,6 +196,23 @@ Preserve the native emulator requirement when extending the project.
   direction is minimal royal navy, white and gold with one cursor and one large
   selected portrait. v0.8 adds pause Controls/Specials guide pages without
   changing the menu grid or portrait contract.
+- The v0.10.0 stage candidate uses versioned masters
+  `00-las-condes-cartoon-v2.png`, `01-castillo-cartoon-v2.png` and
+  `02-oficina-cartoon-v2.png`, each with an adjacent exact-basename JSON
+  provenance file and raw source under `assets/art/stages/source-v2/`.
+  `assets/art/stages/stages.json` is the selected schema-2 manifest and
+  `stages-v0.4.json` remains the prior manifest history. `tools/stage_sources.py`
+  validates path, hash, RGB 1024x896, exact 4x-native dimensions and at most
+  90 colors; `tools/stage_cartoon.py`
+  carries the existing feature ambient work into the new palette/map. Preserve
+  the existing four-phase 256-byte, eight-cell budget. The candidate ambient
+  change counts by phase are Las Condes `[0,20,20,20]`, El Castillo
+  `[0,18,18,18]` and La Oficina `[0,6,6,6]`; the office keeps one 3-pixel
+  monitor segment per monitor at `y114` while protecting the monitor digits.
+  The [stage pass note](docs/STAGE-CARTOON-v2.md) and
+  [cartoon preservation report](docs/cartoon-preservation-report.json) record
+  the 192 generated files retained from v0.9, including fighter 64-frame banks,
+  palettes, portraits, UI, audio, title and select assets.
 - Keep original art masters and prompts in the repository. Do not import
   commercial game ROMs, Capcom sprites, or commercial game audio.
 - Preserve future scope for art review, balance tuning, stage parallax, human
@@ -164,8 +220,9 @@ Preserve the native emulator requirement when extending the project.
   roadmap items are complete. The v0.8.0 verified snapshot remains the
   historical evidence baseline. Reston's v4 art and Damian's corrected v4 art
   are accepted for native integration by the full64 visual review, while actual
-  human likeness and consent review remains future work. Current evidence is tied to the exact
-  ROM above; public-release gates still govern public readiness.
+  human likeness and consent review remains future work. The historical v0.9.0
+  evidence above is tied to its exact ROM; v0.10.0 public-release gates remain
+  unverified.
 - Do not commit `.tools/`, emulator saves, build intermediates or release ZIPs.
 - Rebuild the offline package with `tools/package.py` only after all six native
   suites and the matching compatibility smoke pass against the exact current

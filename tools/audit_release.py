@@ -193,6 +193,11 @@ def main():
                   (ROOT / 'assets/generated/stage-dynamics.json').read_bytes() and
                   package.read('OBJ-BUDGET.md') == (ROOT / 'docs/OBJ-BUDGET.md').read_bytes(),
                   'packaged stage animation contract and OBJ budget evidence')
+            check(package.read('STAGE-CARTOON-v2.md') ==
+                  (ROOT / 'docs/STAGE-CARTOON-v2.md').read_bytes() and
+                  package.read('cartoon-preservation-report.json') ==
+                  (ROOT / 'docs/cartoon-preservation-report.json').read_bytes(),
+                  'offline cartoon-stage and character-preservation document links')
             check(json.loads(package.read('qa/compatibility.json')) == compatibility and
                   package.read('COMPATIBILITY.md') == (ROOT / 'docs/COMPATIBILITY.md').read_bytes(),
                   'packaged independent-engine smoke evidence and scope')

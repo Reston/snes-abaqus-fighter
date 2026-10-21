@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "archive": "dist/Abaqus-After-Hours-v0.10.0-Windows.zip",
+  "rom_sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
+  "runs": [
+    {
+      "iteration": 1,
+      "bytes": 6592864,
+      "sha256": "8402f8be6f4c928e5b56cf22955d990c8bb6c4e2107262d489d2b3fc84036a99",
+      "audit_status": "passed",
+      "audit_checks": 7472
+    },
+    {
+      "iteration": 2,
+      "bytes": 6592864,
+      "sha256": "8402f8be6f4c928e5b56cf22955d990c8bb6c4e2107262d489d2b3fc84036a99",
+      "audit_status": "passed",
+      "audit_checks": 7472
+    }
+  ]
+}

@@ -4,13 +4,62 @@
 
 Supported build host: Windows x64. `tools/setup.ps1` downloads pinned official release archives into `.tools/` and verifies their SHA256. `tools/build.py` invokes 816-tcc, 816-opt, WLA-65816 and WLALINK directly, so a separate Make/MSYS installation is unnecessary.
 
-The v0.9.0 presentation pass is the corrected native candidate. A live v0.8.1 review
+The v0.10.0 cartoon-stage pass is the current packaged technical snapshot; its six native
+suites now pass on the exact current ROM. The source freeze is commit
+`8536bb6956212952c17302a62cc6c1de7e12a65d`, tree
+`d524d3f960600dc5c9ff83578ac73675f9798735`; the ROM is SHA256
+`a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445`, header
+`BE19`. Native PPU review accepted all three stage scenes and the arena picker;
+focused presentation, stage and menu probes pass. `Test.cmd` exits 0 with all
+six reports matching this SHA: 2,595 gameplay, 18,081 roster, 1,756
+presentation, 1,020 focused-input, 8,131 stage and 622 Training checks
+(32,205 total). Fresh committed export validation passes 214 assets and
+symbols in 62.031 seconds. See the [stage pass note](STAGE-CARTOON-v2.md) and
+[cartoon preservation report](cartoon-preservation-report.json).
+
+It adds three versioned original built-in-imagegen stage masters:
+`assets/art/stages/00-las-condes-cartoon-v2.png`,
+`assets/art/stages/01-castillo-cartoon-v2.png` and
+`assets/art/stages/02-oficina-cartoon-v2.png`. Each has an adjacent
+exact-basename JSON provenance file and raw source under
+`assets/art/stages/source-v2/`. The selected `assets/art/stages/stages.json`
+uses schema 2; `stages-v0.4.json` remains historical manifest input.
+`tools/stage_sources.py` validates path, hash, RGB 1024x896, exact 4x-native
+dimensions and at most 90 colors. `tools/stage_cartoon.py` adapts the existing feature-driven ambient
+work to the new palette/map while retaining the four 256-byte phases and eight
+ambient cells. Ambient change counts by phase are Las Condes
+`[0,20,20,20]`, El Castillo `[0,18,18,18]` and La Oficina `[0,6,6,6]`;
+the office keeps one 3-pixel monitor segment per monitor at `y114` while
+protecting the monitor digits. The [cartoon preservation report](cartoon-preservation-report.json)
+records 192 generated files retained from v0.9, including all fighter 64-frame
+banks, palettes, portraits, UI, audio, title and select assets. The candidate
+also carries bounded menu-only correctness polish:
+cleaned directional edges, both-pad navigation only for the P2 roster case,
+Start > B > A priority and immediate return after Back. Active combat, the
+Fighter/Wave ABI, fighters, portraits, audio and trace contract are unchanged.
+Endurance passes all three modes at 216,356 live frames each at
+60.098811862348406 FPS, with wraps 4/4/3, peak SPC backlog 6 and empty
+cadence, native-timing, ambient, PPU-overflow and SPC-FIFO failure arrays. The
+technical audio report passes 1,262/1,262 capture-only checks: all four cues
+and four scores are unclipped, four music captures run 60.899688-63.079432
+seconds, and no near-zero interval reaches 0.5 seconds (longest near-silence
+0.075499-0.078652 seconds). Its separate listening pack is 15,447,456 bytes,
+SHA256 `5afec27e3022f87580e21991beb6785b9366dfb9bf16bf2abb45a08400309c70`.
+The 288-by-600 matchup/stage/policy/replay/symmetry run with four replays
+across all three stages, pinned bsnes smoke at 600/600 plus the independent
+28,800-frame run, and `validate_release_evidence` all pass on this SHA.
+The current [v0.10.0 Windows package](../dist/Abaqus-After-Hours-v0.10.0-Windows.zip)
+is available and `tools/audit_release.py` passes 7,472 checks against it.
+Human listening, gameplay, controller, likeness/consent and public-use review
+remain open, with `public_release_certified=false`.
+
+The historical v0.9.0 presentation pass was the corrected native candidate. A live v0.8.1 review
 found clipped selection faces, a Damian likeness mismatch, a weak arena-picker
 composition, and stage pixels showing through HUD and result lettering. The
-candidate applies presentation-only corrections for those findings. The
-current candidate manifest identifies ROM SHA256
+historical v0.9.0 pass applied presentation-only corrections for those findings.
+Its historical candidate manifest identifies ROM SHA256
 `bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639`, header
-checksum `6D41`. The corrected source freeze is commit
+checksum `6D41`. The historical corrected source freeze is commit
 `76f0a08a7562800df01507db83c6877745c3bdcf`, tree
 `f37852da57a42d2d6819374db5d23278d12587a5`. All six native reports pass on
 this SHA: 2,595 gameplay, 18,081 roster, 1,756 presentation, 997 focused-input,
@@ -19,8 +68,8 @@ stage, policy, replay and symmetry evidence, pinned bsnes smoke plus bounded
 48-by-600 run, endurance of 216,356 live frames in each of three modes, fresh
 214-asset export in
 75.078 seconds and `validate_release_evidence` pass on this SHA. `Test.cmd`
-exits 0. The [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
-is available and `tools/audit_release.py` passes 7,471 checks against it. The last verified v0.8.1 source freeze is commit
+exits 0. The historical [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
+is available and its `tools/audit_release.py` audit passes 7,471 checks. The last verified v0.8.1 source freeze is commit
 `fe05e5fd1391a1db20f1b66f1e9f6e699445e77a`, tree
 `46e1af160ffb8ab6cb768e3d9deec1352d77ae83`. It targets a 4 MiB FastROM LoROM
 image across 128 banks, NTSC, with no coprocessor or SRAM requirement. WLALINK
@@ -70,7 +119,7 @@ map addresses do not move. The guide uses original opaque glyphs 256-383; the
 paused camera remains still and a contact-adjacent pause settles the actual HP
 bar before the panel is reviewed.
 
-### v0.9.0 presentation corrections (packaged technical snapshot; public review pending)
+### Historical v0.9.0 presentation corrections (packaged technical snapshot)
 
 The presentation pass keeps the native menu and rendering contracts while
 addressing four findings from the live v0.8.1 review:
@@ -106,8 +155,52 @@ No combat, controls, audio, trace offsets, memory layout or Fighter/Wave ABI
 change is part of this pass. The presentation suite and all five other native
 reports, compatibility smoke, source-freeze evidence, matchup, bounded
 independent combat, endurance and fresh-source validation now pass on the
-corrected SHA. The [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
-is available and its archive audit passes 7,471 checks. Public-release review remains open.
+corrected SHA. The historical [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
+is available and its archive audit passes 7,471 checks. Public-release review
+remains open. This section is historical evidence for the v0.10.0 candidate.
+
+### v0.10.0 cartoon-stage candidate (current packaged technical snapshot; human gates pending)
+
+The candidate stage pass strengthens the early-1990s arcade direction with
+original bold-navy cel-cartoon masters. Las Condes, El Castillo and La Oficina
+each receive one versioned master, and the arena thumbnails use the same
+complete scene art as their corresponding stage so the picker reads as one
+coherent set:
+
+- `assets/art/stages/00-las-condes-cartoon-v2.png`
+- `assets/art/stages/01-castillo-cartoon-v2.png`
+- `assets/art/stages/02-oficina-cartoon-v2.png`
+
+Each PNG has an adjacent exact-basename JSON provenance file. The raw
+`source-v2` images remain under `assets/art/stages/source-v2/`; the selected
+`assets/art/stages/stages.json` uses schema 2 and `stages-v0.4.json` remains the
+historical manifest. `tools/stage_sources.py` checks path, hash, RGB 1024x896,
+exact 4x-native dimensions and at most 90 colors. `tools/stage_cartoon.py` maps
+the authored stage features and existing ambient behavior into the candidate
+palette/map. See the [stage pass note](STAGE-CARTOON-v2.md) and [cartoon
+preservation report](cartoon-preservation-report.json).
+
+The existing four 256-byte ambient phases, eight dynamic BG1 tiles, stage
+transfer budget and `TRACE[115..118]` contract remain in force. Ambient change
+counts by phase are Las Condes `[0,20,20,20]`, El Castillo `[0,18,18,18]` and
+La Oficina `[0,6,6,6]`; the office keeps one 3-pixel monitor segment per
+monitor at `y114` while protecting the monitor digits. This is a presentation
+asset pass plus bounded menu-only correctness polish; active combat, C/ASM
+fighter data, portraits, audio and the Fighter/Wave ABI remain unchanged.
+Source freeze `8536bb6956212952c17302a62cc6c1de7e12a65d` / tree
+`d524d3f960600dc5c9ff83578ac73675f9798735`, ROM SHA256
+`a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445` (header
+`BE19`), native PPU review and focused probes are recorded. `Test.cmd` exits 0
+with all six reports matching this SHA: 2,595 gameplay, 18,081 roster, 1,756
+presentation, 1,020 focused-input, 8,131 stage and 622 Training checks
+(32,205 total). Endurance and technical audio capture pass as documented above;
+the 288-by-600 matchup/stage/policy/replay/symmetry run with four replays across
+all three stages, pinned bsnes smoke at 600/600 plus the independent 28,800-frame
+run, and `validate_release_evidence` also pass. The current [v0.10.0 Windows
+package](../dist/Abaqus-After-Hours-v0.10.0-Windows.zip) is available and its
+archive audit passes 7,472 checks. Human listening, gameplay, controller,
+likeness/consent and public-use review remain open, with
+`public_release_certified=false`.
 
 ### v0.6 integration performance notes
 
@@ -329,6 +422,18 @@ deterministic hardware steps after authoring.
 
 The v0.5 stage pipeline loads three independent PNG masters from `assets/art/stages/`, with `assets/art/stages/stages.json` describing their source metadata. The home screen, four-by-three fighter selection and arena plates use original art under `assets/art/menu/`, with prompts in `assets/art/menu/prompts.json`. Menu lettering is rendered from the project's original bitmap glyph set. Selected 64x80 profile portraits use a dedicated BG2 block and palette 1; v0.9.0 adds the shared head-anchored contained composition for both 32x40 and 64x80 portraits, recorded as `portrait_framing` in `assets/generated/character-manifest.json`. Images use nearest-neighbor reduction to retain hard edges. `tools/portrait_assets.py` owns the shared crop metadata. The manifest records source hashes, palette values, extraction boxes, uniform scales and native frame hashes for review.
 
+The frozen v0.10.0 stage candidate adds the three versioned cartoon masters,
+adjacent exact-basename provenance JSON and `assets/art/stages/source-v2/` raw
+inputs. The selected `assets/art/stages/stages.json` uses schema 2, while
+`stages-v0.4.json` remains historical. `tools/stage_sources.py` validates the
+path, hash, RGB 1024x896, exact 4x-native dimensions and at most 90 colors;
+`tools/stage_cartoon.py` adapts the existing feature-driven ambient work to the
+new palette/map. The four 256-byte phases, eight dynamic cells and
+`TRACE[115..118]` contract stay unchanged. Focused PPU/presentation/stage/menu
+  probes pass and all six current reports match the frozen SHA; the extended
+  technical evidence and `validate_release_evidence` also pass. Packaging and
+  human review remain open.
+
 ## Simulation
 
 Combat uses integer 12.4 fixed-point positions. Standing, crouching and airborne bodies use feet-relative contact rectangles independent of the 96x80 art canvas. The body half-width is ten pixels; action-specific vertical bands intersect the standing or crouching body. Throws use their exact profile range without the normal-attack reach padding. Equal-center overlaps and post-impact stage clamps are symmetric. Each attack has startup, active and recovery durations. Push boxes, direction, height, guard type and one-hit confirmation determine contact. Both normal-hit candidates are collected before resolving damage, allowing trades. Projectiles have independent lifetime, position and collision.
@@ -423,13 +528,13 @@ checks, including exact shadow geometry and the focused PPU assertions.
 `tools/test_inputs.py` covers SOCD neutralization,
 buffered attacks and jumps, true and shortcut motion commands, hitstop input
 capture, hit-confirm cancels, guard timing, animation freezing and the Training
-Select reset. On the corrected v0.9.0 SHA, all six reports pass: 2,595 gameplay,
+Select reset. On the historical corrected v0.9.0 SHA, all six reports pass: 2,595 gameplay,
 18,081 roster, 1,756 presentation, 997 focused-input, 8,131 stage and 622
 Training checks (32,182 total). The 288-by-600 matchup/stage/policy/replay/
 symmetry run, pinned bsnes smoke with bounded 48-by-600 coverage, endurance of
 216,356 live frames in each of three modes, fresh 214-asset export in 75.078
 seconds and
-`validate_release_evidence` also pass. The [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
+`validate_release_evidence` also pass. The historical [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
 is available and its archive audit passes 7,471 checks. The historical v0.7.1 snapshot had all five native reports passing
 against ROM SHA256
 `64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022`:
@@ -485,9 +590,17 @@ An earlier four-family 600-frame probe was too narrow to characterize worst-case
 audio or UI timing. Those v0.7.1 results remain historical; the historical
 v0.8.1 six-suite and broader technical evidence cover the expanded cases. Human
 review remains open; the v0.8.0 offline package and its 7,471 technical audit
-checks remain historical fallback evidence. The v0.9.0 reports and extended
-evidence now pass on the corrected SHA; the packaged v0.9.0 technical audit
-passes 7,471 checks. Two issues found during earlier integration shaped the implementation:
+checks remain historical fallback evidence. The historical v0.9.0 reports and
+extended evidence pass on the corrected SHA; the packaged v0.9.0 technical
+audit passes 7,471 checks. The verified v0.10.0 snapshot has all six reports
+matching its SHA (32,205 checks) plus focused PPU, presentation, stage and menu
+evidence; endurance, audio, matchup, pinned bsnes/independent compatibility
+evidence and `validate_release_evidence` all pass. The current [v0.10.0 Windows
+package](../dist/Abaqus-After-Hours-v0.10.0-Windows.zip) is available and its
+archive audit passes 7,472 checks. Human listening, gameplay, controller,
+likeness/consent and public-use review remain open, with
+`public_release_certified=false`.
+Two issues found during earlier integration shaped the implementation:
 
 1. C-level row-by-row sprite uploads exceeded vblank, leaving lower sprite rows blank. The native assembly transfer and one-pose budget fixed this class of failure; current validation still checks every row.
 2. This pinned 816-tcc build incorrectly lowers logical-OR expressions with

@@ -32,15 +32,15 @@
       "check": "native matchup sweep ROM identity object",
       "passed": true,
       "details": {
-        "sha256": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639",
-        "manifest_sha256": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639",
+        "sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
+        "manifest_sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
         "bytes": 4194304
       }
     },
     {
       "check": "native matchup sweep matches the exact current ROM",
       "passed": true,
-      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
+      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
     },
     {
       "check": "native matchup sweep ROM byte count",
@@ -44692,14 +44692,14 @@
       "check": "independent combat sweep ROM identity object",
       "passed": true,
       "details": {
-        "sha256": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639",
+        "sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
         "bytes": 4194304
       }
     },
     {
       "check": "independent combat sweep matches the exact current ROM",
       "passed": true,
-      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
+      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
     },
     {
       "check": "independent combat sweep ROM byte count",
@@ -44965,7 +44965,7 @@
         ],
         "audio": {
           "samples": 1036256,
-          "energy": 233943805711,
+          "energy": 234038042687,
           "peak": 3726
         }
       }
@@ -45159,7 +45159,7 @@
         ],
         "audio": {
           "samples": 1063978,
-          "energy": 230154942908,
+          "energy": 230533519341,
           "peak": 3640
         }
       }
@@ -45352,8 +45352,8 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1147146,
-          "energy": 258519224632,
+          "samples": 1147148,
+          "energy": 258524768074,
           "peak": 3904
         }
       }
@@ -45546,9 +45546,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1091724,
-          "energy": 250275284592,
-          "peak": 3716
+          "samples": 1091734,
+          "energy": 252171687660,
+          "peak": 3656
         }
       }
     },
@@ -45741,7 +45741,7 @@
         ],
         "audio": {
           "samples": 1174868,
-          "energy": 265012177968,
+          "energy": 264421729435,
           "peak": 3737
         }
       }
@@ -45934,9 +45934,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1202590,
-          "energy": 272305494244,
-          "peak": 3579
+          "samples": 1202592,
+          "energy": 272715444530,
+          "peak": 3712
         }
       }
     },
@@ -46129,8 +46129,8 @@
         ],
         "audio": {
           "samples": 1202624,
-          "energy": 261415643032,
-          "peak": 3493
+          "energy": 261647067077,
+          "peak": 3565
         }
       }
     },
@@ -46322,9 +46322,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1230314,
-          "energy": 267622764557,
-          "peak": 4258
+          "samples": 1230316,
+          "energy": 267834719483,
+          "peak": 3963
         }
       }
     },
@@ -46517,8 +46517,8 @@
         ],
         "audio": {
           "samples": 1313482,
-          "energy": 288768429144,
-          "peak": 3648
+          "energy": 288274793620,
+          "peak": 3568
         }
       }
     },
@@ -46710,9 +46710,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1258068,
-          "energy": 272952193812,
-          "peak": 4013
+          "samples": 1258058,
+          "energy": 272973086509,
+          "peak": 3830
         }
       }
     },
@@ -46905,8 +46905,8 @@
         ],
         "audio": {
           "samples": 1341206,
-          "energy": 304184798119,
-          "peak": 3745
+          "energy": 304428557152,
+          "peak": 3682
         }
       }
     },
@@ -47099,8 +47099,8 @@
         ],
         "audio": {
           "samples": 1368928,
-          "energy": 304840746354,
-          "peak": 3705
+          "energy": 305461213530,
+          "peak": 3712
         }
       }
     },
@@ -47292,9 +47292,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1368930,
-          "energy": 301452849444,
-          "peak": 3843
+          "samples": 1368952,
+          "energy": 301288434141,
+          "peak": 3875
         }
       }
     },
@@ -47486,9 +47486,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1396650,
-          "energy": 307006075172,
-          "peak": 4273
+          "samples": 1396652,
+          "energy": 307040717962,
+          "peak": 4266
         }
       }
     },
@@ -47680,9 +47680,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1479818,
-          "energy": 330963425991,
-          "peak": 4077
+          "samples": 1479820,
+          "energy": 331321817131,
+          "peak": 4001
         }
       }
     },
@@ -47874,8 +47874,8 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1424402,
-          "energy": 317557061572,
+          "samples": 1424400,
+          "energy": 321153232284,
           "peak": 3998
         }
       }
@@ -48069,8 +48069,8 @@
         ],
         "audio": {
           "samples": 1507542,
-          "energy": 346682787995,
-          "peak": 3967
+          "energy": 346724300512,
+          "peak": 4057
         }
       }
     },
@@ -48262,9 +48262,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1535266,
-          "energy": 351717490930,
-          "peak": 3579
+          "samples": 1535264,
+          "energy": 351651689551,
+          "peak": 3712
         }
       }
     },
@@ -48456,9 +48456,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1535294,
-          "energy": 351349988072,
-          "peak": 3860
+          "samples": 1535292,
+          "energy": 351880274734,
+          "peak": 3725
         }
       }
     },
@@ -48650,9 +48650,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1562986,
-          "energy": 353516592062,
-          "peak": 3771
+          "samples": 1562990,
+          "energy": 353794515887,
+          "peak": 3756
         }
       }
     },
@@ -48845,8 +48845,8 @@
         ],
         "audio": {
           "samples": 1647222,
-          "energy": 378339449013,
-          "peak": 3860
+          "energy": 378728669466,
+          "peak": 3811
         }
       }
     },
@@ -49038,9 +49038,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1590738,
-          "energy": 353570310682,
-          "peak": 3867
+          "samples": 1590744,
+          "energy": 353775598651,
+          "peak": 3845
         }
       }
     },
@@ -49233,8 +49233,8 @@
         ],
         "audio": {
           "samples": 1673880,
-          "energy": 373313389941,
-          "peak": 3368
+          "energy": 373236138423,
+          "peak": 3247
         }
       }
     },
@@ -49427,8 +49427,8 @@
         ],
         "audio": {
           "samples": 1701604,
-          "energy": 376772636238,
-          "peak": 3705
+          "energy": 376710996407,
+          "peak": 3579
         }
       }
     },
@@ -49621,8 +49621,8 @@
         ],
         "audio": {
           "samples": 1368952,
-          "energy": 323330121825,
-          "peak": 3623
+          "energy": 323277262526,
+          "peak": 3601
         }
       }
     },
@@ -49815,8 +49815,8 @@
         ],
         "audio": {
           "samples": 1396652,
-          "energy": 309348987724,
-          "peak": 3719
+          "energy": 308821380439,
+          "peak": 3643
         }
       }
     },
@@ -50009,7 +50009,7 @@
         ],
         "audio": {
           "samples": 1147146,
-          "energy": 264224799634,
+          "energy": 264430993061,
           "peak": 3892
         }
       }
@@ -50202,9 +50202,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1091702,
-          "energy": 242004150499,
-          "peak": 2984
+          "samples": 1091726,
+          "energy": 242712929591,
+          "peak": 3054
         }
       }
     },
@@ -50396,8 +50396,8 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1174870,
-          "energy": 267857149100,
+          "samples": 1174868,
+          "energy": 268078414897,
           "peak": 3597
         }
       }
@@ -50591,8 +50591,8 @@
         ],
         "audio": {
           "samples": 1202592,
-          "energy": 287746639659,
-          "peak": 3515
+          "energy": 287699000387,
+          "peak": 3712
         }
       }
     },
@@ -50784,9 +50784,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1202612,
-          "energy": 270394894081,
-          "peak": 3795
+          "samples": 1202596,
+          "energy": 270702742195,
+          "peak": 3770
         }
       }
     },
@@ -50978,9 +50978,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1230314,
-          "energy": 272397093725,
-          "peak": 3680
+          "samples": 1230316,
+          "energy": 272437635946,
+          "peak": 3640
         }
       }
     },
@@ -51173,8 +51173,8 @@
         ],
         "audio": {
           "samples": 1313482,
-          "energy": 298277772550,
-          "peak": 3683
+          "energy": 297480795352,
+          "peak": 3600
         }
       }
     },
@@ -51366,9 +51366,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1258072,
-          "energy": 274839868524,
-          "peak": 3759
+          "samples": 1258064,
+          "energy": 274801769329,
+          "peak": 3751
         }
       }
     },
@@ -51560,9 +51560,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1341208,
-          "energy": 304813289487,
-          "peak": 3769
+          "samples": 1341206,
+          "energy": 304389459841,
+          "peak": 3577
         }
       }
     },
@@ -51755,8 +51755,8 @@
         ],
         "audio": {
           "samples": 1368928,
-          "energy": 299767176377,
-          "peak": 3609
+          "energy": 299767653856,
+          "peak": 3668
         }
       }
     },
@@ -51948,9 +51948,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1368956,
-          "energy": 297247694126,
-          "peak": 3172
+          "samples": 1368948,
+          "energy": 297510885057,
+          "peak": 3201
         }
       }
     },
@@ -52143,8 +52143,8 @@
         ],
         "audio": {
           "samples": 1396652,
-          "energy": 308519975557,
-          "peak": 4258
+          "energy": 308662913083,
+          "peak": 4345
         }
       }
     },
@@ -52337,8 +52337,8 @@
         ],
         "audio": {
           "samples": 1479820,
-          "energy": 347793006281,
-          "peak": 3621
+          "energy": 347756509635,
+          "peak": 3625
         }
       }
     },
@@ -52530,9 +52530,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1424398,
-          "energy": 317479421751,
-          "peak": 4116
+          "samples": 1424374,
+          "energy": 317837783845,
+          "peak": 4159
         }
       }
     },
@@ -52725,7 +52725,7 @@
         ],
         "audio": {
           "samples": 1507542,
-          "energy": 343577119615,
+          "energy": 343920155074,
           "peak": 3461
         }
       }
@@ -52919,7 +52919,7 @@
         ],
         "audio": {
           "samples": 1535264,
-          "energy": 351347632444,
+          "energy": 351703857635,
           "peak": 3683
         }
       }
@@ -53113,7 +53113,7 @@
         ],
         "audio": {
           "samples": 1535294,
-          "energy": 347669449709,
+          "energy": 347679399595,
           "peak": 4440
         }
       }
@@ -53307,7 +53307,7 @@
         ],
         "audio": {
           "samples": 1562988,
-          "energy": 360492229680,
+          "energy": 360658310945,
           "peak": 3503
         }
       }
@@ -53501,7 +53501,7 @@
         ],
         "audio": {
           "samples": 1647222,
-          "energy": 370445150609,
+          "energy": 370079108338,
           "peak": 3705
         }
       }
@@ -53694,9 +53694,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1590744,
-          "energy": 347027688477,
-          "peak": 3672
+          "samples": 1590740,
+          "energy": 347161389913,
+          "peak": 3677
         }
       }
     },
@@ -53889,8 +53889,8 @@
         ],
         "audio": {
           "samples": 1341206,
-          "energy": 306607629517,
-          "peak": 3670
+          "energy": 306011771215,
+          "peak": 3792
         }
       }
     },
@@ -54083,8 +54083,8 @@
         ],
         "audio": {
           "samples": 1368928,
-          "energy": 303863736918,
-          "peak": 3609
+          "energy": 303478488409,
+          "peak": 3579
         }
       }
     },
@@ -54171,7 +54171,7 @@
     {
       "check": "endurance gate matches the exact current ROM",
       "passed": true,
-      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
+      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
     },
     {
       "check": "endurance gate ROM byte count",
@@ -54349,7 +54349,7 @@
           "coverage_required": true,
           "live_frames": 216356,
           "live_segments": 297,
-          "elapsed_seconds": 206.844,
+          "elapsed_seconds": 175.672,
           "rosters": [
             {
               "fighter1": 0,
@@ -54490,12 +54490,12 @@
             224
           ],
           "audio_samples": 162592006,
-          "audio_nonzero_batches": 2199,
-          "audio_peak_sampled": 3475,
+          "audio_nonzero_batches": 2198,
+          "audio_peak_sampled": 3428,
           "trace_magic_samples": 304699,
           "video_fps": 60.098811862348406,
           "audio_sample_rate": 32040.0,
-          "rom_sha256": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639",
+          "rom_sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
           "benchmark": false,
           "core_frames_including_boot": 304981,
           "core": {
@@ -54520,7 +54520,7 @@
           "coverage_required": true,
           "live_frames": 216356,
           "live_segments": 246,
-          "elapsed_seconds": 197.406,
+          "elapsed_seconds": 168.203,
           "rosters": [
             {
               "fighter1": 3,
@@ -54720,12 +54720,12 @@
             224
           ],
           "audio_samples": 154599441,
-          "audio_nonzero_batches": 2071,
-          "audio_peak_sampled": 3457,
+          "audio_nonzero_batches": 2070,
+          "audio_peak_sampled": 3281,
           "trace_magic_samples": 289554,
           "video_fps": 60.098811862348406,
           "audio_sample_rate": 32040.0,
-          "rom_sha256": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639",
+          "rom_sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
           "benchmark": false,
           "core_frames_including_boot": 289989,
           "core": {
@@ -54750,7 +54750,7 @@
           "coverage_required": true,
           "live_frames": 216356,
           "live_segments": 10,
-          "elapsed_seconds": 161.641,
+          "elapsed_seconds": 133.875,
           "rosters": [
             {
               "fighter1": 6,
@@ -54934,12 +54934,12 @@
             224
           ],
           "audio_samples": 116784564,
-          "audio_nonzero_batches": 1567,
-          "audio_peak_sampled": 3393,
+          "audio_nonzero_batches": 1568,
+          "audio_peak_sampled": 3343,
           "trace_magic_samples": 218606,
           "video_fps": 60.098811862348406,
           "audio_sample_rate": 32040.0,
-          "rom_sha256": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639",
+          "rom_sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
           "benchmark": false,
           "core_frames_including_boot": 219058,
           "core": {
@@ -55007,7 +55007,7 @@
     {
       "check": "endurance gate mode 0 matches the exact current ROM",
       "passed": true,
-      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
+      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
     },
     {
       "check": "endurance gate mode 0 native core identity exists",
@@ -55168,7 +55168,7 @@
       "passed": true,
       "details": {
         "samples": 162592006,
-        "nonzero": 2199,
+        "nonzero": 2198,
         "rate": 32040.0
       }
     },
@@ -55183,7 +55183,7 @@
     {
       "check": "endurance gate mode 0 reports its ROM hash",
       "passed": true,
-      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
+      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
     },
     {
       "check": "endurance gate mode is an object",
@@ -55198,7 +55198,7 @@
     {
       "check": "endurance gate mode 1 matches the exact current ROM",
       "passed": true,
-      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
+      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
     },
     {
       "check": "endurance gate mode 1 native core identity exists",
@@ -55355,7 +55355,7 @@
       "passed": true,
       "details": {
         "samples": 154599441,
-        "nonzero": 2071,
+        "nonzero": 2070,
         "rate": 32040.0
       }
     },
@@ -55370,7 +55370,7 @@
     {
       "check": "endurance gate mode 1 reports its ROM hash",
       "passed": true,
-      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
+      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
     },
     {
       "check": "endurance gate mode is an object",
@@ -55385,7 +55385,7 @@
     {
       "check": "endurance gate mode 2 matches the exact current ROM",
       "passed": true,
-      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
+      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
     },
     {
       "check": "endurance gate mode 2 native core identity exists",
@@ -55544,7 +55544,7 @@
       "passed": true,
       "details": {
         "samples": 116784564,
-        "nonzero": 1567,
+        "nonzero": 1568,
         "rate": 32040.0
       }
     },
@@ -55559,7 +55559,7 @@
     {
       "check": "endurance gate mode 2 reports its ROM hash",
       "passed": true,
-      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
+      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
     },
     {
       "check": "endurance gate total frames meet the target",
@@ -55578,12 +55578,12 @@
     {
       "check": "fresh committed-source build matches the exact current ROM",
       "passed": true,
-      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
+      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
     },
     {
       "check": "fresh committed-source build rebuilt ROM matches the exact current ROM",
       "passed": true,
-      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
+      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
     },
     {
       "check": "fresh committed-source build build succeeded",
@@ -55662,7 +55662,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas.png",
-        "sha256": "75b20e7ea2e39fdb88b1cb90d48706699385f02368edbf021ac7a4d916ebd66b",
+        "sha256": "f9df3a55175055abfd0520cbf011bb3bafb83eda4ab51e403306bac5a3e55c2c",
         "comparison": "exact bytes"
       }
     },
@@ -55671,7 +55671,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas.png",
-        "sha256": "75b20e7ea2e39fdb88b1cb90d48706699385f02368edbf021ac7a4d916ebd66b",
+        "sha256": "f9df3a55175055abfd0520cbf011bb3bafb83eda4ab51e403306bac5a3e55c2c",
         "comparison": "exact bytes"
       }
     },
@@ -55685,7 +55685,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas_map.bin",
-        "sha256": "3d3b2dfd1d41b44f077cc525e4da8c1028419cc004e5aecf7881e0f21b7d2ab1",
+        "sha256": "ea2a75eaa3f768993685241564c2f828ae8f872a41812981917512190698e5ad",
         "comparison": "exact bytes"
       }
     },
@@ -55694,7 +55694,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas_map.bin",
-        "sha256": "3d3b2dfd1d41b44f077cc525e4da8c1028419cc004e5aecf7881e0f21b7d2ab1",
+        "sha256": "ea2a75eaa3f768993685241564c2f828ae8f872a41812981917512190698e5ad",
         "comparison": "exact bytes"
       }
     },
@@ -55708,7 +55708,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas_pal.bin",
-        "sha256": "05850993d823fa42ef43f5f0bc71806906f34d37965be043bd330be726728037",
+        "sha256": "7936a7ea2d8ec810b1987cd91e8b346ff1c046f5d2941f2d7c25348f0e76941b",
         "comparison": "exact bytes"
       }
     },
@@ -55717,7 +55717,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas_pal.bin",
-        "sha256": "05850993d823fa42ef43f5f0bc71806906f34d37965be043bd330be726728037",
+        "sha256": "7936a7ea2d8ec810b1987cd91e8b346ff1c046f5d2941f2d7c25348f0e76941b",
         "comparison": "exact bytes"
       }
     },
@@ -55731,7 +55731,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas_tiles.bin",
-        "sha256": "960c629bee711a8834afb547763c042fe58c3149d9675ae60a29f32889107fef",
+        "sha256": "6c8d496208135ae8f5f61d473d683e1088d4c99469555f74ceb333d09404d1fe",
         "comparison": "exact bytes"
       }
     },
@@ -55740,7 +55740,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas_tiles.bin",
-        "sha256": "960c629bee711a8834afb547763c042fe58c3149d9675ae60a29f32889107fef",
+        "sha256": "6c8d496208135ae8f5f61d473d683e1088d4c99469555f74ceb333d09404d1fe",
         "comparison": "exact bytes"
       }
     },
@@ -55754,7 +55754,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/assets.h",
-        "sha256": "ac00bc3c2ba01a34698137dc640e8f198689edc20bb86e37a7d27fbf06b53b6e",
+        "sha256": "9c0d440711caed362b4d80833e16d35661d6a38dd493210e4fe02e1f2baca33f",
         "comparison": "LF-normalized text"
       }
     },
@@ -55763,7 +55763,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/assets.h",
-        "sha256": "ac00bc3c2ba01a34698137dc640e8f198689edc20bb86e37a7d27fbf06b53b6e",
+        "sha256": "9c0d440711caed362b4d80833e16d35661d6a38dd493210e4fe02e1f2baca33f",
         "comparison": "LF-normalized text"
       }
     },
@@ -60078,7 +60078,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage-dynamics.json",
-        "sha256": "69f46b209c40ab4dfe47c7e1a8412cc4f57750a751ebd3a0b6a0ce8ed0aec55f",
+        "sha256": "1d1ea5e2b67fac083fb9afd827abb4cc581825d71c573f19fe3efd9380402ced",
         "comparison": "LF-normalized text"
       }
     },
@@ -60087,7 +60087,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage-dynamics.json",
-        "sha256": "69f46b209c40ab4dfe47c7e1a8412cc4f57750a751ebd3a0b6a0ce8ed0aec55f",
+        "sha256": "1d1ea5e2b67fac083fb9afd827abb4cc581825d71c573f19fe3efd9380402ced",
         "comparison": "LF-normalized text"
       }
     },
@@ -60101,7 +60101,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage0.png",
-        "sha256": "98b42b663fdabe4d8d3ec3aa5fd9978a599498201512e54a57aa926ff5244c06",
+        "sha256": "fffee46a254f8f4c3a71445fdf8f555d722ddb926d0321f467f3eebb4aa28151",
         "comparison": "exact bytes"
       }
     },
@@ -60110,7 +60110,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage0.png",
-        "sha256": "98b42b663fdabe4d8d3ec3aa5fd9978a599498201512e54a57aa926ff5244c06",
+        "sha256": "fffee46a254f8f4c3a71445fdf8f555d722ddb926d0321f467f3eebb4aa28151",
         "comparison": "exact bytes"
       }
     },
@@ -60124,7 +60124,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage0_ambient.bin",
-        "sha256": "69514543a0be59c5a619ccf3e54f8b0ec60cfacead0739230788464ef7c78df7",
+        "sha256": "c04aadd73505ef5d9023b355cc952f33ed5b8cf8fe566a7c6b3d2663a603c165",
         "comparison": "exact bytes"
       }
     },
@@ -60133,7 +60133,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage0_ambient.bin",
-        "sha256": "69514543a0be59c5a619ccf3e54f8b0ec60cfacead0739230788464ef7c78df7",
+        "sha256": "c04aadd73505ef5d9023b355cc952f33ed5b8cf8fe566a7c6b3d2663a603c165",
         "comparison": "exact bytes"
       }
     },
@@ -60147,7 +60147,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage0_map.bin",
-        "sha256": "9bbbb485f290e2c04e5efae30b0c23d3118394d66459124bdc8cf3a91a59291b",
+        "sha256": "4c20ec0f333139dddbddd48eebf9d92792e584950764948d3c97d284fa9fc53f",
         "comparison": "exact bytes"
       }
     },
@@ -60156,7 +60156,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage0_map.bin",
-        "sha256": "9bbbb485f290e2c04e5efae30b0c23d3118394d66459124bdc8cf3a91a59291b",
+        "sha256": "4c20ec0f333139dddbddd48eebf9d92792e584950764948d3c97d284fa9fc53f",
         "comparison": "exact bytes"
       }
     },
@@ -60170,7 +60170,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage0_pal.bin",
-        "sha256": "486861231b7b8f79a987787b742685c8d1a2e772f7509b8d04ff5421d89b71b2",
+        "sha256": "8e5022cba1b658c44ec484ac05c4c2b0e0188ff793c857c316b832afc3957435",
         "comparison": "exact bytes"
       }
     },
@@ -60179,7 +60179,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage0_pal.bin",
-        "sha256": "486861231b7b8f79a987787b742685c8d1a2e772f7509b8d04ff5421d89b71b2",
+        "sha256": "8e5022cba1b658c44ec484ac05c4c2b0e0188ff793c857c316b832afc3957435",
         "comparison": "exact bytes"
       }
     },
@@ -60193,7 +60193,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage0_tiles.bin",
-        "sha256": "1719e6f6fefb7493246d2ff7f89c5858d962480aac8caee9d3a6800aba21e2d1",
+        "sha256": "3ffecd14a27ba0751446d84613cc280dccdc350c19cf1fbefbc9fe87699981bd",
         "comparison": "exact bytes"
       }
     },
@@ -60202,7 +60202,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage0_tiles.bin",
-        "sha256": "1719e6f6fefb7493246d2ff7f89c5858d962480aac8caee9d3a6800aba21e2d1",
+        "sha256": "3ffecd14a27ba0751446d84613cc280dccdc350c19cf1fbefbc9fe87699981bd",
         "comparison": "exact bytes"
       }
     },
@@ -60216,7 +60216,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage1.png",
-        "sha256": "523e9bdfcbc7856bddb1b8f365e9ba7eacbe807c7fd82d0b262ef63dfb6ddb2a",
+        "sha256": "f0793bead9f2bd72f7409b685475e67f089a8ad1cc093931d7e910516a7dd71a",
         "comparison": "exact bytes"
       }
     },
@@ -60225,7 +60225,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage1.png",
-        "sha256": "523e9bdfcbc7856bddb1b8f365e9ba7eacbe807c7fd82d0b262ef63dfb6ddb2a",
+        "sha256": "f0793bead9f2bd72f7409b685475e67f089a8ad1cc093931d7e910516a7dd71a",
         "comparison": "exact bytes"
       }
     },
@@ -60239,7 +60239,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage1_ambient.bin",
-        "sha256": "6bf52d6447f5daa2f5e0e7a9a990c6853f57c2a0dd3e89ec2beebbf5d449a773",
+        "sha256": "23a821d2fc3f885143c6a43c9605f65545ee9c9465912a980e6c22f4baef8d0b",
         "comparison": "exact bytes"
       }
     },
@@ -60248,7 +60248,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage1_ambient.bin",
-        "sha256": "6bf52d6447f5daa2f5e0e7a9a990c6853f57c2a0dd3e89ec2beebbf5d449a773",
+        "sha256": "23a821d2fc3f885143c6a43c9605f65545ee9c9465912a980e6c22f4baef8d0b",
         "comparison": "exact bytes"
       }
     },
@@ -60262,7 +60262,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage1_map.bin",
-        "sha256": "d8450a08b1b3ecad563b1d4c8261551149c188aef18c26339dfaedab97559509",
+        "sha256": "ae232ab76164ee2d8f9d78dd3bde73b529b832ca09e92365136619f86fcc7b6c",
         "comparison": "exact bytes"
       }
     },
@@ -60271,7 +60271,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage1_map.bin",
-        "sha256": "d8450a08b1b3ecad563b1d4c8261551149c188aef18c26339dfaedab97559509",
+        "sha256": "ae232ab76164ee2d8f9d78dd3bde73b529b832ca09e92365136619f86fcc7b6c",
         "comparison": "exact bytes"
       }
     },
@@ -60285,7 +60285,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage1_pal.bin",
-        "sha256": "df1bc9a50d24258aff8ed8f0b89ce0cf2c6f7a043805eb7c4421ef52f7bf286b",
+        "sha256": "16c6fd3f3912063645f55e452a337471c310df0c7d76c4f6e460aef90fe0e581",
         "comparison": "exact bytes"
       }
     },
@@ -60294,7 +60294,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage1_pal.bin",
-        "sha256": "df1bc9a50d24258aff8ed8f0b89ce0cf2c6f7a043805eb7c4421ef52f7bf286b",
+        "sha256": "16c6fd3f3912063645f55e452a337471c310df0c7d76c4f6e460aef90fe0e581",
         "comparison": "exact bytes"
       }
     },
@@ -60308,7 +60308,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage1_tiles.bin",
-        "sha256": "932a156854379ad7ad472ee8a5b839249105a39144c0ed10664a0ebe38feae44",
+        "sha256": "47901637a5478f2a1a3cac99d3cc8c740faac8486b10f47980050117efba6c28",
         "comparison": "exact bytes"
       }
     },
@@ -60317,7 +60317,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage1_tiles.bin",
-        "sha256": "932a156854379ad7ad472ee8a5b839249105a39144c0ed10664a0ebe38feae44",
+        "sha256": "47901637a5478f2a1a3cac99d3cc8c740faac8486b10f47980050117efba6c28",
         "comparison": "exact bytes"
       }
     },
@@ -60331,7 +60331,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage2.png",
-        "sha256": "25131e236d0ee9b1e6056b6385feac817feb4c95d4649c8956a880c1dc7be75a",
+        "sha256": "2c687ca691682b3cf81bef0a2b49276200f7efb52d6153a86e7f647b171ca1e4",
         "comparison": "exact bytes"
       }
     },
@@ -60340,7 +60340,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage2.png",
-        "sha256": "25131e236d0ee9b1e6056b6385feac817feb4c95d4649c8956a880c1dc7be75a",
+        "sha256": "2c687ca691682b3cf81bef0a2b49276200f7efb52d6153a86e7f647b171ca1e4",
         "comparison": "exact bytes"
       }
     },
@@ -60354,7 +60354,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage2_ambient.bin",
-        "sha256": "189fdc3f39783425e83a8fee345aed55bf63a1a392bf01fdd1f366fa05b213d2",
+        "sha256": "54f1ad7b421c05accf8d5026877ce4b2621b2e9df51e4fb5bb115388a9003a6c",
         "comparison": "exact bytes"
       }
     },
@@ -60363,7 +60363,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage2_ambient.bin",
-        "sha256": "189fdc3f39783425e83a8fee345aed55bf63a1a392bf01fdd1f366fa05b213d2",
+        "sha256": "54f1ad7b421c05accf8d5026877ce4b2621b2e9df51e4fb5bb115388a9003a6c",
         "comparison": "exact bytes"
       }
     },
@@ -60377,7 +60377,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage2_map.bin",
-        "sha256": "f3ebb09187a7584e35a51080fa26bb760c9d4dfabb818cf71bbb754c4a4094b7",
+        "sha256": "3ad316f989f5675836b291ae5c55e507b9ad5ad760f59c3716ffa91dcd0c896f",
         "comparison": "exact bytes"
       }
     },
@@ -60386,7 +60386,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage2_map.bin",
-        "sha256": "f3ebb09187a7584e35a51080fa26bb760c9d4dfabb818cf71bbb754c4a4094b7",
+        "sha256": "3ad316f989f5675836b291ae5c55e507b9ad5ad760f59c3716ffa91dcd0c896f",
         "comparison": "exact bytes"
       }
     },
@@ -60400,7 +60400,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage2_pal.bin",
-        "sha256": "39c31f63946881b7552220432f76a43587acc9ced9d086af5770a56129cef660",
+        "sha256": "a2dd9adc74ba3a160e475807a1df7d71a53e6cc1596a67dc80aa7839b7b763e6",
         "comparison": "exact bytes"
       }
     },
@@ -60409,7 +60409,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage2_pal.bin",
-        "sha256": "39c31f63946881b7552220432f76a43587acc9ced9d086af5770a56129cef660",
+        "sha256": "a2dd9adc74ba3a160e475807a1df7d71a53e6cc1596a67dc80aa7839b7b763e6",
         "comparison": "exact bytes"
       }
     },
@@ -60423,7 +60423,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage2_tiles.bin",
-        "sha256": "f404464347bd152510e55c172e1fccada7c97cd82189ab55a849bcbb1d7bc697",
+        "sha256": "7186e4af772afd802d4e34d8e3260da4270147a536342a44a2c4b483b5503b47",
         "comparison": "exact bytes"
       }
     },
@@ -60432,7 +60432,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/stage2_tiles.bin",
-        "sha256": "f404464347bd152510e55c172e1fccada7c97cd82189ab55a849bcbb1d7bc697",
+        "sha256": "7186e4af772afd802d4e34d8e3260da4270147a536342a44a2c4b483b5503b47",
         "comparison": "exact bytes"
       }
     },
@@ -60587,20 +60587,20 @@
     {
       "check": "fresh build records a source commit",
       "passed": true,
-      "details": "76f0a08a7562800df01507db83c6877745c3bdcf"
+      "details": "8536bb6956212952c17302a62cc6c1de7e12a65d"
     },
     {
       "check": "fresh source tree matches source commit",
       "passed": true,
       "details": {
-        "expected": "f37852da57a42d2d6819374db5d23278d12587a5",
-        "actual": "f37852da57a42d2d6819374db5d23278d12587a5"
+        "expected": "d524d3f960600dc5c9ff83578ac73675f9798735",
+        "actual": "d524d3f960600dc5c9ff83578ac73675f9798735"
       }
     },
     {
       "check": "fresh source commit is an ancestor of release HEAD",
       "passed": true,
-      "details": "76f0a08a7562800df01507db83c6877745c3bdcf"
+      "details": "8536bb6956212952c17302a62cc6c1de7e12a65d"
     },
     {
       "check": "fresh source inputs unchanged since source commit",
@@ -60611,8 +60611,8 @@
       "check": "fresh source commit/tree provenance",
       "passed": true,
       "details": {
-        "commit": "76f0a08a7562800df01507db83c6877745c3bdcf",
-        "tree": "f37852da57a42d2d6819374db5d23278d12587a5"
+        "commit": "8536bb6956212952c17302a62cc6c1de7e12a65d",
+        "tree": "d524d3f960600dc5c9ff83578ac73675f9798735"
       }
     },
     {
@@ -60623,7 +60623,7 @@
     {
       "check": "native Training suite matches the exact current ROM",
       "passed": true,
-      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
+      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
     },
     {
       "check": "native Training suite ROM byte count",
@@ -140166,7 +140166,7 @@
             "total": 736,
             "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
             "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-controls.png",
-            "vram_sha256": "21a64247bceef8787f6d0bf83d867402bc0cf004aca586595954997f42b9e6a3"
+            "vram_sha256": "6207a9b05bd2a76e86d8d4ed33ed82e38fdea0cfba2cc069fcad7bc247e758c6"
           },
           "specials": {
             "label": "mode0-specials",
@@ -140174,7 +140174,7 @@
             "total": 736,
             "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n         MOVE LIST 2/2\n\n\n   P1  DAMIAN\n       KERNEL BURST\n       FORWARD PROJECTILE\n   P2  IVO\n       CAPITAL WAVE\n       FORWARD PROJECTILE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
             "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-specials.png",
-            "vram_sha256": "74e844434d94f1d4166dcbb5278e4ac0ae33d629795be09ad2485a2ad8855149"
+            "vram_sha256": "8477a1e8ea382c5b1e68d33d4ed5cf0badb8c8571c20359d8fb6bc81630f5063"
           },
           "page_history": [
             {
@@ -140195,7 +140195,7 @@
             "total": 736,
             "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
             "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-controls.png",
-            "vram_sha256": "8c72e124ac1840b4457962450572cf09b12059e21f47cc12d305ba106959c0a4"
+            "vram_sha256": "b262f29ccd3f94b87b8fc6101c150fb97b60d3a05696a26cb49a8dfd38c8e918"
           },
           "specials": {
             "label": "mode1-specials",
@@ -140203,7 +140203,7 @@
             "total": 736,
             "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n         MOVE LIST 2/2\n\n\n   P1  CRISTOBAL\n       ATOMIC PUSH\n       ADVANCING STRIKE\n   P2  DAVID\n       AUDIT STRIKE\n       RISING STRIKE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
             "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-specials.png",
-            "vram_sha256": "874a3c90d8c35d3dee6dffbc750af50ccb2b6cfc1e4a2e88737b933738492ce9"
+            "vram_sha256": "da8562c60827cdebd0be70bcd99f5dd0d815efa619d173d9c53b73d8bb21223c"
           },
           "page_history": [
             {
@@ -140224,7 +140224,7 @@
             "total": 736,
             "text": " NEGGER        99   DAVID\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
             "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-controls.png",
-            "vram_sha256": "c0df2aafcc177b197677dc9d5637694804f22d30f390972f0fac85188db30ce2"
+            "vram_sha256": "06b2033d2d57fe7a0aa734cf9ce98aaff0f8e4a5adcd3f7f977f368b7336ab28"
           },
           "specials": {
             "label": "mode2-specials",
@@ -140232,7 +140232,7 @@
             "total": 736,
             "text": " NEGGER        99   DAVID\n               KO\n             ROUND 1\n\n            TRAINING\n\n         MOVE LIST 2/2\n\n\n   P1  NEGGER\n       MACRO SHOCK\n       LOW SHOCKWAVE\n   P2  DAVID\n       AUDIT STRIKE\n       RISING STRIKE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
             "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-specials.png",
-            "vram_sha256": "90785fd35f53ac04142f5849771655180901d534e669973916957f297a11c842"
+            "vram_sha256": "251c6f920f8db98aeb31839906a7b6ec081e45b6879fe9f88883c5aa0ecaac03"
           },
           "page_history": [
             {
@@ -140258,7 +140258,7 @@
           "total": 736,
           "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-controls.png",
-          "vram_sha256": "21a64247bceef8787f6d0bf83d867402bc0cf004aca586595954997f42b9e6a3"
+          "vram_sha256": "6207a9b05bd2a76e86d8d4ed33ed82e38fdea0cfba2cc069fcad7bc247e758c6"
         },
         "specials": {
           "label": "mode0-specials",
@@ -140266,7 +140266,7 @@
           "total": 736,
           "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n         MOVE LIST 2/2\n\n\n   P1  DAMIAN\n       KERNEL BURST\n       FORWARD PROJECTILE\n   P2  IVO\n       CAPITAL WAVE\n       FORWARD PROJECTILE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-specials.png",
-          "vram_sha256": "74e844434d94f1d4166dcbb5278e4ac0ae33d629795be09ad2485a2ad8855149"
+          "vram_sha256": "8477a1e8ea382c5b1e68d33d4ed5cf0badb8c8571c20359d8fb6bc81630f5063"
         },
         "page_history": [
           {
@@ -140308,7 +140308,7 @@
         "total": 736,
         "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
         "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-controls.png",
-        "vram_sha256": "21a64247bceef8787f6d0bf83d867402bc0cf004aca586595954997f42b9e6a3"
+        "vram_sha256": "6207a9b05bd2a76e86d8d4ed33ed82e38fdea0cfba2cc069fcad7bc247e758c6"
       }
     },
     {
@@ -140332,7 +140332,7 @@
     {
       "check": "native Training mode coverage mode 0 controls VRAM digest is a SHA-256 digest",
       "passed": true,
-      "details": "21a64247bceef8787f6d0bf83d867402bc0cf004aca586595954997f42b9e6a3"
+      "details": "6207a9b05bd2a76e86d8d4ed33ed82e38fdea0cfba2cc069fcad7bc247e758c6"
     },
     {
       "check": "native Training mode coverage mode 0 specials card exists",
@@ -140343,7 +140343,7 @@
         "total": 736,
         "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n         MOVE LIST 2/2\n\n\n   P1  DAMIAN\n       KERNEL BURST\n       FORWARD PROJECTILE\n   P2  IVO\n       CAPITAL WAVE\n       FORWARD PROJECTILE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
         "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-specials.png",
-        "vram_sha256": "74e844434d94f1d4166dcbb5278e4ac0ae33d629795be09ad2485a2ad8855149"
+        "vram_sha256": "8477a1e8ea382c5b1e68d33d4ed5cf0badb8c8571c20359d8fb6bc81630f5063"
       }
     },
     {
@@ -140367,7 +140367,7 @@
     {
       "check": "native Training mode coverage mode 0 specials VRAM digest is a SHA-256 digest",
       "passed": true,
-      "details": "74e844434d94f1d4166dcbb5278e4ac0ae33d629795be09ad2485a2ad8855149"
+      "details": "8477a1e8ea382c5b1e68d33d4ed5cf0badb8c8571c20359d8fb6bc81630f5063"
     },
     {
       "check": "native Training mode coverage page history exists",
@@ -140414,7 +140414,7 @@
           "total": 736,
           "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-controls.png",
-          "vram_sha256": "8c72e124ac1840b4457962450572cf09b12059e21f47cc12d305ba106959c0a4"
+          "vram_sha256": "b262f29ccd3f94b87b8fc6101c150fb97b60d3a05696a26cb49a8dfd38c8e918"
         },
         "specials": {
           "label": "mode1-specials",
@@ -140422,7 +140422,7 @@
           "total": 736,
           "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n         MOVE LIST 2/2\n\n\n   P1  CRISTOBAL\n       ATOMIC PUSH\n       ADVANCING STRIKE\n   P2  DAVID\n       AUDIT STRIKE\n       RISING STRIKE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-specials.png",
-          "vram_sha256": "874a3c90d8c35d3dee6dffbc750af50ccb2b6cfc1e4a2e88737b933738492ce9"
+          "vram_sha256": "da8562c60827cdebd0be70bcd99f5dd0d815efa619d173d9c53b73d8bb21223c"
         },
         "page_history": [
           {
@@ -140464,7 +140464,7 @@
         "total": 736,
         "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
         "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-controls.png",
-        "vram_sha256": "8c72e124ac1840b4457962450572cf09b12059e21f47cc12d305ba106959c0a4"
+        "vram_sha256": "b262f29ccd3f94b87b8fc6101c150fb97b60d3a05696a26cb49a8dfd38c8e918"
       }
     },
     {
@@ -140488,7 +140488,7 @@
     {
       "check": "native Training mode coverage mode 1 controls VRAM digest is a SHA-256 digest",
       "passed": true,
-      "details": "8c72e124ac1840b4457962450572cf09b12059e21f47cc12d305ba106959c0a4"
+      "details": "b262f29ccd3f94b87b8fc6101c150fb97b60d3a05696a26cb49a8dfd38c8e918"
     },
     {
       "check": "native Training mode coverage mode 1 specials card exists",
@@ -140499,7 +140499,7 @@
         "total": 736,
         "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n         MOVE LIST 2/2\n\n\n   P1  CRISTOBAL\n       ATOMIC PUSH\n       ADVANCING STRIKE\n   P2  DAVID\n       AUDIT STRIKE\n       RISING STRIKE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
         "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-specials.png",
-        "vram_sha256": "874a3c90d8c35d3dee6dffbc750af50ccb2b6cfc1e4a2e88737b933738492ce9"
+        "vram_sha256": "da8562c60827cdebd0be70bcd99f5dd0d815efa619d173d9c53b73d8bb21223c"
       }
     },
     {
@@ -140523,7 +140523,7 @@
     {
       "check": "native Training mode coverage mode 1 specials VRAM digest is a SHA-256 digest",
       "passed": true,
-      "details": "874a3c90d8c35d3dee6dffbc750af50ccb2b6cfc1e4a2e88737b933738492ce9"
+      "details": "da8562c60827cdebd0be70bcd99f5dd0d815efa619d173d9c53b73d8bb21223c"
     },
     {
       "check": "native Training mode coverage page history exists",
@@ -140570,7 +140570,7 @@
           "total": 736,
           "text": " NEGGER        99   DAVID\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-controls.png",
-          "vram_sha256": "c0df2aafcc177b197677dc9d5637694804f22d30f390972f0fac85188db30ce2"
+          "vram_sha256": "06b2033d2d57fe7a0aa734cf9ce98aaff0f8e4a5adcd3f7f977f368b7336ab28"
         },
         "specials": {
           "label": "mode2-specials",
@@ -140578,7 +140578,7 @@
           "total": 736,
           "text": " NEGGER        99   DAVID\n               KO\n             ROUND 1\n\n            TRAINING\n\n         MOVE LIST 2/2\n\n\n   P1  NEGGER\n       MACRO SHOCK\n       LOW SHOCKWAVE\n   P2  DAVID\n       AUDIT STRIKE\n       RISING STRIKE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-specials.png",
-          "vram_sha256": "90785fd35f53ac04142f5849771655180901d534e669973916957f297a11c842"
+          "vram_sha256": "251c6f920f8db98aeb31839906a7b6ec081e45b6879fe9f88883c5aa0ecaac03"
         },
         "page_history": [
           {
@@ -140620,7 +140620,7 @@
         "total": 736,
         "text": " NEGGER        99   DAVID\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
         "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-controls.png",
-        "vram_sha256": "c0df2aafcc177b197677dc9d5637694804f22d30f390972f0fac85188db30ce2"
+        "vram_sha256": "06b2033d2d57fe7a0aa734cf9ce98aaff0f8e4a5adcd3f7f977f368b7336ab28"
       }
     },
     {
@@ -140644,7 +140644,7 @@
     {
       "check": "native Training mode coverage mode 2 controls VRAM digest is a SHA-256 digest",
       "passed": true,
-      "details": "c0df2aafcc177b197677dc9d5637694804f22d30f390972f0fac85188db30ce2"
+      "details": "06b2033d2d57fe7a0aa734cf9ce98aaff0f8e4a5adcd3f7f977f368b7336ab28"
     },
     {
       "check": "native Training mode coverage mode 2 specials card exists",
@@ -140655,7 +140655,7 @@
         "total": 736,
         "text": " NEGGER        99   DAVID\n               KO\n             ROUND 1\n\n            TRAINING\n\n         MOVE LIST 2/2\n\n\n   P1  NEGGER\n       MACRO SHOCK\n       LOW SHOCKWAVE\n   P2  DAVID\n       AUDIT STRIKE\n       RISING STRIKE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
         "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-specials.png",
-        "vram_sha256": "90785fd35f53ac04142f5849771655180901d534e669973916957f297a11c842"
+        "vram_sha256": "251c6f920f8db98aeb31839906a7b6ec081e45b6879fe9f88883c5aa0ecaac03"
       }
     },
     {
@@ -140679,7 +140679,7 @@
     {
       "check": "native Training mode coverage mode 2 specials VRAM digest is a SHA-256 digest",
       "passed": true,
-      "details": "90785fd35f53ac04142f5849771655180901d534e669973916957f297a11c842"
+      "details": "251c6f920f8db98aeb31839906a7b6ec081e45b6879fe9f88883c5aa0ecaac03"
     },
     {
       "check": "native Training mode coverage page history exists",
@@ -191121,7 +191121,7 @@
     {
       "check": "exact-ROM suite is complete: input-test-report.json",
       "passed": true,
-      "details": 997
+      "details": 1020
     },
     {
       "check": "exact-ROM suite is complete: stage-test-report.json",
@@ -192452,6 +192452,11 @@
       "details": null
     },
     {
+      "check": "offline cartoon-stage and character-preservation document links",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "packaged independent-engine smoke evidence and scope",
       "passed": true,
       "details": null
@@ -192482,8 +192487,8 @@
       "details": null
     }
   ],
-  "version": "0.9.0",
-  "rom_sha256": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639",
+  "version": "0.10.0",
+  "rom_sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
   "release_evidence": {
     "matchups": {
       "cases": 288,
@@ -192505,8 +192510,8 @@
     },
     "fresh_build": {
       "generated_assets": 214,
-      "source_commit": "76f0a08a7562800df01507db83c6877745c3bdcf",
-      "source_tree": "f37852da57a42d2d6819374db5d23278d12587a5"
+      "source_commit": "8536bb6956212952c17302a62cc6c1de7e12a65d",
+      "source_tree": "d524d3f960600dc5c9ff83578ac73675f9798735"
     },
     "training": {
       "checks": 622,
@@ -192515,12 +192520,12 @@
       "captures": 8
     }
   },
-  "native_suite_checks": 32182,
+  "native_suite_checks": 32205,
   "suites": {
     "test-report.json": 2595,
     "character-test-report.json": 18081,
     "presentation-test-report.json": 1756,
-    "input-test-report.json": 997,
+    "input-test-report.json": 1020,
     "stage-test-report.json": 8131,
     "training-test-report.json": 622
   },
@@ -192560,5 +192565,5 @@
     "source_atlases_verified": 48
   },
   "remaining_release_gates": "docs/PUBLIC-RELEASE.md",
-  "audit_checks": 7471
+  "audit_checks": 7472
 }

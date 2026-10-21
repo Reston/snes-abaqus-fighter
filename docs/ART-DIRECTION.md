@@ -149,12 +149,12 @@ presentation defects; the v0.9.0 correction pass below now has native evidence
 and a packaged technical archive. Public, human-balance, listening, controller, real-console and
 branding gates stay open.
 
-## v0.9.0 presentation correction pass (packaged technical snapshot; public review pending)
+## Historical v0.9.0 presentation correction pass (packaged technical snapshot)
 
 The live review of the historical v0.8.1 presentation found four concrete
 problems: selection faces were clipped, Damian did not resemble the supplied
 photo closely enough, the arena picker read as cramped and uneven, and BG1
-scenery showed through HUD and result lettering. The working-tree pass addresses
+scenery showed through HUD and result lettering. The historical v0.9.0 pass addresses
 each while preserving the native menu geometry, VRAM allocation and interface
 palette contracts.
 
@@ -189,9 +189,9 @@ Native visual review accepted the corrected all64 set; human likeness and
 consent approval remain open.
 
 No combat, controls, audio, trace, memory-layout or Fighter/Wave ABI change is
-part of this pass. The corrected source freeze is commit
+part of this pass. The historical corrected source freeze is commit
 `76f0a08a7562800df01507db83c6877745c3bdcf`, tree
-`f37852da57a42d2d6819374db5d23278d12587a5`. The current candidate manifest
+`f37852da57a42d2d6819374db5d23278d12587a5`. The historical v0.9.0 manifest
 identifies ROM SHA256
 `bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639` (header
 `6D41`). All six native reports pass on this SHA: 2,595 gameplay, 18,081 roster,
@@ -199,8 +199,64 @@ identifies ROM SHA256
 (32,182 total). The 288-by-600 matchup/stage/policy/replay/symmetry evidence,
 pinned bsnes smoke plus bounded 48-by-600 run, endurance of 216,356 live frames
 in each of three modes, fresh 214-asset export in 75.078 seconds and
-`validate_release_evidence` also pass. The [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
+`validate_release_evidence` also pass. The historical [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
 is available and its archive audit passes 7,471 checks. Public review remains open.
+
+## v0.10.0 cartoon-stage candidate (current packaged technical snapshot; human gates pending)
+
+The candidate refreshes all three arena masters in a stronger early-1990s
+arcade direction: original bold navy outlines, clean cel shading, saturated
+location colors and readable architectural silhouettes. Las Condes, El Castillo
+and La Oficina each use one complete stage composition, and the arena picker
+thumbnails use the same art so the three choices read as one coherent set.
+
+The versioned masters are `00-las-condes-cartoon-v2.png`,
+`01-castillo-cartoon-v2.png` and `02-oficina-cartoon-v2.png` under
+`assets/art/stages/`. Each has an adjacent exact-basename JSON provenance file;
+the raw built-in-imagegen source-v2 inputs remain under
+`assets/art/stages/source-v2/`. The selected `assets/art/stages/stages.json`
+uses schema 2 and `stages-v0.4.json` remains the previous manifest history.
+`tools/stage_sources.py` owns path, hash, RGB 1024x896, exact 4x-native
+dimensions and at-most-90-color source validation. `tools/stage_cartoon.py` adapts the authored feature and ambient
+work to the candidate palette/map.
+
+The existing four 256-byte ambient phases, eight dynamic BG1 cells, transfer
+budget and `TRACE[115..118]` contract remain unchanged. Alongside the stage
+asset refresh, the candidate carries bounded menu-only correctness polish:
+cleaned directional edges, both-pad navigation only for the P2 roster case,
+Start > B > A priority and immediate return after Back. Active combat, the
+Fighter/Wave ABI, fighters, portraits, audio and trace contract remain
+unchanged. Ambient change counts by phase are Las Condes `[0,20,20,20]`,
+El Castillo `[0,18,18,18]` and La Oficina `[0,6,6,6]`; the office keeps one
+3-pixel monitor segment per monitor at `y114` while protecting the monitor
+digits. The [stage pass note](STAGE-CARTOON-v2.md) and [cartoon preservation
+report](cartoon-preservation-report.json) record the source and preservation
+details, including 192 generated files retained from v0.9 across fighter
+64-frame banks, palettes, portraits, UI, audio, title and select assets.
+
+The source freeze is commit `8536bb6956212952c17302a62cc6c1de7e12a65d`, tree
+`d524d3f960600dc5c9ff83578ac73675f9798735`; the ROM is SHA256
+`a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445` (header
+`BE19`). Native PPU review accepted all three stage scenes and the arena
+picker; focused presentation, stage and menu probes pass. `Test.cmd` exits 0
+with all six reports matching this SHA: 2,595 gameplay, 18,081 roster, 1,756
+presentation, 1,020 focused-input, 8,131 stage and 622 Training checks
+(32,205 total). Fresh committed export validation passes 214 assets and symbols
+in 62.031 seconds. Endurance passes all three modes at 216,356 live frames
+each at 60.098811862348406 FPS, with wraps 4/4/3, peak SPC backlog 6 and empty
+cadence, native-timing, ambient, PPU-overflow and SPC-FIFO failure arrays. The
+technical audio report passes 1,262/1,262 capture-only checks with all four
+cues and four scores unclipped; the four music captures run 60.899688-63.079432
+seconds and their longest near-silence is 0.075499-0.078652 seconds, below the
+0.5-second near-zero threshold. Its separate listening pack is 15,447,456 bytes
+with SHA256 `5afec27e3022f87580e21991beb6785b9366dfb9bf16bf2abb45a08400309c70`.
+The 288-by-600 matchup/stage/policy/replay/symmetry run with four replays across
+all three stages, pinned bsnes smoke at 600/600 plus the independent 28,800-frame
+run, and `validate_release_evidence` all pass. The current [v0.10.0 Windows
+package](../dist/Abaqus-After-Hours-v0.10.0-Windows.zip) is available and its
+archive audit passes 7,472 checks. Human listening, stage, likeness/consent,
+gameplay, controller and public-use review remain open, with
+`public_release_certified=false`.
 
 ## v0.4.1 Reston hair correction
 

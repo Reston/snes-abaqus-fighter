@@ -2,10 +2,10 @@
 
 ## Current version
 
-This manual covers v0.9.0, with revised portraits, Damian's likeness, arena
-selection and clearer HUD/result text. ROM identity: SHA256
-`bce460fbaa6f63e2...dfad292d4d200639`, header checksum `6D41`. The accompanying
-manifest contains the complete checksum for identifying your build.
+This manual covers v0.10.0, with revised cartoon stage art, menu navigation,
+portraits, Damian's likeness, arena selection and clearer HUD/result text.
+The three arenas use one consistent bold-navy cel-cartoon direction, with the
+complete stage art repeated in each arena thumbnail.
 
 ## Launch
 
@@ -14,6 +14,11 @@ From the project checkout, run `Play.cmd`, focus the Snes9x window and press
 For a quiet session, mute Snes9x or the system before launching; this does not
 change game input. Snes9x supports fullscreen with **Alt+Enter** and controller
 assignment through **Input -> Input Configuration**.
+
+For offline Windows play, extract the current [v0.10.0 package](../dist/Abaqus-After-Hours-v0.10.0-Windows.zip).
+Its archive audit passes 7,472 technical checks. Human gameplay, listening,
+controller, likeness/consent, branding and original-hardware review remain
+open.
 
 ## Modes
 
@@ -43,8 +48,8 @@ Fighter select uses a four-by-three grid. **Left/Right** moves one card;
 **Up/Down** moves by four cards and wraps around. The selected fighter appears
 in a large portrait. Choose from the three arenas: **Las Condes**, **El Castillo**
 and **La Oficina**. In the arena menu, **Up/Down** chooses the row; each
-thumbnail shows the complete stage inside its box, with the location name and
-caption in a separate text column.
+thumbnail shows the complete matching stage inside its box, with the location
+name and caption in a separate text column.
 
 ## Controls
 
@@ -68,6 +73,8 @@ controllers through Snes9x **Input Configuration**.
 
 Holding Left and Right together neutralizes that axis. A short attack or jump
 press remains buffered briefly, so use a clean press when checking a move.
+In menus, **Start** confirms first, **B** backs out, and **A** confirms; a Back
+edge returns immediately so one edge cannot trigger two scene actions.
 
 ## Pause guide and Training dummy
 

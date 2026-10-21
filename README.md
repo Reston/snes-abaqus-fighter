@@ -2,13 +2,61 @@
 
 An original six-button fighting game for the **Super Nintendo**, inspired by the arcade structure of Street Fighter II and the people and places of Abaqus in Santiago.
 
-**v0.9.0 packaged technical snapshot; public review pending.** A live review of the v0.8.1
+**v0.10.0 current packaged technical snapshot; human review pending.** The
+candidate is source-frozen at commit
+`8536bb6956212952c17302a62cc6c1de7e12a65d`, tree
+`d524d3f960600dc5c9ff83578ac73675f9798735`; its ROM is SHA256
+`a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445`, header
+checksum `BE19`. Native PPU review accepted all three stage scenes and the
+arena picker, and focused presentation, stage and menu probes pass. Fresh
+committed export validation passes 214 assets and symbols in 62.031 seconds.
+`Test.cmd` exits 0 with all six reports matching this SHA: 2,595 gameplay,
+18,081 roster, 1,756 presentation, 1,020 focused-input, 8,131 stage and 622
+Training checks (32,205 total). The [stage pass note](docs/STAGE-CARTOON-v2.md)
+and [preservation report](docs/cartoon-preservation-report.json) document the
+candidate evidence. The current work introduces stronger early-1990s
+arcade-cartoon stage art for Las Condes, El
+Castillo and La Oficina. The three versioned masters are
+`00-las-condes-cartoon-v2.png`, `01-castillo-cartoon-v2.png` and
+`02-oficina-cartoon-v2.png`, each with adjacent exact-basename provenance JSON
+and raw source under `assets/art/stages/source-v2/`. The selected stage manifest
+uses schema 2 and retains `stages-v0.4.json` as history. `tools/stage_sources.py`
+validates the source contracts and `tools/stage_cartoon.py` adapts the existing
+feature-driven ambient work to the new palette/map. The candidate keeps the
+four-phase ambient-cell and `TRACE[115..118]` budgets and includes bounded
+menu-only correctness polish: cleaned directional edges, both-pad navigation
+only for the P2 roster case, Start > B > A priority and immediate return after
+Back. Active combat, Fighter/Wave ABI, fighters, portraits and audio are
+unchanged. Ambient change counts by phase are Las Condes `[0,20,20,20]`,
+El Castillo `[0,18,18,18]` and La Oficina `[0,6,6,6]`; the office keeps one
+3-pixel monitor segment per monitor at `y114` while protecting the digits.
+The preservation report records 192 generated files retained from v0.9,
+including all fighter 64-frame banks, palettes, portraits, UI, audio, title and
+select assets. Endurance passes all three modes at 216,356 live frames each at
+60.098811862348406 FPS, with wraps 4/4/3, peak SPC backlog 6 and empty
+cadence, native-timing, ambient, PPU-overflow and SPC-FIFO failure arrays. The
+technical audio report passes 1,262/1,262 capture-only checks: all four cues
+and four scores are unclipped, four music captures run 60.899688-63.079432
+seconds, and no near-zero interval reaches 0.5 seconds (longest near-silence
+0.075499-0.078652 seconds). The separate listening pack is 15,447,456 bytes,
+SHA256 `5afec27e3022f87580e21991beb6785b9366dfb9bf16bf2abb45a08400309c70`.
+The 288-by-600 matchup/stage/policy/replay/symmetry run with four replays
+across all three stages, pinned bsnes smoke at 600/600 plus the independent
+28,800-frame run, and `validate_release_evidence` all pass on this SHA.
+The current [v0.10.0 Windows package](dist/Abaqus-After-Hours-v0.10.0-Windows.zip)
+is available and `tools/audit_release.py` passes 7,472 checks against it.
+Two final packaging runs produce identical 6,592,864-byte archives, SHA256
+`8402f8be6f4c928e5b56cf22955d990c8bb6c4e2107262d489d2b3fc84036a99`.
+Human listening, gameplay, controller, likeness/consent and public-use review
+remain open, and `public_release_certified` remains false.
+
+**v0.9.0 packaged technical snapshot (historical).** A live review of the v0.8.1
 snapshot found clipped selection faces, a Damian likeness mismatch, a weak
 arena-picker composition, and stage pixels showing through HUD and result
-lettering. The working tree contains presentation corrections for those four
-findings. The current candidate manifest identifies ROM SHA256
+lettering. The historical v0.9.0 pass contains presentation corrections for
+those four findings. It recorded its candidate manifest as ROM SHA256
 `bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639`, header
-checksum `6D41`. The corrected source freeze is commit
+checksum `6D41`. The corrected v0.9.0 source freeze is commit
 `76f0a08a7562800df01507db83c6877745c3bdcf`, tree
 `f37852da57a42d2d6819374db5d23278d12587a5`. All six native reports pass on
 this SHA: 2,595 gameplay, 18,081 roster, 1,756 presentation, 997 focused-input,
@@ -17,7 +65,7 @@ matchup/stage/policy/replay/symmetry evidence, pinned bsnes smoke plus bounded
 48-by-600 run, endurance of 216,356 live frames in each of three modes, fresh
 214-asset export in
 75.078 seconds and `validate_release_evidence` also pass on this SHA;
-`Test.cmd` exits 0. The [v0.9.0 Windows package](dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
+`Test.cmd` exits 0. The historical [v0.9.0 Windows package](dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
 is available and `tools/audit_release.py` passes 7,471 checks against it. `public_release_certified` remains false.
 
 Two consecutive packaging runs produce identical **6,578,152-byte** ZIPs,
@@ -61,8 +109,8 @@ or replace the six canonical suites.
 A supplemental historical [Mesen-S compatibility review](docs/MESEN-REVIEW.md)
 checks the v0.8.1 frozen cartridge in a third engine, including pause guides,
 Training, stage animation and bounded combat. It is separate from the pinned
-Snes9x and bsnes release gates and does not establish v0.9.0 evidence or change
-the packaged game.
+Snes9x and bsnes release gates and does not establish v0.9.0 or v0.10.0
+evidence or change the packaged game.
 
 The [v0.6.0 development notes](docs/RELEASE-v0.6.0.md) describe the packaged
 64-frame roster, air attacks, throws and recovery. The
@@ -103,9 +151,9 @@ unchanged. Its art-only revision replaces Reston's full 64-frame set and
 portrait with the v4 short-buzz-cap sources, retaining the v3 sources and all
 shared palette, scale and gameplay contracts. Native visual review accepted the
 revision for integration; the later live presentation review found the four
-defects recorded above. The v0.9.0 pass addresses them without changing native
-combat, controls, audio or pause-guide contracts; its native verification and
-current package audit are recorded above. Pause and Training review captures: [Arcade controls](docs/screenshots/training/mode0-controls.png),
+defects recorded above. The historical v0.9.0 pass addresses them without
+changing native combat, controls, audio or pause-guide contracts; its native
+verification and package audit are recorded above. Pause and Training review captures: [Arcade controls](docs/screenshots/training/mode0-controls.png),
 [Arcade specials](docs/screenshots/training/mode0-specials.png),
 [Versus controls](docs/screenshots/training/mode1-controls.png),
 [Versus specials](docs/screenshots/training/mode1-specials.png),
@@ -159,6 +207,13 @@ combos. Controllers can be mapped in Snes9x under **Input -> Input Configuration
 - All 12 requested fighters, with individual illustrated identities, costumes and legacy key poses. The v0.8.0 baseline pins all prior 64-frame banks; the historical v0.8.1 snapshot updates only Reston's complete set and portrait to the v4 short-buzz-cap art, with the v3 sources retained.
 - Sixty-four uniform 96x80 native frames per fighter: legacy frames 0-15, motion and transition frames 16-31, action frames 32-47, and airborne/throw/knockdown frames 48-63. Twelve new airborne atlases supply dedicated air punch and air kick anticipation, active and recovery drawings plus throw and wake art; each keeps its `animation-airborne.json` prompt and provenance.
 - Las Condes, El Castillo and La Oficina, illustrated as original pixel-art stages from the supplied location references.
+- The v0.10.0 stage candidate refreshes all three arenas with one consistent
+  early-1990s bold-navy cel-cartoon treatment. The same complete stage art is
+  used in each arena thumbnail; source and manifest provenance are described
+  in the candidate section above. Native PPU review accepted all three scenes
+  and the arena picker, with focused stage probes passing. All six current
+  native reports now match the frozen SHA; the extended technical evidence and
+  `validate_release_evidence` also pass, while human stage review remains open.
 - Arcade Shift: fight the other 11 coworkers across the three locations and become Office Champion.
 - Local Versus: two controllers, independent input, best-of-three matches and rematches.
 - Training: a configurable practice opponent, gated automatic health recovery, unlimited time and a Select quick reset that clears active throw/knockdown state.
@@ -166,7 +221,7 @@ combos. Controllers can be mapped in Snes9x under **Input -> Input Configuration
   special names and family types. Training pause Up/Down selects Stand, Guard
   High, Guard Low or Jump, and Select resets live Training without losing the
   selected dummy mode.
-- A clean royal-navy, white and gold home/select/arena presentation with one cursor, the same four-by-three roster grid and a large selected portrait. The selection screen keeps the focus on the fighter instead of a statistics panel. The verified-native v0.9.0 presentation pass uses contained selection portraits, gives the arena picker complete aspect-contained thumbnails with a separate label column, and uses opaque panel glyphs for HUD/result lettering. The packaged Windows archive and 7,471-check audit are available.
+- A clean royal-navy, white and gold home/select/arena presentation with one cursor, the same four-by-three roster grid and a large selected portrait. The selection screen keeps the focus on the fighter instead of a statistics panel. The historical v0.9.0 presentation pass uses contained selection portraits, gives the arena picker complete aspect-contained thumbnails with a separate label column, and uses opaque panel glyphs for HUD/result lettering. Its packaged Windows archive and 7,471-check audit are available.
 - Six normal attacks, dedicated air punch/kick transitions, crouching attacks, high/low blocking, throws with delayed impact damage and simultaneous throw tech, a universal uppercut and confirmed normal/special cancels.
 - Twelve tuned specials across four families: projectile, advancing rush, low shockwave and rising strike. [Character profiles](docs/CHARACTERS.md) explain the roster and move families.
 - Health, regenerating energy, round counters, timer, hitstop, impact effects, camera shake, pause, four original tracker music arrangements and four resident SPC combat effects using the same synthesized cues.
@@ -252,10 +307,19 @@ checks: 2,595 gameplay, 18,081 roster, 215 presentation, 997 focused-input,
 8,131 stage and 622 Training. Matching compatibility, matchup, bounded
 independent-combat, live-hour, replay, symmetry and fresh-source evidence also
 pass. The historical v0.8.1 package and archive audit pass 7,471 technical
-checks. The current v0.9.0 reports on the corrected SHA pass 32,182 native
+checks. The historical v0.9.0 reports on the corrected SHA pass 32,182 native
 checks; the matching extended evidence and `validate_release_evidence` pass as
-described above. The [v0.9.0 Windows package](dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
-is available and its archive audit passes 7,471 checks.
+described above. The historical [v0.9.0 Windows package](dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
+is historical evidence and its archive audit passes 7,471 checks. The frozen
+v0.10.0 candidate has all six reports matching its SHA (32,205 checks), plus
+focused presentation, stage and menu probes and native PPU review recorded
+  above. Endurance and technical audio capture pass as documented above; the
+  matchup, pinned bsnes/independent compatibility evidence and
+  `validate_release_evidence` also pass. Human listening, controller,
+  likeness/consent and public-use review remain open. The current
+  [v0.10.0 Windows package](dist/Abaqus-After-Hours-v0.10.0-Windows.zip) is
+  available and its archive audit passes 7,472 checks; `public_release_certified`
+  remains false.
 The training host enables `snes9x_up_down_allowed` so same-pad and cross-pad
 SOCD cases reach the native cleaner; the offline `Controls::AllowLeftRight`
 preference is not changed for existing users.
@@ -333,6 +397,6 @@ the streamed-BRR path that stalled under two simultaneous attack/impact cases.
 | `dist/` | Playable ROM and release manifest |
 | `docs/` | Controls, technical notes, animation contract, art prompts, credits, roadmap and QA evidence |
 
-Git tracks the source, master art, generated cartridge assets and ROM. Downloaded toolchains and release ZIPs stay outside history. Prior releases are tagged `v0.1.0`, `v0.2.0`, `v0.3.0`, `v0.3.1`, `v0.4.0`, `v0.4.1`, `v0.5.0` and `v0.5.1`; `v0.6.0` records the animation baseline, `v0.6.1` the CPU update, and `v0.7.0` the verified stage/effect update and development package. v0.7.1 and v0.8.0 are historical; v0.8.1 is the last verified historical technical snapshot with a 7,471-check archive audit, and v0.9.0 native verification and packaged technical audit are complete. No remote repository is configured by this project.
+Git tracks the source, master art, generated cartridge assets and ROM. Downloaded toolchains and release ZIPs stay outside history. Prior releases are tagged `v0.1.0`, `v0.2.0`, `v0.3.0`, `v0.3.1`, `v0.4.0`, `v0.4.1`, `v0.5.0` and `v0.5.1`; `v0.6.0` records the animation baseline, `v0.6.1` the CPU update, and `v0.7.0` the verified stage/effect update and development package. v0.7.1 and v0.8.0 are historical; v0.8.1 is historical, v0.9.0 remains the historical packaged technical fallback, and v0.10.0 is the current packaged cartoon-stage technical snapshot with human review pending. No remote repository is configured by this project.
 
 Team references: [Abaqus Solutions](https://abaqus.io/es/abaqus-solutions/team) and [Abaqus Wealth Care](https://abaqus.io/es/wealth-care/about-us). See [credits and asset provenance](docs/CREDITS.md), [art prompts](docs/ART-DIRECTION.md), and [technical notes](docs/DEVELOPMENT.md).

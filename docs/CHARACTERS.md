@@ -5,6 +5,11 @@ combat profile for each roster slot. The concepts below are fictional game
 design: they do not describe the real jobs, personalities, or abilities of
 the people whose public names inspired the roster.
 
+The v0.10 cartoon-location pass preserves every fighter's native frame banks,
+palette, physical scale, portrait and combat profile from v0.9. See the
+[generated-asset comparison](cartoon-preservation-report.json). The stage and
+menu-input changes introduce no fighter timing or balance adjustment.
+
 The normal buttons remain `Y / X / L` for light, medium, and heavy punches and
 `B / A / R` for light, medium, and heavy kicks. `Down + Y/X` or a
 quarter-circle-forward Y/X spends 32 meter for action 7. `Down + L` keeps the

@@ -1,0 +1,776 @@
+{
+  "status": "passed",
+  "baseline_commit": "3427cf57606721258abd42917ffe4d082ab3cdf5",
+  "rom_sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
+  "unchanged_generated_files": 192,
+  "files": [
+    {
+      "file": "assets/generated/character-manifest.json",
+      "sha256": "71f71dd0eb2b95b0dbeabe6911118b4ba11f32f1b2a56fbe0af4190ac6b47c4a"
+    },
+    {
+      "file": "assets/generated/effects.bin",
+      "sha256": "e624c8009b3342f57ed0848239239376be95b0b9ea3e8d624c08e90d6dce9fbd"
+    },
+    {
+      "file": "assets/generated/effects.it",
+      "sha256": "8a6f749a3e87d134fe714aa621e36d86b56a2a05f722ed2fe378a3ff90235353"
+    },
+    {
+      "file": "assets/generated/effects_pal.bin",
+      "sha256": "f8e903fc390df59be26ea8c5bc8f570f654b0dabb85acf32c7ed92359735c1db"
+    },
+    {
+      "file": "assets/generated/fighter00.bin",
+      "sha256": "dc003395b642c15d6334c69adce15b1dd79bfb76a6a907a6b239274da8f4d728"
+    },
+    {
+      "file": "assets/generated/fighter00.png",
+      "sha256": "933126cb57d5e5b36a57c962fb4f12ecb5418a41408954413ba451ec08b3afa9"
+    },
+    {
+      "file": "assets/generated/fighter00_pal.bin",
+      "sha256": "ef3f4e8213fe8fd940a89b40d9c39f4e6b0ac3e36dbf51f976118c305d8d3341"
+    },
+    {
+      "file": "assets/generated/fighter00b.bin",
+      "sha256": "c51af33036bd57f19661826976cf1381b1a78913261f1728dd81dec4d10336d3"
+    },
+    {
+      "file": "assets/generated/fighter00c.bin",
+      "sha256": "ced5a0926fa47d0ed5acbe08da635f9fcde9ebbf7df4ff4c4a9efaad713e44ef"
+    },
+    {
+      "file": "assets/generated/fighter00d.bin",
+      "sha256": "e0113c1f9cc9d4e297904310a421db097495140bfde1c8dc2264849648a358c3"
+    },
+    {
+      "file": "assets/generated/fighter00e.bin",
+      "sha256": "727ba8e8c209b6172cef6cae99dbc9dce421a811a64395a46a3749e2456bc95a"
+    },
+    {
+      "file": "assets/generated/fighter00f.bin",
+      "sha256": "e00205c1c8ab1e578d30e3dab98077082cec50d651d6c0145732defd6e3146de"
+    },
+    {
+      "file": "assets/generated/fighter00g.bin",
+      "sha256": "221144098949e354d9de70d740fe078f06106aa389670327397b39735e019746"
+    },
+    {
+      "file": "assets/generated/fighter00h.bin",
+      "sha256": "4d9c4d28987f7e575d541ddf5cc078fc26fcd65832c42efda34cd4792d14eeee"
+    },
+    {
+      "file": "assets/generated/fighter01.bin",
+      "sha256": "b1c1b95bee637f0f8ab39e254d1128bdf8480be6718efbf1296a750421bdf6e1"
+    },
+    {
+      "file": "assets/generated/fighter01.png",
+      "sha256": "985b7bf402120e91c37e5daa047f3f6850d7731965679a7766697899c874e2bd"
+    },
+    {
+      "file": "assets/generated/fighter01_pal.bin",
+      "sha256": "c253838df2e0dcbd6e784bd419b68c641cddbe17a6cde73526fc9d91658d41ac"
+    },
+    {
+      "file": "assets/generated/fighter01b.bin",
+      "sha256": "5c63e1e758748ecba6ca933bc7601cb32c355468aa7532afce9168bfa5d6be06"
+    },
+    {
+      "file": "assets/generated/fighter01c.bin",
+      "sha256": "0ea1c8a1b642c73f93262dbe98e451dcf0b0ec75fd94a8cb7c687809bce90884"
+    },
+    {
+      "file": "assets/generated/fighter01d.bin",
+      "sha256": "a7153b65864d36ba6317426bd6e6e286f895755fe513928f710410bbfecd8b15"
+    },
+    {
+      "file": "assets/generated/fighter01e.bin",
+      "sha256": "bf451bf0996217fad19ac17ebaa83c45e0bd9e4c9cc8f2e3bdd65e7ad2ddd573"
+    },
+    {
+      "file": "assets/generated/fighter01f.bin",
+      "sha256": "ac76218a2bc3a105c06321a9fb3572ffba731c2c5de9b19d73c9c2d77f250504"
+    },
+    {
+      "file": "assets/generated/fighter01g.bin",
+      "sha256": "82c6d9c2a1ac7af2ee1662da420df543afca67c49691cbdb15c49dc2b1e1558e"
+    },
+    {
+      "file": "assets/generated/fighter01h.bin",
+      "sha256": "257375a4df8195c12f1700d856127dd3f959499544c2d85d18ee6ca6571e4f58"
+    },
+    {
+      "file": "assets/generated/fighter02.bin",
+      "sha256": "e610483d5577b29b15d93b28e543453851b1c3b5c4ce5acc0daa64fb51e31d60"
+    },
+    {
+      "file": "assets/generated/fighter02.png",
+      "sha256": "6f4b04d3899c2cbd66766985ca6b5888e5d1435a4581c7804e54e33c01771815"
+    },
+    {
+      "file": "assets/generated/fighter02_pal.bin",
+      "sha256": "39ae172ad89edf2a8a264e9058e8d7d582ef3a69d3d11737edbf4fe6c636aced"
+    },
+    {
+      "file": "assets/generated/fighter02b.bin",
+      "sha256": "42ee64ff9af2626829853a4c72aa5af1bf0b5ebde54421cd52c79b8f388dc9b8"
+    },
+    {
+      "file": "assets/generated/fighter02c.bin",
+      "sha256": "7b114bf28ae75c63bdf6aa49351545e0e5c1d1941fd5ad0af6bc71d72d91f37e"
+    },
+    {
+      "file": "assets/generated/fighter02d.bin",
+      "sha256": "6084f6c1aa631a555b44f24867508d6f3867a4cbe90ff332007e2c7350748f20"
+    },
+    {
+      "file": "assets/generated/fighter02e.bin",
+      "sha256": "7db3bdd410292283c01b5bb6353116c060039ebc11200fc04ebd27f09304d29f"
+    },
+    {
+      "file": "assets/generated/fighter02f.bin",
+      "sha256": "22a32e14a68b0e922370528696e15b4257a6e42645408921527e1b6921273c1c"
+    },
+    {
+      "file": "assets/generated/fighter02g.bin",
+      "sha256": "8cd0672c6f7ff560af748ab45b62fb987ccc5e2bda34864c4080b962a81fc384"
+    },
+    {
+      "file": "assets/generated/fighter02h.bin",
+      "sha256": "bfde2a7f5018979f201676e0604169d4b62869ef4c733c8f84bc9f661d8d4171"
+    },
+    {
+      "file": "assets/generated/fighter03.bin",
+      "sha256": "8b04e390c4f359e7df13ab571cfa32d60f4af8932c6967ee284b8eb2232d6f9b"
+    },
+    {
+      "file": "assets/generated/fighter03.png",
+      "sha256": "56e42a31552ffd3b091ab03667d575be7398aa24504f89a848cc54ecee36aaa5"
+    },
+    {
+      "file": "assets/generated/fighter03_pal.bin",
+      "sha256": "28aefb1442c602557a4e103541928ebb6967c85397f02358af0478b491392414"
+    },
+    {
+      "file": "assets/generated/fighter03b.bin",
+      "sha256": "3fd313371a0e84eca97ba8be381de7326b33289f8ebb9a2cc1690b473228a495"
+    },
+    {
+      "file": "assets/generated/fighter03c.bin",
+      "sha256": "8f984af65a6ab5250af255899a49ed311eb211bb983b5f599fe586d6d7d609d9"
+    },
+    {
+      "file": "assets/generated/fighter03d.bin",
+      "sha256": "abcac07c8ba261db5cf83563d6ee9a9f2b4423c1c54bebbdc73f47c899856221"
+    },
+    {
+      "file": "assets/generated/fighter03e.bin",
+      "sha256": "6dd5404817465e8c13cbf281baa7939f28bce9ce307a145ded388dd5d208aee4"
+    },
+    {
+      "file": "assets/generated/fighter03f.bin",
+      "sha256": "b1a88fe8efa92fb3128d317a9f509e079555b0f6c22dc334d216c27937bc4a2d"
+    },
+    {
+      "file": "assets/generated/fighter03g.bin",
+      "sha256": "20db5bb36e36d767913a4acd4c49b581459a0d3388a149d534da26e670dd8e31"
+    },
+    {
+      "file": "assets/generated/fighter03h.bin",
+      "sha256": "2cbaa62a33154a8780356f8630126034b5f382752387c68f7d2507b8ae62c738"
+    },
+    {
+      "file": "assets/generated/fighter04.bin",
+      "sha256": "edc9fba3ff4cafc080738c32425fcb01cab3ac9e232fd2cd514cc84f844b3a03"
+    },
+    {
+      "file": "assets/generated/fighter04.png",
+      "sha256": "ac69e2e6db720369ffcf4aed70e252b540806e51a6b34c9a011d52bb4e03666e"
+    },
+    {
+      "file": "assets/generated/fighter04_pal.bin",
+      "sha256": "207e656730f0aa78f7a3be33d21d6c88564b150487434808ccc1e744a507b8b5"
+    },
+    {
+      "file": "assets/generated/fighter04b.bin",
+      "sha256": "989fa765423af569e3c013e13ca7dde07f32a32a02accf2ea25ff15ff4043361"
+    },
+    {
+      "file": "assets/generated/fighter04c.bin",
+      "sha256": "06d35b353e12395a947b95ce5f5170b0165a0ac6a72a2946b4bf41d7d93cd514"
+    },
+    {
+      "file": "assets/generated/fighter04d.bin",
+      "sha256": "53b27e4690076b0ad0f23d010a34150ccdd6bd33a12e47fd2c054b6e291f18a7"
+    },
+    {
+      "file": "assets/generated/fighter04e.bin",
+      "sha256": "9155f58b8c795cc8d9b152640cce8fb8c8387b4d63ae7acdb6f35938955d039a"
+    },
+    {
+      "file": "assets/generated/fighter04f.bin",
+      "sha256": "0e72fa908ac4d2bc8580fba39b3310f52bb6ff0b7868ebf22e2dd2a959000de2"
+    },
+    {
+      "file": "assets/generated/fighter04g.bin",
+      "sha256": "dd17ed856e2482665d33546bb5780551bb6f018bfb94c761dc29df050cac158c"
+    },
+    {
+      "file": "assets/generated/fighter04h.bin",
+      "sha256": "d512c49366eb9520ea73a8218c5ea30b345a2d403fcea86fcaa5c1f3b0afc884"
+    },
+    {
+      "file": "assets/generated/fighter05.bin",
+      "sha256": "bcb788c6094b71140eefb3b29fa2d579b58f85d08aad3c57760c5e7781811e72"
+    },
+    {
+      "file": "assets/generated/fighter05.png",
+      "sha256": "8beda3de6ca197d5bfdb77f91d25fe352260e2b2bbe5fdb05f0c541200ec66f7"
+    },
+    {
+      "file": "assets/generated/fighter05_pal.bin",
+      "sha256": "c5cb13513140c4cf740991e6f69c4dd71661e6177820ca7df52ed112149b2aba"
+    },
+    {
+      "file": "assets/generated/fighter05b.bin",
+      "sha256": "86ad0f7662a4267b3033ad44ffb73c7a0d91a9b324c3318aac7fc8e8bd213f51"
+    },
+    {
+      "file": "assets/generated/fighter05c.bin",
+      "sha256": "16dd5141397a3539c590f40c73db21d981b70ac910b5df3e7b51409c097021c6"
+    },
+    {
+      "file": "assets/generated/fighter05d.bin",
+      "sha256": "76d7cdf440693db740c2569d63fece77f33f7b2bb76dabd03862debb92dad970"
+    },
+    {
+      "file": "assets/generated/fighter05e.bin",
+      "sha256": "7440df65aba9156d4c2cd0d4a6e772db172f4f9225cddf7655d0855f38c81b90"
+    },
+    {
+      "file": "assets/generated/fighter05f.bin",
+      "sha256": "af149588e0b890f52780da1f15ca244bff926ff35fec799956daea83790fe9d7"
+    },
+    {
+      "file": "assets/generated/fighter05g.bin",
+      "sha256": "cc08dc1e9d35ce9238364b8ef8d859824137d8d475f86be409b3b51a7b0f3a34"
+    },
+    {
+      "file": "assets/generated/fighter05h.bin",
+      "sha256": "48964e91186d3a7938383536467605be7e617ca0869986a6bbb5258f29a8124c"
+    },
+    {
+      "file": "assets/generated/fighter06.bin",
+      "sha256": "d046ef8b4a938d8caa72923d7105911c153c5421dc9de3d0a8b343ad9efc9759"
+    },
+    {
+      "file": "assets/generated/fighter06.png",
+      "sha256": "08b7eb2aafbfaa43d7992083fbf883fa5ed28614b3ee7547fcf74caef7c5a48f"
+    },
+    {
+      "file": "assets/generated/fighter06_pal.bin",
+      "sha256": "8157261a8813a14f129fe05c4cd41d219ec1d8213fda5e9de62173601a680a1c"
+    },
+    {
+      "file": "assets/generated/fighter06b.bin",
+      "sha256": "155bf36288f0fbc271999d18610b376ecb21609dc2ae0b03065e2b2ed1e102ee"
+    },
+    {
+      "file": "assets/generated/fighter06c.bin",
+      "sha256": "420444528b8866de64b8f742416dcf199a1ece1b992039a756f0d75cfa007f9e"
+    },
+    {
+      "file": "assets/generated/fighter06d.bin",
+      "sha256": "8fea998e0f6af0733d92ef8d854558f18229de62613f712249a03647a193ebcb"
+    },
+    {
+      "file": "assets/generated/fighter06e.bin",
+      "sha256": "d12d397177338532e610226a8f6a8ab3094c23f5f76053c4c5bf7c94405a06ec"
+    },
+    {
+      "file": "assets/generated/fighter06f.bin",
+      "sha256": "5a37cd3018e6a6058a5d9b4b76e71636209e337a980652a7f2b07dfc3bd08ecb"
+    },
+    {
+      "file": "assets/generated/fighter06g.bin",
+      "sha256": "60dac26ed6f7b0f6c6352a5f292d025fa130e5bf97c39ceceb1142adbb441c72"
+    },
+    {
+      "file": "assets/generated/fighter06h.bin",
+      "sha256": "f7335d7fd02fab62f4d6fafd67f898bfb8d47d30e1b4abb1f23141ff43235b11"
+    },
+    {
+      "file": "assets/generated/fighter07.bin",
+      "sha256": "e9e2bc139ed4b5260a8ed010db6562abdd795cefbaf73be3a53d42bff87dc8c3"
+    },
+    {
+      "file": "assets/generated/fighter07.png",
+      "sha256": "5317814981f23a477b58830fdcf8c32639d0fc8ed6da090e51a3c5ed930cdad3"
+    },
+    {
+      "file": "assets/generated/fighter07_pal.bin",
+      "sha256": "5488f08bd6b0b18a4d65a681f3a88257f93ac2e55c9fafa5834af4f52b55b069"
+    },
+    {
+      "file": "assets/generated/fighter07b.bin",
+      "sha256": "2104f35766fc2d5ebb481a66e20f0157e7b6159654ed39c62f1e86840e4627e7"
+    },
+    {
+      "file": "assets/generated/fighter07c.bin",
+      "sha256": "632c76c410a2731b12cd467cca6dfcd507fbed58b7d9ee237c8266eb2abd1711"
+    },
+    {
+      "file": "assets/generated/fighter07d.bin",
+      "sha256": "574925a634aef02c8f8482f93b84e5ec09b12b99e5afefa85230fa9a78bf4f11"
+    },
+    {
+      "file": "assets/generated/fighter07e.bin",
+      "sha256": "825f83673e0b214f86e0de73fcedf61e313c0325b22d7719327e0bdefec1ad85"
+    },
+    {
+      "file": "assets/generated/fighter07f.bin",
+      "sha256": "8a5f5b006c9615707a27ad3db66d48cb329b89e9ba31637fbfa5a299ff069dfd"
+    },
+    {
+      "file": "assets/generated/fighter07g.bin",
+      "sha256": "a1bf4f3361e90cc4fc6ef9907331c7048a79e37cdc2858553c032d01dfeb7539"
+    },
+    {
+      "file": "assets/generated/fighter07h.bin",
+      "sha256": "288b6068ce239b133db31e639a65edf856acd96b8676b4d8ce4a33f1e4eab213"
+    },
+    {
+      "file": "assets/generated/fighter08.bin",
+      "sha256": "eb8b17a3f9d07784b11b94dd0f156b472958ee89f34f1243d398dcb6031194e6"
+    },
+    {
+      "file": "assets/generated/fighter08.png",
+      "sha256": "19647a631d902d5de907c195ef0bc86497c01c7d264d1300efa6ed61fda7472f"
+    },
+    {
+      "file": "assets/generated/fighter08_pal.bin",
+      "sha256": "2fc1e702ab7d8323d94df3c6e7164891e7dc6f2e75b6ab4b8ce82dfb866094f1"
+    },
+    {
+      "file": "assets/generated/fighter08b.bin",
+      "sha256": "f5d510f3bad099334adf52e6250fb07421ae7e8f121bab45a2971920bb4ee155"
+    },
+    {
+      "file": "assets/generated/fighter08c.bin",
+      "sha256": "8ecdc28d27ee0946c21fbfa93282e55ef81c73d7b83980f725518886c26501cc"
+    },
+    {
+      "file": "assets/generated/fighter08d.bin",
+      "sha256": "ec7e0771f967e51aa211a40fee3ad4d060b96f22c9f79d4750d1126dba20844a"
+    },
+    {
+      "file": "assets/generated/fighter08e.bin",
+      "sha256": "24ebe7d9c1b0a83821ec4f070c96b67d69795294819992efbe4de7abd8b91286"
+    },
+    {
+      "file": "assets/generated/fighter08f.bin",
+      "sha256": "11fea0c9bc507afa1030edd789830bbd9afd47e82e63a6cfd377bd5ccfa2188e"
+    },
+    {
+      "file": "assets/generated/fighter08g.bin",
+      "sha256": "7869b7d17677c146ee2be458016265611439b0b56faba009538481a6c3c95c2c"
+    },
+    {
+      "file": "assets/generated/fighter08h.bin",
+      "sha256": "0cb54b41eac8f08b0712fd8c325237b24db4e6cfec223cc9e53a855abdeec637"
+    },
+    {
+      "file": "assets/generated/fighter09.bin",
+      "sha256": "799034a52db0e8d7e2771a92ba827962cbf6f91e960a8450f286502cb55f3231"
+    },
+    {
+      "file": "assets/generated/fighter09.png",
+      "sha256": "cb8bec1ee03c1bcdf53392379c1191a9ab473382d5b9e0d193728ac3ad389081"
+    },
+    {
+      "file": "assets/generated/fighter09_pal.bin",
+      "sha256": "0fa34b1d226a993d001bd2df79e0b4f69827c214668446fe7b3b19bb3c64aa1d"
+    },
+    {
+      "file": "assets/generated/fighter09b.bin",
+      "sha256": "98264845e190b02c19f974b73ba3af7f893e82d838db3e54b3f645c528c86f5a"
+    },
+    {
+      "file": "assets/generated/fighter09c.bin",
+      "sha256": "f8a01cd554bee365a13dff45680fe9e2455d0bbfeefb92eefb0fcfe955e5fe81"
+    },
+    {
+      "file": "assets/generated/fighter09d.bin",
+      "sha256": "a10a851d39c4518a46c4f85205c2bee6bb3adf0259ce72966fa65aecb7a1643f"
+    },
+    {
+      "file": "assets/generated/fighter09e.bin",
+      "sha256": "dcdbd3117ae6e737a2e1d52dbf02fb94f0b6375f51f51bd734767ed58bf85b3a"
+    },
+    {
+      "file": "assets/generated/fighter09f.bin",
+      "sha256": "975b27b26ddb605a35125bb58394e8d6f3a39b88d40cd39a1da0b879f9197f53"
+    },
+    {
+      "file": "assets/generated/fighter09g.bin",
+      "sha256": "b79ddb92aae85d1e3bc61f38a2d07ae41d6c595865f26b5e69607c2184c824a4"
+    },
+    {
+      "file": "assets/generated/fighter09h.bin",
+      "sha256": "b2d2079c3a5f61e1cb057602f8b06eec0fb9abb0a861b5b5bb4f332f13b8b561"
+    },
+    {
+      "file": "assets/generated/fighter10.bin",
+      "sha256": "267f91b1aadd9eb4261b14cfa2020465254949beebbb604536e7f5dd633aed14"
+    },
+    {
+      "file": "assets/generated/fighter10.png",
+      "sha256": "30c7d0970bae891dfd4ecb72ec42f059cdcb845c8cbb1dbccffb728dc0c8feb2"
+    },
+    {
+      "file": "assets/generated/fighter10_pal.bin",
+      "sha256": "6984a493d80efd48f7935eb13bbc928866e261bd140d8137854f78f534777d0e"
+    },
+    {
+      "file": "assets/generated/fighter10b.bin",
+      "sha256": "77328f6d52d4f3b5ec6647ed4536d954d3c0c81db6511e50d879b9158d64f607"
+    },
+    {
+      "file": "assets/generated/fighter10c.bin",
+      "sha256": "b3dd7aa374a4dbcb391346dcc4dbc82ef7120fdc98c319804c71aa808704492d"
+    },
+    {
+      "file": "assets/generated/fighter10d.bin",
+      "sha256": "5df88d54618c2fbd095eb3add7540157b9ed139f1927f3cc7c5e77ef53e45e42"
+    },
+    {
+      "file": "assets/generated/fighter10e.bin",
+      "sha256": "2e07cb5359428e35a58871fcc8123439ed2869d975b4c8be4ebab8b9fa4d0126"
+    },
+    {
+      "file": "assets/generated/fighter10f.bin",
+      "sha256": "9a618160cc1fcfc1766b0757fe193438d77252ee3ae5b2ece3b119c5622e4b5a"
+    },
+    {
+      "file": "assets/generated/fighter10g.bin",
+      "sha256": "7a62cea0e596ff4940996a43146a795a37bcb697ad640c2710eb59c137135c5d"
+    },
+    {
+      "file": "assets/generated/fighter10h.bin",
+      "sha256": "8ac0c5d03adac633cd614c00974e391725935a16529e7bb190e55de9cd82ad75"
+    },
+    {
+      "file": "assets/generated/fighter11.bin",
+      "sha256": "11933d546ef8f66ac0a164fbb01f5648c938a4e60e58d33a43018891e12b6ce8"
+    },
+    {
+      "file": "assets/generated/fighter11.png",
+      "sha256": "2ec3c526425e0ae18e8c41df7bffcf8e92850e0bc79b4c53c46e2ce4115b76aa"
+    },
+    {
+      "file": "assets/generated/fighter11_pal.bin",
+      "sha256": "a157c3c1cb19914da952d6211860562c11ff31ecd04cf9ac67b5afaa0710d236"
+    },
+    {
+      "file": "assets/generated/fighter11b.bin",
+      "sha256": "3eb39b3f1fc74f0367c4316ca57216308f40b59132e3d5a9e82f866a058ace26"
+    },
+    {
+      "file": "assets/generated/fighter11c.bin",
+      "sha256": "1d92f63ece9bd9815dadd163bd6d8d38db17e73529981067b0ff3fbacc8203ec"
+    },
+    {
+      "file": "assets/generated/fighter11d.bin",
+      "sha256": "20a136b21f36da32418ff914a7b2c87f534460e2296a2b78636c2301e65d3520"
+    },
+    {
+      "file": "assets/generated/fighter11e.bin",
+      "sha256": "3f31a0750da9d598c5b91b588ac3515a3c3367212cfb7dd32eee41b36346be98"
+    },
+    {
+      "file": "assets/generated/fighter11f.bin",
+      "sha256": "73491c3d06e978cda3948d9e9dadd4b6094f27dca66e89c47a46e154275ac984"
+    },
+    {
+      "file": "assets/generated/fighter11g.bin",
+      "sha256": "9c98d97dde4f130fd39709363db96f81e721c51fef925b0958dc8bac31b2beae"
+    },
+    {
+      "file": "assets/generated/fighter11h.bin",
+      "sha256": "4674d7d895fd260eca592bf9fac77bfdd6526c767cab5f138879260fff3f413b"
+    },
+    {
+      "file": "assets/generated/music0.it",
+      "sha256": "281e74b07d44921f6b4e3cfa6b7d9aec5a9d684b2628ecb038c3556a8f5fe85b"
+    },
+    {
+      "file": "assets/generated/music1.it",
+      "sha256": "012ae86b1dfae79a82b7c2ea1627827e3607f3902eb252d3c8bc6a65706a925c"
+    },
+    {
+      "file": "assets/generated/music2.it",
+      "sha256": "b8b479c1fd7ad52a2f9a4150816445135af6fb662e71cdb0a0d43318d78112a1"
+    },
+    {
+      "file": "assets/generated/music3.it",
+      "sha256": "c0642846f0dc624787b3a37cc7fa636bb75dcfb2a9183877910a84f024431af3"
+    },
+    {
+      "file": "assets/generated/portrait00-large.png",
+      "sha256": "a7bd2313500980db759031d66a7984aa6823bd3406581091f215a212d6a701d2"
+    },
+    {
+      "file": "assets/generated/portrait00.png",
+      "sha256": "925bf0ffdbf72ecd90b52ccc64378b6a2681f992528a4ab45e02b576f5f363e9"
+    },
+    {
+      "file": "assets/generated/portrait00_pal.bin",
+      "sha256": "e2848c7d315b7e9d725e729d6d3b644ff21726c9f3979d5039373828f07914f5"
+    },
+    {
+      "file": "assets/generated/portrait00_tiles.bin",
+      "sha256": "2bd09ad23a2df08d53046ad70952e45851aa5e88695da12fc641bfb918f41cb6"
+    },
+    {
+      "file": "assets/generated/portrait01-large.png",
+      "sha256": "ddaaf1405c6c9d7950df0bd6c56449fead35820ca31aa78800db8c2af6f020e9"
+    },
+    {
+      "file": "assets/generated/portrait01.png",
+      "sha256": "26de480b79a6c721d6928d94d524e62e0c345140e39227788caf0fcef7026c41"
+    },
+    {
+      "file": "assets/generated/portrait01_pal.bin",
+      "sha256": "08989818b479b17741576eb89afc057096957585f57d317897de1d70809aef87"
+    },
+    {
+      "file": "assets/generated/portrait01_tiles.bin",
+      "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1"
+    },
+    {
+      "file": "assets/generated/portrait02-large.png",
+      "sha256": "c5c198ea1ce40a6d37780654dd0f164a7032930d3519561b19b96ed74e6cf6b9"
+    },
+    {
+      "file": "assets/generated/portrait02.png",
+      "sha256": "963b82496c52bb77e2aaeb80b4bd1adcca6a67274241bf2f8cdd7834ea3c0e2a"
+    },
+    {
+      "file": "assets/generated/portrait02_pal.bin",
+      "sha256": "ab5564cfe06b696bb124b469dbe3f20beb3f0919a2cd26de627f1fc52e021946"
+    },
+    {
+      "file": "assets/generated/portrait02_tiles.bin",
+      "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b"
+    },
+    {
+      "file": "assets/generated/portrait03-large.png",
+      "sha256": "cd7993ab1498f552a29ac07f5082fd1fb0756d2c114a80c671d1c8e0f5e44763"
+    },
+    {
+      "file": "assets/generated/portrait03.png",
+      "sha256": "10b4ec8db326f941420f1203da2dce2fc3edbda0d041ca6299a133f1e055f9e9"
+    },
+    {
+      "file": "assets/generated/portrait03_pal.bin",
+      "sha256": "4d5862c7463d7358b00c9b87de4a7f31496be87f0e26f82cf71bdbc4716c8da5"
+    },
+    {
+      "file": "assets/generated/portrait03_tiles.bin",
+      "sha256": "61d80d1fa2da4692646a1f500dfc98d69692c0565754d3dc78b7f2d9584642e3"
+    },
+    {
+      "file": "assets/generated/portrait04-large.png",
+      "sha256": "02e66f29e24de974aa632c7dcb5fcd2b090140c44fe9eb0436deae2f08309ec9"
+    },
+    {
+      "file": "assets/generated/portrait04.png",
+      "sha256": "df5fc3f9851fc554182a64251cedbbe04a904a00ad3abcc6bcb8c32a6124aa1b"
+    },
+    {
+      "file": "assets/generated/portrait04_pal.bin",
+      "sha256": "720c6166fd9f14733233d4ff9bb884d2cfa725364c8aad84ab63435e5865848a"
+    },
+    {
+      "file": "assets/generated/portrait04_tiles.bin",
+      "sha256": "24c117db9e57d66ba9eccaecd75bece46c78f0eec848a7eb6a688806227ed2fd"
+    },
+    {
+      "file": "assets/generated/portrait05-large.png",
+      "sha256": "502b063408ab54b872911a6f69eba4873a01f73be8bf71eb905663cb956eec5c"
+    },
+    {
+      "file": "assets/generated/portrait05.png",
+      "sha256": "c71f79d3d326c31bf4eb339c40f46a7a12198441b8e4c72f847e490c5fd0aa42"
+    },
+    {
+      "file": "assets/generated/portrait05_pal.bin",
+      "sha256": "6c2c4b9401849a420de191a9795f24569b16e4fdf74f39e85c20c2df457cd2f9"
+    },
+    {
+      "file": "assets/generated/portrait05_tiles.bin",
+      "sha256": "c0460efc186cc285ba6aba1fdd0e7c54dc21320b2201954973d6d2c31c8ba505"
+    },
+    {
+      "file": "assets/generated/portrait06-large.png",
+      "sha256": "9b1afd3adc03cdc55d5f4803b0a057f4d853fb4c9f8ba45731072e45b5a44b9d"
+    },
+    {
+      "file": "assets/generated/portrait06.png",
+      "sha256": "8d02f2b788cb49ba20935aeb3f60e3af05052b663d400b0eb1b3d50341bc308e"
+    },
+    {
+      "file": "assets/generated/portrait06_pal.bin",
+      "sha256": "5db63711260962bc338f05f445b584c372033a97bcdaa538e089ed2e5d5fc972"
+    },
+    {
+      "file": "assets/generated/portrait06_tiles.bin",
+      "sha256": "f023d0d5dd115725202ed8a527b2ec45812a7f5e7af77bf579bcec09d39a5e2f"
+    },
+    {
+      "file": "assets/generated/portrait07-large.png",
+      "sha256": "e635436d5ad0795a671d777ddfff313a01551bf5c2aae72ba59cd7e70d72f1dd"
+    },
+    {
+      "file": "assets/generated/portrait07.png",
+      "sha256": "c982e5997517db0b4bfd478a312cbe2b3047801f6c05b5ead2e7216d65b1c2a6"
+    },
+    {
+      "file": "assets/generated/portrait07_pal.bin",
+      "sha256": "656c585b5d15a36aaa07d2ad016ab60e63c59281fd9be66d330c33042684db42"
+    },
+    {
+      "file": "assets/generated/portrait07_tiles.bin",
+      "sha256": "d83d340dffeb196c8d1a961cd85d391bad6c849b385b921eca8868eb40d86537"
+    },
+    {
+      "file": "assets/generated/portrait08-large.png",
+      "sha256": "7b6546202fff49fbce12601303ca5c8f737bb6e0b59e725a3e70a17a10cd7c28"
+    },
+    {
+      "file": "assets/generated/portrait08.png",
+      "sha256": "a98c204b90d8ef8cf09a07ff551048c2b23bc134a85ec4d448dfc2ce68323486"
+    },
+    {
+      "file": "assets/generated/portrait08_pal.bin",
+      "sha256": "cde01ea2b56e2d94ef8852813189cc0cf77e38f4596c2c451ae04e81aeb132b1"
+    },
+    {
+      "file": "assets/generated/portrait08_tiles.bin",
+      "sha256": "be1b936d3daa590cffbc0f2cbe6f1d4c0d951d01262706eb9e9ce4c4f5fd7d89"
+    },
+    {
+      "file": "assets/generated/portrait09-large.png",
+      "sha256": "ca6b09d0f309c90768c8651c50fbde8aeb45fb34392ada0563b0034c1b923b72"
+    },
+    {
+      "file": "assets/generated/portrait09.png",
+      "sha256": "0270698812e559528f164d7384468a0bb77d25315d4306603d0a270514f38cfa"
+    },
+    {
+      "file": "assets/generated/portrait09_pal.bin",
+      "sha256": "31fc8dbd67e0c15b97ae258d945d85dc40324ce448da8afe18465bdb5e51ff7e"
+    },
+    {
+      "file": "assets/generated/portrait09_tiles.bin",
+      "sha256": "46ef8740ace707787e06eb45e7b60f1df5e308185b6367f5e62b0ae823122350"
+    },
+    {
+      "file": "assets/generated/portrait10-large.png",
+      "sha256": "ee6564a4d7bcd8c53b947847c1fc876a6d961a82ed0d1af4a9188cfa6c8afb71"
+    },
+    {
+      "file": "assets/generated/portrait10.png",
+      "sha256": "cf3175c29aea6b596738cdb18fd582dd299e174ab683a171cecb506af1964e92"
+    },
+    {
+      "file": "assets/generated/portrait10_pal.bin",
+      "sha256": "3d1c4f3e174efea3bf460726ab55128a30fcad3671dd8859a81941a803802e9f"
+    },
+    {
+      "file": "assets/generated/portrait10_tiles.bin",
+      "sha256": "91f53180fc9e25e5633ec62a380b62c7b90072213718a1a3b079b59c6d24a9e6"
+    },
+    {
+      "file": "assets/generated/portrait11-large.png",
+      "sha256": "46ef03da3a7699ef2df9ae80247b4093bf8fbf153b40b9a329b8a5436af9ffc2"
+    },
+    {
+      "file": "assets/generated/portrait11.png",
+      "sha256": "1e368e80565fb6ca23fc155631ac73f8eb386a4aa2fc6632dffebf05bf4c8bee"
+    },
+    {
+      "file": "assets/generated/portrait11_pal.bin",
+      "sha256": "7122954f2af049c0d072f4c3b3b04264e560e8a0afb7ad2692c1089b7f282452"
+    },
+    {
+      "file": "assets/generated/portrait11_tiles.bin",
+      "sha256": "523acf2c5d939b5464caef27b1c990e17bfe13f4ffd5a554c2384538e48fb142"
+    },
+    {
+      "file": "assets/generated/select.png",
+      "sha256": "e8f91c467a62646a911a7f47e1db52a85db9b09403b4aa68869a053941b8b67c"
+    },
+    {
+      "file": "assets/generated/select_map.bin",
+      "sha256": "18ba8eb9db6c34d96a7eefbd4f7b39c33fb5d47d6b7af07c42c8e9c44a5f8403"
+    },
+    {
+      "file": "assets/generated/select_pal.bin",
+      "sha256": "d795e4ef57c06ed5c55eca36dfd0c6fd0c38a2ad5e9ef34b8cfd13f1c42f3c0f"
+    },
+    {
+      "file": "assets/generated/select_tiles.bin",
+      "sha256": "e68347dd8d79bc30db1610d2dd7b9d49b02f090a51711f59f43d730fab591b0a"
+    },
+    {
+      "file": "assets/generated/sfx0.bin",
+      "sha256": "778c185fc8fd3a71ac677c2cb591f1ed6b58445c8ac495374669054728a5e092"
+    },
+    {
+      "file": "assets/generated/sfx1.bin",
+      "sha256": "437b5d56693931d422445f81c0b1f09280c3212262526df8fb4de9a502c2e628"
+    },
+    {
+      "file": "assets/generated/sfx2.bin",
+      "sha256": "2920de1e6f3349029656041fb43bd0d11520382efc0fe7d6c34d54dc085a24fa"
+    },
+    {
+      "file": "assets/generated/sfx3.bin",
+      "sha256": "c9e2da2810ef129f59e9fabd7d30059d39cb5e0fe996ab9a0df6cef27e28d8ac"
+    },
+    {
+      "file": "assets/generated/soundbank.asm",
+      "sha256": "e1ce0a2ff9509a90de0151999d81f4f5bcaa538a1dee3ce402ce070f1221ef14"
+    },
+    {
+      "file": "assets/generated/soundbank.bnk",
+      "sha256": "d0b3f4a812eca04a338b05f1027e17d26ac2ffeba246432e46de07c3d92be3c4"
+    },
+    {
+      "file": "assets/generated/title.png",
+      "sha256": "762aa32dc664240fd9fb21234892226486882b4b75ebd7364df930d647d045b5"
+    },
+    {
+      "file": "assets/generated/title_map.bin",
+      "sha256": "29cd5c8f24c62f251448c2a86b16561771227644bb9e4b6b1048e70cf5411b68"
+    },
+    {
+      "file": "assets/generated/title_pal.bin",
+      "sha256": "b844fa0a896bd85a086ffc6427107611337cf0739db0779a5fa0bfc50fd74168"
+    },
+    {
+      "file": "assets/generated/title_tiles.bin",
+      "sha256": "19260983431a91edbb6251778d5efdc1c9e675a3ae55bc255036cf1d1937b284"
+    },
+    {
+      "file": "assets/generated/ui_pal.bin",
+      "sha256": "7f8d1dc7d59c7f175f289de99216c7f0b8eed5afec255e16e7b528b7fd06468d"
+    },
+    {
+      "file": "assets/generated/ui_tiles.bin",
+      "sha256": "6ec925a47e0410b94638cc114db8b17e45c0c1ea51022d4031d4ecc27bacd84a"
+    }
+  ]
+}

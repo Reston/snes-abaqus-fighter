@@ -1,6 +1,6 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639",
+  "rom_sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
   "rom_bytes": 4194304,
   "status": "passed",
   "checks": [
@@ -9,11 +9,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.9.0",
+        "version": "0.10.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639",
-        "checksum": "6D41",
+        "sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
+        "checksum": "BE19",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -5420,7 +5420,7 @@
           78,
           94
         ],
-        "mean_channel_delta": 2.3052350427350428,
+        "mean_channel_delta": 2.726602564102564,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 3120
@@ -5451,7 +5451,7 @@
           240,
           95
         ],
-        "mean_channel_delta": 1.4129739858906525,
+        "mean_channel_delta": 1.5101962081128748,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 12096
@@ -6400,7 +6400,7 @@
           78,
           150
         ],
-        "mean_channel_delta": 2.420619658119658,
+        "mean_channel_delta": 2.9841880341880342,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 3120
@@ -6431,7 +6431,7 @@
           240,
           151
         ],
-        "mean_channel_delta": 1.4383267195767195,
+        "mean_channel_delta": 1.5831679894179893,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 12096
@@ -7380,7 +7380,7 @@
           78,
           206
         ],
-        "mean_channel_delta": 2.5257478632478634,
+        "mean_channel_delta": 2.853846153846154,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 3120
@@ -7411,7 +7411,7 @@
           240,
           207
         ],
-        "mean_channel_delta": 1.4678406084656084,
+        "mean_channel_delta": 1.5500165343915344,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 12096
@@ -12514,9 +12514,9 @@
       "check": "the three stage fights render distinct native architecture plates",
       "passed": true,
       "details": {
-        "las-condes": "5ddd99f573d8ff65920de123c73ce70b562864ec1d08fe5485f3b1ac9862f523",
-        "el-castillo": "bd3dfbdc272dbabf78d82e82e376ccda059ddb840fcc368293526ccda94da8c8",
-        "la-oficina": "25e9aaa6057a723c2602931f57199adb7cde31e53a7901c3022da7ecc295db7f"
+        "las-condes": "0386c42c5db7d02c92ff25848f21c3015b82a8e526b6cd3f87281044cf26692f",
+        "el-castillo": "dbc2ac344f2f5d7f911e26eb79f8a7f8b6ff9eae49088292a8b60527b3e4529c",
+        "la-oficina": "2d13de62f9de51a169198b153910872916c33ac342327f22773a4545c05fa01f"
       }
     },
     {
@@ -18582,9 +18582,9 @@
         "la-oficina": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\arena-2.png"
       },
       "arena_digests": [
-        "aba4e0b4ade86a519ce90a79fa473a46f7d66ca4adcfeb85b9b272f7fd1ed62b",
-        "00dd413776d7871234c33bfc380ec21f5eeb62902d9c4ae41e37a3f90a4c305f",
-        "985e4025777d66f7259dd0d872e4f783512545690e90cd18e879852f55c56c1a"
+        "62c7342a2e11e406a4907fd115fdcf213c76e49ae192807bf54cc29ae9dcf9d7",
+        "23821b78859246113c561e6524e15f3993e1940c1003b330cafd38dcef8d622e",
+        "34d9da52a1bbf9af72cda6c1f468b79377cb711ddac107e9f9982d32a1a4c673"
       ],
       "arena_renders": {
         "las-condes": {
@@ -18602,12 +18602,12 @@
             94
           ],
           "thumbnail_delta": {
-            "mean_channel_delta": 2.3052350427350428,
+            "mean_channel_delta": 2.726602564102564,
             "max_channel_delta": 7,
             "pixels_over_16": 0,
             "pixels": 3120
           },
-          "mean_channel_delta": 1.4129739858906525,
+          "mean_channel_delta": 1.5101962081128748,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 12096
@@ -18627,12 +18627,12 @@
             150
           ],
           "thumbnail_delta": {
-            "mean_channel_delta": 2.420619658119658,
+            "mean_channel_delta": 2.9841880341880342,
             "max_channel_delta": 7,
             "pixels_over_16": 0,
             "pixels": 3120
           },
-          "mean_channel_delta": 1.4383267195767195,
+          "mean_channel_delta": 1.5831679894179893,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 12096
@@ -18652,12 +18652,12 @@
             206
           ],
           "thumbnail_delta": {
-            "mean_channel_delta": 2.5257478632478634,
+            "mean_channel_delta": 2.853846153846154,
             "max_channel_delta": 7,
             "pixels_over_16": 0,
             "pixels": 3120
           },
-          "mean_channel_delta": 1.4678406084656084,
+          "mean_channel_delta": 1.5500165343915344,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 12096
@@ -20765,5 +20765,5 @@
     "frame_count": 64
   },
   "passed": 1756,
-  "elapsed_seconds": 4.83
+  "elapsed_seconds": 4.95
 }

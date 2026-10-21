@@ -78,6 +78,8 @@ files={
  'PROPORTIONS.md':ROOT/'docs/PROPORTIONS.md',
  'MENU-DESIGN.md':ROOT/'docs/MENU-DESIGN.md',
  'OBJ-BUDGET.md':ROOT/'docs/OBJ-BUDGET.md',
+ 'STAGE-CARTOON-v2.md':ROOT/'docs/STAGE-CARTOON-v2.md',
+ 'cartoon-preservation-report.json':ROOT/'docs/cartoon-preservation-report.json',
  'RELEASE.md':ROOT/f"docs/RELEASE-v{manifest['version']}.md",
  'LICENSE':ROOT/'LICENSE',
  'licenses/PVSnesLib.txt':ROOT/'licenses/PVSnesLib.txt',
