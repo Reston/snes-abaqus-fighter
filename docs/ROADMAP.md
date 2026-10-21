@@ -233,8 +233,10 @@ eleven fighter bank bytes are identical, all twelve palettes and uniform scales
 are unchanged, and Reston's source normalization, palette and scale are locked.
 `likeness-v4.json`, `animation-v4.json`, `animation-airborne-v4.json` and
 `native-revision.json` retain imagegen provenance and expected native hashes.
-Full64 native visual review accepted the revision for integration, while actual
-human likeness and consent feedback remains pending. Native C/ASM, controls,
+Full64 native visual review accepted the revision for integration. The user
+confirmed the revised short buzz cut looks closer; the
+[scoped feedback record](RESTON-LIKENESS-v4.md) retains that response. Final team
+likeness and public-use consent remain pending. Native C/ASM, controls,
 gameplay and audio are unchanged.
 
 All six native reports pass on this SHA: 2,595 gameplay, 18,081 roster, 215
@@ -270,8 +272,19 @@ package remain historical evidence.
 - Profile worst-case combat frames, eight-bank animation uploads, resident
   audio effects, dynamic stage uploads, `STAT77`/OBJ overflow and vblank use
   across Snes9x, Mesen and bsnes.
+  The optional [Mesen-S 0.4.0 supplement](MESEN-REVIEW.md) now passes 48 bounded
+  combat cases, three-stage pixel/freeze checks, mode/guide smoke and a
+  synchronized low-wave probe. It does not establish a modern Mesen desktop
+  test, a full ordered-pair sweep or an independent hour-per-mode soak.
 - Test an original SNES or Super Famicom through a flash cartridge. Real-console and flash-cartridge testing have not yet been performed.
 - Record regression movies, verify every arcade ending and run longer stability sessions.
 - Review branding and portrait usage with the team before a public release.
+
+The [audio listening pack](AUDIO-REVIEW.md) now provides reproducible native
+captures, mixed-cue comparisons and measured score repetition on the same ROM.
+Human mix, cue clarity and loop-seam judgments remain open; the pack gives that
+review concrete material without changing the cartridge. The current
+[playtest guide](PLAYTEST.md#review-already-received) distinguishes the actual
+Reston response from unreviewed gameplay, audio, equipment and public-use gates.
 
 Commercial fighting-game polish requires repeated art, animation, audio, balance and QA passes. The project is organized so those passes can be reviewed and versioned without replacing the native engine.

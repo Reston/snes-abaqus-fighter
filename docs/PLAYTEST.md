@@ -1,4 +1,4 @@
-# v0.8.1 verified human playtest guide
+# v0.8.1 human playtest guide
 
 This is a short review route for the verified v0.8.1 technical snapshot. It
 collects human feedback on likeness, motion, fighting feel, pause help,
@@ -18,19 +18,19 @@ Do not infer roster consent or public-release approval from a completed table.
   the current packaged snapshot. Its archive audit passes 7,471 technical
   checks. Two packaging runs produce identical 6,546,645-byte archives, SHA256
   `04d951c3abef278afada5a666f9eec8a04d140650354bd82506e750e2849e0b6`.
-- The [v0.8.0 Windows package](../dist/Abaqus-After-Hours-v0.8.0-Windows.zip)
-  is historical. Its 6,546,551-byte archive has SHA256
-  `44f92c041563badc1a6b903e859ad4dd5258b5bd85f6d253cdf74b5c06641869` and
-  repository tag `v0.8.0`; its archive audit passed 7,471 checks.
-- The [v0.7.1 Windows package](../dist/Abaqus-After-Hours-v0.7.1-Windows.zip)
-  is historical; use the v0.8.1 archive for this review.
 - All six native reports pass on this SHA with 30,641 checks. Fresh committed
   export, matchup, stage, policy, replay, symmetry, pinned bsnes, bounded
   independent and endurance evidence also pass. Native C/ASM, controls,
   gameplay and audio are unchanged. Reston's full64 native visual review
-  accepted v4 for integration, but actual human likeness and consent feedback,
-  balance, listening, controller, real-console and branding review still need
-  explicit human results. The v0.8.1 package audit passes 7,471 checks.
+  accepted v4 for integration. The user subsequently confirmed the revised
+  buzz cut looks closer; see the scoped record below. Final team likeness and
+  consent, balance, listening, controller, real-console and branding review
+  still need explicit human results.
+- The separate [Mesen-S review](MESEN-REVIEW.md) passes 48 bounded combat cases,
+  mode/guide checks and all three stages on this same ROM. The
+  [audio review](AUDIO-REVIEW.md) supplies twelve captured WAVs and measured
+  score repetition for listening. These supplements leave the packaged game
+  unchanged and do not constitute human play or listening approval.
 - [Review captures](screenshots/) include the [title](screenshots/title.png),
   [select](screenshots/select.png), [arenas](screenshots/arenas.png),
   [fight](screenshots/fight.png), [block](screenshots/block.png),
@@ -49,6 +49,21 @@ Do not infer roster consent or public-release approval from a completed table.
 
 If the ROM changes, start a new review record with its new SHA. Do not attach
 results from this guide to a later build.
+
+## Review already received
+
+| Review | Actual response | Scope still open |
+|---|---|---|
+| Reston's revised short buzz cut, 2026-10-20 | User: "Yes, closer" | Final team likeness review, motion approval and public-use consent |
+| Combat feel, balance and onboarding | No session result recorded | Human play on the exact package, including both player layouts and all twelve fighters |
+| Music and effect mix | No listening result recorded | Listen to the captured material and a busy live exchange on the intended setup |
+| Physical controllers / original console | No equipment result recorded | Two-controller session and either console evidence or an explicit release-platform decision |
+| Public names, portraits and branding | No approval recorded | Review by the people/team responsible for those uses |
+
+The [Reston feedback record](reston-likeness-report.json) preserves the exact
+question and response. A positive hair comparison does not approve the rest
+of the roster, gameplay, audio or public distribution. The other rows record
+missing evidence; they are not reported defects.
 
 ## A 20-30 minute route
 
@@ -122,6 +137,12 @@ busy exchange with both fighters attacking. Record clipping, missing cues,
 loop gaps, harsh priority changes, or a sound that masks a necessary gameplay
 cue. A human reviewer may choose headphones or speakers; automated evidence is
 captured without speaker playback.
+
+The [listening pack and observation sheet](AUDIO-REVIEW.md) provide matched
+cue pairs and approximately one-minute captures of each score. Use that sheet
+for device, gain and loop/mix observations, then check a live busy exchange as
+well. The automated PCM report establishes technical properties, not whether
+the mix sounds good to the reviewer.
 
 ## Result sheet
 
