@@ -34,6 +34,11 @@ captures and measured score repetition from the same ROM. Its listening ZIP
 and PCM checks support human review; they do not establish listening approval
 or replace the six canonical suites.
 
+A supplemental [Mesen-S compatibility review](docs/MESEN-REVIEW.md) checks the
+same frozen cartridge in a third engine, including pause guides, Training,
+stage animation and bounded combat. It is separate from the pinned Snes9x and
+bsnes release gates and does not change the packaged game.
+
 The [v0.6.0 development notes](docs/RELEASE-v0.6.0.md) describe the packaged
 64-frame roster, air attacks, throws and recovery. The
 [v0.5.1 notes](docs/RELEASE-v0.5.1.md) retain the previous baseline's evidence.
@@ -292,6 +297,7 @@ the streamed-BRR path that stalled under two simultaneous attack/impact cases.
 | `tools/test_endurance.py` / `tools/longrun_host.py` | Silent uninterrupted hour/mode endurance gate and callback host |
 | `tools/test_fresh_build.py` | Fresh pinned-tool extraction and committed-source rebuild gate |
 | `tools/test_training.py` | Pause-guide, Training dummy and pause SOCD suite |
+| `tools/test_mesen.py` | Optional pinned Mesen-S third-engine scene, stage and bounded combat checks |
 | `docs/PLAYTEST.md` | Human likeness, gameplay feel, controls, audio and branding review route |
 | `dist/` | Playable ROM and release manifest |
 | `docs/` | Controls, technical notes, animation contract, art prompts, credits, roadmap and QA evidence |
