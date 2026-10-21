@@ -11,6 +11,8 @@ from fighter_assets import prepare_roster
 from menu_assets import make_menu_images
 from effect_assets import make_effect_sheet
 from stage_assets import build_stage_animation
+from stage_sources import load_stage_sources
+from stage_cartoon import cartoon_stage_animation
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT/'assets/generated'
@@ -135,14 +137,20 @@ def background(name,im):
 
 stages=[]
 stage_dynamics=[]
-for i,slug in enumerate(('00-las-condes','01-castillo','02-oficina')):
-    im=Image.open(ROOT/f'assets/art/stages/{slug}.png').convert('RGB').resize((256,224),Image.Resampling.NEAREST)
+for source in load_stage_sources(ROOT):
+    i=source['id']
+    im=source['image']
     stages.append(im)
     background(f'stage{i}',im)
     base_gfx=(OUT/f'stage{i}_tiles.bin').read_bytes()
     base_map=(OUT/f'stage{i}_map.bin').read_bytes()
     palette=(OUT/f'stage{i}_pal.bin').read_bytes()
-    dynamic=build_stage_animation(f'stage{i}',base_gfx,base_map,palette)
+    motion=cartoon_stage_animation(f'stage{i}',base_gfx,base_map,palette,im)
+    dynamic=build_stage_animation(f'stage{i}',base_gfx,base_map,palette,
+                                  cells=motion['cells'],phases=motion['phases'])
+    dynamic['manifest']['art_source']={key:source[key] for key in
+                                       ('id','name','master','provenance','raw_source','manifest_sha256')}
+    dynamic['manifest']['feature_design']=motion['feature_design']
     # The phase-zero tiles are source-identical, so the native preview remains
     # unchanged while the runtime map points the selected cells at $3C00.
     (OUT/f'stage{i}_map.bin').write_bytes(dynamic['map'])

@@ -1,0 +1,121 @@
+{
+  "asset": "02-oficina-cartoon-v2.png",
+  "version": "v2",
+  "mode": "built-in imagegen",
+  "purpose": "Cartoon redraw of the La Oficina native SNES stage with a quieter HUD-safe band and flat combat floor.",
+  "generated_image_id": "exec-b6f93426-3e54-46d0-b629-c0adf645753c",
+  "generated_image_ids": [
+    "exec-913ba1b5-bb31-4696-90b4-b62593bbec30",
+    "exec-b6f93426-3e54-46d0-b629-c0adf645753c"
+  ],
+  "raw_output_id": "01a15c87-8baf-7f13-88dc-d36e8af6ef4a/exec-b6f93426-3e54-46d0-b629-c0adf645753c",
+  "raw_output_path": "assets/art/stages/source-v2/02-oficina.png",
+  "raw_output_default_path": "C:/Users/user/.codex/generated_images/01a15c87-8baf-7f13-88dc-d36e8af6ef4a/exec-b6f93426-3e54-46d0-b629-c0adf645753c.png",
+  "raw_output_sha256": "470916ed773af6794d7291ebefe8e8bab9ddf926377782887a138b4c2e02b543",
+  "raw_output": {
+    "size": [
+      1341,
+      1173
+    ],
+    "format": "PNG",
+    "color_mode": "RGB",
+    "opaque": true
+  },
+  "input_roles": [
+    {
+      "path": "assets/art/stages/02-oficina.png",
+      "role": "edit target; preserve recognizable open-plan office composition, long desk rows, dual foreground monitors, exposed ceiling and workplace identity",
+      "sha256": "b73c41101719f09cab4196beccaea2b9f2cc5bec9669ba34614821949990daa3"
+    },
+    {
+      "path": "assets/art/characters/00-damian/atlas-v4.png",
+      "role": "supporting style reference only; use bold navy contours, flat cel color bands and friendly cartoon clarity, with no person, pose, clothing or sprite copied",
+      "sha256": "3b29a299194ebaa2d6b2c712a1e6465f3c6b828cf3e76581eea12b90def06a14"
+    },
+    {
+      "path": "C:/Users/user/.t3/userdata/attachments/52a10d60-8bd7-44e8-88be-c4667e065c96-cfed2020-d439-42bb-b0d2-c883e1d549bd.png",
+      "role": "real office composition reference only; use authentic desk rows, dual monitors, chairs, exposed ceiling and linear LED fixture arrangement, with no photo content copied",
+      "sha256": "797d70fab1ff0613d756bb1d71bc36566f99c2d55576fd27b5e065ca43b0e8e8"
+    }
+  ],
+  "prompts": {
+    "first_draft": "Use case: style-transfer\nAsset type: native SNES fighting-game stage background, later reduced to 256x224 with nearest-neighbor sampling\nPrimary request: Restyle Image 1 into an early-1990s arcade fighting-game cartoon illustration of the same open-plan office. Preserve the core composition and gameplay-safe floor. Make the scene obviously much more cartoon-like and readable at tiny native resolution while retaining recognizable real office anatomy.\nInput images: Image 1 is the edit target and must remain an office scene; Image 2 is supporting style reference for bold navy contour lines, bright flat cel-colored surfaces, rounded expressive human silhouettes and polished arcade character art; Image 3 is a real office photo used only as composition reference for authentic rows of desks, dual monitors, chairs, exposed ceiling and linear LED fixtures.\nScene/backdrop: wide 8:7 open-plan office. Top 0-39 pixels equivalent is a quiet, uncluttered HUD-safe ceiling/window band. Middle background has teal/navy window glass, simple city shapes, and receding rows of desks. Bottom 168-223 pixels equivalent is a single flat continuous warm neutral floor with no hotspots; keep a clear unobstructed fighting lane with feet landing near y=201.\nSubject: recognizable work office with actual desk rows, two-monitor workstations, rolling chairs, exposed ceiling, linear LED lights, a few friendly expressive cartoon coworkers as small silhouettes behind desks, green cup, laptops, and short fat code-like lines only.\nStyle/medium: bold large flat cel-colored shapes, strong navy outlines, 2-3 clean shade bands per material, limited crisp palette, friendly expressive arcade cartoon coworkers. Match the visual clarity and contour confidence of Image 2 without copying its person, poses, branding, or any commercial game assets.\nComposition/framing: keep desks behind where fighters will stand; foreground left and right iconic monitors are large, dark-framed, cyan-white screens, reading exactly \"11\" and \"8.1\" if legible. Keep the pair prominent and centered in their original positions. Use simple perspective and rounded stylized details. Make floor continuous and quiet.\nLighting/mood: warm yellow linear ceiling LEDs against cool teal/navy window glass, upbeat daytime office.\nColor palette: royal/navy contours, white and warm cream surfaces, cyan-white screens, teal glass, warm yellow lights, restrained coral/green accents.\nText (verbatim): \"11\" on the left foreground monitor and \"8.1\" on the right foreground monitor only; if small text is unreliable, keep only these numerals and no other words or logos.\nConstraints: preserve the office identity and broad layout from Image 1; preserve prominent dual-monitor foreground; preserve readable 11 and 8.1; keep the top HUD-safe band quiet; keep the bottom floor flat and continuous; make all details bold enough to survive 256x224 native reduction.\nAvoid: photorealism, grain, dithering, bloom, 3D rendering, painterly blur, floor reflections or light hotspots, dense tiny text, cluttered cyberpunk control room, spaceship, futuristic sci-fi props, logos, branded UI, Capcom/commercial sprites, foreground fighters, game HUD, watermarks, and any extra large text.",
+    "final_edit": "Use case: precise-object-edit\nAsset type: native SNES fighting-game stage background, later reduced to 256x224 with nearest-neighbor sampling\nPrimary request: Make only two targeted environment corrections to Image 1. First, quiet the entire top HUD-safe band (the top approximately 17 percent of the image, corresponding to native rows 0-39): replace the dense ceiling pipes and overlapping fixtures there with a simple clean deep navy ceiling/window band with broad flat shapes and at most one sparse thin horizontal trim, leaving the recognizable exposed-ceiling linear LED fixtures clearly visible below that band. Second, flatten the entire gameplay floor (the bottom approximately 25 percent, corresponding to native rows 168-223): use one continuous warm neutral flat-color floor with only a subtle straight boundary at the back, no perspective grid lines, no tile seams, no reflections, no hotspots, no gradients, and no objects or shadows in the fighting lane.\nInput images: Image 1 is the current cartoon office target; Image 2 is only a supporting style reference for bold navy contours and flat cel shading.\nConstraints: preserve every other part of Image 1 exactly in spirit and placement: real open-plan office, desk rows, dual-monitor foreground, coworkers behind desks, cyan-white monitors with exact numerals \"11\" and \"8.1\", teal/navy window glass, warm yellow linear LEDs, laptop, green cup, chairs, empty foreground fighting space, no foreground fighters.\nAvoid: photorealism, grain, dithering, bloom, 3D, painterly blur, floor perspective lines, floor reflections, dense text, logos, branded UI, sci-fi control room, spaceship, cyberpunk props, commercial game assets, watermarks, and any changes to the two monitor numerals."
+  },
+  "processing": {
+    "source_master": "assets/art/stages/source-v2/02-oficina.png",
+    "source_size": [
+      1341,
+      1173
+    ],
+    "center_aspect_crop": {
+      "box_xyxy": [
+        2,
+        2,
+        1338,
+        1171
+      ],
+      "cropped_size": [
+        1336,
+        1169
+      ],
+      "aspect": "8:7",
+      "resampling": "none; integer center crop"
+    },
+    "native_downsample": {
+      "size": [
+        256,
+        224
+      ],
+      "resampling": "nearest-neighbor"
+    },
+    "palette": {
+      "method": "Pillow MEDIANCUT",
+      "colors_requested": 90,
+      "colors_used": 90,
+      "dither": "none"
+    },
+    "opaque_rgb": true,
+    "preview_upscale": {
+      "size": [
+        1024,
+        896
+      ],
+      "scale": "4x",
+      "resampling": "nearest-neighbor"
+    }
+  },
+  "selected_final": {
+    "path": "assets/art/stages/02-oficina-cartoon-v2.png",
+    "sha256": "d40612a3d47761d8c5dc735ed764c311ae9ac83ec44dbe8040df36b6b24fe9cc",
+    "size": [
+      1024,
+      896
+    ],
+    "format": "PNG",
+    "color_mode": "RGB",
+    "opaque": true
+  },
+  "draft_native_review": {
+    "path": "build/cartoon-review/02-oficina-cartoon-v2-draft-native.png",
+    "sha256": "df2966978ac9ad83da3153d6048932bb30cdee8e33265cec87d7246a91d25676",
+    "size": [
+      256,
+      224
+    ],
+    "format": "PNG",
+    "color_mode": "RGB",
+    "opaque": true
+  },
+  "native_review": {
+    "path": "build/cartoon-review/02-oficina-cartoon-v2-native.png",
+    "sha256": "96b92d414a8e6071f04c4ffd9a5e0bd3bc878ff5946f9607719d77cf6bc75713",
+    "size": [
+      256,
+      224
+    ],
+    "format": "PNG",
+    "color_mode": "RGB",
+    "opaque": true
+  }
+}

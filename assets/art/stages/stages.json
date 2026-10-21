@@ -1,67 +1,77 @@
 {
-  "version": "0.4.0",
+  "schema": 2,
+  "version": "0.10.0",
   "mode": "built-in imagegen",
-  "purpose": "Three independent native-SNES stage masters for the Abaqus After Hours v0.4 art pass.",
+  "purpose": "Reviewed cartoon stage masters, used by both native fight scenes and complete-scene arena thumbnails.",
   "style_contract": {
-    "native_canvas": "256x224",
-    "master_canvas": "1024x896",
+    "native_canvas": [
+      256,
+      224
+    ],
+    "master_canvas": [
+      1024,
+      896
+    ],
     "master_grid": "4x nearest-neighbor pixels",
-    "palette_target": "about 90 colors per stage",
-    "composition": "HUD-safe upper band, empty fight floor beginning near native y=168, feet line near native y=201",
-    "processing": "center-crop source to 1280x1120, LANCZOS reduction to 256x224, 90-color no-dither quantization, 4x nearest-neighbor enlargement",
-    "style": "original early-1990s SNES fighting-game cartoon illustration, hard navy contours, flat cel-shaded color clusters, architectural depth, no commercial game assets"
+    "colors_max": 90,
+    "style": "Original early-1990s arcade cartoon illustration: deep navy contours, broad cel-color shapes, simplified material shading and expressive small coworkers.",
+    "reference": "Street Fighter II stage composition and graphic readability; no commercial assets copied.",
+    "official_reference": "https://captown.capcom.com/en/classic_games/22",
+    "processing": "Centered 8:7 crop, nearest reduction to 256x224, no-dither 90-color quantization, nearest 4x enlargement.",
+    "fight_floor": "Unobstructed lower quarter; native fighter feet line 201."
   },
-  "reference_provenance": {
-    "existing_style_reference": {
-      "file": "assets/art/stage-atlas-cartoon.png",
-      "role": "existing Abaqus After Hours cartoon arcade style and color reference only",
-      "sha256": "b33178afd94c6b81ebe133cbf9689b88261c3119dadcb4fe9b331a555eed438e"
-    },
-    "location_photos": [
-      {
-        "file": "52a10d60-8bd7-44e8-88be-c4667e065c96-bc4109d3-c156-42fb-aab9-db5e6ebdf8e9.png",
-        "role": "Las Condes architectural reference photo",
-        "sha256": "a8a14e8feec600c126461a0849365e969495fcd1dfeb36bf670b335fe049064a0"
-      },
-      {
-        "file": "52a10d60-8bd7-44e8-88be-c4667e065c96-29e87a45-5607-41ef-a618-2d103005cabe.png",
-        "role": "El Castillo architectural and party reference photo",
-        "sha256": "e17d314d4bbe822a407452ffdf3ff1e2493be96a2978554ab4ae7b9fb3a5bb34"
-      },
-      {
-        "file": "52a10d60-8bd7-44e8-88be-c4667e065c96-cfed2020-d439-42bb-b0d2-c883e1d549bd.png",
-        "role": "La Oficina open-plan office reference photo",
-        "sha256": "797d70fab1ff0613d756bb1d71bc36566f99c2d55576fd27b5e065ca43b0e8e8"
-      }
-    ]
+  "previous_revision": {
+    "file": "assets/art/stages/stages-v0.4.json",
+    "sha256": "efae77d9bf018d8a4a0279ab913663856b0061eead7213c057c816ecca3746b5"
   },
   "stages": [
     {
       "id": 0,
       "name": "Las Condes",
-      "output": "00-las-condes.png",
-      "generated_image_id": "exec-41b85f0f-9327-4417-8d3e-ae1c2e625cb0",
-      "generated_source_sha256": "7d947463cb227101a4f7d9501aa3e547d56a115a7254f888d39896d9722b82a5",
-      "output_sha256": "9f061c4123ce9d134e1967914d6e287d97fdb26fac0b6360cb09f4cd5aa8237f",
-      "prompt": "Use case: illustration-story. Asset type: SNES 2D fighting-game stage master, one standalone wide background. Input images: Image 1 is the exact Las Condes architecture reference photo; preserve its identifiable building proportions and facade. Image 2 is a style/color reference for the existing Abaqus After Hours cartoon arcade art; do not copy its composition. Primary request: Create a polished original 1993-era Super Nintendo fighting-game cartoon background for the Las Condes stage in Santiago, Chile, based on the supplied photo. Scene/backdrop: recognizable corporate glass entrance at address 140, viewed straight-on from the fighter's side, at blue hour with warm office lights visible through the glass. Subject: the actual entrance architecture: two huge tall silver cylindrical columns, broad glass canopy, revolving glass entrance, glass facade, and the exact large white number “140” on the dark entrance wall. A burgundy/red-leaf tree dominates the right side, with the tiled sidewalk and low glass railing at the right. Subtle Andes reflection in the upper glass. Style/medium: colorful hand-placed pixel-art illustration with chunky flat color clusters, strong dark navy contour lines, cel-shaded 16-bit arcade finish, playful cartoon proportions but faithful architectural reference, no photorealism, no painterly blur. Target final framing is 8:7 landscape, 1024x896 master that can reduce cleanly to 256x224 and upscale 4x with nearest-neighbor. Composition/framing: wide 8:7 panorama, side-on fighting-game view. Keep HUD-safe upper band clean and architectural. Leave the lower quarter as an empty flat tiled fighting floor from x=0..255, beginning around native y=168, with a clear feet line around native y=201. Keep fighter head space calm from native y=72 to 130; place the recognizable columns and canopy in the upper/mid background. No foreground people or cars. No text except the exact number “140” on the building. Lighting/mood: elegant Santiago blue hour, warm golden office windows, readable silhouettes, a refined arcade stage mood. Color palette: cobalt and glass blues, warm amber window light, silver columns, cream concrete, burgundy foliage, deep navy outlines; disciplined circa-1993 SNES palette, about 90 colors. Materials/textures: glass reflections, brushed silver, tiled sidewalk, crisp pixel dithering used sparingly. Constraints: architectural fidelity to the attached Las Condes photo is highest priority; the building must read as that photo at native size; two huge tall silver columns must be visible; canopy and revolving entrance must be visible; exact “140” must be clearly legible; empty continuous fight floor lower quarter; no UI, no health bars, no fighters, no logos, no watermark. Avoid: generic temple, palace, futuristic sci-fi tower, extra arches, photorealistic rendering, soft airbrush, noisy tiny detail, blurry edges, commercial game sprites, Street Fighter characters, Capcom logos, extra signage, extra words."
+      "master": {
+        "file": "assets/art/stages/00-las-condes-cartoon-v2.png",
+        "sha256": "878ea16af87068ba2128ef848d94445149381017958ba4c0eeb3097d2eebb931"
+      },
+      "provenance": {
+        "file": "assets/art/stages/00-las-condes-cartoon-v2.json",
+        "sha256": "7397e6ba86ecda6ffddff0dacec99a7aa064ba98bf376fb91e57727bdf66013e"
+      },
+      "raw_source": {
+        "file": "assets/art/stages/source-v2/00-las-condes.png",
+        "sha256": "847a588e7a35d040b4491fb0779b2b306c57b62c6fa41f5027c54ec1611d6b69"
+      }
     },
     {
       "id": 1,
       "name": "El Castillo",
-      "output": "01-castillo.png",
-      "generated_image_id": "exec-ebfa4fd1-d5b7-444e-b9b6-86978463dee6",
-      "generated_source_sha256": "df85cdd3cf412cd732a8d2e9be01ecc349a606168d423d35de36a5aa2097009f",
-      "output_sha256": "b263c8173ff89eda8da609c1782a89cf181c8f66b30ef159219b6efd592bd17b",
-      "prompt": "Use case: illustration-story. Asset type: SNES 2D fighting-game stage master, one standalone wide background. Input images: Image 1 is the exact El Castillo party-house reference photo; preserve its recognizable white two-story house, central covered patio, balcony, and right wing. Image 2 is a style/color reference for existing Abaqus After Hours cartoon arcade art; do not copy its composition. Primary request: Create a polished original 1993-era Super Nintendo fighting-game cartoon background for the El Castillo stage, faithful to the supplied Chilean party-house photo. Scene/backdrop: a warm Chilean backyard party at golden-hour dusk. The actual white two-story house fills the background: broad central covered patio with simple square columns, a simple upper balcony with black iron railing, the distinctive wider right wing and rooflines, and the left-side neighboring structure. Keep the house recognizable as the photo. Subject: architecture and party atmosphere behind an empty fighting floor: a few tiny cheerful coworker silhouettes in the midground, string lights, red plastic cups on a table, modest garden planting, cool green grass and neat stone/wood paving. No large foreground people. Style/medium: colorful hand-placed pixel-art illustration with chunky flat color clusters, strong dark navy contour lines, cel-shaded 16-bit arcade finish, playful cartoon proportions but faithful architecture, no photorealism, no painterly blur. Target final framing is 8:7 landscape, 1024x896 master that can reduce cleanly to 256x224 and upscale 4x with nearest-neighbor. Composition/framing: wide 8:7 panorama, straight-on side-view fighting stage. Keep upper band and house silhouette clean enough for HUD. Leave the lower quarter as an empty continuous flat fightable floor from x=0..255 beginning around native y=168, with a clear feet line around native y=201; use cool grass, stone and wood paving there. Put small cheering coworker cartoons, string lights, red cups, and party table behind the arena in the midground only, around native y=105..165. No fighters or game UI. Lighting/mood: cheerful warm Chilean gathering, golden house windows, turquoise evening sky and cool grass, welcoming arcade energy with readable depth. Color palette: warm ivory plaster, brick and charcoal roof accents, sunset coral/amber lights, leafy green garden, cool blue green floor, deep navy contours; disciplined circa-1993 SNES palette, about 90 colors. Materials/textures: stucco, simple black iron railing, glass windows, grass, tidy stone/wood paving, string light bulbs, red cups; crisp pixel dithering used sparingly. Constraints: the house must remain a simple white two-story party home matching the reference; central covered patio and simple balcony with black iron railing are required; wider right wing is required; lower quarter must stay empty and readable for combat; no text, logos, watermarks, health bars or foreground fighters. Avoid: Mediterranean palace, many arches, grand villa, ornate palace, columns everywhere, extra balconies, generic resort, crowded foreground, photorealistic rendering, soft airbrush, noisy tiny detail, blurry edges, commercial game sprites, Street Fighter characters, Capcom logos."
+      "master": {
+        "file": "assets/art/stages/01-castillo-cartoon-v2.png",
+        "sha256": "8d7148129197f22bd2dc1c0a2afa2f76496299a114a54b5cbbac84aa6e41c3df"
+      },
+      "provenance": {
+        "file": "assets/art/stages/01-castillo-cartoon-v2.json",
+        "sha256": "962bc6664c390890f057ff66f27a5fc742275f8f6094c7e8d8eddcbdc4f26a2f"
+      },
+      "raw_source": {
+        "file": "assets/art/stages/source-v2/01-castillo.png",
+        "sha256": "375bd48a3988cd9caabd5aa9bb6071a673c881a71fc4d0335f246e9b20be51ca"
+      }
     },
     {
       "id": 2,
       "name": "La Oficina",
-      "output": "02-oficina.png",
-      "generated_image_id": "exec-9f65a499-2d39-46ee-b0b1-3635c4bf0593",
-      "generated_source_sha256": "b0713dc2c7c95d494c428eb2bf0d3046f1f10576a58bc920c92aad7ee7359574",
-      "output_sha256": "b73c41101719f09cab4196beccaea2b9f2cc5bec9669ba34614821949990daa3",
-      "prompt": "Use case: illustration-story. Asset type: SNES 2D fighting-game stage master, one standalone wide background. Input images: Image 1 is the exact La Oficina open-plan office reference photo; preserve its recognizable long desk rows, dual monitors, exposed ceiling and people working. Image 2 is a style/color reference for existing Abaqus After Hours cartoon arcade art; do not copy its composition. Primary request: Create a polished original 1993-era Super Nintendo fighting-game cartoon background for the La Oficina stage, faithful to the supplied contemporary open-plan office photo. Scene/backdrop: straight-on side-view inside a real modern open office in Santiago at night. Long rows of desks run left to right, with many dual monitors and dark monitor backs in the midground, exposed ceiling with linear LED strips and cable trays, structural pillars, and broad windows with a subtle blue city glow. Subject: recognizable workplace details from the photo: a few small cartoon coworker silhouettes behind desks, code-like colored screen lines, a front monitor showing the joke “11 Mbps” and another showing “8.1 Mbps” as clean readable large numerals, a green cup, laptops and desk clutter kept small. The monitor joke is allowed as the only text; no corporate logo or watermark. Style/medium: colorful hand-placed pixel-art illustration with chunky flat color clusters, strong dark navy contour lines, cel-shaded 16-bit arcade finish, playful cartoon proportions but faithful office layout, no photorealism, no painterly blur. Target final framing is 8:7 landscape, 1024x896 master that can reduce cleanly to 256x224 and upscale 4x with nearest-neighbor. Composition/framing: wide 8:7 panorama, straight-on fighting-game view. Keep the upper HUD-safe band structured with ceiling and dark cable lines, not busy faces. Leave the lower quarter as a clear flat office platform/floor from x=0..255 beginning around native y=168, with a readable feet line around native y=201. Keep foreground desks and monitor bases behind the fighters' legs or pushed to the sides so the combat silhouettes remain readable. No fighters or game UI. Lighting/mood: cyan night window glow balanced with amber linear LEDs and monitor light, stylish energetic workplace after-hours mood. Color palette: midnight navy, cyan glass, electric blue monitors, warm amber LEDs, muted office gray, small coral/green accents, deep navy outlines; disciplined circa-1993 SNES palette, about 90 colors. Materials/textures: desks, monitor bezels, exposed pipes/cable trays, carpet or polished floor, crisp pixel dithering used sparingly. Constraints: must read as a real open-plan office like the reference; long desk rows and many dual monitors required; exposed ceiling and linear lights required; “11 Mbps” and “8.1 Mbps” should be legible on two monitors if possible; lower quarter clear for fighting; no logos, no watermark, no health bars, no foreground fighters. Avoid: generic cyberpunk control room, futuristic spaceship, empty minimalist office, huge unreadable signage, photorealistic rendering, soft airbrush, noisy tiny detail, blurry edges, commercial game sprites, Street Fighter characters, Capcom logos."
+      "master": {
+        "file": "assets/art/stages/02-oficina-cartoon-v2.png",
+        "sha256": "d40612a3d47761d8c5dc735ed764c311ae9ac83ec44dbe8040df36b6b24fe9cc"
+      },
+      "provenance": {
+        "file": "assets/art/stages/02-oficina-cartoon-v2.json",
+        "sha256": "d5c9b357f28b352a065f7c2c1a58782c32693467d28c1b38b9b49a65c1a25980"
+      },
+      "raw_source": {
+        "file": "assets/art/stages/source-v2/02-oficina.png",
+        "sha256": "470916ed773af6794d7291ebefe8e8bab9ddf926377782887a138b4c2e02b543"
+      }
     }
   ]
 }

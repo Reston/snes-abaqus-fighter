@@ -1123,34 +1123,43 @@ void fightTick(void) {
 }
 void menuTick(void) {
     u8 *choice;
+    u16 keys,held,directions;
+    keys=edge0;held=pad0;
+    if(screen==SELECT && selectPlayer){keys|=edge1;held|=pad1;}
+    directions=cleanDirections(held)&keys;
+    directions&=KEY_RIGHT|KEY_LEFT|KEY_UP|KEY_DOWN;
+    /* One menu action per sample. Match pause: Start, then Back, then A.
+     * Clean held directions before masking edges, so an opposite held on
+     * either participating pad cannot turn a new edge into cursor movement. */
+    if(keys&KEY_START)keys&=~(KEY_A|KEY_B);
+    else if(keys&KEY_B)keys&=~KEY_A;
     if(screen==TITLE) {
-        if(edge0&KEY_DOWN){menu=(menu+1)%3;sound(0);drawTitle();}
-        if(edge0&KEY_UP){menu=(menu+2)%3;sound(0);drawTitle();}
-        if(edge0&KEY_L){difficulty=(difficulty+2)%3;sound(0);drawTitle();}
-        if(edge0&KEY_R){difficulty=(difficulty+1)%3;sound(0);drawTitle();}
-        if(edge0&(KEY_START|KEY_A)){mode=menu;arcade=0;champion=0;sound(3);showSelect();}
+        if(directions&KEY_DOWN){menu=(menu+1)%3;sound(0);drawTitle();}
+        if(directions&KEY_UP){menu=(menu+2)%3;sound(0);drawTitle();}
+        if(keys&KEY_L){difficulty=(difficulty+2)%3;sound(0);drawTitle();}
+        if(keys&KEY_R){difficulty=(difficulty+1)%3;sound(0);drawTitle();}
+        if(keys&(KEY_START|KEY_A)){mode=menu;arcade=0;champion=0;sound(3);showSelect();}
     } else if(screen==SELECT) {
-        if(selectPlayer)edge0|=edge1;
         choice=selectPlayer?&selected2:&selected;
-        if(edge0&KEY_RIGHT)*choice=(*choice+1)%12;
-        if(edge0&KEY_LEFT)*choice=(*choice+11)%12;
-        if(edge0&KEY_UP)*choice=(*choice+8)%12;
-        if(edge0&KEY_DOWN)*choice=(*choice+4)%12;
-        if(edge0&(KEY_RIGHT|KEY_LEFT|KEY_UP|KEY_DOWN)){sound(0);drawSelect();}
-        if(edge0&KEY_B){if(selectPlayer){selectPlayer=0;drawSelect();}else showTitle();}
-        if(edge0&(KEY_A|KEY_START)) {
+        if(directions&KEY_RIGHT)*choice=(*choice+1)%12;
+        if(directions&KEY_LEFT)*choice=(*choice+11)%12;
+        if(directions&KEY_UP)*choice=(*choice+8)%12;
+        if(directions&KEY_DOWN)*choice=(*choice+4)%12;
+        if(directions){sound(0);drawSelect();}
+        if(keys&KEY_B){if(selectPlayer){selectPlayer=0;drawSelect();}else showTitle();return;}
+        if(keys&(KEY_A|KEY_START)) {
             sound(3);
             if(mode==1 && !selectPlayer){selectPlayer=1;drawSelect();}
             else {if(mode!=1)selected2=(selected+1)%12;showArenas();}
         }
     } else if(screen==ARENA) {
-        if(edge0&KEY_DOWN){arena=(arena+1)%3;sound(0);drawArenas();}
-        if(edge0&KEY_UP){arena=(arena+2)%3;sound(0);drawArenas();}
-        if(edge0&KEY_B)showSelect();
-        if(edge0&(KEY_A|KEY_START)){sound(3);beginMatch();}
+        if(directions&KEY_DOWN){arena=(arena+1)%3;sound(0);drawArenas();}
+        if(directions&KEY_UP){arena=(arena+2)%3;sound(0);drawArenas();}
+        if(keys&KEY_B){showSelect();return;}
+        if(keys&(KEY_A|KEY_START)){sound(3);beginMatch();}
     } else if(screen==RESULT) {
-        if(edge0&KEY_B)showSelect();
-        if(edge0&(KEY_A|KEY_START)) {
+        if(keys&KEY_B){showSelect();return;}
+        if(keys&(KEY_A|KEY_START)) {
             if(mode==0 && resultWin && !champion){arcade++;arena=(arena+1)%3;}
             else if(champion){arcade=0;champion=0;showTitle();return;}
             beginMatch();

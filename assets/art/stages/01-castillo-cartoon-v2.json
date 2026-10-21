@@ -1,0 +1,253 @@
+{
+  "asset": "01-castillo-cartoon-v2.png",
+  "version": "v2",
+  "mode": "built-in imagegen",
+  "purpose": "Original cartoon redraw of the Castillo house-party courtyard stage for the native SNES fighting-game background and arena preview.",
+  "generation_outputs": [
+    {
+      "stage": "first_draft",
+      "generated_image_id": "exec-261803be-110e-479d-bfdb-8100daef7bcb",
+      "raw_output_id": "01a15c87-5829-7e90-8572-e1054cb7fb87/exec-261803be-110e-479d-bfdb-8100daef7bcb",
+      "raw_output_default_path": "C:/Users/user/.codex/generated_images/01a15c87-5829-7e90-8572-e1054cb7fb87/exec-261803be-110e-479d-bfdb-8100daef7bcb.png",
+      "raw_output_path": "build/cartoon-review/01-castillo-cartoon-v2-draft.png",
+      "raw_output_sha256": "f0cc86561ce4ba57eddd40aa2d484612b8c4a7c57e7e680245b382d35515dc1d",
+      "raw_output": {
+        "size": [
+          1341,
+          1173
+        ],
+        "format": "PNG",
+        "color_mode": "RGB",
+        "opaque": true
+      },
+      "prompt_key": "first_draft"
+    },
+    {
+      "stage": "selected_refinement",
+      "generated_image_id": "exec-a7923912-400a-4a47-9283-dfd78e6fc5b1",
+      "raw_output_id": "01a15c87-5829-7e90-8572-e1054cb7fb87/exec-a7923912-400a-4a47-9283-dfd78e6fc5b1",
+      "raw_output_default_path": "C:/Users/user/.codex/generated_images/01a15c87-5829-7e90-8572-e1054cb7fb87/exec-a7923912-400a-4a47-9283-dfd78e6fc5b1.png",
+      "raw_output_path": "assets/art/stages/source-v2/01-castillo.png",
+      "raw_output_sha256": "375bd48a3988cd9caabd5aa9bb6071a673c881a71fc4d0335f246e9b20be51ca",
+      "raw_output": {
+        "size": [
+          1341,
+          1173
+        ],
+        "format": "PNG",
+        "color_mode": "RGB",
+        "opaque": true
+      },
+      "prompt_key": "refinement"
+    }
+  ],
+  "input_roles": [
+    {
+      "path": "assets/art/stages/01-castillo.png",
+      "role": "edit target and composition guide; preserve the recognizable Castillo house-party courtyard and fighting-plane logic",
+      "sha256": "b263c8173ff89eda8da609c1782a89cf181c8f66b30ef159219b6efd592bd17b"
+    },
+    {
+      "path": "assets/art/characters/00-damian/atlas-v4.png",
+      "role": "supporting style reference only; deep-navy contour weight and saturated illustrated color language, with no fighter or pose copied",
+      "sha256": "3b29a299194ebaa2d6b2c712a1e6465f3c6b828cf3e76581eea12b90def06a14"
+    },
+    {
+      "path": "C:/Users/user/.t3/userdata/attachments/52a10d60-8bd7-44e8-88be-c4667e065c96-29e87a45-5607-41ef-a618-2d103005cabe.png",
+      "role": "actual party-house architecture reference only; use the white two-story house, central covered patio and broader right-wing roofline cues without copying people or photographic artifacts",
+      "sha256": "e17d314d4bbe822a407452ffdf3ff1e2493be96a2978554ab4ae7b9fb3a5bb34"
+    },
+    {
+      "path": "build/cartoon-review/01-castillo-cartoon-v2-draft.png",
+      "role": "first generated draft used as the edit target for the focused flat-cel refinement",
+      "sha256": "f0cc86561ce4ba57eddd40aa2d484612b8c4a7c57e7e680245b382d35515dc1d"
+    }
+  ],
+  "prompts": {
+    "first_draft": "Use case: illustration-story\nAsset type: native SNES fighting-game stage background, wide 8:7 composition.\nInput images: Image 1 is the edit target and composition guide: preserve a wide courtyard scene with an open readable fighting plane; Image 2 is supporting style only for bold cartoon contour weight and cel-color discipline, not a character insert; Image 3 is an architectural reference only for the white two-story party house, central covered patio, balcony and broader right wing/rooflines.\n\nPrimary request: Transform the existing Castillo courtyard stage into an original, distinctly cartoon 1990s arcade-fighting-game background with playful, exaggerated but recognizable shapes. Make the house a bright ivory and coral/orange two-story home with a black iron balcony and a central covered patio; make the right wing visibly broader with stepped rooflines, borrowing the actual photo's courtyard proportions. Add a lush rounded garden, cool teal grass, slate paving and a clear blue sky with chunky pink clouds. Place a small group of expressive cartoon coworkers cheering near the patio behind the fighting plane; tiny simplified silhouettes/figures only, no individual likenesses. Add red cups and a party table near the patio. Hang warm string bulbs as nice ambient targets around the patio/garden.\n\nStyle/medium: hand-inked flat cel-shaded cartoon background, strong deep-navy contours, broad bold shapes, no photorealism. Keep only 2–3 flat shade bands per material, crisp graphic edges, lively arcade illustration, visually cohesive with the attached fighter atlas' navy outlines and saturated colors while keeping every background person fully original and tiny.\n\nComposition/framing: wide side-on stage background; reserve a quiet HUD band across y=0..39; keep a continuous empty ground/fighting plane across y=168..223 with feet landing around y=201; place all people, party furniture and garden detail above/behind the plane; no foreground props blocking fighters; broad house fills midground but preserve playable empty space.\n\nLighting/mood: sunny, cheerful house-party afternoon with warm string-bulb accents; readable at 256×224 and at native 8:7.\nColor palette: bright ivory, coral and orange house; deep navy outlines; cool teal grass; slate paving; clear blue sky; chunky pink clouds; warm yellow bulbs; small red cups.\nMaterials/textures: solid graphic fills, limited flat cel bands, minimal tiny texture marks only where they aid readability.\nText (verbatim): none.\nConstraints: change the scene into cartoon art; keep the original stage's broad courtyard readability and horizontal fighting-plane logic; original distinct artwork; no logos or UI; no foreground fighters; no recognizable real people; no use of commercial game sprites.\nAvoid: photorealistic granules, dithering, bloom, noise, painterly blur, 3D rendering, detailed floor reflections, realistic faces, detailed text, watermarks, Capcom or Street Fighter logos, recognizable copyrighted characters, dramatic perspective that narrows the fighting plane.",
+    "refinement": "Use case: illustration-story\nAsset type: native SNES fighting-game stage background, wide 8:7 composition.\nInput images: Image 1 is the current cartoon stage edit to refine; Image 2 is supporting style only for deep-navy contour weight and saturated cel colors; Image 3 is architecture/layout reference only.\n\nPrimary request: Refine Image 1 into a cleaner, more readable original 1990s arcade-fighting-game cartoon background. Keep its same broad white two-story house, central covered patio, black iron balcony, broader right wing, garden party, string bulbs, red cups, small cheering coworkers and empty side-on fighting plane. Preserve the composition and all scene objects while simplifying the rendering.\n\nStyle/medium: bold hand-inked flat cel cartoon, strong deep-navy contours, broad graphic shapes, crisp edges, only 2–3 flat shade bands per material. Use simple blocky lawn shapes in cool teal and simple slate paving slabs with a few clean shadow bands. Remove fine grass blades, mottling, small random texture marks, grain, dither and reflective floor patches. Keep the cloud shapes chunky and pink, sky clear blue, house bright ivory/coral/orange, bulbs warm yellow.\n\nComposition/framing: preserve the wide side-on stage layout; quiet unimportant sky across HUD band y=0..39; continuous empty ground/fighting plane y=168..223 with feet landing around y=201; party people, table and chairs stay above and behind the plane; no foreground props blocking fighters; keep broad playable space.\n\nLighting/mood: cheerful sunny party with warm bulbs, graphic shadows only, no glow or bloom.\nConstraints: original distinct artwork, no logos, no UI, no foreground fighters, no recognizable real people, no commercial game sprites, do not change the house-party architecture or stage readability.\nAvoid: photorealistic granules, microtexture, dithering, noise, bloom, painterly blur, 3D rendering, detailed floor reflections, realistic faces, text, watermarks, Capcom or Street Fighter logos, copyrighted characters."
+  },
+  "selected_prompt": "refinement",
+  "processing": {
+    "source_master": "assets/art/stages/source-v2/01-castillo.png",
+    "source_size": [
+      1341,
+      1173
+    ],
+    "center_aspect_crop": {
+      "box_xyxy": [
+        2,
+        2,
+        1338,
+        1171
+      ],
+      "cropped_size": [
+        1336,
+        1169
+      ],
+      "aspect": "8:7",
+      "resampling": "none; integer center crop"
+    },
+    "native_downsample": {
+      "size": [
+        256,
+        224
+      ],
+      "resampling": "nearest-neighbor"
+    },
+    "palette": {
+      "method": "Pillow MEDIANCUT",
+      "colors_requested": 90,
+      "colors_used": 90,
+      "dither": "none"
+    },
+    "opaque_rgb": true,
+    "preview_upscale": {
+      "size": [
+        1024,
+        896
+      ],
+      "scale": "4x",
+      "resampling": "nearest-neighbor"
+    }
+  },
+  "colors": {
+    "scene_palette": [
+      "bright ivory house",
+      "coral and orange trim",
+      "deep navy contours",
+      "cool teal grass",
+      "slate paving",
+      "clear blue sky",
+      "chunky pink clouds",
+      "warm yellow string bulbs",
+      "small red cups"
+    ],
+    "quantization": {
+      "colors_requested": 90,
+      "colors_used_native": 90,
+      "colors_used_final": 90,
+      "dither": "none"
+    }
+  },
+  "transforms": [
+    {
+      "operation": "center_aspect_crop",
+      "input_size": [
+        1341,
+        1173
+      ],
+      "box_xyxy": [
+        2,
+        2,
+        1338,
+        1171
+      ],
+      "output_size": [
+        1336,
+        1169
+      ],
+      "resampling": "none"
+    },
+    {
+      "operation": "native_downsample",
+      "input_size": [
+        1336,
+        1169
+      ],
+      "output_size": [
+        256,
+        224
+      ],
+      "resampling": "nearest-neighbor"
+    },
+    {
+      "operation": "palette_quantization",
+      "input_size": [
+        256,
+        224
+      ],
+      "output_size": [
+        256,
+        224
+      ],
+      "method": "Pillow MEDIANCUT",
+      "colors_requested": 90,
+      "colors_used": 90,
+      "dither": "none",
+      "mode": "RGB"
+    },
+    {
+      "operation": "preview_upscale",
+      "input_size": [
+        256,
+        224
+      ],
+      "output_size": [
+        1024,
+        896
+      ],
+      "scale": "4x",
+      "resampling": "nearest-neighbor"
+    }
+  ],
+  "preserved_original": {
+    "path": "assets/art/stages/01-castillo.png",
+    "sha256": "b263c8173ff89eda8da609c1782a89cf181c8f66b30ef159219b6efd592bd17b"
+  },
+  "selected_final": {
+    "path": "assets/art/stages/01-castillo-cartoon-v2.png",
+    "sha256": "8d7148129197f22bd2dc1c0a2afa2f76496299a114a54b5cbbac84aa6e41c3df",
+    "size": [
+      1024,
+      896
+    ],
+    "format": "PNG",
+    "color_mode": "RGB",
+    "opaque": true,
+    "colors_used": 90
+  },
+  "native_review": {
+    "path": "build/cartoon-review/01-castillo-cartoon-v2-native.png",
+    "sha256": "648a4af93b8a627deec36551c7f0e97a993b1fe27d9795070c483ac9103bec5f",
+    "size": [
+      256,
+      224
+    ],
+    "format": "PNG",
+    "color_mode": "RGB",
+    "opaque": true,
+    "colors_used": 90
+  },
+  "preview_upscaled": {
+    "path": "build/cartoon-review/01-castillo-cartoon-v2-preview.png",
+    "sha256": "8d7148129197f22bd2dc1c0a2afa2f76496299a114a54b5cbbac84aa6e41c3df",
+    "size": [
+      1024,
+      896
+    ],
+    "format": "PNG",
+    "color_mode": "RGB",
+    "opaque": true,
+    "colors_used": 90
+  },
+  "validation": {
+    "native_expected_dimensions": [
+      256,
+      224
+    ],
+    "final_expected_dimensions": [
+      1024,
+      896
+    ],
+    "native_pixel_count": 57344,
+    "final_pixel_count": 917504,
+    "native_color_count_at_most": 90,
+    "final_color_count_at_most": 90,
+    "alpha": "absent; RGB only",
+    "opaque_validation": "all RGB pixels present; no alpha channel",
+    "native_reviewed_at_actual_256x224": true,
+    "four_x_preview_matches_nearest_native": true,
+    "original_asset_preserved": true
+  }
+}

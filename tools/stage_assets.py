@@ -214,8 +214,12 @@ def build_stage_animation(name: str, base_gfx: bytes, base_map: bytes,
     """Build four 8-tile phases and a map with eight dynamic tile entries.
 
     ``base_gfx`` and ``base_map`` are never modified.  Supplying explicit
-    ``cells`` and ``phases`` is supported for isolated QA; the named stage
-    contract is used by the asset generator when they are omitted.
+    ``cells`` and ``phases`` is supported for isolated QA and for source-aware
+    stage variants.  Custom cells may contain only ``x``, ``y`` and ``role``;
+    their source tile and palette are derived from ``base_map``.  If either
+    value is supplied it must agree with that map.  Custom cells must provide
+    explicit phases so the legacy edit table cannot accidentally paint a new
+    stage with coordinates from an older master.
     """
     if len(base_gfx) % BYTES_PER_TILE or len(base_gfx) > 0x7000:
         raise ValueError("stage graphics must be whole tiles and fit the 896-tile region")
@@ -227,25 +231,37 @@ def build_stage_animation(name: str, base_gfx: bytes, base_map: bytes,
         record_id, slug = STAGE_RECORDS[name]
     except KeyError as exc:
         raise ValueError(f"unknown stage animation: {name}") from exc
-    cells = list(cells or _stage_cells(name))
+    custom_cells = cells is not None
+    cells = list(_stage_cells(name) if cells is None else cells)
     if len(cells) != TILE_COUNT:
         raise ValueError(f"{name} requires exactly {TILE_COUNT} dynamic cells")
+    normalized_cells = []
     for slot, cell in enumerate(cells):
         x, y = int(cell["x"]), int(cell["y"])
         if not 0 <= x < MAP_WIDTH or not 0 <= y < MAP_HEIGHT:
             raise ValueError(f"map cell outside 32x32 stage map: {(x, y)}")
         raw = struct.unpack_from('<H', base_map, (y * MAP_WIDTH + x) * 2)[0]
-        source_tile = int(cell["source_tile"])
+        map_tile = raw & 0x3FF
         source_palette = (raw >> 10) & 7
-        if (raw & 0x3FF) != source_tile:
-            raise ValueError(f"{name} cell {(x, y)} expected tile {source_tile}, got {raw & 0x3FF}")
-        if source_palette != int(cell["palette"]):
+        if "source_tile" in cell and map_tile != int(cell["source_tile"]):
+            raise ValueError(f"{name} cell {(x, y)} expected tile {cell['source_tile']}, got {map_tile}")
+        if "palette" in cell and source_palette != int(cell["palette"]):
             raise ValueError(f"{name} cell {(x, y)} expected palette {cell['palette']}, got {source_palette}")
+        normalized_cells.append({
+            **cell,
+            "x": x,
+            "y": y,
+            "source_tile": map_tile,
+            "palette": source_palette,
+        })
         if TILE_INDEX_BASE + slot >= 1024:
             raise ValueError("dynamic tile index exceeds BG1 map tile field")
+    cells = normalized_cells
 
     source_tiles = [_tile(base_gfx, int(cell["source_tile"])) for cell in cells]
     if phases is None:
+        if custom_cells:
+            raise ValueError("custom stage cells require explicit four-phase tile data")
         edits = _stage_edits(name)
         phases = []
         for phase_index in range(PHASE_COUNT):

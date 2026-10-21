@@ -1,0 +1,103 @@
+{
+  "asset": "00-las-condes-cartoon-v2.png",
+  "version": "v2",
+  "mode": "built-in imagegen",
+  "purpose": "Cartoon redraw of the Las Condes native SNES stage and arena preview.",
+  "generated_image_id": "exec-6e2f7a5f-bd1e-4f68-b48f-17a982eb0a00",
+  "raw_output_id": "01a15c87-23ed-7bf3-816d-eebed51325e4/exec-6e2f7a5f-bd1e-4f68-b48f-17a982eb0a00",
+  "raw_output_path": "assets/art/stages/source-v2/00-las-condes.png",
+  "raw_output_default_path": "C:/Users/user/.codex/generated_images/01a15c87-23ed-7bf3-816d-eebed51325e4/exec-6e2f7a5f-bd1e-4f68-b48f-17a982eb0a00.png",
+  "raw_output_sha256": "847a588e7a35d040b4491fb0779b2b306c57b62c6fa41f5027c54ec1611d6b69",
+  "raw_output": {
+    "size": [
+      1341,
+      1173
+    ],
+    "format": "PNG",
+    "color_mode": "RGB",
+    "opaque": true
+  },
+  "input_roles": [
+    {
+      "path": "assets/art/stages/00-las-condes.png",
+      "role": "edit target; preserve recognizable centered Las Condes composition and stage identity",
+      "sha256": "9f061c4123ce9d134e1967914d6e287d97fdb26fac0b6360cb09f4cd5aa8237f"
+    },
+    {
+      "path": "assets/art/characters/00-damian/atlas-v4.png",
+      "role": "style reference only; bold illustrated cartoon line and color language, no subjects copied",
+      "sha256": "3b29a299194ebaa2d6b2c712a1e6465f3c6b828cf3e76581eea12b90def06a14"
+    },
+    {
+      "path": "C:/Users/user/.t3/userdata/attachments/52a10d60-8bd7-44e8-88be-c4667e065c96-bc4109d3-c156-42fb-aab9-db5e6ebdf8e9.png",
+      "role": "location reference only; actual Las Condes entrance architecture and spatial cues",
+      "sha256": "a8a14e8fee600c126461a0849365e969495fcd1dfeb36bf670b335fe049064a0"
+    }
+  ],
+  "prompt": "Use case: style-transfer\nAsset type: native SNES fighting-game stage master, later prepared to 256x224 and a 1024x896 4x nearest preview.\nInput images:\n- Image 1 is the edit target: the existing 00-las-condes stage. Preserve its recognizable centered composition and stage identity while simplifying its rendering.\n- Image 2 is style reference only: Damian’s illustrated cartoon fighter atlas. Use only its bold cel-illustration language, confident dark outlines, clean flat color blocks, and compact 1990s arcade-fighting-game finish. Do not copy any person, pose, fighter, sprite, clothing, or character from it.\n- Image 3 is location reference only: the real Las Condes entrance photo. Use only the architecture and spatial cues for the actual place; remove all people, vehicles, watermarks, and photographic artifacts.\n\nPrimary request: redraw the entire Las Condes location and arena-preview picture as a markedly simplified early-1990s arcade fighting-game background, with a hand-painted cartoon look that matches the supplied character atlas. Keep the actual glass entrance, two silver cylindrical pillars, glass canopy, centered doorway, and the large address number “140” clearly recognizable. Keep the deep azure glass façade, flat warm-gold interior, red foliage, and quiet cool blue-gray pavement.\n\nComposition/framing: full stage, 8:7 native composition, designed for 256x224 SNES. Keep the upper native y=0..39 area clean enough for a HUD. Preserve an unobstructed continuous fight floor from roughly native y=168 through y=223 across the full width, with feet baseline around native y=201. Architectural depth: a few broad background glass planes and distant blocky silhouettes, a clear midground entrance and canopy, then a broad foreground pavement plane. Use rounded stylized trees and red-leaf clusters, especially a useful red-leaf highlight mass at the far right around native x=224..239 and y=48..80 when compatible with the composition.\n\nStyle/medium: bold cartoon raster illustration, broad solid cel-color clusters, strong deep-navy outlines, only 2–3 graphic shadow bands per material, rounded simplified shapes, readable at 256x224, like an original 1990s arcade fighting-game stage illustration. Keep the building geometry believable but graphic and slightly exaggerated.\n\nLighting/mood: calm bright cool daylight with warm gold interior glow; crisp flat graphic lighting, no bloom and no soft atmospheric haze.\nColor palette: deep navy outlines; deep azure/cobalt glass; silver-blue pillars; warm gold/ochre interior; restrained brick-red/crimson foliage; quiet cool blue-gray pavement; pale cream highlights.\nMaterials/textures: flat cel-painted glass panes, clean metallic bands, broad pavement slabs with a few simple perspective seams. Architectural depth comes from overlapping clean planes and 2–3 value bands, not texture noise.\n\nConstraints: change only the rendering/style of this stage while keeping its recognizable location composition; keep the entrance, silver pillars, canopy, large legible “140”, red foliage, glass, and broad floor. Make every edge readable after nearest-neighbor reduction. No foreground people, no characters, no vehicles, no logos, no UI, no watermark, no commercial sprites, no copied Capcom art, no photographic granules, no dithering, no tiny speckles, no airbrush, no bloom, no glowy reflections, no 3D render, no photorealism. Keep the whole canvas opaque RGB.",
+  "processing": {
+    "source_master": "assets/art/stages/source-v2/00-las-condes.png",
+    "source_size": [
+      1341,
+      1173
+    ],
+    "center_aspect_crop": {
+      "box_xyxy": [
+        2,
+        2,
+        1338,
+        1171
+      ],
+      "cropped_size": [
+        1336,
+        1169
+      ],
+      "aspect": "8:7",
+      "resampling": "none; integer center crop"
+    },
+    "native_downsample": {
+      "size": [
+        256,
+        224
+      ],
+      "resampling": "nearest-neighbor"
+    },
+    "palette": {
+      "method": "Pillow MEDIANCUT",
+      "colors_requested": 90,
+      "colors_used": 90,
+      "dither": "none"
+    },
+    "opaque_rgb": true,
+    "preview_upscale": {
+      "size": [
+        1024,
+        896
+      ],
+      "scale": "4x",
+      "resampling": "nearest-neighbor"
+    }
+  },
+  "selected_final": {
+    "path": "assets/art/stages/00-las-condes-cartoon-v2.png",
+    "sha256": "878ea16af87068ba2128ef848d94445149381017958ba4c0eeb3097d2eebb931",
+    "size": [
+      1024,
+      896
+    ],
+    "format": "PNG",
+    "color_mode": "RGB",
+    "opaque": true
+  },
+  "native_review": {
+    "path": "build/cartoon-review/00-las-condes-cartoon-v2-native.png",
+    "sha256": "785ef26e7e4fa74753e0399812b6943da1b9761fd9fae6398324db1644f09192",
+    "size": [
+      256,
+      224
+    ],
+    "format": "PNG",
+    "color_mode": "RGB",
+    "opaque": true
+  }
+}
