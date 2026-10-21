@@ -1,38 +1,41 @@
-# v0.8.1 human playtest guide
+# v0.9.0 human playtest guide
 
-This is a short review route for the verified v0.8.1 technical snapshot. It
-collects human feedback on likeness, motion, fighting feel, pause help,
-Training behavior, presentation, audio and onboarding; it is not a release
-approval form. Leave an item blank or mark it unknown when it was not reviewed.
-Do not infer roster consent or public-release approval from a completed table.
+This is a short review route for the v0.9.0 presentation-correction candidate.
+It records the live v0.8.1 presentation findings and collects human feedback on
+likeness, motion, fighting feel, pause help, Training behavior, presentation,
+audio and onboarding; it is not a release approval form. Leave an item blank or
+mark it unknown when it was not reviewed. Do not infer roster consent or
+public-release approval from a completed table.
 
 ## Snapshot under review
 
-- Source freeze commit: `fe05e5fd1391a1db20f1b66f1e9f6e699445e77a`,
-  tree `46e1af160ffb8ab6cb768e3d9deec1352d77ae83`.
-- [Verified ROM](../dist/abaqus-after-hours.sfc) SHA256:
-  `76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`,
-  header checksum `A358` in the [manifest](../dist/manifest.json). Verify the
-  SHA before a session because the checkout's `dist/` files are mutable.
-- [v0.8.1 Windows package](../dist/Abaqus-After-Hours-v0.8.1-Windows.zip) is
-  the current packaged snapshot. Its archive audit passes 7,471 technical
-  checks. Two packaging runs produce identical 6,546,645-byte archives, SHA256
-  `04d951c3abef278afada5a666f9eec8a04d140650354bd82506e750e2849e0b6`.
-- All six native reports pass on this SHA with 30,641 checks. Fresh committed
-  export, matchup, stage, policy, replay, symmetry, pinned bsnes, bounded
-  independent and endurance evidence also pass. Native C/ASM, controls,
-  gameplay and audio are unchanged. Reston's full64 native visual review
-  accepted v4 for integration. The user subsequently confirmed the revised
-  buzz cut looks closer; see the scoped record below. Final team likeness and
-  consent, balance, full listening, controller and branding review still need
-  explicit human results. The first release is emulator-first by user choice;
-  original-console/flash-cartridge support stays unverified.
-- The separate [Mesen-S review](MESEN-REVIEW.md) passes 48 bounded combat cases,
-  mode/guide checks and all three stages on this same ROM. The
-  [audio review](AUDIO-REVIEW.md) supplies twelve captured WAVs and measured
-  score repetition for listening. These supplements leave the packaged game
-  unchanged and do not constitute human play or listening approval.
-- [Review captures](screenshots/) include the [title](screenshots/title.png),
+- The [v0.9.0 candidate ROM](../dist/abaqus-after-hours.sfc) currently has
+  SHA256 `bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639`
+  and header checksum `6D41` in the [manifest](../dist/manifest.json). Verify
+  the SHA before a session because the checkout's `dist/` files are mutable.
+- Candidate source freeze: commit
+  `76f0a08a7562800df01507db83c6877745c3bdcf`, tree
+  `f37852da57a42d2d6819374db5d23278d12587a5`.
+- All six native reports pass on the candidate SHA: 2,595 gameplay, 18,081
+  roster, 1,756 presentation, 997 focused-input, 8,131 stage and 622 Training
+  checks (32,182 total). Matching compatibility, matchup, bounded independent
+  combat, endurance, fresh-source and `validate_release_evidence` evidence also
+  pass. `Test.cmd` exits 0. The [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
+  is available and its archive audit passes 7,471 checks. Do not attach historical v0.8.1 results
+  to this candidate.
+- The [last verified v0.8.1 ROM](../dist/abaqus-after-hours.sfc) is SHA256
+  `76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`, header
+  checksum `A358`; its source freeze and package evidence are historical. Native
+  C/ASM, controls, gameplay and audio are unchanged by the presentation pass.
+  The first release is emulator-first by user choice; original-console and
+  flash-cartridge support stays unverified.
+- The separate historical [Mesen-S review](MESEN-REVIEW.md) passes 48 bounded
+  combat cases, mode/guide checks and all three stages on the v0.8.1 ROM. The
+  historical [audio review](AUDIO-REVIEW.md) supplies twelve captured WAVs and
+  measured score repetition for listening. These supplements leave the packaged
+  game unchanged and do not constitute v0.9.0 evidence or human play/listening
+  approval.
+- Historical [review captures](screenshots/) include the [title](screenshots/title.png),
   [select](screenshots/select.png), [arenas](screenshots/arenas.png),
   [fight](screenshots/fight.png), [block](screenshots/block.png),
   [combo](screenshots/combo.png), [jump](screenshots/jump.png),
@@ -56,7 +59,8 @@ results from this guide to a later build.
 | Review | Actual response | Scope still open |
 |---|---|---|
 | Reston's revised short buzz cut, 2026-10-20 | User: "Yes, closer" | Final team likeness review, motion approval and public-use consent |
-| Combat feel, balance and onboarding | User: "havent tested" | Human play on the exact package, including both player layouts and all twelve fighters |
+| Live v0.8.1 presentation review | User reported clipped selection faces, Damian did not resemble the supplied photo closely enough, the arena picker looked ugly, and stage scenery showed through HUD/result lettering | Native v0.9.0 correction checks now pass on the exact SHA; human likeness/consent and broader gameplay review remain open |
+| Combat feel, balance and onboarding | Not covered by the presentation review | Human play on the exact candidate, including both player layouts and all twelve fighters |
 | Music and effect mix | User heard the 14-second replay: "I heard it; no issue noticed" | Full score/cue and busy-exchange listening; playback device was not specified |
 | First public-release platforms | User: "Emulators first; hardware support stays unverified" | Original hardware remains unverified future work; it is outside the selected first-release support scope |
 | Physical controllers | No equipment result recorded | Two-controller session on the intended emulator setup |
@@ -68,6 +72,29 @@ questions and responses. A positive hair comparison does not approve the rest
 of the roster, gameplay, audio or public distribution. The other rows record
 the remaining review scope; unreviewed items are not reported defects.
 
+The live presentation findings are retained as four separate review targets:
+
+- Selection faces were clipped by the old source-window fill. The candidate
+  uses one contained, head-anchored crop for both the 32x40 card and 64x80
+  portrait, with `portrait_framing` metadata and no head clipping.
+- Damian's face did not match the supplied photo closely enough. The candidate
+  carries the v4 source PNGs and provenance under
+  `assets/art/characters/00-damian/`, with one reviewed neutral-height
+  conversion per atlas; native palette, physical scale and 64-frame order stay
+  locked. Human likeness approval remains open.
+- The arena picker looked cramped and uneven. The candidate contains complete
+  stage art in 60x52 thumbnails at `x18..77`, `y42..93` plus 56 pixels per row,
+  keeps the cursor at `x8..247`, `y40..95` plus 56 pixels per row, and moves
+  names/captions to a separate text column.
+- Stage scenery showed through HUD and result lettering. FIGHT and RESULT now
+  use opaque glyphs 256-383 for ASCII 32-127, while round markers 147/148 use
+  the panel background at palette index 1.
+
+The native presentation suite and matching technical evidence now pass on the
+candidate SHA. The [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
+is available and its archive audit passes 7,471 checks. The observations above are actual live feedback;
+they do not establish human likeness/consent or public-use approval.
+
 ## A 20-30 minute route
 
 Use Local Versus for the two-player checks and Training for repeatable moves.
@@ -77,7 +104,7 @@ keyboard mappings.
 
 | Time | Route | Record |
 |---|---|---|
-| 0-2 min | Boot the exact verified ROM, read the first control hint, open fighter select and arena select, then confirm and back out once. | Is the first action clear? Are confirm, back and pause consistent? |
+| 0-2 min | Boot the exact candidate ROM after recording its SHA, read the first control hint, open fighter select and arena select, then confirm and back out once. | Is the first action clear? Are confirm, back and pause consistent? |
 | 2-8 min | Sweep all twelve fighters. On each card, check the face, hair, costume colors, feet baseline and apparent size. In a short match or Training reset, make each fighter idle, walk forward/back, crouch, jump and perform one normal. Put each fighter on P1 once and P2 once so both right- and left-facing renders are seen. For Reston, compare the fuller short buzz cap in the v4 portrait and all 64 native poses. | Note likeness, proportions, silhouette changes and any fighter that needs a second look. Use the capture index below for native motion references. Record Reston likeness feedback separately from the art-integration review. |
 | 8-13 min | Play the fundamentals: walk into standing guard, crouch guard a low kick or wave, take a real hit, jump forward and neutral, press light/medium/heavy normals, then repeat after the opponent blocks. | Does input feel immediate? Are pushback, hitstop, guard stun, chip and recovery readable? Any accidental attacks or missed edges? |
 | 13-17 min | Verify the four special families with Damian (projectile), Cristobal (rush), Negger (low shockwave) and Roxana (rising strike). Try a confirmed normal into a heavier normal and then a special. At close range, throw a guarding opponent; attempt simultaneous throws once. | Record command reliability, cancel timing, special readability, throw timing and whether blocked/unblocked results make sense. |
@@ -161,6 +188,7 @@ writing a long explanation in the table.
 | Guard, low guard, hitstop and chip |  |  |
 | Cancels, specials and input response |  |  |
 | Las Condes / El Castillo / La Oficina |  |  |
+| v0.9.0 portrait, arena and HUD/result corrections |  |  |
 | Controller ports and keyboard rollover |  |  |
 | Music, effects and mix |  |  |
 | Onboarding and accessibility |  |  |

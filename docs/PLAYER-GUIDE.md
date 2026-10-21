@@ -2,15 +2,10 @@
 
 ## Current version
 
-This manual describes the verified v0.8.1 technical snapshot. Its 4 MiB NTSC ROM is
-`abaqus-after-hours.sfc`, SHA256 prefix
-`76b456d1ac75471a...f36e52904466`, header checksum `A358`. Verify the complete
-SHA256 in the accompanying manifest before recording feedback for a build.
-The six native reports and matching compatibility smoke pass on this exact SHA;
-the v0.8.1 package passes its 7,471-check technical audit. The v0.8.0 package
-is historical evidence. Native controls, gameplay and audio are unchanged. Reston's
-v4 art was accepted for native integration review, while human likeness/consent,
-balance, audio, controllers, branding and real hardware review remain open.
+This manual covers v0.9.0, with revised portraits, Damian's likeness, arena
+selection and clearer HUD/result text. ROM identity: SHA256
+`bce460fbaa6f63e2...dfad292d4d200639`, header checksum `6D41`. The accompanying
+manifest contains the complete checksum for identifying your build.
 
 ## Launch
 
@@ -46,8 +41,10 @@ Roxana and Rodrigo "Lars" Lartiga.
 
 Fighter select uses a four-by-three grid. **Left/Right** moves one card;
 **Up/Down** moves by four cards and wraps around. The selected fighter appears
-in the large portrait. Choose from the three arenas: **Las Condes**, **El
-Castillo** and **La Oficina**. In the arena menu, **Up/Down** chooses the row.
+in a large portrait. Choose from the three arenas: **Las Condes**, **El Castillo**
+and **La Oficina**. In the arena menu, **Up/Down** chooses the row; each
+thumbnail shows the complete stage inside its box, with the location name and
+caption in a separate text column.
 
 ## Controls
 

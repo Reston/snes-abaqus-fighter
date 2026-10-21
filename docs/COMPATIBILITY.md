@@ -1,9 +1,10 @@
 # Independent-engine compatibility
 
-The current v0.8.1 smoke and bounded combat reports both pass against cartridge
-SHA256 `76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`.
-This snapshot updates Reston's art and portraits; the native engine and
-compatibility hosts retain the v0.8 behavior and contracts.
+The current v0.9.0 smoke and bounded combat reports both pass against cartridge
+SHA256 `bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639`.
+This snapshot updates portrait framing, Damian's art, arena selection and
+opaque combat/result text. Native combat behavior, memory/transfer contracts
+and compatibility hosts remain unchanged.
 
 The pinned smoke check has the bounded scope `independent-engine smoke, stage
 ambient/effects freeze, synchronized low-wave, neutral600frame cadence`. It is

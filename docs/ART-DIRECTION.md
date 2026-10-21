@@ -115,9 +115,9 @@ fresh-source evidence also passed. The offline package passed 7,471 technical
 audit checks; human likeness, balance, listening, controller, real-console and
 branding review remained open.
 
-## v0.8.1 verified Reston v4 direction
+## v0.8.1 historical verified Reston v4 direction
 
-The verified v0.8.1 snapshot is an art-only source revision. Reston's complete 64-frame
+The historical v0.8.1 snapshot is an art-only source revision. Reston's complete 64-frame
 set and selected portrait use a fuller very-short near-black buzz cap across the
 top and crown, with the mature forehead and face retained. The versioned source
 files are `atlas-v4.png`, `animation-motion-v4.png`,
@@ -139,11 +139,68 @@ uniform/physical scale `0.2280130293159609`.
 Full64 native visual review accepted the revision for integration. Actual human
 likeness/consent feedback remains pending. Native C/ASM, controls, gameplay and
 audio are unchanged. All six native reports and matching expanded evidence pass
-for ROM SHA256 `76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`
+for the historical ROM SHA256
+`76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`
 (header `A358`), including fresh export, matchup, stage, policy, replay,
-symmetry, pinned bsnes and endurance checks. The v0.8.1 package and its
-7,471-check audit pass; public, human-balance, listening, controller,
-real-console and branding gates stay open.
+symmetry, pinned bsnes and endurance checks. The historical v0.8.1 package and
+its 7,471-check audit pass; public, human-balance, listening, controller,
+real-console and branding gates stay open. A later live review found four
+presentation defects; the v0.9.0 correction pass below now has native evidence
+and a packaged technical archive. Public, human-balance, listening, controller, real-console and
+branding gates stay open.
+
+## v0.9.0 presentation correction pass (packaged technical snapshot; public review pending)
+
+The live review of the historical v0.8.1 presentation found four concrete
+problems: selection faces were clipped, Damian did not resemble the supplied
+photo closely enough, the arena picker read as cramped and uneven, and BG1
+scenery showed through HUD and result lettering. The working-tree pass addresses
+each while preserving the native menu geometry, VRAM allocation and interface
+palette contracts.
+
+Selection cards and profile portraits now share one head-anchored, contained
+composition at 32x40 and 64x80. `tools/portrait_assets.py` records the source
+crop, head anchor, margins, scale and `head_clipped=false` as
+`portrait_framing` in `assets/generated/character-manifest.json`. Nearest
+neighbor resampling keeps the authored pixel edges and leaves a small backdrop
+margin around the head.
+
+The arena picker retains its three-row cursor at `x8..247`, `y40..95` plus
+56 pixels per row. Each complete stage image fits inside a 60x52 thumbnail at
+`x18..77`, `y42..93` plus 56 pixels per row. Location names and short captions
+occupy a separate text column, so the gold cursor does not touch scene pixels.
+
+FIGHT and RESULT lettering uses the existing opaque glyphs 256-383 for ASCII
+32-127 in the `$5000-$57FF` interface window. Title, roster and arena menu text
+keep the original ASCII bank. Round marker tiles 147/148 use the opaque panel
+background at palette index 1, removing the BG1 scenery bleed through those
+cells.
+
+Damian's v4 legacy, motion, actions and airborne source PNGs and provenance
+files remain under `assets/art/characters/00-damian/`. The approved
+`neutral-height` normalization converts each atlas once to the 311-pixel
+reference neutral with pinned factors: legacy `0.9255952381`, motion
+`0.9904458599`, and actions/airborne `0.9936102236`. The native idle height is
+69. The baseline, native palette and physical scale remain locked, and the
+corrected 64-frame contract hash is
+`00f90a6765904c546284832d399c1a5ec581f08fed64a7f7bedc6d9df985e261`.
+The other eleven fighter banks and all twelve palettes remain unchanged.
+Native visual review accepted the corrected all64 set; human likeness and
+consent approval remain open.
+
+No combat, controls, audio, trace, memory-layout or Fighter/Wave ABI change is
+part of this pass. The corrected source freeze is commit
+`76f0a08a7562800df01507db83c6877745c3bdcf`, tree
+`f37852da57a42d2d6819374db5d23278d12587a5`. The current candidate manifest
+identifies ROM SHA256
+`bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639` (header
+`6D41`). All six native reports pass on this SHA: 2,595 gameplay, 18,081 roster,
+1,756 presentation, 997 focused-input, 8,131 stage and 622 Training checks
+(32,182 total). The 288-by-600 matchup/stage/policy/replay/symmetry evidence,
+pinned bsnes smoke plus bounded 48-by-600 run, endurance of 216,356 live frames
+in each of three modes, fresh 214-asset export in 75.078 seconds and
+`validate_release_evidence` also pass. The [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
+is available and its archive audit passes 7,471 checks. Public review remains open.
 
 ## v0.4.1 Reston hair correction
 

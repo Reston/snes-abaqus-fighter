@@ -2,7 +2,7 @@
   "emulator": "Official Snes9x 1.63 x64 libretro core",
   "suite": "stage-ambient",
   "status": "passed",
-  "rom_sha256": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466",
+  "rom_sha256": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639",
   "rom_bytes": 4194304,
   "checks": [
     {
@@ -10,11 +10,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.8.1",
+        "version": "0.9.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466",
-        "checksum": "A358",
+        "sha256": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639",
+        "checksum": "6D41",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -50688,7 +50688,7 @@
       "details": {
         "stage": 0,
         "phase": 2,
-        "changed_pixels": 2617,
+        "changed_pixels": 2354,
         "outside_patch_pixels": 0,
         "outside_bbox": null
       }
@@ -50758,7 +50758,7 @@
       "details": {
         "stage": 0,
         "phase": 3,
-        "changed_pixels": 2768,
+        "changed_pixels": 2613,
         "outside_patch_pixels": 0,
         "outside_bbox": null
       }
@@ -50975,7 +50975,7 @@
           "phase": 0,
           "pending": 255,
           "tile_sha256": "721aec09f011d277b502ac87ca27059f7290cf66f6a31484c2b944e743113c77",
-          "frame": "b0236a22daaca4e8b9e877ec6f7beee21c5639036d0c9039a0ebeeada22d09b7"
+          "frame": "9499e34cfb88ffb73c12b5a1f33f144d90f8d4f5f9eb73de9f85394b47aeca50"
         },
         "after": {
           "magic": 43706,
@@ -51109,15 +51109,15 @@
         "phase": 0,
         "pending": 255,
         "tile_sha256": "721aec09f011d277b502ac87ca27059f7290cf66f6a31484c2b944e743113c77",
-        "frame": "b0236a22daaca4e8b9e877ec6f7beee21c5639036d0c9039a0ebeeada22d09b7"
+        "frame": "9499e34cfb88ffb73c12b5a1f33f144d90f8d4f5f9eb73de9f85394b47aeca50"
       }
     },
     {
       "check": "stage PPU output remains frozen while paused",
       "passed": true,
       "details": {
-        "before": "b0236a22daaca4e8b9e877ec6f7beee21c5639036d0c9039a0ebeeada22d09b7",
-        "after": "b0236a22daaca4e8b9e877ec6f7beee21c5639036d0c9039a0ebeeada22d09b7"
+        "before": "9499e34cfb88ffb73c12b5a1f33f144d90f8d4f5f9eb73de9f85394b47aeca50",
+        "after": "9499e34cfb88ffb73c12b5a1f33f144d90f8d4f5f9eb73de9f85394b47aeca50"
       }
     },
     {
@@ -158636,7 +158636,7 @@
       "details": {
         "stage": 1,
         "phase": 2,
-        "changed_pixels": 2614,
+        "changed_pixels": 2351,
         "outside_patch_pixels": 0,
         "outside_bbox": null
       }
@@ -158706,7 +158706,7 @@
       "details": {
         "stage": 1,
         "phase": 3,
-        "changed_pixels": 2762,
+        "changed_pixels": 2607,
         "outside_patch_pixels": 0,
         "outside_bbox": null
       }
@@ -158923,7 +158923,7 @@
           "phase": 0,
           "pending": 255,
           "tile_sha256": "951a44728ec095c4e7e3d32260f3b11729115322e36bd8775150e6b97c3a2e39",
-          "frame": "2c79c99275b03b7403ddfe5a4502e95c2a7e9450bf6ff9d874064dfac0da6a50"
+          "frame": "aa38b889751665121caa962ad6f4db78db17099285eec06e1ae091c93717a596"
         },
         "after": {
           "magic": 43706,
@@ -159057,15 +159057,15 @@
         "phase": 0,
         "pending": 255,
         "tile_sha256": "951a44728ec095c4e7e3d32260f3b11729115322e36bd8775150e6b97c3a2e39",
-        "frame": "2c79c99275b03b7403ddfe5a4502e95c2a7e9450bf6ff9d874064dfac0da6a50"
+        "frame": "aa38b889751665121caa962ad6f4db78db17099285eec06e1ae091c93717a596"
       }
     },
     {
       "check": "stage PPU output remains frozen while paused",
       "passed": true,
       "details": {
-        "before": "2c79c99275b03b7403ddfe5a4502e95c2a7e9450bf6ff9d874064dfac0da6a50",
-        "after": "2c79c99275b03b7403ddfe5a4502e95c2a7e9450bf6ff9d874064dfac0da6a50"
+        "before": "aa38b889751665121caa962ad6f4db78db17099285eec06e1ae091c93717a596",
+        "after": "aa38b889751665121caa962ad6f4db78db17099285eec06e1ae091c93717a596"
       }
     },
     {
@@ -266584,7 +266584,7 @@
       "details": {
         "stage": 2,
         "phase": 2,
-        "changed_pixels": 2596,
+        "changed_pixels": 2333,
         "outside_patch_pixels": 0,
         "outside_bbox": null
       }
@@ -266654,7 +266654,7 @@
       "details": {
         "stage": 2,
         "phase": 3,
-        "changed_pixels": 2750,
+        "changed_pixels": 2595,
         "outside_patch_pixels": 0,
         "outside_bbox": null
       }
@@ -266871,7 +266871,7 @@
           "phase": 0,
           "pending": 255,
           "tile_sha256": "7427c9278ba957b07747afad41953890fc80e385c4ab7556b24ad40e440ca015",
-          "frame": "5bec682ba15325bc4562805470b6ff1fb8e2bdf9973d8f13c34cd066ef113637"
+          "frame": "bae9df1df5977ef4a682e0adc210b65ab34d64f31257f5181e93d9bb3908c4f7"
         },
         "after": {
           "magic": 43706,
@@ -267005,15 +267005,15 @@
         "phase": 0,
         "pending": 255,
         "tile_sha256": "7427c9278ba957b07747afad41953890fc80e385c4ab7556b24ad40e440ca015",
-        "frame": "5bec682ba15325bc4562805470b6ff1fb8e2bdf9973d8f13c34cd066ef113637"
+        "frame": "bae9df1df5977ef4a682e0adc210b65ab34d64f31257f5181e93d9bb3908c4f7"
       }
     },
     {
       "check": "stage PPU output remains frozen while paused",
       "passed": true,
       "details": {
-        "before": "5bec682ba15325bc4562805470b6ff1fb8e2bdf9973d8f13c34cd066ef113637",
-        "after": "5bec682ba15325bc4562805470b6ff1fb8e2bdf9973d8f13c34cd066ef113637"
+        "before": "bae9df1df5977ef4a682e0adc210b65ab34d64f31257f5181e93d9bb3908c4f7",
+        "after": "bae9df1df5977ef4a682e0adc210b65ab34d64f31257f5181e93d9bb3908c4f7"
       }
     },
     {
@@ -328182,7 +328182,7 @@
           ],
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\las-condes-phase2.png",
           "ppu_diff": {
-            "changed_pixels": 2617,
+            "changed_pixels": 2354,
             "outside_patch_pixels": 0,
             "outside_bbox": null
           },
@@ -328205,7 +328205,7 @@
           ],
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\las-condes-phase3.png",
           "ppu_diff": {
-            "changed_pixels": 2768,
+            "changed_pixels": 2613,
             "outside_patch_pixels": 0,
             "outside_bbox": null
           },
@@ -328709,7 +328709,7 @@
           "phase": 0,
           "pending": 255,
           "tile_sha256": "721aec09f011d277b502ac87ca27059f7290cf66f6a31484c2b944e743113c77",
-          "frame": "b0236a22daaca4e8b9e877ec6f7beee21c5639036d0c9039a0ebeeada22d09b7"
+          "frame": "9499e34cfb88ffb73c12b5a1f33f144d90f8d4f5f9eb73de9f85394b47aeca50"
         },
         "after": {
           "magic": 43706,
@@ -328959,8 +328959,8 @@
           "stage_id": 0
         },
         "held_ticks": 5,
-        "before_frame": "124127518c7dd29504ea8d3eeedccc10cadef036a15cd90f554d7e2685d2f672",
-        "after_frame": "37e8520fe240898165181f23ebb72ad17f21c0a595842d50b1cd08d703228c5b"
+        "before_frame": "1133428ed642d5ce5e646792690bd82e262fc4834901a889d65e320d70f00872",
+        "after_frame": "04126e984f5f94a76cbc9f22c78d9c54c90a6cb5f6eb119fa405fa53be7d4af8"
       },
       "oam_stress": {
         "frames": 600,
@@ -329099,7 +329099,7 @@
           ],
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\el-castillo-phase2.png",
           "ppu_diff": {
-            "changed_pixels": 2614,
+            "changed_pixels": 2351,
             "outside_patch_pixels": 0,
             "outside_bbox": null
           },
@@ -329122,7 +329122,7 @@
           ],
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\el-castillo-phase3.png",
           "ppu_diff": {
-            "changed_pixels": 2762,
+            "changed_pixels": 2607,
             "outside_patch_pixels": 0,
             "outside_bbox": null
           },
@@ -329626,7 +329626,7 @@
           "phase": 0,
           "pending": 255,
           "tile_sha256": "951a44728ec095c4e7e3d32260f3b11729115322e36bd8775150e6b97c3a2e39",
-          "frame": "2c79c99275b03b7403ddfe5a4502e95c2a7e9450bf6ff9d874064dfac0da6a50"
+          "frame": "aa38b889751665121caa962ad6f4db78db17099285eec06e1ae091c93717a596"
         },
         "after": {
           "magic": 43706,
@@ -329876,8 +329876,8 @@
           "stage_id": 1
         },
         "held_ticks": 5,
-        "before_frame": "f6f4fa3a03936ddd13e6205e3d2ee8b925e3dd391466d5e7ec4cc09aa6411023",
-        "after_frame": "cb0cfc08a0fa1f766236f9acd760ee0f28f848244fc63a6e9b68ba6c86432592"
+        "before_frame": "cc1b9f7b30a6e1ddb97bf7e40f727c9ddc8c23a4f2fd41a41aee188bb7c51463",
+        "after_frame": "40a0a8d0a35f9a167da663df733756e3dba30e5361fa7abcc1212192dfdcc4fe"
       },
       "oam_stress": {
         "frames": 600,
@@ -330016,7 +330016,7 @@
           ],
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\la-oficina-phase2.png",
           "ppu_diff": {
-            "changed_pixels": 2596,
+            "changed_pixels": 2333,
             "outside_patch_pixels": 0,
             "outside_bbox": null
           },
@@ -330039,7 +330039,7 @@
           ],
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\la-oficina-phase3.png",
           "ppu_diff": {
-            "changed_pixels": 2750,
+            "changed_pixels": 2595,
             "outside_patch_pixels": 0,
             "outside_bbox": null
           },
@@ -330543,7 +330543,7 @@
           "phase": 0,
           "pending": 255,
           "tile_sha256": "7427c9278ba957b07747afad41953890fc80e385c4ab7556b24ad40e440ca015",
-          "frame": "5bec682ba15325bc4562805470b6ff1fb8e2bdf9973d8f13c34cd066ef113637"
+          "frame": "bae9df1df5977ef4a682e0adc210b65ab34d64f31257f5181e93d9bb3908c4f7"
         },
         "after": {
           "magic": 43706,
@@ -330793,8 +330793,8 @@
           "stage_id": 2
         },
         "held_ticks": 5,
-        "before_frame": "7930d9008b9156191df41d857110e7db04f07afcefadc702446dfe710a4fbe10",
-        "after_frame": "1ba7f3f307ead618e9c32ee2b6d9a65e2bc5a96780ddcd46ce71066d80be145e"
+        "before_frame": "a129c19de4be3216cb2ff640c4e8eff57975c9bd7f5e133150910c8c53160165",
+        "after_frame": "5fb89abc1db070772abf3cc458bd77781ef305c531bc84037d3daedd40fa3305"
       },
       "oam_stress": {
         "frames": 600,
@@ -330869,5 +330869,5 @@
     "ambient_phase_age": 118
   },
   "passed": 8131,
-  "elapsed_seconds": 12.906
+  "elapsed_seconds": 9.688
 }

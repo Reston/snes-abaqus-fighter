@@ -2,17 +2,37 @@
 
 An original six-button fighting game for the **Super Nintendo**, inspired by the arcade structure of Street Fighter II and the people and places of Abaqus in Santiago.
 
-**Current verified technical snapshot: v0.8.1.** The native
+**v0.9.0 packaged technical snapshot; public review pending.** A live review of the v0.8.1
+snapshot found clipped selection faces, a Damian likeness mismatch, a weak
+arena-picker composition, and stage pixels showing through HUD and result
+lettering. The working tree contains presentation corrections for those four
+findings. The current candidate manifest identifies ROM SHA256
+`bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639`, header
+checksum `6D41`. The corrected source freeze is commit
+`76f0a08a7562800df01507db83c6877745c3bdcf`, tree
+`f37852da57a42d2d6819374db5d23278d12587a5`. All six native reports pass on
+this SHA: 2,595 gameplay, 18,081 roster, 1,756 presentation, 997 focused-input,
+8,131 stage and 622 Training checks (32,182 total). The 288-by-600 native
+matchup/stage/policy/replay/symmetry evidence, pinned bsnes smoke plus bounded
+48-by-600 run, endurance of 216,356 live frames in each of three modes, fresh
+214-asset export in
+75.078 seconds and `validate_release_evidence` also pass on this SHA;
+`Test.cmd` exits 0. The [v0.9.0 Windows package](dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
+is available and `tools/audit_release.py` passes 7,471 checks against it. `public_release_certified` remains false.
+
+Two consecutive packaging runs produce identical **6,578,152-byte** ZIPs,
+SHA256 `8203ffab8d27b4205e25ebfcc2e74e09f5af199641b281a925a9b981c4d1f97e`.
+
+**Previous technical snapshot: v0.8.1 (historical).** The native
 source targets a 4 MiB NTSC FastROM LoROM cartridge across 128 banks, compiled
 from C and 65816 assembly. The source freeze is commit
 `fe05e5fd1391a1db20f1b66f1e9f6e699445e77a`, tree
-`46e1af160ffb8ab6cb768e3d9deec1352d77ae83`. The ROM at
-[dist/abaqus-after-hours.sfc](dist/abaqus-after-hours.sfc) is SHA256
+`46e1af160ffb8ab6cb768e3d9deec1352d77ae83`. That historical ROM had SHA256
 `76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`, header
-checksum `A358`; [dist/manifest.json](dist/manifest.json) records the
+checksum `A358`; the historical manifest recorded the
 identity. Native C/ASM, controls, gameplay and audio are unchanged.
 
-`Test.cmd` exits 0 with all six reports on that SHA: 2,595 gameplay, 18,081
+The historical v0.8.1 `Test.cmd` run exits 0 with all six reports on that SHA: 2,595 gameplay, 18,081
 roster, 215 presentation, 997 focused-input, 8,131 stage and 622 Training
 checks (30,641 total). Fresh committed export validation reproduces the ROM,
 manifest, 214 assets and symbols in 76.344 seconds. The 288-by-600 native
@@ -20,27 +40,29 @@ matchup, all-three-stage, two-policy, four-replay and symmetry checks pass. The
 pinned bsnes smoke matches this SHA with 600/600 cadence, healthy PPU/PCM and
 ambient freeze; the bounded 48-by-600 run also passes. Native endurance passes
 216,356 live frames in each of three modes at 60.0988118623 FPS, wraps 4/4/3,
-peak SPC six, zero stable FIGHT lag and empty failure arrays. `validate_release_evidence`
-passes. The v0.8.1 offline package passes 7,471 technical audit checks; v0.8.0
-remains historical evidence.
+peak SPC six, zero stable FIGHT lag and empty failure arrays.
+`validate_release_evidence` passes. The historical v0.8.1 offline package
+passes 7,471 technical audit checks; v0.8.0 remains historical evidence.
 Reston's full64 native visual review accepts the v4 art for integration; see the
 [Reston v4 likeness review](docs/RESTON-LIKENESS-v4.md). The user confirmed the
 revised buzz cut looks closer; final team likeness/consent, balance, full listening,
 controller and branding gates remain open. The user selected **emulators first**
 for the first public release; original SNES/flash-cartridge support stays
-unverified. The [review record](docs/review-feedback.json) also records a brief
-audio preview heard with no issue noticed and gameplay not yet tested;
-`public_release_certified` remains false.
+unverified. The [review record](docs/review-feedback.json) records the live
+presentation findings above and a brief audio preview heard with no issue
+noticed; full combat, listening, controller, likeness/consent and branding
+review remain open. `public_release_certified` remains false.
 
-A supplemental [audio review](docs/AUDIO-REVIEW.md) provides matched native cue
+A supplemental historical [audio review](docs/AUDIO-REVIEW.md) provides matched native cue
 captures and measured score repetition from the same ROM. Its listening ZIP
 and PCM checks support human review; they do not establish listening approval
 or replace the six canonical suites.
 
-A supplemental [Mesen-S compatibility review](docs/MESEN-REVIEW.md) checks the
-same frozen cartridge in a third engine, including pause guides, Training,
-stage animation and bounded combat. It is separate from the pinned Snes9x and
-bsnes release gates and does not change the packaged game.
+A supplemental historical [Mesen-S compatibility review](docs/MESEN-REVIEW.md)
+checks the v0.8.1 frozen cartridge in a third engine, including pause guides,
+Training, stage animation and bounded combat. It is separate from the pinned
+Snes9x and bsnes release gates and does not establish v0.9.0 evidence or change
+the packaged game.
 
 The [v0.6.0 development notes](docs/RELEASE-v0.6.0.md) describe the packaged
 64-frame roster, air attacks, throws and recovery. The
@@ -76,13 +98,14 @@ trace offsets `0..118` and all fighter assets remain unchanged; v0.8 appends
 and `[122]` guide dirty. The complete v0.7.1 snapshot remains documented below
 as historical evidence; it is not a v0.8 verification claim.
 
-The v0.8.1 snapshot keeps the v0.8.0 native pause, Training and menu behavior
+The historical v0.8.1 snapshot keeps the v0.8.0 native pause, Training and menu behavior
 unchanged. Its art-only revision replaces Reston's full 64-frame set and
 portrait with the v4 short-buzz-cap sources, retaining the v3 sources and all
 shared palette, scale and gameplay contracts. Native visual review accepted the
-revision for integration; human likeness review is still pending.
-
-Pause and Training review captures: [Arcade controls](docs/screenshots/training/mode0-controls.png),
+revision for integration; the later live presentation review found the four
+defects recorded above. The v0.9.0 pass addresses them without changing native
+combat, controls, audio or pause-guide contracts; its native verification and
+current package audit are recorded above. Pause and Training review captures: [Arcade controls](docs/screenshots/training/mode0-controls.png),
 [Arcade specials](docs/screenshots/training/mode0-specials.png),
 [Versus controls](docs/screenshots/training/mode1-controls.png),
 [Versus specials](docs/screenshots/training/mode1-specials.png),
@@ -97,9 +120,9 @@ Pause and Training review captures: [Arcade controls](docs/screenshots/training/
 
 On Windows, double-click **[Play.cmd](Play.cmd)**. The launcher downloads the official Snes9x 1.63 release into `.tools/` on its first run, verifies its SHA256, and opens the game. No administrator account or global installation is needed. The tools are already present in this checkout.
 
-For offline Windows play, extract the current v0.8.1 package
+For offline Windows play, extract the historical v0.8.1 package
 [Abaqus-After-Hours-v0.8.1-Windows.zip](dist/Abaqus-After-Hours-v0.8.1-Windows.zip)
-and launch its `Play.cmd`. It includes the exact verified cartridge, Snes9x,
+and launch its `Play.cmd`. It includes the exact historical verified cartridge, Snes9x,
 player manual, licenses and QA reports, and passes 7,471 technical audit checks.
 Two consecutive runs produce identical 6,546,645-byte archives, SHA256
 `04d951c3abef278afada5a666f9eec8a04d140650354bd82506e750e2849e0b6`.
@@ -133,7 +156,7 @@ combos. Controllers can be mapped in Snes9x under **Input -> Input Configuration
 
 ## Included
 
-- All 12 requested fighters, with individual illustrated identities, costumes and legacy key poses. The v0.8.0 baseline pins all prior 64-frame banks; the v0.8.1 snapshot updates only Reston's complete set and portrait to the v4 short-buzz-cap art, with the v3 sources retained.
+- All 12 requested fighters, with individual illustrated identities, costumes and legacy key poses. The v0.8.0 baseline pins all prior 64-frame banks; the historical v0.8.1 snapshot updates only Reston's complete set and portrait to the v4 short-buzz-cap art, with the v3 sources retained.
 - Sixty-four uniform 96x80 native frames per fighter: legacy frames 0-15, motion and transition frames 16-31, action frames 32-47, and airborne/throw/knockdown frames 48-63. Twelve new airborne atlases supply dedicated air punch and air kick anticipation, active and recovery drawings plus throw and wake art; each keeps its `animation-airborne.json` prompt and provenance.
 - Las Condes, El Castillo and La Oficina, illustrated as original pixel-art stages from the supplied location references.
 - Arcade Shift: fight the other 11 coworkers across the three locations and become Office Champion.
@@ -143,7 +166,7 @@ combos. Controllers can be mapped in Snes9x under **Input -> Input Configuration
   special names and family types. Training pause Up/Down selects Stand, Guard
   High, Guard Low or Jump, and Select resets live Training without losing the
   selected dummy mode.
-- A clean royal-navy, white and gold home/select/arena presentation with one cursor, the same four-by-three roster grid and a large selected portrait. The selection screen keeps the focus on the fighter instead of a statistics panel.
+- A clean royal-navy, white and gold home/select/arena presentation with one cursor, the same four-by-three roster grid and a large selected portrait. The selection screen keeps the focus on the fighter instead of a statistics panel. The verified-native v0.9.0 presentation pass uses contained selection portraits, gives the arena picker complete aspect-contained thumbnails with a separate label column, and uses opaque panel glyphs for HUD/result lettering. The packaged Windows archive and 7,471-check audit are available.
 - Six normal attacks, dedicated air punch/kick transitions, crouching attacks, high/low blocking, throws with delayed impact damage and simultaneous throw tech, a universal uppercut and confirmed normal/special cancels.
 - Twelve tuned specials across four families: projectile, advancing rush, low shockwave and rising strike. [Character profiles](docs/CHARACTERS.md) explain the roster and move families.
 - Health, regenerating energy, round counters, timer, hitstop, impact effects, camera shake, pause, four original tracker music arrangements and four resident SPC combat effects using the same synthesized cues.
@@ -152,7 +175,7 @@ combos. Controllers can be mapped in Snes9x under **Input -> Input Configuration
   the verified v0.7.0 baseline ROM and native/compatibility reports verify this milestone.
 - v0.7.1 source-freeze CPU opening, active-wave guard and staged impact/reset
   feedback remain historical behavior. The v0.8.0 pause/help integration is
-  verified in the historical six-report baseline and unchanged in the verified
+  verified in the historical six-report baseline and unchanged in the historical
   v0.8.1 snapshot.
 
 The renderer keeps the 96x80 canvas, 94x77 safe area, native baseline 78 and
@@ -224,11 +247,15 @@ replace full combat, soak or human verification. Run it with PowerShell
 
 The earlier four-family 600-frame probe remains historical v0.7.0 evidence. The
 verified v0.8.0 snapshot added `tools/test_training.py` as the sixth required
-`Test.cmd` suite. The current v0.8.1 reports pass on the exact SHA with 30,641
+`Test.cmd` suite. The historical v0.8.1 reports pass on the exact SHA with 30,641
 checks: 2,595 gameplay, 18,081 roster, 215 presentation, 997 focused-input,
 8,131 stage and 622 Training. Matching compatibility, matchup, bounded
 independent-combat, live-hour, replay, symmetry and fresh-source evidence also
-pass. The v0.8.1 package and archive audit pass 7,471 technical checks.
+pass. The historical v0.8.1 package and archive audit pass 7,471 technical
+checks. The current v0.9.0 reports on the corrected SHA pass 32,182 native
+checks; the matching extended evidence and `validate_release_evidence` pass as
+described above. The [v0.9.0 Windows package](dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
+is available and its archive audit passes 7,471 checks.
 The training host enables `snes9x_up_down_allowed` so same-pad and cross-pad
 SOCD cases reach the native cleaner; the offline `Controls::AllowLeftRight`
 preference is not changed for existing users.
@@ -270,10 +297,10 @@ unchanged. `roundBannerPending` keeps the first frozen `roundEnd` tick quiet,
 then transfers the panel, name and HUD on the second tick, avoiding a
 contact-time stall.
 
-The verified v0.8.1 snapshot keeps the same resident-audio and native transfer
-contracts. Its manifest records the current ROM SHA above; the v0.8.1 package
+The historical v0.8.1 snapshot keeps the same resident-audio and native transfer
+contracts. Its manifest records the historical ROM SHA above; the historical v0.8.1 package
 passes 7,471 technical audit checks. The v0.8.0 package is historical evidence.
-The v0.8.1 snapshot changes the Reston art sources only and leaves those native
+The historical v0.8.1 snapshot changes the Reston art sources only and leaves those native
 contracts unchanged.
 
 Combat sound effects now load as four resident SPC slots alongside the music:
@@ -300,11 +327,12 @@ the streamed-BRR path that stalled under two simultaneous attack/impact cases.
 | `tools/test_endurance.py` / `tools/longrun_host.py` | Silent uninterrupted hour/mode endurance gate and callback host |
 | `tools/test_fresh_build.py` | Fresh pinned-tool extraction and committed-source rebuild gate |
 | `tools/test_training.py` | Pause-guide, Training dummy and pause SOCD suite |
+| `tools/portrait_assets.py` | Shared head-anchored, contained select/profile portrait framing |
 | `tools/test_mesen.py` | Optional pinned Mesen-S third-engine scene, stage and bounded combat checks |
 | `docs/PLAYTEST.md` | Human likeness, gameplay feel, controls, audio and branding review route |
 | `dist/` | Playable ROM and release manifest |
 | `docs/` | Controls, technical notes, animation contract, art prompts, credits, roadmap and QA evidence |
 
-Git tracks the source, master art, generated cartridge assets and ROM. Downloaded toolchains and release ZIPs stay outside history. Prior releases are tagged `v0.1.0`, `v0.2.0`, `v0.3.0`, `v0.3.1`, `v0.4.0`, `v0.4.1`, `v0.5.0` and `v0.5.1`; `v0.6.0` records the animation baseline, `v0.6.1` the CPU update, and `v0.7.0` the verified stage/effect update and development package. v0.7.1 is historical; v0.8.0 remains historical, and v0.8.1 is the current verified packaged technical snapshot with a 7,471-check archive audit. No remote repository is configured by this project.
+Git tracks the source, master art, generated cartridge assets and ROM. Downloaded toolchains and release ZIPs stay outside history. Prior releases are tagged `v0.1.0`, `v0.2.0`, `v0.3.0`, `v0.3.1`, `v0.4.0`, `v0.4.1`, `v0.5.0` and `v0.5.1`; `v0.6.0` records the animation baseline, `v0.6.1` the CPU update, and `v0.7.0` the verified stage/effect update and development package. v0.7.1 and v0.8.0 are historical; v0.8.1 is the last verified historical technical snapshot with a 7,471-check archive audit, and v0.9.0 native verification and packaged technical audit are complete. No remote repository is configured by this project.
 
 Team references: [Abaqus Solutions](https://abaqus.io/es/abaqus-solutions/team) and [Abaqus Wealth Care](https://abaqus.io/es/wealth-care/about-us). See [credits and asset provenance](docs/CREDITS.md), [art prompts](docs/ART-DIRECTION.md), and [technical notes](docs/DEVELOPMENT.md).

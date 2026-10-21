@@ -1,4 +1,4 @@
-"""Silent, headless presentation checks for the v0.4 native menus and arenas.
+"""Silent, headless presentation checks for the native menus and arenas.
 
 This suite drives the actual cartridge through the official Snes9x libretro
 core.  It checks title/select/arena state transitions, the four-by-three roster
@@ -560,17 +560,17 @@ def verify_result_score(e: Emulator) -> dict[str, object]:
           "result trace exposes the truthful best-of-three score", current)
     row = ui_row(e, 15)
     digits = [entry & 0x03FF for entry in row]
-    expected = [ord("0") + current["wins1"], ord("0") + current["wins2"]]
-    check(digits.count(expected[0]) >= 1 and digits.count(expected[1]) >= 1,
-          "result row 15 contains both trace score digits", {
+    expected = [
+        OPAQUE_FONT_BASE + ord("0") + current["wins1"],
+        OPAQUE_FONT_BASE + ord("0") + current["wins2"],
+    ]
+    check(digits[13] == expected[0] and digits[17] == expected[1],
+          "result row 15 writes opaque score digits at native source positions", {
               "wins1": current["wins1"], "wins2": current["wins2"],
+              "x13": digits[13], "x17": digits[17],
+              "expected": expected,
               "row15": digits,
           })
-    if expected[0] == expected[1]:
-        check(digits.count(expected[0]) >= 2,
-              "tied result scores render both score digits", {
-                  "row15": digits,
-              })
     return {"wins1": current["wins1"], "wins2": current["wins2"],
             "row15": digits}
 

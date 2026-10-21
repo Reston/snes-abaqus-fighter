@@ -435,7 +435,7 @@ def decode_text(memory: bytes, first: int = 0, last: int = 32) -> str:
 
     The v0.8 guide uses opaque copies in tiles 256..383 and stores the
     character as ``tile - 256``.  The original HUD still uses the legacy
-    ASCII tile IDs, so both encodings are accepted here without relaxing the
+    ASCII tile IDs in older snapshots, so both encodings are accepted here without relaxing the
     exact text-token checks.
     """
 
@@ -466,8 +466,19 @@ def capture(q: QA, name: str) -> str:
     check(q.emulator.frame.size == (256, 224), "native PPU capture is 256x224", {
         "name": name, "size": q.emulator.frame.size,
     })
-    check(len(q.emulator.frame.getcolors(256 * 224) or []) > 8,
-          "native PPU capture is populated", name)
+    # A fully opaque guide legitimately uses only seven UI colors. Require
+    # visible light glyph pixels over its dark card instead of depending on
+    # extra stage colors leaking through the old transparent HUD markers.
+    panel = q.emulator.frame.crop((0, 40, 256, 224)).convert("RGB")
+    pixels = list(panel.getdata())
+    bright = sum(min(pixel) >= 180 for pixel in pixels)
+    dark = sum(max(pixel) <= 100 for pixel in pixels)
+    colors = len(q.emulator.frame.getcolors(256 * 224) or [])
+    check(colors >= 3 and bright >= 400 and dark >= 20000,
+          "native PPU capture is populated", {
+              "name": name, "colors": colors,
+              "light_guide_pixels": bright, "dark_card_pixels": dark,
+          })
     path = CAPTURE_DIR / f"{name}.png"
     path.parent.mkdir(parents=True, exist_ok=True)
     q.emulator.frame.save(path)

@@ -32,15 +32,15 @@
       "check": "native matchup sweep ROM identity object",
       "passed": true,
       "details": {
-        "sha256": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466",
-        "manifest_sha256": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466",
+        "sha256": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639",
+        "manifest_sha256": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639",
         "bytes": 4194304
       }
     },
     {
       "check": "native matchup sweep matches the exact current ROM",
       "passed": true,
-      "details": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466"
+      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
     },
     {
       "check": "native matchup sweep ROM byte count",
@@ -44692,14 +44692,14 @@
       "check": "independent combat sweep ROM identity object",
       "passed": true,
       "details": {
-        "sha256": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466",
+        "sha256": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639",
         "bytes": 4194304
       }
     },
     {
       "check": "independent combat sweep matches the exact current ROM",
       "passed": true,
-      "details": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466"
+      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
     },
     {
       "check": "independent combat sweep ROM byte count",
@@ -44964,9 +44964,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1036282,
-          "energy": 235133101994,
-          "peak": 3770
+          "samples": 1036256,
+          "energy": 233943805711,
+          "peak": 3726
         }
       }
     },
@@ -45159,7 +45159,7 @@
         ],
         "audio": {
           "samples": 1063978,
-          "energy": 230198564888,
+          "energy": 230154942908,
           "peak": 3640
         }
       }
@@ -45353,8 +45353,8 @@
         ],
         "audio": {
           "samples": 1147146,
-          "energy": 258788652417,
-          "peak": 3980
+          "energy": 258519224632,
+          "peak": 3904
         }
       }
     },
@@ -45546,9 +45546,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1091700,
-          "energy": 250495774802,
-          "peak": 3656
+          "samples": 1091724,
+          "energy": 250275284592,
+          "peak": 3716
         }
       }
     },
@@ -45741,8 +45741,8 @@
         ],
         "audio": {
           "samples": 1174868,
-          "energy": 264275880654,
-          "peak": 3736
+          "energy": 265012177968,
+          "peak": 3737
         }
       }
     },
@@ -45935,8 +45935,8 @@
         ],
         "audio": {
           "samples": 1202590,
-          "energy": 272052856753,
-          "peak": 3609
+          "energy": 272305494244,
+          "peak": 3579
         }
       }
     },
@@ -46129,8 +46129,8 @@
         ],
         "audio": {
           "samples": 1202624,
-          "energy": 261898487020,
-          "peak": 3685
+          "energy": 261415643032,
+          "peak": 3493
         }
       }
     },
@@ -46323,8 +46323,8 @@
         ],
         "audio": {
           "samples": 1230314,
-          "energy": 268053143420,
-          "peak": 3963
+          "energy": 267622764557,
+          "peak": 4258
         }
       }
     },
@@ -46516,9 +46516,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1313484,
-          "energy": 288815932797,
-          "peak": 3683
+          "samples": 1313482,
+          "energy": 288768429144,
+          "peak": 3648
         }
       }
     },
@@ -46710,9 +46710,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1258038,
-          "energy": 273196194182,
-          "peak": 4020
+          "samples": 1258068,
+          "energy": 272952193812,
+          "peak": 4013
         }
       }
     },
@@ -46905,7 +46905,7 @@
         ],
         "audio": {
           "samples": 1341206,
-          "energy": 303034000115,
+          "energy": 304184798119,
           "peak": 3745
         }
       }
@@ -47099,8 +47099,8 @@
         ],
         "audio": {
           "samples": 1368928,
-          "energy": 303903543733,
-          "peak": 3571
+          "energy": 304840746354,
+          "peak": 3705
         }
       }
     },
@@ -47292,9 +47292,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1368948,
-          "energy": 300636004695,
-          "peak": 3867
+          "samples": 1368930,
+          "energy": 301452849444,
+          "peak": 3843
         }
       }
     },
@@ -47487,8 +47487,8 @@
         ],
         "audio": {
           "samples": 1396650,
-          "energy": 305366460490,
-          "peak": 3621
+          "energy": 307006075172,
+          "peak": 4273
         }
       }
     },
@@ -47681,8 +47681,8 @@
         ],
         "audio": {
           "samples": 1479818,
-          "energy": 330300133067,
-          "peak": 3996
+          "energy": 330963425991,
+          "peak": 4077
         }
       }
     },
@@ -47874,9 +47874,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1424378,
-          "energy": 316793398136,
-          "peak": 3938
+          "samples": 1424402,
+          "energy": 317557061572,
+          "peak": 3998
         }
       }
     },
@@ -48069,8 +48069,8 @@
         ],
         "audio": {
           "samples": 1507542,
-          "energy": 346389150196,
-          "peak": 3665
+          "energy": 346682787995,
+          "peak": 3967
         }
       }
     },
@@ -48262,9 +48262,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1535264,
-          "energy": 351691571289,
-          "peak": 3520
+          "samples": 1535266,
+          "energy": 351717490930,
+          "peak": 3579
         }
       }
     },
@@ -48456,9 +48456,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1535292,
-          "energy": 350802984111,
-          "peak": 3725
+          "samples": 1535294,
+          "energy": 351349988072,
+          "peak": 3860
         }
       }
     },
@@ -48650,9 +48650,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1562988,
-          "energy": 352852851222,
-          "peak": 3890
+          "samples": 1562986,
+          "energy": 353516592062,
+          "peak": 3771
         }
       }
     },
@@ -48845,8 +48845,8 @@
         ],
         "audio": {
           "samples": 1647222,
-          "energy": 378513585506,
-          "peak": 3805
+          "energy": 378339449013,
+          "peak": 3860
         }
       }
     },
@@ -49039,8 +49039,8 @@
         ],
         "audio": {
           "samples": 1590738,
-          "energy": 353359558059,
-          "peak": 3847
+          "energy": 353570310682,
+          "peak": 3867
         }
       }
     },
@@ -49232,9 +49232,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1673878,
-          "energy": 373255468667,
-          "peak": 3235
+          "samples": 1673880,
+          "energy": 373313389941,
+          "peak": 3368
         }
       }
     },
@@ -49426,9 +49426,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1701600,
-          "energy": 376500771856,
-          "peak": 3562
+          "samples": 1701604,
+          "energy": 376772636238,
+          "peak": 3705
         }
       }
     },
@@ -49620,9 +49620,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1368956,
-          "energy": 321995384329,
-          "peak": 3630
+          "samples": 1368952,
+          "energy": 323330121825,
+          "peak": 3623
         }
       }
     },
@@ -49815,8 +49815,8 @@
         ],
         "audio": {
           "samples": 1396652,
-          "energy": 308356672403,
-          "peak": 3710
+          "energy": 309348987724,
+          "peak": 3719
         }
       }
     },
@@ -50009,8 +50009,8 @@
         ],
         "audio": {
           "samples": 1147146,
-          "energy": 264599457201,
-          "peak": 3382
+          "energy": 264224799634,
+          "peak": 3892
         }
       }
     },
@@ -50202,9 +50202,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1091728,
-          "energy": 242733844512,
-          "peak": 3098
+          "samples": 1091702,
+          "energy": 242004150499,
+          "peak": 2984
         }
       }
     },
@@ -50396,8 +50396,8 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1174868,
-          "energy": 267647733987,
+          "samples": 1174870,
+          "energy": 267857149100,
           "peak": 3597
         }
       }
@@ -50591,8 +50591,8 @@
         ],
         "audio": {
           "samples": 1202592,
-          "energy": 287328487315,
-          "peak": 3645
+          "energy": 287746639659,
+          "peak": 3515
         }
       }
     },
@@ -50784,8 +50784,8 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1202618,
-          "energy": 270521257359,
+          "samples": 1202612,
+          "energy": 270394894081,
           "peak": 3795
         }
       }
@@ -50979,8 +50979,8 @@
         ],
         "audio": {
           "samples": 1230314,
-          "energy": 272754643564,
-          "peak": 3369
+          "energy": 272397093725,
+          "peak": 3680
         }
       }
     },
@@ -51173,7 +51173,7 @@
         ],
         "audio": {
           "samples": 1313482,
-          "energy": 297552754170,
+          "energy": 298277772550,
           "peak": 3683
         }
       }
@@ -51366,9 +51366,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1258040,
-          "energy": 274493022901,
-          "peak": 3751
+          "samples": 1258072,
+          "energy": 274839868524,
+          "peak": 3759
         }
       }
     },
@@ -51560,9 +51560,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1341206,
-          "energy": 303928074502,
-          "peak": 3577
+          "samples": 1341208,
+          "energy": 304813289487,
+          "peak": 3769
         }
       }
     },
@@ -51755,8 +51755,8 @@
         ],
         "audio": {
           "samples": 1368928,
-          "energy": 299055008945,
-          "peak": 3571
+          "energy": 299767176377,
+          "peak": 3609
         }
       }
     },
@@ -51948,9 +51948,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1368960,
-          "energy": 296120433778,
-          "peak": 3044
+          "samples": 1368956,
+          "energy": 297247694126,
+          "peak": 3172
         }
       }
     },
@@ -52143,8 +52143,8 @@
         ],
         "audio": {
           "samples": 1396652,
-          "energy": 307418600706,
-          "peak": 4020
+          "energy": 308519975557,
+          "peak": 4258
         }
       }
     },
@@ -52337,8 +52337,8 @@
         ],
         "audio": {
           "samples": 1479820,
-          "energy": 347517373962,
-          "peak": 3609
+          "energy": 347793006281,
+          "peak": 3621
         }
       }
     },
@@ -52530,9 +52530,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1424406,
-          "energy": 317455746859,
-          "peak": 4159
+          "samples": 1424398,
+          "energy": 317479421751,
+          "peak": 4116
         }
       }
     },
@@ -52725,8 +52725,8 @@
         ],
         "audio": {
           "samples": 1507542,
-          "energy": 343155316108,
-          "peak": 3561
+          "energy": 343577119615,
+          "peak": 3461
         }
       }
     },
@@ -52919,8 +52919,8 @@
         ],
         "audio": {
           "samples": 1535264,
-          "energy": 350788546274,
-          "peak": 3335
+          "energy": 351347632444,
+          "peak": 3683
         }
       }
     },
@@ -53113,8 +53113,8 @@
         ],
         "audio": {
           "samples": 1535294,
-          "energy": 346916766388,
-          "peak": 4398
+          "energy": 347669449709,
+          "peak": 4440
         }
       }
     },
@@ -53306,9 +53306,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1562990,
-          "energy": 359976337499,
-          "peak": 3449
+          "samples": 1562988,
+          "energy": 360492229680,
+          "peak": 3503
         }
       }
     },
@@ -53501,8 +53501,8 @@
         ],
         "audio": {
           "samples": 1647222,
-          "energy": 370041904140,
-          "peak": 3609
+          "energy": 370445150609,
+          "peak": 3705
         }
       }
     },
@@ -53694,9 +53694,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1590740,
-          "energy": 346503383249,
-          "peak": 3677
+          "samples": 1590744,
+          "energy": 347027688477,
+          "peak": 3672
         }
       }
     },
@@ -53888,9 +53888,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1341204,
-          "energy": 306393028913,
-          "peak": 3710
+          "samples": 1341206,
+          "energy": 306607629517,
+          "peak": 3670
         }
       }
     },
@@ -54083,8 +54083,8 @@
         ],
         "audio": {
           "samples": 1368928,
-          "energy": 303435911212,
-          "peak": 3571
+          "energy": 303863736918,
+          "peak": 3609
         }
       }
     },
@@ -54171,7 +54171,7 @@
     {
       "check": "endurance gate matches the exact current ROM",
       "passed": true,
-      "details": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466"
+      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
     },
     {
       "check": "endurance gate ROM byte count",
@@ -54344,18 +54344,24 @@
           "mode": 0,
           "mode_name": "arcade",
           "status": "passed",
-          "frames": 313617,
+          "frames": 304699,
           "target_live_frames": 216356,
           "coverage_required": true,
           "live_frames": 216356,
-          "live_segments": 328,
-          "elapsed_seconds": 261.078,
+          "live_segments": 297,
+          "elapsed_seconds": 206.844,
           "rosters": [
             {
               "fighter1": 0,
               "fighter2": 1,
               "stage": 0,
               "route": "initial"
+            },
+            {
+              "fighter1": 10,
+              "fighter2": 1,
+              "stage": 2,
+              "route": "champion-title"
             },
             {
               "fighter1": 2,
@@ -54370,24 +54376,24 @@
             2
           ],
           "events": {
-            "attack": 205035,
-            "air": 96240,
-            "throw": 34578,
-            "guard": 24806,
-            "special": 3875,
-            "wake": 17424,
-            "down": 130481,
-            "round_change": 327,
-            "result": 146,
+            "attack": 196745,
+            "air": 102165,
+            "throw": 38482,
+            "guard": 26491,
+            "special": 3052,
+            "wake": 19360,
+            "down": 131471,
+            "round_change": 296,
+            "result": 131,
             "pause": 0,
             "reset": 0,
-            "result_continue": 134,
-            "arcade_ladder": 11,
-            "champion": 1,
-            "champion_restart": 1,
+            "result_continue": 109,
+            "arcade_ladder": 20,
+            "champion": 2,
+            "champion_restart": 2,
             "menu_roster": 0,
-            "real_contact": 3304,
-            "damage": 3815
+            "real_contact": 3176,
+            "damage": 3676
           },
           "required_coverage": {
             "attack": true,
@@ -54406,92 +54412,92 @@
             "champion_restart": true
           },
           "normal_action_starts": {
-            "1": 852,
-            "2": 585,
-            "3": 1569,
-            "4": 505,
-            "5": 466,
-            "6": 621
+            "1": 788,
+            "2": 577,
+            "3": 1563,
+            "4": 445,
+            "5": 457,
+            "6": 570
           },
-          "live_fraction": 0.689873,
+          "live_fraction": 0.710065,
           "native_frame_wraps": 4,
           "ambient_clock_wraps": 0,
-          "lag_frame_counter_last": 1501,
+          "lag_frame_counter_last": 1553,
           "lag_frame_counter_wraps": 0,
-          "lag_frame_counter_increments": 1465,
+          "lag_frame_counter_increments": 1517,
           "stable_fight_lag_increments": 0,
-          "nonfight_lag_increments": 1465,
+          "nonfight_lag_increments": 1517,
           "cadence_failures": [],
           "native_timing_failures": [],
           "ambient_failures": [],
           "ppu_overflow_frames": [],
           "max_spc_backlog": 6,
-          "spc_backlog_nonzero_samples": 26,
-          "spc_drain_events": 26,
-          "spc_drain_bytes": 78,
+          "spc_backlog_nonzero_samples": 48,
+          "spc_drain_events": 48,
+          "spc_drain_bytes": 144,
           "max_spc_growth_streak": 1,
           "max_spc_stable_nonzero_streak": 0,
           "max_spc_no_audio_streak": 1,
           "spc_fifo_failures": [],
-          "spc_fread": 3,
-          "spc_fwrite": 3,
-          "spc_read_advance_bytes": 36837,
-          "spc_write_advance_bytes": 36837,
-          "spc_read_pointer_wraps": 144,
-          "spc_write_pointer_wraps": 144,
+          "spc_fread": 107,
+          "spc_fwrite": 107,
+          "spc_read_advance_bytes": 36429,
+          "spc_write_advance_bytes": 36429,
+          "spc_read_pointer_wraps": 142,
+          "spc_write_pointer_wraps": 142,
           "spc_fifo_thresholds": {
             "max_backlog": 32,
             "max_growth_streak": 8,
             "max_stable_no_audio_streak": 120
           },
-          "snes_vblank_count_last": 51753,
+          "snes_vblank_count_last": 42835,
           "snes_vblank_counter_wraps": 4,
-          "vblank_flag_samples": 312152,
+          "vblank_flag_samples": 303182,
           "native_screen_final": 3,
-          "native_screen_mismatch_samples": 1758,
-          "native_screen_mismatch_segments": 295,
+          "native_screen_mismatch_samples": 1782,
+          "native_screen_mismatch_segments": 268,
           "max_native_screen_mismatch_streak": 14,
           "input_counts": {
-            "right": 179355,
-            "l": 33117,
-            "left": 164444,
-            "down": 54238,
-            "y": 36084,
-            "b": 30306,
-            "x": 19954,
-            "a": 25925,
-            "r": 14425,
-            "up": 29704
+            "right": 175814,
+            "l": 33347,
+            "left": 161185,
+            "down": 52885,
+            "y": 35503,
+            "b": 29160,
+            "x": 19926,
+            "a": 25053,
+            "r": 13977,
+            "up": 27916
           },
-          "max_nonfight_streak": 419,
-          "max_down_tick": 33,
+          "max_nonfight_streak": 440,
+          "max_down_tick": 34,
           "max_down_state_duration": [
             76,
             82
           ],
           "max_pending_throw_damage": 29,
-          "wake_buffer_handoffs": 14,
+          "wake_buffer_handoffs": 46,
           "max_oam_visible_actor_pieces": 30,
           "max_oam_sprites": 30,
           "position_bounds": {
             "min": 384,
             "max": 3712
           },
-          "video_samples": 2616,
-          "video_nonblank_samples": 2603,
+          "video_samples": 2542,
+          "video_nonblank_samples": 2523,
           "video_geometry": [
             256,
             224
           ],
-          "audio_samples": 167346388,
-          "audio_nonzero_batches": 2270,
-          "audio_peak_sampled": 3282,
-          "trace_magic_samples": 313617,
+          "audio_samples": 162592006,
+          "audio_nonzero_batches": 2199,
+          "audio_peak_sampled": 3475,
+          "trace_magic_samples": 304699,
           "video_fps": 60.098811862348406,
           "audio_sample_rate": 32040.0,
-          "rom_sha256": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466",
+          "rom_sha256": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639",
           "benchmark": false,
-          "core_frames_including_boot": 313899,
+          "core_frames_including_boot": 304981,
           "core": {
             "archive": ".tools\\core.zip",
             "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
@@ -54509,12 +54515,12 @@
           "mode": 1,
           "mode_name": "local_vs",
           "status": "passed",
-          "frames": 281948,
+          "frames": 289554,
           "target_live_frames": 216356,
           "coverage_required": true,
           "live_frames": 216356,
-          "live_segments": 223,
-          "elapsed_seconds": 240.359,
+          "live_segments": 246,
+          "elapsed_seconds": 197.406,
           "rosters": [
             {
               "fighter1": 3,
@@ -54529,9 +54535,15 @@
               "route": "pause-b-select"
             },
             {
-              "fighter1": 5,
-              "fighter2": 8,
-              "stage": 2,
+              "fighter1": 3,
+              "fighter2": 6,
+              "stage": 1,
+              "route": "pause-b-select"
+            },
+            {
+              "fighter1": 9,
+              "fighter2": 0,
+              "stage": 1,
               "route": "pause-b-select"
             },
             {
@@ -54565,27 +54577,27 @@
               "route": "pause-b-select"
             },
             {
-              "fighter1": 7,
-              "fighter2": 10,
+              "fighter1": 3,
+              "fighter2": 6,
+              "stage": 1,
+              "route": "pause-b-select"
+            },
+            {
+              "fighter1": 9,
+              "fighter2": 0,
+              "stage": 1,
+              "route": "pause-b-select"
+            },
+            {
+              "fighter1": 1,
+              "fighter2": 4,
               "stage": 0,
               "route": "pause-b-select"
             },
             {
-              "fighter1": 7,
-              "fighter2": 10,
-              "stage": 0,
-              "route": "pause-b-select"
-            },
-            {
-              "fighter1": 7,
-              "fighter2": 10,
-              "stage": 0,
-              "route": "pause-b-select"
-            },
-            {
-              "fighter1": 7,
-              "fighter2": 10,
-              "stage": 0,
+              "fighter1": 5,
+              "fighter2": 8,
+              "stage": 2,
               "route": "pause-b-select"
             }
           ],
@@ -54595,24 +54607,24 @@
             2
           ],
           "events": {
-            "attack": 173911,
-            "air": 104228,
-            "throw": 11394,
-            "guard": 38670,
-            "special": 3037,
-            "wake": 10112,
-            "down": 57085,
-            "round_change": 218,
-            "result": 85,
-            "pause": 11,
+            "attack": 186917,
+            "air": 101802,
+            "throw": 11178,
+            "guard": 37106,
+            "special": 2052,
+            "wake": 8752,
+            "down": 49260,
+            "round_change": 241,
+            "result": 91,
+            "pause": 12,
             "reset": 0,
-            "result_continue": 85,
+            "result_continue": 91,
             "arcade_ladder": 0,
             "champion": 0,
             "champion_restart": 0,
-            "menu_roster": 11,
-            "real_contact": 2963,
-            "damage": 3056
+            "menu_roster": 12,
+            "real_contact": 2892,
+            "damage": 3047
           },
           "required_coverage": {
             "attack": true,
@@ -54629,93 +54641,93 @@
             "menu_roster": true
           },
           "normal_action_starts": {
-            "1": 2819,
-            "2": 1275,
-            "3": 715,
-            "4": 826,
-            "5": 687,
-            "6": 638
+            "1": 2665,
+            "2": 1284,
+            "3": 742,
+            "4": 855,
+            "5": 728,
+            "6": 560
           },
-          "live_fraction": 0.767361,
+          "live_fraction": 0.747204,
           "native_frame_wraps": 4,
           "ambient_clock_wraps": 0,
-          "lag_frame_counter_last": 1133,
+          "lag_frame_counter_last": 1308,
           "lag_frame_counter_wraps": 0,
-          "lag_frame_counter_increments": 1090,
+          "lag_frame_counter_increments": 1265,
           "stable_fight_lag_increments": 0,
-          "nonfight_lag_increments": 1090,
+          "nonfight_lag_increments": 1265,
           "cadence_failures": [],
           "native_timing_failures": [],
           "ambient_failures": [],
           "ppu_overflow_frames": [],
           "max_spc_backlog": 6,
-          "spc_backlog_nonzero_samples": 44,
-          "spc_drain_events": 44,
-          "spc_drain_bytes": 132,
+          "spc_backlog_nonzero_samples": 49,
+          "spc_drain_events": 48,
+          "spc_drain_bytes": 144,
           "max_spc_growth_streak": 1,
           "max_spc_stable_nonzero_streak": 0,
           "max_spc_no_audio_streak": 1,
           "spc_fifo_failures": [],
-          "spc_fread": 3,
-          "spc_fwrite": 3,
-          "spc_read_advance_bytes": 29133,
-          "spc_write_advance_bytes": 29133,
-          "spc_read_pointer_wraps": 114,
-          "spc_write_pointer_wraps": 114,
+          "spc_fread": 116,
+          "spc_fwrite": 116,
+          "spc_read_advance_bytes": 28734,
+          "spc_write_advance_bytes": 28734,
+          "spc_read_pointer_wraps": 112,
+          "spc_write_pointer_wraps": 112,
           "spc_fifo_thresholds": {
             "max_backlog": 32,
             "max_growth_streak": 8,
             "max_stable_no_audio_streak": 120
           },
-          "snes_vblank_count_last": 20237,
+          "snes_vblank_count_last": 27843,
           "snes_vblank_counter_wraps": 4,
-          "vblank_flag_samples": 280858,
+          "vblank_flag_samples": 288289,
           "native_screen_final": 3,
-          "native_screen_mismatch_samples": 1262,
-          "native_screen_mismatch_segments": 203,
+          "native_screen_mismatch_samples": 1435,
+          "native_screen_mismatch_segments": 218,
           "max_native_screen_mismatch_streak": 14,
           "input_counts": {
-            "right": 185191,
-            "left": 165218,
-            "y": 45306,
-            "b": 22638,
-            "x": 24163,
-            "a": 16144,
-            "r": 13185,
-            "l": 35814,
-            "up": 31392,
-            "down": 68563,
-            "start": 33
+            "right": 183882,
+            "left": 163804,
+            "y": 47575,
+            "b": 24884,
+            "x": 25121,
+            "a": 17997,
+            "r": 13950,
+            "l": 39056,
+            "up": 34270,
+            "down": 73472,
+            "start": 36
           },
-          "max_nonfight_streak": 463,
-          "max_down_tick": 35,
+          "max_nonfight_streak": 535,
+          "max_down_tick": 33,
           "max_down_state_duration": [
-            75,
+            62,
             82
           ],
           "max_pending_throw_damage": 24,
-          "wake_buffer_handoffs": 286,
+          "wake_buffer_handoffs": 103,
           "max_oam_visible_actor_pieces": 30,
           "max_oam_sprites": 30,
           "position_bounds": {
-            "min": 384,
+            "min": 596,
             "max": 3712
           },
-          "video_samples": 2354,
-          "video_nonblank_samples": 2342,
+          "video_samples": 2417,
+          "video_nonblank_samples": 2408,
           "video_geometry": [
             256,
             224
           ],
-          "audio_samples": 150544515,
-          "audio_nonzero_batches": 2005,
-          "audio_peak_sampled": 3490,
-          "trace_magic_samples": 281948,
+          "audio_samples": 154599441,
+          "audio_nonzero_batches": 2071,
+          "audio_peak_sampled": 3457,
+          "trace_magic_samples": 289554,
           "video_fps": 60.098811862348406,
           "audio_sample_rate": 32040.0,
-          "rom_sha256": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466",
+          "rom_sha256": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639",
           "benchmark": false,
-          "core_frames_including_boot": 282383,
+          "core_frames_including_boot": 289989,
           "core": {
             "archive": ".tools\\core.zip",
             "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
@@ -54738,7 +54750,7 @@
           "coverage_required": true,
           "live_frames": 216356,
           "live_segments": 10,
-          "elapsed_seconds": 195.156,
+          "elapsed_seconds": 161.641,
           "rosters": [
             {
               "fighter1": 6,
@@ -54862,10 +54874,10 @@
           "ambient_failures": [],
           "ppu_overflow_frames": [],
           "max_spc_backlog": 6,
-          "spc_backlog_nonzero_samples": 37,
+          "spc_backlog_nonzero_samples": 36,
           "spc_drain_events": 36,
           "spc_drain_bytes": 108,
-          "max_spc_growth_streak": 2,
+          "max_spc_growth_streak": 1,
           "max_spc_stable_nonzero_streak": 0,
           "max_spc_no_audio_streak": 1,
           "spc_fifo_failures": [],
@@ -54923,11 +54935,11 @@
           ],
           "audio_samples": 116784564,
           "audio_nonzero_batches": 1567,
-          "audio_peak_sampled": 3343,
+          "audio_peak_sampled": 3393,
           "trace_magic_samples": 218606,
           "video_fps": 60.098811862348406,
           "audio_sample_rate": 32040.0,
-          "rom_sha256": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466",
+          "rom_sha256": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639",
           "benchmark": false,
           "core_frames_including_boot": 219058,
           "core": {
@@ -54995,7 +55007,7 @@
     {
       "check": "endurance gate mode 0 matches the exact current ROM",
       "passed": true,
-      "details": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466"
+      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
     },
     {
       "check": "endurance gate mode 0 native core identity exists",
@@ -55143,8 +55155,8 @@
       "check": "endurance gate mode 0 video callback is healthy",
       "passed": true,
       "details": {
-        "samples": 2616,
-        "nonblank": 2603,
+        "samples": 2542,
+        "nonblank": 2523,
         "geometry": [
           256,
           224
@@ -55155,8 +55167,8 @@
       "check": "endurance gate mode 0 PCM callback is healthy",
       "passed": true,
       "details": {
-        "samples": 167346388,
-        "nonzero": 2270,
+        "samples": 162592006,
+        "nonzero": 2199,
         "rate": 32040.0
       }
     },
@@ -55171,7 +55183,7 @@
     {
       "check": "endurance gate mode 0 reports its ROM hash",
       "passed": true,
-      "details": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466"
+      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
     },
     {
       "check": "endurance gate mode is an object",
@@ -55186,7 +55198,7 @@
     {
       "check": "endurance gate mode 1 matches the exact current ROM",
       "passed": true,
-      "details": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466"
+      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
     },
     {
       "check": "endurance gate mode 1 native core identity exists",
@@ -55330,8 +55342,8 @@
       "check": "endurance gate mode 1 video callback is healthy",
       "passed": true,
       "details": {
-        "samples": 2354,
-        "nonblank": 2342,
+        "samples": 2417,
+        "nonblank": 2408,
         "geometry": [
           256,
           224
@@ -55342,8 +55354,8 @@
       "check": "endurance gate mode 1 PCM callback is healthy",
       "passed": true,
       "details": {
-        "samples": 150544515,
-        "nonzero": 2005,
+        "samples": 154599441,
+        "nonzero": 2071,
         "rate": 32040.0
       }
     },
@@ -55358,7 +55370,7 @@
     {
       "check": "endurance gate mode 1 reports its ROM hash",
       "passed": true,
-      "details": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466"
+      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
     },
     {
       "check": "endurance gate mode is an object",
@@ -55373,7 +55385,7 @@
     {
       "check": "endurance gate mode 2 matches the exact current ROM",
       "passed": true,
-      "details": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466"
+      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
     },
     {
       "check": "endurance gate mode 2 native core identity exists",
@@ -55547,14 +55559,14 @@
     {
       "check": "endurance gate mode 2 reports its ROM hash",
       "passed": true,
-      "details": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466"
+      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
     },
     {
       "check": "endurance gate total frames meet the target",
       "passed": true,
       "details": {
-        "0": 313617,
-        "1": 281948,
+        "0": 304699,
+        "1": 289554,
         "2": 218606
       }
     },
@@ -55566,12 +55578,12 @@
     {
       "check": "fresh committed-source build matches the exact current ROM",
       "passed": true,
-      "details": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466"
+      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
     },
     {
       "check": "fresh committed-source build rebuilt ROM matches the exact current ROM",
       "passed": true,
-      "details": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466"
+      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
     },
     {
       "check": "fresh committed-source build build succeeded",
@@ -55612,9 +55624,7 @@
       "check": "fresh committed-source build build environment exists",
       "passed": true,
       "details": {
-        "removed_overrides": [
-          "PVSNESLIB_HOME"
-        ],
+        "removed_overrides": [],
         "selected_sdk": ".tools/sdk/pvsneslib",
         "python_user_site_disabled": true,
         "sdk_files": 1984,
@@ -55630,9 +55640,7 @@
       "check": "fresh committed-source build records the extracted pinned SDK tree",
       "passed": true,
       "details": {
-        "removed_overrides": [
-          "PVSNESLIB_HOME"
-        ],
+        "removed_overrides": [],
         "selected_sdk": ".tools/sdk/pvsneslib",
         "python_user_site_disabled": true,
         "sdk_files": 1984,
@@ -55654,7 +55662,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas.png",
-        "sha256": "36e6991a38b8c80b7501f02c5d332aaeb3fad734ea0518951806ca19a5b2f9e6",
+        "sha256": "75b20e7ea2e39fdb88b1cb90d48706699385f02368edbf021ac7a4d916ebd66b",
         "comparison": "exact bytes"
       }
     },
@@ -55663,7 +55671,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas.png",
-        "sha256": "36e6991a38b8c80b7501f02c5d332aaeb3fad734ea0518951806ca19a5b2f9e6",
+        "sha256": "75b20e7ea2e39fdb88b1cb90d48706699385f02368edbf021ac7a4d916ebd66b",
         "comparison": "exact bytes"
       }
     },
@@ -55677,7 +55685,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas_map.bin",
-        "sha256": "35b3ce4a5a62a757e092479e19cda0971c88c24b30fa662e42960f269c5ec762",
+        "sha256": "3d3b2dfd1d41b44f077cc525e4da8c1028419cc004e5aecf7881e0f21b7d2ab1",
         "comparison": "exact bytes"
       }
     },
@@ -55686,7 +55694,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas_map.bin",
-        "sha256": "35b3ce4a5a62a757e092479e19cda0971c88c24b30fa662e42960f269c5ec762",
+        "sha256": "3d3b2dfd1d41b44f077cc525e4da8c1028419cc004e5aecf7881e0f21b7d2ab1",
         "comparison": "exact bytes"
       }
     },
@@ -55700,7 +55708,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas_pal.bin",
-        "sha256": "4a3afc2f1340266d4225e5266269eb15206bcb58c9ea905372642d125727c052",
+        "sha256": "05850993d823fa42ef43f5f0bc71806906f34d37965be043bd330be726728037",
         "comparison": "exact bytes"
       }
     },
@@ -55709,7 +55717,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas_pal.bin",
-        "sha256": "4a3afc2f1340266d4225e5266269eb15206bcb58c9ea905372642d125727c052",
+        "sha256": "05850993d823fa42ef43f5f0bc71806906f34d37965be043bd330be726728037",
         "comparison": "exact bytes"
       }
     },
@@ -55723,7 +55731,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas_tiles.bin",
-        "sha256": "e95bcea2e1cd91e4f4fe48d2057afcd4982fcfe5d2b9555b8edaba06cc07cf9a",
+        "sha256": "960c629bee711a8834afb547763c042fe58c3149d9675ae60a29f32889107fef",
         "comparison": "exact bytes"
       }
     },
@@ -55732,7 +55740,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas_tiles.bin",
-        "sha256": "e95bcea2e1cd91e4f4fe48d2057afcd4982fcfe5d2b9555b8edaba06cc07cf9a",
+        "sha256": "960c629bee711a8834afb547763c042fe58c3149d9675ae60a29f32889107fef",
         "comparison": "exact bytes"
       }
     },
@@ -55746,7 +55754,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/assets.h",
-        "sha256": "cbbd49a615a3e8f299bb9c6de73d012707f5a3cf307bf687e0e82b6a38ce4982",
+        "sha256": "ac00bc3c2ba01a34698137dc640e8f198689edc20bb86e37a7d27fbf06b53b6e",
         "comparison": "LF-normalized text"
       }
     },
@@ -55755,7 +55763,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/assets.h",
-        "sha256": "cbbd49a615a3e8f299bb9c6de73d012707f5a3cf307bf687e0e82b6a38ce4982",
+        "sha256": "ac00bc3c2ba01a34698137dc640e8f198689edc20bb86e37a7d27fbf06b53b6e",
         "comparison": "LF-normalized text"
       }
     },
@@ -55769,7 +55777,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/character-manifest.json",
-        "sha256": "54588e34c85484c3dbe382d081fecb1099cb29ec037e6c9f95704453c2958758",
+        "sha256": "71f71dd0eb2b95b0dbeabe6911118b4ba11f32f1b2a56fbe0af4190ac6b47c4a",
         "comparison": "LF-normalized text"
       }
     },
@@ -55778,7 +55786,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/character-manifest.json",
-        "sha256": "54588e34c85484c3dbe382d081fecb1099cb29ec037e6c9f95704453c2958758",
+        "sha256": "71f71dd0eb2b95b0dbeabe6911118b4ba11f32f1b2a56fbe0af4190ac6b47c4a",
         "comparison": "LF-normalized text"
       }
     },
@@ -55884,7 +55892,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter00.bin",
-        "sha256": "006beb2fa54af9e649f926df7403cc706bcc7fba2f35f01465a92799e666eb63",
+        "sha256": "dc003395b642c15d6334c69adce15b1dd79bfb76a6a907a6b239274da8f4d728",
         "comparison": "exact bytes"
       }
     },
@@ -55893,7 +55901,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter00.bin",
-        "sha256": "006beb2fa54af9e649f926df7403cc706bcc7fba2f35f01465a92799e666eb63",
+        "sha256": "dc003395b642c15d6334c69adce15b1dd79bfb76a6a907a6b239274da8f4d728",
         "comparison": "exact bytes"
       }
     },
@@ -55907,7 +55915,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter00.png",
-        "sha256": "2117ecedbb83df2d7f51dfafe1fea7958cf20d1b87d0891fbd8c2561164cc8c7",
+        "sha256": "933126cb57d5e5b36a57c962fb4f12ecb5418a41408954413ba451ec08b3afa9",
         "comparison": "exact bytes"
       }
     },
@@ -55916,7 +55924,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter00.png",
-        "sha256": "2117ecedbb83df2d7f51dfafe1fea7958cf20d1b87d0891fbd8c2561164cc8c7",
+        "sha256": "933126cb57d5e5b36a57c962fb4f12ecb5418a41408954413ba451ec08b3afa9",
         "comparison": "exact bytes"
       }
     },
@@ -55953,7 +55961,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter00b.bin",
-        "sha256": "629b4060e46707c0f69ed680729ebc3611f432f3e061975bff5c682b175ca461",
+        "sha256": "c51af33036bd57f19661826976cf1381b1a78913261f1728dd81dec4d10336d3",
         "comparison": "exact bytes"
       }
     },
@@ -55962,7 +55970,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter00b.bin",
-        "sha256": "629b4060e46707c0f69ed680729ebc3611f432f3e061975bff5c682b175ca461",
+        "sha256": "c51af33036bd57f19661826976cf1381b1a78913261f1728dd81dec4d10336d3",
         "comparison": "exact bytes"
       }
     },
@@ -55976,7 +55984,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter00c.bin",
-        "sha256": "3d8421355d968c647deb1066773c01c1d92bc7a50dd1c38cca95e2c2ffe9f60a",
+        "sha256": "ced5a0926fa47d0ed5acbe08da635f9fcde9ebbf7df4ff4c4a9efaad713e44ef",
         "comparison": "exact bytes"
       }
     },
@@ -55985,7 +55993,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter00c.bin",
-        "sha256": "3d8421355d968c647deb1066773c01c1d92bc7a50dd1c38cca95e2c2ffe9f60a",
+        "sha256": "ced5a0926fa47d0ed5acbe08da635f9fcde9ebbf7df4ff4c4a9efaad713e44ef",
         "comparison": "exact bytes"
       }
     },
@@ -55999,7 +56007,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter00d.bin",
-        "sha256": "1fe0abc53dd621ac48f87a3366f4228ed687203cf84e95537c2c114dd91f8211",
+        "sha256": "e0113c1f9cc9d4e297904310a421db097495140bfde1c8dc2264849648a358c3",
         "comparison": "exact bytes"
       }
     },
@@ -56008,7 +56016,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter00d.bin",
-        "sha256": "1fe0abc53dd621ac48f87a3366f4228ed687203cf84e95537c2c114dd91f8211",
+        "sha256": "e0113c1f9cc9d4e297904310a421db097495140bfde1c8dc2264849648a358c3",
         "comparison": "exact bytes"
       }
     },
@@ -56022,7 +56030,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter00e.bin",
-        "sha256": "f338f0bd40fc38b770903face12cc9860b2deb456ce4cfd6b3e22d02ccac45c8",
+        "sha256": "727ba8e8c209b6172cef6cae99dbc9dce421a811a64395a46a3749e2456bc95a",
         "comparison": "exact bytes"
       }
     },
@@ -56031,7 +56039,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter00e.bin",
-        "sha256": "f338f0bd40fc38b770903face12cc9860b2deb456ce4cfd6b3e22d02ccac45c8",
+        "sha256": "727ba8e8c209b6172cef6cae99dbc9dce421a811a64395a46a3749e2456bc95a",
         "comparison": "exact bytes"
       }
     },
@@ -56045,7 +56053,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter00f.bin",
-        "sha256": "30cda2d9f9036387fc64ee758681cf90e611452cd2b0634456239175d5c4ea66",
+        "sha256": "e00205c1c8ab1e578d30e3dab98077082cec50d651d6c0145732defd6e3146de",
         "comparison": "exact bytes"
       }
     },
@@ -56054,7 +56062,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter00f.bin",
-        "sha256": "30cda2d9f9036387fc64ee758681cf90e611452cd2b0634456239175d5c4ea66",
+        "sha256": "e00205c1c8ab1e578d30e3dab98077082cec50d651d6c0145732defd6e3146de",
         "comparison": "exact bytes"
       }
     },
@@ -56068,7 +56076,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter00g.bin",
-        "sha256": "0076fd7a85d98eac4b3770e1ddc442d18d765e46881c5b7cad07980bc1a66f28",
+        "sha256": "221144098949e354d9de70d740fe078f06106aa389670327397b39735e019746",
         "comparison": "exact bytes"
       }
     },
@@ -56077,7 +56085,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter00g.bin",
-        "sha256": "0076fd7a85d98eac4b3770e1ddc442d18d765e46881c5b7cad07980bc1a66f28",
+        "sha256": "221144098949e354d9de70d740fe078f06106aa389670327397b39735e019746",
         "comparison": "exact bytes"
       }
     },
@@ -56091,7 +56099,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter00h.bin",
-        "sha256": "cbfdcd393364111e7fac02ace0de5fcd9862c38844f8eb33b547944d2d4fcfed",
+        "sha256": "4d9c4d28987f7e575d541ddf5cc078fc26fcd65832c42efda34cd4792d14eeee",
         "comparison": "exact bytes"
       }
     },
@@ -56100,7 +56108,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter00h.bin",
-        "sha256": "cbfdcd393364111e7fac02ace0de5fcd9862c38844f8eb33b547944d2d4fcfed",
+        "sha256": "4d9c4d28987f7e575d541ddf5cc078fc26fcd65832c42efda34cd4792d14eeee",
         "comparison": "exact bytes"
       }
     },
@@ -58736,7 +58744,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait00-large.png",
-        "sha256": "777e61ec7c582e229cda56b373023f24e0673ebce24a09c323c44db4c7617099",
+        "sha256": "a7bd2313500980db759031d66a7984aa6823bd3406581091f215a212d6a701d2",
         "comparison": "exact bytes"
       }
     },
@@ -58745,7 +58753,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait00-large.png",
-        "sha256": "777e61ec7c582e229cda56b373023f24e0673ebce24a09c323c44db4c7617099",
+        "sha256": "a7bd2313500980db759031d66a7984aa6823bd3406581091f215a212d6a701d2",
         "comparison": "exact bytes"
       }
     },
@@ -58759,7 +58767,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait00.png",
-        "sha256": "ada0970e72529754357eba7feff4bda4086fe0b17fed98538b7f2b7327391754",
+        "sha256": "925bf0ffdbf72ecd90b52ccc64378b6a2681f992528a4ab45e02b576f5f363e9",
         "comparison": "exact bytes"
       }
     },
@@ -58768,7 +58776,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait00.png",
-        "sha256": "ada0970e72529754357eba7feff4bda4086fe0b17fed98538b7f2b7327391754",
+        "sha256": "925bf0ffdbf72ecd90b52ccc64378b6a2681f992528a4ab45e02b576f5f363e9",
         "comparison": "exact bytes"
       }
     },
@@ -58782,7 +58790,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait00_pal.bin",
-        "sha256": "3b0ea2998c20c946ef5230b9f572503fa5efafc8c19d4ee62cd43d4472ddcd01",
+        "sha256": "e2848c7d315b7e9d725e729d6d3b644ff21726c9f3979d5039373828f07914f5",
         "comparison": "exact bytes"
       }
     },
@@ -58791,7 +58799,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait00_pal.bin",
-        "sha256": "3b0ea2998c20c946ef5230b9f572503fa5efafc8c19d4ee62cd43d4472ddcd01",
+        "sha256": "e2848c7d315b7e9d725e729d6d3b644ff21726c9f3979d5039373828f07914f5",
         "comparison": "exact bytes"
       }
     },
@@ -58805,7 +58813,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait00_tiles.bin",
-        "sha256": "0a14c89e208ad529792340073e86b16b0f6baf0e9d391f892e7b3f9cecfb0028",
+        "sha256": "2bd09ad23a2df08d53046ad70952e45851aa5e88695da12fc641bfb918f41cb6",
         "comparison": "exact bytes"
       }
     },
@@ -58814,7 +58822,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait00_tiles.bin",
-        "sha256": "0a14c89e208ad529792340073e86b16b0f6baf0e9d391f892e7b3f9cecfb0028",
+        "sha256": "2bd09ad23a2df08d53046ad70952e45851aa5e88695da12fc641bfb918f41cb6",
         "comparison": "exact bytes"
       }
     },
@@ -58828,7 +58836,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait01-large.png",
-        "sha256": "aca975c9dce67866617e0c9cae21c55b2dae033f3765f296ea83630c1cf70604",
+        "sha256": "ddaaf1405c6c9d7950df0bd6c56449fead35820ca31aa78800db8c2af6f020e9",
         "comparison": "exact bytes"
       }
     },
@@ -58837,7 +58845,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait01-large.png",
-        "sha256": "aca975c9dce67866617e0c9cae21c55b2dae033f3765f296ea83630c1cf70604",
+        "sha256": "ddaaf1405c6c9d7950df0bd6c56449fead35820ca31aa78800db8c2af6f020e9",
         "comparison": "exact bytes"
       }
     },
@@ -58851,7 +58859,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait01.png",
-        "sha256": "ab9839906211d5aa1910b03def645fba99a18d590d14313f0639c6313dd58d06",
+        "sha256": "26de480b79a6c721d6928d94d524e62e0c345140e39227788caf0fcef7026c41",
         "comparison": "exact bytes"
       }
     },
@@ -58860,7 +58868,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait01.png",
-        "sha256": "ab9839906211d5aa1910b03def645fba99a18d590d14313f0639c6313dd58d06",
+        "sha256": "26de480b79a6c721d6928d94d524e62e0c345140e39227788caf0fcef7026c41",
         "comparison": "exact bytes"
       }
     },
@@ -58874,7 +58882,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait01_pal.bin",
-        "sha256": "748631aecf39d18fc2dc90337ba6aea355de774181d43b5347461fe63a567294",
+        "sha256": "08989818b479b17741576eb89afc057096957585f57d317897de1d70809aef87",
         "comparison": "exact bytes"
       }
     },
@@ -58883,7 +58891,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait01_pal.bin",
-        "sha256": "748631aecf39d18fc2dc90337ba6aea355de774181d43b5347461fe63a567294",
+        "sha256": "08989818b479b17741576eb89afc057096957585f57d317897de1d70809aef87",
         "comparison": "exact bytes"
       }
     },
@@ -58897,7 +58905,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait01_tiles.bin",
-        "sha256": "158d294237b3c26cb45ec147a22974cc9d9a7f8cdbe6bc9410573fb28b462fb6",
+        "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1",
         "comparison": "exact bytes"
       }
     },
@@ -58906,7 +58914,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait01_tiles.bin",
-        "sha256": "158d294237b3c26cb45ec147a22974cc9d9a7f8cdbe6bc9410573fb28b462fb6",
+        "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1",
         "comparison": "exact bytes"
       }
     },
@@ -58920,7 +58928,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait02-large.png",
-        "sha256": "356810ebf8e71e7a962f561fc780ff2b0fa0db3813eb51b589d497133b4e3f8e",
+        "sha256": "c5c198ea1ce40a6d37780654dd0f164a7032930d3519561b19b96ed74e6cf6b9",
         "comparison": "exact bytes"
       }
     },
@@ -58929,7 +58937,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait02-large.png",
-        "sha256": "356810ebf8e71e7a962f561fc780ff2b0fa0db3813eb51b589d497133b4e3f8e",
+        "sha256": "c5c198ea1ce40a6d37780654dd0f164a7032930d3519561b19b96ed74e6cf6b9",
         "comparison": "exact bytes"
       }
     },
@@ -58943,7 +58951,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait02.png",
-        "sha256": "85037f34e3cc29a982e1394290d6c0abd332eed4147369e4a10b54b9bc6b9cc3",
+        "sha256": "963b82496c52bb77e2aaeb80b4bd1adcca6a67274241bf2f8cdd7834ea3c0e2a",
         "comparison": "exact bytes"
       }
     },
@@ -58952,7 +58960,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait02.png",
-        "sha256": "85037f34e3cc29a982e1394290d6c0abd332eed4147369e4a10b54b9bc6b9cc3",
+        "sha256": "963b82496c52bb77e2aaeb80b4bd1adcca6a67274241bf2f8cdd7834ea3c0e2a",
         "comparison": "exact bytes"
       }
     },
@@ -58966,7 +58974,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait02_pal.bin",
-        "sha256": "8a78b8618ef4134f81c185c4069c0cd505589d9eefb67c979966a44964775a59",
+        "sha256": "ab5564cfe06b696bb124b469dbe3f20beb3f0919a2cd26de627f1fc52e021946",
         "comparison": "exact bytes"
       }
     },
@@ -58975,7 +58983,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait02_pal.bin",
-        "sha256": "8a78b8618ef4134f81c185c4069c0cd505589d9eefb67c979966a44964775a59",
+        "sha256": "ab5564cfe06b696bb124b469dbe3f20beb3f0919a2cd26de627f1fc52e021946",
         "comparison": "exact bytes"
       }
     },
@@ -58989,7 +58997,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait02_tiles.bin",
-        "sha256": "93a6e58f5c20810f3135af4f49e15793aec512e3cfb86575dd09354d91cf7ebb",
+        "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b",
         "comparison": "exact bytes"
       }
     },
@@ -58998,7 +59006,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait02_tiles.bin",
-        "sha256": "93a6e58f5c20810f3135af4f49e15793aec512e3cfb86575dd09354d91cf7ebb",
+        "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b",
         "comparison": "exact bytes"
       }
     },
@@ -59012,7 +59020,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait03-large.png",
-        "sha256": "33f648b4d94406b16ea51bd0e3027134e704d0672326ca1d4be94c444655bd24",
+        "sha256": "cd7993ab1498f552a29ac07f5082fd1fb0756d2c114a80c671d1c8e0f5e44763",
         "comparison": "exact bytes"
       }
     },
@@ -59021,7 +59029,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait03-large.png",
-        "sha256": "33f648b4d94406b16ea51bd0e3027134e704d0672326ca1d4be94c444655bd24",
+        "sha256": "cd7993ab1498f552a29ac07f5082fd1fb0756d2c114a80c671d1c8e0f5e44763",
         "comparison": "exact bytes"
       }
     },
@@ -59035,7 +59043,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait03.png",
-        "sha256": "8bfd7cd4a64e9a26151c7fdad946129784b1d3edf91a7d7a0ccd2388273bf5e5",
+        "sha256": "10b4ec8db326f941420f1203da2dce2fc3edbda0d041ca6299a133f1e055f9e9",
         "comparison": "exact bytes"
       }
     },
@@ -59044,7 +59052,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait03.png",
-        "sha256": "8bfd7cd4a64e9a26151c7fdad946129784b1d3edf91a7d7a0ccd2388273bf5e5",
+        "sha256": "10b4ec8db326f941420f1203da2dce2fc3edbda0d041ca6299a133f1e055f9e9",
         "comparison": "exact bytes"
       }
     },
@@ -59058,7 +59066,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait03_pal.bin",
-        "sha256": "f39ff8afca35fcf345404e015115a292b709fbafd2f5b5e7026088d0a1271d95",
+        "sha256": "4d5862c7463d7358b00c9b87de4a7f31496be87f0e26f82cf71bdbc4716c8da5",
         "comparison": "exact bytes"
       }
     },
@@ -59067,7 +59075,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait03_pal.bin",
-        "sha256": "f39ff8afca35fcf345404e015115a292b709fbafd2f5b5e7026088d0a1271d95",
+        "sha256": "4d5862c7463d7358b00c9b87de4a7f31496be87f0e26f82cf71bdbc4716c8da5",
         "comparison": "exact bytes"
       }
     },
@@ -59081,7 +59089,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait03_tiles.bin",
-        "sha256": "c251610e1fe623c5743ab9faaf103b89f4747dbc71e0c53375a6247b505c17a4",
+        "sha256": "61d80d1fa2da4692646a1f500dfc98d69692c0565754d3dc78b7f2d9584642e3",
         "comparison": "exact bytes"
       }
     },
@@ -59090,7 +59098,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait03_tiles.bin",
-        "sha256": "c251610e1fe623c5743ab9faaf103b89f4747dbc71e0c53375a6247b505c17a4",
+        "sha256": "61d80d1fa2da4692646a1f500dfc98d69692c0565754d3dc78b7f2d9584642e3",
         "comparison": "exact bytes"
       }
     },
@@ -59104,7 +59112,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait04-large.png",
-        "sha256": "7b65ae84bdf0d401da117974be9022c4dee28ca814d7b0bdbe0e23d35a6c83fa",
+        "sha256": "02e66f29e24de974aa632c7dcb5fcd2b090140c44fe9eb0436deae2f08309ec9",
         "comparison": "exact bytes"
       }
     },
@@ -59113,7 +59121,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait04-large.png",
-        "sha256": "7b65ae84bdf0d401da117974be9022c4dee28ca814d7b0bdbe0e23d35a6c83fa",
+        "sha256": "02e66f29e24de974aa632c7dcb5fcd2b090140c44fe9eb0436deae2f08309ec9",
         "comparison": "exact bytes"
       }
     },
@@ -59127,7 +59135,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait04.png",
-        "sha256": "29c2ad9b49e2040fdea82b4a5b5746055e8a1c2fb57350291b094d1ade9548f5",
+        "sha256": "df5fc3f9851fc554182a64251cedbbe04a904a00ad3abcc6bcb8c32a6124aa1b",
         "comparison": "exact bytes"
       }
     },
@@ -59136,7 +59144,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait04.png",
-        "sha256": "29c2ad9b49e2040fdea82b4a5b5746055e8a1c2fb57350291b094d1ade9548f5",
+        "sha256": "df5fc3f9851fc554182a64251cedbbe04a904a00ad3abcc6bcb8c32a6124aa1b",
         "comparison": "exact bytes"
       }
     },
@@ -59150,7 +59158,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait04_pal.bin",
-        "sha256": "1e310bc77e2325819872a6af57069fdf3bcc5b79d5d790ffc1e7b153f1c67343",
+        "sha256": "720c6166fd9f14733233d4ff9bb884d2cfa725364c8aad84ab63435e5865848a",
         "comparison": "exact bytes"
       }
     },
@@ -59159,7 +59167,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait04_pal.bin",
-        "sha256": "1e310bc77e2325819872a6af57069fdf3bcc5b79d5d790ffc1e7b153f1c67343",
+        "sha256": "720c6166fd9f14733233d4ff9bb884d2cfa725364c8aad84ab63435e5865848a",
         "comparison": "exact bytes"
       }
     },
@@ -59173,7 +59181,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait04_tiles.bin",
-        "sha256": "3de996472b2e96430f01c0b714f5484f1c4722fddbf3becf7118f5254b8bfea8",
+        "sha256": "24c117db9e57d66ba9eccaecd75bece46c78f0eec848a7eb6a688806227ed2fd",
         "comparison": "exact bytes"
       }
     },
@@ -59182,7 +59190,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait04_tiles.bin",
-        "sha256": "3de996472b2e96430f01c0b714f5484f1c4722fddbf3becf7118f5254b8bfea8",
+        "sha256": "24c117db9e57d66ba9eccaecd75bece46c78f0eec848a7eb6a688806227ed2fd",
         "comparison": "exact bytes"
       }
     },
@@ -59196,7 +59204,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait05-large.png",
-        "sha256": "f7aa05fab3475e62f2a56ea03da1597d0e966ed71c869a7b39ddd2025a0ab1be",
+        "sha256": "502b063408ab54b872911a6f69eba4873a01f73be8bf71eb905663cb956eec5c",
         "comparison": "exact bytes"
       }
     },
@@ -59205,7 +59213,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait05-large.png",
-        "sha256": "f7aa05fab3475e62f2a56ea03da1597d0e966ed71c869a7b39ddd2025a0ab1be",
+        "sha256": "502b063408ab54b872911a6f69eba4873a01f73be8bf71eb905663cb956eec5c",
         "comparison": "exact bytes"
       }
     },
@@ -59219,7 +59227,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait05.png",
-        "sha256": "48f614b044e76793f0a3b3e1ae21b63400d594cd18c9d4819f68407cefa326c5",
+        "sha256": "c71f79d3d326c31bf4eb339c40f46a7a12198441b8e4c72f847e490c5fd0aa42",
         "comparison": "exact bytes"
       }
     },
@@ -59228,7 +59236,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait05.png",
-        "sha256": "48f614b044e76793f0a3b3e1ae21b63400d594cd18c9d4819f68407cefa326c5",
+        "sha256": "c71f79d3d326c31bf4eb339c40f46a7a12198441b8e4c72f847e490c5fd0aa42",
         "comparison": "exact bytes"
       }
     },
@@ -59242,7 +59250,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait05_pal.bin",
-        "sha256": "890400331b09fc730647a6e99c6cbd970b89d4f669f378ebf510a959dbdbf0de",
+        "sha256": "6c2c4b9401849a420de191a9795f24569b16e4fdf74f39e85c20c2df457cd2f9",
         "comparison": "exact bytes"
       }
     },
@@ -59251,7 +59259,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait05_pal.bin",
-        "sha256": "890400331b09fc730647a6e99c6cbd970b89d4f669f378ebf510a959dbdbf0de",
+        "sha256": "6c2c4b9401849a420de191a9795f24569b16e4fdf74f39e85c20c2df457cd2f9",
         "comparison": "exact bytes"
       }
     },
@@ -59265,7 +59273,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait05_tiles.bin",
-        "sha256": "33161be8430a8fe6e50fb4cc044f4553bf8c9e459071d30e439a58b263fd7606",
+        "sha256": "c0460efc186cc285ba6aba1fdd0e7c54dc21320b2201954973d6d2c31c8ba505",
         "comparison": "exact bytes"
       }
     },
@@ -59274,7 +59282,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait05_tiles.bin",
-        "sha256": "33161be8430a8fe6e50fb4cc044f4553bf8c9e459071d30e439a58b263fd7606",
+        "sha256": "c0460efc186cc285ba6aba1fdd0e7c54dc21320b2201954973d6d2c31c8ba505",
         "comparison": "exact bytes"
       }
     },
@@ -59288,7 +59296,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait06-large.png",
-        "sha256": "8bbf6311250fde111cd1d2d86ebde287c4a7d25fea91d0103e86dff29de1384a",
+        "sha256": "9b1afd3adc03cdc55d5f4803b0a057f4d853fb4c9f8ba45731072e45b5a44b9d",
         "comparison": "exact bytes"
       }
     },
@@ -59297,7 +59305,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait06-large.png",
-        "sha256": "8bbf6311250fde111cd1d2d86ebde287c4a7d25fea91d0103e86dff29de1384a",
+        "sha256": "9b1afd3adc03cdc55d5f4803b0a057f4d853fb4c9f8ba45731072e45b5a44b9d",
         "comparison": "exact bytes"
       }
     },
@@ -59311,7 +59319,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait06.png",
-        "sha256": "9a571b78157896d6a07aed49e516f69fbffd72d5d8ffea350add4976fab8fcec",
+        "sha256": "8d02f2b788cb49ba20935aeb3f60e3af05052b663d400b0eb1b3d50341bc308e",
         "comparison": "exact bytes"
       }
     },
@@ -59320,7 +59328,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait06.png",
-        "sha256": "9a571b78157896d6a07aed49e516f69fbffd72d5d8ffea350add4976fab8fcec",
+        "sha256": "8d02f2b788cb49ba20935aeb3f60e3af05052b663d400b0eb1b3d50341bc308e",
         "comparison": "exact bytes"
       }
     },
@@ -59334,7 +59342,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait06_pal.bin",
-        "sha256": "62c1ae3523533f12ff9313e1d668afd691869f4fba3c11479c89f53e150584f3",
+        "sha256": "5db63711260962bc338f05f445b584c372033a97bcdaa538e089ed2e5d5fc972",
         "comparison": "exact bytes"
       }
     },
@@ -59343,7 +59351,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait06_pal.bin",
-        "sha256": "62c1ae3523533f12ff9313e1d668afd691869f4fba3c11479c89f53e150584f3",
+        "sha256": "5db63711260962bc338f05f445b584c372033a97bcdaa538e089ed2e5d5fc972",
         "comparison": "exact bytes"
       }
     },
@@ -59357,7 +59365,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait06_tiles.bin",
-        "sha256": "c9151528d9954ceb2800b8e8023b4d49ce44bba7ce39c6b7b5d905cdadaa68e6",
+        "sha256": "f023d0d5dd115725202ed8a527b2ec45812a7f5e7af77bf579bcec09d39a5e2f",
         "comparison": "exact bytes"
       }
     },
@@ -59366,7 +59374,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait06_tiles.bin",
-        "sha256": "c9151528d9954ceb2800b8e8023b4d49ce44bba7ce39c6b7b5d905cdadaa68e6",
+        "sha256": "f023d0d5dd115725202ed8a527b2ec45812a7f5e7af77bf579bcec09d39a5e2f",
         "comparison": "exact bytes"
       }
     },
@@ -59380,7 +59388,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait07-large.png",
-        "sha256": "b435a6bb406dbf3a1abd161886c0f1a562777e2fed737426af79ff0ba5677d08",
+        "sha256": "e635436d5ad0795a671d777ddfff313a01551bf5c2aae72ba59cd7e70d72f1dd",
         "comparison": "exact bytes"
       }
     },
@@ -59389,7 +59397,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait07-large.png",
-        "sha256": "b435a6bb406dbf3a1abd161886c0f1a562777e2fed737426af79ff0ba5677d08",
+        "sha256": "e635436d5ad0795a671d777ddfff313a01551bf5c2aae72ba59cd7e70d72f1dd",
         "comparison": "exact bytes"
       }
     },
@@ -59403,7 +59411,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait07.png",
-        "sha256": "af74a49c33c0d2c80bee860fc2502400b9324b49315712b2e7f8fa2f4dd507c5",
+        "sha256": "c982e5997517db0b4bfd478a312cbe2b3047801f6c05b5ead2e7216d65b1c2a6",
         "comparison": "exact bytes"
       }
     },
@@ -59412,7 +59420,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait07.png",
-        "sha256": "af74a49c33c0d2c80bee860fc2502400b9324b49315712b2e7f8fa2f4dd507c5",
+        "sha256": "c982e5997517db0b4bfd478a312cbe2b3047801f6c05b5ead2e7216d65b1c2a6",
         "comparison": "exact bytes"
       }
     },
@@ -59426,7 +59434,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait07_pal.bin",
-        "sha256": "a174436b28d6e374bdbf86e921a2d07419153cb407006c9b6f19143cecac8003",
+        "sha256": "656c585b5d15a36aaa07d2ad016ab60e63c59281fd9be66d330c33042684db42",
         "comparison": "exact bytes"
       }
     },
@@ -59435,7 +59443,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait07_pal.bin",
-        "sha256": "a174436b28d6e374bdbf86e921a2d07419153cb407006c9b6f19143cecac8003",
+        "sha256": "656c585b5d15a36aaa07d2ad016ab60e63c59281fd9be66d330c33042684db42",
         "comparison": "exact bytes"
       }
     },
@@ -59449,7 +59457,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait07_tiles.bin",
-        "sha256": "4656c97921accc995cc75c96037e2b9f87b4148cfcd2b69bc3df159991c3923b",
+        "sha256": "d83d340dffeb196c8d1a961cd85d391bad6c849b385b921eca8868eb40d86537",
         "comparison": "exact bytes"
       }
     },
@@ -59458,7 +59466,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait07_tiles.bin",
-        "sha256": "4656c97921accc995cc75c96037e2b9f87b4148cfcd2b69bc3df159991c3923b",
+        "sha256": "d83d340dffeb196c8d1a961cd85d391bad6c849b385b921eca8868eb40d86537",
         "comparison": "exact bytes"
       }
     },
@@ -59472,7 +59480,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait08-large.png",
-        "sha256": "29be57eb006cc6638385103ecfdb9946835f812b8577571e49e69994bb52e327",
+        "sha256": "7b6546202fff49fbce12601303ca5c8f737bb6e0b59e725a3e70a17a10cd7c28",
         "comparison": "exact bytes"
       }
     },
@@ -59481,7 +59489,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait08-large.png",
-        "sha256": "29be57eb006cc6638385103ecfdb9946835f812b8577571e49e69994bb52e327",
+        "sha256": "7b6546202fff49fbce12601303ca5c8f737bb6e0b59e725a3e70a17a10cd7c28",
         "comparison": "exact bytes"
       }
     },
@@ -59495,7 +59503,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait08.png",
-        "sha256": "7fcc93d518f2a788c60c6d71978c81e53ab0695abc5cc3cf666edcfcf9248f1a",
+        "sha256": "a98c204b90d8ef8cf09a07ff551048c2b23bc134a85ec4d448dfc2ce68323486",
         "comparison": "exact bytes"
       }
     },
@@ -59504,7 +59512,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait08.png",
-        "sha256": "7fcc93d518f2a788c60c6d71978c81e53ab0695abc5cc3cf666edcfcf9248f1a",
+        "sha256": "a98c204b90d8ef8cf09a07ff551048c2b23bc134a85ec4d448dfc2ce68323486",
         "comparison": "exact bytes"
       }
     },
@@ -59518,7 +59526,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait08_pal.bin",
-        "sha256": "4ddc99d156b44da1002b2db460e7482955cf0f0288797f56c7caa3bbc798c4b8",
+        "sha256": "cde01ea2b56e2d94ef8852813189cc0cf77e38f4596c2c451ae04e81aeb132b1",
         "comparison": "exact bytes"
       }
     },
@@ -59527,7 +59535,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait08_pal.bin",
-        "sha256": "4ddc99d156b44da1002b2db460e7482955cf0f0288797f56c7caa3bbc798c4b8",
+        "sha256": "cde01ea2b56e2d94ef8852813189cc0cf77e38f4596c2c451ae04e81aeb132b1",
         "comparison": "exact bytes"
       }
     },
@@ -59541,7 +59549,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait08_tiles.bin",
-        "sha256": "d0ffc39a4632f80ff240009a138864061f40149ef98b6d7175f72aa38081f752",
+        "sha256": "be1b936d3daa590cffbc0f2cbe6f1d4c0d951d01262706eb9e9ce4c4f5fd7d89",
         "comparison": "exact bytes"
       }
     },
@@ -59550,7 +59558,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait08_tiles.bin",
-        "sha256": "d0ffc39a4632f80ff240009a138864061f40149ef98b6d7175f72aa38081f752",
+        "sha256": "be1b936d3daa590cffbc0f2cbe6f1d4c0d951d01262706eb9e9ce4c4f5fd7d89",
         "comparison": "exact bytes"
       }
     },
@@ -59564,7 +59572,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait09-large.png",
-        "sha256": "38ed40d1ae2f4b44e4797be9f2ca919b0de91464b463b9a384060654644cd596",
+        "sha256": "ca6b09d0f309c90768c8651c50fbde8aeb45fb34392ada0563b0034c1b923b72",
         "comparison": "exact bytes"
       }
     },
@@ -59573,7 +59581,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait09-large.png",
-        "sha256": "38ed40d1ae2f4b44e4797be9f2ca919b0de91464b463b9a384060654644cd596",
+        "sha256": "ca6b09d0f309c90768c8651c50fbde8aeb45fb34392ada0563b0034c1b923b72",
         "comparison": "exact bytes"
       }
     },
@@ -59587,7 +59595,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait09.png",
-        "sha256": "eb2159ca5f348b9c6f1ac48cfa3ec3cfbd8bf1f867771195c127b82040927e90",
+        "sha256": "0270698812e559528f164d7384468a0bb77d25315d4306603d0a270514f38cfa",
         "comparison": "exact bytes"
       }
     },
@@ -59596,7 +59604,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait09.png",
-        "sha256": "eb2159ca5f348b9c6f1ac48cfa3ec3cfbd8bf1f867771195c127b82040927e90",
+        "sha256": "0270698812e559528f164d7384468a0bb77d25315d4306603d0a270514f38cfa",
         "comparison": "exact bytes"
       }
     },
@@ -59610,7 +59618,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait09_pal.bin",
-        "sha256": "0c2244e16462e98888ed007e42a50b409811af10d055ade708d6e93dcc478dca",
+        "sha256": "31fc8dbd67e0c15b97ae258d945d85dc40324ce448da8afe18465bdb5e51ff7e",
         "comparison": "exact bytes"
       }
     },
@@ -59619,7 +59627,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait09_pal.bin",
-        "sha256": "0c2244e16462e98888ed007e42a50b409811af10d055ade708d6e93dcc478dca",
+        "sha256": "31fc8dbd67e0c15b97ae258d945d85dc40324ce448da8afe18465bdb5e51ff7e",
         "comparison": "exact bytes"
       }
     },
@@ -59633,7 +59641,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait09_tiles.bin",
-        "sha256": "b76bea4ee13bf79ad3af263ad18e2857b12b0bbe0e51fe19797374b5b30b6e74",
+        "sha256": "46ef8740ace707787e06eb45e7b60f1df5e308185b6367f5e62b0ae823122350",
         "comparison": "exact bytes"
       }
     },
@@ -59642,7 +59650,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait09_tiles.bin",
-        "sha256": "b76bea4ee13bf79ad3af263ad18e2857b12b0bbe0e51fe19797374b5b30b6e74",
+        "sha256": "46ef8740ace707787e06eb45e7b60f1df5e308185b6367f5e62b0ae823122350",
         "comparison": "exact bytes"
       }
     },
@@ -59656,7 +59664,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait10-large.png",
-        "sha256": "298b0cd86343df7b9afda128e0b70dfe76f280d963f718c53b4da4e5cfc95293",
+        "sha256": "ee6564a4d7bcd8c53b947847c1fc876a6d961a82ed0d1af4a9188cfa6c8afb71",
         "comparison": "exact bytes"
       }
     },
@@ -59665,7 +59673,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait10-large.png",
-        "sha256": "298b0cd86343df7b9afda128e0b70dfe76f280d963f718c53b4da4e5cfc95293",
+        "sha256": "ee6564a4d7bcd8c53b947847c1fc876a6d961a82ed0d1af4a9188cfa6c8afb71",
         "comparison": "exact bytes"
       }
     },
@@ -59679,7 +59687,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait10.png",
-        "sha256": "206c974889066c749e77c67814eb2fbb1d8ed5e37211478a17286005c650f6ee",
+        "sha256": "cf3175c29aea6b596738cdb18fd582dd299e174ab683a171cecb506af1964e92",
         "comparison": "exact bytes"
       }
     },
@@ -59688,7 +59696,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait10.png",
-        "sha256": "206c974889066c749e77c67814eb2fbb1d8ed5e37211478a17286005c650f6ee",
+        "sha256": "cf3175c29aea6b596738cdb18fd582dd299e174ab683a171cecb506af1964e92",
         "comparison": "exact bytes"
       }
     },
@@ -59702,7 +59710,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait10_pal.bin",
-        "sha256": "d658b510917bf8bc328831639e069d98d21e7e6de5d6590cdbd214fee450971a",
+        "sha256": "3d1c4f3e174efea3bf460726ab55128a30fcad3671dd8859a81941a803802e9f",
         "comparison": "exact bytes"
       }
     },
@@ -59711,7 +59719,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait10_pal.bin",
-        "sha256": "d658b510917bf8bc328831639e069d98d21e7e6de5d6590cdbd214fee450971a",
+        "sha256": "3d1c4f3e174efea3bf460726ab55128a30fcad3671dd8859a81941a803802e9f",
         "comparison": "exact bytes"
       }
     },
@@ -59725,7 +59733,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait10_tiles.bin",
-        "sha256": "17b2167ba6f99e6979c30bb6353f40721d242cfb6bfa8b24218bfdf7c8d274b6",
+        "sha256": "91f53180fc9e25e5633ec62a380b62c7b90072213718a1a3b079b59c6d24a9e6",
         "comparison": "exact bytes"
       }
     },
@@ -59734,7 +59742,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait10_tiles.bin",
-        "sha256": "17b2167ba6f99e6979c30bb6353f40721d242cfb6bfa8b24218bfdf7c8d274b6",
+        "sha256": "91f53180fc9e25e5633ec62a380b62c7b90072213718a1a3b079b59c6d24a9e6",
         "comparison": "exact bytes"
       }
     },
@@ -59748,7 +59756,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait11-large.png",
-        "sha256": "0ed6af6845cca77868396f8db0e20f6ca11725a40e21fadd968d45acb5f6b4e9",
+        "sha256": "46ef03da3a7699ef2df9ae80247b4093bf8fbf153b40b9a329b8a5436af9ffc2",
         "comparison": "exact bytes"
       }
     },
@@ -59757,7 +59765,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait11-large.png",
-        "sha256": "0ed6af6845cca77868396f8db0e20f6ca11725a40e21fadd968d45acb5f6b4e9",
+        "sha256": "46ef03da3a7699ef2df9ae80247b4093bf8fbf153b40b9a329b8a5436af9ffc2",
         "comparison": "exact bytes"
       }
     },
@@ -59771,7 +59779,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait11.png",
-        "sha256": "5a09391bfc635295ab6c10bfe068c9b3e6878cad055867ed7fffe55a0fa899e1",
+        "sha256": "1e368e80565fb6ca23fc155631ac73f8eb386a4aa2fc6632dffebf05bf4c8bee",
         "comparison": "exact bytes"
       }
     },
@@ -59780,7 +59788,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait11.png",
-        "sha256": "5a09391bfc635295ab6c10bfe068c9b3e6878cad055867ed7fffe55a0fa899e1",
+        "sha256": "1e368e80565fb6ca23fc155631ac73f8eb386a4aa2fc6632dffebf05bf4c8bee",
         "comparison": "exact bytes"
       }
     },
@@ -59794,7 +59802,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait11_pal.bin",
-        "sha256": "f3fb6fc2fe94ebf3e4a45a580b01482aa540aaccad1fec29befc411a37f7a613",
+        "sha256": "7122954f2af049c0d072f4c3b3b04264e560e8a0afb7ad2692c1089b7f282452",
         "comparison": "exact bytes"
       }
     },
@@ -59803,7 +59811,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait11_pal.bin",
-        "sha256": "f3fb6fc2fe94ebf3e4a45a580b01482aa540aaccad1fec29befc411a37f7a613",
+        "sha256": "7122954f2af049c0d072f4c3b3b04264e560e8a0afb7ad2692c1089b7f282452",
         "comparison": "exact bytes"
       }
     },
@@ -59817,7 +59825,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait11_tiles.bin",
-        "sha256": "64dfe3f4435c91674e2c96daa2902ea4852466c230b9402779a5efd013f90715",
+        "sha256": "523acf2c5d939b5464caef27b1c990e17bfe13f4ffd5a554c2384538e48fb142",
         "comparison": "exact bytes"
       }
     },
@@ -59826,7 +59834,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait11_tiles.bin",
-        "sha256": "64dfe3f4435c91674e2c96daa2902ea4852466c230b9402779a5efd013f90715",
+        "sha256": "523acf2c5d939b5464caef27b1c990e17bfe13f4ffd5a554c2384538e48fb142",
         "comparison": "exact bytes"
       }
     },
@@ -59840,7 +59848,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/select.png",
-        "sha256": "525ee42c5d01284466ee4d6ce4f1427cb1b2d5b3a2717803df5c04809fe1f18e",
+        "sha256": "e8f91c467a62646a911a7f47e1db52a85db9b09403b4aa68869a053941b8b67c",
         "comparison": "exact bytes"
       }
     },
@@ -59849,7 +59857,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/select.png",
-        "sha256": "525ee42c5d01284466ee4d6ce4f1427cb1b2d5b3a2717803df5c04809fe1f18e",
+        "sha256": "e8f91c467a62646a911a7f47e1db52a85db9b09403b4aa68869a053941b8b67c",
         "comparison": "exact bytes"
       }
     },
@@ -59863,7 +59871,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/select_map.bin",
-        "sha256": "7edcba1b87d3a16ee4ea3a4c5d4f2657ebca11fdf2e5574e2585df9b9fea266b",
+        "sha256": "18ba8eb9db6c34d96a7eefbd4f7b39c33fb5d47d6b7af07c42c8e9c44a5f8403",
         "comparison": "exact bytes"
       }
     },
@@ -59872,7 +59880,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/select_map.bin",
-        "sha256": "7edcba1b87d3a16ee4ea3a4c5d4f2657ebca11fdf2e5574e2585df9b9fea266b",
+        "sha256": "18ba8eb9db6c34d96a7eefbd4f7b39c33fb5d47d6b7af07c42c8e9c44a5f8403",
         "comparison": "exact bytes"
       }
     },
@@ -59886,7 +59894,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/select_pal.bin",
-        "sha256": "15452eb6c40f137a2cd89e9d1c29bdfc9b20fb5bb3231e069bb3cef9210fb8c6",
+        "sha256": "d795e4ef57c06ed5c55eca36dfd0c6fd0c38a2ad5e9ef34b8cfd13f1c42f3c0f",
         "comparison": "exact bytes"
       }
     },
@@ -59895,7 +59903,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/select_pal.bin",
-        "sha256": "15452eb6c40f137a2cd89e9d1c29bdfc9b20fb5bb3231e069bb3cef9210fb8c6",
+        "sha256": "d795e4ef57c06ed5c55eca36dfd0c6fd0c38a2ad5e9ef34b8cfd13f1c42f3c0f",
         "comparison": "exact bytes"
       }
     },
@@ -59909,7 +59917,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/select_tiles.bin",
-        "sha256": "7e07ec247ff5746c6dde77d0767dfc0655aa8a82ac780a8388653f3b40efbc8c",
+        "sha256": "e68347dd8d79bc30db1610d2dd7b9d49b02f090a51711f59f43d730fab591b0a",
         "comparison": "exact bytes"
       }
     },
@@ -59918,7 +59926,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/select_tiles.bin",
-        "sha256": "7e07ec247ff5746c6dde77d0767dfc0655aa8a82ac780a8388653f3b40efbc8c",
+        "sha256": "e68347dd8d79bc30db1610d2dd7b9d49b02f090a51711f59f43d730fab591b0a",
         "comparison": "exact bytes"
       }
     },
@@ -60553,7 +60561,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/ui_tiles.bin",
-        "sha256": "4f59151f514c9d6894ac9b0f51e0134ac263c069551ff6f635dbed883a60ab2e",
+        "sha256": "6ec925a47e0410b94638cc114db8b17e45c0c1ea51022d4031d4ecc27bacd84a",
         "comparison": "exact bytes"
       }
     },
@@ -60562,7 +60570,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/ui_tiles.bin",
-        "sha256": "4f59151f514c9d6894ac9b0f51e0134ac263c069551ff6f635dbed883a60ab2e",
+        "sha256": "6ec925a47e0410b94638cc114db8b17e45c0c1ea51022d4031d4ecc27bacd84a",
         "comparison": "exact bytes"
       }
     },
@@ -60579,20 +60587,20 @@
     {
       "check": "fresh build records a source commit",
       "passed": true,
-      "details": "fe05e5fd1391a1db20f1b66f1e9f6e699445e77a"
+      "details": "76f0a08a7562800df01507db83c6877745c3bdcf"
     },
     {
       "check": "fresh source tree matches source commit",
       "passed": true,
       "details": {
-        "expected": "46e1af160ffb8ab6cb768e3d9deec1352d77ae83",
-        "actual": "46e1af160ffb8ab6cb768e3d9deec1352d77ae83"
+        "expected": "f37852da57a42d2d6819374db5d23278d12587a5",
+        "actual": "f37852da57a42d2d6819374db5d23278d12587a5"
       }
     },
     {
       "check": "fresh source commit is an ancestor of release HEAD",
       "passed": true,
-      "details": "fe05e5fd1391a1db20f1b66f1e9f6e699445e77a"
+      "details": "76f0a08a7562800df01507db83c6877745c3bdcf"
     },
     {
       "check": "fresh source inputs unchanged since source commit",
@@ -60603,8 +60611,8 @@
       "check": "fresh source commit/tree provenance",
       "passed": true,
       "details": {
-        "commit": "fe05e5fd1391a1db20f1b66f1e9f6e699445e77a",
-        "tree": "46e1af160ffb8ab6cb768e3d9deec1352d77ae83"
+        "commit": "76f0a08a7562800df01507db83c6877745c3bdcf",
+        "tree": "f37852da57a42d2d6819374db5d23278d12587a5"
       }
     },
     {
@@ -60615,7 +60623,7 @@
     {
       "check": "native Training suite matches the exact current ROM",
       "passed": true,
-      "details": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466"
+      "details": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639"
     },
     {
       "check": "native Training suite ROM byte count",
@@ -61882,7 +61890,12 @@
         {
           "check": "native PPU capture is populated",
           "passed": true,
-          "details": "mode0-controls"
+          "details": {
+            "name": "mode0-controls",
+            "colors": 7,
+            "light_guide_pixels": 2616,
+            "dark_card_pixels": 44488
+          }
         },
         {
           "check": "guide page contains exact native text",
@@ -62434,7 +62447,12 @@
         {
           "check": "native PPU capture is populated",
           "passed": true,
-          "details": "mode0-specials"
+          "details": {
+            "name": "mode0-specials",
+            "colors": 7,
+            "light_guide_pixels": 2958,
+            "dark_card_pixels": 44146
+          }
         },
         {
           "check": "guide page contains exact native text",
@@ -63099,12 +63117,12 @@
             "before": {
               "0": [
                 8320,
-                8260,
-                8257,
-                8269,
-                8265,
-                8257,
-                8270,
+                8516,
+                8513,
+                8525,
+                8521,
+                8513,
+                8526,
                 8320,
                 8320,
                 8320,
@@ -63113,14 +63131,14 @@
                 8320,
                 8320,
                 8320,
-                8249,
-                8249,
+                8505,
+                8505,
                 8320,
                 8320,
                 8320,
-                8265,
-                8278,
-                8271,
+                8521,
+                8534,
+                8527,
                 8320,
                 8320,
                 8320,
@@ -63147,8 +63165,8 @@
                 8320,
                 8320,
                 8320,
-                8267,
-                8271,
+                8523,
+                8527,
                 8320,
                 8320,
                 8320,
@@ -63179,13 +63197,13 @@
                 8320,
                 8320,
                 8320,
-                8274,
-                8271,
-                8277,
-                8270,
-                8260,
+                8530,
+                8527,
+                8533,
+                8526,
+                8516,
                 8320,
-                8241,
+                8497,
                 8320,
                 8320,
                 8320,
@@ -63212,15 +63230,15 @@
                 8320,
                 8320,
                 8320,
-                8272,
-                8241,
-                8224,
-                8278,
-                8275,
-                8224,
-                8259,
-                8272,
-                8277,
+                8528,
+                8497,
+                8480,
+                8534,
+                8531,
+                8480,
+                8515,
+                8528,
+                8533,
                 8320,
                 8320,
                 8320,
@@ -63237,12 +63255,12 @@
             "after": {
               "0": [
                 8320,
-                8260,
-                8257,
-                8269,
-                8265,
-                8257,
-                8270,
+                8516,
+                8513,
+                8525,
+                8521,
+                8513,
+                8526,
                 8320,
                 8320,
                 8320,
@@ -63251,14 +63269,14 @@
                 8320,
                 8320,
                 8320,
-                8249,
-                8249,
+                8505,
+                8505,
                 8320,
                 8320,
                 8320,
-                8265,
-                8278,
-                8271,
+                8521,
+                8534,
+                8527,
                 8320,
                 8320,
                 8320,
@@ -63285,8 +63303,8 @@
                 8320,
                 8320,
                 8320,
-                8267,
-                8271,
+                8523,
+                8527,
                 8320,
                 8320,
                 8320,
@@ -63317,13 +63335,13 @@
                 8320,
                 8320,
                 8320,
-                8274,
-                8271,
-                8277,
-                8270,
-                8260,
+                8530,
+                8527,
+                8533,
+                8526,
+                8516,
                 8320,
-                8241,
+                8497,
                 8320,
                 8320,
                 8320,
@@ -63350,15 +63368,15 @@
                 8320,
                 8320,
                 8320,
-                8272,
-                8241,
-                8224,
-                8278,
-                8275,
-                8224,
-                8259,
-                8272,
-                8277,
+                8528,
+                8497,
+                8480,
+                8534,
+                8531,
+                8480,
+                8515,
+                8528,
+                8533,
                 8320,
                 8320,
                 8320,
@@ -64697,7 +64715,12 @@
         {
           "check": "native PPU capture is populated",
           "passed": true,
-          "details": "mode1-controls"
+          "details": {
+            "name": "mode1-controls",
+            "colors": 7,
+            "light_guide_pixels": 2616,
+            "dark_card_pixels": 44488
+          }
         },
         {
           "check": "guide page contains exact native text",
@@ -65249,7 +65272,12 @@
         {
           "check": "native PPU capture is populated",
           "passed": true,
-          "details": "mode1-specials"
+          "details": {
+            "name": "mode1-specials",
+            "colors": 7,
+            "light_guide_pixels": 2880,
+            "dark_card_pixels": 44224
+          }
         },
         {
           "check": "guide page contains exact native text",
@@ -65914,30 +65942,30 @@
             "before": {
               "0": [
                 8320,
-                8259,
-                8274,
-                8265,
-                8275,
-                8276,
-                8271,
-                8258,
-                8257,
-                8268,
+                8515,
+                8530,
+                8521,
+                8531,
+                8532,
+                8527,
+                8514,
+                8513,
+                8524,
                 8320,
                 8320,
                 8320,
                 8320,
                 8320,
-                8249,
-                8249,
+                8505,
+                8505,
                 8320,
                 8320,
                 8320,
-                8260,
-                8257,
-                8278,
-                8265,
-                8260,
+                8516,
+                8513,
+                8534,
+                8521,
+                8516,
                 8320,
                 8320,
                 8320,
@@ -65962,8 +65990,8 @@
                 8320,
                 8320,
                 8320,
-                8267,
-                8271,
+                8523,
+                8527,
                 8320,
                 8320,
                 8320,
@@ -65994,13 +66022,13 @@
                 8320,
                 8320,
                 8320,
-                8274,
-                8271,
-                8277,
-                8270,
-                8260,
+                8530,
+                8527,
+                8533,
+                8526,
+                8516,
                 8320,
-                8241,
+                8497,
                 8320,
                 8320,
                 8320,
@@ -66027,14 +66055,14 @@
                 8320,
                 8320,
                 8320,
-                8272,
-                8241,
-                8224,
-                8278,
-                8275,
-                8224,
-                8272,
-                8242,
+                8528,
+                8497,
+                8480,
+                8534,
+                8531,
+                8480,
+                8528,
+                8498,
                 8320,
                 8320,
                 8320,
@@ -66052,30 +66080,30 @@
             "after": {
               "0": [
                 8320,
-                8259,
-                8274,
-                8265,
-                8275,
-                8276,
-                8271,
-                8258,
-                8257,
-                8268,
+                8515,
+                8530,
+                8521,
+                8531,
+                8532,
+                8527,
+                8514,
+                8513,
+                8524,
                 8320,
                 8320,
                 8320,
                 8320,
                 8320,
-                8249,
-                8249,
+                8505,
+                8505,
                 8320,
                 8320,
                 8320,
-                8260,
-                8257,
-                8278,
-                8265,
-                8260,
+                8516,
+                8513,
+                8534,
+                8521,
+                8516,
                 8320,
                 8320,
                 8320,
@@ -66100,8 +66128,8 @@
                 8320,
                 8320,
                 8320,
-                8267,
-                8271,
+                8523,
+                8527,
                 8320,
                 8320,
                 8320,
@@ -66132,13 +66160,13 @@
                 8320,
                 8320,
                 8320,
-                8274,
-                8271,
-                8277,
-                8270,
-                8260,
+                8530,
+                8527,
+                8533,
+                8526,
+                8516,
                 8320,
-                8241,
+                8497,
                 8320,
                 8320,
                 8320,
@@ -66165,14 +66193,14 @@
                 8320,
                 8320,
                 8320,
-                8272,
-                8241,
-                8224,
-                8278,
-                8275,
-                8224,
-                8272,
-                8242,
+                8528,
+                8497,
+                8480,
+                8534,
+                8531,
+                8480,
+                8528,
+                8498,
                 8320,
                 8320,
                 8320,
@@ -67503,7 +67531,12 @@
         {
           "check": "native PPU capture is populated",
           "passed": true,
-          "details": "mode2-controls"
+          "details": {
+            "name": "mode2-controls",
+            "colors": 7,
+            "light_guide_pixels": 2616,
+            "dark_card_pixels": 44488
+          }
         },
         {
           "check": "guide page contains exact native text",
@@ -68055,7 +68088,12 @@
         {
           "check": "native PPU capture is populated",
           "passed": true,
-          "details": "mode2-specials"
+          "details": {
+            "name": "mode2-specials",
+            "colors": 7,
+            "light_guide_pixels": 2820,
+            "dark_card_pixels": 44284
+          }
         },
         {
           "check": "guide page contains exact native text",
@@ -68720,12 +68758,12 @@
             "before": {
               "0": [
                 8320,
-                8270,
-                8261,
-                8263,
-                8263,
-                8261,
-                8274,
+                8526,
+                8517,
+                8519,
+                8519,
+                8517,
+                8530,
                 8320,
                 8320,
                 8320,
@@ -68734,16 +68772,16 @@
                 8320,
                 8320,
                 8320,
-                8249,
-                8249,
+                8505,
+                8505,
                 8320,
                 8320,
                 8320,
-                8260,
-                8257,
-                8278,
-                8265,
-                8260,
+                8516,
+                8513,
+                8534,
+                8521,
+                8516,
                 8320,
                 8320,
                 8320,
@@ -68768,8 +68806,8 @@
                 8320,
                 8320,
                 8320,
-                8267,
-                8271,
+                8523,
+                8527,
                 8320,
                 8320,
                 8320,
@@ -68800,13 +68838,13 @@
                 8320,
                 8320,
                 8320,
-                8274,
-                8271,
-                8277,
-                8270,
-                8260,
+                8530,
+                8527,
+                8533,
+                8526,
+                8516,
                 8320,
-                8241,
+                8497,
                 8320,
                 8320,
                 8320,
@@ -68833,14 +68871,14 @@
                 8320,
                 8320,
                 8320,
-                8276,
-                8274,
-                8257,
-                8265,
-                8270,
-                8265,
-                8270,
-                8263,
+                8532,
+                8530,
+                8513,
+                8521,
+                8526,
+                8521,
+                8526,
+                8519,
                 8320,
                 8320,
                 8320,
@@ -68858,12 +68896,12 @@
             "after": {
               "0": [
                 8320,
-                8270,
-                8261,
-                8263,
-                8263,
-                8261,
-                8274,
+                8526,
+                8517,
+                8519,
+                8519,
+                8517,
+                8530,
                 8320,
                 8320,
                 8320,
@@ -68872,16 +68910,16 @@
                 8320,
                 8320,
                 8320,
-                8249,
-                8249,
+                8505,
+                8505,
                 8320,
                 8320,
                 8320,
-                8260,
-                8257,
-                8278,
-                8265,
-                8260,
+                8516,
+                8513,
+                8534,
+                8521,
+                8516,
                 8320,
                 8320,
                 8320,
@@ -68906,8 +68944,8 @@
                 8320,
                 8320,
                 8320,
-                8267,
-                8271,
+                8523,
+                8527,
                 8320,
                 8320,
                 8320,
@@ -68938,13 +68976,13 @@
                 8320,
                 8320,
                 8320,
-                8274,
-                8271,
-                8277,
-                8270,
-                8260,
+                8530,
+                8527,
+                8533,
+                8526,
+                8516,
                 8320,
-                8241,
+                8497,
                 8320,
                 8320,
                 8320,
@@ -68971,14 +69009,14 @@
                 8320,
                 8320,
                 8320,
-                8276,
-                8274,
-                8257,
-                8265,
-                8270,
-                8265,
-                8270,
-                8263,
+                8532,
+                8530,
+                8513,
+                8521,
+                8526,
+                8521,
+                8526,
+                8519,
                 8320,
                 8320,
                 8320,
@@ -117997,7 +118035,12 @@
         {
           "check": "native PPU capture is populated",
           "passed": true,
-          "details": "special-page-00"
+          "details": {
+            "name": "special-page-00",
+            "colors": 7,
+            "light_guide_pixels": 2958,
+            "dark_card_pixels": 44146
+          }
         },
         {
           "check": "cold boot reaches native home",
@@ -129348,7 +129391,12 @@
         {
           "check": "native PPU capture is populated",
           "passed": true,
-          "details": "special-page-11"
+          "details": {
+            "name": "special-page-11",
+            "colors": 7,
+            "light_guide_pixels": 2892,
+            "dark_card_pixels": 44212
+          }
         },
         {
           "check": "cold boot reaches native home",
@@ -140046,7 +140094,7 @@
     {
       "check": "native Training suite harness matches current test sources",
       "passed": true,
-      "details": "2dc2731f6041489d6f64a4bfbd61145a349a00e427763637d2525e1ead2417ea"
+      "details": "7cf827fcc848c6204858ab568412e10759980e3678e7a807f47654a32220019d"
     },
     {
       "check": "native Training suite core options are pinned",
@@ -140118,7 +140166,7 @@
             "total": 736,
             "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
             "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-controls.png",
-            "vram_sha256": "7645fc714d7b58191a7bdb5d850300974e7b8c7633e2e77f1c231e84b2696189"
+            "vram_sha256": "21a64247bceef8787f6d0bf83d867402bc0cf004aca586595954997f42b9e6a3"
           },
           "specials": {
             "label": "mode0-specials",
@@ -140126,7 +140174,7 @@
             "total": 736,
             "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n         MOVE LIST 2/2\n\n\n   P1  DAMIAN\n       KERNEL BURST\n       FORWARD PROJECTILE\n   P2  IVO\n       CAPITAL WAVE\n       FORWARD PROJECTILE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
             "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-specials.png",
-            "vram_sha256": "79927e099f6c61df1a21ae386bdb6872a74cf60a278c9071eaf6cd622e0a0d2a"
+            "vram_sha256": "74e844434d94f1d4166dcbb5278e4ac0ae33d629795be09ad2485a2ad8855149"
           },
           "page_history": [
             {
@@ -140147,7 +140195,7 @@
             "total": 736,
             "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
             "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-controls.png",
-            "vram_sha256": "988a9245dcf77353be1e5fe05b1c7ba76be08dded8e271a32a78ad4734c60fe6"
+            "vram_sha256": "8c72e124ac1840b4457962450572cf09b12059e21f47cc12d305ba106959c0a4"
           },
           "specials": {
             "label": "mode1-specials",
@@ -140155,7 +140203,7 @@
             "total": 736,
             "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n         MOVE LIST 2/2\n\n\n   P1  CRISTOBAL\n       ATOMIC PUSH\n       ADVANCING STRIKE\n   P2  DAVID\n       AUDIT STRIKE\n       RISING STRIKE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
             "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-specials.png",
-            "vram_sha256": "499eaafba2ad5f0c42e8b83a860ad700b8730f8c4addc39bad5782a55a103244"
+            "vram_sha256": "874a3c90d8c35d3dee6dffbc750af50ccb2b6cfc1e4a2e88737b933738492ce9"
           },
           "page_history": [
             {
@@ -140176,7 +140224,7 @@
             "total": 736,
             "text": " NEGGER        99   DAVID\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
             "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-controls.png",
-            "vram_sha256": "95568f0c4ade01abd1baed17f82d909cf0f9c5b27e0181309b38c96ace6ac625"
+            "vram_sha256": "c0df2aafcc177b197677dc9d5637694804f22d30f390972f0fac85188db30ce2"
           },
           "specials": {
             "label": "mode2-specials",
@@ -140184,7 +140232,7 @@
             "total": 736,
             "text": " NEGGER        99   DAVID\n               KO\n             ROUND 1\n\n            TRAINING\n\n         MOVE LIST 2/2\n\n\n   P1  NEGGER\n       MACRO SHOCK\n       LOW SHOCKWAVE\n   P2  DAVID\n       AUDIT STRIKE\n       RISING STRIKE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
             "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-specials.png",
-            "vram_sha256": "1676d80734938d9e0c0ab3bc42a0678f81ffb15f457724675f9bfe7a54546950"
+            "vram_sha256": "90785fd35f53ac04142f5849771655180901d534e669973916957f297a11c842"
           },
           "page_history": [
             {
@@ -140210,7 +140258,7 @@
           "total": 736,
           "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-controls.png",
-          "vram_sha256": "7645fc714d7b58191a7bdb5d850300974e7b8c7633e2e77f1c231e84b2696189"
+          "vram_sha256": "21a64247bceef8787f6d0bf83d867402bc0cf004aca586595954997f42b9e6a3"
         },
         "specials": {
           "label": "mode0-specials",
@@ -140218,7 +140266,7 @@
           "total": 736,
           "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n         MOVE LIST 2/2\n\n\n   P1  DAMIAN\n       KERNEL BURST\n       FORWARD PROJECTILE\n   P2  IVO\n       CAPITAL WAVE\n       FORWARD PROJECTILE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-specials.png",
-          "vram_sha256": "79927e099f6c61df1a21ae386bdb6872a74cf60a278c9071eaf6cd622e0a0d2a"
+          "vram_sha256": "74e844434d94f1d4166dcbb5278e4ac0ae33d629795be09ad2485a2ad8855149"
         },
         "page_history": [
           {
@@ -140260,7 +140308,7 @@
         "total": 736,
         "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
         "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-controls.png",
-        "vram_sha256": "7645fc714d7b58191a7bdb5d850300974e7b8c7633e2e77f1c231e84b2696189"
+        "vram_sha256": "21a64247bceef8787f6d0bf83d867402bc0cf004aca586595954997f42b9e6a3"
       }
     },
     {
@@ -140284,7 +140332,7 @@
     {
       "check": "native Training mode coverage mode 0 controls VRAM digest is a SHA-256 digest",
       "passed": true,
-      "details": "7645fc714d7b58191a7bdb5d850300974e7b8c7633e2e77f1c231e84b2696189"
+      "details": "21a64247bceef8787f6d0bf83d867402bc0cf004aca586595954997f42b9e6a3"
     },
     {
       "check": "native Training mode coverage mode 0 specials card exists",
@@ -140295,7 +140343,7 @@
         "total": 736,
         "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n         MOVE LIST 2/2\n\n\n   P1  DAMIAN\n       KERNEL BURST\n       FORWARD PROJECTILE\n   P2  IVO\n       CAPITAL WAVE\n       FORWARD PROJECTILE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
         "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-specials.png",
-        "vram_sha256": "79927e099f6c61df1a21ae386bdb6872a74cf60a278c9071eaf6cd622e0a0d2a"
+        "vram_sha256": "74e844434d94f1d4166dcbb5278e4ac0ae33d629795be09ad2485a2ad8855149"
       }
     },
     {
@@ -140319,7 +140367,7 @@
     {
       "check": "native Training mode coverage mode 0 specials VRAM digest is a SHA-256 digest",
       "passed": true,
-      "details": "79927e099f6c61df1a21ae386bdb6872a74cf60a278c9071eaf6cd622e0a0d2a"
+      "details": "74e844434d94f1d4166dcbb5278e4ac0ae33d629795be09ad2485a2ad8855149"
     },
     {
       "check": "native Training mode coverage page history exists",
@@ -140366,7 +140414,7 @@
           "total": 736,
           "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-controls.png",
-          "vram_sha256": "988a9245dcf77353be1e5fe05b1c7ba76be08dded8e271a32a78ad4734c60fe6"
+          "vram_sha256": "8c72e124ac1840b4457962450572cf09b12059e21f47cc12d305ba106959c0a4"
         },
         "specials": {
           "label": "mode1-specials",
@@ -140374,7 +140422,7 @@
           "total": 736,
           "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n         MOVE LIST 2/2\n\n\n   P1  CRISTOBAL\n       ATOMIC PUSH\n       ADVANCING STRIKE\n   P2  DAVID\n       AUDIT STRIKE\n       RISING STRIKE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-specials.png",
-          "vram_sha256": "499eaafba2ad5f0c42e8b83a860ad700b8730f8c4addc39bad5782a55a103244"
+          "vram_sha256": "874a3c90d8c35d3dee6dffbc750af50ccb2b6cfc1e4a2e88737b933738492ce9"
         },
         "page_history": [
           {
@@ -140416,7 +140464,7 @@
         "total": 736,
         "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
         "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-controls.png",
-        "vram_sha256": "988a9245dcf77353be1e5fe05b1c7ba76be08dded8e271a32a78ad4734c60fe6"
+        "vram_sha256": "8c72e124ac1840b4457962450572cf09b12059e21f47cc12d305ba106959c0a4"
       }
     },
     {
@@ -140440,7 +140488,7 @@
     {
       "check": "native Training mode coverage mode 1 controls VRAM digest is a SHA-256 digest",
       "passed": true,
-      "details": "988a9245dcf77353be1e5fe05b1c7ba76be08dded8e271a32a78ad4734c60fe6"
+      "details": "8c72e124ac1840b4457962450572cf09b12059e21f47cc12d305ba106959c0a4"
     },
     {
       "check": "native Training mode coverage mode 1 specials card exists",
@@ -140451,7 +140499,7 @@
         "total": 736,
         "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n         MOVE LIST 2/2\n\n\n   P1  CRISTOBAL\n       ATOMIC PUSH\n       ADVANCING STRIKE\n   P2  DAVID\n       AUDIT STRIKE\n       RISING STRIKE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
         "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-specials.png",
-        "vram_sha256": "499eaafba2ad5f0c42e8b83a860ad700b8730f8c4addc39bad5782a55a103244"
+        "vram_sha256": "874a3c90d8c35d3dee6dffbc750af50ccb2b6cfc1e4a2e88737b933738492ce9"
       }
     },
     {
@@ -140475,7 +140523,7 @@
     {
       "check": "native Training mode coverage mode 1 specials VRAM digest is a SHA-256 digest",
       "passed": true,
-      "details": "499eaafba2ad5f0c42e8b83a860ad700b8730f8c4addc39bad5782a55a103244"
+      "details": "874a3c90d8c35d3dee6dffbc750af50ccb2b6cfc1e4a2e88737b933738492ce9"
     },
     {
       "check": "native Training mode coverage page history exists",
@@ -140522,7 +140570,7 @@
           "total": 736,
           "text": " NEGGER        99   DAVID\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-controls.png",
-          "vram_sha256": "95568f0c4ade01abd1baed17f82d909cf0f9c5b27e0181309b38c96ace6ac625"
+          "vram_sha256": "c0df2aafcc177b197677dc9d5637694804f22d30f390972f0fac85188db30ce2"
         },
         "specials": {
           "label": "mode2-specials",
@@ -140530,7 +140578,7 @@
           "total": 736,
           "text": " NEGGER        99   DAVID\n               KO\n             ROUND 1\n\n            TRAINING\n\n         MOVE LIST 2/2\n\n\n   P1  NEGGER\n       MACRO SHOCK\n       LOW SHOCKWAVE\n   P2  DAVID\n       AUDIT STRIKE\n       RISING STRIKE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-specials.png",
-          "vram_sha256": "1676d80734938d9e0c0ab3bc42a0678f81ffb15f457724675f9bfe7a54546950"
+          "vram_sha256": "90785fd35f53ac04142f5849771655180901d534e669973916957f297a11c842"
         },
         "page_history": [
           {
@@ -140572,7 +140620,7 @@
         "total": 736,
         "text": " NEGGER        99   DAVID\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
         "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-controls.png",
-        "vram_sha256": "95568f0c4ade01abd1baed17f82d909cf0f9c5b27e0181309b38c96ace6ac625"
+        "vram_sha256": "c0df2aafcc177b197677dc9d5637694804f22d30f390972f0fac85188db30ce2"
       }
     },
     {
@@ -140596,7 +140644,7 @@
     {
       "check": "native Training mode coverage mode 2 controls VRAM digest is a SHA-256 digest",
       "passed": true,
-      "details": "95568f0c4ade01abd1baed17f82d909cf0f9c5b27e0181309b38c96ace6ac625"
+      "details": "c0df2aafcc177b197677dc9d5637694804f22d30f390972f0fac85188db30ce2"
     },
     {
       "check": "native Training mode coverage mode 2 specials card exists",
@@ -140607,7 +140655,7 @@
         "total": 736,
         "text": " NEGGER        99   DAVID\n               KO\n             ROUND 1\n\n            TRAINING\n\n         MOVE LIST 2/2\n\n\n   P1  NEGGER\n       MACRO SHOCK\n       LOW SHOCKWAVE\n   P2  DAVID\n       AUDIT STRIKE\n       RISING STRIKE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
         "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-specials.png",
-        "vram_sha256": "1676d80734938d9e0c0ab3bc42a0678f81ffb15f457724675f9bfe7a54546950"
+        "vram_sha256": "90785fd35f53ac04142f5849771655180901d534e669973916957f297a11c842"
       }
     },
     {
@@ -140631,7 +140679,7 @@
     {
       "check": "native Training mode coverage mode 2 specials VRAM digest is a SHA-256 digest",
       "passed": true,
-      "details": "1676d80734938d9e0c0ab3bc42a0678f81ffb15f457724675f9bfe7a54546950"
+      "details": "90785fd35f53ac04142f5849771655180901d534e669973916957f297a11c842"
     },
     {
       "check": "native Training mode coverage page history exists",
@@ -191068,7 +191116,7 @@
     {
       "check": "exact-ROM suite is complete: presentation-test-report.json",
       "passed": true,
-      "details": 215
+      "details": 1756
     },
     {
       "check": "exact-ROM suite is complete: input-test-report.json",
@@ -191146,22 +191194,22 @@
       "details": null
     },
     {
-      "check": "source provenance hash: assets/art/characters/00-damian/atlas.png",
+      "check": "source provenance hash: assets/art/characters/00-damian/atlas-v4.png",
       "passed": true,
       "details": null
     },
     {
-      "check": "source provenance hash: assets/art/characters/00-damian/animation-motion.png",
+      "check": "source provenance hash: assets/art/characters/00-damian/animation-motion-v4.png",
       "passed": true,
       "details": null
     },
     {
-      "check": "source provenance hash: assets/art/characters/00-damian/animation-actions.png",
+      "check": "source provenance hash: assets/art/characters/00-damian/animation-actions-v4.png",
       "passed": true,
       "details": null
     },
     {
-      "check": "source provenance hash: assets/art/characters/00-damian/animation-airborne.png",
+      "check": "source provenance hash: assets/art/characters/00-damian/animation-airborne-v4.png",
       "passed": true,
       "details": null
     },
@@ -192434,8 +192482,8 @@
       "details": null
     }
   ],
-  "version": "0.8.1",
-  "rom_sha256": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466",
+  "version": "0.9.0",
+  "rom_sha256": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639",
   "release_evidence": {
     "matchups": {
       "cases": 288,
@@ -192457,8 +192505,8 @@
     },
     "fresh_build": {
       "generated_assets": 214,
-      "source_commit": "fe05e5fd1391a1db20f1b66f1e9f6e699445e77a",
-      "source_tree": "46e1af160ffb8ab6cb768e3d9deec1352d77ae83"
+      "source_commit": "76f0a08a7562800df01507db83c6877745c3bdcf",
+      "source_tree": "f37852da57a42d2d6819374db5d23278d12587a5"
     },
     "training": {
       "checks": 622,
@@ -192467,11 +192515,11 @@
       "captures": 8
     }
   },
-  "native_suite_checks": 30641,
+  "native_suite_checks": 32182,
   "suites": {
     "test-report.json": 2595,
     "character-test-report.json": 18081,
-    "presentation-test-report.json": 215,
+    "presentation-test-report.json": 1756,
     "input-test-report.json": 997,
     "stage-test-report.json": 8131,
     "training-test-report.json": 622

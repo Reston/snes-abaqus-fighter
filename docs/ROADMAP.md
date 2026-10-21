@@ -4,7 +4,7 @@ The active public-release target and evidence gates are in
 [PUBLIC-RELEASE.md](PUBLIC-RELEASE.md). Treat this roadmap as the work backlog;
 the release gates decide when the public candidate is actually ready.
 
-The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass set the cartoon arcade direction. v0.3 introduced twelve individual sixteen-pose atlases and likeness correction. v0.4 standardized the 96x80 physical scale and rebuilt the presentation. v0.5.0 adds animation, simpler menus and buffered inputs. v0.5.1 tightens contact, hit-confirm and combo rules, clears live-fight instructions, adds result scores and corrects emulator scaling. The v0.6.0 source integration adds the final airborne, throw, knockdown and wake frame range and combat flow. The v0.6.1 CPU-correctness pass has four-suite and pinned compatibility evidence on one ROM SHA, with public gates still open. v0.7.0 stage/effect integration has a verified ROM, a 214-check archive audit and reproducible development packaging. The historical v0.7.1 package has a 6,153-check audit. v0.8.0 remains the historical pause-guide and Training baseline. v0.8.1 is the current verified Reston art snapshot; its six native and expanded technical evidence pass, its 7,471-check package audit passes, and human/public gates remain open.
+The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass set the cartoon arcade direction. v0.3 introduced twelve individual sixteen-pose atlases and likeness correction. v0.4 standardized the 96x80 physical scale and rebuilt the presentation. v0.5.0 adds animation, simpler menus and buffered inputs. v0.5.1 tightens contact, hit-confirm and combo rules, clears live-fight instructions, adds result scores and corrects emulator scaling. The v0.6.0 source integration adds the final airborne, throw, knockdown and wake frame range and combat flow. The v0.6.1 CPU-correctness pass has four-suite and pinned compatibility evidence on one ROM SHA, with public gates still open. v0.7.0 stage/effect integration has a verified ROM, a 214-check archive audit and reproducible development packaging. The historical v0.7.1 package has a 6,153-check audit. v0.8.0 remains the historical pause-guide and Training baseline. v0.8.1 is the last verified Reston art snapshot; its six native and expanded technical evidence pass, its 7,471-check package audit passes, and human/public gates remain open. The v0.9.0 presentation correction pass has complete native evidence and a packaged technical archive; final archive metadata and human/public gates remain open.
 
 ## v0.5 baseline
 
@@ -80,7 +80,7 @@ v0.5.1 baseline:
 
 ## v0.6.1 CPU-correctness pass
 
-The current verified source is ROM SHA256
+The historical verified source is ROM SHA256
 `945540153834953a1da1c3dd401ef203443da55aee37d916289a8a6c0c93aeee`. It keeps
 the v0.6.0 art, character profiles and native ABI unchanged while correcting
 CPU timing and reaction cases:
@@ -217,9 +217,9 @@ real-console and branding review stay open. The offline package passes 7,471
 technical audit checks; this section records historical evidence, not public
 approval.
 
-## v0.8.1 verified Reston v4 art integration
+## v0.8.1 historical verified Reston v4 art integration
 
-The verified source freeze is commit
+The historical verified source freeze is commit
 `fe05e5fd1391a1db20f1b66f1e9f6e699445e77a`, tree
 `46e1af160ffb8ab6cb768e3d9deec1352d77ae83`. Its 4 MiB ROM is SHA256
 `76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`, header
@@ -239,12 +239,52 @@ confirmed the revised short buzz cut looks closer; the
 likeness and public-use consent remain pending. Native C/ASM, controls,
 gameplay and audio are unchanged.
 
-All six native reports pass on this SHA: 2,595 gameplay, 18,081 roster, 215
+The historical six native reports pass on this SHA: 2,595 gameplay, 18,081 roster, 215
 presentation, 997 focused-input, 8,131 stage and 622 Training checks (30,641
 total). Fresh committed export, 288-by-600 matchup/stage/policy/replay/symmetry,
 pinned bsnes, bounded independent and three-mode endurance evidence also pass.
-The v0.8.1 package and its 7,471-check audit pass; the v0.8.0 reports and
+The historical v0.8.1 package and its 7,471-check audit pass; the v0.8.0 reports and
 package remain historical evidence.
+
+## v0.9.0 packaged presentation correction (public review pending)
+
+The live review of the historical v0.8.1 build identified four presentation
+defects: clipped faces in selection portraits, a Damian likeness mismatch, a
+weak arena-picker composition and stage pixels showing through HUD/result
+lettering. The working-tree pass addresses them without changing combat,
+controls, audio, trace offsets, memory layout or the Fighter/Wave ABI.
+
+- Selection cards and 64x80 profile portraits share a contained,
+  head-anchored composition. `portrait_framing` records the source crop, head
+  anchor, margin and scale for both 32x40 and 64x80 targets.
+- Arena thumbnails contain complete stage art inside 60x52 boxes at
+  `x18..77`, `y42..93` plus 56 pixels per row. The native three-row cursor stays
+  at `x8..247`, `y40..95` plus 56 pixels per row, and labels use a separate
+  column.
+- FIGHT and RESULT map ASCII `32..127` to opaque glyphs `256..383`; round
+  marker tiles `147/148` use the opaque panel background at palette index 1.
+  Title, roster and arena menu lettering retains the original ASCII bank.
+- Damian's four v4 source PNGs remain under `assets/art/characters/00-damian/`
+  with provenance. The approved `neutral-height` conversion uses the 311-pixel
+  reference neutral and pinned per-atlas factors; its native idle is 69 while
+  the baseline, palette and physical scale remain locked. The corrected contract
+  hash is `00f90a6765904c546284832d399c1a5ec581f08fed64a7f7bedc6d9df985e261`.
+  The other eleven fighter banks and all twelve palettes remain unchanged.
+
+The corrected candidate source freeze is commit
+`76f0a08a7562800df01507db83c6877745c3bdcf`, tree
+`f37852da57a42d2d6819374db5d23278d12587a5`. Its ROM is
+`bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639` (header
+checksum `6D41`). All six native reports pass on this SHA: 2,595 gameplay,
+18,081 roster, 1,756 presentation, 997 focused-input, 8,131 stage and 622
+Training checks (32,182 total). The 288-by-600 matchup/stage/policy/replay/
+symmetry evidence, pinned bsnes smoke plus bounded 48-by-600 run, endurance of
+216,356 live frames in each of three modes, fresh 214-asset export in 75.078
+seconds and
+`validate_release_evidence` also pass; `Test.cmd` exits 0. The [v0.9.0 Windows
+package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip) is available and its
+archive audit passes 7,471 checks. The native all64 visual review accepted the corrected Damian set for
+integration; human likeness/consent and public-release review remain open.
 
 ## Next combat pass
 
@@ -262,15 +302,19 @@ package remain historical evidence.
 ## Release-quality validation
 
 - Keep running gameplay, roster, presentation, focused input, stage and
-  Training suites after changes. The verified v0.8.1 reports all match ROM SHA
+  Training suites after changes. The historical v0.8.1 reports all match ROM SHA
   `76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466` and record
   30,641 checks; matching compatibility, matchup, bounded independent-combat,
-  endurance and fresh-source evidence also pass. The package and 7,471-check
-  archive audit pass. Human playtesting, controller and public-release review
-  remain open. The user selected an emulator-first release; original-console
-  support stays unverified future work. Use [PLAYTEST.md](PLAYTEST.md) for the
-  human review route and [review-feedback.json](review-feedback.json) for the
-  actual platform, gameplay and brief-listening responses.
+  endurance and fresh-source evidence also pass. The historical package and
+  7,471-check archive audit pass. The v0.9.0 reports and extended evidence pass
+  32,182 native checks on the corrected SHA; the [v0.9.0 Windows
+  package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip) is available and its
+  archive audit passes 7,471 checks. Human
+  playtesting, controller and public-release review remain open. The user
+  selected an emulator-first release; original-console support stays unverified
+  future work. Use [PLAYTEST.md](PLAYTEST.md) for the human review route and
+  [review-feedback.json](review-feedback.json) for the actual platform,
+  presentation and brief-listening responses.
 - Playtest with two controllers and several keyboard layouts, including keyboard rollover constraints, SOCD edge cases, motion buffering and hitstop inputs.
 - Profile worst-case combat frames, eight-bank animation uploads, resident
   audio effects, dynamic stage uploads, `STAT77`/OBJ overflow and vblank use
@@ -288,7 +332,8 @@ captures, mixed-cue comparisons and measured score repetition on the same ROM.
 The user heard the short title/impact/special replay with no issue noticed;
 full four-score, cue-clarity and busy-exchange judgments remain open. The pack
 gives that review concrete material without changing the cartridge. The current
-[playtest guide](PLAYTEST.md#review-already-received) distinguishes the actual
-Reston response from unreviewed gameplay, audio, equipment and public-use gates.
+[playtest guide](PLAYTEST.md#review-already-received) records the live v0.8.1
+presentation defects and distinguishes the candidate correction from open
+gameplay, audio, equipment and public-use gates.
 
 Commercial fighting-game polish requires repeated art, animation, audio, balance and QA passes. The project is organized so those passes can be reviewed and versioned without replacing the native engine.

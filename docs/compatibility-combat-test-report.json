@@ -3,7 +3,7 @@
   "scope": "independent bsnes2014 Accuracy bounded combat compatibility",
   "pinned_core": true,
   "rom": {
-    "sha256": "76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466",
+    "sha256": "bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639",
     "bytes": 4194304
   },
   "matrix": {
@@ -26,7 +26,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.991205700003775,
+      "elapsed_seconds": 4.798771499990835,
       "initial": {
         "fighter_id1": 0,
         "fighter_id2": 1,
@@ -35,9 +35,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "e7bfc19fcb3d4ed109c44a029165ddadedd450c132ad7a8081a72c5e18a45187",
-          "distinct_sampled_rgb": 1040,
-          "nonzero_bytes": 337828,
+          "sha256_rgb": "cfe606f0fb6cb1868e04ad82b71101027541dc74e23d8fc5529b4b302209f0c1",
+          "distinct_sampled_rgb": 1001,
+          "nonzero_bytes": 338688,
           "nonblank": true
         }
       },
@@ -219,9 +219,9 @@
         ]
       },
       "audio": {
-        "samples": 1036282,
-        "energy": 235133101994,
-        "peak": 3770
+        "samples": 1036256,
+        "energy": 233943805711,
+        "peak": 3726
       },
       "captures": [],
       "passed": true
@@ -232,7 +232,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 6.718746499995177,
+      "elapsed_seconds": 6.1664776999969035,
       "initial": {
         "fighter_id1": 0,
         "fighter_id2": 1,
@@ -241,9 +241,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "ab514e65d6dc8ab048db3d2795b3af0a5e97a608371e3cc36eef49e3ec712b91",
-          "distinct_sampled_rgb": 963,
-          "nonzero_bytes": 330838,
+          "sha256_rgb": "481a21d9d56fbeaa58ca6ad5c1d6c6827e3468cb8a3c6ec7063ec6e01f30f8b8",
+          "distinct_sampled_rgb": 946,
+          "nonzero_bytes": 330924,
           "nonblank": true
         }
       },
@@ -438,7 +438,7 @@
       },
       "audio": {
         "samples": 1063978,
-        "energy": 230198564888,
+        "energy": 230154942908,
         "peak": 3640
       },
       "captures": [],
@@ -450,7 +450,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 6.993440599995665,
+      "elapsed_seconds": 6.545705700002145,
       "initial": {
         "fighter_id1": 1,
         "fighter_id2": 2,
@@ -459,9 +459,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "1c797b056d5ddea9ac7706190f8039bbfe5e5dc4bb01f968d0649be6f03ff2fc",
-          "distinct_sampled_rgb": 1037,
-          "nonzero_bytes": 330374,
+          "sha256_rgb": "452efcdbb5b852a80df6108aa08c12be068291285c87f7bcdf24f7671ac6a9a9",
+          "distinct_sampled_rgb": 1004,
+          "nonzero_bytes": 331054,
           "nonblank": true
         }
       },
@@ -638,8 +638,8 @@
       },
       "audio": {
         "samples": 1147146,
-        "energy": 258788652417,
-        "peak": 3980
+        "energy": 258519224632,
+        "peak": 3904
       },
       "captures": [],
       "passed": true
@@ -650,7 +650,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 6.528074599998945,
+      "elapsed_seconds": 6.497436099991319,
       "initial": {
         "fighter_id1": 1,
         "fighter_id2": 2,
@@ -659,9 +659,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "2c96c1283223480a30a85b14582c6746780115e804d1bb102a9e8223d030b77a",
-          "distinct_sampled_rgb": 1029,
-          "nonzero_bytes": 338078,
+          "sha256_rgb": "faa67fe9c42f14539b913283656a9be813b8ede2ad718f3e25b399f09ae367a6",
+          "distinct_sampled_rgb": 993,
+          "nonzero_bytes": 339166,
           "nonblank": true
         }
       },
@@ -854,9 +854,9 @@
         ]
       },
       "audio": {
-        "samples": 1091700,
-        "energy": 250495774802,
-        "peak": 3656
+        "samples": 1091724,
+        "energy": 250275284592,
+        "peak": 3716
       },
       "captures": [],
       "passed": true
@@ -867,7 +867,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 6.871551399999589,
+      "elapsed_seconds": 6.70395430001372,
       "initial": {
         "fighter_id1": 2,
         "fighter_id2": 3,
@@ -876,8 +876,8 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "840815c868bf56745d3115cb5272b09535c334f14b3280ef3aaa230527b8b333",
-          "distinct_sampled_rgb": 975,
+          "sha256_rgb": "4b5b2814827ee4151db3662e61204cc167f67e81ee34fdf81991ead2613dfea3",
+          "distinct_sampled_rgb": 960,
           "nonzero_bytes": 332036,
           "nonblank": true
         }
@@ -1057,8 +1057,8 @@
       },
       "audio": {
         "samples": 1174868,
-        "energy": 264275880654,
-        "peak": 3736
+        "energy": 265012177968,
+        "peak": 3737
       },
       "captures": [],
       "passed": true
@@ -1069,7 +1069,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 7.505395899999712,
+      "elapsed_seconds": 7.281795799994143,
       "initial": {
         "fighter_id1": 2,
         "fighter_id2": 3,
@@ -1078,9 +1078,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "fdd18ca5bc164939498a2d6a45c9538176457505fb681865e1da6eeee3b64774",
-          "distinct_sampled_rgb": 1045,
-          "nonzero_bytes": 331236,
+          "sha256_rgb": "745d56209e82efd0cf2e5374fbcaa7813a24ac09db0e9b9e4f103bd344374dca",
+          "distinct_sampled_rgb": 1013,
+          "nonzero_bytes": 332008,
           "nonblank": true
         }
       },
@@ -1244,8 +1244,8 @@
       },
       "audio": {
         "samples": 1202590,
-        "energy": 272052856753,
-        "peak": 3609
+        "energy": 272305494244,
+        "peak": 3579
       },
       "captures": [],
       "passed": true
@@ -1256,7 +1256,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 7.533620700000029,
+      "elapsed_seconds": 7.184544599993387,
       "initial": {
         "fighter_id1": 3,
         "fighter_id2": 4,
@@ -1265,9 +1265,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "d106fc1ea79c294e6e8fe15a9644c77afb61b289fab0fb8009a785552746103d",
-          "distinct_sampled_rgb": 1033,
-          "nonzero_bytes": 339326,
+          "sha256_rgb": "30cce3043650e06ce257b50baf8c13d4a2ac09d03299b599982aad30de138c18",
+          "distinct_sampled_rgb": 996,
+          "nonzero_bytes": 340238,
           "nonblank": true
         }
       },
@@ -1435,8 +1435,8 @@
       },
       "audio": {
         "samples": 1202624,
-        "energy": 261898487020,
-        "peak": 3685
+        "energy": 261415643032,
+        "peak": 3493
       },
       "captures": [],
       "passed": true
@@ -1447,7 +1447,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 7.5399471999990055,
+      "elapsed_seconds": 7.2066197999956785,
       "initial": {
         "fighter_id1": 3,
         "fighter_id2": 4,
@@ -1456,8 +1456,8 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "25c29350cb45a9630e1c3dcc360bc200146c370c6d3401d78e7bcf2ae1e199bd",
-          "distinct_sampled_rgb": 977,
+          "sha256_rgb": "468d7bfedc0309fcc3079552d49a89364f8903b313d78aea8d9a188a49126122",
+          "distinct_sampled_rgb": 961,
           "nonzero_bytes": 332320,
           "nonblank": true
         }
@@ -1490,13 +1490,13 @@
           {
             "3": 22,
             "5": 8,
-            "16": 55,
+            "16": 56,
             "17": 55,
             "18": 4,
             "20": 55,
             "21": 42,
             "22": 34,
-            "23": 14,
+            "23": 13,
             "28": 10,
             "29": 8,
             "30": 16,
@@ -1645,8 +1645,8 @@
       },
       "audio": {
         "samples": 1230314,
-        "energy": 268053143420,
-        "peak": 3963
+        "energy": 267622764557,
+        "peak": 4258
       },
       "captures": [],
       "passed": true
@@ -1657,7 +1657,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 7.90460190000158,
+      "elapsed_seconds": 7.475586200001999,
       "initial": {
         "fighter_id1": 4,
         "fighter_id2": 5,
@@ -1666,9 +1666,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "6de008a9993d8ca9ce7d17643f01a3c8432f95845c7d16eafa75bab51820114a",
-          "distinct_sampled_rgb": 1040,
-          "nonzero_bytes": 331888,
+          "sha256_rgb": "480021284b1f1cb4c108814241ead99e561feaa4cf2e967e2de025adc6e78c00",
+          "distinct_sampled_rgb": 1011,
+          "nonzero_bytes": 332528,
           "nonblank": true
         }
       },
@@ -1835,9 +1835,9 @@
         ]
       },
       "audio": {
-        "samples": 1313484,
-        "energy": 288815932797,
-        "peak": 3683
+        "samples": 1313482,
+        "energy": 288768429144,
+        "peak": 3648
       },
       "captures": [],
       "passed": true
@@ -1848,7 +1848,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 7.379602299995895,
+      "elapsed_seconds": 7.084697600002983,
       "initial": {
         "fighter_id1": 4,
         "fighter_id2": 5,
@@ -1857,9 +1857,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "9676b2e018a106db3fd6cccc6bb2af8597b39bc6cfbc2621ce8a497494c709c7",
-          "distinct_sampled_rgb": 1038,
-          "nonzero_bytes": 339748,
+          "sha256_rgb": "f35fdf1beb6b17f4b0eaa8d945083a016fccd5041ef63a3673c8f9322d77f5ea",
+          "distinct_sampled_rgb": 1005,
+          "nonzero_bytes": 340638,
           "nonblank": true
         }
       },
@@ -1891,9 +1891,9 @@
           {
             "10": 22,
             "16": 25,
-            "17": 35,
+            "17": 36,
             "20": 89,
-            "21": 59,
+            "21": 58,
             "22": 24,
             "23": 24,
             "29": 8,
@@ -1921,9 +1921,9 @@
             "17": 63,
             "20": 75,
             "21": 57,
-            "22": 56,
+            "22": 55,
             "23": 18,
-            "28": 13,
+            "28": 14,
             "34": 14,
             "35": 34,
             "48": 26,
@@ -1987,11 +1987,11 @@
       },
       "position": {
         "x_min": [
-          472,
-          1352
+          480,
+          1360
         ],
         "x_max": [
-          2674,
+          2682,
           3186
         ],
         "y_min": [
@@ -2038,9 +2038,9 @@
         ]
       },
       "audio": {
-        "samples": 1258038,
-        "energy": 273196194182,
-        "peak": 4020
+        "samples": 1258068,
+        "energy": 272952193812,
+        "peak": 4013
       },
       "captures": [],
       "passed": true
@@ -2051,7 +2051,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 7.870768200002203,
+      "elapsed_seconds": 5.912599899995257,
       "initial": {
         "fighter_id1": 5,
         "fighter_id2": 6,
@@ -2060,8 +2060,8 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "4a0b5bdb35dd6e80f3a27894f3dad2fcc5e7de63bc9a818e84a1f92f1b42c0f5",
-          "distinct_sampled_rgb": 965,
+          "sha256_rgb": "8e7925a93171e2a55441128d51c414984606f2191e33b0dd6d45ee13249ef6ee",
+          "distinct_sampled_rgb": 948,
           "nonzero_bytes": 330910,
           "nonblank": true
         }
@@ -2243,7 +2243,7 @@
       },
       "audio": {
         "samples": 1341206,
-        "energy": 303034000115,
+        "energy": 304184798119,
         "peak": 3745
       },
       "captures": [],
@@ -2255,7 +2255,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 8.146008399999118,
+      "elapsed_seconds": 5.478026999990107,
       "initial": {
         "fighter_id1": 5,
         "fighter_id2": 6,
@@ -2264,9 +2264,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "d9495c9dc0fcbca758d3e71b81329fc91a99dd5785d37e555984cc65584cddab",
-          "distinct_sampled_rgb": 1035,
-          "nonzero_bytes": 330160,
+          "sha256_rgb": "a7cefe41c09a98acb0d4aa5ce39a3d6fcf5e5bc735edccdb40b4223ee2c7ef5a",
+          "distinct_sampled_rgb": 1006,
+          "nonzero_bytes": 330828,
           "nonblank": true
         }
       },
@@ -2467,8 +2467,8 @@
       },
       "audio": {
         "samples": 1368928,
-        "energy": 303903543733,
-        "peak": 3571
+        "energy": 304840746354,
+        "peak": 3705
       },
       "captures": [],
       "passed": true
@@ -2479,7 +2479,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 8.114942200001678,
+      "elapsed_seconds": 5.467680100002326,
       "initial": {
         "fighter_id1": 6,
         "fighter_id2": 7,
@@ -2488,9 +2488,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "5d0937530d77ef1a475094c6edb651c3ad78ee36898f2a7b59a274eff63cdead",
-          "distinct_sampled_rgb": 1035,
-          "nonzero_bytes": 337544,
+          "sha256_rgb": "699375f9c10947ae518f9b86937ee22755a90f09f55f1a34576af52d35bbcc02",
+          "distinct_sampled_rgb": 997,
+          "nonzero_bytes": 338716,
           "nonblank": true
         }
       },
@@ -2672,9 +2672,9 @@
         ]
       },
       "audio": {
-        "samples": 1368948,
-        "energy": 300636004695,
-        "peak": 3867
+        "samples": 1368930,
+        "energy": 301452849444,
+        "peak": 3843
       },
       "captures": [],
       "passed": true
@@ -2685,7 +2685,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 8.311978600002476,
+      "elapsed_seconds": 5.82028430000355,
       "initial": {
         "fighter_id1": 6,
         "fighter_id2": 7,
@@ -2694,8 +2694,8 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "1c957b4269e5dfbcbcdfcffe56057dcd343cbbd5a502a5e2814d33168418f063",
-          "distinct_sampled_rgb": 975,
+          "sha256_rgb": "02b573cb153e0ccf96894993f4035ef4a756b4c2d1721a0086b520db1623dbc4",
+          "distinct_sampled_rgb": 958,
           "nonzero_bytes": 330828,
           "nonblank": true
         }
@@ -2728,13 +2728,13 @@
           {
             "3": 22,
             "5": 8,
-            "17": 70,
+            "17": 69,
             "18": 13,
-            "20": 69,
-            "21": 54,
+            "20": 66,
+            "21": 55,
             "22": 27,
             "23": 16,
-            "28": 2,
+            "28": 5,
             "29": 8,
             "30": 16,
             "31": 14,
@@ -2781,17 +2781,17 @@
         ],
         "input_mix": [
           {
-            "guard": 96,
-            "idle": 231,
+            "guard": 107,
+            "idle": 228,
             "jump": 6,
-            "move": 348,
+            "move": 351,
             "normal": 15,
             "throw": 12
           },
           {
             "guard": 115,
-            "idle": 180,
-            "move": 408,
+            "idle": 186,
+            "move": 402,
             "special": 12,
             "throw": 24
           }
@@ -2831,7 +2831,7 @@
       "position": {
         "x_min": [
           384,
-          930
+          896
         ],
         "x_max": [
           2069,
@@ -2882,8 +2882,8 @@
       },
       "audio": {
         "samples": 1396650,
-        "energy": 305366460490,
-        "peak": 3621
+        "energy": 307006075172,
+        "peak": 4273
       },
       "captures": [],
       "passed": true
@@ -2894,7 +2894,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 8.843232499995793,
+      "elapsed_seconds": 6.180221500006155,
       "initial": {
         "fighter_id1": 7,
         "fighter_id2": 8,
@@ -2903,9 +2903,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "dea708e13343c0e8b51f066ac596130beb1737105e0ddcb3421d6d16a9307300",
-          "distinct_sampled_rgb": 1050,
-          "nonzero_bytes": 331452,
+          "sha256_rgb": "3aea4867595c099a5a0ad4cffac51fa86cf2b74bb9e6daca3ed1f3132f09273f",
+          "distinct_sampled_rgb": 1013,
+          "nonzero_bytes": 332286,
           "nonblank": true
         }
       },
@@ -3086,8 +3086,8 @@
       },
       "audio": {
         "samples": 1479818,
-        "energy": 330300133067,
-        "peak": 3996
+        "energy": 330963425991,
+        "peak": 4077
       },
       "captures": [],
       "passed": true
@@ -3098,7 +3098,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 8.273196299996926,
+      "elapsed_seconds": 5.670322299993131,
       "initial": {
         "fighter_id1": 7,
         "fighter_id2": 8,
@@ -3107,9 +3107,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "0783ed29bb7179c42cb2b45e8082f259db1a5839c10f11ebd919cc2b55fc7a6b",
-          "distinct_sampled_rgb": 1033,
-          "nonzero_bytes": 339310,
+          "sha256_rgb": "f6baa8ae55da9a703106e5db2429958fdc1cd296fc71e1bf569f672506b216d0",
+          "distinct_sampled_rgb": 993,
+          "nonzero_bytes": 340420,
           "nonblank": true
         }
       },
@@ -3314,9 +3314,9 @@
         ]
       },
       "audio": {
-        "samples": 1424378,
-        "energy": 316793398136,
-        "peak": 3938
+        "samples": 1424402,
+        "energy": 317557061572,
+        "peak": 3998
       },
       "captures": [],
       "passed": true
@@ -3327,7 +3327,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 8.600571499999205,
+      "elapsed_seconds": 5.779301899994607,
       "initial": {
         "fighter_id1": 8,
         "fighter_id2": 9,
@@ -3336,8 +3336,8 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "8917e4b8ee1399e1c1aa73759dff9f386d961a142239aacc1cdfff51e86c515e",
-          "distinct_sampled_rgb": 969,
+          "sha256_rgb": "3f2ea74cae6a7de63506a1d6330efb9823b90b54123b2e24db17c6939106a2c4",
+          "distinct_sampled_rgb": 952,
           "nonzero_bytes": 330436,
           "nonblank": true
         }
@@ -3530,8 +3530,8 @@
       },
       "audio": {
         "samples": 1507542,
-        "energy": 346389150196,
-        "peak": 3665
+        "energy": 346682787995,
+        "peak": 3967
       },
       "captures": [],
       "passed": true
@@ -3542,7 +3542,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 8.77254990000074,
+      "elapsed_seconds": 6.038741600001231,
       "initial": {
         "fighter_id1": 8,
         "fighter_id2": 9,
@@ -3551,9 +3551,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "8fde19333a9256cea37ce3304dadb5e92583dbeea54b2edb3948b7e99025dddd",
-          "distinct_sampled_rgb": 1040,
-          "nonzero_bytes": 329550,
+          "sha256_rgb": "66496f015f7f336a67b9c3aa4e0f796f24e03392fb277eaf46b4d314e5b2a0e7",
+          "distinct_sampled_rgb": 1007,
+          "nonzero_bytes": 330344,
           "nonblank": true
         }
       },
@@ -3743,9 +3743,9 @@
         ]
       },
       "audio": {
-        "samples": 1535264,
-        "energy": 351691571289,
-        "peak": 3520
+        "samples": 1535266,
+        "energy": 351717490930,
+        "peak": 3579
       },
       "captures": [],
       "passed": true
@@ -3756,7 +3756,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 8.521179600000323,
+      "elapsed_seconds": 5.780310300004203,
       "initial": {
         "fighter_id1": 9,
         "fighter_id2": 10,
@@ -3765,9 +3765,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "cbe44560bdfc420d5e409c1c87f9d217430d21cc09be97bb9366be5957500930",
-          "distinct_sampled_rgb": 1027,
-          "nonzero_bytes": 336844,
+          "sha256_rgb": "9c126d51529e2275806c75ad984dccc6fe614c4d65d76fe7c42c5aa895cd20b7",
+          "distinct_sampled_rgb": 993,
+          "nonzero_bytes": 337782,
           "nonblank": true
         }
       },
@@ -3953,9 +3953,9 @@
         ]
       },
       "audio": {
-        "samples": 1535292,
-        "energy": 350802984111,
-        "peak": 3725
+        "samples": 1535294,
+        "energy": 351349988072,
+        "peak": 3860
       },
       "captures": [],
       "passed": true
@@ -3966,7 +3966,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 9.014189800000167,
+      "elapsed_seconds": 5.935026099992683,
       "initial": {
         "fighter_id1": 9,
         "fighter_id2": 10,
@@ -3975,8 +3975,8 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "a04f724e072e0d4910aa14f7d405eba4662d13cf0220532922e3fdc8630f20f6",
-          "distinct_sampled_rgb": 962,
+          "sha256_rgb": "bd2427f112a51c2e3945674a56146f04377c367cacb03e87c73d0a4b07f924f3",
+          "distinct_sampled_rgb": 946,
           "nonzero_bytes": 330094,
           "nonblank": true
         }
@@ -4160,9 +4160,9 @@
         ]
       },
       "audio": {
-        "samples": 1562988,
-        "energy": 352852851222,
-        "peak": 3890
+        "samples": 1562986,
+        "energy": 353516592062,
+        "peak": 3771
       },
       "captures": [],
       "passed": true
@@ -4173,7 +4173,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 9.499320199996873,
+      "elapsed_seconds": 6.085989800005336,
       "initial": {
         "fighter_id1": 10,
         "fighter_id2": 11,
@@ -4182,9 +4182,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "aae349893aa7c8c321b1ba481319f1a4a8121d0a2d029b9398d57bc34e74e960",
-          "distinct_sampled_rgb": 1045,
-          "nonzero_bytes": 330060,
+          "sha256_rgb": "0c6d6f61d51f3bee4cafd72349db5c416da8661f968389b1b48e0c227e57c6e0",
+          "distinct_sampled_rgb": 1014,
+          "nonzero_bytes": 330658,
           "nonblank": true
         }
       },
@@ -4220,8 +4220,8 @@
             "10": 33,
             "13": 51,
             "17": 28,
-            "18": 79,
-            "20": 59,
+            "18": 80,
+            "20": 58,
             "21": 25,
             "22": 21,
             "23": 19,
@@ -4242,9 +4242,9 @@
           {
             "6": 27,
             "10": 33,
-            "18": 131,
+            "18": 132,
             "19": 2,
-            "20": 40,
+            "20": 39,
             "21": 12,
             "22": 7,
             "23": 6,
@@ -4358,8 +4358,8 @@
       },
       "audio": {
         "samples": 1647222,
-        "energy": 378513585506,
-        "peak": 3805
+        "energy": 378339449013,
+        "peak": 3860
       },
       "captures": [],
       "passed": true
@@ -4370,7 +4370,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 8.964644200001203,
+      "elapsed_seconds": 6.111065199991572,
       "initial": {
         "fighter_id1": 10,
         "fighter_id2": 11,
@@ -4379,9 +4379,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "b06c25d88248beae9989518a5d64d019880cdde28e073ba3ad24f9fddb5d3c81",
-          "distinct_sampled_rgb": 1040,
-          "nonzero_bytes": 337828,
+          "sha256_rgb": "99d9da92343be0f868e4c74c670052669ff65f471037dd62143784c92dc83027",
+          "distinct_sampled_rgb": 1007,
+          "nonzero_bytes": 338650,
           "nonblank": true
         }
       },
@@ -4580,8 +4580,8 @@
       },
       "audio": {
         "samples": 1590738,
-        "energy": 353359558059,
-        "peak": 3847
+        "energy": 353570310682,
+        "peak": 3867
       },
       "captures": [],
       "passed": true
@@ -4592,7 +4592,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 9.465706599999976,
+      "elapsed_seconds": 6.558896600006847,
       "initial": {
         "fighter_id1": 11,
         "fighter_id2": 0,
@@ -4601,9 +4601,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "940468bd6b9bab4215035b00f002ec3ee3ea9791b3de7b27e7758e21008ca519",
-          "distinct_sampled_rgb": 961,
-          "nonzero_bytes": 330946,
+          "sha256_rgb": "455afc2d97a72106fc96c72585d509a7d2327ae7846ffcb069f26309b361c0aa",
+          "distinct_sampled_rgb": 951,
+          "nonzero_bytes": 331026,
           "nonblank": true
         }
       },
@@ -4636,10 +4636,10 @@
           {
             "5": 16,
             "10": 11,
-            "18": 83,
+            "18": 85,
             "20": 87,
             "21": 68,
-            "22": 32,
+            "22": 30,
             "23": 18,
             "32": 8,
             "33": 20,
@@ -4658,11 +4658,11 @@
           {
             "5": 8,
             "10": 22,
-            "16": 93,
-            "17": 5,
+            "16": 92,
+            "17": 8,
             "20": 83,
             "21": 61,
-            "22": 53,
+            "22": 51,
             "23": 18,
             "32": 3,
             "33": 9,
@@ -4680,15 +4680,15 @@
         ],
         "input_mix": [
           {
-            "idle": 324,
-            "move": 267,
+            "idle": 327,
+            "move": 264,
             "normal": 6,
             "special": 3,
             "throw": 12
           },
           {
-            "idle": 315,
-            "move": 279,
+            "idle": 318,
+            "move": 276,
             "normal": 6,
             "throw": 9
           }
@@ -4731,7 +4731,7 @@
           872
         ],
         "x_max": [
-          1856,
+          1842,
           3040
         ],
         "y_min": [
@@ -4779,9 +4779,9 @@
         ]
       },
       "audio": {
-        "samples": 1673878,
-        "energy": 373255468667,
-        "peak": 3235
+        "samples": 1673880,
+        "energy": 373313389941,
+        "peak": 3368
       },
       "captures": [],
       "passed": true
@@ -4792,7 +4792,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 9.063864700001432,
+      "elapsed_seconds": 6.49527039998793,
       "initial": {
         "fighter_id1": 11,
         "fighter_id2": 0,
@@ -4801,9 +4801,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "4143826cb5c033948e1c84e12cc0b907ca6199a33efac251122e5238168de156",
-          "distinct_sampled_rgb": 1029,
-          "nonzero_bytes": 330086,
+          "sha256_rgb": "7941e2aac441d829c3c706b023cf30899759c33e8b8da0b974ccb83824eb9b67",
+          "distinct_sampled_rgb": 1004,
+          "nonzero_bytes": 330768,
           "nonblank": true
         }
       },
@@ -4994,9 +4994,9 @@
         ]
       },
       "audio": {
-        "samples": 1701600,
-        "energy": 376500771856,
-        "peak": 3562
+        "samples": 1701604,
+        "energy": 376772636238,
+        "peak": 3705
       },
       "captures": [],
       "passed": true
@@ -5007,7 +5007,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 7.3788256000043475,
+      "elapsed_seconds": 5.162378099994385,
       "initial": {
         "fighter_id1": 1,
         "fighter_id2": 0,
@@ -5016,9 +5016,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "4030fbc86d4ff29c7b5dce0576e57dfb3088349ebf7345555e3947838d59dfa7",
-          "distinct_sampled_rgb": 1033,
-          "nonzero_bytes": 337644,
+          "sha256_rgb": "fffe578b7a20db8f33ae877d35e0a0e6b4f23b3b497c37bb8217f5d9bc53585e",
+          "distinct_sampled_rgb": 1000,
+          "nonzero_bytes": 338690,
           "nonblank": true
         }
       },
@@ -5050,8 +5050,8 @@
         "animation_frame_counts": [
           {
             "10": 55,
-            "16": 100,
-            "17": 8,
+            "16": 99,
+            "17": 9,
             "20": 37,
             "21": 16,
             "22": 7,
@@ -5071,9 +5071,9 @@
             "6": 21,
             "11": 1,
             "12": 24,
-            "16": 63,
+            "16": 62,
             "17": 8,
-            "20": 53,
+            "20": 54,
             "21": 37,
             "22": 22,
             "23": 12,
@@ -5139,7 +5139,7 @@
       "position": {
         "x_min": [
           384,
-          756
+          736
         ],
         "x_max": [
           1809,
@@ -5188,9 +5188,9 @@
         ]
       },
       "audio": {
-        "samples": 1368956,
-        "energy": 321995384329,
-        "peak": 3630
+        "samples": 1368952,
+        "energy": 323330121825,
+        "peak": 3623
       },
       "captures": [],
       "passed": true
@@ -5201,7 +5201,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 8.118607600001269,
+      "elapsed_seconds": 5.252824900002452,
       "initial": {
         "fighter_id1": 1,
         "fighter_id2": 0,
@@ -5210,9 +5210,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "2c92fb1c2dca1bea156bf3fed54f11e977e39747c09345a171399f8d90ad8b2c",
-          "distinct_sampled_rgb": 961,
-          "nonzero_bytes": 330860,
+          "sha256_rgb": "a5ae483cd0be7d79c7d5bb01079b697139c15b9a408e9d1152940f8bc5a68961",
+          "distinct_sampled_rgb": 951,
+          "nonzero_bytes": 330940,
           "nonblank": true
         }
       },
@@ -5246,10 +5246,10 @@
             "3": 12,
             "5": 19,
             "16": 77,
-            "17": 34,
+            "17": 35,
             "18": 1,
             "20": 57,
-            "21": 40,
+            "21": 39,
             "22": 14,
             "23": 16,
             "28": 6,
@@ -5279,9 +5279,9 @@
             "16": 91,
             "20": 75,
             "21": 76,
-            "22": 28,
+            "22": 27,
             "23": 13,
-            "28": 14,
+            "28": 15,
             "29": 4,
             "30": 8,
             "31": 8,
@@ -5408,8 +5408,8 @@
       },
       "audio": {
         "samples": 1396652,
-        "energy": 308356672403,
-        "peak": 3710
+        "energy": 309348987724,
+        "peak": 3719
       },
       "captures": [],
       "passed": true
@@ -5420,7 +5420,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 6.408196299998963,
+      "elapsed_seconds": 4.395607300000847,
       "initial": {
         "fighter_id1": 2,
         "fighter_id2": 1,
@@ -5429,9 +5429,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "5e63bfa05e96edf532bff0fdb7954ef6a698486ec32920469a883e2d283d2931",
-          "distinct_sampled_rgb": 1044,
-          "nonzero_bytes": 330430,
+          "sha256_rgb": "07e70797ce27bca35e46c144d65bb90ff835c85361a2282263e7e0cf902ef67f",
+          "distinct_sampled_rgb": 1012,
+          "nonzero_bytes": 331156,
           "nonblank": true
         }
       },
@@ -5607,8 +5607,8 @@
       },
       "audio": {
         "samples": 1147146,
-        "energy": 264599457201,
-        "peak": 3382
+        "energy": 264224799634,
+        "peak": 3892
       },
       "captures": [],
       "passed": true
@@ -5619,7 +5619,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 6.8319333999970695,
+      "elapsed_seconds": 4.158197299999301,
       "initial": {
         "fighter_id1": 2,
         "fighter_id2": 1,
@@ -5628,9 +5628,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "e2a63e023250a4b7975d60fc086ade071f056a55f77afa21d04076431e97efd7",
-          "distinct_sampled_rgb": 1036,
-          "nonzero_bytes": 338262,
+          "sha256_rgb": "8b4cd5dcd62245c7ba475d568904fb0e855457f4f850c5729036b2387c189a07",
+          "distinct_sampled_rgb": 999,
+          "nonzero_bytes": 339166,
           "nonblank": true
         }
       },
@@ -5665,9 +5665,9 @@
             "6": 10,
             "10": 66,
             "16": 93,
-            "17": 27,
+            "17": 28,
             "20": 52,
-            "21": 20,
+            "21": 19,
             "22": 11,
             "23": 7,
             "28": 4,
@@ -5685,13 +5685,13 @@
             "55": 40
           },
           {
-            "3": 55,
+            "3": 56,
             "5": 24,
             "6": 38,
             "10": 44,
             "16": 135,
             "17": 4,
-            "20": 45,
+            "20": 44,
             "21": 9,
             "22": 7,
             "23": 8,
@@ -5766,7 +5766,7 @@
           2377
         ],
         "x_max": [
-          2224,
+          2212,
           3040
         ],
         "y_min": [
@@ -5807,9 +5807,9 @@
         ]
       },
       "audio": {
-        "samples": 1091728,
-        "energy": 242733844512,
-        "peak": 3098
+        "samples": 1091702,
+        "energy": 242004150499,
+        "peak": 2984
       },
       "captures": [],
       "passed": true
@@ -5820,7 +5820,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 6.699125200000708,
+      "elapsed_seconds": 4.661981699988246,
       "initial": {
         "fighter_id1": 3,
         "fighter_id2": 2,
@@ -5829,8 +5829,8 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "a4f0934f44274289384d74e07518e0665c7d64f6bef665c2a85addde5e8e8a1d",
-          "distinct_sampled_rgb": 973,
+          "sha256_rgb": "1775268997dce051e19014a54710469f61e73c349144da2fe1112d24175c014b",
+          "distinct_sampled_rgb": 956,
           "nonzero_bytes": 332134,
           "nonblank": true
         }
@@ -6011,8 +6011,8 @@
         ]
       },
       "audio": {
-        "samples": 1174868,
-        "energy": 267647733987,
+        "samples": 1174870,
+        "energy": 267857149100,
         "peak": 3597
       },
       "captures": [],
@@ -6024,7 +6024,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 5.911310499999672,
+      "elapsed_seconds": 4.809581300010905,
       "initial": {
         "fighter_id1": 3,
         "fighter_id2": 2,
@@ -6033,9 +6033,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "4525f4a94976a9c5840d9ca478c3e46524475c192f99edc056d9cf91e13a5491",
-          "distinct_sampled_rgb": 1042,
-          "nonzero_bytes": 331288,
+          "sha256_rgb": "3dbec8a3e2f7b6a6fddb7ec9f9c05cd32b3beba209124f8b014bf11be63f6c0e",
+          "distinct_sampled_rgb": 1008,
+          "nonzero_bytes": 332014,
           "nonblank": true
         }
       },
@@ -6071,12 +6071,12 @@
             "10": 47,
             "15": 54,
             "16": 65,
-            "17": 27,
+            "17": 28,
             "20": 19,
             "21": 11,
             "22": 6,
             "23": 6,
-            "28": 17,
+            "28": 16,
             "29": 16,
             "30": 32,
             "31": 28,
@@ -6215,8 +6215,8 @@
       },
       "audio": {
         "samples": 1202592,
-        "energy": 287328487315,
-        "peak": 3645
+        "energy": 287746639659,
+        "peak": 3515
       },
       "captures": [],
       "passed": true
@@ -6227,7 +6227,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 6.702604199999769,
+      "elapsed_seconds": 4.638113100008923,
       "initial": {
         "fighter_id1": 4,
         "fighter_id2": 3,
@@ -6236,9 +6236,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "3029813b8f941a0ab7d6f0e5f502907e06f9afd7849de250ff7068cc15e4ed1a",
-          "distinct_sampled_rgb": 1038,
-          "nonzero_bytes": 339420,
+          "sha256_rgb": "60382e843b9d8d15d66113bc8331d4a90a2f8167dec7c121b9932eaa601b069f",
+          "distinct_sampled_rgb": 1004,
+          "nonzero_bytes": 340238,
           "nonblank": true
         }
       },
@@ -6420,8 +6420,8 @@
         ]
       },
       "audio": {
-        "samples": 1202618,
-        "energy": 270521257359,
+        "samples": 1202612,
+        "energy": 270394894081,
         "peak": 3795
       },
       "captures": [],
@@ -6433,7 +6433,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 6.677801600002567,
+      "elapsed_seconds": 4.553509800010943,
       "initial": {
         "fighter_id1": 4,
         "fighter_id2": 3,
@@ -6442,8 +6442,8 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "d8653a0aea70dfd8261fbe53c070627f0d1094f65a4c4f727efc32f5cdb34d24",
-          "distinct_sampled_rgb": 982,
+          "sha256_rgb": "9e8d4607335fb4e9cbb30dddff53fce35c32add5b00aaed6dd0b7a246bff1807",
+          "distinct_sampled_rgb": 966,
           "nonzero_bytes": 332390,
           "nonblank": true
         }
@@ -6462,96 +6462,91 @@
       "actions": {
         "counts": [
           {
-            "0": 458,
-            "1": 115,
+            "0": 500,
+            "1": 73,
             "9": 27
           },
           {
-            "0": 408,
-            "1": 59,
-            "3": 79,
-            "9": 54
+            "0": 446,
+            "3": 40,
+            "7": 33,
+            "9": 81
           }
         ],
         "animation_frame_counts": [
           {
-            "5": 19,
-            "10": 33,
-            "16": 38,
-            "17": 66,
+            "5": 16,
+            "10": 11,
+            "16": 31,
+            "17": 60,
             "18": 8,
-            "20": 46,
-            "21": 13,
-            "22": 8,
-            "23": 8,
-            "29": 8,
-            "30": 16,
-            "31": 11,
-            "32": 15,
-            "33": 39,
-            "41": 33,
+            "20": 66,
+            "21": 35,
+            "22": 16,
+            "23": 16,
+            "29": 4,
+            "30": 8,
+            "31": 6,
+            "32": 10,
+            "33": 26,
+            "41": 12,
             "48": 13,
-            "49": 10,
-            "50": 6,
-            "51": 26,
-            "55": 6,
+            "49": 5,
+            "50": 3,
+            "51": 13,
+            "55": 3,
             "56": 3,
             "57": 11,
-            "58": 18,
-            "59": 46,
-            "60": 12,
-            "61": 56,
+            "58": 27,
+            "59": 63,
+            "60": 18,
+            "61": 84,
             "62": 20,
             "63": 12
           },
           {
-            "3": 40,
-            "5": 11,
-            "6": 20,
+            "3": 27,
+            "6": 10,
             "10": 22,
-            "16": 75,
-            "17": 61,
-            "20": 54,
-            "21": 30,
-            "22": 32,
-            "23": 12,
-            "28": 16,
-            "29": 4,
-            "30": 8,
-            "31": 8,
-            "32": 8,
-            "33": 22,
-            "34": 18,
-            "35": 41,
+            "15": 13,
+            "16": 61,
+            "17": 39,
+            "20": 73,
+            "21": 48,
+            "22": 50,
+            "23": 18,
+            "28": 12,
+            "32": 1,
+            "33": 19,
+            "34": 9,
+            "35": 21,
             "41": 20,
-            "48": 26,
-            "49": 4,
-            "50": 3,
-            "51": 11,
-            "55": 2,
-            "56": 6,
-            "57": 22,
+            "48": 39,
+            "56": 9,
+            "57": 33,
             "58": 9,
+            "59": 23,
             "60": 6,
-            "61": 9
+            "61": 22,
+            "62": 10,
+            "63": 6
           }
         ],
         "input_mix": [
           {
-            "guard": 70,
-            "idle": 339,
-            "jump": 6,
-            "move": 234,
-            "normal": 21,
-            "throw": 6
+            "guard": 110,
+            "idle": 261,
+            "jump": 3,
+            "move": 324,
+            "normal": 12,
+            "throw": 3
           },
           {
-            "guard": 66,
-            "idle": 276,
-            "jump": 3,
-            "move": 300,
-            "normal": 15,
-            "special": 6,
+            "guard": 79,
+            "idle": 216,
+            "move": 378,
+            "normal": 3,
+            "special": 3,
             "throw": 24
           }
         ],
@@ -6565,32 +6560,32 @@
         ],
         "special_seen": [
           false,
-          false
+          true
         ],
         "air_action_seen": [
           true,
-          true
+          false
         ]
       },
       "damage": {
         "dealt": [
-          26,
-          96
+          55,
+          91
         ],
         "events": [
-          2,
-          5
+          3,
+          4
         ],
         "minimum_hp": [
-          32,
-          102
+          37,
+          73
         ],
-        "total": 122
+        "total": 146
       },
       "position": {
         "x_min": [
           384,
-          640
+          384
         ],
         "x_max": [
           1952,
@@ -6598,7 +6593,7 @@
         ],
         "y_min": [
           -883,
-          -856
+          -662
         ],
         "y_max": [
           0,
@@ -6612,20 +6607,21 @@
         ],
         "wake_seen": [
           true,
-          false
+          true
         ],
         "episodes": [
           [
             82,
-            82
+            82,
+            60
           ],
           [
-            24
+            76
           ]
         ],
         "max_episode": [
           82,
-          24
+          76
         ]
       },
       "throws": {
@@ -6635,13 +6631,13 @@
         ],
         "landing_seen": [
           true,
-          true
+          false
         ]
       },
       "audio": {
         "samples": 1230314,
-        "energy": 272754643564,
-        "peak": 3369
+        "energy": 272397093725,
+        "peak": 3680
       },
       "captures": [],
       "passed": true
@@ -6652,7 +6648,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 6.935237600002438,
+      "elapsed_seconds": 4.693381599994609,
       "initial": {
         "fighter_id1": 5,
         "fighter_id2": 4,
@@ -6661,9 +6657,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "4c6d01894df1445f2ed1e4f7dada728a3ff2d3f926f031389cbf528e3b6d0313",
-          "distinct_sampled_rgb": 1041,
-          "nonzero_bytes": 331996,
+          "sha256_rgb": "bbb7e78d423f3ced4132e701abbdafb80c82b5be108b6ca74c37bcee7dddffd6",
+          "distinct_sampled_rgb": 1010,
+          "nonzero_bytes": 332602,
           "nonblank": true
         }
       },
@@ -6726,8 +6722,8 @@
           {
             "5": 8,
             "10": 33,
-            "16": 39,
-            "17": 45,
+            "16": 38,
+            "17": 46,
             "20": 56,
             "21": 33,
             "22": 16,
@@ -6848,7 +6844,7 @@
       },
       "audio": {
         "samples": 1313482,
-        "energy": 297552754170,
+        "energy": 298277772550,
         "peak": 3683
       },
       "captures": [],
@@ -6860,7 +6856,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 6.131263900002523,
+      "elapsed_seconds": 4.63415040000109,
       "initial": {
         "fighter_id1": 5,
         "fighter_id2": 4,
@@ -6869,9 +6865,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "1048802528d7610cf7e779254cdb14a493ebfbcde6ceb5a7b4812d4cdd292282",
-          "distinct_sampled_rgb": 1037,
-          "nonzero_bytes": 339744,
+          "sha256_rgb": "2be9719575a533293fd0951a84e7b8e78bde6318185f255a0f78250901c7a2aa",
+          "distinct_sampled_rgb": 1003,
+          "nonzero_bytes": 340654,
           "nonblank": true
         }
       },
@@ -7057,9 +7053,9 @@
         ]
       },
       "audio": {
-        "samples": 1258040,
-        "energy": 274493022901,
-        "peak": 3751
+        "samples": 1258072,
+        "energy": 274839868524,
+        "peak": 3759
       },
       "captures": [],
       "passed": true
@@ -7070,7 +7066,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 6.145500300001004,
+      "elapsed_seconds": 4.79796609999903,
       "initial": {
         "fighter_id1": 6,
         "fighter_id2": 5,
@@ -7079,8 +7075,8 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "580d423ca77ae73208476bf8a6caa4fc697ea814bf6a3c7c77649e3912700716",
-          "distinct_sampled_rgb": 973,
+          "sha256_rgb": "39a054558864f2492e85f670a6549f307569c7e1869d59c122c1a41cdc727aed",
+          "distinct_sampled_rgb": 956,
           "nonzero_bytes": 330956,
           "nonblank": true
         }
@@ -7260,9 +7256,9 @@
         ]
       },
       "audio": {
-        "samples": 1341206,
-        "energy": 303928074502,
-        "peak": 3577
+        "samples": 1341208,
+        "energy": 304813289487,
+        "peak": 3769
       },
       "captures": [],
       "passed": true
@@ -7273,7 +7269,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 7.328707799999393,
+      "elapsed_seconds": 4.959433900003205,
       "initial": {
         "fighter_id1": 6,
         "fighter_id2": 5,
@@ -7282,9 +7278,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "34de0d23340a070e3216ea15383ec3cab4cac800a8b32f69e17f4bd2d4473e08",
-          "distinct_sampled_rgb": 1033,
-          "nonzero_bytes": 330112,
+          "sha256_rgb": "5b23e824fa86b8699ce42ad0d3025f5699a0c8bb9a800dbcecf78b37801db67d",
+          "distinct_sampled_rgb": 1001,
+          "nonzero_bytes": 330822,
           "nonblank": true
         }
       },
@@ -7318,7 +7314,7 @@
             "5": 8,
             "10": 11,
             "12": 14,
-            "17": 68,
+            "17": 69,
             "18": 33,
             "20": 67,
             "21": 38,
@@ -7326,7 +7322,7 @@
             "23": 16,
             "29": 4,
             "30": 8,
-            "31": 5,
+            "31": 4,
             "32": 5,
             "33": 12,
             "41": 12,
@@ -7347,11 +7343,11 @@
             "63": 12
           },
           {
-            "3": 35,
+            "3": 34,
             "6": 10,
             "10": 22,
             "16": 17,
-            "17": 89,
+            "17": 90,
             "20": 76,
             "21": 47,
             "22": 52,
@@ -7479,8 +7475,8 @@
       },
       "audio": {
         "samples": 1368928,
-        "energy": 299055008945,
-        "peak": 3571
+        "energy": 299767176377,
+        "peak": 3609
       },
       "captures": [],
       "passed": true
@@ -7491,7 +7487,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 6.847586800002318,
+      "elapsed_seconds": 4.970939699996961,
       "initial": {
         "fighter_id1": 7,
         "fighter_id2": 6,
@@ -7500,9 +7496,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "6df57da680c1d36a35c68f446d9820c5c1b731a9fcb6a14bd80886dba4beae9d",
-          "distinct_sampled_rgb": 1029,
-          "nonzero_bytes": 337626,
+          "sha256_rgb": "d7ac16293f0bdf741e5523a4352215c8216566f19e6a0800e0e6e44d364ec7b3",
+          "distinct_sampled_rgb": 990,
+          "nonzero_bytes": 338716,
           "nonblank": true
         }
       },
@@ -7680,9 +7676,9 @@
         ]
       },
       "audio": {
-        "samples": 1368960,
-        "energy": 296120433778,
-        "peak": 3044
+        "samples": 1368956,
+        "energy": 297247694126,
+        "peak": 3172
       },
       "captures": [],
       "passed": true
@@ -7693,7 +7689,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 6.695320399994671,
+      "elapsed_seconds": 4.960140399998636,
       "initial": {
         "fighter_id1": 7,
         "fighter_id2": 6,
@@ -7702,8 +7698,8 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "57a26aa0b918c513c538985abde7a6eaa68d903fac84e7e00553c8b00fa6d21d",
-          "distinct_sampled_rgb": 965,
+          "sha256_rgb": "b093c8264fe747c5d2207986cc1b1d2d5bcadb34abe4045f8ebcd9b0015d86d3",
+          "distinct_sampled_rgb": 948,
           "nonzero_bytes": 330952,
           "nonblank": true
         }
@@ -7899,8 +7895,8 @@
       },
       "audio": {
         "samples": 1396652,
-        "energy": 307418600706,
-        "peak": 4020
+        "energy": 308519975557,
+        "peak": 4258
       },
       "captures": [],
       "passed": true
@@ -7911,7 +7907,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 6.432230599995819,
+      "elapsed_seconds": 5.2804841000033775,
       "initial": {
         "fighter_id1": 8,
         "fighter_id2": 7,
@@ -7920,9 +7916,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "11d0ee9369f44993956aa109068c292a06634f816559ef5e893627f0f91ad6a7",
-          "distinct_sampled_rgb": 1043,
-          "nonzero_bytes": 331414,
+          "sha256_rgb": "48fb226f17ada0679ec7043cdf982ff5147bc08223f1bff4dece2b64f066280f",
+          "distinct_sampled_rgb": 1009,
+          "nonzero_bytes": 332260,
           "nonblank": true
         }
       },
@@ -8088,8 +8084,8 @@
       },
       "audio": {
         "samples": 1479820,
-        "energy": 347517373962,
-        "peak": 3609
+        "energy": 347793006281,
+        "peak": 3621
       },
       "captures": [],
       "passed": true
@@ -8100,7 +8096,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 6.209812499997497,
+      "elapsed_seconds": 5.131768000006559,
       "initial": {
         "fighter_id1": 8,
         "fighter_id2": 7,
@@ -8109,9 +8105,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "0a5bdfef259e61f1119dd05c00aa6146ebe493b702ab061889759f2fa1fcdb6a",
-          "distinct_sampled_rgb": 1034,
-          "nonzero_bytes": 339192,
+          "sha256_rgb": "a18e63b3a5dfffc8a7bf0146e8ddacf5ad77624a50e3c0b43c872998de5e3388",
+          "distinct_sampled_rgb": 991,
+          "nonzero_bytes": 340420,
           "nonblank": true
         }
       },
@@ -8310,9 +8306,9 @@
         ]
       },
       "audio": {
-        "samples": 1424406,
-        "energy": 317455746859,
-        "peak": 4159
+        "samples": 1424398,
+        "energy": 317479421751,
+        "peak": 4116
       },
       "captures": [],
       "passed": true
@@ -8323,7 +8319,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 8.394343799998751,
+      "elapsed_seconds": 5.298429700007546,
       "initial": {
         "fighter_id1": 9,
         "fighter_id2": 8,
@@ -8332,8 +8328,8 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "9fc226743d72da3547a60b002232bbf9e3fea8e08456e19382912686f588f298",
-          "distinct_sampled_rgb": 971,
+          "sha256_rgb": "90ae6ecfe46698953f734878525cc20cd565bd896b3fc016760fc605aa201a3d",
+          "distinct_sampled_rgb": 954,
           "nonzero_bytes": 330648,
           "nonblank": true
         }
@@ -8526,8 +8522,8 @@
       },
       "audio": {
         "samples": 1507542,
-        "energy": 343155316108,
-        "peak": 3561
+        "energy": 343577119615,
+        "peak": 3461
       },
       "captures": [],
       "passed": true
@@ -8538,7 +8534,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 8.47947060000297,
+      "elapsed_seconds": 5.474255900000571,
       "initial": {
         "fighter_id1": 9,
         "fighter_id2": 8,
@@ -8547,9 +8543,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "eea78c337745e25966b26e1597c66d8b8179001bcae42fbb952705ffb91327da",
-          "distinct_sampled_rgb": 1048,
-          "nonzero_bytes": 329616,
+          "sha256_rgb": "08052611854cd376640c640046587fa1e755a4975ec1e08e71b6ce66cda88725",
+          "distinct_sampled_rgb": 1013,
+          "nonzero_bytes": 330368,
           "nonblank": true
         }
       },
@@ -8746,8 +8742,8 @@
       },
       "audio": {
         "samples": 1535264,
-        "energy": 350788546274,
-        "peak": 3335
+        "energy": 351347632444,
+        "peak": 3683
       },
       "captures": [],
       "passed": true
@@ -8758,7 +8754,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 8.050777399999788,
+      "elapsed_seconds": 5.506209800005308,
       "initial": {
         "fighter_id1": 10,
         "fighter_id2": 9,
@@ -8767,9 +8763,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "a4de4f4a9d4cad21867c4616c51f60e495719c242db04d973553d175201c595d",
-          "distinct_sampled_rgb": 1037,
-          "nonzero_bytes": 336832,
+          "sha256_rgb": "cc6743deffca361a0b831e6d2290a187d8c6ac6288b83333e9a60e1a6b84930b",
+          "distinct_sampled_rgb": 1002,
+          "nonzero_bytes": 337782,
           "nonblank": true
         }
       },
@@ -8962,8 +8958,8 @@
       },
       "audio": {
         "samples": 1535294,
-        "energy": 346916766388,
-        "peak": 4398
+        "energy": 347669449709,
+        "peak": 4440
       },
       "captures": [],
       "passed": true
@@ -8974,7 +8970,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 8.230297800000699,
+      "elapsed_seconds": 5.4687100000010105,
       "initial": {
         "fighter_id1": 10,
         "fighter_id2": 9,
@@ -8983,8 +8979,8 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "b23e1d761ae3f15384043c42d42fcc03ae955d06dcb11fb8e9a52f6aac0d84e4",
-          "distinct_sampled_rgb": 971,
+          "sha256_rgb": "2f5f06826ad6393bbe50b91d9bfe24853db437cefea513cb23b1cfc038d25aaf",
+          "distinct_sampled_rgb": 955,
           "nonzero_bytes": 330044,
           "nonblank": true
         }
@@ -9176,9 +9172,9 @@
         ]
       },
       "audio": {
-        "samples": 1562990,
-        "energy": 359976337499,
-        "peak": 3449
+        "samples": 1562988,
+        "energy": 360492229680,
+        "peak": 3503
       },
       "captures": [],
       "passed": true
@@ -9189,7 +9185,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 7.537755099998321,
+      "elapsed_seconds": 5.755218000005698,
       "initial": {
         "fighter_id1": 11,
         "fighter_id2": 10,
@@ -9198,9 +9194,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "68825291ec13a6b8b58d8d81bf8b6e793e096bd5792960ab2c7853ca889734f4",
-          "distinct_sampled_rgb": 1035,
-          "nonzero_bytes": 330044,
+          "sha256_rgb": "56ab34dc4b112bc9cedafd6cf21c0415c290313a7b66be1da506cd34f23a19b4",
+          "distinct_sampled_rgb": 1008,
+          "nonzero_bytes": 330660,
           "nonblank": true
         }
       },
@@ -9378,8 +9374,8 @@
       },
       "audio": {
         "samples": 1647222,
-        "energy": 370041904140,
-        "peak": 3609
+        "energy": 370445150609,
+        "peak": 3705
       },
       "captures": [],
       "passed": true
@@ -9390,7 +9386,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 7.510518499999307,
+      "elapsed_seconds": 5.630832199996803,
       "initial": {
         "fighter_id1": 11,
         "fighter_id2": 10,
@@ -9399,9 +9395,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "33a4dd929aa0f9a8d8a19f77b30cc5fec467dfaafb780d4edcbe6cf0c924c860",
-          "distinct_sampled_rgb": 1029,
-          "nonzero_bytes": 337706,
+          "sha256_rgb": "d0fecbe2a9ed850a98feef286f60aa208bf96f8aa23859a48f2b4ecdbbf0a8f2",
+          "distinct_sampled_rgb": 998,
+          "nonzero_bytes": 338650,
           "nonblank": true
         }
       },
@@ -9580,9 +9576,9 @@
         ]
       },
       "audio": {
-        "samples": 1590740,
-        "energy": 346503383249,
-        "peak": 3677
+        "samples": 1590744,
+        "energy": 347027688477,
+        "peak": 3672
       },
       "captures": [],
       "passed": true
@@ -9593,7 +9589,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 6.66038230000413,
+      "elapsed_seconds": 4.87184970000817,
       "initial": {
         "fighter_id1": 0,
         "fighter_id2": 11,
@@ -9602,9 +9598,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "c93731a267cff4d36e6817819c405dc6dde9a3eec28a778349637866f4eda31a",
-          "distinct_sampled_rgb": 970,
-          "nonzero_bytes": 330900,
+          "sha256_rgb": "22f590d8619f1d206839cfd0ec03fb8d3917acf41826ed7b2e8b4cfd7fd236ed",
+          "distinct_sampled_rgb": 955,
+          "nonzero_bytes": 330986,
           "nonblank": true
         }
       },
@@ -9779,9 +9775,9 @@
         ]
       },
       "audio": {
-        "samples": 1341204,
-        "energy": 306393028913,
-        "peak": 3710
+        "samples": 1341206,
+        "energy": 306607629517,
+        "peak": 3670
       },
       "captures": [],
       "passed": true
@@ -9792,7 +9788,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 5.753418000000238,
+      "elapsed_seconds": 4.961275000008754,
       "initial": {
         "fighter_id1": 0,
         "fighter_id2": 11,
@@ -9801,9 +9797,9 @@
           "width": 512,
           "height": 224,
           "pitch": 2048,
-          "sha256_rgb": "75cba79ee69af2a9a559d4d75525e2e07fa75b9b33c27326509b135301d39e00",
-          "distinct_sampled_rgb": 1031,
-          "nonzero_bytes": 330078,
+          "sha256_rgb": "8f7982015c97bd0de92418675cf8dabcc5d8a30562f2b4b4ac11fc2390cf29d3",
+          "distinct_sampled_rgb": 1006,
+          "nonzero_bytes": 330756,
           "nonblank": true
         }
       },
@@ -9999,8 +9995,8 @@
       },
       "audio": {
         "samples": 1368928,
-        "energy": 303435911212,
-        "peak": 3571
+        "energy": 303863736918,
+        "peak": 3609
       },
       "captures": [],
       "passed": true
@@ -10023,5 +10019,5 @@
     "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
     "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
   },
-  "elapsed_seconds": 384.82218080000166
+  "elapsed_seconds": 289.7823250999936
 }

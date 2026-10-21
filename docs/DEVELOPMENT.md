@@ -4,14 +4,30 @@
 
 Supported build host: Windows x64. `tools/setup.ps1` downloads pinned official release archives into `.tools/` and verifies their SHA256. `tools/build.py` invokes 816-tcc, 816-opt, WLA-65816 and WLALINK directly, so a separate Make/MSYS installation is unnecessary.
 
-The verified v0.8.1 source freeze is commit
+The v0.9.0 presentation pass is the corrected native candidate. A live v0.8.1 review
+found clipped selection faces, a Damian likeness mismatch, a weak arena-picker
+composition, and stage pixels showing through HUD and result lettering. The
+candidate applies presentation-only corrections for those findings. The
+current candidate manifest identifies ROM SHA256
+`bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639`, header
+checksum `6D41`. The corrected source freeze is commit
+`76f0a08a7562800df01507db83c6877745c3bdcf`, tree
+`f37852da57a42d2d6819374db5d23278d12587a5`. All six native reports pass on
+this SHA: 2,595 gameplay, 18,081 roster, 1,756 presentation, 997 focused-input,
+8,131 stage and 622 Training checks (32,182 total). The 288-by-600 matchup,
+stage, policy, replay and symmetry evidence, pinned bsnes smoke plus bounded
+48-by-600 run, endurance of 216,356 live frames in each of three modes, fresh
+214-asset export in
+75.078 seconds and `validate_release_evidence` pass on this SHA. `Test.cmd`
+exits 0. The [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
+is available and `tools/audit_release.py` passes 7,471 checks against it. The last verified v0.8.1 source freeze is commit
 `fe05e5fd1391a1db20f1b66f1e9f6e699445e77a`, tree
 `46e1af160ffb8ab6cb768e3d9deec1352d77ae83`. It targets a 4 MiB FastROM LoROM
 image across 128 banks, NTSC, with no coprocessor or SRAM requirement. WLALINK
 writes the SNES header/checksum. The ROM SHA256 is
 `76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`, header
 checksum `A358`. Native C/ASM, controls, gameplay and audio are unchanged.
-`Test.cmd` exits 0 with all six reports on this SHA: 2,595 gameplay, 18,081
+The historical v0.8.1 `Test.cmd` run exits 0 with all six reports on this SHA: 2,595 gameplay, 18,081
 roster, 215 presentation, 997 focused-input, 8,131 stage and 622 Training
 checks (30,641 total). Fresh committed export validation reproduces the ROM,
 manifest, 214 assets and symbols in 76.344 seconds. The 288-by-600 native
@@ -20,9 +36,9 @@ pinned bsnes smoke matches this SHA with 600/600 cadence, healthy PPU/PCM and
 ambient freeze, and the bounded 48-by-600 run passes. Native endurance passes
 216,356 live frames in each of three modes at 60.0988118623 FPS, wraps 4/4/3,
 peak SPC six, zero stable FIGHT lag and empty failure arrays.
-`validate_release_evidence` passes. The v0.8.1 offline package passes 7,471
-technical audit checks; the v0.8.0 package is historical. Human review gates
-remain open.
+`validate_release_evidence` passes. The historical v0.8.1 offline package passes
+7,471 technical audit checks; the v0.8.0 package is historical. Human review
+gates remain open.
 
 `Build.cmd` rebuilds from committed native assets. `Build.cmd --assets` regenerates the full asset set first. Source portrait downloads can be refreshed with `tools/fetch_references.py`; rebuilding the game does not require fetching the team pages.
 
@@ -53,6 +69,45 @@ publish the full range after actor DMA has yielded. The portrait block and BG2
 map addresses do not move. The guide uses original opaque glyphs 256-383; the
 paused camera remains still and a contact-adjacent pause settles the actual HP
 bar before the panel is reviewed.
+
+### v0.9.0 presentation corrections (packaged technical snapshot; public review pending)
+
+The presentation pass keeps the native menu and rendering contracts while
+addressing four findings from the live v0.8.1 review:
+
+- `tools/portrait_assets.py` derives one shared, head-anchored contained
+  composition for the 32x40 selection card and 64x80 profile portrait. The
+  generated `character-manifest.json` records the source crop, head anchor,
+  margins, scale and `head_clipped=false` in `portrait_framing`; nearest-neighbor
+  resampling keeps the authored edges intact.
+- The arena picker keeps its native three-row cursor at `x8..247`,
+  `y40..95` plus 56 pixels per row. Each complete stage image is contained in a
+  `60x52` thumbnail at `x18..77`, `y42..93` plus 56 pixels per row. Location
+  names and short captions use a separate text column, so the cursor does not
+  cover scene pixels.
+- FIGHT and RESULT text map ASCII `32..127` to the existing opaque glyphs
+  `256..383` in the same `$5000-$57FF` guide-glyph VRAM window. Title, roster
+  and arena menu text retain the original ASCII bank. Round markers `147/148`
+  use the opaque panel background at palette index 1, preventing BG1 scenery
+  from showing through interface cells.
+- Damian's 64 v4 source PNGs and adjacent provenance files remain under
+  `assets/art/characters/00-damian/`. Each legacy, motion, actions and
+  airborne atlas receives one explicit, reviewed reference conversion under
+  the `neutral-height` policy to the 311-pixel reference neutral before native
+  encoding. The pinned factors are legacy `0.9255952381`, motion
+  `0.9904458599`, and actions/airborne `0.9936102236`. The native idle height
+  is 69, while the baseline, native palette and physical scale stay locked.
+  The corrected contract records all 64 expected frame hashes under the Damian
+  revision metadata; its hash is
+  `00f90a6765904c546284832d399c1a5ec581f08fed64a7f7bedc6d9df985e261`.
+  The other eleven fighter banks and all twelve palettes remain unchanged.
+
+No combat, controls, audio, trace offsets, memory layout or Fighter/Wave ABI
+change is part of this pass. The presentation suite and all five other native
+reports, compatibility smoke, source-freeze evidence, matchup, bounded
+independent combat, endurance and fresh-source validation now pass on the
+corrected SHA. The [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
+is available and its archive audit passes 7,471 checks. Public-release review remains open.
 
 ### v0.6 integration performance notes
 
@@ -162,9 +217,9 @@ bounded 48 x 600 (28,800-frame) run.
   unchanged, so this fixes test overhead rather than game behavior.
 
 The v0.7.1 package and audit are historical. The v0.8.0 snapshot passed its
-package guards and 7,471-check archive audit; it remains historical. The v0.8.1
-package also passes 7,471 technical audit checks. No public release-readiness
-claim is made.
+package guards and 7,471-check archive audit; it remains historical. The
+historical v0.8.1 package also passes 7,471 technical audit checks. No public
+release-readiness claim is made.
 
 ### v0.8.0 historical pause-guide and Training snapshot
 
@@ -197,12 +252,12 @@ are applied.
 reports and expanded evidence above are historical v0.8.0 results: 2,595
 gameplay, 18,081 roster, 215 presentation, 997 focused-input, 8,131 stage and
 622 Training checks (30,641 total), with a 7,471-check offline package audit.
-The v0.8.1 verified snapshot supersedes those historical v0.8.0 results; its
-package and 7,471-check audit pass.
+The historical v0.8.1 verified snapshot supersedes those historical v0.8.0
+results; its package and 7,471-check audit pass.
 
-### v0.8.1 verified Reston v4 art revision
+### v0.8.1 historical verified Reston v4 art revision
 
-The v0.8.1 snapshot is an art-only source revision. Reston's complete 64-frame
+The historical v0.8.1 snapshot is an art-only source revision. Reston's complete 64-frame
 set and selected portrait use the short-buzz-cap v4 sources:
 `atlas-v4.png`, `animation-motion-v4.png`, `animation-actions-v4.png` and
 `animation-airborne-v4.png`. The original v3 source files remain retained for
@@ -218,14 +273,15 @@ old/new frame-hash digests, unchanged palette SHA256
 `0fa34b1d226a993d001bd2df79e0b4f69827c214668446fe7b3b19bb3c64aa1d` and
 uniform/physical scale `0.2280130293159609`.
 
-The full64 native visual review accepted this revision for integration. Actual
+The full64 native visual review accepted this historical revision for integration. Actual
 human likeness and consent feedback remains pending. Native C/ASM, controls,
 gameplay, audio, the 96x80 proportion contract and the native transfer ABI are
 unchanged. All six native reports and the matching compatibility smoke pass
 against ROM SHA256 `76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`,
 header `A358`, with the expanded matchup, stage, policy, replay, symmetry,
 endurance and fresh-source evidence described above. The package and 7,471-check
-audit pass; no public-readiness claim is made.
+audit pass; no public-readiness claim is made. The later live presentation review
+identified the four defects tracked by the v0.9.0 correction pass.
 
 ### Fighter animation contract
 
@@ -260,15 +316,18 @@ throw, knockdown or wake pose does not change the fighter's apparent size.
 Each fighter has a private animation clock. Idle uses four frames, forward and backward gait use four frames each, and crouch, jump and landing have explicit transitions. Normals and specials expose windup, active and recovery frames, while guard, hurt, victory and knockout have their own transitions. Gait advances from distance travelled, and the clock freezes during pause and hitstop.
 
 `tools/fighter_assets.py` keeps the twelve identity masters, palettes and
-costumes separate. The v0.8.0 baseline keeps all twelve prior masters selected;
-the v0.8.1 snapshot adds Reston's v4 short-buzz-cap sources while retaining
-the v3 files. The twelve new airborne atlases are
+costumes separate. The historical v0.8.0 baseline keeps all twelve prior
+masters selected; the historical v0.8.1 snapshot adds Reston's v4 short-buzz-cap
+sources while retaining the v3 files. The v0.9.0 presentation pass adds
+Damian's v4 source set while retaining the v0.8.1 native palette and physical
+scale; its per-atlas neutral-height conversions are recorded in the revision
+metadata. The twelve new airborne atlases are
 generated with the built-in imagegen workflow; each `animation-airborne.json`
 records its prompt and provenance, while the earlier motion/action metadata is
 retained. Raster resizing, palette quantization and tile encoding are
 deterministic hardware steps after authoring.
 
-The v0.5 stage pipeline loads three independent PNG masters from `assets/art/stages/`, with `assets/art/stages/stages.json` describing their source metadata. The home screen, four-by-three fighter selection and arena plates use original art under `assets/art/menu/`, with prompts in `assets/art/menu/prompts.json`. Menu lettering is rendered from the project's original bitmap glyph set. Selected 64x80 profile portraits use a dedicated BG2 block and palette 1. Images use nearest-neighbor reduction to retain hard edges. `assets/generated/character-manifest.json` records source hashes, palette values, extraction boxes, uniform scales and native frame hashes for review.
+The v0.5 stage pipeline loads three independent PNG masters from `assets/art/stages/`, with `assets/art/stages/stages.json` describing their source metadata. The home screen, four-by-three fighter selection and arena plates use original art under `assets/art/menu/`, with prompts in `assets/art/menu/prompts.json`. Menu lettering is rendered from the project's original bitmap glyph set. Selected 64x80 profile portraits use a dedicated BG2 block and palette 1; v0.9.0 adds the shared head-anchored contained composition for both 32x40 and 64x80 portraits, recorded as `portrait_framing` in `assets/generated/character-manifest.json`. Images use nearest-neighbor reduction to retain hard edges. `tools/portrait_assets.py` owns the shared crop metadata. The manifest records source hashes, palette values, extraction boxes, uniform scales and native frame hashes for review.
 
 ## Simulation
 
@@ -346,23 +405,32 @@ publishing and VRAM placement, cycles all four Training dummy modes, checks
 pause SOCD and both-pad resume/roster priority, and remains headless and
 silent. The historical six reports pass on its exact SHA with 30,641 checks;
 compatibility, matchup, bounded independent combat, endurance and fresh-source
-evidence also pass. The verified v0.8.1 results are recorded above.
+evidence also pass. The historical v0.8.1 results are recorded above.
 
 `tools/test_characters.py` adds controller-driven verification of each fighter on
 both player sides, movement and jump differences, observable special-family
 behavior, exact rows from all eight sprite banks and the uniform 96x80
 proportion contract. `tools/test_presentation.py` verifies the home screen,
 four-by-three selection navigation, all twelve 64x80 profile portrait transfers
-and all three stage plates. The v0.7 `tools/test_stages.py` suite adds native
+and all three stage plates. The v0.9.0 presentation pass extends that review to
+the complete 32x40/64x80 portrait compositions, arena thumbnail containment and
+HUD/result glyph background cells. The v0.7 `tools/test_stages.py` suite adds native
 checks for the four-phase BG1 ambient tiles, dynamic map entries, source
 palette/graphics preservation, live-only phase timing, actor/interface DMA
 yields, pause/hitstop/round-end freezes and stage effect/OAM behavior. It passes
-against the verified v0.8.1 source-freeze ROM; that stage report records 8,131
+against the historical verified v0.8.1 source-freeze ROM; that stage report records 8,131
 checks, including exact shadow geometry and the focused PPU assertions.
 `tools/test_inputs.py` covers SOCD neutralization,
 buffered attacks and jumps, true and shortcut motion commands, hitstop input
 capture, hit-confirm cancels, guard timing, animation freezing and the Training
-Select reset. The historical v0.7.1 snapshot had all five native reports passing
+Select reset. On the corrected v0.9.0 SHA, all six reports pass: 2,595 gameplay,
+18,081 roster, 1,756 presentation, 997 focused-input, 8,131 stage and 622
+Training checks (32,182 total). The 288-by-600 matchup/stage/policy/replay/
+symmetry run, pinned bsnes smoke with bounded 48-by-600 coverage, endurance of
+216,356 live frames in each of three modes, fresh 214-asset export in 75.078
+seconds and
+`validate_release_evidence` also pass. The [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
+is available and its archive audit passes 7,471 checks. The historical v0.7.1 snapshot had all five native reports passing
 against ROM SHA256
 `64dca043c8407659d05a22cc68b36d589d96bf4785fa630297d4e1526ed56022`:
 2,595 gameplay, 18,085 roster, 215 presentation, 999 focused-input and 8,143
@@ -405,7 +473,7 @@ Each suite stores the tested ROM SHA256 in its report:
 - `docs/training-test-report.json` (v0.8.1 verified Training suite)
 
 The reports are authoritative for the exact ROM SHA recorded in each file. The
-current v0.8.1 native reports and compatibility report point to
+historical v0.8.1 native reports and compatibility report point to
 `76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`; the native
 batch covers both boot phases, two-controller air/trades/combo cadence,
 resident-audio probes, CPU reactions and stage/effect PPU behavior. The cadence
@@ -414,12 +482,12 @@ and must not be reused after a hash change. Earlier v0.8.0, v0.7.0 and v0.6.1
 snapshots remain historical evidence for their respective SHAs.
 
 An earlier four-family 600-frame probe was too narrow to characterize worst-case
-audio or UI timing. Those v0.7.1 results remain historical; the verified v0.8.1
-six-suite and broader technical evidence cover the expanded cases. Human review
-remains open; the v0.8.0 offline package and its 7,471 technical audit checks
-remain historical fallback evidence.
-
-Two issues found during earlier integration shaped the implementation:
+audio or UI timing. Those v0.7.1 results remain historical; the historical
+v0.8.1 six-suite and broader technical evidence cover the expanded cases. Human
+review remains open; the v0.8.0 offline package and its 7,471 technical audit
+checks remain historical fallback evidence. The v0.9.0 reports and extended
+evidence now pass on the corrected SHA; the packaged v0.9.0 technical audit
+passes 7,471 checks. Two issues found during earlier integration shaped the implementation:
 
 1. C-level row-by-row sprite uploads exceeded vblank, leaving lower sprite rows blank. The native assembly transfer and one-pose budget fixed this class of failure; current validation still checks every row.
 2. This pinned 816-tcc build incorrectly lowers logical-OR expressions with
@@ -436,16 +504,16 @@ Two issues found during earlier integration shaped the implementation:
    then transfers the panel, name and HUD on the second tick, avoiding a
    contact-time stall.
 
-The v0.6.1 packager run and its 202-check audit remain historical. The current
+The v0.6.1 packager run and its 202-check audit remain historical. The historical
 v0.8.1 six native reports plus compatibility match their exact SHA, and the
 source-freeze, fresh-export and endurance evidence passes are complete. The
-v0.8.1 package and 7,471-check audit pass; the v0.8.0 offline package passes
+historical v0.8.1 package and 7,471-check audit pass; the v0.8.0 offline package passes
 7,471 technical audit checks as historical evidence; the
 v0.7.1 offline package and its 6,153-check audit remain historical.
 Human balance sessions, art review, real-console/flash-cartridge testing and
 public-release review remain separate open gates.
 
-Two consecutive v0.8.1 packaging runs produce identical 6,546,645-byte Windows
+Two consecutive historical v0.8.1 packaging runs produce identical 6,546,645-byte Windows
 archives, SHA256
 `04d951c3abef278afada5a666f9eec8a04d140650354bd82506e750e2849e0b6`.
 The matching final audit passes 7,471 technical checks and keeps

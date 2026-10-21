@@ -195,9 +195,9 @@ Fresh export, full native endurance and the package audit pass. Human
 likeness/balance, listening, controller, real-console and branding gates remain
 open.
 
-## v0.8.1 verified Reston v4 art
+## v0.8.1 historical verified Reston v4 art
 
-The verified v0.8.1 snapshot changes Reston's art sources only. Combat profile data,
+The historical verified v0.8.1 snapshot changes Reston's art sources only. Combat profile data,
 special family, movement, jump, throw, normal timing and native gameplay remain
 unchanged. Reston's complete 64-frame set and selected portrait use
 `atlas-v4.png`, `animation-motion-v4.png`, `animation-actions-v4.png` and
@@ -219,5 +219,33 @@ Full64 native visual review accepted Reston v4 for integration. Actual human
 likeness and consent feedback remains pending. All six native reports and
 matching expanded evidence pass against ROM SHA256
 `76b456d1ac75471a8b9710c61b0ce4c6ab9ca344b1b8a1f17e38f36e52904466`, header
-`A358`. The v0.8.1 package and its 7,471-check audit pass; balance, listening,
+`A358`. The historical v0.8.1 package and its 7,471-check audit pass; balance, listening,
 controller, real-console and branding gates remain open.
+
+## v0.9.0 packaged technical Damian presentation correction (public review pending)
+
+The live review of the historical v0.8.1 build found that Damian's identity did
+not resemble the supplied photo closely enough. The v0.9.0 working tree carries
+the v4 legacy, motion, actions and airborne PNGs plus their provenance under
+`assets/art/characters/00-damian/`. The source PNGs are retained as authored;
+each atlas is converted once under the approved `neutral-height` policy to the
+311-pixel reference neutral before native extraction. The pinned factors are
+legacy `0.9255952381`, motion `0.9904458599`, and actions/airborne
+`0.9936102236`.
+
+The native idle height is 69. Damian keeps the v0.8.1 baseline, native palette,
+physical scale and 64-frame order. The corrected 64-frame contract hash is
+`00f90a6765904c546284832d399c1a5ec581f08fed64a7f7bedc6d9df985e261`, with all
+expected frame hashes pinned in the revision metadata. The other eleven fighter
+banks and all twelve palettes remain unchanged. Native all64 visual review
+accepted the corrected set for integration; human likeness and consent review
+remain open. The v0.9.0 source freeze is commit
+`76f0a08a7562800df01507db83c6877745c3bdcf`, tree
+`f37852da57a42d2d6819374db5d23278d12587a5`. The candidate ROM is
+`bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639` (header
+checksum `6D41`). All six native reports pass on this SHA: 2,595 gameplay,
+18,081 roster, 1,756 presentation, 997 focused-input, 8,131 stage and 622
+Training checks (32,182 total). Matching extended evidence and
+`validate_release_evidence` pass. The [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
+is available and its archive audit passes 7,471 checks. Human likeness, consent and public-release evidence
+remain open.
