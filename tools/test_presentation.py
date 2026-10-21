@@ -41,6 +41,18 @@ PORTRAIT_MAP_X = 23
 PORTRAIT_MAP_Y = 6
 PORTRAIT_TILE_BASE = 160
 PORTRAIT_MAP_PALETTE = 1
+UI_TILE_VRAM_WORD = 0x4000
+UI_TILE_VRAM_BYTE = UI_TILE_VRAM_WORD * 2
+OPAQUE_FONT_BASE = 256
+TRANSPARENT_FONT_MAX = 127
+ARENA_ROW_X = 8
+ARENA_ROW_Y = 40
+ARENA_ROW_W = 240
+ARENA_ROW_H = 56
+ARENA_THUMB_X = 18
+ARENA_THUMB_Y_INSET = 2
+ARENA_THUMB_W = 60
+ARENA_THUMB_H = 52
 checks: list[dict[str, object]] = []
 
 
@@ -108,6 +120,27 @@ def verify_animation_artifact() -> dict[str, object]:
               "presentation package records 64 fighter frames", {
                   "fighter": fighter, "frame_count": entry.get("frame_count"),
               })
+        framing = entry.get("portrait_framing")
+        check(isinstance(framing, dict),
+              "presentation manifest records portrait framing metadata", {
+                  "fighter": fighter, "has_framing": isinstance(framing, dict),
+              })
+        if isinstance(framing, dict):
+            check(framing.get("head_clipped") is False and
+                  framing.get("shared_composition") is True,
+                  "portrait framing keeps the complete shared head composition", {
+                      "fighter": fighter,
+                      "head_clipped": framing.get("head_clipped"),
+                      "shared_composition": framing.get("shared_composition"),
+                  })
+            check(framing.get("target_sizes") == [[32, 40], [64, 80]],
+                  "portrait framing records both native target sizes", {
+                      "fighter": fighter, "target_sizes": framing.get("target_sizes"),
+                  })
+            for key in ("crop_box", "head_anchor_box", "render"):
+                check(key in framing, "portrait framing includes " + key, {
+                    "fighter": fighter, "key": key,
+                })
         preview = ROOT / "assets/generated" / f"fighter{fighter:02}.png"
         check(preview.exists(), "presentation package includes fighter preview", {
             "fighter": fighter, "path": str(preview),
@@ -119,7 +152,7 @@ def verify_animation_artifact() -> dict[str, object]:
                       "fighter": fighter, "mode": image.mode, "size": image.size,
                   })
         proof.append({"fighter": fighter, "frame_count": entry.get("frame_count"),
-                      "preview": str(preview)})
+                      "preview": str(preview), "portrait_framing": framing})
     return {"fighters": proof, "frame_count": 64}
 
 
@@ -130,6 +163,383 @@ def ui_row(e: Emulator, row: int) -> list[int]:
     offset = BG2_MAP_BYTE + row * 32 * 2
     return [int.from_bytes(memory[offset + x * 2:offset + x * 2 + 2], "little")
             for x in range(32)]
+
+
+def map_row(memory: bytes, row: int) -> list[int]:
+    """Decode one BG2 map row from an already captured VRAM image."""
+
+    offset = BG2_MAP_BYTE + row * 32 * 2
+    return [int.from_bytes(memory[offset + x * 2:offset + x * 2 + 2], "little")
+            for x in range(32)]
+
+
+def map_tile(memory: bytes, x: int, y: int) -> int:
+    return int.from_bytes(memory[BG2_MAP_BYTE + (y * 32 + x) * 2:
+                                 BG2_MAP_BYTE + (y * 32 + x + 1) * 2],
+                          "little")
+
+
+def snes_rgb(value: int) -> tuple[int, int, int]:
+    """Convert a BGR555 color using the same expansion as libretro video."""
+
+    def channel(shift: int) -> int:
+        component = (value >> shift) & 0x1F
+        return (component << 3) | (component >> 2)
+
+    return channel(0), channel(5), channel(10)
+
+
+def _tile_indices(tile_data: bytes) -> list[int]:
+    """Decode one already-sized SNES 4bpp tile."""
+
+    indices: list[int] = []
+    for y in range(8):
+        planes = (
+            tile_data[y * 2], tile_data[y * 2 + 1],
+            tile_data[16 + y * 2], tile_data[16 + y * 2 + 1],
+        )
+        for x in range(8):
+            bit = 7 - x
+            indices.append(sum(((planes[plane] >> bit) & 1) << plane
+                               for plane in range(4)))
+    return indices
+
+
+def tile_indices(tile_data: bytes) -> list[int]:
+    """Decode one SNES 4bpp tile into its 64 palette indices."""
+
+    check(len(tile_data) == 32, "UI 4bpp tile has 32 native bytes", len(tile_data))
+    return _tile_indices(tile_data)
+
+
+def decode_tile_block(tile_data: bytes, palette: bytes,
+                      width_tiles: int, height_tiles: int) -> Image.Image:
+    """Decode a native 4bpp tile block with its exact SNES palette.
+
+    The portrait DMA uses a fighter-specific palette at CGRAM 16, so it must
+    be decoded independently of ``ui_pal.bin``.  This also gives the rendered
+    PPU crop a source-actual RGB reference instead of comparing it to the
+    pre-quantized PNG preview.
+    """
+
+    expected_bytes = width_tiles * height_tiles * 32
+    check(len(tile_data) == expected_bytes,
+          "native portrait tile block has the expected byte count", {
+              "bytes": len(tile_data), "expected": expected_bytes,
+          })
+    check(len(palette) >= 32,
+          "native portrait palette contains sixteen colors", len(palette))
+    colors = [snes_rgb(int.from_bytes(palette[i:i + 2], "little"))
+              for i in range(0, 32, 2)]
+    image = Image.new("RGB", (width_tiles * 8, height_tiles * 8))
+    # Tiles are row-major in the generated block.  Build scanlines explicitly
+    # because PIL's flat buffer is pixel-major rather than tile-major.
+    rows: list[tuple[int, int, int]] = []
+    for y in range(height_tiles * 8):
+        tile_y, inner_y = divmod(y, 8)
+        for tile_x in range(width_tiles):
+            tile_number = tile_y * width_tiles + tile_x
+            tile = tile_data[tile_number * 32:(tile_number + 1) * 32]
+            indices = _tile_indices(tile)
+            row_start = inner_y * 8
+            rows.extend(colors[index] for index in
+                        indices[row_start:row_start + 8])
+    image.putdata(rows)
+    return image
+
+
+def tile_rgb(tile_data: bytes, palette: bytes) -> Image.Image:
+    """Decode a UI tile to RGB for a source-actual PPU crop comparison."""
+
+    check(len(palette) >= 32, "UI palette contains the first 16 colors", len(palette))
+    colors = [snes_rgb(int.from_bytes(palette[i:i + 2], "little"))
+              for i in range(0, 32, 2)]
+    image = Image.new("RGB", (8, 8))
+    image.putdata([colors[index] for index in tile_indices(tile_data)])
+    return image
+
+
+def image_delta(actual: Image.Image, expected: Image.Image) -> dict[str, float | int]:
+    """Return tolerant RGB error metrics without depending on NumPy."""
+
+    check(actual.size == expected.size, "presentation comparison sizes match", {
+        "actual": actual.size, "expected": expected.size,
+    })
+    deltas = [abs(a - b) for ap, ep in zip(actual.convert("RGB").getdata(),
+                                            expected.convert("RGB").getdata())
+              for a, b in zip(ap, ep)]
+    pixel_deltas = [max(abs(a - b) for a, b in zip(ap, ep))
+                    for ap, ep in zip(actual.convert("RGB").getdata(),
+                                      expected.convert("RGB").getdata())]
+    return {
+        "mean_channel_delta": sum(deltas) / len(deltas),
+        "max_channel_delta": max(deltas, default=0),
+        "pixels_over_16": sum(delta > 16 for delta in pixel_deltas),
+        "pixels": len(pixel_deltas),
+    }
+
+
+def centered_start(text: str) -> int:
+    return (32 - len(text)) // 2
+
+
+def verify_menu_font_bank(e: Emulator, rows: list[tuple[int, int, str]],
+                          label: str) -> None:
+    """Menus keep their original transparent ASCII glyph bank (0..127)."""
+
+    memory = vram_bytes(e)
+    for row, x, text in rows:
+        values = map_row(memory, row)
+        for offset, character in enumerate(text):
+            tile = values[x + offset] & 0x03FF
+            check(tile == ord(character) and tile <= TRANSPARENT_FONT_MAX,
+                  "menu text stays in the original ASCII glyph bank", {
+                      "label": label, "row": row, "x": x + offset,
+                      "character": character, "tile": tile,
+                  })
+
+
+def verify_select_card_render(e: Emulator) -> dict[str, object]:
+    """Ensure every 32x40 roster card is rendered at its authored bounds.
+
+    The native VRAM portrait assertion proves the large profile block, while
+    this comparison catches a card crop or one-pixel shift that can make a
+    head appear cut off even when the source asset is correct.
+    """
+
+    expected_path = ROOT / "assets/generated/select.png"
+    check(expected_path.exists(), "generated select plate exists", str(expected_path))
+    expected_plate = Image.open(expected_path).convert("RGB")
+    check(expected_plate.size == (256, 224), "generated select plate is native size",
+          expected_plate.size)
+    check(e.frame is not None, "select card comparison has a native frame")
+    assert e.frame is not None
+    metrics: dict[str, object] = {}
+    for fighter in range(12):
+        col, row = fighter % 4, fighter // 4
+        x, y = 8 + col * 40 + 4, 48 + row * 48 + 4
+        # Cursor lines are one native pixel at the card's outer boundary
+        # (x=8/47, y=48/95); the portrait inset starts four pixels inside, so
+        # the full authored 32x40 crop is safe to compare and catches a face
+        # or hair edge clipped by a bad portrait composition.
+        crop = (x, y, x + 32, y + 40)
+        actual = e.frame.crop(crop)
+        expected = expected_plate.crop(crop)
+        delta = image_delta(actual, expected)
+        check(delta["mean_channel_delta"] <= 8.0 and
+              delta["pixels_over_16"] <= 32,
+              "roster card portrait stays inside its authored crop", {
+                  "rect": list(crop),
+                  **delta,
+              })
+        metrics[f"{fighter:02}"] = {"rect": list(crop), **delta}
+    return metrics
+
+
+def verify_fight_font_bank(e: Emulator, current: dict[str, int]) -> dict[str, object]:
+    """Verify live HUD strings use opaque glyphs and cannot reveal BG1."""
+
+    p1 = NAMES[current["fighter_id1"]]
+    p2 = NAMES[current["fighter_id2"]]
+    if current["mode"] == 2:
+        versus = "TRAINING"
+    elif current["mode"] == 1:
+        versus = "P1 VS P2"
+    else:
+        versus = "P1 VS CPU"
+    rows = [
+        (0, 1, p1), (0, 20, p2), (1, 15, "KO"),
+        (2, 13, "ROUND"), (2, 19, str(current["round"])),
+        (4, 12, versus),
+    ]
+    return verify_opaque_text_rows(e, rows, "live fight")
+
+
+def verify_round_marker_tiles(e: Emulator) -> None:
+    """Keep the two native round-marker glyphs filled on the HUD panel."""
+
+    memory = vram_bytes(e)
+    row_two = map_row(memory, 2)
+    check(all((row_two[x] & 0x03FF) in (147, 148)
+              for x in (1, 2, 29, 30)),
+          "HUD round markers retain their native tile IDs", {
+              "row2": {str(x): row_two[x] for x in (1, 2, 29, 30)},
+          })
+    for tile in (147, 148):
+        native_tile = memory[UI_TILE_VRAM_BYTE + tile * 32:
+                             UI_TILE_VRAM_BYTE + (tile + 1) * 32]
+        indices = tile_indices(native_tile)
+        check(all(index >= 1 for index in indices),
+              "round marker tile has an opaque panel background", {
+                  "tile": tile, "min_palette_index": min(indices),
+              })
+
+
+def verify_opaque_text_rows(e: Emulator, rows: list[tuple[int, int, str]],
+                            label: str) -> dict[str, object]:
+    """Assert map, native tile pixels, and final PPU pixels for UI text.
+
+    Opaque glyph tiles are the project-owned copies at 256..383.  Checking
+    both the tile bank and the composed frame makes this regression catch the
+    original symptom: transparent ASCII glyphs showed the stage through the
+    HUD/result letters.
+    """
+
+    memory = vram_bytes(e)
+    palette = (ROOT / "assets/generated/ui_pal.bin").read_bytes()
+    check(e.frame is not None, "opaque UI text comparison has a native frame", label)
+    assert e.frame is not None
+    seen: set[int] = set()
+    details: list[dict[str, object]] = []
+    for row, x, text in rows:
+        values = map_row(memory, row)
+        for offset, character in enumerate(text):
+            cell_x = x + offset
+            tile = values[cell_x] & 0x03FF
+            expected_tile = OPAQUE_FONT_BASE + ord(character)
+            check(tile == expected_tile,
+                  "combat/result text uses opaque glyph bank 256..383", {
+                      "label": label, "row": row, "x": cell_x,
+                      "character": character, "tile": tile,
+                      "expected": expected_tile,
+                  })
+            if tile not in seen:
+                seen.add(tile)
+                offset_bytes = UI_TILE_VRAM_BYTE + tile * 32
+                native_tile = memory[offset_bytes:offset_bytes + 32]
+                indices = tile_indices(native_tile)
+                check(all(index >= 1 for index in indices),
+                      "opaque glyph tile has no transparent palette-zero pixels", {
+                          "label": label, "tile": tile,
+                          "min_palette_index": min(indices),
+                      })
+            offset_bytes = UI_TILE_VRAM_BYTE + tile * 32
+            expected = tile_rgb(memory[offset_bytes:offset_bytes + 32], palette)
+            actual = e.frame.crop((cell_x * 8, row * 8,
+                                  cell_x * 8 + 8, row * 8 + 8))
+            delta = image_delta(actual, expected)
+            check(delta["mean_channel_delta"] <= 3.0 and
+                  delta["pixels_over_16"] == 0,
+                  "opaque UI glyph composes over the panel without stage bleed", {
+                      "label": label, "row": row, "x": cell_x,
+                      "character": character, "tile": tile, **delta,
+                  })
+            details.append({"row": row, "x": cell_x,
+                            "character": character, "tile": tile, **delta})
+    return {"label": label, "tiles": len(seen), "cells": details}
+
+
+def verify_result_font_bank(e: Emulator, current: dict[str, int]) -> dict[str, object]:
+    """Verify the result card's title, score, quote, and action rows."""
+
+    winner = NAMES[current["fighter_id1"] if current["wins1"] >= current["wins2"]
+                  else current["fighter_id2"]]
+    quotes = (
+        "IT WORKS ON MY MACHINE.", "COMPOUNDING THE COMBO.",
+        "ATOMIC. CONSISTENT. VICTORY.", "THE BALANCE IS IN MY FAVOR.",
+        "THAT WAS A MACRO MOVE.", "YOUR GUARD FAILED THE AUDIT.",
+        "LEGACY NEVER GOES DOWN.", "RISK: UNDER CONTROL.",
+        "MERGED WITHOUT CONFLICTS.", "DEPLOYED TO THE TOP.",
+        "THE BOOKS ARE NOW CLOSED.", "COLD CODE. WARM VICTORY.",
+    )
+    winner_id = current["fighter_id1"] if current["wins1"] >= current["wins2"] \
+        else current["fighter_id2"]
+    score = f"P1  {current['wins1']} - {current['wins2']}  P2"
+    rows = [
+        (8, centered_start("SHIFT COMPLETE"), "SHIFT COMPLETE"),
+        (11, centered_start(winner), winner),
+        (13, centered_start("WINS THE MATCH"), "WINS THE MATCH"),
+        (15, centered_start(score), score),
+        (17, centered_start(quotes[winner_id]), quotes[winner_id]),
+        (19, centered_start("A: REMATCH"), "A: REMATCH"),
+        (21, centered_start("B: CHARACTER SELECT"), "B: CHARACTER SELECT"),
+    ]
+    return verify_opaque_text_rows(e, rows, "result card")
+
+
+def verify_arena_cursor(e: Emulator, arena: int) -> dict[str, object]:
+    """Verify the full 240x56 cursor frame follows the three arena rows."""
+
+    memory = vram_bytes(e)
+    top = 5 + arena * 7
+    expected: dict[tuple[int, int], tuple[int, int]] = {}
+    for x in range(1, 31):
+        expected[(x, top)] = (154, 0x2000)
+        expected[(x, top + 6)] = (154, 0xA000)
+    expected[(1, top)] = (149, 0x2000)
+    expected[(30, top)] = (150, 0x2000)
+    expected[(1, top + 6)] = (151, 0x2000)
+    expected[(30, top + 6)] = (152, 0x2000)
+    for y in range(top + 1, top + 6):
+        expected[(1, y)] = (153, 0x2000)
+        expected[(30, y)] = (153, 0x6000)
+    for (x, y), (tile, attributes) in expected.items():
+        entry = map_tile(memory, x, y)
+        check((entry & 0x03FF) == tile and (entry & 0xF000) == attributes,
+              "arena cursor follows the native 240x56 row contract", {
+                  "arena": arena, "x": x, "y": y,
+                  "entry": hex(entry), "tile": tile,
+                  "attributes": hex(attributes),
+              })
+    cursor_tiles = {149, 150, 151, 152, 153, 154}
+    stray: list[tuple[int, int, int]] = []
+    for y in range(32):
+        if top <= y <= top + 6:
+            continue
+        for x in range(32):
+            tile = map_tile(memory, x, y) & 0x03FF
+            if tile in cursor_tiles:
+                stray.append((x, y, tile))
+    check(not stray, "arena cursor has no tiles in another selection row", {
+        "arena": arena, "stray": stray,
+    })
+    return {"arena": arena, "top_tile_row": top, "cursor_cells": len(expected)}
+
+
+def verify_arena_plate(e: Emulator, arena: int) -> dict[str, object]:
+    """Compare the rendered thumbnail/card interior with the generated plate."""
+
+    expected_path = ROOT / "assets/generated/arenas.png"
+    check(expected_path.exists(), "generated arena plate exists", str(expected_path))
+    expected_plate = Image.open(expected_path).convert("RGB")
+    check(expected_plate.size == (256, 224), "generated arena plate is native size",
+          expected_plate.size)
+    check(e.frame is not None, "arena plate comparison has a native frame", arena)
+    assert e.frame is not None
+    y = ARENA_ROW_Y + arena * ARENA_ROW_H
+    thumb_y = y + ARENA_THUMB_Y_INSET
+    thumb_rect = (ARENA_THUMB_X, thumb_y,
+                  ARENA_THUMB_X + ARENA_THUMB_W,
+                  thumb_y + ARENA_THUMB_H)
+    check(ARENA_ROW_X + 8 <= ARENA_THUMB_X and
+          ARENA_THUMB_X + ARENA_THUMB_W <=
+          ARENA_ROW_X + ARENA_ROW_W - 8 and
+          y < thumb_y and thumb_y + ARENA_THUMB_H <= y + ARENA_ROW_H - 2,
+          "arena thumbnail stays inside the cursor frame", {
+              "arena": arena, "row": [ARENA_ROW_X, y, ARENA_ROW_W, ARENA_ROW_H],
+              "thumbnail": list(thumb_rect),
+          })
+    actual_thumb = e.frame.crop(thumb_rect)
+    expected_thumb = expected_plate.crop(thumb_rect)
+    thumb_delta = image_delta(actual_thumb, expected_thumb)
+    check(thumb_delta["mean_channel_delta"] <= 8.0 and
+          thumb_delta["pixels_over_16"] <= thumb_delta["pixels"] * 0.08,
+          "arena thumbnail uses the contained 60x52 native crop", {
+              "arena": arena, "rect": list(thumb_rect), **thumb_delta,
+          })
+    # Exclude the cursor's one-pixel top/bottom rules; the interior is the
+    # authored thumbnail, divider and location label.
+    actual = e.frame.crop((16, y + 1, 240, y + 55))
+    expected = expected_plate.crop((16, y + 1, 240, y + 55))
+    delta = image_delta(actual, expected)
+    check(delta["mean_channel_delta"] <= 8.0 and
+          delta["pixels_over_16"] <= delta["pixels"] * 0.08,
+          "arena row keeps its generated thumbnail/card layout", {
+              "arena": arena, "rect": [16, y + 1, 240, y + 55], **delta,
+          })
+    return {"arena": arena, "rect": [16, y + 1, 240, y + 55],
+            "thumbnail": list(thumb_rect), "thumbnail_delta": thumb_delta,
+            **delta}
 
 
 def verify_footer_blank(e: Emulator, label: str) -> None:
@@ -199,8 +609,25 @@ def verify_large_portrait(e: Emulator, fighter: int) -> dict[str, object]:
               "fighter": fighter, "x": PORTRAIT_MAP_X, "y": PORTRAIT_MAP_Y,
               "entry": hex(entry), "tile": tile, "palette": palette,
           })
+    palette_path = ROOT / "assets/generated" / f"portrait{fighter:02}_pal.bin"
+    check(palette_path.exists(), "native large portrait palette exists", {
+        "fighter": fighter, "path": str(palette_path),
+    })
+    expected_palette = palette_path.read_bytes()
+    expected_image = decode_tile_block(expected, expected_palette, 8, 10)
+    check(e.frame is not None, "large portrait has a rendered native frame", fighter)
+    assert e.frame is not None
+    actual_image = e.frame.crop((184, 48, 248, 128))
+    rendered = image_delta(actual_image, expected_image)
+    check(rendered["mean_channel_delta"] <= 3.0 and
+          rendered["max_channel_delta"] <= 3 and
+          rendered["pixels_over_16"] == 0,
+          "large portrait crop matches decoded native PPU pixels", {
+              "fighter": fighter, "crop": [184, 48, 248, 128], **rendered,
+          })
     return {"asset": str(expected_path), "sha256": hashlib.sha256(actual).hexdigest(),
-            "map_entry": entry, "tile": tile, "palette": palette}
+            "map_entry": entry, "tile": tile, "palette": palette,
+            "rendered": rendered}
 
 
 def optional_portrait_trace(e: Emulator, selected: int) -> None:
@@ -225,6 +652,13 @@ def title_and_select() -> dict[str, object]:
     try:
         e.run(120)
         check(state(e)["screen"] == TITLE, "cold boot reaches the redesigned home screen")
+        verify_menu_font_bank(e, [
+            (20, 9, "ARCADE SHIFT"),
+            (22, 9, "LOCAL VERSUS"),
+            (24, 9, "TRAINING"),
+            (25, 3, "L/R LEVEL"),
+            (25, 18, "NORMAL"),
+        ], "title")
         title_path = capture(e, "title.png")
         initial_title = frame_digest(e)
         press(e, "r")
@@ -234,6 +668,13 @@ def title_and_select() -> dict[str, object]:
         wait_screen(e, SELECT)
 
         check(state(e)["selected"] == 0, "roster opens on the first fighter")
+        verify_menu_font_bank(e, [
+            (4, 23, "PLAYER 1"),
+            (17, 22, NAMES[0]),
+            (27, centered_start("D-PAD SELECT  A OK  B BACK"),
+             "D-PAD SELECT  A OK  B BACK"),
+        ], "fighter select")
+        select_card_render = verify_select_card_render(e)
         select_digests: dict[int, str] = {0: frame_digest(e)}
         portrait_paths: dict[str, str] = {"00": str(capture(e, "select-00.png"))}
         portrait_vram: dict[str, dict[str, object]] = {
@@ -284,6 +725,7 @@ def title_and_select() -> dict[str, object]:
         check(state(e)["arena"] == 0, "arena select opens on Las Condes")
         arena_paths: dict[str, str] = {}
         arena_digests: list[str] = []
+        arena_renders: dict[str, dict[str, object]] = {}
         for index, stage in enumerate(STAGES):
             if index:
                 press(e, "down")
@@ -291,13 +733,26 @@ def title_and_select() -> dict[str, object]:
                 "arena": state(e)["arena"],
             })
             arena_digests.append(frame_digest(e))
+            verify_arena_cursor(e, index)
+            arena_plate = verify_arena_plate(e, index)
+            arena_renders[stage] = arena_plate
             arena_paths[stage] = str(capture(e, f"arena-{index}.png"))
         press(e, "down")
         check(state(e)["arena"] == 0, "arena cursor wraps after the third row")
         return {
             "title": str(title_path), "portraits": portrait_paths,
             "portrait_vram": portrait_vram,
+            "select_card_render": select_card_render,
             "arena_select": arena_paths, "arena_digests": arena_digests,
+            "arena_renders": arena_renders,
+            "arena_contract": {
+                "row_x": ARENA_ROW_X, "row_y": ARENA_ROW_Y,
+                "row_width": ARENA_ROW_W, "row_height": ARENA_ROW_H,
+                "thumbnail_x": ARENA_THUMB_X,
+                "thumbnail_y_inset": ARENA_THUMB_Y_INSET,
+                "thumbnail_width": ARENA_THUMB_W,
+                "thumbnail_height": ARENA_THUMB_H,
+            },
         }
     finally:
         e.close()
@@ -383,6 +838,7 @@ def result_score_capture() -> dict[str, object]:
                 break
             e.run(1)
         score = verify_result_score(e)
+        score["opaque_text"] = verify_result_font_bank(e, state(e))
         path = capture(e, "result-score.png")
         score["capture"] = str(path)
         return score
@@ -414,6 +870,8 @@ def fight_stage_captures() -> dict[str, str]:
             })
             e.run(3)
             verify_footer_blank(e, "the stage intro")
+            verify_fight_font_bank(e, state(e))
+            verify_round_marker_tiles(e)
             path = capture(e, f"stage-{stage_index}.png")
             captures[stage] = str(path)
             digests[stage] = frame_digest(e)

@@ -1,0 +1,38 @@
+{
+  "schema": "abaqus-likeness-provenance/v1",
+  "fighter_id": "00",
+  "fighter": "Damian",
+  "asset": "assets/art/characters/00-damian/atlas-v4.png",
+  "mode": "built-in imagegen edit",
+  "generated_source": "C:/Users/user/.codex/generated_images/01a15c57-fcfd-7310-8172-6bb7ec826154/exec-2818c894-0371-48a2-8484-3349e74610e3.png",
+  "output_sha256": "3b29a299194ebaa2d6b2c712a1e6465f3c6b828cf3e76581eea12b90def06a14",
+  "references": [
+    {
+      "path": "assets/references/fighter-00.jpg",
+      "role": "authoritative real-person identity reference: face shape, eyes, ears, nose and relaxed smile"
+    },
+    {
+      "path": "assets/art/characters/00-damian/atlas.png",
+      "role": "legacy edit/style reference: preserve costume, body silhouettes, 4x4 layout and pose order"
+    },
+    {
+      "path": "C:/Users/user/.codex/generated_images/01a15c57-fcfd-7310-8172-6bb7ec826154/exec-766ca9b9-56cc-4c17-abe8-27cbde173eac.png",
+      "role": "intermediate identity draft used as the immediate edit target"
+    }
+  ],
+  "output": {
+    "size": [1254, 1254],
+    "format": "RGBA PNG",
+    "background": "transparent",
+    "layout": "4 columns x 4 rows, 16 disconnected full-body figures",
+    "pose_order": ["idle", "walk-forward", "walk-back", "crouch", "jump", "jab", "cross", "kick", "sweep", "block", "hurt", "victory", "cast", "uppercut", "knockout", "rush"]
+  },
+  "validation": {
+    "tool": "tools/fighter_assets.py:extract_atlas",
+    "alpha_threshold": 200,
+    "figures": 16,
+    "alpha_min_max": [0, 255],
+    "opaque_pixels": [41374, 40519, 39896, 32018, 42711, 41839, 44051, 37446, 33199, 45392, 46428, 44317, 31417, 39320, 26494, 40713]
+  },
+  "full_prompt": "Use case: identity-preserve. Asset type: native SNES fighting-game sprite atlas. Preserve the exact 1254x1254 4x4 atlas, all 16 disconnected pose cells, body silhouettes, costume, facing and transparent layout. Replace the generic face with a friendly mature clean-shaven bald man matching the portrait: slim elongated oval face tapering to a soft chin, high smooth forehead, visible rounded ears, large gentle eyes, natural brows, medium rounded nose, mild cheeks, relaxed warm smile and slight three-quarter head turn. Keep the cobalt-blue jacket, open white shirt, navy trousers, gold buckle and polished black shoes. Make identity cues readable at tiny native scale. Avoid a heavy square jaw, angry military expression, giant grin, hair, beard, moustache, scars, bruises, props, text, logo, watermark, background or extra figures. Output genuinely transparent RGBA with no merged or cropped cells."
+}

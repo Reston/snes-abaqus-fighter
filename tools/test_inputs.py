@@ -1468,7 +1468,7 @@ def counter_banner_row(e: Emulator, attacker: int) -> list[int]:
 def check_counter_banner() -> dict[str, object]:
     """Verify a real counter event, cadence, and native COUNTER! banner."""
 
-    expected = [ord(character) | 0x2000 for character in "COUNTER!"]
+    expected = [(256 + ord(character)) | 0x2000 for character in "COUNTER!"]
     results: dict[str, object] = {}
     for attacker in (0, 1):
         defender = 1 - attacker

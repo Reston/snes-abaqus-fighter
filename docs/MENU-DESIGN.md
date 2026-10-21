@@ -60,19 +60,35 @@ entries, preserving the natural 4x3 reading order.
 
 ## Arena select
 
-The three stage cards are aligned to the existing native cursor:
+The arena plate uses three complete-scene thumbnail rows.  This keeps the
+location choice readable at a glance: the old 224x48 strips discarded most of
+each authored scene and made the caption compete with the stage detail.
+
+The three rows remain aligned to the existing native cursor, so the native C
+selection code does not need a different input model:
 
 | Element | Native pixel rectangle |
 | --- | --- |
-| Stage card | `x=16`, `y=48+56*arena`, `224x48` |
-| Native cursor lane | `x=8`, `y=40+56*arena`, `240x56` |
-| Footer rule | `y=205` |
+| Row panel / cursor lane | `x=8..247`, `y=40+56*arena`, `240x56` |
+| Thumbnail frame | `x=17..78`, `y=41+56*arena..94+56*arena` |
+| Full-scene thumbnail content | `x=18..77`, `y=42+56*arena..93+56*arena`, `60x52` |
+| Divider | `x=88`, `y=47+56*arena..88+56*arena` |
+| Location name | `x=100`, `y=52+56*arena`, one native text row |
+| Location subtitle | `x=100`, `y=71+56*arena`, one native text row |
+| Header | `x=8`, `y=7`, `SELECT ARENA` at scale 2 |
+| Header subtitle | `x=8`, `y=25`, `CHOOSE A LOCATION` at scale 1 |
+| Footer rule | `y=210` |
+| Footer controls | centered at `y=213` |
 
-Each card is an unblurred shallow crop of the authored stage plate with a
-single dark caption strip along its bottom edge.  The caption names are
-`LAS CONDES`, `EL CASTILLO`, and `LA OFICINA`.  A thin blue frame keeps the
-three choices separate, while the live cursor supplies the warm accent.  The
-footer may read `UP / DOWN   A OK   B BACK` in the project glyphs.
+Each thumbnail is a nearest-neighbor aspect-preserving fit of the complete
+256x224 stage master into a 60x52 box, with a one-pixel navy letterbox where
+needed.  The two-pixel inset keeps the native gold cursor border away from
+scene pixels.  The static labels are
+`LAS CONDES`, `EL CASTILLO`, and `LA OFICINA`, with the quiet descriptors
+`CITY GLASS`, `PARTY PATIO`, and `LATE SHIFT`.  The row frame and one-pixel
+divider use low-contrast blues; the live cursor supplies the only warm gold
+selection accent.  The footer reads `UP / DOWN   A OK   B BACK` in the
+project glyphs.
 
 ## Native conversion notes
 

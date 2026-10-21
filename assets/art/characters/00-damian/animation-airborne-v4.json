@@ -1,0 +1,30 @@
+{
+  "schema": "abaqus-combat-animation-source/v2",
+  "fighter": "00-damian",
+  "character": "Damian",
+  "range": [48, 63],
+  "atlas": {
+    "path": "assets/art/characters/00-damian/animation-airborne-v4.png",
+    "layout": "4x4 row-major",
+    "generated_source": "C:/Users/user/.codex/generated_images/01a15c57-fcfd-7310-8172-6bb7ec826154/exec-faf7b43e-bc5b-4439-a4bb-5651a05798a9.png",
+    "sha256": "a40a9cdedacbc567fec66f9a290e6206a16232414cfccff5906a7a418ae8abbf",
+    "input_roles": [
+      {"path": "assets/art/characters/00-damian/animation-airborne.png", "role": "edit target; preserve airborne, throw and knockdown order/silhouettes"},
+      {"path": "assets/art/characters/00-damian/atlas-v4.png", "role": "revised Damian identity, costume and upright anchor"},
+      {"path": "assets/references/fighter-00.jpg", "role": "authoritative face identity reference"}
+    ],
+    "full_prompt": "Use case: identity-preserve. Revise only Damian's head and face in the existing 1254x1254 4x4 airborne/throw/knockdown atlas, preserving all 16 cells, order, silhouettes, body, costume, feet and scale. Use the same portrait-derived identity in every visible pose: slim elongated oval face tapering to a soft chin, smooth bald forehead, visible rounded ears, gentle large eyes, natural brows, medium rounded nose, mild cheeks and relaxed warm smile or readable reaction with slight three-quarter turn. Keep cobalt jacket, open white shirt, navy trousers, gold buckle and black shoes. Transparent RGBA; no text, logo, watermark, background, props, opponent, extra figures, hair, beard, moustache, angry military styling, heavy square jaw, giant grin, scars, bruises, cropped or merged cells."
+  },
+  "frames": ["48 upright neutral", "49 air punch anticipation", "50 air punch active", "51 air punch retract", "52 air kick anticipation", "53 air kick active", "54 air kick retract", "55 apex guard", "56 thrower contact", "57 thrower release", "58 victim lift", "59 victim impact head-left", "60 knockdown launch", "61 knockdown fall head-left", "62 grounded get-up", "63 wake-up guard"],
+  "validation": {
+    "tool": "tools/fighter_assets.py:extract_atlas",
+    "alpha_threshold": 200,
+    "size": [1254, 1254],
+    "mode": "RGBA",
+    "alpha_min_max": [0, 255],
+    "figures": 16,
+    "opaque_pixels": [37189, 37790, 37619, 36048, 37039, 41461, 35393, 34636, 38333, 35939, 38277, 21058, 39808, 33600, 35302, 37231],
+    "component_order": "48-63 row-major",
+    "transparent_separation_reviewed": true
+  }
+}

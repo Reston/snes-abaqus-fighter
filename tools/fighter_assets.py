@@ -8,7 +8,8 @@ import hashlib
 import json
 import math
 from pathlib import Path
-from PIL import Image, ImageOps
+from PIL import Image
+from portrait_assets import build_portrait_pair
 
 SLUGS = ('damian', 'ivo', 'cristobal', 'cote', 'negger', 'david',
          'fernando', 'cristian', 'mamariaga', 'reston', 'roxana', 'lars')
@@ -62,10 +63,13 @@ ANIMATION_BANK_BYTES = 30720
 NATIVE_BASELINE_PATH = 'assets/art/roster-baseline-v0.8.json'
 NATIVE_BASELINE_SHA256 = '386a430db966c7f5c843811d78d9e06043838d8893f166bdc58637ddde773bd5'
 
-# Art revisions are allowlisted by exact contract hash.  The empty hash is a
-# fail-closed placeholder until the reviewed Reston contract is supplied by
-# the art owner.  There is intentionally no CLI switch that bypasses this.
+# Art revisions are allowlisted by exact reviewed contract hash. There is
+# intentionally no CLI switch that bypasses the immutable roster baseline.
 NATIVE_REVISION_REGISTRY = {
+    0: {
+        'contract_file': 'assets/art/characters/00-damian/native-revision.json',
+        'contract_sha256': '00f90a6765904c546284832d399c1a5ec581f08fed64a7f7bedc6d9df985e261',
+    },
     9: {
         'contract_file': 'assets/art/characters/09-reston/native-revision.json',
         'contract_sha256': '9b45e7dcb253a485faa28fb3c287a01399728cfafc23e7808f3bbb3f3b972dbc',
@@ -434,7 +438,7 @@ def _validate_revision_native_block(block, baseline_entry, label):
 
 
 def _load_revision_sources(root, fighter, slug, directory, baseline_entry):
-    """Resolve the sole allowlisted four-atlas revision, if present."""
+    """Resolve an explicitly allowlisted four-atlas revision, if present."""
     registry = NATIVE_REVISION_REGISTRY.get(fighter)
     candidates = [directory / f'{stem}-v4{suffix}'
                   for stem, suffix in (('atlas', '.png'),
@@ -512,8 +516,20 @@ def _load_revision_sources(root, fighter, slug, directory, baseline_entry):
                        f'{slug} expected_native')
     scales = contract.get('source_normalization')
     assert isinstance(scales, dict) and set(scales) == set(REVISION_SOURCE_ROLES) - {'airborne_metadata'}
+    policy = contract.get('normalization_policy', 'baseline')
+    assert policy in ('baseline', 'neutral-height'), f'{slug}: unknown normalization policy'
+    if policy == 'neutral-height':
+        # A regenerated sheet may use different source pixel units. Pin one
+        # conversion for each complete atlas to the original upright height;
+        # never fit individual poses or change the native physical scale.
+        reference_height = extract_atlas(resolved_old['legacy'])[0][0].height
+        assert contract.get('normalization_reference_height') == reference_height
     for role in ('legacy', 'motion', 'actions', 'airborne'):
-        expected_scale = baseline_entry['source_files'][role]['source_normalization']
+        if policy == 'neutral-height':
+            neutral_height = extract_atlas(resolved_new[role])[0][0].height
+            expected_scale = reference_height / neutral_height
+        else:
+            expected_scale = baseline_entry['source_files'][role]['source_normalization']
         _assert_same_scale(scales.get(role), expected_scale,
                            f'{slug} {role} source normalization')
     return {
@@ -543,7 +559,7 @@ def _assert_native_baseline64(slug, fighter, indices, palette, uniform_scale, ba
 
 
 def _assert_reviewed_revision(slug, fighter, indices, palette, uniform_scale, revision):
-    """Assert Reston output equals the reviewed native revision contract."""
+    """Assert output equals the fighter's reviewed native revision contract."""
     expected = revision['expected_native']
     frame_hashes = _native_frame_hashes(indices)
     assert frame_hashes == expected['frame_hashes'], \
@@ -605,6 +621,8 @@ def validate_airborne_atlas(root, fighter):
     reference_height = figures[0].height
     if revision:
         scales = revision['source_normalization']
+        figures = _normalize_animation_locked(figures, scales['legacy'],
+                                               f'{slug}/legacy-v4')
         motion_source_scale = scales['motion']
         action_source_scale = scales['actions']
         source_scale = scales['airborne']
@@ -681,8 +699,8 @@ def prepare_roster(root, output):
     """Prepare twelve fighters with the stable 48 plus 16 combat frames.
 
     The immutable v0.8 baseline keeps all 64 frames, palettes and scales stable.
-    Only an exact, reviewed fighter-09 contract may select versioned masters;
-    its replacement still uses the old normalization, palette and physical
+    Only an exact, reviewed per-fighter contract may select versioned masters;
+    each replacement still uses the old normalization, palette and physical
     scale. ``animation-airborne.png`` supplies frames 48..63. Its first
     upright-neutral figure is source-normalized once to the legacy idle height;
     the selected base scale is then applied to every new figure without any
@@ -741,6 +759,8 @@ def prepare_roster(root, output):
         base_figures = figures + motion_figures + action_figures
         if revision:
             source_normalization = revision['source_normalization']
+            figures = _normalize_animation_locked(
+                figures, source_normalization['legacy'], f'{slug}/legacy-v4')
             motion_source_scale = source_normalization['motion']
             action_source_scale = source_normalization['actions']
             airborne_source_scale = source_normalization['airborne']
@@ -779,7 +799,8 @@ def prepare_roster(root, output):
         specs = []
         for index, (figure, item) in enumerate(zip(figures, legacy_metadata)):
             specs.append((index, item['pose'], figure, 'legacy', source,
-                          legacy_hash, 1.0, item))
+                          legacy_hash, revision['source_normalization']['legacy']
+                          if revision else 1.0, item))
         for index, (figure, item) in enumerate(zip(motion_figures, motion_metadata), 16):
             specs.append((index, item['pose'], figure, 'motion', motion_source,
                           motion_hash, motion_source_scale, item))
@@ -904,19 +925,9 @@ def prepare_roster(root, output):
         pending_images.append((output / f'fighter{fighter:02}.png', preview))
 
         # Reuse the same illustrated face and costume for the select portrait.
-        idle = figures[0]
-        portrait_fraction = .44
-        portrait_center = .50
-        upper = idle.crop((0, 0, idle.width,
-                           max(1, round(idle.height * portrait_fraction))))
-        portrait = ImageOps.fit(upper, (32, 40), Image.Resampling.NEAREST,
-                                centering=(portrait_center, .18))
-        portrait_large = ImageOps.fit(upper, (64, 80), Image.Resampling.NEAREST,
-                                      centering=(portrait_center, .18))
-        backdrop = Image.new('RGB', (32, 40), colors[0])
-        backdrop.paste(portrait, (0, 0), portrait.getchannel('A'))
-        backdrop_large = Image.new('RGB', (64, 80), colors[0])
-        backdrop_large.paste(portrait_large, (0, 0), portrait_large.getchannel('A'))
+        portrait_pair = build_portrait_pair(figures[0], backdrop=colors[0])
+        backdrop = portrait_pair['small']
+        backdrop_large = portrait_pair['large']
         pending_images.append((output / f'portrait{fighter:02}.png', backdrop))
         pending_images.append((output / f'portrait{fighter:02}-large.png', backdrop_large))
 
@@ -976,6 +987,7 @@ def prepare_roster(root, output):
             'frame_canvas': [FRAME_WIDTH, FRAME_HEIGHT],
             'fit_bounds': [FIT_WIDTH, FIT_HEIGHT],
             'baseline_y': BASELINE_Y,
+            'portrait_framing': portrait_pair['metadata'],
             'palette': fighter_palette,
             'frames': metadata,
         }

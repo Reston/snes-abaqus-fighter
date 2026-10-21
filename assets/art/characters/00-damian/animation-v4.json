@@ -1,0 +1,43 @@
+{
+  "schema": "abaqus-animation-source/v2",
+  "fighter": "00-damian",
+  "character": "Damian",
+  "revision": "v4-photo-likeness",
+  "atlases": {
+    "motion": {
+      "path": "assets/art/characters/00-damian/animation-motion-v4.png",
+      "frames": [16, 31],
+      "generated_source": "C:/Users/user/.codex/generated_images/01a15c57-fcfd-7310-8172-6bb7ec826154/exec-1af94563-74cd-4eb7-947d-da116984ab04.png",
+      "sha256": "c0686451af2f5fe98343f2594a715f12c56729022422cd91ca8e7248978b48b3",
+      "input_roles": [
+        {"path": "assets/art/characters/00-damian/animation-motion.png", "role": "edit target; preserve motion pose order and body silhouettes"},
+        {"path": "assets/art/characters/00-damian/atlas-v4.png", "role": "revised Damian identity and costume anchor"},
+        {"path": "assets/references/fighter-00.jpg", "role": "authoritative face identity reference"}
+      ],
+      "full_prompt": "Use case: identity-preserve. Revise only Damian's head and face in the existing 1254x1254 4x4 motion atlas, preserving all 16 motion cells, order, silhouettes, body, costume, feet and scale. Use the revised portrait-derived identity consistently: slim elongated oval face tapering to a soft chin, smooth bald forehead, visible rounded ears, gentle large eyes, natural brows, medium rounded nose, mild cheeks and relaxed warm smile with slight three-quarter head turn. Keep cobalt jacket, open white shirt, navy trousers, gold buckle and black shoes. Transparent RGBA; no text, logo, watermark, background, props, extra figures, hair, beard, moustache, angry military styling, heavy square jaw, giant grin, scars, bruises, cropped or merged cells."
+    },
+    "actions": {
+      "path": "assets/art/characters/00-damian/animation-actions-v4.png",
+      "frames": [32, 47],
+      "generated_source": "C:/Users/user/.codex/generated_images/01a15c57-fcfd-7310-8172-6bb7ec826154/exec-114865af-cab9-4b04-b197-858be8342457.png",
+      "sha256": "f62c23a3be22fa552335e9329451897f509ffbb01b2939ce5e4063800f4ea761",
+      "input_roles": [
+        {"path": "assets/art/characters/00-damian/animation-actions.png", "role": "edit target; preserve action pose order and silhouettes"},
+        {"path": "assets/art/characters/00-damian/atlas-v4.png", "role": "revised Damian identity and costume anchor"},
+        {"path": "assets/references/fighter-00.jpg", "role": "authoritative face identity reference"}
+      ],
+      "full_prompt": "Use case: identity-preserve. Revise only Damian's head and face in the existing 1254x1254 4x4 action atlas, preserving all 16 action cells, order, silhouettes, body, costume, feet and scale. Use a slim elongated oval face tapering to a soft chin, smooth bald forehead, visible rounded ears, gentle large eyes, natural brows, medium rounded nose, mild cheeks, relaxed warm smile or readable reaction, and a slight three-quarter turn. Keep cobalt jacket, open white shirt, navy trousers, gold buckle and black shoes. Transparent RGBA; no text, logo, watermark, background, props, extra figures, hair, beard, moustache, angry military styling, heavy square jaw, giant grin, scars, bruises, cropped or merged cells."
+    }
+  },
+  "validation": {
+    "tool": "tools/fighter_assets.py:extract_atlas",
+    "alpha_threshold": 200,
+    "size": [1254, 1254],
+    "mode": "RGBA",
+    "alpha_min_max": [0, 255],
+    "motion_figures": 16,
+    "action_figures": 16,
+    "motion_opaque_pixels": [39410, 37917, 37845, 36954, 42736, 37869, 37481, 36866, 37351, 37336, 36091, 37326, 41991, 36253, 40039, 38156],
+    "action_opaque_pixels": [38309, 38251, 39834, 35283, 39612, 36010, 32559, 34854, 34285, 39935, 41986, 40581, 37560, 40839, 45021, 37782]
+  }
+}

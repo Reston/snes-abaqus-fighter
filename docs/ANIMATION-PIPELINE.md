@@ -46,11 +46,20 @@ used as its own baseline.
 ## Reviewed art revisions
 
 An intentional likeness revision is an explicit, per-fighter contract. The
-only registered slot is fighter 09 (Reston), and the resolver remains closed
-until its contract SHA-256 is added to the registry in
-`tools/fighter_assets.py`. There is no command-line bypass. All other fighters
+registered slots are fighter 00 (Damian's photo likeness) and fighter 09
+(Reston's short buzz cut). Each resolver requires its exact reviewed contract
+SHA-256 in `tools/fighter_assets.py`. There is no command-line bypass. All other fighters
 reject versioned alternate masters and must continue to match the complete
 64-frame baseline.
+
+Damian's v0.9 revision explicitly pins `normalization_policy: neutral-height`
+and the original upright source height of 311 pixels. Each complete new atlas
+uses one reviewed conversion to those source units before the unchanged native
+physical scale is applied. The exact four factors and all resulting native
+hashes are pinned in his contract; the resolver verifies each factor against
+the original and replacement neutral anchors. This corrects different raster
+sizes in regenerated sheets without fitting individual poses. Reston's v4
+contract continues to use its original baseline conversions.
 
 The adjacent `native-revision.json` contract uses this schema:
 

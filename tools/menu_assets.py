@@ -21,7 +21,7 @@ center=False)``.  The function does not write files or mutate its inputs.
 from pathlib import Path
 from typing import Any, Callable, Mapping, Sequence
 
-from PIL import Image, ImageDraw, ImageEnhance
+from PIL import Image, ImageDraw, ImageEnhance, ImageOps
 
 
 Size = tuple[int, int]
@@ -156,30 +156,49 @@ def _select(root: Path, roster: Sequence[Mapping[str, Any]], text_fn: TextFn) ->
 
 def _stage_preview(stage: Image.Image) -> Image.Image:
     source = _rgb_image(stage)
-    # Keep the authored stage's geometry, using a shallow native crop for the
-    # three 224x48 arena strips.  No blur or glossy overlay is introduced.
-    return source.crop((0, 64, 256, 112)).resize((224, 48), Image.Resampling.NEAREST)
+    # The arena picker uses complete, aspect-correct scene thumbnails.  The
+    # old 224x48 crop threw away the sky, architecture and floor, and then
+    # stretched the remaining strip across a caption card.  A 256x224 source
+    # fits inside the inset 60x52 box, so every thumbnail keeps the authored
+    # 8:7 geometry and remains recognizable after native tile quantization.
+    fitted = ImageOps.contain(source, (60, 52), method=Image.Resampling.NEAREST)
+    thumb = Image.new("RGB", (60, 52), ROYAL)
+    thumb.paste(fitted, ((60 - fitted.width) // 2, (52 - fitted.height) // 2))
+    return thumb
 
 
 def _arenas(stages: Sequence[Image.Image], text_fn: TextFn) -> Image.Image:
     im = _gradient((9, 21, 52), (3, 8, 24))
     d = ImageDraw.Draw(im)
-    d.rectangle((0, 0, 255, 36), fill=INK)
-    _text(text_fn, im, (8, 9), "SELECT ARENA", WHITE, scale=2, shadow=True)
-    _rule(im, (8, 36, 247, 36), BLUE_LINE)
+    d.rectangle((0, 0, 255, 35), fill=INK)
+    _text(text_fn, im, (8, 7), "SELECT ARENA", WHITE, scale=2, shadow=True)
+    _text(text_fn, im, (8, 25), "CHOOSE A LOCATION", MUTED, shadow=True)
+    _rule(im, (8, 35, 247, 35), GOLD_DARK)
+
+    # Three complete-scene rows line up with drawArenas()'s existing cursor:
+    # x=8, y=40/96/152, width=240 and height=56.  Keeping that geometry lets
+    # the gold native cursor frame each choice without covering the image.
     names = ("LAS CONDES", "EL CASTILLO", "LA OFICINA")
+    subtitles = ("CITY GLASS", "PARTY PATIO", "LATE SHIFT")
     for i in range(3):
-        y = 48 + i * 56
+        y = 40 + i * 56
         d = ImageDraw.Draw(im)
-        d.rectangle((15, y - 1, 240, y + 48), fill=ROYAL, outline=BLUE_LINE)
+        d.rectangle((8, y, 247, y + 55), fill=ROYAL, outline=BLUE_LINE)
         stage = stages[i] if i < len(stages) else Image.new("RGB", (W, H), BLUE)
-        im.paste(_stage_preview(stage), (16, y))
-        # A single low strip keeps the name readable without hiding the stage.
+        thumb = _stage_preview(stage)
+        # The cursor's glyph 154 owns the first and last pixel rows of the
+        # 56-pixel row.  Keep a two-pixel buffer so gold never crosses scene
+        # detail when the native cursor is published over this plate.
+        im.paste(thumb, (18, y + 2))
         d = ImageDraw.Draw(im)
-        d.rectangle((17, y + 35, 238, y + 46), fill=(3, 8, 24))
-        _text(text_fn, im, (22, y + 38), names[i], WHITE, shadow=True)
-    # Native cursor occupies x=8 and y=40+56*i; leave its lane empty.
-    _rule(im, (8, 205, 248, 205), BLUE_LINE)
+        d.rectangle((17, y + 1, 78, y + 54), outline=INK)
+        _rule(im, (88, y + 7, 88, y + 48), BLUE_SOFT)
+        _text(text_fn, im, (100, y + 12), names[i], WHITE, shadow=True)
+        _text(text_fn, im, (100, y + 31), subtitles[i], MUTED, shadow=True)
+
+    # The native cursor owns the warm selection accent.  Keep the bottom
+    # control row quiet and outside the three 56-pixel choices.
+    _rule(im, (8, 210, 248, 210), BLUE_LINE)
     _text(text_fn, im, (128, 213), "UP / DOWN   A OK   B BACK", MUTED, center=True)
     return im.convert("RGB")
 

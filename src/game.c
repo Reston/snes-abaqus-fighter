@@ -235,7 +235,15 @@ u8 *fighterDataB(u8 id) {
 }
 #include "animation_banks.h"
 
-void put(u8 x,u8 y,u16 t) { if(x<32 && y<32) ui[(u16)y*32+x]=t|0x2000; }
+void put(u8 x,u8 y,u16 t) {
+    /* A panel tile behind a transparent letter is replaced by that letter,
+     * so its holes otherwise reveal BG1. Reuse the existing opaque glyph
+     * bank for fight/result text; tile zero and menu cursor tiles stay clear. */
+    if(screen>=FIGHT) {
+        if(t>=32 && t<128)t+=256;
+    }
+    if(x<32 && y<32)ui[(u16)y*32+x]=t|0x2000;
+}
 void word(u8 x,u8 y,const char *s) { while(*s && x<32) put(x++,y,*s++); }
 void center(u8 y,const char *s) { u8 n=0; const char *p=s; while(*p++)n++; word((32-n)/2,y,s); }
 void number(u8 x,u8 y,u8 n) { put(x,y,'0'+n/10); put(x+1,y,'0'+n%10); }

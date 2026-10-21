@@ -174,8 +174,9 @@ for n,fighter in enumerate(roster):
 ui=bytearray()
 for code in range(128):
     pix=[0]*64
-    # Transparent menu lettering with a one-pixel navy shadow. Combat and
-    # result panels still supply their own solid background tiles.
+    # Transparent menu lettering with a one-pixel navy shadow. Fight/result
+    # text selects the opaque copies below instead of replacing a panel with
+    # a transparent glyph (which would expose the stage inside each cell).
     for y,row in enumerate(GLYPHS.get(chr(code),[])):
         for x,c in enumerate(row):
             if c=='1' and y+1<8 and x+2<8:pix[(y+1)*8+x+2]=1
@@ -197,10 +198,10 @@ for i in range(128,160):
             for x in range(8):pix[y*8+x]=1 if y<3 or y>5 else (4 if x<fill else 8)
     elif i==147:
         for y in range(8):
-            for x in range(8):pix[y*8+x]=3 if 1<x<6 and 1<y<6 else 0
+            for x in range(8):pix[y*8+x]=3 if 1<x<6 and 1<y<6 else 1
     elif i==148:
         for y in range(8):
-            for x in range(8):pix[y*8+x]=6 if x in (1,6) or y in (1,6) else 0
+            for x in range(8):pix[y*8+x]=6 if x in (1,6) or y in (1,6) else 1
     elif i in (149,150,151,152):
         for y in range(8):
             for x in range(8):
@@ -210,7 +211,7 @@ for i in range(128,160):
     elif i==154:
         for x in range(8):pix[x]=3
     ui+=tile(pix)
-# Portraits retain slots 160..239. Opaque guide glyphs use the otherwise free
+# Portraits retain slots 160..239. Opaque fight/result/guide glyphs use the free
 # slots 256..383, ending exactly before the BG2 map at VRAM word $5800.
 ui+=bytes((256-160)*32)
 for code in range(128):
