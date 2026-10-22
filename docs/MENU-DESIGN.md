@@ -64,6 +64,14 @@ All result text remains opaque and the portrait is loaded during screen-off.
 Horizontal movement remains one card at a time.  Up and down move by four
 entries, preserving the natural 4x3 reading order.
 
+The v0.12.0 Training candidate reuses the second roster step with the heading
+`DUMMY` at the existing player-heading position. Confirming PLAYER 1 initializes
+the dummy cursor to the adjacent roster entry; the player can then choose any
+of the twelve fighters, including a mirror, before confirming into arena select.
+The same single cursor and large portrait follow that choice. P1 controls both
+steps, and the DUMMY step retains the existing merged P1/P2 menu edges. B returns
+to PLAYER 1 immediately; Start, B and A retain their existing priority.
+
 ## Arena select
 
 The arena plate uses three wide landmark previews. The v0.10.0 whole-scene

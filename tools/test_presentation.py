@@ -783,8 +783,13 @@ def boot_fight(mode: int = 1, stage: int = 0) -> Emulator:
     press(e, "a")
     wait_screen(e, SELECT)
     press(e, "a")
-    if mode == 1:
-        press(e, "a", 1)
+    if mode in (1, 2):
+        check(state(e)["screen"] == SELECT,
+              "first fighter confirm leaves the second roster visible", state(e))
+        heading = "DUMMY" if mode == 2 else "PLAYER 2"
+        verify_menu_font_bank(e, [(4, 23, heading)], "second roster heading")
+        verify_large_portrait(e, state(e)["selected2"])
+        press(e, "a", 0 if mode == 2 else 1)
     wait_screen(e, ARENA)
     for _ in range(stage):
         press(e, "down")

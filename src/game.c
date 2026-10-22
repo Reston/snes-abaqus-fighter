@@ -320,7 +320,8 @@ void drawSelect(void) {
     /* Dedicated source-master portrait: eight by ten BG2 tiles. */
     for(y=0;y<10;y++)for(x=0;x<8;x++)
         ui[(u16)(y+6)*32+x+23]=(160+(u16)y*8+x)|0x2400;
-    word(23,4,selectPlayer ? "PLAYER 2":"PLAYER 1");
+    if(mode==2 && selectPlayer)word(23,4,"DUMMY");
+    else word(23,4,selectPlayer ? "PLAYER 2":"PLAYER 1");
     word(22,17,characterNames[id]);
     center(27,"D-PAD SELECT  A OK  B BACK");
     portraitId=id;portraitDirty=1;fullDirty=1;
@@ -1167,8 +1168,11 @@ void menuTick(void) {
         if(keys&KEY_B){if(selectPlayer){selectPlayer=0;drawSelect();}else showTitle();return;}
         if(keys&(KEY_A|KEY_START)) {
             sound(3);
-            if(mode==1 && !selectPlayer){selectPlayer=1;drawSelect();}
-            else {if(mode!=1)selected2=(selected+1)%12;showArenas();}
+            if(mode!=0 && !selectPlayer){
+                if(mode==2)selected2=(selected+1)%12;
+                selectPlayer=1;drawSelect();
+            }
+            else {if(mode==0)selected2=(selected+1)%12;showArenas();}
         }
     } else if(screen==ARENA) {
         if(directions&KEY_DOWN){arena=(arena+1)%3;sound(0);drawArenas();}

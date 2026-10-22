@@ -34,16 +34,19 @@ def wait(e,screen,maxframes=600):
     raise AssertionError(('Screen did not arrive',screen,e.state()))
 def press(e,key,port=0):
     e.tap(key,port);e.run(20)
-def boot(mode=0,fighter=0,stage=0,opponent=1,difficulty=1):
+def boot(mode=0,fighter=0,stage=0,opponent=None,difficulty=1):
     e=Emulator();e.run(100)
     if difficulty==0:press(e,'l')
     for _ in range(mode):press(e,'down')
     press(e,'a');wait(e,1)
     for _ in range(fighter):press(e,'right')
     press(e,'a')
-    if mode==1:
-        for _ in range((opponent-1)%12):press(e,'right',1)
-        press(e,'a',1)
+    if mode in (1,2):
+        initial=e.state()['selected2']
+        target=opponent if opponent is not None else ((fighter+1)%12 if mode==2 else 1)
+        port=0 if mode==2 else 1
+        for _ in range((target-initial)%12):press(e,'right',port)
+        press(e,'a',port)
     wait(e,2)
     for _ in range(stage):press(e,'down')
     press(e,'a');wait(e,3);e.run(180)

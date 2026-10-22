@@ -624,12 +624,11 @@ def boot_stage(stage_id: int, trace_map: dict[str, int], mode: int = 0,
     for _ in range(fighter):
         press(e, "right")
     press(e, "a")
-    if mode == 1:
-        # Local VS starts the second cursor at roster slot 1, matching the
-        # native select implementation and the other headless suites.
-        for _ in range((fighter2 - 1) % 12):
-            press(e, "right", 1)
-        press(e, "a", 1)
+    if mode in (1, 2):
+        port = 0 if mode == 2 else 1
+        for _ in range((fighter2 - state(e)["selected2"]) % 12):
+            press(e, "right", port)
+        press(e, "a", port)
     wait_screen(e, ARENA)
     for _ in range(stage_id):
         press(e, "down")

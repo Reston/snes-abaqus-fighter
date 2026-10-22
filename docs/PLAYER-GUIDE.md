@@ -1,10 +1,11 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.11.0; rom-sha256: 1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7 -->
+<!-- candidate-version: 0.12.0; rom-sha256: 45dae37c358a71e8ffb8d1b9fec3a60a1d0d95e516bdd6e314d0bef995f24b91 -->
 
 ## Current version
 
-The current candidate is **v0.11.0**. It includes the revised Lars likeness,
-clearer location previews and a result card with the winner's portrait,
+The current candidate is **v0.12.0**, adding Training opponent and mirror-match
+selection. It includes the revised Lars likeness, clearer location previews
+and a result card with the winner's portrait,
 round score and quote. In Local Versus, A or Start begins a rematch. Arcade
 victory advances to the next challenger; a loss offers a continue. After
 Office Champion, A or Start returns to the title. B returns to fighter select.
@@ -37,7 +38,11 @@ after a loss; completing the ladder awards Office Champion.
 **Local Versus**: choose a fighter for each player, choose an arena and play a
 best-of-three match. Both controller ports use the same six-button layout.
 
-**Training**: practice against a configurable opponent with a clock fixed at 99.
+**Training**: choose your fighter at **PLAYER 1**, then choose any opponent at
+**DUMMY**, including the same fighter for a mirror match. The dummy cursor
+starts on the next roster entry. P1 can operate both steps; either controller
+can choose the dummy. Press **A** or **Start** to confirm each fighter, then
+choose an arena. **B** on DUMMY returns to PLAYER 1. The clock stays at 99.
 Press **Select** for a live round reset. Press **Start**, then **B**, to return
 to fighter select and change the matchup.
 
@@ -104,8 +109,8 @@ match, rather than showing a generic roster description.
 In Training, pause on **Normal** and press **Up/Down** to choose **Stand**,
 **Guard High**, **Guard Low** or **Jump**. Guard holds relative back without
 retreating. The Jump dummy automatically jumps again after landing. A live **Select** reset keeps
-the chosen dummy mode; starting a new Training match returns the dummy to
-Stand.
+both chosen fighters and the chosen dummy mode; starting a new Training match
+returns the dummy behavior to Stand.
 
 ## Fighting
 

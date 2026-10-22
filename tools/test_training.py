@@ -273,10 +273,11 @@ class QA:
         # pause A/START resume is deliberately excluded: it must retain the
         # strict in-fight cadence contract.  B from a paused match is the
         # roster route and is therefore included.
+        # SELECT can retain paused=1 after the roster return. Its A edge is
+        # still a menu transition; only FIGHT A is a pause resume.
         menu_transition = (
             (key == "b" and before.get("paused") == 1) or
-            (key == "a" and before.get("paused") != 1 and
-             before.get("screen") != FIGHT)
+            (key == "a" and before.get("screen") != FIGHT)
         )
         if menu_transition:
             self._menu_load_budget = MENU_LOAD_DUPLICATE_LIMIT
@@ -323,7 +324,7 @@ def wait_fight_intro(q: QA) -> dict[str, int]:
 
 
 def boot(rom: Path, mode: int = 2, fighter: int = 0,
-         fighter2: int = 1, stage: int = 0, label: str = "boot") -> QA:
+         fighter2: int | None = None, stage: int = 0, label: str = "boot") -> QA:
     """Boot a fresh mode through the native title/select/arena menus."""
 
     q = QA(rom, label)
@@ -345,11 +346,19 @@ def boot(rom: Path, mode: int = 2, fighter: int = 0,
     for _ in range(fighter % len(FIGHTER_NAMES)):
         q.press("right")
     q.press("a")
-    if mode == 1:
-        # The native local-versus P2 cursor starts at roster slot 1.
-        for _ in range((fighter2 - 1) % len(FIGHTER_NAMES)):
-            q.press("right", port=1)
-        q.press("a", port=1)
+    if mode in (1, 2):
+        second = q.state()
+        check(second["screen"] == SELECT,
+              "first confirm keeps the native second roster step", second)
+        heading = decode_text(vram_bytes(q), 4, 5).strip()
+        check(heading == ("DUMMY" if mode == 2 else "PLAYER 2"),
+              "second roster names the actual player or Training dummy", heading)
+        target = fighter2 if fighter2 is not None else (
+            (fighter + 1) % len(FIGHTER_NAMES) if mode == 2 else 1)
+        port = 0 if mode == 2 else 1
+        for _ in range((target - second["selected2"]) % len(FIGHTER_NAMES)):
+            q.press("right", port=port)
+        q.press("a", port=port)
     wait_screen(q, ARENA)
     for _ in range(stage % 3):
         q.press("down")
@@ -357,6 +366,9 @@ def boot(rom: Path, mode: int = 2, fighter: int = 0,
     current = wait_fight_intro(q)
     check(current["screen"] == FIGHT and current["intro"] == 0,
           "native Training/mode match reaches live FIGHT", current)
+    if mode in (1, 2):
+        check(current["fighter_id1"] == fighter and current["fighter_id2"] == target,
+              "native match loads both explicitly selected fighters", current)
     return q
 
 
@@ -1216,8 +1228,28 @@ def verify_crossup_and_pause_projectile(rom: Path) -> dict[str, object]:
         q.close()
 
 
+def verify_training_matchups(rom: Path) -> list[dict[str, object]]:
+    """Load a nonadjacent opponent and a mirror through the DUMMY roster."""
+
+    results = []
+    for fighter, fighter2 in ((2, 10), (11, 11)):
+        q = boot(rom, mode=2, fighter=fighter, fighter2=fighter2,
+                 label=f"training-matchup-{fighter}-{fighter2}")
+        try:
+            current = q.state()
+            check(current["selected"] == fighter and current["selected2"] == fighter2,
+                  "Training retains arbitrary and mirror roster choices", current)
+            check(current["training_dummy"] == 0,
+                  "chosen Training matchup starts with Stand behavior", current)
+            results.append(current)
+        finally:
+            q.close()
+    return results
+
+
 def verify_dummy_reset_and_defaults(rom: Path) -> dict[str, object]:
-    q = boot(rom, mode=2, fighter=0, stage=0, label="training-quick-reset")
+    q = boot(rom, mode=2, fighter=2, fighter2=10, stage=0,
+             label="training-quick-reset")
     try:
         pause(q)
         set_dummy(q, 2)
@@ -1234,7 +1266,32 @@ def verify_dummy_reset_and_defaults(rom: Path) -> dict[str, object]:
               "Training SELECT quick reset returns to live FIGHT", current)
         check(current["training_dummy"] == 2,
               "quick-select reset preserves the selected dummy mode", current)
-        return {"state": current}
+        check(current["fighter_id1"] == 2 and current["fighter_id2"] == 10 and
+              current["selected2"] == 10,
+              "Training reset preserves the chosen nonadjacent fighter", current)
+        settled = q.run(8)
+        check(settled["pose2"] == 3 and settled["y2"] == 0,
+              "chosen dummy still crouch-guards after a low-guard reset", settled)
+        pause(q)
+        q.press("b")
+        wait_screen(q, SELECT)
+        q.run(20)
+        q.press("a")
+        check(q.state()["screen"] == SELECT and
+              q.state()["selected2"] == 3,
+              "new Training selection restores the adjacent default cursor", q.state())
+        # Explicitly reselect Roxana for a new match after returning to roster.
+        q.press("up")
+        q.press("left")
+        q.press("a")
+        wait_screen(q, ARENA)
+        q.press("a")
+        fresh = wait_fight_intro(q)
+        check(fresh["fighter_id1"] == 2 and fresh["fighter_id2"] == 10 and
+              fresh["training_dummy"] == 0,
+              "new Training match keeps the requested fighter and resets behavior to Stand",
+              fresh)
+        return {"state": current, "after_reset": settled, "new_match": fresh}
     finally:
         q.close()
 
@@ -1291,6 +1348,7 @@ def run_suite(rom: Path, core_info: dict[str, str] | None = None,
     socd = verify_paused_directional_socd(rom)
     dummy = verify_dummy_and_contacts(rom)
     freeze = verify_crossup_and_pause_projectile(rom)
+    matchups = verify_training_matchups(rom)
     reset = verify_dummy_reset_and_defaults(rom)
     specials = verify_all_special_names(rom)
     pause_hud = verify_pause_hud_after_contacts(rom)
@@ -1325,6 +1383,7 @@ def run_suite(rom: Path, core_info: dict[str, str] | None = None,
         "paused_directional_socd": socd,
         "dummy_and_contacts": dummy,
         "pause_projectile_crossup": freeze,
+        "training_matchups": matchups,
         "quick_reset": reset,
         "all_special_names": specials,
         "pause_hud_after_contacts": pause_hud,

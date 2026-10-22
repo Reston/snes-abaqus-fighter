@@ -133,10 +133,11 @@ def boot(host: LongRunHost, mode: int, fighter: int, fighter2: int,
     for _ in range(fighter):
         host.tap("right")
     host.tap("a")
-    if mode == 1:
-        for _ in range((fighter2 - 1) % 12):
-            host.tap("right", 1)
-        host.tap("a", 1)
+    if mode in (1, 2):
+        port = 0 if mode == 2 else 1
+        for _ in range((fighter2 - host.state()["selected2"]) % 12):
+            host.tap("right", port)
+        host.tap("a", port)
     wait_screen(host, SCREEN_ARENA)
     for _ in range(stage):
         host.tap("down")
@@ -1066,7 +1067,7 @@ def assert_loaded_state(current: dict[str, int], mode: int, fighter: int,
                         fighter2: int, stage: int, route: str) -> None:
     """Check the requested menu choice against the cartridge's live trace."""
 
-    expected_p2 = (fighter2 if mode == 1 else (fighter + 1 +
+    expected_p2 = (fighter2 if mode in (1, 2) else (fighter + 1 +
                    int(current["arcade"])) % 12)
     if (not screen_ready(current, SCREEN_FIGHT) or current["intro"] != 0):
         raise AssertionError(("requested menu route did not reach live fight",
@@ -1115,10 +1116,11 @@ def select_from_menu(host: LongRunHost, runner: EnduranceRun, mode: int,
     current = tracked_wait_screen(host, runner, SCREEN_SELECT)
     move_cursor(host, runner, current["selected"], fighter)
     tracked_pulse(host, runner, "a")
-    if mode == 1:
+    if mode in (1, 2):
         current = tracked_wait_screen(host, runner, SCREEN_SELECT)
-        move_cursor(host, runner, current["selected2"], fighter2, port=1)
-        tracked_pulse(host, runner, "a", port=1)
+        port = 0 if mode == 2 else 1
+        move_cursor(host, runner, current["selected2"], fighter2, port=port)
+        tracked_pulse(host, runner, "a", port=port)
     current = tracked_wait_screen(host, runner, SCREEN_ARENA)
     move_arena_cursor(host, runner, current["arena"], stage)
     tracked_pulse(host, runner, "a")

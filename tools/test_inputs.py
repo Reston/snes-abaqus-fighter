@@ -204,7 +204,7 @@ def menu_title() -> Emulator:
 
 
 def menu_select(e: Emulator, mode: int = 1) -> None:
-    """Open the roster for Arcade or Local Versus."""
+    """Open the roster for any native mode."""
 
     for _ in range(mode):
         menu_press(e, ["down"])
@@ -213,10 +213,10 @@ def menu_select(e: Emulator, mode: int = 1) -> None:
 
 
 def menu_arena(e: Emulator, mode: int = 1) -> None:
-    """Select both local fighters and settle on the arena screen."""
+    """Confirm each mode's fighter choices and settle on the arena screen."""
 
     menu_select(e, mode)
-    if mode == 1:
+    if mode in (1, 2):
         menu_press(e, ["a"])
         wait_screen(e, 1)
         menu_press(e, ["a"])
@@ -260,10 +260,70 @@ def menu_result() -> Emulator:
     raise AssertionError(("menu result probe did not reach a result card", last))
 
 
+def check_training_menu_regressions() -> dict[str, object]:
+    """Training's second roster keeps shared-pad SOCD and one-action priority."""
+
+    results = {}
+    for port in (0, 1):
+        e = menu_title()
+        try:
+            menu_select(e, 2)
+            # START wins over B/A, but this single held edge may only enter
+            # the DUMMY roster, never skip it or start a fight.
+            menu_press(e, ["start", "b", "a"])
+            initial = trace(e)
+            check(initial["screen"] == 1 and initial["selected2"] == 1,
+                  "Training first START/B/A edge enters only the DUMMY roster", initial)
+            menu_press(e, ["right"], port=port, hold=4, release=0)
+            right = trace(e)
+            check(right["selected"] == 0 and right["selected2"] == 2,
+                  "either pad moves Training's DUMMY cursor without moving P1", {
+                      "port": port, "state": right,
+                  })
+            # An opposite edge on the other participating pad must be
+            # neutral while RIGHT remains held on the original pad.
+            e.run(4, p1=["right"] if port == 0 else ["left"],
+                  p2=["left"] if port == 0 else ["right"])
+            e.run(4)
+            check(trace(e)["selected2"] == right["selected2"],
+                  "Training DUMMY neutralizes held opposites across both pads", {
+                      "port": port, "state": trace(e),
+                  })
+            menu_press(e, ["up", "down"], port=port)
+            check(trace(e)["selected2"] == right["selected2"],
+                  "Training DUMMY neutralizes same-pad vertical SOCD", trace(e))
+            # Split B and A across the merged pads. Back must return to P1
+            # once, without letting the A edge re-enter DUMMY in that sample.
+            e.run(12, p1=["b"] if port == 0 else ["a"],
+                  p2=["a"] if port == 0 else ["b"])
+            e.run(4)
+            back = trace(e)
+            check(back["screen"] == 1,
+                  "Training DUMMY B wins over A and stays on the roster", back)
+            menu_press(e, ["right"])
+            moved = trace(e)
+            check(moved["selected"] == 1 and moved["selected2"] == 2,
+                  "Training DUMMY Back performs one action and restores P1 control", moved)
+            menu_press(e, ["a"])
+            check(trace(e)["screen"] == 1 and trace(e)["selected2"] == 2,
+                  "Training re-confirm opens DUMMY with the adjacent default", trace(e))
+            menu_press(e, ["start", "b", "a"], port=port)
+            confirmed = trace(e)
+            check(confirmed["screen"] == 2,
+                  "Training DUMMY START wins over B/A and advances only to ARENA", confirmed)
+            results[f"pad{port + 1}"] = {
+                "first_confirm": initial, "dummy_right": right,
+                "back": back, "p1_after_back": moved, "second_confirm": confirmed,
+            }
+        finally:
+            e.close()
+    return results
+
+
 def check_menu_regressions() -> dict[str, object]:
     """Exercise native menu SOCD and confirm/back priority at every screen."""
 
-    results: dict[str, object] = {}
+    results: dict[str, object] = {"training": check_training_menu_regressions()}
 
     # Title: keep DOWN held while adding UP.  cleanDirections(raw) must make
     # that new opposite edge neutral, so the following confirm selects Local
@@ -468,7 +528,7 @@ def check_menu_regressions() -> dict[str, object]:
 
 
 def boot(mode: int = 2, wait_intro: bool = True,
-         fighter: int = 0, fighter2: int = 1,
+         fighter: int = 0, fighter2: int | None = None,
          difficulty: int | None = None, title_delay: int = 0) -> Emulator:
     e = Emulator()
     e.run(120)
@@ -490,10 +550,13 @@ def boot(mode: int = 2, wait_intro: bool = True,
     for _ in range(fighter):
         press(e, "right")
     press(e, "a")
-    if mode == 1:
-        for _ in range((fighter2 - 1) % 12):
-            press(e, "right", 1)
-        press(e, "a", 1)
+    if mode in (1, 2):
+        target = fighter2 if fighter2 is not None else (
+            (fighter + 1) % 12 if mode == 2 else 1)
+        port = 0 if mode == 2 else 1
+        for _ in range((target - trace(e)["selected2"]) % 12):
+            press(e, "right", port)
+        press(e, "a", port)
     wait_screen(e, 2)
     press(e, "a")
     wait_screen(e, 3)
@@ -536,7 +599,7 @@ def _stress_wait_screen(e: Emulator, wanted: int,
     raise AssertionError(("stress boot did not reach screen", wanted, trace(e)))
 
 
-def _stress_boot(mode: int, fighter: int = 0, fighter2: int = 1,
+def _stress_boot(mode: int, fighter: int = 0, fighter2: int | None = None,
                  quiet_frames: int = 3, difficulty: int | None = None,
                  title_delay: int = 0) -> Emulator:
     """Boot with the exact cadence used by build/stress64.py/stress_two.py."""
@@ -558,10 +621,13 @@ def _stress_boot(mode: int, fighter: int = 0, fighter2: int = 1,
     for _ in range(fighter):
         _stress_press(e, "right")
     _stress_press(e, "a")
-    if mode == 1:
-        for _ in range((fighter2 - 1) % 12):
-            _stress_press(e, "right", 1)
-        _stress_press(e, "a", 1)
+    if mode in (1, 2):
+        target = fighter2 if fighter2 is not None else (
+            (fighter + 1) % 12 if mode == 2 else 1)
+        port = 0 if mode == 2 else 1
+        for _ in range((target - trace(e)["selected2"]) % 12):
+            _stress_press(e, "right", port)
+        _stress_press(e, "a", port)
     _stress_wait_screen(e, 2)
     _stress_press(e, "a")
     _stress_wait_screen(e, 3)
@@ -577,7 +643,7 @@ def _stress_boot(mode: int, fighter: int = 0, fighter2: int = 1,
 
 
 def _cadence_boot(cadence: str, mode: int, fighter: int = 0,
-                  fighter2: int = 1, difficulty: int | None = None,
+                  fighter2: int | None = None, difficulty: int | None = None,
                   title_delay: int = 0) -> Emulator:
     """Select one of the two intentionally distinct stress boot cadences."""
 

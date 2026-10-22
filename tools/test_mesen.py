@@ -315,9 +315,9 @@ def scene_check(mode):
         if mode == 0:
             result['captures'].append(core.capture('reston-select'))
         compat.press(core, 'a')
-        # Local VS confirms P2 through its own controller port.
-        if mode == 1:
-            compat.press(core, 'a', 1)
+        # Local VS confirms P2 on port two; P1 confirms Training's dummy.
+        if mode in (1, 2):
+            compat.press(core, 'a', 0 if mode == 2 else 1)
         compat.wait_screen(core, 2)
         for _ in range(mode):
             compat.press(core, 'down')

@@ -180,7 +180,7 @@ def press(e: Emulator, key: str, port: int = 0) -> None:
     e.run(20)
 
 
-def boot(mode: int, fighter: int, stage: int = 0, fighter2: int = 1,
+def boot(mode: int, fighter: int, stage: int = 0, fighter2: int | None = None,
          quiet_frames: int = 3) -> Emulator:
     """Boot a fresh match using only menu controller input.
 
@@ -196,12 +196,15 @@ def boot(mode: int, fighter: int, stage: int = 0, fighter2: int = 1,
     for _ in range(fighter):
         press(e, "right")
     press(e, "a")
-    if mode == 1:
-        # The cartridge initializes P2's cursor to roster slot 1 (Ivo), so
-        # menu-right counts are relative to that cursor rather than slot 0.
-        for _ in range((fighter2 - 1) % len(NAMES)):
-            press(e, "right", 1)
-        press(e, "a", 1)
+    if mode in (1, 2):
+        # Preserve the adjacent Training fixture unless an opponent is
+        # requested explicitly; both choices use the native second cursor.
+        target = fighter2 if fighter2 is not None else (
+            (fighter + 1) % len(NAMES) if mode == 2 else 1)
+        port = 0 if mode == 2 else 1
+        for _ in range((target - state(e)["selected2"]) % len(NAMES)):
+            press(e, "right", port)
+        press(e, "a", port)
     wait_screen(e, 2)
     for _ in range(stage):
         press(e, "down")
