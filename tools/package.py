@@ -143,6 +143,19 @@ def verify_gui_emulator(root: Path = ROOT) -> dict:
     }
 
 
+def menu_capture_files(root: Path) -> dict[str, Path]:
+    """Fixed capture inventory; report paths cannot add arbitrary package files."""
+    names = []
+    for mode in ('arcade', 'versus', 'training'):
+        for scene in (('p1',) if mode == 'arcade' else ('p1', 'second')):
+            names.extend(f'{mode}-{scene}-{fighter:02}' for fighter in range(12))
+        names.extend(f'{mode}-arena-{arena}' for arena in range(3))
+    return {f'screenshots/menu-preservation/{role}/{name}{extension}':
+            root/f'docs/screenshots/menu-preservation/{role}/{name}{extension}'
+            for name in names for role in ('parent', 'candidate')
+            for extension in ('.png', '.vram.bin')}
+
+
 def build_package_files(root: Path = ROOT, manifest: Mapping | None = None) -> dict[str, Path]:
     """Return the source-to-archive map for the current candidate."""
     root = Path(root)
@@ -153,6 +166,7 @@ def build_package_files(root: Path = ROOT, manifest: Mapping | None = None) -> d
     training_source = training_report_path(root)
     version = str(manifest['version'])
     return {
+        **menu_capture_files(root),
         'abaqus-after-hours.sfc': root / 'dist/abaqus-after-hours.sfc',
         GUI_EMULATOR_PACKAGE_PATH: root / '.tools/snes9x/snes9x-x64.exe',
         'emulator/LICENSE': root / '.tools/snes9x/LICENSE',
@@ -203,6 +217,8 @@ def build_package_files(root: Path = ROOT, manifest: Mapping | None = None) -> d
         'CHAMPION-ENDING.md': root / 'docs/CHAMPION-ENDING.md',
         'CHAMPION-AUDIO.md': root / 'docs/CHAMPION-AUDIO.md',
         'champion-audio-report.json': root / 'docs/champion-audio-report.json',
+        'menu-footer-report.json': root / 'docs/menu-footer-report.json',
+        'authoring-guards-report.json': root / 'docs/authoring-guards-report.json',
         f'audio-listening-v{version}.json': root / f'docs/audio-listening-v{version}.json',
         'champion-preservation-report.json': root / 'docs/champion-preservation-report.json',
         'champion-native-budget.json': root / 'docs/champion-native-budget.json',
@@ -254,6 +270,13 @@ def qa_readme_bytes() -> bytes:
         'The two Training selection captures are likewise bundled under '
         'screenshots/presentation/; their report paths retain the source '
         'docs/ prefix. REVIEW.html embeds both views.\n\n'
+        'menu-footer-report.json retains all 69 baseline/candidate menu states. '
+        'Their original PNG and 64 KiB VRAM captures are bundled under '
+        'screenshots/menu-preservation/parent/ and candidate/; remove the '
+        'leading docs/ from report paths. Packaging recomputes PNG/VRAM hashes '
+        'and compares actual pixels and VRAM above the changed footer. '
+        'These are recorded controller-only emulator captures; the package '
+        'validator does not replay the emulator to authenticate execution.\n\n'
         'qa/character-manifest.json carries the source art provenance '
         'manifest used by the native export.\n'
     ).encode('utf-8')
@@ -650,6 +673,180 @@ def validate_listening_record(root: Path, manifest: Mapping) -> None:
                     'Listening archive capture differs from its verified hash', capture['file'])
 
 
+def validate_menu_evidence(report: Mapping, root: Path, manifest: Mapping) -> None:
+    from PIL import Image
+    from preservation import POLICIES, committed_files, git, resolve
+    require(isinstance(report, Mapping), 'Menu footer proof must be a JSON object')
+    require(report.get('status') == 'passed' and report.get('rom_sha256') == manifest['sha256'] and
+            report.get('header_checksum') == manifest['checksum'],
+            'Menu footer proof must match the exact current cartridge')
+    checks, host = report.get('checks'), report.get('host_contract', {})
+    require(isinstance(checks, list) and checks and all(row.get('passed') is True for row in checks) and
+            report.get('controller_only') is True and report.get('memory_writes') is False and
+            report.get('save_states') is False and host.get('gui_opened') is False and
+            host.get('audio_device_opened') is False and host.get('priority_class') == 0x4000 and
+            len(host.get('logical_processors', [])) == 2,
+            'Menu footer proof must retain its complete silent controller-only scope')
+    core = root/'.tools/core/snes9x_libretro.dll'
+    require(core.is_file() and sha256_file(core) == report.get('core_sha256') ==
+            EXPECTED_NATIVE_CORE['dll_sha256'],
+            'Menu footer proof must use the pinned native core')
+    harness = report.get('harness_sha256', {})
+    names = ('test_menu_footers.py', 'test_presentation.py', 'emulator.py')
+    require(set(harness) == set(names) and
+            all(harness[name] == sha256_file(root/'tools'/name) for name in names),
+            'Menu footer proof harness changed after capture')
+    assets = report.get('asset_preservation', {})
+    policy = POLICIES[manifest['version']]
+    try:
+        baseline = resolve(root, assets.get('baseline_ref', ''))
+    except ValueError as error:
+        raise PackageError('Menu footer baseline does not resolve') from error
+    require(baseline == policy['baseline_commit'] and
+            assets.get('generated_files') == GENERATED_ASSET_COUNT and
+            assets.get('identical_generated_files') == GENERATED_ASSET_COUNT,
+            'Menu footer assets must match the approved baseline')
+    fresh = read_json(root/'docs/fresh-build-test-report.json', 'menu footer asset coverage')
+    expected = {row['file'] for row in fresh['generated_assets']} | {'tools/menu_assets.py'}
+    files = assets.get('files', {})
+    require(set(files) == expected, 'Menu footer asset inventory is incomplete')
+    before = {name: data for name, data in committed_files(root, baseline).items()
+              if name.startswith('assets/generated/')}
+    before['tools/menu_assets.py'] = git(root, 'show', baseline+':tools/menu_assets.py')
+    require(set(before) == expected, 'Menu footer baseline asset inventory differs')
+    for name, row in files.items():
+        text = Path(name).suffix in ('.asm', '.h', '.json', '.py')
+        raw = (root/name).read_bytes()
+        comparable = raw.replace(b'\r\n', b'\n') if text else raw
+        original = before[name].replace(b'\r\n', b'\n') if text else before[name]
+        require(comparable == original,
+                'Menu footer asset differs from the approved baseline Git blob', name)
+        require(isinstance(row, Mapping) and
+                row.get('comparison') == ('LF-normalized text' if text else 'exact bytes') and
+                row.get('sha256') == sha256_bytes(comparable) and row.get('bytes') == len(comparable),
+                'Menu footer asset comparison differs from its current input', name)
+    native = report.get('native_preservation', {})
+    states = native.get('states', {})
+    expected_states = set()
+    for mode in ('arcade', 'versus', 'training'):
+        for scene in (('p1',) if mode == 'arcade' else ('p1', 'second')):
+            expected_states.update(f'{mode}-{scene}-{fighter:02}' for fighter in range(12))
+        expected_states.update(f'{mode}-arena-{arena}' for arena in range(3))
+    require(native.get('baseline_rom_sha256') == policy['baseline_rom_sha256'] and
+            native.get('roster_states') == 60 and native.get('arena_states') == 9 and
+            native.get('pixel_difference_above_footer') == 0 and set(states) == expected_states,
+            'Menu footer native proof must cover every preserved scene')
+    for name, state in states.items():
+        bottom = 208 if '-arena-' in name else 216
+        bounds = [0, 0, 256, bottom]
+        require(isinstance(state, Mapping) and isinstance(state.get('baseline'), Mapping),
+                'Menu footer native proof must retain both capture records', name)
+        pixels, regions = [], []
+        for role, recorded in (('parent', state['baseline']), ('candidate', state)):
+            directory = f'docs/screenshots/menu-preservation/{role}/{name}'
+            require(recorded.get('preserved_pixel_bounds') == bounds and
+                    recorded.get('capture') == directory+'.png' and
+                    recorded.get('vram_capture') == directory+'.vram.bin',
+                    'Menu footer capture must use its exact bounded evidence path', name)
+            png, memory_path = root/(directory+'.png'), root/(directory+'.vram.bin')
+            require(png.is_file() and memory_path.is_file() and
+                    sha256_file(png) == recorded.get('capture_sha256') and
+                    sha256_file(memory_path) == recorded.get('vram_sha256'),
+                    'Menu footer retained capture bytes differ from the report', (role, name))
+            try:
+                with Image.open(png) as frame:
+                    require(frame.size == (256, 224) and frame.mode == 'RGB',
+                            'Menu footer capture must retain native RGB dimensions', name)
+                    cropped = frame.crop(tuple(bounds)).tobytes()
+            except (OSError, ValueError) as error:
+                raise PackageError('Menu footer PNG cannot be decoded: '+name) from error
+            memory = memory_path.read_bytes()
+            preserved = (memory[:0x7800], memory[0xB000:0xB000+bottom//8*64])
+            require(len(memory) == 0x10000 and
+                    sha256_bytes(cropped) == recorded.get('pixels_sha256') and
+                    sha256_bytes(preserved[0]) == recorded.get('bg1_tiles_and_map_sha256') and
+                    sha256_bytes(preserved[1]) == recorded.get('bg2_above_footer_sha256'),
+                    'Menu footer pixel/VRAM hashes differ from actual retained data', (role, name))
+            pixels.append(cropped)
+            regions.append(preserved)
+        require(pixels[0] == pixels[1] and regions[0] == regions[1],
+                'Menu footer baseline/candidate preserved pixels or VRAM differ', name)
+    cases = report.get('controller_actions', [])
+    actual_cases = set()
+    key_sets = (('a',), ('start',), ('b',), ('b', 'a'), ('start', 'b', 'a'))
+    expected_cases = set()
+    for mode in ('arcade', 'versus', 'training'):
+        scenes = (('p1', 0), ('arena', 0)) if mode == 'arcade' else (
+            ('p1', 0), ('second', 0), ('second', 1), ('arena', 0))
+        expected_cases.update((mode, scene, port, keys) for scene, port in scenes for keys in key_sets)
+    for case in cases:
+        key = (case.get('mode'), case.get('scene'), case.get('port'), tuple(case.get('keys', [])))
+        require(key in expected_cases and key not in actual_cases,
+                'Menu footer proof has a missing, duplicate or unknown route')
+        actual_cases.add(key)
+        confirms = 'start' in key[3] or ('a' in key[3] and 'b' not in key[3])
+        if key[1] == 'arena':
+            wanted = 3 if confirms else 1
+        elif key[1] == 'p1':
+            wanted = (2 if key[0] == 'arcade' else 1) if confirms else 0
+        else:
+            wanted = 2 if confirms else 1
+        require(case.get('screen') == wanted, 'Menu footer route destination is incorrect', key)
+    require(actual_cases == expected_cases, 'Menu footer proof must cover all fifty advertised routes')
+
+
+def validate_authoring_evidence(report: Mapping, root: Path, manifest: Mapping) -> None:
+    import ast
+    from preservation import git
+    require(isinstance(report, Mapping) and report.get('status') == 'passed' and
+            report.get('version') == manifest['version'] and report.get('rom_sha256') == manifest['sha256'],
+            'Authoring guard evidence must identify the current candidate')
+    fresh = read_json(root/'docs/fresh-build-test-report.json', 'authoring source freeze')
+    require(fresh.get('status') == 'passed' and fresh.get('rom_sha256') == manifest['sha256'] and
+            report.get('source_commit') == fresh.get('source_commit'),
+            'Authoring checks must match the isolated source freeze')
+    host = report.get('host_contract', {})
+    require(host.get('gui_opened') is False and host.get('audio_device_opened') is False and
+            host.get('priority_class') == 0x4000 and len(host.get('logical_processors', [])) == 2,
+            'Authoring checks must retain their quiet background host contract')
+    names = ('tools/fighter_assets.py', 'tools/make_assets.py', 'tools/stage_sources.py',
+             'tools/test_authoring_guards.py', 'tools/release_evidence.py')
+    hashes = report.get('source_sha256', {})
+    require(set(hashes) == set(names), 'Authoring checks must identify every tested source')
+    for name in names:
+        actual = (root/name).read_bytes().replace(b'\r\n', b'\n')
+        frozen = git(root, 'show', fresh['source_commit']+':'+name).replace(b'\r\n', b'\n')
+        require(actual == frozen and hashes[name] == sha256_bytes(actual),
+                'Authoring checks source differs from its frozen provenance', name)
+    try:
+        from preservation import resolve
+        producer = resolve(root, report.get('producer_commit', ''))
+        git(root, 'merge-base', '--is-ancestor', fresh['source_commit'], producer)
+        frozen_manifest = json.loads(git(root, 'show', producer+':dist/manifest.json'))
+        name = 'tools/check_authoring_guards.py'
+        actual = (root/name).read_bytes().replace(b'\r\n', b'\n')
+        frozen = git(root, 'show', producer+':'+name).replace(b'\r\n', b'\n')
+    except (ValueError, OSError) as error:
+        raise PackageError('Authoring producer commit cannot be verified') from error
+    require(frozen_manifest == manifest and actual == frozen and
+            report.get('producer_sha256') == {name: sha256_bytes(actual)},
+            'Authoring report producer differs from its committed provenance')
+    tree = ast.parse((root/'tools/test_authoring_guards.py').read_text(encoding='utf-8'))
+    expected_tests = sum(isinstance(node, ast.FunctionDef) and node.name.startswith('test_')
+                         for cls in tree.body if isinstance(cls, ast.ClassDef) and cls.name == 'AuthoringGuards'
+                         for node in cls.body)
+    runs = report.get('runs', [])
+    require(expected_tests > 0 and len(runs) == 2, 'Authoring checks require both interpreter modes')
+    for optimized, run in zip((False, True), runs):
+        output = run.get('output', '')
+        count = re.search(r'Ran (\d+) tests? in', output)
+        require(run.get('optimized') is optimized and run.get('exit_code') == 0 and
+                run.get('tests') == expected_tests and count is not None and int(count[1]) == expected_tests and
+                output.rstrip().endswith('OK') and run.get('arguments') ==
+                (['-O'] if optimized else [])+['tools/test_authoring_guards.py'],
+                'Authoring mutation checks must pass completely in both normal and optimized Python')
+
+
 def write_entry(package: zipfile.ZipFile, name: str, data: bytes) -> None:
     # Source mtimes and the host OS must not change the archive checksum.
     entry = zipfile.ZipInfo(name, date_time=(2026, 1, 1, 0, 0, 0))
@@ -671,6 +868,8 @@ def main() -> None:
     preflight_package_files(files)
     validate_candidate_docs(files, manifest)
     validate_champion_evidence(ROOT, manifest)
+    validate_menu_evidence(read_json(ROOT/'docs/menu-footer-report.json', 'menu footer proof'), ROOT, manifest)
+    validate_authoring_evidence(read_json(ROOT/'docs/authoring-guards-report.json', 'authoring guard proof'), ROOT, manifest)
     pin_record = verify_gui_emulator(ROOT)
     virtual = build_virtual_entries(pin_record)
     package_names = preflight_package_files(files, virtual)

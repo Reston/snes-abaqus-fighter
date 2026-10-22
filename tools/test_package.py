@@ -8,6 +8,7 @@ import importlib.util
 import json
 import re
 import copy
+import subprocess
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,6 +30,79 @@ def expect_package_error(action, label: str) -> None:
     except PACKAGE.PackageError:
         return
     raise RuntimeError(f'expected PackageError: {label}')
+
+
+def check_menu_input_mutations(menu, manifest) -> None:
+    """Change real inputs and matching report rows in a disposable Git-backed copy."""
+    from PIL import Image
+    with tempfile.TemporaryDirectory(dir=ROOT/'build/package-audit') as temporary:
+        sandbox = Path(temporary)/'checkout'
+        # Read approved objects through a local shared clone; never mutate the
+        # real checkout, baseline objects, core or retained capture evidence.
+        subprocess.run(['git', 'clone', '--shared', '--no-checkout', '--quiet', str(ROOT), str(sandbox)],
+                       stdin=subprocess.DEVNULL, capture_output=True, check=True)
+        relative = set(menu['asset_preservation']['files']) | {
+            'docs/fresh-build-test-report.json', '.tools/core/snes9x_libretro.dll'}
+        relative.update('tools/'+name for name in menu['harness_sha256'])
+        relative.update(path.relative_to(ROOT).as_posix()
+                        for path in PACKAGE.menu_capture_files(ROOT).values())
+        for name in relative:
+            target = sandbox/name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(ROOT/name, target)
+        PACKAGE.validate_menu_evidence(menu, sandbox, manifest)
+
+        name = 'assets/generated/arenas_pal.bin'
+        path = sandbox/name
+        original = path.read_bytes()
+        changed = bytearray(original)
+        changed[0] ^= 1
+        path.write_bytes(changed)
+        altered = copy.deepcopy(menu)
+        altered['asset_preservation']['files'][name].update(
+            sha256=PACKAGE.sha256_bytes(changed), bytes=len(changed))
+        expect_package_error(lambda: PACKAGE.validate_menu_evidence(altered, sandbox, manifest),
+                             'current asset and its matching rewritten report row')
+        path.write_bytes(original)
+
+        core = sandbox/'.tools/core/snes9x_libretro.dll'
+        original = core.read_bytes()
+        changed = bytearray(original)
+        changed[0] ^= 1
+        core.write_bytes(changed)
+        expect_package_error(lambda: PACKAGE.validate_menu_evidence(menu, sandbox, manifest),
+                             'changed installed libretro core with unchanged report')
+        core.write_bytes(original)
+
+        name = 'arcade-p1-00'
+        state = menu['native_preservation']['states'][name]
+        png = sandbox/state['capture']
+        original = png.read_bytes()
+        with Image.open(png) as frame:
+            changed = frame.copy()
+        pixel = changed.getpixel((0, 0))
+        changed.putpixel((0, 0), (pixel[0] ^ 1, pixel[1], pixel[2]))
+        changed.save(png)
+        altered = copy.deepcopy(menu)
+        entry = altered['native_preservation']['states'][name]
+        entry['capture_sha256'] = PACKAGE.sha256_file(png)
+        entry['pixels_sha256'] = PACKAGE.sha256_bytes(
+            changed.crop(tuple(entry['preserved_pixel_bounds'])).tobytes())
+        expect_package_error(lambda: PACKAGE.validate_menu_evidence(altered, sandbox, manifest),
+                             'changed actual capture and matching candidate hashes')
+        png.write_bytes(original)
+
+        memory = sandbox/state['vram_capture']
+        original = memory.read_bytes()
+        changed = bytearray(original)
+        changed[0] ^= 1
+        memory.write_bytes(changed)
+        altered = copy.deepcopy(menu)
+        entry = altered['native_preservation']['states'][name]
+        entry['vram_sha256'] = PACKAGE.sha256_bytes(changed)
+        entry['bg1_tiles_and_map_sha256'] = PACKAGE.sha256_bytes(changed[:0x7800])
+        expect_package_error(lambda: PACKAGE.validate_menu_evidence(altered, sandbox, manifest),
+                             'changed actual preserved VRAM and matching candidate hashes')
 
 
 def main() -> None:
@@ -171,6 +245,44 @@ def main() -> None:
     for altered in mutations:
         expect_package_error(lambda: PACKAGE.validate_champion_audio(altered, ROOT, manifest),
                              'stale or malformed champion audio proof')
+
+    menu = json.loads((ROOT/'docs/menu-footer-report.json').read_bytes())
+    PACKAGE.validate_menu_evidence(menu, ROOT, manifest)
+    menu_mutations = [dict(menu, status='failed'), dict(menu, rom_sha256='0'*64),
+                      dict(menu, checks=[]), dict(menu, controller_only=False),
+                      dict(menu, controller_actions=menu['controller_actions'][:-1])]
+    altered = copy.deepcopy(menu)
+    altered['native_preservation']['pixel_difference_above_footer'] = 1
+    menu_mutations.append(altered)
+    altered = copy.deepcopy(menu)
+    altered['asset_preservation']['files']['assets/generated/arenas_pal.bin']['sha256'] = '0'*64
+    menu_mutations.append(altered)
+    altered = copy.deepcopy(menu)
+    altered['controller_actions'][0]['screen'] = 4
+    menu_mutations.append(altered)
+    altered = copy.deepcopy(menu)
+    altered['asset_preservation']['baseline_ref'] = 'HEAD'
+    menu_mutations.append(altered)
+    for altered in menu_mutations:
+        expect_package_error(lambda: PACKAGE.validate_menu_evidence(altered, ROOT, manifest),
+                             'stale or malformed menu footer proof')
+    check_menu_input_mutations(menu, manifest)
+
+    authoring = json.loads((ROOT/'docs/authoring-guards-report.json').read_bytes())
+    PACKAGE.validate_authoring_evidence(authoring, ROOT, manifest)
+    altered_run = copy.deepcopy(authoring)
+    altered_run['runs'][1]['arguments'] = ['tools/test_authoring_guards.py']
+    altered_source = copy.deepcopy(authoring)
+    altered_source['source_sha256']['tools/fighter_assets.py'] = '0'*64
+    altered_inventory = copy.deepcopy(authoring)
+    altered_inventory['source_sha256'].pop('tools/release_evidence.py')
+    altered_producer = copy.deepcopy(authoring)
+    altered_producer['producer_sha256']['tools/check_authoring_guards.py'] = '0'*64
+    for altered in (dict(authoring, rom_sha256='0'*64), dict(authoring, source_commit='0'*40),
+                    dict(authoring, runs=[]), altered_run, altered_source,
+                    altered_inventory, altered_producer, dict(authoring, producer_commit='0'*40)):
+        expect_package_error(lambda: PACKAGE.validate_authoring_evidence(altered, ROOT, manifest),
+                             'stale or malformed authoring guard proof')
 
     with tempfile.TemporaryDirectory(dir=ROOT/'build/package-audit') as temporary:
         sandbox = Path(temporary)

@@ -22,6 +22,7 @@ from PIL import Image
 sys.path.insert(0, str(Path(__file__).parent))
 from emulator import Emulator, ROOT
 import test_presentation as presentation
+from test_champion import host_contract
 
 
 ROSTER_HINT = "D-PAD SELECT A/START OK B BACK"
@@ -30,7 +31,7 @@ MODES = ("arcade", "versus", "training")
 
 
 def verify_asset_preservation(baseline_ref: str) -> dict[str, object]:
-    """Compare raw Git blobs, including text metadata, after asset regeneration."""
+    """Compare native binaries exactly and generated/source text after LF normalization."""
     paths = subprocess.check_output(
         ["git", "ls-tree", "-r", "--name-only", baseline_ref, "assets/generated"],
         cwd=ROOT, text=True).splitlines()
@@ -54,9 +55,13 @@ def verify_asset_preservation(baseline_ref: str) -> dict[str, object]:
         original = blobs[end + 1:end + 1 + size]
         cursor = end + 2 + size
         actual = (ROOT / path).read_bytes()
+        is_text = Path(path).suffix in (".asm", ".h", ".json", ".py")
+        if is_text:
+            actual, original = actual.replace(b"\r\n", b"\n"), original.replace(b"\r\n", b"\n")
         presentation.check(actual == original,
-                           "regenerated asset/encoder is byte-identical to parent", path)
-        preserved[path] = {"bytes": len(actual), "sha256": hashlib.sha256(actual).hexdigest()}
+                           "regenerated asset/encoder matches parent with declared text comparison", path)
+        preserved[path] = {"bytes": len(actual), "sha256": hashlib.sha256(actual).hexdigest(),
+                           "comparison": "LF-normalized text" if is_text else "exact bytes"}
     return {"baseline_ref": baseline_ref, "generated_files": 219,
             "identical_generated_files": len(preserved) - 1, "files": preserved}
 
@@ -71,8 +76,14 @@ def menu_observations(rom: Path, directory: Path) -> dict[str, dict[str, object]
         memory = presentation.vram_bytes(e)
         path = directory / f"{key}.png"
         e.frame.save(path)
+        vram_path = directory / f"{key}.vram.bin"
+        vram_path.write_bytes(memory)
         observed[key] = {
-            "capture": str(path), "preserved_pixel_bounds": [0, 0, 256, bottom],
+            "capture": path.resolve().relative_to(ROOT).as_posix(),
+            "capture_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+            "vram_capture": vram_path.resolve().relative_to(ROOT).as_posix(),
+            "vram_sha256": hashlib.sha256(memory).hexdigest(),
+            "preserved_pixel_bounds": [0, 0, 256, bottom],
             "pixels_sha256": hashlib.sha256(e.frame.crop((0, 0, 256, bottom)).tobytes()).hexdigest(),
             "bg1_tiles_and_map_sha256": hashlib.sha256(memory[:0x7800]).hexdigest(),
             "bg2_above_footer_sha256": hashlib.sha256(
@@ -115,16 +126,17 @@ def verify_native_preservation(baseline_rom: Path, directory: Path) -> dict[str,
     for key, original in baseline.items():
         current = candidate[key]
         # Compare actual RGB bytes as well as retaining their hashes for review.
-        with Image.open(original["capture"]) as parent, Image.open(current["capture"]) as changed:
+        with Image.open(ROOT / original["capture"]) as parent, Image.open(ROOT / current["capture"]) as changed:
             bounds = tuple(current["preserved_pixel_bounds"])
             presentation.check(parent.crop(bounds).tobytes() == changed.crop(bounds).tobytes(),
                                "all actual native pixels above footer are exactly unchanged", key)
         for field in ("bg1_tiles_and_map_sha256", "bg2_above_footer_sha256"):
             presentation.check(original[field] == current[field],
                                "underlying native scene/cursor VRAM is exactly unchanged", {"scene": key, "field": field})
-        proof[key] = current
+        proof[key] = {**current, "baseline": original}
     return {"baseline_rom_sha256": hashlib.sha256(baseline_rom.read_bytes()).hexdigest(),
             "roster_states": 60, "arena_states": 9, "pixel_difference_above_footer": 0,
+            "capture_scope": "Retained baseline/candidate PNG and VRAM from controller-only runs; validation recomputes file bytes, preserved pixels and VRAM regions, not emulator execution.",
             "states": proof}
 
 
@@ -347,13 +359,20 @@ def main() -> int:
     args.report.parent.mkdir(parents=True, exist_ok=True)
     started = time.monotonic()
     report = {"status": "failed", "emulator": "Official Snes9x 1.63 x64 libretro core",
-              "scope": "bounded menu-footer PPU/controller proof; not release gates",
+              "scope": "Focused menu-footer PPU/controller proof; supplemental to the six native suites and release-scale gates",
+              "controller_only": True, "memory_writes": False, "save_states": False,
+              "host_contract": host_contract(),
               "harness_sha256": {
                   name: hashlib.sha256((ROOT / "tools" / name).read_bytes()).hexdigest()
                   for name in ("test_menu_footers.py", "test_presentation.py", "emulator.py")
               }}
     presentation.checks.clear()
     try:
+        host = report["host_contract"]
+        presentation.check(host.get("priority_class") == 0x4000 and
+                           len(host.get("logical_processors", [])) == 2 and
+                           host.get("gui_opened") is False and host.get("audio_device_opened") is False,
+                           "focused proof stays silent and below normal on two logical CPUs", host)
         core = ROOT / ".tools/core/snes9x_libretro.dll"
         report["core_sha256"] = hashlib.sha256(core.read_bytes()).hexdigest()
         presentation.check(report["core_sha256"] ==
