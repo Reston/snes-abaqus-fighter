@@ -6,7 +6,20 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
-- The active checkout is **v0.19.0 practice controls**.
+- This branch is the **v0.20.0 Damian likeness review build**. ROM SHA256
+  `6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501`, header `3F2A`.
+  The explicit new user request supersedes Damian's historical v4 appearance
+  pin. Four imagegen v5 atlases use the additional photo; the current exact
+  contract pin is `b6b94f879ed72b1eb0e84e100076f6cb80fddd990c162bc0361f1cd7da4631fc`.
+  The native source freeze is commit `c83cf5e`; see
+  [the likeness review note](docs/DAMIAN-LIKENESS-v5.md). All six suites pass
+  35,715 checks and the matching independent smoke passes. There is no v0.20
+  offline package or regenerated full release evidence. Human likeness approval
+  remains pending. Preserve the retained v4 contract and all old source art.
+  Other eleven fighters, Damian's OBJ palette and physical scale, all 1,276
+  RAM addresses and native C/assembly behavior are unchanged.
+
+- The previous full release checkpoint is **v0.19.0 practice controls**.
   ROM SHA256 `945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7`, header `05A4`,
   source freeze `003ab19b98f291fed67e7de457c1fc746d7ad2d8`, tree `17854e74ac06042df3d9121747036a00a5034686`.
   Paused CPU Training accepts both ports' L/R shoulders to change the existing

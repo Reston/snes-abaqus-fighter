@@ -3,7 +3,7 @@
   "suite": "training",
   "status": "passed",
   "passed": 2007,
-  "rom_sha256": "945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7",
+  "rom_sha256": "6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501",
   "rom_bytes": 4194304,
   "core": {
     "archive": ".tools\\core.zip",
@@ -48,16 +48,16 @@
         "nonblank": 736,
         "total": 736,
         "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
-        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\training\\mode0-controls.png",
-        "vram_sha256": "1121a892fb7465343bc1dee4dc723a2c1bbdc7eb601dd9c1438e8ff359ca2f99"
+        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\training\\mode0-controls.png",
+        "vram_sha256": "77bcbf7475cf0aac3d7d0e536d38546cfab1d06d5929d0ce9ac2910c62b5b939"
       },
       "specials": {
         "label": "mode0-specials",
         "nonblank": 736,
         "total": 736,
         "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n         MOVE LIST 2/2\n\n\n   P1  DAMIAN\n       KERNEL BURST\n       FORWARD PROJECTILE\n   P2  IVO\n       CAPITAL WAVE\n       FORWARD PROJECTILE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12-TICK WINDOW PER STEP\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
-        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\training\\mode0-specials.png",
-        "vram_sha256": "cff34fbe05a147f438afc55f2b4aff1f3cf5ced721c3e648c0f037fe363dd104"
+        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\training\\mode0-specials.png",
+        "vram_sha256": "b4313f7cada1071b4be0e0cdfbe928b2bad48759fb5db96bae16399071a4adf4"
       },
       "page_history": [
         {
@@ -77,7 +77,7 @@
         "nonblank": 736,
         "total": 736,
         "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
-        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\training\\mode1-controls.png",
+        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\training\\mode1-controls.png",
         "vram_sha256": "6fb6d6f86a0eacf621d65802462b78cd398b5254211dca006c18aa0207975b3f"
       },
       "specials": {
@@ -85,7 +85,7 @@
         "nonblank": 736,
         "total": 736,
         "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n         MOVE LIST 2/2\n\n\n   P1  CRISTOBAL\n       ATOMIC PUSH\n       ADVANCING STRIKE\n   P2  DAVID\n       AUDIT STRIKE\n       RISING STRIKE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12-TICK WINDOW PER STEP\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
-        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\training\\mode1-specials.png",
+        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\training\\mode1-specials.png",
         "vram_sha256": "5f7847470c1ec1a2a5059f5608f568c2c88b04cfa20812ba4248799769c96686"
       },
       "page_history": [
@@ -106,7 +106,7 @@
         "nonblank": 736,
         "total": 736,
         "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
-        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\training\\mode2-controls.png",
+        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\training\\mode2-controls.png",
         "vram_sha256": "efef95aa9a35d3e78da2b70c6b8e5517e65a17806e183f4916a5d3abff9f0302"
       },
       "specials": {
@@ -114,7 +114,7 @@
         "nonblank": 736,
         "total": 736,
         "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n         MOVE LIST 2/2\n\n\n   P1  NEGGER\n       MACRO SHOCK\n       LOW SHOCKWAVE\n   P2  IVO\n       CAPITAL WAVE\n       FORWARD PROJECTILE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12-TICK WINDOW PER STEP\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
-        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\training\\mode2-specials.png",
+        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\training\\mode2-specials.png",
         "vram_sha256": "973525269697998e241e3296f67bc45e322c4a5c2c0917090f43224634e633c5"
       },
       "page_history": [
@@ -262480,5 +262480,5 @@
       }
     }
   ],
-  "elapsed_seconds": 44.031
+  "elapsed_seconds": 24.688
 }

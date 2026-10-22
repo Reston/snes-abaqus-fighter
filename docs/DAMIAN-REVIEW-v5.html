@@ -1,0 +1,37 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+body{font-family:var(--font-sans,system-ui);color:var(--foreground);margin:0}*{box-sizing:border-box}
+.compare{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+figure{margin:0;min-width:0}figcaption{font-size:13px;margin:8px 0 0;line-height:1.4}
+.art{background:#081022;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.art img{display:block;max-width:100%;object-fit:contain}
+.faces{height:194px}.faces img{height:184px;width:auto}
+.faces.photo img{width:100%;height:100%;object-fit:cover;object-position:50% 26%}
+.note{font-size:13px;line-height:1.5;color:var(--muted-foreground);margin:16px 0}
+.pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.pixels{height:176px;padding:8px}.pixels img{width:128px;height:160px;image-rendering:pixelated}
+.scene{padding:16px}.scene img{width:100%;image-rendering:pixelated}
+.label{font-weight:600;font-size:14px;margin:22px 0 10px}
+details{margin-top:18px;font-size:13px}summary{cursor:pointer;color:var(--muted-foreground)}
+.sheet{display:block;max-width:100%;height:auto;image-rendering:pixelated;margin-top:12px}
+@media(max-width:460px){.compare{gap:8px}.faces{height:145px}.faces img{height:133px}.scene{padding:8px}.pixels{height:136px}.pixels img{width:96px;height:120px}figcaption{font-size:12px}}
+</style></head><body>
+<div class="compare">
+<figure><div class="art faces photo"><img alt="New photo supplied by the user" src="../assets/references/fighter-00-v5.png"></div><figcaption>New reference photo</figcaption></figure>
+<figure><div class="art faces"><img alt="Previous Damian face" src="../docs/screenshots/damian-v5/face-before.png"></div><figcaption>Previous face</figcaption></figure>
+<figure><div class="art faces"><img alt="Revised face with longer nose and short stubble" src="../docs/screenshots/damian-v5/face-after.png"></div><figcaption>Revised face</figcaption></figure>
+</div>
+<p class="note">Longer nose, darker brows, narrower mouth and short stubble. The blue suit and all 64 pose roles are retained.</p>
+<p class="label">Native 64 × 80 portraits · enlarged with nearest pixels</p>
+<div class="pair">
+<figure><div class="art pixels"><img alt="Previous native portrait" src="../docs/screenshots/damian-v5/before-portrait00-large.png"></div><figcaption>Previous</figcaption></figure>
+<figure><div class="art pixels"><img alt="Revised native portrait" src="../docs/screenshots/damian-v5/after-portrait00-large.png"></div><figcaption>Revised</figcaption></figure>
+</div>
+<p class="label">Captured from the revised SNES ROM</p>
+<div class="pair">
+<figure><div class="art scene"><img alt="Damian selected on the native fighter screen" src="../docs/screenshots/damian-v5/select.png"></div><figcaption>Fighter selection</figcaption></figure>
+<figure><div class="art scene"><img alt="Revised Damian in native Training combat" src="../docs/screenshots/damian-v5/fight.png"></div><figcaption>In-game sprite</figcaption></figure>
+</div>
+<details><summary>Inspect all 64 revised native frames</summary><img class="sheet" alt="Numbered sheet of all 64 revised Damian frames" src="../docs/screenshots/damian-v5/native64.png"></details>
+<p class="note">v0.20.0 likeness review build · 35,715 native checks pass · likeness awaiting your feedback</p>
+<script>Promise.all([...document.images].map(i=>i.decode())).then(()=>{console.log(JSON.stringify({images:document.images.length,loaded:[...document.images].every(i=>i.naturalWidth>0),overflow:document.documentElement.scrollWidth>innerWidth}));});</script>
+</body></html>

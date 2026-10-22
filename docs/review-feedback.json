@@ -98,6 +98,29 @@
         "rom_sha256": "8f7def30d29c87a659d7fb623147cf726bab8f8c94a96a503738529aded15279",
         "note": "docs/POLISH-v0.10.1.md"
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-22T08:32:48.297239+00:00",
+      "context_version": "0.19.0",
+      "observed_rom_sha256": null,
+      "source": "User likeness feedback with an additional attached photo; exact viewed ROM not identified",
+      "feedback": [
+        {
+          "response": "I'm still not satisfy with damian face it doesn't look like him",
+          "finding": "Damian facial likeness still needs improvement",
+          "status": "implemented_pending_user_review"
+        }
+      ],
+      "reference": {
+        "path": "assets/references/fighter-00-v5.png",
+        "sha256": "3797aa9e450df56e6a3f33992ca99f9a12937276e5708bf8051aca5f7891c6b5"
+      },
+      "human_approval_of_replacement": null,
+      "replacement_candidate": {
+        "version": "0.20.0",
+        "rom_sha256": "6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501",
+        "note": "docs/DAMIAN-LIKENESS-v5.md"
+      }
     }
   ]
 }

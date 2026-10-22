@@ -2,7 +2,7 @@
   "emulator": "Official Snes9x 1.63 x64 libretro core",
   "suite": "stage-ambient",
   "status": "passed",
-  "rom_sha256": "945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7",
+  "rom_sha256": "6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501",
   "rom_bytes": 4194304,
   "checks": [
     {
@@ -10,11 +10,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.19.0",
+        "version": "0.20.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7",
-        "checksum": "05A4",
+        "sha256": "6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501",
+        "checksum": "3F2A",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -24,7 +24,7 @@
       "check": "stage dynamics manifest exists",
       "passed": true,
       "details": {
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\stage-dynamics.json"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\stage-dynamics.json"
       }
     },
     {
@@ -9857,8 +9857,8 @@
       "passed": true,
       "details": {
         "stage": 0,
-        "tiles": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\stage0_tiles.bin",
-        "map": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\stage0_map.bin"
+        "tiles": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\stage0_tiles.bin",
+        "map": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\stage0_map.bin"
       }
     },
     {
@@ -21962,7 +21962,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\las-condes-phase0.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\las-condes-phase0.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -26818,7 +26818,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\las-condes-phase1.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\las-condes-phase1.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -31674,7 +31674,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\las-condes-phase2.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\las-condes-phase2.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -36530,7 +36530,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\las-condes-phase3.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\las-condes-phase3.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -60239,7 +60239,7 @@
       "details": {
         "stage": 0,
         "phase": 1,
-        "changed_pixels": 2718,
+        "changed_pixels": 2752,
         "outside_patch_pixels": 0,
         "outside_bbox": null
       }
@@ -60309,7 +60309,7 @@
       "details": {
         "stage": 0,
         "phase": 2,
-        "changed_pixels": 2651,
+        "changed_pixels": 2759,
         "outside_patch_pixels": 0,
         "outside_bbox": null
       }
@@ -60379,7 +60379,7 @@
       "details": {
         "stage": 0,
         "phase": 3,
-        "changed_pixels": 2412,
+        "changed_pixels": 2413,
         "outside_patch_pixels": 0,
         "outside_bbox": null
       }
@@ -60448,7 +60448,7 @@
       "passed": true,
       "details": {
         "frames": 128,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\las-condes-ambient.gif"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\las-condes-ambient.gif"
       }
     },
     {
@@ -60596,7 +60596,7 @@
           "phase": 0,
           "pending": 255,
           "tile_sha256": "83cc25b2612113aef24dab6645f9708813008c939d2a36b3ed6b72ee339029ad",
-          "frame": "f6925cfb390346d3e91cefd2cb59a325bddfaa4a83b207637b37e40be2944d85"
+          "frame": "f2ed765bee37fed3ef67cdb67f2477728f6acb181aae20b90aeb34aff6fd02dd"
         },
         "after": {
           "magic": 43706,
@@ -60730,15 +60730,15 @@
         "phase": 0,
         "pending": 255,
         "tile_sha256": "83cc25b2612113aef24dab6645f9708813008c939d2a36b3ed6b72ee339029ad",
-        "frame": "f6925cfb390346d3e91cefd2cb59a325bddfaa4a83b207637b37e40be2944d85"
+        "frame": "f2ed765bee37fed3ef67cdb67f2477728f6acb181aae20b90aeb34aff6fd02dd"
       }
     },
     {
       "check": "stage PPU output remains frozen while paused",
       "passed": true,
       "details": {
-        "before": "f6925cfb390346d3e91cefd2cb59a325bddfaa4a83b207637b37e40be2944d85",
-        "after": "f6925cfb390346d3e91cefd2cb59a325bddfaa4a83b207637b37e40be2944d85"
+        "before": "f2ed765bee37fed3ef67cdb67f2477728f6acb181aae20b90aeb34aff6fd02dd",
+        "after": "f2ed765bee37fed3ef67cdb67f2477728f6acb181aae20b90aeb34aff6fd02dd"
       }
     },
     {
@@ -121829,7 +121829,7 @@
       "passed": true,
       "details": {
         "frames": 53,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\las-condes-two-waves.gif"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\las-condes-two-waves.gif"
       }
     },
     {
@@ -121837,8 +121837,8 @@
       "passed": true,
       "details": {
         "stage": 1,
-        "tiles": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\stage1_tiles.bin",
-        "map": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\stage1_map.bin"
+        "tiles": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\stage1_tiles.bin",
+        "map": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\stage1_map.bin"
       }
     },
     {
@@ -133942,7 +133942,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\el-castillo-phase0.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\el-castillo-phase0.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -137790,7 +137790,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\el-castillo-phase1.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\el-castillo-phase1.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -142142,7 +142142,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\el-castillo-phase2.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\el-castillo-phase2.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -146494,7 +146494,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\el-castillo-phase3.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\el-castillo-phase3.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -168257,7 +168257,7 @@
       "details": {
         "stage": 1,
         "phase": 2,
-        "changed_pixels": 2354,
+        "changed_pixels": 2388,
         "outside_patch_pixels": 0,
         "outside_bbox": null
       }
@@ -168327,7 +168327,7 @@
       "details": {
         "stage": 1,
         "phase": 3,
-        "changed_pixels": 2612,
+        "changed_pixels": 2720,
         "outside_patch_pixels": 0,
         "outside_bbox": null
       }
@@ -168396,7 +168396,7 @@
       "passed": true,
       "details": {
         "frames": 128,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\el-castillo-ambient.gif"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\el-castillo-ambient.gif"
       }
     },
     {
@@ -168544,7 +168544,7 @@
           "phase": 0,
           "pending": 255,
           "tile_sha256": "005d040dd178547d3689f0cf8b3547eebc2d0000baa8209d64f037c3513d866c",
-          "frame": "f7002026a2c96983d9837c629f8cb56dd5a08972e8aec94685cd135e4dc02003"
+          "frame": "8064a9d1ab7eb3bece6103f2a61fd3fe46f4c7b1ad7a7ccaa26c40704719b40b"
         },
         "after": {
           "magic": 43706,
@@ -168678,15 +168678,15 @@
         "phase": 0,
         "pending": 255,
         "tile_sha256": "005d040dd178547d3689f0cf8b3547eebc2d0000baa8209d64f037c3513d866c",
-        "frame": "f7002026a2c96983d9837c629f8cb56dd5a08972e8aec94685cd135e4dc02003"
+        "frame": "8064a9d1ab7eb3bece6103f2a61fd3fe46f4c7b1ad7a7ccaa26c40704719b40b"
       }
     },
     {
       "check": "stage PPU output remains frozen while paused",
       "passed": true,
       "details": {
-        "before": "f7002026a2c96983d9837c629f8cb56dd5a08972e8aec94685cd135e4dc02003",
-        "after": "f7002026a2c96983d9837c629f8cb56dd5a08972e8aec94685cd135e4dc02003"
+        "before": "8064a9d1ab7eb3bece6103f2a61fd3fe46f4c7b1ad7a7ccaa26c40704719b40b",
+        "after": "8064a9d1ab7eb3bece6103f2a61fd3fe46f4c7b1ad7a7ccaa26c40704719b40b"
       }
     },
     {
@@ -229777,7 +229777,7 @@
       "passed": true,
       "details": {
         "frames": 53,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\el-castillo-two-waves.gif"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\el-castillo-two-waves.gif"
       }
     },
     {
@@ -229785,8 +229785,8 @@
       "passed": true,
       "details": {
         "stage": 2,
-        "tiles": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\stage2_tiles.bin",
-        "map": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\stage2_map.bin"
+        "tiles": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\stage2_tiles.bin",
+        "map": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\stage2_map.bin"
       }
     },
     {
@@ -241890,7 +241890,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\la-oficina-phase0.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\la-oficina-phase0.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -245738,7 +245738,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\la-oficina-phase1.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\la-oficina-phase1.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -250090,7 +250090,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\la-oficina-phase2.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\la-oficina-phase2.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -254442,7 +254442,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\la-oficina-phase3.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\la-oficina-phase3.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -276205,7 +276205,7 @@
       "details": {
         "stage": 2,
         "phase": 2,
-        "changed_pixels": 2342,
+        "changed_pixels": 2376,
         "outside_patch_pixels": 0,
         "outside_bbox": null
       }
@@ -276275,7 +276275,7 @@
       "details": {
         "stage": 2,
         "phase": 3,
-        "changed_pixels": 2600,
+        "changed_pixels": 2708,
         "outside_patch_pixels": 0,
         "outside_bbox": null
       }
@@ -276344,7 +276344,7 @@
       "passed": true,
       "details": {
         "frames": 128,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\la-oficina-ambient.gif"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\la-oficina-ambient.gif"
       }
     },
     {
@@ -276492,7 +276492,7 @@
           "phase": 0,
           "pending": 255,
           "tile_sha256": "170947bb6e560a933d9586efed8fcce74412b160238d252ae29f8fe6a2b602de",
-          "frame": "d711e06be695f026fca057b5349381e80e3b1ce255deaca0c19919c77918707c"
+          "frame": "8b91bb2647db66bf8b82fc097b4f72b1cf2d220472f3ffd1d4bb6f2b8ea94115"
         },
         "after": {
           "magic": 43706,
@@ -276626,15 +276626,15 @@
         "phase": 0,
         "pending": 255,
         "tile_sha256": "170947bb6e560a933d9586efed8fcce74412b160238d252ae29f8fe6a2b602de",
-        "frame": "d711e06be695f026fca057b5349381e80e3b1ce255deaca0c19919c77918707c"
+        "frame": "8b91bb2647db66bf8b82fc097b4f72b1cf2d220472f3ffd1d4bb6f2b8ea94115"
       }
     },
     {
       "check": "stage PPU output remains frozen while paused",
       "passed": true,
       "details": {
-        "before": "d711e06be695f026fca057b5349381e80e3b1ce255deaca0c19919c77918707c",
-        "after": "d711e06be695f026fca057b5349381e80e3b1ce255deaca0c19919c77918707c"
+        "before": "8b91bb2647db66bf8b82fc097b4f72b1cf2d220472f3ffd1d4bb6f2b8ea94115",
+        "after": "8b91bb2647db66bf8b82fc097b4f72b1cf2d220472f3ffd1d4bb6f2b8ea94115"
       }
     },
     {
@@ -337725,7 +337725,7 @@
       "passed": true,
       "details": {
         "frames": 53,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\la-oficina-two-waves.gif"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\la-oficina-two-waves.gif"
       }
     }
   ],
@@ -337733,8 +337733,8 @@
     "las-condes": {
       "stage": 0,
       "slug": "las-condes",
-      "base_tiles": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\stage0_tiles.bin",
-      "base_map": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\stage0_map.bin",
+      "base_tiles": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\stage0_tiles.bin",
+      "base_map": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\stage0_map.bin",
       "patch_cells": [
         220,
         221,
@@ -337761,7 +337761,7 @@
             304,
             305
           ],
-          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\las-condes-phase0.png"
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\las-condes-phase0.png"
         },
         "1": {
           "phase": 1,
@@ -337778,9 +337778,9 @@
             304,
             305
           ],
-          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\las-condes-phase1.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\las-condes-phase1.png",
           "ppu_diff": {
-            "changed_pixels": 2718,
+            "changed_pixels": 2752,
             "outside_patch_pixels": 0,
             "outside_bbox": null
           },
@@ -337801,9 +337801,9 @@
             304,
             305
           ],
-          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\las-condes-phase2.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\las-condes-phase2.png",
           "ppu_diff": {
-            "changed_pixels": 2651,
+            "changed_pixels": 2759,
             "outside_patch_pixels": 0,
             "outside_bbox": null
           },
@@ -337824,9 +337824,9 @@
             304,
             305
           ],
-          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\las-condes-phase3.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\las-condes-phase3.png",
           "ppu_diff": {
-            "changed_pixels": 2412,
+            "changed_pixels": 2413,
             "outside_patch_pixels": 0,
             "outside_bbox": null
           },
@@ -338323,14 +338323,14 @@
           "stage_id": 0
         }
       },
-      "ambient_gif": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\las-condes-ambient.gif",
+      "ambient_gif": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\las-condes-ambient.gif",
       "pause": {
         "before": {
           "clock": 131,
           "phase": 0,
           "pending": 255,
           "tile_sha256": "83cc25b2612113aef24dab6645f9708813008c939d2a36b3ed6b72ee339029ad",
-          "frame": "f6925cfb390346d3e91cefd2cb59a325bddfaa4a83b207637b37e40be2944d85"
+          "frame": "f2ed765bee37fed3ef67cdb67f2477728f6acb181aae20b90aeb34aff6fd02dd"
         },
         "after": {
           "magic": 43706,
@@ -338454,7 +338454,7 @@
           "ambient_phase_age": 0,
           "stage_id": 0
         },
-        "phase_asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\stage0_ambient.bin"
+        "phase_asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\stage0_ambient.bin"
       },
       "hitstop": {
         "hitstop": {
@@ -338580,8 +338580,8 @@
           "stage_id": 0
         },
         "held_ticks": 5,
-        "before_frame": "c61da1f6133b2d7d267a4d2f423b1c7eda1150cb0e1c9d41cc58e0fa0ac4cb60",
-        "after_frame": "f041894a72e25d87934faa5c3110fa459f39ddfb067f27e9c5d0bd61f44cd444"
+        "before_frame": "fd60ad931e2df06153ebfad427596c8903440bd2db8691af7ce437789935d1d6",
+        "after_frame": "a4332d3ad799ec68fe887d0a7d2cc49a1bf533b0e65abc99b0eea66dc545f4e6"
       },
       "oam_stress": {
         "frames": 600,
@@ -338643,15 +338643,15 @@
         "extra_oam_baseline": 4,
         "extra_oam_peak": 6,
         "max_changed_pixels": 5001,
-        "gif": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\las-condes-two-waves.gif",
-        "contact_capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\las-condes-two-waves-contact.png"
+        "gif": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\las-condes-two-waves.gif",
+        "contact_capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\las-condes-two-waves-contact.png"
       }
     },
     "el-castillo": {
       "stage": 1,
       "slug": "el-castillo",
-      "base_tiles": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\stage1_tiles.bin",
-      "base_map": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\stage1_map.bin",
+      "base_tiles": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\stage1_tiles.bin",
+      "base_map": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\stage1_map.bin",
       "patch_cells": [
         324,
         328,
@@ -338678,7 +338678,7 @@
             496,
             497
           ],
-          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\el-castillo-phase0.png"
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\el-castillo-phase0.png"
         },
         "1": {
           "phase": 1,
@@ -338695,7 +338695,7 @@
             496,
             497
           ],
-          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\el-castillo-phase1.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\el-castillo-phase1.png",
           "ppu_diff": {
             "changed_pixels": 1676,
             "outside_patch_pixels": 0,
@@ -338718,9 +338718,9 @@
             496,
             497
           ],
-          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\el-castillo-phase2.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\el-castillo-phase2.png",
           "ppu_diff": {
-            "changed_pixels": 2354,
+            "changed_pixels": 2388,
             "outside_patch_pixels": 0,
             "outside_bbox": null
           },
@@ -338741,9 +338741,9 @@
             496,
             497
           ],
-          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\el-castillo-phase3.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\el-castillo-phase3.png",
           "ppu_diff": {
-            "changed_pixels": 2612,
+            "changed_pixels": 2720,
             "outside_patch_pixels": 0,
             "outside_bbox": null
           },
@@ -339240,14 +339240,14 @@
           "stage_id": 1
         }
       },
-      "ambient_gif": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\el-castillo-ambient.gif",
+      "ambient_gif": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\el-castillo-ambient.gif",
       "pause": {
         "before": {
           "clock": 131,
           "phase": 0,
           "pending": 255,
           "tile_sha256": "005d040dd178547d3689f0cf8b3547eebc2d0000baa8209d64f037c3513d866c",
-          "frame": "f7002026a2c96983d9837c629f8cb56dd5a08972e8aec94685cd135e4dc02003"
+          "frame": "8064a9d1ab7eb3bece6103f2a61fd3fe46f4c7b1ad7a7ccaa26c40704719b40b"
         },
         "after": {
           "magic": 43706,
@@ -339371,7 +339371,7 @@
           "ambient_phase_age": 0,
           "stage_id": 1
         },
-        "phase_asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\stage1_ambient.bin"
+        "phase_asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\stage1_ambient.bin"
       },
       "hitstop": {
         "hitstop": {
@@ -339497,8 +339497,8 @@
           "stage_id": 1
         },
         "held_ticks": 5,
-        "before_frame": "b363344e8826a2c8742ca3fd3878ca8eae84484204d2d4c974e0cc6e18160c62",
-        "after_frame": "ea63860f8932088d3a5a91d756f51102d9a512b7995f26f13cf8c254d52d40bc"
+        "before_frame": "589a7966bb5584ac6d767659adce4bb3db1fa7edbac2ddee660331494343652f",
+        "after_frame": "f7503fb9db14e11fd56a613fe65a4aa56f96f5a5d3aeec4061f9fcdb9febf9b1"
       },
       "oam_stress": {
         "frames": 600,
@@ -339560,15 +339560,15 @@
         "extra_oam_baseline": 4,
         "extra_oam_peak": 6,
         "max_changed_pixels": 4999,
-        "gif": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\el-castillo-two-waves.gif",
-        "contact_capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\el-castillo-two-waves-contact.png"
+        "gif": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\el-castillo-two-waves.gif",
+        "contact_capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\el-castillo-two-waves-contact.png"
       }
     },
     "la-oficina": {
       "stage": 2,
       "slug": "la-oficina",
-      "base_tiles": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\stage2_tiles.bin",
-      "base_map": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\stage2_map.bin",
+      "base_tiles": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\stage2_tiles.bin",
+      "base_map": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\stage2_map.bin",
       "patch_cells": [
         423,
         424,
@@ -339595,7 +339595,7 @@
             467,
             468
           ],
-          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\la-oficina-phase0.png"
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\la-oficina-phase0.png"
         },
         "1": {
           "phase": 1,
@@ -339612,7 +339612,7 @@
             467,
             468
           ],
-          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\la-oficina-phase1.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\la-oficina-phase1.png",
           "ppu_diff": {
             "changed_pixels": 1662,
             "outside_patch_pixels": 0,
@@ -339635,9 +339635,9 @@
             467,
             468
           ],
-          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\la-oficina-phase2.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\la-oficina-phase2.png",
           "ppu_diff": {
-            "changed_pixels": 2342,
+            "changed_pixels": 2376,
             "outside_patch_pixels": 0,
             "outside_bbox": null
           },
@@ -339658,9 +339658,9 @@
             467,
             468
           ],
-          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\la-oficina-phase3.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\la-oficina-phase3.png",
           "ppu_diff": {
-            "changed_pixels": 2600,
+            "changed_pixels": 2708,
             "outside_patch_pixels": 0,
             "outside_bbox": null
           },
@@ -340157,14 +340157,14 @@
           "stage_id": 2
         }
       },
-      "ambient_gif": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\la-oficina-ambient.gif",
+      "ambient_gif": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\la-oficina-ambient.gif",
       "pause": {
         "before": {
           "clock": 131,
           "phase": 0,
           "pending": 255,
           "tile_sha256": "170947bb6e560a933d9586efed8fcce74412b160238d252ae29f8fe6a2b602de",
-          "frame": "d711e06be695f026fca057b5349381e80e3b1ce255deaca0c19919c77918707c"
+          "frame": "8b91bb2647db66bf8b82fc097b4f72b1cf2d220472f3ffd1d4bb6f2b8ea94115"
         },
         "after": {
           "magic": 43706,
@@ -340288,7 +340288,7 @@
           "ambient_phase_age": 0,
           "stage_id": 2
         },
-        "phase_asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\stage2_ambient.bin"
+        "phase_asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\stage2_ambient.bin"
       },
       "hitstop": {
         "hitstop": {
@@ -340414,8 +340414,8 @@
           "stage_id": 2
         },
         "held_ticks": 5,
-        "before_frame": "514272ca4633e46c2a238d95a69540f0de31048dd0bb2ccdb60a5f40b967761b",
-        "after_frame": "73d4283239527ccadf710c88199362bf123cede5e3eb6bf3345ec88a98b96eae"
+        "before_frame": "05f53b43be8ef7a8d4eddc5280dd1f6ffd8d5d065afa09e8cad4c90f4781e51f",
+        "after_frame": "02cbd3aab4d5e84e489a6ee6ad132df2cf2d400b08f0b9a2e0be5689c9cf6c9c"
       },
       "oam_stress": {
         "frames": 600,
@@ -340477,8 +340477,8 @@
         "extra_oam_baseline": 4,
         "extra_oam_peak": 6,
         "max_changed_pixels": 4981,
-        "gif": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\la-oficina-two-waves.gif",
-        "contact_capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\stages\\la-oficina-two-waves-contact.png"
+        "gif": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\la-oficina-two-waves.gif",
+        "contact_capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\stages\\la-oficina-two-waves-contact.png"
       }
     }
   },
@@ -340490,5 +340490,5 @@
     "ambient_phase_age": 118
   },
   "passed": 8163,
-  "elapsed_seconds": 16.531
+  "elapsed_seconds": 9.484
 }
