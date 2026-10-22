@@ -9,6 +9,8 @@ import json, sys, time, wave
 from PIL import Image
 sys.path.insert(0,str(Path(__file__).parent))
 from emulator import Emulator, ROOT
+import test_presentation as presentation
+from test_champion import verify_background as verify_champion_background
 
 checks=[]
 # Native fighter frames are 96x80 (six 16x16 OBJ pieces by five rows),
@@ -370,6 +372,11 @@ for match in range(1,11):
     check(e.state()['wins1']==2,'Controller-only player wins ladder match '+str(match+1))
     if match<10:press(e,'a');wait(e,3)
 check(e.state()['champion']==1,'Defeating all eleven opponents awards Office Champion')
+champion_evidence={
+    'background':verify_champion_background(e),
+    'portrait':presentation.verify_large_portrait(e,e.state()['fighter_id1'],21,7),
+    'text':presentation.verify_result_font_bank(e,e.state()),
+}
 result_map=C.string_at(e.core.retro_get_memory_data(3),e.core.retro_get_memory_size(3))
 title_prompt='A/START: TITLE'
 title_x=(32-len(title_prompt))//2
@@ -389,6 +396,7 @@ manifest=json.loads((ROOT/'dist/manifest.json').read_text())
 check(manifest.get('bytes')==4*1024*1024,'Native ROM uses the 4 MiB animation FastROM image',manifest)
 report={'emulator':'Official Snes9x 1.63 x64 libretro core','rom_sha256':manifest['sha256'],'rom_bytes':manifest.get('bytes'),
         'animation_manifest':animation_manifest,
+        'champion_ending':champion_evidence,
         'passed':len(checks),'elapsed_seconds':round(time.time()-started,2),'checks':checks}
 (ROOT/'docs/test-report.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps({'passed':len(checks),'seconds':report['elapsed_seconds'],'frame_cadence':advance,'report':'docs/test-report.json'}))

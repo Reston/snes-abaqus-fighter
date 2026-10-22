@@ -162,7 +162,8 @@ roster=prepare_roster(ROOT,OUT)
 for name,image in make_menu_images(ROOT,stages,roster,text).items():
     background(name,image)
 background('champion',load_champion(ROOT))
-assert (OUT/'champion_tiles.bin').stat().st_size < 896*32, 'Champion BG1 needs tile headroom'
+if (OUT/'champion_tiles.bin').stat().st_size >= 896*32:
+    raise RuntimeError('Champion BG1 needs tile headroom below 896 tiles')
 
 # Selected faces have a dedicated BG2 palette and 80 tiles, independent of the
 # six background palettes. Source-master crops retain more facial detail than
