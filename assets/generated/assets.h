@@ -41,6 +41,12 @@ extern char arenas_map, arenas_map_end;
 #define ARENAS_MAP_SIZE 2048
 extern char arenas_pal, arenas_pal_end;
 #define ARENAS_PAL_SIZE 192
+extern char champion_tiles, champion_tiles_end;
+#define CHAMPION_TILES_SIZE 10560
+extern char champion_map, champion_map_end;
+#define CHAMPION_MAP_SIZE 2048
+extern char champion_pal, champion_pal_end;
+#define CHAMPION_PAL_SIZE 192
 extern char portrait00_tiles, portrait00_tiles_end;
 #define PORTRAIT00_TILES_SIZE 2560
 extern char portrait00_pal, portrait00_pal_end;

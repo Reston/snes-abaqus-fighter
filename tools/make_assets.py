@@ -9,6 +9,7 @@ import hashlib, json, math, random, struct, subprocess, sys
 sys.path.insert(0, str(Path(__file__).parent))
 from fighter_assets import prepare_roster
 from menu_assets import make_menu_images
+from champion_assets import load_champion
 from effect_assets import make_effect_sheet
 from stage_assets import build_stage_animation
 from stage_sources import load_stage_sources
@@ -160,6 +161,8 @@ for source in load_stage_sources(ROOT):
 roster=prepare_roster(ROOT,OUT)
 for name,image in make_menu_images(ROOT,stages,roster,text).items():
     background(name,image)
+background('champion',load_champion(ROOT))
+assert (OUT/'champion_tiles.bin').stat().st_size < 896*32, 'Champion BG1 needs tile headroom'
 
 # Selected faces have a dedicated BG2 palette and 80 tiles, independent of the
 # six background palettes. Source-master crops retain more facial detail than
@@ -412,4 +415,4 @@ for i,h in enumerate(effect_hashes):print(f'Effects PCM {i}: {h}')
 },indent=2)+'\n')
 (OUT/'data.asm').write_text('\n'.join(asm)+'\n')
 (OUT/'assets.h').write_text('\n'.join(header)+'\n')
-print('Encoded six backgrounds, 768 fighter frames, UI, effects, 4 music tracks and 4 sounds.')
+print('Encoded seven backgrounds, 768 fighter frames, UI, effects, 4 music tracks and 4 sounds.')

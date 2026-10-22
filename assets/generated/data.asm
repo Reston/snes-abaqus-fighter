@@ -104,6 +104,21 @@ arenas_pal:
 .incbin "assets/generated/arenas_pal.bin"
 arenas_pal_end:
 .ends
+.section "asset_champion_tiles" superfree
+champion_tiles:
+.incbin "assets/generated/champion_tiles.bin"
+champion_tiles_end:
+.ends
+.section "asset_champion_map" superfree
+champion_map:
+.incbin "assets/generated/champion_map.bin"
+champion_map_end:
+.ends
+.section "asset_champion_pal" superfree
+champion_pal:
+.incbin "assets/generated/champion_pal.bin"
+champion_pal_end:
+.ends
 .section "asset_portrait00_tiles" superfree
 portrait00_tiles:
 .incbin "assets/generated/portrait00_tiles.bin"

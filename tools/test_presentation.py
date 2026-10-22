@@ -446,7 +446,16 @@ def verify_result_font_bank(e: Emulator, current: dict[str, int]) -> dict[str, o
         else current["fighter_id2"]
     score = f"P1  {current['wins1']} - {current['wins2']}  P2"
     if current["champion"]:
-        title, action, context = "OFFICE CHAMPION", "A/START: TITLE", "ALL 11 DEFEATED"
+        rows = [
+            (2, centered_start("OFFICE CHAMPION"), "OFFICE CHAMPION"),
+            (18, 21, winner),
+            (19, 21, f"P1 {current['wins1']}-{current['wins2']} P2"),
+            (20, 22, "ALL 11"), (21, 21, "DEFEATED"),
+            (22, centered_start(quotes[winner_id]), quotes[winner_id]),
+            (24, centered_start("A/START: TITLE"), "A/START: TITLE"),
+            (26, centered_start("B: CHARACTER SELECT"), "B: CHARACTER SELECT"),
+        ]
+        return verify_opaque_text_rows(e, rows, "champion ending")
     elif current["mode"] == 1:
         title, action, context = "MATCH COMPLETE", "A/START: REMATCH", "LOCAL VERSUS"
     else:

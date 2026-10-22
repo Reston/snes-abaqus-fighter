@@ -429,12 +429,37 @@ void beginMatch(void) {
     resetRound();panel(26,2);center(26,"Y/X/L PUNCH   B/A/R KICK");center(27,"START PAUSE > SELECT GUIDE");
     music(arena+1);finishScreen();
 }
+void loadChampionEnding(u8 id) {
+    u8 x,y;
+    /* Only called inside the screen-off result transition. BG1 uses the
+     * existing six scene palettes; the portrait keeps its BG2 page/palette. */
+    dmaCopyVram(&champion_tiles,0,CHAMPION_TILES_SIZE);
+    dmaCopyVram(&champion_map,0x3800,2048);
+    dmaCopyCGram(&champion_pal,32,192);
+    portraitId=id;uploadMenuPortrait();
+    center(2,"OFFICE CHAMPION");
+    for(x=3;x<29;x++)put(x,4,154);
+    cursor(20,6,10,12);
+    for(y=0;y<10;y++)for(x=0;x<8;x++)
+        ui[(u16)(y+7)*32+x+21]=(160+(u16)y*8+x)|0x2400;
+    word(21,18,characterNames[id]);
+    word(21,19,"P1 2-0 P2");
+    put(24,19,'0'+fighters[0].won);put(26,19,'0'+fighters[1].won);
+    word(22,20,"ALL 11");word(21,21,"DEFEATED");
+    /* The trophy's keyboard/plinth ends at y175. Only the footer is filled. */
+    panel(22,6);center(22,characterQuotes[id]);
+    center(24,"A/START: TITLE");center(26,"B: CHARACTER SELECT");
+}
 void showResult(u8 won) {
     u8 id,x,y;
-    setScreenOff();screen=RESULT;resultWin=won;commonScreen();loadBackground(arena);
+    setScreenOff();screen=RESULT;resultWin=won;commonScreen();
+    if(champion) {
+        loadChampionEnding(won?fighters[0].id:fighters[1].id);
+        sound(3);finishScreen();return;
+    }
+    loadBackground(arena);
     panel(4,23);
-    if(champion)center(5,"OFFICE CHAMPION");
-    else if(mode==1)center(5,"MATCH COMPLETE");
+    if(mode==1)center(5,"MATCH COMPLETE");
     else center(5,won?"SHIFT COMPLETE":"SHIFT OVER");
     for(x=3;x<29;x++)put(x,7,154);
     id=won?fighters[0].id:fighters[1].id;
@@ -446,11 +471,9 @@ void showResult(u8 won) {
     word(15,9,characterNames[id]);word(15,11,"WINS THE MATCH");
     word(16,13,"ROUND WINS");word(15,14,"P1  0 - 0  P2");
     put(19,14,'0'+fighters[0].won);put(23,14,'0'+fighters[1].won);
-    if(champion)word(15,17,"ALL 11 DEFEATED");
-    else word(15,17,mode==0?"ARCADE SHIFT":"LOCAL VERSUS");
+    word(15,17,mode==0?"ARCADE SHIFT":"LOCAL VERSUS");
     center(21,characterQuotes[id]);
-    if(champion)center(24,"A/START: TITLE");
-    else if(mode==0)center(24,won?"A/START: NEXT CHALLENGER":"A/START: CONTINUE");
+    if(mode==0)center(24,won?"A/START: NEXT CHALLENGER":"A/START: CONTINUE");
     else center(24,"A/START: REMATCH");
     center(26,"B: CHARACTER SELECT");sound(3);finishScreen();
 }
