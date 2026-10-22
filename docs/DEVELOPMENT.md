@@ -1,8 +1,8 @@
 # Native SNES implementation
-<!-- candidate-version: 0.11.0; rom-sha256: 77615cb93f9f7c572c66b23f4a078acb87c1a8ab925667ead42a84d1a880e629 -->
+<!-- candidate-version: 0.11.0; rom-sha256: 1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7 -->
 
 The current checkout builds the v0.11.0 result-screen candidate, ROM SHA256
-`77615cb93f9f7c572c66b23f4a078acb87c1a8ab925667ead42a84d1a880e629`, checksum `5AFE`.
+`1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7`, checksum `7CFE`.
 It includes the [v0.10.1 Lars/location art pass](POLISH-v0.10.1.md) and
 reuses the existing portrait page for the match winner. The portrait is
 uploaded while the screen is blanked; the live one-actor-per-vblank budget,

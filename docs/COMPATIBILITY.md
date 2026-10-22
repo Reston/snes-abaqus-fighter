@@ -1,8 +1,8 @@
 # Independent-engine compatibility
-<!-- candidate-version: 0.11.0; rom-sha256: 77615cb93f9f7c572c66b23f4a078acb87c1a8ab925667ead42a84d1a880e629 -->
+<!-- candidate-version: 0.11.0; rom-sha256: 1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7 -->
 
 The current candidate is v0.11.0, cartridge SHA256
-`77615cb93f9f7c572c66b23f4a078acb87c1a8ab925667ead42a84d1a880e629`.
+`1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7`.
 The authoritative evidence is the exact-ROM smoke and bounded-combat JSON
 linked below. Candidate verification is in progress; earlier reports must
 not be interpreted as verification of this cartridge. The release note

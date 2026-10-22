@@ -1083,7 +1083,7 @@ void fightTick(void) {
             roundBannerPending=0;clearBanner();fillBannerPanel();
             center(10,seconds?"K.O.":"TIME OVER");
             if(winner<2)center(12,characterNames[fighters[winner].id]);
-            else center(12,"DOUBLE K.O.");
+            else center(12,seconds?"DOUBLE K.O.":"DRAW");
             hud();
         }
         roundEnd--;

@@ -1,7 +1,7 @@
 # v0.11.0 human playtest guide
-<!-- candidate-version: 0.11.0; rom-sha256: 77615cb93f9f7c572c66b23f4a078acb87c1a8ab925667ead42a84d1a880e629 -->
+<!-- candidate-version: 0.11.0; rom-sha256: 1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7 -->
 
-Review cartridge SHA256 `77615cb93f9f7c572c66b23f4a078acb87c1a8ab925667ead42a84d1a880e629`.
+Review cartridge SHA256 `1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7`.
 First compare Lars's face and hair with the reference and check the wider
 location previews. Then finish a Local Versus match from each side: the
 winner's portrait, name, score and quote should agree, and A/Start should

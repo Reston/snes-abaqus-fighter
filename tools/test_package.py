@@ -88,11 +88,14 @@ def main() -> None:
         expect_package_error(lambda: PACKAGE.validate_suite(altered, 'fixture', 'a' * 64),
                              'stale, empty, incomplete or failed suite')
 
-    names = {'README.md', 'qa/stages.json'}
+    names = {'README.md', 'qa/stages.json', 'RELEASE.md', 'RELEASE-v0.11.0.md'}
     rendered = PACKAGE.offline_markdown_text(
         '[local](README.md)\n'
         '[stage](stage-test-report.json)\n'
         '[art](../assets/source.png)\n'
+        '![image](../assets/image.png)\n'
+        '[current](RELEASE-v0.11.0.md)\n'
+        '[history](RELEASE-v0.9.0.md)\n'
         '[web](https://example.test/release)\n',
         'OBJ-BUDGET.md',
         names,
@@ -103,6 +106,12 @@ def main() -> None:
           'source-only link was not made honest')
     check('[web](https://example.test/release)' in rendered,
           'external link changed')
+    check('[current](RELEASE.md)' in rendered,
+          'current versioned release link did not map to offline note')
+    check('history (source-only: RELEASE-v0.9.0.md)' in rendered,
+          'historical release link incorrectly points at current release')
+    check('image (source-only: ../assets/image.png)' in rendered and '![' not in rendered,
+          'missing image link leaves broken image markup')
     check(not PACKAGE.missing_offline_links(rendered, 'OBJ-BUDGET.md', names),
           'rendered document still has an unresolved offline link')
     print('package-audit mutation checks passed')

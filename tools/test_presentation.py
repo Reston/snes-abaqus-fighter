@@ -911,6 +911,31 @@ def fight_stage_captures() -> dict[str, str]:
     return captures
 
 
+def timeout_draw_capture() -> dict[str, object]:
+    """A full-health tied timeout must never claim a double knockout."""
+    e = boot_fight(1)
+    try:
+        for _ in range(6200):
+            current = state(e)
+            if current["seconds"] == 0 and current["round_end"] > 100:
+                break
+            e.run(1)
+        e.run(5)
+        current = state(e)
+        check(current["seconds"] == 0 and current["round_end"] > 100 and
+              current["hp1"] == current["hp2"] > 0 and
+              current["wins1"] == current["wins2"] == 0,
+              "neutral local match reaches a healthy tied timeout", current)
+        text = verify_opaque_text_rows(e, [
+            (10, centered_start("TIME OVER"), "TIME OVER"),
+            (12, centered_start("DRAW"), "DRAW"),
+        ], "first tied timeout banner")
+        path = capture(e, "timeout-draw.png")
+        return {"state": current, "opaque_text": text, "capture": str(path)}
+    finally:
+        e.close()
+
+
 def main() -> int:
     started = time.time()
     report: dict[str, object] = {
@@ -931,6 +956,7 @@ def main() -> int:
             "stages": fight_stage_captures(),
             "result": result_score_capture(),
             "result_p2": result_score_capture(1),
+            "timeout_draw": timeout_draw_capture(),
         }
         report["status"] = "passed"
     except Exception as exc:

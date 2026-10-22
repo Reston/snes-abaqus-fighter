@@ -177,9 +177,13 @@ def main():
         with zipfile.ZipFile(archive) as package:
             check(package.testzip() is None, 'offline package CRC check')
             package_names = set(package.namelist())
-            check(expected_names.issubset(package_names),
-                  'offline package contains every mapped release entry',
-                  sorted(expected_names - package_names))
+            check(len(package.namelist()) == len(package_names),
+                  'offline package has no duplicate archive entries')
+            check(expected_names == package_names,
+                  'offline package contains exactly the mapped release entries', {
+                      'missing': sorted(expected_names - package_names),
+                      'extra': sorted(package_names - expected_names),
+                  })
             for name, source in expected_sources.items():
                 check(package.read(name) == entry_bytes(
                     name, source, expected_names, emulator_pins

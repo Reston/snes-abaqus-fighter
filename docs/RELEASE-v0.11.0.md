@@ -1,20 +1,23 @@
 # v0.11.0 - Winner cards and reliable offline packaging
-<!-- candidate-version: 0.11.0; rom-sha256: 77615cb93f9f7c572c66b23f4a078acb87c1a8ab925667ead42a84d1a880e629 -->
+<!-- candidate-version: 0.11.0; rom-sha256: 1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7 -->
 
 The result card now shows the match winner's existing 64x80 portrait, name,
 quote and actual round score. Local Versus uses the neutral heading
 `MATCH COMPLETE` for either winner. The A/Start prompt identifies the actual
 next action: rematch, Arcade continue, next challenger or title after Office
 Champion. B returns to character select.
+Healthy timeout ties now read `TIME OVER` / `DRAW` from the first banner;
+the `DOUBLE K.O.` caption is reserved for simultaneous knockouts before the clock expires.
 
 This candidate includes the [v0.10.1 Lars and location-preview pass](POLISH-v0.10.1.md).
 Its versioned art, exact prompts, native revision contract and retained
 baseline are unchanged by this result-screen pass.
 
 - Candidate: v0.11.0, 4,194,304-byte NTSC FastROM LoROM cartridge.
-- ROM SHA256: `77615cb93f9f7c572c66b23f4a078acb87c1a8ab925667ead42a84d1a880e629`.
-- Header checksum: `5AFE`.
-- Source freeze: pending completion of the current source changes.
+- ROM SHA256: `1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7`.
+- Header checksum: `7CFE`.
+- Cartridge source freeze: `7f3c7a8d2dee5a0c05ff893c8df3ea932b6c341a`.
+- Source tree: `7ce8adb96a7838ec24835f360cfef1ae3c2610de`.
 
 ## Native contracts
 
@@ -30,6 +33,9 @@ player ports have controller-driven regressions for this case.
 All twelve fighter banks, stage masters, ambient cells and audio remain
 unchanged from the v0.10.1 checkpoint. The normal pause card now includes
 Start in its resume hint, matching the existing controls.
+The [preservation record](preservation-v0.11.0.json) verifies all 214 generated
+assets plus hardware and trace assembly against that checkpoint, using exact
+binary bytes and Git LF normalization for text.
 
 ## Verification and package status
 

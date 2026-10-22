@@ -39,7 +39,7 @@ PLAY_COMMAND = (
     b'"..\\abaqus-after-hours.sfc"\r\n'
 )
 
-_MARKDOWN_LINK = re.compile(r'(\[[^\]]+\])\(([^)\n]+)\)')
+_MARKDOWN_LINK = re.compile(r'(!?\[[^\]]+\])\(([^)\n]+)\)')
 _EXTERNAL_LINK = re.compile(r'^(?:[A-Za-z][A-Za-z0-9+.-]*:|//)')
 OFFLINE_LINK_ALIASES = {
     ('OBJ-BUDGET.md', 'stage-test-report.json'): 'qa/stages.json',
@@ -193,6 +193,8 @@ def build_package_files(root: Path = ROOT, manifest: Mapping | None = None) -> d
         # The current v0.11 note is selected dynamically.  Keep the
         # v0.10.1 art/polish note and its reports as historical context.
         'RELEASE.md': root / f'docs/RELEASE-v{version}.md',
+        f'RELEASE-v{version}.md': root / f'docs/RELEASE-v{version}.md',
+        f'preservation-v{version}.json': root / f'docs/preservation-v{version}.json',
         'POLISH-v0.10.1.md': root / 'docs/POLISH-v0.10.1.md',
         'polish-test-summary.json': root / 'docs/polish-test-summary.json',
         'polish-preservation-report.json':
@@ -284,7 +286,7 @@ def _mapped_link(archive_name: str, path: str,
         return mapped
     # The source docs name the versioned release note.  The ZIP intentionally
     # gives the current note the stable root name RELEASE.md.
-    if (package_names is not None and path.startswith('RELEASE-v') and
+    if (package_names is not None and path in package_names and path.startswith('RELEASE-v') and
             path.endswith('.md') and 'RELEASE.md' in package_names):
         return 'RELEASE.md'
     return None
@@ -311,7 +313,8 @@ def offline_markdown_text(source: bytes | str, archive_name: str,
         resolved = _archive_target(archive_name, path)
         if resolved in package_names:
             return match.group(0)
-        return f'{label} (source-only: {path}{suffix})'
+        visible_label = label[2:-1] if label.startswith('![') else label[1:-1]
+        return f'{visible_label} (source-only: {path}{suffix})'
 
     return _MARKDOWN_LINK.sub(replace, text)
 

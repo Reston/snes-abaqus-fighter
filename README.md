@@ -1,12 +1,12 @@
 # Abaqus: After Hours
-<!-- candidate-version: 0.11.0; rom-sha256: 77615cb93f9f7c572c66b23f4a078acb87c1a8ab925667ead42a84d1a880e629 -->
+<!-- candidate-version: 0.11.0; rom-sha256: 1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7 -->
 
 An original six-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II's arcade structure and the people and places of Abaqus in
 Santiago. The game runs as a native SNES cartridge in an emulator.
 
 The current checkout is the **v0.11.0 review candidate**, ROM SHA256
-`77615cb93f9f7c572c66b23f4a078acb87c1a8ab925667ead42a84d1a880e629`, checksum `5AFE`.
+`1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7`, checksum `7CFE`.
 It includes Lars's revised 64-frame likeness, clearer location previews and a
 winner portrait result card with truthful rematch, continue and champion
 prompts. Current verification and package status are recorded in the
