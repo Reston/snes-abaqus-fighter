@@ -1,5 +1,6 @@
 param([switch]$EmulatorOnly)
 $ErrorActionPreference = 'Stop'
+$ProgressPreference = 'SilentlyContinue'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $cacheRoot = Join-Path $projectRoot '.tools'
 New-Item -ItemType Directory -Force $cacheRoot | Out-Null
