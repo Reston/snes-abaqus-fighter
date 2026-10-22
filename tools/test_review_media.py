@@ -210,6 +210,36 @@ class NativeReview(unittest.TestCase):
         finally:
             source.write_bytes(original)
 
+    def test_training_shoulder_scope_cannot_be_dropped_with_a_rewritten_source_hash(self):
+        if tuple(map(int,self.manifest['version'].split('.'))) < (0,19,0):
+            self.skipTest('Paused CPU shoulders are introduced in v0.19')
+        source = self.root/'docs/training-test-report.json'
+        original = source.read_bytes()
+        try:
+            for mutation in ('cycle','holds','opposites','held_opposites','exclusions','priorities',
+                             'home','nontraining','held_labels','frozen'):
+                native = json.loads(original)
+                controls = native['cpu_training']['level_controls']
+                if mutation in ('cycle','holds','opposites','held_opposites','exclusions','priorities'):
+                    controls[mutation].pop()
+                if mutation == 'home': controls['final_home_difficulty'] = 1
+                if mutation == 'nontraining': native['cpu_training']['nontraining_level_scope'].pop()
+                if mutation == 'held_labels':
+                    row = next(row for row in native['checks'] if row['check'] ==
+                               'held CPU shoulder changes level once without repeating')
+                    row['details'][-1] = 'DUMMY: CPU NORMAL'
+                if mutation == 'frozen':
+                    row = next(row for row in native['checks'] if row['check'] ==
+                               'changing CPU difficulty freezes all combat, bars, animation and ambient state')
+                    row['details']['after']['hp1'] -= 1
+                source.write_bytes(json.dumps(native).encode())
+                altered = copy.deepcopy(self.training)
+                altered['source_report_sha256'] = hashlib.sha256(source.read_bytes().replace(b'\r\n',b'\n')).hexdigest()
+                with self.subTest(mutation=mutation), self.assertRaises(review.ReviewError):
+                    review.validate_training_review(altered,self.root,self.manifest)
+        finally:
+            source.write_bytes(original)
+
     def test_training_cpu_requires_the_complete_native_live_hour(self):
         if self.training is None:
             self.skipTest('CPU Training is introduced in v0.17')

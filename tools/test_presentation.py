@@ -676,12 +676,14 @@ def title_and_select() -> dict[str, object]:
     try:
         e.run(120)
         check(state(e)["screen"] == TITLE, "cold boot reaches the redesigned home screen")
+        version = json.loads((ROOT / "dist/manifest.json").read_bytes())["version"]
         verify_menu_font_bank(e, [
             (20, 9, "ARCADE SHIFT"),
             (22, 9, "LOCAL VERSUS"),
             (24, 9, "TRAINING"),
             (25, 3, "L/R LEVEL"),
             (25, 18, "NORMAL"),
+            (27, 24, "V" + version),
         ], "title")
         title_path = capture(e, "title.png")
         initial_title = frame_digest(e)

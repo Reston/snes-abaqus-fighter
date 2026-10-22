@@ -292,6 +292,47 @@ def validate_training_review(report, root, manifest):
             need(len(rows) == 3 and all(row.get('passed') is True for row in rows) and
                  [row.get('details') for row in rows] == expected,
                  'CPU Training must prove all three native level labels before and after reset')
+    if tuple(map(int, manifest['version'].split('.'))) >= (0, 19, 0):
+        controls = cpu.get('level_controls')
+        cycle = []
+        for port in (0, 1):
+            level = 1
+            for key, delta in (('r', 1), ('l', -1)):
+                for _ in range(3):
+                    after = (level+delta) % 3
+                    cycle.append({'port':port,'key':key,'before':level,'after':after})
+                    level = after
+        holds = [{'port':port,'key':key,'before':before,'after':after,'frames':12}
+                 for port in (0,1) for key,before,after in (('r',1,2),('l',2,1))]
+        opposites = [{'p1':p1,'p2':p2,'difficulty':1} for p1,p2 in
+                     ((['l','r'],[]),([],['l','r']),(['l'],['r']),(['r'],['l']))]
+        held = [{'first_port':first,'opposite_port':other,'difficulty':0 if first == 0 else 2}
+                for first in (0,1) for other in (0,1)]
+        excluded = [{'dummy':dummy,'difficulty':1} for dummy in range(4)] + [
+            {'page':page,'port':port,'key':key,'difficulty':1}
+            for page in (1,2) for port,key in ((0,'r'),(1,'l'))]
+        need(isinstance(controls,Mapping) and controls.get('cycle') == cycle and
+             controls.get('holds') == holds and controls.get('opposites') == opposites and
+             controls.get('held_opposites') == held and controls.get('exclusions') == excluded and
+             controls.get('priorities') == ['start','a','select','dummy','b'] and
+             controls.get('final_home_difficulty') == 2 and
+             cpu.get('nontraining_level_scope') == [{'mode':0,'home_difficulty':1},{'mode':1,'home_difficulty':1}],
+             'CPU shoulder proof must retain both ports, wraps, holds, opposites, scope and priority cases')
+        held_rows = [row for row in native['checks']
+                     if row.get('check') == 'held CPU shoulder changes level once without repeating']
+        need(len(held_rows) == 4 and all(row.get('passed') is True and
+             isinstance(row.get('details'),list) and len(row['details']) == 12 and
+             all(text == 'DUMMY: CPU '+('EASY','NORMAL','HARD')[hold['after']]
+                 for text in row['details'][3:]) for row,hold in zip(held_rows,holds)),
+             'CPU shoulder holds must retain repeated settled native labels')
+        frozen_rows = [row for row in native['checks'] if row.get('check') ==
+                       'changing CPU difficulty freezes all combat, bars, animation and ambient state']
+        fields = ('x1','x2','y1','y2','hp1','hp2','energy1','energy2','action1','action2',
+                  'anim_frame1','anim_frame2','ambient_clock','seconds')
+        need(len(frozen_rows) == 1 and frozen_rows[0].get('passed') is True and
+             all(frozen_rows[0]['details']['before'].get(key) == frozen_rows[0]['details']['after'].get(key)
+                 and key in frozen_rows[0]['details']['before'] for key in fields),
+             'CPU shoulder proof must freeze native gameplay state')
     row = report.get('capture')
     trace = native_gif(row, root, 'docs/screenshots/training-cpu/practice.gif')
     need(len(trace) == fixture['frames'] and all(state.get('mode') == 2 and state.get('training_dummy') == 4 and

@@ -38,7 +38,7 @@ void drawPauseCard(void) {
             else if(difficulty==1)guideCenter(11,"DUMMY: CPU NORMAL");
             else guideCenter(11,"DUMMY: CPU HARD");
         } else guideCenter(11,trainingDummyNames[trainingDummy]);
-        guideCenter(13,"UP/DOWN DUMMY  SELECT GUIDE");
+        guideCenter(13,trainingDummy==4?"U/D DUMMY L/R LEVEL SEL GUIDE":"UP/DOWN DUMMY  SELECT GUIDE");
     } else guideCenter(13,"SELECT MOVE GUIDE");
 }
 

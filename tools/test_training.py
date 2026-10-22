@@ -1405,7 +1405,7 @@ def verify_cpu_training_play(rom: Path) -> list[dict[str, object]]:
                              "ambient_clock", "down_state1", "down_state2", "invuln1", "invuln2")
             for page in (1, 2, 0):
                 cycle_to_page(q, page)
-                after = q.run(8, ("down", "x"), ("up", "l"))
+                after = q.run(8, ("down", "x"), ("up", "y"))
                 check(all(after[k] == frozen[k] for k in frozen_fields) and
                       after["training_dummy"] == 4,
                       "CPU combat, hitstop and recovery freeze on every pause page",
@@ -1568,12 +1568,178 @@ def verify_cpu_intro(rom: Path) -> dict[str, object]:
         q.close()
 
 
+def verify_cpu_level_controls(rom: Path) -> dict[str, object]:
+    """Real shoulder edges change only the paused CPU card's existing level."""
+    q = boot(rom, fighter=0, fighter2=1, stage=2, difficulty=1,
+             label="training-cpu-level-controls")
+    cycle, holds, opposites, held_opposites, exclusions, priorities = [], [], [], [], [], []
+    names = ("EASY", "NORMAL", "HARD")
+    def label() -> str:
+        return decode_text(vram_bytes(q), 11, 12).strip()
+    def expect(level: int, context: str) -> None:
+        actual = label()
+        check(q.state()["paused"] == 1 and q.state()["training_dummy"] == 4 and
+              actual == "DUMMY: CPU " + names[level],
+              "paused CPU shoulder setting renders its exact native level",
+              {"context": context, "difficulty": level, "label": actual})
+    def chord(p1=(), p2=(), frames=3):
+        for _ in range(frames): q.step(p1, p2)
+        q.run(3)
+    try:
+        pause(q)
+        set_dummy(q, 4)
+        expect(1, "initial")
+        fields = ("x1", "x2", "y1", "y2", "hp1", "hp2", "energy1", "energy2",
+                  "action1", "action2", "anim_frame1", "anim_frame2", "ambient_clock", "seconds")
+        frozen = q.state()
+        level = 1
+        for port in (0, 1):
+            for key, delta in (("r", 1), ("l", -1)):
+                for _ in range(3):
+                    before = level
+                    q.press(key, port=port)
+                    level = (level + delta) % 3
+                    expect(level, f"cycle-{port}-{key}")
+                    cycle.append({"port": port, "key": key, "before": before, "after": level})
+            for key, delta in (("r", 1), ("l", -1)):
+                before = level
+                level = (level + delta) % 3
+                labels = []
+                for _ in range(12):
+                    q.step((key,) if port == 0 else (), (key,) if port == 1 else ())
+                    labels.append(label())
+                q.run(3)
+                expect(level, f"hold-{port}-{key}")
+                check(all(text == "DUMMY: CPU " + names[level] for text in labels[3:]),
+                      "held CPU shoulder changes level once without repeating", labels)
+                holds.append({"port": port, "key": key, "before": before, "after": level,
+                              "frames": 12})
+        check(decode_text(vram_bytes(q), 13, 14).strip() == "U/D DUMMY L/R LEVEL SEL GUIDE",
+              "CPU card teaches shoulders inside the existing banner row")
+        for p1, p2 in ((("l", "r"), ()), ((), ("l", "r")),
+                       (("l",), ("r",)), (("r",), ("l",))):
+            chord(p1, p2, frames=12)
+            expect(level, "opposite shoulders")
+            opposites.append({"p1": list(p1), "p2": list(p2), "difficulty": level})
+        for first_port in (0, 1):
+            for opposite_port in (0, 1):
+                key, other = ("l", "r") if first_port == 0 else ("r", "l")
+                target = (level + (-1 if key == "l" else 1)) % 3
+                q.run(3, (key,) if first_port == 0 else (), (key,) if first_port == 1 else ())
+                both = [[], []]
+                both[first_port].append(key)
+                both[opposite_port].append(other)
+                chord(tuple(both[0]), tuple(both[1]), frames=8)
+                expect(target, "opposite edge while original shoulder held")
+                held_opposites.append({"first_port": first_port, "opposite_port": opposite_port,
+                                       "difficulty": target})
+                q.press(other, port=first_port)
+                expect(level, "restored after held opposite")
+        for target in range(4):
+            set_dummy(q, target)
+            q.press("r", port=target % 2)
+            check(decode_text(vram_bytes(q), 13, 14).strip() == "UP/DOWN DUMMY  SELECT GUIDE",
+                  "scripted dummy retains its original pause hint", target)
+            set_dummy(q, 4)
+            expect(level, "scripted dummy ignores shoulder")
+            exclusions.append({"dummy": target, "difficulty": level})
+        for page in (1, 2):
+            for port, key in ((0, "r"), (1, "l")):
+                cycle_to_page(q, page)
+                q.press(key, port=port)
+                check(q.state()["pause_page"] == page,
+                      "shoulders do not turn a move-guide page", {"page": page, "port": port})
+                cycle_to_page(q, 0)
+                expect(level, "guide page ignores shoulder")
+                exclusions.append({"page": page, "port": port, "key": key, "difficulty": level})
+        check(all(q.state()[key] == frozen[key] for key in fields),
+              "changing CPU difficulty freezes all combat, bars, animation and ambient state",
+              {"before": frozen, "after": q.state()})
+        q.press("r")
+        level = (level + 1) % 3
+        expect(level, "nondefault reset fixture")
+        resume(q)
+        q.press("select")
+        q.run(6)
+        pause(q)
+        expect(level, "quick reset retains shoulder-selected difficulty")
+        for name, p1, p2 in (("start", ("b", "a", "select", "r"), ("start",)),
+                             ("a", (), ("a", "l"))):
+            if name == "start":
+                # Keep R physically down through resume and the following
+                # live samples; releasing/repressing it is a valid attack.
+                for _ in range(3): q.step(p1, p2)
+            else:
+                chord(p1, p2)
+            check(not q.state()["paused"] and q.state()["screen"] == FIGHT,
+                  "resume priorities beat paused CPU shoulders", name)
+            if name == "start":
+                live = [q.step(("r",)) for _ in range(12)]
+                check(all(s["action1"] == 0 for s in live),
+                      "resuming with a held setting shoulder does not buffer a heavy attack", live[-1])
+                q.run(3)
+            pause(q)
+            expect(level, name+" owns its sample")
+            priorities.append(name)
+        chord(("r",), ("select",))
+        check(q.state()["pause_page"] == 1, "Select guide has priority over CPU shoulder")
+        cycle_to_page(q, 0)
+        expect(level, "select owns its sample")
+        priorities.append("select")
+        chord(("r",), ("down",))
+        check(q.state()["training_dummy"] == 0, "dummy direction has priority over CPU shoulder")
+        set_dummy(q, 4)
+        expect(level, "dummy direction owns its sample")
+        priorities.append("dummy")
+        q._menu_load_budget = MENU_LOAD_DUPLICATE_LIMIT
+        chord(("r",), ("b", "a"))
+        wait_screen(q, SELECT)
+        check(q.state()["screen"] == SELECT, "B roster has priority over CPU shoulder")
+        priorities.append("b")
+        q.press("b")
+        wait_screen(q, TITLE)
+        check(names[level] in decode_text(vram_bytes(q), 25, 26),
+              "Training shoulder setting stays synchronized with native home difficulty", level)
+        return {"cycle": cycle, "holds": holds, "opposites": opposites,
+                "held_opposites": held_opposites, "exclusions": exclusions,
+                "priorities": priorities, "final_home_difficulty": level}
+    finally:
+        q.close()
+
+
+def verify_nontraining_level_scope(rom: Path) -> list[dict[str, object]]:
+    """Shoulders remain inactive on Arcade/Versus pause cards."""
+    results = []
+    for mode in (0, 1):
+        q = boot(rom, mode=mode, fighter=0, fighter2=1, difficulty=1,
+                 label=f"nontraining-level-scope-{mode}")
+        try:
+            pause(q)
+            q.press("r", port=mode)
+            check(q.state()["paused"] == 1 and q.state()["pause_page"] == 0,
+                  "Arcade/Versus shoulders retain the original pause card", mode)
+            q.press("b")
+            wait_screen(q, SELECT)
+            q.press("b")
+            wait_screen(q, TITLE)
+            text = decode_text(vram_bytes(q), 25, 26)
+            check("NORMAL" in text,
+                  "Arcade/Versus paused shoulder cannot change the home difficulty",
+                  {"mode": mode, "home": text})
+            results.append({"mode": mode, "home_difficulty": 1})
+        finally:
+            q.close()
+    return results
+
+
 def verify_cpu_training(rom: Path) -> dict[str, object]:
     return {"selector": verify_cpu_selector(rom),
             "play": verify_cpu_training_play(rom),
             "p2_ignored": verify_cpu_ignores_p2(rom),
             "lowwave_defense": verify_cpu_lowwave_defense(rom),
-            "intro": verify_cpu_intro(rom)}
+            "intro": verify_cpu_intro(rom),
+            "level_controls": verify_cpu_level_controls(rom),
+            "nontraining_level_scope": verify_nontraining_level_scope(rom)}
 
 
 def verify_dummy_reset_and_defaults(rom: Path) -> dict[str, object]:

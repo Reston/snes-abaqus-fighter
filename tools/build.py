@@ -3,6 +3,11 @@ from pathlib import Path
 import hashlib, json, os, re, subprocess, sys
 
 ROOT = Path(__file__).resolve().parents[1]
+versions = re.findall(r'^\s*#define\s+ABAQUS_GAME_VERSION\s+"([0-9]+\.[0-9]+\.[0-9]+)"\s*$',
+                      (ROOT/'src/version.h').read_text(), flags=re.M)
+if len(versions) != 1:
+    raise RuntimeError('src/version.h must define one numeric ABAQUS_GAME_VERSION')
+version = versions[0]
 SDK = Path(os.environ.get('PVSNESLIB_HOME', ROOT/'.tools/sdk/pvsneslib')).resolve()
 BUILD = ROOT/'build'
 BUILD.mkdir(exist_ok=True)
@@ -31,6 +36,14 @@ required_assets = ('data.asm', 'assets.h', 'soundbank.h')
 if '--assets' in sys.argv or any(not (ROOT/'assets/generated'/name).is_file() for name in required_assets):
     run(sys.executable, ROOT/'tools/make_assets.py')
 
+# Windows generators and SMConv may emit CRLF. Keep the repository's LF
+# contract on both regeneration and reuse so byte-bound evidence is portable.
+for asset in (ROOT/'assets/generated').iterdir():
+    if asset.is_file() and asset.suffix in ('.asm','.h','.json'):
+        raw = asset.read_bytes()
+        canonical = raw.replace(b'\r\n',b'\n')
+        if canonical != raw: asset.write_bytes(canonical)
+
 template = (SDK/'devkitsnes/include/hdr.asm.in').read_text()
 values = dict(HIROMDEF='', FASTROMDEF='.DEFINE FASTROM 1', ROMTITLE='ABAQUS AFTER HOURS',
               CARTRIDGETYPE='00', ROMSIZE='0C', SRAMSIZE='00', COUNTRY='01',
@@ -57,8 +70,8 @@ if len(data)!=4*1024*1024:raise RuntimeError('Expected 4 MiB LoROM')
 if data[0x7fd5] != 0x30:raise RuntimeError('Expected FastROM LoROM header')
 checksum = int.from_bytes(data[0x7fde:0x7fe0],'little')
 if checksum != (sum(data)&65535):raise RuntimeError('ROM checksum mismatch')
-manifest = {'title':'Abaqus: After Hours','version':'0.18.0','rom':rom.name,'bytes':len(data),
+manifest = {'title':'Abaqus: After Hours','version':version,'rom':rom.name,'bytes':len(data),
             'sha256':hashlib.sha256(data).hexdigest(),'checksum':f'{checksum:04X}',
             'toolchain':'PVSnesLib 4.6.0 / 816-tcc / WLA-DX','mapping':'4 MiB FastROM LoROM','region':'NTSC 60 Hz'}
-(ROOT/'dist/manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+(ROOT/'dist/manifest.json').write_bytes((json.dumps(manifest,indent=2)+'\n').encode())
 print('Built',rom.name, len(data),'bytes; SHA256',manifest['sha256'])

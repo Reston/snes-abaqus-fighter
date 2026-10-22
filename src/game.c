@@ -7,6 +7,7 @@
 #include "soundbank.h"
 #include "characters.h"
 #include "menu_portraits.h"
+#include "version.h"
 
 #if MOD_EFFECTS != 0 || MOD_MUSIC0 != 1 || MOD_MUSIC1 != 2 || MOD_MUSIC2 != 3 || MOD_MUSIC3 != 4 || MOD_MUSIC4 != 5
 #error Regenerate the resident effects-first soundbank with Build.cmd --assets
@@ -312,6 +313,7 @@ void drawTitle(void) {
     word(9,20,"ARCADE SHIFT");word(9,22,"LOCAL VERSUS");word(9,24,"TRAINING");
     word(7,20+menu*2,">");word(3,25,"L/R LEVEL");put(13,25,'1'+difficulty);
     word(18,25,difficulty==0?"EASY":(difficulty==1?"NORMAL":"HARD"));
+    word(24,27,"V" ABAQUS_GAME_VERSION);
 }
 void showTitle(void) {
     setScreenOff();screen=TITLE;commonScreen();loadBackground(3);paused=0;
@@ -1176,6 +1178,16 @@ void fightTick(void) {
                 if(pauseDirections&KEY_DOWN)trainingDummy=(trainingDummy+1)%5;
                 else trainingDummy=(trainingDummy+4)%5;
                 drawPauseCard();sound(0);
+            } else if(mode==2 && trainingDummy==4) {
+                /* Shoulders adjust only the CPU's existing home level.
+                 * Opposite held shoulders cancel, including across pads. */
+                pauseDirections=pauseKeys&(KEY_L|KEY_R);
+                if(((pad0|pad1)&(KEY_L|KEY_R))==(KEY_L|KEY_R))pauseDirections=0;
+                if(pauseDirections) {
+                    if(pauseDirections&KEY_R)difficulty=(difficulty+1)%3;
+                    else difficulty=(difficulty+2)%3;
+                    drawPauseCard();sound(0);
+                }
             }
         }
         if(paused && guideBuild)buildPauseGuide();
