@@ -1281,7 +1281,7 @@ def verify_cpu_selector(rom: Path) -> dict[str, object]:
               all(s["training_dummy"] == 4 for s in held[3:]),
               "UP wraps Stand to fifth-choice CPU once while held", held)
         text = decode_text(vram_bytes(q), 11, 12).strip()
-        check(text == "DUMMY: CPU", "fifth Training choice has the exact native CPU label", text)
+        check(text == "DUMMY: CPU NORMAL", "fifth Training choice names its native CPU difficulty", text)
         # The normal card preserves the stage around its smaller panel, so
         # the full-guide helper's opaque rows 5..27 threshold does not apply.
         check(q.emulator.frame is not None and q.emulator.frame.size == (256, 224),
@@ -1303,7 +1303,7 @@ def verify_cpu_selector(rom: Path) -> dict[str, object]:
               all(s["training_dummy"] == 0 for s in down[3:]),
               "DOWN wraps CPU to Stand once while held", down)
         q.run(3)
-        labels = ("STAND", "GUARD HIGH", "GUARD LOW", "JUMP", "CPU")
+        labels = ("STAND", "GUARD HIGH", "GUARD LOW", "JUMP", "CPU NORMAL")
         for key, targets in (("down", (1, 2, 3, 4, 0)),
                              ("up", (4, 3, 2, 1, 0))):
             for index, target in enumerate(targets):
@@ -1351,6 +1351,11 @@ def verify_cpu_training_play(rom: Path) -> list[dict[str, object]]:
             initial = q.state()
             pause(q)
             set_dummy(q, 4)
+            label = decode_text(vram_bytes(q), 11, 12).strip()
+            expected_label = "DUMMY: CPU " + ("EASY", "NORMAL", "HARD")[difficulty]
+            check(label == expected_label,
+                  "Training CPU pause card shows the selected Easy/Normal/Hard level",
+                  {"difficulty": difficulty, "label": label})
             resume(q)
             # Include complete throw/down/wake cycles under sustained pressure;
             # Training correctly defers recovery while hurt or invulnerable.
@@ -1426,6 +1431,10 @@ def verify_cpu_training_play(rom: Path) -> list[dict[str, object]]:
             check(any(s["action2"] for s in reset_play),
                   "CPU decision path returns after reset hitstop", reset_play[-1])
             pause(q)
+            label_after_reset = decode_text(vram_bytes(q), 11, 12).strip()
+            check(label_after_reset == expected_label,
+                  "Training CPU level remains visible after quick reset and guide cycling",
+                  {"difficulty": difficulty, "label": label_after_reset})
             q.press("b")
             wait_screen(q, SELECT)
             q.run(20)
