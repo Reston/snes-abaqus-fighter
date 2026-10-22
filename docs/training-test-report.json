@@ -2,8 +2,8 @@
   "emulator": "Official Snes9x 1.63 x64 libretro core",
   "suite": "training",
   "status": "passed",
-  "passed": 622,
-  "rom_sha256": "8f7def30d29c87a659d7fb623147cf726bab8f8c94a96a503738529aded15279",
+  "passed": 625,
+  "rom_sha256": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7",
   "rom_bytes": 4194304,
   "core": {
     "archive": ".tools\\core.zip",
@@ -13,7 +13,7 @@
     "dll": ".tools\\core\\snes9x_libretro.dll",
     "dll_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343"
   },
-  "harness_sha256": "7cf827fcc848c6204858ab568412e10759980e3678e7a807f47654a32220019d",
+  "harness_sha256": "3349ef0757df86ff562e293694061e1c811dfdff6ee19dfae7eb49821c23ccfb",
   "core_options": {
     "snes9x_up_down_allowed": "enabled"
   },
@@ -11163,6 +11163,14 @@
       }
     },
     {
+      "check": "normal pause card advertises both actual resume buttons",
+      "passed": true,
+      "details": {
+        "mode": 0,
+        "row12": "A/START RESUME B ROSTER"
+      }
+    },
+    {
       "check": "pause preserves combat state, projectiles, wake/down and native frames",
       "passed": true,
       "details": {
@@ -13988,6 +13996,14 @@
       }
     },
     {
+      "check": "normal pause card advertises both actual resume buttons",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "row12": "A/START RESUME B ROSTER"
+      }
+    },
+    {
       "check": "pause preserves combat state, projectiles, wake/down and native frames",
       "passed": true,
       "details": {
@@ -16801,6 +16817,14 @@
             "dirty": 0
           }
         ]
+      }
+    },
+    {
+      "check": "normal pause card advertises both actual resume buttons",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "row12": "A/START RESUME B ROSTER"
       }
     },
     {
@@ -86739,5 +86763,5 @@
       }
     }
   ],
-  "elapsed_seconds": 10.484
+  "elapsed_seconds": 31.828
 }

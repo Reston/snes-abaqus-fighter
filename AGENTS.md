@@ -8,10 +8,18 @@ Preserve the native emulator requirement when extending the project.
 
 - The active checkout is the **v0.11.0 result/input/package polish candidate**.
   It carries the v0.10.1 art checkpoint below and adds winner portraits,
-  truthful result prompts and a complete normal-pause resume hint. Candidate
-  source and tests are being updated; see `docs/RELEASE-v0.11.0.md` for the
-  current SHA and verification status. Do not reuse older reports as evidence
-  for a newly built ROM. Human gates and hardware support remain open.
+  truthful result prompts, a complete normal-pause resume hint, discarded
+  wake-only motion commands and a truthful healthy-timeout DRAW banner.
+  Source freeze `68842a2b040fefc9070542fcf57284af5494e1dc` builds ROM SHA256
+  `1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7`,
+  header `7CFE`. All six native reports match and pass 33,155 checks; the
+  separate pinned bsnes smoke, isolated source rebuild and three native
+  live-hour sessions also match. The full native matchup matrix and bounded
+  independent-combat evidence pass. The Windows offline archive passes 7,549
+  audit checks; two consecutive builds are identical at 6,874,448 bytes,
+  SHA256 `157112e2f4b1008a4cd112dadbf33664286cc1f57581e606d994a59bf554a278`.
+  See `docs/RELEASE-v0.11.0.md`. Future Training/ending work is isolated in
+  separate worktrees. Human gates and hardware support remain open.
 
 - The preserved **v0.10.1 unpackaged art checkpoint** is commit
   `0708dea65c859786e8455da78bd58eb077135adf`,

@@ -4,8 +4,8 @@
 The current candidate is v0.11.0, cartridge SHA256
 `1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7`.
 The authoritative evidence is the exact-ROM smoke and bounded-combat JSON
-linked below. Candidate verification is in progress; earlier reports must
-not be interpreted as verification of this cartridge. The release note
+linked below. Both the pinned smoke and the 48-by-600-frame bounded combat
+run pass against this cartridge. The release note
 [RELEASE-v0.11.0.md](RELEASE-v0.11.0.md) records the final checkpoint status.
 
 The historical v0.9.0 smoke and bounded combat reports passed on

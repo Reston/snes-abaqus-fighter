@@ -24,6 +24,11 @@
       "details": null
     },
     {
+      "check": "current guides identify the exact candidate version and ROM",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "native matchup sweep passed",
       "passed": true,
       "details": "passed"
@@ -32,15 +37,15 @@
       "check": "native matchup sweep ROM identity object",
       "passed": true,
       "details": {
-        "sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
-        "manifest_sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
+        "sha256": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7",
+        "manifest_sha256": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7",
         "bytes": 4194304
       }
     },
     {
       "check": "native matchup sweep matches the exact current ROM",
       "passed": true,
-      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
+      "details": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7"
     },
     {
       "check": "native matchup sweep ROM byte count",
@@ -44692,14 +44697,14 @@
       "check": "independent combat sweep ROM identity object",
       "passed": true,
       "details": {
-        "sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
+        "sha256": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7",
         "bytes": 4194304
       }
     },
     {
       "check": "independent combat sweep matches the exact current ROM",
       "passed": true,
-      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
+      "details": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7"
     },
     {
       "check": "independent combat sweep ROM byte count",
@@ -46516,9 +46521,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1313482,
-          "energy": 288274793620,
-          "peak": 3568
+          "samples": 1313484,
+          "energy": 289189545624,
+          "peak": 3811
         }
       }
     },
@@ -54171,7 +54176,7 @@
     {
       "check": "endurance gate matches the exact current ROM",
       "passed": true,
-      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
+      "details": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7"
     },
     {
       "check": "endurance gate ROM byte count",
@@ -54344,12 +54349,12 @@
           "mode": 0,
           "mode_name": "arcade",
           "status": "passed",
-          "frames": 304699,
+          "frames": 309552,
           "target_live_frames": 216356,
           "coverage_required": true,
           "live_frames": 216356,
-          "live_segments": 297,
-          "elapsed_seconds": 175.672,
+          "live_segments": 313,
+          "elapsed_seconds": 829.594,
           "rosters": [
             {
               "fighter1": 0,
@@ -54362,12 +54367,6 @@
               "fighter2": 1,
               "stage": 2,
               "route": "champion-title"
-            },
-            {
-              "fighter1": 2,
-              "fighter2": 5,
-              "stage": 1,
-              "route": "champion-title"
             }
           ],
           "stages": [
@@ -54376,24 +54375,24 @@
             2
           ],
           "events": {
-            "attack": 196745,
-            "air": 102165,
-            "throw": 38482,
-            "guard": 26491,
-            "special": 3052,
-            "wake": 19360,
-            "down": 131471,
-            "round_change": 296,
-            "result": 131,
+            "attack": 198936,
+            "air": 101785,
+            "throw": 36000,
+            "guard": 26882,
+            "special": 4062,
+            "wake": 17664,
+            "down": 124565,
+            "round_change": 311,
+            "result": 135,
             "pause": 0,
             "reset": 0,
-            "result_continue": 109,
-            "arcade_ladder": 20,
-            "champion": 2,
-            "champion_restart": 2,
+            "result_continue": 115,
+            "arcade_ladder": 19,
+            "champion": 1,
+            "champion_restart": 1,
             "menu_roster": 0,
-            "real_contact": 3176,
-            "damage": 3676
+            "real_contact": 3244,
+            "damage": 3810
           },
           "required_coverage": {
             "attack": true,
@@ -54412,65 +54411,65 @@
             "champion_restart": true
           },
           "normal_action_starts": {
-            "1": 788,
-            "2": 577,
-            "3": 1563,
-            "4": 445,
-            "5": 457,
-            "6": 570
+            "1": 852,
+            "2": 657,
+            "3": 1517,
+            "4": 479,
+            "5": 483,
+            "6": 588
           },
-          "live_fraction": 0.710065,
+          "live_fraction": 0.698933,
           "native_frame_wraps": 4,
           "ambient_clock_wraps": 0,
-          "lag_frame_counter_last": 1553,
+          "lag_frame_counter_last": 1832,
           "lag_frame_counter_wraps": 0,
-          "lag_frame_counter_increments": 1517,
+          "lag_frame_counter_increments": 1796,
           "stable_fight_lag_increments": 0,
-          "nonfight_lag_increments": 1517,
+          "nonfight_lag_increments": 1796,
           "cadence_failures": [],
           "native_timing_failures": [],
           "ambient_failures": [],
           "ppu_overflow_frames": [],
           "max_spc_backlog": 6,
-          "spc_backlog_nonzero_samples": 48,
-          "spc_drain_events": 48,
-          "spc_drain_bytes": 144,
+          "spc_backlog_nonzero_samples": 43,
+          "spc_drain_events": 42,
+          "spc_drain_bytes": 126,
           "max_spc_growth_streak": 1,
           "max_spc_stable_nonzero_streak": 0,
           "max_spc_no_audio_streak": 1,
           "spc_fifo_failures": [],
-          "spc_fread": 107,
-          "spc_fwrite": 107,
-          "spc_read_advance_bytes": 36429,
-          "spc_write_advance_bytes": 36429,
-          "spc_read_pointer_wraps": 142,
-          "spc_write_pointer_wraps": 142,
+          "spc_fread": 2,
+          "spc_fwrite": 2,
+          "spc_read_advance_bytes": 37092,
+          "spc_write_advance_bytes": 37092,
+          "spc_read_pointer_wraps": 145,
+          "spc_write_pointer_wraps": 145,
           "spc_fifo_thresholds": {
             "max_backlog": 32,
             "max_growth_streak": 8,
             "max_stable_no_audio_streak": 120
           },
-          "snes_vblank_count_last": 42835,
+          "snes_vblank_count_last": 47688,
           "snes_vblank_counter_wraps": 4,
-          "vblank_flag_samples": 303182,
+          "vblank_flag_samples": 307756,
           "native_screen_final": 3,
-          "native_screen_mismatch_samples": 1782,
-          "native_screen_mismatch_segments": 268,
+          "native_screen_mismatch_samples": 2067,
+          "native_screen_mismatch_segments": 273,
           "max_native_screen_mismatch_streak": 14,
           "input_counts": {
-            "right": 175814,
-            "l": 33347,
-            "left": 161185,
-            "down": 52885,
-            "y": 35503,
-            "b": 29160,
-            "x": 19926,
-            "a": 25053,
-            "r": 13977,
-            "up": 27916
+            "right": 180396,
+            "l": 33157,
+            "left": 165110,
+            "down": 52996,
+            "y": 35160,
+            "b": 28941,
+            "x": 19838,
+            "a": 24943,
+            "r": 13709,
+            "up": 28148
           },
-          "max_nonfight_streak": 440,
-          "max_down_tick": 34,
+          "max_nonfight_streak": 442,
+          "max_down_tick": 33,
           "max_down_state_duration": [
             76,
             82
@@ -54483,21 +54482,21 @@
             "min": 384,
             "max": 3712
           },
-          "video_samples": 2542,
-          "video_nonblank_samples": 2523,
+          "video_samples": 2582,
+          "video_nonblank_samples": 2558,
           "video_geometry": [
             256,
             224
           ],
-          "audio_samples": 162592006,
-          "audio_nonzero_batches": 2198,
-          "audio_peak_sampled": 3428,
-          "trace_magic_samples": 304699,
+          "audio_samples": 165179247,
+          "audio_nonzero_batches": 2254,
+          "audio_peak_sampled": 3890,
+          "trace_magic_samples": 309552,
           "video_fps": 60.098811862348406,
           "audio_sample_rate": 32040.0,
-          "rom_sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
+          "rom_sha256": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7",
           "benchmark": false,
-          "core_frames_including_boot": 304981,
+          "core_frames_including_boot": 309834,
           "core": {
             "archive": ".tools\\core.zip",
             "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
@@ -54515,12 +54514,12 @@
           "mode": 1,
           "mode_name": "local_vs",
           "status": "passed",
-          "frames": 289554,
+          "frames": 283244,
           "target_live_frames": 216356,
           "coverage_required": true,
           "live_frames": 216356,
-          "live_segments": 246,
-          "elapsed_seconds": 168.203,
+          "live_segments": 225,
+          "elapsed_seconds": 783.469,
           "rosters": [
             {
               "fighter1": 3,
@@ -54529,15 +54528,33 @@
               "route": "initial"
             },
             {
+              "fighter1": 9,
+              "fighter2": 0,
+              "stage": 1,
+              "route": "pause-b-select"
+            },
+            {
               "fighter1": 1,
               "fighter2": 4,
               "stage": 0,
               "route": "pause-b-select"
             },
             {
-              "fighter1": 3,
-              "fighter2": 6,
-              "stage": 1,
+              "fighter1": 5,
+              "fighter2": 8,
+              "stage": 2,
+              "route": "pause-b-select"
+            },
+            {
+              "fighter1": 1,
+              "fighter2": 4,
+              "stage": 0,
+              "route": "pause-b-select"
+            },
+            {
+              "fighter1": 7,
+              "fighter2": 10,
+              "stage": 0,
               "route": "pause-b-select"
             },
             {
@@ -54574,30 +54591,6 @@
               "fighter1": 1,
               "fighter2": 4,
               "stage": 0,
-              "route": "pause-b-select"
-            },
-            {
-              "fighter1": 3,
-              "fighter2": 6,
-              "stage": 1,
-              "route": "pause-b-select"
-            },
-            {
-              "fighter1": 9,
-              "fighter2": 0,
-              "stage": 1,
-              "route": "pause-b-select"
-            },
-            {
-              "fighter1": 1,
-              "fighter2": 4,
-              "stage": 0,
-              "route": "pause-b-select"
-            },
-            {
-              "fighter1": 5,
-              "fighter2": 8,
-              "stage": 2,
               "route": "pause-b-select"
             }
           ],
@@ -54607,24 +54600,24 @@
             2
           ],
           "events": {
-            "attack": 186917,
-            "air": 101802,
-            "throw": 11178,
-            "guard": 37106,
-            "special": 2052,
-            "wake": 8752,
-            "down": 49260,
-            "round_change": 241,
-            "result": 91,
-            "pause": 12,
+            "attack": 176469,
+            "air": 102045,
+            "throw": 11205,
+            "guard": 39102,
+            "special": 2847,
+            "wake": 8416,
+            "down": 52438,
+            "round_change": 220,
+            "result": 90,
+            "pause": 11,
             "reset": 0,
-            "result_continue": 91,
+            "result_continue": 90,
             "arcade_ladder": 0,
             "champion": 0,
             "champion_restart": 0,
-            "menu_roster": 12,
-            "real_contact": 2892,
-            "damage": 3047
+            "menu_roster": 11,
+            "real_contact": 2873,
+            "damage": 2988
           },
           "required_coverage": {
             "attack": true,
@@ -54641,93 +54634,93 @@
             "menu_roster": true
           },
           "normal_action_starts": {
-            "1": 2665,
-            "2": 1284,
-            "3": 742,
-            "4": 855,
-            "5": 728,
-            "6": 560
+            "1": 2825,
+            "2": 1295,
+            "3": 670,
+            "4": 876,
+            "5": 757,
+            "6": 595
           },
-          "live_fraction": 0.747204,
+          "live_fraction": 0.76385,
           "native_frame_wraps": 4,
           "ambient_clock_wraps": 0,
-          "lag_frame_counter_last": 1308,
+          "lag_frame_counter_last": 1444,
           "lag_frame_counter_wraps": 0,
-          "lag_frame_counter_increments": 1265,
+          "lag_frame_counter_increments": 1401,
           "stable_fight_lag_increments": 0,
-          "nonfight_lag_increments": 1265,
+          "nonfight_lag_increments": 1401,
           "cadence_failures": [],
           "native_timing_failures": [],
           "ambient_failures": [],
           "ppu_overflow_frames": [],
           "max_spc_backlog": 6,
-          "spc_backlog_nonzero_samples": 49,
-          "spc_drain_events": 48,
-          "spc_drain_bytes": 144,
+          "spc_backlog_nonzero_samples": 45,
+          "spc_drain_events": 44,
+          "spc_drain_bytes": 132,
           "max_spc_growth_streak": 1,
           "max_spc_stable_nonzero_streak": 0,
           "max_spc_no_audio_streak": 1,
           "spc_fifo_failures": [],
-          "spc_fread": 116,
-          "spc_fwrite": 116,
-          "spc_read_advance_bytes": 28734,
-          "spc_write_advance_bytes": 28734,
-          "spc_read_pointer_wraps": 112,
-          "spc_write_pointer_wraps": 112,
+          "spc_fread": 255,
+          "spc_fwrite": 255,
+          "spc_read_advance_bytes": 28617,
+          "spc_write_advance_bytes": 28617,
+          "spc_read_pointer_wraps": 111,
+          "spc_write_pointer_wraps": 111,
           "spc_fifo_thresholds": {
             "max_backlog": 32,
             "max_growth_streak": 8,
             "max_stable_no_audio_streak": 120
           },
-          "snes_vblank_count_last": 27843,
+          "snes_vblank_count_last": 21533,
           "snes_vblank_counter_wraps": 4,
-          "vblank_flag_samples": 288289,
+          "vblank_flag_samples": 281843,
           "native_screen_final": 3,
-          "native_screen_mismatch_samples": 1435,
-          "native_screen_mismatch_segments": 218,
+          "native_screen_mismatch_samples": 1573,
+          "native_screen_mismatch_segments": 213,
           "max_native_screen_mismatch_streak": 14,
           "input_counts": {
-            "right": 183882,
-            "left": 163804,
-            "y": 47575,
-            "b": 24884,
-            "x": 25121,
-            "a": 17997,
-            "r": 13950,
-            "l": 39056,
-            "up": 34270,
-            "down": 73472,
-            "start": 36
+            "right": 179831,
+            "left": 160026,
+            "y": 46831,
+            "b": 24526,
+            "x": 25601,
+            "a": 17382,
+            "r": 13986,
+            "l": 38520,
+            "up": 34003,
+            "down": 70899,
+            "start": 33
           },
-          "max_nonfight_streak": 535,
-          "max_down_tick": 33,
+          "max_nonfight_streak": 527,
+          "max_down_tick": 35,
           "max_down_state_duration": [
-            62,
+            75,
             82
           ],
           "max_pending_throw_damage": 24,
-          "wake_buffer_handoffs": 103,
+          "wake_buffer_handoffs": 153,
           "max_oam_visible_actor_pieces": 30,
           "max_oam_sprites": 30,
           "position_bounds": {
-            "min": 596,
+            "min": 384,
             "max": 3712
           },
-          "video_samples": 2417,
-          "video_nonblank_samples": 2408,
+          "video_samples": 2364,
+          "video_nonblank_samples": 2353,
           "video_geometry": [
             256,
             224
           ],
-          "audio_samples": 154599441,
-          "audio_nonzero_batches": 2070,
-          "audio_peak_sampled": 3281,
-          "trace_magic_samples": 289554,
+          "audio_samples": 151235441,
+          "audio_nonzero_batches": 2019,
+          "audio_peak_sampled": 3831,
+          "trace_magic_samples": 283244,
           "video_fps": 60.098811862348406,
           "audio_sample_rate": 32040.0,
-          "rom_sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
+          "rom_sha256": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7",
           "benchmark": false,
-          "core_frames_including_boot": 289989,
+          "core_frames_including_boot": 283679,
           "core": {
             "archive": ".tools\\core.zip",
             "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
@@ -54750,7 +54743,7 @@
           "coverage_required": true,
           "live_frames": 216356,
           "live_segments": 10,
-          "elapsed_seconds": 133.875,
+          "elapsed_seconds": 650.016,
           "rosters": [
             {
               "fighter1": 6,
@@ -54934,12 +54927,12 @@
             224
           ],
           "audio_samples": 116784564,
-          "audio_nonzero_batches": 1568,
+          "audio_nonzero_batches": 1567,
           "audio_peak_sampled": 3343,
           "trace_magic_samples": 218606,
           "video_fps": 60.098811862348406,
           "audio_sample_rate": 32040.0,
-          "rom_sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
+          "rom_sha256": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7",
           "benchmark": false,
           "core_frames_including_boot": 219058,
           "core": {
@@ -55007,7 +55000,7 @@
     {
       "check": "endurance gate mode 0 matches the exact current ROM",
       "passed": true,
-      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
+      "details": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7"
     },
     {
       "check": "endurance gate mode 0 native core identity exists",
@@ -55155,8 +55148,8 @@
       "check": "endurance gate mode 0 video callback is healthy",
       "passed": true,
       "details": {
-        "samples": 2542,
-        "nonblank": 2523,
+        "samples": 2582,
+        "nonblank": 2558,
         "geometry": [
           256,
           224
@@ -55167,8 +55160,8 @@
       "check": "endurance gate mode 0 PCM callback is healthy",
       "passed": true,
       "details": {
-        "samples": 162592006,
-        "nonzero": 2198,
+        "samples": 165179247,
+        "nonzero": 2254,
         "rate": 32040.0
       }
     },
@@ -55183,7 +55176,7 @@
     {
       "check": "endurance gate mode 0 reports its ROM hash",
       "passed": true,
-      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
+      "details": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7"
     },
     {
       "check": "endurance gate mode is an object",
@@ -55198,7 +55191,7 @@
     {
       "check": "endurance gate mode 1 matches the exact current ROM",
       "passed": true,
-      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
+      "details": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7"
     },
     {
       "check": "endurance gate mode 1 native core identity exists",
@@ -55342,8 +55335,8 @@
       "check": "endurance gate mode 1 video callback is healthy",
       "passed": true,
       "details": {
-        "samples": 2417,
-        "nonblank": 2408,
+        "samples": 2364,
+        "nonblank": 2353,
         "geometry": [
           256,
           224
@@ -55354,8 +55347,8 @@
       "check": "endurance gate mode 1 PCM callback is healthy",
       "passed": true,
       "details": {
-        "samples": 154599441,
-        "nonzero": 2070,
+        "samples": 151235441,
+        "nonzero": 2019,
         "rate": 32040.0
       }
     },
@@ -55370,7 +55363,7 @@
     {
       "check": "endurance gate mode 1 reports its ROM hash",
       "passed": true,
-      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
+      "details": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7"
     },
     {
       "check": "endurance gate mode is an object",
@@ -55385,7 +55378,7 @@
     {
       "check": "endurance gate mode 2 matches the exact current ROM",
       "passed": true,
-      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
+      "details": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7"
     },
     {
       "check": "endurance gate mode 2 native core identity exists",
@@ -55544,7 +55537,7 @@
       "passed": true,
       "details": {
         "samples": 116784564,
-        "nonzero": 1568,
+        "nonzero": 1567,
         "rate": 32040.0
       }
     },
@@ -55559,14 +55552,14 @@
     {
       "check": "endurance gate mode 2 reports its ROM hash",
       "passed": true,
-      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
+      "details": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7"
     },
     {
       "check": "endurance gate total frames meet the target",
       "passed": true,
       "details": {
-        "0": 304699,
-        "1": 289554,
+        "0": 309552,
+        "1": 283244,
         "2": 218606
       }
     },
@@ -55578,12 +55571,12 @@
     {
       "check": "fresh committed-source build matches the exact current ROM",
       "passed": true,
-      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
+      "details": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7"
     },
     {
       "check": "fresh committed-source build rebuilt ROM matches the exact current ROM",
       "passed": true,
-      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
+      "details": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7"
     },
     {
       "check": "fresh committed-source build build succeeded",
@@ -55662,7 +55655,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas.png",
-        "sha256": "f9df3a55175055abfd0520cbf011bb3bafb83eda4ab51e403306bac5a3e55c2c",
+        "sha256": "0d274f3a0305e5d3ee4afe97ed638676e1f0d82db6e252cf8095f1d0c55ed1bf",
         "comparison": "exact bytes"
       }
     },
@@ -55671,7 +55664,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas.png",
-        "sha256": "f9df3a55175055abfd0520cbf011bb3bafb83eda4ab51e403306bac5a3e55c2c",
+        "sha256": "0d274f3a0305e5d3ee4afe97ed638676e1f0d82db6e252cf8095f1d0c55ed1bf",
         "comparison": "exact bytes"
       }
     },
@@ -55685,7 +55678,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas_map.bin",
-        "sha256": "ea2a75eaa3f768993685241564c2f828ae8f872a41812981917512190698e5ad",
+        "sha256": "b003dfee17f146ab7bd9de55f4a5514cecf67bf9670e6dd5c32f7d1e67c030b1",
         "comparison": "exact bytes"
       }
     },
@@ -55694,7 +55687,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas_map.bin",
-        "sha256": "ea2a75eaa3f768993685241564c2f828ae8f872a41812981917512190698e5ad",
+        "sha256": "b003dfee17f146ab7bd9de55f4a5514cecf67bf9670e6dd5c32f7d1e67c030b1",
         "comparison": "exact bytes"
       }
     },
@@ -55708,7 +55701,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas_pal.bin",
-        "sha256": "7936a7ea2d8ec810b1987cd91e8b346ff1c046f5d2941f2d7c25348f0e76941b",
+        "sha256": "356808fa913a03d4e42370d45f875843c86185dbb67b800af0d987efa38bca36",
         "comparison": "exact bytes"
       }
     },
@@ -55717,7 +55710,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas_pal.bin",
-        "sha256": "7936a7ea2d8ec810b1987cd91e8b346ff1c046f5d2941f2d7c25348f0e76941b",
+        "sha256": "356808fa913a03d4e42370d45f875843c86185dbb67b800af0d987efa38bca36",
         "comparison": "exact bytes"
       }
     },
@@ -55731,7 +55724,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas_tiles.bin",
-        "sha256": "6c8d496208135ae8f5f61d473d683e1088d4c99469555f74ceb333d09404d1fe",
+        "sha256": "6cfcf0edb1e3c759bfbf82dc4350438f2c409bb9657b328c3b4ad17520b4ce3e",
         "comparison": "exact bytes"
       }
     },
@@ -55740,7 +55733,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/arenas_tiles.bin",
-        "sha256": "6c8d496208135ae8f5f61d473d683e1088d4c99469555f74ceb333d09404d1fe",
+        "sha256": "6cfcf0edb1e3c759bfbf82dc4350438f2c409bb9657b328c3b4ad17520b4ce3e",
         "comparison": "exact bytes"
       }
     },
@@ -55754,7 +55747,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/assets.h",
-        "sha256": "9c0d440711caed362b4d80833e16d35661d6a38dd493210e4fe02e1f2baca33f",
+        "sha256": "17e2d854ace89e595dd40287796e085c2b04efd1e05825dec3133a0e0e9e01a8",
         "comparison": "LF-normalized text"
       }
     },
@@ -55763,7 +55756,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/assets.h",
-        "sha256": "9c0d440711caed362b4d80833e16d35661d6a38dd493210e4fe02e1f2baca33f",
+        "sha256": "17e2d854ace89e595dd40287796e085c2b04efd1e05825dec3133a0e0e9e01a8",
         "comparison": "LF-normalized text"
       }
     },
@@ -55777,7 +55770,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/character-manifest.json",
-        "sha256": "71f71dd0eb2b95b0dbeabe6911118b4ba11f32f1b2a56fbe0af4190ac6b47c4a",
+        "sha256": "6950f288ee55632116f1c1ddf37ab1972818ac420a09030e23ce4399f6d36438",
         "comparison": "LF-normalized text"
       }
     },
@@ -55786,7 +55779,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/character-manifest.json",
-        "sha256": "71f71dd0eb2b95b0dbeabe6911118b4ba11f32f1b2a56fbe0af4190ac6b47c4a",
+        "sha256": "6950f288ee55632116f1c1ddf37ab1972818ac420a09030e23ce4399f6d36438",
         "comparison": "LF-normalized text"
       }
     },
@@ -58422,7 +58415,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter11.bin",
-        "sha256": "11933d546ef8f66ac0a164fbb01f5648c938a4e60e58d33a43018891e12b6ce8",
+        "sha256": "cd8273b2438a4e83bb6856d2ec75d20f82a66fe3aaa04cacd697acd5b2c31274",
         "comparison": "exact bytes"
       }
     },
@@ -58431,7 +58424,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter11.bin",
-        "sha256": "11933d546ef8f66ac0a164fbb01f5648c938a4e60e58d33a43018891e12b6ce8",
+        "sha256": "cd8273b2438a4e83bb6856d2ec75d20f82a66fe3aaa04cacd697acd5b2c31274",
         "comparison": "exact bytes"
       }
     },
@@ -58445,7 +58438,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter11.png",
-        "sha256": "2ec3c526425e0ae18e8c41df7bffcf8e92850e0bc79b4c53c46e2ce4115b76aa",
+        "sha256": "0b187659e5e822e7096ad31c6498134efefab369779147349a254b1ad59b00b7",
         "comparison": "exact bytes"
       }
     },
@@ -58454,7 +58447,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter11.png",
-        "sha256": "2ec3c526425e0ae18e8c41df7bffcf8e92850e0bc79b4c53c46e2ce4115b76aa",
+        "sha256": "0b187659e5e822e7096ad31c6498134efefab369779147349a254b1ad59b00b7",
         "comparison": "exact bytes"
       }
     },
@@ -58491,7 +58484,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter11b.bin",
-        "sha256": "3eb39b3f1fc74f0367c4316ca57216308f40b59132e3d5a9e82f866a058ace26",
+        "sha256": "24c03be2630df1991a5aa797d9a3aa645211e3e1619fd76aa8b0d80726e945ed",
         "comparison": "exact bytes"
       }
     },
@@ -58500,7 +58493,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter11b.bin",
-        "sha256": "3eb39b3f1fc74f0367c4316ca57216308f40b59132e3d5a9e82f866a058ace26",
+        "sha256": "24c03be2630df1991a5aa797d9a3aa645211e3e1619fd76aa8b0d80726e945ed",
         "comparison": "exact bytes"
       }
     },
@@ -58514,7 +58507,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter11c.bin",
-        "sha256": "1d92f63ece9bd9815dadd163bd6d8d38db17e73529981067b0ff3fbacc8203ec",
+        "sha256": "91b10ab5e025c9305bdd1d3f004f71e16b8581935074756e267cc29244fac62c",
         "comparison": "exact bytes"
       }
     },
@@ -58523,7 +58516,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter11c.bin",
-        "sha256": "1d92f63ece9bd9815dadd163bd6d8d38db17e73529981067b0ff3fbacc8203ec",
+        "sha256": "91b10ab5e025c9305bdd1d3f004f71e16b8581935074756e267cc29244fac62c",
         "comparison": "exact bytes"
       }
     },
@@ -58537,7 +58530,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter11d.bin",
-        "sha256": "20a136b21f36da32418ff914a7b2c87f534460e2296a2b78636c2301e65d3520",
+        "sha256": "8298f25fab1d71145ed96b8b8ee221a3938230b6b1ead43b26073b6ecb83917a",
         "comparison": "exact bytes"
       }
     },
@@ -58546,7 +58539,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter11d.bin",
-        "sha256": "20a136b21f36da32418ff914a7b2c87f534460e2296a2b78636c2301e65d3520",
+        "sha256": "8298f25fab1d71145ed96b8b8ee221a3938230b6b1ead43b26073b6ecb83917a",
         "comparison": "exact bytes"
       }
     },
@@ -58560,7 +58553,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter11e.bin",
-        "sha256": "3f31a0750da9d598c5b91b588ac3515a3c3367212cfb7dd32eee41b36346be98",
+        "sha256": "3aaa2dfc8e876cf7430da4e84928282b7c199f92277fcc3b4b9b9f6e87968acd",
         "comparison": "exact bytes"
       }
     },
@@ -58569,7 +58562,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter11e.bin",
-        "sha256": "3f31a0750da9d598c5b91b588ac3515a3c3367212cfb7dd32eee41b36346be98",
+        "sha256": "3aaa2dfc8e876cf7430da4e84928282b7c199f92277fcc3b4b9b9f6e87968acd",
         "comparison": "exact bytes"
       }
     },
@@ -58583,7 +58576,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter11f.bin",
-        "sha256": "73491c3d06e978cda3948d9e9dadd4b6094f27dca66e89c47a46e154275ac984",
+        "sha256": "d5364651ee131e66ed988014763db09e24b508883bbd06d9bfaed2743f34d772",
         "comparison": "exact bytes"
       }
     },
@@ -58592,7 +58585,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter11f.bin",
-        "sha256": "73491c3d06e978cda3948d9e9dadd4b6094f27dca66e89c47a46e154275ac984",
+        "sha256": "d5364651ee131e66ed988014763db09e24b508883bbd06d9bfaed2743f34d772",
         "comparison": "exact bytes"
       }
     },
@@ -58606,7 +58599,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter11g.bin",
-        "sha256": "9c98d97dde4f130fd39709363db96f81e721c51fef925b0958dc8bac31b2beae",
+        "sha256": "417d04ddcf79094bf5641dc6d0392a3134f723bf12148b47f1ad7cf6562adff2",
         "comparison": "exact bytes"
       }
     },
@@ -58615,7 +58608,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter11g.bin",
-        "sha256": "9c98d97dde4f130fd39709363db96f81e721c51fef925b0958dc8bac31b2beae",
+        "sha256": "417d04ddcf79094bf5641dc6d0392a3134f723bf12148b47f1ad7cf6562adff2",
         "comparison": "exact bytes"
       }
     },
@@ -58629,7 +58622,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter11h.bin",
-        "sha256": "4674d7d895fd260eca592bf9fac77bfdd6526c767cab5f138879260fff3f413b",
+        "sha256": "34050cd58ef9139eac5f33a10ec8e68f6af004238512a9d2f3c3b49e9d13a729",
         "comparison": "exact bytes"
       }
     },
@@ -58638,7 +58631,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/fighter11h.bin",
-        "sha256": "4674d7d895fd260eca592bf9fac77bfdd6526c767cab5f138879260fff3f413b",
+        "sha256": "34050cd58ef9139eac5f33a10ec8e68f6af004238512a9d2f3c3b49e9d13a729",
         "comparison": "exact bytes"
       }
     },
@@ -59756,7 +59749,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait11-large.png",
-        "sha256": "46ef03da3a7699ef2df9ae80247b4093bf8fbf153b40b9a329b8a5436af9ffc2",
+        "sha256": "c946be417ad643408a81140f0e1e055152cf1891c701465b5ea9a350b6684a6a",
         "comparison": "exact bytes"
       }
     },
@@ -59765,7 +59758,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait11-large.png",
-        "sha256": "46ef03da3a7699ef2df9ae80247b4093bf8fbf153b40b9a329b8a5436af9ffc2",
+        "sha256": "c946be417ad643408a81140f0e1e055152cf1891c701465b5ea9a350b6684a6a",
         "comparison": "exact bytes"
       }
     },
@@ -59779,7 +59772,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait11.png",
-        "sha256": "1e368e80565fb6ca23fc155631ac73f8eb386a4aa2fc6632dffebf05bf4c8bee",
+        "sha256": "b5b7515b42cf1ce6d59db6588242ada40a5f4405eda40b6129d2f422b0d1e1bc",
         "comparison": "exact bytes"
       }
     },
@@ -59788,7 +59781,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait11.png",
-        "sha256": "1e368e80565fb6ca23fc155631ac73f8eb386a4aa2fc6632dffebf05bf4c8bee",
+        "sha256": "b5b7515b42cf1ce6d59db6588242ada40a5f4405eda40b6129d2f422b0d1e1bc",
         "comparison": "exact bytes"
       }
     },
@@ -59802,7 +59795,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait11_pal.bin",
-        "sha256": "7122954f2af049c0d072f4c3b3b04264e560e8a0afb7ad2692c1089b7f282452",
+        "sha256": "57ac795f22b5565d1716c350d358d5b41262c1ba9dd6de1c4e4eb2144819ca3f",
         "comparison": "exact bytes"
       }
     },
@@ -59811,7 +59804,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait11_pal.bin",
-        "sha256": "7122954f2af049c0d072f4c3b3b04264e560e8a0afb7ad2692c1089b7f282452",
+        "sha256": "57ac795f22b5565d1716c350d358d5b41262c1ba9dd6de1c4e4eb2144819ca3f",
         "comparison": "exact bytes"
       }
     },
@@ -59825,7 +59818,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait11_tiles.bin",
-        "sha256": "523acf2c5d939b5464caef27b1c990e17bfe13f4ffd5a554c2384538e48fb142",
+        "sha256": "523beee6bbce840def42286687dde5c22d5a6c9720e365f510e65687beebbbbd",
         "comparison": "exact bytes"
       }
     },
@@ -59834,7 +59827,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/portrait11_tiles.bin",
-        "sha256": "523acf2c5d939b5464caef27b1c990e17bfe13f4ffd5a554c2384538e48fb142",
+        "sha256": "523beee6bbce840def42286687dde5c22d5a6c9720e365f510e65687beebbbbd",
         "comparison": "exact bytes"
       }
     },
@@ -59848,7 +59841,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/select.png",
-        "sha256": "e8f91c467a62646a911a7f47e1db52a85db9b09403b4aa68869a053941b8b67c",
+        "sha256": "d00fee8e2588cacac63f62c2e5e2387f5026cfa8394428f1c42af0d5fb2ff142",
         "comparison": "exact bytes"
       }
     },
@@ -59857,7 +59850,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/select.png",
-        "sha256": "e8f91c467a62646a911a7f47e1db52a85db9b09403b4aa68869a053941b8b67c",
+        "sha256": "d00fee8e2588cacac63f62c2e5e2387f5026cfa8394428f1c42af0d5fb2ff142",
         "comparison": "exact bytes"
       }
     },
@@ -59871,7 +59864,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/select_map.bin",
-        "sha256": "18ba8eb9db6c34d96a7eefbd4f7b39c33fb5d47d6b7af07c42c8e9c44a5f8403",
+        "sha256": "c0cab654437f3fd845cbc9da0e271e5d6978d9459409f7098672185709a10898",
         "comparison": "exact bytes"
       }
     },
@@ -59880,7 +59873,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/select_map.bin",
-        "sha256": "18ba8eb9db6c34d96a7eefbd4f7b39c33fb5d47d6b7af07c42c8e9c44a5f8403",
+        "sha256": "c0cab654437f3fd845cbc9da0e271e5d6978d9459409f7098672185709a10898",
         "comparison": "exact bytes"
       }
     },
@@ -59894,7 +59887,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/select_pal.bin",
-        "sha256": "d795e4ef57c06ed5c55eca36dfd0c6fd0c38a2ad5e9ef34b8cfd13f1c42f3c0f",
+        "sha256": "7a74b75763c4cfd49558b34e01f5c2dad33327dc090485d941cb92e79303af09",
         "comparison": "exact bytes"
       }
     },
@@ -59903,7 +59896,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/select_pal.bin",
-        "sha256": "d795e4ef57c06ed5c55eca36dfd0c6fd0c38a2ad5e9ef34b8cfd13f1c42f3c0f",
+        "sha256": "7a74b75763c4cfd49558b34e01f5c2dad33327dc090485d941cb92e79303af09",
         "comparison": "exact bytes"
       }
     },
@@ -59917,7 +59910,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/select_tiles.bin",
-        "sha256": "e68347dd8d79bc30db1610d2dd7b9d49b02f090a51711f59f43d730fab591b0a",
+        "sha256": "7a6e42c88c8c615895cc4e051011f159eb8c4e7d3a44ebc7575f5c2ec667cb63",
         "comparison": "exact bytes"
       }
     },
@@ -59926,7 +59919,7 @@
       "passed": true,
       "details": {
         "file": "assets/generated/select_tiles.bin",
-        "sha256": "e68347dd8d79bc30db1610d2dd7b9d49b02f090a51711f59f43d730fab591b0a",
+        "sha256": "7a6e42c88c8c615895cc4e051011f159eb8c4e7d3a44ebc7575f5c2ec667cb63",
         "comparison": "exact bytes"
       }
     },
@@ -60587,20 +60580,20 @@
     {
       "check": "fresh build records a source commit",
       "passed": true,
-      "details": "8536bb6956212952c17302a62cc6c1de7e12a65d"
+      "details": "68842a2b040fefc9070542fcf57284af5494e1dc"
     },
     {
       "check": "fresh source tree matches source commit",
       "passed": true,
       "details": {
-        "expected": "d524d3f960600dc5c9ff83578ac73675f9798735",
-        "actual": "d524d3f960600dc5c9ff83578ac73675f9798735"
+        "expected": "b8e0eee67cdc0e8a92dee351bbf625959e38a9ec",
+        "actual": "b8e0eee67cdc0e8a92dee351bbf625959e38a9ec"
       }
     },
     {
       "check": "fresh source commit is an ancestor of release HEAD",
       "passed": true,
-      "details": "8536bb6956212952c17302a62cc6c1de7e12a65d"
+      "details": "68842a2b040fefc9070542fcf57284af5494e1dc"
     },
     {
       "check": "fresh source inputs unchanged since source commit",
@@ -60611,8 +60604,8 @@
       "check": "fresh source commit/tree provenance",
       "passed": true,
       "details": {
-        "commit": "8536bb6956212952c17302a62cc6c1de7e12a65d",
-        "tree": "d524d3f960600dc5c9ff83578ac73675f9798735"
+        "commit": "68842a2b040fefc9070542fcf57284af5494e1dc",
+        "tree": "b8e0eee67cdc0e8a92dee351bbf625959e38a9ec"
       }
     },
     {
@@ -60623,7 +60616,7 @@
     {
       "check": "native Training suite matches the exact current ROM",
       "passed": true,
-      "details": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445"
+      "details": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7"
     },
     {
       "check": "native Training suite ROM byte count",
@@ -61459,6 +61452,14 @@
                 "dirty": 0
               }
             ]
+          }
+        },
+        {
+          "check": "normal pause card advertises both actual resume buttons",
+          "passed": true,
+          "details": {
+            "mode": 0,
+            "row12": "A/START RESUME B ROSTER"
           }
         },
         {
@@ -64287,6 +64288,14 @@
           }
         },
         {
+          "check": "normal pause card advertises both actual resume buttons",
+          "passed": true,
+          "details": {
+            "mode": 1,
+            "row12": "A/START RESUME B ROSTER"
+          }
+        },
+        {
           "check": "pause preserves combat state, projectiles, wake/down and native frames",
           "passed": true,
           "details": {
@@ -67100,6 +67109,14 @@
                 "dirty": 0
               }
             ]
+          }
+        },
+        {
+          "check": "normal pause card advertises both actual resume buttons",
+          "passed": true,
+          "details": {
+            "mode": 2,
+            "row12": "A/START RESUME B ROSTER"
           }
         },
         {
@@ -136942,8 +136959,8 @@
       "check": "native Training suite passed count covers every check",
       "passed": true,
       "details": {
-        "passed": 622,
-        "checks": 622
+        "passed": 625,
+        "checks": 625
       }
     },
     {
@@ -140057,6 +140074,21 @@
       "details": 621
     },
     {
+      "check": "native Training suite check passed",
+      "passed": true,
+      "details": 622
+    },
+    {
+      "check": "native Training suite check passed",
+      "passed": true,
+      "details": 623
+    },
+    {
+      "check": "native Training suite check passed",
+      "passed": true,
+      "details": 624
+    },
+    {
       "check": "native Training suite source core pins are the release pins",
       "passed": true,
       "details": {
@@ -140094,7 +140126,7 @@
     {
       "check": "native Training suite harness matches current test sources",
       "passed": true,
-      "details": "7cf827fcc848c6204858ab568412e10759980e3678e7a807f47654a32220019d"
+      "details": "3349ef0757df86ff562e293694061e1c811dfdff6ee19dfae7eb49821c23ccfb"
     },
     {
       "check": "native Training suite core options are pinned",
@@ -191106,7 +191138,7 @@
     {
       "check": "exact-ROM suite is complete: test-report.json",
       "passed": true,
-      "details": 2595
+      "details": 2596
     },
     {
       "check": "exact-ROM suite is complete: character-test-report.json",
@@ -191116,12 +191148,12 @@
     {
       "check": "exact-ROM suite is complete: presentation-test-report.json",
       "passed": true,
-      "details": 1756
+      "details": 2692
     },
     {
       "check": "exact-ROM suite is complete: input-test-report.json",
       "passed": true,
-      "details": 1020
+      "details": 1030
     },
     {
       "check": "exact-ROM suite is complete: stage-test-report.json",
@@ -191131,7 +191163,7 @@
     {
       "check": "exact-ROM suite is complete: training-test-report.json",
       "passed": true,
-      "details": 622
+      "details": 625
     },
     {
       "check": "stage evidence covers all three locations",
@@ -192283,22 +192315,22 @@
       }
     },
     {
-      "check": "source provenance hash: assets/art/characters/11-lars/atlas.png",
+      "check": "source provenance hash: assets/art/characters/11-lars/atlas-v4.png",
       "passed": true,
       "details": null
     },
     {
-      "check": "source provenance hash: assets/art/characters/11-lars/animation-motion.png",
+      "check": "source provenance hash: assets/art/characters/11-lars/animation-motion-v4.png",
       "passed": true,
       "details": null
     },
     {
-      "check": "source provenance hash: assets/art/characters/11-lars/animation-actions.png",
+      "check": "source provenance hash: assets/art/characters/11-lars/animation-actions-v4.png",
       "passed": true,
       "details": null
     },
     {
-      "check": "source provenance hash: assets/art/characters/11-lars/animation-airborne.png",
+      "check": "source provenance hash: assets/art/characters/11-lars/animation-airborne-v4.png",
       "passed": true,
       "details": null
     },
@@ -192392,7 +192424,375 @@
       "details": null
     },
     {
-      "check": "offline package contains the exact cartridge and canonical manifest",
+      "check": "offline package has no duplicate archive entries",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package contains exactly the mapped release entries",
+      "passed": true,
+      "details": {
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "check": "offline package entry matches current source map: abaqus-after-hours.sfc",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: emulator/snes9x-x64.exe",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: emulator/LICENSE",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: emulator/snes9x.conf",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: README.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: CREDITS.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: manifest.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: ART-DIRECTION.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: CHARACTERS.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: qa/gameplay.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: qa/characters.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: qa/presentation.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: qa/inputs.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: qa/stages.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: qa/training.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: qa/stage-dynamics.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: qa/compatibility.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: compatibility-test-report.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: compatibility-combat-test-report.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: qa/matchups.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: qa/independent-combat.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: qa/endurance.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: qa/fresh-build.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: COMPATIBILITY.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: ANIMATION-CONTRACT.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: COMBAT-ANIMATION-CONTRACT.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: ANIMATION-PIPELINE.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: PUBLIC-RELEASE.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: BALANCE-AUDIT-v0.6.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: PROPORTIONS.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: MENU-DESIGN.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: OBJ-BUDGET.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: STAGE-CARTOON-v2.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: cartoon-preservation-report.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: RELEASE.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: RELEASE-v0.11.0.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: preservation-v0.11.0.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: verification-v0.11.0.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: REVIEW.html",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: POLISH-v0.10.1.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: polish-test-summary.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: polish-preservation-report.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: lars-likeness-report.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: review-feedback.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: qa/character-manifest.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: LICENSE",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: licenses/PVSnesLib.txt",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: licenses/SNESMod.txt",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: licenses/Snes9x.txt",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package virtual entry is deterministic: qa/README.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package virtual entry is deterministic: qa/emulator-pins.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package virtual entry is deterministic: Play.cmd",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline documentation links resolve or are marked source-only: README.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline documentation links resolve or are marked source-only: CREDITS.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline documentation links resolve or are marked source-only: ART-DIRECTION.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline documentation links resolve or are marked source-only: CHARACTERS.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline documentation links resolve or are marked source-only: COMPATIBILITY.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline documentation links resolve or are marked source-only: ANIMATION-CONTRACT.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline documentation links resolve or are marked source-only: COMBAT-ANIMATION-CONTRACT.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline documentation links resolve or are marked source-only: ANIMATION-PIPELINE.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline documentation links resolve or are marked source-only: PUBLIC-RELEASE.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline documentation links resolve or are marked source-only: BALANCE-AUDIT-v0.6.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline documentation links resolve or are marked source-only: PROPORTIONS.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline documentation links resolve or are marked source-only: MENU-DESIGN.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline documentation links resolve or are marked source-only: OBJ-BUDGET.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline documentation links resolve or are marked source-only: STAGE-CARTOON-v2.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline documentation links resolve or are marked source-only: RELEASE.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline documentation links resolve or are marked source-only: RELEASE-v0.11.0.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline documentation links resolve or are marked source-only: POLISH-v0.10.1.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package contains the exact cartridge and pinned manifest",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package contains the pinned GUI emulator",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package records emulator pins and QA path scope",
       "passed": true,
       "details": null
     },
@@ -192487,8 +192887,17 @@
       "details": null
     }
   ],
-  "version": "0.10.0",
-  "rom_sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
+  "version": "0.11.0",
+  "rom_sha256": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7",
+  "emulator_pins": {
+    "archive": "snes9x.zip",
+    "archive_sha256": "E2BD103819051EAE57D163CDBBF6B3B92DB73FDD4A6A0EE6A939E507EAA95DB8",
+    "member": "snes9x-x64.exe",
+    "member_sha256": "C843D906C1FA1FEFA672E99CFD218041D229EF7598BCE720465FE7A0905F3A4B",
+    "package_path": "emulator/snes9x-x64.exe",
+    "launcher": "Play.cmd",
+    "config": "emulator/snes9x.conf"
+  },
   "release_evidence": {
     "matchups": {
       "cases": 288,
@@ -192510,24 +192919,24 @@
     },
     "fresh_build": {
       "generated_assets": 214,
-      "source_commit": "8536bb6956212952c17302a62cc6c1de7e12a65d",
-      "source_tree": "d524d3f960600dc5c9ff83578ac73675f9798735"
+      "source_commit": "68842a2b040fefc9070542fcf57284af5494e1dc",
+      "source_tree": "b8e0eee67cdc0e8a92dee351bbf625959e38a9ec"
     },
     "training": {
-      "checks": 622,
+      "checks": 625,
       "report": "docs/training-test-report.json",
       "modes": 3,
       "captures": 8
     }
   },
-  "native_suite_checks": 32205,
+  "native_suite_checks": 33155,
   "suites": {
-    "test-report.json": 2595,
+    "test-report.json": 2596,
     "character-test-report.json": 18081,
-    "presentation-test-report.json": 1756,
-    "input-test-report.json": 1020,
+    "presentation-test-report.json": 2692,
+    "input-test-report.json": 1030,
     "stage-test-report.json": 8131,
-    "training-test-report.json": 622
+    "training-test-report.json": 625
   },
   "independent_engine_smoke": {
     "scope": "independent-engine smoke, stage ambient/effects freeze, synchronized low-wave, neutral600frame cadence",
@@ -192565,5 +192974,5 @@
     "source_atlases_verified": 48
   },
   "remaining_release_gates": "docs/PUBLIC-RELEASE.md",
-  "audit_checks": 7472
+  "audit_checks": 7549
 }

@@ -11,6 +11,9 @@ It includes Lars's revised 64-frame likeness, clearer location previews and a
 winner portrait result card with truthful rematch, continue and champion
 prompts. Current verification and package status are recorded in the
 [v0.11.0 release note](docs/RELEASE-v0.11.0.md).
+All six native suites pass 33,155 checks on that ROM. The matching extended
+evidence and 7,549-check offline audit pass; consecutive packages reproduce
+the same 6,874,448-byte archive. Human review gates remain open.
 
 ## Play
 
@@ -18,7 +21,7 @@ On Windows, run **[Play.cmd](Play.cmd)** from the source checkout. The launcher
 prepares the pinned official Snes9x tools in `.tools/` on first use and opens
 the cartridge. No administrator account or global installation is needed.
 
-For offline play, extract the whole versioned Windows ZIP and run its included
+For offline play, extract the whole [v0.11.0 Windows ZIP](dist/Abaqus-After-Hours-v0.11.0-Windows.zip) and run its included
 `Play.cmd`. Its `manifest.json` and `RELEASE.md` identify the actual cartridge
 and verification scope. The release note above identifies the latest candidate
 package when available; older archives contain their own historical versions.

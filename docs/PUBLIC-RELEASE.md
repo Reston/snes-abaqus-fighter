@@ -5,6 +5,9 @@ The current v0.11.0 result-screen candidate is cartridge SHA256
 `1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7`.
 Its [release note](RELEASE-v0.11.0.md) records current verification and package
 status. The prior v0.10.0 package and older results below remain historical.
+All six current native suites pass 33,155 checks. Matching evidence includes
+the independent smoke and bounded combat run, full native matchup matrix,
+three native live-hour sessions and an isolated committed-source rebuild.
 Human gameplay, full listening, physical-controller sessions, likeness/consent
 and team/public-use approval remain open. `public_release_certified` is false.
 

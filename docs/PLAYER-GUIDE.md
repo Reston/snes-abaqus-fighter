@@ -22,6 +22,7 @@ included `manifest.json` identifies the packaged version and ROM SHA256;
 release note under `docs/`. No global installation or administrator account is
 needed. Human gameplay, listening, controller, likeness/consent and team/public
 use review remain open; original hardware support stays unverified.
+The package's `REVIEW.html` contains selected native screenshots and a 2x view.
 
 Focus Snes9x and press **Enter**. Use **Alt+Enter** for fullscreen and
 **Input -> Input Configuration** to assign controllers. For a quiet session,

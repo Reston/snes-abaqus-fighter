@@ -1,5 +1,10 @@
 # v0.10.1 Lars and location-preview polish candidate
 
+This note preserves the art checkpoint at
+`0708dea65c859786e8455da78bd58eb077135adf`. Its test results below identify
+the historical v0.10.1 ROM. The current cartridge and verification status are
+recorded in [RELEASE-v0.11.0.md](RELEASE-v0.11.0.md).
+
 This review candidate addresses the two findings reported after playing
 v0.10.0: Lars needed a closer likeness, and the location-selection pictures
 were hard to understand. The exact responses are retained in
@@ -62,7 +67,7 @@ See [MENU-DESIGN.md](MENU-DESIGN.md) for exact menu geometry.
 
 ## Verification
 
-`Build.cmd --assets` and `Test.cmd` exit 0. All six current native reports
+At the v0.10.1 checkpoint, `Build.cmd --assets` and `Test.cmd` exit 0. Its six native reports
 point to ROM SHA256 `8f7def30d29c87a659d7fb623147cf726bab8f8c94a96a503738529aded15279`
 (header `42AF`) and pass 32,205 checks: 2,595 gameplay, 18,081 roster, 1,756 presentation, 1,020 focused input, 8,131 stage, 622 Training.
 
@@ -80,7 +85,7 @@ the other eleven fighters and portraits, stages, ambient cells, UI glyphs,
 title, effects and audio are unchanged. The complete native Lars art
 review is in [lars-likeness-report.json](lars-likeness-report.json).
 
-This is an unpackaged review candidate. The prior v0.10.0 matchup,
+v0.10.1 was an unpackaged review candidate. The prior v0.10.0 matchup,
 independent-combat, endurance, isolated committed rebuild and package
 reports do not certify this new ROM. Human likeness, gameplay, controller,
 full-listening and team/public-use review remain open. Original hardware

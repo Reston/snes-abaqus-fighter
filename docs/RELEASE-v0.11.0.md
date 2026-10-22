@@ -16,8 +16,8 @@ baseline are unchanged by this result-screen pass.
 - Candidate: v0.11.0, 4,194,304-byte NTSC FastROM LoROM cartridge.
 - ROM SHA256: `1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7`.
 - Header checksum: `7CFE`.
-- Cartridge source freeze: `7f3c7a8d2dee5a0c05ff893c8df3ea932b6c341a`.
-- Source tree: `7ce8adb96a7838ec24835f360cfef1ae3c2610de`.
+- Cartridge source freeze: `68842a2b040fefc9070542fcf57284af5494e1dc`.
+- Source tree: `b8e0eee67cdc0e8a92dee351bbf625959e38a9ec`.
 
 ## Native contracts
 
@@ -39,9 +39,23 @@ binary bytes and Git LF normalization for text.
 
 ## Verification and package status
 
-Candidate verification is in progress. Do not use the historical v0.10.1
-six-suite results or v0.10.0 release-scale results as evidence for this ROM.
-No v0.11.0 Windows package has been produced yet.
+All six native suites now pass on this exact ROM: 2,596 gameplay, 18,081
+roster, 2,692 presentation, 1,030 focused input, 8,131 stage and 625 Training
+checks, totaling **33,155**. The separate pinned bsnes2014 Accuracy smoke
+matches. The clean committed-source rebuild reproduces the cartridge, all
+214 generated assets and normalized symbols in 205.594 seconds. Native
+endurance completes one live emulated hour in each of the three modes.
+
+The full 288-case native matchup matrix, stage/policy/symmetry checks and
+four deterministic replays pass. The independent bsnes combat run passes
+48 cases of 600 frames. The [verification record](verification-v0.11.0.json)
+collates these exact-cartridge gates; historical results are kept separately.
+
+The Windows offline package includes the pinned Snes9x executable, cartridge,
+player guide, exact QA reports and an embedded native-screen review gallery.
+Extract the whole archive and run `Play.cmd`. The source checkout publishes
+its archive checksum in `dist/release-sha256.txt`; the archive audit is
+recorded separately in `docs/release-audit.json`.
 
 Native result checks drive real controller inputs to P1 and P2 victories,
 compare the winner portrait's exact VRAM bytes and actual PPU pixels, verify
@@ -51,8 +65,8 @@ that action.
 
 The offline-package work checks pinned emulator identity, explicit native
 evidence requirements even under optimized Python, complete file preflight,
-and documentation paths for the extracted package. Full release evidence and
-archive results will be recorded after the candidate source is committed.
+and documentation paths for the extracted package. The source freeze above
+is the committed cartridge input used by the isolated rebuild.
 
 This remains an emulator-first technical candidate. Human gameplay/balance,
 full listening, physical-controller sessions, likeness/consent and team/public

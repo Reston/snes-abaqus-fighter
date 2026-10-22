@@ -1,0 +1,86 @@
+{
+  "version": "0.11.0",
+  "rom_sha256": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7",
+  "checksum": "7CFE",
+  "status": "passed",
+  "scope": "Six native suites plus compatibility and release-scale evidence; offline archive audit is separate.",
+  "source_commit": "68842a2b040fefc9070542fcf57284af5494e1dc",
+  "source_tree": "b8e0eee67cdc0e8a92dee351bbf625959e38a9ec",
+  "native_suites": {
+    "test": {
+      "passed": 2596,
+      "elapsed_seconds": 105.47,
+      "report": "docs/test-report.json"
+    },
+    "character-test": {
+      "passed": 18081,
+      "elapsed_seconds": 262.54,
+      "report": "docs/character-test-report.json"
+    },
+    "presentation-test": {
+      "passed": 2692,
+      "elapsed_seconds": 56.25,
+      "report": "docs/presentation-test-report.json"
+    },
+    "input-test": {
+      "passed": 1030,
+      "elapsed_seconds": 390.406,
+      "report": "docs/input-test-report.json"
+    },
+    "stage-test": {
+      "passed": 8131,
+      "elapsed_seconds": 38.609,
+      "report": "docs/stage-test-report.json"
+    },
+    "training-test": {
+      "passed": 625,
+      "elapsed_seconds": 31.828,
+      "report": "docs/training-test-report.json"
+    }
+  },
+  "native_checks_total": 33155,
+  "independent_smoke": {
+    "status": "passed",
+    "report": "docs/compatibility-test-report.json"
+  },
+  "release_evidence": {
+    "matchups": {
+      "cases": 288,
+      "replays": 4,
+      "stages": [
+        0,
+        1,
+        2
+      ]
+    },
+    "independent_combat": {
+      "cases": 48,
+      "frames": 28800
+    },
+    "endurance": {
+      "native_fps": 60.098811862348406,
+      "target_live_frames_per_mode": 216356,
+      "modes": 3
+    },
+    "fresh_build": {
+      "generated_assets": 214,
+      "source_commit": "68842a2b040fefc9070542fcf57284af5494e1dc",
+      "source_tree": "b8e0eee67cdc0e8a92dee351bbf625959e38a9ec"
+    },
+    "training": {
+      "checks": 625,
+      "report": "docs/training-test-report.json",
+      "modes": 3,
+      "captures": 8
+    }
+  },
+  "public_release_certified": false,
+  "human_gates": [
+    "gameplay/balance",
+    "full listening",
+    "physical controllers",
+    "likeness/consent",
+    "team/public use"
+  ],
+  "original_hardware": "unverified, outside first emulator-release support scope"
+}

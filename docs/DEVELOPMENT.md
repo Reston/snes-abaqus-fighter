@@ -6,7 +6,8 @@ The current checkout builds the v0.11.0 result-screen candidate, ROM SHA256
 It includes the [v0.10.1 Lars/location art pass](POLISH-v0.10.1.md) and
 reuses the existing portrait page for the match winner. The portrait is
 uploaded while the screen is blanked; the live one-actor-per-vblank budget,
-Fighter/Wave layout, trace ABI, active combat and audio remain unchanged.
+Fighter/Wave layout, trace ABI, attack timing, AI, balance and audio remain unchanged.
+The input path discards wake-only motion commands as recorded in the release note.
 See [RELEASE-v0.11.0.md](RELEASE-v0.11.0.md) for candidate evidence status.
 All older version sections below are historical snapshots.
 

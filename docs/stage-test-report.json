@@ -2,7 +2,7 @@
   "emulator": "Official Snes9x 1.63 x64 libretro core",
   "suite": "stage-ambient",
   "status": "passed",
-  "rom_sha256": "8f7def30d29c87a659d7fb623147cf726bab8f8c94a96a503738529aded15279",
+  "rom_sha256": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7",
   "rom_bytes": 4194304,
   "checks": [
     {
@@ -10,11 +10,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.10.1",
+        "version": "0.11.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "8f7def30d29c87a659d7fb623147cf726bab8f8c94a96a503738529aded15279",
-        "checksum": "42AF",
+        "sha256": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7",
+        "checksum": "7CFE",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -56564,7 +56564,7 @@
           "phase": 0,
           "pending": 255,
           "tile_sha256": "83cc25b2612113aef24dab6645f9708813008c939d2a36b3ed6b72ee339029ad",
-          "frame": "4764e1f098bf5e584e0132b0714f19deb2b0eb03c1588921d4ae45be7bb2c892"
+          "frame": "f6925cfb390346d3e91cefd2cb59a325bddfaa4a83b207637b37e40be2944d85"
         },
         "after": {
           "magic": 43706,
@@ -56698,15 +56698,15 @@
         "phase": 0,
         "pending": 255,
         "tile_sha256": "83cc25b2612113aef24dab6645f9708813008c939d2a36b3ed6b72ee339029ad",
-        "frame": "4764e1f098bf5e584e0132b0714f19deb2b0eb03c1588921d4ae45be7bb2c892"
+        "frame": "f6925cfb390346d3e91cefd2cb59a325bddfaa4a83b207637b37e40be2944d85"
       }
     },
     {
       "check": "stage PPU output remains frozen while paused",
       "passed": true,
       "details": {
-        "before": "4764e1f098bf5e584e0132b0714f19deb2b0eb03c1588921d4ae45be7bb2c892",
-        "after": "4764e1f098bf5e584e0132b0714f19deb2b0eb03c1588921d4ae45be7bb2c892"
+        "before": "f6925cfb390346d3e91cefd2cb59a325bddfaa4a83b207637b37e40be2944d85",
+        "after": "f6925cfb390346d3e91cefd2cb59a325bddfaa4a83b207637b37e40be2944d85"
       }
     },
     {
@@ -164512,7 +164512,7 @@
           "phase": 0,
           "pending": 255,
           "tile_sha256": "005d040dd178547d3689f0cf8b3547eebc2d0000baa8209d64f037c3513d866c",
-          "frame": "53ec3dc0b5f0a34d49fe21c451442521393959360f2ae125f75e78c1cb6cfeae"
+          "frame": "f7002026a2c96983d9837c629f8cb56dd5a08972e8aec94685cd135e4dc02003"
         },
         "after": {
           "magic": 43706,
@@ -164646,15 +164646,15 @@
         "phase": 0,
         "pending": 255,
         "tile_sha256": "005d040dd178547d3689f0cf8b3547eebc2d0000baa8209d64f037c3513d866c",
-        "frame": "53ec3dc0b5f0a34d49fe21c451442521393959360f2ae125f75e78c1cb6cfeae"
+        "frame": "f7002026a2c96983d9837c629f8cb56dd5a08972e8aec94685cd135e4dc02003"
       }
     },
     {
       "check": "stage PPU output remains frozen while paused",
       "passed": true,
       "details": {
-        "before": "53ec3dc0b5f0a34d49fe21c451442521393959360f2ae125f75e78c1cb6cfeae",
-        "after": "53ec3dc0b5f0a34d49fe21c451442521393959360f2ae125f75e78c1cb6cfeae"
+        "before": "f7002026a2c96983d9837c629f8cb56dd5a08972e8aec94685cd135e4dc02003",
+        "after": "f7002026a2c96983d9837c629f8cb56dd5a08972e8aec94685cd135e4dc02003"
       }
     },
     {
@@ -272460,7 +272460,7 @@
           "phase": 0,
           "pending": 255,
           "tile_sha256": "170947bb6e560a933d9586efed8fcce74412b160238d252ae29f8fe6a2b602de",
-          "frame": "d953d40fd4dafd40562c386db7773020773824d958f94993cfd6ff04b37b4b9e"
+          "frame": "d711e06be695f026fca057b5349381e80e3b1ce255deaca0c19919c77918707c"
         },
         "after": {
           "magic": 43706,
@@ -272594,15 +272594,15 @@
         "phase": 0,
         "pending": 255,
         "tile_sha256": "170947bb6e560a933d9586efed8fcce74412b160238d252ae29f8fe6a2b602de",
-        "frame": "d953d40fd4dafd40562c386db7773020773824d958f94993cfd6ff04b37b4b9e"
+        "frame": "d711e06be695f026fca057b5349381e80e3b1ce255deaca0c19919c77918707c"
       }
     },
     {
       "check": "stage PPU output remains frozen while paused",
       "passed": true,
       "details": {
-        "before": "d953d40fd4dafd40562c386db7773020773824d958f94993cfd6ff04b37b4b9e",
-        "after": "d953d40fd4dafd40562c386db7773020773824d958f94993cfd6ff04b37b4b9e"
+        "before": "d711e06be695f026fca057b5349381e80e3b1ce255deaca0c19919c77918707c",
+        "after": "d711e06be695f026fca057b5349381e80e3b1ce255deaca0c19919c77918707c"
       }
     },
     {
@@ -334298,7 +334298,7 @@
           "phase": 0,
           "pending": 255,
           "tile_sha256": "83cc25b2612113aef24dab6645f9708813008c939d2a36b3ed6b72ee339029ad",
-          "frame": "4764e1f098bf5e584e0132b0714f19deb2b0eb03c1588921d4ae45be7bb2c892"
+          "frame": "f6925cfb390346d3e91cefd2cb59a325bddfaa4a83b207637b37e40be2944d85"
         },
         "after": {
           "magic": 43706,
@@ -335215,7 +335215,7 @@
           "phase": 0,
           "pending": 255,
           "tile_sha256": "005d040dd178547d3689f0cf8b3547eebc2d0000baa8209d64f037c3513d866c",
-          "frame": "53ec3dc0b5f0a34d49fe21c451442521393959360f2ae125f75e78c1cb6cfeae"
+          "frame": "f7002026a2c96983d9837c629f8cb56dd5a08972e8aec94685cd135e4dc02003"
         },
         "after": {
           "magic": 43706,
@@ -336132,7 +336132,7 @@
           "phase": 0,
           "pending": 255,
           "tile_sha256": "170947bb6e560a933d9586efed8fcce74412b160238d252ae29f8fe6a2b602de",
-          "frame": "d953d40fd4dafd40562c386db7773020773824d958f94993cfd6ff04b37b4b9e"
+          "frame": "d711e06be695f026fca057b5349381e80e3b1ce255deaca0c19919c77918707c"
         },
         "after": {
           "magic": 43706,
@@ -336458,5 +336458,5 @@
     "ambient_phase_age": 118
   },
   "passed": 8131,
-  "elapsed_seconds": 14.875
+  "elapsed_seconds": 38.609
 }

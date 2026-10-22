@@ -195,6 +195,8 @@ def build_package_files(root: Path = ROOT, manifest: Mapping | None = None) -> d
         'RELEASE.md': root / f'docs/RELEASE-v{version}.md',
         f'RELEASE-v{version}.md': root / f'docs/RELEASE-v{version}.md',
         f'preservation-v{version}.json': root / f'docs/preservation-v{version}.json',
+        f'verification-v{version}.json': root / f'docs/verification-v{version}.json',
+        'REVIEW.html': root / f'docs/REVIEW-v{version}.html',
         'POLISH-v0.10.1.md': root / 'docs/POLISH-v0.10.1.md',
         'polish-test-summary.json': root / 'docs/polish-test-summary.json',
         'polish-preservation-report.json':
@@ -216,7 +218,8 @@ def qa_readme_bytes() -> bytes:
         'The JSON files under qa/ are copied byte-for-byte from the '
         'source checkout used for this candidate. Their ROM, core, check and '
         'provenance fields remain the release evidence that was audited.\n\n'
-        'Path and capture fields in those reports refer to the original '
+        'REVIEW.html embeds selected native presentation captures for offline '
+        'inspection at 1x or 2x. Path and capture fields in those reports refer to the original '
         'checkout and to captures that are not bundled in this offline '
         'archive. Source-only documentation links are labeled explicitly so '
         'they are not mistaken for package files.\n\n'
@@ -440,8 +443,8 @@ def main() -> None:
         for name, data in virtual.items():
             write_entry(package, name, data)
     digest = sha256_file(archive)
-    (ROOT / 'dist/release-sha256.txt').write_text(
-        digest + '  ' + archive.name + '\n', encoding='utf-8'
+    (ROOT / 'dist/release-sha256.txt').write_bytes(
+        (digest + '  ' + archive.name + '\n').encode('utf-8')
     )
     print('Packaged', archive.name, archive.stat().st_size, 'bytes')
 
