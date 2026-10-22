@@ -1296,6 +1296,124 @@ def verify_dummy_reset_and_defaults(rom: Path) -> dict[str, object]:
         q.close()
 
 
+def verify_start_select_priority(rom: Path) -> list[dict[str, object]]:
+    """Either pad's START resumes before P1's live Training SELECT reset.
+
+    Exercise normal combat and contact hitstop on every settled pause page.
+    Check the first resumed tick as well as the held chord: returning early
+    from fightTick would avoid the reset but add an unwanted frozen tick.
+    """
+
+    chords = (
+        ("p1-start-select", ("start", "select"), ()),
+        ("p2-start-p1-select", ("select",), ("start",)),
+        ("p1-start-b-a-select", ("start", "b", "a", "select"), ()),
+        ("p2-start-p1-b-a-select", ("b", "a", "select"), ("start",)),
+    )
+    results: list[dict[str, object]] = []
+    for fixture in ("moved", "damaged"):
+        for page in range(3):
+            for name, p1, p2 in chords:
+                label = f"training-resume-{fixture}-page{page}-{name}"
+                q = boot(rom, mode=2, fighter=0, fighter2=10, label=label)
+                try:
+                    initial = q.state()
+                    if fixture == "moved":
+                        q.run(20, ("left",))
+                        q.run(8)
+                    else:
+                        drive_local_contact(q, attacker=0)
+                    pause(q)
+                    set_dummy(q, 2)
+                    cycle_to_page(q, page)
+                    before = q.state()
+                    check(before["x1"] != initial["x1"] and
+                          before["pause_page"] == page and
+                          before["guide_build"] == 0 and before["guide_dirty"] == 0,
+                          "resume priority fixture has moved actors and a settled pause page",
+                          {"case": label, "initial": initial, "before": before})
+                    if fixture == "damaged":
+                        check(0 < before["hp2"] < 128 and before["hitstop"] > 0,
+                              "resume priority fixture retains real damage and contact hitstop",
+                              {"case": label, "before": before})
+                    else:
+                        check(before["hitstop"] == 0,
+                              "moved resume priority fixture is outside hitstop", before)
+
+                    resumed: dict[str, int] | None = None
+                    held_samples = []
+                    previous = before
+                    # Hold across the controller poll, keeping QA.step's strict
+                    # unit cadence for every pause, guide and resumed callback.
+                    for _ in range(3):
+                        current = q.step(p1, p2)
+                        held_samples.append(current)
+                        if previous["paused"] and not current["paused"]:
+                            resumed = current
+                            check(current["screen"] == FIGHT and
+                                  all(current[key] == before[key] for key in
+                                      ("x1", "x2", "y1", "y2", "hp1", "hp2",
+                                       "action1", "action2", "wins1", "wins2", "round",
+                                       "fighter_id1", "fighter_id2", "selected", "selected2",
+                                       "training_dummy", "intro", "round_end")),
+                                  "START chord resumes the existing round without a Training reset",
+                                  {"case": label, "before": before, "resumed": current})
+                            if before["hitstop"]:
+                                check(current["hitstop"] == before["hitstop"] - 1 and
+                                      current["ambient_clock"] == before["ambient_clock"],
+                                      "START resume advances the existing hitstop on its first tick",
+                                      {"case": label, "before": before, "resumed": current})
+                            else:
+                                check(current["hitstop"] == 0 and
+                                      current["ambient_clock"] ==
+                                      ((before["ambient_clock"] + 1) & 255),
+                                      "START resume advances combat on its first tick",
+                                      {"case": label, "before": before, "resumed": current})
+                        previous = current
+                    check(resumed is not None,
+                          "same-pad and split-pad START chords resume within the input pulse",
+                          {"case": label, "samples": held_samples})
+                    released = q.run(3)
+                    # Contact recoil can move the victim after hitstop ends.
+                    # The idle attacker and both HP values still distinguish
+                    # this continuing round from resetRoundState().
+                    check(all(sample["screen"] == FIGHT and sample["paused"] == 0 and
+                              sample["x1"] == before["x1"] and sample["x2"] == before["x2"]
+                              for sample in held_samples if not sample["paused"]) and
+                          released["paused"] == 0 and released["pause_page"] == 0 and
+                          released["guide_build"] == 0 and released["guide_dirty"] == 0 and
+                          released["x1"] == before["x1"] and
+                          released["hp1"] == before["hp1"] and released["hp2"] == before["hp2"],
+                          "held resume chord and release keep the current round and close the guide",
+                          {"case": label, "held": held_samples, "released": released})
+
+                    # A new SELECT edge after releasing START must still reset
+                    # the live round and keep the chosen fighters/dummy mode.
+                    reset = q.press("select")
+                    check(reset["screen"] == FIGHT and reset["paused"] == 0 and
+                          reset["intro"] == 0 and reset["hp1"] == reset["hp2"] == 128 and
+                          reset["x1"] == initial["x1"] and reset["x2"] == initial["x2"] and
+                          reset["y1"] == reset["y2"] == 0 and
+                          reset["action1"] == reset["action2"] == 0 and
+                          reset["hurt1"] == reset["hurt2"] == 0 and
+                          reset["wave1"] == reset["wave2"] == reset["hitstop"] == 0,
+                          "fresh live P1 SELECT still restores health, positions and combat state",
+                          {"case": label, "reset": reset})
+                    check(reset["fighter_id1"] == 0 and reset["fighter_id2"] == 10 and
+                          reset["selected"] == 0 and reset["selected2"] == 10 and
+                          reset["training_dummy"] == 2 and reset["pose2"] == 3,
+                          "fresh SELECT reset keeps both selected fighters and the low-guard dummy",
+                          {"case": label, "reset": reset})
+                    results.append({
+                        "case": label, "p1": p1, "p2": p2, "before": before,
+                        "resumed": resumed, "held": held_samples, "released": released,
+                        "reset": reset, "cadence_failures": list(q.cadence),
+                    })
+                finally:
+                    q.close()
+    return results
+
+
 def verify_all_special_names(rom: Path) -> list[dict[str, object]]:
     evidence: list[dict[str, object]] = []
     for fighter in range(len(FIGHTER_NAMES)):
@@ -1350,6 +1468,7 @@ def run_suite(rom: Path, core_info: dict[str, str] | None = None,
     freeze = verify_crossup_and_pause_projectile(rom)
     matchups = verify_training_matchups(rom)
     reset = verify_dummy_reset_and_defaults(rom)
+    resume_priority = verify_start_select_priority(rom)
     specials = verify_all_special_names(rom)
     pause_hud = verify_pause_hud_after_contacts(rom)
     return {
@@ -1385,6 +1504,7 @@ def run_suite(rom: Path, core_info: dict[str, str] | None = None,
         "pause_projectile_crossup": freeze,
         "training_matchups": matchups,
         "quick_reset": reset,
+        "start_select_priority": resume_priority,
         "all_special_names": specials,
         "pause_hud_after_contacts": pause_hud,
         "checks": CHECKS,

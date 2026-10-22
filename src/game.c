@@ -1093,12 +1093,15 @@ void fightTick(void) {
         if(paused && guideBuild)buildPauseGuide();
         drawFight();return;
     }
-    if(mode==2 && (edge0&KEY_SELECT)) {
-        /* The same actors and labels remain loaded. Reset their simulation
-         * now and let the two idle uploads settle before rebuilding bars. */
-        resetRoundState();intro=0;hitstop=3;impactSettle=1;
-        impactHudPending=1;impactBannerPending=1;resetFooterPending=1;
-        animationAdvance=1;drawFight();return;
+    /* Either pad's Start owns this sample, including the resumed live tick. */
+    if(!(pauseKeys&KEY_START)) {
+        if(mode==2 && (edge0&KEY_SELECT)) {
+            /* The same actors and labels remain loaded. Reset their simulation
+             * now and let the two idle uploads settle before rebuilding bars. */
+            resetRoundState();intro=0;hitstop=3;impactSettle=1;
+            impactHudPending=1;impactBannerPending=1;resetFooterPending=1;
+            animationAdvance=1;drawFight();return;
+        }
     }
     if(roundEnd) {
         animationAdvance=1;
