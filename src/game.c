@@ -556,6 +556,22 @@ u16 cpuKeys(void) {
             }
         }
     }
+    /* A visible near jump can invite the universal uppercut, after wave
+     * defense and the signature special have had first choice. Native
+     * controller probes put useful six-tick starts inside 40px at 12..56px
+     * height. The sampled cadence/chance can miss that window or commit to
+     * a whiff; no opponent input or future contact is consulted. */
+    if(difficulty>0 && !hitstop && f->hp) {
+        if(!f->action && !f->hurt && !f->y) {
+            if(!enemy->hurt && !enemy->downState && distance<=40) {
+                if(enemy->y<=-12*16 && enemy->y>=-56*16) {
+                    if((enemy->x>f->x)==f->face &&
+                       (frame+f->id*13)%(difficulty==2?6:10)==0 &&
+                       chance<(difficulty==2?24:16))return KEY_DOWN|KEY_L;
+                }
+            }
+        }
+    }
     if(distance>46) {
         k=forward;
         if(distance>65 && difficulty>0 && (frame%143==0))k|=KEY_UP;

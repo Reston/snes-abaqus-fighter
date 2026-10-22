@@ -4038,6 +4038,240 @@ def check_cpu_wake() -> dict[str, object]:
     return results
 
 
+def _cpu_jump_in(cpu_id: int, difficulty: int, title_delay: int = 0, *,
+                 retreat: bool = False, kick: bool = True) -> dict[str, object]:
+    """Replay a jump from native arcade menus, never memory or a save state.
+
+    Fixed title delays select reproducible PRNG/cadence opportunities. Walk
+    to the launch band, then lock ordinary forward/backward jump momentum.
+    The optional medium kick is deliberately later than the early reactions.
+    """
+
+    e = boot(0, fighter=(cpu_id - 1) % 12, difficulty=difficulty,
+             title_delay=title_delay)
+    approach: list[dict[str, int]] = []
+    samples: list[dict[str, int]] = []
+    launch_range = 34 if retreat else 68
+    try:
+        for _ in range(210):
+            sample = trace(e)
+            if (abs(sample["x1"] - sample["x2"]) <= launch_range * 16 and
+                    not sample["hurt1"] and not sample["down_state1"] and
+                    not sample["action1"] and not sample["y1"]):
+                break
+            approach.append(sample)
+            e.run(1, p1=["right"])
+        else:
+            raise AssertionError(("CPU jump fixture never reaches launch band",
+                                  _cpu_summary(trace(e))))
+        for tick in range(65):
+            samples.append(trace(e))
+            keys = (["up", "left" if retreat else "right"] if tick < 3
+                    else ["a"] if kick and tick in (16, 17) else [])
+            e.run(1, p1=keys)
+    finally:
+        e.close()
+    return {"cpu_id": cpu_id, "difficulty": difficulty,
+            "title_delay": title_delay, "retreat": retreat,
+            "approach": approach, "samples": samples}
+
+
+def _cpu_uppercut_start(case: dict[str, object], *, hit: bool) -> dict[str, object]:
+    """Require a fresh Down+L edge, its full startup, and native contact/whiff."""
+
+    samples = case["samples"]
+    label = (f"CPU d{case['difficulty']} fighter {case['cpu_id']} "
+             f"delay{case['title_delay']} {'retreat' if case['retreat'] else 'jump-in'}")
+    starts = [index for index in range(1, len(samples))
+              if samples[index]["action2"] == 8 and
+              samples[index - 1]["action2"] != 8]
+    check(bool(starts), label + " deliberately starts the universal uppercut",
+          [_cpu_summary(sample) for sample in samples])
+    index = starts[0]
+    before, first = samples[index - 1:index + 1]
+    check(first["raw_keys2"] == 1056 and first["anim_tick2"] == 1 and
+          signed16(first["y2"]) < 0 and before["raw_keys2"] & 32 == 0,
+          label + " starts action 8 from a real fresh DOWN+L edge", {
+              "before": _cpu_summary(before), "first": _cpu_summary(first)})
+    check(before["action2"] == before["hurt2"] == before["y2"] ==
+          before["down_state2"] == before["hitstop"] == 0 and before["hp2"] > 0,
+          label + " commits only from an ordinary available grounded startup",
+          _cpu_summary(before))
+    check(-56 * 16 <= signed16(before["y1"]) <= -12 * 16 and
+          abs(before["x1"] - before["x2"]) < 41 * 16 and
+          (before["x1"] > before["x2"]) == bool(before["face2"]) and
+          before["hurt1"] == before["down_state1"] == 0 and before["hp1"] > 0,
+          label + " reacts to a live visible near airborne target in front",
+          _cpu_summary(before))
+    startup = samples[index:index + 5]
+    check([sample["anim_tick2"] for sample in startup] == [1, 2, 3, 4, 5] and
+          all(sample["action2"] == 8 and sample["connected2"] == 0 and
+              sample["hp1"] == before["hp1"] for sample in startup),
+          label + " preserves all five pre-contact startup ticks",
+          [_cpu_summary(sample) for sample in startup])
+    active = [sample for sample in samples[index:] if sample["action2"] == 8]
+    contacts = [sample for sample in active if sample["connected2"] == 2]
+    if hit:
+        check(bool(contacts) and contacts[0]["anim_tick2"] == 6 and
+              contacts[0]["hp1"] < before["hp1"] and
+              contacts[0]["hp2"] == before["hp2"] and
+              signed16(contacts[0]["y1"]) < 0,
+              label + " intercepts the jump on its ordinary first active tick", {
+                  "decision": _cpu_summary(before),
+                  "contact": _cpu_summary(contacts[0]) if contacts else None})
+    else:
+        active_window = [sample for sample in active
+                         if 6 <= sample["anim_tick2"] < 14]
+        check(len(active_window) == 8 and not contacts and
+              all(sample["hp1"] == before["hp1"] and sample["connected2"] == 0
+                  for sample in active) and
+              min(abs(sample["x1"] - sample["x2"])
+                  for sample in active_window) > 41 * 16,
+              label + " can commit and whiff all eight active ticks", {
+                  "decision": _cpu_summary(before),
+                  "active": [_cpu_summary(sample) for sample in active_window]})
+    return {"cpu_id": case["cpu_id"], "difficulty": case["difficulty"],
+            "title_delay": case["title_delay"], "start_index": index,
+            "decision": _cpu_summary(before), "first": _cpu_summary(first),
+            "contact": _cpu_summary(contacts[0]) if contacts else None}
+
+
+def _cpu_anti_air_ko(victim: int) -> dict[str, object]:
+    """Reach genuine KOs on both sides with walk/uppercut controller play."""
+
+    e = boot(0, fighter=1, difficulty=2)
+    samples: list[dict[str, int]] = []
+    try:
+        for tick in range(900):
+            before = trace(e)
+            if before["round_end"] or before["screen"] != 3:
+                break
+            forward = "right" if before["x1"] < before["x2"] else "left"
+            keys = [forward]
+            if victim == 2 and tick % 32 < 3 and \
+                    abs(before["x1"] - before["x2"]) < 36 * 16:
+                keys = ["down", "l"]
+            e.run(1, p1=keys)
+            sample = trace(e)
+            if sample[f"hp{victim}"] == 0:
+                samples.append(sample)
+                for _ in range(12):
+                    e.run(1, p1=["up"])
+                    samples.append(trace(e))
+                break
+    finally:
+        e.close()
+    check(len(samples) == 13 and all(sample[f"hp{victim}"] == 0
+                                    for sample in samples),
+          f"CPU anti-air negative reaches a real P{victim} KO",
+          [_cpu_summary(sample) for sample in samples])
+    check(all(sample["raw_keys2"] == 0 and sample["action2"] != 8
+              for sample in samples[1:]),
+          f"CPU issues no uppercut or buffered attack after P{victim} KO",
+          [_cpu_summary(sample) for sample in samples])
+    if victim == 2:
+        check(samples[0]["round_end"] == 0 and samples[0]["down_state2"] == 2 and
+              signed16(samples[0]["y1"]) < 0,
+              "zero-HP CPU stays inert during committed flight with airborne P1",
+              _cpu_summary(samples[0]))
+    return {"victim": victim, "samples": [_cpu_summary(sample) for sample in samples]}
+
+
+def check_cpu_anti_air() -> dict[str, object]:
+    """Bound strategic uppercuts with useful hits, misses and state exclusions.
+
+    These title delays were measured on the cartridge. Each positive requires
+    a deliberate action-8 start; all seven fail against the verified v0.15 ROM.
+    Existing rising-special, wave defense, approach and wake fixtures still
+    run separately with their original assertions.
+    """
+
+    fixtures = ((0, 1, 4), (0, 2, 0), (2, 2, 4), (4, 1, 0),
+                (4, 2, 0), (5, 1, 6), (5, 2, 5))
+    cases = [_cpu_jump_in(cpu, difficulty, delay)
+             for cpu, difficulty, delay in fixtures]
+    hits = [_cpu_uppercut_start(case, hit=True) for case in cases]
+    retreat = _cpu_jump_in(2, 2, 11, retreat=True, kick=False)
+    whiff = _cpu_uppercut_start(retreat, hit=False)
+
+    # Equal menu frame counts align Normal's title+20 with Hard/Easy's
+    # difficulty-button tap. The same visible opening does not assure a
+    # reaction: Hard intercepts here, Normal misses its sampled opportunity.
+    easy = _cpu_jump_in(4, 0)
+    normal = _cpu_jump_in(4, 1, 20)
+    hard = cases[4]
+    opening = ("frame", "x1", "x2", "y1", "y2", "action1", "action2", "hp1", "hp2")
+    check(all(tuple(case["samples"][0][name] for name in opening) ==
+              tuple(hard["samples"][0][name] for name in opening)
+              for case in (easy, normal)),
+          "CPU anti-air difficulty comparison has the same native opening",
+          [_cpu_summary(case["samples"][0]) for case in (easy, normal, hard)])
+    for case, label in ((easy, "Easy"), (normal, "Normal sampled miss")):
+        check(not any(sample["raw_keys2"] == 1056 or sample["action2"] == 8
+                      for sample in case["samples"]),
+              label + " keeps the measured jump-in without a universal uppercut",
+              [_cpu_summary(sample) for sample in case["samples"]])
+    opportunities = [sample for sample in normal["samples"]
+                     if -56 * 16 <= signed16(sample["y1"]) <= -12 * 16 and
+                     abs(sample["x1"] - sample["x2"]) < 41 * 16 and
+                     sample["action2"] == sample["hurt2"] == sample["y2"] == 0]
+    check(bool(opportunities), "Normal can decline an available near jump-in",
+          [_cpu_summary(sample) for sample in opportunities])
+
+    empty_jump = _cpu_jump_in(4, 2, kick=False)
+    empty_hit = _cpu_uppercut_start(empty_jump, hit=True)
+    check(empty_jump["samples"][:17] == hard["samples"][:17] and
+          empty_hit["start_index"] < 16 and
+          all(sample["action1"] == 0 for sample in empty_jump["samples"][:17]),
+          "CPU can intercept an empty jump before any attack-button input",
+          empty_hit)
+
+    # A rush CPU occupied by a normal can be crossed and genuinely hurt by
+    # the jump kick. Its locked facing exposes a real behind-target window;
+    # free grounded CPUs turn normally before choosing their input.
+    busy = _cpu_jump_in(2, 1)
+    cases.extend((retreat, easy, normal, empty_jump, busy))
+    negatives: dict[str, list[tuple[dict[str, int], dict[str, int]]]] = {
+        name: [] for name in ("grounded", "far", "behind-locked", "unavailable",
+                             "hurt", "target-hurt-or-down", "hitstop")}
+    for case in cases:
+        rows = case["approach"] + case["samples"]
+        pairs = list(zip(rows, rows[1:]))
+        check(all((after["frame"] - before["frame"]) & 0xffff == 1
+                  for before, after in pairs),
+              f"CPU anti-air d{case['difficulty']} fighter {case['cpu_id']} keeps native cadence")
+        for before, after in pairs:
+            airborne = signed16(before["y1"]) < 0
+            unavailable = bool(before["action2"] or before["y2"] or before["down_state2"])
+            behind = ((before["x1"] > before["x2"] and not before["face2"]) or
+                      (before["x1"] < before["x2"] and before["face2"]))
+            flags = {
+                "grounded": not airborne,
+                "far": airborne and abs(before["x1"] - before["x2"]) >= 41 * 16,
+                "behind-locked": airborne and behind and (unavailable or before["hurt2"]),
+                "unavailable": unavailable,
+                "hurt": bool(before["hurt2"]),
+                "target-hurt-or-down": bool(before["hurt1"] or before["down_state1"]),
+                "hitstop": bool(before["hitstop"]),
+            }
+            for name, applies in flags.items():
+                if applies:
+                    negatives[name].append((before, after))
+    negative_counts = {}
+    for name, pairs in negatives.items():
+        violations = [(before, after) for before, after in pairs
+                      if after["raw_keys2"] == 1056]
+        check(bool(pairs) and not violations,
+              "CPU anti-air does not issue DOWN+L for " + name, {
+                  "observed_ticks": len(pairs),
+                  "example": _cpu_summary(pairs[0][0]) if pairs else None,
+                  "violations": [[_cpu_summary(s) for s in pair] for pair in violations[:4]]})
+        negative_counts[name] = len(pairs)
+    return {"hits": hits, "retreat_whiff": whiff, "empty_jump": empty_hit,
+            "normal_declined_ticks": len(opportunities), "negative_ticks": negative_counts,
+            "ko": [_cpu_anti_air_ko(victim) for victim in (1, 2)]}
+
+
 def check_cpu_regressions() -> dict[str, object]:
     """Run the bounded CPU 0.6.1 matrix and its behavior fixtures."""
 
@@ -4047,6 +4281,7 @@ def check_cpu_regressions() -> dict[str, object]:
         "natural_wave_specials": check_cpu_natural_wave_specials(),
         "lowwave_guard": check_cpu_lowwave_guard(),
         "wake": check_cpu_wake(),
+        "anti_air": check_cpu_anti_air(),
     }
 
 
