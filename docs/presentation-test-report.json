@@ -1,6 +1,6 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
+  "rom_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
   "rom_bytes": 4194304,
   "status": "passed",
   "checks": [
@@ -9,11 +9,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.17.0",
+        "version": "0.18.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
-        "checksum": "5EAF",
+        "sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
+        "checksum": "A299",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -97,7 +97,7 @@
       "passed": true,
       "details": {
         "fighter": 0,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter00.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter00.png"
       }
     },
     {
@@ -183,7 +183,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter01.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter01.png"
       }
     },
     {
@@ -269,7 +269,7 @@
       "passed": true,
       "details": {
         "fighter": 2,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter02.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter02.png"
       }
     },
     {
@@ -355,7 +355,7 @@
       "passed": true,
       "details": {
         "fighter": 3,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter03.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter03.png"
       }
     },
     {
@@ -441,7 +441,7 @@
       "passed": true,
       "details": {
         "fighter": 4,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter04.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter04.png"
       }
     },
     {
@@ -527,7 +527,7 @@
       "passed": true,
       "details": {
         "fighter": 5,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter05.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter05.png"
       }
     },
     {
@@ -613,7 +613,7 @@
       "passed": true,
       "details": {
         "fighter": 6,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter06.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter06.png"
       }
     },
     {
@@ -699,7 +699,7 @@
       "passed": true,
       "details": {
         "fighter": 7,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter07.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter07.png"
       }
     },
     {
@@ -785,7 +785,7 @@
       "passed": true,
       "details": {
         "fighter": 8,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter08.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter08.png"
       }
     },
     {
@@ -871,7 +871,7 @@
       "passed": true,
       "details": {
         "fighter": 9,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter09.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter09.png"
       }
     },
     {
@@ -957,7 +957,7 @@
       "passed": true,
       "details": {
         "fighter": 10,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter10.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter10.png"
       }
     },
     {
@@ -1043,7 +1043,7 @@
       "passed": true,
       "details": {
         "fighter": 11,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter11.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter11.png"
       }
     },
     {
@@ -1271,7 +1271,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait01_tiles.bin"
       }
     },
     {
@@ -1308,7 +1308,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait01_pal.bin"
       }
     },
     {
@@ -1816,7 +1816,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait01_tiles.bin"
       }
     },
     {
@@ -1853,7 +1853,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait01_pal.bin"
       }
     },
     {
@@ -3162,7 +3162,7 @@
     {
       "check": "generated select plate exists",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\select.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\select.png"
     },
     {
       "check": "generated select plate is native size",
@@ -3568,7 +3568,7 @@
       "passed": true,
       "details": {
         "fighter": 0,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait00_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait00_tiles.bin"
       }
     },
     {
@@ -3605,7 +3605,7 @@
       "passed": true,
       "details": {
         "fighter": 0,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait00_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait00_pal.bin"
       }
     },
     {
@@ -3695,7 +3695,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait01_tiles.bin"
       }
     },
     {
@@ -3732,7 +3732,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait01_pal.bin"
       }
     },
     {
@@ -3822,7 +3822,7 @@
       "passed": true,
       "details": {
         "fighter": 2,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait02_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait02_tiles.bin"
       }
     },
     {
@@ -3859,7 +3859,7 @@
       "passed": true,
       "details": {
         "fighter": 2,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait02_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait02_pal.bin"
       }
     },
     {
@@ -3949,7 +3949,7 @@
       "passed": true,
       "details": {
         "fighter": 3,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait03_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait03_tiles.bin"
       }
     },
     {
@@ -3986,7 +3986,7 @@
       "passed": true,
       "details": {
         "fighter": 3,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait03_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait03_pal.bin"
       }
     },
     {
@@ -4076,7 +4076,7 @@
       "passed": true,
       "details": {
         "fighter": 4,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait04_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait04_tiles.bin"
       }
     },
     {
@@ -4113,7 +4113,7 @@
       "passed": true,
       "details": {
         "fighter": 4,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait04_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait04_pal.bin"
       }
     },
     {
@@ -4203,7 +4203,7 @@
       "passed": true,
       "details": {
         "fighter": 5,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait05_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait05_tiles.bin"
       }
     },
     {
@@ -4240,7 +4240,7 @@
       "passed": true,
       "details": {
         "fighter": 5,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait05_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait05_pal.bin"
       }
     },
     {
@@ -4330,7 +4330,7 @@
       "passed": true,
       "details": {
         "fighter": 6,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait06_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait06_tiles.bin"
       }
     },
     {
@@ -4367,7 +4367,7 @@
       "passed": true,
       "details": {
         "fighter": 6,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait06_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait06_pal.bin"
       }
     },
     {
@@ -4457,7 +4457,7 @@
       "passed": true,
       "details": {
         "fighter": 7,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait07_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait07_tiles.bin"
       }
     },
     {
@@ -4494,7 +4494,7 @@
       "passed": true,
       "details": {
         "fighter": 7,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait07_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait07_pal.bin"
       }
     },
     {
@@ -4584,7 +4584,7 @@
       "passed": true,
       "details": {
         "fighter": 8,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait08_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait08_tiles.bin"
       }
     },
     {
@@ -4621,7 +4621,7 @@
       "passed": true,
       "details": {
         "fighter": 8,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait08_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait08_pal.bin"
       }
     },
     {
@@ -4711,7 +4711,7 @@
       "passed": true,
       "details": {
         "fighter": 9,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait09_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait09_tiles.bin"
       }
     },
     {
@@ -4748,7 +4748,7 @@
       "passed": true,
       "details": {
         "fighter": 9,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait09_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait09_pal.bin"
       }
     },
     {
@@ -4838,7 +4838,7 @@
       "passed": true,
       "details": {
         "fighter": 10,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait10_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait10_tiles.bin"
       }
     },
     {
@@ -4875,7 +4875,7 @@
       "passed": true,
       "details": {
         "fighter": 10,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait10_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait10_pal.bin"
       }
     },
     {
@@ -4965,7 +4965,7 @@
       "passed": true,
       "details": {
         "fighter": 11,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait11_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait11_tiles.bin"
       }
     },
     {
@@ -5002,7 +5002,7 @@
       "passed": true,
       "details": {
         "fighter": 11,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait11_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait11_pal.bin"
       }
     },
     {
@@ -5976,7 +5976,7 @@
     {
       "check": "generated arena plate exists",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\arenas.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\arenas.png"
     },
     {
       "check": "generated arena plate is native size",
@@ -8446,7 +8446,7 @@
     {
       "check": "generated arena plate exists",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\arenas.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\arenas.png"
     },
     {
       "check": "generated arena plate is native size",
@@ -10916,7 +10916,7 @@
     {
       "check": "generated arena plate exists",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\arenas.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\arenas.png"
     },
     {
       "check": "generated arena plate is native size",
@@ -12894,7 +12894,7 @@
       "passed": true,
       "details": {
         "fighter": 10,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait10_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait10_tiles.bin"
       }
     },
     {
@@ -12931,7 +12931,7 @@
       "passed": true,
       "details": {
         "fighter": 10,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait10_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait10_pal.bin"
       }
     },
     {
@@ -13283,7 +13283,7 @@
       "passed": true,
       "details": {
         "fighter": 2,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait02_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait02_tiles.bin"
       }
     },
     {
@@ -13320,7 +13320,7 @@
       "passed": true,
       "details": {
         "fighter": 2,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait02_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait02_pal.bin"
       }
     },
     {
@@ -13585,7 +13585,7 @@
       "passed": true,
       "details": {
         "fighter": 2,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait02_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait02_tiles.bin"
       }
     },
     {
@@ -13622,7 +13622,7 @@
       "passed": true,
       "details": {
         "fighter": 2,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait02_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait02_pal.bin"
       }
     },
     {
@@ -18736,9 +18736,9 @@
       "check": "all three stage captures are saved",
       "passed": true,
       "details": {
-        "las-condes": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\stage-0.png",
-        "el-castillo": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\stage-1.png",
-        "la-oficina": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\stage-2.png"
+        "las-condes": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\stage-0.png",
+        "el-castillo": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\stage-1.png",
+        "la-oficina": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\stage-2.png"
       }
     },
     {
@@ -18963,7 +18963,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait01_tiles.bin"
       }
     },
     {
@@ -19000,7 +19000,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait01_pal.bin"
       }
     },
     {
@@ -26227,7 +26227,7 @@
       "passed": true,
       "details": {
         "fighter": 0,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait00_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait00_tiles.bin"
       }
     },
     {
@@ -26264,7 +26264,7 @@
       "passed": true,
       "details": {
         "fighter": 0,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait00_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait00_pal.bin"
       }
     },
     {
@@ -26670,7 +26670,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait01_tiles.bin"
       }
     },
     {
@@ -26707,7 +26707,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait01_pal.bin"
       }
     },
     {
@@ -33716,7 +33716,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait01_tiles.bin"
       }
     },
     {
@@ -33753,7 +33753,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait01_pal.bin"
       }
     },
     {
@@ -34159,7 +34159,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait01_tiles.bin"
       }
     },
     {
@@ -34196,7 +34196,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait01_pal.bin"
       }
     },
     {
@@ -35222,24 +35222,24 @@
   ],
   "captures": {
     "menus": {
-      "title": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\title.png",
+      "title": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\title.png",
       "portraits": {
-        "00": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\select-00.png",
-        "01": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\select-01.png",
-        "02": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\select-02.png",
-        "03": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\select-03.png",
-        "04": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\select-04.png",
-        "05": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\select-05.png",
-        "06": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\select-06.png",
-        "07": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\select-07.png",
-        "08": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\select-08.png",
-        "09": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\select-09.png",
-        "10": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\select-10.png",
-        "11": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\select-11.png"
+        "00": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\select-00.png",
+        "01": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\select-01.png",
+        "02": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\select-02.png",
+        "03": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\select-03.png",
+        "04": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\select-04.png",
+        "05": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\select-05.png",
+        "06": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\select-06.png",
+        "07": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\select-07.png",
+        "08": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\select-08.png",
+        "09": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\select-09.png",
+        "10": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\select-10.png",
+        "11": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\select-11.png"
       },
       "portrait_vram": {
         "00": {
-          "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait00_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait00_tiles.bin",
           "sha256": "2bd09ad23a2df08d53046ad70952e45851aa5e88695da12fc641bfb918f41cb6",
           "map_entry": 9376,
           "tile": 160,
@@ -35252,7 +35252,7 @@
           }
         },
         "01": {
-          "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait01_tiles.bin",
           "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1",
           "map_entry": 9376,
           "tile": 160,
@@ -35265,7 +35265,7 @@
           }
         },
         "02": {
-          "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait02_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait02_tiles.bin",
           "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b",
           "map_entry": 9376,
           "tile": 160,
@@ -35278,7 +35278,7 @@
           }
         },
         "03": {
-          "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait03_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait03_tiles.bin",
           "sha256": "61d80d1fa2da4692646a1f500dfc98d69692c0565754d3dc78b7f2d9584642e3",
           "map_entry": 9376,
           "tile": 160,
@@ -35291,7 +35291,7 @@
           }
         },
         "04": {
-          "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait04_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait04_tiles.bin",
           "sha256": "24c117db9e57d66ba9eccaecd75bece46c78f0eec848a7eb6a688806227ed2fd",
           "map_entry": 9376,
           "tile": 160,
@@ -35304,7 +35304,7 @@
           }
         },
         "05": {
-          "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait05_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait05_tiles.bin",
           "sha256": "c0460efc186cc285ba6aba1fdd0e7c54dc21320b2201954973d6d2c31c8ba505",
           "map_entry": 9376,
           "tile": 160,
@@ -35317,7 +35317,7 @@
           }
         },
         "06": {
-          "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait06_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait06_tiles.bin",
           "sha256": "f023d0d5dd115725202ed8a527b2ec45812a7f5e7af77bf579bcec09d39a5e2f",
           "map_entry": 9376,
           "tile": 160,
@@ -35330,7 +35330,7 @@
           }
         },
         "07": {
-          "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait07_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait07_tiles.bin",
           "sha256": "d83d340dffeb196c8d1a961cd85d391bad6c849b385b921eca8868eb40d86537",
           "map_entry": 9376,
           "tile": 160,
@@ -35343,7 +35343,7 @@
           }
         },
         "08": {
-          "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait08_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait08_tiles.bin",
           "sha256": "be1b936d3daa590cffbc0f2cbe6f1d4c0d951d01262706eb9e9ce4c4f5fd7d89",
           "map_entry": 9376,
           "tile": 160,
@@ -35356,7 +35356,7 @@
           }
         },
         "09": {
-          "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait09_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait09_tiles.bin",
           "sha256": "46ef8740ace707787e06eb45e7b60f1df5e308185b6367f5e62b0ae823122350",
           "map_entry": 9376,
           "tile": 160,
@@ -35369,7 +35369,7 @@
           }
         },
         "10": {
-          "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait10_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait10_tiles.bin",
           "sha256": "91f53180fc9e25e5633ec62a380b62c7b90072213718a1a3b079b59c6d24a9e6",
           "map_entry": 9376,
           "tile": 160,
@@ -35382,7 +35382,7 @@
           }
         },
         "11": {
-          "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait11_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait11_tiles.bin",
           "sha256": "523beee6bbce840def42286687dde5c22d5a6c9720e365f510e65687beebbbbd",
           "map_entry": 9376,
           "tile": 160,
@@ -35542,9 +35542,9 @@
         }
       },
       "arena_select": {
-        "las-condes": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\arena-0.png",
-        "el-castillo": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\arena-1.png",
-        "la-oficina": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\arena-2.png"
+        "las-condes": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\arena-0.png",
+        "el-castillo": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\arena-1.png",
+        "la-oficina": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\arena-2.png"
       },
       "arena_digests": [
         "7f807842d29b810c21394813782c0c14753d3f0cbfd8f4c223147b7c2d9e37b6",
@@ -35758,7 +35758,7 @@
           "wake_jump2": 85
         },
         "portrait": {
-          "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait10_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait10_tiles.bin",
           "sha256": "91f53180fc9e25e5633ec62a380b62c7b90072213718a1a3b079b59c6d24a9e6",
           "map_entry": 9376,
           "tile": 160,
@@ -35770,7 +35770,7 @@
             "pixels": 5120
           }
         },
-        "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\training-dummy.png"
+        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\training-dummy.png"
       },
       "mirror": {
         "state": {
@@ -35890,7 +35890,7 @@
           "wake_jump2": 85
         },
         "portrait": {
-          "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait02_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait02_tiles.bin",
           "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b",
           "map_entry": 9376,
           "tile": 160,
@@ -35902,10 +35902,10 @@
             "pixels": 5120
           }
         },
-        "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\training-mirror.png"
+        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\training-mirror.png"
       },
       "back_portrait": {
-        "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait02_tiles.bin",
+        "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait02_tiles.bin",
         "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b",
         "map_entry": 9376,
         "tile": 160,
@@ -35919,9 +35919,9 @@
       }
     },
     "stages": {
-      "las-condes": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\stage-0.png",
-      "el-castillo": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\stage-1.png",
-      "la-oficina": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\stage-2.png"
+      "las-condes": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\stage-0.png",
+      "el-castillo": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\stage-1.png",
+      "la-oficina": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\stage-2.png"
     },
     "result": {
       "wins1": 2,
@@ -37237,7 +37237,7 @@
         ]
       },
       "portrait": {
-        "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait00_tiles.bin",
+        "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait00_tiles.bin",
         "sha256": "2bd09ad23a2df08d53046ad70952e45851aa5e88695da12fc641bfb918f41cb6",
         "map_entry": 9376,
         "tile": 160,
@@ -37249,7 +37249,7 @@
           "pixels": 5120
         }
       },
-      "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\result-score.png"
+      "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\result-score.png"
     },
     "result_p2": {
       "wins1": 0,
@@ -38525,7 +38525,7 @@
         ]
       },
       "portrait": {
-        "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_tiles.bin",
+        "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait01_tiles.bin",
         "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1",
         "map_entry": 9376,
         "tile": 160,
@@ -38537,7 +38537,7 @@
           "pixels": 5120
         }
       },
-      "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\result-score-p2.png"
+      "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\result-score-p2.png"
     },
     "timeout_draw": {
       "state": {
@@ -38792,7 +38792,7 @@
           }
         ]
       },
-      "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\timeout-draw.png"
+      "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\presentation\\timeout-draw.png"
     }
   },
   "animation_artifact": {
@@ -38800,7 +38800,7 @@
       {
         "fighter": 0,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter00.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter00.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -38887,7 +38887,7 @@
       {
         "fighter": 1,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter01.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter01.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -38974,7 +38974,7 @@
       {
         "fighter": 2,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter02.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter02.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39061,7 +39061,7 @@
       {
         "fighter": 3,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter03.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter03.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39148,7 +39148,7 @@
       {
         "fighter": 4,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter04.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter04.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39235,7 +39235,7 @@
       {
         "fighter": 5,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter05.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter05.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39322,7 +39322,7 @@
       {
         "fighter": 6,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter06.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter06.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39409,7 +39409,7 @@
       {
         "fighter": 7,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter07.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter07.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39496,7 +39496,7 @@
       {
         "fighter": 8,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter08.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter08.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39583,7 +39583,7 @@
       {
         "fighter": 9,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter09.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter09.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39670,7 +39670,7 @@
       {
         "fighter": 10,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter10.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter10.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39757,7 +39757,7 @@
       {
         "fighter": 11,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\fighter11.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\fighter11.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39845,5 +39845,5 @@
     "frame_count": 64
   },
   "passed": 3337,
-  "elapsed_seconds": 63.72
+  "elapsed_seconds": 85.96
 }

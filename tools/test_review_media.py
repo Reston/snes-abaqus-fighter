@@ -179,6 +179,37 @@ class NativeReview(unittest.TestCase):
         finally:
             source.write_bytes(original)
 
+    def test_training_level_evidence_cannot_be_rewritten_with_its_source_hash(self):
+        if tuple(map(int, self.manifest['version'].split('.'))) < (0, 18, 0):
+            self.skipTest('CPU level labels are introduced in v0.18')
+        source = self.root/'docs/training-test-report.json'
+        original = source.read_bytes()
+        names = {
+            'initial': 'Training CPU pause card shows the selected Easy/Normal/Hard level',
+            'reset': 'Training CPU level remains visible after quick reset and guide cycling',
+        }
+        try:
+            for mutation in ('selector', 'missing_initial', 'wrong_initial', 'duplicate_initial',
+                             'missing_reset', 'wrong_reset', 'false_reset'):
+                native = json.loads(original)
+                if mutation == 'selector':
+                    native['cpu_training']['selector']['cpu_label'] = 'DUMMY: CPU'
+                else:
+                    action, phase = mutation.split('_')
+                    index = next(i for i, row in enumerate(native['checks']) if row['check'] == names[phase])
+                    if action == 'missing': native['checks'].pop(index)
+                    if action == 'wrong': native['checks'][index]['details']['label'] = 'DUMMY: CPU HARD'
+                    if action == 'duplicate': native['checks'].append(copy.deepcopy(native['checks'][index]))
+                    if action == 'false': native['checks'][index]['passed'] = False
+                native['passed'] = len(native['checks'])
+                source.write_bytes(json.dumps(native).encode())
+                altered = copy.deepcopy(self.training)
+                altered['source_report_sha256'] = hashlib.sha256(source.read_bytes().replace(b'\r\n', b'\n')).hexdigest()
+                with self.subTest(mutation=mutation), self.assertRaises(review.ReviewError):
+                    review.validate_training_review(altered, self.root, self.manifest)
+        finally:
+            source.write_bytes(original)
+
     def test_training_cpu_requires_the_complete_native_live_hour(self):
         if self.training is None:
             self.skipTest('CPU Training is introduced in v0.17')

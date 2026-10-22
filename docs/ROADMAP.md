@@ -4,13 +4,12 @@ The active public-release target and evidence gates are in
 [PUBLIC-RELEASE.md](PUBLIC-RELEASE.md). Treat this roadmap as the work backlog;
 the release gates decide when the public candidate is actually ready.
 
-The active source candidate is **v0.17.0**, adding opt-in CPU Training using
-the existing home difficulty, health recovery and quick reset. All six native
-suites pass 35,506 current-ROM checks. Matching extended combat, three live
-hours including CPU Training, and the fresh-source rebuild pass. Two final
-Windows packages are identical; the archive passes 9,097 technical audit
-checks. See [the current release note](RELEASE-v0.17.0.md) for candidate identity.
-Human/public-use approvals remain open.
+The active source candidate is **v0.18.0**, naming the CPU Training level on
+its PAUSED card. All six suites pass 35,512 current-ROM checks, alongside
+matching extended combat, three native live hours and the committed-source
+rebuild. Two final Windows packages are identical and pass 9,103
+technical audit checks.
+See [the current release note](RELEASE-v0.18.0.md). Human approvals remain open.
 
 Delivered since v0.10 are the corrected Lars portrait/location previews and
 winner cards (v0.10.1/v0.11), arbitrary or mirror Training opponents and original
@@ -18,7 +17,7 @@ champion illustration (v0.12), original victory music and pause priority/cold
 build fixes (v0.13), clearer menu/motion help and authoring guards (v0.14), and
 rear medium-kick contacts with landing-safe recoil and practice cues (v0.15).
 Bounded Normal/Hard CPU anti-air and all-roster cross-up practice shipped in
-v0.16. Historical sections below retain their original evidence scope.
+v0.16. CPU Training and its timing fixes shipped in v0.17. Historical sections below retain their original evidence scope.
 
 The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass set the cartoon arcade direction. v0.3 introduced twelve individual sixteen-pose atlases and likeness correction. v0.4 standardized the 96x80 physical scale and rebuilt the presentation. v0.5.0 adds animation, simpler menus and buffered inputs. v0.5.1 tightens contact, hit-confirm and combo rules, clears live-fight instructions, adds result scores and corrects emulator scaling. The v0.6.0 source integration adds the final airborne, throw, knockdown and wake frame range and combat flow. The v0.6.1 CPU-correctness pass has four-suite and pinned compatibility evidence on one ROM SHA, with public gates still open. v0.7.0 stage/effect integration has a verified ROM, a 214-check archive audit and reproducible development packaging. The historical v0.7.1 package has a 6,153-check audit. v0.8.0 remains the historical pause-guide and Training baseline. v0.8.1 is the historical Reston art snapshot; v0.9.0 remains the historical packaged technical fallback. The v0.10.0 cartoon-stage candidate now has matching six-suite native reports, passing extended technical evidence and a 7,472-check packaged archive; human review remains open.
 

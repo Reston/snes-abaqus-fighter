@@ -6,7 +6,22 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
-- The active checkout is the **v0.17.0 CPU Training candidate**.
+- The active checkout is **v0.18.0 CPU Training level readout**.
+  ROM SHA256 `fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb`, header `A299`,
+  source freeze `8a7a6fc78c2160aac23de2a2f32ea927016853d0`, tree `9d78764a6f40c5fe3661b0b2f6fb8469d9f0a25f`.
+  Training's CPU PAUSED card names Easy/Normal/Hard from the home setting.
+  The four-entry label array, 219 generated assets, 1,276 RAM addresses,
+  Fighter64/Wave16, TRACE0..122 and existing DMA/audio contracts are preserved.
+  All six native suites pass 35,512 exact-ROM checks. Matching smoke, full
+  matrix/replays, independent combat and three native live hours pass. Training
+  completes 216,356 CPU live frames across all twelve opponents. Fresh
+  export reproduces ROM, 219 assets and symbols in 568.453
+  seconds. The Windows archive passes 9,103 technical audit
+  checks. Two final packages are identical: 22,897,834 bytes, SHA256
+  `42d25616285e9275e527bb412529da21575671d38cbe239b99b2ba9e69a7d153`. Human/public-use gates remain open.
+  See docs/RELEASE-v0.18.0.md.
+
+- The previous verified offline checkpoint is the **v0.17.0 CPU Training candidate**.
   ROM SHA256 `cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe`, header `5EAF`,
   source freeze `5fcd5cb28f4cf2453cb3310fbab0d6947d7afd9a`, tree `5e3ef5c5f4be06fbd0bad8a37ef215a449f1c2a1`.
   Training choice 4 uses existing home-difficulty AI; choices 0..3 and the
@@ -29,7 +44,7 @@ Preserve the native emulator requirement when extending the project.
   consent and public-use gates remain open; public_release_certified is false.
   See docs/RELEASE-v0.17.0.md.
 
-- The last verified offline checkpoint is the **v0.16.0 CPU anti-air candidate**.
+- The historical verified checkpoint is the **v0.16.0 CPU anti-air candidate**.
   ROM SHA256 `feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd`, header `FA49`,
   cartridge source freeze `c5b64914b35af11897210701a2394a540a20a6b6`, tree `82c5128473b62ee0d9fd40394485f9b400242d5b`.
   Normal/Hard use bounded sampled universal uppercuts against visible near

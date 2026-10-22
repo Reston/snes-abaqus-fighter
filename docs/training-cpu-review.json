@@ -1,9 +1,9 @@
 {
   "status": "passed",
-  "version": "0.17.0",
-  "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
+  "version": "0.18.0",
+  "rom_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
   "rom_bytes": 4194304,
-  "header_checksum": "5EAF",
+  "header_checksum": "A299",
   "scope": "Native CPU Training review aid; trusted recorded execution, human gameplay/balance remains open",
   "native_dimensions": [
     256,
@@ -7991,9 +7991,9 @@
   },
   "card": {
     "png": "docs/screenshots/training/training-cpu-card.png",
-    "png_bytes": 36429,
-    "png_sha256": "041ffdcaea19d6c60c10ee5e5de6b9cecc4c4e3dc3e5a19763149effa187fe6e",
-    "source_rgb_sha256": "a74b9d93bc7fc8f5cc50b36f61439efd77327f7778b3186b54593d2872dffaa5",
+    "png_bytes": 36500,
+    "png_sha256": "30dc445c960049a2ef966d2b9c1e39ba27a478e1142cf192aeb5e8ae6c27f854",
+    "source_rgb_sha256": "3ec4c8a26564af0bf30a16fa0a456f1d7d6c190ab6a4f63cd41cffb684a1204a",
     "native_dimensions": [
       256,
       224
@@ -8002,10 +8002,10 @@
   },
   "source_report": "docs/training-test-report.json",
   "source_report_comparison": "LF-normalized JSON bytes",
-  "source_report_sha256": "140abc619c66adf2b6975c9c35d6eacbf655c8e7f7c207441fe71b3d23c06b14",
+  "source_report_sha256": "268fcccce394778abc6740ddcfb50be5f7bf001ddd9d6a262628aaf732d1639e",
   "harness_sha256": {
     "tools/make_training_cpu_review.py": "60977b144de38f340dfeb4e65daf1d161ebcb3ef6f58820bfb480ff948f92a82",
-    "tools/test_training.py": "3f700c7fe0a3d7a7fd9abe85f6d438d07fa2fe8965bf022654ada7510e041bbb",
+    "tools/test_training.py": "f4486ebfcf63dc03cd80759b09fcd4382690eaa3b6139d2adb5639d30c27b511",
     "tools/emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
     "tools/make_crossup_review.py": "e45c814c00a01e070d2534fdc6d293363c14abeb99a170fd8df78aa4641a3b22"
   }

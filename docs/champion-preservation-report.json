@@ -1,10 +1,10 @@
 {
-  "version": "0.17.0",
-  "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
+  "version": "0.18.0",
+  "rom_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
   "status": "passed",
-  "baseline_commit": "0971895da72bf7cdde40571a920b7f9c156d34f0",
-  "baseline_version": "0.16.0",
-  "source_freeze": "5fcd5cb28f4cf2453cb3310fbab0d6947d7afd9a",
+  "baseline_commit": "83e9123ad1702261ea8a78e73249b776e839616d",
+  "baseline_version": "0.17.0",
+  "source_freeze": "8a7a6fc78c2160aac23de2a2f32ea927016853d0",
   "generated_assets_total": 219,
   "existing_assets_preserved": 219,
   "generated_assets_modified": 0,
@@ -44,7 +44,7 @@
     },
     {
       "path": "assets/generated/assets.h",
-      "sha256": "abe8106807cfe342f0d5ca34ff6254cf193ef2d42f81f373057fe70ed50b457b",
+      "sha256": "e6b25995dbec2a066697b0cd5e98a29dc94863b5ff30bfad13094c5c2ca22fee",
       "source_blob_sha256": "e6b25995dbec2a066697b0cd5e98a29dc94863b5ff30bfad13094c5c2ca22fee",
       "comparison": "LF-normalized text",
       "preserved": true
@@ -86,7 +86,7 @@
     },
     {
       "path": "assets/generated/data.asm",
-      "sha256": "ffa508e15b6295144d1344570e2fc423b1e58696f9e197cfe252af62184ad118",
+      "sha256": "bb3bbea5ca43bcb66953a2501cda354ca8e5fb58c6e2eba0f568ca4762611049",
       "source_blob_sha256": "bb3bbea5ca43bcb66953a2501cda354ca8e5fb58c6e2eba0f568ca4762611049",
       "comparison": "LF-normalized text",
       "preserved": true
@@ -1381,7 +1381,7 @@
     },
     {
       "path": "assets/generated/soundbank.asm",
-      "sha256": "8065100b578c2ba8b0eecb2f3f872af5ffaa4bce1514b0a71dceba159161504a",
+      "sha256": "eb450eb9203abc0cfc11e1bf21e8d78f4ef02172d3233acfd87aece9a4e2b268",
       "source_blob_sha256": "eb450eb9203abc0cfc11e1bf21e8d78f4ef02172d3233acfd87aece9a4e2b268",
       "comparison": "LF-normalized text",
       "preserved": true

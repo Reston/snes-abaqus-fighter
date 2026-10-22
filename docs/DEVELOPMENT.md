@@ -1,8 +1,13 @@
 # Native SNES implementation
-<!-- candidate-version: 0.17.0; rom-sha256: cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe -->
+<!-- candidate-version: 0.18.0; rom-sha256: fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb -->
 
-The current checkout builds the v0.17.0 candidate, ROM SHA256
-`cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe`, checksum `5EAF`.
+The current checkout builds the v0.18.0 candidate, ROM SHA256
+`fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb`, checksum `A299`.
+The CPU PAUSED-card label includes EASY, NORMAL or HARD from the existing
+home difficulty. Each label is a ROM literal; the four-entry initialized
+dummy-name array and all native RAM addresses remain unchanged. The existing
+banner rebuild and transfer range publish the label, including after resets
+and guide-page changes. No extra UI transfer, state or live-combat work exists.
 Training choices 0..3 retain their scripted behavior and default Stand.
 Choice 4 falls through the existing cpuKeys path at the home difficulty.
 The five-choice selector uses existing trainingDummy storage/TRACE[121]; the
@@ -47,7 +52,7 @@ Controls adds a cross-up cue at row 22 inside the existing rows 5..27,
 ambient and SPC budgets remain unchanged. All 219 generated assets match the
 verified v0.16.0 checkpoint. The package gate now binds the collated summary's
 identity, source freeze and six-suite counts to its individual exact-ROM reports.
-See [RELEASE-v0.17.0.md](RELEASE-v0.17.0.md) for current evidence status.
+See [RELEASE-v0.18.0.md](RELEASE-v0.18.0.md) for current evidence status.
 Older version sections below are historical snapshots.
 
 ## Build

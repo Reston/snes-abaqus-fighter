@@ -129,7 +129,8 @@ page = page.replace('<button data-view="results" aria-pressed="true">Results</bu
 page = page.replace("show('results')", "show('new')")
 if tuple(map(int, manifest['version'].split('.'))) >= (0, 17, 0):
     page = page.replace('Art &amp; menus', 'Practice &amp; menus')
-page = page.replace('CARDS', ''.join(cards)).replace('ROM_SHA', manifest['sha256']).replace('TOTAL', f'{total:,}')
+# Insert encoded images last: base64 can contain an ordinary token like TOTAL.
+page = page.replace('ROM_SHA', manifest['sha256']).replace('TOTAL', f'{total:,}').replace('CARDS', ''.join(cards))
 target = root/('build/gallery-preview.html' if '--preview' in sys.argv else f"docs/REVIEW-v{manifest['version']}.html")
 target.write_bytes(page.encode('utf-8'))
 print(json.dumps({'html': str(target), 'native_frames': len(shots), 'bytes': target.stat().st_size}))

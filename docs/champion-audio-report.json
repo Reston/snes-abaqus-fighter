@@ -2,8 +2,8 @@
   "suite": "focused-champion-audio",
   "status": "passed",
   "scope": "focused capture-only proof; six-suite batch, release gates, package and human listening are separate",
-  "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
-  "checksum": "5EAF",
+  "rom_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
+  "checksum": "A299",
   "human_listening_approved": false,
   "host_contract": {
     "python": "3.12.10",
@@ -27230,7 +27230,7 @@
       "after": "spcStop();spcLoad(MOD_MUSIC4);"
     },
     "source_sha256": "1bd418b3af7ea588e7d1af0fb9132967e7de01482428ea97e9df392d0c571046",
-    "rom_sha256": "9bc83f8e629adc52a25fb8d9e267021e1299677b6c486ed422d5f6a7a3d62c60",
+    "rom_sha256": "eb76d4e5e11d29c69619aeecd65b1d825ed93ae7847368ec47d4ef200d33eccb",
     "cues": {
       "swing": {
         "cue_id": 0,
@@ -32818,5 +32818,5 @@
       }
     }
   },
-  "elapsed_seconds": 468.937
+  "elapsed_seconds": 554.875
 }

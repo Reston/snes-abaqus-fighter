@@ -268,7 +268,9 @@ def validate_training_review(report, root, manifest):
     play = cpu.get('play', []) if isinstance(cpu, Mapping) else []
     replay = cpu.get('p2_ignored', {}) if isinstance(cpu, Mapping) else {}
     defense = cpu.get('lowwave_defense', []) if isinstance(cpu, Mapping) else []
-    need(isinstance(cpu, Mapping) and cpu.get('selector', {}).get('cpu_label') == 'DUMMY: CPU' and
+    names_level = tuple(map(int, manifest['version'].split('.'))) >= (0, 18, 0)
+    expected_label = 'DUMMY: CPU NORMAL' if names_level else 'DUMMY: CPU'
+    need(isinstance(cpu, Mapping) and cpu.get('selector', {}).get('cpu_label') == expected_label and
          isinstance(play, list) and [(item.get('difficulty'), item.get('fighter'), item.get('opponent'))
          for item in play] == [(0, 0, 0), (1, 4, 10), (2, 2, 11)] and
          all(all(item.get(key, 0) > 0 for key in ('movement_frames', 'attack_frames', 'damage_frames', 'recovery_count'))
@@ -278,6 +280,18 @@ def validate_training_review(report, root, manifest):
          isinstance(defense, list) and [item.get('difficulty') for item in defense] == [1, 2] and
          all(item.get('wave_frames', 0) > 0 and item.get('guarded_chip_frames', 0) > 0 for item in defense) and
          cpu.get('intro', {}).get('intro_callbacks', 0) > 0, 'CPU Training native proof lost its fixed behavior coverage')
+    if names_level:
+        checks = native.get('checks')
+        need(isinstance(checks, list) and all(isinstance(row, Mapping) for row in checks),
+             'CPU Training level proof must retain its native checks')
+        expected = [{'difficulty': level, 'label': 'DUMMY: CPU '+name}
+                    for level, name in enumerate(('EASY', 'NORMAL', 'HARD'))]
+        for name in ('Training CPU pause card shows the selected Easy/Normal/Hard level',
+                     'Training CPU level remains visible after quick reset and guide cycling'):
+            rows = [row for row in checks if row.get('check') == name]
+            need(len(rows) == 3 and all(row.get('passed') is True for row in rows) and
+                 [row.get('details') for row in rows] == expected,
+                 'CPU Training must prove all three native level labels before and after reset')
     row = report.get('capture')
     trace = native_gif(row, root, 'docs/screenshots/training-cpu/practice.gif')
     need(len(trace) == fixture['frames'] and all(state.get('mode') == 2 and state.get('training_dummy') == 4 and

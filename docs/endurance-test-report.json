@@ -1,7 +1,7 @@
 {
   "suite": "endurance",
   "status": "passed",
-  "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
+  "rom_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
   "rom_bytes": 4194304,
   "target_live_frames_per_mode": 216356,
   "native_fps": 60.098811862348406,
@@ -53,7 +53,7 @@
       "live_frames": 216356,
       "live_segments": 294,
       "training_cpu_live_frames": 0,
-      "elapsed_seconds": 764.531,
+      "elapsed_seconds": 930.078,
       "rosters": [
         {
           "fighter1": 0,
@@ -199,7 +199,7 @@
       "trace_magic_samples": 304119,
       "video_fps": 60.098811862348406,
       "audio_sample_rate": 32040.0,
-      "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
+      "rom_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
       "benchmark": false,
       "core_frames_including_boot": 304401,
       "core": {
@@ -226,7 +226,7 @@
       "live_frames": 216356,
       "live_segments": 225,
       "training_cpu_live_frames": 0,
-      "elapsed_seconds": 921.437,
+      "elapsed_seconds": 918.703,
       "rosters": [
         {
           "fighter1": 3,
@@ -425,7 +425,7 @@
       "trace_magic_samples": 283244,
       "video_fps": 60.098811862348406,
       "audio_sample_rate": 32040.0,
-      "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
+      "rom_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
       "benchmark": false,
       "core_frames_including_boot": 283679,
       "core": {
@@ -452,7 +452,7 @@
       "live_frames": 216411,
       "live_segments": 28,
       "training_cpu_live_frames": 216356,
-      "elapsed_seconds": 826.25,
+      "elapsed_seconds": 813.188,
       "rosters": [
         {
           "fighter1": 6,
@@ -602,7 +602,7 @@
       "ambient_failures": [],
       "ppu_overflow_frames": [],
       "max_spc_backlog": 6,
-      "spc_backlog_nonzero_samples": 54,
+      "spc_backlog_nonzero_samples": 53,
       "spc_drain_events": 52,
       "spc_drain_bytes": 156,
       "max_spc_growth_streak": 1,
@@ -667,7 +667,7 @@
       "trace_magic_samples": 220942,
       "video_fps": 60.098811862348406,
       "audio_sample_rate": 32040.0,
-      "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
+      "rom_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
       "benchmark": false,
       "core_frames_including_boot": 221411,
       "core": {
@@ -690,5 +690,5 @@
     "1": 283244,
     "2": 220942
   },
-  "elapsed_seconds": 922.047
+  "elapsed_seconds": 930.797
 }

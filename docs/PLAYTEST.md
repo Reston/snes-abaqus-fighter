@@ -1,21 +1,23 @@
-# v0.17.0 human playtest guide
-<!-- candidate-version: 0.17.0; rom-sha256: cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe -->
+# v0.18.0 human playtest guide
+<!-- candidate-version: 0.18.0; rom-sha256: fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb -->
 
-Review cartridge SHA256 `cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe`.
+Review cartridge SHA256 `fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb`.
 Choose Easy/Normal/Hard at home, then enter Training and select CPU from the
-first PAUSED card. Check practice pacing, health recovery, clock 99, pause
+first PAUSED card. Confirm that the CPU label names the selected level at
+all three home settings. Switch to another dummy and check that the level
+text clears; return to CPU after reset and guide cycling. Check practice pacing, health recovery, clock 99, pause
 readability and P1 Select reset. Reset should retain CPU and the opponent;
 a new match should return to Stand. Try all five behaviors and both pause
 controllers, arbitrary opponents and mirrors. P2 gameplay buttons should not
 take control of the Training opponent.
 Compare close jump-ins, anti-air startup/recovery and cross-up spacing. The
-[practice companion](CROSSUP-PRACTICE-v0.17.0.html) retains fighter-specific
+[practice companion](CROSSUP-PRACTICE-v0.18.0.html) retains fighter-specific
 examples. Test both ports and all three arenas.
 
 Also review A/Start menus, per-step motion help, Training mirror opponents,
 Lars's face/hair, winner cards, the champion score and title transitions.
 Actual earlier responses remain in [review-feedback.json](review-feedback.json);
-this guide records no new approval. See [RELEASE-v0.17.0.md](RELEASE-v0.17.0.md)
+this guide records no new approval. See [RELEASE-v0.18.0.md](RELEASE-v0.18.0.md)
 for candidate verification and package status.
 
 Use the cartridge identified above for new feedback. Historical notes below

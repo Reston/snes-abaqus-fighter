@@ -1,26 +1,23 @@
 # Abaqus: After Hours
-<!-- candidate-version: 0.17.0; rom-sha256: cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe -->
+<!-- candidate-version: 0.18.0; rom-sha256: fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb -->
 
 An original six-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II's arcade structure and the people and places of Abaqus in
 Santiago. The game runs as a native SNES cartridge in an emulator.
 
-The current checkout is the **v0.17.0 CPU Training candidate**, ROM SHA256
-`cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe`, checksum `5EAF`.
-Training now offers a fifth behavior, **CPU**, alongside Stand, Guard High,
-Guard Low and Jump. Open the first PAUSED card and use Up/Down to select it. The opponent
-uses the existing Easy/Normal/Hard setting chosen at home, while Training keeps
-health recovery, the 99 clock and a quick reset. A new match still starts on
-Stand. All 219 generated art/audio assets and native memory contracts remain.
-CPU anti-air, cross-ups, practice help, revised Lars art and location previews
-remain available.
+The current source candidate is **v0.18.0**, ROM SHA256 `fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb`,
+checksum `A299`. CPU Training's PAUSED card now names the selected
+**Easy, Normal or Hard** level. Select difficulty with L/R at home; the card
+shows which level carries into practice. All five behaviors, recovery, the
+99 clock and quick reset remain. The change adds no AI or combat rules,
+assets, RAM fields, trace words or transfer work.
 
-All six native suites pass 35,506 checks on this exact ROM. Matching smoke,
+All six native suites pass 35,512 checks on this exact ROM. Matching smoke,
 full matchup/replays, independent combat, endurance and fresh-source gates pass.
-The [v0.17.0 release note](docs/RELEASE-v0.17.0.md) records the evidence.
-The offline Windows archive passes 9,097 technical audit checks. Two
-consecutive final packages are identical: 22,899,854 bytes, SHA256
-`1955e7c735978943f7ca409dff9bf1f853012490e502b60a51c9fe47eb211213`.
+The [v0.18.0 release note](docs/RELEASE-v0.18.0.md) records the evidence.
+The Windows archive passes 9,103 technical audit checks. Two
+final packages are identical: 22,897,834 bytes, SHA256
+`42d25616285e9275e527bb412529da21575671d38cbe239b99b2ba9e69a7d153`.
 Human gameplay/balance, listening, controllers, likeness/consent and public-use
 review remain open.
 
@@ -30,7 +27,7 @@ On Windows, run **[Play.cmd](Play.cmd)** from the source checkout. The launcher
 prepares the pinned official Snes9x tools in `.tools/` on first use and opens
 the cartridge. No administrator account or global installation is needed.
 
-For offline play, extract the whole [v0.17.0 Windows ZIP](dist/Abaqus-After-Hours-v0.17.0-Windows.zip) and run its included
+For offline play, extract the whole [v0.18.0 Windows ZIP](dist/Abaqus-After-Hours-v0.18.0-Windows.zip) and run its included
 `Play.cmd`. Its `manifest.json` and `RELEASE.md` identify the actual cartridge
 and verification scope. Older archives contain their own historical versions.
 
@@ -52,7 +49,7 @@ The [player guide](docs/PLAYER-GUIDE.md) covers both players, controllers,
 blocking, cancels, specials, pause pages and Training dummies. Snes9x supports
 fullscreen with Alt+Enter and controller mapping under Input Configuration.
 
-The current candidate includes a [cross-up practice companion](docs/CROSSUP-PRACTICE-v0.17.0.html)
+The current candidate includes a [cross-up practice companion](docs/CROSSUP-PRACTICE-v0.18.0.html)
 with native moving examples for all twelve fighters. Its [practice notes](docs/CROSSUP-PRACTICE.md)
 explain different jump setups and record the supplemental 72-case controller proof.
 

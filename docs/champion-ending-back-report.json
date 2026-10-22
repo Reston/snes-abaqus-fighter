@@ -1,6 +1,6 @@
 {
   "scope": "focused controller-only champion ending; not a six-suite or release certification",
-  "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
+  "rom_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
   "status": "passed",
   "core_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
   "controller_only": true,
@@ -1479,7 +1479,7 @@
       ]
     },
     "portrait": {
-      "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait04_tiles.bin",
+      "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait04_tiles.bin",
       "sha256": "24c117db9e57d66ba9eccaecd75bece46c78f0eec848a7eb6a688806227ed2fd",
       "map_entry": 9376,
       "tile": 160,
@@ -2637,7 +2637,7 @@
     ]
   },
   "portrait": {
-    "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait04_tiles.bin",
+    "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait04_tiles.bin",
     "sha256": "24c117db9e57d66ba9eccaecd75bece46c78f0eec848a7eb6a688806227ed2fd",
     "map_entry": 9376,
     "tile": 160,
@@ -2655,5 +2655,5 @@
     "capture": "docs/screenshots/champion/exit-b.png"
   },
   "frames": 20420,
-  "elapsed_seconds": 147.234
+  "elapsed_seconds": 95.781
 }

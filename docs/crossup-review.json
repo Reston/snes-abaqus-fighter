@@ -4333,7 +4333,7 @@
     "tools/test_inputs.py": "fd8ded13640c45d83b6fbe4e33054186ca592dcd8714d9b726762109778c521b",
     "tools/test_stages.py": "f9b0d37df233e5cffe715b7865efd3af76cd37db0be992b8891ab6848d9cf3ba"
   },
-  "header_checksum": "5EAF",
+  "header_checksum": "A299",
   "host_contract": {
     "audio_device_opened": false,
     "audio_playback": false,
@@ -4359,8 +4359,8 @@
   ],
   "rom": "dist/abaqus-after-hours.sfc",
   "rom_bytes": 4194304,
-  "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
+  "rom_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
   "scope": "two native moving cross-up review captures from real controller input",
   "status": "passed",
-  "version": "0.17.0"
+  "version": "0.18.0"
 }

@@ -21,13 +21,13 @@
     "test_presentation.py": "bb314a4d25b4c7b8e240aff3fb7522d36d7fbcb6737e89828f5cf2ec4140373c",
     "emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
     "test_champion.py": "568032b339032bc19c0ecaafa1a4b097de54bbe22c4fa4f8e67d6d6aabc0385e",
-    "preservation.py": "c4d71439e1dc362a52dcba46d42ecaac3d90a49f756720e391522ee48f1e1339"
+    "preservation.py": "c511194bb8a70a9b06d13411a844fd6a1657c90a7bf97807631442ad7ad6093d"
   },
   "core_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
-  "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
-  "header_checksum": "5EAF",
+  "rom_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
+  "header_checksum": "A299",
   "asset_preservation": {
-    "baseline_ref": "0971895",
+    "baseline_ref": "83e9123",
     "generated_files": 219,
     "identical_generated_files": 219,
     "files": {
@@ -1134,7 +1134,7 @@
     }
   },
   "native_preservation": {
-    "baseline_rom_sha256": "feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd",
+    "baseline_rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
     "roster_states": 60,
     "arena_states": 9,
     "pixel_difference_above_footer": 0,
@@ -9291,7 +9291,7 @@
     {
       "check": "generated arena plate exists",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\arenas.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\arenas.png"
     },
     {
       "check": "generated arena plate is native size",
@@ -12621,7 +12621,7 @@
     {
       "check": "generated arena plate exists",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\arenas.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\arenas.png"
     },
     {
       "check": "generated arena plate is native size",
@@ -15951,7 +15951,7 @@
     {
       "check": "generated arena plate exists",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\arenas.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\arenas.png"
     },
     {
       "check": "generated arena plate is native size",
@@ -20717,7 +20717,7 @@
     {
       "check": "generated arena plate exists",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\arenas.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\arenas.png"
     },
     {
       "check": "generated arena plate is native size",
@@ -24047,7 +24047,7 @@
     {
       "check": "generated arena plate exists",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\arenas.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\arenas.png"
     },
     {
       "check": "generated arena plate is native size",
@@ -27377,7 +27377,7 @@
     {
       "check": "generated arena plate exists",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\arenas.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\arenas.png"
     },
     {
       "check": "generated arena plate is native size",
@@ -32110,7 +32110,7 @@
     {
       "check": "generated arena plate exists",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\arenas.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\arenas.png"
     },
     {
       "check": "generated arena plate is native size",
@@ -35440,7 +35440,7 @@
     {
       "check": "generated arena plate exists",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\arenas.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\arenas.png"
     },
     {
       "check": "generated arena plate is native size",
@@ -38770,7 +38770,7 @@
     {
       "check": "generated arena plate exists",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\arenas.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\arenas.png"
     },
     {
       "check": "generated arena plate is native size",
@@ -54613,5 +54613,5 @@
       }
     }
   ],
-  "elapsed_seconds": 130.188
+  "elapsed_seconds": 147.906
 }

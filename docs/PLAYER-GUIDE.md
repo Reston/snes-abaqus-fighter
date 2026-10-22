@@ -1,17 +1,16 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.17.0; rom-sha256: cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe -->
+<!-- candidate-version: 0.18.0; rom-sha256: fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb -->
 
 ## Current version
 
-The current candidate is **v0.17.0**. Training has a fifth behavior, **CPU**,
-for practicing against the existing Easy/Normal/Hard opponent AI without a
-round timer or match loss. Choose difficulty at home, then open Training's first
-**PAUSED** card and use Up/Down to select CPU. Start resumes; P1 Select resets the round
-and keeps the behavior and matchup. A new match starts on Stand.
-CPU anti-air, cross-up medium kicks, per-step motion help, arbitrary or mirror
-Training opponents, champion music, revised Lars art and location previews remain.
-In Local Versus, A or Start begins a rematch. After Office Champion, A or
-Start returns to the title and B returns to fighter select.
+The current candidate is **v0.18.0**. Training's first **PAUSED** card names
+the CPU's **Easy, Normal or Hard** difficulty beside its behavior. Choose the
+level with **L/R** at home. Use Up/Down on the PAUSED card to select Stand,
+Guard High, Guard Low, Jump or CPU. Start resumes; P1 Select resets the live
+round and keeps the behavior and matchup. A new match starts on Stand.
+CPU anti-air, cross-ups, arbitrary or mirror Training opponents, champion
+music, revised Lars art and location previews remain. After Office Champion,
+A/Start returns to the title and B returns to fighter select.
 
 ## Launch
 
@@ -28,7 +27,7 @@ needed. Human gameplay, listening, controller, likeness/consent and team/public
 use review remain open; original hardware support stays unverified.
 The package's `REVIEW.html` contains native screens, CPU Training, anti-air and cross-up
 clips, and a 2x view. GIF playback timing is approximate. The [cross-up practice
-companion](CROSSUP-PRACTICE-v0.17.0.html) shows a setup for each fighter. Use
+companion](CROSSUP-PRACTICE-v0.18.0.html) shows a setup for each fighter. Use
 Training's Stand dummy for stationary setups, or Local Versus with a second
 player/both keyboard layouts for the opponent-step-under examples.
 Its `ROSTER-REVIEW.html` offers all 64 generated frames per fighter, facing
@@ -128,7 +127,8 @@ match, rather than showing a generic roster description.
 On Training's first **PAUSED** card, press **Up/Down** to choose **Stand**,
 **Guard High**, **Guard Low**, **Jump** or **CPU**. Guard dummies block without
 retreating. Jump repeats after landing. CPU uses the ordinary opponent AI and
-the Easy/Normal/Hard difficulty selected with **L/R** at home. P2 gameplay
+the Easy/Normal/Hard difficulty selected with **L/R** at home.
+The CPU line on the PAUSED card names that level. P2 gameplay
 buttons do not control the Training opponent. Health recovers and the clock
 stays at 99. A live **P1 Select** reset keeps both chosen fighters and the
 chosen behavior; starting a new Training match returns the behavior to Stand.

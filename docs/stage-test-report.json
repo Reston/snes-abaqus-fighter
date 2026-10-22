@@ -2,7 +2,7 @@
   "emulator": "Official Snes9x 1.63 x64 libretro core",
   "suite": "stage-ambient",
   "status": "passed",
-  "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
+  "rom_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
   "rom_bytes": 4194304,
   "checks": [
     {
@@ -10,11 +10,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.17.0",
+        "version": "0.18.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
-        "checksum": "5EAF",
+        "sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
+        "checksum": "A299",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -24,7 +24,7 @@
       "check": "stage dynamics manifest exists",
       "passed": true,
       "details": {
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\stage-dynamics.json"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\stage-dynamics.json"
       }
     },
     {
@@ -9857,8 +9857,8 @@
       "passed": true,
       "details": {
         "stage": 0,
-        "tiles": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\stage0_tiles.bin",
-        "map": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\stage0_map.bin"
+        "tiles": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\stage0_tiles.bin",
+        "map": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\stage0_map.bin"
       }
     },
     {
@@ -21962,7 +21962,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\las-condes-phase0.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\las-condes-phase0.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -26818,7 +26818,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\las-condes-phase1.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\las-condes-phase1.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -31674,7 +31674,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\las-condes-phase2.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\las-condes-phase2.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -36530,7 +36530,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\las-condes-phase3.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\las-condes-phase3.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -60448,7 +60448,7 @@
       "passed": true,
       "details": {
         "frames": 128,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\las-condes-ambient.gif"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\las-condes-ambient.gif"
       }
     },
     {
@@ -121829,7 +121829,7 @@
       "passed": true,
       "details": {
         "frames": 53,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\las-condes-two-waves.gif"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\las-condes-two-waves.gif"
       }
     },
     {
@@ -121837,8 +121837,8 @@
       "passed": true,
       "details": {
         "stage": 1,
-        "tiles": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\stage1_tiles.bin",
-        "map": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\stage1_map.bin"
+        "tiles": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\stage1_tiles.bin",
+        "map": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\stage1_map.bin"
       }
     },
     {
@@ -133942,7 +133942,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\el-castillo-phase0.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\el-castillo-phase0.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -137790,7 +137790,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\el-castillo-phase1.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\el-castillo-phase1.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -142142,7 +142142,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\el-castillo-phase2.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\el-castillo-phase2.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -146494,7 +146494,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\el-castillo-phase3.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\el-castillo-phase3.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -168396,7 +168396,7 @@
       "passed": true,
       "details": {
         "frames": 128,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\el-castillo-ambient.gif"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\el-castillo-ambient.gif"
       }
     },
     {
@@ -229777,7 +229777,7 @@
       "passed": true,
       "details": {
         "frames": 53,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\el-castillo-two-waves.gif"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\el-castillo-two-waves.gif"
       }
     },
     {
@@ -229785,8 +229785,8 @@
       "passed": true,
       "details": {
         "stage": 2,
-        "tiles": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\stage2_tiles.bin",
-        "map": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\stage2_map.bin"
+        "tiles": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\stage2_tiles.bin",
+        "map": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\stage2_map.bin"
       }
     },
     {
@@ -241890,7 +241890,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\la-oficina-phase0.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\la-oficina-phase0.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -245738,7 +245738,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\la-oficina-phase1.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\la-oficina-phase1.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -250090,7 +250090,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\la-oficina-phase2.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\la-oficina-phase2.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -254442,7 +254442,7 @@
     {
       "check": "ambient capture has native 256x224 dimensions",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\la-oficina-phase3.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\la-oficina-phase3.png"
     },
     {
       "check": "ambient clock advances monotonically during live stage capture",
@@ -276344,7 +276344,7 @@
       "passed": true,
       "details": {
         "frames": 128,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\la-oficina-ambient.gif"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\la-oficina-ambient.gif"
       }
     },
     {
@@ -337725,7 +337725,7 @@
       "passed": true,
       "details": {
         "frames": 53,
-        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\la-oficina-two-waves.gif"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\la-oficina-two-waves.gif"
       }
     }
   ],
@@ -337733,8 +337733,8 @@
     "las-condes": {
       "stage": 0,
       "slug": "las-condes",
-      "base_tiles": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\stage0_tiles.bin",
-      "base_map": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\stage0_map.bin",
+      "base_tiles": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\stage0_tiles.bin",
+      "base_map": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\stage0_map.bin",
       "patch_cells": [
         220,
         221,
@@ -337761,7 +337761,7 @@
             304,
             305
           ],
-          "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\las-condes-phase0.png"
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\las-condes-phase0.png"
         },
         "1": {
           "phase": 1,
@@ -337778,7 +337778,7 @@
             304,
             305
           ],
-          "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\las-condes-phase1.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\las-condes-phase1.png",
           "ppu_diff": {
             "changed_pixels": 2718,
             "outside_patch_pixels": 0,
@@ -337801,7 +337801,7 @@
             304,
             305
           ],
-          "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\las-condes-phase2.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\las-condes-phase2.png",
           "ppu_diff": {
             "changed_pixels": 2651,
             "outside_patch_pixels": 0,
@@ -337824,7 +337824,7 @@
             304,
             305
           ],
-          "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\las-condes-phase3.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\las-condes-phase3.png",
           "ppu_diff": {
             "changed_pixels": 2412,
             "outside_patch_pixels": 0,
@@ -338323,7 +338323,7 @@
           "stage_id": 0
         }
       },
-      "ambient_gif": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\las-condes-ambient.gif",
+      "ambient_gif": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\las-condes-ambient.gif",
       "pause": {
         "before": {
           "clock": 131,
@@ -338454,7 +338454,7 @@
           "ambient_phase_age": 0,
           "stage_id": 0
         },
-        "phase_asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\stage0_ambient.bin"
+        "phase_asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\stage0_ambient.bin"
       },
       "hitstop": {
         "hitstop": {
@@ -338643,15 +338643,15 @@
         "extra_oam_baseline": 4,
         "extra_oam_peak": 6,
         "max_changed_pixels": 5001,
-        "gif": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\las-condes-two-waves.gif",
-        "contact_capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\las-condes-two-waves-contact.png"
+        "gif": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\las-condes-two-waves.gif",
+        "contact_capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\las-condes-two-waves-contact.png"
       }
     },
     "el-castillo": {
       "stage": 1,
       "slug": "el-castillo",
-      "base_tiles": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\stage1_tiles.bin",
-      "base_map": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\stage1_map.bin",
+      "base_tiles": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\stage1_tiles.bin",
+      "base_map": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\stage1_map.bin",
       "patch_cells": [
         324,
         328,
@@ -338678,7 +338678,7 @@
             496,
             497
           ],
-          "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\el-castillo-phase0.png"
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\el-castillo-phase0.png"
         },
         "1": {
           "phase": 1,
@@ -338695,7 +338695,7 @@
             496,
             497
           ],
-          "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\el-castillo-phase1.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\el-castillo-phase1.png",
           "ppu_diff": {
             "changed_pixels": 1676,
             "outside_patch_pixels": 0,
@@ -338718,7 +338718,7 @@
             496,
             497
           ],
-          "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\el-castillo-phase2.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\el-castillo-phase2.png",
           "ppu_diff": {
             "changed_pixels": 2354,
             "outside_patch_pixels": 0,
@@ -338741,7 +338741,7 @@
             496,
             497
           ],
-          "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\el-castillo-phase3.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\el-castillo-phase3.png",
           "ppu_diff": {
             "changed_pixels": 2612,
             "outside_patch_pixels": 0,
@@ -339240,7 +339240,7 @@
           "stage_id": 1
         }
       },
-      "ambient_gif": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\el-castillo-ambient.gif",
+      "ambient_gif": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\el-castillo-ambient.gif",
       "pause": {
         "before": {
           "clock": 131,
@@ -339371,7 +339371,7 @@
           "ambient_phase_age": 0,
           "stage_id": 1
         },
-        "phase_asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\stage1_ambient.bin"
+        "phase_asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\stage1_ambient.bin"
       },
       "hitstop": {
         "hitstop": {
@@ -339560,15 +339560,15 @@
         "extra_oam_baseline": 4,
         "extra_oam_peak": 6,
         "max_changed_pixels": 4999,
-        "gif": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\el-castillo-two-waves.gif",
-        "contact_capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\el-castillo-two-waves-contact.png"
+        "gif": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\el-castillo-two-waves.gif",
+        "contact_capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\el-castillo-two-waves-contact.png"
       }
     },
     "la-oficina": {
       "stage": 2,
       "slug": "la-oficina",
-      "base_tiles": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\stage2_tiles.bin",
-      "base_map": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\stage2_map.bin",
+      "base_tiles": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\stage2_tiles.bin",
+      "base_map": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\stage2_map.bin",
       "patch_cells": [
         423,
         424,
@@ -339595,7 +339595,7 @@
             467,
             468
           ],
-          "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\la-oficina-phase0.png"
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\la-oficina-phase0.png"
         },
         "1": {
           "phase": 1,
@@ -339612,7 +339612,7 @@
             467,
             468
           ],
-          "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\la-oficina-phase1.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\la-oficina-phase1.png",
           "ppu_diff": {
             "changed_pixels": 1662,
             "outside_patch_pixels": 0,
@@ -339635,7 +339635,7 @@
             467,
             468
           ],
-          "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\la-oficina-phase2.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\la-oficina-phase2.png",
           "ppu_diff": {
             "changed_pixels": 2342,
             "outside_patch_pixels": 0,
@@ -339658,7 +339658,7 @@
             467,
             468
           ],
-          "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\la-oficina-phase3.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\la-oficina-phase3.png",
           "ppu_diff": {
             "changed_pixels": 2600,
             "outside_patch_pixels": 0,
@@ -340157,7 +340157,7 @@
           "stage_id": 2
         }
       },
-      "ambient_gif": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\la-oficina-ambient.gif",
+      "ambient_gif": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\la-oficina-ambient.gif",
       "pause": {
         "before": {
           "clock": 131,
@@ -340288,7 +340288,7 @@
           "ambient_phase_age": 0,
           "stage_id": 2
         },
-        "phase_asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\stage2_ambient.bin"
+        "phase_asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\stage2_ambient.bin"
       },
       "hitstop": {
         "hitstop": {
@@ -340477,8 +340477,8 @@
         "extra_oam_baseline": 4,
         "extra_oam_peak": 6,
         "max_changed_pixels": 4981,
-        "gif": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\la-oficina-two-waves.gif",
-        "contact_capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\stages\\la-oficina-two-waves-contact.png"
+        "gif": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\la-oficina-two-waves.gif",
+        "contact_capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\stages\\la-oficina-two-waves-contact.png"
       }
     }
   },
@@ -340490,5 +340490,5 @@
     "ambient_phase_age": 118
   },
   "passed": 8163,
-  "elapsed_seconds": 16.531
+  "elapsed_seconds": 16.515
 }

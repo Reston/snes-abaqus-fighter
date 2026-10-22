@@ -77,15 +77,15 @@
       "check": "native matchup sweep ROM identity object",
       "passed": true,
       "details": {
-        "sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
-        "manifest_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
+        "sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
+        "manifest_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
         "bytes": 4194304
       }
     },
     {
       "check": "native matchup sweep matches the exact current ROM",
       "passed": true,
-      "details": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe"
+      "details": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb"
     },
     {
       "check": "native matchup sweep ROM byte count",
@@ -44737,14 +44737,14 @@
       "check": "independent combat sweep ROM identity object",
       "passed": true,
       "details": {
-        "sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
+        "sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
         "bytes": 4194304
       }
     },
     {
       "check": "independent combat sweep matches the exact current ROM",
       "passed": true,
-      "details": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe"
+      "details": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb"
     },
     {
       "check": "independent combat sweep ROM byte count",
@@ -54216,7 +54216,7 @@
     {
       "check": "endurance gate matches the exact current ROM",
       "passed": true,
-      "details": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe"
+      "details": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb"
     },
     {
       "check": "endurance gate ROM byte count",
@@ -54395,7 +54395,7 @@
           "live_frames": 216356,
           "live_segments": 294,
           "training_cpu_live_frames": 0,
-          "elapsed_seconds": 764.531,
+          "elapsed_seconds": 930.078,
           "rosters": [
             {
               "fighter1": 0,
@@ -54541,7 +54541,7 @@
           "trace_magic_samples": 304119,
           "video_fps": 60.098811862348406,
           "audio_sample_rate": 32040.0,
-          "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
+          "rom_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
           "benchmark": false,
           "core_frames_including_boot": 304401,
           "core": {
@@ -54568,7 +54568,7 @@
           "live_frames": 216356,
           "live_segments": 225,
           "training_cpu_live_frames": 0,
-          "elapsed_seconds": 921.437,
+          "elapsed_seconds": 918.703,
           "rosters": [
             {
               "fighter1": 3,
@@ -54767,7 +54767,7 @@
           "trace_magic_samples": 283244,
           "video_fps": 60.098811862348406,
           "audio_sample_rate": 32040.0,
-          "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
+          "rom_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
           "benchmark": false,
           "core_frames_including_boot": 283679,
           "core": {
@@ -54794,7 +54794,7 @@
           "live_frames": 216411,
           "live_segments": 28,
           "training_cpu_live_frames": 216356,
-          "elapsed_seconds": 826.25,
+          "elapsed_seconds": 813.188,
           "rosters": [
             {
               "fighter1": 6,
@@ -54944,7 +54944,7 @@
           "ambient_failures": [],
           "ppu_overflow_frames": [],
           "max_spc_backlog": 6,
-          "spc_backlog_nonzero_samples": 54,
+          "spc_backlog_nonzero_samples": 53,
           "spc_drain_events": 52,
           "spc_drain_bytes": 156,
           "max_spc_growth_streak": 1,
@@ -55009,7 +55009,7 @@
           "trace_magic_samples": 220942,
           "video_fps": 60.098811862348406,
           "audio_sample_rate": 32040.0,
-          "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
+          "rom_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
           "benchmark": false,
           "core_frames_including_boot": 221411,
           "core": {
@@ -55078,7 +55078,7 @@
     {
       "check": "endurance gate mode 0 matches the exact current ROM",
       "passed": true,
-      "details": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe"
+      "details": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb"
     },
     {
       "check": "endurance gate mode 0 native core identity exists",
@@ -55254,7 +55254,7 @@
     {
       "check": "endurance gate mode 0 reports its ROM hash",
       "passed": true,
-      "details": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe"
+      "details": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb"
     },
     {
       "check": "endurance gate mode is an object",
@@ -55269,7 +55269,7 @@
     {
       "check": "endurance gate mode 1 matches the exact current ROM",
       "passed": true,
-      "details": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe"
+      "details": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb"
     },
     {
       "check": "endurance gate mode 1 native core identity exists",
@@ -55441,7 +55441,7 @@
     {
       "check": "endurance gate mode 1 reports its ROM hash",
       "passed": true,
-      "details": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe"
+      "details": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb"
     },
     {
       "check": "endurance gate mode is an object",
@@ -55456,7 +55456,7 @@
     {
       "check": "endurance gate mode 2 matches the exact current ROM",
       "passed": true,
-      "details": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe"
+      "details": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb"
     },
     {
       "check": "endurance gate mode 2 native core identity exists",
@@ -55729,7 +55729,7 @@
     {
       "check": "endurance gate mode 2 reports its ROM hash",
       "passed": true,
-      "details": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe"
+      "details": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb"
     },
     {
       "check": "endurance gate total frames meet the target",
@@ -55748,12 +55748,12 @@
     {
       "check": "fresh committed-source build matches the exact current ROM",
       "passed": true,
-      "details": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe"
+      "details": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb"
     },
     {
       "check": "fresh committed-source build rebuilt ROM matches the exact current ROM",
       "passed": true,
-      "details": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe"
+      "details": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb"
     },
     {
       "check": "fresh committed-source build build succeeded",
@@ -60872,20 +60872,20 @@
     {
       "check": "fresh build records a source commit",
       "passed": true,
-      "details": "5fcd5cb28f4cf2453cb3310fbab0d6947d7afd9a"
+      "details": "8a7a6fc78c2160aac23de2a2f32ea927016853d0"
     },
     {
       "check": "fresh source tree matches source commit",
       "passed": true,
       "details": {
-        "expected": "5e3ef5c5f4be06fbd0bad8a37ef215a449f1c2a1",
-        "actual": "5e3ef5c5f4be06fbd0bad8a37ef215a449f1c2a1"
+        "expected": "9d78764a6f40c5fe3661b0b2f6fb8469d9f0a25f",
+        "actual": "9d78764a6f40c5fe3661b0b2f6fb8469d9f0a25f"
       }
     },
     {
       "check": "fresh source commit is an ancestor of release HEAD",
       "passed": true,
-      "details": "5fcd5cb28f4cf2453cb3310fbab0d6947d7afd9a"
+      "details": "8a7a6fc78c2160aac23de2a2f32ea927016853d0"
     },
     {
       "check": "fresh source inputs unchanged since source commit",
@@ -60896,8 +60896,8 @@
       "check": "fresh source commit/tree provenance",
       "passed": true,
       "details": {
-        "commit": "5fcd5cb28f4cf2453cb3310fbab0d6947d7afd9a",
-        "tree": "5e3ef5c5f4be06fbd0bad8a37ef215a449f1c2a1"
+        "commit": "8a7a6fc78c2160aac23de2a2f32ea927016853d0",
+        "tree": "9d78764a6f40c5fe3661b0b2f6fb8469d9f0a25f"
       }
     },
     {
@@ -60908,7 +60908,7 @@
     {
       "check": "native Training suite matches the exact current ROM",
       "passed": true,
-      "details": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe"
+      "details": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb"
     },
     {
       "check": "native Training suite ROM byte count",
@@ -63654,9 +63654,9 @@
           ]
         },
         {
-          "check": "fifth Training choice has the exact native CPU label",
+          "check": "fifth Training choice names its native CPU difficulty",
           "passed": true,
-          "details": "DUMMY: CPU"
+          "details": "DUMMY: CPU NORMAL"
         },
         {
           "check": "CPU normal-card capture is a native 256x224 PPU frame",
@@ -67552,7 +67552,7 @@
           "details": {
             "key": "down",
             "target": 4,
-            "label": "DUMMY: CPU"
+            "label": "DUMMY: CPU NORMAL"
           }
         },
         {
@@ -67600,7 +67600,7 @@
           "details": {
             "key": "up",
             "target": 4,
-            "label": "DUMMY: CPU"
+            "label": "DUMMY: CPU NORMAL"
           }
         },
         {
@@ -70572,6 +70572,14 @@
               "training_dummy": 4,
               "guide_dirty": 0
             }
+          }
+        },
+        {
+          "check": "Training CPU pause card shows the selected Easy/Normal/Hard level",
+          "passed": true,
+          "details": {
+            "difficulty": 0,
+            "label": "DUMMY: CPU EASY"
           }
         },
         {
@@ -75032,6 +75040,14 @@
           }
         },
         {
+          "check": "Training CPU level remains visible after quick reset and guide cycling",
+          "passed": true,
+          "details": {
+            "difficulty": 0,
+            "label": "DUMMY: CPU EASY"
+          }
+        },
+        {
           "check": "menu/force-blank trace stalls remain bounded",
           "passed": true,
           "details": {
@@ -76832,6 +76848,14 @@
               "training_dummy": 4,
               "guide_dirty": 0
             }
+          }
+        },
+        {
+          "check": "Training CPU pause card shows the selected Easy/Normal/Hard level",
+          "passed": true,
+          "details": {
+            "difficulty": 1,
+            "label": "DUMMY: CPU NORMAL"
           }
         },
         {
@@ -81292,6 +81316,14 @@
           }
         },
         {
+          "check": "Training CPU level remains visible after quick reset and guide cycling",
+          "passed": true,
+          "details": {
+            "difficulty": 1,
+            "label": "DUMMY: CPU NORMAL"
+          }
+        },
+        {
           "check": "menu/force-blank trace stalls remain bounded",
           "passed": true,
           "details": {
@@ -83092,6 +83124,14 @@
               "training_dummy": 4,
               "guide_dirty": 0
             }
+          }
+        },
+        {
+          "check": "Training CPU pause card shows the selected Easy/Normal/Hard level",
+          "passed": true,
+          "details": {
+            "difficulty": 2,
+            "label": "DUMMY: CPU HARD"
           }
         },
         {
@@ -87549,6 +87589,14 @@
                 "dirty": 0
               }
             ]
+          }
+        },
+        {
+          "check": "Training CPU level remains visible after quick reset and guide cycling",
+          "passed": true,
+          "details": {
+            "difficulty": 2,
+            "label": "DUMMY: CPU HARD"
           }
         },
         {
@@ -274643,8 +274691,8 @@
       "check": "native Training suite passed count covers every check",
       "passed": true,
       "details": {
-        "passed": 1805,
-        "checks": 1805
+        "passed": 1811,
+        "checks": 1811
       }
     },
     {
@@ -283673,6 +283721,36 @@
       "details": 1804
     },
     {
+      "check": "native Training suite check passed",
+      "passed": true,
+      "details": 1805
+    },
+    {
+      "check": "native Training suite check passed",
+      "passed": true,
+      "details": 1806
+    },
+    {
+      "check": "native Training suite check passed",
+      "passed": true,
+      "details": 1807
+    },
+    {
+      "check": "native Training suite check passed",
+      "passed": true,
+      "details": 1808
+    },
+    {
+      "check": "native Training suite check passed",
+      "passed": true,
+      "details": 1809
+    },
+    {
+      "check": "native Training suite check passed",
+      "passed": true,
+      "details": 1810
+    },
+    {
       "check": "native Training suite source core pins are the release pins",
       "passed": true,
       "details": {
@@ -283710,7 +283788,7 @@
     {
       "check": "native Training suite harness matches current test sources",
       "passed": true,
-      "details": "5efa553f34c132703559d16c4865fee5021296a2642912e3a91217f4eba0d5ec"
+      "details": "a8d15319307e4dd07d9596ff3073a53a97dd088c858cd9c83ad3dad997b25d6c"
     },
     {
       "check": "native Training suite core options are pinned",
@@ -283781,7 +283859,7 @@
             "nonblank": 736,
             "total": 736,
             "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
-            "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-controls.png",
+            "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\training\\mode0-controls.png",
             "vram_sha256": "1121a892fb7465343bc1dee4dc723a2c1bbdc7eb601dd9c1438e8ff359ca2f99"
           },
           "specials": {
@@ -283789,7 +283867,7 @@
             "nonblank": 736,
             "total": 736,
             "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n         MOVE LIST 2/2\n\n\n   P1  DAMIAN\n       KERNEL BURST\n       FORWARD PROJECTILE\n   P2  IVO\n       CAPITAL WAVE\n       FORWARD PROJECTILE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12-TICK WINDOW PER STEP\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
-            "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-specials.png",
+            "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\training\\mode0-specials.png",
             "vram_sha256": "cff34fbe05a147f438afc55f2b4aff1f3cf5ced721c3e648c0f037fe363dd104"
           },
           "page_history": [
@@ -283810,7 +283888,7 @@
             "nonblank": 736,
             "total": 736,
             "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
-            "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-controls.png",
+            "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\training\\mode1-controls.png",
             "vram_sha256": "6fb6d6f86a0eacf621d65802462b78cd398b5254211dca006c18aa0207975b3f"
           },
           "specials": {
@@ -283818,7 +283896,7 @@
             "nonblank": 736,
             "total": 736,
             "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n         MOVE LIST 2/2\n\n\n   P1  CRISTOBAL\n       ATOMIC PUSH\n       ADVANCING STRIKE\n   P2  DAVID\n       AUDIT STRIKE\n       RISING STRIKE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12-TICK WINDOW PER STEP\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
-            "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-specials.png",
+            "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\training\\mode1-specials.png",
             "vram_sha256": "5f7847470c1ec1a2a5059f5608f568c2c88b04cfa20812ba4248799769c96686"
           },
           "page_history": [
@@ -283839,7 +283917,7 @@
             "nonblank": 736,
             "total": 736,
             "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
-            "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-controls.png",
+            "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\training\\mode2-controls.png",
             "vram_sha256": "efef95aa9a35d3e78da2b70c6b8e5517e65a17806e183f4916a5d3abff9f0302"
           },
           "specials": {
@@ -283847,7 +283925,7 @@
             "nonblank": 736,
             "total": 736,
             "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n         MOVE LIST 2/2\n\n\n   P1  NEGGER\n       MACRO SHOCK\n       LOW SHOCKWAVE\n   P2  IVO\n       CAPITAL WAVE\n       FORWARD PROJECTILE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12-TICK WINDOW PER STEP\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
-            "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-specials.png",
+            "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\training\\mode2-specials.png",
             "vram_sha256": "973525269697998e241e3296f67bc45e322c4a5c2c0917090f43224634e633c5"
           },
           "page_history": [
@@ -283873,7 +283951,7 @@
           "nonblank": 736,
           "total": 736,
           "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
-          "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-controls.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\training\\mode0-controls.png",
           "vram_sha256": "1121a892fb7465343bc1dee4dc723a2c1bbdc7eb601dd9c1438e8ff359ca2f99"
         },
         "specials": {
@@ -283881,7 +283959,7 @@
           "nonblank": 736,
           "total": 736,
           "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n         MOVE LIST 2/2\n\n\n   P1  DAMIAN\n       KERNEL BURST\n       FORWARD PROJECTILE\n   P2  IVO\n       CAPITAL WAVE\n       FORWARD PROJECTILE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12-TICK WINDOW PER STEP\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
-          "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-specials.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\training\\mode0-specials.png",
           "vram_sha256": "cff34fbe05a147f438afc55f2b4aff1f3cf5ced721c3e648c0f037fe363dd104"
         },
         "page_history": [
@@ -283923,7 +284001,7 @@
         "nonblank": 736,
         "total": 736,
         "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
-        "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-controls.png",
+        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\training\\mode0-controls.png",
         "vram_sha256": "1121a892fb7465343bc1dee4dc723a2c1bbdc7eb601dd9c1438e8ff359ca2f99"
       }
     },
@@ -283958,7 +284036,7 @@
         "nonblank": 736,
         "total": 736,
         "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n         MOVE LIST 2/2\n\n\n   P1  DAMIAN\n       KERNEL BURST\n       FORWARD PROJECTILE\n   P2  IVO\n       CAPITAL WAVE\n       FORWARD PROJECTILE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12-TICK WINDOW PER STEP\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
-        "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-specials.png",
+        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\training\\mode0-specials.png",
         "vram_sha256": "cff34fbe05a147f438afc55f2b4aff1f3cf5ced721c3e648c0f037fe363dd104"
       }
     },
@@ -284029,7 +284107,7 @@
           "nonblank": 736,
           "total": 736,
           "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
-          "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-controls.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\training\\mode1-controls.png",
           "vram_sha256": "6fb6d6f86a0eacf621d65802462b78cd398b5254211dca006c18aa0207975b3f"
         },
         "specials": {
@@ -284037,7 +284115,7 @@
           "nonblank": 736,
           "total": 736,
           "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n         MOVE LIST 2/2\n\n\n   P1  CRISTOBAL\n       ATOMIC PUSH\n       ADVANCING STRIKE\n   P2  DAVID\n       AUDIT STRIKE\n       RISING STRIKE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12-TICK WINDOW PER STEP\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
-          "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-specials.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\training\\mode1-specials.png",
           "vram_sha256": "5f7847470c1ec1a2a5059f5608f568c2c88b04cfa20812ba4248799769c96686"
         },
         "page_history": [
@@ -284079,7 +284157,7 @@
         "nonblank": 736,
         "total": 736,
         "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
-        "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-controls.png",
+        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\training\\mode1-controls.png",
         "vram_sha256": "6fb6d6f86a0eacf621d65802462b78cd398b5254211dca006c18aa0207975b3f"
       }
     },
@@ -284114,7 +284192,7 @@
         "nonblank": 736,
         "total": 736,
         "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n         MOVE LIST 2/2\n\n\n   P1  CRISTOBAL\n       ATOMIC PUSH\n       ADVANCING STRIKE\n   P2  DAVID\n       AUDIT STRIKE\n       RISING STRIKE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12-TICK WINDOW PER STEP\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
-        "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-specials.png",
+        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\training\\mode1-specials.png",
         "vram_sha256": "5f7847470c1ec1a2a5059f5608f568c2c88b04cfa20812ba4248799769c96686"
       }
     },
@@ -284185,7 +284263,7 @@
           "nonblank": 736,
           "total": 736,
           "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
-          "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-controls.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\training\\mode2-controls.png",
           "vram_sha256": "efef95aa9a35d3e78da2b70c6b8e5517e65a17806e183f4916a5d3abff9f0302"
         },
         "specials": {
@@ -284193,7 +284271,7 @@
           "nonblank": 736,
           "total": 736,
           "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n         MOVE LIST 2/2\n\n\n   P1  NEGGER\n       MACRO SHOCK\n       LOW SHOCKWAVE\n   P2  IVO\n       CAPITAL WAVE\n       FORWARD PROJECTILE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12-TICK WINDOW PER STEP\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
-          "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-specials.png",
+          "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\training\\mode2-specials.png",
           "vram_sha256": "973525269697998e241e3296f67bc45e322c4a5c2c0917090f43224634e633c5"
         },
         "page_history": [
@@ -284235,7 +284313,7 @@
         "nonblank": 736,
         "total": 736,
         "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
-        "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-controls.png",
+        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\training\\mode2-controls.png",
         "vram_sha256": "efef95aa9a35d3e78da2b70c6b8e5517e65a17806e183f4916a5d3abff9f0302"
       }
     },
@@ -284270,7 +284348,7 @@
         "nonblank": 736,
         "total": 736,
         "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n         MOVE LIST 2/2\n\n\n   P1  NEGGER\n       MACRO SHOCK\n       LOW SHOCKWAVE\n   P2  IVO\n       CAPITAL WAVE\n       FORWARD PROJECTILE\n   QUICK: DOWN + Y / X\n\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12-TICK WINDOW PER STEP\n   COST: 32 ENERGY\n\n   PRESS PUNCH WITH FINAL TOWARD\n\n        A / START RESUME\n\n     B ROSTER   SELECT BACK\n\n\n\n\n",
-        "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-specials.png",
+        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\docs\\screenshots\\training\\mode2-specials.png",
         "vram_sha256": "973525269697998e241e3296f67bc45e322c4a5c2c0917090f43224634e633c5"
       }
     },
@@ -335118,7 +335196,7 @@
     {
       "check": "exact-ROM suite is complete: training-test-report.json",
       "passed": true,
-      "details": 1805
+      "details": 1811
     },
     {
       "check": "stage evidence covers all three locations",
@@ -337847,17 +337925,17 @@
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: CROSSUP-PRACTICE-v0.17.0.html",
+      "check": "offline package entry matches current source map: CROSSUP-PRACTICE-v0.18.0.html",
       "passed": true,
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: crossup-practice-v0.17.0.json",
+      "check": "offline package entry matches current source map: crossup-practice-v0.18.0.json",
       "passed": true,
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: crossup-practice-captures-v0.17.0.json",
+      "check": "offline package entry matches current source map: crossup-practice-captures-v0.18.0.json",
       "passed": true,
       "details": null
     },
@@ -337877,62 +337955,62 @@
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.17.0/00.gif",
+      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.18.0/00.gif",
       "passed": true,
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.17.0/01.gif",
+      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.18.0/01.gif",
       "passed": true,
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.17.0/02.gif",
+      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.18.0/02.gif",
       "passed": true,
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.17.0/03.gif",
+      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.18.0/03.gif",
       "passed": true,
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.17.0/04.gif",
+      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.18.0/04.gif",
       "passed": true,
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.17.0/05.gif",
+      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.18.0/05.gif",
       "passed": true,
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.17.0/06.gif",
+      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.18.0/06.gif",
       "passed": true,
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.17.0/07.gif",
+      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.18.0/07.gif",
       "passed": true,
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.17.0/08.gif",
+      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.18.0/08.gif",
       "passed": true,
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.17.0/09.gif",
+      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.18.0/09.gif",
       "passed": true,
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.17.0/10.gif",
+      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.18.0/10.gif",
       "passed": true,
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.17.0/11.gif",
+      "check": "offline package entry matches current source map: screenshots/crossup-practice/v0.18.0/11.gif",
       "passed": true,
       "details": null
     },
@@ -338127,17 +338205,17 @@
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: RELEASE-v0.17.0.md",
+      "check": "offline package entry matches current source map: RELEASE-v0.18.0.md",
       "passed": true,
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: preservation-v0.17.0.json",
+      "check": "offline package entry matches current source map: preservation-v0.18.0.json",
       "passed": true,
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: verification-v0.17.0.json",
+      "check": "offline package entry matches current source map: verification-v0.18.0.json",
       "passed": true,
       "details": null
     },
@@ -338197,7 +338275,7 @@
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: audio-listening-v0.17.0.json",
+      "check": "offline package entry matches current source map: audio-listening-v0.18.0.json",
       "passed": true,
       "details": null
     },
@@ -338417,7 +338495,7 @@
       "details": null
     },
     {
-      "check": "offline documentation links resolve or are marked source-only: RELEASE-v0.17.0.md",
+      "check": "offline documentation links resolve or are marked source-only: RELEASE-v0.18.0.md",
       "passed": true,
       "details": null
     },
@@ -338542,8 +338620,8 @@
       "details": null
     }
   ],
-  "version": "0.17.0",
-  "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
+  "version": "0.18.0",
+  "rom_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
   "emulator_pins": {
     "archive": "snes9x.zip",
     "archive_sha256": "E2BD103819051EAE57D163CDBBF6B3B92DB73FDD4A6A0EE6A939E507EAA95DB8",
@@ -338574,24 +338652,24 @@
     },
     "fresh_build": {
       "generated_assets": 219,
-      "source_commit": "5fcd5cb28f4cf2453cb3310fbab0d6947d7afd9a",
-      "source_tree": "5e3ef5c5f4be06fbd0bad8a37ef215a449f1c2a1"
+      "source_commit": "8a7a6fc78c2160aac23de2a2f32ea927016853d0",
+      "source_tree": "9d78764a6f40c5fe3661b0b2f6fb8469d9f0a25f"
     },
     "training": {
-      "checks": 1805,
+      "checks": 1811,
       "report": "docs/training-test-report.json",
       "modes": 3,
       "captures": 9
     }
   },
-  "native_suite_checks": 35506,
+  "native_suite_checks": 35512,
   "suites": {
     "test-report.json": 2596,
     "character-test-report.json": 18084,
     "presentation-test-report.json": 3337,
     "input-test-report.json": 1521,
     "stage-test-report.json": 8163,
-    "training-test-report.json": 1805
+    "training-test-report.json": 1811
   },
   "independent_engine_smoke": {
     "scope": "independent-engine smoke, stage ambient/effects freeze, synchronized low-wave, neutral600frame cadence",
@@ -338629,5 +338707,5 @@
     "source_atlases_verified": 48
   },
   "remaining_release_gates": "docs/PUBLIC-RELEASE.md",
-  "audit_checks": 9097
+  "audit_checks": 9103
 }
