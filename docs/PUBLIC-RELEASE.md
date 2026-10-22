@@ -1,13 +1,14 @@
 # Public-release quality target
-<!-- candidate-version: 0.14.0; rom-sha256: 3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa -->
+<!-- candidate-version: 0.15.0; rom-sha256: 2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44 -->
 
-The current v0.14.0 review candidate is cartridge SHA256
-`3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa`. Its [release note](RELEASE-v0.14.0.md)
-records verification and package status. All six native suites pass 34,683 checks on this ROM; matching smoke,
+The current v0.15.0 review candidate is cartridge SHA256
+`2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44`. Its [release note](RELEASE-v0.15.0.md)
+records verification and package status. All six native suites pass 35,036 checks on this ROM; matching smoke,
 matrix/replays, independent combat, endurance and isolated-rebuild gates pass.
-The verified v0.13.0 package and older results below remain historical.
-Human gameplay, full listening, physical-controller sessions, likeness/consent
-and team/public-use approval remain open. `public_release_certified` is false.
+The verified v0.14.0 package and older results below remain historical.
+The new cross-up option needs human gameplay and balance review. Full listening,
+physical controllers, likeness/consent and team/public-use approval remain open.
+`public_release_certified` is false.
 
 The active project goal is an original native SNES fighting game polished to a
 high public-release standard, using Capcom's 16-bit arcade craft as the benchmark

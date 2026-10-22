@@ -6,7 +6,29 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
-- The active checkout is the **v0.14.0 menu/motion-help/authoring candidate**.
+- The active checkout is the **v0.15.0 close cross-up/practice candidate**.
+  ROM SHA256 `2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44`, header `2491`,
+  source freeze `e406ac17af1c25a64c7be547e7d0857880c18599`, tree `78493ed80bfd259deb228e7a8ca20580fef4f267`.
+  Only airborne medium kick action 5 reaches behind its locked facing, within
+  16px plus the 10px body half-width. Existing timing/damage/front reach and
+  other directional moves remain. Contact-side recoil survives landing and
+  trades in the previously unused flash byte; no WRAM storage or trace/ABI
+  changes. Controls teaches the cross-up at row 22 of the existing pause panel.
+  All 219 generated assets match verified v0.14.0. All six native suites pass
+  35,036 checks on this exact ROM. Pinned smoke, full matrix/replays, independent
+  combat and three native live-hour sessions pass. The isolated rebuild reproduces
+  ROM, assets and symbols in 448.641 seconds. Focused menu and authoring
+  evidence matches the current ROM/source freeze. The Windows package passes
+  8,707 technical audit checks. Two consecutive final ZIPs are identical at
+  14,747,425 bytes, SHA256
+  `481d5fb0968c1ba44ffee1e46ed1009736d45f45fa0e79c415478d370661ba62`.
+  The offline review includes two native moving cross-up clips and the new
+  Controls cue; GIF playback timing is an inspection approximation.
+  Human gameplay/balance, listening, controllers, likeness/consent and public-use
+  gates remain open; public_release_certified remains false.
+  See docs/RELEASE-v0.15.0.md.
+
+- The historical offline checkpoint is the **v0.14.0 menu/motion-help/authoring candidate**.
   ROM SHA256 `3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa`, header `D1E2`,
   source freeze `d534af0132440c0de3e1cb5a33a62301026449af`, tree `2dd5e2c1b6b4a64f7aa5fbb61bc69e8f522cd3cd`.
   Roster/arena hints show A/Start. The arena uses an existing opaque native

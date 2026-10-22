@@ -1,19 +1,24 @@
 # Native SNES implementation
-<!-- candidate-version: 0.14.0; rom-sha256: 3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa -->
+<!-- candidate-version: 0.15.0; rom-sha256: 2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44 -->
 
-The current checkout builds the v0.14.0 candidate, ROM SHA256
-`3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa`, checksum `D1E2`.
-Roster hints use the existing menu glyphs. The arena footer covers only rows
-26..27 (pixels 208..223) and uses the existing opaque guide glyph bank; its
-three scene/cursor rows end at pixel 207. No generated arena art or palette changes.
-The Specials guide adds a timing hint within the existing rows 5..27,
-1,472-byte, three-tick paused panel. The twelve-tick motion timer refreshes
-on progress; neither the control rules nor timing changes in this candidate.
-Production authoring guards now use explicit conditional raises, preserving
-the previous conditions, messages and lazy evaluation under Python optimization.
-All 219 generated assets match v0.13.0. Fighter64/Wave16, TRACE[0..122],
-actor/OBJ/live DMA, ambient and soundbank budgets remain unchanged.
-See [RELEASE-v0.14.0.md](RELEASE-v0.14.0.md) for current evidence status.
+The current checkout builds the v0.15.0 candidate, ROM SHA256
+`2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44`, checksum `2491`.
+Only an airborne medium kick (action 5 with airAction set) gains rear contact,
+within sixteen pixels plus the ten-pixel body half-width. Front reach and all
+other attack timing/damage/direction contracts remain. Contact-side recoil is
+snapshotted after body separation and before either trade can cancel an action.
+The former unused flash byte stores two private two-bit recoil directions,
+cleared on a new hit, completed hurt reaction or round reset. The latch survives
+landing and action cancellation. The ordinary hurt wrapper preserves projectile
+and delayed throw directions. No WRAM storage, Fighter64/Wave16 fields or
+TRACE[0..122] words are added; existing WRAM symbol addresses are retained.
+
+Controls adds a cross-up cue at row 22 inside the existing rows 5..27,
+1,472-byte, three-tick pause panel. Glyph/portrait, one-actor-per-vblank, OBJ,
+ambient and SPC budgets remain unchanged. All 219 generated assets match the
+verified v0.14.0 checkpoint. The package gate now binds the collated summary's
+identity, source freeze and six-suite counts to its individual exact-ROM reports.
+See [RELEASE-v0.15.0.md](RELEASE-v0.15.0.md) for current evidence status.
 Older version sections below are historical snapshots.
 
 ## Build

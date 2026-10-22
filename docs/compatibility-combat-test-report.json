@@ -3,7 +3,7 @@
   "scope": "independent bsnes2014 Accuracy bounded combat compatibility",
   "pinned_core": true,
   "rom": {
-    "sha256": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa",
+    "sha256": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44",
     "bytes": 4194304
   },
   "matrix": {
@@ -26,7 +26,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 3.9814365000002,
+      "elapsed_seconds": 3.765048299999762,
       "initial": {
         "fighter_id1": 0,
         "fighter_id2": 1,
@@ -219,9 +219,9 @@
         ]
       },
       "audio": {
-        "samples": 1036288,
-        "energy": 235362988068,
-        "peak": 3726
+        "samples": 1036256,
+        "energy": 234168776987,
+        "peak": 3768
       },
       "captures": [],
       "passed": true
@@ -232,7 +232,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 6.811974100000953,
+      "elapsed_seconds": 3.77896519999922,
       "initial": {
         "fighter_id1": 0,
         "fighter_id2": 1,
@@ -277,9 +277,9 @@
             "3": 28,
             "5": 8,
             "16": 109,
-            "17": 20,
+            "17": 21,
             "20": 53,
-            "21": 49,
+            "21": 48,
             "22": 20,
             "23": 12,
             "28": 12,
@@ -336,18 +336,18 @@
         ],
         "input_mix": [
           {
-            "guard": 116,
-            "idle": 273,
+            "guard": 114,
+            "idle": 276,
             "jump": 6,
-            "move": 306,
+            "move": 303,
             "normal": 15,
             "throw": 6
           },
           {
             "guard": 94,
-            "idle": 243,
+            "idle": 246,
             "jump": 3,
-            "move": 342,
+            "move": 339,
             "normal": 6,
             "special": 6,
             "throw": 24
@@ -388,10 +388,10 @@
       "position": {
         "x_min": [
           818,
-          1318
+          1298
         ],
         "x_max": [
-          2268,
+          2248,
           3040
         ],
         "y_min": [
@@ -438,9 +438,9 @@
         ]
       },
       "audio": {
-        "samples": 1063976,
-        "energy": 231030215475,
-        "peak": 3640
+        "samples": 1063980,
+        "energy": 230745220914,
+        "peak": 3625
       },
       "captures": [],
       "passed": true
@@ -451,7 +451,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 7.582144199999675,
+      "elapsed_seconds": 4.065150899998116,
       "initial": {
         "fighter_id1": 1,
         "fighter_id2": 2,
@@ -642,7 +642,7 @@
       },
       "audio": {
         "samples": 1147146,
-        "energy": 255968915311,
+        "energy": 256012966959,
         "peak": 3712
       },
       "captures": [],
@@ -654,7 +654,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 7.363105300000825,
+      "elapsed_seconds": 3.8643843999998353,
       "initial": {
         "fighter_id1": 1,
         "fighter_id2": 2,
@@ -858,9 +858,9 @@
         ]
       },
       "audio": {
-        "samples": 1091734,
-        "energy": 250620482454,
-        "peak": 3656
+        "samples": 1091724,
+        "energy": 250319453519,
+        "peak": 3716
       },
       "captures": [],
       "passed": true
@@ -871,7 +871,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 6.271008899999288,
+      "elapsed_seconds": 4.136702499999956,
       "initial": {
         "fighter_id1": 2,
         "fighter_id2": 3,
@@ -1060,9 +1060,9 @@
         ]
       },
       "audio": {
-        "samples": 1174870,
-        "energy": 266360389339,
-        "peak": 3737
+        "samples": 1174868,
+        "energy": 266239013281,
+        "peak": 3843
       },
       "captures": [],
       "passed": true
@@ -1073,7 +1073,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.608400799999799,
+      "elapsed_seconds": 4.243867400000454,
       "initial": {
         "fighter_id1": 2,
         "fighter_id2": 3,
@@ -1263,9 +1263,9 @@
         ]
       },
       "audio": {
-        "samples": 1202590,
-        "energy": 273060875918,
-        "peak": 3963
+        "samples": 1202592,
+        "energy": 273397652462,
+        "peak": 3981
       },
       "captures": [],
       "passed": true
@@ -1276,7 +1276,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.584175300000425,
+      "elapsed_seconds": 4.264503699996567,
       "initial": {
         "fighter_id1": 3,
         "fighter_id2": 4,
@@ -1454,9 +1454,9 @@
         ]
       },
       "audio": {
-        "samples": 1202592,
-        "energy": 261965371541,
-        "peak": 3551
+        "samples": 1202626,
+        "energy": 262042717235,
+        "peak": 3430
       },
       "captures": [],
       "passed": true
@@ -1467,7 +1467,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.829770399999688,
+      "elapsed_seconds": 4.3538403999991715,
       "initial": {
         "fighter_id1": 3,
         "fighter_id2": 4,
@@ -1666,8 +1666,8 @@
       },
       "audio": {
         "samples": 1230314,
-        "energy": 268478631110,
-        "peak": 3971
+        "energy": 268385225822,
+        "peak": 4180
       },
       "captures": [],
       "passed": true
@@ -1678,7 +1678,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.990114599999288,
+      "elapsed_seconds": 4.572948000000906,
       "initial": {
         "fighter_id1": 4,
         "fighter_id2": 5,
@@ -1862,8 +1862,8 @@
         ]
       },
       "audio": {
-        "samples": 1313484,
-        "energy": 292438860741,
+        "samples": 1313482,
+        "energy": 292337962827,
         "peak": 3712
       },
       "captures": [],
@@ -1875,7 +1875,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.848516800000652,
+      "elapsed_seconds": 4.400422000002436,
       "initial": {
         "fighter_id1": 4,
         "fighter_id2": 5,
@@ -1918,20 +1918,20 @@
           {
             "10": 22,
             "16": 25,
-            "17": 36,
+            "17": 35,
             "20": 89,
-            "21": 58,
+            "21": 59,
             "22": 24,
             "23": 24,
             "29": 8,
             "30": 16,
-            "31": 8,
+            "31": 7,
             "41": 24,
             "48": 26,
             "49": 10,
             "50": 6,
             "51": 26,
-            "55": 6,
+            "55": 7,
             "56": 6,
             "57": 22,
             "58": 18,
@@ -1948,9 +1948,9 @@
             "17": 63,
             "20": 75,
             "21": 57,
-            "22": 55,
+            "22": 56,
             "23": 18,
-            "28": 14,
+            "28": 13,
             "34": 14,
             "35": 34,
             "48": 26,
@@ -2014,11 +2014,11 @@
       },
       "position": {
         "x_min": [
-          480,
-          1360
+          472,
+          1352
         ],
         "x_max": [
-          2682,
+          2674,
           3186
         ],
         "y_min": [
@@ -2065,9 +2065,9 @@
         ]
       },
       "audio": {
-        "samples": 1258068,
-        "energy": 273254092241,
-        "peak": 4013
+        "samples": 1258058,
+        "energy": 273456986700,
+        "peak": 3830
       },
       "captures": [],
       "passed": true
@@ -2078,7 +2078,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.890432799998962,
+      "elapsed_seconds": 4.658295599998382,
       "initial": {
         "fighter_id1": 5,
         "fighter_id2": 6,
@@ -2270,7 +2270,7 @@
       },
       "audio": {
         "samples": 1341206,
-        "energy": 303721114023,
+        "energy": 303506819541,
         "peak": 3633
       },
       "captures": [],
@@ -2282,7 +2282,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 5.2838329000005615,
+      "elapsed_seconds": 4.756354999997711,
       "initial": {
         "fighter_id1": 5,
         "fighter_id2": 6,
@@ -2329,13 +2329,13 @@
             "5": 19,
             "13": 12,
             "16": 11,
-            "17": 81,
+            "17": 80,
             "18": 33,
             "20": 51,
             "21": 27,
             "22": 17,
             "23": 12,
-            "28": 7,
+            "28": 8,
             "29": 4,
             "30": 8,
             "31": 8,
@@ -2389,19 +2389,19 @@
         ],
         "input_mix": [
           {
-            "guard": 132,
-            "idle": 246,
+            "guard": 131,
+            "idle": 249,
             "jump": 3,
-            "move": 330,
+            "move": 327,
             "normal": 18,
             "special": 3,
             "throw": 6
           },
           {
             "guard": 97,
-            "idle": 219,
+            "idle": 222,
             "jump": 3,
-            "move": 366,
+            "move": 363,
             "normal": 6,
             "special": 6,
             "throw": 12
@@ -2494,8 +2494,8 @@
       },
       "audio": {
         "samples": 1368928,
-        "energy": 303742933381,
-        "peak": 3546
+        "energy": 303893741157,
+        "peak": 3566
       },
       "captures": [],
       "passed": true
@@ -2506,7 +2506,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.410371300000406,
+      "elapsed_seconds": 4.759983200001443,
       "initial": {
         "fighter_id1": 6,
         "fighter_id2": 7,
@@ -2699,9 +2699,9 @@
         ]
       },
       "audio": {
-        "samples": 1368958,
-        "energy": 300350235158,
-        "peak": 3875
+        "samples": 1368962,
+        "energy": 300406836690,
+        "peak": 3867
       },
       "captures": [],
       "passed": true
@@ -2712,7 +2712,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 5.218700600000375,
+      "elapsed_seconds": 4.839615199998661,
       "initial": {
         "fighter_id1": 6,
         "fighter_id2": 7,
@@ -2755,11 +2755,11 @@
           {
             "3": 25,
             "5": 8,
-            "17": 66,
+            "17": 67,
             "18": 13,
             "20": 63,
             "21": 55,
-            "22": 27,
+            "22": 26,
             "23": 16,
             "28": 8,
             "29": 8,
@@ -2908,9 +2908,9 @@
         ]
       },
       "audio": {
-        "samples": 1396652,
-        "energy": 306589754459,
-        "peak": 4041
+        "samples": 1396650,
+        "energy": 306614098927,
+        "peak": 4258
       },
       "captures": [],
       "passed": true
@@ -2921,7 +2921,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.546792600000117,
+      "elapsed_seconds": 5.104250899999897,
       "initial": {
         "fighter_id1": 7,
         "fighter_id2": 8,
@@ -2966,8 +2966,8 @@
             "5": 24,
             "6": 9,
             "13": 11,
-            "17": 68,
-            "18": 9,
+            "17": 69,
+            "18": 8,
             "20": 91,
             "21": 58,
             "22": 27,
@@ -2993,8 +2993,8 @@
           },
           {
             "10": 33,
-            "17": 62,
-            "18": 45,
+            "17": 63,
+            "18": 44,
             "19": 2,
             "20": 40,
             "21": 29,
@@ -3113,8 +3113,8 @@
       },
       "audio": {
         "samples": 1479820,
-        "energy": 331928481678,
-        "peak": 3858
+        "energy": 331916134528,
+        "peak": 3705
       },
       "captures": [],
       "passed": true
@@ -3125,7 +3125,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 5.285808700000416,
+      "elapsed_seconds": 4.934884199999942,
       "initial": {
         "fighter_id1": 7,
         "fighter_id2": 8,
@@ -3342,8 +3342,8 @@
       },
       "audio": {
         "samples": 1424396,
-        "energy": 316723689820,
-        "peak": 3991
+        "energy": 316894118899,
+        "peak": 3951
       },
       "captures": [],
       "passed": true
@@ -3354,7 +3354,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.819898699999612,
+      "elapsed_seconds": 5.184768299997813,
       "initial": {
         "fighter_id1": 8,
         "fighter_id2": 9,
@@ -3555,7 +3555,7 @@
       },
       "audio": {
         "samples": 1507542,
-        "energy": 345476855604,
+        "energy": 345844207120,
         "peak": 3671
       },
       "captures": [],
@@ -3567,7 +3567,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 7.543064299999969,
+      "elapsed_seconds": 5.283708799997839,
       "initial": {
         "fighter_id1": 8,
         "fighter_id2": 9,
@@ -3769,7 +3769,7 @@
       },
       "audio": {
         "samples": 1535264,
-        "energy": 351178690283,
+        "energy": 351067161389,
         "peak": 3683
       },
       "captures": [],
@@ -3781,7 +3781,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 6.156012000001283,
+      "elapsed_seconds": 5.277724299998226,
       "initial": {
         "fighter_id1": 9,
         "fighter_id2": 10,
@@ -3853,7 +3853,8 @@
             "13": 23,
             "17": 30,
             "18": 66,
-            "20": 66,
+            "19": 1,
+            "20": 65,
             "21": 41,
             "22": 21,
             "23": 13,
@@ -3978,7 +3979,7 @@
       },
       "audio": {
         "samples": 1535286,
-        "energy": 350571574766,
+        "energy": 350228388091,
         "peak": 3829
       },
       "captures": [],
@@ -3990,7 +3991,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 6.037823399999979,
+      "elapsed_seconds": 5.373524200000247,
       "initial": {
         "fighter_id1": 9,
         "fighter_id2": 10,
@@ -4190,8 +4191,8 @@
       },
       "audio": {
         "samples": 1562988,
-        "energy": 355489026285,
-        "peak": 3893
+        "energy": 355259076085,
+        "peak": 3649
       },
       "captures": [],
       "passed": true
@@ -4202,7 +4203,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 6.22679910000079,
+      "elapsed_seconds": 5.648149299999204,
       "initial": {
         "fighter_id1": 10,
         "fighter_id2": 11,
@@ -4399,8 +4400,8 @@
       },
       "audio": {
         "samples": 1647222,
-        "energy": 374344783195,
-        "peak": 3526
+        "energy": 374410893422,
+        "peak": 3599
       },
       "captures": [],
       "passed": true
@@ -4411,7 +4412,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 9.803468799998882,
+      "elapsed_seconds": 5.452623699999094,
       "initial": {
         "fighter_id1": 10,
         "fighter_id2": 11,
@@ -4620,9 +4621,9 @@
         ]
       },
       "audio": {
-        "samples": 1590740,
-        "energy": 352918798692,
-        "peak": 3845
+        "samples": 1590710,
+        "energy": 352901501505,
+        "peak": 3847
       },
       "captures": [],
       "passed": true
@@ -4633,7 +4634,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 11.451516199998878,
+      "elapsed_seconds": 5.710350599998492,
       "initial": {
         "fighter_id1": 11,
         "fighter_id2": 0,
@@ -4677,10 +4678,10 @@
           {
             "5": 16,
             "12": 14,
-            "18": 74,
+            "18": 76,
             "20": 89,
             "21": 78,
-            "22": 34,
+            "22": 32,
             "23": 18,
             "32": 8,
             "33": 20,
@@ -4698,11 +4699,11 @@
           },
           {
             "10": 33,
-            "16": 86,
-            "17": 8,
+            "16": 85,
+            "17": 11,
             "20": 84,
             "21": 64,
-            "22": 60,
+            "22": 58,
             "23": 24,
             "32": 2,
             "41": 33,
@@ -4719,15 +4720,15 @@
         ],
         "input_mix": [
           {
-            "idle": 306,
-            "move": 285,
+            "idle": 309,
+            "move": 282,
             "normal": 6,
             "special": 3,
             "throw": 6
           },
           {
-            "idle": 294,
-            "move": 303,
+            "idle": 297,
+            "move": 300,
             "normal": 3,
             "throw": 12
           }
@@ -4767,11 +4768,11 @@
       "position": {
         "x_min": [
           1056,
-          1869
+          1867
         ],
         "x_max": [
-          3075,
-          3535
+          3073,
+          3533
         ],
         "y_min": [
           -740,
@@ -4817,8 +4818,8 @@
         ]
       },
       "audio": {
-        "samples": 1673878,
-        "energy": 369027166539,
+        "samples": 1673880,
+        "energy": 369108506457,
         "peak": 3546
       },
       "captures": [],
@@ -4830,7 +4831,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 8.766595600000073,
+      "elapsed_seconds": 5.830855200001679,
       "initial": {
         "fighter_id1": 11,
         "fighter_id2": 0,
@@ -5032,9 +5033,9 @@
         ]
       },
       "audio": {
-        "samples": 1701604,
-        "energy": 376864806620,
-        "peak": 3760
+        "samples": 1701602,
+        "energy": 376824250666,
+        "peak": 3579
       },
       "captures": [],
       "passed": true
@@ -5045,7 +5046,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.0824654000007286,
+      "elapsed_seconds": 4.746007599998848,
       "initial": {
         "fighter_id1": 1,
         "fighter_id2": 0,
@@ -5226,9 +5227,9 @@
         ]
       },
       "audio": {
-        "samples": 1368954,
-        "energy": 321614423189,
-        "peak": 3601
+        "samples": 1368958,
+        "energy": 321514759141,
+        "peak": 3623
       },
       "captures": [],
       "passed": true
@@ -5239,7 +5240,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 5.106721099999049,
+      "elapsed_seconds": 4.8468476999987615,
       "initial": {
         "fighter_id1": 1,
         "fighter_id2": 0,
@@ -5273,16 +5274,15 @@
             "9": 27
           },
           {
-            "0": 463,
+            "0": 470,
             "1": 15,
             "3": 34,
-            "7": 7,
             "9": 81
           }
         ],
         "animation_frame_counts": [
           {
-            "3": 15,
+            "3": 14,
             "5": 19,
             "16": 77,
             "17": 32,
@@ -5291,7 +5291,7 @@
             "21": 39,
             "22": 14,
             "23": 16,
-            "28": 6,
+            "28": 7,
             "29": 4,
             "30": 8,
             "31": 5,
@@ -5315,7 +5315,7 @@
             "3": 32,
             "6": 8,
             "10": 22,
-            "16": 87,
+            "16": 94,
             "20": 75,
             "21": 76,
             "22": 27,
@@ -5327,7 +5327,6 @@
             "34": 8,
             "35": 18,
             "41": 18,
-            "42": 7,
             "48": 39,
             "49": 3,
             "50": 3,
@@ -5372,7 +5371,7 @@
         ],
         "special_seen": [
           false,
-          true
+          false
         ],
         "air_action_seen": [
           true,
@@ -5448,8 +5447,8 @@
       },
       "audio": {
         "samples": 1396650,
-        "energy": 309856641383,
-        "peak": 3529
+        "energy": 306740628476,
+        "peak": 3380
       },
       "captures": [],
       "passed": true
@@ -5460,7 +5459,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.328888000000006,
+      "elapsed_seconds": 4.113762799999677,
       "initial": {
         "fighter_id1": 2,
         "fighter_id2": 1,
@@ -5646,8 +5645,8 @@
         ]
       },
       "audio": {
-        "samples": 1147146,
-        "energy": 265113115863,
+        "samples": 1147148,
+        "energy": 265048348537,
         "peak": 3712
       },
       "captures": [],
@@ -5659,7 +5658,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.185842700000649,
+      "elapsed_seconds": 3.8891318000023603,
       "initial": {
         "fighter_id1": 2,
         "fighter_id2": 1,
@@ -5704,9 +5703,9 @@
             "5": 24,
             "6": 10,
             "10": 66,
-            "16": 92,
+            "16": 93,
             "17": 28,
-            "20": 53,
+            "20": 52,
             "21": 19,
             "22": 11,
             "23": 7,
@@ -5725,13 +5724,13 @@
             "55": 40
           },
           {
-            "3": 55,
+            "3": 56,
             "5": 24,
             "6": 38,
             "10": 44,
             "16": 135,
             "17": 4,
-            "20": 45,
+            "20": 44,
             "21": 9,
             "22": 7,
             "23": 8,
@@ -5847,9 +5846,9 @@
         ]
       },
       "audio": {
-        "samples": 1091726,
-        "energy": 242968378072,
-        "peak": 3054
+        "samples": 1091730,
+        "energy": 242707990271,
+        "peak": 3073
       },
       "captures": [],
       "passed": true
@@ -5860,7 +5859,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.649723799999265,
+      "elapsed_seconds": 4.131471299999248,
       "initial": {
         "fighter_id1": 3,
         "fighter_id2": 2,
@@ -6052,8 +6051,8 @@
       },
       "audio": {
         "samples": 1174870,
-        "energy": 269814444832,
-        "peak": 4346
+        "energy": 270382407873,
+        "peak": 4683
       },
       "captures": [],
       "passed": true
@@ -6064,7 +6063,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.628650500000731,
+      "elapsed_seconds": 4.258278599998448,
       "initial": {
         "fighter_id1": 3,
         "fighter_id2": 2,
@@ -6255,8 +6254,8 @@
       },
       "audio": {
         "samples": 1202592,
-        "energy": 287177014172,
-        "peak": 4264
+        "energy": 287092933610,
+        "peak": 4019
       },
       "captures": [],
       "passed": true
@@ -6267,7 +6266,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.003780999999435,
+      "elapsed_seconds": 4.244961599997623,
       "initial": {
         "fighter_id1": 4,
         "fighter_id2": 3,
@@ -6312,10 +6311,10 @@
           {
             "5": 16,
             "10": 11,
-            "16": 36,
+            "16": 35,
             "17": 28,
             "18": 3,
-            "20": 79,
+            "20": 80,
             "21": 50,
             "22": 16,
             "23": 16,
@@ -6337,9 +6336,9 @@
             "6": 4,
             "10": 22,
             "15": 13,
-            "16": 42,
+            "16": 41,
             "17": 18,
-            "20": 75,
+            "20": 76,
             "21": 52,
             "22": 53,
             "23": 20,
@@ -6460,9 +6459,9 @@
         ]
       },
       "audio": {
-        "samples": 1202622,
-        "energy": 270606098532,
-        "peak": 3795
+        "samples": 1202618,
+        "energy": 269159474306,
+        "peak": 3660
       },
       "captures": [],
       "passed": true
@@ -6473,7 +6472,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.794377199999872,
+      "elapsed_seconds": 4.327594899998076,
       "initial": {
         "fighter_id1": 4,
         "fighter_id2": 3,
@@ -6502,90 +6501,95 @@
       "actions": {
         "counts": [
           {
-            "0": 500,
-            "1": 73,
-            "9": 27
+            "0": 461,
+            "1": 115,
+            "9": 24
           },
           {
-            "0": 446,
-            "3": 40,
-            "7": 33,
-            "9": 81
+            "0": 407,
+            "1": 59,
+            "3": 80,
+            "9": 54
           }
         ],
         "animation_frame_counts": [
           {
-            "5": 16,
-            "10": 11,
-            "16": 30,
-            "17": 57,
+            "5": 19,
+            "10": 33,
+            "16": 38,
+            "17": 70,
             "18": 8,
-            "20": 67,
-            "21": 38,
-            "22": 16,
-            "23": 16,
-            "29": 4,
-            "30": 8,
-            "31": 6,
-            "32": 10,
-            "33": 26,
-            "41": 12,
-            "48": 13,
-            "49": 5,
-            "50": 3,
-            "51": 13,
-            "55": 3,
+            "20": 45,
+            "21": 13,
+            "22": 8,
+            "23": 8,
+            "29": 8,
+            "30": 16,
+            "31": 11,
+            "32": 15,
+            "33": 39,
+            "41": 33,
+            "48": 10,
+            "49": 10,
+            "50": 6,
+            "51": 26,
+            "55": 6,
             "56": 3,
             "57": 11,
-            "58": 27,
-            "59": 63,
-            "60": 18,
-            "61": 84,
+            "58": 18,
+            "59": 46,
+            "60": 12,
+            "61": 56,
             "62": 20,
             "63": 12
           },
           {
-            "3": 24,
-            "6": 10,
+            "3": 37,
+            "5": 11,
+            "6": 20,
             "10": 22,
-            "15": 13,
-            "16": 62,
-            "17": 39,
-            "20": 73,
-            "21": 48,
-            "22": 52,
-            "23": 18,
-            "28": 12,
-            "32": 1,
-            "33": 19,
-            "34": 9,
-            "35": 21,
+            "16": 77,
+            "17": 65,
+            "20": 53,
+            "21": 30,
+            "22": 32,
+            "23": 12,
+            "28": 16,
+            "29": 4,
+            "30": 8,
+            "31": 7,
+            "32": 8,
+            "33": 22,
+            "34": 18,
+            "35": 42,
             "41": 20,
-            "48": 39,
-            "56": 9,
-            "57": 33,
+            "48": 26,
+            "49": 4,
+            "50": 3,
+            "51": 11,
+            "55": 3,
+            "56": 6,
+            "57": 22,
             "58": 9,
-            "59": 23,
             "60": 6,
-            "61": 22,
-            "62": 10,
-            "63": 6
+            "61": 6
           }
         ],
         "input_mix": [
           {
-            "guard": 110,
-            "idle": 261,
-            "jump": 3,
-            "move": 324,
-            "normal": 12,
+            "guard": 73,
+            "idle": 342,
+            "jump": 6,
+            "move": 231,
+            "normal": 21,
             "throw": 3
           },
           {
-            "guard": 74,
-            "idle": 219,
-            "move": 375,
-            "normal": 3,
+            "guard": 60,
+            "idle": 288,
+            "jump": 3,
+            "move": 294,
+            "normal": 12,
             "special": 3,
             "throw": 24
           }
@@ -6600,32 +6604,32 @@
         ],
         "special_seen": [
           false,
-          true
+          false
         ],
         "air_action_seen": [
           true,
-          false
+          true
         ]
       },
       "damage": {
         "dealt": [
-          55,
-          91
+          26,
+          96
         ],
         "events": [
-          3,
-          4
+          2,
+          5
         ],
         "minimum_hp": [
-          37,
-          73
+          32,
+          102
         ],
-        "total": 146
+        "total": 122
       },
       "position": {
         "x_min": [
           384,
-          384
+          640
         ],
         "x_max": [
           1952,
@@ -6633,7 +6637,7 @@
         ],
         "y_min": [
           -883,
-          -662
+          -856
         ],
         "y_max": [
           0,
@@ -6647,21 +6651,20 @@
         ],
         "wake_seen": [
           true,
-          true
+          false
         ],
         "episodes": [
           [
             82,
-            82,
-            60
+            82
           ],
           [
-            76
+            21
           ]
         ],
         "max_episode": [
           82,
-          76
+          21
         ]
       },
       "throws": {
@@ -6671,13 +6674,13 @@
         ],
         "landing_seen": [
           true,
-          false
+          true
         ]
       },
       "audio": {
         "samples": 1230314,
-        "energy": 272271552947,
-        "peak": 3383
+        "energy": 273024059657,
+        "peak": 3558
       },
       "captures": [],
       "passed": true
@@ -6688,7 +6691,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.069466900000407,
+      "elapsed_seconds": 4.58197360000122,
       "initial": {
         "fighter_id1": 5,
         "fighter_id2": 4,
@@ -6717,9 +6720,9 @@
       "actions": {
         "counts": [
           {
-            "0": 359,
+            "0": 360,
             "1": 72,
-            "2": 30,
+            "2": 29,
             "7": 31,
             "9": 108
           },
@@ -6731,10 +6734,10 @@
         "animation_frame_counts": [
           {
             "5": 32,
-            "6": 6,
+            "6": 5,
             "13": 7,
             "16": 18,
-            "17": 83,
+            "17": 84,
             "20": 68,
             "21": 51,
             "22": 49,
@@ -6877,8 +6880,8 @@
       },
       "audio": {
         "samples": 1313482,
-        "energy": 297328191161,
-        "peak": 3709
+        "energy": 297368365334,
+        "peak": 3629
       },
       "captures": [],
       "passed": true
@@ -6889,7 +6892,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.757333699999435,
+      "elapsed_seconds": 4.406782800000656,
       "initial": {
         "fighter_id1": 5,
         "fighter_id2": 4,
@@ -7086,9 +7089,9 @@
         ]
       },
       "audio": {
-        "samples": 1258060,
-        "energy": 274353106778,
-        "peak": 3791
+        "samples": 1258072,
+        "energy": 274550278333,
+        "peak": 3751
       },
       "captures": [],
       "passed": true
@@ -7099,7 +7102,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.049688099999912,
+      "elapsed_seconds": 4.662158200000704,
       "initial": {
         "fighter_id1": 6,
         "fighter_id2": 5,
@@ -7278,9 +7281,9 @@
         ]
       },
       "audio": {
-        "samples": 1341206,
-        "energy": 294799738254,
-        "peak": 3786
+        "samples": 1341204,
+        "energy": 294696501541,
+        "peak": 3857
       },
       "captures": [],
       "passed": true
@@ -7291,7 +7294,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 5.400840400001471,
+      "elapsed_seconds": 4.779223600002297,
       "initial": {
         "fighter_id1": 6,
         "fighter_id2": 5,
@@ -7498,8 +7501,8 @@
       },
       "audio": {
         "samples": 1368928,
-        "energy": 299945167314,
-        "peak": 3901
+        "energy": 299648808009,
+        "peak": 3936
       },
       "captures": [],
       "passed": true
@@ -7510,7 +7513,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.227055900000778,
+      "elapsed_seconds": 4.752340200000617,
       "initial": {
         "fighter_id1": 7,
         "fighter_id2": 6,
@@ -7699,9 +7702,9 @@
         ]
       },
       "audio": {
-        "samples": 1368958,
-        "energy": 296570224822,
-        "peak": 3051
+        "samples": 1368928,
+        "energy": 296456569277,
+        "peak": 3211
       },
       "captures": [],
       "passed": true
@@ -7712,7 +7715,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 5.582780799999455,
+      "elapsed_seconds": 4.822085200001311,
       "initial": {
         "fighter_id1": 7,
         "fighter_id2": 6,
@@ -7918,9 +7921,9 @@
         ]
       },
       "audio": {
-        "samples": 1396652,
-        "energy": 307806653023,
-        "peak": 3488
+        "samples": 1396650,
+        "energy": 307843958494,
+        "peak": 3621
       },
       "captures": [],
       "passed": true
@@ -7931,7 +7934,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.821055999998862,
+      "elapsed_seconds": 5.0922487000025285,
       "initial": {
         "fighter_id1": 8,
         "fighter_id2": 7,
@@ -7960,84 +7963,65 @@
       "actions": {
         "counts": [
           {
-            "0": 556,
-            "1": 11,
-            "7": 6,
-            "9": 27
+            "0": 254,
+            "1": 64,
+            "2": 64,
+            "7": 83,
+            "9": 135
           },
           {
-            "0": 373,
-            "1": 66,
-            "2": 28,
-            "7": 25,
-            "9": 108
+            "0": 600
           }
         ],
         "animation_frame_counts": [
           {
-            "5": 3,
-            "10": 33,
-            "12": 1,
-            "17": 63,
-            "18": 9,
-            "20": 52,
-            "21": 34,
+            "5": 32,
+            "6": 16,
+            "12": 30,
+            "17": 115,
+            "18": 43,
+            "20": 25,
+            "21": 25,
             "22": 23,
             "23": 23,
-            "32": 1,
-            "33": 7,
-            "41": 27,
-            "42": 5,
-            "48": 13,
-            "56": 3,
-            "57": 11,
-            "58": 36,
-            "59": 92,
-            "60": 24,
-            "61": 76,
-            "62": 40,
-            "63": 24
+            "32": 4,
+            "33": 28,
+            "34": 12,
+            "35": 36,
+            "42": 20,
+            "43": 33,
+            "48": 65,
+            "56": 15,
+            "57": 55
           },
           {
-            "5": 24,
-            "6": 9,
-            "13": 11,
-            "17": 50,
-            "18": 14,
-            "20": 104,
-            "21": 67,
-            "22": 28,
-            "23": 28,
-            "32": 12,
-            "33": 30,
-            "34": 6,
-            "35": 13,
-            "44": 2,
-            "45": 12,
-            "48": 52,
-            "56": 12,
-            "57": 44,
-            "58": 9,
-            "59": 23,
-            "60": 6,
-            "61": 28,
-            "62": 10,
-            "63": 6
+            "10": 44,
+            "17": 75,
+            "18": 23,
+            "20": 15,
+            "21": 10,
+            "22": 7,
+            "23": 7,
+            "41": 28,
+            "58": 45,
+            "59": 112,
+            "60": 30,
+            "61": 140,
+            "62": 40,
+            "63": 24
           }
         ],
         "input_mix": [
           {
-            "idle": 411,
-            "move": 180,
-            "normal": 6,
-            "special": 3,
-            "throw": 3
+            "idle": 423,
+            "move": 117,
+            "normal": 36,
+            "special": 24,
+            "throw": 15
           },
           {
-            "idle": 285,
-            "move": 300,
-            "normal": 12,
-            "special": 3,
+            "idle": 549,
+            "move": 51,
             "throw": 12
           }
         ],
@@ -8051,7 +8035,7 @@
         ],
         "special_seen": [
           true,
-          true
+          false
         ],
         "air_action_seen": [
           false,
@@ -8060,31 +8044,31 @@
       },
       "damage": {
         "dealt": [
-          17,
-          111
+          105,
+          0
         ],
         "events": [
-          1,
-          7
+          9,
+          0
         ],
         "minimum_hp": [
-          17,
-          111
+          128,
+          23
         ],
-        "total": 128
+        "total": 105
       },
       "position": {
         "x_min": [
-          384,
-          766
+          1056,
+          2278
         ],
         "x_max": [
-          3456,
+          3362,
           3712
         ],
         "y_min": [
-          -610,
-          -841
+          0,
+          -740
         ],
         "y_max": [
           0,
@@ -8093,26 +8077,25 @@
       },
       "down_wake": {
         "down_seen": [
-          true,
+          false,
           true
         ],
         "wake_seen": [
-          true,
+          false,
           true
         ],
         "episodes": [
+          [],
           [
-            73,
-            73,
-            73,
-            73
-          ],
-          [
-            82
+            82,
+            82,
+            82,
+            82,
+            63
           ]
         ],
         "max_episode": [
-          73,
+          0,
           82
         ]
       },
@@ -8128,8 +8111,8 @@
       },
       "audio": {
         "samples": 1479820,
-        "energy": 336010421393,
-        "peak": 3828
+        "energy": 346607381531,
+        "peak": 3818
       },
       "captures": [],
       "passed": true
@@ -8140,7 +8123,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 5.5054134000001795,
+      "elapsed_seconds": 4.927734299999429,
       "initial": {
         "fighter_id1": 8,
         "fighter_id2": 7,
@@ -8350,8 +8333,8 @@
         ]
       },
       "audio": {
-        "samples": 1424404,
-        "energy": 317233446087,
+        "samples": 1424402,
+        "energy": 316985285900,
         "peak": 4159
       },
       "captures": [],
@@ -8363,7 +8346,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.625714499999958,
+      "elapsed_seconds": 5.177921999998944,
       "initial": {
         "fighter_id1": 9,
         "fighter_id2": 8,
@@ -8553,7 +8536,7 @@
       },
       "audio": {
         "samples": 1507544,
-        "energy": 343116788285,
+        "energy": 343219133916,
         "peak": 3786
       },
       "captures": [],
@@ -8565,7 +8548,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 5.762484499999118,
+      "elapsed_seconds": 5.295391499999823,
       "initial": {
         "fighter_id1": 9,
         "fighter_id2": 8,
@@ -8772,7 +8755,7 @@
       },
       "audio": {
         "samples": 1535264,
-        "energy": 349928067526,
+        "energy": 349933493066,
         "peak": 3683
       },
       "captures": [],
@@ -8784,7 +8767,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.662025199999334,
+      "elapsed_seconds": 5.281491699999606,
       "initial": {
         "fighter_id1": 10,
         "fighter_id2": 9,
@@ -8833,8 +8816,8 @@
             "10": 33,
             "13": 9,
             "17": 36,
-            "18": 57,
-            "20": 67,
+            "18": 58,
+            "20": 66,
             "21": 38,
             "22": 20,
             "23": 13,
@@ -8862,10 +8845,10 @@
             "5": 16,
             "10": 22,
             "12": 13,
-            "17": 45,
+            "17": 46,
             "18": 32,
             "19": 5,
-            "20": 79,
+            "20": 78,
             "21": 50,
             "22": 21,
             "23": 21,
@@ -8936,7 +8919,7 @@
       "position": {
         "x_min": [
           1056,
-          1714
+          1708
         ],
         "x_max": [
           3456,
@@ -8988,7 +8971,7 @@
       },
       "audio": {
         "samples": 1535288,
-        "energy": 346714312984,
+        "energy": 346905105920,
         "peak": 4302
       },
       "captures": [],
@@ -9000,7 +8983,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 6.739395399999921,
+      "elapsed_seconds": 5.368648799998482,
       "initial": {
         "fighter_id1": 10,
         "fighter_id2": 9,
@@ -9183,9 +9166,9 @@
         ]
       },
       "audio": {
-        "samples": 1562988,
-        "energy": 356699157694,
-        "peak": 3575
+        "samples": 1562986,
+        "energy": 356945932631,
+        "peak": 3594
       },
       "captures": [],
       "passed": true
@@ -9196,7 +9179,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 9.247143000000506,
+      "elapsed_seconds": 5.645908399998007,
       "initial": {
         "fighter_id1": 11,
         "fighter_id2": 10,
@@ -9398,7 +9381,7 @@
       },
       "audio": {
         "samples": 1647222,
-        "energy": 373651051723,
+        "energy": 373660104709,
         "peak": 3360
       },
       "captures": [],
@@ -9410,7 +9393,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 6.183849900000496,
+      "elapsed_seconds": 5.465371300000697,
       "initial": {
         "fighter_id1": 11,
         "fighter_id2": 10,
@@ -9600,8 +9583,8 @@
         ]
       },
       "audio": {
-        "samples": 1590732,
-        "energy": 346102395886,
+        "samples": 1590742,
+        "energy": 346121308378,
         "peak": 3677
       },
       "captures": [],
@@ -9613,7 +9596,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.159390700000586,
+      "elapsed_seconds": 4.655900500001735,
       "initial": {
         "fighter_id1": 0,
         "fighter_id2": 11,
@@ -9790,7 +9773,7 @@
       },
       "audio": {
         "samples": 1341206,
-        "energy": 293017211481,
+        "energy": 293130512642,
         "peak": 3878
       },
       "captures": [],
@@ -9802,7 +9785,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 5.150983400000769,
+      "elapsed_seconds": 4.760079499999847,
       "initial": {
         "fighter_id1": 0,
         "fighter_id2": 11,
@@ -10009,7 +9992,7 @@
       },
       "audio": {
         "samples": 1368928,
-        "energy": 300611490152,
+        "energy": 300724593761,
         "peak": 3571
       },
       "captures": [],
@@ -10033,5 +10016,5 @@
     "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
     "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
   },
-  "elapsed_seconds": 297.6593123999992
+  "elapsed_seconds": 244.3807643
 }

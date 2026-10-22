@@ -1,7 +1,7 @@
 {
-  "version": "0.14.0",
-  "rom_sha256": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa",
-  "source_freeze": "d534af0132440c0de3e1cb5a33a62301026449af",
+  "version": "0.15.0",
+  "rom_sha256": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44",
+  "source_freeze": "e406ac17af1c25a64c7be547e7d0857880c18599",
   "status": "passed",
   "blocks": [
     {
@@ -15,18 +15,18 @@
     },
     {
       "symbol": "champion_map",
-      "cpu_start": "$84:F800",
-      "last_cpu_byte": "$84:FFFF",
-      "rom_offset": 161792,
+      "cpu_start": "$87:F800",
+      "last_cpu_byte": "$87:FFFF",
+      "rom_offset": 260096,
       "bytes": 2048,
       "sha256": "4149213bbe977c91e8e847129ce64976879c4fbc9ae9a4e1431d505e375a1e9a",
       "fits_lorom_bank": true
     },
     {
       "symbol": "champion_pal",
-      "cpu_start": "$9E:FDAF",
-      "last_cpu_byte": "$9E:FE6E",
-      "rom_offset": 1015215,
+      "cpu_start": "$9D:FF25",
+      "last_cpu_byte": "$9D:FFE4",
+      "rom_offset": 982821,
       "bytes": 192,
       "sha256": "02e0569819891084a53ce2bf072b806eb611013e066b18c8c5480f76e00170bd",
       "fits_lorom_bank": true

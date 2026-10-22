@@ -44,6 +44,16 @@
       "details": null
     },
     {
+      "check": "collated verification matches current cartridge, source freeze and six native totals",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "cross-up review GIFs retain current native capture identity, pixels and timing",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "native matchup sweep passed",
       "passed": true,
       "details": "passed"
@@ -52,15 +62,15 @@
       "check": "native matchup sweep ROM identity object",
       "passed": true,
       "details": {
-        "sha256": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa",
-        "manifest_sha256": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa",
+        "sha256": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44",
+        "manifest_sha256": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44",
         "bytes": 4194304
       }
     },
     {
       "check": "native matchup sweep matches the exact current ROM",
       "passed": true,
-      "details": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa"
+      "details": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44"
     },
     {
       "check": "native matchup sweep ROM byte count",
@@ -44712,14 +44722,14 @@
       "check": "independent combat sweep ROM identity object",
       "passed": true,
       "details": {
-        "sha256": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa",
+        "sha256": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44",
         "bytes": 4194304
       }
     },
     {
       "check": "independent combat sweep matches the exact current ROM",
       "passed": true,
-      "details": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa"
+      "details": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44"
     },
     {
       "check": "independent combat sweep ROM byte count",
@@ -44984,9 +44994,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1036288,
-          "energy": 235362988068,
-          "peak": 3726
+          "samples": 1036256,
+          "energy": 234168776987,
+          "peak": 3768
         }
       }
     },
@@ -45178,9 +45188,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1063976,
-          "energy": 231030215475,
-          "peak": 3640
+          "samples": 1063980,
+          "energy": 230745220914,
+          "peak": 3625
         }
       }
     },
@@ -45373,7 +45383,7 @@
         ],
         "audio": {
           "samples": 1147146,
-          "energy": 255968915311,
+          "energy": 256012966959,
           "peak": 3712
         }
       }
@@ -45566,9 +45576,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1091734,
-          "energy": 250620482454,
-          "peak": 3656
+          "samples": 1091724,
+          "energy": 250319453519,
+          "peak": 3716
         }
       }
     },
@@ -45760,9 +45770,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1174870,
-          "energy": 266360389339,
-          "peak": 3737
+          "samples": 1174868,
+          "energy": 266239013281,
+          "peak": 3843
         }
       }
     },
@@ -45954,9 +45964,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1202590,
-          "energy": 273060875918,
-          "peak": 3963
+          "samples": 1202592,
+          "energy": 273397652462,
+          "peak": 3981
         }
       }
     },
@@ -46148,9 +46158,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1202592,
-          "energy": 261965371541,
-          "peak": 3551
+          "samples": 1202626,
+          "energy": 262042717235,
+          "peak": 3430
         }
       }
     },
@@ -46343,8 +46353,8 @@
         ],
         "audio": {
           "samples": 1230314,
-          "energy": 268478631110,
-          "peak": 3971
+          "energy": 268385225822,
+          "peak": 4180
         }
       }
     },
@@ -46536,8 +46546,8 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1313484,
-          "energy": 292438860741,
+          "samples": 1313482,
+          "energy": 292337962827,
           "peak": 3712
         }
       }
@@ -46730,9 +46740,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1258068,
-          "energy": 273254092241,
-          "peak": 4013
+          "samples": 1258058,
+          "energy": 273456986700,
+          "peak": 3830
         }
       }
     },
@@ -46925,7 +46935,7 @@
         ],
         "audio": {
           "samples": 1341206,
-          "energy": 303721114023,
+          "energy": 303506819541,
           "peak": 3633
         }
       }
@@ -47119,8 +47129,8 @@
         ],
         "audio": {
           "samples": 1368928,
-          "energy": 303742933381,
-          "peak": 3546
+          "energy": 303893741157,
+          "peak": 3566
         }
       }
     },
@@ -47312,9 +47322,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1368958,
-          "energy": 300350235158,
-          "peak": 3875
+          "samples": 1368962,
+          "energy": 300406836690,
+          "peak": 3867
         }
       }
     },
@@ -47506,9 +47516,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1396652,
-          "energy": 306589754459,
-          "peak": 4041
+          "samples": 1396650,
+          "energy": 306614098927,
+          "peak": 4258
         }
       }
     },
@@ -47701,8 +47711,8 @@
         ],
         "audio": {
           "samples": 1479820,
-          "energy": 331928481678,
-          "peak": 3858
+          "energy": 331916134528,
+          "peak": 3705
         }
       }
     },
@@ -47895,8 +47905,8 @@
         ],
         "audio": {
           "samples": 1424396,
-          "energy": 316723689820,
-          "peak": 3991
+          "energy": 316894118899,
+          "peak": 3951
         }
       }
     },
@@ -48089,7 +48099,7 @@
         ],
         "audio": {
           "samples": 1507542,
-          "energy": 345476855604,
+          "energy": 345844207120,
           "peak": 3671
         }
       }
@@ -48283,7 +48293,7 @@
         ],
         "audio": {
           "samples": 1535264,
-          "energy": 351178690283,
+          "energy": 351067161389,
           "peak": 3683
         }
       }
@@ -48477,7 +48487,7 @@
         ],
         "audio": {
           "samples": 1535286,
-          "energy": 350571574766,
+          "energy": 350228388091,
           "peak": 3829
         }
       }
@@ -48671,8 +48681,8 @@
         ],
         "audio": {
           "samples": 1562988,
-          "energy": 355489026285,
-          "peak": 3893
+          "energy": 355259076085,
+          "peak": 3649
         }
       }
     },
@@ -48865,8 +48875,8 @@
         ],
         "audio": {
           "samples": 1647222,
-          "energy": 374344783195,
-          "peak": 3526
+          "energy": 374410893422,
+          "peak": 3599
         }
       }
     },
@@ -49058,9 +49068,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1590740,
-          "energy": 352918798692,
-          "peak": 3845
+          "samples": 1590710,
+          "energy": 352901501505,
+          "peak": 3847
         }
       }
     },
@@ -49252,8 +49262,8 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1673878,
-          "energy": 369027166539,
+          "samples": 1673880,
+          "energy": 369108506457,
           "peak": 3546
         }
       }
@@ -49446,9 +49456,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1701604,
-          "energy": 376864806620,
-          "peak": 3760
+          "samples": 1701602,
+          "energy": 376824250666,
+          "peak": 3579
         }
       }
     },
@@ -49640,9 +49650,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1368954,
-          "energy": 321614423189,
-          "peak": 3601
+          "samples": 1368958,
+          "energy": 321514759141,
+          "peak": 3623
         }
       }
     },
@@ -49835,8 +49845,8 @@
         ],
         "audio": {
           "samples": 1396650,
-          "energy": 309856641383,
-          "peak": 3529
+          "energy": 306740628476,
+          "peak": 3380
         }
       }
     },
@@ -50028,8 +50038,8 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1147146,
-          "energy": 265113115863,
+          "samples": 1147148,
+          "energy": 265048348537,
           "peak": 3712
         }
       }
@@ -50222,9 +50232,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1091726,
-          "energy": 242968378072,
-          "peak": 3054
+          "samples": 1091730,
+          "energy": 242707990271,
+          "peak": 3073
         }
       }
     },
@@ -50417,8 +50427,8 @@
         ],
         "audio": {
           "samples": 1174870,
-          "energy": 269814444832,
-          "peak": 4346
+          "energy": 270382407873,
+          "peak": 4683
         }
       }
     },
@@ -50611,8 +50621,8 @@
         ],
         "audio": {
           "samples": 1202592,
-          "energy": 287177014172,
-          "peak": 4264
+          "energy": 287092933610,
+          "peak": 4019
         }
       }
     },
@@ -50804,9 +50814,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1202622,
-          "energy": 270606098532,
-          "peak": 3795
+          "samples": 1202618,
+          "energy": 269159474306,
+          "peak": 3660
         }
       }
     },
@@ -50999,8 +51009,8 @@
         ],
         "audio": {
           "samples": 1230314,
-          "energy": 272271552947,
-          "peak": 3383
+          "energy": 273024059657,
+          "peak": 3558
         }
       }
     },
@@ -51193,8 +51203,8 @@
         ],
         "audio": {
           "samples": 1313482,
-          "energy": 297328191161,
-          "peak": 3709
+          "energy": 297368365334,
+          "peak": 3629
         }
       }
     },
@@ -51386,9 +51396,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1258060,
-          "energy": 274353106778,
-          "peak": 3791
+          "samples": 1258072,
+          "energy": 274550278333,
+          "peak": 3751
         }
       }
     },
@@ -51580,9 +51590,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1341206,
-          "energy": 294799738254,
-          "peak": 3786
+          "samples": 1341204,
+          "energy": 294696501541,
+          "peak": 3857
         }
       }
     },
@@ -51775,8 +51785,8 @@
         ],
         "audio": {
           "samples": 1368928,
-          "energy": 299945167314,
-          "peak": 3901
+          "energy": 299648808009,
+          "peak": 3936
         }
       }
     },
@@ -51968,9 +51978,9 @@
           "ground_combo_special"
         ],
         "audio": {
-          "samples": 1368958,
-          "energy": 296570224822,
-          "peak": 3051
+          "samples": 1368928,
+          "energy": 296456569277,
+          "peak": 3211
         }
       }
     },
@@ -52162,9 +52172,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1396652,
-          "energy": 307806653023,
-          "peak": 3488
+          "samples": 1396650,
+          "energy": 307843958494,
+          "peak": 3621
         }
       }
     },
@@ -52357,8 +52367,8 @@
         ],
         "audio": {
           "samples": 1479820,
-          "energy": 336010421393,
-          "peak": 3828
+          "energy": 346607381531,
+          "peak": 3818
         }
       }
     },
@@ -52550,8 +52560,8 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1424404,
-          "energy": 317233446087,
+          "samples": 1424402,
+          "energy": 316985285900,
           "peak": 4159
         }
       }
@@ -52745,7 +52755,7 @@
         ],
         "audio": {
           "samples": 1507544,
-          "energy": 343116788285,
+          "energy": 343219133916,
           "peak": 3786
         }
       }
@@ -52939,7 +52949,7 @@
         ],
         "audio": {
           "samples": 1535264,
-          "energy": 349928067526,
+          "energy": 349933493066,
           "peak": 3683
         }
       }
@@ -53133,7 +53143,7 @@
         ],
         "audio": {
           "samples": 1535288,
-          "energy": 346714312984,
+          "energy": 346905105920,
           "peak": 4302
         }
       }
@@ -53326,9 +53336,9 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1562988,
-          "energy": 356699157694,
-          "peak": 3575
+          "samples": 1562986,
+          "energy": 356945932631,
+          "peak": 3594
         }
       }
     },
@@ -53521,7 +53531,7 @@
         ],
         "audio": {
           "samples": 1647222,
-          "energy": 373651051723,
+          "energy": 373660104709,
           "peak": 3360
         }
       }
@@ -53714,8 +53724,8 @@
           "jump_guard_throw_mix"
         ],
         "audio": {
-          "samples": 1590732,
-          "energy": 346102395886,
+          "samples": 1590742,
+          "energy": 346121308378,
           "peak": 3677
         }
       }
@@ -53909,7 +53919,7 @@
         ],
         "audio": {
           "samples": 1341206,
-          "energy": 293017211481,
+          "energy": 293130512642,
           "peak": 3878
         }
       }
@@ -54103,7 +54113,7 @@
         ],
         "audio": {
           "samples": 1368928,
-          "energy": 300611490152,
+          "energy": 300724593761,
           "peak": 3571
         }
       }
@@ -54191,7 +54201,7 @@
     {
       "check": "endurance gate matches the exact current ROM",
       "passed": true,
-      "details": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa"
+      "details": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44"
     },
     {
       "check": "endurance gate ROM byte count",
@@ -54369,7 +54379,7 @@
           "coverage_required": true,
           "live_frames": 216356,
           "live_segments": 304,
-          "elapsed_seconds": 887.25,
+          "elapsed_seconds": 691.063,
           "rosters": [
             {
               "fighter1": 0,
@@ -54516,12 +54526,12 @@
             224
           ],
           "audio_samples": 163931741,
-          "audio_nonzero_batches": 2210,
-          "audio_peak_sampled": 3947,
+          "audio_nonzero_batches": 2208,
+          "audio_peak_sampled": 3879,
           "trace_magic_samples": 307212,
           "video_fps": 60.098811862348406,
           "audio_sample_rate": 32040.0,
-          "rom_sha256": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa",
+          "rom_sha256": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44",
           "benchmark": false,
           "core_frames_including_boot": 307494,
           "core": {
@@ -54546,7 +54556,7 @@
           "coverage_required": true,
           "live_frames": 216356,
           "live_segments": 225,
-          "elapsed_seconds": 843.562,
+          "elapsed_seconds": 548.469,
           "rosters": [
             {
               "fighter1": 3,
@@ -54741,11 +54751,11 @@
           ],
           "audio_samples": 151235441,
           "audio_nonzero_batches": 2021,
-          "audio_peak_sampled": 3748,
+          "audio_peak_sampled": 3735,
           "trace_magic_samples": 283244,
           "video_fps": 60.098811862348406,
           "audio_sample_rate": 32040.0,
-          "rom_sha256": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa",
+          "rom_sha256": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44",
           "benchmark": false,
           "core_frames_including_boot": 283679,
           "core": {
@@ -54770,7 +54780,7 @@
           "coverage_required": true,
           "live_frames": 216356,
           "live_segments": 10,
-          "elapsed_seconds": 809.734,
+          "elapsed_seconds": 742.375,
           "rosters": [
             {
               "fighter1": 6,
@@ -54955,11 +54965,11 @@
           ],
           "audio_samples": 117095907,
           "audio_nonzero_batches": 1568,
-          "audio_peak_sampled": 3185,
+          "audio_peak_sampled": 3669,
           "trace_magic_samples": 219173,
           "video_fps": 60.098811862348406,
           "audio_sample_rate": 32040.0,
-          "rom_sha256": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa",
+          "rom_sha256": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44",
           "benchmark": false,
           "core_frames_including_boot": 219642,
           "core": {
@@ -55027,7 +55037,7 @@
     {
       "check": "endurance gate mode 0 matches the exact current ROM",
       "passed": true,
-      "details": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa"
+      "details": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44"
     },
     {
       "check": "endurance gate mode 0 native core identity exists",
@@ -55188,7 +55198,7 @@
       "passed": true,
       "details": {
         "samples": 163931741,
-        "nonzero": 2210,
+        "nonzero": 2208,
         "rate": 32040.0
       }
     },
@@ -55203,7 +55213,7 @@
     {
       "check": "endurance gate mode 0 reports its ROM hash",
       "passed": true,
-      "details": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa"
+      "details": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44"
     },
     {
       "check": "endurance gate mode is an object",
@@ -55218,7 +55228,7 @@
     {
       "check": "endurance gate mode 1 matches the exact current ROM",
       "passed": true,
-      "details": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa"
+      "details": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44"
     },
     {
       "check": "endurance gate mode 1 native core identity exists",
@@ -55390,7 +55400,7 @@
     {
       "check": "endurance gate mode 1 reports its ROM hash",
       "passed": true,
-      "details": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa"
+      "details": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44"
     },
     {
       "check": "endurance gate mode is an object",
@@ -55405,7 +55415,7 @@
     {
       "check": "endurance gate mode 2 matches the exact current ROM",
       "passed": true,
-      "details": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa"
+      "details": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44"
     },
     {
       "check": "endurance gate mode 2 native core identity exists",
@@ -55579,7 +55589,7 @@
     {
       "check": "endurance gate mode 2 reports its ROM hash",
       "passed": true,
-      "details": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa"
+      "details": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44"
     },
     {
       "check": "endurance gate total frames meet the target",
@@ -55598,12 +55608,12 @@
     {
       "check": "fresh committed-source build matches the exact current ROM",
       "passed": true,
-      "details": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa"
+      "details": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44"
     },
     {
       "check": "fresh committed-source build rebuilt ROM matches the exact current ROM",
       "passed": true,
-      "details": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa"
+      "details": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44"
     },
     {
       "check": "fresh committed-source build build succeeded",
@@ -60722,20 +60732,20 @@
     {
       "check": "fresh build records a source commit",
       "passed": true,
-      "details": "d534af0132440c0de3e1cb5a33a62301026449af"
+      "details": "e406ac17af1c25a64c7be547e7d0857880c18599"
     },
     {
       "check": "fresh source tree matches source commit",
       "passed": true,
       "details": {
-        "expected": "2dd5e2c1b6b4a64f7aa5fbb61bc69e8f522cd3cd",
-        "actual": "2dd5e2c1b6b4a64f7aa5fbb61bc69e8f522cd3cd"
+        "expected": "78493ed80bfd259deb228e7a8ca20580fef4f267",
+        "actual": "78493ed80bfd259deb228e7a8ca20580fef4f267"
       }
     },
     {
       "check": "fresh source commit is an ancestor of release HEAD",
       "passed": true,
-      "details": "d534af0132440c0de3e1cb5a33a62301026449af"
+      "details": "e406ac17af1c25a64c7be547e7d0857880c18599"
     },
     {
       "check": "fresh source inputs unchanged since source commit",
@@ -60746,8 +60756,8 @@
       "check": "fresh source commit/tree provenance",
       "passed": true,
       "details": {
-        "commit": "d534af0132440c0de3e1cb5a33a62301026449af",
-        "tree": "2dd5e2c1b6b4a64f7aa5fbb61bc69e8f522cd3cd"
+        "commit": "e406ac17af1c25a64c7be547e7d0857880c18599",
+        "tree": "78493ed80bfd259deb228e7a8ca20580fef4f267"
       }
     },
     {
@@ -60758,7 +60768,7 @@
     {
       "check": "native Training suite matches the exact current ROM",
       "passed": true,
-      "details": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa"
+      "details": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44"
     },
     {
       "check": "native Training suite ROM byte count",
@@ -62036,8 +62046,8 @@
           "details": {
             "name": "mode0-controls",
             "colors": 7,
-            "light_guide_pixels": 2616,
-            "dark_card_pixels": 44488
+            "light_guide_pixels": 2878,
+            "dark_card_pixels": 44226
           }
         },
         {
@@ -62046,7 +62056,7 @@
           "details": {
             "label": "mode0-controls",
             "token": "HOW TO PLAY 1/2",
-            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -62055,7 +62065,7 @@
           "details": {
             "label": "mode0-controls",
             "token": "WALK",
-            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -62064,7 +62074,7 @@
           "details": {
             "label": "mode0-controls",
             "token": "JUMP",
-            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -62073,7 +62083,7 @@
           "details": {
             "label": "mode0-controls",
             "token": "STAND GUARD",
-            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -62082,7 +62092,7 @@
           "details": {
             "label": "mode0-controls",
             "token": "LOW GUARD",
-            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -62091,7 +62101,7 @@
           "details": {
             "label": "mode0-controls",
             "token": "PUNCH",
-            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -62100,7 +62110,7 @@
           "details": {
             "label": "mode0-controls",
             "token": "KICK",
-            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -62109,7 +62119,7 @@
           "details": {
             "label": "mode0-controls",
             "token": "THROW",
-            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -62118,7 +62128,7 @@
           "details": {
             "label": "mode0-controls",
             "token": "UPPERCUT",
-            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -62127,7 +62137,16 @@
           "details": {
             "label": "mode0-controls",
             "token": "AFTER A HIT: PRESS HEAVIER",
-            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+          }
+        },
+        {
+          "check": "guide page contains exact native text",
+          "passed": true,
+          "details": {
+            "label": "mode0-controls",
+            "token": "CROSS-UP: JUMP PAST + A",
+            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -65141,8 +65160,8 @@
           "details": {
             "name": "mode1-controls",
             "colors": 7,
-            "light_guide_pixels": 2616,
-            "dark_card_pixels": 44488
+            "light_guide_pixels": 2878,
+            "dark_card_pixels": 44226
           }
         },
         {
@@ -65151,7 +65170,7 @@
           "details": {
             "label": "mode1-controls",
             "token": "HOW TO PLAY 1/2",
-            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -65160,7 +65179,7 @@
           "details": {
             "label": "mode1-controls",
             "token": "WALK",
-            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -65169,7 +65188,7 @@
           "details": {
             "label": "mode1-controls",
             "token": "JUMP",
-            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -65178,7 +65197,7 @@
           "details": {
             "label": "mode1-controls",
             "token": "STAND GUARD",
-            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -65187,7 +65206,7 @@
           "details": {
             "label": "mode1-controls",
             "token": "LOW GUARD",
-            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -65196,7 +65215,7 @@
           "details": {
             "label": "mode1-controls",
             "token": "PUNCH",
-            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -65205,7 +65224,7 @@
           "details": {
             "label": "mode1-controls",
             "token": "KICK",
-            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -65214,7 +65233,7 @@
           "details": {
             "label": "mode1-controls",
             "token": "THROW",
-            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -65223,7 +65242,7 @@
           "details": {
             "label": "mode1-controls",
             "token": "UPPERCUT",
-            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -65232,7 +65251,16 @@
           "details": {
             "label": "mode1-controls",
             "token": "AFTER A HIT: PRESS HEAVIER",
-            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+          }
+        },
+        {
+          "check": "guide page contains exact native text",
+          "passed": true,
+          "details": {
+            "label": "mode1-controls",
+            "token": "CROSS-UP: JUMP PAST + A",
+            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -68246,8 +68274,8 @@
           "details": {
             "name": "mode2-controls",
             "colors": 7,
-            "light_guide_pixels": 2616,
-            "dark_card_pixels": 44488
+            "light_guide_pixels": 2878,
+            "dark_card_pixels": 44226
           }
         },
         {
@@ -68256,7 +68284,7 @@
           "details": {
             "label": "mode2-controls",
             "token": "HOW TO PLAY 1/2",
-            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -68265,7 +68293,7 @@
           "details": {
             "label": "mode2-controls",
             "token": "WALK",
-            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -68274,7 +68302,7 @@
           "details": {
             "label": "mode2-controls",
             "token": "JUMP",
-            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -68283,7 +68311,7 @@
           "details": {
             "label": "mode2-controls",
             "token": "STAND GUARD",
-            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -68292,7 +68320,7 @@
           "details": {
             "label": "mode2-controls",
             "token": "LOW GUARD",
-            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -68301,7 +68329,7 @@
           "details": {
             "label": "mode2-controls",
             "token": "PUNCH",
-            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -68310,7 +68338,7 @@
           "details": {
             "label": "mode2-controls",
             "token": "KICK",
-            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -68319,7 +68347,7 @@
           "details": {
             "label": "mode2-controls",
             "token": "THROW",
-            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -68328,7 +68356,7 @@
           "details": {
             "label": "mode2-controls",
             "token": "UPPERCUT",
-            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -68337,7 +68365,16 @@
           "details": {
             "label": "mode2-controls",
             "token": "AFTER A HIT: PRESS HEAVIER",
-            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+          }
+        },
+        {
+          "check": "guide page contains exact native text",
+          "passed": true,
+          "details": {
+            "label": "mode2-controls",
+            "token": "CROSS-UP: JUMP PAST + A",
+            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
           }
         },
         {
@@ -237486,8 +237523,8 @@
       "check": "native Training suite passed count covers every check",
       "passed": true,
       "details": {
-        "passed": 1443,
-        "checks": 1443
+        "passed": 1446,
+        "checks": 1446
       }
     },
     {
@@ -244706,6 +244743,21 @@
       "details": 1442
     },
     {
+      "check": "native Training suite check passed",
+      "passed": true,
+      "details": 1443
+    },
+    {
+      "check": "native Training suite check passed",
+      "passed": true,
+      "details": 1444
+    },
+    {
+      "check": "native Training suite check passed",
+      "passed": true,
+      "details": 1445
+    },
+    {
       "check": "native Training suite source core pins are the release pins",
       "passed": true,
       "details": {
@@ -244743,7 +244795,7 @@
     {
       "check": "native Training suite harness matches current test sources",
       "passed": true,
-      "details": "7b860bc22cb77b1114b8451281d414d7a7fb133ff2469f1288230629925571fa"
+      "details": "5060f88fbc0ac7c85b367462d20b8ff8f755e854323ed8b69fca9bf640e37d3a"
     },
     {
       "check": "native Training suite core options are pinned",
@@ -244813,9 +244865,9 @@
             "label": "mode0-controls",
             "nonblank": 736,
             "total": 736,
-            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
+            "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
             "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-controls.png",
-            "vram_sha256": "6207a9b05bd2a76e86d8d4ed33ed82e38fdea0cfba2cc069fcad7bc247e758c6"
+            "vram_sha256": "1121a892fb7465343bc1dee4dc723a2c1bbdc7eb601dd9c1438e8ff359ca2f99"
           },
           "specials": {
             "label": "mode0-specials",
@@ -244842,9 +244894,9 @@
             "label": "mode1-controls",
             "nonblank": 736,
             "total": 736,
-            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
+            "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
             "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-controls.png",
-            "vram_sha256": "b262f29ccd3f94b87b8fc6101c150fb97b60d3a05696a26cb49a8dfd38c8e918"
+            "vram_sha256": "6fb6d6f86a0eacf621d65802462b78cd398b5254211dca006c18aa0207975b3f"
           },
           "specials": {
             "label": "mode1-specials",
@@ -244871,9 +244923,9 @@
             "label": "mode2-controls",
             "nonblank": 736,
             "total": 736,
-            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
+            "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
             "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-controls.png",
-            "vram_sha256": "e623d9ac5acb62b9b8e377894a2ff3ff571fc83f3a2754375ab72c201a288fa1"
+            "vram_sha256": "efef95aa9a35d3e78da2b70c6b8e5517e65a17806e183f4916a5d3abff9f0302"
           },
           "specials": {
             "label": "mode2-specials",
@@ -244905,9 +244957,9 @@
           "label": "mode0-controls",
           "nonblank": 736,
           "total": 736,
-          "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
+          "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-controls.png",
-          "vram_sha256": "6207a9b05bd2a76e86d8d4ed33ed82e38fdea0cfba2cc069fcad7bc247e758c6"
+          "vram_sha256": "1121a892fb7465343bc1dee4dc723a2c1bbdc7eb601dd9c1438e8ff359ca2f99"
         },
         "specials": {
           "label": "mode0-specials",
@@ -244955,9 +245007,9 @@
         "label": "mode0-controls",
         "nonblank": 736,
         "total": 736,
-        "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
+        "text": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
         "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode0-controls.png",
-        "vram_sha256": "6207a9b05bd2a76e86d8d4ed33ed82e38fdea0cfba2cc069fcad7bc247e758c6"
+        "vram_sha256": "1121a892fb7465343bc1dee4dc723a2c1bbdc7eb601dd9c1438e8ff359ca2f99"
       }
     },
     {
@@ -244976,12 +245028,12 @@
     {
       "check": "native Training mode coverage mode 0 controls text exists",
       "passed": true,
-      "details": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+      "details": " DAMIAN        99   IVO\n               KO\n             ROUND 1\n\n            P1 VS CPU\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
     },
     {
       "check": "native Training mode coverage mode 0 controls VRAM digest is a SHA-256 digest",
       "passed": true,
-      "details": "6207a9b05bd2a76e86d8d4ed33ed82e38fdea0cfba2cc069fcad7bc247e758c6"
+      "details": "1121a892fb7465343bc1dee4dc723a2c1bbdc7eb601dd9c1438e8ff359ca2f99"
     },
     {
       "check": "native Training mode coverage mode 0 specials card exists",
@@ -245061,9 +245113,9 @@
           "label": "mode1-controls",
           "nonblank": 736,
           "total": 736,
-          "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
+          "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-controls.png",
-          "vram_sha256": "b262f29ccd3f94b87b8fc6101c150fb97b60d3a05696a26cb49a8dfd38c8e918"
+          "vram_sha256": "6fb6d6f86a0eacf621d65802462b78cd398b5254211dca006c18aa0207975b3f"
         },
         "specials": {
           "label": "mode1-specials",
@@ -245111,9 +245163,9 @@
         "label": "mode1-controls",
         "nonblank": 736,
         "total": 736,
-        "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
+        "text": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
         "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode1-controls.png",
-        "vram_sha256": "b262f29ccd3f94b87b8fc6101c150fb97b60d3a05696a26cb49a8dfd38c8e918"
+        "vram_sha256": "6fb6d6f86a0eacf621d65802462b78cd398b5254211dca006c18aa0207975b3f"
       }
     },
     {
@@ -245132,12 +245184,12 @@
     {
       "check": "native Training mode coverage mode 1 controls text exists",
       "passed": true,
-      "details": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+      "details": " CRISTOBAL     99   DAVID\n               KO\n             ROUND 1\n\n            P1 VS P2\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
     },
     {
       "check": "native Training mode coverage mode 1 controls VRAM digest is a SHA-256 digest",
       "passed": true,
-      "details": "b262f29ccd3f94b87b8fc6101c150fb97b60d3a05696a26cb49a8dfd38c8e918"
+      "details": "6fb6d6f86a0eacf621d65802462b78cd398b5254211dca006c18aa0207975b3f"
     },
     {
       "check": "native Training mode coverage mode 1 specials card exists",
@@ -245217,9 +245269,9 @@
           "label": "mode2-controls",
           "nonblank": 736,
           "total": 736,
-          "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
+          "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
           "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-controls.png",
-          "vram_sha256": "e623d9ac5acb62b9b8e377894a2ff3ff571fc83f3a2754375ab72c201a288fa1"
+          "vram_sha256": "efef95aa9a35d3e78da2b70c6b8e5517e65a17806e183f4916a5d3abff9f0302"
         },
         "specials": {
           "label": "mode2-specials",
@@ -245267,9 +245319,9 @@
         "label": "mode2-controls",
         "nonblank": 736,
         "total": 736,
-        "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
+        "text": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n",
         "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\training\\mode2-controls.png",
-        "vram_sha256": "e623d9ac5acb62b9b8e377894a2ff3ff571fc83f3a2754375ab72c201a288fa1"
+        "vram_sha256": "efef95aa9a35d3e78da2b70c6b8e5517e65a17806e183f4916a5d3abff9f0302"
       }
     },
     {
@@ -245288,12 +245340,12 @@
     {
       "check": "native Training mode coverage mode 2 controls text exists",
       "passed": true,
-      "details": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
+      "details": " NEGGER        99   IVO\n               KO\n             ROUND 1\n\n            TRAINING\n\n        HOW TO PLAY 1/2\n\n\n   WALK          LEFT / RIGHT\n   JUMP          UP\n   STAND GUARD   AWAY\n   LOW GUARD     DOWN + AWAY\n\n   PUNCH         Y / X / L\n   KICK          B / A / R\n                 LIGHT/MED/HEAVY\n\n   THROW         TOWARD + L\n   UPPERCUT      DOWN + L\n\n   AFTER A HIT: PRESS HEAVIER\n    CROSS-UP: JUMP PAST + A\n\n        A / START RESUME\n\n     B ROSTER   SELECT NEXT\n\n\n\n\n"
     },
     {
       "check": "native Training mode coverage mode 2 controls VRAM digest is a SHA-256 digest",
       "passed": true,
-      "details": "e623d9ac5acb62b9b8e377894a2ff3ff571fc83f3a2754375ab72c201a288fa1"
+      "details": "efef95aa9a35d3e78da2b70c6b8e5517e65a17806e183f4916a5d3abff9f0302"
     },
     {
       "check": "native Training mode coverage mode 2 specials card exists",
@@ -296020,7 +296072,7 @@
     {
       "check": "exact-ROM suite is complete: input-test-report.json",
       "passed": true,
-      "details": 1060
+      "details": 1410
     },
     {
       "check": "exact-ROM suite is complete: stage-test-report.json",
@@ -296030,7 +296082,7 @@
     {
       "check": "exact-ROM suite is complete: training-test-report.json",
       "passed": true,
-      "details": 1443
+      "details": 1446
     },
     {
       "check": "stage evidence covers all three locations",
@@ -298929,17 +298981,17 @@
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: RELEASE-v0.14.0.md",
+      "check": "offline package entry matches current source map: RELEASE-v0.15.0.md",
       "passed": true,
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: preservation-v0.14.0.json",
+      "check": "offline package entry matches current source map: preservation-v0.15.0.json",
       "passed": true,
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: verification-v0.14.0.json",
+      "check": "offline package entry matches current source map: verification-v0.15.0.json",
       "passed": true,
       "details": null
     },
@@ -298979,7 +299031,27 @@
       "details": null
     },
     {
-      "check": "offline package entry matches current source map: audio-listening-v0.14.0.json",
+      "check": "offline package entry matches current source map: crossup-review.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: screenshots/crossup/p1.gif",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: screenshots/crossup/p2.gif",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: screenshots/training/mode1-controls.png",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "offline package entry matches current source map: audio-listening-v0.15.0.json",
       "passed": true,
       "details": null
     },
@@ -299194,7 +299266,7 @@
       "details": null
     },
     {
-      "check": "offline documentation links resolve or are marked source-only: RELEASE-v0.14.0.md",
+      "check": "offline documentation links resolve or are marked source-only: RELEASE-v0.15.0.md",
       "passed": true,
       "details": null
     },
@@ -299319,8 +299391,8 @@
       "details": null
     }
   ],
-  "version": "0.14.0",
-  "rom_sha256": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa",
+  "version": "0.15.0",
+  "rom_sha256": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44",
   "emulator_pins": {
     "archive": "snes9x.zip",
     "archive_sha256": "E2BD103819051EAE57D163CDBBF6B3B92DB73FDD4A6A0EE6A939E507EAA95DB8",
@@ -299351,24 +299423,24 @@
     },
     "fresh_build": {
       "generated_assets": 219,
-      "source_commit": "d534af0132440c0de3e1cb5a33a62301026449af",
-      "source_tree": "2dd5e2c1b6b4a64f7aa5fbb61bc69e8f522cd3cd"
+      "source_commit": "e406ac17af1c25a64c7be547e7d0857880c18599",
+      "source_tree": "78493ed80bfd259deb228e7a8ca20580fef4f267"
     },
     "training": {
-      "checks": 1443,
+      "checks": 1446,
       "report": "docs/training-test-report.json",
       "modes": 3,
       "captures": 8
     }
   },
-  "native_suite_checks": 34683,
+  "native_suite_checks": 35036,
   "suites": {
     "test-report.json": 2596,
     "character-test-report.json": 18084,
     "presentation-test-report.json": 3337,
-    "input-test-report.json": 1060,
+    "input-test-report.json": 1410,
     "stage-test-report.json": 8163,
-    "training-test-report.json": 1443
+    "training-test-report.json": 1446
   },
   "independent_engine_smoke": {
     "scope": "independent-engine smoke, stage ambient/effects freeze, synchronized low-wave, neutral600frame cadence",
@@ -299406,5 +299478,5 @@
     "source_atlases_verified": 48
   },
   "remaining_release_gates": "docs/PUBLIC-RELEASE.md",
-  "audit_checks": 8698
+  "audit_checks": 8707
 }

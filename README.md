@@ -1,26 +1,26 @@
 # Abaqus: After Hours
-<!-- candidate-version: 0.14.0; rom-sha256: 3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa -->
+<!-- candidate-version: 0.15.0; rom-sha256: 2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44 -->
 
 An original six-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II's arcade structure and the people and places of Abaqus in
 Santiago. The game runs as a native SNES cartridge in an emulator.
 
-The current checkout is the **v0.14.0 review candidate**, ROM SHA256
-`3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa`, checksum `D1E2`.
-Fighter and arena menus now show A/Start confirmation. The arena footer uses
-native opaque lettering while preserving every generated art asset and palette.
-The Specials guide clarifies the twelve-tick timeout between motion steps.
-Asset-authoring contracts now remain active under Python optimization.
-Champion music, Training opponent/mirror selection, Lars's revised likeness,
-clearer location previews and winner cards are retained.
-All six native suites pass 34,683 checks on this exact ROM. Matching smoke,
+The current checkout is the **v0.15.0 review candidate**, ROM SHA256
+`2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44`, checksum `2491`.
+A close airborne medium kick can now connect after crossing behind an opponent.
+Recoil and impact feedback follow the contact side, including simultaneous
+trades, and the pause Controls guide teaches the move. Other moves retain
+their existing directional rules and timing. Every generated art/audio asset
+is retained. Training opponents, revised Lars art, location previews, clear
+A/Start prompts, winner cards and champion music remain available.
+All six native suites pass 35,036 checks on this exact ROM. Matching smoke,
 full matchup/replay, independent combat, endurance and fresh-source gates pass.
-The [v0.14.0 release note](docs/RELEASE-v0.14.0.md) records the evidence.
-The offline package passes 8,698 technical audit checks. Two consecutive final
-ZIPs are identical at 13,479,437 bytes, SHA256
-`dd880e6b5b068e0172b92cdad8a52011938df0d0f6adbc1b528d64ce3f9e6339`.
-Human gameplay, listening, controller, likeness/consent and public-use review
-remain open.
+The [v0.15.0 release note](docs/RELEASE-v0.15.0.md) records the evidence.
+The Windows package passes 8,707 technical audit checks. Two consecutive final
+ZIPs are identical at 14,747,425 bytes, SHA256
+`481d5fb0968c1ba44ffee1e46ed1009736d45f45fa0e79c415478d370661ba62`.
+Human gameplay/balance, listening, controller, likeness/consent and public-use
+review remain open.
 
 ## Play
 
@@ -28,10 +28,9 @@ On Windows, run **[Play.cmd](Play.cmd)** from the source checkout. The launcher
 prepares the pinned official Snes9x tools in `.tools/` on first use and opens
 the cartridge. No administrator account or global installation is needed.
 
-For offline play, extract the whole [v0.14.0 Windows ZIP](dist/Abaqus-After-Hours-v0.14.0-Windows.zip) and run its included
+For offline play, extract the whole [v0.15.0 Windows ZIP](dist/Abaqus-After-Hours-v0.15.0-Windows.zip) and run its included
 `Play.cmd`. Its `manifest.json` and `RELEASE.md` identify the actual cartridge
-and verification scope. The release note above identifies the latest candidate
-package when available; older archives contain their own historical versions.
+and verification scope. Older archives contain their own historical versions.
 
 On other platforms, open **[dist/abaqus-after-hours.sfc](dist/abaqus-after-hours.sfc)**
 in a SNES emulator. No BIOS or commercial ROM is required. Original SNES and

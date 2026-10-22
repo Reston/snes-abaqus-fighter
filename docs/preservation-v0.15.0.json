@@ -1,0 +1,1566 @@
+{
+  "version": "0.15.0",
+  "rom_sha256": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44",
+  "status": "passed",
+  "baseline_commit": "2f2df2909ee7cf100b5dc4c8ef0f5aefb46a9891",
+  "baseline_version": "0.14.0",
+  "source_freeze": "e406ac17af1c25a64c7be547e7d0857880c18599",
+  "generated_assets_total": 219,
+  "existing_assets_preserved": 219,
+  "generated_assets_modified": 0,
+  "generated_assets_added": 0,
+  "native_assembly_preserved": 2,
+  "scope": "Generated assets and protected hardware/trace ASM; binary bytes exact, text LF-normalized.",
+  "allowed_changed": [],
+  "allowed_added": [],
+  "files": [
+    {
+      "path": "assets/generated/arenas.png",
+      "sha256": "0d274f3a0305e5d3ee4afe97ed638676e1f0d82db6e252cf8095f1d0c55ed1bf",
+      "source_blob_sha256": "0d274f3a0305e5d3ee4afe97ed638676e1f0d82db6e252cf8095f1d0c55ed1bf",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/arenas_map.bin",
+      "sha256": "b003dfee17f146ab7bd9de55f4a5514cecf67bf9670e6dd5c32f7d1e67c030b1",
+      "source_blob_sha256": "b003dfee17f146ab7bd9de55f4a5514cecf67bf9670e6dd5c32f7d1e67c030b1",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/arenas_pal.bin",
+      "sha256": "356808fa913a03d4e42370d45f875843c86185dbb67b800af0d987efa38bca36",
+      "source_blob_sha256": "356808fa913a03d4e42370d45f875843c86185dbb67b800af0d987efa38bca36",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/arenas_tiles.bin",
+      "sha256": "6cfcf0edb1e3c759bfbf82dc4350438f2c409bb9657b328c3b4ad17520b4ce3e",
+      "source_blob_sha256": "6cfcf0edb1e3c759bfbf82dc4350438f2c409bb9657b328c3b4ad17520b4ce3e",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/assets.h",
+      "sha256": "abe8106807cfe342f0d5ca34ff6254cf193ef2d42f81f373057fe70ed50b457b",
+      "source_blob_sha256": "e6b25995dbec2a066697b0cd5e98a29dc94863b5ff30bfad13094c5c2ca22fee",
+      "comparison": "LF-normalized text",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/champion.png",
+      "sha256": "e0301816094931a17ec1e338a09bcb6c2857d90187f6abeec69ba2279682de88",
+      "source_blob_sha256": "e0301816094931a17ec1e338a09bcb6c2857d90187f6abeec69ba2279682de88",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/champion_map.bin",
+      "sha256": "4149213bbe977c91e8e847129ce64976879c4fbc9ae9a4e1431d505e375a1e9a",
+      "source_blob_sha256": "4149213bbe977c91e8e847129ce64976879c4fbc9ae9a4e1431d505e375a1e9a",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/champion_pal.bin",
+      "sha256": "02e0569819891084a53ce2bf072b806eb611013e066b18c8c5480f76e00170bd",
+      "source_blob_sha256": "02e0569819891084a53ce2bf072b806eb611013e066b18c8c5480f76e00170bd",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/champion_tiles.bin",
+      "sha256": "7791af0e6eb849de844433cfbef99f4c16d921aec75e478964b6b1475f6a784e",
+      "source_blob_sha256": "7791af0e6eb849de844433cfbef99f4c16d921aec75e478964b6b1475f6a784e",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/character-manifest.json",
+      "sha256": "6950f288ee55632116f1c1ddf37ab1972818ac420a09030e23ce4399f6d36438",
+      "source_blob_sha256": "6950f288ee55632116f1c1ddf37ab1972818ac420a09030e23ce4399f6d36438",
+      "comparison": "LF-normalized text",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/data.asm",
+      "sha256": "ffa508e15b6295144d1344570e2fc423b1e58696f9e197cfe252af62184ad118",
+      "source_blob_sha256": "bb3bbea5ca43bcb66953a2501cda354ca8e5fb58c6e2eba0f568ca4762611049",
+      "comparison": "LF-normalized text",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/effects.bin",
+      "sha256": "e624c8009b3342f57ed0848239239376be95b0b9ea3e8d624c08e90d6dce9fbd",
+      "source_blob_sha256": "e624c8009b3342f57ed0848239239376be95b0b9ea3e8d624c08e90d6dce9fbd",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/effects.it",
+      "sha256": "8a6f749a3e87d134fe714aa621e36d86b56a2a05f722ed2fe378a3ff90235353",
+      "source_blob_sha256": "8a6f749a3e87d134fe714aa621e36d86b56a2a05f722ed2fe378a3ff90235353",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/effects_pal.bin",
+      "sha256": "f8e903fc390df59be26ea8c5bc8f570f654b0dabb85acf32c7ed92359735c1db",
+      "source_blob_sha256": "f8e903fc390df59be26ea8c5bc8f570f654b0dabb85acf32c7ed92359735c1db",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter00.bin",
+      "sha256": "dc003395b642c15d6334c69adce15b1dd79bfb76a6a907a6b239274da8f4d728",
+      "source_blob_sha256": "dc003395b642c15d6334c69adce15b1dd79bfb76a6a907a6b239274da8f4d728",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter00.png",
+      "sha256": "933126cb57d5e5b36a57c962fb4f12ecb5418a41408954413ba451ec08b3afa9",
+      "source_blob_sha256": "933126cb57d5e5b36a57c962fb4f12ecb5418a41408954413ba451ec08b3afa9",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter00_pal.bin",
+      "sha256": "ef3f4e8213fe8fd940a89b40d9c39f4e6b0ac3e36dbf51f976118c305d8d3341",
+      "source_blob_sha256": "ef3f4e8213fe8fd940a89b40d9c39f4e6b0ac3e36dbf51f976118c305d8d3341",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter00b.bin",
+      "sha256": "c51af33036bd57f19661826976cf1381b1a78913261f1728dd81dec4d10336d3",
+      "source_blob_sha256": "c51af33036bd57f19661826976cf1381b1a78913261f1728dd81dec4d10336d3",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter00c.bin",
+      "sha256": "ced5a0926fa47d0ed5acbe08da635f9fcde9ebbf7df4ff4c4a9efaad713e44ef",
+      "source_blob_sha256": "ced5a0926fa47d0ed5acbe08da635f9fcde9ebbf7df4ff4c4a9efaad713e44ef",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter00d.bin",
+      "sha256": "e0113c1f9cc9d4e297904310a421db097495140bfde1c8dc2264849648a358c3",
+      "source_blob_sha256": "e0113c1f9cc9d4e297904310a421db097495140bfde1c8dc2264849648a358c3",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter00e.bin",
+      "sha256": "727ba8e8c209b6172cef6cae99dbc9dce421a811a64395a46a3749e2456bc95a",
+      "source_blob_sha256": "727ba8e8c209b6172cef6cae99dbc9dce421a811a64395a46a3749e2456bc95a",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter00f.bin",
+      "sha256": "e00205c1c8ab1e578d30e3dab98077082cec50d651d6c0145732defd6e3146de",
+      "source_blob_sha256": "e00205c1c8ab1e578d30e3dab98077082cec50d651d6c0145732defd6e3146de",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter00g.bin",
+      "sha256": "221144098949e354d9de70d740fe078f06106aa389670327397b39735e019746",
+      "source_blob_sha256": "221144098949e354d9de70d740fe078f06106aa389670327397b39735e019746",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter00h.bin",
+      "sha256": "4d9c4d28987f7e575d541ddf5cc078fc26fcd65832c42efda34cd4792d14eeee",
+      "source_blob_sha256": "4d9c4d28987f7e575d541ddf5cc078fc26fcd65832c42efda34cd4792d14eeee",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter01.bin",
+      "sha256": "b1c1b95bee637f0f8ab39e254d1128bdf8480be6718efbf1296a750421bdf6e1",
+      "source_blob_sha256": "b1c1b95bee637f0f8ab39e254d1128bdf8480be6718efbf1296a750421bdf6e1",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter01.png",
+      "sha256": "985b7bf402120e91c37e5daa047f3f6850d7731965679a7766697899c874e2bd",
+      "source_blob_sha256": "985b7bf402120e91c37e5daa047f3f6850d7731965679a7766697899c874e2bd",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter01_pal.bin",
+      "sha256": "c253838df2e0dcbd6e784bd419b68c641cddbe17a6cde73526fc9d91658d41ac",
+      "source_blob_sha256": "c253838df2e0dcbd6e784bd419b68c641cddbe17a6cde73526fc9d91658d41ac",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter01b.bin",
+      "sha256": "5c63e1e758748ecba6ca933bc7601cb32c355468aa7532afce9168bfa5d6be06",
+      "source_blob_sha256": "5c63e1e758748ecba6ca933bc7601cb32c355468aa7532afce9168bfa5d6be06",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter01c.bin",
+      "sha256": "0ea1c8a1b642c73f93262dbe98e451dcf0b0ec75fd94a8cb7c687809bce90884",
+      "source_blob_sha256": "0ea1c8a1b642c73f93262dbe98e451dcf0b0ec75fd94a8cb7c687809bce90884",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter01d.bin",
+      "sha256": "a7153b65864d36ba6317426bd6e6e286f895755fe513928f710410bbfecd8b15",
+      "source_blob_sha256": "a7153b65864d36ba6317426bd6e6e286f895755fe513928f710410bbfecd8b15",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter01e.bin",
+      "sha256": "bf451bf0996217fad19ac17ebaa83c45e0bd9e4c9cc8f2e3bdd65e7ad2ddd573",
+      "source_blob_sha256": "bf451bf0996217fad19ac17ebaa83c45e0bd9e4c9cc8f2e3bdd65e7ad2ddd573",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter01f.bin",
+      "sha256": "ac76218a2bc3a105c06321a9fb3572ffba731c2c5de9b19d73c9c2d77f250504",
+      "source_blob_sha256": "ac76218a2bc3a105c06321a9fb3572ffba731c2c5de9b19d73c9c2d77f250504",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter01g.bin",
+      "sha256": "82c6d9c2a1ac7af2ee1662da420df543afca67c49691cbdb15c49dc2b1e1558e",
+      "source_blob_sha256": "82c6d9c2a1ac7af2ee1662da420df543afca67c49691cbdb15c49dc2b1e1558e",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter01h.bin",
+      "sha256": "257375a4df8195c12f1700d856127dd3f959499544c2d85d18ee6ca6571e4f58",
+      "source_blob_sha256": "257375a4df8195c12f1700d856127dd3f959499544c2d85d18ee6ca6571e4f58",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter02.bin",
+      "sha256": "e610483d5577b29b15d93b28e543453851b1c3b5c4ce5acc0daa64fb51e31d60",
+      "source_blob_sha256": "e610483d5577b29b15d93b28e543453851b1c3b5c4ce5acc0daa64fb51e31d60",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter02.png",
+      "sha256": "6f4b04d3899c2cbd66766985ca6b5888e5d1435a4581c7804e54e33c01771815",
+      "source_blob_sha256": "6f4b04d3899c2cbd66766985ca6b5888e5d1435a4581c7804e54e33c01771815",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter02_pal.bin",
+      "sha256": "39ae172ad89edf2a8a264e9058e8d7d582ef3a69d3d11737edbf4fe6c636aced",
+      "source_blob_sha256": "39ae172ad89edf2a8a264e9058e8d7d582ef3a69d3d11737edbf4fe6c636aced",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter02b.bin",
+      "sha256": "42ee64ff9af2626829853a4c72aa5af1bf0b5ebde54421cd52c79b8f388dc9b8",
+      "source_blob_sha256": "42ee64ff9af2626829853a4c72aa5af1bf0b5ebde54421cd52c79b8f388dc9b8",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter02c.bin",
+      "sha256": "7b114bf28ae75c63bdf6aa49351545e0e5c1d1941fd5ad0af6bc71d72d91f37e",
+      "source_blob_sha256": "7b114bf28ae75c63bdf6aa49351545e0e5c1d1941fd5ad0af6bc71d72d91f37e",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter02d.bin",
+      "sha256": "6084f6c1aa631a555b44f24867508d6f3867a4cbe90ff332007e2c7350748f20",
+      "source_blob_sha256": "6084f6c1aa631a555b44f24867508d6f3867a4cbe90ff332007e2c7350748f20",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter02e.bin",
+      "sha256": "7db3bdd410292283c01b5bb6353116c060039ebc11200fc04ebd27f09304d29f",
+      "source_blob_sha256": "7db3bdd410292283c01b5bb6353116c060039ebc11200fc04ebd27f09304d29f",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter02f.bin",
+      "sha256": "22a32e14a68b0e922370528696e15b4257a6e42645408921527e1b6921273c1c",
+      "source_blob_sha256": "22a32e14a68b0e922370528696e15b4257a6e42645408921527e1b6921273c1c",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter02g.bin",
+      "sha256": "8cd0672c6f7ff560af748ab45b62fb987ccc5e2bda34864c4080b962a81fc384",
+      "source_blob_sha256": "8cd0672c6f7ff560af748ab45b62fb987ccc5e2bda34864c4080b962a81fc384",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter02h.bin",
+      "sha256": "bfde2a7f5018979f201676e0604169d4b62869ef4c733c8f84bc9f661d8d4171",
+      "source_blob_sha256": "bfde2a7f5018979f201676e0604169d4b62869ef4c733c8f84bc9f661d8d4171",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter03.bin",
+      "sha256": "8b04e390c4f359e7df13ab571cfa32d60f4af8932c6967ee284b8eb2232d6f9b",
+      "source_blob_sha256": "8b04e390c4f359e7df13ab571cfa32d60f4af8932c6967ee284b8eb2232d6f9b",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter03.png",
+      "sha256": "56e42a31552ffd3b091ab03667d575be7398aa24504f89a848cc54ecee36aaa5",
+      "source_blob_sha256": "56e42a31552ffd3b091ab03667d575be7398aa24504f89a848cc54ecee36aaa5",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter03_pal.bin",
+      "sha256": "28aefb1442c602557a4e103541928ebb6967c85397f02358af0478b491392414",
+      "source_blob_sha256": "28aefb1442c602557a4e103541928ebb6967c85397f02358af0478b491392414",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter03b.bin",
+      "sha256": "3fd313371a0e84eca97ba8be381de7326b33289f8ebb9a2cc1690b473228a495",
+      "source_blob_sha256": "3fd313371a0e84eca97ba8be381de7326b33289f8ebb9a2cc1690b473228a495",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter03c.bin",
+      "sha256": "8f984af65a6ab5250af255899a49ed311eb211bb983b5f599fe586d6d7d609d9",
+      "source_blob_sha256": "8f984af65a6ab5250af255899a49ed311eb211bb983b5f599fe586d6d7d609d9",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter03d.bin",
+      "sha256": "abcac07c8ba261db5cf83563d6ee9a9f2b4423c1c54bebbdc73f47c899856221",
+      "source_blob_sha256": "abcac07c8ba261db5cf83563d6ee9a9f2b4423c1c54bebbdc73f47c899856221",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter03e.bin",
+      "sha256": "6dd5404817465e8c13cbf281baa7939f28bce9ce307a145ded388dd5d208aee4",
+      "source_blob_sha256": "6dd5404817465e8c13cbf281baa7939f28bce9ce307a145ded388dd5d208aee4",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter03f.bin",
+      "sha256": "b1a88fe8efa92fb3128d317a9f509e079555b0f6c22dc334d216c27937bc4a2d",
+      "source_blob_sha256": "b1a88fe8efa92fb3128d317a9f509e079555b0f6c22dc334d216c27937bc4a2d",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter03g.bin",
+      "sha256": "20db5bb36e36d767913a4acd4c49b581459a0d3388a149d534da26e670dd8e31",
+      "source_blob_sha256": "20db5bb36e36d767913a4acd4c49b581459a0d3388a149d534da26e670dd8e31",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter03h.bin",
+      "sha256": "2cbaa62a33154a8780356f8630126034b5f382752387c68f7d2507b8ae62c738",
+      "source_blob_sha256": "2cbaa62a33154a8780356f8630126034b5f382752387c68f7d2507b8ae62c738",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter04.bin",
+      "sha256": "edc9fba3ff4cafc080738c32425fcb01cab3ac9e232fd2cd514cc84f844b3a03",
+      "source_blob_sha256": "edc9fba3ff4cafc080738c32425fcb01cab3ac9e232fd2cd514cc84f844b3a03",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter04.png",
+      "sha256": "ac69e2e6db720369ffcf4aed70e252b540806e51a6b34c9a011d52bb4e03666e",
+      "source_blob_sha256": "ac69e2e6db720369ffcf4aed70e252b540806e51a6b34c9a011d52bb4e03666e",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter04_pal.bin",
+      "sha256": "207e656730f0aa78f7a3be33d21d6c88564b150487434808ccc1e744a507b8b5",
+      "source_blob_sha256": "207e656730f0aa78f7a3be33d21d6c88564b150487434808ccc1e744a507b8b5",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter04b.bin",
+      "sha256": "989fa765423af569e3c013e13ca7dde07f32a32a02accf2ea25ff15ff4043361",
+      "source_blob_sha256": "989fa765423af569e3c013e13ca7dde07f32a32a02accf2ea25ff15ff4043361",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter04c.bin",
+      "sha256": "06d35b353e12395a947b95ce5f5170b0165a0ac6a72a2946b4bf41d7d93cd514",
+      "source_blob_sha256": "06d35b353e12395a947b95ce5f5170b0165a0ac6a72a2946b4bf41d7d93cd514",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter04d.bin",
+      "sha256": "53b27e4690076b0ad0f23d010a34150ccdd6bd33a12e47fd2c054b6e291f18a7",
+      "source_blob_sha256": "53b27e4690076b0ad0f23d010a34150ccdd6bd33a12e47fd2c054b6e291f18a7",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter04e.bin",
+      "sha256": "9155f58b8c795cc8d9b152640cce8fb8c8387b4d63ae7acdb6f35938955d039a",
+      "source_blob_sha256": "9155f58b8c795cc8d9b152640cce8fb8c8387b4d63ae7acdb6f35938955d039a",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter04f.bin",
+      "sha256": "0e72fa908ac4d2bc8580fba39b3310f52bb6ff0b7868ebf22e2dd2a959000de2",
+      "source_blob_sha256": "0e72fa908ac4d2bc8580fba39b3310f52bb6ff0b7868ebf22e2dd2a959000de2",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter04g.bin",
+      "sha256": "dd17ed856e2482665d33546bb5780551bb6f018bfb94c761dc29df050cac158c",
+      "source_blob_sha256": "dd17ed856e2482665d33546bb5780551bb6f018bfb94c761dc29df050cac158c",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter04h.bin",
+      "sha256": "d512c49366eb9520ea73a8218c5ea30b345a2d403fcea86fcaa5c1f3b0afc884",
+      "source_blob_sha256": "d512c49366eb9520ea73a8218c5ea30b345a2d403fcea86fcaa5c1f3b0afc884",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter05.bin",
+      "sha256": "bcb788c6094b71140eefb3b29fa2d579b58f85d08aad3c57760c5e7781811e72",
+      "source_blob_sha256": "bcb788c6094b71140eefb3b29fa2d579b58f85d08aad3c57760c5e7781811e72",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter05.png",
+      "sha256": "8beda3de6ca197d5bfdb77f91d25fe352260e2b2bbe5fdb05f0c541200ec66f7",
+      "source_blob_sha256": "8beda3de6ca197d5bfdb77f91d25fe352260e2b2bbe5fdb05f0c541200ec66f7",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter05_pal.bin",
+      "sha256": "c5cb13513140c4cf740991e6f69c4dd71661e6177820ca7df52ed112149b2aba",
+      "source_blob_sha256": "c5cb13513140c4cf740991e6f69c4dd71661e6177820ca7df52ed112149b2aba",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter05b.bin",
+      "sha256": "86ad0f7662a4267b3033ad44ffb73c7a0d91a9b324c3318aac7fc8e8bd213f51",
+      "source_blob_sha256": "86ad0f7662a4267b3033ad44ffb73c7a0d91a9b324c3318aac7fc8e8bd213f51",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter05c.bin",
+      "sha256": "16dd5141397a3539c590f40c73db21d981b70ac910b5df3e7b51409c097021c6",
+      "source_blob_sha256": "16dd5141397a3539c590f40c73db21d981b70ac910b5df3e7b51409c097021c6",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter05d.bin",
+      "sha256": "76d7cdf440693db740c2569d63fece77f33f7b2bb76dabd03862debb92dad970",
+      "source_blob_sha256": "76d7cdf440693db740c2569d63fece77f33f7b2bb76dabd03862debb92dad970",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter05e.bin",
+      "sha256": "7440df65aba9156d4c2cd0d4a6e772db172f4f9225cddf7655d0855f38c81b90",
+      "source_blob_sha256": "7440df65aba9156d4c2cd0d4a6e772db172f4f9225cddf7655d0855f38c81b90",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter05f.bin",
+      "sha256": "af149588e0b890f52780da1f15ca244bff926ff35fec799956daea83790fe9d7",
+      "source_blob_sha256": "af149588e0b890f52780da1f15ca244bff926ff35fec799956daea83790fe9d7",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter05g.bin",
+      "sha256": "cc08dc1e9d35ce9238364b8ef8d859824137d8d475f86be409b3b51a7b0f3a34",
+      "source_blob_sha256": "cc08dc1e9d35ce9238364b8ef8d859824137d8d475f86be409b3b51a7b0f3a34",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter05h.bin",
+      "sha256": "48964e91186d3a7938383536467605be7e617ca0869986a6bbb5258f29a8124c",
+      "source_blob_sha256": "48964e91186d3a7938383536467605be7e617ca0869986a6bbb5258f29a8124c",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter06.bin",
+      "sha256": "d046ef8b4a938d8caa72923d7105911c153c5421dc9de3d0a8b343ad9efc9759",
+      "source_blob_sha256": "d046ef8b4a938d8caa72923d7105911c153c5421dc9de3d0a8b343ad9efc9759",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter06.png",
+      "sha256": "08b7eb2aafbfaa43d7992083fbf883fa5ed28614b3ee7547fcf74caef7c5a48f",
+      "source_blob_sha256": "08b7eb2aafbfaa43d7992083fbf883fa5ed28614b3ee7547fcf74caef7c5a48f",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter06_pal.bin",
+      "sha256": "8157261a8813a14f129fe05c4cd41d219ec1d8213fda5e9de62173601a680a1c",
+      "source_blob_sha256": "8157261a8813a14f129fe05c4cd41d219ec1d8213fda5e9de62173601a680a1c",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter06b.bin",
+      "sha256": "155bf36288f0fbc271999d18610b376ecb21609dc2ae0b03065e2b2ed1e102ee",
+      "source_blob_sha256": "155bf36288f0fbc271999d18610b376ecb21609dc2ae0b03065e2b2ed1e102ee",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter06c.bin",
+      "sha256": "420444528b8866de64b8f742416dcf199a1ece1b992039a756f0d75cfa007f9e",
+      "source_blob_sha256": "420444528b8866de64b8f742416dcf199a1ece1b992039a756f0d75cfa007f9e",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter06d.bin",
+      "sha256": "8fea998e0f6af0733d92ef8d854558f18229de62613f712249a03647a193ebcb",
+      "source_blob_sha256": "8fea998e0f6af0733d92ef8d854558f18229de62613f712249a03647a193ebcb",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter06e.bin",
+      "sha256": "d12d397177338532e610226a8f6a8ab3094c23f5f76053c4c5bf7c94405a06ec",
+      "source_blob_sha256": "d12d397177338532e610226a8f6a8ab3094c23f5f76053c4c5bf7c94405a06ec",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter06f.bin",
+      "sha256": "5a37cd3018e6a6058a5d9b4b76e71636209e337a980652a7f2b07dfc3bd08ecb",
+      "source_blob_sha256": "5a37cd3018e6a6058a5d9b4b76e71636209e337a980652a7f2b07dfc3bd08ecb",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter06g.bin",
+      "sha256": "60dac26ed6f7b0f6c6352a5f292d025fa130e5bf97c39ceceb1142adbb441c72",
+      "source_blob_sha256": "60dac26ed6f7b0f6c6352a5f292d025fa130e5bf97c39ceceb1142adbb441c72",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter06h.bin",
+      "sha256": "f7335d7fd02fab62f4d6fafd67f898bfb8d47d30e1b4abb1f23141ff43235b11",
+      "source_blob_sha256": "f7335d7fd02fab62f4d6fafd67f898bfb8d47d30e1b4abb1f23141ff43235b11",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter07.bin",
+      "sha256": "e9e2bc139ed4b5260a8ed010db6562abdd795cefbaf73be3a53d42bff87dc8c3",
+      "source_blob_sha256": "e9e2bc139ed4b5260a8ed010db6562abdd795cefbaf73be3a53d42bff87dc8c3",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter07.png",
+      "sha256": "5317814981f23a477b58830fdcf8c32639d0fc8ed6da090e51a3c5ed930cdad3",
+      "source_blob_sha256": "5317814981f23a477b58830fdcf8c32639d0fc8ed6da090e51a3c5ed930cdad3",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter07_pal.bin",
+      "sha256": "5488f08bd6b0b18a4d65a681f3a88257f93ac2e55c9fafa5834af4f52b55b069",
+      "source_blob_sha256": "5488f08bd6b0b18a4d65a681f3a88257f93ac2e55c9fafa5834af4f52b55b069",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter07b.bin",
+      "sha256": "2104f35766fc2d5ebb481a66e20f0157e7b6159654ed39c62f1e86840e4627e7",
+      "source_blob_sha256": "2104f35766fc2d5ebb481a66e20f0157e7b6159654ed39c62f1e86840e4627e7",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter07c.bin",
+      "sha256": "632c76c410a2731b12cd467cca6dfcd507fbed58b7d9ee237c8266eb2abd1711",
+      "source_blob_sha256": "632c76c410a2731b12cd467cca6dfcd507fbed58b7d9ee237c8266eb2abd1711",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter07d.bin",
+      "sha256": "574925a634aef02c8f8482f93b84e5ec09b12b99e5afefa85230fa9a78bf4f11",
+      "source_blob_sha256": "574925a634aef02c8f8482f93b84e5ec09b12b99e5afefa85230fa9a78bf4f11",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter07e.bin",
+      "sha256": "825f83673e0b214f86e0de73fcedf61e313c0325b22d7719327e0bdefec1ad85",
+      "source_blob_sha256": "825f83673e0b214f86e0de73fcedf61e313c0325b22d7719327e0bdefec1ad85",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter07f.bin",
+      "sha256": "8a5f5b006c9615707a27ad3db66d48cb329b89e9ba31637fbfa5a299ff069dfd",
+      "source_blob_sha256": "8a5f5b006c9615707a27ad3db66d48cb329b89e9ba31637fbfa5a299ff069dfd",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter07g.bin",
+      "sha256": "a1bf4f3361e90cc4fc6ef9907331c7048a79e37cdc2858553c032d01dfeb7539",
+      "source_blob_sha256": "a1bf4f3361e90cc4fc6ef9907331c7048a79e37cdc2858553c032d01dfeb7539",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter07h.bin",
+      "sha256": "288b6068ce239b133db31e639a65edf856acd96b8676b4d8ce4a33f1e4eab213",
+      "source_blob_sha256": "288b6068ce239b133db31e639a65edf856acd96b8676b4d8ce4a33f1e4eab213",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter08.bin",
+      "sha256": "eb8b17a3f9d07784b11b94dd0f156b472958ee89f34f1243d398dcb6031194e6",
+      "source_blob_sha256": "eb8b17a3f9d07784b11b94dd0f156b472958ee89f34f1243d398dcb6031194e6",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter08.png",
+      "sha256": "19647a631d902d5de907c195ef0bc86497c01c7d264d1300efa6ed61fda7472f",
+      "source_blob_sha256": "19647a631d902d5de907c195ef0bc86497c01c7d264d1300efa6ed61fda7472f",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter08_pal.bin",
+      "sha256": "2fc1e702ab7d8323d94df3c6e7164891e7dc6f2e75b6ab4b8ce82dfb866094f1",
+      "source_blob_sha256": "2fc1e702ab7d8323d94df3c6e7164891e7dc6f2e75b6ab4b8ce82dfb866094f1",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter08b.bin",
+      "sha256": "f5d510f3bad099334adf52e6250fb07421ae7e8f121bab45a2971920bb4ee155",
+      "source_blob_sha256": "f5d510f3bad099334adf52e6250fb07421ae7e8f121bab45a2971920bb4ee155",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter08c.bin",
+      "sha256": "8ecdc28d27ee0946c21fbfa93282e55ef81c73d7b83980f725518886c26501cc",
+      "source_blob_sha256": "8ecdc28d27ee0946c21fbfa93282e55ef81c73d7b83980f725518886c26501cc",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter08d.bin",
+      "sha256": "ec7e0771f967e51aa211a40fee3ad4d060b96f22c9f79d4750d1126dba20844a",
+      "source_blob_sha256": "ec7e0771f967e51aa211a40fee3ad4d060b96f22c9f79d4750d1126dba20844a",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter08e.bin",
+      "sha256": "24ebe7d9c1b0a83821ec4f070c96b67d69795294819992efbe4de7abd8b91286",
+      "source_blob_sha256": "24ebe7d9c1b0a83821ec4f070c96b67d69795294819992efbe4de7abd8b91286",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter08f.bin",
+      "sha256": "11fea0c9bc507afa1030edd789830bbd9afd47e82e63a6cfd377bd5ccfa2188e",
+      "source_blob_sha256": "11fea0c9bc507afa1030edd789830bbd9afd47e82e63a6cfd377bd5ccfa2188e",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter08g.bin",
+      "sha256": "7869b7d17677c146ee2be458016265611439b0b56faba009538481a6c3c95c2c",
+      "source_blob_sha256": "7869b7d17677c146ee2be458016265611439b0b56faba009538481a6c3c95c2c",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter08h.bin",
+      "sha256": "0cb54b41eac8f08b0712fd8c325237b24db4e6cfec223cc9e53a855abdeec637",
+      "source_blob_sha256": "0cb54b41eac8f08b0712fd8c325237b24db4e6cfec223cc9e53a855abdeec637",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter09.bin",
+      "sha256": "799034a52db0e8d7e2771a92ba827962cbf6f91e960a8450f286502cb55f3231",
+      "source_blob_sha256": "799034a52db0e8d7e2771a92ba827962cbf6f91e960a8450f286502cb55f3231",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter09.png",
+      "sha256": "cb8bec1ee03c1bcdf53392379c1191a9ab473382d5b9e0d193728ac3ad389081",
+      "source_blob_sha256": "cb8bec1ee03c1bcdf53392379c1191a9ab473382d5b9e0d193728ac3ad389081",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter09_pal.bin",
+      "sha256": "0fa34b1d226a993d001bd2df79e0b4f69827c214668446fe7b3b19bb3c64aa1d",
+      "source_blob_sha256": "0fa34b1d226a993d001bd2df79e0b4f69827c214668446fe7b3b19bb3c64aa1d",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter09b.bin",
+      "sha256": "98264845e190b02c19f974b73ba3af7f893e82d838db3e54b3f645c528c86f5a",
+      "source_blob_sha256": "98264845e190b02c19f974b73ba3af7f893e82d838db3e54b3f645c528c86f5a",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter09c.bin",
+      "sha256": "f8a01cd554bee365a13dff45680fe9e2455d0bbfeefb92eefb0fcfe955e5fe81",
+      "source_blob_sha256": "f8a01cd554bee365a13dff45680fe9e2455d0bbfeefb92eefb0fcfe955e5fe81",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter09d.bin",
+      "sha256": "a10a851d39c4518a46c4f85205c2bee6bb3adf0259ce72966fa65aecb7a1643f",
+      "source_blob_sha256": "a10a851d39c4518a46c4f85205c2bee6bb3adf0259ce72966fa65aecb7a1643f",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter09e.bin",
+      "sha256": "dcdbd3117ae6e737a2e1d52dbf02fb94f0b6375f51f51bd734767ed58bf85b3a",
+      "source_blob_sha256": "dcdbd3117ae6e737a2e1d52dbf02fb94f0b6375f51f51bd734767ed58bf85b3a",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter09f.bin",
+      "sha256": "975b27b26ddb605a35125bb58394e8d6f3a39b88d40cd39a1da0b879f9197f53",
+      "source_blob_sha256": "975b27b26ddb605a35125bb58394e8d6f3a39b88d40cd39a1da0b879f9197f53",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter09g.bin",
+      "sha256": "b79ddb92aae85d1e3bc61f38a2d07ae41d6c595865f26b5e69607c2184c824a4",
+      "source_blob_sha256": "b79ddb92aae85d1e3bc61f38a2d07ae41d6c595865f26b5e69607c2184c824a4",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter09h.bin",
+      "sha256": "b2d2079c3a5f61e1cb057602f8b06eec0fb9abb0a861b5b5bb4f332f13b8b561",
+      "source_blob_sha256": "b2d2079c3a5f61e1cb057602f8b06eec0fb9abb0a861b5b5bb4f332f13b8b561",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter10.bin",
+      "sha256": "267f91b1aadd9eb4261b14cfa2020465254949beebbb604536e7f5dd633aed14",
+      "source_blob_sha256": "267f91b1aadd9eb4261b14cfa2020465254949beebbb604536e7f5dd633aed14",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter10.png",
+      "sha256": "30c7d0970bae891dfd4ecb72ec42f059cdcb845c8cbb1dbccffb728dc0c8feb2",
+      "source_blob_sha256": "30c7d0970bae891dfd4ecb72ec42f059cdcb845c8cbb1dbccffb728dc0c8feb2",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter10_pal.bin",
+      "sha256": "6984a493d80efd48f7935eb13bbc928866e261bd140d8137854f78f534777d0e",
+      "source_blob_sha256": "6984a493d80efd48f7935eb13bbc928866e261bd140d8137854f78f534777d0e",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter10b.bin",
+      "sha256": "77328f6d52d4f3b5ec6647ed4536d954d3c0c81db6511e50d879b9158d64f607",
+      "source_blob_sha256": "77328f6d52d4f3b5ec6647ed4536d954d3c0c81db6511e50d879b9158d64f607",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter10c.bin",
+      "sha256": "b3dd7aa374a4dbcb391346dcc4dbc82ef7120fdc98c319804c71aa808704492d",
+      "source_blob_sha256": "b3dd7aa374a4dbcb391346dcc4dbc82ef7120fdc98c319804c71aa808704492d",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter10d.bin",
+      "sha256": "5df88d54618c2fbd095eb3add7540157b9ed139f1927f3cc7c5e77ef53e45e42",
+      "source_blob_sha256": "5df88d54618c2fbd095eb3add7540157b9ed139f1927f3cc7c5e77ef53e45e42",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter10e.bin",
+      "sha256": "2e07cb5359428e35a58871fcc8123439ed2869d975b4c8be4ebab8b9fa4d0126",
+      "source_blob_sha256": "2e07cb5359428e35a58871fcc8123439ed2869d975b4c8be4ebab8b9fa4d0126",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter10f.bin",
+      "sha256": "9a618160cc1fcfc1766b0757fe193438d77252ee3ae5b2ece3b119c5622e4b5a",
+      "source_blob_sha256": "9a618160cc1fcfc1766b0757fe193438d77252ee3ae5b2ece3b119c5622e4b5a",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter10g.bin",
+      "sha256": "7a62cea0e596ff4940996a43146a795a37bcb697ad640c2710eb59c137135c5d",
+      "source_blob_sha256": "7a62cea0e596ff4940996a43146a795a37bcb697ad640c2710eb59c137135c5d",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter10h.bin",
+      "sha256": "8ac0c5d03adac633cd614c00974e391725935a16529e7bb190e55de9cd82ad75",
+      "source_blob_sha256": "8ac0c5d03adac633cd614c00974e391725935a16529e7bb190e55de9cd82ad75",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter11.bin",
+      "sha256": "cd8273b2438a4e83bb6856d2ec75d20f82a66fe3aaa04cacd697acd5b2c31274",
+      "source_blob_sha256": "cd8273b2438a4e83bb6856d2ec75d20f82a66fe3aaa04cacd697acd5b2c31274",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter11.png",
+      "sha256": "0b187659e5e822e7096ad31c6498134efefab369779147349a254b1ad59b00b7",
+      "source_blob_sha256": "0b187659e5e822e7096ad31c6498134efefab369779147349a254b1ad59b00b7",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter11_pal.bin",
+      "sha256": "a157c3c1cb19914da952d6211860562c11ff31ecd04cf9ac67b5afaa0710d236",
+      "source_blob_sha256": "a157c3c1cb19914da952d6211860562c11ff31ecd04cf9ac67b5afaa0710d236",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter11b.bin",
+      "sha256": "24c03be2630df1991a5aa797d9a3aa645211e3e1619fd76aa8b0d80726e945ed",
+      "source_blob_sha256": "24c03be2630df1991a5aa797d9a3aa645211e3e1619fd76aa8b0d80726e945ed",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter11c.bin",
+      "sha256": "91b10ab5e025c9305bdd1d3f004f71e16b8581935074756e267cc29244fac62c",
+      "source_blob_sha256": "91b10ab5e025c9305bdd1d3f004f71e16b8581935074756e267cc29244fac62c",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter11d.bin",
+      "sha256": "8298f25fab1d71145ed96b8b8ee221a3938230b6b1ead43b26073b6ecb83917a",
+      "source_blob_sha256": "8298f25fab1d71145ed96b8b8ee221a3938230b6b1ead43b26073b6ecb83917a",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter11e.bin",
+      "sha256": "3aaa2dfc8e876cf7430da4e84928282b7c199f92277fcc3b4b9b9f6e87968acd",
+      "source_blob_sha256": "3aaa2dfc8e876cf7430da4e84928282b7c199f92277fcc3b4b9b9f6e87968acd",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter11f.bin",
+      "sha256": "d5364651ee131e66ed988014763db09e24b508883bbd06d9bfaed2743f34d772",
+      "source_blob_sha256": "d5364651ee131e66ed988014763db09e24b508883bbd06d9bfaed2743f34d772",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter11g.bin",
+      "sha256": "417d04ddcf79094bf5641dc6d0392a3134f723bf12148b47f1ad7cf6562adff2",
+      "source_blob_sha256": "417d04ddcf79094bf5641dc6d0392a3134f723bf12148b47f1ad7cf6562adff2",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/fighter11h.bin",
+      "sha256": "34050cd58ef9139eac5f33a10ec8e68f6af004238512a9d2f3c3b49e9d13a729",
+      "source_blob_sha256": "34050cd58ef9139eac5f33a10ec8e68f6af004238512a9d2f3c3b49e9d13a729",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/music0.it",
+      "sha256": "281e74b07d44921f6b4e3cfa6b7d9aec5a9d684b2628ecb038c3556a8f5fe85b",
+      "source_blob_sha256": "281e74b07d44921f6b4e3cfa6b7d9aec5a9d684b2628ecb038c3556a8f5fe85b",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/music1.it",
+      "sha256": "012ae86b1dfae79a82b7c2ea1627827e3607f3902eb252d3c8bc6a65706a925c",
+      "source_blob_sha256": "012ae86b1dfae79a82b7c2ea1627827e3607f3902eb252d3c8bc6a65706a925c",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/music2.it",
+      "sha256": "b8b479c1fd7ad52a2f9a4150816445135af6fb662e71cdb0a0d43318d78112a1",
+      "source_blob_sha256": "b8b479c1fd7ad52a2f9a4150816445135af6fb662e71cdb0a0d43318d78112a1",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/music3.it",
+      "sha256": "c0642846f0dc624787b3a37cc7fa636bb75dcfb2a9183877910a84f024431af3",
+      "source_blob_sha256": "c0642846f0dc624787b3a37cc7fa636bb75dcfb2a9183877910a84f024431af3",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/music4.it",
+      "sha256": "42319898be70a7570f3b0a0c628430e8df83f4546ac64d6944fe7fa194d08f0e",
+      "source_blob_sha256": "42319898be70a7570f3b0a0c628430e8df83f4546ac64d6944fe7fa194d08f0e",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait00-large.png",
+      "sha256": "a7bd2313500980db759031d66a7984aa6823bd3406581091f215a212d6a701d2",
+      "source_blob_sha256": "a7bd2313500980db759031d66a7984aa6823bd3406581091f215a212d6a701d2",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait00.png",
+      "sha256": "925bf0ffdbf72ecd90b52ccc64378b6a2681f992528a4ab45e02b576f5f363e9",
+      "source_blob_sha256": "925bf0ffdbf72ecd90b52ccc64378b6a2681f992528a4ab45e02b576f5f363e9",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait00_pal.bin",
+      "sha256": "e2848c7d315b7e9d725e729d6d3b644ff21726c9f3979d5039373828f07914f5",
+      "source_blob_sha256": "e2848c7d315b7e9d725e729d6d3b644ff21726c9f3979d5039373828f07914f5",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait00_tiles.bin",
+      "sha256": "2bd09ad23a2df08d53046ad70952e45851aa5e88695da12fc641bfb918f41cb6",
+      "source_blob_sha256": "2bd09ad23a2df08d53046ad70952e45851aa5e88695da12fc641bfb918f41cb6",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait01-large.png",
+      "sha256": "ddaaf1405c6c9d7950df0bd6c56449fead35820ca31aa78800db8c2af6f020e9",
+      "source_blob_sha256": "ddaaf1405c6c9d7950df0bd6c56449fead35820ca31aa78800db8c2af6f020e9",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait01.png",
+      "sha256": "26de480b79a6c721d6928d94d524e62e0c345140e39227788caf0fcef7026c41",
+      "source_blob_sha256": "26de480b79a6c721d6928d94d524e62e0c345140e39227788caf0fcef7026c41",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait01_pal.bin",
+      "sha256": "08989818b479b17741576eb89afc057096957585f57d317897de1d70809aef87",
+      "source_blob_sha256": "08989818b479b17741576eb89afc057096957585f57d317897de1d70809aef87",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait01_tiles.bin",
+      "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1",
+      "source_blob_sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait02-large.png",
+      "sha256": "c5c198ea1ce40a6d37780654dd0f164a7032930d3519561b19b96ed74e6cf6b9",
+      "source_blob_sha256": "c5c198ea1ce40a6d37780654dd0f164a7032930d3519561b19b96ed74e6cf6b9",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait02.png",
+      "sha256": "963b82496c52bb77e2aaeb80b4bd1adcca6a67274241bf2f8cdd7834ea3c0e2a",
+      "source_blob_sha256": "963b82496c52bb77e2aaeb80b4bd1adcca6a67274241bf2f8cdd7834ea3c0e2a",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait02_pal.bin",
+      "sha256": "ab5564cfe06b696bb124b469dbe3f20beb3f0919a2cd26de627f1fc52e021946",
+      "source_blob_sha256": "ab5564cfe06b696bb124b469dbe3f20beb3f0919a2cd26de627f1fc52e021946",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait02_tiles.bin",
+      "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b",
+      "source_blob_sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait03-large.png",
+      "sha256": "cd7993ab1498f552a29ac07f5082fd1fb0756d2c114a80c671d1c8e0f5e44763",
+      "source_blob_sha256": "cd7993ab1498f552a29ac07f5082fd1fb0756d2c114a80c671d1c8e0f5e44763",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait03.png",
+      "sha256": "10b4ec8db326f941420f1203da2dce2fc3edbda0d041ca6299a133f1e055f9e9",
+      "source_blob_sha256": "10b4ec8db326f941420f1203da2dce2fc3edbda0d041ca6299a133f1e055f9e9",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait03_pal.bin",
+      "sha256": "4d5862c7463d7358b00c9b87de4a7f31496be87f0e26f82cf71bdbc4716c8da5",
+      "source_blob_sha256": "4d5862c7463d7358b00c9b87de4a7f31496be87f0e26f82cf71bdbc4716c8da5",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait03_tiles.bin",
+      "sha256": "61d80d1fa2da4692646a1f500dfc98d69692c0565754d3dc78b7f2d9584642e3",
+      "source_blob_sha256": "61d80d1fa2da4692646a1f500dfc98d69692c0565754d3dc78b7f2d9584642e3",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait04-large.png",
+      "sha256": "02e66f29e24de974aa632c7dcb5fcd2b090140c44fe9eb0436deae2f08309ec9",
+      "source_blob_sha256": "02e66f29e24de974aa632c7dcb5fcd2b090140c44fe9eb0436deae2f08309ec9",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait04.png",
+      "sha256": "df5fc3f9851fc554182a64251cedbbe04a904a00ad3abcc6bcb8c32a6124aa1b",
+      "source_blob_sha256": "df5fc3f9851fc554182a64251cedbbe04a904a00ad3abcc6bcb8c32a6124aa1b",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait04_pal.bin",
+      "sha256": "720c6166fd9f14733233d4ff9bb884d2cfa725364c8aad84ab63435e5865848a",
+      "source_blob_sha256": "720c6166fd9f14733233d4ff9bb884d2cfa725364c8aad84ab63435e5865848a",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait04_tiles.bin",
+      "sha256": "24c117db9e57d66ba9eccaecd75bece46c78f0eec848a7eb6a688806227ed2fd",
+      "source_blob_sha256": "24c117db9e57d66ba9eccaecd75bece46c78f0eec848a7eb6a688806227ed2fd",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait05-large.png",
+      "sha256": "502b063408ab54b872911a6f69eba4873a01f73be8bf71eb905663cb956eec5c",
+      "source_blob_sha256": "502b063408ab54b872911a6f69eba4873a01f73be8bf71eb905663cb956eec5c",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait05.png",
+      "sha256": "c71f79d3d326c31bf4eb339c40f46a7a12198441b8e4c72f847e490c5fd0aa42",
+      "source_blob_sha256": "c71f79d3d326c31bf4eb339c40f46a7a12198441b8e4c72f847e490c5fd0aa42",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait05_pal.bin",
+      "sha256": "6c2c4b9401849a420de191a9795f24569b16e4fdf74f39e85c20c2df457cd2f9",
+      "source_blob_sha256": "6c2c4b9401849a420de191a9795f24569b16e4fdf74f39e85c20c2df457cd2f9",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait05_tiles.bin",
+      "sha256": "c0460efc186cc285ba6aba1fdd0e7c54dc21320b2201954973d6d2c31c8ba505",
+      "source_blob_sha256": "c0460efc186cc285ba6aba1fdd0e7c54dc21320b2201954973d6d2c31c8ba505",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait06-large.png",
+      "sha256": "9b1afd3adc03cdc55d5f4803b0a057f4d853fb4c9f8ba45731072e45b5a44b9d",
+      "source_blob_sha256": "9b1afd3adc03cdc55d5f4803b0a057f4d853fb4c9f8ba45731072e45b5a44b9d",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait06.png",
+      "sha256": "8d02f2b788cb49ba20935aeb3f60e3af05052b663d400b0eb1b3d50341bc308e",
+      "source_blob_sha256": "8d02f2b788cb49ba20935aeb3f60e3af05052b663d400b0eb1b3d50341bc308e",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait06_pal.bin",
+      "sha256": "5db63711260962bc338f05f445b584c372033a97bcdaa538e089ed2e5d5fc972",
+      "source_blob_sha256": "5db63711260962bc338f05f445b584c372033a97bcdaa538e089ed2e5d5fc972",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait06_tiles.bin",
+      "sha256": "f023d0d5dd115725202ed8a527b2ec45812a7f5e7af77bf579bcec09d39a5e2f",
+      "source_blob_sha256": "f023d0d5dd115725202ed8a527b2ec45812a7f5e7af77bf579bcec09d39a5e2f",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait07-large.png",
+      "sha256": "e635436d5ad0795a671d777ddfff313a01551bf5c2aae72ba59cd7e70d72f1dd",
+      "source_blob_sha256": "e635436d5ad0795a671d777ddfff313a01551bf5c2aae72ba59cd7e70d72f1dd",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait07.png",
+      "sha256": "c982e5997517db0b4bfd478a312cbe2b3047801f6c05b5ead2e7216d65b1c2a6",
+      "source_blob_sha256": "c982e5997517db0b4bfd478a312cbe2b3047801f6c05b5ead2e7216d65b1c2a6",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait07_pal.bin",
+      "sha256": "656c585b5d15a36aaa07d2ad016ab60e63c59281fd9be66d330c33042684db42",
+      "source_blob_sha256": "656c585b5d15a36aaa07d2ad016ab60e63c59281fd9be66d330c33042684db42",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait07_tiles.bin",
+      "sha256": "d83d340dffeb196c8d1a961cd85d391bad6c849b385b921eca8868eb40d86537",
+      "source_blob_sha256": "d83d340dffeb196c8d1a961cd85d391bad6c849b385b921eca8868eb40d86537",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait08-large.png",
+      "sha256": "7b6546202fff49fbce12601303ca5c8f737bb6e0b59e725a3e70a17a10cd7c28",
+      "source_blob_sha256": "7b6546202fff49fbce12601303ca5c8f737bb6e0b59e725a3e70a17a10cd7c28",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait08.png",
+      "sha256": "a98c204b90d8ef8cf09a07ff551048c2b23bc134a85ec4d448dfc2ce68323486",
+      "source_blob_sha256": "a98c204b90d8ef8cf09a07ff551048c2b23bc134a85ec4d448dfc2ce68323486",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait08_pal.bin",
+      "sha256": "cde01ea2b56e2d94ef8852813189cc0cf77e38f4596c2c451ae04e81aeb132b1",
+      "source_blob_sha256": "cde01ea2b56e2d94ef8852813189cc0cf77e38f4596c2c451ae04e81aeb132b1",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait08_tiles.bin",
+      "sha256": "be1b936d3daa590cffbc0f2cbe6f1d4c0d951d01262706eb9e9ce4c4f5fd7d89",
+      "source_blob_sha256": "be1b936d3daa590cffbc0f2cbe6f1d4c0d951d01262706eb9e9ce4c4f5fd7d89",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait09-large.png",
+      "sha256": "ca6b09d0f309c90768c8651c50fbde8aeb45fb34392ada0563b0034c1b923b72",
+      "source_blob_sha256": "ca6b09d0f309c90768c8651c50fbde8aeb45fb34392ada0563b0034c1b923b72",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait09.png",
+      "sha256": "0270698812e559528f164d7384468a0bb77d25315d4306603d0a270514f38cfa",
+      "source_blob_sha256": "0270698812e559528f164d7384468a0bb77d25315d4306603d0a270514f38cfa",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait09_pal.bin",
+      "sha256": "31fc8dbd67e0c15b97ae258d945d85dc40324ce448da8afe18465bdb5e51ff7e",
+      "source_blob_sha256": "31fc8dbd67e0c15b97ae258d945d85dc40324ce448da8afe18465bdb5e51ff7e",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait09_tiles.bin",
+      "sha256": "46ef8740ace707787e06eb45e7b60f1df5e308185b6367f5e62b0ae823122350",
+      "source_blob_sha256": "46ef8740ace707787e06eb45e7b60f1df5e308185b6367f5e62b0ae823122350",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait10-large.png",
+      "sha256": "ee6564a4d7bcd8c53b947847c1fc876a6d961a82ed0d1af4a9188cfa6c8afb71",
+      "source_blob_sha256": "ee6564a4d7bcd8c53b947847c1fc876a6d961a82ed0d1af4a9188cfa6c8afb71",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait10.png",
+      "sha256": "cf3175c29aea6b596738cdb18fd582dd299e174ab683a171cecb506af1964e92",
+      "source_blob_sha256": "cf3175c29aea6b596738cdb18fd582dd299e174ab683a171cecb506af1964e92",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait10_pal.bin",
+      "sha256": "3d1c4f3e174efea3bf460726ab55128a30fcad3671dd8859a81941a803802e9f",
+      "source_blob_sha256": "3d1c4f3e174efea3bf460726ab55128a30fcad3671dd8859a81941a803802e9f",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait10_tiles.bin",
+      "sha256": "91f53180fc9e25e5633ec62a380b62c7b90072213718a1a3b079b59c6d24a9e6",
+      "source_blob_sha256": "91f53180fc9e25e5633ec62a380b62c7b90072213718a1a3b079b59c6d24a9e6",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait11-large.png",
+      "sha256": "c946be417ad643408a81140f0e1e055152cf1891c701465b5ea9a350b6684a6a",
+      "source_blob_sha256": "c946be417ad643408a81140f0e1e055152cf1891c701465b5ea9a350b6684a6a",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait11.png",
+      "sha256": "b5b7515b42cf1ce6d59db6588242ada40a5f4405eda40b6129d2f422b0d1e1bc",
+      "source_blob_sha256": "b5b7515b42cf1ce6d59db6588242ada40a5f4405eda40b6129d2f422b0d1e1bc",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait11_pal.bin",
+      "sha256": "57ac795f22b5565d1716c350d358d5b41262c1ba9dd6de1c4e4eb2144819ca3f",
+      "source_blob_sha256": "57ac795f22b5565d1716c350d358d5b41262c1ba9dd6de1c4e4eb2144819ca3f",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/portrait11_tiles.bin",
+      "sha256": "523beee6bbce840def42286687dde5c22d5a6c9720e365f510e65687beebbbbd",
+      "source_blob_sha256": "523beee6bbce840def42286687dde5c22d5a6c9720e365f510e65687beebbbbd",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/select.png",
+      "sha256": "d00fee8e2588cacac63f62c2e5e2387f5026cfa8394428f1c42af0d5fb2ff142",
+      "source_blob_sha256": "d00fee8e2588cacac63f62c2e5e2387f5026cfa8394428f1c42af0d5fb2ff142",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/select_map.bin",
+      "sha256": "c0cab654437f3fd845cbc9da0e271e5d6978d9459409f7098672185709a10898",
+      "source_blob_sha256": "c0cab654437f3fd845cbc9da0e271e5d6978d9459409f7098672185709a10898",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/select_pal.bin",
+      "sha256": "7a74b75763c4cfd49558b34e01f5c2dad33327dc090485d941cb92e79303af09",
+      "source_blob_sha256": "7a74b75763c4cfd49558b34e01f5c2dad33327dc090485d941cb92e79303af09",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/select_tiles.bin",
+      "sha256": "7a6e42c88c8c615895cc4e051011f159eb8c4e7d3a44ebc7575f5c2ec667cb63",
+      "source_blob_sha256": "7a6e42c88c8c615895cc4e051011f159eb8c4e7d3a44ebc7575f5c2ec667cb63",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/sfx0.bin",
+      "sha256": "778c185fc8fd3a71ac677c2cb591f1ed6b58445c8ac495374669054728a5e092",
+      "source_blob_sha256": "778c185fc8fd3a71ac677c2cb591f1ed6b58445c8ac495374669054728a5e092",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/sfx1.bin",
+      "sha256": "437b5d56693931d422445f81c0b1f09280c3212262526df8fb4de9a502c2e628",
+      "source_blob_sha256": "437b5d56693931d422445f81c0b1f09280c3212262526df8fb4de9a502c2e628",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/sfx2.bin",
+      "sha256": "2920de1e6f3349029656041fb43bd0d11520382efc0fe7d6c34d54dc085a24fa",
+      "source_blob_sha256": "2920de1e6f3349029656041fb43bd0d11520382efc0fe7d6c34d54dc085a24fa",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/sfx3.bin",
+      "sha256": "c9e2da2810ef129f59e9fabd7d30059d39cb5e0fe996ab9a0df6cef27e28d8ac",
+      "source_blob_sha256": "c9e2da2810ef129f59e9fabd7d30059d39cb5e0fe996ab9a0df6cef27e28d8ac",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/soundbank.asm",
+      "sha256": "8065100b578c2ba8b0eecb2f3f872af5ffaa4bce1514b0a71dceba159161504a",
+      "source_blob_sha256": "eb450eb9203abc0cfc11e1bf21e8d78f4ef02172d3233acfd87aece9a4e2b268",
+      "comparison": "LF-normalized text",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/soundbank.bnk",
+      "sha256": "60e014f6b973075b79c2036eef78297cf70600741be913c490afc0332d2e5822",
+      "source_blob_sha256": "60e014f6b973075b79c2036eef78297cf70600741be913c490afc0332d2e5822",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/stage-dynamics.json",
+      "sha256": "1d1ea5e2b67fac083fb9afd827abb4cc581825d71c573f19fe3efd9380402ced",
+      "source_blob_sha256": "1d1ea5e2b67fac083fb9afd827abb4cc581825d71c573f19fe3efd9380402ced",
+      "comparison": "LF-normalized text",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/stage0.png",
+      "sha256": "fffee46a254f8f4c3a71445fdf8f555d722ddb926d0321f467f3eebb4aa28151",
+      "source_blob_sha256": "fffee46a254f8f4c3a71445fdf8f555d722ddb926d0321f467f3eebb4aa28151",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/stage0_ambient.bin",
+      "sha256": "c04aadd73505ef5d9023b355cc952f33ed5b8cf8fe566a7c6b3d2663a603c165",
+      "source_blob_sha256": "c04aadd73505ef5d9023b355cc952f33ed5b8cf8fe566a7c6b3d2663a603c165",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/stage0_map.bin",
+      "sha256": "4c20ec0f333139dddbddd48eebf9d92792e584950764948d3c97d284fa9fc53f",
+      "source_blob_sha256": "4c20ec0f333139dddbddd48eebf9d92792e584950764948d3c97d284fa9fc53f",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/stage0_pal.bin",
+      "sha256": "8e5022cba1b658c44ec484ac05c4c2b0e0188ff793c857c316b832afc3957435",
+      "source_blob_sha256": "8e5022cba1b658c44ec484ac05c4c2b0e0188ff793c857c316b832afc3957435",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/stage0_tiles.bin",
+      "sha256": "3ffecd14a27ba0751446d84613cc280dccdc350c19cf1fbefbc9fe87699981bd",
+      "source_blob_sha256": "3ffecd14a27ba0751446d84613cc280dccdc350c19cf1fbefbc9fe87699981bd",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/stage1.png",
+      "sha256": "f0793bead9f2bd72f7409b685475e67f089a8ad1cc093931d7e910516a7dd71a",
+      "source_blob_sha256": "f0793bead9f2bd72f7409b685475e67f089a8ad1cc093931d7e910516a7dd71a",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/stage1_ambient.bin",
+      "sha256": "23a821d2fc3f885143c6a43c9605f65545ee9c9465912a980e6c22f4baef8d0b",
+      "source_blob_sha256": "23a821d2fc3f885143c6a43c9605f65545ee9c9465912a980e6c22f4baef8d0b",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/stage1_map.bin",
+      "sha256": "ae232ab76164ee2d8f9d78dd3bde73b529b832ca09e92365136619f86fcc7b6c",
+      "source_blob_sha256": "ae232ab76164ee2d8f9d78dd3bde73b529b832ca09e92365136619f86fcc7b6c",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/stage1_pal.bin",
+      "sha256": "16c6fd3f3912063645f55e452a337471c310df0c7d76c4f6e460aef90fe0e581",
+      "source_blob_sha256": "16c6fd3f3912063645f55e452a337471c310df0c7d76c4f6e460aef90fe0e581",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/stage1_tiles.bin",
+      "sha256": "47901637a5478f2a1a3cac99d3cc8c740faac8486b10f47980050117efba6c28",
+      "source_blob_sha256": "47901637a5478f2a1a3cac99d3cc8c740faac8486b10f47980050117efba6c28",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/stage2.png",
+      "sha256": "2c687ca691682b3cf81bef0a2b49276200f7efb52d6153a86e7f647b171ca1e4",
+      "source_blob_sha256": "2c687ca691682b3cf81bef0a2b49276200f7efb52d6153a86e7f647b171ca1e4",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/stage2_ambient.bin",
+      "sha256": "54f1ad7b421c05accf8d5026877ce4b2621b2e9df51e4fb5bb115388a9003a6c",
+      "source_blob_sha256": "54f1ad7b421c05accf8d5026877ce4b2621b2e9df51e4fb5bb115388a9003a6c",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/stage2_map.bin",
+      "sha256": "3ad316f989f5675836b291ae5c55e507b9ad5ad760f59c3716ffa91dcd0c896f",
+      "source_blob_sha256": "3ad316f989f5675836b291ae5c55e507b9ad5ad760f59c3716ffa91dcd0c896f",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/stage2_pal.bin",
+      "sha256": "a2dd9adc74ba3a160e475807a1df7d71a53e6cc1596a67dc80aa7839b7b763e6",
+      "source_blob_sha256": "a2dd9adc74ba3a160e475807a1df7d71a53e6cc1596a67dc80aa7839b7b763e6",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/stage2_tiles.bin",
+      "sha256": "7186e4af772afd802d4e34d8e3260da4270147a536342a44a2c4b483b5503b47",
+      "source_blob_sha256": "7186e4af772afd802d4e34d8e3260da4270147a536342a44a2c4b483b5503b47",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/title.png",
+      "sha256": "762aa32dc664240fd9fb21234892226486882b4b75ebd7364df930d647d045b5",
+      "source_blob_sha256": "762aa32dc664240fd9fb21234892226486882b4b75ebd7364df930d647d045b5",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/title_map.bin",
+      "sha256": "29cd5c8f24c62f251448c2a86b16561771227644bb9e4b6b1048e70cf5411b68",
+      "source_blob_sha256": "29cd5c8f24c62f251448c2a86b16561771227644bb9e4b6b1048e70cf5411b68",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/title_pal.bin",
+      "sha256": "b844fa0a896bd85a086ffc6427107611337cf0739db0779a5fa0bfc50fd74168",
+      "source_blob_sha256": "b844fa0a896bd85a086ffc6427107611337cf0739db0779a5fa0bfc50fd74168",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/title_tiles.bin",
+      "sha256": "19260983431a91edbb6251778d5efdc1c9e675a3ae55bc255036cf1d1937b284",
+      "source_blob_sha256": "19260983431a91edbb6251778d5efdc1c9e675a3ae55bc255036cf1d1937b284",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/ui_pal.bin",
+      "sha256": "7f8d1dc7d59c7f175f289de99216c7f0b8eed5afec255e16e7b528b7fd06468d",
+      "source_blob_sha256": "7f8d1dc7d59c7f175f289de99216c7f0b8eed5afec255e16e7b528b7fd06468d",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "assets/generated/ui_tiles.bin",
+      "sha256": "6ec925a47e0410b94638cc114db8b17e45c0c1ea51022d4031d4ecc27bacd84a",
+      "source_blob_sha256": "6ec925a47e0410b94638cc114db8b17e45c0c1ea51022d4031d4ecc27bacd84a",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
+      "path": "src/hardware.asm",
+      "sha256": "76b9f8d3c858e7af08f5ff27639b3e7841a2bd55a168fdc9a920bfd22ed55d1a",
+      "source_blob_sha256": "76b9f8d3c858e7af08f5ff27639b3e7841a2bd55a168fdc9a920bfd22ed55d1a",
+      "comparison": "LF-normalized text",
+      "preserved": true
+    },
+    {
+      "path": "src/trace.asm",
+      "sha256": "301ec8a99aa326583c332a901903114f5fceeb7f17bbbf768c3e90ae65c3dc88",
+      "source_blob_sha256": "301ec8a99aa326583c332a901903114f5fceeb7f17bbbf768c3e90ae65c3dc88",
+      "comparison": "LF-normalized text",
+      "preserved": true
+    }
+  ],
+  "added": []
+}

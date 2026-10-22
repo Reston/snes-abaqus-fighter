@@ -1,0 +1,94 @@
+{
+  "version": "0.15.0",
+  "rom_sha256": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44",
+  "status": "passed",
+  "scope": "Verified capture archive for later human listening; no playback or listening approval.",
+  "human_listening_approved": false,
+  "source_report": "docs/champion-audio-report.json",
+  "source_report_sha256": "3ba6f6d6bda840a5feee3da244d04ec66bd2ce25834075580c1070af08806325",
+  "archive": {
+    "file": "dist/Abaqus-After-Hours-v0.15.0-Audio-Review.zip",
+    "bytes": 19661584,
+    "sha256": "ab82ab54ab9e880650c4eedab41cc93808499fd76a4be00b5ef93b2c6aaaf8c6"
+  },
+  "scores": [
+    "title",
+    "las-condes",
+    "el-castillo",
+    "la-oficina",
+    "office-champion"
+  ],
+  "cue_pairs": [
+    "swing",
+    "impact",
+    "special",
+    "round-confirm"
+  ],
+  "checks": [
+    {
+      "check": "listening archive contains only current verified captures",
+      "passed": true,
+      "details": "build/champion-audio/impact-active.wav"
+    },
+    {
+      "check": "listening archive contains only current verified captures",
+      "passed": true,
+      "details": "build/champion-audio/impact-control.wav"
+    },
+    {
+      "check": "listening archive contains only current verified captures",
+      "passed": true,
+      "details": "build/champion-audio/music-el-castillo.wav"
+    },
+    {
+      "check": "listening archive contains only current verified captures",
+      "passed": true,
+      "details": "build/champion-audio/music-la-oficina.wav"
+    },
+    {
+      "check": "listening archive contains only current verified captures",
+      "passed": true,
+      "details": "build/champion-audio/music-las-condes.wav"
+    },
+    {
+      "check": "listening archive contains only current verified captures",
+      "passed": true,
+      "details": "build/champion-audio/music-office-champion.wav"
+    },
+    {
+      "check": "listening archive contains only current verified captures",
+      "passed": true,
+      "details": "build/champion-audio/music-title.wav"
+    },
+    {
+      "check": "listening archive contains only current verified captures",
+      "passed": true,
+      "details": "build/champion-audio/round-confirm-active.wav"
+    },
+    {
+      "check": "listening archive contains only current verified captures",
+      "passed": true,
+      "details": "build/champion-audio/round-confirm-control.wav"
+    },
+    {
+      "check": "listening archive contains only current verified captures",
+      "passed": true,
+      "details": "build/champion-audio/special-active.wav"
+    },
+    {
+      "check": "listening archive contains only current verified captures",
+      "passed": true,
+      "details": "build/champion-audio/special-control.wav"
+    },
+    {
+      "check": "listening archive contains only current verified captures",
+      "passed": true,
+      "details": "build/champion-audio/swing-active.wav"
+    },
+    {
+      "check": "listening archive contains only current verified captures",
+      "passed": true,
+      "details": "build/champion-audio/swing-control.wav"
+    }
+  ]
+}

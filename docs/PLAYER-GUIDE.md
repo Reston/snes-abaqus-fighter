@@ -1,12 +1,13 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.14.0; rom-sha256: 3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa -->
+<!-- candidate-version: 0.15.0; rom-sha256: 2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44 -->
 
 ## Current version
 
-The current candidate is **v0.14.0**. Fighter and arena menus show **A/Start**
-confirmation. The pause Specials guide explains the timing limit between
-motion steps. Champion victory music, arbitrary/mirror Training opponents,
-revised Lars art, clearer location previews and winner cards are retained.
+The current candidate is **v0.15.0**. At close range, jump across an opponent
+and time a **medium kick** as you pass them for a cross-up. The Controls pause
+page includes the cue. Blocking follows the opponent's side; change your guard
+direction after a crossing. The menu prompts, per-step special-motion help,
+champion music, Training opponents, revised Lars art and location previews remain.
 In Local Versus, A or Start begins a rematch. Arcade victory advances to the
 next challenger; a loss offers a continue. After Office Champion, A or Start
 returns to the title. B returns to fighter select.
@@ -24,7 +25,8 @@ included `manifest.json` identifies the packaged version and ROM SHA256;
 release note under `docs/`. No global installation or administrator account is
 needed. Human gameplay, listening, controller, likeness/consent and team/public
 use review remain open; original hardware support stays unverified.
-The package's `REVIEW.html` contains selected native screenshots and a 2x view.
+The package's `REVIEW.html` contains native screens, two moving cross-up clips
+and a 2x view. GIF playback timing is approximate.
 Its `ROSTER-REVIEW.html` offers all 64 generated frames per fighter, facing
 flips and a frame scrubber for likeness inspection. The fixed-rate sweep is
 an art review aid; actual game animation timing is reviewed in the emulator.
@@ -109,7 +111,7 @@ The pause card has three pages:
 
 - **Normal** shows pause status and the current Training dummy mode.
 - **Controls** lists movement, guard, six-button attacks, throw, uppercut,
-  confirmed attacks and the pause shortcuts.
+  confirmed attacks, the medium-kick cross-up and pause shortcuts.
 - **Specials** shows the live P1/P2 names, each special and its family.
 
 **Select** advances Normal -> Controls -> Specials -> Normal. **Left/Right**
@@ -129,13 +131,17 @@ returns the dummy behavior to Stand.
 - Press **Down + L** for a rising uppercut.
 - Press **toward + L** at close range to throw through a guard. A throw applies
   damage when the defender reaches the floor. Simultaneous throws tech.
-- Perform a special with **Down -> Down + toward -> toward + Y/X**. The
-+  motion timeout is twelve live ticks **between steps**, refreshing as the
-+  motion progresses; it is not a twelve-tick limit for the entire sequence. **Down + Y/X** is the quick shortcut. **Down +
-  away + Y/X** is not a special. A special costs 32 energy; energy regenerates
-  slowly and successful hits add more.
+- Perform a special with **Down -> Down + toward -> toward + Y/X**. Each
+  progressing step refreshes a twelve-live-tick window. **Down + Y/X** is the
+  quick shortcut. Press punch with the final toward direction; holding away
+  cancels the motion. A special costs 32 energy; energy regenerates slowly and
+  successful hits add more.
 - A confirmed light or medium normal can cancel into a heavier normal. A
   confirmed normal can cancel into a special during its cancel window.
+- For a close cross-up, jump across the opponent and press **A** (medium kick;
+  P1 keyboard **X**) as you pass them. Its short rear reach rewards close timing.
+  The other air normals keep their forward reach. Use Training to practice both
+  directions; switch the defender's away direction after a crossing.
 - Punches and kicks work in the air. Crouching kicks are low attacks. Keep an
   eye on the gold health bar and teal energy bar.
 

@@ -21,13 +21,13 @@
     "test_presentation.py": "bb314a4d25b4c7b8e240aff3fb7522d36d7fbcb6737e89828f5cf2ec4140373c",
     "emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
     "test_champion.py": "568032b339032bc19c0ecaafa1a4b097de54bbe22c4fa4f8e67d6d6aabc0385e",
-    "preservation.py": "784640a2e80486f9c20126423c7d00127b766f73e8ceafad1a4468c22dd9addc"
+    "preservation.py": "c6f788ddc1de4dead3ae6116478da4327fd28734a27ecf449af32b4a249973b9"
   },
   "core_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
-  "rom_sha256": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa",
-  "header_checksum": "D1E2",
+  "rom_sha256": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44",
+  "header_checksum": "2491",
   "asset_preservation": {
-    "baseline_ref": "54173e3",
+    "baseline_ref": "2f2df29",
     "generated_files": 219,
     "identical_generated_files": 219,
     "files": {
@@ -1134,7 +1134,7 @@
     }
   },
   "native_preservation": {
-    "baseline_rom_sha256": "eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4",
+    "baseline_rom_sha256": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa",
     "roster_states": 60,
     "arena_states": 9,
     "pixel_difference_above_footer": 0,
@@ -1156,9 +1156,9 @@
         "bg2_above_footer_sha256": "8c0869127f017dac1e8ad6cdf3b91b1caa4251526fd29e64a5ba579acc85bcdc",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/arcade-p1-00.png",
-          "capture_sha256": "a9466c00243be5461db84f27f42f9354118e38d8a136a155ee4a015ea21cd730",
+          "capture_sha256": "c17cf4752ee638b6f30453f1ce4c429ab4a7ad89bb94f84bdf4bf78f437d1ec6",
           "vram_capture": "docs/screenshots/menu-preservation/parent/arcade-p1-00.vram.bin",
-          "vram_sha256": "e6e25ebd5356ed897466edd5cba40baf57df94a887f53f61def25ca00c62d6b6",
+          "vram_sha256": "32f8b0702fde22812c8cf18ed61366701e1f147b4d1ab2be07e44f890a370cc0",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1186,9 +1186,9 @@
         "bg2_above_footer_sha256": "163028178e5c867e5d4dee5f79e63f6adc4ea44c35e9068d80026875a7767ab1",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/arcade-p1-01.png",
-          "capture_sha256": "387bae4046ca694087dc263491afe5c01e95ad4581b7d5d8058044a38f06e47b",
+          "capture_sha256": "14f00fa8e8d7b11d0eb1d9f4b0bdca710e655713b318210c2de613bc3d4f6c0b",
           "vram_capture": "docs/screenshots/menu-preservation/parent/arcade-p1-01.vram.bin",
-          "vram_sha256": "df098a05fdab31ce49dc42ab512366dbc84abbb1b08c7692c8f6aed58e600ebc",
+          "vram_sha256": "9277629741dafa5a2c58894566ff729b9476f70ac49b967098b1e848b21284e4",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1216,9 +1216,9 @@
         "bg2_above_footer_sha256": "828e51e32dfba3946a24fdcdfd252b10f16569d1a5dfe22a3cfdb5c09199ce4c",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/arcade-p1-02.png",
-          "capture_sha256": "de2860425d2cb4ccadadf724e2da2a438a5ee32b0a8b67703e55e7d4b1abeae3",
+          "capture_sha256": "faa67f3545b15056f6260280e99bce062db6631c90d8254e351424ffa02fbc3a",
           "vram_capture": "docs/screenshots/menu-preservation/parent/arcade-p1-02.vram.bin",
-          "vram_sha256": "40a601fffcb18b5723a96f97725f73d885f2ed4d6e6d89d96293ff9a14b5f9c4",
+          "vram_sha256": "7bd6da2f73c177a13d33ea23736fc383070bf310445d6c4548ebddd18f518b8e",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1246,9 +1246,9 @@
         "bg2_above_footer_sha256": "d901d4894b5c73373b065dd224d952d8165a2c61dd5751b309ef4ff1f6fdead3",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/arcade-p1-03.png",
-          "capture_sha256": "37c5642760deb6fd6d227e5202a79d54bfabfadadb9bb70e092cc9c400637719",
+          "capture_sha256": "8cdd99518c5db2cbb253ad03b3ed3af55692f067e8d60bc957cf685a207027ce",
           "vram_capture": "docs/screenshots/menu-preservation/parent/arcade-p1-03.vram.bin",
-          "vram_sha256": "8de9882ad85b832229e42dd4cf3055930b2d4ea2214c4690eee30b4d1574ef0c",
+          "vram_sha256": "af94a60bc10830b33617331396d5580de417bb1eb1d287b8bdb54d06cf4a715b",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1276,9 +1276,9 @@
         "bg2_above_footer_sha256": "a5de82e7b824039f9c691127d8817cc213e4be54baf45bc3c90573f32ac126b0",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/arcade-p1-04.png",
-          "capture_sha256": "817b35bf359cbddf9c56ac0eaa0fe94b5ce9fc82b91778ae35594833a8758df8",
+          "capture_sha256": "4f076a0756d2cdc867a2f6edc109d0eb8c00a1b01cc47b57919d5a968e593a78",
           "vram_capture": "docs/screenshots/menu-preservation/parent/arcade-p1-04.vram.bin",
-          "vram_sha256": "ed44d19c949bf6dcf9895e308c81dbbd7f613deb8768d5154fc0031ffb0880ae",
+          "vram_sha256": "4ec5ea81619171f374ebd4efb6cfc3350721f0b1ebe048c682c0bd0eaa7a5223",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1306,9 +1306,9 @@
         "bg2_above_footer_sha256": "5ddbd8682d22a76a5c74a90c7434baf4af45afed851382e2d1f8c8644c7ab32c",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/arcade-p1-05.png",
-          "capture_sha256": "064b0aef9ce34c5d110a7fdff241a606dff825d0ae2faea144be2dc467a80e1c",
+          "capture_sha256": "3de0cec0f2e08a44fc475e6ab2cccfad7df3895daff20d05a6e346e6f900e6c9",
           "vram_capture": "docs/screenshots/menu-preservation/parent/arcade-p1-05.vram.bin",
-          "vram_sha256": "da0d9b81870f6b474bbb7278464be2ead69464341abf9ccf8ba36749a7aa5b5d",
+          "vram_sha256": "136146cf00f2e653697731131a1b37dbcf7cef9f6fc9047f95a0740d00a4e9ba",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1336,9 +1336,9 @@
         "bg2_above_footer_sha256": "88a9a4f8398d3e4cf137455add401e36197057692c3112af15faec344f55f938",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/arcade-p1-06.png",
-          "capture_sha256": "9f4b2db2c920555dd9fad6779f355e23e973ab73395cd42eea1cc229093a0abf",
+          "capture_sha256": "77c60eb298d7dfa583c0817fd8372e94721c791b8d316505302e157fb685bfff",
           "vram_capture": "docs/screenshots/menu-preservation/parent/arcade-p1-06.vram.bin",
-          "vram_sha256": "c75935955dad2a8c142f46129b05163475673b9f4b9bbd44aa622e42d98f4b99",
+          "vram_sha256": "ce085159dc57cbfcffa964a950e2d353d9d297993627c97b0e987dc41749c7ed",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1366,9 +1366,9 @@
         "bg2_above_footer_sha256": "8a72b99658405bbbc41f9dcfd1c08b3166790e4b82de1697a9b23bd10813c899",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/arcade-p1-07.png",
-          "capture_sha256": "b5acde4eb67ae027023045e6211dbd156e972c6ae296604ce5472abb8ec1e552",
+          "capture_sha256": "6162bb2478cfbe8d0bcdc864dc5b3a27747fb10e1455170cde5303848db51abb",
           "vram_capture": "docs/screenshots/menu-preservation/parent/arcade-p1-07.vram.bin",
-          "vram_sha256": "34edf461126d0142059b20ea3c7c54647fef2003a2ab816ccb3ebde088c67cee",
+          "vram_sha256": "86826c52b4f90793177e5e75d4752387358824b04ccf872d2905a43237df67f9",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1396,9 +1396,9 @@
         "bg2_above_footer_sha256": "12626c7e944272b44ee6272e38f646a1f1dff317a60b75ca358b773c01a81286",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/arcade-p1-08.png",
-          "capture_sha256": "79e4420b7da6fcfd7a2fa765d197606bc1e4b34e714f21146449b7e42e644dd2",
+          "capture_sha256": "9c8aa0433becbc2489ff2ae8ef37aa6edefa02c47313b9f646eb64ca45f909d6",
           "vram_capture": "docs/screenshots/menu-preservation/parent/arcade-p1-08.vram.bin",
-          "vram_sha256": "53546177f88f986d736f12c42d70b7c5ca7538104c2378c45931e1d89b5d80ca",
+          "vram_sha256": "384f51c519c50b78ca26e68d753bd6e83b3b8bcd0ae1d05f46633ee685be5cbb",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1426,9 +1426,9 @@
         "bg2_above_footer_sha256": "7af011dc917d6cfb20190bd19a14533e5074412c5b2e15b1264bf8c032b425cb",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/arcade-p1-09.png",
-          "capture_sha256": "adb5df9c5cb99d5d854087ce503cb77f830940ec3232edfb27e015fc785cc8b9",
+          "capture_sha256": "1426dd5dfada118e82be31e8b7ca388ceda83c782616ef752ec185f60f1279b0",
           "vram_capture": "docs/screenshots/menu-preservation/parent/arcade-p1-09.vram.bin",
-          "vram_sha256": "038db1fe2679245092d7895f62dddde36fb1e511da70f5444fc5f1328ae5447c",
+          "vram_sha256": "7c10c5870fd39513024d6fef9d9d3a01541ade5fb51363fae759e2978dedac63",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1456,9 +1456,9 @@
         "bg2_above_footer_sha256": "e58e8fb01ebbc1b1fa0478a2b706de2fd97757f1ac0475b3a02cd70cd6ccc699",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/arcade-p1-10.png",
-          "capture_sha256": "e790d15a4ebe81c250e514929881ad001a0b6f365a52e64c13c6384e474c602c",
+          "capture_sha256": "75172f136f551829389d00ddeb44e47b5f0c98d2e9af84ce1e9acd3512acf5d0",
           "vram_capture": "docs/screenshots/menu-preservation/parent/arcade-p1-10.vram.bin",
-          "vram_sha256": "5a7c4046aea15e32539dc1d29beeabc0bc6a1a9950ffbc3b1169e3cfd5fc1b58",
+          "vram_sha256": "af89a469152e073e62eaa5bfd96f06318239f31e12037e81913ab8aaf225aceb",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1486,9 +1486,9 @@
         "bg2_above_footer_sha256": "fc69de7588066b4a8ade99e1e908134c996c64cb839b7451a04a75b89fbceaa4",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/arcade-p1-11.png",
-          "capture_sha256": "d1ee2e591d154f2ae579d29d3a876e659870eea65a08d12d1c82053ec7c36eab",
+          "capture_sha256": "fcea0b1c0f248d6db9dd6ae97e958d9e0d86c6bc625afa080ee2f1a7e1f091df",
           "vram_capture": "docs/screenshots/menu-preservation/parent/arcade-p1-11.vram.bin",
-          "vram_sha256": "5139ff4a02ecbc328a6e5d781bcd5359934f93fed5728dadda7e36b6d1e6dc6c",
+          "vram_sha256": "e9088d0fe84547b4d5563259a30b9948d3e958abee467b74c409a06c6f987e48",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1516,9 +1516,9 @@
         "bg2_above_footer_sha256": "97a9b294b02048cc3111ef68761341c4816b148493e8c958af7a001ac22a43f3",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/arcade-arena-0.png",
-          "capture_sha256": "d961bb2003f2fd4bdcb66d44fbe5ad1827534902ef9ccfd594ce30c5b2545245",
+          "capture_sha256": "43f97c2542decbcb9986403462c2f13df207f2f3bf974c5cecdb115288a2270d",
           "vram_capture": "docs/screenshots/menu-preservation/parent/arcade-arena-0.vram.bin",
-          "vram_sha256": "83151fb3336c3a2ee787a8f429fe9afc0d4aacb4f68cbb15b61b693d431632a7",
+          "vram_sha256": "1c129cb6c38987931132aa8ea8b979cece4c1edb0c46fb576bb6653e570fca1d",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1546,9 +1546,9 @@
         "bg2_above_footer_sha256": "0178cb22970b2439e3febdc554db728152c94dba7065dff23859dc57ace06c41",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/arcade-arena-1.png",
-          "capture_sha256": "176c89e63c1ac1fc946d739a62411e1cc901664f598bc399172c7c1b31dceff9",
+          "capture_sha256": "3678ef18e88238aba94940feb7dd1e379a40320e16e5b910a229995fd1f8ed60",
           "vram_capture": "docs/screenshots/menu-preservation/parent/arcade-arena-1.vram.bin",
-          "vram_sha256": "80368f579b8a7d238b10fb187da482e70f8a57b49a0a6ce5779bd8898d84d7c1",
+          "vram_sha256": "80736526d120a4e9c255a332e0a1a078cf21b9636d374e5bf053d6b20c7b234f",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1576,9 +1576,9 @@
         "bg2_above_footer_sha256": "6ad18118d1c4bd96f3c325bab68c0ddd0f855d6909bd8b553957c8bec62b90e0",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/arcade-arena-2.png",
-          "capture_sha256": "4f4fbe2c0cdab21851d52642b1732089a558326f57a5f72195a6f914e9f99870",
+          "capture_sha256": "ff7ef8eeb7c536bef7cf8bdf5ba9599ca60bde8c4bc8b7fbdc8c644031a1709f",
           "vram_capture": "docs/screenshots/menu-preservation/parent/arcade-arena-2.vram.bin",
-          "vram_sha256": "37333e623285b75a0812076e29f36bccb3d9b98222262825b6b335f13d48fc84",
+          "vram_sha256": "ab72b04a5dc13a3b50eece868c68f747a34eef19bcbb27c38347d31409ad2c3c",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1606,9 +1606,9 @@
         "bg2_above_footer_sha256": "8c0869127f017dac1e8ad6cdf3b91b1caa4251526fd29e64a5ba579acc85bcdc",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-p1-00.png",
-          "capture_sha256": "a9466c00243be5461db84f27f42f9354118e38d8a136a155ee4a015ea21cd730",
+          "capture_sha256": "c17cf4752ee638b6f30453f1ce4c429ab4a7ad89bb94f84bdf4bf78f437d1ec6",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-p1-00.vram.bin",
-          "vram_sha256": "e6e25ebd5356ed897466edd5cba40baf57df94a887f53f61def25ca00c62d6b6",
+          "vram_sha256": "32f8b0702fde22812c8cf18ed61366701e1f147b4d1ab2be07e44f890a370cc0",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1636,9 +1636,9 @@
         "bg2_above_footer_sha256": "163028178e5c867e5d4dee5f79e63f6adc4ea44c35e9068d80026875a7767ab1",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-p1-01.png",
-          "capture_sha256": "387bae4046ca694087dc263491afe5c01e95ad4581b7d5d8058044a38f06e47b",
+          "capture_sha256": "14f00fa8e8d7b11d0eb1d9f4b0bdca710e655713b318210c2de613bc3d4f6c0b",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-p1-01.vram.bin",
-          "vram_sha256": "df098a05fdab31ce49dc42ab512366dbc84abbb1b08c7692c8f6aed58e600ebc",
+          "vram_sha256": "9277629741dafa5a2c58894566ff729b9476f70ac49b967098b1e848b21284e4",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1666,9 +1666,9 @@
         "bg2_above_footer_sha256": "828e51e32dfba3946a24fdcdfd252b10f16569d1a5dfe22a3cfdb5c09199ce4c",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-p1-02.png",
-          "capture_sha256": "de2860425d2cb4ccadadf724e2da2a438a5ee32b0a8b67703e55e7d4b1abeae3",
+          "capture_sha256": "faa67f3545b15056f6260280e99bce062db6631c90d8254e351424ffa02fbc3a",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-p1-02.vram.bin",
-          "vram_sha256": "40a601fffcb18b5723a96f97725f73d885f2ed4d6e6d89d96293ff9a14b5f9c4",
+          "vram_sha256": "7bd6da2f73c177a13d33ea23736fc383070bf310445d6c4548ebddd18f518b8e",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1696,9 +1696,9 @@
         "bg2_above_footer_sha256": "d901d4894b5c73373b065dd224d952d8165a2c61dd5751b309ef4ff1f6fdead3",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-p1-03.png",
-          "capture_sha256": "37c5642760deb6fd6d227e5202a79d54bfabfadadb9bb70e092cc9c400637719",
+          "capture_sha256": "8cdd99518c5db2cbb253ad03b3ed3af55692f067e8d60bc957cf685a207027ce",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-p1-03.vram.bin",
-          "vram_sha256": "8de9882ad85b832229e42dd4cf3055930b2d4ea2214c4690eee30b4d1574ef0c",
+          "vram_sha256": "af94a60bc10830b33617331396d5580de417bb1eb1d287b8bdb54d06cf4a715b",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1726,9 +1726,9 @@
         "bg2_above_footer_sha256": "a5de82e7b824039f9c691127d8817cc213e4be54baf45bc3c90573f32ac126b0",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-p1-04.png",
-          "capture_sha256": "817b35bf359cbddf9c56ac0eaa0fe94b5ce9fc82b91778ae35594833a8758df8",
+          "capture_sha256": "4f076a0756d2cdc867a2f6edc109d0eb8c00a1b01cc47b57919d5a968e593a78",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-p1-04.vram.bin",
-          "vram_sha256": "ed44d19c949bf6dcf9895e308c81dbbd7f613deb8768d5154fc0031ffb0880ae",
+          "vram_sha256": "4ec5ea81619171f374ebd4efb6cfc3350721f0b1ebe048c682c0bd0eaa7a5223",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1756,9 +1756,9 @@
         "bg2_above_footer_sha256": "5ddbd8682d22a76a5c74a90c7434baf4af45afed851382e2d1f8c8644c7ab32c",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-p1-05.png",
-          "capture_sha256": "064b0aef9ce34c5d110a7fdff241a606dff825d0ae2faea144be2dc467a80e1c",
+          "capture_sha256": "3de0cec0f2e08a44fc475e6ab2cccfad7df3895daff20d05a6e346e6f900e6c9",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-p1-05.vram.bin",
-          "vram_sha256": "da0d9b81870f6b474bbb7278464be2ead69464341abf9ccf8ba36749a7aa5b5d",
+          "vram_sha256": "136146cf00f2e653697731131a1b37dbcf7cef9f6fc9047f95a0740d00a4e9ba",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1786,9 +1786,9 @@
         "bg2_above_footer_sha256": "88a9a4f8398d3e4cf137455add401e36197057692c3112af15faec344f55f938",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-p1-06.png",
-          "capture_sha256": "9f4b2db2c920555dd9fad6779f355e23e973ab73395cd42eea1cc229093a0abf",
+          "capture_sha256": "77c60eb298d7dfa583c0817fd8372e94721c791b8d316505302e157fb685bfff",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-p1-06.vram.bin",
-          "vram_sha256": "c75935955dad2a8c142f46129b05163475673b9f4b9bbd44aa622e42d98f4b99",
+          "vram_sha256": "ce085159dc57cbfcffa964a950e2d353d9d297993627c97b0e987dc41749c7ed",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1816,9 +1816,9 @@
         "bg2_above_footer_sha256": "8a72b99658405bbbc41f9dcfd1c08b3166790e4b82de1697a9b23bd10813c899",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-p1-07.png",
-          "capture_sha256": "b5acde4eb67ae027023045e6211dbd156e972c6ae296604ce5472abb8ec1e552",
+          "capture_sha256": "6162bb2478cfbe8d0bcdc864dc5b3a27747fb10e1455170cde5303848db51abb",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-p1-07.vram.bin",
-          "vram_sha256": "34edf461126d0142059b20ea3c7c54647fef2003a2ab816ccb3ebde088c67cee",
+          "vram_sha256": "86826c52b4f90793177e5e75d4752387358824b04ccf872d2905a43237df67f9",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1846,9 +1846,9 @@
         "bg2_above_footer_sha256": "12626c7e944272b44ee6272e38f646a1f1dff317a60b75ca358b773c01a81286",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-p1-08.png",
-          "capture_sha256": "79e4420b7da6fcfd7a2fa765d197606bc1e4b34e714f21146449b7e42e644dd2",
+          "capture_sha256": "9c8aa0433becbc2489ff2ae8ef37aa6edefa02c47313b9f646eb64ca45f909d6",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-p1-08.vram.bin",
-          "vram_sha256": "53546177f88f986d736f12c42d70b7c5ca7538104c2378c45931e1d89b5d80ca",
+          "vram_sha256": "384f51c519c50b78ca26e68d753bd6e83b3b8bcd0ae1d05f46633ee685be5cbb",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1876,9 +1876,9 @@
         "bg2_above_footer_sha256": "7af011dc917d6cfb20190bd19a14533e5074412c5b2e15b1264bf8c032b425cb",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-p1-09.png",
-          "capture_sha256": "adb5df9c5cb99d5d854087ce503cb77f830940ec3232edfb27e015fc785cc8b9",
+          "capture_sha256": "1426dd5dfada118e82be31e8b7ca388ceda83c782616ef752ec185f60f1279b0",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-p1-09.vram.bin",
-          "vram_sha256": "038db1fe2679245092d7895f62dddde36fb1e511da70f5444fc5f1328ae5447c",
+          "vram_sha256": "7c10c5870fd39513024d6fef9d9d3a01541ade5fb51363fae759e2978dedac63",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1906,9 +1906,9 @@
         "bg2_above_footer_sha256": "e58e8fb01ebbc1b1fa0478a2b706de2fd97757f1ac0475b3a02cd70cd6ccc699",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-p1-10.png",
-          "capture_sha256": "e790d15a4ebe81c250e514929881ad001a0b6f365a52e64c13c6384e474c602c",
+          "capture_sha256": "75172f136f551829389d00ddeb44e47b5f0c98d2e9af84ce1e9acd3512acf5d0",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-p1-10.vram.bin",
-          "vram_sha256": "5a7c4046aea15e32539dc1d29beeabc0bc6a1a9950ffbc3b1169e3cfd5fc1b58",
+          "vram_sha256": "af89a469152e073e62eaa5bfd96f06318239f31e12037e81913ab8aaf225aceb",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1936,9 +1936,9 @@
         "bg2_above_footer_sha256": "fc69de7588066b4a8ade99e1e908134c996c64cb839b7451a04a75b89fbceaa4",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-p1-11.png",
-          "capture_sha256": "d1ee2e591d154f2ae579d29d3a876e659870eea65a08d12d1c82053ec7c36eab",
+          "capture_sha256": "fcea0b1c0f248d6db9dd6ae97e958d9e0d86c6bc625afa080ee2f1a7e1f091df",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-p1-11.vram.bin",
-          "vram_sha256": "5139ff4a02ecbc328a6e5d781bcd5359934f93fed5728dadda7e36b6d1e6dc6c",
+          "vram_sha256": "e9088d0fe84547b4d5563259a30b9948d3e958abee467b74c409a06c6f987e48",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1966,9 +1966,9 @@
         "bg2_above_footer_sha256": "d00b32481be5c1415b2fbd84dcd04cc4932df21617f84b18cf9e43da5dd90789",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-second-01.png",
-          "capture_sha256": "79d3e7d711d772e8ae264c850ff6730fe3c487312537fa994c9bdded583053a2",
+          "capture_sha256": "131228dc6f2519bbb6a1c39c04a5231dbc47b5ba8d4d268085d4d50602b9709f",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-second-01.vram.bin",
-          "vram_sha256": "1910bd4314da5b8ce5268f6aaecaa19435af5b55231ccc20d815106c3c29434e",
+          "vram_sha256": "e90db0348d9a40cef2539448ec69f53ea0726bca3560858ebe27cf0495c69cad",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -1996,9 +1996,9 @@
         "bg2_above_footer_sha256": "b439de8af8595976f26a7bcbf7da0a7440df7dbf7a1fa4f424a232a0bb193750",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-second-02.png",
-          "capture_sha256": "c6ace31c35bb1064c72ab371319c1e2c2059bec1a480507badebd96564b02785",
+          "capture_sha256": "b120d80ff62f5a589850819ea803024e454dc0b170eee80fcfaad955c94f61af",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-second-02.vram.bin",
-          "vram_sha256": "c83fe72c193759eeff89a2eef3508adbb0fb987c6a5198af0ba23bb74ed0c54d",
+          "vram_sha256": "e761313052bffe38fb3ab9d7f4fec7b188f7d66c84b15e6161f9fe521fc00bfb",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2026,9 +2026,9 @@
         "bg2_above_footer_sha256": "4e451a1267ce9921137d8c405bd45534d386383404cddc6811247b6a1fe98e9c",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-second-03.png",
-          "capture_sha256": "66ee893586f90616559d65a0a85f1ab22fd5ef32dd573b8c0a690a3d48382eac",
+          "capture_sha256": "4b3ceb991e24e6f61ed0e40782f1a2e537de9f5e255d699d1fcc48f5b865ca7a",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-second-03.vram.bin",
-          "vram_sha256": "989356704f406a86d458c1766c5dddcb84b6a960bc9346a1a8e8da9235647435",
+          "vram_sha256": "bfa09f79d740b38d8fef3c1134aefccc5ee966a0b17182c25eb061ce0ec8ef1f",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2056,9 +2056,9 @@
         "bg2_above_footer_sha256": "2620f52a90f211c84346ac92f38c8e19e3bad90379e9ae2634a6098493e253c1",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-second-04.png",
-          "capture_sha256": "bf78a39d48f9d545511b127f83bcbd1829162a2f9e5c45c5fbd7d5d5483e0594",
+          "capture_sha256": "3188c7c3c209bc87253f464803828357c0d41ace086b38ce1f0650bf05148e31",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-second-04.vram.bin",
-          "vram_sha256": "1346da1a1b7f72558b41a895ae7d90cc3b39eee2cebc02d4372a13436d287a18",
+          "vram_sha256": "efd938071c27004eade801845c87f8f2b91500645453d238fc61f40afba5a8a2",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2086,9 +2086,9 @@
         "bg2_above_footer_sha256": "184e9b6f11d43356fe750541fa30930edaaef956e1c74ce6f143631fa02b1304",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-second-05.png",
-          "capture_sha256": "117c6a4ebc9c2331d4272a2c79257e1588fec343d06e4d93420e0ffcd1b31d0f",
+          "capture_sha256": "d9d4be7b5974f50108789e44bd29d044e73dbbaa7a8e282aade789b6a7d31038",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-second-05.vram.bin",
-          "vram_sha256": "bc5fa5b7d792b126dd9dd0fbe750b642bc2e1507cb450738c03e7eeee316f33b",
+          "vram_sha256": "65c54fb629ad0fcd11e8c5757a1a76b758ae4213935e33c61e7d545506867c1f",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2116,9 +2116,9 @@
         "bg2_above_footer_sha256": "e0cb8f733e863aa953394dd1c25808ad133dbeb14175b7f3518ad6adf488a2a1",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-second-06.png",
-          "capture_sha256": "001a3d66b1813aa9b2c1cb963dabf9961b39b3e6638629c8814b4dfa33ba9004",
+          "capture_sha256": "b254b1e8e49810ebc6bc42b8813c96d1a3e26ca47b6982d496007a6a3ead998e",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-second-06.vram.bin",
-          "vram_sha256": "deda6b8ce29cc1c8d1e8f0abc24a023dc9d0a5be96f77dbbbaca445736a4060d",
+          "vram_sha256": "8cd4e49bcfacd099d98a987c6aad1ab68402e9236e140cb03d979b75264d7974",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2146,9 +2146,9 @@
         "bg2_above_footer_sha256": "b33d55005063023dd594591df839b950809c4469683f36440d68c74f2cb97778",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-second-07.png",
-          "capture_sha256": "30c00d8ba0f066f36b43c0f86cc601811a2a61f62c81a268dd839a51c1b52031",
+          "capture_sha256": "cf571cde5c5cee2fbe47805d29891b25d0e36d63d769cceb4e206b2639470bc8",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-second-07.vram.bin",
-          "vram_sha256": "35aa2f9d546da41854e347e3793e3db8d425949dc7fcdfbf75bbf6dd6ea49bbc",
+          "vram_sha256": "33689041f099b47e047a3cf1e48f887752afcc0d5b04f6353b61ca018ae4a344",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2176,9 +2176,9 @@
         "bg2_above_footer_sha256": "18ff9ef6cad5eb88cc7b97e7062600f7d931494c8fd1dcf266b18bc99c4692d1",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-second-08.png",
-          "capture_sha256": "647b0bde4ff2e39c3d360e4a79833549f1ac6c283bb0959b18e29b2951a9e52b",
+          "capture_sha256": "f84f784fbb521762468c838197546ee22c539c86a9bdb3609a4c40d139e75d81",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-second-08.vram.bin",
-          "vram_sha256": "3781a75c1c78f7fd8b9906a229f34ffa1196a8e9e6c14abf4657890c63b65bfb",
+          "vram_sha256": "9e75cc19e579ca48ad9535b5e31a9a4395d3832b8fc7f19f06a78cc85fa4803c",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2206,9 +2206,9 @@
         "bg2_above_footer_sha256": "c798127eccd85e1a76f653380843b86f82ce89b61d5825d2a4253da72ef7a55c",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-second-09.png",
-          "capture_sha256": "48ff258954f2c8d825f06205878ce049215e26eaa8ecfb64c827e11e1d846b6d",
+          "capture_sha256": "dce619f134d6880dce68520dfe27e4d312e0fc2400bcd3d6a6b713f994ea4b6e",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-second-09.vram.bin",
-          "vram_sha256": "8001108e7b1dbee58cfd17596f937bdc0046d5831fc2e49e0f0433ae908c1ecf",
+          "vram_sha256": "2d1beb197a7f5eccd97811a6cd3e800f0864aac9014b54bd38c23a2784645103",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2236,9 +2236,9 @@
         "bg2_above_footer_sha256": "a89efb05244cc391acbfd49a7e00d9f0d5e7e63570009d7bb37e70f79cda9e35",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-second-10.png",
-          "capture_sha256": "2a0b3a268d159765a1249ba01e94f13d85d0f52c4f87777476727994bc67f8a3",
+          "capture_sha256": "d0698bdcb2a586741d5f09d65910e28f2c0834e092519fd0ab68b82f8abaa10f",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-second-10.vram.bin",
-          "vram_sha256": "b8c97117c61cdbd08389c5bcf5a6bf3a46b9b301a5ec422431b4379b82e47e35",
+          "vram_sha256": "e2d93fc4d7de9d333e6464bbf1e1aacc5c7319843aa94fb13fed2883e7a52773",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2266,9 +2266,9 @@
         "bg2_above_footer_sha256": "10b1772d78aa11d93f9cc3d8fe875c672ba41f64cd2bd211ce7c9a6f333a8fe6",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-second-11.png",
-          "capture_sha256": "4d35e81b9794387209a34769f0c8d7bafcb0ea03209b3fb788225159cc8bb79e",
+          "capture_sha256": "038074da6ee90aadc73f8f91dcef79a9e7b95bfd63bb8dce427934d0b77f8d0c",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-second-11.vram.bin",
-          "vram_sha256": "cc067650bb8c0706c147196b8c39ed8dda0adc6af515a6e919e8e31dcfa34c3a",
+          "vram_sha256": "e306dcc2c94261cbe213fc46467c752792707f83dbdd1df7ae17daf61a4cc42d",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2296,9 +2296,9 @@
         "bg2_above_footer_sha256": "a1223e775faecf318e5b3a2d35a3f2d605432404b9e65ba9eccdcbb10c613141",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-second-00.png",
-          "capture_sha256": "03f6f265aa1d757518033833900d364cdfab48c1e77bdd781fbad8cb3ce951d9",
+          "capture_sha256": "0b7c47cbcb2e7269a5ce61e11d8dcca78ab1ac8c798c3e1523ca2381501ab982",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-second-00.vram.bin",
-          "vram_sha256": "e568f17d2c4363a39857b2ed8e72e27c5de9b512cfc0b32bdf5cdfedb68d307d",
+          "vram_sha256": "710ab4e8c93288079a1eea8c6172dae15f572eb1d77946942253780c08d1e730",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2326,9 +2326,9 @@
         "bg2_above_footer_sha256": "97a9b294b02048cc3111ef68761341c4816b148493e8c958af7a001ac22a43f3",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-arena-0.png",
-          "capture_sha256": "d961bb2003f2fd4bdcb66d44fbe5ad1827534902ef9ccfd594ce30c5b2545245",
+          "capture_sha256": "43f97c2542decbcb9986403462c2f13df207f2f3bf974c5cecdb115288a2270d",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-arena-0.vram.bin",
-          "vram_sha256": "83151fb3336c3a2ee787a8f429fe9afc0d4aacb4f68cbb15b61b693d431632a7",
+          "vram_sha256": "1c129cb6c38987931132aa8ea8b979cece4c1edb0c46fb576bb6653e570fca1d",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2356,9 +2356,9 @@
         "bg2_above_footer_sha256": "0178cb22970b2439e3febdc554db728152c94dba7065dff23859dc57ace06c41",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-arena-1.png",
-          "capture_sha256": "176c89e63c1ac1fc946d739a62411e1cc901664f598bc399172c7c1b31dceff9",
+          "capture_sha256": "3678ef18e88238aba94940feb7dd1e379a40320e16e5b910a229995fd1f8ed60",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-arena-1.vram.bin",
-          "vram_sha256": "80368f579b8a7d238b10fb187da482e70f8a57b49a0a6ce5779bd8898d84d7c1",
+          "vram_sha256": "80736526d120a4e9c255a332e0a1a078cf21b9636d374e5bf053d6b20c7b234f",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2386,9 +2386,9 @@
         "bg2_above_footer_sha256": "6ad18118d1c4bd96f3c325bab68c0ddd0f855d6909bd8b553957c8bec62b90e0",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/versus-arena-2.png",
-          "capture_sha256": "4f4fbe2c0cdab21851d52642b1732089a558326f57a5f72195a6f914e9f99870",
+          "capture_sha256": "ff7ef8eeb7c536bef7cf8bdf5ba9599ca60bde8c4bc8b7fbdc8c644031a1709f",
           "vram_capture": "docs/screenshots/menu-preservation/parent/versus-arena-2.vram.bin",
-          "vram_sha256": "37333e623285b75a0812076e29f36bccb3d9b98222262825b6b335f13d48fc84",
+          "vram_sha256": "ab72b04a5dc13a3b50eece868c68f747a34eef19bcbb27c38347d31409ad2c3c",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2416,9 +2416,9 @@
         "bg2_above_footer_sha256": "8c0869127f017dac1e8ad6cdf3b91b1caa4251526fd29e64a5ba579acc85bcdc",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-p1-00.png",
-          "capture_sha256": "a9466c00243be5461db84f27f42f9354118e38d8a136a155ee4a015ea21cd730",
+          "capture_sha256": "c17cf4752ee638b6f30453f1ce4c429ab4a7ad89bb94f84bdf4bf78f437d1ec6",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-p1-00.vram.bin",
-          "vram_sha256": "e6e25ebd5356ed897466edd5cba40baf57df94a887f53f61def25ca00c62d6b6",
+          "vram_sha256": "32f8b0702fde22812c8cf18ed61366701e1f147b4d1ab2be07e44f890a370cc0",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2446,9 +2446,9 @@
         "bg2_above_footer_sha256": "163028178e5c867e5d4dee5f79e63f6adc4ea44c35e9068d80026875a7767ab1",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-p1-01.png",
-          "capture_sha256": "387bae4046ca694087dc263491afe5c01e95ad4581b7d5d8058044a38f06e47b",
+          "capture_sha256": "14f00fa8e8d7b11d0eb1d9f4b0bdca710e655713b318210c2de613bc3d4f6c0b",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-p1-01.vram.bin",
-          "vram_sha256": "df098a05fdab31ce49dc42ab512366dbc84abbb1b08c7692c8f6aed58e600ebc",
+          "vram_sha256": "9277629741dafa5a2c58894566ff729b9476f70ac49b967098b1e848b21284e4",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2476,9 +2476,9 @@
         "bg2_above_footer_sha256": "828e51e32dfba3946a24fdcdfd252b10f16569d1a5dfe22a3cfdb5c09199ce4c",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-p1-02.png",
-          "capture_sha256": "de2860425d2cb4ccadadf724e2da2a438a5ee32b0a8b67703e55e7d4b1abeae3",
+          "capture_sha256": "faa67f3545b15056f6260280e99bce062db6631c90d8254e351424ffa02fbc3a",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-p1-02.vram.bin",
-          "vram_sha256": "40a601fffcb18b5723a96f97725f73d885f2ed4d6e6d89d96293ff9a14b5f9c4",
+          "vram_sha256": "7bd6da2f73c177a13d33ea23736fc383070bf310445d6c4548ebddd18f518b8e",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2506,9 +2506,9 @@
         "bg2_above_footer_sha256": "d901d4894b5c73373b065dd224d952d8165a2c61dd5751b309ef4ff1f6fdead3",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-p1-03.png",
-          "capture_sha256": "37c5642760deb6fd6d227e5202a79d54bfabfadadb9bb70e092cc9c400637719",
+          "capture_sha256": "8cdd99518c5db2cbb253ad03b3ed3af55692f067e8d60bc957cf685a207027ce",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-p1-03.vram.bin",
-          "vram_sha256": "8de9882ad85b832229e42dd4cf3055930b2d4ea2214c4690eee30b4d1574ef0c",
+          "vram_sha256": "af94a60bc10830b33617331396d5580de417bb1eb1d287b8bdb54d06cf4a715b",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2536,9 +2536,9 @@
         "bg2_above_footer_sha256": "a5de82e7b824039f9c691127d8817cc213e4be54baf45bc3c90573f32ac126b0",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-p1-04.png",
-          "capture_sha256": "817b35bf359cbddf9c56ac0eaa0fe94b5ce9fc82b91778ae35594833a8758df8",
+          "capture_sha256": "4f076a0756d2cdc867a2f6edc109d0eb8c00a1b01cc47b57919d5a968e593a78",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-p1-04.vram.bin",
-          "vram_sha256": "ed44d19c949bf6dcf9895e308c81dbbd7f613deb8768d5154fc0031ffb0880ae",
+          "vram_sha256": "4ec5ea81619171f374ebd4efb6cfc3350721f0b1ebe048c682c0bd0eaa7a5223",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2566,9 +2566,9 @@
         "bg2_above_footer_sha256": "5ddbd8682d22a76a5c74a90c7434baf4af45afed851382e2d1f8c8644c7ab32c",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-p1-05.png",
-          "capture_sha256": "064b0aef9ce34c5d110a7fdff241a606dff825d0ae2faea144be2dc467a80e1c",
+          "capture_sha256": "3de0cec0f2e08a44fc475e6ab2cccfad7df3895daff20d05a6e346e6f900e6c9",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-p1-05.vram.bin",
-          "vram_sha256": "da0d9b81870f6b474bbb7278464be2ead69464341abf9ccf8ba36749a7aa5b5d",
+          "vram_sha256": "136146cf00f2e653697731131a1b37dbcf7cef9f6fc9047f95a0740d00a4e9ba",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2596,9 +2596,9 @@
         "bg2_above_footer_sha256": "88a9a4f8398d3e4cf137455add401e36197057692c3112af15faec344f55f938",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-p1-06.png",
-          "capture_sha256": "9f4b2db2c920555dd9fad6779f355e23e973ab73395cd42eea1cc229093a0abf",
+          "capture_sha256": "77c60eb298d7dfa583c0817fd8372e94721c791b8d316505302e157fb685bfff",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-p1-06.vram.bin",
-          "vram_sha256": "c75935955dad2a8c142f46129b05163475673b9f4b9bbd44aa622e42d98f4b99",
+          "vram_sha256": "ce085159dc57cbfcffa964a950e2d353d9d297993627c97b0e987dc41749c7ed",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2626,9 +2626,9 @@
         "bg2_above_footer_sha256": "8a72b99658405bbbc41f9dcfd1c08b3166790e4b82de1697a9b23bd10813c899",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-p1-07.png",
-          "capture_sha256": "b5acde4eb67ae027023045e6211dbd156e972c6ae296604ce5472abb8ec1e552",
+          "capture_sha256": "6162bb2478cfbe8d0bcdc864dc5b3a27747fb10e1455170cde5303848db51abb",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-p1-07.vram.bin",
-          "vram_sha256": "34edf461126d0142059b20ea3c7c54647fef2003a2ab816ccb3ebde088c67cee",
+          "vram_sha256": "86826c52b4f90793177e5e75d4752387358824b04ccf872d2905a43237df67f9",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2656,9 +2656,9 @@
         "bg2_above_footer_sha256": "12626c7e944272b44ee6272e38f646a1f1dff317a60b75ca358b773c01a81286",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-p1-08.png",
-          "capture_sha256": "79e4420b7da6fcfd7a2fa765d197606bc1e4b34e714f21146449b7e42e644dd2",
+          "capture_sha256": "9c8aa0433becbc2489ff2ae8ef37aa6edefa02c47313b9f646eb64ca45f909d6",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-p1-08.vram.bin",
-          "vram_sha256": "53546177f88f986d736f12c42d70b7c5ca7538104c2378c45931e1d89b5d80ca",
+          "vram_sha256": "384f51c519c50b78ca26e68d753bd6e83b3b8bcd0ae1d05f46633ee685be5cbb",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2686,9 +2686,9 @@
         "bg2_above_footer_sha256": "7af011dc917d6cfb20190bd19a14533e5074412c5b2e15b1264bf8c032b425cb",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-p1-09.png",
-          "capture_sha256": "adb5df9c5cb99d5d854087ce503cb77f830940ec3232edfb27e015fc785cc8b9",
+          "capture_sha256": "1426dd5dfada118e82be31e8b7ca388ceda83c782616ef752ec185f60f1279b0",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-p1-09.vram.bin",
-          "vram_sha256": "038db1fe2679245092d7895f62dddde36fb1e511da70f5444fc5f1328ae5447c",
+          "vram_sha256": "7c10c5870fd39513024d6fef9d9d3a01541ade5fb51363fae759e2978dedac63",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2716,9 +2716,9 @@
         "bg2_above_footer_sha256": "e58e8fb01ebbc1b1fa0478a2b706de2fd97757f1ac0475b3a02cd70cd6ccc699",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-p1-10.png",
-          "capture_sha256": "e790d15a4ebe81c250e514929881ad001a0b6f365a52e64c13c6384e474c602c",
+          "capture_sha256": "75172f136f551829389d00ddeb44e47b5f0c98d2e9af84ce1e9acd3512acf5d0",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-p1-10.vram.bin",
-          "vram_sha256": "5a7c4046aea15e32539dc1d29beeabc0bc6a1a9950ffbc3b1169e3cfd5fc1b58",
+          "vram_sha256": "af89a469152e073e62eaa5bfd96f06318239f31e12037e81913ab8aaf225aceb",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2746,9 +2746,9 @@
         "bg2_above_footer_sha256": "fc69de7588066b4a8ade99e1e908134c996c64cb839b7451a04a75b89fbceaa4",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-p1-11.png",
-          "capture_sha256": "d1ee2e591d154f2ae579d29d3a876e659870eea65a08d12d1c82053ec7c36eab",
+          "capture_sha256": "fcea0b1c0f248d6db9dd6ae97e958d9e0d86c6bc625afa080ee2f1a7e1f091df",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-p1-11.vram.bin",
-          "vram_sha256": "5139ff4a02ecbc328a6e5d781bcd5359934f93fed5728dadda7e36b6d1e6dc6c",
+          "vram_sha256": "e9088d0fe84547b4d5563259a30b9948d3e958abee467b74c409a06c6f987e48",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2776,9 +2776,9 @@
         "bg2_above_footer_sha256": "882aa421adafb76733a072710df220dbffc96118fcdd6dcb93ccf80c7d1dac32",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-second-01.png",
-          "capture_sha256": "ae5e24b4ea730dcbb5f0386fdb31cf37dbf57bf6197324792f7571461ffee08c",
+          "capture_sha256": "85af52c505636198039a35c0bafa9679f2e3e74bdf830b15468cff2e0d4c74a0",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-second-01.vram.bin",
-          "vram_sha256": "99ccc5ccb0870df9c17129ca840fe003776aaa7df65ad58fc6c19a609ea8ba19",
+          "vram_sha256": "bc96f448be6d570bb29fc49793f1a97efeb8c3d016f84c785d052c7df7e0394e",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2806,9 +2806,9 @@
         "bg2_above_footer_sha256": "3484c6f51f348d3c394fcc9f5ccc6729dbbda219bb85870760e2e46618a56967",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-second-02.png",
-          "capture_sha256": "aa58b1149ea3313b07d6ff1b4265d7720513bed6b1670cc381d4da3b3cf777e9",
+          "capture_sha256": "05aab231e95cd962e7c90091a090ca68ea7aa918a73c8f84e0883952e4b1ace3",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-second-02.vram.bin",
-          "vram_sha256": "557803608ec302bb0f37d617855c71a19d3d99b7a044f5eb88314c2c628b393e",
+          "vram_sha256": "a756ddcd89e160e3bf13c7b27a6285e273388235921072bd6cd2f8b172827516",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2836,9 +2836,9 @@
         "bg2_above_footer_sha256": "d1c7dd322c7996b5711ffdbf9e84068d74404e116af4bd2a5147877575ab317d",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-second-03.png",
-          "capture_sha256": "dc32f9d5045aba080e7eff3c7e3e03958b438f23b3822ec383cb585b63d2753b",
+          "capture_sha256": "9e003ae5ea8e10a84696685f7c7732246ab9a29ccd65c188dac93d70ca02305a",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-second-03.vram.bin",
-          "vram_sha256": "b9cb1ac1929d7b197dc7b78515068ad14b8909d618608bfe92ec46c6d00cf6dc",
+          "vram_sha256": "c984b6f2b239806478bca377d0871ba133a556951adeca988a70798c3217e80f",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2866,9 +2866,9 @@
         "bg2_above_footer_sha256": "401b63dbdbbcf59cb71f39320fe089350692ce5d4938b0fc17c02e9f25c44db2",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-second-04.png",
-          "capture_sha256": "bbc0da7ae2cff96ade5b5ee2c9265cf7b472e5659db4a7c3633f21dc5044b519",
+          "capture_sha256": "22fad812d3a05a674eea6899e87f7cedbc4dcf7d83e08a9c173d98efbc8417b0",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-second-04.vram.bin",
-          "vram_sha256": "d3d8e6449ed974a4f3bd8c6f30cc0282d1cf8f7d5cb4fbc3cd317f96e3c6c3e4",
+          "vram_sha256": "1425015b11644980d454c30c858ad52aa742ca38c54acc7d86238f783dcad2a8",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2896,9 +2896,9 @@
         "bg2_above_footer_sha256": "9da7b92050799d1b932690b618d388ef3393cbd835aec039995774e6a5cfa3cc",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-second-05.png",
-          "capture_sha256": "9cd02b6c840629cc4c5452cd826d695d9a20829f47f0e504cb9baf945a4f1442",
+          "capture_sha256": "861494b7b0912ef2a2cc40b0e1d6de0fb3890818fda78642a60ae9f0da701606",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-second-05.vram.bin",
-          "vram_sha256": "1f2d9ac93ab84e406efbb64b3063370e3206d803a72406eb5d19ff26b251b103",
+          "vram_sha256": "44ce939ff89afb023c65978ba84698013022f74fff0eca2f34fa80e4d0781f97",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2926,9 +2926,9 @@
         "bg2_above_footer_sha256": "f3b45d1fe721b02846b62d3d2ac294fce981e7404cccf8464cc7ec8b6a4e194e",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-second-06.png",
-          "capture_sha256": "27fb44d07c39490f5cb47280e9a31296de6f590cfb650b19b503d4e1a4fb4b89",
+          "capture_sha256": "a5e4e1dd771d1e4afb1b95bf88bc38d7c3a3c0f70ebf8d3b41a7baf754e997aa",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-second-06.vram.bin",
-          "vram_sha256": "4a13d9419b23f218df32c8302d7472c9318a374c892dfdbb85296360f04d523e",
+          "vram_sha256": "58c57d38e0c5cbac5b99ca401a03feb848f87fcbff809e586c4eb7632118c859",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2956,9 +2956,9 @@
         "bg2_above_footer_sha256": "7e17e84c158c4486ac6ab06097b9970141ab53fb53f8e92ef8614ff6f24f7086",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-second-07.png",
-          "capture_sha256": "454dca24006aa6d19ec235adbfb6a9028b29a7b500132821e50a8bf259874bbf",
+          "capture_sha256": "d6ec78da8ed93cf930426a2f9076ee00b91e44a71e0608d940d1cb0678dbddc0",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-second-07.vram.bin",
-          "vram_sha256": "7edaf6cb7f5f80d2907f7febb5445a41e9cf78f51eaff9d4142ec8e80a2579aa",
+          "vram_sha256": "44e435a444709078fe526dc2598e871ba9892f09b34c836632b9466025f5288a",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -2986,9 +2986,9 @@
         "bg2_above_footer_sha256": "cc8e1643b3e0b9aa30404c0af815b8b0dae58a6302a9951e5e273be47de128bb",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-second-08.png",
-          "capture_sha256": "b86ff3a0447afef8a079a05e4a1c49d00c19a05e026a01110dd802a4dfc43761",
+          "capture_sha256": "d885d5157597432a6544d818f31de5153f57c60a269e8b4e7ca7b81eb7633734",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-second-08.vram.bin",
-          "vram_sha256": "e71eebd0694378cfb47933f73d75ba691377140345a85978af6f2ac7a4c5c052",
+          "vram_sha256": "eceecfaafe49f9d6779bb47544dc0dd401d720da6261ba44c419922782f7b3ed",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -3016,9 +3016,9 @@
         "bg2_above_footer_sha256": "3449b97b61979cf14fc66f1a2005514bb14fd99a415e316cc29ecde7dc25d836",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-second-09.png",
-          "capture_sha256": "7ff7ab0541ce56bdc89fad47f267b9cf1aedb86cced80384b50866e6ffa00d44",
+          "capture_sha256": "8ce298ed18e9f7868f524207dd154710c3852e8bb4af72d8e3dfb261142befdb",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-second-09.vram.bin",
-          "vram_sha256": "ada26ae4c30ac90939ce68042183fd6a71b55476a7f925147eeb0a50832ee38c",
+          "vram_sha256": "ffeb7b03764c8ac839348aedc414c444e7b326ac68021192e8345a2c97bcb08f",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -3046,9 +3046,9 @@
         "bg2_above_footer_sha256": "3b223aae02240be1d71887d9a5b34a53f90309390ea40d9ed3a71ed85afd7353",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-second-10.png",
-          "capture_sha256": "d481bf462489a9ae9b7ad75366ea001e9978c260f2e2a8d85f32307ebae541a3",
+          "capture_sha256": "05676fad5348de4ee1f874d44a9e4590eb4cc718a8cb85ed2ddfbcea8cc7cb53",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-second-10.vram.bin",
-          "vram_sha256": "0256f1848617fe0a6012753495b7f17235fa96c4468c2347570484959d9a9d73",
+          "vram_sha256": "a55b2738e57543cbbdd2d64b6f20223449e40e7c2ed91d69828da2932dc91a01",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -3076,9 +3076,9 @@
         "bg2_above_footer_sha256": "d7353e891a9ed52a963a2de463710d56ad9fffc0517f32fc2e67b2292a648767",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-second-11.png",
-          "capture_sha256": "cae245090244bd8ddfa334de291547c9a5bf5766c7d02d7af9462fc0ef660c20",
+          "capture_sha256": "87850e01e99add1a527f1341c7144048dcb7e929639bae8c0bb57c02f6b2a7d5",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-second-11.vram.bin",
-          "vram_sha256": "2f21c431101d57883cd407bf0f8bdea3c88558d349c2263bb4f5efee3bb0cd92",
+          "vram_sha256": "7bf199937ed36ebf5abaea618c0ebc8ababc43fbdad69ae9663ca46965723704",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -3106,9 +3106,9 @@
         "bg2_above_footer_sha256": "dbc78e92e432f953ea6314523bd05d834fc14b64ed59fbb77487f696cd727604",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-second-00.png",
-          "capture_sha256": "309d7a0fa3147d4e6d039f144ccfb9cb6c406ed6f5b9d44284d920c296557c5c",
+          "capture_sha256": "3f0e18b0ce8704b33d584b5e570cff64b9ac3f14736c9640218ed2c772b53a52",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-second-00.vram.bin",
-          "vram_sha256": "289be7afb167244b187024b082a69ba6f83bdef512177c4b95a4900c58b24150",
+          "vram_sha256": "7365fb9cca8fb703963f620c14124dc75594fa72f6a183aae6bc8ba6ba73f9b9",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -3136,9 +3136,9 @@
         "bg2_above_footer_sha256": "97a9b294b02048cc3111ef68761341c4816b148493e8c958af7a001ac22a43f3",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-arena-0.png",
-          "capture_sha256": "d961bb2003f2fd4bdcb66d44fbe5ad1827534902ef9ccfd594ce30c5b2545245",
+          "capture_sha256": "43f97c2542decbcb9986403462c2f13df207f2f3bf974c5cecdb115288a2270d",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-arena-0.vram.bin",
-          "vram_sha256": "83151fb3336c3a2ee787a8f429fe9afc0d4aacb4f68cbb15b61b693d431632a7",
+          "vram_sha256": "1c129cb6c38987931132aa8ea8b979cece4c1edb0c46fb576bb6653e570fca1d",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -3166,9 +3166,9 @@
         "bg2_above_footer_sha256": "0178cb22970b2439e3febdc554db728152c94dba7065dff23859dc57ace06c41",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-arena-1.png",
-          "capture_sha256": "176c89e63c1ac1fc946d739a62411e1cc901664f598bc399172c7c1b31dceff9",
+          "capture_sha256": "3678ef18e88238aba94940feb7dd1e379a40320e16e5b910a229995fd1f8ed60",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-arena-1.vram.bin",
-          "vram_sha256": "80368f579b8a7d238b10fb187da482e70f8a57b49a0a6ce5779bd8898d84d7c1",
+          "vram_sha256": "80736526d120a4e9c255a332e0a1a078cf21b9636d374e5bf053d6b20c7b234f",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -3196,9 +3196,9 @@
         "bg2_above_footer_sha256": "6ad18118d1c4bd96f3c325bab68c0ddd0f855d6909bd8b553957c8bec62b90e0",
         "baseline": {
           "capture": "docs/screenshots/menu-preservation/parent/training-arena-2.png",
-          "capture_sha256": "4f4fbe2c0cdab21851d52642b1732089a558326f57a5f72195a6f914e9f99870",
+          "capture_sha256": "ff7ef8eeb7c536bef7cf8bdf5ba9599ca60bde8c4bc8b7fbdc8c644031a1709f",
           "vram_capture": "docs/screenshots/menu-preservation/parent/training-arena-2.vram.bin",
-          "vram_sha256": "37333e623285b75a0812076e29f36bccb3d9b98222262825b6b335f13d48fc84",
+          "vram_sha256": "ab72b04a5dc13a3b50eece868c68f747a34eef19bcbb27c38347d31409ad2c3c",
           "preserved_pixel_bounds": [
             0,
             0,
@@ -54613,5 +54613,5 @@
       }
     }
   ],
-  "elapsed_seconds": 26.781
+  "elapsed_seconds": 140.672
 }

@@ -1,16 +1,19 @@
-# v0.14.0 human playtest guide
-<!-- candidate-version: 0.14.0; rom-sha256: 3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa -->
+# v0.15.0 human playtest guide
+<!-- candidate-version: 0.15.0; rom-sha256: 2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44 -->
 
-Review cartridge SHA256 `3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa`.
-Check A and Start from both roster steps and each arena row. The footer should
-remain readable, with the location pictures and gold cursor above it intact.
-Try the quarter-circle motion using the Specials guide: the timeout applies
-between steps, and a long delay should fall back to a normal attack. Try both
-facing directions. Existing quick Down+punch remains available.
-Then review the v0.13 pause chord, full champion score and title transitions,
-Lars's face/hair, arbitrary/mirror Training opponents and both winner cards.
+Review cartridge SHA256 `2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44`.
+Practice close jump-through medium kicks in both directions and on both pads.
+Watch whether recoil and sparks appear on the contact side through landing,
+whether old/new guard directions respond as expected, and whether the short
+rear range feels clear and fair. Front medium kicks, other airborne normals,
+ground attacks, projectiles and throws should retain their familiar behavior.
+Check the Controls pause cue, then compare several fighters and all arenas.
+The new option needs actual gameplay/balance feedback.
+
+Also review A/Start menus, per-step motion help, Training mirror opponents,
+Lars's face/hair, winner cards, the champion score and title transitions.
 Actual earlier responses remain in [review-feedback.json](review-feedback.json);
-this guide records no new human approval. See [RELEASE-v0.14.0.md](RELEASE-v0.14.0.md)
+this guide records no new approval. See [RELEASE-v0.15.0.md](RELEASE-v0.15.0.md)
 for candidate verification and package status.
 
 This route also covers the earlier v0.10.0 cartoon-stage and menu candidate.
