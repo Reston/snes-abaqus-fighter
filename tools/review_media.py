@@ -22,6 +22,8 @@ PRACTICE_HELPERS = {'tools/test_crossup_practice.py', 'tools/test_matchups.py',
                     'tools/test_inputs.py', 'tools/emulator.py', 'tools/make_crossup_review.py'}
 AI_HELPERS = {'tools/make_cpu_antiair_review.py', 'tools/test_inputs.py',
               'tools/emulator.py', 'tools/make_crossup_review.py'}
+TRAINING_HELPERS = {'tools/make_training_cpu_review.py', 'tools/test_training.py',
+                    'tools/emulator.py', 'tools/make_crossup_review.py'}
 
 
 class ReviewError(ValueError):
@@ -52,6 +54,9 @@ def review_files(root: Path, version: str) -> dict[str, Path]:
              'cpu-anti-air-review.json', 'screenshots/cpu-anti-air/hit.gif',
              'screenshots/cpu-anti-air/whiff.gif',
              *(f'screenshots/crossup-practice/v{version}/{fighter:02}.gif' for fighter in range(12))]
+    if tuple(map(int, version.split('.'))) >= (0, 17, 0):
+        names.extend(('training-cpu-review.json', 'screenshots/training-cpu/practice.gif',
+                      'screenshots/training/training-cpu-card.png'))
     return {name: root/'docs'/name for name in names}
 
 
@@ -243,3 +248,56 @@ def validate_cpu_review(report, root, manifest):
                   {'frame', 'x1', 'x2', 'y1', 'y2', 'hp1', 'hp2', 'action2', 'anim_tick2'} <= set(snapshot) and
                   all(snapshot[k] == state[k] for k in set(snapshot) & set(state))),
                  'CPU fixture landmark differs from retained native telemetry')
+
+
+def validate_training_review(report, root, manifest):
+    identity(report, root, manifest, TRAINING_HELPERS)
+    fixture = {'fighter': 2, 'opponent': 11, 'stage': 2, 'difficulty': 2, 'frames': 180}
+    need(report.get('rom_bytes') == manifest['bytes'] and report.get('header_checksum') == manifest['checksum'] and
+         report.get('fixture') == fixture and report.get('native_dimensions') == [256, 224] and
+         report.get('unedited_callback_pixels') is True and report.get('controlled_player') == 1 and
+         report.get('opponent') == 'native CPU', 'CPU Training review contract or fixture differs')
+    source = root/'docs/training-test-report.json'
+    native = json.loads(source.read_bytes())
+    need(native.get('status') == 'passed' and native.get('rom_sha256') == manifest['sha256'] and
+         native.get('cpu_training') and report.get('source_report') == 'docs/training-test-report.json' and
+         report.get('source_report_comparison') == 'LF-normalized JSON bytes' and
+         report.get('source_report_sha256') == digest(source.read_bytes().replace(b'\r\n', b'\n')),
+         'CPU Training review must bind the current native Training proof')
+    cpu = native['cpu_training']
+    play = cpu.get('play', []) if isinstance(cpu, Mapping) else []
+    replay = cpu.get('p2_ignored', {}) if isinstance(cpu, Mapping) else {}
+    defense = cpu.get('lowwave_defense', []) if isinstance(cpu, Mapping) else []
+    need(isinstance(cpu, Mapping) and cpu.get('selector', {}).get('cpu_label') == 'DUMMY: CPU' and
+         isinstance(play, list) and [(item.get('difficulty'), item.get('fighter'), item.get('opponent'))
+         for item in play] == [(0, 0, 0), (1, 4, 10), (2, 2, 11)] and
+         all(all(item.get(key, 0) > 0 for key in ('movement_frames', 'attack_frames', 'damage_frames', 'recovery_count'))
+             for item in play) and replay.get('frames') == 360 and
+         isinstance(replay.get('idle_sha256'), str) and re.fullmatch('[0-9a-f]{64}', replay['idle_sha256']) and
+         replay.get('idle_sha256') == replay.get('held_sha256') and
+         isinstance(defense, list) and [item.get('difficulty') for item in defense] == [1, 2] and
+         all(item.get('wave_frames', 0) > 0 and item.get('guarded_chip_frames', 0) > 0 for item in defense) and
+         cpu.get('intro', {}).get('intro_callbacks', 0) > 0, 'CPU Training native proof lost its fixed behavior coverage')
+    row = report.get('capture')
+    trace = native_gif(row, root, 'docs/screenshots/training-cpu/practice.gif')
+    need(len(trace) == fixture['frames'] and all(state.get('mode') == 2 and state.get('training_dummy') == 4 and
+         state.get('seconds') == 99 and state.get('paused') == state.get('intro') == state.get('round_end') == 0 and
+         state.get('fighter_id1') == fixture['fighter'] and state.get('fighter_id2') == fixture['opponent'] and
+         state.get('arena') == fixture['stage']
+         for state in trace), 'CPU Training clip must retain live untimed fifth-choice play')
+    proof = {'moving_frames': sum(state['x2'] != trace[0]['x2'] for state in trace),
+             'attack_frames': sum(state['action2'] != 0 for state in trace),
+             'damage_frames': sum(state['hp1'] < 128 for state in trace)}
+    need(all(proof.values()) and row.get('proof') == proof, 'CPU Training clip must show actual movement, attacks and damage')
+    card = report.get('card', {})
+    path = 'docs/screenshots/training/training-cpu-card.png'
+    need(isinstance(card, Mapping) and card.get('png') == path and card.get('native_dimensions') == [256, 224] and
+         path in [str(value).replace('\\', '/') for value in native.get('capture_paths', [])] and
+         (root/path).is_file() and card.get('png_bytes') == (root/path).stat().st_size and
+         card.get('png_sha256') == digest((root/path).read_bytes()), 'CPU Training card must match the retained native-suite PNG')
+    try:
+        with Image.open(root/path) as image:
+            need(image.format == 'PNG' and image.size == (256, 224) and
+                 card.get('source_rgb_sha256') == digest(image.convert('RGB').tobytes()), 'CPU Training card pixels differ')
+    except (OSError, ValueError) as error:
+        raise ReviewError('Unreadable CPU Training card') from error

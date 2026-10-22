@@ -7,12 +7,13 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from package import validate_crossup_review, validate_cpu_review
+from package import validate_crossup_review, validate_cpu_review, validate_training_cpu_review
 
 root = Path(__file__).resolve().parents[1]
 manifest = json.loads((root/'dist/manifest.json').read_text())
 validate_crossup_review(json.loads((root/'docs/crossup-review.json').read_bytes()), root, manifest)
 validate_cpu_review(json.loads((root/'docs/cpu-anti-air-review.json').read_bytes()), root, manifest)
+validate_training_cpu_review(root, manifest)
 total = 0
 for name in ['test', 'character-test', 'presentation-test', 'input-test', 'stage-test', 'training-test']:
     report = json.loads((root/f'docs/{name}-report.json').read_text())
@@ -38,6 +39,13 @@ shots = [
     ('menus', 'Location previews', 'Wider views of the entrance, patio and trading desks.', 'presentation/arena-0.png'),
     ('menus', 'Pause controls', 'Both A and Start appear in the resume hint.', 'pause.png'),
 ]
+if tuple(map(int, manifest['version'].split('.'))) >= (0, 17, 0):
+    shots = [
+        ('new', 'Practice against the CPU', 'Pause Training, then use Up/Down to choose CPU. Your home difficulty carries into practice.', 'training/training-cpu-card.png'),
+        ('new', 'Untimed CPU practice', 'The existing AI plays in Training with ordinary health recovery and live P1 Select reset. Native capture; GIF timing is approximate.', 'training-cpu/practice.gif'),
+        *((('menus' if category == 'new' else category), title, caption, path)
+          for category, title, caption, path in shots),
+    ]
 cards = []
 for category, title, caption, filename in shots:
     data = (root/'docs/screenshots'/filename).read_bytes()

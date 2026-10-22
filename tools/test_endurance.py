@@ -545,6 +545,7 @@ class EnduranceRun:
         self.audio_nonzero_batches = 0
         self.input_counts: dict[str, int] = {}
         self.trace_magic_samples = 0
+        self.training_cpu_live_frames = 0
         self.events = {
             "attack": 0, "air": 0, "throw": 0, "guard": 0, "special": 0,
             "wake": 0, "down": 0, "round_change": 0, "result": 0,
@@ -585,6 +586,8 @@ class EnduranceRun:
                 current["round_end"] == 0 and not current["paused"])
         if live:
             self.live_frames += 1
+            if self.mode == 2 and current['training_dummy'] == 4:
+                self.training_cpu_live_frames += 1
             self.live_segments += int(not self.last_live)
             self.nonfight_streak = 0
             self.stages.add(int(current["arena"]))
@@ -909,6 +912,7 @@ class EnduranceRun:
             required["menu_roster"] = self.events["menu_roster"] > 0
         if self.mode == 2:
             required["training_reset"] = self.events["reset"] > 0
+            required["training_cpu_hour"] = self.training_cpu_live_frames >= self.target
         if self.coverage_required:
             missing = [name for name, seen in required.items() if not seen]
             if missing:
@@ -950,6 +954,7 @@ class EnduranceRun:
             "target_live_frames": self.target,
             "coverage_required": self.coverage_required,
             "live_frames": self.live_frames, "live_segments": self.live_segments,
+            "training_cpu_live_frames": self.training_cpu_live_frames,
             "elapsed_seconds": round(elapsed, 3),
             "rosters": self.rosters, "stages": sorted(self.stages),
             "events": self.events, "required_coverage": required,
@@ -1131,6 +1136,22 @@ def select_from_menu(host: LongRunHost, runner: EnduranceRun, mode: int,
     return tracked_wait_live(host, runner)
 
 
+def select_training_cpu(host: LongRunHost, runner: EnduranceRun) -> dict[str, int]:
+    """Choose CPU through the paused card; never write dummy state directly."""
+    if host.state()['training_dummy'] != 0:
+        raise AssertionError(('Fresh Training must start Stand', host.state()))
+    tracked_pulse(host, runner, 'start')
+    if host.state()['paused'] != 1:
+        raise AssertionError(('CPU selector requires native pause', host.state()))
+    tracked_pulse(host, runner, 'up')
+    if host.state()['training_dummy'] != 4:
+        raise AssertionError(('Paused Up must select CPU from Stand', host.state()))
+    current = tracked_pulse(host, runner, 'start')
+    if current['paused'] or current['training_dummy'] != 4:
+        raise AssertionError(('CPU Training must resume with selected behavior', current))
+    return current
+
+
 def roster_transition(host: LongRunHost, runner: EnduranceRun, mode: int,
                       fighter: int, fighter2: int, stage: int) -> dict[str, int]:
     """Use START+B roster navigation from a live match, never a host reboot."""
@@ -1150,6 +1171,8 @@ def roster_transition(host: LongRunHost, runner: EnduranceRun, mode: int,
     runner.rosters.append({"fighter1": fighter, "fighter2": fighter2,
                            "stage": stage, "route": "pause-b-select"})
     runner.stages.add(stage)
+    if mode == 2:
+        current = select_training_cpu(host, runner)
     return current
 
 
@@ -1159,13 +1182,26 @@ def training_reset(host: LongRunHost, runner: EnduranceRun) -> dict[str, int]:
     before = host.state()
     if not screen_ready(before, SCREEN_FIGHT) or before["paused"]:
         return before
-    tracked_pulse(host, runner, "select")
+    for _ in range(3):
+        tracked_step(host, runner)
+    samples = [tracked_step(host, runner, p1=['select']) for _ in range(3)]
+    reset = next((state for state in samples if state['hp1'] == state['hp2'] == 128 and
+                  state['hitstop'] > 0 and state['action1'] == state['action2'] == 0 and
+                  state['down_state1'] == state['down_state2'] == 0 and
+                  state['x1'] == 66*16 and state['x2'] == 190*16), None)
+    if reset is None or reset['training_dummy'] != before['training_dummy']:
+        raise AssertionError(('Training reset must restore actual startup state and keep CPU', before, samples))
+    for _ in range(3):
+        tracked_step(host, runner)
     for _ in range(16):
         tracked_step(host, runner)
     after = host.state()
     runner.events["reset"] += 1
-    if after["hp1"] != 128 or after["hp2"] != 128:
-        raise AssertionError(("training reset did not restore HP", before, after))
+    # CPU play may already deal damage after reset hitstop. Judge the actual
+    # reset callback above, then preserve live behavior rather than requiring
+    # an idle dummy's unchanged HP many frames later.
+    if after['training_dummy'] != before['training_dummy']:
+        raise AssertionError(('Training reset changed the selected behavior', before, after))
     return after
 
 
@@ -1226,14 +1262,17 @@ def run_mode(mode: int, target: int, benchmark: bool = False,
         runner.stages.add(stage)
         runner.previous = None
         runner.last_live = False
+        if mode == 2:
+            select_training_cpu(host, runner)
         # The full gate measures one native live-combat hour.  Menu/intro,
         # pause and round-result frames remain in the same session and are
         # reported separately, so they may extend total emulated frames past
         # the live target.  The short benchmark retains its fixed total-frame
         # contract for quick cadence feedback.
         def reached_target() -> bool:
-            return (runner.total_frames >= target if benchmark else
-                    runner.live_frames >= target)
+            if benchmark:
+                return runner.total_frames >= target
+            return (runner.training_cpu_live_frames if mode == 2 else runner.live_frames) >= target
 
         while not reached_target():
             current = host.state()

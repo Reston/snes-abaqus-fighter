@@ -311,6 +311,11 @@ def qa_readme_bytes() -> bytes:
         'trace landmarks. Capture execution remains trusted recorded '
         'evidence, GIF timing is approximate and human balance review is open. '
         'Producer/helper paths refer to the source checkout.\n\n'
+        'In v0.17 and later, training-cpu-review.json binds a native moving '
+        'Training clip and the native-suite CPU pause card. Their source '
+        'paths retain docs/; remove it to locate screenshots/training-cpu/ '
+        'and screenshots/training/training-cpu-card.png. The report binds '
+        'the LF-normalized native Training proof and fixed behavior inventory.\n\n'
         'qa/character-manifest.json carries the source art provenance '
         'manifest used by the native export.\n'
     ).encode('utf-8')
@@ -1097,6 +1102,16 @@ def validate_cpu_review(report: Mapping, root: Path, manifest: Mapping) -> None:
             'CPU review landmarks must match the current native input-suite fixtures')
 
 
+def validate_training_cpu_review(root: Path, manifest: Mapping) -> None:
+    if tuple(map(int, str(manifest['version']).split('.'))) < (0, 17, 0):
+        return
+    from review_media import validate_training_review
+    try:
+        validate_training_review(read_json(root/'docs/training-cpu-review.json', 'CPU Training review'), root, manifest)
+    except (ValueError, OSError) as error:
+        raise PackageError(f'Invalid CPU Training review: {error}') from error
+
+
 def validate_verification_summary(report: Mapping, root: Path, manifest: Mapping) -> None:
     """Bind the collated package record to its independently validated inputs."""
     fresh = read_json(root/'docs/fresh-build-test-report.json', 'verification source freeze')
@@ -1155,6 +1170,7 @@ def main() -> None:
     validate_crossup_review(read_json(ROOT/'docs/crossup-review.json', 'cross-up review aid'), ROOT, manifest)
     validate_practice_review(ROOT, manifest)
     validate_cpu_review(read_json(ROOT/'docs/cpu-anti-air-review.json', 'CPU review aid'), ROOT, manifest)
+    validate_training_cpu_review(ROOT, manifest)
     pin_record = verify_gui_emulator(ROOT)
     virtual = build_virtual_entries(pin_record)
     package_names = preflight_package_files(files, virtual)

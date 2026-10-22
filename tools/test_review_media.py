@@ -22,10 +22,14 @@ class NativeReview(unittest.TestCase):
         cls.proof = json.loads((ROOT/f'docs/crossup-practice-v{v}.json').read_bytes())
         cls.media = json.loads((ROOT/f'docs/crossup-practice-captures-v{v}.json').read_bytes())
         cls.cpu = json.loads((ROOT/'docs/cpu-anti-air-review.json').read_bytes())
+        cls.training = (json.loads((ROOT/'docs/training-cpu-review.json').read_bytes())
+                        if tuple(map(int, v.split('.'))) >= (0, 17, 0) else None)
         cls.temporary = tempfile.TemporaryDirectory(dir=ROOT/'build')
         cls.root = Path(cls.temporary.name)
         paths = set(review.PRACTICE_HELPERS | review.AI_HELPERS | {'tools/make_crossup_practice_review.py',
                     '.tools/core/snes9x_libretro.dll', 'docs/input-test-report.json'})
+        if cls.training is not None:
+            paths.update(review.TRAINING_HELPERS | {'docs/training-test-report.json'})
         paths.update(path.relative_to(ROOT).as_posix() for path in review.review_files(ROOT, v).values())
         for relative in paths:
             target = cls.root/relative
@@ -138,6 +142,42 @@ class NativeReview(unittest.TestCase):
                 package.validate_cpu_review(self.cpu, self.root, self.manifest)
         finally:
             path.write_bytes(original)
+
+    def test_training_review_contract_pixels_and_native_proof(self):
+        if self.training is None:
+            self.skipTest('CPU Training is introduced in v0.17')
+        validate = lambda report: review.validate_training_review(report, self.root, self.manifest)
+        validate(self.training)
+        for field, value in (('mode', 1), ('training_dummy', 3), ('seconds', 98), ('fighter_id2', 10)):
+            altered = copy.deepcopy(self.training)
+            altered['capture']['trace'][0][field] = value
+            with self.subTest(field=field), self.assertRaises(review.ReviewError): validate(altered)
+        altered = copy.deepcopy(self.training)
+        altered['source_report_sha256'] = '0'*64
+        with self.assertRaises(review.ReviewError): validate(altered)
+        path = self.root/self.training['card']['png']
+        original = path.read_bytes()
+        try:
+            with Image.open(path) as image: changed = image.convert('RGB')
+            changed.putpixel((0, 0), (255, 0, 255))
+            changed.save(path)
+            altered = copy.deepcopy(self.training)
+            altered['card'].update(png_bytes=path.stat().st_size,
+                                   png_sha256=hashlib.sha256(path.read_bytes()).hexdigest())
+            with self.assertRaises(review.ReviewError): validate(altered)
+        finally:
+            path.write_bytes(original)
+        source = self.root/'docs/training-test-report.json'
+        original = source.read_bytes()
+        try:
+            native = json.loads(original)
+            native['cpu_training']['play'] = []
+            source.write_bytes(json.dumps(native).encode())
+            altered = copy.deepcopy(self.training)
+            altered['source_report_sha256'] = hashlib.sha256(source.read_bytes().replace(b'\r\n', b'\n')).hexdigest()
+            with self.assertRaises(review.ReviewError): validate(altered)
+        finally:
+            source.write_bytes(original)
 
 
 if __name__ == '__main__':

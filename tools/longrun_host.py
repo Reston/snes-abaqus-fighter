@@ -208,7 +208,7 @@ class LongRunHost:
 
     def state(self) -> dict[str, int]:
         # Stable combat trace words 0..113 plus v0.7 stage words 114..118.
-        data = C.string_at(self.ram + 0x1FF00, 238)
+        data = C.string_at(self.ram + 0x1FF00, 246)
         values = [int.from_bytes(data[index:index + 2], "little")
                   for index in range(0, len(data), 2)]
         names = [
@@ -257,6 +257,8 @@ class LongRunHost:
             "ppu_stat": values[114], "ambient_phase": values[115],
             "ambient_clock": values[116], "ambient_pending_phase": values[117],
             "ambient_phase_age": values[118],
+            "pause_page": values[119], "guide_build": values[120],
+            "training_dummy": values[121], "guide_dirty": values[122],
         })
         result["native_screen"] = self.native_screen()
         result.update(self.vblank_state())

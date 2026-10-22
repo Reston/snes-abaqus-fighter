@@ -832,6 +832,7 @@ def validate_endurance(report: dict[str, Any], rom_sha256: str,
     label = "endurance gate"
     if root is None:
         root = Path(__file__).resolve().parents[1]
+    training_cpu = tuple(map(int, load_report(root, 'dist/manifest.json')['version'].split('.'))) >= (0, 17, 0)
     _validate_pinned_core_sources(root, recorder)
     _exact_rom(report, rom_sha256, label, recorder)
     require(report.get("suite") == "endurance", label + " suite identity", report.get("suite"), recorder)
@@ -866,8 +867,13 @@ def validate_endurance(report: dict[str, Any], rom_sha256: str,
         _exact_rom(mode, rom_sha256, label + " mode " + key, recorder)
         _validate_core_identity(mode.get("core"), EXPECTED_NATIVE_CORE,
                                 label + " mode " + key + " native core", recorder)
+        coverage = MODE_COVERAGE_KEYS[key]
+        if key == '2' and training_cpu:
+            coverage = coverage | {'training_cpu_hour'}
+            require(_int(mode.get('training_cpu_live_frames', 0), label + ' CPU Training frames') >= reported_target,
+                    label + ' CPU Training completes a native live hour', mode.get('training_cpu_live_frames'), recorder)
         _mode_audio_video(mode, label + " mode " + key, native_fps,
-                          reported_target, MODE_COVERAGE_KEYS[key], recorder)
+                          reported_target, coverage, recorder)
     totals = report.get("total_frames_per_mode")
     require(isinstance(totals, dict) and all(_int(totals.get(key, 0), label + " total frames") >= reported_target
                                              for key in ("0", "1", "2")),
