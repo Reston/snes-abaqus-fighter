@@ -3,7 +3,7 @@
   "scope": "independent bsnes2014 Accuracy bounded combat compatibility",
   "pinned_core": true,
   "rom": {
-    "sha256": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44",
+    "sha256": "feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd",
     "bytes": 4194304
   },
   "matrix": {
@@ -26,7 +26,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 3.765048299999762,
+      "elapsed_seconds": 3.7020552000030875,
       "initial": {
         "fighter_id1": 0,
         "fighter_id2": 1,
@@ -232,7 +232,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 3.77896519999922,
+      "elapsed_seconds": 3.7898194000008516,
       "initial": {
         "fighter_id1": 0,
         "fighter_id2": 1,
@@ -451,7 +451,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.065150899998116,
+      "elapsed_seconds": 4.056444800000463,
       "initial": {
         "fighter_id1": 1,
         "fighter_id2": 2,
@@ -654,7 +654,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 3.8643843999998353,
+      "elapsed_seconds": 3.864323699999659,
       "initial": {
         "fighter_id1": 1,
         "fighter_id2": 2,
@@ -871,7 +871,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.136702499999956,
+      "elapsed_seconds": 4.136950700001762,
       "initial": {
         "fighter_id1": 2,
         "fighter_id2": 3,
@@ -1073,7 +1073,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.243867400000454,
+      "elapsed_seconds": 4.241453800001182,
       "initial": {
         "fighter_id1": 2,
         "fighter_id2": 3,
@@ -1276,7 +1276,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.264503699996567,
+      "elapsed_seconds": 4.242219399999158,
       "initial": {
         "fighter_id1": 3,
         "fighter_id2": 4,
@@ -1467,7 +1467,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.3538403999991715,
+      "elapsed_seconds": 4.3154138999998395,
       "initial": {
         "fighter_id1": 3,
         "fighter_id2": 4,
@@ -1678,7 +1678,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.572948000000906,
+      "elapsed_seconds": 4.581169299999601,
       "initial": {
         "fighter_id1": 4,
         "fighter_id2": 5,
@@ -1875,7 +1875,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.400422000002436,
+      "elapsed_seconds": 4.404864899999666,
       "initial": {
         "fighter_id1": 4,
         "fighter_id2": 5,
@@ -2078,7 +2078,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.658295599998382,
+      "elapsed_seconds": 4.650637199996709,
       "initial": {
         "fighter_id1": 5,
         "fighter_id2": 6,
@@ -2282,7 +2282,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.756354999997711,
+      "elapsed_seconds": 4.757608899999468,
       "initial": {
         "fighter_id1": 5,
         "fighter_id2": 6,
@@ -2506,7 +2506,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.759983200001443,
+      "elapsed_seconds": 4.912958900000376,
       "initial": {
         "fighter_id1": 6,
         "fighter_id2": 7,
@@ -2712,7 +2712,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.839615199998661,
+      "elapsed_seconds": 4.980787699998473,
       "initial": {
         "fighter_id1": 6,
         "fighter_id2": 7,
@@ -2921,7 +2921,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.104250899999897,
+      "elapsed_seconds": 5.125258100000792,
       "initial": {
         "fighter_id1": 7,
         "fighter_id2": 8,
@@ -3125,7 +3125,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.934884199999942,
+      "elapsed_seconds": 4.93631810000079,
       "initial": {
         "fighter_id1": 7,
         "fighter_id2": 8,
@@ -3354,7 +3354,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.184768299997813,
+      "elapsed_seconds": 5.20479830000113,
       "initial": {
         "fighter_id1": 8,
         "fighter_id2": 9,
@@ -3567,7 +3567,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 5.283708799997839,
+      "elapsed_seconds": 5.284830699998565,
       "initial": {
         "fighter_id1": 8,
         "fighter_id2": 9,
@@ -3781,7 +3781,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.277724299998226,
+      "elapsed_seconds": 5.2699080999991565,
       "initial": {
         "fighter_id1": 9,
         "fighter_id2": 10,
@@ -3991,7 +3991,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 5.373524200000247,
+      "elapsed_seconds": 6.086431399999128,
       "initial": {
         "fighter_id1": 9,
         "fighter_id2": 10,
@@ -4203,7 +4203,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.648149299999204,
+      "elapsed_seconds": 5.662327900001401,
       "initial": {
         "fighter_id1": 10,
         "fighter_id2": 11,
@@ -4412,7 +4412,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 5.452623699999094,
+      "elapsed_seconds": 5.478826999999001,
       "initial": {
         "fighter_id1": 10,
         "fighter_id2": 11,
@@ -4634,7 +4634,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.710350599998492,
+      "elapsed_seconds": 5.725048999996943,
       "initial": {
         "fighter_id1": 11,
         "fighter_id2": 0,
@@ -4831,7 +4831,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 5.830855200001679,
+      "elapsed_seconds": 5.820873999997275,
       "initial": {
         "fighter_id1": 11,
         "fighter_id2": 0,
@@ -5046,7 +5046,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.746007599998848,
+      "elapsed_seconds": 4.81674109999949,
       "initial": {
         "fighter_id1": 1,
         "fighter_id2": 0,
@@ -5240,7 +5240,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.8468476999987615,
+      "elapsed_seconds": 4.819514700000582,
       "initial": {
         "fighter_id1": 1,
         "fighter_id2": 0,
@@ -5459,7 +5459,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.113762799999677,
+      "elapsed_seconds": 4.099549800001114,
       "initial": {
         "fighter_id1": 2,
         "fighter_id2": 1,
@@ -5658,7 +5658,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 3.8891318000023603,
+      "elapsed_seconds": 3.876767199999449,
       "initial": {
         "fighter_id1": 2,
         "fighter_id2": 1,
@@ -5859,7 +5859,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.131471299999248,
+      "elapsed_seconds": 4.140445100001671,
       "initial": {
         "fighter_id1": 3,
         "fighter_id2": 2,
@@ -6063,7 +6063,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.258278599998448,
+      "elapsed_seconds": 4.2572231000012835,
       "initial": {
         "fighter_id1": 3,
         "fighter_id2": 2,
@@ -6266,7 +6266,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.244961599997623,
+      "elapsed_seconds": 4.2231423999983235,
       "initial": {
         "fighter_id1": 4,
         "fighter_id2": 3,
@@ -6472,7 +6472,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.327594899998076,
+      "elapsed_seconds": 4.304324799999449,
       "initial": {
         "fighter_id1": 4,
         "fighter_id2": 3,
@@ -6691,7 +6691,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.58197360000122,
+      "elapsed_seconds": 4.571202899998752,
       "initial": {
         "fighter_id1": 5,
         "fighter_id2": 4,
@@ -6892,7 +6892,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.406782800000656,
+      "elapsed_seconds": 4.4029090000003634,
       "initial": {
         "fighter_id1": 5,
         "fighter_id2": 4,
@@ -7102,7 +7102,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.662158200000704,
+      "elapsed_seconds": 4.666610299998865,
       "initial": {
         "fighter_id1": 6,
         "fighter_id2": 5,
@@ -7294,7 +7294,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.779223600002297,
+      "elapsed_seconds": 4.7632540999984485,
       "initial": {
         "fighter_id1": 6,
         "fighter_id2": 5,
@@ -7513,7 +7513,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.752340200000617,
+      "elapsed_seconds": 4.75177949999852,
       "initial": {
         "fighter_id1": 7,
         "fighter_id2": 6,
@@ -7715,7 +7715,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.822085200001311,
+      "elapsed_seconds": 4.828669099999388,
       "initial": {
         "fighter_id1": 7,
         "fighter_id2": 6,
@@ -7934,7 +7934,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.0922487000025285,
+      "elapsed_seconds": 7.58461239999815,
       "initial": {
         "fighter_id1": 8,
         "fighter_id2": 7,
@@ -8123,7 +8123,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.927734299999429,
+      "elapsed_seconds": 9.087855199999467,
       "initial": {
         "fighter_id1": 8,
         "fighter_id2": 7,
@@ -8346,7 +8346,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.177921999998944,
+      "elapsed_seconds": 9.54366459999801,
       "initial": {
         "fighter_id1": 9,
         "fighter_id2": 8,
@@ -8548,7 +8548,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 5.295391499999823,
+      "elapsed_seconds": 9.713233099999343,
       "initial": {
         "fighter_id1": 9,
         "fighter_id2": 8,
@@ -8767,7 +8767,7 @@
       "stage": 0,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.281491699999606,
+      "elapsed_seconds": 9.745961399999942,
       "initial": {
         "fighter_id1": 10,
         "fighter_id2": 9,
@@ -8983,7 +8983,7 @@
       "stage": 1,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 5.368648799998482,
+      "elapsed_seconds": 9.645592900000338,
       "initial": {
         "fighter_id1": 10,
         "fighter_id2": 9,
@@ -9179,7 +9179,7 @@
       "stage": 2,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 5.645908399998007,
+      "elapsed_seconds": 5.915785700002743,
       "initial": {
         "fighter_id1": 11,
         "fighter_id2": 10,
@@ -9393,7 +9393,7 @@
       "stage": 0,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 5.465371300000697,
+      "elapsed_seconds": 5.773289799999475,
       "initial": {
         "fighter_id1": 11,
         "fighter_id2": 10,
@@ -9596,7 +9596,7 @@
       "stage": 1,
       "policy": "ground_combo_special",
       "frames": 600,
-      "elapsed_seconds": 4.655900500001735,
+      "elapsed_seconds": 4.672545400000672,
       "initial": {
         "fighter_id1": 0,
         "fighter_id2": 11,
@@ -9785,7 +9785,7 @@
       "stage": 2,
       "policy": "jump_guard_throw_mix",
       "frames": 600,
-      "elapsed_seconds": 4.760079499999847,
+      "elapsed_seconds": 5.093695399998978,
       "initial": {
         "fighter_id1": 0,
         "fighter_id2": 11,
@@ -10016,5 +10016,5 @@
     "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
     "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
   },
-  "elapsed_seconds": 244.3807643
+  "elapsed_seconds": 272.11472370000047
 }

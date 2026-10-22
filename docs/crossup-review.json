@@ -4329,11 +4329,11 @@
   "harness_sha256": {
     "build/run_background.py": "0906fa836fa680964846049036fd2ea1ad48a2fcb68d1235bedff86e7afdf178",
     "tools/emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
-    "tools/make_crossup_review.py": "4c9c049a75c27197115c5025c7e54b6e713d7a6d5e6e2056be09429cd1c7ddf8",
-    "tools/test_inputs.py": "d918500b047fc8551af52e4862c0022ccc61980c9386ad61781332398a9b1cc6",
+    "tools/make_crossup_review.py": "e45c814c00a01e070d2534fdc6d293363c14abeb99a170fd8df78aa4641a3b22",
+    "tools/test_inputs.py": "fd8ded13640c45d83b6fbe4e33054186ca592dcd8714d9b726762109778c521b",
     "tools/test_stages.py": "f9b0d37df233e5cffe715b7865efd3af76cd37db0be992b8891ab6848d9cf3ba"
   },
-  "header_checksum": "2491",
+  "header_checksum": "FA49",
   "host_contract": {
     "audio_device_opened": false,
     "audio_playback": false,
@@ -4359,8 +4359,8 @@
   ],
   "rom": "dist/abaqus-after-hours.sfc",
   "rom_bytes": 4194304,
-  "rom_sha256": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44",
+  "rom_sha256": "feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd",
   "scope": "two native moving cross-up review captures from real controller input",
   "status": "passed",
-  "version": "0.15.0"
+  "version": "0.16.0"
 }

@@ -1,17 +1,17 @@
 # Office Champion victory score
-<!-- candidate-version: 0.15.0; rom-sha256: 2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44 -->
+<!-- candidate-version: 0.16.0; rom-sha256: feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd -->
 
-The combined v0.15.0 cartridge is SHA256
-`2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44`, checksum `2491`,
-source freeze `e406ac17af1c25a64c7be547e7d0857880c18599`. It retains the original
+The combined v0.16.0 cartridge is SHA256
+`feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd`, checksum `FA49`,
+source freeze `c5b64914b35af11897210701a2394a540a20a6b6`. It retains the original
 v0.13 champion score without changing generated audio bytes.
-The [release note](RELEASE-v0.15.0.md) records full candidate status.
+The [release note](RELEASE-v0.16.0.md) records full candidate status.
 Current-ROM focused evidence passes 1,792 capture-only checks.
 The victory capture spans 72.580462 seconds, peak 2366/32,768,
-RMS 387.7586, no clipped samples and longest near-zero interval
+RMS 387.7968, no clipped samples and longest near-zero interval
 0.114388 seconds. Its native repeat spans
 34.900375 seconds; amplitude/zero-crossing
-correlations are 0.999402/0.977937.
+correlations are 0.999392/0.978390.
 
 ## Composition and source
 
@@ -47,7 +47,7 @@ free. All fifteen BRR source records and existing effects/music payloads
 computes these values from actual binary tables, including word rounding,
 and rejects invalid pointers, lengths, counts or overflow with explicit errors.
 
-[Preservation](preservation-v0.15.0.json) records all 219 generated files
+[Preservation](preservation-v0.16.0.json) records all 219 generated files
 unchanged from verified v0.14.0. The v0.13 feature added the victory IT and
 extended the soundbank; this candidate retains their exact bytes, the original
 four scores, effects, native BRR/module payloads and every art asset. Source-input
@@ -75,7 +75,7 @@ All runs are headless at BELOW_NORMAL priority on the last two logical CPUs,
 with no GUI or audio device. Report capture paths under build/champion-audio
 refer to ignored source-checkout WAVs and fixture outputs; the offline archive
 bundles exact JSON evidence and this guide, not those source captures.
-The separate [listening archive record](audio-listening-v0.15.0.json) identifies
+The separate [listening archive record](audio-listening-v0.16.0.json) identifies
 an optional WAV review ZIP created from these verified captures. It contains
 all five scores and matched control/active cue pairs; it is separate from the
 Windows game package and has not been played or approved by a human.

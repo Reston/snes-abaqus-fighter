@@ -1,13 +1,12 @@
 # Independent-engine compatibility
-<!-- candidate-version: 0.15.0; rom-sha256: 2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44 -->
+<!-- candidate-version: 0.16.0; rom-sha256: feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd -->
 
-The current candidate is v0.15.0, cartridge SHA256
-`2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44`.
-The pinned smoke and 48-by-600-frame independent combat run both pass on this ROM.
-The [release note](RELEASE-v0.15.0.md) records status. Verified v0.14.0
-evidence remains historical, on ROM `3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa`.
-The new candidate adds the close medium-air-kick cross-up and its Controls
-guide cue; independent-engine coverage retains the scope below.
+The current candidate is v0.16.0, cartridge SHA256
+`feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd`. The pinned smoke and 48-by-600-frame independent combat run both pass on this ROM.
+The [release note](RELEASE-v0.16.0.md) records status. The verified v0.15.0
+evidence remains historical, on ROM `2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44`.
+This candidate adds bounded Normal/Hard CPU anti-air decisions; the independent
+engine coverage retains the scope below.
 
 The pinned smoke check has the bounded scope `independent-engine smoke, stage
 ambient/effects freeze, synchronized low-wave, neutral600frame cadence`. It is

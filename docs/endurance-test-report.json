@@ -1,7 +1,7 @@
 {
   "suite": "endurance",
   "status": "passed",
-  "rom_sha256": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44",
+  "rom_sha256": "feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd",
   "rom_bytes": 4194304,
   "target_live_frames_per_mode": 216356,
   "native_fps": 60.098811862348406,
@@ -33,7 +33,7 @@
     "worker_video_fps_match": true,
     "video_fps_epsilon": 1e-06
   },
-  "harness_sha256": "604d95be867112ee4246fd24c701dbffcba7b2f89f0bf79086ff440e83f47c4a",
+  "harness_sha256": "3bd936a48eef8ba8baecab05dba33fdf5f3491bd1aa6eeaf89bd471c98744621",
   "core": {
     "archive": ".tools\\core.zip",
     "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
@@ -47,12 +47,12 @@
       "mode": 0,
       "mode_name": "arcade",
       "status": "passed",
-      "frames": 307212,
+      "frames": 304119,
       "target_live_frames": 216356,
       "coverage_required": true,
       "live_frames": 216356,
-      "live_segments": 304,
-      "elapsed_seconds": 691.063,
+      "live_segments": 294,
+      "elapsed_seconds": 465.5,
       "rosters": [
         {
           "fighter1": 0,
@@ -61,20 +61,14 @@
           "route": "initial"
         },
         {
-          "fighter1": 10,
-          "fighter2": 1,
-          "stage": 2,
+          "fighter1": 6,
+          "fighter2": 9,
+          "stage": 0,
           "route": "champion-title"
         },
         {
-          "fighter1": 4,
-          "fighter2": 7,
-          "stage": 2,
-          "route": "champion-title"
-        },
-        {
-          "fighter1": 0,
-          "fighter2": 3,
+          "fighter1": 6,
+          "fighter2": 9,
           "stage": 0,
           "route": "champion-title"
         }
@@ -85,24 +79,24 @@
         2
       ],
       "events": {
-        "attack": 203839,
-        "air": 96452,
-        "throw": 34183,
-        "guard": 27441,
-        "special": 3820,
-        "wake": 16848,
-        "down": 116034,
-        "round_change": 303,
-        "result": 128,
+        "attack": 188958,
+        "air": 99006,
+        "throw": 42534,
+        "guard": 27466,
+        "special": 4616,
+        "wake": 19664,
+        "down": 150879,
+        "round_change": 292,
+        "result": 127,
         "pause": 0,
         "reset": 0,
-        "result_continue": 92,
-        "arcade_ladder": 33,
-        "champion": 3,
-        "champion_restart": 3,
+        "result_continue": 99,
+        "arcade_ladder": 26,
+        "champion": 2,
+        "champion_restart": 2,
         "menu_roster": 0,
-        "real_contact": 3358,
-        "damage": 3903
+        "real_contact": 2672,
+        "damage": 3178
       },
       "required_coverage": {
         "attack": true,
@@ -121,62 +115,62 @@
         "champion_restart": true
       },
       "normal_action_starts": {
-        "1": 884,
-        "2": 732,
-        "3": 1440,
-        "4": 507,
-        "5": 523,
-        "6": 674
+        "1": 537,
+        "2": 446,
+        "3": 1641,
+        "4": 358,
+        "5": 329,
+        "6": 457
       },
-      "live_fraction": 0.704256,
+      "live_fraction": 0.711419,
       "native_frame_wraps": 4,
       "ambient_clock_wraps": 0,
-      "lag_frame_counter_last": 1927,
+      "lag_frame_counter_last": 1829,
       "lag_frame_counter_wraps": 0,
-      "lag_frame_counter_increments": 1891,
+      "lag_frame_counter_increments": 1793,
       "stable_fight_lag_increments": 0,
-      "nonfight_lag_increments": 1891,
+      "nonfight_lag_increments": 1793,
       "cadence_failures": [],
       "native_timing_failures": [],
       "ambient_failures": [],
       "ppu_overflow_frames": [],
       "max_spc_backlog": 6,
-      "spc_backlog_nonzero_samples": 88,
-      "spc_drain_events": 84,
-      "spc_drain_bytes": 252,
+      "spc_backlog_nonzero_samples": 66,
+      "spc_drain_events": 64,
+      "spc_drain_bytes": 192,
       "max_spc_growth_streak": 1,
       "max_spc_stable_nonzero_streak": 0,
       "max_spc_no_audio_streak": 1,
       "spc_fifo_failures": [],
-      "spc_fread": 5,
-      "spc_fwrite": 5,
-      "spc_read_advance_bytes": 37863,
-      "spc_write_advance_bytes": 37863,
-      "spc_read_pointer_wraps": 148,
-      "spc_write_pointer_wraps": 148,
+      "spc_fread": 117,
+      "spc_fwrite": 117,
+      "spc_read_advance_bytes": 33879,
+      "spc_write_advance_bytes": 33879,
+      "spc_read_pointer_wraps": 132,
+      "spc_write_pointer_wraps": 132,
       "spc_fifo_thresholds": {
         "max_backlog": 32,
         "max_growth_streak": 8,
         "max_stable_no_audio_streak": 120
       },
-      "snes_vblank_count_last": 45348,
+      "snes_vblank_count_last": 42255,
       "snes_vblank_counter_wraps": 4,
-      "vblank_flag_samples": 305321,
+      "vblank_flag_samples": 302326,
       "native_screen_final": 3,
-      "native_screen_mismatch_samples": 2147,
-      "native_screen_mismatch_segments": 265,
+      "native_screen_mismatch_samples": 2046,
+      "native_screen_mismatch_segments": 260,
       "max_native_screen_mismatch_streak": 14,
       "input_counts": {
-        "right": 175672,
-        "l": 34700,
-        "left": 158784,
-        "down": 54495,
-        "y": 37084,
-        "b": 30171,
-        "x": 21050,
-        "a": 26002,
-        "r": 14808,
-        "up": 28945
+        "right": 164178,
+        "l": 26243,
+        "left": 143983,
+        "down": 41265,
+        "a": 19949,
+        "r": 11319,
+        "y": 26823,
+        "b": 23447,
+        "x": 15708,
+        "up": 22030
       },
       "max_nonfight_streak": 489,
       "max_down_tick": 33,
@@ -185,28 +179,28 @@
         82
       ],
       "max_pending_throw_damage": 29,
-      "wake_buffer_handoffs": 27,
+      "wake_buffer_handoffs": 4,
       "max_oam_visible_actor_pieces": 30,
       "max_oam_sprites": 30,
       "position_bounds": {
         "min": 384,
         "max": 3712
       },
-      "video_samples": 2563,
-      "video_nonblank_samples": 2545,
+      "video_samples": 2537,
+      "video_nonblank_samples": 2514,
       "video_geometry": [
         256,
         224
       ],
-      "audio_samples": 163931741,
-      "audio_nonzero_batches": 2208,
-      "audio_peak_sampled": 3879,
-      "trace_magic_samples": 307212,
+      "audio_samples": 162282795,
+      "audio_nonzero_batches": 2198,
+      "audio_peak_sampled": 3688,
+      "trace_magic_samples": 304119,
       "video_fps": 60.098811862348406,
       "audio_sample_rate": 32040.0,
-      "rom_sha256": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44",
+      "rom_sha256": "feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd",
       "benchmark": false,
-      "core_frames_including_boot": 307494,
+      "core_frames_including_boot": 304401,
       "core": {
         "archive": ".tools\\core.zip",
         "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
@@ -216,6 +210,7 @@
         "dll_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343"
       },
       "uninterrupted_session": true,
+      "initial_ladder_policy_frames": 67139,
       "core_boots": 1,
       "core_unloads": 1,
       "core_reboots": 0
@@ -229,7 +224,7 @@
       "coverage_required": true,
       "live_frames": 216356,
       "live_segments": 225,
-      "elapsed_seconds": 548.469,
+      "elapsed_seconds": 277.0,
       "rosters": [
         {
           "fighter1": 3,
@@ -428,7 +423,7 @@
       "trace_magic_samples": 283244,
       "video_fps": 60.098811862348406,
       "audio_sample_rate": 32040.0,
-      "rom_sha256": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44",
+      "rom_sha256": "feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd",
       "benchmark": false,
       "core_frames_including_boot": 283679,
       "core": {
@@ -440,6 +435,7 @@
         "dll_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343"
       },
       "uninterrupted_session": true,
+      "initial_ladder_policy_frames": 0,
       "core_boots": 1,
       "core_unloads": 1,
       "core_reboots": 0
@@ -453,7 +449,7 @@
       "coverage_required": true,
       "live_frames": 216356,
       "live_segments": 10,
-      "elapsed_seconds": 742.375,
+      "elapsed_seconds": 492.344,
       "rosters": [
         {
           "fighter1": 6,
@@ -642,7 +638,7 @@
       "trace_magic_samples": 219173,
       "video_fps": 60.098811862348406,
       "audio_sample_rate": 32040.0,
-      "rom_sha256": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44",
+      "rom_sha256": "feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd",
       "benchmark": false,
       "core_frames_including_boot": 219642,
       "core": {
@@ -654,15 +650,16 @@
         "dll_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343"
       },
       "uninterrupted_session": true,
+      "initial_ladder_policy_frames": 0,
       "core_boots": 1,
       "core_unloads": 1,
       "core_reboots": 0
     }
   },
   "total_frames_per_mode": {
-    "0": 307212,
+    "0": 304119,
     "1": 283244,
     "2": 219173
   },
-  "elapsed_seconds": 743.594
+  "elapsed_seconds": 492.734
 }

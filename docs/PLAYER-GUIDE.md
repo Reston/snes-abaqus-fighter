@@ -1,16 +1,16 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.15.0; rom-sha256: 2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44 -->
+<!-- candidate-version: 0.16.0; rom-sha256: feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd -->
 
 ## Current version
 
-The current candidate is **v0.15.0**. At close range, jump across an opponent
-and time a **medium kick** as you pass them for a cross-up. The Controls pause
-page includes the cue. Blocking follows the opponent's side; change your guard
-direction after a crossing. The menu prompts, per-step special-motion help,
-champion music, Training opponents, revised Lars art and location previews remain.
-In Local Versus, A or Start begins a rematch. Arcade victory advances to the
-next challenger; a loss offers a continue. After Office Champion, A or Start
-returns to the title. B returns to fighter select.
+The current candidate is **v0.16.0**. Normal and Hard opponents can deliberately
+uppercut a nearby jump-in. They commit through ordinary startup and can miss;
+vary your spacing and watch for a whiff. Easy retains its existing behavior.
+Cross-up medium kicks, the Controls cue, per-step special-motion help, arbitrary
+Training opponents, champion music, revised Lars art and location previews remain.
+In Local Versus, A or Start begins a rematch. Arcade wins advance and losses
+offer a continue. After Office Champion, A or Start returns to the title and
+B returns to fighter select.
 
 ## Launch
 
@@ -25,8 +25,11 @@ included `manifest.json` identifies the packaged version and ROM SHA256;
 release note under `docs/`. No global installation or administrator account is
 needed. Human gameplay, listening, controller, likeness/consent and team/public
 use review remain open; original hardware support stays unverified.
-The package's `REVIEW.html` contains native screens, two moving cross-up clips
-and a 2x view. GIF playback timing is approximate.
+The package's `REVIEW.html` contains native screens, CPU hit/whiff and cross-up
+clips, and a 2x view. GIF playback timing is approximate. The [cross-up practice
+companion](CROSSUP-PRACTICE-v0.16.0.html) shows a setup for each fighter. Use
+Training's Stand dummy for stationary setups, or Local Versus with a second
+player/both keyboard layouts for the opponent-step-under examples.
 Its `ROSTER-REVIEW.html` offers all 64 generated frames per fighter, facing
 flips and a frame scrubber for likeness inspection. The fixed-rate sweep is
 an art review aid; actual game animation timing is reviewed in the emulator.

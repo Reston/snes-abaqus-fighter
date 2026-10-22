@@ -6,7 +6,25 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
-- The active checkout is the **v0.15.0 close cross-up/practice candidate**.
+- The active checkout is the **v0.16.0 CPU anti-air candidate**.
+  ROM SHA256 `feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd`, header `FA49`,
+  cartridge source freeze `c5b64914b35af11897210701a2394a540a20a6b6`, tree `82c5128473b62ee0d9fd40394485f9b400242d5b`.
+  Normal/Hard use bounded sampled universal uppercuts against visible near
+  jump-ins, with ordinary startup and fallible commitments. Easy retains its
+  prior behavior; wave/attack defense and signature-special priorities remain.
+  All 219 generated assets match v0.15.0. WRAM, Fighter64/Wave16, TRACE0..122,
+  controls, actor/OBJ/UI/ambient/audio contracts remain unchanged.
+  All six native suites pass 35,147 exact-ROM checks. Matching pinned smoke,
+  matrix/replays, independent combat and three uninterrupted native live-hour
+  sessions pass. Fresh committed export reproduces ROM, 219 assets and symbols
+  in 348.547 seconds. The Windows archive passes 8,729
+  technical audit checks. Two final packages are identical: 21,689,220 bytes,
+  SHA256 `e8736a6f9a786fd7e9b66e639e7ba220928cd36411159da4b0ba59db08426679`.
+  Native CPU hit/whiff clips and twelve-fighter practice are bundled. Human gameplay/balance, listening, controllers, likeness/
+  consent and public-use gates remain open; public_release_certified is false.
+  See docs/RELEASE-v0.16.0.md.
+
+- The historical offline checkpoint is the **v0.15.0 close cross-up/practice candidate**.
   ROM SHA256 `2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44`, header `2491`,
   source freeze `e406ac17af1c25a64c7be547e7d0857880c18599`, tree `78493ed80bfd259deb228e7a8ca20580fef4f267`.
   Only airborne medium kick action 5 reaches behind its locked facing, within

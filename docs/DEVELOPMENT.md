@@ -1,8 +1,20 @@
 # Native SNES implementation
-<!-- candidate-version: 0.15.0; rom-sha256: 2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44 -->
+<!-- candidate-version: 0.16.0; rom-sha256: feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd -->
 
-The current checkout builds the v0.15.0 candidate, ROM SHA256
-`2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44`, checksum `2491`.
+The current checkout builds the v0.16.0 candidate, ROM SHA256
+`feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd`, checksum `FA49`.
+Normal/Hard CPU anti-air uses the existing universal Down+L uppercut after
+wave defense, ordinary attack guard and family-specific special choices.
+Eligible targets are visible, alive, not hurt/down, within forty pixels and
+12..56 pixels above the floor, in front of a free grounded CPU. Normal samples
+every ten ticks with a 16/32 threshold; Hard samples every six with 24/32.
+Existing RNG is sampled once per live tick. The branch adds no state, input
+lookahead, startup cancel, profile tuning, DMA, trace words or WRAM storage.
+Easy's branch is unchanged. Reproducible controller cases cover hits, empty
+jumps, retreat whiffs, difficulty distinction and unavailable/hurt/KO exclusions.
+The distance comparison uses the existing integer pixel bucket: at most 40,
+or strictly less than 41 pixels in the underlying fixed-point coordinates.
+
 Only an airborne medium kick (action 5 with airAction set) gains rear contact,
 within sixteen pixels plus the ten-pixel body half-width. Front reach and all
 other attack timing/damage/direction contracts remain. Contact-side recoil is
@@ -16,9 +28,9 @@ TRACE[0..122] words are added; existing WRAM symbol addresses are retained.
 Controls adds a cross-up cue at row 22 inside the existing rows 5..27,
 1,472-byte, three-tick pause panel. Glyph/portrait, one-actor-per-vblank, OBJ,
 ambient and SPC budgets remain unchanged. All 219 generated assets match the
-verified v0.14.0 checkpoint. The package gate now binds the collated summary's
+verified v0.15.0 checkpoint. The package gate now binds the collated summary's
 identity, source freeze and six-suite counts to its individual exact-ROM reports.
-See [RELEASE-v0.15.0.md](RELEASE-v0.15.0.md) for current evidence status.
+See [RELEASE-v0.16.0.md](RELEASE-v0.16.0.md) for current evidence status.
 Older version sections below are historical snapshots.
 
 ## Build

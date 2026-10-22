@@ -1,25 +1,27 @@
 # Abaqus: After Hours
-<!-- candidate-version: 0.15.0; rom-sha256: 2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44 -->
+<!-- candidate-version: 0.16.0; rom-sha256: feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd -->
 
 An original six-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II's arcade structure and the people and places of Abaqus in
 Santiago. The game runs as a native SNES cartridge in an emulator.
 
-The current checkout is the **v0.15.0 review candidate**, ROM SHA256
-`2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44`, checksum `2491`.
-A close airborne medium kick can now connect after crossing behind an opponent.
-Recoil and impact feedback follow the contact side, including simultaneous
-trades, and the pause Controls guide teaches the move. Other moves retain
-their existing directional rules and timing. Every generated art/audio asset
-is retained. Training opponents, revised Lars art, location previews, clear
-A/Start prompts, winner cards and champion music remain available.
-All six native suites pass 35,036 checks on this exact ROM. Matching smoke,
-full matchup/replay, independent combat, endurance and fresh-source gates pass.
-The [v0.15.0 release note](docs/RELEASE-v0.15.0.md) records the evidence.
-The Windows package passes 8,707 technical audit checks. Two consecutive final
-ZIPs are identical at 14,747,425 bytes, SHA256
-`481d5fb0968c1ba44ffee1e46ed1009736d45f45fa0e79c415478d370661ba62`.
-Human gameplay/balance, listening, controller, likeness/consent and public-use
+The current checkout is the **v0.16.0 CPU anti-air review candidate**, ROM SHA256
+`feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd`, checksum `FA49`.
+Normal and Hard opponents can deliberately uppercut a nearby jump-in. Their
+sampled decisions use visible position and an available grounded startup;
+ordinary startup/recovery and missed commitments remain. Easy retains its
+previous behavior. Existing wave/attack defense and signature specials keep
+priority. All 219 generated art/audio assets and the native memory contracts
+are retained. Cross-ups, practice help, revised Lars art and location previews
+remain available.
+
+All six native suites pass 35,147 checks on this exact ROM. Matching smoke,
+full matchup/replays, independent combat, endurance and fresh-source gates pass.
+The [v0.16.0 release note](docs/RELEASE-v0.16.0.md) records the evidence.
+The offline Windows archive passes 8,729 technical audit checks. Two
+consecutive final packages are identical: 21,689,220 bytes, SHA256
+`e8736a6f9a786fd7e9b66e639e7ba220928cd36411159da4b0ba59db08426679`.
+Human gameplay/balance, listening, controllers, likeness/consent and public-use
 review remain open.
 
 ## Play
@@ -28,7 +30,7 @@ On Windows, run **[Play.cmd](Play.cmd)** from the source checkout. The launcher
 prepares the pinned official Snes9x tools in `.tools/` on first use and opens
 the cartridge. No administrator account or global installation is needed.
 
-For offline play, extract the whole [v0.15.0 Windows ZIP](dist/Abaqus-After-Hours-v0.15.0-Windows.zip) and run its included
+For offline play, extract the whole [v0.16.0 Windows ZIP](dist/Abaqus-After-Hours-v0.16.0-Windows.zip) and run its included
 `Play.cmd`. Its `manifest.json` and `RELEASE.md` identify the actual cartridge
 and verification scope. Older archives contain their own historical versions.
 
@@ -50,7 +52,7 @@ The [player guide](docs/PLAYER-GUIDE.md) covers both players, controllers,
 blocking, cancels, specials, pause pages and Training dummies. Snes9x supports
 fullscreen with Alt+Enter and controller mapping under Input Configuration.
 
-The source checkout also includes a [cross-up practice companion](docs/CROSSUP-PRACTICE-v0.15.0.html)
+The current candidate includes a [cross-up practice companion](docs/CROSSUP-PRACTICE-v0.16.0.html)
 with native moving examples for all twelve fighters. Its [practice notes](docs/CROSSUP-PRACTICE.md)
 explain different jump setups and record the supplemental 72-case controller proof.
 
