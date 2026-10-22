@@ -243,6 +243,16 @@ def main() -> None:
                              'incomplete or altered champion route contract')
 
     manifest = json.loads((ROOT/'dist/manifest.json').read_text())
+    verification = json.loads((ROOT/f"docs/verification-v{manifest['version']}.json").read_bytes())
+    PACKAGE.validate_verification_summary(verification, ROOT, manifest)
+    altered_total = copy.deepcopy(verification)
+    altered_total['native_suites']['inputs']['passed'] += 1
+    altered_total['native_checks_total'] += 1
+    for altered in (dict(verification, version='0.0.0'), dict(verification, rom_sha256='0'*64),
+                    dict(verification, source_commit='0'*40), dict(verification, native_checks_total=1),
+                    dict(verification, public_release_certified=True), altered_total):
+        expect_package_error(lambda: PACKAGE.validate_verification_summary(altered, ROOT, manifest),
+                             'stale or inconsistent collated verification')
     audio = json.loads((ROOT/'docs/champion-audio-report.json').read_text())
     PACKAGE.validate_champion_audio(audio, ROOT, manifest)
     mutations = [dict(audio, rom_sha256='0'*64), dict(audio, status='failed'),

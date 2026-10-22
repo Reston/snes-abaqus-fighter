@@ -943,6 +943,36 @@ def validate_authoring_evidence(report: Mapping, root: Path, manifest: Mapping) 
                 'Authoring mutation checks must pass completely in both normal and optimized Python')
 
 
+def validate_verification_summary(report: Mapping, root: Path, manifest: Mapping) -> None:
+    """Bind the collated package record to its independently validated inputs."""
+    fresh = read_json(root/'docs/fresh-build-test-report.json', 'verification source freeze')
+    require(isinstance(report, Mapping) and report.get('status') == 'passed' and
+            report.get('version') == manifest['version'] and report.get('rom_sha256') == manifest['sha256'] and
+            report.get('checksum') == manifest['checksum'] and report.get('rom_bytes') == manifest['bytes'] and
+            report.get('source_commit') == fresh.get('source_commit') and
+            report.get('source_tree') == fresh.get('source_tree') and
+            report.get('public_release_certified') is False,
+            'Collated verification must identify the current cartridge and source freeze')
+    paths = {'gameplay': 'docs/test-report.json', 'characters': 'docs/character-test-report.json',
+             'presentation': 'docs/presentation-test-report.json', 'inputs': 'docs/input-test-report.json',
+             'stages': 'docs/stage-test-report.json', 'training': 'docs/training-test-report.json'}
+    suites = report.get('native_suites', {})
+    require(isinstance(suites, Mapping) and set(suites) == set(paths),
+            'Collated verification must retain all six native suites')
+    total = 0
+    for name, path in paths.items():
+        source = read_json(root/path, 'verification '+name)
+        validate_suite(source, name, manifest['sha256'], 'training' if name == 'training' else None)
+        row = suites[name]
+        require(isinstance(row, Mapping) and row.get('report') == path and
+                row.get('status') == 'passed' and row.get('passed') == source['passed'] and
+                row.get('checks') == len(source['checks']),
+                'Collated verification native counts differ from exact-ROM evidence', name)
+        total += source['passed']
+    require(report.get('native_checks_total') == total,
+            'Collated verification total differs from all six native suites')
+
+
 def write_entry(package: zipfile.ZipFile, name: str, data: bytes) -> None:
     # Source mtimes and the host OS must not change the archive checksum.
     entry = zipfile.ZipInfo(name, date_time=(2026, 1, 1, 0, 0, 0))
@@ -963,6 +993,8 @@ def main() -> None:
     files = build_package_files(ROOT, manifest)
     preflight_package_files(files)
     validate_candidate_docs(files, manifest)
+    validate_verification_summary(read_json(ROOT/f"docs/verification-v{manifest['version']}.json",
+                                           'collated verification'), ROOT, manifest)
     validate_champion_evidence(ROOT, manifest)
     validate_menu_evidence(read_json(ROOT/'docs/menu-footer-report.json', 'menu footer proof'), ROOT, manifest)
     validate_authoring_evidence(read_json(ROOT/'docs/authoring-guards-report.json', 'authoring guard proof'), ROOT, manifest)

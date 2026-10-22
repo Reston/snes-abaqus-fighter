@@ -15,6 +15,7 @@ from package import (GUI_EMULATOR_MEMBER_SHA256, GUI_EMULATOR_PACKAGE_PATH,
                      validate_champion_evidence,
                      validate_menu_evidence,
                      validate_authoring_evidence,
+                     validate_verification_summary,
                      verify_gui_emulator)
 from release_evidence import (EXTRA_REPORTS, training_report_path,
                                validate_release_evidence)
@@ -62,6 +63,8 @@ def main():
         candidate_files = build_package_files(ROOT, manifest)
         preflight_package_files(candidate_files)
         validate_candidate_docs(candidate_files, manifest)
+        validate_verification_summary(json.loads((ROOT/f"docs/verification-v{manifest['version']}.json").read_bytes()),
+                                      ROOT, manifest)
         validate_champion_evidence(ROOT, manifest)
         validate_menu_evidence(json.loads((ROOT/'docs/menu-footer-report.json').read_bytes()), ROOT, manifest)
         validate_authoring_evidence(json.loads((ROOT/'docs/authoring-guards-report.json').read_bytes()), ROOT, manifest)
@@ -69,6 +72,7 @@ def main():
         check(True, 'champion provenance and A/Start/B evidence match the exact cartridge')
         check(True, 'menu prompts preserve native scenes with current-ROM controller proof')
         check(True, 'normal and optimized authoring checks match the frozen source')
+        check(True, 'collated verification matches current cartridge, source freeze and six native totals')
 
         # Release-scale evidence is intentionally separate from the bounded
         # Test.cmd smoke suites.  Use the same validator as package.py so the
