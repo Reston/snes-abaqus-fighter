@@ -39,6 +39,7 @@ HOUR_SECONDS = 3600.0
 BENCHMARK_FRAMES = 1_000
 PROGRESS_INTERVAL = 6_000
 ROSTER_INTERVAL = 24_000
+TRAINING_CPU_ROSTER_INTERVAL = 16_000
 TRAINING_RESET_INTERVAL = 8_192
 ARCADE_POLICY_INTERVAL = 8_192
 ARCADE_POLICY_WINDOW = 2_048
@@ -913,6 +914,7 @@ class EnduranceRun:
         if self.mode == 2:
             required["training_reset"] = self.events["reset"] > 0
             required["training_cpu_hour"] = self.training_cpu_live_frames >= self.target
+            required["training_cpu_roster"] = {row["fighter2"] for row in self.rosters} == set(range(12))
         if self.coverage_required:
             missing = [name for name, seen in required.items() if not seen]
             if missing:
@@ -1246,7 +1248,8 @@ def run_mode(mode: int, target: int, benchmark: bool = False,
     fighter = (mode * 3) % 12
     fighter2 = (fighter + 1) % 12
     stage = mode % 3
-    next_roster = ROSTER_INTERVAL
+    roster_interval = TRAINING_CPU_ROSTER_INTERVAL if mode == 2 else ROSTER_INTERVAL
+    next_roster = roster_interval
     next_reset = TRAINING_RESET_INTERVAL
     report: dict[str, object] | None = None
     progression_frames = 0
@@ -1293,10 +1296,13 @@ def run_mode(mode: int, target: int, benchmark: bool = False,
             if (mode in (1, 2) and runner.total_frames >= next_roster and
                     screen_ready(current, SCREEN_FIGHT) and not current["paused"]):
                 fighter = (fighter + 2) % 12
-                fighter2 = (fighter + 3) % 12
+                # CPU Training rotates the opponent independently so its full
+                # live hour includes every profile and all four AI families.
+                # Versus keeps the established matchup/controller policy.
+                fighter2 = (fighter2 + 1) % 12 if mode == 2 else (fighter + 3) % 12
                 stage = (stage + 1) % 3
                 roster_transition(host, runner, mode, fighter, fighter2, stage)
-                next_roster += ROSTER_INTERVAL
+                next_roster += roster_interval
                 continue
             if (mode == 2 and runner.total_frames >= next_reset and
                     screen_ready(current, SCREEN_FIGHT) and not current["paused"]):

@@ -891,9 +891,13 @@ def validate_endurance(report: dict[str, Any], rom_sha256: str,
                                 label + " mode " + key + " native core", recorder)
         coverage = MODE_COVERAGE_KEYS[key]
         if key == '2' and training_cpu:
-            coverage = coverage | {'training_cpu_hour'}
+            coverage = coverage | {'training_cpu_hour', 'training_cpu_roster'}
             require(_int(mode.get('training_cpu_live_frames', 0), label + ' CPU Training frames') >= reported_target,
                     label + ' CPU Training completes a native live hour', mode.get('training_cpu_live_frames'), recorder)
+            rosters = mode.get('rosters')
+            require(isinstance(rosters, list) and all(isinstance(row, dict) for row in rosters) and
+                    {row.get('fighter2') for row in rosters} == set(range(FIGHTERS)),
+                    label + ' CPU Training covers all twelve opponent profiles', rosters, recorder)
         _mode_audio_video(mode, label + " mode " + key, native_fps,
                           reported_target, coverage, recorder)
     totals = report.get("total_frames_per_mode")

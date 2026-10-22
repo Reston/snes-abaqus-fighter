@@ -185,13 +185,16 @@ class NativeReview(unittest.TestCase):
         from release_evidence import EvidenceError, validate_endurance
         native = json.loads((ROOT/'docs/endurance-test-report.json').read_bytes())
         validate_endurance(native, self.manifest['sha256'], root=ROOT)
-        for mutation in ('zero', 'short', 'missing', 'false'):
+        for mutation in ('zero', 'short', 'missing', 'false', 'opponents', 'roster_flag'):
             altered = copy.deepcopy(native)
             mode = altered['modes']['2']
             if mutation == 'zero': mode['training_cpu_live_frames'] = 0
             if mutation == 'short': mode['training_cpu_live_frames'] = native['target_live_frames_per_mode']-1
             if mutation == 'missing': mode['required_coverage'].pop('training_cpu_hour')
             if mutation == 'false': mode['required_coverage']['training_cpu_hour'] = False
+            if mutation == 'opponents':
+                for row in mode['rosters']: row['fighter2'] = 7
+            if mutation == 'roster_flag': mode['required_coverage']['training_cpu_roster'] = False
             with self.subTest(mutation=mutation), self.assertRaises(EvidenceError):
                 validate_endurance(altered, self.manifest['sha256'], root=ROOT)
 
