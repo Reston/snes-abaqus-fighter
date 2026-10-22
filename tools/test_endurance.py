@@ -215,7 +215,8 @@ def wrap_delta(current: int, previous: int) -> int:
     return (int(current) - int(previous)) & 0xFFFF
 
 
-def keys_for(mode: int, tick: int, state: dict[str, int]) -> tuple[list[str], list[str]]:
+def keys_for(mode: int, tick: int, state: dict[str, int],
+             arcade_progression: bool = False) -> tuple[list[str], list[str]]:
     """Deterministic combat coverage without writing state or relying on RNG."""
 
     distance = abs(state["x1"] - state["x2"])
@@ -228,7 +229,8 @@ def keys_for(mode: int, tick: int, state: dict[str, int]) -> tuple[list[str], li
     # the broader six-button macro below still owns the remaining coverage.
     # This keeps champion progression an observed menu route instead of a
     # host-side state shortcut.
-    if (mode == 0 and tick % ARCADE_POLICY_INTERVAL < ARCADE_POLICY_WINDOW):
+    if (mode == 0 and (arcade_progression or
+                      tick % ARCADE_POLICY_INTERVAL < ARCADE_POLICY_WINDOW)):
         distance_px = distance // 16
         if state["intro"] or state["round_end"] or state["hitstop"]:
             return [], []
@@ -239,7 +241,9 @@ def keys_for(mode: int, tick: int, state: dict[str, int]) -> tuple[list[str], li
                     else [back]), []
         if distance_px > 25:
             return [forward], []
-        return [forward, "l"], []
+        # Match the gameplay probe's real release after every L attempt.
+        # A failed throw must not leave the edge held indefinitely.
+        return ([forward] if state["raw_keys1"] & 0x20 else [forward, "l"]), []
 
     # A dedicated close-range throw window is needed in Training, where the
     # second controller is intentionally inert.  The old macro stopped at a
@@ -1209,6 +1213,7 @@ def run_mode(mode: int, target: int, benchmark: bool = False,
     next_roster = ROSTER_INTERVAL
     next_reset = TRAINING_RESET_INTERVAL
     report: dict[str, object] | None = None
+    progression_frames = 0
     try:
         # The measured session starts after the one-time native boot and then
         # keeps this exact core alive until target native ticks are observed.
@@ -1259,7 +1264,14 @@ def run_mode(mode: int, target: int, benchmark: bool = False,
                 training_reset(host, runner)
                 next_reset += TRAINING_RESET_INTERVAL
                 continue
-            p1, p2 = keys_for(mode, runner.total_frames, current)
+            # Complete one observed ladder before the mixed macro. Interleaving
+            # short progression windows with broad attack coverage can lose
+            # every match against a changed CPU and omit the champion route.
+            # The remainder of the same full-hour session still has to meet
+            # every original combat/normal/guard/special/three-stage check.
+            progression = mode == 0 and not benchmark and runner.events["champion_restart"] == 0
+            p1, p2 = keys_for(mode, runner.total_frames, current, progression)
+            progression_frames += int(progression)
             tracked_step(host, runner, p1, p2)
             if runner.total_frames and runner.total_frames % PROGRESS_INTERVAL == 0:
                 print(json.dumps({
@@ -1273,6 +1285,7 @@ def run_mode(mode: int, target: int, benchmark: bool = False,
         report["core_frames_including_boot"] = host.frames
         report["core"] = core_info
         report["uninterrupted_session"] = True
+        report["initial_ladder_policy_frames"] = progression_frames
         return report
     finally:
         if host is not None:
