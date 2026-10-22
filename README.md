@@ -50,6 +50,10 @@ The [player guide](docs/PLAYER-GUIDE.md) covers both players, controllers,
 blocking, cancels, specials, pause pages and Training dummies. Snes9x supports
 fullscreen with Alt+Enter and controller mapping under Input Configuration.
 
+The source checkout also includes a [cross-up practice companion](docs/CROSSUP-PRACTICE-v0.15.0.html)
+with native moving examples for all twelve fighters. Its [practice notes](docs/CROSSUP-PRACTICE.md)
+explain different jump setups and record the supplemental 72-case controller proof.
+
 ## Included
 
 - Twelve individual illustrated coworkers, each with 64 native animation frames.
