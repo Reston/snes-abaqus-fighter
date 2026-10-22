@@ -7,11 +7,12 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from package import validate_crossup_review
+from package import validate_crossup_review, validate_cpu_review
 
 root = Path(__file__).resolve().parents[1]
 manifest = json.loads((root/'dist/manifest.json').read_text())
 validate_crossup_review(json.loads((root/'docs/crossup-review.json').read_bytes()), root, manifest)
+validate_cpu_review(json.loads((root/'docs/cpu-anti-air-review.json').read_bytes()), root, manifest)
 total = 0
 for name in ['test', 'character-test', 'presentation-test', 'input-test', 'stage-test', 'training-test']:
     report = json.loads((root/f'docs/{name}-report.json').read_text())
@@ -22,12 +23,14 @@ for name in ['test', 'character-test', 'presentation-test', 'input-test', 'stage
         raise RuntimeError(('Unverified native gallery source', name))
     total += report['passed']
 shots = [
+    ('new', 'CPU catches a jump-in', 'Hard CPU commits to an ordinary uppercut with its full startup. Native capture; GIF playback timing is approximate.', 'cpu-anti-air/hit.gif'),
+    ('new', 'Retreat makes it whiff', 'The committed uppercut misses a retreating jumper through all eight active ticks. Human balance review remains open.', 'cpu-anti-air/whiff.gif'),
     ('results', 'Office Champion', 'An earned trophy, winner portrait, score and title/roster actions.', 'champion/ending.png'),
     ('menus', 'Choose a Training opponent', 'DUMMY selection supports any opponent through either controller.', 'presentation/training-dummy.png'),
     ('menus', 'Practice a mirror match', 'Choose the same fighter on both sides before selecting an arena.', 'presentation/training-mirror.png'),
-    ('new', 'P1 right cross-up', 'Jump past and use medium kick: SNES A, or P1 keyboard X. Native capture; GIF playback timing is approximate.', 'crossup/p1.gif'),
-    ('new', 'P2 left cross-up', 'The mirrored left-cross route: SNES A, or P2 numpad 2. Native capture; GIF playback timing is approximate.', 'crossup/p2.gif'),
-    ('new', 'Controls cross-up cue', 'v0.15 Controls page teaches CROSS-UP: JUMP PAST + A.', 'training/mode1-controls.png'),
+    ('menus', 'P1 right cross-up', 'Jump past and use medium kick: SNES A, or P1 keyboard X. Native capture; GIF playback timing is approximate.', 'crossup/p1.gif'),
+    ('menus', 'P2 left cross-up', 'The mirrored left-cross route: SNES A, or P2 numpad 2. Native capture; GIF playback timing is approximate.', 'crossup/p2.gif'),
+    ('menus', 'Controls cross-up cue', 'Controls page teaches CROSS-UP: JUMP PAST + A.', 'training/mode1-controls.png'),
     ('results', 'Player one wins', 'Winner portrait, score, quote and Start rematch.', 'presentation/result-score.png'),
     ('results', 'Player two wins', 'A neutral match heading and the correct winner.', 'presentation/result-score-p2.png'),
     ('results', 'Healthy timeout tie', 'The first banner reads TIME OVER / DRAW.', 'presentation/timeout-draw.png'),

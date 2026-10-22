@@ -172,8 +172,10 @@ def build_package_files(root: Path = ROOT, manifest: Mapping | None = None) -> d
     require('version' in manifest, 'Manifest is missing its version')
     training_source = training_report_path(root)
     version = str(manifest['version'])
+    from review_media import review_files
     return {
         **menu_capture_files(root),
+        **review_files(root, version),
         'abaqus-after-hours.sfc': root / 'dist/abaqus-after-hours.sfc',
         GUI_EMULATOR_PACKAGE_PATH: root / '.tools/snes9x/snes9x-x64.exe',
         'emulator/LICENSE': root / '.tools/snes9x/LICENSE',
@@ -299,6 +301,16 @@ def qa_readme_bytes() -> bytes:
         'Their GIF timing is an inspection approximation, and capture '
         'execution remains trusted recorded evidence. REVIEW.html embeds '
         'both clips and the current Controls page.\n\n'
+        'CROSSUP-PRACTICE-v*.html embeds one native setup per fighter. Its '
+        'versioned proof retains 72 controller cases; the companion capture '
+        'record retains twelve GIFs under screenshots/crossup-practice/. '
+        'cpu-anti-air-review.json retains native hit and retreat-whiff GIFs '
+        'under screenshots/cpu-anti-air/. Remove the leading docs/ from '
+        'their recorded capture paths. Packaging checks fixed inventories, '
+        'current cartridge/core/helper hashes, decoded pixels, durations and '
+        'trace landmarks. Capture execution remains trusted recorded '
+        'evidence, GIF timing is approximate and human balance review is open. '
+        'Producer/helper paths refer to the source checkout.\n\n'
         'qa/character-manifest.json carries the source art provenance '
         'manifest used by the native export.\n'
     ).encode('utf-8')
@@ -1060,6 +1072,31 @@ def validate_crossup_review(report: Mapping, root: Path, manifest: Mapping) -> N
                 'Cross-up review landmarks differ from the retained trace')
 
 
+def validate_practice_review(root: Path, manifest: Mapping) -> None:
+    from review_media import ReviewError, validate_practice
+    version = manifest['version']
+    try:
+        validate_practice(read_json(root/f'docs/crossup-practice-v{version}.json', 'practice proof'),
+                          read_json(root/f'docs/crossup-practice-captures-v{version}.json', 'practice captures'),
+                          root, manifest)
+    except (ReviewError, OSError) as error:
+        raise PackageError(f'Invalid practice review: {error}') from error
+
+
+def validate_cpu_review(report: Mapping, root: Path, manifest: Mapping) -> None:
+    from review_media import ReviewError, validate_cpu_review as validate
+    try:
+        validate(report, root, manifest)
+    except (ReviewError, OSError) as error:
+        raise PackageError(f'Invalid CPU review: {error}') from error
+    native = read_json(root/'docs/input-test-report.json', 'CPU review controller proof')
+    anti = native.get('cpu_regressions', {}).get('anti_air', {})
+    require(native.get('rom_sha256') == manifest['sha256'] and native.get('status', 'passed') == 'passed' and
+            report['captures'][0]['proof']['fixture_result'] in anti.get('hits', []) and
+            report['captures'][1]['proof']['fixture_result'] == anti.get('retreat_whiff'),
+            'CPU review landmarks must match the current native input-suite fixtures')
+
+
 def validate_verification_summary(report: Mapping, root: Path, manifest: Mapping) -> None:
     """Bind the collated package record to its independently validated inputs."""
     fresh = read_json(root/'docs/fresh-build-test-report.json', 'verification source freeze')
@@ -1116,6 +1153,8 @@ def main() -> None:
     validate_menu_evidence(read_json(ROOT/'docs/menu-footer-report.json', 'menu footer proof'), ROOT, manifest)
     validate_authoring_evidence(read_json(ROOT/'docs/authoring-guards-report.json', 'authoring guard proof'), ROOT, manifest)
     validate_crossup_review(read_json(ROOT/'docs/crossup-review.json', 'cross-up review aid'), ROOT, manifest)
+    validate_practice_review(ROOT, manifest)
+    validate_cpu_review(read_json(ROOT/'docs/cpu-anti-air-review.json', 'CPU review aid'), ROOT, manifest)
     pin_record = verify_gui_emulator(ROOT)
     virtual = build_virtual_entries(pin_record)
     package_names = preflight_package_files(files, virtual)

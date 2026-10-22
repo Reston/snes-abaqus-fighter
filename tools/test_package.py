@@ -301,6 +301,8 @@ def main() -> None:
 
     manifest = json.loads((ROOT/'dist/manifest.json').read_text())
     check_crossup_input_mutations(json.loads((ROOT/'docs/crossup-review.json').read_bytes()), manifest)
+    PACKAGE.validate_practice_review(ROOT, manifest)
+    PACKAGE.validate_cpu_review(json.loads((ROOT/'docs/cpu-anti-air-review.json').read_bytes()), ROOT, manifest)
     verification = json.loads((ROOT/f"docs/verification-v{manifest['version']}.json").read_bytes())
     PACKAGE.validate_verification_summary(verification, ROOT, manifest)
     altered_total = copy.deepcopy(verification)

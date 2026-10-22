@@ -17,6 +17,7 @@ from package import (GUI_EMULATOR_MEMBER_SHA256, GUI_EMULATOR_PACKAGE_PATH,
                      validate_authoring_evidence,
                      validate_verification_summary,
                      validate_crossup_review,
+                     validate_practice_review, validate_cpu_review,
                      verify_gui_emulator)
 from release_evidence import (EXTRA_REPORTS, training_report_path,
                                validate_release_evidence)
@@ -70,12 +71,16 @@ def main():
         validate_menu_evidence(json.loads((ROOT/'docs/menu-footer-report.json').read_bytes()), ROOT, manifest)
         validate_authoring_evidence(json.loads((ROOT/'docs/authoring-guards-report.json').read_bytes()), ROOT, manifest)
         validate_crossup_review(json.loads((ROOT/'docs/crossup-review.json').read_bytes()), ROOT, manifest)
+        validate_practice_review(ROOT, manifest)
+        validate_cpu_review(json.loads((ROOT/'docs/cpu-anti-air-review.json').read_bytes()), ROOT, manifest)
         check(True, 'current guides identify the exact candidate version and ROM')
         check(True, 'champion provenance and A/Start/B evidence match the exact cartridge')
         check(True, 'menu prompts preserve native scenes with current-ROM controller proof')
         check(True, 'normal and optimized authoring checks match the frozen source')
         check(True, 'collated verification matches current cartridge, source freeze and six native totals')
         check(True, 'cross-up review GIFs retain current native capture identity, pixels and timing')
+        check(True, 'all-roster practice companion retains 72 cases and twelve native clips')
+        check(True, 'CPU hit and retreat-whiff clips retain ordinary native startup and capture integrity')
 
         # Release-scale evidence is intentionally separate from the bounded
         # Test.cmd smoke suites.  Use the same validator as package.py so the

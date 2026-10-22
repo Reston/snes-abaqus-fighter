@@ -359,8 +359,9 @@ def main() -> None:
             f"ROM does not match current manifest: {rom_sha} != {manifest.get('sha256')}"
         )
     version = str(manifest.get("version", ""))
-    if not version.startswith("0.15."):
-        raise RuntimeError(f"cross-up review requires the v0.15 candidate, got {version}")
+    parts = version.split(".")
+    if len(parts) != 3 or not all(part.isdigit() for part in parts) or tuple(map(int, parts)) < (0, 15, 0):
+        raise RuntimeError(f"cross-up review requires v0.15.0 or later, got {version}")
 
     host = process_contract()
 
