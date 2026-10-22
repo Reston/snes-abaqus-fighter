@@ -695,8 +695,8 @@ def title_and_select() -> dict[str, object]:
         verify_menu_font_bank(e, [
             (4, 23, "PLAYER 1"),
             (17, 22, NAMES[0]),
-            (27, centered_start("D-PAD SELECT  A OK  B BACK"),
-             "D-PAD SELECT  A OK  B BACK"),
+            (27, centered_start("D-PAD SELECT A/START OK B BACK"),
+             "D-PAD SELECT A/START OK B BACK"),
         ], "fighter select")
         select_card_render = verify_select_card_render(e)
         select_digests: dict[int, str] = {0: frame_digest(e)}
@@ -759,6 +759,10 @@ def title_and_select() -> dict[str, object]:
             arena_digests.append(frame_digest(e))
             verify_arena_cursor(e, index)
             arena_plate = verify_arena_plate(e, index)
+            verify_opaque_text_rows(e, [
+                (27, centered_start("UP/DOWN A/START OK B BACK"),
+                 "UP/DOWN A/START OK B BACK"),
+            ], "arena footer")
             arena_renders[stage] = arena_plate
             arena_paths[stage] = str(capture(e, f"arena-{index}.png"))
         press(e, "down")

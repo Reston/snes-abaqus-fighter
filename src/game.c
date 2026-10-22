@@ -324,7 +324,7 @@ void drawSelect(void) {
     if(mode==2 && selectPlayer)word(23,4,"DUMMY");
     else word(23,4,selectPlayer ? "PLAYER 2":"PLAYER 1");
     word(22,17,characterNames[id]);
-    center(27,"D-PAD SELECT  A OK  B BACK");
+    center(27,"D-PAD SELECT A/START OK B BACK");
     portraitId=id;portraitDirty=1;fullDirty=1;
 }
 void uploadMenuPortrait(void) {
@@ -335,7 +335,13 @@ void uploadMenuPortrait(void) {
 void showSelect(void) {
     setScreenOff();screen=SELECT;arcade=0;champion=0;commonScreen();loadBackground(4);selectPlayer=0;drawSelect();uploadMenuPortrait();music(0);finishScreen();
 }
-void drawArenas(void) { clearUi();cursor(1,5+arena*7,30,7);fullDirty=1; }
+void drawArenas(void) {
+    clearUi();cursor(1,5+arena*7,30,7);
+    /* Cover only the raster footer below the three unchanged choice rows.
+     * Opaque original glyphs keep the old lettering from showing through. */
+    panel(26,2);drawGuideWord((27*32+3)*2,"UP/DOWN A/START OK B BACK");
+    fullDirty=1;
+}
 void showArenas(void) { setScreenOff();screen=ARENA;commonScreen();loadBackground(5);drawArenas();finishScreen(); }
 
 void hud(void) {
