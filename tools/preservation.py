@@ -12,6 +12,13 @@ PROTECTED = {'src/hardware.asm', 'src/trace.asm'}
 TEXT_TYPES = {'.asm', '.h', '.json'}
 # Policy is separate from the report: it cannot authorize its own differences.
 POLICIES = {
+    '0.16.0': {
+        'baseline_commit': 'e9d4313af3fff74ca9857f8a6fb0d704464fac8f',
+        'baseline_version': '0.15.0',
+        'baseline_rom_sha256': '2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44',
+        'allowed_changed': [],
+        'allowed_added': [],
+    },
     '0.15.0': {
         'baseline_commit': '2f2df2909ee7cf100b5dc4c8ef0f5aefb46a9891',
         'baseline_version': '0.14.0',
