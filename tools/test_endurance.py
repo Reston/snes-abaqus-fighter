@@ -547,6 +547,7 @@ class EnduranceRun:
         self.input_counts: dict[str, int] = {}
         self.trace_magic_samples = 0
         self.training_cpu_live_frames = 0
+        self.failure_states: list[dict[str, object]] = []
         self.events = {
             "attack": 0, "air": 0, "throw": 0, "guard": 0, "special": 0,
             "wake": 0, "down": 0, "round_change": 0, "result": 0,
@@ -672,6 +673,7 @@ class EnduranceRun:
             })
 
         if self.previous is not None:
+            failures_before = len(self.cadence_failures) + len(self.native_timing_failures)
             frame_delta = wrap_delta(current["frame"], self.previous["frame"])
             if current["frame"] < self.previous["frame"]:
                 self.frame_wraps += 1
@@ -734,6 +736,14 @@ class EnduranceRun:
                     "native_screen": current["native_screen"],
                     "previous_native_screen": self.previous["native_screen"],
                 })
+            if (len(self.cadence_failures) + len(self.native_timing_failures) > failures_before
+                    and len(self.failure_states) < 8):
+                # Retain actual read-only telemetry and physical controller
+                # input at a failing callback, rather than only its counters.
+                self.failure_states.append({"at": self.total_frames,
+                                            "previous": dict(self.previous),
+                                            "current": dict(current),
+                                            "p1": list(p1), "p2": list(p2)})
             gameplay_now = (live and not current["paused"] and
                             not current["hitstop"])
             gameplay_before = (self.last_live and not self.previous["paused"] and
@@ -1332,6 +1342,29 @@ def run_mode(mode: int, target: int, benchmark: bool = False,
         report["uninterrupted_session"] = True
         report["initial_ladder_policy_frames"] = progression_frames
         return report
+    except Exception as error:
+        # Failed runs must replace the mode's old passing record with honest
+        # current-ROM evidence. This diagnostic schema cannot satisfy the
+        # release gate, and the original exception still propagates.
+        rom_sha, rom_bytes = rom_identity()
+        report = {"suite": "endurance-mode", "status": "failed", "mode": mode,
+                  "rom_sha256": rom_sha, "rom_bytes": rom_bytes,
+                  "error": repr(error), "frames": runner.total_frames,
+                  "target_live_frames": target, "live_frames": runner.live_frames,
+                  "training_cpu_live_frames": runner.training_cpu_live_frames,
+                  "coverage_required": coverage_required,
+                  "elapsed_seconds": round(time.monotonic()-started, 3),
+                  "harness_sha256": harness_identity(), "core": core_info,
+                  "cadence_failures": list(runner.cadence_failures),
+                  "native_timing_failures": list(runner.native_timing_failures),
+                  "ambient_failures": list(runner.ambient_failures),
+                  "spc_fifo_failures": list(runner.spc_fifo_failures),
+                  "ppu_overflow_frames": list(runner.overflow_frames),
+                  "failure_states": list(runner.failure_states),
+                  "last_state": dict(runner.previous or {}),
+                  "rosters": list(runner.rosters), "stages": sorted(runner.stages),
+                  "events": dict(runner.events)}
+        raise
     finally:
         if host is not None:
             host.close()
@@ -1339,6 +1372,10 @@ def run_mode(mode: int, target: int, benchmark: bool = False,
                 report["core_boots"] = host.boot_count
                 report["core_unloads"] = host.unload_count
                 report["core_reboots"] = max(0, host.boot_count - 1)
+        if report is not None and report.get("status") == "failed":
+            failure_path = Path(str(MODE_REPORT).format(mode=mode))
+            failure_path.parent.mkdir(parents=True, exist_ok=True)
+            failure_path.write_text(json.dumps(report, indent=2)+"\n", encoding="utf-8", newline="\n")
 
 
 def run_benchmark() -> dict[str, object]:
