@@ -1,26 +1,22 @@
 # Abaqus: After Hours
-<!-- candidate-version: 0.16.0; rom-sha256: feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd -->
+<!-- candidate-version: 0.17.0; rom-sha256: cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe -->
 
 An original six-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II's arcade structure and the people and places of Abaqus in
 Santiago. The game runs as a native SNES cartridge in an emulator.
 
-The current checkout is the **v0.16.0 CPU anti-air review candidate**, ROM SHA256
-`feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd`, checksum `FA49`.
-Normal and Hard opponents can deliberately uppercut a nearby jump-in. Their
-sampled decisions use visible position and an available grounded startup;
-ordinary startup/recovery and missed commitments remain. Easy retains its
-previous behavior. Existing wave/attack defense and signature specials keep
-priority. All 219 generated art/audio assets and the native memory contracts
-are retained. Cross-ups, practice help, revised Lars art and location previews
+The current checkout is the **v0.17.0 CPU Training candidate**, ROM SHA256
+`cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe`, checksum `5EAF`.
+Training now offers a fifth behavior, **CPU**, alongside Stand, Guard High,
+Guard Low and Jump. Open the first PAUSED card and use Up/Down to select it. The opponent
+uses the existing Easy/Normal/Hard setting chosen at home, while Training keeps
+health recovery, the 99 clock and a quick reset. A new match still starts on
+Stand. All 219 generated art/audio assets and native memory contracts remain.
+CPU anti-air, cross-ups, practice help, revised Lars art and location previews
 remain available.
 
-All six native suites pass 35,147 checks on this exact ROM. Matching smoke,
-full matchup/replays, independent combat, endurance and fresh-source gates pass.
-The [v0.16.0 release note](docs/RELEASE-v0.16.0.md) records the evidence.
-The offline Windows archive passes 8,729 technical audit checks. Two
-consecutive final packages are identical: 21,689,220 bytes, SHA256
-`e8736a6f9a786fd7e9b66e639e7ba220928cd36411159da4b0ba59db08426679`.
+Current-ROM verification is running; see [RELEASE-v0.17.0.md](docs/RELEASE-v0.17.0.md).
+The verified offline checkpoint remains v0.16.0 until the new gates complete.
 Human gameplay/balance, listening, controllers, likeness/consent and public-use
 review remain open.
 
@@ -52,7 +48,7 @@ The [player guide](docs/PLAYER-GUIDE.md) covers both players, controllers,
 blocking, cancels, specials, pause pages and Training dummies. Snes9x supports
 fullscreen with Alt+Enter and controller mapping under Input Configuration.
 
-The current candidate includes a [cross-up practice companion](docs/CROSSUP-PRACTICE-v0.16.0.html)
+The current candidate includes a [cross-up practice companion](docs/CROSSUP-PRACTICE-v0.17.0.html)
 with native moving examples for all twelve fighters. Its [practice notes](docs/CROSSUP-PRACTICE.md)
 explain different jump setups and record the supplemental 72-case controller proof.
 
@@ -63,7 +59,7 @@ explain different jump setups and record the supplemental 72-case controller pro
 - Arcade Shift against all eleven coworkers, two-player Local Versus and Training.
 - Six normal attacks, air attacks, high/low guard, throws, throw tech, uppercuts and confirmed cancels.
 - Twelve specials across projectile, rush, low-wave and rising-strike families.
-- Pause Controls/Specials pages, arbitrary Training opponents, four dummy behaviors and a live round reset.
+- Pause Controls/Specials pages, arbitrary Training opponents, five dummy behaviors, including CPU and a live round reset.
 - An earned Office Champion trophy scene after all eleven Arcade victories.
 - Original tracker music and resident combat effects.
 

@@ -1,8 +1,25 @@
 # Native SNES implementation
-<!-- candidate-version: 0.16.0; rom-sha256: feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd -->
+<!-- candidate-version: 0.17.0; rom-sha256: cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe -->
 
-The current checkout builds the v0.16.0 candidate, ROM SHA256
-`feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd`, checksum `FA49`.
+The current checkout builds the v0.17.0 candidate, ROM SHA256
+`cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe`, checksum `5EAF`.
+Training choices 0..3 retain their scripted behavior and default Stand.
+Choice 4 falls through the existing cpuKeys path at the home difficulty.
+The five-choice selector uses existing trainingDummy storage/TRACE[121]; the
+CPU label is a ROM literal so the four-entry initialized label array keeps its
+WRAM footprint. No new mutable state, ABI fields, trace offsets or DMA exist.
+CPU Training retains health recovery, clock 99, selected opponents and live
+reset. P2 gameplay input is ignored; the pause selector accepts either port.
+The recovery timer is evaluated once only when a fighter is eligible. A
+low-bit check skips software division on ticks that cannot be multiples of
+120; the original unsigned modulo condition remains, including frame wrap.
+Direct fighter accesses restore both eligible fighters before one cached HUD
+refresh. The HUD returns early when its displayed fields match and otherwise
+resolves each fighter pointer once. Hit reactions skip an empty throw-link
+call, and action/tick reads are cached locally during updates and animation.
+Recovery conditions, timing and full-health energy/HUD refresh remain. The
+recovery contract is checked on the exact cartridge.
+
 Normal/Hard CPU anti-air uses the existing universal Down+L uppercut after
 wave defense, ordinary attack guard and family-specific special choices.
 Eligible targets are visible, alive, not hurt/down, within forty pixels and
@@ -28,9 +45,9 @@ TRACE[0..122] words are added; existing WRAM symbol addresses are retained.
 Controls adds a cross-up cue at row 22 inside the existing rows 5..27,
 1,472-byte, three-tick pause panel. Glyph/portrait, one-actor-per-vblank, OBJ,
 ambient and SPC budgets remain unchanged. All 219 generated assets match the
-verified v0.15.0 checkpoint. The package gate now binds the collated summary's
+verified v0.16.0 checkpoint. The package gate now binds the collated summary's
 identity, source freeze and six-suite counts to its individual exact-ROM reports.
-See [RELEASE-v0.16.0.md](RELEASE-v0.16.0.md) for current evidence status.
+See [RELEASE-v0.17.0.md](RELEASE-v0.17.0.md) for current evidence status.
 Older version sections below are historical snapshots.
 
 ## Build
@@ -543,6 +560,23 @@ audio path.
 ## Verification
 
 `tools/emulator.py` hosts the official Snes9x 1.63 x64 libretro core. `tools/test_rom.py` supplies SNES controller inputs, captures actual video/audio and reads a reserved WRAM trace at `$7FFF00`. The host never writes game memory. Sprite checks compare actual emulated VRAM with the cartridge's encoded bytes.
+
+Run endurance through `tools/run_background.py` to keep it hidden, silent and
+below normal priority. A failed mode writes `build/endurance-modeN.json` with
+`status: failed`, the current ROM/core/harness hashes, the original error,
+failure arrays and up to eight previous/current telemetry pairs with the
+physical controller inputs. The original exception still makes the command
+fail. This diagnostic replaces an older mode result; it cannot count as a
+passing release record. `tools/test_endurance_reporting.py` tests that failure
+path with synthetic hosts and does not execute or certify a cartridge.
+
+For a Training timing investigation, run `tools/report_training_timing.py`
+through the same background runner with `--report build/training-timing.json`.
+An older ROM can be observed using `--rom` and its matching `--symbols` file.
+The helper retains the endurance controller policy and strict native checks,
+adding read-only state around timing failures. `--checkpoint --frames N` is a
+short diagnostic that omits full-hour coverage requirements; release validation
+still requires the complete current-ROM runs of all three modes.
 
 The historical v0.8.0 snapshot added `tools/test_training.py` as a sixth required
 native suite. It reads pause-guide trace fields 119-122, verifies staged guide

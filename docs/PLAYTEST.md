@@ -1,27 +1,50 @@
-# v0.16.0 human playtest guide
-<!-- candidate-version: 0.16.0; rom-sha256: feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd -->
+# v0.17.0 human playtest guide
+<!-- candidate-version: 0.17.0; rom-sha256: cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe -->
 
-Review cartridge SHA256 `feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd`.
-Compare Easy, Normal and Hard against close jump-ins and empty jumps. Watch
-whether uppercut startup reads clearly, spacing can bait a miss and recovery
-offers counterplay. Check projectile/low-wave guard, signature specials and
-wake behavior too. The new decision policy needs actual gameplay/balance feedback.
-Cross-up timing varies by fighter; the [practice companion](CROSSUP-PRACTICE-v0.16.0.html)
-retains examples and controller setups. Test both ports and all three arenas.
+Review cartridge SHA256 `cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe`.
+Choose Easy/Normal/Hard at home, then enter Training and select CPU from the
+first PAUSED card. Check practice pacing, health recovery, clock 99, pause
+readability and P1 Select reset. Reset should retain CPU and the opponent;
+a new match should return to Stand. Try all five behaviors and both pause
+controllers, arbitrary opponents and mirrors. P2 gameplay buttons should not
+take control of the Training opponent.
+Compare close jump-ins, anti-air startup/recovery and cross-up spacing. The
+[practice companion](CROSSUP-PRACTICE-v0.17.0.html) retains fighter-specific
+examples. Test both ports and all three arenas.
 
 Also review A/Start menus, per-step motion help, Training mirror opponents,
 Lars's face/hair, winner cards, the champion score and title transitions.
 Actual earlier responses remain in [review-feedback.json](review-feedback.json);
-this guide records no new approval. See [RELEASE-v0.16.0.md](RELEASE-v0.16.0.md)
+this guide records no new approval. See [RELEASE-v0.17.0.md](RELEASE-v0.17.0.md)
 for candidate verification and package status.
 
-This route also covers the earlier v0.10.0 cartoon-stage and menu candidate.
-It records the live v0.8.1 presentation findings, the historical v0.9.0
-correction evidence and the new stage/menu review targets while collecting
-human feedback on likeness, motion, fighting feel, pause help, Training
-behavior, presentation, audio and onboarding. It is not a release approval
-form. Leave an item blank or mark it unknown when it was not reviewed. Do not
-infer roster consent or public-release approval from a completed table.
+Use the cartridge identified above for new feedback. Historical notes below
+retain earlier technical results and actual observations. Record likeness,
+motion, fighting feel, pause help, Training, presentation, audio and onboarding
+feedback. Leave unreviewed items blank or mark them unknown. A completed table
+does not establish roster consent or public-release approval.
+
+## A 20-30 minute route
+
+Use Local Versus for the two-player checks and Training for repeatable moves.
+Choose Normal difficulty after a quick Easy onboarding check. A reviewer can run the
+route alone with two controllers, with a second person, or with the included
+keyboard mappings.
+
+| Time | Route | Record |
+|---|---|---|
+| 0-2 min | Boot the cartridge identified above; record its version and ROM SHA from manifest.json, read the first control hint, open fighter select and arena select, then confirm and back out once. | Is the first action clear? Are confirm, back and pause consistent? Do directional edges and Start/B/A priority produce one menu action? |
+| 2-8 min | Sweep all twelve fighters. On each card, check the face, hair, costume colors, feet baseline and apparent size. In a short match or Training reset, make each fighter idle, walk forward/back, crouch, jump and perform one normal. Put each fighter on P1 once and P2 once so both right- and left-facing renders are seen. For Reston, compare the fuller short buzz cap in the v4 portrait and all 64 native poses. | Note likeness, proportions, silhouette changes and any fighter that needs a second look. Use the capture index below for native motion references. Record Reston likeness feedback separately from the art-integration review. |
+| 8-13 min | Play the fundamentals: walk into standing guard, crouch guard a low kick or wave, take a real hit, jump forward and neutral, press light/medium/heavy normals, then repeat after the opponent blocks. | Does input feel immediate? Are pushback, hitstop, guard stun, chip and recovery readable? Any accidental attacks or missed edges? |
+| 13-17 min | Verify the four special families with Damian (projectile), Cristobal (rush), Negger (low shockwave) and Roxana (rising strike). Try a confirmed normal into a heavier normal and then a special. At close range, throw a guarding opponent; attempt simultaneous throws once. | Record command reliability, cancel timing, special readability, throw timing and whether blocked/unblocked results make sense. |
+| 17-21 min | Pause during a live exchange. Cycle the PAUSED card -> Controls -> Specials with Select, toggle pages with Left/Right, resume with Start/A and return to the roster with B when Start is not pressed. Confirm both live fighter names, special names and family labels appear. | Record guide clarity, page timing, stale text, Start/B/A/Select priority and whether the pause camera and HP display remain stable. |
+| 21-24 min | In Training, open the first PAUSED card and cycle Stand, Guard High, Guard Low, Jump and CPU with Up/Down. Test relative guard, repeated jumps, CPU behavior at the chosen home difficulty and ignored P2 gameplay input. Use P1 Select to reset, then start a new match. | Record dummy behavior, CPU pacing, health recovery, clock 99 and pause errors. Reset must keep the behavior and matchup; a new match must start on Stand. |
+| 24-27 min | Play one short round on each stage: Las Condes, El Castillo and La Oficina. Compare the live scenes with their complete arena thumbnails. Let the round run long enough to see ambient motion; pause, hitstop and round-end once. | Check floor readability, contrast, stage identity, matched thumbnail art, ambient motion, freeze behavior, effects and any busy area behind the fighters. |
+| 27-30 min | Swap controller ports or mappings, run a two-player exchange, then listen to title/menu music, stage music and several hit, guard, throw, special, round and KO cues at a comfortable volume. | Record rollover/SOCD problems, stuck or cross-wired inputs, missing/clipped sounds, cue priority, mix balance and whether a new player could recover without coaching. |
+
+Do not rush through a failing step to finish the route. Capture the smallest
+repeatable example, note the fighter, stage, side and round state, then continue
+so the remaining areas still receive a quick pass.
 
 ## Previous v0.10.0 snapshot evidence
 
@@ -167,28 +190,6 @@ is available and its archive audit passes 7,472 checks; human review remains
 open with `public_release_certified=false`. The observations above are actual
 live feedback;
 they do not establish human likeness/consent or public-use approval.
-
-## A 20-30 minute route
-
-Use Local Versus for the two-player checks and Training for repeatable moves.
-Start on Normal after a quick Easy onboarding check. A reviewer can run the
-route alone with two controllers, with a second person, or with the included
-keyboard mappings.
-
-| Time | Route | Record |
-|---|---|---|
-| 0-2 min | Boot the frozen v0.10.0 candidate at SHA `a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445`, read the first control hint, open fighter select and arena select, then confirm and back out once. | Is the first action clear? Are confirm, back and pause consistent? Do directional edges and Start/B/A priority produce one menu action? |
-| 2-8 min | Sweep all twelve fighters. On each card, check the face, hair, costume colors, feet baseline and apparent size. In a short match or Training reset, make each fighter idle, walk forward/back, crouch, jump and perform one normal. Put each fighter on P1 once and P2 once so both right- and left-facing renders are seen. For Reston, compare the fuller short buzz cap in the v4 portrait and all 64 native poses. | Note likeness, proportions, silhouette changes and any fighter that needs a second look. Use the capture index below for native motion references. Record Reston likeness feedback separately from the art-integration review. |
-| 8-13 min | Play the fundamentals: walk into standing guard, crouch guard a low kick or wave, take a real hit, jump forward and neutral, press light/medium/heavy normals, then repeat after the opponent blocks. | Does input feel immediate? Are pushback, hitstop, guard stun, chip and recovery readable? Any accidental attacks or missed edges? |
-| 13-17 min | Verify the four special families with Damian (projectile), Cristobal (rush), Negger (low shockwave) and Roxana (rising strike). Try a confirmed normal into a heavier normal and then a special. At close range, throw a guarding opponent; attempt simultaneous throws once. | Record command reliability, cancel timing, special readability, throw timing and whether blocked/unblocked results make sense. |
-| 17-21 min | Pause during a live exchange. Cycle Normal -> Controls -> Specials with Select, toggle pages with Left/Right, resume with Start/A and return to the roster with B when Start is not pressed. Confirm both live fighter names, special names and family labels appear. | Record guide clarity, page timing, stale text, Start/B/A/Select priority and whether the pause camera and HP display remain stable. |
-| 21-24 min | In Training, pause on Normal and cycle Stand, Guard High, Guard Low and Jump with Up/Down. Test a guarded dummy's relative back hold, the Jump dummy's automatic repeat after landing and live Select reset; start a new Training match. | Record dummy behavior, retreat or jump-repeat errors, preserved/reset dummy state and any way to act through pause. |
-| 24-27 min | Play one short round on each stage: Las Condes, El Castillo and La Oficina. Compare the live scenes with their complete arena thumbnails. Let the round run long enough to see ambient motion; pause, hitstop and round-end once. | Check floor readability, contrast, stage identity, matched thumbnail art, ambient motion, freeze behavior, effects and any busy area behind the fighters. |
-| 27-30 min | Swap controller ports or mappings, run a two-player exchange, then listen to title/menu music, stage music and several hit, guard, throw, special, round and KO cues at a comfortable volume. | Record rollover/SOCD problems, stuck or cross-wired inputs, missing/clipped sounds, cue priority, mix balance and whether a new player could recover without coaching. |
-
-Do not rush through a failing step to finish the route. Capture the smallest
-repeatable example, note the fighter, stage, side and round state, then continue
-so the remaining areas still receive a quick pass.
 
 ## Roster and motion capture index
 

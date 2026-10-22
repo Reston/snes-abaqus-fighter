@@ -1,14 +1,12 @@
 # Public-release quality target
-<!-- candidate-version: 0.16.0; rom-sha256: feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd -->
+<!-- candidate-version: 0.17.0; rom-sha256: cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe -->
 
-The current v0.16.0 review candidate is cartridge SHA256
-`feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd`. Its [release note](RELEASE-v0.16.0.md) records verification and package
-status. All six native suites pass 35,147 checks; matching smoke, full matrix/replays,
-independent combat, endurance and isolated-rebuild gates pass. The verified v0.15.0 package
-and older results below remain historical. The new CPU defense needs human
-gameplay and balance review. Full listening, physical controllers, likeness/
-consent and team/public-use approval remain open. `public_release_certified`
-is false.
+The current v0.17.0 review candidate is cartridge SHA256
+`cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe`. Its [release note](RELEASE-v0.17.0.md) records verification and package
+status. Current-ROM gates are being regenerated. The verified v0.16.0 package
+and older results below remain historical. The CPU Training option needs human
+gameplay feedback. Full listening, physical controllers, likeness/consent and
+team/public-use approval remain open. `public_release_certified` is false.
 
 The active project goal is an original native SNES fighting game polished to a
 high public-release standard, using Capcom's 16-bit arcade craft as the benchmark

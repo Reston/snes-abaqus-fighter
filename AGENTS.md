@@ -6,7 +6,25 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
-- The active checkout is the **v0.16.0 CPU anti-air candidate**.
+- The active checkout is the **v0.17.0 CPU Training candidate**.
+  ROM SHA256 `cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe`, header `5EAF`,
+  source freeze `5fcd5cb28f4cf2453cb3310fbab0d6947d7afd9a`, tree `5e3ef5c5f4be06fbd0bad8a37ef215a449f1c2a1`.
+  Training choice 4 uses existing home-difficulty AI; choices 0..3 and the
+  default Stand remain. Health recovery, clock 99 and P1 Select reset persist.
+  P2 gameplay input stays ignored. All 219 generated assets and 1,276 existing
+  WRAM/direct-page symbol addresses match v0.16.0. Fighter64/Wave16,
+  TRACE0..122, actor/OBJ/UI/ambient/SPC contracts remain.
+  Training recovery uses a low-bit timer prefilter, direct fighter accesses
+  and one HUD refresh. The HUD skips unchanged fields and caches each fighter
+  pointer locally. Hit/update/animation paths avoid repeated reads and an
+  empty-link call. HP recovery conditions remain. Its full live hour must
+  cover every CPU.
+  Current-ROM gates are being regenerated. The last verified Windows package
+  remains v0.16.0. Human gameplay/balance, listening, controllers, likeness/
+  consent and public-use gates remain open; public_release_certified is false.
+  See docs/RELEASE-v0.17.0.md.
+
+- The last verified offline checkpoint is the **v0.16.0 CPU anti-air candidate**.
   ROM SHA256 `feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd`, header `FA49`,
   cartridge source freeze `c5b64914b35af11897210701a2394a540a20a6b6`, tree `82c5128473b62ee0d9fd40394485f9b400242d5b`.
   Normal/Hard use bounded sampled universal uppercuts against visible near
@@ -188,7 +206,7 @@ Preserve the native emulator requirement when extending the project.
   The 288-by-600 matchup/stage/policy/replay/symmetry run with four replays
   across all three stages, pinned bsnes smoke at 600/600 plus the independent
   28,800-frame run, and `validate_release_evidence` all pass on this SHA.
-  The current [v0.10.0 Windows package](dist/Abaqus-After-Hours-v0.10.0-Windows.zip)
+  The historical [v0.10.0 Windows package](dist/Abaqus-After-Hours-v0.10.0-Windows.zip)
   is available and `tools/audit_release.py` passes 7,472 checks against it.
   Two consecutive final packaging runs produce identical 6,592,864-byte ZIPs,
   SHA256 `8402f8be6f4c928e5b56cf22955d990c8bb6c4e2107262d489d2b3fc84036a99`.
@@ -235,7 +253,7 @@ Preserve the native emulator requirement when extending the project.
   the v0.8.0 package is historical. Full64 native visual review accepted
   Reston's v4 art for integration, but human likeness/consent, balance, full
   listening, controller and branding gates remain open. These results are
-  historical evidence and do not identify the current v0.10.0 candidate.
+  historical evidence and do not identify a later candidate.
 
 - v0.8.0 adds a pause overlay with Normal, Controls and Specials pages. Select
   cycles the pages, and Left/Right toggles the guide pages. Start resumes

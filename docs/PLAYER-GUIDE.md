@@ -1,16 +1,17 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.16.0; rom-sha256: feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd -->
+<!-- candidate-version: 0.17.0; rom-sha256: cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe -->
 
 ## Current version
 
-The current candidate is **v0.16.0**. Normal and Hard opponents can deliberately
-uppercut a nearby jump-in. They commit through ordinary startup and can miss;
-vary your spacing and watch for a whiff. Easy retains its existing behavior.
-Cross-up medium kicks, the Controls cue, per-step special-motion help, arbitrary
+The current candidate is **v0.17.0**. Training has a fifth behavior, **CPU**,
+for practicing against the existing Easy/Normal/Hard opponent AI without a
+round timer or match loss. Choose difficulty at home, then open Training's first
+**PAUSED** card and use Up/Down to select CPU. Start resumes; P1 Select resets the round
+and keeps the behavior and matchup. A new match starts on Stand.
+CPU anti-air, cross-up medium kicks, per-step motion help, arbitrary or mirror
 Training opponents, champion music, revised Lars art and location previews remain.
-In Local Versus, A or Start begins a rematch. Arcade wins advance and losses
-offer a continue. After Office Champion, A or Start returns to the title and
-B returns to fighter select.
+In Local Versus, A or Start begins a rematch. After Office Champion, A or
+Start returns to the title and B returns to fighter select.
 
 ## Launch
 
@@ -25,9 +26,9 @@ included `manifest.json` identifies the packaged version and ROM SHA256;
 release note under `docs/`. No global installation or administrator account is
 needed. Human gameplay, listening, controller, likeness/consent and team/public
 use review remain open; original hardware support stays unverified.
-The package's `REVIEW.html` contains native screens, CPU hit/whiff and cross-up
+The package's `REVIEW.html` contains native screens, CPU Training, anti-air and cross-up
 clips, and a 2x view. GIF playback timing is approximate. The [cross-up practice
-companion](CROSSUP-PRACTICE-v0.16.0.html) shows a setup for each fighter. Use
+companion](CROSSUP-PRACTICE-v0.17.0.html) shows a setup for each fighter. Use
 Training's Stand dummy for stationary setups, or Local Versus with a second
 player/both keyboard layouts for the opponent-step-under examples.
 Its `ROSTER-REVIEW.html` offers all 64 generated frames per fighter, facing
@@ -112,20 +113,22 @@ controller. If Start is not pressed, **B** returns to the roster; otherwise
 
 The pause card has three pages:
 
-- **Normal** shows pause status and the current Training dummy mode.
-- **Controls** lists movement, guard, six-button attacks, throw, uppercut,
+- **Pause card** (`PAUSED`) shows pause status and the Training dummy mode.
+- **Controls** (`HOW TO PLAY 1/2`) lists movement, guard, six-button attacks, throw, uppercut,
   confirmed attacks, the medium-kick cross-up and pause shortcuts.
-- **Specials** shows the live P1/P2 names, each special and its family.
+- **Specials** (`MOVE LIST 2/2`) shows the live P1/P2 names, each special and its family.
 
-**Select** advances Normal -> Controls -> Specials -> Normal. **Left/Right**
+**Select** cycles Pause card -> Controls -> Specials -> Pause card. **Left/Right**
 also toggles the guide pages. The guide names the actual fighters in the
 match, rather than showing a generic roster description.
 
-In Training, pause on **Normal** and press **Up/Down** to choose **Stand**,
-**Guard High**, **Guard Low** or **Jump**. Guard holds relative back without
-retreating. The Jump dummy automatically jumps again after landing. A live **P1 Select** reset keeps
-both chosen fighters and the chosen dummy mode; starting a new Training match
-returns the dummy behavior to Stand.
+On Training's first **PAUSED** card, press **Up/Down** to choose **Stand**,
+**Guard High**, **Guard Low**, **Jump** or **CPU**. Guard dummies block without
+retreating. Jump repeats after landing. CPU uses the ordinary opponent AI and
+the Easy/Normal/Hard difficulty selected with **L/R** at home. P2 gameplay
+buttons do not control the Training opponent. Health recovers and the clock
+stays at 99. A live **P1 Select** reset keeps both chosen fighters and the
+chosen behavior; starting a new Training match returns the behavior to Stand.
 
 ## Fighting
 

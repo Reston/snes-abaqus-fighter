@@ -4,19 +4,20 @@ The active public-release target and evidence gates are in
 [PUBLIC-RELEASE.md](PUBLIC-RELEASE.md). Treat this roadmap as the work backlog;
 the release gates decide when the public candidate is actually ready.
 
-The active source candidate is **v0.16.0**, with bounded Normal/Hard CPU
-jump-in defense, native hit/whiff review clips and an all-roster cross-up
-practice companion. All six current-ROM suites pass 35,147 checks. Matching extended combat,
-endurance and fresh-source gates pass; two final Windows packages are identical
-and the archive passes 8,729 technical audit checks. See [the current release note](RELEASE-v0.16.0.md)
-for candidate identity and gate status. Human/public-use approvals remain open.
+The active source candidate is **v0.17.0**, adding opt-in CPU Training using
+the existing home difficulty, health recovery and quick reset. Current-ROM
+technical gates are running. The latest verified offline package is v0.16.0,
+with 35,147 native checks and 8,729 package audit checks. See [the current
+release note](RELEASE-v0.17.0.md) for candidate identity and gate status.
+Human/public-use approvals remain open.
 
 Delivered since v0.10 are the corrected Lars portrait/location previews and
 winner cards (v0.10.1/v0.11), arbitrary or mirror Training opponents and original
 champion illustration (v0.12), original victory music and pause priority/cold
 build fixes (v0.13), clearer menu/motion help and authoring guards (v0.14), and
 rear medium-kick contacts with landing-safe recoil and practice cues (v0.15).
-Historical sections below retain their original evidence scope.
+Bounded Normal/Hard CPU anti-air and all-roster cross-up practice shipped in
+v0.16. Historical sections below retain their original evidence scope.
 
 The v0.1 release established a playable native cartridge, the requested roster and locations, a reproducible toolchain and emulator-based integration coverage. The v0.2 pass set the cartoon arcade direction. v0.3 introduced twelve individual sixteen-pose atlases and likeness correction. v0.4 standardized the 96x80 physical scale and rebuilt the presentation. v0.5.0 adds animation, simpler menus and buffered inputs. v0.5.1 tightens contact, hit-confirm and combo rules, clears live-fight instructions, adds result scores and corrects emulator scaling. The v0.6.0 source integration adds the final airborne, throw, knockdown and wake frame range and combat flow. The v0.6.1 CPU-correctness pass has four-suite and pinned compatibility evidence on one ROM SHA, with public gates still open. v0.7.0 stage/effect integration has a verified ROM, a 214-check archive audit and reproducible development packaging. The historical v0.7.1 package has a 6,153-check audit. v0.8.0 remains the historical pause-guide and Training baseline. v0.8.1 is the historical Reston art snapshot; v0.9.0 remains the historical packaged technical fallback. The v0.10.0 cartoon-stage candidate now has matching six-suite native reports, passing extended technical evidence and a 7,472-check packaged archive; human review remains open.
 
@@ -80,7 +81,7 @@ v0.5.1 baseline:
 - The v0.6.0 baseline reports pass against ROM SHA256
   `0d907717d284c9d0056434e69da0a265c2b09cf4c84761aa32998b4fc0bbd5ae`:
   2,595 gameplay, 18,085 roster, 215 presentation and 604 focused-input
-  checks (21,499 total). The current v0.6.1 evidence supersedes that baseline;
+  checks (21,499 total). The later v0.6.1 evidence superseded that baseline;
   it does not close public, human-playtest, independent-emulator or real-console
   gates.
 
@@ -301,9 +302,9 @@ Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip) is available and
 archive audit passes 7,471 checks. The native all64 visual review accepted the corrected Damian set for
 integration; human likeness/consent and public-release review remain open.
 
-## v0.10.0 cartoon-stage and menu candidate (current packaged technical snapshot; human gates pending)
+## v0.10.0 cartoon-stage and menu snapshot (historical; human gates pending)
 
-The current candidate refreshes Las Condes, El Castillo and La Oficina with
+The v0.10.0 candidate refreshed Las Condes, El Castillo and La Oficina with
 original bold-navy cel-cartoon masters and matching complete arena thumbnails.
 The versioned PNGs, adjacent exact-basename provenance JSON, `source-v2` raw
 inputs, schema-2 selected manifest and historical `stages-v0.4.json` are
@@ -343,7 +344,7 @@ and their longest near-silence is 0.075499-0.078652 seconds, below the
 0.5-second near-zero threshold. The 288-by-600 matchup/stage/policy/replay/
 symmetry run with four replays across all three stages, pinned bsnes smoke at
 600/600 plus the independent 28,800-frame run, and `validate_release_evidence`
-also pass. The current [v0.10.0 Windows package](../dist/Abaqus-After-Hours-v0.10.0-Windows.zip)
+also pass. The historical [v0.10.0 Windows package](../dist/Abaqus-After-Hours-v0.10.0-Windows.zip)
 is available and its archive audit passes 7,472 checks. Human listening, stage,
 gameplay, controller, likeness/consent and public-use review remain open, with
 `public_release_certified=false`.
@@ -375,7 +376,7 @@ gameplay, controller, likeness/consent and public-use review remain open, with
   reports matching its SHA (32,205 checks), plus focused PPU, presentation,
   stage and menu evidence recorded above. Endurance and technical audio capture
   pass as documented above; matchup, pinned bsnes/independent compatibility
-  evidence and `validate_release_evidence` also pass. The current [v0.10.0
+  evidence and `validate_release_evidence` also pass. The historical [v0.10.0
   Windows package](../dist/Abaqus-After-Hours-v0.10.0-Windows.zip)
   is available and its archive audit passes 7,472 checks. Human listening,
   playtesting, controller, likeness/consent and public-release review remain
