@@ -52,8 +52,9 @@ for category, title, caption, filename in shots:
     mime = 'image/gif' if filename.lower().endswith('.gif') else 'image/png'
     src = (str(root/'docs/screenshots'/filename).replace('\\', '/') if '--preview' in sys.argv
            else f'data:{mime};base64,' + base64.b64encode(data).decode('ascii'))
+    source_attribute = 'data-animated-src' if mime == 'image/gif' else 'src'
     cards.append(f'<figure class="screen" data-category="{category}"><h3>{html.escape(title)}</h3>'
-                 f'<img src="{src}" width="256" height="224" alt="{html.escape(title)} native SNES frame" '
+                 f'<img {source_attribute}="{src}" width="256" height="224" alt="{html.escape(title)} native SNES frame" '
                  f'data-sha256="{hashlib.sha256(data).hexdigest()}">'
                  f'<figcaption>{html.escape(caption)}</figcaption></figure>')
 page = '''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -72,14 +73,35 @@ details{margin-top:18px}summary{cursor:pointer}code{font:11px/1.5 var(--font-mon
 <p class="status muted">Abaqus: After Hours · vVERSION technical review candidate</p></main>
 <script>
 const gallery=document.querySelector('.gallery'),cards=[...document.querySelectorAll('.screen')],buttons=[...document.querySelectorAll('[data-view]')];
-function show(view){cards.forEach(card=>card.hidden=view!=='all'&&card.dataset.category!==view);buttons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.view===view)))}
+let viewRequest=0;
+function show(view){
+  const request=++viewRequest;
+  gallery.dataset.ready='false';
+  cards.forEach(card=>{
+    card.hidden=view!=='all'&&card.dataset.category!==view;
+    const image=card.querySelector('img');
+    if(image.dataset.animatedSrc){
+      if(card.hidden)image.removeAttribute('src');
+      else if(!image.hasAttribute('src'))image.src=image.dataset.animatedSrc;
+    }
+  });
+  buttons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.view===view)));
+  const visible=cards.filter(card=>!card.hidden);
+  Promise.all(visible.map(card=>card.querySelector('img').decode())).then(()=>{
+    if(request!==viewRequest)return;
+    if(visible.some(card=>{const image=card.querySelector('img');return image.naturalWidth!==256||image.naturalHeight!==224}))throw Error('Non-native frame dimensions');
+    gallery.dataset.ready='true';
+    console.log('Native review ready: '+cards.length+' frames, '+visible.length+' shown.');
+  }).catch(error=>{if(request===viewRequest)console.error(error)});
+}
 buttons.forEach(button=>button.addEventListener('click',()=>show(button.dataset.view)));document.querySelector('#zoom').addEventListener('change',event=>gallery.classList.toggle('zoom',event.target.checked));show('results');
-Promise.all([...document.images].map(image=>image.decode())).then(()=>{if([...document.images].some(image=>image.naturalWidth!==256||image.naturalHeight!==224))throw Error('Non-native frame dimensions');console.log('Native review ready: '+document.images.length+' frames, '+cards.filter(card=>!card.hidden).length+' shown.');}).catch(error=>console.error(error));
 </script></body></html>'''
 page = page.replace('VERSION', manifest['version'])
 page = page.replace('<button data-view="results" aria-pressed="true">Results</button>',
                     '<button data-view="new" aria-pressed="true">New scenes</button><button data-view="results" aria-pressed="false">Results</button>')
 page = page.replace("show('results')", "show('new')")
+if tuple(map(int, manifest['version'].split('.'))) >= (0, 17, 0):
+    page = page.replace('Art &amp; menus', 'Practice &amp; menus')
 page = page.replace('CARDS', ''.join(cards)).replace('ROM_SHA', manifest['sha256']).replace('TOTAL', f'{total:,}')
 target = root/('build/gallery-preview.html' if '--preview' in sys.argv else f"docs/REVIEW-v{manifest['version']}.html")
 target.write_bytes(page.encode('utf-8'))
