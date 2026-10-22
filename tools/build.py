@@ -26,7 +26,9 @@ def run(*args):
         raise SystemExit(r.returncode)
     if 'warning' in r.stderr.lower(): print(r.stderr)
 
-if '--assets' in sys.argv or not (ROOT/'assets/generated/data.asm').exists():
+# soundbank.h is emitted by SMConv and intentionally absent from a clean checkout.
+required_assets = ('data.asm', 'assets.h', 'soundbank.h')
+if '--assets' in sys.argv or any(not (ROOT/'assets/generated'/name).is_file() for name in required_assets):
     run(sys.executable, ROOT/'tools/make_assets.py')
 
 template = (SDK/'devkitsnes/include/hdr.asm.in').read_text()

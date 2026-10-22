@@ -102,7 +102,14 @@ peak SPC six, zero stable FIGHT lag and empty failure arrays.
 7,471 technical audit checks; the v0.8.0 package is historical. Human review
 gates remain open.
 
-`Build.cmd` rebuilds from committed native assets. `Build.cmd --assets` regenerates the full asset set first. Source portrait downloads can be refreshed with `tools/fetch_references.py`; rebuilding the game does not require fetching the team pages.
+`Build.cmd` rebuilds from committed native assets. If `data.asm`, `assets.h` or
+the untracked SMConv-generated `soundbank.h` is missing, it regenerates the full
+asset set first; this also covers an ordinary build from a clean checkout.
+When these files are present, ordinary builds reuse the existing assets.
+`Build.cmd --assets` explicitly regenerates the full asset set after changing
+asset inputs. Source portrait downloads can be refreshed with
+`tools/fetch_references.py`; rebuilding the game does not require fetching the
+team pages.
 
 ## Rendering
 
