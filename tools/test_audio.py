@@ -192,7 +192,7 @@ def boot_champion() -> Emulator:
     original_run = e.run
     try:
         e.run(100)
-        ladder_press(e, 'l')  # Normal -> Easy; choose Enzo as the existing proof does.
+        ladder_press(e, 'l')  # Normal -> Easy; choose Negger as the existing proof does.
         ladder_press(e, 'a'); ladder_wait(e, 1)
         for _ in range(4):
             ladder_press(e, 'right')
