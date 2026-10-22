@@ -37,12 +37,14 @@ def main():
         row = next(row for row in altered['files'] if row['path'].endswith('/soundbank.asm'))
         row[field] = value
         mutations.append((altered, field))
-    altered = copy.deepcopy(report)
-    for row in altered['files']:
-        if row['path'] in altered['allowed_changed']:
-            row['preserved'] = True
-    altered.update(existing_assets_preserved=218, generated_assets_modified=0, allowed_changed=[])
-    mutations.append((altered, 'known changes falsely marked preserved with matching counts'))
+    if report['allowed_changed']:
+        altered = copy.deepcopy(report)
+        for row in altered['files']:
+            if row['path'] in altered['allowed_changed']:
+                row['preserved'] = True
+        altered.update(existing_assets_preserved=report['existing_assets_preserved']+len(report['allowed_changed']),
+                       generated_assets_modified=0, allowed_changed=[])
+        mutations.append((altered, 'known changes falsely marked preserved with matching counts'))
     altered = copy.deepcopy(report)
     altered['files'][0]['preserved'] = False
     altered['existing_assets_preserved'] -= 1

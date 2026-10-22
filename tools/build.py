@@ -57,7 +57,7 @@ if len(data)!=4*1024*1024:raise RuntimeError('Expected 4 MiB LoROM')
 if data[0x7fd5] != 0x30:raise RuntimeError('Expected FastROM LoROM header')
 checksum = int.from_bytes(data[0x7fde:0x7fe0],'little')
 if checksum != (sum(data)&65535):raise RuntimeError('ROM checksum mismatch')
-manifest = {'title':'Abaqus: After Hours','version':'0.13.0','rom':rom.name,'bytes':len(data),
+manifest = {'title':'Abaqus: After Hours','version':'0.14.0','rom':rom.name,'bytes':len(data),
             'sha256':hashlib.sha256(data).hexdigest(),'checksum':f'{checksum:04X}',
             'toolchain':'PVSnesLib 4.6.0 / 816-tcc / WLA-DX','mapping':'4 MiB FastROM LoROM','region':'NTSC 60 Hz'}
 (ROOT/'dist/manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
