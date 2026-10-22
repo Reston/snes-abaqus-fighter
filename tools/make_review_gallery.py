@@ -6,8 +6,12 @@ import json
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from package import validate_crossup_review
+
 root = Path(__file__).resolve().parents[1]
 manifest = json.loads((root/'dist/manifest.json').read_text())
+validate_crossup_review(json.loads((root/'docs/crossup-review.json').read_bytes()), root, manifest)
 total = 0
 for name in ['test', 'character-test', 'presentation-test', 'input-test', 'stage-test', 'training-test']:
     report = json.loads((root/f'docs/{name}-report.json').read_text())
@@ -18,9 +22,12 @@ for name in ['test', 'character-test', 'presentation-test', 'input-test', 'stage
         raise RuntimeError(('Unverified native gallery source', name))
     total += report['passed']
 shots = [
-    ('new', 'Office Champion', 'An earned trophy, winner portrait, score and title/roster actions.', 'champion/ending.png'),
-    ('new', 'Choose a Training opponent', 'DUMMY selection supports any opponent through either controller.', 'presentation/training-dummy.png'),
-    ('new', 'Practice a mirror match', 'Choose the same fighter on both sides before selecting an arena.', 'presentation/training-mirror.png'),
+    ('results', 'Office Champion', 'An earned trophy, winner portrait, score and title/roster actions.', 'champion/ending.png'),
+    ('menus', 'Choose a Training opponent', 'DUMMY selection supports any opponent through either controller.', 'presentation/training-dummy.png'),
+    ('menus', 'Practice a mirror match', 'Choose the same fighter on both sides before selecting an arena.', 'presentation/training-mirror.png'),
+    ('new', 'P1 right cross-up', 'Jump past the defender and press A. Native controller capture; GIF playback timing is approximate.', 'crossup/p1.gif'),
+    ('new', 'P2 left cross-up', 'The mirrored left-cross route. Native controller capture; GIF playback timing is approximate.', 'crossup/p2.gif'),
+    ('new', 'Controls cross-up cue', 'v0.15 Controls page teaches CROSS-UP: JUMP PAST + A.', 'training/mode1-controls.png'),
     ('results', 'Player one wins', 'Winner portrait, score, quote and Start rematch.', 'presentation/result-score.png'),
     ('results', 'Player two wins', 'A neutral match heading and the correct winner.', 'presentation/result-score-p2.png'),
     ('results', 'Healthy timeout tie', 'The first banner reads TIME OVER / DRAW.', 'presentation/timeout-draw.png'),
@@ -31,8 +38,9 @@ shots = [
 cards = []
 for category, title, caption, filename in shots:
     data = (root/'docs/screenshots'/filename).read_bytes()
+    mime = 'image/gif' if filename.lower().endswith('.gif') else 'image/png'
     src = (str(root/'docs/screenshots'/filename).replace('\\', '/') if '--preview' in sys.argv
-           else 'data:image/png;base64,' + base64.b64encode(data).decode('ascii'))
+           else f'data:{mime};base64,' + base64.b64encode(data).decode('ascii'))
     cards.append(f'<figure class="screen" data-category="{category}"><h3>{html.escape(title)}</h3>'
                  f'<img src="{src}" width="256" height="224" alt="{html.escape(title)} native SNES frame" '
                  f'data-sha256="{hashlib.sha256(data).hexdigest()}">'

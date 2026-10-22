@@ -226,6 +226,10 @@ def build_package_files(root: Path = ROOT, manifest: Mapping | None = None) -> d
         'champion-audio-report.json': root / 'docs/champion-audio-report.json',
         'menu-footer-report.json': root / 'docs/menu-footer-report.json',
         'authoring-guards-report.json': root / 'docs/authoring-guards-report.json',
+        'crossup-review.json': root / 'docs/crossup-review.json',
+        'screenshots/crossup/p1.gif': root / 'docs/screenshots/crossup/p1.gif',
+        'screenshots/crossup/p2.gif': root / 'docs/screenshots/crossup/p2.gif',
+        'screenshots/training/mode1-controls.png': root / 'docs/screenshots/training/mode1-controls.png',
         f'audio-listening-v{version}.json': root / f'docs/audio-listening-v{version}.json',
         'champion-preservation-report.json': root / 'docs/champion-preservation-report.json',
         'champion-native-budget.json': root / 'docs/champion-native-budget.json',
@@ -288,6 +292,13 @@ def qa_readme_bytes() -> bytes:
         'bundled directly under screenshots/menu-preservation/. Report paths '
         'retain the source docs/ prefix and may use Windows separators; '
         'remove that prefix and use forward slashes to locate the PNGs.\n\n'
+        'crossup-review.json records two controller-driven native moving '
+        'captures bundled under screenshots/crossup/; remove docs/ from '
+        'their source paths. Packaging checks their current-ROM identity, '
+        'producer hashes, decoded pixels, dimensions and retained durations. '
+        'Their GIF timing is an inspection approximation, and capture '
+        'execution remains trusted recorded evidence. REVIEW.html embeds '
+        'both clips and the current Controls page.\n\n'
         'qa/character-manifest.json carries the source art provenance '
         'manifest used by the native export.\n'
     ).encode('utf-8')
@@ -943,6 +954,112 @@ def validate_authoring_evidence(report: Mapping, root: Path, manifest: Mapping) 
                 'Authoring mutation checks must pass completely in both normal and optimized Python')
 
 
+def validate_crossup_review(report: Mapping, root: Path, manifest: Mapping) -> None:
+    """Check retained review media without treating it as gameplay approval."""
+    from PIL import Image, ImageSequence
+
+    require(isinstance(report, Mapping) and report.get('status') == 'passed' and
+            report.get('version') == manifest['version'] and
+            report.get('rom_sha256') == manifest['sha256'] and
+            report.get('rom_bytes') == manifest['bytes'] and
+            report.get('header_checksum') == manifest['checksum'] and
+            report.get('controller_only') is True,
+            'Cross-up review must identify the current controller-driven cartridge')
+    host = report.get('host_contract', {})
+    require(isinstance(host, Mapping) and host.get('priority_class') == 0x4000 and
+            host.get('stdin') == 'DEVNULL' and host.get('controller_only') is True and
+            len(host.get('logical_processors', [])) == 2 and
+            all(host.get(key) is False for key in ('gui_opened', 'audio_device_opened', 'audio_playback', 'save_states')) and
+            host.get('emulated_memory_writes') == 0 and host.get('sequential_boots') is True and
+            host.get('max_active_emulators') == 1,
+            'Cross-up review must retain the silent background capture contract')
+    contract = report.get('capture_contract', {})
+    require(isinstance(contract, Mapping) and contract.get('native_dimensions') == [256, 224] and
+            all(contract.get(key) is False for key in ('overlays', 'art_or_frame_edits', 'save_states')) and
+            contract.get('emulated_memory_writes') == 0 and contract.get('boots') == 2 and
+            contract.get('sequential_boots') is True and contract.get('max_active_emulators') == 1,
+            'Cross-up review must retain two unedited native captures')
+    harness = report.get('harness_sha256', {})
+    paths = {'tools/make_crossup_review.py', 'tools/test_inputs.py', 'tools/emulator.py',
+             'tools/test_stages.py', 'build/run_background.py'}
+    require(isinstance(harness, Mapping) and set(harness) == paths and
+            all(harness[path] == sha256_file(root/path) for path in paths),
+            'Cross-up review capture helpers differ from the recorded producer')
+    core = report.get('core', {})
+    core_path = root/'.tools/core/snes9x_libretro.dll'
+    require(isinstance(core, Mapping) and core.get('path') == '.tools/core/snes9x_libretro.dll' and
+            core.get('sha256') == EXPECTED_NATIVE_CORE['dll_sha256'] == sha256_file(core_path) and
+            core.get('bytes') == core_path.stat().st_size,
+            'Cross-up review core must match the expanded native core pin')
+    captures = report.get('captures')
+    require(isinstance(captures, list) and len(captures) == 2,
+            'Cross-up review must retain both player directions')
+    for port, row in enumerate(captures):
+        require(isinstance(row, Mapping), 'Cross-up capture must be an object')
+        attacker, defender = str(port+1), str(2-port)
+        path = f'docs/screenshots/crossup/p{port+1}.gif'
+        require(row.get('side') == row.get('attacker') == 'P'+attacker and
+                row.get('defender') == 'P'+defender and row.get('gif') == path and
+                row.get('direction') == ('right-cross' if port == 0 else 'left-cross') and
+                row.get('helper') == 'tools/test_inputs.py:_cross_up_contact_case' and
+                row.get('helper_parameters') == {'port': port, 'key': 'a', 'guard': '', 'delay': 0},
+                'Cross-up capture inventory or helper route differs', port)
+        media = root/path
+        require(media.is_file() and row.get('gif_bytes') == media.stat().st_size and
+                row.get('gif_sha256') == sha256_file(media), 'Cross-up GIF bytes differ', path)
+        hashes, trace = row.get('source_rgb_sha256'), row.get('trace')
+        count = row.get('frames')
+        require(isinstance(count, int) and 20 <= count <= 180 and
+                isinstance(hashes, list) and len(hashes) == count and
+                all(isinstance(value, str) and re.fullmatch('[0-9a-f]{64}', value) for value in hashes) and
+                isinstance(trace, list) and len(trace) == count and all(isinstance(state, Mapping) for state in trace),
+                'Cross-up capture needs a bounded frame and trace inventory')
+        callbacks = row.get('host_video_callback_frames')
+        require(isinstance(callbacks, list) and len(callbacks) == count and
+                all(isinstance(value, int) for value in callbacks) and
+                callbacks == list(range(callbacks[0], callbacks[0]+count)) and
+                row.get('native_frame_numbers') == [state.get('frame') for state in trace],
+                'Cross-up source frames must follow consecutive video callbacks')
+        timing = row.get('gif_timing', {})
+        require(isinstance(timing, Mapping) and timing.get('fixed_rate_inspection_sweep') is True and
+                timing.get('gif_centisecond_quantization') is True and
+                timing.get('duration_ms_cycle') == [20, 20, 10] and
+                timing.get('average_duration_ms') == 50/3,
+                'Cross-up GIF must disclose its inspection timing')
+        expected = []
+        for index, digest in enumerate(hashes):
+            duration = (20, 20, 10)[index % 3]
+            if expected and expected[-1][0] == digest:
+                expected[-1][1] += duration
+            else:
+                expected.append([digest, duration])
+        try:
+            with Image.open(media) as image:
+                require(image.format == 'GIF' and image.size == (256, 224) and image.info.get('loop') == 0,
+                        'Cross-up review must be a looping native-resolution GIF')
+                actual = [[sha256_bytes(frame.convert('RGB').tobytes()), frame.info.get('duration')]
+                          for frame in ImageSequence.Iterator(image)]
+        except (OSError, ValueError) as error:
+            raise PackageError(f'Unreadable cross-up GIF: {path}') from error
+        require(actual == expected and row.get('decoded_gif_frames') == len(actual),
+                'Cross-up GIF pixels or durations differ from recorded callback frames', path)
+        signed_y = lambda state: (int(state.get('y'+attacker, 0))+0x8000) % 0x10000-0x8000
+        airborne = [index for index, state in enumerate(trace) if signed_y(state) < 0]
+        crossed = [index for index in airborne if
+                   (trace[index].get('x'+attacker, 0)-trace[index].get('x'+defender, 0))*(1 if port == 0 else -1) > 0]
+        contacts = [index for index, state in enumerate(trace) if state.get('connected'+attacker) == 2]
+        require(airborne and crossed and contacts, 'Cross-up clip must retain takeoff, crossing and contact')
+        landed = [index for index in range(airborne[0]+1, count) if signed_y(trace[index]) == 0 and
+                  trace[index].get('action'+attacker) == trace[index].get('air_action'+attacker) == 0]
+        require(landed and airborne[0] < crossed[0] <= contacts[0] < landed[0],
+                'Cross-up clip must retain a complete jump-past contact and landing')
+        proof = row.get('proof', {})
+        require(isinstance(proof, Mapping) and all(proof.get('first_'+event+'_clip_frame') == index
+                for event, index in (('airborne', airborne[0]), ('crossed', crossed[0]),
+                                     ('contact', contacts[0]), ('landed', landed[0]))),
+                'Cross-up review landmarks differ from the retained trace')
+
+
 def validate_verification_summary(report: Mapping, root: Path, manifest: Mapping) -> None:
     """Bind the collated package record to its independently validated inputs."""
     fresh = read_json(root/'docs/fresh-build-test-report.json', 'verification source freeze')
@@ -998,6 +1115,7 @@ def main() -> None:
     validate_champion_evidence(ROOT, manifest)
     validate_menu_evidence(read_json(ROOT/'docs/menu-footer-report.json', 'menu footer proof'), ROOT, manifest)
     validate_authoring_evidence(read_json(ROOT/'docs/authoring-guards-report.json', 'authoring guard proof'), ROOT, manifest)
+    validate_crossup_review(read_json(ROOT/'docs/crossup-review.json', 'cross-up review aid'), ROOT, manifest)
     pin_record = verify_gui_emulator(ROOT)
     virtual = build_virtual_entries(pin_record)
     package_names = preflight_package_files(files, virtual)

@@ -32,6 +32,63 @@ def expect_package_error(action, label: str) -> None:
     raise RuntimeError(f'expected PackageError: {label}')
 
 
+def check_crossup_input_mutations(review, manifest) -> None:
+    """Review media must match its pixels as well as its outer file hash."""
+    from PIL import Image, ImageSequence
+    PACKAGE.validate_crossup_review(review, ROOT, manifest)
+    mutations = [dict(review, rom_sha256='0'*64), dict(review, captures=[]),
+                 dict(review, controller_only=False)]
+    for field, value in (('gif', 'missing.gif'),
+                         ('source_rgb_sha256', ['0'*64]*review['captures'][0]['frames']),
+                         ('decoded_gif_frames', 1)):
+        altered = copy.deepcopy(review)
+        altered['captures'][0][field] = value
+        mutations.append(altered)
+    altered = copy.deepcopy(review)
+    altered['captures'][0]['proof']['first_crossed_clip_frame'] += 1
+    mutations.append(altered)
+    altered = copy.deepcopy(review)
+    altered['captures'][0]['host_video_callback_frames'][1] += 1
+    mutations.append(altered)
+    for altered in mutations:
+        expect_package_error(lambda: PACKAGE.validate_crossup_review(altered, ROOT, manifest),
+                             'altered cross-up review identity, inventory or trace')
+    with tempfile.TemporaryDirectory(dir=ROOT/'build/package-audit') as temporary:
+        sandbox = Path(temporary)
+        paths = set(review['harness_sha256']) | {'.tools/core/snes9x_libretro.dll'}
+        paths.update(row['gif'] for row in review['captures'])
+        for name in paths:
+            target = sandbox/name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(ROOT/name, target)
+        PACKAGE.validate_crossup_review(review, sandbox, manifest)
+        name = review['captures'][0]['gif']
+        path = sandbox/name
+        original = path.read_bytes()
+        with Image.open(path) as image:
+            frames = [frame.convert('RGB').copy() for frame in ImageSequence.Iterator(image)]
+        frames[0].putpixel((0, 0), (255, 0, 255))
+        frames[0].save(path, save_all=True, append_images=frames[1:], duration=20, loop=0)
+        altered = copy.deepcopy(review)
+        altered['captures'][0]['gif_sha256'] = PACKAGE.sha256_file(path)
+        altered['captures'][0]['gif_bytes'] = path.stat().st_size
+        expect_package_error(lambda: PACKAGE.validate_crossup_review(altered, sandbox, manifest),
+                             'changed GIF and outer report hash must not hide changed pixels/timing')
+        changed_duration = bytearray(original)
+        delay_offset = changed_duration.index(b'!\xf9\x04')+4
+        changed_duration[delay_offset] ^= 1
+        path.write_bytes(changed_duration)
+        altered['captures'][0]['gif_sha256'] = PACKAGE.sha256_file(path)
+        altered['captures'][0]['gif_bytes'] = path.stat().st_size
+        expect_package_error(lambda: PACKAGE.validate_crossup_review(altered, sandbox, manifest),
+                             'changed GIF duration and matching file hash')
+        path.write_bytes(original)
+        helper = sandbox/'tools/test_inputs.py'
+        helper.write_bytes(helper.read_bytes()+b'\n# changed capture dependency\n')
+        expect_package_error(lambda: PACKAGE.validate_crossup_review(review, sandbox, manifest),
+                             'changed capture helper')
+
+
 def check_menu_input_mutations(menu, manifest) -> None:
     """Change real inputs and matching report rows in a disposable Git-backed copy."""
     from PIL import Image
@@ -243,6 +300,7 @@ def main() -> None:
                              'incomplete or altered champion route contract')
 
     manifest = json.loads((ROOT/'dist/manifest.json').read_text())
+    check_crossup_input_mutations(json.loads((ROOT/'docs/crossup-review.json').read_bytes()), manifest)
     verification = json.loads((ROOT/f"docs/verification-v{manifest['version']}.json").read_bytes())
     PACKAGE.validate_verification_summary(verification, ROOT, manifest)
     altered_total = copy.deepcopy(verification)
