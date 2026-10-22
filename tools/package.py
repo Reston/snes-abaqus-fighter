@@ -150,10 +150,17 @@ def menu_capture_files(root: Path) -> dict[str, Path]:
         for scene in (('p1',) if mode == 'arcade' else ('p1', 'second')):
             names.extend(f'{mode}-{scene}-{fighter:02}' for fighter in range(12))
         names.extend(f'{mode}-arena-{arena}' for arena in range(3))
-    return {f'screenshots/menu-preservation/{role}/{name}{extension}':
+    files = {f'screenshots/menu-preservation/{role}/{name}{extension}':
             root/f'docs/screenshots/menu-preservation/{role}/{name}{extension}'
             for name in names for role in ('parent', 'candidate')
             for extension in ('.png', '.vram.bin')}
+    for mode in ('arcade', 'versus', 'training'):
+        scenes = ['p1', *(('second',) if mode != 'arcade' else ()),
+                  *(f'arena-{arena}' for arena in range(3))]
+        for scene in scenes:
+            name = f'screenshots/menu-preservation/{mode}-{scene}.png'
+            files[name] = root/'docs'/name
+    return files
 
 
 def build_package_files(root: Path = ROOT, manifest: Mapping | None = None) -> dict[str, Path]:
@@ -277,6 +284,10 @@ def qa_readme_bytes() -> bytes:
         'and compares actual pixels and VRAM above the changed footer. '
         'These are recorded controller-only emulator captures; the package '
         'validator does not replay the emulator to authenticate execution.\n\n'
+        'The fourteen top-level footer captures in that report are also '
+        'bundled directly under screenshots/menu-preservation/. Report paths '
+        'retain the source docs/ prefix and may use Windows separators; '
+        'remove that prefix and use forward slashes to locate the PNGs.\n\n'
         'qa/character-manifest.json carries the source art provenance '
         'manifest used by the native export.\n'
     ).encode('utf-8')
@@ -681,7 +692,9 @@ def validate_menu_evidence(report: Mapping, root: Path, manifest: Mapping) -> No
             report.get('header_checksum') == manifest['checksum'],
             'Menu footer proof must match the exact current cartridge')
     checks, host = report.get('checks'), report.get('host_contract', {})
-    require(isinstance(checks, list) and checks and all(row.get('passed') is True for row in checks) and
+    require(isinstance(checks, list) and len(checks) == 4650 and
+            all(isinstance(row, Mapping) and row.get('passed') is True and
+                isinstance(row.get('check'), str) and row['check'] and 'details' in row for row in checks) and
             report.get('controller_only') is True and report.get('memory_writes') is False and
             report.get('save_states') is False and host.get('gui_opened') is False and
             host.get('audio_device_opened') is False and host.get('priority_class') == 0x4000 and
@@ -778,6 +791,7 @@ def validate_menu_evidence(report: Mapping, root: Path, manifest: Mapping) -> No
             regions.append(preserved)
         require(pixels[0] == pixels[1] and regions[0] == regions[1],
                 'Menu footer baseline/candidate preserved pixels or VRAM differ', name)
+    validate_menu_captures(report.get('captures'), root)
     cases = report.get('controller_actions', [])
     actual_cases = set()
     key_sets = (('a',), ('start',), ('b',), ('b', 'a'), ('start', 'b', 'a'))
@@ -800,6 +814,78 @@ def validate_menu_evidence(report: Mapping, root: Path, manifest: Mapping) -> No
             wanted = 2 if confirms else 1
         require(case.get('screen') == wanted, 'Menu footer route destination is incorrect', key)
     require(actual_cases == expected_cases, 'Menu footer proof must cover all fifty advertised routes')
+
+
+def validate_menu_captures(captures, root: Path) -> None:
+    """Recompute the fourteen native footer comparisons from bundled PNGs."""
+    from PIL import Image
+    require(isinstance(captures, Mapping) and set(captures) == {'arcade', 'versus', 'training'},
+            'Menu footer captures must retain all three modes')
+    generated = root/'assets/generated'
+    tiles = (generated/'ui_tiles.bin').read_bytes()
+    palette = (generated/'ui_pal.bin').read_bytes()
+    colors = []
+    for index in range(16):
+        value = int.from_bytes(palette[index*2:index*2+2], 'little')
+        colors.append(tuple((((value >> shift) & 31) << 3) | (((value >> shift) & 31) >> 2)
+                            for shift in (0, 5, 10)))
+
+    def draw(image, tile, left, top, transparent=False):
+        raw = tiles[tile*32:tile*32+32]
+        require(len(raw) == 32, 'Menu footer source glyph is incomplete', tile)
+        for y in range(8):
+            planes = (raw[y*2], raw[y*2+1], raw[16+y*2], raw[17+y*2])
+            for x in range(8):
+                index = sum(((plane >> (7-x)) & 1) << bit for bit, plane in enumerate(planes))
+                if index or not transparent:
+                    image.putpixel((left+x, top+y), colors[index])
+
+    roster_text = 'D-PAD SELECT A/START OK B BACK'
+    arena_text = 'UP/DOWN A/START OK B BACK'
+    with Image.open(generated/'select.png') as plate:
+        roster = plate.convert('RGB').crop((0, 216, 256, 224))
+    for offset, character in enumerate(roster_text):
+        draw(roster, ord(character), (1+offset)*8, 0, True)
+    arena = Image.new('RGB', (256, 16))
+    for row in range(2):
+        for column in range(32):
+            tile = 128
+            if row == 1 and 3 <= column < 3+len(arena_text):
+                tile = 256+ord(arena_text[column-3])
+            draw(arena, tile, column*8, row*8)
+    for mode in ('arcade', 'versus', 'training'):
+        record = captures[mode]
+        scenes = ('p1',) if mode == 'arcade' else ('p1', 'second')
+        require(isinstance(record, Mapping) and set(record) == set(scenes)|{'arenas'} and
+                isinstance(record['arenas'], list) and len(record['arenas']) == 3,
+                'Menu footer capture scene inventory is incomplete', mode)
+        rows = [(scene, record[scene], roster, roster_text, 1, 216) for scene in scenes]
+        rows.extend((f'arena-{number}', entry, arena, arena_text, 3, 208)
+                    for number, entry in enumerate(record['arenas']))
+        for scene, entry, expected, text, x, top in rows:
+            relative = f'docs/screenshots/menu-preservation/{mode}-{scene}.png'
+            require(isinstance(entry, Mapping) and entry.get('capture') == relative and
+                    entry.get('text') == text and entry.get('tile_x') == x and entry.get('tile_row') == 27 and
+                    (top != 208 or entry.get('panel_pixel_bounds') == [0, 208, 256, 224]),
+                    'Menu footer capture path, text or placement differs from its fixed contract', (mode, scene))
+            path = root/relative
+            require(path.is_file() and sha256_file(path) == entry.get('capture_sha256'),
+                    'Menu footer screenshot differs from its recorded hash', relative)
+            try:
+                with Image.open(path) as image:
+                    require(image.size == (256, 224) and image.mode == 'RGB',
+                            'Menu footer screenshot must retain native RGB dimensions', relative)
+                    actual = image.crop((0, top, 256, 224))
+            except (OSError, ValueError) as error:
+                raise PackageError('Menu footer screenshot cannot be decoded: '+relative) from error
+            differences = [tuple(abs(a-b) for a, b in zip(ap, ep))
+                           for ap, ep in zip(actual.get_flattened_data(), expected.get_flattened_data())]
+            delta = {'mean_channel_delta': sum(sum(pixel) for pixel in differences)/(len(differences)*3),
+                     'max_channel_delta': max(max(pixel) for pixel in differences),
+                     'pixels_over_16': sum(max(pixel) > 16 for pixel in differences),
+                     'pixels': len(differences)}
+            require(delta['max_channel_delta'] <= 8 and all(entry.get(key) == value for key, value in delta.items()),
+                    'Menu footer screenshot comparison differs from actual source glyph pixels', relative)
 
 
 def validate_authoring_evidence(report: Mapping, root: Path, manifest: Mapping) -> None:

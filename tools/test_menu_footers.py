@@ -240,13 +240,14 @@ def verify_arena_footer(e: Emulator) -> dict[str, object]:
             "tile_row": 27, "panel_pixel_bounds": [0, 208, 256, 224], **delta}
 
 
-def capture(e: Emulator, directory: Path, name: str) -> str:
+def capture(e: Emulator, directory: Path, name: str) -> dict[str, str]:
     presentation.check(e.frame is not None and e.frame.size == (256, 224),
                        "footer capture is an actual native 256x224 frame", name)
     assert e.frame is not None
     path = directory / name
     e.frame.save(path)
-    return str(path)
+    return {"capture": path.resolve().relative_to(ROOT).as_posix(),
+            "capture_sha256": hashlib.sha256(path.read_bytes()).hexdigest()}
 
 
 def boot_roster(mode: int) -> Emulator:
@@ -269,13 +270,13 @@ def footer_captures(directory: Path) -> dict[str, object]:
         e = boot_roster(mode)
         try:
             entry = {"p1": verify_roster_footer(e, name + " P1")}
-            entry["p1"]["capture"] = capture(e, directory, name + "-p1.png")
+            entry["p1"].update(capture(e, directory, name + "-p1.png"))
             presentation.press(e, "start")
             if mode:
                 heading = "DUMMY" if mode == 2 else "PLAYER 2"
                 presentation.verify_menu_font_bank(e, [(4, 23, heading)], heading)
                 entry["second"] = verify_roster_footer(e, heading)
-                entry["second"]["capture"] = capture(e, directory, name + "-second.png")
+                entry["second"].update(capture(e, directory, name + "-second.png"))
                 # P2 and DUMMY accept the second physical controller.
                 presentation.press(e, "start", 1)
             presentation.wait_screen(e, presentation.ARENA)
@@ -288,7 +289,7 @@ def footer_captures(directory: Path) -> dict[str, object]:
                 presentation.verify_arena_cursor(e, arena)
                 presentation.verify_arena_plate(e, arena)
                 footer = verify_arena_footer(e)
-                footer["capture"] = capture(e, directory, f"{name}-arena-{arena}.png")
+                footer.update(capture(e, directory, f"{name}-arena-{arena}.png"))
                 entry["arenas"].append(footer)
             presentation.press(e, "up")
             presentation.check(e.state()["arena"] == 1,

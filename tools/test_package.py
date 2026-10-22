@@ -103,6 +103,19 @@ def check_menu_input_mutations(menu, manifest) -> None:
         entry['bg1_tiles_and_map_sha256'] = PACKAGE.sha256_bytes(changed[:0x7800])
         expect_package_error(lambda: PACKAGE.validate_menu_evidence(altered, sandbox, manifest),
                              'changed actual preserved VRAM and matching candidate hashes')
+        memory.write_bytes(original)
+        PACKAGE.validate_menu_evidence(menu, sandbox, manifest)
+
+        entry = menu['captures']['arcade']['p1']
+        png = sandbox/entry['capture']
+        with Image.open(png) as frame:
+            changed = frame.copy()
+        changed.putpixel((8, 217), (255, 0, 255))
+        changed.save(png)
+        altered = copy.deepcopy(menu)
+        altered['captures']['arcade']['p1']['capture_sha256'] = PACKAGE.sha256_file(png)
+        expect_package_error(lambda: PACKAGE.validate_menu_evidence(altered, sandbox, manifest),
+                             'changed actual footer pixels with matching rewritten screenshot hash')
 
 
 def main() -> None:
@@ -250,7 +263,14 @@ def main() -> None:
     PACKAGE.validate_menu_evidence(menu, ROOT, manifest)
     menu_mutations = [dict(menu, status='failed'), dict(menu, rom_sha256='0'*64),
                       dict(menu, checks=[]), dict(menu, controller_only=False),
+                      dict(menu, checks=menu['checks'][:1]), dict(menu, captures={}),
                       dict(menu, controller_actions=menu['controller_actions'][:-1])]
+    altered = copy.deepcopy(menu)
+    altered['captures']['arcade']['p1']['capture'] = 'missing.png'
+    menu_mutations.append(altered)
+    altered = copy.deepcopy(menu)
+    altered['captures']['training']['arenas'][0]['mean_channel_delta'] += 1
+    menu_mutations.append(altered)
     altered = copy.deepcopy(menu)
     altered['native_preservation']['pixel_difference_above_footer'] = 1
     menu_mutations.append(altered)
