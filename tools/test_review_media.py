@@ -179,6 +179,40 @@ class NativeReview(unittest.TestCase):
         finally:
             source.write_bytes(original)
 
+    def test_training_cpu_requires_the_complete_native_live_hour(self):
+        if self.training is None:
+            self.skipTest('CPU Training is introduced in v0.17')
+        from release_evidence import EvidenceError, validate_endurance
+        native = json.loads((ROOT/'docs/endurance-test-report.json').read_bytes())
+        validate_endurance(native, self.manifest['sha256'], root=ROOT)
+        for mutation in ('zero', 'short', 'missing', 'false'):
+            altered = copy.deepcopy(native)
+            mode = altered['modes']['2']
+            if mutation == 'zero': mode['training_cpu_live_frames'] = 0
+            if mutation == 'short': mode['training_cpu_live_frames'] = native['target_live_frames_per_mode']-1
+            if mutation == 'missing': mode['required_coverage'].pop('training_cpu_hour')
+            if mutation == 'false': mode['required_coverage']['training_cpu_hour'] = False
+            with self.subTest(mutation=mutation), self.assertRaises(EvidenceError):
+                validate_endurance(altered, self.manifest['sha256'], root=ROOT)
+
+    def test_training_cpu_card_extends_the_eight_guide_capture_inventory(self):
+        if self.training is None:
+            self.skipTest('CPU Training is introduced in v0.17')
+        from release_evidence import EvidenceError, _validate_training_capture_inventory
+        native = json.loads((ROOT/'docs/training-test-report.json').read_bytes())
+        _validate_training_capture_inventory(native, ROOT)
+        for mutation in ('missing', 'duplicate', 'wrong_path', 'missing_geometry', 'wrong_guide'):
+            altered = copy.deepcopy(native)
+            if mutation == 'missing': altered['capture_paths'].pop(0)
+            if mutation == 'duplicate': altered['capture_paths'][0] = altered['capture_paths'][1]
+            if mutation == 'wrong_path': altered['capture_paths'][0] = 'elsewhere.png'
+            if mutation == 'missing_geometry':
+                altered['checks'] = [item for item in altered['checks'] if item['check'] !=
+                                    'CPU normal-card capture is a native 256x224 PPU frame']
+            if mutation == 'wrong_guide': altered['captures'][0]['details']['name'] = 'missing'
+            with self.subTest(mutation=mutation), self.assertRaises(EvidenceError):
+                _validate_training_capture_inventory(altered, ROOT)
+
 
 if __name__ == '__main__':
     unittest.main()

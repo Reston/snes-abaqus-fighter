@@ -739,6 +739,15 @@ def validate_training_evidence(root: Path, rom_sha256: str,
             label + " roster selections remain valid", roster_state, recorder)
 
     _validate_training_pause_hud(report, recorder)
+    _validate_training_capture_inventory(report, root, recorder)
+    return {"checks": passed, "report": TRAINING_REPORT, "modes": 3,
+            "captures": len(report["capture_paths"])}
+
+
+def _validate_training_capture_inventory(report: dict[str, Any], root: Path,
+                                         recorder: Recorder | None = None) -> None:
+    """The smaller CPU card has its own native-geometry check, outside guides."""
+    label = "native Training suite"
     captures = report.get("captures")
     require(isinstance(captures, list) and len(captures) == 8,
             label + " has eight native review captures", captures, recorder)
@@ -751,11 +760,24 @@ def validate_training_evidence(root: Path, rom_sha256: str,
         require(isinstance(details, dict) and details.get("size") == [256, 224],
                 label + " capture geometry", details, recorder)
     capture_paths = report.get("capture_paths")
-    require(isinstance(capture_paths, list) and len(capture_paths) == len(captures) and
+    version = tuple(map(int, load_report(root, "dist/manifest.json")["version"].split(".")))
+    expected_paths = len(captures) + (version >= (0, 17, 0))
+    require(isinstance(capture_paths, list) and len(capture_paths) == expected_paths and
             all(isinstance(path, str) and path for path in capture_paths),
             label + " capture paths", capture_paths, recorder)
-    return {"checks": passed, "report": TRAINING_REPORT, "modes": 3,
-            "captures": len(captures)}
+    if version >= (0, 17, 0):
+        names = [f"mode{mode}-{page}" for mode in range(3)
+                 for page in ("controls", "specials")] + ["special-page-00", "special-page-11"]
+        require([item.get("details", {}).get("name") for item in captures] == names,
+                label + " fixed guide capture inventory", captures, recorder)
+        expected = ["docs/screenshots/training/" + name + ".png"
+                    for name in ["training-cpu-card", *names]]
+        require([path.replace("\\", "/") for path in capture_paths] == expected,
+                label + " fixed guide and CPU card paths", capture_paths, recorder)
+        geometry = [item for item in report.get("checks", []) if isinstance(item, dict) and
+                    item.get("check") == "CPU normal-card capture is a native 256x224 PPU frame"]
+        require(len(geometry) == 1 and geometry[0].get("passed") is True,
+                label + " CPU card native geometry proof", geometry, recorder)
 
 
 def _strict_flags(value: Any, label: str, recorder: Recorder | None) -> None:
