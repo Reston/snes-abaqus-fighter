@@ -1,11 +1,14 @@
 # Independent-engine compatibility
-<!-- candidate-version: 0.19.0; rom-sha256: 945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7 -->
+<!-- candidate-version: 0.20.0; rom-sha256: 6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501 -->
 
-The current candidate is v0.19.0, cartridge SHA256 `945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7`.
-The pinned smoke and 48-by-600-frame independent combat run both pass on this ROM.
-The [release note](RELEASE-v0.19.0.md) records status. Verified v0.18.0 remains
-the offline checkpoint, on ROM `fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb`.
-The pause controls reuse the existing difficulty and banner transfer.
+The current candidate is v0.20.0, cartridge SHA256 `6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501`.
+The separate pinned bsnes2014 Accuracy smoke passes on this exact ROM;
+[compatibility-test-report.json](compatibility-test-report.json) records it.
+The full independent combat report, release-scale gates and offline archive
+still belong to the historical v0.19.0 checkpoint. They have not been
+regenerated for the likeness candidate. See the
+[v0.20.0 note](RELEASE-v0.20.0.md) and the
+[previous checkpoint](RELEASE-v0.19.0.md).
 
 The pinned smoke check has the bounded scope `independent-engine smoke, stage
 ambient/effects freeze, synchronized low-wave, neutral600frame cadence`. It is

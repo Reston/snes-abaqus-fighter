@@ -1,0 +1,108 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "scope": "Damian v5 technical art preservation; revised likeness accepted by the user",
+  "baseline_commit": "c5cdb3ebff98ecacf634322fd50e6cb66ed6faae",
+  "baseline_version": "0.19.0",
+  "version": "0.20.0",
+  "rom_sha256": "6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501",
+  "generated_assets": 219,
+  "generated_preserved": 200,
+  "allowed_changed": [
+    "assets/generated/assets.h",
+    "assets/generated/character-manifest.json",
+    "assets/generated/fighter00.bin",
+    "assets/generated/fighter00.png",
+    "assets/generated/fighter00b.bin",
+    "assets/generated/fighter00c.bin",
+    "assets/generated/fighter00d.bin",
+    "assets/generated/fighter00e.bin",
+    "assets/generated/fighter00f.bin",
+    "assets/generated/fighter00g.bin",
+    "assets/generated/fighter00h.bin",
+    "assets/generated/portrait00-large.png",
+    "assets/generated/portrait00.png",
+    "assets/generated/portrait00_pal.bin",
+    "assets/generated/portrait00_tiles.bin",
+    "assets/generated/select.png",
+    "assets/generated/select_map.bin",
+    "assets/generated/select_pal.bin",
+    "assets/generated/select_tiles.bin"
+  ],
+  "other_fighters_preserved": 11,
+  "other_fighter_manifest_records_identical": true,
+  "damian_obj_palette_preserved": true,
+  "protected_native_source_files": [
+    "src/animation_banks.h",
+    "src/characters.h",
+    "src/game.c",
+    "src/hardware.asm",
+    "src/knockdown.h",
+    "src/menu_portraits.h",
+    "src/pause_guide.h",
+    "src/trace.asm"
+  ],
+  "ram_symbols_preserved": 1276,
+  "native_frames": 64,
+  "native_canvas": [
+    96,
+    80
+  ],
+  "feet_baseline": 78,
+  "human_likeness_approval": true,
+  "full_release_extended_evidence": "not regenerated for this review candidate",
+  "reference": {
+    "path": "assets/references/fighter-00-v5.png",
+    "sha256": "3797aa9e450df56e6a3f33992ca99f9a12937276e5708bf8051aca5f7891c6b5"
+  },
+  "captures": {
+    "after-fighter00.png": {
+      "path": "docs/screenshots/damian-v5/after-fighter00.png",
+      "sha256": "b1df4d7a53448fb35c055deedc75b4c862aa442d3f4b1eabbb0a2c4d2c202f16"
+    },
+    "after-portrait00-large.png": {
+      "path": "docs/screenshots/damian-v5/after-portrait00-large.png",
+      "sha256": "a74d321aa05586da8f30117f802fc92768d3346b6f01ff35d9323fcc46198504"
+    },
+    "before-fighter00.png": {
+      "path": "docs/screenshots/damian-v5/before-fighter00.png",
+      "sha256": "933126cb57d5e5b36a57c962fb4f12ecb5418a41408954413ba451ec08b3afa9"
+    },
+    "before-portrait00-large.png": {
+      "path": "docs/screenshots/damian-v5/before-portrait00-large.png",
+      "sha256": "a7bd2313500980db759031d66a7984aa6823bd3406581091f215a212d6a701d2"
+    },
+    "face-after.png": {
+      "path": "docs/screenshots/damian-v5/face-after.png",
+      "sha256": "b74986b8a006fe9dfe1bbf5eaeab2e6040007f868ba0f06482219a94d49cbbdd"
+    },
+    "face-before.png": {
+      "path": "docs/screenshots/damian-v5/face-before.png",
+      "sha256": "e4dcec5142acf99ce529cf565d979e1b284e380fb1ea598a7eb4f9a22af7b340"
+    },
+    "fight.png": {
+      "path": "docs/screenshots/damian-v5/fight.png",
+      "sha256": "922d1f816e43d166fb75bb8448c193de36680d384b06b744ea4c1d94715ba5a4"
+    },
+    "native64.png": {
+      "path": "docs/screenshots/damian-v5/native64.png",
+      "sha256": "9451639f43c736d3e972a6b02b5884ba536a36266e89189c7294d260a72c7e7d"
+    },
+    "select.png": {
+      "path": "docs/screenshots/damian-v5/select.png",
+      "sha256": "de7a3f4333b3210aedafd4726e6b8223c8c70e59f1e61a78d0f71489c677e93c"
+    }
+  },
+  "human_likeness_review": {
+    "recorded_at_utc": "2026-10-22T23:09:08Z",
+    "question": "Does the revised face look closer to Damian?",
+    "response": "ok good",
+    "human_likeness_approved": true,
+    "scope": "User acceptance of Damian v5 likeness shown in the reference/previous/revised comparison and native portraits/captures.",
+    "reviewed_version": "0.20.0",
+    "reviewed_rom_sha256": "6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501",
+    "review_page": "docs/DAMIAN-REVIEW-v5.html",
+    "team_or_subject_consent": null,
+    "public_distribution_approval": null
+  }
+}

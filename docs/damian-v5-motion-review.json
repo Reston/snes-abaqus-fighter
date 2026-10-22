@@ -1,0 +1,218 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "scope": "existing exact-ROM native capture integrity and sampled visual review; no new emulator suite",
+  "recorded_at_utc": "2026-10-22T08:42:35.364732+00:00",
+  "version": "0.20.0",
+  "rom_sha256": "6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501",
+  "roster_report_sha256": "163e963ebed7beb1f9587df2c701af7c3c59a62650f33b347861c749c8934025",
+  "capture_commit": "4eaec62fc27515a4e670b882b84e333bc8167306",
+  "captures": [
+    {
+      "path": "docs/screenshots/characters/00-idle-animation.gif",
+      "sha256": "792cd8d3880c962e14f047395bf44a85a0b6502094b2d00686bbe4ea972d1162",
+      "decoded_frames": 16,
+      "distinct_frames": 16,
+      "duration_ms": 1070,
+      "source_size": [
+        256,
+        224
+      ],
+      "filmstrip_indices": [
+        0,
+        5,
+        10,
+        15
+      ]
+    },
+    {
+      "path": "docs/screenshots/characters/00-walk-animation.gif",
+      "sha256": "fc121642f099c0db2c5779ff009496091afd7c40963bae015aae7fa6c8b28e82",
+      "decoded_frames": 24,
+      "distinct_frames": 24,
+      "duration_ms": 400,
+      "source_size": [
+        256,
+        224
+      ],
+      "filmstrip_indices": [
+        0,
+        8,
+        16,
+        23
+      ]
+    },
+    {
+      "path": "docs/screenshots/characters/00-attack-animation.gif",
+      "sha256": "d3701accf1c04c2c22e1dee9292af7ef483dc5eb4800a29e0bc5384f4dd6618f",
+      "decoded_frames": 9,
+      "distinct_frames": 9,
+      "duration_ms": 400,
+      "source_size": [
+        256,
+        224
+      ],
+      "filmstrip_indices": [
+        0,
+        3,
+        6,
+        8
+      ]
+    },
+    {
+      "path": "docs/screenshots/characters/00-p1-air-y.gif",
+      "sha256": "7f51edc6227bf57295bbe0103c8273053c747f75159bf7c705e6ee00ae8811a6",
+      "decoded_frames": 39,
+      "distinct_frames": 39,
+      "duration_ms": 900,
+      "source_size": [
+        256,
+        224
+      ],
+      "filmstrip_indices": [
+        0,
+        13,
+        26,
+        38
+      ]
+    },
+    {
+      "path": "docs/screenshots/characters/00-p1-air-b.gif",
+      "sha256": "46393d918c050d3cdc006ec75fcb12cc579cf3921fc10f51fca4de7bd7283255",
+      "decoded_frames": 37,
+      "distinct_frames": 36,
+      "duration_ms": 900,
+      "source_size": [
+        256,
+        224
+      ],
+      "filmstrip_indices": [
+        0,
+        12,
+        24,
+        36
+      ]
+    },
+    {
+      "path": "docs/screenshots/characters/00-p2-air-y.gif",
+      "sha256": "c283ff41927c675d815935e0cb8d4668f499a527dafc255270345becbe47bf39",
+      "decoded_frames": 39,
+      "distinct_frames": 39,
+      "duration_ms": 900,
+      "source_size": [
+        256,
+        224
+      ],
+      "filmstrip_indices": [
+        0,
+        13,
+        26,
+        38
+      ]
+    },
+    {
+      "path": "docs/screenshots/characters/00-p2-air-b.gif",
+      "sha256": "4f980ad772cfdcc6723bb8864d9ed0f180c5671273947fb2ee322a6b20320869",
+      "decoded_frames": 37,
+      "distinct_frames": 37,
+      "duration_ms": 900,
+      "source_size": [
+        256,
+        224
+      ],
+      "filmstrip_indices": [
+        0,
+        12,
+        24,
+        36
+      ]
+    },
+    {
+      "path": "docs/screenshots/characters/00-p1-throw-sequence.gif",
+      "sha256": "210056eed2ac7e0c6307ff4df98ac76528f5582e44f6bd8829fff3c5d9fd3074",
+      "decoded_frames": 56,
+      "distinct_frames": 53,
+      "duration_ms": 1300,
+      "source_size": [
+        256,
+        224
+      ],
+      "filmstrip_indices": [
+        0,
+        18,
+        37,
+        55
+      ]
+    },
+    {
+      "path": "docs/screenshots/characters/00-p2-throw-sequence.gif",
+      "sha256": "0a9c00de545892ece7005a111c6bab815ec22de3105cdc7a92671617dd5c84e8",
+      "decoded_frames": 59,
+      "distinct_frames": 54,
+      "duration_ms": 1300,
+      "source_size": [
+        256,
+        224
+      ],
+      "filmstrip_indices": [
+        0,
+        19,
+        39,
+        58
+      ]
+    }
+  ],
+  "filmstrip": "docs/screenshots/damian-v5/motion-filmstrip.png",
+  "gui_review": {
+    "status": "unavailable",
+    "reason": "Computer Use native pipe unavailable (os error 2)",
+    "frontend_window_created": false,
+    "audio_played": false
+  },
+  "human_likeness_approval": true,
+  "visual_review": {
+    "status": "agent sampled stills accepted",
+    "sampled_frames": 36,
+    "total_decoded_frames": 316,
+    "notes": "No obvious head clipping, missing faces, wrong facing or empty actor poses in the 36 sampled stills. Continuous real-time GUI playback was not assessed."
+  },
+  "filmstrip_sha256": "ea538e4df5a4e3228e721537949c59926d6f929326611fa7ffca408896ed5b0a",
+  "still_exports": [
+    {
+      "path": "docs/screenshots/damian-v5/00-p1-air-b-still.png",
+      "sha256": "8b98d6bb5e0a79e443cf121427d655ea95d51c69fdc832990a12e648eeaafc78",
+      "source": "docs/screenshots/characters/00-p1-air-b.gif",
+      "source_frame": 0
+    },
+    {
+      "path": "docs/screenshots/damian-v5/00-p2-air-b-still.png",
+      "sha256": "6ff084b03f6ac54bce76b645913ba7daab6d40517cc244bcbac9cf87b7663626",
+      "source": "docs/screenshots/characters/00-p2-air-b.gif",
+      "source_frame": 0
+    },
+    {
+      "path": "docs/screenshots/damian-v5/00-p1-throw-sequence-still.png",
+      "sha256": "a1a96d983235ba1d46ad1424f79c65b80b4784a6e12467559f0a520d8f52d2b1",
+      "source": "docs/screenshots/characters/00-p1-throw-sequence.gif",
+      "source_frame": 0
+    },
+    {
+      "path": "docs/screenshots/damian-v5/00-p2-throw-sequence-still.png",
+      "sha256": "4db5d222ab3177d88d1d8c91bf1d8d7970ddc575682ac30326ee1acf0af7bb07",
+      "source": "docs/screenshots/characters/00-p2-throw-sequence.gif",
+      "source_frame": 0
+    }
+  ],
+  "human_likeness_review": {
+    "recorded_at_utc": "2026-10-22T23:09:08Z",
+    "question": "Does the revised face look closer to Damian?",
+    "response": "ok good",
+    "human_likeness_approved": true,
+    "scope": "User acceptance of Damian v5 likeness shown in the reference/previous/revised comparison and native portraits/captures.",
+    "reviewed_version": "0.20.0",
+    "reviewed_rom_sha256": "6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501",
+    "review_page": "docs/DAMIAN-REVIEW-v5.html",
+    "team_or_subject_consent": null,
+    "public_distribution_approval": null
+  }
+}

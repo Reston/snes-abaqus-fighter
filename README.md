@@ -1,5 +1,5 @@
 # Abaqus: After Hours
-<!-- candidate-version: 0.19.0; rom-sha256: 945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7 -->
+<!-- candidate-version: 0.20.0; rom-sha256: 6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501 -->
 
 An original six-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II's arcade structure and the people and places of Abaqus in
@@ -7,10 +7,23 @@ Santiago. It runs as a native SNES cartridge in an emulator.
 
 Source, original art, native review evidence and the cartridge are retained in
 [Reston/snes-abaqus-fighter](https://github.com/Reston/snes-abaqus-fighter).
-The newer [Damian v0.20 likeness review](https://github.com/Reston/snes-abaqus-fighter/tree/polish/v020-damian-likeness)
-is on its own branch while human likeness feedback is pending.
 
-The current source candidate is **v0.19.0**, ROM SHA256 `945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7`,
+The current source candidate is the **v0.20.0 Damian likeness build**, ROM SHA256
+`6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501`,
+checksum `3F2A`. The additional user photo guides a longer nose, darker brows,
+narrower mouth and short stubble across all 64 frames and both portraits.
+See the [comparison](docs/DAMIAN-REVIEW-v5.html),
+[art and prompts](docs/DAMIAN-LIKENESS-v5.md), or open the
+[review cartridge](dist/abaqus-after-hours.sfc) in the existing emulator.
+All six native suites pass 35,715 checks and the independent compatibility
+smoke passes on this exact ROM. The user approved the revised likeness after
+reviewing the photo/previous/revised comparison on 2026-10-22. Extended
+release gates and a new Windows ZIP have not been regenerated for this build.
+The [v0.20.0 note](docs/RELEASE-v0.20.0.md) records this scope.
+
+## Previous full release checkpoint
+
+The v0.19.0 checkpoint has ROM SHA256 `945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7`,
 checksum `05A4`. On Training's first PAUSED card, choose CPU and use
 the **L/R shoulder buttons** to change Easy/Normal/Hard without leaving the
 match. Either controller can change the setting. The chosen level also
@@ -56,8 +69,8 @@ The [player guide](docs/PLAYER-GUIDE.md) covers both players, controllers,
 blocking, cancels, specials, pause pages and Training dummies. Snes9x supports
 fullscreen with Alt+Enter and controller mapping under Input Configuration.
 
-The current candidate includes a [cross-up practice companion](docs/CROSSUP-PRACTICE-v0.19.0.html)
-with native moving examples for all twelve fighters. Its [practice notes](docs/CROSSUP-PRACTICE.md)
+The retained v0.19.0 [cross-up practice companion](docs/CROSSUP-PRACTICE-v0.19.0.html)
+shows native moving examples for all twelve fighters. Its [practice notes](docs/CROSSUP-PRACTICE.md)
 explain different jump setups and record the supplemental 72-case controller proof.
 
 ## Included

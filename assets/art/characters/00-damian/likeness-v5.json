@@ -1,0 +1,65 @@
+{
+  "fighter": "00-damian",
+  "character": "Damian",
+  "revision": "v5-photo-stubble-likeness",
+  "generated_at_utc": "2026-10-22T08:24:51.228918+00:00",
+  "generation_mode": "built-in image_gen",
+  "transparent_background": true,
+  "human_likeness_approval": null,
+  "schema": "abaqus-fighter-likeness/v2",
+  "atlas": {
+    "path": "assets/art/characters/00-damian/atlas-v5.png",
+    "sha256": "f9640e85afdbf3996a26f77602ca0aa44707898de62592d2bc876a9b39612bb4",
+    "generated_source": "C:/Users/user/.codex/generated_images/01a160f4-3e59-7980-b2d2-8db765944eeb/exec-ff964c80-eb8b-4def-a5b3-2eb96f40799e.png",
+    "input_roles": [
+      {
+        "path": "assets/art/characters/00-damian/atlas-v4.png",
+        "role": "edit target; retain poses/body/costume",
+        "sha256": "3b29a299194ebaa2d6b2c712a1e6465f3c6b828cf3e76581eea12b90def06a14"
+      },
+      {
+        "path": "assets/references/fighter-00-v5.png",
+        "role": "user-supplied photographic identity reference",
+        "sha256": "3797aa9e450df56e6a3f33992ca99f9a12937276e5708bf8051aca5f7891c6b5"
+      }
+    ],
+    "full_prompt": "Use case: identity-preserve.\nAsset type: original transparent 4-by-4 fighting-game character sprite atlas, 16 separate full-body figures.\nInput 1 is the EDIT TARGET, the existing blue-suited Damian atlas. Input 2 is the authoritative identity REFERENCE PHOTO of Damian.\nPrimary request: correct ONLY the head and face in every one of the sixteen poses so the character recognizably resembles the man in the photo. He has a long oval head, a shaved scalp with subtle close stubble, a high rounded crown, dark fairly straight eyebrows, deep-set hooded eyes, a long prominent nose with a slightly convex bridge and rounded tip, a narrow natural mouth, a defined tapered jaw and short dark salt-and-pepper facial stubble over cheeks/chin/upper lip. Keep the nose and stubble particularly clear; these are important identity cues missing in the target. Use a calm alert expression with a small relaxed closed-mouth smile in neutral poses. Remove the existing generic huge toothy grin, baby-smooth face and small nose. Do not turn the stubble into a full beard, goatee or moustache.\nStyle: match the target's polished original cel-shaded cartoon fighting-game art, dark navy contour, restrained material highlights, clear simplified face planes that remain readable when reduced to tiny SNES sprites. The face is an adult likeness rather than an idealized young bald action hero.\nInvariants: retain all sixteen poses, exact row-major pose order, facing/head angles, body proportions, body silhouette, blue rolled-sleeve blazer, open white shirt, navy trousers, gold buckle, black shoes, hands and body anatomy, placement and full-body framing of the edit target. Change only head/face and necessary immediate collar junctions. Make every face consistently the same person. Do not copy the photo's gray blazer or striped shirt. No added props, labels, lettering, effects or extra figures. Keep all poses disconnected and uncropped with a truly transparent RGBA background. Preserve the original square atlas and 4 columns by 4 rows.",
+    "frames": [
+      0,
+      15
+    ],
+    "layout": "4x4 row-major",
+    "validation": {
+      "tool": "tools/fighter_assets.py:extract_atlas",
+      "alpha_threshold": 200,
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "figures": 16,
+      "opaque_pixels": [
+        47354,
+        45611,
+        45792,
+        37310,
+        39122,
+        44469,
+        46170,
+        35347,
+        38506,
+        40348,
+        44488,
+        45405,
+        29981,
+        37198,
+        26732,
+        33946
+      ]
+    }
+  }
+}

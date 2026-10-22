@@ -1,9 +1,12 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.19.0; rom-sha256: 945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7 -->
+<!-- candidate-version: 0.20.0; rom-sha256: 6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501 -->
 
 ## Current version
 
-The current candidate is **v0.19.0**. In paused Training, choose **CPU** with
+The current candidate is **v0.20.0**, with Damian's revised likeness accepted
+after the user comparison review. See [the candidate note](RELEASE-v0.20.0.md).
+The latest offline ZIP remains v0.19.0; the source cartridge includes the
+new art. Controls retain the v0.19.0 behavior. In paused Training, choose **CPU** with
 Up/Down, then use the **L/R shoulder buttons** to change its level. Both
 controllers work. The selected level appears on the card and at home.
 Start resumes; P1 Select resets the live round and retains the behavior,
@@ -25,7 +28,8 @@ needed. Human gameplay, listening, controller, likeness/consent and team/public
 use review remain open; original hardware support stays unverified.
 The package's `REVIEW.html` contains native screens, CPU Training, anti-air and cross-up
 clips, and a 2x view. GIF playback timing is approximate. The [cross-up practice
-companion](CROSSUP-PRACTICE-v0.19.0.html) shows a setup for each fighter. Use
+companion](CROSSUP-PRACTICE-v0.19.0.html) retains v0.19.0 captures and shows
+a setup for each fighter. Use
 Training's Stand dummy for stationary setups, or Local Versus with a second
 player/both keyboard layouts for the opponent-step-under examples.
 Its `ROSTER-REVIEW.html` offers all 64 generated frames per fighter, facing

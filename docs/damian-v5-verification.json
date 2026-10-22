@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "scope": "focused likeness review candidate; not a full release certification",
+  "version": "0.20.0",
+  "rom_sha256": "6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501",
+  "checksum": "3F2A",
+  "source_freeze": {
+    "commit": "c83cf5ece118fe6c2454a0eaa55a6a20aaecd72b",
+    "tree": "459a6eaa21b3bcb8d10d14662006c9dc65c31b96"
+  },
+  "native_test_command": "Test.cmd",
+  "native_test_exit_code": 0,
+  "native_suites": {
+    "test": {
+      "path": "docs/test-report.json",
+      "sha256": "d4e4fbac76316f103e349516ad50fc41571cf0b4d52697b80e282e6bcfadc699",
+      "status": "passed",
+      "checks": 2596
+    },
+    "character-test": {
+      "path": "docs/character-test-report.json",
+      "sha256": "163e963ebed7beb1f9587df2c701af7c3c59a62650f33b347861c749c8934025",
+      "status": "passed",
+      "checks": 18084
+    },
+    "presentation-test": {
+      "path": "docs/presentation-test-report.json",
+      "sha256": "7796e0bf84af9250e6b7ced201b47254607ecc9e715729adb0636ea941016eae",
+      "status": "passed",
+      "checks": 3344
+    },
+    "input-test": {
+      "path": "docs/input-test-report.json",
+      "sha256": "d2d1a4a96c5f82d2b6089fa5d2b2f414262fe7489718995d2da0cff51e1ba2fa",
+      "status": "passed",
+      "checks": 1521
+    },
+    "stage-test": {
+      "path": "docs/stage-test-report.json",
+      "sha256": "99409098da41f24f758a751bc632c29e191e35f6944927303484946e5310b36c",
+      "status": "passed",
+      "checks": 8163
+    },
+    "training-test": {
+      "path": "docs/training-test-report.json",
+      "sha256": "2de86b7d59744cbee7006c7288c14d618c8f4bf31ac9e137cae8b4f653efb309",
+      "status": "passed",
+      "checks": 2007
+    }
+  },
+  "native_checks": 35715,
+  "independent_compatibility": {
+    "status": "passed",
+    "path": "docs/compatibility-test-report.json",
+    "sha256": "383665fac10eae073e5329baf6d29f980efb49a5f9d80644c57f19e0d3fcf229"
+  },
+  "authoring_guards": {
+    "normal": {
+      "status": "passed",
+      "tests": 20
+    },
+    "optimized": {
+      "status": "passed",
+      "tests": 20
+    }
+  },
+  "canonical_asset_rebuild_same_rom": true,
+  "art_preservation": {
+    "path": "docs/damian-v5-report.json",
+    "sha256": "b06b0cf05b7f50f4701996ae7cd36e0eb72393b94a7481c509ae26ff660c5d30",
+    "generated_preserved": 200,
+    "ram_symbols_preserved": 1276
+  },
+  "human_likeness_approval": true,
+  "public_release_certified": false,
+  "extended_release_evidence_regenerated": false,
+  "offline_package_created": false,
+  "human_likeness_review": {
+    "recorded_at_utc": "2026-10-22T23:09:08Z",
+    "question": "Does the revised face look closer to Damian?",
+    "response": "ok good",
+    "human_likeness_approved": true,
+    "scope": "User acceptance of Damian v5 likeness shown in the reference/previous/revised comparison and native portraits/captures.",
+    "reviewed_version": "0.20.0",
+    "reviewed_rom_sha256": "6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501",
+    "review_page": "docs/DAMIAN-REVIEW-v5.html",
+    "team_or_subject_consent": null,
+    "public_distribution_approval": null
+  }
+}

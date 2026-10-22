@@ -1,11 +1,14 @@
 # Public-release quality target
-<!-- candidate-version: 0.19.0; rom-sha256: 945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7 -->
+<!-- candidate-version: 0.20.0; rom-sha256: 6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501 -->
 
-The current v0.19.0 review candidate is cartridge SHA256 `945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7`.
-Its [release note](RELEASE-v0.19.0.md) records verification and package status.
-All six native suites pass 35,715 checks; matching smoke, matrix/replays,
-independent combat, three native live hours and committed-source rebuild pass. Human gameplay/balance, full listening, physical controllers,
-likeness/consent and team/public-use approval remain open.
+The current v0.20.0 candidate is cartridge SHA256 `6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501`.
+Its [release note](RELEASE-v0.20.0.md) records the focused verification scope.
+All six native suites pass 35,715 checks and the matching pinned smoke passes.
+The user accepted Damian v5 likeness after the comparison review. Full
+matrix/replays, independent combat, endurance, fresh-export evidence and an
+offline package remain at the historical v0.19.0 checkpoint. Human
+gameplay/balance, full listening, physical controllers, remaining roster
+likenesses, team/subject consent and public-use approval remain open.
 `public_release_certified` is false.
 
 The active project goal is an original native SNES fighting game polished to a

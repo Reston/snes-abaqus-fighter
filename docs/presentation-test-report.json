@@ -1,6 +1,6 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7",
+  "rom_sha256": "6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501",
   "rom_bytes": 4194304,
   "status": "passed",
   "checks": [
@@ -9,11 +9,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.19.0",
+        "version": "0.20.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7",
-        "checksum": "05A4",
+        "sha256": "6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501",
+        "checksum": "3F2A",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -97,7 +97,7 @@
       "passed": true,
       "details": {
         "fighter": 0,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter00.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter00.png"
       }
     },
     {
@@ -183,7 +183,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter01.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter01.png"
       }
     },
     {
@@ -269,7 +269,7 @@
       "passed": true,
       "details": {
         "fighter": 2,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter02.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter02.png"
       }
     },
     {
@@ -355,7 +355,7 @@
       "passed": true,
       "details": {
         "fighter": 3,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter03.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter03.png"
       }
     },
     {
@@ -441,7 +441,7 @@
       "passed": true,
       "details": {
         "fighter": 4,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter04.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter04.png"
       }
     },
     {
@@ -527,7 +527,7 @@
       "passed": true,
       "details": {
         "fighter": 5,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter05.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter05.png"
       }
     },
     {
@@ -613,7 +613,7 @@
       "passed": true,
       "details": {
         "fighter": 6,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter06.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter06.png"
       }
     },
     {
@@ -699,7 +699,7 @@
       "passed": true,
       "details": {
         "fighter": 7,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter07.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter07.png"
       }
     },
     {
@@ -785,7 +785,7 @@
       "passed": true,
       "details": {
         "fighter": 8,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter08.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter08.png"
       }
     },
     {
@@ -871,7 +871,7 @@
       "passed": true,
       "details": {
         "fighter": 9,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter09.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter09.png"
       }
     },
     {
@@ -957,7 +957,7 @@
       "passed": true,
       "details": {
         "fighter": 10,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter10.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter10.png"
       }
     },
     {
@@ -1043,7 +1043,7 @@
       "passed": true,
       "details": {
         "fighter": 11,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter11.png"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter11.png"
       }
     },
     {
@@ -1271,7 +1271,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait01_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait01_tiles.bin"
       }
     },
     {
@@ -1308,7 +1308,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait01_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait01_pal.bin"
       }
     },
     {
@@ -1816,7 +1816,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait01_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait01_tiles.bin"
       }
     },
     {
@@ -1853,7 +1853,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait01_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait01_pal.bin"
       }
     },
     {
@@ -2669,8 +2669,8 @@
         "label": "title",
         "row": 27,
         "x": 27,
-        "character": "1",
-        "tile": 49
+        "character": "2",
+        "tile": 50
       }
     },
     {
@@ -2680,8 +2680,8 @@
         "label": "title",
         "row": 27,
         "x": 28,
-        "character": "9",
-        "tile": 57
+        "character": "0",
+        "tile": 48
       }
     },
     {
@@ -3239,7 +3239,7 @@
     {
       "check": "generated select plate exists",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\select.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\select.png"
     },
     {
       "check": "generated select plate is native size",
@@ -3278,7 +3278,7 @@
           44,
           92
         ],
-        "mean_channel_delta": 2.283333333333333,
+        "mean_channel_delta": 2.2973958333333333,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3308,7 +3308,7 @@
           84,
           92
         ],
-        "mean_channel_delta": 1.9375,
+        "mean_channel_delta": 1.81640625,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3338,7 +3338,7 @@
           124,
           92
         ],
-        "mean_channel_delta": 1.8828125,
+        "mean_channel_delta": 1.9856770833333333,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3368,7 +3368,7 @@
           164,
           92
         ],
-        "mean_channel_delta": 2.689583333333333,
+        "mean_channel_delta": 2.98515625,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3398,7 +3398,7 @@
           44,
           140
         ],
-        "mean_channel_delta": 2.55546875,
+        "mean_channel_delta": 2.621354166666667,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3428,7 +3428,7 @@
           84,
           140
         ],
-        "mean_channel_delta": 2.0765625,
+        "mean_channel_delta": 2.52265625,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3458,7 +3458,7 @@
           124,
           140
         ],
-        "mean_channel_delta": 2.0395833333333333,
+        "mean_channel_delta": 2.1453125,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3488,7 +3488,7 @@
           164,
           140
         ],
-        "mean_channel_delta": 2.140885416666667,
+        "mean_channel_delta": 2.1338541666666666,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3518,7 +3518,7 @@
           44,
           188
         ],
-        "mean_channel_delta": 2.0536458333333334,
+        "mean_channel_delta": 2.3091145833333333,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3548,7 +3548,7 @@
           84,
           188
         ],
-        "mean_channel_delta": 1.8770833333333334,
+        "mean_channel_delta": 2.13046875,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3578,7 +3578,7 @@
           124,
           188
         ],
-        "mean_channel_delta": 2.2432291666666666,
+        "mean_channel_delta": 2.27265625,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3608,7 +3608,7 @@
           164,
           188
         ],
-        "mean_channel_delta": 2.027083333333333,
+        "mean_channel_delta": 2.099739583333333,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3645,7 +3645,7 @@
       "passed": true,
       "details": {
         "fighter": 0,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait00_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait00_tiles.bin"
       }
     },
     {
@@ -3662,7 +3662,7 @@
       "details": {
         "fighter": 0,
         "vram_word": "0x4a00",
-        "sha256": "2bd09ad23a2df08d53046ad70952e45851aa5e88695da12fc641bfb918f41cb6"
+        "sha256": "cef8bc55342eea67d30e43e52852d560e421c25e9071fe7e7a9c52e02f75de09"
       }
     },
     {
@@ -3682,7 +3682,7 @@
       "passed": true,
       "details": {
         "fighter": 0,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait00_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait00_pal.bin"
       }
     },
     {
@@ -3728,7 +3728,7 @@
           248,
           128
         ],
-        "mean_channel_delta": 0.3873046875,
+        "mean_channel_delta": 0.3529296875,
         "max_channel_delta": 2,
         "pixels_over_16": 0,
         "pixels": 5120
@@ -3772,7 +3772,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait01_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait01_tiles.bin"
       }
     },
     {
@@ -3809,7 +3809,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait01_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait01_pal.bin"
       }
     },
     {
@@ -3899,7 +3899,7 @@
       "passed": true,
       "details": {
         "fighter": 2,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait02_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait02_tiles.bin"
       }
     },
     {
@@ -3936,7 +3936,7 @@
       "passed": true,
       "details": {
         "fighter": 2,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait02_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait02_pal.bin"
       }
     },
     {
@@ -4026,7 +4026,7 @@
       "passed": true,
       "details": {
         "fighter": 3,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait03_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait03_tiles.bin"
       }
     },
     {
@@ -4063,7 +4063,7 @@
       "passed": true,
       "details": {
         "fighter": 3,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait03_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait03_pal.bin"
       }
     },
     {
@@ -4153,7 +4153,7 @@
       "passed": true,
       "details": {
         "fighter": 4,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait04_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait04_tiles.bin"
       }
     },
     {
@@ -4190,7 +4190,7 @@
       "passed": true,
       "details": {
         "fighter": 4,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait04_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait04_pal.bin"
       }
     },
     {
@@ -4280,7 +4280,7 @@
       "passed": true,
       "details": {
         "fighter": 5,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait05_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait05_tiles.bin"
       }
     },
     {
@@ -4317,7 +4317,7 @@
       "passed": true,
       "details": {
         "fighter": 5,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait05_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait05_pal.bin"
       }
     },
     {
@@ -4407,7 +4407,7 @@
       "passed": true,
       "details": {
         "fighter": 6,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait06_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait06_tiles.bin"
       }
     },
     {
@@ -4444,7 +4444,7 @@
       "passed": true,
       "details": {
         "fighter": 6,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait06_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait06_pal.bin"
       }
     },
     {
@@ -4534,7 +4534,7 @@
       "passed": true,
       "details": {
         "fighter": 7,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait07_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait07_tiles.bin"
       }
     },
     {
@@ -4571,7 +4571,7 @@
       "passed": true,
       "details": {
         "fighter": 7,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait07_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait07_pal.bin"
       }
     },
     {
@@ -4661,7 +4661,7 @@
       "passed": true,
       "details": {
         "fighter": 8,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait08_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait08_tiles.bin"
       }
     },
     {
@@ -4698,7 +4698,7 @@
       "passed": true,
       "details": {
         "fighter": 8,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait08_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait08_pal.bin"
       }
     },
     {
@@ -4788,7 +4788,7 @@
       "passed": true,
       "details": {
         "fighter": 9,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait09_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait09_tiles.bin"
       }
     },
     {
@@ -4825,7 +4825,7 @@
       "passed": true,
       "details": {
         "fighter": 9,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait09_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait09_pal.bin"
       }
     },
     {
@@ -4915,7 +4915,7 @@
       "passed": true,
       "details": {
         "fighter": 10,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait10_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait10_tiles.bin"
       }
     },
     {
@@ -4952,7 +4952,7 @@
       "passed": true,
       "details": {
         "fighter": 10,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait10_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait10_pal.bin"
       }
     },
     {
@@ -5042,7 +5042,7 @@
       "passed": true,
       "details": {
         "fighter": 11,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait11_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait11_tiles.bin"
       }
     },
     {
@@ -5079,7 +5079,7 @@
       "passed": true,
       "details": {
         "fighter": 11,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait11_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait11_pal.bin"
       }
     },
     {
@@ -6053,7 +6053,7 @@
     {
       "check": "generated arena plate exists",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\arenas.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\arenas.png"
     },
     {
       "check": "generated arena plate is native size",
@@ -8523,7 +8523,7 @@
     {
       "check": "generated arena plate exists",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\arenas.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\arenas.png"
     },
     {
       "check": "generated arena plate is native size",
@@ -10993,7 +10993,7 @@
     {
       "check": "generated arena plate exists",
       "passed": true,
-      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\arenas.png"
+      "details": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\arenas.png"
     },
     {
       "check": "generated arena plate is native size",
@@ -12971,7 +12971,7 @@
       "passed": true,
       "details": {
         "fighter": 10,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait10_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait10_tiles.bin"
       }
     },
     {
@@ -13008,7 +13008,7 @@
       "passed": true,
       "details": {
         "fighter": 10,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait10_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait10_pal.bin"
       }
     },
     {
@@ -13360,7 +13360,7 @@
       "passed": true,
       "details": {
         "fighter": 2,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait02_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait02_tiles.bin"
       }
     },
     {
@@ -13397,7 +13397,7 @@
       "passed": true,
       "details": {
         "fighter": 2,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait02_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait02_pal.bin"
       }
     },
     {
@@ -13662,7 +13662,7 @@
       "passed": true,
       "details": {
         "fighter": 2,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait02_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait02_tiles.bin"
       }
     },
     {
@@ -13699,7 +13699,7 @@
       "passed": true,
       "details": {
         "fighter": 2,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait02_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait02_pal.bin"
       }
     },
     {
@@ -18813,18 +18813,18 @@
       "check": "all three stage captures are saved",
       "passed": true,
       "details": {
-        "las-condes": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\stage-0.png",
-        "el-castillo": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\stage-1.png",
-        "la-oficina": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\stage-2.png"
+        "las-condes": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\stage-0.png",
+        "el-castillo": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\stage-1.png",
+        "la-oficina": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\stage-2.png"
       }
     },
     {
       "check": "the three stage fights render distinct native architecture plates",
       "passed": true,
       "details": {
-        "las-condes": "0386c42c5db7d02c92ff25848f21c3015b82a8e526b6cd3f87281044cf26692f",
-        "el-castillo": "dbc2ac344f2f5d7f911e26eb79f8a7f8b6ff9eae49088292a8b60527b3e4529c",
-        "la-oficina": "2d13de62f9de51a169198b153910872916c33ac342327f22773a4545c05fa01f"
+        "las-condes": "39619a58174025735bcc6b9a900944031ce912854b15b250b1ca0972d846b7b7",
+        "el-castillo": "cb476d9b0c6b29661bd21e78e8cb794b0ddf3bf7b9195e50883fef240f7725a9",
+        "la-oficina": "08d715ef9f52caa4ef4a16c869f2957a1ba990bc7bbc672a288abab5f2d87f62"
       }
     },
     {
@@ -19040,7 +19040,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait01_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait01_tiles.bin"
       }
     },
     {
@@ -19077,7 +19077,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait01_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait01_pal.bin"
       }
     },
     {
@@ -26304,7 +26304,7 @@
       "passed": true,
       "details": {
         "fighter": 0,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait00_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait00_tiles.bin"
       }
     },
     {
@@ -26321,7 +26321,7 @@
       "details": {
         "fighter": 0,
         "vram_word": "0x4a00",
-        "sha256": "2bd09ad23a2df08d53046ad70952e45851aa5e88695da12fc641bfb918f41cb6"
+        "sha256": "cef8bc55342eea67d30e43e52852d560e421c25e9071fe7e7a9c52e02f75de09"
       }
     },
     {
@@ -26341,7 +26341,7 @@
       "passed": true,
       "details": {
         "fighter": 0,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait00_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait00_pal.bin"
       }
     },
     {
@@ -26387,7 +26387,7 @@
           96,
           152
         ],
-        "mean_channel_delta": 0.3873046875,
+        "mean_channel_delta": 0.3529296875,
         "max_channel_delta": 2,
         "pixels_over_16": 0,
         "pixels": 5120
@@ -26747,7 +26747,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait01_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait01_tiles.bin"
       }
     },
     {
@@ -26784,7 +26784,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait01_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait01_pal.bin"
       }
     },
     {
@@ -33793,7 +33793,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait01_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait01_tiles.bin"
       }
     },
     {
@@ -33830,7 +33830,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait01_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait01_pal.bin"
       }
     },
     {
@@ -34236,7 +34236,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait01_tiles.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait01_tiles.bin"
       }
     },
     {
@@ -34273,7 +34273,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait01_pal.bin"
+        "path": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait01_pal.bin"
       }
     },
     {
@@ -35299,37 +35299,37 @@
   ],
   "captures": {
     "menus": {
-      "title": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\title.png",
+      "title": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\title.png",
       "portraits": {
-        "00": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\select-00.png",
-        "01": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\select-01.png",
-        "02": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\select-02.png",
-        "03": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\select-03.png",
-        "04": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\select-04.png",
-        "05": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\select-05.png",
-        "06": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\select-06.png",
-        "07": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\select-07.png",
-        "08": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\select-08.png",
-        "09": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\select-09.png",
-        "10": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\select-10.png",
-        "11": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\select-11.png"
+        "00": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\select-00.png",
+        "01": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\select-01.png",
+        "02": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\select-02.png",
+        "03": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\select-03.png",
+        "04": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\select-04.png",
+        "05": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\select-05.png",
+        "06": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\select-06.png",
+        "07": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\select-07.png",
+        "08": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\select-08.png",
+        "09": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\select-09.png",
+        "10": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\select-10.png",
+        "11": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\select-11.png"
       },
       "portrait_vram": {
         "00": {
-          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait00_tiles.bin",
-          "sha256": "2bd09ad23a2df08d53046ad70952e45851aa5e88695da12fc641bfb918f41cb6",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait00_tiles.bin",
+          "sha256": "cef8bc55342eea67d30e43e52852d560e421c25e9071fe7e7a9c52e02f75de09",
           "map_entry": 9376,
           "tile": 160,
           "palette": 1,
           "rendered": {
-            "mean_channel_delta": 0.3873046875,
+            "mean_channel_delta": 0.3529296875,
             "max_channel_delta": 2,
             "pixels_over_16": 0,
             "pixels": 5120
           }
         },
         "01": {
-          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait01_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait01_tiles.bin",
           "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1",
           "map_entry": 9376,
           "tile": 160,
@@ -35342,7 +35342,7 @@
           }
         },
         "02": {
-          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait02_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait02_tiles.bin",
           "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b",
           "map_entry": 9376,
           "tile": 160,
@@ -35355,7 +35355,7 @@
           }
         },
         "03": {
-          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait03_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait03_tiles.bin",
           "sha256": "61d80d1fa2da4692646a1f500dfc98d69692c0565754d3dc78b7f2d9584642e3",
           "map_entry": 9376,
           "tile": 160,
@@ -35368,7 +35368,7 @@
           }
         },
         "04": {
-          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait04_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait04_tiles.bin",
           "sha256": "24c117db9e57d66ba9eccaecd75bece46c78f0eec848a7eb6a688806227ed2fd",
           "map_entry": 9376,
           "tile": 160,
@@ -35381,7 +35381,7 @@
           }
         },
         "05": {
-          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait05_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait05_tiles.bin",
           "sha256": "c0460efc186cc285ba6aba1fdd0e7c54dc21320b2201954973d6d2c31c8ba505",
           "map_entry": 9376,
           "tile": 160,
@@ -35394,7 +35394,7 @@
           }
         },
         "06": {
-          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait06_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait06_tiles.bin",
           "sha256": "f023d0d5dd115725202ed8a527b2ec45812a7f5e7af77bf579bcec09d39a5e2f",
           "map_entry": 9376,
           "tile": 160,
@@ -35407,7 +35407,7 @@
           }
         },
         "07": {
-          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait07_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait07_tiles.bin",
           "sha256": "d83d340dffeb196c8d1a961cd85d391bad6c849b385b921eca8868eb40d86537",
           "map_entry": 9376,
           "tile": 160,
@@ -35420,7 +35420,7 @@
           }
         },
         "08": {
-          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait08_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait08_tiles.bin",
           "sha256": "be1b936d3daa590cffbc0f2cbe6f1d4c0d951d01262706eb9e9ce4c4f5fd7d89",
           "map_entry": 9376,
           "tile": 160,
@@ -35433,7 +35433,7 @@
           }
         },
         "09": {
-          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait09_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait09_tiles.bin",
           "sha256": "46ef8740ace707787e06eb45e7b60f1df5e308185b6367f5e62b0ae823122350",
           "map_entry": 9376,
           "tile": 160,
@@ -35446,7 +35446,7 @@
           }
         },
         "10": {
-          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait10_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait10_tiles.bin",
           "sha256": "91f53180fc9e25e5633ec62a380b62c7b90072213718a1a3b079b59c6d24a9e6",
           "map_entry": 9376,
           "tile": 160,
@@ -35459,7 +35459,7 @@
           }
         },
         "11": {
-          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait11_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait11_tiles.bin",
           "sha256": "523beee6bbce840def42286687dde5c22d5a6c9720e365f510e65687beebbbbd",
           "map_entry": 9376,
           "tile": 160,
@@ -35480,7 +35480,7 @@
             44,
             92
           ],
-          "mean_channel_delta": 2.283333333333333,
+          "mean_channel_delta": 2.2973958333333333,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -35492,7 +35492,7 @@
             84,
             92
           ],
-          "mean_channel_delta": 1.9375,
+          "mean_channel_delta": 1.81640625,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -35504,7 +35504,7 @@
             124,
             92
           ],
-          "mean_channel_delta": 1.8828125,
+          "mean_channel_delta": 1.9856770833333333,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -35516,7 +35516,7 @@
             164,
             92
           ],
-          "mean_channel_delta": 2.689583333333333,
+          "mean_channel_delta": 2.98515625,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -35528,7 +35528,7 @@
             44,
             140
           ],
-          "mean_channel_delta": 2.55546875,
+          "mean_channel_delta": 2.621354166666667,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -35540,7 +35540,7 @@
             84,
             140
           ],
-          "mean_channel_delta": 2.0765625,
+          "mean_channel_delta": 2.52265625,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -35552,7 +35552,7 @@
             124,
             140
           ],
-          "mean_channel_delta": 2.0395833333333333,
+          "mean_channel_delta": 2.1453125,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -35564,7 +35564,7 @@
             164,
             140
           ],
-          "mean_channel_delta": 2.140885416666667,
+          "mean_channel_delta": 2.1338541666666666,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -35576,7 +35576,7 @@
             44,
             188
           ],
-          "mean_channel_delta": 2.0536458333333334,
+          "mean_channel_delta": 2.3091145833333333,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -35588,7 +35588,7 @@
             84,
             188
           ],
-          "mean_channel_delta": 1.8770833333333334,
+          "mean_channel_delta": 2.13046875,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -35600,7 +35600,7 @@
             124,
             188
           ],
-          "mean_channel_delta": 2.2432291666666666,
+          "mean_channel_delta": 2.27265625,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -35612,16 +35612,16 @@
             164,
             188
           ],
-          "mean_channel_delta": 2.027083333333333,
+          "mean_channel_delta": 2.099739583333333,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
         }
       },
       "arena_select": {
-        "las-condes": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\arena-0.png",
-        "el-castillo": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\arena-1.png",
-        "la-oficina": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\arena-2.png"
+        "las-condes": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\arena-0.png",
+        "el-castillo": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\arena-1.png",
+        "la-oficina": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\arena-2.png"
       },
       "arena_digests": [
         "7f807842d29b810c21394813782c0c14753d3f0cbfd8f4c223147b7c2d9e37b6",
@@ -35835,7 +35835,7 @@
           "wake_jump2": 85
         },
         "portrait": {
-          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait10_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait10_tiles.bin",
           "sha256": "91f53180fc9e25e5633ec62a380b62c7b90072213718a1a3b079b59c6d24a9e6",
           "map_entry": 9376,
           "tile": 160,
@@ -35847,7 +35847,7 @@
             "pixels": 5120
           }
         },
-        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\training-dummy.png"
+        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\training-dummy.png"
       },
       "mirror": {
         "state": {
@@ -35967,7 +35967,7 @@
           "wake_jump2": 85
         },
         "portrait": {
-          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait02_tiles.bin",
+          "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait02_tiles.bin",
           "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b",
           "map_entry": 9376,
           "tile": 160,
@@ -35979,10 +35979,10 @@
             "pixels": 5120
           }
         },
-        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\training-mirror.png"
+        "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\training-mirror.png"
       },
       "back_portrait": {
-        "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait02_tiles.bin",
+        "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait02_tiles.bin",
         "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b",
         "map_entry": 9376,
         "tile": 160,
@@ -35996,9 +35996,9 @@
       }
     },
     "stages": {
-      "las-condes": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\stage-0.png",
-      "el-castillo": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\stage-1.png",
-      "la-oficina": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\stage-2.png"
+      "las-condes": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\stage-0.png",
+      "el-castillo": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\stage-1.png",
+      "la-oficina": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\stage-2.png"
     },
     "result": {
       "wins1": 2,
@@ -37314,19 +37314,19 @@
         ]
       },
       "portrait": {
-        "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait00_tiles.bin",
-        "sha256": "2bd09ad23a2df08d53046ad70952e45851aa5e88695da12fc641bfb918f41cb6",
+        "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait00_tiles.bin",
+        "sha256": "cef8bc55342eea67d30e43e52852d560e421c25e9071fe7e7a9c52e02f75de09",
         "map_entry": 9376,
         "tile": 160,
         "palette": 1,
         "rendered": {
-          "mean_channel_delta": 0.3873046875,
+          "mean_channel_delta": 0.3529296875,
           "max_channel_delta": 2,
           "pixels_over_16": 0,
           "pixels": 5120
         }
       },
-      "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\result-score.png"
+      "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\result-score.png"
     },
     "result_p2": {
       "wins1": 0,
@@ -38602,7 +38602,7 @@
         ]
       },
       "portrait": {
-        "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait01_tiles.bin",
+        "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\portrait01_tiles.bin",
         "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1",
         "map_entry": 9376,
         "tile": 160,
@@ -38614,7 +38614,7 @@
           "pixels": 5120
         }
       },
-      "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\result-score-p2.png"
+      "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\result-score-p2.png"
     },
     "timeout_draw": {
       "state": {
@@ -38869,7 +38869,7 @@
           }
         ]
       },
-      "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\docs\\screenshots\\presentation\\timeout-draw.png"
+      "capture": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\docs\\screenshots\\presentation\\timeout-draw.png"
     }
   },
   "animation_artifact": {
@@ -38877,35 +38877,35 @@
       {
         "fighter": 0,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter00.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter00.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
-            269,
+            270,
             311
           ],
           "source_alpha_box": [
             0,
             0,
-            269,
+            270,
             311
           ],
           "crop_box": [
-            76,
+            80,
             0,
-            215,
+            219,
             174
           ],
           "head_anchor_box": [
-            95,
+            96,
             0,
-            178,
+            185,
             50
           ],
           "head_margin_source": {
-            "left": 19,
+            "left": 16,
             "top": 0,
-            "right": 37,
+            "right": 34,
             "bottom": 124
           },
           "target_sizes": [
@@ -38964,7 +38964,7 @@
       {
         "fighter": 1,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter01.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter01.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39051,7 +39051,7 @@
       {
         "fighter": 2,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter02.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter02.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39138,7 +39138,7 @@
       {
         "fighter": 3,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter03.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter03.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39225,7 +39225,7 @@
       {
         "fighter": 4,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter04.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter04.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39312,7 +39312,7 @@
       {
         "fighter": 5,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter05.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter05.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39399,7 +39399,7 @@
       {
         "fighter": 6,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter06.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter06.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39486,7 +39486,7 @@
       {
         "fighter": 7,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter07.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter07.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39573,7 +39573,7 @@
       {
         "fighter": 8,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter08.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter08.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39660,7 +39660,7 @@
       {
         "fighter": 9,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter09.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter09.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39747,7 +39747,7 @@
       {
         "fighter": 10,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter10.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter10.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39834,7 +39834,7 @@
       {
         "fighter": 11,
         "frame_count": 64,
-        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\fighter11.png",
+        "preview": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v020-damian-likeness\\assets\\generated\\fighter11.png",
         "portrait_framing": {
           "schema": 1,
           "source_size": [
@@ -39922,5 +39922,5 @@
     "frame_count": 64
   },
   "passed": 3344,
-  "elapsed_seconds": 42.56
+  "elapsed_seconds": 11.92
 }

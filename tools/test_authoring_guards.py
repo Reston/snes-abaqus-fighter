@@ -13,6 +13,7 @@ import json
 import math
 from pathlib import Path
 import random
+import shutil
 import struct
 import sys
 import tempfile
@@ -237,6 +238,40 @@ class AuthoringGuards(unittest.TestCase):
             write_json(path, invalid)
             with self.subTest(metadata=invalid), self.assertRaises(AssertionError):
                 fighters._load_airborne_provenance(path)
+
+    def test_registered_source_version(self):
+        baseline = fighters._load_native_baseline(ROOT)
+        for fighter, slug, version in ((0, 'damian', 'v5'), (9, 'reston', 'v4'),
+                                       (11, 'lars', 'v4')):
+            directory = ROOT / f'assets/art/characters/{fighter:02}-{slug}'
+            revision = fighters._load_revision_sources(ROOT, fighter, slug, directory,
+                                                       baseline[fighter])
+            self.assertEqual(revision['new_sources']['legacy'].name, f'atlas-{version}.png')
+        directory = self.root / 'assets/art/characters/00-damian'
+        shutil.copytree(ROOT / directory.relative_to(self.root), directory)
+        path = directory / 'native-revision.json'
+        original = json.loads(path.read_text())
+        for field in ('new_sources', 'provenance_files'):
+            value = copy.deepcopy(original)
+            if field == 'new_sources':
+                target = directory / 'atlas-v4.png'
+                value[field]['legacy'] = {'file':target.relative_to(self.root).as_posix(),
+                                          'sha256':sha(target.read_bytes())}
+            else:
+                target = directory / 'likeness-v4.json'
+                value[field][0] = {'file':target.relative_to(self.root).as_posix(),
+                                   'sha256':sha(target.read_bytes())}
+            write_json(path, value)
+            registration = {**fighters.NATIVE_REVISION_REGISTRY[0],
+                            'contract_sha256':sha(path.read_bytes())}
+            with self.subTest(field=field), mock.patch.dict(fighters.NATIVE_REVISION_REGISTRY,
+                                                           {0:registration}):
+                with self.assertRaisesRegex(AssertionError, 'registered v5|same-folder likeness-v5'):
+                    fighters._load_revision_sources(self.root, 0, 'damian', directory, baseline[0])
+        registration = {**fighters.NATIVE_REVISION_REGISTRY[0], 'source_version':'v6'}
+        with mock.patch.dict(fighters.NATIVE_REVISION_REGISTRY, {0:registration}):
+            with self.assertRaisesRegex(AssertionError, 'unsupported registered source version'):
+                fighters._load_revision_sources(self.root, 0, 'damian', directory, baseline[0])
 
     def test_native_frame_and_palette_shapes(self):
         frames, palette, block, expected = self.native_fixture()

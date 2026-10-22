@@ -1,8 +1,10 @@
-# v0.19.0 human playtest guide
-<!-- candidate-version: 0.19.0; rom-sha256: 945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7 -->
+# v0.20.0 human playtest guide
+<!-- candidate-version: 0.20.0; rom-sha256: 6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501 -->
 
-Review cartridge SHA256 `945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7`.
-Read V0.19.0 on the title's lower right. Choose CPU on Training's first
+Review cartridge SHA256 `6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501`.
+Damian's revised likeness was accepted by the user after the comparison review.
+Record new gameplay observations separately from that approval.
+Read V0.20.0 on the title's lower right. Choose CPU on Training's first
 PAUSED card, then use each controller's L/R shoulders to cycle levels. Try
 holds, opposites across ports, quick reset and guide cycling. Check that
 Start/B/A/Select and Up/Down dummy selection retain priority; other dummies
@@ -17,7 +19,7 @@ examples. Test both ports and all three arenas.
 Also review A/Start menus, per-step motion help, Training mirror opponents,
 Lars's face/hair, winner cards, the champion score and title transitions.
 Actual earlier responses remain in [review-feedback.json](review-feedback.json);
-this guide records no new approval. See [RELEASE-v0.19.0.md](RELEASE-v0.19.0.md)
+the Damian v5 response is also retained there. See [RELEASE-v0.20.0.md](RELEASE-v0.20.0.md)
 for candidate verification and package status.
 
 Use the cartridge identified above for new feedback. Historical notes below
@@ -152,6 +154,7 @@ results from this guide to a later build.
 | Music and effect mix | User heard the 14-second replay: "I heard it; no issue noticed" | Full score/cue and busy-exchange listening; playback device was not specified |
 | First public-release platforms | User: "Emulators first; hardware support stays unverified" | Original hardware remains unverified future work; it is outside the selected first-release support scope |
 | Physical controllers | No equipment result recorded | Two-controller session on the intended emulator setup |
+| Damian v5 face, 2026-10-22 | User: "ok good" after photo/previous/revised comparison | Revised likeness accepted for integration; team/subject consent and public use remain separate |
 | Public names, portraits and branding | No approval recorded | Review by the people/team responsible for those uses |
 
 The [Reston feedback record](reston-likeness-report.json) and
