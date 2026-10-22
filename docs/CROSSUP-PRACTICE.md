@@ -4,7 +4,7 @@ The [offline companion](CROSSUP-PRACTICE-v0.17.0.html) shows one native moving
 example for every fighter. Choose a fighter to see their setup and the included
 keyboard controls. The clips use the v0.17.0 cartridge, SHA256
 `cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe`.
-The current-ROM companion and native clips are being regenerated for v0.17.0.
+The companion and its native clips are included in the v0.17.0 Windows package.
 
 Medium kick is **SNES A**, **P1 keyboard X**, or **P2 numpad 2**. Start with
 Damian and a stationary opponent. Jump forward and start the kick as you pass
@@ -26,7 +26,7 @@ readability, timing, fairness and overall fighting feel.
 
 ## Native evidence
 
-[Practice proof](crossup-practice-v0.17.0.json) covers 72 controller cases:
+[Practice proof](crossup-practice-v0.17.0.json) passes 72 controller cases:
 twelve fighters, both attacking ports and all three arenas. Each case checks
 an actual rear airborne medium-kick hit, locked takeoff facing, five frozen
 hitstop ticks, away-directed hurt/body push, native telemetry cadence, landing

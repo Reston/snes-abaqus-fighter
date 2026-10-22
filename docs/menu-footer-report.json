@@ -21,13 +21,13 @@
     "test_presentation.py": "bb314a4d25b4c7b8e240aff3fb7522d36d7fbcb6737e89828f5cf2ec4140373c",
     "emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
     "test_champion.py": "568032b339032bc19c0ecaafa1a4b097de54bbe22c4fa4f8e67d6d6aabc0385e",
-    "preservation.py": "9b504da0573940aa6db6989d9e73c6f40e2870763b6e19dfcae3dd3adf676c2b"
+    "preservation.py": "c4d71439e1dc362a52dcba46d42ecaac3d90a49f756720e391522ee48f1e1339"
   },
   "core_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
-  "rom_sha256": "feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd",
-  "header_checksum": "FA49",
+  "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
+  "header_checksum": "5EAF",
   "asset_preservation": {
-    "baseline_ref": "e9d4313af3fff74ca9857f8a6fb0d704464fac8f",
+    "baseline_ref": "0971895",
     "generated_files": 219,
     "identical_generated_files": 219,
     "files": {
@@ -1134,7 +1134,7 @@
     }
   },
   "native_preservation": {
-    "baseline_rom_sha256": "2c447156b7c1f12d94e1c76dde3423928ad026933076c952806abda7d6281d44",
+    "baseline_rom_sha256": "feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd",
     "roster_states": 60,
     "arena_states": 9,
     "pixel_difference_above_footer": 0,
@@ -54613,5 +54613,5 @@
       }
     }
   ],
-  "elapsed_seconds": 107.734
+  "elapsed_seconds": 130.188
 }

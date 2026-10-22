@@ -5,10 +5,11 @@ The active public-release target and evidence gates are in
 the release gates decide when the public candidate is actually ready.
 
 The active source candidate is **v0.17.0**, adding opt-in CPU Training using
-the existing home difficulty, health recovery and quick reset. Current-ROM
-technical gates are running. The latest verified offline package is v0.16.0,
-with 35,147 native checks and 8,729 package audit checks. See [the current
-release note](RELEASE-v0.17.0.md) for candidate identity and gate status.
+the existing home difficulty, health recovery and quick reset. All six native
+suites pass 35,506 current-ROM checks. Matching extended combat, three live
+hours including CPU Training, and the fresh-source rebuild pass. Two final
+Windows packages are identical; the archive passes 9,097 technical audit
+checks. See [the current release note](RELEASE-v0.17.0.md) for candidate identity.
 Human/public-use approvals remain open.
 
 Delivered since v0.10 are the corrected Lars portrait/location previews and

@@ -2,7 +2,7 @@
 <!-- candidate-version: 0.17.0; rom-sha256: cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe -->
 
 The current candidate is v0.17.0, cartridge SHA256
-`cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe`. Current-ROM smoke and bounded independent-combat checks are running.
+`cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe`. The pinned smoke and 48-by-600-frame independent combat run both pass on this ROM.
 The [release note](RELEASE-v0.17.0.md) records status. The verified v0.16.0
 evidence remains historical, on ROM `feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd`.
 The fifth Training choice reuses the existing opponent AI; the independent

@@ -6,7 +6,12 @@ The combined v0.17.0 cartridge is SHA256
 source freeze `5fcd5cb28f4cf2453cb3310fbab0d6947d7afd9a`. It retains the original
 v0.13 champion score without changing generated audio bytes.
 The [release note](RELEASE-v0.17.0.md) records full candidate status.
-Current-ROM focused capture evidence is being regenerated.
+Current-ROM focused evidence passes 1,792 capture-only checks.
+The victory capture spans 72.580462 seconds, peak 2366/32,768,
+RMS 387.9975, no clipped samples and longest near-zero interval
+0.114451 seconds. Its native repeat spans
+34.900375 seconds; amplitude/zero-crossing
+correlations are 0.999423/0.979644.
 
 ## Composition and source
 

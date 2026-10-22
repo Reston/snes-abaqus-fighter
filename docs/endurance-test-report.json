@@ -1,7 +1,7 @@
 {
   "suite": "endurance",
   "status": "passed",
-  "rom_sha256": "feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd",
+  "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
   "rom_bytes": 4194304,
   "target_live_frames_per_mode": 216356,
   "native_fps": 60.098811862348406,
@@ -33,7 +33,7 @@
     "worker_video_fps_match": true,
     "video_fps_epsilon": 1e-06
   },
-  "harness_sha256": "3bd936a48eef8ba8baecab05dba33fdf5f3491bd1aa6eeaf89bd471c98744621",
+  "harness_sha256": "2f1401622abd5780319595c05190257808b7661fc78c9ee7187e61fb97c7354d",
   "core": {
     "archive": ".tools\\core.zip",
     "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
@@ -52,7 +52,8 @@
       "coverage_required": true,
       "live_frames": 216356,
       "live_segments": 294,
-      "elapsed_seconds": 465.5,
+      "training_cpu_live_frames": 0,
+      "elapsed_seconds": 764.531,
       "rosters": [
         {
           "fighter1": 0,
@@ -194,11 +195,11 @@
       ],
       "audio_samples": 162282795,
       "audio_nonzero_batches": 2198,
-      "audio_peak_sampled": 3688,
+      "audio_peak_sampled": 3526,
       "trace_magic_samples": 304119,
       "video_fps": 60.098811862348406,
       "audio_sample_rate": 32040.0,
-      "rom_sha256": "feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd",
+      "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
       "benchmark": false,
       "core_frames_including_boot": 304401,
       "core": {
@@ -224,7 +225,8 @@
       "coverage_required": true,
       "live_frames": 216356,
       "live_segments": 225,
-      "elapsed_seconds": 277.0,
+      "training_cpu_live_frames": 0,
+      "elapsed_seconds": 921.437,
       "rosters": [
         {
           "fighter1": 3,
@@ -418,12 +420,12 @@
         224
       ],
       "audio_samples": 151235441,
-      "audio_nonzero_batches": 2021,
-      "audio_peak_sampled": 3735,
+      "audio_nonzero_batches": 2020,
+      "audio_peak_sampled": 3831,
       "trace_magic_samples": 283244,
       "video_fps": 60.098811862348406,
       "audio_sample_rate": 32040.0,
-      "rom_sha256": "feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd",
+      "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
       "benchmark": false,
       "core_frames_including_boot": 283679,
       "core": {
@@ -444,12 +446,13 @@
       "mode": 2,
       "mode_name": "training",
       "status": "passed",
-      "frames": 219173,
+      "frames": 220942,
       "target_live_frames": 216356,
       "coverage_required": true,
-      "live_frames": 216356,
-      "live_segments": 10,
-      "elapsed_seconds": 492.344,
+      "live_frames": 216411,
+      "live_segments": 28,
+      "training_cpu_live_frames": 216356,
+      "elapsed_seconds": 826.25,
       "rosters": [
         {
           "fighter1": 6,
@@ -459,19 +462,55 @@
         },
         {
           "fighter1": 8,
-          "fighter2": 11,
+          "fighter2": 8,
           "stage": 0,
           "route": "pause-b-select"
         },
         {
           "fighter1": 10,
-          "fighter2": 1,
+          "fighter2": 9,
           "stage": 1,
           "route": "pause-b-select"
         },
         {
           "fighter1": 0,
+          "fighter2": 10,
+          "stage": 2,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 2,
+          "fighter2": 11,
+          "stage": 0,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 4,
+          "fighter2": 0,
+          "stage": 1,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 6,
+          "fighter2": 1,
+          "stage": 2,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 8,
+          "fighter2": 2,
+          "stage": 0,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 10,
           "fighter2": 3,
+          "stage": 1,
+          "route": "pause-b-select"
+        },
+        {
+          "fighter1": 0,
+          "fighter2": 4,
           "stage": 2,
           "route": "pause-b-select"
         },
@@ -483,32 +522,20 @@
         },
         {
           "fighter1": 4,
-          "fighter2": 7,
+          "fighter2": 6,
           "stage": 1,
           "route": "pause-b-select"
         },
         {
           "fighter1": 6,
-          "fighter2": 9,
+          "fighter2": 7,
           "stage": 2,
           "route": "pause-b-select"
         },
         {
           "fighter1": 8,
-          "fighter2": 11,
+          "fighter2": 8,
           "stage": 0,
-          "route": "pause-b-select"
-        },
-        {
-          "fighter1": 10,
-          "fighter2": 1,
-          "stage": 1,
-          "route": "pause-b-select"
-        },
-        {
-          "fighter1": 0,
-          "fighter2": 3,
-          "stage": 2,
           "route": "pause-b-select"
         }
       ],
@@ -518,24 +545,24 @@
         2
       ],
       "events": {
-        "attack": 123628,
-        "air": 67833,
-        "throw": 11367,
-        "guard": 30258,
-        "special": 142,
-        "wake": 16702,
-        "down": 70120,
+        "attack": 162542,
+        "air": 105469,
+        "throw": 35481,
+        "guard": 22587,
+        "special": 876,
+        "wake": 23516,
+        "down": 110703,
         "round_change": 0,
         "result": 0,
-        "pause": 9,
+        "pause": 27,
         "reset": 26,
         "result_continue": 0,
         "arcade_ladder": 0,
         "champion": 0,
         "champion_restart": 0,
-        "menu_roster": 9,
-        "real_contact": 3310,
-        "damage": 3439
+        "menu_roster": 13,
+        "real_contact": 3424,
+        "damage": 3654
       },
       "required_coverage": {
         "attack": true,
@@ -550,97 +577,99 @@
         "six_normal_actions": true,
         "real_damage": true,
         "menu_roster": true,
-        "training_reset": true
+        "training_reset": true,
+        "training_cpu_hour": true,
+        "training_cpu_roster": true
       },
       "normal_action_starts": {
-        "1": 1507,
-        "2": 941,
-        "3": 858,
-        "4": 255,
-        "5": 83,
-        "6": 441
+        "1": 1122,
+        "2": 832,
+        "3": 1525,
+        "4": 531,
+        "5": 376,
+        "6": 572
       },
-      "live_fraction": 0.987147,
+      "live_fraction": 0.979492,
       "native_frame_wraps": 3,
       "ambient_clock_wraps": 0,
-      "lag_frame_counter_last": 329,
+      "lag_frame_counter_last": 447,
       "lag_frame_counter_wraps": 0,
-      "lag_frame_counter_increments": 284,
+      "lag_frame_counter_increments": 402,
       "stable_fight_lag_increments": 0,
-      "nonfight_lag_increments": 284,
+      "nonfight_lag_increments": 402,
       "cadence_failures": [],
       "native_timing_failures": [],
       "ambient_failures": [],
       "ppu_overflow_frames": [],
       "max_spc_backlog": 6,
-      "spc_backlog_nonzero_samples": 38,
-      "spc_drain_events": 36,
-      "spc_drain_bytes": 108,
+      "spc_backlog_nonzero_samples": 54,
+      "spc_drain_events": 52,
+      "spc_drain_bytes": 156,
       "max_spc_growth_streak": 1,
       "max_spc_stable_nonzero_streak": 0,
       "max_spc_no_audio_streak": 1,
       "spc_fifo_failures": [],
-      "spc_fread": 79,
-      "spc_fwrite": 79,
-      "spc_read_advance_bytes": 26643,
-      "spc_write_advance_bytes": 26643,
-      "spc_read_pointer_wraps": 104,
-      "spc_write_pointer_wraps": 104,
+      "spc_fread": 234,
+      "spc_fwrite": 234,
+      "spc_read_advance_bytes": 37038,
+      "spc_write_advance_bytes": 37038,
+      "spc_read_pointer_wraps": 144,
+      "spc_write_pointer_wraps": 144,
       "spc_fifo_thresholds": {
         "max_backlog": 32,
         "max_growth_streak": 8,
         "max_stable_no_audio_streak": 120
       },
-      "snes_vblank_count_last": 23032,
+      "snes_vblank_count_last": 24801,
       "snes_vblank_counter_wraps": 3,
-      "vblank_flag_samples": 218889,
+      "vblank_flag_samples": 220540,
       "native_screen_final": 3,
-      "native_screen_mismatch_samples": 257,
-      "native_screen_mismatch_segments": 27,
+      "native_screen_mismatch_samples": 369,
+      "native_screen_mismatch_segments": 39,
       "max_native_screen_mismatch_streak": 14,
       "input_counts": {
-        "right": 170457,
-        "r": 9700,
-        "left": 137336,
-        "down": 122128,
-        "x": 101656,
-        "up": 19561,
-        "y": 22346,
-        "l": 19835,
-        "b": 16289,
-        "a": 3221,
-        "select": 78,
-        "start": 27
+        "start": 123,
+        "up": 18455,
+        "right": 162027,
+        "x": 91388,
+        "left": 138969,
+        "down": 111352,
+        "y": 20660,
+        "l": 15770,
+        "b": 14639,
+        "a": 3017,
+        "r": 9119,
+        "select": 78
       },
-      "max_nonfight_streak": 313,
+      "max_nonfight_streak": 334,
       "max_down_tick": 33,
       "max_down_state_duration": [
-        0,
+        82,
         82
       ],
       "max_pending_throw_damage": 29,
-      "wake_buffer_handoffs": 0,
+      "wake_buffer_handoffs": 48,
       "max_oam_visible_actor_pieces": 30,
       "max_oam_sprites": 30,
       "position_bounds": {
         "min": 384,
         "max": 3712
       },
-      "video_samples": 1831,
-      "video_nonblank_samples": 1830,
+      "video_samples": 1846,
+      "video_nonblank_samples": 1843,
       "video_geometry": [
         256,
         224
       ],
-      "audio_samples": 117095907,
-      "audio_nonzero_batches": 1568,
-      "audio_peak_sampled": 3669,
-      "trace_magic_samples": 219173,
+      "audio_samples": 118039000,
+      "audio_nonzero_batches": 1609,
+      "audio_peak_sampled": 3975,
+      "trace_magic_samples": 220942,
       "video_fps": 60.098811862348406,
       "audio_sample_rate": 32040.0,
-      "rom_sha256": "feb73416224a7bbe6317f0c8a2b88abc403383c5017e151e1e6e2a8c3478cebd",
+      "rom_sha256": "cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe",
       "benchmark": false,
-      "core_frames_including_boot": 219642,
+      "core_frames_including_boot": 221411,
       "core": {
         "archive": ".tools\\core.zip",
         "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
@@ -659,7 +688,7 @@
   "total_frames_per_mode": {
     "0": 304119,
     "1": 283244,
-    "2": 219173
+    "2": 220942
   },
-  "elapsed_seconds": 492.734
+  "elapsed_seconds": 922.047
 }

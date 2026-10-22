@@ -19,8 +19,13 @@ Preserve the native emulator requirement when extending the project.
   pointer locally. Hit/update/animation paths avoid repeated reads and an
   empty-link call. HP recovery conditions remain. Its full live hour must
   cover every CPU.
-  Current-ROM gates are being regenerated. The last verified Windows package
-  remains v0.16.0. Human gameplay/balance, listening, controllers, likeness/
+  All six native suites pass 35,506 exact-ROM checks. Matching smoke, matrix/
+  replays, independent combat and three native live-hour sessions pass. Training
+  completes 216,356 live CPU frames. Fresh export reproduces the ROM, 219
+  assets and normalized symbols in 498.672 seconds. The Windows archive passes
+  9,097 technical audit checks. Two final packages are identical:
+  22,898,131 bytes, SHA256 `f27fdb76051b3a13f742b5959cd4ea2e43db4a934c66260894a8e30db5a9a4a3`.
+  Native CPU Training card/clip, anti-air clips and all-roster practice are bundled. Human gameplay/balance, listening, controllers, likeness/
   consent and public-use gates remain open; public_release_certified is false.
   See docs/RELEASE-v0.17.0.md.
 

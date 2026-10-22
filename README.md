@@ -15,8 +15,12 @@ Stand. All 219 generated art/audio assets and native memory contracts remain.
 CPU anti-air, cross-ups, practice help, revised Lars art and location previews
 remain available.
 
-Current-ROM verification is running; see [RELEASE-v0.17.0.md](docs/RELEASE-v0.17.0.md).
-The verified offline checkpoint remains v0.16.0 until the new gates complete.
+All six native suites pass 35,506 checks on this exact ROM. Matching smoke,
+full matchup/replays, independent combat, endurance and fresh-source gates pass.
+The [v0.17.0 release note](docs/RELEASE-v0.17.0.md) records the evidence.
+The offline Windows archive passes 9,097 technical audit checks. Two
+consecutive final packages are identical: 22,898,131 bytes, SHA256
+`f27fdb76051b3a13f742b5959cd4ea2e43db4a934c66260894a8e30db5a9a4a3`.
 Human gameplay/balance, listening, controllers, likeness/consent and public-use
 review remain open.
 
@@ -26,7 +30,7 @@ On Windows, run **[Play.cmd](Play.cmd)** from the source checkout. The launcher
 prepares the pinned official Snes9x tools in `.tools/` on first use and opens
 the cartridge. No administrator account or global installation is needed.
 
-For offline play, extract the whole [v0.16.0 Windows ZIP](dist/Abaqus-After-Hours-v0.16.0-Windows.zip) and run its included
+For offline play, extract the whole [v0.17.0 Windows ZIP](dist/Abaqus-After-Hours-v0.17.0-Windows.zip) and run its included
 `Play.cmd`. Its `manifest.json` and `RELEASE.md` identify the actual cartridge
 and verification scope. Older archives contain their own historical versions.
 

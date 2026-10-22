@@ -68,7 +68,7 @@ and [assembly](../assets/generated/data.asm). The [current preservation report](
 compares the complete 219-file generated set with verified v0.16.0 commit
 `0971895da72bf7cdde40571a920b7f9c156d34f0`: all 219 generated files are
 preserved, with no additions or modifications. The two protected hardware/trace
-assembly files are also unchanged. Current-ROM route proofs are being regenerated.
+assembly files are also unchanged. All three current-ROM controller-only route proofs pass.
 [Champion preservation](champion-preservation-report.json) carries the same
 current-ROM comparison for the focused package gate.
 
