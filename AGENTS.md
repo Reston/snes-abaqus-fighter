@@ -24,7 +24,7 @@ Preserve the native emulator requirement when extending the project.
   completes 216,356 live CPU frames. Fresh export reproduces the ROM, 219
   assets and normalized symbols in 498.672 seconds. The Windows archive passes
   9,097 technical audit checks. Two final packages are identical:
-  22,898,131 bytes, SHA256 `f27fdb76051b3a13f742b5959cd4ea2e43db4a934c66260894a8e30db5a9a4a3`.
+  22,899,854 bytes, SHA256 `1955e7c735978943f7ca409dff9bf1f853012490e502b60a51c9fe47eb211213`.
   Native CPU Training card/clip, anti-air clips and all-roster practice are bundled. Human gameplay/balance, listening, controllers, likeness/
   consent and public-use gates remain open; public_release_certified is false.
   See docs/RELEASE-v0.17.0.md.

@@ -19,8 +19,8 @@ All six native suites pass 35,506 checks on this exact ROM. Matching smoke,
 full matchup/replays, independent combat, endurance and fresh-source gates pass.
 The [v0.17.0 release note](docs/RELEASE-v0.17.0.md) records the evidence.
 The offline Windows archive passes 9,097 technical audit checks. Two
-consecutive final packages are identical: 22,898,131 bytes, SHA256
-`f27fdb76051b3a13f742b5959cd4ea2e43db4a934c66260894a8e30db5a9a4a3`.
+consecutive final packages are identical: 22,899,854 bytes, SHA256
+`1955e7c735978943f7ca409dff9bf1f853012490e502b60a51c9fe47eb211213`.
 Human gameplay/balance, listening, controllers, likeness/consent and public-use
 review remain open.
 

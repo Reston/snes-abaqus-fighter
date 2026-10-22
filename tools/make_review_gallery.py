@@ -68,9 +68,24 @@ button[aria-pressed="true"]{background:var(--primary,#1c376b);color:var(--primar
 .screen{margin:0;padding:16px;border:1px solid var(--border,#d6deeb);border-radius:var(--radius,10px);background:var(--card,#f7f9fd);color:var(--card-foreground,#17213a)}
 .screen[hidden]{display:none}h3{font-size:15px;margin:0 0 12px}img{display:block;width:256px;height:auto;max-width:100%;margin:0 auto 12px;image-rendering:pixelated}.zoom img{width:512px}figcaption{font-size:13px;min-height:38px}
 details{margin-top:18px}summary{cursor:pointer}code{font:11px/1.5 var(--font-mono,monospace);overflow-wrap:anywhere}details p{margin-top:8px}.status{margin-top:14px;font-size:12px}
+.feedback{padding:14px 0 0;max-width:660px}.feedback label{display:block;margin:0 0 6px;white-space:normal;cursor:default}.feedback input,.feedback select,.feedback textarea{display:block;width:100%;margin:0 0 14px;padding:9px;border:1px solid var(--border,#cad2e1);border-radius:var(--radius,8px);background:var(--card,#fff);color:inherit;font:inherit}.feedback textarea{min-height:110px;resize:vertical}.feedback .fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.feedback .hint{font-size:12px}.feedback [role="status"]{margin:10px 0 0}@media(max-width:440px){.feedback .fields{grid-template-columns:1fr;gap:0}}
 </style></head><body><main><h2>vVERSION native review</h2><p class="muted">Frames from the actual SNES cartridge. Switch views or enlarge the pixels.</p>
 <div class="controls" aria-label="Gallery controls"><button data-view="results" aria-pressed="true">Results</button><button data-view="menus" aria-pressed="false">Art &amp; menus</button><button data-view="all" aria-pressed="false">All screens</button><label><input id="zoom" type="checkbox"> 2× view</label></div>
 <div class="gallery">CARDS</div><details><summary>Build details</summary><p>Native resolution: 256 × 224. Verified native checks: TOTAL.<br>ROM SHA256: <code>ROM_SHA</code></p><p class="muted">Snapshots support presentation review. Human gameplay, full listening, physical-controller, likeness/consent and team/public-use review remain open. Original hardware support is unverified.</p></details>
+<details id="feedback-panel"><summary>Record playtest feedback</summary>
+<form class="feedback" id="feedback-form">
+<p>After playing, save what you noticed together with this cartridge's version. The JSON file stays on your computer; share it when you report the issue.</p>
+<div class="fields"><div><label for="feedback-mode">Where were you?</label>
+<select id="feedback-mode"><option value="">Choose a mode (optional)</option><option>Arcade Shift</option><option>Local Versus</option><option>Training</option><option>Menus</option></select></div>
+<div><label for="feedback-area">What are you reviewing?</label>
+<select id="feedback-area"><option>Gameplay</option><option>Art and likeness</option><option>Menus and pause</option><option>Audio</option><option>Controller</option><option>Getting started</option></select></div></div>
+<label for="feedback-context">Fighters, stage or move (optional)</label>
+<input id="feedback-context" maxlength="300" placeholder="For example: Lars vs Damian, La Oficina, medium kick">
+<label for="feedback-note">What happened?</label>
+<textarea id="feedback-note" required maxlength="4000" placeholder="Describe what felt right or wrong, and how to repeat it."></textarea>
+<p class="hint muted">Include what you expected and what you saw. You can also record what worked well.</p>
+<button type="submit">Save feedback JSON</button><p id="feedback-status" role="status"></p>
+</form></details>
 <p class="status muted">Abaqus: After Hours · vVERSION technical review candidate</p></main>
 <script>
 const gallery=document.querySelector('.gallery'),cards=[...document.querySelectorAll('.screen')],buttons=[...document.querySelectorAll('[data-view]')];
@@ -96,6 +111,17 @@ function show(view){
   }).catch(error=>{if(request===viewRequest)console.error(error)});
 }
 buttons.forEach(button=>button.addEventListener('click',()=>show(button.dataset.view)));document.querySelector('#zoom').addEventListener('change',event=>gallery.classList.toggle('zoom',event.target.checked));show('results');
+const feedbackForm=document.querySelector('#feedback-form'),feedbackNote=document.querySelector('#feedback-note');
+feedbackForm.addEventListener('input',()=>{feedbackNote.setCustomValidity('');document.querySelector('#feedback-status').textContent=''});
+feedbackForm.addEventListener('submit',event=>{
+  event.preventDefault();
+  const response=feedbackNote.value.trim();
+  if(!response){feedbackNote.setCustomValidity('Write an observation before saving.');feedbackNote.reportValidity();return}
+  const recordedAt=new Date().toISOString(),record={schema:1,kind:'abaqus-human-observation',recorded_at_utc:recordedAt,version:'VERSION',rom_sha256:'ROM_SHA',mode:document.querySelector('#feedback-mode').value||null,area:document.querySelector('#feedback-area').value,context:document.querySelector('#feedback-context').value.trim()||null,response,public_release_certified:false};
+  const file=new Blob([JSON.stringify(record,null,2)+'\\n'],{type:'application/json;charset=utf-8'}),url=URL.createObjectURL(file),link=document.createElement('a');
+  link.href=url;link.download='Abaqus-feedback-vVERSION-'+recordedAt.replace(/[:.]/g,'-')+'.json';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  document.querySelector('#feedback-status').textContent='Feedback file prepared for vVERSION. Keep it with your playtest notes.';
+});
 </script></body></html>'''
 page = page.replace('VERSION', manifest['version'])
 page = page.replace('<button data-view="results" aria-pressed="true">Results</button>',

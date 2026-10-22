@@ -24,6 +24,11 @@ Narrow windows fit the image to the available space. The roster viewer's
 guide toggle hides both the floor baseline and frame overlay. Native capture
 bytes are unchanged.
 
+The offline review page also saves playtest observations as JSON with this
+version and ROM hash attached. Blank notes are rejected; optional context can
+stay empty. This is a local download and does not change recorded human
+feedback or complete any review gate.
+
 - Cartridge: 4,194,304-byte NTSC FastROM LoROM.
 - ROM SHA256: `cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe`.
 - Header checksum: `5EAF`.

@@ -24,6 +24,12 @@ motion, fighting feel, pause help, Training, presentation, audio and onboarding
 feedback. Leave unreviewed items blank or mark them unknown. A completed table
 does not establish roster consent or public-release approval.
 
+The offline `REVIEW.html` has a **Record playtest feedback** form. Choose an
+area, add the matchup or move if relevant, and describe what happened. **Save
+feedback JSON** downloads your observation with the version and ROM hash.
+Share that file with the report. It does not edit the repository's feedback
+record or complete an approval gate.
+
 ## A 20-30 minute route
 
 Use Local Versus for the two-player checks and Training for repeatable moves.

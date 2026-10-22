@@ -34,6 +34,9 @@ player/both keyboard layouts for the opponent-step-under examples.
 Its `ROSTER-REVIEW.html` offers all 64 generated frames per fighter, facing
 flips and a frame scrubber for likeness inspection. The fixed-rate sweep is
 an art review aid; actual game animation timing is reviewed in the emulator.
+After playing, open **Record playtest feedback** in `REVIEW.html` to save an
+observation as JSON. The file includes this cartridge's version and ROM hash;
+share it with your report so feedback stays attached to the build you played.
 
 In paused Training, Start has priority over Select and resumes the current
 round. A fresh P1 Select press during live Training still resets the round.
