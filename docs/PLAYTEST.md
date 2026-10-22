@@ -1,13 +1,13 @@
-# v0.11.0 human playtest guide
-<!-- candidate-version: 0.11.0; rom-sha256: 1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7 -->
+# v0.12.0 human playtest guide
+<!-- candidate-version: 0.12.0; rom-sha256: 33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83 -->
 
-Review cartridge SHA256 `1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7`.
+Review cartridge SHA256 `33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83`.
 First compare Lars's face and hair with the reference and check the wider
 location previews. Then finish a Local Versus match from each side: the
 winner's portrait, name, score and quote should agree, and A/Start should
 rematch. Check Arcade continue, next challenger and champion-to-title prompts.
 The actual earlier responses remain in [review-feedback.json](review-feedback.json);
-this guide records no new human approval. See [RELEASE-v0.11.0.md](RELEASE-v0.11.0.md)
+this guide records no new human approval. See [RELEASE-v0.12.0.md](RELEASE-v0.12.0.md)
 for candidate verification and package status.
 
 This route also covers the earlier v0.10.0 cartoon-stage and menu candidate.

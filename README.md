@@ -1,19 +1,21 @@
 # Abaqus: After Hours
-<!-- candidate-version: 0.11.0; rom-sha256: 1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7 -->
+<!-- candidate-version: 0.12.0; rom-sha256: 33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83 -->
 
 An original six-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II's arcade structure and the people and places of Abaqus in
 Santiago. The game runs as a native SNES cartridge in an emulator.
 
-The current checkout is the **v0.11.0 review candidate**, ROM SHA256
-`1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7`, checksum `7CFE`.
-It includes Lars's revised 64-frame likeness, clearer location previews and a
-winner portrait result card with truthful rematch, continue and champion
-prompts. Current verification and package status are recorded in the
-[v0.11.0 release note](docs/RELEASE-v0.11.0.md).
-All six native suites pass 33,155 checks on that ROM. The matching extended
-evidence and 7,549-check offline audit pass; consecutive packages reproduce
-the same 6,874,448-byte archive. Human review gates remain open.
+The current checkout is the **v0.12.0 review candidate**, ROM SHA256
+`33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83`, checksum `222B`.
+Training now offers any opponent or mirror match, and the eleventh Arcade
+victory earns an original Office Champion trophy scene. Lars's revised
+64-frame likeness, clearer location previews and winner cards are retained.
+All six native suites pass 33,509 checks on this ROM; the matching
+independent-engine, matchup, endurance and fresh-source gates also pass.
+The [v0.12.0 release note](docs/RELEASE-v0.12.0.md) records exact evidence and
+the known Training Start+Select issue. Its narrow fix is being verified separately.
+The offline archive passes 7,709 audit checks; consecutive builds reproduce
+the same 7,114,333-byte ZIP. Human review gates remain open.
 
 ## Play
 
@@ -21,7 +23,7 @@ On Windows, run **[Play.cmd](Play.cmd)** from the source checkout. The launcher
 prepares the pinned official Snes9x tools in `.tools/` on first use and opens
 the cartridge. No administrator account or global installation is needed.
 
-For offline play, extract the whole [v0.11.0 Windows ZIP](dist/Abaqus-After-Hours-v0.11.0-Windows.zip) and run its included
+For offline play, extract the whole [v0.12.0 Windows ZIP](dist/Abaqus-After-Hours-v0.12.0-Windows.zip) and run its included
 `Play.cmd`. Its `manifest.json` and `RELEASE.md` identify the actual cartridge
 and verification scope. The release note above identifies the latest candidate
 package when available; older archives contain their own historical versions.
@@ -51,7 +53,8 @@ fullscreen with Alt+Enter and controller mapping under Input Configuration.
 - Arcade Shift against all eleven coworkers, two-player Local Versus and Training.
 - Six normal attacks, air attacks, high/low guard, throws, throw tech, uppercuts and confirmed cancels.
 - Twelve specials across projectile, rush, low-wave and rising-strike families.
-- Pause Controls/Specials pages, four Training dummies and a live round reset.
+- Pause Controls/Specials pages, arbitrary Training opponents, four dummy behaviors and a live round reset.
+- An earned Office Champion trophy scene after all eleven Arcade victories.
 - Original tracker music and resident combat effects.
 
 Human gameplay/balance, full listening, physical-controller sessions,

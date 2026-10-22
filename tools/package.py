@@ -43,6 +43,8 @@ _MARKDOWN_LINK = re.compile(r'(!?\[[^\]]+\])\(([^)\n]+)\)')
 _EXTERNAL_LINK = re.compile(r'^(?:[A-Za-z][A-Za-z0-9+.-]*:|//)')
 OFFLINE_LINK_ALIASES = {
     ('OBJ-BUDGET.md', 'stage-test-report.json'): 'qa/stages.json',
+    ('CHAMPION-ENDING.md', '../assets/art/menu/champion-ending-v1.json'): 'qa/champion-art.json',
+    ('CHAMPION-ENDING.md', '../assets/art/menu/source-champion-v1/generation-v1.json'): 'qa/champion-generation.json',
 }
 
 
@@ -190,13 +192,28 @@ def build_package_files(root: Path = ROOT, manifest: Mapping | None = None) -> d
         'STAGE-CARTOON-v2.md': root / 'docs/STAGE-CARTOON-v2.md',
         'cartoon-preservation-report.json':
             root / 'docs/cartoon-preservation-report.json',
-        # The current v0.11 note is selected dynamically.  Keep the
+        # The current candidate note is selected dynamically. Keep the
         # v0.10.1 art/polish note and its reports as historical context.
         'RELEASE.md': root / f'docs/RELEASE-v{version}.md',
         f'RELEASE-v{version}.md': root / f'docs/RELEASE-v{version}.md',
         f'preservation-v{version}.json': root / f'docs/preservation-v{version}.json',
         f'verification-v{version}.json': root / f'docs/verification-v{version}.json',
         'REVIEW.html': root / f'docs/REVIEW-v{version}.html',
+        'CHAMPION-ENDING.md': root / 'docs/CHAMPION-ENDING.md',
+        'champion-preservation-report.json': root / 'docs/champion-preservation-report.json',
+        'champion-native-budget.json': root / 'docs/champion-native-budget.json',
+        'champion-ending-report.json': root / 'docs/champion-ending-report.json',
+        'champion-ending-start-report.json': root / 'docs/champion-ending-start-report.json',
+        'champion-ending-back-report.json': root / 'docs/champion-ending-back-report.json',
+        'qa/champion-art.json': root / 'assets/art/menu/champion-ending-v1.json',
+        'qa/champion-generation.json': root / 'assets/art/menu/source-champion-v1/generation-v1.json',
+        'screenshots/champion/ending.png': root / 'docs/screenshots/champion/ending.png',
+        'screenshots/champion/arcade-result.png': root / 'docs/screenshots/champion/arcade-result.png',
+        'screenshots/champion/exit-a.png': root / 'docs/screenshots/champion/exit-a.png',
+        'screenshots/champion/exit-start.png': root / 'docs/screenshots/champion/exit-start.png',
+        'screenshots/champion/exit-b.png': root / 'docs/screenshots/champion/exit-b.png',
+        'screenshots/presentation/training-dummy.png': root / 'docs/screenshots/presentation/training-dummy.png',
+        'screenshots/presentation/training-mirror.png': root / 'docs/screenshots/presentation/training-mirror.png',
         'POLISH-v0.10.1.md': root / 'docs/POLISH-v0.10.1.md',
         'polish-test-summary.json': root / 'docs/polish-test-summary.json',
         'polish-preservation-report.json':
@@ -223,6 +240,13 @@ def qa_readme_bytes() -> bytes:
         'checkout and to captures that are not bundled in this offline '
         'archive. Source-only documentation links are labeled explicitly so '
         'they are not mistaken for package files.\n\n'
+        'Champion capture paths recorded as docs/screenshots/champion/... '
+        'are bundled under screenshots/champion/...; remove the leading '
+        'docs/ to locate those PNGs. The Markdown champion guide links them '
+        'directly in the archive.\n\n'
+        'The two Training selection captures are likewise bundled under '
+        'screenshots/presentation/; their report paths retain the source '
+        'docs/ prefix. REVIEW.html embeds both views.\n\n'
         'qa/character-manifest.json carries the source art provenance '
         'manifest used by the native export.\n'
     ).encode('utf-8')
@@ -373,10 +397,129 @@ def validate_candidate_docs(files: Mapping[str, Path], manifest: Mapping) -> Non
     """Keep the current guides bound to the candidate, before release checks."""
     marker = (f"<!-- candidate-version: {manifest['version']}; "
               f"rom-sha256: {manifest['sha256']} -->")
-    for name in ('README.md', 'RELEASE.md', 'COMPATIBILITY.md', 'PUBLIC-RELEASE.md'):
+    names = ['README.md', 'RELEASE.md', 'COMPATIBILITY.md', 'PUBLIC-RELEASE.md']
+    if 'CHAMPION-ENDING.md' in files:
+        names.append('CHAMPION-ENDING.md')
+    for name in names:
         text = files[name].read_text(encoding='utf-8')
         require(marker in text.splitlines()[:5],
                 f'Current candidate identity is missing or stale in {name}', marker)
+
+
+def validate_champion_provenance(root: Path = ROOT) -> None:
+    """Check the art record's claims against retained source files and encoder."""
+    from PIL import Image
+    import champion_assets as champion
+    record = read_json(root / champion.PROVENANCE, 'champion art provenance')
+    generation = read_json(root / champion.PROMPT, 'champion exact generation record')
+    expected = {
+        'asset': champion.MASTER, 'version': 'v1', 'mode': 'built-in imagegen',
+        'raw_output_path': champion.RAW,
+        'raw_output_sha256': champion.RAW_SHA256,
+        'exact_generation_record': champion.PROMPT,
+        'generation_record_sha256': champion.text_sha256(root / champion.PROMPT),
+        'transparent_background': False, 'prompt': generation['prompt'],
+    }
+    for field, value in expected.items():
+        require(record.get(field) == value, 'Champion provenance mismatch: ' + field)
+    with Image.open(root / champion.MASTER) as source:
+        selected = {'path': champion.MASTER, 'sha256': sha256_file(root / champion.MASTER),
+                    'size': list(source.size), 'mode': source.mode,
+                    'colors': len(source.getcolors(1024 * 896) or [])}
+    require(record.get('selected_final') == selected,
+            'Champion selected-master metadata differs from the actual image')
+    processing = record.get('processing', {})
+    for field, value in {
+        'source_size': [1340, 1174], 'center_aspect_crop_xyxy': list(champion.CROP),
+        'cropped_size': [1336, 1169], 'aspect': '8:7',
+        'native_size': [256, 224], 'native_resampling': 'nearest-neighbor',
+        'master_size': [1024, 896], 'master_upscale': '4x nearest-neighbor',
+        'palette': 'Pillow MEDIANCUT, 90 colors, no dithering', 'semantic_edits': False,
+        'navy_palette_cleanup': {'rgb': [17, 26, 61], 'max_channel_distance': 12,
+             'operation': 'collapse near-identical navy colors globally before quantization'},
+    }.items():
+        require(processing.get(field) == value,
+                'Champion processing metadata mismatch: ' + field)
+    # The encoder also verifies the pinned raw bytes and exact master grid.
+    champion.load_champion(root)
+
+
+def validate_champion_route(report: Mapping, rom_sha: str, key: str, screen: int) -> None:
+    require(report.get('status') == 'passed' and report.get('rom_sha256') == rom_sha,
+            'Champion route evidence is stale or incomplete', key)
+    require(report.get('exit', {}).get('key') == key and
+            report.get('exit', {}).get('screen') == screen,
+            'Champion route does not prove the advertised destination', key)
+    for field, expected in {'controller_only': True, 'headless': True,
+                           'memory_writes': False, 'save_states': False,
+                           'audio_device_opened': False}.items():
+        require(report.get(field) is expected, 'Champion route contract: ' + field, key)
+    host = report.get('host_contract', {})
+    require(host.get('gui_opened') is False and host.get('audio_device_opened') is False,
+            'Champion host must remain headless and silent', key)
+    state = report.get('champion_state', {})
+    require(state.get('mode') == 0 and state.get('champion') == 1 and
+            state.get('arcade') == 10 and state.get('wins1') == 2,
+            'Champion route must reach the earned Arcade ending', key)
+    ladder = report.get('ladder', [])
+    require(isinstance(ladder, list) and len(ladder) == 11,
+            'Champion route must defeat eleven opponents', key)
+    require({row.get('opponent') for row in ladder} == set(range(12)) - {state.get('fighter_id1')},
+            'Champion route must defeat every other fighter exactly once', key)
+    for index, row in enumerate(ladder):
+        attempts = row.get('attempts', [])
+        require(row.get('arena') == index % 3 and attempts and attempts[-1].get('wins1') == 2,
+                'Champion ladder must retain actual stage order and victories', (key, index))
+
+
+def champion_native_budget(root: Path, manifest: Mapping) -> dict:
+    """Locate each static champion block in the linked cartridge, not prose."""
+    symbols = (root / 'dist/abaqus-after-hours.sym').read_text()
+    rom = (root / 'dist/abaqus-after-hours.sfc').read_bytes()
+    blocks = []
+    for label in ('champion_tiles', 'champion_map', 'champion_pal'):
+        match = re.search(r'^([0-9a-fA-F]{8})\s+' + label + r'\s*$', symbols, re.M)
+        require(match is not None, 'Missing native champion symbol', label)
+        address = int(match.group(1), 16)
+        bank, start = address >> 16, address & 0xffff
+        data = (root / 'assets/generated' / (label + '.bin')).read_bytes()
+        require(start >= 0x8000 and start + len(data) <= 0x10000,
+                'Champion block crosses a 32 KiB LoROM bank', label)
+        offset = (bank & 0x7f) * 0x8000 + start - 0x8000
+        require(rom[offset:offset + len(data)] == data,
+                'Linked champion block differs from its generated bytes', label)
+        blocks.append({'symbol':label, 'cpu_start':f'${bank:02X}:{start:04X}',
+                       'last_cpu_byte':f'${bank:02X}:{start + len(data) - 1:04X}',
+                       'rom_offset':offset, 'bytes':len(data),
+                       'sha256':sha256_bytes(data), 'fits_lorom_bank':True})
+    fresh = read_json(root / 'docs/fresh-build-test-report.json', 'native budget source identity')
+    require(fresh.get('status') == 'passed' and fresh.get('rom_sha256') == manifest['sha256'],
+            'Native budget requires the matching clean-source rebuild')
+    return {'version':manifest['version'], 'rom_sha256':manifest['sha256'],
+            'source_freeze':fresh['source_commit'], 'status':'passed', 'blocks':blocks,
+            'scope':'Linked symbol addresses, generated byte lengths and actual LoROM cartridge block bytes.'}
+
+
+def validate_champion_evidence(root: Path, manifest: Mapping) -> None:
+    validate_champion_provenance(root)
+    for suffix, key, screen in (('', 'a', 0), ('-start', 'start', 0), ('-back', 'b', 1)):
+        report = read_json(root / f'docs/champion-ending{suffix}-report.json', 'champion route')
+        validate_champion_route(report, manifest['sha256'], key, screen)
+    preserved = read_json(root / 'docs/champion-preservation-report.json', 'champion preservation')
+    require(preserved.get('status') == 'passed' and
+            preserved.get('rom_sha256') == manifest['sha256'],
+            'Champion preservation evidence is stale or incomplete')
+    for field, expected in {'generated_assets_total':218, 'existing_assets_preserved':212,
+                           'registration_files_extended':2, 'generated_assets_added':4,
+                           'native_assembly_preserved':2}.items():
+        require(preserved.get(field) == expected, 'Champion preservation count: ' + field)
+    fresh = read_json(root / 'docs/fresh-build-test-report.json', 'fresh source identity')
+    require(fresh.get('status') == 'passed' and fresh.get('rom_sha256') == manifest['sha256'] and
+            preserved.get('source_freeze') == fresh.get('source_commit'),
+            'Champion preservation source must match the isolated current-ROM rebuild')
+    require(read_json(root / 'docs/champion-native-budget.json', 'champion native budget') ==
+            champion_native_budget(root, manifest),
+            'Champion native address/budget record is stale or incomplete')
 
 
 def write_entry(package: zipfile.ZipFile, name: str, data: bytes) -> None:
@@ -399,6 +542,7 @@ def main() -> None:
     files = build_package_files(ROOT, manifest)
     preflight_package_files(files)
     validate_candidate_docs(files, manifest)
+    validate_champion_evidence(ROOT, manifest)
     pin_record = verify_gui_emulator(ROOT)
     virtual = build_virtual_entries(pin_record)
     package_names = preflight_package_files(files, virtual)

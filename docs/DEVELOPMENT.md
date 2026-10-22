@@ -1,14 +1,16 @@
 # Native SNES implementation
-<!-- candidate-version: 0.11.0; rom-sha256: 1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7 -->
+<!-- candidate-version: 0.12.0; rom-sha256: 33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83 -->
 
-The current checkout builds the v0.11.0 result-screen candidate, ROM SHA256
-`1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7`, checksum `7CFE`.
-It includes the [v0.10.1 Lars/location art pass](POLISH-v0.10.1.md) and
-reuses the existing portrait page for the match winner. The portrait is
-uploaded while the screen is blanked; the live one-actor-per-vblank budget,
-Fighter/Wave layout, trace ABI, attack timing, AI, balance and audio remain unchanged.
-The input path discards wake-only motion commands as recorded in the release note.
-See [RELEASE-v0.11.0.md](RELEASE-v0.11.0.md) for candidate evidence status.
+The current checkout builds the v0.12.0 Training/ending candidate, ROM SHA256
+`33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83`, checksum `222B`.
+Training reuses the second roster step to choose any opponent or mirror.
+The champion-only result branch loads original static trophy art during the
+existing screen-off transition. Its 330 BG1 tiles use palette banks 2..7;
+the winner portrait retains BG2 palette 1 and VRAM word `$4A00`.
+The live one-actor-per-vblank budget, Fighter/Wave layout, trace ABI, attack
+timing, AI, balance, audio and all existing binary assets remain unchanged.
+The generated set contains 218 files after adding four champion assets.
+See [RELEASE-v0.12.0.md](RELEASE-v0.12.0.md) for candidate evidence status.
 All older version sections below are historical snapshots.
 
 ## Build
@@ -16,7 +18,7 @@ All older version sections below are historical snapshots.
 Supported build host: Windows x64. `tools/setup.ps1` downloads pinned official release archives into `.tools/` and verifies their SHA256. `tools/build.py` invokes 816-tcc, 816-opt, WLA-65816 and WLALINK directly, so a separate Make/MSYS installation is unnecessary.
 
 The v0.10.0 cartoon-stage pass is the historical packaged technical snapshot; its six native
-suites now pass on the exact current ROM. The source freeze is commit
+suites passed on that snapshot's exact ROM. Its source freeze is commit
 `8536bb6956212952c17302a62cc6c1de7e12a65d`, tree
 `d524d3f960600dc5c9ff83578ac73675f9798735`; the ROM is SHA256
 `a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445`, header

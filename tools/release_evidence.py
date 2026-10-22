@@ -944,9 +944,9 @@ def validate_fresh_build(report: dict[str, Any], rom_sha256: str,
             require(environment[field] is False, label + " build environment " + field, environment[field], recorder)
     generated = report.get("generated_assets")
     require(isinstance(generated, list) and len(generated) == GENERATED_ASSET_COUNT,
-            label + " has exactly 214 generated assets", len(generated) if isinstance(generated, list) else generated, recorder)
+            label + f" has exactly {GENERATED_ASSET_COUNT} generated assets", len(generated) if isinstance(generated, list) else generated, recorder)
     require(_int(report.get("generated_assets_verified", 0), label + " generated count") == GENERATED_ASSET_COUNT,
-            label + " verified exactly 214 generated assets", report.get("generated_assets_verified"), recorder)
+            label + f" verified exactly {GENERATED_ASSET_COUNT} generated assets", report.get("generated_assets_verified"), recorder)
     names: set[str] = set()
     for item in generated:
         require(isinstance(item, dict), label + " generated asset record", item, recorder)

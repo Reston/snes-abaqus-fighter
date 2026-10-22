@@ -1,17 +1,16 @@
 # Independent-engine compatibility
-<!-- candidate-version: 0.11.0; rom-sha256: 1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7 -->
+<!-- candidate-version: 0.12.0; rom-sha256: 33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83 -->
 
-The current candidate is v0.11.0, cartridge SHA256
-`1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7`.
-The authoritative evidence is the exact-ROM smoke and bounded-combat JSON
-linked below. Both the pinned smoke and the 48-by-600-frame bounded combat
-run pass against this cartridge. The release note
-[RELEASE-v0.11.0.md](RELEASE-v0.11.0.md) records the final checkpoint status.
+The current candidate is v0.12.0, cartridge SHA256
+`33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83`.
+Its pinned independent smoke and 48-by-600-frame bounded combat run both pass.
+The [release note](RELEASE-v0.12.0.md) records current candidate status.
+The v0.11.0 smoke and 48-by-600-frame combat run passed on their own cartridge;
+historical evidence does not verify this new ROM.
 
 The historical v0.9.0 smoke and bounded combat reports passed on
 `bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639`.
-The current candidate changes Lars's art, location previews and result
-presentation; independent-engine coverage retains the scope below.
+The current candidate adds Training opponent selection and a champion scene; independent-engine coverage retains the scope below.
 
 The pinned smoke check has the bounded scope `independent-engine smoke, stage
 ambient/effects freeze, synchronized low-wave, neutral600frame cadence`. It is

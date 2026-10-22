@@ -58,7 +58,10 @@ Versus; Arcade retains its win/loss/champion heading. The winner name and
 match label occupy rows 9/11, `ROUND WINS` and actual `P1  0 - 0  P2` score
 rows 13/14, and mode context row 17. The quote is centered on row 21.
 Rows 24/26 show the actual A/Start transition and B character-select action.
-The champion prompt says `A/START: TITLE`, matching its existing behavior.
+The v0.12 champion branch uses its own trophy scene, with the winner portrait
+at tile `(21,7)`, name/score at rows 18/19, ALL 11 / DEFEATED at 20/21,
+and the quote/title/roster footer at rows 22/24/26. Its prompt remains
+`A/START: TITLE`, matching the existing behavior.
 All result text remains opaque and the portrait is loaded during screen-off.
 
 Horizontal movement remains one card at a time.  Up and down move by four

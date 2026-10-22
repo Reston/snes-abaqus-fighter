@@ -1,10 +1,10 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.12.0; rom-sha256: 45dae37c358a71e8ffb8d1b9fec3a60a1d0d95e516bdd6e314d0bef995f24b91 -->
+<!-- candidate-version: 0.12.0; rom-sha256: 33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83 -->
 
 ## Current version
 
 The current candidate is **v0.12.0**, adding Training opponent and mirror-match
-selection. It includes the revised Lars likeness, clearer location previews
+selection and an original Office Champion trophy scene. It includes the revised Lars likeness, clearer location previews
 and a result card with the winner's portrait,
 round score and quote. In Local Versus, A or Start begins a rematch. Arcade
 victory advances to the next challenger; a loss offers a continue. After
@@ -24,6 +24,10 @@ release note under `docs/`. No global installation or administrator account is
 needed. Human gameplay, listening, controller, likeness/consent and team/public
 use review remain open; original hardware support stays unverified.
 The package's `REVIEW.html` contains selected native screenshots and a 2x view.
+
+Known v0.12.0 review issue: in paused Training, press Start alone to resume.
+Pressing Start+Select together also resets the round. The next input-priority
+fix is under separate verification.
 
 Focus Snes9x and press **Enter**. Use **Alt+Enter** for fullscreen and
 **Input -> Input Configuration** to assign controllers. For a quiet session,

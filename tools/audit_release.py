@@ -12,6 +12,7 @@ from package import (GUI_EMULATOR_MEMBER_SHA256, GUI_EMULATOR_PACKAGE_PATH,
                      canonical_manifest_bytes, entry_bytes,
                      missing_offline_links, package_manifest,
                      preflight_package_files, validate_candidate_docs,
+                     validate_champion_evidence,
                      verify_gui_emulator)
 from release_evidence import (EXTRA_REPORTS, training_report_path,
                                validate_release_evidence)
@@ -59,7 +60,9 @@ def main():
         candidate_files = build_package_files(ROOT, manifest)
         preflight_package_files(candidate_files)
         validate_candidate_docs(candidate_files, manifest)
+        validate_champion_evidence(ROOT, manifest)
         check(True, 'current guides identify the exact candidate version and ROM')
+        check(True, 'champion provenance and A/Start/B evidence match the exact cartridge')
 
         # Release-scale evidence is intentionally separate from the bounded
         # Test.cmd smoke suites.  Use the same validator as package.py so the

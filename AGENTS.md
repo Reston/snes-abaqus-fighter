@@ -6,7 +6,26 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
-- The active checkout is the **v0.11.0 result/input/package polish candidate**.
+- The active checkout is the **v0.12.0 Training/ending candidate**.
+  ROM SHA256 `33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83`, header `222B`,
+  source freeze `9134d4307037a935e1de31f08efd405409ac8ef7`.
+  Training adds a DUMMY roster step supporting arbitrary and mirror opponents.
+  The eleventh Arcade victory loads a static original trophy scene, retaining
+  the portrait page, six scene palettes and existing title/roster actions.
+  The generated asset count is 218; existing binary assets are preserved.
+  All six native suites pass 33,509 checks on the exact current ROM.
+  Matching bsnes smoke, full native matrix, independent bounded combat, three
+  native live-hour sessions and fresh-source rebuild pass. The rebuild
+  reproduces all 218 assets and symbols in 126.672 seconds. The Windows
+  package passes 7,709 audit checks. Consecutive archives are identical at
+  7,114,333 bytes, SHA256
+  `04de3ba2ececd5b31e2c1aca8a2f367765351f49aeaa196b8b9245f7b8d35818`.
+  Human gates remain open.
+  A controller-only probe found that paused Training Start+Select also resets
+  the round; Start alone preserves it. The fix is isolated for the next
+  integration. The frozen v0.12 package explicitly records this known issue.
+
+- The preserved offline checkpoint is the **v0.11.0 result/input/package polish candidate**.
   It carries the v0.10.1 art checkpoint below and adds winner portraits,
   truthful result prompts, a complete normal-pause resume hint, discarded
   wake-only motion commands and a truthful healthy-timeout DRAW banner.
@@ -18,8 +37,7 @@ Preserve the native emulator requirement when extending the project.
   independent-combat evidence pass. The Windows offline archive passes 7,549
   audit checks; two consecutive builds are identical at 6,874,448 bytes,
   SHA256 `157112e2f4b1008a4cd112dadbf33664286cc1f57581e606d994a59bf554a278`.
-  See `docs/RELEASE-v0.11.0.md`. Future Training/ending work is isolated in
-  separate worktrees. Human gates and hardware support remain open.
+  See `docs/RELEASE-v0.11.0.md`. Human gates and hardware support remain open.
 
 - The preserved **v0.10.1 unpackaged art checkpoint** is commit
   `0708dea65c859786e8455da78bd58eb077135adf`,

@@ -1,13 +1,12 @@
 # Public-release quality target
-<!-- candidate-version: 0.11.0; rom-sha256: 1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7 -->
+<!-- candidate-version: 0.12.0; rom-sha256: 33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83 -->
 
-The current v0.11.0 result-screen candidate is cartridge SHA256
-`1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7`.
-Its [release note](RELEASE-v0.11.0.md) records current verification and package
-status. The prior v0.10.0 package and older results below remain historical.
-All six current native suites pass 33,155 checks. Matching evidence includes
-the independent smoke and bounded combat run, full native matchup matrix,
-three native live-hour sessions and an isolated committed-source rebuild.
+The current v0.12.0 Training/ending candidate is cartridge SHA256
+`33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83`. Its [release note](RELEASE-v0.12.0.md)
+records verification and package status. All six native suites pass 33,509
+checks; matching independent, matrix, endurance and isolated-rebuild gates pass.
+This frozen snapshot records the Training Start+Select issue; its fix is separate.
+The verified v0.11.0 package and older results below remain historical.
 Human gameplay, full listening, physical-controller sessions, likeness/consent
 and team/public-use approval remain open. `public_release_certified` is false.
 

@@ -5,6 +5,8 @@ import shutil
 import tempfile
 from pathlib import Path
 import importlib.util
+import json
+import re
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -77,6 +79,56 @@ def main() -> None:
             lambda: PACKAGE.validate_candidate_docs(guides, dict(candidate, sha256='b' * 64)),
             'stale candidate documentation identity',
         )
+        champion_guide = sandbox / 'champion.md'
+        champion_guide.write_text('# Champion\n' + marker + '\n')
+        guides['CHAMPION-ENDING.md'] = champion_guide
+        PACKAGE.validate_candidate_docs(guides, candidate)
+        champion_guide.write_text('# Champion\n<!-- stale child ROM -->\n')
+        expect_package_error(lambda: PACKAGE.validate_candidate_docs(guides, candidate),
+                             'stale champion documentation identity')
+
+        import champion_assets as champion
+        for relative in (champion.PROVENANCE, champion.PROMPT, champion.RAW, champion.MASTER):
+            target = sandbox / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(ROOT / relative, target)
+        PACKAGE.validate_champion_provenance(sandbox)
+        provenance_path = sandbox / champion.PROVENANCE
+        original = json.loads(provenance_path.read_text())
+        for field, value in (('raw_output_path', 'wrong.png'),
+                             ('raw_output_sha256', '0' * 64),
+                             ('exact_generation_record', 'wrong.json'),
+                             ('prompt', 'substituted prompt'),
+                             ('selected_final', dict(original['selected_final'], path='wrong.png')),
+                             ('processing', dict(original['processing'], native_size=[512, 448]))):
+            altered = dict(original, **{field:value})
+            provenance_path.write_text(json.dumps(altered))
+            expect_package_error(lambda: PACKAGE.validate_champion_provenance(sandbox),
+                                 'false champion provenance: ' + field)
+        provenance_path.write_text(json.dumps(original))
+
+        for relative in ('dist/manifest.json', 'dist/abaqus-after-hours.sfc',
+                         'dist/abaqus-after-hours.sym', 'docs/fresh-build-test-report.json',
+                         'assets/generated/champion_tiles.bin', 'assets/generated/champion_map.bin',
+                         'assets/generated/champion_pal.bin'):
+            target = sandbox / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(ROOT / relative, target)
+        manifest = json.loads((sandbox/'dist/manifest.json').read_text())
+        budget = PACKAGE.champion_native_budget(sandbox, manifest)
+        cartridge = sandbox/'dist/abaqus-after-hours.sfc'
+        cartridge_bytes = cartridge.read_bytes()
+        changed = bytearray(cartridge_bytes)
+        changed[budget['blocks'][0]['rom_offset']] ^= 1
+        cartridge.write_bytes(changed)
+        expect_package_error(lambda: PACKAGE.champion_native_budget(sandbox, manifest),
+                             'native block differs from the actual cartridge')
+        cartridge.write_bytes(cartridge_bytes)
+        symbols = sandbox/'dist/abaqus-after-hours.sym'
+        symbols.write_text(re.sub(r'(?m)^[0-9a-f]{8} champion_tiles$',
+                                 '00e5ffff champion_tiles', symbols.read_text()))
+        expect_package_error(lambda: PACKAGE.champion_native_budget(sandbox, manifest),
+                             'native block crosses a LoROM bank')
 
     valid = {'rom_sha256': 'a' * 64, 'status': 'passed', 'passed': 1,
              'checks': [{'passed': True}]}
@@ -87,6 +139,16 @@ def main() -> None:
                     dict(valid, status='failed')):
         expect_package_error(lambda: PACKAGE.validate_suite(altered, 'fixture', 'a' * 64),
                              'stale, empty, incomplete or failed suite')
+
+    route = json.loads((ROOT/'docs/champion-ending-start-report.json').read_text())
+    PACKAGE.validate_champion_route(route, route['rom_sha256'], 'start', 0)
+    for altered in (dict(route, controller_only=False), dict(route, memory_writes=True),
+                    dict(route, save_states=True), dict(route, headless=False),
+                    dict(route, audio_device_opened=True), dict(route, ladder=route['ladder'][:10]),
+                    dict(route, exit={'key':'start','screen':1}),
+                    dict(route, champion_state=dict(route['champion_state'], arcade=9))):
+        expect_package_error(lambda: PACKAGE.validate_champion_route(altered, route['rom_sha256'], 'start', 0),
+                             'incomplete or altered champion route contract')
 
     names = {'README.md', 'qa/stages.json', 'RELEASE.md', 'RELEASE-v0.11.0.md'}
     rendered = PACKAGE.offline_markdown_text(

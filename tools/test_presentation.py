@@ -925,6 +925,40 @@ def fight_stage_captures() -> dict[str, str]:
     return captures
 
 
+def training_selection_capture() -> dict[str, object]:
+    """Verify the visible DUMMY identity independently from live match state."""
+    e = Emulator()
+    try:
+        e.run(120)
+        press(e, "down"); press(e, "down"); press(e, "a")
+        wait_screen(e, SELECT)
+        press(e, "right"); press(e, "right"); press(e, "a")
+        wait_screen(e, SELECT)
+        check(state(e)["selected"] == 2 and state(e)["selected2"] == 3,
+              "Training opens DUMMY after the chosen player with an adjacent cursor", state(e))
+        press(e, "up", 1); press(e, "left", 1)
+        check(state(e)["selected"] == 2 and state(e)["selected2"] == 10,
+              "P2 can choose a nonadjacent dummy without changing PLAYER 1", state(e))
+        verify_menu_font_bank(e, [(4, 23, "DUMMY"), (17, 22, "ROXANA")],
+                              "Training arbitrary dummy")
+        arbitrary = {"state": state(e), "portrait": verify_large_portrait(e, 10),
+                     "capture": str(capture(e, "training-dummy.png"))}
+        press(e, "down")
+        check(state(e)["selected2"] == state(e)["selected"] == 2,
+              "P1 can choose the same fighter for a visible mirror selection", state(e))
+        verify_menu_font_bank(e, [(4, 23, "DUMMY"), (17, 22, "CRISTOBAL")],
+                              "Training mirror dummy")
+        mirror = {"state": state(e), "portrait": verify_large_portrait(e, 2),
+                  "capture": str(capture(e, "training-mirror.png"))}
+        press(e, "b", 1)
+        verify_menu_font_bank(e, [(4, 23, "PLAYER 1"), (17, 22, "CRISTOBAL")],
+                              "Training Back to PLAYER 1")
+        returned = verify_large_portrait(e, 2)
+        return {"arbitrary": arbitrary, "mirror": mirror, "back_portrait": returned}
+    finally:
+        e.close()
+
+
 def timeout_draw_capture() -> dict[str, object]:
     """A full-health tied timeout must never claim a double knockout."""
     e = boot_fight(1)
@@ -967,6 +1001,7 @@ def main() -> int:
         footer_lifecycle()
         report["captures"] = {
             "menus": title_and_select(),
+            "training_selection": training_selection_capture(),
             "stages": fight_stage_captures(),
             "result": result_score_capture(),
             "result_p2": result_score_capture(1),

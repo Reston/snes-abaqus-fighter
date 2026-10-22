@@ -1,0 +1,92 @@
+{
+  "version": "0.12.0",
+  "rom_sha256": "33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83",
+  "checksum": "222B",
+  "status": "passed",
+  "scope": "Six native suites plus compatibility and release-scale evidence; offline archive audit is separate.",
+  "source_commit": "9134d4307037a935e1de31f08efd405409ac8ef7",
+  "source_tree": "38dc1d16565d7bc0d941f272339ccd4382fbe594",
+  "native_suites": {
+    "test": {
+      "passed": 2596,
+      "elapsed_seconds": 80.84,
+      "report": "docs/test-report.json"
+    },
+    "character-test": {
+      "passed": 18081,
+      "elapsed_seconds": 309.65,
+      "report": "docs/character-test-report.json"
+    },
+    "presentation-test": {
+      "passed": 2865,
+      "elapsed_seconds": 60.49,
+      "report": "docs/presentation-test-report.json"
+    },
+    "input-test": {
+      "passed": 1048,
+      "elapsed_seconds": 366.281,
+      "report": "docs/input-test-report.json"
+    },
+    "stage-test": {
+      "passed": 8163,
+      "elapsed_seconds": 39.75,
+      "report": "docs/stage-test-report.json"
+    },
+    "training-test": {
+      "passed": 756,
+      "elapsed_seconds": 31.281,
+      "report": "docs/training-test-report.json"
+    }
+  },
+  "native_checks_total": 33509,
+  "independent_smoke": {
+    "status": "passed",
+    "report": "docs/compatibility-test-report.json"
+  },
+  "release_evidence": {
+    "matchups": {
+      "cases": 288,
+      "replays": 4,
+      "stages": [
+        0,
+        1,
+        2
+      ]
+    },
+    "independent_combat": {
+      "cases": 48,
+      "frames": 28800
+    },
+    "endurance": {
+      "native_fps": 60.098811862348406,
+      "target_live_frames_per_mode": 216356,
+      "modes": 3
+    },
+    "fresh_build": {
+      "generated_assets": 218,
+      "source_commit": "9134d4307037a935e1de31f08efd405409ac8ef7",
+      "source_tree": "38dc1d16565d7bc0d941f272339ccd4382fbe594"
+    },
+    "training": {
+      "checks": 756,
+      "report": "docs/training-test-report.json",
+      "modes": 3,
+      "captures": 8
+    }
+  },
+  "public_release_certified": false,
+  "champion_routes": {
+    "a": "title",
+    "start": "title",
+    "b": "fighter select",
+    "scope": "three current-ROM controller-only eleven-opponent ladders"
+  },
+  "human_gates": [
+    "gameplay/balance",
+    "full listening",
+    "physical controllers",
+    "likeness/consent",
+    "team/public use"
+  ],
+  "original_hardware": "unverified, outside first emulator-release support scope"
+}

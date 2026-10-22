@@ -1,6 +1,6 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7",
+  "rom_sha256": "33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83",
   "rom_bytes": 4194304,
   "checks": [
     {
@@ -76903,7 +76903,7 @@
       "details": {
         "mode": 2,
         "fighter": 0,
-        "fighter2": 1
+        "fighter2": null
       }
     },
     {
@@ -79107,7 +79107,7 @@
       "details": {
         "mode": 2,
         "fighter": 1,
-        "fighter2": 1
+        "fighter2": null
       }
     },
     {
@@ -81311,7 +81311,7 @@
       "details": {
         "mode": 2,
         "fighter": 2,
-        "fighter2": 1
+        "fighter2": null
       }
     },
     {
@@ -83515,7 +83515,7 @@
       "details": {
         "mode": 2,
         "fighter": 3,
-        "fighter2": 1
+        "fighter2": null
       }
     },
     {
@@ -85719,7 +85719,7 @@
       "details": {
         "mode": 2,
         "fighter": 4,
-        "fighter2": 1
+        "fighter2": null
       }
     },
     {
@@ -87923,7 +87923,7 @@
       "details": {
         "mode": 2,
         "fighter": 5,
-        "fighter2": 1
+        "fighter2": null
       }
     },
     {
@@ -90127,7 +90127,7 @@
       "details": {
         "mode": 2,
         "fighter": 6,
-        "fighter2": 1
+        "fighter2": null
       }
     },
     {
@@ -92331,7 +92331,7 @@
       "details": {
         "mode": 2,
         "fighter": 7,
-        "fighter2": 1
+        "fighter2": null
       }
     },
     {
@@ -94535,7 +94535,7 @@
       "details": {
         "mode": 2,
         "fighter": 8,
-        "fighter2": 1
+        "fighter2": null
       }
     },
     {
@@ -96739,7 +96739,7 @@
       "details": {
         "mode": 2,
         "fighter": 9,
-        "fighter2": 1
+        "fighter2": null
       }
     },
     {
@@ -98943,7 +98943,7 @@
       "details": {
         "mode": 2,
         "fighter": 10,
-        "fighter2": 1
+        "fighter2": null
       }
     },
     {
@@ -101147,7 +101147,7 @@
       "details": {
         "mode": 2,
         "fighter": 11,
-        "fighter2": 1
+        "fighter2": null
       }
     },
     {
@@ -329794,6 +329794,6 @@
     }
   },
   "passed": 18081,
-  "elapsed_seconds": 262.54,
+  "elapsed_seconds": 309.65,
   "status": "passed"
 }

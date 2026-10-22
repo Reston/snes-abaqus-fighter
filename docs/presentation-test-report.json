@@ -1,6 +1,6 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7",
+  "rom_sha256": "33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83",
   "rom_bytes": 4194304,
   "status": "passed",
   "checks": [
@@ -9,11 +9,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.11.0",
+        "version": "0.12.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7",
-        "checksum": "7CFE",
+        "sha256": "33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83",
+        "checksum": "222B",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -1059,6 +1059,308 @@
       }
     },
     {
+      "check": "first fighter confirm leaves the second roster visible",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 1,
+        "frame": 182,
+        "mode": 1,
+        "hp1": 85,
+        "hp2": 85,
+        "x1": 0,
+        "x2": 21845,
+        "y1": 0,
+        "y2": 21845,
+        "action1": 85,
+        "action2": 85,
+        "wins1": 85,
+        "wins2": 85,
+        "arena": 0,
+        "round": 85,
+        "intro": 85,
+        "paused": 0,
+        "energy1": 85,
+        "energy2": 85,
+        "wave1": 85,
+        "wave2": 85,
+        "selected": 0,
+        "selected2": 1,
+        "arcade": 0,
+        "seconds": 85,
+        "pose1": 85,
+        "pose2": 85,
+        "round_end": 85,
+        "hitstop": 85,
+        "combo": 85,
+        "champion": 0,
+        "fighter_id1": 85,
+        "fighter_id2": 85,
+        "family1": 0,
+        "family2": 0,
+        "speed1": 20,
+        "speed2": 20,
+        "jump1": 65445,
+        "jump2": 65445,
+        "face1": 85,
+        "face2": 85,
+        "back_speed1": 14,
+        "back_speed2": 14,
+        "special_startup1": 10,
+        "special_startup2": 10,
+        "special_active1": 1,
+        "special_active2": 1,
+        "special_recovery1": 23,
+        "special_recovery2": 23,
+        "special_damage1": 15,
+        "special_damage2": 15,
+        "special_reach1": 19,
+        "special_reach2": 19,
+        "throw_range1": 27,
+        "throw_range2": 27,
+        "wave_low1": 85,
+        "wave_low2": 85,
+        "wave_speed1": 85,
+        "wave_speed2": 85,
+        "wave_life1": 85,
+        "wave_life2": 85,
+        "anim_frame1": 85,
+        "anim_frame2": 85,
+        "anim_state1": 85,
+        "anim_state2": 85,
+        "anim_tick1": 85,
+        "anim_tick2": 85,
+        "buffered_action1": 85,
+        "buffered_action2": 85,
+        "buffer_age1": 85,
+        "buffer_age2": 85,
+        "jump_buffer1": 85,
+        "jump_buffer2": 85,
+        "command_stage1": 85,
+        "command_stage2": 85,
+        "raw_keys1": 21845,
+        "raw_keys2": 21845,
+        "landing1": 85,
+        "landing2": 85,
+        "jump_vx1": 0,
+        "jump_vx2": 21845,
+        "hurt1": 85,
+        "hurt2": 85,
+        "guard1": 85,
+        "guard2": 85,
+        "connected1": 85,
+        "connected2": 85,
+        "combo1": 85,
+        "combo2": 85,
+        "combo_display1": 85,
+        "combo_display2": 85,
+        "counter1": 85,
+        "counter2": 85,
+        "down_state1": 85,
+        "down_state2": 85,
+        "down_tick1": 85,
+        "down_tick2": 85,
+        "invuln1": 85,
+        "invuln2": 85,
+        "pending_throw_damage1": 85,
+        "pending_throw_damage2": 85,
+        "throw_owner1": 85,
+        "throw_owner2": 85,
+        "air_action1": 85,
+        "air_action2": 85,
+        "throw_victim1": 85,
+        "throw_victim2": 85,
+        "wake_action1": 85,
+        "wake_action2": 85,
+        "wake_age1": 85,
+        "wake_age2": 85,
+        "wake_jump1": 85,
+        "wake_jump2": 85
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 23,
+        "character": "P",
+        "tile": 80
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 24,
+        "character": "L",
+        "tile": 76
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 25,
+        "character": "A",
+        "tile": 65
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 26,
+        "character": "Y",
+        "tile": 89
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 27,
+        "character": "E",
+        "tile": 69
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 28,
+        "character": "R",
+        "tile": 82
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 29,
+        "character": " ",
+        "tile": 32
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 30,
+        "character": "2",
+        "tile": 50
+      }
+    },
+    {
+      "check": "native large portrait asset exists",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_tiles.bin"
+      }
+    },
+    {
+      "check": "large portrait asset is an 8x10 tile block",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "bytes": 2560
+      }
+    },
+    {
+      "check": "large portrait reaches BG2 VRAM exactly",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "vram_word": "0x4a00",
+        "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1"
+      }
+    },
+    {
+      "check": "profile map anchor selects tile 160 with palette 1",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "x": 23,
+        "y": 6,
+        "entry": "0x24a0",
+        "tile": 160,
+        "palette": 1
+      }
+    },
+    {
+      "check": "native large portrait palette exists",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_pal.bin"
+      }
+    },
+    {
+      "check": "native portrait tile block has the expected byte count",
+      "passed": true,
+      "details": {
+        "bytes": 2560,
+        "expected": 2560
+      }
+    },
+    {
+      "check": "native portrait palette contains sixteen colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "large portrait has a rendered native frame",
+      "passed": true,
+      "details": 1
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          64,
+          80
+        ],
+        "expected": [
+          64,
+          80
+        ]
+      }
+    },
+    {
+      "check": "large portrait crop matches decoded native PPU pixels",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "crop": [
+          184,
+          48,
+          248,
+          128
+        ],
+        "mean_channel_delta": 0.2919921875,
+        "max_channel_delta": 2,
+        "pixels_over_16": 0,
+        "pixels": 5120
+      }
+    },
+    {
       "check": "presentation fight reaches live combat",
       "passed": true,
       "details": {
@@ -1335,6 +1637,275 @@
       }
     },
     {
+      "check": "first fighter confirm leaves the second roster visible",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 1,
+        "frame": 208,
+        "mode": 2,
+        "hp1": 85,
+        "hp2": 85,
+        "x1": 0,
+        "x2": 21845,
+        "y1": 0,
+        "y2": 21845,
+        "action1": 85,
+        "action2": 85,
+        "wins1": 85,
+        "wins2": 85,
+        "arena": 0,
+        "round": 85,
+        "intro": 85,
+        "paused": 0,
+        "energy1": 85,
+        "energy2": 85,
+        "wave1": 85,
+        "wave2": 85,
+        "selected": 0,
+        "selected2": 1,
+        "arcade": 0,
+        "seconds": 85,
+        "pose1": 85,
+        "pose2": 85,
+        "round_end": 85,
+        "hitstop": 85,
+        "combo": 85,
+        "champion": 0,
+        "fighter_id1": 85,
+        "fighter_id2": 85,
+        "family1": 0,
+        "family2": 0,
+        "speed1": 20,
+        "speed2": 20,
+        "jump1": 65445,
+        "jump2": 65445,
+        "face1": 85,
+        "face2": 85,
+        "back_speed1": 14,
+        "back_speed2": 14,
+        "special_startup1": 10,
+        "special_startup2": 10,
+        "special_active1": 1,
+        "special_active2": 1,
+        "special_recovery1": 23,
+        "special_recovery2": 23,
+        "special_damage1": 15,
+        "special_damage2": 15,
+        "special_reach1": 19,
+        "special_reach2": 19,
+        "throw_range1": 27,
+        "throw_range2": 27,
+        "wave_low1": 85,
+        "wave_low2": 85,
+        "wave_speed1": 85,
+        "wave_speed2": 85,
+        "wave_life1": 85,
+        "wave_life2": 85,
+        "anim_frame1": 85,
+        "anim_frame2": 85,
+        "anim_state1": 85,
+        "anim_state2": 85,
+        "anim_tick1": 85,
+        "anim_tick2": 85,
+        "buffered_action1": 85,
+        "buffered_action2": 85,
+        "buffer_age1": 85,
+        "buffer_age2": 85,
+        "jump_buffer1": 85,
+        "jump_buffer2": 85,
+        "command_stage1": 85,
+        "command_stage2": 85,
+        "raw_keys1": 21845,
+        "raw_keys2": 21845,
+        "landing1": 85,
+        "landing2": 85,
+        "jump_vx1": 0,
+        "jump_vx2": 21845,
+        "hurt1": 85,
+        "hurt2": 85,
+        "guard1": 85,
+        "guard2": 85,
+        "connected1": 85,
+        "connected2": 85,
+        "combo1": 85,
+        "combo2": 85,
+        "combo_display1": 85,
+        "combo_display2": 85,
+        "counter1": 85,
+        "counter2": 85,
+        "down_state1": 85,
+        "down_state2": 85,
+        "down_tick1": 85,
+        "down_tick2": 85,
+        "invuln1": 85,
+        "invuln2": 85,
+        "pending_throw_damage1": 85,
+        "pending_throw_damage2": 85,
+        "throw_owner1": 85,
+        "throw_owner2": 85,
+        "air_action1": 85,
+        "air_action2": 85,
+        "throw_victim1": 85,
+        "throw_victim2": 85,
+        "wake_action1": 85,
+        "wake_action2": 85,
+        "wake_age1": 85,
+        "wake_age2": 85,
+        "wake_jump1": 85,
+        "wake_jump2": 85
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 23,
+        "character": "D",
+        "tile": 68
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 24,
+        "character": "U",
+        "tile": 85
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 25,
+        "character": "M",
+        "tile": 77
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 26,
+        "character": "M",
+        "tile": 77
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 27,
+        "character": "Y",
+        "tile": 89
+      }
+    },
+    {
+      "check": "native large portrait asset exists",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_tiles.bin"
+      }
+    },
+    {
+      "check": "large portrait asset is an 8x10 tile block",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "bytes": 2560
+      }
+    },
+    {
+      "check": "large portrait reaches BG2 VRAM exactly",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "vram_word": "0x4a00",
+        "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1"
+      }
+    },
+    {
+      "check": "profile map anchor selects tile 160 with palette 1",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "x": 23,
+        "y": 6,
+        "entry": "0x24a0",
+        "tile": 160,
+        "palette": 1
+      }
+    },
+    {
+      "check": "native large portrait palette exists",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_pal.bin"
+      }
+    },
+    {
+      "check": "native portrait tile block has the expected byte count",
+      "passed": true,
+      "details": {
+        "bytes": 2560,
+        "expected": 2560
+      }
+    },
+    {
+      "check": "native portrait palette contains sixteen colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "large portrait has a rendered native frame",
+      "passed": true,
+      "details": 1
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          64,
+          80
+        ],
+        "expected": [
+          64,
+          80
+        ]
+      }
+    },
+    {
+      "check": "large portrait crop matches decoded native PPU pixels",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "crop": [
+          184,
+          48,
+          248,
+          128
+        ],
+        "mean_channel_delta": 0.2919921875,
+        "max_channel_delta": 2,
+        "pixels_over_16": 0,
+        "pixels": 5120
+      }
+    },
+    {
       "check": "presentation fight reaches live combat",
       "passed": true,
       "details": {
@@ -1348,7 +1919,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 345,
+        "frame": 370,
         "mode": 2,
         "hp1": 128,
         "hp2": 128,
@@ -7444,6 +8015,1152 @@
       "details": null
     },
     {
+      "check": "Training opens DUMMY after the chosen player with an adjacent cursor",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 1,
+        "frame": 268,
+        "mode": 2,
+        "hp1": 85,
+        "hp2": 85,
+        "x1": 0,
+        "x2": 21845,
+        "y1": 0,
+        "y2": 21845,
+        "action1": 85,
+        "action2": 85,
+        "wins1": 85,
+        "wins2": 85,
+        "arena": 0,
+        "round": 85,
+        "intro": 85,
+        "paused": 0,
+        "energy1": 85,
+        "energy2": 85,
+        "wave1": 85,
+        "wave2": 85,
+        "selected": 2,
+        "selected2": 3,
+        "arcade": 0,
+        "seconds": 85,
+        "pose1": 85,
+        "pose2": 85,
+        "round_end": 85,
+        "hitstop": 85,
+        "combo": 85,
+        "champion": 0,
+        "fighter_id1": 85,
+        "fighter_id2": 85,
+        "family1": 0,
+        "family2": 0,
+        "speed1": 20,
+        "speed2": 20,
+        "jump1": 65445,
+        "jump2": 65445,
+        "face1": 85,
+        "face2": 85,
+        "back_speed1": 14,
+        "back_speed2": 14,
+        "special_startup1": 10,
+        "special_startup2": 10,
+        "special_active1": 1,
+        "special_active2": 1,
+        "special_recovery1": 23,
+        "special_recovery2": 23,
+        "special_damage1": 15,
+        "special_damage2": 15,
+        "special_reach1": 19,
+        "special_reach2": 19,
+        "throw_range1": 27,
+        "throw_range2": 27,
+        "wave_low1": 85,
+        "wave_low2": 85,
+        "wave_speed1": 85,
+        "wave_speed2": 85,
+        "wave_life1": 85,
+        "wave_life2": 85,
+        "anim_frame1": 85,
+        "anim_frame2": 85,
+        "anim_state1": 85,
+        "anim_state2": 85,
+        "anim_tick1": 85,
+        "anim_tick2": 85,
+        "buffered_action1": 85,
+        "buffered_action2": 85,
+        "buffer_age1": 85,
+        "buffer_age2": 85,
+        "jump_buffer1": 85,
+        "jump_buffer2": 85,
+        "command_stage1": 85,
+        "command_stage2": 85,
+        "raw_keys1": 21845,
+        "raw_keys2": 21845,
+        "landing1": 85,
+        "landing2": 85,
+        "jump_vx1": 0,
+        "jump_vx2": 21845,
+        "hurt1": 85,
+        "hurt2": 85,
+        "guard1": 85,
+        "guard2": 85,
+        "connected1": 85,
+        "connected2": 85,
+        "combo1": 85,
+        "combo2": 85,
+        "combo_display1": 85,
+        "combo_display2": 85,
+        "counter1": 85,
+        "counter2": 85,
+        "down_state1": 85,
+        "down_state2": 85,
+        "down_tick1": 85,
+        "down_tick2": 85,
+        "invuln1": 85,
+        "invuln2": 85,
+        "pending_throw_damage1": 85,
+        "pending_throw_damage2": 85,
+        "throw_owner1": 85,
+        "throw_owner2": 85,
+        "air_action1": 85,
+        "air_action2": 85,
+        "throw_victim1": 85,
+        "throw_victim2": 85,
+        "wake_action1": 85,
+        "wake_action2": 85,
+        "wake_age1": 85,
+        "wake_age2": 85,
+        "wake_jump1": 85,
+        "wake_jump2": 85
+      }
+    },
+    {
+      "check": "P2 can choose a nonadjacent dummy without changing PLAYER 1",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 1,
+        "frame": 318,
+        "mode": 2,
+        "hp1": 85,
+        "hp2": 85,
+        "x1": 0,
+        "x2": 21845,
+        "y1": 0,
+        "y2": 21845,
+        "action1": 85,
+        "action2": 85,
+        "wins1": 85,
+        "wins2": 85,
+        "arena": 0,
+        "round": 85,
+        "intro": 85,
+        "paused": 0,
+        "energy1": 85,
+        "energy2": 85,
+        "wave1": 85,
+        "wave2": 85,
+        "selected": 2,
+        "selected2": 10,
+        "arcade": 0,
+        "seconds": 85,
+        "pose1": 85,
+        "pose2": 85,
+        "round_end": 85,
+        "hitstop": 85,
+        "combo": 85,
+        "champion": 0,
+        "fighter_id1": 85,
+        "fighter_id2": 85,
+        "family1": 0,
+        "family2": 0,
+        "speed1": 20,
+        "speed2": 20,
+        "jump1": 65445,
+        "jump2": 65445,
+        "face1": 85,
+        "face2": 85,
+        "back_speed1": 14,
+        "back_speed2": 14,
+        "special_startup1": 10,
+        "special_startup2": 10,
+        "special_active1": 1,
+        "special_active2": 1,
+        "special_recovery1": 23,
+        "special_recovery2": 23,
+        "special_damage1": 15,
+        "special_damage2": 15,
+        "special_reach1": 19,
+        "special_reach2": 19,
+        "throw_range1": 27,
+        "throw_range2": 27,
+        "wave_low1": 85,
+        "wave_low2": 85,
+        "wave_speed1": 85,
+        "wave_speed2": 85,
+        "wave_life1": 85,
+        "wave_life2": 85,
+        "anim_frame1": 85,
+        "anim_frame2": 85,
+        "anim_state1": 85,
+        "anim_state2": 85,
+        "anim_tick1": 85,
+        "anim_tick2": 85,
+        "buffered_action1": 85,
+        "buffered_action2": 85,
+        "buffer_age1": 85,
+        "buffer_age2": 85,
+        "jump_buffer1": 85,
+        "jump_buffer2": 85,
+        "command_stage1": 85,
+        "command_stage2": 85,
+        "raw_keys1": 21845,
+        "raw_keys2": 21845,
+        "landing1": 85,
+        "landing2": 85,
+        "jump_vx1": 0,
+        "jump_vx2": 21845,
+        "hurt1": 85,
+        "hurt2": 85,
+        "guard1": 85,
+        "guard2": 85,
+        "connected1": 85,
+        "connected2": 85,
+        "combo1": 85,
+        "combo2": 85,
+        "combo_display1": 85,
+        "combo_display2": 85,
+        "counter1": 85,
+        "counter2": 85,
+        "down_state1": 85,
+        "down_state2": 85,
+        "down_tick1": 85,
+        "down_tick2": 85,
+        "invuln1": 85,
+        "invuln2": 85,
+        "pending_throw_damage1": 85,
+        "pending_throw_damage2": 85,
+        "throw_owner1": 85,
+        "throw_owner2": 85,
+        "air_action1": 85,
+        "air_action2": 85,
+        "throw_victim1": 85,
+        "throw_victim2": 85,
+        "wake_action1": 85,
+        "wake_action2": 85,
+        "wake_age1": 85,
+        "wake_age2": 85,
+        "wake_jump1": 85,
+        "wake_jump2": 85
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training arbitrary dummy",
+        "row": 4,
+        "x": 23,
+        "character": "D",
+        "tile": 68
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training arbitrary dummy",
+        "row": 4,
+        "x": 24,
+        "character": "U",
+        "tile": 85
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training arbitrary dummy",
+        "row": 4,
+        "x": 25,
+        "character": "M",
+        "tile": 77
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training arbitrary dummy",
+        "row": 4,
+        "x": 26,
+        "character": "M",
+        "tile": 77
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training arbitrary dummy",
+        "row": 4,
+        "x": 27,
+        "character": "Y",
+        "tile": 89
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training arbitrary dummy",
+        "row": 17,
+        "x": 22,
+        "character": "R",
+        "tile": 82
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training arbitrary dummy",
+        "row": 17,
+        "x": 23,
+        "character": "O",
+        "tile": 79
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training arbitrary dummy",
+        "row": 17,
+        "x": 24,
+        "character": "X",
+        "tile": 88
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training arbitrary dummy",
+        "row": 17,
+        "x": 25,
+        "character": "A",
+        "tile": 65
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training arbitrary dummy",
+        "row": 17,
+        "x": 26,
+        "character": "N",
+        "tile": 78
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training arbitrary dummy",
+        "row": 17,
+        "x": 27,
+        "character": "A",
+        "tile": 65
+      }
+    },
+    {
+      "check": "native large portrait asset exists",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait10_tiles.bin"
+      }
+    },
+    {
+      "check": "large portrait asset is an 8x10 tile block",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "bytes": 2560
+      }
+    },
+    {
+      "check": "large portrait reaches BG2 VRAM exactly",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "vram_word": "0x4a00",
+        "sha256": "91f53180fc9e25e5633ec62a380b62c7b90072213718a1a3b079b59c6d24a9e6"
+      }
+    },
+    {
+      "check": "profile map anchor selects tile 160 with palette 1",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "x": 23,
+        "y": 6,
+        "entry": "0x24a0",
+        "tile": 160,
+        "palette": 1
+      }
+    },
+    {
+      "check": "native large portrait palette exists",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait10_pal.bin"
+      }
+    },
+    {
+      "check": "native portrait tile block has the expected byte count",
+      "passed": true,
+      "details": {
+        "bytes": 2560,
+        "expected": 2560
+      }
+    },
+    {
+      "check": "native portrait palette contains sixteen colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "large portrait has a rendered native frame",
+      "passed": true,
+      "details": 10
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          64,
+          80
+        ],
+        "expected": [
+          64,
+          80
+        ]
+      }
+    },
+    {
+      "check": "large portrait crop matches decoded native PPU pixels",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "crop": [
+          184,
+          48,
+          248,
+          128
+        ],
+        "mean_channel_delta": 0.2921223958333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 5120
+      }
+    },
+    {
+      "check": "capture has a native video frame",
+      "passed": true,
+      "details": "training-dummy.png"
+    },
+    {
+      "check": "capture uses the SNES 256x224 frame",
+      "passed": true,
+      "details": {
+        "name": "training-dummy.png",
+        "size": [
+          256,
+          224
+        ]
+      }
+    },
+    {
+      "check": "capture is a populated presentation frame",
+      "passed": true,
+      "details": "training-dummy.png"
+    },
+    {
+      "check": "P1 can choose the same fighter for a visible mirror selection",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 1,
+        "frame": 343,
+        "mode": 2,
+        "hp1": 85,
+        "hp2": 85,
+        "x1": 0,
+        "x2": 21845,
+        "y1": 0,
+        "y2": 21845,
+        "action1": 85,
+        "action2": 85,
+        "wins1": 85,
+        "wins2": 85,
+        "arena": 0,
+        "round": 85,
+        "intro": 85,
+        "paused": 0,
+        "energy1": 85,
+        "energy2": 85,
+        "wave1": 85,
+        "wave2": 85,
+        "selected": 2,
+        "selected2": 2,
+        "arcade": 0,
+        "seconds": 85,
+        "pose1": 85,
+        "pose2": 85,
+        "round_end": 85,
+        "hitstop": 85,
+        "combo": 85,
+        "champion": 0,
+        "fighter_id1": 85,
+        "fighter_id2": 85,
+        "family1": 0,
+        "family2": 0,
+        "speed1": 20,
+        "speed2": 20,
+        "jump1": 65445,
+        "jump2": 65445,
+        "face1": 85,
+        "face2": 85,
+        "back_speed1": 14,
+        "back_speed2": 14,
+        "special_startup1": 10,
+        "special_startup2": 10,
+        "special_active1": 1,
+        "special_active2": 1,
+        "special_recovery1": 23,
+        "special_recovery2": 23,
+        "special_damage1": 15,
+        "special_damage2": 15,
+        "special_reach1": 19,
+        "special_reach2": 19,
+        "throw_range1": 27,
+        "throw_range2": 27,
+        "wave_low1": 85,
+        "wave_low2": 85,
+        "wave_speed1": 85,
+        "wave_speed2": 85,
+        "wave_life1": 85,
+        "wave_life2": 85,
+        "anim_frame1": 85,
+        "anim_frame2": 85,
+        "anim_state1": 85,
+        "anim_state2": 85,
+        "anim_tick1": 85,
+        "anim_tick2": 85,
+        "buffered_action1": 85,
+        "buffered_action2": 85,
+        "buffer_age1": 85,
+        "buffer_age2": 85,
+        "jump_buffer1": 85,
+        "jump_buffer2": 85,
+        "command_stage1": 85,
+        "command_stage2": 85,
+        "raw_keys1": 21845,
+        "raw_keys2": 21845,
+        "landing1": 85,
+        "landing2": 85,
+        "jump_vx1": 0,
+        "jump_vx2": 21845,
+        "hurt1": 85,
+        "hurt2": 85,
+        "guard1": 85,
+        "guard2": 85,
+        "connected1": 85,
+        "connected2": 85,
+        "combo1": 85,
+        "combo2": 85,
+        "combo_display1": 85,
+        "combo_display2": 85,
+        "counter1": 85,
+        "counter2": 85,
+        "down_state1": 85,
+        "down_state2": 85,
+        "down_tick1": 85,
+        "down_tick2": 85,
+        "invuln1": 85,
+        "invuln2": 85,
+        "pending_throw_damage1": 85,
+        "pending_throw_damage2": 85,
+        "throw_owner1": 85,
+        "throw_owner2": 85,
+        "air_action1": 85,
+        "air_action2": 85,
+        "throw_victim1": 85,
+        "throw_victim2": 85,
+        "wake_action1": 85,
+        "wake_action2": 85,
+        "wake_age1": 85,
+        "wake_age2": 85,
+        "wake_jump1": 85,
+        "wake_jump2": 85
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training mirror dummy",
+        "row": 4,
+        "x": 23,
+        "character": "D",
+        "tile": 68
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training mirror dummy",
+        "row": 4,
+        "x": 24,
+        "character": "U",
+        "tile": 85
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training mirror dummy",
+        "row": 4,
+        "x": 25,
+        "character": "M",
+        "tile": 77
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training mirror dummy",
+        "row": 4,
+        "x": 26,
+        "character": "M",
+        "tile": 77
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training mirror dummy",
+        "row": 4,
+        "x": 27,
+        "character": "Y",
+        "tile": 89
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training mirror dummy",
+        "row": 17,
+        "x": 22,
+        "character": "C",
+        "tile": 67
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training mirror dummy",
+        "row": 17,
+        "x": 23,
+        "character": "R",
+        "tile": 82
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training mirror dummy",
+        "row": 17,
+        "x": 24,
+        "character": "I",
+        "tile": 73
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training mirror dummy",
+        "row": 17,
+        "x": 25,
+        "character": "S",
+        "tile": 83
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training mirror dummy",
+        "row": 17,
+        "x": 26,
+        "character": "T",
+        "tile": 84
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training mirror dummy",
+        "row": 17,
+        "x": 27,
+        "character": "O",
+        "tile": 79
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training mirror dummy",
+        "row": 17,
+        "x": 28,
+        "character": "B",
+        "tile": 66
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training mirror dummy",
+        "row": 17,
+        "x": 29,
+        "character": "A",
+        "tile": 65
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training mirror dummy",
+        "row": 17,
+        "x": 30,
+        "character": "L",
+        "tile": 76
+      }
+    },
+    {
+      "check": "native large portrait asset exists",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait02_tiles.bin"
+      }
+    },
+    {
+      "check": "large portrait asset is an 8x10 tile block",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "bytes": 2560
+      }
+    },
+    {
+      "check": "large portrait reaches BG2 VRAM exactly",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "vram_word": "0x4a00",
+        "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b"
+      }
+    },
+    {
+      "check": "profile map anchor selects tile 160 with palette 1",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "x": 23,
+        "y": 6,
+        "entry": "0x24a0",
+        "tile": 160,
+        "palette": 1
+      }
+    },
+    {
+      "check": "native large portrait palette exists",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait02_pal.bin"
+      }
+    },
+    {
+      "check": "native portrait tile block has the expected byte count",
+      "passed": true,
+      "details": {
+        "bytes": 2560,
+        "expected": 2560
+      }
+    },
+    {
+      "check": "native portrait palette contains sixteen colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "large portrait has a rendered native frame",
+      "passed": true,
+      "details": 2
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          64,
+          80
+        ],
+        "expected": [
+          64,
+          80
+        ]
+      }
+    },
+    {
+      "check": "large portrait crop matches decoded native PPU pixels",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "crop": [
+          184,
+          48,
+          248,
+          128
+        ],
+        "mean_channel_delta": 0.343359375,
+        "max_channel_delta": 2,
+        "pixels_over_16": 0,
+        "pixels": 5120
+      }
+    },
+    {
+      "check": "capture has a native video frame",
+      "passed": true,
+      "details": "training-mirror.png"
+    },
+    {
+      "check": "capture uses the SNES 256x224 frame",
+      "passed": true,
+      "details": {
+        "name": "training-mirror.png",
+        "size": [
+          256,
+          224
+        ]
+      }
+    },
+    {
+      "check": "capture is a populated presentation frame",
+      "passed": true,
+      "details": "training-mirror.png"
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training Back to PLAYER 1",
+        "row": 4,
+        "x": 23,
+        "character": "P",
+        "tile": 80
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training Back to PLAYER 1",
+        "row": 4,
+        "x": 24,
+        "character": "L",
+        "tile": 76
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training Back to PLAYER 1",
+        "row": 4,
+        "x": 25,
+        "character": "A",
+        "tile": 65
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training Back to PLAYER 1",
+        "row": 4,
+        "x": 26,
+        "character": "Y",
+        "tile": 89
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training Back to PLAYER 1",
+        "row": 4,
+        "x": 27,
+        "character": "E",
+        "tile": 69
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training Back to PLAYER 1",
+        "row": 4,
+        "x": 28,
+        "character": "R",
+        "tile": 82
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training Back to PLAYER 1",
+        "row": 4,
+        "x": 29,
+        "character": " ",
+        "tile": 32
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training Back to PLAYER 1",
+        "row": 4,
+        "x": 30,
+        "character": "1",
+        "tile": 49
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training Back to PLAYER 1",
+        "row": 17,
+        "x": 22,
+        "character": "C",
+        "tile": 67
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training Back to PLAYER 1",
+        "row": 17,
+        "x": 23,
+        "character": "R",
+        "tile": 82
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training Back to PLAYER 1",
+        "row": 17,
+        "x": 24,
+        "character": "I",
+        "tile": 73
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training Back to PLAYER 1",
+        "row": 17,
+        "x": 25,
+        "character": "S",
+        "tile": 83
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training Back to PLAYER 1",
+        "row": 17,
+        "x": 26,
+        "character": "T",
+        "tile": 84
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training Back to PLAYER 1",
+        "row": 17,
+        "x": 27,
+        "character": "O",
+        "tile": 79
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training Back to PLAYER 1",
+        "row": 17,
+        "x": 28,
+        "character": "B",
+        "tile": 66
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training Back to PLAYER 1",
+        "row": 17,
+        "x": 29,
+        "character": "A",
+        "tile": 65
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training Back to PLAYER 1",
+        "row": 17,
+        "x": 30,
+        "character": "L",
+        "tile": 76
+      }
+    },
+    {
+      "check": "native large portrait asset exists",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait02_tiles.bin"
+      }
+    },
+    {
+      "check": "large portrait asset is an 8x10 tile block",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "bytes": 2560
+      }
+    },
+    {
+      "check": "large portrait reaches BG2 VRAM exactly",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "vram_word": "0x4a00",
+        "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b"
+      }
+    },
+    {
+      "check": "profile map anchor selects tile 160 with palette 1",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "x": 23,
+        "y": 6,
+        "entry": "0x24a0",
+        "tile": 160,
+        "palette": 1
+      }
+    },
+    {
+      "check": "native large portrait palette exists",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait02_pal.bin"
+      }
+    },
+    {
+      "check": "native portrait tile block has the expected byte count",
+      "passed": true,
+      "details": {
+        "bytes": 2560,
+        "expected": 2560
+      }
+    },
+    {
+      "check": "native portrait palette contains sixteen colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "large portrait has a rendered native frame",
+      "passed": true,
+      "details": 2
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          64,
+          80
+        ],
+        "expected": [
+          64,
+          80
+        ]
+      }
+    },
+    {
+      "check": "large portrait crop matches decoded native PPU pixels",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "crop": [
+          184,
+          48,
+          248,
+          128
+        ],
+        "mean_channel_delta": 0.343359375,
+        "max_channel_delta": 2,
+        "pixels_over_16": 0,
+        "pixels": 5120
+      }
+    },
+    {
       "check": "stage fight intro completes",
       "passed": true,
       "details": {
@@ -12517,6 +14234,308 @@
         "las-condes": "0386c42c5db7d02c92ff25848f21c3015b82a8e526b6cd3f87281044cf26692f",
         "el-castillo": "dbc2ac344f2f5d7f911e26eb79f8a7f8b6ff9eae49088292a8b60527b3e4529c",
         "la-oficina": "2d13de62f9de51a169198b153910872916c33ac342327f22773a4545c05fa01f"
+      }
+    },
+    {
+      "check": "first fighter confirm leaves the second roster visible",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 1,
+        "frame": 182,
+        "mode": 1,
+        "hp1": 85,
+        "hp2": 85,
+        "x1": 0,
+        "x2": 21845,
+        "y1": 0,
+        "y2": 21845,
+        "action1": 85,
+        "action2": 85,
+        "wins1": 85,
+        "wins2": 85,
+        "arena": 0,
+        "round": 85,
+        "intro": 85,
+        "paused": 0,
+        "energy1": 85,
+        "energy2": 85,
+        "wave1": 85,
+        "wave2": 85,
+        "selected": 0,
+        "selected2": 1,
+        "arcade": 0,
+        "seconds": 85,
+        "pose1": 85,
+        "pose2": 85,
+        "round_end": 85,
+        "hitstop": 85,
+        "combo": 85,
+        "champion": 0,
+        "fighter_id1": 85,
+        "fighter_id2": 85,
+        "family1": 0,
+        "family2": 0,
+        "speed1": 20,
+        "speed2": 20,
+        "jump1": 65445,
+        "jump2": 65445,
+        "face1": 85,
+        "face2": 85,
+        "back_speed1": 14,
+        "back_speed2": 14,
+        "special_startup1": 10,
+        "special_startup2": 10,
+        "special_active1": 1,
+        "special_active2": 1,
+        "special_recovery1": 23,
+        "special_recovery2": 23,
+        "special_damage1": 15,
+        "special_damage2": 15,
+        "special_reach1": 19,
+        "special_reach2": 19,
+        "throw_range1": 27,
+        "throw_range2": 27,
+        "wave_low1": 85,
+        "wave_low2": 85,
+        "wave_speed1": 85,
+        "wave_speed2": 85,
+        "wave_life1": 85,
+        "wave_life2": 85,
+        "anim_frame1": 85,
+        "anim_frame2": 85,
+        "anim_state1": 85,
+        "anim_state2": 85,
+        "anim_tick1": 85,
+        "anim_tick2": 85,
+        "buffered_action1": 85,
+        "buffered_action2": 85,
+        "buffer_age1": 85,
+        "buffer_age2": 85,
+        "jump_buffer1": 85,
+        "jump_buffer2": 85,
+        "command_stage1": 85,
+        "command_stage2": 85,
+        "raw_keys1": 21845,
+        "raw_keys2": 21845,
+        "landing1": 85,
+        "landing2": 85,
+        "jump_vx1": 0,
+        "jump_vx2": 21845,
+        "hurt1": 85,
+        "hurt2": 85,
+        "guard1": 85,
+        "guard2": 85,
+        "connected1": 85,
+        "connected2": 85,
+        "combo1": 85,
+        "combo2": 85,
+        "combo_display1": 85,
+        "combo_display2": 85,
+        "counter1": 85,
+        "counter2": 85,
+        "down_state1": 85,
+        "down_state2": 85,
+        "down_tick1": 85,
+        "down_tick2": 85,
+        "invuln1": 85,
+        "invuln2": 85,
+        "pending_throw_damage1": 85,
+        "pending_throw_damage2": 85,
+        "throw_owner1": 85,
+        "throw_owner2": 85,
+        "air_action1": 85,
+        "air_action2": 85,
+        "throw_victim1": 85,
+        "throw_victim2": 85,
+        "wake_action1": 85,
+        "wake_action2": 85,
+        "wake_age1": 85,
+        "wake_age2": 85,
+        "wake_jump1": 85,
+        "wake_jump2": 85
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 23,
+        "character": "P",
+        "tile": 80
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 24,
+        "character": "L",
+        "tile": 76
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 25,
+        "character": "A",
+        "tile": 65
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 26,
+        "character": "Y",
+        "tile": 89
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 27,
+        "character": "E",
+        "tile": 69
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 28,
+        "character": "R",
+        "tile": 82
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 29,
+        "character": " ",
+        "tile": 32
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 30,
+        "character": "2",
+        "tile": 50
+      }
+    },
+    {
+      "check": "native large portrait asset exists",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_tiles.bin"
+      }
+    },
+    {
+      "check": "large portrait asset is an 8x10 tile block",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "bytes": 2560
+      }
+    },
+    {
+      "check": "large portrait reaches BG2 VRAM exactly",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "vram_word": "0x4a00",
+        "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1"
+      }
+    },
+    {
+      "check": "profile map anchor selects tile 160 with palette 1",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "x": 23,
+        "y": 6,
+        "entry": "0x24a0",
+        "tile": 160,
+        "palette": 1
+      }
+    },
+    {
+      "check": "native large portrait palette exists",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_pal.bin"
+      }
+    },
+    {
+      "check": "native portrait tile block has the expected byte count",
+      "passed": true,
+      "details": {
+        "bytes": 2560,
+        "expected": 2560
+      }
+    },
+    {
+      "check": "native portrait palette contains sixteen colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "large portrait has a rendered native frame",
+      "passed": true,
+      "details": 1
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          64,
+          80
+        ],
+        "expected": [
+          64,
+          80
+        ]
+      }
+    },
+    {
+      "check": "large portrait crop matches decoded native PPU pixels",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "crop": [
+          184,
+          48,
+          248,
+          128
+        ],
+        "mean_channel_delta": 0.2919921875,
+        "max_channel_delta": 2,
+        "pixels_over_16": 0,
+        "pixels": 5120
       }
     },
     {
@@ -19925,6 +21944,308 @@
       }
     },
     {
+      "check": "first fighter confirm leaves the second roster visible",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 1,
+        "frame": 182,
+        "mode": 1,
+        "hp1": 85,
+        "hp2": 85,
+        "x1": 0,
+        "x2": 21845,
+        "y1": 0,
+        "y2": 21845,
+        "action1": 85,
+        "action2": 85,
+        "wins1": 85,
+        "wins2": 85,
+        "arena": 0,
+        "round": 85,
+        "intro": 85,
+        "paused": 0,
+        "energy1": 85,
+        "energy2": 85,
+        "wave1": 85,
+        "wave2": 85,
+        "selected": 0,
+        "selected2": 1,
+        "arcade": 0,
+        "seconds": 85,
+        "pose1": 85,
+        "pose2": 85,
+        "round_end": 85,
+        "hitstop": 85,
+        "combo": 85,
+        "champion": 0,
+        "fighter_id1": 85,
+        "fighter_id2": 85,
+        "family1": 0,
+        "family2": 0,
+        "speed1": 20,
+        "speed2": 20,
+        "jump1": 65445,
+        "jump2": 65445,
+        "face1": 85,
+        "face2": 85,
+        "back_speed1": 14,
+        "back_speed2": 14,
+        "special_startup1": 10,
+        "special_startup2": 10,
+        "special_active1": 1,
+        "special_active2": 1,
+        "special_recovery1": 23,
+        "special_recovery2": 23,
+        "special_damage1": 15,
+        "special_damage2": 15,
+        "special_reach1": 19,
+        "special_reach2": 19,
+        "throw_range1": 27,
+        "throw_range2": 27,
+        "wave_low1": 85,
+        "wave_low2": 85,
+        "wave_speed1": 85,
+        "wave_speed2": 85,
+        "wave_life1": 85,
+        "wave_life2": 85,
+        "anim_frame1": 85,
+        "anim_frame2": 85,
+        "anim_state1": 85,
+        "anim_state2": 85,
+        "anim_tick1": 85,
+        "anim_tick2": 85,
+        "buffered_action1": 85,
+        "buffered_action2": 85,
+        "buffer_age1": 85,
+        "buffer_age2": 85,
+        "jump_buffer1": 85,
+        "jump_buffer2": 85,
+        "command_stage1": 85,
+        "command_stage2": 85,
+        "raw_keys1": 21845,
+        "raw_keys2": 21845,
+        "landing1": 85,
+        "landing2": 85,
+        "jump_vx1": 0,
+        "jump_vx2": 21845,
+        "hurt1": 85,
+        "hurt2": 85,
+        "guard1": 85,
+        "guard2": 85,
+        "connected1": 85,
+        "connected2": 85,
+        "combo1": 85,
+        "combo2": 85,
+        "combo_display1": 85,
+        "combo_display2": 85,
+        "counter1": 85,
+        "counter2": 85,
+        "down_state1": 85,
+        "down_state2": 85,
+        "down_tick1": 85,
+        "down_tick2": 85,
+        "invuln1": 85,
+        "invuln2": 85,
+        "pending_throw_damage1": 85,
+        "pending_throw_damage2": 85,
+        "throw_owner1": 85,
+        "throw_owner2": 85,
+        "air_action1": 85,
+        "air_action2": 85,
+        "throw_victim1": 85,
+        "throw_victim2": 85,
+        "wake_action1": 85,
+        "wake_action2": 85,
+        "wake_age1": 85,
+        "wake_age2": 85,
+        "wake_jump1": 85,
+        "wake_jump2": 85
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 23,
+        "character": "P",
+        "tile": 80
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 24,
+        "character": "L",
+        "tile": 76
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 25,
+        "character": "A",
+        "tile": 65
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 26,
+        "character": "Y",
+        "tile": 89
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 27,
+        "character": "E",
+        "tile": 69
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 28,
+        "character": "R",
+        "tile": 82
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 29,
+        "character": " ",
+        "tile": 32
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 30,
+        "character": "2",
+        "tile": 50
+      }
+    },
+    {
+      "check": "native large portrait asset exists",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_tiles.bin"
+      }
+    },
+    {
+      "check": "large portrait asset is an 8x10 tile block",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "bytes": 2560
+      }
+    },
+    {
+      "check": "large portrait reaches BG2 VRAM exactly",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "vram_word": "0x4a00",
+        "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1"
+      }
+    },
+    {
+      "check": "profile map anchor selects tile 160 with palette 1",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "x": 23,
+        "y": 6,
+        "entry": "0x24a0",
+        "tile": 160,
+        "palette": 1
+      }
+    },
+    {
+      "check": "native large portrait palette exists",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_pal.bin"
+      }
+    },
+    {
+      "check": "native portrait tile block has the expected byte count",
+      "passed": true,
+      "details": {
+        "bytes": 2560,
+        "expected": 2560
+      }
+    },
+    {
+      "check": "native portrait palette contains sixteen colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "large portrait has a rendered native frame",
+      "passed": true,
+      "details": 1
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          64,
+          80
+        ],
+        "expected": [
+          64,
+          80
+        ]
+      }
+    },
+    {
+      "check": "large portrait crop matches decoded native PPU pixels",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "crop": [
+          184,
+          48,
+          248,
+          128
+        ],
+        "mean_channel_delta": 0.2919921875,
+        "max_channel_delta": 2,
+        "pixels_over_16": 0,
+        "pixels": 5120
+      }
+    },
+    {
       "check": "presentation fight reaches live combat",
       "passed": true,
       "details": {
@@ -27112,6 +29433,308 @@
       }
     },
     {
+      "check": "first fighter confirm leaves the second roster visible",
+      "passed": true,
+      "details": {
+        "magic": 43706,
+        "screen": 1,
+        "frame": 182,
+        "mode": 1,
+        "hp1": 85,
+        "hp2": 85,
+        "x1": 0,
+        "x2": 21845,
+        "y1": 0,
+        "y2": 21845,
+        "action1": 85,
+        "action2": 85,
+        "wins1": 85,
+        "wins2": 85,
+        "arena": 0,
+        "round": 85,
+        "intro": 85,
+        "paused": 0,
+        "energy1": 85,
+        "energy2": 85,
+        "wave1": 85,
+        "wave2": 85,
+        "selected": 0,
+        "selected2": 1,
+        "arcade": 0,
+        "seconds": 85,
+        "pose1": 85,
+        "pose2": 85,
+        "round_end": 85,
+        "hitstop": 85,
+        "combo": 85,
+        "champion": 0,
+        "fighter_id1": 85,
+        "fighter_id2": 85,
+        "family1": 0,
+        "family2": 0,
+        "speed1": 20,
+        "speed2": 20,
+        "jump1": 65445,
+        "jump2": 65445,
+        "face1": 85,
+        "face2": 85,
+        "back_speed1": 14,
+        "back_speed2": 14,
+        "special_startup1": 10,
+        "special_startup2": 10,
+        "special_active1": 1,
+        "special_active2": 1,
+        "special_recovery1": 23,
+        "special_recovery2": 23,
+        "special_damage1": 15,
+        "special_damage2": 15,
+        "special_reach1": 19,
+        "special_reach2": 19,
+        "throw_range1": 27,
+        "throw_range2": 27,
+        "wave_low1": 85,
+        "wave_low2": 85,
+        "wave_speed1": 85,
+        "wave_speed2": 85,
+        "wave_life1": 85,
+        "wave_life2": 85,
+        "anim_frame1": 85,
+        "anim_frame2": 85,
+        "anim_state1": 85,
+        "anim_state2": 85,
+        "anim_tick1": 85,
+        "anim_tick2": 85,
+        "buffered_action1": 85,
+        "buffered_action2": 85,
+        "buffer_age1": 85,
+        "buffer_age2": 85,
+        "jump_buffer1": 85,
+        "jump_buffer2": 85,
+        "command_stage1": 85,
+        "command_stage2": 85,
+        "raw_keys1": 21845,
+        "raw_keys2": 21845,
+        "landing1": 85,
+        "landing2": 85,
+        "jump_vx1": 0,
+        "jump_vx2": 21845,
+        "hurt1": 85,
+        "hurt2": 85,
+        "guard1": 85,
+        "guard2": 85,
+        "connected1": 85,
+        "connected2": 85,
+        "combo1": 85,
+        "combo2": 85,
+        "combo_display1": 85,
+        "combo_display2": 85,
+        "counter1": 85,
+        "counter2": 85,
+        "down_state1": 85,
+        "down_state2": 85,
+        "down_tick1": 85,
+        "down_tick2": 85,
+        "invuln1": 85,
+        "invuln2": 85,
+        "pending_throw_damage1": 85,
+        "pending_throw_damage2": 85,
+        "throw_owner1": 85,
+        "throw_owner2": 85,
+        "air_action1": 85,
+        "air_action2": 85,
+        "throw_victim1": 85,
+        "throw_victim2": 85,
+        "wake_action1": 85,
+        "wake_action2": 85,
+        "wake_age1": 85,
+        "wake_age2": 85,
+        "wake_jump1": 85,
+        "wake_jump2": 85
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 23,
+        "character": "P",
+        "tile": 80
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 24,
+        "character": "L",
+        "tile": 76
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 25,
+        "character": "A",
+        "tile": 65
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 26,
+        "character": "Y",
+        "tile": 89
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 27,
+        "character": "E",
+        "tile": 69
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 28,
+        "character": "R",
+        "tile": 82
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 29,
+        "character": " ",
+        "tile": 32
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 4,
+        "x": 30,
+        "character": "2",
+        "tile": 50
+      }
+    },
+    {
+      "check": "native large portrait asset exists",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_tiles.bin"
+      }
+    },
+    {
+      "check": "large portrait asset is an 8x10 tile block",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "bytes": 2560
+      }
+    },
+    {
+      "check": "large portrait reaches BG2 VRAM exactly",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "vram_word": "0x4a00",
+        "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1"
+      }
+    },
+    {
+      "check": "profile map anchor selects tile 160 with palette 1",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "x": 23,
+        "y": 6,
+        "entry": "0x24a0",
+        "tile": 160,
+        "palette": 1
+      }
+    },
+    {
+      "check": "native large portrait palette exists",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "path": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait01_pal.bin"
+      }
+    },
+    {
+      "check": "native portrait tile block has the expected byte count",
+      "passed": true,
+      "details": {
+        "bytes": 2560,
+        "expected": 2560
+      }
+    },
+    {
+      "check": "native portrait palette contains sixteen colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "large portrait has a rendered native frame",
+      "passed": true,
+      "details": 1
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          64,
+          80
+        ],
+        "expected": [
+          64,
+          80
+        ]
+      }
+    },
+    {
+      "check": "large portrait crop matches decoded native PPU pixels",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "crop": [
+          184,
+          48,
+          248,
+          128
+        ],
+        "mean_channel_delta": 0.2919921875,
+        "max_channel_delta": 2,
+        "pixels_over_16": 0,
+        "pixels": 5120
+      }
+    },
+    {
       "check": "presentation fight reaches live combat",
       "passed": true,
       "details": {
@@ -28500,6 +31123,285 @@
         "thumbnail_y_inset": 2,
         "thumbnail_width": 104,
         "thumbnail_height": 52
+      }
+    },
+    "training_selection": {
+      "arbitrary": {
+        "state": {
+          "magic": 43706,
+          "screen": 1,
+          "frame": 318,
+          "mode": 2,
+          "hp1": 85,
+          "hp2": 85,
+          "x1": 0,
+          "x2": 21845,
+          "y1": 0,
+          "y2": 21845,
+          "action1": 85,
+          "action2": 85,
+          "wins1": 85,
+          "wins2": 85,
+          "arena": 0,
+          "round": 85,
+          "intro": 85,
+          "paused": 0,
+          "energy1": 85,
+          "energy2": 85,
+          "wave1": 85,
+          "wave2": 85,
+          "selected": 2,
+          "selected2": 10,
+          "arcade": 0,
+          "seconds": 85,
+          "pose1": 85,
+          "pose2": 85,
+          "round_end": 85,
+          "hitstop": 85,
+          "combo": 85,
+          "champion": 0,
+          "fighter_id1": 85,
+          "fighter_id2": 85,
+          "family1": 0,
+          "family2": 0,
+          "speed1": 20,
+          "speed2": 20,
+          "jump1": 65445,
+          "jump2": 65445,
+          "face1": 85,
+          "face2": 85,
+          "back_speed1": 14,
+          "back_speed2": 14,
+          "special_startup1": 10,
+          "special_startup2": 10,
+          "special_active1": 1,
+          "special_active2": 1,
+          "special_recovery1": 23,
+          "special_recovery2": 23,
+          "special_damage1": 15,
+          "special_damage2": 15,
+          "special_reach1": 19,
+          "special_reach2": 19,
+          "throw_range1": 27,
+          "throw_range2": 27,
+          "wave_low1": 85,
+          "wave_low2": 85,
+          "wave_speed1": 85,
+          "wave_speed2": 85,
+          "wave_life1": 85,
+          "wave_life2": 85,
+          "anim_frame1": 85,
+          "anim_frame2": 85,
+          "anim_state1": 85,
+          "anim_state2": 85,
+          "anim_tick1": 85,
+          "anim_tick2": 85,
+          "buffered_action1": 85,
+          "buffered_action2": 85,
+          "buffer_age1": 85,
+          "buffer_age2": 85,
+          "jump_buffer1": 85,
+          "jump_buffer2": 85,
+          "command_stage1": 85,
+          "command_stage2": 85,
+          "raw_keys1": 21845,
+          "raw_keys2": 21845,
+          "landing1": 85,
+          "landing2": 85,
+          "jump_vx1": 0,
+          "jump_vx2": 21845,
+          "hurt1": 85,
+          "hurt2": 85,
+          "guard1": 85,
+          "guard2": 85,
+          "connected1": 85,
+          "connected2": 85,
+          "combo1": 85,
+          "combo2": 85,
+          "combo_display1": 85,
+          "combo_display2": 85,
+          "counter1": 85,
+          "counter2": 85,
+          "down_state1": 85,
+          "down_state2": 85,
+          "down_tick1": 85,
+          "down_tick2": 85,
+          "invuln1": 85,
+          "invuln2": 85,
+          "pending_throw_damage1": 85,
+          "pending_throw_damage2": 85,
+          "throw_owner1": 85,
+          "throw_owner2": 85,
+          "air_action1": 85,
+          "air_action2": 85,
+          "throw_victim1": 85,
+          "throw_victim2": 85,
+          "wake_action1": 85,
+          "wake_action2": 85,
+          "wake_age1": 85,
+          "wake_age2": 85,
+          "wake_jump1": 85,
+          "wake_jump2": 85
+        },
+        "portrait": {
+          "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait10_tiles.bin",
+          "sha256": "91f53180fc9e25e5633ec62a380b62c7b90072213718a1a3b079b59c6d24a9e6",
+          "map_entry": 9376,
+          "tile": 160,
+          "palette": 1,
+          "rendered": {
+            "mean_channel_delta": 0.2921223958333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 5120
+          }
+        },
+        "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\training-dummy.png"
+      },
+      "mirror": {
+        "state": {
+          "magic": 43706,
+          "screen": 1,
+          "frame": 343,
+          "mode": 2,
+          "hp1": 85,
+          "hp2": 85,
+          "x1": 0,
+          "x2": 21845,
+          "y1": 0,
+          "y2": 21845,
+          "action1": 85,
+          "action2": 85,
+          "wins1": 85,
+          "wins2": 85,
+          "arena": 0,
+          "round": 85,
+          "intro": 85,
+          "paused": 0,
+          "energy1": 85,
+          "energy2": 85,
+          "wave1": 85,
+          "wave2": 85,
+          "selected": 2,
+          "selected2": 2,
+          "arcade": 0,
+          "seconds": 85,
+          "pose1": 85,
+          "pose2": 85,
+          "round_end": 85,
+          "hitstop": 85,
+          "combo": 85,
+          "champion": 0,
+          "fighter_id1": 85,
+          "fighter_id2": 85,
+          "family1": 0,
+          "family2": 0,
+          "speed1": 20,
+          "speed2": 20,
+          "jump1": 65445,
+          "jump2": 65445,
+          "face1": 85,
+          "face2": 85,
+          "back_speed1": 14,
+          "back_speed2": 14,
+          "special_startup1": 10,
+          "special_startup2": 10,
+          "special_active1": 1,
+          "special_active2": 1,
+          "special_recovery1": 23,
+          "special_recovery2": 23,
+          "special_damage1": 15,
+          "special_damage2": 15,
+          "special_reach1": 19,
+          "special_reach2": 19,
+          "throw_range1": 27,
+          "throw_range2": 27,
+          "wave_low1": 85,
+          "wave_low2": 85,
+          "wave_speed1": 85,
+          "wave_speed2": 85,
+          "wave_life1": 85,
+          "wave_life2": 85,
+          "anim_frame1": 85,
+          "anim_frame2": 85,
+          "anim_state1": 85,
+          "anim_state2": 85,
+          "anim_tick1": 85,
+          "anim_tick2": 85,
+          "buffered_action1": 85,
+          "buffered_action2": 85,
+          "buffer_age1": 85,
+          "buffer_age2": 85,
+          "jump_buffer1": 85,
+          "jump_buffer2": 85,
+          "command_stage1": 85,
+          "command_stage2": 85,
+          "raw_keys1": 21845,
+          "raw_keys2": 21845,
+          "landing1": 85,
+          "landing2": 85,
+          "jump_vx1": 0,
+          "jump_vx2": 21845,
+          "hurt1": 85,
+          "hurt2": 85,
+          "guard1": 85,
+          "guard2": 85,
+          "connected1": 85,
+          "connected2": 85,
+          "combo1": 85,
+          "combo2": 85,
+          "combo_display1": 85,
+          "combo_display2": 85,
+          "counter1": 85,
+          "counter2": 85,
+          "down_state1": 85,
+          "down_state2": 85,
+          "down_tick1": 85,
+          "down_tick2": 85,
+          "invuln1": 85,
+          "invuln2": 85,
+          "pending_throw_damage1": 85,
+          "pending_throw_damage2": 85,
+          "throw_owner1": 85,
+          "throw_owner2": 85,
+          "air_action1": 85,
+          "air_action2": 85,
+          "throw_victim1": 85,
+          "throw_victim2": 85,
+          "wake_action1": 85,
+          "wake_action2": 85,
+          "wake_age1": 85,
+          "wake_age2": 85,
+          "wake_jump1": 85,
+          "wake_jump2": 85
+        },
+        "portrait": {
+          "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait02_tiles.bin",
+          "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b",
+          "map_entry": 9376,
+          "tile": 160,
+          "palette": 1,
+          "rendered": {
+            "mean_channel_delta": 0.343359375,
+            "max_channel_delta": 2,
+            "pixels_over_16": 0,
+            "pixels": 5120
+          }
+        },
+        "capture": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\training-mirror.png"
+      },
+      "back_portrait": {
+        "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait02_tiles.bin",
+        "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b",
+        "map_entry": 9376,
+        "tile": 160,
+        "palette": 1,
+        "rendered": {
+          "mean_channel_delta": 0.343359375,
+          "max_channel_delta": 2,
+          "pixels_over_16": 0,
+          "pixels": 5120
+        }
       }
     },
     "stages": {
@@ -32428,6 +35330,6 @@
     ],
     "frame_count": 64
   },
-  "passed": 2692,
-  "elapsed_seconds": 56.25
+  "passed": 2865,
+  "elapsed_seconds": 60.49
 }

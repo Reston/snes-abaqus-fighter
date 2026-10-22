@@ -7,11 +7,11 @@
     "pre_extracted_tools_reused": false,
     "build_intermediates_reused": false
   },
-  "source_commit": "68842a2b040fefc9070542fcf57284af5494e1dc",
-  "source_tree": "b8e0eee67cdc0e8a92dee351bbf625959e38a9ec",
-  "rom_sha256": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7",
-  "work_directory": "build/fresh-build/68842a2b-er601e7s",
-  "source_archive_sha256": "0afc216184d148fccacfec25aaf308a586c0b48d5459d2e8a1dcdadb13490e9f",
+  "source_commit": "9134d4307037a935e1de31f08efd405409ac8ef7",
+  "source_tree": "38dc1d16565d7bc0d941f272339ccd4382fbe594",
+  "rom_sha256": "33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83",
+  "work_directory": "build/fresh-build/9134d430-j9ap8c9v",
+  "source_archive_sha256": "8c9b5459f7e4662b70e8952c7380f1a42ac08e9fb3ef6a820b565abdf13e9385",
   "cached_archives_reused": [
     "snes9x.zip",
     "pvsneslib.zip",
@@ -26,7 +26,7 @@
     "sdk_tree_sha256": "0cd7a571b0a020394ead285b887c81b717c55c39540335abd8c7774b55bccb7b"
   },
   "build_exit_code": 0,
-  "build_log": "build/fresh-build/68842a2b-er601e7s/build.log",
+  "build_log": "build/fresh-build/9134d430-j9ap8c9v/build.log",
   "bootstrap_archives": [
     {
       "name": "snes9x.zip",
@@ -53,7 +53,7 @@
     "python": "3.12.10",
     "pillow": "13.0.0"
   },
-  "rebuilt_rom_sha256": "1574bb4147605b3a0dd8d463b6403360a386c62334e1d5e29ea5654bd376baa7",
+  "rebuilt_rom_sha256": "33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83",
   "generated_assets": [
     {
       "file": "assets/generated/arenas.png",
@@ -77,8 +77,28 @@
     },
     {
       "file": "assets/generated/assets.h",
-      "sha256": "17e2d854ace89e595dd40287796e085c2b04efd1e05825dec3133a0e0e9e01a8",
+      "sha256": "e6b25995dbec2a066697b0cd5e98a29dc94863b5ff30bfad13094c5c2ca22fee",
       "comparison": "LF-normalized text"
+    },
+    {
+      "file": "assets/generated/champion.png",
+      "sha256": "e0301816094931a17ec1e338a09bcb6c2857d90187f6abeec69ba2279682de88",
+      "comparison": "exact bytes"
+    },
+    {
+      "file": "assets/generated/champion_map.bin",
+      "sha256": "4149213bbe977c91e8e847129ce64976879c4fbc9ae9a4e1431d505e375a1e9a",
+      "comparison": "exact bytes"
+    },
+    {
+      "file": "assets/generated/champion_pal.bin",
+      "sha256": "02e0569819891084a53ce2bf072b806eb611013e066b18c8c5480f76e00170bd",
+      "comparison": "exact bytes"
+    },
+    {
+      "file": "assets/generated/champion_tiles.bin",
+      "sha256": "7791af0e6eb849de844433cfbef99f4c16d921aec75e478964b6b1475f6a784e",
+      "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/character-manifest.json",
@@ -87,7 +107,7 @@
     },
     {
       "file": "assets/generated/data.asm",
-      "sha256": "f3d8e1eb7e4a932106f438f588e1504d724edbd1ec4616144af23af0b5238c37",
+      "sha256": "bb3bbea5ca43bcb66953a2501cda354ca8e5fb58c6e2eba0f568ca4762611049",
       "comparison": "LF-normalized text"
     },
     {
@@ -1126,7 +1146,7 @@
       "comparison": "exact bytes"
     }
   ],
-  "generated_assets_verified": 214,
+  "generated_assets_verified": 218,
   "symbols_equal_after_source_path_normalization": true,
-  "elapsed_seconds": 205.594
+  "elapsed_seconds": 126.672
 }
