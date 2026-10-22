@@ -63,7 +63,8 @@ page = '''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name=
 h2{font-size:21px;margin:0 0 5px}p{margin:0 0 14px}.muted,figcaption,summary{color:var(--muted-foreground,#5a6880)}
 .controls{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:16px 0}button{font:inherit;cursor:pointer;border:1px solid var(--border,#cad2e1);padding:7px 11px;border-radius:var(--radius,8px);background:var(--secondary,#eef2f9);color:var(--foreground,#17213a)}
 button[aria-pressed="true"]{background:var(--primary,#1c376b);color:var(--primary-foreground,#fff);border-color:transparent}label{margin-left:auto;white-space:nowrap;cursor:pointer}
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:16px}.gallery.zoom{grid-template-columns:repeat(auto-fit,minmax(min(100%,544px),1fr))}
+/* A zoom card needs 512 pixels plus 32 pixels of padding and two borders. */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:16px}.gallery.zoom{grid-template-columns:repeat(auto-fit,minmax(min(100%,546px),1fr))}
 .screen{margin:0;padding:16px;border:1px solid var(--border,#d6deeb);border-radius:var(--radius,10px);background:var(--card,#f7f9fd);color:var(--card-foreground,#17213a)}
 .screen[hidden]{display:none}h3{font-size:15px;margin:0 0 12px}img{display:block;width:256px;height:auto;max-width:100%;margin:0 auto 12px;image-rendering:pixelated}.zoom img{width:512px}figcaption{font-size:13px;min-height:38px}
 details{margin-top:18px}summary{cursor:pointer}code{font:11px/1.5 var(--font-mono,monospace);overflow-wrap:anywhere}details p{margin-top:8px}.status{margin-top:14px;font-size:12px}

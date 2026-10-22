@@ -412,6 +412,7 @@ button[aria-pressed=true] {{ border-color: transparent; background: var(--accent
 .frame-stage canvas {{ display: block; width: 100%; height: 100%; image-rendering: pixelated; }}
 .frame-stage canvas.flip {{ transform: scaleX(-1); }}
 .guide {{ position: absolute; display: block; pointer-events: none; }}
+.guide[hidden] {{ display: none; }}
 .floor-guide {{ left: 0; right: 0; top: calc(78px * var(--stage-scale)); height: 1px; background: #ffd05b; box-shadow: 0 0 0 1px rgba(255,208,91,.25); }}
 .frame-guide {{ inset: 0; border: 1px dashed rgba(255,255,255,.45); }}
 .frame-caption {{ margin-top: 8px; text-align: center; color: var(--muted); font-size: 12px; }}
@@ -467,7 +468,7 @@ summary {{ cursor: pointer; color: var(--muted); }}
         <option value="16-31">Frames 16-31</option>
         <option value="32-47">Frames 32-47</option>
         <option value="48-63">Frames 48-63</option>
-        <option value="all" selected>All frames / individual scrub 0-63</option>
+        <option value="all" selected>All frames (0-63)</option>
       </select></div>
       <div class="field"><label for="scale">Pixel scale</label><select id="scale" aria-label="Pixel scale"><option value="1">1x native</option><option value="2" selected>2x native</option></select></div>
       <div class="field button-row"><button id="play" type="button" aria-pressed="false" aria-label="Start fixed-rate inspection sweep">Run sweep</button><button id="first" type="button">First frame</button></div>
