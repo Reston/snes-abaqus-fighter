@@ -8,7 +8,7 @@
 #include "characters.h"
 #include "menu_portraits.h"
 
-#if MOD_EFFECTS != 0 || MOD_MUSIC0 != 1 || MOD_MUSIC3 != 4
+#if MOD_EFFECTS != 0 || MOD_MUSIC0 != 1 || MOD_MUSIC1 != 2 || MOD_MUSIC2 != 3 || MOD_MUSIC3 != 4 || MOD_MUSIC4 != 5
 #error Regenerate the resident effects-first soundbank with Build.cmd --assets
 #endif
 
@@ -265,6 +265,7 @@ void sound(u8 n) {
 }
 void music(u8 index) {
     u8 effect;
+    if(index>4)return;
     if(musicIndex==index)return;
     spcStop();spcLoad(MOD_MUSIC0+index);
     for(effect=0;effect<4;effect++)spcLoadEffect(effect);
@@ -455,6 +456,7 @@ void showResult(u8 won) {
     setScreenOff();screen=RESULT;resultWin=won;commonScreen();
     if(champion) {
         loadChampionEnding(won?fighters[0].id:fighters[1].id);
+        music(4);
         sound(3);finishScreen();return;
     }
     loadBackground(arena);

@@ -14,6 +14,7 @@ from effect_assets import make_effect_sheet
 from stage_assets import build_stage_animation
 from stage_sources import load_stage_sources
 from stage_cartoon import cartoon_stage_animation
+from victory_music import make_victory_it, soundbank_budget
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT/'assets/generated'
@@ -397,13 +398,15 @@ def make_it(path,transpose=0):
 for i in range(4):make_it(OUT/f'music{i}.it',[0,0,3,-2][i])
 effects_it=OUT/'effects.it'
 effect_hashes=make_effects_it(effects_it,sfx_pcm)
+make_victory_it(OUT/'music4.it',OUT/'music0.it')
 smconv=ROOT/'.tools/sdk/pvsneslib/devkitsnes/tools/smconv.exe'
-r=subprocess.run([str(smconv),'-s','-o','assets/generated/soundbank','-b','24','-f','-V',str(effects_it),*[str(OUT/f'music{i}.it') for i in range(4)]],cwd=ROOT,capture_output=True,text=True)
+r=subprocess.run([str(smconv),'-s','-o','assets/generated/soundbank','-b','24','-f','-V',str(effects_it),*[str(OUT/f'music{i}.it') for i in range(5)]],cwd=ROOT,capture_output=True,text=True)
 if r.returncode:raise RuntimeError(r.stdout+r.stderr)
 print(r.stdout)
 effect_report=r.stdout.split('Adding module, Filename:',2)
 if len(effect_report)<2 or 'Samples: [4/64]' not in effect_report[1]:
     raise RuntimeError('SMConv did not retain all four resident effect samples')
+print('Soundbank budget:',json.dumps(soundbank_budget(OUT/'soundbank.bnk')))
 for i,h in enumerate(effect_hashes):print(f'Effects PCM {i}: {h}')
 (OUT/'stage-dynamics.json').write_text(json.dumps({
     'version':'0.1.0','tile_index_base':960,'tile_count':8,
@@ -416,4 +419,4 @@ for i,h in enumerate(effect_hashes):print(f'Effects PCM {i}: {h}')
 },indent=2)+'\n')
 (OUT/'data.asm').write_text('\n'.join(asm)+'\n')
 (OUT/'assets.h').write_text('\n'.join(header)+'\n')
-print('Encoded seven backgrounds, 768 fighter frames, UI, effects, 4 music tracks and 4 sounds.')
+print('Encoded seven backgrounds, 768 fighter frames, UI, effects, 5 music tracks and 4 sounds.')

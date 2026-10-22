@@ -1,7 +1,7 @@
 """Silent native PCM audit and reproducible listening material.
 
 Load the pinned Snes9x core and the current cartridge. Controller-only A/B
-runs distinguish each resident cue from the same music timeline. Four music
+runs distinguish each resident cue from the same music timeline. Five music
 captures check repeated PCM structure near the authored score-cycle length.
 No frontend window, audio device, emulated-memory write or savestate is used.
 This supplements Test.cmd; it does not claim a human listening verdict.
@@ -13,6 +13,7 @@ import ctypes as C
 import hashlib
 import json
 import math
+import re
 from pathlib import Path
 import struct
 import sys
@@ -98,7 +99,8 @@ def timing(e: Emulator) -> tuple[float, int]:
 
 
 def record(e: Emulator, frames: int, *, fps: float, rate: int,
-           p1=(), p2=(), live: bool = True, transition: bool = False):
+           p1=(), p2=(), live: bool = True, transition: bool = False,
+           scene: int | None = None, transition_screens: tuple = (0, 1)):
     """Copy every batch; clear only the Python capture buffer between frames."""
     chunks, states = [], []
     before_samples = e.audio_samples
@@ -128,10 +130,14 @@ def record(e: Emulator, frames: int, *, fps: float, rate: int,
                 video_errors.append(('callback count', index+1, videos))
             now = e.state()
             valid = now['magic'] == 0xAABA
-            if live:
+            if transition:
+                valid = valid and now['screen'] in transition_screens
+            elif scene is not None:
+                valid = valid and now['screen'] == scene
+            elif live:
                 valid = valid and now['screen'] == 3 and now['intro'] == now['round_end'] == 0
             else:
-                valid = valid and now['screen'] in ((0, 1) if transition else (0,))
+                valid = valid and now['screen'] == 0
             # Scene loading can keep old TRACE while forced blank executes;
             # real video and sample cadence remain mandatory through it.
             if not transition:
@@ -156,6 +162,108 @@ def record(e: Emulator, frames: int, *, fps: float, rate: int,
               'frames': frames, 'expected_sample_frames': expected,
               'actual_sample_frames': len(pcm)//4, 'tolerance_sample_frames': 2})
     return pcm, states
+
+
+def native_byte(e: Emulator, name: str) -> int:
+    """Read a linker-resolved native byte without adding a trace field."""
+    if not hasattr(e, '_audio_symbols'):
+        e._audio_symbols = {}
+        symbol_file = e.rompath.with_suffix('.sym')
+        for line in symbol_file.read_text().splitlines():
+            match = re.match(r'^([0-9a-fA-F]{8})\s+(\w+)$', line)
+            if match:
+                e._audio_symbols[match[2]] = int(match[1], 16)
+    address = e._audio_symbols[name]
+    if address >> 16 == 0x7e:
+        offset = address & 0xffff
+    elif address < 0x2000:
+        offset = address
+    else:
+        raise ValueError(('Audio probe symbol is outside WRAM', name, address))
+    return C.string_at(e.ram+offset, 1)[0]
+
+
+def boot_champion() -> Emulator:
+    """Earn the actual ending through eleven controller-only Arcade wins."""
+    from collections import deque
+    from test_champion import play_cpu, press as ladder_press, wait as ladder_wait
+    e = Emulator()
+    ladder, transition = [], deque(maxlen=150)
+    original_run = e.run
+    try:
+        e.run(100)
+        ladder_press(e, 'l')  # Normal -> Easy; choose Enzo as the existing proof does.
+        ladder_press(e, 'a'); ladder_wait(e, 1)
+        for _ in range(4):
+            ladder_press(e, 'right')
+        ladder_press(e, 'a'); ladder_wait(e, 2)
+        ladder_press(e, 'a'); ladder_wait(e, 3); e.run(180)
+        fps, rate = timing(e)
+
+        def capture_run(n=1, p1=(), p2=()):
+            for _ in range(n):
+                e.pcm.clear()
+                now = original_run(1, p1=p1, p2=p2)
+                read, write = native_byte(e, 'spc_fread'), native_byte(e, 'spc_fwrite')
+                transition.append((bytes(e.pcm), {
+                    'screen': now['screen'], 'champion': now['champion'],
+                    'music_index': native_byte(e, 'musicIndex'),
+                    'spc_backlog': (write-read) & 255}))
+            return now
+
+        ordinary = None
+        for match in range(11):
+            if match == 10:
+                e.run = capture_run
+            attempts = []
+            for _ in range(8):
+                play_cpu(e)
+                current = state(e)
+                check(current['screen'] == 4 and current['arcade'] == match,
+                      'audio ladder reaches the actual next result', current)
+                attempts.append([current['wins1'], current['wins2']])
+                if current['wins1'] == 2:
+                    break
+                check(not current['champion'], 'loss cannot award Champion score')
+                ladder_press(e, 'a'); ladder_wait(e, 3)
+            check(current['wins1'] == 2 and current['champion'] == int(match == 10),
+                  'victory score is earned only after the eleventh win', current)
+            ladder.append({'opponent': current['fighter_id2'], 'arena': current['arena'],
+                           'attempts': attempts})
+            if match == 0:
+                check(native_byte(e, 'musicIndex') == current['arena']+1,
+                      'ordinary result keeps the current arena score')
+                pcm, _ = record(e, 60, fps=fps, rate=rate, live=False, scene=4)
+                ordinary = {'music_index': native_byte(e, 'musicIndex'),
+                            'pcm': metrics(pcm, rate),
+                            'capture': save_wav('ordinary-result', pcm, rate)}
+            if match < 10:
+                ladder_press(e, 'a'); ladder_wait(e, 3)
+        e.run(90)
+        e.run = original_run
+        check(len({item['opponent'] for item in ladder}) == 11,
+              'all eleven distinct opponents were defeated with controllers')
+        check(native_byte(e, 'musicIndex') == 4,
+              'actual Champion scene selects the fifth music score')
+        pcm = b''.join(item[0] for item in transition)
+        states = [item[1] for item in transition]
+        check({s['music_index'] for s in states} == {2, 4},
+              'final arena score changes directly to Champion score', states)
+        check(max(s['spc_backlog'] for s in states) <= 6 and states[-1]['spc_backlog'] == 0,
+              'Champion load preserves the resident SPC FIFO budget')
+        stats = metrics(pcm, rate)
+        check(stats['clipped_samples'] == 0 and stats['rms'] > 32 and
+              stats['longest_near_silence_seconds'] < 0.5,
+              'Champion transition has audible unclipped PCM without a long dropout', stats)
+        e.champion_audio_proof = {
+            'controller_only': True, 'ladder': ladder, 'ordinary_result': ordinary,
+            'champion_transition': {'pcm': stats, 'frames': states,
+                                    'capture': save_wav('champion-transition', pcm, rate)}}
+        return e
+    except Exception:
+        e.run = original_run
+        e.close()
+        raise
 
 
 def samples(pcm: bytes) -> array.array:
@@ -422,10 +530,12 @@ def score_repeat(pcm: bytes, rate: int, nominal: float) -> dict:
 
 def verify_music(verified_assets: dict[str, str]) -> dict:
     result = {}
-    for module, name in enumerate(('title', 'las-condes', 'el-castillo', 'la-oficina')):
+    for module, name in enumerate(('title', 'las-condes', 'el-castillo', 'la-oficina', 'office-champion')):
         if module == 0:
             e = Emulator()
             e.run(180)
+        elif module == 4:
+            e = boot_champion()
         else:
             e = boot_match(module-1)
         try:
@@ -438,7 +548,8 @@ def verify_music(verified_assets: dict[str, str]) -> dict:
             # Allow native tempo quantization and retain a long passage after
             # the second cycle for an observed repetition check.
             frames = math.ceil((cycle*2+4) * fps)
-            pcm, states = record(e, frames, fps=fps, rate=rate, live=module != 0)
+            pcm, states = record(e, frames, fps=fps, rate=rate, live=module not in (0, 4),
+                                 scene=4 if module == 4 else None)
             stats = metrics(pcm, rate)
             repeat = score_repeat(pcm, rate, cycle)
             check(stats['seconds'] > repeat['observed_pcm_repeat_seconds']*2,
@@ -452,9 +563,25 @@ def verify_music(verified_assets: dict[str, str]) -> dict:
                             'repeat': repeat,
                             'pcm': stats, 'capture': save_wav('music-'+name, pcm, rate),
                             'start': states[0], 'end': states[-1]}
+            if module == 4:
+                result[name]['controller_proof'] = verify_champion_exit(e, fps, rate)
         finally:
             e.close()
     return result
+
+
+def verify_champion_exit(e: Emulator, fps: float, rate: int, key: str = 'a') -> dict:
+    pcm, states = record(e, 120, fps=fps, rate=rate, p1=[key], live=False,
+                         transition=True, transition_screens=(4, 0))
+    check(states[-1]['screen'] == 0 and native_byte(e, 'musicIndex') == 0,
+          'Champion A/Start exit restores title music with controllers')
+    stats = metrics(pcm, rate)
+    check(stats['clipped_samples'] == 0 and stats['rms'] > 32 and
+          stats['longest_near_silence_seconds'] < 0.5,
+          'Champion-to-title PCM has no clipping or long dropout', stats)
+    return {**e.champion_audio_proof, 'title_exit': {
+        'key': key, 'music_index': native_byte(e, 'musicIndex'), 'pcm': stats,
+        'capture': save_wav('champion-title-exit-'+key, pcm, rate)}}
 
 
 def make_listening_pack(report: dict) -> dict:

@@ -41,7 +41,7 @@ INDEPENDENT_FRAMES = 600
 INDEPENDENT_TOTAL_FRAMES = INDEPENDENT_CASES * INDEPENDENT_FRAMES
 HOUR_SECONDS = 3600.0
 ROM_BYTES = 4 * 1024 * 1024
-GENERATED_ASSET_COUNT = 218
+GENERATED_ASSET_COUNT = 219
 
 EXPECTED_NATIVE_CORE = {
     "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
@@ -127,6 +127,7 @@ SOURCE_INPUT_EXACT = {
     "tools/stage_sources.py",
     "tools/stage_cartoon.py",
     "tools/effect_assets.py",
+    "tools/victory_music.py",
 }
 SOURCE_INPUT_PREFIXES = ("src/", "assets/", "dist/")
 
