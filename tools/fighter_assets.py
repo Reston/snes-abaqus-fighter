@@ -68,7 +68,8 @@ NATIVE_BASELINE_SHA256 = '386a430db966c7f5c843811d78d9e06043838d8893f166bdc58637
 NATIVE_REVISION_REGISTRY = {
     0: {
         'contract_file': 'assets/art/characters/00-damian/native-revision.json',
-        'contract_sha256': '00f90a6765904c546284832d399c1a5ec581f08fed64a7f7bedc6d9df985e261',
+        'source_version': 'v5',
+        'contract_sha256': 'b6b94f879ed72b1eb0e84e100076f6cb80fddd990c162bc0361f1cd7da4631fc',
     },
     9: {
         'contract_file': 'assets/art/characters/09-reston/native-revision.json',
@@ -487,7 +488,10 @@ def _validate_revision_native_block(block, baseline_entry, label):
 def _load_revision_sources(root, fighter, slug, directory, baseline_entry):
     """Resolve an explicitly allowlisted four-atlas revision, if present."""
     registry = NATIVE_REVISION_REGISTRY.get(fighter)
-    candidates = [directory / f'{stem}-v4{suffix}'
+    source_version = registry.get('source_version', 'v4') if registry else 'v4'
+    if source_version not in ('v4', 'v5'):
+        raise AssertionError(f'{slug}: unsupported registered source version')
+    candidates = [directory / f'{stem}-{source_version}{suffix}'
                   for stem, suffix in (('atlas', '.png'),
                                        ('animation-motion', '.png'),
                                        ('animation-actions', '.png'),
@@ -521,7 +525,8 @@ def _load_revision_sources(root, fighter, slug, directory, baseline_entry):
         raise AssertionError()
     provenance_files = contract.get('provenance_files')
     expected_provenance_names = (
-        'likeness-v4.json', 'animation-v4.json', 'animation-airborne-v4.json')
+        f'likeness-{source_version}.json', f'animation-{source_version}.json',
+        f'animation-airborne-{source_version}.json')
     if not (isinstance(provenance_files, list) and len(provenance_files) == 3):
         raise AssertionError(f'{slug}: revision must pin exactly three provenance descriptors')
     provenance_paths = []
@@ -540,11 +545,11 @@ def _load_revision_sources(root, fighter, slug, directory, baseline_entry):
     resolved_old = {}
     resolved_new = {}
     expected_new_names = {
-        'legacy': 'atlas-v4.png',
-        'motion': 'animation-motion-v4.png',
-        'actions': 'animation-actions-v4.png',
-        'airborne': 'animation-airborne-v4.png',
-        'airborne_metadata': 'animation-airborne-v4.json',
+        'legacy': f'atlas-{source_version}.png',
+        'motion': f'animation-motion-{source_version}.png',
+        'actions': f'animation-actions-{source_version}.png',
+        'airborne': f'animation-airborne-{source_version}.png',
+        'airborne_metadata': f'animation-airborne-{source_version}.json',
     }
     for role in REVISION_SOURCE_ROLES:
         old = old_sources[role]
@@ -553,7 +558,7 @@ def _load_revision_sources(root, fighter, slug, directory, baseline_entry):
             raise AssertionError(f'{slug}: revision old {role} source does not match immutable baseline')
         resolved_old[role] = _resolve_checked_source(root, directory, old, f'{slug} old {role}')
         if not (Path(new_sources[role].get('file', '')).name == expected_new_names[role]):
-            raise AssertionError(f'{slug}: revision {role} must use the versioned v4 source name')
+            raise AssertionError(f'{slug}: revision {role} must use the registered {source_version} source name')
         resolved_new[role] = _resolve_checked_source(root, directory, new_sources[role],
                                                      f'{slug} new {role}')
     old_native = _validate_revision_native_block(
@@ -686,16 +691,16 @@ def validate_airborne_atlas(root, fighter):
     if revision:
         scales = revision['source_normalization']
         figures = _normalize_animation_locked(figures, scales['legacy'],
-                                               f'{slug}/legacy-v4')
+                                               f'{slug}/legacy-revision')
         motion_source_scale = scales['motion']
         action_source_scale = scales['actions']
         source_scale = scales['airborne']
         motion_figures = _normalize_animation_locked(
-            motion_figures, motion_source_scale, f'{slug}/motion-v4')
+            motion_figures, motion_source_scale, f'{slug}/motion-revision')
         action_figures = _normalize_animation_locked(
-            action_figures, action_source_scale, f'{slug}/actions-v4')
+            action_figures, action_source_scale, f'{slug}/actions-revision')
         airborne_figures = _normalize_animation_locked(
-            airborne_figures, source_scale, f'{slug}/airborne-v4')
+            airborne_figures, source_scale, f'{slug}/airborne-revision')
         uniform_scale = baseline_entry['uniform_scale']
     else:
         motion_figures, motion_source_scale = _normalize_animation(
@@ -832,16 +837,16 @@ def prepare_roster(root, output):
         if revision:
             source_normalization = revision['source_normalization']
             figures = _normalize_animation_locked(
-                figures, source_normalization['legacy'], f'{slug}/legacy-v4')
+                figures, source_normalization['legacy'], f'{slug}/legacy-revision')
             motion_source_scale = source_normalization['motion']
             action_source_scale = source_normalization['actions']
             airborne_source_scale = source_normalization['airborne']
             motion_figures = _normalize_animation_locked(
-                motion_figures, motion_source_scale, f'{slug}/motion-v4')
+                motion_figures, motion_source_scale, f'{slug}/motion-revision')
             action_figures = _normalize_animation_locked(
-                action_figures, action_source_scale, f'{slug}/actions-v4')
+                action_figures, action_source_scale, f'{slug}/actions-revision')
             airborne_figures = _normalize_animation_locked(
-                airborne_figures, airborne_source_scale, f'{slug}/airborne-v4')
+                airborne_figures, airborne_source_scale, f'{slug}/airborne-revision')
             base_figures = figures + motion_figures + action_figures
             uniform_scale = baseline_entry['uniform_scale']
         else:
