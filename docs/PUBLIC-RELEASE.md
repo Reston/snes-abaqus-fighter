@@ -1,12 +1,11 @@
 # Public-release quality target
-<!-- candidate-version: 0.12.0; rom-sha256: 33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83 -->
+<!-- candidate-version: 0.13.0; rom-sha256: eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4 -->
 
-The current v0.12.0 Training/ending candidate is cartridge SHA256
-`33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83`. Its [release note](RELEASE-v0.12.0.md)
-records verification and package status. All six native suites pass 33,509
-checks; matching independent, matrix, endurance and isolated-rebuild gates pass.
-This frozen snapshot records the Training Start+Select issue; its fix is separate.
-The verified v0.11.0 package and older results below remain historical.
+The current v0.13.0 review candidate is cartridge SHA256
+`eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4`. Its [release note](RELEASE-v0.13.0.md)
+records verification and package status. All six native suites pass 34,193 checks on this ROM; matching smoke,
+matrix, independent combat, endurance and isolated-rebuild gates also pass.
+The verified v0.12.0 package and older results below remain historical.
 Human gameplay, full listening, physical-controller sessions, likeness/consent
 and team/public-use approval remain open. `public_release_certified` is false.
 

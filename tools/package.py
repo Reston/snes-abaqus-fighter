@@ -18,7 +18,7 @@ from typing import Mapping
 
 # The pinned embeddable Python does not add the script directory to sys.path.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from release_evidence import (EXTRA_REPORTS, training_report_path,
+from release_evidence import (EXTRA_REPORTS, EXPECTED_NATIVE_CORE, GENERATED_ASSET_COUNT, training_report_path,
                                validate_release_evidence)
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -199,7 +199,11 @@ def build_package_files(root: Path = ROOT, manifest: Mapping | None = None) -> d
         f'preservation-v{version}.json': root / f'docs/preservation-v{version}.json',
         f'verification-v{version}.json': root / f'docs/verification-v{version}.json',
         'REVIEW.html': root / f'docs/REVIEW-v{version}.html',
+        'ROSTER-REVIEW.html': root / f'docs/ROSTER-REVIEW-v{version}.html',
         'CHAMPION-ENDING.md': root / 'docs/CHAMPION-ENDING.md',
+        'CHAMPION-AUDIO.md': root / 'docs/CHAMPION-AUDIO.md',
+        'champion-audio-report.json': root / 'docs/champion-audio-report.json',
+        f'audio-listening-v{version}.json': root / f'docs/audio-listening-v{version}.json',
         'champion-preservation-report.json': root / 'docs/champion-preservation-report.json',
         'champion-native-budget.json': root / 'docs/champion-native-budget.json',
         'champion-ending-report.json': root / 'docs/champion-ending-report.json',
@@ -240,6 +244,9 @@ def qa_readme_bytes() -> bytes:
         'checkout and to captures that are not bundled in this offline '
         'archive. Source-only documentation links are labeled explicitly so '
         'they are not mistaken for package files.\n\n'
+        'ROSTER-REVIEW.html embeds the twelve generated native fighter strips '
+        'for frame/facing inspection. Its fixed-rate sweep is an inspection aid, '
+        'not emulator gameplay or the game animation timing.\n\n'
         'Champion capture paths recorded as docs/screenshots/champion/... '
         'are bundled under screenshots/champion/...; remove the leading '
         'docs/ to locate those PNGs. The Markdown champion guide links them '
@@ -398,8 +405,7 @@ def validate_candidate_docs(files: Mapping[str, Path], manifest: Mapping) -> Non
     marker = (f"<!-- candidate-version: {manifest['version']}; "
               f"rom-sha256: {manifest['sha256']} -->")
     names = ['README.md', 'RELEASE.md', 'COMPATIBILITY.md', 'PUBLIC-RELEASE.md']
-    if 'CHAMPION-ENDING.md' in files:
-        names.append('CHAMPION-ENDING.md')
+    names += [name for name in ('CHAMPION-ENDING.md', 'CHAMPION-AUDIO.md') if name in files]
     for name in names:
         text = files[name].read_text(encoding='utf-8')
         require(marker in text.splitlines()[:5],
@@ -506,20 +512,142 @@ def validate_champion_evidence(root: Path, manifest: Mapping) -> None:
         report = read_json(root / f'docs/champion-ending{suffix}-report.json', 'champion route')
         validate_champion_route(report, manifest['sha256'], key, screen)
     preserved = read_json(root / 'docs/champion-preservation-report.json', 'champion preservation')
+    require(isinstance(preserved, Mapping), 'Champion preservation report must be a JSON object')
     require(preserved.get('status') == 'passed' and
             preserved.get('rom_sha256') == manifest['sha256'],
             'Champion preservation evidence is stale or incomplete')
-    for field, expected in {'generated_assets_total':218, 'existing_assets_preserved':212,
-                           'registration_files_extended':2, 'generated_assets_added':4,
-                           'native_assembly_preserved':2}.items():
-        require(preserved.get(field) == expected, 'Champion preservation count: ' + field)
     fresh = read_json(root / 'docs/fresh-build-test-report.json', 'fresh source identity')
     require(fresh.get('status') == 'passed' and fresh.get('rom_sha256') == manifest['sha256'] and
             preserved.get('source_freeze') == fresh.get('source_commit'),
             'Champion preservation source must match the isolated current-ROM rebuild')
+    validate_preservation(preserved, root, manifest, fresh['source_commit'])
+    records, added = preserved.get('files', []), preserved.get('added', [])
+    expected = {row['file'] for row in fresh['generated_assets']} | {'src/hardware.asm','src/trace.asm'}
+    require(len(records) + len(added) == len(expected) and
+            {row.get('path') for row in records + added} == expected,
+            'Preservation must cover every generated file and both protected native ASM files')
+    generated = [row for row in records if row['path'].startswith('assets/generated/')]
+    counts = {'generated_assets_total':GENERATED_ASSET_COUNT,
+              'existing_assets_preserved':sum(row.get('preserved') is True for row in generated),
+              'generated_assets_modified':sum(row.get('preserved') is False for row in generated),
+              'generated_assets_added':len(added),
+              'native_assembly_preserved':sum(row.get('preserved') is True for row in records
+                                             if row['path'].startswith('src/'))}
+    for field, value in counts.items():
+        require(preserved.get(field) == value, 'Champion preservation count: ' + field)
+    require(counts['native_assembly_preserved'] == 2 and
+            counts['existing_assets_preserved'] + counts['generated_assets_modified'] + len(added) == GENERATED_ASSET_COUNT,
+            'Preservation totals must match the current native asset set')
+    for row in records + added:
+        require(sha256_file(root / row['path']) == row.get('sha256'),
+                'Preservation file hash differs from the current input', row['path'])
     require(read_json(root / 'docs/champion-native-budget.json', 'champion native budget') ==
             champion_native_budget(root, manifest),
             'Champion native address/budget record is stale or incomplete')
+    validate_champion_audio(read_json(root / 'docs/champion-audio-report.json', 'champion audio'),
+                            root, manifest)
+    validate_listening_record(root, manifest)
+
+
+def validate_preservation(report: Mapping, root: Path, manifest: Mapping, source_freeze: str) -> None:
+    require(isinstance(report, Mapping), 'Preservation report must be a JSON object')
+    from preservation import validate_report
+    try:
+        validate_report(root, report, manifest, source_freeze)
+    except (ValueError, OSError, KeyError) as error:
+        raise PackageError('Preservation baseline comparison failed: '+str(error)) from error
+
+
+def validate_champion_audio(report: Mapping, root: Path, manifest: Mapping) -> None:
+    """Require production capture proof, with its separate cue fixture identified."""
+    from victory_music import soundbank_budget
+    require(report.get('suite') == 'focused-champion-audio' and
+            report.get('status') == 'passed' and report.get('rom_sha256') == manifest['sha256'] and
+            report.get('checksum') == manifest['checksum'],
+            'Champion audio evidence must pass on the exact current cartridge')
+    checks = report.get('checks')
+    require(isinstance(checks, list) and checks and all(row.get('passed') is True for row in checks),
+            'Champion audio checks are empty or failed')
+    host = report.get('host_contract', {})
+    require(report.get('controller_only') is True and report.get('emulated_memory_writes') == 0 and
+            report.get('savestates') == 0 and host.get('gui_opened') is False and
+            host.get('audio_device_opened') is False and host.get('priority_class') == 0x4000 and
+            len(host.get('logical_processors', [])) == 2 and
+            report.get('human_listening_approved') is False,
+            'Champion audio must retain its silent controller-only technical scope')
+    require(report.get('native_budget') == soundbank_budget(root / 'assets/generated/soundbank.bnk'),
+            'Champion audio native soundbank budget is stale')
+    require(report.get('core_sha256') == EXPECTED_NATIVE_CORE['dll_sha256'] ==
+            sha256_file(root / '.tools/core/snes9x_libretro.dll'),
+            'Champion audio core differs from the pinned native core')
+    harness = report.get('harness_sha256', {})
+    expected_harness = ('tools/test_champion_audio.py', 'tools/test_audio.py', 'tools/test_champion.py',
+                        'tools/emulator.py', 'tools/victory_music.py', 'tools/make_assets.py')
+    require(set(harness) == set(expected_harness) and
+            all(harness[name] == sha256_file(root/name) for name in expected_harness),
+            'Champion audio harness or authoring inputs changed after capture')
+    cue_names = {'swing', 'impact', 'special', 'round-confirm'}
+    require(set(report.get('production_cues', {})) == cue_names,
+            'Champion audio must capture all four production cues')
+    scores = ('title', 'las-condes', 'el-castillo', 'la-oficina', 'office-champion')
+    music = report.get('music', {})
+    require(set(music) == set(scores), 'Champion audio must capture all five scores')
+    for index, name in enumerate(scores):
+        score = music[name]
+        pcm, repeat = score.get('pcm', {}), score.get('repeat', {})
+        require(score.get('module') == index and score.get('module_sha256') ==
+                sha256_file(root / f'assets/generated/music{index}.it'),
+                'Champion audio score source is stale', name)
+        require(pcm.get('clipped_samples') == 0 and pcm.get('rms', 0) > 32 and
+                pcm.get('longest_near_silence_seconds', 1) < 0.5 and
+                pcm.get('seconds', 0) > 2 * repeat.get('observed_pcm_repeat_seconds', float('inf')) and
+                repeat.get('envelope_correlation', 0) >= 0.96 and
+                repeat.get('zero_crossing_correlation', 0) >= 0.85,
+                'Champion audio score lacks healthy full-cycle PCM evidence', name)
+    for key, proof in (('a', music['office-champion'].get('controller_proof', {})),
+                       ('start', report.get('start_exit', {}))):
+        ladder, exit = proof.get('ladder', []), proof.get('title_exit', {})
+        transition = proof.get('champion_transition', {}).get('frames', [])
+        require(proof.get('controller_only') is True and len(ladder) == 11 and
+                len({row.get('opponent') for row in ladder}) == 11 and
+                all(row.get('arena') == index % 3 and row.get('attempts') and
+                    row['attempts'][-1][0] == 2 for index, row in enumerate(ladder)) and
+                exit.get('key') == key and exit.get('music_index') == 0 and transition and
+                {row.get('music_index') for row in transition} == {2, 4} and
+                max(row.get('spc_backlog', 256) for row in transition) <= 6 and
+                transition[-1].get('spc_backlog') == 0,
+                'Champion audio requires earned victory and drained title-exit proof', key)
+    fixture = report.get('victory_cue_fixture', {})
+    require(fixture.get('production_rom') is False and fixture.get('emulated_memory_writes') == 0 and
+            fixture.get('savestates') == 0 and fixture.get('rom_sha256') != manifest['sha256'] and
+            set(fixture.get('cues', {})) == cue_names,
+            'Champion cue fixture must remain separately identified')
+
+
+def validate_listening_record(root: Path, manifest: Mapping) -> None:
+    record = read_json(root / f"docs/audio-listening-v{manifest['version']}.json", 'listening archive record')
+    require(isinstance(record, Mapping) and record.get('status') == 'passed' and
+            record.get('version') == manifest['version'] and record.get('rom_sha256') == manifest['sha256'] and
+            record.get('human_listening_approved') is False and
+            record.get('source_report') == 'docs/champion-audio-report.json' and
+            record.get('source_report_sha256') == sha256_file(root/'docs/champion-audio-report.json'),
+            'Listening archive record must match current capture evidence')
+    archive = record.get('archive', {})
+    relative = f"dist/Abaqus-After-Hours-v{manifest['version']}-Audio-Review.zip"
+    path = root / relative
+    require(archive.get('file') == relative and path.is_file() and
+            archive.get('bytes') == path.stat().st_size and archive.get('sha256') == sha256_file(path),
+            'Separate listening archive differs from its exact capture record')
+    with zipfile.ZipFile(path) as listening:
+        require(listening.testzip() is None, 'Listening archive CRC failed')
+        inside = json.loads(listening.read('manifest.json'))
+        require(inside.get('version') == manifest['version'] and
+                inside.get('rom_sha256') == manifest['sha256'] and
+                inside.get('human_listening_approved') is False and len(inside.get('captures', [])) == 13,
+                'Listening archive manifest must identify all thirteen current technical captures')
+        for capture in inside['captures']:
+            require(sha256_bytes(listening.read(capture['file'])) == capture['sha256'],
+                    'Listening archive capture differs from its verified hash', capture['file'])
 
 
 def write_entry(package: zipfile.ZipFile, name: str, data: bytes) -> None:

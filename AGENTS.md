@@ -6,7 +6,26 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
-- The active checkout is the **v0.12.0 Training/ending candidate**.
+- The active checkout is the **v0.13.0 champion music/pause/build candidate**.
+  ROM SHA256 `eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4`, header `B2CC`,
+  source freeze `9e4b4a6e837bd3c91bba81f9781dab1cecbb79c8`, tree `c7f5aeda2c1873ef6450138bbdea1389d58a71e9`.
+  Start owns a paused Training sample even with simultaneous Select from either
+  controller. The earned champion scene loads a fifth original score; the four
+  original scores and resident BRR/native module payloads are preserved.
+  An ordinary build regenerates assets when any required generated header is absent.
+  There are 219 generated files; two soundbank outputs change and music4.it is
+  added relative to v0.12.0. Native ABI, actor, ambient and art budgets remain.
+  All six native suites pass 34,193 checks on this exact ROM. Matching
+  independent smoke, full matrix/replays, bounded independent combat, three
+  native live-hour sessions and a fresh committed-source rebuild pass.
+  The rebuild reproduces 219 assets and symbols in 298.656 seconds.
+  Focused champion audio passes 1,792 capture-only checks.
+  The Windows package passes 8,401 audit checks. Two consecutive
+  final ZIPs are identical at 8,533,050 bytes, SHA256
+  `c054e656ac840be746e785f11ea49325b67e7eea8a6586ddbb17e92b5fbbb174`. Human gates remain open.
+  See docs/RELEASE-v0.13.0.md; older evidence below is historical.
+
+- The preserved offline checkpoint is the **v0.12.0 Training/ending candidate**.
   ROM SHA256 `33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83`, header `222B`,
   source freeze `9134d4307037a935e1de31f08efd405409ac8ef7`.
   Training adds a DUMMY roster step supporting arbitrary and mirror opponents.

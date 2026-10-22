@@ -1,14 +1,15 @@
 # Original Office Champion ending
-<!-- candidate-version: 0.12.0; rom-sha256: 33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83 -->
+<!-- candidate-version: 0.13.0; rom-sha256: eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4 -->
 
-The combined v0.12.0 cartridge has SHA256
-`33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83`,
-checksum `222B`, source freeze `9134d4307037a935e1de31f08efd405409ac8ef7`.
+The combined v0.13.0 cartridge has SHA256
+`eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4`,
+checksum `B2CC`, source freeze `9e4b4a6e837bd3c91bba81f9781dab1cecbb79c8`.
 The eleventh Arcade victory earns an original trophy and Santiago night-office
 scene with the winner's portrait, name, actual round score and quote.
-A/Start returns to the title; B returns to fighter select.
+A/Start returns to the title; B returns to fighter select. The new original
+[victory score](CHAMPION-AUDIO.md) begins only on the earned champion scene.
 
-The [release note](RELEASE-v0.12.0.md) records the full candidate's verification
+The [release note](RELEASE-v0.13.0.md) records the full candidate's verification
 and package status. Human approval remains open. The earlier isolated feature
 cartridge is historical; its reports here are replaced by combined-ROM evidence.
 
@@ -57,17 +58,17 @@ compares each block's cartridge bytes with its generated source. The package
 gate recomputes that record so a later link cannot leave stale addresses here.
 
 Each block fits one 32 KiB LoROM bank. Maximum tile index 329 leaves ambient
-cells 960..967 untouched. No live DMA, OBJ, combat, audio, Fighter64/Wave16 or
-TRACE[0..122] change is introduced by the ending.
+cells 960..967 untouched. The static art introduces no live DMA, OBJ, combat, Fighter64/Wave16 or
+TRACE[0..122] change. The separate victory score loads during screen-off.
 
 Source-only generated inputs are [tiles](../assets/generated/champion_tiles.bin),
 [map](../assets/generated/champion_map.bin), [palette](../assets/generated/champion_pal.bin),
 [native preview](../assets/generated/champion.png), [header](../assets/generated/assets.h)
-and [assembly](../assets/generated/data.asm). The [current preservation report](preservation-v0.12.0.json)
-compares the 218-file generated set with verified v0.11.0 commit
-`996249e33eb51011cf7a0f3b5bce06dcf5a34a40`: 212 prior generated files are
-preserved, two registrations are extended and four champion files are added.
-Hardware/trace assembly and all existing binary assets remain unchanged.
+and [assembly](../assets/generated/data.asm). The [current preservation report](preservation-v0.13.0.json)
+compares the 219-file generated set with verified v0.12.0 commit
+`ff62dcd3bb7b34c49fbfbfc402f0d8ce96347cb1`: 216 prior generated files are
+preserved, two soundbank outputs change and one victory IT is added.
+Champion art, hardware/trace assembly and other existing binary assets remain unchanged.
 [Champion preservation](champion-preservation-report.json) carries the same
 current-ROM comparison for the focused package gate.
 

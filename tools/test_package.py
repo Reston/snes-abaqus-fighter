@@ -7,6 +7,7 @@ from pathlib import Path
 import importlib.util
 import json
 import re
+import copy
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -86,6 +87,10 @@ def main() -> None:
         champion_guide.write_text('# Champion\n<!-- stale child ROM -->\n')
         expect_package_error(lambda: PACKAGE.validate_candidate_docs(guides, candidate),
                              'stale champion documentation identity')
+        guides.pop('CHAMPION-ENDING.md')
+        guides['CHAMPION-AUDIO.md'] = champion_guide
+        expect_package_error(lambda: PACKAGE.validate_candidate_docs(guides, candidate),
+                             'stale champion audio documentation identity')
 
         import champion_assets as champion
         for relative in (champion.PROVENANCE, champion.PROMPT, champion.RAW, champion.MASTER):
@@ -149,6 +154,39 @@ def main() -> None:
                     dict(route, champion_state=dict(route['champion_state'], arcade=9))):
         expect_package_error(lambda: PACKAGE.validate_champion_route(altered, route['rom_sha256'], 'start', 0),
                              'incomplete or altered champion route contract')
+
+    manifest = json.loads((ROOT/'dist/manifest.json').read_text())
+    audio = json.loads((ROOT/'docs/champion-audio-report.json').read_text())
+    PACKAGE.validate_champion_audio(audio, ROOT, manifest)
+    mutations = [dict(audio, rom_sha256='0'*64), dict(audio, status='failed'),
+                 dict(audio, checks=[]), dict(audio, human_listening_approved=True),
+                 dict(audio, production_cues={}), dict(audio, native_budget={}),
+                 dict(audio, music={}), dict(audio, start_exit={})]
+    altered = copy.deepcopy(audio)
+    altered['music']['office-champion']['pcm']['clipped_samples'] = 1
+    mutations.append(altered)
+    altered = copy.deepcopy(audio)
+    altered['victory_cue_fixture']['production_rom'] = True
+    mutations.append(altered)
+    for altered in mutations:
+        expect_package_error(lambda: PACKAGE.validate_champion_audio(altered, ROOT, manifest),
+                             'stale or malformed champion audio proof')
+
+    with tempfile.TemporaryDirectory(dir=ROOT/'build/package-audit') as temporary:
+        sandbox = Path(temporary)
+        record_name = f"docs/audio-listening-v{manifest['version']}.json"
+        original = json.loads((ROOT/record_name).read_bytes())
+        for relative in (record_name, 'docs/champion-audio-report.json', original['archive']['file']):
+            target = sandbox/relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(ROOT/relative, target)
+        PACKAGE.validate_listening_record(sandbox, manifest)
+        changed_archive = dict(original, archive=dict(original['archive'], sha256='0'*64))
+        for altered in (dict(original, human_listening_approved=True),
+                        dict(original, source_report_sha256='0'*64), changed_archive, None):
+            (sandbox/record_name).write_text(json.dumps(altered))
+            expect_package_error(lambda: PACKAGE.validate_listening_record(sandbox, manifest),
+                                 'stale or falsely approved listening archive')
 
     names = {'README.md', 'qa/stages.json', 'RELEASE.md', 'RELEASE-v0.11.0.md'}
     rendered = PACKAGE.offline_markdown_text(

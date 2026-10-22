@@ -1,137 +1,83 @@
 # Office Champion victory score
+<!-- candidate-version: 0.13.0; rom-sha256: eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4 -->
 
-This bounded child change starts from `8f51915e060dc4a9d47139767f607ef2f26fe4b8`
-(v0.12.0 ROM `33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83`,
-checksum `222B`). It adds an original score for the earned Office Champion
-trophy scene. It does not establish a source freeze or release certification.
+The combined v0.13.0 cartridge is SHA256
+`eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4`, checksum `B2CC`,
+source freeze `9e4b4a6e837bd3c91bba81f9781dab1cecbb79c8`. It adds an original score
+for the earned Office Champion scene. The [release note](RELEASE-v0.13.0.md)
+records full candidate status. The focused capture proof passes 1,792 checks on this ROM.
+The victory capture spans 72.580462 seconds with peak 2366/32,768,
+RMS 387.7836, no clipped samples and a longest near-zero interval of
+0.114388 seconds. Its native repeat is
+34.900375 seconds, with amplitude/zero-crossing
+correlations 0.999470/0.979294.
 
-The child ROM is `82a0162a94e2f9e928412c3748ec82adc126eab13c6a7e224f7fcad03a5bd704`,
-checksum `AA1A`, still 4,194,304 bytes, NTSC FastROM LoROM, version 0.12.0.
-Two consecutive local `tools/build.py --assets` builds reproduce that hash.
-The supplemental `champion-audio-rebuild-report.json` records the second-build
-comparison, all fifteen exact native BRR source hashes and a controller-driven
-Training selection/reset smoke (P1 fighter 11, independently selected dummy 2).
-Its complete small supplemental harness is embedded in that JSON for replay;
-this is a local rebuild, not the parent's isolated source-rebuild release gate.
+## Composition and source
 
-## Composition and provenance
+[The authoring helper](../tools/victory_music.py) composes sixteen 4/4 bars at
+112 BPM and tracker speed 6, using four 64-row patterns. Its rising C-G-C-E
+fanfare develops fifth/octave calls over C, F, A minor, D minor and G. The
+closing phrase resolves F-D minor-G-C, softening the voices before the repeat.
+The ideal tracker cycle is 34.285714 seconds; native SPC timing is measured
+separately by the PCM proof.
 
-`tools/victory_music.py` authors sixteen 4/4 bars at 112 BPM, tracker speed 6,
-four rows per beat: four 64-row patterns, nominal cycle 34.285714 seconds.
-The first four bars announce a rising C–G–C–E fanfare and answer it downward;
-the middle phrases develop fifth/octave calls over C, F, A minor, D minor
-and G. The last four bars soften the lead, bass and drums and resolve
-F–D minor–G–C before returning to the opening. The final tonic drops through
-C–G–C while a quiet bass pulse keeps the resolution audible.
+The arrangement is original project code. It uses the title score's exact
+five synthesized instruments and sample waves: Night Lead, Glass Bass, Kick,
+Snare and Hat. Music occupies four SPC voices. No RNG values are consumed.
+[Asset generation](../tools/make_assets.py) writes the new
+[8,393-byte tracker module](../assets/generated/music4.it) after the original
+four scores and effects. These encoder/module links require the source checkout
+and are labeled source-only in the offline copy.
 
-The melody/rhythm/harmonic arrangement was composed as original project code.
-It does not import a recording, commercial tune, external instrument or MIDI.
-The lead's fifth/octave language develops the project's existing title motif.
-All five instruments and sample waves are copied directly from the generated
-title IT: Night Lead, Glass Bass, Kick, Snare and Hat, including the existing
-short melodic decay envelopes. Music still occupies four SPC voices. The new
-helper consumes no RNG values and runs after the original four music ITs and
-effects IT have been written.
+## Native scope and budget
 
-The authored source is the helper plus `tools/make_assets.py`; its native
-tracker output is `assets/generated/music4.it` (8,393 bytes). Exact original
-IT/SFX source hashes, signed-8 cue sample hashes, resident BRR hashes, native
-module preservation and harness hashes are in `champion-audio-report.json`.
-The existing four IT scores, effects IT, four SFX binaries and the native
-effects/music payloads for module IDs 0–4 are byte-identical to the parent.
-The new score also uses the title's five exact sample byte streams.
+Only the earned champion branch calls `music(4)`, during its screen-off
+transition. Ordinary results keep arena music; title/roster actions restore
+title music. C rejects score indices above 4 and compile checks pin the
+effects-first module IDs. There is no new live per-frame task, trace field,
+native struct, actor transfer or OBJ allocation.
 
-## Native scope and budgets
+The soundbank is 19,330 bytes, within one 32 KiB LoROM bank, with 13,438 bytes
+free. All fifteen BRR source records and existing effects/music payloads
+0..4 are preserved. The victory module uses 2,234 resident data bytes plus
+1,928 music BRR bytes; the four resident effects add 1,944 bytes. The combined
+6,106-byte SPC load starts at `$1A00`, ends at `$31DA` exclusive and leaves
+52,774 bytes above it. Echo and streaming allocation remain zero. The helper
+computes these values from actual binary tables, including word rounding,
+and rejects invalid pointers, lengths, counts or overflow with explicit errors.
 
-The screen-off `showResult` Champion branch calls `music(4)` before the existing
-round cue. Ordinary result cards keep their current arena score. Existing
-`showTitle`/`showSelect` calls restore title music. No new per-frame task,
-timer, trace field, native struct, live DMA, actor/OBJ allocation or backend
-change is introduced. The combined Training opponent selection code remains
-unchanged. `music()` rejects indices above 4; compile-time checks pin every
-effects-first module ID (`MOD_EFFECTS=0`, `MOD_MUSIC0..4=1..5`).
+[Preservation](preservation-v0.13.0.json) records 219 generated files: the
+soundbank assembly/binary change, music4.it is added, and 216 old files remain
+identical (text compared after LF normalization). Art masters, fighter/stage/UI
+assets, original four tracker scores, effects IT, four SFX and native BRR/module
+payloads are preserved. Source-input provenance includes the new authoring helper.
 
-The soundbank remains one dedicated LoROM bank, bank 24. It grows from 17,082
-to 19,330 bytes (+2,248), leaving 13,438 bytes in that bank. All fifteen BRR
-source identities remain unchanged: the new module references the title's
-existing sources 4–8 and adds no sample storage. The new module has 2,234
-resident data bytes and 1,928 music BRR bytes. All four resident effects require
-1,944 additional bytes. Starting at SPC `$1A00`, the 6,106-byte combined load
-ends at `$31DA` exclusive, leaving 52,774 bytes above it. Echo and streaming
-allocations remain zero. This accounting includes word-rounded transfers.
+## Focused technical evidence
 
-`soundbank_budget()` reads SMConv's actual binary tables, source lengths and
-module word counts and raises explicit errors for invalid module/source
-counts, out-of-bank pointers, nonzero echo or SPC overflow. The composition
-writer separately checks tracker sample/event/length bounds. These checks do
-not disappear under Python optimization.
+[The focused report](champion-audio-report.json) records the production ROM,
+host/core/harness hashes, source preservation, soundbank budget and every check.
+The probe captures all four resident cues and all five scores as signed-16
+stereo PCM. It measures peaks, RMS, clipping, near-silence and a full passage's
+repeat using amplitude and zero-crossing correlation. Separate controller-only
+eleven-opponent ladders earn the ending, check ordinary results keep arena
+music, and prove A/Start restore title music. The final scene load also checks
+the existing six-byte SPC FIFO budget and drain.
 
-The investigated pinned sources were `.tools/it2spc.cpp` (`Bank::Export`,
-`Module::Export`, `Source::Export`, `$1A00` pointer base) and
-`.tools/snesmod.asm` (`spcLoad`, `spcLoadEffect`, word-sized transfers), alongside
-the SDK sound API. Existing C still loads music, reloads all four resident
-effects, and uses the existing queued/coalesced effect path.
+The trophy scene offers no attacks. A separately identified test-only ROM
+selects the victory module for all score loads so real-controller swing,
+impact, special and confirmation cues can be compared against repeated control
+boots. Its sole C literal substitution, fixture source/ROM hashes and capture
+metrics are recorded separately. This fixture is distinct from the cartridge
+being delivered; it uses no emulated-memory writes or save states.
 
-There are exactly 219 generated files, up from 218. Only `soundbank.asm` and
-`soundbank.bnk` change among the old generated files; `music4.it` is added.
-The other 216 files are preserved (text compared after LF normalization,
-binary assets byte-for-byte). All fighter/stage/UI art, source masters and
-prompts remain intact. `release_evidence.GENERATED_ASSET_COUNT` is 219 and
-`tools/victory_music.py` is included in source-input provenance.
-
-## Focused verification
-
-Run `tools/test_champion_audio.py` with the pinned Python/core in a hidden
-background process at BELOW_NORMAL priority, affinity 14/15 (or the last two
-logical CPUs). It writes only `docs/champion-audio-report.json` and ignored
-`build/champion-audio` captures/fixture outputs. It uses no audio device,
-frontend window, save states or emulated-memory writes. The test verifies its
-actual host priority and affinity.
-
-The production-ROM probe captures the original cues and all five scores,
-measures signed-16 stereo PCM peaks/RMS/clipping/near-silence, and correlates a
-full score-length passage against its next cycle using both amplitude envelope
-and zero-crossing structure. It earns the ending by defeating all eleven other
-fighters using the existing real-controller Arcade policy. It checks an
-ordinary result retains arena music, captures the final arena-to-victory load
-and SPC FIFO drain, and captures both A and Start exits restoring title music.
-
-The focused capture run completed successfully on the child ROM in 173.453
-seconds. The victory capture spans 72.580462 seconds, with peak 2,366/32,768,
-RMS 388.0889, zero clipped samples and a longest near-zero interval of
-0.114451 seconds. Its observed native repeat is 34.900375 seconds (SPC tempo
-quantization differs from ideal IT timing); the full-passage amplitude and
-zero-crossing correlations are 0.999323 and 0.978883. Both exceed the existing
-0.96/0.85 thresholds. All four original score captures also remain unclipped
-and retain their measured repeat structure.
-
-The final arena-to-Champion capture has no clipping and a longest near-zero
-interval of 0.185144 seconds. A and Start exits restore `musicIndex=0`, remain
-unclipped, and have maximum near-zero intervals of 0.201841 and 0.200562
-seconds. These bounded load intervals remain below the existing 0.5-second
-dropout limit. The Champion load's SPC FIFO stays within the existing six-byte
-budget and drains to zero.
-
-The earned trophy screen does not offer attacks. To exercise every resident
-cue against the new score, the probe also compiles an explicitly identified
-test-only ROM under `build/champion-audio-fixture`. Its sole C substitution is
-`spcLoad(MOD_MUSIC0+index)` to `spcLoad(MOD_MUSIC4)`. Controller-driven cold-boot
-control/repeat/active comparisons then exercise actual swing, impact, special
-and confirmation cues. This fixture is not the deliverable ROM; its source
-change and ROM hash are recorded separately. Mixed PCM differences include
-music-voice interaction and are not isolated source samples.
-
-All four fixture cue comparisons are deterministic on repeated control boots,
-produce measurable mixed-PCM changes, and remain unclipped. Delta RMS values
-are swing 170.2050, impact 190.2286, special 366.7099 and confirmation 206.6321;
-the highest active mixed peak is 3,008/32,768. The production ROM retains its
-Champion-only music mapping throughout this proof. All cue captures under the
-victory score have near-zero intervals shorter than 0.092 seconds.
-
-These are capture-only technical checks, not a listening judgment. The child
-does not run the whole six-suite batch, compatibility/matrix/endurance/fresh
-source release gates, or packaging. Canonical root native/evidence reports are
-preserved at their parent revisions. Parent integration must run its gates
-against its next exact source freeze, including the independent pause fix.
-Human listening/gameplay/controller/consent/public-use reviews and hardware
-support remain outside this focused evidence.
+All runs are headless at BELOW_NORMAL priority on the last two logical CPUs,
+with no GUI or audio device. Report capture paths under build/champion-audio
+refer to ignored source-checkout WAVs and fixture outputs; the offline archive
+bundles exact JSON evidence and this guide, not those source captures.
+The separate [listening archive record](audio-listening-v0.13.0.json) identifies
+an optional WAV review ZIP created from these verified captures. It contains
+all five scores and matched control/active cue pairs; it is separate from the
+Windows game package and has not been played or approved by a human.
+These are capture-only technical checks. Human full listening, gameplay,
+controllers, likeness/consent and public-use approval remain open. Original
+SNES/flash-cartridge support is unverified; `public_release_certified` is false.

@@ -1,13 +1,17 @@
-# v0.12.0 human playtest guide
-<!-- candidate-version: 0.12.0; rom-sha256: 33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83 -->
+# v0.13.0 human playtest guide
+<!-- candidate-version: 0.13.0; rom-sha256: eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4 -->
 
-Review cartridge SHA256 `33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83`.
-First compare Lars's face and hair with the reference and check the wider
-location previews. Then finish a Local Versus match from each side: the
-winner's portrait, name, score and quote should agree, and A/Start should
-rematch. Check Arcade continue, next challenger and champion-to-title prompts.
-The actual earlier responses remain in [review-feedback.json](review-feedback.json);
-this guide records no new human approval. See [RELEASE-v0.12.0.md](RELEASE-v0.12.0.md)
+Review cartridge SHA256 `eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4`.
+In Training, move and take damage, pause, then press Start+Select: the round
+should resume at the current positions and health. A fresh live Select still
+resets it. Try the chord across the two controller ports as well.
+Earn Office Champion and listen to the full new victory score, its repeat,
+the final arena transition and A/Start return to the title. Record what was
+actually heard; technical PCM capture does not establish listening approval.
+Compare Lars's face/hair and the wider location previews. Check arbitrary and
+mirror Training opponents, both Local Versus winner cards and Arcade prompts.
+Actual earlier responses remain in [review-feedback.json](review-feedback.json);
+this guide records no new human approval. See [RELEASE-v0.13.0.md](RELEASE-v0.13.0.md)
 for candidate verification and package status.
 
 This route also covers the earlier v0.10.0 cartoon-stage and menu candidate.

@@ -97,15 +97,6 @@ def preservation() -> dict:
     audio.check(it_samples(current['assets/generated/music4.it']) ==
                 it_samples(current['assets/generated/music0.it']),
                 'victory reuses all five exact synthesized title timbres')
-    # Canonical native/evidence reports remain historical and untouched in this child.
-    canonical = ['test-report', 'character-test-report', 'presentation-test-report',
-                 'input-test-report', 'stage-test-report', 'training-test-report',
-                 'compatibility-test-report', 'fresh-build-test-report', 'audio-test-report']
-    for name in canonical:
-        path = 'docs/'+name+'.json'
-        audio.check(command(['git', 'show', BASE+':'+path]).replace(b'\r\n', b'\n') ==
-                    (ROOT/path).read_bytes().replace(b'\r\n', b'\n'),
-                    'canonical report remains unchanged: '+name)
     return {'base_commit': BASE, 'original_files': len(old), 'current_files': len(current),
             'unchanged_files': len(old)-len(changed), 'changed': sorted(changed), 'added': added,
             'original_sources_sha256': proof, 'cue_signed8_pcm_sha256': cue_hashes,
@@ -163,7 +154,7 @@ def main() -> None:
     audio.CAPTURES = CAPTURES
     manifest = json.loads((ROOT/'dist/manifest.json').read_text())
     report = {'suite': 'focused-champion-audio', 'status': 'failed',
-              'scope': 'child focused capture-only proof; no source freeze, six-suite batch, package or listening approval',
+        'scope': 'focused capture-only proof; six-suite batch, release gates, package and human listening are separate',
               'rom_sha256': manifest['sha256'], 'checksum': manifest['checksum'],
               'human_listening_approved': False, 'host_contract': host_contract(),
               'controller_only': True, 'emulated_memory_writes': 0, 'savestates': 0,

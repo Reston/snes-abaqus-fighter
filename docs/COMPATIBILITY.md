@@ -1,16 +1,14 @@
 # Independent-engine compatibility
-<!-- candidate-version: 0.12.0; rom-sha256: 33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83 -->
+<!-- candidate-version: 0.13.0; rom-sha256: eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4 -->
 
-The current candidate is v0.12.0, cartridge SHA256
-`33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83`.
-Its pinned independent smoke and 48-by-600-frame bounded combat run both pass.
-The [release note](RELEASE-v0.12.0.md) records current candidate status.
-The v0.11.0 smoke and 48-by-600-frame combat run passed on their own cartridge;
-historical evidence does not verify this new ROM.
-
-The historical v0.9.0 smoke and bounded combat reports passed on
-`bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639`.
-The current candidate adds Training opponent selection and a champion scene; independent-engine coverage retains the scope below.
+The current candidate is v0.13.0, cartridge SHA256
+`eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4`.
+The pinned independent smoke and 48-by-600-frame bounded combat run both pass
+on this ROM. The [release note](RELEASE-v0.13.0.md) records status.
+The verified v0.12.0 smoke and 48-by-600-frame combat run are historical,
+on ROM `33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83`.
+The new candidate adds champion music, pause input priority and a build fix;
+independent-engine coverage retains the scope below.
 
 The pinned smoke check has the bounded scope `independent-engine smoke, stage
 ambient/effects freeze, synchronized low-wave, neutral600frame cadence`. It is

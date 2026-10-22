@@ -6,6 +6,11 @@ Abaqus: After Hours is an original homebrew fighting game created for this proje
 
 Game code, UI, tile pipeline, combat implementation, tracker compositions and synthesized BRR effects were authored for this repository. Pixel-art master atlases were created with the built-in image generation tool, then converted to SNES tiles and palettes. Prompts and processing notes are in [ART-DIRECTION.md](ART-DIRECTION.md).
 
+The v0.13 Office Champion victory score is an original sixteen-bar tracker
+arrangement using the title's existing synthesized instruments. Its authoring
+code, source preservation and capture-only evidence are described in
+[CHAMPION-AUDIO.md](CHAMPION-AUDIO.md). Human full listening remains open.
+
 ## v0.5 animation references and art
 
 The v0.5 animation pass adds 24 original built-in imagegen atlases, two for

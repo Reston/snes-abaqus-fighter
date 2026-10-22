@@ -1,7 +1,7 @@
 {
-  "version": "0.12.0",
-  "rom_sha256": "33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83",
-  "source_freeze": "9134d4307037a935e1de31f08efd405409ac8ef7",
+  "version": "0.13.0",
+  "rom_sha256": "eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4",
+  "source_freeze": "9e4b4a6e837bd3c91bba81f9781dab1cecbb79c8",
   "status": "passed",
   "blocks": [
     {
@@ -24,9 +24,9 @@
     },
     {
       "symbol": "champion_pal",
-      "cpu_start": "$9F:F980",
-      "last_cpu_byte": "$9F:FA3F",
-      "rom_offset": 1046912,
+      "cpu_start": "$9E:FDAF",
+      "last_cpu_byte": "$9E:FE6E",
+      "rom_offset": 1015215,
       "bytes": 192,
       "sha256": "02e0569819891084a53ce2bf072b806eb611013e066b18c8c5480f76e00170bd",
       "fits_lorom_bank": true

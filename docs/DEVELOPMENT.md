@@ -1,16 +1,19 @@
 # Native SNES implementation
-<!-- candidate-version: 0.12.0; rom-sha256: 33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83 -->
+<!-- candidate-version: 0.13.0; rom-sha256: eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4 -->
 
-The current checkout builds the v0.12.0 Training/ending candidate, ROM SHA256
-`33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83`, checksum `222B`.
-Training reuses the second roster step to choose any opponent or mirror.
-The champion-only result branch loads original static trophy art during the
-existing screen-off transition. Its 330 BG1 tiles use palette banks 2..7;
-the winner portrait retains BG2 palette 1 and VRAM word `$4A00`.
-The live one-actor-per-vblank budget, Fighter/Wave layout, trace ABI, attack
-timing, AI, balance, audio and all existing binary assets remain unchanged.
-The generated set contains 218 files after adding four champion assets.
-See [RELEASE-v0.12.0.md](RELEASE-v0.12.0.md) for candidate evidence status.
+The current checkout builds the v0.13.0 candidate, ROM SHA256
+`eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4`, checksum `B2CC`.
+Paused Training gives Start priority over simultaneous Select, including split
+controller samples. The champion-only screen-off branch loads a fifth original
+score; its soundbank remains one 32 KiB LoROM bank. The original four scores,
+resident effects and their native module/sample payloads are preserved.
+The generated set contains 219 files: two soundbank outputs change and one
+victory IT is added relative to v0.12.0. Fighter/stage/UI art is preserved.
+Training still reuses the second roster step for arbitrary or mirror opponents.
+The static champion background uses 330 BG1 tiles, palette banks 2..7 and the
+existing BG2 portrait at VRAM word `$4A00`, palette 1.
+Fighter64/Wave16, TRACE[0..122], one-actor-per-vblank and ambient budgets remain.
+See [RELEASE-v0.13.0.md](RELEASE-v0.13.0.md) for candidate evidence status.
 All older version sections below are historical snapshots.
 
 ## Build

@@ -1,14 +1,15 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.12.0; rom-sha256: 33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83 -->
+<!-- candidate-version: 0.13.0; rom-sha256: eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4 -->
 
 ## Current version
 
-The current candidate is **v0.12.0**, adding Training opponent and mirror-match
-selection and an original Office Champion trophy scene. It includes the revised Lars likeness, clearer location previews
-and a result card with the winner's portrait,
-round score and quote. In Local Versus, A or Start begins a rematch. Arcade
-victory advances to the next challenger; a loss offers a continue. After
-Office Champion, A or Start returns to the title. B returns to fighter select.
+The current candidate is **v0.13.0**. The earned Office Champion scene now
+plays an original victory score. Start resumes paused Training even when
+Select is pressed in the same sample. Training offers any opponent or a mirror
+match; revised Lars art, clearer location previews and winner cards are retained.
+In Local Versus, A or Start begins a rematch. Arcade victory advances to the
+next challenger; a loss offers a continue. After Office Champion, A or Start
+returns to the title. B returns to fighter select.
 
 ## Launch
 
@@ -24,10 +25,12 @@ release note under `docs/`. No global installation or administrator account is
 needed. Human gameplay, listening, controller, likeness/consent and team/public
 use review remain open; original hardware support stays unverified.
 The package's `REVIEW.html` contains selected native screenshots and a 2x view.
+Its `ROSTER-REVIEW.html` offers all 64 generated frames per fighter, facing
+flips and a frame scrubber for likeness inspection. The fixed-rate sweep is
+an art review aid; actual game animation timing is reviewed in the emulator.
 
-Known v0.12.0 review issue: in paused Training, press Start alone to resume.
-Pressing Start+Select together also resets the round. The next input-priority
-fix is under separate verification.
+In paused Training, Start has priority over Select and resumes the current
+round. A fresh P1 Select press during live Training still resets the round.
 
 Focus Snes9x and press **Enter**. Use **Alt+Enter** for fullscreen and
 **Input -> Input Configuration** to assign controllers. For a quiet session,
@@ -47,7 +50,7 @@ best-of-three match. Both controller ports use the same six-button layout.
 starts on the next roster entry. P1 can operate both steps; either controller
 can choose the dummy. Press **A** or **Start** to confirm each fighter, then
 choose an arena. **B** on DUMMY returns to PLAYER 1. The clock stays at 99.
-Press **Select** for a live round reset. Press **Start**, then **B**, to return
+Press **P1 Select** for a live round reset. Press **Start**, then **B**, to return
 to fighter select and change the matchup.
 
 At home, **L/R** changes CPU difficulty between Easy, Normal and Hard. Easy is
@@ -80,7 +83,10 @@ name and caption in a separate text column.
 | A | X | Confirm menus / resume pause |
 | B | Z | Back in menus / roster from pause |
 | Start | Enter | Confirm / pause |
-| Select | Shift | Training reset / pause page cycle |
+| Select | Shift | P1 live Training reset / pause page cycle |
+
+At the title, the P1 shoulder buttons **L/R** are keyboard **D/C**; use them
+to change CPU difficulty. During combat those keys are heavy punch/kick.
 
 Player two's included keyboard uses **I/J/K/L** for Up/Left/Down/Right,
 numpad **7/8/9** for punches, numpad **1/2/3** for kicks, **Space** for
@@ -112,7 +118,7 @@ match, rather than showing a generic roster description.
 
 In Training, pause on **Normal** and press **Up/Down** to choose **Stand**,
 **Guard High**, **Guard Low** or **Jump**. Guard holds relative back without
-retreating. The Jump dummy automatically jumps again after landing. A live **Select** reset keeps
+retreating. The Jump dummy automatically jumps again after landing. A live **P1 Select** reset keeps
 both chosen fighters and the chosen dummy mode; starting a new Training match
 returns the dummy behavior to Stand.
 
