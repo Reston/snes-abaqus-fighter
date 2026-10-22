@@ -70,3 +70,20 @@ captures and the 64-frame sheet. The [verification record](damian-v5-verificatio
 binds these focused results to this review cartridge. Full release-scale
 matrix, endurance, audio and fresh-export reports in the repository still
 describe their original candidates; this is a likeness review build.
+
+## Follow-up motion review
+
+The user confirmed that they had stopped playing and cleared the foreground
+focus restriction. The Computer Use desktop service returned a native-pipe
+connection error, so no GUI emulator review was performed and no audio was
+played. The [motion review record](damian-v5-motion-review.json) verifies nine
+existing current-ROM GIFs against the committed captures and roster report.
+They contain 316 decoded frames; agent review of 36 sampled stills found no
+obvious clipped heads, missing faces, wrong facing or empty actor poses.
+Continuous real-time GUI playback remains unassessed.
+
+The [silent motion page](DAMIAN-MOTION-v5.html) shows the native air-kick and
+throw captures from both sides, with a pause control. The
+[sampled filmstrip](screenshots/damian-v5/motion-filmstrip.png) also includes
+idle, walking and ordinary attack captures. These are capture-review artifacts;
+the ROM, its source freeze and native suite results are unchanged.
