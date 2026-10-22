@@ -111,7 +111,11 @@ u8 screen, mode, difficulty, menu, selected, selected2, selectPlayer, arena;
 u8 arcade, roundNumber, seconds, secondTick, intro, roundEnd, winner, paused;
 u8 pausePage,guideBuild,guideDirty,trainingDummy;
 u8 pauseHudPending;
-u8 hitstop, shake, flash, fxLife, fxX, fxY, fxType, resultWin, champion;
+/* Reuse the previously unused flash byte for private rear-kick recoil:
+ * bits 0..1 = P1, 2..3 = P2; 0 legacy drift, 1 left, 2 right.
+ * Keep the contact direction through landing/trades without adding fields,
+ * WRAM storage or trace words. */
+u8 hitstop, shake, rearKickRecoil, fxLife, fxX, fxY, fxType, resultWin, champion;
 u8 hudDirty, bannerDirty, footerDirty, fullDirty, musicIndex, musicOn;
 u8 impactHudPending,impactBannerPending;
 u8 impactBannerPlayer,impactBannerCombo,impactBannerCounter;
@@ -389,6 +393,7 @@ void resetRoundState(void) {
         waves[p].x=0;waves[p].y=0;waves[p].face=0;waves[p].owner=p;
     }
     seconds=99;secondTick=0;intro=110;roundEnd=0;hitstop=0;shake=0;fxLife=0;
+    rearKickRecoil=0;
     fightClock=0;
     impactHudPending=0;impactBannerPending=0;roundBannerPending=0;
     impactBannerPlayer=0;impactBannerCombo=0;impactBannerCounter=0;
@@ -742,10 +747,11 @@ void controls(u8 p) {
     }
 }
 
-u8 hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
+u8 hurtWithRecoil(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable,u8 rearRecoil) {
     Fighter *a=&fighters[attacker];Fighter *d=&fighters[defender];
     u16 back;
-    u8 blocked;
+    u8 blocked,direction;
+    direction=rearRecoil?rearRecoil-1:a->face;
     back=d->face?KEY_LEFT:KEY_RIGHT;
     blocked=(d->keys&back) && !d->y && !d->action && !unblockable && (!d->hurt || d->guard);
     if(air && d->duck)blocked=0;
@@ -770,12 +776,21 @@ u8 hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
      * HUD tick, away from contact physics and the new actor pose uploads. */
     impactBannerPlayer=attacker;impactBannerPending=1;impactSettle=1;
     if(dmg>=d->hp)d->hp=0;else d->hp-=dmg;
-    if(blocked)d->x+=a->face?16:-16;
-    else d->x+=a->face?32:-32;
-    fxX=(d->x>>4)+(a->face?-12:6);fxY=FLOOR+(d->y>>4)-(low?22:53);fxLife=10;
+    rearKickRecoil&=defender?3:12;
+    if(!blocked) {
+        if(defender)rearRecoil<<=2;
+        rearKickRecoil|=rearRecoil;
+    }
+    if(blocked)d->x+=direction?16:-16;
+    else d->x+=direction?32:-32;
+    fxX=(d->x>>4)+(direction?-12:6);fxY=FLOOR+(d->y>>4)-(low?22:53);fxLife=10;
     /* Rebuild changed bars on the first frozen impact tick, leaving the
      * contact frame's CPU budget for physics, effects and actor streams. */
     sound(1);impactHudPending=1;return blocked?1:2;
+}
+/* Projectiles and delayed throw damage retain their original facing rule. */
+u8 hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
+    return hurtWithRecoil(attacker,defender,dmg,low,air,unblockable,0);
 }
 
 #include "knockdown.h"
@@ -783,6 +798,7 @@ u8 hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
 void updateFighter(u8 p) {
     Fighter *f=&fighters[p];Wave *w=&waves[p];
     const CharacterProfile *c=combatProfiles[p];
+    u8 rearRecoil;
     if(f->landing)f->landing--;
     if(f->combotime) {f->combotime--;if(!f->combotime){f->combo=0;f->counter=0;clearBanner();}}
     if(f->wakeJust)f->wakeJust=0;
@@ -790,8 +806,12 @@ void updateFighter(u8 p) {
     if(f->downState){updateDowned(p);return;}
     if(f->hurt) {
         f->hurt--;
-        if(!f->guard)f->x+=fighters[1-p].face?9:-9;
-        if(!f->hurt)f->guard=0;
+        if(!f->guard) {
+            rearRecoil=p?(rearKickRecoil>>2):(rearKickRecoil&3);
+            if(rearRecoil)f->x+=rearRecoil==2?9:-9;
+            else f->x+=fighters[1-p].face?9:-9;
+        }
+        if(!f->hurt){f->guard=0;rearKickRecoil&=p?3:12;}
     }
     if(f->y || f->vy) {
         f->x+=f->vx;
@@ -830,6 +850,7 @@ u8 canHit(u8 p) {
     Fighter *f=&fighters[p];Fighter *d=&fighters[1-p];
     const CharacterProfile *c=combatProfiles[p];
     s16 top,bottom,dx;
+    u8 rear;
     if(!f->action)return 0;
     if(f->action==7 && (c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE))return 0;
     if(f->connected)return 0;
@@ -840,15 +861,23 @@ u8 canHit(u8 p) {
     if(!d->hp)return 0;
     if(f->tick<f->actionStartup || f->tick>=f->actionActiveEnd)return 0;
     dx=d->x-f->x;
-    if(dx>0 && !f->face)return 0;
-    if(dx<0 && f->face)return 0;
+    rear=0;
+    if(dx>0 && !f->face)rear=1;
+    if(dx<0 && f->face)rear=1;
+    if(rear) {
+        /* Only the airborne medium kick reaches behind its locked facing.
+         * Its short rear box is independent of the normal front reach. */
+        if(f->action!=5)return 0;
+        if(!f->airAction)return 0;
+        if(abs16(dx)>(16+BODY_HALF_WIDTH)*16)return 0;
+    }
     if(f->action==9) {
         if(f->y)return 0;
         if(d->y)return 0;
         if(d->hurt)return 0;
         return abs16(dx)<c->throwRange*16;
     }
-    if(abs16(dx)>(attackReach(c,f->action)+BODY_HALF_WIDTH)*16)return 0;
+    if(!rear && abs16(dx)>(attackReach(c,f->action)+BODY_HALF_WIDTH)*16)return 0;
     top=f->y-52*16;bottom=f->y-28*16;
     if(f->action>=4 && f->action<=6) {
         if(f->duck){top=f->y-20*16;bottom=f->y;}
@@ -860,7 +889,7 @@ u8 canHit(u8 p) {
     return verticalContact(d,top,bottom);
 }
 void combat(void) {
-    u8 a0,a1,m0,m1,p,finished,low0,low1,air0,air1,face0,face1,k0,k1,expired;
+    u8 a0,a1,m0,m1,p,finished,low0,low1,air0,air1,face0,face1,k0,k1,expired,rear0,rear1;
     s16 distance;
     const CharacterProfile *c0,*c1,*cw;
     controls(0);controls(1);
@@ -869,6 +898,8 @@ void combat(void) {
     if(!fighters[0].downState && !fighters[1].downState && abs16(distance)<22*16 && abs16(fighters[0].y-fighters[1].y)<50*16) {
         if(distance>=0){fighters[0].x-=12;fighters[1].x+=12;}else{fighters[0].x+=12;fighters[1].x-=12;}
     }
+    /* canHit() sees post-separation positions, including coincident centers. */
+    distance=fighters[1].x-fighters[0].x;
     a0=canHit(0);a1=canHit(1);m0=fighters[0].action;m1=fighters[1].action;
     c0=combatProfiles[0];c1=combatProfiles[1];
     low0=(m0==7)?(c0->specialFamily==SPECIAL_GROUNDWAVE):(fighters[0].duck && m0>=4);
@@ -876,6 +907,17 @@ void combat(void) {
     air0=(m0==7)?(c0->specialFamily==SPECIAL_RISING):(fighters[0].y<0);
     air1=(m1==7)?(c1->specialFamily==SPECIAL_RISING):(fighters[1].y<0);
     face0=fighters[0].face;face1=fighters[1].face;k0=0;k1=0;
+    /* Snapshot rear recoil before either hurt() can cancel the other action.
+     * Action 5 is never a knockdown; launch direction stays facing-based. */
+    rear0=0;rear1=0;
+    if(air0 && m0==5) {
+        if(distance<0 && face0)rear0=1;
+        if(distance>0 && !face0)rear0=2;
+    }
+    if(air1 && m1==5) {
+        if(distance>0 && face1)rear1=1;
+        if(distance<0 && !face1)rear1=2;
+    }
     /* Resolve the contact snapshot atomically: mutual throws tech, throws
      * beat normals, active specials beat throws, and strikes may trade. */
     if(a0 && a1 && m0==9 && m1==9){throwTech();a0=0;a1=0;}
@@ -887,11 +929,11 @@ void combat(void) {
         else {beginThrow(1,0);a0=0;a1=0;}
     }
     if(a0) {
-        fighters[0].connected=hurt(0,1,attackDamage(c0,fighters[0].id,m0),low0,air0,0);
+        fighters[0].connected=hurtWithRecoil(0,1,attackDamage(c0,fighters[0].id,m0),low0,air0,0,rear0);
         if(fighters[0].connected==2 && knockdownAttack(0,m0,low0))k0=1;
     }
     if(a1) {
-        fighters[1].connected=hurt(1,0,attackDamage(c1,fighters[1].id,m1),low1,air1,0);
+        fighters[1].connected=hurtWithRecoil(1,0,attackDamage(c1,fighters[1].id,m1),low1,air1,0,rear1);
         if(fighters[1].connected==2 && knockdownAttack(1,m1,low1))k1=1;
     }
     if(k0)beginKnockdown(0,1,face0);

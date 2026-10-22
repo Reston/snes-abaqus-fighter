@@ -3197,6 +3197,259 @@ def check_landing_buffer_boundary() -> None:
         e.close()
 
 
+def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
+                           delay: int = 0, front: bool = False,
+                           corner: bool = False, trade: bool = False) -> dict[str, object]:
+    """Boot mirrored local play and supply only real controller edges.
+
+    Guard is applied just before startup ends: holding back throughout the
+    flight walks out of the short rear box and would only prove a whiff.
+    The low-guard arc starts slightly farther away so the active kick actually
+    overlaps the shorter crouching body before it leaves the rear box.
+    """
+
+    from test_stages import oam_entry, oam_memory
+
+    e = boot(1, fighter=0, fighter2=0)
+    a, d = str(port + 1), str(2 - port)
+    sign = 1 if port == 0 else -1
+    forward, back = ("right", "left") if port == 0 else ("left", "right")
+    label = f"P{a} air {key.upper()} " + (
+        "front corner" if corner else "front" if front else
+        f"rear {guard or 'neutral'} delay{delay}" + (" trade" if trade else ""))
+    fields = ("frame", "x1", "x2", "y1", "y2", "face1", "face2",
+              "action1", "action2", "anim_tick1", "anim_tick2", "anim_frame1",
+              "anim_frame2", "air_action1", "air_action2", "connected1",
+              "connected2", "hp1", "hp2", "hurt1", "hurt2", "guard1", "guard2",
+              "hitstop", "down_state1", "down_state2", "raw_keys1", "raw_keys2")
+
+    def sample() -> dict[str, int]:
+        state = trace(e)
+        return {name: state[name] for name in fields}
+
+    try:
+        if corner:
+            # The front kick's victim is at the outward wall. Both pad holds
+            # reach it naturally; the contact and every hurt tick must clamp.
+            e.run(180, p1=[forward], p2=[forward])
+        approach_gap = 40 if front and not corner else 36 if guard == "low" else 24
+        for _ in range(180):
+            state = trace(e)
+            if abs(state["x1"] - state["x2"]) <= approach_gap * 16:
+                break
+            drive(e, port, [forward])
+        e.run(3)
+        initial = sample()
+        check(initial[f"face{a}"] == (1 if port == 0 else 0) and
+              initial[f"hp{d}"] == 128, label + " starts healthy facing forward", initial)
+        drive(e, port, ["up"] if front else ["up", forward])
+        rows = [sample()]
+        attack_sent = False
+        countdown = delay
+        contact_index = None
+        effect = None
+        for index in range(84):
+            state = rows[-1]
+            crossed = (state[f"x{a}"] - state[f"x{d}"]) * sign > 0
+            attacker_keys: list[str] = []
+            defender_keys: list[str] = []
+            if not attack_sent and ((front and index >= 1) or (not front and crossed)):
+                if countdown == 0:
+                    attacker_keys = [key]
+                    attack_sent = True
+                else:
+                    countdown -= 1
+            if contact_index is None and crossed and state[f"anim_tick{a}"] >= 6:
+                if guard == "old":
+                    defender_keys = [forward]
+                elif guard in ("new", "low"):
+                    defender_keys = [back] + (["down"] if guard == "low" else [])
+            if trade and attacker_keys:
+                defender_keys = ["a"]
+            e.run(1, **{f"p{a}": attacker_keys, f"p{d}": defender_keys})
+            rows.append(sample())
+            if contact_index is None and rows[-1][f"connected{a}"]:
+                contact_index = len(rows) - 1
+                effect = oam_entry(oam_memory(e), 69)
+
+        action = {"y": 1, "x": 2, "l": 3, "b": 4, "a": 5, "r": 6}[key]
+        active_frame = 50 if action < 4 else 53
+        active = [row for row in rows if row[f"action{a}"] == action and
+                  row[f"anim_frame{a}"] == active_frame]
+        evidence = {"initial": initial, "active": active, "rows": rows}
+        # A trade cancels both actions before the frame is rendered. The
+        # previous startup tick plus both contacts is the observable evidence;
+        # requiring frame 53 here would change the game's trade semantics.
+        trade_startup = (trade and contact_index is not None and
+                         rows[contact_index - 1][f"anim_tick{a}"] == 6)
+        check(attack_sent and (bool(active) or trade_startup),
+              label + " exercises an active airborne normal", evidence)
+        airborne = [row for row in rows if signed16(row[f"y{a}"]) < 0]
+        check(all(row[f"face{a}"] == initial[f"face{a}"] for row in airborne),
+              label + " locks takeoff facing throughout flight", airborne)
+        check(all(24 * 16 <= row[f"x{side}"] <= 232 * 16
+                  for row in rows for side in (1, 2)), label + " stays inside both walls", rows)
+        check(all(row[f"down_state{d}"] == 0 for row in rows),
+              label + " never changes the medium-kick knockdown contract", rows)
+
+        # Even rejected normals must have an active rectangle overlapping the
+        # defender vertically, behind the locked facing, within FRONT reach.
+        # Otherwise a directional assertion could silently become a range test.
+        if not front and not trade:
+            front_reach = {"y": 28, "x": 33, "l": 38, "b": 35, "a": 41, "r": 46}[key]
+            geometry = []
+            for row in active:
+                y = signed16(row[f"y{a}"])
+                top, bottom = (y - 52 * 16, y - 28 * 16) if action < 4 else (y - 60 * 16, y - 20 * 16)
+                body_top = -(40 if guard == "low" else 66) * 16
+                gap = (row[f"x{a}"] - row[f"x{d}"]) * sign
+                if gap > 0 and gap <= (front_reach + 10) * 16 and bottom >= body_top and top <= -4 * 16:
+                    geometry.append(row)
+            check(bool(geometry), label + " has rear active overlap inside ordinary front reach", evidence)
+
+        should_hit = key == "a" and delay == 0
+        if should_hit:
+            check(contact_index is not None, label + " produces contact", evidence)
+            assert contact_index is not None
+            contact = rows[contact_index]
+            previous = rows[contact_index - 1]
+            blocked = guard == "new"
+            away = sign if front else -sign
+            recoil = 16 if blocked else 32
+            center_gap = abs(contact[f"x{a}"] - (sign * 32 if trade else 0) -
+                             (contact[f"x{d}"] - away * recoil))
+            check((trade_startup or contact[f"anim_frame{a}"] == 53) and signed16(contact[f"y{a}"]) < 0,
+                  label + " contacts during the airkick active window", contact)
+            if not front:
+                check(center_gap <= 26 * 16, label + " uses at most 16px rear reach plus 10px body", center_gap)
+            elif not corner:
+                check(26 * 16 < center_gap <= 51 * 16,
+                      label + " preserves the longer 41px front reach plus 10px body", center_gap)
+            check(contact[f"connected{a}"] == (1 if blocked else 2) and
+                  contact[f"hp{d}"] == (128 if blocked else 115) and
+                  contact[f"guard{d}"] == int(blocked) and
+                  contact["hitstop"] == (3 if blocked else 5),
+                  label + " preserves exact damage, guard classification and hitstop", contact)
+            if guard:
+                # Public raw pad bits prove these are actual old/new-back and
+                # crouch-back samples rather than neutral defender hits.
+                guard_keys = (0x100 if port == 0 else 0x200) if guard == "old" else (
+                    0x200 if port == 0 else 0x100)
+                if guard == "low":
+                    guard_keys |= 0x400
+                check(contact[f"raw_keys{d}"] == guard_keys,
+                      label + " samples the intended real defender guard input", contact)
+            check((contact[f"x{d}"] - previous[f"x{d}"]) * away >= (0 if corner else 1),
+                  label + " immediate recoil points away from the attacker", {
+                      "previous": previous, "contact": contact})
+            # Effects are constructed before the final corner clamp. In a
+            # trade the second snapshot contact owns the single effect slot.
+            fx_victim = "1" if trade else d
+            fx_direction = 1 if trade else away
+            fx_center = ((contact[f"x{fx_victim}"] + away * (32 + 12)) >> 4
+                         if corner else contact[f"x{fx_victim}"] >> 4)
+            expected_fx = (fx_center + (-12 if fx_direction > 0 else 6) - 8) & 511
+            check(effect is not None and effect["x"] == expected_fx,
+                  label + " native impact effect appears on the contact side", {"effect": effect, "expected_x": expected_fx})
+            frozen = rows[contact_index + 1:contact_index + 1 + contact["hitstop"]]
+            check(len(frozen) == contact["hitstop"] and
+                  all(all(row[name] == contact[name] for name in
+                          ("x1", "x2", "y1", "y2", "hurt1", "hurt2", "anim_tick1", "anim_tick2"))
+                      for row in frozen), label + " hitstop freezes contact physics and animation", frozen)
+            drift = [(before, after) for before, after in zip(rows[contact_index:], rows[contact_index + 1:])
+                     if before["hitstop"] == 0 and before[f"hurt{d}"] > 0 and not before[f"guard{d}"]]
+            if not blocked:
+                check(bool(drift) and all((after[f"x{d}"] - before[f"x{d}"]) * away ==
+                                         (0 if corner else 9) for before, after in drift),
+                      label + " every hurt tick recoils away through landing/action cancellation", drift)
+                if trade:
+                    check(contact["hp1"] == 115 and contact["hp2"] == 115 and
+                          contact["connected1"] == 2 and contact["connected2"] == 2,
+                          label + " preserves both simultaneous snapshot contacts", contact)
+            if corner:
+                wall = (232 if away > 0 else 24) * 16
+                check(all(row[f"x{d}"] == wall for row in rows[contact_index:] if row[f"hurt{d}"]),
+                      label + " contact and hurt drift clamp at the actual wall", rows[contact_index:])
+        else:
+            check(contact_index is None and all(row[f"hp{d}"] == 128 for row in rows),
+                  label + " remains a directional/range whiff", evidence)
+            if key == "a":
+                check(all(abs(row[f"x{a}"] - row[f"x{d}"]) > 26 * 16 for row in active),
+                      label + " rejects rear centers beyond 26px during active ticks", active)
+        landed = rows[-1]
+        expected_face = 1 if landed[f"x{a}"] < landed[f"x{d}"] else 0
+        check(landed[f"y{a}"] == 0 and landed[f"action{a}"] == 0 and
+              landed[f"air_action{a}"] == 0 and landed[f"face{a}"] == expected_face,
+              label + " clears air action and restores positional facing after landing", landed)
+        return {"label": label, "contact": rows[contact_index] if contact_index is not None else None,
+                "effect": effect, "active": active, "landed": landed}
+    finally:
+        e.close()
+
+
+def _grounded_cross_up_whiff(port: int, key: str) -> dict[str, object]:
+    """Lock a grounded normal before the other controller jumps behind it."""
+
+    e = boot(1, fighter=0, fighter2=0)
+    jumper, attacker = str(port + 1), str(2 - port)
+    sign = 1 if port == 0 else -1
+    forward = "right" if port == 0 else "left"
+    action = 5 if key == "a" else 3
+    try:
+        for _ in range(180):
+            s = trace(e)
+            if abs(s["x1"] - s["x2"]) <= 24 * 16:
+                break
+            drive(e, port, [forward])
+        e.run(3)
+        drive(e, port, ["up", forward])
+        sent = False
+        rows = []
+        for _ in range(64):
+            s = trace(e)
+            relative = (s[f"x{jumper}"] - s[f"x{attacker}"]) * sign
+            keys = []
+            if not sent and -64 <= relative < 0:
+                keys = [key]
+                sent = True
+            drive(e, 1 - port, keys)
+            rows.append(trace(e))
+        startup, active = (7, 5) if key == "a" else (9, 5)
+        overlap = [s for s in rows if s[f"action{attacker}"] == action and
+                   startup <= s[f"anim_tick{attacker}"] < startup + active and
+                   (s[f"x{jumper}"] - s[f"x{attacker}"]) * sign > 0 and
+                   abs(s[f"x{jumper}"] - s[f"x{attacker}"]) <= (51 if key == "a" else 48) * 16 and
+                   signed16(s[f"y{jumper}"]) - 4 * 16 >= (-60 if key == "a" else -52) * 16]
+        label = f"P{attacker} grounded backward {key.upper()}"
+        check(sent and bool(overlap), label + " has real rear active overlap", overlap or rows)
+        check(all(s[f"face{attacker}"] == (0 if port == 0 else 1) and
+                  s[f"air_action{attacker}"] == 0 for s in overlap),
+              label + " stays grounded with locked directional facing", overlap)
+        check(all(s[f"hp{jumper}"] == 128 and s[f"connected{attacker}"] == 0 for s in rows),
+              label + " cannot use the airborne medium-kick exception", overlap)
+        return {"label": label, "overlap": overlap}
+    finally:
+        e.close()
+
+
+def check_cross_up_contacts() -> dict[str, object]:
+    """Mirrored attacks, relative-back guard, short rear reach and recoil."""
+
+    results: dict[str, object] = {}
+    for port in (0, 1):
+        cases = [("rear", {}), ("old-back", {"guard": "old"}),
+                 ("new-back", {"guard": "new"}), ("low-back", {"guard": "low"}),
+                 ("front", {"front": True}), ("far-rear", {"delay": 1}),
+                 ("corner", {"front": True, "corner": True}), ("trade", {"trade": True})]
+        for name, options in cases:
+            results[f"p{port + 1}-{name}"] = _cross_up_contact_case(port, **options)
+        for key in ("y", "x", "l", "b", "r"):
+            results[f"p{port + 1}-rear-{key}"] = _cross_up_contact_case(port, key)
+        for key in ("a", "l"):
+            results[f"p{2 - port}-ground-{key}"] = _grounded_cross_up_whiff(port, key)
+    return results
+
+
 def check_cross_up_jump() -> None:
     """A diagonal jump crosses P2 with locked air facing, then turns on landing."""
 
@@ -3857,6 +4110,7 @@ def main() -> int:
         "down_floor_guard": {},
         "cpu_regressions": {},
         "menu_regressions": {},
+        "cross_up_contacts": {},
     }
     try:
         manifest = json.loads((ROOT / "dist/manifest.json").read_text())
@@ -3916,6 +4170,7 @@ def main() -> int:
 
         check_landing_buffer_boundary()
         check_cross_up_jump()
+        report["cross_up_contacts"] = check_cross_up_contacts()
         check_neutral_jump_unsteered()
         check_jump_velocity(0, "right")
         check_jump_velocity(1, "left")
