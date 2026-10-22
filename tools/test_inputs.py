@@ -1460,6 +1460,46 @@ def check_qcf_both_facings() -> None:
     check_qcf_case(0, wrong_back=True)
 
 
+def check_motion_step_timeout_both_ports() -> list[dict[str, object]]:
+    """A slow complete motion works when each progress step beats its timeout."""
+    cases = []
+    for port in (0, 1):
+        suffix = str(port + 1)
+        for gap in (8, 12):
+            e = boot(1)
+            try:
+                before = trace(e)
+                forward = "right" if before[f"face{suffix}"] else "left"
+                started = e.frames
+                steps = []
+                for keys, frames in ((["down"], 3), ([], gap),
+                                     (["down", forward], 1), ([], gap),
+                                     ([forward], 1), ([forward, "x"], 3)):
+                    drive(e, port, keys, frames)
+                    now = trace(e)
+                    steps.append({"elapsed_frames": e.frames - started, "keys": keys,
+                                  "stage": now[f"command_stage{suffix}"],
+                                  "action": now[f"action{suffix}"],
+                                  "energy": now[f"energy{suffix}"]})
+                case = {"port": port, "gap_between_steps": gap, "steps": steps}
+                if gap == 8:
+                    check(steps[4]["stage"] == 3 and steps[4]["elapsed_frames"] > 12,
+                          f"P{suffix} QCF timeout refreshes on progress, not from the first Down", case)
+                    check(steps[-1]["action"] == 7 and
+                          before[f"energy{suffix}"] - steps[-1]["energy"] >= 28,
+                          f"P{suffix} spaced QCF creates a real energy-spending special", case)
+                else:
+                    check(steps[1]["stage"] == 0 and steps[4]["stage"] == 0,
+                          f"P{suffix} twelve neutral ticks expire an unfinished motion step", case)
+                    check(steps[-1]["action"] != 7 and
+                          steps[-1]["energy"] >= before[f"energy{suffix}"],
+                          f"P{suffix} expired QCF falls back to a normal without a special cost", case)
+                cases.append(case)
+            finally:
+                e.close()
+    return cases
+
+
 def _throw_victim_to_wake(e: Emulator, victim: int) -> dict[str, int]:
     """Create a local throw and return the victim's first wake sample."""
 
@@ -3882,6 +3922,7 @@ def main() -> int:
         check_down_shortcut(0)
         check_down_shortcut(1)
         check_qcf_both_facings()
+        report["motion_step_timeout"] = check_motion_step_timeout_both_ports()
         check_wake_motion_both_ports()
         check_normal_cancel_deadline()
         report["status"] = "passed"

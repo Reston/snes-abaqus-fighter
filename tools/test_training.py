@@ -658,6 +658,7 @@ def verify_page_navigation(rom: Path, mode: int, fighter: int,
                              SPECIAL_FAMILY_NAMES[SPECIAL_FAMILY[p2]]))
         expected.extend(("MOVE LIST 2/2", "QUICK: DOWN + Y / X",
                          "MOTION: D, D+F, F + Y/X", "COST: 32 ENERGY",
+                         "12-TICK WINDOW PER STEP",
                          "PRESS PUNCH WITH FINAL TOWARD"))
         specials = page_text(q, expected, f"mode{mode}-specials")
 
