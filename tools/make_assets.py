@@ -132,7 +132,8 @@ def background(name,im):
         tilemap.append(lookup[tb]|((j+2)<<10))
         out=Image.new('RGB',(8,8));out.putdata([pals[j*16+v] for v in indices]);preview.paste(out,((i%32)*8,(i//32)*8))
     tilemap += [0]*(1024-len(tilemap))
-    assert len(gfx)<=0x7000
+    if not (len(gfx)<=0x7000):
+        raise AssertionError()
     asset(name+'_tiles',gfx);asset(name+'_map',struct.pack('<1024H',*tilemap));asset(name+'_pal',palbytes(pals))
     preview.save(OUT/(name+'.png'))
     return preview
@@ -179,7 +180,8 @@ for n,fighter in enumerate(roster):
     for ty in range(10):
         for tx in range(8):
             data+=tile([ids[(ty*8+y)*64+tx*8+x] for y in range(8) for x in range(8)])
-    assert len(data)==2560
+    if not (len(data)==2560):
+        raise AssertionError()
     asset(f'portrait{n:02}_tiles',data)
     asset(f'portrait{n:02}_pal',palbytes(colors))
 
@@ -233,7 +235,8 @@ for code in range(128):
         for x,c in enumerate(row):
             if c=='1':pix[y*8+x+1]=2
     ui+=tile(pix)
-assert len(ui)==384*32
+if not (len(ui)==384*32):
+    raise AssertionError()
 asset('ui_tiles',ui)
 asset('ui_pal',palbytes(UI_COLORS+[(0,0,0),(15,24,41),(96,235,212)]+UI_COLORS[3:]))
 
@@ -245,7 +248,8 @@ for n,fighter in enumerate(roster):
         for ty in range(10):
             for tx in range(12):
                 data+=tile([ids[(ty*8+y)*96+tx*8+x] for y in range(8) for x in range(8)])
-    assert len(data)==245760
+    if not (len(data)==245760):
+        raise AssertionError()
     for bank,suffix in enumerate(('', 'b', 'c', 'd', 'e', 'f', 'g', 'h')):
         asset(f'fighter{n:02}{suffix}',data[bank*30720:(bank+1)*30720])
     asset(f'fighter{n:02}_pal',palbytes(fighter['palette']))
@@ -302,7 +306,8 @@ def make_effects_it(path, cues):
     hdr+=struct.pack('<8H',ordnum,insnum,smpnum,patnum,0x214,0x214,13,0)
     hdr+=bytes([100,64,6,125,128,0])+struct.pack('<HII',0,0,0)
     hdr+=bytes([128]*64)+bytes([64]*64)
-    assert len(hdr)==192
+    if not (len(hdr)==192):
+        raise AssertionError()
     pos=192+ordnum+insnum*4+smpnum*4+patnum*4
     insoff=[pos+i*554 for i in range(insnum)];pos+=insnum*554
     smpoff=[pos+i*80 for i in range(smpnum)];pos+=smpnum*80
@@ -328,7 +333,8 @@ def make_effects_it(path, cues):
         sh=b'IMPS'+('sfx'+str(i)).encode().ljust(12,b'\0')+bytes([0,64,1,50])
         sh+=('Abaqus cue '+str(i)).encode().ljust(26,b'\0')+bytes([1,32])
         sh+=struct.pack('<7I',len(data),0,0,8000,0,0,dataoff[i])+bytes(4)
-        assert len(sh)==80
+        if not (len(sh)==80):
+            raise AssertionError()
         result+=sh
     result+=pattern+b''.join(sample_data)
     path.write_bytes(result)
@@ -368,7 +374,8 @@ def make_it(path,transpose=0):
     hdr+=struct.pack('<8H',5,5,5,4,0x214,0x214,13,0)
     hdr+=bytes([100,64,6,132+transpose,128,0])+struct.pack('<HII',0,0,0)
     hdr+=bytes([24,40,32,32]+[128]*60)+bytes([64]*64)
-    assert len(hdr)==192
+    if not (len(hdr)==192):
+        raise AssertionError()
     pos=192+5+5*4+5*4+4*4
     insoff=[pos+i*554 for i in range(5)];pos+=5*554
     smpoff=[pos+i*80 for i in range(5)];pos+=5*80
@@ -391,7 +398,8 @@ def make_it(path,transpose=0):
         sh=b'IMPS'+b'original'.ljust(12,b'\0')+bytes([0,64,17 if sample_loops[i] else 1,50])
         sh+=['Night Lead','Glass Bass','Kick','Snare','Hat'][i].encode().ljust(26,b'\0')+bytes([1,32])
         sh+=struct.pack('<7I',len(data),0,len(data) if sample_loops[i] else 0,8363,0,0,dataoff[i])+bytes(4)
-        assert len(sh)==80
+        if not (len(sh)==80):
+            raise AssertionError()
         result+=sh
     result+=b''.join(patterns)+b''.join(sample_data)
     path.write_bytes(result)

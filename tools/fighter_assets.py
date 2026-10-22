@@ -95,7 +95,8 @@ def extract_atlas(path, alpha_threshold=200, pose_names=None):
     extraction algorithm and its alpha-threshold semantics remain unchanged.
     """
     names = tuple(POSES if pose_names is None else pose_names)
-    assert len(names) == 16, f'{path}: an atlas must contain exactly sixteen pose names'
+    if not (len(names) == 16):
+        raise AssertionError(f'{path}: an atlas must contain exactly sixteen pose names')
     sheet = Image.open(path).convert('RGBA')
     width, height = sheet.size
     # Reject translucent generation fringes: those can bridge neighboring hands
@@ -133,7 +134,8 @@ def extract_atlas(path, alpha_threshold=200, pose_names=None):
         if count > 700:
             components.append((count, (left, top, right + 1, bottom + 1), label))
     selected = sorted(components, reverse=True)
-    assert len(selected) == 16, f'{path}: expected sixteen separate fighter silhouettes; got {len(selected)}: {[(c[0], c[1]) for c in selected]}'
+    if not (len(selected) == 16):
+        raise AssertionError(f'{path}: expected sixteen separate fighter silhouettes; got {len(selected)}: {[(c[0], c[1]) for c in selected]}')
     selected.sort(key=lambda item: item[1][3])
     ordered = []
     for row in range(0, 16, 4):
@@ -158,22 +160,27 @@ def _sha256(path):
 
 def _native_frame_hashes(indices):
     """Return ordered hashes for the 96x80 indexed frame planes."""
-    assert len(indices) == ANIMATION_FRAME_COUNT
-    assert all(len(frame) == FRAME_WIDTH * FRAME_HEIGHT for frame in indices)
+    if not (len(indices) == ANIMATION_FRAME_COUNT):
+        raise AssertionError()
+    if not (all(len(frame) == FRAME_WIDTH * FRAME_HEIGHT for frame in indices)):
+        raise AssertionError()
     return [hashlib.sha256(bytes(frame)).hexdigest() for frame in indices]
 
 
 def _frame_hash_summary(frame_hashes):
     """Summarize ordered per-frame hashes without re-encoding tile banks."""
-    assert len(frame_hashes) == ANIMATION_FRAME_COUNT
-    assert all(isinstance(value, str) and len(value) == 64
-               for value in frame_hashes)
+    if not (len(frame_hashes) == ANIMATION_FRAME_COUNT):
+        raise AssertionError()
+    if not (all(isinstance(value, str) and len(value) == 64
+               for value in frame_hashes)):
+        raise AssertionError()
     return hashlib.sha256(''.join(frame_hashes).encode('ascii')).hexdigest()
 
 
 def _palette_colors_from_bytes(data):
     """Decode the exact sixteen-color SNES palette used by a revision."""
-    assert len(data) == 32, f'OBJ palette must contain sixteen little-endian colors: {len(data)}'
+    if not (len(data) == 32):
+        raise AssertionError(f'OBJ palette must contain sixteen little-endian colors: {len(data)}')
     colors = []
     for offset in range(0, len(data), 2):
         value = int.from_bytes(data[offset:offset + 2], 'little')
@@ -184,12 +191,12 @@ def _palette_colors_from_bytes(data):
 
 
 def _assert_same_scale(actual, expected, label):
-    assert isinstance(actual, (int, float)) and math.isfinite(float(actual)), \
-        f'{label}: invalid uniform scale {actual!r}'
-    assert isinstance(expected, (int, float)) and math.isfinite(float(expected)), \
-        f'{label}: invalid baseline uniform scale {expected!r}'
-    assert float(actual) == float(expected), \
-        f'{label}: uniform scale changed ({actual!r} != {expected!r})'
+    if not (isinstance(actual, (int, float)) and math.isfinite(float(actual))):
+        raise AssertionError(f'{label}: invalid uniform scale {actual!r}')
+    if not (isinstance(expected, (int, float)) and math.isfinite(float(expected))):
+        raise AssertionError(f'{label}: invalid baseline uniform scale {expected!r}')
+    if not (float(actual) == float(expected)):
+        raise AssertionError(f'{label}: uniform scale changed ({actual!r} != {expected!r})')
 
 
 def _palette_bytes(colors):
@@ -204,14 +211,16 @@ def _palette_bytes(colors):
 def _load_airborne_provenance(path):
     """Accept the two established provenance layouts without weakening checks."""
     data = json.loads(path.read_text())
-    assert isinstance(data, dict), f'Invalid airborne provenance metadata: {path}'
+    if not (isinstance(data, dict)):
+        raise AssertionError(f'Invalid airborne provenance metadata: {path}')
     atlas = data.get('atlas') if isinstance(data.get('atlas'), dict) else {}
     output = data.get('output') if isinstance(data.get('output'), dict) else {}
     generation = data.get('generation') if isinstance(data.get('generation'), dict) else {}
     source_path = atlas.get('path') or output.get('path') or data.get('path')
     prompt = (data.get('prompt') or atlas.get('full_prompt') or
               generation.get('full_prompt') or data.get('full_prompt'))
-    assert source_path and prompt, f'Incomplete airborne provenance metadata: {path}'
+    if not (source_path and prompt):
+        raise AssertionError(f'Incomplete airborne provenance metadata: {path}')
     return data
 
 
@@ -223,7 +232,8 @@ def _normalize_animation(figures, reference_height):
     never fitted separately to the hardware canvas: doing that is what makes
     a character appear to grow and shrink from pose to pose.
     """
-    assert figures and figures[0].height > 0
+    if not (figures and figures[0].height > 0):
+        raise AssertionError()
     source_scale = reference_height / figures[0].height
     normalized = []
     for figure in figures:
@@ -234,16 +244,18 @@ def _normalize_animation(figures, reference_height):
     # rounding difference is acceptable for the source raster, but a missing
     # or implausibly tiny neutral figure is a generation error, not something
     # the native pipeline should hide by compressing all other poses.
-    assert normalized[0].height >= max(1, round(reference_height * .96)), \
-        f'animation neutral normalized to {normalized[0].height}, expected about {reference_height}'
+    if not (normalized[0].height >= max(1, round(reference_height * .96))):
+        raise AssertionError(f'animation neutral normalized to {normalized[0].height}, expected about {reference_height}')
     return normalized, source_scale
 
 
 def _normalize_animation_locked(figures, source_scale, label):
     """Normalize an approved revision with its prior atlas scale exactly."""
-    assert figures and figures[0].height > 0
-    assert isinstance(source_scale, (int, float)) and math.isfinite(float(source_scale)) \
-        and source_scale > 0, f'{label}: invalid locked source normalization'
+    if not (figures and figures[0].height > 0):
+        raise AssertionError()
+    if not (isinstance(source_scale, (int, float)) and math.isfinite(float(source_scale)) \
+        and source_scale > 0):
+        raise AssertionError(f'{label}: invalid locked source normalization')
     normalized = []
     for figure in figures:
         size = (max(1, round(figure.width * source_scale)),
@@ -297,8 +309,8 @@ def _assert_animation_cycles(slug, figures):
               (60, 64, 3, 'knockdown/recovery'))
     for start, end, minimum, name in cycles:
         unique = len(set(signatures[start:end]))
-        assert unique >= minimum, \
-            f'{slug}: {name} has only {unique} distinct source figures; review animation art'
+        if not (unique >= minimum):
+            raise AssertionError(f'{slug}: {name} has only {unique} distinct source figures; review animation art')
 
 
 def _assert_native_animation_cycles(slug, indices):
@@ -312,63 +324,85 @@ def _assert_native_animation_cycles(slug, indices):
               (60, 64, 'knockdown/recovery'))
     for start, end, name in cycles:
         unique = len({bytes(frame) for frame in indices[start:end]})
-        assert unique >= 3, \
-            f'{slug}: native {name} cycle has only {unique} distinct indexed frames'
+        if not (unique >= 3):
+            raise AssertionError(f'{slug}: native {name} cycle has only {unique} distinct indexed frames')
 
 
 def _load_native_baseline(root):
     """Load the reviewed v0.8 64-frame baseline before any output writes."""
     path = root / NATIVE_BASELINE_PATH
-    assert path.exists(), f'Missing immutable native roster baseline: {path}'
+    if not (path.exists()):
+        raise AssertionError(f'Missing immutable native roster baseline: {path}')
     actual_hash = _sha256(path)
-    assert actual_hash == NATIVE_BASELINE_SHA256, \
-        f'Native roster baseline hash changed ({actual_hash} != {NATIVE_BASELINE_SHA256})'
+    if not (actual_hash == NATIVE_BASELINE_SHA256):
+        raise AssertionError(f'Native roster baseline hash changed ({actual_hash} != {NATIVE_BASELINE_SHA256})')
     data = json.loads(path.read_text())
-    assert data.get('schema') == 1 and data.get('kind') == 'native-roster-baseline', \
-        f'Unsupported native roster baseline schema: {path}'
-    assert data.get('version') == 'v0.8', f'Unexpected native roster baseline version: {data.get("version")}'
-    assert data.get('frame_count') == ANIMATION_FRAME_COUNT
-    assert data.get('frame_bytes') == FRAME_WIDTH * FRAME_HEIGHT
-    assert data.get('encoded_bank_count') == ANIMATION_BANK_COUNT
-    assert data.get('encoded_bank_bytes') == ANIMATION_BANK_COUNT * ANIMATION_BANK_BYTES
-    assert data.get('frame_canvas') == [FRAME_WIDTH, FRAME_HEIGHT]
-    assert data.get('fit_bounds') == [FIT_WIDTH, FIT_HEIGHT]
-    assert data.get('baseline_y') == BASELINE_Y
+    if not (data.get('schema') == 1 and data.get('kind') == 'native-roster-baseline'):
+        raise AssertionError(f'Unsupported native roster baseline schema: {path}')
+    if not (data.get('version') == 'v0.8'):
+        raise AssertionError(f'Unexpected native roster baseline version: {data.get("version")}')
+    if not (data.get('frame_count') == ANIMATION_FRAME_COUNT):
+        raise AssertionError()
+    if not (data.get('frame_bytes') == FRAME_WIDTH * FRAME_HEIGHT):
+        raise AssertionError()
+    if not (data.get('encoded_bank_count') == ANIMATION_BANK_COUNT):
+        raise AssertionError()
+    if not (data.get('encoded_bank_bytes') == ANIMATION_BANK_COUNT * ANIMATION_BANK_BYTES):
+        raise AssertionError()
+    if not (data.get('frame_canvas') == [FRAME_WIDTH, FRAME_HEIGHT]):
+        raise AssertionError()
+    if not (data.get('fit_bounds') == [FIT_WIDTH, FIT_HEIGHT]):
+        raise AssertionError()
+    if not (data.get('baseline_y') == BASELINE_Y):
+        raise AssertionError()
     entries = data.get('fighters')
-    assert isinstance(entries, list) and len(entries) == len(SLUGS), \
-        'Native roster baseline must contain twelve fighters'
+    if not (isinstance(entries, list) and len(entries) == len(SLUGS)):
+        raise AssertionError('Native roster baseline must contain twelve fighters')
     result = {}
     for fighter, entry in enumerate(entries):
-        assert entry.get('id') == fighter and entry.get('slug') == SLUGS[fighter], \
-            f'Native roster baseline fighter order changed at {fighter}'
-        assert entry.get('frame_count') == ANIMATION_FRAME_COUNT
-        assert entry.get('frame_bytes') == FRAME_WIDTH * FRAME_HEIGHT
-        assert entry.get('frame_canvas') == [FRAME_WIDTH, FRAME_HEIGHT]
-        assert entry.get('fit_bounds') == [FIT_WIDTH, FIT_HEIGHT]
-        assert entry.get('baseline_y') == BASELINE_Y
+        if not (entry.get('id') == fighter and entry.get('slug') == SLUGS[fighter]):
+            raise AssertionError(f'Native roster baseline fighter order changed at {fighter}')
+        if not (entry.get('frame_count') == ANIMATION_FRAME_COUNT):
+            raise AssertionError()
+        if not (entry.get('frame_bytes') == FRAME_WIDTH * FRAME_HEIGHT):
+            raise AssertionError()
+        if not (entry.get('frame_canvas') == [FRAME_WIDTH, FRAME_HEIGHT]):
+            raise AssertionError()
+        if not (entry.get('fit_bounds') == [FIT_WIDTH, FIT_HEIGHT]):
+            raise AssertionError()
+        if not (entry.get('baseline_y') == BASELINE_Y):
+            raise AssertionError()
         frame_hashes = entry.get('frame_hashes')
-        assert isinstance(frame_hashes, list) and len(frame_hashes) == ANIMATION_FRAME_COUNT
-        assert all(isinstance(value, str) and len(value) == 64
-                   for value in frame_hashes)
-        assert _frame_hash_summary(frame_hashes) == entry.get('frame_hashes_sha256'), \
-            f'{SLUGS[fighter]}: invalid baseline frame-hash summary'
+        if not (isinstance(frame_hashes, list) and len(frame_hashes) == ANIMATION_FRAME_COUNT):
+            raise AssertionError()
+        if not (all(isinstance(value, str) and len(value) == 64
+                   for value in frame_hashes)):
+            raise AssertionError()
+        if not (_frame_hash_summary(frame_hashes) == entry.get('frame_hashes_sha256')):
+            raise AssertionError(f'{SLUGS[fighter]}: invalid baseline frame-hash summary')
         palette_hex = entry.get('palette_hex')
-        assert isinstance(palette_hex, str) and len(palette_hex) == 64
+        if not (isinstance(palette_hex, str) and len(palette_hex) == 64):
+            raise AssertionError()
         palette_bytes = bytes.fromhex(palette_hex)
-        assert hashlib.sha256(palette_bytes).hexdigest() == entry.get('palette_sha256'), \
-            f'{SLUGS[fighter]}: invalid baseline palette hash'
-        assert len(palette_bytes) == 32
+        if not (hashlib.sha256(palette_bytes).hexdigest() == entry.get('palette_sha256')):
+            raise AssertionError(f'{SLUGS[fighter]}: invalid baseline palette hash')
+        if not (len(palette_bytes) == 32):
+            raise AssertionError()
         source_files = entry.get('source_files')
-        assert isinstance(source_files, dict) and set(source_files) == set(REVISION_SOURCE_ROLES), \
-            f'{SLUGS[fighter]}: baseline source-role set changed'
+        if not (isinstance(source_files, dict) and set(source_files) == set(REVISION_SOURCE_ROLES)):
+            raise AssertionError(f'{SLUGS[fighter]}: baseline source-role set changed')
         for role in REVISION_SOURCE_ROLES:
             descriptor = source_files[role]
-            assert isinstance(descriptor, dict)
-            assert isinstance(descriptor.get('file'), str)
-            assert isinstance(descriptor.get('sha256'), str) and len(descriptor['sha256']) == 64
+            if not (isinstance(descriptor, dict)):
+                raise AssertionError()
+            if not (isinstance(descriptor.get('file'), str)):
+                raise AssertionError()
+            if not (isinstance(descriptor.get('sha256'), str) and len(descriptor['sha256']) == 64):
+                raise AssertionError()
             if role != 'airborne_metadata':
                 scale = descriptor.get('source_normalization')
-                assert isinstance(scale, (int, float)) and math.isfinite(float(scale)) and scale > 0
+                if not (isinstance(scale, (int, float)) and math.isfinite(float(scale)) and scale > 0):
+                    raise AssertionError()
         result[fighter] = {
             'id': fighter,
             'slug': SLUGS[fighter],
@@ -389,22 +423,24 @@ def _load_native_baseline(root):
 
 def _resolve_checked_source(root, directory, descriptor, role):
     """Resolve a contract source and reject paths outside its fighter folder."""
-    assert isinstance(descriptor, dict), f'{role}: source descriptor must be an object'
+    if not (isinstance(descriptor, dict)):
+        raise AssertionError(f'{role}: source descriptor must be an object')
     relative = descriptor.get('file')
     expected_hash = descriptor.get('sha256')
-    assert isinstance(relative, str) and relative and not Path(relative).is_absolute(), \
-        f'{role}: source file must be a relative repository path'
-    assert isinstance(expected_hash, str) and len(expected_hash) == 64, \
-        f'{role}: source SHA256 is required'
+    if not (isinstance(relative, str) and relative and not Path(relative).is_absolute()):
+        raise AssertionError(f'{role}: source file must be a relative repository path')
+    if not (isinstance(expected_hash, str) and len(expected_hash) == 64):
+        raise AssertionError(f'{role}: source SHA256 is required')
     path = (root / relative).resolve()
     try:
         path.relative_to(directory.resolve())
     except ValueError:
         raise AssertionError(f'{role}: source escapes fighter directory: {relative}')
-    assert path.exists() and path.is_file(), f'{role}: missing source file: {path}'
+    if not (path.exists() and path.is_file()):
+        raise AssertionError(f'{role}: missing source file: {path}')
     actual_hash = _sha256(path)
-    assert actual_hash == expected_hash, \
-        f'{role}: source hash changed ({actual_hash} != {expected_hash})'
+    if not (actual_hash == expected_hash):
+        raise AssertionError(f'{role}: source hash changed ({actual_hash} != {expected_hash})')
     return path
 
 
@@ -415,24 +451,31 @@ def _assert_baseline_sources(root, directory, baseline_entry, slug):
         path = _resolve_checked_source(root, directory, descriptor,
                                        f'{slug} baseline {role}')
         expected = (root / descriptor['file']).resolve()
-        assert path == expected, f'{slug}: baseline source path changed for {role}'
+        if not (path == expected):
+            raise AssertionError(f'{slug}: baseline source path changed for {role}')
 
 
 def _validate_revision_native_block(block, baseline_entry, label):
     """Validate old/expected native values carried by a revision contract."""
-    assert isinstance(block, dict), f'{label}: native block must be an object'
+    if not (isinstance(block, dict)):
+        raise AssertionError(f'{label}: native block must be an object')
     frame_hashes = block.get('frame_hashes')
-    assert isinstance(frame_hashes, list) and len(frame_hashes) == ANIMATION_FRAME_COUNT
-    assert all(isinstance(value, str) and len(value) == 64 for value in frame_hashes)
+    if not (isinstance(frame_hashes, list) and len(frame_hashes) == ANIMATION_FRAME_COUNT):
+        raise AssertionError()
+    if not (all(isinstance(value, str) and len(value) == 64 for value in frame_hashes)):
+        raise AssertionError()
     summary = block.get('frame_hashes_sha256')
-    assert _frame_hash_summary(frame_hashes) == summary, f'{label}: invalid frame hash summary'
+    if not (_frame_hash_summary(frame_hashes) == summary):
+        raise AssertionError(f'{label}: invalid frame hash summary')
     palette_hex = block.get('palette_hex')
-    assert isinstance(palette_hex, str) and len(palette_hex) == 64
+    if not (isinstance(palette_hex, str) and len(palette_hex) == 64):
+        raise AssertionError()
     palette = bytes.fromhex(palette_hex)
-    assert len(palette) == 32
+    if not (len(palette) == 32):
+        raise AssertionError()
     palette_hash = block.get('palette_sha256')
-    assert hashlib.sha256(palette).hexdigest() == palette_hash, \
-        f'{label}: invalid palette hash'
+    if not (hashlib.sha256(palette).hexdigest() == palette_hash):
+        raise AssertionError(f'{label}: invalid palette hash')
     scale = block.get('uniform_scale')
     _assert_same_scale(scale, block.get('physical_scale', scale), f'{label} scale')
     return {'frame_hashes': frame_hashes, 'frame_hashes_sha256': summary,
@@ -452,41 +495,48 @@ def _load_revision_sources(root, fighter, slug, directory, baseline_entry):
                                        ('animation-airborne', '.json'))]
     contract_path = root / registry['contract_file'] if registry else None
     if not registry:
-        assert not any(path.exists() for path in candidates), \
-            f'{slug}: versioned art exists but this fighter has no approved revision slot'
+        if not (not any(path.exists() for path in candidates)):
+            raise AssertionError(f'{slug}: versioned art exists but this fighter has no approved revision slot')
         return None
     if not contract_path.exists() and not any(path.exists() for path in candidates):
         return None
-    assert registry and contract_path, f'{slug}: art revisions are not registered'
-    assert contract_path.exists(), f'{slug}: versioned art exists without native-revision.json'
+    if not (registry and contract_path):
+        raise AssertionError(f'{slug}: art revisions are not registered')
+    if not (contract_path.exists()):
+        raise AssertionError(f'{slug}: versioned art exists without native-revision.json')
     approved_hash = registry.get('contract_sha256')
     actual_contract_hash = _sha256(contract_path)
-    assert approved_hash, f'{slug}: native art revision is present but unapproved'
-    assert actual_contract_hash == approved_hash, \
-        f'{slug}: native revision contract hash is not allowlisted'
+    if not (approved_hash):
+        raise AssertionError(f'{slug}: native art revision is present but unapproved')
+    if not (actual_contract_hash == approved_hash):
+        raise AssertionError(f'{slug}: native revision contract hash is not allowlisted')
     contract = json.loads(contract_path.read_text())
-    assert contract.get('schema') == 1
-    assert contract.get('fighter_id') == fighter and contract.get('slug') == slug
-    assert contract.get('baseline', {}).get('file') == NATIVE_BASELINE_PATH
-    assert contract.get('baseline', {}).get('sha256') == NATIVE_BASELINE_SHA256
+    if not (contract.get('schema') == 1):
+        raise AssertionError()
+    if not (contract.get('fighter_id') == fighter and contract.get('slug') == slug):
+        raise AssertionError()
+    if not (contract.get('baseline', {}).get('file') == NATIVE_BASELINE_PATH):
+        raise AssertionError()
+    if not (contract.get('baseline', {}).get('sha256') == NATIVE_BASELINE_SHA256):
+        raise AssertionError()
     provenance_files = contract.get('provenance_files')
     expected_provenance_names = (
         'likeness-v4.json', 'animation-v4.json', 'animation-airborne-v4.json')
-    assert isinstance(provenance_files, list) and len(provenance_files) == 3, \
-        f'{slug}: revision must pin exactly three provenance descriptors'
+    if not (isinstance(provenance_files, list) and len(provenance_files) == 3):
+        raise AssertionError(f'{slug}: revision must pin exactly three provenance descriptors')
     provenance_paths = []
     folder = str(directory.relative_to(root)).replace('\\', '/')
     for descriptor, expected_name in zip(provenance_files, expected_provenance_names):
-        assert descriptor.get('file') == f'{folder}/{expected_name}', \
-            f'{slug}: provenance path must be the reviewed same-folder {expected_name}'
+        if not (descriptor.get('file') == f'{folder}/{expected_name}'):
+            raise AssertionError(f'{slug}: provenance path must be the reviewed same-folder {expected_name}')
         provenance_paths.append(_resolve_checked_source(
             root, directory, descriptor, f'{slug} provenance {expected_name}'))
     old_sources = contract.get('old_sources')
     new_sources = contract.get('new_sources')
-    assert isinstance(old_sources, dict) and set(old_sources) == set(REVISION_SOURCE_ROLES), \
-        f'{slug}: revision old_sources must cover every atlas and provenance file'
-    assert isinstance(new_sources, dict) and set(new_sources) == set(REVISION_SOURCE_ROLES), \
-        f'{slug}: revision new_sources must cover every atlas and provenance file'
+    if not (isinstance(old_sources, dict) and set(old_sources) == set(REVISION_SOURCE_ROLES)):
+        raise AssertionError(f'{slug}: revision old_sources must cover every atlas and provenance file')
+    if not (isinstance(new_sources, dict) and set(new_sources) == set(REVISION_SOURCE_ROLES)):
+        raise AssertionError(f'{slug}: revision new_sources must cover every atlas and provenance file')
     resolved_old = {}
     resolved_new = {}
     expected_new_names = {
@@ -499,35 +549,40 @@ def _load_revision_sources(root, fighter, slug, directory, baseline_entry):
     for role in REVISION_SOURCE_ROLES:
         old = old_sources[role]
         expected_old = baseline_entry['source_files'][role]
-        assert old.get('file') == expected_old['file'] and old.get('sha256') == expected_old['sha256'], \
-            f'{slug}: revision old {role} source does not match immutable baseline'
+        if not (old.get('file') == expected_old['file'] and old.get('sha256') == expected_old['sha256']):
+            raise AssertionError(f'{slug}: revision old {role} source does not match immutable baseline')
         resolved_old[role] = _resolve_checked_source(root, directory, old, f'{slug} old {role}')
-        assert Path(new_sources[role].get('file', '')).name == expected_new_names[role], \
-            f'{slug}: revision {role} must use the versioned v4 source name'
+        if not (Path(new_sources[role].get('file', '')).name == expected_new_names[role]):
+            raise AssertionError(f'{slug}: revision {role} must use the versioned v4 source name')
         resolved_new[role] = _resolve_checked_source(root, directory, new_sources[role],
                                                      f'{slug} new {role}')
     old_native = _validate_revision_native_block(
         contract.get('old_native'), baseline_entry, f'{slug} old_native')
-    assert old_native['frame_hashes'] == baseline_entry['frame_hashes']
-    assert old_native['palette_hex'] == baseline_entry['palette_hex']
+    if not (old_native['frame_hashes'] == baseline_entry['frame_hashes']):
+        raise AssertionError()
+    if not (old_native['palette_hex'] == baseline_entry['palette_hex']):
+        raise AssertionError()
     _assert_same_scale(old_native['uniform_scale'], baseline_entry['uniform_scale'],
                        f'{slug} old_native')
     expected_native = _validate_revision_native_block(
         contract.get('expected_native'), baseline_entry, f'{slug} expected_native')
-    assert expected_native['palette_hex'] == baseline_entry['palette_hex'], \
-        f'{slug}: revised palette must remain the immutable v0.8 OBJ palette'
+    if not (expected_native['palette_hex'] == baseline_entry['palette_hex']):
+        raise AssertionError(f'{slug}: revised palette must remain the immutable v0.8 OBJ palette')
     _assert_same_scale(expected_native['uniform_scale'], baseline_entry['uniform_scale'],
                        f'{slug} expected_native')
     scales = contract.get('source_normalization')
-    assert isinstance(scales, dict) and set(scales) == set(REVISION_SOURCE_ROLES) - {'airborne_metadata'}
+    if not (isinstance(scales, dict) and set(scales) == set(REVISION_SOURCE_ROLES) - {'airborne_metadata'}):
+        raise AssertionError()
     policy = contract.get('normalization_policy', 'baseline')
-    assert policy in ('baseline', 'neutral-height'), f'{slug}: unknown normalization policy'
+    if not (policy in ('baseline', 'neutral-height')):
+        raise AssertionError(f'{slug}: unknown normalization policy')
     if policy == 'neutral-height':
         # A regenerated sheet may use different source pixel units. Pin one
         # conversion for each complete atlas to the original upright height;
         # never fit individual poses or change the native physical scale.
         reference_height = extract_atlas(resolved_old['legacy'])[0][0].height
-        assert contract.get('normalization_reference_height') == reference_height
+        if not (contract.get('normalization_reference_height') == reference_height):
+            raise AssertionError()
     for role in ('legacy', 'motion', 'actions', 'airborne'):
         if policy == 'neutral-height':
             neutral_height = extract_atlas(resolved_new[role])[0][0].height
@@ -553,12 +608,13 @@ def _assert_native_baseline64(slug, fighter, indices, palette, uniform_scale, ba
     """Assert that an unchanged fighter still matches every v0.8 native frame."""
     expected = baseline[fighter]
     frame_hashes = _native_frame_hashes(indices)
-    assert frame_hashes == expected['frame_hashes'], \
-        f'{slug}: one or more native 64-frame hashes changed'
-    assert _frame_hash_summary(frame_hashes) == expected['frame_hashes_sha256']
+    if not (frame_hashes == expected['frame_hashes']):
+        raise AssertionError(f'{slug}: one or more native 64-frame hashes changed')
+    if not (_frame_hash_summary(frame_hashes) == expected['frame_hashes_sha256']):
+        raise AssertionError()
     palette_bytes = _palette_bytes(palette)
-    assert palette_bytes == expected['palette_bytes'], \
-        f'{slug}: v0.8 OBJ palette bytes changed'
+    if not (palette_bytes == expected['palette_bytes']):
+        raise AssertionError(f'{slug}: v0.8 OBJ palette bytes changed')
     _assert_same_scale(uniform_scale, expected['uniform_scale'], f'{slug} physical scale')
 
 
@@ -566,12 +622,13 @@ def _assert_reviewed_revision(slug, fighter, indices, palette, uniform_scale, re
     """Assert output equals the fighter's reviewed native revision contract."""
     expected = revision['expected_native']
     frame_hashes = _native_frame_hashes(indices)
-    assert frame_hashes == expected['frame_hashes'], \
-        f'{slug}: native revision frame hashes differ from reviewed expectations'
-    assert _frame_hash_summary(frame_hashes) == expected['frame_hashes_sha256']
+    if not (frame_hashes == expected['frame_hashes']):
+        raise AssertionError(f'{slug}: native revision frame hashes differ from reviewed expectations')
+    if not (_frame_hash_summary(frame_hashes) == expected['frame_hashes_sha256']):
+        raise AssertionError()
     palette_bytes = _palette_bytes(palette)
-    assert palette_bytes == expected['palette_bytes'], \
-        f'{slug}: native revision palette differs from reviewed palette'
+    if not (palette_bytes == expected['palette_bytes']):
+        raise AssertionError(f'{slug}: native revision palette differs from reviewed palette')
     _assert_same_scale(uniform_scale, expected['uniform_scale'],
                        f'{slug} reviewed physical scale')
 
@@ -587,11 +644,13 @@ def validate_airborne_atlas(root, fighter):
     """
     root = Path(root).resolve()
     if isinstance(fighter, str):
-        assert fighter in SLUGS, f'unknown fighter slug: {fighter}'
+        if not (fighter in SLUGS):
+            raise AssertionError(f'unknown fighter slug: {fighter}')
         fighter_id = SLUGS.index(fighter)
     else:
         fighter_id = int(fighter)
-        assert 0 <= fighter_id < len(SLUGS), f'fighter id out of range: {fighter_id}'
+        if not (0 <= fighter_id < len(SLUGS)):
+            raise AssertionError(f'fighter id out of range: {fighter_id}')
     slug = SLUGS[fighter_id]
     directory = root / f'assets/art/characters/{fighter_id:02}-{slug}'
     baseline = _load_native_baseline(root)
@@ -612,9 +671,10 @@ def validate_airborne_atlas(root, fighter):
         airborne_source = directory / 'animation-airborne.png'
         airborne_metadata_source = directory / 'animation-airborne.json'
     for required in (source, motion_source, action_source, airborne_source):
-        assert required.exists(), f'Missing airborne validation source: {required}'
-    assert airborne_metadata_source.exists(), \
-        f'Missing airborne provenance metadata: {airborne_metadata_source}'
+        if not (required.exists()):
+            raise AssertionError(f'Missing airborne validation source: {required}')
+    if not (airborne_metadata_source.exists()):
+        raise AssertionError(f'Missing airborne provenance metadata: {airborne_metadata_source}')
     _load_airborne_provenance(airborne_metadata_source)
 
     figures, _ = extract_atlas(source)
@@ -649,7 +709,8 @@ def validate_airborne_atlas(root, fighter):
             airborne_figures, reference_height)
     base_figures = figures + motion_figures + action_figures
     all_figures = base_figures + airborne_figures
-    assert len(all_figures) == ANIMATION_FRAME_COUNT
+    if not (len(all_figures) == ANIMATION_FRAME_COUNT):
+        raise AssertionError()
     _assert_animation_cycles(slug, all_figures)
 
     overflow = []
@@ -677,11 +738,13 @@ def validate_airborne_atlas(root, fighter):
                               ((FRAME_WIDTH - resized.width) // 2,
                                BASELINE_Y - resized.height))
         box = frame.getchannel('A').getbbox()
-        assert box, f'{slug}/frame{index}-{item["pose"]}: figure disappeared after scaling'
+        if not (box):
+            raise AssertionError(f'{slug}/frame{index}-{item["pose"]}: figure disappeared after scaling')
         frames.append({'global_index': index, 'pose': item['pose'],
                        'native_size': list(size), 'native_box': list(box),
                        'baseline_y': BASELINE_Y})
-    assert not overflow, f'{slug}: airborne art exceeds fixed base scale: {overflow}'
+    if not (not overflow):
+        raise AssertionError(f'{slug}: airborne art exceeds fixed base scale: {overflow}')
     return {
         'id': fighter_id,
         'name': slug,
@@ -734,12 +797,16 @@ def prepare_roster(root, output):
             action_source = directory / 'animation-actions.png'
             airborne_source = directory / 'animation-airborne.png'
             airborne_metadata_source = directory / 'animation-airborne.json'
-        assert source.exists(), f'Missing individual fighter master: {source}'
-        assert motion_source.exists(), f'Missing motion animation atlas: {motion_source}'
-        assert action_source.exists(), f'Missing action animation atlas: {action_source}'
-        assert airborne_source.exists(), f'Missing airborne animation atlas: {airborne_source}'
-        assert airborne_metadata_source.exists(), \
-            f'Missing airborne provenance metadata: {airborne_metadata_source}'
+        if not (source.exists()):
+            raise AssertionError(f'Missing individual fighter master: {source}')
+        if not (motion_source.exists()):
+            raise AssertionError(f'Missing motion animation atlas: {motion_source}')
+        if not (action_source.exists()):
+            raise AssertionError(f'Missing action animation atlas: {action_source}')
+        if not (airborne_source.exists()):
+            raise AssertionError(f'Missing airborne animation atlas: {airborne_source}')
+        if not (airborne_metadata_source.exists()):
+            raise AssertionError(f'Missing airborne provenance metadata: {airborne_metadata_source}')
         _load_airborne_provenance(airborne_metadata_source)
         legacy_hash = _sha256(source)
         motion_hash = _sha256(motion_source)
@@ -753,7 +820,8 @@ def prepare_roster(root, output):
             action_source, pose_names=ACTION_POSES)
         airborne_figures, airborne_metadata = extract_atlas(
             airborne_source, pose_names=AIRBORNE_POSES)
-        assert len(airborne_figures) == 16 and len(airborne_metadata) == 16
+        if not (len(airborne_figures) == 16 and len(airborne_metadata) == 16):
+            raise AssertionError()
 
         # Base-48 normalization and fitting are unchanged for the normal path.
         # An approved art revision instead uses the old per-atlas conversions
@@ -788,16 +856,18 @@ def prepare_roster(root, output):
             uniform_scale = _fit_uniform_scale(base_figures, desired_scale)
             airborne_figures, airborne_source_scale = _normalize_animation(
                 airborne_figures, reference_height)
-        assert len(base_figures) == ANIMATION_FRAME_COUNT - len(AIRBORNE_POSES)
+        if not (len(base_figures) == ANIMATION_FRAME_COUNT - len(AIRBORNE_POSES)):
+            raise AssertionError()
         if revision:
             for index, figure in enumerate(base_figures):
                 size = (max(1, round(figure.width * uniform_scale)),
                         max(1, round(figure.height * uniform_scale)))
-                assert size[0] <= FIT_WIDTH and size[1] <= FIT_HEIGHT, (
-                    f'{slug}/frame{index} exceeds locked physical scale '
-                    f'{uniform_scale}: {size}; repair the revised art')
+                if not (size[0] <= FIT_WIDTH and size[1] <= FIT_HEIGHT):
+                    raise AssertionError(f'{slug}/frame{index} exceeds locked physical scale '
+                        f'{uniform_scale}: {size}; repair the revised art')
         all_figures = base_figures + airborne_figures
-        assert len(all_figures) == ANIMATION_FRAME_COUNT
+        if not (len(all_figures) == ANIMATION_FRAME_COUNT):
+            raise AssertionError()
         _assert_animation_cycles(slug, all_figures)
 
         specs = []
@@ -814,25 +884,26 @@ def prepare_roster(root, output):
         for index, (figure, item) in enumerate(zip(airborne_figures, airborne_metadata), 48):
             specs.append((index, item['pose'], figure, 'airborne', airborne_source,
                           airborne_hash, airborne_source_scale, item))
-        assert len(specs) == ANIMATION_FRAME_COUNT
+        if not (len(specs) == ANIMATION_FRAME_COUNT):
+            raise AssertionError()
 
         frames = []
         metadata = []
         for index, pose, figure, source_kind, source_path, frame_source_hash, source_scale, item in specs:
             resized_size = (max(1, round(figure.width * uniform_scale)),
                             max(1, round(figure.height * uniform_scale)))
-            assert resized_size[0] <= FIT_WIDTH and resized_size[1] <= FIT_HEIGHT, (
-                f'{slug}/frame{index}-{pose} exceeds {FIT_WIDTH}x{FIT_HEIGHT} at '
-                f'base uniform scale {uniform_scale}: {resized_size}; repair the new art')
+            if not (resized_size[0] <= FIT_WIDTH and resized_size[1] <= FIT_HEIGHT):
+                raise AssertionError(f'{slug}/frame{index}-{pose} exceeds {FIT_WIDTH}x{FIT_HEIGHT} at '
+                    f'base uniform scale {uniform_scale}: {resized_size}; repair the new art')
             resized = figure.resize(resized_size, Image.Resampling.NEAREST)
             frame = Image.new('RGBA', (FRAME_WIDTH, FRAME_HEIGHT))
             frame.alpha_composite(resized,
                                   ((FRAME_WIDTH - resized.width) // 2,
                                    BASELINE_Y - resized.height))
             alpha_box = frame.getchannel('A').getbbox()
-            assert alpha_box and alpha_box[0] >= 0 and alpha_box[1] >= 0 \
-                and alpha_box[2] <= FRAME_WIDTH and alpha_box[3] <= FRAME_HEIGHT, \
-                f'{slug}/frame{index}-{pose} clipped in {FRAME_WIDTH}x{FRAME_HEIGHT} canvas'
+            if not (alpha_box and alpha_box[0] >= 0 and alpha_box[1] >= 0 \
+                and alpha_box[2] <= FRAME_WIDTH and alpha_box[3] <= FRAME_HEIGHT):
+                raise AssertionError(f'{slug}/frame{index}-{pose} clipped in {FRAME_WIDTH}x{FRAME_HEIGHT} canvas')
             frames.append(frame)
             entry = dict(item)
             entry.update({
@@ -868,27 +939,31 @@ def prepare_roster(root, output):
         base_frames = frames[:48]
         opaque = [pixel[:3] for frame in base_frames
                   for pixel in frame.get_flattened_data() if pixel[3]]
-        assert opaque, f'{slug}: no opaque base animation pixels after normalization'
+        if not (opaque):
+            raise AssertionError(f'{slug}: no opaque base animation pixels after normalization')
         if revision:
             # A reviewed likeness edit is quantized into the old palette.  It
             # may add hair pixels but cannot reorder or recolor the fighter's
             # established fifteen OBJ colors.
             locked_palette = revision['expected_native']['palette_bytes']
-            assert locked_palette == baseline_entry['palette_bytes']
+            if not (locked_palette == baseline_entry['palette_bytes']):
+                raise AssertionError()
             colors = _palette_colors_from_bytes(locked_palette)[1:]
-            assert len(colors) == 15
+            if not (len(colors) == 15):
+                raise AssertionError()
         else:
             strip = Image.new('RGB', (len(opaque), 1))
             strip.putdata(opaque)
             palette = strip.quantize(colors=15, method=Image.Quantize.MEDIANCUT).getpalette()[:45]
             colors = sorted({tuple((channel >> 3) << 3 for channel in palette[i:i + 3])
                              for i in range(0, 45, 3)}, key=lambda c: (sum(c), c))
-            assert colors, f'{slug}: palette quantization returned no colors'
+            if not (colors):
+                raise AssertionError(f'{slug}: palette quantization returned no colors')
             source_color_count = len({pixel for pixel in opaque})
-            assert source_color_count >= 3, \
-                f'{slug}: source art has only {source_color_count} opaque RGB colors'
-            assert len(colors) >= 3, \
-                f'{slug}: native palette collapsed to {len(colors)} unique colors'
+            if not (source_color_count >= 3):
+                raise AssertionError(f'{slug}: source art has only {source_color_count} opaque RGB colors')
+            if not (len(colors) >= 3):
+                raise AssertionError(f'{slug}: native palette collapsed to {len(colors)} unique colors')
             colors += [colors[-1]] * (15 - len(colors))
         quantizer = Image.new('P', (1, 1))
         quantizer.putpalette(sum((list(c) for c in colors), []) + list(colors[-1]) * 241)
@@ -906,7 +981,8 @@ def prepare_roster(root, output):
                             for value in ids])
             preview.paste(raster, (index * FRAME_WIDTH, 0))
             native_box = raster.getchannel('A').getbbox()
-            assert native_box, f'{slug}/frame{index}: quantization erased the figure'
+            if not (native_box):
+                raise AssertionError(f'{slug}/frame{index}: quantization erased the figure')
             metadata[index]['native_box'] = list(native_box)
             metadata[index]['nativebox'] = list(native_box)
             metadata[index]['effective_width'] = native_box[2] - native_box[0]
@@ -924,8 +1000,8 @@ def prepare_roster(root, output):
             _assert_native_baseline64(slug, fighter, indices, fighter_palette,
                                       uniform_scale, baseline)
         _assert_native_animation_cycles(slug, indices)
-        assert len({bytes(ids) for ids in indices[:16]}) >= 14, \
-            f'{slug}: legacy key poses were duplicated'
+        if not (len({bytes(ids) for ids in indices[:16]}) >= 14):
+            raise AssertionError(f'{slug}: legacy key poses were duplicated')
         pending_images.append((output / f'fighter{fighter:02}.png', preview))
 
         # Reuse the same illustrated face and costume for the select portrait.
@@ -1011,8 +1087,8 @@ def prepare_roster(root, output):
             }
         manifests.append(manifest_entry)
         print(f'Prepared {slug}: 64 individual frames, 15-color OBJ palette', flush=True)
-    assert len({tuple(f['indices'][0]) for f in fighters}) == 12, \
-        'Roster must have twelve distinct idle drawings'
+    if not (len({tuple(f['indices'][0]) for f in fighters}) == 12):
+        raise AssertionError('Roster must have twelve distinct idle drawings')
     # All twelve native frames, palettes, bounds and cycle checks have passed
     # before any review image or generated manifest is published.
     for path, image in pending_images:
