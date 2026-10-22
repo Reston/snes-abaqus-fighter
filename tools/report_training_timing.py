@@ -31,7 +31,10 @@ def main() -> int:
     parser.add_argument("--frames", type=int, default=216356)
     parser.add_argument("--checkpoint", action="store_true",
                         help="omit full-hour coverage requirements, retaining all strict checks")
+    parser.add_argument("--watch-at", type=int, action="append",
+                        help="capture callbacks around this measured tick (repeatable)")
     args = parser.parse_args()
+    watched_points = args.watch_at or (137337, 174198, 175243)
     if args.frames <= 0:
         parser.error("--frames must be positive")
     raw = args.rom.read_bytes()
@@ -65,6 +68,9 @@ def main() -> int:
             self.ring = deque(maxlen=16)
             self.windows = []
             self.until = -1
+            self.recovery_count = 0
+            self.recoveries = []
+            self.full_health_refreshes = []
             runners.append(self)
 
         def inspect(self, host, current, p1, p2):
@@ -78,10 +84,29 @@ def main() -> int:
                                                     ("hudSeconds", 1), ("hudDirty", 1),
                                                     ("actorUploadDirty", 1),
                                                     ("impactHudPending", 1))}}
+            previous = self.ring[-1] if self.ring else None
+            if previous:
+                old = bytes.fromhex(previous["native"]["fighters"])
+                new = bytes.fromhex(sample["native"]["fighters"])
+                recovered = [p for p in range(2) if old[p * 64 + 14] < new[p * 64 + 14] == 128]
+                if recovered:
+                    self.recovery_count += len(recovered)
+                    if len(self.recoveries) < 48:
+                        self.recoveries.append({"players": recovered, "before": previous, "after": sample})
+                # Preserve evidence of timer-driven energy refreshes even
+                # when neither HP value changes. Observation only: no new gate.
+                if (current["frame"] % 120 == 0 and current["frame"] & 15 and
+                        len(self.full_health_refreshes) < 16):
+                    old_energy = bytes.fromhex(previous["native"]["hudEnergy"])
+                    new_energy = bytes.fromhex(sample["native"]["hudEnergy"])
+                    players = [p for p in range(2) if old[p * 64 + 14] == new[p * 64 + 14] == 128
+                               and old_energy[p] != new_energy[p] == new[p * 64 + 15]]
+                    if players:
+                        self.full_health_refreshes.append({"players": players, "before": previous, "after": sample})
             self.ring.append(sample)
             failed = before != (len(self.cadence_failures), len(self.native_timing_failures))
             watched = any(abs(self.total_frames - point) <= 4
-                          for point in (117817, 119258, 207989))
+                          for point in watched_points)
             if failed and len(self.windows) < 32:
                 self.windows.append({"failure_at": self.total_frames,
                                      "samples": list(self.ring)})
@@ -122,6 +147,9 @@ def main() -> int:
                 "ambient_failures": runner.ambient_failures,
                 "ppu_overflow_frames": runner.overflow_frames,
                 "spc_fifo_failures": runner.spc_fifo_failures,
+                "recovery_count": runner.recovery_count,
+                "recoveries": runner.recoveries,
+                "full_health_refreshes": runner.full_health_refreshes,
                 "windows": runner.windows, "last_samples": list(runner.ring)}
         report["elapsed_seconds"] = round(time.monotonic() - started, 3)
         args.report.parent.mkdir(parents=True, exist_ok=True)

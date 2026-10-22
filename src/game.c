@@ -350,21 +350,28 @@ void showArenas(void) { setScreenOff();screen=ARENA;commonScreen();loadBackgroun
 
 void hud(void) {
     u8 p;
+    Fighter *f;
+    /* A recovery refresh can precede the periodic refresh in the same tick.
+     * Check direct fields before entering the indexed changed-field path. */
+    if(hudSeconds==seconds && hudHp[0]==fighters[0].hp && hudHp[1]==fighters[1].hp &&
+       hudEnergy[0]==fighters[0].energy && hudEnergy[1]==fighters[1].energy &&
+       hudWins[0]==fighters[0].won && hudWins[1]==fighters[1].won)return;
     if(hudSeconds!=seconds){number(15,0,seconds);hudSeconds=seconds;hudDirty=1;}
     for(p=0;p<2;p++) {
-        if(hudHp[p]!=fighters[p].hp) {
-            hudHp[p]=fighters[p].hp;
+        f=&fighters[p];
+        if(hudHp[p]!=f->hp) {
+            hudHp[p]=f->hp;
             refreshHealthBar(p);
             hudDirty=1;
         }
-        if(hudEnergy[p]!=fighters[p].energy) {
-            hudEnergy[p]=fighters[p].energy;
+        if(hudEnergy[p]!=f->energy) {
+            hudEnergy[p]=f->energy;
             refreshEnergyBar(p);
             hudDirty=1;
         }
-        if(hudWins[p]!=fighters[p].won) {
-            hudWins[p]=fighters[p].won;
-            ui[64+(p?29:1)]=(fighters[p].won>0?147:148)|0x2000;ui[64+(p?30:2)]=(fighters[p].won>1?147:148)|0x2000;
+        if(hudWins[p]!=f->won) {
+            hudWins[p]=f->won;
+            ui[64+(p?29:1)]=(f->won>0?147:148)|0x2000;ui[64+(p?30:2)]=(f->won>1?147:148)|0x2000;
             hudDirty=1;
         }
     }
@@ -778,20 +785,23 @@ u8 hurtWithRecoil(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable,u8
         impactBannerCombo=0;impactBannerCounter=0;
     } else {
         a->counter=0;
-        releaseHeldVictim(defender);
+        /* The empty-link case only writes 255 back to the same field. */
+        if(d->throwVictim!=255)releaseHeldVictim(defender);
         if(d->action && d->tick<d->actionStartup) {dmg+=3;a->counter=1;}
         /* Only an uninterrupted hit reaction links a true combo.  The
          * display timer is cosmetic and must never establish a link. */
         if(d->hurt && !d->guard && a->combo)a->combo++;else a->combo=1;
         a->combotime=45;applyHitReaction(defender,dmg);
         fxType=0;hitstop=5;shake=6;
-        a->energy=a->energy+8>ENERGY_MAX?ENERGY_MAX:a->energy+8;
+        back=a->energy+8;
+        a->energy=back>ENERGY_MAX?ENERGY_MAX:back;
         impactBannerCombo=a->combo;impactBannerCounter=a->counter;
     }
     /* Snapshot feedback now; construct its tilemap after the first frozen
      * HUD tick, away from contact physics and the new actor pose uploads. */
     impactBannerPlayer=attacker;impactBannerPending=1;impactSettle=1;
-    if(dmg>=d->hp)d->hp=0;else d->hp-=dmg;
+    back=d->hp;
+    if(dmg>=back)d->hp=0;else d->hp=back-dmg;
     rearKickRecoil&=defender?3:12;
     if(!blocked) {
         if(defender)rearRecoil<<=2;
@@ -814,7 +824,7 @@ u8 hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
 void updateFighter(u8 p) {
     Fighter *f=&fighters[p];Wave *w=&waves[p];
     const CharacterProfile *c=combatProfiles[p];
-    u8 rearRecoil;
+    u8 rearRecoil,action,tick;
     if(f->landing)f->landing--;
     if(f->combotime) {f->combotime--;if(!f->combotime){f->combo=0;f->counter=0;clearBanner();}}
     if(f->wakeJust)f->wakeJust=0;
@@ -839,16 +849,16 @@ void updateFighter(u8 p) {
         }
     }
     if(f->action) {
-        f->tick++;
-        if(f->action==7 && c->specialFamily==SPECIAL_RUSH && f->tick<=c->specialStartup+c->specialActive) {
+        action=f->action;tick=f->tick+1;f->tick=tick;
+        if(action==7 && c->specialFamily==SPECIAL_RUSH && tick<=c->specialStartup+c->specialActive) {
             f->x+=f->face?c->specialSpeed:-c->specialSpeed;
         }
-        if(f->action==7 && (c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE) && f->tick==c->specialStartup && !w->active) {
+        if(action==7 && (c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE) && tick==c->specialStartup && !w->active) {
             w->active=1;w->owner=p;w->face=f->face;w->speed=c->specialSpeed;w->low=c->specialFamily==SPECIAL_GROUNDWAVE;
             w->x=f->x+(f->face?22*16:-22*16);w->y=w->low?FLOOR-18:FLOOR-39;w->life=c->specialLife;
         }
-        if(f->action==6 && !f->y && f->tick<f->actionStartup)f->x+=f->face?16:-16;
-        if(f->tick>=f->actionEnd) {f->action=0;f->tick=0;f->duck=0;f->airAction=0;}
+        if(action==6 && !f->y && tick<f->actionStartup)f->x+=f->face?16:-16;
+        if(tick>=f->actionEnd) {f->action=0;f->tick=0;f->duck=0;f->airAction=0;}
     }
     if((frame&15)==0 && f->energy<ENERGY_MAX){f->energy++;hudDirty=1;}
     if(f->x<24*16)f->x=24*16;if(f->x>232*16)f->x=232*16;
@@ -980,11 +990,19 @@ void combat(void) {
     if(fighters[1].x<24*16)fighters[1].x=24*16;if(fighters[1].x>232*16)fighters[1].x=232*16;
     if(mode==2) {
         seconds=99;
-        /* Share the recovery timer and cached HUD work across both fighters.
-         * Keep the refresh even when an eligible fighter is already full. */
-        finished=frame%120==0;expired=0;
-        for(p=0;p<2;p++)if(!fighters[p].downState && !fighters[p].invuln && !fighters[p].hurt) {
-            if(!fighters[p].hp || finished){fighters[p].hp=HP_MAX;expired=1;}
+        /* Direct accesses avoid the far-pointer/index loop on contact ticks.
+         * 120 is divisible by 8: reject other ticks before software division.
+         * Share the lazy timer (2 = unevaluated) and retain full-health HUD. */
+        finished=2;expired=0;
+        if(!fighters[0].downState && !fighters[0].invuln && !fighters[0].hurt) {
+            finished=0;if(!(frame&7))finished=frame%120==0;
+            if(!fighters[0].hp || finished){fighters[0].hp=HP_MAX;expired=1;}
+        }
+        if(!fighters[1].downState && !fighters[1].invuln && !fighters[1].hurt) {
+            if(finished==2) {
+                finished=0;if(!(frame&7))finished=frame%120==0;
+            }
+            if(!fighters[1].hp || finished){fighters[1].hp=HP_MAX;expired=1;}
         }
         if(expired)hud();
     } else {
@@ -1040,14 +1058,14 @@ u8 poseFor(u8 p) {
 void animateFighter(u8 p) {
     Fighter *f=&fighters[p];
     const CharacterProfile *c=combatProfiles[p];
-    u8 state,start,end,recover,hold;
+    u8 state,start,end,recover,hold,action=f->action,tick;
     if(roundEnd) {
         if(!f->hp)state=9;
         else if(winner==p)state=8;
         else state=7;
     } else if(f->downState)state=9+f->downState;
     else if(f->hurt)state=f->guard?6:7;
-    else if(f->action)state=5;
+    else if(action)state=5;
     else if(f->y || f->landing)state=4;
     else if(f->duck)state=3;
     else if(f->walking)state=f->walking==1?1:2;
@@ -1090,20 +1108,20 @@ void animateFighter(u8 p) {
     else if(state==14)f->animFrame=63;
     else {
         start=f->actionStartup;end=f->actionActiveEnd;
-        hold=f->tick<start;
-        recover=f->tick>=end;
-        if(f->airAction)f->animFrame=f->action<=3?(hold?49:(recover?51:50)):(hold?52:(recover?54:53));
-        else if(f->action==1)f->animFrame=hold?32:(recover?33:5);
-        else if(f->action==2 || f->action==3)f->animFrame=hold?34:(recover?35:6);
-        else if(f->action>=4 && f->action<=6) {
+        tick=f->tick;hold=tick<start;
+        recover=tick>=end;
+        if(f->airAction)f->animFrame=action<=3?(hold?49:(recover?51:50)):(hold?52:(recover?54:53));
+        else if(action==1)f->animFrame=hold?32:(recover?33:5);
+        else if(action==2 || action==3)f->animFrame=hold?34:(recover?35:6);
+        else if(action>=4 && action<=6) {
             if(f->duck)f->animFrame=hold?38:(recover?39:8);
             else f->animFrame=hold?36:(recover?37:7);
-        } else if(f->action==7) {
-            if(c->specialFamily==SPECIAL_RUSH)f->animFrame=f->tick<2?32:(recover?33:15);
-            else if(c->specialFamily==SPECIAL_RISING)f->animFrame=f->tick<3?44:(recover?45:13);
-            else f->animFrame=hold?42:(f->tick<end+7?12:43);
-        } else if(f->action==8)f->animFrame=hold?44:(recover?45:13);
-        else if(f->action==9)f->animFrame=hold?56:(f->tick<start+8?57:48);
+        } else if(action==7) {
+            if(c->specialFamily==SPECIAL_RUSH)f->animFrame=tick<2?32:(recover?33:15);
+            else if(c->specialFamily==SPECIAL_RISING)f->animFrame=tick<3?44:(recover?45:13);
+            else f->animFrame=hold?42:(tick<end+7?12:43);
+        } else if(action==8)f->animFrame=hold?44:(recover?45:13);
+        else if(action==9)f->animFrame=hold?56:(tick<start+8?57:48);
         else f->animFrame=hold?34:(recover?35:15);
     }
     if(f->animTick<200)f->animTick++;
