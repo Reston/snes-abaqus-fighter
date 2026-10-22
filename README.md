@@ -5,6 +5,11 @@ An original six-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II's arcade structure and the people and places of Abaqus in
 Santiago. It runs as a native SNES cartridge in an emulator.
 
+Source, original art, native review evidence and the cartridge are retained in
+[Reston/snes-abaqus-fighter](https://github.com/Reston/snes-abaqus-fighter).
+The newer [Damian v0.20 likeness review](https://github.com/Reston/snes-abaqus-fighter/tree/polish/v020-damian-likeness)
+is on its own branch while human likeness feedback is pending.
+
 The current source candidate is **v0.19.0**, ROM SHA256 `945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7`,
 checksum `05A4`. On Training's first PAUSED card, choose CPU and use
 the **L/R shoulder buttons** to change Easy/Normal/Hard without leaving the
@@ -27,7 +32,9 @@ On Windows, run **[Play.cmd](Play.cmd)** from the source checkout. The launcher
 prepares the pinned official Snes9x tools in `.tools/` on first use and opens
 the cartridge. No administrator account or global installation is needed.
 
-For offline play, extract the whole [v0.19.0 Windows ZIP](dist/Abaqus-After-Hours-v0.19.0-Windows.zip) and run its included
+Windows ZIPs are local generated outputs and are not tracked in this repository.
+For an existing offline copy, extract the whole v0.19.0 Windows ZIP
+(`dist/Abaqus-After-Hours-v0.19.0-Windows.zip`) and run its included
 `Play.cmd`. Its `manifest.json` and `RELEASE.md` identify the actual cartridge
 and verification scope. Older archives contain their own historical versions.
 
