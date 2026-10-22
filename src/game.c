@@ -980,9 +980,13 @@ void combat(void) {
     if(fighters[1].x<24*16)fighters[1].x=24*16;if(fighters[1].x>232*16)fighters[1].x=232*16;
     if(mode==2) {
         seconds=99;
+        /* Share the recovery timer and cached HUD work across both fighters.
+         * Keep the refresh even when an eligible fighter is already full. */
+        finished=frame%120==0;expired=0;
         for(p=0;p<2;p++)if(!fighters[p].downState && !fighters[p].invuln && !fighters[p].hurt) {
-            if(!fighters[p].hp || frame%120==0){fighters[p].hp=HP_MAX;hud();}
+            if(!fighters[p].hp || finished){fighters[p].hp=HP_MAX;expired=1;}
         }
+        if(expired)hud();
     } else {
         secondTick++;if(secondTick>=60){secondTick=0;if(seconds)seconds--;hud();}
         /* 816-tcc cannot safely lower three chained negated OR operands. */
