@@ -275,7 +275,7 @@ def main() -> None:
     altered_source = copy.deepcopy(authoring)
     altered_source['source_sha256']['tools/fighter_assets.py'] = '0'*64
     altered_inventory = copy.deepcopy(authoring)
-    altered_inventory['source_sha256'].pop('tools/release_evidence.py')
+    altered_inventory['producer_sha256'].pop('tools/release_evidence.py')
     altered_producer = copy.deepcopy(authoring)
     altered_producer['producer_sha256']['tools/check_authoring_guards.py'] = '0'*64
     for altered in (dict(authoring, rom_sha256='0'*64), dict(authoring, source_commit='0'*40),

@@ -28,8 +28,10 @@ def main():
         rejected(lambda: validate(malformed), 'non-object report')
     mutations = []
     for field, value in [('baseline_commit', '0'*40), ('baseline_commit', freeze),
-                         ('baseline_version', '0.0.0'), ('allowed_changed', []),
-                         ('allowed_added', []), ('source_freeze', report['baseline_commit'])]:
+                         ('baseline_version', '0.0.0'),
+                         ('allowed_changed', [] if report['allowed_changed'] else ['unapproved.bin']),
+                         ('allowed_added', [] if report['allowed_added'] else ['unapproved.bin']),
+                         ('source_freeze', report['baseline_commit'])]:
         mutations.append((dict(report, **{field:value}), field))
     for field, value in [('source_blob_sha256', '0'*64), ('sha256', '0'*64),
                          ('comparison', 'exact bytes')]:

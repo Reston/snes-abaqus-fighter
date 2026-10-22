@@ -18,7 +18,7 @@ from typing import Mapping
 
 # The pinned embeddable Python does not add the script directory to sys.path.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from release_evidence import (EXTRA_REPORTS, EXPECTED_NATIVE_CORE, GENERATED_ASSET_COUNT, training_report_path,
+from release_evidence import (EXTRA_REPORTS, EXPECTED_NATIVE_CORE, GENERATED_ASSET_COUNT, SOURCE_INPUT_EXACT, training_report_path,
                                validate_release_evidence)
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -692,7 +692,8 @@ def validate_menu_evidence(report: Mapping, root: Path, manifest: Mapping) -> No
             EXPECTED_NATIVE_CORE['dll_sha256'],
             'Menu footer proof must use the pinned native core')
     harness = report.get('harness_sha256', {})
-    names = ('test_menu_footers.py', 'test_presentation.py', 'emulator.py')
+    names = ('test_menu_footers.py', 'test_presentation.py', 'emulator.py',
+             'test_champion.py', 'preservation.py')
     require(set(harness) == set(names) and
             all(harness[name] == sha256_file(root/'tools'/name) for name in names),
             'Menu footer proof harness changed after capture')
@@ -707,6 +708,12 @@ def validate_menu_evidence(report: Mapping, root: Path, manifest: Mapping) -> No
             assets.get('identical_generated_files') == GENERATED_ASSET_COUNT,
             'Menu footer assets must match the approved baseline')
     fresh = read_json(root/'docs/fresh-build-test-report.json', 'menu footer asset coverage')
+    require(fresh.get('status') == 'passed' and fresh.get('rom_sha256') == manifest['sha256'],
+            'Menu footer source freeze must identify the current cartridge')
+    for name in ('tools/preservation.py', 'tools/test_champion.py'):
+        actual = (root/name).read_bytes().replace(b'\r\n', b'\n')
+        frozen = git(root, 'show', fresh['source_commit']+':'+name).replace(b'\r\n', b'\n')
+        require(actual == frozen, 'Menu footer shared helper differs from source freeze', name)
     expected = {row['file'] for row in fresh['generated_assets']} | {'tools/menu_assets.py'}
     files = assets.get('files', {})
     require(set(files) == expected, 'Menu footer asset inventory is incomplete')
@@ -809,8 +816,8 @@ def validate_authoring_evidence(report: Mapping, root: Path, manifest: Mapping) 
     require(host.get('gui_opened') is False and host.get('audio_device_opened') is False and
             host.get('priority_class') == 0x4000 and len(host.get('logical_processors', [])) == 2,
             'Authoring checks must retain their quiet background host contract')
-    names = ('tools/fighter_assets.py', 'tools/make_assets.py', 'tools/stage_sources.py',
-             'tools/test_authoring_guards.py', 'tools/release_evidence.py')
+    names = {name for name in SOURCE_INPUT_EXACT if name.endswith('.py')} | {
+        'tools/test_authoring_guards.py', 'tools/test_champion.py'}
     hashes = report.get('source_sha256', {})
     require(set(hashes) == set(names), 'Authoring checks must identify every tested source')
     for name in names:
@@ -822,14 +829,17 @@ def validate_authoring_evidence(report: Mapping, root: Path, manifest: Mapping) 
         from preservation import resolve
         producer = resolve(root, report.get('producer_commit', ''))
         git(root, 'merge-base', '--is-ancestor', fresh['source_commit'], producer)
+        git(root, 'merge-base', '--is-ancestor', producer, 'HEAD')
         frozen_manifest = json.loads(git(root, 'show', producer+':dist/manifest.json'))
-        name = 'tools/check_authoring_guards.py'
-        actual = (root/name).read_bytes().replace(b'\r\n', b'\n')
-        frozen = git(root, 'show', producer+':'+name).replace(b'\r\n', b'\n')
+        producer_hashes = {}
+        for name in ('tools/check_authoring_guards.py', 'tools/release_evidence.py'):
+            actual = (root/name).read_bytes().replace(b'\r\n', b'\n')
+            frozen = git(root, 'show', producer+':'+name).replace(b'\r\n', b'\n')
+            require(actual == frozen, 'Authoring producer differs from its committed bytes', name)
+            producer_hashes[name] = sha256_bytes(actual)
     except (ValueError, OSError) as error:
         raise PackageError('Authoring producer commit cannot be verified') from error
-    require(frozen_manifest == manifest and actual == frozen and
-            report.get('producer_sha256') == {name: sha256_bytes(actual)},
+    require(frozen_manifest == manifest and report.get('producer_sha256') == producer_hashes,
             'Authoring report producer differs from its committed provenance')
     tree = ast.parse((root/'tools/test_authoring_guards.py').read_text(encoding='utf-8'))
     expected_tests = sum(isinstance(node, ast.FunctionDef) and node.name.startswith('test_')

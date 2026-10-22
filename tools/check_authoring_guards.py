@@ -12,6 +12,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 from preservation import git, resolve
 from test_champion import host_contract
+from release_evidence import SOURCE_INPUT_EXACT
 
 
 def main():
@@ -31,20 +32,22 @@ def main():
     try:
         if json.loads(git(ROOT,'show',freeze+':dist/manifest.json'))!=manifest:
             raise RuntimeError('Frozen authoring source must identify the current cartridge')
-        for name in ('tools/fighter_assets.py','tools/make_assets.py','tools/stage_sources.py',
-                     'tools/test_authoring_guards.py','tools/release_evidence.py'):
+        names={name for name in SOURCE_INPUT_EXACT if name.endswith('.py')}
+        names.update(('tools/test_authoring_guards.py','tools/test_champion.py'))
+        for name in sorted(names):
             raw=(ROOT/name).read_bytes().replace(b'\r\n',b'\n')
             if raw!=git(ROOT,'show',freeze+':'+name).replace(b'\r\n',b'\n'):
                 raise RuntimeError(('Authoring source changed after freeze',name))
             report['source_sha256'][name]=hashlib.sha256(raw).hexdigest()
         git(ROOT,'merge-base','--is-ancestor',freeze,producer)
+        git(ROOT,'merge-base','--is-ancestor',producer,'HEAD')
         if json.loads(git(ROOT,'show',producer+':dist/manifest.json'))!=manifest:
             raise RuntimeError('Producer commit must identify this cartridge')
-        name='tools/check_authoring_guards.py'
-        raw=(ROOT/name).read_bytes().replace(b'\r\n',b'\n')
-        if raw!=git(ROOT,'show',producer+':'+name).replace(b'\r\n',b'\n'):
-            raise RuntimeError('Report producer changed after evidence freeze')
-        report['producer_sha256'][name]=hashlib.sha256(raw).hexdigest()
+        for name in ('tools/check_authoring_guards.py','tools/release_evidence.py'):
+            raw=(ROOT/name).read_bytes().replace(b'\r\n',b'\n')
+            if raw!=git(ROOT,'show',producer+':'+name).replace(b'\r\n',b'\n'):
+                raise RuntimeError(('Report producer changed after evidence freeze',name))
+            report['producer_sha256'][name]=hashlib.sha256(raw).hexdigest()
         host=report['host_contract']
         if host['priority_class']!=0x4000 or len(host['logical_processors'])!=2:
             raise RuntimeError('Run below normal on the last two logical CPUs')

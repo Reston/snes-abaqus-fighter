@@ -364,7 +364,8 @@ def main() -> int:
               "host_contract": host_contract(),
               "harness_sha256": {
                   name: hashlib.sha256((ROOT / "tools" / name).read_bytes()).hexdigest()
-                  for name in ("test_menu_footers.py", "test_presentation.py", "emulator.py")
+                  for name in ("test_menu_footers.py", "test_presentation.py", "emulator.py",
+                               "test_champion.py", "preservation.py")
               }}
     presentation.checks.clear()
     try:
