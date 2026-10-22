@@ -80,6 +80,7 @@ void buildPauseGuide(void) {
             guideWord(3,18,"THROW         TOWARD + L");
             guideWord(3,19,"UPPERCUT      DOWN + L");
             guideCenter(21,"AFTER A HIT: PRESS HEAVIER");
+            guideCenter(22,"CROSS-UP: JUMP PAST + A");
         } else {
             guideWord(3,15,"QUICK: DOWN + Y / X");
             guideWord(3,17,"MOTION: D, D+F, F + Y/X");

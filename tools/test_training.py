@@ -631,7 +631,7 @@ def verify_page_navigation(rom: Path, mode: int, fighter: int,
             q,
             ("HOW TO PLAY 1/2", "WALK", "JUMP", "STAND GUARD",
              "LOW GUARD", "PUNCH", "KICK", "THROW", "UPPERCUT",
-             "AFTER A HIT: PRESS HEAVIER"),
+             "AFTER A HIT: PRESS HEAVIER", "CROSS-UP: JUMP PAST + A"),
             f"mode{mode}-controls",
         )
         q.press("right")
