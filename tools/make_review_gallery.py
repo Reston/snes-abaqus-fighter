@@ -41,8 +41,8 @@ shots = [
 ]
 if tuple(map(int, manifest['version'].split('.'))) >= (0, 17, 0):
     shots = [
-        ('new', 'Practice against the CPU', 'Pause Training, then use Up/Down to choose CPU. Your home difficulty carries into practice.', 'training/training-cpu-card.png'),
-        ('new', 'Untimed CPU practice', 'The existing AI plays in Training with ordinary health recovery and live P1 Select reset. Native capture; GIF timing is approximate.', 'training-cpu/practice.gif'),
+        ('new', 'Practice against the CPU', "On Training's PAUSED card, use Up/Down to choose CPU. Your home difficulty carries into practice; P1 Select resets the round.", 'training/training-cpu-card.png'),
+        ('new', 'Untimed CPU practice', 'Hard difficulty: Cristobal versus Lars at La Oficina, with health recovery and the 99 clock. Native capture; GIF timing is approximate.', 'training-cpu/practice.gif'),
         *((('menus' if category == 'new' else category), title, caption, path)
           for category, title, caption, path in shots),
     ]
