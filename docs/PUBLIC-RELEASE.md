@@ -1,12 +1,19 @@
 # Public-release quality target
 
+The current v0.10.1 polish build is an **unpackaged review candidate**, with
+all six native suites and matching pinned bsnes smoke recorded in
+[POLISH-v0.10.1.md](POLISH-v0.10.1.md). It needs new release-scale evidence
+before packaging, plus the human gates below. The prior v0.10.0 Windows ZIP
+remains retained; `public_release_certified` is false. Earlier snapshot
+results below are historical and do not certify the current ROM.
+
 The active project goal is an original native SNES fighting game polished to a
 high public-release standard, using Capcom's 16-bit arcade craft as the benchmark
 for readability, responsiveness, animation and completeness. The Abaqus roster,
 places and cartoon identities remain the game's own. Commercial sprites, ROMs,
 music and an implication of Capcom affiliation are outside this project.
 
-v0.9.0 is the current verified technical snapshot, cartridge SHA256
+v0.9.0 is a historical verified technical snapshot, cartridge SHA256
 `bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639`.
 Its six native reports pass 32,182 checks. The same cartridge passes 288 native
 matchup cases and four deterministic replays, three uninterrupted native
@@ -42,7 +49,7 @@ offers Stand, Guard High, Guard Low and repeated Jump. Opposite pause directions
 resolve to neutral across both controllers. Pausing after contact refreshes the
 actual health bars without advancing combat. The new sixth native suite,
 `tools/test_training.py`, passes alongside the original five suites and is
-required before packaging. All current native reports identify the exact v0.9.0
+required before packaging. That snapshot's native reports identify the exact v0.9.0
 cartridge; preceding snapshots remain historical.
 
 ## Release gates

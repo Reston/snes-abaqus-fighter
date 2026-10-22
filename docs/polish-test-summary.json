@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "version": "0.10.1",
+  "recorded_at_utc": "2026-10-22T00:34:31.303994+00:00",
+  "rom_sha256": "8f7def30d29c87a659d7fb623147cf726bab8f8c94a96a503738529aded15279",
+  "header_checksum": "42AF",
+  "native_suite_checks": 32205,
+  "suites": {
+    "test-report.json": 2595,
+    "character-test-report.json": 18081,
+    "presentation-test-report.json": 1756,
+    "input-test-report.json": 1020,
+    "stage-test-report.json": 8131,
+    "training-test-report.json": 622
+  },
+  "compatibility": {
+    "status": "passed",
+    "pinned_core": true,
+    "cadence": {
+      "requested_frames": 600,
+      "observed_deltas": 600,
+      "delta_min": 1,
+      "delta_max": 1,
+      "non_one_deltas": 0,
+      "passed": true
+    }
+  },
+  "preservation_report": "docs/polish-preservation-report.json",
+  "new_source_provenance_survives_git_normalization": true,
+  "windows_package": "not_created_for_this_review_candidate",
+  "release_scale_evidence": "previous v0.10.0 evidence is historical for this ROM",
+  "public_release_certified": false
+}

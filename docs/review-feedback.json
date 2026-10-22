@@ -73,5 +73,31 @@
   },
   "related_likeness_feedback": "docs/reston-likeness-report.json#/user_feedback",
   "team_likeness_approval": null,
-  "public_names_and_branding_approval": null
+  "public_names_and_branding_approval": null,
+  "follow_up_reviews": [
+    {
+      "recorded_at_utc": "2026-10-22T00:22:26.315926+00:00",
+      "version": "0.10.0",
+      "rom_sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
+      "source": "User feedback after opening the v0.10.0 game",
+      "feedback": [
+        {
+          "response": "lars needs to be more alike.",
+          "finding": "Lars likeness needs improvement",
+          "status": "implemented_pending_user_review"
+        },
+        {
+          "response": "the menu selection of locations now the picture doesn't make sense.",
+          "finding": "Location preview readability needs improvement",
+          "status": "implemented_pending_user_review"
+        }
+      ],
+      "human_approval_of_replacement": null,
+      "replacement_candidate": {
+        "version": "0.10.1",
+        "rom_sha256": "8f7def30d29c87a659d7fb623147cf726bab8f8c94a96a503738529aded15279",
+        "note": "docs/POLISH-v0.10.1.md"
+      }
+    }
+  ]
 }

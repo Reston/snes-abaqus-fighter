@@ -1,0 +1,64 @@
+{
+  "fighter": "11-lars",
+  "character": "Rodrigo \"Lars\" Lartiga",
+  "revision": "v4-photo-likeness",
+  "generated_at_utc": "2026-10-22T00:26:48.133814+00:00",
+  "generation_mode": "built-in image_gen",
+  "transparent_background": true,
+  "schema": "abaqus-fighter-likeness/v2",
+  "atlas": {
+    "path": "assets/art/characters/11-lars/atlas-v4.png",
+    "frames": [
+      0,
+      15
+    ],
+    "generated_source": "C:/Users/user/.codex/generated_images/01a160f4-3e59-7980-b2d2-8db765944eeb/exec-8bb1681a-ce26-4876-8122-ed554241575e.png",
+    "sha256": "950afd369ad86fb3070b478d286e794c3fbb4f96f83ae849fbea140dbc9f404f",
+    "input_roles": [
+      {
+        "path": "assets/references/fighter-11.jpg",
+        "sha256": "8bed516b40d4d93452bd6c834ecbffc6025f1181322b9037685794c9e3e277ff",
+        "role": "primary photographic identity reference"
+      },
+      {
+        "path": "assets/art/characters/11-lars/atlas.png",
+        "sha256": "16eb9059e3809047d95b5d4af0e2bfeaf4577ea5d17fa50a100f5590062a3cc5",
+        "role": "edit target for original body poses, scale and costume"
+      }
+    ],
+    "full_prompt": "Use case: identity-preserve. Create a revised production 4x4 transparent 16-pose sprite sheet of Rodrigo Lars Lartiga for an original SNES fighting game. Image 1 is the PRIMARY facial identity reference; closely caricature this specific man. Image 2 supplies ONLY the 16 body poses, layout, costume, body scale and original cartoon style; its current head is WRONG and must be replaced, not subtly retouched. The output should have clearly different faces from Image 2. Match Image 1's heavy mature broad face: visibly wide cheeks and full lower face, wide rounded blunt chin, heavier jowls, shorter/wider substantial straight nose, small serious slightly hooded eyes, thick dark low brows, closed neutral lips, clean-shaven jaw, wide substantial neck. A calm middle-aged professional face, not a young slender chiseled hero. His hair is dense natural dark brown almost black, slightly wavy, side-swept forward with a low rounded crown and a single thick rounded S-shaped forelock curving down onto the central forehead. Include this rounded forelock and broad cheek/jaw silhouette clearly in every visible head; preserve them across front three-quarter and profile views. Use larger simple bold facial clusters, with warm tan skin, shadows under cheek and mouth, clear nose and forehead, so recognition survives reduction to a tiny 16-bit head. Avoid pointed chin, sharp triangular jaw, narrow cheeks, thin nose, huge eyes, arched angry eyebrows, short crew cut, tall coiffure, purple hair, anime beauty. Strictly retain Image 2's ice-blue open rolled-sleeve jacket, white shirt, navy trousers, dark shoes, all 16 exact right-facing actions and row-major order, body height and full bodies; maintain 4 columns x4 rows with true empty alpha gutters. Original bold outlined hard cel-shaded SNES cartoon art, not photorealism. Exactly16 disconnected figures; no labels, text, grid lines, props, projectiles, scenery, extra figures, drop shadows or watermark. Full alpha transparency. Make the likeness replacement obvious in all sixteen heads while keeping the existing game character costume and pose contract.",
+    "validation": {
+      "tool": "tools/fighter_assets.py:extract_atlas",
+      "alpha_threshold": 200,
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "figures": 16,
+      "status": "passed",
+      "opaque_pixels": [
+        46473,
+        44987,
+        45458,
+        38745,
+        37901,
+        44535,
+        45322,
+        38887,
+        41852,
+        41656,
+        42982,
+        44187,
+        39234,
+        34828,
+        28221,
+        40184
+      ]
+    }
+  }
+}

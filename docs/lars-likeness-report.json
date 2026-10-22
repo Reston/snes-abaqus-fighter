@@ -1,0 +1,29 @@
+{
+  "status": "accepted_for_native_integration",
+  "fighter_id": 11,
+  "scope": "source-compiled 64 native frames and source-derived selected portrait",
+  "contract": "assets/art/characters/11-lars/native-revision.json",
+  "contract_sha256": "3413da731ed37a650b081fc49a03fa800c0be7c94ed04aca7747f640e3d01b27",
+  "native64_sha256": "e9b4da3d6734e0d340c4ce9690c0109e977fc56c6308b065b6f7400f03c258c7",
+  "uniform_scale": 0.22560975609756098,
+  "palette_sha256": "a157c3c1cb19914da952d6211860562c11ff31ecd04cf9ac67b5afaa0710d236",
+  "review": {
+    "scope": "64 native frames and selected portrait",
+    "source_request": "User reported Lars needs to be more alike.",
+    "mode": "agent-native-visual-review",
+    "human_approval": false,
+    "outcome": "Accepted for native integration after inspecting all 64 native frames and the source-derived portrait: fuller face and dark curved fringe remain readable; all figures fit without clipping at the existing physical scale and palette. Human likeness and consent review remain open.",
+    "reviewed_at_utc": "2026-10-22T00:27:14.029779+00:00"
+  },
+  "artifacts": [
+    "docs/screenshots/art/lars-v4-native64.png",
+    "docs/screenshots/art/lars-v4-portrait4x.png",
+    "docs/screenshots/art/lars-v4-native-portrait.png"
+  ],
+  "rom_sha256": "8f7def30d29c87a659d7fb623147cf726bab8f8c94a96a503738529aded15279",
+  "native_runtime_review": {
+    "roster_suite": "docs/character-test-report.json",
+    "presentation_suite": "docs/presentation-test-report.json",
+    "human_likeness_approval": null
+  }
+}

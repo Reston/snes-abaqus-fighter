@@ -2,7 +2,18 @@
 
 An original six-button fighting game for the **Super Nintendo**, inspired by the arcade structure of Street Fighter II and the people and places of Abaqus in Santiago.
 
-**v0.10.0 current packaged technical snapshot; human review pending.** The
+**v0.10.1 is the current unpackaged polish review candidate.** It revises
+Lars's face and hair across all 64 frames and replaces the small location
+thumbnails with wider, filtered landmark previews. `Build.cmd --assets` and
+`Test.cmd` exit 0: all six reports pass 32,205 checks on ROM SHA256
+`8f7def30d29c87a659d7fb623147cf726bab8f8c94a96a503738529aded15279`, checksum
+`42AF`. The separate pinned bsnes smoke matches this SHA. All twelve combat
+palettes, the other eleven fighters, stages and audio are unchanged. See the
+[polish note and imagegen prompts](docs/POLISH-v0.10.1.md). Run `Play.cmd` to
+load the new ROM. The older Windows ZIP below does not contain this pass;
+its release-scale evidence is historical for the new candidate.
+
+**v0.10.0 prior packaged technical snapshot; human review pending.** The
 candidate is source-frozen at commit
 `8536bb6956212952c17302a62cc6c1de7e12a65d`, tree
 `d524d3f960600dc5c9ff83578ac73675f9798735`; its ROM is SHA256

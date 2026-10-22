@@ -51,7 +51,7 @@ ARENA_ROW_W = 240
 ARENA_ROW_H = 56
 ARENA_THUMB_X = 18
 ARENA_THUMB_Y_INSET = 2
-ARENA_THUMB_W = 60
+ARENA_THUMB_W = 104
 ARENA_THUMB_H = 52
 checks: list[dict[str, object]] = []
 
@@ -524,7 +524,7 @@ def verify_arena_plate(e: Emulator, arena: int) -> dict[str, object]:
     thumb_delta = image_delta(actual_thumb, expected_thumb)
     check(thumb_delta["mean_channel_delta"] <= 8.0 and
           thumb_delta["pixels_over_16"] <= thumb_delta["pixels"] * 0.08,
-          "arena thumbnail uses the contained 60x52 native crop", {
+          "arena thumbnail uses the focused 104x52 native landmark view", {
               "arena": arena, "rect": list(thumb_rect), **thumb_delta,
           })
     # Exclude the cursor's one-pixel top/bottom rules; the interior is the

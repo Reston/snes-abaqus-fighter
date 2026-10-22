@@ -46,8 +46,9 @@ used as its own baseline.
 ## Reviewed art revisions
 
 An intentional likeness revision is an explicit, per-fighter contract. The
-registered slots are fighter 00 (Damian's photo likeness) and fighter 09
-(Reston's short buzz cut). Each resolver requires its exact reviewed contract
+registered slots are fighter 00 (Damian's photo likeness), fighter 09
+(Reston's short buzz cut) and fighter 11 (Lars's v0.10.1 photo likeness).
+Each resolver requires its exact reviewed contract
 SHA-256 in `tools/fighter_assets.py`. There is no command-line bypass. All other fighters
 reject versioned alternate masters and must continue to match the complete
 64-frame baseline.

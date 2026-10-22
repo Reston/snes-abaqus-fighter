@@ -1,5 +1,10 @@
 # Art direction and image generation
 
+The v0.10.1 review candidate revises Lars's photo likeness across all 64 poses
+and replaces the small whole-scene arena thumbnails with wider filtered
+landmark views. Source prompts, processing and review evidence are recorded
+in [POLISH-v0.10.1.md](POLISH-v0.10.1.md). Earlier passes below remain history.
+
 ## v0.6 combat-animation and menu direction
 
 The v0.6 pass keeps all twelve identity masters, costumes and palettes separate

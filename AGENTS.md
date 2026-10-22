@@ -6,6 +6,33 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+- The active checkout is the **v0.10.1 unpackaged polish review candidate**,
+  ROM SHA256 `8f7def30d29c87a659d7fb623147cf726bab8f8c94a96a503738529aded15279`,
+  header `42AF`. `Build.cmd --assets` and `Test.cmd` exit 0; all six reports
+  match this SHA and pass 32,205 checks, and the separate pinned bsnes smoke
+  matches. See `docs/POLISH-v0.10.1.md`, `docs/polish-test-summary.json` and
+  `docs/polish-preservation-report.json`. The user reported that Lars needed
+  a closer likeness and the location pictures were unclear; exact responses
+  and pending replacement review are in `docs/review-feedback.json`.
+  Lars (ID 11) is a new, explicitly reviewed exception to the earlier
+  ten-fighter baseline: four versioned v4 atlases and three exact-prompt JSON
+  records live in `assets/art/characters/11-lars/`, with the airborne spacing
+  repair input retained under `source-v4/`. His LF-normalized
+  `native-revision.json` is pinned at SHA256
+  `3413da731ed37a650b081fc49a03fa800c0be7c94ed04aca7747f640e3d01b27`;
+  its native64 summary is
+  `e9b4da3d6734e0d340c4ce9690c0109e977fc56c6308b065b6f7400f03c258c7`.
+  His original palette and physical scale remain fixed; the other eleven
+  fighter sets, including approved Damian and Reston, are unchanged. Arena
+  previews are 104x52 filtered landmark crops at x18..121, retaining the
+  240x56 native cursor rows. The pass preserves 192 of 217 compared files;
+  its 25 changes are limited to Lars, select/arena plates, generated metadata
+  and ROM/manifest. Stage masters, ambient cells, C/ASM combat, transfer
+  budgets, trace ABI and audio are unchanged. No new package or source freeze
+  was created; the extended v0.10.0 evidence and package below are historical
+  for this ROM. Human likeness/consent and the other public-release gates
+  remain open; `public_release_certified` remains false.
+
 - The user selected **emulators first; hardware support stays unverified** for
   the first public release. Original SNES/flash-cartridge validation is future
   work outside that support scope. Human gameplay, physical-controller,
@@ -16,7 +43,7 @@ Preserve the native emulator requirement when extending the project.
   lettering), and heard a brief audio replay with no issue noticed. Full combat
   playtesting and the other human gates remain open.
 
-- The current verified technical snapshot is the v0.10.0 cartoon-stage
+- The latest packaged historical technical snapshot is the v0.10.0 cartoon-stage
   candidate, source-frozen for
   review at commit `8536bb6956212952c17302a62cc6c1de7e12a65d`, tree
   `d524d3f960600dc5c9ff83578ac73675f9798735`; its ROM is SHA256

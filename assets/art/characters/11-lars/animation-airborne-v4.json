@@ -1,0 +1,83 @@
+{
+  "fighter": "11-lars",
+  "character": "Rodrigo \"Lars\" Lartiga",
+  "revision": "v4-photo-likeness",
+  "generated_at_utc": "2026-10-22T00:26:48.133814+00:00",
+  "generation_mode": "built-in image_gen",
+  "transparent_background": true,
+  "schema": "abaqus-combat-animation-source/v2",
+  "range": [
+    48,
+    63
+  ],
+  "atlas": {
+    "path": "assets/art/characters/11-lars/animation-airborne-v4.png",
+    "frames": [
+      48,
+      63
+    ],
+    "generated_source": "C:/Users/user/.codex/generated_images/01a160f4-3e59-7980-b2d2-8db765944eeb/exec-d9404d57-91d4-45fe-b666-2e584e7d4b20.png",
+    "sha256": "768473d5638cc7471fddcdc3cbb7dd98f2b364fad0c8bcb5b47f5f514f76feec",
+    "input_roles": [
+      {
+        "path": "assets/references/fighter-11.jpg",
+        "sha256": "8bed516b40d4d93452bd6c834ecbffc6025f1181322b9037685794c9e3e277ff",
+        "role": "primary photographic identity reference"
+      },
+      {
+        "path": "assets/art/characters/11-lars/atlas-v4.png",
+        "sha256": "950afd369ad86fb3070b478d286e794c3fbb4f96f83ae849fbea140dbc9f404f",
+        "role": "corrected legacy head, face, hair and costume anchor"
+      },
+      {
+        "path": "assets/art/characters/11-lars/animation-airborne.png",
+        "sha256": "5352a60f89472f7a7eba867edd5202708c1484ee9e4b5a45a26346451720556e",
+        "role": "edit target for original body poses, scale and costume"
+      }
+    ],
+    "full_prompt": [
+      "Use case: identity-preserve. Asset type: production native SNES fighter animation atlas. Image 1 is the PRIMARY identity photograph of Rodrigo Lars Lartiga. Image 2 is the corrected legacy atlas, which supplies the EXACT new broad mature face and hair identity to match. Image 3 is the EDIT TARGET: Lars's existing airborne atlas, frames 48-63. Revise ONLY the heads, hair and faces in Image 3 to consistently match the specific photo and the new face from Image 2. The old Image3 face is a generic young sharp-faced man; replace it visibly with the same broad mature full face from Image2: full wide cheeks, broad blunt rounded jaw and chin, substantial straight broad nose, small calm serious slightly hooded eyes, thick low dark brows, neutral closed full lips, clean-shaven face, wide strong neck, dense natural near-black slightly wavy hair with a low rounded crown and one thick rounded curved forward forelock on the forehead. Match the photo's face proportions with chunky readable 16-bit facial clusters. Avoid narrow cheeks, pointed chin, thin nose, large anime eyes, young chiseled action-hero face, tall coiffure or purple shiny helmet hair. Preserve EVERY existing body silhouette, body height, hand and foot position, anatomy, costume, right-facing direction, scale and action in Image3. Keep the same ice-blue open jacket with rolled sleeves, white shirt, navy trousers and dark shoes. Preserve the exact 4-column by 4-row layout and all16 figures in the same row-major order. The pose order is: upright neutral; air punch anticipation; air punch active; air punch recovery; air kick anticipation; air kick active; air kick recovery; compact apex guard; thrower grip; thrower release; victim lift; victim ground impact head-left; knockdown launch; knockdown fall head-left; grounded get-up; wake-up guard. First cell is the same full-height upright neutral anchor, never crouched. Exactly16 disconnected complete full-body silhouettes with genuine alpha transparency and generous gutters. No cell may touch or merge with another; no cropped limbs; no independent pose resizing; no labels, grid, text, props, projectile or energy graphics, background, floor, shadows, extra people or commercial art. Original bold navy contour and hard cel-shaded SNES cartoon art. Output one transparent square RGBA sprite atlas.",
+      "Use case: precise-object-edit. This is a production transparent 4x4 sprite atlas for a native SNES game. Fix ONLY the spacing error in the RIGHTMOST COLUMN between ROW 3 and ROW 4: the lying ground-impact figure in row3,column4 touches the head of the standing wake-up figure in row4,column4. Move the complete lying ground-impact figure in row3,column4 UP approximately50 source pixels, without resizing, rotating, repainting or changing any part of its body, face or pose. It should end above source Y930 in the 1254x1254 canvas, leaving at least20 pixels of absolutely empty transparent alpha before the figure below. Keep the standing wake-up figure below unchanged in its original position. Preserve every other pixel and all15 other figures, original four columns/four rows, same dimensions, exact16 actions and their order, all original faces, broad mature Lars likeness, ice-blue jackets, white shirts, navy trousers, shoes and all colors. Exactly16 DISCONNECTED silhouettes, no touching or merging. No new figures, no labels, no gridlines, no background or shadow. Actual transparent RGBA output, preserve all transparency."
+    ],
+    "validation": {
+      "tool": "tools/fighter_assets.py:extract_atlas",
+      "alpha_threshold": 200,
+      "size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "figures": 16,
+      "status": "passed",
+      "opaque_pixels": [
+        47156,
+        36547,
+        40254,
+        36160,
+        39733,
+        39238,
+        33924,
+        32719,
+        43123,
+        44708,
+        39294,
+        33075,
+        34965,
+        36338,
+        40811,
+        37998
+      ]
+    },
+    "layout_repair": {
+      "edit_target": "assets/art/characters/11-lars/source-v4/airborne-layout-draft.png",
+      "edit_target_sha256": "1a2765b8d66e649c5705d76208de95ed77b393d008e4d235d5fdd462d6b1faf5",
+      "reason": "Ground-impact and wake-up figures touched before spacing repair.",
+      "full_prompt": "Use case: precise-object-edit. This is a production transparent 4x4 sprite atlas for a native SNES game. Fix ONLY the spacing error in the RIGHTMOST COLUMN between ROW 3 and ROW 4: the lying ground-impact figure in row3,column4 touches the head of the standing wake-up figure in row4,column4. Move the complete lying ground-impact figure in row3,column4 UP approximately50 source pixels, without resizing, rotating, repainting or changing any part of its body, face or pose. It should end above source Y930 in the 1254x1254 canvas, leaving at least20 pixels of absolutely empty transparent alpha before the figure below. Keep the standing wake-up figure below unchanged in its original position. Preserve every other pixel and all15 other figures, original four columns/four rows, same dimensions, exact16 actions and their order, all original faces, broad mature Lars likeness, ice-blue jackets, white shirts, navy trousers, shoes and all colors. Exactly16 DISCONNECTED silhouettes, no touching or merging. No new figures, no labels, no gridlines, no background or shadow. Actual transparent RGBA output, preserve all transparency.",
+      "generated_source": "C:/Users/user/.codex/generated_images/01a160f4-3e59-7980-b2d2-8db765944eeb/exec-d9404d57-91d4-45fe-b666-2e584e7d4b20.png"
+    }
+  }
+}

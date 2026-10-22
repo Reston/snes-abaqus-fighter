@@ -1,0 +1,131 @@
+{
+  "fighter": "11-lars",
+  "character": "Rodrigo \"Lars\" Lartiga",
+  "revision": "v4-photo-likeness",
+  "generated_at_utc": "2026-10-22T00:26:48.133814+00:00",
+  "generation_mode": "built-in image_gen",
+  "transparent_background": true,
+  "schema": "abaqus-animation-source/v2",
+  "atlases": {
+    "motion": {
+      "path": "assets/art/characters/11-lars/animation-motion-v4.png",
+      "frames": [
+        16,
+        31
+      ],
+      "generated_source": "C:/Users/user/.codex/generated_images/01a160f4-3e59-7980-b2d2-8db765944eeb/exec-2c50101b-ea05-496b-a100-82d8d2ef6d3b.png",
+      "sha256": "e989f425ec07678caa25b9b366e23e184975663de333495236dec7173c64e0d7",
+      "input_roles": [
+        {
+          "path": "assets/references/fighter-11.jpg",
+          "sha256": "8bed516b40d4d93452bd6c834ecbffc6025f1181322b9037685794c9e3e277ff",
+          "role": "primary photographic identity reference"
+        },
+        {
+          "path": "assets/art/characters/11-lars/atlas-v4.png",
+          "sha256": "950afd369ad86fb3070b478d286e794c3fbb4f96f83ae849fbea140dbc9f404f",
+          "role": "corrected legacy head, face, hair and costume anchor"
+        },
+        {
+          "path": "assets/art/characters/11-lars/animation-motion.png",
+          "sha256": "bfb7dac5a2107d648cf388aedcea0846956b0f795875b34d93272f53356877ca",
+          "role": "edit target for original body poses, scale and costume"
+        }
+      ],
+      "full_prompt": "Use case: identity-preserve. Asset type: production native SNES fighter animation atlas. Image 1 is the PRIMARY identity photograph of Rodrigo Lars Lartiga. Image 2 is the corrected legacy atlas, which supplies the EXACT new broad mature face and hair identity to match. Image 3 is the EDIT TARGET: Lars's existing motion atlas, frames 16-31. Revise ONLY the heads, hair and faces in Image 3 to consistently match the specific photo and the new face from Image 2. The old Image3 face is a generic young sharp-faced man; replace it visibly with the same broad mature full face from Image2: full wide cheeks, broad blunt rounded jaw and chin, substantial straight broad nose, small calm serious slightly hooded eyes, thick low dark brows, neutral closed full lips, clean-shaven face, wide strong neck, dense natural near-black slightly wavy hair with a low rounded crown and one thick rounded curved forward forelock on the forehead. Match the photo's face proportions with chunky readable 16-bit facial clusters. Avoid narrow cheeks, pointed chin, thin nose, large anime eyes, young chiseled action-hero face, tall coiffure or purple shiny helmet hair. Preserve EVERY existing body silhouette, body height, hand and foot position, anatomy, costume, right-facing direction, scale and action in Image3. Keep the same ice-blue open jacket with rolled sleeves, white shirt, navy trousers and dark shoes. Preserve the exact 4-column by 4-row layout and all16 figures in the same row-major order. The pose order is: neutral breathing guard; gentle inhale; exhale; return guard; forward walk contact; forward passing; forward rear-foot pass; forward opposite contact; backward contact; backward pass; backward lead pass; backward opposite; half crouch; jump anticipation; early jump extension; landing compression. First cell is the same full-height upright neutral anchor, never crouched. Exactly16 disconnected complete full-body silhouettes with genuine alpha transparency and generous gutters. No cell may touch or merge with another; no cropped limbs; no independent pose resizing; no labels, grid, text, props, projectile or energy graphics, background, floor, shadows, extra people or commercial art. Original bold navy contour and hard cel-shaded SNES cartoon art. Output one transparent square RGBA sprite atlas.",
+      "validation": {
+        "tool": "tools/fighter_assets.py:extract_atlas",
+        "alpha_threshold": 200,
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alpha_min_max": [
+          0,
+          255
+        ],
+        "figures": 16,
+        "status": "passed",
+        "opaque_pixels": [
+          44514,
+          44135,
+          44038,
+          43349,
+          43212,
+          41332,
+          42557,
+          41339,
+          40864,
+          39371,
+          37282,
+          40518,
+          34541,
+          28978,
+          32122,
+          31308
+        ]
+      }
+    },
+    "actions": {
+      "path": "assets/art/characters/11-lars/animation-actions-v4.png",
+      "frames": [
+        32,
+        47
+      ],
+      "generated_source": "C:/Users/user/.codex/generated_images/01a160f4-3e59-7980-b2d2-8db765944eeb/exec-17a53656-0f4a-4099-93d8-713a1e46fb59.png",
+      "sha256": "211bd39a5bf667d5ebb8b1671b5c5c4125f555799ac734187350fe9aa0142ca6",
+      "input_roles": [
+        {
+          "path": "assets/references/fighter-11.jpg",
+          "sha256": "8bed516b40d4d93452bd6c834ecbffc6025f1181322b9037685794c9e3e277ff",
+          "role": "primary photographic identity reference"
+        },
+        {
+          "path": "assets/art/characters/11-lars/atlas-v4.png",
+          "sha256": "950afd369ad86fb3070b478d286e794c3fbb4f96f83ae849fbea140dbc9f404f",
+          "role": "corrected legacy head, face, hair and costume anchor"
+        },
+        {
+          "path": "assets/art/characters/11-lars/animation-actions.png",
+          "sha256": "c8d7769835799ab49415e1a66117b8b949eb03b170ce8b29d902803446f91924",
+          "role": "edit target for original body poses, scale and costume"
+        }
+      ],
+      "full_prompt": "Use case: identity-preserve. Asset type: production native SNES fighter animation atlas. Image 1 is the PRIMARY identity photograph of Rodrigo Lars Lartiga. Image 2 is the corrected legacy atlas, which supplies the EXACT new broad mature face and hair identity to match. Image 3 is the EDIT TARGET: Lars's existing actions atlas, frames 32-47. Revise ONLY the heads, hair and faces in Image 3 to consistently match the specific photo and the new face from Image 2. The old Image3 face is a generic young sharp-faced man; replace it visibly with the same broad mature full face from Image2: full wide cheeks, broad blunt rounded jaw and chin, substantial straight broad nose, small calm serious slightly hooded eyes, thick low dark brows, neutral closed full lips, clean-shaven face, wide strong neck, dense natural near-black slightly wavy hair with a low rounded crown and one thick rounded curved forward forelock on the forehead. Match the photo's face proportions with chunky readable 16-bit facial clusters. Avoid narrow cheeks, pointed chin, thin nose, large anime eyes, young chiseled action-hero face, tall coiffure or purple shiny helmet hair. Preserve EVERY existing body silhouette, body height, hand and foot position, anatomy, costume, right-facing direction, scale and action in Image3. Keep the same ice-blue open jacket with rolled sleeves, white shirt, navy trousers and dark shoes. Preserve the exact 4-column by 4-row layout and all16 figures in the same row-major order. The pose order is: ready guard; jab retract; cross windup; cross retract; kick windup; kick retract; sweep windup; sweep recovery; block impact; hurt recovery; special charge; cast recovery; uppercut anticipation; uppercut recovery; victory transition; knockout fall. First cell is the same full-height upright neutral anchor, never crouched. Exactly16 disconnected complete full-body silhouettes with genuine alpha transparency and generous gutters. No cell may touch or merge with another; no cropped limbs; no independent pose resizing; no labels, grid, text, props, projectile or energy graphics, background, floor, shadows, extra people or commercial art. Original bold navy contour and hard cel-shaded SNES cartoon art. Output one transparent square RGBA sprite atlas.",
+      "validation": {
+        "tool": "tools/fighter_assets.py:extract_atlas",
+        "alpha_threshold": 200,
+        "size": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alpha_min_max": [
+          0,
+          255
+        ],
+        "figures": 16,
+        "status": "passed",
+        "opaque_pixels": [
+          46496,
+          45997,
+          49260,
+          43442,
+          42957,
+          39946,
+          40285,
+          33304,
+          40150,
+          43048,
+          40512,
+          42656,
+          35186,
+          38052,
+          40371,
+          31988
+        ]
+      }
+    }
+  }
+}

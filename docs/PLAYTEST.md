@@ -1,6 +1,15 @@
-# v0.10.0 human playtest guide
+# v0.10.1 human playtest guide
 
-This is a short review route for the v0.10.0 cartoon-stage and menu candidate.
+The current checkout is the v0.10.1 polish review candidate, ROM SHA256
+`8f7def30d29c87a659d7fb623147cf726bab8f8c94a96a503738529aded15279`. First review
+Lars's fuller face and dark forehead curl in the roster and combat, then the
+wider entrance/patio/desk location previews. The actual v0.10.0 feedback and
+pending replacement review are in [review-feedback.json](review-feedback.json).
+All six current native suites and the separate bsnes smoke match this ROM;
+see [POLISH-v0.10.1.md](POLISH-v0.10.1.md). The old Windows ZIP contains
+v0.10.0, so use the checkout's `Play.cmd` for this review.
+
+This route also covers the earlier v0.10.0 cartoon-stage and menu candidate.
 It records the live v0.8.1 presentation findings, the historical v0.9.0
 correction evidence and the new stage/menu review targets while collecting
 human feedback on likeness, motion, fighting feel, pause help, Training
@@ -8,7 +17,7 @@ behavior, presentation, audio and onboarding. It is not a release approval
 form. Leave an item blank or mark it unknown when it was not reviewed. Do not
 infer roster consent or public-release approval from a completed table.
 
-## Snapshot under review
+## Previous v0.10.0 snapshot evidence
 
 - The frozen v0.10.0 candidate is commit
   `8536bb6956212952c17302a62cc6c1de7e12a65d`, tree

@@ -74,6 +74,10 @@ NATIVE_REVISION_REGISTRY = {
         'contract_file': 'assets/art/characters/09-reston/native-revision.json',
         'contract_sha256': '9b45e7dcb253a485faa28fb3c287a01399728cfafc23e7808f3bbb3f3b972dbc',
     },
+    11: {
+        'contract_file': 'assets/art/characters/11-lars/native-revision.json',
+        'contract_sha256': '3413da731ed37a650b081fc49a03fa800c0be7c94ed04aca7747f640e3d01b27',
+    },
 }
 REVISION_SOURCE_ROLES = ('legacy', 'motion', 'actions', 'airborne',
                          'airborne_metadata')

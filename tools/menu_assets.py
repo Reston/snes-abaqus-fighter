@@ -21,7 +21,7 @@ center=False)``.  The function does not write files or mutate its inputs.
 from pathlib import Path
 from typing import Any, Callable, Mapping, Sequence
 
-from PIL import Image, ImageDraw, ImageEnhance, ImageOps
+from PIL import Image, ImageDraw, ImageEnhance
 
 
 Size = tuple[int, int]
@@ -154,17 +154,21 @@ def _select(root: Path, roster: Sequence[Mapping[str, Any]], text_fn: TextFn) ->
     return im.convert("RGB")
 
 
-def _stage_preview(stage: Image.Image) -> Image.Image:
+ARENA_PREVIEW_CROPS = (
+    (0, 32, 256, 160),  # Las Condes: canopy, 140 sign and glass entrance.
+    (0, 16, 256, 144),  # El Castillo: house, garden and patio gathering.
+    (0, 24, 256, 152),  # La Oficina: skyline, monitors and desk chairs.
+)
+
+
+def _stage_preview(stage: Image.Image, stage_index: int) -> Image.Image:
     source = _rgb_image(stage)
-    # The arena picker uses complete, aspect-correct scene thumbnails.  The
-    # old 224x48 crop threw away the sky, architecture and floor, and then
-    # stretched the remaining strip across a caption card.  A 256x224 source
-    # fits inside the inset 60x52 box, so every thumbnail keeps the authored
-    # 8:7 geometry and remains recognizable after native tile quantization.
-    fitted = ImageOps.contain(source, (60, 52), method=Image.Resampling.NEAREST)
-    thumb = Image.new("RGB", (60, 52), ROYAL)
-    thumb.paste(fitted, ((60 - fitted.width) // 2, (52 - fitted.height) // 2))
-    return thumb
+    # Whole scenes at 60 pixels wide turn fine pixel textures into scattered
+    # samples. Give each location a wider, aspect-correct landmark view and
+    # average the source pixels before the SNES palette conversion. Every crop
+    # is exactly 2:1, matching the 104x52 destination without stretching.
+    landmark = source.crop(ARENA_PREVIEW_CROPS[stage_index])
+    return landmark.resize((104, 52), Image.Resampling.BOX)
 
 
 def _arenas(stages: Sequence[Image.Image], text_fn: TextFn) -> Image.Image:
@@ -175,26 +179,26 @@ def _arenas(stages: Sequence[Image.Image], text_fn: TextFn) -> Image.Image:
     _text(text_fn, im, (8, 25), "CHOOSE A LOCATION", MUTED, shadow=True)
     _rule(im, (8, 35, 247, 35), GOLD_DARK)
 
-    # Three complete-scene rows line up with drawArenas()'s existing cursor:
+    # Three landmark-preview rows line up with drawArenas()'s existing cursor:
     # x=8, y=40/96/152, width=240 and height=56.  Keeping that geometry lets
     # the gold native cursor frame each choice without covering the image.
     names = ("LAS CONDES", "EL CASTILLO", "LA OFICINA")
-    subtitles = ("CITY GLASS", "PARTY PATIO", "LATE SHIFT")
+    subtitles = ("GLASS LOBBY", "GARDEN PATIO", "TRADING DESKS")
     for i in range(3):
         y = 40 + i * 56
         d = ImageDraw.Draw(im)
         d.rectangle((8, y, 247, y + 55), fill=ROYAL, outline=BLUE_LINE)
         stage = stages[i] if i < len(stages) else Image.new("RGB", (W, H), BLUE)
-        thumb = _stage_preview(stage)
+        thumb = _stage_preview(stage, i)
         # The cursor's glyph 154 owns the first and last pixel rows of the
         # 56-pixel row.  Keep a two-pixel buffer so gold never crosses scene
         # detail when the native cursor is published over this plate.
         im.paste(thumb, (18, y + 2))
         d = ImageDraw.Draw(im)
-        d.rectangle((17, y + 1, 78, y + 54), outline=INK)
-        _rule(im, (88, y + 7, 88, y + 48), BLUE_SOFT)
-        _text(text_fn, im, (100, y + 12), names[i], WHITE, shadow=True)
-        _text(text_fn, im, (100, y + 31), subtitles[i], MUTED, shadow=True)
+        d.rectangle((17, y + 1, 122, y + 54), outline=INK)
+        _rule(im, (130, y + 7, 130, y + 48), BLUE_SOFT)
+        _text(text_fn, im, (140, y + 12), names[i], WHITE, shadow=True)
+        _text(text_fn, im, (140, y + 31), subtitles[i], MUTED, shadow=True)
 
     # The native cursor owns the warm selection accent.  Keep the bottom
     # control row quiet and outside the three 56-pixel choices.

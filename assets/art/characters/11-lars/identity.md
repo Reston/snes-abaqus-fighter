@@ -14,3 +14,15 @@ The face likeness revision uses a broad full oval / softly square adult face wit
 The visual target is chunky 1993 arcade pixel art with navy contours, hard-edged cel shading, a limited material palette, readable exaggerated hands and faces, and generous transparent spacing between cells. The character is deliberately a new design and does not use commercial game sprites, logos, or copied animation.
 
 Likeness v2 was produced with the built-in imagegen editor using `assets/references/fighter-11.jpg` as the identity reference and the prior Lars atlas as the edit target. The selected replacement is `atlas.png`; `tools.fighter_assets.extract_atlas` at alpha threshold 200 verifies sixteen separate RGBA figures (SHA-256 `16eb9059e3809047d95b5d4af0e2bfeaf4577ea5d17fa50a100f5590062a3cc5`).
+
+The v0.10.1 review candidate selects the four versioned v4 atlases through
+`native-revision.json`. The photograph is the primary likeness reference for
+a fuller mature face, wide blunt jaw, substantial nose, smaller eyes and a
+rounded dark forehead curl. All 64 poses share the revised identity; the
+ice-blue costume, old fifteen-color native palette and physical scale remain
+fixed. `likeness-v4.json`, `animation-v4.json` and `animation-airborne-v4.json`
+record the exact built-in imagegen prompts, sources and validation. The
+airborne spacing-repair input remains in `source-v4/`. The original v2 master
+and all earlier animation sources remain retained. Agent native art review
+accepts the new geometry for integration; human likeness and consent approval
+remain open.

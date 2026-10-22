@@ -1,5 +1,14 @@
 # Native SNES implementation
 
+The current checkout builds the unpackaged v0.10.1 Lars/location-preview
+review candidate. All six native reports match ROM SHA256
+`8f7def30d29c87a659d7fb623147cf726bab8f8c94a96a503738529aded15279`, checksum
+`42AF`, with 32,205 checks; the separate pinned bsnes smoke matches. The
+source-provenance hashes survive Git LF normalization, and the final rebuild
+reproduces the tested ROM. See [POLISH-v0.10.1.md](POLISH-v0.10.1.md).
+The v0.10.0 package and release-scale results below identify the prior frozen
+snapshot. They do not certify this new ROM.
+
 ## Build
 
 Supported build host: Windows x64. `tools/setup.ps1` downloads pinned official release archives into `.tools/` and verifies their SHA256. `tools/build.py` invokes 816-tcc, 816-opt, WLA-65816 and WLALINK directly, so a separate Make/MSYS installation is unnecessary.

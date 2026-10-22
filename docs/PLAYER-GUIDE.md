@@ -2,10 +2,11 @@
 
 ## Current version
 
-This manual covers v0.10.0, with revised cartoon stage art, menu navigation,
-portraits, Damian's likeness, arena selection and clearer HUD/result text.
-The three arenas use one consistent bold-navy cel-cartoon direction, with the
-complete stage art repeated in each arena thumbnail.
+The checkout now builds the v0.10.1 polish review candidate, with a revised
+Lars likeness and wider, clearer location previews. The three arenas keep
+their bold-navy cel-cartoon art. Each menu preview focuses on the matching
+location's entrance, patio or trading desks. The offline Windows ZIP below
+remains the earlier v0.10.0 packaged snapshot.
 
 ## Launch
 
@@ -48,7 +49,7 @@ Fighter select uses a four-by-three grid. **Left/Right** moves one card;
 **Up/Down** moves by four cards and wraps around. The selected fighter appears
 in a large portrait. Choose from the three arenas: **Las Condes**, **El Castillo**
 and **La Oficina**. In the arena menu, **Up/Down** chooses the row; each
-thumbnail shows the complete matching stage inside its box, with the location
+thumbnail shows landmarks from the matching stage inside its box, with the location
 name and caption in a separate text column.
 
 ## Controls

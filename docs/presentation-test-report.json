@@ -1,6 +1,6 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
+  "rom_sha256": "8f7def30d29c87a659d7fb623147cf726bab8f8c94a96a503738529aded15279",
   "rom_bytes": 4194304,
   "status": "passed",
   "checks": [
@@ -9,11 +9,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.10.0",
+        "version": "0.10.1",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "a8f7b797a06bd242a18bf54400e53f043d5a84f274765ba3a34f9d8289ac5445",
-        "checksum": "BE19",
+        "sha256": "8f7def30d29c87a659d7fb623147cf726bab8f8c94a96a503738529aded15279",
+        "checksum": "42AF",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -2586,7 +2586,7 @@
           44,
           92
         ],
-        "mean_channel_delta": 2.040885416666667,
+        "mean_channel_delta": 2.283333333333333,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -2616,7 +2616,7 @@
           84,
           92
         ],
-        "mean_channel_delta": 2.3041666666666667,
+        "mean_channel_delta": 1.9375,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -2646,7 +2646,7 @@
           124,
           92
         ],
-        "mean_channel_delta": 2.53984375,
+        "mean_channel_delta": 1.8828125,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -2676,7 +2676,7 @@
           164,
           92
         ],
-        "mean_channel_delta": 2.6765625,
+        "mean_channel_delta": 2.689583333333333,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -2706,7 +2706,7 @@
           44,
           140
         ],
-        "mean_channel_delta": 2.8578125,
+        "mean_channel_delta": 2.55546875,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -2736,7 +2736,7 @@
           84,
           140
         ],
-        "mean_channel_delta": 1.6846354166666666,
+        "mean_channel_delta": 2.0765625,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -2766,7 +2766,7 @@
           124,
           140
         ],
-        "mean_channel_delta": 2.33359375,
+        "mean_channel_delta": 2.0395833333333333,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -2796,7 +2796,7 @@
           164,
           140
         ],
-        "mean_channel_delta": 2.5731770833333334,
+        "mean_channel_delta": 2.140885416666667,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -2826,7 +2826,7 @@
           44,
           188
         ],
-        "mean_channel_delta": 2.4369791666666667,
+        "mean_channel_delta": 2.0536458333333334,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -2856,7 +2856,7 @@
           84,
           188
         ],
-        "mean_channel_delta": 2.13125,
+        "mean_channel_delta": 1.8770833333333334,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -2886,7 +2886,7 @@
           124,
           188
         ],
-        "mean_channel_delta": 2.349739583333333,
+        "mean_channel_delta": 2.2432291666666666,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -2916,7 +2916,7 @@
           164,
           188
         ],
-        "mean_channel_delta": 2.2611979166666667,
+        "mean_channel_delta": 2.027083333333333,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -4367,7 +4367,7 @@
       "details": {
         "fighter": 11,
         "vram_word": "0x4a00",
-        "sha256": "523acf2c5d939b5464caef27b1c990e17bfe13f4ffd5a554c2384538e48fb142"
+        "sha256": "523beee6bbce840def42286687dde5c22d5a6c9720e365f510e65687beebbbbd"
       }
     },
     {
@@ -4433,8 +4433,8 @@
           248,
           128
         ],
-        "mean_channel_delta": 0.19420572916666667,
-        "max_channel_delta": 1,
+        "mean_channel_delta": 0.273046875,
+        "max_channel_delta": 2,
         "pixels_over_16": 0,
         "pixels": 5120
       }
@@ -5390,7 +5390,7 @@
         "thumbnail": [
           18,
           42,
-          78,
+          122,
           94
         ]
       }
@@ -5400,30 +5400,30 @@
       "passed": true,
       "details": {
         "actual": [
-          60,
+          104,
           52
         ],
         "expected": [
-          60,
+          104,
           52
         ]
       }
     },
     {
-      "check": "arena thumbnail uses the contained 60x52 native crop",
+      "check": "arena thumbnail uses the focused 104x52 native landmark view",
       "passed": true,
       "details": {
         "arena": 0,
         "rect": [
           18,
           42,
-          78,
+          122,
           94
         ],
-        "mean_channel_delta": 2.726602564102564,
+        "mean_channel_delta": 2.996363412228797,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
-        "pixels": 3120
+        "pixels": 5408
       }
     },
     {
@@ -5451,7 +5451,7 @@
           240,
           95
         ],
-        "mean_channel_delta": 1.5101962081128748,
+        "mean_channel_delta": 2.292493386243386,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 12096
@@ -6370,7 +6370,7 @@
         "thumbnail": [
           18,
           98,
-          78,
+          122,
           150
         ]
       }
@@ -6380,30 +6380,30 @@
       "passed": true,
       "details": {
         "actual": [
-          60,
+          104,
           52
         ],
         "expected": [
-          60,
+          104,
           52
         ]
       }
     },
     {
-      "check": "arena thumbnail uses the contained 60x52 native crop",
+      "check": "arena thumbnail uses the focused 104x52 native landmark view",
       "passed": true,
       "details": {
         "arena": 1,
         "rect": [
           18,
           98,
-          78,
+          122,
           150
         ],
-        "mean_channel_delta": 2.9841880341880342,
+        "mean_channel_delta": 2.9228920118343193,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
-        "pixels": 3120
+        "pixels": 5408
       }
     },
     {
@@ -6431,7 +6431,7 @@
           240,
           151
         ],
-        "mean_channel_delta": 1.5831679894179893,
+        "mean_channel_delta": 2.2426697530864197,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 12096
@@ -7350,7 +7350,7 @@
         "thumbnail": [
           18,
           154,
-          78,
+          122,
           206
         ]
       }
@@ -7360,30 +7360,30 @@
       "passed": true,
       "details": {
         "actual": [
-          60,
+          104,
           52
         ],
         "expected": [
-          60,
+          104,
           52
         ]
       }
     },
     {
-      "check": "arena thumbnail uses the contained 60x52 native crop",
+      "check": "arena thumbnail uses the focused 104x52 native landmark view",
       "passed": true,
       "details": {
         "arena": 2,
         "rect": [
           18,
           154,
-          78,
+          122,
           206
         ],
-        "mean_channel_delta": 2.853846153846154,
+        "mean_channel_delta": 2.826060157790927,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
-        "pixels": 3120
+        "pixels": 5408
       }
     },
     {
@@ -7411,7 +7411,7 @@
           240,
           207
         ],
-        "mean_channel_delta": 1.5500165343915344,
+        "mean_channel_delta": 2.2026289682539684,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 12096
@@ -18418,13 +18418,13 @@
         },
         "11": {
           "asset": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\assets\\generated\\portrait11_tiles.bin",
-          "sha256": "523acf2c5d939b5464caef27b1c990e17bfe13f4ffd5a554c2384538e48fb142",
+          "sha256": "523beee6bbce840def42286687dde5c22d5a6c9720e365f510e65687beebbbbd",
           "map_entry": 9376,
           "tile": 160,
           "palette": 1,
           "rendered": {
-            "mean_channel_delta": 0.19420572916666667,
-            "max_channel_delta": 1,
+            "mean_channel_delta": 0.273046875,
+            "max_channel_delta": 2,
             "pixels_over_16": 0,
             "pixels": 5120
           }
@@ -18438,7 +18438,7 @@
             44,
             92
           ],
-          "mean_channel_delta": 2.040885416666667,
+          "mean_channel_delta": 2.283333333333333,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -18450,7 +18450,7 @@
             84,
             92
           ],
-          "mean_channel_delta": 2.3041666666666667,
+          "mean_channel_delta": 1.9375,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -18462,7 +18462,7 @@
             124,
             92
           ],
-          "mean_channel_delta": 2.53984375,
+          "mean_channel_delta": 1.8828125,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -18474,7 +18474,7 @@
             164,
             92
           ],
-          "mean_channel_delta": 2.6765625,
+          "mean_channel_delta": 2.689583333333333,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -18486,7 +18486,7 @@
             44,
             140
           ],
-          "mean_channel_delta": 2.8578125,
+          "mean_channel_delta": 2.55546875,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -18498,7 +18498,7 @@
             84,
             140
           ],
-          "mean_channel_delta": 1.6846354166666666,
+          "mean_channel_delta": 2.0765625,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -18510,7 +18510,7 @@
             124,
             140
           ],
-          "mean_channel_delta": 2.33359375,
+          "mean_channel_delta": 2.0395833333333333,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -18522,7 +18522,7 @@
             164,
             140
           ],
-          "mean_channel_delta": 2.5731770833333334,
+          "mean_channel_delta": 2.140885416666667,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -18534,7 +18534,7 @@
             44,
             188
           ],
-          "mean_channel_delta": 2.4369791666666667,
+          "mean_channel_delta": 2.0536458333333334,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -18546,7 +18546,7 @@
             84,
             188
           ],
-          "mean_channel_delta": 2.13125,
+          "mean_channel_delta": 1.8770833333333334,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -18558,7 +18558,7 @@
             124,
             188
           ],
-          "mean_channel_delta": 2.349739583333333,
+          "mean_channel_delta": 2.2432291666666666,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -18570,7 +18570,7 @@
             164,
             188
           ],
-          "mean_channel_delta": 2.2611979166666667,
+          "mean_channel_delta": 2.027083333333333,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -18582,9 +18582,9 @@
         "la-oficina": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\arena-2.png"
       },
       "arena_digests": [
-        "62c7342a2e11e406a4907fd115fdcf213c76e49ae192807bf54cc29ae9dcf9d7",
-        "23821b78859246113c561e6524e15f3993e1940c1003b330cafd38dcef8d622e",
-        "34d9da52a1bbf9af72cda6c1f468b79377cb711ddac107e9f9982d32a1a4c673"
+        "283b18cbbcad46b646e35a192e524923c97aced0bece44c41532359392969f47",
+        "33d9cf262c6a36b9f10fc407c22e18f6dc3e7df78b696c533b95d68dcd5baba5",
+        "7641adc702801f609cccb9a7e816c13cb72c3e5b1c2fa280c8d440d0533f8ac3"
       ],
       "arena_renders": {
         "las-condes": {
@@ -18598,16 +18598,16 @@
           "thumbnail": [
             18,
             42,
-            78,
+            122,
             94
           ],
           "thumbnail_delta": {
-            "mean_channel_delta": 2.726602564102564,
+            "mean_channel_delta": 2.996363412228797,
             "max_channel_delta": 7,
             "pixels_over_16": 0,
-            "pixels": 3120
+            "pixels": 5408
           },
-          "mean_channel_delta": 1.5101962081128748,
+          "mean_channel_delta": 2.292493386243386,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 12096
@@ -18623,16 +18623,16 @@
           "thumbnail": [
             18,
             98,
-            78,
+            122,
             150
           ],
           "thumbnail_delta": {
-            "mean_channel_delta": 2.9841880341880342,
+            "mean_channel_delta": 2.9228920118343193,
             "max_channel_delta": 7,
             "pixels_over_16": 0,
-            "pixels": 3120
+            "pixels": 5408
           },
-          "mean_channel_delta": 1.5831679894179893,
+          "mean_channel_delta": 2.2426697530864197,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 12096
@@ -18648,16 +18648,16 @@
           "thumbnail": [
             18,
             154,
-            78,
+            122,
             206
           ],
           "thumbnail_delta": {
-            "mean_channel_delta": 2.853846153846154,
+            "mean_channel_delta": 2.826060157790927,
             "max_channel_delta": 7,
             "pixels_over_16": 0,
-            "pixels": 3120
+            "pixels": 5408
           },
-          "mean_channel_delta": 1.5500165343915344,
+          "mean_channel_delta": 2.2026289682539684,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 12096
@@ -18670,7 +18670,7 @@
         "row_height": 56,
         "thumbnail_x": 18,
         "thumbnail_y_inset": 2,
-        "thumbnail_width": 60,
+        "thumbnail_width": 104,
         "thumbnail_height": 52
       }
     },
@@ -20681,31 +20681,31 @@
         "portrait_framing": {
           "schema": 1,
           "source_size": [
-            258,
+            264,
             328
           ],
           "source_alpha_box": [
             0,
             0,
-            258,
+            264,
             328
           ],
           "crop_box": [
-            74,
+            81,
             0,
-            221,
+            228,
             184
           ],
           "head_anchor_box": [
-            94,
+            97,
             0,
-            183,
+            194,
             52
           ],
           "head_margin_source": {
-            "left": 20,
+            "left": 16,
             "top": 0,
-            "right": 38,
+            "right": 34,
             "bottom": 132
           },
           "target_sizes": [
@@ -20765,5 +20765,5 @@
     "frame_count": 64
   },
   "passed": 1756,
-  "elapsed_seconds": 4.95
+  "elapsed_seconds": 10.13
 }

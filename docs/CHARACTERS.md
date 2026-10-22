@@ -5,7 +5,12 @@ combat profile for each roster slot. The concepts below are fictional game
 design: they do not describe the real jobs, personalities, or abilities of
 the people whose public names inspired the roster.
 
-The v0.10 cartoon-location pass preserves every fighter's native frame banks,
+The v0.10.1 review candidate changes Lars's illustrated face and hair across
+all 64 frames and his source-derived portraits. His native palette, physical
+scale and combat profile stay fixed; the other eleven fighter sets remain
+unchanged. See [POLISH-v0.10.1.md](POLISH-v0.10.1.md).
+
+The v0.10.0 cartoon-location pass preserved every fighter's native frame banks,
 palette, physical scale, portrait and combat profile from v0.9. See the
 [generated-asset comparison](cartoon-preservation-report.json). The stage and
 menu-input changes introduce no fighter timing or balance adjustment.

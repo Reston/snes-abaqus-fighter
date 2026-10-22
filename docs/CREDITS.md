@@ -52,7 +52,14 @@ the depicted person's approval or public-use consent.
 
 ## People
 
-Identity photographs and public names were sourced from the user-provided [Solutions team page](https://abaqus.io/es/abaqus-solutions/team) and [Wealth Care page](https://abaqus.io/es/wealth-care/about-us). The twelve individual fighter atlases are original cartoon illustrations generated from those references, with matching 32×40 selection cards and 64×80 profile portraits cropped from each master. The v0.4 likeness pass refreshed Damián, Cote, Negger, Fernando, Mamariaga, Reston and Roxana with built-in imagegen v2 edits; the earlier v2 masters for Ivo, Cristóbal, David, Cristián and Lars remain selected. Full prompts and identity notes accompany every character under `assets/art/characters/`. The source photographs remain subject to the original owners' rights. Download URLs are retained in `assets/references/team.json` and `wealth.json`.
+The v0.10.1 review candidate revises Lars's likeness with four original
+built-in imagegen atlas edits and one airborne spacing repair. His original
+masters remain retained; the selected v4 sources, exact prompts, input roles
+and source hashes are under `assets/art/characters/11-lars/`. The revised
+location previews are crops and filtered reductions of the existing original
+stage art. See [POLISH-v0.10.1.md](POLISH-v0.10.1.md).
+
+Identity photographs and public names were sourced from the user-provided [Solutions team page](https://abaqus.io/es/abaqus-solutions/team) and [Wealth Care page](https://abaqus.io/es/wealth-care/about-us). The twelve individual fighter atlases are original cartoon illustrations generated from those references, with matching 32×40 selection cards and 64×80 profile portraits cropped from each master. The v0.4 likeness pass refreshed Damián, Cote, Negger, Fernando, Mamariaga, Reston and Roxana with built-in imagegen v2 edits; the earlier v2 masters for Ivo, Cristóbal, David, Cristián and Lars remained selected in that historical pass. Full prompts and identity notes accompany every character under `assets/art/characters/`. The source photographs remain subject to the original owners' rights. Download URLs are retained in `assets/references/team.json` and `wealth.json`.
 
 | Game slot | Public reference | User-supplied nickname |
 | --- | --- | --- |
