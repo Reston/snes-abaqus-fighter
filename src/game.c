@@ -499,7 +499,7 @@ u16 cpuKeys(void) {
     u8 chance,enemyActive,waveApproaching;
     Fighter *f=&fighters[1];Fighter *enemy=&fighters[0];
     const CharacterProfile *c=combatProfiles[1];
-    if(mode==2)return trainingKeys();
+    if(mode==2 && trainingDummy<4)return trainingKeys();
     if(!enemy->hp)return 0;
     if(f->downState && f->downState!=DOWN_WAKE)return 0;
     /* Wake input is a single edge at the start of the six-tick wake window.
@@ -1151,8 +1151,8 @@ void fightTick(void) {
                     openPauseGuide(pausePage==1?2:1);sound(0);
                 }
             } else if(mode==2 && (pauseDirections&(KEY_UP|KEY_DOWN))) {
-                if(pauseDirections&KEY_DOWN)trainingDummy=(trainingDummy+1)%4;
-                else trainingDummy=(trainingDummy+3)%4;
+                if(pauseDirections&KEY_DOWN)trainingDummy=(trainingDummy+1)%5;
+                else trainingDummy=(trainingDummy+4)%5;
                 drawPauseCard();sound(0);
             }
         }

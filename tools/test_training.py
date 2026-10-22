@@ -13,7 +13,7 @@ the existing ``tools/emulator.py`` interface remains unchanged:
     TRACE[118]  ambient pending age
     TRACE[119]  pause page (0 normal, 1 controls, 2 specials)
     TRACE[120]  guide build stage (0 settled, 1..3 staged)
-    TRACE[121]  Training dummy (0 stand, 1 high guard, 2 low guard, 3 jump)
+    TRACE[121]  Training dummy (0 stand, 1 high guard, 2 low guard, 3 jump, 4 CPU)
     TRACE[122]  guide dirty flag (0 settled, 1 pending)
 
 The suite drives the official pinned Snes9x libretro core through controller
@@ -324,7 +324,8 @@ def wait_fight_intro(q: QA) -> dict[str, int]:
 
 
 def boot(rom: Path, mode: int = 2, fighter: int = 0,
-         fighter2: int | None = None, stage: int = 0, label: str = "boot") -> QA:
+         fighter2: int | None = None, stage: int = 0, label: str = "boot",
+         difficulty: int | None = None, wait_intro: bool = True) -> QA:
     """Boot a fresh mode through the native title/select/arena menus."""
 
     q = QA(rom, label)
@@ -339,6 +340,13 @@ def boot(rom: Path, mode: int = 2, fighter: int = 0,
           "cold boot title publication advances before input", {
               "before": title, "after": warmed,
           })
+    if difficulty is not None:
+        check(difficulty in (0, 1, 2), "Training CPU difficulty is valid", difficulty)
+        if difficulty != 1:
+            q.press("l" if difficulty == 0 else "r")
+        level = ("EASY", "NORMAL", "HARD")[difficulty]
+        check(level in decode_text(vram_bytes(q), 25, 26),
+              "Training CPU uses the difficulty selected on native home", level)
     for _ in range(mode):
         q.press("down")
     q.press("a")
@@ -363,9 +371,11 @@ def boot(rom: Path, mode: int = 2, fighter: int = 0,
     for _ in range(stage % 3):
         q.press("down")
     q.press("a")
-    current = wait_fight_intro(q)
-    check(current["screen"] == FIGHT and current["intro"] == 0,
-          "native Training/mode match reaches live FIGHT", current)
+    wait_screen(q, FIGHT)
+    current = wait_fight_intro(q) if wait_intro else q.state()
+    check(current["screen"] == FIGHT and
+          (current["intro"] == 0 if wait_intro else current["intro"] > 0),
+          "native Training/mode match reaches the requested FIGHT phase", current)
     if mode in (1, 2):
         check(current["fighter_id1"] == fighter and current["fighter_id2"] == target,
               "native match loads both explicitly selected fighters", current)
@@ -715,14 +725,15 @@ def verify_b_roster_and_second_port(rom: Path) -> dict[str, object]:
 
 
 def set_dummy(q: QA, target: int) -> dict[str, int]:
-    """Set one of four paused Training dummy modes with directional edges."""
+    """Set one of five paused Training behaviors with directional edges."""
 
     current = q.state()
     check(current["paused"] == 1, "dummy configuration is paused-only", current)
     current_mode = current["training_dummy"]
-    distance = (target - current_mode) % 4
+    check(target in range(5), "requested Training behavior is valid", target)
+    distance = (target - current_mode) % 5
     key = "down" if distance <= 2 else "up"
-    count = distance if distance <= 2 else 4 - distance
+    count = distance if distance <= 2 else 5 - distance
     for _ in range(count):
         q.press(key)
         wait_guide_settled(q, f"dummy-{target}")
@@ -1024,13 +1035,20 @@ def verify_dummy_and_contacts(rom: Path) -> dict[str, object]:
         set_dummy(q, 3)
         resume(q)
         jump_samples = []
+        jump_starts = 0
+        previous_y = signed16(q.state()["y2"])
         for _ in range(220):
             current = q.step()
-            if signed16(current["y2"]) < 0:
-                jump_samples.append(signed16(current["y2"]))
-        check(len(jump_samples) >= 2,
+            y = signed16(current["y2"])
+            if y < 0:
+                jump_samples.append(y)
+                if previous_y == 0:
+                    jump_starts += 1
+            previous_y = y
+        check(jump_starts >= 2,
               "jump dummy repeats actual UP jumps", {
-                  "samples": len(jump_samples), "values": jump_samples[:12],
+                  "jumps": jump_starts, "samples": len(jump_samples),
+                  "values": jump_samples[:12],
               })
         stationary_after_jump = q.state()["x2"]
         q.run(20)
@@ -1068,7 +1086,7 @@ def verify_dummy_and_contacts(rom: Path) -> dict[str, object]:
         resume(q)
         low_samples = run_special(q)
         low_damage = 128 - q.state()["hp2"]
-        check(any(s.get("wave1") for s in low_samples) or low_damage <= 1,
+        check(any(s.get("wave1") for s in low_samples),
               "low-guard groundwave fixture observes the incoming wave", {
                   "samples": low_samples[:16], "final": q.state(),
               })
@@ -1246,6 +1264,307 @@ def verify_training_matchups(rom: Path) -> list[dict[str, object]]:
         finally:
             q.close()
     return results
+
+
+def verify_cpu_selector(rom: Path) -> dict[str, object]:
+    """Fifth choice, native card text, both-pad edges, SOCD and priorities."""
+
+    q = boot(rom, fighter=2, fighter2=10, label="training-cpu-selector")
+    try:
+        pause(q, port=1)
+        check(q.state()["training_dummy"] == 0,
+              "CPU is opt-in after the ordinary Stand opening", q.state())
+        # This is also the focused old-ROM negative control: four-choice
+        # cartridges wrap to Jump here, so they cannot pass this assertion.
+        held = [q.step((), ("up",)) for _ in range(12)]
+        check(all(s["training_dummy"] in (0, 4) for s in held) and
+              all(s["training_dummy"] == 4 for s in held[3:]),
+              "UP wraps Stand to fifth-choice CPU once while held", held)
+        text = decode_text(vram_bytes(q), 11, 12).strip()
+        check(text == "DUMMY: CPU", "fifth Training choice has the exact native CPU label", text)
+        # The normal card preserves the stage around its smaller panel, so
+        # the full-guide helper's opaque rows 5..27 threshold does not apply.
+        check(q.emulator.frame is not None and q.emulator.frame.size == (256, 224),
+              "CPU normal-card capture is a native 256x224 PPU frame")
+        card_path = CAPTURE_DIR / "training-cpu-card.png"
+        card_path.parent.mkdir(parents=True, exist_ok=True)
+        q.emulator.frame.save(card_path)
+        CAPTURE_PATHS.append(str(card_path.relative_to(ROOT))
+                             if card_path.is_relative_to(ROOT) else str(card_path))
+        for p1, p2 in ((("up", "down"), ()), (("up",), ("down",)),
+                       ((), ("up", "down"))):
+            samples = [q.step(p1, p2) for _ in range(6)]
+            check(all(s["training_dummy"] == 4 for s in samples),
+                  "CPU selector neutralizes same-pad, cross-pad and held opposite edges",
+                  {"p1": p1, "p2": p2, "samples": samples})
+        q.run(3)
+        down = [q.step(("down",), ()) for _ in range(12)]
+        check(all(s["training_dummy"] in (4, 0) for s in down) and
+              all(s["training_dummy"] == 0 for s in down[3:]),
+              "DOWN wraps CPU to Stand once while held", down)
+        q.run(3)
+        labels = ("STAND", "GUARD HIGH", "GUARD LOW", "JUMP", "CPU")
+        for key, targets in (("down", (1, 2, 3, 4, 0)),
+                             ("up", (4, 3, 2, 1, 0))):
+            for index, target in enumerate(targets):
+                q.press(key, port=index % 2)
+                wait_guide_settled(q, f"cpu-selector-{key}-{target}")
+                actual = decode_text(vram_bytes(q), 11, 12).strip()
+                check(q.state()["training_dummy"] == target and
+                      actual == "DUMMY: " + labels[target],
+                      "both ports cycle five exact indexed Training labels in either direction",
+                      {"key": key, "target": target, "label": actual})
+        set_dummy(q, 4)
+        # START wins over B/A and directions, and A wins over directions.
+        for p1, p2 in ((("b", "a", "down"), ("start",)),
+                       ((), ("a", "up"))):
+            for _ in range(3):
+                q.step(p1, p2)
+            current = q.run(3)
+            check(current["screen"] == FIGHT and not current["paused"] and
+                  current["training_dummy"] == 4,
+                  "CPU selection retains Start then A resume priority over directions",
+                  {"p1": p1, "p2": p2, "state": current})
+            pause(q)
+        # B wins over A. Arm only the established forced-blank allowance.
+        q._menu_load_budget = MENU_LOAD_DUPLICATE_LIMIT
+        for _ in range(3):
+            q.step(("b", "a", "down"))
+        q.run(3)
+        wait_screen(q, SELECT)
+        check(q.state()["screen"] == SELECT,
+              "CPU pause retains B over A roster priority", q.state())
+        return {"held_up": held, "held_down": down, "cpu_label": text,
+                "roster": q.state()}
+    finally:
+        q.close()
+
+
+def verify_cpu_training_play(rom: Path) -> list[dict[str, object]]:
+    """Bound real CPU play at all title difficulties and roster choices."""
+
+    results = []
+    for difficulty, fighter, opponent in ((0, 0, 0), (1, 4, 10), (2, 2, 11)):
+        q = boot(rom, fighter=fighter, fighter2=opponent, difficulty=difficulty,
+                 label=f"training-cpu-play-d{difficulty}")
+        try:
+            initial = q.state()
+            pause(q)
+            set_dummy(q, 4)
+            resume(q)
+            # Include complete throw/down/wake cycles under sustained pressure;
+            # Training correctly defers recovery while hurt or invulnerable.
+            samples = [q.step() for _ in range(720)]
+            attacks = [s for s in samples if s["action2"]]
+            damage = [s for s in samples if s["hp1"] < 128]
+            recovered = [(a, b) for a, b in zip(samples, samples[1:])
+                         if a["hp1"] < b["hp1"] == 128]
+            check(any(s["x2"] != initial["x2"] and s["raw_keys2"] for s in samples) and
+                  bool(attacks),
+                  "Training CPU actually moves and attacks at each selected difficulty",
+                  {"difficulty": difficulty, "initial": initial,
+                   "attack": attacks[0] if attacks else None})
+            check(all(s["screen"] == FIGHT and s["mode"] == 2 and
+                      s["seconds"] == 99 and s["round_end"] == 0 and
+                      s["round"] == initial["round"] and
+                      s["wins1"] == s["wins2"] == 0 and
+                      s["fighter_id1"] == fighter and s["fighter_id2"] == opponent and
+                      s["training_dummy"] == 4 for s in samples),
+                  "CPU preserves untimed Training rounds with arbitrary and mirror opponents",
+                  {"difficulty": difficulty, "fighter": fighter, "opponent": opponent,
+                   "frames": len(samples), "end": samples[-1]})
+            check(bool(damage) and bool(recovered),
+                  "CPU Training takes real damage and uses ordinary gated HP recovery",
+                  {"difficulty": difficulty, "damage": damage[:2], "recoveries": recovered[:2]})
+            check(all(not b["hurt1"] and not b["down_state1"] and not b["invuln1"]
+                      for a, b in recovered),
+                  "CPU Training HP recovery waits for hurt, down and wake invulnerability",
+                  {"difficulty": difficulty, "recoveries": recovered[:2]})
+            # Pause a real contact, retaining hitstop and damage for HUD proof.
+            contact = None
+            for _ in range(300):
+                current = q.step()
+                if current["hitstop"] and current["hp1"] < 128:
+                    contact = current
+                    break
+            check(contact is not None, "CPU pause fixture reaches real contact hitstop",
+                  {"difficulty": difficulty, "state": q.state()})
+            pause(q, port=1)
+            frozen = q.state()
+            check(frozen["hitstop"] > 0 and frozen["hp1"] < 128,
+                  "CPU pause retains contact hitstop and damage", frozen)
+            check_status_bars(q, frozen, f"Training CPU d{difficulty} contact")
+            frozen_fields = ("x1", "x2", "y1", "y2", "hp1", "hp2", "energy1", "energy2",
+                             "action1", "action2", "anim_frame1", "anim_frame2",
+                             "anim_tick1", "anim_tick2", "wave1", "wave2", "hitstop",
+                             "ambient_clock", "down_state1", "down_state2", "invuln1", "invuln2")
+            for page in (1, 2, 0):
+                cycle_to_page(q, page)
+                after = q.run(8, ("down", "x"), ("up", "l"))
+                check(all(after[k] == frozen[k] for k in frozen_fields) and
+                      after["training_dummy"] == 4,
+                      "CPU combat, hitstop and recovery freeze on every pause page",
+                      {"difficulty": difficulty, "page": page, "before": frozen, "after": after})
+                q.run(3)
+            resume(q, port=1)
+            continued = q.run(8)
+            check(not continued["paused"] and continued["hitstop"] < frozen["hitstop"] and
+                  continued["training_dummy"] == 4,
+                  "CPU contact resumes through ordinary hitstop", continued)
+            reset_samples = [q.step(("select",)) for _ in range(3)]
+            reset = next((s for s in reset_samples if s["hp1"] == s["hp2"] == 128 and
+                          s["x1"] == initial["x1"] and s["x2"] == initial["x2"]), None)
+            check(reset is not None and reset["intro"] == 0 and reset["hitstop"] > 0 and
+                  reset["training_dummy"] == 4 and reset["selected2"] == opponent and
+                  reset["fighter_id1"] == fighter and reset["fighter_id2"] == opponent and
+                  reset["action1"] == reset["action2"] == 0 and
+                  reset["down_state1"] == reset["down_state2"] == 0,
+                  "live Select resets CPU combat while preserving behavior and chosen fighters",
+                  reset_samples)
+            q.run(3)
+            reset_play = [q.step() for _ in range(160)]
+            check(any(s["action2"] for s in reset_play),
+                  "CPU decision path returns after reset hitstop", reset_play[-1])
+            pause(q)
+            q.press("b")
+            wait_screen(q, SELECT)
+            q.run(20)
+            q.press("a")
+            second = q.state()
+            for _ in range((opponent - second["selected2"]) % len(FIGHTER_NAMES)):
+                q.press("right")
+            q.press("a")
+            wait_screen(q, ARENA)
+            q.press("a")
+            wait_screen(q, FIGHT)
+            intro = q.state()
+            check(intro["intro"] > 0 and intro["raw_keys2"] == 0,
+                  "new Training intro suppresses opponent gameplay input", intro)
+            fresh = wait_fight_intro(q)
+            stand = [q.step() for _ in range(24)]
+            check(fresh["training_dummy"] == 0 and fresh["fighter_id2"] == opponent and
+                  all(s["raw_keys2"] == s["action2"] == 0 and s["x2"] == fresh["x2"]
+                      for s in stand),
+                  "roster/new match restores nonvacuous Stand after CPU play", fresh)
+            results.append({"difficulty": difficulty, "fighter": fighter, "opponent": opponent,
+                            "movement_frames": sum(s["x2"] != initial["x2"] for s in samples),
+                            "attack_frames": len(attacks), "damage_frames": len(damage),
+                            "recovery_count": len(recovered), "recovery": recovered[:2],
+                            "contact": contact, "reset": reset, "fresh": fresh})
+        finally:
+            q.close()
+    return results
+
+
+# Compare only native physics/CPU controller fields. Menu timing is identical;
+# neither branch writes memory or supplies a savestate to the core.
+CPU_REPLAY_FIELDS = (
+    "frame", "mode", "training_dummy", "seconds", "round", "round_end", "hitstop",
+    "hp1", "hp2", "energy1", "energy2", "x1", "x2", "y1", "y2", "face1", "face2",
+    "action1", "action2", "raw_keys1", "raw_keys2", "hurt1", "hurt2", "guard1", "guard2",
+    "connected1", "connected2", "down_state1", "down_state2", "down_tick1", "down_tick2",
+    "invuln1", "invuln2", "wave1", "wave2", "buffered_action2", "jump_buffer2",
+    "anim_frame1", "anim_frame2", "anim_tick1", "anim_tick2", "ambient_clock",
+)
+
+
+def verify_cpu_ignores_p2(rom: Path) -> dict[str, object]:
+    replays = []
+    for held in ((), ("left", "right", "up", "down", "y", "x", "l", "b", "a", "r")):
+        q = boot(rom, fighter=4, fighter2=10, difficulty=2,
+                 label="training-cpu-p2-held" if held else "training-cpu-p2-idle")
+        try:
+            pause(q)
+            set_dummy(q, 4)
+            resume(q)
+            samples = []
+            for index in range(360):
+                p1 = ("down", "x") if index % 90 in range(3, 6) else ()
+                samples.append(q.step(p1, held))
+            replays.append([{k: s[k] for k in CPU_REPLAY_FIELDS} for s in samples])
+        finally:
+            q.close()
+    check(replays[0] == replays[1],
+          "P2 held gameplay input cannot replace or perturb Training CPU decisions",
+          {"frames": len(replays[0]), "fields": CPU_REPLAY_FIELDS,
+           "first_difference": next((i for i, (a, b) in enumerate(zip(*replays)) if a != b), None)})
+    check(any(s["action2"] and s["raw_keys2"] for s in replays[0]) and
+          len({s["x2"] for s in replays[0]}) > 1,
+          "P2 ignored-input replay contains real CPU movement and attacks", replays[0][-1])
+    return {"frames": len(replays[0]), "fields": CPU_REPLAY_FIELDS,
+            "idle_sha256": hashlib.sha256(json.dumps(replays[0], sort_keys=True).encode()).hexdigest(),
+            "held_sha256": hashlib.sha256(json.dumps(replays[1], sort_keys=True).encode()).hexdigest()}
+
+
+def verify_cpu_lowwave_defense(rom: Path) -> list[dict[str, object]]:
+    """Normal/Hard Training route the existing incoming-wave guard policy."""
+
+    results = []
+    for difficulty in (1, 2):
+        q = boot(rom, fighter=4, fighter2=5, difficulty=difficulty,
+                 label=f"training-cpu-lowwave-d{difficulty}")
+        try:
+            pause(q)
+            set_dummy(q, 4)
+            # Leave the ordinary long-range neutral-jump cadence before
+            # launching the wave; this fixture measures grounded defense.
+            q.run(24)
+            resume(q)
+            q.run(3, ("down",))
+            q.run(3, ("down", "x"))
+            samples = [q.step() for _ in range(100)]
+            waves = [s for s in samples if s["wave1"] and s["wave_low1"]]
+            guarded = [s for s in samples if s["hp2"] == 127 and s["guard2"] and
+                       s["raw_keys2"] & 1024 and
+                       s["raw_keys2"] & (512 if s["face2"] else 256)]
+            check(bool(waves) and bool(guarded),
+                  "Normal/Hard CPU Training crouch-guards a real incoming low wave for one chip",
+                  {"difficulty": difficulty, "wave": waves[:2], "guard": guarded[:2]})
+            check(any(s["anim_frame2"] == 3 and s["anim_state2"] == 6 for s in guarded),
+                  "CPU Training defense renders its ordinary crouch-guard pose", guarded[:2])
+            results.append({"difficulty": difficulty, "wave_frames": len(waves),
+                            "guarded_chip_frames": len(guarded), "guard": guarded[:2]})
+        finally:
+            q.close()
+    return results
+
+
+def verify_cpu_intro(rom: Path) -> dict[str, object]:
+    q = boot(rom, fighter=2, fighter2=5, difficulty=2, wait_intro=False,
+             label="training-cpu-intro")
+    try:
+        pause(q, port=1)
+        set_dummy(q, 4)
+        frozen = q.state()
+        resume(q, port=1)
+        samples = []
+        for _ in range(120):
+            current = q.step()
+            samples.append(current)
+            if not current["intro"]:
+                break
+        intro = [s for s in samples if s["intro"]]
+        check(bool(intro) and all(s["training_dummy"] == 4 and s["raw_keys2"] == 0 and
+                                 s["action2"] == 0 and s["hp1"] == s["hp2"] == 128 and
+                                 s["x1"] == frozen["x1"] and s["x2"] == frozen["x2"] and
+                                 s["y1"] == s["y2"] == 0 for s in intro),
+              "CPU selected during intro cannot move, attack or damage before live Training",
+              {"intro_callbacks": len(intro), "first": intro[0] if intro else None})
+        live = [q.step() for _ in range(180)]
+        check(any(s["raw_keys2"] and s["action2"] for s in live),
+              "intro-selected CPU actually attacks once Training becomes live", live[-1])
+        return {"intro_callbacks": len(intro), "frozen": frozen,
+                "first_live_attack": next(s for s in live if s["raw_keys2"] and s["action2"])}
+    finally:
+        q.close()
+
+
+def verify_cpu_training(rom: Path) -> dict[str, object]:
+    return {"selector": verify_cpu_selector(rom),
+            "play": verify_cpu_training_play(rom),
+            "p2_ignored": verify_cpu_ignores_p2(rom),
+            "lowwave_defense": verify_cpu_lowwave_defense(rom),
+            "intro": verify_cpu_intro(rom)}
 
 
 def verify_dummy_reset_and_defaults(rom: Path) -> dict[str, object]:
@@ -1451,13 +1770,22 @@ def verify_all_special_names(rom: Path) -> list[dict[str, object]]:
 
 
 def run_suite(rom: Path, core_info: dict[str, str] | None = None,
-              harness_sha: str | None = None) -> dict[str, object]:
+              harness_sha: str | None = None, cpu_only: bool = False) -> dict[str, object]:
     rom_bytes = rom.read_bytes()
     rom_sha = hashlib.sha256(rom_bytes).hexdigest()
     core_info = core_identity() if core_info is None else core_info
     harness_sha = harness_identity() if harness_sha is None else harness_sha
     check(len(rom_bytes) == 4 * 1024 * 1024,
           "candidate Training ROM is the 4 MiB native image", len(rom_bytes))
+    cpu = verify_cpu_training(rom)
+    if cpu_only:
+        return {
+            "suite": "training", "scope": "cpu-only", "status": "passed",
+            "rom_sha256": rom_sha, "rom_bytes": len(rom_bytes),
+            "core": core_info, "harness_sha256": harness_sha,
+            "core_options": dict(TRAINING_CORE_OPTIONS), "cpu_training": cpu,
+            "cadence_failures": [], "guide_failures": [],
+        }
     modes = [
         verify_page_navigation(rom, 0, 0, 1, 0),
         verify_page_navigation(rom, 1, 2, 5, 1),
@@ -1505,6 +1833,7 @@ def run_suite(rom: Path, core_info: dict[str, str] | None = None,
         "pause_projectile_crossup": freeze,
         "training_matchups": matchups,
         "quick_reset": reset,
+        "cpu_training": cpu,
         "start_select_priority": resume_priority,
         "all_special_names": specials,
         "pause_hud_after_contacts": pause_hud,
@@ -1528,6 +1857,8 @@ def main() -> int:
     parser.add_argument("--captures", type=Path,
                         default=DEFAULT_CAPTURE_DIR,
                         help="directory for native review PNGs")
+    parser.add_argument("--cpu-only", action="store_true",
+                        help="run the bounded CPU Training controller proof, including old-ROM negative control")
     args = parser.parse_args()
     if not args.report.is_absolute():
         args.report = ROOT / args.report
@@ -1593,7 +1924,7 @@ def main() -> int:
             raise AssertionError(("training harness identity failed", harness_error))
         pinned_core = core_identity()
         report["core"] = pinned_core
-        report = run_suite(args.rom, pinned_core, harness_sha)
+        report = run_suite(args.rom, pinned_core, harness_sha, cpu_only=args.cpu_only)
     except Exception as exc:
         report["status"] = "failed"
         report["error"] = repr(exc)

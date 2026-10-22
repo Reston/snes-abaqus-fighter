@@ -33,7 +33,7 @@ void drawPauseCard(void) {
     clearBanner();fillPausePanel();guideCenter(10,"PAUSED");
     guideCenter(12,"A/START RESUME B ROSTER");
     if(mode==2) {
-        guideCenter(11,trainingDummyNames[trainingDummy]);
+        guideCenter(11,trainingDummy==4?"DUMMY: CPU":trainingDummyNames[trainingDummy]);
         guideCenter(13,"UP/DOWN DUMMY  SELECT GUIDE");
     } else guideCenter(13,"SELECT MOVE GUIDE");
 }
