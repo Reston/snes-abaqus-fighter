@@ -429,14 +429,29 @@ void beginMatch(void) {
     music(arena+1);finishScreen();
 }
 void showResult(u8 won) {
+    u8 id,x,y;
     setScreenOff();screen=RESULT;resultWin=won;commonScreen();loadBackground(arena);
-    panel(7,15);
-    center(8,champion?"OFFICE CHAMPION":(won?"SHIFT COMPLETE":"SHIFT OVER"));
-    center(11,characterNames[won ? fighters[0].id:fighters[1].id]);center(13,"WINS THE MATCH");
-    center(15,"P1  0 - 0  P2");put(13,15,'0'+fighters[0].won);put(17,15,'0'+fighters[1].won);
-    center(17,characterQuotes[won ? fighters[0].id:fighters[1].id]);
-    center(19,mode==0 && !champion ? (won?"A: NEXT CHALLENGER":"A: CONTINUE"):"A: REMATCH");
-    center(21,"B: CHARACTER SELECT");sound(3);finishScreen();
+    panel(4,23);
+    if(champion)center(5,"OFFICE CHAMPION");
+    else if(mode==1)center(5,"MATCH COMPLETE");
+    else center(5,won?"SHIFT COMPLETE":"SHIFT OVER");
+    for(x=3;x<29;x++)put(x,7,154);
+    id=won?fighters[0].id:fighters[1].id;
+    /* Result scenes are loaded with the screen off. Reuse the existing
+     * portrait page and palette; combat's per-vblank actor budget is intact. */
+    portraitId=id;uploadMenuPortrait();cursor(3,8,10,12);
+    for(y=0;y<10;y++)for(x=0;x<8;x++)
+        ui[(u16)(y+9)*32+x+4]=(160+(u16)y*8+x)|0x2400;
+    word(15,9,characterNames[id]);word(15,11,"WINS THE MATCH");
+    word(16,13,"ROUND WINS");word(15,14,"P1  0 - 0  P2");
+    put(19,14,'0'+fighters[0].won);put(23,14,'0'+fighters[1].won);
+    if(champion)word(15,17,"ALL 11 DEFEATED");
+    else word(15,17,mode==0?"ARCADE SHIFT":"LOCAL VERSUS");
+    center(21,characterQuotes[id]);
+    if(champion)center(24,"A/START: TITLE");
+    else if(mode==0)center(24,won?"A/START: NEXT CHALLENGER":"A/START: CONTINUE");
+    else center(24,"A/START: REMATCH");
+    center(26,"B: CHARACTER SELECT");sound(3);finishScreen();
 }
 
 #include "pause_guide.h"
@@ -600,7 +615,10 @@ void captureInput(u8 p,u16 raw,u8 live) {
         } else {f->motion=1;f->downbuffer=12;}
     } else if((keys&forward) && f->motion==2) {f->motion=3;f->downbuffer=12;}
     if(f->downState==DOWN_WAKE) {
+        /* Wake accepts attack/jump edges only.  Directional motion sampled
+         * during wake must not become a post-wake special command. */
         discardFighterInput(f);
+        f->motion=0;f->downbuffer=0;
         if(edge&KEY_UP)f->wakeJump=INPUT_BUFFER_TICKS;
         if(edge&ATTACKS) {
             f->wakeKeys=keys;f->wakeAction=actionForInput(p,keys,edge);

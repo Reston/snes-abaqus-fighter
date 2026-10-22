@@ -445,14 +445,25 @@ def verify_result_font_bank(e: Emulator, current: dict[str, int]) -> dict[str, o
     winner_id = current["fighter_id1"] if current["wins1"] >= current["wins2"] \
         else current["fighter_id2"]
     score = f"P1  {current['wins1']} - {current['wins2']}  P2"
+    if current["champion"]:
+        title, action, context = "OFFICE CHAMPION", "A/START: TITLE", "ALL 11 DEFEATED"
+    elif current["mode"] == 1:
+        title, action, context = "MATCH COMPLETE", "A/START: REMATCH", "LOCAL VERSUS"
+    else:
+        won = current["wins1"] > current["wins2"]
+        title = "SHIFT COMPLETE" if won else "SHIFT OVER"
+        action = "A/START: NEXT CHALLENGER" if won else "A/START: CONTINUE"
+        context = "ARCADE SHIFT"
     rows = [
-        (8, centered_start("SHIFT COMPLETE"), "SHIFT COMPLETE"),
-        (11, centered_start(winner), winner),
-        (13, centered_start("WINS THE MATCH"), "WINS THE MATCH"),
-        (15, centered_start(score), score),
-        (17, centered_start(quotes[winner_id]), quotes[winner_id]),
-        (19, centered_start("A: REMATCH"), "A: REMATCH"),
-        (21, centered_start("B: CHARACTER SELECT"), "B: CHARACTER SELECT"),
+        (5, centered_start(title), title),
+        (9, 15, winner),
+        (11, 15, "WINS THE MATCH"),
+        (13, 16, "ROUND WINS"),
+        (14, 15, score),
+        (17, 15, context),
+        (21, centered_start(quotes[winner_id]), quotes[winner_id]),
+        (24, centered_start(action), action),
+        (26, centered_start("B: CHARACTER SELECT"), "B: CHARACTER SELECT"),
     ]
     return verify_opaque_text_rows(e, rows, "result card")
 
@@ -551,37 +562,40 @@ def verify_footer_blank(e: Emulator, label: str) -> None:
           "combat footer rows 26-27 remain blank after " + label, rows)
 
 
-def verify_result_score(e: Emulator) -> dict[str, object]:
+def verify_result_score(e: Emulator, winner_side: int) -> dict[str, object]:
     """The result line reports the trace's actual best-of-three score."""
 
     current = state(e)
     check(current["screen"] == 4, "local match reaches the native result screen", current)
-    check(current["wins1"] == 2 and current["wins2"] == 0,
+    expected_wins = (2, 0) if winner_side == 0 else (0, 2)
+    check((current["wins1"], current["wins2"]) == expected_wins,
           "result trace exposes the truthful best-of-three score", current)
-    row = ui_row(e, 15)
+    row = ui_row(e, 14)
     digits = [entry & 0x03FF for entry in row]
     expected = [
         OPAQUE_FONT_BASE + ord("0") + current["wins1"],
         OPAQUE_FONT_BASE + ord("0") + current["wins2"],
     ]
-    check(digits[13] == expected[0] and digits[17] == expected[1],
-          "result row 15 writes opaque score digits at native source positions", {
+    check(digits[19] == expected[0] and digits[23] == expected[1],
+          "result row 14 writes opaque score digits at native source positions", {
               "wins1": current["wins1"], "wins2": current["wins2"],
-              "x13": digits[13], "x17": digits[17],
+              "x19": digits[19], "x23": digits[23],
               "expected": expected,
-              "row15": digits,
+              "row14": digits,
           })
     return {"wins1": current["wins1"], "wins2": current["wins2"],
-            "row15": digits}
+            "row14": digits}
 
 
-def verify_large_portrait(e: Emulator, fighter: int) -> dict[str, object]:
+def verify_large_portrait(e: Emulator, fighter: int,
+                          map_x: int = PORTRAIT_MAP_X,
+                          map_y: int = PORTRAIT_MAP_Y) -> dict[str, object]:
     """Verify the selected 64x80 portrait transfer and its BG2 map anchor.
 
     The profile image is a native 8x10 tile block at VRAM word $4A00.  A
     whole-block comparison catches stale portraits that can look plausible in
     a generic frame digest, while the map check proves the renderer points
-    BG2 at tile 160 with palette 1 at the documented (23,6) anchor.
+    BG2 at tile 160 with palette 1 at the requested screen's anchor.
     """
 
     memory = vram_bytes(e)
@@ -595,18 +609,18 @@ def verify_large_portrait(e: Emulator, fighter: int) -> dict[str, object]:
               "fighter": fighter, "bytes": len(expected),
           })
     actual = memory[PORTRAIT_VRAM_BYTE:PORTRAIT_VRAM_BYTE + PORTRAIT_BYTES]
-    check(actual == expected, "selected large portrait reaches BG2 VRAM exactly", {
+    check(actual == expected, "large portrait reaches BG2 VRAM exactly", {
         "fighter": fighter, "vram_word": hex(PORTRAIT_VRAM_WORD),
         "sha256": hashlib.sha256(actual).hexdigest(),
     })
 
-    map_offset = BG2_MAP_BYTE + (PORTRAIT_MAP_Y * 32 + PORTRAIT_MAP_X) * 2
+    map_offset = BG2_MAP_BYTE + (map_y * 32 + map_x) * 2
     entry = int.from_bytes(memory[map_offset:map_offset + 2], "little")
     tile = entry & 0x03FF
     palette = (entry >> 10) & 0x07
     check(tile == PORTRAIT_TILE_BASE and palette == PORTRAIT_MAP_PALETTE,
           "profile map anchor selects tile 160 with palette 1", {
-              "fighter": fighter, "x": PORTRAIT_MAP_X, "y": PORTRAIT_MAP_Y,
+              "fighter": fighter, "x": map_x, "y": map_y,
               "entry": hex(entry), "tile": tile, "palette": palette,
           })
     palette_path = ROOT / "assets/generated" / f"portrait{fighter:02}_pal.bin"
@@ -617,13 +631,14 @@ def verify_large_portrait(e: Emulator, fighter: int) -> dict[str, object]:
     expected_image = decode_tile_block(expected, expected_palette, 8, 10)
     check(e.frame is not None, "large portrait has a rendered native frame", fighter)
     assert e.frame is not None
-    actual_image = e.frame.crop((184, 48, 248, 128))
+    crop = (map_x * 8, map_y * 8, map_x * 8 + 64, map_y * 8 + 80)
+    actual_image = e.frame.crop(crop)
     rendered = image_delta(actual_image, expected_image)
     check(rendered["mean_channel_delta"] <= 3.0 and
           rendered["max_channel_delta"] <= 3 and
           rendered["pixels_over_16"] == 0,
           "large portrait crop matches decoded native PPU pixels", {
-              "fighter": fighter, "crop": [184, 48, 248, 128], **rendered,
+              "fighter": fighter, "crop": list(crop), **rendered,
           })
     return {"asset": str(expected_path), "sha256": hashlib.sha256(actual).hexdigest(),
             "map_entry": entry, "tile": tile, "palette": palette,
@@ -813,14 +828,14 @@ def footer_lifecycle() -> None:
         e.close()
 
 
-def result_score_capture() -> dict[str, object]:
+def result_score_capture(winner_side: int = 0) -> dict[str, object]:
     """Win two local rounds and inspect the score line on the result screen."""
 
     e = boot_fight(1)
     try:
         # This is the same controller-only close/throw cadence covered by the
-        # gameplay suite.  P2 is passive in local-versus, so no AI state is
-        # involved in the result score assertion.
+        # gameplay suite. The other player is passive in local-versus, so no
+        # AI state is involved in the result score or winner assertion.
         for _ in range(520):
             current = state(e)
             if current["screen"] == 4:
@@ -828,19 +843,32 @@ def result_score_capture() -> dict[str, object]:
             if current["intro"] or current["round_end"] or current["paused"]:
                 e.run(1)
                 continue
-            forward = "right" if current["x1"] < current["x2"] else "left"
-            e.run(3, p1=[forward, "l"])
-            e.run(28, p1=[forward])
+            x_attacker = current["x1" if winner_side == 0 else "x2"]
+            x_defender = current["x2" if winner_side == 0 else "x1"]
+            forward = "right" if x_attacker < x_defender else "left"
+            port = "p1" if winner_side == 0 else "p2"
+            e.run(3, **{port: [forward, "l"]})
+            e.run(28, **{port: [forward]})
         # The second win enters the native 180-tick round-end presentation;
         # the attack cadence above may finish exactly on that transition.
         for _ in range(220):
             if state(e)["screen"] == 4:
                 break
             e.run(1)
-        score = verify_result_score(e)
+        # The trace is published after the scene change; allow the PPU and
+        # public trace to settle before comparing the actual result card.
+        e.run(15)
+        score = verify_result_score(e, winner_side)
         score["opaque_text"] = verify_result_font_bank(e, state(e))
-        path = capture(e, "result-score.png")
+        winner_id = state(e)["fighter_id1" if winner_side == 0 else "fighter_id2"]
+        score["portrait"] = verify_large_portrait(e, winner_id, 4, 9)
+        path = capture(e, "result-score.png" if winner_side == 0 else "result-score-p2.png")
         score["capture"] = str(path)
+        press(e, "start")
+        wait_screen(e, FIGHT)
+        reset = state(e)
+        check(reset["wins1"] == 0 and reset["wins2"] == 0 and reset["round"] == 1,
+              "the advertised START rematch resets both players' scores", reset)
         return score
     finally:
         e.close()
@@ -902,6 +930,7 @@ def main() -> int:
             "menus": title_and_select(),
             "stages": fight_stage_captures(),
             "result": result_score_capture(),
+            "result_p2": result_score_capture(1),
         }
         report["status"] = "passed"
     except Exception as exc:

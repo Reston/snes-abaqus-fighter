@@ -1,107 +1,447 @@
-"""Package the tested ROM with the official Windows emulator for offline play."""
+"""Package the tested ROM with the official Windows emulator for offline play.
+
+The package gate is deliberately stricter than the ordinary build.  It checks
+the exact ROM evidence, verifies the locally cached emulator against both its
+archive and expanded executable pins, and refuses to start expensive release
+validation while any mapped input is missing.
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import posixpath
+import re
+import sys
+import zipfile
 from pathlib import Path
-import hashlib, json, sys, zipfile
+from typing import Mapping
 
 # The pinned embeddable Python does not add the script directory to sys.path.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from release_evidence import (EXTRA_REPORTS, training_report_path,
                                validate_release_evidence)
-ROOT=Path(__file__).resolve().parents[1]
-manifest=json.loads((ROOT/'dist/manifest.json').read_text())
-report=json.loads((ROOT/'docs/test-report.json').read_text())
-assert report['rom_sha256']==manifest['sha256'],'Run tests on the current ROM before packaging.'
-roster_report=json.loads((ROOT/'docs/character-test-report.json').read_text())
-assert roster_report['status']=='passed','Run the complete roster suite before packaging.'
-assert roster_report['rom_sha256']==manifest['sha256'],'Roster verification must match the current ROM.'
-presentation_report=json.loads((ROOT/'docs/presentation-test-report.json').read_text())
-assert presentation_report['status']=='passed','Run the complete presentation suite before packaging.'
-assert presentation_report['rom_sha256']==manifest['sha256'],'Presentation verification must match the current ROM.'
-input_report=json.loads((ROOT/'docs/input-test-report.json').read_text())
-assert input_report['status']=='passed','Run the focused input suite before packaging.'
-assert input_report['rom_sha256']==manifest['sha256'],'Input verification must match the current ROM.'
-stage_report=json.loads((ROOT/'docs/stage-test-report.json').read_text())
-assert stage_report['status']=='passed','Run the stage and OBJ-budget suite before packaging.'
-assert stage_report['rom_sha256']==manifest['sha256'],'Stage verification must match the current ROM.'
-training_source=training_report_path(ROOT)
-training_report=json.loads(training_source.read_text())
-assert training_report['status']=='passed','Run the native Training suite before packaging.'
-assert training_report['suite']=='training','Training evidence must identify its suite.'
-assert training_report['rom_sha256']==manifest['sha256'],'Training verification must match the current ROM.'
-for evidence in (report,roster_report,presentation_report,input_report,stage_report):
-    assert evidence.get('status','passed')=='passed','A verification suite failed.'
-    assert evidence['passed']==len(evidence['checks']) and evidence['passed']>0,'Incomplete verification report.'
-    assert all(check['passed'] for check in evidence['checks']),'A reported check failed.'
-assert training_report['passed']==len(training_report['checks']) and training_report['passed']>0,'Incomplete Training verification report.'
-assert all(check['passed'] for check in training_report['checks']),'A Training verification check failed.'
-compatibility_report=json.loads((ROOT/'docs/compatibility-test-report.json').read_text())
-assert compatibility_report['status']=='passed','Run the independent-engine smoke check before packaging.'
-assert compatibility_report['rom']['sha256']==manifest['sha256'],'Compatibility smoke evidence must match the current ROM.'
-rom_sha256=hashlib.sha256((ROOT/'dist/abaqus-after-hours.sfc').read_bytes()).hexdigest()
-assert rom_sha256==manifest['sha256'],'ROM differs from its manifest.'
-# These release-scale reports are deliberately separate from Test.cmd.  Keep
-# their validation shared with audit_release.py so a stale or partial report
-# can never enter the offline package.
-validate_release_evidence(ROOT, rom_sha256)
-archive=ROOT/'dist'/('Abaqus-After-Hours-v'+manifest['version']+'-Windows.zip')
-files={
- 'abaqus-after-hours.sfc':ROOT/'dist/abaqus-after-hours.sfc',
- 'emulator/snes9x-x64.exe':ROOT/'.tools/snes9x/snes9x-x64.exe',
- 'emulator/LICENSE':ROOT/'.tools/snes9x/LICENSE',
- 'emulator/snes9x.conf':ROOT/'tools/snes9x.conf',
- 'README.md':ROOT/'docs/PLAYER-GUIDE.md',
- 'CREDITS.md':ROOT/'docs/CREDITS.md',
- 'manifest.json':ROOT/'dist/manifest.json',
- 'ART-DIRECTION.md':ROOT/'docs/ART-DIRECTION.md',
- 'CHARACTERS.md':ROOT/'docs/CHARACTERS.md',
- 'qa/gameplay.json':ROOT/'docs/test-report.json',
- 'qa/characters.json':ROOT/'docs/character-test-report.json',
- 'qa/presentation.json':ROOT/'docs/presentation-test-report.json',
- 'qa/inputs.json':ROOT/'docs/input-test-report.json',
- 'qa/stages.json':ROOT/'docs/stage-test-report.json',
- 'qa/training.json':training_source,
- 'qa/stage-dynamics.json':ROOT/'assets/generated/stage-dynamics.json',
- 'qa/compatibility.json':ROOT/'docs/compatibility-test-report.json',
- # The compatibility guide links these report names in the repository.
- # Keep the same links usable in the offline archive.
- 'compatibility-test-report.json':ROOT/'docs/compatibility-test-report.json',
- 'compatibility-combat-test-report.json':ROOT/'docs/compatibility-combat-test-report.json',
- 'qa/matchups.json':ROOT/EXTRA_REPORTS['matchups'],
- 'qa/independent-combat.json':ROOT/EXTRA_REPORTS['independent_combat'],
- 'qa/endurance.json':ROOT/EXTRA_REPORTS['endurance'],
- 'qa/fresh-build.json':ROOT/EXTRA_REPORTS['fresh_build'],
- 'COMPATIBILITY.md':ROOT/'docs/COMPATIBILITY.md',
- 'ANIMATION-CONTRACT.md':ROOT/'docs/ANIMATION-CONTRACT.md',
- 'COMBAT-ANIMATION-CONTRACT.md':ROOT/'docs/COMBAT-ANIMATION-CONTRACT.md',
- 'ANIMATION-PIPELINE.md':ROOT/'docs/ANIMATION-PIPELINE.md',
- 'PUBLIC-RELEASE.md':ROOT/'docs/PUBLIC-RELEASE.md',
- 'BALANCE-AUDIT-v0.6.md':ROOT/'docs/BALANCE-AUDIT-v0.6.md',
- 'PROPORTIONS.md':ROOT/'docs/PROPORTIONS.md',
- 'MENU-DESIGN.md':ROOT/'docs/MENU-DESIGN.md',
- 'OBJ-BUDGET.md':ROOT/'docs/OBJ-BUDGET.md',
- 'STAGE-CARTOON-v2.md':ROOT/'docs/STAGE-CARTOON-v2.md',
- 'cartoon-preservation-report.json':ROOT/'docs/cartoon-preservation-report.json',
- 'RELEASE.md':ROOT/f"docs/RELEASE-v{manifest['version']}.md",
- 'LICENSE':ROOT/'LICENSE',
- 'licenses/PVSnesLib.txt':ROOT/'licenses/PVSnesLib.txt',
- 'licenses/SNESMod.txt':ROOT/'licenses/SNESMod.txt',
- 'licenses/Snes9x.txt':ROOT/'licenses/Snes9x.txt',
-}
-def write_entry(package,name,data):
-    # Source mtimes and the host OS must not change the archive checksum.
-    entry=zipfile.ZipInfo(name,date_time=(2026,1,1,0,0,0))
-    entry.create_system=0
-    entry.external_attr=0x20
-    entry.compress_type=zipfile.ZIP_DEFLATED
-    package.writestr(entry,data,compresslevel=9)
 
-with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED,compresslevel=9) as z:
-    for name,path in files.items():
-        data=path.read_bytes()
-        # Build.cmd writes Windows newlines while Git exports LF.  Manifest
-        # whitespace must not make the same cartridge produce a different ZIP.
-        if name=='manifest.json':data=(json.dumps(manifest,indent=2)+'\n').encode('utf-8')
-        write_entry(z,name,data)
-    write_entry(z,'Play.cmd',b'@echo off\r\ncd /d "%~dp0emulator"\r\nstart "Abaqus After Hours" "snes9x-x64.exe" "..\\abaqus-after-hours.sfc"\r\n')
-digest=hashlib.sha256(archive.read_bytes()).hexdigest()
-(ROOT/'dist/release-sha256.txt').write_text(digest+'  '+archive.name+'\n')
-print('Packaged',archive.name,archive.stat().st_size,'bytes')
+ROOT = Path(__file__).resolve().parents[1]
+
+GUI_EMULATOR_ARCHIVE_NAME = 'snes9x.zip'
+GUI_EMULATOR_ARCHIVE_SHA256 = (
+    'E2BD103819051EAE57D163CDBBF6B3B92DB73FDD4A6A0EE6A939E507EAA95DB8'
+)
+GUI_EMULATOR_MEMBER = 'snes9x-x64.exe'
+GUI_EMULATOR_MEMBER_SHA256 = (
+    'C843D906C1FA1FEFA672E99CFD218041D229EF7598BCE720465FE7A0905F3A4B'
+)
+GUI_EMULATOR_PACKAGE_PATH = 'emulator/snes9x-x64.exe'
+PLAY_COMMAND = (
+    b'@echo off\r\n'
+    b'cd /d "%~dp0emulator"\r\n'
+    b'start "Abaqus After Hours" "snes9x-x64.exe" '
+    b'"..\\abaqus-after-hours.sfc"\r\n'
+)
+
+_MARKDOWN_LINK = re.compile(r'(\[[^\]]+\])\(([^)\n]+)\)')
+_EXTERNAL_LINK = re.compile(r'^(?:[A-Za-z][A-Za-z0-9+.-]*:|//)')
+OFFLINE_LINK_ALIASES = {
+    ('OBJ-BUDGET.md', 'stage-test-report.json'): 'qa/stages.json',
+}
+
+
+class PackageError(RuntimeError):
+    """A package input or release gate is invalid."""
+
+
+def require(condition: bool, message: str, details=None) -> None:
+    """Raise a useful error instead of relying on an optimized-away check."""
+    if not condition:
+        if details is None:
+            raise PackageError(message)
+        raise PackageError(f'{message}: {details}')
+
+
+def sha256_bytes(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def sha256_file(path: Path) -> str:
+    return sha256_bytes(path.read_bytes())
+
+
+def read_json(path: Path, label: str):
+    require(path.is_file(), f'Missing JSON input for {label}', path)
+    try:
+        return json.loads(path.read_text(encoding='utf-8'))
+    except (OSError, UnicodeError, json.JSONDecodeError) as error:
+        raise PackageError(f'Invalid JSON input for {label}: {path}') from error
+
+
+def canonical_manifest_bytes(manifest: Mapping) -> bytes:
+    return (json.dumps(manifest, indent=2) + '\n').encode('utf-8')
+
+
+def package_manifest(manifest: Mapping, pin_record: Mapping) -> dict:
+    """Add constant offline-emulator identity only to the ZIP manifest."""
+    packaged = dict(manifest)
+    packaged['offline_emulator'] = dict(pin_record)
+    return packaged
+
+
+def verify_gui_emulator(root: Path = ROOT) -> dict:
+    """Verify the archive pin and the exact expanded GUI executable pin."""
+    root = Path(root)
+    archive = root / '.tools' / GUI_EMULATOR_ARCHIVE_NAME
+    executable = root / '.tools' / 'snes9x' / GUI_EMULATOR_MEMBER
+    require(archive.is_file(), 'Pinned GUI emulator archive is missing', archive)
+    require(executable.is_file(), 'Expanded GUI emulator is missing', executable)
+
+    archive_digest = sha256_file(archive)
+    require(
+        archive_digest.lower() == GUI_EMULATOR_ARCHIVE_SHA256.lower(),
+        'Pinned GUI emulator archive SHA256 mismatch',
+        {'expected': GUI_EMULATOR_ARCHIVE_SHA256, 'actual': archive_digest},
+    )
+    try:
+        with zipfile.ZipFile(archive) as source:
+            require(source.testzip() is None,
+                    'Pinned GUI emulator archive CRC check failed')
+            require(GUI_EMULATOR_MEMBER in source.namelist(),
+                    'Pinned GUI emulator archive lacks its executable',
+                    GUI_EMULATOR_MEMBER)
+            archive_member = source.read(GUI_EMULATOR_MEMBER)
+    except PackageError:
+        raise
+    except (OSError, KeyError, zipfile.BadZipFile) as error:
+        raise PackageError(
+            f'Pinned GUI emulator archive cannot be read: {archive}'
+        ) from error
+
+    member_digest = sha256_bytes(archive_member)
+    require(
+        member_digest.lower() == GUI_EMULATOR_MEMBER_SHA256.lower(),
+        'Pinned GUI emulator archive member SHA256 mismatch',
+        {'expected': GUI_EMULATOR_MEMBER_SHA256, 'actual': member_digest},
+    )
+    expanded = executable.read_bytes()
+    expanded_digest = sha256_bytes(expanded)
+    require(
+        expanded_digest.lower() == GUI_EMULATOR_MEMBER_SHA256.lower(),
+        'Expanded GUI emulator SHA256 mismatch',
+        {'expected': GUI_EMULATOR_MEMBER_SHA256, 'actual': expanded_digest},
+    )
+    require(expanded == archive_member,
+            'Expanded GUI emulator differs from its pinned archive member')
+
+    return {
+        'archive': GUI_EMULATOR_ARCHIVE_NAME,
+        'archive_sha256': GUI_EMULATOR_ARCHIVE_SHA256,
+        'member': GUI_EMULATOR_MEMBER,
+        'member_sha256': GUI_EMULATOR_MEMBER_SHA256,
+        'package_path': GUI_EMULATOR_PACKAGE_PATH,
+        'launcher': 'Play.cmd',
+        'config': 'emulator/snes9x.conf',
+    }
+
+
+def build_package_files(root: Path = ROOT, manifest: Mapping | None = None) -> dict[str, Path]:
+    """Return the source-to-archive map for the current candidate."""
+    root = Path(root)
+    if manifest is None:
+        manifest = read_json(root / 'dist/manifest.json', 'manifest')
+    require(isinstance(manifest, Mapping), 'Manifest must be a JSON object')
+    require('version' in manifest, 'Manifest is missing its version')
+    training_source = training_report_path(root)
+    version = str(manifest['version'])
+    return {
+        'abaqus-after-hours.sfc': root / 'dist/abaqus-after-hours.sfc',
+        GUI_EMULATOR_PACKAGE_PATH: root / '.tools/snes9x/snes9x-x64.exe',
+        'emulator/LICENSE': root / '.tools/snes9x/LICENSE',
+        'emulator/snes9x.conf': root / 'tools/snes9x.conf',
+        'README.md': root / 'docs/PLAYER-GUIDE.md',
+        'CREDITS.md': root / 'docs/CREDITS.md',
+        'manifest.json': root / 'dist/manifest.json',
+        'ART-DIRECTION.md': root / 'docs/ART-DIRECTION.md',
+        'CHARACTERS.md': root / 'docs/CHARACTERS.md',
+        'qa/gameplay.json': root / 'docs/test-report.json',
+        'qa/characters.json': root / 'docs/character-test-report.json',
+        'qa/presentation.json': root / 'docs/presentation-test-report.json',
+        'qa/inputs.json': root / 'docs/input-test-report.json',
+        'qa/stages.json': root / 'docs/stage-test-report.json',
+        'qa/training.json': training_source,
+        'qa/stage-dynamics.json': root / 'assets/generated/stage-dynamics.json',
+        'qa/compatibility.json': root / 'docs/compatibility-test-report.json',
+        # The compatibility guide links these report names in the repository.
+        # Keep the same links usable in the offline archive.
+        'compatibility-test-report.json': root / 'docs/compatibility-test-report.json',
+        'compatibility-combat-test-report.json':
+            root / 'docs/compatibility-combat-test-report.json',
+        'qa/matchups.json': root / EXTRA_REPORTS['matchups'],
+        'qa/independent-combat.json': root / EXTRA_REPORTS['independent_combat'],
+        'qa/endurance.json': root / EXTRA_REPORTS['endurance'],
+        'qa/fresh-build.json': root / EXTRA_REPORTS['fresh_build'],
+        'COMPATIBILITY.md': root / 'docs/COMPATIBILITY.md',
+        'ANIMATION-CONTRACT.md': root / 'docs/ANIMATION-CONTRACT.md',
+        'COMBAT-ANIMATION-CONTRACT.md':
+            root / 'docs/COMBAT-ANIMATION-CONTRACT.md',
+        'ANIMATION-PIPELINE.md': root / 'docs/ANIMATION-PIPELINE.md',
+        'PUBLIC-RELEASE.md': root / 'docs/PUBLIC-RELEASE.md',
+        'BALANCE-AUDIT-v0.6.md': root / 'docs/BALANCE-AUDIT-v0.6.md',
+        'PROPORTIONS.md': root / 'docs/PROPORTIONS.md',
+        'MENU-DESIGN.md': root / 'docs/MENU-DESIGN.md',
+        'OBJ-BUDGET.md': root / 'docs/OBJ-BUDGET.md',
+        'STAGE-CARTOON-v2.md': root / 'docs/STAGE-CARTOON-v2.md',
+        'cartoon-preservation-report.json':
+            root / 'docs/cartoon-preservation-report.json',
+        # The current v0.11 note is selected dynamically.  Keep the
+        # v0.10.1 art/polish note and its reports as historical context.
+        'RELEASE.md': root / f'docs/RELEASE-v{version}.md',
+        'POLISH-v0.10.1.md': root / 'docs/POLISH-v0.10.1.md',
+        'polish-test-summary.json': root / 'docs/polish-test-summary.json',
+        'polish-preservation-report.json':
+            root / 'docs/polish-preservation-report.json',
+        'lars-likeness-report.json': root / 'docs/lars-likeness-report.json',
+        'review-feedback.json': root / 'docs/review-feedback.json',
+        'qa/character-manifest.json':
+            root / 'assets/generated/character-manifest.json',
+        'LICENSE': root / 'LICENSE',
+        'licenses/PVSnesLib.txt': root / 'licenses/PVSnesLib.txt',
+        'licenses/SNESMod.txt': root / 'licenses/SNESMod.txt',
+        'licenses/Snes9x.txt': root / 'licenses/Snes9x.txt',
+    }
+
+
+def qa_readme_bytes() -> bytes:
+    return (
+        '# QA evidence in this archive\n\n'
+        'The JSON files under qa/ are copied byte-for-byte from the '
+        'source checkout used for this candidate. Their ROM, core, check and '
+        'provenance fields remain the release evidence that was audited.\n\n'
+        'Path and capture fields in those reports refer to the original '
+        'checkout and to captures that are not bundled in this offline '
+        'archive. Source-only documentation links are labeled explicitly so '
+        'they are not mistaken for package files.\n\n'
+        'qa/character-manifest.json carries the source art provenance '
+        'manifest used by the native export.\n'
+    ).encode('utf-8')
+
+
+def build_virtual_entries(pin_record: Mapping) -> dict[str, bytes]:
+    return {
+        'qa/README.md': qa_readme_bytes(),
+        'qa/emulator-pins.json':
+            (json.dumps(pin_record, indent=2, sort_keys=True) + '\n').encode(
+                'utf-8'
+            ),
+        'Play.cmd': PLAY_COMMAND,
+    }
+
+
+def preflight_package_files(files: Mapping[str, Path],
+                            virtual: Mapping[str, bytes] | None = None) -> set[str]:
+    """Validate every mapped input before any release-scale validation."""
+    virtual = virtual or {}
+    names = set(files)
+    overlap = names.intersection(virtual)
+    require(not overlap, 'Duplicate archive entry names', sorted(overlap))
+    names.update(virtual)
+    for name, path in files.items():
+        normalized = name.replace('\\', '/')
+        parts = normalized.split('/')
+        require(
+            name == normalized and name and not name.startswith('/') and
+            '..' not in parts,
+            'Unsafe archive entry name',
+            name,
+        )
+        require(Path(path).is_file(), 'Missing mapped package input', path)
+    for name in virtual:
+        normalized = name.replace('\\', '/')
+        parts = normalized.split('/')
+        require(
+            name == normalized and name and not name.startswith('/') and
+            '..' not in parts,
+            'Unsafe virtual archive entry name',
+            name,
+        )
+    return names
+
+
+def _archive_target(archive_name: str, path: str) -> str | None:
+    path = path.replace('\\', '/')
+    if not path or path.startswith('/'):
+        return None
+    return posixpath.normpath(posixpath.join(posixpath.dirname(archive_name) or '.',
+                                             path))
+
+
+def _split_markdown_target(raw_target: str) -> tuple[str, str]:
+    path, separator, fragment = raw_target.strip().partition('#')
+    return path, (separator + fragment) if separator else ''
+
+
+def _mapped_link(archive_name: str, path: str,
+                 package_names: set[str] | None = None) -> str | None:
+    mapped = OFFLINE_LINK_ALIASES.get((archive_name, path))
+    if mapped is not None:
+        return mapped
+    # The source docs name the versioned release note.  The ZIP intentionally
+    # gives the current note the stable root name RELEASE.md.
+    if (package_names is not None and path.startswith('RELEASE-v') and
+            path.endswith('.md') and 'RELEASE.md' in package_names):
+        return 'RELEASE.md'
+    return None
+
+
+def offline_markdown_text(source: bytes | str, archive_name: str,
+                          package_names: set[str]) -> str:
+    """Make documentation links truthful when viewed from the ZIP root.
+
+    Existing package-relative links are preserved.  A source-only link is
+    rendered as visible text instead of a dead offline hyperlink.  This only
+    changes the package copy; source documentation remains byte-identical.
+    """
+    text = source.decode('utf-8') if isinstance(source, bytes) else source
+
+    def replace(match: re.Match[str]) -> str:
+        label, raw_target = match.groups()
+        path, suffix = _split_markdown_target(raw_target)
+        if not path or path.startswith('#') or _EXTERNAL_LINK.match(path):
+            return match.group(0)
+        mapped = _mapped_link(archive_name, path, package_names)
+        if mapped is not None:
+            return f'{label}({mapped}{suffix})'
+        resolved = _archive_target(archive_name, path)
+        if resolved in package_names:
+            return match.group(0)
+        return f'{label} (source-only: {path}{suffix})'
+
+    return _MARKDOWN_LINK.sub(replace, text)
+
+
+def missing_offline_links(text: str, archive_name: str,
+                          package_names: set[str]) -> list[str]:
+    """Return relative links that remain unresolved in a package document."""
+    missing = []
+    for match in _MARKDOWN_LINK.finditer(text):
+        _, raw_target = match.groups()
+        path, _ = _split_markdown_target(raw_target)
+        if not path or path.startswith('#') or _EXTERNAL_LINK.match(path):
+            continue
+        mapped = _mapped_link(archive_name, path, package_names)
+        resolved = mapped or _archive_target(archive_name, path)
+        if resolved not in package_names:
+            missing.append(path)
+    return missing
+
+
+def entry_bytes(name: str, path: Path, package_names: set[str],
+                pin_record: Mapping | None = None) -> bytes:
+    data = Path(path).read_bytes()
+    if name == 'manifest.json':
+        manifest = json.loads(data.decode('utf-8'))
+        if pin_record is not None:
+            manifest = package_manifest(manifest, pin_record)
+        return canonical_manifest_bytes(manifest)
+    if name.endswith('.md'):
+        return offline_markdown_text(data, name, package_names).encode('utf-8')
+    return data
+
+
+def validate_suite(report: Mapping, label: str, manifest_sha: str,
+                   suite: str | None = None) -> None:
+    require(report.get('rom_sha256') == manifest_sha,
+            f'{label} verification must match the current ROM')
+    require(report.get('status', 'passed') == 'passed',
+            f'Run the complete {label} suite before packaging')
+    if suite is not None:
+        require(report.get('suite') == suite,
+                f'{label} evidence must identify its suite')
+    checks = report.get('checks')
+    require(isinstance(checks, list) and len(checks) > 0,
+            f'Incomplete {label} verification report')
+    require(report.get('passed') == len(checks),
+            f'Incomplete {label} verification report')
+    require(all(item.get('passed') for item in checks),
+            f'A {label} verification check failed')
+
+
+def validate_candidate_docs(files: Mapping[str, Path], manifest: Mapping) -> None:
+    """Keep the current guides bound to the candidate, before release checks."""
+    marker = (f"<!-- candidate-version: {manifest['version']}; "
+              f"rom-sha256: {manifest['sha256']} -->")
+    for name in ('README.md', 'RELEASE.md', 'COMPATIBILITY.md', 'PUBLIC-RELEASE.md'):
+        text = files[name].read_text(encoding='utf-8')
+        require(marker in text.splitlines()[:5],
+                f'Current candidate identity is missing or stale in {name}', marker)
+
+
+def write_entry(package: zipfile.ZipFile, name: str, data: bytes) -> None:
+    # Source mtimes and the host OS must not change the archive checksum.
+    entry = zipfile.ZipInfo(name, date_time=(2026, 1, 1, 0, 0, 0))
+    entry.create_system = 0
+    entry.external_attr = 0x20
+    entry.compress_type = zipfile.ZIP_DEFLATED
+    package.writestr(entry, data, compresslevel=9)
+
+
+def main() -> None:
+    manifest = read_json(ROOT / 'dist/manifest.json', 'manifest')
+    require(isinstance(manifest, Mapping), 'Manifest must be a JSON object')
+    require('sha256' in manifest and 'version' in manifest,
+            'Manifest lacks package identity fields')
+
+    # Catch a missing release note or report before checking the large release
+    # evidence set or opening any output archive.
+    files = build_package_files(ROOT, manifest)
+    preflight_package_files(files)
+    validate_candidate_docs(files, manifest)
+    pin_record = verify_gui_emulator(ROOT)
+    virtual = build_virtual_entries(pin_record)
+    package_names = preflight_package_files(files, virtual)
+
+    reports = {
+        'gameplay': read_json(ROOT / 'docs/test-report.json', 'gameplay'),
+        'characters': read_json(ROOT / 'docs/character-test-report.json',
+                                'roster'),
+        'presentation': read_json(ROOT / 'docs/presentation-test-report.json',
+                                  'presentation'),
+        'inputs': read_json(ROOT / 'docs/input-test-report.json', 'input'),
+        'stages': read_json(ROOT / 'docs/stage-test-report.json', 'stage'),
+    }
+    training_report = read_json(training_report_path(ROOT), 'training')
+    for label, report in reports.items():
+        validate_suite(report, label, manifest['sha256'])
+    validate_suite(training_report, 'Training', manifest['sha256'], 'training')
+
+    compatibility = read_json(ROOT / 'docs/compatibility-test-report.json',
+                              'compatibility')
+    require(compatibility.get('status') == 'passed',
+            'Run the independent-engine smoke check before packaging')
+    require(compatibility.get('rom', {}).get('sha256') == manifest['sha256'],
+            'Compatibility smoke evidence must match the current ROM')
+
+    rom_path = files['abaqus-after-hours.sfc']
+    rom_sha256 = sha256_file(rom_path)
+    require(rom_sha256 == manifest['sha256'], 'ROM differs from its manifest')
+    # These release-scale reports are deliberately separate from Test.cmd.
+    # Keep their validation shared with audit_release.py so stale or partial
+    # evidence cannot enter the offline package.
+    validate_release_evidence(ROOT, rom_sha256)
+
+    archive = ROOT / 'dist' / (
+        f"Abaqus-After-Hours-v{manifest['version']}-Windows.zip"
+    )
+    with zipfile.ZipFile(archive, 'w', zipfile.ZIP_DEFLATED,
+                         compresslevel=9) as package:
+        for name, path in files.items():
+            write_entry(package, name, entry_bytes(name, path, package_names,
+                                                    pin_record))
+        for name, data in virtual.items():
+            write_entry(package, name, data)
+    digest = sha256_file(archive)
+    (ROOT / 'dist/release-sha256.txt').write_text(
+        digest + '  ' + archive.name + '\n', encoding='utf-8'
+    )
+    print('Packaged', archive.name, archive.stat().st_size, 'bytes')
+
+
+if __name__ == '__main__':
+    main()

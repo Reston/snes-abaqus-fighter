@@ -6,7 +6,15 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
-- The active checkout is the **v0.10.1 unpackaged polish review candidate**,
+- The active checkout is the **v0.11.0 result/input/package polish candidate**.
+  It carries the v0.10.1 art checkpoint below and adds winner portraits,
+  truthful result prompts and a complete normal-pause resume hint. Candidate
+  source and tests are being updated; see `docs/RELEASE-v0.11.0.md` for the
+  current SHA and verification status. Do not reuse older reports as evidence
+  for a newly built ROM. Human gates and hardware support remain open.
+
+- The preserved **v0.10.1 unpackaged art checkpoint** is commit
+  `0708dea65c859786e8455da78bd58eb077135adf`,
   ROM SHA256 `8f7def30d29c87a659d7fb623147cf726bab8f8c94a96a503738529aded15279`,
   header `42AF`. `Build.cmd --assets` and `Test.cmd` exit 0; all six reports
   match this SHA and pass 32,205 checks, and the separate pinned bsnes smoke

@@ -1,19 +1,20 @@
 # Native SNES implementation
+<!-- candidate-version: 0.11.0; rom-sha256: 77615cb93f9f7c572c66b23f4a078acb87c1a8ab925667ead42a84d1a880e629 -->
 
-The current checkout builds the unpackaged v0.10.1 Lars/location-preview
-review candidate. All six native reports match ROM SHA256
-`8f7def30d29c87a659d7fb623147cf726bab8f8c94a96a503738529aded15279`, checksum
-`42AF`, with 32,205 checks; the separate pinned bsnes smoke matches. The
-source-provenance hashes survive Git LF normalization, and the final rebuild
-reproduces the tested ROM. See [POLISH-v0.10.1.md](POLISH-v0.10.1.md).
-The v0.10.0 package and release-scale results below identify the prior frozen
-snapshot. They do not certify this new ROM.
+The current checkout builds the v0.11.0 result-screen candidate, ROM SHA256
+`77615cb93f9f7c572c66b23f4a078acb87c1a8ab925667ead42a84d1a880e629`, checksum `5AFE`.
+It includes the [v0.10.1 Lars/location art pass](POLISH-v0.10.1.md) and
+reuses the existing portrait page for the match winner. The portrait is
+uploaded while the screen is blanked; the live one-actor-per-vblank budget,
+Fighter/Wave layout, trace ABI, active combat and audio remain unchanged.
+See [RELEASE-v0.11.0.md](RELEASE-v0.11.0.md) for candidate evidence status.
+All older version sections below are historical snapshots.
 
 ## Build
 
 Supported build host: Windows x64. `tools/setup.ps1` downloads pinned official release archives into `.tools/` and verifies their SHA256. `tools/build.py` invokes 816-tcc, 816-opt, WLA-65816 and WLALINK directly, so a separate Make/MSYS installation is unnecessary.
 
-The v0.10.0 cartoon-stage pass is the current packaged technical snapshot; its six native
+The v0.10.0 cartoon-stage pass is the historical packaged technical snapshot; its six native
 suites now pass on the exact current ROM. The source freeze is commit
 `8536bb6956212952c17302a62cc6c1de7e12a65d`, tree
 `d524d3f960600dc5c9ff83578ac73675f9798735`; the ROM is SHA256
@@ -57,7 +58,7 @@ SHA256 `5afec27e3022f87580e21991beb6785b9366dfb9bf16bf2abb45a08400309c70`.
 The 288-by-600 matchup/stage/policy/replay/symmetry run with four replays
 across all three stages, pinned bsnes smoke at 600/600 plus the independent
 28,800-frame run, and `validate_release_evidence` all pass on this SHA.
-The current [v0.10.0 Windows package](../dist/Abaqus-After-Hours-v0.10.0-Windows.zip)
+The historical [v0.10.0 Windows package](../dist/Abaqus-After-Hours-v0.10.0-Windows.zip)
 is available and `tools/audit_release.py` passes 7,472 checks against it.
 Human listening, gameplay, controller, likeness/consent and public-use review
 remain open, with `public_release_certified=false`.
@@ -168,7 +169,7 @@ corrected SHA. The historical [v0.9.0 Windows package](../dist/Abaqus-After-Hour
 is available and its archive audit passes 7,471 checks. Public-release review
 remains open. This section is historical evidence for the v0.10.0 candidate.
 
-### v0.10.0 cartoon-stage candidate (current packaged technical snapshot; human gates pending)
+### v0.10.0 cartoon-stage candidate (historical packaged technical snapshot; human gates pending)
 
 The candidate stage pass strengthens the early-1990s arcade direction with
 original bold-navy cel-cartoon masters. Las Condes, El Castillo and La Oficina
@@ -205,7 +206,7 @@ presentation, 1,020 focused-input, 8,131 stage and 622 Training checks
 (32,205 total). Endurance and technical audio capture pass as documented above;
 the 288-by-600 matchup/stage/policy/replay/symmetry run with four replays across
 all three stages, pinned bsnes smoke at 600/600 plus the independent 28,800-frame
-run, and `validate_release_evidence` also pass. The current [v0.10.0 Windows
+run, and `validate_release_evidence` also pass. The historical [v0.10.0 Windows
 package](../dist/Abaqus-After-Hours-v0.10.0-Windows.zip) is available and its
 archive audit passes 7,472 checks. Human listening, gameplay, controller,
 likeness/consent and public-use review remain open, with
@@ -604,7 +605,7 @@ extended evidence pass on the corrected SHA; the packaged v0.9.0 technical
 audit passes 7,471 checks. The verified v0.10.0 snapshot has all six reports
 matching its SHA (32,205 checks) plus focused PPU, presentation, stage and menu
 evidence; endurance, audio, matchup, pinned bsnes/independent compatibility
-evidence and `validate_release_evidence` all pass. The current [v0.10.0 Windows
+evidence and `validate_release_evidence` all pass. The historical [v0.10.0 Windows
 package](../dist/Abaqus-After-Hours-v0.10.0-Windows.zip) is available and its
 archive audit passes 7,472 checks. Human listening, gameplay, controller,
 likeness/consent and public-use review remain open, with

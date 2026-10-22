@@ -1394,6 +1394,98 @@ def check_qcf_both_facings() -> None:
     check_qcf_case(0, wrong_back=True)
 
 
+def _throw_victim_to_wake(e: Emulator, victim: int) -> dict[str, int]:
+    """Create a local throw and return the victim's first wake sample."""
+
+    attacker = 1 - victim
+    _close_for_throw(e)
+    before = trace(e)
+    attacker_suffix = str(attacker + 1)
+    victim_suffix = str(victim + 1)
+    forward = "right" if before[f"face{attacker_suffix}"] else "left"
+    drive(e, attacker, [forward, "l"], 3)
+    for _ in range(180):
+        sample = trace(e)
+        if sample[f"down_state{victim_suffix}"] == 5:
+            return sample
+        drive(e, attacker, [])
+    raise AssertionError(("throw probe did not reach wake", victim, trace(e)))
+
+
+def _wait_wake_free(e: Emulator, victim: int) -> dict[str, int]:
+    """Release a wake victim and return its first free sample."""
+
+    suffix = str(victim + 1)
+    for _ in range(16):
+        sample = trace(e)
+        if sample[f"down_state{suffix}"] == 0:
+            return sample
+        drive(e, victim, [])
+    raise AssertionError(("wake did not become free", victim, trace(e)))
+
+
+def check_wake_motion_both_ports() -> None:
+    """Wake directions cannot leak into a later special, in either port.
+
+    Wake still accepts its explicit attack/jump edges (covered by the existing
+    wake regression).  A fresh QCF entered after wake must remain valid.
+    """
+
+    for victim in (0, 1):
+        suffix = str(victim + 1)
+
+        # A direction-only QCF entered during wake must be discarded.  The
+        # fresh X edge after wake should start normal action 2 and retain meter.
+        e = boot(1)
+        try:
+            wake = _throw_victim_to_wake(e, victim)
+            forward = "right" if wake[f"face{suffix}"] else "left"
+            for keys in (["down"], ["down"], ["down", forward], [forward]):
+                drive(e, victim, keys)
+            drive(e, victim, [])
+            free = _wait_wake_free(e, victim)
+            energy = free[f"energy{suffix}"]
+            drive(e, victim, ["x"])
+            post = trace(e)
+            check(post[f"action{suffix}"] == 2 and
+                  post[f"energy{suffix}"] == energy,
+                  f"P{suffix} wake-only QCF directions do not turn fresh X into a special", {
+                      "wake": wake,
+                      "free": free,
+                      "post": post,
+                  })
+        finally:
+            e.close()
+
+        # A new, complete QCF after wake must still produce the character
+        # special, proving the wake cleanup does not disable later motion.
+        e = boot(1)
+        try:
+            _throw_victim_to_wake(e, victim)
+            free = _wait_wake_free(e, victim)
+            forward = "right" if free[f"face{suffix}"] else "left"
+            for keys in (["down"], ["down", forward], [forward]):
+                drive(e, victim, keys, 3)
+            motion = trace(e)
+            check(motion[f"command_stage{suffix}"] == 3,
+                  f"P{suffix} fresh post-wake QCF reaches forward stage", {
+                      "free": free,
+                      "motion": motion,
+                  })
+            energy = motion[f"energy{suffix}"]
+            drive(e, victim, [forward, "x"], 3)
+            special = trace(e)
+            check((special[f"action{suffix}"] == 7 or
+                   special[f"wave{suffix}"]) and
+                  special[f"energy{suffix}"] < energy,
+                  f"P{suffix} fresh post-wake QCF still creates a special", {
+                      "motion": motion,
+                      "special": special,
+                  })
+        finally:
+            e.close()
+
+
 def check_jump_velocity(port: int, direction: str) -> None:
     """Verify takeoff momentum is committed and cannot be steered in flight."""
 
@@ -3724,6 +3816,7 @@ def main() -> int:
         check_down_shortcut(0)
         check_down_shortcut(1)
         check_qcf_both_facings()
+        check_wake_motion_both_ports()
         check_normal_cancel_deadline()
         report["status"] = "passed"
     except BaseException as exc:

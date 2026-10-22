@@ -77,7 +77,9 @@ with code-growth headroom; verify the actual linked result before acceptance.
   direction so head-left impact/fall drawings mirror correctly. Gameplay
   facing is restored toward the opponent for wake commands.
 - Wake restores opponent-facing commands and captures only new attack/jump
-  edges in the final six ticks. Pre-down inputs are discarded. Pause/hitstop
+  edges in the final six ticks. Directional command stages sampled during
+  wake are cleared before wake input is buffered, so they cannot turn a fresh
+  post-wake punch into a special. Pre-down inputs are discarded. Pause/hitstop
   freeze the separate wake buffer. Four free ticks of contact invulnerability
   follow wake; holding UP before the knockdown cannot cause a ghost jump.
 - New telemetry appends after TRACE[93]; stable offsets 0-93 must not move.

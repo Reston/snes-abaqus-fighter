@@ -1,13 +1,14 @@
-# v0.10.1 human playtest guide
+# v0.11.0 human playtest guide
+<!-- candidate-version: 0.11.0; rom-sha256: 77615cb93f9f7c572c66b23f4a078acb87c1a8ab925667ead42a84d1a880e629 -->
 
-The current checkout is the v0.10.1 polish review candidate, ROM SHA256
-`8f7def30d29c87a659d7fb623147cf726bab8f8c94a96a503738529aded15279`. First review
-Lars's fuller face and dark forehead curl in the roster and combat, then the
-wider entrance/patio/desk location previews. The actual v0.10.0 feedback and
-pending replacement review are in [review-feedback.json](review-feedback.json).
-All six current native suites and the separate bsnes smoke match this ROM;
-see [POLISH-v0.10.1.md](POLISH-v0.10.1.md). The old Windows ZIP contains
-v0.10.0, so use the checkout's `Play.cmd` for this review.
+Review cartridge SHA256 `77615cb93f9f7c572c66b23f4a078acb87c1a8ab925667ead42a84d1a880e629`.
+First compare Lars's face and hair with the reference and check the wider
+location previews. Then finish a Local Versus match from each side: the
+winner's portrait, name, score and quote should agree, and A/Start should
+rematch. Check Arcade continue, next challenger and champion-to-title prompts.
+The actual earlier responses remain in [review-feedback.json](review-feedback.json);
+this guide records no new human approval. See [RELEASE-v0.11.0.md](RELEASE-v0.11.0.md)
+for candidate verification and package status.
 
 This route also covers the earlier v0.10.0 cartoon-stage and menu candidate.
 It records the live v0.8.1 presentation findings, the historical v0.9.0

@@ -1,25 +1,31 @@
 # Abaqus: After Hours - player guide
+<!-- candidate-version: 0.11.0; rom-sha256: 77615cb93f9f7c572c66b23f4a078acb87c1a8ab925667ead42a84d1a880e629 -->
 
 ## Current version
 
-The checkout now builds the v0.10.1 polish review candidate, with a revised
-Lars likeness and wider, clearer location previews. The three arenas keep
-their bold-navy cel-cartoon art. Each menu preview focuses on the matching
-location's entrance, patio or trading desks. The offline Windows ZIP below
-remains the earlier v0.10.0 packaged snapshot.
+The current candidate is **v0.11.0**. It includes the revised Lars likeness,
+clearer location previews and a result card with the winner's portrait,
+round score and quote. In Local Versus, A or Start begins a rematch. Arcade
+victory advances to the next challenger; a loss offers a continue. After
+Office Champion, A or Start returns to the title. B returns to fighter select.
 
 ## Launch
 
-From the project checkout, run `Play.cmd`, focus the Snes9x window and press
-**Enter**. You can also open `abaqus-after-hours.sfc` directly in Snes9x.
-For a quiet session, mute Snes9x or the system before launching; this does not
-change game input. Snes9x supports fullscreen with **Alt+Enter** and controller
-assignment through **Input -> Input Configuration**.
+In the source checkout, run the root `Play.cmd`; it prepares pinned tools on
+first use and opens `dist/abaqus-after-hours.sfc` in Snes9x. On other platforms,
+open that cartridge in your SNES emulator.
 
-For offline Windows play, extract the current [v0.10.0 package](../dist/Abaqus-After-Hours-v0.10.0-Windows.zip).
-Its archive audit passes 7,472 technical checks. Human gameplay, listening,
-controller, likeness/consent, branding and original-hardware review remain
-open.
+For an offline Windows package, extract the whole ZIP first and run its
+`Play.cmd`. Keep the `emulator` folder beside the cartridge and launcher. The
+included `manifest.json` identifies the packaged version and ROM SHA256;
+`RELEASE.md` records its verification scope. Source checkouts use the versioned
+release note under `docs/`. No global installation or administrator account is
+needed. Human gameplay, listening, controller, likeness/consent and team/public
+use review remain open; original hardware support stays unverified.
+
+Focus Snes9x and press **Enter**. Use **Alt+Enter** for fullscreen and
+**Input -> Input Configuration** to assign controllers. For a quiet session,
+mute Snes9x or the system before launching.
 
 ## Modes
 
@@ -115,6 +121,10 @@ Stand.
   confirmed normal can cancel into a special during its cancel window.
 - Punches and kicks work in the air. Crouching kicks are low attacks. Keep an
   eye on the gold health bar and teal energy bar.
+
+During the final part of getting up, a fresh attack or jump press can be
+buffered. A quarter-circle motion must be entered after recovery; directions
+entered while getting up do not carry over into a later punch.
 
 Win two rounds to take the match. At timeout, the fighter with more health
 wins; a tie restarts the round without awarding a round win.

@@ -31,7 +31,7 @@ void settlePausedHud(void) {
 
 void drawPauseCard(void) {
     clearBanner();fillPausePanel();guideCenter(10,"PAUSED");
-    guideCenter(12,"A RESUME   B ROSTER");
+    guideCenter(12,"A/START RESUME B ROSTER");
     if(mode==2) {
         guideCenter(11,trainingDummyNames[trainingDummy]);
         guideCenter(13,"UP/DOWN DUMMY  SELECT GUIDE");

@@ -1,10 +1,17 @@
 # Independent-engine compatibility
+<!-- candidate-version: 0.11.0; rom-sha256: 77615cb93f9f7c572c66b23f4a078acb87c1a8ab925667ead42a84d1a880e629 -->
 
-The current v0.9.0 smoke and bounded combat reports both pass against cartridge
-SHA256 `bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639`.
-This snapshot updates portrait framing, Damian's art, arena selection and
-opaque combat/result text. Native combat behavior, memory/transfer contracts
-and compatibility hosts remain unchanged.
+The current candidate is v0.11.0, cartridge SHA256
+`77615cb93f9f7c572c66b23f4a078acb87c1a8ab925667ead42a84d1a880e629`.
+The authoritative evidence is the exact-ROM smoke and bounded-combat JSON
+linked below. Candidate verification is in progress; earlier reports must
+not be interpreted as verification of this cartridge. The release note
+[RELEASE-v0.11.0.md](RELEASE-v0.11.0.md) records the final checkpoint status.
+
+The historical v0.9.0 smoke and bounded combat reports passed on
+`bce460fbaa6f63e2f9c614f5c6833c08fd70558d56e7a27adfad292d4d200639`.
+The current candidate changes Lars's art, location previews and result
+presentation; independent-engine coverage retains the scope below.
 
 The pinned smoke check has the bounded scope `independent-engine smoke, stage
 ambient/effects freeze, synchronized low-wave, neutral600frame cadence`. It is

@@ -207,7 +207,7 @@ in each of three modes, fresh 214-asset export in 75.078 seconds and
 `validate_release_evidence` also pass. The historical [v0.9.0 Windows package](../dist/Abaqus-After-Hours-v0.9.0-Windows.zip)
 is available and its archive audit passes 7,471 checks. Public review remains open.
 
-## v0.10.0 cartoon-stage candidate (current packaged technical snapshot; human gates pending)
+## v0.10.0 cartoon-stage candidate (historical packaged technical snapshot; human gates pending)
 
 The candidate refreshes all three arena masters in a stronger early-1990s
 arcade direction: original bold navy outlines, clean cel shading, saturated
@@ -257,7 +257,7 @@ seconds and their longest near-silence is 0.075499-0.078652 seconds, below the
 with SHA256 `5afec27e3022f87580e21991beb6785b9366dfb9bf16bf2abb45a08400309c70`.
 The 288-by-600 matchup/stage/policy/replay/symmetry run with four replays across
 all three stages, pinned bsnes smoke at 600/600 plus the independent 28,800-frame
-run, and `validate_release_evidence` all pass. The current [v0.10.0 Windows
+run, and `validate_release_evidence` all pass. The historical [v0.10.0 Windows
 package](../dist/Abaqus-After-Hours-v0.10.0-Windows.zip) is available and its
 archive audit passes 7,472 checks. Human listening, stage, likeness/consent,
 gameplay, controller and public-use review remain open, with

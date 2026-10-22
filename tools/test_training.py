@@ -592,6 +592,12 @@ def verify_page_navigation(rom: Path, mode: int, fighter: int,
         top_before = bg2_rows(vram_bytes(q), 0, 5)
         pause(q, port=0)
         paused = q.state()
+        normal_hint = "A/START RESUME B ROSTER"
+        hint_row = decode_text(vram_bytes(q), 12, 13).strip()
+        check(hint_row == normal_hint,
+              "normal pause card advertises both actual resume buttons", {
+                  "mode": mode, "row12": hint_row,
+              })
         pause_keys = (
             "hp1", "hp2", "x1", "x2", "y1", "y2", "energy1", "energy2",
             "pose1", "pose2", "anim_frame1", "anim_frame2", "wave1", "wave2",

@@ -7,6 +7,12 @@ import zipfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from PIL import Image
+from package import (GUI_EMULATOR_MEMBER_SHA256, GUI_EMULATOR_PACKAGE_PATH,
+                     build_package_files, build_virtual_entries,
+                     canonical_manifest_bytes, entry_bytes,
+                     missing_offline_links, package_manifest,
+                     preflight_package_files, validate_candidate_docs,
+                     verify_gui_emulator)
 from release_evidence import (EXTRA_REPORTS, training_report_path,
                                validate_release_evidence)
 
@@ -48,6 +54,12 @@ def main():
         complement = int.from_bytes(rom[0x7fdc:0x7fde], 'little')
         check(checksum == sum(rom) & 0xffff and checksum ^ complement == 0xffff,
               'SNES checksum and complement are valid')
+        emulator_pins = verify_gui_emulator(ROOT)
+        result['emulator_pins'] = emulator_pins
+        candidate_files = build_package_files(ROOT, manifest)
+        preflight_package_files(candidate_files)
+        validate_candidate_docs(candidate_files, manifest)
+        check(True, 'current guides identify the exact candidate version and ROM')
 
         # Release-scale evidence is intentionally separate from the bounded
         # Test.cmd smoke suites.  Use the same validator as package.py so the
@@ -157,13 +169,44 @@ def main():
         result['roster'] = {'fighters': 12, 'frames': sum(frame_counts),
                             'source_atlases_verified': source_count}
 
+        expected_sources = build_package_files(ROOT, manifest)
+        expected_virtual = build_virtual_entries(emulator_pins)
+        expected_names = preflight_package_files(expected_sources,
+                                                 expected_virtual)
         archive = ROOT / f"dist/Abaqus-After-Hours-v{manifest['version']}-Windows.zip"
         with zipfile.ZipFile(archive) as package:
             check(package.testzip() is None, 'offline package CRC check')
+            package_names = set(package.namelist())
+            check(expected_names.issubset(package_names),
+                  'offline package contains every mapped release entry',
+                  sorted(expected_names - package_names))
+            for name, source in expected_sources.items():
+                check(package.read(name) == entry_bytes(
+                    name, source, expected_names, emulator_pins
+                ), 'offline package entry matches current source map: ' + name)
+            for name, data in expected_virtual.items():
+                check(package.read(name) == data,
+                      'offline package virtual entry is deterministic: ' + name)
+            for name in expected_sources:
+                if name.endswith('.md'):
+                    packaged_text = package.read(name).decode('utf-8')
+                    check(not missing_offline_links(
+                        packaged_text, name, expected_names
+                    ), 'offline documentation links resolve or are marked '
+                    'source-only: ' + name)
             check(package.read('abaqus-after-hours.sfc') == rom and
                   package.read('manifest.json') ==
-                  (json.dumps(manifest, indent=2) + '\n').encode('utf-8'),
-                  'offline package contains the exact cartridge and canonical manifest')
+                  canonical_manifest_bytes(package_manifest(
+                      manifest, emulator_pins
+                  )),
+                  'offline package contains the exact cartridge and pinned manifest')
+            check(sha(package.read(GUI_EMULATOR_PACKAGE_PATH)) ==
+                  GUI_EMULATOR_MEMBER_SHA256.lower(),
+                  'offline package contains the pinned GUI emulator')
+            check(package.read('qa/emulator-pins.json') ==
+                  expected_virtual['qa/emulator-pins.json'] and
+                  package.read('qa/README.md') == expected_virtual['qa/README.md'],
+                  'offline package records emulator pins and QA path scope')
             check(package.read('emulator/snes9x.conf') ==
                   (ROOT / 'tools/snes9x.conf').read_bytes(),
                   'offline package contains the current controls/display defaults')
@@ -191,15 +234,20 @@ def main():
                       'packaged exact-ROM evidence and byte identity: ' + name)
             check(package.read('qa/stage-dynamics.json') ==
                   (ROOT / 'assets/generated/stage-dynamics.json').read_bytes() and
-                  package.read('OBJ-BUDGET.md') == (ROOT / 'docs/OBJ-BUDGET.md').read_bytes(),
+                  package.read('OBJ-BUDGET.md') ==
+                  entry_bytes('OBJ-BUDGET.md', ROOT / 'docs/OBJ-BUDGET.md',
+                              expected_names),
                   'packaged stage animation contract and OBJ budget evidence')
             check(package.read('STAGE-CARTOON-v2.md') ==
-                  (ROOT / 'docs/STAGE-CARTOON-v2.md').read_bytes() and
+                  entry_bytes('STAGE-CARTOON-v2.md',
+                              ROOT / 'docs/STAGE-CARTOON-v2.md', expected_names) and
                   package.read('cartoon-preservation-report.json') ==
                   (ROOT / 'docs/cartoon-preservation-report.json').read_bytes(),
                   'offline cartoon-stage and character-preservation document links')
             check(json.loads(package.read('qa/compatibility.json')) == compatibility and
-                  package.read('COMPATIBILITY.md') == (ROOT / 'docs/COMPATIBILITY.md').read_bytes(),
+                  package.read('COMPATIBILITY.md') ==
+                  entry_bytes('COMPATIBILITY.md', ROOT / 'docs/COMPATIBILITY.md',
+                              expected_names),
                   'packaged independent-engine smoke evidence and scope')
             for key, relative in EXTRA_REPORTS.items():
                 archive_name = {

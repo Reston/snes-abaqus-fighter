@@ -52,8 +52,14 @@ uses transparent glyphs with a one-pixel navy shadow. The title footer reads
 The v0.5.1 live fight clears the intro hint at tile rows 26-27 when combat
 begins, on pause and on Training reset. This restores the bottom sixteen native
 pixels to the arena. A dedicated 128-byte dirty-region upload handles the clear.
-The result panel shows `P1  0 - 0  P2` at row 15 with the actual round wins;
-the fighter quote moves to row 17, retaining actions at rows 19 and 21.
+The v0.11.0 result card uses the existing 64x80 portrait at tile `(4,9)`
+inside one gold frame. Title row 5 is neutral `MATCH COMPLETE` for Local
+Versus; Arcade retains its win/loss/champion heading. The winner name and
+match label occupy rows 9/11, `ROUND WINS` and actual `P1  0 - 0  P2` score
+rows 13/14, and mode context row 17. The quote is centered on row 21.
+Rows 24/26 show the actual A/Start transition and B character-select action.
+The champion prompt says `A/START: TITLE`, matching its existing behavior.
+All result text remains opaque and the portrait is loaded during screen-off.
 
 Horizontal movement remains one card at a time.  Up and down move by four
 entries, preserving the natural 4x3 reading order.

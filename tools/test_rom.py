@@ -367,6 +367,13 @@ for match in range(1,11):
     check(e.state()['wins1']==2,'Controller-only player wins ladder match '+str(match+1))
     if match<10:press(e,'a');wait(e,3)
 check(e.state()['champion']==1,'Defeating all eleven opponents awards Office Champion')
+result_map=C.string_at(e.core.retro_get_memory_data(3),e.core.retro_get_memory_size(3))
+title_prompt='A/START: TITLE'
+title_x=(32-len(title_prompt))//2
+title_tiles=[int.from_bytes(result_map[0xB000+(24*32+x)*2:0xB002+(24*32+x)*2],'little')&0x3ff
+             for x in range(title_x,title_x+len(title_prompt))]
+check(title_tiles==[256+ord(ch) for ch in title_prompt],
+      'Champion result advertises the actual A/START title action',title_tiles)
 e.shot('champion.png');press(e,'a');wait(e,0)
 check(e.state()['screen']==0,'Champion returns to the title')
 e.close()
