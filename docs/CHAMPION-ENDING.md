@@ -1,15 +1,15 @@
 # Original Office Champion ending
-<!-- candidate-version: 0.18.0; rom-sha256: fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb -->
+<!-- candidate-version: 0.19.0; rom-sha256: 945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7 -->
 
-The combined v0.18.0 cartridge has SHA256
-`fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb`,
-checksum `A299`, source freeze `8a7a6fc78c2160aac23de2a2f32ea927016853d0`.
+The combined v0.19.0 cartridge has SHA256
+`945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7`,
+checksum `05A4`, source freeze `003ab19b98f291fed67e7de457c1fc746d7ad2d8`.
 The eleventh Arcade victory earns an original trophy and Santiago night-office
 scene with the winner's portrait, name, actual round score and quote.
 A/Start returns to the title; B returns to fighter select. The retained original
 [victory score](CHAMPION-AUDIO.md) begins only on the earned champion scene.
 
-The [release note](RELEASE-v0.18.0.md) records the full candidate's verification
+The [release note](RELEASE-v0.19.0.md) records the full candidate's verification
 and package status. Human approval remains open. The earlier isolated feature
 cartridge is historical; its reports here are replaced by combined-ROM evidence.
 
@@ -64,9 +64,9 @@ TRACE[0..122] change. The separate victory score loads during screen-off.
 Source-only generated inputs are [tiles](../assets/generated/champion_tiles.bin),
 [map](../assets/generated/champion_map.bin), [palette](../assets/generated/champion_pal.bin),
 [native preview](../assets/generated/champion.png), [header](../assets/generated/assets.h)
-and [assembly](../assets/generated/data.asm). The [current preservation report](preservation-v0.18.0.json)
-compares the complete 219-file generated set with verified v0.17.0 commit
-`83e9123ad1702261ea8a78e73249b776e839616d`: all 219 generated files are
+and [assembly](../assets/generated/data.asm). The [current preservation report](preservation-v0.19.0.json)
+compares the complete 219-file generated set with verified v0.18.0 commit
+`571181943892216d2fc98e63ae58c592cb1f19ab`: all 219 generated files are
 preserved, with no additions or modifications. The two protected hardware/trace
 assembly files are also unchanged. All three current-ROM controller-only route proofs pass.
 [Champion preservation](champion-preservation-report.json) carries the same

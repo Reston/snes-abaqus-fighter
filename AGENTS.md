@@ -6,7 +6,25 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
-- The active checkout is **v0.18.0 CPU Training level readout**.
+- The active checkout is **v0.19.0 practice controls**.
+  ROM SHA256 `945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7`, header `05A4`,
+  source freeze `003ab19b98f291fed67e7de457c1fc746d7ad2d8`, tree `17854e74ac06042df3d9121747036a00a5034686`.
+  Paused CPU Training accepts both ports' L/R shoulders to change the existing
+  home difficulty. Held opposites cancel; Start/B/A/Select, guide and dummy
+  priorities remain. src/version.h drives title and manifest identity.
+  Build canonicalizes generated text on regeneration and reuse. All 219
+  generated assets, 1,276 RAM addresses, Fighter64/Wave16, TRACE0..122 and
+  existing transfer/audio contracts are preserved.
+  All six native suites pass 35,715 exact-ROM checks. Matching smoke, full
+  matrix/replays, independent combat and three native live hours pass. Training
+  completes 216,356 CPU live frames across all twelve opponents. Fresh
+  export reproduces ROM, 219 assets and symbols in 471.844
+  seconds. The Windows archive passes 9,299 technical audit
+  checks. Two final packages are identical: 22,904,626 bytes, SHA256
+  `b518ddf6eb6e20bfed1e55758aebb61fa2cca0462b5918412eb0837dc5eb1b07`. Human/public-use gates remain open.
+  See docs/RELEASE-v0.19.0.md.
+
+- The previous verified offline checkpoint is **v0.18.0 CPU Training level readout**.
   ROM SHA256 `fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb`, header `A299`,
   source freeze `8a7a6fc78c2160aac23de2a2f32ea927016853d0`, tree `9d78764a6f40c5fe3661b0b2f6fb8469d9f0a25f`.
   Training's CPU PAUSED card names Easy/Normal/Hard from the home setting.
@@ -21,7 +39,7 @@ Preserve the native emulator requirement when extending the project.
   `42d25616285e9275e527bb412529da21575671d38cbe239b99b2ba9e69a7d153`. Human/public-use gates remain open.
   See docs/RELEASE-v0.18.0.md.
 
-- The previous verified offline checkpoint is the **v0.17.0 CPU Training candidate**.
+- The historical verified checkpoint is the **v0.17.0 CPU Training candidate**.
   ROM SHA256 `cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe`, header `5EAF`,
   source freeze `5fcd5cb28f4cf2453cb3310fbab0d6947d7afd9a`, tree `5e3ef5c5f4be06fbd0bad8a37ef215a449f1c2a1`.
   Training choice 4 uses existing home-difficulty AI; choices 0..3 and the

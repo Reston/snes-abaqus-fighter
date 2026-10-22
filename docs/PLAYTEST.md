@@ -1,23 +1,23 @@
-# v0.18.0 human playtest guide
-<!-- candidate-version: 0.18.0; rom-sha256: fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb -->
+# v0.19.0 human playtest guide
+<!-- candidate-version: 0.19.0; rom-sha256: 945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7 -->
 
-Review cartridge SHA256 `fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb`.
-Choose Easy/Normal/Hard at home, then enter Training and select CPU from the
-first PAUSED card. Confirm that the CPU label names the selected level at
-all three home settings. Switch to another dummy and check that the level
-text clears; return to CPU after reset and guide cycling. Check practice pacing, health recovery, clock 99, pause
-readability and P1 Select reset. Reset should retain CPU and the opponent;
-a new match should return to Stand. Try all five behaviors and both pause
-controllers, arbitrary opponents and mirrors. P2 gameplay buttons should not
-take control of the Training opponent.
+Review cartridge SHA256 `945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7`.
+Read V0.19.0 on the title's lower right. Choose CPU on Training's first
+PAUSED card, then use each controller's L/R shoulders to cycle levels. Try
+holds, opposites across ports, quick reset and guide cycling. Check that
+Start/B/A/Select and Up/Down dummy selection retain priority; other dummies
+and guide pages should keep their existing controls. Return home and check
+that its level matches. Review the longer CPU hint at native size and in 2x.
+Try all five behaviors, arbitrary opponents and mirrors. P2 gameplay buttons
+must not take control of the Training opponent.
 Compare close jump-ins, anti-air startup/recovery and cross-up spacing. The
-[practice companion](CROSSUP-PRACTICE-v0.18.0.html) retains fighter-specific
+[practice companion](CROSSUP-PRACTICE-v0.19.0.html) retains fighter-specific
 examples. Test both ports and all three arenas.
 
 Also review A/Start menus, per-step motion help, Training mirror opponents,
 Lars's face/hair, winner cards, the champion score and title transitions.
 Actual earlier responses remain in [review-feedback.json](review-feedback.json);
-this guide records no new approval. See [RELEASE-v0.18.0.md](RELEASE-v0.18.0.md)
+this guide records no new approval. See [RELEASE-v0.19.0.md](RELEASE-v0.19.0.md)
 for candidate verification and package status.
 
 Use the cartridge identified above for new feedback. Historical notes below

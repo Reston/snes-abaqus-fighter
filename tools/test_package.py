@@ -24,6 +24,36 @@ def check(condition: bool, message: str) -> None:
         raise RuntimeError(message)
 
 
+def check_offline_eol_variants() -> None:
+    """Prose is portable across checkouts; QA and native bytes stay exact."""
+    with tempfile.TemporaryDirectory(dir=ROOT/'build') as temporary:
+        sandbox = Path(temporary)
+        names = {'notes.md','guide.md','licenses/example.txt','qa/evidence.json','game.sfc'}
+        path = sandbox/'notes.md'
+        prose = b'# Native review\n[guide](guide.md)\n[art](../assets/master.png)\n'
+        path.write_bytes(prose)
+        markdown_lf = PACKAGE.entry_bytes('notes.md',path,names)
+        path.write_bytes(prose.replace(b'\n',b'\r\n'))
+        original = path.read_bytes()
+        markdown_crlf = PACKAGE.entry_bytes('notes.md',path,names)
+        check(markdown_lf == markdown_crlf,'offline Markdown depends on checkout line endings')
+        check(path.read_bytes() == original,'offline Markdown changed its source file')
+        license_path = sandbox/'license.txt'
+        notice = b'Copyright Example\nPermission notice retained verbatim.\n'
+        license_path.write_bytes(notice)
+        license_lf = PACKAGE.entry_bytes('licenses/example.txt',license_path,names)
+        license_path.write_bytes(notice.replace(b'\n',b'\r\n'))
+        original = license_path.read_bytes()
+        check(PACKAGE.entry_bytes('licenses/example.txt',license_path,names) == license_lf == notice,
+              'license words or canonical line endings changed')
+        check(license_path.read_bytes() == original,'offline license changed its source file')
+        for name,data in (('qa/evidence.json',b'{"status":"passed"}\r\n'),
+                          ('game.sfc',b'\x00\r\n\xff\x01')):
+            source = sandbox/Path(name).name
+            source.write_bytes(data)
+            check(PACKAGE.entry_bytes(name,source,names) == data,'exact QA/native bytes were normalized')
+
+
 def expect_package_error(action, label: str) -> None:
     try:
         action()
@@ -417,6 +447,7 @@ def main() -> None:
           'missing image link leaves broken image markup')
     check(not PACKAGE.missing_offline_links(rendered, 'OBJ-BUDGET.md', names),
           'rendered document still has an unresolved offline link')
+    check_offline_eol_variants()
     print('package-audit mutation checks passed')
 
 

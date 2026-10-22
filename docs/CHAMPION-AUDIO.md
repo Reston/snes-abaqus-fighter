@@ -1,11 +1,11 @@
 # Office Champion victory score
-<!-- candidate-version: 0.18.0; rom-sha256: fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb -->
+<!-- candidate-version: 0.19.0; rom-sha256: 945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7 -->
 
-The combined v0.18.0 cartridge is SHA256
-`fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb`, checksum `A299`,
-source freeze `8a7a6fc78c2160aac23de2a2f32ea927016853d0`. It retains the original
+The combined v0.19.0 cartridge is SHA256
+`945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7`, checksum `05A4`,
+source freeze `003ab19b98f291fed67e7de457c1fc746d7ad2d8`. It retains the original
 v0.13 champion score without changing generated audio bytes.
-The [release note](RELEASE-v0.18.0.md) records full candidate status.
+The [release note](RELEASE-v0.19.0.md) records full candidate status.
 Current-ROM focused evidence passes 1,792 capture-only checks.
 The victory PCM capture spans 72.580462 seconds.
 The report retains its PCM and repeat measurements; full human listening remains open.
@@ -44,7 +44,7 @@ free. All fifteen BRR source records and existing effects/music payloads
 computes these values from actual binary tables, including word rounding,
 and rejects invalid pointers, lengths, counts or overflow with explicit errors.
 
-[Preservation](preservation-v0.18.0.json) records all 219 generated files
+[Preservation](preservation-v0.19.0.json) records all 219 generated files
 unchanged from verified v0.16.0. The v0.13 feature added the victory IT and
 extended the soundbank; this candidate retains their exact bytes, the original
 four scores, effects, native BRR/module payloads and every art asset. Source-input
@@ -72,7 +72,7 @@ All runs are headless at BELOW_NORMAL priority on the last two logical CPUs,
 with no GUI or audio device. Report capture paths under build/champion-audio
 refer to ignored source-checkout WAVs and fixture outputs; the offline archive
 bundles exact JSON evidence and this guide, not those source captures.
-The separate [listening archive record](audio-listening-v0.18.0.json) identifies
+The separate [listening archive record](audio-listening-v0.19.0.json) identifies
 an optional WAV review ZIP created from these verified captures. It contains
 all five scores and matched control/active cue pairs; it is separate from the
 Windows game package and has not been played or approved by a human.

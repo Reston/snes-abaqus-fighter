@@ -1,11 +1,11 @@
 # Independent-engine compatibility
-<!-- candidate-version: 0.18.0; rom-sha256: fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb -->
+<!-- candidate-version: 0.19.0; rom-sha256: 945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7 -->
 
-The current candidate is v0.18.0, cartridge SHA256 `fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb`.
+The current candidate is v0.19.0, cartridge SHA256 `945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7`.
 The pinned smoke and 48-by-600-frame independent combat run both pass on this ROM.
-The [release note](RELEASE-v0.18.0.md) records status. The verified v0.17.0
-checkpoint remains historical, on ROM `cf605438ea9a722c45dc9c0d73fb33a819ffa7c1d7d63fb69a22310a33005cfe`.
-The pause-card level readout uses existing glyphs and transfers.
+The [release note](RELEASE-v0.19.0.md) records status. Verified v0.18.0 remains
+the offline checkpoint, on ROM `fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb`.
+The pause controls reuse the existing difficulty and banner transfer.
 
 The pinned smoke check has the bounded scope `independent-engine smoke, stage
 ambient/effects freeze, synchronized low-wave, neutral600frame cadence`. It is

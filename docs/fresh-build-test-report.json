@@ -7,11 +7,11 @@
     "pre_extracted_tools_reused": false,
     "build_intermediates_reused": false
   },
-  "source_commit": "8a7a6fc78c2160aac23de2a2f32ea927016853d0",
-  "source_tree": "9d78764a6f40c5fe3661b0b2f6fb8469d9f0a25f",
-  "rom_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
-  "work_directory": "build/fresh-build/8a7a6fc7-rdm8zccj",
-  "source_archive_sha256": "6d73d95e03c92581b25838ff5bd63cc0c0765a8e32f5d88db8e6779bcc138362",
+  "source_commit": "003ab19b98f291fed67e7de457c1fc746d7ad2d8",
+  "source_tree": "17854e74ac06042df3d9121747036a00a5034686",
+  "rom_sha256": "945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7",
+  "work_directory": "build/fresh-build/003ab19b-ekdtflze",
+  "source_archive_sha256": "51c947143f6fb34bddd41302c05c940f8e58e78be5b45e472c1ba86833f312f1",
   "cached_archives_reused": [
     "snes9x.zip",
     "pvsneslib.zip",
@@ -26,7 +26,7 @@
     "sdk_tree_sha256": "0cd7a571b0a020394ead285b887c81b717c55c39540335abd8c7774b55bccb7b"
   },
   "build_exit_code": 0,
-  "build_log": "build/fresh-build/8a7a6fc7-rdm8zccj/build.log",
+  "build_log": "build/fresh-build/003ab19b-ekdtflze/build.log",
   "bootstrap_archives": [
     {
       "name": "snes9x.zip",
@@ -53,7 +53,7 @@
     "python": "3.12.10",
     "pillow": "13.0.0"
   },
-  "rebuilt_rom_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
+  "rebuilt_rom_sha256": "945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7",
   "generated_assets": [
     {
       "file": "assets/generated/arenas.png",
@@ -1153,5 +1153,5 @@
   ],
   "generated_assets_verified": 219,
   "symbols_equal_after_source_path_normalization": true,
-  "elapsed_seconds": 568.453
+  "elapsed_seconds": 471.844
 }

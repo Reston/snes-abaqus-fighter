@@ -1,16 +1,14 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.18.0; rom-sha256: fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb -->
+<!-- candidate-version: 0.19.0; rom-sha256: 945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7 -->
 
 ## Current version
 
-The current candidate is **v0.18.0**. Training's first **PAUSED** card names
-the CPU's **Easy, Normal or Hard** difficulty beside its behavior. Choose the
-level with **L/R** at home. Use Up/Down on the PAUSED card to select Stand,
-Guard High, Guard Low, Jump or CPU. Start resumes; P1 Select resets the live
-round and keeps the behavior and matchup. A new match starts on Stand.
-CPU anti-air, cross-ups, arbitrary or mirror Training opponents, champion
-music, revised Lars art and location previews remain. After Office Champion,
-A/Start returns to the title and B returns to fighter select.
+The current candidate is **v0.19.0**. In paused Training, choose **CPU** with
+Up/Down, then use the **L/R shoulder buttons** to change its level. Both
+controllers work. The selected level appears on the card and at home.
+Start resumes; P1 Select resets the live round and retains the behavior,
+opponent and level. A new match starts on Stand. The title's lower-right
+version label identifies the cartridge you are playing.
 
 ## Launch
 
@@ -27,7 +25,7 @@ needed. Human gameplay, listening, controller, likeness/consent and team/public
 use review remain open; original hardware support stays unverified.
 The package's `REVIEW.html` contains native screens, CPU Training, anti-air and cross-up
 clips, and a 2x view. GIF playback timing is approximate. The [cross-up practice
-companion](CROSSUP-PRACTICE-v0.18.0.html) shows a setup for each fighter. Use
+companion](CROSSUP-PRACTICE-v0.19.0.html) shows a setup for each fighter. Use
 Training's Stand dummy for stationary setups, or Local Versus with a second
 player/both keyboard layouts for the opponent-step-under examples.
 Its `ROSTER-REVIEW.html` offers all 64 generated frames per fighter, facing
@@ -93,6 +91,13 @@ name and caption in a separate text column.
 | Start | Enter | Confirm / pause |
 | Select | Shift | P1 live Training reset / pause page cycle |
 
+On Training's first PAUSED card with **CPU** selected, the **L/R shoulder
+buttons** cycle Easy/Normal/Hard. P1 uses **D/C**; P2 uses numpad **9/3**.
+Holding a shoulder changes the level once. Opposite held shoulders cancel,
+including across the two controllers. Guide pages and scripted dummies keep
+their existing controls. The choice also appears at home and survives quick
+reset. Start/B/A/Select and dummy directions retain their usual priority.
+
 At the title, the P1 shoulder buttons **L/R** are keyboard **D/C**; use them
 to change CPU difficulty. During combat those keys are heavy punch/kick.
 
@@ -127,8 +132,8 @@ match, rather than showing a generic roster description.
 On Training's first **PAUSED** card, press **Up/Down** to choose **Stand**,
 **Guard High**, **Guard Low**, **Jump** or **CPU**. Guard dummies block without
 retreating. Jump repeats after landing. CPU uses the ordinary opponent AI and
-the Easy/Normal/Hard difficulty selected with **L/R** at home.
-The CPU line on the PAUSED card names that level. P2 gameplay
+the Easy/Normal/Hard difficulty shown on its PAUSED card. Set it at home
+or change it with the L/R shoulders while CPU is selected on that card. P2 gameplay
 buttons do not control the Training opponent. Health recovers and the clock
 stays at 99. A live **P1 Select** reset keeps both chosen fighters and the
 chosen behavior; starting a new Training match returns the behavior to Stand.

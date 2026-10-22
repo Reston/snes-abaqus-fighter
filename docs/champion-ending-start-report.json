@@ -1,6 +1,6 @@
 {
   "scope": "focused controller-only champion ending; not a six-suite or release certification",
-  "rom_sha256": "fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb",
+  "rom_sha256": "945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7",
   "status": "passed",
   "core_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
   "controller_only": true,
@@ -1479,7 +1479,7 @@
       ]
     },
     "portrait": {
-      "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait04_tiles.bin",
+      "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait04_tiles.bin",
       "sha256": "24c117db9e57d66ba9eccaecd75bece46c78f0eec848a7eb6a688806227ed2fd",
       "map_entry": 9376,
       "tile": 160,
@@ -2637,7 +2637,7 @@
     ]
   },
   "portrait": {
-    "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v018-training-level\\assets\\generated\\portrait04_tiles.bin",
+    "asset": "C:\\Users\\user\\.t3\\worktrees\\abaqus-snes\\codex-v019-practice-controls\\assets\\generated\\portrait04_tiles.bin",
     "sha256": "24c117db9e57d66ba9eccaecd75bece46c78f0eec848a7eb6a688806227ed2fd",
     "map_entry": 9376,
     "tile": 160,
@@ -2655,5 +2655,5 @@
     "capture": "docs/screenshots/champion/exit-start.png"
   },
   "frames": 20420,
-  "elapsed_seconds": 133.0
+  "elapsed_seconds": 172.953
 }

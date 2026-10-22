@@ -1,9 +1,9 @@
 # Public-release quality target
-<!-- candidate-version: 0.18.0; rom-sha256: fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb -->
+<!-- candidate-version: 0.19.0; rom-sha256: 945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7 -->
 
-The current v0.18.0 review candidate is cartridge SHA256 `fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb`.
-Its [release note](RELEASE-v0.18.0.md) records verification and package status.
-All six native suites pass 35,512 checks; matching smoke, matrix/replays,
+The current v0.19.0 review candidate is cartridge SHA256 `945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7`.
+Its [release note](RELEASE-v0.19.0.md) records verification and package status.
+All six native suites pass 35,715 checks; matching smoke, matrix/replays,
 independent combat, three native live hours and committed-source rebuild pass. Human gameplay/balance, full listening, physical controllers,
 likeness/consent and team/public-use approval remain open.
 `public_release_certified` is false.

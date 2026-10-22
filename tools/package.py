@@ -397,6 +397,7 @@ def offline_markdown_text(source: bytes | str, archive_name: str,
     changes the package copy; source documentation remains byte-identical.
     """
     text = source.decode('utf-8') if isinstance(source, bytes) else source
+    text = text.replace('\r\n', '\n')
 
     def replace(match: re.Match[str]) -> str:
         label, raw_target = match.groups()
@@ -441,6 +442,8 @@ def entry_bytes(name: str, path: Path, package_names: set[str],
         return canonical_manifest_bytes(manifest)
     if name.endswith('.md'):
         return offline_markdown_text(data, name, package_names).encode('utf-8')
+    if name.startswith('licenses/') and name.endswith('.txt'):
+        return data.replace(b'\r\n', b'\n')
     return data
 
 

@@ -1,10 +1,10 @@
 # Cross-up practice companion
 
-The [offline companion](CROSSUP-PRACTICE-v0.18.0.html) shows one native moving
+The [offline companion](CROSSUP-PRACTICE-v0.19.0.html) shows one native moving
 example for every fighter. Choose a fighter to see their setup and the included
-keyboard controls. The clips use the v0.18.0 cartridge, SHA256
-`fbf24853bef53f8d7be59c85363ba7496d8ee35da803f0368fc9cbea5ce3c4bb`.
-The current-ROM companion and twelve native clips are generated for v0.18.0.
+keyboard controls. The clips use the v0.19.0 cartridge, SHA256
+`945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7`.
+The current-ROM companion and twelve native clips are generated for v0.19.0.
 
 Medium kick is **SNES A**, **P1 keyboard X**, or **P2 numpad 2**. Start with
 Damian and a stationary opponent. Jump forward and start the kick as you pass
@@ -26,14 +26,14 @@ readability, timing, fairness and overall fighting feel.
 
 ## Native evidence
 
-[Practice proof](crossup-practice-v0.18.0.json) passes 72 controller cases:
+[Practice proof](crossup-practice-v0.19.0.json) passes 72 controller cases:
 twelve fighters, both attacking ports and all three arenas. Each case checks
 an actual rear airborne medium-kick hit, locked takeoff facing, five frozen
 hitstop ticks, away-directed hurt/body push, native telemetry cadence, landing
 and restored positional facing. This supplements the six native suites; the
-[release note](RELEASE-v0.18.0.md) records their separate verification scope.
+[release note](RELEASE-v0.19.0.md) records their separate verification scope.
 
-[Capture metadata](crossup-practice-captures-v0.18.0.json) identifies the twelve
+[Capture metadata](crossup-practice-captures-v0.19.0.json) identifies the twelve
 native GIFs, source callback-frame hashes, trace landmarks, producer helpers,
 pinned core and silent background host contract. Frames are unedited 256x224
 callback pixels. The GIF encoder verifies exact decoded RGB pixels; playback
@@ -61,7 +61,7 @@ Copy-Item tools/run_background.py build/run_background.py
 Run the current-ROM proof before capturing:
 
 ```text
-.tools\python\python.exe build\run_background.py --log build\crossup-practice.log -- cmd /d /c ".tools\python\python.exe tools\test_crossup_practice.py --report docs\crossup-practice-v0.18.0.json"
+.tools\python\python.exe build\run_background.py --log build\crossup-practice.log -- cmd /d /c ".tools\python\python.exe tools\test_crossup_practice.py --report docs\crossup-practice-v0.19.0.json"
 .tools\python\python.exe build\run_background.py --log build\crossup-captures.log -- cmd /d /c ".tools\python\python.exe tools\make_crossup_practice_review.py"
 ```
 

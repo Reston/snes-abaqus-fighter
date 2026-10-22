@@ -4,12 +4,11 @@ The active public-release target and evidence gates are in
 [PUBLIC-RELEASE.md](PUBLIC-RELEASE.md). Treat this roadmap as the work backlog;
 the release gates decide when the public candidate is actually ready.
 
-The active source candidate is **v0.18.0**, naming the CPU Training level on
-its PAUSED card. All six suites pass 35,512 current-ROM checks, alongside
-matching extended combat, three native live hours and the committed-source
-rebuild. Two final Windows packages are identical and pass 9,103
-technical audit checks.
-See [the current release note](RELEASE-v0.18.0.md). Human approvals remain open.
+The active source candidate is **v0.19.0**, adding paused CPU level controls,
+visible version identity and canonical generated text. All six suites pass 35,715 current-ROM checks, alongside matching extended
+combat, three native live hours and the committed-source rebuild. Two final Windows packages are identical and pass 9,299
+technical audit checks. See [the current release note](RELEASE-v0.19.0.md).
+Human approvals remain open.
 
 Delivered since v0.10 are the corrected Lars portrait/location previews and
 winner cards (v0.10.1/v0.11), arbitrary or mirror Training opponents and original

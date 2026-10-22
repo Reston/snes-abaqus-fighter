@@ -47,6 +47,11 @@ if tuple(map(int, manifest['version'].split('.'))) >= (0, 17, 0):
           for category, title, caption, path in shots),
     ]
 cards = []
+if tuple(map(int, manifest['version'].split('.'))) >= (0, 19, 0):
+    shots = [(category, title,
+              ('Choose CPU with Up/Down, then use either controller\'s L/R shoulders to change its level. P1 Select resets the live round.'
+               if path == 'training/training-cpu-card.png' else caption), path)
+             for category, title, caption, path in shots]
 for category, title, caption, filename in shots:
     data = (root/'docs/screenshots'/filename).read_bytes()
     mime = 'image/gif' if filename.lower().endswith('.gif') else 'image/png'
