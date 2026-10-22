@@ -1,22 +1,24 @@
 # Abaqus: After Hours
-<!-- candidate-version: 0.13.0; rom-sha256: eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4 -->
+<!-- candidate-version: 0.14.0; rom-sha256: 3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa -->
 
 An original six-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II's arcade structure and the people and places of Abaqus in
 Santiago. The game runs as a native SNES cartridge in an emulator.
 
-The current checkout is the **v0.13.0 review candidate**, ROM SHA256
-`eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4`, checksum `B2CC`.
-The Office Champion ending now has an original victory score. Start takes
-priority over a simultaneous Training reset when resuming from pause, and
-ordinary clean-source builds regenerate missing generated headers.
-Training opponent/mirror selection, Lars's revised likeness, clearer location
-previews and winner cards are retained.
-All six native suites pass 34,193 checks on this exact ROM. Matching
-independent, matchup, endurance and fresh-source gates also pass. The
-[v0.13.0 release note](docs/RELEASE-v0.13.0.md) records the evidence.
-The Windows archive passes 8,401 audit checks; two consecutive
-final builds reproduce the same 8,533,050-byte ZIP.
+The current checkout is the **v0.14.0 review candidate**, ROM SHA256
+`3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa`, checksum `D1E2`.
+Fighter and arena menus now show A/Start confirmation. The arena footer uses
+native opaque lettering while preserving every generated art asset and palette.
+The Specials guide clarifies the twelve-tick timeout between motion steps.
+Asset-authoring contracts now remain active under Python optimization.
+Champion music, Training opponent/mirror selection, Lars's revised likeness,
+clearer location previews and winner cards are retained.
+All six native suites pass 34,683 checks on this exact ROM. Matching smoke,
+full matchup/replay, independent combat, endurance and fresh-source gates pass.
+The [v0.14.0 release note](docs/RELEASE-v0.14.0.md) records the evidence.
+The offline package passes 8,698 technical audit checks. Two consecutive final
+ZIPs are identical at 13,479,437 bytes, SHA256
+`dd880e6b5b068e0172b92cdad8a52011938df0d0f6adbc1b528d64ce3f9e6339`.
 Human gameplay, listening, controller, likeness/consent and public-use review
 remain open.
 
@@ -26,7 +28,7 @@ On Windows, run **[Play.cmd](Play.cmd)** from the source checkout. The launcher
 prepares the pinned official Snes9x tools in `.tools/` on first use and opens
 the cartridge. No administrator account or global installation is needed.
 
-For offline play, extract the whole [v0.13.0 Windows ZIP](dist/Abaqus-After-Hours-v0.13.0-Windows.zip) and run its included
+For offline play, extract the whole [v0.14.0 Windows ZIP](dist/Abaqus-After-Hours-v0.14.0-Windows.zip) and run its included
 `Play.cmd`. Its `manifest.json` and `RELEASE.md` identify the actual cartridge
 and verification scope. The release note above identifies the latest candidate
 package when available; older archives contain their own historical versions.

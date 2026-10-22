@@ -48,6 +48,9 @@ keeps only the selected name below the portrait. Family, power, speed and
 special-move labels are omitted. Cursor tiles use one gold accent, and text
 uses transparent glyphs with a one-pixel navy shadow. The title footer reads
 `PRESS START`; the arena heading has no extra right-side hint.
+The v0.14 roster footer reads `D-PAD SELECT A/START OK B BACK`, centered at
+tile `(1,27)` in the existing transparent glyph bank. It leaves a full tile
+margin on each side and advertises both accepted confirmation buttons.
 
 The v0.5.1 live fight clears the intro hint at tile rows 26-27 when combat
 begins, on pause and on Training reset. This restores the bottom sixteen native
@@ -95,8 +98,8 @@ selection code does not need a different input model:
 | Location subtitle | `x=140`, `y=71+56*arena`, one native text row |
 | Header | `x=8`, `y=7`, `SELECT ARENA` at scale 2 |
 | Header subtitle | `x=8`, `y=25`, `CHOOSE A LOCATION` at scale 1 |
-| Footer rule | `y=210` |
-| Footer controls | centered at `y=213` |
+| Native footer panel | full width, `y=208..223` |
+| Native footer controls | tile `(3,27)`, `y=216..223` |
 
 Each preview takes a 256x128 crop from its matching 256x224 stage source and
 uses BOX area filtering to reduce it to 104x52 before native palette
@@ -107,8 +110,28 @@ keeps the native gold cursor border away from scene pixels. The static labels ar
 `LAS CONDES`, `EL CASTILLO`, and `LA OFICINA`, with the quiet descriptors
 `GLASS LOBBY`, `GARDEN PATIO`, and `TRADING DESKS`. The row frame and one-pixel
 divider use low-contrast blues; the live cursor supplies the only warm gold
-selection accent.  The footer reads `UP / DOWN   A OK   B BACK` in the
-project glyphs.
+selection accent. The live footer reads `UP/DOWN A/START OK B BACK` using the
+existing opaque project glyphs. Its two-row BG2 navy panel covers the retained
+source plate's footer. Every location picture, label and cursor above pixel
+208 is preserved, and all 219 generated assets retain their v0.13 bytes
+(text compared after LF normalization).
+
+## Focused evidence
+
+[The menu report](menu-footer-report.json) records 4,650 checks, all fifty
+mode/scene/controller confirmation and Back routes, and 69 baseline/candidate
+native states. Package validation recomputes each generated asset against the
+approved baseline Git blob, hashes the installed core and producer dependencies,
+and compares actual retained PNG pixels and VRAM regions above the footer.
+Fourteen additional screenshots retain the final footer text. Their paths,
+hashes, native dimensions, placement and glyph-pixel error metrics are validated.
+
+The offline archive bundles original captures under
+`screenshots/menu-preservation/`, with paired native states in `parent/` and
+`candidate/`. Remove the source report's leading `docs/` to locate them. These
+are recorded controller-only emulator runs; package validation recomputes the
+retained data and does not replay the original execution. Human presentation,
+gameplay, listening, controller and likeness/consent review remains open.
 
 ## Native conversion notes
 

@@ -1,23 +1,18 @@
 {
-  "version": "0.13.0",
-  "rom_sha256": "eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4",
+  "version": "0.14.0",
+  "rom_sha256": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa",
   "status": "passed",
-  "baseline_commit": "ff62dcd3bb7b34c49fbfbfc402f0d8ce96347cb1",
-  "baseline_version": "0.12.0",
-  "source_freeze": "9e4b4a6e837bd3c91bba81f9781dab1cecbb79c8",
+  "baseline_commit": "54173e352b7195daf634dce63112a280d0fd94cf",
+  "baseline_version": "0.13.0",
+  "source_freeze": "d534af0132440c0de3e1cb5a33a62301026449af",
   "generated_assets_total": 219,
-  "existing_assets_preserved": 216,
-  "generated_assets_modified": 2,
-  "generated_assets_added": 1,
+  "existing_assets_preserved": 219,
+  "generated_assets_modified": 0,
+  "generated_assets_added": 0,
   "native_assembly_preserved": 2,
   "scope": "Generated assets and protected hardware/trace ASM; binary bytes exact, text LF-normalized.",
-  "allowed_changed": [
-    "assets/generated/soundbank.asm",
-    "assets/generated/soundbank.bnk"
-  ],
-  "allowed_added": [
-    "assets/generated/music4.it"
-  ],
+  "allowed_changed": [],
+  "allowed_added": [],
   "files": [
     {
       "path": "assets/generated/arenas.png",
@@ -986,6 +981,13 @@
       "preserved": true
     },
     {
+      "path": "assets/generated/music4.it",
+      "sha256": "42319898be70a7570f3b0a0c628430e8df83f4546ac64d6944fe7fa194d08f0e",
+      "source_blob_sha256": "42319898be70a7570f3b0a0c628430e8df83f4546ac64d6944fe7fa194d08f0e",
+      "comparison": "exact bytes",
+      "preserved": true
+    },
+    {
       "path": "assets/generated/portrait00-large.png",
       "sha256": "a7bd2313500980db759031d66a7984aa6823bd3406581091f215a212d6a701d2",
       "source_blob_sha256": "a7bd2313500980db759031d66a7984aa6823bd3406581091f215a212d6a701d2",
@@ -1380,16 +1382,16 @@
     {
       "path": "assets/generated/soundbank.asm",
       "sha256": "8065100b578c2ba8b0eecb2f3f872af5ffaa4bce1514b0a71dceba159161504a",
-      "source_blob_sha256": "e1ce0a2ff9509a90de0151999d81f4f5bcaa538a1dee3ce402ce070f1221ef14",
+      "source_blob_sha256": "eb450eb9203abc0cfc11e1bf21e8d78f4ef02172d3233acfd87aece9a4e2b268",
       "comparison": "LF-normalized text",
-      "preserved": false
+      "preserved": true
     },
     {
       "path": "assets/generated/soundbank.bnk",
       "sha256": "60e014f6b973075b79c2036eef78297cf70600741be913c490afc0332d2e5822",
-      "source_blob_sha256": "d0b3f4a812eca04a338b05f1027e17d26ac2ffeba246432e46de07c3d92be3c4",
+      "source_blob_sha256": "60e014f6b973075b79c2036eef78297cf70600741be913c490afc0332d2e5822",
       "comparison": "exact bytes",
-      "preserved": false
+      "preserved": true
     },
     {
       "path": "assets/generated/stage-dynamics.json",
@@ -1560,10 +1562,5 @@
       "preserved": true
     }
   ],
-  "added": [
-    {
-      "path": "assets/generated/music4.it",
-      "sha256": "42319898be70a7570f3b0a0c628430e8df83f4546ac64d6944fe7fa194d08f0e"
-    }
-  ]
+  "added": []
 }

@@ -2,7 +2,7 @@
   "emulator": "Official Snes9x 1.63 x64 libretro core",
   "suite": "input-feel",
   "status": "passed",
-  "rom_sha256": "eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4",
+  "rom_sha256": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa",
   "rom_bytes": 4194304,
   "checks": [
     {
@@ -10,11 +10,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.13.0",
+        "version": "0.14.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4",
-        "checksum": "B2CC",
+        "sha256": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa",
+        "checksum": "D1E2",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -9381,7 +9381,7 @@
         "after_down": {
           "magic": 43706,
           "screen": 2,
-          "frame": 159,
+          "frame": 158,
           "mode": 1,
           "hp1": 85,
           "hp2": 85,
@@ -9503,7 +9503,7 @@
         "after_down": {
           "magic": 43706,
           "screen": 2,
-          "frame": 159,
+          "frame": 158,
           "mode": 1,
           "hp1": 85,
           "hp2": 85,
@@ -9619,7 +9619,7 @@
         "after_mixed": {
           "magic": 43706,
           "screen": 2,
-          "frame": 167,
+          "frame": 166,
           "mode": 1,
           "hp1": 85,
           "hp2": 85,
@@ -11767,7 +11767,7 @@
         "after": {
           "magic": 43706,
           "screen": 1,
-          "frame": 3239,
+          "frame": 3238,
           "mode": 1,
           "hp1": 128,
           "hp2": 0,
@@ -249257,6 +249257,522 @@
       "details": null
     },
     {
+      "check": "P1 QCF timeout refreshes on progress, not from the first Down",
+      "passed": true,
+      "details": {
+        "port": 0,
+        "gap_between_steps": 8,
+        "steps": [
+          {
+            "elapsed_frames": 3,
+            "keys": [
+              "down"
+            ],
+            "stage": 1,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 11,
+            "keys": [],
+            "stage": 1,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 12,
+            "keys": [
+              "down",
+              "right"
+            ],
+            "stage": 2,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 20,
+            "keys": [],
+            "stage": 2,
+            "action": 0,
+            "energy": 66
+          },
+          {
+            "elapsed_frames": 21,
+            "keys": [
+              "right"
+            ],
+            "stage": 3,
+            "action": 0,
+            "energy": 66
+          },
+          {
+            "elapsed_frames": 24,
+            "keys": [
+              "right",
+              "x"
+            ],
+            "stage": 0,
+            "action": 7,
+            "energy": 34
+          }
+        ]
+      }
+    },
+    {
+      "check": "P1 spaced QCF creates a real energy-spending special",
+      "passed": true,
+      "details": {
+        "port": 0,
+        "gap_between_steps": 8,
+        "steps": [
+          {
+            "elapsed_frames": 3,
+            "keys": [
+              "down"
+            ],
+            "stage": 1,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 11,
+            "keys": [],
+            "stage": 1,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 12,
+            "keys": [
+              "down",
+              "right"
+            ],
+            "stage": 2,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 20,
+            "keys": [],
+            "stage": 2,
+            "action": 0,
+            "energy": 66
+          },
+          {
+            "elapsed_frames": 21,
+            "keys": [
+              "right"
+            ],
+            "stage": 3,
+            "action": 0,
+            "energy": 66
+          },
+          {
+            "elapsed_frames": 24,
+            "keys": [
+              "right",
+              "x"
+            ],
+            "stage": 0,
+            "action": 7,
+            "energy": 34
+          }
+        ]
+      }
+    },
+    {
+      "check": "input probe reaches live combat",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P1 twelve neutral ticks expire an unfinished motion step",
+      "passed": true,
+      "details": {
+        "port": 0,
+        "gap_between_steps": 12,
+        "steps": [
+          {
+            "elapsed_frames": 3,
+            "keys": [
+              "down"
+            ],
+            "stage": 1,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 15,
+            "keys": [],
+            "stage": 0,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 16,
+            "keys": [
+              "down",
+              "right"
+            ],
+            "stage": 0,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 28,
+            "keys": [],
+            "stage": 0,
+            "action": 0,
+            "energy": 66
+          },
+          {
+            "elapsed_frames": 29,
+            "keys": [
+              "right"
+            ],
+            "stage": 0,
+            "action": 0,
+            "energy": 66
+          },
+          {
+            "elapsed_frames": 32,
+            "keys": [
+              "right",
+              "x"
+            ],
+            "stage": 0,
+            "action": 2,
+            "energy": 66
+          }
+        ]
+      }
+    },
+    {
+      "check": "P1 expired QCF falls back to a normal without a special cost",
+      "passed": true,
+      "details": {
+        "port": 0,
+        "gap_between_steps": 12,
+        "steps": [
+          {
+            "elapsed_frames": 3,
+            "keys": [
+              "down"
+            ],
+            "stage": 1,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 15,
+            "keys": [],
+            "stage": 0,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 16,
+            "keys": [
+              "down",
+              "right"
+            ],
+            "stage": 0,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 28,
+            "keys": [],
+            "stage": 0,
+            "action": 0,
+            "energy": 66
+          },
+          {
+            "elapsed_frames": 29,
+            "keys": [
+              "right"
+            ],
+            "stage": 0,
+            "action": 0,
+            "energy": 66
+          },
+          {
+            "elapsed_frames": 32,
+            "keys": [
+              "right",
+              "x"
+            ],
+            "stage": 0,
+            "action": 2,
+            "energy": 66
+          }
+        ]
+      }
+    },
+    {
+      "check": "input probe reaches live combat",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P2 QCF timeout refreshes on progress, not from the first Down",
+      "passed": true,
+      "details": {
+        "port": 1,
+        "gap_between_steps": 8,
+        "steps": [
+          {
+            "elapsed_frames": 3,
+            "keys": [
+              "down"
+            ],
+            "stage": 1,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 11,
+            "keys": [],
+            "stage": 1,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 12,
+            "keys": [
+              "down",
+              "left"
+            ],
+            "stage": 2,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 20,
+            "keys": [],
+            "stage": 2,
+            "action": 0,
+            "energy": 66
+          },
+          {
+            "elapsed_frames": 21,
+            "keys": [
+              "left"
+            ],
+            "stage": 3,
+            "action": 0,
+            "energy": 66
+          },
+          {
+            "elapsed_frames": 24,
+            "keys": [
+              "left",
+              "x"
+            ],
+            "stage": 0,
+            "action": 7,
+            "energy": 34
+          }
+        ]
+      }
+    },
+    {
+      "check": "P2 spaced QCF creates a real energy-spending special",
+      "passed": true,
+      "details": {
+        "port": 1,
+        "gap_between_steps": 8,
+        "steps": [
+          {
+            "elapsed_frames": 3,
+            "keys": [
+              "down"
+            ],
+            "stage": 1,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 11,
+            "keys": [],
+            "stage": 1,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 12,
+            "keys": [
+              "down",
+              "left"
+            ],
+            "stage": 2,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 20,
+            "keys": [],
+            "stage": 2,
+            "action": 0,
+            "energy": 66
+          },
+          {
+            "elapsed_frames": 21,
+            "keys": [
+              "left"
+            ],
+            "stage": 3,
+            "action": 0,
+            "energy": 66
+          },
+          {
+            "elapsed_frames": 24,
+            "keys": [
+              "left",
+              "x"
+            ],
+            "stage": 0,
+            "action": 7,
+            "energy": 34
+          }
+        ]
+      }
+    },
+    {
+      "check": "input probe reaches live combat",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P2 twelve neutral ticks expire an unfinished motion step",
+      "passed": true,
+      "details": {
+        "port": 1,
+        "gap_between_steps": 12,
+        "steps": [
+          {
+            "elapsed_frames": 3,
+            "keys": [
+              "down"
+            ],
+            "stage": 1,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 15,
+            "keys": [],
+            "stage": 0,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 16,
+            "keys": [
+              "down",
+              "left"
+            ],
+            "stage": 0,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 28,
+            "keys": [],
+            "stage": 0,
+            "action": 0,
+            "energy": 66
+          },
+          {
+            "elapsed_frames": 29,
+            "keys": [
+              "left"
+            ],
+            "stage": 0,
+            "action": 0,
+            "energy": 66
+          },
+          {
+            "elapsed_frames": 32,
+            "keys": [
+              "left",
+              "x"
+            ],
+            "stage": 0,
+            "action": 2,
+            "energy": 66
+          }
+        ]
+      }
+    },
+    {
+      "check": "P2 expired QCF falls back to a normal without a special cost",
+      "passed": true,
+      "details": {
+        "port": 1,
+        "gap_between_steps": 12,
+        "steps": [
+          {
+            "elapsed_frames": 3,
+            "keys": [
+              "down"
+            ],
+            "stage": 1,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 15,
+            "keys": [],
+            "stage": 0,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 16,
+            "keys": [
+              "down",
+              "left"
+            ],
+            "stage": 0,
+            "action": 0,
+            "energy": 65
+          },
+          {
+            "elapsed_frames": 28,
+            "keys": [],
+            "stage": 0,
+            "action": 0,
+            "energy": 66
+          },
+          {
+            "elapsed_frames": 29,
+            "keys": [
+              "left"
+            ],
+            "stage": 0,
+            "action": 0,
+            "energy": 66
+          },
+          {
+            "elapsed_frames": 32,
+            "keys": [
+              "left",
+              "x"
+            ],
+            "stage": 0,
+            "action": 2,
+            "energy": 66
+          }
+        ]
+      }
+    },
+    {
+      "check": "input probe reaches live combat",
+      "passed": true,
+      "details": null
+    },
+    {
       "check": "P1 wake-only QCF directions do not turn fresh X into a special",
       "passed": true,
       "details": {
@@ -263454,6 +263970,240 @@
       }
     ]
   },
-  "passed": 1048,
-  "elapsed_seconds": 361.218
+  "motion_step_timeout": [
+    {
+      "port": 0,
+      "gap_between_steps": 8,
+      "steps": [
+        {
+          "elapsed_frames": 3,
+          "keys": [
+            "down"
+          ],
+          "stage": 1,
+          "action": 0,
+          "energy": 65
+        },
+        {
+          "elapsed_frames": 11,
+          "keys": [],
+          "stage": 1,
+          "action": 0,
+          "energy": 65
+        },
+        {
+          "elapsed_frames": 12,
+          "keys": [
+            "down",
+            "right"
+          ],
+          "stage": 2,
+          "action": 0,
+          "energy": 65
+        },
+        {
+          "elapsed_frames": 20,
+          "keys": [],
+          "stage": 2,
+          "action": 0,
+          "energy": 66
+        },
+        {
+          "elapsed_frames": 21,
+          "keys": [
+            "right"
+          ],
+          "stage": 3,
+          "action": 0,
+          "energy": 66
+        },
+        {
+          "elapsed_frames": 24,
+          "keys": [
+            "right",
+            "x"
+          ],
+          "stage": 0,
+          "action": 7,
+          "energy": 34
+        }
+      ]
+    },
+    {
+      "port": 0,
+      "gap_between_steps": 12,
+      "steps": [
+        {
+          "elapsed_frames": 3,
+          "keys": [
+            "down"
+          ],
+          "stage": 1,
+          "action": 0,
+          "energy": 65
+        },
+        {
+          "elapsed_frames": 15,
+          "keys": [],
+          "stage": 0,
+          "action": 0,
+          "energy": 65
+        },
+        {
+          "elapsed_frames": 16,
+          "keys": [
+            "down",
+            "right"
+          ],
+          "stage": 0,
+          "action": 0,
+          "energy": 65
+        },
+        {
+          "elapsed_frames": 28,
+          "keys": [],
+          "stage": 0,
+          "action": 0,
+          "energy": 66
+        },
+        {
+          "elapsed_frames": 29,
+          "keys": [
+            "right"
+          ],
+          "stage": 0,
+          "action": 0,
+          "energy": 66
+        },
+        {
+          "elapsed_frames": 32,
+          "keys": [
+            "right",
+            "x"
+          ],
+          "stage": 0,
+          "action": 2,
+          "energy": 66
+        }
+      ]
+    },
+    {
+      "port": 1,
+      "gap_between_steps": 8,
+      "steps": [
+        {
+          "elapsed_frames": 3,
+          "keys": [
+            "down"
+          ],
+          "stage": 1,
+          "action": 0,
+          "energy": 65
+        },
+        {
+          "elapsed_frames": 11,
+          "keys": [],
+          "stage": 1,
+          "action": 0,
+          "energy": 65
+        },
+        {
+          "elapsed_frames": 12,
+          "keys": [
+            "down",
+            "left"
+          ],
+          "stage": 2,
+          "action": 0,
+          "energy": 65
+        },
+        {
+          "elapsed_frames": 20,
+          "keys": [],
+          "stage": 2,
+          "action": 0,
+          "energy": 66
+        },
+        {
+          "elapsed_frames": 21,
+          "keys": [
+            "left"
+          ],
+          "stage": 3,
+          "action": 0,
+          "energy": 66
+        },
+        {
+          "elapsed_frames": 24,
+          "keys": [
+            "left",
+            "x"
+          ],
+          "stage": 0,
+          "action": 7,
+          "energy": 34
+        }
+      ]
+    },
+    {
+      "port": 1,
+      "gap_between_steps": 12,
+      "steps": [
+        {
+          "elapsed_frames": 3,
+          "keys": [
+            "down"
+          ],
+          "stage": 1,
+          "action": 0,
+          "energy": 65
+        },
+        {
+          "elapsed_frames": 15,
+          "keys": [],
+          "stage": 0,
+          "action": 0,
+          "energy": 65
+        },
+        {
+          "elapsed_frames": 16,
+          "keys": [
+            "down",
+            "left"
+          ],
+          "stage": 0,
+          "action": 0,
+          "energy": 65
+        },
+        {
+          "elapsed_frames": 28,
+          "keys": [],
+          "stage": 0,
+          "action": 0,
+          "energy": 66
+        },
+        {
+          "elapsed_frames": 29,
+          "keys": [
+            "left"
+          ],
+          "stage": 0,
+          "action": 0,
+          "energy": 66
+        },
+        {
+          "elapsed_frames": 32,
+          "keys": [
+            "left",
+            "x"
+          ],
+          "stage": 0,
+          "action": 2,
+          "energy": 66
+        }
+      ]
+    }
+  ],
+  "passed": 1060,
+  "elapsed_seconds": 341.438
 }

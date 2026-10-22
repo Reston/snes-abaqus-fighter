@@ -1,15 +1,15 @@
 # Original Office Champion ending
-<!-- candidate-version: 0.13.0; rom-sha256: eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4 -->
+<!-- candidate-version: 0.14.0; rom-sha256: 3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa -->
 
-The combined v0.13.0 cartridge has SHA256
-`eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4`,
-checksum `B2CC`, source freeze `9e4b4a6e837bd3c91bba81f9781dab1cecbb79c8`.
+The combined v0.14.0 cartridge has SHA256
+`3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa`,
+checksum `D1E2`, source freeze `d534af0132440c0de3e1cb5a33a62301026449af`.
 The eleventh Arcade victory earns an original trophy and Santiago night-office
 scene with the winner's portrait, name, actual round score and quote.
-A/Start returns to the title; B returns to fighter select. The new original
+A/Start returns to the title; B returns to fighter select. The retained original
 [victory score](CHAMPION-AUDIO.md) begins only on the earned champion scene.
 
-The [release note](RELEASE-v0.13.0.md) records the full candidate's verification
+The [release note](RELEASE-v0.14.0.md) records the full candidate's verification
 and package status. Human approval remains open. The earlier isolated feature
 cartridge is historical; its reports here are replaced by combined-ROM evidence.
 
@@ -64,11 +64,11 @@ TRACE[0..122] change. The separate victory score loads during screen-off.
 Source-only generated inputs are [tiles](../assets/generated/champion_tiles.bin),
 [map](../assets/generated/champion_map.bin), [palette](../assets/generated/champion_pal.bin),
 [native preview](../assets/generated/champion.png), [header](../assets/generated/assets.h)
-and [assembly](../assets/generated/data.asm). The [current preservation report](preservation-v0.13.0.json)
-compares the 219-file generated set with verified v0.12.0 commit
-`ff62dcd3bb7b34c49fbfbfc402f0d8ce96347cb1`: 216 prior generated files are
-preserved, two soundbank outputs change and one victory IT is added.
-Champion art, hardware/trace assembly and other existing binary assets remain unchanged.
+and [assembly](../assets/generated/data.asm). The [current preservation report](preservation-v0.14.0.json)
+compares the complete 219-file generated set with verified v0.13.0 commit
+`54173e352b7195daf634dce63112a280d0fd94cf`: all 219 generated files are
+preserved, with no additions or modifications. The two protected hardware/trace
+assembly files are also unchanged. All three current-ROM controller-only route proofs pass.
 [Champion preservation](champion-preservation-report.json) carries the same
 current-ROM comparison for the focused package gate.
 

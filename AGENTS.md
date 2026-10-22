@@ -6,7 +6,28 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
-- The active checkout is the **v0.13.0 champion music/pause/build candidate**.
+- The active checkout is the **v0.14.0 menu/motion-help/authoring candidate**.
+  ROM SHA256 `3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa`, header `D1E2`,
+  source freeze `d534af0132440c0de3e1cb5a33a62301026449af`, tree `2dd5e2c1b6b4a64f7aa5fbb61bc69e8f522cd3cd`.
+  Roster/arena hints show A/Start. The arena uses an existing opaque native
+  footer at rows 26..27; all scene/cursor pixels above 208 are preserved.
+  Specials adds the per-step twelve-tick motion hint inside the existing
+  three-tick, 1,472-byte guide panel. Existing controls and timing are retained.
+  Authoring guards are explicit raises under normal/optimized Python. All 219
+  generated assets match verified v0.13.0, including fighters, stages and audio.
+  All six native suites pass 34,683 checks on this exact ROM. Matching pinned
+  smoke, full matchup/replays, independent combat and three native live-hour
+  sessions pass. Fresh committed source reproduces 219 assets, ROM and symbols
+  in 419.844 seconds. Focused menu proof covers 69 paired native
+  states, fifty controller routes and fourteen final footer images, with
+  4,650 checks. Authoring mutation checks pass 19/19 under normal/-O Python.
+  The Windows package passes 8,698 technical audit checks. Two consecutive
+  final ZIPs are identical at 13,479,437 bytes, SHA256
+  `dd880e6b5b068e0172b92cdad8a52011938df0d0f6adbc1b528d64ce3f9e6339`.
+  Human gates remain open; public_release_certified remains false.
+  See docs/RELEASE-v0.14.0.md; older evidence below is historical.
+
+- The preserved offline checkpoint is the **v0.13.0 champion music/pause/build candidate**.
   ROM SHA256 `eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4`, header `B2CC`,
   source freeze `9e4b4a6e837bd3c91bba81f9781dab1cecbb79c8`, tree `c7f5aeda2c1873ef6450138bbdea1389d58a71e9`.
   Start owns a paused Training sample even with simultaneous Select from either

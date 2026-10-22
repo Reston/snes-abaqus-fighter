@@ -1,17 +1,16 @@
-# v0.13.0 human playtest guide
-<!-- candidate-version: 0.13.0; rom-sha256: eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4 -->
+# v0.14.0 human playtest guide
+<!-- candidate-version: 0.14.0; rom-sha256: 3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa -->
 
-Review cartridge SHA256 `eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4`.
-In Training, move and take damage, pause, then press Start+Select: the round
-should resume at the current positions and health. A fresh live Select still
-resets it. Try the chord across the two controller ports as well.
-Earn Office Champion and listen to the full new victory score, its repeat,
-the final arena transition and A/Start return to the title. Record what was
-actually heard; technical PCM capture does not establish listening approval.
-Compare Lars's face/hair and the wider location previews. Check arbitrary and
-mirror Training opponents, both Local Versus winner cards and Arcade prompts.
+Review cartridge SHA256 `3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa`.
+Check A and Start from both roster steps and each arena row. The footer should
+remain readable, with the location pictures and gold cursor above it intact.
+Try the quarter-circle motion using the Specials guide: the timeout applies
+between steps, and a long delay should fall back to a normal attack. Try both
+facing directions. Existing quick Down+punch remains available.
+Then review the v0.13 pause chord, full champion score and title transitions,
+Lars's face/hair, arbitrary/mirror Training opponents and both winner cards.
 Actual earlier responses remain in [review-feedback.json](review-feedback.json);
-this guide records no new human approval. See [RELEASE-v0.13.0.md](RELEASE-v0.13.0.md)
+this guide records no new human approval. See [RELEASE-v0.14.0.md](RELEASE-v0.14.0.md)
 for candidate verification and package status.
 
 This route also covers the earlier v0.10.0 cartoon-stage and menu candidate.

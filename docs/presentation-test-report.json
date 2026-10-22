@@ -1,6 +1,6 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4",
+  "rom_sha256": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa",
   "rom_bytes": 4194304,
   "status": "passed",
   "checks": [
@@ -9,11 +9,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.13.0",
+        "version": "0.14.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4",
-        "checksum": "B2CC",
+        "sha256": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa",
+        "checksum": "D1E2",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -2835,7 +2835,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 3,
+        "x": 1,
         "character": "D",
         "tile": 68
       }
@@ -2846,7 +2846,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 4,
+        "x": 2,
         "character": "-",
         "tile": 45
       }
@@ -2857,7 +2857,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 5,
+        "x": 3,
         "character": "P",
         "tile": 80
       }
@@ -2868,7 +2868,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 6,
+        "x": 4,
         "character": "A",
         "tile": 65
       }
@@ -2879,7 +2879,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 7,
+        "x": 5,
         "character": "D",
         "tile": 68
       }
@@ -2890,7 +2890,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 8,
+        "x": 6,
         "character": " ",
         "tile": 32
       }
@@ -2901,9 +2901,31 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 9,
+        "x": 7,
         "character": "S",
         "tile": 83
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 8,
+        "character": "E",
+        "tile": 69
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 9,
+        "character": "L",
+        "tile": 76
       }
     },
     {
@@ -2924,28 +2946,6 @@
         "label": "fighter select",
         "row": 27,
         "x": 11,
-        "character": "L",
-        "tile": 76
-      }
-    },
-    {
-      "check": "menu text stays in the original ASCII glyph bank",
-      "passed": true,
-      "details": {
-        "label": "fighter select",
-        "row": 27,
-        "x": 12,
-        "character": "E",
-        "tile": 69
-      }
-    },
-    {
-      "check": "menu text stays in the original ASCII glyph bank",
-      "passed": true,
-      "details": {
-        "label": "fighter select",
-        "row": 27,
-        "x": 13,
         "character": "C",
         "tile": 67
       }
@@ -2956,7 +2956,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 14,
+        "x": 12,
         "character": "T",
         "tile": 84
       }
@@ -2967,7 +2967,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 15,
+        "x": 13,
         "character": " ",
         "tile": 32
       }
@@ -2978,18 +2978,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 16,
-        "character": " ",
-        "tile": 32
-      }
-    },
-    {
-      "check": "menu text stays in the original ASCII glyph bank",
-      "passed": true,
-      "details": {
-        "label": "fighter select",
-        "row": 27,
-        "x": 17,
+        "x": 14,
         "character": "A",
         "tile": 65
       }
@@ -3000,9 +2989,42 @@
       "details": {
         "label": "fighter select",
         "row": 27,
+        "x": 15,
+        "character": "/",
+        "tile": 47
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 16,
+        "character": "S",
+        "tile": 83
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 17,
+        "character": "T",
+        "tile": 84
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
         "x": 18,
-        "character": " ",
-        "tile": 32
+        "character": "A",
+        "tile": 65
       }
     },
     {
@@ -3012,8 +3034,8 @@
         "label": "fighter select",
         "row": 27,
         "x": 19,
-        "character": "O",
-        "tile": 79
+        "character": "R",
+        "tile": 82
       }
     },
     {
@@ -3023,8 +3045,8 @@
         "label": "fighter select",
         "row": 27,
         "x": 20,
-        "character": "K",
-        "tile": 75
+        "character": "T",
+        "tile": 84
       }
     },
     {
@@ -3045,8 +3067,8 @@
         "label": "fighter select",
         "row": 27,
         "x": 22,
-        "character": " ",
-        "tile": 32
+        "character": "O",
+        "tile": 79
       }
     },
     {
@@ -3056,8 +3078,8 @@
         "label": "fighter select",
         "row": 27,
         "x": 23,
-        "character": "B",
-        "tile": 66
+        "character": "K",
+        "tile": 75
       }
     },
     {
@@ -3089,6 +3111,28 @@
         "label": "fighter select",
         "row": 27,
         "x": 26,
+        "character": " ",
+        "tile": 32
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 27,
+        "character": "B",
+        "tile": 66
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 28,
         "character": "A",
         "tile": 65
       }
@@ -3099,7 +3143,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 27,
+        "x": 29,
         "character": "C",
         "tile": 67
       }
@@ -3110,7 +3154,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 28,
+        "x": 30,
         "character": "K",
         "tile": 75
       }
@@ -6029,6 +6073,1496 @@
       }
     },
     {
+      "check": "opaque UI text comparison has a native frame",
+      "passed": true,
+      "details": "arena footer"
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 3,
+        "character": "U",
+        "tile": 341,
+        "expected": 341
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 341,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 3,
+        "character": "U",
+        "tile": 341,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 4,
+        "character": "P",
+        "tile": 336,
+        "expected": 336
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 336,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 4,
+        "character": "P",
+        "tile": 336,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 5,
+        "character": "/",
+        "tile": 303,
+        "expected": 303
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 303,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 5,
+        "character": "/",
+        "tile": 303,
+        "mean_channel_delta": 0.3697916666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 6,
+        "character": "D",
+        "tile": 324,
+        "expected": 324
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 324,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 6,
+        "character": "D",
+        "tile": 324,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 7,
+        "character": "O",
+        "tile": 335,
+        "expected": 335
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 335,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 7,
+        "character": "O",
+        "tile": 335,
+        "mean_channel_delta": 0.4166666666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 8,
+        "character": "W",
+        "tile": 343,
+        "expected": 343
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 343,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 8,
+        "character": "W",
+        "tile": 343,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 9,
+        "character": "N",
+        "tile": 334,
+        "expected": 334
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 334,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 9,
+        "character": "N",
+        "tile": 334,
+        "mean_channel_delta": 0.421875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 10,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 288,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 10,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.3333333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 11,
+        "character": "A",
+        "tile": 321,
+        "expected": 321
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 321,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 11,
+        "character": "A",
+        "tile": 321,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 12,
+        "character": "/",
+        "tile": 303,
+        "expected": 303
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 12,
+        "character": "/",
+        "tile": 303,
+        "mean_channel_delta": 0.3697916666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 13,
+        "character": "S",
+        "tile": 339,
+        "expected": 339
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 339,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 13,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 14,
+        "character": "T",
+        "tile": 340,
+        "expected": 340
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 340,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 14,
+        "character": "T",
+        "tile": 340,
+        "mean_channel_delta": 0.390625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 15,
+        "character": "A",
+        "tile": 321,
+        "expected": 321
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 15,
+        "character": "A",
+        "tile": 321,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 16,
+        "character": "R",
+        "tile": 338,
+        "expected": 338
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 338,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 16,
+        "character": "R",
+        "tile": 338,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 17,
+        "character": "T",
+        "tile": 340,
+        "expected": 340
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 17,
+        "character": "T",
+        "tile": 340,
+        "mean_channel_delta": 0.390625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 18,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 18,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.3333333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 19,
+        "character": "O",
+        "tile": 335,
+        "expected": 335
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 19,
+        "character": "O",
+        "tile": 335,
+        "mean_channel_delta": 0.4166666666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 20,
+        "character": "K",
+        "tile": 331,
+        "expected": 331
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 331,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 20,
+        "character": "K",
+        "tile": 331,
+        "mean_channel_delta": 0.40625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 21,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 21,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.3333333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 22,
+        "character": "B",
+        "tile": 322,
+        "expected": 322
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 322,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 22,
+        "character": "B",
+        "tile": 322,
+        "mean_channel_delta": 0.4375,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 23,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 23,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.3333333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 24,
+        "character": "B",
+        "tile": 322,
+        "expected": 322
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 24,
+        "character": "B",
+        "tile": 322,
+        "mean_channel_delta": 0.4375,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 25,
+        "character": "A",
+        "tile": 321,
+        "expected": 321
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 25,
+        "character": "A",
+        "tile": 321,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 26,
+        "character": "C",
+        "tile": 323,
+        "expected": 323
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 323,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 26,
+        "character": "C",
+        "tile": 323,
+        "mean_channel_delta": 0.4010416666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 27,
+        "character": "K",
+        "tile": 331,
+        "expected": 331
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 27,
+        "character": "K",
+        "tile": 331,
+        "mean_channel_delta": 0.40625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
       "check": "capture has a native video frame",
       "passed": true,
       "details": "arena-0.png"
@@ -7009,6 +8543,1496 @@
       }
     },
     {
+      "check": "opaque UI text comparison has a native frame",
+      "passed": true,
+      "details": "arena footer"
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 3,
+        "character": "U",
+        "tile": 341,
+        "expected": 341
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 341,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 3,
+        "character": "U",
+        "tile": 341,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 4,
+        "character": "P",
+        "tile": 336,
+        "expected": 336
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 336,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 4,
+        "character": "P",
+        "tile": 336,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 5,
+        "character": "/",
+        "tile": 303,
+        "expected": 303
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 303,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 5,
+        "character": "/",
+        "tile": 303,
+        "mean_channel_delta": 0.3697916666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 6,
+        "character": "D",
+        "tile": 324,
+        "expected": 324
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 324,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 6,
+        "character": "D",
+        "tile": 324,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 7,
+        "character": "O",
+        "tile": 335,
+        "expected": 335
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 335,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 7,
+        "character": "O",
+        "tile": 335,
+        "mean_channel_delta": 0.4166666666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 8,
+        "character": "W",
+        "tile": 343,
+        "expected": 343
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 343,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 8,
+        "character": "W",
+        "tile": 343,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 9,
+        "character": "N",
+        "tile": 334,
+        "expected": 334
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 334,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 9,
+        "character": "N",
+        "tile": 334,
+        "mean_channel_delta": 0.421875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 10,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 288,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 10,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.3333333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 11,
+        "character": "A",
+        "tile": 321,
+        "expected": 321
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 321,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 11,
+        "character": "A",
+        "tile": 321,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 12,
+        "character": "/",
+        "tile": 303,
+        "expected": 303
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 12,
+        "character": "/",
+        "tile": 303,
+        "mean_channel_delta": 0.3697916666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 13,
+        "character": "S",
+        "tile": 339,
+        "expected": 339
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 339,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 13,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 14,
+        "character": "T",
+        "tile": 340,
+        "expected": 340
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 340,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 14,
+        "character": "T",
+        "tile": 340,
+        "mean_channel_delta": 0.390625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 15,
+        "character": "A",
+        "tile": 321,
+        "expected": 321
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 15,
+        "character": "A",
+        "tile": 321,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 16,
+        "character": "R",
+        "tile": 338,
+        "expected": 338
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 338,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 16,
+        "character": "R",
+        "tile": 338,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 17,
+        "character": "T",
+        "tile": 340,
+        "expected": 340
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 17,
+        "character": "T",
+        "tile": 340,
+        "mean_channel_delta": 0.390625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 18,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 18,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.3333333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 19,
+        "character": "O",
+        "tile": 335,
+        "expected": 335
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 19,
+        "character": "O",
+        "tile": 335,
+        "mean_channel_delta": 0.4166666666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 20,
+        "character": "K",
+        "tile": 331,
+        "expected": 331
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 331,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 20,
+        "character": "K",
+        "tile": 331,
+        "mean_channel_delta": 0.40625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 21,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 21,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.3333333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 22,
+        "character": "B",
+        "tile": 322,
+        "expected": 322
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 322,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 22,
+        "character": "B",
+        "tile": 322,
+        "mean_channel_delta": 0.4375,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 23,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 23,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.3333333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 24,
+        "character": "B",
+        "tile": 322,
+        "expected": 322
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 24,
+        "character": "B",
+        "tile": 322,
+        "mean_channel_delta": 0.4375,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 25,
+        "character": "A",
+        "tile": 321,
+        "expected": 321
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 25,
+        "character": "A",
+        "tile": 321,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 26,
+        "character": "C",
+        "tile": 323,
+        "expected": 323
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 323,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 26,
+        "character": "C",
+        "tile": 323,
+        "mean_channel_delta": 0.4010416666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 27,
+        "character": "K",
+        "tile": 331,
+        "expected": 331
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 27,
+        "character": "K",
+        "tile": 331,
+        "mean_channel_delta": 0.40625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
       "check": "capture has a native video frame",
       "passed": true,
       "details": "arena-1.png"
@@ -7986,6 +11010,1496 @@
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 12096
+      }
+    },
+    {
+      "check": "opaque UI text comparison has a native frame",
+      "passed": true,
+      "details": "arena footer"
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 3,
+        "character": "U",
+        "tile": 341,
+        "expected": 341
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 341,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 3,
+        "character": "U",
+        "tile": 341,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 4,
+        "character": "P",
+        "tile": 336,
+        "expected": 336
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 336,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 4,
+        "character": "P",
+        "tile": 336,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 5,
+        "character": "/",
+        "tile": 303,
+        "expected": 303
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 303,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 5,
+        "character": "/",
+        "tile": 303,
+        "mean_channel_delta": 0.3697916666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 6,
+        "character": "D",
+        "tile": 324,
+        "expected": 324
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 324,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 6,
+        "character": "D",
+        "tile": 324,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 7,
+        "character": "O",
+        "tile": 335,
+        "expected": 335
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 335,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 7,
+        "character": "O",
+        "tile": 335,
+        "mean_channel_delta": 0.4166666666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 8,
+        "character": "W",
+        "tile": 343,
+        "expected": 343
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 343,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 8,
+        "character": "W",
+        "tile": 343,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 9,
+        "character": "N",
+        "tile": 334,
+        "expected": 334
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 334,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 9,
+        "character": "N",
+        "tile": 334,
+        "mean_channel_delta": 0.421875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 10,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 288,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 10,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.3333333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 11,
+        "character": "A",
+        "tile": 321,
+        "expected": 321
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 321,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 11,
+        "character": "A",
+        "tile": 321,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 12,
+        "character": "/",
+        "tile": 303,
+        "expected": 303
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 12,
+        "character": "/",
+        "tile": 303,
+        "mean_channel_delta": 0.3697916666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 13,
+        "character": "S",
+        "tile": 339,
+        "expected": 339
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 339,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 13,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 14,
+        "character": "T",
+        "tile": 340,
+        "expected": 340
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 340,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 14,
+        "character": "T",
+        "tile": 340,
+        "mean_channel_delta": 0.390625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 15,
+        "character": "A",
+        "tile": 321,
+        "expected": 321
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 15,
+        "character": "A",
+        "tile": 321,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 16,
+        "character": "R",
+        "tile": 338,
+        "expected": 338
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 338,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 16,
+        "character": "R",
+        "tile": 338,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 17,
+        "character": "T",
+        "tile": 340,
+        "expected": 340
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 17,
+        "character": "T",
+        "tile": 340,
+        "mean_channel_delta": 0.390625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 18,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 18,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.3333333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 19,
+        "character": "O",
+        "tile": 335,
+        "expected": 335
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 19,
+        "character": "O",
+        "tile": 335,
+        "mean_channel_delta": 0.4166666666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 20,
+        "character": "K",
+        "tile": 331,
+        "expected": 331
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 331,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 20,
+        "character": "K",
+        "tile": 331,
+        "mean_channel_delta": 0.40625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 21,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 21,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.3333333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 22,
+        "character": "B",
+        "tile": 322,
+        "expected": 322
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 322,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 22,
+        "character": "B",
+        "tile": 322,
+        "mean_channel_delta": 0.4375,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 23,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 23,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.3333333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 24,
+        "character": "B",
+        "tile": 322,
+        "expected": 322
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 24,
+        "character": "B",
+        "tile": 322,
+        "mean_channel_delta": 0.4375,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 25,
+        "character": "A",
+        "tile": 321,
+        "expected": 321
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 25,
+        "character": "A",
+        "tile": 321,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 26,
+        "character": "C",
+        "tile": 323,
+        "expected": 323
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 323,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 26,
+        "character": "C",
+        "tile": 323,
+        "mean_channel_delta": 0.4010416666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 27,
+        "character": "K",
+        "tile": 331,
+        "expected": 331
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 64
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 27,
+        "x": 27,
+        "character": "K",
+        "tile": 331,
+        "mean_channel_delta": 0.40625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
       }
     },
     {
@@ -31033,9 +35547,9 @@
         "la-oficina": "C:\\Users\\user\\.t3\\projects\\abaqus-snes\\docs\\screenshots\\presentation\\arena-2.png"
       },
       "arena_digests": [
-        "283b18cbbcad46b646e35a192e524923c97aced0bece44c41532359392969f47",
-        "33d9cf262c6a36b9f10fc407c22e18f6dc3e7df78b696c533b95d68dcd5baba5",
-        "7641adc702801f609cccb9a7e816c13cb72c3e5b1c2fa280c8d440d0533f8ac3"
+        "7f807842d29b810c21394813782c0c14753d3f0cbfd8f4c223147b7c2d9e37b6",
+        "93355736eb4c52e0f1d0a05ebe416b93737ed33e2ce07bc7bd9ecb53494c419d",
+        "9b4fb8bef514a3b183e46ca1498f640b9c6841c67881e1e098565d82e2f8d78d"
       ],
       "arena_renders": {
         "las-condes": {
@@ -35330,6 +39844,6 @@
     ],
     "frame_count": 64
   },
-  "passed": 2865,
-  "elapsed_seconds": 80.45
+  "passed": 3337,
+  "elapsed_seconds": 77.95
 }

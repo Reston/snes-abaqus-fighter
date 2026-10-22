@@ -1,20 +1,20 @@
 # Native SNES implementation
-<!-- candidate-version: 0.13.0; rom-sha256: eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4 -->
+<!-- candidate-version: 0.14.0; rom-sha256: 3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa -->
 
-The current checkout builds the v0.13.0 candidate, ROM SHA256
-`eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4`, checksum `B2CC`.
-Paused Training gives Start priority over simultaneous Select, including split
-controller samples. The champion-only screen-off branch loads a fifth original
-score; its soundbank remains one 32 KiB LoROM bank. The original four scores,
-resident effects and their native module/sample payloads are preserved.
-The generated set contains 219 files: two soundbank outputs change and one
-victory IT is added relative to v0.12.0. Fighter/stage/UI art is preserved.
-Training still reuses the second roster step for arbitrary or mirror opponents.
-The static champion background uses 330 BG1 tiles, palette banks 2..7 and the
-existing BG2 portrait at VRAM word `$4A00`, palette 1.
-Fighter64/Wave16, TRACE[0..122], one-actor-per-vblank and ambient budgets remain.
-See [RELEASE-v0.13.0.md](RELEASE-v0.13.0.md) for candidate evidence status.
-All older version sections below are historical snapshots.
+The current checkout builds the v0.14.0 candidate, ROM SHA256
+`3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa`, checksum `D1E2`.
+Roster hints use the existing menu glyphs. The arena footer covers only rows
+26..27 (pixels 208..223) and uses the existing opaque guide glyph bank; its
+three scene/cursor rows end at pixel 207. No generated arena art or palette changes.
+The Specials guide adds a timing hint within the existing rows 5..27,
+1,472-byte, three-tick paused panel. The twelve-tick motion timer refreshes
+on progress; neither the control rules nor timing changes in this candidate.
+Production authoring guards now use explicit conditional raises, preserving
+the previous conditions, messages and lazy evaluation under Python optimization.
+All 219 generated assets match v0.13.0. Fighter64/Wave16, TRACE[0..122],
+actor/OBJ/live DMA, ambient and soundbank budgets remain unchanged.
+See [RELEASE-v0.14.0.md](RELEASE-v0.14.0.md) for current evidence status.
+Older version sections below are historical snapshots.
 
 ## Build
 

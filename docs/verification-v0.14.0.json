@@ -1,0 +1,323 @@
+{
+  "version": "0.14.0",
+  "rom_sha256": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa",
+  "rom_bytes": 4194304,
+  "checksum": "D1E2",
+  "status": "passed",
+  "scope": "Current native emulator candidate verification; human review gates remain open.",
+  "cartridge": {
+    "file": "dist/abaqus-after-hours.sfc",
+    "bytes": 4194304,
+    "sha256": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa"
+  },
+  "source_commit": "d534af0132440c0de3e1cb5a33a62301026449af",
+  "source_tree": "2dd5e2c1b6b4a64f7aa5fbb61bc69e8f522cd3cd",
+  "source_rebuild": {
+    "report": "docs/fresh-build-test-report.json",
+    "generated_assets": 219,
+    "generated_assets_verified": 219,
+    "symbols_equal_after_source_path_normalization": true,
+    "elapsed_seconds": 419.844
+  },
+  "native_suites": {
+    "gameplay": {
+      "report": "docs/test-report.json",
+      "status": "passed",
+      "passed": 2596,
+      "checks": 2596,
+      "elapsed_seconds": 46.0
+    },
+    "characters": {
+      "report": "docs/character-test-report.json",
+      "status": "passed",
+      "passed": 18084,
+      "checks": 18084,
+      "elapsed_seconds": 420.21
+    },
+    "presentation": {
+      "report": "docs/presentation-test-report.json",
+      "status": "passed",
+      "passed": 3337,
+      "checks": 3337,
+      "elapsed_seconds": 77.95
+    },
+    "inputs": {
+      "report": "docs/input-test-report.json",
+      "status": "passed",
+      "passed": 1060,
+      "checks": 1060,
+      "elapsed_seconds": 341.438
+    },
+    "stages": {
+      "report": "docs/stage-test-report.json",
+      "status": "passed",
+      "passed": 8163,
+      "checks": 8163,
+      "elapsed_seconds": 28.172
+    },
+    "training": {
+      "report": "docs/training-test-report.json",
+      "status": "passed",
+      "passed": 1443,
+      "checks": 1443,
+      "elapsed_seconds": 62.922
+    }
+  },
+  "native_checks_total": 34683,
+  "independent_smoke": {
+    "status": "passed",
+    "report": "docs/compatibility-test-report.json",
+    "rom_sha256": "3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa",
+    "bytes": 4194304,
+    "scope": "independent-engine smoke, stage ambient/effects freeze, synchronized low-wave, neutral600frame cadence",
+    "check_sections": [
+      "arena",
+      "audio",
+      "cadence",
+      "controller",
+      "fight",
+      "pinned_inputs",
+      "ppu_distinct",
+      "select",
+      "stage_ambient_and_freeze",
+      "synchronized_low_wave",
+      "title"
+    ],
+    "core": {
+      "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
+      "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4",
+      "library_name": "bsnes2014",
+      "library_version": "v094 (Accuracy) 3c1394e",
+      "system_ram_bytes": 131072,
+      "trace_offset": "0x1FF00",
+      "trace_words": 119,
+      "video": {
+        "pixel_format_enum": 0,
+        "width": 512,
+        "height": 224,
+        "pitch": 2048,
+        "bytes_per_pixel": 4.0,
+        "callbacks": 120,
+        "decoded_packing": "BGRX-8888 (stride-authoritative)",
+        "raw_prefix_hex": "42180800421808004218080042180800421808004218080042180800421808004218080042180800421808004218080042180800421808004218080042180800"
+      }
+    },
+    "host_contract": {
+      "emulated_memory_writes": 0,
+      "savestate_calls": 0,
+      "audio_device_opened": false,
+      "frontend_window_created": false,
+      "pcm_callback_capture_only": true
+    }
+  },
+  "release_evidence": {
+    "matchups": {
+      "cases": 288,
+      "replays": 4,
+      "stages": [
+        0,
+        1,
+        2
+      ],
+      "report": "docs/matchup-test-report.json"
+    },
+    "independent_combat": {
+      "cases": 48,
+      "frames": 28800,
+      "report": "docs/compatibility-combat-test-report.json"
+    },
+    "endurance": {
+      "native_fps": 60.098811862348406,
+      "target_live_frames_per_mode": 216356,
+      "modes": 3,
+      "report": "docs/endurance-test-report.json"
+    },
+    "fresh_build": {
+      "generated_assets": 219,
+      "source_commit": "d534af0132440c0de3e1cb5a33a62301026449af",
+      "source_tree": "2dd5e2c1b6b4a64f7aa5fbb61bc69e8f522cd3cd",
+      "report": "docs/fresh-build-test-report.json"
+    },
+    "training": {
+      "checks": 1443,
+      "report": "docs/training-test-report.json",
+      "modes": 3,
+      "captures": 8
+    }
+  },
+  "supplemental_evidence": {
+    "menu": {
+      "report": "docs/menu-footer-report.json",
+      "status": "passed",
+      "checks": 4650,
+      "controller_actions": 50,
+      "native_states": 69
+    },
+    "authoring": {
+      "report": "docs/authoring-guards-report.json",
+      "status": "passed",
+      "runs": 2,
+      "source_commit": "d534af0132440c0de3e1cb5a33a62301026449af",
+      "tests_per_run": [
+        19,
+        19
+      ]
+    }
+  },
+  "champion_evidence": {
+    "routes": {
+      "a": {
+        "report": "docs/champion-ending-report.json",
+        "status": "passed",
+        "exit": {
+          "key": "a",
+          "screen": 0,
+          "capture": "docs/screenshots/champion/exit-a.png"
+        },
+        "ladder_opponents": 11,
+        "capture": "docs/screenshots/champion/ending.png"
+      },
+      "start": {
+        "report": "docs/champion-ending-start-report.json",
+        "status": "passed",
+        "exit": {
+          "key": "start",
+          "screen": 0,
+          "capture": "docs/screenshots/champion/exit-start.png"
+        },
+        "ladder_opponents": 11,
+        "capture": "docs/screenshots/champion/ending.png"
+      },
+      "b": {
+        "report": "docs/champion-ending-back-report.json",
+        "status": "passed",
+        "exit": {
+          "key": "b",
+          "screen": 1,
+          "capture": "docs/screenshots/champion/exit-b.png"
+        },
+        "ladder_opponents": 11,
+        "capture": "docs/screenshots/champion/ending.png"
+      }
+    },
+    "audio": {
+      "report": "docs/champion-audio-report.json",
+      "status": "passed",
+      "checks": 1792,
+      "human_listening_approved": false
+    },
+    "listening": {
+      "record": "docs/audio-listening-v0.14.0.json",
+      "status": "passed",
+      "archive": {
+        "file": "dist/Abaqus-After-Hours-v0.14.0-Audio-Review.zip",
+        "bytes": 19661537,
+        "sha256": "f6de29e0e93acfa45b97b7a1a2703c5592882a6e15f66597efba4132f8808fc5"
+      },
+      "source_report": "docs/champion-audio-report.json",
+      "source_report_sha256": "57246717dd077689504e80ba9fa1fbdd28659ab9867c681a71efb4d7c0d3576a",
+      "human_listening_approved": false
+    }
+  },
+  "champion_routes": {
+    "a": {
+      "report": "docs/champion-ending-report.json",
+      "status": "passed",
+      "exit": {
+        "key": "a",
+        "screen": 0,
+        "capture": "docs/screenshots/champion/exit-a.png"
+      },
+      "ladder_opponents": 11,
+      "capture": "docs/screenshots/champion/ending.png"
+    },
+    "start": {
+      "report": "docs/champion-ending-start-report.json",
+      "status": "passed",
+      "exit": {
+        "key": "start",
+        "screen": 0,
+        "capture": "docs/screenshots/champion/exit-start.png"
+      },
+      "ladder_opponents": 11,
+      "capture": "docs/screenshots/champion/ending.png"
+    },
+    "b": {
+      "report": "docs/champion-ending-back-report.json",
+      "status": "passed",
+      "exit": {
+        "key": "b",
+        "screen": 1,
+        "capture": "docs/screenshots/champion/exit-b.png"
+      },
+      "ladder_opponents": 11,
+      "capture": "docs/screenshots/champion/ending.png"
+    }
+  },
+  "champion_audio": {
+    "report": "docs/champion-audio-report.json",
+    "status": "passed",
+    "checks": 1792,
+    "human_listening_approved": false
+  },
+  "listening_record": {
+    "record": "docs/audio-listening-v0.14.0.json",
+    "status": "passed",
+    "archive": {
+      "file": "dist/Abaqus-After-Hours-v0.14.0-Audio-Review.zip",
+      "bytes": 19661537,
+      "sha256": "f6de29e0e93acfa45b97b7a1a2703c5592882a6e15f66597efba4132f8808fc5"
+    },
+    "source_report": "docs/champion-audio-report.json",
+    "source_report_sha256": "57246717dd077689504e80ba9fa1fbdd28659ab9867c681a71efb4d7c0d3576a",
+    "human_listening_approved": false
+  },
+  "menu_evidence": {
+    "report": "docs/menu-footer-report.json",
+    "status": "passed",
+    "checks": 4650,
+    "controller_actions": 50,
+    "native_states": 69
+  },
+  "authoring_evidence": {
+    "report": "docs/authoring-guards-report.json",
+    "status": "passed",
+    "runs": 2,
+    "source_commit": "d534af0132440c0de3e1cb5a33a62301026449af",
+    "tests_per_run": [
+      19,
+      19
+    ]
+  },
+  "preservation": {
+    "report": "docs/preservation-v0.14.0.json",
+    "status": "passed",
+    "baseline_commit": "54173e352b7195daf634dce63112a280d0fd94cf",
+    "baseline_version": "0.13.0",
+    "baseline_rom_sha256": "eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4",
+    "allowed_changed": [],
+    "allowed_added": [],
+    "generated_assets_total": 219,
+    "existing_assets_preserved": 219,
+    "generated_assets_modified": 0,
+    "generated_assets_added": 0,
+    "native_assembly_preserved": 2,
+    "source_freeze": "d534af0132440c0de3e1cb5a33a62301026449af"
+  },
+  "public_release_certified": false,
+  "human_gates": [
+    "gameplay and balance",
+    "full listening",
+    "physical controllers",
+    "likeness and consent",
+    "team and public use"
+  ],
+  "human_gates_open": [
+    "gameplay and balance",
+    "full listening",
+    "physical controllers",
+    "likeness and consent",
+    "team and public use"
+  ],
+  "original_hardware": "unverified; outside the first emulator-release support scope"
+}

@@ -1,16 +1,17 @@
 # Office Champion victory score
-<!-- candidate-version: 0.13.0; rom-sha256: eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4 -->
+<!-- candidate-version: 0.14.0; rom-sha256: 3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa -->
 
-The combined v0.13.0 cartridge is SHA256
-`eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4`, checksum `B2CC`,
-source freeze `9e4b4a6e837bd3c91bba81f9781dab1cecbb79c8`. It adds an original score
-for the earned Office Champion scene. The [release note](RELEASE-v0.13.0.md)
-records full candidate status. The focused capture proof passes 1,792 checks on this ROM.
-The victory capture spans 72.580462 seconds with peak 2366/32,768,
-RMS 387.7836, no clipped samples and a longest near-zero interval of
-0.114388 seconds. Its native repeat is
-34.900375 seconds, with amplitude/zero-crossing
-correlations 0.999470/0.979294.
+The combined v0.14.0 cartridge is SHA256
+`3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa`, checksum `D1E2`,
+source freeze `d534af0132440c0de3e1cb5a33a62301026449af`. It retains the original
+v0.13 champion score without changing any generated audio bytes.
+The [release note](RELEASE-v0.14.0.md) records full candidate status.
+Current-ROM focused evidence passes 1,792 capture-only checks.
+The victory capture spans 72.580462 seconds, with peak 2366/32,768,
+RMS 388.0420, no clipped samples and longest near-zero interval
+0.114451 seconds. Its native repeat spans
+34.900375 seconds; amplitude/zero-crossing
+correlations are 0.999333/0.979768.
 
 ## Composition and source
 
@@ -46,11 +47,11 @@ free. All fifteen BRR source records and existing effects/music payloads
 computes these values from actual binary tables, including word rounding,
 and rejects invalid pointers, lengths, counts or overflow with explicit errors.
 
-[Preservation](preservation-v0.13.0.json) records 219 generated files: the
-soundbank assembly/binary change, music4.it is added, and 216 old files remain
-identical (text compared after LF normalization). Art masters, fighter/stage/UI
-assets, original four tracker scores, effects IT, four SFX and native BRR/module
-payloads are preserved. Source-input provenance includes the new authoring helper.
+[Preservation](preservation-v0.14.0.json) records all 219 generated files
+unchanged from verified v0.13.0. That earlier feature added the victory IT and
+extended the soundbank; this candidate retains their exact bytes, the original
+four scores, effects, native BRR/module payloads and every art asset. Source-input
+provenance includes the original victory authoring helper and strengthened guards.
 
 ## Focused technical evidence
 
@@ -74,7 +75,7 @@ All runs are headless at BELOW_NORMAL priority on the last two logical CPUs,
 with no GUI or audio device. Report capture paths under build/champion-audio
 refer to ignored source-checkout WAVs and fixture outputs; the offline archive
 bundles exact JSON evidence and this guide, not those source captures.
-The separate [listening archive record](audio-listening-v0.13.0.json) identifies
+The separate [listening archive record](audio-listening-v0.14.0.json) identifies
 an optional WAV review ZIP created from these verified captures. It contains
 all five scores and matched control/active cue pairs; it is separate from the
 Windows game package and has not been played or approved by a human.

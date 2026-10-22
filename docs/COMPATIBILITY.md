@@ -1,14 +1,14 @@
 # Independent-engine compatibility
-<!-- candidate-version: 0.13.0; rom-sha256: eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4 -->
+<!-- candidate-version: 0.14.0; rom-sha256: 3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa -->
 
-The current candidate is v0.13.0, cartridge SHA256
+The current candidate is v0.14.0, cartridge SHA256
+`3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa`.
+The pinned smoke and 48-by-600-frame independent combat run both pass on this ROM.
+The [release note](RELEASE-v0.14.0.md) records status. The verified v0.13.0
+smoke and 48-by-600-frame combat run remain historical, on ROM
 `eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4`.
-The pinned independent smoke and 48-by-600-frame bounded combat run both pass
-on this ROM. The [release note](RELEASE-v0.13.0.md) records status.
-The verified v0.12.0 smoke and 48-by-600-frame combat run are historical,
-on ROM `33502fba12bf2cf02e6244174449c678ad1dd704afc754e7819f815489c6fa83`.
-The new candidate adds champion music, pause input priority and a build fix;
-independent-engine coverage retains the scope below.
+The new candidate clarifies native menu and move-guide text and strengthens
+authoring guards; independent-engine coverage retains the scope below.
 
 The pinned smoke check has the bounded scope `independent-engine smoke, stage
 ambient/effects freeze, synchronized low-wave, neutral600frame cadence`. It is

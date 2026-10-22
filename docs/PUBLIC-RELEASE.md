@@ -1,11 +1,11 @@
 # Public-release quality target
-<!-- candidate-version: 0.13.0; rom-sha256: eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4 -->
+<!-- candidate-version: 0.14.0; rom-sha256: 3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa -->
 
-The current v0.13.0 review candidate is cartridge SHA256
-`eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4`. Its [release note](RELEASE-v0.13.0.md)
-records verification and package status. All six native suites pass 34,193 checks on this ROM; matching smoke,
-matrix, independent combat, endurance and isolated-rebuild gates also pass.
-The verified v0.12.0 package and older results below remain historical.
+The current v0.14.0 review candidate is cartridge SHA256
+`3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa`. Its [release note](RELEASE-v0.14.0.md)
+records verification and package status. All six native suites pass 34,683 checks on this ROM; matching smoke,
+matrix/replays, independent combat, endurance and isolated-rebuild gates pass.
+The verified v0.13.0 package and older results below remain historical.
 Human gameplay, full listening, physical-controller sessions, likeness/consent
 and team/public-use approval remain open. `public_release_certified` is false.
 

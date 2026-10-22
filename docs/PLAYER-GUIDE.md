@@ -1,12 +1,12 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.13.0; rom-sha256: eefa712718d52aa536258773596e78cee3f4cfc83b1cd4144e3de1110d2273b4 -->
+<!-- candidate-version: 0.14.0; rom-sha256: 3de317b43f72bea76cfc2f1a1ebd5c67dd57913b8d9fddfb50a7a846a02ddeaa -->
 
 ## Current version
 
-The current candidate is **v0.13.0**. The earned Office Champion scene now
-plays an original victory score. Start resumes paused Training even when
-Select is pressed in the same sample. Training offers any opponent or a mirror
-match; revised Lars art, clearer location previews and winner cards are retained.
+The current candidate is **v0.14.0**. Fighter and arena menus show **A/Start**
+confirmation. The pause Specials guide explains the timing limit between
+motion steps. Champion victory music, arbitrary/mirror Training opponents,
+revised Lars art, clearer location previews and winner cards are retained.
 In Local Versus, A or Start begins a rematch. Arcade victory advances to the
 next challenger; a loss offers a continue. After Office Champion, A or Start
 returns to the title. B returns to fighter select.
@@ -129,8 +129,9 @@ returns the dummy behavior to Stand.
 - Press **Down + L** for a rising uppercut.
 - Press **toward + L** at close range to throw through a guard. A throw applies
   damage when the defender reaches the floor. Simultaneous throws tech.
-- Perform a special with **Down -> Down + toward -> toward + Y/X** within the
-  twelve-tick motion window. **Down + Y/X** is the quick shortcut. **Down +
+- Perform a special with **Down -> Down + toward -> toward + Y/X**. The
++  motion timeout is twelve live ticks **between steps**, refreshing as the
++  motion progresses; it is not a twelve-tick limit for the entire sequence. **Down + Y/X** is the quick shortcut. **Down +
   away + Y/X** is not a special. A special costs 32 energy; energy regenerates
   slowly and successful hits add more.
 - A confirmed light or medium normal can cancel into a heavier normal. A
