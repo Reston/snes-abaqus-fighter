@@ -162,7 +162,8 @@ void traceProfiles(void);
 const char arenaNames[3][12] = {"LAS CONDES","EL CASTILLO","LA OFICINA"};
 const u8 power[12] = {3,4,2,3,5,4,4,4,2,3,3,4};
 const u8 startup[10] = {0,4,6,9,5,7,10,10,6,4};
-const u8 active[10] = {0,3,4,5,4,5,6,1,8,1};
+/* Four-button roles: strong punch 4 active ticks; spacing light kick 3. */
+const u8 active[10] = {0,3,4,4,3,5,6,1,8,1};
 const u8 recovery[10] = {0,9,12,18,10,15,21,23,24,20};
 const u8 damage[10] = {0,7,10,15,8,12,16,15,18,18};
 const u8 reach[10] = {0,28,33,38,35,41,46,0,31,22};
