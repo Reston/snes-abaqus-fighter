@@ -45,6 +45,7 @@ void drawPauseCard(void) {
 void closePauseGuide(void) {
     if(pausePage || guideBuild)clearGuidePanel();
     pausePage=0;guideBuild=0;
+    if(mode==2)trainingRestore=1;
 }
 
 void openPauseGuide(u8 page) {
@@ -57,9 +58,13 @@ void openPauseGuide(u8 page) {
 void buildPauseGuide(void) {
     if(guideBuild==1) {
         fillGuidePanel();
-        guideCenter(6,pausePage==1?"HOW TO PLAY 1/2":"MOVE LIST 2/2");
+        if(mode==2) {
+            if(pausePage==1)guideCenter(6,"HOW TO PLAY 1/3");
+            else if(pausePage==2)guideCenter(6,"MOVE LIST 2/3");
+            else guideCenter(6,"TRAINING TOOLS 3/3");
+        } else guideCenter(6,pausePage==1?"HOW TO PLAY 1/2":"MOVE LIST 2/2");
         guideCenter(24,"A / START RESUME");
-        guideCenter(26,pausePage==1?"B ROSTER   SELECT NEXT":"B ROSTER   SELECT BACK");
+        guideCenter(26,pausePage==(mode==2?3:2)?"B ROSTER   SELECT BACK":"B ROSTER   SELECT NEXT");
         guideBuild=2;
     } else if(guideBuild==2) {
         if(pausePage==1) {
@@ -67,13 +72,30 @@ void buildPauseGuide(void) {
             guideWord(3,10,"JUMP          UP");
             guideWord(3,11,"STAND GUARD   AWAY");
             guideWord(3,12,"LOW GUARD     DOWN + AWAY");
-        } else {
+        } else if(pausePage==2) {
             guideWord(3,9,"P1");guideWord(7,9,characterNames[fighters[0].id]);
             guideWord(7,10,characterSpecialNames[fighters[0].id]);
             guideWord(7,11,specialGuideTypes[combatProfiles[0]->specialFamily]);
             guideWord(3,12,"P2");guideWord(7,12,characterNames[fighters[1].id]);
             guideWord(7,13,characterSpecialNames[fighters[1].id]);
             guideWord(7,14,specialGuideTypes[combatProfiles[1]->specialFamily]);
+        } else {
+            guideCenter(9,trainingVisible?"UP: LIVE DISPLAY ON":"UP: LIVE DISPLAY OFF");
+            guideCenter(10,"DOWN: NEXT CHALLENGE");
+            guideCenter(12,trainingChallengeNames[trainingChallenge]);
+            if(trainingChallenge==0) {
+                guideCenter(14,"STAND DUMMY: GET CLOSE");
+                guideCenter(15,"HIT Y THEN DOWN+Y IN STUN");
+                guideCenter(16,"SPECIAL MUST LINK AND HIT");
+            } else if(trainingChallenge==1) {
+                guideCenter(14,"CPU DUMMY: WAIT FOR A LOW");
+                guideCenter(15,"HOLD DOWN + AWAY TO BLOCK");
+                guideCenter(16,"HIGH BLOCK DOES NOT COUNT");
+            } else {
+                guideCenter(14,"STAND DUMMY: JUMP PAST");
+                guideCenter(15,"PRESS A JUST AFTER CROSSING");
+                guideCenter(16,"REAR AIR KICK MUST HIT");
+            }
         }
         guideBuild=3;
     } else if(guideBuild==3) {
@@ -85,13 +107,19 @@ void buildPauseGuide(void) {
             guideWord(3,19,"UPPERCUT      DOWN + X");
             guideCenter(21,"AFTER A HIT: PRESS HEAVIER");
             guideCenter(22,"CROSS-UP: JUMP PAST + A");
-        } else {
+        } else if(pausePage==2) {
             guideWord(3,15,"QUICK: DOWN + Y");
             guideWord(3,17,"MOTION: D, D+F, F + Y/X");
             guideWord(3,18,"D=DOWN  F=TOWARD OPPONENT");
             guideWord(3,19,"12-TICK WINDOW PER STEP");
             guideWord(3,20,"COST: 32 ENERGY");
             guideWord(3,22,"PRESS PUNCH WITH FINAL TOWARD");
+        } else {
+            trainingMakeStatus();guideWord(0,18,trainingStatusText);
+            guideCenter(20,"H HITS D DAMAGE SP! EXECUTED");
+            guideCenter(21,"INPUT: DIRECTION THEN YXBA");
+            guideCenter(22,"123 DOWN 456 LEVEL 789 UP");
+            guideCenter(23,"LIVE SELECT RESETS PROGRESS");
         }
         guideBuild=0;guideDirty=1;
     }
