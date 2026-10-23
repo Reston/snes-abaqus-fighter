@@ -1,0 +1,2050 @@
+{
+  "feature": 10,
+  "status": "passed",
+  "rom_sha256": "1910bff59f1248e36d728b30f41dfa9a9990f6161238e6ca328d3b6c56f9e1d5",
+  "checks": [
+    {
+      "check": "all visual assets, music sources and original four BRR files byte-preserved",
+      "passed": true,
+      "details": [
+        "assets/generated/effects.it",
+        "assets/generated/soundbank.asm",
+        "assets/generated/soundbank.bnk"
+      ]
+    },
+    {
+      "check": "all established WRAM/direct-page symbols retain addresses",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "legacy resident BRR slot 0 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "legacy resident BRR slot 1 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "legacy resident BRR slot 2 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "legacy resident BRR slot 3 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original score BRR payload 4 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original score BRR payload 5 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original score BRR payload 6 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original score BRR payload 7 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original score BRR payload 8 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original score BRR payload 9 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original score BRR payload 10 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original score BRR payload 11 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original score BRR payload 12 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original score BRR payload 13 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original score BRR payload 14 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original native score module 1 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original native score module 2 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original native score module 3 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original native score module 4 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original native score module 5 byte-preserved",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "native audio section stays inside one LoROM bank: .audioCuetext_0x1a",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "native audio section stays inside one LoROM bank: .soundImpacttext_0x1b",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "native audio section stays inside one LoROM bank: .soundContacttext_0x1c",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "native audio section stays inside one LoROM bank: .soundtext_0x1d",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "native audio section stays inside one LoROM bank: .audioSceneLoadedtext_0x1e",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "native audio section stays inside one LoROM bank: .audioAnnouncetext_0x1f",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "native audio section stays inside one LoROM bank: .audioPresentationTicktext_0x20",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "native audio section stays inside one LoROM bank: .soundmod",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "control ROM differs only in eleven effect-volume bytes",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "control cartridge differs in eleven volumes plus four checksum bytes only",
+      "passed": true,
+      "details": [
+        32732,
+        32733,
+        32734,
+        32735,
+        359010,
+        359011,
+        359012,
+        359013,
+        359014,
+        359015,
+        359016,
+        359017,
+        359018,
+        359019,
+        359020
+      ]
+    },
+    {
+      "check": "menu: PCM every callback",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "menu: bounded resident SPC FIFO",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "menu: native fight/announcement/contact cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "menu: no mixed PCM clipping",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "menu: PCM every callback",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "menu: bounded resident SPC FIFO",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "menu: native fight/announcement/contact cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "menu: no mixed PCM clipping",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "menu: identical native gameplay and audio command timeline in A/B",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "matched controller PCM timelines have equal sample count",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "menu: cues audible above matched music bed",
+      "passed": true,
+      "details": {
+        "sha256_pcm": "c28d2dde898a6152ead20a9019dce2c7ba9cf3ea109d915e02adf046bb7f0380",
+        "sample_frames": 51180,
+        "seconds": 1.597378277153558,
+        "peak": 1379,
+        "rms": 151.3478,
+        "rms_dbfs": -46.7095,
+        "clipped_samples": 0,
+        "dc_left": -0.1275,
+        "dc_right": -0.1364,
+        "longest_near_silence_sample_frames": 41764,
+        "longest_near_silence_seconds": 1.3034956304619225
+      }
+    },
+    {
+      "check": "menu: controller event selects correct resident identities",
+      "passed": true,
+      "details": [
+        9,
+        255
+      ]
+    },
+    {
+      "check": "menu: no long transition dropout",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "intro: PCM every callback",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "intro: bounded resident SPC FIFO",
+      "passed": true,
+      "details": 6
+    },
+    {
+      "check": "intro: native fight/announcement/contact cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "intro: no mixed PCM clipping",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "intro: PCM every callback",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "intro: bounded resident SPC FIFO",
+      "passed": true,
+      "details": 6
+    },
+    {
+      "check": "intro: native fight/announcement/contact cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "intro: no mixed PCM clipping",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "intro: identical native gameplay and audio command timeline in A/B",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "matched controller PCM timelines have equal sample count",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "intro: cues audible above matched music bed",
+      "passed": true,
+      "details": {
+        "sha256_pcm": "2b6d0f61c7cf90d1fe6441192de4ec0435d134736e05cb36d2ff6cf28475f62c",
+        "sample_frames": 69305,
+        "seconds": 2.1630774032459428,
+        "peak": 5403,
+        "rms": 400.4148,
+        "rms_dbfs": -38.2588,
+        "clipped_samples": 0,
+        "dc_left": 43.7931,
+        "dc_right": 50.4939,
+        "longest_near_silence_sample_frames": 26680,
+        "longest_near_silence_seconds": 0.83270911360799
+      }
+    },
+    {
+      "check": "intro: controller event selects correct resident identities",
+      "passed": true,
+      "details": [
+        6,
+        7,
+        9
+      ]
+    },
+    {
+      "check": "speech ducks score and restores normal music volume",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "round: native spoken waveform matches exported word, not a beep",
+      "passed": true,
+      "details": 0.91373
+    },
+    {
+      "check": "fight: native spoken waveform matches exported word, not a beep",
+      "passed": true,
+      "details": 0.92485
+    },
+    {
+      "check": "intro: no long transition dropout",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "light: PCM every callback",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "light: bounded resident SPC FIFO",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "light: native fight/announcement/contact cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "light: no mixed PCM clipping",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "light: PCM every callback",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "light: bounded resident SPC FIFO",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "light: native fight/announcement/contact cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "light: no mixed PCM clipping",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "light: identical native gameplay and audio command timeline in A/B",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "matched controller PCM timelines have equal sample count",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "light: cues audible above matched music bed",
+      "passed": true,
+      "details": {
+        "sha256_pcm": "b3b7df3afdb34c2265c27d6927cf0aca431a10c569ddc1b2264bace67fae23d0",
+        "sample_frames": 29322,
+        "seconds": 0.9151685393258427,
+        "peak": 2427,
+        "rms": 212.6624,
+        "rms_dbfs": -43.7552,
+        "clipped_samples": 0,
+        "dc_left": 0.7253,
+        "dc_right": 0.8439,
+        "longest_near_silence_sample_frames": 24756,
+        "longest_near_silence_seconds": 0.7726591760299626
+      }
+    },
+    {
+      "check": "light: controller event selects correct resident identities",
+      "passed": true,
+      "details": [
+        0,
+        1
+      ]
+    },
+    {
+      "check": "light: actual contact damages opponent",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "strong: PCM every callback",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "strong: bounded resident SPC FIFO",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "strong: native fight/announcement/contact cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "strong: no mixed PCM clipping",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "strong: PCM every callback",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "strong: bounded resident SPC FIFO",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "strong: native fight/announcement/contact cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "strong: no mixed PCM clipping",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "strong: identical native gameplay and audio command timeline in A/B",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "matched controller PCM timelines have equal sample count",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "strong: cues audible above matched music bed",
+      "passed": true,
+      "details": {
+        "sha256_pcm": "e4dbe3dc2d9ad5fbc92e91b931f6359e704fd8cbaec51a55a54eb2fcfb1259e7",
+        "sample_frames": 29322,
+        "seconds": 0.9151685393258427,
+        "peak": 3012,
+        "rms": 267.0484,
+        "rms_dbfs": -41.7772,
+        "clipped_samples": 0,
+        "dc_left": 3.8143,
+        "dc_right": 4.4009,
+        "longest_near_silence_sample_frames": 20215,
+        "longest_near_silence_seconds": 0.6309300873907615
+      }
+    },
+    {
+      "check": "strong: controller event selects correct resident identities",
+      "passed": true,
+      "details": [
+        0,
+        4
+      ]
+    },
+    {
+      "check": "strong: actual contact damages opponent",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "guard: PCM every callback",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "guard: bounded resident SPC FIFO",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "guard: native fight/announcement/contact cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "guard: no mixed PCM clipping",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "guard: PCM every callback",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "guard: bounded resident SPC FIFO",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "guard: native fight/announcement/contact cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "guard: no mixed PCM clipping",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "guard: identical native gameplay and audio command timeline in A/B",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "matched controller PCM timelines have equal sample count",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "guard: cues audible above matched music bed",
+      "passed": true,
+      "details": {
+        "sha256_pcm": "6208dc1b7af6de77dcce57dde3bac1e79070964f29fe457f774a9d8592974711",
+        "sample_frames": 29322,
+        "seconds": 0.9151685393258427,
+        "peak": 2036,
+        "rms": 162.5655,
+        "rms_dbfs": -46.0884,
+        "clipped_samples": 0,
+        "dc_left": 0.3639,
+        "dc_right": 0.4277,
+        "longest_near_silence_sample_frames": 24316,
+        "longest_near_silence_seconds": 0.7589263420724095
+      }
+    },
+    {
+      "check": "guard: controller event selects correct resident identities",
+      "passed": true,
+      "details": [
+        0,
+        5
+      ]
+    },
+    {
+      "check": "guard: native blocked contact, not a relabeled damage cue",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "controller-only KO route earns Versus result",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "ko-victory: PCM every callback",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "ko-victory: bounded resident SPC FIFO",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "ko-victory: native fight/announcement/contact cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "ko-victory: no mixed PCM clipping",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "controller-only KO route earns Versus result",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "ko-victory: PCM every callback",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "ko-victory: bounded resident SPC FIFO",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "ko-victory: native fight/announcement/contact cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "ko-victory: no mixed PCM clipping",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "ko-victory: identical native gameplay and audio command timeline in A/B",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "matched controller PCM timelines have equal sample count",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "ko-victory: cues audible above matched music bed",
+      "passed": true,
+      "details": {
+        "sha256_pcm": "04b2e9de4c3aca53533447cec95148b73ee894cd803ee466f54b11306dc46d14",
+        "sample_frames": 975080,
+        "seconds": 30.433208489388264,
+        "peak": 5024,
+        "rms": 293.2398,
+        "rms_dbfs": -40.9645,
+        "clipped_samples": 0,
+        "dc_left": 8.2146,
+        "dc_right": 9.4835,
+        "longest_near_silence_sample_frames": 59568,
+        "longest_near_silence_seconds": 1.8591760299625468
+      }
+    },
+    {
+      "check": "ko-victory: controller event selects correct resident identities",
+      "passed": true,
+      "details": [
+        0,
+        1,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "check": "ko: native spoken waveform matches exported word, not a beep",
+      "passed": true,
+      "details": 0.96466
+    },
+    {
+      "check": "ko: native spoken waveform matches exported word, not a beep",
+      "passed": true,
+      "details": 0.97118
+    },
+    {
+      "check": "intro: PCM every callback",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "intro: bounded resident SPC FIFO",
+      "passed": true,
+      "details": 6
+    },
+    {
+      "check": "intro: native fight/announcement/contact cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "intro: no mixed PCM clipping",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Round/Fight native mixed capture deterministic across cold boots",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "strong contact has measurably more native PCM body than light",
+      "passed": true,
+      "details": {
+        "light": {
+          "energy": 1139083532,
+          "normalized_first_difference": 0.17672083627087803
+        },
+        "strong": {
+          "energy": 1796244052,
+          "normalized_first_difference": 0.09643672789271865
+        },
+        "guard": {
+          "energy": 665637408,
+          "normalized_first_difference": 0.18479947261804816
+        }
+      }
+    },
+    {
+      "check": "guard has measurably brighter native PCM than strong",
+      "passed": true,
+      "details": {
+        "light": {
+          "energy": 1139083532,
+          "normalized_first_difference": 0.17672083627087803
+        },
+        "strong": {
+          "energy": 1796244052,
+          "normalized_first_difference": 0.09643672789271865
+        },
+        "guard": {
+          "energy": 665637408,
+          "normalized_first_difference": 0.18479947261804816
+        }
+      }
+    },
+    {
+      "check": "intro: PCM every callback",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "intro: bounded resident SPC FIFO",
+      "passed": true,
+      "details": 3
+    },
+    {
+      "check": "intro: native fight/announcement/contact cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "intro: no mixed PCM clipping",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "intro: PCM every callback",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "intro: bounded resident SPC FIFO",
+      "passed": true,
+      "details": 3
+    },
+    {
+      "check": "intro: native fight/announcement/contact cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "intro: no mixed PCM clipping",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage 1: matched speech/music A/B timeline",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "matched controller PCM timelines have equal sample count",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "round: native spoken waveform matches exported word, not a beep",
+      "passed": true,
+      "details": 0.90596
+    },
+    {
+      "check": "fight: native spoken waveform matches exported word, not a beep",
+      "passed": true,
+      "details": 0.93091
+    },
+    {
+      "check": "intro: PCM every callback",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "intro: bounded resident SPC FIFO",
+      "passed": true,
+      "details": 3
+    },
+    {
+      "check": "intro: native fight/announcement/contact cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "intro: no mixed PCM clipping",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "intro: PCM every callback",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "intro: bounded resident SPC FIFO",
+      "passed": true,
+      "details": 3
+    },
+    {
+      "check": "intro: native fight/announcement/contact cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "intro: no mixed PCM clipping",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage 2: matched speech/music A/B timeline",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "matched controller PCM timelines have equal sample count",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "round: native spoken waveform matches exported word, not a beep",
+      "passed": true,
+      "details": 0.89423
+    },
+    {
+      "check": "fight: native spoken waveform matches exported word, not a beep",
+      "passed": true,
+      "details": 0.98431
+    },
+    {
+      "check": "stage 0: simultaneous combat preserves native cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "stage 0: stress FIFO bounded",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage 0: no native OBJ overflow",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage 0: continuous unclipped combat/score PCM",
+      "passed": true,
+      "details": {
+        "sha256_pcm": "a6115e171ad6f17cb9bc8eb4eedbcae9954498eddc831d909983d34e5a9f43fc",
+        "sample_frames": 479810,
+        "seconds": 14.975343320848939,
+        "peak": 3821,
+        "rms": 498.993,
+        "rms_dbfs": -36.3471,
+        "clipped_samples": 0,
+        "dc_left": -5.1295,
+        "dc_right": -4.4216,
+        "longest_near_silence_sample_frames": 2483,
+        "longest_near_silence_seconds": 0.07749687890137329
+      }
+    },
+    {
+      "check": "stage 1: simultaneous combat preserves native cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "stage 1: stress FIFO bounded",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage 1: no native OBJ overflow",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage 1: continuous unclipped combat/score PCM",
+      "passed": true,
+      "details": {
+        "sha256_pcm": "1b1c602c0430423865b85e016eba73c6b25b2a6bdec4926305c08b427658036d",
+        "sample_frames": 479809,
+        "seconds": 14.975312109862672,
+        "peak": 3736,
+        "rms": 497.1045,
+        "rms_dbfs": -36.38,
+        "clipped_samples": 0,
+        "dc_left": -5.7792,
+        "dc_right": -5.0806,
+        "longest_near_silence_sample_frames": 2417,
+        "longest_near_silence_seconds": 0.07543695380774032
+      }
+    },
+    {
+      "check": "stage 2: simultaneous combat preserves native cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "stage 2: stress FIFO bounded",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage 2: no native OBJ overflow",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage 2: continuous unclipped combat/score PCM",
+      "passed": true,
+      "details": {
+        "sha256_pcm": "36002f1f1649dea8b648d8565fb8aed2804fbdaf02c2b2b3463b42079c7fa0a8",
+        "sample_frames": 479810,
+        "seconds": 14.975343320848939,
+        "peak": 3995,
+        "rms": 497.7939,
+        "rms_dbfs": -36.368,
+        "clipped_samples": 0,
+        "dc_left": -6.9911,
+        "dc_right": -6.3132,
+        "longest_near_silence_sample_frames": 2515,
+        "longest_near_silence_seconds": 0.0784956304619226
+      }
+    }
+  ],
+  "host_contract": {
+    "python": "3.12.10",
+    "pillow": "13.0.0",
+    "gui_opened": false,
+    "audio_device_opened": false,
+    "priority_class": 16384,
+    "logical_processors": [
+      14,
+      15
+    ],
+    "controller_only": true,
+    "savestates": 0,
+    "emulated_memory_writes": 0,
+    "audio_capture_only": true
+  },
+  "human_listening_approved": false,
+  "source_sha256": {
+    "src/game.c": "63a1c271f07d4d6526f78497927a8a050e2a31a129c633f4f4360244290cc297",
+    "src/audio_presentation.h": "8b094475ec41af89befdf4875ef1f9a3bf303be8615f0508afccdbf24d3b35af",
+    "src/audio_presentation_state.h": "4129b01189826de5cc9266f529eb57f1dcb57bb93febcade1f1dc3bf6e6c730e",
+    "src/hardware.asm": "d4b895425f597992270bd558d92e8257e4e7a569f4d249cbe16a3df2b2288a9a",
+    "tools/audio_assets.py": "1a55aa69ae2df232f61c9af9bc032d433461776da31ad91ea0e5108e8592a6cb",
+    "tools/make_assets.py": "914bd180f6615a2bba94ddb7ade5597d16ba4602670ef25d27f06c1387e24928",
+    "tools/victory_music.py": "6da647ea3b1d58129d3f91a95d7a516433b8e609b4a847a180ff0bb96ac28528",
+    "tools/test_expansion_10_audio.py": "95033c7dba92267698921a15035aa579587e0087c5d095ab061ba6f0267a2bd5",
+    "tools/emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8"
+  },
+  "core_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
+  "preservation": {
+    "base": "610537d",
+    "unchanged_generated_files": 216,
+    "changed": [
+      "assets/generated/effects.it",
+      "assets/generated/soundbank.asm",
+      "assets/generated/soundbank.bnk"
+    ],
+    "preserved_ram_symbols": 1274,
+    "new_audio_state_bytes": 8,
+    "changed_extent_labels": {
+      "RAM_USAGE_SLOT_3_BANK_127_END": {
+        "before": "0x447",
+        "after": "0x44f"
+      },
+      "SECTIONEND_globram.data": {
+        "before": "0x7f0448",
+        "after": "0x7f0450"
+      }
+    },
+    "new_state_range": [
+      "7F:0448",
+      "7F:044F"
+    ]
+  },
+  "budget": {
+    "soundbank_bytes": 28822,
+    "lorom_bank": 24,
+    "lorom_free_bytes": 3946,
+    "module_base": 6656,
+    "source_count": 22,
+    "module_count": 6,
+    "resident_count": 11,
+    "streaming_bytes": 0,
+    "echo_bytes": 0,
+    "modules": [
+      {
+        "module_id": 0,
+        "module_bytes": 866,
+        "music_brr_bytes": 11296,
+        "source_indices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "resident_cue_bytes": 11296,
+        "spc_end_exclusive": 30114,
+        "spc_free_bytes": 35422
+      },
+      {
+        "module_id": 1,
+        "module_bytes": 2242,
+        "music_brr_bytes": 1928,
+        "source_indices": [
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "resident_cue_bytes": 11296,
+        "spc_end_exclusive": 22122,
+        "spc_free_bytes": 43414
+      },
+      {
+        "module_id": 2,
+        "module_bytes": 2242,
+        "music_brr_bytes": 1928,
+        "source_indices": [
+          11,
+          12,
+          13,
+          16,
+          17
+        ],
+        "resident_cue_bytes": 11296,
+        "spc_end_exclusive": 22122,
+        "spc_free_bytes": 43414
+      },
+      {
+        "module_id": 3,
+        "module_bytes": 2242,
+        "music_brr_bytes": 1928,
+        "source_indices": [
+          11,
+          12,
+          13,
+          18,
+          19
+        ],
+        "resident_cue_bytes": 11296,
+        "spc_end_exclusive": 22122,
+        "spc_free_bytes": 43414
+      },
+      {
+        "module_id": 4,
+        "module_bytes": 2242,
+        "music_brr_bytes": 1928,
+        "source_indices": [
+          11,
+          12,
+          13,
+          20,
+          21
+        ],
+        "resident_cue_bytes": 11296,
+        "spc_end_exclusive": 22122,
+        "spc_free_bytes": 43414
+      },
+      {
+        "module_id": 5,
+        "module_bytes": 2234,
+        "music_brr_bytes": 1928,
+        "source_indices": [
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "resident_cue_bytes": 11296,
+        "spc_end_exclusive": 22114,
+        "spc_free_bytes": 43422
+      }
+    ]
+  },
+  "native_code": {
+    "sections": [
+      {
+        "section": ".audioCuetext_0x1a",
+        "address": "0x9efc16",
+        "bytes": 232
+      },
+      {
+        "section": ".soundImpacttext_0x1b",
+        "address": "0xa0ff46",
+        "bytes": 79
+      },
+      {
+        "section": ".soundContacttext_0x1c",
+        "address": "0xa0f91e",
+        "bytes": 137
+      },
+      {
+        "section": ".soundtext_0x1d",
+        "address": "0xa0f894",
+        "bytes": 138
+      },
+      {
+        "section": ".audioSceneLoadedtext_0x1e",
+        "address": "0xa0fa22",
+        "bytes": 121
+      },
+      {
+        "section": ".audioAnnouncetext_0x1f",
+        "address": "0xa1f9a8",
+        "bytes": 49
+      },
+      {
+        "section": ".audioPresentationTicktext_0x20",
+        "address": "0x95f800",
+        "bytes": 1035
+      },
+      {
+        "section": ".soundmod",
+        "address": "0x8cf800",
+        "bytes": 1675
+      }
+    ],
+    "code_bytes_including_compatibility_sound": 3466,
+    "per_tick_spc_commands_max": 1,
+    "hardware_ready_adapter_modified": false
+  },
+  "source_speech": {
+    "round": {
+      "retained_wav_sha256": "c3eb4a981020225ab262ee271e4edc9f8ff298478567dbdb519fa18def518414",
+      "resident_seconds": 0.37025
+    },
+    "fight": {
+      "retained_wav_sha256": "e0db55e0e277183f1de1b1225e14c019e141631379a6547e9b16651c83f8ca26",
+      "resident_seconds": 0.359625
+    },
+    "ko": {
+      "retained_wav_sha256": "bad3d04173f492e3ea9dabd5f93a87dd71bc227e4092efb8f227ac4b2019bf0d",
+      "resident_seconds": 0.33425
+    }
+  },
+  "control_rom_sha256": "b730605ea35520887e3ebd4228f6e3d50e4ba692c6f1f1ef1b3d9f2204d0bf3b",
+  "control_rom_difference_offsets": [
+    32732,
+    32733,
+    32734,
+    32735,
+    359010,
+    359011,
+    359012,
+    359013,
+    359014,
+    359015,
+    359016,
+    359017,
+    359018,
+    359019,
+    359020
+  ],
+  "captures": {
+    "menu": {
+      "mix": {
+        "file": "docs/expansion-10-audio/menu-native-mix.wav",
+        "sha256": "4d8765f34f28da0c8a10c319925d72aa716681f07d619ffd6ed25862a267de55",
+        "bytes": 204764,
+        "pcm": {
+          "sha256_pcm": "eafa693fc3241c92fa4dfbec79f5f9dbf2c8d9af4cff923a781cc16c23735476",
+          "sample_frames": 51180,
+          "seconds": 1.597378277153558,
+          "peak": 2774,
+          "rms": 449.239,
+          "rms_dbfs": -37.2594,
+          "clipped_samples": 0,
+          "dc_left": -7.5708,
+          "dc_right": -7.1332,
+          "longest_near_silence_sample_frames": 2481,
+          "longest_near_silence_seconds": 0.07743445692883895
+        }
+      },
+      "cue_difference": {
+        "file": "docs/expansion-10-audio/menu-cue-difference.wav",
+        "sha256": "94f7a1b3dbc25dbf01249e4c996371d2000eacfdb9617ad86bb27d366c9a9b78",
+        "bytes": 204764,
+        "pcm": {
+          "sha256_pcm": "c28d2dde898a6152ead20a9019dce2c7ba9cf3ea109d915e02adf046bb7f0380",
+          "sample_frames": 51180,
+          "seconds": 1.597378277153558,
+          "peak": 1379,
+          "rms": 151.3478,
+          "rms_dbfs": -46.7095,
+          "clipped_samples": 0,
+          "dc_left": -0.1275,
+          "dc_right": -0.1364,
+          "longest_near_silence_sample_frames": 41764,
+          "longest_near_silence_seconds": 1.3034956304619225
+        }
+      },
+      "capture_start_sample": 0,
+      "cues": [
+        {
+          "frame": 3,
+          "slot": 9,
+          "name": "menu-chord"
+        }
+      ],
+      "max_backlog": 0,
+      "frames": 96,
+      "forced_blank_boundary_callbacks": 0
+    },
+    "intro": {
+      "mix": {
+        "file": "docs/expansion-10-audio/intro-native-mix.wav",
+        "sha256": "59f4d0bf6a185aed04312948ded627c3934e48e6efad4d17163262acdf833e31",
+        "bytes": 277264,
+        "pcm": {
+          "sha256_pcm": "67cd969a443e0b090d328a2decdf2912063b627612c43224454e825f4d5d204f",
+          "sample_frames": 69305,
+          "seconds": 2.1630774032459428,
+          "peak": 5476,
+          "rms": 486.1641,
+          "rms_dbfs": -36.5733,
+          "clipped_samples": 0,
+          "dc_left": 37.8781,
+          "dc_right": 45.0452,
+          "longest_near_silence_sample_frames": 3097,
+          "longest_near_silence_seconds": 0.09666042446941324
+        }
+      },
+      "cue_difference": {
+        "file": "docs/expansion-10-audio/intro-cue-difference.wav",
+        "sha256": "2acca19cb7c5c152e17b1e1417d613ffb444a9155ae8e319bf10131ed8a736ae",
+        "bytes": 277264,
+        "pcm": {
+          "sha256_pcm": "2b6d0f61c7cf90d1fe6441192de4ec0435d134736e05cb36d2ff6cf28475f62c",
+          "sample_frames": 69305,
+          "seconds": 2.1630774032459428,
+          "peak": 5403,
+          "rms": 400.4148,
+          "rms_dbfs": -38.2588,
+          "clipped_samples": 0,
+          "dc_left": 43.7931,
+          "dc_right": 50.4939,
+          "longest_near_silence_sample_frames": 26680,
+          "longest_near_silence_seconds": 0.83270911360799
+        }
+      },
+      "capture_start_sample": 0,
+      "cues": [
+        {
+          "frame": 0,
+          "slot": 9,
+          "name": "menu-chord"
+        },
+        {
+          "frame": 5,
+          "slot": 6,
+          "name": "round"
+        },
+        {
+          "frame": 59,
+          "slot": 7,
+          "name": "fight"
+        }
+      ],
+      "max_backlog": 6,
+      "frames": 130,
+      "forced_blank_boundary_callbacks": 0,
+      "speech_identity": [
+        {
+          "source_word": "round",
+          "normalized_correlation": 0.913732,
+          "native_onset_sample": 2781,
+          "queued_event_frame": 5,
+          "comparison_rate_hz": 4005,
+          "threshold": 0.8
+        },
+        {
+          "source_word": "fight",
+          "normalized_correlation": 0.924849,
+          "native_onset_sample": 31746,
+          "queued_event_frame": 59,
+          "comparison_rate_hz": 4005,
+          "threshold": 0.8
+        }
+      ]
+    },
+    "light": {
+      "mix": {
+        "file": "docs/expansion-10-audio/light-native-mix.wav",
+        "sha256": "447d88dc7745acc41e6506d4e627c728b15af313dfecf853e82b245f10f92719",
+        "bytes": 117332,
+        "pcm": {
+          "sha256_pcm": "683e76a56da715c144e1b6117ea24d711512151c438afcef9794bcbc80d8f151",
+          "sample_frames": 29322,
+          "seconds": 0.9151685393258427,
+          "peak": 2684,
+          "rms": 459.5921,
+          "rms_dbfs": -37.0615,
+          "clipped_samples": 0,
+          "dc_left": -8.5781,
+          "dc_right": -8.0293,
+          "longest_near_silence_sample_frames": 2481,
+          "longest_near_silence_seconds": 0.07743445692883895
+        }
+      },
+      "cue_difference": {
+        "file": "docs/expansion-10-audio/light-cue-difference.wav",
+        "sha256": "d356b721f3c9a27708a9ef0273e94717a8599ea6f04fff7e20f3ff5346ac5796",
+        "bytes": 117332,
+        "pcm": {
+          "sha256_pcm": "b3b7df3afdb34c2265c27d6927cf0aca431a10c569ddc1b2264bace67fae23d0",
+          "sample_frames": 29322,
+          "seconds": 0.9151685393258427,
+          "peak": 2427,
+          "rms": 212.6624,
+          "rms_dbfs": -43.7552,
+          "clipped_samples": 0,
+          "dc_left": 0.7253,
+          "dc_right": 0.8439,
+          "longest_near_silence_sample_frames": 24756,
+          "longest_near_silence_seconds": 0.7726591760299626
+        }
+      },
+      "capture_start_sample": 0,
+      "cues": [
+        {
+          "frame": 0,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 3,
+          "slot": 1,
+          "name": "light"
+        }
+      ],
+      "max_backlog": 0,
+      "frames": 55,
+      "forced_blank_boundary_callbacks": 0
+    },
+    "strong": {
+      "mix": {
+        "file": "docs/expansion-10-audio/strong-native-mix.wav",
+        "sha256": "2c3ca6ec8ceff6a39346313a4540cf57c7d4eece6c6ac9245759076444b59ab2",
+        "bytes": 117332,
+        "pcm": {
+          "sha256_pcm": "deeab76c6248fed001dc1e6a1bcf08a4c0cf78197275d5f6aba91c586a8700c1",
+          "sample_frames": 29322,
+          "seconds": 0.9151685393258427,
+          "peak": 3350,
+          "rms": 496.687,
+          "rms_dbfs": -36.3873,
+          "clipped_samples": 0,
+          "dc_left": -5.5971,
+          "dc_right": -4.5829,
+          "longest_near_silence_sample_frames": 2473,
+          "longest_near_silence_seconds": 0.07718476903870163
+        }
+      },
+      "cue_difference": {
+        "file": "docs/expansion-10-audio/strong-cue-difference.wav",
+        "sha256": "c23956f9c3ff9e0964393c9dbe28bbb3b648a261d850180323774a28dc683e17",
+        "bytes": 117332,
+        "pcm": {
+          "sha256_pcm": "e4dbe3dc2d9ad5fbc92e91b931f6359e704fd8cbaec51a55a54eb2fcfb1259e7",
+          "sample_frames": 29322,
+          "seconds": 0.9151685393258427,
+          "peak": 3012,
+          "rms": 267.0484,
+          "rms_dbfs": -41.7772,
+          "clipped_samples": 0,
+          "dc_left": 3.8143,
+          "dc_right": 4.4009,
+          "longest_near_silence_sample_frames": 20215,
+          "longest_near_silence_seconds": 0.6309300873907615
+        }
+      },
+      "capture_start_sample": 0,
+      "cues": [
+        {
+          "frame": 0,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 8,
+          "slot": 4,
+          "name": "strong"
+        }
+      ],
+      "max_backlog": 0,
+      "frames": 55,
+      "forced_blank_boundary_callbacks": 0
+    },
+    "guard": {
+      "mix": {
+        "file": "docs/expansion-10-audio/guard-native-mix.wav",
+        "sha256": "0ac0fc22f6e222ab69eb93c4de7d485b8e9d9ab8ce1732597a1c8a93a4cf66fe",
+        "bytes": 117332,
+        "pcm": {
+          "sha256_pcm": "add428ae87e2bde35fb2050c76cf35c6a40b1a0abd63304f337c50c4970c2d11",
+          "sample_frames": 29322,
+          "seconds": 0.9151685393258427,
+          "peak": 2684,
+          "rms": 445.0904,
+          "rms_dbfs": -37.34,
+          "clipped_samples": 0,
+          "dc_left": -8.9652,
+          "dc_right": -8.4744,
+          "longest_near_silence_sample_frames": 2479,
+          "longest_near_silence_seconds": 0.07737203495630463
+        }
+      },
+      "cue_difference": {
+        "file": "docs/expansion-10-audio/guard-cue-difference.wav",
+        "sha256": "6d33b6b22032999832f6a129b314a803ecbe6b9b6226f5fe17a85118ff15cb35",
+        "bytes": 117332,
+        "pcm": {
+          "sha256_pcm": "6208dc1b7af6de77dcce57dde3bac1e79070964f29fe457f774a9d8592974711",
+          "sample_frames": 29322,
+          "seconds": 0.9151685393258427,
+          "peak": 2036,
+          "rms": 162.5655,
+          "rms_dbfs": -46.0884,
+          "clipped_samples": 0,
+          "dc_left": 0.3639,
+          "dc_right": 0.4277,
+          "longest_near_silence_sample_frames": 24316,
+          "longest_near_silence_seconds": 0.7589263420724095
+        }
+      },
+      "capture_start_sample": 0,
+      "cues": [
+        {
+          "frame": 0,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 3,
+          "slot": 5,
+          "name": "guard"
+        }
+      ],
+      "max_backlog": 0,
+      "frames": 55,
+      "forced_blank_boundary_callbacks": 0
+    },
+    "ko-victory": {
+      "mix": {
+        "file": "docs/expansion-10-audio/ko-victory-native-mix.wav",
+        "sha256": "605264814d1270a31a698f0ff4c9764045113f6ad3cfca1fc3fdb52de8d5bd13",
+        "bytes": 769004,
+        "pcm": {
+          "sha256_pcm": "d6bb8083cca3daf818758b07a02ffb8471d284eb6059053f773b44189b79c1ae",
+          "sample_frames": 192240,
+          "seconds": 6.0,
+          "peak": 5213,
+          "rms": 486.8865,
+          "rms_dbfs": -36.5604,
+          "clipped_samples": 0,
+          "dc_left": 0.5545,
+          "dc_right": 2.3249,
+          "longest_near_silence_sample_frames": 3095,
+          "longest_near_silence_seconds": 0.0965980024968789
+        }
+      },
+      "cue_difference": {
+        "file": "docs/expansion-10-audio/ko-victory-cue-difference.wav",
+        "sha256": "4b513c4306a1d5298d44dd86e02e5a2e0292c2ea6bf922708add2cef14a7c391",
+        "bytes": 769004,
+        "pcm": {
+          "sha256_pcm": "f9886d3b987400e3116a1658debb03ad0d376e4ce3c65ddc125dbae3ee22ccd9",
+          "sample_frames": 192240,
+          "seconds": 6.0,
+          "peak": 4967,
+          "rms": 272.7891,
+          "rms_dbfs": -41.5925,
+          "clipped_samples": 0,
+          "dc_left": 8.552,
+          "dc_right": 9.8751,
+          "longest_near_silence_sample_frames": 56974,
+          "longest_near_silence_seconds": 1.7782147315855181
+        }
+      },
+      "capture_start_sample": 782840,
+      "cues": [
+        {
+          "frame": 0,
+          "slot": 7,
+          "name": "fight"
+        },
+        {
+          "frame": 4,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 7,
+          "slot": 1,
+          "name": "light"
+        },
+        {
+          "frame": 44,
+          "slot": 4,
+          "name": "strong"
+        },
+        {
+          "frame": 71,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 99,
+          "slot": 1,
+          "name": "light"
+        },
+        {
+          "frame": 124,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 136,
+          "slot": 4,
+          "name": "strong"
+        },
+        {
+          "frame": 161,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 189,
+          "slot": 1,
+          "name": "light"
+        },
+        {
+          "frame": 214,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 226,
+          "slot": 4,
+          "name": "strong"
+        },
+        {
+          "frame": 251,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 279,
+          "slot": 1,
+          "name": "light"
+        },
+        {
+          "frame": 304,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 316,
+          "slot": 4,
+          "name": "strong"
+        },
+        {
+          "frame": 341,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 369,
+          "slot": 1,
+          "name": "light"
+        },
+        {
+          "frame": 394,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 406,
+          "slot": 4,
+          "name": "strong"
+        },
+        {
+          "frame": 431,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 459,
+          "slot": 1,
+          "name": "light"
+        },
+        {
+          "frame": 484,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 496,
+          "slot": 4,
+          "name": "strong"
+        },
+        {
+          "frame": 521,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 549,
+          "slot": 1,
+          "name": "light"
+        },
+        {
+          "frame": 574,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 586,
+          "slot": 8,
+          "name": "ko"
+        },
+        {
+          "frame": 636,
+          "slot": 10,
+          "name": "victory-cadence"
+        },
+        {
+          "frame": 767,
+          "slot": 9,
+          "name": "menu-chord"
+        },
+        {
+          "frame": 772,
+          "slot": 6,
+          "name": "round"
+        },
+        {
+          "frame": 826,
+          "slot": 7,
+          "name": "fight"
+        },
+        {
+          "frame": 958,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 961,
+          "slot": 1,
+          "name": "light"
+        },
+        {
+          "frame": 998,
+          "slot": 4,
+          "name": "strong"
+        },
+        {
+          "frame": 1025,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 1053,
+          "slot": 1,
+          "name": "light"
+        },
+        {
+          "frame": 1078,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 1090,
+          "slot": 4,
+          "name": "strong"
+        },
+        {
+          "frame": 1115,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 1143,
+          "slot": 1,
+          "name": "light"
+        },
+        {
+          "frame": 1168,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 1180,
+          "slot": 4,
+          "name": "strong"
+        },
+        {
+          "frame": 1205,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 1233,
+          "slot": 1,
+          "name": "light"
+        },
+        {
+          "frame": 1258,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 1270,
+          "slot": 4,
+          "name": "strong"
+        },
+        {
+          "frame": 1295,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 1323,
+          "slot": 1,
+          "name": "light"
+        },
+        {
+          "frame": 1348,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 1360,
+          "slot": 4,
+          "name": "strong"
+        },
+        {
+          "frame": 1385,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 1413,
+          "slot": 1,
+          "name": "light"
+        },
+        {
+          "frame": 1438,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 1450,
+          "slot": 4,
+          "name": "strong"
+        },
+        {
+          "frame": 1475,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 1503,
+          "slot": 1,
+          "name": "light"
+        },
+        {
+          "frame": 1528,
+          "slot": 0,
+          "name": "swing"
+        },
+        {
+          "frame": 1540,
+          "slot": 8,
+          "name": "ko"
+        },
+        {
+          "frame": 1590,
+          "slot": 10,
+          "name": "victory-cadence"
+        }
+      ],
+      "max_backlog": 0,
+      "frames": 1829,
+      "forced_blank_boundary_callbacks": 8,
+      "speech_identity": [
+        {
+          "source_word": "ko",
+          "normalized_correlation": 0.964665,
+          "native_onset_sample": 312870,
+          "queued_event_frame": 586,
+          "comparison_rate_hz": 4005,
+          "threshold": 0.8
+        },
+        {
+          "source_word": "ko",
+          "normalized_correlation": 0.971181,
+          "native_onset_sample": 821324,
+          "queued_event_frame": 1540,
+          "comparison_rate_hz": 4005,
+          "threshold": 0.8
+        }
+      ]
+    }
+  },
+  "contact_distinction": {
+    "light": {
+      "energy": 1139083532,
+      "normalized_first_difference": 0.17672083627087803
+    },
+    "strong": {
+      "energy": 1796244052,
+      "normalized_first_difference": 0.09643672789271865
+    },
+    "guard": {
+      "energy": 665637408,
+      "normalized_first_difference": 0.18479947261804816
+    }
+  },
+  "other_stage_intros": {
+    "1": {
+      "mix": {
+        "file": "docs/expansion-10-audio/stage1-intro-native-mix.wav",
+        "sha256": "4efbde39ff412dc1941c9ab1ae489bcb95747b71ca5754fa1bcdf61aa241fae0",
+        "bytes": 277268,
+        "pcm": {
+          "sha256_pcm": "df24deba14e6eef840b5f4fd335cc6736d76943ea7022e9939afc929cdbfab7c",
+          "sample_frames": 69306,
+          "seconds": 2.16310861423221,
+          "peak": 5335,
+          "rms": 496.2514,
+          "rms_dbfs": -36.395,
+          "clipped_samples": 0,
+          "dc_left": 39.06,
+          "dc_right": 46.2497,
+          "longest_near_silence_sample_frames": 3021,
+          "longest_near_silence_seconds": 0.09428838951310861
+        }
+      },
+      "speech_identity": [
+        {
+          "source_word": "round",
+          "normalized_correlation": 0.905959,
+          "native_onset_sample": 2782,
+          "queued_event_frame": 5,
+          "comparison_rate_hz": 4005,
+          "threshold": 0.8
+        },
+        {
+          "source_word": "fight",
+          "normalized_correlation": 0.930912,
+          "native_onset_sample": 31643,
+          "queued_event_frame": 59,
+          "comparison_rate_hz": 4005,
+          "threshold": 0.8
+        }
+      ],
+      "max_backlog": 3
+    },
+    "2": {
+      "mix": {
+        "file": "docs/expansion-10-audio/stage2-intro-native-mix.wav",
+        "sha256": "a9d17bb0544df4b8839988f5debe5b82db80ad5b4916c8d693079cece9739e36",
+        "bytes": 277268,
+        "pcm": {
+          "sha256_pcm": "0306dd3a4eda445286afc598a184e964b90830cfd656ecd358218aa0d3b3b67e",
+          "sample_frames": 69306,
+          "seconds": 2.16310861423221,
+          "peak": 5474,
+          "rms": 497.3149,
+          "rms_dbfs": -36.3764,
+          "clipped_samples": 0,
+          "dc_left": 38.108,
+          "dc_right": 45.2758,
+          "longest_near_silence_sample_frames": 3143,
+          "longest_near_silence_seconds": 0.09809612983770287
+        }
+      },
+      "speech_identity": [
+        {
+          "source_word": "round",
+          "normalized_correlation": 0.894233,
+          "native_onset_sample": 2774,
+          "queued_event_frame": 5,
+          "comparison_rate_hz": 4005,
+          "threshold": 0.8
+        },
+        {
+          "source_word": "fight",
+          "normalized_correlation": 0.984309,
+          "native_onset_sample": 31642,
+          "queued_event_frame": 59,
+          "comparison_rate_hz": 4005,
+          "threshold": 0.8
+        }
+      ],
+      "max_backlog": 3
+    }
+  },
+  "combat_stress": {
+    "0": {
+      "frames": 900,
+      "cadence_failures": [],
+      "max_spc_backlog": 0,
+      "actual_cues": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7
+      ],
+      "pcm": {
+        "sha256_pcm": "a6115e171ad6f17cb9bc8eb4eedbcae9954498eddc831d909983d34e5a9f43fc",
+        "sample_frames": 479810,
+        "seconds": 14.975343320848939,
+        "peak": 3821,
+        "rms": 498.993,
+        "rms_dbfs": -36.3471,
+        "clipped_samples": 0,
+        "dc_left": -5.1295,
+        "dc_right": -4.4216,
+        "longest_near_silence_sample_frames": 2483,
+        "longest_near_silence_seconds": 0.07749687890137329
+      }
+    },
+    "1": {
+      "frames": 900,
+      "cadence_failures": [],
+      "max_spc_backlog": 0,
+      "actual_cues": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7
+      ],
+      "pcm": {
+        "sha256_pcm": "1b1c602c0430423865b85e016eba73c6b25b2a6bdec4926305c08b427658036d",
+        "sample_frames": 479809,
+        "seconds": 14.975312109862672,
+        "peak": 3736,
+        "rms": 497.1045,
+        "rms_dbfs": -36.38,
+        "clipped_samples": 0,
+        "dc_left": -5.7792,
+        "dc_right": -5.0806,
+        "longest_near_silence_sample_frames": 2417,
+        "longest_near_silence_seconds": 0.07543695380774032
+      }
+    },
+    "2": {
+      "frames": 900,
+      "cadence_failures": [],
+      "max_spc_backlog": 0,
+      "actual_cues": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        7
+      ],
+      "pcm": {
+        "sha256_pcm": "36002f1f1649dea8b648d8565fb8aed2804fbdaf02c2b2b3463b42079c7fa0a8",
+        "sample_frames": 479810,
+        "seconds": 14.975343320848939,
+        "peak": 3995,
+        "rms": 497.7939,
+        "rms_dbfs": -36.368,
+        "clipped_samples": 0,
+        "dc_left": -6.9911,
+        "dc_right": -6.3132,
+        "longest_near_silence_sample_frames": 2515,
+        "longest_near_silence_seconds": 0.0784956304619226
+      }
+    }
+  },
+  "passed": 159,
+  "elapsed_seconds": 112.766
+}

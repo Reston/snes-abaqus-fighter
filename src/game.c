@@ -259,22 +259,15 @@ void cursor(u8 x,u8 y,u8 w,u8 h) {
     for(i=1;i<w-1;i++){put(x+i,y,154);put(x+i,y+h-1,154|0x8000);}
     for(i=1;i<h-1;i++){put(x,y+i,153);put(x+w-1,y+i,153|0x4000);}
 }
-void sound(u8 n) {
-    /* One SPC trigger per tick: duplicate same-frame cues share a voice.
-     * Round cues > impact > special > swing. Never stall twice on the port. */
-    if(!musicOn)return;
-    if(!pendingSound)pendingSound=n+1;
-    if(n==3)pendingSound=4;
-    else if(n==1 && pendingSound!=4)pendingSound=2;
-    else if(n==2 && pendingSound==1)pendingSound=3;
-}
+#include "audio_presentation.h"
+
 void music(u8 index) {
     u8 effect;
     if(index>4)return;
     if(musicIndex==index)return;
     spcStop();spcLoad(MOD_MUSIC0+index);
-    for(effect=0;effect<4;effect++)spcLoadEffect(effect);
-    spcSetModuleVolume(86);spcPlay(0);musicIndex=index;
+    for(effect=0;effect<AUDIO_EFFECT_COUNT;effect++)spcLoadEffect(effect);
+    audioSceneLoaded();spcPlay(0);musicIndex=index;
 }
 void commonScreen(void) {
     pausePage=0;guideBuild=0;guideDirty=0;trainingDummy=0;pauseHudPending=0;
@@ -658,6 +651,7 @@ u8 actionForInput(u8 p,u16 keys,u16 edge) {
     if(edge&KEY_B)return 4;
     return 0;
 }
+
 void captureInput(u8 p,u16 raw,u8 live) {
     Fighter *f=&fighters[p];
     u16 keys,edge,forward,back;
@@ -826,7 +820,7 @@ u8 hurtWithRecoil(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable,u8
     fxX=(d->x>>4)+(direction?-12:6);fxY=FLOOR+(d->y>>4)-(low?22:53);fxLife=10;
     /* Rebuild changed bars on the first frozen impact tick, leaving the
      * contact frame's CPU budget for physics, effects and actor streams. */
-    sound(1);impactHudPending=1;return blocked?1:2;
+    soundContact(blocked,a->action);impactHudPending=1;return blocked?1:2;
 }
 /* Projectiles and delayed throw damage retain their original facing rule. */
 u8 hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
@@ -1370,7 +1364,7 @@ int main(void) {
             }
         }
         traceActorsFast();
-        if(pendingSound){spcEffect(2,pendingSound-1,effectVolpan[pendingSound-1]);pendingSound=0;}
+        audioPresentationTick();
         processResidentAudioReady();WaitForVBlank();
         /* STAT77 retains the completed picture's OBJ overflow flags until
          * the end of vblank. Read it before DMA; the host never pokes PPU. */
@@ -1404,3 +1398,5 @@ int main(void) {
     }
     return 0;
 }
+
+#include "audio_presentation_state.h"

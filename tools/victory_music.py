@@ -11,7 +11,7 @@ def soundbank_budget(path: Path) -> dict:
     """Validate SMConv's LoROM bank and simultaneous module/effect residency.
 
     The pinned SNESMod loads module data at $1A00, then its BRR sources,
-    then spcLoadEffect's four sources. Transfers round up to whole words.
+    then spcLoadEffect's resident sources (module 0). Transfers round up to words.
     This project has no echo or separate streaming allocation.
     """
     raw = path.read_bytes()
@@ -34,7 +34,11 @@ def soundbank_budget(path: Path) -> dict:
         if not size or offset+4+size > len(raw):
             raise ValueError("Soundbank source length exceeds bank data")
         sample_bytes.append((size+1) & ~1)
-    resident_bytes = sum(sample_bytes[:4])
+    effects_offset = pointer(4, 0)
+    effect_count = struct.unpack_from("<H", raw, effects_offset+2)[0]
+    if not 4 <= effect_count <= 16:
+        raise ValueError("Resident effects exceed SNESMod slots")
+    resident_bytes = sum(sample_bytes[:effect_count])
     budgets = []
     for index in range(modules):
         offset = pointer(4, index)
@@ -50,16 +54,16 @@ def soundbank_budget(path: Path) -> dict:
         source_bytes = sum(sample_bytes[i] for i in source_list)
         end = 0x1a00+words*2+source_bytes+resident_bytes
         if end > 0x10000:
-            raise ValueError("Score plus all four resident cues exceeds SPC RAM")
+            raise ValueError("Score plus all resident cues exceeds SPC RAM")
         budgets.append({"module_id": index, "module_bytes": words*2,
                         "music_brr_bytes": source_bytes, "source_indices": list(source_list),
                         "resident_cue_bytes": resident_bytes, "spc_end_exclusive": end,
                         "spc_free_bytes": 0x10000-end})
-    if budgets[0]["source_indices"] != [0, 1, 2, 3]:
+    if budgets[0]["source_indices"] != list(range(effect_count)):
         raise ValueError("Resident cue identity/order is no longer effects-first")
     return {"soundbank_bytes": len(raw), "lorom_bank": 24,
             "lorom_free_bytes": 32768-len(raw), "module_base": 0x1a00,
-            "source_count": sources, "module_count": modules,
+            "source_count": sources, "module_count": modules, "resident_count": effect_count,
             "streaming_bytes": 0, "echo_bytes": 0, "modules": budgets}
 
 
