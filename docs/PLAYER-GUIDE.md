@@ -1,5 +1,18 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.22.1; rom-sha256: 52725899fa86b4ee3d3f3f022dae374c1ab4ff8777bdab4a7134640c34dc8727 -->
+<!-- candidate-version: 0.23.0; rom-sha256: 19387882aad17cc8184b02c2c2e0dcb3b6487c05522fe5ef7a943202ef0c0359 -->
+
+## Current walking/local-play candidate: v0.23.0
+
+Main is v0.22.1 with the nine approved improvements merged; feature 08 remains
+deferred and its checkout is retained. The old merged branches/worktrees are
+cleaned. [PR #12](https://github.com/Reston/snes-abaqus-fighter/pull/12) adds
+eight-phase walking to all twelve fighters and the clearer **LOCAL 1V1 / 2P**
+menu label. Local two-port multiplayer was already supported. Run `Play.cmd`
+from `feature/walking-cycles-v023` to test this unmerged candidate.
+All six native suites pass 36,219 current-ROM checks; independent smoke,
+all-roster walking proof and fresh-source reproduction pass.
+[Walking, two-player controls, art/prompts and evidence](RELEASE-v0.23.0.md).
+The older notes below retain their historical scope.
 
 ## Current v0.22.1: nine approved improvements
 

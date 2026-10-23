@@ -6,6 +6,27 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+- The active unmerged follow-up is **v0.23.0 walking/local-play**, branch
+  `feature/walking-cycles-v023`, PR #12. Main is v0.22.1 after approved PR #1
+  merge. Nine merged feature worktrees/branches and the old integration branch
+  were removed; keep 08's branch/worktree for polish. Parallax remains disabled.
+  ROM SHA256 `19387882aad17cc8184b02c2c2e0dcb3b6487c05522fe5ef7a943202ef0c0359`, header `A013`.
+  Source freeze `ae9fc6f308dcba27a4ecc08f9cec8fe0bc277322`. Six native suites pass 36,219
+  exact-ROM checks; matching independent smoke, all-twelve/both-port focused
+  walking proof, 20/20 normal/optimized authoring checks and fresh export pass.
+  Native frames 20–27 have individually authored walking legs; upper rows0..46
+  preserve exact approved face/upper-body pixels. All other 56 poses, palettes,
+  portraits, size and baseline are preserved. Eight phases share distance-driven
+  forward/retreat footfalls, with no new RAM/ABI/DMA/OBJ/audio resources. Exactly
+  37 generated outputs differ from v0.22.1; generated count remains219.
+  Retain assets/art/walking-v1.json, the twelve walking-v1.png masters and their
+  adjacent exact-prompt/provenance JSON. Old masters/contracts remain history.
+  The menu now says LOCAL 1V1 / 2P. Both native controller ports already work;
+  P1 arrows+A/S/Z/X, P2 I/J/K/L+numpad7/8/1/2. Both default joypads enabled.
+  See docs/RELEASE-v0.23.0.md, docs/verification-v0.23.0.json and walking-report.json.
+  Walking human review and physical controller checks remain open; no new
+  offline package or public-release approval is claimed.
+
 - The approved main candidate is **v0.22.1**, features 01–07, 09 and 10.
   User explicitly authorized their merge and requested 08 be deferred because
   its parallax looks bad. The original camera, stage ambient generator and four
@@ -25,9 +46,9 @@ Preserve the native emulator requirement when extending the project.
 
 - The historical integration was **v0.22.0, all ten improvements combined**, on
   `integration/ten-improvements-v022`. Feature PRs #2..11 are merged into it;
-  [final PR #1](https://github.com/Reston/snes-abaqus-fighter/pull/1) awaits
-  one human playtest before merge; combined automated verification passes. Main remains
-  v0.21.0. Run `Play.cmd` from the integration checkout to play the candidate.
+  [final PR #1](https://github.com/Reston/snes-abaqus-fighter/pull/1) then awaited
+  a human playtest; main was v0.21.0. That integration identity and its
+  verification are historical; the nine-feature main merge is recorded above.
   ROM SHA256 `d4fddaf609a0c29f45353a8d9e22fe1131fc3380838d9c0073d3255474cdf8af`, header `EA9D`.
   Source freeze `b149cdf2d9e25560f61d09a0f49e71ce6fea7042`, tree `f58da040001f57a12c55b3ce92bde66041164b71`.
   All six native suites pass 36,253 exact-ROM checks; matching pinned
