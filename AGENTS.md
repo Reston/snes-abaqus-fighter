@@ -6,7 +6,24 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
-- The active integration is **v0.22.0, all ten improvements combined**, on
+- The approved main candidate is **v0.22.1**, features 01–07, 09 and 10.
+  User explicitly authorized their merge and requested 08 be deferred because
+  its parallax looks bad. The original camera, stage ambient generator and four
+  ambient/dynamics outputs are restored exactly to v0.21.0. Keep feature 08's
+  branch/worktree for polish; its unused 16-byte RAM reservation prevents other
+  integration addresses moving. No parallax or winner stage reaction runs.
+  ROM SHA256 `52725899fa86b4ee3d3f3f022dae374c1ab4ff8777bdab4a7134640c34dc8727`, header `8300`.
+  Six native suites pass 36,253 exact-ROM checks and matching independent
+  smoke passes. See docs/RELEASE-v0.22.1.md and docs/verification-v0.22.1.json.
+  All 219 generated files remain; 215 match v0.21.0 and four audio outputs differ.
+  All fighter/portrait/static-stage art, palettes and five scores are preserved.
+  New work: improve all twelve walking cycles; verify existing local 1v1 and
+  improve discovery. The user requested walk changes, so a bounded walk-frame
+  revision is authorized; preserve all other poses, faces, palettes and scale.
+  Local Versus already supports both native SNES ports. Keep emulator-first
+  support and silent/headless tests. No new full offline release is claimed.
+
+- The historical integration was **v0.22.0, all ten improvements combined**, on
   `integration/ten-improvements-v022`. Feature PRs #2..11 are merged into it;
   [final PR #1](https://github.com/Reston/snes-abaqus-fighter/pull/1) awaits
   one human playtest before merge; combined automated verification passes. Main remains

@@ -1026,35 +1026,26 @@ def verify_round_end_freeze(core: Probe, trace_map: dict[str, int],
             current["hp1"] > 0 and current["wins1"] == 1,
             f"controls-only round-end fixture did not reach a KO: {current}")
     ko = dict(current)
-    # Ordinary ambient time stays frozen. The new victory policy may reuse
-    # its four authored phases for two short cheers, then settle by tick96.
-    clock = current["ambient_clock"]
+    # Feature 08 is deferred: the original ambient phase, pending slot and
+    # actual PPU patch must freeze for the entire round end, including a KO.
     reaction = []
     phases = {current["ambient_phase"]}
     images = {patch_digest(core.frame_image, rects)}
-    while current["round_end"] > 80:
+    frozen = {key: current[key] for key in
+              ("ambient_clock", "ambient_phase", "ambient_pending_phase", "ambient_phase_age")}
+    # Intro/victory gestures and winner lettering can cover an ambient cell.
+    # Prove the ambient trace frozen from the first KO sample, then compare
+    # actual PPU patches after those foreground sequences have settled.
+    while current["round_end"] > 20:
         current = step()
-        require(current["ambient_clock"] == clock,
-                f"ordinary ambient clock advanced during victory reaction: {current}")
-        require(0 <= current["ambient_phase"] < 4 and
-                current["ambient_pending_phase"] in (0, 1, 2, 3, 255),
-                f"victory reaction escaped authored four-phase inventory: {current}")
-        phases.add(current["ambient_phase"])
-        images.add(patch_digest(core.frame_image, rects))
-        reaction.append({key: current[key] for key in
-                         ("round_end", "hitstop", "ambient_clock", "ambient_phase",
-                          "ambient_pending_phase", "ambient_phase_age")})
-    require(phases == {0, 1, 2, 3} and len(images) >= 2,
-            f"actual victory reaction must publish all phases and visible PPU motion: "
-            f"{phases}, {len(images)}; KO={ko}; final={current}")
+        require(all(current[key] == value for key, value in frozen.items()),
+                f"ambient state changed during round end: {current}")
     before_frame = core.frame_image.copy() if core.frame_image is not None else None
     before = {
         "round_end": current["round_end"], "clock": current["ambient_clock"],
         "phase": current["ambient_phase"], "pending": current["ambient_pending_phase"],
         "age": current["ambient_phase_age"], "ppu_patch_sha256": patch_digest(before_frame, rects),
     }
-    require(before["phase"] == 0 and before["pending"] == 255,
-            f"victory reaction did not settle to neutral by tick100: {before}")
     frozen_frames = 0
     alignments: list[int] = []
     for _ in range(8):
@@ -1063,11 +1054,11 @@ def verify_round_end_freeze(core: Probe, trace_map: dict[str, int],
                 after["ambient_phase"] == before["phase"] and
                 after["ambient_pending_phase"] == before["pending"] and
                 after["ambient_phase_age"] == before["age"],
-                f"ambient trace advanced after bounded victory reaction: {after}")
+                f"ambient trace advanced during deferred-stage round end: {after}")
         after_frame = core.frame_image.copy() if core.frame_image is not None else None
         alignment = camera_aligned_patch_match(before_frame, after_frame, rects)
         require(alignment is not None,
-                "actual PPU ambient patch changed after victory settle")
+                "actual PPU ambient patch changed during round end")
         alignments.append(alignment)
         frozen_frames += 1
     return {"attempts": attempts, "ko": ko, "frozen_frames": frozen_frames, "before": before,

@@ -1,4 +1,4 @@
-"""Independent shared preservation policy for the combined ten-feature ROM."""
+"""Independent shared preservation policy for the approved nine-feature ROM (stage 08 deferred)."""
 from __future__ import annotations
 
 import hashlib
@@ -10,9 +10,6 @@ BASE = '38519cd73e0d41883b502b7496b78690845e49a2'
 GENERATED_CHANGES = {
     'assets/generated/effects.bin', 'assets/generated/effects.it',
     'assets/generated/soundbank.asm', 'assets/generated/soundbank.bnk',
-    'assets/generated/stage-dynamics.json',
-    'assets/generated/stage0_ambient.bin', 'assets/generated/stage1_ambient.bin',
-    'assets/generated/stage2_ambient.bin',
 }
 RAM_GROWTH = {'SECTIONSTART_.bss': 32, 'SECTIONEND_.bss': 32,
               'tccs_libc_c.asm_msys': 32, 'SECTIONEND_globram.data': 331,
@@ -60,7 +57,7 @@ def preserved_assets(root):
     require(not missing, 'Baseline assets are missing', missing)
     require(not protected_changes, 'Approved source art or reference changed', protected_changes)
     require(len(generated) == 219, 'Generated baseline inventory must remain 219', len(generated))
-    require(set(changed) == GENERATED_CHANGES, 'Generated changes differ from ten-feature policy', changed)
+    require(set(changed) == GENERATED_CHANGES, 'Generated changes differ from approved nine-feature policy', changed)
     actual_names = {p.relative_to(root).as_posix() for p in (root / 'assets/generated').iterdir()
                     if p.is_file() and p.name != 'soundbank.h'}
     require(actual_names == {row['path'] for row in generated},
@@ -126,7 +123,7 @@ if __name__ == '__main__':
     import json
     root = Path(__file__).resolve().parents[1]
     value = combined_contract(root)
-    out = root / 'docs/expansion-preservation-v0.22.0.json'
+    out = root / 'docs/expansion-preservation-v0.22.1.json'
     value['rom_sha256'] = hashlib.sha256((root / 'dist/abaqus-after-hours.sfc').read_bytes()).hexdigest()
     value['status'] = 'passed'
     out.write_bytes((json.dumps(value, indent=2) + '\n').encode('utf-8'))

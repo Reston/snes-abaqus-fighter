@@ -10,11 +10,7 @@ from __future__ import annotations
 
 import hashlib
 import struct
-import sys
-from pathlib import Path
 from typing import Iterable
-
-sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from PIL import Image
 
@@ -34,35 +30,35 @@ BYTES_PER_TILE = 32
 _FEATURES: dict[str, list[dict]] = {
     "stage0": [
         {"x": 28, "y": 6, "role": "tree_leaf_shimmer", "patterns": [
-            [(2, 2), (3, 2), (3, 3), (4, 3)], [(1, 3), (2, 3), (2, 4), (3, 4)], [(3, 2), (4, 2), (4, 3), (5, 3)]
+            [(2, 2), (3, 2)], [(1, 3), (2, 3)], [(2, 2), (3, 2)]
         ]},
         {"x": 29, "y": 6, "role": "tree_leaf_shimmer", "patterns": [
-            [(0, 2), (1, 2), (1, 3), (2, 3)], [(0, 3), (1, 3), (1, 4), (2, 4)], [(1, 2), (2, 2), (2, 3), (3, 3)]
+            [(0, 2), (1, 2)], [(0, 3), (1, 3)], [(0, 2), (1, 2)]
         ]},
         {"x": 28, "y": 7, "role": "tree_leaf_shimmer", "patterns": [
-            [(2, 3), (3, 3), (3, 4), (4, 4)], [(1, 4), (2, 4), (2, 5), (3, 5)], [(3, 3), (4, 3), (4, 4), (5, 4)]
+            [(2, 3), (3, 3)], [(1, 4), (2, 4)], [(2, 3), (3, 3)]
         ]},
         {"x": 29, "y": 7, "role": "tree_leaf_shimmer", "patterns": [
-            [(0, 3), (1, 3), (1, 4), (2, 4)], [(0, 4), (1, 4), (1, 5), (2, 5)], [(1, 3), (2, 3), (2, 4), (3, 4)]
+            [(0, 3), (1, 3)], [(0, 4), (1, 4)], [(0, 3), (1, 3)]
         ]},
         # The canopy panes are above the fighter floor and read as glass
         # highlights in the v2 master; keeping the shimmer here avoids
         # painting the unobstructed lower fighting plane.
         {"x": 16, "y": 8, "role": "glass_reflection", "patterns": [
-            [(4, 2), (5, 2), (6, 2), (7, 2), (5, 3)], [(2, 3), (3, 3), (4, 3), (5, 3), (3, 4)],
-            [(0, 4), (1, 4), (2, 4), (3, 4), (1, 5)]
+            [(5, 2), (6, 2), (7, 2)], [(3, 3), (4, 3), (5, 3)],
+            [(1, 4), (2, 4), (3, 4)]
         ]},
         {"x": 17, "y": 8, "role": "glass_reflection", "patterns": [
-            [(0, 3), (1, 3), (2, 3), (3, 3), (2, 4)], [(0, 4), (1, 4), (2, 4), (3, 4), (1, 5)],
-            [(0, 5), (1, 5), (2, 5), (3, 5), (1, 6)]
+            [(0, 3), (1, 3), (2, 3)], [(0, 4), (1, 4), (2, 4)],
+            [(0, 5), (1, 5), (2, 5)]
         ]},
         {"x": 16, "y": 9, "role": "glass_reflection", "patterns": [
-            [(4, 2), (5, 2), (6, 2), (7, 2), (5, 3)], [(2, 3), (3, 3), (4, 3), (5, 3), (3, 4)],
-            [(0, 4), (1, 4), (2, 4), (3, 4), (1, 5)]
+            [(5, 2), (6, 2), (7, 2)], [(3, 3), (4, 3), (5, 3)],
+            [(1, 4), (2, 4), (3, 4)]
         ]},
         {"x": 17, "y": 9, "role": "glass_reflection", "patterns": [
-            [(0, 3), (1, 3), (2, 3), (3, 3), (2, 4)], [(0, 4), (1, 4), (2, 4), (3, 4), (1, 5)],
-            [(0, 5), (1, 5), (2, 5), (3, 5), (1, 6)]
+            [(0, 3), (1, 3), (2, 3)], [(0, 4), (1, 4), (2, 4)],
+            [(0, 5), (1, 5), (2, 5)]
         ]},
     ],
     "stage1": [
@@ -75,16 +71,16 @@ _FEATURES: dict[str, list[dict]] = {
             [(3, 2), (4, 2), (3, 3)]
         ]},
         {"x": 16, "y": 14, "role": "party_gesture", "patterns": [
-            [(5, 2), (6, 2), (5, 3), (6, 3)], [(4, 1), (5, 1), (5, 2), (6, 2)], [(6, 2), (7, 2), (6, 3), (7, 3)]
+            [(5, 2), (6, 2)], [(4, 1), (5, 1)], [(5, 2), (6, 2)]
         ]},
         {"x": 17, "y": 14, "role": "party_gesture", "patterns": [
-            [(0, 2), (1, 2), (0, 3), (1, 3)], [(0, 1), (1, 1), (0, 2), (1, 2)], [(1, 2), (2, 2), (1, 3), (2, 3)]
+            [(0, 2), (1, 2)], [(0, 1), (1, 1)], [(0, 2), (1, 2)]
         ]},
         {"x": 16, "y": 15, "role": "party_gesture", "patterns": [
-            [(5, 2), (6, 2), (5, 3), (6, 3)], [(4, 1), (5, 1), (5, 2), (6, 2)], [(6, 2), (7, 2), (6, 3), (7, 3)]
+            [(5, 2), (6, 2)], [(4, 1), (5, 1)], [(5, 2), (6, 2)]
         ]},
         {"x": 17, "y": 15, "role": "party_gesture", "patterns": [
-            [(1, 2), (2, 2), (1, 3), (2, 3)], [(1, 1), (2, 1), (2, 2), (3, 2)], [(2, 2), (3, 2), (2, 3), (3, 3)]
+            [(1, 2), (2, 2)], [(1, 1), (2, 1)], [(1, 2), (2, 2)]
         ]},
         # The right building's warm window begins at row 13 in the v2
         # master; the old row-10 roof cells were only nearby pixels.
@@ -103,12 +99,12 @@ _FEATURES: dict[str, list[dict]] = {
             [], [], []
         ]},
         {"x": 7, "y": 14, "role": "monitor_left_cursor", "patterns": [
-            [(1, 2), (2, 2), (3, 2), (4, 2), (2, 3)],
-            [(3, 2), (4, 2), (5, 2), (6, 2), (4, 3)],
-            [(4, 2), (5, 2), (6, 2), (7, 2), (6, 3)]
+            [(2, 2), (3, 2), (4, 2)],
+            [(3, 2), (4, 2), (5, 2)],
+            [(4, 2), (5, 2), (6, 2)]
         ]},
         {"x": 8, "y": 14, "role": "monitor_left_cursor", "patterns": [
-            [(0, 2), (1, 2)], [(1, 2), (2, 2), (2, 3)], [(2, 2), (3, 2), (3, 3)]
+            [], [], []
         ]},
         {"x": 19, "y": 13, "role": "monitor_right_cursor", "patterns": [
             [], [], []
@@ -117,12 +113,12 @@ _FEATURES: dict[str, list[dict]] = {
             [], [], []
         ]},
         {"x": 19, "y": 14, "role": "monitor_right_cursor", "patterns": [
-            [(1, 2), (2, 2), (3, 2), (4, 2), (2, 3)],
-            [(3, 2), (4, 2), (5, 2), (6, 2), (4, 3)],
-            [(4, 2), (5, 2), (6, 2), (7, 2), (6, 3)]
+            [(2, 2), (3, 2), (4, 2)],
+            [(3, 2), (4, 2), (5, 2)],
+            [(4, 2), (5, 2), (6, 2)]
         ]},
         {"x": 20, "y": 14, "role": "monitor_right_cursor", "patterns": [
-            [(0, 2), (1, 2)], [(1, 2), (2, 2), (2, 3)], [(2, 2), (3, 2), (3, 3)]
+            [], [], []
         ]},
     ],
 }
@@ -250,8 +246,8 @@ def cartoon_stage_animation(name: str, base_gfx: bytes, base_map: bytes,
             positions = feature["patterns"][phase - 1]
             if not positions:
                 # The eight-cell map contract reserves a compact monitor
-                # region, but only the four lower cells carry the moving
-                # cursor. Keeping the upper four source-identical avoids
+                # region, but only the two lower-left cells carry the moving
+                # cursor.  Keeping the other six source-identical avoids
                 # turning a small UI cue into scattered monitor noise.
                 phase_tiles.append(source)
                 phase_details.append({
@@ -303,7 +299,7 @@ def cartoon_stage_animation(name: str, base_gfx: bytes, base_map: bytes,
 
     source_hash = hashlib.sha256(source_image.tobytes()).hexdigest()
     feature_design = {
-        "version": "0.22.0",
+        "version": "0.10.0",
         "source_image_sha256": source_hash,
         "source_image_size": [source_image.width, source_image.height],
         "phase_count": PHASE_COUNT,
@@ -320,48 +316,6 @@ def cartoon_stage_animation(name: str, base_gfx: bytes, base_map: bytes,
         ],
     }
     return {"cells": cells, "phases": phases, "feature_design": feature_design}
-
-
-def regenerate_selected_ambient(root):
-    """Rebuild only the three owned ambient binaries and dynamics manifest.
-
-    Recover the authored map from the retained source words, then use the same
-    encoder as make_assets. No fighter/menu/audio asset generation is needed.
-    """
-    import json
-    from stage_assets import build_stage_animation
-    from stage_sources import load_stage_sources
-    out = root / "assets/generated"
-    path = out / "stage-dynamics.json"
-    manifest = json.loads(path.read_text(encoding="utf-8"))
-    for source, previous in zip(load_stage_sources(root), manifest["stages"]):
-        name = "stage" + str(source["id"])
-        base_map = bytearray((out / (name + "_map.bin")).read_bytes())
-        for cell in previous["cells"]:
-            struct.pack_into("<H", base_map, (cell["y"] * 32 + cell["x"]) * 2,
-                             cell["map_word_before"])
-        gfx = (out / (name + "_tiles.bin")).read_bytes()
-        palette = (out / (name + "_pal.bin")).read_bytes()
-        motion = cartoon_stage_animation(name, gfx, bytes(base_map), palette, source["image"])
-        dynamic = build_stage_animation(name, gfx, bytes(base_map), palette,
-                                        cells=motion["cells"], phases=motion["phases"])
-        if dynamic["map"] != (out / (name + "_map.bin")).read_bytes():
-            raise ValueError("ambient-only generation changed a map")
-        record = dynamic["manifest"]
-        record["art_source"] = previous["art_source"]
-        record["feature_design"] = motion["feature_design"]
-        manifest["stages"][source["id"]] = record
-        (out / (name + "_ambient.bin")).write_bytes(dynamic["ambient"])
-    path.write_bytes((json.dumps(manifest, indent=2) + "\n").encode("utf-8"))
-
-
-if __name__ == "__main__":
-    import argparse
-    from pathlib import Path
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--regenerate", action="store_true", required=True)
-    parser.parse_args()
-    regenerate_selected_ambient(Path(__file__).resolve().parents[1])
 
 
 __all__ = ["cartoon_stage_animation"]

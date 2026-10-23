@@ -1,5 +1,15 @@
 # Abaqus: After Hours
-<!-- candidate-version: 0.22.0; rom-sha256: d4fddaf609a0c29f45353a8d9e22fe1131fc3380838d9c0073d3255474cdf8af -->
+<!-- candidate-version: 0.22.1; rom-sha256: 52725899fa86b4ee3d3f3f022dae374c1ab4ff8777bdab4a7134640c34dc8727 -->
+
+## Current v0.22.1: nine approved improvements
+
+Features 01–07, 09 and 10 are approved for main. **Feature 08 is deferred**:
+the camera and ambient art are restored to v0.21.0; its branch/worktree remain
+for polish. The six native suites pass 36,253 exact-ROM checks and matching
+independent smoke passes. [Current release and scope](docs/RELEASE-v0.22.1.md).
+Local 1v1 already works in **Local Versus** with separate controller ports.
+Walking improvements and clearer local-play discovery are the next follow-ups.
+The v0.22.0 material below is historical, including its ten-feature review gallery.
 
 An original four-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II's arcade structure and the people and places of Abaqus in
