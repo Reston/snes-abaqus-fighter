@@ -6,6 +6,22 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+- **v0.24.0 readable-combat integration is authorized and in progress**, on
+  `integration/readable-combat-v024`, starting from main f75005d. The user
+  approved slower/reactable combat and clearer backward hit recoil, plus only
+  proposals1–5: attack art, contact alignment, stage08 rebuild, jump/landing
+  motion and dedicated super art. Proposals6–10 are excluded. Use six isolated
+  feature PRs into the integration branch, then one unmerged combined playtest
+  PR into main. Read docs/COMBAT-v0.24-CONTRACT.md for exact ownership, frame
+  allocation, common art/provenance schema and native budgets. Targeted combat
+  and jump art updates supersede the older other56-poses preservation rule;
+  preserve current walking20–27, portraits, palettes, scale and old masters.
+  Three dedicated super slots are1,2,4; all feature frame sets are disjoint.
+  Main's approved ROM/evidence below remain historical baseline until the
+  combined source is frozen and every exact-ROM gate is regenerated. Do not
+  claim combined pass counts from isolated child runs. Parent owns shared
+  pipeline/preservation policy, version, reports and hardware integration.
+
 - The approved main walking revision is **v0.23.1**, through PR #12.
   The user explicitly approved it with "yes good, merge it" on 2026-10-23. The user rejected v0.23.0's legs/torso mismatch:
   "ok the legs animation improved but know the top part doesn't fit so this wasn't the goal".
