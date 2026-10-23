@@ -51,7 +51,11 @@ def boot(mode=0,fighter=0,stage=0,opponent=None,difficulty=1):
         press(e,'a',port)
     wait(e,2)
     for _ in range(stage):press(e,'down')
-    press(e,'a');wait(e,3);e.run(180)
+    press(e,'a');wait(e,3)
+    if mode==0:
+        # Skip the new optional conversation through its ordinary P1 A route.
+        e.run(3,p1=['a']);e.run(3)
+    e.run(180)
     check(e.state()['intro']==0,'Match intro completes',{'mode':mode,'fighter':fighter,'stage':stage})
     return e
 def close_in(e,distance=31):
@@ -329,14 +333,20 @@ e.run(65)
 e.close()
 
 e=boot(1)
-for _ in range(110):
+# Approach between attacks: a 31-tick spam cycle now exactly matches X's
+# tuned action duration and can whiff forever without a free walking tick.
+for _ in range(180):
     s=e.state()
     if s['screen']==4:break
     forward='right' if s['x1']<s['x2'] else 'left'
-    for _ in range(3):
-        e.run(1,p1=[forward,'x'])
-    for _ in range(28):
-        e.run(1,p1=[forward])
+    if s['intro'] or s['round_end'] or s['hitstop']:
+        e.run(10)
+    elif abs(s['x1']-s['x2'])>30*16:
+        e.run(8,p1=[forward])
+    elif s['action1']:
+        e.run(6)
+    else:
+        e.run(3,p1=['x']);e.run(40)
 check(e.state()['screen']==4 and e.state()['wins1']==2,'Two round wins finish a best-of-three local match',e.state())
 e.shot('victory.png');press(e,'a');wait(e,3)
 check(e.state()['wins1']==0 and e.state()['round']==1,'Rematch resets round wins')
@@ -380,7 +390,7 @@ champion_evidence={
 result_map=C.string_at(e.core.retro_get_memory_data(3),e.core.retro_get_memory_size(3))
 title_prompt='A/START: TITLE'
 title_x=(32-len(title_prompt))//2
-title_tiles=[int.from_bytes(result_map[0xB000+(24*32+x)*2:0xB002+(24*32+x)*2],'little')&0x3ff
+title_tiles=[int.from_bytes(result_map[0xB000+(25*32+x)*2:0xB002+(25*32+x)*2],'little')&0x3ff
              for x in range(title_x,title_x+len(title_prompt))]
 check(title_tiles==[256+ord(ch) for ch in title_prompt],
       'Champion result advertises the actual A/START title action',title_tiles)

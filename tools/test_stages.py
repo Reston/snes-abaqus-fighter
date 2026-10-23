@@ -935,6 +935,8 @@ def run_stage(stage_id: int, record: dict[str, object],
     # the four phase captures are collected.  Keep that precise HUD row out
     # of the stage-only PPU diff; all authored stage pixels remain strict.
     rects.append((0, 24, 256, 32))
+    # Training tool rows own this BG2 region; phase VRAM remains exact.
+    rects.append((0, 208, 256, 224))
     non_stage = record.get("non_stage_rects", [])
     if isinstance(non_stage, list):
         rects += [tuple(int(value) for value in item)

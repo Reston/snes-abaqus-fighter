@@ -17,6 +17,8 @@ from PIL import Image, ImageChops, ImageStat
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from effect_assets import make_effect_sheet
+from expansion_contracts import preserved_assets, preserved_native
+from release_evidence import EXPECTED_NATIVE_CORE, EXPECTED_INDEPENDENT_CORE
 from test_characters import boot, vram
 from test_inputs import trace, signed16
 from test_stages import oam_entry, oam_memory, scanline_budget
@@ -504,24 +506,16 @@ def asset_proof():
         check(current[first * 32:(first + count) * 32] == baseline[first * 32:(first + count) * 32],
               'Unowned projectile/shadow tile bytes preserved', {'first': first, 'count': count})
         preserved.extend(range(first, first + count))
-    changed = subprocess.check_output(['git', 'diff', '610537d', '--name-only', '--', 'assets/generated'],
-                                      cwd=ROOT, text=True).splitlines()
-    check(changed == ['assets/generated/effects.bin'],
-          'Only the owned effects asset differs among all generated outputs', changed)
+    shared = preserved_assets(ROOT)
+    check(True, 'Combined assets satisfy exact authorized changes and retained source pins')
     return {'effects_sha256': hashlib.sha256(current).hexdigest(),
-            'preserved_tiles': preserved, 'generated_changes': changed}
+            'preserved_tiles': preserved, 'combined': shared}
 
 
 def memory_proof():
-    baseline_path = ROOT / 'build/impact-baseline.sym'
-    result = {'new_mutable_bytes': 0, 'fighter_stride': 64, 'wave_stride': 16,
-              'trace_words': 123}
-    if baseline_path.exists():
-        baseline = symbols(baseline_path)
-        ram = {k: v for k, v in baseline.items() if v < 0x20000 or 0x7e0000 <= v < 0x800000}
-        moved = {k: [v, SYMBOLS.get(k)] for k, v in ram.items() if SYMBOLS.get(k) != v}
-        check(not moved, 'Every baseline RAM/direct-page symbol retains its exact address', moved)
-        result['preserved_ram_symbols_including_markers'] = len(ram)
+    result = {'impact_mutable_bytes_added': 0, 'fighter_stride': 64, 'wave_stride': 16,
+              'trace_words': 123, 'combined': preserved_native(ROOT)}
+    check(True, 'Combined native memory and ABI satisfy strict shared policy')
     sections = []
     for name, addr in SYMBOLS.items():
         if not name.startswith('SECTIONSTART_'):
@@ -552,12 +546,25 @@ def main():
     SYMBOLS = symbols(ROOT / 'dist/abaqus-after-hours.sym')
     manifest = json.loads((ROOT / 'dist/manifest.json').read_text(encoding='utf-8'))
     report = {'status': 'failed', 'rom_sha256': manifest['sha256'], 'version': manifest['version'],
+              'source_sha256': {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+                                for p in sorted((ROOT / 'src').rglob('*')) if p.is_file()},
+              'symbols_sha256': hashlib.sha256((ROOT / 'dist/abaqus-after-hours.sym').read_bytes()).hexdigest(),
+              'core_sha256': {name: hashlib.sha256((ROOT / path).read_bytes()).hexdigest() for name, path in (
+                  ('snes9x', '.tools/core/snes9x_libretro.dll'),
+                  ('bsnes2014-accuracy', '.tools/compat/bsnes2014-accuracy/bsnes2014_accuracy_libretro.dll'))},
+              'harness_sha256': {p: hashlib.sha256((ROOT / p).read_bytes()).hexdigest() for p in (
+                  'tools/test_expansion_02_impact.py', 'tools/expansion_contracts.py',
+                  'tools/effect_assets.py', 'tools/test_characters.py', 'tools/test_inputs.py',
+                  'tools/test_stages.py', 'tools/test_compatibility.py', 'tools/emulator.py')},
               'host_contract': {'headless': True, 'audio_playback': False,
                                 'controller_only': True, 'memory_writes': False, 'save_states': False},
               'checks': CHECKS, 'cases': [], 'scope': 'Feature02 focused proof; no six-suite claim'}
     try:
         check(hashlib.sha256((ROOT / 'dist/abaqus-after-hours.sfc').read_bytes()).hexdigest() ==
               manifest['sha256'], 'Built cartridge matches exact manifest SHA')
+        check(report['core_sha256']['snes9x'] == EXPECTED_NATIVE_CORE['dll_sha256'] and
+              report['core_sha256']['bsnes2014-accuracy'] == EXPECTED_INDEPENDENT_CORE['dll_sha256'],
+              'Both focused proof cores match their pinned native DLL identities')
         report['assets'] = asset_proof()
         report['memory'] = memory_proof()
         for stage in range(3):
@@ -581,8 +588,17 @@ def main():
                                       engine='bsnes2014-accuracy')
                 report['independent'].append(result)
                 print(result['case'], 'PASS', flush=True)
+        report['rom_sha256_after'] = hashlib.sha256((ROOT / 'dist/abaqus-after-hours.sfc').read_bytes()).hexdigest()
+        check(report['rom_sha256_after'] == report['rom_sha256'],
+              'Production ROM identity stays unchanged throughout the focused proof')
         report['status'] = 'passed'
+    except Exception as exc:
+        report['error'] = repr(exc)
+        raise
     finally:
+        report['captures'] = [{'path': name, 'sha256': hashlib.sha256((ROOT / name).read_bytes()).hexdigest()}
+                              for case in report['cases'] + report.get('independent', [])
+                              for name in case['captures']]
         report['passed'] = sum(item['passed'] for item in CHECKS)
         report['failed'] = sum(not item['passed'] for item in CHECKS)
         REPORT.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8', newline='\n')

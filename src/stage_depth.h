@@ -75,11 +75,15 @@ void stageDepthPublish(s16 impactScroll) {
 
 u8 stageDepthAmbientReady(void) {
     if(screen!=FIGHT || paused)return 0;
-    if(hitstop || intro)return 0;
+    if(intro)return 0;
     if(ambientWanted>=4)return 0;
     if(roundEnd) {
+        /* Round-end owns simulation before the hitstop branch. A KO may
+         * retain its final contact's hitstop value; it must not suppress
+         * the separate, delayed victory reaction for the entire round. */
         if(stageVictoryTick<16)return 0;
         return stageVictoryTick<=96;
     }
+    if(hitstop)return 0;
     return animationAdvance;
 }

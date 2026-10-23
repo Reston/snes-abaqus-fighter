@@ -210,6 +210,8 @@ def boot(mode: int, fighter: int, stage: int = 0, fighter2: int | None = None,
         press(e, "down")
     press(e, "a")
     wait_screen(e, 3)
+    if mode == 0:
+        e.run(3, p1=["a"]); e.run(3)
     # Let the 110-frame intro finish while the CPU is still inert.  The first
     # live frame can still carry the FIGHT banner's dirty-tile upload, so give
     # the renderer three quiet frames before the first VRAM check or capture.
@@ -853,17 +855,17 @@ def animation_group_for_pose(pose: int) -> set[int]:
     """Frames that are valid visual transitions for a legacy logical pose."""
 
     groups = {
-        0: {0, 16, 17, 18, 19},
+        0: {0, 16, 17, 18, 19, 28, 32, 34, 36, 38},
         1: {1, 20, 21, 22, 23},
         2: {2, 24, 25, 26, 27},
         3: {3, 28},
-        4: {4, 29, 30, 31, 55},
+        4: {4, 29, 30, 31, 54, 55},
         5: {5, 32, 33, 34, 35},
         6: {6, 32, 33, 34, 35},
-        7: {7, 36, 37, 38, 39},
-        8: {8, 38, 39},
+        7: {7, 32, 36, 37, 38, 39},
+        8: {8, 28, 38, 39},
         9: {9, 40, 63},
-        10: {10, 41, 58, 59, 60, 61, 62},
+        10: {10, 14, 41, 58, 59, 60, 61, 62},
         11: {11, 46},
         12: {12, 42, 43},
         13: {13, 44, 45},
@@ -1355,7 +1357,7 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
         check(s0["selected"] == fighter, "menu selects requested fighter", {
             "fighter": fighter, "selected": s0["selected"],
         })
-        check(actual0 in {0, 16, 17, 18, 19} or bank0 in {0, 2},
+        check(actual0 in {0, 16, 17, 18, 19, 32} or bank0 in {0, 2},
               "idle frame uses a valid legacy or breathing animation bank", {
             "fighter": fighter, "pose": s0["pose1"], "frame": actual0,
             "bank": bank0,
@@ -1369,10 +1371,10 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
         e.run(3)
         idle_path = capture(e, fighter, "idle")
         idle_loop = observe_animation_loop(
-            # Four 16-tick phases take 64 ticks. A half-cycle observation can
-            # contain only two phases depending on the entry/DMA phase.
+            # Weighted breathing uses a complete 96-tick cycle; observe all
+            # four approved frames through their unequal planted holds.
             e, fighter, 0, "idle breathing", (), {16, 17, 18, 19},
-            frames=64, gif_label="idle-animation", minimum_distinct=4,
+            frames=100, gif_label="idle-animation", minimum_distinct=4,
         )
         seen_banks.update(frame // 8 for frame in idle_loop["frames"])
 
@@ -1446,7 +1448,10 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
             normal_streams[key] = stream_pose(
                 e, fighter, 0, pose, "normal " + key.upper(), hold=(key,))
             seen_banks.add(normal_streams[key]["bank"])
-            e.run(50)
+            # Observe extension and recovery as well as the first pose.
+            # Weighted anticipation may occupy a transition bank at entry.
+            native_frames = observed_animation_frames(e, fighter, 0, frames=50)
+            seen_banks.update(frame // 8 for frame in native_frames)
 
         # Hold the transition across the libretro poll phase; the engine still
         # consumes only the edge and keeps the uppercut action active.

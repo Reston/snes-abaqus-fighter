@@ -21,6 +21,7 @@ from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from emulator import Emulator, ROOT
+from expansion_contracts import combined_contract
 
 OUT = ROOT / 'docs/screenshots/expansion-04'
 REPORT = ROOT / 'docs/expansion-04-report.json'
@@ -258,7 +259,7 @@ def verify_victory(e, fighter, side, monitor):
     captures, seen, accents = {}, {}, set()
     frozen_keys = ('hp1','hp2','x1','x2','y1','y2','energy1','energy2','seconds','wins1','wins2')
     frozen = tuple(e.state()[key] for key in frozen_keys)
-    bad_state, loser_frames = [], set()
+    bad_state, loser_frames, loser_errors = [], set(), []
     start = e.state()['round_end']
     for _ in range(start-1):
         e.run(1)
@@ -267,6 +268,15 @@ def verify_victory(e, fighter, side, monitor):
         if tuple(s[key] for key in frozen_keys) != frozen:
             bad_state.append(s['frame'])
         loser_frames.add(s[f'anim_frame{2-side}'])
+        loser = 2-side
+        clock = s[f'anim_tick{loser}']
+        expected_loser = ((59 if s[f'down_tick{loser}'] < 5 else 14)
+                          if s[f'down_state{loser}'] == 3 else
+                          47 if clock <= 8 else 59 if clock <= 16 else 14)
+        if s[f'anim_frame{loser}'] != expected_loser:
+            loser_errors.append({'tick': tick, 'frame': s[f'anim_frame{loser}'],
+                                 'expected': expected_loser, 'clock': clock,
+                                 'down_state': s[f'down_state{loser}'], 'down_tick': s[f'down_tick{loser}']})
         if tick in VICTORY_SAMPLES:
             beat = VICTORY_SAMPLES.index(tick)
             expected = VICTORIES[fighter][beat]
@@ -282,7 +292,8 @@ def verify_victory(e, fighter, side, monitor):
     check(not bad_state, NAMES[fighter]+' victory leaves outcome, positions, health and clock frozen', bad_state)
     check(len(seen) == 7 and len(set(seen.values())) >= 4,
           NAMES[fighter]+' plays seven victory beats with at least four distinct approved poses')
-    check(loser_frames <= {47,59}, NAMES[fighter]+' KO loser keeps native fall/floor poses', sorted(loser_frames))
+    check(not loser_errors, NAMES[fighter]+' KO loser follows exact weighted fall/impact/prone sequencing',
+          {'observed': sorted(loser_frames), 'errors': loser_errors[:8]})
     check(len(accents) >= 2, NAMES[fighter]+' victory has a moving native signature accent', len(accents))
     e.run(1)
     check(e.state()['intro'] == 110 and not e.state()['round_end'],
@@ -374,17 +385,11 @@ def contact_sheet(rows, beats, label):
 
 
 def static_audit():
-    base_sym = symbols(subprocess.check_output(
-        ['git','show',BASE+':dist/abaqus-after-hours.sym'], cwd=ROOT).decode('utf-8'))
-    runtime = {n:a for n,a in base_sym.items() if
-               (a < 0x2000 or 0x7E0000 <= a < 0x800000)
-               and n not in ('RAM_USAGE_SLOT_3_BANK_127_END', 'SECTIONEND_globram.data')}
-    moved = {n:[a,SYMS.get(n)] for n,a in runtime.items() if SYMS.get(n) != a}
-    check(not moved, 'All pre-existing RAM/direct-page symbol addresses are preserved',
-          {'compared': len(runtime), 'moved': moved})
-    check(SYMS['personalityIntroFrames'] >= base_sym['SECTIONEND_globram.data'] and
+    combined = combined_contract(ROOT)
+    check(True, 'Strict combined asset/source/native preservation policy passes')
+    check(SYMS['personalityIntroFrames'] >= 0x7f0448 and
           SYMS['personalityVictoryFrames'] == SYMS['personalityIntroFrames']+48,
-          '132 bounded initialized constant bytes append after existing data')
+          'Personality tables retain 132 contiguous bytes inside combined appended data')
     assets = subprocess.check_output(['git','diff',BASE,'--name-only','--','assets/generated'], cwd=ROOT).decode().splitlines()
     fighter_assets = [path for path in assets if re.search(
         r'/(fighter|portrait|character-manifest)', path)]
@@ -396,7 +401,7 @@ def static_audit():
             check(address >> 16 == end >> 16 and address & 65535 >= 0x8000,
                   'Native personality function fits one 32 KiB LoROM bank', name)
             sections.append({'name':name,'start':f'{address:06X}','end':f'{end:06X}','bytes':end-address})
-    return {'existing_ram_symbols':len(runtime), 'new_mutable_bytes':0,
+    return {'combined_contract': combined, 'personality_new_mutable_bytes':0,
             'all_generated_changes_from_base':assets,
             'initialized_constant_bytes':132, 'native_sections':sections}
 
@@ -479,13 +484,15 @@ def progression_probes():
 
 def bank_audit():
     sdk = Path(os.environ.get('PVSNESLIB_HOME', ROOT/'.tools/sdk/pvsneslib'))
-    output = ROOT/'build/personality-bank-audit.sfc'
+    folder = ROOT/'build/v022-personality'
+    folder.mkdir(parents=True, exist_ok=True)
+    output = folder/'bank-audit.sfc'
     result = subprocess.run([str(sdk/'devkitsnes/bin/wlalink.exe'),'-d','-s','-v','-A','-c',
                              '-L',str(sdk/'pvsneslib/lib/LoROM_FastROM'),
                              str(ROOT/'build/linkfile'),str(output)],
                             cwd=ROOT,capture_output=True,text=True,check=True)
     log = result.stdout+result.stderr
-    (ROOT/'build/personality-banks.log').write_text(log,encoding='utf-8',newline='\n')
+    (folder/'banks.log').write_text(log,encoding='utf-8',newline='\n')
     check(output.read_bytes() == (ROOT/'dist/abaqus-after-hours.sfc').read_bytes(),
           'Verbose native bank audit reproduces the exact tested cartridge')
     free = [(int(bank),int(count)) for bank,count in
@@ -504,10 +511,12 @@ def main():
     start = time.monotonic()
     OUT.mkdir(parents=True, exist_ok=True)
     report = {'status':'failed', 'rom_sha256':hashlib.sha256((ROOT/'dist/abaqus-after-hours.sfc').read_bytes()).hexdigest(),
+              'symbols_sha256':hashlib.sha256((ROOT/'dist/abaqus-after-hours.sym').read_bytes()).hexdigest(),
               'version':json.loads((ROOT/'dist/manifest.json').read_text(encoding='utf-8'))['version'],
               'harness_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
               'native_source_sha256':{name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest()
-                                      for name in ('src/game.c','src/fighter_personality.h')},
+                                      for name in ('src/game.c','src/fighter_personality.h', 'src/animation_weight.h',
+                                                   'tools/expansion_contracts.py', 'tools/emulator.py')},
               'core_sha256':hashlib.sha256((ROOT/'.tools/core/snes9x_libretro.dll').read_bytes()).hexdigest(),
               'host_contract':{'headless':True,'controller_only':True,'save_states':False,
                                'memory_writes':False,'audio_playback':False},

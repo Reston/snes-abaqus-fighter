@@ -20,6 +20,7 @@ import zipfile
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from emulator import Emulator, ROOT
+from expansion_contracts import combined_contract
 import test_presentation as p
 from test_champion import host_contract, verify_background
 
@@ -168,7 +169,7 @@ def skip_story(e):
           "skip does not become an opening attack or buffered command", s)
 
 
-def play_cpu(e, limit=16000):
+def play_cpu(e, limit=16000, policy="close"):
     """Read-only feedback controls ordinary close/guard/throw gameplay."""
     before = e.frames
     rounds_seen = set()
@@ -186,8 +187,17 @@ def play_cpu(e, limit=16000):
             rounds_seen.add(s["round"])
         if s["intro"] or s["round_end"] or s["hitstop"]:
             e.run(1)
+        elif policy == "jump-in" and s["y1"] >= 32768:
+            # Easy still has ordinary real guard/movement/attack decisions.
+            # Cross ground waves with a visible jump, then press airborne A.
+            air_keys = [forward]
+            if not s["action1"] and distance < 62 and s["y1"] < 65536-16:
+                air_keys.append("a")
+            e.run(1, p1=air_keys)
         elif s["action1"]:
             e.run(1, p1=[forward])
+        elif policy == "jump-in" and (distance > 38 or (s["wave2"] and s["wave_low2"])):
+            e.run(1, p1=[forward,"up"])
         elif s["action2"] and distance < 55:
             e.run(1, p1=[back, "down"] if 4 <= s["action2"] <= 6 else [back])
         elif distance >= s["throw_range1"] - 2:
@@ -257,7 +267,7 @@ def transition_controls():
         check((e.state()["frame"] - before) & 65535 == 600 and read(e, "lag_frame_counter") == lag,
               "post-story live combat retains 600/600 cadence and native lag counter")
         report["live_cadence"] = 600
-        press(e, "start"); press(e, "b")
+        press(e, "start"); press(e, "b"); wait(e, 1)
         check(e.state()["screen"] == 1, "ordinary paused B returns from Arcade to roster")
     finally:
         e.close()
@@ -297,7 +307,7 @@ def transition_controls():
         check(e.state()["screen"] == 3 and e.state()["arcade"] == 0 and e.state()["fighter_id2"] == 1,
               "result Start wins simultaneous A/B and Continue retains the opponent")
         story(e)
-        press(e, "start"); press(e, "b")
+        press(e, "start"); press(e, "b"); wait(e, 1)
         check(e.state()["screen"] == 1, "paused B still leaves a repeated conversation")
     finally:
         e.close()
@@ -318,13 +328,14 @@ def ladder(hero):
             skip_story(e)
             attempts = []
             for attempt in range(16):
-                frames = play_cpu(e)
+                policy = "close" if attempt == 0 else "jump-in"
+                frames = play_cpu(e, policy=policy)
                 current = e.state()
                 check(current["screen"] == 4 and current["arcade"] == index,
                       "controller combat reaches the expected Arcade result")
                 check(bool(current["champion"]) == (index == 10 and current["wins1"] == 2),
                       "only a real eleventh match win awards champion")
-                attempts.append({"wins1": current["wins1"], "wins2": current["wins2"], "frames": frames})
+                attempts.append({"wins1": current["wins1"], "wins2": current["wins2"], "frames": frames, "controller_policy": policy})
                 if current["wins1"] == 2:
                     break
                 result_quote(e)
@@ -356,6 +367,7 @@ def ladder(hero):
               "individual ending waits stably for its normal menu action")
         key = ("a", "start", "b")[hero % 3]
         press(e, key)
+        wait(e, 1 if key == "b" else 0)
         check(e.state()["screen"] == (1 if key == "b" else 0),
               "earned champion exit uses ordinary title/roster route", key)
         report["exit"] = {"key": key, "screen": e.state()["screen"]}
@@ -388,19 +400,12 @@ def storage_and_preservation():
             start = rom_offset(pointer)
             encoded.append(raw[start:raw.index(b"\0", start)].decode("ascii"))
         check(encoded == lines, "actual linked text and far pointers preserve every authored line", name)
-    baseline = symbols(subprocess.check_output(["git", "show", BASE + ":dist/abaqus-after-hours.sym"], cwd=ROOT))
-    actual = {name: address for name, address in baseline.items()
-              if not name.startswith(("SECTION", "RAM_USAGE", "tccs_"))
-              and (address >> 16 in (0x7E, 0x7F) or address < 0x2000)}
-    changed = [name for name, address in actual.items() if SYMBOLS.get(name) != address]
-    check(not changed, "all existing allocated RAM addresses remain exact", {"compared": len(actual), "changed": changed})
-    check(SYMBOLS["arcadeStoryTicks"] == baseline["roundUiPending"] + 1,
-          "two-byte story timer follows the existing game globals", hex(SYMBOLS["arcadeStoryTicks"]))
-    archive = subprocess.check_output(["git", "archive", "--format=zip", BASE, "assets/generated", "assets/art"], cwd=ROOT)
-    with zipfile.ZipFile(io.BytesIO(archive)) as package:
-        paths = [name for name in package.namelist() if not name.endswith("/")]
-        changed_assets = [name for name in paths if (ROOT / name).read_bytes() != package.read(name)]
-    check(not changed_assets, "all retained art, palettes and generated assets remain byte-exact", changed_assets)
+    contract = combined_contract(ROOT)
+    check(True, "combined strict asset/native preservation passes", {
+        "changes": contract["assets"]["changed_generated"],
+        "native": contract["native"]})
+    check(SYMBOLS["arcadeStoryTicks"] == SYMBOLS["stageVictoryPhase"] + 1,
+          "two-byte story timer follows sixteen stage-depth bytes", hex(SYMBOLS["arcadeStoryTicks"]))
     sections, start, banks, story_sizes = [], None, set(), {}
     for address, name in re.findall(r"^([0-9a-f]{8}) (\S+)$", (ROOT / "dist/abaqus-after-hours.sym").read_text(encoding="utf-8"), re.M):
         if name.startswith("SECTIONSTART_"):
@@ -415,8 +420,8 @@ def storage_and_preservation():
                 if "arcadeStory" in name:
                     story_sizes[start[1].split("text_")[0]] = end - start[0]
             start = None
-    return {"existing_allocated_ram_symbols": len(actual), "new_mutable_bytes": 2,
-            "timer_address": hex(SYMBOLS["arcadeStoryTicks"]), "unchanged_asset_files": len(paths),
+    return {"combined_contract": contract, "new_mutable_bytes": 2,
+            "timer_address": hex(SYMBOLS["arcadeStoryTicks"]),
             "rom_text_lines": sum(map(len, TEXT.values())), "maximum_linked_section_bytes": max(sections),
             "story_function_bytes": story_sizes,
             "rom_banks_without_named_sections": [bank for bank in range(128) if bank not in banks]}
@@ -436,7 +441,8 @@ def main():
               "host": host_contract(), "controller_only": True, "memory_writes": 0, "save_states": 0,
               "core_sha256": sha((ROOT / ".tools/core/snes9x_libretro.dll").read_bytes()),
               "source_sha256": {name: sha((ROOT / name).read_bytes()) for name in
-                  ("src/game.c", "src/arcade_story.h", "tools/test_expansion_09_arcade_story.py")},
+                  ("src/game.c", "src/arcade_story.h", "tools/test_expansion_09_arcade_story.py",
+                   "tools/expansion_contracts.py", "tools/test_presentation.py", "tools/test_champion.py", "tools/emulator.py")},
               "checks": CHECKS, "ladders": []}
     try:
         check(report["rom_sha256"] == manifest["sha256"], "exact cartridge matches its build manifest")

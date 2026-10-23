@@ -11,7 +11,7 @@ the existing ``tools/emulator.py`` interface remains unchanged:
     TRACE[116]  ambient clock
     TRACE[117]  pending ambient phase
     TRACE[118]  ambient pending age
-    TRACE[119]  pause page (0 normal, 1 controls, 2 specials)
+    TRACE[119]  pause page (0 normal, 1 controls, 2 specials, 3 Training tools)
     TRACE[120]  guide build stage (0 settled, 1..3 staged)
     TRACE[121]  Training dummy (0 stand, 1 high guard, 2 low guard, 3 jump, 4 CPU)
     TRACE[122]  guide dirty flag (0 settled, 1 pending)
@@ -55,7 +55,7 @@ GUIDE_BUILD = 120
 TRAINING_DUMMY = 121
 GUIDE_DIRTY = 122
 GUIDE_SETTLE_CALLBACKS = 8
-MENU_LOAD_DUPLICATE_LIMIT = 16
+MENU_LOAD_DUPLICATE_LIMIT = 36
 TRAINING_CORE_OPTIONS = {
     # Snes9x filters contradictory directions by default.  Training's SOCD
     # regression deliberately enables the core's documented pass-through so
@@ -194,6 +194,8 @@ class QA:
         self.menu_load_duplicates: list[dict[str, int | str]] = []
         self._menu_load_budget = 0
         self._menu_load_screen_changed = False
+        self._menu_forced_blank_seen = False
+        self._menu_visible_duplicate_run = 0
 
     def state(self) -> dict[str, int]:
         return public_state(self.emulator)
@@ -227,10 +229,31 @@ class QA:
                     # this allowance narrow and visible: fight/pause cadence
                     # remains strict, and a sustained loader stall fails after
                     # a bounded number of callbacks.
+                    # Eleven resident cues measurably need 27 forced-blank
+                    # callbacks on each arena load. Keep a 36-callback bound
+                    # require actual black PPU output during the extension,
+                    # with two post-load publication callbacks at most.
+                    # Live fight/pause cadence remains unit-only.
+                    used = MENU_LOAD_DUPLICATE_LIMIT - self._menu_load_budget
+                    blank = self.emulator.frame.getbbox() is None
+                    if used == 0:
+                        self._menu_forced_blank_seen = False
+                        self._menu_visible_duplicate_run = 0
+                    if blank:
+                        self._menu_forced_blank_seen = True
+                        self._menu_visible_duplicate_run = 0
+                    else:
+                        self._menu_visible_duplicate_run += 1
+                    if used >= 16:
+                        check(self._menu_forced_blank_seen and self._menu_visible_duplicate_run <= 2,
+                              "extended menu load is forced blank with at most two publication callbacks",
+                              {"label": self.label, "used": used, "black": blank,
+                               "visible_settle": self._menu_visible_duplicate_run})
                     self.menu_load_duplicates.append({
                         "label": self.label, "sample": self.samples,
                         "frame": current["frame"],
                         "previous_screen": self.previous.get("screen", -1),
+                        "forced_blank": blank,
                         "screen": current.get("screen", -1),
                     })
                     if self._menu_load_budget > 0:
@@ -315,6 +338,11 @@ def wait_screen(q: QA, wanted: int, limit: int = 720) -> dict[str, int]:
 
 def wait_fight_intro(q: QA) -> dict[str, int]:
     current = wait_screen(q, FIGHT)
+    if current["mode"] == 0:
+        # Arcade's new pre-match conversation owns the frozen 110 intro.
+        # Its documented P1 A edge proceeds to the ordinary countdown.
+        q.press("a")
+        current = q.state()
     for _ in range(180):
         if current.get("intro", 1) == 0:
             q.run(3)
@@ -595,7 +623,7 @@ def cycle_to_page(q: QA, target: int) -> list[dict[str, int]]:
 
     current = q.state()
     seen: list[dict[str, int]] = []
-    for _ in range(3):
+    for _ in range(4 if current["mode"] == 2 else 3):
         if current["pause_page"] == target:
             return seen
         q.press("select")
@@ -639,7 +667,8 @@ def verify_page_navigation(rom: Path, mode: int, fighter: int,
         page1 = cycle_to_page(q, 1)
         controls = page_text(
             q,
-            ("HOW TO PLAY 1/2", "WALK", "JUMP", "STAND GUARD",
+            ("HOW TO PLAY 1/3" if mode == 2 else "HOW TO PLAY 1/2",
+             "WALK", "JUMP", "STAND GUARD",
              "LOW GUARD", "PUNCH", "KICK", "THROW", "UPPERCUT",
              "AFTER A HIT: PRESS HEAVIER", "CROSS-UP: JUMP PAST + A"),
             f"mode{mode}-controls",
@@ -666,15 +695,20 @@ def verify_page_navigation(rom: Path, mode: int, fighter: int,
         if 0 <= p2 < len(FIGHTER_NAMES):
             expected.extend((FIGHTER_NAMES[p2], SPECIAL_NAMES[p2],
                              SPECIAL_FAMILY_NAMES[SPECIAL_FAMILY[p2]]))
-        expected.extend(("MOVE LIST 2/2", "QUICK: DOWN + Y",
+        expected.extend(("MOVE LIST 2/3" if mode == 2 else "MOVE LIST 2/2", "QUICK: DOWN + Y",
                          "MOTION: D, D+F, F + Y/X", "COST: 32 ENERGY",
                          "12-TICK WINDOW PER STEP",
                          "PRESS PUNCH WITH FINAL TOWARD"))
         specials = page_text(q, expected, f"mode{mode}-specials")
 
-        # SELECT is a three-state cycle, including the wrap to normal pause.
+        # Training adds its tools page before SELECT wraps to normal pause.
         q.press("select")
         wait_guide_settled(q, f"mode{mode}-select-wrap")
+        if mode == 2:
+            check(q.state()["pause_page"] == 3,
+                  "Training SELECT opens tools after specials", q.state())
+            q.press("select")
+            wait_guide_settled(q, "training-tools-select-wrap")
         check(q.state()["pause_page"] == 0,
               "SELECT cycles specials back to normal pause", q.state())
         q.press("select")
@@ -810,8 +844,7 @@ def verify_paused_directional_socd(rom: Path) -> dict[str, object]:
 
         # Return to the normal pause card, then test the same three cases on
         # the paused Training dummy selector.
-        q.press("select")
-        wait_guide_settled(q, "socd-dummy-page0")
+        cycle_to_page(q, 0)
         check(q.state()["pause_page"] == 0,
               "SOCD dummy fixture returns to normal pause", q.state())
         set_dummy(q, 1)
@@ -1403,7 +1436,7 @@ def verify_cpu_training_play(rom: Path) -> list[dict[str, object]]:
                              "action1", "action2", "anim_frame1", "anim_frame2",
                              "anim_tick1", "anim_tick2", "wave1", "wave2", "hitstop",
                              "ambient_clock", "down_state1", "down_state2", "invuln1", "invuln2")
-            for page in (1, 2, 0):
+            for page in (1, 2, 3, 0):
                 cycle_to_page(q, page)
                 after = q.run(8, ("down", 'y'), ("up", "y"))
                 check(all(after[k] == frozen[k] for k in frozen_fields) and
@@ -1515,10 +1548,17 @@ def verify_cpu_lowwave_defense(rom: Path) -> list[dict[str, object]]:
         try:
             pause(q)
             set_dummy(q, 4)
-            # Leave the ordinary long-range neutral-jump cadence before
-            # launching the wave; this fixture measures grounded defense.
-            q.run(24)
+            # Pick a paused frame phase with a full cast/contact window before
+            # the CPU's ordinary frame%143 long-range jump. Paused callbacks
+            # advance frame without moving either fighter or consuming meter.
+            q.run((32 - q.state()["frame"] % 143) % 143)
             resume(q)
+            ready = q.state()
+            check(not any(ready[key] for key in
+                          ("y1", "y2", "action1", "action2", "hurt2",
+                           "down_state2", "hitstop", "wave1", "wave2")) and
+                  abs(ready["x2"] - ready["x1"]) > 80 * 16 and ready["hp2"] == 128,
+                  "low-wave fixture establishes grounded available CPU defense", ready)
             q.run(3, ("down",))
             q.run(3, ("down", 'y'))
             samples = [q.step() for _ in range(100)]
@@ -1531,7 +1571,8 @@ def verify_cpu_lowwave_defense(rom: Path) -> list[dict[str, object]]:
                   {"difficulty": difficulty, "wave": waves[:2], "guard": guarded[:2]})
             check(any(s["anim_frame2"] == 3 and s["anim_state2"] == 6 for s in guarded),
                   "CPU Training defense renders its ordinary crouch-guard pose", guarded[:2])
-            results.append({"difficulty": difficulty, "wave_frames": len(waves),
+            results.append({"difficulty": difficulty, "launch": ready,
+                            "wave_frames": len(waves),
                             "guarded_chip_frames": len(guarded), "guard": guarded[:2]})
         finally:
             q.close()
@@ -1643,7 +1684,7 @@ def verify_cpu_level_controls(rom: Path) -> dict[str, object]:
             set_dummy(q, 4)
             expect(level, "scripted dummy ignores shoulder")
             exclusions.append({"dummy": target, "difficulty": level})
-        for page in (1, 2):
+        for page in (1, 2, 3):
             for port, key in ((0, "r"), (1, "l")):
                 cycle_to_page(q, page)
                 q.press(key, port=port)
@@ -1807,7 +1848,7 @@ def verify_start_select_priority(rom: Path) -> list[dict[str, object]]:
     )
     results: list[dict[str, object]] = []
     for fixture in ("moved", "damaged"):
-        for page in range(3):
+        for page in range(4):
             for name, p1, p2 in chords:
                 label = f"training-resume-{fixture}-page{page}-{name}"
                 q = boot(rom, mode=2, fighter=0, fighter2=10, label=label)

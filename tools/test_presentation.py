@@ -16,6 +16,7 @@ from __future__ import annotations
 import ctypes as C
 import hashlib
 import json
+import re
 import sys
 import time
 from pathlib import Path
@@ -439,6 +440,15 @@ def verify_opaque_text_rows(e: Emulator, rows: list[tuple[int, int, str]],
     return {"label": label, "tiles": len(seen), "cells": details}
 
 
+def arcade_copy(name: str) -> list[str]:
+    """Authored story copy oracle; native VRAM/PPU still prove its delivery."""
+    source = (ROOT / "src/arcade_story.h").read_text(encoding="utf-8")
+    match = re.search(r"\b" + re.escape(name) + r"\[[^]]+\]\s*=\s*\{(.*?)\};", source, re.S)
+    if match is None:
+        raise AssertionError(("missing authored story copy", name))
+    return [json.loads('"' + text + '"') for text in re.findall(r'"((?:\\.|[^"\\])*)"', match.group(1))]
+
+
 def verify_result_font_bank(e: Emulator, current: dict[str, int]) -> dict[str, object]:
     """Verify the result card's title, score, quote, and action rows."""
 
@@ -461,9 +471,10 @@ def verify_result_font_bank(e: Emulator, current: dict[str, int]) -> dict[str, o
             (18, 21, winner),
             (19, 21, f"P1 {current['wins1']}-{current['wins2']} P2"),
             (20, 22, "ALL 11"), (21, 21, "DEFEATED"),
-            (22, centered_start(quotes[winner_id]), quotes[winner_id]),
-            (24, centered_start("A/START: TITLE"), "A/START: TITLE"),
-            (26, centered_start("B: CHARACTER SELECT"), "B: CHARACTER SELECT"),
+            *[(22 + line, centered_start(text), text) for line, text in
+              enumerate(arcade_copy("arcadeStoryEndings")[winner_id * 3:winner_id * 3 + 3])],
+            (25, centered_start("A/START: TITLE"), "A/START: TITLE"),
+            (27, centered_start("B: CHARACTER SELECT"), "B: CHARACTER SELECT"),
         ]
         return verify_opaque_text_rows(e, rows, "champion ending")
     elif current["mode"] == 1:
@@ -473,6 +484,7 @@ def verify_result_font_bank(e: Emulator, current: dict[str, int]) -> dict[str, o
         title = "SHIFT COMPLETE" if won else "SHIFT OVER"
         action = "A/START: NEXT CHALLENGER" if won else "A/START: CONTINUE"
         context = "ARCADE SHIFT"
+        quotes = arcade_copy("arcadeStoryWinnerQuotes")
     rows = [
         (5, centered_start(title), title),
         (9, 15, winner),
@@ -576,6 +588,18 @@ def verify_footer_blank(e: Emulator, label: str) -> None:
     """Rows 26/27 are permanent breathing room after combat UI settles."""
 
     rows = {str(row): ui_row(e, row) for row in (26, 27)}
+    if state(e)["mode"] == 2:
+        for row, values in rows.items():
+            check(all((entry & 0x03ff) == 0 or
+                      (256 <= (entry & 0x03ff) <= 383 and (entry & 0xf000) == 0x2000)
+                      for entry in values),
+                  "Training footer stays in native opaque tool glyphs after " + label, rows)
+            if any(entry & 0x03ff for entry in values):
+                text = "".join(chr((entry & 0x03ff) - 256) if 256 <= (entry & 0x03ff) <= 383 else " "
+                               for entry in values)
+                check(text.startswith("IN" if row == "26" else ("NOW ", "LAST")),
+                      "Training footer shows the input/status row after " + label, text)
+        return
     check(all((entry & 0x03FF) == 0 for values in rows.values()
               for entry in values),
           "combat footer rows 26-27 remain blank after " + label, rows)
@@ -863,7 +887,7 @@ def result_score_capture(winner_side: int = 0) -> dict[str, object]:
 
     e = boot_fight(1)
     try:
-        # This is the same controller-only close/throw cadence covered by the
+        # This uses state-driven approach and strong hits, also covered by the
         # gameplay suite. The other player is passive in local-versus, so no
         # AI state is involved in the result score or winner assertion.
         for _ in range(520):
@@ -877,8 +901,13 @@ def result_score_capture(winner_side: int = 0) -> dict[str, object]:
             x_defender = current["x2" if winner_side == 0 else "x1"]
             forward = "right" if x_attacker < x_defender else "left"
             port = "p1" if winner_side == 0 else "p2"
-            e.run(3, **{port: [forward, 'x']})
-            e.run(28, **{port: [forward]})
+            action = current["action1" if winner_side == 0 else "action2"]
+            if abs(x_attacker - x_defender) > 30 * 16:
+                e.run(8, **{port: [forward]})
+            elif action:
+                e.run(6)
+            else:
+                e.run(3, **{port: ["x"]}); e.run(40)
         # The second win enters the native 180-tick round-end presentation;
         # the attack cadence above may finish exactly on that transition.
         for _ in range(220):
@@ -919,6 +948,8 @@ def fight_stage_captures() -> dict[str, str]:
                 press(e, "down")
             press(e, "a")
             wait_screen(e, FIGHT)
+            # P1 A skips the optional Arcade conversation, then normal intro.
+            e.run(3, p1=["a"]); e.run(3)
             for _ in range(160):
                 if state(e)["intro"] == 0:
                     break

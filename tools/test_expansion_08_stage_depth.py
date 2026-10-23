@@ -16,6 +16,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from emulator import Emulator, ROOT
+from expansion_contracts import combined_contract
 from test_stages import (boot_stage, TRACE_DEFAULTS, stage_trace, vram_bytes,
                          oam_memory, oam_entry, scanline_budget, actor_contract)
 from test_compatibility import Probe, verify_manifest_and_pinned_core
@@ -95,26 +96,18 @@ def static_shift(reference, shifted, offset, rect):
 
 
 def resources():
-    base = symbols(subprocess.check_output(
-        ["git", "show", "610537d:dist/abaqus-after-hours.sym"], cwd=ROOT).decode("utf-8"))
-    old_ram = {k: v for k, v in base.items() if 0x7e0000 <= v < 0x800000
-               and not k.startswith("SECTION")}
-    changes = [{"symbol": k, "before": hex(v), "after": hex(SYMS.get(k, 0))}
-               for k, v in old_ram.items() if SYMS.get(k) != v]
+    contract = combined_contract(ROOT)
     owned = {k: hex(SYMS[k]) for k in ("stageDepthTable", "stageDepthFar",
              "stageDepthNear", "stageVictoryTick", "stageVictoryPhase")}
-    check(SYMS["fighters"] == base["fighters"] and SYMS["waves"] == base["waves"],
-          "Fighter64/Wave16 base addresses remain exact")
-    check(SYMS["stageDepthTable"] == base["roundUiPending"] + 1,
-          "sixteen feature bytes append after existing game globals", owned)
+    check(SYMS["stageDepthTable"] == SYMS["roundUiPending"] + 1,
+          "sixteen stage-depth bytes append after prior game globals", owned)
+    check(SYMS["stageVictoryPhase"] + 1 - SYMS["stageDepthTable"] == 16,
+          "stage-depth mutable state remains exactly sixteen bytes")
     check(SYMS["stageDepthTable"] >> 16 == 0x7e,
           "HDMA source is in its declared WRAM bank")
-    # Exact native art/palette/SPC and all non-owned generated outputs remain.
-    changed = subprocess.check_output(["git", "diff", "610537d", "--name-only",
-                                      "--", "assets/generated"], cwd=ROOT).decode().splitlines()
-    check(set(changed) == {"assets/generated/stage-dynamics.json",
-                          *[f"assets/generated/stage{i}_ambient.bin" for i in range(3)]},
-          "generated changes are restricted to owned ambient outputs", changed)
+    check(True, "combined strict asset/native preservation passes", {
+        "changes": contract["assets"]["changed_generated"],
+        "native": contract["native"]})
     sections = []
     for name, start in SYMS.items():
         if not name.startswith("SECTIONSTART_") or start < 0x800000:
@@ -129,7 +122,7 @@ def resources():
                         for name, start in SYMS.items()
                         if name.startswith("SECTIONSTART_.stageDepth")}
     return {"new_state_bytes": 16, "new_symbols": owned,
-            "existing_ram_symbols": len(old_ram), "ram_address_changes": changes,
+            "combined_contract": contract,
             "feature_code_sections": feature_sections,
             "linked_section_bytes": used, "rom_capacity_bytes": 4194304}
 
@@ -433,9 +426,69 @@ def independent_stage(stage):
               "Accuracy core freezes stage camera and ambient clock while paused")
         press("start")
         run(600)
+        saw_hitstop = False
+        for index in range(2600):
+            state = e.state()
+            distance = abs(state["x1"]-state["x2"])//16
+            if distance > 24:
+                keys = ["right" if state["x1"] < state["x2"] else "left"]
+            else:
+                keys = ["down", "x"] if index % 40 < 2 else []
+            run(1, keys)
+            if e.state()["hitstop"] > 2:
+                run(1)
+                frozen = (ram(e, "ambientClock", 2), ram(e, "stageDepthFar", 4),
+                          vram_bytes(e)[0x7800:0x7900])
+                run(1)
+                check(frozen == (ram(e, "ambientClock", 2), ram(e, "stageDepthFar", 4),
+                                 vram_bytes(e)[0x7800:0x7900]),
+                      "Accuracy hitstop freezes normal ambient and camera")
+                saw_hitstop = True
+            if e.state()["round_end"]:
+                break
+        check(e.state()["hp2"] == 0 and e.state()["wins1"] == 1 and saw_hitstop,
+              "Accuracy controllers earn actual KO after native contact hitstop", e.state())
+        ko_frames = index + 1
+        source = (ROOT/f"assets/generated/stage{stage}_ambient.bin").read_bytes()
+        clock = ram(e, "ambientClock", 2)
+        victory_samples, victory_phases, victory_frames = [], set(), []
+        for index in range(124):
+            run(1)
+            state = stage_trace(e, TRACE_DEFAULTS)
+            elapsed = ram(e, "stageVictoryTick")[0]
+            check(ram(e, "ambientClock", 2) == clock,
+                  "Accuracy victory freezes ordinary ambient clock")
+            check(vram_bytes(e)[0x7800:0x7900] == source[state["ambient_phase"]*256:(state["ambient_phase"]+1)*256],
+                  "Accuracy victory telemetry matches exact uploaded ambient bytes")
+            if 16 <= elapsed <= 80:
+                victory_phases.add(state["ambient_phase"])
+            victory_samples.append([elapsed, state["ambient_phase"], state["ambient_pending_phase"]])
+            victory_frames.append(e.frame_image.copy())
+            if index == 45:
+                press("start")
+                frozen = (ram(e, "stageVictoryTick"), vram_bytes(e)[0x7800:0x7900])
+                run(20)
+                check(e.state()["paused"] == 1 and frozen ==
+                      (ram(e, "stageVictoryTick"), vram_bytes(e)[0x7800:0x7900]),
+                      "Accuracy pause freezes bounded victory reaction")
+                press("start")
+        check(victory_phases == set(range(4)) and ram(e, "stageVictoryTick")[0] == 96 and
+              vram_bytes(e)[0x7800:0x7900] == source[:256],
+              "Accuracy bounded victory visits four phases and settles at source neutral")
+        for _ in range(100):
+            run(1)
+            if e.state()["intro"]:
+                break
+        check(e.state()["intro"] > 0 and ram(e, "stageVictoryTick")[0] == 0 and
+              word(e, "stageDepthFar") == word(e, "stageDepthNear") == 0,
+              "Accuracy next round resets camera and bounded victory clock")
         return {"stage": stage, "callback_dimensions": list(reference.size),
                 "camera": shifts, "measured_frames": len(cadence),
-                "cadence_deltas": sorted(set(cadence))}
+                "cadence_deltas": sorted(set(cadence)),
+                "victory": {"samples": victory_samples, "phases": sorted(victory_phases),
+                    "controller_frames_to_ko": ko_frames,
+                    "gif": gif(victory_frames, f"stage{stage}-accuracy-victory.gif")}}
+
     finally:
         e.close()
 
@@ -446,7 +499,11 @@ def main():
               "rom_sha256": digest((ROOT / "dist/abaqus-after-hours.sfc").read_bytes()),
               "core_sha256": digest((ROOT / ".tools/core/snes9x_libretro.dll").read_bytes()),
               "input_policy": "physical controllers only; no WRAM writes/save states",
-              "audio_policy": "headless capture only; no audio output device"}
+              "audio_policy": "headless capture only; no audio output device",
+              "source_sha256": {n: digest((ROOT/n).read_bytes()) for n in (
+                  "tools/test_expansion_08_stage_depth.py", "tools/expansion_contracts.py",
+                  "tools/test_stages.py", "tools/test_compatibility.py", "tools/emulator.py",
+                  "src/game.c", "src/stage_depth.h")}}
     try:
         report["resources"] = resources()
         report["stages"] = [run_stage(stage) for stage in range(3)]

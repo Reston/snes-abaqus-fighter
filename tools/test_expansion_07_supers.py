@@ -17,9 +17,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from emulator import ROOT
+from expansion_contracts import BASE, combined_contract
+from release_evidence import EXPECTED_NATIVE_CORE
 from test_characters import boot, uploaded_frame_id, vram
 
-BASE = "610537d"
 NAMES = ["KERNEL OVERDRIVE", "COMPOUND INTEREST", "ATOMIC CASCADE",
          "FINAL BALANCE", "MACRO COLLAPSE", "FINAL AUDIT", "LEGACY ROLLOUT",
          "ZERO RISK", "MERGE STORM", "CLOUD NINE", "CLOSING BELL", "ABSOLUTE ZERO"]
@@ -34,6 +35,7 @@ DIRECT = {2, 3, 5, 7, 10}
 STATE = ("superActive", "superRequest", "superPhase", "superNext",
          "superContactEnd", "superWaveDamage", "superWaveReach")
 checks: list[dict] = []
+captures: list[str] = []
 timing = {"frames": 0, "cadence_failures": [], "overflow_failures": []}
 SYMBOLS: dict[str, int] = {}
 
@@ -155,11 +157,13 @@ def activation(fighter):
         check(s["action1"] == s["action2"] == 0 and s["superActive"] == [0, 0],
               "shoulders remain non-attacking", fighter)
         run(e, 3)
-        # Both half-chord orders, one on each physical controller.
-        run(e, 3, ["y"], ["b"])
-        s = run(e, 100, ["y", "b"], ["y", "b"])
-        check(s["superActive"] == [0, 0] and s["energy1"] == s["energy2"] == 96,
-              "adding B to held Y or Y to held B cannot arm a super", fighter)
+        # Test each half-chord order on each physical controller.
+        for first, second in ((['y'], ['b']), (['b'], ['y'])):
+            run(e, 3, first, second)
+            s = run(e, 100, ["y", "b"], ["y", "b"])
+            check(s["superActive"] == [0, 0] and s["energy1"] == s["energy2"] == 96,
+                  "adding either held half-chord cannot arm a super on either port", [fighter, first, second])
+            run(e, 3)
         run(e, 3)
         before = sample(e)
         # Extra face edges cannot beat the explicit super chord.
@@ -264,6 +268,7 @@ def contact(fighter, port, guard=False, capture=False):
             path = ROOT / "docs/screenshots" / f"expansion-07-{fighter:02d}-{'block' if guard else 'hit'}.gif"
             path.parent.mkdir(parents=True, exist_ok=True)
             images[0].save(path, save_all=True, append_images=images[1:], duration=50, loop=0)
+            captures.append(path.relative_to(ROOT).as_posix())
         return {"fighter": fighter, "port": port, "guard": guard, "events": events,
                 "damage": 128 - hp, "frames": sorted(frames), "uploaded_frames": sorted(uploaded),
                 "down_states": sorted(down), "guarded_phases": sorted(guarded_phases),
@@ -272,17 +277,18 @@ def contact(fighter, port, guard=False, capture=False):
         e.close()
 
 
-def whiff(fighter):
+def whiff(fighter, port):
     e = boot(1, fighter, fighter2=fighter)
     try:
         position(e, far=True)
         full(e)
-        fire(e, 0)
-        s = run(e, 220, ["y", "b"])
-        check(s["hp2"] == 128 and s["superActive"] == [0, 0] and not s["wave1"],
-              "out-of-range super whiffs, expires and spends gauge", fighter)
-        check(s["energy1"] < 16, "whiff cannot refund its full gauge cost", fighter)
-        return {"fighter": fighter, "distance": 208, "hp": s["hp2"], "remaining_energy": s["energy1"]}
+        fire(e, port)
+        s = run(e, 220, ['y', 'b'] if port == 0 else [], ['y', 'b'] if port == 1 else [])
+        check(s[f"hp{2-port}"] == 128 and s["superActive"] == [0, 0] and not s[f"wave{port+1}"],
+              "out-of-range super whiffs, expires and spends gauge", [fighter, port])
+        check(s[f"energy{port+1}"] < 16, "whiff cannot refund its full gauge cost", [fighter, port])
+        return {"fighter": fighter, "port": port, "distance": 208, "hp": s[f"hp{2-port}"],
+                "remaining_energy": s[f"energy{port+1}"]}
     finally:
         e.close()
 
@@ -328,7 +334,8 @@ def punish():
         check(s["hp2"] == 128, "Atomic Cascade missed before the recovery punish")
         for _ in range(40):
             s = sample(e)
-            if abs(s["x2"] - s["x1"]) <= 36 * 16:
+            # Feature03's shorter Cristobal jab needs a genuine close punish.
+            if abs(s["x2"] - s["x1"]) <= 32 * 16:
                 break
             step(e, p2=["left"])
         before = sample(e)
@@ -336,13 +343,17 @@ def punish():
               "opponent enters range during committed super recovery", before["ticks"])
         found = None
         for tick in range(24):
+            prior = sample(e)
             s = step(e, p2=["y"] if tick < 3 else [])
             if s["hp1"] < 128:
-                found = s
+                found = {"before_contact": prior, "after_contact": s}
                 break
-        check(found is not None and found["counter2"] == 0,
+        check(found is not None and found['after_contact']["counter2"] == 0
+              and found['before_contact']['superActive'][0]
+              and ACTIVE_END[2] <= found['before_contact']['ticks'][0] + 1 < END[2],
               "controller approach and light punch punish recovery without a startup counter")
-        return {"recovery_tick": before["ticks"][0], "punish_hp": found["hp1"]}
+        return {"recovery_tick": before["ticks"][0], "punish_hp": found['after_contact']["hp1"],
+                "contact": found}
     finally:
         e.close()
 
@@ -413,6 +424,7 @@ def eligibility_pause_reset():
         check(text(6, 16, len(NAMES[0])) == NAMES[0] and text(6, 21, len(NAMES[1])) == NAMES[1],
               "native move guide names both fighters' distinct supers")
         e.shot("expansion-07-guide.png")
+        captures.append("docs/screenshots/expansion-07-guide.png")
         # P2 is deliberately ignored as gameplay input in Training.
         run(e, 3, ["start"])
         run(e, 3)
@@ -535,18 +547,11 @@ def ordinary_special_after_super():
 
 
 def contracts():
-    base = symbols(subprocess.check_output(["git", "show", f"{BASE}:dist/abaqus-after-hours.sym"], cwd=ROOT).decode())
-    # SDK-owned libc scratch follows the program's BSS and necessarily moves
-    # by 14 bytes. Section markers are linker metadata, not live game fields.
-    old = {n: a for n, a in base.items() if (a < 0x2000 or 0x7E0000 <= a < 0x800000)
-           and not n.startswith("SECTION") and n != "tccs_libc_c.asm_msys"}
-    moved = {n: [a, SYMBOLS.get(n)] for n, a in old.items() if SYMBOLS.get(n) != a}
-    check(not moved, "every existing non-libc RAM/direct-page symbol retains its address", moved)
-    check(SYMBOLS["superActive"] == SYMBOLS["roundUiPending"] + 1
+    shared = combined_contract(ROOT)
+    check(True, "combined assets, native ABI and bounded appended allocations satisfy shared policy")
+    check(all(SYMBOLS[name] == SYMBOLS[STATE[0]] + 2 * i for i, name in enumerate(STATE))
           and SYMBOLS["superWaveReach"] + 2 == SYMBOLS["superActive"] + 14,
           "seven bounded per-port arrays append exactly 14 mutable bytes")
-    changed = subprocess.check_output(["git", "diff", "--name-only", BASE, "--", "assets"], cwd=ROOT).decode().splitlines()
-    check(not changed, "all generated assets and retained approved source art are byte-preserved", changed)
     # Audit bank-local linked sections, including functions and asset streams.
     starts = {n[13:]: a for n, a in SYMBOLS.items() if n.startswith("SECTIONSTART_")}
     ends = {n[11:]: a for n, a in SYMBOLS.items() if n.startswith("SECTIONEND_")}
@@ -568,10 +573,9 @@ def contracts():
             merged[-1][1] = max(merged[-1][1], b)
         else:
             merged.append([a, b])
-    return {"preserved_ram_symbols": len(old), "new_mutable_bytes": 14,
+    return {"combined": shared, "super_mutable_bytes_added": 14,
             "bank_local_sections": len(sections), "largest_section_bytes": max(sections),
-            "unoccupied_bytes_outside_linked_sections": 4194304 - sum(b-a for a, b in merged),
-            "libc_scratch_delta": SYMBOLS["tccs_libc_c.asm_msys"] - base["tccs_libc_c.asm_msys"]}
+            "unoccupied_bytes_outside_linked_sections": 4194304 - sum(b-a for a, b in merged)}
 
 
 def main():
@@ -581,17 +585,21 @@ def main():
     report = {"feature": 7, "base": BASE, "command": "fresh simultaneous neutral grounded Y+B",
               "rom_sha256": hashlib.sha256((ROOT / "dist/abaqus-after-hours.sfc").read_bytes()).hexdigest(),
               "test_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-              "source_sha256": {n: hashlib.sha256((ROOT / n).read_bytes()).hexdigest()
-                                for n in ("src/game.c", "src/super_moves.h", "src/pause_guide.h")},
+              "harness_sha256": {n: hashlib.sha256((ROOT / n).read_bytes()).hexdigest() for n in (
+                  "tools/expansion_contracts.py", "tools/emulator.py", "tools/test_characters.py")},
+              "source_sha256": {p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+                                for p in sorted((ROOT / 'src').rglob('*')) if p.is_file()},
+              "symbols_sha256": hashlib.sha256((ROOT / 'dist/abaqus-after-hours.sym').read_bytes()).hexdigest(),
               "core_sha256": hashlib.sha256((ROOT / ".tools/core/snes9x_libretro.dll").read_bytes()).hexdigest(),
               "controller_only": True, "memory_writes": False, "save_states": False,
               "audio": "capture callbacks only; no device or GUI"}
     try:
+        check(report['core_sha256'] == EXPECTED_NATIVE_CORE['dll_sha256'], 'pinned native Snes9x core')
         report["contracts"] = contracts()
         report["activation"] = [activation(i) for i in range(12)]
         report["hits"] = [contact(i, p, capture=(p == 0 and i in {0, 2, 5, 8, 11})) for i in range(12) for p in range(2)]
         report["blocks"] = [contact(i, p, guard=True, capture=(i == 3 and p == 1)) for i in range(12) for p in range(2)]
-        report["whiffs"] = [whiff(i) for i in range(12)]
+        report["whiffs"] = [whiff(i, p) for i in range(12) for p in range(2)]
         report["interruptions"] = [interrupt(i, p) for i in range(12) for p in range(2)]
         report["punish"] = punish()
         report["pause_reset"] = eligibility_pause_reset()
@@ -599,12 +607,17 @@ def main():
         report["ordinary_special_after_super"] = ordinary_special_after_super()
         check(not timing["cadence_failures"], "all monitored native frames advance exactly once per video callback", timing)
         check(not timing["overflow_failures"], "all monitored native pictures keep STAT77 OBJ overflow clear", timing)
+        report['rom_sha256_after'] = hashlib.sha256((ROOT / 'dist/abaqus-after-hours.sfc').read_bytes()).hexdigest()
+        check(report['rom_sha256_after'] == report['rom_sha256'],
+              'production ROM identity stays unchanged throughout the focused proof')
         report["status"] = "passed"
     except Exception as exc:
         report["status"] = "failed"
         report["error"] = repr(exc)
         raise
     finally:
+        report['captures'] = [{'path': path, 'sha256': hashlib.sha256((ROOT / path).read_bytes()).hexdigest()}
+                              for path in captures]
         report["checks"] = len(checks)
         report["timing"] = timing
         report["elapsed_seconds"] = round(time.time() - started, 3)

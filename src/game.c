@@ -469,7 +469,7 @@ void beginMatch(void) {
      * blocks.  drawActorFast restores the 16x16 size bit and signed X9 bit
      * for each of the thirty live entries on every render. */
     for(i=0;i<16;i++)oamMemory[512+i]=0;
-    resetRound();panel(26,2);center(26,"Y/X/L PUNCH   B/A/R KICK");center(27,"START PAUSE > SELECT GUIDE");
+    resetRound();panel(26,2);center(26,"Y/X PUNCH     B/A KICK");center(27,"START PAUSE > SELECT GUIDE");
     arcadeStoryBegin();
     music(arena+1);finishScreen();
 }
@@ -532,7 +532,7 @@ void showResult(u8 won) {
 
 void attackStart(u8 p,u8 a) {
     Fighter *f=&fighters[p];
-    const CharacterProfile *c=combatProfiles[p];
+    const CharacterProfile *c;
     u8 index=(p<<4)+a;
     f->action=a;f->tick=0;f->connected=0;f->guard=0;f->counter=0;
     f->actionStartup=matchStartup[index];
@@ -542,13 +542,14 @@ void attackStart(u8 p,u8 a) {
     if(f->y && a>=1 && a<=6)f->airAction=1;
     f->bufferedAction=0;f->bufferAge=0;f->bufferKeys=0;
     if(a==7) {
+        c=combatProfiles[p];
         f->energy-=32;f->motion=0;f->downbuffer=0;f->duck=0;
         if(c->specialFamily==SPECIAL_RISING){f->vy=c->specialVy;f->vx=0;f->y=-1;f->duck=0;}
         sound(2);
     }
-    else if(a==8) {f->vy=c->uppercutVy;f->vx=0;f->y=-1;f->duck=0;sound(0);}
-    else sound(0);
-    if(mode==2)trainingStarted(p,a);
+    else if(a==8) {c=combatProfiles[p];f->vy=c->uppercutVy;f->vx=0;f->y=-1;f->duck=0;audioCue(0,1);}
+    else audioCue(0,1);
+    if(mode==2 && a==7)trainingStarted(p,a);
 }
 u16 cleanDirections(u16 keys) {
     if((keys&(KEY_LEFT|KEY_RIGHT))==(KEY_LEFT|KEY_RIGHT))keys&=~(KEY_LEFT|KEY_RIGHT);
@@ -588,7 +589,11 @@ void captureInput(u8 p,u16 raw,u8 live) {
     keys=cleanDirections(raw);
     f->rawKeys=raw;f->oldkeys=f->keys;f->keys=keys;
     edge=keys&~f->oldkeys;f->inputEdge=edge;
-    if(captureSuper(p,keys,edge,live)){f->motion=0;f->downbuffer=0;return;}
+    if(!live || superRequest[p]) {
+        if(captureSuper(p,keys,edge,live)){f->motion=0;f->downbuffer=0;return;}
+    } else if((keys&SUPER_CHORD)==SUPER_CHORD) {
+        if(captureSuper(p,keys,edge,live)){f->motion=0;f->downbuffer=0;return;}
+    }
     if(!live) {
         f->bufferedAction=0;f->bufferAge=0;f->jumpBuffer=0;
         f->motion=0;f->downbuffer=0;return;
@@ -641,7 +646,10 @@ void captureFightInputs(void) {
     if(paused)live=0;
     if((edge0|edge1)&KEY_START)live=0;
     captureInput(0,pad0,live);
-    if(mode==2 && live)trainingCapture(fighters[0].keys);
+    if(mode==2 && live) {
+        if((fighters[0].keys&(KEY_UP|KEY_DOWN|KEY_LEFT|KEY_RIGHT|ATTACKS))!=trainingLastKeys)
+            trainingCapture(fighters[0].keys);
+    }
     if(mode==1)second=pad1;
     else {
         if(!fighters[1].action && !fighters[1].hurt && !fighters[1].y && !fighters[1].downState)
@@ -662,7 +670,7 @@ void controls(u8 p) {
     if(f->hurt)return;
     if(f->downState)return;
     if(!f->hp)return;
-    if(startSuper(p))return;
+    if(superRequest[p] && startSuper(p))return;
     f->guard=0;
     if(!f->action && !f->y)f->face=f->x<enemy->x?1:0;
     forward=f->face?KEY_RIGHT:KEY_LEFT;back=f->face?KEY_LEFT:KEY_RIGHT;
@@ -742,7 +750,11 @@ u8 hurtWithRecoil(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable,u8
     impactBannerPlayer=attacker;impactBannerPending=1;impactSettle=1;
     back=d->hp;
     if(dmg>=back)d->hp=0;else d->hp=back-dmg;
-    if(mode==2)trainingContact(attacker,blocked,low,back-d->hp);
+    if(mode==2) {
+        back-=d->hp;
+        if(!attacker && !blocked)TRAINING_PLAYER_HIT(back);
+        else trainingContact(attacker,blocked,low,back);
+    }
     rearKickRecoil&=defender?3:12;
     if(!blocked) {
         if(defender)rearRecoil<<=2;
@@ -905,22 +917,35 @@ void combat(void) {
         else {beginThrow(1,0);a0=0;a1=0;}
     }
     if(a0) {
-        fighters[0].connected=hurtWithRecoil(0,1,superDamage(0,attackDamage(c0,fighters[0].id,m0)),low0,air0,0,rear0,m0);
-        if(mode==2 && !superActive[0])trainingMoveContact(m0,air0,rear0,fighters[0].connected);
+        contact=attackDamage(c0,fighters[0].id,m0);
+        if(superActive[0])contact=superDamage(0,contact);
+        fighters[0].connected=hurtWithRecoil(0,1,contact,low0,air0,0,rear0,m0);
+        if(mode==2 && !superActive[0]) {
+            /* The drill observer has no transition for uppercut action 8. */
+            if(m0<8)trainingMoveContact(m0,air0,rear0,fighters[0].connected);
+        }
         if(fighters[0].connected==2) {
             if(superActive[0])k0=superKnockdown(0);
             else if(knockdownAttack(0,m0,low0))k0=1;
         }
     }
     if(a1) {
-        fighters[1].connected=hurtWithRecoil(1,0,superDamage(1,attackDamage(c1,fighters[1].id,m1)),low1,air1,0,rear1,m1);
+        contact=attackDamage(c1,fighters[1].id,m1);
+        if(superActive[1])contact=superDamage(1,contact);
+        fighters[1].connected=hurtWithRecoil(1,0,contact,low1,air1,0,rear1,m1);
         if(fighters[1].connected==2) {
             if(superActive[1])k1=superKnockdown(1);
             else if(knockdownAttack(1,m1,low1))k1=1;
         }
     }
-    if(k0)beginKnockdown(0,1,face0);
-    if(k1)beginKnockdown(1,0,face1);
+    if(k0) {
+        if(fighters[1].throwVictim==255)BEGIN_UNLINKED_KNOCKDOWN(1,face0);
+        else beginKnockdown(0,1,face0);
+    }
+    if(k1) {
+        if(fighters[0].throwVictim==255)BEGIN_UNLINKED_KNOCKDOWN(0,face1);
+        else beginKnockdown(1,0,face1);
+    }
     for(p=0;p<2;p++) {
         if(waves[p].active) {
             cw=p?c1:c0;
@@ -1019,9 +1044,20 @@ u8 poseFor(u8 p) {
 #include "animation_weight.h"
 void drawFighter(u8 p) {
     Fighter *f=&fighters[p];
-    f->pose=poseFor(p);
-    if(intro)f->animFrame=personalityIntroFrame(f->id);
-    else if(animationAdvance)animateFighter(p);
+    if(!intro && !roundEnd && f->downState==DOWN_FLIGHT) {
+        /* Same flight branch as poseFor/animateFighter, without their scans. */
+        f->pose=10;
+        if(animationAdvance) {
+            if(f->animState!=11){f->animState=11;f->animTick=0;}
+            if(f->vy<0)f->animFrame=f->downOwner<2?58:60;
+            else f->animFrame=61;
+            if(f->animTick<200)f->animTick++;
+        }
+    } else {
+        f->pose=poseFor(p);
+        if(intro)f->animFrame=personalityIntroFrame(f->id);
+        else if(animationAdvance)animateFighter(p);
+    }
     /* Signed geometry and the unchanged-position cache are native hot paths.
      * Pose selection and the independent VRAM queue retain their contracts. */
     refreshFighterOam(p);
@@ -1233,6 +1269,7 @@ void traceProfiles(void) {
 }
 int main(void) {
     u8 sx,actorTransferred,interfaceTransferred,ambientReady;
+    u16 scroll;
     randomseed=0xABA;frame=0;menu=0;mode=0;difficulty=1;selected=0;selected2=1;arena=0;
     combatProfiles[0]=&characterProfiles[0];combatProfiles[1]=&characterProfiles[0];
     traceProfiles();
@@ -1285,10 +1322,10 @@ int main(void) {
             TRACE[115]=ambientPhase;TRACE[117]=255;TRACE[118]=0;
         }
         publishImpactPriority();
-        sx=0;
-        if(shake && screen==FIGHT){if(!paused)shake--;bgSetScroll(0,impactScroll(),511);}
-        else bgSetScroll(0,0,511);
-        stageDepthPublish((shake && screen==FIGHT)?impactScroll():0);
+        scroll=0;
+        if(shake && screen==FIGHT){if(!paused)shake--;scroll=impactScroll();}
+        bgSetScroll(0,scroll,511);
+        stageDepthPublish(scroll);
         frame++;
     }
     return 0;

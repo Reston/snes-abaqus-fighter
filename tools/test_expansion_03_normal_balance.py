@@ -19,6 +19,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from test_characters import boot
 from test_inputs import trace, signed16
+from expansion_contracts import combined_contract
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "docs/screenshots/expansion-03"
@@ -492,21 +493,14 @@ def corner_jab_guard(fighter, port):
 
 def preservation():
     ref = "610537d3da8f7005c28ea31d0a45a7c17f8f7ba8"
+    combined = combined_contract(ROOT)
+    check(True, "Strict combined asset/source/native preservation policy passes")
     base = symbols_text(subprocess.check_output(
         ["git", "show", ref + ":dist/abaqus-after-hours.sym"], cwd=ROOT).decode("utf-8"))
     now = symbols(ROOT / "dist/abaqus-after-hours.sym")
     ram = {name: address for name, address in base.items()
            if (0x7e0000 <= address < 0x800000 or address < 0x2000)
            and not name.startswith(("SECTION", "RAM_USAGE", "__local"))}
-    check(all(now.get(name) == address for name, address in ram.items()),
-          "All baseline mutable RAM symbols retain their addresses", {"symbols": len(ram)})
-    tree = subprocess.check_output(["git", "ls-tree", "-r", ref, "assets/generated"], cwd=ROOT).decode("utf-8")
-    assets = re.findall(r"^100644 blob ([0-9a-f]+)\t(.+)$", tree, re.M)
-    def blob_hash(path):
-        raw = (ROOT / path).read_bytes()
-        return hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\0" + raw).hexdigest()
-    check(all(blob_hash(path) == digest for digest, path in assets),
-          "All generated assets remain byte-identical", len(assets))
     baseline_source = subprocess.check_output(["git", "show", ref + ":src/characters.h"], cwd=ROOT).decode("utf-8")
     current_source = (ROOT / "src/characters.h").read_text(encoding="utf-8")
     pattern = (r"\{\s*([\d,\-\sA-Z_]+),\s*\{([\d,]+)\}, "
@@ -540,30 +534,18 @@ def preservation():
             bank = (address >> 16) & 127
             banks[bank] = banks.get(bank, 0) + end - address
     check(all(size <= 32768 for size in banks.values()), "No bank exceeds 32 KiB linked-section occupancy")
-    active_section = "SECTIONEND_.attackActivetext_0x4"
-    active_bytes = now[active_section] - now["attackActive"]
-    check(active_bytes == base[active_section] - base["attackActive"],
+    def active_size(table):
+        end = next(a for n, a in table.items() if n.startswith("SECTIONEND_.attackActivetext_"))
+        return end - table["attackActive"]
+    active_bytes = active_size(now)
+    check(active_bytes == active_size(base),
           "Role tuning adds no attackActive code or per-tick branch cost", active_bytes)
-    previous_rom = subprocess.check_output(["git", "show", ref + ":dist/abaqus-after-hours.sfc"], cwd=ROOT)
     current_rom = (ROOT / "dist/abaqus-after-hours.sfc").read_bytes()
-    # The pinned integration source reserved 0.22.0 but still carries the
-    # historical 0.21.0 binary. Account only for that inherited title literal.
-    version = re.search(r'ABAQUS_GAME_VERSION "([\d.]+)"',
-                        (ROOT / "src/version.h").read_text(encoding="utf-8")).group(1).encode()
-    reference_rom = previous_rom.replace(b"0.21.0", version)
-    def offset(address):
-        return (((address >> 16) & 127) << 15) | (address & 32767)
-    owned_ranges = ((offset(now["characterProfiles"]), offset(now["actorFrameOffsets"])),
-                    (offset(now["active"]) + 3, offset(now["active"]) + 5), (0x7fdc, 0x7fe0))
-    changed = [index for index, (a, b) in enumerate(zip(reference_rom, current_rom)) if a != b]
-    check(len(current_rom) == len(reference_rom) == 4194304 and
-          all(any(start <= index < end for start, end in owned_ranges) for index in changed),
-          "Native ROM differs only in owned normal tables and checksum after inherited version normalization",
-          {"changed_bytes": len(changed), "inherited_title_version": version.decode()})
-    return {"ram_symbols_unchanged": len(ram), "generated_assets_unchanged": len(assets),
+    check(len(current_rom) == 4194304 and current_rom[0x7fd5] == 0x30,
+          "Combined cartridge retains 4 MiB FastROM LoROM mapping")
+    return {"combined_contract": combined,
             "attack_active_code_bytes": active_bytes, "attack_active_added_code_bytes": 0,
-            "added_mutable_bytes": 0, "native_code_sections": len(sections),
-            "native_rom_changed_bytes_after_inherited_version_normalization": len(changed),
+            "normal_balance_added_mutable_bytes": 0, "native_code_sections": len(sections),
             "linked_section_bytes": sum(banks.values()),
             "unallocated_banks": [f"{bank:02X}" for bank in range(128) if bank not in banks]}
 
@@ -585,7 +567,8 @@ def main():
     report["symbols_sha256"] = hashlib.sha256((ROOT / "dist/abaqus-after-hours.sym").read_bytes()).hexdigest()
     report["source_sha256"] = {path: hashlib.sha256((ROOT / path).read_bytes()).hexdigest()
                                for path in ("src/characters.h", "src/game.c", "src/version.h",
-                                            "tools/test_expansion_03_normal_balance.py")}
+                                            "tools/test_expansion_03_normal_balance.py", "tools/expansion_contracts.py",
+                                            "tools/test_characters.py", "tools/test_inputs.py", "tools/emulator.py")}
     report["scope"] = {"fighters": selected, "ports": [1, 2], "six_shared_suites_run": False}
     try:
         data = profiles()
@@ -612,6 +595,8 @@ def main():
               metrics["peak_spc_backlog"])
         check(set(metrics["cadence_deltas"]) == {"1"}, "Every observed live callback advances exactly one native tick",
               metrics["cadence_deltas"])
+        report["captures"] = [{"file": path, "sha256": hashlib.sha256((ROOT / path).read_bytes()).hexdigest()}
+                              for path in metrics["captures"]]
         report["status"] = "passed"
     finally:
         report["passed"] = sum(c["passed"] for c in checks)

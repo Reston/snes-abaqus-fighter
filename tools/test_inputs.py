@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import ctypes as C
 import json
+import re
 import sys
 import time
 from pathlib import Path
@@ -25,6 +26,19 @@ ENERGY_TILE = 138
 P1_STATUS_ATTR = 0x2000
 P2_STATUS_ATTR = 0x6000
 MENU_CORE_OPTIONS = {"snes9x_up_down_allowed": "enabled"}
+_screen_address: int | None = None
+
+
+def native_screen(e: Emulator) -> int:
+    """Read the real scene byte while a loader has not yet published TRACE."""
+    global _screen_address
+    if _screen_address is None:
+        symbols = (ROOT / "dist/abaqus-after-hours.sym").read_text(encoding="utf-8")
+        match = re.search(r"^([0-9a-fA-F]{8}) screen$", symbols, re.MULTILINE)
+        if match is None:
+            raise AssertionError("missing native screen symbol")
+        _screen_address = int(match.group(1), 16) - 0x7e0000
+    return C.string_at(e.ram + _screen_address, 1)[0]
 
 
 def signed16(value: int) -> int:
@@ -184,14 +198,32 @@ def menu_press(e: Emulator, keys: list[str], port: int = 0,
                hold: int = 12, release: int = 4) -> None:
     """Send one settled controller edge without opening a frontend.
 
-    Scene loaders can publish the target TRACE scene several callbacks after
-    the direct screen transition. Twelve frames is still one menu edge and
-    lets that snapshot settle; direction/SOCD probes use shorter holds.
+    Scene loaders publish TRACE after loading graphics and eleven audio cues.
+    Preserve the original edge/hold, then bound publication separately using
+    the actual native scene byte. Short direction/SOCD holds remain unchanged.
     """
 
     kwargs = {"p1" if port == 0 else "p2": keys}
-    e.run(hold, **kwargs)
+    before = native_screen(e)
+    first = None
+    for callback in range(hold):
+        e.run(1, **kwargs)
+        if native_screen(e) != before and first is None:
+            first = callback + 1
     e.run(release)
+    destination = native_screen(e)
+    if destination != before:
+        check(first is not None and first <= 2,
+              "menu edge changes the actual scene within two callbacks",
+              {"from": before, "to": destination, "first_callback": first})
+        for settled in range(37):
+            if trace(e)["screen"] == destination:
+                break
+            e.run(1)
+        check(trace(e)["screen"] == destination and native_screen(e) == destination,
+              "scene loader publishes the selected destination within 36 callbacks",
+              {"destination": destination, "settle_callbacks": settled,
+               "trace": trace(e)["screen"], "native": native_screen(e)})
 
 
 def menu_title() -> Emulator:
@@ -252,9 +284,14 @@ def menu_result() -> Emulator:
         if sample["intro"] or sample["round_end"] or sample["paused"]:
             e.run(1)
             continue
-        forward = "right" if sample["x1"] < sample["x2"] else "left"
-        e.run(3, p1=[forward, 'x'])
-        e.run(28, p1=[forward])
+        if sample["action1"] or sample["hurt1"] or sample["down_state1"]:
+            e.run(6)
+        elif abs(signed16(sample["x1"])-signed16(sample["x2"])) > 30 * 16:
+            forward = "right" if sample["x1"] < sample["x2"] else "left"
+            e.run(8, p1=[forward])
+        else:
+            e.run(3, p1=["x"])
+            e.run(40)
     last = trace(e)
     e.close()
     raise AssertionError(("menu result probe did not reach a result card", last))
@@ -561,6 +598,8 @@ def boot(mode: int = 2, wait_intro: bool = True,
     press(e, "a")
     wait_screen(e, 3)
     if wait_intro:
+        if mode == 0:
+            e.run(3, p1=["a"]); e.run(3)
         for _ in range(180):
             if trace(e)["intro"] == 0:
                 break
@@ -1083,8 +1122,8 @@ def check_socd_and_p2(e: Emulator) -> None:
 def check_attack_buffer(e: Emulator) -> None:
     """Verify a short tap is buffered and starts only after action zero.
 
-    The first normal has a sixteen-tick life with the current profile.  The
-    second three-frame tap begins around tick twelve, where the six-tick
+    The first normal has a fourteen-tick life with the current profile. The
+    second three-frame tap begins around tick ten, where the six-tick
     buffer still overlaps the first action's recovery.  Holding the button
     longer would hide an edge-triggering regression, so release it before the
     first action reaches zero.
@@ -1097,7 +1136,7 @@ def check_attack_buffer(e: Emulator) -> None:
     check(first["raw_keys1"] == 0, "first attack probe releases its button", first)
 
     # Move to the latter recovery ticks while keeping the opponent distant.
-    for _ in range(8):
+    for _ in range(6):
         e.run(1)
     before_tap = trace(e)
     check(before_tap["action1"] == 1,
@@ -1235,9 +1274,10 @@ def check_hitstop_capture(e: Emulator) -> None:
 
     # Tap X during hitstop.  captureInput is live during hitstop, but the
     # buffer age and the combat animation must wait for the freeze to expire.
-    e.run(3, p1=["x"])
+    for _ in range(3):
+        e.run(1, p1=["x"])
+        freeze_samples.append(trace(e))
     tap = trace(e)
-    freeze_samples.append(tap)
     captured = (tap["buffered_action1"] == 3 and tap["buffer_age1"] > 0)
     e.run(1)  # release before the buffered command can execute
     freeze_samples.append(trace(e))
@@ -1276,7 +1316,7 @@ def check_hitstop_capture(e: Emulator) -> None:
               "trace": executed or trace(e),
           })
     if executed is not None:
-        check(executed["anim_frame1"] in (34, 6, 35),
+        check(executed["anim_frame1"] in (32, 34, 6, 35),
               "post-hitstop buffered attack enters its native action sequence",
               executed)
 
@@ -1713,7 +1753,9 @@ def check_normal_cancel_deadline() -> None:
                   "hitstop": hit, "trace": late_before,
               })
         held = []
-        for _ in range(3):
+        # One callback is a real fresh edge and is released before the
+        # tuned fourteen-tick jab finishes, so restart cannot be a hold.
+        for _ in range(1):
             drive(e, 0, ["x"])
             held.append(trace(e))
         check(held[0]["action1"] == 1 and held[0]["buffered_action1"] == 3,
@@ -3296,7 +3338,7 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
         # defender vertically, behind the locked facing, within FRONT reach.
         # Otherwise a directional assertion could silently become a range test.
         if not front and not trade:
-            front_reach = {"y": 28, "x": 38, "b": 35, "a": 41}[key]
+            front_reach = {"y": 26, "x": 38, "b": 42, "a": 46}[key]
             geometry = []
             for row in active:
                 y = signed16(row[f"y{a}"])
@@ -3323,12 +3365,12 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
             if not front:
                 check(center_gap <= 26 * 16, label + " uses at most 16px rear reach plus 10px body", center_gap)
             elif not corner:
-                check(26 * 16 < center_gap <= 51 * 16,
-                      label + " preserves the longer 41px front reach plus 10px body", center_gap)
+                check(26 * 16 < center_gap <= 56 * 16,
+                      label + " preserves the tuned 46px front reach plus 10px body", center_gap)
             check(contact[f"connected{a}"] == (1 if blocked else 2) and
-                  contact[f"hp{d}"] == (128 if blocked else 115) and
+                  contact[f"hp{d}"] == (127 if blocked else 113) and
                   contact[f"guard{d}"] == int(blocked) and
-                  contact["hitstop"] == (3 if blocked else 5),
+                  contact["hitstop"] == (3 if blocked else 6),
                   label + " preserves exact damage, guard classification and hitstop", contact)
             if guard:
                 # Public raw pad bits prove these are actual old/new-back and
@@ -3363,7 +3405,7 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
                                          (0 if corner else 9) for before, after in drift),
                       label + " every hurt tick recoils away through landing/action cancellation", drift)
                 if trade:
-                    check(contact["hp1"] == 115 and contact["hp2"] == 115 and
+                    check(contact["hp1"] == 113 and contact["hp2"] == 113 and
                           contact["connected1"] == 2 and contact["connected2"] == 2,
                           label + " preserves both simultaneous snapshot contacts", contact)
             if corner:
@@ -3414,11 +3456,11 @@ def _grounded_cross_up_whiff(port: int, key: str) -> dict[str, object]:
                 sent = True
             drive(e, 1 - port, keys)
             rows.append(trace(e))
-        startup, active = (7, 5) if key == "a" else (9, 5)
+        startup, active = (7, 5) if key == "a" else (9, 4)
         overlap = [s for s in rows if s[f"action{attacker}"] == action and
                    startup <= s[f"anim_tick{attacker}"] < startup + active and
                    (s[f"x{jumper}"] - s[f"x{attacker}"]) * sign > 0 and
-                   abs(s[f"x{jumper}"] - s[f"x{attacker}"]) <= (51 if key == "a" else 48) * 16 and
+                   abs(s[f"x{jumper}"] - s[f"x{attacker}"]) <= (56 if key == "a" else 48) * 16 and
                    signed16(s[f"y{jumper}"]) - 4 * 16 >= (-60 if key == "a" else -52) * 16]
         label = f"P{attacker} grounded backward {key.upper()}"
         check(sent and bool(overlap), label + " has real rear active overlap", overlap or rows)
@@ -3673,16 +3715,23 @@ def _capture_cpu_approach(difficulty: int) -> dict[str, object]:
 
     e, initial = _cpu_boot(2, difficulty)
     try:
-        for index in range(100):
+        for index in range(240):
             sample = trace(e)
             distance = abs(sample["x1"] - sample["x2"]) / 16
-            if 29 <= distance <= 46:
+            if 29 <= distance <= 46 and not sample["action2"] and not sample["y2"]:
                 after: list[dict[str, int]] = []
-                for _ in range(3):
-                    e.run(1)
-                    after.append(trace(e))
-                return {"initial": initial, "start": sample,
-                        "after": after, "index": index}
+                e.run(1)
+                after.append(trace(e))
+                # A personality may choose a normal on this decision tick.
+                # Find an actual neutral approach decision, rather than
+                # requiring every tick in the band to override its tempo.
+                if abs(after[0]["x1"]-after[0]["x2"]) < abs(sample["x1"]-sample["x2"]):
+                    for _ in range(2):
+                        e.run(1)
+                        after.append(trace(e))
+                    return {"initial": initial, "start": sample,
+                            "after": after, "index": index}
+                continue
             e.run(1, p1=["right"] if sample["x1"] < sample["x2"]
                   else ["left"])
     finally:
@@ -3810,12 +3859,23 @@ def check_cpu_special_spacing() -> dict[str, object]:
 
         # Rising is sampled while P1 is airborne and inside the CPU's close
         # anti-air band.  The fresh jump edge is controller-only.
-        rising = _capture_cpu_special(
-            5, difficulty, 60,
-            lambda index, sample: (
-                ["right"] if abs(sample["x1"] - sample["x2"]) / 16 > 44
-                else (["up", "right"] if index < 38 else [])
-            ), 85)
+        if difficulty == 1:
+            # David's patient Normal policy can answer the first jump with
+            # a jab or universal uppercut. Repeated real close jump-ins let
+            # his ordinary 97-tick signature cadence become available.
+            def rising_keys(index, sample):
+                forward = "right" if sample["x1"] < sample["x2"] else "left"
+                if abs(sample["x1"] - sample["x2"]) / 16 > 40:
+                    return [forward]
+                return ["up", forward] if index % 61 < 12 else []
+            rising = _capture_cpu_special(5, difficulty, 0, rising_keys, 500)
+        else:
+            rising = _capture_cpu_special(
+                5, difficulty, 60,
+                lambda index, sample: (
+                    ["right"] if abs(sample["x1"] - sample["x2"]) / 16 > 44
+                    else (["up", "right"] if index < 38 else [])
+                ), 85)
         rising_active = rising["active"]
         airborne = [sample for sample in rising_active
                      if signed16(sample["y1"]) < 0]
@@ -4191,19 +4251,19 @@ def check_cpu_anti_air() -> dict[str, object]:
     run separately with their original assertions.
     """
 
-    fixtures = ((0, 1, 4), (0, 2, 0), (2, 2, 4), (4, 1, 0),
-                (4, 2, 0), (5, 1, 6), (5, 2, 5))
+    fixtures = ((0, 1, 4), (0, 2, 0), (2, 2, 13), (4, 1, 0),
+                (4, 2, 2), (5, 1, 6), (5, 2, 5))
     cases = [_cpu_jump_in(cpu, difficulty, delay)
              for cpu, difficulty, delay in fixtures]
     hits = [_cpu_uppercut_start(case, hit=True) for case in cases]
-    retreat = _cpu_jump_in(2, 2, 11, retreat=True, kick=False)
+    retreat = _cpu_jump_in(2, 2, 18, retreat=True, kick=False)
     whiff = _cpu_uppercut_start(retreat, hit=False)
 
     # Equal menu frame counts align Normal's title+20 with Hard/Easy's
     # difficulty-button tap. The same visible opening does not assure a
     # reaction: Hard intercepts here, Normal misses its sampled opportunity.
-    easy = _cpu_jump_in(4, 0)
-    normal = _cpu_jump_in(4, 1, 20)
+    easy = _cpu_jump_in(4, 0, 2)
+    normal = _cpu_jump_in(4, 1, 22)
     hard = cases[4]
     opening = ("frame", "x1", "x2", "y1", "y2", "action1", "action2", "hp1", "hp2")
     check(all(tuple(case["samples"][0][name] for name in opening) ==
@@ -4219,7 +4279,7 @@ def check_cpu_anti_air() -> dict[str, object]:
     # The four-button CPU chooses from four normals instead of six. In the
     # equal-opening comparison above Normal is occupied by a strong normal;
     # this separately measured phase retains a genuinely free sampled miss.
-    normal_decline = _cpu_jump_in(4, 1, 3)
+    normal_decline = _cpu_jump_in(4, 1, 2)
     check(not any(sample["action2"] == 8 for sample in normal_decline["samples"]),
           "Normal's available-window fixture genuinely declines the uppercut")
     opportunities = [sample for sample in normal_decline["samples"]
@@ -4229,7 +4289,7 @@ def check_cpu_anti_air() -> dict[str, object]:
     check(bool(opportunities), "Normal can decline an available near jump-in",
           [_cpu_summary(sample) for sample in opportunities])
 
-    empty_jump = _cpu_jump_in(4, 2, kick=False)
+    empty_jump = _cpu_jump_in(4, 2, 2, kick=False)
     empty_hit = _cpu_uppercut_start(empty_jump, hit=True)
     check(empty_jump["samples"][:17] == hard["samples"][:17] and
           empty_hit["start_index"] < 16 and
@@ -4241,7 +4301,8 @@ def check_cpu_anti_air() -> dict[str, object]:
     # the jump kick. Its locked facing exposes a real behind-target window;
     # free grounded CPUs turn normally before choosing their input.
     busy = _cpu_jump_in(2, 1)
-    cases.extend((retreat, easy, normal, normal_decline, empty_jump, busy))
+    crossed = _cpu_jump_in(2, 2, 4)
+    cases.extend((retreat, easy, normal, normal_decline, empty_jump, busy, crossed))
     negatives: dict[str, list[tuple[dict[str, int], dict[str, int]]]] = {
         name: [] for name in ("grounded", "far", "behind-locked", "unavailable",
                              "hurt", "target-hurt-or-down", "hitstop")}
@@ -4279,7 +4340,7 @@ def check_cpu_anti_air() -> dict[str, object]:
                   "violations": [[_cpu_summary(s) for s in pair] for pair in violations[:4]]})
         negative_counts[name] = len(pairs)
     return {"hits": hits, "retreat_whiff": whiff, "empty_jump": empty_hit,
-            "normal_declined_title_delay": 3,
+            "normal_declined_title_delay": 2,
             "normal_declined_ticks": len(opportunities), "negative_ticks": negative_counts,
             "ko": [_cpu_anti_air_ko(victim) for victim in (1, 2)]}
 

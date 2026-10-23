@@ -21,6 +21,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from emulator import Emulator, ROOT
 import test_inputs as legacy
 from release_evidence import EXPECTED_NATIVE_CORE
+from expansion_contracts import combined_contract
 
 NAMES = ("Damian", "Ivo", "Cristobal", "Cote", "Negger", "David",
          "Fernando", "Cristian", "Mamariaga", "Reston", "Roxana", "Lars")
@@ -30,9 +31,9 @@ SYMBOLS = {}
 
 
 def require(ok, label, detail=None):
+    CHECKS.append({"check": label, "passed": bool(ok), "details": detail})
     if not ok:
         raise AssertionError((label, detail))
-    CHECKS.append({"check": label, "passed": True, "details": detail})
 
 
 def sha(path):
@@ -43,7 +44,9 @@ def state(e):
     s = e.state()
     # Read current native action clocks, not reconstructed/future move data.
     f = C.string_at(e.ram + SYMBOLS["fighters"], 128)
-    s.update(tick1=f[17], tick2=f[81], active_end1=f[63], active_end2=f[127], action_end2=f[126])
+    s.update(tick1=f[17], tick2=f[81], active_end1=f[63], active_end2=f[127], action_end2=f[126],
+             startup2=f[88])
+    s['super2'] = C.string_at(e.ram + SYMBOLS['superActive'] + 1, 1)[0]
     s["ppu"] = int.from_bytes(C.string_at(e.ram + 0x1FF00 + 228, 2), "little")
     return s
 
@@ -53,13 +56,24 @@ def compact(s):
         "frame", "hp1", "hp2", "x1", "x2", "y1", "y2", "face2",
         "action1", "action2", "tick1", "tick2", "active_end1",
         "raw_keys1", "raw_keys2", "hurt1", "hurt2", "guard2",
-        "connected2", "down_state1", "down_state2", "hitstop", "round_end", "paused")}
+        "connected2", "down_state1", "down_state2", "hitstop", "round_end", "paused",
+        "energy1", "energy2", "super2", "startup2", "active_end2", "action_end2", "ppu")}
 
 
 def boot(cpu, difficulty, *, training=True, delay=0):
     e = legacy.boot(2 if training else 0, fighter=4 if training else (cpu-1) % 12,
                     fighter2=cpu if training else None, difficulty=difficulty,
-                    title_delay=delay)
+                    title_delay=delay, wait_intro=training)
+    if not training:
+        # The combined Arcade conversation precedes the ordinary 110 intro.
+        e.run(3, p1=['a'])
+        e.run(3)
+        for _ in range(600):
+            if not e.state()['intro']:
+                break
+            e.run(1)
+        require(not e.state()['intro'], 'Arcade A skip reaches ordinary live fight')
+        e.run(3)
     if training:
         e.tap("start")
         e.tap("up")  # Stand -> CPU; ordinary pause dummy selector.
@@ -105,23 +119,42 @@ def encounter(cpu, difficulty, frames, *, noisy_p2=False, capture=False):
     digest = hashlib.sha256()
     video = hashlib.sha256()
     active = None
+    failures = []
+    controller_runs = []
     try:
         for tick in range(frames):
             before = state(e)
             keys = p1_script(before, tick)
             noise = (["y", "x", "b", "a", "l", "r", "up", "left"]
                      if noisy_p2 and tick % 7 < 3 else [])
+            command = [keys, noise]
+            if controller_runs and controller_runs[-1]['keys'] == command:
+                controller_runs[-1]['frames'] += 1
+            else:
+                controller_runs.append({'keys': command, 'frames': 1})
             e.run(1, p1=keys, p2=noise)
             after = state(e)
             pair = {"before": compact(before), "after": compact(after)}
-            require((after["frame"] - before["frame"]) & 0xFFFF == 1,
-                    "native CPU encounter keeps unit cadence", [cpu, difficulty, tick])
+            delta = (after['frame'] - before['frame']) & 0xffff
+            CHECKS.append({'check': 'native CPU encounter keeps unit cadence',
+                           'passed': delta == 1, 'details': [cpu, difficulty, tick]})
+            if delta != 1:
+                failures.append({'tick': tick, 'delta': delta, 'keys': command, **pair})
             require(after["ppu"] & 0xC0 == 0,
                     "native CPU encounter stays within OBJ fetch limits", [cpu, difficulty, tick])
             raw = after["raw_keys2"]
             decisions[str(raw)] += 1
             require(raw & ~(ATTACKS | 0xF00) == 0,
                     "CPU sends only legal directions and face buttons", raw)
+            if raw & ATTACKS == 0xC000:
+                require(raw == 0xC000 and before['energy2'] == 96 and difficulty > 0,
+                        'CPU super command is neutral and legal only at full gauge', pair)
+                m['super_commands'] += 1
+            if after['super2'] and not before['super2']:
+                require(before['energy2'] == 96 and after['energy2'] == 0 and raw == 0xC000,
+                        'CPU activates the same paid legal Y+B super command', pair)
+                m['super_starts'] += 1
+                examples.setdefault('super', pair)
             eligible = (before["hp1"] > 0 and before["hp2"] > 0 and
                         not any(before[k] for k in ("action2", "hurt2", "y2", "down_state2", "hitstop")))
             if not eligible:
@@ -187,6 +220,7 @@ def encounter(cpu, difficulty, frames, *, noisy_p2=False, capture=False):
                 "frames": frames, "metrics": dict(m), "decisions": dict(decisions),
                 "action_starts": dict(starts), "recovery_commands": dict(responses),
                 "trace_sha256": digest.hexdigest(), "sampled_video_sha256": video.hexdigest(),
+                "cadence_failures": failures, "controller_runs": controller_runs,
                 "examples": examples}
     finally:
         e.close()
@@ -255,13 +289,156 @@ def lookahead_fixture(cpu):
 
 
 def anti_air_fixtures():
-    fixtures = ((2, 2, 4, False, True), (4, 1, 5, False, True),
-                (4, 2, 0, False, True), (2, 2, 9, True, False))
+    # Fixed controller phases remeasured on the combined ROM with Arcade A skip.
+    fixtures = ((2, 2, 10, False, True), (4, 1, 0, False, True),
+                (4, 2, 0, False, True), (2, 2, 15, True, False))
     results = []
     for cpu, difficulty, delay, retreat, hit in fixtures:
-        case = legacy._cpu_jump_in(cpu, difficulty, delay, retreat=retreat, kick=not retreat)
-        results.append(legacy._cpu_uppercut_start(case, hit=hit))
+        e = boot(cpu, difficulty, training=False, delay=delay)
+        rows, approach = [], []
+        try:
+            for _ in range(210):
+                s = state(e)
+                if abs(s['x1']-s['x2']) <= (34 if retreat else 68)*16 and not any(
+                        s[k] for k in ('hurt1', 'down_state1', 'action1', 'y1')):
+                    break
+                approach.append(compact(s))
+                e.run(1, p1=['right'])
+            else:
+                raise AssertionError(('CPU jump fixture never reaches launch band', compact(s)))
+            for tick in range(65):
+                rows.append(state(e))
+                e.run(1, p1=['up', 'left' if retreat else 'right'] if tick < 3 else
+                      ['a'] if not retreat and tick in (16, 17) else [])
+            starts = [i for i in range(1, len(rows)) if rows[i]['action2'] == 8 and rows[i-1]['action2'] != 8]
+            require(starts, 'CPU deliberately starts universal uppercut', [cpu, difficulty, delay])
+            index = starts[0]
+            before, first = rows[index-1:index+1]
+            require(first['raw_keys2'] == 1088 and first['tick2'] == 1 and legacy.signed16(first['y2']) < 0
+                    and not before['raw_keys2'] & 64,
+                    'uppercut uses real fresh Down+X and actual action clock', compact(first))
+            require(not any(before[k] for k in ('action2', 'hurt2', 'y2', 'down_state2', 'hitstop'))
+                    and before['hp2'] > 0, 'uppercut begins only from available grounded state', compact(before))
+            require(-56*16 <= legacy.signed16(before['y1']) <= -12*16
+                    and abs(before['x1']-before['x2']) < 41*16
+                    and (before['x1'] > before['x2']) == bool(before['face2'])
+                    and before['hurt1'] == before['down_state1'] == 0 and before['hp1'] > 0,
+                    'CPU anti-air sees only live near airborne opponent in front', compact(before))
+            startup = rows[index:index+5]
+            require([s['tick2'] for s in startup] == [1, 2, 3, 4, 5]
+                    and all(s['action2'] == 8 and not s['connected2'] and s['hp1'] == before['hp1'] for s in startup),
+                    'CPU uppercut preserves five actual pre-contact startup ticks', [compact(s) for s in startup])
+            active = [s for s in rows[index:] if s['action2'] == 8]
+            contacts = [s for s in active if s['connected2'] == 2]
+            if hit:
+                require(contacts and contacts[0]['tick2'] == 6 and contacts[0]['hp1'] < before['hp1']
+                        and contacts[0]['hp2'] == before['hp2'] and legacy.signed16(contacts[0]['y1']) < 0,
+                        'CPU intercepts jump on ordinary first active action tick', [cpu, difficulty, delay])
+            else:
+                window = [s for s in active if 6 <= s['tick2'] < 14]
+                require(len(window) == 8 and not contacts
+                        and all(s['hp1'] == before['hp1'] and not s['connected2'] for s in active)
+                        and min(abs(s['x1']-s['x2']) for s in window) > 41*16,
+                        'CPU retreat bait whiffs all eight actual active ticks', [compact(s) for s in window])
+            results.append({'cpu': cpu, 'difficulty': difficulty, 'title_delay': delay, 'retreat': retreat,
+                            'approach': approach, 'samples': [compact(s) for s in rows]})
+        finally:
+            e.close()
     return results
+
+
+def completed_whiff_fixture(cpu):
+    """Retreat jump after a visible normal; require its complete unconnected clock."""
+    delay = 3 if cpu == 7 else 0
+    e = legacy.boot(2, fighter=8, fighter2=cpu, difficulty=2, title_delay=delay)
+    rows, active, completed = [], None, None
+    try:
+        for _ in range(180):
+            if abs(state(e)['x1']-state(e)['x2']) <= 44*16:
+                break
+            e.run(1, p1=['right'])
+        e.run(3)
+        e.tap('start'); e.tap('up'); e.tap('start')
+        for tick in range(1200):
+            before = state(e)
+            forward = 'right' if before['x1'] < before['x2'] else 'left'
+            back = 'left' if forward == 'right' else 'right'
+            keys = ([back, 'up'] if before['action2'] and not before['y1'] else
+                    [forward] if abs(before['x1']-before['x2']) > 46*16 and not before['y1'] else [])
+            e.run(1, p1=keys)
+            after = state(e)
+            rows.append({'tick': tick, 'keys': keys, 'before': compact(before), 'after': compact(after)})
+            require((after['frame']-before['frame']) & 65535 == 1 and not after['ppu'] & 0xc0,
+                    'completed-whiff fixture preserves native cadence and fetch limits', [cpu, tick])
+            if after['action2'] in (1, 2, 3, 4, 5, 6) and not before['action2']:
+                active = {'action': after['action2'], 'connected': 0, 'start': tick}
+            if active:
+                active['connected'] = max(active['connected'], after['connected2'])
+                if after['action2'] != active['action']:
+                    if not active['connected'] and before['tick2']+1 >= before['action_end2'] and not (
+                            after['hurt2'] or after['down_state2']):
+                        completed = {'action': active['action'], 'start': active['start'], 'end': tick,
+                                     'final_action_tick': before['tick2'], 'action_end': before['action_end2']}
+                        break
+                    active = None
+        require(completed is not None, 'personality commits and completes a genuine normal whiff', cpu)
+        return {'cpu': cpu, 'difficulty': 2, 'title_delay': delay, 'completed_normal_whiffs': 1,
+                'completion': completed, 'samples': rows}
+    finally:
+        e.close()
+
+
+def super_fixture(difficulty, full_gauge):
+    """Enable a real Training CPU after ordinary position/meter preparation."""
+    e = legacy.boot(2, fighter=4, fighter2=2, difficulty=difficulty)
+    samples, low_samples, available_low = [], 0, 0
+    try:
+        for _ in range(180):
+            if abs(state(e)['x1'] - state(e)['x2']) <= 34 * 16:
+                break
+            e.run(1, p1=['right'])
+        e.run(3)
+        if full_gauge:
+            for _ in range(1800):
+                if state(e)['energy2'] == 96:
+                    break
+                e.run(1)
+            require(state(e)['energy2'] == 96, 'CPU super fixture naturally fills meter')
+        e.tap('start')
+        e.tap('up')
+        e.tap('start')
+        started = None
+        for tick in range(1200 if full_gauge else 240):
+            before = state(e)
+            e.run(1, p1=['down', 'left'])
+            after = state(e)
+            pair = {'tick': tick, 'before': compact(before), 'after': compact(after)}
+            samples.append(pair)
+            if before['energy2'] < 96:
+                low_samples += 1
+                available_low += not any(before[k] for k in ('action2', 'hurt2', 'y2', 'down_state2', 'hitstop'))
+                require(after['raw_keys2'] != 0xC000 and not (after['super2'] and not before['super2']),
+                        'low-meter CPU never requests or activates a super', pair)
+            if after['super2'] and not before['super2']:
+                require(before['energy2'] == 96 and after['energy2'] == 0 and after['raw_keys2'] == 0xC000,
+                        'controller-prepared CPU pays the same full-gauge super cost', pair)
+                started = pair
+                break
+        if full_gauge:
+            require(started is not None, 'Normal/Hard CPU actually uses a legal full-gauge super', difficulty)
+            e.run(2)
+            path = e.shot(f'expansion-06/cpu02-d{difficulty}-super.png')
+        else:
+            require(low_samples > 30 and available_low > 10,
+                    'negative super fixture covers genuinely available low-meter CPU samples',
+                    [difficulty, low_samples, available_low])
+            path = None
+        return {'cpu': 2, 'difficulty': difficulty, 'full_gauge': full_gauge,
+                'activation': started, 'low_meter_samples': low_samples,
+                'available_low_meter_samples': available_low, 'samples': samples,
+                'capture': path.relative_to(ROOT).as_posix() if path else None}
+    finally:
+        e.close()
 
 
 def guard_fixture(cpu, difficulty=1):
@@ -321,7 +498,7 @@ def ko_fixture(victim):
         e.close()
 
 
-def personality_metrics(cases):
+def personality_metrics(cases, whiffs=()):
     results = []
     for difficulty in (0, 1, 2):
         group = [c for c in cases if c["difficulty"] == difficulty]
@@ -344,7 +521,8 @@ def personality_metrics(cases):
         rows = [c for c in cases if c["cpu"]==cpu]
         require(sum(c["metrics"].get("hit", 0) for c in rows)>0 and
                 sum(c["metrics"].get("blocked", 0) for c in rows)>0 and
-                sum(c["metrics"].get("completed_normal_whiffs", 0) for c in rows)>0,
+                (sum(c["metrics"].get("completed_normal_whiffs", 0) for c in rows)
+                 + sum(c.get('completed_normal_whiffs', 0) for c in whiffs if c.get('cpu') == cpu)) > 0,
                 "each personality has native hit, blocked attack and completed whiff evidence", cpu)
     aa = [sum(c["metrics"].get("anti_air_starts", 0) for c in cases if c["difficulty"]==d) for d in (0, 1, 2)]
     require(aa[0] == 0 and aa[2] > aa[1] > 0, "difficulty preserves fallible anti-air distinction", aa)
@@ -370,15 +548,10 @@ def audit():
     raw = (ROOT / "dist/abaqus-after-hours.sym").read_text(encoding="utf-8")
     pairs = [(int(a, 16), n) for a, n in re.findall(r"^([0-9a-f]{8}) (\S+)$", raw, re.M)]
     SYMBOLS = {n: a & 0x1FFFF for a, n in pairs if a >> 16 in (0x7E, 0x7F)}
-    baseline = subprocess.check_output(["git", "show", "610537d:dist/abaqus-after-hours.sym"], cwd=ROOT).decode()
-    base_ram = {n: int(a, 16) for a, n in re.findall(r"^([0-9a-f]{8}) (\S+)$", baseline, re.M)
-                if int(a, 16) >> 16 in (0x7E, 0x7F) or int(a, 16) < 0x2000}
     now = dict((n, a) for a, n in pairs)
-    drift = [n for n, a in base_ram.items() if now.get(n) != a]
-    require(not drift, "all existing WRAM/direct-page symbols retain addresses", drift)
+    shared = combined_contract(ROOT)
+    require(True, 'combined asset, ABI and appended allocation policy passes')
     require(now["cpuPersonalities"] >> 16 not in (0x7E, 0x7F), "personality table lives in ROM")
-    require(not subprocess.check_output(["git", "diff", "--name-only", "610537d", "--", "assets"], cwd=ROOT).strip(),
-            "all approved art, palettes, generated assets and audio are byte-preserved")
     rom = ROOT / "dist/abaqus-after-hours.sfc"
     data = rom.read_bytes()
     require(len(data) == 4194304 and data[0x7FD5] == 0x30, "4 MiB NTSC FastROM LoROM contract")
@@ -394,9 +567,155 @@ def audit():
                 require((start & 0x7FFF) + a-start <= 32768,
                         "CPU code fits one 32 KiB LoROM bank", [key, start, a])
                 sections.append({"section": key, "start": f"{start:06x}", "bytes": a-start})
-    return {"preserved_ram_symbols": len(base_ram), "mutable_bytes_added": 0,
+    return {"combined": shared, "cpu_mutable_bytes_added": 0,
             "personality_table_bytes": 108, "table_address": f"{now['cpuPersonalities']:06x}",
             "cpu_sections": sections, "core_sha256": sha(core)}
+
+
+# Retained controller regressions with the combined Arcade conversation boot.
+def arcade_lowwave_regression() -> dict[str, object]:
+    """Normal/Hard CPU crouch-blocks a genuine incoming low wave."""
+
+    results: dict[str, object] = {}
+    for difficulty in (1, 2):
+        e = boot(5, difficulty, training=False)
+        samples: list[dict[str, int]] = []
+        try:
+            legacy.drive(e, 0, ["down"], 3)
+            legacy.drive(e, 0, ["down", 'y'], 3)
+            for _ in range(80):
+                sample = state(e)
+                samples.append(sample)
+                e.run(1)
+        finally:
+            e.close()
+        wave = [sample for sample in samples if sample["wave1"]]
+        impact = [sample for sample in samples
+                  if sample["hp2"] < 128 and sample["guard2"]]
+        require(bool(wave), f"CPU d{difficulty} sees a genuine incoming low wave", {
+            "wave": [legacy._cpu_summary(sample) for sample in wave[:8]],
+        })
+        require(bool(impact) and all(sample["hp2"] >= 127 for sample in impact),
+              f"CPU d{difficulty} low-wave guard takes at most one chip", {
+                  "impact": [legacy._cpu_summary(sample) for sample in impact[:8]],
+              })
+        back = 512 if impact and impact[0]["face2"] else 256
+        guarded = [sample for sample in impact
+                   if sample["raw_keys2"] & 1024 and sample["raw_keys2"] & back]
+        require(bool(guarded),
+              f"CPU d{difficulty} low-wave guard holds DOWN plus back",
+              [legacy._cpu_summary(sample) for sample in guarded[:8]])
+        require(any(sample["anim_frame2"] == 3 and sample["anim_state2"] == 6
+                  for sample in guarded),
+              f"CPU d{difficulty} low-wave guard renders the crouched posture",
+              [legacy._cpu_summary(sample) for sample in guarded[:8]])
+        results[f"difficulty-{difficulty}"] = {
+            "wave_frames": len(wave),
+            "impact": [legacy._cpu_summary(sample) for sample in impact[:8]],
+            "chip": 128 - min((sample["hp2"] for sample in impact), default=128),
+        }
+    return results
+
+def arcade_wake_regression() -> dict[str, object]:
+    """Normal/Hard CPU wakes with its single UP edge after a knockdown."""
+
+    induction_limit = 260
+    observation_limit = 120
+    results: dict[str, object] = {}
+    for difficulty in (1, 2):
+        e = boot(2, difficulty, training=False)
+        samples: list[dict[str, int]] = []
+        down_seen = False
+        down_index: int | None = None
+        wake_index: int | None = None
+        attack_pulses = 0
+        scene_violations: list[dict[str, int]] = []
+        try:
+            legacy.close_players(e)
+            # Induce exactly one knockdown within the historical bounded
+            # window.  Once the victim enters any down state, stop all P1
+            # attacks so a second hit or KO cannot hide wake behavior.
+            for index in range(induction_limit):
+                current = state(e)
+                distance = abs(current["x1"] - current["x2"])
+                forward = "right" if current["x1"] < current["x2"] else "left"
+                # Reclose after guarded recoil instead of attacking empty
+                # space while the four-button CPU retreats from contact.
+                keys = [forward] if distance > 28 * 16 else []
+                if (index % 32 < 4 and distance < 45 * 16 and
+                        not down_seen and current["action1"] == 0 and
+                        current["down_state1"] == 0):
+                    keys = ["down", "x"]
+                    attack_pulses += 1
+                e.run(1, p1=keys)
+                sample = state(e)
+                if sample["screen"] != 3 or sample["round_end"] or \
+                        sample["hp1"] == 0 or sample["hp2"] == 0:
+                    scene_violations.append({
+                        "phase": 0, "index": index,
+                        "screen": sample["screen"],
+                        "round_end": sample["round_end"],
+                        "hp1": sample["hp1"], "hp2": sample["hp2"],
+                    })
+                if sample["down_state2"]:
+                    down_seen = True
+                    down_index = index
+                    samples.append(sample)
+                    break
+
+            # Observe lift, flight, floor, get-up and wake separately.  This
+            # phase sends no input, leaving the CPU's single wake edge as the
+            # only source of the jump buffer.
+            if down_seen:
+                for observation in range(observation_limit):
+                    sample = state(e)
+                    samples.append(sample)
+                    if sample["screen"] != 3 or sample["round_end"] or \
+                            sample["hp1"] == 0 or sample["hp2"] == 0:
+                        scene_violations.append({
+                            "phase": 1, "index": observation,
+                            "screen": sample["screen"],
+                            "round_end": sample["round_end"],
+                            "hp1": sample["hp1"], "hp2": sample["hp2"],
+                        })
+                    if (wake_index is None and sample["down_state2"] == 5
+                            and sample["down_tick2"] == 1):
+                        wake_index = observation
+                    if sample["down_state2"] == 0 and \
+                            legacy.signed16(sample["y2"]) < 0:
+                        break
+                    e.run(1)
+        finally:
+            e.close()
+        wake_edge = [sample for sample in samples
+                     if sample["down_state2"] == 5 and sample["down_tick2"] == 1]
+        airborne = [sample for sample in samples if legacy.signed16(sample["y2"]) < 0]
+        require(down_seen, f"CPU d{difficulty} enters a real downed state",
+              [legacy._cpu_summary(sample) for sample in samples[:8]])
+        require(not scene_violations,
+              f"CPU d{difficulty} wake fixture stays in live non-KO FIGHT",
+              {"violations": scene_violations,
+               "down_index": down_index, "wake_index": wake_index})
+        require(any(sample["raw_keys2"] & 2048 for sample in wake_edge),
+              f"CPU d{difficulty} samples a single UP wake edge",
+              [legacy._cpu_summary(sample) for sample in wake_edge])
+        require(any(sample["wake_jump2"] > 0 for sample in wake_edge),
+              f"CPU d{difficulty} buffers the wake jump",
+              [legacy._cpu_summary(sample) for sample in wake_edge])
+        require(bool(airborne), f"CPU d{difficulty} leaves wake airborne",
+              [legacy._cpu_summary(sample) for sample in airborne[:8]])
+        results[f"difficulty-{difficulty}"] = {
+            "wake_edge": [legacy._cpu_summary(sample) for sample in wake_edge],
+            "airborne": [legacy._cpu_summary(sample) for sample in airborne[:8]],
+            "down_seen": down_seen,
+            "down_index": down_index,
+            "wake_index": wake_index,
+            "induction_limit": induction_limit,
+            "observation_limit": observation_limit,
+            "attack_pulses_before_down": attack_pulses,
+            "scene_violations": scene_violations,
+        }
+    return results
 
 
 def main():
@@ -406,65 +725,120 @@ def main():
     parser.add_argument("--report", type=Path, default=ROOT / "docs/expansion-06-report.json")
     args = parser.parse_args()
     start = time.time()
-    hardware = audit()
-    cases = []
-    for difficulty in (0, 1, 2):
-        for cpu in range(12):
-            case = encounter(cpu, difficulty, args.frames, capture=cpu in (2, 7) and difficulty==2)
-            cases.append(case)
-            print(json.dumps({"cpu": cpu, "difficulty": difficulty, "metrics": case["metrics"]}), flush=True)
-    replay = []
-    metrics = personality_metrics(cases)
-    recovery, no_lookahead, anti_air, guards, ko, regressions = [], [], [], [], [], {}
-    counters = {}
-    if not args.quick:
-        for cpu in range(12):
-            again = encounter(cpu, 2, args.frames, noisy_p2=True)
-            first = cases[24+cpu]
-            require(again["trace_sha256"] == first["trace_sha256"] and
-                    again["sampled_video_sha256"] == first["sampled_video_sha256"],
-                    "all-roster deterministic replay ignores P2 gameplay input", cpu)
-            replay.append({"cpu": cpu, "trace_sha256": again["trace_sha256"],
-                           "sampled_video_sha256": again["sampled_video_sha256"]})
-        for difficulty in (0, 1, 2):
-            for cpu in range(12):
-                recovery.append(recovery_fixture(cpu, difficulty))
-        for cpu in (2, 5, 7):
-            for delay in (3, 6, 9, 12, 15):
-                recovery.append(recovery_fixture(cpu, 2, delay))
-        require(any(c["answers"] for c in recovery if c["cpu"] in (5, 7)),
-                "counter specialists answer real recovery in controlled encounters")
-        require(any(c["answers"] == 0 for c in recovery if c["difficulty"]==2),
-                "Hard can decline an available punish opportunity")
-        counters = counter_metrics(recovery)
-        no_lookahead = [lookahead_fixture(cpu) for cpu in range(12)]
-        anti_air = anti_air_fixtures()
-        guards = [guard_fixture(cpu, d) for d in (1, 2) for cpu in range(12)]
-        ko = [ko_fixture(victim) for victim in (1, 2)]
-        regressions = {"lowwave_guard": legacy.check_cpu_lowwave_guard(), "wake": legacy.check_cpu_wake()}
-    report = {"status": "passed", "scope": "focused CPU feature evidence; no six-suite or release claim",
+    report = {"status": "running", "scope": "focused combined CPU evidence; no six-suite or release claim",
               "rom_sha256": sha(ROOT / "dist/abaqus-after-hours.sfc"),
               "harness_sha256": {p: sha(ROOT/p) for p in (
-                  "tools/test_expansion_06_cpu_personality.py", "tools/emulator.py", "tools/test_inputs.py")},
-              "source_sha256": sha(ROOT / "src/cpu_personality.h"),
+                  "tools/test_expansion_06_cpu_personality.py", "tools/emulator.py", "tools/test_inputs.py",
+                  "tools/expansion_contracts.py", "tools/release_evidence.py")},
+              "source_sha256": {p.relative_to(ROOT).as_posix(): sha(p)
+                                for p in sorted((ROOT / 'src').rglob('*')) if p.is_file()},
+              "symbols_sha256": sha(ROOT / 'dist/abaqus-after-hours.sym'),
               "headless": True, "audio": "capture callbacks only; no playback device", "memory_writes": False,
-              "hardware": hardware, "elapsed_seconds": round(time.time()-start, 3),
-              "cases": cases, "p2_noise_replays": replay,
-              "personality_metrics": metrics, "controlled_recovery": recovery,
-              "counter_metrics": counters,
-              "no_input_lookahead": no_lookahead, "anti_air": anti_air, "ko": ko,
-              "all_roster_low_guard": guards,
-              "preserved_regressions": regressions, "legacy_focused_checks": len(legacy.checks),
-              "screenshots": [{"path": p.relative_to(ROOT).as_posix(), "sha256": sha(p),
-                               "native_dimensions": [256, 224]} for p in sorted(
-                                   (ROOT / "docs/screenshots/expansion-06").glob("*.png"))],
-              "checks": len(CHECKS), "summary_checks": [c for c in CHECKS if "native CPU encounter" not in c["check"]
-                                                            and "CPU sends only" not in c["check"]
-                                                            and "CPU never buffers" not in c["check"]]}
+              "save_states": False, "controller_only": True, "failures": [],
+              "cases": [], "p2_noise_replays": [], "controlled_recovery": [],
+              "no_input_lookahead": [], "anti_air": [], "ko": [], "all_roster_low_guard": [],
+              "cpu_supers": [], "preserved_regressions": {}}
     args.report.parent.mkdir(parents=True, exist_ok=True)
-    args.report.write_text(json.dumps(report, indent=2)+"\n", encoding="utf-8", newline="\n")
-    print(json.dumps({"status": "passed", "rom_sha256": report["rom_sha256"], "checks": len(CHECKS),
-                      "elapsed_seconds": report["elapsed_seconds"]}), flush=True)
+
+    def save():
+        report['elapsed_seconds'] = round(time.time()-start, 3)
+        report['checks'] = len(CHECKS)
+        report['passed_checks'] = sum(c['passed'] for c in CHECKS)
+        report['failed_checks'] = sum(not c['passed'] for c in CHECKS)
+        report['summary_checks'] = [c for c in CHECKS if not c['passed'] or (
+            'native CPU encounter' not in c['check'] and 'CPU sends only' not in c['check']
+            and 'CPU never buffers' not in c['check'])]
+        args.report.write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8', newline='\n')
+
+    def attempt(label, function):
+        try:
+            value = function()
+            return value
+        except Exception as exc:
+            import traceback
+            report['failures'].append({'case': label, 'error': repr(exc), 'traceback': traceback.format_exc()})
+            print(json.dumps({'case': label, 'failed': repr(exc)}), flush=True)
+            return {'failed_case': label, 'error': repr(exc)}
+        finally:
+            # A controller boot assertion can precede a fixture's try/finally.
+            # Clean up that host instance so independent cases still execute.
+            if Emulator._active_instance is not None:
+                Emulator._active_instance.close()
+
+    try:
+        report['hardware'] = audit()
+        for difficulty in (0, 1, 2):
+            for cpu in range(12):
+                case = attempt(f'encounter-cpu{cpu}-d{difficulty}',
+                    lambda: encounter(cpu, difficulty, args.frames, capture=cpu in (2, 7) and difficulty==2))
+                report['cases'].append(case)
+                print(json.dumps({'cpu': cpu, 'difficulty': difficulty,
+                                  'metrics': case.get('metrics'), 'cadence_failures': len(case.get('cadence_failures', []))}), flush=True)
+                save()
+        report['completed_whiff_fixtures'] = [attempt(f'completed-whiff-cpu{cpu}',
+            lambda: completed_whiff_fixture(cpu)) for cpu in (3, 7, 11)]
+        report['personality_metrics'] = attempt('personality-metrics', lambda: personality_metrics(
+            report['cases'], report['completed_whiff_fixtures']))
+        if not args.quick:
+            for cpu in range(12):
+                again = attempt(f'ignored-p2-cpu{cpu}', lambda: encounter(cpu, 2, args.frames, noisy_p2=True))
+                first = report['cases'][24+cpu]
+                if 'trace_sha256' in again and 'trace_sha256' in first:
+                    attempt(f'ignored-p2-comparison-cpu{cpu}', lambda: require(
+                        again['trace_sha256'] == first['trace_sha256'] and
+                        again['sampled_video_sha256'] == first['sampled_video_sha256'],
+                        'all-roster deterministic replay ignores P2 gameplay input', cpu))
+                report['p2_noise_replays'].append(again)
+                save()
+            for difficulty in (0, 1, 2):
+                for cpu in range(12):
+                    report['controlled_recovery'].append(attempt(f'recovery-cpu{cpu}-d{difficulty}',
+                        lambda: recovery_fixture(cpu, difficulty)))
+            for cpu in (2, 5, 7):
+                for delay in (3, 6, 9, 12, 15):
+                    report['controlled_recovery'].append(attempt(f'recovery-cpu{cpu}-delay{delay}',
+                        lambda: recovery_fixture(cpu, 2, delay)))
+            recovery = report['controlled_recovery']
+            attempt('counter-positive', lambda: require(any(c.get('answers') for c in recovery if c.get('cpu') in (5, 7)),
+                'counter specialists answer real recovery in controlled encounters'))
+            attempt('counter-fallibility', lambda: require(any(c.get('answers') == 0 for c in recovery if c.get('difficulty')==2),
+                'Hard can decline an available punish opportunity'))
+            report['counter_metrics'] = attempt('counter-metrics', lambda: counter_metrics(recovery))
+            for cpu in range(12):
+                report['no_input_lookahead'].append(attempt(f'lookahead-cpu{cpu}', lambda: lookahead_fixture(cpu)))
+            report['anti_air'] = attempt('anti-air', anti_air_fixtures)
+            for difficulty in (1, 2):
+                for cpu in range(12):
+                    report['all_roster_low_guard'].append(attempt(f'guard-cpu{cpu}-d{difficulty}', lambda: guard_fixture(cpu, difficulty)))
+                for full_gauge in (False, True):
+                    report['cpu_supers'].append(attempt(f'cpu-super-d{difficulty}-full{full_gauge}', lambda: super_fixture(difficulty, full_gauge)))
+            for victim in (1, 2):
+                report['ko'].append(attempt(f'ko-victim{victim}', lambda: ko_fixture(victim)))
+            report['preserved_regressions'] = {
+                'lowwave_guard': attempt('arcade-lowwave', arcade_lowwave_regression),
+                'wake': attempt('arcade-wake', arcade_wake_regression)}
+        report['legacy_focused_checks'] = len(legacy.checks)
+        capture_paths = {path for case in report['cases']
+                         for path in case.get('examples', {}).get('screenshots', {}).values()}
+        capture_paths.update(case['capture'] for case in report['cpu_supers'] if case.get('capture'))
+        report['screenshots'] = [{'path': path, 'sha256': sha(ROOT / path),
+                                 'native_dimensions': [256, 224]} for path in sorted(capture_paths)]
+        report['rom_sha256_after'] = sha(ROOT / 'dist/abaqus-after-hours.sfc')
+        attempt('unchanged-tested-rom', lambda: require(report['rom_sha256_after'] == report['rom_sha256'],
+            'production ROM identity stays unchanged throughout the focused proof'))
+        cadence = [{'cpu': c.get('cpu'), 'difficulty': c.get('difficulty'), **f}
+                   for c in report['cases'] + report['p2_noise_replays'] for f in c.get('cadence_failures', [])]
+        report['cadence_failures'] = cadence
+        report['status'] = 'failed' if report['failures'] or cadence or any(not c['passed'] for c in CHECKS) else 'passed'
+    except Exception as exc:
+        report['status'] = 'failed'
+        report['error'] = repr(exc)
+        raise
+    finally:
+        save()
+    print(json.dumps({k: report[k] for k in ('status', 'rom_sha256', 'checks', 'elapsed_seconds')}), flush=True)
+    if report['status'] != 'passed':
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

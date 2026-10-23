@@ -8,8 +8,10 @@ from pathlib import Path
 import array
 import ctypes as C
 import hashlib
+import gzip
 import json
 import math
+import os
 import re
 import shutil
 import struct
@@ -20,13 +22,14 @@ import wave
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'tools'))
+from expansion_contracts import combined_contract, BASE as CONTRACT_BASE
 from emulator import Emulator
 from test_audio import metrics, samples
 from victory_music import soundbank_budget
 from audio_assets import NAMES, speech
 from test_champion import host_contract
 
-BASE = '610537d'
+BASE = CONTRACT_BASE
 OUT = ROOT/'docs/expansion-10-audio'
 REPORT = ROOT/'docs/expansion-10-report.json'
 checks = []
@@ -42,15 +45,15 @@ def sha(data):
     return hashlib.sha256(data).hexdigest()
 
 
-def command(args, cwd=ROOT):
-    r = subprocess.run([str(a) for a in args], cwd=cwd, capture_output=True,
+def command(args, cwd=ROOT, env=None):
+    r = subprocess.run([str(a) for a in args], cwd=cwd, capture_output=True, env=env,
                        creationflags=0x08000000 if sys.platform == 'win32' else 0)
     if r.returncode:
         raise RuntimeError(r.stdout.decode(errors='replace')+r.stderr.decode(errors='replace'))
     return r.stdout
 
 
-def native_byte(e,name):
+def native_value(e,name,width=1):
     if not hasattr(e,'_expansion10_symbols'):
         text=e.rompath.with_suffix('.sym').read_text(encoding='utf-8')
         e._expansion10_symbols={m[2]:int(m[1],16) for m in re.finditer(r'^([0-9a-fA-F]{8})\s+(\w+)$',text,re.M)}
@@ -58,7 +61,18 @@ def native_byte(e,name):
     if 0x7e0000<=address<0x800000:offset=address-0x7e0000
     elif address<0x2000:offset=address
     else:raise ValueError(('read outside WRAM',name,hex(address)))
-    return C.string_at(e.ram+offset,1)[0]
+    return int.from_bytes(C.string_at(e.ram+offset,width),"little")
+
+
+def native_byte(e,name):
+    return native_value(e,name)
+
+
+def timeline(name, data):
+    path=OUT/(name+"-timeline.json.gz")
+    raw=(json.dumps(data,separators=(",",":"))+"\n").encode()
+    path.write_bytes(gzip.compress(raw,mtime=0))
+    return {"file":path.relative_to(ROOT).as_posix(),"sha256":sha(path.read_bytes()),"callbacks":len(data)}
 
 
 def wav(name, pcm, rate=32040):
@@ -70,22 +84,26 @@ def wav(name, pcm, rate=32040):
 
 
 def fixture():
-    root = ROOT/'build/expansion10-muted'
+    root = ROOT/'build/expansion10-combined-muted'
     (root/'tools').mkdir(parents=True, exist_ok=True); (root/'dist').mkdir(exist_ok=True)
     shutil.copytree(ROOT/'src', root/'src', dirs_exist_ok=True)
+    shutil.copytree(ROOT/'assets/generated', root/'assets/generated', dirs_exist_ok=True)
     shutil.copyfile(ROOT/'tools/build.py', root/'tools/build.py')
-    for name in ('assets', '.tools'):
-        if not (root/name).exists():
-            command(['powershell.exe', '-NoProfile', '-NonInteractive', '-Command',
-                     '& { param($p, $t) New-Item -ItemType Junction -Path $p -Target $t | Out-Null }',
-                     root/name, ROOT/name])
     path = root/'src/audio_presentation.h'
-    code = path.read_text(encoding='utf-8')
-    code, n = re.subn(r'(const u8 audioVolpan\[AUDIO_EFFECT_COUNT\]=)\{[^}]+\}',
-                      r'\1{0x08,0x08,0x08,0x08,0x08,0x08,0x08,0x08,0x08,0x08,0x08}', code)
-    check(n == 1, 'control ROM differs only in eleven effect-volume bytes')
-    path.write_text(code, encoding='utf-8', newline='\n')
-    command([sys.executable, root/'tools/build.py'], cwd=root)
+    original = path.read_bytes()
+    changed, n = re.subn(rb'(const u8 audioVolpan\[AUDIO_EFFECT_COUNT\]=)\{[^}]+\}',
+                      rb'\1{0x08,0x08,0x08,0x08,0x08,0x08,0x08,0x08,0x08,0x08,0x08}', original)
+    check(n == 1, 'control source mutes only eleven effect volume entries')
+    path.write_bytes(changed)
+    for source in (ROOT/'src').iterdir():
+        if source.is_file():
+            expected = changed if source.name == 'audio_presentation.h' else source.read_bytes()
+            check((root/'src'/source.name).read_bytes() == expected,
+                  'control source copy matches combined candidate: '+source.name)
+    env = dict(os.environ, PVSNESLIB_HOME=str(ROOT/'.tools/sdk/pvsneslib'))
+    command([sys.executable, root/'tools/build.py'], cwd=root, env=env)
+    check((ROOT/'src/audio_presentation.h').read_bytes() == original,
+          'private fixture build preserves root native source')
     return root/'dist/abaqus-after-hours.sfc'
 
 
@@ -99,6 +117,9 @@ class Capture:
     def run(self, n=1, p1=(), p2=()):
         for _ in range(n):
             before = self.e.state()
+            before_native=native_value(self.e,'screen')
+            before_lag=native_value(self.e,'lag_frame_counter',2)
+            before_vblank=native_value(self.e,'snes_vblank_count',2)
             self.e.pcm.clear(); self.e.run(1, p1=p1, p2=p2)
             now = self.e.state()
             # Linker-resolved reads only; never write into emulator memory.
@@ -108,7 +129,12 @@ class Capture:
             self.frames.append({**now, 'delta': (now['frame']-before['frame']) & 65535,
                                 'backlog': queued, 'cue': cue,
                                 'ppu_status':C.string_at(self.e.ram+0x1ff00+114*2,1)[0],
-                                'volume': native_byte(self.e, 'audioVolume')})
+                                'volume': native_byte(self.e, 'audioVolume'),
+                                'native_screen':native_value(self.e,'screen'),
+                                'before_native_screen':before_native,
+                                'lag_delta':(native_value(self.e,'lag_frame_counter',2)-before_lag)&65535,
+                                'vblank_delta':(native_value(self.e,'snes_vblank_count',2)-before_vblank)&65535,
+                                'black':self.e.frame.getbbox() is None})
             self.chunks.append(bytes(self.e.pcm))
             if cue != self.old_cue and cue<len(NAMES):
                 self.cues.append({'frame': len(self.frames)-1, 'slot': cue, 'name': NAMES[cue]})
@@ -177,12 +203,13 @@ def scenario(rom, name, stage=0):
         # must retain one game tick per video callback after trace settles.
         failures=[{'index':i,'delta':s['delta'],'state':s} for i,s in enumerate(frames)
                   if i>2 and s['screen']==3 and frames[i-1]['screen']==3
-                  and s['round_end']!=1 and s['delta']!=1]
+                  and s['native_screen']==3 and s['before_native_screen']==3
+                  and (s['delta']!=1 or s['lag_delta'] or s['vblank_delta']!=1)]
         check(not failures,name+': native fight/announcement/contact cadence',failures[:2])
         check(metrics(pcm,32040)['clipped_samples']==0,name+': no mixed PCM clipping')
         return {'pcm':pcm, 'frames':frames, 'cues':c.cues, 'max_backlog':backlog,
                 'chunk_bytes':[len(chunk) for chunk in c.chunks],
-                'scene_boundary_callbacks':sum(s['delta']==0 and s['round_end']==1 for s in frames)}
+                'scene_boundary_callbacks':sum(s['delta']==0 and s['native_screen']!=3 for s in frames)}
     finally:c.close()
 
 
@@ -223,24 +250,17 @@ def speech_identity(name, delta, event, chunk_bytes):
 
 
 def preservation():
-    changes=[]; unchanged=0
-    names=command(['git','ls-tree','-r','--name-only',BASE,'assets/generated']).decode().splitlines()
-    for name in names:
-        old=command(['git','show',BASE+':'+name]);new=(ROOT/name).read_bytes()
-        if Path(name).suffix in ('.asm','.h','.json'):
-            old=old.replace(b'\r\n',b'\n');new=new.replace(b'\r\n',b'\n')
-        if old!=new:changes.append(name)
-        else:unchanged+=1
-    check(changes==['assets/generated/effects.it','assets/generated/soundbank.asm','assets/generated/soundbank.bnk'],
-          'all visual assets, music sources and original four BRR files byte-preserved',changes)
-    def symbols(data):
-        return {m[2]:int(m[1],16) for m in re.finditer(r'^([0-9a-fA-F]{8})\s+(\S+)$',data,re.M)
-                if int(m[1],16)<0x2000 or 0x7e0000<=int(m[1],16)<0x800000}
-    before=symbols(command(['git','show',BASE+':dist/abaqus-after-hours.sym']).decode())
-    after=symbols((ROOT/'dist/abaqus-after-hours.sym').read_text(encoding='utf-8'))
-    extent_labels={'SECTIONEND_globram.data','RAM_USAGE_SLOT_3_BANK_127_END'}
-    moved=[name for name,value in before.items() if after.get(name)!=value and name not in extent_labels]
-    check(not moved,'all established WRAM/direct-page symbols retain addresses',moved)
+    native_symbols={m[2]:int(m[1],16) for m in re.finditer(r'^([0-9a-fA-F]{8})\s+(\S+)$',
+        (ROOT/'dist/abaqus-after-hours.sym').read_text(encoding='utf-8'),re.M)}
+    contract=combined_contract(ROOT)
+    check(True, 'combined strict asset/native preservation passes', {
+        'changes':contract['assets']['changed_generated'], 'native':contract['native']})
+    # Exact audio-domain sources stay pinned independently of other features.
+    source_names=command(['git','ls-tree','-r','--name-only',BASE,'assets/audio']).decode().splitlines()
+    score_names=['assets/generated/music'+str(i)+'.it' for i in range(5)]
+    for name in source_names+score_names:
+        check(command(['git','show',BASE+':'+name])==(ROOT/name).read_bytes(),
+              'original audio source byte-preserved: '+name)
     def sample(raw,index):
         addr,bank=struct.unpack_from('<HB',raw,388+index*3)
         off=bank*32768+addr-0x8000
@@ -260,10 +280,11 @@ def preservation():
             start=offset+4+count*2
             return raw[start:start+words*2]
         check(module(old,i)==module(new,i),'original native score module '+str(i)+' byte-preserved')
-    return {'base':BASE,'unchanged_generated_files':unchanged,'changed':changes,
-            'preserved_ram_symbols':len(before)-len(extent_labels),'new_audio_state_bytes':8,
-            'changed_extent_labels':{name:{'before':hex(before[name]),'after':hex(after[name])} for name in extent_labels},
-            'new_state_range':['7F:0448','7F:044F']}
+    return {'base':BASE,'combined_contract':contract,
+            'preserved_audio_sources':source_names+score_names,
+            'new_audio_state_bytes':8,
+            'new_state_range':[hex(native_symbols['audioPriority']),hex(native_symbols['audioPreviousIntro'])]}
+
 
 
 def stress(rom,stage):
@@ -284,7 +305,8 @@ def stress(rom,stage):
             c.run(p1=p1,p2=p2)
             if c.e.state()['screen']==4:break
         failures=[i for i,s in enumerate(c.frames) if i>2 and s['screen']==3
-                  and c.frames[i-1]['screen']==3 and s['round_end']!=1 and s['delta']!=1]
+                  and c.frames[i-1]['screen']==3 and s['native_screen']==3 and s['before_native_screen']==3
+                  and (s['delta']!=1 or s['lag_delta'] or s['vblank_delta']!=1)]
         check(not failures,'stage '+str(stage)+': simultaneous combat preserves native cadence',failures[:4])
         check(max(f['backlog'] for f in c.frames)<=6,'stage '+str(stage)+': stress FIFO bounded')
         check(not any(f['ppu_status']&0xc0 for f in c.frames),'stage '+str(stage)+': no native OBJ overflow')
@@ -292,6 +314,8 @@ def stress(rom,stage):
         check(stats['clipped_samples']==0 and stats['longest_near_silence_seconds']<.5,
               'stage '+str(stage)+': continuous unclipped combat/score PCM',stats)
         return {'frames':len(c.frames),'cadence_failures':failures,
+                'timeline':timeline('stage'+str(stage)+'-stress',c.frames),
+                'mix':wav('stage'+str(stage)+'-stress-native-mix',pcm),
                 'max_spc_backlog':max(f['backlog'] for f in c.frames),
                 'actual_cues':sorted({f['cue'] for f in c.frames}), 'pcm':stats}
     finally:c.close()
@@ -322,7 +346,8 @@ def main():
         report['source_sha256']={p:sha((ROOT/p).read_bytes()) for p in (
             'src/game.c','src/audio_presentation.h','src/audio_presentation_state.h',
             'src/hardware.asm','tools/audio_assets.py','tools/make_assets.py',
-            'tools/victory_music.py','tools/test_expansion_10_audio.py','tools/emulator.py')}
+            'tools/victory_music.py','tools/test_expansion_10_audio.py','tools/emulator.py',
+            'tools/expansion_contracts.py')}
         report['core_sha256']=sha((ROOT/'.tools/core/snes9x_libretro.dll').read_bytes())
         report['preservation']=preservation()
         report['budget']=soundbank_budget(ROOT/'assets/generated/soundbank.bnk')
@@ -350,7 +375,11 @@ def main():
                            'capture_start_sample':excerpt_start//4,
                            'cues':active['cues'],'max_backlog':active['max_backlog'],
                            'frames':len(active['frames']),
-                           'forced_blank_boundary_callbacks':active['scene_boundary_callbacks']}
+                           'forced_blank_boundary_callbacks':active['scene_boundary_callbacks'],
+                           'timeline':timeline(name,active['frames']),
+                           'complete_mix':wav(name+'-complete-native-mix',active['pcm']) if name=='ko-victory' else None,
+                           'complete_cue_difference':wav(name+'-complete-cue-difference',isolated) if name=='ko-victory' else None,
+                           'pcm_chunk_bytes':active['chunk_bytes']}
             seen={f['cue'] for f in active['frames']}
             required={'menu':{9},'intro':{6,7},'light':{1},'strong':{4},'guard':{5},'ko-victory':{8,10}}[name]
             check(required<=seen,name+': controller event selects correct resident identities',sorted(seen))
@@ -396,7 +425,8 @@ def main():
                 'mix':wav('stage'+str(stage)+'-intro-native-mix',active['pcm']),
                 'speech_identity':[speech_identity(NAMES[event['slot']],delta,event,active['chunk_bytes'])
                     for event in active['cues'] if event['slot'] in (6,7)],
-                'max_backlog':active['max_backlog']}
+                'max_backlog':active['max_backlog'],
+                'timeline':timeline('stage'+str(stage)+'-intro',active['frames'])}
         report['combat_stress']={str(stage):stress(rom,stage) for stage in range(3)}
         report['status']='passed'
     except Exception as error:
