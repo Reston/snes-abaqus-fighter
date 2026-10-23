@@ -50,14 +50,12 @@ void animateFighter(u8 p) {
         return;
     }
     if(state==1 || state==2) {
-        /* Distance-driven gait keeps planted steps longer than passing
-         * poses. Full cycle lengths stay 32px forward / 16px backward. */
-        phase=state==1?((f->stride>>5)&15):((f->stride>>4)&15);
-        if(phase<5)phase=0;
-        else if(phase<8)phase=1;
-        else if(phase<11)phase=2;
-        else phase=3;
-        f->animFrame=(state==1?20:24)+phase;
+        /* Eight authored contact/recoil/pass/extension poses. Distance owns
+         * the gait: 32px forward or a guarded 16px retreat per full cycle.
+         * Reverse the same footfalls for retreat; no new mutable clock. */
+        phase=state==1?((f->stride>>6)&7):((f->stride>>5)&7);
+        if(state==2)phase=(8-phase)&7;
+        f->animFrame=20+phase;
     }
     else if(state==3)f->animFrame=f->animTick<4?28:3;
     else if(state==4) {

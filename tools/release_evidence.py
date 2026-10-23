@@ -132,6 +132,7 @@ SOURCE_INPUT_EXACT = {
     "tools/synthesize_announcements.ps1",
     "tools/preservation.py",
     "tools/expansion_contracts.py",
+    "tools/walking_assets.py",
 }
 SOURCE_INPUT_PREFIXES = ("src/", "assets/", "dist/")
 

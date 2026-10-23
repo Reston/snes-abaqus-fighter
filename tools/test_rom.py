@@ -210,6 +210,7 @@ def verify_animation_manifest():
                       'Frame metadata keeps the stable global index',{'fighter':fighter,'frame':index})
                 source_kind=item.get('source_kind',item.get('source_role'))
                 expected='legacy' if index<16 else 'motion' if index<32 else 'actions' if index<48 else 'airborne'
+                if 20<=index<28 and entry.get('walking_revision'):expected='walking-v1'
                 check(source_kind==expected,'Frame metadata keeps its source role',{
                     'fighter':fighter,'frame':index,'expected':expected,'actual':source_kind})
                 frame_hash=item.get('native_hash',item.get('hash'))

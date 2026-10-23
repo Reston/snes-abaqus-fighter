@@ -84,7 +84,7 @@ REVISION_SOURCE_ROLES = ('legacy', 'motion', 'actions', 'airborne',
                          'airborne_metadata')
 
 
-def extract_atlas(path, alpha_threshold=200, pose_names=None):
+def extract_atlas(path, alpha_threshold=200, pose_names=None, expected_count=16):
     """Label opaque silhouettes, retaining only the selected figure's pixels.
 
     Sorting by foot baseline before the four-column row ordering also handles
@@ -96,8 +96,9 @@ def extract_atlas(path, alpha_threshold=200, pose_names=None):
     extraction algorithm and its alpha-threshold semantics remain unchanged.
     """
     names = tuple(POSES if pose_names is None else pose_names)
-    if not (len(names) == 16):
-        raise AssertionError(f'{path}: an atlas must contain exactly sixteen pose names')
+    count_label='sixteen' if expected_count==16 else 'eight'
+    if expected_count not in (8,16) or len(names)!=expected_count:
+        raise AssertionError(f'{path}: an atlas must contain exactly {count_label} pose names')
     sheet = Image.open(path).convert('RGBA')
     width, height = sheet.size
     # Reject translucent generation fringes: those can bridge neighboring hands
@@ -135,11 +136,11 @@ def extract_atlas(path, alpha_threshold=200, pose_names=None):
         if count > 700:
             components.append((count, (left, top, right + 1, bottom + 1), label))
     selected = sorted(components, reverse=True)
-    if not (len(selected) == 16):
-        raise AssertionError(f'{path}: expected sixteen separate fighter silhouettes; got {len(selected)}: {[(c[0], c[1]) for c in selected]}')
+    if not (len(selected) == expected_count):
+        raise AssertionError(f'{path}: expected {count_label} separate fighter silhouettes; got {len(selected)}: {[(c[0], c[1]) for c in selected]}')
     selected.sort(key=lambda item: item[1][3])
     ordered = []
-    for row in range(0, 16, 4):
+    for row in range(0, expected_count, 4):
         ordered.extend(sorted(selected[row:row + 4], key=lambda item: item[1][0]))
     figures = []
     metadata = []
@@ -1004,6 +1005,9 @@ def prepare_roster(root, output):
         else:
             _assert_native_baseline64(slug, fighter, indices, fighter_palette,
                                       uniform_scale, baseline)
+        from walking_assets import apply_walking
+        walking_revision=apply_walking(root,fighter,slug,indices,metadata,colors,
+                                      preview,extract_atlas,HEIGHTS[fighter])
         _assert_native_animation_cycles(slug, indices)
         if not (len({bytes(ids) for ids in indices[:16]}) >= 14):
             raise AssertionError(f'{slug}: legacy key poses were duplicated')
@@ -1090,6 +1094,8 @@ def prepare_roster(root, output):
                     for role, path in revision['new_sources'].items()
                 },
             }
+        if walking_revision:
+            manifest_entry['walking_revision']=walking_revision
         manifests.append(manifest_entry)
         print(f'Prepared {slug}: 64 individual frames, 15-color OBJ palette', flush=True)
     if not (len({tuple(f['indices'][0]) for f in fighters}) == 12):

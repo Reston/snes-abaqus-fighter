@@ -181,13 +181,13 @@ def press(e: Emulator, key: str, port: int = 0) -> None:
 
 
 def boot(mode: int, fighter: int, stage: int = 0, fighter2: int | None = None,
-         quiet_frames: int = 3) -> Emulator:
+         quiet_frames: int = 3, rom=None) -> Emulator:
     """Boot a fresh match using only menu controller input.
 
     mode follows the cartridge menu: 0 arcade, 1 local versus, 2 training.
     """
 
-    e = Emulator()
+    e = Emulator(rom)
     e.run(120)
     for _ in range(mode):
         press(e, "down")
@@ -654,6 +654,8 @@ def verify_native_proportions() -> dict[str, object]:
                 expected_kind = ("legacy" if pose < 16 else
                                  "motion" if pose < 32 else
                                  "actions" if pose < 48 else "airborne")
+                if 20<=pose<28 and entry.get('walking_revision'):
+                    expected_kind='walking-v1'
                 source_kind = item.get("source_kind", item.get("source_role"))
                 check(source_kind == expected_kind,
                       "frame metadata preserves its source role", {
@@ -1401,12 +1403,12 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
             "fighter": fighter, "pose": s_move["pose1"],
         })
         walk_forward = observe_animation_loop(
-            e, fighter, 0, "forward walk", ("right",), set(range(20, 24)),
+            e, fighter, 0, "forward walk", ("right",), set(range(20, 28)),
             frames=24, gif_label="walk-animation",
         )
         seen_banks.update(frame // 8 for frame in walk_forward["frames"])
         walk_back = observe_animation_loop(
-            e, fighter, 0, "backward walk", ("left",), set(range(24, 28)),
+            e, fighter, 0, "backward walk", ("left",), set(range(20, 28)),
             frames=24,
         )
         seen_banks.update(frame // 8 for frame in walk_back["frames"])
