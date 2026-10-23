@@ -10,6 +10,9 @@ from test_champion import host_contract
 from expansion_contracts import combined_contract
 
 BASE='f5345f9db6b9d663b629b8d11cb0458e57521be4'
+HAND_BOXES={0:(20,43,27,51),2:(33,43,45,51),4:(27,43,40,55),
+            6:(23,42,38,54),7:(17,42,45,54),8:(31,42,51,54),
+            9:(33,43,46,54),11:(20,42,37,59)}
 OUT=ROOT/'docs/screenshots/walking-v1'
 checks=[]
 def check(ok,label,detail=None):
@@ -32,6 +35,12 @@ def art_contract():
             if 20<=frame<28:
                 check(a.crop((0,0,96,47)).tobytes()==b.crop((0,0,96,47)).tobytes(),
                       'walking face and upper body pixels preserved',[fighter,frame])
+                if fighter in HAND_BOXES:
+                    x0,y0,x1,y1=HAND_BOXES[fighter]
+                    skin=[(x,y) for y in range(max(47,y0),y1) for x in range(x0,x1)
+                          if (lambda c:c[3] and c[0]>=150 and c[0]>c[1]+18 and c[1]>c[2]+6 and c[1]*2>=c[0])(a.getpixel((x,y)))]
+                    check(all(a.getpixel(p)==b.getpixel(p) for p in skin),
+                          'original fingertips survive below the waist cut',[fighter,frame,len(skin)])
                 box=b.getchannel('A').getbbox()
                 check(box[3]==78 and box[0]>0 and box[2]<96,'walk keeps grounded sole and margins',[fighter,frame,box])
                 foot=b.getchannel('A').crop((0,66,96,80)).getbbox();spreads.append(foot[2]-foot[0])

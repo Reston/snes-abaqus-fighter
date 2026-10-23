@@ -1096,6 +1096,7 @@ def prepare_roster(root, output):
             }
         if walking_revision:
             manifest_entry['walking_revision']=walking_revision
+            if revision:manifest_entry['revision']['scope']='Approved base identity before the bounded walking overlay; walking_revision records the final native identity.'
         manifests.append(manifest_entry)
         print(f'Prepared {slug}: 64 individual frames, 15-color OBJ palette', flush=True)
     if not (len({tuple(f['indices'][0]) for f in fighters}) == 12):
