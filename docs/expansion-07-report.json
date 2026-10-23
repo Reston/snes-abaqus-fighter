@@ -1,0 +1,2559 @@
+{
+  "feature": 7,
+  "base": "610537d",
+  "command": "fresh simultaneous neutral grounded Y+B",
+  "rom_sha256": "89fc09f725b6ee5ca5e68f6b7238891c701676a0cf178985fd9081403e045da8",
+  "test_sha256": "b63e55d1852215a251f73fa33d5c3a0048bec87e6da27205466bc8b7a36d3845",
+  "source_sha256": {
+    "src/game.c": "834654939f171abc3e18c012c027ca53a1bdb0578147b7ac0ba51abfe8a311d6",
+    "src/super_moves.h": "ebc5305572348f331de1fca856e3209ebc98a0ce03051438ebdcf078aab5b2c1",
+    "src/pause_guide.h": "d5c345db115672b937d2cc76f1493a4631b4a91c1d180b9c5fe6b26e403b8487"
+  },
+  "core_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
+  "controller_only": true,
+  "memory_writes": false,
+  "save_states": false,
+  "audio": "capture callbacks only; no device or GUI",
+  "contracts": {
+    "preserved_ram_symbols": 1245,
+    "new_mutable_bytes": 14,
+    "bank_local_sections": 299,
+    "largest_section_bytes": 30720,
+    "unoccupied_bytes_outside_linked_sections": 924962,
+    "libc_scratch_delta": 14
+  },
+  "activation": [
+    {
+      "fighter": 0,
+      "name": "KERNEL OVERDRIVE",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 106,
+      "observed_duration": [
+        65,
+        65
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "fighter": 1,
+      "name": "COMPOUND INTEREST",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 108,
+      "observed_duration": [
+        77,
+        77
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "fighter": 2,
+      "name": "ATOMIC CASCADE",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 55,
+      "observed_duration": [
+        55,
+        55
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [],
+        []
+      ]
+    },
+    {
+      "fighter": 3,
+      "name": "FINAL BALANCE",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 68,
+      "observed_duration": [
+        68,
+        68
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [],
+        []
+      ]
+    },
+    {
+      "fighter": 4,
+      "name": "MACRO COLLAPSE",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 117,
+      "observed_duration": [
+        79,
+        79
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "fighter": 5,
+      "name": "FINAL AUDIT",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 63,
+      "observed_duration": [
+        63,
+        63
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [],
+        []
+      ]
+    },
+    {
+      "fighter": 6,
+      "name": "LEGACY ROLLOUT",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 120,
+      "observed_duration": [
+        65,
+        65
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "fighter": 7,
+      "name": "ZERO RISK",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 68,
+      "observed_duration": [
+        68,
+        68
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [],
+        []
+      ]
+    },
+    {
+      "fighter": 8,
+      "name": "MERGE STORM",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 94,
+      "observed_duration": [
+        49,
+        49
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "fighter": 9,
+      "name": "CLOUD NINE",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 114,
+      "observed_duration": [
+        69,
+        69
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "fighter": 10,
+      "name": "CLOSING BELL",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 54,
+      "observed_duration": [
+        54,
+        54
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [],
+        []
+      ]
+    },
+    {
+      "fighter": 11,
+      "name": "ABSOLUTE ZERO",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 118,
+      "observed_duration": [
+        81,
+        81
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    }
+  ],
+  "hits": [
+    {
+      "fighter": 0,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 11,
+          "damage": 10,
+          "phase": 1,
+          "guard": 0,
+          "tick": 12
+        },
+        {
+          "frame": 28,
+          "damage": 10,
+          "phase": 2,
+          "guard": 0,
+          "tick": 24
+        },
+        {
+          "frame": 45,
+          "damage": 12,
+          "phase": 3,
+          "guard": 0,
+          "tick": 36
+        }
+      ],
+      "damage": 32,
+      "frames": [
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        12,
+        16,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 0,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 11,
+          "damage": 10,
+          "phase": 1,
+          "guard": 0,
+          "tick": 12
+        },
+        {
+          "frame": 28,
+          "damage": 10,
+          "phase": 2,
+          "guard": 0,
+          "tick": 24
+        },
+        {
+          "frame": 45,
+          "damage": 12,
+          "phase": 3,
+          "guard": 0,
+          "tick": 36
+        }
+      ],
+      "damage": 32,
+      "frames": [
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        12,
+        16,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 1,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 17,
+          "damage": 15,
+          "phase": 1,
+          "guard": 0,
+          "tick": 18
+        },
+        {
+          "frame": 46,
+          "damage": 19,
+          "phase": 2,
+          "guard": 0,
+          "tick": 42
+        }
+      ],
+      "damage": 34,
+      "frames": [
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        12,
+        16,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 1,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 17,
+          "damage": 15,
+          "phase": 1,
+          "guard": 0,
+          "tick": 18
+        },
+        {
+          "frame": 46,
+          "damage": 19,
+          "phase": 2,
+          "guard": 0,
+          "tick": 42
+        }
+      ],
+      "damage": 34,
+      "frames": [
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        12,
+        16,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 2,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 7,
+          "damage": 9,
+          "phase": 1,
+          "guard": 0,
+          "tick": 8
+        },
+        {
+          "frame": 22,
+          "damage": 9,
+          "phase": 2,
+          "guard": 0,
+          "tick": 18
+        },
+        {
+          "frame": 37,
+          "damage": 14,
+          "phase": 3,
+          "guard": 0,
+          "tick": 28
+        }
+      ],
+      "damage": 32,
+      "frames": [
+        6,
+        7,
+        15,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        6,
+        7,
+        15,
+        18,
+        42,
+        43
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 2,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 7,
+          "damage": 9,
+          "phase": 1,
+          "guard": 0,
+          "tick": 8
+        },
+        {
+          "frame": 22,
+          "damage": 9,
+          "phase": 2,
+          "guard": 0,
+          "tick": 18
+        },
+        {
+          "frame": 37,
+          "damage": 14,
+          "phase": 3,
+          "guard": 0,
+          "tick": 28
+        }
+      ],
+      "damage": 32,
+      "frames": [
+        6,
+        7,
+        15,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        6,
+        7,
+        15,
+        18,
+        42,
+        43
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 3,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 13,
+          "damage": 13,
+          "phase": 1,
+          "guard": 0,
+          "tick": 14
+        },
+        {
+          "frame": 36,
+          "damage": 21,
+          "phase": 2,
+          "guard": 0,
+          "tick": 32
+        }
+      ],
+      "damage": 34,
+      "frames": [
+        7,
+        15,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        7,
+        15,
+        17,
+        42,
+        43
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 3,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 13,
+          "damage": 13,
+          "phase": 1,
+          "guard": 0,
+          "tick": 14
+        },
+        {
+          "frame": 36,
+          "damage": 21,
+          "phase": 2,
+          "guard": 0,
+          "tick": 32
+        }
+      ],
+      "damage": 34,
+      "frames": [
+        7,
+        15,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        7,
+        15,
+        18,
+        42,
+        43
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 4,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 19,
+          "damage": 15,
+          "phase": 1,
+          "guard": 0,
+          "tick": 20
+        },
+        {
+          "frame": 48,
+          "damage": 21,
+          "phase": 2,
+          "guard": 0,
+          "tick": 44
+        }
+      ],
+      "damage": 36,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        17,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 4,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 19,
+          "damage": 15,
+          "phase": 1,
+          "guard": 0,
+          "tick": 20
+        },
+        {
+          "frame": 48,
+          "damage": 21,
+          "phase": 2,
+          "guard": 0,
+          "tick": 44
+        }
+      ],
+      "damage": 36,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        17,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 5,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 8,
+          "damage": 8,
+          "phase": 1,
+          "guard": 0,
+          "tick": 9
+        },
+        {
+          "frame": 24,
+          "damage": 8,
+          "phase": 2,
+          "guard": 0,
+          "tick": 20
+        },
+        {
+          "frame": 40,
+          "damage": 18,
+          "phase": 3,
+          "guard": 0,
+          "tick": 31
+        }
+      ],
+      "damage": 34,
+      "frames": [
+        5,
+        6,
+        13,
+        44,
+        45
+      ],
+      "uploaded_frames": [
+        5,
+        6,
+        13,
+        17,
+        44,
+        45
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": true
+    },
+    {
+      "fighter": 5,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 8,
+          "damage": 8,
+          "phase": 1,
+          "guard": 0,
+          "tick": 9
+        },
+        {
+          "frame": 24,
+          "damage": 8,
+          "phase": 2,
+          "guard": 0,
+          "tick": 20
+        },
+        {
+          "frame": 40,
+          "damage": 18,
+          "phase": 3,
+          "guard": 0,
+          "tick": 31
+        }
+      ],
+      "damage": 34,
+      "frames": [
+        5,
+        6,
+        13,
+        44,
+        45
+      ],
+      "uploaded_frames": [
+        5,
+        6,
+        13,
+        18,
+        44,
+        45
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": true
+    },
+    {
+      "fighter": 6,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 13,
+          "damage": 10,
+          "phase": 1,
+          "guard": 0,
+          "tick": 14
+        },
+        {
+          "frame": 30,
+          "damage": 10,
+          "phase": 2,
+          "guard": 0,
+          "tick": 26
+        },
+        {
+          "frame": 47,
+          "damage": 13,
+          "phase": 3,
+          "guard": 0,
+          "tick": 38
+        }
+      ],
+      "damage": 33,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        17,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 6,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 13,
+          "damage": 10,
+          "phase": 1,
+          "guard": 0,
+          "tick": 14
+        },
+        {
+          "frame": 30,
+          "damage": 10,
+          "phase": 2,
+          "guard": 0,
+          "tick": 26
+        },
+        {
+          "frame": 47,
+          "damage": 13,
+          "phase": 3,
+          "guard": 0,
+          "tick": 38
+        }
+      ],
+      "damage": 33,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        17,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 7,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 12,
+          "damage": 12,
+          "phase": 1,
+          "guard": 0,
+          "tick": 13
+        },
+        {
+          "frame": 33,
+          "damage": 22,
+          "phase": 2,
+          "guard": 0,
+          "tick": 29
+        }
+      ],
+      "damage": 34,
+      "frames": [
+        13,
+        40,
+        44,
+        45
+      ],
+      "uploaded_frames": [
+        13,
+        17,
+        40,
+        44,
+        45
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": true
+    },
+    {
+      "fighter": 7,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 12,
+          "damage": 12,
+          "phase": 1,
+          "guard": 0,
+          "tick": 13
+        },
+        {
+          "frame": 33,
+          "damage": 22,
+          "phase": 2,
+          "guard": 0,
+          "tick": 29
+        }
+      ],
+      "damage": 34,
+      "frames": [
+        13,
+        40,
+        44,
+        45
+      ],
+      "uploaded_frames": [
+        13,
+        17,
+        40,
+        44,
+        45
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": true
+    },
+    {
+      "fighter": 8,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 7,
+          "damage": 8,
+          "phase": 1,
+          "guard": 0,
+          "tick": 8
+        },
+        {
+          "frame": 20,
+          "damage": 8,
+          "phase": 2,
+          "guard": 0,
+          "tick": 16
+        },
+        {
+          "frame": 33,
+          "damage": 13,
+          "phase": 3,
+          "guard": 0,
+          "tick": 24
+        }
+      ],
+      "damage": 29,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        18,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 8,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 7,
+          "damage": 8,
+          "phase": 1,
+          "guard": 0,
+          "tick": 8
+        },
+        {
+          "frame": 20,
+          "damage": 8,
+          "phase": 2,
+          "guard": 0,
+          "tick": 16
+        },
+        {
+          "frame": 33,
+          "damage": 13,
+          "phase": 3,
+          "guard": 0,
+          "tick": 24
+        }
+      ],
+      "damage": 29,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        18,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 9,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 15,
+          "damage": 14,
+          "phase": 1,
+          "guard": 0,
+          "tick": 16
+        },
+        {
+          "frame": 40,
+          "damage": 22,
+          "phase": 2,
+          "guard": 0,
+          "tick": 36
+        }
+      ],
+      "damage": 36,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        17,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 9,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 15,
+          "damage": 14,
+          "phase": 1,
+          "guard": 0,
+          "tick": 16
+        },
+        {
+          "frame": 40,
+          "damage": 22,
+          "phase": 2,
+          "guard": 0,
+          "tick": 36
+        }
+      ],
+      "damage": 36,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        18,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 10,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 6,
+          "damage": 7,
+          "phase": 1,
+          "guard": 0,
+          "tick": 7
+        },
+        {
+          "frame": 20,
+          "damage": 7,
+          "phase": 2,
+          "guard": 0,
+          "tick": 16
+        },
+        {
+          "frame": 34,
+          "damage": 17,
+          "phase": 3,
+          "guard": 0,
+          "tick": 25
+        }
+      ],
+      "damage": 31,
+      "frames": [
+        5,
+        7,
+        13,
+        44,
+        45
+      ],
+      "uploaded_frames": [
+        5,
+        7,
+        13,
+        19,
+        44,
+        45
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": true
+    },
+    {
+      "fighter": 10,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 6,
+          "damage": 7,
+          "phase": 1,
+          "guard": 0,
+          "tick": 7
+        },
+        {
+          "frame": 20,
+          "damage": 7,
+          "phase": 2,
+          "guard": 0,
+          "tick": 16
+        },
+        {
+          "frame": 34,
+          "damage": 17,
+          "phase": 3,
+          "guard": 0,
+          "tick": 25
+        }
+      ],
+      "damage": 31,
+      "frames": [
+        5,
+        7,
+        13,
+        44,
+        45
+      ],
+      "uploaded_frames": [
+        5,
+        7,
+        13,
+        19,
+        44,
+        45
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": true
+    },
+    {
+      "fighter": 11,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 21,
+          "damage": 16,
+          "phase": 1,
+          "guard": 0,
+          "tick": 22
+        },
+        {
+          "frame": 54,
+          "damage": 22,
+          "phase": 2,
+          "guard": 0,
+          "tick": 50
+        }
+      ],
+      "damage": 38,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        19,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 11,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 21,
+          "damage": 16,
+          "phase": 1,
+          "guard": 0,
+          "tick": 22
+        },
+        {
+          "frame": 54,
+          "damage": 22,
+          "phase": 2,
+          "guard": 0,
+          "tick": 50
+        }
+      ],
+      "damage": 38,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        19,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    }
+  ],
+  "blocks": [
+    {
+      "fighter": 0,
+      "port": 0,
+      "guard": true,
+      "events": [],
+      "damage": 0,
+      "frames": [
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        12,
+        16,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 0,
+      "port": 1,
+      "guard": true,
+      "events": [],
+      "damage": 0,
+      "frames": [
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        12,
+        16,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 1,
+      "port": 0,
+      "guard": true,
+      "events": [
+        {
+          "frame": 17,
+          "damage": 1,
+          "phase": 1,
+          "guard": 1,
+          "tick": 18
+        },
+        {
+          "frame": 44,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 42
+        }
+      ],
+      "damage": 2,
+      "frames": [
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        12,
+        16,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 1,
+      "port": 1,
+      "guard": true,
+      "events": [
+        {
+          "frame": 17,
+          "damage": 1,
+          "phase": 1,
+          "guard": 1,
+          "tick": 18
+        },
+        {
+          "frame": 44,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 42
+        }
+      ],
+      "damage": 2,
+      "frames": [
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        12,
+        16,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 2,
+      "port": 0,
+      "guard": true,
+      "events": [],
+      "damage": 0,
+      "frames": [
+        6,
+        7,
+        15,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        6,
+        7,
+        15,
+        18,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 2,
+      "port": 1,
+      "guard": true,
+      "events": [],
+      "damage": 0,
+      "frames": [
+        6,
+        7,
+        15,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        6,
+        7,
+        15,
+        18,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 3,
+      "port": 0,
+      "guard": true,
+      "events": [
+        {
+          "frame": 34,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 32
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        7,
+        15,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        7,
+        15,
+        17,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 3,
+      "port": 1,
+      "guard": true,
+      "events": [
+        {
+          "frame": 34,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 32
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        7,
+        15,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        7,
+        15,
+        18,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 4,
+      "port": 0,
+      "guard": true,
+      "events": [
+        {
+          "frame": 19,
+          "damage": 1,
+          "phase": 1,
+          "guard": 1,
+          "tick": 20
+        },
+        {
+          "frame": 46,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 44
+        }
+      ],
+      "damage": 2,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        17,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 4,
+      "port": 1,
+      "guard": true,
+      "events": [
+        {
+          "frame": 19,
+          "damage": 1,
+          "phase": 1,
+          "guard": 1,
+          "tick": 20
+        },
+        {
+          "frame": 46,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 44
+        }
+      ],
+      "damage": 2,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        17,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 5,
+      "port": 0,
+      "guard": true,
+      "events": [
+        {
+          "frame": 36,
+          "damage": 1,
+          "phase": 3,
+          "guard": 1,
+          "tick": 31
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        5,
+        6,
+        13,
+        44,
+        45
+      ],
+      "uploaded_frames": [
+        5,
+        6,
+        13,
+        17,
+        44,
+        45
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": true
+    },
+    {
+      "fighter": 5,
+      "port": 1,
+      "guard": true,
+      "events": [
+        {
+          "frame": 36,
+          "damage": 1,
+          "phase": 3,
+          "guard": 1,
+          "tick": 31
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        5,
+        6,
+        13,
+        44,
+        45
+      ],
+      "uploaded_frames": [
+        5,
+        6,
+        13,
+        18,
+        44,
+        45
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": true
+    },
+    {
+      "fighter": 6,
+      "port": 0,
+      "guard": true,
+      "events": [],
+      "damage": 0,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        17,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 6,
+      "port": 1,
+      "guard": true,
+      "events": [],
+      "damage": 0,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        17,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 7,
+      "port": 0,
+      "guard": true,
+      "events": [
+        {
+          "frame": 31,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 29
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        13,
+        40,
+        44,
+        45
+      ],
+      "uploaded_frames": [
+        13,
+        17,
+        40,
+        44,
+        45
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": true
+    },
+    {
+      "fighter": 7,
+      "port": 1,
+      "guard": true,
+      "events": [
+        {
+          "frame": 31,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 29
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        13,
+        40,
+        44,
+        45
+      ],
+      "uploaded_frames": [
+        13,
+        17,
+        40,
+        44,
+        45
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": true
+    },
+    {
+      "fighter": 8,
+      "port": 0,
+      "guard": true,
+      "events": [],
+      "damage": 0,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        18,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 8,
+      "port": 1,
+      "guard": true,
+      "events": [],
+      "damage": 0,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        18,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 9,
+      "port": 0,
+      "guard": true,
+      "events": [
+        {
+          "frame": 38,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 36
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        17,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 9,
+      "port": 1,
+      "guard": true,
+      "events": [
+        {
+          "frame": 38,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 36
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        18,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 10,
+      "port": 0,
+      "guard": true,
+      "events": [
+        {
+          "frame": 30,
+          "damage": 1,
+          "phase": 3,
+          "guard": 1,
+          "tick": 25
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        5,
+        7,
+        13,
+        44,
+        45
+      ],
+      "uploaded_frames": [
+        5,
+        7,
+        13,
+        19,
+        44,
+        45
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": true
+    },
+    {
+      "fighter": 10,
+      "port": 1,
+      "guard": true,
+      "events": [
+        {
+          "frame": 30,
+          "damage": 1,
+          "phase": 3,
+          "guard": 1,
+          "tick": 25
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        5,
+        7,
+        13,
+        44,
+        45
+      ],
+      "uploaded_frames": [
+        5,
+        7,
+        13,
+        19,
+        44,
+        45
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": true
+    },
+    {
+      "fighter": 11,
+      "port": 0,
+      "guard": true,
+      "events": [
+        {
+          "frame": 21,
+          "damage": 1,
+          "phase": 1,
+          "guard": 1,
+          "tick": 22
+        },
+        {
+          "frame": 52,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 50
+        }
+      ],
+      "damage": 2,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        19,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 11,
+      "port": 1,
+      "guard": true,
+      "events": [
+        {
+          "frame": 21,
+          "damage": 1,
+          "phase": 1,
+          "guard": 1,
+          "tick": 22
+        },
+        {
+          "frame": 52,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 50
+        }
+      ],
+      "damage": 2,
+      "frames": [
+        8,
+        12,
+        42,
+        43
+      ],
+      "uploaded_frames": [
+        8,
+        12,
+        19,
+        42,
+        43
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    }
+  ],
+  "whiffs": [
+    {
+      "fighter": 0,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 8
+    },
+    {
+      "fighter": 1,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 8
+    },
+    {
+      "fighter": 2,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 11
+    },
+    {
+      "fighter": 3,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 10
+    },
+    {
+      "fighter": 4,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 8
+    },
+    {
+      "fighter": 5,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 10
+    },
+    {
+      "fighter": 6,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 8
+    },
+    {
+      "fighter": 7,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 10
+    },
+    {
+      "fighter": 8,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 10
+    },
+    {
+      "fighter": 9,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 9
+    },
+    {
+      "fighter": 10,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 11
+    },
+    {
+      "fighter": 11,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 8
+    }
+  ],
+  "interruptions": [
+    {
+      "fighter": 0,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 117
+    },
+    {
+      "fighter": 0,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 117
+    },
+    {
+      "fighter": 1,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 116
+    },
+    {
+      "fighter": 1,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 116
+    },
+    {
+      "fighter": 2,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 119
+    },
+    {
+      "fighter": 2,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 119
+    },
+    {
+      "fighter": 3,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 115
+    },
+    {
+      "fighter": 3,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 115
+    },
+    {
+      "fighter": 4,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 112
+    },
+    {
+      "fighter": 4,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 112
+    },
+    {
+      "fighter": 5,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 115
+    },
+    {
+      "fighter": 5,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 115
+    },
+    {
+      "fighter": 6,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 115
+    },
+    {
+      "fighter": 6,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 115
+    },
+    {
+      "fighter": 7,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 116
+    },
+    {
+      "fighter": 7,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 116
+    },
+    {
+      "fighter": 8,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 120
+    },
+    {
+      "fighter": 8,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 120
+    },
+    {
+      "fighter": 9,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 114
+    },
+    {
+      "fighter": 9,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 114
+    },
+    {
+      "fighter": 10,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 118
+    },
+    {
+      "fighter": 10,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 118
+    },
+    {
+      "fighter": 11,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 115
+    },
+    {
+      "fighter": 11,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 115
+    }
+  ],
+  "punish": {
+    "recovery_tick": 48,
+    "punish_hp": 122
+  },
+  "pause_reset": {
+    "pause_freeze_tick": 14,
+    "reset": "all 14 bytes zero",
+    "guide": "docs/screenshots/expansion-07-guide.png"
+  },
+  "hurt_down_wake_dead": {
+    "hurt_down_wake": "rejects without spending; fresh grounded command works after wake",
+    "dead": "rejects after actual controller KO"
+  },
+  "ordinary_special_after_super": {
+    "command": "Down+Y",
+    "cost": 32,
+    "damage": [
+      16
+    ]
+  },
+  "status": "passed",
+  "checks": 2151,
+  "timing": {
+    "frames": 28965,
+    "cadence_failures": [],
+    "overflow_failures": []
+  },
+  "elapsed_seconds": 107.33
+}
