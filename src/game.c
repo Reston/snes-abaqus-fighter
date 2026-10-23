@@ -159,6 +159,8 @@ extern void refreshEnergyBar(u8 player);
 void releaseHeldVictim(u8 owner);
 void traceProfiles(void);
 
+#include "stage_depth.h"
+
 const char arenaNames[3][12] = {"LAS CONDES","EL CASTILLO","LA OFICINA"};
 const u8 power[12] = {3,4,2,3,5,4,4,4,2,3,3,4};
 const u8 startup[10] = {0,4,6,9,5,7,10,10,6,4};
@@ -277,6 +279,7 @@ void music(u8 index) {
     spcSetModuleVolume(86);spcPlay(0);musicIndex=index;
 }
 void commonScreen(void) {
+    stageDepthReset();
     pausePage=0;guideBuild=0;guideDirty=0;trainingDummy=0;pauseHudPending=0;
     portraitDirty=0;
     actorUploadDirty=0;
@@ -403,6 +406,8 @@ void resetRoundState(void) {
     }
     seconds=99;secondTick=0;intro=110;roundEnd=0;hitstop=0;shake=0;fxLife=0;
     rearKickRecoil=0;
+    stageVictoryTick=0;stageVictoryPhase=255;
+    stageDepthFar=0;stageDepthNear=0;
     fightClock=0;
     impactHudPending=0;impactBannerPending=0;roundBannerPending=0;
     impactBannerPlayer=0;impactBannerCombo=0;impactBannerCounter=0;
@@ -1217,6 +1222,7 @@ void fightTick(void) {
     }
     if(roundEnd) {
         animationAdvance=1;
+        stageDepthVictory();
         if(roundBannerPending>1)roundBannerPending--;
         else if(roundBannerPending) {
             roundBannerPending=0;clearBanner();fillBannerPanel();
@@ -1267,6 +1273,7 @@ void fightTick(void) {
     }
     else {
         combat();animationAdvance=1;
+        stageDepthTrack();
         /* Four restrained phases, one beat per sixteen live fight ticks.
          * Intro, pause, impact freeze and round results keep the scene still. */
         ambientClock++;
@@ -1361,13 +1368,9 @@ int main(void) {
             else queueFighter(1-sx);
         }
         ambientReady=0;
-        if(screen==FIGHT && !paused) {
-            if(!hitstop && !roundEnd) {
-                if(ambientWanted<4 && animationAdvance && !intro) {
-                    ambientUploadSource=ambientData+((u16)ambientWanted<<8);
-                    ambientReady=1;
-                }
-            }
+        if(stageDepthAmbientReady()) {
+            ambientUploadSource=ambientData+((u16)ambientWanted<<8);
+            ambientReady=1;
         }
         traceActorsFast();
         if(pendingSound){spcEffect(2,pendingSound-1,effectVolpan[pendingSound-1]);pendingSound=0;}
@@ -1398,8 +1401,10 @@ int main(void) {
             /* Publish completed transfer ownership with the actual VRAM. */
             TRACE[115]=ambientPhase;TRACE[117]=255;TRACE[118]=0;
         }
+        sx=0;
         if(shake && screen==FIGHT){if(!paused)shake--;sx=shake&1?2:254;bgSetScroll(0,sx==254?510:2,511);}
         else bgSetScroll(0,0,511);
+        stageDepthPublish(sx==254?-2:sx);
         frame++;
     }
     return 0;
