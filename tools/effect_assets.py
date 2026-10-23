@@ -1,7 +1,8 @@
 """Original native pixel effects, authored on the existing 128x32 OBJ sheet.
 
 No source illustration is altered. The named 16x16 cells retain the current
-tile layout; the spare lower row supplies distinct guard and ground-wave art.
+tile layout. Lower cells x80/x96 supply light contacts without growing VRAM,
+the palette or the single impact OAM entry. Projectiles and shadows stay exact.
 """
 from PIL import Image, ImageDraw
 
@@ -10,9 +11,9 @@ def make_effect_sheet():
     image = Image.new('P', (128, 32), 0)
     d = ImageDraw.Draw(image)
 
-    # Strike: compact contact flash, expanding streaks, split rays, embers.
+    # Strong strike: substantial first contact, expanding split rays, embers.
     # Cream core / gold body / orange tips remain legible on all three stages.
-    for phase, radius in enumerate((3, 7, 6, 4)):
+    for phase, radius in enumerate((5, 7, 6, 4)):
         cx, cy = phase * 16 + 8, 8
         if phase < 3:
             outer = [(cx, cy-radius), (cx+1, cy-2),
@@ -47,13 +48,17 @@ def make_effect_sheet():
         d.line((x+1,7+phase%2,x+8,7+phase%2), fill=3)
         d.point((x+13,6), fill=12)
 
-    # Guard contact: a hollow cyan arc, separate from damage's filled burst.
+    # Guard: hollow cyan brace opening toward the attacker, then a wider arc.
+    # The center stays transparent; no damage burst or screen flash on a block.
     for phase in range(2):
         x = phase * 16
-        d.arc((x+2,18,x+13,29), 205, 515, fill=4, width=2)
-        d.arc((x+4,20,x+11,27), 235, 485, fill=2)
-        d.line((x+12,18+phase,x+14,16+phase), fill=12)
-        d.line((x+12,29-phase,x+14,31-phase), fill=4)
+        inset = 3 if phase == 0 else 1
+        d.arc((x+inset,16+inset,x+15-inset,31-inset),
+              220, 500, fill=4, width=2)
+        d.arc((x+inset+2,18+inset,x+13-inset,29-inset),
+              250, 470, fill=2)
+        d.line((x+3,18,x+1,16), fill=4)
+        d.line((x+3,29,x+1,31), fill=4)
 
     # Low projectile: grounded amber crest, animated from heel to leading tip.
     for phase in range(3):
@@ -65,6 +70,22 @@ def make_effect_sheet():
         d.polygon([(x+3,29), (x+crest,23), (x+crest,27),
                    (x+12,25), (x+14,29)], fill=3)
         d.line((x+6,29,x+12,27), fill=2)
+
+    # Light contact: a tight amber diamond and two separated fading flecks.
+    # Native cells 426/428 were blank; all pixels fit their own 16x16 cell.
+    x = 80
+    d.polygon([(x+8,20), (x+9,23), (x+12,24), (x+9,25),
+               (x+8,28), (x+7,25), (x+4,24), (x+7,23)], fill=13)
+    d.line((x+8,22,x+8,26), fill=3)
+    d.line((x+6,24,x+10,24), fill=3)
+    d.point((x+8,24), fill=2)
+    d.line((x+2,20,x+4,22), fill=3)
+    d.line((x+11,27,x+13,29), fill=13)
+    x = 96
+    for a, b in (((x+2,19), (x+4,21)), ((x+11,27), (x+13,29))):
+        d.line((*a, *b), fill=13)
+        d.point(b, fill=3)
+    d.line((x+7,23,x+8,24), fill=3)
 
     # Left half of one shallow contact ellipse. The native renderer places
     # adjacent mirrored halves at floor-1: its dark center touches the feet,

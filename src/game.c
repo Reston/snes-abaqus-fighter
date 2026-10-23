@@ -167,6 +167,8 @@ const u8 recovery[10] = {0,9,12,18,10,15,21,23,24,20};
 const u8 damage[10] = {0,7,10,15,8,12,16,15,18,18};
 const u8 reach[10] = {0,28,33,38,35,41,46,0,31,22};
 
+#include "impact_presentation.h"
+
 const CharacterProfile *profileFor(u8 id) {
     /* Keep profile selection explicit for 816-tcc and for trace readability. */
     switch(id) {
@@ -784,7 +786,7 @@ void controls(u8 p) {
     }
 }
 
-u8 hurtWithRecoil(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable,u8 rearRecoil) {
+u8 hurtWithRecoil(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable,u8 rearRecoil,u8 impactAction) {
     Fighter *a=&fighters[attacker];Fighter *d=&fighters[defender];
     u16 back;
     u8 blocked,direction;
@@ -794,7 +796,7 @@ u8 hurtWithRecoil(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable,u8
     if(air && d->duck)blocked=0;
     if(low && !d->duck)blocked=0;
     if(blocked) {
-        d->guard=1;d->hurt=8;dmg=dmg>14?1:0;fxType=1;hitstop=3;
+        d->guard=1;d->hurt=8;dmg=dmg>14?1:0;
         a->combo=0;a->combotime=0;a->counter=0;
         impactBannerCombo=0;impactBannerCounter=0;
     } else {
@@ -806,7 +808,6 @@ u8 hurtWithRecoil(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable,u8
          * display timer is cosmetic and must never establish a link. */
         if(d->hurt && !d->guard && a->combo)a->combo++;else a->combo=1;
         a->combotime=45;applyHitReaction(defender,dmg);
-        fxType=0;hitstop=5;shake=6;
         back=a->energy+8;
         a->energy=back>ENERGY_MAX?ENERGY_MAX:back;
         impactBannerCombo=a->combo;impactBannerCounter=a->counter;
@@ -823,14 +824,23 @@ u8 hurtWithRecoil(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable,u8
     }
     if(blocked)d->x+=direction?16:-16;
     else d->x+=direction?32:-32;
-    fxX=(d->x>>4)+(direction?-12:6);fxY=FLOOR+(d->y>>4)-(low?22:53);fxLife=10;
+    if(beginImpact(impactAction,blocked,direction)) {
+        fxX=(d->x>>4)+(direction?-12:6);
+        fxY=FLOOR+(d->y>>4)-(low?22:(d->duck?32:53));
+    }
     /* Rebuild changed bars on the first frozen impact tick, leaving the
      * contact frame's CPU budget for physics, effects and actor streams. */
-    sound(1);impactHudPending=1;return blocked?1:2;
+    /* Audio10 can consume the same snapshotted contact class. Keep ONE cue. */
+#ifdef AUDIO_PRESENTATION_H
+    soundImpact(blocked?SOUND_GUARD:((impactAction==1 || impactAction==4)?SOUND_LIGHT:SOUND_STRONG));
+#else
+    sound(1);
+#endif
+    impactHudPending=1;return blocked?1:2;
 }
 /* Projectiles and delayed throw damage retain their original facing rule. */
 u8 hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
-    return hurtWithRecoil(attacker,defender,dmg,low,air,unblockable,0);
+    return hurtWithRecoil(attacker,defender,dmg,low,air,unblockable,0,7);
 }
 
 #include "knockdown.h"
@@ -969,11 +979,11 @@ void combat(void) {
         else {beginThrow(1,0);a0=0;a1=0;}
     }
     if(a0) {
-        fighters[0].connected=hurtWithRecoil(0,1,attackDamage(c0,fighters[0].id,m0),low0,air0,0,rear0);
+        fighters[0].connected=hurtWithRecoil(0,1,attackDamage(c0,fighters[0].id,m0),low0,air0,0,rear0,m0);
         if(fighters[0].connected==2 && knockdownAttack(0,m0,low0))k0=1;
     }
     if(a1) {
-        fighters[1].connected=hurtWithRecoil(1,0,attackDamage(c1,fighters[1].id,m1),low1,air1,0,rear1);
+        fighters[1].connected=hurtWithRecoil(1,0,attackDamage(c1,fighters[1].id,m1),low1,air1,0,rear1,m1);
         if(fighters[1].connected==2 && knockdownAttack(1,m1,low1))k1=1;
     }
     if(k0)beginKnockdown(0,1,face0);
@@ -1149,13 +1159,9 @@ void drawFighter(u8 p) {
     refreshFighterOam(p);
 }
 void drawFight(void) {
-    u8 p,phase;
+    u8 p;
     drawFighter(0);drawFighter(1);
-    if(fxLife) {
-        if(animationAdvance)fxLife--;
-        phase=(10-fxLife)>>1;if(phase>3)phase=3;
-        oamSet(OAM_EFFECT_BASE,fxX-8,fxY-8,3,fightClock&1,0,fxType?(fxLife>4?416:418):384+(phase<<1),2);oamSetEx(OAM_EFFECT_BASE,1,OBJ_SHOW);
-    } else oamSetVisible(OAM_EFFECT_BASE,OBJ_HIDE);
+    drawImpact();
     for(p=0;p<2;p++) {
         if(waves[p].active){oamSet(OAM_WAVE_BASE+p*4,(waves[p].x>>4)-8,waves[p].y,2,waves[p].face?0:1,0,(waves[p].low?420:392)+(fightClock%3)*2,2);oamSetEx(OAM_WAVE_BASE+p*4,1,OBJ_SHOW);}
         else oamSetVisible(OAM_WAVE_BASE+p*4,OBJ_HIDE);
@@ -1398,7 +1404,8 @@ int main(void) {
             /* Publish completed transfer ownership with the actual VRAM. */
             TRACE[115]=ambientPhase;TRACE[117]=255;TRACE[118]=0;
         }
-        if(shake && screen==FIGHT){if(!paused)shake--;sx=shake&1?2:254;bgSetScroll(0,sx==254?510:2,511);}
+        publishImpactPriority();
+        if(shake && screen==FIGHT){if(!paused)shake--;bgSetScroll(0,impactScroll(),511);}
         else bgSetScroll(0,0,511);
         frame++;
     }
