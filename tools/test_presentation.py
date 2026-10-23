@@ -478,7 +478,7 @@ def verify_result_font_bank(e: Emulator, current: dict[str, int]) -> dict[str, o
         ]
         return verify_opaque_text_rows(e, rows, "champion ending")
     elif current["mode"] == 1:
-        title, action, context = "MATCH COMPLETE", "A/START: REMATCH", "LOCAL VERSUS"
+        title, action, context = "MATCH COMPLETE", "A/START: REMATCH", "LOCAL 1V1"
     else:
         won = current["wins1"] > current["wins2"]
         title = "SHIFT COMPLETE" if won else "SHIFT OVER"
@@ -713,7 +713,7 @@ def title_and_select() -> dict[str, object]:
         version = json.loads((ROOT / "dist/manifest.json").read_bytes())["version"]
         verify_menu_font_bank(e, [
             (20, 9, "ARCADE SHIFT"),
-            (22, 9, "LOCAL VERSUS"),
+            (22, 9, "LOCAL 1V1 / 2P"),
             (24, 9, "TRAINING"),
             (25, 3, "L/R LEVEL"),
             (25, 18, "NORMAL"),

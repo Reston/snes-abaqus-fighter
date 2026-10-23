@@ -1,5 +1,30 @@
 # Independent-engine compatibility
-<!-- candidate-version: 0.22.1; rom-sha256: 52725899fa86b4ee3d3f3f022dae374c1ab4ff8777bdab4a7134640c34dc8727 -->
+<!-- candidate-version: 0.23.1; rom-sha256: 057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd -->
+
+## Approved main walking revision: v0.23.1
+
+The user rejected v0.23.0's torso/legs mismatch. PR #12 now replaces each
+fighter's eight complete walking poses with coordinated head, guard, torso,
+hip and foot motion, removing the fixed waist splice. Other 56 poses and
+original portraits/palettes remain. All six suites pass 36,219 current-ROM
+checks, matching independent smoke and fresh reproduction pass. The user
+approved the revision and PR #12 merge on 2026-10-23 ("yes good, merge it").
+Run `Play.cmd` from main to play v0.23.1.
+[Current art, native clips, controls and evidence](RELEASE-v0.23.1.md). Main is
+v0.23.1; 08 remains deferred. The notes below retain their historical scope.
+
+## Rejected historical walking candidate: v0.23.0
+
+Main is v0.22.1 with the nine approved improvements merged; feature 08 remains
+deferred and its checkout is retained. The old merged branches/worktrees are
+cleaned. [PR #12](https://github.com/Reston/snes-abaqus-fighter/pull/12) adds
+eight-phase walking to all twelve fighters and the clearer **LOCAL 1V1 / 2P**
+menu label. Local two-port multiplayer was already supported. Run `Play.cmd`
+from `feature/walking-cycles-v023` to test this unmerged candidate.
+All six native suites pass 36,219 current-ROM checks; independent smoke,
+all-roster walking proof and fresh-source reproduction pass.
+[Walking, two-player controls, art/prompts and evidence](RELEASE-v0.23.0.md).
+The older notes below retain their historical scope.
 
 ## Current v0.22.1: nine approved improvements
 

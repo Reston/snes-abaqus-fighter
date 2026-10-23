@@ -311,7 +311,7 @@ void loadBackground(u8 which) {
 void finishScreen(void) { dmaCopyVram((u8 *)ui,0x5800,2048);fullDirty=0;footerDirty=0;setScreenOn(); }
 void drawTitle(void) {
     clearUi();
-    word(9,20,"ARCADE SHIFT");word(9,22,"LOCAL VERSUS");word(9,24,"TRAINING");
+    word(9,20,"ARCADE SHIFT");word(9,22,"LOCAL 1V1 / 2P");word(9,24,"TRAINING");
     word(7,20+menu*2,">");word(3,25,"L/R LEVEL");put(13,25,'1'+difficulty);
     word(18,25,difficulty==0?"EASY":(difficulty==1?"NORMAL":"HARD"));
     word(24,27,"V" ABAQUS_GAME_VERSION);
@@ -515,7 +515,7 @@ void showResult(u8 won) {
     word(15,9,characterNames[id]);word(15,11,"WINS THE MATCH");
     word(16,13,"ROUND WINS");word(15,14,"P1  0 - 0  P2");
     put(19,14,'0'+fighters[0].won);put(23,14,'0'+fighters[1].won);
-    word(15,17,mode==0?"ARCADE SHIFT":"LOCAL VERSUS");
+    word(15,17,mode==0?"ARCADE SHIFT":"LOCAL 1V1");
     center(21,mode==0?arcadeStoryWinnerQuotes[id]:characterQuotes[id]);
     if(mode==0)center(24,won?"A/START: NEXT CHALLENGER":"A/START: CONTINUE");
     else center(24,"A/START: REMATCH");

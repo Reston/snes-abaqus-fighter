@@ -1,0 +1,75 @@
+{
+  "schema": 2,
+  "fighter_id": 6,
+  "source": "assets/art/characters/06-fernando/walking-v2.png",
+  "sha256": "88748a37f01b534333d5ff412e35db94ee8aa0d9562e4d8b1fe7e11b1c7c59b4",
+  "reference": "assets/art/characters/06-fernando/animation-motion.png",
+  "reference_sha256": "4a68f9b8b39af0a23a0bf41f240096c7b3b0e1a75b9fa0df060abccde400705c",
+  "generation": "built-in image_gen; transparent_background=true",
+  "prompt": "Use case: identity-preserve. Production SNES fighting-game sprite atlas: redraw the SAME reference fighter as EIGHT successive FULL-BODY GUARDED WALK poses. Correct the failed legs-only animation: each figure must be one anatomically continuous head-neck-shoulders-torso-pelvis-legs silhouette, all clothing lines continuous through waist. Preserve reference face/likeness, hair, beard/accessories, sex, stocky or slim build, all costume colors and shoe type. Match the reference's polished cartoon ink and restrained cel shades. Face RIGHT in three-quarter side view. Both fists stay in compact fighting guard close to chest and jaw; never drop an arm behind body or swing arms like a pedestrian. Short controlled fighter walk, not a run or march. Hips shift weight over planted foot; shoulders subtly counter-rotate against pelvis; elbows, clothes folds and jacket hem respond to each step; head nearly level with very slight body bob. One consistent whole-body scale, limb lengths, head size and lighting across all eight. EXACTLY FOUR COLUMNS by TWO ROWS, equal cells, no merged silhouettes, wide transparent gutters around every figure including rightmost shoes. Common floor baseline within each row, exactly two feet per figure and at least one grounded sole. Reading-order phases: 1 near-leg forward heel contact/far-leg back toe; 2 near-leg supports with subtle whole-body down/recoil; 3 far-leg passes LOW under hips with support leg vertical, feet close; 4 far-leg extends forward just before heel contact; 5 OPPOSITE contact far-leg forward/near-leg back, alternating which leg occludes; 6 far-leg supports with subtle body recoil; 7 near-leg passes low under hips; 8 near-leg extends forward ready for1. Eight distinct coordinated joint poses, smooth loop8to1, small functional guard motion. No pasted body parts, text, labels, numbers, grid, scenery, ground, shadow, FX, kicks, punches, running, extra limbs, huge head or cropped feet. TRUE TRANSPARENT BACKGROUND. Individual identity/costume: Fernando: short swept dark brown hair, clean-shaven, teal/turquoise blazer over white open-collar shirt, dark charcoal gray trousers, black dress shoes.",
+  "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-c567cb71-fe8b-490e-aceb-c82bc988e835.png",
+  "raw_output_sha256": "88748a37f01b534333d5ff412e35db94ee8aa0d9562e4d8b1fe7e11b1c7c59b4",
+  "size": [
+    1774,
+    887
+  ],
+  "selected_final": "assets/art/characters/06-fernando/walking-v2.png",
+  "native_frame_range": [
+    20,
+    27
+  ],
+  "native_foot_baseline": 78,
+  "palette_sha256": "8157261a8813a14f129fe05c4cd41d219ec1d8213fda5e9de62173601a680a1c",
+  "scope": "coordinated-full-body",
+  "supersedes": "walking-v1.png; rejected legs/torso splice retained as history",
+  "source_boxes": [
+    [
+      52,
+      28,
+      406,
+      443
+    ],
+    [
+      535,
+      27,
+      827,
+      440
+    ],
+    [
+      997,
+      22,
+      1239,
+      444
+    ],
+    [
+      1382,
+      29,
+      1734,
+      444
+    ],
+    [
+      50,
+      456,
+      425,
+      863
+    ],
+    [
+      535,
+      456,
+      843,
+      862
+    ],
+    [
+      1000,
+      463,
+      1243,
+      866
+    ],
+    [
+      1392,
+      455,
+      1744,
+      866
+    ]
+  ]
+}

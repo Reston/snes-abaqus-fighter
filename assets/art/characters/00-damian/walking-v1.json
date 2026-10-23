@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "fighter_id": 0,
+  "source": "assets/art/characters/00-damian/walking-v1.png",
+  "sha256": "1ea7e058dc40fa5366c6ad15a348019e9781efe828865902677b34b133cb6db5",
+  "reference": "assets/art/characters/00-damian/animation-motion-v5.png",
+  "reference_sha256": "90b2bd7c230c040fa8ca809fc1039cd49adc4e98b0f2f951c939c974b43dd614",
+  "generation": "built-in image_gen; transparent_background=true",
+  "prompt": "Use case: stylized-concept. Game-production asset: EIGHT successive WALK-CYCLE LOWER-BODY drawings, transparent sprite sheet, four columns by two rows. Show ONLY from belt/hips down to shoes: no torso, no arms, no head. Same waist anchor near top center of each cell. Navy suit trousers and black lace-up dress shoes matching the reference. Original clean cartoon ink, solid cel shades, same limb lengths and physical scale in every cell. Side view facing RIGHT. Exactly two legs and two feet in each cell. This is a natural unhurried WALK, never high-knee march. CONSISTENT near leg in lighter navy and far leg in darker navy so the two can be followed. Grid phases in reading order: 1 near LEFT LEG forward straight heel down, far RIGHT LEG back toe down; 2 near left leg still forward/supporting with bent knee, far right heel lifting behind; 3 near left leg vertical/supporting, far right foot swinging LOW under the hips; 4 near left leg moving behind/supporting, far right foot extending FORWARD almost to heel strike; 5 far RIGHT LEG now forward straight heel down and NEAR LEFT LEG back toe down, opposite contact; 6 far right supporting with bent knee while near left heel lifts behind; 7 far right leg vertical/supporting and near left foot swings LOW under hips; 8 far right leg moves behind supporting, near left foot extends FORWARD ready for phase1. Feet close together for passing poses3/7, feet spread for contact1/5. Do not duplicate one static stance. Each cell differs continuously in joint angles. Keep pelvis stationary with modest 2-percent vertical sink on recoil2/6, one grounded foot at common floor baseline, lifted shoe no more than one shoe height above floor. Exactly eight separate centered waist-down figures, generous transparent gutters. No labels, frame numbers, grid lines, ground shadow, kick, lunge, jump, cropped feet or extra limbs.",
+  "size": [
+    1536,
+    1024
+  ],
+  "selected_final": "assets/art/characters/00-damian/walking-v1.png",
+  "native_frame_range": [
+    20,
+    27
+  ],
+  "preserved_upper_rows": [
+    0,
+    47
+  ],
+  "native_foot_baseline": 78,
+  "palette_sha256": "ef3f4e8213fe8fd940a89b40d9c39f4e6b0ac3e36dbf51f976118c305d8d3341",
+  "scope": "Imagegen supplies individual walking legs only; existing upper body/face, other 56 frames, palette and scale retained."
+}

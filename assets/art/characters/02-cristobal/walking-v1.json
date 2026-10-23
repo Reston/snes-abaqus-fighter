@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "fighter_id": 2,
+  "source": "assets/art/characters/02-cristobal/walking-v1.png",
+  "sha256": "c1ff54d2d6aa4c74ef2b75561d327f675fa716198da5d1ea346d0638c0ddf9e0",
+  "reference": "assets/art/characters/02-cristobal/animation-motion.png",
+  "reference_sha256": "7f4f412d9e9bfcb08fc884b3126a7c779523333975aac4f404d30faff858d4d5",
+  "generation": "built-in image_gen; transparent_background=true",
+  "prompt": "Use case: stylized-concept. Game-production asset: EIGHT successive WALK-CYCLE LOWER-BODY drawings, transparent sprite sheet, four columns by two rows. Show ONLY from belt/hips down to shoes: no torso, no arms, no head. Same waist anchor near top center of each cell. Charcoal gray straight trousers and medium brown leather shoes matching the reference. Original clean cartoon ink, solid cel shades, same limb lengths and physical scale in every cell. Side view facing RIGHT. Exactly two legs and two feet in each cell. This is a natural unhurried WALK, never high-knee march. CONSISTENT near leg in lighter navy and far leg in darker navy so the two can be followed. Grid phases in reading order: 1 near LEFT LEG forward straight heel down, far RIGHT LEG back toe down; 2 near left leg still forward/supporting with bent knee, far right heel lifting behind; 3 near left leg vertical/supporting, far right foot swinging LOW under the hips; 4 near left leg moving behind/supporting, far right foot extending FORWARD almost to heel strike; 5 far RIGHT LEG now forward straight heel down and NEAR LEFT LEG back toe down, opposite contact; 6 far right supporting with bent knee while near left heel lifts behind; 7 far right leg vertical/supporting and near left foot swings LOW under hips; 8 far right leg moves behind supporting, near left foot extends FORWARD ready for phase1. Feet close together for passing poses3/7, feet spread for contact1/5. Do not duplicate one static stance. Each cell differs continuously in joint angles. Keep pelvis stationary with modest 2-percent vertical sink on recoil2/6, one grounded foot at common floor baseline, lifted shoe no more than one shoe height above floor. Exactly eight separate centered waist-down figures, generous transparent gutters. No labels, frame numbers, grid lines, ground shadow, kick, lunge, jump, cropped feet or extra limbs.",
+  "size": [
+    1536,
+    1024
+  ],
+  "selected_final": "assets/art/characters/02-cristobal/walking-v1.png",
+  "native_frame_range": [
+    20,
+    27
+  ],
+  "preserved_upper_rows": [
+    0,
+    47
+  ],
+  "native_foot_baseline": 78,
+  "palette_sha256": "39ae172ad89edf2a8a264e9058e8d7d582ef3a69d3d11737edbf4fe6c636aced",
+  "scope": "Imagegen supplies individual walking legs only; existing upper body/face, other 56 frames, palette and scale retained."
+}

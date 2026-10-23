@@ -1,6 +1,6 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "52725899fa86b4ee3d3f3f022dae374c1ab4ff8777bdab4a7134640c34dc8727",
+  "rom_sha256": "057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd",
   "rom_bytes": 4194304,
   "checks": [
     {
@@ -1962,8 +1962,8 @@
       "details": {
         "fighter": 0,
         "frame": 20,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -1972,8 +1972,8 @@
       "details": {
         "fighter": 0,
         "frame": 20,
-        "source_file": "assets/art/characters/00-damian/animation-motion-v5.png",
-        "source_hash": "90b2bd7c230c040fa8ca809fc1039cd49adc4e98b0f2f951c939c974b43dd614"
+        "source_file": "assets/art/characters/00-damian/walking-v2.png",
+        "source_hash": "aacd8e0986bb89e0d883fe66d5ad785769cccc0f0e05103a7cd0efa247990d6d"
       }
     },
     {
@@ -1982,8 +1982,8 @@
       "details": {
         "fighter": 0,
         "frame": 20,
-        "native_hash": "78e59c033f716f897aeae9ee81628460350b6437f5f239d0e3e696d72c397e1b",
-        "pixels_sha256": "78e59c033f716f897aeae9ee81628460350b6437f5f239d0e3e696d72c397e1b"
+        "native_hash": "9611024995aa9b664ee3d49f9c5c4ae369b6126b1e4421620bd1f9aebbdc3129",
+        "pixels_sha256": "9611024995aa9b664ee3d49f9c5c4ae369b6126b1e4421620bd1f9aebbdc3129"
       }
     },
     {
@@ -1993,15 +1993,15 @@
         "fighter": 0,
         "frame": 20,
         "metadata": [
-          16,
-          12,
-          79,
+          18,
+          9,
+          77,
           78
         ],
         "preview": [
-          16,
-          12,
-          79,
+          18,
+          9,
+          77,
           78
         ]
       }
@@ -2029,8 +2029,8 @@
       "details": {
         "fighter": 0,
         "frame": 21,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -2039,8 +2039,8 @@
       "details": {
         "fighter": 0,
         "frame": 21,
-        "source_file": "assets/art/characters/00-damian/animation-motion-v5.png",
-        "source_hash": "90b2bd7c230c040fa8ca809fc1039cd49adc4e98b0f2f951c939c974b43dd614"
+        "source_file": "assets/art/characters/00-damian/walking-v2.png",
+        "source_hash": "aacd8e0986bb89e0d883fe66d5ad785769cccc0f0e05103a7cd0efa247990d6d"
       }
     },
     {
@@ -2049,8 +2049,8 @@
       "details": {
         "fighter": 0,
         "frame": 21,
-        "native_hash": "2575676761d767df9a22d430bf8ac7685071e2845b04a3e09aadbb33c4a9e103",
-        "pixels_sha256": "2575676761d767df9a22d430bf8ac7685071e2845b04a3e09aadbb33c4a9e103"
+        "native_hash": "e0a6557bc4ab411a51c482be17dbb54c5287fcd1adbb1e8064b945916a202889",
+        "pixels_sha256": "e0a6557bc4ab411a51c482be17dbb54c5287fcd1adbb1e8064b945916a202889"
       }
     },
     {
@@ -2060,15 +2060,15 @@
         "fighter": 0,
         "frame": 21,
         "metadata": [
-          20,
-          13,
-          76,
+          26,
+          10,
+          70,
           78
         ],
         "preview": [
-          20,
-          13,
-          76,
+          26,
+          10,
+          70,
           78
         ]
       }
@@ -2096,8 +2096,8 @@
       "details": {
         "fighter": 0,
         "frame": 22,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -2106,8 +2106,8 @@
       "details": {
         "fighter": 0,
         "frame": 22,
-        "source_file": "assets/art/characters/00-damian/animation-motion-v5.png",
-        "source_hash": "90b2bd7c230c040fa8ca809fc1039cd49adc4e98b0f2f951c939c974b43dd614"
+        "source_file": "assets/art/characters/00-damian/walking-v2.png",
+        "source_hash": "aacd8e0986bb89e0d883fe66d5ad785769cccc0f0e05103a7cd0efa247990d6d"
       }
     },
     {
@@ -2116,8 +2116,8 @@
       "details": {
         "fighter": 0,
         "frame": 22,
-        "native_hash": "86ea3d6254d0f39f8510e612d46360ebbd38c4193bd85be6ed5a58eb6f0734ff",
-        "pixels_sha256": "86ea3d6254d0f39f8510e612d46360ebbd38c4193bd85be6ed5a58eb6f0734ff"
+        "native_hash": "f7ea69613803b342d53d4151bde625fc9db0c2be5f6178d03c369db71fcf68cb",
+        "pixels_sha256": "f7ea69613803b342d53d4151bde625fc9db0c2be5f6178d03c369db71fcf68cb"
       }
     },
     {
@@ -2127,15 +2127,15 @@
         "fighter": 0,
         "frame": 22,
         "metadata": [
-          22,
-          13,
-          73,
+          28,
+          9,
+          68,
           78
         ],
         "preview": [
-          22,
-          13,
-          73,
+          28,
+          9,
+          68,
           78
         ]
       }
@@ -2163,8 +2163,8 @@
       "details": {
         "fighter": 0,
         "frame": 23,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -2173,8 +2173,8 @@
       "details": {
         "fighter": 0,
         "frame": 23,
-        "source_file": "assets/art/characters/00-damian/animation-motion-v5.png",
-        "source_hash": "90b2bd7c230c040fa8ca809fc1039cd49adc4e98b0f2f951c939c974b43dd614"
+        "source_file": "assets/art/characters/00-damian/walking-v2.png",
+        "source_hash": "aacd8e0986bb89e0d883fe66d5ad785769cccc0f0e05103a7cd0efa247990d6d"
       }
     },
     {
@@ -2183,8 +2183,8 @@
       "details": {
         "fighter": 0,
         "frame": 23,
-        "native_hash": "c9e0a15fe07984dcc2ed0946fd59363db920a23e2900592dad3f0bad7fdde0d3",
-        "pixels_sha256": "c9e0a15fe07984dcc2ed0946fd59363db920a23e2900592dad3f0bad7fdde0d3"
+        "native_hash": "49798b3f254ddf586bae98481930a7e6ca7720e412505a6b89928ab5a176323f",
+        "pixels_sha256": "49798b3f254ddf586bae98481930a7e6ca7720e412505a6b89928ab5a176323f"
       }
     },
     {
@@ -2195,13 +2195,13 @@
         "frame": 23,
         "metadata": [
           19,
-          12,
+          9,
           76,
           78
         ],
         "preview": [
           19,
-          12,
+          9,
           76,
           78
         ]
@@ -2230,8 +2230,8 @@
       "details": {
         "fighter": 0,
         "frame": 24,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -2240,8 +2240,8 @@
       "details": {
         "fighter": 0,
         "frame": 24,
-        "source_file": "assets/art/characters/00-damian/animation-motion-v5.png",
-        "source_hash": "90b2bd7c230c040fa8ca809fc1039cd49adc4e98b0f2f951c939c974b43dd614"
+        "source_file": "assets/art/characters/00-damian/walking-v2.png",
+        "source_hash": "aacd8e0986bb89e0d883fe66d5ad785769cccc0f0e05103a7cd0efa247990d6d"
       }
     },
     {
@@ -2250,8 +2250,8 @@
       "details": {
         "fighter": 0,
         "frame": 24,
-        "native_hash": "1f88cc8bc8e9aaf70fc66f864b905728030618069620970b39edbc4272a2e952",
-        "pixels_sha256": "1f88cc8bc8e9aaf70fc66f864b905728030618069620970b39edbc4272a2e952"
+        "native_hash": "363392d3bce1efe149171dcc44e642a7c93e79bb933d2070633f52ee0e7453d9",
+        "pixels_sha256": "363392d3bce1efe149171dcc44e642a7c93e79bb933d2070633f52ee0e7453d9"
       }
     },
     {
@@ -2261,15 +2261,15 @@
         "fighter": 0,
         "frame": 24,
         "metadata": [
-          17,
-          14,
-          78,
+          19,
+          10,
+          77,
           78
         ],
         "preview": [
-          17,
-          14,
-          78,
+          19,
+          10,
+          77,
           78
         ]
       }
@@ -2297,8 +2297,8 @@
       "details": {
         "fighter": 0,
         "frame": 25,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -2307,8 +2307,8 @@
       "details": {
         "fighter": 0,
         "frame": 25,
-        "source_file": "assets/art/characters/00-damian/animation-motion-v5.png",
-        "source_hash": "90b2bd7c230c040fa8ca809fc1039cd49adc4e98b0f2f951c939c974b43dd614"
+        "source_file": "assets/art/characters/00-damian/walking-v2.png",
+        "source_hash": "aacd8e0986bb89e0d883fe66d5ad785769cccc0f0e05103a7cd0efa247990d6d"
       }
     },
     {
@@ -2317,8 +2317,8 @@
       "details": {
         "fighter": 0,
         "frame": 25,
-        "native_hash": "c22f999a908ac903d79daf059ca1c858f9e81a50c2a893e26246c8b0895e6d94",
-        "pixels_sha256": "c22f999a908ac903d79daf059ca1c858f9e81a50c2a893e26246c8b0895e6d94"
+        "native_hash": "673b69718db7ff9d52a8e3a31dd142c348d487dc0e887ca4edd3a63bbb078abc",
+        "pixels_sha256": "673b69718db7ff9d52a8e3a31dd142c348d487dc0e887ca4edd3a63bbb078abc"
       }
     },
     {
@@ -2328,15 +2328,15 @@
         "fighter": 0,
         "frame": 25,
         "metadata": [
-          21,
-          15,
-          74,
+          23,
+          10,
+          73,
           78
         ],
         "preview": [
-          21,
-          15,
-          74,
+          23,
+          10,
+          73,
           78
         ]
       }
@@ -2364,8 +2364,8 @@
       "details": {
         "fighter": 0,
         "frame": 26,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -2374,8 +2374,8 @@
       "details": {
         "fighter": 0,
         "frame": 26,
-        "source_file": "assets/art/characters/00-damian/animation-motion-v5.png",
-        "source_hash": "90b2bd7c230c040fa8ca809fc1039cd49adc4e98b0f2f951c939c974b43dd614"
+        "source_file": "assets/art/characters/00-damian/walking-v2.png",
+        "source_hash": "aacd8e0986bb89e0d883fe66d5ad785769cccc0f0e05103a7cd0efa247990d6d"
       }
     },
     {
@@ -2384,8 +2384,8 @@
       "details": {
         "fighter": 0,
         "frame": 26,
-        "native_hash": "54201ba7396e80647d5f361e16b4064579990372a9521333d5bade865d47cf7c",
-        "pixels_sha256": "54201ba7396e80647d5f361e16b4064579990372a9521333d5bade865d47cf7c"
+        "native_hash": "74b96516d93236471bf7abcfa1a49b120f32175a9d388dde32797ac0fc0f9b51",
+        "pixels_sha256": "74b96516d93236471bf7abcfa1a49b120f32175a9d388dde32797ac0fc0f9b51"
       }
     },
     {
@@ -2395,15 +2395,15 @@
         "fighter": 0,
         "frame": 26,
         "metadata": [
-          24,
-          15,
-          71,
+          27,
+          9,
+          69,
           78
         ],
         "preview": [
-          24,
-          15,
-          71,
+          27,
+          9,
+          69,
           78
         ]
       }
@@ -2431,8 +2431,8 @@
       "details": {
         "fighter": 0,
         "frame": 27,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -2441,8 +2441,8 @@
       "details": {
         "fighter": 0,
         "frame": 27,
-        "source_file": "assets/art/characters/00-damian/animation-motion-v5.png",
-        "source_hash": "90b2bd7c230c040fa8ca809fc1039cd49adc4e98b0f2f951c939c974b43dd614"
+        "source_file": "assets/art/characters/00-damian/walking-v2.png",
+        "source_hash": "aacd8e0986bb89e0d883fe66d5ad785769cccc0f0e05103a7cd0efa247990d6d"
       }
     },
     {
@@ -2451,8 +2451,8 @@
       "details": {
         "fighter": 0,
         "frame": 27,
-        "native_hash": "56d3ebbe19f4c8d8077ca74eb208daa985fb8da3758179f65325132f593e2a3d",
-        "pixels_sha256": "56d3ebbe19f4c8d8077ca74eb208daa985fb8da3758179f65325132f593e2a3d"
+        "native_hash": "cfe457c0f40c0849abfc2aa18ec588b0ab683e19bc75d137006dd601c84c979c",
+        "pixels_sha256": "cfe457c0f40c0849abfc2aa18ec588b0ab683e19bc75d137006dd601c84c979c"
       }
     },
     {
@@ -2463,13 +2463,13 @@
         "frame": 27,
         "metadata": [
           20,
-          15,
+          10,
           76,
           78
         ],
         "preview": [
           20,
-          15,
+          10,
           76,
           78
         ]
@@ -5248,9 +5248,9 @@
         "fighter": 0,
         "pose": "walk-forward-contact",
         "box": [
-          16,
-          12,
-          79,
+          18,
+          9,
+          77,
           78
         ]
       }
@@ -5262,9 +5262,9 @@
         "fighter": 0,
         "pose": "walk-forward-pass",
         "box": [
-          20,
-          13,
-          76,
+          26,
+          10,
+          70,
           78
         ]
       }
@@ -5276,9 +5276,9 @@
         "fighter": 0,
         "pose": "walk-forward-under",
         "box": [
-          22,
-          13,
-          73,
+          28,
+          9,
+          68,
           78
         ]
       }
@@ -5291,7 +5291,7 @@
         "pose": "walk-forward-opposite",
         "box": [
           19,
-          12,
+          9,
           76,
           78
         ]
@@ -5304,9 +5304,9 @@
         "fighter": 0,
         "pose": "walk-back-contact",
         "box": [
-          17,
-          14,
-          78,
+          19,
+          10,
+          77,
           78
         ]
       }
@@ -5318,9 +5318,9 @@
         "fighter": 0,
         "pose": "walk-back-pass",
         "box": [
-          21,
-          15,
-          74,
+          23,
+          10,
+          73,
           78
         ]
       }
@@ -5332,9 +5332,9 @@
         "fighter": 0,
         "pose": "walk-back-under",
         "box": [
-          24,
-          15,
-          71,
+          27,
+          9,
+          69,
           78
         ]
       }
@@ -5347,7 +5347,7 @@
         "pose": "walk-back-opposite",
         "box": [
           20,
-          15,
+          10,
           76,
           78
         ]
@@ -6067,7 +6067,7 @@
         "fighter": 0,
         "frame": "walk-forward-contact",
         "idle_height": 69,
-        "frame_height": 66
+        "frame_height": 69
       }
     },
     {
@@ -6077,7 +6077,7 @@
         "fighter": 0,
         "frame": "walk-forward-pass",
         "idle_height": 69,
-        "frame_height": 65
+        "frame_height": 68
       }
     },
     {
@@ -6087,7 +6087,7 @@
         "fighter": 0,
         "frame": "walk-forward-under",
         "idle_height": 69,
-        "frame_height": 65
+        "frame_height": 69
       }
     },
     {
@@ -6097,7 +6097,7 @@
         "fighter": 0,
         "frame": "walk-forward-opposite",
         "idle_height": 69,
-        "frame_height": 66
+        "frame_height": 69
       }
     },
     {
@@ -6107,7 +6107,7 @@
         "fighter": 0,
         "frame": "walk-back-contact",
         "idle_height": 69,
-        "frame_height": 64
+        "frame_height": 68
       }
     },
     {
@@ -6117,7 +6117,7 @@
         "fighter": 0,
         "frame": "walk-back-pass",
         "idle_height": 69,
-        "frame_height": 63
+        "frame_height": 68
       }
     },
     {
@@ -6127,7 +6127,7 @@
         "fighter": 0,
         "frame": "walk-back-under",
         "idle_height": 69,
-        "frame_height": 63
+        "frame_height": 69
       }
     },
     {
@@ -6137,7 +6137,7 @@
         "fighter": 0,
         "frame": "walk-back-opposite",
         "idle_height": 69,
-        "frame_height": 63
+        "frame_height": 68
       }
     },
     {
@@ -8288,8 +8288,8 @@
       "details": {
         "fighter": 1,
         "frame": 20,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -8298,8 +8298,8 @@
       "details": {
         "fighter": 1,
         "frame": 20,
-        "source_file": "assets/art/characters/01-ivo/animation-motion.png",
-        "source_hash": "96b59557d668292d62d9a846fff7f4322c36ee2eaddd1c908e68f0b470daf337"
+        "source_file": "assets/art/characters/01-ivo/walking-v2.png",
+        "source_hash": "1ca09488c46a1f701a042dbc72f848d5360bf621b20b5fa8a33f75ed54c3dc4d"
       }
     },
     {
@@ -8308,8 +8308,8 @@
       "details": {
         "fighter": 1,
         "frame": 20,
-        "native_hash": "1dc63b631fca46f428540fb916464db41e6131c2fc05067233fae9d3f7ae4fc8",
-        "pixels_sha256": "1dc63b631fca46f428540fb916464db41e6131c2fc05067233fae9d3f7ae4fc8"
+        "native_hash": "7711c33d0dc94ecf50c3d4d86c8a90f7908ff4fbd270d6f644acc5d7b5f0035f",
+        "pixels_sha256": "7711c33d0dc94ecf50c3d4d86c8a90f7908ff4fbd270d6f644acc5d7b5f0035f"
       }
     },
     {
@@ -8319,15 +8319,15 @@
         "fighter": 1,
         "frame": 20,
         "metadata": [
-          18,
+          16,
           7,
-          78,
+          80,
           78
         ],
         "preview": [
-          18,
+          16,
           7,
-          78,
+          80,
           78
         ]
       }
@@ -8355,8 +8355,8 @@
       "details": {
         "fighter": 1,
         "frame": 21,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -8365,8 +8365,8 @@
       "details": {
         "fighter": 1,
         "frame": 21,
-        "source_file": "assets/art/characters/01-ivo/animation-motion.png",
-        "source_hash": "96b59557d668292d62d9a846fff7f4322c36ee2eaddd1c908e68f0b470daf337"
+        "source_file": "assets/art/characters/01-ivo/walking-v2.png",
+        "source_hash": "1ca09488c46a1f701a042dbc72f848d5360bf621b20b5fa8a33f75ed54c3dc4d"
       }
     },
     {
@@ -8375,8 +8375,8 @@
       "details": {
         "fighter": 1,
         "frame": 21,
-        "native_hash": "e382001d83d0f4146d1c76828fe7b67c60516636f184d9dc6264e7062d340c55",
-        "pixels_sha256": "e382001d83d0f4146d1c76828fe7b67c60516636f184d9dc6264e7062d340c55"
+        "native_hash": "9cf8086553c3be88cc89226daa676bfa0e95041bada9b47481deca90ff707e52",
+        "pixels_sha256": "9cf8086553c3be88cc89226daa676bfa0e95041bada9b47481deca90ff707e52"
       }
     },
     {
@@ -8387,14 +8387,14 @@
         "frame": 21,
         "metadata": [
           22,
-          8,
-          74,
+          7,
+          73,
           78
         ],
         "preview": [
           22,
-          8,
-          74,
+          7,
+          73,
           78
         ]
       }
@@ -8422,8 +8422,8 @@
       "details": {
         "fighter": 1,
         "frame": 22,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -8432,8 +8432,8 @@
       "details": {
         "fighter": 1,
         "frame": 22,
-        "source_file": "assets/art/characters/01-ivo/animation-motion.png",
-        "source_hash": "96b59557d668292d62d9a846fff7f4322c36ee2eaddd1c908e68f0b470daf337"
+        "source_file": "assets/art/characters/01-ivo/walking-v2.png",
+        "source_hash": "1ca09488c46a1f701a042dbc72f848d5360bf621b20b5fa8a33f75ed54c3dc4d"
       }
     },
     {
@@ -8442,8 +8442,8 @@
       "details": {
         "fighter": 1,
         "frame": 22,
-        "native_hash": "194ebc88eda9d85232b4d6a3299afaaf523c439b6a0b9bb169929aa01750d758",
-        "pixels_sha256": "194ebc88eda9d85232b4d6a3299afaaf523c439b6a0b9bb169929aa01750d758"
+        "native_hash": "39b69a9587b7b7aeb2212cc13fe6c340fc8607d6d3c0736787998832a749ca0a",
+        "pixels_sha256": "39b69a9587b7b7aeb2212cc13fe6c340fc8607d6d3c0736787998832a749ca0a"
       }
     },
     {
@@ -8453,15 +8453,15 @@
         "fighter": 1,
         "frame": 22,
         "metadata": [
-          23,
-          8,
-          73,
+          27,
+          6,
+          69,
           78
         ],
         "preview": [
-          23,
-          8,
-          73,
+          27,
+          6,
+          69,
           78
         ]
       }
@@ -8489,8 +8489,8 @@
       "details": {
         "fighter": 1,
         "frame": 23,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -8499,8 +8499,8 @@
       "details": {
         "fighter": 1,
         "frame": 23,
-        "source_file": "assets/art/characters/01-ivo/animation-motion.png",
-        "source_hash": "96b59557d668292d62d9a846fff7f4322c36ee2eaddd1c908e68f0b470daf337"
+        "source_file": "assets/art/characters/01-ivo/walking-v2.png",
+        "source_hash": "1ca09488c46a1f701a042dbc72f848d5360bf621b20b5fa8a33f75ed54c3dc4d"
       }
     },
     {
@@ -8509,8 +8509,8 @@
       "details": {
         "fighter": 1,
         "frame": 23,
-        "native_hash": "141cac11dc3e0de1e9501be4e397d00e953ee42ccbbb965aafa736580d32cace",
-        "pixels_sha256": "141cac11dc3e0de1e9501be4e397d00e953ee42ccbbb965aafa736580d32cace"
+        "native_hash": "58757b5d3b54626ecf425f9d065edba326900a503998ff0f7df1e25f295e99b5",
+        "pixels_sha256": "58757b5d3b54626ecf425f9d065edba326900a503998ff0f7df1e25f295e99b5"
       }
     },
     {
@@ -8520,15 +8520,15 @@
         "fighter": 1,
         "frame": 23,
         "metadata": [
-          18,
-          8,
-          78,
+          17,
+          6,
+          79,
           78
         ],
         "preview": [
-          18,
-          8,
-          78,
+          17,
+          6,
+          79,
           78
         ]
       }
@@ -8556,8 +8556,8 @@
       "details": {
         "fighter": 1,
         "frame": 24,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -8566,8 +8566,8 @@
       "details": {
         "fighter": 1,
         "frame": 24,
-        "source_file": "assets/art/characters/01-ivo/animation-motion.png",
-        "source_hash": "96b59557d668292d62d9a846fff7f4322c36ee2eaddd1c908e68f0b470daf337"
+        "source_file": "assets/art/characters/01-ivo/walking-v2.png",
+        "source_hash": "1ca09488c46a1f701a042dbc72f848d5360bf621b20b5fa8a33f75ed54c3dc4d"
       }
     },
     {
@@ -8576,8 +8576,8 @@
       "details": {
         "fighter": 1,
         "frame": 24,
-        "native_hash": "17bbca111f876c4bec3edade01b06b5475657fc2bde25d9393af01298e050d4a",
-        "pixels_sha256": "17bbca111f876c4bec3edade01b06b5475657fc2bde25d9393af01298e050d4a"
+        "native_hash": "7a23e57a4eefea197893f9a17a782f177137246fb56bd8b52f27368447260925",
+        "pixels_sha256": "7a23e57a4eefea197893f9a17a782f177137246fb56bd8b52f27368447260925"
       }
     },
     {
@@ -8587,15 +8587,15 @@
         "fighter": 1,
         "frame": 24,
         "metadata": [
-          22,
+          15,
           8,
-          74,
+          81,
           78
         ],
         "preview": [
-          22,
+          15,
           8,
-          74,
+          81,
           78
         ]
       }
@@ -8623,8 +8623,8 @@
       "details": {
         "fighter": 1,
         "frame": 25,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -8633,8 +8633,8 @@
       "details": {
         "fighter": 1,
         "frame": 25,
-        "source_file": "assets/art/characters/01-ivo/animation-motion.png",
-        "source_hash": "96b59557d668292d62d9a846fff7f4322c36ee2eaddd1c908e68f0b470daf337"
+        "source_file": "assets/art/characters/01-ivo/walking-v2.png",
+        "source_hash": "1ca09488c46a1f701a042dbc72f848d5360bf621b20b5fa8a33f75ed54c3dc4d"
       }
     },
     {
@@ -8643,8 +8643,8 @@
       "details": {
         "fighter": 1,
         "frame": 25,
-        "native_hash": "727ad4a7af1accca0174d4b4e54ebcbe94f6a2b431d417cd4eb766a395b53556",
-        "pixels_sha256": "727ad4a7af1accca0174d4b4e54ebcbe94f6a2b431d417cd4eb766a395b53556"
+        "native_hash": "fb85ad238e510e03f617f6d3458adb6a4a76ebf3df2e0bb15e825a36ad5a2681",
+        "pixels_sha256": "fb85ad238e510e03f617f6d3458adb6a4a76ebf3df2e0bb15e825a36ad5a2681"
       }
     },
     {
@@ -8654,15 +8654,15 @@
         "fighter": 1,
         "frame": 25,
         "metadata": [
-          26,
+          23,
           8,
-          70,
+          73,
           78
         ],
         "preview": [
-          26,
+          23,
           8,
-          70,
+          73,
           78
         ]
       }
@@ -8690,8 +8690,8 @@
       "details": {
         "fighter": 1,
         "frame": 26,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -8700,8 +8700,8 @@
       "details": {
         "fighter": 1,
         "frame": 26,
-        "source_file": "assets/art/characters/01-ivo/animation-motion.png",
-        "source_hash": "96b59557d668292d62d9a846fff7f4322c36ee2eaddd1c908e68f0b470daf337"
+        "source_file": "assets/art/characters/01-ivo/walking-v2.png",
+        "source_hash": "1ca09488c46a1f701a042dbc72f848d5360bf621b20b5fa8a33f75ed54c3dc4d"
       }
     },
     {
@@ -8710,8 +8710,8 @@
       "details": {
         "fighter": 1,
         "frame": 26,
-        "native_hash": "71334bd9758a481c773e584d9e2b5e397887eb6f7482946784f3dadd9773c42e",
-        "pixels_sha256": "71334bd9758a481c773e584d9e2b5e397887eb6f7482946784f3dadd9773c42e"
+        "native_hash": "548550afc9a0ead12ba7023ce56b6965a2d58272a22042ccbbf8673cda80fdda",
+        "pixels_sha256": "548550afc9a0ead12ba7023ce56b6965a2d58272a22042ccbbf8673cda80fdda"
       }
     },
     {
@@ -8721,15 +8721,15 @@
         "fighter": 1,
         "frame": 26,
         "metadata": [
-          24,
+          26,
           8,
-          72,
+          69,
           78
         ],
         "preview": [
-          24,
+          26,
           8,
-          72,
+          69,
           78
         ]
       }
@@ -8757,8 +8757,8 @@
       "details": {
         "fighter": 1,
         "frame": 27,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -8767,8 +8767,8 @@
       "details": {
         "fighter": 1,
         "frame": 27,
-        "source_file": "assets/art/characters/01-ivo/animation-motion.png",
-        "source_hash": "96b59557d668292d62d9a846fff7f4322c36ee2eaddd1c908e68f0b470daf337"
+        "source_file": "assets/art/characters/01-ivo/walking-v2.png",
+        "source_hash": "1ca09488c46a1f701a042dbc72f848d5360bf621b20b5fa8a33f75ed54c3dc4d"
       }
     },
     {
@@ -8777,8 +8777,8 @@
       "details": {
         "fighter": 1,
         "frame": 27,
-        "native_hash": "175e3fee2955d65ede8320c1176e3e6cf00315c4983a5fae8908e20d8e068a69",
-        "pixels_sha256": "175e3fee2955d65ede8320c1176e3e6cf00315c4983a5fae8908e20d8e068a69"
+        "native_hash": "6f1be1f2fa36895a6ca0e826be2a4ca916b9b65f51f87f892eb9ee3a249dcd79",
+        "pixels_sha256": "6f1be1f2fa36895a6ca0e826be2a4ca916b9b65f51f87f892eb9ee3a249dcd79"
       }
     },
     {
@@ -8788,15 +8788,15 @@
         "fighter": 1,
         "frame": 27,
         "metadata": [
-          23,
+          17,
           8,
-          72,
+          78,
           78
         ],
         "preview": [
-          23,
+          17,
           8,
-          72,
+          78,
           78
         ]
       }
@@ -11574,9 +11574,9 @@
         "fighter": 1,
         "pose": "walk-forward-contact",
         "box": [
-          18,
+          16,
           7,
-          78,
+          80,
           78
         ]
       }
@@ -11589,8 +11589,8 @@
         "pose": "walk-forward-pass",
         "box": [
           22,
-          8,
-          74,
+          7,
+          73,
           78
         ]
       }
@@ -11601,6 +11601,48 @@
       "details": {
         "fighter": 1,
         "pose": "walk-forward-under",
+        "box": [
+          27,
+          6,
+          69,
+          78
+        ]
+      }
+    },
+    {
+      "check": "native animation frame stays inside its 96x80 canvas",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "pose": "walk-forward-opposite",
+        "box": [
+          17,
+          6,
+          79,
+          78
+        ]
+      }
+    },
+    {
+      "check": "native animation frame stays inside its 96x80 canvas",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "pose": "walk-back-contact",
+        "box": [
+          15,
+          8,
+          81,
+          78
+        ]
+      }
+    },
+    {
+      "check": "native animation frame stays inside its 96x80 canvas",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "pose": "walk-back-pass",
         "box": [
           23,
           8,
@@ -11614,53 +11656,11 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "pose": "walk-forward-opposite",
-        "box": [
-          18,
-          8,
-          78,
-          78
-        ]
-      }
-    },
-    {
-      "check": "native animation frame stays inside its 96x80 canvas",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "pose": "walk-back-contact",
-        "box": [
-          22,
-          8,
-          74,
-          78
-        ]
-      }
-    },
-    {
-      "check": "native animation frame stays inside its 96x80 canvas",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "pose": "walk-back-pass",
+        "pose": "walk-back-under",
         "box": [
           26,
           8,
-          70,
-          78
-        ]
-      }
-    },
-    {
-      "check": "native animation frame stays inside its 96x80 canvas",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "pose": "walk-back-under",
-        "box": [
-          24,
-          8,
-          72,
+          69,
           78
         ]
       }
@@ -11672,9 +11672,9 @@
         "fighter": 1,
         "pose": "walk-back-opposite",
         "box": [
-          23,
+          17,
           8,
-          72,
+          78,
           78
         ]
       }
@@ -12403,7 +12403,7 @@
         "fighter": 1,
         "frame": "walk-forward-pass",
         "idle_height": 72,
-        "frame_height": 70
+        "frame_height": 71
       }
     },
     {
@@ -12413,7 +12413,7 @@
         "fighter": 1,
         "frame": "walk-forward-under",
         "idle_height": 72,
-        "frame_height": 70
+        "frame_height": 72
       }
     },
     {
@@ -12423,7 +12423,7 @@
         "fighter": 1,
         "frame": "walk-forward-opposite",
         "idle_height": 72,
-        "frame_height": 70
+        "frame_height": 72
       }
     },
     {
@@ -14614,8 +14614,8 @@
       "details": {
         "fighter": 2,
         "frame": 20,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -14624,8 +14624,8 @@
       "details": {
         "fighter": 2,
         "frame": 20,
-        "source_file": "assets/art/characters/02-cristobal/animation-motion.png",
-        "source_hash": "7f4f412d9e9bfcb08fc884b3126a7c779523333975aac4f404d30faff858d4d5"
+        "source_file": "assets/art/characters/02-cristobal/walking-v2.png",
+        "source_hash": "a7ca1007361874e54cefeee986914948d32ed9e7032345abbbd5728179aadad8"
       }
     },
     {
@@ -14634,8 +14634,8 @@
       "details": {
         "fighter": 2,
         "frame": 20,
-        "native_hash": "f48af2cfcaaad488b7a86efc79ceb401609a5e0b9dbcbf5a82095406a15df7a9",
-        "pixels_sha256": "f48af2cfcaaad488b7a86efc79ceb401609a5e0b9dbcbf5a82095406a15df7a9"
+        "native_hash": "e3c7d0c1480f4c2ef52db318790c2bd068b70bfe3ff92d881c4e7fbfebfd7b8e",
+        "pixels_sha256": "e3c7d0c1480f4c2ef52db318790c2bd068b70bfe3ff92d881c4e7fbfebfd7b8e"
       }
     },
     {
@@ -14645,15 +14645,15 @@
         "fighter": 2,
         "frame": 20,
         "metadata": [
-          19,
+          18,
           10,
-          76,
+          78,
           78
         ],
         "preview": [
-          19,
+          18,
           10,
-          76,
+          78,
           78
         ]
       }
@@ -14681,8 +14681,8 @@
       "details": {
         "fighter": 2,
         "frame": 21,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -14691,8 +14691,8 @@
       "details": {
         "fighter": 2,
         "frame": 21,
-        "source_file": "assets/art/characters/02-cristobal/animation-motion.png",
-        "source_hash": "7f4f412d9e9bfcb08fc884b3126a7c779523333975aac4f404d30faff858d4d5"
+        "source_file": "assets/art/characters/02-cristobal/walking-v2.png",
+        "source_hash": "a7ca1007361874e54cefeee986914948d32ed9e7032345abbbd5728179aadad8"
       }
     },
     {
@@ -14701,8 +14701,8 @@
       "details": {
         "fighter": 2,
         "frame": 21,
-        "native_hash": "c55e7ba3eb390ed4dc548541b44be139815cf34358f768890ceeb9861ff7a5a3",
-        "pixels_sha256": "c55e7ba3eb390ed4dc548541b44be139815cf34358f768890ceeb9861ff7a5a3"
+        "native_hash": "4bfbb1803b5acde0b44af2e6d1f8f032e39844f9871350db3c3a65d3a0e2573d",
+        "pixels_sha256": "4bfbb1803b5acde0b44af2e6d1f8f032e39844f9871350db3c3a65d3a0e2573d"
       }
     },
     {
@@ -14712,15 +14712,15 @@
         "fighter": 2,
         "frame": 21,
         "metadata": [
-          24,
+          29,
           11,
-          72,
+          67,
           78
         ],
         "preview": [
-          24,
+          29,
           11,
-          72,
+          67,
           78
         ]
       }
@@ -14748,8 +14748,8 @@
       "details": {
         "fighter": 2,
         "frame": 22,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -14758,8 +14758,8 @@
       "details": {
         "fighter": 2,
         "frame": 22,
-        "source_file": "assets/art/characters/02-cristobal/animation-motion.png",
-        "source_hash": "7f4f412d9e9bfcb08fc884b3126a7c779523333975aac4f404d30faff858d4d5"
+        "source_file": "assets/art/characters/02-cristobal/walking-v2.png",
+        "source_hash": "a7ca1007361874e54cefeee986914948d32ed9e7032345abbbd5728179aadad8"
       }
     },
     {
@@ -14768,8 +14768,8 @@
       "details": {
         "fighter": 2,
         "frame": 22,
-        "native_hash": "10d73af82fc31894af93d51be886c59f276500440cbe9414ae98f9f05a6faf48",
-        "pixels_sha256": "10d73af82fc31894af93d51be886c59f276500440cbe9414ae98f9f05a6faf48"
+        "native_hash": "0caadb10ac2f68ed06111a978e34964a113910c09af88d018b83dd4c6d2667e6",
+        "pixels_sha256": "0caadb10ac2f68ed06111a978e34964a113910c09af88d018b83dd4c6d2667e6"
       }
     },
     {
@@ -14779,15 +14779,15 @@
         "fighter": 2,
         "frame": 22,
         "metadata": [
-          28,
-          11,
-          68,
+          29,
+          10,
+          67,
           78
         ],
         "preview": [
-          28,
-          11,
-          68,
+          29,
+          10,
+          67,
           78
         ]
       }
@@ -14815,8 +14815,8 @@
       "details": {
         "fighter": 2,
         "frame": 23,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -14825,8 +14825,8 @@
       "details": {
         "fighter": 2,
         "frame": 23,
-        "source_file": "assets/art/characters/02-cristobal/animation-motion.png",
-        "source_hash": "7f4f412d9e9bfcb08fc884b3126a7c779523333975aac4f404d30faff858d4d5"
+        "source_file": "assets/art/characters/02-cristobal/walking-v2.png",
+        "source_hash": "a7ca1007361874e54cefeee986914948d32ed9e7032345abbbd5728179aadad8"
       }
     },
     {
@@ -14835,8 +14835,8 @@
       "details": {
         "fighter": 2,
         "frame": 23,
-        "native_hash": "9d0e95012f22289893e97548c7b5b5c1d5a34e1e0f9a5aa820acc68c79a7beab",
-        "pixels_sha256": "9d0e95012f22289893e97548c7b5b5c1d5a34e1e0f9a5aa820acc68c79a7beab"
+        "native_hash": "348eda6ee9c82799a7636ce8132c084f7f9448d7b218d86bfe003627bca6dcd3",
+        "pixels_sha256": "348eda6ee9c82799a7636ce8132c084f7f9448d7b218d86bfe003627bca6dcd3"
       }
     },
     {
@@ -14846,15 +14846,15 @@
         "fighter": 2,
         "frame": 23,
         "metadata": [
-          21,
+          19,
           10,
-          74,
+          76,
           78
         ],
         "preview": [
-          21,
+          19,
           10,
-          74,
+          76,
           78
         ]
       }
@@ -14882,8 +14882,8 @@
       "details": {
         "fighter": 2,
         "frame": 24,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -14892,8 +14892,8 @@
       "details": {
         "fighter": 2,
         "frame": 24,
-        "source_file": "assets/art/characters/02-cristobal/animation-motion.png",
-        "source_hash": "7f4f412d9e9bfcb08fc884b3126a7c779523333975aac4f404d30faff858d4d5"
+        "source_file": "assets/art/characters/02-cristobal/walking-v2.png",
+        "source_hash": "a7ca1007361874e54cefeee986914948d32ed9e7032345abbbd5728179aadad8"
       }
     },
     {
@@ -14902,8 +14902,8 @@
       "details": {
         "fighter": 2,
         "frame": 24,
-        "native_hash": "ce7def8a9b2f2292cdf120e88475094845ef4f40fabd132b6a73522eadd392f5",
-        "pixels_sha256": "ce7def8a9b2f2292cdf120e88475094845ef4f40fabd132b6a73522eadd392f5"
+        "native_hash": "af591b7ea6a1567bc539d2cbc2a59c2012f628e5a8e77e3b6f0a282d44a0e454",
+        "pixels_sha256": "af591b7ea6a1567bc539d2cbc2a59c2012f628e5a8e77e3b6f0a282d44a0e454"
       }
     },
     {
@@ -14913,15 +14913,15 @@
         "fighter": 2,
         "frame": 24,
         "metadata": [
-          21,
-          11,
-          75,
+          15,
+          13,
+          80,
           78
         ],
         "preview": [
-          21,
-          11,
-          75,
+          15,
+          13,
+          80,
           78
         ]
       }
@@ -14949,8 +14949,8 @@
       "details": {
         "fighter": 2,
         "frame": 25,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -14959,8 +14959,8 @@
       "details": {
         "fighter": 2,
         "frame": 25,
-        "source_file": "assets/art/characters/02-cristobal/animation-motion.png",
-        "source_hash": "7f4f412d9e9bfcb08fc884b3126a7c779523333975aac4f404d30faff858d4d5"
+        "source_file": "assets/art/characters/02-cristobal/walking-v2.png",
+        "source_hash": "a7ca1007361874e54cefeee986914948d32ed9e7032345abbbd5728179aadad8"
       }
     },
     {
@@ -14969,8 +14969,8 @@
       "details": {
         "fighter": 2,
         "frame": 25,
-        "native_hash": "0085368a7735fa0e8ce77a0dd0ed225d85b295dd9480fa1375e5a1d8a73576af",
-        "pixels_sha256": "0085368a7735fa0e8ce77a0dd0ed225d85b295dd9480fa1375e5a1d8a73576af"
+        "native_hash": "0eef37677f6d38eb05bbef1ca44253cfa235b1b6744fe84dbb14cc5255249557",
+        "pixels_sha256": "0eef37677f6d38eb05bbef1ca44253cfa235b1b6744fe84dbb14cc5255249557"
       }
     },
     {
@@ -14980,15 +14980,15 @@
         "fighter": 2,
         "frame": 25,
         "metadata": [
-          30,
-          11,
-          66,
+          28,
+          14,
+          67,
           78
         ],
         "preview": [
-          30,
-          11,
-          66,
+          28,
+          14,
+          67,
           78
         ]
       }
@@ -15016,8 +15016,8 @@
       "details": {
         "fighter": 2,
         "frame": 26,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -15026,8 +15026,8 @@
       "details": {
         "fighter": 2,
         "frame": 26,
-        "source_file": "assets/art/characters/02-cristobal/animation-motion.png",
-        "source_hash": "7f4f412d9e9bfcb08fc884b3126a7c779523333975aac4f404d30faff858d4d5"
+        "source_file": "assets/art/characters/02-cristobal/walking-v2.png",
+        "source_hash": "a7ca1007361874e54cefeee986914948d32ed9e7032345abbbd5728179aadad8"
       }
     },
     {
@@ -15036,8 +15036,8 @@
       "details": {
         "fighter": 2,
         "frame": 26,
-        "native_hash": "e5c433a1d4c65f46a10416b7fb4a58bb4e6392bc8e31a2d4c49fdd71ef61bfc0",
-        "pixels_sha256": "e5c433a1d4c65f46a10416b7fb4a58bb4e6392bc8e31a2d4c49fdd71ef61bfc0"
+        "native_hash": "8007ce17a35566b8b335e0d4e669c6f2a47542734449eb6afb54e11a5d4f9c76",
+        "pixels_sha256": "8007ce17a35566b8b335e0d4e669c6f2a47542734449eb6afb54e11a5d4f9c76"
       }
     },
     {
@@ -15047,15 +15047,15 @@
         "fighter": 2,
         "frame": 26,
         "metadata": [
-          27,
+          28,
           13,
-          68,
+          67,
           78
         ],
         "preview": [
-          27,
+          28,
           13,
-          68,
+          67,
           78
         ]
       }
@@ -15083,8 +15083,8 @@
       "details": {
         "fighter": 2,
         "frame": 27,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -15093,8 +15093,8 @@
       "details": {
         "fighter": 2,
         "frame": 27,
-        "source_file": "assets/art/characters/02-cristobal/animation-motion.png",
-        "source_hash": "7f4f412d9e9bfcb08fc884b3126a7c779523333975aac4f404d30faff858d4d5"
+        "source_file": "assets/art/characters/02-cristobal/walking-v2.png",
+        "source_hash": "a7ca1007361874e54cefeee986914948d32ed9e7032345abbbd5728179aadad8"
       }
     },
     {
@@ -15103,8 +15103,8 @@
       "details": {
         "fighter": 2,
         "frame": 27,
-        "native_hash": "10da96c7fc9d81efd0c576a0982b62bd0e896f1aac138f57daa5a88e20263ebb",
-        "pixels_sha256": "10da96c7fc9d81efd0c576a0982b62bd0e896f1aac138f57daa5a88e20263ebb"
+        "native_hash": "7073b0eaf0d6958c69475f9191b5e6d9ec5f54b2cdd2537e54b21c85e75cd871",
+        "pixels_sha256": "7073b0eaf0d6958c69475f9191b5e6d9ec5f54b2cdd2537e54b21c85e75cd871"
       }
     },
     {
@@ -15114,15 +15114,15 @@
         "fighter": 2,
         "frame": 27,
         "metadata": [
-          21,
-          12,
-          74,
+          16,
+          13,
+          80,
           78
         ],
         "preview": [
-          21,
-          12,
-          74,
+          16,
+          13,
+          80,
           78
         ]
       }
@@ -17900,6 +17900,48 @@
         "fighter": 2,
         "pose": "walk-forward-contact",
         "box": [
+          18,
+          10,
+          78,
+          78
+        ]
+      }
+    },
+    {
+      "check": "native animation frame stays inside its 96x80 canvas",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "pose": "walk-forward-pass",
+        "box": [
+          29,
+          11,
+          67,
+          78
+        ]
+      }
+    },
+    {
+      "check": "native animation frame stays inside its 96x80 canvas",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "pose": "walk-forward-under",
+        "box": [
+          29,
+          10,
+          67,
+          78
+        ]
+      }
+    },
+    {
+      "check": "native animation frame stays inside its 96x80 canvas",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "pose": "walk-forward-opposite",
+        "box": [
           19,
           10,
           76,
@@ -17912,53 +17954,11 @@
       "passed": true,
       "details": {
         "fighter": 2,
-        "pose": "walk-forward-pass",
-        "box": [
-          24,
-          11,
-          72,
-          78
-        ]
-      }
-    },
-    {
-      "check": "native animation frame stays inside its 96x80 canvas",
-      "passed": true,
-      "details": {
-        "fighter": 2,
-        "pose": "walk-forward-under",
-        "box": [
-          28,
-          11,
-          68,
-          78
-        ]
-      }
-    },
-    {
-      "check": "native animation frame stays inside its 96x80 canvas",
-      "passed": true,
-      "details": {
-        "fighter": 2,
-        "pose": "walk-forward-opposite",
-        "box": [
-          21,
-          10,
-          74,
-          78
-        ]
-      }
-    },
-    {
-      "check": "native animation frame stays inside its 96x80 canvas",
-      "passed": true,
-      "details": {
-        "fighter": 2,
         "pose": "walk-back-contact",
         "box": [
-          21,
-          11,
-          75,
+          15,
+          13,
+          80,
           78
         ]
       }
@@ -17970,9 +17970,9 @@
         "fighter": 2,
         "pose": "walk-back-pass",
         "box": [
-          30,
-          11,
-          66,
+          28,
+          14,
+          67,
           78
         ]
       }
@@ -17984,9 +17984,9 @@
         "fighter": 2,
         "pose": "walk-back-under",
         "box": [
-          27,
+          28,
           13,
-          68,
+          67,
           78
         ]
       }
@@ -17998,9 +17998,9 @@
         "fighter": 2,
         "pose": "walk-back-opposite",
         "box": [
-          21,
-          12,
-          74,
+          16,
+          13,
+          80,
           78
         ]
       }
@@ -18739,7 +18739,7 @@
         "fighter": 2,
         "frame": "walk-forward-under",
         "idle_height": 68,
-        "frame_height": 67
+        "frame_height": 68
       }
     },
     {
@@ -18759,7 +18759,7 @@
         "fighter": 2,
         "frame": "walk-back-contact",
         "idle_height": 68,
-        "frame_height": 67
+        "frame_height": 65
       }
     },
     {
@@ -18769,7 +18769,7 @@
         "fighter": 2,
         "frame": "walk-back-pass",
         "idle_height": 68,
-        "frame_height": 67
+        "frame_height": 64
       }
     },
     {
@@ -18789,7 +18789,7 @@
         "fighter": 2,
         "frame": "walk-back-opposite",
         "idle_height": 68,
-        "frame_height": 66
+        "frame_height": 65
       }
     },
     {
@@ -20940,8 +20940,8 @@
       "details": {
         "fighter": 3,
         "frame": 20,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -20950,8 +20950,8 @@
       "details": {
         "fighter": 3,
         "frame": 20,
-        "source_file": "assets/art/characters/03-cote/animation-motion.png",
-        "source_hash": "9d34c5c18674584d7008738bd7dc3f79c8aef6d772b4d939779151c90a742cc9"
+        "source_file": "assets/art/characters/03-cote/walking-v2.png",
+        "source_hash": "263d6d3ee8ef90858c03ec35ab751b0bb6861ffa8d84709be6b07efb61e6a050"
       }
     },
     {
@@ -20960,8 +20960,8 @@
       "details": {
         "fighter": 3,
         "frame": 20,
-        "native_hash": "dee4f872044f0709c5e6cb2fcd23bce0494ee6da05472599de4a60f8eba4dbbf",
-        "pixels_sha256": "dee4f872044f0709c5e6cb2fcd23bce0494ee6da05472599de4a60f8eba4dbbf"
+        "native_hash": "490f08140852e00d0961f2f88a041282044b3333278d5220899dbb1b745a2098",
+        "pixels_sha256": "490f08140852e00d0961f2f88a041282044b3333278d5220899dbb1b745a2098"
       }
     },
     {
@@ -20972,14 +20972,14 @@
         "frame": 20,
         "metadata": [
           20,
-          10,
-          75,
+          9,
+          76,
           78
         ],
         "preview": [
           20,
-          10,
-          75,
+          9,
+          76,
           78
         ]
       }
@@ -21007,8 +21007,8 @@
       "details": {
         "fighter": 3,
         "frame": 21,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -21017,8 +21017,8 @@
       "details": {
         "fighter": 3,
         "frame": 21,
-        "source_file": "assets/art/characters/03-cote/animation-motion.png",
-        "source_hash": "9d34c5c18674584d7008738bd7dc3f79c8aef6d772b4d939779151c90a742cc9"
+        "source_file": "assets/art/characters/03-cote/walking-v2.png",
+        "source_hash": "263d6d3ee8ef90858c03ec35ab751b0bb6861ffa8d84709be6b07efb61e6a050"
       }
     },
     {
@@ -21027,8 +21027,8 @@
       "details": {
         "fighter": 3,
         "frame": 21,
-        "native_hash": "a3e3db7cc99d0839b11f0b1488340dbefc1c1e7a2a2eb1a16b79dd08c524f4e9",
-        "pixels_sha256": "a3e3db7cc99d0839b11f0b1488340dbefc1c1e7a2a2eb1a16b79dd08c524f4e9"
+        "native_hash": "58770946d614f2ca0412cd849a221ec6038fc966ed79dc0558adb87855c1302b",
+        "pixels_sha256": "58770946d614f2ca0412cd849a221ec6038fc966ed79dc0558adb87855c1302b"
       }
     },
     {
@@ -21038,15 +21038,15 @@
         "fighter": 3,
         "frame": 21,
         "metadata": [
-          24,
-          10,
-          72,
+          22,
+          9,
+          74,
           78
         ],
         "preview": [
-          24,
-          10,
-          72,
+          22,
+          9,
+          74,
           78
         ]
       }
@@ -21074,8 +21074,8 @@
       "details": {
         "fighter": 3,
         "frame": 22,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -21084,8 +21084,8 @@
       "details": {
         "fighter": 3,
         "frame": 22,
-        "source_file": "assets/art/characters/03-cote/animation-motion.png",
-        "source_hash": "9d34c5c18674584d7008738bd7dc3f79c8aef6d772b4d939779151c90a742cc9"
+        "source_file": "assets/art/characters/03-cote/walking-v2.png",
+        "source_hash": "263d6d3ee8ef90858c03ec35ab751b0bb6861ffa8d84709be6b07efb61e6a050"
       }
     },
     {
@@ -21094,8 +21094,8 @@
       "details": {
         "fighter": 3,
         "frame": 22,
-        "native_hash": "bdc2494f76020841f9bfaa00f0b65a1aba17f2c8a8cd38ae399b6c6a9c817a6b",
-        "pixels_sha256": "bdc2494f76020841f9bfaa00f0b65a1aba17f2c8a8cd38ae399b6c6a9c817a6b"
+        "native_hash": "b30ae994a768dc7683bfc68b02960c02051986c592c1ac2b14b44406af6e2438",
+        "pixels_sha256": "b30ae994a768dc7683bfc68b02960c02051986c592c1ac2b14b44406af6e2438"
       }
     },
     {
@@ -21105,15 +21105,15 @@
         "fighter": 3,
         "frame": 22,
         "metadata": [
-          22,
+          28,
           10,
-          73,
+          68,
           78
         ],
         "preview": [
-          22,
+          28,
           10,
-          73,
+          68,
           78
         ]
       }
@@ -21141,8 +21141,8 @@
       "details": {
         "fighter": 3,
         "frame": 23,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -21151,8 +21151,8 @@
       "details": {
         "fighter": 3,
         "frame": 23,
-        "source_file": "assets/art/characters/03-cote/animation-motion.png",
-        "source_hash": "9d34c5c18674584d7008738bd7dc3f79c8aef6d772b4d939779151c90a742cc9"
+        "source_file": "assets/art/characters/03-cote/walking-v2.png",
+        "source_hash": "263d6d3ee8ef90858c03ec35ab751b0bb6861ffa8d84709be6b07efb61e6a050"
       }
     },
     {
@@ -21161,8 +21161,8 @@
       "details": {
         "fighter": 3,
         "frame": 23,
-        "native_hash": "1271174e6a8688a411504aa7b88a503186ada59cc5b5bcc9b580225b4809b18b",
-        "pixels_sha256": "1271174e6a8688a411504aa7b88a503186ada59cc5b5bcc9b580225b4809b18b"
+        "native_hash": "fdb7c66f12dc08d92460ed79ede40914e6cb42ad13ae2b8aa68b1467e2d8ccc7",
+        "pixels_sha256": "fdb7c66f12dc08d92460ed79ede40914e6cb42ad13ae2b8aa68b1467e2d8ccc7"
       }
     },
     {
@@ -21173,14 +21173,14 @@
         "frame": 23,
         "metadata": [
           20,
-          10,
-          75,
+          9,
+          76,
           78
         ],
         "preview": [
           20,
-          10,
-          75,
+          9,
+          76,
           78
         ]
       }
@@ -21208,8 +21208,8 @@
       "details": {
         "fighter": 3,
         "frame": 24,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -21218,8 +21218,8 @@
       "details": {
         "fighter": 3,
         "frame": 24,
-        "source_file": "assets/art/characters/03-cote/animation-motion.png",
-        "source_hash": "9d34c5c18674584d7008738bd7dc3f79c8aef6d772b4d939779151c90a742cc9"
+        "source_file": "assets/art/characters/03-cote/walking-v2.png",
+        "source_hash": "263d6d3ee8ef90858c03ec35ab751b0bb6861ffa8d84709be6b07efb61e6a050"
       }
     },
     {
@@ -21228,8 +21228,8 @@
       "details": {
         "fighter": 3,
         "frame": 24,
-        "native_hash": "b13db31b7eeaba4fedf269182d7f6a67ccbfef429ef4ba09c5057f8233864dd6",
-        "pixels_sha256": "b13db31b7eeaba4fedf269182d7f6a67ccbfef429ef4ba09c5057f8233864dd6"
+        "native_hash": "7dab54c4d409d69554c6bac7462568f2d744707a915bfb80897e5031392b37f5",
+        "pixels_sha256": "7dab54c4d409d69554c6bac7462568f2d744707a915bfb80897e5031392b37f5"
       }
     },
     {
@@ -21239,15 +21239,15 @@
         "fighter": 3,
         "frame": 24,
         "metadata": [
-          23,
-          12,
-          73,
+          19,
+          14,
+          77,
           78
         ],
         "preview": [
-          23,
-          12,
-          73,
+          19,
+          14,
+          77,
           78
         ]
       }
@@ -21275,8 +21275,8 @@
       "details": {
         "fighter": 3,
         "frame": 25,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -21285,8 +21285,8 @@
       "details": {
         "fighter": 3,
         "frame": 25,
-        "source_file": "assets/art/characters/03-cote/animation-motion.png",
-        "source_hash": "9d34c5c18674584d7008738bd7dc3f79c8aef6d772b4d939779151c90a742cc9"
+        "source_file": "assets/art/characters/03-cote/walking-v2.png",
+        "source_hash": "263d6d3ee8ef90858c03ec35ab751b0bb6861ffa8d84709be6b07efb61e6a050"
       }
     },
     {
@@ -21295,8 +21295,8 @@
       "details": {
         "fighter": 3,
         "frame": 25,
-        "native_hash": "52a88534581624380dd58df8fe3990cd4efe3156281956cd799c8aa93f0c4bec",
-        "pixels_sha256": "52a88534581624380dd58df8fe3990cd4efe3156281956cd799c8aa93f0c4bec"
+        "native_hash": "de850a9317ab4341c373a9f62bf688d51cd41243e1f188449975560b01f1c963",
+        "pixels_sha256": "de850a9317ab4341c373a9f62bf688d51cd41243e1f188449975560b01f1c963"
       }
     },
     {
@@ -21306,15 +21306,15 @@
         "fighter": 3,
         "frame": 25,
         "metadata": [
-          26,
-          12,
-          70,
+          24,
+          13,
+          72,
           78
         ],
         "preview": [
-          26,
-          12,
-          70,
+          24,
+          13,
+          72,
           78
         ]
       }
@@ -21342,8 +21342,8 @@
       "details": {
         "fighter": 3,
         "frame": 26,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -21352,8 +21352,8 @@
       "details": {
         "fighter": 3,
         "frame": 26,
-        "source_file": "assets/art/characters/03-cote/animation-motion.png",
-        "source_hash": "9d34c5c18674584d7008738bd7dc3f79c8aef6d772b4d939779151c90a742cc9"
+        "source_file": "assets/art/characters/03-cote/walking-v2.png",
+        "source_hash": "263d6d3ee8ef90858c03ec35ab751b0bb6861ffa8d84709be6b07efb61e6a050"
       }
     },
     {
@@ -21362,8 +21362,8 @@
       "details": {
         "fighter": 3,
         "frame": 26,
-        "native_hash": "2e94ed2395d2fca25dac58c8de443bf2306ef95ffa7bbb144b35f331f8d70898",
-        "pixels_sha256": "2e94ed2395d2fca25dac58c8de443bf2306ef95ffa7bbb144b35f331f8d70898"
+        "native_hash": "f517abfb8a04952352b92d956062d603f6d6ce01bd2cacb941820b275811803d",
+        "pixels_sha256": "f517abfb8a04952352b92d956062d603f6d6ce01bd2cacb941820b275811803d"
       }
     },
     {
@@ -21373,15 +21373,15 @@
         "fighter": 3,
         "frame": 26,
         "metadata": [
-          28,
-          11,
-          68,
+          29,
+          13,
+          66,
           78
         ],
         "preview": [
-          28,
-          11,
-          68,
+          29,
+          13,
+          66,
           78
         ]
       }
@@ -21409,8 +21409,8 @@
       "details": {
         "fighter": 3,
         "frame": 27,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -21419,8 +21419,8 @@
       "details": {
         "fighter": 3,
         "frame": 27,
-        "source_file": "assets/art/characters/03-cote/animation-motion.png",
-        "source_hash": "9d34c5c18674584d7008738bd7dc3f79c8aef6d772b4d939779151c90a742cc9"
+        "source_file": "assets/art/characters/03-cote/walking-v2.png",
+        "source_hash": "263d6d3ee8ef90858c03ec35ab751b0bb6861ffa8d84709be6b07efb61e6a050"
       }
     },
     {
@@ -21429,8 +21429,8 @@
       "details": {
         "fighter": 3,
         "frame": 27,
-        "native_hash": "258aac87900546b430fc6177ae218ee2ef65f85fd2d9b858d7b1754bc96728a9",
-        "pixels_sha256": "258aac87900546b430fc6177ae218ee2ef65f85fd2d9b858d7b1754bc96728a9"
+        "native_hash": "f4b7fc806e12166902a5dec2a49b31fddf86501e4365995ebf8afe4339bc83fe",
+        "pixels_sha256": "f4b7fc806e12166902a5dec2a49b31fddf86501e4365995ebf8afe4339bc83fe"
       }
     },
     {
@@ -21440,15 +21440,15 @@
         "fighter": 3,
         "frame": 27,
         "metadata": [
-          21,
-          11,
-          75,
+          19,
+          14,
+          77,
           78
         ],
         "preview": [
-          21,
-          11,
-          75,
+          19,
+          14,
+          77,
           78
         ]
       }
@@ -24227,8 +24227,8 @@
         "pose": "walk-forward-contact",
         "box": [
           20,
-          10,
-          75,
+          9,
+          76,
           78
         ]
       }
@@ -24240,9 +24240,9 @@
         "fighter": 3,
         "pose": "walk-forward-pass",
         "box": [
-          24,
-          10,
-          72,
+          22,
+          9,
+          74,
           78
         ]
       }
@@ -24254,9 +24254,9 @@
         "fighter": 3,
         "pose": "walk-forward-under",
         "box": [
-          22,
+          28,
           10,
-          73,
+          68,
           78
         ]
       }
@@ -24269,8 +24269,8 @@
         "pose": "walk-forward-opposite",
         "box": [
           20,
-          10,
-          75,
+          9,
+          76,
           78
         ]
       }
@@ -24282,9 +24282,9 @@
         "fighter": 3,
         "pose": "walk-back-contact",
         "box": [
-          23,
-          12,
-          73,
+          19,
+          14,
+          77,
           78
         ]
       }
@@ -24296,9 +24296,9 @@
         "fighter": 3,
         "pose": "walk-back-pass",
         "box": [
-          26,
-          12,
-          70,
+          24,
+          13,
+          72,
           78
         ]
       }
@@ -24310,9 +24310,9 @@
         "fighter": 3,
         "pose": "walk-back-under",
         "box": [
-          28,
-          11,
-          68,
+          29,
+          13,
+          66,
           78
         ]
       }
@@ -24324,9 +24324,9 @@
         "fighter": 3,
         "pose": "walk-back-opposite",
         "box": [
-          21,
-          11,
-          75,
+          19,
+          14,
+          77,
           78
         ]
       }
@@ -25045,7 +25045,7 @@
         "fighter": 3,
         "frame": "walk-forward-contact",
         "idle_height": 69,
-        "frame_height": 68
+        "frame_height": 69
       }
     },
     {
@@ -25055,7 +25055,7 @@
         "fighter": 3,
         "frame": "walk-forward-pass",
         "idle_height": 69,
-        "frame_height": 68
+        "frame_height": 69
       }
     },
     {
@@ -25075,7 +25075,7 @@
         "fighter": 3,
         "frame": "walk-forward-opposite",
         "idle_height": 69,
-        "frame_height": 68
+        "frame_height": 69
       }
     },
     {
@@ -25085,7 +25085,7 @@
         "fighter": 3,
         "frame": "walk-back-contact",
         "idle_height": 69,
-        "frame_height": 66
+        "frame_height": 64
       }
     },
     {
@@ -25095,7 +25095,7 @@
         "fighter": 3,
         "frame": "walk-back-pass",
         "idle_height": 69,
-        "frame_height": 66
+        "frame_height": 65
       }
     },
     {
@@ -25105,7 +25105,7 @@
         "fighter": 3,
         "frame": "walk-back-under",
         "idle_height": 69,
-        "frame_height": 67
+        "frame_height": 65
       }
     },
     {
@@ -25115,7 +25115,7 @@
         "fighter": 3,
         "frame": "walk-back-opposite",
         "idle_height": 69,
-        "frame_height": 67
+        "frame_height": 64
       }
     },
     {
@@ -27266,8 +27266,8 @@
       "details": {
         "fighter": 4,
         "frame": 20,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -27276,8 +27276,8 @@
       "details": {
         "fighter": 4,
         "frame": 20,
-        "source_file": "assets/art/characters/04-negger/animation-motion.png",
-        "source_hash": "2db154d636a25aa91cb758209d23a06a7b1a770270fd6e9124cf9a4efba16c02"
+        "source_file": "assets/art/characters/04-negger/walking-v2.png",
+        "source_hash": "a3cb66e866a951e3abaa8e7bb48f0182f740f728ebfdf3d3af746abcdeaec84a"
       }
     },
     {
@@ -27286,8 +27286,8 @@
       "details": {
         "fighter": 4,
         "frame": 20,
-        "native_hash": "3a9a8bfe3b5829309ce669bbabab67c49b5a39e765e218e150f8c0289639416b",
-        "pixels_sha256": "3a9a8bfe3b5829309ce669bbabab67c49b5a39e765e218e150f8c0289639416b"
+        "native_hash": "ed528bdb43b29c27aa0622e5cd940f06df1c4dabaa2961e9000b8fabfda3070e",
+        "pixels_sha256": "ed528bdb43b29c27aa0622e5cd940f06df1c4dabaa2961e9000b8fabfda3070e"
       }
     },
     {
@@ -27297,15 +27297,15 @@
         "fighter": 4,
         "frame": 20,
         "metadata": [
-          20,
+          17,
           7,
-          76,
+          78,
           78
         ],
         "preview": [
-          20,
+          17,
           7,
-          76,
+          78,
           78
         ]
       }
@@ -27333,8 +27333,8 @@
       "details": {
         "fighter": 4,
         "frame": 21,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -27343,8 +27343,8 @@
       "details": {
         "fighter": 4,
         "frame": 21,
-        "source_file": "assets/art/characters/04-negger/animation-motion.png",
-        "source_hash": "2db154d636a25aa91cb758209d23a06a7b1a770270fd6e9124cf9a4efba16c02"
+        "source_file": "assets/art/characters/04-negger/walking-v2.png",
+        "source_hash": "a3cb66e866a951e3abaa8e7bb48f0182f740f728ebfdf3d3af746abcdeaec84a"
       }
     },
     {
@@ -27353,8 +27353,8 @@
       "details": {
         "fighter": 4,
         "frame": 21,
-        "native_hash": "eb083358c7c99ce1415fad8242ea428ec7c015bb65c48acb666ef6badadc71ef",
-        "pixels_sha256": "eb083358c7c99ce1415fad8242ea428ec7c015bb65c48acb666ef6badadc71ef"
+        "native_hash": "3d6ea25c37951ffb8f6d6ff802fa1a3121a97db57ec2ba5cf679bf6fd43941d1",
+        "pixels_sha256": "3d6ea25c37951ffb8f6d6ff802fa1a3121a97db57ec2ba5cf679bf6fd43941d1"
       }
     },
     {
@@ -27365,14 +27365,14 @@
         "frame": 21,
         "metadata": [
           24,
-          6,
-          72,
+          7,
+          71,
           78
         ],
         "preview": [
           24,
-          6,
-          72,
+          7,
+          71,
           78
         ]
       }
@@ -27400,8 +27400,8 @@
       "details": {
         "fighter": 4,
         "frame": 22,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -27410,8 +27410,8 @@
       "details": {
         "fighter": 4,
         "frame": 22,
-        "source_file": "assets/art/characters/04-negger/animation-motion.png",
-        "source_hash": "2db154d636a25aa91cb758209d23a06a7b1a770270fd6e9124cf9a4efba16c02"
+        "source_file": "assets/art/characters/04-negger/walking-v2.png",
+        "source_hash": "a3cb66e866a951e3abaa8e7bb48f0182f740f728ebfdf3d3af746abcdeaec84a"
       }
     },
     {
@@ -27420,8 +27420,8 @@
       "details": {
         "fighter": 4,
         "frame": 22,
-        "native_hash": "c8789fb6d30d1140fb8364d7e12ed9ee59236073be095efce80a371c32160ea8",
-        "pixels_sha256": "c8789fb6d30d1140fb8364d7e12ed9ee59236073be095efce80a371c32160ea8"
+        "native_hash": "e1ef8df086852c27c5bb160825f2916ba1c79b1573f471b07b606fa07be980fd",
+        "pixels_sha256": "e1ef8df086852c27c5bb160825f2916ba1c79b1573f471b07b606fa07be980fd"
       }
     },
     {
@@ -27431,15 +27431,15 @@
         "fighter": 4,
         "frame": 22,
         "metadata": [
-          24,
-          8,
-          72,
+          26,
+          7,
+          70,
           78
         ],
         "preview": [
-          24,
-          8,
-          72,
+          26,
+          7,
+          70,
           78
         ]
       }
@@ -27467,8 +27467,8 @@
       "details": {
         "fighter": 4,
         "frame": 23,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -27477,8 +27477,8 @@
       "details": {
         "fighter": 4,
         "frame": 23,
-        "source_file": "assets/art/characters/04-negger/animation-motion.png",
-        "source_hash": "2db154d636a25aa91cb758209d23a06a7b1a770270fd6e9124cf9a4efba16c02"
+        "source_file": "assets/art/characters/04-negger/walking-v2.png",
+        "source_hash": "a3cb66e866a951e3abaa8e7bb48f0182f740f728ebfdf3d3af746abcdeaec84a"
       }
     },
     {
@@ -27487,8 +27487,8 @@
       "details": {
         "fighter": 4,
         "frame": 23,
-        "native_hash": "1b03484eb2783a4784a48d2b31494b27e62ba9a73d4965563ccf96a19bc12f68",
-        "pixels_sha256": "1b03484eb2783a4784a48d2b31494b27e62ba9a73d4965563ccf96a19bc12f68"
+        "native_hash": "8705e2bdc081e628e2425ca07612247984388900617cbff32eb9e1ca4e7e3550",
+        "pixels_sha256": "8705e2bdc081e628e2425ca07612247984388900617cbff32eb9e1ca4e7e3550"
       }
     },
     {
@@ -27498,14 +27498,14 @@
         "fighter": 4,
         "frame": 23,
         "metadata": [
-          20,
-          9,
+          19,
+          6,
           76,
           78
         ],
         "preview": [
-          20,
-          9,
+          19,
+          6,
           76,
           78
         ]
@@ -27534,8 +27534,8 @@
       "details": {
         "fighter": 4,
         "frame": 24,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -27544,8 +27544,8 @@
       "details": {
         "fighter": 4,
         "frame": 24,
-        "source_file": "assets/art/characters/04-negger/animation-motion.png",
-        "source_hash": "2db154d636a25aa91cb758209d23a06a7b1a770270fd6e9124cf9a4efba16c02"
+        "source_file": "assets/art/characters/04-negger/walking-v2.png",
+        "source_hash": "a3cb66e866a951e3abaa8e7bb48f0182f740f728ebfdf3d3af746abcdeaec84a"
       }
     },
     {
@@ -27554,8 +27554,8 @@
       "details": {
         "fighter": 4,
         "frame": 24,
-        "native_hash": "b6fe9a1ab7e78d3af423c85599efe9d2ab34b33d222637882cd0f6f39b411481",
-        "pixels_sha256": "b6fe9a1ab7e78d3af423c85599efe9d2ab34b33d222637882cd0f6f39b411481"
+        "native_hash": "8fac3315ea99b3ad814613da1e187f07dcacb368b0117f907471ab2d34a0ac9f",
+        "pixels_sha256": "8fac3315ea99b3ad814613da1e187f07dcacb368b0117f907471ab2d34a0ac9f"
       }
     },
     {
@@ -27565,15 +27565,15 @@
         "fighter": 4,
         "frame": 24,
         "metadata": [
-          23,
-          7,
-          72,
+          17,
+          9,
+          79,
           78
         ],
         "preview": [
-          23,
-          7,
-          72,
+          17,
+          9,
+          79,
           78
         ]
       }
@@ -27601,8 +27601,8 @@
       "details": {
         "fighter": 4,
         "frame": 25,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -27611,8 +27611,8 @@
       "details": {
         "fighter": 4,
         "frame": 25,
-        "source_file": "assets/art/characters/04-negger/animation-motion.png",
-        "source_hash": "2db154d636a25aa91cb758209d23a06a7b1a770270fd6e9124cf9a4efba16c02"
+        "source_file": "assets/art/characters/04-negger/walking-v2.png",
+        "source_hash": "a3cb66e866a951e3abaa8e7bb48f0182f740f728ebfdf3d3af746abcdeaec84a"
       }
     },
     {
@@ -27621,8 +27621,8 @@
       "details": {
         "fighter": 4,
         "frame": 25,
-        "native_hash": "3f90aafadd06fa1959419db64dc24a5ce6d5e1d68e0a0e441c881a0d06e1422d",
-        "pixels_sha256": "3f90aafadd06fa1959419db64dc24a5ce6d5e1d68e0a0e441c881a0d06e1422d"
+        "native_hash": "6286600dbd5a1510ea9c5be630ac18a5f70c81e9a5cbb5dea6793ab0f7dcd40d",
+        "pixels_sha256": "6286600dbd5a1510ea9c5be630ac18a5f70c81e9a5cbb5dea6793ab0f7dcd40d"
       }
     },
     {
@@ -27632,15 +27632,15 @@
         "fighter": 4,
         "frame": 25,
         "metadata": [
-          27,
-          7,
-          68,
+          26,
+          9,
+          70,
           78
         ],
         "preview": [
-          27,
-          7,
-          68,
+          26,
+          9,
+          70,
           78
         ]
       }
@@ -27668,8 +27668,8 @@
       "details": {
         "fighter": 4,
         "frame": 26,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -27678,8 +27678,8 @@
       "details": {
         "fighter": 4,
         "frame": 26,
-        "source_file": "assets/art/characters/04-negger/animation-motion.png",
-        "source_hash": "2db154d636a25aa91cb758209d23a06a7b1a770270fd6e9124cf9a4efba16c02"
+        "source_file": "assets/art/characters/04-negger/walking-v2.png",
+        "source_hash": "a3cb66e866a951e3abaa8e7bb48f0182f740f728ebfdf3d3af746abcdeaec84a"
       }
     },
     {
@@ -27688,8 +27688,8 @@
       "details": {
         "fighter": 4,
         "frame": 26,
-        "native_hash": "fd1d5ad26e3f683733f4b391b9df1f089e5b22ecdb9a0769455ac37da35c48cd",
-        "pixels_sha256": "fd1d5ad26e3f683733f4b391b9df1f089e5b22ecdb9a0769455ac37da35c48cd"
+        "native_hash": "66f6a28c334109d3106461f3e95a22513d95defb951320c1a196d9dcd16b59d6",
+        "pixels_sha256": "66f6a28c334109d3106461f3e95a22513d95defb951320c1a196d9dcd16b59d6"
       }
     },
     {
@@ -27699,15 +27699,15 @@
         "fighter": 4,
         "frame": 26,
         "metadata": [
-          21,
-          7,
-          75,
+          26,
+          9,
+          69,
           78
         ],
         "preview": [
-          21,
-          7,
-          75,
+          26,
+          9,
+          69,
           78
         ]
       }
@@ -27735,8 +27735,8 @@
       "details": {
         "fighter": 4,
         "frame": 27,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -27745,8 +27745,8 @@
       "details": {
         "fighter": 4,
         "frame": 27,
-        "source_file": "assets/art/characters/04-negger/animation-motion.png",
-        "source_hash": "2db154d636a25aa91cb758209d23a06a7b1a770270fd6e9124cf9a4efba16c02"
+        "source_file": "assets/art/characters/04-negger/walking-v2.png",
+        "source_hash": "a3cb66e866a951e3abaa8e7bb48f0182f740f728ebfdf3d3af746abcdeaec84a"
       }
     },
     {
@@ -27755,8 +27755,8 @@
       "details": {
         "fighter": 4,
         "frame": 27,
-        "native_hash": "add2490ea929465df70cb3948c5090c76018934de2e67a20d6693e4335ab32f5",
-        "pixels_sha256": "add2490ea929465df70cb3948c5090c76018934de2e67a20d6693e4335ab32f5"
+        "native_hash": "d48bf075fc207234f8e26d5b3253d49e2fb5c14433912438b980fc79e4df5289",
+        "pixels_sha256": "d48bf075fc207234f8e26d5b3253d49e2fb5c14433912438b980fc79e4df5289"
       }
     },
     {
@@ -27766,15 +27766,15 @@
         "fighter": 4,
         "frame": 27,
         "metadata": [
-          21,
+          18,
           9,
-          75,
+          78,
           78
         ],
         "preview": [
-          21,
+          18,
           9,
-          75,
+          78,
           78
         ]
       }
@@ -30552,9 +30552,9 @@
         "fighter": 4,
         "pose": "walk-forward-contact",
         "box": [
-          20,
+          17,
           7,
-          76,
+          78,
           78
         ]
       }
@@ -30567,8 +30567,8 @@
         "pose": "walk-forward-pass",
         "box": [
           24,
-          6,
-          72,
+          7,
+          71,
           78
         ]
       }
@@ -30580,9 +30580,9 @@
         "fighter": 4,
         "pose": "walk-forward-under",
         "box": [
-          24,
-          8,
-          72,
+          26,
+          7,
+          70,
           78
         ]
       }
@@ -30594,8 +30594,8 @@
         "fighter": 4,
         "pose": "walk-forward-opposite",
         "box": [
-          20,
-          9,
+          19,
+          6,
           76,
           78
         ]
@@ -30608,9 +30608,9 @@
         "fighter": 4,
         "pose": "walk-back-contact",
         "box": [
-          23,
-          7,
-          72,
+          17,
+          9,
+          79,
           78
         ]
       }
@@ -30622,9 +30622,9 @@
         "fighter": 4,
         "pose": "walk-back-pass",
         "box": [
-          27,
-          7,
-          68,
+          26,
+          9,
+          70,
           78
         ]
       }
@@ -30636,9 +30636,9 @@
         "fighter": 4,
         "pose": "walk-back-under",
         "box": [
-          21,
-          7,
-          75,
+          26,
+          9,
+          69,
           78
         ]
       }
@@ -30650,9 +30650,9 @@
         "fighter": 4,
         "pose": "walk-back-opposite",
         "box": [
-          21,
+          18,
           9,
-          75,
+          78,
           78
         ]
       }
@@ -31381,7 +31381,7 @@
         "fighter": 4,
         "frame": "walk-forward-pass",
         "idle_height": 72,
-        "frame_height": 72
+        "frame_height": 71
       }
     },
     {
@@ -31391,7 +31391,7 @@
         "fighter": 4,
         "frame": "walk-forward-under",
         "idle_height": 72,
-        "frame_height": 70
+        "frame_height": 71
       }
     },
     {
@@ -31401,7 +31401,7 @@
         "fighter": 4,
         "frame": "walk-forward-opposite",
         "idle_height": 72,
-        "frame_height": 69
+        "frame_height": 72
       }
     },
     {
@@ -31411,7 +31411,7 @@
         "fighter": 4,
         "frame": "walk-back-contact",
         "idle_height": 72,
-        "frame_height": 71
+        "frame_height": 69
       }
     },
     {
@@ -31421,7 +31421,7 @@
         "fighter": 4,
         "frame": "walk-back-pass",
         "idle_height": 72,
-        "frame_height": 71
+        "frame_height": 69
       }
     },
     {
@@ -31431,7 +31431,7 @@
         "fighter": 4,
         "frame": "walk-back-under",
         "idle_height": 72,
-        "frame_height": 71
+        "frame_height": 69
       }
     },
     {
@@ -33592,8 +33592,8 @@
       "details": {
         "fighter": 5,
         "frame": 20,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -33602,8 +33602,8 @@
       "details": {
         "fighter": 5,
         "frame": 20,
-        "source_file": "assets/art/characters/05-david/animation-motion.png",
-        "source_hash": "5b205771458238a844c3ffb9c256065342df3321effad715ea0895903c20aa27"
+        "source_file": "assets/art/characters/05-david/walking-v2.png",
+        "source_hash": "a1c57305044b4b977d264009d32065a3f5a44f639bbc55378b1b7a378fd7d598"
       }
     },
     {
@@ -33612,8 +33612,8 @@
       "details": {
         "fighter": 5,
         "frame": 20,
-        "native_hash": "62c1ce6b5000e0553d2f62b0f9b992584f0346cd64ea4b21ce0ee2e57cf380c3",
-        "pixels_sha256": "62c1ce6b5000e0553d2f62b0f9b992584f0346cd64ea4b21ce0ee2e57cf380c3"
+        "native_hash": "4a2b6c4f3295d30fa4b220be02449260488df433bcfd476dae9f9ff262781b52",
+        "pixels_sha256": "4a2b6c4f3295d30fa4b220be02449260488df433bcfd476dae9f9ff262781b52"
       }
     },
     {
@@ -33623,13 +33623,13 @@
         "fighter": 5,
         "frame": 20,
         "metadata": [
-          20,
+          19,
           10,
           76,
           78
         ],
         "preview": [
-          20,
+          19,
           10,
           76,
           78
@@ -33659,8 +33659,8 @@
       "details": {
         "fighter": 5,
         "frame": 21,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -33669,8 +33669,8 @@
       "details": {
         "fighter": 5,
         "frame": 21,
-        "source_file": "assets/art/characters/05-david/animation-motion.png",
-        "source_hash": "5b205771458238a844c3ffb9c256065342df3321effad715ea0895903c20aa27"
+        "source_file": "assets/art/characters/05-david/walking-v2.png",
+        "source_hash": "a1c57305044b4b977d264009d32065a3f5a44f639bbc55378b1b7a378fd7d598"
       }
     },
     {
@@ -33679,8 +33679,8 @@
       "details": {
         "fighter": 5,
         "frame": 21,
-        "native_hash": "a3bf8d0057aa113468a27591b32200d81601fa668b94e3aab752fe4ba916def9",
-        "pixels_sha256": "a3bf8d0057aa113468a27591b32200d81601fa668b94e3aab752fe4ba916def9"
+        "native_hash": "4b01760e75e00c353e22d3b5b11d30486c984b82955d5223c96dccc6c8895c17",
+        "pixels_sha256": "4b01760e75e00c353e22d3b5b11d30486c984b82955d5223c96dccc6c8895c17"
       }
     },
     {
@@ -33690,13 +33690,13 @@
         "fighter": 5,
         "frame": 21,
         "metadata": [
-          25,
+          26,
           10,
           70,
           78
         ],
         "preview": [
-          25,
+          26,
           10,
           70,
           78
@@ -33726,8 +33726,8 @@
       "details": {
         "fighter": 5,
         "frame": 22,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -33736,8 +33736,8 @@
       "details": {
         "fighter": 5,
         "frame": 22,
-        "source_file": "assets/art/characters/05-david/animation-motion.png",
-        "source_hash": "5b205771458238a844c3ffb9c256065342df3321effad715ea0895903c20aa27"
+        "source_file": "assets/art/characters/05-david/walking-v2.png",
+        "source_hash": "a1c57305044b4b977d264009d32065a3f5a44f639bbc55378b1b7a378fd7d598"
       }
     },
     {
@@ -33746,8 +33746,8 @@
       "details": {
         "fighter": 5,
         "frame": 22,
-        "native_hash": "5a211308f9a963c6da35009ed7f46c2ff48b27e4eb8fc4f0ac1d628713b50b19",
-        "pixels_sha256": "5a211308f9a963c6da35009ed7f46c2ff48b27e4eb8fc4f0ac1d628713b50b19"
+        "native_hash": "0742de85d58a38303814c5435ade08486ff64fa79cce30b99e72b575b4080ac2",
+        "pixels_sha256": "0742de85d58a38303814c5435ade08486ff64fa79cce30b99e72b575b4080ac2"
       }
     },
     {
@@ -33757,15 +33757,15 @@
         "fighter": 5,
         "frame": 22,
         "metadata": [
-          24,
+          28,
           10,
-          72,
+          67,
           78
         ],
         "preview": [
-          24,
+          28,
           10,
-          72,
+          67,
           78
         ]
       }
@@ -33793,8 +33793,8 @@
       "details": {
         "fighter": 5,
         "frame": 23,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -33803,8 +33803,8 @@
       "details": {
         "fighter": 5,
         "frame": 23,
-        "source_file": "assets/art/characters/05-david/animation-motion.png",
-        "source_hash": "5b205771458238a844c3ffb9c256065342df3321effad715ea0895903c20aa27"
+        "source_file": "assets/art/characters/05-david/walking-v2.png",
+        "source_hash": "a1c57305044b4b977d264009d32065a3f5a44f639bbc55378b1b7a378fd7d598"
       }
     },
     {
@@ -33813,8 +33813,8 @@
       "details": {
         "fighter": 5,
         "frame": 23,
-        "native_hash": "ba7e62a615ec64ee82a40d893cc569ef5f9aa7a818be5476ecc9360540327f71",
-        "pixels_sha256": "ba7e62a615ec64ee82a40d893cc569ef5f9aa7a818be5476ecc9360540327f71"
+        "native_hash": "dd0b64153ea0de1a6794631ee8d4b93af4992e87be83a803197ded6d85136a87",
+        "pixels_sha256": "dd0b64153ea0de1a6794631ee8d4b93af4992e87be83a803197ded6d85136a87"
       }
     },
     {
@@ -33824,15 +33824,15 @@
         "fighter": 5,
         "frame": 23,
         "metadata": [
-          20,
-          11,
-          76,
+          18,
+          10,
+          77,
           78
         ],
         "preview": [
-          20,
-          11,
-          76,
+          18,
+          10,
+          77,
           78
         ]
       }
@@ -33860,8 +33860,8 @@
       "details": {
         "fighter": 5,
         "frame": 24,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -33870,8 +33870,8 @@
       "details": {
         "fighter": 5,
         "frame": 24,
-        "source_file": "assets/art/characters/05-david/animation-motion.png",
-        "source_hash": "5b205771458238a844c3ffb9c256065342df3321effad715ea0895903c20aa27"
+        "source_file": "assets/art/characters/05-david/walking-v2.png",
+        "source_hash": "a1c57305044b4b977d264009d32065a3f5a44f639bbc55378b1b7a378fd7d598"
       }
     },
     {
@@ -33880,8 +33880,8 @@
       "details": {
         "fighter": 5,
         "frame": 24,
-        "native_hash": "7f03b134e0ab25d405b5de4554c8fa3905e32304879ed1a9690d99fc025b8c27",
-        "pixels_sha256": "7f03b134e0ab25d405b5de4554c8fa3905e32304879ed1a9690d99fc025b8c27"
+        "native_hash": "f2a0675674b09c0af239d6d38b9a3b21ce43553df440bec0ce374c7ec1d6e4f4",
+        "pixels_sha256": "f2a0675674b09c0af239d6d38b9a3b21ce43553df440bec0ce374c7ec1d6e4f4"
       }
     },
     {
@@ -33891,15 +33891,15 @@
         "fighter": 5,
         "frame": 24,
         "metadata": [
-          22,
-          10,
-          73,
+          20,
+          12,
+          76,
           78
         ],
         "preview": [
-          22,
-          10,
-          73,
+          20,
+          12,
+          76,
           78
         ]
       }
@@ -33927,8 +33927,8 @@
       "details": {
         "fighter": 5,
         "frame": 25,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -33937,8 +33937,8 @@
       "details": {
         "fighter": 5,
         "frame": 25,
-        "source_file": "assets/art/characters/05-david/animation-motion.png",
-        "source_hash": "5b205771458238a844c3ffb9c256065342df3321effad715ea0895903c20aa27"
+        "source_file": "assets/art/characters/05-david/walking-v2.png",
+        "source_hash": "a1c57305044b4b977d264009d32065a3f5a44f639bbc55378b1b7a378fd7d598"
       }
     },
     {
@@ -33947,8 +33947,8 @@
       "details": {
         "fighter": 5,
         "frame": 25,
-        "native_hash": "d00140d27e9a663a0af0810e1fc228b148464ebe061e26ee466897faa80fb2c5",
-        "pixels_sha256": "d00140d27e9a663a0af0810e1fc228b148464ebe061e26ee466897faa80fb2c5"
+        "native_hash": "83532be8caac68e835f6ec80fa766db3086a9b9c1f0a64942c3916f43196559f",
+        "pixels_sha256": "83532be8caac68e835f6ec80fa766db3086a9b9c1f0a64942c3916f43196559f"
       }
     },
     {
@@ -33958,15 +33958,15 @@
         "fighter": 5,
         "frame": 25,
         "metadata": [
-          27,
-          10,
-          69,
+          26,
+          12,
+          70,
           78
         ],
         "preview": [
-          27,
-          10,
-          69,
+          26,
+          12,
+          70,
           78
         ]
       }
@@ -33994,8 +33994,8 @@
       "details": {
         "fighter": 5,
         "frame": 26,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -34004,8 +34004,8 @@
       "details": {
         "fighter": 5,
         "frame": 26,
-        "source_file": "assets/art/characters/05-david/animation-motion.png",
-        "source_hash": "5b205771458238a844c3ffb9c256065342df3321effad715ea0895903c20aa27"
+        "source_file": "assets/art/characters/05-david/walking-v2.png",
+        "source_hash": "a1c57305044b4b977d264009d32065a3f5a44f639bbc55378b1b7a378fd7d598"
       }
     },
     {
@@ -34014,8 +34014,8 @@
       "details": {
         "fighter": 5,
         "frame": 26,
-        "native_hash": "880fd9975d582045a1c68f285c140e58c2ab46122e40019aab46e15fc5a45ef0",
-        "pixels_sha256": "880fd9975d582045a1c68f285c140e58c2ab46122e40019aab46e15fc5a45ef0"
+        "native_hash": "da51f5b4451294d8e2259791e662f5a16d55bfeb8788608c04ce5195e037fd29",
+        "pixels_sha256": "da51f5b4451294d8e2259791e662f5a16d55bfeb8788608c04ce5195e037fd29"
       }
     },
     {
@@ -34026,13 +34026,13 @@
         "frame": 26,
         "metadata": [
           28,
-          10,
+          12,
           67,
           78
         ],
         "preview": [
           28,
-          10,
+          12,
           67,
           78
         ]
@@ -34061,8 +34061,8 @@
       "details": {
         "fighter": 5,
         "frame": 27,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -34071,8 +34071,8 @@
       "details": {
         "fighter": 5,
         "frame": 27,
-        "source_file": "assets/art/characters/05-david/animation-motion.png",
-        "source_hash": "5b205771458238a844c3ffb9c256065342df3321effad715ea0895903c20aa27"
+        "source_file": "assets/art/characters/05-david/walking-v2.png",
+        "source_hash": "a1c57305044b4b977d264009d32065a3f5a44f639bbc55378b1b7a378fd7d598"
       }
     },
     {
@@ -34081,8 +34081,8 @@
       "details": {
         "fighter": 5,
         "frame": 27,
-        "native_hash": "8e6e4224535a0b5e8bc2f464cf5203d438d66d868f845e3d4fb996c1a4c7e683",
-        "pixels_sha256": "8e6e4224535a0b5e8bc2f464cf5203d438d66d868f845e3d4fb996c1a4c7e683"
+        "native_hash": "eca033f69095c66becce68d5d7756db52d46d8a87a2443bc7393d09151571319",
+        "pixels_sha256": "eca033f69095c66becce68d5d7756db52d46d8a87a2443bc7393d09151571319"
       }
     },
     {
@@ -34092,15 +34092,15 @@
         "fighter": 5,
         "frame": 27,
         "metadata": [
-          25,
-          10,
-          71,
+          18,
+          11,
+          78,
           78
         ],
         "preview": [
-          25,
-          10,
-          71,
+          18,
+          11,
+          78,
           78
         ]
       }
@@ -36878,7 +36878,7 @@
         "fighter": 5,
         "pose": "walk-forward-contact",
         "box": [
-          20,
+          19,
           10,
           76,
           78
@@ -36892,7 +36892,7 @@
         "fighter": 5,
         "pose": "walk-forward-pass",
         "box": [
-          25,
+          26,
           10,
           70,
           78
@@ -36906,62 +36906,6 @@
         "fighter": 5,
         "pose": "walk-forward-under",
         "box": [
-          24,
-          10,
-          72,
-          78
-        ]
-      }
-    },
-    {
-      "check": "native animation frame stays inside its 96x80 canvas",
-      "passed": true,
-      "details": {
-        "fighter": 5,
-        "pose": "walk-forward-opposite",
-        "box": [
-          20,
-          11,
-          76,
-          78
-        ]
-      }
-    },
-    {
-      "check": "native animation frame stays inside its 96x80 canvas",
-      "passed": true,
-      "details": {
-        "fighter": 5,
-        "pose": "walk-back-contact",
-        "box": [
-          22,
-          10,
-          73,
-          78
-        ]
-      }
-    },
-    {
-      "check": "native animation frame stays inside its 96x80 canvas",
-      "passed": true,
-      "details": {
-        "fighter": 5,
-        "pose": "walk-back-pass",
-        "box": [
-          27,
-          10,
-          69,
-          78
-        ]
-      }
-    },
-    {
-      "check": "native animation frame stays inside its 96x80 canvas",
-      "passed": true,
-      "details": {
-        "fighter": 5,
-        "pose": "walk-back-under",
-        "box": [
           28,
           10,
           67,
@@ -36974,11 +36918,67 @@
       "passed": true,
       "details": {
         "fighter": 5,
+        "pose": "walk-forward-opposite",
+        "box": [
+          18,
+          10,
+          77,
+          78
+        ]
+      }
+    },
+    {
+      "check": "native animation frame stays inside its 96x80 canvas",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "pose": "walk-back-contact",
+        "box": [
+          20,
+          12,
+          76,
+          78
+        ]
+      }
+    },
+    {
+      "check": "native animation frame stays inside its 96x80 canvas",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "pose": "walk-back-pass",
+        "box": [
+          26,
+          12,
+          70,
+          78
+        ]
+      }
+    },
+    {
+      "check": "native animation frame stays inside its 96x80 canvas",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "pose": "walk-back-under",
+        "box": [
+          28,
+          12,
+          67,
+          78
+        ]
+      }
+    },
+    {
+      "check": "native animation frame stays inside its 96x80 canvas",
+      "passed": true,
+      "details": {
+        "fighter": 5,
         "pose": "walk-back-opposite",
         "box": [
-          25,
-          10,
-          71,
+          18,
+          11,
+          78,
           78
         ]
       }
@@ -37727,7 +37727,7 @@
         "fighter": 5,
         "frame": "walk-forward-opposite",
         "idle_height": 68,
-        "frame_height": 67
+        "frame_height": 68
       }
     },
     {
@@ -37737,7 +37737,7 @@
         "fighter": 5,
         "frame": "walk-back-contact",
         "idle_height": 68,
-        "frame_height": 68
+        "frame_height": 66
       }
     },
     {
@@ -37747,7 +37747,7 @@
         "fighter": 5,
         "frame": "walk-back-pass",
         "idle_height": 68,
-        "frame_height": 68
+        "frame_height": 66
       }
     },
     {
@@ -37757,7 +37757,7 @@
         "fighter": 5,
         "frame": "walk-back-under",
         "idle_height": 68,
-        "frame_height": 68
+        "frame_height": 66
       }
     },
     {
@@ -37767,7 +37767,7 @@
         "fighter": 5,
         "frame": "walk-back-opposite",
         "idle_height": 68,
-        "frame_height": 68
+        "frame_height": 67
       }
     },
     {
@@ -39918,8 +39918,8 @@
       "details": {
         "fighter": 6,
         "frame": 20,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -39928,8 +39928,8 @@
       "details": {
         "fighter": 6,
         "frame": 20,
-        "source_file": "assets/art/characters/06-fernando/animation-motion.png",
-        "source_hash": "4a68f9b8b39af0a23a0bf41f240096c7b3b0e1a75b9fa0df060abccde400705c"
+        "source_file": "assets/art/characters/06-fernando/walking-v2.png",
+        "source_hash": "88748a37f01b534333d5ff412e35db94ee8aa0d9562e4d8b1fe7e11b1c7c59b4"
       }
     },
     {
@@ -39938,8 +39938,8 @@
       "details": {
         "fighter": 6,
         "frame": 20,
-        "native_hash": "f879630e44556270d7303ac78d31916a307a2ba70dd64b4627fd2b409a77bea1",
-        "pixels_sha256": "f879630e44556270d7303ac78d31916a307a2ba70dd64b4627fd2b409a77bea1"
+        "native_hash": "38828d80828874933b6d64d16eed482a78679e172e758da07a8434e09372ab12",
+        "pixels_sha256": "38828d80828874933b6d64d16eed482a78679e172e758da07a8434e09372ab12"
       }
     },
     {
@@ -39949,15 +39949,15 @@
         "fighter": 6,
         "frame": 20,
         "metadata": [
-          18,
-          13,
-          77,
+          20,
+          12,
+          76,
           78
         ],
         "preview": [
-          18,
-          13,
-          77,
+          20,
+          12,
+          76,
           78
         ]
       }
@@ -39985,8 +39985,8 @@
       "details": {
         "fighter": 6,
         "frame": 21,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -39995,8 +39995,8 @@
       "details": {
         "fighter": 6,
         "frame": 21,
-        "source_file": "assets/art/characters/06-fernando/animation-motion.png",
-        "source_hash": "4a68f9b8b39af0a23a0bf41f240096c7b3b0e1a75b9fa0df060abccde400705c"
+        "source_file": "assets/art/characters/06-fernando/walking-v2.png",
+        "source_hash": "88748a37f01b534333d5ff412e35db94ee8aa0d9562e4d8b1fe7e11b1c7c59b4"
       }
     },
     {
@@ -40005,8 +40005,8 @@
       "details": {
         "fighter": 6,
         "frame": 21,
-        "native_hash": "c8e2b70482542919e08e2482904a922d25ca2bdda2deb1f02b4aa9c4ba78e8d3",
-        "pixels_sha256": "c8e2b70482542919e08e2482904a922d25ca2bdda2deb1f02b4aa9c4ba78e8d3"
+        "native_hash": "a3ee2e840811f5c4833341b6a492be2da55d54f7588fdeb8c34fe142139e1a3a",
+        "pixels_sha256": "a3ee2e840811f5c4833341b6a492be2da55d54f7588fdeb8c34fe142139e1a3a"
       }
     },
     {
@@ -40016,15 +40016,15 @@
         "fighter": 6,
         "frame": 21,
         "metadata": [
-          19,
-          13,
-          77,
+          25,
+          12,
+          71,
           78
         ],
         "preview": [
-          19,
-          13,
-          77,
+          25,
+          12,
+          71,
           78
         ]
       }
@@ -40052,8 +40052,8 @@
       "details": {
         "fighter": 6,
         "frame": 22,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -40062,8 +40062,8 @@
       "details": {
         "fighter": 6,
         "frame": 22,
-        "source_file": "assets/art/characters/06-fernando/animation-motion.png",
-        "source_hash": "4a68f9b8b39af0a23a0bf41f240096c7b3b0e1a75b9fa0df060abccde400705c"
+        "source_file": "assets/art/characters/06-fernando/walking-v2.png",
+        "source_hash": "88748a37f01b534333d5ff412e35db94ee8aa0d9562e4d8b1fe7e11b1c7c59b4"
       }
     },
     {
@@ -40072,8 +40072,8 @@
       "details": {
         "fighter": 6,
         "frame": 22,
-        "native_hash": "b8b5ddffe44f708babc40ad50f4bd6119e07c48d6185f41a7c360ea3238fef4c",
-        "pixels_sha256": "b8b5ddffe44f708babc40ad50f4bd6119e07c48d6185f41a7c360ea3238fef4c"
+        "native_hash": "c87bb4c8b0f1b93fca5b34d7a9923a351f122333a6fb4e5d8931c6ceb4048597",
+        "pixels_sha256": "c87bb4c8b0f1b93fca5b34d7a9923a351f122333a6fb4e5d8931c6ceb4048597"
       }
     },
     {
@@ -40083,15 +40083,15 @@
         "fighter": 6,
         "frame": 22,
         "metadata": [
-          20,
-          13,
-          76,
+          29,
+          11,
+          67,
           78
         ],
         "preview": [
-          20,
-          13,
-          76,
+          29,
+          11,
+          67,
           78
         ]
       }
@@ -40119,8 +40119,8 @@
       "details": {
         "fighter": 6,
         "frame": 23,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -40129,8 +40129,8 @@
       "details": {
         "fighter": 6,
         "frame": 23,
-        "source_file": "assets/art/characters/06-fernando/animation-motion.png",
-        "source_hash": "4a68f9b8b39af0a23a0bf41f240096c7b3b0e1a75b9fa0df060abccde400705c"
+        "source_file": "assets/art/characters/06-fernando/walking-v2.png",
+        "source_hash": "88748a37f01b534333d5ff412e35db94ee8aa0d9562e4d8b1fe7e11b1c7c59b4"
       }
     },
     {
@@ -40139,8 +40139,8 @@
       "details": {
         "fighter": 6,
         "frame": 23,
-        "native_hash": "9d46a9767c2124b1def41405edd750893f95c576fd2a1099ef0d3fc9dc55927c",
-        "pixels_sha256": "9d46a9767c2124b1def41405edd750893f95c576fd2a1099ef0d3fc9dc55927c"
+        "native_hash": "340af2b9930dd5b2190e75c2551fa40b7a58643520040322dc21d219c74078eb",
+        "pixels_sha256": "340af2b9930dd5b2190e75c2551fa40b7a58643520040322dc21d219c74078eb"
       }
     },
     {
@@ -40150,14 +40150,14 @@
         "fighter": 6,
         "frame": 23,
         "metadata": [
-          19,
-          13,
+          20,
+          12,
           76,
           78
         ],
         "preview": [
-          19,
-          13,
+          20,
+          12,
           76,
           78
         ]
@@ -40186,8 +40186,8 @@
       "details": {
         "fighter": 6,
         "frame": 24,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -40196,8 +40196,8 @@
       "details": {
         "fighter": 6,
         "frame": 24,
-        "source_file": "assets/art/characters/06-fernando/animation-motion.png",
-        "source_hash": "4a68f9b8b39af0a23a0bf41f240096c7b3b0e1a75b9fa0df060abccde400705c"
+        "source_file": "assets/art/characters/06-fernando/walking-v2.png",
+        "source_hash": "88748a37f01b534333d5ff412e35db94ee8aa0d9562e4d8b1fe7e11b1c7c59b4"
       }
     },
     {
@@ -40206,8 +40206,8 @@
       "details": {
         "fighter": 6,
         "frame": 24,
-        "native_hash": "554f73661222dda8d5255f1a3b24d53aa6cc8606a07d0f632615cded9b05e621",
-        "pixels_sha256": "554f73661222dda8d5255f1a3b24d53aa6cc8606a07d0f632615cded9b05e621"
+        "native_hash": "a2824a75b26f8e9ee13921c1b384bb8cc6cc3cf579fd4dfa70dcbb131acd0e2f",
+        "pixels_sha256": "a2824a75b26f8e9ee13921c1b384bb8cc6cc3cf579fd4dfa70dcbb131acd0e2f"
       }
     },
     {
@@ -40218,14 +40218,14 @@
         "frame": 24,
         "metadata": [
           18,
-          12,
-          77,
+          13,
+          78,
           78
         ],
         "preview": [
           18,
-          12,
-          77,
+          13,
+          78,
           78
         ]
       }
@@ -40253,8 +40253,8 @@
       "details": {
         "fighter": 6,
         "frame": 25,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -40263,8 +40263,8 @@
       "details": {
         "fighter": 6,
         "frame": 25,
-        "source_file": "assets/art/characters/06-fernando/animation-motion.png",
-        "source_hash": "4a68f9b8b39af0a23a0bf41f240096c7b3b0e1a75b9fa0df060abccde400705c"
+        "source_file": "assets/art/characters/06-fernando/walking-v2.png",
+        "source_hash": "88748a37f01b534333d5ff412e35db94ee8aa0d9562e4d8b1fe7e11b1c7c59b4"
       }
     },
     {
@@ -40273,8 +40273,8 @@
       "details": {
         "fighter": 6,
         "frame": 25,
-        "native_hash": "51723885ac2ef9afc9e1b01fbe155d1dd9ae843c71d444da334b39c0d0270191",
-        "pixels_sha256": "51723885ac2ef9afc9e1b01fbe155d1dd9ae843c71d444da334b39c0d0270191"
+        "native_hash": "d2d0209853b57446320f43444efdb56e93e2dc4b4e59d9e45e4e367a22ad30a9",
+        "pixels_sha256": "d2d0209853b57446320f43444efdb56e93e2dc4b4e59d9e45e4e367a22ad30a9"
       }
     },
     {
@@ -40285,13 +40285,13 @@
         "frame": 25,
         "metadata": [
           23,
-          12,
+          14,
           72,
           78
         ],
         "preview": [
           23,
-          12,
+          14,
           72,
           78
         ]
@@ -40320,8 +40320,8 @@
       "details": {
         "fighter": 6,
         "frame": 26,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -40330,8 +40330,8 @@
       "details": {
         "fighter": 6,
         "frame": 26,
-        "source_file": "assets/art/characters/06-fernando/animation-motion.png",
-        "source_hash": "4a68f9b8b39af0a23a0bf41f240096c7b3b0e1a75b9fa0df060abccde400705c"
+        "source_file": "assets/art/characters/06-fernando/walking-v2.png",
+        "source_hash": "88748a37f01b534333d5ff412e35db94ee8aa0d9562e4d8b1fe7e11b1c7c59b4"
       }
     },
     {
@@ -40340,8 +40340,8 @@
       "details": {
         "fighter": 6,
         "frame": 26,
-        "native_hash": "6a6dae418f640fc71d4b995b0337e66cfa17a11b00ea564d6341f66cfd2bcd79",
-        "pixels_sha256": "6a6dae418f640fc71d4b995b0337e66cfa17a11b00ea564d6341f66cfd2bcd79"
+        "native_hash": "e06362a91c69881143d36987f240d13db1c295f5547d391c98cbc4e85920a495",
+        "pixels_sha256": "e06362a91c69881143d36987f240d13db1c295f5547d391c98cbc4e85920a495"
       }
     },
     {
@@ -40351,15 +40351,15 @@
         "fighter": 6,
         "frame": 26,
         "metadata": [
-          21,
-          12,
-          75,
+          28,
+          14,
+          67,
           78
         ],
         "preview": [
-          21,
-          12,
-          75,
+          28,
+          14,
+          67,
           78
         ]
       }
@@ -40387,8 +40387,8 @@
       "details": {
         "fighter": 6,
         "frame": 27,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -40397,8 +40397,8 @@
       "details": {
         "fighter": 6,
         "frame": 27,
-        "source_file": "assets/art/characters/06-fernando/animation-motion.png",
-        "source_hash": "4a68f9b8b39af0a23a0bf41f240096c7b3b0e1a75b9fa0df060abccde400705c"
+        "source_file": "assets/art/characters/06-fernando/walking-v2.png",
+        "source_hash": "88748a37f01b534333d5ff412e35db94ee8aa0d9562e4d8b1fe7e11b1c7c59b4"
       }
     },
     {
@@ -40407,8 +40407,8 @@
       "details": {
         "fighter": 6,
         "frame": 27,
-        "native_hash": "d98fde208fe0d75c1271ecd8165b7e242b0466d99bf289e7b9b48e930e68c89b",
-        "pixels_sha256": "d98fde208fe0d75c1271ecd8165b7e242b0466d99bf289e7b9b48e930e68c89b"
+        "native_hash": "c366fd1a94451e36d1ffb7f72f5f0c69d3147504354b4a8ebaf3e7b5be3fda13",
+        "pixels_sha256": "c366fd1a94451e36d1ffb7f72f5f0c69d3147504354b4a8ebaf3e7b5be3fda13"
       }
     },
     {
@@ -40418,15 +40418,15 @@
         "fighter": 6,
         "frame": 27,
         "metadata": [
-          19,
-          12,
-          77,
+          20,
+          13,
+          76,
           78
         ],
         "preview": [
-          19,
-          12,
-          77,
+          20,
+          13,
+          76,
           78
         ]
       }
@@ -43204,9 +43204,9 @@
         "fighter": 6,
         "pose": "walk-forward-contact",
         "box": [
-          18,
-          13,
-          77,
+          20,
+          12,
+          76,
           78
         ]
       }
@@ -43218,9 +43218,9 @@
         "fighter": 6,
         "pose": "walk-forward-pass",
         "box": [
-          19,
-          13,
-          77,
+          25,
+          12,
+          71,
           78
         ]
       }
@@ -43232,9 +43232,9 @@
         "fighter": 6,
         "pose": "walk-forward-under",
         "box": [
-          20,
-          13,
-          76,
+          29,
+          11,
+          67,
           78
         ]
       }
@@ -43246,8 +43246,8 @@
         "fighter": 6,
         "pose": "walk-forward-opposite",
         "box": [
-          19,
-          13,
+          20,
+          12,
           76,
           78
         ]
@@ -43261,8 +43261,8 @@
         "pose": "walk-back-contact",
         "box": [
           18,
-          12,
-          77,
+          13,
+          78,
           78
         ]
       }
@@ -43275,7 +43275,7 @@
         "pose": "walk-back-pass",
         "box": [
           23,
-          12,
+          14,
           72,
           78
         ]
@@ -43288,9 +43288,9 @@
         "fighter": 6,
         "pose": "walk-back-under",
         "box": [
-          21,
-          12,
-          75,
+          28,
+          14,
+          67,
           78
         ]
       }
@@ -43302,9 +43302,9 @@
         "fighter": 6,
         "pose": "walk-back-opposite",
         "box": [
-          19,
-          12,
-          77,
+          20,
+          13,
+          76,
           78
         ]
       }
@@ -44023,7 +44023,7 @@
         "fighter": 6,
         "frame": "walk-forward-contact",
         "idle_height": 67,
-        "frame_height": 65
+        "frame_height": 66
       }
     },
     {
@@ -44033,7 +44033,7 @@
         "fighter": 6,
         "frame": "walk-forward-pass",
         "idle_height": 67,
-        "frame_height": 65
+        "frame_height": 66
       }
     },
     {
@@ -44043,7 +44043,7 @@
         "fighter": 6,
         "frame": "walk-forward-under",
         "idle_height": 67,
-        "frame_height": 65
+        "frame_height": 67
       }
     },
     {
@@ -44053,7 +44053,7 @@
         "fighter": 6,
         "frame": "walk-forward-opposite",
         "idle_height": 67,
-        "frame_height": 65
+        "frame_height": 66
       }
     },
     {
@@ -44063,7 +44063,7 @@
         "fighter": 6,
         "frame": "walk-back-contact",
         "idle_height": 67,
-        "frame_height": 66
+        "frame_height": 65
       }
     },
     {
@@ -44073,7 +44073,7 @@
         "fighter": 6,
         "frame": "walk-back-pass",
         "idle_height": 67,
-        "frame_height": 66
+        "frame_height": 64
       }
     },
     {
@@ -44083,7 +44083,7 @@
         "fighter": 6,
         "frame": "walk-back-under",
         "idle_height": 67,
-        "frame_height": 66
+        "frame_height": 64
       }
     },
     {
@@ -44093,7 +44093,7 @@
         "fighter": 6,
         "frame": "walk-back-opposite",
         "idle_height": 67,
-        "frame_height": 66
+        "frame_height": 65
       }
     },
     {
@@ -46244,8 +46244,8 @@
       "details": {
         "fighter": 7,
         "frame": 20,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -46254,8 +46254,8 @@
       "details": {
         "fighter": 7,
         "frame": 20,
-        "source_file": "assets/art/characters/07-cristian/animation-motion.png",
-        "source_hash": "e8bbe78349335778d8ee631af0ffc523670f7a9fb316749967144ca73169217d"
+        "source_file": "assets/art/characters/07-cristian/walking-v2.png",
+        "source_hash": "fcc6ba00c62c020e82792c82d30099edfd56b8e2760e5092a2016ccac88f5685"
       }
     },
     {
@@ -46264,8 +46264,8 @@
       "details": {
         "fighter": 7,
         "frame": 20,
-        "native_hash": "5fafef4bdd6309317865e04633ffa44a1ac1ff1321b6c8ce33a959c900e7616e",
-        "pixels_sha256": "5fafef4bdd6309317865e04633ffa44a1ac1ff1321b6c8ce33a959c900e7616e"
+        "native_hash": "9bc042d8a526baf6d6ba896207137534494a5623c3501edbb1879ed964a4efad",
+        "pixels_sha256": "9bc042d8a526baf6d6ba896207137534494a5623c3501edbb1879ed964a4efad"
       }
     },
     {
@@ -46275,13 +46275,13 @@
         "fighter": 7,
         "frame": 20,
         "metadata": [
-          18,
+          17,
           5,
           78,
           78
         ],
         "preview": [
-          18,
+          17,
           5,
           78,
           78
@@ -46311,8 +46311,8 @@
       "details": {
         "fighter": 7,
         "frame": 21,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -46321,8 +46321,8 @@
       "details": {
         "fighter": 7,
         "frame": 21,
-        "source_file": "assets/art/characters/07-cristian/animation-motion.png",
-        "source_hash": "e8bbe78349335778d8ee631af0ffc523670f7a9fb316749967144ca73169217d"
+        "source_file": "assets/art/characters/07-cristian/walking-v2.png",
+        "source_hash": "fcc6ba00c62c020e82792c82d30099edfd56b8e2760e5092a2016ccac88f5685"
       }
     },
     {
@@ -46331,8 +46331,8 @@
       "details": {
         "fighter": 7,
         "frame": 21,
-        "native_hash": "10a412454be7d3d721f71271fb636cccf8c8bc57847a38b19e060273a7305709",
-        "pixels_sha256": "10a412454be7d3d721f71271fb636cccf8c8bc57847a38b19e060273a7305709"
+        "native_hash": "33692142fb69d0351c9c50ef47f0aa333987e84490beb12219137b382030ea25",
+        "pixels_sha256": "33692142fb69d0351c9c50ef47f0aa333987e84490beb12219137b382030ea25"
       }
     },
     {
@@ -46342,15 +46342,15 @@
         "fighter": 7,
         "frame": 21,
         "metadata": [
-          18,
-          6,
-          77,
+          27,
+          5,
+          69,
           78
         ],
         "preview": [
-          18,
-          6,
-          77,
+          27,
+          5,
+          69,
           78
         ]
       }
@@ -46378,8 +46378,8 @@
       "details": {
         "fighter": 7,
         "frame": 22,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -46388,8 +46388,8 @@
       "details": {
         "fighter": 7,
         "frame": 22,
-        "source_file": "assets/art/characters/07-cristian/animation-motion.png",
-        "source_hash": "e8bbe78349335778d8ee631af0ffc523670f7a9fb316749967144ca73169217d"
+        "source_file": "assets/art/characters/07-cristian/walking-v2.png",
+        "source_hash": "fcc6ba00c62c020e82792c82d30099edfd56b8e2760e5092a2016ccac88f5685"
       }
     },
     {
@@ -46398,8 +46398,8 @@
       "details": {
         "fighter": 7,
         "frame": 22,
-        "native_hash": "bf2afd82401abcc68e8f146d4048bec2336b67fa60beab96f36ab15228010246",
-        "pixels_sha256": "bf2afd82401abcc68e8f146d4048bec2336b67fa60beab96f36ab15228010246"
+        "native_hash": "5c5b97e0be7aa1a1203e0617ac7c1eb25a8377e34aa0fd10ffc7e46241e522e3",
+        "pixels_sha256": "5c5b97e0be7aa1a1203e0617ac7c1eb25a8377e34aa0fd10ffc7e46241e522e3"
       }
     },
     {
@@ -46409,15 +46409,15 @@
         "fighter": 7,
         "frame": 22,
         "metadata": [
-          21,
+          27,
           5,
-          75,
+          68,
           78
         ],
         "preview": [
-          21,
+          27,
           5,
-          75,
+          68,
           78
         ]
       }
@@ -46445,8 +46445,8 @@
       "details": {
         "fighter": 7,
         "frame": 23,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -46455,8 +46455,8 @@
       "details": {
         "fighter": 7,
         "frame": 23,
-        "source_file": "assets/art/characters/07-cristian/animation-motion.png",
-        "source_hash": "e8bbe78349335778d8ee631af0ffc523670f7a9fb316749967144ca73169217d"
+        "source_file": "assets/art/characters/07-cristian/walking-v2.png",
+        "source_hash": "fcc6ba00c62c020e82792c82d30099edfd56b8e2760e5092a2016ccac88f5685"
       }
     },
     {
@@ -46465,8 +46465,8 @@
       "details": {
         "fighter": 7,
         "frame": 23,
-        "native_hash": "f12bde214d9c66afae00522fedb92d18aa5e6b37d717eb8464d9f9e23bcdaf3e",
-        "pixels_sha256": "f12bde214d9c66afae00522fedb92d18aa5e6b37d717eb8464d9f9e23bcdaf3e"
+        "native_hash": "c2a714bc490059f22d0400a02f3c346d908dbccd1a22d68fe00085bb60ac2548",
+        "pixels_sha256": "c2a714bc490059f22d0400a02f3c346d908dbccd1a22d68fe00085bb60ac2548"
       }
     },
     {
@@ -46477,14 +46477,14 @@
         "frame": 23,
         "metadata": [
           18,
-          6,
-          77,
+          5,
+          78,
           78
         ],
         "preview": [
           18,
-          6,
-          77,
+          5,
+          78,
           78
         ]
       }
@@ -46512,8 +46512,8 @@
       "details": {
         "fighter": 7,
         "frame": 24,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -46522,8 +46522,8 @@
       "details": {
         "fighter": 7,
         "frame": 24,
-        "source_file": "assets/art/characters/07-cristian/animation-motion.png",
-        "source_hash": "e8bbe78349335778d8ee631af0ffc523670f7a9fb316749967144ca73169217d"
+        "source_file": "assets/art/characters/07-cristian/walking-v2.png",
+        "source_hash": "fcc6ba00c62c020e82792c82d30099edfd56b8e2760e5092a2016ccac88f5685"
       }
     },
     {
@@ -46532,8 +46532,8 @@
       "details": {
         "fighter": 7,
         "frame": 24,
-        "native_hash": "62fe51daf78d3f9d22960179c141d75e642c1754eb31916208c4198a406dffba",
-        "pixels_sha256": "62fe51daf78d3f9d22960179c141d75e642c1754eb31916208c4198a406dffba"
+        "native_hash": "ac4b8d6d7e3daf42eee3b018fd00219c1c7e6ea3a505ca3ca6d50fad2d9b003e",
+        "pixels_sha256": "ac4b8d6d7e3daf42eee3b018fd00219c1c7e6ea3a505ca3ca6d50fad2d9b003e"
       }
     },
     {
@@ -46543,15 +46543,15 @@
         "fighter": 7,
         "frame": 24,
         "metadata": [
-          17,
-          10,
-          78,
+          15,
+          6,
+          80,
           78
         ],
         "preview": [
-          17,
-          10,
-          78,
+          15,
+          6,
+          80,
           78
         ]
       }
@@ -46579,8 +46579,8 @@
       "details": {
         "fighter": 7,
         "frame": 25,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -46589,8 +46589,8 @@
       "details": {
         "fighter": 7,
         "frame": 25,
-        "source_file": "assets/art/characters/07-cristian/animation-motion.png",
-        "source_hash": "e8bbe78349335778d8ee631af0ffc523670f7a9fb316749967144ca73169217d"
+        "source_file": "assets/art/characters/07-cristian/walking-v2.png",
+        "source_hash": "fcc6ba00c62c020e82792c82d30099edfd56b8e2760e5092a2016ccac88f5685"
       }
     },
     {
@@ -46599,8 +46599,8 @@
       "details": {
         "fighter": 7,
         "frame": 25,
-        "native_hash": "dc3e8aba7f2b87cf98a4d922fd493a4d0f2796ee150a78f370b562e61c6ce5f9",
-        "pixels_sha256": "dc3e8aba7f2b87cf98a4d922fd493a4d0f2796ee150a78f370b562e61c6ce5f9"
+        "native_hash": "a33470017e1392fa674ba70817438b07d42cb638e0085a99b1a829a05077eec0",
+        "pixels_sha256": "a33470017e1392fa674ba70817438b07d42cb638e0085a99b1a829a05077eec0"
       }
     },
     {
@@ -46610,15 +46610,15 @@
         "fighter": 7,
         "frame": 25,
         "metadata": [
-          18,
-          9,
-          78,
+          23,
+          6,
+          72,
           78
         ],
         "preview": [
-          18,
-          9,
-          78,
+          23,
+          6,
+          72,
           78
         ]
       }
@@ -46646,8 +46646,8 @@
       "details": {
         "fighter": 7,
         "frame": 26,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -46656,8 +46656,8 @@
       "details": {
         "fighter": 7,
         "frame": 26,
-        "source_file": "assets/art/characters/07-cristian/animation-motion.png",
-        "source_hash": "e8bbe78349335778d8ee631af0ffc523670f7a9fb316749967144ca73169217d"
+        "source_file": "assets/art/characters/07-cristian/walking-v2.png",
+        "source_hash": "fcc6ba00c62c020e82792c82d30099edfd56b8e2760e5092a2016ccac88f5685"
       }
     },
     {
@@ -46666,8 +46666,8 @@
       "details": {
         "fighter": 7,
         "frame": 26,
-        "native_hash": "ab379a75bd924cc59285cb2eb27aa162d5231e1e11c01271abd4214019bafb0a",
-        "pixels_sha256": "ab379a75bd924cc59285cb2eb27aa162d5231e1e11c01271abd4214019bafb0a"
+        "native_hash": "a329a57b2030aeea7a7958c9997a6da6a128ac8dd1d3c447d25f8944431c9612",
+        "pixels_sha256": "a329a57b2030aeea7a7958c9997a6da6a128ac8dd1d3c447d25f8944431c9612"
       }
     },
     {
@@ -46677,15 +46677,15 @@
         "fighter": 7,
         "frame": 26,
         "metadata": [
-          21,
-          10,
-          75,
+          28,
+          6,
+          68,
           78
         ],
         "preview": [
-          21,
-          10,
-          75,
+          28,
+          6,
+          68,
           78
         ]
       }
@@ -46713,8 +46713,8 @@
       "details": {
         "fighter": 7,
         "frame": 27,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -46723,8 +46723,8 @@
       "details": {
         "fighter": 7,
         "frame": 27,
-        "source_file": "assets/art/characters/07-cristian/animation-motion.png",
-        "source_hash": "e8bbe78349335778d8ee631af0ffc523670f7a9fb316749967144ca73169217d"
+        "source_file": "assets/art/characters/07-cristian/walking-v2.png",
+        "source_hash": "fcc6ba00c62c020e82792c82d30099edfd56b8e2760e5092a2016ccac88f5685"
       }
     },
     {
@@ -46733,8 +46733,8 @@
       "details": {
         "fighter": 7,
         "frame": 27,
-        "native_hash": "0994d5fc8a3faaa6a5d2685fcea6ed6cb1d7214b68803db32425c10d67ee70f8",
-        "pixels_sha256": "0994d5fc8a3faaa6a5d2685fcea6ed6cb1d7214b68803db32425c10d67ee70f8"
+        "native_hash": "203e0ef928a888cfeb64febb841f7a2aaf7a780ecb2cf9852f646a2ac24881de",
+        "pixels_sha256": "203e0ef928a888cfeb64febb841f7a2aaf7a780ecb2cf9852f646a2ac24881de"
       }
     },
     {
@@ -46744,15 +46744,15 @@
         "fighter": 7,
         "frame": 27,
         "metadata": [
-          18,
-          8,
-          77,
+          16,
+          6,
+          79,
           78
         ],
         "preview": [
-          18,
-          8,
-          77,
+          16,
+          6,
+          79,
           78
         ]
       }
@@ -49530,7 +49530,7 @@
         "fighter": 7,
         "pose": "walk-forward-contact",
         "box": [
-          18,
+          17,
           5,
           78,
           78
@@ -49544,9 +49544,9 @@
         "fighter": 7,
         "pose": "walk-forward-pass",
         "box": [
-          18,
-          6,
-          77,
+          27,
+          5,
+          69,
           78
         ]
       }
@@ -49558,9 +49558,9 @@
         "fighter": 7,
         "pose": "walk-forward-under",
         "box": [
-          21,
+          27,
           5,
-          75,
+          68,
           78
         ]
       }
@@ -49573,8 +49573,8 @@
         "pose": "walk-forward-opposite",
         "box": [
           18,
-          6,
-          77,
+          5,
+          78,
           78
         ]
       }
@@ -49586,9 +49586,9 @@
         "fighter": 7,
         "pose": "walk-back-contact",
         "box": [
-          17,
-          10,
-          78,
+          15,
+          6,
+          80,
           78
         ]
       }
@@ -49600,9 +49600,9 @@
         "fighter": 7,
         "pose": "walk-back-pass",
         "box": [
-          18,
-          9,
-          78,
+          23,
+          6,
+          72,
           78
         ]
       }
@@ -49614,9 +49614,9 @@
         "fighter": 7,
         "pose": "walk-back-under",
         "box": [
-          21,
-          10,
-          75,
+          28,
+          6,
+          68,
           78
         ]
       }
@@ -49628,9 +49628,9 @@
         "fighter": 7,
         "pose": "walk-back-opposite",
         "box": [
-          18,
-          8,
-          77,
+          16,
+          6,
+          79,
           78
         ]
       }
@@ -50359,7 +50359,7 @@
         "fighter": 7,
         "frame": "walk-forward-pass",
         "idle_height": 73,
-        "frame_height": 72
+        "frame_height": 73
       }
     },
     {
@@ -50379,7 +50379,7 @@
         "fighter": 7,
         "frame": "walk-forward-opposite",
         "idle_height": 73,
-        "frame_height": 72
+        "frame_height": 73
       }
     },
     {
@@ -50389,7 +50389,7 @@
         "fighter": 7,
         "frame": "walk-back-contact",
         "idle_height": 73,
-        "frame_height": 68
+        "frame_height": 72
       }
     },
     {
@@ -50399,7 +50399,7 @@
         "fighter": 7,
         "frame": "walk-back-pass",
         "idle_height": 73,
-        "frame_height": 69
+        "frame_height": 72
       }
     },
     {
@@ -50409,7 +50409,7 @@
         "fighter": 7,
         "frame": "walk-back-under",
         "idle_height": 73,
-        "frame_height": 68
+        "frame_height": 72
       }
     },
     {
@@ -50419,7 +50419,7 @@
         "fighter": 7,
         "frame": "walk-back-opposite",
         "idle_height": 73,
-        "frame_height": 70
+        "frame_height": 72
       }
     },
     {
@@ -52570,8 +52570,8 @@
       "details": {
         "fighter": 8,
         "frame": 20,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -52580,8 +52580,8 @@
       "details": {
         "fighter": 8,
         "frame": 20,
-        "source_file": "assets/art/characters/08-mamariaga/animation-motion.png",
-        "source_hash": "5258bc98c7511a147efe10f676cae83b03f81cdc859b17e7097cc54443d8c67d"
+        "source_file": "assets/art/characters/08-mamariaga/walking-v2.png",
+        "source_hash": "e32b9791ac45b78f080c171952af658153f0f2974f016103605f6e7b9204cd37"
       }
     },
     {
@@ -52590,8 +52590,8 @@
       "details": {
         "fighter": 8,
         "frame": 20,
-        "native_hash": "17916bc44e6aa438c2a2347edb0dd8fa34de6ab30eb8535490319a847b47d4d9",
-        "pixels_sha256": "17916bc44e6aa438c2a2347edb0dd8fa34de6ab30eb8535490319a847b47d4d9"
+        "native_hash": "6e1e9ad86409aa83d9d38d25ae9026e1860b72c53dc6464b50e7700aa8060107",
+        "pixels_sha256": "6e1e9ad86409aa83d9d38d25ae9026e1860b72c53dc6464b50e7700aa8060107"
       }
     },
     {
@@ -52601,15 +52601,15 @@
         "fighter": 8,
         "frame": 20,
         "metadata": [
-          22,
-          15,
-          74,
+          20,
+          12,
+          75,
           78
         ],
         "preview": [
-          22,
-          15,
-          74,
+          20,
+          12,
+          75,
           78
         ]
       }
@@ -52637,8 +52637,8 @@
       "details": {
         "fighter": 8,
         "frame": 21,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -52647,8 +52647,8 @@
       "details": {
         "fighter": 8,
         "frame": 21,
-        "source_file": "assets/art/characters/08-mamariaga/animation-motion.png",
-        "source_hash": "5258bc98c7511a147efe10f676cae83b03f81cdc859b17e7097cc54443d8c67d"
+        "source_file": "assets/art/characters/08-mamariaga/walking-v2.png",
+        "source_hash": "e32b9791ac45b78f080c171952af658153f0f2974f016103605f6e7b9204cd37"
       }
     },
     {
@@ -52657,8 +52657,8 @@
       "details": {
         "fighter": 8,
         "frame": 21,
-        "native_hash": "f062cc0cca1343852c66419bbd07fbf1878b9251cc2ae2d2a797b813cb6229cd",
-        "pixels_sha256": "f062cc0cca1343852c66419bbd07fbf1878b9251cc2ae2d2a797b813cb6229cd"
+        "native_hash": "5a89090743e9c7d6eeaa1b60686f80a5f020f39263a58476dec328e8c5286955",
+        "pixels_sha256": "5a89090743e9c7d6eeaa1b60686f80a5f020f39263a58476dec328e8c5286955"
       }
     },
     {
@@ -52668,15 +52668,15 @@
         "fighter": 8,
         "frame": 21,
         "metadata": [
-          29,
-          14,
-          66,
+          28,
+          13,
+          67,
           78
         ],
         "preview": [
-          29,
-          14,
-          66,
+          28,
+          13,
+          67,
           78
         ]
       }
@@ -52704,8 +52704,8 @@
       "details": {
         "fighter": 8,
         "frame": 22,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -52714,8 +52714,8 @@
       "details": {
         "fighter": 8,
         "frame": 22,
-        "source_file": "assets/art/characters/08-mamariaga/animation-motion.png",
-        "source_hash": "5258bc98c7511a147efe10f676cae83b03f81cdc859b17e7097cc54443d8c67d"
+        "source_file": "assets/art/characters/08-mamariaga/walking-v2.png",
+        "source_hash": "e32b9791ac45b78f080c171952af658153f0f2974f016103605f6e7b9204cd37"
       }
     },
     {
@@ -52724,8 +52724,8 @@
       "details": {
         "fighter": 8,
         "frame": 22,
-        "native_hash": "cd403329d882f72f09c8dcdfd3a1961b931c622d076e6ced6525c170cb6cf646",
-        "pixels_sha256": "cd403329d882f72f09c8dcdfd3a1961b931c622d076e6ced6525c170cb6cf646"
+        "native_hash": "b3b464d866bc8c2a53bbc2176231c4daac48be771191a9fb6773b9aec3cf38cc",
+        "pixels_sha256": "b3b464d866bc8c2a53bbc2176231c4daac48be771191a9fb6773b9aec3cf38cc"
       }
     },
     {
@@ -52736,14 +52736,14 @@
         "frame": 22,
         "metadata": [
           29,
-          14,
-          66,
+          13,
+          67,
           78
         ],
         "preview": [
           29,
-          14,
-          66,
+          13,
+          67,
           78
         ]
       }
@@ -52771,8 +52771,8 @@
       "details": {
         "fighter": 8,
         "frame": 23,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -52781,8 +52781,8 @@
       "details": {
         "fighter": 8,
         "frame": 23,
-        "source_file": "assets/art/characters/08-mamariaga/animation-motion.png",
-        "source_hash": "5258bc98c7511a147efe10f676cae83b03f81cdc859b17e7097cc54443d8c67d"
+        "source_file": "assets/art/characters/08-mamariaga/walking-v2.png",
+        "source_hash": "e32b9791ac45b78f080c171952af658153f0f2974f016103605f6e7b9204cd37"
       }
     },
     {
@@ -52791,8 +52791,8 @@
       "details": {
         "fighter": 8,
         "frame": 23,
-        "native_hash": "cda99ed1c9974c7a5f8b6ef736e3a53cdc8cd74049f51a4a1e7373ffe65fda9d",
-        "pixels_sha256": "cda99ed1c9974c7a5f8b6ef736e3a53cdc8cd74049f51a4a1e7373ffe65fda9d"
+        "native_hash": "a5f251655413e1df3b5452107e34aee0303e28882e0eab8bafb55096b2bdc794",
+        "pixels_sha256": "a5f251655413e1df3b5452107e34aee0303e28882e0eab8bafb55096b2bdc794"
       }
     },
     {
@@ -52802,15 +52802,15 @@
         "fighter": 8,
         "frame": 23,
         "metadata": [
-          22,
-          15,
-          74,
+          21,
+          12,
+          75,
           78
         ],
         "preview": [
-          22,
-          15,
-          74,
+          21,
+          12,
+          75,
           78
         ]
       }
@@ -52838,8 +52838,8 @@
       "details": {
         "fighter": 8,
         "frame": 24,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -52848,8 +52848,8 @@
       "details": {
         "fighter": 8,
         "frame": 24,
-        "source_file": "assets/art/characters/08-mamariaga/animation-motion.png",
-        "source_hash": "5258bc98c7511a147efe10f676cae83b03f81cdc859b17e7097cc54443d8c67d"
+        "source_file": "assets/art/characters/08-mamariaga/walking-v2.png",
+        "source_hash": "e32b9791ac45b78f080c171952af658153f0f2974f016103605f6e7b9204cd37"
       }
     },
     {
@@ -52858,8 +52858,8 @@
       "details": {
         "fighter": 8,
         "frame": 24,
-        "native_hash": "093b0e8b1985c9d47c626658c0dbb3ff12acd21401a1327dd97cde79152841c5",
-        "pixels_sha256": "093b0e8b1985c9d47c626658c0dbb3ff12acd21401a1327dd97cde79152841c5"
+        "native_hash": "15a4bc86dee1e4404d7fa00019ee592579101ac7f6962b8d6ad73d53806893c0",
+        "pixels_sha256": "15a4bc86dee1e4404d7fa00019ee592579101ac7f6962b8d6ad73d53806893c0"
       }
     },
     {
@@ -52869,15 +52869,15 @@
         "fighter": 8,
         "frame": 24,
         "metadata": [
-          24,
-          18,
-          72,
+          20,
+          14,
+          75,
           78
         ],
         "preview": [
-          24,
-          18,
-          72,
+          20,
+          14,
+          75,
           78
         ]
       }
@@ -52905,8 +52905,8 @@
       "details": {
         "fighter": 8,
         "frame": 25,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -52915,8 +52915,8 @@
       "details": {
         "fighter": 8,
         "frame": 25,
-        "source_file": "assets/art/characters/08-mamariaga/animation-motion.png",
-        "source_hash": "5258bc98c7511a147efe10f676cae83b03f81cdc859b17e7097cc54443d8c67d"
+        "source_file": "assets/art/characters/08-mamariaga/walking-v2.png",
+        "source_hash": "e32b9791ac45b78f080c171952af658153f0f2974f016103605f6e7b9204cd37"
       }
     },
     {
@@ -52925,8 +52925,8 @@
       "details": {
         "fighter": 8,
         "frame": 25,
-        "native_hash": "7bf7e3ac11a11c13f133bd28d7a726ec6e63ab7746d5ddb4e2c9d68d96dec7fb",
-        "pixels_sha256": "7bf7e3ac11a11c13f133bd28d7a726ec6e63ab7746d5ddb4e2c9d68d96dec7fb"
+        "native_hash": "268af466845859f3848d074b694efc22ebe950c4003c36efe875d1106c2ab673",
+        "pixels_sha256": "268af466845859f3848d074b694efc22ebe950c4003c36efe875d1106c2ab673"
       }
     },
     {
@@ -52936,15 +52936,15 @@
         "fighter": 8,
         "frame": 25,
         "metadata": [
-          26,
-          19,
-          70,
+          29,
+          13,
+          67,
           78
         ],
         "preview": [
-          26,
-          19,
-          70,
+          29,
+          13,
+          67,
           78
         ]
       }
@@ -52972,8 +52972,8 @@
       "details": {
         "fighter": 8,
         "frame": 26,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -52982,8 +52982,8 @@
       "details": {
         "fighter": 8,
         "frame": 26,
-        "source_file": "assets/art/characters/08-mamariaga/animation-motion.png",
-        "source_hash": "5258bc98c7511a147efe10f676cae83b03f81cdc859b17e7097cc54443d8c67d"
+        "source_file": "assets/art/characters/08-mamariaga/walking-v2.png",
+        "source_hash": "e32b9791ac45b78f080c171952af658153f0f2974f016103605f6e7b9204cd37"
       }
     },
     {
@@ -52992,8 +52992,8 @@
       "details": {
         "fighter": 8,
         "frame": 26,
-        "native_hash": "72f281752fe61c8cd05444e0f7c7005968f5f6eaddecbcffce841407da76d3c4",
-        "pixels_sha256": "72f281752fe61c8cd05444e0f7c7005968f5f6eaddecbcffce841407da76d3c4"
+        "native_hash": "8489ab64d8041d4e77c0c312718d3795af2c2abb2096b13850e3b9dedda5872b",
+        "pixels_sha256": "8489ab64d8041d4e77c0c312718d3795af2c2abb2096b13850e3b9dedda5872b"
       }
     },
     {
@@ -53003,15 +53003,15 @@
         "fighter": 8,
         "frame": 26,
         "metadata": [
-          32,
-          18,
-          64,
+          30,
+          13,
+          66,
           78
         ],
         "preview": [
-          32,
-          18,
-          64,
+          30,
+          13,
+          66,
           78
         ]
       }
@@ -53039,8 +53039,8 @@
       "details": {
         "fighter": 8,
         "frame": 27,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -53049,8 +53049,8 @@
       "details": {
         "fighter": 8,
         "frame": 27,
-        "source_file": "assets/art/characters/08-mamariaga/animation-motion.png",
-        "source_hash": "5258bc98c7511a147efe10f676cae83b03f81cdc859b17e7097cc54443d8c67d"
+        "source_file": "assets/art/characters/08-mamariaga/walking-v2.png",
+        "source_hash": "e32b9791ac45b78f080c171952af658153f0f2974f016103605f6e7b9204cd37"
       }
     },
     {
@@ -53059,8 +53059,8 @@
       "details": {
         "fighter": 8,
         "frame": 27,
-        "native_hash": "aeebc6863a3b1b37adec2b6d79f39332e2587772bbbb5713b14bd42ff7eb2345",
-        "pixels_sha256": "aeebc6863a3b1b37adec2b6d79f39332e2587772bbbb5713b14bd42ff7eb2345"
+        "native_hash": "1ebc9fb3040cf52edaae0b2a28bb153f55ac4e22ef3c56eafe2662edd8810d61",
+        "pixels_sha256": "1ebc9fb3040cf52edaae0b2a28bb153f55ac4e22ef3c56eafe2662edd8810d61"
       }
     },
     {
@@ -53070,15 +53070,15 @@
         "fighter": 8,
         "frame": 27,
         "metadata": [
-          25,
-          19,
-          71,
+          21,
+          14,
+          74,
           78
         ],
         "preview": [
-          25,
-          19,
-          71,
+          21,
+          14,
+          74,
           78
         ]
       }
@@ -55856,9 +55856,9 @@
         "fighter": 8,
         "pose": "walk-forward-contact",
         "box": [
-          22,
-          15,
-          74,
+          20,
+          12,
+          75,
           78
         ]
       }
@@ -55870,9 +55870,9 @@
         "fighter": 8,
         "pose": "walk-forward-pass",
         "box": [
-          29,
-          14,
-          66,
+          28,
+          13,
+          67,
           78
         ]
       }
@@ -55885,8 +55885,8 @@
         "pose": "walk-forward-under",
         "box": [
           29,
-          14,
-          66,
+          13,
+          67,
           78
         ]
       }
@@ -55898,9 +55898,9 @@
         "fighter": 8,
         "pose": "walk-forward-opposite",
         "box": [
-          22,
-          15,
-          74,
+          21,
+          12,
+          75,
           78
         ]
       }
@@ -55912,9 +55912,9 @@
         "fighter": 8,
         "pose": "walk-back-contact",
         "box": [
-          24,
-          18,
-          72,
+          20,
+          14,
+          75,
           78
         ]
       }
@@ -55926,9 +55926,9 @@
         "fighter": 8,
         "pose": "walk-back-pass",
         "box": [
-          26,
-          19,
-          70,
+          29,
+          13,
+          67,
           78
         ]
       }
@@ -55940,9 +55940,9 @@
         "fighter": 8,
         "pose": "walk-back-under",
         "box": [
-          32,
-          18,
-          64,
+          30,
+          13,
+          66,
           78
         ]
       }
@@ -55954,9 +55954,9 @@
         "fighter": 8,
         "pose": "walk-back-opposite",
         "box": [
-          25,
-          19,
-          71,
+          21,
+          14,
+          74,
           78
         ]
       }
@@ -56675,7 +56675,7 @@
         "fighter": 8,
         "frame": "walk-forward-contact",
         "idle_height": 66,
-        "frame_height": 63
+        "frame_height": 66
       }
     },
     {
@@ -56685,7 +56685,7 @@
         "fighter": 8,
         "frame": "walk-forward-pass",
         "idle_height": 66,
-        "frame_height": 64
+        "frame_height": 65
       }
     },
     {
@@ -56695,7 +56695,7 @@
         "fighter": 8,
         "frame": "walk-forward-under",
         "idle_height": 66,
-        "frame_height": 64
+        "frame_height": 65
       }
     },
     {
@@ -56705,7 +56705,7 @@
         "fighter": 8,
         "frame": "walk-forward-opposite",
         "idle_height": 66,
-        "frame_height": 63
+        "frame_height": 66
       }
     },
     {
@@ -56715,7 +56715,7 @@
         "fighter": 8,
         "frame": "walk-back-contact",
         "idle_height": 66,
-        "frame_height": 60
+        "frame_height": 64
       }
     },
     {
@@ -56725,7 +56725,7 @@
         "fighter": 8,
         "frame": "walk-back-pass",
         "idle_height": 66,
-        "frame_height": 59
+        "frame_height": 65
       }
     },
     {
@@ -56735,7 +56735,7 @@
         "fighter": 8,
         "frame": "walk-back-under",
         "idle_height": 66,
-        "frame_height": 60
+        "frame_height": 65
       }
     },
     {
@@ -56745,7 +56745,7 @@
         "fighter": 8,
         "frame": "walk-back-opposite",
         "idle_height": 66,
-        "frame_height": 59
+        "frame_height": 64
       }
     },
     {
@@ -58896,8 +58896,8 @@
       "details": {
         "fighter": 9,
         "frame": 20,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -58906,8 +58906,8 @@
       "details": {
         "fighter": 9,
         "frame": 20,
-        "source_file": "assets/art/characters/09-reston/animation-motion-v4.png",
-        "source_hash": "12b9335e1690b4da9f32aecbe570a230cc167ac0cb430f2e85c0788adeaa6298"
+        "source_file": "assets/art/characters/09-reston/walking-v2.png",
+        "source_hash": "f588427d8be367aeff1150e2d40a1f4f4593e00cf3734e43043c145b199155c2"
       }
     },
     {
@@ -58916,8 +58916,8 @@
       "details": {
         "fighter": 9,
         "frame": 20,
-        "native_hash": "9c08ba0cc81e61e64c8279f306a58620e107f496429ec51104473fadae53d646",
-        "pixels_sha256": "9c08ba0cc81e61e64c8279f306a58620e107f496429ec51104473fadae53d646"
+        "native_hash": "f1fc6bc9277a94f90eae3654c2cd9656c6e53d118899571227363416ce7d6bbd",
+        "pixels_sha256": "f1fc6bc9277a94f90eae3654c2cd9656c6e53d118899571227363416ce7d6bbd"
       }
     },
     {
@@ -58927,15 +58927,15 @@
         "fighter": 9,
         "frame": 20,
         "metadata": [
-          13,
-          7,
-          83,
+          14,
+          8,
+          82,
           78
         ],
         "preview": [
-          13,
-          7,
-          83,
+          14,
+          8,
+          82,
           78
         ]
       }
@@ -58963,8 +58963,8 @@
       "details": {
         "fighter": 9,
         "frame": 21,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -58973,8 +58973,8 @@
       "details": {
         "fighter": 9,
         "frame": 21,
-        "source_file": "assets/art/characters/09-reston/animation-motion-v4.png",
-        "source_hash": "12b9335e1690b4da9f32aecbe570a230cc167ac0cb430f2e85c0788adeaa6298"
+        "source_file": "assets/art/characters/09-reston/walking-v2.png",
+        "source_hash": "f588427d8be367aeff1150e2d40a1f4f4593e00cf3734e43043c145b199155c2"
       }
     },
     {
@@ -58983,8 +58983,8 @@
       "details": {
         "fighter": 9,
         "frame": 21,
-        "native_hash": "e6c4f2fa21ba82d6906de844151fa943b43e7c002dd88b5cd99e1e3b39d5d0eb",
-        "pixels_sha256": "e6c4f2fa21ba82d6906de844151fa943b43e7c002dd88b5cd99e1e3b39d5d0eb"
+        "native_hash": "643624d52a78f0c4ba9dda4e56179a38bd8e445138e86b13f6f2e3a554317682",
+        "pixels_sha256": "643624d52a78f0c4ba9dda4e56179a38bd8e445138e86b13f6f2e3a554317682"
       }
     },
     {
@@ -58994,15 +58994,15 @@
         "fighter": 9,
         "frame": 21,
         "metadata": [
-          21,
+          22,
           8,
-          75,
+          73,
           78
         ],
         "preview": [
-          21,
+          22,
           8,
-          75,
+          73,
           78
         ]
       }
@@ -59030,8 +59030,8 @@
       "details": {
         "fighter": 9,
         "frame": 22,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -59040,8 +59040,8 @@
       "details": {
         "fighter": 9,
         "frame": 22,
-        "source_file": "assets/art/characters/09-reston/animation-motion-v4.png",
-        "source_hash": "12b9335e1690b4da9f32aecbe570a230cc167ac0cb430f2e85c0788adeaa6298"
+        "source_file": "assets/art/characters/09-reston/walking-v2.png",
+        "source_hash": "f588427d8be367aeff1150e2d40a1f4f4593e00cf3734e43043c145b199155c2"
       }
     },
     {
@@ -59050,8 +59050,8 @@
       "details": {
         "fighter": 9,
         "frame": 22,
-        "native_hash": "0bac06c43280b325c0ea9dfbc73fdbce3d1d5ecc813aa9965804dce79ddaab68",
-        "pixels_sha256": "0bac06c43280b325c0ea9dfbc73fdbce3d1d5ecc813aa9965804dce79ddaab68"
+        "native_hash": "de0b126490226eb886dbeb6bed0534c07bd6201f128a3c04a21a22f7f35d4287",
+        "pixels_sha256": "de0b126490226eb886dbeb6bed0534c07bd6201f128a3c04a21a22f7f35d4287"
       }
     },
     {
@@ -59061,15 +59061,15 @@
         "fighter": 9,
         "frame": 22,
         "metadata": [
-          23,
-          7,
-          73,
+          24,
+          8,
+          72,
           78
         ],
         "preview": [
-          23,
-          7,
-          73,
+          24,
+          8,
+          72,
           78
         ]
       }
@@ -59097,8 +59097,8 @@
       "details": {
         "fighter": 9,
         "frame": 23,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -59107,8 +59107,8 @@
       "details": {
         "fighter": 9,
         "frame": 23,
-        "source_file": "assets/art/characters/09-reston/animation-motion-v4.png",
-        "source_hash": "12b9335e1690b4da9f32aecbe570a230cc167ac0cb430f2e85c0788adeaa6298"
+        "source_file": "assets/art/characters/09-reston/walking-v2.png",
+        "source_hash": "f588427d8be367aeff1150e2d40a1f4f4593e00cf3734e43043c145b199155c2"
       }
     },
     {
@@ -59117,8 +59117,8 @@
       "details": {
         "fighter": 9,
         "frame": 23,
-        "native_hash": "c3c9237c9afff79a619c5ce29f11a981e5086aaca9fa780ad355186f09e83e8f",
-        "pixels_sha256": "c3c9237c9afff79a619c5ce29f11a981e5086aaca9fa780ad355186f09e83e8f"
+        "native_hash": "ac35c4d2bf62de597775db54a16c36635e9b549028fca38289fca17fcdc8a1f9",
+        "pixels_sha256": "ac35c4d2bf62de597775db54a16c36635e9b549028fca38289fca17fcdc8a1f9"
       }
     },
     {
@@ -59129,13 +59129,13 @@
         "frame": 23,
         "metadata": [
           16,
-          6,
+          8,
           79,
           78
         ],
         "preview": [
           16,
-          6,
+          8,
           79,
           78
         ]
@@ -59164,8 +59164,8 @@
       "details": {
         "fighter": 9,
         "frame": 24,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -59174,8 +59174,8 @@
       "details": {
         "fighter": 9,
         "frame": 24,
-        "source_file": "assets/art/characters/09-reston/animation-motion-v4.png",
-        "source_hash": "12b9335e1690b4da9f32aecbe570a230cc167ac0cb430f2e85c0788adeaa6298"
+        "source_file": "assets/art/characters/09-reston/walking-v2.png",
+        "source_hash": "f588427d8be367aeff1150e2d40a1f4f4593e00cf3734e43043c145b199155c2"
       }
     },
     {
@@ -59184,8 +59184,8 @@
       "details": {
         "fighter": 9,
         "frame": 24,
-        "native_hash": "3687a8e2a6c9988f41663bd33ef6c80b794c7296a7e47e6eb5fa67e15f8a341b",
-        "pixels_sha256": "3687a8e2a6c9988f41663bd33ef6c80b794c7296a7e47e6eb5fa67e15f8a341b"
+        "native_hash": "ab56f68a817f6d8c44af40202cdb4e3fe57b41f1af409304b7cdc609e362355e",
+        "pixels_sha256": "ab56f68a817f6d8c44af40202cdb4e3fe57b41f1af409304b7cdc609e362355e"
       }
     },
     {
@@ -59195,15 +59195,15 @@
         "fighter": 9,
         "frame": 24,
         "metadata": [
-          16,
-          9,
-          79,
+          13,
+          10,
+          83,
           78
         ],
         "preview": [
-          16,
-          9,
-          79,
+          13,
+          10,
+          83,
           78
         ]
       }
@@ -59231,8 +59231,8 @@
       "details": {
         "fighter": 9,
         "frame": 25,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -59241,8 +59241,8 @@
       "details": {
         "fighter": 9,
         "frame": 25,
-        "source_file": "assets/art/characters/09-reston/animation-motion-v4.png",
-        "source_hash": "12b9335e1690b4da9f32aecbe570a230cc167ac0cb430f2e85c0788adeaa6298"
+        "source_file": "assets/art/characters/09-reston/walking-v2.png",
+        "source_hash": "f588427d8be367aeff1150e2d40a1f4f4593e00cf3734e43043c145b199155c2"
       }
     },
     {
@@ -59251,8 +59251,8 @@
       "details": {
         "fighter": 9,
         "frame": 25,
-        "native_hash": "3aadc4e1e01a7d86c6eee20d8b2d594db6f8560f0e4666bd4b29daf4f9689fdd",
-        "pixels_sha256": "3aadc4e1e01a7d86c6eee20d8b2d594db6f8560f0e4666bd4b29daf4f9689fdd"
+        "native_hash": "8589cc67524fa2d7c401e59482b9315afdd9da91a69b4d61a3debbe72b9b9c42",
+        "pixels_sha256": "8589cc67524fa2d7c401e59482b9315afdd9da91a69b4d61a3debbe72b9b9c42"
       }
     },
     {
@@ -59262,15 +59262,15 @@
         "fighter": 9,
         "frame": 25,
         "metadata": [
-          20,
-          8,
-          76,
+          22,
+          10,
+          73,
           78
         ],
         "preview": [
-          20,
-          8,
-          76,
+          22,
+          10,
+          73,
           78
         ]
       }
@@ -59298,8 +59298,8 @@
       "details": {
         "fighter": 9,
         "frame": 26,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -59308,8 +59308,8 @@
       "details": {
         "fighter": 9,
         "frame": 26,
-        "source_file": "assets/art/characters/09-reston/animation-motion-v4.png",
-        "source_hash": "12b9335e1690b4da9f32aecbe570a230cc167ac0cb430f2e85c0788adeaa6298"
+        "source_file": "assets/art/characters/09-reston/walking-v2.png",
+        "source_hash": "f588427d8be367aeff1150e2d40a1f4f4593e00cf3734e43043c145b199155c2"
       }
     },
     {
@@ -59318,8 +59318,8 @@
       "details": {
         "fighter": 9,
         "frame": 26,
-        "native_hash": "7fa250ccc9f91c7efa3a70127d003cb7862a4b77aa612bc42d781bb94c510c2c",
-        "pixels_sha256": "7fa250ccc9f91c7efa3a70127d003cb7862a4b77aa612bc42d781bb94c510c2c"
+        "native_hash": "fd494a4606c7c3810744a0322f70aea83fd8fd726d14c2806e4b258caa773bf7",
+        "pixels_sha256": "fd494a4606c7c3810744a0322f70aea83fd8fd726d14c2806e4b258caa773bf7"
       }
     },
     {
@@ -59329,15 +59329,15 @@
         "fighter": 9,
         "frame": 26,
         "metadata": [
-          25,
-          12,
-          71,
+          24,
+          10,
+          72,
           78
         ],
         "preview": [
-          25,
-          12,
-          71,
+          24,
+          10,
+          72,
           78
         ]
       }
@@ -59365,8 +59365,8 @@
       "details": {
         "fighter": 9,
         "frame": 27,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -59375,8 +59375,8 @@
       "details": {
         "fighter": 9,
         "frame": 27,
-        "source_file": "assets/art/characters/09-reston/animation-motion-v4.png",
-        "source_hash": "12b9335e1690b4da9f32aecbe570a230cc167ac0cb430f2e85c0788adeaa6298"
+        "source_file": "assets/art/characters/09-reston/walking-v2.png",
+        "source_hash": "f588427d8be367aeff1150e2d40a1f4f4593e00cf3734e43043c145b199155c2"
       }
     },
     {
@@ -59385,8 +59385,8 @@
       "details": {
         "fighter": 9,
         "frame": 27,
-        "native_hash": "b6a7a4da81b84b80d5df772be00f44db0544b71debcbdedf46dc6fb65dd0f4fd",
-        "pixels_sha256": "b6a7a4da81b84b80d5df772be00f44db0544b71debcbdedf46dc6fb65dd0f4fd"
+        "native_hash": "7c140a59db3e6f21181d4a41181b95417d09001329edd27277de1b1e24fb26d3",
+        "pixels_sha256": "7c140a59db3e6f21181d4a41181b95417d09001329edd27277de1b1e24fb26d3"
       }
     },
     {
@@ -59396,15 +59396,15 @@
         "fighter": 9,
         "frame": 27,
         "metadata": [
-          19,
-          9,
-          76,
+          15,
+          10,
+          81,
           78
         ],
         "preview": [
-          19,
-          9,
-          76,
+          15,
+          10,
+          81,
           78
         ]
       }
@@ -62182,9 +62182,9 @@
         "fighter": 9,
         "pose": "walk-forward-contact",
         "box": [
-          13,
-          7,
-          83,
+          14,
+          8,
+          82,
           78
         ]
       }
@@ -62196,9 +62196,9 @@
         "fighter": 9,
         "pose": "walk-forward-pass",
         "box": [
-          21,
+          22,
           8,
-          75,
+          73,
           78
         ]
       }
@@ -62210,9 +62210,9 @@
         "fighter": 9,
         "pose": "walk-forward-under",
         "box": [
-          23,
-          7,
-          73,
+          24,
+          8,
+          72,
           78
         ]
       }
@@ -62225,7 +62225,7 @@
         "pose": "walk-forward-opposite",
         "box": [
           16,
-          6,
+          8,
           79,
           78
         ]
@@ -62238,9 +62238,9 @@
         "fighter": 9,
         "pose": "walk-back-contact",
         "box": [
-          16,
-          9,
-          79,
+          13,
+          10,
+          83,
           78
         ]
       }
@@ -62252,9 +62252,9 @@
         "fighter": 9,
         "pose": "walk-back-pass",
         "box": [
-          20,
-          8,
-          76,
+          22,
+          10,
+          73,
           78
         ]
       }
@@ -62266,9 +62266,9 @@
         "fighter": 9,
         "pose": "walk-back-under",
         "box": [
-          25,
-          12,
-          71,
+          24,
+          10,
+          72,
           78
         ]
       }
@@ -62280,9 +62280,9 @@
         "fighter": 9,
         "pose": "walk-back-opposite",
         "box": [
-          19,
-          9,
-          76,
+          15,
+          10,
+          81,
           78
         ]
       }
@@ -63001,7 +63001,7 @@
         "fighter": 9,
         "frame": "walk-forward-contact",
         "idle_height": 70,
-        "frame_height": 71
+        "frame_height": 70
       }
     },
     {
@@ -63021,7 +63021,7 @@
         "fighter": 9,
         "frame": "walk-forward-under",
         "idle_height": 70,
-        "frame_height": 71
+        "frame_height": 70
       }
     },
     {
@@ -63031,7 +63031,7 @@
         "fighter": 9,
         "frame": "walk-forward-opposite",
         "idle_height": 70,
-        "frame_height": 72
+        "frame_height": 70
       }
     },
     {
@@ -63041,7 +63041,7 @@
         "fighter": 9,
         "frame": "walk-back-contact",
         "idle_height": 70,
-        "frame_height": 69
+        "frame_height": 68
       }
     },
     {
@@ -63051,7 +63051,7 @@
         "fighter": 9,
         "frame": "walk-back-pass",
         "idle_height": 70,
-        "frame_height": 70
+        "frame_height": 68
       }
     },
     {
@@ -63061,7 +63061,7 @@
         "fighter": 9,
         "frame": "walk-back-under",
         "idle_height": 70,
-        "frame_height": 66
+        "frame_height": 68
       }
     },
     {
@@ -63071,7 +63071,7 @@
         "fighter": 9,
         "frame": "walk-back-opposite",
         "idle_height": 70,
-        "frame_height": 69
+        "frame_height": 68
       }
     },
     {
@@ -65222,8 +65222,8 @@
       "details": {
         "fighter": 10,
         "frame": 20,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -65232,8 +65232,8 @@
       "details": {
         "fighter": 10,
         "frame": 20,
-        "source_file": "assets/art/characters/10-roxana/animation-motion.png",
-        "source_hash": "04684ab4a96cf360426073bdb98e737f9b0002aa87871abe0b7ced3ccdcc7923"
+        "source_file": "assets/art/characters/10-roxana/walking-v2.png",
+        "source_hash": "12e06f724d33c9983b952abfa7468417f4156a07ad6488ba21a4836f35364313"
       }
     },
     {
@@ -65242,8 +65242,8 @@
       "details": {
         "fighter": 10,
         "frame": 20,
-        "native_hash": "dda1b494da5066f6f41061f07268f0f2d3c5c7d4f0b6fe7667d0ad78a6017e46",
-        "pixels_sha256": "dda1b494da5066f6f41061f07268f0f2d3c5c7d4f0b6fe7667d0ad78a6017e46"
+        "native_hash": "5da839f4a15b147f2a79114be1cd094b690ffc809ac01b315cd06b5f8d85cb9e",
+        "pixels_sha256": "5da839f4a15b147f2a79114be1cd094b690ffc809ac01b315cd06b5f8d85cb9e"
       }
     },
     {
@@ -65254,13 +65254,13 @@
         "frame": 20,
         "metadata": [
           21,
-          12,
+          11,
           75,
           78
         ],
         "preview": [
           21,
-          12,
+          11,
           75,
           78
         ]
@@ -65289,8 +65289,8 @@
       "details": {
         "fighter": 10,
         "frame": 21,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -65299,8 +65299,8 @@
       "details": {
         "fighter": 10,
         "frame": 21,
-        "source_file": "assets/art/characters/10-roxana/animation-motion.png",
-        "source_hash": "04684ab4a96cf360426073bdb98e737f9b0002aa87871abe0b7ced3ccdcc7923"
+        "source_file": "assets/art/characters/10-roxana/walking-v2.png",
+        "source_hash": "12e06f724d33c9983b952abfa7468417f4156a07ad6488ba21a4836f35364313"
       }
     },
     {
@@ -65309,8 +65309,8 @@
       "details": {
         "fighter": 10,
         "frame": 21,
-        "native_hash": "bc976d17232cee71dbf4091988f7f835933f8fd7c2a88a6deb02fac34c4f382b",
-        "pixels_sha256": "bc976d17232cee71dbf4091988f7f835933f8fd7c2a88a6deb02fac34c4f382b"
+        "native_hash": "85ebaf18f1b58b167027ee759c70d5a8da43d8caac942e8852864a620ff892e0",
+        "pixels_sha256": "85ebaf18f1b58b167027ee759c70d5a8da43d8caac942e8852864a620ff892e0"
       }
     },
     {
@@ -65320,15 +65320,15 @@
         "fighter": 10,
         "frame": 21,
         "metadata": [
-          21,
-          12,
-          74,
+          28,
+          10,
+          67,
           78
         ],
         "preview": [
-          21,
-          12,
-          74,
+          28,
+          10,
+          67,
           78
         ]
       }
@@ -65356,8 +65356,8 @@
       "details": {
         "fighter": 10,
         "frame": 22,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -65366,8 +65366,8 @@
       "details": {
         "fighter": 10,
         "frame": 22,
-        "source_file": "assets/art/characters/10-roxana/animation-motion.png",
-        "source_hash": "04684ab4a96cf360426073bdb98e737f9b0002aa87871abe0b7ced3ccdcc7923"
+        "source_file": "assets/art/characters/10-roxana/walking-v2.png",
+        "source_hash": "12e06f724d33c9983b952abfa7468417f4156a07ad6488ba21a4836f35364313"
       }
     },
     {
@@ -65376,8 +65376,8 @@
       "details": {
         "fighter": 10,
         "frame": 22,
-        "native_hash": "fcfddcf946b45593bdc8b1e492fa842977abc582cf99594530f3f008acd34bd7",
-        "pixels_sha256": "fcfddcf946b45593bdc8b1e492fa842977abc582cf99594530f3f008acd34bd7"
+        "native_hash": "7d30179661294631bee9da5d9991d8a114534325b16d90fbf304a18317da5a65",
+        "pixels_sha256": "7d30179661294631bee9da5d9991d8a114534325b16d90fbf304a18317da5a65"
       }
     },
     {
@@ -65387,15 +65387,15 @@
         "fighter": 10,
         "frame": 22,
         "metadata": [
-          23,
-          11,
-          72,
+          29,
+          10,
+          66,
           78
         ],
         "preview": [
-          23,
-          11,
-          72,
+          29,
+          10,
+          66,
           78
         ]
       }
@@ -65423,8 +65423,8 @@
       "details": {
         "fighter": 10,
         "frame": 23,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -65433,8 +65433,8 @@
       "details": {
         "fighter": 10,
         "frame": 23,
-        "source_file": "assets/art/characters/10-roxana/animation-motion.png",
-        "source_hash": "04684ab4a96cf360426073bdb98e737f9b0002aa87871abe0b7ced3ccdcc7923"
+        "source_file": "assets/art/characters/10-roxana/walking-v2.png",
+        "source_hash": "12e06f724d33c9983b952abfa7468417f4156a07ad6488ba21a4836f35364313"
       }
     },
     {
@@ -65443,8 +65443,8 @@
       "details": {
         "fighter": 10,
         "frame": 23,
-        "native_hash": "88ac2241d4f78621f806d289c117521af21885881797fce0d3e7ef69e4348a00",
-        "pixels_sha256": "88ac2241d4f78621f806d289c117521af21885881797fce0d3e7ef69e4348a00"
+        "native_hash": "8eb26ad9db9f3ec64339cf8a8a5b117ef22b9bc007c81ae5645a876b8000def2",
+        "pixels_sha256": "8eb26ad9db9f3ec64339cf8a8a5b117ef22b9bc007c81ae5645a876b8000def2"
       }
     },
     {
@@ -65454,15 +65454,15 @@
         "fighter": 10,
         "frame": 23,
         "metadata": [
-          22,
-          12,
-          73,
+          20,
+          10,
+          75,
           78
         ],
         "preview": [
-          22,
-          12,
-          73,
+          20,
+          10,
+          75,
           78
         ]
       }
@@ -65490,8 +65490,8 @@
       "details": {
         "fighter": 10,
         "frame": 24,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -65500,8 +65500,8 @@
       "details": {
         "fighter": 10,
         "frame": 24,
-        "source_file": "assets/art/characters/10-roxana/animation-motion.png",
-        "source_hash": "04684ab4a96cf360426073bdb98e737f9b0002aa87871abe0b7ced3ccdcc7923"
+        "source_file": "assets/art/characters/10-roxana/walking-v2.png",
+        "source_hash": "12e06f724d33c9983b952abfa7468417f4156a07ad6488ba21a4836f35364313"
       }
     },
     {
@@ -65510,8 +65510,8 @@
       "details": {
         "fighter": 10,
         "frame": 24,
-        "native_hash": "599c8e530c7c3c0161b0a4f82246b5882fead2a205e5120cbc167bee10d2916a",
-        "pixels_sha256": "599c8e530c7c3c0161b0a4f82246b5882fead2a205e5120cbc167bee10d2916a"
+        "native_hash": "e7475eb64350b2e426b1980c17bc555062114bd532e86268e86e89213ee0725c",
+        "pixels_sha256": "e7475eb64350b2e426b1980c17bc555062114bd532e86268e86e89213ee0725c"
       }
     },
     {
@@ -65521,15 +65521,15 @@
         "fighter": 10,
         "frame": 24,
         "metadata": [
-          24,
-          17,
-          72,
+          19,
+          14,
+          77,
           78
         ],
         "preview": [
-          24,
-          17,
-          72,
+          19,
+          14,
+          77,
           78
         ]
       }
@@ -65557,8 +65557,8 @@
       "details": {
         "fighter": 10,
         "frame": 25,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -65567,8 +65567,8 @@
       "details": {
         "fighter": 10,
         "frame": 25,
-        "source_file": "assets/art/characters/10-roxana/animation-motion.png",
-        "source_hash": "04684ab4a96cf360426073bdb98e737f9b0002aa87871abe0b7ced3ccdcc7923"
+        "source_file": "assets/art/characters/10-roxana/walking-v2.png",
+        "source_hash": "12e06f724d33c9983b952abfa7468417f4156a07ad6488ba21a4836f35364313"
       }
     },
     {
@@ -65577,8 +65577,8 @@
       "details": {
         "fighter": 10,
         "frame": 25,
-        "native_hash": "9883460f12ac7d6163eb60a3bed3d3241b9b08252f903430ebbaaf18a11ff6f7",
-        "pixels_sha256": "9883460f12ac7d6163eb60a3bed3d3241b9b08252f903430ebbaaf18a11ff6f7"
+        "native_hash": "d83d0bed1be70a9824a05e91fb7de3431fe7c4caedfbb10e610a0b88a718efd9",
+        "pixels_sha256": "d83d0bed1be70a9824a05e91fb7de3431fe7c4caedfbb10e610a0b88a718efd9"
       }
     },
     {
@@ -65588,15 +65588,15 @@
         "fighter": 10,
         "frame": 25,
         "metadata": [
-          22,
-          16,
-          73,
+          28,
+          13,
+          67,
           78
         ],
         "preview": [
-          22,
-          16,
-          73,
+          28,
+          13,
+          67,
           78
         ]
       }
@@ -65624,8 +65624,8 @@
       "details": {
         "fighter": 10,
         "frame": 26,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -65634,8 +65634,8 @@
       "details": {
         "fighter": 10,
         "frame": 26,
-        "source_file": "assets/art/characters/10-roxana/animation-motion.png",
-        "source_hash": "04684ab4a96cf360426073bdb98e737f9b0002aa87871abe0b7ced3ccdcc7923"
+        "source_file": "assets/art/characters/10-roxana/walking-v2.png",
+        "source_hash": "12e06f724d33c9983b952abfa7468417f4156a07ad6488ba21a4836f35364313"
       }
     },
     {
@@ -65644,8 +65644,8 @@
       "details": {
         "fighter": 10,
         "frame": 26,
-        "native_hash": "b637483ebd9e2d35db6e7b3f4e3b83365e5b82e5cb2feec4d6c5fb334167877d",
-        "pixels_sha256": "b637483ebd9e2d35db6e7b3f4e3b83365e5b82e5cb2feec4d6c5fb334167877d"
+        "native_hash": "7598a42850355a3607d597584ca1629d48df6bf515d94bf055368cb29e433740",
+        "pixels_sha256": "7598a42850355a3607d597584ca1629d48df6bf515d94bf055368cb29e433740"
       }
     },
     {
@@ -65655,15 +65655,15 @@
         "fighter": 10,
         "frame": 26,
         "metadata": [
-          25,
-          17,
-          70,
+          27,
+          13,
+          68,
           78
         ],
         "preview": [
-          25,
-          17,
-          70,
+          27,
+          13,
+          68,
           78
         ]
       }
@@ -65691,8 +65691,8 @@
       "details": {
         "fighter": 10,
         "frame": 27,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -65701,8 +65701,8 @@
       "details": {
         "fighter": 10,
         "frame": 27,
-        "source_file": "assets/art/characters/10-roxana/animation-motion.png",
-        "source_hash": "04684ab4a96cf360426073bdb98e737f9b0002aa87871abe0b7ced3ccdcc7923"
+        "source_file": "assets/art/characters/10-roxana/walking-v2.png",
+        "source_hash": "12e06f724d33c9983b952abfa7468417f4156a07ad6488ba21a4836f35364313"
       }
     },
     {
@@ -65711,8 +65711,8 @@
       "details": {
         "fighter": 10,
         "frame": 27,
-        "native_hash": "7dd92822b5731770d1049cd271469d93ca5f9c1c2af150c650412ea1f6c971af",
-        "pixels_sha256": "7dd92822b5731770d1049cd271469d93ca5f9c1c2af150c650412ea1f6c971af"
+        "native_hash": "485d389c5d180d924d23b2e805b943e8179c056982c5db627a998cb7211f22ac",
+        "pixels_sha256": "485d389c5d180d924d23b2e805b943e8179c056982c5db627a998cb7211f22ac"
       }
     },
     {
@@ -65722,15 +65722,15 @@
         "fighter": 10,
         "frame": 27,
         "metadata": [
-          24,
-          17,
-          72,
+          19,
+          13,
+          77,
           78
         ],
         "preview": [
-          24,
-          17,
-          72,
+          19,
+          13,
+          77,
           78
         ]
       }
@@ -68509,7 +68509,7 @@
         "pose": "walk-forward-contact",
         "box": [
           21,
-          12,
+          11,
           75,
           78
         ]
@@ -68522,9 +68522,9 @@
         "fighter": 10,
         "pose": "walk-forward-pass",
         "box": [
-          21,
-          12,
-          74,
+          28,
+          10,
+          67,
           78
         ]
       }
@@ -68536,9 +68536,9 @@
         "fighter": 10,
         "pose": "walk-forward-under",
         "box": [
-          23,
-          11,
-          72,
+          29,
+          10,
+          66,
           78
         ]
       }
@@ -68550,9 +68550,9 @@
         "fighter": 10,
         "pose": "walk-forward-opposite",
         "box": [
-          22,
-          12,
-          73,
+          20,
+          10,
+          75,
           78
         ]
       }
@@ -68564,9 +68564,9 @@
         "fighter": 10,
         "pose": "walk-back-contact",
         "box": [
-          24,
-          17,
-          72,
+          19,
+          14,
+          77,
           78
         ]
       }
@@ -68578,9 +68578,9 @@
         "fighter": 10,
         "pose": "walk-back-pass",
         "box": [
-          22,
-          16,
-          73,
+          28,
+          13,
+          67,
           78
         ]
       }
@@ -68592,9 +68592,9 @@
         "fighter": 10,
         "pose": "walk-back-under",
         "box": [
-          25,
-          17,
-          70,
+          27,
+          13,
+          68,
           78
         ]
       }
@@ -68606,9 +68606,9 @@
         "fighter": 10,
         "pose": "walk-back-opposite",
         "box": [
-          24,
-          17,
-          72,
+          19,
+          13,
+          77,
           78
         ]
       }
@@ -69327,7 +69327,7 @@
         "fighter": 10,
         "frame": "walk-forward-contact",
         "idle_height": 68,
-        "frame_height": 66
+        "frame_height": 67
       }
     },
     {
@@ -69337,7 +69337,7 @@
         "fighter": 10,
         "frame": "walk-forward-pass",
         "idle_height": 68,
-        "frame_height": 66
+        "frame_height": 68
       }
     },
     {
@@ -69347,7 +69347,7 @@
         "fighter": 10,
         "frame": "walk-forward-under",
         "idle_height": 68,
-        "frame_height": 67
+        "frame_height": 68
       }
     },
     {
@@ -69357,7 +69357,7 @@
         "fighter": 10,
         "frame": "walk-forward-opposite",
         "idle_height": 68,
-        "frame_height": 66
+        "frame_height": 68
       }
     },
     {
@@ -69367,7 +69367,7 @@
         "fighter": 10,
         "frame": "walk-back-contact",
         "idle_height": 68,
-        "frame_height": 61
+        "frame_height": 64
       }
     },
     {
@@ -69377,7 +69377,7 @@
         "fighter": 10,
         "frame": "walk-back-pass",
         "idle_height": 68,
-        "frame_height": 62
+        "frame_height": 65
       }
     },
     {
@@ -69387,7 +69387,7 @@
         "fighter": 10,
         "frame": "walk-back-under",
         "idle_height": 68,
-        "frame_height": 61
+        "frame_height": 65
       }
     },
     {
@@ -69397,7 +69397,7 @@
         "fighter": 10,
         "frame": "walk-back-opposite",
         "idle_height": 68,
-        "frame_height": 61
+        "frame_height": 65
       }
     },
     {
@@ -71548,8 +71548,8 @@
       "details": {
         "fighter": 11,
         "frame": 20,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -71558,8 +71558,8 @@
       "details": {
         "fighter": 11,
         "frame": 20,
-        "source_file": "assets/art/characters/11-lars/animation-motion-v4.png",
-        "source_hash": "e989f425ec07678caa25b9b366e23e184975663de333495236dec7173c64e0d7"
+        "source_file": "assets/art/characters/11-lars/walking-v2.png",
+        "source_hash": "0bc9b01aba35710e624104bc73491978e551f4699a715e0cc7532c8ad22eb996"
       }
     },
     {
@@ -71568,8 +71568,8 @@
       "details": {
         "fighter": 11,
         "frame": 20,
-        "native_hash": "934d33fb89e09d539cef7e149424ea2cdd4ed0947af838abc98a88c10debd00a",
-        "pixels_sha256": "934d33fb89e09d539cef7e149424ea2cdd4ed0947af838abc98a88c10debd00a"
+        "native_hash": "b8545a3e8d50d1f07728ccc544d959304aeebda6f1b9a76ac11173d9e673db5c",
+        "pixels_sha256": "b8545a3e8d50d1f07728ccc544d959304aeebda6f1b9a76ac11173d9e673db5c"
       }
     },
     {
@@ -71579,15 +71579,15 @@
         "fighter": 11,
         "frame": 20,
         "metadata": [
-          18,
-          7,
-          78,
+          16,
+          4,
+          80,
           78
         ],
         "preview": [
-          18,
-          7,
-          78,
+          16,
+          4,
+          80,
           78
         ]
       }
@@ -71615,8 +71615,8 @@
       "details": {
         "fighter": 11,
         "frame": 21,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -71625,8 +71625,8 @@
       "details": {
         "fighter": 11,
         "frame": 21,
-        "source_file": "assets/art/characters/11-lars/animation-motion-v4.png",
-        "source_hash": "e989f425ec07678caa25b9b366e23e184975663de333495236dec7173c64e0d7"
+        "source_file": "assets/art/characters/11-lars/walking-v2.png",
+        "source_hash": "0bc9b01aba35710e624104bc73491978e551f4699a715e0cc7532c8ad22eb996"
       }
     },
     {
@@ -71635,8 +71635,8 @@
       "details": {
         "fighter": 11,
         "frame": 21,
-        "native_hash": "b226bdf9313bc931bad9ef1fafe3788db1da3c4ffb849a752249cdefc2449665",
-        "pixels_sha256": "b226bdf9313bc931bad9ef1fafe3788db1da3c4ffb849a752249cdefc2449665"
+        "native_hash": "bee5d2118445be7b843110355b6025405d9d83d59b8d1eaa56f258ba56a76a03",
+        "pixels_sha256": "bee5d2118445be7b843110355b6025405d9d83d59b8d1eaa56f258ba56a76a03"
       }
     },
     {
@@ -71646,15 +71646,15 @@
         "fighter": 11,
         "frame": 21,
         "metadata": [
-          20,
-          7,
-          76,
+          25,
+          4,
+          71,
           78
         ],
         "preview": [
-          20,
-          7,
-          76,
+          25,
+          4,
+          71,
           78
         ]
       }
@@ -71682,8 +71682,8 @@
       "details": {
         "fighter": 11,
         "frame": 22,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -71692,8 +71692,8 @@
       "details": {
         "fighter": 11,
         "frame": 22,
-        "source_file": "assets/art/characters/11-lars/animation-motion-v4.png",
-        "source_hash": "e989f425ec07678caa25b9b366e23e184975663de333495236dec7173c64e0d7"
+        "source_file": "assets/art/characters/11-lars/walking-v2.png",
+        "source_hash": "0bc9b01aba35710e624104bc73491978e551f4699a715e0cc7532c8ad22eb996"
       }
     },
     {
@@ -71702,8 +71702,8 @@
       "details": {
         "fighter": 11,
         "frame": 22,
-        "native_hash": "8f0e4a36509af83ae86597d0c876926f593da7fce702d3205d01844d2645f90d",
-        "pixels_sha256": "8f0e4a36509af83ae86597d0c876926f593da7fce702d3205d01844d2645f90d"
+        "native_hash": "d9a55a32a1b2e88d3993ffe9387e9442dd8ba29dd5cef8fa958261c6d11dd0f4",
+        "pixels_sha256": "d9a55a32a1b2e88d3993ffe9387e9442dd8ba29dd5cef8fa958261c6d11dd0f4"
       }
     },
     {
@@ -71713,15 +71713,15 @@
         "fighter": 11,
         "frame": 22,
         "metadata": [
-          21,
-          7,
-          75,
+          26,
+          4,
+          69,
           78
         ],
         "preview": [
-          21,
-          7,
-          75,
+          26,
+          4,
+          69,
           78
         ]
       }
@@ -71749,8 +71749,8 @@
       "details": {
         "fighter": 11,
         "frame": 23,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -71759,8 +71759,8 @@
       "details": {
         "fighter": 11,
         "frame": 23,
-        "source_file": "assets/art/characters/11-lars/animation-motion-v4.png",
-        "source_hash": "e989f425ec07678caa25b9b366e23e184975663de333495236dec7173c64e0d7"
+        "source_file": "assets/art/characters/11-lars/walking-v2.png",
+        "source_hash": "0bc9b01aba35710e624104bc73491978e551f4699a715e0cc7532c8ad22eb996"
       }
     },
     {
@@ -71769,8 +71769,8 @@
       "details": {
         "fighter": 11,
         "frame": 23,
-        "native_hash": "7b1a66dbb335e634d07ac321d052bdf6e76226aa6d3aed04fc797505e583b68e",
-        "pixels_sha256": "7b1a66dbb335e634d07ac321d052bdf6e76226aa6d3aed04fc797505e583b68e"
+        "native_hash": "440fb8667e6ab1603e673deafaff1843ff2ecc47c9c119b833e0e283990f43d9",
+        "pixels_sha256": "440fb8667e6ab1603e673deafaff1843ff2ecc47c9c119b833e0e283990f43d9"
       }
     },
     {
@@ -71780,14 +71780,14 @@
         "fighter": 11,
         "frame": 23,
         "metadata": [
-          20,
-          8,
+          19,
+          4,
           76,
           78
         ],
         "preview": [
-          20,
-          8,
+          19,
+          4,
           76,
           78
         ]
@@ -71816,8 +71816,8 @@
       "details": {
         "fighter": 11,
         "frame": 24,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -71826,8 +71826,8 @@
       "details": {
         "fighter": 11,
         "frame": 24,
-        "source_file": "assets/art/characters/11-lars/animation-motion-v4.png",
-        "source_hash": "e989f425ec07678caa25b9b366e23e184975663de333495236dec7173c64e0d7"
+        "source_file": "assets/art/characters/11-lars/walking-v2.png",
+        "source_hash": "0bc9b01aba35710e624104bc73491978e551f4699a715e0cc7532c8ad22eb996"
       }
     },
     {
@@ -71836,8 +71836,8 @@
       "details": {
         "fighter": 11,
         "frame": 24,
-        "native_hash": "d012fff247d9c2184702c22513fab3cbc86f42ad7ffe13ff16b4799e3a270359",
-        "pixels_sha256": "d012fff247d9c2184702c22513fab3cbc86f42ad7ffe13ff16b4799e3a270359"
+        "native_hash": "30bf9163554cdb2a2744b43d55a0da3a281d7ba83a5f82c3381faa75aeb58387",
+        "pixels_sha256": "30bf9163554cdb2a2744b43d55a0da3a281d7ba83a5f82c3381faa75aeb58387"
       }
     },
     {
@@ -71847,15 +71847,15 @@
         "fighter": 11,
         "frame": 24,
         "metadata": [
-          17,
-          9,
-          78,
+          15,
+          6,
+          81,
           78
         ],
         "preview": [
-          17,
-          9,
-          78,
+          15,
+          6,
+          81,
           78
         ]
       }
@@ -71883,8 +71883,8 @@
       "details": {
         "fighter": 11,
         "frame": 25,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -71893,8 +71893,8 @@
       "details": {
         "fighter": 11,
         "frame": 25,
-        "source_file": "assets/art/characters/11-lars/animation-motion-v4.png",
-        "source_hash": "e989f425ec07678caa25b9b366e23e184975663de333495236dec7173c64e0d7"
+        "source_file": "assets/art/characters/11-lars/walking-v2.png",
+        "source_hash": "0bc9b01aba35710e624104bc73491978e551f4699a715e0cc7532c8ad22eb996"
       }
     },
     {
@@ -71903,8 +71903,8 @@
       "details": {
         "fighter": 11,
         "frame": 25,
-        "native_hash": "a8fd74c5db74698a817e4ae0d8f92a2593fbaa213879040b4d2f1ba2f9d0f893",
-        "pixels_sha256": "a8fd74c5db74698a817e4ae0d8f92a2593fbaa213879040b4d2f1ba2f9d0f893"
+        "native_hash": "3e55edd286090c0f92fe829251ff40a7b149b50dd107e4e6fefefc6e5e258816",
+        "pixels_sha256": "3e55edd286090c0f92fe829251ff40a7b149b50dd107e4e6fefefc6e5e258816"
       }
     },
     {
@@ -71914,15 +71914,15 @@
         "fighter": 11,
         "frame": 25,
         "metadata": [
-          22,
-          9,
-          73,
+          26,
+          6,
+          70,
           78
         ],
         "preview": [
-          22,
-          9,
-          73,
+          26,
+          6,
+          70,
           78
         ]
       }
@@ -71950,8 +71950,8 @@
       "details": {
         "fighter": 11,
         "frame": 26,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -71960,8 +71960,8 @@
       "details": {
         "fighter": 11,
         "frame": 26,
-        "source_file": "assets/art/characters/11-lars/animation-motion-v4.png",
-        "source_hash": "e989f425ec07678caa25b9b366e23e184975663de333495236dec7173c64e0d7"
+        "source_file": "assets/art/characters/11-lars/walking-v2.png",
+        "source_hash": "0bc9b01aba35710e624104bc73491978e551f4699a715e0cc7532c8ad22eb996"
       }
     },
     {
@@ -71970,8 +71970,8 @@
       "details": {
         "fighter": 11,
         "frame": 26,
-        "native_hash": "104355655e276d0d4c01156cea430f1306f5a11e6dc5be1fb04d80b9ed3a3ad5",
-        "pixels_sha256": "104355655e276d0d4c01156cea430f1306f5a11e6dc5be1fb04d80b9ed3a3ad5"
+        "native_hash": "a356057c4d29a9c0e88e59f8d130fb02ef5b783dbffa8c78cab6894aa2f74159",
+        "pixels_sha256": "a356057c4d29a9c0e88e59f8d130fb02ef5b783dbffa8c78cab6894aa2f74159"
       }
     },
     {
@@ -71981,15 +71981,15 @@
         "fighter": 11,
         "frame": 26,
         "metadata": [
-          23,
-          11,
-          73,
+          26,
+          6,
+          70,
           78
         ],
         "preview": [
-          23,
-          11,
-          73,
+          26,
+          6,
+          70,
           78
         ]
       }
@@ -72017,8 +72017,8 @@
       "details": {
         "fighter": 11,
         "frame": 27,
-        "expected": "motion",
-        "actual": "motion"
+        "expected": "walking-v2",
+        "actual": "walking-v2"
       }
     },
     {
@@ -72027,8 +72027,8 @@
       "details": {
         "fighter": 11,
         "frame": 27,
-        "source_file": "assets/art/characters/11-lars/animation-motion-v4.png",
-        "source_hash": "e989f425ec07678caa25b9b366e23e184975663de333495236dec7173c64e0d7"
+        "source_file": "assets/art/characters/11-lars/walking-v2.png",
+        "source_hash": "0bc9b01aba35710e624104bc73491978e551f4699a715e0cc7532c8ad22eb996"
       }
     },
     {
@@ -72037,8 +72037,8 @@
       "details": {
         "fighter": 11,
         "frame": 27,
-        "native_hash": "94ebd5a79a8f5794f0db61878a77c4513c2cb02c27a2f982e32920e25cdb32a1",
-        "pixels_sha256": "94ebd5a79a8f5794f0db61878a77c4513c2cb02c27a2f982e32920e25cdb32a1"
+        "native_hash": "4f4f882e0d192c5fcacb10dc023c36793015e88a7ae65f3715e0a7d1a0bd5755",
+        "pixels_sha256": "4f4f882e0d192c5fcacb10dc023c36793015e88a7ae65f3715e0a7d1a0bd5755"
       }
     },
     {
@@ -72048,15 +72048,15 @@
         "fighter": 11,
         "frame": 27,
         "metadata": [
-          19,
-          9,
-          76,
+          18,
+          6,
+          78,
           78
         ],
         "preview": [
-          19,
-          9,
-          76,
+          18,
+          6,
+          78,
           78
         ]
       }
@@ -74834,9 +74834,9 @@
         "fighter": 11,
         "pose": "walk-forward-contact",
         "box": [
-          18,
-          7,
-          78,
+          16,
+          4,
+          80,
           78
         ]
       }
@@ -74848,9 +74848,9 @@
         "fighter": 11,
         "pose": "walk-forward-pass",
         "box": [
-          20,
-          7,
-          76,
+          25,
+          4,
+          71,
           78
         ]
       }
@@ -74862,9 +74862,9 @@
         "fighter": 11,
         "pose": "walk-forward-under",
         "box": [
-          21,
-          7,
-          75,
+          26,
+          4,
+          69,
           78
         ]
       }
@@ -74876,8 +74876,8 @@
         "fighter": 11,
         "pose": "walk-forward-opposite",
         "box": [
-          20,
-          8,
+          19,
+          4,
           76,
           78
         ]
@@ -74890,9 +74890,9 @@
         "fighter": 11,
         "pose": "walk-back-contact",
         "box": [
-          17,
-          9,
-          78,
+          15,
+          6,
+          81,
           78
         ]
       }
@@ -74904,9 +74904,9 @@
         "fighter": 11,
         "pose": "walk-back-pass",
         "box": [
-          22,
-          9,
-          73,
+          26,
+          6,
+          70,
           78
         ]
       }
@@ -74918,9 +74918,9 @@
         "fighter": 11,
         "pose": "walk-back-under",
         "box": [
-          23,
-          11,
-          73,
+          26,
+          6,
+          70,
           78
         ]
       }
@@ -74932,9 +74932,9 @@
         "fighter": 11,
         "pose": "walk-back-opposite",
         "box": [
-          19,
-          9,
-          76,
+          18,
+          6,
+          78,
           78
         ]
       }
@@ -75653,7 +75653,7 @@
         "fighter": 11,
         "frame": "walk-forward-contact",
         "idle_height": 74,
-        "frame_height": 71
+        "frame_height": 74
       }
     },
     {
@@ -75663,7 +75663,7 @@
         "fighter": 11,
         "frame": "walk-forward-pass",
         "idle_height": 74,
-        "frame_height": 71
+        "frame_height": 74
       }
     },
     {
@@ -75673,7 +75673,7 @@
         "fighter": 11,
         "frame": "walk-forward-under",
         "idle_height": 74,
-        "frame_height": 71
+        "frame_height": 74
       }
     },
     {
@@ -75683,7 +75683,7 @@
         "fighter": 11,
         "frame": "walk-forward-opposite",
         "idle_height": 74,
-        "frame_height": 70
+        "frame_height": 74
       }
     },
     {
@@ -75693,7 +75693,7 @@
         "fighter": 11,
         "frame": "walk-back-contact",
         "idle_height": 74,
-        "frame_height": 69
+        "frame_height": 72
       }
     },
     {
@@ -75703,7 +75703,7 @@
         "fighter": 11,
         "frame": "walk-back-pass",
         "idle_height": 74,
-        "frame_height": 69
+        "frame_height": 72
       }
     },
     {
@@ -75713,7 +75713,7 @@
         "fighter": 11,
         "frame": "walk-back-under",
         "idle_height": 74,
-        "frame_height": 67
+        "frame_height": 72
       }
     },
     {
@@ -75723,7 +75723,7 @@
         "fighter": 11,
         "frame": "walk-back-opposite",
         "idle_height": 74,
-        "frame_height": 69
+        "frame_height": 72
       }
     },
     {
@@ -77963,7 +77963,11 @@
           20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ]
       }
     },
@@ -77993,6 +77997,8 @@
         "fighter": 0,
         "side": 0,
         "frames": [
+          20,
+          21,
           24,
           25,
           26,
@@ -81906,10 +81912,13 @@
         "fighter": 1,
         "side": 0,
         "frames": [
-          20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ]
       }
     },
@@ -81939,7 +81948,7 @@
         "fighter": 1,
         "side": 0,
         "frames": [
-          24,
+          20,
           25,
           26,
           27
@@ -85855,7 +85864,11 @@
           20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ]
       }
     },
@@ -85885,6 +85898,8 @@
         "fighter": 2,
         "side": 0,
         "frames": [
+          20,
+          23,
           24,
           25,
           26,
@@ -89801,7 +89816,11 @@
           20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ]
       }
     },
@@ -89831,6 +89850,9 @@
         "fighter": 3,
         "side": 0,
         "frames": [
+          20,
+          21,
+          22,
           24,
           25,
           26,
@@ -93744,10 +93766,13 @@
         "fighter": 4,
         "side": 0,
         "frames": [
-          20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ]
       }
     },
@@ -93777,7 +93802,7 @@
         "fighter": 4,
         "side": 0,
         "frames": [
-          24,
+          20,
           25,
           26,
           27
@@ -97693,7 +97718,11 @@
           20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ]
       }
     },
@@ -97723,6 +97752,8 @@
         "fighter": 5,
         "side": 0,
         "frames": [
+          20,
+          21,
           24,
           25,
           26,
@@ -101636,10 +101667,13 @@
         "fighter": 6,
         "side": 0,
         "frames": [
-          20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ]
       }
     },
@@ -101669,7 +101703,7 @@
         "fighter": 6,
         "side": 0,
         "frames": [
-          24,
+          20,
           25,
           26,
           27
@@ -105585,7 +105619,11 @@
           20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ]
       }
     },
@@ -105615,6 +105653,7 @@
         "fighter": 7,
         "side": 0,
         "frames": [
+          20,
           24,
           25,
           26,
@@ -109531,7 +109570,11 @@
           20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ]
       }
     },
@@ -109561,6 +109604,8 @@
         "fighter": 8,
         "side": 0,
         "frames": [
+          20,
+          23,
           24,
           25,
           26,
@@ -113477,7 +113522,11 @@
           20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ]
       }
     },
@@ -113507,7 +113556,7 @@
         "fighter": 9,
         "side": 0,
         "frames": [
-          24,
+          20,
           25,
           26,
           27
@@ -117423,7 +117472,11 @@
           20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ]
       }
     },
@@ -117453,6 +117506,8 @@
         "fighter": 10,
         "side": 0,
         "frames": [
+          20,
+          23,
           24,
           25,
           26,
@@ -121369,7 +121424,11 @@
           20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ]
       }
     },
@@ -121399,6 +121458,7 @@
         "fighter": 11,
         "side": 0,
         "frames": [
+          20,
           24,
           25,
           26,
@@ -125276,7 +125336,7 @@
       "passed": true,
       "details": {
         "fighter": 0,
-        "frame": 20
+        "frame": 21
       }
     },
     {
@@ -126322,7 +126382,7 @@
       "passed": true,
       "details": {
         "fighter": 1,
-        "frame": 20
+        "frame": 21
       }
     },
     {
@@ -127368,7 +127428,7 @@
       "passed": true,
       "details": {
         "fighter": 2,
-        "frame": 20
+        "frame": 21
       }
     },
     {
@@ -128414,7 +128474,7 @@
       "passed": true,
       "details": {
         "fighter": 3,
-        "frame": 20
+        "frame": 21
       }
     },
     {
@@ -129460,7 +129520,7 @@
       "passed": true,
       "details": {
         "fighter": 4,
-        "frame": 20
+        "frame": 21
       }
     },
     {
@@ -130506,7 +130566,7 @@
       "passed": true,
       "details": {
         "fighter": 5,
-        "frame": 20
+        "frame": 21
       }
     },
     {
@@ -131552,7 +131612,7 @@
       "passed": true,
       "details": {
         "fighter": 6,
-        "frame": 20
+        "frame": 21
       }
     },
     {
@@ -132598,7 +132658,7 @@
       "passed": true,
       "details": {
         "fighter": 7,
-        "frame": 20
+        "frame": 21
       }
     },
     {
@@ -133644,7 +133704,7 @@
       "passed": true,
       "details": {
         "fighter": 8,
-        "frame": 20
+        "frame": 22
       }
     },
     {
@@ -134690,7 +134750,7 @@
       "passed": true,
       "details": {
         "fighter": 9,
-        "frame": 20
+        "frame": 21
       }
     },
     {
@@ -135736,7 +135796,7 @@
       "passed": true,
       "details": {
         "fighter": 10,
-        "frame": 20
+        "frame": 21
       }
     },
     {
@@ -136782,7 +136842,7 @@
       "passed": true,
       "details": {
         "fighter": 11,
-        "frame": 20
+        "frame": 21
       }
     },
     {
@@ -279422,7 +279482,11 @@
           20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ],
         "floor": [
           201,
@@ -279432,6 +279496,8 @@
       },
       "walk_backward": {
         "frames": [
+          20,
+          21,
           24,
           25,
           26,
@@ -279580,10 +279646,13 @@
       },
       "walk_forward": {
         "frames": [
-          20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ],
         "floor": [
           201,
@@ -279593,7 +279662,7 @@
       },
       "walk_backward": {
         "frames": [
-          24,
+          20,
           25,
           26,
           27
@@ -279746,7 +279815,11 @@
           20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ],
         "floor": [
           201,
@@ -279756,6 +279829,8 @@
       },
       "walk_backward": {
         "frames": [
+          20,
+          23,
           24,
           25,
           26,
@@ -279909,7 +279984,11 @@
           20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ],
         "floor": [
           201,
@@ -279919,6 +279998,9 @@
       },
       "walk_backward": {
         "frames": [
+          20,
+          21,
+          22,
           24,
           25,
           26,
@@ -280067,10 +280149,13 @@
       },
       "walk_forward": {
         "frames": [
-          20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ],
         "floor": [
           201,
@@ -280080,7 +280165,7 @@
       },
       "walk_backward": {
         "frames": [
-          24,
+          20,
           25,
           26,
           27
@@ -280232,7 +280317,11 @@
           20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ],
         "floor": [
           201,
@@ -280242,6 +280331,8 @@
       },
       "walk_backward": {
         "frames": [
+          20,
+          21,
           24,
           25,
           26,
@@ -280391,10 +280482,13 @@
       },
       "walk_forward": {
         "frames": [
-          20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ],
         "floor": [
           201,
@@ -280404,7 +280498,7 @@
       },
       "walk_backward": {
         "frames": [
-          24,
+          20,
           25,
           26,
           27
@@ -280556,7 +280650,11 @@
           20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ],
         "floor": [
           201,
@@ -280566,6 +280664,7 @@
       },
       "walk_backward": {
         "frames": [
+          20,
           24,
           25,
           26,
@@ -280718,7 +280817,11 @@
           20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ],
         "floor": [
           201,
@@ -280728,6 +280831,8 @@
       },
       "walk_backward": {
         "frames": [
+          20,
+          23,
           24,
           25,
           26,
@@ -280880,7 +280985,11 @@
           20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ],
         "floor": [
           201,
@@ -280890,7 +280999,7 @@
       },
       "walk_backward": {
         "frames": [
-          24,
+          20,
           25,
           26,
           27
@@ -281042,7 +281151,11 @@
           20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ],
         "floor": [
           201,
@@ -281052,6 +281165,8 @@
       },
       "walk_backward": {
         "frames": [
+          20,
+          23,
           24,
           25,
           26,
@@ -281203,7 +281318,11 @@
           20,
           21,
           22,
-          23
+          23,
+          24,
+          25,
+          26,
+          27
         ],
         "floor": [
           201,
@@ -281213,6 +281332,7 @@
       },
       "walk_backward": {
         "frames": [
+          20,
           24,
           25,
           26,
@@ -281283,7 +281403,7 @@
       "face2": 0,
       "bank": 2,
       "idle_frame": 16,
-      "walk_frame": 20,
+      "walk_frame": 21,
       "idle_floor": 201,
       "idle_render": {
         "frame": 16,
@@ -281310,7 +281430,7 @@
       "face2": 0,
       "bank": 2,
       "idle_frame": 16,
-      "walk_frame": 20,
+      "walk_frame": 21,
       "idle_floor": 201,
       "idle_render": {
         "frame": 16,
@@ -281337,7 +281457,7 @@
       "face2": 0,
       "bank": 2,
       "idle_frame": 16,
-      "walk_frame": 20,
+      "walk_frame": 21,
       "idle_floor": 201,
       "idle_render": {
         "frame": 16,
@@ -281364,7 +281484,7 @@
       "face2": 0,
       "bank": 2,
       "idle_frame": 16,
-      "walk_frame": 20,
+      "walk_frame": 21,
       "idle_floor": 201,
       "idle_render": {
         "frame": 16,
@@ -281391,7 +281511,7 @@
       "face2": 0,
       "bank": 2,
       "idle_frame": 16,
-      "walk_frame": 20,
+      "walk_frame": 21,
       "idle_floor": 201,
       "idle_render": {
         "frame": 16,
@@ -281418,7 +281538,7 @@
       "face2": 0,
       "bank": 2,
       "idle_frame": 16,
-      "walk_frame": 20,
+      "walk_frame": 21,
       "idle_floor": 201,
       "idle_render": {
         "frame": 16,
@@ -281445,7 +281565,7 @@
       "face2": 0,
       "bank": 2,
       "idle_frame": 16,
-      "walk_frame": 20,
+      "walk_frame": 21,
       "idle_floor": 201,
       "idle_render": {
         "frame": 16,
@@ -281472,7 +281592,7 @@
       "face2": 0,
       "bank": 2,
       "idle_frame": 16,
-      "walk_frame": 20,
+      "walk_frame": 21,
       "idle_floor": 201,
       "idle_render": {
         "frame": 16,
@@ -281499,7 +281619,7 @@
       "face2": 0,
       "bank": 2,
       "idle_frame": 16,
-      "walk_frame": 20,
+      "walk_frame": 22,
       "idle_floor": 201,
       "idle_render": {
         "frame": 16,
@@ -281526,7 +281646,7 @@
       "face2": 0,
       "bank": 2,
       "idle_frame": 16,
-      "walk_frame": 20,
+      "walk_frame": 21,
       "idle_floor": 201,
       "idle_render": {
         "frame": 16,
@@ -281553,7 +281673,7 @@
       "face2": 0,
       "bank": 2,
       "idle_frame": 16,
-      "walk_frame": 20,
+      "walk_frame": 21,
       "idle_floor": 201,
       "idle_render": {
         "frame": 16,
@@ -281580,7 +281700,7 @@
       "face2": 0,
       "bank": 2,
       "idle_frame": 17,
-      "walk_frame": 20,
+      "walk_frame": 21,
       "idle_floor": 201,
       "idle_render": {
         "frame": 17,
@@ -286084,6 +286204,6 @@
     }
   },
   "passed": 17142,
-  "elapsed_seconds": 52.18,
+  "elapsed_seconds": 123.55,
   "status": "passed"
 }

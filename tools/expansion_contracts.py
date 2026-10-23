@@ -32,6 +32,13 @@ def canonical(path, raw):
 
 def preserved_assets(root):
     root = Path(root)
+    allowed_changes=set(GENERATED_CHANGES)
+    if (root/'assets/art/walking-v2.json').is_file():
+        allowed_changes.add('assets/generated/character-manifest.json')
+        for fighter in range(12):
+            allowed_changes.update({f'assets/generated/fighter{fighter:02d}.png',
+                                    f'assets/generated/fighter{fighter:02d}c.bin',
+                                    f'assets/generated/fighter{fighter:02d}d.bin'})
     rows = git(root, 'ls-tree', '-r', BASE, '--', 'assets/generated',
                'assets/art', 'assets/references').decode('utf-8').splitlines()
     changed, missing, protected_changes, generated, protected = [], [], [], [], []
@@ -57,7 +64,7 @@ def preserved_assets(root):
     require(not missing, 'Baseline assets are missing', missing)
     require(not protected_changes, 'Approved source art or reference changed', protected_changes)
     require(len(generated) == 219, 'Generated baseline inventory must remain 219', len(generated))
-    require(set(changed) == GENERATED_CHANGES, 'Generated changes differ from approved nine-feature policy', changed)
+    require(set(changed) == allowed_changes, 'Generated changes differ from bounded walking/audio policy', changed)
     actual_names = {p.relative_to(root).as_posix() for p in (root / 'assets/generated').iterdir()
                     if p.is_file() and p.name != 'soundbank.h'}
     require(actual_names == {row['path'] for row in generated},
@@ -123,7 +130,8 @@ if __name__ == '__main__':
     import json
     root = Path(__file__).resolve().parents[1]
     value = combined_contract(root)
-    out = root / 'docs/expansion-preservation-v0.22.1.json'
+    version=json.loads((root/'dist/manifest.json').read_bytes())['version']
+    out = root / f'docs/expansion-preservation-v{version}.json'
     value['rom_sha256'] = hashlib.sha256((root / 'dist/abaqus-after-hours.sfc').read_bytes()).hexdigest()
     value['status'] = 'passed'
     out.write_bytes((json.dumps(value, indent=2) + '\n').encode('utf-8'))

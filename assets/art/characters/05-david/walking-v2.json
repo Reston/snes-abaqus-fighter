@@ -1,0 +1,75 @@
+{
+  "schema": 2,
+  "fighter_id": 5,
+  "source": "assets/art/characters/05-david/walking-v2.png",
+  "sha256": "a1c57305044b4b977d264009d32065a3f5a44f639bbc55378b1b7a378fd7d598",
+  "reference": "assets/art/characters/05-david/animation-motion.png",
+  "reference_sha256": "5b205771458238a844c3ffb9c256065342df3321effad715ea0895903c20aa27",
+  "generation": "built-in image_gen; transparent_background=true",
+  "prompt": "Use case: identity-preserve. Production SNES fighting-game sprite atlas: redraw the SAME reference fighter as EIGHT successive FULL-BODY GUARDED WALK poses. Correct the failed legs-only animation: each figure must be one anatomically continuous head-neck-shoulders-torso-pelvis-legs silhouette, all clothing lines continuous through waist. Preserve reference face/likeness, hair, beard/accessories, sex, stocky or slim build, all costume colors and shoe type. Match the reference's polished cartoon ink and restrained cel shades. Face RIGHT in three-quarter side view. Both fists stay in compact fighting guard close to chest and jaw; never drop an arm behind body or swing arms like a pedestrian. Short controlled fighter walk, not a run or march. Hips shift weight over planted foot; shoulders subtly counter-rotate against pelvis; elbows, clothes folds and jacket hem respond to each step; head nearly level with very slight body bob. One consistent whole-body scale, limb lengths, head size and lighting across all eight. EXACTLY FOUR COLUMNS by TWO ROWS, equal cells, no merged silhouettes, wide transparent gutters around every figure including rightmost shoes. Common floor baseline within each row, exactly two feet per figure and at least one grounded sole. Reading-order phases: 1 near-leg forward heel contact/far-leg back toe; 2 near-leg supports with subtle whole-body down/recoil; 3 far-leg passes LOW under hips with support leg vertical, feet close; 4 far-leg extends forward just before heel contact; 5 OPPOSITE contact far-leg forward/near-leg back, alternating which leg occludes; 6 far-leg supports with subtle body recoil; 7 near-leg passes low under hips; 8 near-leg extends forward ready for1. Eight distinct coordinated joint poses, smooth loop8to1, small functional guard motion. No pasted body parts, text, labels, numbers, grid, scenery, ground, shadow, FX, kicks, punches, running, extra limbs, huge head or cropped feet. TRUE TRANSPARENT BACKGROUND. Individual identity/costume: David: black hair in a tied back bun, dark mustache and short beard, mustard yellow rolled-sleeve shirt, navy suspenders and blue trousers, cream/tan lace-up sneakers with pale soles.",
+  "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-e05b795c-16a8-4e40-b4bc-80863332f453.png",
+  "raw_output_sha256": "a1c57305044b4b977d264009d32065a3f5a44f639bbc55378b1b7a378fd7d598",
+  "size": [
+    1774,
+    887
+  ],
+  "selected_final": "assets/art/characters/05-david/walking-v2.png",
+  "native_frame_range": [
+    20,
+    27
+  ],
+  "native_foot_baseline": 78,
+  "palette_sha256": "c5cb13513140c4cf740991e6f69c4dd71661e6177820ca7df52ed112149b2aba",
+  "scope": "coordinated-full-body",
+  "supersedes": "walking-v1.png; rejected legs/torso splice retained as history",
+  "source_boxes": [
+    [
+      67,
+      37,
+      411,
+      447
+    ],
+    [
+      550,
+      38,
+      817,
+      447
+    ],
+    [
+      1000,
+      38,
+      1235,
+      447
+    ],
+    [
+      1396,
+      38,
+      1749,
+      447
+    ],
+    [
+      80,
+      464,
+      419,
+      864
+    ],
+    [
+      559,
+      466,
+      823,
+      863
+    ],
+    [
+      1002,
+      464,
+      1239,
+      863
+    ],
+    [
+      1395,
+      460,
+      1754,
+      864
+    ]
+  ]
+}

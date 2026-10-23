@@ -6,6 +6,46 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+- The approved main walking revision is **v0.23.1**, through PR #12.
+  The user explicitly approved it with "yes good, merge it" on 2026-10-23. The user rejected v0.23.0's legs/torso mismatch:
+  "ok the legs animation improved but know the top part doesn't fit so this wasn't the goal".
+  This new request supersedes the fixed-upper-47-rows walking constraint below.
+  Replace the entire eight walking poses (20..27) with coherent full-body
+  cycles: hips, torso, guard, head and feet move together. Keep each fighter's
+  likeness/costume, original portraits/palettes/physical height and other 56
+  frames. Retain walking-v1 art as rejected history; walking-v2.json and twelve
+  individual walking-v2.png/prompt records are current. No waist/torso overlay.
+  Main advances to v0.23.1; 08 stays deferred in its retained checkout. ROM SHA256
+  `057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd`, header `F95B`.
+  Source freeze `cd9b9ffcbbff68c14c1e15c0bc2264a713badcea`. Six native suites pass 36,219
+  exact-ROM checks; matching independent smoke, 3,914 focused walking/
+  local-port checks, 20/20 normal/optimized authoring guards and a fresh export
+  reproducing all 219 outputs/ROM/symbols pass. Current evidence is
+  docs/verification-v0.23.1.json and docs/RELEASE-v0.23.1.md. The full-body
+  walking revision has user approval for merge; see docs/review-feedback.json.
+  Physical controllers, subject consent and public-use approval remain separate.
+
+- The rejected historical follow-up was **v0.23.0 walking/local-play**, branch
+  `feature/walking-cycles-v023`, PR #12. Main is v0.22.1 after approved PR #1
+  merge. Nine merged feature worktrees/branches and the old integration branch
+  were removed; keep 08's branch/worktree for polish. Parallax remains disabled.
+  ROM SHA256 `19387882aad17cc8184b02c2c2e0dcb3b6487c05522fe5ef7a943202ef0c0359`, header `A013`.
+  Source freeze `ae9fc6f308dcba27a4ecc08f9cec8fe0bc277322`. Six native suites pass 36,219
+  exact-ROM checks; matching independent smoke, all-twelve/both-port focused
+  walking proof, 20/20 normal/optimized authoring checks and fresh export pass.
+  Native frames 20–27 have individually authored walking legs; upper rows0..46
+  preserve exact approved face/upper-body pixels. All other 56 poses, palettes,
+  portraits, size and baseline are preserved. Eight phases share distance-driven
+  forward/retreat footfalls, with no new RAM/ABI/DMA/OBJ/audio resources. Exactly
+  37 generated outputs differ from v0.22.1; generated count remains219.
+  Retain assets/art/walking-v1.json, the twelve walking-v1.png masters and their
+  adjacent exact-prompt/provenance JSON. Old masters/contracts remain history.
+  The menu now says LOCAL 1V1 / 2P. Both native controller ports already work;
+  P1 arrows+A/S/Z/X, P2 I/J/K/L+numpad7/8/1/2. Both default joypads enabled.
+  See docs/RELEASE-v0.23.0.md, docs/verification-v0.23.0.json and walking-report.json.
+  Walking human review and physical controller checks remain open; no new
+  offline package or public-release approval is claimed.
+
 - The approved main candidate is **v0.22.1**, features 01–07, 09 and 10.
   User explicitly authorized their merge and requested 08 be deferred because
   its parallax looks bad. The original camera, stage ambient generator and four
@@ -25,9 +65,9 @@ Preserve the native emulator requirement when extending the project.
 
 - The historical integration was **v0.22.0, all ten improvements combined**, on
   `integration/ten-improvements-v022`. Feature PRs #2..11 are merged into it;
-  [final PR #1](https://github.com/Reston/snes-abaqus-fighter/pull/1) awaits
-  one human playtest before merge; combined automated verification passes. Main remains
-  v0.21.0. Run `Play.cmd` from the integration checkout to play the candidate.
+  [final PR #1](https://github.com/Reston/snes-abaqus-fighter/pull/1) then awaited
+  a human playtest; main was v0.21.0. That integration identity and its
+  verification are historical; the nine-feature main merge is recorded above.
   ROM SHA256 `d4fddaf609a0c29f45353a8d9e22fe1131fc3380838d9c0073d3255474cdf8af`, header `EA9D`.
   Source freeze `b149cdf2d9e25560f61d09a0f49e71ce6fea7042`, tree `f58da040001f57a12c55b3ce92bde66041164b71`.
   All six native suites pass 36,253 exact-ROM checks; matching pinned
