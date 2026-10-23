@@ -240,6 +240,14 @@ refreshHealthBar:
     lda.l fighters+14
     ++:
     and #$00ff
+    cmp #33
+    bcs +
+    pha
+    lda.b tcc__r2
+    ora #$0400                 ; low HP uses the red/gold HUD palette
+    sta.b tcc__r2
+    pla
+    +:
     sta.b tcc__r0
     asl a
     asl a
@@ -872,14 +880,14 @@ drawShadowsFast:
     sta.b tcc__r0               ; retain byteSlot for the high-table mask
     tax                         ; dynamic low-table offset
 
-    ; First piece: centerX - 12, floor + 1 (202), tile 430,
+    ; First piece: centerX - 16, floor - 1 (200), tile 430,
     ; priority 2, palette 2, no horizontal flip => $25AE.
     lda 12,s
     sec
-    sbc #$000c
+    sbc #$0010
     sep #$20
     sta.l oamMemory+0,x
-    lda #$ca
+    lda #$c8
     sta.l oamMemory+1,x
     rep #$20
     lda #$25ae
@@ -889,7 +897,7 @@ drawShadowsFast:
     sep #$20
     lda 12,s
     sta.l oamMemory+4,x
-    lda #$ca
+    lda #$c8
     sta.l oamMemory+5,x
     rep #$20
     lda #$65ae

@@ -414,7 +414,17 @@ def verify_opaque_text_rows(e: Emulator, rows: list[tuple[int, int, str]],
                           "min_palette_index": min(indices),
                       })
             offset_bytes = UI_TILE_VRAM_BYTE + tile * 32
-            expected = tile_rgb(memory[offset_bytes:offset_bytes + 32], palette)
+            palette_index = (values[cell_x] >> 10) & 7
+            expected_palette = 1 if label == "live fight" and (row == 0 or (row == 1 and cell_x in (15, 16))) else 0
+            # The timer digits are white; the two fighter names and KO use
+            # the gold accent bank, whose panel remains fully opaque.
+            if row == 0 and cell_x in (15, 16):expected_palette = 0
+            check(palette_index == expected_palette,
+                  "native HUD/result glyph uses its intended palette", {
+                      "label": label, "row": row, "x": cell_x,
+                      "actual": palette_index, "expected": expected_palette})
+            expected = tile_rgb(memory[offset_bytes:offset_bytes + 32],
+                                palette[palette_index * 32:(palette_index + 1) * 32])
             actual = e.frame.crop((cell_x * 8, row * 8,
                                   cell_x * 8 + 8, row * 8 + 8))
             delta = image_delta(actual, expected)
@@ -867,7 +877,7 @@ def result_score_capture(winner_side: int = 0) -> dict[str, object]:
             x_defender = current["x2" if winner_side == 0 else "x1"]
             forward = "right" if x_attacker < x_defender else "left"
             port = "p1" if winner_side == 0 else "p2"
-            e.run(3, **{port: [forward, "l"]})
+            e.run(3, **{port: [forward, 'x']})
             e.run(28, **{port: [forward]})
         # The second win enters the native 180-tick round-end presentation;
         # the attack cadence above may finish exactly on that transition.

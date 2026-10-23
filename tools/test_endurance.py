@@ -242,15 +242,15 @@ def keys_for(mode: int, tick: int, state: dict[str, int],
                     else [back]), []
         if distance_px > 25:
             return [forward], []
-        # Match the gameplay probe's real release after every L attempt.
+        # Match the gameplay probe's real release after every X attempt.
         # A failed throw must not leave the edge held indefinitely.
-        return ([forward] if state["raw_keys1"] & 0x20 else [forward, "l"]), []
+        return ([forward] if state["raw_keys1"] & 0x40 else [forward, 'x']), []
 
     # A dedicated close-range throw window is needed in Training, where the
     # second controller is intentionally inert.  The old macro stopped at a
     # 50-pixel gap, outside several profiles' strict throw ranges.  Reserve
     # the complete tail of the cycle for a controller-only approach and a
-    # separated L edge.  The window must be long enough to close a fresh
+    # separated X edge.  The window must be long enough to close a fresh
     # match's gap; an eight-tick pulse could end before the fighter reached
     # even the largest profile's throw range and falsely report no throws.
     phase = tick % 512
@@ -264,10 +264,10 @@ def keys_for(mode: int, tick: int, state: dict[str, int],
             return [forward], []
         if (state["action1"] == 0 and state["hurt1"] == 0 and
                 state["y1"] == 0 and state["down_state1"] == 0):
-            # L is edge-triggered.  Keep a real release gap between attempts,
+            # X is edge-triggered.  Keep a real release gap between attempts,
             # while holding forward so the strict dynamic range remains true.
             if (phase - 448) % 8 == 0:
-                return [forward, "l"], []
+                return [forward, 'x'], []
             return [forward], []
         return [], []
 
@@ -299,8 +299,8 @@ def keys_for(mode: int, tick: int, state: dict[str, int],
         p1 = ["x"]
         p2 = ["a"]
     elif phase < 52:
-        p1 = ["l"]
-        p2 = ["r"]
+        p1 = ['x']
+        p2 = ['a']
     elif phase < 60:
         p1 = ["b"]
         p2 = ["x"]
@@ -308,8 +308,8 @@ def keys_for(mode: int, tick: int, state: dict[str, int],
         p1 = ["a"]
         p2 = ["y"]
     elif phase < 76:
-        p1 = ["r"]
-        p2 = ["l"]
+        p1 = ['a']
+        p2 = ['x']
     elif phase < 84:
         p1 = ["up", "right", "y"]
         p2 = ["up", "left", "x"]
@@ -332,17 +332,17 @@ def keys_for(mode: int, tick: int, state: dict[str, int],
         p1 = []
         p2 = []
     elif phase < 140:
-        p1 = ["down", "l"]
-        p2 = ["down", "l"]
+        p1 = ["down", 'x']
+        p2 = ["down", 'x']
     elif phase < 148:
         p1 = []
         p2 = []
     elif phase < 164:
-        p1 = ["l"]
-        p2 = ["l"]
+        p1 = ['x']
+        p2 = ['x']
     elif phase < 180:
-        p1 = ["right" if state["x1"] < state["x2"] else "left", "l"]
-        p2 = ["left" if state["x1"] < state["x2"] else "right", "l"]
+        p1 = ["right" if state["x1"] < state["x2"] else "left", 'x']
+        p2 = ["left" if state["x1"] < state["x2"] else "right", 'x']
     elif phase < 196:
         p1 = ["down", "b"]
         p2 = ["down", "a"]
@@ -368,7 +368,7 @@ def keys_for(mode: int, tick: int, state: dict[str, int],
         p1 = ["left"]
         p2 = ["right"]
     elif phase < 356:
-        p1 = ["down", "r"]
+        p1 = ["down", 'a']
         p2 = ["down", "b"]
     elif phase < 372:
         p1 = ["up", "left", "b"]
@@ -392,15 +392,15 @@ def keys_for(mode: int, tick: int, state: dict[str, int],
         p1 = ["a"]
         p2 = ["b"]
     elif phase < 500:
-        p1 = ["r"]
-        p2 = ["l"]
+        p1 = ['a']
+        p2 = ['x']
     else:
         p1 = ["right"]
         p2 = ["left"]
     if mode == 2:
         # Training intentionally ignores controller two, but feeding it a
         # varied pad value proves that the inert path remains inert.
-        p2 = ["left", "down", "x"] if (tick // 48) & 1 else ["right"]
+        p2 = ["left", "down", 'y'] if (tick // 48) & 1 else ["right"]
     return p1, p2
 
 

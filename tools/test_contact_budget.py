@@ -28,10 +28,10 @@ from make_crossup_review import process_contract
 
 ROOT = Path(__file__).resolve().parents[1]
 PATTERNS = {
-    "uppercut": {"keys": ("down", "l"), "action": 8, "knockdown": True},
-    "sweep": {"keys": ("down", "r"), "action": 6, "knockdown": True},
-    "special-contact": {"keys": ("down", "x"), "action": 7, "knockdown": False},
-    "wave-clash": {"keys": ("down", "x"), "action": 7, "knockdown": False},
+    "uppercut": {"keys": ("down", 'x'), "action": 8, "knockdown": True},
+    "sweep": {"keys": ("down", 'a'), "action": 6, "knockdown": True},
+    "special-contact": {"keys": ("down", 'y'), "action": 7, "knockdown": False},
+    "wave-clash": {"keys": ("down", 'y'), "action": 7, "knockdown": False},
 }
 WAVE_FIGHTERS = (0, 1, 4, 6, 8, 9, 11)
 FAILURE_FIELDS = (

@@ -81,7 +81,7 @@ def play_cpu(e):
         elif distance > 25:
             e.run(1, p1=[forward])
         else:
-            e.run(1, p1=[forward, "l"])
+            e.run(1, p1=[forward, 'x'])
             e.run(1, p1=[forward])
     raise AssertionError(("CPU match did not finish", e.state()))
 

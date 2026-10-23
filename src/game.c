@@ -21,8 +21,8 @@
 #define HP_MAX 128
 #define ENERGY_MAX 96
 #define FLOOR 201
-#define PUNCHES (KEY_Y|KEY_X|KEY_L)
-#define ATTACKS (PUNCHES|KEY_B|KEY_A|KEY_R)
+#define PUNCHES (KEY_Y|KEY_X)
+#define ATTACKS (PUNCHES|KEY_B|KEY_A)
 #define TRACE ((volatile u16 *)0x7fff00)
 
 /* Native fighter render contract (shared with tools/fighter_assets.py). */
@@ -413,9 +413,21 @@ void resetRoundState(void) {
     hudWins[0]=255;hudWins[1]=255;hudSeconds=255;
 }
 void resetRound(void) {
+    u8 x;
     resetRoundState();
     panel(0,5);word(1,0,characterNames[fighters[0].id]);word(20,0,characterNames[fighters[1].id]);
+    /* Gold nameplates and a quiet bottom rule stay inside the existing
+     * five-row, 320-byte HUD transfer. Palette 1 is reset for each scene. */
+    for(x=0;x<32;x++){ui[x]|=0x0400;ui[128+x]=158|0x2000;}
+    ui[32]=155|0x2000;ui[44]=155|0x6000;
+    ui[51]=155|0x2000;ui[63]=155|0x6000;
+    ui[96]=157|0x2000;ui[109]=157|0x6000;
+    ui[114]=157|0x2000;ui[127]=157|0x6000;
+    ui[14]=156|0x2400;ui[17]=156|0x6400;
+    ui[46]=156|0x2400;ui[49]=156|0x6400;
     put(15,1,'K');put(16,1,'O');word(13,2,"ROUND");put(19,2,'0'+roundNumber);
+    ui[47]|=0x0400;ui[48]|=0x0400;
+    word(4,2,"WINS");word(24,2,"WINS");
     if(mode==2)word(12,4,"TRAINING");
     else word(12,4,mode==1 ? "P1 VS P2":"P1 VS CPU");
     clearBanner();fillBannerPanel();center(10,"GET READY");center(12,arenaNames[arena]);hud();
@@ -550,18 +562,18 @@ u16 cpuKeys(void) {
             /* Do not walk out of the opening band while waiting for the
              * global cadence. The meter cost makes this opening cast one-shot. */
             if(!waves[1].active) {
-                if(distance>110 && f->energy>=64)return KEY_DOWN|KEY_X;
-                if(distance>95 && ((frame+f->id*13)%97==0))return KEY_DOWN|KEY_X;
+                if(distance>110 && f->energy>=64)return KEY_DOWN|KEY_Y;
+                if(distance>95 && ((frame+f->id*13)%97==0))return KEY_DOWN|KEY_Y;
             }
         } else if((frame+f->id*13)%97==0) {
             if(c->specialFamily==SPECIAL_RUSH) {
                 specialMax=c->specialReach+BODY_HALF_WIDTH;
                 specialMax+=((u16)c->specialSpeed*c->specialActive)>>4;
                 if(specialMax>90)specialMax=90;
-                if(distance>=45 && distance<=specialMax)return KEY_DOWN|KEY_X;
+                if(distance>=45 && distance<=specialMax)return KEY_DOWN|KEY_Y;
             } else if(c->specialFamily==SPECIAL_RISING) {
                 if(distance<=c->specialReach+BODY_HALF_WIDTH &&
-                   (enemy->y<0 || enemyActive))return KEY_DOWN|KEY_X;
+                   (enemy->y<0 || enemyActive))return KEY_DOWN|KEY_Y;
             }
         }
     }
@@ -576,7 +588,7 @@ u16 cpuKeys(void) {
                 if(enemy->y<=-12*16 && enemy->y>=-56*16) {
                     if((enemy->x>f->x)==f->face &&
                        (frame+f->id*13)%(difficulty==2?6:10)==0 &&
-                       chance<(difficulty==2?24:16))return KEY_DOWN|KEY_L;
+                       chance<(difficulty==2?24:16))return KEY_DOWN|KEY_X;
                 }
             }
         }
@@ -585,10 +597,10 @@ u16 cpuKeys(void) {
         k=forward;
         if(distance>65 && difficulty>0 && (frame%143==0))k|=KEY_UP;
     } else if(!f->action && !f->hurt && frame%(23-difficulty*5)==0) {
-        chance=chance%6;
-        if(chance==0)k=KEY_Y;else if(chance==1)k=KEY_X;else if(chance==2)k=KEY_L;
-        else if(chance==3)k=KEY_B;else if(chance==4)k=KEY_A;else k=KEY_R;
-        if(distance<c->throwRange && difficulty>0)k=forward|KEY_L;
+        chance=chance&3;
+        if(chance==0)k=KEY_Y;else if(chance==1)k=KEY_X;
+        else if(chance==2)k=KEY_B;else k=KEY_A;
+        if(distance<c->throwRange && difficulty>0)k=forward|KEY_X;
         else if(chance==3)k|=KEY_DOWN;
     } else if(!f->action && !f->hurt && distance>=29) {
         k=forward;
@@ -628,20 +640,20 @@ u8 actionForInput(u8 p,u16 keys,u16 edge) {
     const CharacterProfile *c=combatProfiles[p];
     u16 forward,back;
     forward=f->face?KEY_RIGHT:KEY_LEFT;back=f->face?KEY_LEFT:KEY_RIGHT;
+    /* Four face buttons only. Directional variants retain the existing
+     * native throw, uppercut and sweep actions without shoulder attacks. */
     if(!(keys&back) && !f->y) {
-        if((edge&(KEY_Y|KEY_X)) && f->energy>=32) {
-            if(keys&KEY_DOWN)return 7;
+        if((edge&KEY_X) && (keys&KEY_DOWN))return 8;
+        if((edge&PUNCHES) && f->energy>=32) {
             if(f->motion==3)return 7;
+            if((edge&KEY_Y) && (keys&KEY_DOWN))return 7;
         }
-        if((edge&KEY_L) && (keys&KEY_DOWN))return 8;
     }
-    if((edge&KEY_L) && (keys&forward) && !f->y && !enemy->y) {
+    if((edge&KEY_X) && (keys&forward) && !f->y && !enemy->y) {
         if(abs16(f->x-enemy->x)<c->throwRange*16)return 9;
     }
-    if(edge&KEY_L)return 3;
-    if(edge&KEY_R)return 6;
-    if(edge&KEY_X)return 2;
-    if(edge&KEY_A)return 5;
+    if(edge&KEY_X)return 3;
+    if(edge&KEY_A){if((keys&KEY_DOWN) && !f->y)return 6;return 5;}
     if(edge&KEY_Y)return 1;
     if(edge&KEY_B)return 4;
     return 0;

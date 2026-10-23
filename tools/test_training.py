@@ -666,7 +666,7 @@ def verify_page_navigation(rom: Path, mode: int, fighter: int,
         if 0 <= p2 < len(FIGHTER_NAMES):
             expected.extend((FIGHTER_NAMES[p2], SPECIAL_NAMES[p2],
                              SPECIAL_FAMILY_NAMES[SPECIAL_FAMILY[p2]]))
-        expected.extend(("MOVE LIST 2/2", "QUICK: DOWN + Y / X",
+        expected.extend(("MOVE LIST 2/2", "QUICK: DOWN + Y",
                          "MOTION: D, D+F, F + Y/X", "COST: 32 ENERGY",
                          "12-TICK WINDOW PER STEP",
                          "PRESS PUNCH WITH FINAL TOWARD"))
@@ -1156,7 +1156,7 @@ def verify_dummy_and_contacts(rom: Path) -> dict[str, object]:
         forward = "right" if current["x1"] < current["x2"] else "left"
         throw_seen: list[dict[str, int]] = []
         for _ in range(80):
-            current = q.step((forward, "l"), ())
+            current = q.step((forward, 'x'), ())
             throw_seen.append(current)
             q.step((forward,), ())
             if (current["action1"] == 9 or current["throw_victim2"] == 1 or
@@ -1405,7 +1405,7 @@ def verify_cpu_training_play(rom: Path) -> list[dict[str, object]]:
                              "ambient_clock", "down_state1", "down_state2", "invuln1", "invuln2")
             for page in (1, 2, 0):
                 cycle_to_page(q, page)
-                after = q.run(8, ("down", "x"), ("up", "y"))
+                after = q.run(8, ("down", 'y'), ("up", "y"))
                 check(all(after[k] == frozen[k] for k in frozen_fields) and
                       after["training_dummy"] == 4,
                       "CPU combat, hitstop and recovery freeze on every pause page",
@@ -1488,7 +1488,7 @@ def verify_cpu_ignores_p2(rom: Path) -> dict[str, object]:
             resume(q)
             samples = []
             for index in range(360):
-                p1 = ("down", "x") if index % 90 in range(3, 6) else ()
+                p1 = ("down", 'y') if index % 90 in range(3, 6) else ()
                 samples.append(q.step(p1, held))
             replays.append([{k: s[k] for k in CPU_REPLAY_FIELDS} for s in samples])
         finally:
@@ -1520,7 +1520,7 @@ def verify_cpu_lowwave_defense(rom: Path) -> list[dict[str, object]]:
             q.run(24)
             resume(q)
             q.run(3, ("down",))
-            q.run(3, ("down", "x"))
+            q.run(3, ("down", 'y'))
             samples = [q.step() for _ in range(100)]
             waves = [s for s in samples if s["wave1"] and s["wave_low1"]]
             guarded = [s for s in samples if s["hp2"] == 127 and s["guard2"] and

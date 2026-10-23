@@ -111,9 +111,9 @@ def check_status_bars(e: Emulator, sample: dict[str, int], label: str) -> dict[s
 
     memory = vram_bytes(e)
     health_p1 = status_bar_expected(sample["hp1"], 11, HEALTH_TILE,
-                                     P1_STATUS_ATTR, True)
+                                     P1_STATUS_ATTR | (0x0400 if sample["hp1"] <= 32 else 0), True)
     health_p2 = status_bar_expected(sample["hp2"], 11, HEALTH_TILE,
-                                     P2_STATUS_ATTR, True)
+                                     P2_STATUS_ATTR | (0x0400 if sample["hp2"] <= 32 else 0), True)
     energy_p1 = status_bar_expected(sample["energy1"], 12, ENERGY_TILE,
                                     P1_STATUS_ATTR, False)
     energy_p2 = status_bar_expected(sample["energy2"], 12, ENERGY_TILE,
@@ -253,7 +253,7 @@ def menu_result() -> Emulator:
             e.run(1)
             continue
         forward = "right" if sample["x1"] < sample["x2"] else "left"
-        e.run(3, p1=[forward, "l"])
+        e.run(3, p1=[forward, 'x'])
         e.run(28, p1=[forward])
     last = trace(e)
     e.close()
@@ -668,13 +668,13 @@ def _run_transition_stress(cadence: str, fighter: int) -> dict[str, object]:
             if phase < 38:
                 keys = ["right"]
             elif phase < 44:
-                keys = ["right", "l"]
+                keys = ["right", 'x']
             elif phase < 50:
                 keys = ["up", "x"]
             elif phase < 80:
-                keys = ["down", "r"]
+                keys = ["down", 'a']
             elif phase < 110:
-                keys = ["down", "x"]
+                keys = ["down", 'y']
             else:
                 keys = []
             old = trace(e)["frame"]
@@ -811,7 +811,7 @@ def _run_two_controller_stress(cadence: str, scenario: str) -> dict[str, object]
             if scenario == "air":
                 p1 = (["up"] if phase < 3 else
                       ["x"] if phase < 10 else
-                      ["r"] if 25 <= phase < 29 else [])
+                      ['a'] if 25 <= phase < 29 else [])
                 p2 = (["up"] if phase < 3 else
                       ["y"] if phase < 10 else
                       ["a"] if 25 <= phase < 29 else [])
@@ -960,7 +960,7 @@ def _audio_branch(cue: str, triggered: bool) -> tuple[bytes, bytes]:
         elif cue == "special":
             if triggered:
                 e.run(3, p1=["down"])
-                e.run(3, p1=["down", "x"])
+                e.run(3, p1=["down", 'y'])
                 e.run(2)
             else:
                 e.run(8)
@@ -1238,7 +1238,7 @@ def check_hitstop_capture(e: Emulator) -> None:
     e.run(3, p1=["x"])
     tap = trace(e)
     freeze_samples.append(tap)
-    captured = (tap["buffered_action1"] == 2 and tap["buffer_age1"] > 0)
+    captured = (tap["buffered_action1"] == 3 and tap["buffer_age1"] > 0)
     e.run(1)  # release before the buffered command can execute
     freeze_samples.append(trace(e))
     while len(freeze_samples) < 6 and trace(e)["hitstop"]:
@@ -1266,7 +1266,7 @@ def check_hitstop_capture(e: Emulator) -> None:
     executed = None
     for _ in range(30):
         s = trace(e)
-        if not s["hitstop"] and s["action1"] == 2:
+        if not s["hitstop"] and s["action1"] == 3:
             executed = s
             break
         e.run(1)
@@ -1322,7 +1322,7 @@ def check_down_shortcut(port: int) -> None:
         initial = trace(e)
         face = port_field(initial, "face", port)
         drive(e, port, ["down"], 3)
-        drive(e, port, ["down", "x"], 3)
+        drive(e, port, ["down", 'y'], 3)
         tap = trace(e)
         check(tap[f"action{suffix}"] == 7,
               f"P{suffix} down+X shortcut starts special", {
@@ -1509,7 +1509,7 @@ def _throw_victim_to_wake(e: Emulator, victim: int) -> dict[str, int]:
     attacker_suffix = str(attacker + 1)
     victim_suffix = str(victim + 1)
     forward = "right" if before[f"face{attacker_suffix}"] else "left"
-    drive(e, attacker, [forward, "l"], 3)
+    drive(e, attacker, [forward, 'x'], 3)
     for _ in range(180):
         sample = trace(e)
         if sample[f"down_state{victim_suffix}"] == 5:
@@ -1541,7 +1541,7 @@ def check_wake_motion_both_ports() -> None:
         suffix = str(victim + 1)
 
         # A direction-only QCF entered during wake must be discarded.  The
-        # fresh X edge after wake should start normal action 2 and retain meter.
+        # fresh X edge after wake should start normal action 3 and retain meter.
         e = boot(1)
         try:
             wake = _throw_victim_to_wake(e, victim)
@@ -1553,7 +1553,7 @@ def check_wake_motion_both_ports() -> None:
             energy = free[f"energy{suffix}"]
             drive(e, victim, ["x"])
             post = trace(e)
-            check(post[f"action{suffix}"] == 2 and
+            check(post[f"action{suffix}"] == 3 and
                   post[f"energy{suffix}"] == energy,
                   f"P{suffix} wake-only QCF directions do not turn fresh X into a special", {
                       "wake": wake,
@@ -1680,7 +1680,7 @@ def check_normal_cancel_deadline() -> None:
     """Early hit-confirm cancels; late input buffers through recovery."""
 
     # Early hit-confirm: after hitstop ends the connected normal is still
-    # inside startup+active+5 and a fresh medium punch may cancel it.
+    # inside startup+active+5 and a fresh strong punch may cancel it.
     e = boot(1)
     try:
         close_players(e)
@@ -1690,8 +1690,8 @@ def check_normal_cancel_deadline() -> None:
         e.run(1)
         drive(e, 0, ["x"], 3)
         early = trace(e)
-        check(early["action1"] == 2,
-              "early hit-confirm cancels into a medium punch", {
+        check(early["action1"] == 3,
+              "early hit-confirm cancels into a strong punch", {
                   "hitstop": hit, "live": live, "trace": early,
               })
     finally:
@@ -1716,7 +1716,7 @@ def check_normal_cancel_deadline() -> None:
         for _ in range(3):
             drive(e, 0, ["x"])
             held.append(trace(e))
-        check(held[0]["action1"] == 1 and held[0]["buffered_action1"] == 2,
+        check(held[0]["action1"] == 1 and held[0]["buffered_action1"] == 3,
               "late normal input buffers without cancelling after the deadline", {
                   "before": late_before, "held": held,
               })
@@ -1735,7 +1735,7 @@ def check_normal_cancel_deadline() -> None:
         if ended is not None:
             drive(e, 0, [])
             restarted = trace(e)
-            check(restarted["action1"] == 2 and restarted["anim_tick1"] <= 2,
+            check(restarted["action1"] == 3 and restarted["anim_tick1"] <= 2,
                   "late buffered normal starts after recovery", {
                       "ended": ended, "restarted": restarted,
                   })
@@ -1888,7 +1888,7 @@ def check_guard_timing() -> dict[str, object]:
                 e.run(1)
             special_before = trace(e)
             drive(e, 0, ["down"], 3)
-            drive(e, 0, ["down", "x"], 3)
+            drive(e, 0, ["down", 'y'], 3)
             special_spent: dict[str, int] | None = None
             for _ in range(80):
                 special_sample = trace(e)
@@ -1967,9 +1967,9 @@ def check_counter_banner() -> dict[str, object]:
             # edge-triggered fixture on port two.  Holding both for one native
             # tick gives captureInput an unambiguous edge on each port.
             if attacker == 0:
-                e.run(1, p1=["y"], p2=["r"])
+                e.run(1, p1=["y"], p2=['a'])
             else:
-                e.run(1, p1=["r"], p2=["y"])
+                e.run(1, p1=['a'], p2=["y"])
             samples = [trace(e)]
             rows = [counter_banner_row(e, attacker)]
             previous_frame = initial_frame
@@ -2070,8 +2070,8 @@ def check_contact_classification() -> None:
         e.run(1)
         drive(e, 0, ["x"], 3)
         cancel = trace(e)
-        check(cancel["action1"] == 2,
-              "real hit confirmation cancels into a medium punch", {
+        check(cancel["action1"] == 3,
+              "real hit confirmation cancels into a strong punch", {
                   "event": real, "cancel": cancel,
               })
     finally:
@@ -2099,7 +2099,7 @@ def check_contact_classification() -> None:
         e.run(1, p2=guard)
         drive(e, 0, ["x"], 3)
         blocked_cancel = trace(e)
-        check(blocked_cancel["action1"] != 2,
+        check(blocked_cancel["action1"] != 3,
               "blocked jab cannot hit-confirm cancel into medium", {
                   "event": blocked, "trace": blocked_cancel,
               })
@@ -2193,18 +2193,18 @@ def check_stale_prehit_buffer() -> None:
     e = boot(1)
     try:
         close_players(e)
-        # P1 starts a slow heavy normal.  X is buffered during its startup,
+        # P1 starts a slow strong kick.  X is buffered during its startup,
         # then P2's faster jab lands while P1 is still the defender.  This
         # exercises the contract's defender-side stale-buffer clearing path.
-        e.run(1, p1=["l"], p2=["y"])
+        e.run(1, p1=["a"], p2=["y"])
         prehit: list[dict[str, int]] = []
         for _ in range(3):
             e.run(1, p1=["x"])
             prehit.append(trace(e))
         e.run(1, p1=[])
-        check(any(s["buffered_action1"] == 2 and
+        check(any(s["buffered_action1"] == 3 and
                   event_field(s, "hurt", 1) == 0 for s in prehit),
-              "defender pre-hit medium input is visibly buffered", prehit)
+              "defender pre-hit strong input is visibly buffered", prehit)
 
         event, history = wait_connected(e, 1)
         check(event is not None and event_field(event or {}, "connected", 1) == 2,
@@ -2228,9 +2228,9 @@ def check_stale_prehit_buffer() -> None:
             tap_samples.append(trace(e))
         tap = tap_samples[-1]
         hitstop_taps = [s for s in tap_samples if s["hitstop"]]
-        check(any(s["buffered_action1"] == 2 and s["buffer_age1"] > 0
+        check(any(s["buffered_action1"] == 3 and s["buffer_age1"] > 0
                   for s in hitstop_taps),
-              "new hitstop medium tap is captured after stale input clears", {
+              "new hitstop strong tap is captured after stale input clears", {
                   "event": event, "tap": tap_samples,
               })
         check(bool(hitstop_taps) and
@@ -2336,7 +2336,7 @@ def check_mirrored_throw_range() -> None:
         check(abs(inside["x1"] - inside["x2"]) < inside["throw_range1"] * 16,
               "P1 throw probe starts inside its published range", inside)
         forward = "right" if inside["face1"] else "left"
-        drive(e, 0, [forward, "l"], 3)
+        drive(e, 0, [forward, 'x'], 3)
         p1_throw = trace(e)
         check(p1_throw["action1"] == 9 or
               event_field(p1_throw, "connected", 0) == 2,
@@ -2351,7 +2351,7 @@ def check_mirrored_throw_range() -> None:
         check(abs(inside["x1"] - inside["x2"]) < inside["throw_range2"] * 16,
               "P2 throw probe starts inside its published range", inside)
         forward = "right" if inside["face2"] else "left"
-        drive(e, 1, [forward, "l"], 3)
+        drive(e, 1, [forward, 'x'], 3)
         p2_throw = trace(e)
         check(p2_throw["action2"] == 9 or
               event_field(p2_throw, "connected", 1) == 2,
@@ -2369,7 +2369,7 @@ def check_mirrored_throw_range() -> None:
         check(abs(outside["x1"] - outside["x2"]) >= outside["throw_range1"] * 16,
               "P1 range probe reaches the outside side of the throw edge", outside)
         forward = "right" if outside["face1"] else "left"
-        drive(e, 0, [forward, "l"], 3)
+        drive(e, 0, [forward, 'x'], 3)
         no_throw = trace(e)
         check(no_throw["action1"] != 9,
               "P1 heavy input outside throw range falls back to a normal", {
@@ -2427,15 +2427,15 @@ def _airborne_normal_probe(e: Emulator, port: int, key: str) -> dict[str, object
 
 
 def check_air_normals_both_sides() -> None:
-    """All six airborne normals work for right- and left-facing players."""
+    """All four airborne normals work for right- and left-facing players."""
 
     e = boot(1)
     try:
         results: dict[str, object] = {}
         for port in (0, 1):
-            for key in ("y", "x", "l", "b", "a", "r"):
+            for key in ("y", "x", "b", "a"):
                 results[f"p{port + 1}-{key}"] = _airborne_normal_probe(e, port, key)
-        check(len(results) == 12, "both controller directions cover six airborne normals", results)
+        check(len(results) == 8, "both controller directions cover four airborne normals", results)
     finally:
         e.close()
 
@@ -2525,7 +2525,7 @@ def _observe_throw(e: Emulator, attacker: int) -> dict[str, object]:
     a_suffix = str(attacker + 1)
     v_suffix = str(victim + 1)
     forward = "right" if before[f"face{a_suffix}"] else "left"
-    drive(e, attacker, [forward, "l"], 3)
+    drive(e, attacker, [forward, 'x'], 3)
     samples: list[dict[str, int]] = []
     first_down = None
     damage_state = None
@@ -2616,7 +2616,7 @@ def check_throw_knockdown_wake() -> None:
         _close_for_throw(e)
         before = trace(e)
         forward = "right" if before["face1"] else "left"
-        drive(e, 0, [forward, "l"], 3)
+        drive(e, 0, [forward, 'x'], 3)
         paused_checked = False
         queued = False
         queued_trace: dict[str, int] | None = None
@@ -2700,7 +2700,7 @@ def check_throw_knockdown_wake() -> None:
     try:
         _close_for_throw(e)
         before = trace(e)
-        drive(e, 0, ["right", "l"], 3)
+        drive(e, 0, ["right", 'x'], 3)
         down = None
         for _ in range(80):
             sample = trace(e)
@@ -2734,7 +2734,7 @@ def check_simultaneous_throw_tech() -> None:
         f1 = "right" if initial["face1"] else "left"
         f2 = "right" if initial["face2"] else "left"
         for _ in range(4):
-            e.run(1, p1=[f1, "l"], p2=[f2, "l"])
+            e.run(1, p1=[f1, 'x'], p2=[f2, 'x'])
         e.run(20)
         after = trace(e)
         check(after["hp1"] == initial["hp1"] and after["hp2"] == initial["hp2"] and
@@ -2754,7 +2754,7 @@ def check_simultaneous_throw_tech() -> None:
         initial = trace(e)
         f1 = "right" if initial["face1"] else "left"
         for _ in range(4):
-            e.run(1, p1=[f1, "l"], p2=["y"])
+            e.run(1, p1=[f1, 'x'], p2=["y"])
         resolved = trace(e)
         check(resolved["down_state2"] in (1, 2, 3, 4, 5) and
               resolved["hp1"] == initial["hp1"],
@@ -2771,7 +2771,7 @@ def check_simultaneous_throw_tech() -> None:
     try:
         _close_for_throw(e)
         initial = trace(e)
-        drive(e, 0, ["down", "x"], 3)
+        drive(e, 0, ["down", 'y'], 3)
         samples = []
         for _ in range(18):
             sample = trace(e)
@@ -2810,7 +2810,7 @@ def check_throw_startup_escape() -> dict[str, object]:
 
         # Keep both edges live for the poll window; the P2 UP edge starts the
         # jump before the contact snapshot can accept a grounded throw.
-        e.run(3, p1=[forward, "l"], p2=["up"])
+        e.run(3, p1=[forward, 'x'], p2=["up"])
         samples: list[dict[str, int]] = []
         for _ in range(48):
             sample = trace(e)
@@ -2875,7 +2875,7 @@ def check_projectile_interrupts_throw() -> dict[str, object]:
     try:
         close_players(e)
         drive(e, 1, ["down"], 3)
-        drive(e, 1, ["down", "x"], 3)
+        drive(e, 1, ["down", 'y'], 3)
 
         # Ivo's projectile startup is long enough for a late throw edge to
         # overlap it.  Keep the controller released between samples so this
@@ -2903,7 +2903,7 @@ def check_projectile_interrupts_throw() -> dict[str, object]:
         # The five-tick heavy edge is long enough for Snes9x's poll phase but
         # remains a controller-only contact attempt, not a state mutation.
         for _ in range(5):
-            drive(e, 0, [forward, "l"])
+            drive(e, 0, [forward, 'x'])
             samples.append(trace(e))
 
         # Keep collecting until the released victim returns to FREE, proving
@@ -2960,9 +2960,9 @@ def check_attack_knockdowns() -> None:
     """Real sweep, uppercut, and rising hits enter the down-state machine."""
 
     cases = (
-        (0, ["down", "r"], "crouching heavy sweep"),
-        (0, ["down", "l"], "uppercut"),
-        (5, ["down", "x"], "rising special"),
+        (0, ["down", 'a'], "crouching heavy sweep"),
+        (0, ["down", 'x'], "uppercut"),
+        (5, ["down", 'y'], "rising special"),
     )
     for fighter, keys, label in cases:
         e = boot(1, fighter=fighter, fighter2=1)
@@ -2997,7 +2997,7 @@ def check_attack_knockdowns() -> None:
     e = boot(1, fighter=0, fighter2=1)
     try:
         close_players(e)
-        drive(e, 0, ["down", "r"], 3)
+        drive(e, 0, ["down", 'a'], 3)
         guarded: list[dict[str, int]] = []
         for _ in range(40):
             # Keep the defender stationary at close range while crouch
@@ -3020,7 +3020,7 @@ def check_down_floor_input_guard() -> dict[str, object]:
     """Downed input cannot act, jump, or re-hit at a close floor position.
 
     Lars's long heavy reach makes the OTG portion non-vacuous: after his
-    uppercut launches P2, P1 waits until its action is free, then holds R
+    uppercut launches P2, P1 waits until its action is free, then holds Down+A
     while P2 is still down.  The actual active frame must overlap a downed
     state inside the 71px normal-contact envelope without changing P2 HP.
     """
@@ -3039,7 +3039,7 @@ def check_down_floor_input_guard() -> dict[str, object]:
         states: set[int] = set()
         violations: list[dict[str, object]] = []
 
-        drive(e, 0, ["down", "l"], 3)
+        drive(e, 0, ["down", 'x'], 3)
         for index in range(120):
             sample = trace(e)
             down = sample["down_state2"]
@@ -3063,7 +3063,7 @@ def check_down_floor_input_guard() -> dict[str, object]:
                     floor.append(sample)
                 if down == 4:
                     rise.append(sample)
-                if sample["action1"] == 6 and sample["anim_frame1"] == 7:
+                if sample["action1"] == 6 and sample["anim_frame1"] == 8:
                     active.append({
                         "frame": sample["frame"],
                         "down_state2": down,
@@ -3072,7 +3072,7 @@ def check_down_floor_input_guard() -> dict[str, object]:
                     })
             if heavy_at is None and down and sample["y1"] == 0 and sample["action1"] == 0:
                 heavy_at = index
-            p1 = ["r"] if heavy_at is not None and heavy_at <= index < heavy_at + 4 else []
+            p1 = ['down', 'a'] if heavy_at is not None and heavy_at <= index < heavy_at + 4 else []
             p2 = ["up", "y"] if launch_face is not None else []
             e.run(1, p1=p1, p2=p2)
 
@@ -3272,7 +3272,7 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
                 contact_index = len(rows) - 1
                 effect = oam_entry(oam_memory(e), 69)
 
-        action = {"y": 1, "x": 2, "l": 3, "b": 4, "a": 5, "r": 6}[key]
+        action = {"y": 1, "x": 3, "b": 4, "a": 5}[key]
         active_frame = 50 if action < 4 else 53
         active = [row for row in rows if row[f"action{a}"] == action and
                   row[f"anim_frame{a}"] == active_frame]
@@ -3296,7 +3296,7 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
         # defender vertically, behind the locked facing, within FRONT reach.
         # Otherwise a directional assertion could silently become a range test.
         if not front and not trade:
-            front_reach = {"y": 28, "x": 33, "l": 38, "b": 35, "a": 41, "r": 46}[key]
+            front_reach = {"y": 28, "x": 38, "b": 35, "a": 41}[key]
             geometry = []
             for row in active:
                 y = signed16(row[f"y{a}"])
@@ -3443,9 +3443,9 @@ def check_cross_up_contacts() -> dict[str, object]:
                  ("corner", {"front": True, "corner": True}), ("trade", {"trade": True})]
         for name, options in cases:
             results[f"p{port + 1}-{name}"] = _cross_up_contact_case(port, **options)
-        for key in ("y", "x", "l", "b", "r"):
+        for key in ("y", "x", "b"):
             results[f"p{port + 1}-rear-{key}"] = _cross_up_contact_case(port, key)
-        for key in ("a", "l"):
+        for key in ("a", "x"):
             results[f"p{2 - port}-ground-{key}"] = _grounded_cross_up_whiff(port, key)
     return results
 
@@ -3906,7 +3906,7 @@ def check_cpu_lowwave_guard() -> dict[str, object]:
         samples: list[dict[str, int]] = []
         try:
             drive(e, 0, ["down"], 3)
-            drive(e, 0, ["down", "x"], 3)
+            drive(e, 0, ["down", 'y'], 3)
             for _ in range(80):
                 sample = trace(e)
                 samples.append(sample)
@@ -3962,10 +3962,15 @@ def check_cpu_wake() -> dict[str, object]:
             # attacks so a second hit or KO cannot hide wake behavior.
             for index in range(induction_limit):
                 current = trace(e)
-                keys = (["down", "r"] if index % 32 < 4 and
+                distance = abs(current["x1"] - current["x2"])
+                forward = "right" if current["x1"] < current["x2"] else "left"
+                # Reclose after guarded recoil instead of attacking empty
+                # space while the four-button CPU retreats from contact.
+                keys = [forward] if distance > 28 * 16 else []
+                if (index % 32 < 4 and distance < 45 * 16 and
                         not down_seen and current["action1"] == 0 and
-                        current["down_state1"] == 0 else [])
-                if keys:
+                        current["down_state1"] == 0):
+                    keys = ["down", "x"]
                     attack_pulses += 1
                 e.run(1, p1=keys)
                 sample = trace(e)
@@ -4077,7 +4082,7 @@ def _cpu_jump_in(cpu_id: int, difficulty: int, title_delay: int = 0, *,
 
 
 def _cpu_uppercut_start(case: dict[str, object], *, hit: bool) -> dict[str, object]:
-    """Require a fresh Down+L edge, its full startup, and native contact/whiff."""
+    """Require a fresh Down+X edge, its full startup, and native contact/whiff."""
 
     samples = case["samples"]
     label = (f"CPU d{case['difficulty']} fighter {case['cpu_id']} "
@@ -4089,9 +4094,9 @@ def _cpu_uppercut_start(case: dict[str, object], *, hit: bool) -> dict[str, obje
           [_cpu_summary(sample) for sample in samples])
     index = starts[0]
     before, first = samples[index - 1:index + 1]
-    check(first["raw_keys2"] == 1056 and first["anim_tick2"] == 1 and
-          signed16(first["y2"]) < 0 and before["raw_keys2"] & 32 == 0,
-          label + " starts action 8 from a real fresh DOWN+L edge", {
+    check(first["raw_keys2"] == 1088 and first["anim_tick2"] == 1 and
+          signed16(first["y2"]) < 0 and before["raw_keys2"] & 64 == 0,
+          label + " starts action 8 from a real fresh DOWN+X edge", {
               "before": _cpu_summary(before), "first": _cpu_summary(first)})
     check(before["action2"] == before["hurt2"] == before["y2"] ==
           before["down_state2"] == before["hitstop"] == 0 and before["hp2"] > 0,
@@ -4137,7 +4142,7 @@ def _cpu_uppercut_start(case: dict[str, object], *, hit: bool) -> dict[str, obje
 
 
 def _cpu_anti_air_ko(victim: int) -> dict[str, object]:
-    """Reach genuine KOs on both sides with walk/uppercut controller play."""
+    """Reach genuine KOs on both sides with walk/throw/uppercut controller play."""
 
     e = boot(0, fighter=1, difficulty=2)
     samples: list[dict[str, int]] = []
@@ -4148,9 +4153,9 @@ def _cpu_anti_air_ko(victim: int) -> dict[str, object]:
                 break
             forward = "right" if before["x1"] < before["x2"] else "left"
             keys = [forward]
-            if victim == 2 and tick % 32 < 3 and \
+            if victim == 2 and tick % 16 < 3 and \
                     abs(before["x1"] - before["x2"]) < 36 * 16:
-                keys = ["down", "l"]
+                keys = ["down", "x"] if before["hp2"] <= 32 else [forward, "x"]
             e.run(1, p1=keys)
             sample = trace(e)
             if sample[f"hp{victim}"] == 0:
@@ -4207,11 +4212,17 @@ def check_cpu_anti_air() -> dict[str, object]:
           "CPU anti-air difficulty comparison has the same native opening",
           [_cpu_summary(case["samples"][0]) for case in (easy, normal, hard)])
     for case, label in ((easy, "Easy"), (normal, "Normal sampled miss")):
-        check(not any(sample["raw_keys2"] == 1056 or sample["action2"] == 8
+        check(not any(sample["raw_keys2"] == 1088 or sample["action2"] == 8
                       for sample in case["samples"]),
               label + " keeps the measured jump-in without a universal uppercut",
               [_cpu_summary(sample) for sample in case["samples"]])
-    opportunities = [sample for sample in normal["samples"]
+    # The four-button CPU chooses from four normals instead of six. In the
+    # equal-opening comparison above Normal is occupied by a strong normal;
+    # this separately measured phase retains a genuinely free sampled miss.
+    normal_decline = _cpu_jump_in(4, 1, 3)
+    check(not any(sample["action2"] == 8 for sample in normal_decline["samples"]),
+          "Normal's available-window fixture genuinely declines the uppercut")
+    opportunities = [sample for sample in normal_decline["samples"]
                      if -56 * 16 <= signed16(sample["y1"]) <= -12 * 16 and
                      abs(sample["x1"] - sample["x2"]) < 41 * 16 and
                      sample["action2"] == sample["hurt2"] == sample["y2"] == 0]
@@ -4230,7 +4241,7 @@ def check_cpu_anti_air() -> dict[str, object]:
     # the jump kick. Its locked facing exposes a real behind-target window;
     # free grounded CPUs turn normally before choosing their input.
     busy = _cpu_jump_in(2, 1)
-    cases.extend((retreat, easy, normal, empty_jump, busy))
+    cases.extend((retreat, easy, normal, normal_decline, empty_jump, busy))
     negatives: dict[str, list[tuple[dict[str, int], dict[str, int]]]] = {
         name: [] for name in ("grounded", "far", "behind-locked", "unavailable",
                              "hurt", "target-hurt-or-down", "hitstop")}
@@ -4260,14 +4271,15 @@ def check_cpu_anti_air() -> dict[str, object]:
     negative_counts = {}
     for name, pairs in negatives.items():
         violations = [(before, after) for before, after in pairs
-                      if after["raw_keys2"] == 1056]
+                      if after["raw_keys2"] == 1088]
         check(bool(pairs) and not violations,
-              "CPU anti-air does not issue DOWN+L for " + name, {
+              "CPU anti-air does not issue DOWN+X for " + name, {
                   "observed_ticks": len(pairs),
                   "example": _cpu_summary(pairs[0][0]) if pairs else None,
                   "violations": [[_cpu_summary(s) for s in pair] for pair in violations[:4]]})
         negative_counts[name] = len(pairs)
     return {"hits": hits, "retreat_whiff": whiff, "empty_jump": empty_hit,
+            "normal_declined_title_delay": 3,
             "normal_declined_ticks": len(opportunities), "negative_ticks": negative_counts,
             "ko": [_cpu_anti_air_ko(victim) for victim in (1, 2)]}
 

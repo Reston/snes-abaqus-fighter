@@ -78,15 +78,15 @@ void buildPauseGuide(void) {
         guideBuild=3;
     } else if(guideBuild==3) {
         if(pausePage==1) {
-            guideWord(3,14,"PUNCH         Y / X / L");
-            guideWord(3,15,"KICK          B / A / R");
-            guideWord(3,16,"              LIGHT/MED/HEAVY");
-            guideWord(3,18,"THROW         TOWARD + L");
-            guideWord(3,19,"UPPERCUT      DOWN + L");
+            guideWord(3,14,"PUNCH         Y LIGHT X STRONG");
+            guideWord(3,15,"KICK          B LIGHT A STRONG");
+            guideWord(3,16,"SWEEP         DOWN + A");
+            guideWord(3,18,"THROW         TOWARD + X");
+            guideWord(3,19,"UPPERCUT      DOWN + X");
             guideCenter(21,"AFTER A HIT: PRESS HEAVIER");
             guideCenter(22,"CROSS-UP: JUMP PAST + A");
         } else {
-            guideWord(3,15,"QUICK: DOWN + Y / X");
+            guideWord(3,15,"QUICK: DOWN + Y");
             guideWord(3,17,"MOTION: D, D+F, F + Y/X");
             guideWord(3,18,"D=DOWN  F=TOWARD OPPONENT");
             guideWord(3,19,"12-TICK WINDOW PER STEP");

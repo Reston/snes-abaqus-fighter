@@ -66,7 +66,13 @@ def make_effect_sheet():
                    (x+12,25), (x+14,29)], fill=3)
         d.line((x+6,29,x+12,27), fill=2)
 
-    # Shadow pixels stay exactly at floor+1..+6. Moving their six blank top
-    # rows out of the fetched OBJ rectangle frees the actors' last scanlines.
-    d.ellipse((112,16,127,21), fill=8)
+    # Left half of one shallow contact ellipse. The native renderer places
+    # adjacent mirrored halves at floor-1: its dark center touches the feet,
+    # with no detached pair of ovals below the fighter. Keep the same two
+    # 16x16 OAM entries, below the low waves' last fetch line (198).
+    # Four painted scanlines keep the contact ellipse shallow.
+    for y in range(4):
+        for x in range(16):
+            radius=((x-15.5)/16)**2+((y-1.5)/2.0)**2
+            if radius<=1:image.putpixel((112+x,16+y),11 if radius>.72 else 8)
     return image

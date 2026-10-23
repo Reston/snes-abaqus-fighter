@@ -1086,10 +1086,10 @@ def trigger_special(e: Emulator, expected_family: int,
     """
 
     macros = (
-        (("down",), ("down", "x")),
+        (("down",), ("down", 'y')),
         (("down",), ("down", "a")),
-        (("down", "right"), ("down", "right", "x")),
-        (("down",), ("down", "l")),
+        (("down", "right"), ("down", "right", 'y')),
+        (("down",), ("down", 'x')),
     )
     best: tuple[dict[str, int], list[dict[str, int]]] | None = None
     visual_frames: set[int] = set()
@@ -1268,7 +1268,7 @@ def verify_guard_case(fighter: int, guard: str, blocked: bool) -> dict[str, obje
         })
 
         initial_hp, final_hp, hit = wait_for_hp_change(
-            e, 1, p1=["down", "x"], p2=guard_keys
+            e, 1, p1=["down", 'y'], p2=guard_keys
         )
         delta = initial_hp - final_hp
         if blocked:
@@ -1309,7 +1309,7 @@ def verify_p2_special_hit(fighter: int) -> dict[str, object]:
         })
 
         initial_hp, final_hp, hit = wait_for_hp_change(
-            e, 0, p1=[], p2=["down", "x"]
+            e, 0, p1=[], p2=["down", 'y']
         )
         delta = initial_hp - final_hp
         check(delta >= 10, "left-facing P2 special reaches passive P1", {
@@ -1431,8 +1431,8 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
 
         normal_streams: dict[str, dict[str, int]] = {}
         for key, action, pose in (
-            ("y", 1, 5), ("x", 2, 6), ("l", 3, 6),
-            ("b", 4, 7), ("a", 5, 7), ("r", 6, 7),
+            ("y", 1, 5), ("x", 3, 6),
+            ("b", 4, 7), ("a", 5, 7),
         ):
             # A one-frame edge can land between the libretro poll callbacks
             # at this point in the long roster stream.  Hold the physical
@@ -1450,12 +1450,12 @@ def verify_p1_fighter(fighter: int) -> dict[str, object]:
 
         # Hold the transition across the libretro poll phase; the engine still
         # consumes only the edge and keeps the uppercut action active.
-        e.run(3, p1=["down", "l"])
+        e.run(3, p1=["down", 'x'])
         check(state(e)["action1"] == 8, "down plus heavy starts the uppercut", {
             "fighter": fighter, "action": state(e)["action1"],
         })
         uppercut_stream = stream_pose(e, fighter, 0, 13, "uppercut",
-                                      hold=("down", "l"))
+                                      hold=("down", 'x'))
         seen_banks.add(uppercut_stream["bank"])
         e.run(70)
         attack_gif = capture_animation_gif(e, fighter, "attack-animation", ("y",), 24)
@@ -1606,7 +1606,7 @@ def _air_normal(e: Emulator, fighter: int, side: int, key: str,
     suffix = str(side + 1)
     y_key = f"y{suffix}"
     face_key = f"face{suffix}"
-    action_index = ("y", "x", "l", "b", "a", "r").index(key) + 1
+    action_index = {"y": 1, "x": 3, "b": 4, "a": 5}[key]
     before = state(e)
     face = before[face_key]
     _drive_side(e, side, ("up",), 3)
@@ -1713,7 +1713,7 @@ def _throw_sequence(e: Emulator, fighter: int, attacker: int,
     victim = 1 - attacker
     victim_suffix = str(victim + 1)
     forward = "right" if before[f"face{attacker_suffix}"] else "left"
-    _drive_side(e, attacker, (forward, "l"), 3)
+    _drive_side(e, attacker, (forward, 'x'), 3)
     frames_attacker: set[int] = set()
     frames_victim: set[int] = set()
     down_states: list[int] = []
@@ -1792,17 +1792,17 @@ def _throw_sequence(e: Emulator, fighter: int, attacker: int,
 
 
 def verify_airborne_and_throw(fighter: int) -> dict[str, object]:
-    """Exercise all six air normals in both facings and both throw roles."""
+    """Exercise all four air normals in both facings and both throw roles."""
 
     e = boot(1, fighter, fighter % 3, fighter)
     try:
         air_results: dict[str, object] = {}
         for side in (0, 1):
-            for key in ("y", "x", "l"):
+            for key in ("y", "x"):
                 air_results[f"p{side + 1}-{key}"] = _air_normal(
                     e, fighter, side, key, AIR_PUNCH_FRAMES,
                     capture_gif=(key == "y" and (side == 0 or fighter == 0)))
-            for key in ("b", "a", "r"):
+            for key in ("b", "a"):
                 air_results[f"p{side + 1}-{key}"] = _air_normal(
                     e, fighter, side, key, AIR_KICK_FRAMES,
                     capture_gif=(key == "b" and (side == 0 or fighter == 0)))

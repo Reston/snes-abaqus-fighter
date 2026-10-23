@@ -206,17 +206,28 @@ for i in range(128,160):
     elif 129<=i<=137:
         fill=i-129
         for y in range(8):
-            for x in range(8):pix[y*8+x]=6 if y in (0,7) else ((2 if y==1 else (13 if y==6 else 3)) if x<fill else 8)
+            for x in range(8):
+                pix[y*8+x]=7 if y==0 else (8 if y==7 else
+                    ((2 if y==1 else (13 if y==6 else 3)) if x<fill else 11))
     elif 138<=i<=146:
         fill=i-138
         for y in range(8):
-            for x in range(8):pix[y*8+x]=1 if y<3 or y>5 else (4 if x<fill else 8)
+            for x in range(8):
+                pix[y*8+x]=1 if y<2 or y>5 else (
+                    (2 if y==2 else (10 if y==5 else 4)) if x<fill else 8)
+                if x==7 and y==5:pix[y*8+x]=8
     elif i==147:
+        # A closed medal with a small glint, rather than a square counter.
+        pix=[1]*64
         for y in range(8):
-            for x in range(8):pix[y*8+x]=3 if 1<x<6 and 1<y<6 else 1
+            for x in range(8):
+                if abs(2*x-7)+abs(2*y-7)<=8:pix[y*8+x]=3
+        pix[2*8+3]=2;pix[3*8+2]=2
     elif i==148:
+        pix=[1]*64
         for y in range(8):
-            for x in range(8):pix[y*8+x]=6 if x in (1,6) or y in (1,6) else 1
+            for x in range(8):
+                if 6<=abs(2*x-7)+abs(2*y-7)<=8:pix[y*8+x]=6
     elif i in (149,150,151,152):
         for y in range(8):
             for x in range(8):
@@ -225,6 +236,19 @@ for i in range(128,160):
         for y in range(8):pix[y*8]=3
     elif i==154:
         for x in range(8):pix[x]=3
+    elif i==155:
+        pix=[1]*64
+        for y in range(1,7):pix[y*8+6]=7;pix[y*8+7]=11
+        pix[7]=7;pix[7*8+7]=8
+    elif i==156:
+        pix=[1]*64
+        for y in range(8):pix[y*8+6]=8;pix[y*8+7]=3
+    elif i==157:
+        pix=[1]*64
+        for y in range(2,6):pix[y*8+7]=8
+    elif i==158:
+        pix=[1]*64
+        for x in range(8):pix[6*8+x]=8;pix[7*8+x]=3
     ui+=tile(pix)
 # Portraits retain slots 160..239. Opaque fight/result/guide glyphs use the free
 # slots 256..383, ending exactly before the BG2 map at VRAM word $5800.
@@ -238,7 +262,10 @@ for code in range(128):
 if not (len(ui)==384*32):
     raise AssertionError()
 asset('ui_tiles',ui)
-asset('ui_pal',palbytes(UI_COLORS+[(0,0,0),(15,24,41),(96,235,212)]+UI_COLORS[3:]))
+hud_accent=UI_COLORS[:]
+hud_accent[1]=(15,24,41);hud_accent[2]=UI_COLORS[3]
+hud_accent[3]=UI_COLORS[5];hud_accent[13]=UI_COLORS[5]
+asset('ui_pal',palbytes(UI_COLORS+hud_accent))
 
 # Each fighter has independent illustrated frames and a fifteen-color palette.
 # Sixty-four uniform 96x80 frames use eight LoROM-safe eight-frame banks.

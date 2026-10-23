@@ -168,8 +168,8 @@ def actor_contract(e: Emulator, expected_floor: int | None = None,
         if left >= 256:
             left -= 512
         shadows = [oam_entry(raw, 64 + side * 2 + index) for index in range(2)]
-        check(all(shadow["x"] == left + 36 + index * 12 and
-                  shadow["y"] == 202 and shadow["tile"] == 430 and
+        check(all(shadow["x"] == left + 32 + index * 16 and
+                  shadow["y"] == 200 and shadow["tile"] == 430 and
                   shadow["attr"] == (0x25 if index == 0 else 0x65) and
                   shadow["x9"] == 0 and shadow["size"] == 1
                   for index, shadow in enumerate(shadows)),
@@ -836,7 +836,7 @@ def verify_two_wave_regression(stage_id: int, slug: str,
         # crouch, then both controllers hold the special shortcut together.
         e.run(4, p1=["down"], p2=["down"])
         for tick in range(28):
-            sample(["down", "x"], tick)
+            sample(["down", 'y'], tick)
         # Include the recovery/shadow frames after the active wave window in
         # the actual review GIF and budget sample.
         for tick in range(28, 52):

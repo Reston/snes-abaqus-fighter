@@ -123,7 +123,7 @@ def check_zero_hp_knockdown():
             close_in(e)
             before=e.state()
             for _ in range(3):
-                e.run(1,p1=['down','r'])
+                e.run(1,p1=['down','a'])
                 sample=e.state();history.append(sample)
                 record_ko_flight(sample,flights,violations)
             for _ in range(100):
@@ -158,7 +158,7 @@ def play_cpu(e):
         elif s['action1']:e.run(1,p1=[forward])
         elif s['action2'] and distance<55:e.run(1,p1=[back,'down'] if 4<=s['action2']<=6 else [back])
         elif distance>25:e.run(1,p1=[forward])
-        else:e.run(1,p1=[forward,'l']);e.run(1,p1=[forward])
+        else:e.run(1,p1=[forward,'x']);e.run(1,p1=[forward])
     raise AssertionError(('CPU match did not finish',e.state()))
 
 def actor_payload(e,side=0):
@@ -261,12 +261,12 @@ check(advance>=590,'Gameplay maintains NTSC frame cadence',{'emulated_frames':60
 e.run(3,p1=['up']);check(e.state()['y1']>32767,'Jump moves fighter above the floor');e.run(12);e.shot('jump.png');e.run(70)
 check(e.state()['y1']==0,'Jump lands back on the floor')
 e.run(8,p1=['down']);check(e.state()['pose1']==3,'Crouch has a dedicated pose');e.run(8)
-for key,action in [('y',1),('x',2),('l',3),('b',4),('a',5),('r',6)]:
+for key,action in [('y',1),('x',3),('b',4),('a',5)]:
     e.run(4,p1=[key]);check(e.state()['action1']==action,'SNES button '+key.upper()+' starts attack '+str(action));e.run(65)
-before=e.state()['energy1'];e.run(18,p1=['down','x'])
+before=e.state()['energy1'];e.run(18,p1=['down','y'])
 check(e.state()['wave1']==1 and e.state()['energy1']<before,'Special launches a projectile and spends meter')
 e.shot('special.png');e.run(85)
-e.run(4,p1=['down','l']);check(e.state()['action1']==8 and e.state()['y1']>32767,'Uppercut leaves the ground');e.run(75)
+e.run(4,p1=['down','x']);check(e.state()['action1']==8 and e.state()['y1']>32767,'Uppercut leaves the ground');e.run(75)
 # Use the same sustained, facing-aware QCF sampled by the focused input suite.
 # A one-frame phase is too short for the libretro/Snes9x pad poll and can turn
 # this check into an accidental normal attack.
@@ -294,7 +294,7 @@ verify_uploaded_animation(e,10,1)
 s=e.state();e.run(20,p2=['left']);check(e.state()['x2']<s['x2'],'Controller two moves player two')
 close_in(e)
 e.run(12,p1=['x'],p2=['right'])
-check(e.state()['hp2']==128,'Holding back blocks a medium punch')
+check(e.state()['hp2']==127,'Holding back blocks the strong punch with exactly one chip damage')
 check(e.state()['pose2']==9,'Blocking keeps the defensive animation')
 e.shot('block.png');e.run(60);close_in(e)
 e.run(12,p1=['down','b'],p2=['right'])
@@ -308,7 +308,7 @@ positioned=close_for_guarded_throw(e)
 hp=e.state()['hp2']
 throw_started=False
 for _ in range(4):
-    e.run(1,p1=['right','l'],p2=['right'])
+    e.run(1,p1=['right','x'],p2=['right'])
     s=e.state()
     if s['action1']==9 or s['down_state2'] in (1,2,3,4,5):
         throw_started=True
@@ -334,7 +334,7 @@ for _ in range(110):
     if s['screen']==4:break
     forward='right' if s['x1']<s['x2'] else 'left'
     for _ in range(3):
-        e.run(1,p1=[forward,'l'])
+        e.run(1,p1=[forward,'x'])
     for _ in range(28):
         e.run(1,p1=[forward])
 check(e.state()['screen']==4 and e.state()['wins1']==2,'Two round wins finish a best-of-three local match',e.state())
@@ -349,7 +349,7 @@ e=boot(0,4,difficulty=0)
 for _ in range(220):
     if e.state()['screen']==4:break
     s=e.state();forward='right' if s['x1']<s['x2'] else 'left'
-    e.run(3,p1=[forward,'l']);e.run(26,p1=[forward])
+    e.run(3,p1=[forward,'x']);e.run(26,p1=[forward])
 check(e.state()['screen']==4,'Arcade CPU match reaches a result',e.state())
 if e.state()['wins1']!=2:
     press(e,'a');wait(e,3)

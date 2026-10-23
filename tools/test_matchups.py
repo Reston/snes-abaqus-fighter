@@ -164,11 +164,11 @@ def ground_combo_special(state: dict[str, int], side: int) -> list[str]:
     phase = (state["frame"] + side * 19) % 120
     forward = forward_key(state, side)
     if phase < 4:
-        return ["down", "x"]
+        return ["down", 'y']
     if 30 <= phase < 34:
         return ["y"]
     if 62 <= phase < 66:
-        return [forward, "l"]
+        return [forward, 'x']
     if 92 <= phase < 96:
         return ["x"]
     return []
@@ -194,9 +194,9 @@ def jump_guard_throw_mix(state: dict[str, int], side: int) -> list[str]:
     if 38 <= phase < 58 and y_position(state, side) == 0:
         return [back, "down"]
     if 70 <= phase < 75 and y_position(state, side) == 0:
-        return [forward, "l"]
+        return [forward, 'x']
     if 98 <= phase < 103 and y_position(state, side) == 0:
-        return ["down", "x"]
+        return ["down", 'y']
     if 122 <= phase < 126 and y_position(state, side) == 0:
         return ["y"]
     return []
@@ -218,12 +218,12 @@ def input_categories(keys: list[str], state: dict[str, int], side: int) -> list[
         categories.append("move")
     if "up" in keys:
         categories.append("jump")
-    if "l" in keys:
+    if "x" in keys and forward_key(state, side) in keys:
         categories.append("throw")
-    if "down" in keys and "x" in keys:
+    if "down" in keys and "y" in keys:
         categories.append("special")
     if (back_key(state, side) in keys and
-            not any(key in keys for key in ("y", "x", "a", "b", "l"))):
+            not any(key in keys for key in ("y", "x", "a", "b"))):
         categories.append("guard")
     if any(key in keys for key in ("y", "x", "a", "b")) and "special" not in categories:
         categories.append("normal")
