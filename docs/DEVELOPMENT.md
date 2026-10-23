@@ -1,16 +1,17 @@
 # Native SNES implementation
 <!-- candidate-version: 0.23.1; rom-sha256: 057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd -->
 
-## Current full-body walking correction: v0.23.1
+## Approved main walking revision: v0.23.1
 
 The user rejected v0.23.0's torso/legs mismatch. PR #12 now replaces each
 fighter's eight complete walking poses with coordinated head, guard, torso,
 hip and foot motion, removing the fixed waist splice. Other 56 poses and
 original portraits/palettes remain. All six suites pass 36,219 current-ROM
-checks, matching independent smoke and fresh reproduction pass. Human visual
-approval remains open. Run `Play.cmd` from `feature/walking-cycles-v023`.
-[Current art, native clips, controls and evidence](RELEASE-v0.23.1.md). Main remains
-v0.22.1 with 08 deferred. The notes below retain their historical scope.
+checks, matching independent smoke and fresh reproduction pass. The user
+approved the revision and PR #12 merge on 2026-10-23 ("yes good, merge it").
+Run `Play.cmd` from main to play v0.23.1.
+[Current art, native clips, controls and evidence](RELEASE-v0.23.1.md). Main is
+v0.23.1; 08 remains deferred. The notes below retain their historical scope.
 
 ## Rejected historical walking candidate: v0.23.0
 

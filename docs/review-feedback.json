@@ -212,5 +212,17 @@
     "human_walking_approved": false,
     "cause": "Fixed upper-body pixels were composited over separately authored legs; torso and lower body did not read as one walk.",
     "follow_up": "v0.23.1 replaces the complete eight walking poses with individually referenced full-body guarded cycles. Human review remains pending."
+  },
+  "walking_v0231": {
+    "version": "0.23.1",
+    "rom_sha256": "057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd",
+    "response": "yes good, merge it",
+    "source": "Direct user response to the full-body walking revision and native comparison",
+    "recorded_at_utc": "2026-10-23T22:45:23.526819+00:00",
+    "status": "approved_for_merge",
+    "human_walking_approved": true,
+    "merge_authorized": true,
+    "pull_request": 12,
+    "scope": "Full-body walking revision shown in this thread; does not assert physical-controller, subject consent or public-release approval."
   }
 }

@@ -13,7 +13,8 @@ and both fists stay in guard. The importer fits each entire body with one
 shared isotropic scale for its whole cycle; it performs no waist splice or
 fixed upper-body overlay. The original standing-height target and foot
 baseline remain. The source faces and costumes guide the new walking art;
-the walking face pixels are newly drawn, so likeness review remains open.
+the walking face pixels are newly drawn. The user approved this walking
+revision for merge; subject consent remains a separate review.
 
 Only native poses 20–27 change. All other 56 poses, portraits, original OBJ
 palettes, static stages, audio and gameplay timing are preserved. Forward and
@@ -26,13 +27,13 @@ Each fighter has an individual built-in-imagegen `walking-v2.png` and adjacent
 exact-prompt/reference/hash record. [All twelve art and prompt records](../assets/art/walking-v2.json)
 identify their selected sources. [Native walking review](WALKING-REVIEW-v0.23.1.html)
 includes enlarged pose loops and real-ROM before/after clips against the
-rejected v0.23.0 candidate. Pose-loop timing is slowed for inspection; human
-judgment of the complete movement remains the acceptance gate.
+rejected v0.23.0 candidate. Pose-loop timing is slowed for inspection. The
+user reviewed the revision and replied "yes good, merge it" on 2026-10-23.
 
-PR [#12](https://github.com/Reston/snes-abaqus-fighter/pull/12) remains unmerged.
-Run [Play.cmd](../Play.cmd) from `feature/walking-cycles-v023` to test this
-native cartridge. Main remains the approved nine-feature v0.22.1; 08 stays
-deferred in its retained branch/worktree. Local 1v1 remains available through
+PR [#12](https://github.com/Reston/snes-abaqus-fighter/pull/12) contains the
+approved walking revision for main. Run [Play.cmd](../Play.cmd) from main to
+play this native cartridge. Feature 08 stays deferred in its retained
+branch/worktree. Local 1v1 remains available through
 **LOCAL 1V1 / 2P** with independent native controller ports.
 
 Verification of ROM `057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd`, header `F95B`:
@@ -49,6 +50,6 @@ Verification of ROM `057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99
 
 [Verification](verification-v0.23.1.json) · [Focused proof](walking-report.json)
 · [Preservation](expansion-preservation-v0.23.1.json).
-Automated results do not establish visual approval. The corrected full-body
-walking and likeness still need the user's review. No new offline package,
-physical-controller certification or public-use approval is claimed.
+The user's explicit walking approval and merge authorization are recorded in
+[review feedback](review-feedback.json). No new offline package,
+physical-controller certification, subject consent or public-use approval is claimed.
