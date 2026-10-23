@@ -1,5 +1,11 @@
 # Expansion 05: native Training tools
 
+> Combined v0.22.0: this note retains the original feature-branch design and
+> isolated measurements. The linked focused report and native captures are
+> regenerated for the combined cartridge. Use the [combined release note](RELEASE-v0.22.0.md)
+> and [verification record](expansion-v0.22.0-verification.json) for current
+> identity, coverage and integration contracts.
+
 This feature adds a live practice footer and a third Training pause-guide page.
 It is isolated on `t3/training-combat-tools`, based on integration commit
 `610537d3da8f7005c28ea31d0a45a7c17f8f7ba8`. It does not change the shared version,

@@ -1,5 +1,11 @@
 # Expansion 01: animation weight
 
+> Combined v0.22.0: this note retains the original feature-branch design and
+> isolated measurements. The linked focused report and native captures are
+> regenerated for the combined cartridge. Use the [combined release note](RELEASE-v0.22.0.md)
+> and [verification record](expansion-v0.22.0-verification.json) for current
+> identity, coverage and integration contracts.
+
 The native presentation now holds planted poses longer, stages strong attacks
 through anticipation and recoil, and releases landing compression through a
 short return to guard. It reuses the approved 64 frames for every fighter.

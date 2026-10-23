@@ -1,5 +1,11 @@
 # Expansion 03: four-button normal balance
 
+> Combined v0.22.0: this note retains the original feature-branch design and
+> isolated measurements. The linked focused report and native captures are
+> regenerated for the combined cartridge. Use the [combined release note](RELEASE-v0.22.0.md)
+> and [verification record](expansion-v0.22.0-verification.json) for current
+> identity, coverage and integration contracts.
+
 This isolated feature starts at integration commit
 `610537d3da8f7005c28ea31d0a45a7c17f8f7ba8`. It changes the four normal roles
 for all twelve fighters. The combined v0.22.0 integration, shared suites and

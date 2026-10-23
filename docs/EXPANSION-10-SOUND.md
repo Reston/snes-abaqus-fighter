@@ -1,5 +1,11 @@
 # Expansion 10: resident sound presentation
 
+> Combined v0.22.0: this note retains the original feature-branch design and
+> isolated measurements. The linked focused report and native captures are
+> regenerated for the combined cartridge. Use the [combined release note](RELEASE-v0.22.0.md)
+> and [verification record](expansion-v0.22.0-verification.json) for current
+> identity, coverage and integration contracts.
+
 This feature extends the native PVSnesLib/SNESMod sound path. The game still
 boots as a 4 MiB NTSC FastROM LoROM cartridge. The original five scores, four
 original synthesized cues and all visual assets remain retained. This is a

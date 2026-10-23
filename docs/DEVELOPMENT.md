@@ -1,7 +1,116 @@
 # Native SNES implementation
-<!-- candidate-version: 0.21.0; rom-sha256: aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205 -->
+<!-- candidate-version: 0.22.0; rom-sha256: d4fddaf609a0c29f45353a8d9e22fe1131fc3380838d9c0073d3255474cdf8af -->
 
-The current checkout builds v0.21.0, ROM SHA256 `aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205`, checksum `BEB8`.
+## v0.22.0 combined integration
+
+`integration/ten-improvements-v022` combines all ten feature PRs. Main remains
+v0.21.0 pending your combined playtest and
+[PR #1](https://github.com/Reston/snes-abaqus-fighter/pull/1) merge. The
+[release guide](RELEASE-v0.22.0.md) maps all ten implementations and PRs;
+[PLAYER-GUIDE.md](PLAYER-GUIDE.md) describes current controls. `Play.cmd` in
+this integration checkout opens its native cartridge.
+
+The target remains PVSnesLib 4.6.0 C/65816 assembly, 4 MiB NTSC FastROM LoROM,
+128 banks. ROM `d4fddaf609a0c29f45353a8d9e22fe1131fc3380838d9c0073d3255474cdf8af`, header `EA9D`,
+source freeze `b149cdf2d9e25560f61d09a0f49e71ce6fea7042` / tree `f58da040001f57a12c55b3ce92bde66041164b71`
+passes 36,253 checks across the six native suites, matching independent
+smoke, all ten focused proofs and preservation/bank/transfer checks. A fresh
+committed-source export reproduces the ROM, 219 assets and normalized symbols.
+See [integration decisions](EXPANSION-INTEGRATION-v0.22.0.md) and the
+[verification record](expansion-v0.22.0-verification.json). There is no v0.22.0 offline ZIP or full release-scale evidence;
+v0.19.0 remains the latest full offline archive. No v0.22.0 human approval is
+recorded and `public_release_certified` remains false.
+
+### Combined input and feature ownership
+
+- `animation_weight.h` sequences the retained poses; `fighter_personality.h`
+  owns intro/winner gestures. Intro/round-end countdowns remain their clocks.
+  No per-pose rescaling or new fighter art is introduced.
+- Four normal roles remain Y jab, X strong punch, B light kick and A strong
+  kick. `characters.h` supplies tuned profiles. Down+X uppercuts, toward+X
+  throws, Down+A sweeps, Down+B attacks low, and Down+Y or QCF+Y/X buys the
+  32-energy special. Confirmed Y-to-X/B-to-A chains and special cancels require
+  real damage; only air A keeps the short rear contact box.
+- `super_moves.h` captures both fresh Y/B edges on one neutral sample, checks
+  full 96 energy/grounded availability/no owned wave, then spends all meter.
+  A rejected chord consumes no normal or quick-special fallback. Supers use
+  private appended arrays with action 7, preserving Fighter/Wave and trace ABI.
+  `cpu_personality.h` may select the same command at Normal/Hard with sampled,
+  fallible visible-range decisions after wave and ordinary attack defense.
+  Easy does not select supers. Original startup, guard and energy paths apply.
+- `training_tools.h` observes commands, accepted ordinary specials, real HP
+  damage and drill contacts. Page 3 is Training-only; history records five P1
+  signatures and `SP!` identifies a paid ordinary special, including a whiff,
+  separately from supers. The footer defers behind combat/presentation work.
+  Combined native cadence is verified with the display and all observers enabled.
+- Ordinary pause keeps Start > B > A > Select. Training PAUSED Up/Down chooses
+  five dummy modes, then CPU-only L/R changes the shared difficulty from either
+  port; held opposites cancel. Tools page 3 uses Up for visibility and Down for
+  drill selection. Live P1 Select resets progress while retaining opponent,
+  dummy, level, drill and visibility; new matches restore Stand/default tools.
+- `impact_presentation.h` owns contact classification and the single audio
+  `soundImpact` call. Do not duplicate it with `soundContact`. Light/strong/
+  guard freeze is 4/6/3 ticks; only actual hits add bounded horizontal shake.
+- `arcade_story.h` holds the ordinary intro during its conversation. P1 A skips,
+  Start pauses first, and automatic advance takes 360 native ticks. It owns
+  Arcade quotes/personal ending copy; gesture ownership stays with personality.
+
+### Preservation, allocations and transfer bounds
+
+[tools/expansion_contracts.py](../tools/expansion_contracts.py) is the combined
+policy against the v0.21.0 main baseline. Feature-only allocation counts and
+bank placements in individual notes must not replace this combined contract.
+Its exact-ROM audit passes; see [the record](expansion-preservation-v0.22.0.json).
+
+| Contract | Combined requirement |
+| --- | --- |
+| Art | Preserve all twelve existing 64-frame sets, portraits, palettes, physical scales and source masters/prompts, including approved Damian v5; preserve static stage tiles/maps/palettes and all five original scores |
+| Generated assets | Keep 219 tracked files; only `effects.bin`, `effects.it`, `soundbank.asm`, `soundbank.bnk`, `stage-dynamics.json` and `stage0/1/2_ambient.bin` change; 211 retain baseline bytes |
+| Prior RAM labels | 1,271 of 1,276 retain addresses; only five metadata/libc labels move as specified below |
+| Appended allocation | 32 BSS bytes in `$7E29AF..$7E29CE`; 331 initialized bytes in `$7F0448..$7F0592`; no gameplay-memory overlay |
+| ABI | Fighter64/Wave16, original action IDs, TRACE0..122 and hardware/trace assembly remain unchanged |
+| Actor transfer | Thirty 16x16 pieces per actor, 96x80 canvas, one 3,840-byte actor stream per vblank |
+| Interface | 320-byte HUD; existing 128-byte rows 26/27 footer; guide rows 5..27, 1,472 bytes built over three paused ticks and yielding to actor DMA |
+| OBJ | No additional entries; impacts/gestures/super accents share OAM byte 276 (entry 69); volleys serialize through one Wave per player |
+| HDMA | Channel 3, mode 2 to `$210D`; ten-byte WRAM table, three bands/224 lines, six PPU data bytes per picture; table/setup publish after vblank; general DMA stays channel 0 |
+| Ambient | Four 256-byte phases, eight BG1 tiles at `$3C00..$3C7F`, yielding to actor/interface DMA; source-identical phase zero retained |
+| Audio | Eleven scene-loaded resident slots; bank 24 must fit 32 KiB, each score plus effects must fit 64 KiB SPC RAM; at most one three-byte command queued per video tick, no per-hit streaming/polling |
+| Story | Existing 320-byte banner and 128-byte footer; champion text during screen-off transition; no extra VRAM/palette/OBJ path |
+| LoROM | All linked sections fit within their 32 KiB banks; audio bank 24 uses 28,822 bytes with 3,946 free |
+
+The five allowed RAM relocations are `SECTIONSTART_.bss`, `SECTIONEND_.bss`
+and `tccs_libc_c.asm_msys` by **32 bytes**, plus `SECTIONEND_globram.data` and
+`RAM_USAGE_SLOT_3_BANK_127_END` by **331 bytes**. Existing game/Fighter/Wave
+addresses retain their contract. Do not describe all 1,276 labels as unchanged.
+
+Visible impacts set OAM priority rotation to entry 69 after NMI OAM transfer;
+quiet combat/menus restore entry zero. The two register writes add no DMA bytes
+or entries. Stage HDMA adds impact shake to all scenery bands, leaving the
+floor's ordinary position fixed. BG2/portrait/glyph regions stay unchanged.
+The write-only `$420C` uses a software mask (`$08` fight, `$00` reset); compose
+that mask if another HDMA owner is ever added.
+
+Ordinary ambient time freezes in intro, pause, hitstop and round end. An actual
+winner requests two separate four-phase reactions beginning after sixteen
+round-end samples, then settles to phase zero; that bounded clock stops at 96.
+Draws receive no cheer and pause freezes both clocks. Pixel/cadence oracles
+must account for the three scroll offsets and this round-end exception.
+
+### Final verification boundary
+
+The six native suites, separate pinned Accuracy smoke, all ten focused proofs
+and combined preservation/budget audit pass on one exact ROM. The source freeze,
+authoring checks and fresh export are bound in the current verification record.
+Keep automated runs silent/headless and preserve foreground focus; authorized
+GUI review stays muted and separate. Full matrix/replays, bounded independent
+combat, three native live-hour sessions and isolated committed-source rebuild
+must be regenerated before a new offline package; audit it afterward. These
+full release-scale gates remain historical at v0.19.0. Human approval and
+original-console support cannot be inferred from native checks.
+
+## Historical v0.21.0 baseline
+
+The v0.21.0 checkout built ROM SHA256 `aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205`, checksum `BEB8`.
 Four face buttons choose the normal attacks; directional face-button commands
 retain uppercut, sweep, throw and specials. The CPU uses that same layout.
 The shadow's two existing OAM pieces meet at the fighter's floor pivot, Y 200,
@@ -15,8 +124,9 @@ See [FOUR-BUTTON-HUD.md](FOUR-BUTTON-HUD.md) and
 [RELEASE-v0.21.0.md](RELEASE-v0.21.0.md).
 
 The v0.19.0 mechanics and build notes below describe that historical full
-offline checkpoint; the v0.21.0 changes above supersede its six-button combat
-commands. The shoulder controls below still apply to home/paused Training.
+offline checkpoint. The v0.22.0 combined contracts above supersede older input,
+animation, CPU, ambient and audio descriptions. The shoulder controls below
+still apply to home/paused Training.
 
 The v0.19.0 checkpoint builds v0.19.0, ROM SHA256 `945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7`, checksum `05A4`.
 Paused CPU Training accepts fresh L/R shoulder edges from either physical
@@ -76,7 +186,7 @@ Controls adds a cross-up cue at row 22 inside the existing rows 5..27,
 ambient and SPC budgets remain unchanged. All 219 generated assets match the
 verified v0.16.0 checkpoint. The package gate now binds the collated summary's
 identity, source freeze and six-suite counts to its individual exact-ROM reports.
-See [RELEASE-v0.19.0.md](RELEASE-v0.19.0.md) for current evidence status.
+See [RELEASE-v0.19.0.md](RELEASE-v0.19.0.md) for that historical evidence status.
 Older version sections below are historical snapshots.
 
 ## Build
@@ -524,7 +634,16 @@ new palette/map. The four 256-byte phases, eight dynamic cells and
 
 Combat uses integer 12.4 fixed-point positions. Standing, crouching and airborne bodies use feet-relative contact rectangles independent of the 96x80 art canvas. The body half-width is ten pixels; action-specific vertical bands intersect the standing or crouching body. Throws use their exact profile range without the normal-attack reach padding. Equal-center overlaps and post-impact stage clamps are symmetric. Each attack has startup, active and recovery durations. Push boxes, direction, height, guard type and one-hit confirmation determine contact. Both normal-hit candidates are collected before resolving damage, allowing trades. Projectiles have independent lifetime, position and collision.
 
-Input is sampled every simulation tick. Opposite horizontal or vertical directions resolve to neutral before movement and command recognition. Attack and jump edges have a six-tick buffer; a held Up input can carry a buffered jump through landing. A character special accepts a true twelve-tick Down -> Down+Forward -> Forward + punch motion, while the accessible Down + punch shortcut remains. The shortcut requires no Back direction, so Down + Back + punch is not treated as a special. Normals confirmed by real damage can cancel into heavier normals or a character special during their cancel window; a guarded contact does not enable these hit-confirm cancels.
+Input is sampled every simulation tick. Opposite horizontal or vertical
+directions resolve to neutral before movement and command recognition. Attack
+and jump edges have a six-tick buffer; held Up can carry a jump through landing.
+Four face buttons attack: Y/X punches and B/A kicks. Specials accept Down ->
+Down+Forward -> Forward+Y/X, refreshing twelve live ticks per progressing step;
+the quick shortcut is Down+Y without Back. Fresh neutral Y+B is reserved for
+the full-96-energy super; rejected chords do not fall through to other attacks.
+Confirmed Y-to-X/B-to-A chains and eligible special cancels require real damage,
+not a block or whiff. Supers retain separate eligibility/request state and add
+no invulnerability or special-cancel bypass.
 
 Hitstop freezes combat expiry, movement, animation clocks and effect clocks while
 input edges continue to be sampled for the buffer. Guard stun is eight ticks
@@ -547,9 +666,11 @@ cosmetic. Blocking breaks the attacking chain, and receiving a real hit clears
 the defender's previous chain and stale input buffers. Inputs sampled after the
 impact during hitstop retain the existing six-tick buffering semantics.
 
-Fight hints occupy BG2 rows 26-27 during the first intro only. A separate dirty
-flag clears these 128 bytes without forcing a full interface transfer alongside
-the actor upload. Results place the P1/P2 round score on row 15 and quote on 17.
+Fight hints occupy BG2 rows 26-27 during the first intro. Training subsequently
+reuses that 128-byte footer for its deferred history/status display. Story uses
+the same existing footer range. A separate dirty flag avoids forcing a full
+interface transfer beside actor DMA. Results place the P1/P2 round score on
+row 15 and quote on 17; Arcade selects its individual winner copy.
 
 The CPU samples one decision per live tick using distance, opponent attack
 state, projectiles, a deterministic PRNG and three difficulty levels. Its
@@ -569,22 +690,26 @@ native controller actions.
 
 ## Audio
 
-The generator writes original Impulse Tracker modules with five synthesized PCM
-samples. `smconv` creates the soundbank and SNESMod runs the music on the
-emulated SPC700. Combat audio uses four resident SPC effects loaded alongside
-each music module: `effects.it` occupies soundbank module 0, while music keeps
-module IDs 1-4. Scene load calls `spcLoadEffect(0)` through `spcLoadEffect(3)`
-to populate resident effect slots. `spcAllocateSoundRegion(0)` disables the
-separate streaming region. Gameplay uses
-`spcEffect` with pitch 2 at 8 kHz and the existing volume/pan values, preserving
-the synthesized cues while avoiding per-hit BRR streaming stalls.
+`smconv` builds the effects-first Impulse Tracker soundbank; SNESMod plays it
+on the emulated SPC700. v0.22.0 retains the five original scores and the exact
+original swing/light-impact/special/legacy-confirm sources in slots 0..3.
+Slots 4/5 are strong/guard, 6..8 spoken Round/Fight/K O, 9 the menu/round chord
+and 10 the victory cadence. All eleven load only during the existing screen-off
+score replacement. The streaming allocation stays zero; there is no per-hit
+BRR transfer or new hardware voice reservation.
 
-If several cues arrive on the same simulation frame, the sound path coalesces
-them by priority: round, impact, special, then swing. The generated effects-first
-module order is checked at compile time; scene loading reloads the four effect
-slots after replacing the music module. The resident-effect migration is
-included in the verified v0.6.1 baseline; the CPU pass does not change the
-audio path.
+`audioPresentationTick()` resolves at most one cue or envelope write per video
+tick before the unchanged ready-only FIFO service. Speech has priority and
+suppresses lower cues while it settles; music fades in, ducks during speech
+and returns to normal. Healthy timeouts receive a cadence without a false KO.
+Pause/resume does not replay a frozen intro milestone. Cue/envelope writes are
+mutually exclusive; the scheduler has no busy wait or retry loop.
+
+[EXPANSION-10-SOUND.md](EXPANSION-10-SOUND.md) records the retained original
+synthesis and Microsoft Zira Desktop export provenance. It is not human
+listening or public-use approval. The current focused audio proof verifies
+the combined bank, SPC, PCM and timing results. Historical four-effect
+descriptions refer to the earlier resident-audio baseline.
 
 ## Verification
 

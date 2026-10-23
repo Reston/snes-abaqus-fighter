@@ -1,5 +1,11 @@
 # Personal Arcade exchanges and endings
 
+> Combined v0.22.0: this note retains the original feature-branch design and
+> isolated measurements. The linked focused report and native captures are
+> regenerated for the combined cartridge. Use the [combined release note](RELEASE-v0.22.0.md)
+> and [verification record](expansion-v0.22.0-verification.json) for current
+> identity, coverage and integration contracts.
+
 Feature branch: `t3/arcade-story-dialogue`, starting at integration commit
 `610537d`. This feature uses the reserved v0.22.0 source identity without
 changing the shared version, release notes, assets or six suite reports.

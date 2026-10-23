@@ -1,5 +1,11 @@
 # Fighter personality: native intro and victory gestures
 
+> Combined v0.22.0: this note retains the original feature-branch design and
+> isolated measurements. The linked focused report and native captures are
+> regenerated for the combined cartridge. Use the [combined release note](RELEASE-v0.22.0.md)
+> and [verification record](expansion-v0.22.0-verification.json) for current
+> identity, coverage and integration contracts.
+
 Feature 04 for the reserved v0.22 integration, based on `610537d`.
 Implementation: `src/fighter_personality.h`, with four small render hooks in
 `src/game.c`. No narrative, progression, source version or shared release

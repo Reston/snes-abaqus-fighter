@@ -1,0 +1,425 @@
+{
+  "status": "passed",
+  "version": "0.22.0",
+  "rom_sha256": "d4fddaf609a0c29f45353a8d9e22fe1131fc3380838d9c0073d3255474cdf8af",
+  "checksum": "EA9D",
+  "source_commit": "b149cdf2d9e25560f61d09a0f49e71ce6fea7042",
+  "source_tree": "f58da040001f57a12c55b3ce92bde66041164b71",
+  "source_sha256": {
+    "src/animation_banks.h": "8250cf1816ae8c0de0da6a876b76e0a0b40c10a44e35f782794ca82e283414e9",
+    "src/animation_weight.h": "2fb995e66e6d9a9bec1dd1d10a67e60b8856ac7b941f57439c0a7c3972f699dd",
+    "src/arcade_story.h": "7ee6b766b4fdd2bc22670dc1ce72b907ded4e061d088674c90bbc2a08b0d994f",
+    "src/audio_presentation.h": "8b094475ec41af89befdf4875ef1f9a3bf303be8615f0508afccdbf24d3b35af",
+    "src/audio_presentation_state.h": "4129b01189826de5cc9266f529eb57f1dcb57bb93febcade1f1dc3bf6e6c730e",
+    "src/characters.h": "b5a7f1f60c5767ba15b9db6659fc4b1b3fd9a210d919f5057892619569aca589",
+    "src/cpu_personality.h": "fd3ee491ac7437eae90d10628339929a42ea531ef002089a831cc03ecf23abc4",
+    "src/fighter_personality.h": "e15b92385c8620a8cbdaa1c2734af0f87a91fbdbeefc70fe8c04700998cad0ce",
+    "src/game.c": "7b1622577ee8d0f0b79a2676904c1c72d63c79c1c5ad9f6285ae50b075f57472",
+    "src/hardware.asm": "d4b895425f597992270bd558d92e8257e4e7a569f4d249cbe16a3df2b2288a9a",
+    "src/impact_presentation.h": "696f9d1c7c0e6f3ebbfb29027cb1bf4cc2d6330306352e3bf12a100bcab3a7f3",
+    "src/knockdown.h": "2c58e022b021aa9e08a2df1bd96396bd1a2bd9fcf52f0027b27f876311adc445",
+    "src/menu_portraits.h": "96a006a382dfc86e1807b32ac0eaaf652cb302558aea57496a20567d10713c9c",
+    "src/pause_guide.h": "c34d81c821cf0716101dd0828a73d9703ad25093b1aa7aec45b7ab90e6c0afed",
+    "src/stage_depth.h": "61854818ad5d575f9661c81aaead82aeeb0c89f8a67d4e6243f41cdb791108af",
+    "src/super_moves.h": "ebc5305572348f331de1fca856e3209ebc98a0ce03051438ebdcf078aab5b2c1",
+    "src/trace.asm": "301ec8a99aa326583c332a901903114f5fceeb7f17bbbf768c3e90ae65c3dc88",
+    "src/training_tools.h": "5be233628beab082972c76cbe42f93e8820549f8384913c9fb49977517d9b2af",
+    "src/version.h": "5b6b2b4d4649404f14f987b40d19df75dc327ce21d0a41c476f78d6fbf14acd0",
+    "tools/audio_assets.py": "1a55aa69ae2df232f61c9af9bc032d433461776da31ad91ea0e5108e8592a6cb",
+    "tools/audit_release.py": "6d1abcdb71daffcb124de5096a9e625e6880636ff00b0e4614e3718f848c33af",
+    "tools/build.py": "10184158421c8719a2852fca3716841f204458295f63081fe314b7df7b10a342",
+    "tools/champion_assets.py": "1526aa565cd9e1a01075bd5ad699b75b486e17f9b2899b9276a504bc2024ccf2",
+    "tools/check_authoring_guards.py": "41887dd7f9a962ac3bb77b6fb1223bb4a065a015b1624c04ad04ee8622cd5c1b",
+    "tools/collate_expansion.py": "78eff65f23971796896a7f0f163a246bda5ef5222171231bb3481dac0eca077b",
+    "tools/collate_verification.py": "7b188bc7771a2f6401b699795a4690a90a53f45beeeea25c6d6adfa2858e2f82",
+    "tools/effect_assets.py": "f5079057e2314469d4befb9974ab61281c1156c6adfd6516058fb66e01735150",
+    "tools/emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
+    "tools/expansion_contracts.py": "4471f9597c66c6b1e8752adeafc34085b6fdc790c5ee6f65f4155505837fde8c",
+    "tools/fetch_references.py": "a630e9cb073f7a20b4ddb720a3af812d6e7790398c5dc19cd88ece7c13a65254",
+    "tools/fighter_assets.py": "aeb626eabed917c8699bed48bdab7c99ce843f2bc32c2901b170720994a72bc7",
+    "tools/longrun_host.py": "432bed2b7505131d639794ee4b1d857292df4465e7f219c39a14fa433f11cc8e",
+    "tools/make_assets.py": "b7b36f1496697ea98b94758125aba0619f59389d501df07eb15b4db1044c32e6",
+    "tools/make_champion_budget.py": "f5ffcfec6c09729f72f19815613d244794bfe4e0ad7a5d708c63a634552e24ad",
+    "tools/make_cpu_antiair_review.py": "806c08ef0095dacafcb5209ae7f543a01db12ad5e05c1f112691488ceb718fab",
+    "tools/make_crossup_practice_review.py": "b9386e97c1114ecee7730fa05dc42931f8447594b4d07d47507b0f08272506b2",
+    "tools/make_crossup_review.py": "e45c814c00a01e070d2534fdc6d293363c14abeb99a170fd8df78aa4641a3b22",
+    "tools/make_expansion_review.py": "feb522c84bb46c750f8cbdaa79dd4b8a20dcdb373bad0e3db8f1fd716208d001",
+    "tools/make_focused_listening_pack.py": "f864dd37f7c1b4f967af09b76951b2cede7058e9be1d1699b18fd16e87a94c94",
+    "tools/make_preservation_report.py": "3fe295216aa69d570896e70f3901d97842d03acaee2ff1850080f292326ee18b",
+    "tools/make_review_gallery.py": "e5bab41cd7aede547a281f894ab477f765fda0fea8ece199d47bb73b28be0b31",
+    "tools/make_roster_review.py": "d2b8b7fd211452887218ef07cd691efdb52efd2f0ddcb555a02137233010461e",
+    "tools/make_training_cpu_review.py": "60977b144de38f340dfeb4e65daf1d161ebcb3ef6f58820bfb480ff948f92a82",
+    "tools/menu_assets.py": "d02842aded9fbace35caf269b6cd956e0978bd40a0497b1f0498a439ddfca285",
+    "tools/package.py": "024ff1f51574460e611d10ae6db570ee4b1e3dc1e34b05323b4b5bea23eb216e",
+    "tools/play.ps1": "8ea47e0216dc5796bec91584866ac3781ff01386b6864fb9f6eee770ad5144ae",
+    "tools/portrait_assets.py": "f95047e2ad5e1c292809ced20ca2e9cc77dc4a0e5f3c10d43cadf8e0843107d3",
+    "tools/preservation.py": "40e13816f5a7086c18e6053789e209722316a6c2675fb9583647eed20891ae76",
+    "tools/release_evidence.py": "57ae70a988fd80e354b8e16c50553251182eb9341b3bd2dc4f585f78b2f6b70b",
+    "tools/report_training_timing.py": "1c1153a39f8c207da55db46b974e196911c9e61aed43bd62b618fcf985ca7606",
+    "tools/review_media.py": "e35af4eb143791128f8f2ceabdb72b662993238127005534018753e95b67174a",
+    "tools/run_background.py": "0906fa836fa680964846049036fd2ea1ad48a2fcb68d1235bedff86e7afdf178",
+    "tools/setup-compat.ps1": "341a502bc4dc2240cfb610129f2950177cd49a2c509b22ae18350f893902a6ea",
+    "tools/setup-mesen.ps1": "05ce08d8f2a411f64693b1dd55a485d9c35d155276748e64bef615ca293bbc3c",
+    "tools/setup.ps1": "711ea1a58631829b6b1a0b27a061619b54314ad7ebcc5f1a5e9df1656f312eef",
+    "tools/stage_assets.py": "28ccd1c8f6dfff94bc0556211af788c08acffb04d41d29f1a69fbea1db8440ce",
+    "tools/stage_cartoon.py": "a69e03b4664592ddb37fc51c8c569726b6c6a4a2025f87a0428a4629840fa25a",
+    "tools/stage_sources.py": "b3c249050b7ed53408b9c6aa9c31748fae92125c3a3b055ce991bf7ef77c4008",
+    "tools/synthesize_announcements.ps1": "3010e324a205413123d1ab343e2c68e9aa24211d8d5c73cd70bdbe4fc8c6f6dc",
+    "tools/test_audio.py": "542ad545a023db85c9fe14066823cea5fa58848932d92057d55e26c76a28a73d",
+    "tools/test_authoring_guards.py": "99e5197dedb642aeca6d6f13c416588f23551bdfdb04fa2a528ea068bb98014a",
+    "tools/test_champion.py": "d2424acd2cb75a7e08c5a2832a0bf6e5dc3cdb708f6aa89293d4ac3fe2d1e4d5",
+    "tools/test_champion_audio.py": "10d2cdf896dde9530008dcfb9fff2912d5415cfbd99bd00c61d9f19b0c9dca3e",
+    "tools/test_characters.py": "64f6e9d449800767259865267bf81321429ab23d92d0dbd943e1dc977ae85e8f",
+    "tools/test_compatibility.py": "d47211e4d4334a201cebb91fb7727fa60a86d09c73b1adccfdf3daece3a24967",
+    "tools/test_compatibility_combat.py": "c50712f19042bf69da0978ce7e4321cf6de1a33bd2269118483403beb9e4a754",
+    "tools/test_contact_budget.py": "f8acb5525d0e3d627c70894ac8c4cce3c3a5bd63421ef4139d3a0f4f5c6cc2c5",
+    "tools/test_crossup_practice.py": "087c4f0cffe9c791619afc6a7419f5fafbaa3c4fe053ab14dbee715bbc279d50",
+    "tools/test_endurance.py": "7df623199e3391433752ba23300cb850c60fb7556732b655495f4a6e48b22d64",
+    "tools/test_endurance_reporting.py": "5533ab27348e4f532b1beef81db9514d28cffaea883d48f52cebc6a2373b9fa0",
+    "tools/test_expansion_01_animation_weight.py": "4e9900b1e8d3100ac417d3dbed29b900ddda865572583f2149784c825b31a9a7",
+    "tools/test_expansion_02_impact.py": "d12ea9213524efc3bfac044b84570e423dfb92513302abcbec850b255f1ee5a0",
+    "tools/test_expansion_03_normal_balance.py": "5b61e525f1c1cf6b45a84ba2af73612b66551c6395e7cacd96ae7e501618ea17",
+    "tools/test_expansion_04_fighter_personality.py": "78495a19076b90e564ca2a665c47857b3e8d883963aef263827e8f8173ecd231",
+    "tools/test_expansion_05_training_tools.py": "ffa3f0b9802a371c4bb30c9c0c555609f792541186f5a1b38796d8dd7d52ebcf",
+    "tools/test_expansion_06_cpu_personality.py": "6d69503795a8b56b1f54cd5c9a418c3d6780c9aa2be8ee95ca12647a6075e8b0",
+    "tools/test_expansion_07_supers.py": "95cfa9f2070c92c9e89e74fcf776533a2cc9230cf12708d64c85304ca1e44794",
+    "tools/test_expansion_08_stage_depth.py": "a9c3e96130d7046fefd3c644b40560661102790bb3f65bef36e09f4606b1b4c8",
+    "tools/test_expansion_09_arcade_story.py": "bf01de14c55a46ed68a2eb2d7774eca094f1daf288e622fd86078a17543f1114",
+    "tools/test_expansion_10_audio.py": "2fb8352dc3e9932dd85f38174bbc5fe385a7ea9c42a878737a191860b36dc39e",
+    "tools/test_four_button_hud.py": "a5a049919b38c87f30f981b301ef3718f9dc3810835f3497db7aceecd44afbeb",
+    "tools/test_fresh_build.py": "75b6c3622d1ad96411feb8b13a9fc71e0d47fa5357fbe8c93d0c11a21c348b8b",
+    "tools/test_inputs.py": "d2c966ed6d221b644aa14b8352d6684ee314ab75b9448d85aafe6949d84a7ac8",
+    "tools/test_matchups.py": "1979c79b5ed465f798c9528267e9debce412a1f2c19ca84c13d34995db060a1c",
+    "tools/test_menu_footers.py": "f8b5e777271eda28f0eba79a1b2c5fbfef7a0e61b2946c1ffe9722ce6c6e69fc",
+    "tools/test_mesen.py": "c1d044e8dd108c1ac05ff7d5e6d5dbc5757ce42c0c45e9c31d59d6bdd887b3c0",
+    "tools/test_package.py": "1174274d5eeec4610fd98fb11bbef90b213a9f5a61a776f634a6d99fcb15d3d9",
+    "tools/test_presentation.py": "0018b4f759c16b010c857fbb037f4cd9816e709371318f786d820a3973bad271",
+    "tools/test_preservation.py": "635b1201940579ede2c6edaecc0d4e72f36616918f0119676026f38dcfb52bdf",
+    "tools/test_review_media.py": "ac1827f8455fcecc11ba088af109a3bcd9fcb2083c267b574316fd662ebc0253",
+    "tools/test_rom.py": "dd6e4205dd5329922743a719bc7591388d1bc3c21206e6b543462a13d7d7403a",
+    "tools/test_stages.py": "82e638ad39b7fbb3a39f80b5ecd4ed9177da76606c4a4f866ae307a135f84808",
+    "tools/test_training.py": "0cb14b50d32df7489d74b6522cb9a8839fa4168a2e0f792c5a7c4fa4bb74c029",
+    "tools/victory_music.py": "6da647ea3b1d58129d3f91a95d7a516433b8e609b4a847a180ff0bb96ac28528"
+  },
+  "native_contract": {
+    "generated_count": 219,
+    "preserved_generated": 211,
+    "changed_generated": [
+      "assets/generated/effects.bin",
+      "assets/generated/effects.it",
+      "assets/generated/soundbank.asm",
+      "assets/generated/soundbank.bnk",
+      "assets/generated/stage-dynamics.json",
+      "assets/generated/stage0_ambient.bin",
+      "assets/generated/stage1_ambient.bin",
+      "assets/generated/stage2_ambient.bin"
+    ],
+    "baseline_commit": "38519cd73e0d41883b502b7496b78690845e49a2",
+    "prior_ram_labels": 1276,
+    "unchanged_prior_ram_labels": 1271,
+    "documented_relocations": {
+      "SECTIONSTART_.bss": {
+        "baseline": 8268207,
+        "current": 8268239
+      },
+      "SECTIONEND_.bss": {
+        "baseline": 8268215,
+        "current": 8268247
+      },
+      "SECTIONEND_globram.data": {
+        "baseline": 8324168,
+        "current": 8324499
+      },
+      "tccs_libc_c.asm_msys": {
+        "baseline": 8268207,
+        "current": 8268239
+      },
+      "RAM_USAGE_SLOT_3_BANK_127_END": {
+        "baseline": 1095,
+        "current": 1426
+      }
+    },
+    "appended_ram_symbols": {
+      "trainingHistory": 8324168,
+      "trainingHistorySnapshot": 8324178,
+      "trainingLastKeys": 8324188,
+      "trainingDamage": 8324190,
+      "trainingVisible": 8324192,
+      "trainingChallenge": 8324193,
+      "trainingResult": 8324194,
+      "trainingNormalLink": 8324195,
+      "trainingHits": 8324196,
+      "trainingChain": 8324197,
+      "trainingSpecialCue": 8324198,
+      "trainingHistoryDirty": 8324199,
+      "trainingHistoryBuild": 8324200,
+      "trainingStatusDirty": 8324201,
+      "trainingRestore": 8324202,
+      "trainingHistoryText": 8324203,
+      "trainingStatusText": 8324236,
+      "trainingResultNames": 8324269,
+      "trainingChallengeNames": 8324293,
+      "personalityIntroFrames": 8324359,
+      "personalityVictoryFrames": 8324407,
+      "audioPriority": 8324491,
+      "audioSpeechTicks": 8324492,
+      "audioVolume": 8324493,
+      "audioTargetVolume": 8324494,
+      "audioPreviousScreen": 8324495,
+      "audioPreviousEnd": 8324496,
+      "audioLastCue": 8324497,
+      "audioPreviousIntro": 8324498,
+      "stageDepthTable": 8268207,
+      "stageDepthFar": 8268217,
+      "stageDepthNear": 8268219,
+      "stageVictoryTick": 8268221,
+      "stageVictoryPhase": 8268222,
+      "arcadeStoryTicks": 8268223,
+      "superActive": 8268225,
+      "superRequest": 8268227,
+      "superPhase": 8268229,
+      "superNext": 8268231,
+      "superContactEnd": 8268233,
+      "superWaveDamage": 8268235,
+      "superWaveReach": 8268237
+    },
+    "appended_bss_bytes": 32,
+    "appended_initialized_bytes": 331,
+    "linked_section_bytes": 3301339,
+    "bank_crossings": [],
+    "hardware_and_trace_assembly_preserved": true
+  },
+  "native_six_suite_checks": 36253,
+  "evidence": {
+    "test-report.json": {
+      "path": "docs/test-report.json",
+      "sha256": "01dfd06c3882b590bc4449b8aa267507281a98ef981ea6002915daa32212e918",
+      "checks": 2594
+    },
+    "character-test-report.json": {
+      "path": "docs/character-test-report.json",
+      "sha256": "26a47d2c1dcd25f4eefc80a94685a6f27c64bbb78db574f1b353ccc415c3f639",
+      "checks": 17142
+    },
+    "presentation-test-report.json": {
+      "path": "docs/presentation-test-report.json",
+      "sha256": "cfae05781e00b40771355d4c9f1b505e26f7a6f03f36f48b3a946d01fb62ca1b",
+      "checks": 3762
+    },
+    "input-test-report.json": {
+      "path": "docs/input-test-report.json",
+      "sha256": "86fb2b2f1c0991e7f0396fbf7f9af66e97bc7b46840d85be07ae5641552e517b",
+      "checks": 1422
+    },
+    "stage-test-report.json": {
+      "path": "docs/stage-test-report.json",
+      "sha256": "98c3b10df1a94af749e0c42438edef879d465c7fe25803837d87c8a9775bdf5c",
+      "checks": 8144
+    },
+    "training-test-report.json": {
+      "path": "docs/training-test-report.json",
+      "sha256": "487777457a38cdf0fe69b1eadebc822d612e41b15a2001a4f47f8d8fde9d0bb0",
+      "checks": 3189
+    },
+    "compatibility-test-report.json": {
+      "path": "docs/compatibility-test-report.json",
+      "sha256": "333accff07a68249c80160ab36056924cbdbf5a1ded5481186d049d81db43003",
+      "check_groups": 11
+    },
+    "expansion-01-report.json": {
+      "path": "docs/expansion-01-report.json",
+      "sha256": "ea808bd1c7dfbe2a3fdb1d0fbfdd5f8082fdb710f01ef3b9bb93e7b6149ed096",
+      "checks": 499
+    },
+    "expansion-02-report.json": {
+      "path": "docs/expansion-02-report.json",
+      "sha256": "e15296e13aeed331931d2dc9a4056a536600ef5166bf3200801c4b57a561ba19",
+      "checks": 1973
+    },
+    "expansion-03-report.json": {
+      "path": "docs/expansion-03-report.json",
+      "sha256": "3aa9a42196dceb174c440139fc4994c0a43a369c4c7625aa8c19e540cec10a26",
+      "checks": 3781
+    },
+    "expansion-04-report.json": {
+      "path": "docs/expansion-04-report.json",
+      "sha256": "37cff46179b49f631f794d6090796ae2f593b7e81015662fc159512b144ffe3c",
+      "checks": 399
+    },
+    "expansion-05-report.json": {
+      "path": "docs/expansion-05-report.json",
+      "sha256": "ce6ec654ce3c2a245ca38c6eed895e59d43869ac6581467cc83db2bf3946205c",
+      "checks": 309
+    },
+    "expansion-06-report.json": {
+      "path": "docs/expansion-06-report.json",
+      "sha256": "796818c2cb5729de394a50a3e10826afb876ba8935c55e61fa38e76cc348ecb9",
+      "checks": 315901,
+      "retained_summary_checks": 1487
+    },
+    "expansion-07-report.json": {
+      "path": "docs/expansion-07-report.json",
+      "sha256": "01e93bd9fafbe95d53a353fb1f25967c5200cc6c22045fb37972e9c2ed30e9aa",
+      "checks": 2280
+    },
+    "expansion-08-report.json": {
+      "path": "docs/expansion-08-report.json",
+      "sha256": "6f19991014575654a816319a84b85a31def14dd3b30c3556f1aca03c8a5afff7",
+      "checks": 18459
+    },
+    "expansion-09-report.json": {
+      "path": "docs/expansion-09-report.json",
+      "sha256": "14c6644e850e3aad513337c00fe2a3829ba47d48e977556e722df2490035224d",
+      "checks": 1763
+    },
+    "expansion-10-report.json": {
+      "path": "docs/expansion-10-report.json",
+      "sha256": "8b6f88ad7895d7a3de726cea7d6cada59782747780bd21dfb9cc698f013d600e",
+      "checks": 182
+    },
+    "authoring-guards-report.json": {
+      "path": "docs/authoring-guards-report.json",
+      "sha256": "b47a0e9038ef5b5560371a8af49bb017d62d717baf3dea54f48c570f7bbc6824"
+    },
+    "fresh-build-test-report.json": {
+      "path": "docs/fresh-build-test-report.json",
+      "sha256": "84145214bd830153e5aa472adae2f6566a4e58506dbaeee3f01c5fd59e203ddd"
+    }
+  },
+  "feature_prs": {
+    "04": {
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/2",
+      "number": 2,
+      "branch": "t3/fighter-personality-gestures",
+      "head": "b440a06c9ef8e2451d0e2d07a837c4e464faea85",
+      "status": "merged_into_integration",
+      "merged": true,
+      "isolated_checks": 400,
+      "isolated_rom_sha256": "ce70e32e9fddd712459cd6f7d807399fa3621e4a71b370e7e680d18853837dd6",
+      "merge_commit": "187a0c27fedfeab912c17ad5e64174c055a31bbe",
+      "base_branch": "integration/ten-improvements-v022",
+      "merged_at": "2026-10-23T03:55:50Z"
+    },
+    "01": {
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/3",
+      "number": 3,
+      "branch": "t3/animation-weight",
+      "head": "3dd90cae077039aaa17ff564517dd263d24d51d0",
+      "status": "merged_into_integration",
+      "merged": true,
+      "isolated_checks": 471,
+      "isolated_rom_sha256": "07f3f6d589f905c58b2e72b499245e5538d365790319990a7fbb18193c4e5d68",
+      "merge_commit": "979f6a3580f9ca588231850536f20fd951973d43",
+      "base_branch": "integration/ten-improvements-v022",
+      "merged_at": "2026-10-23T03:55:50Z"
+    },
+    "08": {
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/4",
+      "number": 4,
+      "branch": "t3/stage-parallax-ambient-reactions",
+      "head": "bbdf9018bfa1d763862afe4e118bf5df39709091",
+      "status": "merged_into_integration",
+      "merged": true,
+      "isolated_checks": 13130,
+      "isolated_rom_sha256": "2e7c9690b23665db7b529c70becf553b8eac21bba7bef839d7aec5644765ea3c",
+      "merge_commit": "acd49360cf3530a89f3ec8dfa18ef6fcbcacd891",
+      "base_branch": "integration/ten-improvements-v022",
+      "merged_at": "2026-10-23T03:55:50Z"
+    },
+    "06": {
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/5",
+      "number": 5,
+      "branch": "t3/cpu-personality-policy",
+      "head": "492984935a23047b8de53b806e8db94fd5e7632a",
+      "status": "merged_into_integration",
+      "merged": true,
+      "isolated_rom_sha256": "db0cd17d4dcee9d529ac3a2135a8e158e9731750aead914cc26cc128abf86c1c",
+      "merge_commit": "031acad9ad01346acbafc3f3a25771fddb63e9b8",
+      "base_branch": "integration/ten-improvements-v022",
+      "merged_at": "2026-10-23T03:55:50Z"
+    },
+    "02": {
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/6",
+      "number": 6,
+      "branch": "t3/impact-spark-polish",
+      "head": "7335ef036848d9686a39a3525624e74da20cfc20",
+      "status": "merged_into_integration",
+      "merged": true,
+      "isolated_checks": 1930,
+      "isolated_rom_sha256": "75745e5a96438666747322910205ad8bf2db7bfd9cb6c6bef163bd40bc811e98",
+      "merge_commit": "e4c48b41dd237204bb607620bebdd902394f2b80",
+      "base_branch": "integration/ten-improvements-v022",
+      "merged_at": "2026-10-23T03:55:50Z"
+    },
+    "03": {
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/7",
+      "number": 7,
+      "branch": "feature/expansion-03-normal-balance",
+      "head": "7484d890a7849be9c039ee7dd13cccec1c378c57",
+      "status": "merged_into_integration",
+      "merged": true,
+      "isolated_checks": 3782,
+      "isolated_rom_sha256": "5a3403b08550799411a531a359e0a8f0adb342759a5f7a1ae1c63380616acd11",
+      "merge_commit": "b9cf98ecf59d6732fe83212ded88eae93eca2b51",
+      "base_branch": "integration/ten-improvements-v022",
+      "merged_at": "2026-10-23T03:55:50Z"
+    },
+    "10": {
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/8",
+      "number": 8,
+      "branch": "t3/resident-audio-announcements",
+      "head": "92ec08c83149f374d1f561bd2a2a1ebde0581e57",
+      "status": "merged_into_integration",
+      "merged": true,
+      "isolated_checks": 159,
+      "isolated_rom_sha256": "1910bff59f1248e36d728b30f41dfa9a9990f6161238e6ca328d3b6c56f9e1d5",
+      "merge_commit": "91318d17a74383d5e9a66198f36adf5f48ac3942",
+      "base_branch": "integration/ten-improvements-v022",
+      "merged_at": "2026-10-23T03:55:50Z"
+    },
+    "07": {
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/9",
+      "number": 9,
+      "branch": "t3/roster-super-moves",
+      "head": "126c6219adc7bab4092cf3724f87dd71a08f722d",
+      "status": "merged_into_integration",
+      "merged": true,
+      "isolated_checks": 2151,
+      "isolated_rom_sha256": "89fc09f725b6ee5ca5e68f6b7238891c701676a0cf178985fd9081403e045da8",
+      "merge_commit": "36a31ccf48e0bcf4863380fee452e0a6f470316e",
+      "base_branch": "integration/ten-improvements-v022",
+      "merged_at": "2026-10-23T03:55:50Z"
+    },
+    "09": {
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/10",
+      "number": 10,
+      "branch": "t3/arcade-story-dialogue",
+      "head": "0e43485d57188b7307af6399f90797f9c47258b3",
+      "status": "merged_into_integration",
+      "merged": true,
+      "isolated_checks": 1744,
+      "isolated_rom_sha256": "709d9082f794234e52615353b9b199dff1e52d81faca0d840faea3287109ad32",
+      "merge_commit": "6e28c76b31e9f1d1775d9f31fe3234cc5750c67b",
+      "base_branch": "integration/ten-improvements-v022",
+      "merged_at": "2026-10-23T03:55:50Z"
+    },
+    "05": {
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/11",
+      "number": 11,
+      "branch": "t3/training-combat-tools",
+      "head": "6f8f1591bd4f86c23411a3c8829f5014729feb56",
+      "status": "merged_into_integration",
+      "merged": true,
+      "isolated_checks": 608,
+      "isolated_rom_sha256": "4c830b6ad309511ef67f550c668ceecf240565cfd9a24a4d4a5469b340cf51b2",
+      "merge_commit": "865eeee966ff0245a909c1f9a6fad6a88f93395c",
+      "base_branch": "integration/ten-improvements-v022",
+      "merged_at": "2026-10-23T03:55:50Z"
+    }
+  },
+  "integration_pr": "https://github.com/Reston/snes-abaqus-fighter/pull/1",
+  "scope": "All ten integrated features, six native suites, independent emulator smoke, source-authoring mutations and fresh export on one exact cartridge",
+  "public_release_certified": false,
+  "full_offline_release_evidence_regenerated": false,
+  "human_review_of_combined_revision": null
+}

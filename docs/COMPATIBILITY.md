@@ -1,13 +1,44 @@
 # Independent-engine compatibility
-<!-- candidate-version: 0.21.0; rom-sha256: aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205 -->
+<!-- candidate-version: 0.22.0; rom-sha256: d4fddaf609a0c29f45353a8d9e22fe1131fc3380838d9c0073d3255474cdf8af -->
 
-The current candidate is v0.21.0, cartridge SHA256 `aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205`.
-The separate pinned bsnes2014 Accuracy smoke passes on this exact ROM;
-[compatibility-test-report.json](compatibility-test-report.json) records it.
+The combined v0.22.0 candidate is on `integration/ten-improvements-v022`.
+Main remains v0.21.0 until your combined playtest and
+[PR #1](https://github.com/Reston/snes-abaqus-fighter/pull/1) merge. Run
+`Play.cmd` from the integration checkout to try all ten changes. The pinned
+bsnes2014 Accuracy smoke passes on ROM `d4fddaf609a0c29f45353a8d9e22fe1131fc3380838d9c0073d3255474cdf8af`,
+header `EA9D`, matching all six current native suites.
+The [verification record](expansion-v0.22.0-verification.json) binds its report
+and the ten feature proofs to the same cartridge.
+See the [combined release guide](RELEASE-v0.22.0.md).
+
+The independent smoke must observe the new band scroll and composed impact
+shake, updated ambient phases, shared effect priority and synchronized low-wave
+fetches on that exact final cartridge. Intro, pause and hitstop retain their
+ambient freeze rules. The ordinary ambient clock also freezes at round end,
+but a real winner now receives a separate bounded ambient cheer and neutral
+settle; draws do not. A blanket round-end pixel-freeze expectation would miss
+that deliberate change. Stage comparisons must account for each band's offset.
+Training's third guide page and supers do not expand a bounded smoke into a
+full second-engine gameplay or Training matrix.
+
+There is no v0.22.0 offline ZIP or regenerated full release-scale evidence.
+v0.19.0 remains the latest full offline archive. Human play/controller/listening,
+consent and public-use gates stay open; `public_release_certified` is false.
+Original-console/flash-cartridge support remains unverified.
+
+## Historical v0.21.0 smoke
+
+The v0.21.0 candidate is cartridge SHA256 `aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205`.
+The separate pinned bsnes2014 Accuracy smoke passed on that exact ROM.
+Its release note records that historical result; the live
+[compatibility-test-report.json](compatibility-test-report.json) must be read
+with its own ROM identity as integration proceeds.
 It includes all-stage effects/freeze checks and synchronized low waves with
 the revised floor-contact shadows. The full independent combat report,
 release-scale gates and offline archive still belong to the historical
 v0.19.0 checkpoint. See the [v0.21.0 note](RELEASE-v0.21.0.md).
+
+## Smoke contract and reproduction
 
 The pinned smoke check has the bounded scope `independent-engine smoke, stage
 ambient/effects freeze, synchronized low-wave, neutral600frame cadence`. It is
@@ -20,9 +51,11 @@ WRAM trace without writing emulated memory.
 When `assets/generated/stage-dynamics.json` is present, the same independent
 host also exercises all three stages. It waits for each of the four authored
 ambient phases, hashes the declared patch rectangles from the actual PPU video
-callback, and saves one review frame per stage/phase. The intro, pause, combat
-hitstop, and round-end checks require the ambient trace and actual PPU patch to
-remain frozen in their respective state. A controls-only Negger/Fernando
+callback, and saves one review frame per stage/phase. Intro, pause and combat
+hitstop require the ordinary ambient trace and PPU patch to remain frozen.
+v0.22.0 round-end observations must distinguish the frozen ordinary clock from
+the separate winner reaction and subsequent neutral settle, and comparisons
+must use the active scroll-band offsets. A controls-only Negger/Fernando
 fixture then synchronizes both low waves, requires the STAT77 OAM range/time
 overflow bits (`0xC0`) to stay clear on every frame, and checks every observed
 frame delta is one. The raw low revision/status values remain recorded in the

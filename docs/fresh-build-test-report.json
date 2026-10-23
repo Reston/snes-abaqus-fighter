@@ -7,11 +7,11 @@
     "pre_extracted_tools_reused": false,
     "build_intermediates_reused": false
   },
-  "source_commit": "003ab19b98f291fed67e7de457c1fc746d7ad2d8",
-  "source_tree": "17854e74ac06042df3d9121747036a00a5034686",
-  "rom_sha256": "945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7",
-  "work_directory": "build/fresh-build/003ab19b-ekdtflze",
-  "source_archive_sha256": "51c947143f6fb34bddd41302c05c940f8e58e78be5b45e472c1ba86833f312f1",
+  "source_commit": "b149cdf2d9e25560f61d09a0f49e71ce6fea7042",
+  "source_tree": "f58da040001f57a12c55b3ce92bde66041164b71",
+  "rom_sha256": "d4fddaf609a0c29f45353a8d9e22fe1131fc3380838d9c0073d3255474cdf8af",
+  "work_directory": "build/fresh-build/b149cdf2-xg171kbc",
+  "source_archive_sha256": "979c799ac558b3209d4e589ede0d290c4b40f1f9eebc933277b4588753b9f90b",
   "cached_archives_reused": [
     "snes9x.zip",
     "pvsneslib.zip",
@@ -26,7 +26,7 @@
     "sdk_tree_sha256": "0cd7a571b0a020394ead285b887c81b717c55c39540335abd8c7774b55bccb7b"
   },
   "build_exit_code": 0,
-  "build_log": "build/fresh-build/003ab19b-ekdtflze/build.log",
+  "build_log": "build/fresh-build/b149cdf2-xg171kbc/build.log",
   "bootstrap_archives": [
     {
       "name": "snes9x.zip",
@@ -53,7 +53,7 @@
     "python": "3.12.10",
     "pillow": "13.0.0"
   },
-  "rebuilt_rom_sha256": "945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7",
+  "rebuilt_rom_sha256": "d4fddaf609a0c29f45353a8d9e22fe1131fc3380838d9c0073d3255474cdf8af",
   "generated_assets": [
     {
       "file": "assets/generated/arenas.png",
@@ -77,7 +77,7 @@
     },
     {
       "file": "assets/generated/assets.h",
-      "sha256": "e6b25995dbec2a066697b0cd5e98a29dc94863b5ff30bfad13094c5c2ca22fee",
+      "sha256": "da2453d47a8e20c6cc82d51c1e280cb2b3a4ad2dda78745e20793cba39e49f02",
       "comparison": "LF-normalized text"
     },
     {
@@ -102,7 +102,7 @@
     },
     {
       "file": "assets/generated/character-manifest.json",
-      "sha256": "6950f288ee55632116f1c1ddf37ab1972818ac420a09030e23ce4399f6d36438",
+      "sha256": "72d3ffb508c8044f2bc1142dc4481918e6f01a188c0430220561a581393b1e2d",
       "comparison": "LF-normalized text"
     },
     {
@@ -112,12 +112,12 @@
     },
     {
       "file": "assets/generated/effects.bin",
-      "sha256": "e624c8009b3342f57ed0848239239376be95b0b9ea3e8d624c08e90d6dce9fbd",
+      "sha256": "241d5530383cebbdf0f9b7939f8d2271008b946192f18d113236b22f86f646b3",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/effects.it",
-      "sha256": "8a6f749a3e87d134fe714aa621e36d86b56a2a05f722ed2fe378a3ff90235353",
+      "sha256": "9d39ff73af4f64de3dd6c2cd3d6b748f76516fd5dc12645243d65fea40f2d478",
       "comparison": "exact bytes"
     },
     {
@@ -127,12 +127,12 @@
     },
     {
       "file": "assets/generated/fighter00.bin",
-      "sha256": "dc003395b642c15d6334c69adce15b1dd79bfb76a6a907a6b239274da8f4d728",
+      "sha256": "a16772b0de77f74bff18927b888b2877a6add726fe78d6545f02ccbe3aec8858",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter00.png",
-      "sha256": "933126cb57d5e5b36a57c962fb4f12ecb5418a41408954413ba451ec08b3afa9",
+      "sha256": "b1df4d7a53448fb35c055deedc75b4c862aa442d3f4b1eabbb0a2c4d2c202f16",
       "comparison": "exact bytes"
     },
     {
@@ -142,37 +142,37 @@
     },
     {
       "file": "assets/generated/fighter00b.bin",
-      "sha256": "c51af33036bd57f19661826976cf1381b1a78913261f1728dd81dec4d10336d3",
+      "sha256": "ab8b00aa59870f4065cf8c56c97e42aaee339e01d3add5dba30bf024b4b9b886",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter00c.bin",
-      "sha256": "ced5a0926fa47d0ed5acbe08da635f9fcde9ebbf7df4ff4c4a9efaad713e44ef",
+      "sha256": "8606a3ebf3be183a7fad688cc021702f4427c290ced6a07ce3d7c1d653c544c9",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter00d.bin",
-      "sha256": "e0113c1f9cc9d4e297904310a421db097495140bfde1c8dc2264849648a358c3",
+      "sha256": "150dd36737bf84b71e3caee5480879b535af8e7a3341bf1aa739dcb0e42ffc1b",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter00e.bin",
-      "sha256": "727ba8e8c209b6172cef6cae99dbc9dce421a811a64395a46a3749e2456bc95a",
+      "sha256": "b44f9e6937e66ec92c5e8fcdc17fa80217d224a616b86a6d8e0d5e799b423db7",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter00f.bin",
-      "sha256": "e00205c1c8ab1e578d30e3dab98077082cec50d651d6c0145732defd6e3146de",
+      "sha256": "4818e136f1020a474c2d2162f8a9a2e027fa6c403bfb06fa694f19d335de2863",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter00g.bin",
-      "sha256": "221144098949e354d9de70d740fe078f06106aa389670327397b39735e019746",
+      "sha256": "e8f31a6f00b2d00c4cadb12b155cccea38a913c91f52d6414cedc03088331d9c",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter00h.bin",
-      "sha256": "4d9c4d28987f7e575d541ddf5cc078fc26fcd65832c42efda34cd4792d14eeee",
+      "sha256": "7c4735b5b8e133e468be53d2383ef068d7bb623dea05ef39b78348be50408b5d",
       "comparison": "exact bytes"
     },
     {
@@ -752,22 +752,22 @@
     },
     {
       "file": "assets/generated/portrait00-large.png",
-      "sha256": "a7bd2313500980db759031d66a7984aa6823bd3406581091f215a212d6a701d2",
+      "sha256": "a74d321aa05586da8f30117f802fc92768d3346b6f01ff35d9323fcc46198504",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait00.png",
-      "sha256": "925bf0ffdbf72ecd90b52ccc64378b6a2681f992528a4ab45e02b576f5f363e9",
+      "sha256": "0b036835df577d227a082f039b959be030a838011d810542359145481917299b",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait00_pal.bin",
-      "sha256": "e2848c7d315b7e9d725e729d6d3b644ff21726c9f3979d5039373828f07914f5",
+      "sha256": "3ba05a56984fbf9692d2ac0d4de5efb29782984a8a2ae8aeb0876021d9cc8aac",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait00_tiles.bin",
-      "sha256": "2bd09ad23a2df08d53046ad70952e45851aa5e88695da12fc641bfb918f41cb6",
+      "sha256": "cef8bc55342eea67d30e43e52852d560e421c25e9071fe7e7a9c52e02f75de09",
       "comparison": "exact bytes"
     },
     {
@@ -992,22 +992,22 @@
     },
     {
       "file": "assets/generated/select.png",
-      "sha256": "d00fee8e2588cacac63f62c2e5e2387f5026cfa8394428f1c42af0d5fb2ff142",
+      "sha256": "5f48de5fb17658d43743004ac63f11117ca57ad3ad7c535526c550eb20b42faa",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/select_map.bin",
-      "sha256": "c0cab654437f3fd845cbc9da0e271e5d6978d9459409f7098672185709a10898",
+      "sha256": "8b7e22dd16171d10a8b1318f1207a184d73a186273a5c0908efcb4234d6e5e88",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/select_pal.bin",
-      "sha256": "7a74b75763c4cfd49558b34e01f5c2dad33327dc090485d941cb92e79303af09",
+      "sha256": "d0212fe05a5a6da8b24bba30510c876df0b8cf6e41e767984a5155a7b645200a",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/select_tiles.bin",
-      "sha256": "7a6e42c88c8c615895cc4e051011f159eb8c4e7d3a44ebc7575f5c2ec667cb63",
+      "sha256": "58f5e747b1112813dccc2c205cfac8f8e97a252262235ab8c3385bbdd5de7e5f",
       "comparison": "exact bytes"
     },
     {
@@ -1032,17 +1032,17 @@
     },
     {
       "file": "assets/generated/soundbank.asm",
-      "sha256": "eb450eb9203abc0cfc11e1bf21e8d78f4ef02172d3233acfd87aece9a4e2b268",
+      "sha256": "38bc1b3b5a45f4bc3f81a5ef610c9f288253dc197f6a02a08ede51afd6b9a513",
       "comparison": "LF-normalized text"
     },
     {
       "file": "assets/generated/soundbank.bnk",
-      "sha256": "60e014f6b973075b79c2036eef78297cf70600741be913c490afc0332d2e5822",
+      "sha256": "537c07f0c761a59f1171dda685f1f2ddecddc151ecdb839bf6b6ee5e87d04cdb",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/stage-dynamics.json",
-      "sha256": "1d1ea5e2b67fac083fb9afd827abb4cc581825d71c573f19fe3efd9380402ced",
+      "sha256": "fa8d96a7e172c3b8b78c80a8412a4e083e5eda66949cecbd202d682ce407bb5a",
       "comparison": "LF-normalized text"
     },
     {
@@ -1052,7 +1052,7 @@
     },
     {
       "file": "assets/generated/stage0_ambient.bin",
-      "sha256": "c04aadd73505ef5d9023b355cc952f33ed5b8cf8fe566a7c6b3d2663a603c165",
+      "sha256": "14a38b3bdeed747a5b4ac69e103d133fae89cd676ea0ecfcaa980bafb087a472",
       "comparison": "exact bytes"
     },
     {
@@ -1077,7 +1077,7 @@
     },
     {
       "file": "assets/generated/stage1_ambient.bin",
-      "sha256": "23a821d2fc3f885143c6a43c9605f65545ee9c9465912a980e6c22f4baef8d0b",
+      "sha256": "2830f4e251d190c08732fe8f6b4f6bc71ba64b68098934448525901fc9d64ba9",
       "comparison": "exact bytes"
     },
     {
@@ -1102,7 +1102,7 @@
     },
     {
       "file": "assets/generated/stage2_ambient.bin",
-      "sha256": "54f1ad7b421c05accf8d5026877ce4b2621b2e9df51e4fb5bb115388a9003a6c",
+      "sha256": "620d41839ce8a8caa87f8135df4c65ef51f08d5caadafbec361fea9b01721092",
       "comparison": "exact bytes"
     },
     {
@@ -1142,16 +1142,16 @@
     },
     {
       "file": "assets/generated/ui_pal.bin",
-      "sha256": "7f8d1dc7d59c7f175f289de99216c7f0b8eed5afec255e16e7b528b7fd06468d",
+      "sha256": "f99e1aad1efa10318c6c61a54c598518ffc723e22afbe7a5ecd502c57d2d507e",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/ui_tiles.bin",
-      "sha256": "6ec925a47e0410b94638cc114db8b17e45c0c1ea51022d4031d4ecc27bacd84a",
+      "sha256": "de322b22b9749e58d0bd89f743b4952735274533fc21d6c60c3116037dcea1ab",
       "comparison": "exact bytes"
     }
   ],
   "generated_assets_verified": 219,
   "symbols_equal_after_source_path_normalization": true,
-  "elapsed_seconds": 471.844
+  "elapsed_seconds": 56.859
 }

@@ -1,5 +1,11 @@
 # Expansion 08: native stage depth and life
 
+> Combined v0.22.0: this note retains the original feature-branch design and
+> isolated measurements. The linked focused report and native captures are
+> regenerated for the combined cartridge. Use the [combined release note](RELEASE-v0.22.0.md)
+> and [verification record](expansion-v0.22.0-verification.json) for current
+> identity, coverage and integration contracts.
+
 Feature branch: `t3/stage-parallax-ambient-reactions`, based on integration
 commit `610537d`. This feature keeps the source version unchanged; 0.22.0
 belongs to the combined integration candidate.
