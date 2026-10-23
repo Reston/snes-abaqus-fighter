@@ -1070,77 +1070,8 @@ u8 poseFor(u8 p) {
     if(f->guard)return 9;
     return 0;
 }
-void animateFighter(u8 p) {
-    Fighter *f=&fighters[p];
-    const CharacterProfile *c=combatProfiles[p];
-    u8 state,start,end,recover,hold,action=f->action,tick;
-    if(roundEnd) {
-        if(!f->hp)state=9;
-        else if(winner==p)state=8;
-        else state=7;
-    } else if(f->downState)state=9+f->downState;
-    else if(f->hurt)state=f->guard?6:7;
-    else if(action)state=5;
-    else if(f->y || f->landing)state=4;
-    else if(f->duck)state=3;
-    else if(f->walking)state=f->walking==1?1:2;
-    else if(f->guard)state=6;
-    else state=0;
-    if(f->animState!=state) {
-        f->animState=state;f->animTick=state==0?(f->id*3)&63:0;
-        if(state==1 || state==2)f->stride=0;
-    }
-    if(state==0) {
-        f->animFrame=16+(f->animTick>>4);
-        f->animTick++;if(f->animTick>=64)f->animTick=0;
-        return;
-    }
-    if(state==1)f->animFrame=20+((f->stride>>7)&3);
-    else if(state==2)f->animFrame=24+((f->stride>>6)&3);
-    else if(state==3)f->animFrame=f->animTick<4?28:3;
-    else if(state==4) {
-        if(f->landing)f->animFrame=31;
-        else if(f->animTick<2)f->animFrame=29;
-        else if(f->animTick<6)f->animFrame=30;
-        else if(f->vy>32 && f->y>-24*16)f->animFrame=31;
-        else f->animFrame=55;
-    } else if(state==6) {
-        /* A low guard keeps the crouched body and raised hands; standing
-         * guard art would contradict the low hurtbox during blockstun. */
-        if(f->duck)f->animFrame=3;
-        else f->animFrame=f->animTick<3?40:9;
-    }
-    else if(state==7)f->animFrame=f->animTick<6?10:41;
-    else if(state==8)f->animFrame=(f->animTick%40)<10?46:11;
-    else if(state==9) {
-        if(f->downState==DOWN_FLOOR)f->animFrame=59;
-        else f->animFrame=f->animTick<12?47:59;
-    }
-    else if(state==10)f->animFrame=58;
-    else if(state==11)f->animFrame=f->downTick<6?60:61;
-    else if(state==12)f->animFrame=59;
-    else if(state==13)f->animFrame=62;
-    else if(state==14)f->animFrame=63;
-    else {
-        start=f->actionStartup;end=f->actionActiveEnd;
-        tick=f->tick;hold=tick<start;
-        recover=tick>=end;
-        if(f->airAction)f->animFrame=action<=3?(hold?49:(recover?51:50)):(hold?52:(recover?54:53));
-        else if(action==1)f->animFrame=hold?32:(recover?33:5);
-        else if(action==2 || action==3)f->animFrame=hold?34:(recover?35:6);
-        else if(action>=4 && action<=6) {
-            if(f->duck)f->animFrame=hold?38:(recover?39:8);
-            else f->animFrame=hold?36:(recover?37:7);
-        } else if(action==7) {
-            if(c->specialFamily==SPECIAL_RUSH)f->animFrame=tick<2?32:(recover?33:15);
-            else if(c->specialFamily==SPECIAL_RISING)f->animFrame=tick<3?44:(recover?45:13);
-            else f->animFrame=hold?42:(tick<end+7?12:43);
-        } else if(action==8)f->animFrame=hold?44:(recover?45:13);
-        else if(action==9)f->animFrame=hold?56:(tick<start+8?57:48);
-        else f->animFrame=hold?34:(recover?35:15);
-    }
-    if(f->animTick<200)f->animTick++;
-}
+/* Presentation sequencing; combat poseFor and physics remain independent. */
+#include "animation_weight.h"
 void drawFighter(u8 p) {
     Fighter *f=&fighters[p];
     f->pose=poseFor(p);
