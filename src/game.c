@@ -255,6 +255,7 @@ void put(u8 x,u8 y,u16 t) {
 void word(u8 x,u8 y,const char *s) { while(*s && x<32) put(x++,y,*s++); }
 void center(u8 y,const char *s) { u8 n=0; const char *p=s; while(*p++)n++; word((32-n)/2,y,s); }
 void number(u8 x,u8 y,u8 n) { put(x,y,'0'+n/10); put(x+1,y,'0'+n%10); }
+#include "training_tools.h"
 void panel(u8 y,u8 rows) { u16 i; for(i=(u16)y*32;i<(u16)(y+rows)*32;i++)ui[i]=128|0x2000; }
 void cursor(u8 x,u8 y,u8 w,u8 h) {
     u8 i;
@@ -273,6 +274,7 @@ void music(u8 index) {
     audioSceneLoaded();spcPlay(0);musicIndex=index;
 }
 void commonScreen(void) {
+    if(mode==2)trainingNewMatch();
     pausePage=0;guideBuild=0;guideDirty=0;trainingDummy=0;pauseHudPending=0;
     portraitDirty=0;
     actorUploadDirty=0;
@@ -410,6 +412,7 @@ void resetRoundState(void) {
     pauseHudPending=0;
     hudHp[0]=255;hudHp[1]=255;hudEnergy[0]=255;hudEnergy[1]=255;
     hudWins[0]=255;hudWins[1]=255;hudSeconds=255;
+    if(mode==2)trainingReset();
 }
 void resetRound(void) {
     u8 x;
@@ -512,6 +515,9 @@ void showResult(u8 won) {
 }
 
 #include "pause_guide.h"
+#define ABAQUS_TRAINING_TOOLS_IMPLEMENTATION
+#include "training_tools.h"
+#undef ABAQUS_TRAINING_TOOLS_IMPLEMENTATION
 
 /* CPU decisions use ROM-only per-character habits and shared fair reactions. */
 #include "cpu_personality.h"
@@ -534,6 +540,7 @@ void attackStart(u8 p,u8 a) {
     }
     else if(a==8) {f->vy=c->uppercutVy;f->vx=0;f->y=-1;f->duck=0;sound(0);}
     else sound(0);
+    if(mode==2)trainingStarted(p,a);
 }
 u16 cleanDirections(u16 keys) {
     if((keys&(KEY_LEFT|KEY_RIGHT))==(KEY_LEFT|KEY_RIGHT))keys&=~(KEY_LEFT|KEY_RIGHT);
@@ -626,6 +633,7 @@ void captureFightInputs(void) {
     if(paused)live=0;
     if((edge0|edge1)&KEY_START)live=0;
     captureInput(0,pad0,live);
+    if(mode==2 && live)trainingCapture(fighters[0].keys);
     if(mode==1)second=pad1;
     else {
         if(!fighters[1].action && !fighters[1].hurt && !fighters[1].y && !fighters[1].downState)
@@ -726,6 +734,7 @@ u8 hurtWithRecoil(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable,u8
     impactBannerPlayer=attacker;impactBannerPending=1;impactSettle=1;
     back=d->hp;
     if(dmg>=back)d->hp=0;else d->hp=back-dmg;
+    if(mode==2)trainingContact(attacker,blocked,low,back-d->hp);
     rearKickRecoil&=defender?3:12;
     if(!blocked) {
         if(defender)rearRecoil<<=2;
@@ -848,7 +857,7 @@ u8 canHit(u8 p) {
     return verticalContact(d,top,bottom);
 }
 void combat(void) {
-    u8 a0,a1,m0,m1,p,finished,low0,low1,air0,air1,face0,face1,k0,k1,expired,rear0,rear1;
+    u8 a0,a1,m0,m1,p,finished,low0,low1,air0,air1,face0,face1,k0,k1,expired,rear0,rear1,contact;
     s16 distance;
     const CharacterProfile *c0,*c1,*cw;
     controls(0);controls(1);
@@ -889,6 +898,7 @@ void combat(void) {
     }
     if(a0) {
         fighters[0].connected=hurtWithRecoil(0,1,superDamage(0,attackDamage(c0,fighters[0].id,m0)),low0,air0,0,rear0,m0);
+        if(mode==2 && !superActive[0])trainingMoveContact(m0,air0,rear0,fighters[0].connected);
         if(fighters[0].connected==2) {
             if(superActive[0])k0=superKnockdown(0);
             else if(knockdownAttack(0,m0,low0))k0=1;
@@ -916,7 +926,9 @@ void combat(void) {
             else if(!fighters[1-p].downState && !fighters[1-p].invuln && fighters[1-p].hp &&
                     abs16(waves[p].x-fighters[1-p].x)<((superWaveDamage[p]?superWaveReach[p]:cw->specialReach)+BODY_HALF_WIDTH-6)*16 &&
                     verticalContact(&fighters[1-p],((s16)waves[p].y-FLOOR-6)*16,((s16)waves[p].y-FLOOR+6)*16)) {
-                hurt(p,1-p,superWaveDamage[p]?superWaveDamage[p]:attackDamage(cw,fighters[p].id,7),waves[p].low,0,0);waves[p].active=0;waves[p].low=0;waves[p].speed=0;
+                contact=hurt(p,1-p,superWaveDamage[p]?superWaveDamage[p]:attackDamage(cw,fighters[p].id,7),waves[p].low,0,0);
+                if(mode==2 && !p && !superWaveDamage[p])trainingMoveContact(7,0,0,contact);
+                waves[p].active=0;waves[p].low=0;waves[p].speed=0;
             }
         }
     }
@@ -1034,12 +1046,22 @@ void fightTick(void) {
             if(pauseKeys&KEY_B){closePauseGuide();showSelect();return;}
             if(pauseKeys&KEY_A){paused=0;closePauseGuide();clearBanner();}
             else if(pauseKeys&KEY_SELECT) {
-                if(pausePage==2){closePauseGuide();drawPauseCard();}
+                if(pausePage==(mode==2?3:2)){closePauseGuide();drawPauseCard();}
                 else openPauseGuide(pausePage+1);
                 sound(0);
             } else if(pausePage) {
                 if(pauseDirections&(KEY_LEFT|KEY_RIGHT)) {
-                    openPauseGuide(pausePage==1?2:1);sound(0);
+                    if(mode==2) {
+                        if(pauseDirections&KEY_RIGHT)openPauseGuide(pausePage==3?1:pausePage+1);
+                        else openPauseGuide(pausePage==1?3:pausePage-1);
+                    } else openPauseGuide(pausePage==1?2:1);
+                    sound(0);
+                } else if(mode==2 && pausePage==3) {
+                    if(pauseDirections&KEY_UP) {
+                        trainingVisible=!trainingVisible;trainingRestore=1;openPauseGuide(3);sound(0);
+                    } else if(pauseDirections&KEY_DOWN) {
+                        trainingChooseChallenge();openPauseGuide(3);sound(0);
+                    }
                 }
             } else if(mode==2 && (pauseDirections&(KEY_UP|KEY_DOWN))) {
                 if(pauseDirections&KEY_DOWN)trainingDummy=(trainingDummy+1)%5;
@@ -1131,6 +1153,7 @@ void fightTick(void) {
     }
     if(animationAdvance)fightClock++;
     if((frame&15)==0 && !impactHudPending && !roundBannerPending)hud();
+    if(mode==2 && !intro && !roundEnd) {trainingObserve();trainingService();}
     drawFight();
 }
 void menuTick(void) {
