@@ -68,7 +68,7 @@ def session(fighter,rom=None,current=False):
             s=tick()
             if current:check(all(s[k]==paused[k] for k in ('x1','x2','anim_frame1','anim_frame2','anim_tick1','anim_tick2')),'P2 pause freezes both walking poses',fighter)
         tick(p1=['start']);tick()
-        for _ in range(32):tick(['left'],['right'],'retreat')
+        for _ in range(48):tick(['left'],['right'],'retreat')
         if current:
             for label,ports in seen.items():
                 for port,frames in enumerate(ports):

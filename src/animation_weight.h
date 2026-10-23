@@ -50,10 +50,11 @@ void animateFighter(u8 p) {
         return;
     }
     if(state==1 || state==2) {
-        /* Eight authored contact/recoil/pass/extension poses. Distance owns
-         * the gait: 32px forward or a guarded 16px retreat per full cycle.
-         * Reverse the same footfalls for retreat; no new mutable clock. */
-        phase=state==1?((f->stride>>6)&7):((f->stride>>5)&7);
+        /* Shared artwork has one physical step length in either direction.
+         * Eight phases cover 32px; the slower retreat naturally takes longer.
+         * Four pixels per pose also lets both actors publish each footfall
+         * under the existing one-actor-per-vblank transfer budget. */
+        phase=(f->stride>>6)&7;
         if(state==2)phase=(8-phase)&7;
         f->animFrame=20+phase;
     }
