@@ -7,11 +7,11 @@
     "pre_extracted_tools_reused": false,
     "build_intermediates_reused": false
   },
-  "source_commit": "ae9fc6f308dcba27a4ecc08f9cec8fe0bc277322",
-  "source_tree": "3068119174afdb7bc073dd03a8aaa398591d208c",
-  "rom_sha256": "19387882aad17cc8184b02c2c2e0dcb3b6487c05522fe5ef7a943202ef0c0359",
-  "work_directory": "build/fresh-build/ae9fc6f3-ay1__3d6",
-  "source_archive_sha256": "80dd46ed184477e237db644d4c172b26b9c60a50e712f85e01a89220111215d7",
+  "source_commit": "cd9b9ffcbbff68c14c1e15c0bc2264a713badcea",
+  "source_tree": "2e2c377b79388e55b0d3d4f8e63205ab3be643bf",
+  "rom_sha256": "057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd",
+  "work_directory": "build/fresh-build/cd9b9ffc-twxt2o29",
+  "source_archive_sha256": "0ad0ad13e7eeb353452ce903dd19344484c88beb3742a47c9f88c6d7a08da76c",
   "cached_archives_reused": [
     "snes9x.zip",
     "pvsneslib.zip",
@@ -26,7 +26,7 @@
     "sdk_tree_sha256": "0cd7a571b0a020394ead285b887c81b717c55c39540335abd8c7774b55bccb7b"
   },
   "build_exit_code": 0,
-  "build_log": "build/fresh-build/ae9fc6f3-ay1__3d6/build.log",
+  "build_log": "build/fresh-build/cd9b9ffc-twxt2o29/build.log",
   "bootstrap_archives": [
     {
       "name": "snes9x.zip",
@@ -53,7 +53,7 @@
     "python": "3.12.10",
     "pillow": "13.0.0"
   },
-  "rebuilt_rom_sha256": "19387882aad17cc8184b02c2c2e0dcb3b6487c05522fe5ef7a943202ef0c0359",
+  "rebuilt_rom_sha256": "057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd",
   "generated_assets": [
     {
       "file": "assets/generated/arenas.png",
@@ -102,7 +102,7 @@
     },
     {
       "file": "assets/generated/character-manifest.json",
-      "sha256": "ae3ae88a4bb26db14f3788d22ba9f835bfe70e2e8b5bde2d22909ebe7fb145d2",
+      "sha256": "d81d1ddb1f7107df29c9d7edcfbbd882a4c1c67f73e039245e27d7f30d8e45ae",
       "comparison": "LF-normalized text"
     },
     {
@@ -132,7 +132,7 @@
     },
     {
       "file": "assets/generated/fighter00.png",
-      "sha256": "94bd77671ac86943e6eda1539283ed3b9eea953cace4fa0948da40c88a09bb60",
+      "sha256": "0fdf714dfc6daa750b000d09dcf254ccc7c44d910169b361ee3aea4a3b45eb51",
       "comparison": "exact bytes"
     },
     {
@@ -147,12 +147,12 @@
     },
     {
       "file": "assets/generated/fighter00c.bin",
-      "sha256": "3e46a14dc6145cae4a672f7c98635fcc260ddc81b3a91a4f5d972807aac8f7c1",
+      "sha256": "3df3db9e81b682e6bb5930644939381328987650d614dabd2b3a784cea8c4049",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter00d.bin",
-      "sha256": "07aafd0ac3b93eda73f5a5371fbe666d481a1b6bd71a824073a50bcb835906ce",
+      "sha256": "3d7c48b2be9c4432b8a159ba07d29af6e1e01f5e5b5d1630ffd05e365255b422",
       "comparison": "exact bytes"
     },
     {
@@ -182,7 +182,7 @@
     },
     {
       "file": "assets/generated/fighter01.png",
-      "sha256": "1b54e7c355ad061cb375a5119274f178f5812555ed50df59495165eaf52ea01b",
+      "sha256": "656f663d10b89bd2c261e1b47fd68fbdd4a1c5b1726767112f372b9598481d8c",
       "comparison": "exact bytes"
     },
     {
@@ -197,12 +197,12 @@
     },
     {
       "file": "assets/generated/fighter01c.bin",
-      "sha256": "b2ef4ab42df638c6769c5813c439662b5d4f7acd35466ca1ebb42d03ebf25249",
+      "sha256": "94c116e71b1774aa18651e1541128d1ae3dce86c7e5337f35af7871e55399fb2",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter01d.bin",
-      "sha256": "d538a9104601edaa203dcb4024a0da5be728c889338214e06654fcca0ef3b268",
+      "sha256": "9b0a8f549bf36f3555b6cbaaac9a752359666d188e25b2b865559ff5519d3c32",
       "comparison": "exact bytes"
     },
     {
@@ -232,7 +232,7 @@
     },
     {
       "file": "assets/generated/fighter02.png",
-      "sha256": "03c0d26f5e1ff908456dff833298a7db94f173f8809e6e3e39faa01fe43e1457",
+      "sha256": "c9ddbf7f2d1a570d0aba2d07147342f75b0e6ceca8b8eb1931e3f246fb870ac7",
       "comparison": "exact bytes"
     },
     {
@@ -247,12 +247,12 @@
     },
     {
       "file": "assets/generated/fighter02c.bin",
-      "sha256": "2b034e89a94c8ecb01ceac70098644578a7eba0e9eeda8b6f6e2828c54144ac0",
+      "sha256": "d9c4705865bd5dcfd95ec78e6eeb4f8284456b2c224b85a9b96f0896d0c14077",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter02d.bin",
-      "sha256": "f9ea17395f9dc1abc4821c8335744f15a16af7b66c768c54c8f3830aabaa720e",
+      "sha256": "970c3d7deb5e467efcf713339715af081c144785b8881663c4dd2406017759f7",
       "comparison": "exact bytes"
     },
     {
@@ -282,7 +282,7 @@
     },
     {
       "file": "assets/generated/fighter03.png",
-      "sha256": "67b3df6cdcf76daf5c4b9c6715fa9c791318046a19638e36fe2f16391cbab719",
+      "sha256": "afe918c862b29d600f20f8823e5f1bef015e2905b10600e1f93c45d792190464",
       "comparison": "exact bytes"
     },
     {
@@ -297,12 +297,12 @@
     },
     {
       "file": "assets/generated/fighter03c.bin",
-      "sha256": "78d11618b855ba3c379551d7b5f842ffefaf41006a32b99e819d509193463776",
+      "sha256": "4aad3f14ed3c9d3859025af867fdc9683b73e5a4dc7dbf16226f8f7094172be1",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter03d.bin",
-      "sha256": "7cdd465a7df7129a8a2a087ce79fa6e01636c95020b0d91832770d8d73c5c1ef",
+      "sha256": "abafcba0041088104586a425d379516bb3e2c20042318cf8cbca4d3fe728484a",
       "comparison": "exact bytes"
     },
     {
@@ -332,7 +332,7 @@
     },
     {
       "file": "assets/generated/fighter04.png",
-      "sha256": "ae882cfde340d613564a0e4777d805f30b04c0f3fb47bc543c2c4847ac6191da",
+      "sha256": "bf55ed3415db5c9527be61f2c41012380be888410858cc0676820186062d35b9",
       "comparison": "exact bytes"
     },
     {
@@ -347,12 +347,12 @@
     },
     {
       "file": "assets/generated/fighter04c.bin",
-      "sha256": "dc3b701fc15942d5bca1ee32af60159ec548001ec84c9582be116502fc010273",
+      "sha256": "e28d4589e272ee3a1fe249ea0bf6b76e2756f2e46f924a3ab018433cd04729b1",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter04d.bin",
-      "sha256": "e9f829c7914c9c9257a638d75bd430e6efe452b5c20e57fb126e7a2be66ee067",
+      "sha256": "9feebf3a53377b0e2d9a5a9ee3af90cd7fabae1a51a8508e92c93488c86b9060",
       "comparison": "exact bytes"
     },
     {
@@ -382,7 +382,7 @@
     },
     {
       "file": "assets/generated/fighter05.png",
-      "sha256": "500e9cb9a48a413ed3018aa3b45c89a7cfa3be09e7f55fc38663381c3cd8edfd",
+      "sha256": "5ce63af032f9e468e96c6fd9524e7654f91c74be7919bfbff6dc7c1000c2572e",
       "comparison": "exact bytes"
     },
     {
@@ -397,12 +397,12 @@
     },
     {
       "file": "assets/generated/fighter05c.bin",
-      "sha256": "f905cda051538030e4ac66c40a74b73a70b55a636b54ec3c3fd36c823ebd5516",
+      "sha256": "09c9476a22f7fc5aa6cea11ffe9af7274f6da213ad704f39a4538b98bc596aa7",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter05d.bin",
-      "sha256": "4b4e301e392ff147a46a69814ed935c73d482d7fbf9213f8377ed8e9265553fd",
+      "sha256": "85fdcfb94a90bc1131bb238c1ff9578101a89891c7bb87f72eacb15867817137",
       "comparison": "exact bytes"
     },
     {
@@ -432,7 +432,7 @@
     },
     {
       "file": "assets/generated/fighter06.png",
-      "sha256": "48ef09259158c88da56bf1967443700ab8b7cb720949bf26ecb721b4d1b5346d",
+      "sha256": "ec78f3593f6cb7b16ebc64158bd74fdca297e0e437057d6f5bb1b7b1422a0bbd",
       "comparison": "exact bytes"
     },
     {
@@ -447,12 +447,12 @@
     },
     {
       "file": "assets/generated/fighter06c.bin",
-      "sha256": "c48808083c1ce1ccea13f5767c98cbed235417a47c61276bc9e7c27cf242f82b",
+      "sha256": "968880971eedb9c1390e28551da7c37e63267dd81cd4ec17998a60adf67b7818",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter06d.bin",
-      "sha256": "d32e134658666d4c988334c69b4a0bdaea982d701fde67b749f8b27c4bfa6464",
+      "sha256": "d0b44bf15c53bb25c637c2eecbe83436b0075abefe801a0cf595a5e8f3e1826b",
       "comparison": "exact bytes"
     },
     {
@@ -482,7 +482,7 @@
     },
     {
       "file": "assets/generated/fighter07.png",
-      "sha256": "240e4a93db1a9f648f208d5ffaa909f7eda0df7d1a0c4e5dd9da9e2a7d32fe99",
+      "sha256": "15f54bc8f108785735bc4cd01055ff2009c28c863d281093e440dc9926707094",
       "comparison": "exact bytes"
     },
     {
@@ -497,12 +497,12 @@
     },
     {
       "file": "assets/generated/fighter07c.bin",
-      "sha256": "61c687ff16543eec5579a56ee85ed318ca3b62eb496a1484225a6363b5978bd5",
+      "sha256": "18fe7259dabf4d0e338a0c5dafbd7a1c50b86469ff99edaba145a8ad779a6b7c",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter07d.bin",
-      "sha256": "ac286105b5fa94c98ac1e35e98f205c4eac7ceec2a310b0008fc4765b211fdc1",
+      "sha256": "be199a10036123be0c869964e2eeafec7993f46f8e07f6efcfae210875e95817",
       "comparison": "exact bytes"
     },
     {
@@ -532,7 +532,7 @@
     },
     {
       "file": "assets/generated/fighter08.png",
-      "sha256": "37767d65a74f02652dd1607ea581d29198d157201efcbb03b040447301fc9397",
+      "sha256": "78bfa02aec0b8e625edee4ef171a23f124e9bf24856f1d4febb8f39e05ee21c1",
       "comparison": "exact bytes"
     },
     {
@@ -547,12 +547,12 @@
     },
     {
       "file": "assets/generated/fighter08c.bin",
-      "sha256": "5c02354df71e77f9c8c2921bd8eccdca4432e3184e0f3728c6500cdd8c59ff65",
+      "sha256": "02685dd59c018761cb3bcd366aada7ffefdbfcbb6efb5c803dbea1b52953734c",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter08d.bin",
-      "sha256": "0a807e4826c63ebe3ca479541d212289ac03f762f8a99521f4c2d50405e68a4b",
+      "sha256": "f3ebeb1563c4a34f1f4f116112f2ee82123385ac72faf10c7ed921b9ded68453",
       "comparison": "exact bytes"
     },
     {
@@ -582,7 +582,7 @@
     },
     {
       "file": "assets/generated/fighter09.png",
-      "sha256": "8cc04e346fc33c4df661a536cd32e927157fe6b102178c976521deecca804a57",
+      "sha256": "42c4aaa9ae4de07c52756528ce5644427e9b285514554ec7e43da2c640802a7e",
       "comparison": "exact bytes"
     },
     {
@@ -597,12 +597,12 @@
     },
     {
       "file": "assets/generated/fighter09c.bin",
-      "sha256": "e1efc92b5677408a7bd7ceb123bf9421009f6edc6c5cc2e7b753a988f74e41e7",
+      "sha256": "ab816e4eb310c46bd21e647714e4f589fc156671bf519ef64a53087b55b98c85",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter09d.bin",
-      "sha256": "ce869704bda1a5b4c0e6c57173dd45e979caafcd2a119186837b4adba1e533fe",
+      "sha256": "4f82687878e3bcb863bfe897ddd6f569cb7a652affec75ac6b4bfe6f8d20c2e8",
       "comparison": "exact bytes"
     },
     {
@@ -632,7 +632,7 @@
     },
     {
       "file": "assets/generated/fighter10.png",
-      "sha256": "a9a634daa10226ca4fc0a443a4bbfe87e33a03a3c3c0ebd42a824ee493e68efb",
+      "sha256": "af15fbb7807ad3ccfe92f446d034deb7a7d6e497fc69f349d0690be7ba3af28d",
       "comparison": "exact bytes"
     },
     {
@@ -647,12 +647,12 @@
     },
     {
       "file": "assets/generated/fighter10c.bin",
-      "sha256": "e515a29e4bab2121a404aa55191fd10dd5502ddcc662ca99f6d963c451693467",
+      "sha256": "dd728a3cba6c11a6636063bb1fddf15a1040f3ec6839e9b3935c6b361a4c44bc",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter10d.bin",
-      "sha256": "caff1a25da941a3937b9a86a459a5020a0fbf3b664b473c1cdb9f942d1f19e6f",
+      "sha256": "3b8fcadff3443c35d94cbe2c27a619b28f048c589f90e22debe39b2b7f5db9fa",
       "comparison": "exact bytes"
     },
     {
@@ -682,7 +682,7 @@
     },
     {
       "file": "assets/generated/fighter11.png",
-      "sha256": "e1a5dab6b5b38869f09be50f82ac7657ed8f95b5178a3dc4c8d5072e2684d9d1",
+      "sha256": "b1e6bf85b4c43c404c157f0b79ba93516d9fdad838de7a974ae7dd03f542c91a",
       "comparison": "exact bytes"
     },
     {
@@ -697,12 +697,12 @@
     },
     {
       "file": "assets/generated/fighter11c.bin",
-      "sha256": "10fc8d845c8fc49ba17ec41b0cc87a7c216d8b73ba1449787905374da11a1420",
+      "sha256": "9a62eb38feb5c20e8bd46a05be0ef87d67d2208c64c1a97a3f581896904f0595",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter11d.bin",
-      "sha256": "767ad35dead31700102d728df9fdb395685949c6b6492e9aba83d77b90816afd",
+      "sha256": "21c7aeb451403412a621c3ebb3b5be05db4380c59a089ca117425420f4ea6ec7",
       "comparison": "exact bytes"
     },
     {
@@ -1153,5 +1153,5 @@
   ],
   "generated_assets_verified": 219,
   "symbols_equal_after_source_path_normalization": true,
-  "elapsed_seconds": 150.078
+  "elapsed_seconds": 152.985
 }

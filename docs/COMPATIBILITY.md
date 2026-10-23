@@ -1,7 +1,18 @@
 # Independent-engine compatibility
-<!-- candidate-version: 0.23.0; rom-sha256: 19387882aad17cc8184b02c2c2e0dcb3b6487c05522fe5ef7a943202ef0c0359 -->
+<!-- candidate-version: 0.23.1; rom-sha256: 057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd -->
 
-## Current walking/local-play candidate: v0.23.0
+## Current full-body walking correction: v0.23.1
+
+The user rejected v0.23.0's torso/legs mismatch. PR #12 now replaces each
+fighter's eight complete walking poses with coordinated head, guard, torso,
+hip and foot motion, removing the fixed waist splice. Other 56 poses and
+original portraits/palettes remain. All six suites pass 36,219 current-ROM
+checks, matching independent smoke and fresh reproduction pass. Human visual
+approval remains open. Run `Play.cmd` from `feature/walking-cycles-v023`.
+[Current art, native clips, controls and evidence](RELEASE-v0.23.1.md). Main remains
+v0.22.1 with 08 deferred. The notes below retain their historical scope.
+
+## Rejected historical walking candidate: v0.23.0
 
 Main is v0.22.1 with the nine approved improvements merged; feature 08 remains
 deferred and its checkout is retained. The old merged branches/worktrees are

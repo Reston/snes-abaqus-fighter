@@ -12,11 +12,17 @@ Preserve the native emulator requirement when extending the project.
   This new request supersedes the fixed-upper-47-rows walking constraint below.
   Replace the entire eight walking poses (20..27) with coherent full-body
   cycles: hips, torso, guard, head and feet move together. Keep each fighter's
-  likeness/costume, original portraits/palettes/physical height and other56
+  likeness/costume, original portraits/palettes/physical height and other 56
   frames. Retain walking-v1 art as rejected history; walking-v2.json and twelve
   individual walking-v2.png/prompt records are current. No waist/torso overlay.
-  Main remains v0.22.1, 08 stays deferred. New verification/human review are
-  pending until the current exact-ROM reports are regenerated.
+  Main remains v0.22.1 and 08 stays deferred. ROM SHA256
+  `057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd`, header `F95B`.
+  Source freeze `cd9b9ffcbbff68c14c1e15c0bc2264a713badcea`. Six native suites pass 36,219
+  exact-ROM checks; matching independent smoke, 3,914 focused walking/
+  local-port checks, 20/20 normal/optimized authoring guards and a fresh export
+  reproducing all 219 outputs/ROM/symbols pass. Current evidence is
+  docs/verification-v0.23.1.json and docs/RELEASE-v0.23.1.md. Human full-body
+  walking and likeness review remains open; do not infer visual acceptance.
 
 - The rejected historical follow-up was **v0.23.0 walking/local-play**, branch
   `feature/walking-cycles-v023`, PR #12. Main is v0.22.1 after approved PR #1
