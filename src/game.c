@@ -351,6 +351,8 @@ void drawArenas(void) {
 }
 void showArenas(void) { setScreenOff();screen=ARENA;commonScreen();loadBackground(5);drawArenas();finishScreen(); }
 
+#include "arcade_story.h"
+
 void hud(void) {
     u8 p;
     Fighter *f;
@@ -415,6 +417,7 @@ void resetRoundState(void) {
     impactSettle=0;resetFooterPending=0;roundUiPending=0;
     pendingSound=0;
     pauseHudPending=0;
+    arcadeStoryTicks=0;
     hudHp[0]=255;hudHp[1]=255;hudEnergy[0]=255;hudEnergy[1]=255;
     hudWins[0]=255;hudWins[1]=255;hudSeconds=255;
     if(mode==2)trainingReset();
@@ -467,6 +470,7 @@ void beginMatch(void) {
      * for each of the thirty live entries on every render. */
     for(i=0;i<16;i++)oamMemory[512+i]=0;
     resetRound();panel(26,2);center(26,"Y/X/L PUNCH   B/A/R KICK");center(27,"START PAUSE > SELECT GUIDE");
+    arcadeStoryBegin();
     music(arena+1);finishScreen();
 }
 void loadChampionEnding(u8 id) {
@@ -487,8 +491,7 @@ void loadChampionEnding(u8 id) {
     put(24,19,'0'+fighters[0].won);put(26,19,'0'+fighters[1].won);
     word(22,20,"ALL 11");word(21,21,"DEFEATED");
     /* The trophy's keyboard/plinth ends at y175. Only the footer is filled. */
-    panel(22,6);center(22,characterQuotes[id]);
-    center(24,"A/START: TITLE");center(26,"B: CHARACTER SELECT");
+    arcadeStoryEnding(id);
 }
 void showResult(u8 won) {
     u8 id,x,y;
@@ -513,7 +516,7 @@ void showResult(u8 won) {
     word(16,13,"ROUND WINS");word(15,14,"P1  0 - 0  P2");
     put(19,14,'0'+fighters[0].won);put(23,14,'0'+fighters[1].won);
     word(15,17,mode==0?"ARCADE SHIFT":"LOCAL VERSUS");
-    center(21,characterQuotes[id]);
+    center(21,mode==0?arcadeStoryWinnerQuotes[id]:characterQuotes[id]);
     if(mode==0)center(24,won?"A/START: NEXT CHALLENGER":"A/START: CONTINUE");
     else center(24,"A/START: REMATCH");
     center(26,"B: CHARACTER SELECT");sound(3);finishScreen();
@@ -1039,7 +1042,7 @@ void fightTick(void) {
     if(pauseKeys&KEY_START) {
         paused=!paused;impactBannerPending=0;clearBanner();
         if(paused){pausePage=0;guideBuild=0;pauseHudPending=1;clearFightHint();drawPauseCard();}
-        else {closePauseGuide();settlePausedHud();}
+        else {closePauseGuide();settlePausedHud();if(arcadeStoryTicks)arcadeStoryDraw();}
         sound(0);
     }
     if(paused) {
@@ -1049,7 +1052,7 @@ void fightTick(void) {
         fighters[1].bufferedAction=0;fighters[1].bufferAge=0;fighters[1].jumpBuffer=0;
         if(!(pauseKeys&KEY_START)) {
             if(pauseKeys&KEY_B){closePauseGuide();showSelect();return;}
-            if(pauseKeys&KEY_A){paused=0;closePauseGuide();clearBanner();}
+            if(pauseKeys&KEY_A){paused=0;closePauseGuide();clearBanner();if(arcadeStoryTicks)arcadeStoryDraw();}
             else if(pauseKeys&KEY_SELECT) {
                 if(pausePage==(mode==2?3:2)){closePauseGuide();drawPauseCard();}
                 else openPauseGuide(pausePage+1);
@@ -1097,6 +1100,8 @@ void fightTick(void) {
             animationAdvance=1;drawFight();return;
         }
     }
+    /* Story uses the existing intro freeze and banner/footer DMA ranges. */
+    if(arcadeStoryTicks){arcadeStoryTick();drawFight();return;}
     if(roundEnd) {
         animationAdvance=1;
         stageDepthVictory();
