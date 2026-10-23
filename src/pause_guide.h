@@ -92,6 +92,7 @@ void buildPauseGuide(void) {
             guideWord(3,19,"12-TICK WINDOW PER STEP");
             guideWord(3,20,"COST: 32 ENERGY");
             guideWord(3,22,"PRESS PUNCH WITH FINAL TOWARD");
+            drawSuperGuide();
         }
         guideBuild=0;guideDirty=1;
     }

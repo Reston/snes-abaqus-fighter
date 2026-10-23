@@ -374,8 +374,11 @@ void hud(void) {
         }
     }
 }
+#include "super_moves.h"
+
 void resetRoundState(void) {
     u8 p;
+    resetSupers();
     for(p=0;p<2;p++) {
         fighters[p].x=(p ? 190:66)*16;fighters[p].y=0;fighters[p].vy=0;fighters[p].vx=0;
         fighters[p].hp=HP_MAX;fighters[p].energy=64;fighters[p].face=p?0:1;
@@ -570,6 +573,7 @@ void captureInput(u8 p,u16 raw,u8 live) {
     keys=cleanDirections(raw);
     f->rawKeys=raw;f->oldkeys=f->keys;f->keys=keys;
     edge=keys&~f->oldkeys;f->inputEdge=edge;
+    if(captureSuper(p,keys,edge,live)){f->motion=0;f->downbuffer=0;return;}
     if(!live) {
         f->bufferedAction=0;f->bufferAge=0;f->jumpBuffer=0;
         f->motion=0;f->downbuffer=0;return;
@@ -642,6 +646,7 @@ void controls(u8 p) {
     if(f->hurt)return;
     if(f->downState)return;
     if(!f->hp)return;
+    if(startSuper(p))return;
     f->guard=0;
     if(!f->action && !f->y)f->face=f->x<enemy->x?1:0;
     forward=f->face?KEY_RIGHT:KEY_LEFT;back=f->face?KEY_LEFT:KEY_RIGHT;
@@ -749,6 +754,7 @@ void updateFighter(u8 p) {
     Fighter *f=&fighters[p];Wave *w=&waves[p];
     const CharacterProfile *c=combatProfiles[p];
     u8 rearRecoil,action,tick;
+    syncSuper(p);
     if(f->landing)f->landing--;
     if(f->combotime) {f->combotime--;if(!f->combotime){f->combo=0;f->counter=0;clearBanner();}}
     if(f->wakeJust)f->wakeJust=0;
@@ -774,17 +780,19 @@ void updateFighter(u8 p) {
     }
     if(f->action) {
         action=f->action;tick=f->tick+1;f->tick=tick;
-        if(action==7 && c->specialFamily==SPECIAL_RUSH && tick<=c->specialStartup+c->specialActive) {
+        if(superActive[p])updateSuper(p);
+        else if(action==7 && c->specialFamily==SPECIAL_RUSH && tick<=c->specialStartup+c->specialActive) {
             f->x+=f->face?c->specialSpeed:-c->specialSpeed;
         }
-        if(action==7 && (c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE) && tick==c->specialStartup && !w->active) {
+        if(!superActive[p] && action==7 && (c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE) && tick==c->specialStartup && !w->active) {
+            superWaveDamage[p]=0;superWaveReach[p]=0;
             w->active=1;w->owner=p;w->face=f->face;w->speed=c->specialSpeed;w->low=c->specialFamily==SPECIAL_GROUNDWAVE;
             w->x=f->x+(f->face?22*16:-22*16);w->y=w->low?FLOOR-18:FLOOR-39;w->life=c->specialLife;
         }
         if(action==6 && !f->y && tick<f->actionStartup)f->x+=f->face?16:-16;
-        if(tick>=f->actionEnd) {f->action=0;f->tick=0;f->duck=0;f->airAction=0;}
+        if(tick>=f->actionEnd) {f->action=0;f->tick=0;f->duck=0;f->airAction=0;superActive[p]=0;}
     }
-    if((frame&15)==0 && f->energy<ENERGY_MAX){f->energy++;hudDirty=1;}
+    if(!superActive[p] && (frame&15)==0 && f->energy<ENERGY_MAX){f->energy++;hudDirty=1;}
     if(f->x<24*16)f->x=24*16;if(f->x>232*16)f->x=232*16;
 }
 /* Compact gameplay rectangles are independent of the illustrated canvas.
@@ -802,6 +810,7 @@ u8 canHit(u8 p) {
     s16 top,bottom,dx;
     u8 rear;
     if(!f->action)return 0;
+    if(superActive[p])return superCanHit(p);
     if(f->action==7 && (c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE))return 0;
     if(f->connected)return 0;
     if(f->hurt)return 0;
@@ -879,12 +888,18 @@ void combat(void) {
         else {beginThrow(1,0);a0=0;a1=0;}
     }
     if(a0) {
-        fighters[0].connected=hurtWithRecoil(0,1,attackDamage(c0,fighters[0].id,m0),low0,air0,0,rear0,m0);
-        if(fighters[0].connected==2 && knockdownAttack(0,m0,low0))k0=1;
+        fighters[0].connected=hurtWithRecoil(0,1,superDamage(0,attackDamage(c0,fighters[0].id,m0)),low0,air0,0,rear0,m0);
+        if(fighters[0].connected==2) {
+            if(superActive[0])k0=superKnockdown(0);
+            else if(knockdownAttack(0,m0,low0))k0=1;
+        }
     }
     if(a1) {
-        fighters[1].connected=hurtWithRecoil(1,0,attackDamage(c1,fighters[1].id,m1),low1,air1,0,rear1,m1);
-        if(fighters[1].connected==2 && knockdownAttack(1,m1,low1))k1=1;
+        fighters[1].connected=hurtWithRecoil(1,0,superDamage(1,attackDamage(c1,fighters[1].id,m1)),low1,air1,0,rear1,m1);
+        if(fighters[1].connected==2) {
+            if(superActive[1])k1=superKnockdown(1);
+            else if(knockdownAttack(1,m1,low1))k1=1;
+        }
     }
     if(k0)beginKnockdown(0,1,face0);
     if(k1)beginKnockdown(1,0,face1);
@@ -899,9 +914,9 @@ void combat(void) {
             if(waves[p].x>256*16)expired=1;
             if(expired){waves[p].active=0;waves[p].low=0;waves[p].speed=0;}
             else if(!fighters[1-p].downState && !fighters[1-p].invuln && fighters[1-p].hp &&
-                    abs16(waves[p].x-fighters[1-p].x)<(cw->specialReach+BODY_HALF_WIDTH-6)*16 &&
+                    abs16(waves[p].x-fighters[1-p].x)<((superWaveDamage[p]?superWaveReach[p]:cw->specialReach)+BODY_HALF_WIDTH-6)*16 &&
                     verticalContact(&fighters[1-p],((s16)waves[p].y-FLOOR-6)*16,((s16)waves[p].y-FLOOR+6)*16)) {
-                hurt(p,1-p,attackDamage(cw,fighters[p].id,7),waves[p].low,0,0);waves[p].active=0;waves[p].low=0;waves[p].speed=0;
+                hurt(p,1-p,superWaveDamage[p]?superWaveDamage[p]:attackDamage(cw,fighters[p].id,7),waves[p].low,0,0);waves[p].active=0;waves[p].low=0;waves[p].speed=0;
             }
         }
     }

@@ -94,7 +94,8 @@ void animateFighter(u8 p) {
     else {
         start=f->actionStartup;end=f->actionActiveEnd;
         tick=f->tick;hold=tick<start;recover=tick>=end;
-        if(f->airAction) {
+        if(superActive[p])f->animFrame=superFrame(p);
+        else if(f->airAction) {
             if(action<=3)f->animFrame=hold?49:(recover?51:50);
             else f->animFrame=hold?52:(recover?54:53);
             if(recover && tick+4>=f->actionEnd)f->animFrame=55;
