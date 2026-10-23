@@ -6,7 +6,19 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
-- The active unmerged follow-up is **v0.23.0 walking/local-play**, branch
+- The current walking correction is **v0.23.1**, still in PR #12 on
+  `feature/walking-cycles-v023`. The user rejected v0.23.0's legs/torso mismatch:
+  "ok the legs animation improved but know the top part doesn't fit so this wasn't the goal".
+  This new request supersedes the fixed-upper-47-rows walking constraint below.
+  Replace the entire eight walking poses (20..27) with coherent full-body
+  cycles: hips, torso, guard, head and feet move together. Keep each fighter's
+  likeness/costume, original portraits/palettes/physical height and other56
+  frames. Retain walking-v1 art as rejected history; walking-v2.json and twelve
+  individual walking-v2.png/prompt records are current. No waist/torso overlay.
+  Main remains v0.22.1, 08 stays deferred. New verification/human review are
+  pending until the current exact-ROM reports are regenerated.
+
+- The rejected historical follow-up was **v0.23.0 walking/local-play**, branch
   `feature/walking-cycles-v023`, PR #12. Main is v0.22.1 after approved PR #1
   merge. Nine merged feature worktrees/branches and the old integration branch
   were removed; keep 08's branch/worktree for polish. Parallax remains disabled.

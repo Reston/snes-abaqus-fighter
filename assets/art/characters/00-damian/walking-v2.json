@@ -1,0 +1,75 @@
+{
+  "schema": 2,
+  "fighter_id": 0,
+  "source": "assets/art/characters/00-damian/walking-v2.png",
+  "sha256": "aacd8e0986bb89e0d883fe66d5ad785769cccc0f0e05103a7cd0efa247990d6d",
+  "reference": "assets/art/characters/00-damian/animation-motion-v5.png",
+  "reference_sha256": "90b2bd7c230c040fa8ca809fc1039cd49adc4e98b0f2f951c939c974b43dd614",
+  "generation": "built-in image_gen; transparent_background=true",
+  "prompt": "Use case: identity-preserve. Production SNES fighting-game sprite atlas: redraw the SAME DAMIAN from the reference as EIGHT successive FULL-BODY GUARDED WALK poses. This corrects a failed animation whose legs were pasted under a disconnected static torso. Draw each figure as one anatomically continuous head-neck-shoulders-torso-pelvis-legs silhouette. Preserve his bald head, facial stubble, face shape and likeness, muscular stocky build, royal-blue jacket with rolled white cuffs, open-collar white shirt, black belt with gold buckle, navy trousers and black dress shoes. Match the reference's polished cartoon ink and limited cel shades. Face RIGHT, three-quarter side view, keeping both fists in a compact fighting guard close to chest and jaw; never drop or swing an arm behind the body. SHORT controlled fighter walk, not a run or exaggerated stride. Hips shift weight over the planted foot; shoulders counter-rotate subtly against pelvis, elbows and jacket folds respond to each step, head stays level with a very small natural bob. Torso and legs MUST match the same stocky body proportions and continuous clothing lines at the waist. ONE consistent whole-body scale and lighting for all eight. Exactly four columns by two rows, equal cells, generous transparent gutters. All eight soles use the same floor baseline within their respective cells; two feet per figure, exactly one support foot always grounded. Reading-order phases: 1 near-leg forward heel contact/far-leg back toe; 2 near-leg supports with subtle whole-body down/recoil; 3 far-leg low passing under hips, support leg almost vertical, feet close; 4 far-leg extends forward just before heel contact; 5 opposite contact far-leg forward and near-leg back; 6 far-leg supports with subtle body down/recoil; 7 near-leg passes low under hips; 8 near-leg extends forward into first contact. Show real alternating leg occlusion, 8 individually different joint poses, smooth loop from8 to1. Keep both guard fists visible and connected to shoulders in all eight; no body-part splice. No text, numbers, grid, scenery, floor, shadow, FX, kicks, punches, extra limbs, cropping or giant head. Output true transparent background.",
+  "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-aca71057-8f36-4029-a581-c3270b5c60d3.png",
+  "raw_output_sha256": "aacd8e0986bb89e0d883fe66d5ad785769cccc0f0e05103a7cd0efa247990d6d",
+  "size": [
+    1536,
+    1024
+  ],
+  "selected_final": "assets/art/characters/00-damian/walking-v2.png",
+  "native_frame_range": [
+    20,
+    27
+  ],
+  "native_foot_baseline": 78,
+  "palette_sha256": "ef3f4e8213fe8fd940a89b40d9c39f4e6b0ac3e36dbf51f976118c305d8d3341",
+  "scope": "coordinated-full-body",
+  "supersedes": "walking-v1.png; rejected legs/torso splice retained as history",
+  "source_boxes": [
+    [
+      26,
+      57,
+      408,
+      501
+    ],
+    [
+      451,
+      64,
+      737,
+      500
+    ],
+    [
+      843,
+      59,
+      1103,
+      501
+    ],
+    [
+      1168,
+      60,
+      1535,
+      501
+    ],
+    [
+      33,
+      536,
+      407,
+      974
+    ],
+    [
+      449,
+      536,
+      769,
+      974
+    ],
+    [
+      842,
+      533,
+      1115,
+      976
+    ],
+    [
+      1174,
+      537,
+      1534,
+      977
+    ]
+  ]
+}

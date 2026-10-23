@@ -33,7 +33,7 @@ def canonical(path, raw):
 def preserved_assets(root):
     root = Path(root)
     allowed_changes=set(GENERATED_CHANGES)
-    if (root/'assets/art/walking-v1.json').is_file():
+    if (root/'assets/art/walking-v2.json').is_file():
         allowed_changes.add('assets/generated/character-manifest.json')
         for fighter in range(12):
             allowed_changes.update({f'assets/generated/fighter{fighter:02d}.png',

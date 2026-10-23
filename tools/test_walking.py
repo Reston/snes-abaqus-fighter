@@ -10,10 +10,8 @@ from test_champion import host_contract
 from expansion_contracts import combined_contract
 
 BASE='f5345f9db6b9d663b629b8d11cb0458e57521be4'
-HAND_BOXES={0:(20,43,27,51),2:(33,43,45,51),4:(27,43,40,55),
-            6:(23,42,38,54),7:(17,42,45,54),8:(31,42,51,54),
-            9:(33,43,46,54),11:(20,42,37,59)}
-OUT=ROOT/'docs/screenshots/walking-v1'
+REJECTED='d4cede78061bfd85541d01cdf74b7b55065f453c'
+OUT=ROOT/'docs/screenshots/walking-v2'
 checks=[]
 def check(ok,label,detail=None):
     checks.append({'passed':bool(ok),'check':label,'detail':detail})
@@ -28,23 +26,22 @@ def art_contract():
         old=Image.open(io.BytesIO(git_file(name+'.png'))).convert('RGBA')
         new=Image.open(ROOT/(name+'.png')).convert('RGBA')
         check(old.size==new.size==(6144,80),'native canvas preserved',fighter)
-        changes=[];spreads=[]
+        changes=[];spreads=[];upper_poses=set()
         for frame in range(64):
             a=old.crop((frame*96,0,(frame+1)*96,80));b=new.crop((frame*96,0,(frame+1)*96,80))
             if a.tobytes()!=b.tobytes():changes.append(frame)
             if 20<=frame<28:
-                check(a.crop((0,0,96,47)).tobytes()==b.crop((0,0,96,47)).tobytes(),
-                      'walking face and upper body pixels preserved',[fighter,frame])
-                if fighter in HAND_BOXES:
-                    x0,y0,x1,y1=HAND_BOXES[fighter]
-                    skin=[(x,y) for y in range(max(47,y0),y1) for x in range(x0,x1)
-                          if (lambda c:c[3] and c[0]>=150 and c[0]>c[1]+18 and c[1]>c[2]+6 and c[1]*2>=c[0])(a.getpixel((x,y)))]
-                    check(all(a.getpixel(p)==b.getpixel(p) for p in skin),
-                          'original fingertips survive below the waist cut',[fighter,frame,len(skin)])
+                upper=b.crop((0,0,96,47)).tobytes();upper_poses.add(upper)
+                check(a.crop((0,0,96,47)).tobytes()!=upper,
+                      'whole walking pose replaces the fixed torso splice',[fighter,frame])
+                alpha=b.getchannel('A')
+                check(all(alpha.crop((0,y,96,y+1)).getbbox() is not None for y in range(35,60)),
+                      'torso waist and legs form a continuous silhouette',[fighter,frame])
                 box=b.getchannel('A').getbbox()
                 check(box[3]==78 and box[0]>0 and box[2]<96,'walk keeps grounded sole and margins',[fighter,frame,box])
                 foot=b.getchannel('A').crop((0,66,96,80)).getbbox();spreads.append(foot[2]-foot[0])
         check(changes==list(range(20,28)),'only eight authorized walking frames changed',[fighter,changes])
+        check(len(upper_poses)>=6,'guard and torso participate in the walking cycle',[fighter,len(upper_poses)])
         check(max(spreads)-min(spreads)>=8,'passing feet close visibly between contacts',[fighter,spreads])
         check(git_file(name+'_pal.bin')==(ROOT/(name+'_pal.bin')).read_bytes(),'fixed OBJ palette preserved',fighter)
         for suffix in ('','-large','_tiles','_pal'):
@@ -77,6 +74,9 @@ def session(fighter,rom=None,current=False):
             s=tick()
             if current:check(all(s[k]==paused[k] for k in ('x1','x2','anim_frame1','anim_frame2','anim_tick1','anim_tick2')),'P2 pause freezes both walking poses',fighter)
         tick(p1=['start']);tick()
+        # Let the paused guide/banner clear through the ordinary staged DMA
+        # path before recording the next moving clip.
+        for _ in range(8):tick()
         for _ in range(48):tick(['left'],['right'],'retreat')
         if current:
             for label,ports in seen.items():
@@ -96,7 +96,10 @@ def main():
     started=time.monotonic();OUT.mkdir(parents=True,exist_ok=True)
     m=json.loads((ROOT/'dist/manifest.json').read_bytes())
     base_rom=ROOT/'build/walking-baseline.sfc';base_rom.write_bytes(git_file('dist/abaqus-after-hours.sfc'))
+    rejected_rom=ROOT/'build/walking-rejected-v0230.sfc'
+    rejected_rom.write_bytes(subprocess.check_output(['git','show',REJECTED+':dist/abaqus-after-hours.sfc'],cwd=ROOT))
     report={'status':'failed','version':m['version'],'rom_sha256':m['sha256'],'baseline_commit':BASE,
+            'comparison_capture_commit':REJECTED,'walking_scope':'coordinated-full-body',
             'harness_sha256':digest(Path(__file__).read_bytes().replace(b'\r\n',b'\n')),
             'host_contract':host_contract(),'art':[],'cases':[],'checks':checks}
     try:
@@ -107,11 +110,11 @@ def main():
             label='LOCAL 1V1 / 2P'
             observed=[int.from_bytes(vram[0xb000+(22*32+x)*2:0xb002+(22*32+x)*2],'little')&1023 for x in range(9,9+len(label))]
             check(observed==[ord(c) for c in label],'title clearly advertises local two-player mode',observed)
-            e.shot('walking-v1/local-1v1-title.png')
+            e.shot('walking-v2/local-1v1-title.png')
         finally:e.close()
         config=(ROOT/'tools/snes9x.conf').read_text()
         check('Joypad1:Enabled = TRUE' in config and 'Joypad2:Enabled = TRUE' in config,'included emulator enables both local players')
-        report['local_1v1']={'already_supported':True,'label':label,'title_capture':'docs/screenshots/walking-v1/local-1v1-title.png',
+        report['local_1v1']={'already_supported':True,'label':label,'title_capture':'docs/screenshots/walking-v2/local-1v1-title.png',
                             'ports':'two independent native SNES controller ports; all twelve mirror cases below',
                             'p1_keyboard':'arrows; A/S punch; Z/X kick; Enter Start',
                             'p2_keyboard':'I/J/K/L; numpad7/8 punch; numpad1/2 kick; Space Start',
@@ -128,8 +131,9 @@ def main():
                 frames[0].save(p,save_all=True,append_images=frames[1:],duration=34,loop=0,optimize=False)
                 captures.append({'path':p.relative_to(ROOT).as_posix(),'sha256':digest(p.read_bytes())})
             if fighter in (0,9,10):
+                _,rejected_images,_=session(fighter,rejected_rom)
                 paired=[]
-                for a,b in zip(old_images['forward'],new_images['forward']):
+                for a,b in zip(rejected_images['forward'],new_images['forward']):
                     im=Image.new('RGB',(512,224));im.paste(a,(0,0));im.paste(b,(256,0));paired.append(im)
                 p=OUT/f'{fighter:02d}-before-after.gif'
                 paired[0].save(p,save_all=True,append_images=paired[1:],duration=34,loop=0,optimize=False)

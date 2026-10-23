@@ -203,5 +203,14 @@
         "public_release_approval": null
       }
     }
-  ]
+  ],
+  "walking_v0230": {
+    "version": "0.23.0",
+    "rom_sha256": "19387882aad17cc8184b02c2c2e0dcb3b6487c05522fe5ef7a943202ef0c0359",
+    "response": "ok the legs animation improved but know the top part doesn't fit so this wasn't the goal",
+    "status": "rejected_visual_coherence",
+    "human_walking_approved": false,
+    "cause": "Fixed upper-body pixels were composited over separately authored legs; torso and lower body did not read as one walk.",
+    "follow_up": "v0.23.1 replaces the complete eight walking poses with individually referenced full-body guarded cycles. Human review remains pending."
+  }
 }
