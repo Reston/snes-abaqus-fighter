@@ -1,0 +1,2967 @@
+{
+  "status": "passed",
+  "rom_sha256": "ce70e32e9fddd712459cd6f7d807399fa3621e4a71b370e7e680d18853837dd6",
+  "version": "0.22.0",
+  "harness_sha256": "f54b54ccea377fd145c2c5655a5e0b4b680338fbcb5c20c1ebbb0359ce53eb66",
+  "native_source_sha256": {
+    "src/game.c": "7ba88715b26ebf34d77c4181ec0c402cf2473e4f9dc127f68424e5ac2ce5ef25",
+    "src/fighter_personality.h": "e15b92385c8620a8cbdaa1c2734af0f87a91fbdbeefc70fe8c04700998cad0ce"
+  },
+  "core_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
+  "host_contract": {
+    "headless": true,
+    "controller_only": true,
+    "save_states": false,
+    "memory_writes": false,
+    "audio_playback": false
+  },
+  "checks": [
+    {
+      "check": "All pre-existing RAM/direct-page symbol addresses are preserved",
+      "passed": true,
+      "details": {
+        "compared": 1274,
+        "moved": {}
+      }
+    },
+    {
+      "check": "132 bounded initialized constant bytes append after existing data",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Every approved fighter bank, palette, portrait and native strip is unchanged",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "Native personality function fits one 32 KiB LoROM bank",
+      "passed": true,
+      "details": "SECTIONSTART_.personalityIntroFrametext_0x4c"
+    },
+    {
+      "check": "Native personality function fits one 32 KiB LoROM bank",
+      "passed": true,
+      "details": "SECTIONSTART_.personalityVictoryFrametext_0x4d"
+    },
+    {
+      "check": "Native personality function fits one 32 KiB LoROM bank",
+      "passed": true,
+      "details": "SECTIONSTART_.personalityAccenttext_0x4e"
+    },
+    {
+      "check": "Every fighter has different intro and victory frame choreography",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "DAMIAN P1 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 42
+    },
+    {
+      "check": "DAMIAN P2 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 42
+    },
+    {
+      "check": "DAMIAN P1 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 43
+    },
+    {
+      "check": "DAMIAN P2 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 43
+    },
+    {
+      "check": "DAMIAN P1 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "DAMIAN P2 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "DAMIAN P1 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "DAMIAN P2 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "DAMIAN intro never alters combat state",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "DAMIAN exposes all four intro beats",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "DAMIAN both intro sides receive a native signature accent",
+      "passed": true,
+      "details": [
+        3,
+        3
+      ]
+    },
+    {
+      "check": "DAMIAN cosmetic accent ends before live combat",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P1 wins through actual native damage",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "DAMIAN P1 victory beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 43
+    },
+    {
+      "check": "DAMIAN P1 victory beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 42
+    },
+    {
+      "check": "DAMIAN P1 victory beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 45
+    },
+    {
+      "check": "DAMIAN P1 victory beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "DAMIAN P1 victory beat 4 is the exact approved native pose",
+      "passed": true,
+      "details": 11
+    },
+    {
+      "check": "DAMIAN P1 victory beat 5 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "DAMIAN P1 victory beat 6 is the exact approved native pose",
+      "passed": true,
+      "details": 11
+    },
+    {
+      "check": "DAMIAN victory leaves outcome, positions, health and clock frozen",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "DAMIAN plays seven victory beats with at least four distinct approved poses",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "DAMIAN KO loser keeps native fall/floor poses",
+      "passed": true,
+      "details": [
+        47,
+        59
+      ]
+    },
+    {
+      "check": "DAMIAN victory has a moving native signature accent",
+      "passed": true,
+      "details": 4
+    },
+    {
+      "check": "DAMIAN roundEnd lasts exactly 180 native ticks and resets normally",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "DAMIAN at most one actor page changes per video frame",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "DAMIAN stable native ticks have exact cadence and no lag",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "DAMIAN native PPU has no OBJ range/time overflow",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "DAMIAN staged OAM stays within scanline/fetch budgets",
+      "passed": true,
+      "details": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 864,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "check": "DAMIAN existing SPC FIFO stays bounded",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "IVO P1 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 40
+    },
+    {
+      "check": "IVO P2 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 40
+    },
+    {
+      "check": "IVO P1 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 28
+    },
+    {
+      "check": "IVO P2 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 28
+    },
+    {
+      "check": "IVO P1 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 40
+    },
+    {
+      "check": "IVO P2 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 40
+    },
+    {
+      "check": "IVO P1 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 43
+    },
+    {
+      "check": "IVO P2 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 43
+    },
+    {
+      "check": "IVO intro never alters combat state",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "IVO exposes all four intro beats",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "IVO both intro sides receive a native signature accent",
+      "passed": true,
+      "details": [
+        2,
+        2
+      ]
+    },
+    {
+      "check": "IVO cosmetic accent ends before live combat",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P2 wins through actual native damage",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "IVO P2 victory beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 40
+    },
+    {
+      "check": "IVO P2 victory beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 28
+    },
+    {
+      "check": "IVO P2 victory beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 42
+    },
+    {
+      "check": "IVO P2 victory beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 43
+    },
+    {
+      "check": "IVO P2 victory beat 4 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "IVO P2 victory beat 5 is the exact approved native pose",
+      "passed": true,
+      "details": 11
+    },
+    {
+      "check": "IVO P2 victory beat 6 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "IVO victory leaves outcome, positions, health and clock frozen",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "IVO plays seven victory beats with at least four distinct approved poses",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "IVO KO loser keeps native fall/floor poses",
+      "passed": true,
+      "details": [
+        47,
+        59
+      ]
+    },
+    {
+      "check": "IVO victory has a moving native signature accent",
+      "passed": true,
+      "details": 2
+    },
+    {
+      "check": "IVO roundEnd lasts exactly 180 native ticks and resets normally",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "IVO at most one actor page changes per video frame",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "IVO stable native ticks have exact cadence and no lag",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "IVO native PPU has no OBJ range/time overflow",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "IVO staged OAM stays within scanline/fetch budgets",
+      "passed": true,
+      "details": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 945,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "check": "IVO existing SPC FIFO stays bounded",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "CRISTOBAL P1 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 34
+    },
+    {
+      "check": "CRISTOBAL P2 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 34
+    },
+    {
+      "check": "CRISTOBAL P1 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 6
+    },
+    {
+      "check": "CRISTOBAL P2 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 6
+    },
+    {
+      "check": "CRISTOBAL P1 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "CRISTOBAL P2 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "CRISTOBAL P1 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "CRISTOBAL P2 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "CRISTOBAL intro never alters combat state",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "CRISTOBAL exposes all four intro beats",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "CRISTOBAL both intro sides receive a native signature accent",
+      "passed": true,
+      "details": [
+        3,
+        3
+      ]
+    },
+    {
+      "check": "CRISTOBAL cosmetic accent ends before live combat",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P1 wins through actual native damage",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "CRISTOBAL P1 victory beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 34
+    },
+    {
+      "check": "CRISTOBAL P1 victory beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 6
+    },
+    {
+      "check": "CRISTOBAL P1 victory beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "CRISTOBAL P1 victory beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 45
+    },
+    {
+      "check": "CRISTOBAL P1 victory beat 4 is the exact approved native pose",
+      "passed": true,
+      "details": 11
+    },
+    {
+      "check": "CRISTOBAL P1 victory beat 5 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "CRISTOBAL P1 victory beat 6 is the exact approved native pose",
+      "passed": true,
+      "details": 11
+    },
+    {
+      "check": "CRISTOBAL victory leaves outcome, positions, health and clock frozen",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "CRISTOBAL plays seven victory beats with at least four distinct approved poses",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "CRISTOBAL KO loser keeps native fall/floor poses",
+      "passed": true,
+      "details": [
+        47,
+        59
+      ]
+    },
+    {
+      "check": "CRISTOBAL victory has a moving native signature accent",
+      "passed": true,
+      "details": 4
+    },
+    {
+      "check": "CRISTOBAL roundEnd lasts exactly 180 native ticks and resets normally",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "CRISTOBAL at most one actor page changes per video frame",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "CRISTOBAL stable native ticks have exact cadence and no lag",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "CRISTOBAL native PPU has no OBJ range/time overflow",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "CRISTOBAL staged OAM stays within scanline/fetch budgets",
+      "passed": true,
+      "details": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 943,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "check": "CRISTOBAL existing SPC FIFO stays bounded",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "COTE P1 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 28
+    },
+    {
+      "check": "COTE P2 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 28
+    },
+    {
+      "check": "COTE P1 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 44
+    },
+    {
+      "check": "COTE P2 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 44
+    },
+    {
+      "check": "COTE P1 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 45
+    },
+    {
+      "check": "COTE P2 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 45
+    },
+    {
+      "check": "COTE P1 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "COTE P2 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "COTE intro never alters combat state",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "COTE exposes all four intro beats",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "COTE both intro sides receive a native signature accent",
+      "passed": true,
+      "details": [
+        3,
+        3
+      ]
+    },
+    {
+      "check": "COTE cosmetic accent ends before live combat",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P2 wins through actual native damage",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "COTE P2 victory beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 28
+    },
+    {
+      "check": "COTE P2 victory beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 44
+    },
+    {
+      "check": "COTE P2 victory beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 45
+    },
+    {
+      "check": "COTE P2 victory beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "COTE P2 victory beat 4 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "COTE P2 victory beat 5 is the exact approved native pose",
+      "passed": true,
+      "details": 11
+    },
+    {
+      "check": "COTE P2 victory beat 6 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "COTE victory leaves outcome, positions, health and clock frozen",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "COTE plays seven victory beats with at least four distinct approved poses",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "COTE KO loser keeps native fall/floor poses",
+      "passed": true,
+      "details": [
+        47,
+        59
+      ]
+    },
+    {
+      "check": "COTE victory has a moving native signature accent",
+      "passed": true,
+      "details": 4
+    },
+    {
+      "check": "COTE roundEnd lasts exactly 180 native ticks and resets normally",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "COTE at most one actor page changes per video frame",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "COTE stable native ticks have exact cadence and no lag",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "COTE native PPU has no OBJ range/time overflow",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "COTE staged OAM stays within scanline/fetch budgets",
+      "passed": true,
+      "details": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 905,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "check": "COTE existing SPC FIFO stays bounded",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "NEGGER P1 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 34
+    },
+    {
+      "check": "NEGGER P2 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 34
+    },
+    {
+      "check": "NEGGER P1 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 42
+    },
+    {
+      "check": "NEGGER P2 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 42
+    },
+    {
+      "check": "NEGGER P1 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 40
+    },
+    {
+      "check": "NEGGER P2 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 40
+    },
+    {
+      "check": "NEGGER P1 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "NEGGER P2 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "NEGGER intro never alters combat state",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "NEGGER exposes all four intro beats",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "NEGGER both intro sides receive a native signature accent",
+      "passed": true,
+      "details": [
+        3,
+        3
+      ]
+    },
+    {
+      "check": "NEGGER cosmetic accent ends before live combat",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P1 wins through actual native damage",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "NEGGER P1 victory beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 34
+    },
+    {
+      "check": "NEGGER P1 victory beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 42
+    },
+    {
+      "check": "NEGGER P1 victory beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 43
+    },
+    {
+      "check": "NEGGER P1 victory beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 40
+    },
+    {
+      "check": "NEGGER P1 victory beat 4 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "NEGGER P1 victory beat 5 is the exact approved native pose",
+      "passed": true,
+      "details": 11
+    },
+    {
+      "check": "NEGGER P1 victory beat 6 is the exact approved native pose",
+      "passed": true,
+      "details": 11
+    },
+    {
+      "check": "NEGGER victory leaves outcome, positions, health and clock frozen",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "NEGGER plays seven victory beats with at least four distinct approved poses",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "NEGGER KO loser keeps native fall/floor poses",
+      "passed": true,
+      "details": [
+        47,
+        59
+      ]
+    },
+    {
+      "check": "NEGGER victory has a moving native signature accent",
+      "passed": true,
+      "details": 3
+    },
+    {
+      "check": "NEGGER roundEnd lasts exactly 180 native ticks and resets normally",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "NEGGER at most one actor page changes per video frame",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "NEGGER stable native ticks have exact cadence and no lag",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "NEGGER native PPU has no OBJ range/time overflow",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "NEGGER staged OAM stays within scanline/fetch budgets",
+      "passed": true,
+      "details": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 946,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "check": "NEGGER existing SPC FIFO stays bounded",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "DAVID P1 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 44
+    },
+    {
+      "check": "DAVID P2 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 44
+    },
+    {
+      "check": "DAVID P1 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 45
+    },
+    {
+      "check": "DAVID P2 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 45
+    },
+    {
+      "check": "DAVID P1 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "DAVID P2 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "DAVID P1 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "DAVID P2 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "DAVID intro never alters combat state",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "DAVID exposes all four intro beats",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "DAVID both intro sides receive a native signature accent",
+      "passed": true,
+      "details": [
+        3,
+        3
+      ]
+    },
+    {
+      "check": "DAVID cosmetic accent ends before live combat",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P2 wins through actual native damage",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "DAVID P2 victory beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 44
+    },
+    {
+      "check": "DAVID P2 victory beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 45
+    },
+    {
+      "check": "DAVID P2 victory beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 13
+    },
+    {
+      "check": "DAVID P2 victory beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 45
+    },
+    {
+      "check": "DAVID P2 victory beat 4 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "DAVID P2 victory beat 5 is the exact approved native pose",
+      "passed": true,
+      "details": 11
+    },
+    {
+      "check": "DAVID P2 victory beat 6 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "DAVID victory leaves outcome, positions, health and clock frozen",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "DAVID plays seven victory beats with at least four distinct approved poses",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "DAVID KO loser keeps native fall/floor poses",
+      "passed": true,
+      "details": [
+        47,
+        59
+      ]
+    },
+    {
+      "check": "DAVID victory has a moving native signature accent",
+      "passed": true,
+      "details": 4
+    },
+    {
+      "check": "DAVID roundEnd lasts exactly 180 native ticks and resets normally",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "DAVID at most one actor page changes per video frame",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "DAVID stable native ticks have exact cadence and no lag",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "DAVID native PPU has no OBJ range/time overflow",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "DAVID staged OAM stays within scanline/fetch budgets",
+      "passed": true,
+      "details": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 823,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "check": "DAVID existing SPC FIFO stays bounded",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "FERNANDO P1 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 40
+    },
+    {
+      "check": "FERNANDO P2 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 40
+    },
+    {
+      "check": "FERNANDO P1 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 42
+    },
+    {
+      "check": "FERNANDO P2 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 42
+    },
+    {
+      "check": "FERNANDO P1 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 43
+    },
+    {
+      "check": "FERNANDO P2 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 43
+    },
+    {
+      "check": "FERNANDO P1 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "FERNANDO P2 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "FERNANDO intro never alters combat state",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "FERNANDO exposes all four intro beats",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "FERNANDO both intro sides receive a native signature accent",
+      "passed": true,
+      "details": [
+        3,
+        3
+      ]
+    },
+    {
+      "check": "FERNANDO cosmetic accent ends before live combat",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P1 wins through actual native damage",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "FERNANDO P1 victory beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 40
+    },
+    {
+      "check": "FERNANDO P1 victory beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 42
+    },
+    {
+      "check": "FERNANDO P1 victory beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 43
+    },
+    {
+      "check": "FERNANDO P1 victory beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "FERNANDO P1 victory beat 4 is the exact approved native pose",
+      "passed": true,
+      "details": 45
+    },
+    {
+      "check": "FERNANDO P1 victory beat 5 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "FERNANDO P1 victory beat 6 is the exact approved native pose",
+      "passed": true,
+      "details": 11
+    },
+    {
+      "check": "FERNANDO victory leaves outcome, positions, health and clock frozen",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "FERNANDO plays seven victory beats with at least four distinct approved poses",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "FERNANDO KO loser keeps native fall/floor poses",
+      "passed": true,
+      "details": [
+        47,
+        59
+      ]
+    },
+    {
+      "check": "FERNANDO victory has a moving native signature accent",
+      "passed": true,
+      "details": 4
+    },
+    {
+      "check": "FERNANDO roundEnd lasts exactly 180 native ticks and resets normally",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "FERNANDO at most one actor page changes per video frame",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "FERNANDO stable native ticks have exact cadence and no lag",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "FERNANDO native PPU has no OBJ range/time overflow",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "FERNANDO staged OAM stays within scanline/fetch budgets",
+      "passed": true,
+      "details": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 946,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "check": "FERNANDO existing SPC FIFO stays bounded",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "CRISTIAN P1 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 40
+    },
+    {
+      "check": "CRISTIAN P2 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 40
+    },
+    {
+      "check": "CRISTIAN P1 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 34
+    },
+    {
+      "check": "CRISTIAN P2 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 34
+    },
+    {
+      "check": "CRISTIAN P1 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "CRISTIAN P2 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "CRISTIAN P1 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "CRISTIAN P2 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "CRISTIAN intro never alters combat state",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "CRISTIAN exposes all four intro beats",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "CRISTIAN both intro sides receive a native signature accent",
+      "passed": true,
+      "details": [
+        3,
+        3
+      ]
+    },
+    {
+      "check": "CRISTIAN cosmetic accent ends before live combat",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P2 wins through actual native damage",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "CRISTIAN P2 victory beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 40
+    },
+    {
+      "check": "CRISTIAN P2 victory beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 34
+    },
+    {
+      "check": "CRISTIAN P2 victory beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 6
+    },
+    {
+      "check": "CRISTIAN P2 victory beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "CRISTIAN P2 victory beat 4 is the exact approved native pose",
+      "passed": true,
+      "details": 45
+    },
+    {
+      "check": "CRISTIAN P2 victory beat 5 is the exact approved native pose",
+      "passed": true,
+      "details": 11
+    },
+    {
+      "check": "CRISTIAN P2 victory beat 6 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "CRISTIAN victory leaves outcome, positions, health and clock frozen",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "CRISTIAN plays seven victory beats with at least four distinct approved poses",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "CRISTIAN KO loser keeps native fall/floor poses",
+      "passed": true,
+      "details": [
+        47,
+        59
+      ]
+    },
+    {
+      "check": "CRISTIAN victory has a moving native signature accent",
+      "passed": true,
+      "details": 4
+    },
+    {
+      "check": "CRISTIAN roundEnd lasts exactly 180 native ticks and resets normally",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "CRISTIAN at most one actor page changes per video frame",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "CRISTIAN stable native ticks have exact cadence and no lag",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "CRISTIAN native PPU has no OBJ range/time overflow",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "CRISTIAN staged OAM stays within scanline/fetch budgets",
+      "passed": true,
+      "details": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 985,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "check": "CRISTIAN existing SPC FIFO stays bounded",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "MAMARIAGA P1 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 28
+    },
+    {
+      "check": "MAMARIAGA P2 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 28
+    },
+    {
+      "check": "MAMARIAGA P1 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 42
+    },
+    {
+      "check": "MAMARIAGA P2 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 42
+    },
+    {
+      "check": "MAMARIAGA P1 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 43
+    },
+    {
+      "check": "MAMARIAGA P2 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 43
+    },
+    {
+      "check": "MAMARIAGA P1 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "MAMARIAGA P2 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "MAMARIAGA intro never alters combat state",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "MAMARIAGA exposes all four intro beats",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "MAMARIAGA both intro sides receive a native signature accent",
+      "passed": true,
+      "details": [
+        2,
+        2
+      ]
+    },
+    {
+      "check": "MAMARIAGA cosmetic accent ends before live combat",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P1 wins through actual native damage",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "MAMARIAGA P1 victory beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 28
+    },
+    {
+      "check": "MAMARIAGA P1 victory beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 42
+    },
+    {
+      "check": "MAMARIAGA P1 victory beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 43
+    },
+    {
+      "check": "MAMARIAGA P1 victory beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "MAMARIAGA P1 victory beat 4 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "MAMARIAGA P1 victory beat 5 is the exact approved native pose",
+      "passed": true,
+      "details": 11
+    },
+    {
+      "check": "MAMARIAGA P1 victory beat 6 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "MAMARIAGA victory leaves outcome, positions, health and clock frozen",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "MAMARIAGA plays seven victory beats with at least four distinct approved poses",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "MAMARIAGA KO loser keeps native fall/floor poses",
+      "passed": true,
+      "details": [
+        47,
+        59
+      ]
+    },
+    {
+      "check": "MAMARIAGA victory has a moving native signature accent",
+      "passed": true,
+      "details": 2
+    },
+    {
+      "check": "MAMARIAGA roundEnd lasts exactly 180 native ticks and resets normally",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "MAMARIAGA at most one actor page changes per video frame",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "MAMARIAGA stable native ticks have exact cadence and no lag",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "MAMARIAGA native PPU has no OBJ range/time overflow",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "MAMARIAGA staged OAM stays within scanline/fetch budgets",
+      "passed": true,
+      "details": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 982,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "check": "MAMARIAGA existing SPC FIFO stays bounded",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "RESTON P1 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 42
+    },
+    {
+      "check": "RESTON P2 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 42
+    },
+    {
+      "check": "RESTON P1 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 43
+    },
+    {
+      "check": "RESTON P2 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 43
+    },
+    {
+      "check": "RESTON P1 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 45
+    },
+    {
+      "check": "RESTON P2 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 45
+    },
+    {
+      "check": "RESTON P1 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "RESTON P2 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "RESTON intro never alters combat state",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "RESTON exposes all four intro beats",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "RESTON both intro sides receive a native signature accent",
+      "passed": true,
+      "details": [
+        3,
+        3
+      ]
+    },
+    {
+      "check": "RESTON cosmetic accent ends before live combat",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P2 wins through actual native damage",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "RESTON P2 victory beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 42
+    },
+    {
+      "check": "RESTON P2 victory beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 43
+    },
+    {
+      "check": "RESTON P2 victory beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "RESTON P2 victory beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 45
+    },
+    {
+      "check": "RESTON P2 victory beat 4 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "RESTON P2 victory beat 5 is the exact approved native pose",
+      "passed": true,
+      "details": 11
+    },
+    {
+      "check": "RESTON P2 victory beat 6 is the exact approved native pose",
+      "passed": true,
+      "details": 11
+    },
+    {
+      "check": "RESTON victory leaves outcome, positions, health and clock frozen",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "RESTON plays seven victory beats with at least four distinct approved poses",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "RESTON KO loser keeps native fall/floor poses",
+      "passed": true,
+      "details": [
+        47,
+        59
+      ]
+    },
+    {
+      "check": "RESTON victory has a moving native signature accent",
+      "passed": true,
+      "details": 4
+    },
+    {
+      "check": "RESTON roundEnd lasts exactly 180 native ticks and resets normally",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "RESTON at most one actor page changes per video frame",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "RESTON stable native ticks have exact cadence and no lag",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "RESTON native PPU has no OBJ range/time overflow",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "RESTON staged OAM stays within scanline/fetch budgets",
+      "passed": true,
+      "details": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 906,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "check": "RESTON existing SPC FIFO stays bounded",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "ROXANA P1 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "ROXANA P2 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "ROXANA P1 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 45
+    },
+    {
+      "check": "ROXANA P2 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 45
+    },
+    {
+      "check": "ROXANA P1 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "ROXANA P2 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "ROXANA P1 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "ROXANA P2 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "ROXANA intro never alters combat state",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "ROXANA exposes all four intro beats",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "ROXANA both intro sides receive a native signature accent",
+      "passed": true,
+      "details": [
+        3,
+        3
+      ]
+    },
+    {
+      "check": "ROXANA cosmetic accent ends before live combat",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P1 wins through actual native damage",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "ROXANA P1 victory beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "ROXANA P1 victory beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 45
+    },
+    {
+      "check": "ROXANA P1 victory beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "ROXANA P1 victory beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 11
+    },
+    {
+      "check": "ROXANA P1 victory beat 4 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "ROXANA P1 victory beat 5 is the exact approved native pose",
+      "passed": true,
+      "details": 45
+    },
+    {
+      "check": "ROXANA P1 victory beat 6 is the exact approved native pose",
+      "passed": true,
+      "details": 11
+    },
+    {
+      "check": "ROXANA victory leaves outcome, positions, health and clock frozen",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "ROXANA plays seven victory beats with at least four distinct approved poses",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "ROXANA KO loser keeps native fall/floor poses",
+      "passed": true,
+      "details": [
+        47,
+        59
+      ]
+    },
+    {
+      "check": "ROXANA victory has a moving native signature accent",
+      "passed": true,
+      "details": 4
+    },
+    {
+      "check": "ROXANA roundEnd lasts exactly 180 native ticks and resets normally",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "ROXANA at most one actor page changes per video frame",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "ROXANA stable native ticks have exact cadence and no lag",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "ROXANA native PPU has no OBJ range/time overflow",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "ROXANA staged OAM stays within scanline/fetch budgets",
+      "passed": true,
+      "details": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 863,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "check": "ROXANA existing SPC FIFO stays bounded",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "LARS P1 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 44
+    },
+    {
+      "check": "LARS P2 intro beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 44
+    },
+    {
+      "check": "LARS P1 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 28
+    },
+    {
+      "check": "LARS P2 intro beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 28
+    },
+    {
+      "check": "LARS P1 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 42
+    },
+    {
+      "check": "LARS P2 intro beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 42
+    },
+    {
+      "check": "LARS P1 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "LARS P2 intro beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 35
+    },
+    {
+      "check": "LARS intro never alters combat state",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "LARS exposes all four intro beats",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "LARS both intro sides receive a native signature accent",
+      "passed": true,
+      "details": [
+        3,
+        3
+      ]
+    },
+    {
+      "check": "LARS cosmetic accent ends before live combat",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P2 wins through actual native damage",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "LARS P2 victory beat 0 is the exact approved native pose",
+      "passed": true,
+      "details": 44
+    },
+    {
+      "check": "LARS P2 victory beat 1 is the exact approved native pose",
+      "passed": true,
+      "details": 28
+    },
+    {
+      "check": "LARS P2 victory beat 2 is the exact approved native pose",
+      "passed": true,
+      "details": 42
+    },
+    {
+      "check": "LARS P2 victory beat 3 is the exact approved native pose",
+      "passed": true,
+      "details": 43
+    },
+    {
+      "check": "LARS P2 victory beat 4 is the exact approved native pose",
+      "passed": true,
+      "details": 45
+    },
+    {
+      "check": "LARS P2 victory beat 5 is the exact approved native pose",
+      "passed": true,
+      "details": 46
+    },
+    {
+      "check": "LARS P2 victory beat 6 is the exact approved native pose",
+      "passed": true,
+      "details": 11
+    },
+    {
+      "check": "LARS victory leaves outcome, positions, health and clock frozen",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "LARS plays seven victory beats with at least four distinct approved poses",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "LARS KO loser keeps native fall/floor poses",
+      "passed": true,
+      "details": [
+        47,
+        59
+      ]
+    },
+    {
+      "check": "LARS victory has a moving native signature accent",
+      "passed": true,
+      "details": 4
+    },
+    {
+      "check": "LARS roundEnd lasts exactly 180 native ticks and resets normally",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "LARS at most one actor page changes per video frame",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "LARS stable native ticks have exact cadence and no lag",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "LARS native PPU has no OBJ range/time overflow",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "LARS staged OAM stays within scanline/fetch budgets",
+      "passed": true,
+      "details": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 864,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "check": "LARS existing SPC FIFO stays bounded",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "Start pauses presentation",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Paused intro/victory freezes exact poses, signature accent and countdown",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "victory": false
+      }
+    },
+    {
+      "check": "Start plus Select resumes without a Training reset",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Start plus Select preserves the paused intro",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Existing Controls guide builds normally during presentation pause",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Pause B returns to roster normally",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P1 wins through actual native damage",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Start pauses presentation",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Paused intro/victory freezes exact poses, signature accent and countdown",
+      "passed": true,
+      "details": {
+        "mode": 1,
+        "victory": true
+      }
+    },
+    {
+      "check": "Start plus Select resumes without a Training reset",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Existing Controls guide builds normally during presentation pause",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Pause B returns to roster normally",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Start pauses presentation",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Paused intro/victory freezes exact poses, signature accent and countdown",
+      "passed": true,
+      "details": {
+        "mode": 2,
+        "victory": false
+      }
+    },
+    {
+      "check": "Start plus Select resumes without a Training reset",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Start plus Select preserves the paused intro",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Existing paused dummy selector reaches CPU Training",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P2 R still changes the existing CPU Training level",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Opposite held Training shoulders still cancel across ports",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P1 L still restores the existing CPU Training level",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Live Training Select skips presentation through the existing reset path",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Existing Controls guide builds normally during presentation pause",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Pause B returns to roster normally",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller-neutral healthy timeout still resolves at the normal duration",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "DRAW keeps the native non-winner poses and has no winner accent",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P1 wins through actual native damage",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P1 wins through actual native damage",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "A real two-round victory reaches the ordinary result screen",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Result transition clears actors and borrowed signature sprite",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Result A starts a fresh match with the individual intro",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "1,000 paired controller ticks preserve intro, combat and round outcomes",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Verbose native bank audit reproduces the exact tested cartridge",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "All 128 native ROM bank allocations were inspected",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "roster": [
+    {
+      "id": 0,
+      "name": "DAMIAN",
+      "gesture": "Kernel salute",
+      "winner_side": 1,
+      "intro_frames": [
+        42,
+        43,
+        35,
+        32
+      ],
+      "victory_frames": [
+        43,
+        42,
+        45,
+        46,
+        11,
+        46,
+        11
+      ],
+      "controller_ko_ticks": 447,
+      "native_budget": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 864,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "id": 1,
+      "name": "IVO",
+      "gesture": "Capital guard",
+      "winner_side": 2,
+      "intro_frames": [
+        40,
+        28,
+        40,
+        43
+      ],
+      "victory_frames": [
+        40,
+        28,
+        42,
+        43,
+        46,
+        11,
+        46
+      ],
+      "controller_ko_ticks": 528,
+      "native_budget": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 945,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "id": 2,
+      "name": "CRISTOBAL",
+      "gesture": "Atomic one-two",
+      "winner_side": 1,
+      "intro_frames": [
+        34,
+        6,
+        35,
+        32
+      ],
+      "victory_frames": [
+        34,
+        6,
+        35,
+        45,
+        11,
+        46,
+        11
+      ],
+      "controller_ko_ticks": 526,
+      "native_budget": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 943,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "id": 3,
+      "name": "COTE",
+      "gesture": "Balance check",
+      "winner_side": 2,
+      "intro_frames": [
+        28,
+        44,
+        45,
+        35
+      ],
+      "victory_frames": [
+        28,
+        44,
+        45,
+        35,
+        46,
+        11,
+        46
+      ],
+      "controller_ko_ticks": 488,
+      "native_budget": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 905,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "id": 4,
+      "name": "NEGGER",
+      "gesture": "Macro brace",
+      "winner_side": 1,
+      "intro_frames": [
+        34,
+        42,
+        40,
+        32
+      ],
+      "victory_frames": [
+        34,
+        42,
+        43,
+        40,
+        46,
+        11,
+        11
+      ],
+      "controller_ko_ticks": 529,
+      "native_budget": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 946,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "id": 5,
+      "name": "DAVID",
+      "gesture": "Audit rise",
+      "winner_side": 2,
+      "intro_frames": [
+        44,
+        45,
+        46,
+        32
+      ],
+      "victory_frames": [
+        44,
+        45,
+        13,
+        45,
+        46,
+        11,
+        46
+      ],
+      "controller_ko_ticks": 406,
+      "native_budget": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 823,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "id": 6,
+      "name": "FERNANDO",
+      "gesture": "Legacy seal",
+      "winner_side": 1,
+      "intro_frames": [
+        40,
+        42,
+        43,
+        35
+      ],
+      "victory_frames": [
+        40,
+        42,
+        43,
+        35,
+        45,
+        46,
+        11
+      ],
+      "controller_ko_ticks": 529,
+      "native_budget": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 946,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "id": 7,
+      "name": "CRISTIAN",
+      "gesture": "Risk reversal",
+      "winner_side": 2,
+      "intro_frames": [
+        40,
+        34,
+        35,
+        32
+      ],
+      "victory_frames": [
+        40,
+        34,
+        6,
+        35,
+        45,
+        11,
+        46
+      ],
+      "controller_ko_ticks": 568,
+      "native_budget": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 985,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "id": 8,
+      "name": "MAMARIAGA",
+      "gesture": "Merge pulse",
+      "winner_side": 1,
+      "intro_frames": [
+        28,
+        42,
+        43,
+        32
+      ],
+      "victory_frames": [
+        28,
+        42,
+        43,
+        35,
+        46,
+        11,
+        46
+      ],
+      "controller_ko_ticks": 565,
+      "native_budget": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 982,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "id": 9,
+      "name": "RESTON",
+      "gesture": "Cloud horizon",
+      "winner_side": 2,
+      "intro_frames": [
+        42,
+        43,
+        45,
+        32
+      ],
+      "victory_frames": [
+        42,
+        43,
+        35,
+        45,
+        46,
+        11,
+        11
+      ],
+      "controller_ko_ticks": 489,
+      "native_budget": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 906,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "id": 10,
+      "name": "ROXANA",
+      "gesture": "Close-out flourish",
+      "winner_side": 1,
+      "intro_frames": [
+        35,
+        45,
+        46,
+        32
+      ],
+      "victory_frames": [
+        35,
+        45,
+        46,
+        11,
+        46,
+        45,
+        11
+      ],
+      "controller_ko_ticks": 446,
+      "native_budget": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 863,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    },
+    {
+      "id": 11,
+      "name": "LARS",
+      "gesture": "Nordic stamp",
+      "winner_side": 2,
+      "intro_frames": [
+        44,
+        28,
+        42,
+        35
+      ],
+      "victory_frames": [
+        44,
+        28,
+        42,
+        43,
+        45,
+        46,
+        11
+      ],
+      "controller_ko_ticks": 447,
+      "native_budget": {
+        "upload_failures": [],
+        "cadence_failures": [],
+        "overflow_failures": [],
+        "maximum_actors_changed": 1,
+        "maximum_objects": 65,
+        "maximum_scanline_objects": 16,
+        "maximum_scanline_tiles": 32,
+        "samples": 864,
+        "strict_cadence_samples": 396,
+        "max_spc_backlog": 0
+      }
+    }
+  ],
+  "static_audit": {
+    "existing_ram_symbols": 1274,
+    "new_mutable_bytes": 0,
+    "all_generated_changes_from_base": [],
+    "initialized_constant_bytes": 132,
+    "native_sections": [
+      {
+        "name": "SECTIONSTART_.personalityIntroFrametext_0x4c",
+        "start": "9BFDD9",
+        "end": "9BFF28",
+        "bytes": 335
+      },
+      {
+        "name": "SECTIONSTART_.personalityVictoryFrametext_0x4d",
+        "start": "9BF988",
+        "end": "9BFB06",
+        "bytes": 382
+      },
+      {
+        "name": "SECTIONSTART_.personalityAccenttext_0x4e",
+        "start": "8BF800",
+        "end": "8BFF23",
+        "bytes": 1827
+      }
+    ]
+  },
+  "contact_sheets": [
+    "docs/screenshots/expansion-04/intro-all12.png",
+    "docs/screenshots/expansion-04/victory-all12.png"
+  ],
+  "paired_baseline": {
+    "baseline_sha256": "50332438739f93808ece5c192c06ab85288d964158faa58db69378c9559d204b",
+    "paired_ticks": 1000,
+    "fields": [
+      "hp1",
+      "hp2",
+      "x1",
+      "x2",
+      "y1",
+      "y2",
+      "energy1",
+      "energy2",
+      "action1",
+      "action2",
+      "intro",
+      "round_end",
+      "wins1",
+      "wins2",
+      "seconds",
+      "round",
+      "hitstop"
+    ],
+    "first_mismatch": null
+  },
+  "linker_budget": {
+    "rom_free_bytes": 931321,
+    "completely_free_banks": [
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127
+    ],
+    "free_bytes_by_bank": {
+      "0": 21,
+      "1": 2,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 10,
+      "11": 2,
+      "12": 5,
+      "13": 12,
+      "14": 30,
+      "15": 27,
+      "16": 16,
+      "17": 0,
+      "18": 0,
+      "19": 4,
+      "20": 5,
+      "21": 7,
+      "22": 0,
+      "23": 4,
+      "24": 8,
+      "25": 4,
+      "26": 0,
+      "27": 4,
+      "28": 7,
+      "29": 7,
+      "30": 0,
+      "31": 7,
+      "32": 24,
+      "33": 59,
+      "34": 2048,
+      "35": 2048,
+      "36": 2048,
+      "37": 2048,
+      "38": 2048,
+      "39": 2048,
+      "40": 2048,
+      "41": 2048,
+      "42": 2048,
+      "43": 2048,
+      "44": 2048,
+      "45": 2048,
+      "46": 2048,
+      "47": 2048,
+      "48": 2048,
+      "49": 2048,
+      "50": 2048,
+      "51": 2048,
+      "52": 2048,
+      "53": 2048,
+      "54": 2048,
+      "55": 2048,
+      "56": 2048,
+      "57": 2048,
+      "58": 2048,
+      "59": 2048,
+      "60": 2048,
+      "61": 2048,
+      "62": 2048,
+      "63": 2048,
+      "64": 2048,
+      "65": 2048,
+      "66": 2048,
+      "67": 2048,
+      "68": 2048,
+      "69": 2048,
+      "70": 2048,
+      "71": 2048,
+      "72": 2048,
+      "73": 2048,
+      "74": 2048,
+      "75": 2048,
+      "76": 2048,
+      "77": 2048,
+      "78": 2048,
+      "79": 2048,
+      "80": 2048,
+      "81": 2048,
+      "82": 2048,
+      "83": 2048,
+      "84": 2048,
+      "85": 2048,
+      "86": 2048,
+      "87": 2048,
+      "88": 2048,
+      "89": 2048,
+      "90": 2048,
+      "91": 2048,
+      "92": 2048,
+      "93": 2048,
+      "94": 2048,
+      "95": 2048,
+      "96": 2048,
+      "97": 2048,
+      "98": 2048,
+      "99": 1547,
+      "100": 148,
+      "101": 40,
+      "102": 7,
+      "103": 9762,
+      "104": 32768,
+      "105": 32768,
+      "106": 32768,
+      "107": 32768,
+      "108": 32768,
+      "109": 32768,
+      "110": 32768,
+      "111": 32768,
+      "112": 32768,
+      "113": 32768,
+      "114": 32768,
+      "115": 32768,
+      "116": 32768,
+      "117": 32768,
+      "118": 32768,
+      "119": 32768,
+      "120": 32768,
+      "121": 32768,
+      "122": 32768,
+      "123": 32768,
+      "124": 32768,
+      "125": 32768,
+      "126": 32768,
+      "127": 32768
+    }
+  },
+  "captures": [
+    {
+      "file": "docs/screenshots/expansion-04/00-damian-intro.png",
+      "sha256": "7e845c547b2e129f4c43e05afa939e7860be38035aff144b0a1b58e9100cbdc5"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/00-damian-victory.png",
+      "sha256": "627968a9d1bfb3db0f87d5c27ce1957e2175336d1edd084ec0fef60f6dd44ae7"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/01-ivo-intro.png",
+      "sha256": "9d0c7085f918814c94d42f63900698cb9027ab0698c4cd80a7bc3aefd688c85a"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/01-ivo-victory.png",
+      "sha256": "2f0e03d012e170b33a73689010232d99f78a7495c233f0014a1fa8a5409b941c"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/02-cristobal-intro.png",
+      "sha256": "0a004fd25dc3453f679f1afc65c496f059c9cff190dbfba0ade65f73f592aa3b"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/02-cristobal-victory.png",
+      "sha256": "e1e7a56a8bedf91a3325430549869fffbaa5fbd3d58578ba6e79ed4490879e39"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/03-cote-intro.png",
+      "sha256": "6c81ff557ced61d6157958c21ebb74f9d6f82ee7795a7e99a71655ec516da818"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/03-cote-victory.png",
+      "sha256": "0c304bc960a68a1b4474c7dfc7841083f53bb6865a2a17362acd9f17f72f860c"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/04-negger-intro.png",
+      "sha256": "4d1590715144bba6c3990e94e365f3d476db4b53e51e03bac0e49073f118cad6"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/04-negger-victory.png",
+      "sha256": "1afbfe5f4dcbaea746430acc8b78d66687a8abfd63c6a923447e870c0ff3a438"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/05-david-intro.png",
+      "sha256": "9623605d67d7b3d67c0019d900db3d3db4feb48154ab79f1b668ddf454f4896c"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/05-david-victory.png",
+      "sha256": "2d1c5644db599e2d42aa804d030d894448746bf7feb5aefabcc40f965f972397"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/06-fernando-intro.png",
+      "sha256": "4d340628d3df3117a8771123bdf9df958c4a74f72be1f69e91673254158bb7c4"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/06-fernando-victory.png",
+      "sha256": "c235c9d4b10e818fe17d8156e46cffa55d44e772445c7e355c8810ed632c42c8"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/07-cristian-intro.png",
+      "sha256": "850586510b87d1e6d646fcbe2c1305c6a333d20e24315d8c129ef76651734fc9"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/07-cristian-victory.png",
+      "sha256": "96643da7d0295eb580c54958227b3a48eda3289ceacfff81e0a46c4611dab2ae"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/08-mamariaga-intro.png",
+      "sha256": "281faf8740654ef416bf29c3c32eba19c317e1f5061831e93e83c90ed33c77d5"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/08-mamariaga-victory.png",
+      "sha256": "bce01b91b87efd04ac873885cbc388525394254bb2fbca104166a81a9e1987f1"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/09-reston-intro.png",
+      "sha256": "d48e1036b642236f2ef04e7bbd0c4b40ade35b7d934b2b389a9b5bb970e2bdd2"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/09-reston-victory.png",
+      "sha256": "6640b050285ea49db020bbe3074cea6f6dfa7c12f71d7affff7e1bad609b8bcc"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/10-roxana-intro.png",
+      "sha256": "30c36158e9f28f30afefa0e1c25dcc4e1051ab5ef3c9dd790bc7d8d4e270be96"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/10-roxana-victory.png",
+      "sha256": "43a3ee63cff0b2fa941d51b7cc7e8f8b9cfd475ba9448465d847c26107ec8f9a"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/11-lars-intro.png",
+      "sha256": "4e5e29713a5308960d37e77efb55c629e25ee40dbc94c069ccea71383e543590"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/11-lars-victory.png",
+      "sha256": "5edb00aa2c1e8b7912711f146e5ab8c800c3065defcf231eaee5de0220fa09ae"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/intro-all12.png",
+      "sha256": "190cb42f4ae327cda4102b3acab91981e539d0f95e022c15801384bcc31ce982"
+    },
+    {
+      "file": "docs/screenshots/expansion-04/victory-all12.png",
+      "sha256": "241aba30979195444078299a4aea05a9bfc0e8a6ebbe4696db73ec3b935255a1"
+    }
+  ],
+  "passed": 400,
+  "seconds": 27.672
+}

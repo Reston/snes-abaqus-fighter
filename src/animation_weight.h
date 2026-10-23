@@ -73,7 +73,7 @@ void animateFighter(u8 p) {
     }
     else if(state==7)f->animFrame=f->animTick<6?10:41;
     /* Retain the winner hook for feature 04. */
-    else if(state==8)f->animFrame=(f->animTick%40)<10?46:11;
+    else if(state==8)f->animFrame=personalityVictoryFrame(f->id);
     else if(state==9) {
         if(f->downState==DOWN_FLOOR)f->animFrame=f->downTick<5?59:14;
         else if(f->animTick<8)f->animFrame=47;
