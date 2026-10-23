@@ -6,7 +6,61 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
-- The active checkout is **v0.21.0 four-button combat and HUD polish**.
+- The approved main candidate is **v0.22.1**, features 01–07, 09 and 10.
+  User explicitly authorized their merge and requested 08 be deferred because
+  its parallax looks bad. The original camera, stage ambient generator and four
+  ambient/dynamics outputs are restored exactly to v0.21.0. Keep feature 08's
+  branch/worktree for polish; its unused 16-byte RAM reservation prevents other
+  integration addresses moving. No parallax or winner stage reaction runs.
+  ROM SHA256 `52725899fa86b4ee3d3f3f022dae374c1ab4ff8777bdab4a7134640c34dc8727`, header `8300`.
+  Six native suites pass 36,253 exact-ROM checks and matching independent
+  smoke passes. See docs/RELEASE-v0.22.1.md and docs/verification-v0.22.1.json.
+  All 219 generated files remain; 215 match v0.21.0 and four audio outputs differ.
+  All fighter/portrait/static-stage art, palettes and five scores are preserved.
+  New work: improve all twelve walking cycles; verify existing local 1v1 and
+  improve discovery. The user requested walk changes, so a bounded walk-frame
+  revision is authorized; preserve all other poses, faces, palettes and scale.
+  Local Versus already supports both native SNES ports. Keep emulator-first
+  support and silent/headless tests. No new full offline release is claimed.
+
+- The historical integration was **v0.22.0, all ten improvements combined**, on
+  `integration/ten-improvements-v022`. Feature PRs #2..11 are merged into it;
+  [final PR #1](https://github.com/Reston/snes-abaqus-fighter/pull/1) awaits
+  one human playtest before merge; combined automated verification passes. Main remains
+  v0.21.0. Run `Play.cmd` from the integration checkout to play the candidate.
+  ROM SHA256 `d4fddaf609a0c29f45353a8d9e22fe1131fc3380838d9c0073d3255474cdf8af`, header `EA9D`.
+  Source freeze `b149cdf2d9e25560f61d09a0f49e71ce6fea7042`, tree `f58da040001f57a12c55b3ce92bde66041164b71`.
+  All six native suites pass 36,253 exact-ROM checks; matching pinned
+  independent smoke, all ten focused proofs, normal/optimized authoring
+  guards and a fresh committed-source export pass. The export reproduces
+  the ROM, all 219 generated assets and normalized symbols. Current evidence
+  is docs/expansion-v0.22.0-verification.json. Keep isolated measurements historical.
+  All ten behaviors are present: animation weight, light/strong/guard contacts,
+  normal balance, individual intro/victory gestures, Training tools, CPU
+  personalities, twelve supers, stage depth/ambient reactions, Arcade story
+  and resident audio/announcements. Y/X punches and B/A kicks remain; a fresh
+  neutral Y+B chord costs all 96 energy. Normal/Hard CPUs may fallibly use the
+  same super command after incoming-wave and ordinary attack defense.
+  Training page 3 adds input history, combo damage, ordinary-special `SP!` and
+  three drills. The ordinary pause dummy/CPU shoulder controls, opposing-input
+  cancellation, Start > B > A > Select and live P1 Select reset remain.
+  All twelve fighter sets/portraits/scales, including approved Damian v5,
+  original masters, static stage art and five original scores are preserved.
+  The 219-file generated inventory permits only eight changes: effects.bin,
+  effects.it, soundbank.asm/.bnk, stage-dynamics.json and stage0/1/2_ambient.bin.
+  Of 1,276 prior RAM labels, 1,271 keep their addresses; five metadata/libc
+  labels move by the documented 32/331 bytes. Fighter64/Wave16, TRACE0..122
+  and native hardware/trace assembly retain their ABI. Use
+  `tools/expansion_contracts.py` and docs/DEVELOPMENT.md for the combined
+  allocations, HDMA, shared effect OBJ, footer/guide and resident-audio bounds;
+  exact-ROM preservation, bank and transfer checks pass.
+  No v0.22.0 offline ZIP, full release-scale evidence or human approval exists.
+  v0.19.0 remains the latest full offline archive; public_release_certified is
+  false. Human balance, listening, controllers, consent/public-use and original
+  hardware gates remain open. See docs/RELEASE-v0.22.0.md and
+  docs/expansion-review-v0.22.0.json. Keep older identities below historical.
+
+- The previous candidate, retained on main, is **v0.21.0 four-button combat and HUD polish**.
   ROM SHA256 `aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205`, header `BEB8`.
   Source freeze `72dd25e9b71c1db6973540eef2eddd380b8039ed`, tree `5a645d49b100b82260fe7b0f7ffc78c2b8d32ac0`.
   Y/X are light/strong punch; B/A light/strong kick. Down+X uppercut,

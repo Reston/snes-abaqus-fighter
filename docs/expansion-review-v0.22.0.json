@@ -1,0 +1,257 @@
+{
+  "version": "0.22.0",
+  "status": "verified_for_combined_playtest",
+  "rom_sha256": "d4fddaf609a0c29f45353a8d9e22fe1131fc3380838d9c0073d3255474cdf8af",
+  "rom_sha256_status": "Matches the cartridge, all six suites, independent smoke and all ten focused reports.",
+  "final_verification": "docs/expansion-v0.22.0-verification.json",
+  "source_freeze": "b149cdf2d9e25560f61d09a0f49e71ce6fea7042",
+  "integration_branch": "integration/ten-improvements-v022",
+  "final_pr": "https://github.com/Reston/snes-abaqus-fighter/pull/1",
+  "public_release_certified": false,
+  "human_approval": "No v0.22.0 human approval recorded; single combined playtest pending.",
+  "media_status": "Current focused native captures/audio from this cartridge. GIF playback timing is approximate.",
+  "features": [
+    {
+      "id": 1,
+      "title": "Animation with weight",
+      "group": "presentation",
+      "description": "Planted breathing and steps, strong-attack anticipation, landing release and get-up transitions reuse each fighter's approved poses.",
+      "guide": "docs/EXPANSION-01-ANIMATION-WEIGHT.md",
+      "media": [
+        {
+          "path": "docs/screenshots/expansion-01/fighter00-normal-x.gif",
+          "label": "Damian strong-punch anticipation and recovery",
+          "sha256": "13a2fa7a25165055360769d9303794ec75c1cd50b020db71d199b5d570934a7f"
+        },
+        {
+          "path": "docs/screenshots/expansion-01/fighter09-jump.gif",
+          "label": "Reston jump and landing transitions",
+          "sha256": "4a09d8cce97917c074b18f803af47566b014a871d3cf6bdb0e3655e6506631dc"
+        }
+      ],
+      "pr": "https://github.com/Reston/snes-abaqus-fighter/pull/3",
+      "try": [
+        "Walk forward and back, then jump and land with Damian or Reston.",
+        "Use X or A, then earn a throw or sweep knockdown and watch the recovery."
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Readable hits and blocks",
+      "group": "combat",
+      "description": "Light hits use compact amber sparks, strong hits larger gold bursts, and blocks hollow cyan braces, with distinct freeze and camera response.",
+      "guide": "docs/EXPANSION-02-IMPACT.md",
+      "media": [
+        {
+          "path": "docs/screenshots/expansion-02/snes9x-stage0-p1-strong-punch.gif",
+          "label": "Native strong-punch contact",
+          "sha256": "0e7a0da40dac95d1f61e418d23ed2d4f4da47a3a15085a35ee94ea557c896de1"
+        },
+        {
+          "path": "docs/screenshots/expansion-02/snes9x-stage0-p1-light-block.gif",
+          "label": "Native guarded light contact",
+          "sha256": "8e12d39bf967d97768099975239fab21e4c789285e8a7785a7d9dfdb95c4736a"
+        }
+      ],
+      "pr": "https://github.com/Reston/snes-abaqus-fighter/pull/6",
+      "try": [
+        "Compare a close Y hit with an X hit.",
+        "Hold away or Down+away with the defender and compare block feedback."
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Four normals with distinct roles",
+      "group": "combat",
+      "description": "Y is the quick close jab, X the committed heavy punch, B the spacing/low kick and A the longest normal with its retained air cross-up.",
+      "guide": "docs/EXPANSION-03-NORMAL-BALANCE.md",
+      "media": [
+        {
+          "path": "docs/screenshots/expansion-03/11-p1-light_kick-tip.png",
+          "label": "Lars light kick at its front reach",
+          "sha256": "f3a31754820c8577980626e32ce57b2b0327ed88b67356cddbcf410d58ae7097"
+        },
+        {
+          "path": "docs/screenshots/expansion-03/00-p1-air-crossup.png",
+          "label": "Damian rear airborne strong-kick hit",
+          "sha256": "36b7f9e27a71c796e16ad388726c8169d0c3f1c4c1f805c6955b99d1aba0d716"
+        }
+      ],
+      "pr": "https://github.com/Reston/snes-abaqus-fighter/pull/7",
+      "try": [
+        "Confirm Y into X or B into A on a real hit; try a close jab after blocking a heavy.",
+        "Compare B at its tip with a close Down+B, then jump past and press A."
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Individual fighter gestures",
+      "group": "presentation",
+      "description": "All twelve fighters have individual intro gestures and winner sequences, with signature accents drawn from existing native effects.",
+      "guide": "docs/EXPANSION-04-FIGHTER-PERSONALITY.md",
+      "media": [
+        {
+          "path": "docs/screenshots/expansion-04/intro-all12.png",
+          "label": "All twelve native intro sequences",
+          "sha256": "1decd925ce9c0f930a45c1d5608c6552e5e411f9746d591db900fcf2b48fa9c6"
+        },
+        {
+          "path": "docs/screenshots/expansion-04/victory-all12.png",
+          "label": "All twelve native winner sequences",
+          "sha256": "92224d138ef8a36b000b71f2875dcc1aa60c4b7f5ebb287df77f34422506b8bc"
+        }
+      ],
+      "pr": "https://github.com/Reston/snes-abaqus-fighter/pull/2",
+      "try": [
+        "Watch an opening with Damian, then choose another fighter.",
+        "Earn a round win and compare the winner's sequence with the opening gesture."
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Training history and drills",
+      "group": "practice",
+      "description": "A live footer records five commands, current/last combo hits and damage, plus SP! for accepted ordinary specials. Training guide page 3 adds three drills.",
+      "guide": "docs/EXPANSION-05-TRAINING-TOOLS.md",
+      "media": [
+        {
+          "path": "docs/screenshots/expansion-05/tools-page.png",
+          "label": "Training Tools third guide page",
+          "sha256": "5818c154f09ff40cc9ef7f94b3fb9031663bb852024932df3758186f26bc83aa"
+        },
+        {
+          "path": "docs/screenshots/expansion-05/motion-history.png",
+          "label": "Recorded P1 motion history and status footer",
+          "sha256": "4f9e7d467e68f6b73862556aa8336ca45b9ccbaf7c5ee636c6d864400d4483cb"
+        }
+      ],
+      "pr": "https://github.com/Reston/snes-abaqus-fighter/pull/11",
+      "try": [
+        "In Training, pause and press Select three times: Up toggles the display; Down changes the drill.",
+        "Try Normal -> Special, Block a Low Attack or Air Kick Cross-up; live P1 Select resets progress and keeps your choices."
+      ]
+    },
+    {
+      "id": 6,
+      "title": "CPU fighting personalities",
+      "group": "combat",
+      "description": "Each CPU has individual spacing, pressure, guard, throw and recovery-answer habits. Normal/Hard can attempt fair full-gauge supers after defense.",
+      "guide": "docs/EXPANSION-06-CPU-PERSONALITY.md",
+      "media": [
+        {
+          "path": "docs/screenshots/expansion-06/cpu02-hit.png",
+          "label": "Cristobal CPU contact",
+          "sha256": "a88879eb4184f01afa4dbfb70f66d9da0d9427cc4532b33097e31ada2ef04b73"
+        },
+        {
+          "path": "docs/screenshots/expansion-06/cpu07-blocked.png",
+          "label": "Cristian CPU attack guarded by the player",
+          "sha256": "3dc27dd02ffc697c58a6e7d7f7b9cd2b9a8c5e8ba5308833e58caaefe99912d3"
+        }
+      ],
+      "pr": "https://github.com/Reston/snes-abaqus-fighter/pull/5",
+      "try": [
+        "Choose CPU on Training's ordinary PAUSED card and use either pad's L/R shoulders to set a level.",
+        "Compare Cristobal's pressure with Ivo's retreat or David's recovery answers at the same difficulty."
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Twelve full-gauge supers",
+      "group": "combat",
+      "description": "Fresh neutral Y+B spends all 96 energy on an individual volley, rush or rising sequence. Startup is vulnerable and recovery is committed.",
+      "guide": "docs/EXPANSION-07-SUPERS.md",
+      "media": [
+        {
+          "path": "docs/screenshots/expansion-07-00-hit.gif",
+          "label": "Damian full-gauge super hit sequence",
+          "sha256": "29007e53a826f1d1e9dca0e7253d331f9f0b0327e79def23a7c3f64e48f50056"
+        },
+        {
+          "path": "docs/screenshots/expansion-07-guide.png",
+          "label": "Native move list with super command and names",
+          "sha256": "1c5a58f35bba1ae171324b3247594865ed5cf1e50510ab9e2ce35d8974c611b6"
+        }
+      ],
+      "pr": "https://github.com/Reston/snes-abaqus-fighter/pull/9",
+      "try": [
+        "Wait for full energy and your projectile to finish; release directions and both buttons, then press Y+B together while grounded and free to act.",
+        "Compare Damian's volley with Cristobal's rush or David's rising finish; try guarding or interrupting a super."
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Stage depth and ambient reactions",
+      "group": "presentation",
+      "description": "Distant and nearer scenery bands shift subtly above a fixed floor. Refreshed ambient cells give real round winners two short cheers and settle to neutral.",
+      "guide": "docs/EXPANSION-08-STAGE-DEPTH.md",
+      "media": [
+        {
+          "path": "docs/screenshots/expansion-08/stage0-parallax.gif",
+          "label": "Las Condes band scroll above a fixed floor",
+          "sha256": "7f03d4a4118119eec4c0da1f44da1c88180c00bb661bf4a2d02a5cf33f69c5bb"
+        },
+        {
+          "path": "docs/screenshots/expansion-08/stage2-victory.gif",
+          "label": "La Oficina winner reaction",
+          "sha256": "edd28c249d17f2691b5eefe8ff614f21cc9488ea7094ae3b4db6d2727af6fef1"
+        }
+      ],
+      "pr": "https://github.com/Reston/snes-abaqus-fighter/pull/4",
+      "try": [
+        "Walk both fighters together left and right across each arena without attacking.",
+        "Earn a round win and watch the ambient reaction; pause to freeze the scene."
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Personal Arcade exchanges and endings",
+      "group": "arcade",
+      "description": "Two-speaker openings include six reciprocal rivalries, followed by individual winner quotes and personal text beside the retained champion trophy.",
+      "guide": "docs/EXPANSION-09-ARCADE-STORY.md",
+      "media": [
+        {
+          "path": "docs/screenshots/expansion-09/00-vs-09.png",
+          "label": "Damian and Reston rivalry exchange",
+          "sha256": "03c0710b3f2910e09c06d2302b2b8a21f589cf8e4cfab932b5c0d7e278cc6eef"
+        },
+        {
+          "path": "docs/screenshots/expansion-09/00-champion.png",
+          "label": "Damian personal champion ending",
+          "sha256": "d1e4ef81196727015202c64c8b2e05a932cdc77ad2d7e14b23b4884682a26a14"
+        }
+      ],
+      "pr": "https://github.com/Reston/snes-abaqus-fighter/pull/10",
+      "try": [
+        "Play Arcade with Damian/Reston or Ivo/Cote; wait about six seconds or press P1 A to skip the exchange.",
+        "Defeat all eleven opponents for a personal ending; Continue retries the same opponent after a loss."
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Resident sound and announcements",
+      "group": "presentation",
+      "description": "Distinct light/strong/guard sounds, menu/round and victory chords, spoken Round/Fight/K O and music ducking accompany the five retained original scores.",
+      "guide": "docs/EXPANSION-10-SOUND.md",
+      "media": [
+        {
+          "path": "docs/expansion-10-audio/intro-native-mix.wav",
+          "label": "Native round opening: score, speech and ducking",
+          "sha256": "186eb3d274c36fcece2ada18a16726199c140bbe6a6f8b35c4b3c3b489d06d66"
+        },
+        {
+          "path": "docs/expansion-10-audio/ko-victory-complete-native-mix.wav",
+          "label": "Native complete KO and victory cue mix",
+          "sha256": "7b6439959a9603f812e9fded2a05655e2cc6bad4ed850b15f46f8adb3ace3aab"
+        }
+      ],
+      "pr": "https://github.com/Reston/snes-abaqus-fighter/pull/8",
+      "try": [
+        "Listen to a round opening and compare light, heavy and guarded contact.",
+        "Earn a KO and hear the spoken cue, music recovery and victory cadence; healthy timeouts do not announce KO."
+      ]
+    }
+  ],
+  "checksum": "EA9D",
+  "source_tree": "f58da040001f57a12c55b3ce92bde66041164b71"
+}

@@ -1,7 +1,47 @@
 # Public-release quality target
-<!-- candidate-version: 0.21.0; rom-sha256: aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205 -->
+<!-- candidate-version: 0.22.1; rom-sha256: 52725899fa86b4ee3d3f3f022dae374c1ab4ff8777bdab4a7134640c34dc8727 -->
 
-The current v0.21.0 candidate is cartridge SHA256 `aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205`.
+## Current v0.22.1: nine approved improvements
+
+Features 01–07, 09 and 10 are approved for main. **Feature 08 is deferred**:
+the camera and ambient art are restored to v0.21.0; its branch/worktree remain
+for polish. The six native suites pass 36,253 exact-ROM checks and matching
+independent smoke passes. [Current release and scope](RELEASE-v0.22.1.md).
+Local 1v1 already works in **Local Versus** with separate controller ports.
+Walking improvements and clearer local-play discovery are the next follow-ups.
+The v0.22.0 material below is historical, including its ten-feature review gallery.
+
+## Historical v0.22.0 combined notes
+
+The current integration candidate is **v0.22.0**, with all ten improvements
+merged on `integration/ten-improvements-v022`. The [combined release guide](RELEASE-v0.22.0.md)
+maps all ten feature PRs and describes the shared controls and native budgets.
+Run `Play.cmd` from that checkout for review. Main remains v0.21.0 until
+your combined playtest and
+[PR #1](https://github.com/Reston/snes-abaqus-fighter/pull/1) merge.
+
+The combined candidate passes 36,253 checks across all six native suites,
+matching independent smoke, all ten feature proofs and preservation/bank/transfer
+checks. Fresh committed source reproduces the cartridge, all 219 assets and
+symbols. The [verification record](expansion-v0.22.0-verification.json) records
+ROM `d4fddaf609a0c29f45353a8d9e22fe1131fc3380838d9c0073d3255474cdf8af` and source freeze `b149cdf2d9e25560f61d09a0f49e71ce6fea7042`.
+These are technical results for the combined playtest.
+No v0.22.0 human approval, offline ZIP or full release-scale evidence exists.
+The latest full offline archive remains [v0.19.0](RELEASE-v0.19.0.md).
+
+The single combined playtest should cover the normal roles and confirms,
+hit/block readability, animation and individual gestures, Training history/
+damage/drills, CPU habits and fair super commitments, all three stages,
+Arcade dialogue/endings, speech and the music/effects mix. Further balance,
+full listening, physical-controller, remaining likeness, team/subject consent
+and public-use reviews remain open. Damian's earlier likeness approval and
+v0.21.0 feedback do not approve these additions. `public_release_certified`
+remains **false**. Emulator-first support remains the selected scope;
+original-console/flash-cartridge support remains unverified future work.
+
+## Historical v0.21.0 candidate
+
+The v0.21.0 candidate is cartridge SHA256 `aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205`.
 Its [release note](RELEASE-v0.21.0.md) records the focused verification scope.
 All six native suites pass 33,082 checks and the matching pinned smoke passes.
 The user accepted Damian v5 likeness in v0.20.0; its art is preserved here.
@@ -11,6 +51,8 @@ an offline package remain at the historical v0.19.0 checkpoint. Human
 gameplay/balance, full listening, physical controllers, remaining roster
 likenesses, team/subject consent and public-use approval remain open.
 `public_release_certified` is false.
+
+## Public quality target and historical evidence
 
 The active project goal is an original native SNES fighting game polished to a
 high public-release standard, using Capcom's 16-bit arcade craft as the benchmark
@@ -58,6 +100,12 @@ required before packaging. That snapshot's native reports identify the exact v0.
 cartridge; preceding snapshots remain historical.
 
 ## Release gates
+
+The baseline-status column below retains the historical v0.9.0 gate assessment.
+It does not report v0.22.0 results. Current combined verification and human
+review remain pending as described above; the latest full offline evidence is
+v0.19.0. New supers, Training tools, CPU choices, stage scroll, story and sound
+must be reviewed together before this candidate advances.
 
 | Gate | Required evidence | Baseline status |
 | --- | --- | --- |

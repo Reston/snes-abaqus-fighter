@@ -1,14 +1,59 @@
 # Polish roadmap
+<!-- candidate-version: 0.22.1; rom-sha256: 52725899fa86b4ee3d3f3f022dae374c1ab4ff8777bdab4a7134640c34dc8727 -->
+
+## Current v0.22.1: nine approved improvements
+
+Features 01–07, 09 and 10 are approved for main. **Feature 08 is deferred**:
+the camera and ambient art are restored to v0.21.0; its branch/worktree remain
+for polish. The six native suites pass 36,253 exact-ROM checks and matching
+independent smoke passes. [Current release and scope](RELEASE-v0.22.1.md).
+Local 1v1 already works in **Local Versus** with separate controller ports.
+Walking improvements and clearer local-play discovery are the next follow-ups.
+The v0.22.0 material below is historical, including its ten-feature review gallery.
+
+## Historical v0.22.0 combined notes
 
 The active public-release target and evidence gates are in
 [PUBLIC-RELEASE.md](PUBLIC-RELEASE.md). Treat this roadmap as the work backlog;
 the release gates decide when the public candidate is actually ready.
 
-The active source candidate is **v0.19.0**, adding paused CPU level controls,
-visible version identity and canonical generated text. All six suites pass 35,715 current-ROM checks, alongside matching extended
-combat, three native live hours and the committed-source rebuild. Two final Windows packages are identical and pass 9,299
-technical audit checks. See [the current release note](RELEASE-v0.19.0.md).
+The active integration candidate is **v0.22.0**, with all ten feature PRs merged
+into `integration/ten-improvements-v022`. Main remains v0.21.0 until your combined
+playtest and [PR #1](https://github.com/Reston/snes-abaqus-fighter/pull/1)
+merge. `Play.cmd` in that checkout runs the combined game. The
+[all-ten release guide](RELEASE-v0.22.0.md) maps each feature and its PR.
+Combined automated verification passes: 36,253 six-suite checks, matching
+independent smoke, all ten focused proofs, preservation/bank/transfer checks
+and a fresh export. See [the exact-ROM record](expansion-v0.22.0-verification.json). No v0.22.0 human approval, offline archive or
+full release-scale evidence exists; `public_release_certified` remains false.
+
+The latest full offline archive is **v0.19.0**, which added paused CPU level
+controls, visible version identity and canonical generated text. Its six suites
+passed 35,715 exact-ROM checks, with extended combat, three native live hours
+and a committed-source rebuild. Two identical Windows packages passed 9,299
+technical audit checks. See [that historical note](RELEASE-v0.19.0.md).
 Human approvals remain open.
+
+## Combined v0.22.0 review milestone
+
+- Animation weight and individual intro/victory gestures reuse all twelve
+  existing 64-frame sets, preserving approved Damian v5 and every portrait/palette/scale.
+- Light/strong/guard feedback and tuned Y/X/B/A roles add clearer contact and
+  risk/reward. Twelve full-96-energy supers use fresh neutral Y+B; Normal/Hard
+  CPU choices are fallible and follow defense priority.
+- Training page 3 provides five-command history, current/last combo damage,
+  ordinary-special `SP!` and three drills. Original PAUSED dummy/CPU-level
+  controls and reset priorities remain.
+- CPU personalities, subtle band parallax, refreshed ambient cells and winner
+  reactions, personal Arcade exchanges/quotes/endings, and resident speech/cues
+  are combined. The original fighter/stage masters and five scores remain.
+- Review the completed combined candidate in one human playtest before merging.
+  Then resolve reported defects before the main merge. Regenerate release-scale
+  evidence and audit a new package separately if a v0.22.0 archive is requested.
+
+Human balance/feel, full listening, physical controllers, likeness/consent and
+public-use review remain future work. The native band-scroll implementation
+does not complete the broader layered-art roadmap or original-console support.
 
 Delivered since v0.10 are the corrected Lars portrait/location previews and
 winner cards (v0.10.1/v0.11), arbitrary or mirror Training opponents and original
@@ -89,7 +134,7 @@ v0.5.1 baseline:
 - Review the new airborne, throw, knockdown and wake drawings, then add more
   character-specific in-between art for weight and footwork after human review.
 - Align hands and feet more closely to gameplay contact points and add per-pose hitboxes.
-- Extend the three independent stage compositions with layered parallax and animated coworkers while preserving the native tile, OBJ and vblank budgets.
+- Review v0.22.0's delivered band parallax and winner reactions; further illustrated layers and coworker animation must preserve native tile, OBJ and vblank budgets.
 - Review the delivered original champion illustration and winner cards with
   the team; further presentation changes should follow actual feedback.
 
@@ -356,8 +401,8 @@ gameplay, controller, likeness/consent and public-use review remain open, with
 - Continue human tuning of CPU spacing, anti-air behavior, defensive variety and
   difficulty progression after the correctness pass; the new distance bands and
   wave/wake reactions do not establish strategic AI or balance completion.
-- Add training hitbox display, frame-step tools, command history and more rematch options.
-- Extend the four special families with individual effect art, command variations and additional moves.
+- Review the delivered v0.22.0 command history, combo display and drills; hitbox display, frame-step tools and more rematch options remain future work.
+- Review the twelve delivered v0.22.0 supers before extending effect art, command variations or the four special families further.
 - Audit aerial normal collision, throw contact and wake input timing against the
   dedicated air and recovery illustrations.
 

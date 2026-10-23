@@ -1,181 +1,165 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.21.0; rom-sha256: aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205 -->
+<!-- candidate-version: 0.22.1; rom-sha256: 52725899fa86b4ee3d3f3f022dae374c1ab4ff8777bdab4a7134640c34dc8727 -->
 
-## Current version
+## Current v0.22.1: nine approved improvements
 
-The current candidate is **v0.21.0**: four face-button attacks, floor contact
-shadows and a redesigned health/round-win HUD. Damian's approved revised
-likeness is retained. See [the candidate note](RELEASE-v0.21.0.md) and
-[four-button details](FOUR-BUTTON-HUD.md). The latest offline ZIP remains
-v0.19.0 and uses its original six-button controls. In paused Training, choose **CPU** with
-Up/Down, then use the **L/R shoulder buttons** to change its level. Both
-controllers work. The selected level appears on the card and at home.
-Start resumes; P1 Select resets the live round and retains the behavior,
-opponent and level. A new match starts on Stand. The title's lower-right
-version label identifies the cartridge you are playing.
+Features 01–07, 09 and 10 are approved for main. **Feature 08 is deferred**:
+the camera and ambient art are restored to v0.21.0; its branch/worktree remain
+for polish. The six native suites pass 36,253 exact-ROM checks and matching
+independent smoke passes. [Current release and scope](RELEASE-v0.22.1.md).
+Local 1v1 already works in **Local Versus** with separate controller ports.
+Walking improvements and clearer local-play discovery are the next follow-ups.
+The v0.22.0 material below is historical, including its ten-feature review gallery.
 
-## Launch
+## Historical v0.22.0 combined notes
 
-In the source checkout, run the root `Play.cmd`; it prepares pinned tools on
-first use and opens `dist/abaqus-after-hours.sfc` in Snes9x. On other platforms,
-open that cartridge in your SNES emulator.
+This guide describes all ten improvements together on
+`integration/ten-improvements-v022`. Run the root [Play.cmd](../Play.cmd) from
+that checkout to play in Snes9x; on other platforms open
+`dist/abaqus-after-hours.sfc` in a SNES emulator. Main remains v0.21.0 pending
+your combined playtest and [final PR #1](https://github.com/Reston/snes-abaqus-fighter/pull/1).
+The title's lower-right version label identifies your game. Combined native
+verification passes; no v0.22.0 playtest approval or offline ZIP exists.
+The latest full offline archive is v0.19.0, which uses its older six-button
+combat layout. See the [combined release guide](RELEASE-v0.22.0.md) for all ten
+changes and their feature links.
 
-For an offline Windows package, extract the whole ZIP first and run its
-`Play.cmd`. Keep the `emulator` folder beside the cartridge and launcher. The
-included `manifest.json` identifies the packaged version and ROM SHA256;
-`RELEASE.md` records its verification scope. Source checkouts use the versioned
-release note under `docs/`. No global installation or administrator account is
-needed. Human gameplay, listening, controller, likeness/consent and team/public
-use review remain open; original hardware support stays unverified.
-The package's `REVIEW.html` contains native screens, CPU Training, anti-air and cross-up
-clips, and a 2x view. GIF playback timing is approximate. The [cross-up practice
-companion](CROSSUP-PRACTICE-v0.19.0.html) retains v0.19.0 captures and shows
-a setup for each fighter. Use
-Training's Stand dummy for stationary setups, or Local Versus with a second
-player/both keyboard layouts for the opponent-step-under examples.
-Its `ROSTER-REVIEW.html` offers all 64 generated frames per fighter, facing
-flips and a frame scrubber for likeness inspection. The fixed-rate sweep is
-an art review aid; actual game animation timing is reviewed in the emulator.
-After playing, open **Record playtest feedback** in `REVIEW.html` to save an
-observation as JSON. The file includes this cartridge's version and ROM hash;
-share it with your report so feedback stays attached to the build you played.
-
-In paused Training, Start has priority over Select and resumes the current
-round. A fresh P1 Select press during live Training still resets the round.
-
-Focus Snes9x and press **Enter**. Use **Alt+Enter** for fullscreen and
-**Input -> Input Configuration** to assign controllers. For a quiet session,
-mute Snes9x or the system before launching.
-
-## Modes
-
-**Arcade Shift**: defeat the other eleven coworkers in best-of-three matches.
-Each victory advances to another opponent and location. A continue is offered
-after a loss; completing the ladder awards Office Champion.
-
-**Local Versus**: choose a fighter for each player, choose an arena and play a
-best-of-three match. Both controller ports use the same four-button layout.
-
-**Training**: choose your fighter at **PLAYER 1**, then choose any opponent at
-**DUMMY**, including the same fighter for a mirror match. The dummy cursor
-starts on the next roster entry. P1 can operate both steps; either controller
-can choose the dummy. Press **A** or **Start** to confirm each fighter, then
-choose an arena. **B** on DUMMY returns to PLAYER 1. The clock stays at 99.
-Press **P1 Select** for a live round reset. Press **Start**, then **B**, to return
-to fighter select and change the matchup.
-
-At home, **L/R** changes CPU difficulty between Easy, Normal and Hard. Easy is
-the recommended starting point. Normal and Hard defend and recover more often.
-
-## Fighters and stages
-
-The roster has twelve illustrated coworkers:
-
-Damian, Ivo, Cristobal, Jose "Cote" Ignacio, Gonzalo "Negger" Reyes, David
-Ponce, Fernando Perez, Cristian, Ignacio "Mamariaga", Jose "Reston" Ordonez,
-Roxana and Rodrigo "Lars" Lartiga.
-
-Fighter select uses a four-by-three grid. **Left/Right** moves one card;
-**Up/Down** moves by four cards and wraps around. The selected fighter appears
-in a large portrait. Choose from the three arenas: **Las Condes**, **El Castillo**
-and **La Oficina**. In the arena menu, **Up/Down** chooses the row; each
-thumbnail shows landmarks from the matching stage inside its box, with the location
-name and caption in a separate text column.
+Focus Snes9x and press **Enter**. **Alt+Enter** toggles fullscreen;
+**Input -> Input Configuration** maps controllers. The launcher prepares
+pinned local tools on first use, without an administrator account or global
+installation. Existing emulator mappings may differ from the defaults below.
 
 ## Controls
 
 | SNES input | Included P1 keyboard | Action |
 | --- | --- | --- |
-| Left / Right | Arrow keys | Move; hold away from the opponent to guard |
-| Up | Up arrow | Jump |
-| Down | Down arrow | Crouch; combine with away for low guard |
+| Left / Right | Arrow keys | Walk; hold away from the opponent to guard |
+| Up / Down | Up / Down arrows | Jump / crouch; Down+away guards low |
 | Y / X | A / S | Light / strong punch |
 | B / A | Z / X | Light / strong kick |
-| A | X | Confirm menus / resume pause |
-| B | Z | Back in menus / roster from pause |
-| Start | Enter | Confirm / pause |
-| Select | Shift | P1 live Training reset / pause page cycle |
+| Down+X / toward+X | Down+S / toward+S | Uppercut / close throw |
+| Down+A / Down+B | Down+X / Down+Z | Sweep / low light kick |
+| Down+Y | Down+A | Quick special, costs 32 energy |
+| Down, Down+toward, toward+Y/X | Same directions, then A/S | Motion special, costs 32 energy |
+| Fresh neutral Y+B together | Release directions and A/Z, then press A+Z together | Super, costs the full 96 energy |
+| Start | Enter | Confirm / pause / resume |
+| A / B in menus or pause | X / Z | Confirm or resume / back or return to roster |
+| Select | Shift | Cycle pause pages; P1 live Training reset |
+| L / R shoulders | D / C | CPU level at home or on Training's CPU PAUSED card |
 
-On Training's first PAUSED card with **CPU** selected, the **L/R shoulder
-buttons** cycle Easy/Normal/Hard. P1 uses **D/C**; P2 uses numpad **9/3**.
-Holding a shoulder changes the level once. Opposite held shoulders cancel,
-including across the two controllers. Guide pages and scripted dummies keep
-their existing controls. The choice also appears at home and survives quick
-reset. Start/B/A/Select and dummy directions retain their usual priority.
-
-At the title, the P1 shoulder buttons **L/R** are keyboard **D/C**; use them
-to change CPU difficulty. Those shoulders do not attack during combat.
-
-Player two's included keyboard uses **I/J/K/L** for Up/Left/Down/Right,
-numpad **7/8** for punches, numpad **1/2** for kicks, **Space** for
-Start and **Q** for Select. In menus and pause, numpad **2** is A
-(confirm/resume) and numpad **1** is B (back/roster). Enable Num Lock. Assign
-controllers through Snes9x **Input Configuration**.
-
-Holding Left and Right together neutralizes that axis. A short attack or jump
-press remains buffered briefly, so use a clean press when checking a move.
-In menus, **Start** confirms first, **B** backs out, and **A** confirms; a Back
-edge returns immediately so one edge cannot trigger two scene actions.
-
-## Pause guide and Training dummy
-
-Press **Start** during a match to pause. **Start** resumes first from either
-controller. If Start is not pressed, **B** returns to the roster; otherwise
-**A** resumes and **Select** changes the guide page.
-
-The pause card has three pages:
-
-- **Pause card** (`PAUSED`) shows pause status and the Training dummy mode.
-- **Controls** (`HOW TO PLAY 1/2`) lists movement, guard, four-button attacks, throw, uppercut,
-  confirmed attacks, the strong-kick cross-up and pause shortcuts.
-- **Specials** (`MOVE LIST 2/2`) shows the live P1/P2 names, each special and its family.
-
-**Select** cycles Pause card -> Controls -> Specials -> Pause card. **Left/Right**
-also toggles the guide pages. The guide names the actual fighters in the
-match, rather than showing a generic roster description.
-
-On Training's first **PAUSED** card, press **Up/Down** to choose **Stand**,
-**Guard High**, **Guard Low**, **Jump** or **CPU**. Guard dummies block without
-retreating. Jump repeats after landing. CPU uses the ordinary opponent AI and
-the Easy/Normal/Hard difficulty shown on its PAUSED card. Set it at home
-or change it with the L/R shoulders while CPU is selected on that card. P2 gameplay
-buttons do not control the Training opponent. Health recovers and the clock
-stays at 99. A live **P1 Select** reset keeps both chosen fighters and the
-chosen behavior; starting a new Training match returns the behavior to Stand.
+**P2 defaults:** I/J/K/L move up/left/down/right; numpad 7/8 punch, numpad 1/2
+kick, Space is Start, Q is Select and numpad 9/3 are L/R. Enable Num Lock.
+The P2 super is fresh neutral numpad 7+1. Shoulders do not attack.
+Opposite directions cancel. Menu priority is Start, then B, then A.
 
 ## Fighting
 
-- Hold **away from the opponent** to block. Hold Down as well to crouch guard
-  low attacks. A jump-in attack can beat crouch guard.
-- Press **Down + X** for a rising uppercut; **Down + A** performs a sweep.
-- Press **toward + X** at close range to throw through a guard. A throw applies
-  damage when the defender reaches the floor. Simultaneous throws tech.
-- Perform a special with **Down -> Down + toward -> toward + Y/X**. Each
-  progressing step refreshes a twelve-live-tick window. **Down + Y** is the
-  quick shortcut. Press punch with the final toward direction; holding away
-  cancels the motion. A special costs 32 energy; energy regenerates slowly and
-  successful hits add more.
-- A confirmed light normal can cancel into a stronger normal. A confirmed
-  light punch or kick, or strong kick, can cancel into a special during its window.
-- For a close cross-up, jump across the opponent and press **A** (strong kick;
-  P1 keyboard **X**) as you pass them. Its short rear reach rewards close timing.
-  The other air normals keep their forward reach. Use Training to practice both
-  directions; switch the defender's away direction after a crossing.
-- Punches and kicks work in the air. Crouching kicks are low attacks. Keep an
-  eye on the gold health bar and teal energy bar. Health turns red at one
-  quarter or less; diamond medals record round wins.
+- **Y** is the quick close jab. **X** is the heavy punch with committed
+  recovery. **B** reaches farther for spacing; Down+B attacks low. **A** is
+  the longest normal. Close blocked heavy punches/kicks leave time for a jab
+  punish. Each fighter still has individual speed, power and reach.
+- Confirm a real **Y hit into X**, or **B into A**. A confirmed light normal
+  or strong kick can cancel into a special during its window. A whiff or block
+  does not enable a cancel; repeating Y is not an automatic continuous combo.
+- For a motion special, press punch with the final toward direction. Each
+  progressing step has twelve live ticks; holding away cancels the motion.
+  Down+Y is the shortcut. Energy regenerates slowly and real hits add energy.
+- For a **super**, release Y and B and all directions, then press both together
+  with full meter while grounded and free to act. Wait for your existing
+  projectile to finish. Adding a button to a held one or holding the chord
+  until meter fills will not activate it. Supers have vulnerable startup and
+  punishable recovery; some multi-hit sequences have gaps.
+- Hold away to guard, or Down+away against low attacks. Jump-ins can beat low
+  guard. Jump past the opponent and press **A** just after crossing for the
+  short rear air-kick cross-up; switch guard direction after a crossing.
+- Toward+X throws at close range, including through guard; damage lands when
+  the defender reaches the floor. Simultaneous throws tech. During the final
+  get-up phase, a fresh attack or jump can buffer; enter special motions after
+  recovery.
 
-During the final part of getting up, a fresh attack or jump press can be
-buffered. A quarter-circle motion must be entered after recovery; directions
-entered while getting up do not carry over into a later punch.
+Gold health turns red at one quarter or less; the thin teal bar is energy and
+diamond medals count round wins. Win two rounds to take a match. At timeout,
+more health wins; a tie restarts without awarding a round. Light hits use small
+amber sparks, heavy hits larger gold bursts, and blocks hollow cyan braces.
 
-Win two rounds to take the match. At timeout, the fighter with more health
-wins; a tie restarts the round without awarding a round win.
+## Modes and pause
 
-## Human review note
+**Arcade Shift:** defeat all eleven other fighters. Each matchup opens with a
+short two-speaker exchange: wait about six seconds or press **P1 A** (keyboard
+X) to skip into the countdown. Start pauses first. Continue retries the same
+opponent after a loss. Individual winner quotes and a personal trophy ending
+follow your victories; the original Champion music remains.
 
-Use the build's exact SHA when recording feedback. Check all twelve faces and
-both facing directions, idle/walk/attack proportions, guard/throw/special
-response, all three arenas, both controller ports, keyboard rollover and the
-music/effects mix. Record a repeatable example for any issue. A review result
-does not by itself grant likeness consent or public-release approval.
+**Local Versus:** choose both fighters and an arena for a best-of-three match.
+Both physical ports share the four-button layout, specials and super command.
+
+**Training:** choose PLAYER 1, any DUMMY (including a mirror), then an arena.
+Either pad can choose the dummy; B backs up to PLAYER 1. Health recovers and
+the clock stays at 99. Physical P2 gameplay buttons do not drive the opponent.
+Home L/R selects Easy/Normal/Hard. CPU personalities differ in spacing,
+pressure, guarding, throws and recovery answers. Normal/Hard can attempt
+fallible supers after defense; Easy does not choose supers.
+
+**Start** pauses or resumes from either pad. Without Start, **B** returns to
+the roster, **A** resumes and **Select** cycles pages. Start wins even with
+Select held. From PAUSED, Training's Select cycle is Controls **1/3**, Move
+List **2/3**, Training Tools **3/3**, then PAUSED. Versus and Arcade have the
+first two guide pages. Left/Right cycles within the guide pages. Move List
+names both fighters' specials and supers.
+
+On Training's ordinary **PAUSED** card, Up/Down selects **Stand, Guard High,
+Guard Low, Jump or CPU**. Guards hold position and Jump repeats on landing.
+With CPU selected, either pad's L/R changes the shared difficulty once per
+press; opposing held shoulders cancel even across pads. These dummy/level
+controls stay on the ordinary card.
+
+## Training tools
+
+On **Training Tools 3/3**, **Up** shows/hides the live footer and **Down** chooses
+one of three drills:
+
+1. **Normal -> Special:** choose Stand and get close. Hit a normal, then link
+   a special while the opponent is still in the same hit-stun chain. Try Y
+   then Down+Y; a slower special may need A's longer hit stun. Both attacks
+   must hit. `SP!` alone does not complete the drill.
+2. **Block a Low Attack:** choose CPU on the ordinary card, then hold
+   Down+away against a real low attack. A high block does not count; taking
+   damage shows Retry. Select restores space for another attempt.
+3. **Air Kick Cross-up:** choose Stand, jump past and press A just after
+   crossing. The kick must hit from behind; a front hit or block does not count.
+
+The footer shows five P1 commands, oldest first, as **direction + YXBA**.
+Directions use absolute numpad notation: 1/2/3 down, 4/5/6 level, 7/8/9 up.
+`6Y---` means Right+Y; `-` marks an unpressed button. Neutral releases leave
+useful motion steps visible. History keeps recording while hidden.
+
+`NOW` gives the current combo's hits (`H`) and real HP damage (`D`); `LAST`
+retains it after the chain ends. `SP!` means an accepted ordinary special
+executed and paid energy, even if it missed. It does not identify a super.
+Drills show `READY`, `LINK!`, `DONE!` or `RETRY`. The footer can catch up after
+a busy exchange.
+
+**Live P1 Select** resets the round, history, combo totals and drill progress,
+keeping both fighters, dummy, difficulty, selected drill and display setting.
+A new Training match returns to Stand, a visible footer and the first drill.
+
+## What to try in the combined game
+
+- With Damian and Reston, walk, jump, throw and win a round. Watch planted
+  steps, landing/get-up transitions, individual opening gestures and winner poses.
+- In Training, compare Y/X/B/A reach and hit/block feedback, confirm Y-to-X
+  and B-to-A, and complete a drill using the history and damage display.
+- Compare CPUs at the same difficulty, then spend a full gauge on different
+  supers. Try blocking and interrupting them as well as landing them.
+- Walk together across **Las Condes, El Castillo and La Oficina**. Scenery
+  shifts subtly above the fixed floor; a round win triggers ambient cheers.
+- Play Arcade with a rival pair such as Damian/Reston. Read or skip the
+  exchange, hear Round/Fight/K O, compare light/heavy/guard sounds and listen
+  for music ducking and the victory cadence. Finish a ladder for its ending.
+
+All twelve original illustrated fighters, approved Damian likeness, portraits
+and costumes are retained. Record the title version, exact cartridge hash and
+a repeatable example with feedback. No v0.22.0 human approval is recorded;
+gameplay/balance, full listening, physical controllers, likeness/consent and
+public-use reviews remain open. `public_release_certified` is false, and
+original-console/flash-cartridge support remains unverified.

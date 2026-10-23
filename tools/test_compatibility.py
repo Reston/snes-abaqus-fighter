@@ -344,7 +344,8 @@ def camera_aligned_patch_match(before: Image.Image | None,
     before_rgb = before.convert("RGB")
     after_rgb = after.convert("RGB")
     x_scale = before_rgb.width / 256.0
-    for shift in (-4, -2, 0, 2, 4):
+    # Directional impacts include one-pixel steps; the full delta stays <=4.
+    for shift in range(-4, 5):
         matched = True
         for left, top, right, bottom in rects:
             bx0 = int(round(left * x_scale))
@@ -993,40 +994,77 @@ def verify_round_end_freeze(core: Probe, trace_map: dict[str, int],
     # Repeated real Y-button attacks are sufficient to reach a round end with
     # the local-versus fixture.  No WRAM or save-state shortcut is permitted.
     attempts = 0
-    while attempts < 80 and not core.state()["round_end"]:
-        close_players(core)
-        core.run(3, p1=["y"])
-        core.run(20)
+    ko_deltas: list[int] = []
+
+    def step(p1=(), p2=()) -> dict[str, int]:
+        before = core.state()["frame"]
+        core.run(1, p1=p1, p2=p2)
+        sample = traced_state(core, trace_map)
+        delta = (sample["frame"] - before) & 0xFFFF
+        ko_deltas.append(delta)
+        require(delta == 1, f"KO/reaction cadence must remain unit-only: {sample}, delta={delta}")
+        require(sample["ppu_stat"] & 0xC0 == 0,
+                f"KO/reaction exceeded native OBJ fetch budget: {sample}")
+        return sample
+
+    current = traced_state(core, trace_map)
+    while attempts < 80 and not current["round_end"]:
+        for _ in range(180):
+            if abs(current["x1"] - current["x2"]) < 28 * 16 or current["round_end"]:
+                break
+            toward = "right" if current["x1"] < current["x2"] else "left"
+            current = step([toward], ["left" if toward == "right" else "right"])
+        require(current["round_end"] or abs(current["x1"] - current["x2"]) < 28 * 16,
+                f"controllers could not close fighters before KO: {current}")
+        for offset in range(23):
+            if current["round_end"]:
+                break
+            current = step(["y"] if offset < 3 else [])
         attempts += 1
     current = traced_state(core, trace_map)
-    require(current["round_end"] != 0,
+    require(current["round_end"] == 180 and current["hp2"] == 0 and
+            current["hp1"] > 0 and current["wins1"] == 1,
             f"controls-only round-end fixture did not reach a KO: {current}")
+    ko = dict(current)
+    # Feature 08 is deferred: the original ambient phase, pending slot and
+    # actual PPU patch must freeze for the entire round end, including a KO.
+    reaction = []
+    phases = {current["ambient_phase"]}
+    images = {patch_digest(core.frame_image, rects)}
+    frozen = {key: current[key] for key in
+              ("ambient_clock", "ambient_phase", "ambient_pending_phase", "ambient_phase_age")}
+    # Intro/victory gestures and winner lettering can cover an ambient cell.
+    # Prove the ambient trace frozen from the first KO sample, then compare
+    # actual PPU patches after those foreground sequences have settled.
+    while current["round_end"] > 20:
+        current = step()
+        require(all(current[key] == value for key, value in frozen.items()),
+                f"ambient state changed during round end: {current}")
     before_frame = core.frame_image.copy() if core.frame_image is not None else None
     before = {
-        "round_end": current["round_end"],
-        "clock": current["ambient_clock"],
-        "phase": current["ambient_phase"],
-        "pending": current["ambient_pending_phase"],
-        "age": current["ambient_phase_age"],
-        "ppu_patch_sha256": patch_digest(before_frame, rects),
+        "round_end": current["round_end"], "clock": current["ambient_clock"],
+        "phase": current["ambient_phase"], "pending": current["ambient_pending_phase"],
+        "age": current["ambient_phase_age"], "ppu_patch_sha256": patch_digest(before_frame, rects),
     }
     frozen_frames = 0
     alignments: list[int] = []
     for _ in range(8):
-        core.run(1)
-        after = traced_state(core, trace_map)
+        after = step()
         require(after["ambient_clock"] == before["clock"] and
                 after["ambient_phase"] == before["phase"] and
                 after["ambient_pending_phase"] == before["pending"] and
                 after["ambient_phase_age"] == before["age"],
-                f"ambient trace advanced during round end: {after}")
+                f"ambient trace advanced during deferred-stage round end: {after}")
         after_frame = core.frame_image.copy() if core.frame_image is not None else None
         alignment = camera_aligned_patch_match(before_frame, after_frame, rects)
         require(alignment is not None,
-                "actual PPU ambient patch changed during round end after camera normalization")
+                "actual PPU ambient patch changed during round end")
         alignments.append(alignment)
         frozen_frames += 1
-    return {"attempts": attempts, "frozen_frames": frozen_frames, "before": before,
+    return {"attempts": attempts, "ko": ko, "frozen_frames": frozen_frames, "before": before,
+            "cadence": {"frames": len(ko_deltas), "deltas": sorted(set(ko_deltas))},
+            "victory_reaction": {"samples": reaction, "phases": sorted(phases),
+                                 "distinct_ppu_patches": len(images)},
             "camera_alignments_native_px": alignments}
 
 

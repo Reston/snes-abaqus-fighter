@@ -128,7 +128,10 @@ SOURCE_INPUT_EXACT = {
     "tools/stage_cartoon.py",
     "tools/effect_assets.py",
     "tools/victory_music.py",
+    "tools/audio_assets.py",
+    "tools/synthesize_announcements.ps1",
     "tools/preservation.py",
+    "tools/expansion_contracts.py",
 }
 SOURCE_INPUT_PREFIXES = ("src/", "assets/", "dist/")
 

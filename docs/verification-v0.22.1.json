@@ -1,0 +1,65 @@
+{
+  "status": "passed",
+  "version": "0.22.1",
+  "rom_sha256": "52725899fa86b4ee3d3f3f022dae374c1ab4ff8777bdab4a7134640c34dc8727",
+  "checksum": "8300",
+  "native_six_suite_checks": 36253,
+  "evidence": {
+    "test-report.json": {
+      "path": "docs/test-report.json",
+      "sha256": "f400084ec66ae07e0bc13e8be801801614db801a0c742b0a913a8395b0ce1c00",
+      "checks": 2594
+    },
+    "character-test-report.json": {
+      "path": "docs/character-test-report.json",
+      "sha256": "8026bcdd19aadaa09b4dc4bf806e522a983b38a9d1650e11871ce734024708b1",
+      "checks": 17142
+    },
+    "presentation-test-report.json": {
+      "path": "docs/presentation-test-report.json",
+      "sha256": "15022a95d01966eff62f1dd9fdc010a92e269fffa814c2aa1e2d64b4628d97b7",
+      "checks": 3762
+    },
+    "input-test-report.json": {
+      "path": "docs/input-test-report.json",
+      "sha256": "562160dd181a48b76feb4ce6808b10730b03729e79f7362eed530597d40e2bfc",
+      "checks": 1422
+    },
+    "stage-test-report.json": {
+      "path": "docs/stage-test-report.json",
+      "sha256": "48a5f67a50e0d81a6fac13f7ed07b812ac361b1448f34a89a97b69209b204946",
+      "checks": 8144
+    },
+    "training-test-report.json": {
+      "path": "docs/training-test-report.json",
+      "sha256": "b4bcfb96822047be839781d006c45fc5f9b3007758109bfeba05914fdd282542",
+      "checks": 3189
+    },
+    "compatibility-test-report.json": {
+      "path": "docs/compatibility-test-report.json",
+      "sha256": "68fc2294d23ef9b90694ec1d109868d820d8388ce52b41ba27734e50cf103382",
+      "checks": null
+    }
+  },
+  "approved_features": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10
+  ],
+  "deferred_features": [
+    8
+  ],
+  "stage08_branch": "t3/stage-parallax-ambient-reactions",
+  "stage08_runtime": false,
+  "stage08_ambient": "exact v0.21.0 bytes",
+  "human_scope": "User authorized merge of nine features and rejected current parallax; walking and local-VS followups requested.",
+  "prior_focused_evidence": "Historical v0.22.0 d4fddaf6 reports; not claimed regenerated for 0.22.1",
+  "public_release_certified": false,
+  "full_offline_release_evidence_regenerated": false
+}

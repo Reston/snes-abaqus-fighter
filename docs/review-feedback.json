@@ -175,5 +175,33 @@
         "scope": "Positive overall feedback following the four-button combat, grounded shadows and HUD revision. Detailed controls and gameplay/balance review were not separately reported."
       }
     }
+  ],
+  "reviews": [
+    {
+      "recorded_at_utc": "2026-10-23T20:26:58.730758+00:00",
+      "context_version": "0.22.0",
+      "observed_rom_sha256": "d4fddaf609a0c29f45353a8d9e22fe1131fc3380838d9c0073d3255474cdf8af",
+      "source": "Direct user instruction",
+      "response": "let's merge and clean all except 08 which needs more polish, it looks bad the parallax background. also let's add a new feature which is improving the walking of all character that it doesn't look like they are walking, a second feature would be to allow multiplayer 1v1 locally (if we don't support it yet)",
+      "decision": {
+        "merge_authorized_features": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          9,
+          10
+        ],
+        "feature_08": "deferred; retain branch and worktree; restore original static camera and ambient",
+        "requested_followups": [
+          "improve walking for all twelve fighters",
+          "verify existing Local Versus and improve discoverability"
+        ],
+        "public_release_approval": null
+      }
+    }
   ]
 }
