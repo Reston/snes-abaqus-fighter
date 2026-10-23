@@ -1069,6 +1069,7 @@ u8 poseFor(u8 p) {
     if(f->guard)return 9;
     return 0;
 }
+#include "fighter_personality.h"
 void animateFighter(u8 p) {
     Fighter *f=&fighters[p];
     const CharacterProfile *c=combatProfiles[p];
@@ -1110,7 +1111,7 @@ void animateFighter(u8 p) {
         else f->animFrame=f->animTick<3?40:9;
     }
     else if(state==7)f->animFrame=f->animTick<6?10:41;
-    else if(state==8)f->animFrame=(f->animTick%40)<10?46:11;
+    else if(state==8)f->animFrame=personalityVictoryFrame(f->id);
     else if(state==9) {
         if(f->downState==DOWN_FLOOR)f->animFrame=59;
         else f->animFrame=f->animTick<12?47:59;
@@ -1143,7 +1144,8 @@ void animateFighter(u8 p) {
 void drawFighter(u8 p) {
     Fighter *f=&fighters[p];
     f->pose=poseFor(p);
-    if(animationAdvance)animateFighter(p);
+    if(intro)f->animFrame=personalityIntroFrame(f->id);
+    else if(animationAdvance)animateFighter(p);
     /* Signed geometry and the unchanged-position cache are native hot paths.
      * Pose selection and the independent VRAM queue retain their contracts. */
     refreshFighterOam(p);
@@ -1155,7 +1157,7 @@ void drawFight(void) {
         if(animationAdvance)fxLife--;
         phase=(10-fxLife)>>1;if(phase>3)phase=3;
         oamSet(OAM_EFFECT_BASE,fxX-8,fxY-8,3,fightClock&1,0,fxType?(fxLife>4?416:418):384+(phase<<1),2);oamSetEx(OAM_EFFECT_BASE,1,OBJ_SHOW);
-    } else oamSetVisible(OAM_EFFECT_BASE,OBJ_HIDE);
+    } else if(!personalityAccent())oamSetVisible(OAM_EFFECT_BASE,OBJ_HIDE);
     for(p=0;p<2;p++) {
         if(waves[p].active){oamSet(OAM_WAVE_BASE+p*4,(waves[p].x>>4)-8,waves[p].y,2,waves[p].face?0:1,0,(waves[p].low?420:392)+(fightClock%3)*2,2);oamSetEx(OAM_WAVE_BASE+p*4,1,OBJ_SHOW);}
         else oamSetVisible(OAM_WAVE_BASE+p*4,OBJ_HIDE);
