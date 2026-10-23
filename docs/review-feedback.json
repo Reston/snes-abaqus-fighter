@@ -133,6 +133,39 @@
         "team_or_subject_consent": null,
         "public_distribution_approval": null
       }
+    },
+    {
+      "recorded_at_utc": "2026-10-23T01:14:11.768524+00:00",
+      "context_version": "0.20.0",
+      "source": "User feedback while testing the current game; screenshot supplied",
+      "observed_rom_sha256": null,
+      "feedback": [
+        {
+          "response": "let's change it to only 4 buttons attack as it was a snes controller.",
+          "finding": "Use the four face buttons for attacks",
+          "status": "implemented_pending_user_review"
+        },
+        {
+          "response": "then let's polish the shadow it like flying that doesn't look nice",
+          "finding": "Ground contact shadow appears detached from the feet",
+          "status": "implemented_pending_user_review"
+        },
+        {
+          "response": "then improve the style and polish of the top bar with the heal and lives.",
+          "finding": "Improve the health and round-win display",
+          "status": "implemented_pending_user_review"
+        }
+      ],
+      "reference": {
+        "path": "docs/screenshots/four-button-hud/user-before.png",
+        "sha256": "80cd16c3520156ee947ccadd04e38ce16b2a8e4e541ed28395013406ed1007b6"
+      },
+      "human_approval_of_replacement": null,
+      "replacement_candidate": {
+        "version": "0.21.0",
+        "rom_sha256": "aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205",
+        "note": "docs/FOUR-BUTTON-HUD.md"
+      }
     }
   ]
 }

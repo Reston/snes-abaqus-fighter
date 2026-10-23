@@ -1,0 +1,187 @@
+{
+  "schema": 1,
+  "status": "passed",
+  "scope": "native four-button controls and shadow/HUD candidate; no full release certification",
+  "version": "0.21.0",
+  "rom_sha256": "aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205",
+  "checksum": "BEB8",
+  "source_freeze": {
+    "commit": "72dd25e9b71c1db6973540eef2eddd380b8039ed",
+    "tree": "5a645d49b100b82260fe7b0f7ffc78c2b8d32ac0"
+  },
+  "native_test_command": "Test.cmd",
+  "native_test_exit_code": 0,
+  "native_suites": {
+    "test": {
+      "path": "docs/test-report.json",
+      "sha256": "5e70e39bcca80298ea75545a8fe9970a3ae06ef7f15916c5f868d7a417de3839",
+      "status": "passed",
+      "checks": 2594
+    },
+    "character-test": {
+      "path": "docs/character-test-report.json",
+      "sha256": "fbb4b514b5625e4e0dd29017aa6553d9639bad360de7dc8c7400ea651f1b6728",
+      "status": "passed",
+      "checks": 15182
+    },
+    "presentation-test": {
+      "path": "docs/presentation-test-report.json",
+      "sha256": "ed7c66ec7a9c4acc100e8996846386e0f663551fdad9a334960271d0f0565a33",
+      "status": "passed",
+      "checks": 3760
+    },
+    "input-test": {
+      "path": "docs/input-test-report.json",
+      "sha256": "eb9507413edcd57e561589f984b21c478724060483724564bc54c9ede699c5d4",
+      "status": "passed",
+      "checks": 1376
+    },
+    "stage-test": {
+      "path": "docs/stage-test-report.json",
+      "sha256": "3f95bfe253bff4a2f46a3a849166dc9c0b0dd9fa585c6ea1a65b590d8e6221db",
+      "status": "passed",
+      "checks": 8163
+    },
+    "training-test": {
+      "path": "docs/training-test-report.json",
+      "sha256": "19f2cece5670c6caf155dea126e9e6eb94d6d1a84fa2d0b1947dd9636fa5f60a",
+      "status": "passed",
+      "checks": 2007
+    }
+  },
+  "public_release_certified": false,
+  "human_review_of_current_revision": null,
+  "full_release_evidence_regenerated": false,
+  "offline_package_created": false,
+  "native_checks": 33082,
+  "independent_compatibility": {
+    "path": "docs/compatibility-test-report.json",
+    "sha256": "36a402339a8c19817756ff22b5c7cac8be779bde27e5fe15dd63f3f7a954e03f",
+    "status": "passed"
+  },
+  "focused_controls_shadow_hud": {
+    "path": "docs/four-button-hud-report.json",
+    "sha256": "92ad1f101b1a4c7ffbe21c2f39e5dfe999bee3432c2db0c2328a77d169606028",
+    "status": "passed",
+    "checks": 228
+  },
+  "preservation": {
+    "path": "docs/four-button-hud-preservation.json",
+    "sha256": "2a877c177af6f7488ff9c7e38bd2e2a5672bb344ff5410f2348d7b183922bad1",
+    "status": "passed"
+  },
+  "authoring_guards": {
+    "normal": {
+      "status": "passed",
+      "tests": 20
+    },
+    "optimized": {
+      "status": "passed",
+      "tests": 20
+    }
+  },
+  "native_captures": {
+    "earned-medal-low-health.png": {
+      "path": "docs/screenshots/four-button-hud/earned-medal-low-health.png",
+      "sha256": "a87649c82c47f78bdc5c9adf4457f752e1d05f9d5ba78ff25de3517c01950d04"
+    },
+    "stage-0-hud.png": {
+      "path": "docs/screenshots/four-button-hud/stage-0-hud.png",
+      "sha256": "3b9c78d4ddfdc12bd0b59f9798dbdd278479123270f57eae2369942242e5b7be"
+    },
+    "stage-0-jump.png": {
+      "path": "docs/screenshots/four-button-hud/stage-0-jump.png",
+      "sha256": "0b8413414ccd00d861923072c4701fdb640678b164e6cdb76e2c6783fd2ab7b2"
+    },
+    "stage-1-hud.png": {
+      "path": "docs/screenshots/four-button-hud/stage-1-hud.png",
+      "sha256": "67c3c0c3d605ca8dfeea07d4f175c855cbb85e54b3cc00f94c5afefccf6cc2be"
+    },
+    "stage-1-jump.png": {
+      "path": "docs/screenshots/four-button-hud/stage-1-jump.png",
+      "sha256": "34f4964eb19b2aecf88c8cad757d1bfb1255866af1095cef474278042e156eba"
+    },
+    "stage-2-hud.png": {
+      "path": "docs/screenshots/four-button-hud/stage-2-hud.png",
+      "sha256": "c2d3c252870f1744b40ee7815f6b25ce10957413196c45c9b2c231025f803bd3"
+    },
+    "stage-2-jump.png": {
+      "path": "docs/screenshots/four-button-hud/stage-2-jump.png",
+      "sha256": "4e020db4157dfb51da51c38214d94b093986107390c252808dfcb2619fa1f8f1"
+    }
+  },
+  "source_normalization": "LF text",
+  "source_sha256": {
+    "src/animation_banks.h": "8250cf1816ae8c0de0da6a876b76e0a0b40c10a44e35f782794ca82e283414e9",
+    "src/characters.h": "5b0717b928af979f9dba63653ee748aa2aa9c5131d3e6044c8a5e6fba202e213",
+    "src/game.c": "19e05bd97845fbdbf21e0cb7f8d2821da7405ce27c1644b62483c3229caf4a2a",
+    "src/hardware.asm": "d4b895425f597992270bd558d92e8257e4e7a569f4d249cbe16a3df2b2288a9a",
+    "src/knockdown.h": "2c58e022b021aa9e08a2df1bd96396bd1a2bd9fcf52f0027b27f876311adc445",
+    "src/menu_portraits.h": "96a006a382dfc86e1807b32ac0eaaf652cb302558aea57496a20567d10713c9c",
+    "src/pause_guide.h": "cceeaf00a587b7e85642439c210a2e0496827d2f0268a2a8962d2187987ab88e",
+    "src/trace.asm": "301ec8a99aa326583c332a901903114f5fceeb7f17bbbf768c3e90ae65c3dc88",
+    "src/version.h": "2058b7aeb8bb840a1e512f19eb0b6ad14bfba21c854ae9bb8e23ba0371a4f5a2",
+    "tools/audit_release.py": "6d1abcdb71daffcb124de5096a9e625e6880636ff00b0e4614e3718f848c33af",
+    "tools/build.py": "10184158421c8719a2852fca3716841f204458295f63081fe314b7df7b10a342",
+    "tools/champion_assets.py": "1526aa565cd9e1a01075bd5ad699b75b486e17f9b2899b9276a504bc2024ccf2",
+    "tools/check_authoring_guards.py": "41887dd7f9a962ac3bb77b6fb1223bb4a065a015b1624c04ad04ee8622cd5c1b",
+    "tools/collate_verification.py": "7b188bc7771a2f6401b699795a4690a90a53f45beeeea25c6d6adfa2858e2f82",
+    "tools/effect_assets.py": "7ce13f138d896d8fb6c40547e5f5bc85d135a719b6e365912f5f9df0e0c82168",
+    "tools/emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
+    "tools/fetch_references.py": "a630e9cb073f7a20b4ddb720a3af812d6e7790398c5dc19cd88ece7c13a65254",
+    "tools/fighter_assets.py": "aeb626eabed917c8699bed48bdab7c99ce843f2bc32c2901b170720994a72bc7",
+    "tools/longrun_host.py": "432bed2b7505131d639794ee4b1d857292df4465e7f219c39a14fa433f11cc8e",
+    "tools/make_assets.py": "a480110fbd6b9cadc3c20eb805076e8ee79429793da3e7556b7fe19820a02ecb",
+    "tools/make_champion_budget.py": "f5ffcfec6c09729f72f19815613d244794bfe4e0ad7a5d708c63a634552e24ad",
+    "tools/make_cpu_antiair_review.py": "806c08ef0095dacafcb5209ae7f543a01db12ad5e05c1f112691488ceb718fab",
+    "tools/make_crossup_practice_review.py": "b9386e97c1114ecee7730fa05dc42931f8447594b4d07d47507b0f08272506b2",
+    "tools/make_crossup_review.py": "e45c814c00a01e070d2534fdc6d293363c14abeb99a170fd8df78aa4641a3b22",
+    "tools/make_focused_listening_pack.py": "f864dd37f7c1b4f967af09b76951b2cede7058e9be1d1699b18fd16e87a94c94",
+    "tools/make_preservation_report.py": "3fe295216aa69d570896e70f3901d97842d03acaee2ff1850080f292326ee18b",
+    "tools/make_review_gallery.py": "e5bab41cd7aede547a281f894ab477f765fda0fea8ece199d47bb73b28be0b31",
+    "tools/make_roster_review.py": "d2b8b7fd211452887218ef07cd691efdb52efd2f0ddcb555a02137233010461e",
+    "tools/make_training_cpu_review.py": "60977b144de38f340dfeb4e65daf1d161ebcb3ef6f58820bfb480ff948f92a82",
+    "tools/menu_assets.py": "d02842aded9fbace35caf269b6cd956e0978bd40a0497b1f0498a439ddfca285",
+    "tools/package.py": "024ff1f51574460e611d10ae6db570ee4b1e3dc1e34b05323b4b5bea23eb216e",
+    "tools/play.ps1": "8ea47e0216dc5796bec91584866ac3781ff01386b6864fb9f6eee770ad5144ae",
+    "tools/portrait_assets.py": "f95047e2ad5e1c292809ced20ca2e9cc77dc4a0e5f3c10d43cadf8e0843107d3",
+    "tools/preservation.py": "40e13816f5a7086c18e6053789e209722316a6c2675fb9583647eed20891ae76",
+    "tools/release_evidence.py": "7eec7424aaa2ea3ae6a806126b8e87f86e3987103a777581a9a706ef9ca78d97",
+    "tools/report_training_timing.py": "1c1153a39f8c207da55db46b974e196911c9e61aed43bd62b618fcf985ca7606",
+    "tools/review_media.py": "e35af4eb143791128f8f2ceabdb72b662993238127005534018753e95b67174a",
+    "tools/run_background.py": "0906fa836fa680964846049036fd2ea1ad48a2fcb68d1235bedff86e7afdf178",
+    "tools/setup-compat.ps1": "341a502bc4dc2240cfb610129f2950177cd49a2c509b22ae18350f893902a6ea",
+    "tools/setup-mesen.ps1": "05ce08d8f2a411f64693b1dd55a485d9c35d155276748e64bef615ca293bbc3c",
+    "tools/setup.ps1": "711ea1a58631829b6b1a0b27a061619b54314ad7ebcc5f1a5e9df1656f312eef",
+    "tools/snes9x.conf": "05cbfcab868df6ed6c035bb081c667711c5727d3794135068f5475d09e8569a8",
+    "tools/stage_assets.py": "28ccd1c8f6dfff94bc0556211af788c08acffb04d41d29f1a69fbea1db8440ce",
+    "tools/stage_cartoon.py": "3cedf521885bcdb0391b65f0337eb8a5aee79fbb93b007c81b5671b008354f4f",
+    "tools/stage_sources.py": "b3c249050b7ed53408b9c6aa9c31748fae92125c3a3b055ce991bf7ef77c4008",
+    "tools/test_audio.py": "542ad545a023db85c9fe14066823cea5fa58848932d92057d55e26c76a28a73d",
+    "tools/test_authoring_guards.py": "99e5197dedb642aeca6d6f13c416588f23551bdfdb04fa2a528ea068bb98014a",
+    "tools/test_champion.py": "d2424acd2cb75a7e08c5a2832a0bf6e5dc3cdb708f6aa89293d4ac3fe2d1e4d5",
+    "tools/test_champion_audio.py": "10d2cdf896dde9530008dcfb9fff2912d5415cfbd99bd00c61d9f19b0c9dca3e",
+    "tools/test_characters.py": "2925e4e6852a7b7f2acb3b09ed595353d03fa752b907a5125edd06928f65a477",
+    "tools/test_compatibility.py": "03e57e7bba5acf78203c2fc2483d85030c68d2495690e9aece1f2974d0011d5c",
+    "tools/test_compatibility_combat.py": "c50712f19042bf69da0978ce7e4321cf6de1a33bd2269118483403beb9e4a754",
+    "tools/test_contact_budget.py": "f8acb5525d0e3d627c70894ac8c4cce3c3a5bd63421ef4139d3a0f4f5c6cc2c5",
+    "tools/test_crossup_practice.py": "087c4f0cffe9c791619afc6a7419f5fafbaa3c4fe053ab14dbee715bbc279d50",
+    "tools/test_endurance.py": "7df623199e3391433752ba23300cb850c60fb7556732b655495f4a6e48b22d64",
+    "tools/test_endurance_reporting.py": "5533ab27348e4f532b1beef81db9514d28cffaea883d48f52cebc6a2373b9fa0",
+    "tools/test_four_button_hud.py": "a5a049919b38c87f30f981b301ef3718f9dc3810835f3497db7aceecd44afbeb",
+    "tools/test_fresh_build.py": "75b6c3622d1ad96411feb8b13a9fc71e0d47fa5357fbe8c93d0c11a21c348b8b",
+    "tools/test_inputs.py": "6efe20a09fd07d09e020ba1c7f8122d7202d0114e982144f2884d7f1cbbf6236",
+    "tools/test_matchups.py": "1979c79b5ed465f798c9528267e9debce412a1f2c19ca84c13d34995db060a1c",
+    "tools/test_menu_footers.py": "f8b5e777271eda28f0eba79a1b2c5fbfef7a0e61b2946c1ffe9722ce6c6e69fc",
+    "tools/test_mesen.py": "c1d044e8dd108c1ac05ff7d5e6d5dbc5757ce42c0c45e9c31d59d6bdd887b3c0",
+    "tools/test_package.py": "1174274d5eeec4610fd98fb11bbef90b213a9f5a61a776f634a6d99fcb15d3d9",
+    "tools/test_presentation.py": "374830fa082a9d241a62287f4e973205abbb99dfd0dcf67131d1f4ddedf5ad2a",
+    "tools/test_preservation.py": "635b1201940579ede2c6edaecc0d4e72f36616918f0119676026f38dcfb52bdf",
+    "tools/test_review_media.py": "ac1827f8455fcecc11ba088af109a3bcd9fcb2083c267b574316fd662ebc0253",
+    "tools/test_rom.py": "d89d3b2fb319d041a78f07a0ba80475e0c1efcbe2fe28e3a5abde3c757691dbd",
+    "tools/test_stages.py": "d359f003ea5586fa8589428efbc09850e7ddd641cc8296063ac5977c9dfdbbba",
+    "tools/test_training.py": "3fc7f5cb5cf4eabafeec60a7ed6f46e3915e3a8d7f6f855ed8e083a14b0832d9",
+    "tools/victory_music.py": "80d53f88cb1a99b6e3b33a63d571c9b2febcfe3c27c2141644926a6a7ebe355e"
+  },
+  "report_text_normalization": "LF canonical text; native report data unchanged"
+}

@@ -1,14 +1,13 @@
 # Independent-engine compatibility
-<!-- candidate-version: 0.20.0; rom-sha256: 6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501 -->
+<!-- candidate-version: 0.21.0; rom-sha256: aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205 -->
 
-The current candidate is v0.20.0, cartridge SHA256 `6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501`.
+The current candidate is v0.21.0, cartridge SHA256 `aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205`.
 The separate pinned bsnes2014 Accuracy smoke passes on this exact ROM;
 [compatibility-test-report.json](compatibility-test-report.json) records it.
-The full independent combat report, release-scale gates and offline archive
-still belong to the historical v0.19.0 checkpoint. They have not been
-regenerated for the likeness candidate. See the
-[v0.20.0 note](RELEASE-v0.20.0.md) and the
-[previous checkpoint](RELEASE-v0.19.0.md).
+It includes all-stage effects/freeze checks and synchronized low waves with
+the revised floor-contact shadows. The full independent combat report,
+release-scale gates and offline archive still belong to the historical
+v0.19.0 checkpoint. See the [v0.21.0 note](RELEASE-v0.21.0.md).
 
 The pinned smoke check has the bounded scope `independent-engine smoke, stage
 ambient/effects freeze, synchronized low-wave, neutral600frame cadence`. It is

@@ -1,12 +1,13 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.20.0; rom-sha256: 6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501 -->
+<!-- candidate-version: 0.21.0; rom-sha256: aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205 -->
 
 ## Current version
 
-The current candidate is **v0.20.0**, with Damian's revised likeness accepted
-after the user comparison review. See [the candidate note](RELEASE-v0.20.0.md).
-The latest offline ZIP remains v0.19.0; the source cartridge includes the
-new art. Controls retain the v0.19.0 behavior. In paused Training, choose **CPU** with
+The current candidate is **v0.21.0**: four face-button attacks, floor contact
+shadows and a redesigned health/round-win HUD. Damian's approved revised
+likeness is retained. See [the candidate note](RELEASE-v0.21.0.md) and
+[four-button details](FOUR-BUTTON-HUD.md). The latest offline ZIP remains
+v0.19.0 and uses its original six-button controls. In paused Training, choose **CPU** with
 Up/Down, then use the **L/R shoulder buttons** to change its level. Both
 controllers work. The selected level appears on the card and at home.
 Start resumes; P1 Select resets the live round and retains the behavior,
@@ -53,7 +54,7 @@ Each victory advances to another opponent and location. A continue is offered
 after a loss; completing the ladder awards Office Champion.
 
 **Local Versus**: choose a fighter for each player, choose an arena and play a
-best-of-three match. Both controller ports use the same six-button layout.
+best-of-three match. Both controller ports use the same four-button layout.
 
 **Training**: choose your fighter at **PLAYER 1**, then choose any opponent at
 **DUMMY**, including the same fighter for a mirror match. The dummy cursor
@@ -88,8 +89,8 @@ name and caption in a separate text column.
 | Left / Right | Arrow keys | Move; hold away from the opponent to guard |
 | Up | Up arrow | Jump |
 | Down | Down arrow | Crouch; combine with away for low guard |
-| Y / X / L | A / S / D | Light / medium / heavy punch |
-| B / A / R | Z / X / C | Light / medium / heavy kick |
+| Y / X | A / S | Light / strong punch |
+| B / A | Z / X | Light / strong kick |
 | A | X | Confirm menus / resume pause |
 | B | Z | Back in menus / roster from pause |
 | Start | Enter | Confirm / pause |
@@ -103,10 +104,10 @@ their existing controls. The choice also appears at home and survives quick
 reset. Start/B/A/Select and dummy directions retain their usual priority.
 
 At the title, the P1 shoulder buttons **L/R** are keyboard **D/C**; use them
-to change CPU difficulty. During combat those keys are heavy punch/kick.
+to change CPU difficulty. Those shoulders do not attack during combat.
 
 Player two's included keyboard uses **I/J/K/L** for Up/Left/Down/Right,
-numpad **7/8/9** for punches, numpad **1/2/3** for kicks, **Space** for
+numpad **7/8** for punches, numpad **1/2** for kicks, **Space** for
 Start and **Q** for Select. In menus and pause, numpad **2** is A
 (confirm/resume) and numpad **1** is B (back/roster). Enable Num Lock. Assign
 controllers through Snes9x **Input Configuration**.
@@ -125,8 +126,8 @@ controller. If Start is not pressed, **B** returns to the roster; otherwise
 The pause card has three pages:
 
 - **Pause card** (`PAUSED`) shows pause status and the Training dummy mode.
-- **Controls** (`HOW TO PLAY 1/2`) lists movement, guard, six-button attacks, throw, uppercut,
-  confirmed attacks, the medium-kick cross-up and pause shortcuts.
+- **Controls** (`HOW TO PLAY 1/2`) lists movement, guard, four-button attacks, throw, uppercut,
+  confirmed attacks, the strong-kick cross-up and pause shortcuts.
 - **Specials** (`MOVE LIST 2/2`) shows the live P1/P2 names, each special and its family.
 
 **Select** cycles Pause card -> Controls -> Specials -> Pause card. **Left/Right**
@@ -146,22 +147,23 @@ chosen behavior; starting a new Training match returns the behavior to Stand.
 
 - Hold **away from the opponent** to block. Hold Down as well to crouch guard
   low attacks. A jump-in attack can beat crouch guard.
-- Press **Down + L** for a rising uppercut.
-- Press **toward + L** at close range to throw through a guard. A throw applies
+- Press **Down + X** for a rising uppercut; **Down + A** performs a sweep.
+- Press **toward + X** at close range to throw through a guard. A throw applies
   damage when the defender reaches the floor. Simultaneous throws tech.
 - Perform a special with **Down -> Down + toward -> toward + Y/X**. Each
-  progressing step refreshes a twelve-live-tick window. **Down + Y/X** is the
+  progressing step refreshes a twelve-live-tick window. **Down + Y** is the
   quick shortcut. Press punch with the final toward direction; holding away
   cancels the motion. A special costs 32 energy; energy regenerates slowly and
   successful hits add more.
-- A confirmed light or medium normal can cancel into a heavier normal. A
-  confirmed normal can cancel into a special during its cancel window.
-- For a close cross-up, jump across the opponent and press **A** (medium kick;
+- A confirmed light normal can cancel into a stronger normal. A confirmed
+  light punch or kick, or strong kick, can cancel into a special during its window.
+- For a close cross-up, jump across the opponent and press **A** (strong kick;
   P1 keyboard **X**) as you pass them. Its short rear reach rewards close timing.
   The other air normals keep their forward reach. Use Training to practice both
   directions; switch the defender's away direction after a crossing.
 - Punches and kicks work in the air. Crouching kicks are low attacks. Keep an
-  eye on the gold health bar and teal energy bar.
+  eye on the gold health bar and teal energy bar. Health turns red at one
+  quarter or less; diamond medals record round wins.
 
 During the final part of getting up, a fresh attack or jump press can be
 buffered. A quarter-circle motion must be entered after recovery; directions

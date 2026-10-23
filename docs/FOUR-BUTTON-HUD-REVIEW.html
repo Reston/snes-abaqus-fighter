@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box}body{margin:0;color:var(--foreground);font:14px var(--font-sans,system-ui)}
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 14px}
+button{font:inherit;color:var(--foreground);background:var(--secondary);border:1px solid var(--border);padding:8px 12px;border-radius:6px;cursor:pointer}
+button[aria-pressed=true]{background:var(--primary);color:var(--primary-foreground)}
+.compare,.other{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}figure{margin:0;min-width:0}
+.frame{padding:16px;background:#0b122b;border-radius:8px}.viewport{overflow:hidden;aspect-ratio:256/224}
+img{display:block;width:100%;height:auto;image-rendering:pixelated}.zoom .viewport{aspect-ratio:256/45}
+figcaption{font-size:13px;margin-top:8px}.label{font-weight:600;margin:22px 0 10px}.note{font-size:13px;line-height:1.5;color:var(--muted-foreground);margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--border)}th{color:var(--muted-foreground);font-weight:500}td:first-child{font-weight:700}
+details{font-size:13px;margin:18px 0}summary{cursor:pointer;color:var(--muted-foreground);margin-bottom:12px}[hidden]{display:none!important}
+@media(max-width:460px){.compare{grid-template-columns:1fr}.frame{padding:16px}.other{gap:10px}}
+</style></head><body>
+<div class="controls"><button id="zoom" aria-pressed="false">Zoom HUD</button><button id="medal" aria-pressed="false">Show earned win + low health</button><span>v0.21.0</span></div>
+<div class="compare">
+<figure><div class="frame"><div class="viewport"><img alt="User's previous fight: detached shadows and the old health/round display" src="screenshots/four-button-hud/user-before.png"></div></div><figcaption>Before · your screenshot</figcaption></figure>
+<figure><div class="frame"><div class="viewport"><img id="normal" alt="Updated native fight with contact shadows, gold names, framed health and diamond win marks" src="screenshots/four-button-hud/stage-1-hud.png"><img id="earned" hidden alt="Actual native round two, one earned win medal and the opponent's red low-health bar" src="screenshots/four-button-hud/earned-medal-low-health.png"></div></div><figcaption>After · captured from the SNES ROM</figcaption></figure>
+</div>
+<p class="label">Four attack buttons</p>
+<table><thead><tr><th>SNES</th><th>Keyboard</th><th>Attack</th></tr></thead><tbody>
+<tr><td>Y</td><td>A</td><td>Light punch</td></tr><tr><td>X</td><td>S</td><td>Strong punch</td></tr>
+<tr><td>B</td><td>Z</td><td>Light kick</td></tr><tr><td>A</td><td>X</td><td>Strong kick</td></tr>
+</tbody></table>
+<p class="note">SNES commands: Down+X uppercut · toward+X throw · Down+A sweep · Down+Y special. Quarter-circle + punch also casts the special. L/R change the level at home and in paused CPU Training.</p>
+<details><summary>See the HUD and floor contact on the other arenas</summary><div class="other">
+<figure><div class="frame"><img alt="Updated native HUD and contact shadows in Las Condes" src="screenshots/four-button-hud/stage-0-hud.png"></div><figcaption>Las Condes</figcaption></figure>
+<figure><div class="frame"><img alt="Updated native HUD and contact shadows in La Oficina" src="screenshots/four-button-hud/stage-2-hud.png"></div><figcaption>La Oficina</figcaption></figure>
+</div></details>
+<p class="note">The win medal and low health were earned through controller input. All twelve fighter sets and their approved art are retained.</p>
+<script>
+const z=document.querySelector('#zoom'),m=document.querySelector('#medal');
+z.onclick=()=>{const on=document.body.classList.toggle('zoom');z.setAttribute('aria-pressed',String(on));z.textContent=on?'Show full fight':'Zoom HUD'};
+m.onclick=()=>{const on=m.getAttribute('aria-pressed')!=='true';m.setAttribute('aria-pressed',String(on));document.querySelector('#normal').hidden=on;document.querySelector('#earned').hidden=!on};
+Promise.all([...document.images].map(i=>i.decode())).then(()=>console.log(JSON.stringify({images:document.images.length,loaded:[...document.images].every(i=>i.naturalWidth>0),overflow:document.documentElement.scrollWidth>innerWidth})));
+</script></body></html>

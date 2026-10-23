@@ -1,10 +1,15 @@
-# v0.20.0 human playtest guide
-<!-- candidate-version: 0.20.0; rom-sha256: 6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501 -->
+# v0.21.0 human playtest guide
+<!-- candidate-version: 0.21.0; rom-sha256: aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205 -->
 
-Review cartridge SHA256 `6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501`.
+Review cartridge SHA256 `aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205`.
 Damian's revised likeness was accepted by the user after the comparison review.
 Record new gameplay observations separately from that approval.
-Read V0.20.0 on the title's lower right. Choose CPU on Training's first
+Read V0.21.0 on the title's lower right. Test Y/X punches and B/A kicks
+on both ports; L/R must not attack. Test Down+X uppercut, toward+X throw,
+Down+A sweep, Down+Y special and the quarter-circle punch command. Review
+the floor contact at idle, walk and jump on all three arenas, and check
+gold names, low-health red bars and earned round-win medals.
+ Choose CPU on Training's first
 PAUSED card, then use each controller's L/R shoulders to cycle levels. Try
 holds, opposites across ports, quick reset and guide cycling. Check that
 Start/B/A/Select and Up/Down dummy selection retain priority; other dummies
@@ -19,7 +24,7 @@ examples. Test both ports and all three arenas.
 Also review A/Start menus, per-step motion help, Training mirror opponents,
 Lars's face/hair, winner cards, the champion score and title transitions.
 Actual earlier responses remain in [review-feedback.json](review-feedback.json);
-the Damian v5 response is also retained there. See [RELEASE-v0.20.0.md](RELEASE-v0.20.0.md)
+the Damian v5 response is also retained there. See [RELEASE-v0.21.0.md](RELEASE-v0.21.0.md)
 for candidate verification and package status.
 
 Use the cartridge identified above for new feedback. Historical notes below
@@ -45,7 +50,7 @@ keyboard mappings.
 |---|---|---|
 | 0-2 min | Boot the cartridge identified above; record its version and ROM SHA from manifest.json, read the first control hint, open fighter select and arena select, then confirm and back out once. | Is the first action clear? Are confirm, back and pause consistent? Do directional edges and Start/B/A priority produce one menu action? |
 | 2-8 min | Sweep all twelve fighters. On each card, check the face, hair, costume colors, feet baseline and apparent size. In a short match or Training reset, make each fighter idle, walk forward/back, crouch, jump and perform one normal. Put each fighter on P1 once and P2 once so both right- and left-facing renders are seen. For Reston, compare the fuller short buzz cap in the v4 portrait and all 64 native poses. | Note likeness, proportions, silhouette changes and any fighter that needs a second look. Use the capture index below for native motion references. Record Reston likeness feedback separately from the art-integration review. |
-| 8-13 min | Play the fundamentals: walk into standing guard, crouch guard a low kick or wave, take a real hit, jump forward and neutral, press light/medium/heavy normals, then repeat after the opponent blocks. | Does input feel immediate? Are pushback, hitstop, guard stun, chip and recovery readable? Any accidental attacks or missed edges? |
+| 8-13 min | Play the fundamentals: walk into standing guard, crouch guard a low kick or wave, take a real hit, jump forward and neutral, press light/strong punches and kicks, then repeat after the opponent blocks. | Does input feel immediate? Are pushback, hitstop, guard stun, chip and recovery readable? Any accidental attacks or missed edges? |
 | 13-17 min | Verify the four special families with Damian (projectile), Cristobal (rush), Negger (low shockwave) and Roxana (rising strike). Try a confirmed normal into a heavier normal and then a special. At close range, throw a guarding opponent; attempt simultaneous throws once. | Record command reliability, cancel timing, special readability, throw timing and whether blocked/unblocked results make sense. |
 | 17-21 min | Pause during a live exchange. Cycle the PAUSED card -> Controls -> Specials with Select, toggle pages with Left/Right, resume with Start/A and return to the roster with B when Start is not pressed. Confirm both live fighter names, special names and family labels appear. | Record guide clarity, page timing, stale text, Start/B/A/Select priority and whether the pause camera and HP display remain stable. |
 | 21-24 min | In Training, open the first PAUSED card and cycle Stand, Guard High, Guard Low, Jump and CPU with Up/Down. Test relative guard, repeated jumps, CPU behavior at the chosen home difficulty and ignored P2 gameplay input. Use P1 Select to reset, then start a new match. | Record dummy behavior, CPU pacing, health recovery, clock 99 and pause errors. Reset must keep the behavior and matchup; a new match must start on Stand. |

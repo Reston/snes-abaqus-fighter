@@ -1,7 +1,24 @@
 # Native SNES implementation
-<!-- candidate-version: 0.19.0; rom-sha256: 945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7 -->
+<!-- candidate-version: 0.21.0; rom-sha256: aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205 -->
 
-The current checkout builds v0.19.0, ROM SHA256 `945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7`, checksum `05A4`.
+The current checkout builds v0.21.0, ROM SHA256 `aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205`, checksum `BEB8`.
+Four face buttons choose the normal attacks; directional face-button commands
+retain uppercut, sweep, throw and specials. The CPU uses that same layout.
+The shadow's two existing OAM pieces meet at the fighter's floor pivot, Y 200,
+below the low waves' final fetch line. HUD geometry, bar formulas, existing
+palette banks and the 320-byte transfer remain; spare UI tiles provide caps
+and a bottom rule. Low HP selects the existing accent palette. All 1,276 RAM
+addresses, Fighter64/Wave16, trace offsets, 219 generated-file inventory and
+one-actor-per-vblank transfer contract are preserved. Only the three interface/
+shadow outputs change; all fighter, stage, ambient and audio assets match v0.20.
+See [FOUR-BUTTON-HUD.md](FOUR-BUTTON-HUD.md) and
+[RELEASE-v0.21.0.md](RELEASE-v0.21.0.md).
+
+The v0.19.0 mechanics and build notes below describe that historical full
+offline checkpoint; the v0.21.0 changes above supersede its six-button combat
+commands. The shoulder controls below still apply to home/paused Training.
+
+The v0.19.0 checkpoint builds v0.19.0, ROM SHA256 `945da11920112ca11fbc00acec2fc04a1d821209a7e7a920defe5a05c32005e7`, checksum `05A4`.
 Paused CPU Training accepts fresh L/R shoulder edges from either physical
 controller. Opposite held shoulders cancel across ports. Start/B/A/Select,
 guide navigation and dummy directions keep priority. The existing difficulty

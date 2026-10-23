@@ -6,7 +6,28 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
-- The active checkout is the **v0.20.0 Damian likeness candidate**. ROM SHA256
+- The active checkout is **v0.21.0 four-button combat and HUD polish**.
+  ROM SHA256 `aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205`, header `BEB8`.
+  Source freeze `72dd25e9b71c1db6973540eef2eddd380b8039ed`, tree `5a645d49b100b82260fe7b0f7ffc78c2b8d32ac0`.
+  Y/X are light/strong punch; B/A light/strong kick. Down+X uppercut,
+  toward+X close throw, Down+A sweep, Down+Y quick special and QCF+Y/X.
+  Only face buttons attack; L/R retain home/paused CPU Training level controls.
+  The CPU uses these commands too. Guide and keyboard help match the layout.
+  The shadow uses the same two 16x16 entries per actor at Y 200, meeting under
+  the feet and staying below the low waves' fetch rectangle. The five-row HUD
+  adds gold names, framed health, red low-HP feedback, thin energy, diamond
+  round-win medals and a bottom rule within the same 320-byte transfer.
+  All 219 generated files remain; 216 match v0.20.0. Only ui_tiles.bin,
+  ui_pal.bin and effects.bin change. All twelve fighter sets, portraits,
+  stages, ambient and audio are preserved, including approved Damian v5.
+  All 1,276 RAM addresses, Fighter64/Wave16, TRACE0..122, actor, guide and
+  transfer budgets remain. Six native suites pass 33,082 exact-ROM checks;
+  the matching independent smoke and 228-check focused proof pass.
+  The latest full offline archive remains v0.19.0; no v0.21 package or
+  regenerated full release-scale evidence exists. Human review of this
+  controls/presentation change remains open. See docs/RELEASE-v0.21.0.md.
+
+- The approved historical **v0.20.0 Damian likeness candidate**. ROM SHA256
   `6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501`, header `3F2A`.
   The explicit new user request supersedes Damian's historical v4 appearance
   pin. Four imagegen v5 atlases use the additional photo; the current exact

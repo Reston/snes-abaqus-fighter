@@ -1,22 +1,36 @@
 # Abaqus: After Hours
-<!-- candidate-version: 0.20.0; rom-sha256: 6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501 -->
+<!-- candidate-version: 0.21.0; rom-sha256: aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205 -->
 
-An original six-button fighting game for the **Super Nintendo**, inspired by
+An original four-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II's arcade structure and the people and places of Abaqus in
 Santiago. It runs as a native SNES cartridge in an emulator.
 
 Source, original art, native review evidence and the cartridge are retained in
 [Reston/snes-abaqus-fighter](https://github.com/Reston/snes-abaqus-fighter).
 
-The current source candidate is the **v0.20.0 Damian likeness build**, ROM SHA256
+The current source candidate is **v0.21.0**, ROM SHA256
+`aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205`, checksum `BEB8`.
+Combat uses only the four SNES face buttons: **Y/X punches, B/A kicks**.
+The contact shadows sit against the feet. The HUD has gold nameplates,
+framed health bars, red low-health feedback and diamond round-win medals.
+See the [controls and presentation note](docs/FOUR-BUTTON-HUD.md),
+[native comparison](docs/FOUR-BUTTON-HUD-REVIEW.html) and
+[candidate verification](docs/RELEASE-v0.21.0.md).
+The six native suites pass 33,082 checks and the independent smoke passes
+on this cartridge. Full release-scale evidence and a new Windows ZIP have
+not been regenerated for it.
+
+## Approved likeness checkpoint
+
+The approved **v0.20.0 Damian likeness build**, ROM SHA256
 `6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501`,
 checksum `3F2A`. The additional user photo guides a longer nose, darker brows,
 narrower mouth and short stubble across all 64 frames and both portraits.
 See the [comparison](docs/DAMIAN-REVIEW-v5.html),
 [art and prompts](docs/DAMIAN-LIKENESS-v5.md), or open the
 [review cartridge](dist/abaqus-after-hours.sfc) in the existing emulator.
-All six native suites pass 35,715 checks and the independent compatibility
-smoke passes on this exact ROM. The user approved the revised likeness after
+At that checkpoint, all six native suites pass 35,715 checks and the independent
+compatibility smoke passes on that exact ROM. The user approved the revised likeness after
 reviewing the photo/previous/revised comparison on 2026-10-22. Extended
 release gates and a new Windows ZIP have not been regenerated for this build.
 The [v0.20.0 note](docs/RELEASE-v0.20.0.md) records this scope.
@@ -58,12 +72,13 @@ flash-cartridge support remain unverified.
 | Action | Included P1 keyboard |
 | --- | --- |
 | Move / jump / crouch | Arrow keys |
-| Light / medium / heavy punch | A / S / D |
-| Light / medium / heavy kick | Z / X / C |
+| Light / strong punch | A / S |
+| Light / strong kick | Z / X |
 | Confirm / back | X or Enter / Z |
 | Pause / pause guide | Enter / Shift while paused |
 | Special | Down, toward, then A or S |
-| Rising uppercut / close throw | Down + D / toward + D |
+| Rising uppercut / close throw | Down + S / toward + S |
+| Sweep / quick special | Down + X / Down + A |
 
 The [player guide](docs/PLAYER-GUIDE.md) covers both players, controllers,
 blocking, cancels, specials, pause pages and Training dummies. Snes9x supports
@@ -78,7 +93,7 @@ explain different jump setups and record the supplemental 72-case controller pro
 - Twelve individual illustrated coworkers, each with 64 native animation frames.
 - Las Condes, El Castillo and La Oficina, with original cartoon art and ambient motion.
 - Arcade Shift against all eleven coworkers, two-player Local Versus and Training.
-- Six normal attacks, air attacks, high/low guard, throws, throw tech, uppercuts and confirmed cancels.
+- Four face-button attacks, air attacks, high/low guard, throws, throw tech, uppercuts and confirmed cancels.
 - Twelve specials across projectile, rush, low-wave and rising-strike families.
 - Pause Controls/Specials pages, arbitrary Training opponents, five dummy behaviors, including CPU and a live round reset.
 - An earned Office Champion trophy scene after all eleven Arcade victories.

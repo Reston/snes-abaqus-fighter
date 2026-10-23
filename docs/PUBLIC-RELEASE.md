@@ -1,12 +1,13 @@
 # Public-release quality target
-<!-- candidate-version: 0.20.0; rom-sha256: 6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501 -->
+<!-- candidate-version: 0.21.0; rom-sha256: aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205 -->
 
-The current v0.20.0 candidate is cartridge SHA256 `6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501`.
-Its [release note](RELEASE-v0.20.0.md) records the focused verification scope.
-All six native suites pass 35,715 checks and the matching pinned smoke passes.
-The user accepted Damian v5 likeness after the comparison review. Full
-matrix/replays, independent combat, endurance, fresh-export evidence and an
-offline package remain at the historical v0.19.0 checkpoint. Human
+The current v0.21.0 candidate is cartridge SHA256 `aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205`.
+Its [release note](RELEASE-v0.21.0.md) records the focused verification scope.
+All six native suites pass 33,082 checks and the matching pinned smoke passes.
+The user accepted Damian v5 likeness in v0.20.0; its art is preserved here.
+Human review of the four-button controls, contact shadows and new HUD is open.
+Full matrix/replays, independent combat, endurance, fresh-export evidence and
+an offline package remain at the historical v0.19.0 checkpoint. Human
 gameplay/balance, full listening, physical controllers, remaining roster
 likenesses, team/subject consent and public-use approval remain open.
 `public_release_certified` is false.
