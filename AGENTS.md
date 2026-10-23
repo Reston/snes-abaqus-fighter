@@ -24,8 +24,9 @@ Preserve the native emulator requirement when extending the project.
   transfer budgets remain. Six native suites pass 33,082 exact-ROM checks;
   the matching independent smoke and 228-check focused proof pass.
   The latest full offline archive remains v0.19.0; no v0.21 package or
-  regenerated full release-scale evidence exists. Human review of this
-  controls/presentation change remains open. See docs/RELEASE-v0.21.0.md.
+  regenerated full release-scale evidence exists. The user responded "much
+  better" to this revision; detailed controls/gameplay review remains open.
+  See docs/RELEASE-v0.21.0.md.
 
 - The approved historical **v0.20.0 Damian likeness candidate**. ROM SHA256
   `6b3544fa09e37a3f70c4eaecf5565718abc467962610ec1ce0437fc023d9f501`, header `3F2A`.

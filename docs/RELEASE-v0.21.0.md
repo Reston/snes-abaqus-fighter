@@ -39,10 +39,10 @@ assets, 216 retain their v0.20.0 bytes. Only ui_tiles.bin, ui_pal.bin and
 effects.bin change. All twelve fighter records and palettes, portraits,
 stages, ambient and audio are preserved; Damian's approved v5 art remains.
 
-The [feedback record](review-feedback.json) retains the user's requests;
-human approval of these controls, shadows and HUD remains open. Other human
-gameplay/balance, full listening, physical-controller, roster consent and
-public-use gates remain open. `public_release_certified` remains false.
+The [feedback record](review-feedback.json) retains the user's requests and
+positive response, "much better", after this revision. Detailed controls and
+gameplay/balance review, full listening, physical-controller, roster consent
+and public-use gates remain open. `public_release_certified` remains false.
 
 No new offline ZIP was made. Full matrix/replays, independent combat,
 live-hour, audio and fresh-export evidence remains historical. The

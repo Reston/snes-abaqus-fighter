@@ -66,7 +66,9 @@ The six native suites and independent smoke record their exact cartridge
 hashes. The [candidate note](RELEASE-v0.21.0.md) and
 [verification record](four-button-hud-verification.json) summarize the final
 results. Automated work is headless and captures audio without playback.
-Human review of the new controls and presentation remains open.
+The user responded "much better" after this revision; the exact response is
+retained in the [feedback record](review-feedback.json). Detailed controls and
+gameplay/balance review remain open.
 
 The four-choice CPU changes some deterministic fight phases. Updated test
 fixtures keep their actual-contact, wake, native-cadence and KO requirements:
