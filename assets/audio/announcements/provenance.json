@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "feature": 10,
+  "purpose": "Original short game announcements, not sampled from a commercial game",
+  "authored_text": {
+    "round": "Round!",
+    "fight": "Fight!",
+    "ko": "K O!"
+  },
+  "synthesis": {
+    "engine": "Windows System.Speech.Synthesis.SpeechSynthesizer (SAPI)",
+    "voice": "Microsoft Zira Desktop",
+    "culture": "en-US",
+    "rate": 3,
+    "volume": 100,
+    "export": "16000 Hz, mono, signed 16-bit PCM WAV",
+    "script": "tools/synthesize_announcements.ps1",
+    "audio_device_opened": false,
+    "paid_service_or_api": false,
+    "human_voice_recording": false,
+    "windows_version": "10.0.26300"
+  },
+  "encoding": {
+    "script": "tools/audio_assets.py",
+    "native_rate_hz": 8000,
+    "resample": "33-tap Hamming-windowed sinc low-pass, cutoff 0.215 cycles/source-sample; 2:1 decimation",
+    "trim": "outer samples below 140 signed16, retain 10 ms lead and 20 ms tail",
+    "normalization_peak": 16000,
+    "outer_taper_samples": 24,
+    "intermediate": "signed 8-bit IT samples",
+    "native_codec": "PVSnesLib 4.6.0 SMConv BRR, gaussian native DSP interpolation",
+    "streaming_bytes": 0
+  },
+  "rights_and_provenance": {
+    "utterance_text": "Project-authored public-domain single-word/letter prompts",
+    "procedural_cues": "Original project-authored synthesis code; project license applies",
+    "system_voice": "Microsoft Windows Zira system voice; no engine, phoneme database, or voice-model files redistributed",
+    "retained_files": "Only newly exported project utterance PCM output is retained; no third-party game samples or commercial soundtrack",
+    "review": "Human listening and project public-use/consent gates remain separate; this is technical provenance, not a legal certification"
+  },
+  "sources": {
+    "fight.wav": {
+      "sha256": "e0db55e0e277183f1de1b1225e14c019e141631379a6547e9b16651c83f8ca26",
+      "bytes": 29966
+    },
+    "ko.wav": {
+      "sha256": "bad3d04173f492e3ea9dabd5f93a87dd71bc227e4092efb8f227ac4b2019bf0d",
+      "bytes": 29166
+    },
+    "round.wav": {
+      "sha256": "c3eb4a981020225ab262ee271e4edc9f8ff298478567dbdb519fa18def518414",
+      "bytes": 29966
+    }
+  }
+}
