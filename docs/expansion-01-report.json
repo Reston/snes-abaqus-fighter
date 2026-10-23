@@ -1,0 +1,7072 @@
+{
+  "schema": "abaqus-expansion-01-animation-weight/v1",
+  "status": "passed",
+  "rom_sha256": "07f3f6d589f905c58b2e72b499245e5538d365790319990a7fbb18193c4e5d68",
+  "symbol_sha256": "ea390ddb5068fa6de5141257bf8fcfe33163d6b7f1f806ab614dab21c1115c34",
+  "core_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
+  "harness_sha256": "6604169a8d212e945b3f30e506b4e5e9eb7e002799920835c9ddd1a53be12628",
+  "elapsed_seconds": 25.875,
+  "source_sha256": {
+    "src/game.c": "4c28c1a9b9dc9a597bf0988dd693f271ca40969e1b87954b037d8b66ce6d3135",
+    "src/animation_weight.h": "15e25ba27970f84eac9cd2bde4da487ced8a0a16751c4e0ab4be71d7433823a1"
+  },
+  "controller_only": true,
+  "memory_writes": false,
+  "save_states": false,
+  "gui": false,
+  "audio_playback": false,
+  "base_comparison": true,
+  "fighters": [
+    {
+      "fighter": 0,
+      "callbacks": 1840,
+      "non_animation_sha256": "2b24a1309312b66bd4a0990739398d227b35fc4bb06b8304ff36161f08893d41",
+      "requested_and_uploaded_frames": [
+        [
+          3,
+          5,
+          6,
+          7,
+          8,
+          12,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          42,
+          43,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          61,
+          62,
+          63
+        ],
+        [
+          3,
+          5,
+          6,
+          7,
+          12,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          42,
+          43,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ]
+      ],
+      "actor_page_changes_per_callback": {
+        "0": 1471,
+        "1": 369
+      },
+      "cadence_failures": [],
+      "sdk_lag_increments": 0,
+      "native_timing_failures": [],
+      "obj_overflow_failures": [],
+      "geometry_failures": [],
+      "payload_failures": []
+    },
+    {
+      "fighter": 1,
+      "callbacks": 1249,
+      "non_animation_sha256": "4fbb8c20273f2b27b52c3119c949eff95915fe069347f63b5c22d02436455ab6",
+      "requested_and_uploaded_frames": [
+        [
+          3,
+          5,
+          6,
+          7,
+          8,
+          12,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          42,
+          43,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          61,
+          62,
+          63
+        ],
+        [
+          3,
+          5,
+          6,
+          7,
+          12,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          42,
+          43,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ]
+      ],
+      "actor_page_changes_per_callback": {
+        "0": 998,
+        "1": 251
+      },
+      "cadence_failures": [],
+      "sdk_lag_increments": 0,
+      "native_timing_failures": [],
+      "obj_overflow_failures": [],
+      "geometry_failures": [],
+      "payload_failures": []
+    },
+    {
+      "fighter": 2,
+      "callbacks": 1819,
+      "non_animation_sha256": "a484a45105bc857c5665b5d8de62073f8f43daa1995f8c56cd56696966f5e569",
+      "requested_and_uploaded_frames": [
+        [
+          3,
+          5,
+          6,
+          7,
+          8,
+          10,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          41,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          61,
+          62,
+          63
+        ],
+        [
+          3,
+          5,
+          6,
+          7,
+          10,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          41,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ]
+      ],
+      "actor_page_changes_per_callback": {
+        "0": 1429,
+        "1": 390
+      },
+      "cadence_failures": [],
+      "sdk_lag_increments": 0,
+      "native_timing_failures": [],
+      "obj_overflow_failures": [],
+      "geometry_failures": [],
+      "payload_failures": []
+    },
+    {
+      "fighter": 3,
+      "callbacks": 1224,
+      "non_animation_sha256": "5996de6af1d9e34468f73fcbf35d6590043fe1ad1518944eb82b699d9b0053fc",
+      "requested_and_uploaded_frames": [
+        [
+          3,
+          5,
+          6,
+          7,
+          8,
+          10,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          41,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          61,
+          62,
+          63
+        ],
+        [
+          3,
+          5,
+          6,
+          7,
+          10,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          41,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ]
+      ],
+      "actor_page_changes_per_callback": {
+        "0": 968,
+        "1": 256
+      },
+      "cadence_failures": [],
+      "sdk_lag_increments": 0,
+      "native_timing_failures": [],
+      "obj_overflow_failures": [],
+      "geometry_failures": [],
+      "payload_failures": []
+    },
+    {
+      "fighter": 4,
+      "callbacks": 1878,
+      "non_animation_sha256": "009055d624f555027a8cbfd7ce6481c0fe35d7f68eaf1233b738633bd000a3da",
+      "requested_and_uploaded_frames": [
+        [
+          3,
+          5,
+          6,
+          7,
+          8,
+          11,
+          12,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          42,
+          43,
+          46,
+          48,
+          49,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          61,
+          62,
+          63
+        ],
+        [
+          3,
+          5,
+          6,
+          7,
+          10,
+          12,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          41,
+          42,
+          43,
+          47,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ]
+      ],
+      "actor_page_changes_per_callback": {
+        "0": 1556,
+        "1": 322
+      },
+      "cadence_failures": [],
+      "sdk_lag_increments": 0,
+      "native_timing_failures": [],
+      "obj_overflow_failures": [],
+      "geometry_failures": [],
+      "payload_failures": []
+    },
+    {
+      "fighter": 5,
+      "callbacks": 1829,
+      "non_animation_sha256": "8d76f37c264aa6288a42c2dbc9a931d76b2316435ef6e02cfafa8da71c2f9ba4",
+      "requested_and_uploaded_frames": [
+        [
+          3,
+          5,
+          6,
+          7,
+          8,
+          11,
+          13,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          44,
+          45,
+          46,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          61,
+          62,
+          63
+        ],
+        [
+          3,
+          5,
+          6,
+          7,
+          10,
+          13,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          41,
+          44,
+          45,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ]
+      ],
+      "actor_page_changes_per_callback": {
+        "0": 1459,
+        "1": 370
+      },
+      "cadence_failures": [],
+      "sdk_lag_increments": 0,
+      "native_timing_failures": [],
+      "obj_overflow_failures": [],
+      "geometry_failures": [],
+      "payload_failures": []
+    },
+    {
+      "fighter": 6,
+      "callbacks": 1273,
+      "non_animation_sha256": "f6f2325af3f4e9909cdabd42185e460696fb7f66c93b1b97c62eff2f0cb60a97",
+      "requested_and_uploaded_frames": [
+        [
+          3,
+          5,
+          6,
+          7,
+          8,
+          12,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          42,
+          43,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          61,
+          62,
+          63
+        ],
+        [
+          3,
+          5,
+          6,
+          7,
+          12,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          42,
+          43,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ]
+      ],
+      "actor_page_changes_per_callback": {
+        "0": 1016,
+        "1": 257
+      },
+      "cadence_failures": [],
+      "sdk_lag_increments": 0,
+      "native_timing_failures": [],
+      "obj_overflow_failures": [],
+      "geometry_failures": [],
+      "payload_failures": []
+    },
+    {
+      "fighter": 7,
+      "callbacks": 1266,
+      "non_animation_sha256": "e6c905022e5d92f33cd39f8128477f8360e9e5110eda8dbc1d6e1945d100e297",
+      "requested_and_uploaded_frames": [
+        [
+          3,
+          5,
+          6,
+          7,
+          8,
+          13,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          44,
+          45,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          61,
+          62,
+          63
+        ],
+        [
+          3,
+          5,
+          6,
+          7,
+          13,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          44,
+          45,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ]
+      ],
+      "actor_page_changes_per_callback": {
+        "0": 999,
+        "1": 267
+      },
+      "cadence_failures": [],
+      "sdk_lag_increments": 0,
+      "native_timing_failures": [],
+      "obj_overflow_failures": [],
+      "geometry_failures": [],
+      "payload_failures": []
+    },
+    {
+      "fighter": 8,
+      "callbacks": 1218,
+      "non_animation_sha256": "118c1d4f6e14cb1318ce2fd3d0663e944b0031f661109d6dec73bc73803ed773",
+      "requested_and_uploaded_frames": [
+        [
+          3,
+          5,
+          6,
+          7,
+          8,
+          12,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          42,
+          43,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          61,
+          62,
+          63
+        ],
+        [
+          3,
+          5,
+          6,
+          7,
+          12,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          42,
+          43,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ]
+      ],
+      "actor_page_changes_per_callback": {
+        "0": 945,
+        "1": 273
+      },
+      "cadence_failures": [],
+      "sdk_lag_increments": 0,
+      "native_timing_failures": [],
+      "obj_overflow_failures": [],
+      "geometry_failures": [],
+      "payload_failures": []
+    },
+    {
+      "fighter": 9,
+      "callbacks": 1227,
+      "non_animation_sha256": "ffad6553e499041d2f4af4aeb985dc9f73498bd6b51cb6ad79a88cae56a78650",
+      "requested_and_uploaded_frames": [
+        [
+          3,
+          5,
+          6,
+          7,
+          8,
+          12,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          42,
+          43,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          61,
+          62,
+          63
+        ],
+        [
+          3,
+          5,
+          6,
+          7,
+          12,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          42,
+          43,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ]
+      ],
+      "actor_page_changes_per_callback": {
+        "0": 979,
+        "1": 248
+      },
+      "cadence_failures": [],
+      "sdk_lag_increments": 0,
+      "native_timing_failures": [],
+      "obj_overflow_failures": [],
+      "geometry_failures": [],
+      "payload_failures": []
+    },
+    {
+      "fighter": 10,
+      "callbacks": 1219,
+      "non_animation_sha256": "786e03dd1a2d13164cf89bdae182b6df44bb237c64850cc35adb1ffd1a59e2e9",
+      "requested_and_uploaded_frames": [
+        [
+          3,
+          5,
+          6,
+          7,
+          8,
+          13,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          44,
+          45,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          61,
+          62,
+          63
+        ],
+        [
+          3,
+          5,
+          6,
+          7,
+          13,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          44,
+          45,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ]
+      ],
+      "actor_page_changes_per_callback": {
+        "0": 945,
+        "1": 274
+      },
+      "cadence_failures": [],
+      "sdk_lag_increments": 0,
+      "native_timing_failures": [],
+      "obj_overflow_failures": [],
+      "geometry_failures": [],
+      "payload_failures": []
+    },
+    {
+      "fighter": 11,
+      "callbacks": 1257,
+      "non_animation_sha256": "c4b73d2ca56d0678a246153a6518f4c85bb862ea2892329feba34e75e9e54dbb",
+      "requested_and_uploaded_frames": [
+        [
+          3,
+          5,
+          6,
+          7,
+          8,
+          12,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          42,
+          43,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          61,
+          62,
+          63
+        ],
+        [
+          3,
+          5,
+          6,
+          7,
+          12,
+          14,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          42,
+          43,
+          48,
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63
+        ]
+      ],
+      "actor_page_changes_per_callback": {
+        "0": 993,
+        "1": 264
+      },
+      "cadence_failures": [],
+      "sdk_lag_increments": 0,
+      "native_timing_failures": [],
+      "obj_overflow_failures": [],
+      "geometry_failures": [],
+      "payload_failures": []
+    }
+  ],
+  "clips": [
+    {
+      "gif": "docs/screenshots/expansion-01/fighter00-idle.gif",
+      "strip": "docs/screenshots/expansion-01/fighter00-idle.png",
+      "frames": 110,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter00-walk-forward.gif",
+      "strip": "docs/screenshots/expansion-01/fighter00-walk-forward.png",
+      "frames": 40,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter00-walk-back.gif",
+      "strip": "docs/screenshots/expansion-01/fighter00-walk-back.png",
+      "frames": 40,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter00-jump.gif",
+      "strip": "docs/screenshots/expansion-01/fighter00-jump.png",
+      "frames": 85,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter00-normal-x.gif",
+      "strip": "docs/screenshots/expansion-01/fighter00-normal-x.png",
+      "frames": 45,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter00-normal-a.gif",
+      "strip": "docs/screenshots/expansion-01/fighter00-normal-a.png",
+      "frames": 45,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter00-throw-0.gif",
+      "strip": "docs/screenshots/expansion-01/fighter00-throw-0.png",
+      "frames": 113,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter00-sweep.gif",
+      "strip": "docs/screenshots/expansion-01/fighter00-sweep.png",
+      "frames": 103,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter09-idle.gif",
+      "strip": "docs/screenshots/expansion-01/fighter09-idle.png",
+      "frames": 110,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter09-walk-forward.gif",
+      "strip": "docs/screenshots/expansion-01/fighter09-walk-forward.png",
+      "frames": 40,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter09-walk-back.gif",
+      "strip": "docs/screenshots/expansion-01/fighter09-walk-back.png",
+      "frames": 40,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter09-jump.gif",
+      "strip": "docs/screenshots/expansion-01/fighter09-jump.png",
+      "frames": 85,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter09-normal-x.gif",
+      "strip": "docs/screenshots/expansion-01/fighter09-normal-x.png",
+      "frames": 45,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter09-normal-a.gif",
+      "strip": "docs/screenshots/expansion-01/fighter09-normal-a.png",
+      "frames": 45,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter09-throw-0.gif",
+      "strip": "docs/screenshots/expansion-01/fighter09-throw-0.png",
+      "frames": 113,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter09-sweep.gif",
+      "strip": "docs/screenshots/expansion-01/fighter09-sweep.png",
+      "frames": 103,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter11-idle.gif",
+      "strip": "docs/screenshots/expansion-01/fighter11-idle.png",
+      "frames": 110,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter11-walk-forward.gif",
+      "strip": "docs/screenshots/expansion-01/fighter11-walk-forward.png",
+      "frames": 40,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter11-walk-back.gif",
+      "strip": "docs/screenshots/expansion-01/fighter11-walk-back.png",
+      "frames": 40,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter11-jump.gif",
+      "strip": "docs/screenshots/expansion-01/fighter11-jump.png",
+      "frames": 85,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter11-normal-x.gif",
+      "strip": "docs/screenshots/expansion-01/fighter11-normal-x.png",
+      "frames": 45,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter11-normal-a.gif",
+      "strip": "docs/screenshots/expansion-01/fighter11-normal-a.png",
+      "frames": 45,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter11-throw-0.gif",
+      "strip": "docs/screenshots/expansion-01/fighter11-throw-0.png",
+      "frames": 113,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    },
+    {
+      "gif": "docs/screenshots/expansion-01/fighter11-sweep.gif",
+      "strip": "docs/screenshots/expansion-01/fighter11-sweep.png",
+      "frames": 103,
+      "native_fps": 60.098811862348406,
+      "gif_note": "10/20ms quantized GIF holds approximate native timing",
+      "strip_note": "Request labels describe read-only trace; actor DMA may trail by one frame."
+    }
+  ],
+  "preservation": {
+    "unchanged_generated_assets": 219,
+    "generated_asset_manifest_sha256": "4fbe278f0e6b4c980cf991c786a41428de1f68c641faef661cfcecc7dc505afb",
+    "unchanged_ram_direct_page_symbols": 1276,
+    "base_animation_code_bytes": 4790,
+    "animation_code_bytes": 7253,
+    "animation_code_address": "E3E2A0",
+    "animation_bank": 99,
+    "linked_rom_section_bytes": 3262642,
+    "rom_bytes_outside_linked_sections": 931662,
+    "occupied_rom_banks": 104,
+    "wholly_unoccupied_rom_banks": 24,
+    "animation_bank_unoccupied_bytes": 267
+  },
+  "passed_checks": 471,
+  "checks": [
+    {
+      "check": "controller selects mirror roster",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "controller jump reaches landing release boundary",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "one native tick per callback",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "failures": []
+      }
+    },
+    {
+      "check": "SDK counters show zero lag and one vblank per callback",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "lag_increments": 0,
+        "failures": []
+      }
+    },
+    {
+      "check": "STAT77 OBJ overflow stays clear",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports display intact approved 64-frame payloads",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports retain exact canvas scale, palette and floor pivot",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "failures": []
+      }
+    },
+    {
+      "check": "no callback replaces both actor pages",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "uploads": {
+          "0": 1471,
+          "1": 369
+        }
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 1,
+        "holds": {
+          "16": 70,
+          "17": 12,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 1
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 1
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 1,
+        "holds": {
+          "20": 16,
+          "21": 10,
+          "22": 6,
+          "23": 8
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 1,
+        "holds": {
+          "24": 14,
+          "25": 8,
+          "26": 6,
+          "27": 12
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 1
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 1
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 1
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 1
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 1
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 2,
+        "holds": {
+          "16": 70,
+          "17": 12,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 2
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 2
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 2,
+        "holds": {
+          "20": 16,
+          "21": 10,
+          "22": 6,
+          "23": 8
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 2,
+        "holds": {
+          "24": 14,
+          "25": 8,
+          "26": 6,
+          "27": 12
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 2
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 2
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 2
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 2
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "port": 2
+      }
+    },
+    {
+      "check": "knockdown launch and fall follow actual velocity",
+      "passed": true,
+      "details": {
+        "fighter": 0
+      }
+    },
+    {
+      "check": "real throw/hit hitstop freezes both weighted clocks",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "samples": 40
+      }
+    },
+    {
+      "check": "every non-animation Fighter byte and combat trace matches base",
+      "passed": true,
+      "details": {
+        "fighter": 0,
+        "callbacks": 1840,
+        "non_animation_sha256": "2b24a1309312b66bd4a0990739398d227b35fc4bb06b8304ff36161f08893d41",
+        "requested_and_uploaded_frames": [
+          [
+            3,
+            5,
+            6,
+            7,
+            8,
+            12,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            42,
+            43,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            61,
+            62,
+            63
+          ],
+          [
+            3,
+            5,
+            6,
+            7,
+            12,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            42,
+            43,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63
+          ]
+        ],
+        "actor_page_changes_per_callback": {
+          "0": 1471,
+          "1": 369
+        },
+        "cadence_failures": [],
+        "sdk_lag_increments": 0,
+        "native_timing_failures": [],
+        "obj_overflow_failures": [],
+        "geometry_failures": [],
+        "payload_failures": []
+      }
+    },
+    {
+      "check": "controller selects mirror roster",
+      "passed": true,
+      "details": 1
+    },
+    {
+      "check": "controller jump reaches landing release boundary",
+      "passed": true,
+      "details": 1
+    },
+    {
+      "check": "one native tick per callback",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "failures": []
+      }
+    },
+    {
+      "check": "SDK counters show zero lag and one vblank per callback",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "lag_increments": 0,
+        "failures": []
+      }
+    },
+    {
+      "check": "STAT77 OBJ overflow stays clear",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports display intact approved 64-frame payloads",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports retain exact canvas scale, palette and floor pivot",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "failures": []
+      }
+    },
+    {
+      "check": "no callback replaces both actor pages",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "uploads": {
+          "0": 998,
+          "1": 251
+        }
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 1,
+        "holds": {
+          "16": 70,
+          "17": 12,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 1
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 1
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 1,
+        "holds": {
+          "20": 19,
+          "21": 6,
+          "22": 5,
+          "23": 10
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 1,
+        "holds": {
+          "24": 13,
+          "25": 8,
+          "26": 8,
+          "27": 11
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 1
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 1
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 1
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 1
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 1
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 2,
+        "holds": {
+          "16": 70,
+          "17": 12,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 2
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 2
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 2,
+        "holds": {
+          "20": 19,
+          "21": 6,
+          "22": 5,
+          "23": 10
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 2,
+        "holds": {
+          "24": 13,
+          "25": 8,
+          "26": 8,
+          "27": 11
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 2
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 2
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 2
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 2
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "port": 2
+      }
+    },
+    {
+      "check": "knockdown launch and fall follow actual velocity",
+      "passed": true,
+      "details": {
+        "fighter": 1
+      }
+    },
+    {
+      "check": "real throw/hit hitstop freezes both weighted clocks",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "samples": 16
+      }
+    },
+    {
+      "check": "every non-animation Fighter byte and combat trace matches base",
+      "passed": true,
+      "details": {
+        "fighter": 1,
+        "callbacks": 1249,
+        "non_animation_sha256": "4fbb8c20273f2b27b52c3119c949eff95915fe069347f63b5c22d02436455ab6",
+        "requested_and_uploaded_frames": [
+          [
+            3,
+            5,
+            6,
+            7,
+            8,
+            12,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            42,
+            43,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            61,
+            62,
+            63
+          ],
+          [
+            3,
+            5,
+            6,
+            7,
+            12,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            42,
+            43,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63
+          ]
+        ],
+        "actor_page_changes_per_callback": {
+          "0": 998,
+          "1": 251
+        },
+        "cadence_failures": [],
+        "sdk_lag_increments": 0,
+        "native_timing_failures": [],
+        "obj_overflow_failures": [],
+        "geometry_failures": [],
+        "payload_failures": []
+      }
+    },
+    {
+      "check": "controller selects mirror roster",
+      "passed": true,
+      "details": 2
+    },
+    {
+      "check": "controller jump reaches landing release boundary",
+      "passed": true,
+      "details": 2
+    },
+    {
+      "check": "one native tick per callback",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "failures": []
+      }
+    },
+    {
+      "check": "SDK counters show zero lag and one vblank per callback",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "lag_increments": 0,
+        "failures": []
+      }
+    },
+    {
+      "check": "STAT77 OBJ overflow stays clear",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports display intact approved 64-frame payloads",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports retain exact canvas scale, palette and floor pivot",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "failures": []
+      }
+    },
+    {
+      "check": "no callback replaces both actor pages",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "uploads": {
+          "0": 1429,
+          "1": 390
+        }
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 1,
+        "holds": {
+          "16": 70,
+          "17": 12,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 1
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 1
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 1,
+        "holds": {
+          "20": 13,
+          "21": 8,
+          "22": 8,
+          "23": 11
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 1,
+        "holds": {
+          "24": 13,
+          "25": 9,
+          "26": 8,
+          "27": 10
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 1
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 1
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 1
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 1
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 1
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 2,
+        "holds": {
+          "16": 70,
+          "17": 12,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 2
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 2
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 2,
+        "holds": {
+          "20": 13,
+          "21": 8,
+          "22": 8,
+          "23": 11
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 2,
+        "holds": {
+          "24": 13,
+          "25": 9,
+          "26": 8,
+          "27": 10
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 2
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 2
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 2
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 2
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "port": 2
+      }
+    },
+    {
+      "check": "knockdown launch and fall follow actual velocity",
+      "passed": true,
+      "details": {
+        "fighter": 2
+      }
+    },
+    {
+      "check": "real throw/hit hitstop freezes both weighted clocks",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "samples": 44
+      }
+    },
+    {
+      "check": "every non-animation Fighter byte and combat trace matches base",
+      "passed": true,
+      "details": {
+        "fighter": 2,
+        "callbacks": 1819,
+        "non_animation_sha256": "a484a45105bc857c5665b5d8de62073f8f43daa1995f8c56cd56696966f5e569",
+        "requested_and_uploaded_frames": [
+          [
+            3,
+            5,
+            6,
+            7,
+            8,
+            10,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            41,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            61,
+            62,
+            63
+          ],
+          [
+            3,
+            5,
+            6,
+            7,
+            10,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            41,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63
+          ]
+        ],
+        "actor_page_changes_per_callback": {
+          "0": 1429,
+          "1": 390
+        },
+        "cadence_failures": [],
+        "sdk_lag_increments": 0,
+        "native_timing_failures": [],
+        "obj_overflow_failures": [],
+        "geometry_failures": [],
+        "payload_failures": []
+      }
+    },
+    {
+      "check": "controller selects mirror roster",
+      "passed": true,
+      "details": 3
+    },
+    {
+      "check": "controller jump reaches landing release boundary",
+      "passed": true,
+      "details": 3
+    },
+    {
+      "check": "one native tick per callback",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "failures": []
+      }
+    },
+    {
+      "check": "SDK counters show zero lag and one vblank per callback",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "lag_increments": 0,
+        "failures": []
+      }
+    },
+    {
+      "check": "STAT77 OBJ overflow stays clear",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports display intact approved 64-frame payloads",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports retain exact canvas scale, palette and floor pivot",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "failures": []
+      }
+    },
+    {
+      "check": "no callback replaces both actor pages",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "uploads": {
+          "0": 968,
+          "1": 256
+        }
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 1,
+        "holds": {
+          "16": 70,
+          "17": 12,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 1
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 1
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 1,
+        "holds": {
+          "20": 15,
+          "21": 10,
+          "22": 7,
+          "23": 8
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 1,
+        "holds": {
+          "24": 16,
+          "25": 6,
+          "26": 6,
+          "27": 12
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 1
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 1
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 1
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 1
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 1
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 2,
+        "holds": {
+          "16": 70,
+          "17": 12,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 2
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 2
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 2,
+        "holds": {
+          "20": 15,
+          "21": 10,
+          "22": 7,
+          "23": 8
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 2,
+        "holds": {
+          "24": 16,
+          "25": 6,
+          "26": 6,
+          "27": 12
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 2
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 2
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 2
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 2
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "port": 2
+      }
+    },
+    {
+      "check": "knockdown launch and fall follow actual velocity",
+      "passed": true,
+      "details": {
+        "fighter": 3
+      }
+    },
+    {
+      "check": "real throw/hit hitstop freezes both weighted clocks",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "samples": 20
+      }
+    },
+    {
+      "check": "every non-animation Fighter byte and combat trace matches base",
+      "passed": true,
+      "details": {
+        "fighter": 3,
+        "callbacks": 1224,
+        "non_animation_sha256": "5996de6af1d9e34468f73fcbf35d6590043fe1ad1518944eb82b699d9b0053fc",
+        "requested_and_uploaded_frames": [
+          [
+            3,
+            5,
+            6,
+            7,
+            8,
+            10,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            41,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            61,
+            62,
+            63
+          ],
+          [
+            3,
+            5,
+            6,
+            7,
+            10,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            41,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63
+          ]
+        ],
+        "actor_page_changes_per_callback": {
+          "0": 968,
+          "1": 256
+        },
+        "cadence_failures": [],
+        "sdk_lag_increments": 0,
+        "native_timing_failures": [],
+        "obj_overflow_failures": [],
+        "geometry_failures": [],
+        "payload_failures": []
+      }
+    },
+    {
+      "check": "controller selects mirror roster",
+      "passed": true,
+      "details": 4
+    },
+    {
+      "check": "controller jump reaches landing release boundary",
+      "passed": true,
+      "details": 4
+    },
+    {
+      "check": "one native tick per callback",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "failures": []
+      }
+    },
+    {
+      "check": "SDK counters show zero lag and one vblank per callback",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "lag_increments": 0,
+        "failures": []
+      }
+    },
+    {
+      "check": "STAT77 OBJ overflow stays clear",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports display intact approved 64-frame payloads",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports retain exact canvas scale, palette and floor pivot",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "failures": []
+      }
+    },
+    {
+      "check": "no callback replaces both actor pages",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "uploads": {
+          "0": 1556,
+          "1": 322
+        }
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 1,
+        "holds": {
+          "16": 70,
+          "17": 12,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 1
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 1
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 1,
+        "holds": {
+          "20": 18,
+          "21": 6,
+          "22": 6,
+          "23": 10
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 1,
+        "holds": {
+          "24": 15,
+          "25": 8,
+          "26": 9,
+          "27": 8
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 1
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 1
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 1
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 1
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 1
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 2,
+        "holds": {
+          "16": 70,
+          "17": 12,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 2
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 2
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 2,
+        "holds": {
+          "20": 18,
+          "21": 6,
+          "22": 6,
+          "23": 10
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 2,
+        "holds": {
+          "24": 15,
+          "25": 8,
+          "26": 9,
+          "27": 8
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 2
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 2
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 2
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 2
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "port": 2
+      }
+    },
+    {
+      "check": "knockdown launch and fall follow actual velocity",
+      "passed": true,
+      "details": {
+        "fighter": 4
+      }
+    },
+    {
+      "check": "real throw/hit hitstop freezes both weighted clocks",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "samples": 26
+      }
+    },
+    {
+      "check": "every non-animation Fighter byte and combat trace matches base",
+      "passed": true,
+      "details": {
+        "fighter": 4,
+        "callbacks": 1878,
+        "non_animation_sha256": "009055d624f555027a8cbfd7ce6481c0fe35d7f68eaf1233b738633bd000a3da",
+        "requested_and_uploaded_frames": [
+          [
+            3,
+            5,
+            6,
+            7,
+            8,
+            11,
+            12,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            42,
+            43,
+            46,
+            48,
+            49,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            61,
+            62,
+            63
+          ],
+          [
+            3,
+            5,
+            6,
+            7,
+            10,
+            12,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            41,
+            42,
+            43,
+            47,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63
+          ]
+        ],
+        "actor_page_changes_per_callback": {
+          "0": 1556,
+          "1": 322
+        },
+        "cadence_failures": [],
+        "sdk_lag_increments": 0,
+        "native_timing_failures": [],
+        "obj_overflow_failures": [],
+        "geometry_failures": [],
+        "payload_failures": []
+      }
+    },
+    {
+      "check": "controller selects mirror roster",
+      "passed": true,
+      "details": 5
+    },
+    {
+      "check": "controller jump reaches landing release boundary",
+      "passed": true,
+      "details": 5
+    },
+    {
+      "check": "one native tick per callback",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "failures": []
+      }
+    },
+    {
+      "check": "SDK counters show zero lag and one vblank per callback",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "lag_increments": 0,
+        "failures": []
+      }
+    },
+    {
+      "check": "STAT77 OBJ overflow stays clear",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports display intact approved 64-frame payloads",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports retain exact canvas scale, palette and floor pivot",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "failures": []
+      }
+    },
+    {
+      "check": "no callback replaces both actor pages",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "uploads": {
+          "0": 1459,
+          "1": 370
+        }
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 1,
+        "holds": {
+          "16": 70,
+          "17": 12,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 1
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 1
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 1,
+        "holds": {
+          "20": 16,
+          "21": 10,
+          "22": 6,
+          "23": 8
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 1,
+        "holds": {
+          "24": 14,
+          "25": 8,
+          "26": 6,
+          "27": 12
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 1
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 1
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 1
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 1
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 1
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 2,
+        "holds": {
+          "16": 70,
+          "17": 12,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 2
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 2
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 2,
+        "holds": {
+          "20": 16,
+          "21": 10,
+          "22": 6,
+          "23": 8
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 2,
+        "holds": {
+          "24": 14,
+          "25": 8,
+          "26": 6,
+          "27": 12
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 2
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 2
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 2
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 2
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "port": 2
+      }
+    },
+    {
+      "check": "knockdown launch and fall follow actual velocity",
+      "passed": true,
+      "details": {
+        "fighter": 5
+      }
+    },
+    {
+      "check": "real throw/hit hitstop freezes both weighted clocks",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "samples": 38
+      }
+    },
+    {
+      "check": "every non-animation Fighter byte and combat trace matches base",
+      "passed": true,
+      "details": {
+        "fighter": 5,
+        "callbacks": 1829,
+        "non_animation_sha256": "8d76f37c264aa6288a42c2dbc9a931d76b2316435ef6e02cfafa8da71c2f9ba4",
+        "requested_and_uploaded_frames": [
+          [
+            3,
+            5,
+            6,
+            7,
+            8,
+            11,
+            13,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            44,
+            45,
+            46,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            61,
+            62,
+            63
+          ],
+          [
+            3,
+            5,
+            6,
+            7,
+            10,
+            13,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            41,
+            44,
+            45,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63
+          ]
+        ],
+        "actor_page_changes_per_callback": {
+          "0": 1459,
+          "1": 370
+        },
+        "cadence_failures": [],
+        "sdk_lag_increments": 0,
+        "native_timing_failures": [],
+        "obj_overflow_failures": [],
+        "geometry_failures": [],
+        "payload_failures": []
+      }
+    },
+    {
+      "check": "controller selects mirror roster",
+      "passed": true,
+      "details": 6
+    },
+    {
+      "check": "controller jump reaches landing release boundary",
+      "passed": true,
+      "details": 6
+    },
+    {
+      "check": "one native tick per callback",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "failures": []
+      }
+    },
+    {
+      "check": "SDK counters show zero lag and one vblank per callback",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "lag_increments": 0,
+        "failures": []
+      }
+    },
+    {
+      "check": "STAT77 OBJ overflow stays clear",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports display intact approved 64-frame payloads",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports retain exact canvas scale, palette and floor pivot",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "failures": []
+      }
+    },
+    {
+      "check": "no callback replaces both actor pages",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "uploads": {
+          "0": 1016,
+          "1": 257
+        }
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 1,
+        "holds": {
+          "16": 67,
+          "17": 15,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 1
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 1
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 1,
+        "holds": {
+          "20": 19,
+          "21": 6,
+          "22": 5,
+          "23": 10
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 1,
+        "holds": {
+          "24": 13,
+          "25": 8,
+          "26": 8,
+          "27": 11
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 1
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 1
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 1
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 1
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 1
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 2,
+        "holds": {
+          "16": 67,
+          "17": 15,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 2
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 2
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 2,
+        "holds": {
+          "20": 19,
+          "21": 6,
+          "22": 5,
+          "23": 10
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 2,
+        "holds": {
+          "24": 13,
+          "25": 8,
+          "26": 8,
+          "27": 11
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 2
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 2
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 2
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 2
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "port": 2
+      }
+    },
+    {
+      "check": "knockdown launch and fall follow actual velocity",
+      "passed": true,
+      "details": {
+        "fighter": 6
+      }
+    },
+    {
+      "check": "real throw/hit hitstop freezes both weighted clocks",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "samples": 16
+      }
+    },
+    {
+      "check": "every non-animation Fighter byte and combat trace matches base",
+      "passed": true,
+      "details": {
+        "fighter": 6,
+        "callbacks": 1273,
+        "non_animation_sha256": "f6f2325af3f4e9909cdabd42185e460696fb7f66c93b1b97c62eff2f0cb60a97",
+        "requested_and_uploaded_frames": [
+          [
+            3,
+            5,
+            6,
+            7,
+            8,
+            12,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            42,
+            43,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            61,
+            62,
+            63
+          ],
+          [
+            3,
+            5,
+            6,
+            7,
+            12,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            42,
+            43,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63
+          ]
+        ],
+        "actor_page_changes_per_callback": {
+          "0": 1016,
+          "1": 257
+        },
+        "cadence_failures": [],
+        "sdk_lag_increments": 0,
+        "native_timing_failures": [],
+        "obj_overflow_failures": [],
+        "geometry_failures": [],
+        "payload_failures": []
+      }
+    },
+    {
+      "check": "controller selects mirror roster",
+      "passed": true,
+      "details": 7
+    },
+    {
+      "check": "controller jump reaches landing release boundary",
+      "passed": true,
+      "details": 7
+    },
+    {
+      "check": "one native tick per callback",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "failures": []
+      }
+    },
+    {
+      "check": "SDK counters show zero lag and one vblank per callback",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "lag_increments": 0,
+        "failures": []
+      }
+    },
+    {
+      "check": "STAT77 OBJ overflow stays clear",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports display intact approved 64-frame payloads",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports retain exact canvas scale, palette and floor pivot",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "failures": []
+      }
+    },
+    {
+      "check": "no callback replaces both actor pages",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "uploads": {
+          "0": 999,
+          "1": 267
+        }
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 1,
+        "holds": {
+          "16": 64,
+          "17": 18,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 1
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 1
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 1,
+        "holds": {
+          "20": 18,
+          "21": 8,
+          "22": 5,
+          "23": 9
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 1,
+        "holds": {
+          "24": 13,
+          "25": 7,
+          "26": 8,
+          "27": 12
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 1
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 1
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 1
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 1
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 1
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 2,
+        "holds": {
+          "16": 64,
+          "17": 18,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 2
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 2
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 2,
+        "holds": {
+          "20": 18,
+          "21": 8,
+          "22": 5,
+          "23": 9
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 2,
+        "holds": {
+          "24": 13,
+          "25": 7,
+          "26": 8,
+          "27": 12
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 2
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 2
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 2
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 2
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "port": 2
+      }
+    },
+    {
+      "check": "knockdown launch and fall follow actual velocity",
+      "passed": true,
+      "details": {
+        "fighter": 7
+      }
+    },
+    {
+      "check": "real throw/hit hitstop freezes both weighted clocks",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "samples": 16
+      }
+    },
+    {
+      "check": "every non-animation Fighter byte and combat trace matches base",
+      "passed": true,
+      "details": {
+        "fighter": 7,
+        "callbacks": 1266,
+        "non_animation_sha256": "e6c905022e5d92f33cd39f8128477f8360e9e5110eda8dbc1d6e1945d100e297",
+        "requested_and_uploaded_frames": [
+          [
+            3,
+            5,
+            6,
+            7,
+            8,
+            13,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            44,
+            45,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            61,
+            62,
+            63
+          ],
+          [
+            3,
+            5,
+            6,
+            7,
+            13,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            44,
+            45,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63
+          ]
+        ],
+        "actor_page_changes_per_callback": {
+          "0": 999,
+          "1": 267
+        },
+        "cadence_failures": [],
+        "sdk_lag_increments": 0,
+        "native_timing_failures": [],
+        "obj_overflow_failures": [],
+        "geometry_failures": [],
+        "payload_failures": []
+      }
+    },
+    {
+      "check": "controller selects mirror roster",
+      "passed": true,
+      "details": 8
+    },
+    {
+      "check": "controller jump reaches landing release boundary",
+      "passed": true,
+      "details": 8
+    },
+    {
+      "check": "one native tick per callback",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "failures": []
+      }
+    },
+    {
+      "check": "SDK counters show zero lag and one vblank per callback",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "lag_increments": 0,
+        "failures": []
+      }
+    },
+    {
+      "check": "STAT77 OBJ overflow stays clear",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports display intact approved 64-frame payloads",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports retain exact canvas scale, palette and floor pivot",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "failures": []
+      }
+    },
+    {
+      "check": "no callback replaces both actor pages",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "uploads": {
+          "0": 945,
+          "1": 273
+        }
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 1,
+        "holds": {
+          "16": 61,
+          "17": 21,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 1
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 1
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 1,
+        "holds": {
+          "20": 13,
+          "21": 7,
+          "22": 8,
+          "23": 12
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 1,
+        "holds": {
+          "24": 13,
+          "25": 9,
+          "26": 7,
+          "27": 11
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 1
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 1
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 1
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 1
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 1
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 2,
+        "holds": {
+          "16": 61,
+          "17": 21,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 2
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 2
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 2,
+        "holds": {
+          "20": 13,
+          "21": 7,
+          "22": 8,
+          "23": 12
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 2,
+        "holds": {
+          "24": 13,
+          "25": 9,
+          "26": 7,
+          "27": 11
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 2
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 2
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 2
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 2
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "port": 2
+      }
+    },
+    {
+      "check": "knockdown launch and fall follow actual velocity",
+      "passed": true,
+      "details": {
+        "fighter": 8
+      }
+    },
+    {
+      "check": "real throw/hit hitstop freezes both weighted clocks",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "samples": 16
+      }
+    },
+    {
+      "check": "every non-animation Fighter byte and combat trace matches base",
+      "passed": true,
+      "details": {
+        "fighter": 8,
+        "callbacks": 1218,
+        "non_animation_sha256": "118c1d4f6e14cb1318ce2fd3d0663e944b0031f661109d6dec73bc73803ed773",
+        "requested_and_uploaded_frames": [
+          [
+            3,
+            5,
+            6,
+            7,
+            8,
+            12,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            42,
+            43,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            61,
+            62,
+            63
+          ],
+          [
+            3,
+            5,
+            6,
+            7,
+            12,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            42,
+            43,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63
+          ]
+        ],
+        "actor_page_changes_per_callback": {
+          "0": 945,
+          "1": 273
+        },
+        "cadence_failures": [],
+        "sdk_lag_increments": 0,
+        "native_timing_failures": [],
+        "obj_overflow_failures": [],
+        "geometry_failures": [],
+        "payload_failures": []
+      }
+    },
+    {
+      "check": "controller selects mirror roster",
+      "passed": true,
+      "details": 9
+    },
+    {
+      "check": "controller jump reaches landing release boundary",
+      "passed": true,
+      "details": 9
+    },
+    {
+      "check": "one native tick per callback",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "failures": []
+      }
+    },
+    {
+      "check": "SDK counters show zero lag and one vblank per callback",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "lag_increments": 0,
+        "failures": []
+      }
+    },
+    {
+      "check": "STAT77 OBJ overflow stays clear",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports display intact approved 64-frame payloads",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports retain exact canvas scale, palette and floor pivot",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "failures": []
+      }
+    },
+    {
+      "check": "no callback replaces both actor pages",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "uploads": {
+          "0": 979,
+          "1": 248
+        }
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 1,
+        "holds": {
+          "16": 58,
+          "17": 24,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 1
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 1
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 1,
+        "holds": {
+          "20": 18,
+          "21": 8,
+          "22": 5,
+          "23": 9
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 1,
+        "holds": {
+          "24": 13,
+          "25": 8,
+          "26": 8,
+          "27": 11
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 1
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 1
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 1
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 1
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 1
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 2,
+        "holds": {
+          "16": 58,
+          "17": 24,
+          "18": 16,
+          "19": 12
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 2
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 2
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 2,
+        "holds": {
+          "20": 18,
+          "21": 8,
+          "22": 5,
+          "23": 9
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 2,
+        "holds": {
+          "24": 13,
+          "25": 8,
+          "26": 8,
+          "27": 11
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 2
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 2
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 2
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 2
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "port": 2
+      }
+    },
+    {
+      "check": "knockdown launch and fall follow actual velocity",
+      "passed": true,
+      "details": {
+        "fighter": 9
+      }
+    },
+    {
+      "check": "real throw/hit hitstop freezes both weighted clocks",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "samples": 16
+      }
+    },
+    {
+      "check": "every non-animation Fighter byte and combat trace matches base",
+      "passed": true,
+      "details": {
+        "fighter": 9,
+        "callbacks": 1227,
+        "non_animation_sha256": "ffad6553e499041d2f4af4aeb985dc9f73498bd6b51cb6ad79a88cae56a78650",
+        "requested_and_uploaded_frames": [
+          [
+            3,
+            5,
+            6,
+            7,
+            8,
+            12,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            42,
+            43,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            61,
+            62,
+            63
+          ],
+          [
+            3,
+            5,
+            6,
+            7,
+            12,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            42,
+            43,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63
+          ]
+        ],
+        "actor_page_changes_per_callback": {
+          "0": 979,
+          "1": 248
+        },
+        "cadence_failures": [],
+        "sdk_lag_increments": 0,
+        "native_timing_failures": [],
+        "obj_overflow_failures": [],
+        "geometry_failures": [],
+        "payload_failures": []
+      }
+    },
+    {
+      "check": "controller selects mirror roster",
+      "passed": true,
+      "details": 10
+    },
+    {
+      "check": "controller jump reaches landing release boundary",
+      "passed": true,
+      "details": 10
+    },
+    {
+      "check": "one native tick per callback",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "failures": []
+      }
+    },
+    {
+      "check": "SDK counters show zero lag and one vblank per callback",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "lag_increments": 0,
+        "failures": []
+      }
+    },
+    {
+      "check": "STAT77 OBJ overflow stays clear",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports display intact approved 64-frame payloads",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports retain exact canvas scale, palette and floor pivot",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "failures": []
+      }
+    },
+    {
+      "check": "no callback replaces both actor pages",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "uploads": {
+          "0": 945,
+          "1": 274
+        }
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 1,
+        "holds": {
+          "17": 23,
+          "18": 19,
+          "19": 12,
+          "16": 56
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 1
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 1
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 1,
+        "holds": {
+          "20": 13,
+          "21": 8,
+          "22": 8,
+          "23": 11
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 1,
+        "holds": {
+          "24": 13,
+          "25": 9,
+          "26": 8,
+          "27": 10
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 1
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 1
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 1
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 1
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 1
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 2,
+        "holds": {
+          "17": 23,
+          "18": 19,
+          "19": 12,
+          "16": 56
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 2
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 2
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 2,
+        "holds": {
+          "20": 13,
+          "21": 8,
+          "22": 8,
+          "23": 11
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 2,
+        "holds": {
+          "24": 13,
+          "25": 9,
+          "26": 8,
+          "27": 10
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 2
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 2
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 2
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 2
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "port": 2
+      }
+    },
+    {
+      "check": "knockdown launch and fall follow actual velocity",
+      "passed": true,
+      "details": {
+        "fighter": 10
+      }
+    },
+    {
+      "check": "real throw/hit hitstop freezes both weighted clocks",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "samples": 16
+      }
+    },
+    {
+      "check": "every non-animation Fighter byte and combat trace matches base",
+      "passed": true,
+      "details": {
+        "fighter": 10,
+        "callbacks": 1219,
+        "non_animation_sha256": "786e03dd1a2d13164cf89bdae182b6df44bb237c64850cc35adb1ffd1a59e2e9",
+        "requested_and_uploaded_frames": [
+          [
+            3,
+            5,
+            6,
+            7,
+            8,
+            13,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            44,
+            45,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            61,
+            62,
+            63
+          ],
+          [
+            3,
+            5,
+            6,
+            7,
+            13,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            44,
+            45,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63
+          ]
+        ],
+        "actor_page_changes_per_callback": {
+          "0": 945,
+          "1": 274
+        },
+        "cadence_failures": [],
+        "sdk_lag_increments": 0,
+        "native_timing_failures": [],
+        "obj_overflow_failures": [],
+        "geometry_failures": [],
+        "payload_failures": []
+      }
+    },
+    {
+      "check": "controller selects mirror roster",
+      "passed": true,
+      "details": 11
+    },
+    {
+      "check": "controller jump reaches landing release boundary",
+      "passed": true,
+      "details": 11
+    },
+    {
+      "check": "one native tick per callback",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "failures": []
+      }
+    },
+    {
+      "check": "SDK counters show zero lag and one vblank per callback",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "lag_increments": 0,
+        "failures": []
+      }
+    },
+    {
+      "check": "STAT77 OBJ overflow stays clear",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports display intact approved 64-frame payloads",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "failures": []
+      }
+    },
+    {
+      "check": "both ports retain exact canvas scale, palette and floor pivot",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "failures": []
+      }
+    },
+    {
+      "check": "no callback replaces both actor pages",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "uploads": {
+          "0": 993,
+          "1": 264
+        }
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 1,
+        "holds": {
+          "17": 20,
+          "18": 22,
+          "19": 12,
+          "16": 56
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 1
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 1
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 1,
+        "holds": {
+          "20": 18,
+          "21": 9,
+          "22": 5,
+          "23": 8
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 1,
+        "holds": {
+          "24": 14,
+          "25": 8,
+          "26": 6,
+          "27": 12
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 1
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 1,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 1,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 1
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 1
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 1
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 1
+      }
+    },
+    {
+      "check": "idle breath holds its guard longer than inhale",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 2,
+        "holds": {
+          "17": 20,
+          "18": 22,
+          "19": 12,
+          "16": 56
+        }
+      }
+    },
+    {
+      "check": "landing plants compression at actual floor",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 2
+      }
+    },
+    {
+      "check": "landing releases through crouch and guard with fixed grounding",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 2
+      }
+    },
+    {
+      "check": "distance-driven forward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 2,
+        "holds": {
+          "20": 18,
+          "21": 9,
+          "22": 5,
+          "23": 8
+        }
+      }
+    },
+    {
+      "check": "distance-driven backward gait keeps all four poses",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 2,
+        "holds": {
+          "24": 14,
+          "25": 8,
+          "26": 6,
+          "27": 12
+        }
+      }
+    },
+    {
+      "check": "physical punch immediately interrupts visual landing release",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 2
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 2,
+        "key": "x"
+      }
+    },
+    {
+      "check": "strong contact art remains aligned to native active window",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "strong recovery reclaims guard before action expires",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 2,
+        "key": "a"
+      }
+    },
+    {
+      "check": "actual opposing throw traverses complete downed flow",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 2
+      }
+    },
+    {
+      "check": "ground impact settles into prone hold",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 2
+      }
+    },
+    {
+      "check": "get-up plants hand before upright wake guard",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 2
+      }
+    },
+    {
+      "check": "pause freezes weighted animation",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "port": 2
+      }
+    },
+    {
+      "check": "knockdown launch and fall follow actual velocity",
+      "passed": true,
+      "details": {
+        "fighter": 11
+      }
+    },
+    {
+      "check": "real throw/hit hitstop freezes both weighted clocks",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "samples": 16
+      }
+    },
+    {
+      "check": "every non-animation Fighter byte and combat trace matches base",
+      "passed": true,
+      "details": {
+        "fighter": 11,
+        "callbacks": 1257,
+        "non_animation_sha256": "c4b73d2ca56d0678a246153a6518f4c85bb862ea2892329feba34e75e9e54dbb",
+        "requested_and_uploaded_frames": [
+          [
+            3,
+            5,
+            6,
+            7,
+            8,
+            12,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            42,
+            43,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            61,
+            62,
+            63
+          ],
+          [
+            3,
+            5,
+            6,
+            7,
+            12,
+            14,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            42,
+            43,
+            48,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63
+          ]
+        ],
+        "actor_page_changes_per_callback": {
+          "0": 993,
+          "1": 264
+        },
+        "cadence_failures": [],
+        "sdk_lag_increments": 0,
+        "native_timing_failures": [],
+        "obj_overflow_failures": [],
+        "geometry_failures": [],
+        "payload_failures": []
+      }
+    },
+    {
+      "check": "all 219 generated assets match integration base",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "all RAM/direct-page symbol addresses and names match base",
+      "passed": true,
+      "details": 1276
+    },
+    {
+      "check": "all linker ROM sections fit their 32 KiB LoROM banks",
+      "passed": true,
+      "details": []
+    }
+  ],
+  "base_rom_sha256": "50332438739f93808ece5c192c06ab85288d964158faa58db69378c9559d204b"
+}
