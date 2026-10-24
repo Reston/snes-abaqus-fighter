@@ -176,6 +176,31 @@ def overlay_pair(root, data, fighter, frame, defender_frame, gap16, face=1, ay=0
 
 def overlays(root, data, directory):
     directory.mkdir(parents=True, exist_ok=True)
+    # Preserve a review surface for EVERY final pose, including the three
+    # new super slots and all jump/landing/startup/recovery hurt silhouettes.
+    # Orange is stored candidate geometry, not an assertion of eligibility:
+    # canHit's temporal/action gates still decide when it can be evaluated.
+    for fighter in range(12):
+        atlas = Image.open(root / f'assets/generated/fighter{fighter:02d}.png').convert('RGBA')
+        full = Image.new('RGB', (8*192, 8*104+24), (25, 30, 42))
+        draw = ImageDraw.Draw(full)
+        draw.text((4, 4), 'Green: hurt. Orange: stored strike candidate; action/phase/pulse gates apply. Violet: air A rear only.', fill='white')
+        for frame in range(64):
+            for facing in (0, 1):
+                raster = atlas.crop((frame*96, 0, (frame+1)*96, 80))
+                if not facing:
+                    raster = raster.transpose(Image.Transpose.FLIP_LEFT_RIGHT)
+                ox, oy = (frame % 8)*192+(1-facing)*96, (frame//8)*104+44
+                full.paste(raster, (ox, oy), raster)
+                for i, rect in enumerate(data['poses'][fighter][frame]):
+                    l, t, r, b = rect
+                    if l == r:
+                        continue
+                    if not facing:
+                        l, r = 96-r, 96-l
+                    draw.rectangle((ox+l, oy+t, ox+r-1, oy+b-1), outline=('#4bdf9e', '#4bdf9e', '#e8ae65', '#a8a3ff')[i])
+            draw.text(((frame % 8)*192+4, (frame//8)*104+28), f'{fighter:02d} / frame {frame}', fill='white')
+        full.save(directory / f'{fighter:02d}-all64-regions.png')
     # Full roster, both facings, representative high/low/air/rise/rush poses.
     sheet = Image.new('RGB', (6*192, 12*112), (25, 30, 42))
     d = ImageDraw.Draw(sheet)

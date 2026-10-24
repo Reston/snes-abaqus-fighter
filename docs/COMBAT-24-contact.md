@@ -8,6 +8,15 @@ art and the combined pacing are **not** certified by this isolated result.
 host/core, commands, coverage and failure arrays. No shared six-suite report or
 release identity is replaced.
 
+The isolated proof passes on ROM
+`c2cefc9bc385c88e728c7b2845607c465d765ec6250d0085f35efe5d6915feac`,
+runtime/driver source `d29cfe489dd224eef89c8d8acb830ff96e20c6d8`:
+108 native sessions and 52,083 measured live callbacks cover all12 fighters on
+both ports. Cadence, native timing, ambient, OBJ-overflow and SPC failure arrays
+are empty. All1,318 prior RAM/direct-page labels and all219 generated assets
+remain exact. The later all64 diagnostic appendix changes only offline drawing;
+its `--check` confirms the existing cartridge geometry header is still exact.
+
 ## Behavior
 
 Each of the 768 native poses has two compact hurt bands, one distal forward
@@ -120,6 +129,10 @@ separate per-callback VRAM comparison enforces at most one changed actor and
 `screenshots/combat-24-contact/roster-pose-regions.png` overlays the evaluated
 regions on native pixels. `exact-contact-boundaries.png` and `boundaries.json`
 show exact edge-touch misses beside one-pixel overlaps across the roster.
+The twelve `NN-all64-regions.png` appendices include every pose on both facings,
+so future super1/2/4 and jump/landing revisions also receive automatic overlays.
+Their orange rectangles are stored strike candidates: action, phase and pulse
+eligibility still apply; an orange outline never grants an idle/startup attack.
 The two before/after GIFs use controller-only native captures of baseline main
 and the isolated candidate. GIF frame durations approximate native cadence;
 the cartridge and recorded native counters remain authoritative.
