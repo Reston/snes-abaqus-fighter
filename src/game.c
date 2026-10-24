@@ -758,17 +758,20 @@ void controls(u8 p) {
         (A).combo=0;(A).combotime=0;(A).counter=0; \
         impactBannerCombo=0;impactBannerCounter=0; \
     } else { \
-        (A).counter=0; \
+        (A).counter=0;impactBannerCounter=0; \
         /* The empty-link case only writes 255 back to the same field. */ \
         if((D).throwVictim!=255)releaseHeldVictim(DI); \
-        if((D).action && (D).tick<(D).actionStartup) {dmg+=3;(A).counter=1;} \
+        if((D).action) { \
+            if((D).tick<(D).actionStartup) {dmg+=3;(A).counter=1;impactBannerCounter=1;} \
+            else if((D).tick>=(D).actionActiveEnd)impactBannerCounter=2; \
+        } \
         /* Only an uninterrupted hit reaction links a true combo.  The \
          * display timer is cosmetic and must never establish a link. */ \
         if((D).hurt && !(D).guard && (A).combo)(A).combo++;else (A).combo=1; \
         (A).combotime=45;applyHitReaction(DI,dmg); \
         back=(A).energy+8; \
         (A).energy=back>ENERGY_MAX?ENERGY_MAX:back; \
-        impactBannerCombo=(A).combo;impactBannerCounter=(A).counter; \
+        impactBannerCombo=(A).combo; \
     } \
     /* Snapshot feedback now; construct its tilemap after the first frozen \
      * HUD tick, away from contact physics and the new actor pose uploads. */ \
@@ -809,17 +812,20 @@ u8 hurtWithRecoil(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable,u8
         a->combo=0;a->combotime=0;a->counter=0;
         impactBannerCombo=0;impactBannerCounter=0;
     } else {
-        a->counter=0;
+        a->counter=0;impactBannerCounter=0;
         /* The empty-link case only writes 255 back to the same field. */
         if(d->throwVictim!=255)releaseHeldVictim(defender);
-        if(d->action && d->tick<d->actionStartup) {dmg+=3;a->counter=1;}
+        if(d->action) {
+            if(d->tick<d->actionStartup) {dmg+=3;a->counter=1;impactBannerCounter=1;}
+            else if(d->tick>=d->actionActiveEnd)impactBannerCounter=2;
+        }
         /* Only an uninterrupted hit reaction links a true combo.  The
          * display timer is cosmetic and must never establish a link. */
         if(d->hurt && !d->guard && a->combo)a->combo++;else a->combo=1;
         a->combotime=45;applyHitReaction(defender,dmg);
         back=a->energy+8;
         a->energy=back>ENERGY_MAX?ENERGY_MAX:back;
-        impactBannerCombo=a->combo;impactBannerCounter=a->counter;
+        impactBannerCombo=a->combo;
     }
     /* Snapshot feedback now; construct its tilemap after the first frozen
      * HUD tick, away from contact physics and the new actor pose uploads. */
@@ -1281,7 +1287,8 @@ void fightTick(void) {
             if(impactBannerPending) {
                 clearBanner();impactBannerPending=0;
                 if(impactBannerCombo>1 || impactBannerCounter) {
-                    word(impactBannerPlayer?20:2,9,impactBannerCounter?"COUNTER!":"COMBO!");
+                    if(impactBannerCounter==2)word(impactBannerPlayer?20:2,9,"PUNISH!");
+                    else word(impactBannerPlayer?20:2,9,impactBannerCounter?"COUNTER!":"COMBO!");
                     if(impactBannerCombo>1)put(impactBannerPlayer?28:10,9,'0'+(impactBannerCombo%10));
                 }
                 if(resetFooterPending){clearFightHint();resetFooterPending=0;}

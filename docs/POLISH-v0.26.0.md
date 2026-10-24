@@ -95,3 +95,17 @@ The focused checkpoint passes all twelve fighters' P2 movement, opposing
 directions, four normal buttons, ordinary special, naturally funded super,
 reset retention and return-to-Stand checks. Default Stand keeps ignoring P2
 combat buttons. No new global state or fighter ABI fields are added.
+
+## Pass 7: reward readable defense
+
+An unblocked hit during an opponent's attack recovery displays **PUNISH!**.
+The existing **COUNTER!** cue retains its startup-hit meaning and damage bonus.
+Punish feedback adds no damage, stun, meter gain or recovery changes. Blocks
+and ordinary neutral hits do not advertise a punish. The existing deferred
+impact banner carries the cue; no new RAM or transfer range is used.
+
+The full proof passes 120 paired baseline/candidate cases: blocked heavy punch
+and kick into real jab retaliation, startup counter, ordinary hit and guard,
+for all twelve fighters on both ports. Identical controller streams preserve
+every unmasked Fighter/Wave byte, RNG and controller latch. Native glyph/PPU
+checks verify the actual feedback; strict cadence, OBJ and audio checks pass.
