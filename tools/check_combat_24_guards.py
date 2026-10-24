@@ -13,9 +13,12 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 from test_champion import host_contract
 
-SUITES=('tools/test_pose_revision_guards.py','tools/test_v024_preservation_guards.py')
+SUITES=('tools/test_pose_revision_guards.py','tools/test_v024_preservation_guards.py',
+        'tools/test_combat_24_evidence.py')
 INPUTS=(*SUITES,'tools/pose_revision_assets.py','tools/v024_contracts.py',
-        'tools/check_combat_24_guards.py','tools/test_champion.py')
+        'tools/check_combat_24_guards.py','tools/test_champion.py',
+        'tools/collate_combat_24.py','tools/compare_special_24_state.py',
+        'tools/test_special_24_timing.py','tools/test_special_24_cpu_timing.py')
 
 
 def require(ok,message):

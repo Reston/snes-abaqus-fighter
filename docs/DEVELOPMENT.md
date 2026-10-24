@@ -70,6 +70,8 @@ compiler stack locals are 29 bytes, compared with 6,985 and 128 before this
 optimization. No global RAM or assembly changes are needed. The
 [special timing proof](COMBAT-24-SPECIAL-TIMING.md) records the regression
 streams, state comparisons and independent-core limits.
+Fighter updates and contact queries also select direct actor addresses once;
+their original condition, transform and write order remains intact.
 
 The six `COMBAT-24-*` feature notes retain implementation and isolated history.
 Use current report identities and the final verification record for combined

@@ -2,6 +2,7 @@
 import argparse
 import ast
 import hashlib
+import itertools
 import json
 from pathlib import Path
 import subprocess
@@ -71,6 +72,62 @@ def counted_checks(report,name):
     return checks
 
 
+def validate_timing(report,version,rom):
+    require(report.get('status')=='passed' and report.get('version')==version and
+            report.get('rom_sha256')==rom,'Stale or failed native optimization regression proof')
+    matrix=list(itertools.product(range(12),range(3),range(3),range(2),('wide','close')))
+    identity=('fighter','stage','phase','approach_port','spacing')
+
+    def native(proof,engine,expected,fields,producer):
+        require(proof.get('status')=='passed' and proof.get('rom_sha256')==rom and
+                proof.get('engine')==engine,'Timing native aggregate is stale or failed')
+        require(proof.get('producer_sha256')==sha(canonical(producer,(ROOT/producer).read_bytes())),
+                'Timing native producer differs')
+        host=proof.get('host',{})
+        require(host.get('gui_opened') is False and host.get('audio_device_opened') is False,
+                'Timing native headless contract missing')
+        cases=proof.get('cases',[])
+        require([tuple(row[n] for n in fields) for row in cases]==expected,
+                'Timing native case inventory differs')
+        for row in cases:
+            require(row.get('status')=='passed' and not row.get('failures') and
+                    row.get('sdk_lag_increments')==0 and row.get('callbacks',0)>0,
+                    'Current timing case failed: '+str(tuple(row[n] for n in fields)))
+            failure_arrays(row,'current timing case')
+        return cases
+
+    cases=native(report['candidate_native'],'snes9x',matrix,identity,'tools/test_special_24_timing.py')
+    comparison=report['comparison']
+    require(comparison.get('status')=='passed' and comparison.get('rom_sha256')==rom and
+            comparison.get('producer_sha256')==sha(canonical('tools/compare_special_24_state.py',
+                (ROOT/'tools/compare_special_24_state.py').read_bytes())),
+            'Timing state comparison is stale or failed')
+    require(comparison.get('normalization') is False and comparison.get('fighter_bytes')==128 and
+            comparison.get('wave_bytes')==32 and comparison.get('whole_state_fields')==
+                ['fighters_hex','waves_hex','recoil','supers_hex'] and
+            comparison.get('candidate_collapsed_callbacks')==0 and not comparison.get('issues') and
+            comparison.get('case_count')==432,'Timing whole-state comparison contract differs')
+    compared=comparison.get('cases',[])
+    require([tuple(row[n] for n in identity) for row in compared]==matrix,
+            'Timing comparison case inventory differs')
+    for original,row in zip(cases,compared,strict=True):
+        require(row.get('status')=='passed' and not row.get('issues') and not row.get('differences') and
+                row.get('ordered_complete_frame_sets_equal') is True and
+                row.get('candidate_collapsed_callbacks')==0 and row.get('logical_ticks')==original['callbacks'],
+                'Current timing whole-state comparison failed')
+    require(comparison.get('logical_ticks')==sum(row['callbacks'] for row in cases),
+            'Timing compared tick total differs')
+    cpus=native(report['cpu_snes9x'],'snes9x',list(itertools.product(range(12),range(3))),
+                ('fighter','difficulty'),'tools/test_special_24_cpu_timing.py')
+    for row in cpus:
+        require(row.get('comparison',{}).get('status')=='passed' and
+                not row['comparison'].get('differences') and
+                row['comparison'].get('logical_ticks')==row['callbacks'],
+                'Current CPU whole-state comparison failed')
+    native(report['cpu_accuracy'],'accuracy',[(f,2) for f in range(12)],
+           ('fighter','difficulty'),'tools/test_special_24_cpu_timing.py')
+
+
 def collect(source_ref):
     manifest=read('dist/manifest.json');rom=sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes())
     require(manifest['version']=='0.24.0' and manifest['sha256']==rom and manifest['bytes']==4194304,'Wrong current cartridge')
@@ -122,8 +179,7 @@ def collect(source_ref):
             'sha256':sha((ROOT/composition_path).read_bytes()),'cases':len(cases)}
     timing_path='docs/combat-24-special-timing-report.json'
     timing=read(timing_path)
-    require(timing.get('status')=='passed' and timing.get('version')==manifest['version'] and
-            timing.get('rom_sha256')==rom,'Stale or failed native optimization regression proof')
+    validate_timing(timing,manifest['version'],rom)
     # This report deliberately retains failing historical baseline and
     # Accuracy byte comparisons. Its counts are not pooled with current suites.
     records[Path(timing_path).name]={'path':timing_path,'sha256':sha((ROOT/timing_path).read_bytes()),
