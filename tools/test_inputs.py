@@ -30,6 +30,7 @@ P2_STATUS_ATTR = 0x6000
 MENU_CORE_OPTIONS = {"snes9x_up_down_allowed": "enabled"}
 DELIBERATE_PACING=tuple(map(int,json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.'))) >= (0,25,0)
 PLAY_FLOW=tuple(map(int,json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.'))) >= (0,26,0)
+CLASSIC_MENUS=tuple(map(int,json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.'))) >= (0,27,0)
 _screen_address: int | None = None
 
 
@@ -3939,8 +3940,12 @@ def _capture_cpu_approach(difficulty: int) -> dict[str, object]:
                     return {"initial": initial, "start": sample,
                             "after": after, "index": index}
                 continue
-            e.run(1, p1=["right"] if sample["x1"] < sample["x2"]
-                  else ["left"])
+            forward = "right" if sample["x1"] < sample["x2"] else "left"
+            back = "left" if sample["x1"] < sample["x2"] else "right"
+            # Hold the measured band while a normal finishes; continuously
+            # walking forward can cross the CPU before its neutral decision.
+            e.run(1, p1=[forward] if distance > 46 else
+                  ([back] if distance < 29 else [back, "down"]))
     finally:
         e.close()
     raise AssertionError(("CPU approach never enters 29..46px spacing",
@@ -4083,7 +4088,11 @@ def check_cpu_special_spacing() -> dict[str, object]:
             if DELIBERATE_PACING:
                 # Fresh jump edges across the signature's established phase,
                 # rather than a held UP that only creates one long arc.
-                return ['up'] if 89 <= (sample['frame']+5*13)%97 <= 91 else []
+                if 92 <= (sample['frame']+5*13)%97 <= 94:
+                    return ['up']
+                # Guard between attempts so an intervening normal
+                # cannot KO the fixture before a later signature window.
+                return ['left' if sample['x1'] < sample['x2'] else 'right', 'down']
             return ["up"]
         rising_phase=(12,4,16)[difficulty] if DELIBERATE_PACING else (16 if difficulty==1 else 0)
         rising = _capture_cpu_special(5, difficulty, rising_phase,
@@ -4487,16 +4496,21 @@ def check_cpu_anti_air() -> dict[str, object]:
         # controller-only phases retain every original reaction assertion.
         fixtures=((0,1,2),(0,2,19),(2,2,1),(4,1,3),
                   (6,2,2),(5,1,7),(5,2,10))
+    if CLASSIC_MENUS:
+        # Faster roster transitions change the native frame at the opening.
+        # Measured controller-only delays retain the same hit/startup checks.
+        fixtures=((0,1,0),(0,2,7),(2,2,0),(4,1,5),
+                  (6,2,0),(5,1,1),(5,2,5))
     cases = [_cpu_jump_in(cpu, difficulty, delay)
              for cpu, difficulty, delay in fixtures]
     hits = [_cpu_uppercut_start(case, hit=True) for case in cases]
-    retreat = _cpu_jump_in(2, 2, 25 if PLAY_FLOW else 24 if DELIBERATE_PACING else 13, retreat=True, kick=False)
+    retreat = _cpu_jump_in(2, 2, 23 if CLASSIC_MENUS else 25 if PLAY_FLOW else 24 if DELIBERATE_PACING else 13, retreat=True, kick=False)
     whiff = _cpu_uppercut_start(retreat, hit=False)
 
     # Equal menu frame counts align Normal's title+20 with Hard/Easy's
     # difficulty-button tap. The same visible opening does not assure a
     # reaction: Hard intercepts here, Normal misses its sampled opportunity.
-    comparison_cpu,comparison_delay=(5,10) if PLAY_FLOW else (5,9) if DELIBERATE_PACING else (4,5)
+    comparison_cpu,comparison_delay=(5,5) if CLASSIC_MENUS else (5,10) if PLAY_FLOW else (5,9) if DELIBERATE_PACING else (4,5)
     easy = _cpu_jump_in(comparison_cpu, 0, comparison_delay)
     normal = _cpu_jump_in(comparison_cpu, 1, comparison_delay+20)
     hard = cases[6 if DELIBERATE_PACING else 4]
@@ -4514,7 +4528,7 @@ def check_cpu_anti_air() -> dict[str, object]:
     # The four-button CPU chooses from four normals instead of six. In the
     # equal-opening comparison above Normal is occupied by a strong normal;
     # this separately measured phase retains a genuinely free sampled miss.
-    decline_delay=29 if DELIBERATE_PACING else 0
+    decline_delay=0 if CLASSIC_MENUS else 29 if DELIBERATE_PACING else 0
     normal_decline = _cpu_jump_in(comparison_cpu, 1, decline_delay)
     check(not any(sample["action2"] == 8 for sample in normal_decline["samples"]),
           "Normal's available-window fixture genuinely declines the uppercut")
@@ -4536,8 +4550,8 @@ def check_cpu_anti_air() -> dict[str, object]:
     # A rush CPU occupied by a normal can be crossed and genuinely hurt by
     # the jump kick. Its locked facing exposes a real behind-target window;
     # free grounded CPUs turn normally before choosing their input.
-    busy = _cpu_jump_in(2, 1)
-    crossed = _cpu_jump_in(2, 2, 4)
+    busy = _cpu_jump_in(2, 1, 21 if CLASSIC_MENUS else 0)
+    crossed = _cpu_jump_in(2, 2, 1 if CLASSIC_MENUS else 4)
     cases.extend((retreat, easy, normal, normal_decline, empty_jump, busy, crossed))
     negatives: dict[str, list[tuple[dict[str, int], dict[str, int]]]] = {
         name: [] for name in ("grounded", "far", "behind-locked", "unavailable",

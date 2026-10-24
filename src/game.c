@@ -161,6 +161,11 @@ void traceProfiles(void);
 #include "stage_depth.h"
 
 const char arenaNames[3][12] = {"LAS CONDES","EL CASTILLO","LA OFICINA"};
+/* Menu-only palette zero. Portrait palette one and combat UI stay exact. */
+const u16 menuUiColors[16] = {
+    0x0000,0x0843,0x67df,0x2afe,0x223d,0x299d,0x3612,0x4af9,
+    0x14ea,0x0c86,0x21f4,0x194d,0x73df,0x19b9,0x150c,0x4b3d
+};
 const u8 power[12] = {3,4,2,3,5,4,4,4,2,3,3,4};
 const u8 startup[10] = {0,4,6,9,5,7,10,10,6,4};
 /* Four-button roles: strong punch 4 active ticks; spacing light kick 3. */
@@ -264,6 +269,16 @@ void cursor(u8 x,u8 y,u8 w,u8 h) {
     for(i=1;i<w-1;i++){put(x+i,y,154);put(x+i,y+h-1,154|0x8000);}
     for(i=1;i<h-1;i++){put(x,y+i,153);put(x+w-1,y+i,153|0x4000);}
 }
+void menuCursor(u8 x,u8 y,u8 w,u8 h) {
+    /* Fixed, in-bounds menu frames need no per-cell put() calls. Keep the
+     * same corner/edge tiles and attributes as cursor(). */
+    u8 i;u16 top,bottom;
+    top=(u16)y*32+x;bottom=top+(u16)(h-1)*32;
+    ui[top]=0x2095;ui[top+w-1]=0x2096;
+    ui[bottom]=0x2097;ui[bottom+w-1]=0x2098;
+    for(i=1;i<w-1;i++){ui[top+i]=0x209a;ui[bottom+i]=0xa09a;}
+    for(i=1;i<h-1;i++){top+=32;ui[top]=0x2099;ui[top+w-1]=0x6099;}
+}
 #include "audio_presentation.h"
 
 void music(u8 index) {
@@ -284,6 +299,7 @@ void commonScreen(void) {
     oamClear(0,128);
     dmaCopyVram(&ui_tiles,0x4000,UI_TILES_SIZE);
     dmaCopyCGram(&ui_pal,0,UI_PAL_SIZE);
+    if(screen<FIGHT)dmaCopyCGram((u8 *)menuUiColors,0,32);
     bgSetGfxPtr(0,0x0000);bgSetMapPtr(0,0x3800,SC_32x32);
     bgSetGfxPtr(1,0x4000);bgSetMapPtr(1,0x5800,SC_32x32);
     setMode(BG_MODE1,0);bgSetEnable(0);bgSetEnable(1);bgSetDisable(2);
@@ -310,9 +326,10 @@ void loadBackground(u8 which) {
 void finishScreen(void) { dmaCopyVram((u8 *)ui,0x5800,2048);fullDirty=0;footerDirty=0;setScreenOn(); }
 void drawTitle(void) {
     clearUi();
-    word(9,20,"ARCADE SHIFT");word(9,22,"LOCAL 1V1 / 2P");word(9,24,"TRAINING");
-    word(7,20+menu*2,">");word(3,25,"L/R LEVEL");put(13,25,'1'+difficulty);
-    word(18,25,difficulty==0?"EASY":(difficulty==1?"NORMAL":"HARD"));
+    word(11,18,"ARCADE");word(11,20,"LOCAL 1V1");word(11,22,"TRAINING");
+    word(8,18+menu*2,">");word(9,24,"L/R");
+    word(14,24,difficulty==0?"EASY":(difficulty==1?"NORMAL":"HARD"));
+    word(3,27,"A/START OK");
     word(24,27,"V" ABAQUS_GAME_VERSION);
 }
 void showTitle(void) {
@@ -321,24 +338,29 @@ void showTitle(void) {
     music(0);finishScreen();
 }
 void drawSelect(void) {
-    u8 id,x,y,family;
+    u8 id,x,y;
     clearUi();id=selectPlayer ? selected2:selected;
-    cursor(1+(id%4)*5,6+(id/4)*6,5,6);
-    /* Dedicated source-master portrait: eight by ten BG2 tiles. */
-    for(y=0;y<10;y++)for(x=0;x<8;x++)
-        ui[(u16)(y+6)*32+x+23]=(160+(u16)y*8+x)|0x2400;
-    if(mode==2 && selectPlayer)word(23,4,"DUMMY");
-    else word(23,4,selectPlayer ? "PLAYER 2":"PLAYER 1");
-    word(22,17,characterNames[id]);
-    family=profileFor(id)->specialFamily;
-    word(22,19,"SPECIAL");
-    if(family==SPECIAL_PROJECTILE)word(22,20,"WAVE SHOT");
-    else if(family==SPECIAL_RUSH)word(22,20,"RUSH");
-    else if(family==SPECIAL_GROUNDWAVE)word(22,20,"LOW WAVE");
-    else word(22,20,"RISING");
-    word(22,22,"DOWN+Y");word(22,23,"32 ENERGY");word(22,25,"SUPER Y+B");
-    center(27,"A/START OK  B BACK");
+    /* Only two rows: avoid 816-tcc's software divide on every cursor draw. */
+    x=id<6?id:id-6;y=id<6?13:20;x=1+x*5;
+    menuCursor(x,y,5,7);
+    word(x+(selectPlayer?3:0),y,selectPlayer?"2P":"1P");
+    if(selectPlayer){
+        x=selected<6?selected:selected-6;y=selected<6?13:20;
+        word(1+x*5,y,"1P");
+    }
+    if(mode==2 && selectPlayer)word(11,3,"DUMMY");
+    else word(11,3,selectPlayer ? "PLAYER 2":"PLAYER 1");
+    word(23,3,mode==0?"ARCADE":(mode==1?"LOCAL":"TRAINING"));
+    word(11,12,characterNames[id]);
+    word(3,27,"A/START OK");word(23,27,"B BACK");
     portraitId=id;portraitDirty=1;fullDirty=1;
+}
+void uploadSelectUi(void) {
+    /* The 64x80 portrait map is static after showSelect. Keep its VRAM
+     * entries and update only role/mode, name, and the two roster rows. */
+    dmaCopyVram((u8*)&ui[3*32+11],0x5800+3*32+11,42);
+    dmaCopyVram((u8*)&ui[12*32+11],0x5800+12*32+11,42);
+    dmaCopyVram((u8*)&ui[13*32],0x5800+13*32,896);
 }
 void uploadMenuPortrait(void) {
     dmaCopyVram(menuPortraitTiles(portraitId),0x4a00,2560);
@@ -346,12 +368,17 @@ void uploadMenuPortrait(void) {
     portraitDirty=0;
 }
 void showSelect(void) {
+    u8 x,y;
     /* Character selection starts a new local rivalry. Rematches bypass it. */
     stageDepthTable[7]=0;stageDepthTable[8]=0;
-    setScreenOff();screen=SELECT;arcade=0;champion=0;commonScreen();loadBackground(4);selectPlayer=0;drawSelect();uploadMenuPortrait();music(0);finishScreen();
+    setScreenOff();screen=SELECT;arcade=0;champion=0;commonScreen();loadBackground(4);selectPlayer=0;drawSelect();
+    /* Dedicated source-master portrait: eight by ten fixed BG2 tiles. */
+    for(y=0;y<10;y++)for(x=0;x<8;x++)
+        ui[(u16)(y+3)*32+x+1]=(160+(u16)y*8+x)|0x2400;
+    uploadMenuPortrait();music(0);finishScreen();
 }
 void drawArenas(void) {
-    clearUi();cursor(1,5+arena*7,30,7);
+    clearUi();menuCursor(1,5+arena*7,30,7);
     /* Cover only the raster footer below the three unchanged choice rows.
      * Opaque original glyphs keep the old lettering from showing through. */
     panel(26,2);drawGuideWord((27*32+3)*2,"UP/DOWN A/START OK B BACK");
@@ -1370,8 +1397,8 @@ void menuTick(void) {
         choice=selectPlayer?&selected2:&selected;
         if(directions&KEY_RIGHT)*choice=(*choice+1)%12;
         if(directions&KEY_LEFT)*choice=(*choice+11)%12;
-        if(directions&KEY_UP)*choice=(*choice+8)%12;
-        if(directions&KEY_DOWN)*choice=(*choice+4)%12;
+        if(directions&KEY_UP)*choice=(*choice+6)%12;
+        if(directions&KEY_DOWN)*choice=(*choice+6)%12;
         if(directions){sound(0);drawSelect();}
         if(keys&KEY_B){if(selectPlayer){selectPlayer=0;resetMenuRepeat();drawSelect();}else showTitle();return;}
         if(keys&(KEY_A|KEY_START)) {
@@ -1445,8 +1472,14 @@ int main(void) {
         actorTransferred=actorUploadDirty;
         interfaceTransferred=fullDirty|hudDirty|bannerDirty|footerDirty|guideDirty;
         if(actorUploadDirty){uploadActor(actorUploadSource,actorUploadDestination);actorUploadDirty=0;}
+        /* A hover publishes 2560 portrait + 980 UI bytes, below the actor
+         * budget, without rebuilding the fixed portrait map every frame. */
         if(screen==SELECT && portraitDirty)uploadMenuPortrait();
-        if(fullDirty){dmaCopyVram((u8*)ui,0x5800,2048);fullDirty=0;hudDirty=0;bannerDirty=0;footerDirty=0;}
+        if(fullDirty){
+            if(screen==SELECT)uploadSelectUi();
+            else dmaCopyVram((u8*)ui,0x5800,2048);
+            fullDirty=0;hudDirty=0;bannerDirty=0;footerDirty=0;
+        }
         else if(!actorTransferred) {
             if(guideDirty) {
                 dmaCopyVram((u8*)&ui[5*32],0x5800+5*32,1472);
