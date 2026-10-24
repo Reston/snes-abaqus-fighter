@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "captures": [
+    "docs/screenshots/concise-text/before-controls.png",
+    "docs/screenshots/concise-text/before-timing.png",
+    "docs/screenshots/concise-text/before-drill-0.png",
+    "docs/screenshots/concise-text/before-drill-1.png",
+    "docs/screenshots/concise-text/before-drill-2.png",
+    "docs/screenshots/concise-text/before-result.png",
+    "docs/screenshots/concise-text/after-controls.png",
+    "docs/screenshots/concise-text/after-timing.png",
+    "docs/screenshots/concise-text/after-drill-0.png",
+    "docs/screenshots/concise-text/after-drill-1.png",
+    "docs/screenshots/concise-text/after-drill-2.png",
+    "docs/screenshots/concise-text/after-result.png",
+    "docs/screenshots/concise-text/accuracy-controls.png",
+    "docs/screenshots/concise-text/accuracy-timing.png",
+    "docs/screenshots/concise-text/accuracy-drill-0.png",
+    "docs/screenshots/concise-text/accuracy-drill-1.png",
+    "docs/screenshots/concise-text/accuracy-drill-2.png",
+    "docs/screenshots/concise-text/accuracy-result.png"
+  ],
+  "native_health": {
+    "callbacks": 6395,
+    "max_spc_backlog": 6,
+    "failures": []
+  },
+  "native_checks": 19185,
+  "pixel_checks": 538,
+  "controller_only": true,
+  "memory_writes": false,
+  "save_states": false,
+  "independent_core": {
+    "rom_sha256": "00029816d23adfe6fb950640ed4fa45fa0de05af46f3a802890333d4b4322aa3",
+    "manifest_sha256": "00029816d23adfe6fb950640ed4fa45fa0de05af46f3a802890333d4b4322aa3",
+    "rom_bytes": 4194304,
+    "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
+    "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
+  },
+  "candidate_rom_sha256": "00029816d23adfe6fb950640ed4fa45fa0de05af46f3a802890333d4b4322aa3",
+  "baseline_rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b"
+}

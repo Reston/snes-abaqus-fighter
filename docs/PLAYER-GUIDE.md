@@ -1,10 +1,10 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.26.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b; source-freeze: c89239901491a239e10194f1399820527b0ebf74 -->
+<!-- candidate-version: 0.26.1; identity: FOCUSED_UI_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 00029816d23adfe6fb950640ed4fa45fa0de05af46f3a802890333d4b4322aa3; source-freeze: 3feabef37f45a96e1ab7a82eea5d5af9159132cd -->
 
-The v0.26 polish candidate retains v0.25's slower fight rhythm and detailed
+The v0.26.1 text pass retains v0.25's slower fight rhythm and detailed
 floors, with clearer local menus, super cues and quicker practice retries.
 Main's approved revision is v0.24.0. Combined native checks pass; human playtest is pending.
-See the [playtest guide](RELEASE-v0.26.0.md) and [pass notes](POLISH-v0.26.0.md).
+See the [current text pass](RELEASE-v0.26.1.md) and [pass notes](POLISH-v0.26.0.md).
 
 This is a native SNES game. On Windows use [Play.cmd](../Play.cmd); on other
 platforms load `dist/abaqus-after-hours.sfc` in a SNES emulator.
@@ -143,7 +143,7 @@ fallible supers after defense; Easy does not choose supers.
 **Start** pauses or resumes from either pad. Without Start, **B** returns to
 the roster, **A** resumes and **Select** cycles pages. Start wins even with
 Select held. From PAUSED, Training's Select cycle is Controls **1/3**, Move
-List **2/3**, Training Tools **3/3**, then PAUSED. Versus and Arcade have the
+List **2/3**, Training **3/3**, then PAUSED. Versus and Arcade have the
 first two guide pages. Left/Right cycles within the guide pages. Move List
 names both fighters' specials and supers.
 
@@ -160,7 +160,7 @@ caption shows its state; opposite shoulders cancel. On ordinary Training
 PAUSED with CPU selected, L/R keep their difficulty-setting role.
 
 On those full guide pages, **SNES R** (P1 keyboard **C**, P2 numpad **3**)
-toggles **BACKGROUND: STILL/MOVING**. Still removes scenery drift and contact
+toggles **SCENERY STILL/MOVING**. Still removes scenery drift and contact
 shake from the background; fighters, recoil, effects and fight timing remain
 unchanged. The preference persists through scene changes and defaults to
 Moving on cold boot. Hold neither shoulder when pressing the other option.
@@ -188,7 +188,7 @@ manual control when resetting; P2 live Select does not reset the fight.
 | Ordinary Training PAUSED with CPU | L/R: Easy / Normal / Hard |
 | Any full guide page | L: music; R: background moving / still |
 | Move List 2/3 (2/2 outside Training) | Up: specials / P1 normal timings / P2 normal timings |
-| Training Tools 3/3 | Up: footer; Down: drill; X: retry |
+| Training 3/3 | Up: footer; Down: drill; X: retry |
 
 Start resumes first. Otherwise B returns to the roster, A resumes and Select
 changes the guide page before these extra shortcuts are considered. Left/Right
@@ -197,7 +197,7 @@ mapping table above when playing without controllers.
 
 ## Training tools
 
-On **Training Tools 3/3**, **Up** shows/hides the live footer and **Down** chooses
+On **Training 3/3**, **Up** shows/hides the live footer and **Down** chooses
 one of three drills:
 
 1. **Hit Confirm:** get close, land Y, then press X; or land B, then press A.
@@ -211,7 +211,7 @@ one of three drills:
    press A just after crossing. The kick must hit from behind; a front hit or block does not count.
 
 Choosing a drill supplies its required recovery-guard/CPU/Stand partner, keeping the chosen
-CPU difficulty. **SNES X on Training Tools 3/3 restarts that drill** while leaving
+CPU difficulty. **SNES X on Training 3/3 restarts that drill** while leaving
 the guide open: positions, health, energy, progress, history and combo totals
 reset. Fighter choices, arena, drill and display preference remain. Start/B/A/
 Select still take priority over X. Override the prepared partner on ordinary
@@ -222,7 +222,7 @@ Directions use absolute numpad notation: 1/2/3 down, 4/5/6 level, 7/8/9 up.
 `6Y---` means Right+Y; `-` marks an unpressed button. Neutral releases leave
 useful motion steps visible. History keeps recording while hidden.
 
-Tools 3/3 also shows **BEST**: your highest-damage earned combo in this Training
+Training 3/3 also shows **BEST**: your highest-damage earned combo in this Training
 session, with its hit count. Equal damage keeps the combo with more hits.
 Select and X retries keep that record; returning to character select clears
 it for a new session. The live NOW/LAST totals still describe the current or

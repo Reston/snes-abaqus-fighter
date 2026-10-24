@@ -1,0 +1,32 @@
+{
+  "status": "focused-ui-verified",
+  "version": "0.26.1",
+  "rom_sha256": "00029816d23adfe6fb950640ed4fa45fa0de05af46f3a802890333d4b4322aa3",
+  "checksum": "A4A4",
+  "source_commit": "3feabef37f45a96e1ab7a82eea5d5af9159132cd",
+  "parent_commit": "dc1260b5512aa946e6006c8ac7bf2ebb2a02a9b3",
+  "focus_checks": 6606,
+  "report_sha256": {
+    "docs/concise-text-training-report.json": "7a70019e8b03abfc6242b3cede6625b1387153f519a966388c96fd6e4bf0442d",
+    "docs/concise-text-presentation-report.json": "816c8b415fd34baf4de78c222bddaafd4099ff60bbf1d32f977400a6807ac3de",
+    "docs/concise-text-preservation-report.json": "b630870c98b7bcda79f0eb6f45253dda25bfb0f59f819a42a43922c38905c304",
+    "docs/concise-text-capture-report.json": "4b0f2730df717bb1017020f89bd9683a25a848f6173e0372bc226ef0a1898676"
+  },
+  "review_media_sha256": {
+    "docs/screenshots/concise-text/before-drill-0.png": "9b42a0e570b4f040bc6964f4e357845633e1a0d74dc4a939183cfb01a3f7aa43",
+    "docs/screenshots/concise-text/after-drill-0.png": "e2bbe27b17b132616914eba6609e034dc212fa875d497d79d062b33f34298e06",
+    "docs/screenshots/concise-text/before-drill-1.png": "2b80f3a41423e7694962d02d6e46a35fc65a4821dd7de681c1296f38919c50e6",
+    "docs/screenshots/concise-text/after-drill-1.png": "9a8a4ec6514f19d13aa7ad14c627bfc2a12e6912faaeac5cf11926d6233a3f7f",
+    "docs/screenshots/concise-text/before-drill-2.png": "69bdce5834c5263c756c4df6f852b2c24c7cfb05202e0138a422a2a3a5b9f956",
+    "docs/screenshots/concise-text/after-drill-2.png": "bd651f9dcbe675b6e2fa488116089f729adf8aa0d09c7569918f2f62b246448e",
+    "docs/screenshots/concise-text/before-timing.png": "8d49754971b1b6e9e21e4e97e63f514a5767951224c0a3856318a8863df455d5",
+    "docs/screenshots/concise-text/after-timing.png": "740abf3762b956081c0e7cd237956a4e69fcd2cd792bea7c8ca3a8bd49c300ad",
+    "docs/screenshots/concise-text/before-controls.png": "8007defdbf1e9756ec53824347cbc8492ca149aef91f2a02a752f71d27c1e8f8",
+    "docs/screenshots/concise-text/after-controls.png": "6937abad0ec738e9a0fd4d0daae3a42d63c49d22bdc1c8a463f0728574007a17",
+    "docs/screenshots/concise-text/before-result.png": "f6ba5734d895b03f2254e3457c2543dafb0c227317814f91772ff9a5635dc67f",
+    "docs/screenshots/concise-text/after-result.png": "7e2fc8ba0ff6526d66008e146cc45b10fcea7bcf5782d1eb9c264dbc6d5f25fa"
+  },
+  "review_sha256": "c06eb50eccc1f21b9b07221e183a778595756e9ccfec2213d02341de004a73dd",
+  "full_six_suite_claimed": false,
+  "human_playtest_approved": null
+}
