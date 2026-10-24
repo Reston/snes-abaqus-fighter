@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "scope": "attack-v1",
+  "baseline_commit": "f75005d",
+  "fighters": [
+    {
+      "id": 0,
+      "slug": "00-damian",
+      "provenance": "assets/art/characters/00-damian/attack-v1.json",
+      "provenance_sha256": "55360ba8cdff1212a067936a43d17a8865e7520be92d292dd5796825c3e6f32d"
+    },
+    {
+      "id": 1,
+      "slug": "01-ivo",
+      "provenance": "assets/art/characters/01-ivo/attack-v1.json",
+      "provenance_sha256": "fb3b2eeb0186590f206d542807151fffbaa1f2e23d38cee421b0278e57ac16cb"
+    },
+    {
+      "id": 2,
+      "slug": "02-cristobal",
+      "provenance": "assets/art/characters/02-cristobal/attack-v1.json",
+      "provenance_sha256": "6d37ee08af3d7660336dc7da0f3c8fc6faa2fb118493a6edc589f923fa25d2c0"
+    },
+    {
+      "id": 3,
+      "slug": "03-cote",
+      "provenance": "assets/art/characters/03-cote/attack-v1.json",
+      "provenance_sha256": "1bcd31f71b471a7ff8266d8aefe2cb914e102718d7021ea61e413e190dfd6fc7"
+    },
+    {
+      "id": 4,
+      "slug": "04-negger",
+      "provenance": "assets/art/characters/04-negger/attack-v1.json",
+      "provenance_sha256": "0c886916b3ab2e0bb4b4888bb68011fc4154873bcde09178baaabd12faa82920"
+    },
+    {
+      "id": 5,
+      "slug": "05-david",
+      "provenance": "assets/art/characters/05-david/attack-v1.json",
+      "provenance_sha256": "45720038315ba1b0080970e81a486ed71aad273a16e73ba0090f69862d2493b1"
+    },
+    {
+      "id": 6,
+      "slug": "06-fernando",
+      "provenance": "assets/art/characters/06-fernando/attack-v1.json",
+      "provenance_sha256": "c3060bdc3735b6ba0199e3bf3272a077dfed50c248b4f1acf8320052e6ed1a87"
+    },
+    {
+      "id": 7,
+      "slug": "07-cristian",
+      "provenance": "assets/art/characters/07-cristian/attack-v1.json",
+      "provenance_sha256": "446b021f4cc8c679fa60df740d596f31c78096e2dd03e2f335e80a549cd0c744"
+    },
+    {
+      "id": 8,
+      "slug": "08-mamariaga",
+      "provenance": "assets/art/characters/08-mamariaga/attack-v1.json",
+      "provenance_sha256": "1a39e96fa2b3db591d425926742c2b6f17ace0435fc4962388a7e050453262d8"
+    },
+    {
+      "id": 9,
+      "slug": "09-reston",
+      "provenance": "assets/art/characters/09-reston/attack-v1.json",
+      "provenance_sha256": "83bcc27834182890eb7f4008145286b1015c717a97e5a8deabae93e68746987a"
+    },
+    {
+      "id": 10,
+      "slug": "10-roxana",
+      "provenance": "assets/art/characters/10-roxana/attack-v1.json",
+      "provenance_sha256": "e49cb38b375d0ab141bc9c1c8c29ecd2a986d35719702784f23c61b443c3bf8a"
+    },
+    {
+      "id": 11,
+      "slug": "11-lars",
+      "provenance": "assets/art/characters/11-lars/attack-v1.json",
+      "provenance_sha256": "ce636ddf50b817e12526466e205def3accf022ffbcb7284603f7e4a5303fd39b"
+    }
+  ]
+}
