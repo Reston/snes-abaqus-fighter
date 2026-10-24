@@ -1,12 +1,12 @@
 # Native SNES implementation
-<!-- candidate-version: 0.24.0; identity: TECHNICALLY_VERIFIED_HUMAN_PENDING; rom-sha256: 408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79; source-freeze: a1ee733aea036ad985bca9bdee29cc170cabd2ac -->
+<!-- candidate-version: 0.24.0; identity: TECHNICALLY_VERIFIED_USER_MERGE_APPROVED; rom-sha256: 408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79; source-freeze: a1ee733aea036ad985bca9bdee29cc170cabd2ac -->
 
-## Current v0.24 integration
+## Current main revision: v0.24.0
 
 <!-- v024-development-status:start -->
 All six feature PRs are merged into `integration/readable-combat-v024`.
 Final source/test freeze: `a1ee733aea036ad985bca9bdee29cc170cabd2ac`. The exact-ROM verification passed;
-PR #14 remains unmerged into main for one human combined playtest.
+PR #14 merged into main with user approval on 2026-10-24.
 <!-- v024-development-status:end -->
 Read [the shared implementation contract](COMBAT-v0.24-CONTRACT.md) and
 [the playtest guide](RELEASE-v0.24.0.md) for ownership and scope.
@@ -28,7 +28,7 @@ reproduction and authoring guards pass. Focused counts: pacing/recoil 238,137; a
 Stage focused coverage shares the stage suite's native execution and is not
 counted again as an independent run. Isolated/interim counts are not pooled.
 See [final exact-ROM verification](verification-v0.24.0.json).
-Human playtest remains pending; PR #14 stays unmerged. No offline package or human approval is claimed.
+The user approved PR #14 for merge. Detailed live playtest feedback remains unrecorded; no new offline package or public-release approval is claimed.
 <!-- v024-technical-status:end -->
 
 The current native allocation is:

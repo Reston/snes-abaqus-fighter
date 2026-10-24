@@ -34,8 +34,8 @@ footer{margin-top:28px;color:var(--muted);font-size:.8rem}
 <p class="intro" style="margin-top:14px">Review slower combat and backward recoil together with coordinated attacks, visible contacts, connected stages, expressive jumps and dedicated super art.</p>
 <div class="notice">
 <!-- v024-review-notice:start -->
-<p><strong>Technical verification passed · human playtest pending.</strong></p>
-<p>All six features and final media bind the frozen native ROM. <a href="https://github.com/Reston/snes-abaqus-fighter/pull/14">PR #14</a> stays unmerged into main for one human combined playtest.</p>
+<p><strong>Technical verification passed · user approved for merge.</strong></p>
+<p>All six features and final media bind the frozen native ROM. <a href="https://github.com/Reston/snes-abaqus-fighter/pull/14">PR #14</a> merged into main with user approval on 2026-10-24.</p>
 <!-- v024-review-notice:end -->
 </div>
 <nav aria-label="Review sections"><a href="#play">Controls &amp; checklist</a><a href="#pacing">Pacing</a><a href="#attacks">Attacks</a><a href="#contacts">Contacts</a><a href="#stages">Stages</a><a href="#jumps">Jumps</a><a href="#supers">Supers</a><a href="#roster">All twelve</a><a href="#identity">Technical status</a></nav>
@@ -78,7 +78,7 @@ footer{margin-top:28px;color:var(--muted);font-size:.8rem}
 <p class="meta">Report version, fighter pair, stage, port, repeatable input and what looked wrong. <a href="review-feedback.json">Human feedback record</a>; the playtest remains pending.</p>
 </div>
 </div>
-<p class="meta">Media key: <b>before / historical</b> means approved main v0.23.1; <b>current combined</b> means this six-feature runtime; <b>provisional</b> awaits a successful full capture inventory; <b>offline diagnostic</b> shows converted art/regions rather than game execution.</p>
+<p class="meta">Media key: <b>before / historical</b> means the previous approved main v0.23.1; <b>current combined</b> means this six-feature runtime; <b>provisional</b> awaits a successful full capture inventory; <b>offline diagnostic</b> shows converted art/regions rather than game execution.</p>
 </section>
 
 <section id="pacing" data-evidence-scope="current-combined-samples" data-report="combat-24-pacing-samples.json">
@@ -206,12 +206,12 @@ footer{margin-top:28px;color:var(--muted);font-size:.8rem}
 <!-- v024-technical-status:start -->
 <table class="identity"><tbody><tr><th>Version / mapping</th><td><code>0.24.0 · 4 MiB NTSC FastROM LoROM</code></td></tr><tr><th>ROM SHA256</th><td><code>408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79</code></td></tr><tr><th>Header checksum</th><td><code>4857</code></td></tr><tr><th>Source/test freeze</th><td><code>a1ee733aea036ad985bca9bdee29cc170cabd2ac</code></td></tr><tr><th>Preservation</th><td><code>226 generated assets; all 1,318 prior RAM labels retain addresses</code></td></tr></tbody></table><p style="margin-top:14px"><b>All six native suites: 29,595 checks.</b> 2,595 gameplay, 17,906 roster, 3,728 presentation, 1,443 input, 735 stages, 3,188 Training. Matching pinned Accuracy smoke passed.</p><p class="meta">All six focused proofs passed: pacing/recoil 238,137; attacks 2,539; contacts 9,165; stages 735; jumps 1,741; supers 4,730. The stage proof shares the stage suite execution; it is not an additional independent run. Final-freeze fresh ROM/assets/symbol reproduction and authoring guards passed.</p><p class="meta"><a href="verification-v0.24.0.json">Final exact-ROM verification</a>. Technical verification is complete; one human combined playtest remains pending.</p>
 <!-- v024-technical-status:end -->
-<p class="meta">Historical before clips use approved main <a href="RELEASE-v0.23.1.md">v0.23.1</a> (<code>057139801b64</code> prefix; <a href="verification-v0.23.1.json">full baseline identity</a>). Final media identities belong to their linked reports or sample record. Feature notes retain their isolated implementation history. <a href="COMBAT-v0.24-CONTRACT.md">Shared contract</a> · <a href="combat-24-prs.json">Six-feature PR record</a>.</p>
+<p class="meta">Historical before clips use the previous approved main <a href="RELEASE-v0.23.1.md">v0.23.1</a> (<code>057139801b64</code> prefix; <a href="verification-v0.23.1.json">full baseline identity</a>). Final media identities belong to their linked reports or sample record. Feature notes retain their isolated implementation history. <a href="COMBAT-v0.24-CONTRACT.md">Shared contract</a> · <a href="combat-24-prs.json">Six-feature PR record</a>.</p>
 <p class="meta"><b>Playback:</b> native cadence is approximately 60.0988 Hz. GIF delays are quantized to hundredths of a second; some clips sample ticks or concatenate episodes. GIF playback is an inspection approximation. Judge exact timing on the native ROM.</p>
 </section>
 <footer>
-<a href="RELEASE-v0.24.0.md">Release &amp; playtest guide</a> · <a href="https://github.com/Reston/snes-abaqus-fighter/pull/14">Unmerged playtest PR #14</a>
-<p style="margin-top:10px">One human combined playtest remains pending. Human balance, motion/likeness, listening, physical-controller and consent/public-use reviews remain open; original hardware is unverified. No v0.24 offline package, main merge or human approval is claimed.</p>
+<a href="RELEASE-v0.24.0.md">Release &amp; playtest guide</a> · <a href="https://github.com/Reston/snes-abaqus-fighter/pull/14">Merged PR #14</a>
+<p style="margin-top:10px">One human combined playtest remains pending. Human balance, motion/likeness, listening, physical-controller and consent/public-use reviews remain open; original hardware is unverified. PR #14 is merged with user approval. No v0.24 offline package or public-release approval is claimed.</p>
 </footer>
 </main>
 </body>

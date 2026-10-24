@@ -6,10 +6,10 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
-- **v0.24.0 combined playtest candidate is technically verified**, on
-  `integration/readable-combat-v024`, starting from main f75005d. All six
-  feature PRs #15–20 are integrated. Combined PR #14 remains unmerged for one
-  human playtest; approved main remains v0.23.1. User-authorized scope is
+- **v0.24.0 is the approved main revision**, merged through PR #14 on
+  2026-10-24 after the user said "perfecte merge it". All six feature PRs
+  #15–20 are integrated; merge commit `90370cec58ec297be8fc8023b1d53c62d439c942`.
+  The integration started from main f75005d. User-authorized scope is
   slower/reactable combat and backward hit recoil, plus proposals1–5 only:
   attack art, contact alignment, coherent stage08 rebuild, jump/landing motion
   and dedicated super art. Proposals6–10 are excluded.
@@ -33,7 +33,8 @@ Preserve the native emulator requirement when extending the project.
   All three stages use connected scenery behind fixed ground, with no live
   stage DMA or HDMA. Current evidence is docs/verification-v0.24.0.json and
   docs/RELEASE-v0.24.0.md; docs/REVIEW-v0.24.0.html contains hash-bound media.
-  No new offline package, main merge or human/public-release approval is claimed.
+  The user approved this revision for merge. Detailed live playtest, physical
+  controller and public-use approvals remain separate; no new offline package exists.
 
 - The approved main walking revision is **v0.23.1**, through PR #12.
   The user explicitly approved it with "yes good, merge it" on 2026-10-23. The user rejected v0.23.0's legs/torso mismatch:

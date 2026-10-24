@@ -1,5 +1,5 @@
 # v0.24.0 — readable combat playtest guide
-<!-- candidate-version: 0.24.0; identity: TECHNICALLY_VERIFIED_HUMAN_PENDING; rom-sha256: 408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79; source-freeze: a1ee733aea036ad985bca9bdee29cc170cabd2ac -->
+<!-- candidate-version: 0.24.0; identity: TECHNICALLY_VERIFIED_USER_MERGE_APPROVED; rom-sha256: 408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79; source-freeze: a1ee733aea036ad985bca9bdee29cc170cabd2ac -->
 
 The combined revision gives attacks more time to read, clearer backward hit
 reactions and coordinated whole-body animation. All twelve fighters gain new
@@ -7,10 +7,10 @@ attack, jump/landing and dedicated super drawings; all three stages gain
 connected scenery and authored ground detail.
 
 <!-- v024-release-status:start -->
-**Combined candidate: technically verified; human playtest pending.**
-The six feature PRs are merged into `integration/readable-combat-v024`.
-[Playtest PR #14](https://github.com/Reston/snes-abaqus-fighter/pull/14) stays
-**unmerged** into main for one human combined playtest. Final media and gates
+**Current main revision: technically verified and approved for merge.**
+The user said "perfecte merge it" on 2026-10-24. All six feature PRs reached
+main through [PR #14](https://github.com/Reston/snes-abaqus-fighter/pull/14),
+merge `90370cec58ec297be8fc8023b1d53c62d439c942`. Final media and gates
 are bound by [verification](verification-v0.24.0.json).
 <!-- v024-release-status:end -->
 
@@ -45,7 +45,7 @@ Scope is pacing/recoil plus proposals 1–5 only; proposals 6–10 are excluded.
 This remains a **native SNES game requiring an SNES emulator**. Use
 [Play.cmd](../Play.cmd) or load `dist/abaqus-after-hours.sfc` in the emulator.
 The technically verified combined runtime is identified below; the human
-playtest remains pending. Approved main remains v0.23.1.
+playtest feedback remains unrecorded. Approved main is v0.24.0.
 
 | SNES input | Action |
 | --- | --- |
@@ -122,11 +122,11 @@ reproduction and authoring guards pass. Focused counts: pacing/recoil 238,137; a
 Stage focused coverage shares the stage suite's native execution and is not
 counted again as an independent run. Isolated/interim counts are not pooled.
 See [final exact-ROM verification](verification-v0.24.0.json).
-Human playtest remains pending; PR #14 stays unmerged. No offline package or human approval is claimed.
+The user approved PR #14 for merge. Detailed live playtest feedback remains unrecorded; no new offline package or public-release approval is claimed.
 <!-- v024-technical-status:end -->
 
 Approved historical baseline: v0.23.1 [release](RELEASE-v0.23.1.md) and
-[verification](verification-v0.23.1.json). No v0.24 offline package, main merge
-or human approval exists. Human balance/motion/likeness, listening, physical
+[verification](verification-v0.23.1.json). PR #14 is merged with user approval.
+No v0.24 offline package exists. Detailed balance/motion/likeness, listening, physical
 controllers and consent/public-use reviews remain open; original hardware is
 unverified. Technical finalization leaves the human combined playtest pending.

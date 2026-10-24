@@ -224,5 +224,19 @@
     "merge_authorized": true,
     "pull_request": 12,
     "scope": "Full-body walking revision shown in this thread; does not assert physical-controller, subject consent or public-release approval."
+  },
+  "readable_combat_v0240": {
+    "version": "0.24.0",
+    "rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
+    "source_freeze": "a1ee733aea036ad985bca9bdee29cc170cabd2ac",
+    "response": "perfecte merge it",
+    "source": "Direct user response to the final combined native review and PR #14 handoff",
+    "recorded_at_utc": "2026-10-24T03:28:57Z",
+    "status": "approved_and_merged",
+    "merge_authorized": true,
+    "pull_request": 14,
+    "merge_commit": "90370cec58ec297be8fc8023b1d53c62d439c942",
+    "human_live_playtest_completed": null,
+    "scope": "User acceptance and merge authorization for the combined revision shown in this thread. No detailed live gameplay, physical-controller, subject-consent or public-release approval is inferred."
   }
 }

@@ -1,12 +1,12 @@
 # Abaqus: After Hours
-<!-- candidate-version: 0.24.0; identity: TECHNICALLY_VERIFIED_HUMAN_PENDING; rom-sha256: 408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79; source-freeze: a1ee733aea036ad985bca9bdee29cc170cabd2ac -->
+<!-- candidate-version: 0.24.0; identity: TECHNICALLY_VERIFIED_USER_MERGE_APPROVED; rom-sha256: 408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79; source-freeze: a1ee733aea036ad985bca9bdee29cc170cabd2ac -->
 
 An original four-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II and the people and places of Abaqus in Santiago.
 Twelve fighters, three illustrated stages and five original music scores.
 
-**Combined playtest:** [v0.24.0](docs/RELEASE-v0.24.0.md), technically verified; human playtest pending.
-PR #14 stays unmerged. Approved main: [v0.23.1](docs/RELEASE-v0.23.1.md).
+**Current version:** [v0.24.0](docs/RELEASE-v0.24.0.md), technically verified and approved by the user.
+[PR #14](https://github.com/Reston/snes-abaqus-fighter/pull/14) is merged into main. Previous version: [v0.23.1](docs/RELEASE-v0.23.1.md).
 
 <img src="docs/screenshots/combat-24-stage08/accuracy-stage0-right.png" alt="Current combined v0.24 native view of Las Condes" width="640">
 

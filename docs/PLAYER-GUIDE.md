@@ -1,12 +1,12 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.24.0; identity: TECHNICALLY_VERIFIED_HUMAN_PENDING; rom-sha256: 408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79; source-freeze: a1ee733aea036ad985bca9bdee29cc170cabd2ac -->
+<!-- candidate-version: 0.24.0; identity: TECHNICALLY_VERIFIED_USER_MERGE_APPROVED; rom-sha256: 408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79; source-freeze: a1ee733aea036ad985bca9bdee29cc170cabd2ac -->
 
 The v0.24 combined playtest adds more readable combat, backward hit reactions,
 coordinated attack and jump drawings, individual super poses and rebuilt stages.
 <!-- v024-player-status:start -->
-All six changes are combined on `integration/readable-combat-v024`. Final
-technical verification passed; one human playtest remains pending. PR #14
-stays unmerged into main. Approved main remains v0.23.1.
+All six changes are merged into main through PR #14 with user approval.
+Final technical verification passed; v0.24.0 is the current main revision.
+Detailed live playtest feedback has not been recorded.
 See the release guide for the final ROM and source/test identity.
 <!-- v024-player-status:end -->
 See the [playtest guide](RELEASE-v0.24.0.md) and [native review gallery](REVIEW-v0.24.0.html).

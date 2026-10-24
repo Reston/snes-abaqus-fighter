@@ -1,5 +1,5 @@
 {
-  "scope": "Six feature PRs into one unmerged combined playtest PR",
+  "scope": "Six feature PRs combined and merged into main with user approval",
   "baseline_commit": "f75005d",
   "integration_branch": "integration/readable-combat-v024",
   "final_pr": "https://github.com/Reston/snes-abaqus-fighter/pull/14",
@@ -48,5 +48,8 @@
       "merged": true
     }
   },
-  "final_combined_verification": "pending"
+  "final_combined_verification": "docs/verification-v0.24.0.json",
+  "final_merged": true,
+  "final_merge_commit": "90370cec58ec297be8fc8023b1d53c62d439c942",
+  "user_merge_approval": "docs/review-feedback.json#/readable_combat_v0240"
 }
