@@ -824,34 +824,40 @@ void updateFighter(u8 p) {
     if(!superActive[p] && (frame&15)==0 && f->energy<ENERGY_MAX){f->energy++;hudDirty=1;}
     if(f->x<24*16)f->x=24*16;if(f->x>232*16)f->x=232*16;
 }
-/* Compact gameplay rectangles are independent of the illustrated canvas.
- * Edges use the same feet-relative 12.4 units as fighter positions. */
+#include "contact_geometry.h"
+/* Compatibility entry point for the legacy super helper. Live direct and
+ * projectile contacts below evaluate BOTH axes against the pose geometry. */
 u8 verticalContact(Fighter *d,s16 top,s16 bottom) {
-    s16 bodyTop,bodyBottom;
-    bodyTop=d->y-(d->y?48*16:(d->duck?40*16:66*16));bodyBottom=d->y-4*16;
-    if(bottom<bodyTop)return 0;
-    if(top>bodyBottom)return 0;
+    const ContactPose *body=contactBody(d==&fighters[0]?0:1);
+    if(bottom<=d->y+((s16)body->upper.top-78)*16)return 0;
+    if(top>=d->y+((s16)body->lower.bottom-78)*16)return 0;
     return 1;
 }
 u8 canHit(u8 p) {
     Fighter *f=&fighters[p];Fighter *d=&fighters[1-p];
     const CharacterProfile *c=combatProfiles[p];
-    s16 top,bottom,dx;
+    s16 dx;
     u8 rear;
     if(!f->action)return 0;
-    if(superActive[p])return superCanHit(p);
-    if(f->action==7 && (c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE))return 0;
     if(f->connected)return 0;
     if(f->hurt)return 0;
     if(f->downState)return 0;
     if(d->downState)return 0;
     if(d->invuln)return 0;
     if(!d->hp)return 0;
-    if(f->tick<f->actionStartup || f->tick>=f->actionActiveEnd)return 0;
     dx=d->x-f->x;
     rear=0;
     if(dx>0 && !f->face)rear=1;
     if(dx<0 && f->face)rear=1;
+    if(superActive[p]) {
+        if(superProfiles[f->id].family==SUPER_VOLLEY)return 0;
+        if(!superPhase[p])return 0;
+        if(f->tick>=superContactEnd[p])return 0;
+        if(rear)return 0;
+        return contactStrike(p,0);
+    }
+    if(f->action==7 && (c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE))return 0;
+    if(f->tick<f->actionStartup || f->tick>=f->actionActiveEnd)return 0;
     if(rear) {
         /* Only the airborne medium kick reaches behind its locked facing.
          * Its short rear box is independent of the normal front reach. */
@@ -865,16 +871,7 @@ u8 canHit(u8 p) {
         if(d->hurt)return 0;
         return abs16(dx)<c->throwRange*16;
     }
-    if(!rear && abs16(dx)>(attackReach(c,f->action)+BODY_HALF_WIDTH)*16)return 0;
-    top=f->y-52*16;bottom=f->y-28*16;
-    if(f->action>=4 && f->action<=6) {
-        if(f->duck){top=f->y-20*16;bottom=f->y;}
-        else {top=f->y-60*16;bottom=f->y-20*16;}
-    } else if(f->duck){top=f->y-32*16;bottom=f->y-12*16;}
-    if(f->action==7){top=f->y-58*16;bottom=f->y-12*16;}
-    if(f->action==8 || (f->action==7 && c->specialFamily==SPECIAL_RISING))
-        {top=f->y-72*16;bottom=f->y-12*16;}
-    return verticalContact(d,top,bottom);
+    return contactStrike(p,rear);
 }
 void combat(void) {
     u8 a0,a1,m0,m1,p,finished,low0,low1,air0,air1,face0,face1,k0,k1,expired,rear0,rear1,contact;
@@ -957,8 +954,7 @@ void combat(void) {
             if(waves[p].x>256*16)expired=1;
             if(expired){waves[p].active=0;waves[p].low=0;waves[p].speed=0;}
             else if(!fighters[1-p].downState && !fighters[1-p].invuln && fighters[1-p].hp &&
-                    abs16(waves[p].x-fighters[1-p].x)<((superWaveDamage[p]?superWaveReach[p]:cw->specialReach)+BODY_HALF_WIDTH-6)*16 &&
-                    verticalContact(&fighters[1-p],((s16)waves[p].y-FLOOR-6)*16,((s16)waves[p].y-FLOOR+6)*16)) {
+                    contactWave(p)) {
                 contact=hurt(p,1-p,superWaveDamage[p]?superWaveDamage[p]:attackDamage(cw,fighters[p].id,7),waves[p].low,0,0);
                 if(mode==2 && !p && !superWaveDamage[p])trainingMoveContact(7,0,0,contact);
                 waves[p].active=0;waves[p].low=0;waves[p].speed=0;
