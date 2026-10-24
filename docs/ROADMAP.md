@@ -1,5 +1,5 @@
 # Polish roadmap
-<!-- candidate-version: 0.26.0; identity: IN_PROGRESS; rom-sha256: PENDING_FINAL_VERIFICATION; source-freeze: PENDING_FINAL_VERIFICATION -->
+<!-- candidate-version: 0.26.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b; source-freeze: c89239901491a239e10194f1399820527b0ebf74 -->
 
 ## Current work: v0.26 play-flow polish
 
@@ -8,7 +8,7 @@ pacing/floor work, stopping at 5% remaining weekly allowance. The current
 work is in [PR #22](https://github.com/Reston/snes-abaqus-fighter/pull/22),
 stacked on unmerged [PR #21](https://github.com/Reston/snes-abaqus-fighter/pull/21).
 Read the [current pass notes](POLISH-v0.26.0.md) and
-[playtest guide](RELEASE-v0.26.0.md). Final combined checks are pending.
+[playtest guide](RELEASE-v0.26.0.md). Combined native verification passes 49,689 checks; human playtest is next.
 
 Main's approved revision is v0.24.0. The v0.23/v0.22 and older sections below
 are historical milestones, including their branch/run instructions.

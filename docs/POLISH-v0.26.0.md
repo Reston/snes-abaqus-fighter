@@ -326,7 +326,7 @@ guards pass in both interpreter modes. The canonical six-suite runner records
 the actual command result, core hash, frozen source identity and hashes/counts
 of all six output reports. Headless failures exit without an interactive pause.
 This separates a completed current run from historical reports with the same
-cartridge bytes. The combined run is still pending final source freeze.
+cartridge bytes. The final combined run passes against the source freeze recorded in the current verification.
 
 ## Pass 24: identify and validate the game being opened
 
@@ -371,14 +371,13 @@ pass in normal and optimized Python. One topic-based review gallery binds
 native captures to the verification record, labels historical comparisons and
 starts with motion paused. Player and developer guides name the same cartridge.
 
-The standalone review now supplies its own readable dark palette, uses
-44-pixel controls and names the still-frame action accurately. Native PNG
-posters use lossless indexed storage where possible; every decoded RGB byte
-is checked against the capture. This roughly halves the document without
-changing approved art and keeps the inline review within its transport limit.
+The standalone review supplies its own readable dark palette, 44-pixel
+controls and an explicit still-frame action. Indexed PNG posters preserve
+every decoded native RGB byte while keeping the inline document small.
 All nine topics, keyboard wrapping and actual motion loading are checked;
-stateless HTML previews cover desktop/mobile after the browser screenshot
-adapter timed out. Final captures are regenerated from the final cartridge.
+desktop/mobile previews cover the final review.
+Native report hashes bind their serialized bytes. Git retains those JSON
+bytes without newline conversion while keeping readable text diffs.
 
 ## Pass 26: long-session stability and score boundaries
 
@@ -390,12 +389,12 @@ combat, RNG, art, RAM and ABI remain unchanged. The isolated 27223b candidate
 clears the complete hour and matches 244,237 complete coherent native states
 and controller inputs with every state byte unmasked. All physical streams
 are retained. The original reference has one repeated live publication; the
-candidate has none. The final integrated cartridge must repeat these gates.
+candidate has none. The final integrated cartridge passes all three current live-hour modes on the final source freeze.
 
 The score boundary probe earns 200 real two-round matches: P1 wins one hundred,
 then P2 wins one hundred. Both counters saturate at 99, native result glyphs
 match every earned score, either-pad rematches retain the session and Back
-clears it. Current-cartridge evidence is regenerated after the final freeze.
+clears it. The final current-cartridge proof earns all 200 matches and checks each displayed score.
 
 The v0.7-era endurance traffic harness retains its original health predicates.
 A current producer adds four-face-button coverage, bounded neutral waiting
@@ -421,6 +420,24 @@ publication. A failure stops new scheduling while active native writers finish.
 All required six-suite, focused, independent, hour, score-limit and 432 stress
 commands appear exactly once in the plan. Mode/stress merges, collation and
 review generation run only after every worker succeeds. Dry-run is explicitly
-plan-only. Nine normal/optimized guards cover full inventory, shard coverage,
+plan-only. Ten normal/optimized guards cover full inventory, shard coverage,
 merge bindings, paths with spaces, concurrency and failure retention. The
-complete end-to-end command is the final source-freeze verification run.
+complete end-to-end command passes all 40 commands on the final source freeze.
+
+The first end-to-end invocation exposed an orchestration filename collision:
+command metadata replaced the hour/stress producer reports before merging.
+Every native command had passed, but the overall run correctly failed. Command
+records now use a separate `.command.json` suffix. A real subprocess regression
+proves that a same-named producer JSON survives byte-for-byte. The failed
+execution and logs remain under ignored build; complete final-source proofs
+are repeated rather than relabeled.
+
+## Pass 28: make the first minute easier to play
+
+The player guide opens with a short pad/keyboard translation, a real
+light-to-strong practice route, blocking and returning from pause. It calls
+out the easy-to-confuse keyboard X / SNES A and keyboard A / SNES Y names.
+The README links directly to this route; the complete move and contextual
+pause tables remain available below it. Local setup gives each physical
+controller its own joypad and names Num Lock for the second keyboard player.
+These documentation changes leave the frozen cartridge and proof inputs exact.

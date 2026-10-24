@@ -1,6 +1,6 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "9b34dac54abe5de56b7cff3e8820a2c6b8b5653cced55c74df88bffa3b0f5442",
+  "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
   "rom_bytes": 4194304,
   "status": "passed",
   "checks": [
@@ -12,8 +12,8 @@
         "version": "0.26.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "9b34dac54abe5de56b7cff3e8820a2c6b8b5653cced55c74df88bffa3b0f5442",
-        "checksum": "2F7E",
+        "sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+        "checksum": "3993",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -1064,7 +1064,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 170,
+        "frame": 169,
         "mode": 1,
         "hp1": 85,
         "hp2": 85,
@@ -1448,7 +1448,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 320,
+        "frame": 319,
         "mode": 1,
         "hp1": 128,
         "hp2": 128,
@@ -1642,7 +1642,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 196,
+        "frame": 195,
         "mode": 2,
         "hp1": 85,
         "hp2": 85,
@@ -1919,7 +1919,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 358,
+        "frame": 357,
         "mode": 2,
         "hp1": 128,
         "hp2": 128,
@@ -13537,7 +13537,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 256,
+        "frame": 255,
         "mode": 2,
         "hp1": 85,
         "hp2": 85,
@@ -13657,7 +13657,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 306,
+        "frame": 305,
         "mode": 2,
         "hp1": 85,
         "hp2": 85,
@@ -14013,7 +14013,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 331,
+        "frame": 330,
         "mode": 2,
         "hp1": 85,
         "hp2": 85,
@@ -20617,7 +20617,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 170,
+        "frame": 169,
         "mode": 1,
         "hp1": 85,
         "hp2": 85,
@@ -20927,7 +20927,7 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 2044,
+        "frame": 2043,
         "mode": 1,
         "hp1": 128,
         "hp2": 0,
@@ -21047,7 +21047,7 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 2044,
+        "frame": 2043,
         "mode": 1,
         "hp1": 128,
         "hp2": 0,
@@ -25001,9 +25001,9 @@
         "label": "result card",
         "row": 17,
         "x": 15,
-        "character": "L",
-        "tile": 332,
-        "expected": 332
+        "character": "S",
+        "tile": 339,
+        "expected": 339
       }
     },
     {
@@ -25048,9 +25048,9 @@
         "label": "result card",
         "row": 17,
         "x": 15,
-        "character": "L",
-        "tile": 332,
-        "mean_channel_delta": 0.390625,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.4114583333333333,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -25063,9 +25063,9 @@
         "label": "result card",
         "row": 17,
         "x": 16,
-        "character": "O",
-        "tile": 335,
-        "expected": 335
+        "character": "E",
+        "tile": 325,
+        "expected": 325
       }
     },
     {
@@ -25110,6 +25110,254 @@
         "label": "result card",
         "row": 17,
         "x": 16,
+        "character": "E",
+        "tile": 325,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 17,
+        "character": "S",
+        "tile": 339,
+        "expected": 339
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 17,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 17,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 18,
+        "character": "S",
+        "tile": 339,
+        "expected": 339
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 18,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 18,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 19,
+        "character": "I",
+        "tile": 329,
+        "expected": 329
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 19,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 19,
+        "character": "I",
+        "tile": 329,
+        "mean_channel_delta": 0.390625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 20,
+        "character": "O",
+        "tile": 335,
+        "expected": 335
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 20,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 20,
         "character": "O",
         "tile": 335,
         "mean_channel_delta": 0.4166666666666667,
@@ -25124,10 +25372,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 17,
-        "character": "C",
-        "tile": 323,
-        "expected": 323
+        "x": 21,
+        "character": "N",
+        "tile": 334,
+        "expected": 334
       }
     },
     {
@@ -25136,7 +25384,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 17,
+        "x": 21,
         "actual": 0,
         "expected": 0
       }
@@ -25171,10 +25419,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 17,
-        "character": "C",
-        "tile": 323,
-        "mean_channel_delta": 0.4010416666666667,
+        "x": 21,
+        "character": "N",
+        "tile": 334,
+        "mean_channel_delta": 0.421875,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -25186,131 +25434,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 18,
-        "character": "A",
-        "tile": 321,
-        "expected": 321
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 18,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 18,
-        "character": "A",
-        "tile": 321,
-        "mean_channel_delta": 0.4270833333333333,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 19,
-        "character": "L",
-        "tile": 332,
-        "expected": 332
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 19,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 19,
-        "character": "L",
-        "tile": 332,
-        "mean_channel_delta": 0.390625,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 20,
+        "x": 22,
         "character": " ",
         "tile": 288,
         "expected": 288
@@ -25322,7 +25446,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 20,
+        "x": 22,
         "actual": 0,
         "expected": 0
       }
@@ -25357,7 +25481,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 20,
+        "x": 22,
         "character": " ",
         "tile": 288,
         "mean_channel_delta": 0.3333333333333333,
@@ -25372,10 +25496,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 21,
-        "character": "1",
-        "tile": 305,
-        "expected": 305
+        "x": 23,
+        "character": "W",
+        "tile": 343,
+        "expected": 343
       }
     },
     {
@@ -25384,7 +25508,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 21,
+        "x": 23,
         "actual": 0,
         "expected": 0
       }
@@ -25419,10 +25543,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 21,
-        "character": "1",
-        "tile": 305,
-        "mean_channel_delta": 0.3854166666666667,
+        "x": 23,
+        "character": "W",
+        "tile": 343,
+        "mean_channel_delta": 0.4270833333333333,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -25434,24 +25558,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 22,
-        "character": "V",
-        "tile": 342,
-        "expected": 342
-      }
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "opaque glyph tile has no transparent palette-zero pixels",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "tile": 342,
-        "min_palette_index": 1
+        "x": 24,
+        "character": "I",
+        "tile": 329,
+        "expected": 329
       }
     },
     {
@@ -25460,7 +25570,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 22,
+        "x": 24,
         "actual": 0,
         "expected": 0
       }
@@ -25495,10 +25605,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 22,
-        "character": "V",
-        "tile": 342,
-        "mean_channel_delta": 0.4010416666666667,
+        "x": 24,
+        "character": "I",
+        "tile": 329,
+        "mean_channel_delta": 0.390625,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -25510,10 +25620,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 23,
-        "character": "1",
-        "tile": 305,
-        "expected": 305
+        "x": 25,
+        "character": "N",
+        "tile": 334,
+        "expected": 334
       }
     },
     {
@@ -25522,7 +25632,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 23,
+        "x": 25,
         "actual": 0,
         "expected": 0
       }
@@ -25557,10 +25667,72 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 23,
-        "character": "1",
-        "tile": 305,
-        "mean_channel_delta": 0.3854166666666667,
+        "x": 25,
+        "character": "N",
+        "tile": 334,
+        "mean_channel_delta": 0.421875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 26,
+        "character": "S",
+        "tile": 339,
+        "expected": 339
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 26,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 26,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.4114583333333333,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -30159,7 +30331,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 2074,
+        "frame": 2073,
         "mode": 1,
         "hp1": 128,
         "hp2": 128,
@@ -30279,7 +30451,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 170,
+        "frame": 169,
         "mode": 1,
         "hp1": 85,
         "hp2": 85,
@@ -30589,7 +30761,7 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 2004,
+        "frame": 2003,
         "mode": 1,
         "hp1": 0,
         "hp2": 128,
@@ -30709,7 +30881,7 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 2004,
+        "frame": 2003,
         "mode": 1,
         "hp1": 0,
         "hp2": 128,
@@ -34491,9 +34663,9 @@
         "label": "result card",
         "row": 17,
         "x": 15,
-        "character": "L",
-        "tile": 332,
-        "expected": 332
+        "character": "S",
+        "tile": 339,
+        "expected": 339
       }
     },
     {
@@ -34538,9 +34710,9 @@
         "label": "result card",
         "row": 17,
         "x": 15,
-        "character": "L",
-        "tile": 332,
-        "mean_channel_delta": 0.390625,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.4114583333333333,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -34553,9 +34725,9 @@
         "label": "result card",
         "row": 17,
         "x": 16,
-        "character": "O",
-        "tile": 335,
-        "expected": 335
+        "character": "E",
+        "tile": 325,
+        "expected": 325
       }
     },
     {
@@ -34600,6 +34772,254 @@
         "label": "result card",
         "row": 17,
         "x": 16,
+        "character": "E",
+        "tile": 325,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 17,
+        "character": "S",
+        "tile": 339,
+        "expected": 339
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 17,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 17,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 18,
+        "character": "S",
+        "tile": 339,
+        "expected": 339
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 18,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 18,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 19,
+        "character": "I",
+        "tile": 329,
+        "expected": 329
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 19,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 19,
+        "character": "I",
+        "tile": 329,
+        "mean_channel_delta": 0.390625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 20,
+        "character": "O",
+        "tile": 335,
+        "expected": 335
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 20,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 20,
         "character": "O",
         "tile": 335,
         "mean_channel_delta": 0.4166666666666667,
@@ -34614,10 +35034,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 17,
-        "character": "C",
-        "tile": 323,
-        "expected": 323
+        "x": 21,
+        "character": "N",
+        "tile": 334,
+        "expected": 334
       }
     },
     {
@@ -34626,7 +35046,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 17,
+        "x": 21,
         "actual": 0,
         "expected": 0
       }
@@ -34661,10 +35081,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 17,
-        "character": "C",
-        "tile": 323,
-        "mean_channel_delta": 0.4010416666666667,
+        "x": 21,
+        "character": "N",
+        "tile": 334,
+        "mean_channel_delta": 0.421875,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -34676,131 +35096,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 18,
-        "character": "A",
-        "tile": 321,
-        "expected": 321
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 18,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 18,
-        "character": "A",
-        "tile": 321,
-        "mean_channel_delta": 0.4270833333333333,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 19,
-        "character": "L",
-        "tile": 332,
-        "expected": 332
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 19,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 19,
-        "character": "L",
-        "tile": 332,
-        "mean_channel_delta": 0.390625,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 20,
+        "x": 22,
         "character": " ",
         "tile": 288,
         "expected": 288
@@ -34812,7 +35108,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 20,
+        "x": 22,
         "actual": 0,
         "expected": 0
       }
@@ -34847,7 +35143,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 20,
+        "x": 22,
         "character": " ",
         "tile": 288,
         "mean_channel_delta": 0.3333333333333333,
@@ -34862,10 +35158,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 21,
-        "character": "1",
-        "tile": 305,
-        "expected": 305
+        "x": 23,
+        "character": "W",
+        "tile": 343,
+        "expected": 343
       }
     },
     {
@@ -34874,7 +35170,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 21,
+        "x": 23,
         "actual": 0,
         "expected": 0
       }
@@ -34909,10 +35205,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 21,
-        "character": "1",
-        "tile": 305,
-        "mean_channel_delta": 0.3854166666666667,
+        "x": 23,
+        "character": "W",
+        "tile": 343,
+        "mean_channel_delta": 0.4270833333333333,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -34924,10 +35220,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 22,
-        "character": "V",
-        "tile": 342,
-        "expected": 342
+        "x": 24,
+        "character": "I",
+        "tile": 329,
+        "expected": 329
       }
     },
     {
@@ -34936,7 +35232,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 22,
+        "x": 24,
         "actual": 0,
         "expected": 0
       }
@@ -34971,10 +35267,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 22,
-        "character": "V",
-        "tile": 342,
-        "mean_channel_delta": 0.4010416666666667,
+        "x": 24,
+        "character": "I",
+        "tile": 329,
+        "mean_channel_delta": 0.390625,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -34986,10 +35282,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 23,
-        "character": "1",
-        "tile": 305,
-        "expected": 305
+        "x": 25,
+        "character": "N",
+        "tile": 334,
+        "expected": 334
       }
     },
     {
@@ -34998,7 +35294,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 23,
+        "x": 25,
         "actual": 0,
         "expected": 0
       }
@@ -35033,10 +35329,72 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 23,
-        "character": "1",
-        "tile": 305,
-        "mean_channel_delta": 0.3854166666666667,
+        "x": 25,
+        "character": "N",
+        "tile": 334,
+        "mean_channel_delta": 0.421875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 26,
+        "character": "S",
+        "tile": 339,
+        "expected": 339
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 26,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 26,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.4114583333333333,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -39573,7 +39931,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 2034,
+        "frame": 2033,
         "mode": 1,
         "hp1": 128,
         "hp2": 128,
@@ -39693,7 +40051,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 170,
+        "frame": 169,
         "mode": 1,
         "hp1": 85,
         "hp2": 85,
@@ -40003,7 +40361,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 6259,
+        "frame": 6258,
         "mode": 1,
         "hp1": 128,
         "hp2": 128,
@@ -41528,7 +41886,7 @@
         "state": {
           "magic": 43706,
           "screen": 1,
-          "frame": 306,
+          "frame": 305,
           "mode": 2,
           "hp1": 85,
           "hp2": 85,
@@ -41660,7 +42018,7 @@
         "state": {
           "magic": 43706,
           "screen": 1,
-          "frame": 331,
+          "frame": 330,
           "mode": 2,
           "hp1": 85,
           "hp2": 85,
@@ -41846,7 +42204,7 @@
       ],
       "opaque_text": {
         "label": "result card",
-        "tiles": 28,
+        "tiles": 27,
         "cells": [
           {
             "row": 5,
@@ -42411,9 +42769,9 @@
           {
             "row": 17,
             "x": 15,
-            "character": "L",
-            "tile": 332,
-            "mean_channel_delta": 0.390625,
+            "character": "S",
+            "tile": 339,
+            "mean_channel_delta": 0.4114583333333333,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
@@ -42421,6 +42779,46 @@
           {
             "row": 17,
             "x": 16,
+            "character": "E",
+            "tile": 325,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 17,
+            "character": "S",
+            "tile": 339,
+            "mean_channel_delta": 0.4114583333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 18,
+            "character": "S",
+            "tile": 339,
+            "mean_channel_delta": 0.4114583333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 19,
+            "character": "I",
+            "tile": 329,
+            "mean_channel_delta": 0.390625,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 20,
             "character": "O",
             "tile": 335,
             "mean_channel_delta": 0.4166666666666667,
@@ -42430,37 +42828,17 @@
           },
           {
             "row": 17,
-            "x": 17,
-            "character": "C",
-            "tile": 323,
-            "mean_channel_delta": 0.4010416666666667,
+            "x": 21,
+            "character": "N",
+            "tile": 334,
+            "mean_channel_delta": 0.421875,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
           },
           {
             "row": 17,
-            "x": 18,
-            "character": "A",
-            "tile": 321,
-            "mean_channel_delta": 0.4270833333333333,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 17,
-            "x": 19,
-            "character": "L",
-            "tile": 332,
-            "mean_channel_delta": 0.390625,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 17,
-            "x": 20,
+            "x": 22,
             "character": " ",
             "tile": 288,
             "mean_channel_delta": 0.3333333333333333,
@@ -42470,30 +42848,40 @@
           },
           {
             "row": 17,
-            "x": 21,
-            "character": "1",
-            "tile": 305,
-            "mean_channel_delta": 0.3854166666666667,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 17,
-            "x": 22,
-            "character": "V",
-            "tile": 342,
-            "mean_channel_delta": 0.4010416666666667,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 17,
             "x": 23,
-            "character": "1",
-            "tile": 305,
-            "mean_channel_delta": 0.3854166666666667,
+            "character": "W",
+            "tile": 343,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 24,
+            "character": "I",
+            "tile": 329,
+            "mean_channel_delta": 0.390625,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 25,
+            "character": "N",
+            "tile": 334,
+            "mean_channel_delta": 0.421875,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 26,
+            "character": "S",
+            "tile": 339,
+            "mean_channel_delta": 0.4114583333333333,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
@@ -43799,9 +44187,9 @@
           {
             "row": 17,
             "x": 15,
-            "character": "L",
-            "tile": 332,
-            "mean_channel_delta": 0.390625,
+            "character": "S",
+            "tile": 339,
+            "mean_channel_delta": 0.4114583333333333,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
@@ -43809,6 +44197,46 @@
           {
             "row": 17,
             "x": 16,
+            "character": "E",
+            "tile": 325,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 17,
+            "character": "S",
+            "tile": 339,
+            "mean_channel_delta": 0.4114583333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 18,
+            "character": "S",
+            "tile": 339,
+            "mean_channel_delta": 0.4114583333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 19,
+            "character": "I",
+            "tile": 329,
+            "mean_channel_delta": 0.390625,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 20,
             "character": "O",
             "tile": 335,
             "mean_channel_delta": 0.4166666666666667,
@@ -43818,37 +44246,17 @@
           },
           {
             "row": 17,
-            "x": 17,
-            "character": "C",
-            "tile": 323,
-            "mean_channel_delta": 0.4010416666666667,
+            "x": 21,
+            "character": "N",
+            "tile": 334,
+            "mean_channel_delta": 0.421875,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
           },
           {
             "row": 17,
-            "x": 18,
-            "character": "A",
-            "tile": 321,
-            "mean_channel_delta": 0.4270833333333333,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 17,
-            "x": 19,
-            "character": "L",
-            "tile": 332,
-            "mean_channel_delta": 0.390625,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 17,
-            "x": 20,
+            "x": 22,
             "character": " ",
             "tile": 288,
             "mean_channel_delta": 0.3333333333333333,
@@ -43858,30 +44266,40 @@
           },
           {
             "row": 17,
-            "x": 21,
-            "character": "1",
-            "tile": 305,
-            "mean_channel_delta": 0.3854166666666667,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 17,
-            "x": 22,
-            "character": "V",
-            "tile": 342,
-            "mean_channel_delta": 0.4010416666666667,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 17,
             "x": 23,
-            "character": "1",
-            "tile": 305,
-            "mean_channel_delta": 0.3854166666666667,
+            "character": "W",
+            "tile": 343,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 24,
+            "character": "I",
+            "tile": 329,
+            "mean_channel_delta": 0.390625,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 25,
+            "character": "N",
+            "tile": 334,
+            "mean_channel_delta": 0.421875,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 26,
+            "character": "S",
+            "tile": 339,
+            "mean_channel_delta": 0.4114583333333333,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
@@ -44607,7 +45025,7 @@
       "state": {
         "magic": 43706,
         "screen": 3,
-        "frame": 6259,
+        "frame": 6258,
         "mode": 1,
         "hp1": 128,
         "hp2": 128,
@@ -45908,6 +46326,6 @@
     ],
     "frame_count": 64
   },
-  "passed": 3874,
-  "elapsed_seconds": 10.8
+  "passed": 3908,
+  "elapsed_seconds": 11.31
 }

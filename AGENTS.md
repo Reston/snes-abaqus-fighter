@@ -12,15 +12,18 @@ Preserve the native emulator requirement when extending the project.
   The user requested sequential polish until weekly Codex remaining reaches
   5% or less. Read the live 10080-minute rate-limit window; do not confuse it
   with context/goal tokens. No new merge approval is inferred; main is v0.24.
-  Twenty-seven polish/review topics are implemented. Current HUD-optimized ROM
-  is `27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b` / `3993`.
-  Runtime 27223b passed 49,689 six-suite checks, all focused/432 stress,
-  three current live native hours and 200 score-limit matches at e78c7f5.
-  The final one-command-verifier source freeze is still pending. Prior 6b392d
-  checkpoint passed 49,689 six-suite checks/all focused/432 stress, but a later
-  hour exposed one real SDK lag. The isolated fixed-actor HUD clears that hour
-  with 244,237 unmasked logical states exact. Retain the failed original and
-  its metadata erratum; regenerate current evidence before PR readiness.
+  Twenty-eight completed polish/review passes are technically verified on
+  ROM `27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b`,
+  checksum `3993`, source/test freeze `c89239901491a239e10194f1399820527b0ebf74`.
+  All six suites pass 49,689 exact-ROM checks. Current native stress passes
+  432 cases with zero SDK lag and no candidate callback collapse. Three current
+  live hours pass, including all twelve Training CPUs; 200 earned local matches
+  prove both session counters cap at 99. The fixed-actor HUD clears the retained
+  original rare lag with complete unmasked gameplay/input equality. Matching
+  pinned Accuracy, full-roster pacing/supers/CPU/play-flow proofs, normal/-O
+  guards and fresh 226-asset/ROM/symbol reproduction pass. Current evidence is
+  docs/verification-v0.26.0.json; docs/REVIEW-v0.26.0.html binds current media.
+  Checkpoint counts below the current release are historical, not pooled.
   Preserve v0.25 slower rules, all fighter/stage/audio art, existing 1,318 RAM
   addresses and ABI. Only the derived arena outputs/size declaration differ
   among v0.26's 226 generated outputs. No new offline package is claimed.

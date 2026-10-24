@@ -1,9 +1,9 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.26.0; identity: IN_PROGRESS; rom-sha256: PENDING_FINAL_VERIFICATION; source-freeze: PENDING_FINAL_VERIFICATION -->
+<!-- candidate-version: 0.26.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b; source-freeze: c89239901491a239e10194f1399820527b0ebf74 -->
 
 The v0.26 polish candidate retains v0.25's slower fight rhythm and detailed
 floors, with clearer local menus, super cues and quicker practice retries.
-Main's approved revision is v0.24.0; combined checks and human playtest are pending.
+Main's approved revision is v0.24.0. Combined native checks pass; human playtest is pending.
 See the [playtest guide](RELEASE-v0.26.0.md) and [pass notes](POLISH-v0.26.0.md).
 
 This is a native SNES game. On Windows use [Play.cmd](../Play.cmd); on other
@@ -16,6 +16,29 @@ Focus Snes9x and press **Enter**. **Alt+Enter** toggles fullscreen;
 **Input -> Input Configuration** maps controllers. The launcher prepares
 pinned local tools on first use, without an administrator account or global
 installation. Existing emulator mappings may differ from the defaults below.
+
+## Your first minute
+
+Button names in the game mean **SNES buttons**. The keyboard's **X key** is
+SNES **A**; the keyboard's **A key** is SNES **Y**. Use these first:
+
+| Try it | SNES pad | P1 keyboard |
+| --- | --- | --- |
+| Start or pause | Start | Enter |
+| Confirm a menu choice | A | X |
+| Go back | B | Z |
+| Quick punch | Y | A |
+| Strong punch | X | S |
+| Quick / strong kick | B / A | Z / X |
+
+Choose **Training**, get close and try a quick punch followed by a strong
+punch: **Y then X** on the pad, **A then S** on the keyboard. Hold away to
+block, or Down+away to block a low attack. Press Start, then Select to browse
+the guide. Start returns to the fight from any pause page.
+
+For a second player, choose **Local 1v1 / 2P** and enable Num Lock. Both pads
+fight independently; P2 can also rematch. Map physical controllers under
+Snes9x's **Input -> Input Configuration**, one to each joypad.
 
 ## Controls
 
@@ -72,7 +95,7 @@ and Back remain single-press actions even when held.
   cross-up; switch guard direction after a crossing.
 - Toward+X throws at close range, including through guard; damage lands when
   the defender reaches the floor. Simultaneous throws tech. During the final
-get-up phase, a fresh attack or jump can buffer; enter special motions after
+  get-up phase, a fresh attack or jump can buffer; enter special motions after
   recovery.
 
 If both grounded throws connect together, **THROW TECH!** identifies the
@@ -153,9 +176,24 @@ controls stay on the ordinary card.
 On that ordinary PAUSED card, **SNES X selects P2 Controller** (P1 keyboard
 **S**, P2 numpad **8**) for two-person
 Training. P2 then uses the complete shared fighting controls. X again returns
-to Stand; Up selects CPU and Down selects Stand from manual control. The
-Up from Stand still selects CPU directly. P1 live Select retains
+to Stand; Up selects CPU and Down selects Stand from manual control.
+Up from Stand also selects CPU directly. P1 live Select retains
 manual control when resetting; P2 live Select does not reset the fight.
+
+## Pause shortcuts at a glance
+
+| Context | Extra controls |
+| --- | --- |
+| Ordinary Training PAUSED | Up/Down: dummy; X: P2 Controller / Stand |
+| Ordinary Training PAUSED with CPU | L/R: Easy / Normal / Hard |
+| Any full guide page | L: music; R: background moving / still |
+| Move List 2/3 (2/2 outside Training) | Up: specials / P1 normal timings / P2 normal timings |
+| Training Tools 3/3 | Up: footer; Down: drill; X: retry |
+
+Start resumes first. Otherwise B returns to the roster, A resumes and Select
+changes the guide page before these extra shortcuts are considered. Left/Right
+also changes full guide pages. Labels refer to SNES buttons; use the keyboard
+mapping table above when playing without controllers.
 
 ## Training tools
 
@@ -166,11 +204,11 @@ one of three drills:
    Both hits must be in the same uninterrupted combo. The prepared opponent
    guards after the opener, so a late follow-up shows Retry. A linked special
    can also complete it; `SP!` alone does not.
-2. **Block a Low Attack:** choose CPU on the ordinary card, then hold
-   Down+away against a real low attack. A high block does not count; taking
+2. **Block a Low Attack:** hold Down+away against the supplied CPU
+   partner's real low attack. A high block does not count; taking
    damage shows Retry. Select restores space for another attempt.
-3. **Air Kick Cross-up:** choose Stand, jump past and press A just after
-   crossing. The kick must hit from behind; a front hit or block does not count.
+3. **Air Kick Cross-up:** jump past the supplied standing opponent and
+   press A just after crossing. The kick must hit from behind; a front hit or block does not count.
 
 Choosing a drill supplies its required recovery-guard/CPU/Stand partner, keeping the chosen
 CPU difficulty. **SNES X on Training Tools 3/3 restarts that drill** while leaving
@@ -218,8 +256,8 @@ A new Training match returns to Stand, a visible footer and the first drill.
 Approved walking, portraits, fighter palettes and physical height remain.
 The revised combat poses are original full-body drawings; prior source masters
 are retained. Include the title version, fighter pair, stage, player port and
-repeatable input with feedback. Current combined clips are labeled separately
-from the approved baseline and offline art diagnostics in the gallery. GIF
+repeatable input with feedback. The [native review gallery](REVIEW-v0.26.0.html) labels current captures
+and historical comparisons separately. GIF
 playback approximates timing; the native ROM's cadence is authoritative.
 The combined human playtest is still pending. Historical approved-main notes
 remain in [v0.23.1](RELEASE-v0.23.1.md).

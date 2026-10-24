@@ -1,52 +1,86 @@
 # v0.26 play-flow polish candidate
-<!-- candidate-version: 0.26.0; identity: IN_PROGRESS; rom-sha256: PENDING_FINAL_VERIFICATION; source-freeze: PENDING_FINAL_VERIFICATION -->
+<!-- candidate-version: 0.26.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b; source-freeze: c89239901491a239e10194f1399820527b0ebf74 -->
 
-This candidate builds on the slower movement, attack commitments, CPU pressure
-and detailed floors from [v0.25](RELEASE-v0.25.0.md). Main remains the approved
-v0.24 revision. [PR #22](https://github.com/Reston/snes-abaqus-fighter/pull/22)
-stacks on the unmerged [PR #21](https://github.com/Reston/snes-abaqus-fighter/pull/21).
-Combined verification and human playtest are pending while polish continues.
+The slower combat and detailed floors from [v0.25](RELEASE-v0.25.0.md) now
+have clearer local play, more useful practice and optional comfort settings.
+[PR #22](https://github.com/Reston/snes-abaqus-fighter/pull/22) stacks on unmerged
+[PR #21](https://github.com/Reston/snes-abaqus-fighter/pull/21). Main remains
+approved v0.24.0. Both candidates are ready for a combined human playtest.
 
-The fourteen-pass checkpoint passed **49,656 checks across all six native
-suites**. The final twenty-four-pass source is being frozen and reverified on
-ROM `de6d7f36e09ea1e6aa1d6fdbb35fb55c1737c8e1d35aeac47b99e9a38933e62c`.
-The checkpoint does not certify the final combined cartridge.
+Run [Play.cmd](../Play.cmd) and read **V0.26.0** on the title. The launcher
+checks that the cartridge matches the checkout before opening it. See the
+[native comparison gallery](REVIEW-v0.26.0.html) and [full controls](PLAYER-GUIDE.md).
 
-Run [Play.cmd](../Play.cmd) from this checkout. Read **V0.26.0** on the title.
-Keyboard/controller mappings are in the [player guide](PLAYER-GUIDE.md).
+## What to try
 
-## What changed
+- **Fight rhythm and ground:** walk/projectiles travel about 25% slower than
+  v0.24; attacks, jumps and recovery provide more time. Hits visibly recoil.
+  All three detailed floors form one connected image with their scenery.
+- **Local play:** either pad chooses the arena, rematches or returns to select.
+  Mirror results name the winning player. Session match wins persist across
+  rematches; round medals still describe only the current best-of-three match.
+- **Readable exchanges:** full energy shows **SUPER Y+B**. **PUNISH!** identifies
+  a recovery hit; **COUNTER!** remains a startup hit. **THROW TECH!** identifies
+  the existing non-damaging simultaneous-throw escape.
+- **Training:** prepared drills, real light-to-strong hit confirms, Guard After
+  Hit, P2 Controller practice, retained best combo and each fighter's actual
+  normal startup/active/recovery timings. X on Tools 3/3 retries the drill.
+- **Comfort and navigation:** held directions scroll after a delay; confirm/back
+  remain single presses. Full guide pages offer L for music and R for still
+  scenery. Combat sounds, fighter recoil and fight timing remain active.
+- **Orientation:** roster cards teach special families and costs; Arcade names
+  the ladder shift, next challenger and retry opponent. Arena previews derive
+  from the current native stage image.
 
-- Local results identify the winning player even in mirror matches. Either
-  pad can rematch or return to character select.
-- Round-win cards also identify P1/P2/CPU, and result cards cover the full footer.
-- Either pad can choose and confirm the Local Versus arena. Opposing
-  directions cancel across controllers; Start, then B, then A wins a conflict.
-- Arena thumbnails show the current stage scenery rather than older pictures.
-- Holding a direction scrolls after a short delay. Confirm and Back never repeat.
-- A full super gauge shows **SUPER Y+B** under that player's bars.
-- **PUNISH!** identifies a hit that catches attack recovery, with unchanged
-  damage/stun. Startup hits keep the existing **COUNTER!** meaning.
-- Training drills supply their required Stand/CPU partner. **X** on Training
-  Tools 3/3 restarts the drill while keeping its guide open.
-- **X** on Training's ordinary PAUSED card enables **P2 Controller** practice;
-  X again returns to Stand. Existing automated dummy choices remain.
-- Arcade shows your **SHIFT 01/11** ladder position, previews the next/retry
-  opponent and names CPU difficulty on pause.
-- L on a pause-guide page mutes music while retaining combat sounds and speech.
+## A short playtest
 
-The [pass notes](POLISH-v0.26.0.md) separate individual checkpoints from the
-final combined result. No new offline archive or public-use approval is claimed.
+1. Play a Local mirror match. Win a round, finish the match and rematch from
+   P2. Check player labels, round medals and the separate session score.
+2. Use Training's Guard After Hit partner. Land Y then X or B then A; compare
+   a real link with a deliberately late follow-up that gets blocked. Retry
+   with Select or Tools X and check that BEST stays useful.
+3. On ordinary Training PAUSED, X selects P2 Controller. Practice both players'
+   commands and blocks, then X returns to Stand. Automated dummies ignore P2.
+4. On a full guide page, compare music L and background R. Test all three
+   floors, a jumping cross-up, a blocked heavy and a recovery punish.
+5. Win and lose an Arcade match. Check the next/retry opponent and compare
+   the slower rhythm with your earlier feedback.
 
-## Quick review
+## Verification
 
-1. Play a mirror match. Check the winning port on its result card; use P2 to
-   rematch and select the next arena.
-2. Let the thin energy bar fill. Use a fresh neutral Y+B chord, then check
-   that its cue clears. Full meter still requires being grounded and free to act.
-3. Open Training Tools 3/3. Choose a drill, restart with SNES X (keyboard S) and resume. Check
-   that the guide, drill and CPU level stay useful for another attempt.
-4. On ordinary PAUSED, choose P2 Controller with X. Practice real hit/block
-   exchanges with both pads, then return to Stand with X.
-5. Play Arcade. Check its progress and opponent preview, including Continue
-   after a loss. Compare the retained slower pacing with your earlier feedback.
+| Identity | Value |
+| --- | --- |
+| Cartridge | 4 MiB NTSC FastROM LoROM, v0.26.0 |
+| ROM SHA256 | `27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b` |
+| Checksum | `3993` |
+| Source/test freeze | `c89239901491a239e10194f1399820527b0ebf74` |
+| Six native suites | **49,689 exact-ROM checks passed** |
+| Current special stress | 432 cases, 720,078 callbacks, zero SDK lag |
+| Long native sessions | One live hour in each mode; all twelve CPU Training opponents |
+| Unmasked HUD comparison | 244,237 complete logical states, zero changed bytes |
+| Session score limit | 200 earned matches, both counters stop at 99 |
+| Fresh committed-source build | Same cartridge, 226 generated assets and normalized symbols |
+| Complete verification command | All 40 commands passed; source inputs stayed fixed |
+
+Full-roster pacing, supers, CPU difficulty/replays, focused play-flow proofs,
+pinned Accuracy smoke and normal/optimized authoring guards pass on this
+cartridge. The three long sessions retain strict cadence, PCM, FIFO and OBJ checks;
+CPU Training measures 216,363 live callbacks. Its current four-button
+coverage is separate from the historical six-attack/champion-within-one-hour
+traffic contract. The focused Arcade proof earns all eleven victories.
+The stage suite and focused stage appendix share one native run, counted once. Reports and media are bound in
+[verification-v0.26.0.json](verification-v0.26.0.json).
+The [end-to-end execution ledger](play-flow-v026-execution.json) retains every
+command, exit and log hash (ledger SHA256 `5af53f599a3149d8a68f978c56f856206688ea9cead25f294af52d355540b20d`). Logs and full
+raw streams stay in ignored build paths and are produced again by the command.
+
+All approved fighter drawings, portraits, palettes, scales, audio and stage
+payloads remain. Existing 1,318 RAM addresses and native ABI remain. The
+[polish contract](POLISH-v0.26-CONTRACT.md) and [pass notes](POLISH-v0.26.0.md)
+record boundaries and retained historical failures. The full verification is
+repeatable with the [one-command developer route](DEVELOPMENT.md#complete-current-candidate-verification).
+Builds now stage assets
+and native outputs, recover interrupted publication and reuse verified assets.
+
+Human playtest is pending. There is no new offline ZIP or public-release
+certification; the latest complete Windows archive remains v0.19.0.

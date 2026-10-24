@@ -1,5 +1,26 @@
 # Native SNES implementation
 
+## Current native candidate: v0.26.0
+
+<!-- candidate-version: 0.26.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b; source-freeze: c89239901491a239e10194f1399820527b0ebf74 -->
+
+The [polish contract](POLISH-v0.26-CONTRACT.md) adds explicit practice/menu
+state ownership while preserving v0.25 combat timing and native ABI.
+The [verification record](verification-v0.26.0.json) binds 49,689 six-suite
+checks, focused proofs, fresh-source reproduction and 432 current stress cases.
+No additional global RAM, live stage DMA or HDMA is used.
+
+Builds fingerprint art/encoder inputs, validate cached outputs, stage complete
+asset sets and validate native candidates before replacing the ROM last.
+Publication journals recover interruption; old candidates stay under ignored
+build. Play validates cartridge identity before provisioning/opening Snes9x.
+
+Run `tools/collate_play_flow_26.py --source-freeze c89239901491a239e10194f1399820527b0ebf74`
+after the source-bound gates. Gallery generation consumes only passed current
+verification. Main remains approved v0.24; candidate PRs stay unmerged.
+The v0.25 and older sections below retain historical scope.
+
+
 ## Complete current-candidate verification
 
 After `Build.cmd`, commit the exact source and cartridge. Then run from the
@@ -17,27 +38,6 @@ writers finish. All full native/focused/hour/score-limit/stress reports must
 pass before it collates `verification-v0.26.0.json` and generates the review.
 The source ref must be current HEAD; source/build inputs remain fixed while
 it runs. The older commands below retain their historical version scope.
-
-
-## Current native candidate: v0.26.0
-
-<!-- candidate-version: 0.26.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 6b392d161e28578169f0a4536f740d961c223881d3099ec79d20a37a66603531; source-freeze: 41b2c7e27b9c63c54a2b0864db206f1c7a06a95f -->
-
-The [polish contract](POLISH-v0.26-CONTRACT.md) adds explicit practice/menu
-state ownership while preserving v0.25 combat timing and native ABI.
-The [verification record](verification-v0.26.0.json) binds 49,689 six-suite
-checks, focused proofs, fresh-source reproduction and 432 current stress cases.
-No additional global RAM, live stage DMA or HDMA is used.
-
-Builds fingerprint art/encoder inputs, validate cached outputs, stage complete
-asset sets and validate native candidates before replacing the ROM last.
-Publication journals recover interruption; old candidates stay under ignored
-build. Play validates cartridge identity before provisioning/opening Snes9x.
-
-Run `tools/collate_play_flow_26.py --source-freeze 41b2c7e27b9c63c54a2b0864db206f1c7a06a95f`
-after the source-bound gates. Gallery generation consumes only passed current
-verification. Main remains approved v0.24; candidate PRs stay unmerged.
-The v0.25 and older sections below retain historical scope.
 
 
 <!-- v025-development:start -->

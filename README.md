@@ -1,15 +1,15 @@
 # Abaqus: After Hours
-<!-- candidate-version: 0.26.0; identity: IN_PROGRESS; rom-sha256: PENDING_FINAL_VERIFICATION; source-freeze: PENDING_FINAL_VERIFICATION -->
+<!-- candidate-version: 0.26.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b; source-freeze: c89239901491a239e10194f1399820527b0ebf74 -->
 
 An original four-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II and the people and places of Abaqus in Santiago.
 Twelve fighters, three illustrated stages and five original music scores.
 
-**Polish in progress:** [v0.26.0](docs/RELEASE-v0.26.0.md), building on slower
-combat and detailed floors. [v0.25 comparisons](docs/REVIEW-v0.25.0.html).
+**Ready to playtest:** [v0.26.0](docs/RELEASE-v0.26.0.md), with slower combat,
+detailed floors and clearer practice. [Native comparisons](docs/REVIEW-v0.26.0.html).
 The approved main revision is [v0.24.0](docs/RELEASE-v0.24.0.md).
 
-<img src="docs/screenshots/pacing-floor-v025/after-movement.gif" alt="v0.25 native combat and restored detailed floor" width="640">
+<img src="docs/screenshots/play-flow-v026/pacing/after-movement.gif" alt="Current native combat and detailed floor" width="640">
 
 ## Play
 
@@ -26,7 +26,7 @@ in a SNES emulator. Original SNES and flash-cartridge support remain unverified.
 - **Training:** practice against a dummy or CPU with input history, combo damage
   and three drills, or enable **P2 Controller** for two-person practice.
 
-v0.26 adds shared local menus, clear winner/super cues and quick Training retries.
+v0.26 adds shared local menus, clear feedback, Training confirms and comfort options.
 It retains v0.25's slower fight rhythm; video, inputs and audio keep native speed.
 
 ## Controls
@@ -49,8 +49,8 @@ with full energy (**A+Z** on the P1 keyboard).
 Enable **Num Lock** for P2. To use controllers, map each one to **Joypad 1** or
 **Joypad 2** in Snes9x under **Input → Input Configuration**.
 
-See the [player guide](docs/PLAYER-GUIDE.md) for specials, blocking, combos,
-Training options and the complete controls.
+Start with [your first minute](docs/PLAYER-GUIDE.md#your-first-minute), then
+use the player guide for specials, blocking, combos and Training options.
 
 ## Build and test
 
@@ -73,4 +73,5 @@ intermediates stay in ignored `.tools/` and `build/` directories.
 - [Roadmap](docs/ROADMAP.md) — planned work and historical milestones.
 - [Credits and art provenance](docs/CREDITS.md) · [License](LICENSE).
 
-v0.26 awaits final checks and playtest. The latest full Windows archive is v0.19.0.
+All six native suites pass 49,689 checks; human playtest is pending.
+The latest full Windows archive remains v0.19.0.
