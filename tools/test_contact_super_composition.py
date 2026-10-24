@@ -39,6 +39,9 @@ def instrumented_step(e, p1=(), p2=(), monitor=True):
     after = direct_counters(e)
     native_samples.append({'before': before, 'after': after,
                            'trace': [trace_before, state['frame']],
+                           'pause_trace_native': [state['paused'], legacy.read(e, 'paused', 1)[0]],
+                           'raw_keys_trace': [state['raw_keys1'], state['raw_keys2']],
+                           'raw_keys_native': [int.from_bytes(bytes(legacy.read(e, 'fighters', 128)[p*64+32:p*64+34]), 'little') for p in (0, 1)],
                            'delta': {k: (after[k]-before[k]) & 65535 for k in before},
                            'phase': state['superPhase'], 'ticks': state['ticks'], 'keys': [p1, p2]})
     return state
@@ -176,9 +179,29 @@ def pulse_overlay(cases, path):
             'meaning': 'read-only native-derived logical collision snapshots, not PPU screenshots'}
 
 
+def input_phase_probe(fighter):
+    """Keep the failed immediate-pause fixture intact; observe the next polls."""
+    e = legacy.boot(1, fighter, fighter2=fighter, stage=fighter % 3)
+    try:
+        legacy.position(e, far=True)
+        legacy.full(e)
+        for _ in range(5):
+            legacy.step(e, ['y', 'b'], ['y', 'b'])
+        states = [legacy.step(e, ['start'])]
+        states += [legacy.step(e) for _ in range(3)]
+        return {'fighter': fighter, 'pause_after_input_callbacks': [s['paused'] for s in states],
+                'ticks': [s['ticks'] for s in states],
+                'meaning': 'observation only; original one-callback pause assertion is not changed'}
+    finally:
+        e.close()
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--report', type=Path, required=True)
+    parser.add_argument('--rom', type=Path, default=ROOT/'dist/abaqus-after-hours.sfc')
+    parser.add_argument('--runtime-source', help='commit used to build an explicitly retained ROM')
+    parser.add_argument('--phase-probe', type=int, nargs='*', default=[])
     parser.add_argument('--dedicated', type=int, nargs='*', default=[0, 2, 5, 7, 10])
     parser.add_argument('--rising', type=int, nargs='*', default=[5, 7, 10])
     parser.add_argument('--gaps', type=int, nargs='+', default=[28, 22])
@@ -189,9 +212,13 @@ def main():
     parser.add_argument('--core', choices=('snes9x', 'accuracy'), default='snes9x')
     parser.add_argument('--overlays', type=Path)
     args = parser.parse_args()
+    args.rom = args.rom.resolve()
+    if args.overlays:
+        args.overlays = args.overlays.resolve()
     if args.core == 'accuracy':
         import test_characters
         import test_compatibility as compat
+        compat.ROM_PATH = args.rom
         if digest(compat.CORE_PATH.read_bytes()).upper() != compat.CORE_DLL_SHA256:
             raise AssertionError('Accuracy DLL differs from pinned member')
         if digest(compat.CORE_ARCHIVE.read_bytes()).upper() != compat.CORE_ARCHIVE_SHA256:
@@ -211,14 +238,21 @@ def main():
                 # Preserve all public names expected by the shared helpers.
                 return dedicated.Emulator.state(self)
         test_characters.Emulator = AccuracyHost
+    elif args.rom != (ROOT/'dist/abaqus-after-hours.sfc').resolve():
+        import test_characters
+        class RetainedHost(dedicated.Emulator):
+            def __init__(self, rom=None):
+                super().__init__(rom or args.rom)
+        test_characters.Emulator = RetainedHost
     started = time.monotonic()
     _, data = generate()
-    legacy.SYMBOLS = legacy.symbols((ROOT/'dist/abaqus-after-hours.sym').read_text())
+    legacy.SYMBOLS = legacy.symbols(args.rom.with_suffix('.sym').read_text())
     report = {'status': 'failed', 'scope': 'interim-contact-plus-dedicated-super-composition',
               'final_art_timing_rerun_required': True,
               'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT).decode().strip(),
+              'built_runtime_source_commit': args.runtime_source,
               'source_diff_sha256': digest(subprocess.check_output(['git', 'diff', 'HEAD', '--', 'src', 'tools'], cwd=ROOT)),
-              'rom_sha256': digest((ROOT/'dist/abaqus-after-hours.sfc').read_bytes()),
+              'rom_sha256': digest(args.rom.read_bytes()), 'rom': str(args.rom),
               'geometry_digest': data['digest'], 'command': subprocess.list2cmdline([sys.executable, *sys.argv]),
               'harness_sha256': digest(Path(__file__).read_bytes().replace(b'\r\n', b'\n')),
               'host': host_contract(), 'core': core_identity(), 'cases': [], 'failures': []}
@@ -265,6 +299,12 @@ def main():
             report['cases'].append({'kind': 'recovery-punish', 'fighter': 2, 'result': result,
                                     'timing': copy.deepcopy(legacy.timing),
                                     'native_counters': copy.deepcopy(native_samples)})
+        for fighter in args.phase_probe:
+            reset_counters()
+            result = input_phase_probe(fighter)
+            report['cases'].append({'kind': 'input-phase-diagnostic', 'fighter': fighter, 'result': result,
+                                    'timing': copy.deepcopy(legacy.timing),
+                                    'native_counters': copy.deepcopy(native_samples)})
         if args.overlays:
             report['overlay'] = pulse_overlay(report['cases'], args.overlays)
         for case in report['cases']:
@@ -283,6 +323,9 @@ def main():
         report['legacy_david_target28_negative_required'] = args.expect_legacy_david_miss
     except Exception as error:
         report['error'] = repr(error)
+        report['interrupted_case'] = {'native_counters': copy.deepcopy(native_samples),
+                                      'timing': copy.deepcopy(legacy.timing),
+                                      'health': copy.deepcopy(dedicated.health)}
         raise
     finally:
         report['elapsed_seconds'] = round(time.monotonic()-started, 3)
