@@ -35,7 +35,7 @@ u8 trainingHistoryDirty=0,trainingHistoryBuild=0,trainingStatusDirty=0,trainingR
 char trainingHistoryText[33]={0},trainingStatusText[33]={0};
 const char trainingResultNames[4][6]={"READY","LINK!","DONE!","RETRY"};
 const char trainingChallengeNames[3][22]={
-    "HIT CONFIRM", "BLOCK A LOW ATTACK", "AIR KICK CROSS-UP"
+    "HIT CONFIRM", "BLOCK LOW", "CROSS-UP"
 };
 
 /* Contact-budget adapter for the two fixed victim indices in combat().

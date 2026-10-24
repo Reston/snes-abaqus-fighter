@@ -88,8 +88,8 @@ SPECIAL_NAMES = (
 )
 SPECIAL_FAMILY = (0, 0, 1, 1, 2, 3, 2, 3, 2, 0, 3, 2)
 SPECIAL_FAMILY_NAMES = (
-    "FORWARD PROJECTILE", "ADVANCING STRIKE",
-    "LOW SHOCKWAVE", "RISING STRIKE",
+    "PROJECTILE", "RUSH",
+    "LOW WAVE", "RISING",
 )
 
 CHECKS: list[dict[str, object]] = []
@@ -669,10 +669,10 @@ def verify_page_navigation(rom: Path, mode: int, fighter: int,
         page1 = cycle_to_page(q, 1)
         controls = page_text(
             q,
-            ("HOW TO PLAY 1/3" if mode == 2 else "HOW TO PLAY 1/2",
+            ("CONTROLS 1/3" if mode == 2 else "CONTROLS 1/2",
              "WALK", "JUMP", "STAND GUARD",
              "LOW GUARD", "PUNCH", "KICK", "THROW", "UPPERCUT",
-             "AFTER A HIT: PRESS HEAVIER", "CROSS-UP: JUMP PAST + A"),
+             "CONFIRM LIGHT > STRONG", "CROSS-UP: JUMP PAST + A"),
             f"mode{mode}-controls",
         )
         q.press("right")
@@ -698,9 +698,9 @@ def verify_page_navigation(rom: Path, mode: int, fighter: int,
             expected.extend((FIGHTER_NAMES[p2], SPECIAL_NAMES[p2],
                              SPECIAL_FAMILY_NAMES[SPECIAL_FAMILY[p2]]))
         expected.extend(("MOVE LIST 2/3" if mode == 2 else "MOVE LIST 2/2", "QUICK: DOWN + Y",
-                         "MOTION: D, D+F, F + Y/X", "COST: 32 ENERGY",
-                         "12-TICK WINDOW PER STEP",
-                         "PRESS PUNCH WITH FINAL TOWARD"))
+                         "MOTION: D, D+F, F + Y/X", "32 ENERGY",
+                         "12 TICKS PER STEP",
+                         "PUNCH WITH FINAL TOWARD"))
         specials = page_text(q, expected, f"mode{mode}-specials")
 
         # Training adds its tools page before SELECT wraps to normal pause.
