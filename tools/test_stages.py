@@ -27,6 +27,7 @@ from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).parent))
 from emulator import Emulator, ROOT
+from stage_test_contract import depth_manifest
 
 
 TITLE, SELECT, ARENA, FIGHT = 0, 1, 2, 3
@@ -1051,6 +1052,8 @@ def run_stage(stage_id: int, record: dict[str, object],
 
 
 def main() -> int:
+    if depth_manifest(ROOT) is not None:
+        return depth_stage_suite()
     started = time.monotonic()
     report: dict[str, object] = {
         "emulator": "Official Snes9x 1.63 x64 libretro core",
@@ -1086,6 +1089,31 @@ def main() -> int:
         "seconds": report["elapsed_seconds"], "rom_sha256": report["rom_sha256"],
         "report": "docs/stage-test-report.json",
     }))
+    return 0
+
+
+def depth_stage_suite() -> int:
+    """One native execution backs the stage suite and its focused appendix."""
+    import test_combat_24_stage08 as depth
+    started=time.monotonic()
+    manifest=json.loads((ROOT/'dist/manifest.json').read_bytes())
+    report={'status':'failed','suite':'stage-depth','rom_sha256':manifest['sha256'],
+            'rom_bytes':manifest['bytes'],'checks':depth.checks}
+    try:
+        depth.main()
+        focused=json.loads(depth.REPORT.read_bytes())
+        check(focused['rom_sha256']==manifest['sha256'],'Stage proof identifies the current cartridge')
+        report={**focused,'suite':'stage-depth',
+                'focused_report':depth.REPORT.relative_to(ROOT).as_posix(),
+                'focused_report_sha256':hashlib.sha256(depth.REPORT.read_bytes()).hexdigest(),
+                'shared_native_execution':True}
+    except Exception as error:
+        report['error']=repr(error)
+        raise
+    finally:
+        report['passed']=sum(row.get('passed') is True for row in report['checks'])
+        report['elapsed_seconds']=round(time.monotonic()-started,3)
+        (ROOT/'docs/stage-test-report.json').write_bytes((json.dumps(report,indent=2)+'\n').encode())
     return 0
 
 

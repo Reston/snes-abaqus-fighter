@@ -136,6 +136,7 @@ SOURCE_INPUT_EXACT = {
     "tools/pose_revision_assets.py",
     "tools/v024_contracts.py",
     "tools/contact_geometry.py",
+    "tools/stage_test_contract.py",
 }
 SOURCE_INPUT_PREFIXES = ("src/", "assets/", "dist/")
 

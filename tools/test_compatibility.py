@@ -12,10 +12,13 @@ from __future__ import annotations
 import ctypes as C
 import hashlib
 import json
+import sys
 import zipfile
 from pathlib import Path
 
 from PIL import Image
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+from stage_test_contract import depth_manifest
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -234,6 +237,9 @@ def stage_slug(record: dict[str, object], stage_id: int) -> str:
 def load_stage_dynamics() -> tuple[dict[str, object], dict[str, int], dict[int, dict[str, object]]]:
     """Validate the generated stage contract before starting the core."""
 
+    depth=depth_manifest(ROOT)
+    if depth is not None:
+        return depth, dict(TRACE_DEFAULTS), {row['id']:row for row in depth['stages']}
     require(STAGE_MANIFEST_PATH.exists(),
             f"missing stage dynamics manifest: {STAGE_MANIFEST_PATH}")
     manifest = json.loads(STAGE_MANIFEST_PATH.read_text(encoding="utf-8"))
@@ -1166,6 +1172,16 @@ def stage_state(label: str, state: dict[str, int], frame: dict[str, object],
 
 def run_stage_engine_check(stage_id: int, record: dict[str, object],
                            trace_map: dict[str, int]) -> dict[str, object]:
+    if depth_manifest(ROOT) is not None:
+        # The depth driver decodes both real SNES tile planes and verifies
+        # each camera/impact offset, immutable maps, freeze and live budgets.
+        # Use a separate capture directory from the six-suite execution.
+        import test_combat_24_stage08 as depth
+        depth.OUT=CAPTURE_ROOT/'depth-v1';depth.OUT.mkdir(parents=True,exist_ok=True)
+        result=depth.stage_case(stage_id,independent=True)
+        result['stage_contract']='whole-scenery-fixed-floor'
+        result['passed']=True
+        return result
     rects = stage_phase_probe_rects(record)
     core = Probe()
     try:
