@@ -34,6 +34,7 @@ BASE_ROM_SHA = '057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd
 OUT = ROOT / 'docs/screenshots/combat24-super'
 checks = []
 captures = []
+baseline_git = None
 health = {'frames': 0, 'cadence_failures': [], 'obj_failures': [],
           'transfer_failures': [], 'audio_failures': [], 'phase_failures': [],
           'peak_spc_backlog': 0, 'actor_updates': [0, 0],
@@ -45,7 +46,19 @@ def sha(raw):
 
 
 def git_file(path):
-    return subprocess.check_output(['git', 'show', BASE + ':' + path], cwd=ROOT)
+    global baseline_git
+    if baseline_git is None:
+        baseline_git = subprocess.Popen(['git', 'cat-file', '--batch'], cwd=ROOT,
+                                        stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+    baseline_git.stdin.write((BASE + ':' + path + '\n').encode())
+    baseline_git.stdin.flush()
+    header = baseline_git.stdout.readline().split()
+    if len(header) != 3 or header[1] != b'blob':
+        raise AssertionError(('baseline blob unavailable', path, header))
+    raw = baseline_git.stdout.read(int(header[2]))
+    if baseline_git.stdout.read(1) != b'\n':
+        raise AssertionError(('baseline blob framing', path))
+    return raw
 
 
 def check(ok, label, detail=None):
@@ -174,14 +187,20 @@ def observe(e, old, old_payload, before_audio, state):
 def dedicated_sequence(fighter):
     e = boot(1, fighter, fighter2=fighter, stage=fighter % 3)
     wanted = [set(), set()];uploaded = [set(), set()];phase_samples = [[], []]
+    pauses = []
+    def advance(p1=(), p2=()):
+        nonlocal old, payload
+        before_audio = e.audio_samples
+        state = legacy.step(e, p1, p2)
+        payload = observe(e, old, payload, before_audio, state)
+        old = state
+        return state
     try:
         legacy.position(e, far=True);legacy.full(e)
         old = legacy.sample(e);payload = [actor_payload(e, p) for p in range(2)]
-        for tick in range(180):
-            before_audio = e.audio_samples
-            state = legacy.step(e, ['y', 'b'], ['y', 'b'])
-            payload = observe(e, old, payload, before_audio, state)
-            if tick == 0:
+        for elapsed in range(180):
+            state = advance(['y', 'b'], ['y', 'b'])
+            if elapsed == 0:
                 check(state['energy1'] == state['energy2'] == 0 and state['superActive'] == [1, 1],
                       'fresh neutral Y+B costs96 on both ports', fighter)
                 for port in range(2):verify_oam_geometry(e, port, f'super-{fighter}-{port}')
@@ -193,22 +212,56 @@ def dedicated_sequence(fighter):
                     4 if clock >= state['active_ends'][p] else (2 if clock < state['superContactEnd'][p] else 1))
                 actual = state[f'anim_frame{p+1}']
                 if frame != actual:
-                    health['phase_failures'].append([fighter, p, tick, clock, frame, actual])
+                    health['phase_failures'].append([fighter, p, elapsed, clock, frame, actual])
                 wanted[p].add(actual)
                 native = uploaded_frame_id(e, fighter, p)
-                check(native is not None, 'VRAM contains a complete exact native frame', [fighter, p, tick])
+                check(native is not None, 'VRAM contains a complete exact native frame', [fighter, p, elapsed])
                 if native in (1, 2, 4):
                     uploaded[p].add(native)
                     if native == actual and len([r for r in phase_samples[p] if r['frame'] == native]) < 2:
                         phase_samples[p].append({'frame': native, 'clock': clock, 'pulse': state['superPhase'][p],
                                                  'payload_sha256': sha(payload[p])})
-            old = state
+            if elapsed in (4, legacy.START[fighter]+3):
+                port = 0 if elapsed == 4 else 1
+                frozen = advance(['start'] if port == 0 else (), ['start'] if port == 1 else ())
+                check(frozen['paused'] == 1, 'either native port can pause a dedicated super', [fighter, port])
+                fields = ('ticks', 'superActive', 'superPhase', 'superNext', 'superContactEnd',
+                          'anim_frame1', 'anim_frame2', 'wave_life1', 'wave_life2', 'x1', 'x2', 'y1', 'y2')
+                for _ in range(8):
+                    paused = advance()
+                    check(all(paused[k] == frozen[k] for k in fields), 'pause freezes both super sequences and uploads', [fighter, port])
+                resumed = advance(['start'] if port == 0 else (), ['start'] if port == 1 else ())
+                check(not resumed['paused'] and resumed['superActive'] == [1, 1],
+                      'same port resumes both committed supers', [fighter, port])
+                advance();pauses.append(port)
         check(wanted == [{1, 2, 4}, {1, 2, 4}], 'three phase-specific frames selected on both ports', fighter)
         check(uploaded == [{1, 2, 4}, {1, 2, 4}], 'three dedicated frames actually upload on both ports', fighter)
         check(state['superActive'] == [0, 0], 'both held commands finish without repeat', fighter)
         check(e.audio_peak > 1000, 'capture-only resident PCM remains active', fighter)
         return {'fighter': fighter, 'selected': [sorted(r) for r in wanted], 'uploaded': [sorted(r) for r in uploaded],
-                'phase_samples': phase_samples, 'audio_peak': e.audio_peak, 'frames': 180}
+                'phase_samples': phase_samples, 'audio_peak': e.audio_peak, 'ordinary_ticks': 180,
+                'pause_resume_ports': pauses}
+    finally:
+        e.close()
+
+
+def training_reset(fighter):
+    e = boot(2, fighter, fighter2=fighter)
+    try:
+        legacy.full(e);legacy.fire(e, 0);legacy.run(e, 2)
+        legacy.run(e, 3, p2=['start']);frozen = legacy.sample(e)
+        check(frozen['paused'] and frozen['superActive'][0], 'P2 pauses each Training signature startup', fighter)
+        paused = legacy.run(e, 8)
+        check(paused['ticks'] == frozen['ticks'] and paused['superPhase'] == frozen['superPhase'],
+              'each Training super clock freezes', fighter)
+        legacy.run(e, 3, p2=['start']);legacy.run(e, 3)
+        reset = legacy.run(e, 3, p1=['select'])
+        check(all(reset[n] == [0, 0] for n in legacy.STATE) and not reset['wave1'] and not reset['wave2'],
+              'Training reset clears every signature state and projectile', fighter)
+        later = legacy.run(e, 24)
+        check(not later['superActive'][0] and later['action1'] == 0 and later['hp1'] == later['hp2'] == 128,
+              'reset cannot leak later super frames or damage', fighter)
+        return {'fighter': fighter, 'activation_port': 0, 'pause_port': 1, 'reset_port': 0, 'state': 'all14 private bytes zero'}
     finally:
         e.close()
 
@@ -259,12 +312,14 @@ def main():
               'background runner priority and affinity enforced', report['host'])
         report['art'] = art_contract();report['native_contract'] = native_contract()
         report['dedicated_sequences'] = [dedicated_sequence(i) for i in range(12)]
+        report['training_resets'] = [training_reset(i) for i in range(12)]
         report['activation'] = [legacy.activation(i) for i in range(12)]
         report['hits'] = [legacy.contact(i, p) for i in range(12) for p in range(2)]
         report['blocks'] = [legacy.contact(i, p, guard=True) for i in range(12) for p in range(2)]
         report['whiffs'] = [legacy.whiff(i, p) for i in range(12) for p in range(2)]
         report['interruptions'] = [legacy.interrupt(i, p) for i in range(12) for p in range(2)]
         report['punish'] = legacy.punish();report['pause_reset'] = legacy.eligibility_pause_reset()
+        report['pause_reset']['guide'] = 'docs/screenshots/combat24-super/guide.png'
         report['hurt_down_wake_dead'] = legacy.hurt_down_wake_dead()
         report['ordinary_special_after_super'] = legacy.ordinary_special_after_super()
         captures.append(OUT/'guide.png');report['clips'] = {}
@@ -274,9 +329,18 @@ def main():
             if args.baseline_rom:
                 check(sha(args.baseline_rom.read_bytes()) == BASE_ROM_SHA, 'approved baseline cartridge exact')
                 saved = legacy.SYMBOLS
+                saved_timing = {k: v.copy() if isinstance(v, list) else v for k, v in legacy.timing.items()}
+                saved_checks = len(legacy.checks)
                 legacy.SYMBOLS = legacy.symbols(args.baseline_rom.with_suffix('.sym').read_text())
                 before = clip(fighter, 'before', args.baseline_rom)
                 legacy.SYMBOLS = saved
+                before['observed_native_frames'] = legacy.timing['frames']-saved_timing['frames']
+                before['checks'] = len(legacy.checks)-saved_checks
+                before['cadence_failures'] = legacy.timing['cadence_failures'][len(saved_timing['cadence_failures']):]
+                before['overflow_failures'] = legacy.timing['overflow_failures'][len(saved_timing['overflow_failures']):]
+                check(not before['cadence_failures'] and not before['overflow_failures'], 'baseline clip native health', fighter)
+                legacy.timing.clear();legacy.timing.update(saved_timing)
+                del legacy.checks[saved_checks:]
                 report['clips'][str(fighter)]['before'] = before
                 check(before['events'] == after['events'], 'before/after full native contacts and damage identical', fighter)
         for key in ('cadence_failures', 'obj_failures', 'transfer_failures', 'audio_failures', 'phase_failures'):
@@ -290,6 +354,8 @@ def main():
         raise
     finally:
         Emulator.shot = old_shot
+        if baseline_git is not None:
+            baseline_git.stdin.close();baseline_git.wait(timeout=10)
         report['checks'] = len(checks) + len(legacy.checks)
         report['health'] = health;report['retained_fixture_timing'] = legacy.timing
         report['captures'] = [{'path': p.relative_to(ROOT).as_posix(), 'sha256': sha(p.read_bytes())} for p in captures if p.exists()]
