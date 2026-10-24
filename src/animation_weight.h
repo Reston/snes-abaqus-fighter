@@ -61,10 +61,12 @@ void animateFighter(u8 p) {
     else if(state==3)f->animFrame=f->animTick<4?28:3;
     else if(state==4) {
         if(f->landing)f->animFrame=31;
-        else if(f->animTick<2)f->animFrame=29;
-        else if(f->animTick<6)f->animFrame=30;
-        /* Bent-knee descent keeps compression for actual ground contact. */
-        else if(f->vy>32 && f->y>-24*16)f->animFrame=54;
+        else if(f->animTick<2 && f->y>-24*16 && f->vy < -32)f->animFrame=29;
+        /* The physical velocity, rather than an arbitrary elapsed hold,
+         * separates extension, the compact apex and the open-leg descent.
+         * Two compression samples introduce takeoff without delaying input. */
+        else if(f->vy < -32)f->animFrame=30;
+        else if(f->vy > 32)f->animFrame=54;
         else f->animFrame=55;
     } else if(state==6) {
         if(f->duck)f->animFrame=3;
@@ -89,7 +91,9 @@ void animateFighter(u8 p) {
     else if(state==12)f->animFrame=f->downTick<5?59:14;
     else if(state==13)f->animFrame=f->downTick<6?62:63;
     else if(state==14)f->animFrame=63;
-    else if(state==15)f->animFrame=f->animTick<3?28:19;
+    /* The same open-leg drawing releases the grounded squat. Any accepted
+     * command selected above wins immediately; there is no landing lock. */
+    else if(state==15)f->animFrame=54;
     else {
         start=f->actionStartup;end=f->actionActiveEnd;
         tick=f->tick;hold=tick<start;recover=tick>=end;
@@ -97,7 +101,13 @@ void animateFighter(u8 p) {
         else if(f->airAction) {
             if(action<=3)f->animFrame=hold?49:(recover?51:50);
             else f->animFrame=hold?52:(recover?54:53);
-            if(recover && tick+4>=f->actionEnd)f->animFrame=55;
+            /* Recover the arms/leg before returning to the physical flight
+             * phase. An attack finishing on descent must not tuck at apex. */
+            if(recover && tick+4>=f->actionEnd) {
+                if(f->vy < -32)f->animFrame=30;
+                else if(f->vy > 32)f->animFrame=54;
+                else f->animFrame=55;
+            }
         }
         else if(action==1) {
             f->animFrame=hold?32:(recover?33:5);
