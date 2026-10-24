@@ -346,6 +346,7 @@ void drawArenas(void) {
     /* Cover only the raster footer below the three unchanged choice rows.
      * Opaque original glyphs keep the old lettering from showing through. */
     panel(26,2);drawGuideWord((27*32+3)*2,"UP/DOWN A/START OK B BACK");
+    if(mode==1)drawGuideWord((26*32+5)*2,"LOCAL 1V1: EITHER PAD");
     fullDirty=1;
 }
 void showArenas(void) { setScreenOff();screen=ARENA;commonScreen();loadBackground(5);drawArenas();finishScreen(); }
@@ -1298,6 +1299,7 @@ void menuTick(void) {
     /* Local matches belong to both players, including the rematch card.
      * Merge participating inputs before applying the shared menu priority. */
     if(screen==RESULT && mode==1){keys|=edge1;held|=pad1;}
+    if(screen==ARENA && mode==1){keys|=edge1;held|=pad1;}
     directions=cleanDirections(held)&keys;
     directions&=KEY_RIGHT|KEY_LEFT|KEY_UP|KEY_DOWN;
     /* One menu action per sample. Match pause: Start, then Back, then A.

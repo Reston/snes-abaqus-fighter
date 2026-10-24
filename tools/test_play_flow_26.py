@@ -284,9 +284,72 @@ def meter_feedback():
         Emulator.run = original
 
 
+def local_arenas():
+    rows = []
+    for port in (0, 1):
+        for key, destination in (('a', 3), ('start', 3), ('b', 1)):
+            e = inputs.menu_title()
+            try:
+                inputs.menu_arena(e, 1)
+                e.run(10)
+                text = training.decode_text(presentation.vram_bytes(e), 26, 27).strip()
+                require(text == 'LOCAL 1V1: EITHER PAD', 'local arena picker advertises both controllers', text)
+                inputs.menu_press(e, ['down'], port)
+                require(inputs.trace(e)['arena'] == 1, 'either pad moves the local arena cursor down', port)
+                inputs.menu_press(e, ['up'], port)
+                require(inputs.trace(e)['arena'] == 0, 'either pad moves the local arena cursor up', port)
+                # Opposites across the two participating pads cancel.
+                e.run(3, p1=['down'], p2=['up'])
+                e.run(10)
+                require(inputs.trace(e)['arena'] == 0, 'opposite arena directions cancel across controllers', port)
+                # A held opposite also suppresses a new edge on the other pad.
+                e.run(3, p1=['up'])
+                before = inputs.trace(e)['arena']
+                e.run(3, p1=['up'], p2=['down'])
+                e.run(10)
+                require(inputs.trace(e)['arena'] == before, 'held arena opposite suppresses a newly pressed direction', port)
+                inputs.menu_press(e, ['down'], port)
+                chosen = inputs.trace(e)['arena']
+                inputs.menu_press(e, [key], port)
+                require(inputs.native_screen(e) == destination and inputs.trace(e)['screen'] == destination,
+                        'either pad can confirm or leave the chosen local arena', [port, key, destination])
+                if destination == 3:
+                    require(inputs.trace(e)['arena'] == chosen and inputs.trace(e)['round'] == 1,
+                            'arena confirmation loads the chosen stage exactly once', [port, key, chosen])
+                rows.append({'port': port, 'key': key, 'destination': destination, 'passed': True})
+            finally:
+                e.close()
+    for p1, p2, destination in ((['b'], ['start'], 3), (['start'], ['b'], 3),
+                                 (['a'], ['b'], 1), (['b'], ['a'], 1)):
+        e = inputs.menu_title()
+        try:
+            inputs.menu_arena(e, 1)
+            e.run(10)
+            e.run(1, p1=p1, p2=p2)
+            require(inputs.native_screen(e) == destination, 'local arena applies shared Start/B/A priority on its first sample',
+                    {'p1': p1, 'p2': p2, 'destination': destination})
+            rows.append({'p1': p1, 'p2': p2, 'destination': destination, 'passed': True})
+        finally:
+            e.close()
+    for mode in (0, 2):
+        e = inputs.menu_title()
+        try:
+            inputs.menu_arena(e, mode)
+            e.run(10)
+            prior = inputs.trace(e)
+            for keys in (['down'], ['up'], ['a'], ['start'], ['b']):
+                inputs.menu_press(e, keys, port=1)
+                s = inputs.trace(e)
+                require(s['screen'] == 2 and s['arena'] == prior['arena'],
+                        'local arena ownership does not leak into Arcade or Training', [mode, keys, s])
+        finally:
+            e.close()
+    return rows
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--part', choices=('results', 'training', 'meter'), required=True)
+    parser.add_argument('--part', choices=('results', 'training', 'meter', 'arenas'), required=True)
     parser.add_argument('--report', type=Path)
     args = parser.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
@@ -304,7 +367,8 @@ def main():
                 'proof uses the exact current cartridge')
         require(sha((ROOT / '.tools/core/snes9x_libretro.dll').read_bytes()).lower() == EXPECTED_NATIVE_CORE['dll_sha256'].lower(),
                 'actual expanded native core matches its pin')
-        report['result'] = {'results': result_routes, 'training': training_drills, 'meter': meter_feedback}[args.part]()
+        report['result'] = {'results': result_routes, 'training': training_drills, 'meter': meter_feedback,
+                            'arenas': local_arenas}[args.part]()
         require(source_hashes() == before, 'production and harness inputs remain fixed during proof')
         report['status'] = 'passed'
     except Exception as error:

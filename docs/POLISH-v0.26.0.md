@@ -54,3 +54,11 @@ meter through a real super command, and checks native bar/cue cells for all
 twelve fighters. It also checks that both cues can coexist without replacing
 the central mode label. Native cadence, OBJ and audio checks remain strict.
 The HUD stays within its original 320-byte transfer and uses no new art/RAM.
+
+## Pass 4: shared local arena selection
+
+Either controller can now move, confirm or leave the arena picker in Local
+Versus. Its footer says **LOCAL 1V1: EITHER PAD**. Opposing directions cancel
+across controllers, and the shared Start/B/A priority matches the result card.
+Arcade and Training arena selection keep their existing ownership. The focused
+proof checks both ports' routes, simultaneous inputs and those mode boundaries.
