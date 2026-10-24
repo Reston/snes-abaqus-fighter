@@ -433,6 +433,10 @@ def status_bar_expected(value: int, count: int, base: int,
     """Build the native mirrored health/energy glyph sequence."""
 
     remaining = (value * 88) // 128 if scale_health else value
+    # refreshHealthBar has always selected the red/gold bank at HP <= 32.
+    # Faster menus can shift the CPU fixture into this existing low-HP case.
+    if scale_health and value <= 32:
+        attributes |= 0x0400
     return [attributes + base + min(8, max(0, remaining - index * 8))
             for index in range(count)]
 
