@@ -61,6 +61,7 @@ class AssetCacheTests(unittest.TestCase):
         self.save()
         (self.root / 'src/game.c').write_text('void game(void){return;}\n')
         (self.root / 'tools/test_unrelated.py').write_text('raise RuntimeError()\n')
+        (self.root / 'tools/play.ps1').write_text('Write-Host "launcher only"\n')
         self.assertTrue(cache.status(self.root)[0])
 
     def test_modified_generated_bytes_invalidate(self):

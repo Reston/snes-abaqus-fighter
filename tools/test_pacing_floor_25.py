@@ -37,6 +37,10 @@ def require(ok,label,details=None):
         raise AssertionError((label,details))
 
 def inputs():
+    version=tuple(map(int,json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.')))
+    if version>=(0,26,0):
+        from candidate_sources import snapshot
+        return snapshot(ROOT)
     files=sorted(set(HARNESS)|{p.relative_to(ROOT).as_posix() for directory in ('src','tools')
                               for p in (ROOT/directory).iterdir() if p.is_file() and p.suffix in ('.py','.c','.h','.asm')})
     return {name:sha((ROOT/name).read_bytes().replace(b'\r\n',b'\n')) for name in files}

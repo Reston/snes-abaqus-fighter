@@ -53,7 +53,6 @@ def encoder_dependencies(root):
 def inputs(root):
     root = Path(root).resolve()
     paths = encoder_dependencies(root)
-    paths.update((root / 'tools').glob('*.ps1'))
     for path in (root / 'assets').rglob('*'):
         if path.relative_to(root / 'assets').parts[0].lower() == 'generated':
             continue

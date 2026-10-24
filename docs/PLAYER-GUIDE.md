@@ -9,6 +9,9 @@ See the [playtest guide](RELEASE-v0.26.0.md) and [pass notes](POLISH-v0.26.0.md)
 This is a native SNES game. On Windows use [Play.cmd](../Play.cmd); on other
 platforms load `dist/abaqus-after-hours.sfc` in a SNES emulator.
 
+The launcher names the cartridge version before opening it. If its file or
+version differs from the checkout, run **Build.cmd** before trying again.
+
 Focus Snes9x and press **Enter**. **Alt+Enter** toggles fullscreen;
 **Input -> Input Configuration** maps controllers. The launcher prepares
 pinned local tools on first use, without an administrator account or global

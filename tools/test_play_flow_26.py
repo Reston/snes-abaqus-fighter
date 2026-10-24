@@ -14,6 +14,7 @@ import test_inputs as inputs
 import test_presentation as presentation
 from test_champion import host_contract
 from release_evidence import EXPECTED_NATIVE_CORE
+from candidate_sources import snapshot as candidate_sources
 import test_training as training
 
 BASE = '7ba40c106000b2b2eb916f6b35d47065334dd4c7'
@@ -32,9 +33,7 @@ def require(ok, label, details=None):
 
 
 def source_hashes():
-    return {p.relative_to(ROOT).as_posix(): sha(p.read_bytes().replace(b'\r\n', b'\n'))
-            for folder in ('src', 'tools') for p in sorted((ROOT / folder).iterdir())
-            if p.suffix in ('.py', '.c', '.h', '.asm')}
+    return candidate_sources(ROOT)
 
 
 def earn_result(winner_side):
@@ -413,6 +412,7 @@ def arcade_orientation():
                 if shift == 10:
                     require(s['champion'] == 1, 'eleventh win enters the existing Champion scene', s)
                     presentation.verify_result_font_bank(e, s)
+                    rows.append({'shift': 11, 'opponent': s['fighter_id2'], 'champion': True, 'attempts': attempts})
                     break
                 text(e, 17, 15, f'SHIFT {shift + 1:02}/11')
                 text(e, 19, 15, 'NEXT')

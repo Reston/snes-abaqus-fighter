@@ -291,7 +291,7 @@ no local cache and therefore always encodes from source.
 Generation captures its source fingerprint before and after encoding and
 retains the candidate if inputs changed. The saved cache binds that exact
 source/output pair. Ten isolated cache-mutation tests pass normally and under
-optimized Python; all 371 current dependency/data inputs hash in about 0.3s on
+optimized Python; the current dependency/data inputs hash in about 0.3s on
 this workstation. This is a local performance cache, separate from release
 evidence and fresh-build verification.
 
@@ -315,3 +315,25 @@ assumed another symbol format and correctly kept the previous cartridge;
 the current validator accepts the SDK's no$snes format. Only its filename
 comment points from the private candidate to the published ROM; numeric
 labels and addresses are preserved without normalization.
+
+## Pass 23: bind the complete native test run
+
+Evidence producers share one canonical source inventory, including nested
+helpers, PowerShell launchers and Build/Test/Play entry commands. Six inventory
+guards pass in both interpreter modes. The canonical six-suite runner records
+the actual command result, core hash, frozen source identity and hashes/counts
+of all six output reports. Headless failures exit without an interactive pause.
+This separates a completed current run from historical reports with the same
+cartridge bytes. The combined run is still pending final source freeze.
+
+## Pass 24: identify and validate the game being opened
+
+Play validates the cartridge's format, size, SHA and manifest version before
+tool provisioning or opening a window. A source checkout also checks its
+version header. The console names the version being started; existing emulator
+configuration remains intact. ValidateOnly provides a read-only diagnostic.
+
+The actual launcher and six isolated valid/corrupt/stale fixtures pass without
+creating tool files, rewriting configuration or invoking setup/GUI. The default
+normal-speed and fast-forward bindings were inspected; game attack keys do not
+share the default fast-forward key. No speed or personal mapping was changed.
