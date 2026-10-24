@@ -14,11 +14,11 @@
 u8 beginImpact(u8 action,u8 blocked,u8 direction) {
     u8 kind,life,stop,kick;
     if(blocked) {
-        kind=IMPACT_GUARD;life=8;stop=3;kick=0;
+        kind=IMPACT_GUARD;life=8;stop=5;kick=0;
     } else if(action==1 || action==4) {
-        kind=IMPACT_LIGHT;life=6;stop=4;kick=2;
+        kind=IMPACT_LIGHT;life=6;stop=7;kick=2;
     } else {
-        kind=IMPACT_STRONG;life=10;stop=6;kick=6;
+        kind=IMPACT_STRONG;life=10;stop=10;kick=6;
     }
     /* A weaker second contact in a trade must not shorten the strong hit or
      * replace its one spark/direction. Equal classes retain legacy last-hit

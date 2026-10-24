@@ -71,9 +71,9 @@ u16 cpuKeys(void) {
     habit=&cpuPersonalities[fighters[1].id];
     phase=frame+fighters[1].id*13;
     /* Observe only the current rendered attack clock. New guard decisions
-     * sample every 12/8/4 ticks (Easy/Normal/Hard); a guard already held may
+     * sample every 16/12/8 ticks (Easy/Normal/Hard); a guard already held may
      * continue until its visible threat ends. Never read the opponent pad. */
-    reaction=phase%(difficulty==0?12:(difficulty==1?8:4))==0;
+    reaction=phase%(difficulty==0?16:(difficulty==1?12:8))==0;
     if(fighters[1].keys&back)reaction=1;
     enemyActive=0;
     if(fighters[0].action && fighters[0].tick>=fighters[0].actionStartup) {
@@ -103,7 +103,7 @@ u16 cpuKeys(void) {
      * make commitment readable; no opponent input or future outcome is read. */
     if(difficulty>0 && fighters[1].energy==ENERGY_MAX && !fighters[1].invuln) {
         if(!waves[1].active && !(fighters[1].keys&SUPER_CHORD)) {
-            if(chance<(difficulty==2?12:6) && phase%(difficulty==2?31:47)==0) {
+            if(chance<(difficulty==2?12:6) && phase%(difficulty==2?53:73)==0) {
                 if(superProfiles[fighters[1].id].family==SUPER_VOLLEY) {
                     if(distance>64 && distance<144)return SUPER_CHORD;
                 } else if(distance<=superProfiles[fighters[1].id].reach+BODY_HALF_WIDTH-4)return SUPER_CHORD;
@@ -139,12 +139,12 @@ u16 cpuKeys(void) {
             if(fighters[0].y<=-12*16 && fighters[0].y>=-56*16) {
                 if((fighters[0].x>fighters[1].x)==fighters[1].face &&
                    chance<(difficulty==2?24:16) &&
-                   phase%(difficulty==2?8:12)==0)return KEY_DOWN|KEY_X;
+                   phase%(difficulty==2?14:20)==0)return KEY_DOWN|KEY_X;
             }
         }
     }
     /* Counter habits sample visible recovery, never a future hit/whiff or
-     * an unpressed opponent button. Even Hard is capped at 28/32 and eight
+     * an unpressed opponent button. Even Hard is capped at 28/32 and sixteen
      * ticks, so recovery can end or spacing can escape before the answer. */
     if(fighters[0].action && !fighters[0].hurt && !fighters[0].y) {
         if(fighters[0].tick>=fighters[0].actionActiveEnd && distance<=46) {
@@ -153,7 +153,7 @@ u16 cpuKeys(void) {
             if(difficulty==2)threshold+=2;
             if(threshold>28)threshold=28;
             if(chance<threshold &&
-               phase%(difficulty==0?18:(difficulty==1?12:8))==0)return cpuNormalKey(habit->secondary);
+               phase%(difficulty==0?28:(difficulty==1?22:16))==0)return cpuNormalKey(habit->secondary);
         }
     }
     if(distance>46) {
@@ -162,9 +162,9 @@ u16 cpuKeys(void) {
         return k;
     }
     tempo=habit->tempo;
-    tempo+=3;
-    if(difficulty==0)tempo+=5;
-    if(difficulty==2)tempo-=3;
+    tempo+=12;
+    if(difficulty==0)tempo+=8;
+    if(difficulty==2)tempo-=2;
     /* An even period cannot fire on an odd phase. This cheap prefilter
      * retains the exact modulo condition on every possible firing tick. */
     if(!(tempo&1)) {

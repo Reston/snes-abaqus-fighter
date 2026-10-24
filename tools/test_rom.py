@@ -74,7 +74,7 @@ def close_for_guarded_throw(e):
     closes the gap.  The range and facing are read from the public trace so
     this remains valid for every selected profile.
     """
-    for _ in range(240):
+    for _ in range(400):
         s=e.state()
         dx=s['x2']-s['x1']
         limit=s['throw_range1']*16
@@ -283,7 +283,7 @@ e.run(4,p1=['down','x']);check(e.state()['action1']==8 and e.state()['y1']>32767
 # A one-frame phase is too short for the libretro/Snes9x pad poll and can turn
 # this check into an accidental normal attack.
 s=e.state();forward='right' if s['x1']<s['x2'] else 'left'
-e.run(3,p1=['down']);e.run(3,p1=['down',forward]);before=e.state()['energy1'];e.run(3,p1=[forward,'y']);e.run(10)
+e.run(3,p1=['down']);e.run(3,p1=['down',forward]);before=e.state()['energy1'];e.run(3,p1=[forward,'y']);e.run(e.state()['special_startup1']+3)
 check(e.state()['wave1']==1 and e.state()['energy1']<before,'Quarter-circle forward plus punch recognizes a motion input');e.run(90)
 press(e,'start');s=e.state();paused_anim=trace_word(e,62);e.run(60)
 check(e.state()['paused']==1 and e.state()['seconds']==s['seconds'] and e.state()['x1']==s['x1'] and trace_word(e,62)==paused_anim,'Pause freezes combat and animation')
@@ -324,7 +324,7 @@ check(e.state()['selected2']==10,'Player two can select a fighter with controlle
 verify_uploaded_animation(e,10,1)
 s=e.state();e.run(20,p2=['left']);check(e.state()['x2']<s['x2'],'Controller two moves player two')
 close_in(e)
-e.run(12,p1=['x'],p2=['right'])
+e.run(20,p1=['x'],p2=['right'])
 check(e.state()['hp2']==127,'Holding back blocks the strong punch with exactly one chip damage')
 check(e.state()['pose2']==9,'Blocking keeps the defensive animation')
 e.shot('block.png');e.run(60);close_in(e)
