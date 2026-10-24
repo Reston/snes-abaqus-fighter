@@ -15,10 +15,14 @@ FRAME_OWNERS={
 }
 SUFFIXES=('', 'b','c','d','e','f','g','h')
 TEXT={'.json','.asm','.h','.c','.md','.txt','.ps1','.py'}
-# Stage/contact additions are expanded only after their concrete allocation
-# audit. No wildcard grants a generated directory or prefix permission.
-STAGE_CHANGES=set()
-ADDED_GENERATED=set()
+# Audited whole-scenery/fixed-floor allocation: fourteen replacements and
+# seven additions, activated only by the retained versioned stage index.
+# Contact geometry is an ignored build product, with no generated addition.
+STAGE_CHANGES={'assets/generated/assets.h','assets/generated/data.asm'}|{
+    f'assets/generated/stage{i}{suffix}' for i in range(3)
+    for suffix in ('.png','_map.bin','_pal.bin','_tiles.bin')}
+STAGE_ADDITIONS={'assets/generated/stage-depth.json'}|{
+    f'assets/generated/stage{i}_floor_{part}.bin' for i in range(3) for part in ('map','tiles')}
 
 def require(ok,message,details=None):
     if not ok:raise ValueError((message,details))
@@ -89,7 +93,9 @@ def fighter_frames(root,scopes):
 
 def preserved_assets(root):
     root=Path(root);scopes=active_scopes(root)
-    allowed=set(STAGE_CHANGES)
+    depth=(root/'assets/art/stages/depth-v1/stages.json').is_file()
+    allowed=set(STAGE_CHANGES) if depth else set()
+    additions=STAGE_ADDITIONS if depth else set()
     if scopes:
         allowed.add('assets/generated/character-manifest.json')
         for f in range(12):
@@ -109,13 +115,13 @@ def preserved_assets(root):
         else:
             require(same,'Approved source master/reference changed',name);protected.append(item)
     actual={p.relative_to(root).as_posix() for p in (root/'assets/generated').iterdir() if p.is_file() and p.name!='soundbank.h'}
-    require(actual==baseline_names|ADDED_GENERATED,'Generated inventory differs',sorted(actual^(baseline_names|ADDED_GENERATED)))
+    require(actual==baseline_names|additions,'Generated inventory differs',sorted(actual^(baseline_names|additions)))
     require(set(changed)<=allowed,'Generated change exceeds explicit allocation',sorted(set(changed)-allowed))
-    for name in ADDED_GENERATED:
+    for name in sorted(additions):
         generated.append({'path':name,'sha256':sha((root/name).read_bytes()),'baseline_blob':None,'preserved':False})
     frames=fighter_frames(root,scopes)
     return {'baseline_commit':BASE,'generated_count':len(generated),'preserved_generated':len(baseline_names)-len(changed),
-            'changed_generated':sorted(changed),'added_generated':sorted(ADDED_GENERATED),'generated':generated,
+            'changed_generated':sorted(changed),'added_generated':sorted(additions),'stage_depth_revision':depth,'generated':generated,
             'protected_source_count':len(protected),'protected_source':protected,'frame_ownership':{k:sorted(v) for k,v in scopes.items()},'fighters':frames}
 
 def symbols(raw):return {name:int(address,16) for address,name in re.findall(r'^([0-9a-fA-F]{6,8})\s+(\S+)\s*$',raw,re.M)}
