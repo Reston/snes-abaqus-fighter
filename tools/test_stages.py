@@ -1094,6 +1094,16 @@ def main() -> int:
 
 def depth_stage_suite() -> int:
     """One native execution backs the stage suite and its focused appendix."""
+    if json.loads((ROOT/'dist/manifest.json').read_bytes())['version']=='0.25.0':
+        import test_pacing_floor_25 as current
+        result=current.stage_main()
+        focused=json.loads((ROOT/'docs/pacing-floor-v025-stage-report.json').read_bytes())
+        shared={**focused,'suite':'stage-depth','shared_native_execution':True,
+                'focused_report':'docs/pacing-floor-v025-stage-report.json',
+                'focused_report_sha256':hashlib.sha256((ROOT/'docs/pacing-floor-v025-stage-report.json').read_bytes()).hexdigest(),
+                'passed':focused['check_count']}
+        (ROOT/'docs/stage-test-report.json').write_bytes((json.dumps(shared,indent=2)+'\n').encode())
+        return result
     import test_combat_24_stage08 as depth
     started=time.monotonic()
     manifest=json.loads((ROOT/'dist/manifest.json').read_bytes())

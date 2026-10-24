@@ -1245,6 +1245,10 @@ def verify_crossup_and_pause_projectile(rom: Path) -> dict[str, object]:
         # A 32 px gap lets the committed takeoff velocity cross while the
         # jump is above the 50 px body-separation band; starting at 48 px
         # reaches the separation clamp before the airborne crossing.
+        # The preceding wave can push Stand into the wall. Reset through the
+        # live Training control so a cross-up has actual space behind it.
+        q.press('select')
+        q.run(140)
         current = move_close(q, target_fixed=32 * 16)
         initial_face = current["face1"]
         forward = "right" if current["x1"] < current["x2"] else "left"

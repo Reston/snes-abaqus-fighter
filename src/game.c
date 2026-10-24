@@ -165,7 +165,7 @@ const u8 power[12] = {3,4,2,3,5,4,4,4,2,3,3,4};
 const u8 startup[10] = {0,4,6,9,5,7,10,10,6,4};
 /* Four-button roles: strong punch 4 active ticks; spacing light kick 3. */
 const u8 active[10] = {0,3,4,4,3,5,6,1,8,1};
-const u8 recovery[10] = {0,9,12,18,10,15,21,23,24,20};
+const u8 recovery[10] = {0,9,12,18,10,15,21,23,32,20};
 const u8 damage[10] = {0,7,10,15,8,12,16,15,18,18};
 const u8 reach[10] = {0,28,33,38,35,41,46,0,31,22};
 
@@ -738,7 +738,7 @@ void controls(u8 p) {
     if(air && (D).duck)blocked=0; \
     if(low && !(D).duck)blocked=0; \
     if(blocked) { \
-        (D).guard=1;(D).hurt=8;dmg=dmg>14?1:0; \
+        (D).guard=1;(D).hurt=11;dmg=dmg>14?1:0; \
         (A).combo=0;(A).combotime=0;(A).counter=0; \
         impactBannerCombo=0;impactBannerCounter=0; \
     } else { \
@@ -789,7 +789,7 @@ u8 hurtWithRecoil(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable,u8
     if(air && d->duck)blocked=0;
     if(low && !d->duck)blocked=0;
     if(blocked) {
-        d->guard=1;d->hurt=8;dmg=dmg>14?1:0;
+        d->guard=1;d->hurt=11;dmg=dmg>14?1:0;
         a->combo=0;a->combotime=0;a->counter=0;
         impactBannerCombo=0;impactBannerCounter=0;
     } else {

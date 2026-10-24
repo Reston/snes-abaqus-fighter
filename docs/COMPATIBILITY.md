@@ -1,5 +1,22 @@
 # Independent-engine compatibility
-<!-- candidate-version: 0.23.1; rom-sha256: 057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd -->
+
+<!-- v025-compat:start -->
+<!-- candidate-version: 0.25.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2; source-freeze: b41ce034ac12f6aa10740a0075feebd1f392d117 -->
+
+## v0.25 native playtest candidate
+
+The current cartridge is `f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2` / `FF9C`.
+Pinned Snes9x and independent bsnes Accuracy checks pass; the fresh committed export reproduces the cartridge.
+The stage oracle checks connected detailed-color scenery/ground, fixed
+allocation, pause/guide freezes, hit shake and strict native transfer/cadence
+bounds. [Current scope and verification](RELEASE-v0.25.0.md).
+Original hardware remains unverified. The sections below are historical.
+<!-- v025-compat:end -->
+
+
+
+
+
 
 ## Approved main walking revision: v0.23.1
 

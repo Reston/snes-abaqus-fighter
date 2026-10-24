@@ -1181,7 +1181,7 @@ def run_stage_engine_check(stage_id: int, record: dict[str, object],
         import test_combat_24_stage08 as depth
         depth.OUT=CAPTURE_ROOT/'depth-v1';depth.OUT.mkdir(parents=True,exist_ok=True)
         result=depth.stage_case(stage_id,independent=True)
-        result['stage_contract']='whole-scenery-fixed-floor'
+        result['stage_contract']=('whole-scenery-detailed-color-floor' if depth.FLOOR_IN_SCENERY else 'whole-scenery-fixed-floor')
         result['passed']=True
         return result
     rects = stage_phase_probe_rects(record)
@@ -1242,7 +1242,7 @@ def main() -> int:
         static_depth=stage_manifest.get('scope')=='stage-depth-v1'
         stage_manifest_path=(ROOT/'assets/generated/stage-depth.json') if static_depth else STAGE_MANIFEST_PATH
         if static_depth:
-            report['scope']='independent-engine smoke, whole scenery/fixed floor, freeze and impact geometry, synchronized low-wave, neutral600frame cadence'
+            report['scope']='independent-engine smoke, whole scenery/ground, freeze and impact geometry, synchronized low-wave, neutral600frame cadence'
         report["stage_dynamics"] = {
             "manifest": str(stage_manifest_path.relative_to(ROOT)).replace("\\", "/"),
             "manifest_sha256": sha256(stage_manifest_path),
@@ -1369,7 +1369,7 @@ def main() -> int:
                 stage_id, record, trace_map)
         report["checks"]["stage_ambient_and_freeze"] = {
             "manifest_phase_count": 0 if static_depth else int(stage_manifest.get("phase_count", PHASE_COUNT)),
-            "stage_contract": 'whole-scenery-fixed-floor' if static_depth else 'four-phase-ambient',
+            "stage_contract": ('whole-scenery-detailed-color-floor' if stage_manifest.get('floor_plane')=='BG1' else 'whole-scenery-fixed-floor') if static_depth else 'four-phase-ambient',
             "stages": stage_results,
             "passed": True,
         }

@@ -5,7 +5,7 @@
   "bg1": {
     "gfx_word": [
       0,
-      12287
+      14335
     ],
     "map_word": [
       14336,
@@ -18,10 +18,7 @@
     "bpp": 4
   },
   "bg3": {
-    "gfx_word": [
-      12288,
-      14335
-    ],
+    "enabled": false,
     "map_word": [
       23552,
       24575
@@ -32,7 +29,9 @@
     ],
     "bpp": 2
   },
-  "cgram": "BG1 uses existing stage colors32..127; BG3 reads unchanged UI colors0..31",
+  "floor_plane": "BG1",
+  "revision": "detailed-color-floor-v025",
+  "cgram": "Whole scenery and restored floor use stage colors32..127; UI colors0..31 stay unchanged",
   "hdma_mask": 0,
   "live_dma_bytes": 0,
   "obj_entries": 0,
@@ -58,57 +57,41 @@
       ],
       "edge_gutters": 16,
       "floor_seam_y": 184,
-      "bg1_tiles": 639,
-      "bg3_tiles": 46,
+      "bg1_tiles": 817,
+      "bg3_tiles": 1,
       "authored_floor": {
-        "source": "assets/art/stages/depth-floor-v2/00-las-condes.png",
-        "source_sha256": "5ab64219efe7d604009f363dcc7f4d422a3c5b5b93b3a8678034138d916317b7",
-        "provenance": "assets/art/stages/depth-floor-v2/00-las-condes.json",
-        "provenance_sha256": "17364c5654efa96ce92685546b1fbbea144029514d5b12d461ae8d0881874219",
-        "native_size": [
-          256,
-          40
+        "source": "assets/art/stages/00-las-condes-cartoon-v2.png",
+        "source_sha256": "878ea16af87068ba2128ef848d94445149381017958ba4c0eeb3097d2eebb931",
+        "native_rows": [
+          184,
+          224
         ],
-        "cgram_indices": [
-          6,
-          7
-        ],
-        "source_tone_centers": [
-          [
-            158,
-            176,
-            203
-          ],
-          [
-            134,
-            148,
-            181
-          ]
-        ],
-        "resampling": "BOX full authored floor; MEDIANCUT two tones mapped to UI grays; no crop, synthetic geometry or dithering"
+        "conversion": "approved native floor; nearest horizontal gutter fit; full stage 4bpp palettes",
+        "plane": "BG1",
+        "previous_two_gray_floor_retained_as_history": "assets/art/stages/depth-floor-v2/00-las-condes.png"
       },
+      "floor_plane": "BG1",
       "ambient_enabled": false,
-      "floor_quantization_rms": 0.0,
       "outputs": {
         "stage0_tiles.bin": {
-          "bytes": 20448,
-          "sha256": "af15a20631a917ecf0a0f238687f9b453100e5f226a803b82d48085cbaf50e56"
+          "bytes": 26144,
+          "sha256": "0c98418d95728c5f0e140ce372aa51d944fb76c31ab4aa0977e7845e0c9f54a0"
         },
         "stage0_map.bin": {
           "bytes": 4096,
-          "sha256": "9110d6e0fddbc5adbe9881de561c3343e3dd7bb8dbb4a83d4eb5e8964efcdeca"
+          "sha256": "b9f6d7fd7b96f1c88178fb25bfb485a0f85ff3363544108af14f84b6eb7d8074"
         },
         "stage0_pal.bin": {
           "bytes": 192,
-          "sha256": "a41e09596b2273ec5dc809bf846ae145873f6975e96d8ba6710ba61b0d596f5f"
+          "sha256": "ba3c4b9a9c92a2db1e62421893b95e250f8959f7c80bcbdf344cb4bf8e70d628"
         },
         "stage0_floor_tiles.bin": {
-          "bytes": 736,
-          "sha256": "88f1d85d5af8d0ed2cc4b7fa1dddad5e6129b9299f3ff49bf58c0642dd0f21a6"
+          "bytes": 16,
+          "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb"
         },
         "stage0_floor_map.bin": {
           "bytes": 2048,
-          "sha256": "a64e3c1f4d5fb4500ee4c89508ad7a1e979748090231e2720af7f95686f24d1d"
+          "sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad"
         }
       }
     },
@@ -133,57 +116,41 @@
       ],
       "edge_gutters": 16,
       "floor_seam_y": 192,
-      "bg1_tiles": 680,
-      "bg3_tiles": 95,
+      "bg1_tiles": 800,
+      "bg3_tiles": 1,
       "authored_floor": {
-        "source": "assets/art/stages/depth-floor-v2/01-castillo.png",
-        "source_sha256": "ff533b755543f7b6af5cc85ceb89c657580e40c71f7e52e6fd34e01132e9584e",
-        "provenance": "assets/art/stages/depth-floor-v2/01-castillo.json",
-        "provenance_sha256": "fca0c9d06eb89365b0669f7259ea06b8757e4b06c0b25690c1adbf95593c8959",
-        "native_size": [
-          256,
-          32
+        "source": "assets/art/stages/01-castillo-cartoon-v2.png",
+        "source_sha256": "8d7148129197f22bd2dc1c0a2afa2f76496299a114a54b5cbbac84aa6e41c3df",
+        "native_rows": [
+          192,
+          224
         ],
-        "cgram_indices": [
-          6,
-          7
-        ],
-        "source_tone_centers": [
-          [
-            138,
-            151,
-            184
-          ],
-          [
-            124,
-            136,
-            174
-          ]
-        ],
-        "resampling": "BOX full authored floor; MEDIANCUT two tones mapped to UI grays; no crop, synthetic geometry or dithering"
+        "conversion": "approved native floor; nearest horizontal gutter fit; full stage 4bpp palettes",
+        "plane": "BG1",
+        "previous_two_gray_floor_retained_as_history": "assets/art/stages/depth-floor-v2/01-castillo.png"
       },
+      "floor_plane": "BG1",
       "ambient_enabled": false,
-      "floor_quantization_rms": 0.0,
       "outputs": {
         "stage1_tiles.bin": {
-          "bytes": 21760,
-          "sha256": "d2cba8bbdd0dc8889d314c41e3df810b6b3dbd65d9e0b602091727249940e3fa"
+          "bytes": 25600,
+          "sha256": "681cf71f72dc6012864bba680255413433361bb30235158d8709d70221df7816"
         },
         "stage1_map.bin": {
           "bytes": 4096,
-          "sha256": "4f341d2ddd8318ba789251d0febd4ba380a7d6a3bfa8f41169a36511c75b1f6c"
+          "sha256": "99a6a1d03d9cbf260b8436664c67ad8c4423ea5e90518f0acfab6a67e01a23d8"
         },
         "stage1_pal.bin": {
           "bytes": 192,
-          "sha256": "8ebae9d813b4c87deb418fee1f792be20df6dccfd3bfd2d51a366183b6fd8beb"
+          "sha256": "b994e260b51c5b5ad3cf79113acc0a83e2c475c6eb4051ff63e77db2e90d6a6f"
         },
         "stage1_floor_tiles.bin": {
-          "bytes": 1520,
-          "sha256": "49b088619401f346926b4abb3e409484f48520b08c9b5621e428042cebcca559"
+          "bytes": 16,
+          "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb"
         },
         "stage1_floor_map.bin": {
           "bytes": 2048,
-          "sha256": "8c812d96dc9af766ae2ce2d894583e4a300ca4f11d67f935d4ba650ec316192a"
+          "sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad"
         }
       }
     },
@@ -208,57 +175,38 @@
       ],
       "edge_gutters": 16,
       "floor_seam_y": 184,
-      "bg1_tiles": 614,
-      "bg3_tiles": 71,
+      "bg1_tiles": 814,
+      "bg3_tiles": 1,
       "authored_floor": {
-        "source": "assets/art/stages/depth-floor-v2/02-oficina.png",
-        "source_sha256": "6fff285971b58e27c7f85f7a78076dc2e1d0e65446f5ca2c2ab0bb14f4a355c6",
-        "provenance": "assets/art/stages/depth-floor-v2/02-oficina.json",
-        "provenance_sha256": "7a46949cb41a94c8f7cc16119ab52bf376c12ee5bb1018e1e5f0f4469f0fc85a",
-        "native_size": [
-          256,
-          40
-        ],
-        "cgram_indices": [
-          6,
-          7
-        ],
-        "source_tone_centers": [
-          [
-            136,
-            150,
-            183
-          ],
-          [
-            129,
-            142,
-            177
-          ]
-        ],
-        "resampling": "BOX full authored floor; MEDIANCUT two tones mapped to UI grays; no crop, synthetic geometry or dithering"
+        "source": "assets/art/stages/floor-v025/02-oficina.png",
+        "source_sha256": "02309e1227bd60af0036707430c20113c5c59025780acf49c477624736cd96eb",
+        "provenance": "assets/art/stages/floor-v025/02-oficina.json",
+        "provenance_sha256": "494091fca28d75b59c566a7f0cba5dea15cfcbbd42fae031562b0a63c7dece4c",
+        "plane": "BG1",
+        "conversion": "Full authored strip, nearest native conversion to 288x40; native stage encoder assigns six 4bpp stage palettes. No synthetic lines or painted-over texture."
       },
+      "floor_plane": "BG1",
       "ambient_enabled": false,
-      "floor_quantization_rms": 0.0,
       "outputs": {
         "stage2_tiles.bin": {
-          "bytes": 19648,
-          "sha256": "8aa74aea5788c4aa9778ea217069b091cafedd47fabc1511e19561e2e09056bd"
+          "bytes": 26048,
+          "sha256": "453b8997f94d05b6fdd2976d3fdca8f8e753750bd2146e5d911f7aa4038d6a34"
         },
         "stage2_map.bin": {
           "bytes": 4096,
-          "sha256": "d8af8a009c1456a4d190e849de28fe244d59404bd4cbe98f921b82b3fc879232"
+          "sha256": "04238b26a86dff86116fa5c81f1a2528b32f064fb25639e9e3ca6139b9b4a5ae"
         },
         "stage2_pal.bin": {
           "bytes": 192,
-          "sha256": "7183561eace000f59bbc607f92347bf3d9a14043febf8e79f4c5ec89a00df2bd"
+          "sha256": "979a96e8194eb3e8a2c87540b8d4f1b7037928fa52cb2c7364090d8f25f6108c"
         },
         "stage2_floor_tiles.bin": {
-          "bytes": 1136,
-          "sha256": "94ec0b6446776df6fa536aaccab54c4885868f424cdacadde16ac2429193849a"
+          "bytes": 16,
+          "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb"
         },
         "stage2_floor_map.bin": {
           "bytes": 2048,
-          "sha256": "3651c7307e8717733837b21202d555e2d53d142a168984f8d02e4db3199a42fe"
+          "sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad"
         }
       }
     }

@@ -28,6 +28,7 @@ ENERGY_TILE = 138
 P1_STATUS_ATTR = 0x2000
 P2_STATUS_ATTR = 0x6000
 MENU_CORE_OPTIONS = {"snes9x_up_down_allowed": "enabled"}
+DELIBERATE_PACING=json.loads((ROOT/'dist/manifest.json').read_bytes())['version']=='0.25.0'
 _screen_address: int | None = None
 
 
@@ -629,13 +630,25 @@ def boot(mode: int = 2, wait_intro: bool = True,
 
 
 def close_players(e: Emulator) -> None:
-    for _ in range(180):
+    for _ in range(260):
         s = trace(e)
-        if abs(s["x1"] - s["x2"]) < 28 * 16:
+        if abs(s["x1"] - s["x2"]) < min(28, s["throw_range1"], s["throw_range2"]) * 16:
             return
         p1 = "right" if s["x1"] < s["x2"] else "left"
         p2 = "left" if p1 == "right" else "right"
         e.run(1, p1=[p1], p2=[p2])
+
+
+@lru_cache(maxsize=1)
+def _fighter_base() -> int:
+    raw=(ROOT/'dist/abaqus-after-hours.sym').read_text(encoding='utf-8')
+    return int(re.search(r'^([0-9a-fA-F]{8}) fighters$',raw,re.M)[1],16)&0x1ffff
+
+
+def _action_clock(e: Emulator, port: int = 0) -> tuple[int,int]:
+    """Observe current tick/end from the preserved Fighter64 ABI, read only."""
+    raw=C.string_at(e.ram+_fighter_base()+port*64,64)
+    return raw[17],raw[62]
 
 
 def _stress_press(e: Emulator, key: str, port: int = 0) -> None:
@@ -717,25 +730,31 @@ def _run_transition_stress(cadence: str, fighter: int) -> dict[str, object]:
 
     e = _cadence_boot(cadence, 2, fighter=fighter)
     try:
-        if fighter == 4:
-            # The slow groundwave representative now misses the old approach
-            # schedule's throw window. Establish real close spacing through
-            # both pads before measuring the unchanged 600-tick schedule.
+        if fighter == 4 or json.loads((ROOT/'dist/manifest.json').read_bytes())['version']=='0.25.0':
+            # Slower travel must not turn transition coverage into a long
+            # out-of-range walk. Establish genuine close spacing first;
+            # every original 600 measured ticks and all bank/state checks stay.
             close_players(e)
             e.run(3)
         start = trace(e)["frame"]
         drops: list[dict[str, int]] = []
         banks: set[int] = set()
         down_states: set[int] = set()
+        deliberate=json.loads((ROOT/'dist/manifest.json').read_bytes())['version']=='0.25.0'
+        plan={'stage':0,'held':0,'started':False,'seen':False,'completed':[]}
         for index in range(600):
             phase = index % 150
-            if phase < 38:
+            if deliberate:
+                keys=_deliberate_transition_keys(trace(e),plan)
+            elif phase < 38:
                 keys = ["right"]
             elif phase < 44:
                 keys = ["right", 'x']
             elif phase < 50:
                 keys = ["up", "x"]
             elif phase < 80:
+                # Repeated real edges let the sweep begin after the longer
+                # throw commitment, rather than losing one early held edge.
                 keys = ["down", 'a']
             elif phase < 110:
                 keys = ["down", 'y']
@@ -765,6 +784,8 @@ def _run_transition_stress(cadence: str, fighter: int) -> dict[str, object]:
             "nonunit_steps": drops,
             "banks": sorted(banks),
             "down_states": sorted(down_states),
+            "controller_policy": "v025 observed completion before fresh command" if deliberate else "historical held sweep",
+            "completed_commands": plan['completed'] if deliberate else None,
         }
         check(result["game_ticks"] == 600 and not drops,
               cadence + " transition stress advances exactly 600 native ticks",
@@ -774,9 +795,40 @@ def _run_transition_stress(cadence: str, fighter: int) -> dict[str, object]:
               result)
         check(set(down_states) == set(range(6)),
               cadence + " transition stress visits every down-state", result)
+        if deliberate:
+            check(plan['completed']==list(range(6)),cadence+' retimed stress completes all six intended controller commands',result)
         return result
     finally:
         e.close()
+
+
+def _deliberate_transition_keys(s: dict[str,int], plan: dict) -> list[str]:
+    """A host-side command schedule, never an emulated-memory mutation.
+
+    Slower commitments need real release gaps. Cover standalone X, close
+    throw, sweep, jab, jump and special instead of letting one early held
+    edge expire during the previous move. All 600 cadence/bank/state
+    assertions remain in the original probe.
+    """
+    index=plan['stage']
+    if index>=6:return []
+    forward='right' if s['x1']<s['x2'] else 'left'
+    actions=(3,9,6,1,0,7)
+    keys=(['x'],[forward,'x'],['down','a'],['y'],['up'],['down','y'])[index]
+    quiet=not any(s[k] for k in ('action1','hurt1','hurt2','down_state1','down_state2','y1','y2','hitstop'))
+    if not plan['started']:
+        if not quiet:return []
+        if index in (1,2) and abs(s['x1']-s['x2'])>min(24,s['throw_range1']-1)*16:
+            return [forward]
+        plan.update(started=True,held=0,seen=False)
+    if (s['y1']!=0 if index==4 else s['action1']==actions[index]):plan['seen']=True
+    if plan['held']<3:
+        plan['held']+=1
+        return keys
+    if plan['seen'] and quiet:
+        plan['completed'].append(index)
+        plan.update(stage=index+1,held=0,started=False,seen=False)
+    return []
 
 
 def check_transition_stress() -> dict[str, object]:
@@ -1175,7 +1227,9 @@ def check_attack_buffer(e: Emulator) -> None:
     check(first["raw_keys1"] == 0, "first attack probe releases its button", first)
 
     # Move to the latter recovery ticks while keeping the opponent distant.
-    for _ in range(6):
+    for _ in range(60):
+        tick,end=_action_clock(e)
+        if tick>=end-4:break
         e.run(1)
     before_tap = trace(e)
     check(before_tap["action1"] == 1,
@@ -1807,7 +1861,10 @@ def check_normal_cancel_deadline() -> None:
         drive(e, 0, [])
         hit, _ = wait_for_hitstop_end(e)
         e.run(1)
-        e.run(7)
+        for _ in range(60):
+            tick,end=_action_clock(e)
+            if tick>=end-2:break
+            e.run(1)
         late_before = trace(e)
         check(late_before["action1"] == 1,
               "late cancel probe remains in the first attack recovery", {
@@ -1931,8 +1988,9 @@ def check_guard_timing() -> dict[str, object]:
               "guarded light punch deals at most one point of chip", {
                   "start_hp": start["hp2"], "impact": blocked_hit,
               })
-        check(8 <= len(blocked_samples) <= 14,
-              "guard stun lasts its eight-tick window with hitstop included", {
+        guard_min,guard_max=(15,17) if DELIBERATE_PACING else (8,14)
+        check(guard_min <= len(blocked_samples) <= guard_max,
+              "guard stun lasts the reviewed live window plus contact pause", {
                   "guard_samples": len(blocked_samples),
                   "samples": blocked_samples,
               })
@@ -2559,6 +2617,17 @@ def check_air_contact_window() -> None:
             check(signed16(takeoff[y_key]) < 0,
                   f"P{suffix} air-contact probe reaches ascent", takeoff)
             takeoff_face = takeoff[face_key]
+            if DELIBERATE_PACING:
+                # The longer arc puts an early ascent punch over the head.
+                # Earn a descending jump-in at the same unchanged hit region.
+                previous_y = signed16(takeoff[y_key])
+                for _ in range(90):
+                    drive(e, port, [])
+                    current_y = signed16(trace(e)[y_key])
+                    if previous_y < current_y and -42 * 16 <= current_y < 0:
+                        break
+                    previous_y = current_y
+                check(current_y < 0, "slower air-contact setup stays airborne")
             drive(e, port, [key], 6)
             previous_connected = 0
             contact = None
@@ -2907,7 +2976,7 @@ def check_throw_startup_escape() -> dict[str, object]:
         # jump before the contact snapshot can accept a grounded throw.
         e.run(3, p1=[forward, 'x'], p2=["up"])
         samples: list[dict[str, int]] = []
-        for _ in range(48):
+        for _ in range(64 if DELIBERATE_PACING else 48):
             sample = trace(e)
             samples.append(sample)
             e.run(1)
@@ -3123,7 +3192,16 @@ def check_down_floor_input_guard() -> dict[str, object]:
 
     e = boot(1, fighter=11, fighter2=0)
     try:
-        close_players(e)
+        if DELIBERATE_PACING:
+            # Earn a corner position through both physical pads. This keeps
+            # launch drift inside real sweep reach; no geometry is widened.
+            e.run(200,p2=['right'])
+            for _ in range(500):
+                s=trace(e)
+                if s['x2']-s['x1']<32*16:break
+                e.run(1,p1=['right'])
+        else:
+            close_players(e)
         initial = trace(e)
         launch_face: int | None = None
         impact_hp: int | None = None
@@ -3159,7 +3237,7 @@ def check_down_floor_input_guard() -> dict[str, object]:
                     floor.append(sample)
                 if down == 4:
                     rise.append(sample)
-                if sample["action1"] == 6 and sample["anim_frame1"] == 8:
+                if heavy_at is not None and sample["action1"] == 6 and sample["anim_frame1"] == 8:
                     strike = world(contact_poses()[11][8][2], sample["x1"],
                                    signed16(sample["y1"]), sample["face1"])
                     body = body_regions(sample, "2")
@@ -3171,14 +3249,18 @@ def check_down_floor_input_guard() -> dict[str, object]:
                         "strike": strike, "body": body,
                         "physical_overlap": any(overlap(strike, band) for band in body),
                     })
+            approach = []
             if heavy_at is None and down and sample["y1"] == 0 and sample["action1"] == 0:
-                heavy_at = index
-            p1 = ['down', 'a'] if heavy_at is not None and heavy_at <= index < heavy_at + 4 else []
+                if DELIBERATE_PACING and abs(sample['x1']-sample['x2']) > 32*16:
+                    approach = ['right' if sample['x1']<sample['x2'] else 'left']
+                else:
+                    heavy_at = index
+            p1 = ['down', 'a'] if heavy_at is not None and heavy_at <= index < heavy_at + 4 else approach
             p2 = ["up", "y"] if launch_face is not None else []
             e.run(1, p1=p1, p2=p2)
 
         check(bool(samples),
-              "close uppercut produces a trace-visible down-state sequence", {
+              "close launcher produces a trace-visible down-state sequence", {
                   "initial": initial, "states": sorted(states),
               })
         check({2, 3, 4, 5}.issubset(states),
@@ -3249,11 +3331,12 @@ def check_landing_buffer_boundary() -> None:
         # Damian's neutral arc reaches roughly 22 pixels above the floor four
         # simulation ticks before landing.  Choose that falling sample from
         # telemetry rather than hard-coding a frame number.
-        for _ in range(40):
+        for _ in range(70):
             sample = trace(e)
             y = signed16(sample["y1"])
+            lower,upper=(-19,-15) if DELIBERATE_PACING else (-24,-20)
             if (y < 0 and y > previous_y and
-                    -24 * 16 <= y <= -20 * 16):
+                    lower * 16 <= y <= upper * 16):
                 queued_at = sample
                 break
             previous_y = y
@@ -3334,8 +3417,8 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
         if corner:
             # The front kick's victim is at the outward wall. Both pad holds
             # reach it naturally; the contact and every hurt tick must clamp.
-            e.run(180, p1=[forward], p2=[forward])
-        approach_gap = 40 if front and not corner else 36 if guard == "low" else 24
+            e.run(320 if DELIBERATE_PACING else 180, p1=[forward], p2=[forward])
+        approach_gap = (44 if guard=='low' else 40) if DELIBERATE_PACING else (40 if front and not corner else 36 if guard == "low" else 24)
         for _ in range(180):
             state = trace(e)
             if abs(state["x1"] - state["x2"]) <= approach_gap * 16:
@@ -3364,7 +3447,7 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
                     attack_sent = True
                 else:
                     countdown -= 1
-            if contact_index is None and crossed and state[f"anim_tick{a}"] >= 6:
+            if contact_index is None and crossed and state[f"anim_tick{a}"] >= (9 if DELIBERATE_PACING else 6):
                 if guard == "old":
                     defender_keys = [forward]
                 elif guard in ("new", "low"):
@@ -3400,7 +3483,7 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
         # previous startup tick plus both contacts is the observable evidence;
         # requiring frame 53 here would change the game's trade semantics.
         trade_startup = (trade and contact_index is not None and
-                         rows[contact_index - 1][f"anim_tick{a}"] == 6)
+                         rows[contact_index - 1][f"anim_tick{a}"] == (9 if DELIBERATE_PACING else 6))
         check(attack_sent and (bool(active) or trade_startup),
               label + " exercises an active airborne normal", evidence)
         airborne = [row for row in rows if signed16(row[f"y{a}"]) < 0]
@@ -3439,6 +3522,13 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
             physical[f"y{a}"] = contact[f"y{a}"]
             physical[f"x{d}"] = (contact[f"x{d}"] + away*12 if corner else
                                    contact[f"x{d}"] - away*recoil)
+            if corner and DELIBERATE_PACING:
+                # Slower walking leaves a different 12.4 remainder at the
+                # wall. Reconstruct the stationary victim BEFORE the clamp,
+                # from the previous sample and the unchanged body separator.
+                separate=(abs(previous[f'x{a}']-previous[f'x{d}'])<22*16 and
+                          abs(signed16(contact[f'y{a}']))<50*16)
+                physical[f'x{d}']=previous[f'x{d}']+away*(12 if separate else 0)
             physical[f"y{d}"] = contact[f"y{d}"]
             if guard == "low":
                 physical[f"anim_frame{d}"] = 3
@@ -3469,7 +3559,7 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
             check(contact[f"connected{a}"] == (1 if blocked else 2) and
                   contact[f"hp{d}"] == (127 if blocked else 113) and
                   contact[f"guard{d}"] == int(blocked) and
-                  contact["hitstop"] == (3 if blocked else 6),
+                  contact["hitstop"] == ((5 if blocked else 10) if DELIBERATE_PACING else (3 if blocked else 6)),
                   label + " preserves exact damage, guard classification and hitstop", contact)
             if guard:
                 # Public raw pad bits prove these are actual old/new-back and
@@ -3489,6 +3579,8 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
             fx_direction = (-1 if front else 1) if trade else away
             fx_center = ((contact[f"x{fx_victim}"] + away * (64 + 12)) >> 4
                          if corner else contact[f"x{fx_victim}"] >> 4)
+            if corner and DELIBERATE_PACING:
+                fx_center=(physical[f'x{d}']+away*64)>>4
             expected_fx = (fx_center + (-12 if fx_direction > 0 else 6) - 8) & 511
             check(effect is not None and effect["x"] == expected_fx,
                   label + " native impact effect appears on the contact side", {"effect": effect, "expected_x": expected_fx})
@@ -3590,7 +3682,7 @@ def check_cross_up_contacts() -> dict[str, object]:
     for port in (0, 1):
         cases = [("rear", {}), ("old-back", {"guard": "old"}),
                  ("new-back", {"guard": "new"}), ("low-back", {"guard": "low"}),
-                 ("front", {"front": True}), ("far-rear", {"delay": 1}),
+                 ("front", {"front": True}), ("far-rear", {"delay": 3 if DELIBERATE_PACING else 1}),
                  ("corner", {"front": True, "corner": True}),
                  ("trade", {"trade": True, "front": True})]
         for name, options in cases:
@@ -3599,7 +3691,7 @@ def check_cross_up_contacts() -> dict[str, object]:
             # The short air jab's drawn fist needs one more falling tick to
             # overlap the standing body vertically in the mirrored bracket.
             results[f"p{port + 1}-rear-{key}"] = _cross_up_contact_case(
-                port, key, delay=1 if key == "y" else 0)
+                port, key, delay=(3 if DELIBERATE_PACING else 1) if key == "y" else 0)
         for key in ("a", "x"):
             results[f"p{2 - port}-ground-{key}"] = _grounded_cross_up_whiff(port, key)
     return results
@@ -3986,9 +4078,14 @@ def check_cpu_special_spacing() -> dict[str, object]:
             forward = "right" if sample["x1"] < sample["x2"] else "left"
             if abs(sample["x1"] - sample["x2"]) / 16 > 40:
                 return [forward]
+            if DELIBERATE_PACING:
+                # Fresh jump edges across the signature's established phase,
+                # rather than a held UP that only creates one long arc.
+                return ['up'] if 89 <= (sample['frame']+5*13)%97 <= 91 else []
             return ["up"]
-        rising = _capture_cpu_special(5, difficulty, 16 if difficulty == 1 else 0,
-                                      rising_keys, 400)
+        rising_phase=(12,4,16)[difficulty] if DELIBERATE_PACING else (16 if difficulty==1 else 0)
+        rising = _capture_cpu_special(5, difficulty, rising_phase,
+                                      rising_keys, 900 if DELIBERATE_PACING else 400)
         rising_active = rising["active"]
         airborne = [sample for sample in rising_active
                      if signed16(sample["y1"]) < 0]
@@ -4229,13 +4326,14 @@ def _cpu_jump_in(cpu_id: int, difficulty: int, title_delay: int = 0, *,
              title_delay=title_delay)
     approach: list[dict[str, int]] = []
     samples: list[dict[str, int]] = []
-    launch_range = 34 if retreat else 68
+    launch_range = 34 if retreat else (56 if DELIBERATE_PACING and cpu_id==4 else 68)
     try:
         for _ in range(210):
             sample = trace(e)
             if (abs(sample["x1"] - sample["x2"]) <= launch_range * 16 and
                     not sample["hurt1"] and not sample["down_state1"] and
-                    not sample["action1"] and not sample["y1"]):
+                    not sample["action1"] and not sample["y1"] and
+                    (not DELIBERATE_PACING or cpu_id!=4 or not sample['action2'])):
                 break
             approach.append(sample)
             e.run(1, p1=["right"])
@@ -4379,18 +4477,22 @@ def check_cpu_anti_air() -> dict[str, object]:
 
     fixtures = ((0, 1, 1), (0, 2, 0), (2, 2, 13), (4, 1, 6),
                 (4, 2, 5), (5, 1, 8), (5, 2, 5))
+    if DELIBERATE_PACING:
+        fixtures=((0,1,1),(0,2,18),(2,2,13),(4,1,14),
+                  (6,2,1),(5,1,7),(5,2,9))
     cases = [_cpu_jump_in(cpu, difficulty, delay)
              for cpu, difficulty, delay in fixtures]
     hits = [_cpu_uppercut_start(case, hit=True) for case in cases]
-    retreat = _cpu_jump_in(2, 2, 13, retreat=True, kick=False)
+    retreat = _cpu_jump_in(2, 2, 24 if DELIBERATE_PACING else 13, retreat=True, kick=False)
     whiff = _cpu_uppercut_start(retreat, hit=False)
 
     # Equal menu frame counts align Normal's title+20 with Hard/Easy's
     # difficulty-button tap. The same visible opening does not assure a
     # reaction: Hard intercepts here, Normal misses its sampled opportunity.
-    easy = _cpu_jump_in(4, 0, 5)
-    normal = _cpu_jump_in(4, 1, 25)
-    hard = cases[4]
+    comparison_cpu,comparison_delay=(5,9) if DELIBERATE_PACING else (4,5)
+    easy = _cpu_jump_in(comparison_cpu, 0, comparison_delay)
+    normal = _cpu_jump_in(comparison_cpu, 1, comparison_delay+20)
+    hard = cases[6 if DELIBERATE_PACING else 4]
     opening = ("frame", "x1", "x2", "y1", "y2", "action1", "action2", "hp1", "hp2")
     check(all(tuple(case["samples"][0][name] for name in opening) ==
               tuple(hard["samples"][0][name] for name in opening)
@@ -4405,7 +4507,8 @@ def check_cpu_anti_air() -> dict[str, object]:
     # The four-button CPU chooses from four normals instead of six. In the
     # equal-opening comparison above Normal is occupied by a strong normal;
     # this separately measured phase retains a genuinely free sampled miss.
-    normal_decline = _cpu_jump_in(4, 1, 0)
+    decline_delay=29 if DELIBERATE_PACING else 0
+    normal_decline = _cpu_jump_in(comparison_cpu, 1, decline_delay)
     check(not any(sample["action2"] == 8 for sample in normal_decline["samples"]),
           "Normal's available-window fixture genuinely declines the uppercut")
     opportunities = [sample for sample in normal_decline["samples"]
@@ -4415,7 +4518,7 @@ def check_cpu_anti_air() -> dict[str, object]:
     check(bool(opportunities), "Normal can decline an available near jump-in",
           [_cpu_summary(sample) for sample in opportunities])
 
-    empty_jump = _cpu_jump_in(4, 2, 5, kick=False)
+    empty_jump = _cpu_jump_in(comparison_cpu, 2, comparison_delay, kick=False)
     empty_hit = _cpu_uppercut_start(empty_jump, hit=True)
     check(empty_jump["samples"][:17] == hard["samples"][:17] and
           empty_hit["start_index"] < 16 and
@@ -4466,7 +4569,7 @@ def check_cpu_anti_air() -> dict[str, object]:
                   "violations": [[_cpu_summary(s) for s in pair] for pair in violations[:4]]})
         negative_counts[name] = len(pairs)
     return {"hits": hits, "retreat_whiff": whiff, "empty_jump": empty_hit,
-            "normal_declined_title_delay": 0,
+            "normal_declined_title_delay": decline_delay,
             "normal_declined_ticks": len(opportunities), "negative_ticks": negative_counts,
             "ko": [_cpu_anti_air_ko(victim) for victim in (1, 2)]}
 

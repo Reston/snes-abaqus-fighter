@@ -6,6 +6,29 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+
+
+<!-- v025-agent:start -->
+- **v0.25.0 is the pacing/floor playtest candidate**, branch
+  `feature/pacing-floor-v025`, based on main `8f028775`.
+  Review PR: https://github.com/Reston/snes-abaqus-fighter/pull/21 (unmerged).
+  The user rejected v0.24's blank floors and still-fast pacing. This authorizes
+  slower movement/attacks/jumps/CPU pressure and detailed floors. No new merge
+  approval is inferred. Main remains approved v0.24.0 below.
+  ROM `f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2`, header `FF9C`,
+  source/test freeze `b41ce034ac12f6aa10740a0075feebd1f392d117`. Status: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING.
+  All six native suites pass **49,494 checks** on this exact ROM. Focused pacing, 48 super hit/guard sequences, before/after CPU36 plus twelve Hard replays, and all three stages on both cores pass. Matching pinned Accuracy smoke, normal/optimized authoring guards and a fresh committed-source export reproduce the ROM, all 226 assets and normalized symbols. The shared stage suite and focused stage appendix use one execution, counted once.
+  Preserve all 64 fighter drawings, portraits, palettes, scales, damage/reach,
+  1,318 RAM labels and native ABI. The hardware hit-stun ROM table changes to
+  16+damage/3; hardware instructions and trace assembly remain exact.
+  BG1 connected scenery/ground uses word0000..37FF; map3800..3FFF.
+  BG3 is disabled. No live stage DMA/HDMA or extra OBJ/RAM. Detailed outdoor
+  material is approved source art; office material and exact built-in-imagegen
+  prompt/provenance are under assets/art/stages/floor-v025/.
+  Read docs/COMBAT-v0.25-CONTRACT.md and docs/RELEASE-v0.25.0.md.
+  No new offline package or public-use approval is claimed.
+<!-- v025-agent:end -->
+
 - **v0.24.0 is the approved main revision**, merged through PR #14 on
   2026-10-24 after the user said "perfecte merge it". All six feature PRs
   #15–20 are integrated; merge commit `90370cec58ec297be8fc8023b1d53c62d439c942`.
