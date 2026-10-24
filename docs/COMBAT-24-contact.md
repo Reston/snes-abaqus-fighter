@@ -1,4 +1,45 @@
-# v0.24 contact alignment (isolated feature)
+# v0.24 contact alignment
+
+## Contact and dedicated-super composition follow-up
+
+The follow-up starts from committed integration `413b222`, with contact PR15
+and dedicated-super PR17 already merged. A fresh `Build.cmd --assets` reproduces
+the interim cartridge `62b39ea0971d5e80ab28eef2b579cc4ef97dd0fa6d206261bb2390ca524da58c`.
+This composition still precedes attack/jump art and combined pacing. The parent
+owns the final six-feature gates and human playtest.
+
+The scoped production change is the two conservative distance branches in
+`canHit`: actor canvases separated by at least96 pixels cannot contain any
+overlapping strike/hurt rectangles. This skips active-pose selection and
+far-ROM geometry reads for impossible remote contacts. Existing12.4 coordinates,
+strict edges, facing/cross-up gates, throws, profile clocks/damage and geometry
+remain unchanged. There are no new locals, mutable state or ROM tables.
+
+The fresh per-case repro binds TRACE to direct `frame`, `snes_vblank_count`,
+`lag_frame_counter` and `vblank_flag`. On the original interim ROM, only Roxana's
+simultaneous remote-super case repeats at1332 and1360. Both are real runtime
+misses: direct frame delta0, vblank delta1 and lag delta1. The other four
+recorded simultaneous sequences have empty failure arrays. The Accuracy core
+reproduces the same observations.
+
+David's legacy target28 fixture actually settles at26.5 pixels. On both ports
+it deals8,8 and misses the18 finisher. The neutral22-pixel fixture deals8,8,18.
+Cristian and Roxana complete all their pulses at both spacings. The original
+legacy super driver's assertions remain unchanged. The composition driver
+requires David's specific target28 miss as a negative boundary case and requires
+the complete tuned pulse sequence in the closer fixture; it does not accept
+arbitrary missing pulses.
+
+`tools/test_contact_super_composition.py` records each pulse's physical input,
+native clocks, selected/uploaded poses, positions and native-derived regions.
+Collision runs before animation; the offline body uses the prior selected pose.
+The snapshot undoes the immediate post-contact16/32-unit displacement and
+finisher knockdown facing/y writes. Observed post-contact positions are retained
+separately. Its offline overlays add no runtime drawing or collision state.
+
+Follow-up candidate validation is recorded below after the native reruns.
+
+## Historical baseline-art isolated feature
 
 This workstream replaces the shared feet-relative attack bands and fixed body
 rectangle with stable, pose-specific ROM rectangles. Its measurements use the
