@@ -112,10 +112,8 @@ u8 screen, mode, difficulty, menu, selected, selected2, selectPlayer, arena;
 u8 arcade, roundNumber, seconds, secondTick, intro, roundEnd, winner, paused;
 u8 pausePage,guideBuild,guideDirty,trainingDummy;
 u8 pauseHudPending;
-/* Reuse the previously unused flash byte for private rear-kick recoil:
- * bits 0..1 = P1, 2..3 = P2; 0 legacy drift, 1 left, 2 right.
- * Keep the contact direction through landing/trades without adding fields,
- * WRAM storage or trace words. */
+/* Existing recoil byte: one nibble per player, contact side + strength.
+ * See pacing_recoil.h; no additional state or changed ABI. */
 u8 hitstop, shake, rearKickRecoil, fxLife, fxX, fxY, fxType, resultWin, champion;
 u8 hudDirty, bannerDirty, footerDirty, fullDirty, musicIndex, musicOn;
 u8 impactHudPending,impactBannerPending;
@@ -529,6 +527,7 @@ void showResult(u8 won) {
 
 /* CPU decisions use ROM-only per-character habits and shared fair reactions. */
 #include "cpu_personality.h"
+#include "pacing_recoil.h"
 
 void attackStart(u8 p,u8 a) {
     Fighter *f=&fighters[p];
@@ -540,6 +539,11 @@ void attackStart(u8 p,u8 a) {
     f->actionEnd=matchActionEnd[index];
     f->airAction=0;
     if(f->y && a>=1 && a<=6)f->airAction=1;
+    /* Added grounded heavy telegraph/recovery must not consume the short
+     * rear-kick airborne contact window. Preserve all original air timings. */
+    if(f->airAction && (a==3 || a>=5)) {
+        f->actionStartup-=3;f->actionActiveEnd-=3;f->actionEnd-=7;
+    }
     f->bufferedAction=0;f->bufferAge=0;f->bufferKeys=0;
     if(a==7) {
         c=combatProfiles[p];
@@ -700,8 +704,8 @@ void controls(u8 p) {
         if(((keys&KEY_UP) && !f->wakeLock) || f->jumpBuffer) {
             f->vy=c->jumpVy;f->y=-1;f->duck=0;f->jumpBuffer=0;f->landing=0;
             f->vx=0;
-            if(keys&KEY_RIGHT)f->vx=c->walkSpeed+8;
-            else if(keys&KEY_LEFT)f->vx=-(c->walkSpeed+8);
+            if(keys&KEY_RIGHT)f->vx=pacingAirSpeed(f->id);
+            else if(keys&KEY_LEFT)f->vx=-pacingAirSpeed(f->id);
         }
     }
     if(a) {
@@ -755,13 +759,7 @@ u8 hurtWithRecoil(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable,u8
         if(!attacker && !blocked)TRAINING_PLAYER_HIT(back);
         else trainingContact(attacker,blocked,low,back);
     }
-    rearKickRecoil&=defender?3:12;
-    if(!blocked) {
-        if(defender)rearRecoil<<=2;
-        rearKickRecoil|=rearRecoil;
-    }
-    if(blocked)d->x+=direction?16:-16;
-    else d->x+=direction?32:-32;
+    beginRecoil(defender,direction,impactAction,blocked);
     if(beginImpact(impactAction,blocked,direction)) {
         fxX=(d->x>>4)+(direction?-12:6);
         fxY=FLOOR+(d->y>>4)-(low?22:(d->duck?32:53));
@@ -772,9 +770,14 @@ u8 hurtWithRecoil(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable,u8
      * contact frame's CPU budget for physics, effects and actor streams. */
     impactHudPending=1;return blocked?1:2;
 }
-/* Projectiles and delayed throw damage retain their original facing rule. */
+/* A released wave keeps its own direction if its owner crosses or turns. */
 u8 hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
-    return hurtWithRecoil(attacker,defender,dmg,low,air,unblockable,0,7);
+    u8 direction;
+    direction=waves[attacker].active?waves[attacker].face:fighters[attacker].face;
+    /* Delayed throw damage belongs to the victim's latched launch, even if
+     * an unrelated owned wave is still traveling on the opposite side. */
+    if(unblockable)direction=fighters[defender].face;
+    return hurtWithRecoil(attacker,defender,dmg,low,air,unblockable,direction+1,7);
 }
 
 #include "knockdown.h"
@@ -782,21 +785,18 @@ u8 hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
 void updateFighter(u8 p) {
     Fighter *f=&fighters[p];Wave *w=&waves[p];
     const CharacterProfile *c=combatProfiles[p];
-    u8 rearRecoil,action,tick;
+    u8 action,tick;
     syncSuper(p);
     if(f->landing)f->landing--;
     if(f->combotime) {f->combotime--;if(!f->combotime){f->combo=0;f->counter=0;clearBanner();}}
     if(f->wakeJust)f->wakeJust=0;
     else if(f->invuln)f->invuln--;
+    if(!f->hurt)clearRecoil(p);
     if(f->downState){updateDowned(p);return;}
     if(f->hurt) {
         f->hurt--;
-        if(!f->guard) {
-            rearRecoil=p?(rearKickRecoil>>2):(rearKickRecoil&3);
-            if(rearRecoil)f->x+=rearRecoil==2?9:-9;
-            else f->x+=fighters[1-p].face?9:-9;
-        }
-        if(!f->hurt){f->guard=0;rearKickRecoil&=p?3:12;}
+        updateRecoil(p);
+        if(!f->hurt)f->guard=0;
     }
     if(f->y || f->vy) {
         f->x+=f->vx;
@@ -810,7 +810,7 @@ void updateFighter(u8 p) {
     if(f->action) {
         action=f->action;tick=f->tick+1;f->tick=tick;
         if(superActive[p])updateSuper(p);
-        else if(action==7 && c->specialFamily==SPECIAL_RUSH && tick<=c->specialStartup+c->specialActive) {
+        else if(action==7 && c->specialFamily==SPECIAL_RUSH && tick>3 && tick<=c->specialStartup+c->specialActive) {
             f->x+=f->face?c->specialSpeed:-c->specialSpeed;
         }
         if(!superActive[p] && action==7 && (c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE) && tick==c->specialStartup && !w->active) {
@@ -892,17 +892,12 @@ void combat(void) {
     air0=(m0==7)?(c0->specialFamily==SPECIAL_RISING):(fighters[0].y<0);
     air1=(m1==7)?(c1->specialFamily==SPECIAL_RISING):(fighters[1].y<0);
     face0=fighters[0].face;face1=fighters[1].face;k0=0;k1=0;
-    /* Snapshot rear recoil before either hurt() can cancel the other action.
-     * Action 5 is never a knockdown; launch direction stays facing-based. */
-    rear0=0;rear1=0;
-    if(air0 && m0==5) {
-        if(distance<0 && face0)rear0=1;
-        if(distance>0 && !face0)rear0=2;
-    }
-    if(air1 && m1==5) {
-        if(distance>0 && face1)rear1=1;
-        if(distance<0 && !face1)rear1=2;
-    }
+    /* Snapshot both contact sides before either trade cancels an action.
+     * Knockdown launch retains its existing independent facing snapshot. */
+    rear0=distance<0?1:2;rear1=distance>0?1:2;
+    /* Equal horizontal centers have no geometric side. Preserve each
+     * attack's facing snapshot instead of introducing a rightward bias. */
+    if(!distance){rear0=face0+1;rear1=face1+1;}
     /* Resolve the contact snapshot atomically: mutual throws tech, throws
      * beat normals, active specials beat throws, and strikes may trade. */
     if(a0 && a1 && m0==9 && m1==9){throwTech();a0=0;a1=0;}
@@ -919,7 +914,7 @@ void combat(void) {
         fighters[0].connected=hurtWithRecoil(0,1,contact,low0,air0,0,rear0,m0);
         if(mode==2 && !superActive[0]) {
             /* The drill observer has no transition for uppercut action 8. */
-            if(m0<8)trainingMoveContact(m0,air0,rear0,fighters[0].connected);
+            if(m0<8)trainingMoveContact(m0,air0,(rear0-1)!=face0,fighters[0].connected);
         }
         if(fighters[0].connected==2) {
             if(superActive[0])k0=superKnockdown(0);
