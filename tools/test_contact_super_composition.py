@@ -108,7 +108,10 @@ def rising(fighter, port, distance, guard, data):
                     # Undo those documented writes for the evaluated snapshot.
                     direction = 1 if s[f'face{p}'] else -1
                     impulse = 16 if s[f'guard{d}'] else 32
-                    if 'beginRecoil' in legacy.SYMBOLS:
+                    # The v0.24 recoil helper may be expanded inside hit
+                    # resolution; its air-speed hook still identifies the
+                    # same latched impulse contract in either build.
+                    if 'pacingAirSpeed' in legacy.SYMBOLS:
                         latch = legacy.read(e, 'rearKickRecoil', 1)[0] >> ((1-port)*4) & 15
                         if (latch & 3) not in (1, 2):
                             raise AssertionError(('impact has no latched recoil direction', fighter, port, latch))

@@ -76,6 +76,7 @@ CHECK_OFFSET(Fighter,hp,14);
 CHECK_OFFSET(Fighter,energy,15);
 CHECK_OFFSET(Fighter,x,0);CHECK_OFFSET(Fighter,y,2);CHECK_OFFSET(Fighter,vx,6);
 CHECK_OFFSET(Fighter,id,12);CHECK_OFFSET(Fighter,face,13);CHECK_OFFSET(Fighter,action,16);
+CHECK_OFFSET(Fighter,tick,17);
 CHECK_OFFSET(Fighter,connected,18);CHECK_OFFSET(Fighter,hurt,19);CHECK_OFFSET(Fighter,guard,20);
 CHECK_OFFSET(Fighter,pose,23);CHECK_OFFSET(Fighter,won,25);CHECK_OFFSET(Fighter,motion,26);
 CHECK_OFFSET(Fighter,combo,28);CHECK_OFFSET(Fighter,combotime,29);CHECK_OFFSET(Fighter,counter,30);
