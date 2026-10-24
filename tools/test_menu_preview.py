@@ -139,6 +139,11 @@ def main():
                     if mode:pulse('a',1 if mode==1 else 0,transition=True)
                     pulse('a',transition=True)
                     require(read('screen')==3,'Selection hands off to the native fight renderer')
+                    for _ in range(120):
+                        if host.state()['screen']==3:break
+                        run(transition=True)
+                    require(host.state()['screen']==3,'Forced-blank match load publishes its native scene')
+                    run(3,transition=True)
                     if mode==0:run(3,keys=['a'],transition=True);run(3,transition=True)
                     for _ in range(180):
                         if host.state()['intro']==0:break

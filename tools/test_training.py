@@ -315,6 +315,13 @@ class QA:
         current = self.state()
         for _ in range(release_frames):
             current = self.step(allow_menu_load_duplicate=menu_transition)
+        if before.get('screen') == SELECT and key in ('a','start'):
+            version=tuple(map(int,json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.')))
+            if version >= (0,28,0):
+                # Native confirmation now owns an 18-tick signature gesture.
+                # Observe it through ordinary neutral controller callbacks.
+                for _ in range(18):
+                    current = self.step(allow_menu_load_duplicate=menu_transition)
         if menu_transition:
             duplicate_count = len(self.menu_load_duplicates) - menu_duplicates_before
             check(duplicate_count <= MENU_LOAD_DUPLICATE_LIMIT,
