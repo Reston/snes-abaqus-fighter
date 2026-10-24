@@ -127,7 +127,41 @@ one actor page per callback, native vblank/lag, SPC FIFO and OBJ limits. It
 also captures matching baseline/current movement clips and both pinned cores.
 Movement clips are continuous controller sequences; contact clips concatenate
 selected contact/hitstop episodes. GIF playback timing is approximate.
+The pixel oracle uses unobscured scenery rows40..111 (40..71 during contact)
+and floor rows216..223; the full native clips retain the lower architecture.
 All runs are callback-only, silent/headless, below normal priority on two
 logical processors. The exact final ROM, source/harness identity, commands,
 results and failure arrays are recorded in the report; they are isolated
 evidence until the parent regenerates them on its combined source freeze.
+
+The isolated production source freeze is
+`a1af3dbfa8ad8b448adb70b1c16cd24bd8a314e7`. Rebuilding it produces ROM SHA256
+`2ec631011c9bde8e073b96f0d74863a52fdf756e411579495cf0d1d6497139a7`,
+header `1504`. The candidate ROM/symbols/manifest are retained under ignored
+`build/` with prefix `v024-stage08`, while tracked generated/dist outputs are restored to
+the historical baseline before handoff.
+
+Exact local commands, using the canonical cached Python (or `.tools/python/`
+in this checkout):
+
+```text
+D:/snes-abaqus-fighter/.tools/python/python.exe tools/run_background.py --log build/stage08-regenerate.log -- D:/snes-abaqus-fighter/.tools/python/python.exe tools/make_assets.py
+D:/snes-abaqus-fighter/.tools/python/python.exe tools/stage_depth_assets.py
+D:/snes-abaqus-fighter/.tools/python/python.exe tools/run_background.py --log build/stage08-frozen-build.log -- D:/snes-abaqus-fighter/.tools/python/python.exe tools/build.py
+D:/snes-abaqus-fighter/.tools/python/python.exe tools/run_background.py --log build/stage08-frozen-focused.log -- D:/snes-abaqus-fighter/.tools/python/python.exe tools/test_combat_24_stage08.py
+```
+
+Source/provenance/reference hashes also validate directly from the committed
+Git blobs. Re-running the stage encoder leaves all227 local generated files
+(226 deliverables plus ignored `soundbank.h`) byte-identical.
+
+The final isolated run passes710 focused checks in227.593 seconds: six
+stage/contact cases, six720-frame simultaneous-wave/jump stress cases across
+both pinned cores, and six180-frame roster pairs covering all twelve fighters
+and both ports. These total12672 measured native frames, every callback delta
+and native vblank delta exactly1, with no added lag. Both cores report
+60.098811862348406Hz. Peak observed SPC backlog is3 bytes and OBJ scanline use
+is16 sprites/32 tiles, within32/34 limits. Cadence, native timing, overflow,
+transfer, PPU pixel, freeze and SPC failure arrays are all empty. All1276
+existing RAM symbol addresses match baseline. This result does not count or
+replace any parent combined suite, hardware check or human stage playtest.
