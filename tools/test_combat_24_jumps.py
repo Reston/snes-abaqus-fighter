@@ -97,7 +97,7 @@ def art():
     if n is None:continue
     frame=frames[n];size=[round(figure.width*scale),round(figure.height*scale)]
     check(frame['source_kind']=='jump-v1' and frame['source_file']==source['file'] and frame['source_sha256']==source['sha256'] and
-          frame['revision_source_box']==detail['source_box'],
+          frame['revision_source_box']==list(detail['source_box']),
           'own native frame binds selected jump source',[i,n])
     pose=after.crop((n*96,0,(n+1)*96,80));bbox=pose.getchannel('A').getbbox()
     check(frame['conversion_scale']==scale and frame['native_size']==[bbox[2]-bbox[0],bbox[3]-bbox[1]] and
@@ -343,12 +343,15 @@ def save_clips(after,before):
  return captures
 
 def main():
+ global OUT
  parser=argparse.ArgumentParser();parser.add_argument('--fighter',type=int,choices=range(12));parser.add_argument('--report',type=Path);args=parser.parse_args()
- checks.clear();started=time.monotonic();OUT.mkdir(parents=True,exist_ok=True);(ROOT/'build').mkdir(exist_ok=True)
+ checks.clear();started=time.monotonic();(ROOT/'build').mkdir(exist_ok=True)
  report_path=ROOT/(args.report or ('build/combat24-jumps-diagnostic.json' if args.fighter is not None else 'docs/combat-24-jumps-report.json'))
  if args.fighter is not None and not report_path.resolve().is_relative_to((ROOT/'build').resolve()):
   parser.error('--fighter diagnostics must write under ignored build/, never final docs evidence')
  report_path.parent.mkdir(parents=True,exist_ok=True)
+ if args.fighter is not None:OUT=report_path.parent/(report_path.stem+'-captures')
+ OUT.mkdir(parents=True,exist_ok=True)
  candidate=ROOT/'build/v024-jumps.sfc';candidate.write_bytes((ROOT/'dist/abaqus-after-hours.sfc').read_bytes())
  old=ROOT/'build/v024-jumps-baseline.sfc';old.write_bytes(git('dist/abaqus-after-hours.sfc'))
  oldsym=ROOT/'build/v024-jumps-baseline.sym';oldsym.write_bytes(git('dist/abaqus-after-hours.sym'))
@@ -394,10 +397,12 @@ def main():
    report['cases'].append({'fighter':i,'ports':[1,2],'both_ports':True,'samples':len(after.rows),'current_simulation_sha256':after.game_hash.hexdigest(),'intentional_jumpVy_change':i in PHYSICS,'candidate_arcs':after.arcs,'contacts':contacts,'uploads':dict(after.uploads),'native_lag_increments':after.lag_increments,'native_timing_failures':after.native_failures,'cadence_failures':after.drops,'OBJ_failures':after.overflow,'payload_failures':after.bad_payload,'geometry_failures':after.geometry,'SPC_PCM_failures':after.audio_failures,'max_SPC_backlog':after.max_backlog,'captures':captures})
    print(json.dumps({'fighter':i,'samples':len(after.rows),'checks':len(checks)}),flush=True)
   check(sorted(row['fighter'] for row in report['cases'])==([args.fighter] if args.fighter is not None else list(range(12))),'requested roster coverage complete')
-  check(sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes())==report['rom_sha256'] and
-        all(sha((ROOT/p).read_bytes())==digest for p,digest in report['dependency_sha256'].items()) and
-        all(sha((ROOT/p).read_bytes())==digest for p,digest in report['source_files_sha256'].items()) and
-        sha(Path(__file__).read_bytes())==report['producer_sha256'],'ROM, production source, producer and dependencies remain frozen throughout run')
+  changes={'rom':sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes())!=report['rom_sha256'],
+           'dependencies':[p for p,digest in report['dependency_sha256'].items() if sha((ROOT/p).read_bytes())!=digest],
+           'production_source':[p for p,digest in report['source_files_sha256'].items() if sha((ROOT/p).read_bytes())!=digest],
+           'producer':sha(Path(__file__).read_bytes())!=report['producer_sha256']}
+  report['input_changes_during_run']=changes
+  check(not any(changes.values()),'ROM, production source, producer and dependencies remain frozen throughout run',changes)
   report['generated_count']=report['combined_contract']['assets']['generated_count'];report['status']='diagnostic_passed' if args.fighter is not None else 'passed'
  except Exception as exc:report['failures'].append(repr(exc));raise
  finally:

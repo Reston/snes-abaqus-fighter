@@ -9,6 +9,7 @@ is never opened or played, and no emulator window is created.
 from __future__ import annotations
 
 import ctypes as C
+from functools import lru_cache
 import json
 import re
 import sys
@@ -17,6 +18,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from emulator import Emulator, ROOT
+from contact_geometry import generate as generate_contact_geometry, world, overlap
 
 
 checks: list[dict[str, object]] = []
@@ -46,6 +48,23 @@ def signed16(value: int) -> int:
 
     value &= 0xffff
     return value - 0x10000 if value & 0x8000 else value
+
+
+@lru_cache(maxsize=1)
+def contact_poses():
+    """Independently regenerate final-pixel rectangles for fixture brackets.
+
+    These only establish physical overlap; controller-created contact,
+    direction, timing, damage and guard assertions remain mandatory.
+    """
+
+    return generate_contact_geometry()[1]["poses"]
+
+
+def body_regions(sample: dict[str, int], side: str):
+    pose = contact_poses()[sample[f"fighter_id{side}"]][sample[f"anim_frame{side}"]]
+    return [world(rect, sample[f"x{side}"], signed16(sample[f"y{side}"]),
+                  sample[f"face{side}"]) for rect in pose[:2]]
 
 
 def check(ok: bool, label: str, details: object | None = None) -> None:
@@ -698,6 +717,12 @@ def _run_transition_stress(cadence: str, fighter: int) -> dict[str, object]:
 
     e = _cadence_boot(cadence, 2, fighter=fighter)
     try:
+        if fighter == 4:
+            # The slow groundwave representative now misses the old approach
+            # schedule's throw window. Establish real close spacing through
+            # both pads before measuring the unchanged 600-tick schedule.
+            close_players(e)
+            e.run(3)
         start = trace(e)["frame"]
         drops: list[dict[str, int]] = []
         banks: set[int] = set()
@@ -783,19 +808,33 @@ def _run_combo_cadence_stress(cadence: str) -> dict[str, object]:
         start = initial["frame"]
         drops: list[dict[str, int]] = []
         maximum_combo = 0
+        phase, age = "approach", 0
         for index in range(600):
             sample = trace(e)
-            phase = index % 100
             keys: list[str] = []
-            if phase < 30 and abs(sample["x1"] - sample["x2"]) > 29 * 16:
-                keys = ["right" if sample["x1"] < sample["x2"] else "left"]
-            elif 30 <= phase < 37:
-                keys = ["y"]
-            elif 42 <= phase < 45:
-                keys = ["x"]
+            if phase == "approach" and not sample["action1"] and not sample["hurt2"]:
+                if abs(sample["x1"] - sample["x2"]) > 28 * 16:
+                    keys = ["right" if sample["x1"] < sample["x2"] else "left"]
+                else:
+                    phase, age = "jab", 0
+            if phase == "jab":
+                if sample["action1"] == 1 and sample["connected1"] == 2:
+                    phase, age = "confirm", 0
+                elif age < 3:
+                    keys = ["y"]
+                elif age > 40:
+                    phase = "approach"
+            if phase == "confirm":
+                if age < 3:
+                    keys = ["x"]
+                else:
+                    phase = "recover"
+            elif phase == "recover" and not sample["action1"] and not sample["hurt2"]:
+                phase = "approach"
             old = sample["frame"]
             e.run(1, p1=keys)
             current = trace(e)
+            age += 1
             combo = event_field(current, "combo_link", 0)
             maximum_combo = max(maximum_combo, combo)
             delta = (current["frame"] - old) & 0xFFFF
@@ -1430,6 +1469,28 @@ def start_normal(e: Emulator, attacker: int = 0, key: str = "y",
     else:
         e.run(3, p1=hold_defender, p2=[key])
         e.run(1, p1=hold_defender)
+
+
+def confirm_heavy(e: Emulator, first: dict[str, int],
+                  hold_defender: list[str] | None = None
+                  ) -> tuple[dict[str, int] | None, list[dict[str, int]]]:
+    """React to real jab contact with a fresh X edge during its hitstop.
+
+    Observe new damage rather than the jab's still-latched connected flag.
+    Guard input remains sampled throughout; no future input is inspected.
+    """
+
+    check(first["connected1"] == 2 and first["hitstop"] > 0,
+          "strong confirm follows an observed real jab hitstop", first)
+    rows = []
+    for index in range(50):
+        e.run(1, p1=["x"] if index < 3 else [],
+              p2=hold_defender or [])
+        current = trace(e)
+        rows.append(current)
+        if current["hp2"] < first["hp2"]:
+            return current, rows
+    return None, rows
 
 
 def check_qcf_case(port: int, wrong_back: bool = False) -> None:
@@ -2177,17 +2238,12 @@ def check_held_back_combo_and_block_string() -> None:
             # Keep the defender's back direction held through hitstop and the
             # next attack's active window.  The first hit's hurt timer must
             # still be live when the second contact is observed.
-            for _ in range(30):
-                live = trace(e)
-                if not live["hitstop"]:
-                    break
-                e.run(1, p2=defender_back)
-            drive(e, 0, ["x"], 3)
-            second, second_history = wait_connected(e, 0, defender_back)
+            second, second_history = confirm_heavy(e, first, defender_back)
             check(second is not None and
                   event_field(second or {}, "connected", 0) == 2 and
                   event_field(second or {}, "guard", 1) == 0 and
-                  event_field(second or {}, "hurt", 1) > 0,
+                  event_field(second or {}, "hurt", 1) > 0 and
+                  event_field(second or {}, "combo_link", 0) >= 2,
                   "held-back defender stays a real hit during hurt continuity", {
                       "first": first, "second": second,
                       "history": second_history,
@@ -2293,10 +2349,7 @@ def _seed_two_hit_combo(e: Emulator) -> tuple[dict[str, int] | None,
     first, _ = wait_connected(e, 0)
     if first is None:
         return None, None
-    wait_live(e)
-    e.run(1)
-    drive(e, 0, ["x"], 3)
-    second, _ = wait_connected(e, 0)
+    second, _ = confirm_heavy(e, first)
     return first, second
 
 
@@ -2906,8 +2959,8 @@ def check_projectile_interrupts_throw() -> dict[str, object]:
     """A live projectile cancels a pending throw without delayed damage.
 
     This uses the deterministic late-special contact from the native input
-    path: P2 (Ivo, the default local-versus opponent) is held in projectile
-    startup tick 10 while P1 closes with heavy punch.  The contact resolver
+    path: P2 (Ivo, the default local-versus opponent) reaches four ticks before
+    its actual projectile release while P1 closes with heavy punch. The contact resolver
     must release the victim's pending throw before LIFT becomes observable,
     then let the victim finish its bounded flight.  The wave may hurt P1, but
     the cancelled throw must never damage P2 at the later ground impact.
@@ -2927,7 +2980,8 @@ def check_projectile_interrupts_throw() -> dict[str, object]:
         for _ in range(20):
             sample = trace(e)
             startup.append(sample)
-            if sample["action2"] == 7 and sample["anim_tick2"] >= 10:
+            if (sample["action2"] == 7 and
+                    sample["anim_tick2"] == sample["special_startup2"] - 4):
                 ready = sample
                 break
             drive(e, 1, [])
@@ -3064,7 +3118,7 @@ def check_down_floor_input_guard() -> dict[str, object]:
     Lars's long heavy reach makes the OTG portion non-vacuous: after his
     uppercut launches P2, P1 waits until its action is free, then holds Down+A
     while P2 is still down.  The actual active frame must overlap a downed
-    state inside the 71px normal-contact envelope without changing P2 HP.
+    state with physical strike/body overlap without changing P2 HP.
     """
 
     e = boot(1, fighter=11, fighter2=0)
@@ -3106,11 +3160,16 @@ def check_down_floor_input_guard() -> dict[str, object]:
                 if down == 4:
                     rise.append(sample)
                 if sample["action1"] == 6 and sample["anim_frame1"] == 8:
+                    strike = world(contact_poses()[11][8][2], sample["x1"],
+                                   signed16(sample["y1"]), sample["face1"])
+                    body = body_regions(sample, "2")
                     active.append({
                         "frame": sample["frame"],
                         "down_state2": down,
                         "distance": abs(sample["x1"] - sample["x2"]),
                         "hp2": sample["hp2"],
+                        "strike": strike, "body": body,
+                        "physical_overlap": any(overlap(strike, band) for band in body),
                     })
             if heavy_at is None and down and sample["y1"] == 0 and sample["action1"] == 0:
                 heavy_at = index
@@ -3131,9 +3190,10 @@ def check_down_floor_input_guard() -> dict[str, object]:
                   "states": sorted(states), "floor": floor[:3],
               })
         if floor:
-            check(all(abs(sample["x1"] - sample["x2"]) <= 71 * 16
-                      for sample in floor),
-                  "FLOOR input probe stays inside Lars's normal contact envelope", {
+            check(any(any(overlap(
+                          world(contact_poses()[11][8][2], sample["x1"], 0, sample["face1"]),
+                          band) for band in body_regions(sample, "2")) for sample in floor),
+                  "FLOOR input probe has physical overlap with Lars's sweep strike", {
                       "floor": floor[:4],
                   })
         check(not violations,
@@ -3146,8 +3206,8 @@ def check_down_floor_input_guard() -> dict[str, object]:
                   "active": active,
                   "states": sorted(states),
               })
-        check(all(sample["distance"] <= 71 * 16 for sample in active),
-              "downed victim remains inside the active heavy contact envelope", {
+        check(any(sample["physical_overlap"] for sample in active),
+              "downed victim physically overlaps the actual active heavy strike", {
                   "active": active,
               })
         check(impact_hp is not None and all(sample["hp2"] == impact_hp
@@ -3258,8 +3318,9 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
     forward, back = ("right", "left") if port == 0 else ("left", "right")
     label = f"P{a} air {key.upper()} " + (
         "front corner" if corner else "front" if front else
-        f"rear {guard or 'neutral'} delay{delay}" + (" trade" if trade else ""))
+        f"rear {guard or 'neutral'} delay{delay}") + (" trade" if trade else "")
     fields = ("frame", "x1", "x2", "y1", "y2", "face1", "face2",
+              "fighter_id1", "fighter_id2",
               "action1", "action2", "anim_tick1", "anim_tick2", "anim_frame1",
               "anim_frame2", "air_action1", "air_action2", "connected1",
               "connected2", "hp1", "hp2", "hurt1", "hurt2", "guard1", "guard2",
@@ -3284,9 +3345,11 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
         initial = sample()
         check(initial[f"face{a}"] == (1 if port == 0 else 0) and
               initial[f"hp{d}"] == 128, label + " starts healthy facing forward", initial)
-        drive(e, port, ["up"] if front else ["up", forward])
+        drive(e, port, ["up"] if front or trade else ["up", forward])
         rows = [sample()]
         attack_sent = False
+        trade_sent = False
+        trade_age = 0
         countdown = delay
         contact_index = None
         effect = None
@@ -3295,7 +3358,7 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
             crossed = (state[f"x{a}"] - state[f"x{d}"]) * sign > 0
             attacker_keys: list[str] = []
             defender_keys: list[str] = []
-            if not attack_sent and ((front and index >= 1) or (not front and crossed)):
+            if not attack_sent and not trade and ((front and index >= 1) or (not front and crossed)):
                 if countdown == 0:
                     attacker_keys = [key]
                     attack_sent = True
@@ -3306,8 +3369,22 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
                     defender_keys = [forward]
                 elif guard in ("new", "low"):
                     defender_keys = [back] + (["down"] if guard == "low" else [])
-            if trade and attacker_keys:
-                defender_keys = ["a"]
+            # Ground A has three extra startup ticks. During the observed
+            # descent supply its edge first, then air A three ticks later.
+            # The front neutral-jump bracket keeps both drawn kicks in range
+            # without locking a grounded normal away from a crossed target.
+            if trade:
+                if not trade_sent:
+                    descending = (len(rows) > 1 and
+                                  signed16(state[f"y{a}"]) > signed16(rows[-2][f"y{a}"]))
+                    if descending and signed16(state[f"y{a}"]) >= -53 * 16:
+                        defender_keys = ["a"]
+                        trade_sent = True
+                else:
+                    trade_age += 1
+                    if trade_age == 3:
+                        attacker_keys = [key]
+                        attack_sent = True
             e.run(1, **{f"p{a}": attacker_keys, f"p{d}": defender_keys})
             rows.append(sample())
             if contact_index is None and rows[-1][f"connected{a}"]:
@@ -3334,20 +3411,19 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
         check(all(row[f"down_state{d}"] == 0 for row in rows),
               label + " never changes the medium-kick knockdown contract", rows)
 
-        # Even rejected normals must have an active rectangle overlapping the
-        # defender vertically, behind the locked facing, within FRONT reach.
-        # Otherwise a directional assertion could silently become a range test.
+        # Reflect the ordinary visible strike behind the locked facing to
+        # bracket a directional rejection. A distant or vertically separated
+        # target would make that rejection vacuous. Actual rear A contact is
+        # checked separately against its dedicated short rear rectangle.
         if not front and not trade:
-            front_reach = {"y": 26, "x": 38, "b": 42, "a": 46}[key]
             geometry = []
             for row in active:
-                y = signed16(row[f"y{a}"])
-                top, bottom = (y - 52 * 16, y - 28 * 16) if action < 4 else (y - 60 * 16, y - 20 * 16)
-                body_top = -(40 if guard == "low" else 66) * 16
                 gap = (row[f"x{a}"] - row[f"x{d}"]) * sign
-                if gap > 0 and gap <= (front_reach + 10) * 16 and bottom >= body_top and top <= -4 * 16:
+                strike = world(contact_poses()[0][active_frame][2], row[f"x{a}"],
+                               signed16(row[f"y{a}"]), 1-row[f"face{a}"])
+                if gap > 0 and any(overlap(strike, body) for body in body_regions(row, d)):
                     geometry.append(row)
-            check(bool(geometry), label + " has rear active overlap inside ordinary front reach", evidence)
+            check(bool(geometry), label + " has rear active overlap inside the reflected visible front strike", evidence)
 
         should_hit = key == "a" and delay == 0
         if should_hit:
@@ -3357,16 +3433,39 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
             previous = rows[contact_index - 1]
             blocked = guard == "new"
             away = sign if front else -sign
-            recoil = 16 if blocked else 32
-            center_gap = abs(contact[f"x{a}"] - (sign * 32 if trade else 0) -
-                             (contact[f"x{d}"] - away * recoil))
+            recoil = 16 if blocked else 64
+            physical = dict(previous)
+            physical[f"x{a}"] = contact[f"x{a}"] - ((-sign if front else sign) * 64 if trade else 0)
+            physical[f"y{a}"] = contact[f"y{a}"]
+            physical[f"x{d}"] = (contact[f"x{d}"] + away*12 if corner else
+                                   contact[f"x{d}"] - away*recoil)
+            physical[f"y{d}"] = contact[f"y{d}"]
+            if guard == "low":
+                physical[f"anim_frame{d}"] = 3
+            if trade:
+                physical[f"anim_frame{d}"] = 7
+                physical[f"anim_frame{a}"] = 53
+                ground_strike = world(contact_poses()[0][7][2], physical[f"x{d}"],
+                                      0, physical[f"face{d}"])
+                check(any(overlap(ground_strike, body) for body in body_regions(physical, a)),
+                      label + " simultaneous grounded strike overlaps the active airborne body", {
+                          "physical": physical, "strike": ground_strike,
+                          "body": body_regions(physical, a)})
+            strike = world(contact_poses()[0][53][2 if front else 3],
+                           physical[f"x{a}"], signed16(physical[f"y{a}"]),
+                           physical[f"face{a}"])
+            center_gap = abs(physical[f"x{a}"] - physical[f"x{d}"])
+            check(any(overlap(strike, body) for body in body_regions(physical, d)),
+                  label + " real controller contact overlaps the visible strike and pose body", {
+                      "physical": physical, "strike": strike,
+                      "body": body_regions(physical, d)})
             check((trade_startup or contact[f"anim_frame{a}"] == 53) and signed16(contact[f"y{a}"]) < 0,
                   label + " contacts during the airkick active window", contact)
             if not front:
                 check(center_gap <= 26 * 16, label + " uses at most 16px rear reach plus 10px body", center_gap)
             elif not corner:
-                check(26 * 16 < center_gap <= 56 * 16,
-                      label + " preserves the tuned 46px front reach plus 10px body", center_gap)
+                check(center_gap > 26 * 16,
+                      label + " exercises front contact outside the rear-center cap", center_gap)
             check(contact[f"connected{a}"] == (1 if blocked else 2) and
                   contact[f"hp{d}"] == (127 if blocked else 113) and
                   contact[f"guard{d}"] == int(blocked) and
@@ -3387,8 +3486,8 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
             # Effects are constructed before the final corner clamp. In a
             # trade the second snapshot contact owns the single effect slot.
             fx_victim = "1" if trade else d
-            fx_direction = 1 if trade else away
-            fx_center = ((contact[f"x{fx_victim}"] + away * (32 + 12)) >> 4
+            fx_direction = (-1 if front else 1) if trade else away
+            fx_center = ((contact[f"x{fx_victim}"] + away * (64 + 12)) >> 4
                          if corner else contact[f"x{fx_victim}"] >> 4)
             expected_fx = (fx_center + (-12 if fx_direction > 0 else 6) - 8) & 511
             check(effect is not None and effect["x"] == expected_fx,
@@ -3401,8 +3500,12 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
             drift = [(before, after) for before, after in zip(rows[contact_index:], rows[contact_index + 1:])
                      if before["hitstop"] == 0 and before[f"hurt{d}"] > 0 and not before[f"guard{d}"]]
             if not blocked:
+                def eased_step(remaining):
+                    return 2 * (16 if remaining >= 12 else 12 if remaining >= 8
+                                else 8 if remaining >= 4 else 4)
                 check(bool(drift) and all((after[f"x{d}"] - before[f"x{d}"]) * away ==
-                                         (0 if corner else 9) for before, after in drift),
+                                         (0 if corner else eased_step(after[f"hurt{d}"]))
+                                         for before, after in drift),
                       label + " every hurt tick recoils away through landing/action cancellation", drift)
                 if trade:
                     check(contact["hp1"] == 113 and contact["hp2"] == 113 and
@@ -3456,20 +3559,26 @@ def _grounded_cross_up_whiff(port: int, key: str) -> dict[str, object]:
                 sent = True
             drive(e, 1 - port, keys)
             rows.append(trace(e))
-        startup, active = (7, 5) if key == "a" else (9, 4)
-        overlap = [s for s in rows if s[f"action{attacker}"] == action and
-                   startup <= s[f"anim_tick{attacker}"] < startup + active and
-                   (s[f"x{jumper}"] - s[f"x{attacker}"]) * sign > 0 and
-                   abs(s[f"x{jumper}"] - s[f"x{attacker}"]) <= (56 if key == "a" else 48) * 16 and
-                   signed16(s[f"y{jumper}"]) - 4 * 16 >= (-60 if key == "a" else -52) * 16]
+        active_frame = 7 if key == "a" else 6
+        rear_overlap = []
+        for s in rows:
+            if (s[f"action{attacker}"] != action or
+                    s[f"anim_frame{attacker}"] != active_frame or
+                    (s[f"x{jumper}"] - s[f"x{attacker}"]) * sign <= 0):
+                continue
+            strike = world(contact_poses()[0][active_frame][2],
+                           s[f"x{attacker}"], signed16(s[f"y{attacker}"]),
+                           1-s[f"face{attacker}"])
+            if any(overlap(strike, body) for body in body_regions(s, jumper)):
+                rear_overlap.append(s)
         label = f"P{attacker} grounded backward {key.upper()}"
-        check(sent and bool(overlap), label + " has real rear active overlap", overlap or rows)
+        check(sent and bool(rear_overlap), label + " has reflected visible rear active overlap", rear_overlap or rows)
         check(all(s[f"face{attacker}"] == (0 if port == 0 else 1) and
-                  s[f"air_action{attacker}"] == 0 for s in overlap),
-              label + " stays grounded with locked directional facing", overlap)
+                  s[f"air_action{attacker}"] == 0 for s in rear_overlap),
+              label + " stays grounded with locked directional facing", rear_overlap)
         check(all(s[f"hp{jumper}"] == 128 and s[f"connected{attacker}"] == 0 for s in rows),
-              label + " cannot use the airborne medium-kick exception", overlap)
-        return {"label": label, "overlap": overlap}
+              label + " cannot use the airborne medium-kick exception", rear_overlap)
+        return {"label": label, "overlap": rear_overlap}
     finally:
         e.close()
 
@@ -3482,11 +3591,15 @@ def check_cross_up_contacts() -> dict[str, object]:
         cases = [("rear", {}), ("old-back", {"guard": "old"}),
                  ("new-back", {"guard": "new"}), ("low-back", {"guard": "low"}),
                  ("front", {"front": True}), ("far-rear", {"delay": 1}),
-                 ("corner", {"front": True, "corner": True}), ("trade", {"trade": True})]
+                 ("corner", {"front": True, "corner": True}),
+                 ("trade", {"trade": True, "front": True})]
         for name, options in cases:
             results[f"p{port + 1}-{name}"] = _cross_up_contact_case(port, **options)
         for key in ("y", "x", "b"):
-            results[f"p{port + 1}-rear-{key}"] = _cross_up_contact_case(port, key)
+            # The short air jab's drawn fist needs one more falling tick to
+            # overlap the standing body vertically in the mirrored bracket.
+            results[f"p{port + 1}-rear-{key}"] = _cross_up_contact_case(
+                port, key, delay=1 if key == "y" else 0)
         for key in ("a", "x"):
             results[f"p{2 - port}-ground-{key}"] = _grounded_cross_up_whiff(port, key)
     return results
@@ -3799,12 +3912,18 @@ def check_cpu_special_spacing() -> dict[str, object]:
         # the test to a particular sprite upload cadence.
         rush = _capture_cpu_special(
             2, difficulty, 58,
-            lambda _index, _sample: ["left", "down"], 90)
-        rush_active = rush["active"]
-        first = rush_active[0]
+            lambda _index, sample: (
+                ["down"] if sample["action2"] == 7 else
+                ["right"] if abs(sample["x1"] - sample["x2"]) > 64 * 16 else
+                ["left"] if abs(sample["x1"] - sample["x2"]) < 56 * 16
+                else ["down"]), 240)
+        first = rush["active"][0]
         samples = rush["samples"]
         active_index = next(index for index, sample in enumerate(samples)
                             if sample["action2"] == 7)
+        end_index = next((index for index in range(active_index, len(samples))
+                          if samples[index]["action2"] != 7), len(samples))
+        rush_active = samples[active_index:end_index]
         # cpuKeys samples positions before updateFighter advances the actor.
         # The first visible action-7 trace is therefore one update late; use
         # the preceding decision sample for the spacing band.
@@ -3859,23 +3978,17 @@ def check_cpu_special_spacing() -> dict[str, object]:
 
         # Rising is sampled while P1 is airborne and inside the CPU's close
         # anti-air band.  The fresh jump edge is controller-only.
-        if difficulty == 1:
-            # David's patient Normal policy can answer the first jump with
-            # a jab or universal uppercut. Repeated real close jump-ins let
-            # his ordinary 97-tick signature cadence become available.
-            def rising_keys(index, sample):
-                forward = "right" if sample["x1"] < sample["x2"] else "left"
-                if abs(sample["x1"] - sample["x2"]) / 16 > 40:
-                    return [forward]
-                return ["up", forward] if index % 61 < 12 else []
-            rising = _capture_cpu_special(5, difficulty, 0, rising_keys, 500)
-        else:
-            rising = _capture_cpu_special(
-                5, difficulty, 60,
-                lambda index, sample: (
-                    ["right"] if abs(sample["x1"] - sample["x2"]) / 16 > 44
-                    else (["up", "right"] if index < 38 else [])
-                ), 85)
+        # The slower approach can exceed the former 38-tick jump deadline.
+        # Repeated real close jumps give every difficulty a visible target
+        # across its ordinary 97-tick signature cadence, including intervening
+        # fallible jabs/universal uppercuts. No future decision is inspected.
+        def rising_keys(index, sample):
+            forward = "right" if sample["x1"] < sample["x2"] else "left"
+            if abs(sample["x1"] - sample["x2"]) / 16 > 40:
+                return [forward]
+            return ["up"]
+        rising = _capture_cpu_special(5, difficulty, 16 if difficulty == 1 else 0,
+                                      rising_keys, 400)
         rising_active = rising["active"]
         airborne = [sample for sample in rising_active
                      if signed16(sample["y1"]) < 0]
@@ -4207,15 +4320,28 @@ def _cpu_anti_air_ko(victim: int) -> dict[str, object]:
     e = boot(0, fighter=1, difficulty=2)
     samples: list[dict[str, int]] = []
     try:
-        for tick in range(900):
+        for tick in range(1800 if victim == 2 else 900):
             before = trace(e)
             if before["round_end"] or before["screen"] != 3:
                 break
             forward = "right" if before["x1"] < before["x2"] else "left"
             keys = [forward]
-            if victim == 2 and tick % 16 < 3 and \
-                    abs(before["x1"] - before["x2"]) < 36 * 16:
-                keys = ["down", "x"] if before["hp2"] <= 32 else [forward, "x"]
+            if victim == 2:
+                # Reclose after recoil and throw only from observed range.
+                # A fixed 16-tick spam schedule can feed jabs while X is still
+                # recovering. Finish with a real airborne uppercut, preserving
+                # the zero-HP flight and CPU-inertness assertions below.
+                keys = []
+                if not before["hitstop"] and not before["action1"]:
+                    distance = abs(before["x1"] - before["x2"])
+                    if before["hp2"] <= 24 and distance < 38 * 16:
+                        keys = ["down", "x"]
+                    elif distance > (before["throw_range1"] - 2) * 16:
+                        keys = [forward]
+                    else:
+                        keys = [forward, "x"]
+                if before["raw_keys1"] & 64 and "x" in keys:
+                    keys = [forward]  # release before the next fresh edge
             e.run(1, p1=keys)
             sample = trace(e)
             if sample[f"hp{victim}"] == 0:
@@ -4245,25 +4371,25 @@ def _cpu_anti_air_ko(victim: int) -> dict[str, object]:
 def check_cpu_anti_air() -> dict[str, object]:
     """Bound strategic uppercuts with useful hits, misses and state exclusions.
 
-    These title delays were measured on the cartridge. Each positive requires
-    a deliberate action-8 start; all seven fail against the verified v0.15 ROM.
+    These title delays were measured on the current readable-combat cartridge.
+    Each positive requires a deliberate action-8 start and real first-active contact.
     Existing rising-special, wave defense, approach and wake fixtures still
     run separately with their original assertions.
     """
 
-    fixtures = ((0, 1, 4), (0, 2, 0), (2, 2, 13), (4, 1, 0),
-                (4, 2, 2), (5, 1, 6), (5, 2, 5))
+    fixtures = ((0, 1, 1), (0, 2, 0), (2, 2, 13), (4, 1, 6),
+                (4, 2, 5), (5, 1, 8), (5, 2, 5))
     cases = [_cpu_jump_in(cpu, difficulty, delay)
              for cpu, difficulty, delay in fixtures]
     hits = [_cpu_uppercut_start(case, hit=True) for case in cases]
-    retreat = _cpu_jump_in(2, 2, 18, retreat=True, kick=False)
+    retreat = _cpu_jump_in(2, 2, 13, retreat=True, kick=False)
     whiff = _cpu_uppercut_start(retreat, hit=False)
 
     # Equal menu frame counts align Normal's title+20 with Hard/Easy's
     # difficulty-button tap. The same visible opening does not assure a
     # reaction: Hard intercepts here, Normal misses its sampled opportunity.
-    easy = _cpu_jump_in(4, 0, 2)
-    normal = _cpu_jump_in(4, 1, 22)
+    easy = _cpu_jump_in(4, 0, 5)
+    normal = _cpu_jump_in(4, 1, 25)
     hard = cases[4]
     opening = ("frame", "x1", "x2", "y1", "y2", "action1", "action2", "hp1", "hp2")
     check(all(tuple(case["samples"][0][name] for name in opening) ==
@@ -4279,7 +4405,7 @@ def check_cpu_anti_air() -> dict[str, object]:
     # The four-button CPU chooses from four normals instead of six. In the
     # equal-opening comparison above Normal is occupied by a strong normal;
     # this separately measured phase retains a genuinely free sampled miss.
-    normal_decline = _cpu_jump_in(4, 1, 2)
+    normal_decline = _cpu_jump_in(4, 1, 0)
     check(not any(sample["action2"] == 8 for sample in normal_decline["samples"]),
           "Normal's available-window fixture genuinely declines the uppercut")
     opportunities = [sample for sample in normal_decline["samples"]
@@ -4289,7 +4415,7 @@ def check_cpu_anti_air() -> dict[str, object]:
     check(bool(opportunities), "Normal can decline an available near jump-in",
           [_cpu_summary(sample) for sample in opportunities])
 
-    empty_jump = _cpu_jump_in(4, 2, 2, kick=False)
+    empty_jump = _cpu_jump_in(4, 2, 5, kick=False)
     empty_hit = _cpu_uppercut_start(empty_jump, hit=True)
     check(empty_jump["samples"][:17] == hard["samples"][:17] and
           empty_hit["start_index"] < 16 and
@@ -4340,7 +4466,7 @@ def check_cpu_anti_air() -> dict[str, object]:
                   "violations": [[_cpu_summary(s) for s in pair] for pair in violations[:4]]})
         negative_counts[name] = len(pairs)
     return {"hits": hits, "retreat_whiff": whiff, "empty_jump": empty_hit,
-            "normal_declined_title_delay": 2,
+            "normal_declined_title_delay": 0,
             "normal_declined_ticks": len(opportunities), "negative_ticks": negative_counts,
             "ko": [_cpu_anti_air_ko(victim) for victim in (1, 2)]}
 

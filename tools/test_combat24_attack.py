@@ -93,7 +93,7 @@ def art_contract():
                 meta=manifest[f]['frames'][n];size=[round(figure.width*scale),round(figure.height*scale)]
                 bbox=new.crop((n*96,0,(n+1)*96,80)).getchannel('A').getbbox()
                 check(meta['source_kind']=='attack-v1' and meta['source_file']==source['file'] and
-                      meta['source_sha256']==source['sha256'] and meta['revision_source_box']==detail['source_box'],
+                      meta['source_sha256']==source['sha256'] and meta['revision_source_box']==list(detail['source_box']),
                       'own native frame binds selected attack source',[f,n])
                 check(meta['conversion_scale']==scale and meta['native_size']==[bbox[2]-bbox[0],bbox[3]-bbox[1]] and
                       meta['native_size'][0]<=size[0]<=94 and meta['native_size'][1]<=size[1]<=77,
@@ -239,13 +239,16 @@ def save_clips(before,after,fighter):
     return captures
 
 def main():
+    global OUT
     parser=argparse.ArgumentParser();parser.add_argument('--fighter',type=int,choices=range(12));parser.add_argument('--report',type=Path);args=parser.parse_args()
     CHECKS.clear()
-    OUT.mkdir(parents=True,exist_ok=True);(ROOT/'build').mkdir(exist_ok=True)
+    (ROOT/'build').mkdir(exist_ok=True)
     report_path=ROOT/(args.report or ('build/combat24-attack-diagnostic.json' if args.fighter is not None else 'docs/combat-24-attack-report.json'))
     if args.fighter is not None and not report_path.resolve().is_relative_to((ROOT/'build').resolve()):
         parser.error('--fighter diagnostics must write under ignored build/, never final docs evidence')
     report_path.parent.mkdir(parents=True,exist_ok=True)
+    if args.fighter is not None:OUT=report_path.parent/(report_path.stem+'-captures')
+    OUT.mkdir(parents=True,exist_ok=True)
     baseline=ROOT/'build/v024-attack-baseline.sfc';baseline.write_bytes(old('dist/abaqus-after-hours.sfc'))
     baseline_symbols=ROOT/'build/v024-attack-baseline.sym';baseline_symbols.write_bytes(old('dist/abaqus-after-hours.sym'))
     base_table=symbols(baseline_symbols)
@@ -276,10 +279,12 @@ def main():
             report['cases'].append({'fighter':fighter,'ports':[1,2],'callbacks':len(after.rows),'current_non_animation_sha256':after.game_hash.hexdigest(),'peak_spc_backlog':after.peak_spc,'native_lag_increments':after.lag_increments,'uploads_per_callback':dict(after.uploads),'uploaded_frame_ids':[sorted(x) for x in after.frames],'cadence_failures':after.drops,'native_timing_failures':after.native_failures,'OBJ_failures':after.overflow,'payload_failures':after.bad_payload,'geometry_failures':after.geometry,'SPC_failures':after.spc_failures,'PCM_failures':after.pcm_failures,'captures':captures})
             print(json.dumps({'fighter':fighter,'callbacks':len(after.rows),'checks':len(CHECKS)}),flush=True)
         check(sorted(row['fighter'] for row in report['cases'])==([args.fighter] if args.fighter is not None else list(range(12))),'requested roster coverage complete')
-        check(sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes())==report['rom_sha256'] and
-              all(sha((ROOT/p).read_bytes())==digest for p,digest in report['dependency_sha256'].items()) and
-              all(sha((ROOT/p).read_bytes())==digest for p,digest in report['source_files_sha256'].items()) and
-              sha(Path(__file__).read_bytes())==report['producer_sha256'],'ROM, production source, producer and dependencies remain frozen throughout run')
+        changes={'rom':sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes())!=report['rom_sha256'],
+                 'dependencies':[p for p,digest in report['dependency_sha256'].items() if sha((ROOT/p).read_bytes())!=digest],
+                 'production_source':[p for p,digest in report['source_files_sha256'].items() if sha((ROOT/p).read_bytes())!=digest],
+                 'producer':sha(Path(__file__).read_bytes())!=report['producer_sha256']}
+        report['input_changes_during_run']=changes
+        check(not any(changes.values()),'ROM, production source, producer and dependencies remain frozen throughout run',changes)
         report['status']='diagnostic_passed' if args.fighter is not None else 'passed'
     except Exception as error:
         report['failures']['assertions'].append(repr(error));raise
