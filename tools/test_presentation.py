@@ -58,6 +58,7 @@ ARENA_THUMB_H = 52
 checks: list[dict[str, object]] = []
 REPORT = ROOT / "docs/presentation-test-report.json"
 CAPTURE_DIR = ROOT / "docs/screenshots/presentation"
+SELECT_TEXT_X = 13 if tuple(map(int,json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.'))) >= (0,28,0) else 11
 
 
 def check(ok: bool, label: str, details: object | None = None) -> None:
@@ -678,6 +679,11 @@ def verify_large_portrait(e: Emulator, fighter: int,
     """
 
     memory = vram_bytes(e)
+    if state(e)['screen'] == SELECT and SELECT_TEXT_X == 13:
+        from menu_preview_checks import verify_preview
+        result = verify_preview(e, fighter)
+        check(True, 'selection renders the exact native full-body preview', result)
+        return result
     expected_path = ROOT / "assets/generated" / f"portrait{fighter:02}_tiles.bin"
     check(expected_path.exists(), "native large portrait asset exists", {
         "fighter": fighter, "path": str(expected_path),
@@ -765,8 +771,8 @@ def title_and_select() -> dict[str, object]:
 
         check(state(e)["selected"] == 0, "roster opens on the first fighter")
         verify_menu_font_bank(e, [
-            (3, 11, "PLAYER 1"),
-            (12, 11, NAMES[0]),
+            (3, SELECT_TEXT_X, "PLAYER 1"),
+            (12, SELECT_TEXT_X, NAMES[0]),
             (27, 3, "A/START OK"), (27, 23, "B BACK"),
         ], "fighter select")
         select_card_render = verify_select_card_render(e)
@@ -873,7 +879,7 @@ def boot_fight(mode: int = 1, stage: int = 0) -> Emulator:
         check(state(e)["screen"] == SELECT,
               "first fighter confirm leaves the second roster visible", state(e))
         heading = "DUMMY" if mode == 2 else "PLAYER 2"
-        verify_menu_font_bank(e, [(3, 11, heading)], "second roster heading")
+        verify_menu_font_bank(e, [(3, SELECT_TEXT_X, heading)], "second roster heading")
         verify_large_portrait(e, state(e)["selected2"])
         verify_select_markers(e)
         press(e, "a", 0 if mode == 2 else 1)
@@ -1024,7 +1030,7 @@ def training_selection_capture() -> dict[str, object]:
         press(e, "up", 1); press(e, "right", 1)
         check(state(e)["selected"] == 2 and state(e)["selected2"] == 10,
               "P2 can choose a nonadjacent dummy without changing PLAYER 1", state(e))
-        verify_menu_font_bank(e, [(3, 11, "DUMMY"), (12, 11, "ROXANA")],
+        verify_menu_font_bank(e, [(3, SELECT_TEXT_X, "DUMMY"), (12, SELECT_TEXT_X, "ROXANA")],
                               "Training arbitrary dummy")
         arbitrary = {"state": state(e), "portrait": verify_large_portrait(e, 10),
                      "capture": str(capture(e, "training-dummy.png"))}
@@ -1032,13 +1038,13 @@ def training_selection_capture() -> dict[str, object]:
         press(e, "down"); press(e, "left"); press(e, "left")
         check(state(e)["selected2"] == state(e)["selected"] == 2,
               "P1 can choose the same fighter for a visible mirror selection", state(e))
-        verify_menu_font_bank(e, [(3, 11, "DUMMY"), (12, 11, "CRISTOBAL")],
+        verify_menu_font_bank(e, [(3, SELECT_TEXT_X, "DUMMY"), (12, SELECT_TEXT_X, "CRISTOBAL")],
                               "Training mirror dummy")
         mirror = {"state": state(e), "portrait": verify_large_portrait(e, 2),
                   "capture": str(capture(e, "training-mirror.png"))}
         verify_select_markers(e)
         press(e, "b", 1)
-        verify_menu_font_bank(e, [(3, 11, "PLAYER 1"), (12, 11, "CRISTOBAL")],
+        verify_menu_font_bank(e, [(3, SELECT_TEXT_X, "PLAYER 1"), (12, SELECT_TEXT_X, "CRISTOBAL")],
                               "Training Back to PLAYER 1")
         returned = verify_large_portrait(e, 2)
         return {"arbitrary": arbitrary, "mirror": mirror, "back_portrait": returned}

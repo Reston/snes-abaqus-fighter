@@ -2,7 +2,8 @@
 
 The title uses original slanted bitmap lettering. Character selection puts an
 Abaqus office panorama above a six-by-two roster, with the existing
-64x80 profile and 32x40 portraits retained. The live C renderer owns player
+32x40 portraits retained. A native 96x80 animated actor previews the selection.
+The live C renderer owns player
 markers, names, controls and confirmation. Arena landmark crops stay intact.
 
 Public contract::
@@ -102,7 +103,9 @@ def _office_backdrop(stage: Image.Image, size: Size, *, quiet: bool = False) -> 
     duotone fits the menu palette; the title version stays behind its logo.
     """
     source = _rgb_image(stage)
-    box = (0, 40, 256, 143) if quiet else (0, 50, 256, 140)
+    width = min(256, round(90 * size[0] / size[1]))
+    left = (256 - width) // 2
+    box = (0, 40, 256, 143) if quiet else (left, 50, left + width, 140)
     crop = source.crop(box).resize(size, Image.Resampling.BOX)
     gray = ImageOps.posterize(ImageOps.grayscale(crop), 3)
     return ImageOps.colorize(gray, (24, 19, 14), (78, 58, 32) if quiet else (193, 152, 86))
@@ -157,9 +160,10 @@ def _select(office: Image.Image, roster: Sequence[Mapping[str, Any]], text_fn: T
     im = _gradient((33, 27, 20), (12, 10, 9))
     d = ImageDraw.Draw(im)
     _arcade_word(im, text_fn, "PLAYER SELECT", 3, 2)
-    im.paste(_office_backdrop(office, (160, 56)), (88, 32))
-    d.rectangle((7, 23, 72, 104), outline=BLUE_LINE)
-    _rule(im, (88, 92, 247, 92), BLUE_LINE)
+    im.paste(_office_backdrop(office, (144, 56)), (104, 32))
+    d.rectangle((1, 23, 98, 103), fill=ROYAL, outline=BLUE_LINE)
+    d.ellipse((24, 99, 75, 102), fill=INK)
+    _rule(im, (104, 92, 247, 92), BLUE_LINE)
     # Six by two, 40x56 cells. The 12px top inset reserves a separate badge
     # row, so the 1P/2P labels never cover the retained 32x40 portrait pixels.
     for n in range(12):

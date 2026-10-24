@@ -337,6 +337,7 @@ void showTitle(void) {
     drawTitle();
     music(0);finishScreen();
 }
+#include "menu_preview.h"
 void drawSelect(void) {
     u8 id,x,y;
     clearUi();id=selectPlayer ? selected2:selected;
@@ -348,18 +349,18 @@ void drawSelect(void) {
         x=selected<6?selected:selected-6;y=selected<6?13:20;
         word(1+x*5,y,"1P");
     }
-    if(mode==2 && selectPlayer)word(11,3,"DUMMY");
-    else word(11,3,selectPlayer ? "PLAYER 2":"PLAYER 1");
+    if(mode==2 && selectPlayer)word(13,3,"DUMMY");
+    else word(13,3,selectPlayer ? "PLAYER 2":"PLAYER 1");
     word(23,3,mode==0?"ARCADE":(mode==1?"LOCAL":"TRAINING"));
-    word(11,12,characterNames[id]);
+    word(13,12,characterNames[id]);
     word(3,27,"A/START OK");word(23,27,"B BACK");
-    portraitId=id;portraitDirty=1;fullDirty=1;
+    portraitId=id;portraitDirty=0;menuPreviewClock=0;fullDirty=1;
 }
 void uploadSelectUi(void) {
-    /* The 64x80 portrait map is static after showSelect. Keep its VRAM
-     * entries and update only role/mode, name, and the two roster rows. */
-    dmaCopyVram((u8*)&ui[3*32+11],0x5800+3*32+11,42);
-    dmaCopyVram((u8*)&ui[12*32+11],0x5800+12*32+11,42);
+    /* The preview is OBJ. These three UI ranges remain separate from the
+     * 3840-byte pose upload, so neither transfer borrows the other's blank. */
+    dmaCopyVram((u8*)&ui[3*32+13],0x5800+3*32+13,38);
+    dmaCopyVram((u8*)&ui[12*32+13],0x5800+12*32+13,38);
     dmaCopyVram((u8*)&ui[13*32],0x5800+13*32,896);
 }
 void uploadMenuPortrait(void) {
@@ -368,14 +369,10 @@ void uploadMenuPortrait(void) {
     portraitDirty=0;
 }
 void showSelect(void) {
-    u8 x,y;
     /* Character selection starts a new local rivalry. Rematches bypass it. */
     stageDepthTable[7]=0;stageDepthTable[8]=0;
     setScreenOff();screen=SELECT;arcade=0;champion=0;commonScreen();loadBackground(4);selectPlayer=0;drawSelect();
-    /* Dedicated source-master portrait: eight by ten fixed BG2 tiles. */
-    for(y=0;y<10;y++)for(x=0;x<8;x++)
-        ui[(u16)(y+3)*32+x+1]=(160+(u16)y*8+x)|0x2400;
-    uploadMenuPortrait();music(0);finishScreen();
+    loadMenuPreview();music(0);finishScreen();
 }
 void drawArenas(void) {
     clearUi();menuCursor(1,5+arena*7,30,7);
@@ -1394,6 +1391,21 @@ void menuTick(void) {
         if(keys&KEY_R){difficulty=(difficulty+1)%3;sound(0);drawTitle();}
         if(keys&(KEY_START|KEY_A)){mode=menu;arcade=0;champion=0;sound(3);showSelect();}
     } else if(screen==SELECT) {
+        if(menuPreviewConfirm) {
+            /* Three six-frame beats show the gesture before committing the
+             * next step. Held confirmation cannot skip P2/DUMMY or ARENA. */
+            menuPreviewConfirm++;
+            if(menuPreviewConfirm<=18)return;
+            menuPreviewConfirm=0;
+            if(mode!=0 && !selectPlayer) {
+                if(mode==2)selected2=(selected+1)%12;
+                selectPlayer=1;resetMenuRepeat();drawSelect();
+            } else {
+                if(mode==0)selected2=(selected+1)%12;
+                showArenas();
+            }
+            return;
+        }
         choice=selectPlayer?&selected2:&selected;
         if(directions&KEY_RIGHT)*choice=(*choice+1)%12;
         if(directions&KEY_LEFT)*choice=(*choice+11)%12;
@@ -1402,12 +1414,7 @@ void menuTick(void) {
         if(directions){sound(0);drawSelect();}
         if(keys&KEY_B){if(selectPlayer){selectPlayer=0;resetMenuRepeat();drawSelect();}else showTitle();return;}
         if(keys&(KEY_A|KEY_START)) {
-            sound(3);
-            if(mode!=0 && !selectPlayer){
-                if(mode==2)selected2=(selected+1)%12;
-                selectPlayer=1;resetMenuRepeat();drawSelect();
-            }
-            else {if(mode==0)selected2=(selected+1)%12;showArenas();}
+            sound(3);menuPreviewConfirm=1;resetMenuRepeat();
         }
     } else if(screen==ARENA) {
         if(directions&KEY_DOWN){arena=(arena+1)%3;sound(0);drawArenas();}
@@ -1457,6 +1464,10 @@ int main(void) {
             sx=frame&1;
             if(fighters[sx].animFrame!=fighters[sx].oldFrame)queueFighter(sx);
             else queueFighter(1-sx);
+        } else if(screen==SELECT && !fullDirty) {
+            /* Hover UI owns one blank; the changed preview follows on the
+             * next one. Keep the old body visible until the new pose arrives. */
+            queueMenuPreview();
         }
         ambientReady=0;
         if(stageDepthAmbientReady()) {
@@ -1472,9 +1483,9 @@ int main(void) {
         actorTransferred=actorUploadDirty;
         interfaceTransferred=fullDirty|hudDirty|bannerDirty|footerDirty|guideDirty;
         if(actorUploadDirty){uploadActor(actorUploadSource,actorUploadDestination);actorUploadDirty=0;}
-        /* A hover publishes 2560 portrait + 980 UI bytes, below the actor
-         * budget, without rebuilding the fixed portrait map every frame. */
-        if(screen==SELECT && portraitDirty)uploadMenuPortrait();
+        if(screen==SELECT && menuPreviewPaletteDirty) {
+            dmaCopyCGram(fighterPalette(menuPreviewId),128,32);menuPreviewPaletteDirty=0;
+        }
         if(fullDirty){
             if(screen==SELECT)uploadSelectUi();
             else dmaCopyVram((u8*)ui,0x5800,2048);
@@ -1509,3 +1520,4 @@ int main(void) {
 }
 
 #include "audio_presentation_state.h"
+#include "menu_preview_state.h"
