@@ -1,9 +1,9 @@
 {
   "status": "passed",
   "part": "stages",
-  "version": "0.25.0",
-  "rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
-  "source_commit": "b41ce034ac12f6aa10740a0075feebd1f392d117",
+  "version": "0.26.0",
+  "rom_sha256": "e349b756fac379766501de87f7b58f9d45f924c439afbecb6e3099173f1d33d4",
+  "source_commit": "49226a37f8b975cd9bb4deacb8b658bfcfc5f011",
   "diagnostic": false,
   "selected_fighters": [
     0,
@@ -26,32 +26,32 @@
     "audio_device_opened": false,
     "priority_class": 16384,
     "logical_processors": [
-      10,
-      11
+      4,
+      5
     ]
   },
   "source_sha256": {
     "src/animation_banks.h": "8250cf1816ae8c0de0da6a876b76e0a0b40c10a44e35f782794ca82e283414e9",
     "src/animation_weight.h": "cdc8308b9a98c000823b7869a20a122e531d9843f7d1143ae09749b6983adf09",
-    "src/arcade_story.h": "7ee6b766b4fdd2bc22670dc1ce72b907ded4e061d088674c90bbc2a08b0d994f",
+    "src/arcade_story.h": "5b896901165ffae1eb85e303f0add0e4fffc8d4e5ceb5be473d0195c54720fdf",
     "src/audio_presentation.h": "8b094475ec41af89befdf4875ef1f9a3bf303be8615f0508afccdbf24d3b35af",
     "src/audio_presentation_state.h": "4129b01189826de5cc9266f529eb57f1dcb57bb93febcade1f1dc3bf6e6c730e",
     "src/characters.h": "f2c66a8984e16cc0e6b360e48c31bad1dee785e280a3bb5cbf7302e3c8e01858",
     "src/contact_geometry.h": "237d6b05f0e161cf08008629576f46a131b87f7a6928ea6e8e90c74ef8f49c30",
     "src/cpu_personality.h": "a362c9df6cfa3f0f3c9246f1b2005f7f954751855452d1a7a4571cc4c6e44f90",
     "src/fighter_personality.h": "e15b92385c8620a8cbdaa1c2734af0f87a91fbdbeefc70fe8c04700998cad0ce",
-    "src/game.c": "e4e4dba827efc29f6662987c86260abb190ef4de9ae92906adc38153ffd2741f",
+    "src/game.c": "1f1761638d4d9bb88c460d18fd0ef85866769fd43e0b7cbd4dba43b401de4c13",
     "src/hardware.asm": "9b6dd260dca337e06b012e9b4fdafdc2c9103750ffcf5cf803d01e9092bab424",
     "src/impact_presentation.h": "f40dd53fe3c21a026072e1ec362d93b4b8c023ad6cb1b3d1cfaed711c130aa55",
     "src/knockdown.h": "2c58e022b021aa9e08a2df1bd96396bd1a2bd9fcf52f0027b27f876311adc445",
     "src/menu_portraits.h": "96a006a382dfc86e1807b32ac0eaaf652cb302558aea57496a20567d10713c9c",
     "src/pacing_recoil.h": "79518af5f3293ad65c6143e6fdbc836ee0916afc61dce8ab5bc9d3ff8e11611b",
-    "src/pause_guide.h": "c34d81c821cf0716101dd0828a73d9703ad25093b1aa7aec45b7ab90e6c0afed",
+    "src/pause_guide.h": "8730729f8a5b4ae38996d5f9cded2bab2c8d9bb769b4c6f5a0fca3c529bfd184",
     "src/stage_depth.h": "be0fa4448f115d91faf865fb01ff14ebb85f13d5152bc315f80b4343e8859270",
     "src/super_moves.h": "6b5d0f67851c1b7dc370d25f5a4dd1c41c44ad04b41d3928a663c2859374e0b0",
     "src/trace.asm": "301ec8a99aa326583c332a901903114f5fceeb7f17bbbf768c3e90ae65c3dc88",
-    "src/training_tools.h": "5be233628beab082972c76cbe42f93e8820549f8384913c9fb49977517d9b2af",
-    "src/version.h": "cbf134d63040a02beb5014fbaa198b6caf8a96e3b3c72b58ed0993e8b02a98af",
+    "src/training_tools.h": "02e491bfe89b818ed2bb13d5dc5332b20072077b81e7d28f7ea5e8abb8e2461a",
+    "src/version.h": "3ac21275dd7527f01223188b87a3afbd9e9ff0879d50d0c312a27b3ed7738356",
     "tools/audio_assets.py": "1a55aa69ae2df232f61c9af9bc032d433461776da31ad91ea0e5108e8592a6cb",
     "tools/audit_release.py": "6d1abcdb71daffcb124de5096a9e625e6880636ff00b0e4614e3718f848c33af",
     "tools/build.py": "b89d3abe469ef2ca0eea116f3324357c7d7cd600ea527dbeffd30f7e848dc473",
@@ -72,7 +72,7 @@
     "tools/fetch_references.py": "a630e9cb073f7a20b4ddb720a3af812d6e7790398c5dc19cd88ece7c13a65254",
     "tools/fighter_assets.py": "73d34baa92e573f6808eeee0474b1a0d619e5bc3cd31e4b8f2ad8b3b304ffdad",
     "tools/longrun_host.py": "432bed2b7505131d639794ee4b1d857292df4465e7f219c39a14fa433f11cc8e",
-    "tools/make_assets.py": "35d288729a6989946dd7294260e89e77843fe825fadd0d167a5c833ae995bf5f",
+    "tools/make_assets.py": "227cb5c4e3aad9bb7235f4e9af87ed05787a365e339c35076e2cde44637ddbf6",
     "tools/make_champion_budget.py": "f5ffcfec6c09729f72f19815613d244794bfe4e0ad7a5d708c63a634552e24ad",
     "tools/make_cpu_antiair_review.py": "806c08ef0095dacafcb5209ae7f543a01db12ad5e05c1f112691488ceb718fab",
     "tools/make_crossup_practice_review.py": "b9386e97c1114ecee7730fa05dc42931f8447594b4d07d47507b0f08272506b2",
@@ -83,7 +83,7 @@
     "tools/make_review_gallery.py": "e5bab41cd7aede547a281f894ab477f765fda0fea8ece199d47bb73b28be0b31",
     "tools/make_roster_review.py": "d2b8b7fd211452887218ef07cd691efdb52efd2f0ddcb555a02137233010461e",
     "tools/make_training_cpu_review.py": "60977b144de38f340dfeb4e65daf1d161ebcb3ef6f58820bfb480ff948f92a82",
-    "tools/menu_assets.py": "d02842aded9fbace35caf269b6cd956e0978bd40a0497b1f0498a439ddfca285",
+    "tools/menu_assets.py": "b2dad3159ed2de3486430ad7114d75ba81b4b4827468d9ba5a23470d43ad510f",
     "tools/package.py": "024ff1f51574460e611d10ae6db570ee4b1e3dc1e34b05323b4b5bea23eb216e",
     "tools/portrait_assets.py": "f95047e2ad5e1c292809ced20ca2e9cc77dc4a0e5f3c10d43cadf8e0843107d3",
     "tools/pose_revision_assets.py": "7baca936c90d63dbedb732b1a222207322bed881e84841cb6d41179c7e539709",
@@ -94,9 +94,10 @@
     "tools/run_background.py": "0906fa836fa680964846049036fd2ea1ad48a2fcb68d1235bedff86e7afdf178",
     "tools/stage_assets.py": "28ccd1c8f6dfff94bc0556211af788c08acffb04d41d29f1a69fbea1db8440ce",
     "tools/stage_cartoon.py": "3cedf521885bcdb0391b65f0337eb8a5aee79fbb93b007c81b5671b008354f4f",
-    "tools/stage_depth_assets.py": "a7610eac4570d2e7ed8c66107bc50de3129261d5c102b05959088a75ba5ebb9f",
+    "tools/stage_depth_assets.py": "52ae4dfb31c8a8ac7d1a681e8e802fe0f6051a4dad2f33c919be812349fbc50b",
     "tools/stage_sources.py": "b3c249050b7ed53408b9c6aa9c31748fae92125c3a3b055ce991bf7ef77c4008",
     "tools/stage_test_contract.py": "ce846412c276ade58baba3fd940d13cfba1ae21c9b925c1aa4c87308f4c2fa9f",
+    "tools/test_arena_preview_26.py": "3a796e03ee130eb9f0afa792ddbc91176648dee7d220db582b9851fc341f00b4",
     "tools/test_audio.py": "542ad545a023db85c9fe14066823cea5fa58848932d92057d55e26c76a28a73d",
     "tools/test_authoring_guards.py": "99e5197dedb642aeca6d6f13c416588f23551bdfdb04fa2a528ea068bb98014a",
     "tools/test_champion.py": "d2424acd2cb75a7e08c5a2832a0bf6e5dc3cdb708f6aa89293d4ac3fe2d1e4d5",
@@ -127,27 +128,29 @@
     "tools/test_expansion_08_stage_depth.py": "a9c3e96130d7046fefd3c644b40560661102790bb3f65bef36e09f4606b1b4c8",
     "tools/test_expansion_09_arcade_story.py": "bf01de14c55a46ed68a2eb2d7774eca094f1daf288e622fd86078a17543f1114",
     "tools/test_expansion_10_audio.py": "2fb8352dc3e9932dd85f38174bbc5fe385a7ea9c42a878737a191860b36dc39e",
+    "tools/test_feedback_26.py": "3d1b82c834e51a780685f6dfb4e412bef855225a750fef13bc5d94775dad786b",
     "tools/test_four_button_hud.py": "a5a049919b38c87f30f981b301ef3718f9dc3810835f3497db7aceecd44afbeb",
     "tools/test_fresh_build.py": "75b6c3622d1ad96411feb8b13a9fc71e0d47fa5357fbe8c93d0c11a21c348b8b",
-    "tools/test_inputs.py": "227e2a91c0fb6bf7a6c39985b6545cb86e7232d3005c77407dea66b295f6bc5b",
+    "tools/test_inputs.py": "1934479db429eac2010c95c5a1b77fb9f487bf562a643a302e2b6f6422146147",
     "tools/test_matchups.py": "1979c79b5ed465f798c9528267e9debce412a1f2c19ca84c13d34995db060a1c",
     "tools/test_menu_footers.py": "f8b5e777271eda28f0eba79a1b2c5fbfef7a0e61b2946c1ffe9722ce6c6e69fc",
     "tools/test_mesen.py": "c1d044e8dd108c1ac05ff7d5e6d5dbc5757ce42c0c45e9c31d59d6bdd887b3c0",
-    "tools/test_pacing_floor_25.py": "7efde5abf3970b679a5bc58c200dfb2a6b2861df6ce48ed9a39e8591dbe2e846",
+    "tools/test_pacing_floor_25.py": "f7d8f81a79b599cd1ee2aae963a0b66f6dd7cbd42084215d8685661700cbccc6",
     "tools/test_package.py": "1174274d5eeec4610fd98fb11bbef90b213a9f5a61a776f634a6d99fcb15d3d9",
+    "tools/test_play_flow_26.py": "0a846b12e1a50010cc31e4f2a21510fdaeeffee526668f885e881788cfca6954",
     "tools/test_pose_revision_guards.py": "591ade0ac9fa3e83c0169a2900d0f6f642df9fceed5b031c6ecef47f52123093",
-    "tools/test_presentation.py": "4d4cf9ae6814da7106684e0eefd060ca72e8ecc5b2141ed1cf71b045016d4ff5",
+    "tools/test_presentation.py": "bda0278c9b7676863e44a94467862b3f0d8003ad8aea4b4c3943655a775bf934",
     "tools/test_preservation.py": "635b1201940579ede2c6edaecc0d4e72f36616918f0119676026f38dcfb52bdf",
     "tools/test_review_media.py": "ac1827f8455fcecc11ba088af109a3bcd9fcb2083c267b574316fd662ebc0253",
     "tools/test_rom.py": "b3fb77db409dd230443a22fc6f8209e8ff501c88843131237bab600e13e03612",
     "tools/test_special_24_cpu_timing.py": "4e57c11a7a8bf1a7472e5fe4319995b8b729b34dd4f06f944d1b2c2dad6e310d",
     "tools/test_special_24_timing.py": "65f6aa8689ad7fa080e428bdf04399113275f04a9b40ff8070bdb80278d283ad",
-    "tools/test_stages.py": "492da5e82f4898ec679f682cb08691e6158743b130128ba583618f12f638ef76",
-    "tools/test_training.py": "7f999d6404af927eea2c370e7b2d781c449efc74d0d1e2992694e66e1cbe0ddd",
+    "tools/test_stages.py": "08cb003e6cbc7057ed092bf6a4e8ce101b7191d8f223460062f9d4fbef230acf",
+    "tools/test_training.py": "9057d15a3ea45e0f1727ef9230e077ab56157f2936b89dd02311f007819c5632",
     "tools/test_v024_preservation_guards.py": "34dd5d860208298f9bc405f7a535b449fa6329dcf06fda5f9d44f46acf235e82",
     "tools/test_walking.py": "f98a337905aecbc6c12ae539d3d4ae1b3914b449d944805129da316462b1068a",
     "tools/v024_contracts.py": "1b8bbe9ffee65ff4f72410564e26941bb86da72ae914da3f5c74bdbb4891a076",
-    "tools/v025_contracts.py": "3e5e679147f50e8773a32c488b65fa6ea1878fe5bab33f6a5e621058d27a7492",
+    "tools/v025_contracts.py": "72390351c4b558fd266e77b6f46f2d15ce8a1f6e5a8e71b5559e5c35ab4a84f8",
     "tools/victory_music.py": "6da647ea3b1d58129d3f91a95d7a516433b8e609b4a847a180ff0bb96ac28528",
     "tools/walking_assets.py": "cf36efcb8fc9971eef11ed65c9afb487333d12902bcc22a285616486873d8694"
   },
@@ -163,7 +166,7 @@
       "executions": 1
     },
     {
-      "check": "candidate is the exact native v0.25 cartridge",
+      "check": "candidate is the exact native cartridge retaining the v0.25 pacing contract",
       "passed": true,
       "executions": 1
     },
@@ -221,6 +224,10 @@
     "baseline_rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
     "generated_count": 226,
     "changed_generated": [
+      "assets/generated/arenas.png",
+      "assets/generated/arenas_map.bin",
+      "assets/generated/arenas_pal.bin",
+      "assets/generated/arenas_tiles.bin",
       "assets/generated/assets.h",
       "assets/generated/stage-depth.json",
       "assets/generated/stage0.png",
@@ -242,7 +249,7 @@
       "assets/generated/stage2_pal.bin",
       "assets/generated/stage2_tiles.bin"
     ],
-    "preserved_generated": 206,
+    "preserved_generated": 202,
     "protected_art_inputs": 342,
     "unchanged_ram_labels": 1318,
     "added_ram_symbols": {},
@@ -285,27 +292,27 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage0-movement.gif",
-          "impact_clip": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage0-contacts.gif",
+          "movement_clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-movement.gif",
+          "impact_clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage0-center.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-center.png",
               "sha256": "fcc43174ac8924c571f35ff83dded81f5532ca5fdfc6b0259e017e44c6077e60",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage0-guide.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-guide.png",
               "sha256": "d4d330a5dabd9f3875565a1b73bde394786939395c7bca4f6d4cd8852d4bc966",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage0-left.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-left.png",
               "sha256": "d27ee591c92f2a6940e1f7781fb24409768ad91e2a9c0cf24d0bde052383cb15",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage0-right.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-right.png",
               "sha256": "e7dfc8eff3c5025771a0d6aaadb03f6c71096badc429a0283aeb84d7d17762f3",
               "scope": "current native PPU"
             }
@@ -325,7 +332,7 @@
           "core": "snes9x",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/pacing-floor-v025/stages/snes9x-stress0.gif",
+          "clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stress0.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -362,27 +369,27 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage1-movement.gif",
-          "impact_clip": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage1-contacts.gif",
+          "movement_clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-movement.gif",
+          "impact_clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage1-center.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-center.png",
               "sha256": "0bddeaf322c09e69ed7ce69776df7a231f85f2351492d117abd12a9e6c52582d",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage1-guide.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-guide.png",
               "sha256": "d4d330a5dabd9f3875565a1b73bde394786939395c7bca4f6d4cd8852d4bc966",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage1-left.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-left.png",
               "sha256": "7f955acb2d58a6f59ee823ef38366852940f5fe8c51873d0938b984f2494dc0e",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage1-right.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-right.png",
               "sha256": "31569ace1c4cd0892c2001b6a19b90c29986153781d2c0347cfd38be5ad24cd2",
               "scope": "current native PPU"
             }
@@ -402,7 +409,7 @@
           "core": "snes9x",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/pacing-floor-v025/stages/snes9x-stress1.gif",
+          "clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stress1.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -439,27 +446,27 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage2-movement.gif",
-          "impact_clip": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage2-contacts.gif",
+          "movement_clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-movement.gif",
+          "impact_clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage2-center.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-center.png",
               "sha256": "f9656a0ce4913fff39a5cd573baf3679cc41cfa52c4f4fae26f5f2aac77d3911",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage2-guide.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-guide.png",
               "sha256": "d4d330a5dabd9f3875565a1b73bde394786939395c7bca4f6d4cd8852d4bc966",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage2-left.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-left.png",
               "sha256": "e32569283ef4228ee6baff4f820e16088c42b1152a8fbed1d66f74168536d384",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage2-right.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-right.png",
               "sha256": "dda0734e5be8b94b93130bf81cacd131e487666c59bf5e23ebb3c2f2cedf9851",
               "scope": "current native PPU"
             }
@@ -479,7 +486,7 @@
           "core": "snes9x",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/pacing-floor-v025/stages/snes9x-stress2.gif",
+          "clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stress2.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -516,27 +523,27 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/pacing-floor-v025/stages/accuracy-stage0-movement.gif",
-          "impact_clip": "docs/screenshots/pacing-floor-v025/stages/accuracy-stage0-contacts.gif",
+          "movement_clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage0-movement.gif",
+          "impact_clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage0-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/accuracy-stage0-center.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage0-center.png",
               "sha256": "80c15c778011185544ea4db468a2d176cd28f362f05463b5896c18db15a13eaf",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/accuracy-stage0-guide.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage0-guide.png",
               "sha256": "45d4ae578527ba16134805ad9844d3ad22732306c11a7f8d42fd12cf3f279d77",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/accuracy-stage0-left.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage0-left.png",
               "sha256": "590e3dd822dfc01c4f6fc8b57ace1c5aa04d8999f6dc663a99770a3b3c26c014",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/accuracy-stage0-right.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage0-right.png",
               "sha256": "3629531ef002bde5c8a0f9bbf8f78ce4085bdd8f10b2506ac5fa411400bcd187",
               "scope": "current native PPU"
             }
@@ -556,7 +563,7 @@
           "core": "accuracy",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/pacing-floor-v025/stages/accuracy-stress0.gif",
+          "clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stress0.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -593,27 +600,27 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/pacing-floor-v025/stages/accuracy-stage1-movement.gif",
-          "impact_clip": "docs/screenshots/pacing-floor-v025/stages/accuracy-stage1-contacts.gif",
+          "movement_clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage1-movement.gif",
+          "impact_clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage1-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/accuracy-stage1-center.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage1-center.png",
               "sha256": "1b7c590e745f8c97f64aad8370fb66980c9bfc0a8d7b143dfb91d4a0ad1c789d",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/accuracy-stage1-guide.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage1-guide.png",
               "sha256": "45d4ae578527ba16134805ad9844d3ad22732306c11a7f8d42fd12cf3f279d77",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/accuracy-stage1-left.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage1-left.png",
               "sha256": "35233c5677f40fb736d8277062f72b148551684f563bc3bbaaa08bea01c732c1",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/accuracy-stage1-right.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage1-right.png",
               "sha256": "e729a8b60fc20c0be2f0bc372ada9d1577b7372e27163ef36dfb2f4bb43f24f6",
               "scope": "current native PPU"
             }
@@ -633,7 +640,7 @@
           "core": "accuracy",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/pacing-floor-v025/stages/accuracy-stress1.gif",
+          "clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stress1.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -670,27 +677,27 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/pacing-floor-v025/stages/accuracy-stage2-movement.gif",
-          "impact_clip": "docs/screenshots/pacing-floor-v025/stages/accuracy-stage2-contacts.gif",
+          "movement_clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage2-movement.gif",
+          "impact_clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage2-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/accuracy-stage2-center.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage2-center.png",
               "sha256": "eab48c663fb1fcce349c6d3b3fd6305f74b8b2cf6169ddfa1eaa96cfc368ae2e",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/accuracy-stage2-guide.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage2-guide.png",
               "sha256": "45d4ae578527ba16134805ad9844d3ad22732306c11a7f8d42fd12cf3f279d77",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/accuracy-stage2-left.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage2-left.png",
               "sha256": "56d5dd5af87dc55a4f73bf2c67bdac0e406fcb4f76e95253758f5077ebef13c3",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/pacing-floor-v025/stages/accuracy-stage2-right.png",
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage2-right.png",
               "sha256": "f2e846c15a463bc602ba06b9471e5366cb69dcbd6eb3834d54b4ad2c9e4bd014",
               "scope": "current native PPU"
             }
@@ -710,7 +717,7 @@
           "core": "accuracy",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/pacing-floor-v025/stages/accuracy-stress2.gif",
+          "clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stress2.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -875,7 +882,7 @@
         "details": [
           "snes9x-stage0",
           2105680,
-          5596
+          5690
         ]
       },
       {
@@ -1046,8 +1053,8 @@
         "passed": true,
         "details": [
           "snes9x-stage1",
-          2132336,
-          5365
+          2132338,
+          5291
         ]
       },
       {
@@ -1391,7 +1398,7 @@
         "details": [
           "accuracy-stage0",
           2104648,
-          5231
+          5259
         ]
       },
       {
@@ -1563,7 +1570,7 @@
         "details": [
           "accuracy-stage1",
           2133438,
-          5283
+          5240
         ]
       },
       {
@@ -1734,8 +1741,8 @@
         "passed": true,
         "details": [
           "accuracy-stage2",
-          2160128,
-          5511
+          2160120,
+          5365
         ]
       },
       {
@@ -1767,10 +1774,10 @@
     }
   },
   "check_count": 19002,
-  "elapsed_seconds": 87.828,
+  "elapsed_seconds": 84.375,
   "suite": "stage-depth",
   "shared_native_execution": true,
-  "focused_report": "docs/pacing-floor-v025-stage-report.json",
-  "focused_report_sha256": "4c9f1a4d5fc58e404d6073f2a8b8c40d018c251cbe398efcaf2368fe0ece3870",
+  "focused_report": "docs/play-flow-v026-stage-report.json",
+  "focused_report_sha256": "9385cba5fda9df251bac5e668d9ea969fefddf3924206b7f3a258d1192ccb614",
   "passed": 19002
 }

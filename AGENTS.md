@@ -6,6 +6,29 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+<!-- v026-agent:start -->
+- **v0.26.0 is the active autonomous polish candidate**, branch
+  `feature/play-flow-polish-v026`, stacked PR #22 on unmerged PR #21 (v0.25).
+  The user requested sequential topic-based polish until weekly Codex remaining
+  allowance reaches 5% or less. Read the live 10080-minute rate-limit window;
+  do not invent a meter value or confuse it with context/goal tokens. Do not
+  infer a new merge approval. Main remains approved v0.24.0.
+  Eight completed checkpoints cover local result/arena ownership, Training
+  drill retries and explicit P2 practice, super and punish cues, Arcade
+  orientation and previews derived from current native stages. Read
+  docs/POLISH-v0.26.0.md and docs/RELEASE-v0.26.0.md. The eight-pass ROM
+  `e349b756fac379766501de87f7b58f9d45f924c439afbecb6e3099173f1d33d4`
+  passes all six native suites (49,640 checks). This is an intermediate
+  checkpoint; later work must regenerate final exact-ROM evidence.
+  Preserve v0.25's slower physics/timing, all fighter art/portraits/palettes,
+  existing 1,318 RAM addresses and ABI, audio assets and stage payloads. The
+  arena's four outputs and size declaration are an authorized derived-art
+  exception; generated count remains226. No new offline package is claimed.
+  Current progress/active jobs and the actual meter source path are retained
+  in ignored build/v026-state.json. Final source freeze/combined verification
+  and human review are still pending; do not mark the PR ready prematurely.
+<!-- v026-agent:end -->
+
 
 
 <!-- v025-agent:start -->

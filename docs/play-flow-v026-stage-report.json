@@ -1,0 +1,1778 @@
+{
+  "status": "passed",
+  "part": "stages",
+  "version": "0.26.0",
+  "rom_sha256": "e349b756fac379766501de87f7b58f9d45f924c439afbecb6e3099173f1d33d4",
+  "source_commit": "49226a37f8b975cd9bb4deacb8b658bfcfc5f011",
+  "diagnostic": false,
+  "selected_fighters": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "host_contract": {
+    "python": "3.12.10",
+    "pillow": "13.0.0",
+    "gui_opened": false,
+    "audio_device_opened": false,
+    "priority_class": 16384,
+    "logical_processors": [
+      4,
+      5
+    ]
+  },
+  "source_sha256": {
+    "src/animation_banks.h": "8250cf1816ae8c0de0da6a876b76e0a0b40c10a44e35f782794ca82e283414e9",
+    "src/animation_weight.h": "cdc8308b9a98c000823b7869a20a122e531d9843f7d1143ae09749b6983adf09",
+    "src/arcade_story.h": "5b896901165ffae1eb85e303f0add0e4fffc8d4e5ceb5be473d0195c54720fdf",
+    "src/audio_presentation.h": "8b094475ec41af89befdf4875ef1f9a3bf303be8615f0508afccdbf24d3b35af",
+    "src/audio_presentation_state.h": "4129b01189826de5cc9266f529eb57f1dcb57bb93febcade1f1dc3bf6e6c730e",
+    "src/characters.h": "f2c66a8984e16cc0e6b360e48c31bad1dee785e280a3bb5cbf7302e3c8e01858",
+    "src/contact_geometry.h": "237d6b05f0e161cf08008629576f46a131b87f7a6928ea6e8e90c74ef8f49c30",
+    "src/cpu_personality.h": "a362c9df6cfa3f0f3c9246f1b2005f7f954751855452d1a7a4571cc4c6e44f90",
+    "src/fighter_personality.h": "e15b92385c8620a8cbdaa1c2734af0f87a91fbdbeefc70fe8c04700998cad0ce",
+    "src/game.c": "1f1761638d4d9bb88c460d18fd0ef85866769fd43e0b7cbd4dba43b401de4c13",
+    "src/hardware.asm": "9b6dd260dca337e06b012e9b4fdafdc2c9103750ffcf5cf803d01e9092bab424",
+    "src/impact_presentation.h": "f40dd53fe3c21a026072e1ec362d93b4b8c023ad6cb1b3d1cfaed711c130aa55",
+    "src/knockdown.h": "2c58e022b021aa9e08a2df1bd96396bd1a2bd9fcf52f0027b27f876311adc445",
+    "src/menu_portraits.h": "96a006a382dfc86e1807b32ac0eaaf652cb302558aea57496a20567d10713c9c",
+    "src/pacing_recoil.h": "79518af5f3293ad65c6143e6fdbc836ee0916afc61dce8ab5bc9d3ff8e11611b",
+    "src/pause_guide.h": "8730729f8a5b4ae38996d5f9cded2bab2c8d9bb769b4c6f5a0fca3c529bfd184",
+    "src/stage_depth.h": "be0fa4448f115d91faf865fb01ff14ebb85f13d5152bc315f80b4343e8859270",
+    "src/super_moves.h": "6b5d0f67851c1b7dc370d25f5a4dd1c41c44ad04b41d3928a663c2859374e0b0",
+    "src/trace.asm": "301ec8a99aa326583c332a901903114f5fceeb7f17bbbf768c3e90ae65c3dc88",
+    "src/training_tools.h": "02e491bfe89b818ed2bb13d5dc5332b20072077b81e7d28f7ea5e8abb8e2461a",
+    "src/version.h": "3ac21275dd7527f01223188b87a3afbd9e9ff0879d50d0c312a27b3ed7738356",
+    "tools/audio_assets.py": "1a55aa69ae2df232f61c9af9bc032d433461776da31ad91ea0e5108e8592a6cb",
+    "tools/audit_release.py": "6d1abcdb71daffcb124de5096a9e625e6880636ff00b0e4614e3718f848c33af",
+    "tools/build.py": "b89d3abe469ef2ca0eea116f3324357c7d7cd600ea527dbeffd30f7e848dc473",
+    "tools/champion_assets.py": "1526aa565cd9e1a01075bd5ad699b75b486e17f9b2899b9276a504bc2024ccf2",
+    "tools/check_authoring_guards.py": "41887dd7f9a962ac3bb77b6fb1223bb4a065a015b1624c04ad04ee8622cd5c1b",
+    "tools/check_combat_24_guards.py": "32a9affd932696bdf409e650214d205773123e4e17947fe7471df741814eb698",
+    "tools/collate_combat_24.py": "5ece963d25e9ba1c37b17a3db76e3a06fb400dfb2454e8fe6f63c216ea3c3646",
+    "tools/collate_expansion.py": "78eff65f23971796896a7f0f163a246bda5ef5222171231bb3481dac0eca077b",
+    "tools/collate_pacing_floor_25.py": "aea69f1bcc2ada9e21239b52a2084ecf97d428fa6dd9b1cf8deca5982779c27d",
+    "tools/collate_verification.py": "7b188bc7771a2f6401b699795a4690a90a53f45beeeea25c6d6adfa2858e2f82",
+    "tools/collate_walking.py": "726c98d34b6d4a28eb5458cf3b5de6f14f9618873d818a321cd16082b240dbd3",
+    "tools/compare_special_24_state.py": "cc9d89583125f0cc5e2d059db32bf64e242f9deccb3b1b85e1771e7862087e0f",
+    "tools/contact_geometry.py": "21db5448946960a9b31d399dbcaf71c19e2e3b0888843f2d3d0141b56dbf2b47",
+    "tools/copy_combat_24_pacing_samples.py": "01641b0eff23ab9271e423da3a7d35e732d3bda60605e9aa0b71f043636d1571",
+    "tools/effect_assets.py": "f5079057e2314469d4befb9974ab61281c1156c6adfd6516058fb66e01735150",
+    "tools/emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
+    "tools/expansion_contracts.py": "b64c11cecf01d5ca672ffb137a416ec0ae2f16c94ea310594ea3250cc1803d51",
+    "tools/fetch_references.py": "a630e9cb073f7a20b4ddb720a3af812d6e7790398c5dc19cd88ece7c13a65254",
+    "tools/fighter_assets.py": "73d34baa92e573f6808eeee0474b1a0d619e5bc3cd31e4b8f2ad8b3b304ffdad",
+    "tools/longrun_host.py": "432bed2b7505131d639794ee4b1d857292df4465e7f219c39a14fa433f11cc8e",
+    "tools/make_assets.py": "227cb5c4e3aad9bb7235f4e9af87ed05787a365e339c35076e2cde44637ddbf6",
+    "tools/make_champion_budget.py": "f5ffcfec6c09729f72f19815613d244794bfe4e0ad7a5d708c63a634552e24ad",
+    "tools/make_cpu_antiair_review.py": "806c08ef0095dacafcb5209ae7f543a01db12ad5e05c1f112691488ceb718fab",
+    "tools/make_crossup_practice_review.py": "b9386e97c1114ecee7730fa05dc42931f8447594b4d07d47507b0f08272506b2",
+    "tools/make_crossup_review.py": "e45c814c00a01e070d2534fdc6d293363c14abeb99a170fd8df78aa4641a3b22",
+    "tools/make_expansion_review.py": "feb522c84bb46c750f8cbdaa79dd4b8a20dcdb373bad0e3db8f1fd716208d001",
+    "tools/make_focused_listening_pack.py": "f864dd37f7c1b4f967af09b76951b2cede7058e9be1d1699b18fd16e87a94c94",
+    "tools/make_preservation_report.py": "3fe295216aa69d570896e70f3901d97842d03acaee2ff1850080f292326ee18b",
+    "tools/make_review_gallery.py": "e5bab41cd7aede547a281f894ab477f765fda0fea8ece199d47bb73b28be0b31",
+    "tools/make_roster_review.py": "d2b8b7fd211452887218ef07cd691efdb52efd2f0ddcb555a02137233010461e",
+    "tools/make_training_cpu_review.py": "60977b144de38f340dfeb4e65daf1d161ebcb3ef6f58820bfb480ff948f92a82",
+    "tools/menu_assets.py": "b2dad3159ed2de3486430ad7114d75ba81b4b4827468d9ba5a23470d43ad510f",
+    "tools/package.py": "024ff1f51574460e611d10ae6db570ee4b1e3dc1e34b05323b4b5bea23eb216e",
+    "tools/portrait_assets.py": "f95047e2ad5e1c292809ced20ca2e9cc77dc4a0e5f3c10d43cadf8e0843107d3",
+    "tools/pose_revision_assets.py": "7baca936c90d63dbedb732b1a222207322bed881e84841cb6d41179c7e539709",
+    "tools/preservation.py": "40e13816f5a7086c18e6053789e209722316a6c2675fb9583647eed20891ae76",
+    "tools/release_evidence.py": "ed3744273255a9f0fd4b7112d0e616fc15c06eeedb3a05d2150aefd601c4cc67",
+    "tools/report_training_timing.py": "1c1153a39f8c207da55db46b974e196911c9e61aed43bd62b618fcf985ca7606",
+    "tools/review_media.py": "e35af4eb143791128f8f2ceabdb72b662993238127005534018753e95b67174a",
+    "tools/run_background.py": "0906fa836fa680964846049036fd2ea1ad48a2fcb68d1235bedff86e7afdf178",
+    "tools/stage_assets.py": "28ccd1c8f6dfff94bc0556211af788c08acffb04d41d29f1a69fbea1db8440ce",
+    "tools/stage_cartoon.py": "3cedf521885bcdb0391b65f0337eb8a5aee79fbb93b007c81b5671b008354f4f",
+    "tools/stage_depth_assets.py": "52ae4dfb31c8a8ac7d1a681e8e802fe0f6051a4dad2f33c919be812349fbc50b",
+    "tools/stage_sources.py": "b3c249050b7ed53408b9c6aa9c31748fae92125c3a3b055ce991bf7ef77c4008",
+    "tools/stage_test_contract.py": "ce846412c276ade58baba3fd940d13cfba1ae21c9b925c1aa4c87308f4c2fa9f",
+    "tools/test_arena_preview_26.py": "3a796e03ee130eb9f0afa792ddbc91176648dee7d220db582b9851fc341f00b4",
+    "tools/test_audio.py": "542ad545a023db85c9fe14066823cea5fa58848932d92057d55e26c76a28a73d",
+    "tools/test_authoring_guards.py": "99e5197dedb642aeca6d6f13c416588f23551bdfdb04fa2a528ea068bb98014a",
+    "tools/test_champion.py": "d2424acd2cb75a7e08c5a2832a0bf6e5dc3cdb708f6aa89293d4ac3fe2d1e4d5",
+    "tools/test_champion_audio.py": "10d2cdf896dde9530008dcfb9fff2912d5415cfbd99bd00c61d9f19b0c9dca3e",
+    "tools/test_characters.py": "c580589d5cf485165ffd83700b1b3044e1f48159101d3bf8ac31b1f41069b096",
+    "tools/test_combat24_attack.py": "bf619bc29ef2b1df12dbc6dd9f538802ff675ba52ea4645099560a6fd442e191",
+    "tools/test_combat24_super.py": "85849f6cb922f384c3f55f84721b7af0af917d21aea03ce4f37862a7566560e0",
+    "tools/test_combat_24_contact.py": "8e6f481e28743880624cb03cea2efac89c0c7408ab748f74c19433113645ff07",
+    "tools/test_combat_24_evidence.py": "62811716e8f0f8c39b494038bf20ed372ed6fb4b56618863a067681efe06c79e",
+    "tools/test_combat_24_jumps.py": "bea0dd4207dfeb65d65d6142e0cdee438e0389d5cfb6f20336dfbf1e3277e567",
+    "tools/test_combat_24_pacing.py": "dbdf7fd5c21b55bdf026b5ad8edf73ae59abb1393fe073dc0dfc282f605084f9",
+    "tools/test_combat_24_stage08.py": "a35f914c5ab4fdb6336ee218782d96c14ebf0b4bbc4009300e4f2bd052cdcdf3",
+    "tools/test_compatibility.py": "f30da40e7bfb7e931ae6c3331dbaa955b2150d703edb7fa7afe0c1ca4befb73d",
+    "tools/test_compatibility_combat.py": "c50712f19042bf69da0978ce7e4321cf6de1a33bd2269118483403beb9e4a754",
+    "tools/test_contact_24_timing.py": "6039be9b4bd515a8fffe4d627dea5ace99a03a3eb6d42ee83450398f73f43a06",
+    "tools/test_contact_budget.py": "f8acb5525d0e3d627c70894ac8c4cce3c3a5bd63421ef4139d3a0f4f5c6cc2c5",
+    "tools/test_contact_super_composition.py": "0f9d0144fd945044f8c67774c8f49c4e553de9f56eeb9746cf1e6d953710f637",
+    "tools/test_crossup_practice.py": "087c4f0cffe9c791619afc6a7419f5fafbaa3c4fe053ab14dbee715bbc279d50",
+    "tools/test_endurance.py": "8081b7ee9a67f1e70746b1d64bf638b1226bc4e936a84bc3cbe5f9d365c1eb0d",
+    "tools/test_endurance_reporting.py": "5533ab27348e4f532b1beef81db9514d28cffaea883d48f52cebc6a2373b9fa0",
+    "tools/test_expansion_01_animation_weight.py": "4e9900b1e8d3100ac417d3dbed29b900ddda865572583f2149784c825b31a9a7",
+    "tools/test_expansion_02_impact.py": "d12ea9213524efc3bfac044b84570e423dfb92513302abcbec850b255f1ee5a0",
+    "tools/test_expansion_03_normal_balance.py": "5b61e525f1c1cf6b45a84ba2af73612b66551c6395e7cacd96ae7e501618ea17",
+    "tools/test_expansion_04_fighter_personality.py": "78495a19076b90e564ca2a665c47857b3e8d883963aef263827e8f8173ecd231",
+    "tools/test_expansion_05_training_tools.py": "ffa3f0b9802a371c4bb30c9c0c555609f792541186f5a1b38796d8dd7d52ebcf",
+    "tools/test_expansion_06_cpu_personality.py": "6d69503795a8b56b1f54cd5c9a418c3d6780c9aa2be8ee95ca12647a6075e8b0",
+    "tools/test_expansion_07_supers.py": "cc2a0a9f90973371f310216d81db0a02eb932e28067366f04ba059df1fce0fb7",
+    "tools/test_expansion_08_stage_depth.py": "a9c3e96130d7046fefd3c644b40560661102790bb3f65bef36e09f4606b1b4c8",
+    "tools/test_expansion_09_arcade_story.py": "bf01de14c55a46ed68a2eb2d7774eca094f1daf288e622fd86078a17543f1114",
+    "tools/test_expansion_10_audio.py": "2fb8352dc3e9932dd85f38174bbc5fe385a7ea9c42a878737a191860b36dc39e",
+    "tools/test_feedback_26.py": "3d1b82c834e51a780685f6dfb4e412bef855225a750fef13bc5d94775dad786b",
+    "tools/test_four_button_hud.py": "a5a049919b38c87f30f981b301ef3718f9dc3810835f3497db7aceecd44afbeb",
+    "tools/test_fresh_build.py": "75b6c3622d1ad96411feb8b13a9fc71e0d47fa5357fbe8c93d0c11a21c348b8b",
+    "tools/test_inputs.py": "1934479db429eac2010c95c5a1b77fb9f487bf562a643a302e2b6f6422146147",
+    "tools/test_matchups.py": "1979c79b5ed465f798c9528267e9debce412a1f2c19ca84c13d34995db060a1c",
+    "tools/test_menu_footers.py": "f8b5e777271eda28f0eba79a1b2c5fbfef7a0e61b2946c1ffe9722ce6c6e69fc",
+    "tools/test_mesen.py": "c1d044e8dd108c1ac05ff7d5e6d5dbc5757ce42c0c45e9c31d59d6bdd887b3c0",
+    "tools/test_pacing_floor_25.py": "f7d8f81a79b599cd1ee2aae963a0b66f6dd7cbd42084215d8685661700cbccc6",
+    "tools/test_package.py": "1174274d5eeec4610fd98fb11bbef90b213a9f5a61a776f634a6d99fcb15d3d9",
+    "tools/test_play_flow_26.py": "0a846b12e1a50010cc31e4f2a21510fdaeeffee526668f885e881788cfca6954",
+    "tools/test_pose_revision_guards.py": "591ade0ac9fa3e83c0169a2900d0f6f642df9fceed5b031c6ecef47f52123093",
+    "tools/test_presentation.py": "bda0278c9b7676863e44a94467862b3f0d8003ad8aea4b4c3943655a775bf934",
+    "tools/test_preservation.py": "635b1201940579ede2c6edaecc0d4e72f36616918f0119676026f38dcfb52bdf",
+    "tools/test_review_media.py": "ac1827f8455fcecc11ba088af109a3bcd9fcb2083c267b574316fd662ebc0253",
+    "tools/test_rom.py": "b3fb77db409dd230443a22fc6f8209e8ff501c88843131237bab600e13e03612",
+    "tools/test_special_24_cpu_timing.py": "4e57c11a7a8bf1a7472e5fe4319995b8b729b34dd4f06f944d1b2c2dad6e310d",
+    "tools/test_special_24_timing.py": "65f6aa8689ad7fa080e428bdf04399113275f04a9b40ff8070bdb80278d283ad",
+    "tools/test_stages.py": "08cb003e6cbc7057ed092bf6a4e8ce101b7191d8f223460062f9d4fbef230acf",
+    "tools/test_training.py": "9057d15a3ea45e0f1727ef9230e077ab56157f2936b89dd02311f007819c5632",
+    "tools/test_v024_preservation_guards.py": "34dd5d860208298f9bc405f7a535b449fa6329dcf06fda5f9d44f46acf235e82",
+    "tools/test_walking.py": "f98a337905aecbc6c12ae539d3d4ae1b3914b449d944805129da316462b1068a",
+    "tools/v024_contracts.py": "1b8bbe9ffee65ff4f72410564e26941bb86da72ae914da3f5c74bdbb4891a076",
+    "tools/v025_contracts.py": "72390351c4b558fd266e77b6f46f2d15ce8a1f6e5a8e71b5559e5c35ab4a84f8",
+    "tools/victory_music.py": "6da647ea3b1d58129d3f91a95d7a516433b8e609b4a847a180ff0bb96ac28528",
+    "tools/walking_assets.py": "cf36efcb8fc9971eef11ed65c9afb487333d12902bcc22a285616486873d8694"
+  },
+  "checks": [
+    {
+      "check": "roster selection is valid",
+      "passed": true,
+      "executions": 1
+    },
+    {
+      "check": "partial roster evidence remains diagnostic under build",
+      "passed": true,
+      "executions": 1
+    },
+    {
+      "check": "candidate is the exact native cartridge retaining the v0.25 pacing contract",
+      "passed": true,
+      "executions": 1
+    },
+    {
+      "check": "before measurements use the approved v0.24 cartridge",
+      "passed": true,
+      "executions": 1
+    },
+    {
+      "check": "expanded native core is pinned",
+      "passed": true,
+      "executions": 2
+    },
+    {
+      "check": "native STAT77 stays within OBJ limits",
+      "passed": true,
+      "executions": 6297
+    },
+    {
+      "check": "PCM callback advances without opening a device",
+      "passed": true,
+      "executions": 6297
+    },
+    {
+      "check": "resident SPC FIFO remains bounded",
+      "passed": true,
+      "executions": 6297
+    },
+    {
+      "check": "both cores preserve stage geometry freezes cadence and transfer/OBJ budgets",
+      "passed": true,
+      "executions": 1
+    },
+    {
+      "check": "production and harness inputs stayed stable throughout the run",
+      "passed": true,
+      "executions": 1
+    },
+    {
+      "check": "strict native health contains no failure",
+      "passed": true,
+      "executions": 1
+    }
+  ],
+  "native_health": {
+    "measured_callbacks": 6297,
+    "max_spc_backlog": 0,
+    "failures": []
+  },
+  "memory_writes": false,
+  "save_states": false,
+  "audio_device_opened": false,
+  "preservation": {
+    "baseline_commit": "8f028775f1712fc210d9cebf21c418c31e62f3c8",
+    "baseline_rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
+    "generated_count": 226,
+    "changed_generated": [
+      "assets/generated/arenas.png",
+      "assets/generated/arenas_map.bin",
+      "assets/generated/arenas_pal.bin",
+      "assets/generated/arenas_tiles.bin",
+      "assets/generated/assets.h",
+      "assets/generated/stage-depth.json",
+      "assets/generated/stage0.png",
+      "assets/generated/stage0_floor_map.bin",
+      "assets/generated/stage0_floor_tiles.bin",
+      "assets/generated/stage0_map.bin",
+      "assets/generated/stage0_pal.bin",
+      "assets/generated/stage0_tiles.bin",
+      "assets/generated/stage1.png",
+      "assets/generated/stage1_floor_map.bin",
+      "assets/generated/stage1_floor_tiles.bin",
+      "assets/generated/stage1_map.bin",
+      "assets/generated/stage1_pal.bin",
+      "assets/generated/stage1_tiles.bin",
+      "assets/generated/stage2.png",
+      "assets/generated/stage2_floor_map.bin",
+      "assets/generated/stage2_floor_tiles.bin",
+      "assets/generated/stage2_map.bin",
+      "assets/generated/stage2_pal.bin",
+      "assets/generated/stage2_tiles.bin"
+    ],
+    "preserved_generated": 202,
+    "protected_art_inputs": 342,
+    "unchanged_ram_labels": 1318,
+    "added_ram_symbols": {},
+    "moved_ram_symbols": {},
+    "all_fighter_art_palettes_and_portraits_exact": true,
+    "largest_linked_section_bytes": 30720,
+    "stage_tile_counts": [
+      817,
+      800,
+      814
+    ],
+    "hit_stun_table": "16+floor(damage/3);256 compiled entries verified",
+    "hardware_instruction_changes": false
+  },
+  "result": {
+    "cases": [
+      {
+        "stage": {
+          "stage": 0,
+          "core": "snes9x",
+          "video_timing": {
+            "fps": 60.098811862348406,
+            "pcm_sample_rate": 32040.0,
+            "callback_size": [
+              256,
+              224
+            ]
+          },
+          "intro_frozen_samples": 110,
+          "camera_bounds": [
+            -8,
+            8
+          ],
+          "pixel_oracle_frames": 520,
+          "contacts": 7,
+          "frozen_hitstop_samples": 70,
+          "impact_pixel_offsets": [
+            -2,
+            -1,
+            0,
+            1
+          ],
+          "movement_clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-movement.gif",
+          "impact_clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-contacts.gif",
+          "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
+          "stills": [
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-center.png",
+              "sha256": "fcc43174ac8924c571f35ff83dded81f5532ca5fdfc6b0259e017e44c6077e60",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-guide.png",
+              "sha256": "d4d330a5dabd9f3875565a1b73bde394786939395c7bca4f6d4cd8852d4bc966",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-left.png",
+              "sha256": "d27ee591c92f2a6940e1f7781fb24409768ad91e2a9c0cf24d0bde052383cb15",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-right.png",
+              "sha256": "e7dfc8eff3c5025771a0d6aaadb03f6c71096badc429a0283aeb84d7d17762f3",
+              "scope": "current native PPU"
+            }
+          ],
+          "pixel_samples_sha256": "74ea128259105bac97c202c3e9d209188050f5cf975f771aeb6a92dd782b9b49",
+          "measured_frames": 1489,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 3,
+          "obj_peak_sprites": 17,
+          "obj_peak_tiles": 34,
+          "actor_dma_frames": 279
+        },
+        "stress": {
+          "stage": 0,
+          "core": "snes9x",
+          "two_wave_frames": 22,
+          "wave_frames": 31,
+          "clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stress0.gif",
+          "measured_frames": 720,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 0,
+          "obj_peak_sprites": 16,
+          "obj_peak_tiles": 32,
+          "actor_dma_frames": 137
+        }
+      },
+      {
+        "stage": {
+          "stage": 1,
+          "core": "snes9x",
+          "video_timing": {
+            "fps": 60.098811862348406,
+            "pcm_sample_rate": 32040.0,
+            "callback_size": [
+              256,
+              224
+            ]
+          },
+          "intro_frozen_samples": 110,
+          "camera_bounds": [
+            -8,
+            8
+          ],
+          "pixel_oracle_frames": 520,
+          "contacts": 7,
+          "frozen_hitstop_samples": 70,
+          "impact_pixel_offsets": [
+            -2,
+            -1,
+            0,
+            1
+          ],
+          "movement_clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-movement.gif",
+          "impact_clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-contacts.gif",
+          "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
+          "stills": [
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-center.png",
+              "sha256": "0bddeaf322c09e69ed7ce69776df7a231f85f2351492d117abd12a9e6c52582d",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-guide.png",
+              "sha256": "d4d330a5dabd9f3875565a1b73bde394786939395c7bca4f6d4cd8852d4bc966",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-left.png",
+              "sha256": "7f955acb2d58a6f59ee823ef38366852940f5fe8c51873d0938b984f2494dc0e",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-right.png",
+              "sha256": "31569ace1c4cd0892c2001b6a19b90c29986153781d2c0347cfd38be5ad24cd2",
+              "scope": "current native PPU"
+            }
+          ],
+          "pixel_samples_sha256": "6209a1f5897632714322e448729e067ed07f5a84b764f8c5dc8228fc49d6f1a1",
+          "measured_frames": 1489,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 3,
+          "obj_peak_sprites": 17,
+          "obj_peak_tiles": 34,
+          "actor_dma_frames": 279
+        },
+        "stress": {
+          "stage": 1,
+          "core": "snes9x",
+          "two_wave_frames": 22,
+          "wave_frames": 31,
+          "clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stress1.gif",
+          "measured_frames": 720,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 0,
+          "obj_peak_sprites": 16,
+          "obj_peak_tiles": 32,
+          "actor_dma_frames": 132
+        }
+      },
+      {
+        "stage": {
+          "stage": 2,
+          "core": "snes9x",
+          "video_timing": {
+            "fps": 60.098811862348406,
+            "pcm_sample_rate": 32040.0,
+            "callback_size": [
+              256,
+              224
+            ]
+          },
+          "intro_frozen_samples": 110,
+          "camera_bounds": [
+            -8,
+            8
+          ],
+          "pixel_oracle_frames": 520,
+          "contacts": 7,
+          "frozen_hitstop_samples": 70,
+          "impact_pixel_offsets": [
+            -2,
+            -1,
+            0,
+            1
+          ],
+          "movement_clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-movement.gif",
+          "impact_clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-contacts.gif",
+          "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
+          "stills": [
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-center.png",
+              "sha256": "f9656a0ce4913fff39a5cd573baf3679cc41cfa52c4f4fae26f5f2aac77d3911",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-guide.png",
+              "sha256": "d4d330a5dabd9f3875565a1b73bde394786939395c7bca4f6d4cd8852d4bc966",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-left.png",
+              "sha256": "e32569283ef4228ee6baff4f820e16088c42b1152a8fbed1d66f74168536d384",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-right.png",
+              "sha256": "dda0734e5be8b94b93130bf81cacd131e487666c59bf5e23ebb3c2f2cedf9851",
+              "scope": "current native PPU"
+            }
+          ],
+          "pixel_samples_sha256": "5f5f7cf873571f290b2ca990bf97418108142ae2d8691b7e48c8d105aba668cd",
+          "measured_frames": 1489,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 3,
+          "obj_peak_sprites": 17,
+          "obj_peak_tiles": 34,
+          "actor_dma_frames": 279
+        },
+        "stress": {
+          "stage": 2,
+          "core": "snes9x",
+          "two_wave_frames": 22,
+          "wave_frames": 31,
+          "clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stress2.gif",
+          "measured_frames": 720,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 0,
+          "obj_peak_sprites": 16,
+          "obj_peak_tiles": 32,
+          "actor_dma_frames": 137
+        }
+      },
+      {
+        "stage": {
+          "stage": 0,
+          "core": "accuracy",
+          "video_timing": {
+            "fps": 60.098811862348406,
+            "pcm_sample_rate": 32040.5,
+            "callback_size": [
+              256,
+              224
+            ]
+          },
+          "intro_frozen_samples": 110,
+          "camera_bounds": [
+            -8,
+            8
+          ],
+          "pixel_oracle_frames": 520,
+          "contacts": 7,
+          "frozen_hitstop_samples": 70,
+          "impact_pixel_offsets": [
+            -2,
+            -1,
+            0,
+            1
+          ],
+          "movement_clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage0-movement.gif",
+          "impact_clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage0-contacts.gif",
+          "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
+          "stills": [
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage0-center.png",
+              "sha256": "80c15c778011185544ea4db468a2d176cd28f362f05463b5896c18db15a13eaf",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage0-guide.png",
+              "sha256": "45d4ae578527ba16134805ad9844d3ad22732306c11a7f8d42fd12cf3f279d77",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage0-left.png",
+              "sha256": "590e3dd822dfc01c4f6fc8b57ace1c5aa04d8999f6dc663a99770a3b3c26c014",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage0-right.png",
+              "sha256": "3629531ef002bde5c8a0f9bbf8f78ce4085bdd8f10b2506ac5fa411400bcd187",
+              "scope": "current native PPU"
+            }
+          ],
+          "pixel_samples_sha256": "073a391a8e2155e680f25cd02a5b2979c374cf8d738d3a81b760dd6c66f26598",
+          "measured_frames": 1489,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 3,
+          "obj_peak_sprites": 17,
+          "obj_peak_tiles": 34,
+          "actor_dma_frames": 279
+        },
+        "stress": {
+          "stage": 0,
+          "core": "accuracy",
+          "two_wave_frames": 22,
+          "wave_frames": 31,
+          "clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stress0.gif",
+          "measured_frames": 720,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 0,
+          "obj_peak_sprites": 16,
+          "obj_peak_tiles": 32,
+          "actor_dma_frames": 137
+        }
+      },
+      {
+        "stage": {
+          "stage": 1,
+          "core": "accuracy",
+          "video_timing": {
+            "fps": 60.098811862348406,
+            "pcm_sample_rate": 32040.5,
+            "callback_size": [
+              256,
+              224
+            ]
+          },
+          "intro_frozen_samples": 110,
+          "camera_bounds": [
+            -8,
+            8
+          ],
+          "pixel_oracle_frames": 520,
+          "contacts": 7,
+          "frozen_hitstop_samples": 70,
+          "impact_pixel_offsets": [
+            -2,
+            -1,
+            0,
+            1
+          ],
+          "movement_clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage1-movement.gif",
+          "impact_clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage1-contacts.gif",
+          "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
+          "stills": [
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage1-center.png",
+              "sha256": "1b7c590e745f8c97f64aad8370fb66980c9bfc0a8d7b143dfb91d4a0ad1c789d",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage1-guide.png",
+              "sha256": "45d4ae578527ba16134805ad9844d3ad22732306c11a7f8d42fd12cf3f279d77",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage1-left.png",
+              "sha256": "35233c5677f40fb736d8277062f72b148551684f563bc3bbaaa08bea01c732c1",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage1-right.png",
+              "sha256": "e729a8b60fc20c0be2f0bc372ada9d1577b7372e27163ef36dfb2f4bb43f24f6",
+              "scope": "current native PPU"
+            }
+          ],
+          "pixel_samples_sha256": "c4f52cbd26a0a48a30520da6d123bef63971b4dc73fc8272492ba4c7963d2ea1",
+          "measured_frames": 1489,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 3,
+          "obj_peak_sprites": 17,
+          "obj_peak_tiles": 34,
+          "actor_dma_frames": 279
+        },
+        "stress": {
+          "stage": 1,
+          "core": "accuracy",
+          "two_wave_frames": 22,
+          "wave_frames": 31,
+          "clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stress1.gif",
+          "measured_frames": 720,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 0,
+          "obj_peak_sprites": 16,
+          "obj_peak_tiles": 32,
+          "actor_dma_frames": 132
+        }
+      },
+      {
+        "stage": {
+          "stage": 2,
+          "core": "accuracy",
+          "video_timing": {
+            "fps": 60.098811862348406,
+            "pcm_sample_rate": 32040.5,
+            "callback_size": [
+              256,
+              224
+            ]
+          },
+          "intro_frozen_samples": 110,
+          "camera_bounds": [
+            -8,
+            8
+          ],
+          "pixel_oracle_frames": 520,
+          "contacts": 7,
+          "frozen_hitstop_samples": 70,
+          "impact_pixel_offsets": [
+            -2,
+            -1,
+            0,
+            1
+          ],
+          "movement_clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage2-movement.gif",
+          "impact_clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage2-contacts.gif",
+          "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
+          "stills": [
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage2-center.png",
+              "sha256": "eab48c663fb1fcce349c6d3b3fd6305f74b8b2cf6169ddfa1eaa96cfc368ae2e",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage2-guide.png",
+              "sha256": "45d4ae578527ba16134805ad9844d3ad22732306c11a7f8d42fd12cf3f279d77",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage2-left.png",
+              "sha256": "56d5dd5af87dc55a4f73bf2c67bdac0e406fcb4f76e95253758f5077ebef13c3",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage2-right.png",
+              "sha256": "f2e846c15a463bc602ba06b9471e5366cb69dcbd6eb3834d54b4ad2c9e4bd014",
+              "scope": "current native PPU"
+            }
+          ],
+          "pixel_samples_sha256": "04fd2902cac66e2356881bd8a25b862d9b8d356cfd78d4a0ec1186f29a4ccec0",
+          "measured_frames": 1489,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 3,
+          "obj_peak_sprites": 17,
+          "obj_peak_tiles": 34,
+          "actor_dma_frames": 279
+        },
+        "stress": {
+          "stage": 2,
+          "core": "accuracy",
+          "two_wave_frames": 22,
+          "wave_frames": 31,
+          "clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stress2.gif",
+          "measured_frames": 720,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 0,
+          "obj_peak_sprites": 16,
+          "obj_peak_tiles": 32,
+          "actor_dma_frames": 137
+        }
+      }
+    ],
+    "checks": [
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          0,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          "right",
+          8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "P2 Start enters native pause before freeze proof",
+        "passed": true,
+        "details": "snes9x-stage0"
+      },
+      {
+        "check": "actual controller contacts produce hitstop and KO",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          7,
+          70
+        ]
+      },
+      {
+        "check": "PPU shows bounded whole-scene contact shake",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          [
+            -2,
+            -1,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "check": "pinned core retains native NTSC video cadence",
+        "passed": true,
+        "details": 60.098811862348406
+      },
+      {
+        "check": "native SPC produces captured PCM without a device",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          2105680,
+          5690
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          0,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports issue simultaneous native low waves",
+        "passed": true,
+        "details": [
+          "snes9x-stress0",
+          22
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          1,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          "right",
+          8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "P2 Start enters native pause before freeze proof",
+        "passed": true,
+        "details": "snes9x-stage1"
+      },
+      {
+        "check": "actual controller contacts produce hitstop and KO",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          7,
+          70
+        ]
+      },
+      {
+        "check": "PPU shows bounded whole-scene contact shake",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          [
+            -2,
+            -1,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "check": "pinned core retains native NTSC video cadence",
+        "passed": true,
+        "details": 60.098811862348406
+      },
+      {
+        "check": "native SPC produces captured PCM without a device",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          2132338,
+          5291
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          1,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports issue simultaneous native low waves",
+        "passed": true,
+        "details": [
+          "snes9x-stress1",
+          22
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          2,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          "right",
+          8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "P2 Start enters native pause before freeze proof",
+        "passed": true,
+        "details": "snes9x-stage2"
+      },
+      {
+        "check": "actual controller contacts produce hitstop and KO",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          7,
+          70
+        ]
+      },
+      {
+        "check": "PPU shows bounded whole-scene contact shake",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          [
+            -2,
+            -1,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "check": "pinned core retains native NTSC video cadence",
+        "passed": true,
+        "details": 60.098811862348406
+      },
+      {
+        "check": "native SPC produces captured PCM without a device",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          2160060,
+          5511
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          2,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports issue simultaneous native low waves",
+        "passed": true,
+        "details": [
+          "snes9x-stress2",
+          22
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          0,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          "right",
+          8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "P2 Start enters native pause before freeze proof",
+        "passed": true,
+        "details": "accuracy-stage0"
+      },
+      {
+        "check": "actual controller contacts produce hitstop and KO",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          7,
+          70
+        ]
+      },
+      {
+        "check": "PPU shows bounded whole-scene contact shake",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          [
+            -2,
+            -1,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "check": "pinned core retains native NTSC video cadence",
+        "passed": true,
+        "details": 60.098811862348406
+      },
+      {
+        "check": "native SPC produces captured PCM without a device",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          2104648,
+          5259
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          0,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports issue simultaneous native low waves",
+        "passed": true,
+        "details": [
+          "accuracy-stress0",
+          22
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          1,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          "right",
+          8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "P2 Start enters native pause before freeze proof",
+        "passed": true,
+        "details": "accuracy-stage1"
+      },
+      {
+        "check": "actual controller contacts produce hitstop and KO",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          7,
+          70
+        ]
+      },
+      {
+        "check": "PPU shows bounded whole-scene contact shake",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          [
+            -2,
+            -1,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "check": "pinned core retains native NTSC video cadence",
+        "passed": true,
+        "details": 60.098811862348406
+      },
+      {
+        "check": "native SPC produces captured PCM without a device",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          2133438,
+          5240
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          1,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports issue simultaneous native low waves",
+        "passed": true,
+        "details": [
+          "accuracy-stress1",
+          22
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          2,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          "right",
+          8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "P2 Start enters native pause before freeze proof",
+        "passed": true,
+        "details": "accuracy-stage2"
+      },
+      {
+        "check": "actual controller contacts produce hitstop and KO",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          7,
+          70
+        ]
+      },
+      {
+        "check": "PPU shows bounded whole-scene contact shake",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          [
+            -2,
+            -1,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "check": "pinned core retains native NTSC video cadence",
+        "passed": true,
+        "details": 60.098811862348406
+      },
+      {
+        "check": "native SPC produces captured PCM without a device",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          2160120,
+          5365
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          2,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports issue simultaneous native low waves",
+        "passed": true,
+        "details": [
+          "accuracy-stress2",
+          22
+        ]
+      }
+    ],
+    "failure_arrays": {
+      "cadence": [],
+      "native_timing": [],
+      "overflow": [],
+      "transfer": [],
+      "ppu": [],
+      "freeze": [],
+      "spc": []
+    }
+  },
+  "check_count": 19002,
+  "elapsed_seconds": 84.375
+}

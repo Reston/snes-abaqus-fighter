@@ -1,4 +1,31 @@
-# v0.21.0 human playtest guide
+# Human playtest guide
+
+## Current v0.26 polish candidate
+
+This checkout builds v0.26.0; final combined verification is still in progress.
+The [current release guide](RELEASE-v0.26.0.md) gives the review route and
+[pass notes](POLISH-v0.26.0.md) describe each bounded change. Main remains
+approved v0.24.0. No new human approval is inferred from automated checks.
+
+Start with the slower fight rhythm and detailed floors carried from v0.25.
+Play a local mirror match, use both controllers at the result and arena screens,
+and check the winning-player label. Let a super meter fill, use the displayed
+Y+B command, and check that its cue clears after spending energy.
+
+In Training, choose a drill on Tools 3/3 and retry with X. On ordinary PAUSED,
+X enables P2 Controller for two-person practice and X returns to Stand. The
+automated dummies continue to ignore P2 gameplay buttons. Check both players'
+real hit/block exchanges, recovering health, clock 99 and P1 Select reset.
+Then play an Arcade win and loss, checking the ladder position and next/retry
+opponent. Keep any new observations separate from earlier art approvals in
+[review-feedback.json](review-feedback.json).
+
+## Historical v0.21.0 route
+
+The version, hash and instructions in the following archived section describe
+v0.21.0. Its automated-Training-only P2 restriction predates v0.26's explicit
+manual partner. Use the current guide above for new feedback.
+
 <!-- candidate-version: 0.21.0; rom-sha256: aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205 -->
 
 Review cartridge SHA256 `aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205`.

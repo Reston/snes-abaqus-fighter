@@ -1,10 +1,10 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.25.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2; source-freeze: b41ce034ac12f6aa10740a0075feebd1f392d117 -->
+<!-- candidate-version: 0.26.0; identity: IN_PROGRESS; rom-sha256: PENDING_FINAL_VERIFICATION; source-freeze: PENDING_FINAL_VERIFICATION -->
 
-The v0.25 playtest candidate slows the fight rhythm and restores illustrated,
-textured floors. Controls, fighter drawings, damage and local 1v1 remain.
-Main's approved revision is v0.24.0; this new candidate awaits human playtest.
-See the [playtest guide](RELEASE-v0.25.0.md) and [native comparisons](REVIEW-v0.25.0.html).
+The v0.26 polish candidate retains v0.25's slower fight rhythm and detailed
+floors, with clearer local menus, super cues and quicker practice retries.
+Main's approved revision is v0.24.0; combined checks and human playtest are pending.
+See the [playtest guide](RELEASE-v0.26.0.md) and [pass notes](POLISH-v0.26.0.md).
 
 This is a native SNES game. On Windows use [Play.cmd](../Play.cmd); on other
 platforms load `dist/abaqus-after-hours.sfc` in a SNES emulator.
@@ -74,6 +74,11 @@ Gold health turns red at one quarter or less; the thin teal bar is energy and
 diamond medals count round wins. Win two rounds to take a match. At timeout,
 more health wins; a tie restarts without awarding a round. Light hits use small
 amber sparks, heavy hits larger gold bursts, and blocks hollow cyan braces.
+At full energy, **SUPER Y+B** appears beneath that player's bars; spending the
+gauge clears it. The cue shows full meter, while grounded/free-to-act rules remain.
+**COUNTER!** identifies a hit during the opponent's startup. **PUNISH!** identifies
+a hit during attack recovery. The new punish cue adds feedback without a damage
+bonus or extra stun; a displayed combo still requires uninterrupted hit stun.
 
 ## Modes and pause
 
@@ -82,13 +87,17 @@ short two-speaker exchange: wait about six seconds or press **P1 A** (keyboard
 X) to skip into the countdown. Start pauses first. Continue retries the same
 opponent after a loss. Individual winner quotes and a personal trophy ending
 follow your victories; the original Champion music remains.
+The exchange/result shows **SHIFT 01/11** through **SHIFT 11/11**. Results name
+the next opponent or the opponent you will retry; pause names CPU difficulty.
 
 **Local Versus:** choose both fighters and an arena for a best-of-three match.
 Both physical ports share the four-button layout, specials and super command.
+Either pad chooses the arena and controls the result card. A/Start rematches,
+B returns to character select, and the winner label names Player 1 or Player 2.
 
 **Training:** choose PLAYER 1, any DUMMY (including a mirror), then an arena.
 Either pad can choose the dummy; B backs up to PLAYER 1. Health recovers and
-the clock stays at 99. Physical P2 gameplay buttons do not drive the opponent.
+the clock stays at 99. Automated dummies ignore physical P2 gameplay buttons.
 Home L/R selects Easy/Normal/Hard. CPU personalities differ in spacing,
 pressure, guarding, throws and recovery answers. Normal/Hard can attempt
 fallible supers after defense; Easy does not choose supers.
@@ -106,6 +115,12 @@ With CPU selected, either pad's L/R changes the shared difficulty once per
 press; opposing held shoulders cancel even across pads. These dummy/level
 controls stay on the ordinary card.
 
+On that ordinary PAUSED card, **X selects P2 Controller** for two-person
+Training. P2 then uses the complete shared fighting controls. X again returns
+to Stand; Up selects CPU and Down selects Stand from manual control. The
+original five-choice Up/Down dummy cycle stays intact. P1 live Select retains
+manual control when resetting; P2 live Select does not reset the fight.
+
 ## Training tools
 
 On **Training Tools 3/3**, **Up** shows/hides the live footer and **Down** chooses
@@ -120,6 +135,13 @@ one of three drills:
    damage shows Retry. Select restores space for another attempt.
 3. **Air Kick Cross-up:** choose Stand, jump past and press A just after
    crossing. The kick must hit from behind; a front hit or block does not count.
+
+Choosing a drill supplies its required CPU/Stand partner, keeping the chosen
+CPU difficulty. **X on Training Tools 3/3 restarts that drill** while leaving
+the guide open: positions, health, energy, progress, history and combo totals
+reset. Fighter choices, arena, drill and display preference remain. Start/B/A/
+Select still take priority over X. Override the prepared partner on ordinary
+PAUSED if you want to practice that drill against a second person.
 
 The footer shows five P1 commands, oldest first, as **direction + YXBA**.
 Directions use absolute numpad notation: 1/2/3 down, 4/5/6 level, 7/8/9 up.

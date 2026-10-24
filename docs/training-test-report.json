@@ -3,7 +3,7 @@
   "suite": "training",
   "status": "passed",
   "passed": 3197,
-  "rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
+  "rom_sha256": "e349b756fac379766501de87f7b58f9d45f924c439afbecb6e3099173f1d33d4",
   "rom_bytes": 4194304,
   "core": {
     "archive": ".tools\\core.zip",
@@ -13,7 +13,7 @@
     "dll": ".tools\\core\\snes9x_libretro.dll",
     "dll_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343"
   },
-  "harness_sha256": "59acf06467d9f8076b5efdef86ae27929362645447d8ef0816bd60cb1eaf52f8",
+  "harness_sha256": "726201e457bafc097114c15735e5ed9555161c6929d5357a745db69e24a70ad3",
   "core_options": {
     "snes9x_up_down_allowed": "enabled"
   },
@@ -314348,5 +314348,5 @@
       }
     }
   ],
-  "elapsed_seconds": 30.375
+  "elapsed_seconds": 29.031
 }

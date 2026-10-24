@@ -2,7 +2,7 @@
   "emulator": "Official Snes9x 1.63 x64 libretro core",
   "suite": "input-feel",
   "status": "passed",
-  "rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
+  "rom_sha256": "e349b756fac379766501de87f7b58f9d45f924c439afbecb6e3099173f1d33d4",
   "rom_bytes": 4194304,
   "checks": [
     {
@@ -10,11 +10,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.25.0",
+        "version": "0.26.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
-        "checksum": "FF9C",
+        "sha256": "e349b756fac379766501de87f7b58f9d45f924c439afbecb6e3099173f1d33d4",
+        "checksum": "D1CA",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -1710,7 +1710,7 @@
       "passed": true,
       "details": {
         "cue": "normal-contact",
-        "differing_bytes": 5276,
+        "differing_bytes": 5306,
         "compared_bytes": 8528
       }
     },
@@ -1722,8 +1722,8 @@
         "metrics": {
           "bytes": 8528,
           "samples": 4264,
-          "nonzero": 4262,
-          "peak": 2982,
+          "nonzero": 4258,
+          "peak": 2545,
           "clipped": false
         }
       }
@@ -1736,15 +1736,15 @@
         "quiet": {
           "bytes": 8528,
           "samples": 4264,
-          "nonzero": 4263,
-          "peak": 1540,
+          "nonzero": 4257,
+          "peak": 1531,
           "clipped": false
         },
         "triggered": {
           "bytes": 8528,
           "samples": 4264,
-          "nonzero": 4262,
-          "peak": 2982,
+          "nonzero": 4258,
+          "peak": 2545,
           "clipped": false
         }
       }
@@ -1777,7 +1777,7 @@
       "passed": true,
       "details": {
         "cue": "special",
-        "differing_bytes": 8911,
+        "differing_bytes": 8930,
         "compared_bytes": 17060
       }
     },
@@ -1789,8 +1789,8 @@
         "metrics": {
           "bytes": 17060,
           "samples": 8530,
-          "nonzero": 8528,
-          "peak": 2930,
+          "nonzero": 8524,
+          "peak": 2990,
           "clipped": false
         }
       }
@@ -1803,15 +1803,15 @@
         "quiet": {
           "bytes": 17060,
           "samples": 8530,
-          "nonzero": 8527,
-          "peak": 1540,
+          "nonzero": 8522,
+          "peak": 1531,
           "clipped": false
         },
         "triggered": {
           "bytes": 17060,
           "samples": 8530,
-          "nonzero": 8528,
-          "peak": 2930,
+          "nonzero": 8524,
+          "peak": 2990,
           "clipped": false
         }
       }
@@ -661605,18 +661605,18 @@
       "quiet_window": {
         "bytes": 8528,
         "samples": 4264,
-        "nonzero": 4263,
-        "peak": 1540,
+        "nonzero": 4257,
+        "peak": 1531,
         "clipped": false
       },
       "triggered_window": {
         "bytes": 8528,
         "samples": 4264,
-        "nonzero": 4262,
-        "peak": 2982,
+        "nonzero": 4258,
+        "peak": 2545,
         "clipped": false
       },
-      "differing_bytes": 5276
+      "differing_bytes": 5306
     },
     "special": {
       "cue": "special",
@@ -661629,18 +661629,18 @@
       "quiet_window": {
         "bytes": 17060,
         "samples": 8530,
-        "nonzero": 8527,
-        "peak": 1540,
+        "nonzero": 8522,
+        "peak": 1531,
         "clipped": false
       },
       "triggered_window": {
         "bytes": 17060,
         "samples": 8530,
-        "nonzero": 8528,
-        "peak": 2930,
+        "nonzero": 8524,
+        "peak": 2990,
         "clipped": false
       },
-      "differing_bytes": 8911
+      "differing_bytes": 8930
     }
   },
   "status_bars": {
@@ -683640,5 +683640,5 @@
     }
   ],
   "passed": 1511,
-  "elapsed_seconds": 102.172
+  "elapsed_seconds": 100.75
 }
