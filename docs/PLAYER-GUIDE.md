@@ -111,6 +111,12 @@ List **2/3**, Training Tools **3/3**, then PAUSED. Versus and Arcade have the
 first two guide pages. Left/Right cycles within the guide pages. Move List
 names both fighters' specials and supers.
 
+On a full guide page, **SNES L** (P1 keyboard **D**, P2 numpad **9**) toggles
+music with a short fade. Combat sounds and announcements remain audible.
+The preference survives menu/match changes and resets on cold boot. The
+caption shows its state; opposite shoulders cancel. On ordinary Training
+PAUSED with CPU selected, L/R keep their difficulty-setting role.
+
 On Training's ordinary **PAUSED** card, Up/Down selects **Stand, Guard High,
 Guard Low, Jump or CPU**. Guards hold position and Jump repeats on landing.
 With CPU selected, either pad's L/R changes the shared difficulty once per

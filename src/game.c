@@ -1207,7 +1207,11 @@ void fightTick(void) {
                         trainingVisible=!trainingVisible;trainingRestore=1;openPauseGuide(3);sound(0);
                     } else if(pauseDirections&KEY_DOWN) {
                         trainingChooseChallenge();openPauseGuide(3);sound(0);
+                    } else if((pauseKeys&KEY_L) && !((pad0|pad1)&KEY_R)) {
+                        musicOn=!musicOn;openPauseGuide(pausePage);sound(0);
                     }
+                } else if((pauseKeys&KEY_L) && !((pad0|pad1)&KEY_R)) {
+                    musicOn=!musicOn;openPauseGuide(pausePage);sound(0);
                 }
             } else if(mode==2 && (pauseKeys&KEY_X)) {
                 /* Manual practice is explicit; the original five-choice

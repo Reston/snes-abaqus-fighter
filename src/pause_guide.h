@@ -73,6 +73,7 @@ void buildPauseGuide(void) {
             else guideCenter(6,"TRAINING TOOLS 3/3");
         } else guideCenter(6,pausePage==1?"HOW TO PLAY 1/2":"MOVE LIST 2/2");
         guideCenter(24,"A / START RESUME");
+        guideCenter(25,musicOn?"MUSIC ON  L TO MUTE":"MUSIC OFF L TO PLAY");
         guideCenter(26,pausePage==(mode==2?3:2)?"B ROSTER   SELECT BACK":"B ROSTER   SELECT NEXT");
         guideBuild=2;
     } else if(guideBuild==2) {

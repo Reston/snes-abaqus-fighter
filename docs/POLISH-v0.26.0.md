@@ -152,3 +152,19 @@ eight-pixel floor strip below the controls. All twelve fighters' earned mirror
 round wins pass on both ports, plus a real healthy tied timeout. The twenty
 result routes also pass on the updated cartridge; native cadence/OBJ/audio
 checks and actual glyph/pixel comparisons remain strict.
+
+## Pass 11: music control for longer practice
+
+On a full pause-guide page, **L toggles music**. The caption shows the current
+state and next action. Music fades smoothly, while hit/menu sounds and spoken
+Round/Fight/KO feedback remain enabled. The preference persists through scene
+changes until a cold boot. Ordinary PAUSED CPU shoulders still change difficulty;
+the music control lives on guide pages. Opposing shoulders cancel, and existing
+Start/B/A/Select, page navigation and drill-restart priorities remain intact.
+
+Both pinned cores pass native PCM checks for audible music, an actually silent
+muted score, audible resident cues and announcements over that silence, and
+audible restoration. Native cadence, OBJ, FIFO and clipping gates pass. Captures
+under docs/audio/play-flow-v026 are recordings only; the tests open no audio
+device and play nothing through speakers. The original five scores and sound
+assets remain byte-identical; the existing music preference byte is reused.

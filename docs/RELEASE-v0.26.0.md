@@ -33,6 +33,7 @@ Keyboard/controller mappings are in the [player guide](PLAYER-GUIDE.md).
   X again returns to Stand. Existing automated dummy choices remain.
 - Arcade shows your **SHIFT 01/11** ladder position, previews the next/retry
   opponent and names CPU difficulty on pause.
+- L on a pause-guide page mutes music while retaining combat sounds and speech.
 
 The [pass notes](POLISH-v0.26.0.md) separate individual checkpoints from the
 final combined result. No new offline archive or public-use approval is claimed.
