@@ -32,5 +32,6 @@ existing red/gold palette at HP <= 32. No combat policy changed for these tests.
 
 Version: `0.27.0` · ROM `d5263c777cbb3a02ce438e07c1c425f2d39dd73d294cd4d2aa8c2cbc2da78e3d` · checksum `FA37`.
 Source/test freeze: `4d7e8fe17f1a0a534bc06e3e059fc4c03cd556d0`.
-This is an unmerged playtest candidate stacked on the concise-help branch.
+[PR #24](https://github.com/Reston/snes-abaqus-fighter/pull/24) is an unmerged
+playtest candidate stacked on the concise-help branch.
 Human visual review remains pending; no new offline archive is claimed.
