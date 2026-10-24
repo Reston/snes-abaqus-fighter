@@ -249,3 +249,17 @@ streams remain exact between moving and still. Independent Accuracy coverage
 checks observable behavior, cadence and pixels; byte equivalence is unclaimed.
 The cold-boot initialization failure is retained under build, separate from
 the passing current report. The last unused stage-table byte holds the option.
+
+## Pass 19: encode scenery once per build
+
+Arena thumbnails and the final stage install now share one build-local
+conversion snapshot. Full asset generation calls each stage encoder exactly
+once instead of converting the same three scenes separately for both consumers.
+The snapshot checks workspace, source inventory and the complete native UI
+palette. The first attempt correctly rejected a 16-versus-32-color palette
+mismatch; preparation now includes both existing UI banks.
+
+The host-only proof regenerates all 226 outputs byte-identically after text
+canonicalization, rejects four snapshot mutations and rebuilds the exact same
+cartridge/manifest. Native scene/art/audio payloads do not change. Independent
+stage/arena tests continue rebuilding their oracle directly from source.

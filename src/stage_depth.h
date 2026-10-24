@@ -2,6 +2,10 @@
  * BG3 is disabled. No scanline bands, wrapping, HDMA, OBJ or live DMA.
  * Keep the historical sixteen-byte reservation and every following address. */
 u8 stageDepthTable[10];
+/* Reservation ownership: 0 scenery enabled; 1..2 menu repeat; 3 guide view;
+ * 4..6 Training best; 7..8 local session wins; 9 background-motion preference.
+ * No byte is an HDMA table. The latter preferences clear in their own entry
+ * paths; scene reset clears only transient menu/view state. */
 s16 stageDepthFar,stageDepthNear;
 u8 stageVictoryTick,stageVictoryPhase;
 

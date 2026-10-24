@@ -217,20 +217,46 @@ def build_stage(root, record, ui_palette):
     return outputs, preview, metadata
 
 
-def install(root=ROOT, only=None):
-    root = Path(root);out = root/'assets/generated'
+def stage_records(root):
+    root = Path(root)
     manifest = json.loads((root/ART/'stages.json').read_text())
     if manifest['schema'] != 1 or manifest['scope'] != 'stage-depth-v1':
         raise ValueError('unknown stage-depth manifest schema or scope')
     if [r['id'] for r in manifest['stages']] != [0,1,2]:
         raise ValueError('stage-depth manifest must own all three stages exactly once')
+    return manifest['stages']
+
+
+def prepare_stages(root, ui_palette):
+    """One build-local snapshot shared by arena previews and final install."""
+    root = Path(root)
+    records = stage_records(root)
+    return {'root': root.resolve(), 'records': records, 'ui_palette': tuple(ui_palette),
+            'payloads': {r['id']: build_stage(root, r, ui_palette) for r in records}}
+
+
+def stage_payload(root, record, ui_palette, prepared=None):
+    if prepared is None:
+        return build_stage(root, record, ui_palette)
+    if prepared['root'] != Path(root).resolve():
+        raise ValueError('prepared stage snapshot belongs to another workspace')
+    if prepared['ui_palette'] != tuple(ui_palette):
+        raise ValueError('prepared stage snapshot has a different native UI palette')
+    if record not in prepared['records'] or set(prepared['payloads']) != {0, 1, 2}:
+        raise ValueError('prepared stage snapshot has a different source inventory')
+    return prepared['payloads'][record['id']]
+
+
+def install(root=ROOT, only=None, prepared=None):
+    root = Path(root);out = root/'assets/generated'
+    records_source = stage_records(root)
     ui_palette = colors((out/'ui_pal.bin').read_bytes())
     asm = (out/'data.asm').read_text();header = (out/'assets.h').read_text()
     records = []
-    for record in manifest['stages']:
+    for record in records_source:
         if only is not None and record['id'] != only:
             continue
-        outputs, preview, metadata = build_stage(root,record,ui_palette)
+        outputs, preview, metadata = stage_payload(root,record,ui_palette,prepared)
         for filename,data in outputs.items():
             (out/filename).write_bytes(data)
             name = filename.removesuffix('.bin')

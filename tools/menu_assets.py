@@ -173,14 +173,14 @@ def _stage_preview(stage: Image.Image, stage_index: int) -> Image.Image:
     return landmark.resize((104, 52), Image.Resampling.BOX)
 
 
-def native_stage_previews(root: str | Path, ui_palette) -> list[Image.Image]:
+def native_stage_previews(root: str | Path, ui_palette, prepared=None) -> list[Image.Image]:
     """Use current converted BG1 bytes, including its 16px camera gutters.
 
     Menu generation runs before the final stage install on a clean build.
     Rebuild those deterministic payloads in memory instead of reading stale
     generated PNGs or the historical cartoon-stage masters.
     """
-    from stage_depth_assets import build_stage, colors
+    from stage_depth_assets import stage_payload, colors
     root = Path(root)
     records = json.loads((root / 'assets/art/stages/depth-v1/stages.json').read_bytes())
     if records.get('schema') != 1 or records.get('scope') != 'stage-depth-v1':
@@ -189,7 +189,7 @@ def native_stage_previews(root: str | Path, ui_palette) -> list[Image.Image]:
         raise ValueError('arena previews require all three current stages')
     result = []
     for record in records['stages']:
-        payload, _, metadata = build_stage(root, record, ui_palette)
+        payload, _, metadata = stage_payload(root, record, ui_palette, prepared)
         name = 'stage' + str(record['id'])
         gfx, raw_map, raw_palette = (payload[name + suffix] for suffix in ('_tiles.bin', '_map.bin', '_pal.bin'))
         if len(raw_map) != 4096 or len(raw_palette) != 192 or len(gfx) > 0x7000:
