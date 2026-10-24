@@ -17,8 +17,10 @@ from stage_cartoon import cartoon_stage_animation
 from victory_music import make_victory_it, soundbank_budget
 from audio_assets import expand_effects
 from asset_transaction import begin as begin_assets, publish as publish_assets
+import asset_cache
 
 ROOT = Path(__file__).resolve().parents[1]
+asset_source_inputs = asset_cache.inputs(ROOT)
 OUT = begin_assets(ROOT)
 random.seed(7)
 GLYPHS = {
@@ -470,5 +472,10 @@ for i,h in enumerate(effect_hashes):print(f'Effects PCM {i}: {h}')
 (OUT/'assets.h').write_text('\n'.join(header)+'\n')
 from stage_depth_assets import install as install_stage_depth
 install_stage_depth(ROOT,prepared=native_stage_data,out=OUT)
+if asset_cache.inputs(ROOT)!=asset_source_inputs:
+    raise RuntimeError('Art or encoder source changed during asset generation; candidate retained under build')
+asset_output_hashes=asset_cache.outputs(ROOT,OUT)
 print('Published asset set:',json.dumps(publish_assets(ROOT,OUT)))
+if not asset_cache.save(ROOT,asset_source_inputs,asset_output_hashes):
+    print('Asset cache could not be saved; the next build will regenerate.')
 print('Encoded seven backgrounds, 768 fighter frames, UI, effects, 5 music tracks and 11 resident sounds.')

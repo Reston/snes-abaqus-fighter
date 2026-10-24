@@ -34,8 +34,8 @@ def inventory():
             for p in sorted((ROOT / 'assets/generated').iterdir()) if p.is_file() and p.name != 'soundbank.h'}
 
 
-def publication_guards():
-    source = ROOT / 'tools/test_asset_transaction.py'
+def host_guards(filename):
+    source = ROOT / 'tools' / filename
     parsed = ast.parse(source.read_text())
     expected = sum(isinstance(n, ast.FunctionDef) and n.name.startswith('test_')
                    for cls in parsed.body if isinstance(cls, ast.ClassDef) for n in cls.body)
@@ -47,7 +47,7 @@ def publication_guards():
         count = re.search(r'Ran (\d+) tests?', output)
         total = int(count[1]) if count else 0
         require(expected > 0 and run.returncode == 0 and total == expected and output.rstrip().endswith('OK'),
-                'publication fault guards pass in the requested interpreter mode', [optimized, total, run.returncode, output[-500:]])
+                filename + ' guards pass in the requested interpreter mode', [optimized, total, run.returncode, output[-500:]])
         runs.append({'optimized': optimized, 'tests': total, 'exit_code': run.returncode, 'output': output})
     return runs
 
@@ -122,7 +122,11 @@ def main():
         require(inventory() == before, 'native text canonicalization preserves the same complete output inventory')
         require(source_hashes() == sources, 'all generation and proof source inputs stay fixed')
         report['cartridge_reproduced'] = True
-        report['publication_guard_runs'] = publication_guards()
+        require('Using unchanged generated assets: inputs and outputs match' in built.stdout,
+                'ordinary native build reuses the newly verified assets without another encoder pass')
+        report['ordinary_build_reused_assets'] = True
+        report['publication_guard_runs'] = host_guards('test_asset_transaction.py')
+        report['cache_guard_runs'] = host_guards('test_asset_cache.py')
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)

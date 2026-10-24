@@ -1,6 +1,9 @@
 """Reproducible native SNES build using PVSnesLib 4.6.0."""
 from pathlib import Path
 import hashlib, json, os, re, subprocess, sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import asset_cache
+from asset_transaction import ensure_complete
 
 ROOT = Path(__file__).resolve().parents[1]
 versions = re.findall(r'^\s*#define\s+ABAQUS_GAME_VERSION\s+"([0-9]+\.[0-9]+\.[0-9]+)"\s*$',
@@ -33,8 +36,13 @@ def run(*args):
 
 # soundbank.h is emitted by SMConv and intentionally absent from a clean checkout.
 required_assets = ('data.asm', 'assets.h', 'soundbank.h')
-if '--assets' in sys.argv or any(not (ROOT/'assets/generated'/name).is_file() for name in required_assets):
+ensure_complete(ROOT)
+assets_unchanged,asset_reason=asset_cache.status(ROOT)
+if '--assets' in sys.argv or any(not (ROOT/'assets/generated'/name).is_file() for name in required_assets) or not assets_unchanged:
+    print('Regenerating assets:', 'explicit --assets' if '--assets' in sys.argv else asset_reason)
     run(sys.executable, ROOT/'tools/make_assets.py')
+else:
+    print('Using unchanged generated assets:',asset_reason)
 
 # Windows generators and SMConv may emit CRLF. Keep the repository's LF
 # contract on both regeneration and reuse so byte-bound evidence is portable.

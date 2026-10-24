@@ -88,10 +88,14 @@ def recover(root):
     journal.unlink()
 
 
-def begin(root):
-    root, build, _ = locations(root)
+def ensure_complete(root):
     with publication_lock(root):
         recover(root)
+
+
+def begin(root):
+    root, build, _ = locations(root)
+    ensure_complete(root)
     return Path(tempfile.mkdtemp(prefix='assets-stage-', dir=build)).resolve()
 
 
