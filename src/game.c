@@ -839,51 +839,58 @@ u8 hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
 
 #include "knockdown.h"
 
+/* Keep the original update order in one template. Direct actor operands avoid
+ * rebuilding generic far pointers through simultaneous contact/launch ticks;
+ * profile reads and all timers, helper calls and physics remain unchanged. */
+#define UPDATE_FIGHTER_AT(F,W,P) do { \
+    const CharacterProfile *c=combatProfiles[P]; \
+    u8 action,tick; \
+    syncSuper(P); \
+    if((F).landing)(F).landing--; \
+    if((F).combotime) {(F).combotime--;if(!(F).combotime){(F).combo=0;(F).counter=0;clearBanner();}} \
+    if((F).wakeJust)(F).wakeJust=0; \
+    else if((F).invuln)(F).invuln--; \
+    if(!(F).hurt)clearRecoil(P); \
+    if((F).downState){updateDowned(P);return;} \
+    if((F).hurt) { \
+        (F).hurt--; \
+        updateRecoil(P); \
+        if(!(F).hurt)(F).guard=0; \
+    } \
+    if((F).y || (F).vy) { \
+        (F).x+=(F).vx; \
+        (F).y+=(F).vy;(F).vy+=c->gravity; \
+        if((F).y>=0) { \
+            (F).y=0;(F).vy=0;(F).vx=0;(F).landing=3; \
+            if((F).action==8)(F).action=0; \
+            if((F).airAction){(F).action=0;(F).tick=0;(F).connected=0;(F).airAction=0;} \
+        } \
+    } \
+    if((F).action) { \
+        action=(F).action;tick=(F).tick+1;(F).tick=tick; \
+        if(superActive[P])updateSuper(P); \
+        else if(action==7 && c->specialFamily==SPECIAL_RISING && tick==c->specialStartup) { \
+            (F).vy=c->specialVy;(F).y=-1;(F).duck=0; \
+        } \
+        else if(action==7 && c->specialFamily==SPECIAL_RUSH && tick>3 && tick<=c->specialStartup+c->specialActive) { \
+            (F).x+=(F).face?c->specialSpeed:-c->specialSpeed; \
+        } \
+        if(!superActive[P] && action==7 && (c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE) && tick==c->specialStartup && !(W).active) { \
+            superWaveDamage[P]=0;superWaveReach[P]=0; \
+            (W).active=1;(W).owner=P;(W).face=(F).face;(W).speed=c->specialSpeed;(W).low=c->specialFamily==SPECIAL_GROUNDWAVE; \
+            (W).x=(F).x+((F).face?22*16:-22*16);(W).y=(W).low?FLOOR-18:FLOOR-39;(W).life=c->specialLife; \
+        } \
+        if(action==6 && !(F).y && tick<(F).actionStartup)(F).x+=(F).face?16:-16; \
+        if(tick>=(F).actionEnd) {(F).action=0;(F).tick=0;(F).duck=0;(F).airAction=0;superActive[P]=0;} \
+    } \
+    if(!superActive[P] && (frame&15)==0 && (F).energy<ENERGY_MAX){(F).energy++;hudDirty=1;} \
+    if((F).x<24*16)(F).x=24*16;if((F).x>232*16)(F).x=232*16; \
+} while(0)
 void updateFighter(u8 p) {
-    Fighter *f=&fighters[p];Wave *w=&waves[p];
-    const CharacterProfile *c=combatProfiles[p];
-    u8 action,tick;
-    syncSuper(p);
-    if(f->landing)f->landing--;
-    if(f->combotime) {f->combotime--;if(!f->combotime){f->combo=0;f->counter=0;clearBanner();}}
-    if(f->wakeJust)f->wakeJust=0;
-    else if(f->invuln)f->invuln--;
-    if(!f->hurt)clearRecoil(p);
-    if(f->downState){updateDowned(p);return;}
-    if(f->hurt) {
-        f->hurt--;
-        updateRecoil(p);
-        if(!f->hurt)f->guard=0;
-    }
-    if(f->y || f->vy) {
-        f->x+=f->vx;
-        f->y+=f->vy;f->vy+=c->gravity;
-        if(f->y>=0) {
-            f->y=0;f->vy=0;f->vx=0;f->landing=3;
-            if(f->action==8)f->action=0;
-            if(f->airAction){f->action=0;f->tick=0;f->connected=0;f->airAction=0;}
-        }
-    }
-    if(f->action) {
-        action=f->action;tick=f->tick+1;f->tick=tick;
-        if(superActive[p])updateSuper(p);
-        else if(action==7 && c->specialFamily==SPECIAL_RISING && tick==c->specialStartup) {
-            f->vy=c->specialVy;f->y=-1;f->duck=0;
-        }
-        else if(action==7 && c->specialFamily==SPECIAL_RUSH && tick>3 && tick<=c->specialStartup+c->specialActive) {
-            f->x+=f->face?c->specialSpeed:-c->specialSpeed;
-        }
-        if(!superActive[p] && action==7 && (c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE) && tick==c->specialStartup && !w->active) {
-            superWaveDamage[p]=0;superWaveReach[p]=0;
-            w->active=1;w->owner=p;w->face=f->face;w->speed=c->specialSpeed;w->low=c->specialFamily==SPECIAL_GROUNDWAVE;
-            w->x=f->x+(f->face?22*16:-22*16);w->y=w->low?FLOOR-18:FLOOR-39;w->life=c->specialLife;
-        }
-        if(action==6 && !f->y && tick<f->actionStartup)f->x+=f->face?16:-16;
-        if(tick>=f->actionEnd) {f->action=0;f->tick=0;f->duck=0;f->airAction=0;superActive[p]=0;}
-    }
-    if(!superActive[p] && (frame&15)==0 && f->energy<ENERGY_MAX){f->energy++;hudDirty=1;}
-    if(f->x<24*16)f->x=24*16;if(f->x>232*16)f->x=232*16;
+    if(!p){UPDATE_FIGHTER_AT(fighters[0],waves[0],0);return;}
+    UPDATE_FIGHTER_AT(fighters[1],waves[1],1);
 }
+#undef UPDATE_FIGHTER_AT
 #include "contact_geometry.h"
 /* Compatibility entry point for the legacy super helper. Live direct and
  * projectile contacts below evaluate BOTH axes against the pose geometry. */
@@ -893,64 +900,59 @@ u8 verticalContact(Fighter *d,s16 top,s16 bottom) {
     if(top>=d->y+((s16)body->lower.bottom-78)*16)return 0;
     return 1;
 }
+/* As with hurtWithRecoil, select the actor pair once. Keep the paired ABI
+ * reads, gates and geometry calls in their original order; no query cache
+ * survives a call or crosses the atomic contact snapshot. */
+#define CAN_HIT_AT(F,D,P) do { \
+    const CharacterProfile *c=combatProfiles[P]; \
+    s16 dx; \
+    u8 rear; \
+    u16 actionTick,action,tick; \
+    actionTick=((u16 *)&(F))[8];action=actionTick&255; \
+    if(!action)return 0; \
+    if(((u16 *)&(F))[9])return 0; /* connected or hurt */ \
+    if((F).downState)return 0; \
+    if((D).downState)return 0; \
+    if((D).invuln)return 0; \
+    if(!(D).hp)return 0; \
+    dx=(D).x-(F).x; \
+    rear=0; \
+    if(dx>0 && !(F).face)rear=1; \
+    if(dx<0 && (F).face)rear=1; \
+    if(superActive[P]) { \
+        if(superProfiles[(F).id].family==SUPER_VOLLEY)return 0; \
+        if(!superPhase[P])return 0; \
+        if((F).tick>=superContactEnd[P])return 0; \
+        if(rear)return 0; \
+        if(dx>=ACTOR_FRAME_W*16)return 0; \
+        if(dx<=-ACTOR_FRAME_W*16)return 0; \
+        return contactStrike(P,0); \
+    } \
+    if(action==7 && (c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE))return 0; \
+    tick=actionTick>>8; \
+    if(tick<(F).actionStartup || tick>=(F).actionActiveEnd)return 0; \
+    if(rear) { \
+        if(action!=5)return 0; \
+        if(!(F).airAction)return 0; \
+        if(abs16(dx)>(16+BODY_HALF_WIDTH)*16)return 0; \
+    } \
+    if(action==9) { \
+        if((F).y)return 0; \
+        if((D).y)return 0; \
+        if((D).hurt)return 0; \
+        return abs16(dx)<c->throwRange*16; \
+    } \
+    /* Half-open ordinary pose canvases cannot intersect at 96px separation.
+     * The independent profile-based throw has already returned above. */ \
+    if(dx>=ACTOR_FRAME_W*16)return 0; \
+    if(dx<=-ACTOR_FRAME_W*16)return 0; \
+    return contactStrike(P,rear); \
+} while(0)
 u8 canHit(u8 p) {
-    Fighter *f=p?&fighters[1]:&fighters[0];
-    Fighter *d=p?&fighters[0]:&fighters[1];
-    const CharacterProfile *c=combatProfiles[p];
-    s16 dx;
-    u8 rear;
-    u16 actionTick,action,tick;
-    /* These adjacent byte pairs have compile-time Fighter ABI pins above.
-     * Read each once on the simultaneous-contact path; no state is cached
-     * between calls or across the atomic contact snapshot. */
-    actionTick=((u16 *)f)[8];action=actionTick&255;
-    if(!action)return 0;
-    if(((u16 *)f)[9])return 0; /* connected or hurt */
-    if(f->downState)return 0;
-    if(d->downState)return 0;
-    if(d->invuln)return 0;
-    if(!d->hp)return 0;
-    dx=d->x-f->x;
-    rear=0;
-    if(dx>0 && !f->face)rear=1;
-    if(dx<0 && f->face)rear=1;
-    if(superActive[p]) {
-        if(superProfiles[f->id].family==SUPER_VOLLEY)return 0;
-        if(!superPhase[p])return 0;
-        if(f->tick>=superContactEnd[p])return 0;
-        if(rear)return 0;
-        /* Both 96px pose canvases must overlap for a direct super strike.
-         * Reject impossible remote pulses before active-pose/far-ROM reads.
-         * Keep volley, startup, ordinary strike and throw paths unchanged. */
-        if(dx>=ACTOR_FRAME_W*16)return 0;
-        if(dx<=-ACTOR_FRAME_W*16)return 0;
-        return contactStrike(p,0);
-    }
-    if(action==7 && (c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE))return 0;
-    tick=actionTick>>8;
-    if(tick<f->actionStartup || tick>=f->actionActiveEnd)return 0;
-    if(rear) {
-        /* Only the airborne medium kick reaches behind its locked facing.
-         * Its short rear box is independent of the normal front reach. */
-        if(action!=5)return 0;
-        if(!f->airAction)return 0;
-        if(abs16(dx)>(16+BODY_HALF_WIDTH)*16)return 0;
-    }
-    if(action==9) {
-        if(f->y)return 0;
-        if(d->y)return 0;
-        if(d->hurt)return 0;
-        return abs16(dx)<c->throwRange*16;
-    }
-    /* Ordinary active strikes use the same 96px pose canvases as direct
-     * supers. Wide simultaneous rushes otherwise read and transform both
-     * pose tables on every active tick, even before their canvases meet.
-     * Half-open rectangles cannot intersect at or beyond this separation.
-     * Keep the independent profile-based throw above this geometry gate. */
-    if(dx>=ACTOR_FRAME_W*16)return 0;
-    if(dx<=-ACTOR_FRAME_W*16)return 0;
-    return contactStrike(p,rear);
+    if(!p){CAN_HIT_AT(fighters[0],fighters[1],0);}
+    CAN_HIT_AT(fighters[1],fighters[0],1);
 }
+#undef CAN_HIT_AT
 void combat(void) {
     u8 a0,a1,m0,m1,p,finished,low0,low1,air0,air1,face0,face1,k0,k1,expired,rear0,rear1,contact;
     s16 distance;
