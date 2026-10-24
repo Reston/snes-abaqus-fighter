@@ -1,0 +1,4858 @@
+{
+  "status": "passed",
+  "scope": "isolated-stage08-v024",
+  "baseline_commit": "3f51120",
+  "source_commit": "a1af3dbfa8ad8b448adb70b1c16cd24bd8a314e7",
+  "command": "D:\\snes-abaqus-fighter\\.tools\\python\\python.exe tools/test_combat_24_stage08.py",
+  "rom_sha256": "2ec631011c9bde8e073b96f0d74863a52fdf756e411579495cf0d1d6497139a7",
+  "rom_bytes": 4194304,
+  "harness_sha256": "aa4cdf08ca131297f7ecb860c0c49450e6009d5d3fb43f14fb2dbeaf62d890bd",
+  "host": {
+    "python": "3.12.10",
+    "pillow": "13.0.0",
+    "gui_opened": false,
+    "audio_device_opened": false,
+    "priority_class": 16384,
+    "logical_processors": [
+      14,
+      15
+    ]
+  },
+  "checks": [
+    {
+      "check": "generated delta is exactly stage planes and declarations",
+      "passed": true,
+      "details": {
+        "changed": [
+          "assets/generated/assets.h",
+          "assets/generated/data.asm",
+          "assets/generated/stage0.png",
+          "assets/generated/stage0_map.bin",
+          "assets/generated/stage0_pal.bin",
+          "assets/generated/stage0_tiles.bin",
+          "assets/generated/stage1.png",
+          "assets/generated/stage1_map.bin",
+          "assets/generated/stage1_pal.bin",
+          "assets/generated/stage1_tiles.bin",
+          "assets/generated/stage2.png",
+          "assets/generated/stage2_map.bin",
+          "assets/generated/stage2_pal.bin",
+          "assets/generated/stage2_tiles.bin"
+        ],
+        "added": [
+          "assets/generated/stage-depth.json",
+          "assets/generated/stage0_floor_map.bin",
+          "assets/generated/stage0_floor_tiles.bin",
+          "assets/generated/stage1_floor_map.bin",
+          "assets/generated/stage1_floor_tiles.bin",
+          "assets/generated/stage2_floor_map.bin",
+          "assets/generated/stage2_floor_tiles.bin"
+        ],
+        "preserved": 205
+      }
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/cartoon-prompts.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/animation-actions-v4.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/animation-actions-v5.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/animation-actions.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/animation-airborne-v4.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/animation-airborne-v4.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/animation-airborne-v5.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/animation-airborne-v5.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/animation-airborne.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/animation-airborne.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/animation-motion-v4.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/animation-motion-v5.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/animation-motion.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/animation-v4.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/animation-v5.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/animation.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/atlas-v4.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/atlas-v5.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/atlas.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/identity.md"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/likeness-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/likeness-v4.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/likeness-v5.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/native-revision-v4.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/native-revision.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/prompt.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/walking-v1.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/walking-v1.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/walking-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/00-damian/walking-v2.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/01-ivo/animation-actions.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/01-ivo/animation-airborne.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/01-ivo/animation-airborne.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/01-ivo/animation-motion.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/01-ivo/animation.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/01-ivo/atlas-v1.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/01-ivo/atlas.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/01-ivo/identity.md"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/01-ivo/likeness-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/01-ivo/prompt.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/01-ivo/walking-v1.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/01-ivo/walking-v1.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/01-ivo/walking-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/01-ivo/walking-v2.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/02-cristobal/animation-actions.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/02-cristobal/animation-airborne.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/02-cristobal/animation-airborne.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/02-cristobal/animation-motion.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/02-cristobal/animation.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/02-cristobal/atlas.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/02-cristobal/identity.md"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/02-cristobal/likeness-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/02-cristobal/prompt.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/02-cristobal/walking-v1.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/02-cristobal/walking-v1.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/02-cristobal/walking-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/02-cristobal/walking-v2.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/03-cote/animation-actions.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/03-cote/animation-airborne.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/03-cote/animation-airborne.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/03-cote/animation-motion.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/03-cote/animation.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/03-cote/atlas.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/03-cote/identity.md"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/03-cote/likeness-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/03-cote/prompt.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/03-cote/walking-v1.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/03-cote/walking-v1.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/03-cote/walking-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/03-cote/walking-v2.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/04-negger/animation-actions.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/04-negger/animation-airborne.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/04-negger/animation-airborne.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/04-negger/animation-motion.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/04-negger/animation.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/04-negger/atlas.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/04-negger/identity.md"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/04-negger/likeness-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/04-negger/prompt.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/04-negger/walking-v1.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/04-negger/walking-v1.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/04-negger/walking-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/04-negger/walking-v2.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/05-david/animation-actions.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/05-david/animation-airborne.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/05-david/animation-airborne.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/05-david/animation-motion.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/05-david/animation.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/05-david/atlas.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/05-david/identity.md"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/05-david/likeness-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/05-david/prompt.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/05-david/walking-v1.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/05-david/walking-v1.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/05-david/walking-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/05-david/walking-v2.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/06-fernando/animation-actions.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/06-fernando/animation-airborne.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/06-fernando/animation-airborne.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/06-fernando/animation-motion.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/06-fernando/animation.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/06-fernando/atlas.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/06-fernando/identity.md"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/06-fernando/likeness-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/06-fernando/prompt.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/06-fernando/walking-v1.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/06-fernando/walking-v1.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/06-fernando/walking-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/06-fernando/walking-v2.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/07-cristian/animation-actions.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/07-cristian/animation-airborne.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/07-cristian/animation-airborne.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/07-cristian/animation-motion.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/07-cristian/animation.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/07-cristian/atlas.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/07-cristian/identity.md"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/07-cristian/likeness-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/07-cristian/prompt.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/07-cristian/walking-v1.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/07-cristian/walking-v1.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/07-cristian/walking-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/07-cristian/walking-v2.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/08-mamariaga/animation-actions.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/08-mamariaga/animation-airborne.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/08-mamariaga/animation-airborne.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/08-mamariaga/animation-motion.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/08-mamariaga/animation.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/08-mamariaga/atlas.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/08-mamariaga/identity.md"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/08-mamariaga/likeness-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/08-mamariaga/prompt.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/08-mamariaga/walking-v1.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/08-mamariaga/walking-v1.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/08-mamariaga/walking-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/08-mamariaga/walking-v2.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/animation-actions-v4.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/animation-actions.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/animation-airborne-v4.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/animation-airborne-v4.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/animation-airborne.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/animation-airborne.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/animation-motion-v4.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/animation-motion.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/animation-v4.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/animation.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/atlas-v1.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/atlas-v2.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/atlas-v4.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/atlas.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/followup-prompt.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/identity.md"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/likeness-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/likeness-v3.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/likeness-v4.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/native-revision.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/prompt.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/revisedatlas.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/walking-v1.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/walking-v1.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/walking-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/09-reston/walking-v2.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/10-roxana/animation-actions.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/10-roxana/animation-airborne.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/10-roxana/animation-airborne.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/10-roxana/animation-motion.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/10-roxana/animation.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/10-roxana/atlas.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/10-roxana/identity.md"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/10-roxana/likeness-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/10-roxana/prompt.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/10-roxana/walking-v1.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/10-roxana/walking-v1.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/10-roxana/walking-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/10-roxana/walking-v2.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/animation-actions-v4.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/animation-actions.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/animation-airborne-v4.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/animation-airborne-v4.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/animation-airborne.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/animation-airborne.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/animation-motion-v4.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/animation-motion.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/animation-v4.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/animation.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/atlas-v4.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/atlas.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/identity.md"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/likeness-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/likeness-v4.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/native-revision.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/prompt.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/source-v4/airborne-layout-draft.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/walking-v1.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/walking-v1.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/walking-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/characters/11-lars/walking-v2.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/fighter-atlas-cartoon.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/fighter-atlas.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/menu/champion-ending-v1.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/menu/champion-ending-v1.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/menu/prompts.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/menu/source-champion-v1/champion-raw-v1.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/menu/source-champion-v1/generation-v1.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/menu/title-backdrop.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/portraits-cartoon.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/roster-baseline-v0.8.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/stage-atlas-cartoon.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/stage-atlas.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/stages/00-las-condes-cartoon-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/stages/00-las-condes-cartoon-v2.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/stages/00-las-condes.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/stages/01-castillo-cartoon-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/stages/01-castillo-cartoon-v2.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/stages/01-castillo.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/stages/02-oficina-cartoon-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/stages/02-oficina-cartoon-v2.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/stages/02-oficina.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/stages/source-v2/00-las-condes.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/stages/source-v2/01-castillo.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/stages/source-v2/02-oficina.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/stages/stages-v0.4.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/stages/stages.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/walking-v1.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/art/walking-v2.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/references/contact-sheet.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/references/fighter-00-v5.png"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/references/fighter-00.jpg"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/references/fighter-01.jpg"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/references/fighter-02.jpg"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/references/fighter-03.jpg"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/references/fighter-04.jpg"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/references/fighter-05.jpg"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/references/fighter-06.jpg"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/references/fighter-07.jpg"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/references/fighter-08.jpg"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/references/fighter-09.jpg"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/references/fighter-10.jpg"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/references/fighter-11.jpg"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/references/team.json"
+    },
+    {
+      "check": "original source or provenance preserved",
+      "passed": true,
+      "details": "assets/references/wealth.json"
+    },
+    {
+      "check": "all existing RAM symbol addresses retained",
+      "passed": true,
+      "details": {
+        "count": 1318,
+        "moved": {}
+      }
+    },
+    {
+      "check": "exact historical sixteen-byte stage reservation retained",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.menuPortraitTilestext_0x0"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.menuPortraitPalettetext_0x1"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.stageDepthResettext_0x2"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.stageDepthLoadtext_0x3"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.stageDepthTracktext_0x4"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.stageDepthPublishtext_0x5"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.stageDepthAmbientReadytext_0x6"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.beginImpacttext_0x7"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.drawImpacttext_0x8"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.publishImpactPrioritytext_0x9"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.impactScrolltext_0xa"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.profileFortext_0xb"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.attackStartuptext_0xc"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.attackActivetext_0xd"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.attackRecoverytext_0xe"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.attackDamagetext_0xf"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.attackReachtext_0x10"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.rngtext_0x11"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.abs16text_0x12"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.fighterDatatext_0x13"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.fighterPalettetext_0x14"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.fighterDataBtext_0x15"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.fighterDataCtext_0x16"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.fighterDataDtext_0x17"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.fighterDataEtext_0x18"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.fighterDataFtext_0x19"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.fighterDataGtext_0x1a"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.fighterDataHtext_0x1b"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.fighterFrameBanktext_0x1c"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.puttext_0x1d"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.wordtext_0x1e"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.centertext_0x1f"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.numbertext_0x20"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.paneltext_0x21"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.cursortext_0x22"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.audioCuetext_0x23"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.soundImpacttext_0x24"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.soundtext_0x26"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.audioSceneLoadedtext_0x27"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.audioAnnouncetext_0x28"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.audioPresentationTicktext_0x29"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.musictext_0x2a"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.commonScreentext_0x2b"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.loadBackgroundtext_0x2c"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.finishScreentext_0x2d"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.drawTitletext_0x2e"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.showTitletext_0x2f"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.drawSelecttext_0x30"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.uploadMenuPortraittext_0x31"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.showSelecttext_0x32"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.drawArenastext_0x33"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.showArenastext_0x34"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.arcadeStoryCentertext_0x35"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.arcadeStoryDrawtext_0x36"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.arcadeStoryBegintext_0x37"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.arcadeStoryTicktext_0x38"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.arcadeStoryEndingtext_0x39"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.hudtext_0x3a"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.superNameFortext_0x3b"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.resetSuperstext_0x3c"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.captureSupertext_0x3d"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.startSupertext_0x3e"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.syncSupertext_0x3f"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.updateSupertext_0x40"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.superCanHittext_0x41"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.superDamagetext_0x42"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.superKnockdowntext_0x43"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.superFrametext_0x44"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.drawSuperGuidetext_0x45"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.resetRoundStatetext_0x46"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.resetRoundtext_0x47"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.beginMatchtext_0x48"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.loadChampionEndingtext_0x49"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.showResulttext_0x4a"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.guideWordtext_0x4b"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.guideCentertext_0x4c"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.settlePausedHudtext_0x4d"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.drawPauseCardtext_0x4e"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.closePauseGuidetext_0x4f"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.openPauseGuidetext_0x50"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.buildPauseGuidetext_0x51"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.trainingKeystext_0x52"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.trainingResettext_0x53"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.trainingNewMatchtext_0x54"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.trainingChooseChallengetext_0x55"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.trainingCapturetext_0x56"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.trainingStartedtext_0x57"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.trainingContacttext_0x58"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.trainingMoveContacttext_0x59"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.trainingObservetext_0x5a"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.trainingMakeStatustext_0x5b"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.trainingHistoryTokentext_0x5c"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.trainingServicetext_0x5d"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.cpuNormalKeytext_0x5e"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.cpuKeystext_0x5f"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.attackStarttext_0x60"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.cleanDirectionstext_0x61"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.discardFighterInputtext_0x62"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.actionForInputtext_0x63"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.captureInputtext_0x64"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.captureFightInputstext_0x65"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.controlstext_0x66"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.hurtWithRecoiltext_0x67"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.hurttext_0x68"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.clearWakeInputtext_0x69"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.clampDownedtext_0x6a"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.clearThrowLinkstext_0x6b"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.releaseHeldVictimtext_0x6c"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.beginKnockdowntext_0x6d"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.knockdownAttacktext_0x6e"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.beginThrowtext_0x6f"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.throwTechtext_0x70"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.updateDownedtext_0x71"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.updateFightertext_0x72"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.verticalContacttext_0x73"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.canHittext_0x74"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.combattext_0x75"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.poseFortext_0x76"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.personalityIntroFrametext_0x77"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.personalityVictoryFrametext_0x78"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.personalityAccenttext_0x79"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.animateFightertext_0x7a"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.drawFightertext_0x7b"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.drawFighttext_0x7c"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.fightTicktext_0x7d"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.menuTicktext_0x7e"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.traceProfilestext_0x7f"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.maintext_0x80"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_ui_clear_full_fast"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_ui_clear_banner_fast"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_fight_panel_fast"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_fight_footer_fast"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_pause_guide_panel_fast"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_hit_reaction_fast"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_health_bar_fast"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_fighter_render_dispatch"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_fighter_upload_queue_fast"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_actor_render_fast"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_shadow_render_fast"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_resident_audio_ready"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_actor_dma_fast"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_trace_actors_fast"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_stage0_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_stage0_map"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_stage0_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_stage0_ambient"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_stage1_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_stage1_map"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_stage1_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_stage1_ambient"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_stage2_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_stage2_map"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_stage2_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_stage2_ambient"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_title_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_title_map"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_title_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_select_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_select_map"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_select_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_arenas_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_arenas_map"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_arenas_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_champion_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_champion_map"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_champion_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait00_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait00_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait01_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait01_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait02_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait02_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait03_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait03_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait04_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait04_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait05_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait05_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait06_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait06_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait07_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait07_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait08_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait08_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait09_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait09_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait10_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait10_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait11_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_portrait11_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_ui_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_ui_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter00"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter00b"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter00c"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter00d"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter00e"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter00f"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter00g"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter00h"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter00_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter01"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter01b"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter01c"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter01d"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter01e"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter01f"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter01g"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter01h"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter01_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter02"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter02b"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter02c"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter02d"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter02e"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter02f"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter02g"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter02h"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter02_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter03"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter03b"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter03c"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter03d"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter03e"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter03f"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter03g"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter03h"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter03_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter04"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter04b"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter04c"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter04d"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter04e"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter04f"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter04g"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter04h"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter04_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter05"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter05b"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter05c"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter05d"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter05e"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter05f"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter05g"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter05h"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter05_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter06"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter06b"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter06c"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter06d"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter06e"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter06f"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter06g"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter06h"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter06_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter07"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter07b"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter07c"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter07d"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter07e"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter07f"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter07g"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter07h"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter07_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter08"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter08b"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter08c"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter08d"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter08e"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter08f"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter08g"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter08h"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter08_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter09"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter09b"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter09c"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter09d"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter09e"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter09f"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter09g"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter09h"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter09_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter10"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter10b"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter10c"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter10d"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter10e"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter10f"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter10g"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter10h"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter10_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter11"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter11b"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter11c"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter11d"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter11e"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter11f"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter11g"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter11h"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_fighter11_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_effects"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_effects_pal"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_stage0_floor_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_stage0_floor_map"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_stage1_floor_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_stage1_floor_map"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_stage2_floor_tiles"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_asset_stage2_floor_map"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_SOUNDBANK"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_glob.data"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_EmptyVectors"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_Snes_Init"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.start"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.malloc_inittext_0x9"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.backgrounds0_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.backgrounds1_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.backgrounds4_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.consoles3_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.consoles4_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.dmas0_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.dmas1_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.dmas5_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.pads1_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.soundmod"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.sm_spc"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_spritestable_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.sprites2_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.sprites3_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.sprites4_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.sprites5_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.sprites6_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.spritestable1_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.videos1_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.videos3_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.vblank_isr"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.nmiSet_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.waitforvblank_text"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.libc_mem"
+    },
+    {
+      "check": "native4MiB NTSC FastROM LoROM retained",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "generated stage payload matches exact encoder manifest",
+      "passed": true,
+      "details": "stage0_tiles.bin"
+    },
+    {
+      "check": "generated stage payload matches exact encoder manifest",
+      "passed": true,
+      "details": "stage0_map.bin"
+    },
+    {
+      "check": "generated stage payload matches exact encoder manifest",
+      "passed": true,
+      "details": "stage0_pal.bin"
+    },
+    {
+      "check": "generated stage payload matches exact encoder manifest",
+      "passed": true,
+      "details": "stage0_floor_tiles.bin"
+    },
+    {
+      "check": "generated stage payload matches exact encoder manifest",
+      "passed": true,
+      "details": "stage0_floor_map.bin"
+    },
+    {
+      "check": "generated stage payload matches exact encoder manifest",
+      "passed": true,
+      "details": "stage1_tiles.bin"
+    },
+    {
+      "check": "generated stage payload matches exact encoder manifest",
+      "passed": true,
+      "details": "stage1_map.bin"
+    },
+    {
+      "check": "generated stage payload matches exact encoder manifest",
+      "passed": true,
+      "details": "stage1_pal.bin"
+    },
+    {
+      "check": "generated stage payload matches exact encoder manifest",
+      "passed": true,
+      "details": "stage1_floor_tiles.bin"
+    },
+    {
+      "check": "generated stage payload matches exact encoder manifest",
+      "passed": true,
+      "details": "stage1_floor_map.bin"
+    },
+    {
+      "check": "generated stage payload matches exact encoder manifest",
+      "passed": true,
+      "details": "stage2_tiles.bin"
+    },
+    {
+      "check": "generated stage payload matches exact encoder manifest",
+      "passed": true,
+      "details": "stage2_map.bin"
+    },
+    {
+      "check": "generated stage payload matches exact encoder manifest",
+      "passed": true,
+      "details": "stage2_pal.bin"
+    },
+    {
+      "check": "generated stage payload matches exact encoder manifest",
+      "passed": true,
+      "details": "stage2_floor_tiles.bin"
+    },
+    {
+      "check": "generated stage payload matches exact encoder manifest",
+      "passed": true,
+      "details": "stage2_floor_map.bin"
+    },
+    {
+      "check": "official Snes9x1.63 x64 core is pinned",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        0,
+        4,
+        6
+      ]
+    },
+    {
+      "check": "both ports drive full authored camera bounds",
+      "passed": true,
+      "details": [
+        "snes9x-stage0",
+        "left",
+        -8
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "snes9x-stage0",
+        [
+          0,
+          0,
+          112,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "snes9x-stage0",
+        [
+          160,
+          0,
+          256,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "both ports drive full authored camera bounds",
+      "passed": true,
+      "details": [
+        "snes9x-stage0",
+        "right",
+        8
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "snes9x-stage0",
+        [
+          0,
+          0,
+          112,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "snes9x-stage0",
+        [
+          160,
+          0,
+          256,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "both ports drive full authored camera bounds",
+      "passed": true,
+      "details": [
+        "snes9x-stage0",
+        "left",
+        -8
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "snes9x-stage0",
+        [
+          0,
+          0,
+          112,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "snes9x-stage0",
+        [
+          160,
+          0,
+          256,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "P2 Start enters native pause before freeze proof",
+      "passed": true,
+      "details": "snes9x-stage0"
+    },
+    {
+      "check": "actual controller contacts produce hitstop and KO",
+      "passed": true,
+      "details": [
+        "snes9x-stage0",
+        7,
+        42
+      ]
+    },
+    {
+      "check": "PPU shows bounded whole-scene contact shake",
+      "passed": true,
+      "details": [
+        "snes9x-stage0",
+        [
+          -2,
+          -1,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "check": "pinned core retains native NTSC video cadence",
+      "passed": true,
+      "details": 60.098811862348406
+    },
+    {
+      "check": "native SPC produces captured PCM without a device",
+      "passed": true,
+      "details": [
+        "snes9x-stage0",
+        1810332,
+        5468
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        0,
+        4,
+        6
+      ]
+    },
+    {
+      "check": "both ports issue simultaneous native low waves",
+      "passed": true,
+      "details": [
+        "snes9x-stress0",
+        44
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        1,
+        4,
+        6
+      ]
+    },
+    {
+      "check": "both ports drive full authored camera bounds",
+      "passed": true,
+      "details": [
+        "snes9x-stage1",
+        "left",
+        -8
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "snes9x-stage1",
+        [
+          0,
+          0,
+          112,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "snes9x-stage1",
+        [
+          160,
+          0,
+          256,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "both ports drive full authored camera bounds",
+      "passed": true,
+      "details": [
+        "snes9x-stage1",
+        "right",
+        8
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "snes9x-stage1",
+        [
+          0,
+          0,
+          112,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "snes9x-stage1",
+        [
+          160,
+          0,
+          256,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "both ports drive full authored camera bounds",
+      "passed": true,
+      "details": [
+        "snes9x-stage1",
+        "left",
+        -8
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "snes9x-stage1",
+        [
+          0,
+          0,
+          112,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "snes9x-stage1",
+        [
+          160,
+          0,
+          256,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "P2 Start enters native pause before freeze proof",
+      "passed": true,
+      "details": "snes9x-stage1"
+    },
+    {
+      "check": "actual controller contacts produce hitstop and KO",
+      "passed": true,
+      "details": [
+        "snes9x-stage1",
+        7,
+        42
+      ]
+    },
+    {
+      "check": "PPU shows bounded whole-scene contact shake",
+      "passed": true,
+      "details": [
+        "snes9x-stage1",
+        [
+          -2,
+          -1,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "check": "pinned core retains native NTSC video cadence",
+      "passed": true,
+      "details": 60.098811862348406
+    },
+    {
+      "check": "native SPC produces captured PCM without a device",
+      "passed": true,
+      "details": [
+        "snes9x-stage1",
+        1836988,
+        5363
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        1,
+        4,
+        6
+      ]
+    },
+    {
+      "check": "both ports issue simultaneous native low waves",
+      "passed": true,
+      "details": [
+        "snes9x-stress1",
+        44
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        2,
+        4,
+        6
+      ]
+    },
+    {
+      "check": "both ports drive full authored camera bounds",
+      "passed": true,
+      "details": [
+        "snes9x-stage2",
+        "left",
+        -8
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "snes9x-stage2",
+        [
+          0,
+          0,
+          112,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "snes9x-stage2",
+        [
+          160,
+          0,
+          256,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "both ports drive full authored camera bounds",
+      "passed": true,
+      "details": [
+        "snes9x-stage2",
+        "right",
+        8
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "snes9x-stage2",
+        [
+          0,
+          0,
+          112,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "snes9x-stage2",
+        [
+          160,
+          0,
+          256,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "both ports drive full authored camera bounds",
+      "passed": true,
+      "details": [
+        "snes9x-stage2",
+        "left",
+        -8
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "snes9x-stage2",
+        [
+          0,
+          0,
+          112,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "snes9x-stage2",
+        [
+          160,
+          0,
+          256,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "P2 Start enters native pause before freeze proof",
+      "passed": true,
+      "details": "snes9x-stage2"
+    },
+    {
+      "check": "actual controller contacts produce hitstop and KO",
+      "passed": true,
+      "details": [
+        "snes9x-stage2",
+        7,
+        42
+      ]
+    },
+    {
+      "check": "PPU shows bounded whole-scene contact shake",
+      "passed": true,
+      "details": [
+        "snes9x-stage2",
+        [
+          -2,
+          -1,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "check": "pinned core retains native NTSC video cadence",
+      "passed": true,
+      "details": 60.098811862348406
+    },
+    {
+      "check": "native SPC produces captured PCM without a device",
+      "passed": true,
+      "details": [
+        "snes9x-stage2",
+        1864710,
+        5511
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        2,
+        4,
+        6
+      ]
+    },
+    {
+      "check": "both ports issue simultaneous native low waves",
+      "passed": true,
+      "details": [
+        "snes9x-stress2",
+        44
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        0,
+        4,
+        6
+      ]
+    },
+    {
+      "check": "both ports drive full authored camera bounds",
+      "passed": true,
+      "details": [
+        "accuracy-stage0",
+        "left",
+        -8
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "accuracy-stage0",
+        [
+          0,
+          0,
+          112,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "accuracy-stage0",
+        [
+          160,
+          0,
+          256,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "both ports drive full authored camera bounds",
+      "passed": true,
+      "details": [
+        "accuracy-stage0",
+        "right",
+        8
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "accuracy-stage0",
+        [
+          0,
+          0,
+          112,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "accuracy-stage0",
+        [
+          160,
+          0,
+          256,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "both ports drive full authored camera bounds",
+      "passed": true,
+      "details": [
+        "accuracy-stage0",
+        "left",
+        -8
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "accuracy-stage0",
+        [
+          0,
+          0,
+          112,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "accuracy-stage0",
+        [
+          160,
+          0,
+          256,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "P2 Start enters native pause before freeze proof",
+      "passed": true,
+      "details": "accuracy-stage0"
+    },
+    {
+      "check": "actual controller contacts produce hitstop and KO",
+      "passed": true,
+      "details": [
+        "accuracy-stage0",
+        7,
+        42
+      ]
+    },
+    {
+      "check": "PPU shows bounded whole-scene contact shake",
+      "passed": true,
+      "details": [
+        "accuracy-stage0",
+        [
+          -2,
+          -1,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "check": "pinned core retains native NTSC video cadence",
+      "passed": true,
+      "details": 60.098811862348406
+    },
+    {
+      "check": "native SPC produces captured PCM without a device",
+      "passed": true,
+      "details": [
+        "accuracy-stage0",
+        1809296,
+        5343
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        0,
+        4,
+        6
+      ]
+    },
+    {
+      "check": "both ports issue simultaneous native low waves",
+      "passed": true,
+      "details": [
+        "accuracy-stress0",
+        44
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        1,
+        4,
+        6
+      ]
+    },
+    {
+      "check": "both ports drive full authored camera bounds",
+      "passed": true,
+      "details": [
+        "accuracy-stage1",
+        "left",
+        -8
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "accuracy-stage1",
+        [
+          0,
+          0,
+          112,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "accuracy-stage1",
+        [
+          160,
+          0,
+          256,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "both ports drive full authored camera bounds",
+      "passed": true,
+      "details": [
+        "accuracy-stage1",
+        "right",
+        8
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "accuracy-stage1",
+        [
+          0,
+          0,
+          112,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "accuracy-stage1",
+        [
+          160,
+          0,
+          256,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "both ports drive full authored camera bounds",
+      "passed": true,
+      "details": [
+        "accuracy-stage1",
+        "left",
+        -8
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "accuracy-stage1",
+        [
+          0,
+          0,
+          112,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "accuracy-stage1",
+        [
+          160,
+          0,
+          256,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "P2 Start enters native pause before freeze proof",
+      "passed": true,
+      "details": "accuracy-stage1"
+    },
+    {
+      "check": "actual controller contacts produce hitstop and KO",
+      "passed": true,
+      "details": [
+        "accuracy-stage1",
+        7,
+        42
+      ]
+    },
+    {
+      "check": "PPU shows bounded whole-scene contact shake",
+      "passed": true,
+      "details": [
+        "accuracy-stage1",
+        [
+          -2,
+          -1,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "check": "pinned core retains native NTSC video cadence",
+      "passed": true,
+      "details": 60.098811862348406
+    },
+    {
+      "check": "native SPC produces captured PCM without a device",
+      "passed": true,
+      "details": [
+        "accuracy-stage1",
+        1837018,
+        5279
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        1,
+        4,
+        6
+      ]
+    },
+    {
+      "check": "both ports issue simultaneous native low waves",
+      "passed": true,
+      "details": [
+        "accuracy-stress1",
+        44
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        2,
+        4,
+        6
+      ]
+    },
+    {
+      "check": "both ports drive full authored camera bounds",
+      "passed": true,
+      "details": [
+        "accuracy-stage2",
+        "left",
+        -8
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "accuracy-stage2",
+        [
+          0,
+          0,
+          112,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "accuracy-stage2",
+        [
+          160,
+          0,
+          256,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "both ports drive full authored camera bounds",
+      "passed": true,
+      "details": [
+        "accuracy-stage2",
+        "right",
+        8
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "accuracy-stage2",
+        [
+          0,
+          0,
+          112,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "accuracy-stage2",
+        [
+          160,
+          0,
+          256,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "both ports drive full authored camera bounds",
+      "passed": true,
+      "details": [
+        "accuracy-stage2",
+        "left",
+        -8
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "accuracy-stage2",
+        [
+          0,
+          0,
+          112,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "HUD names/health stay exact during whole-plane movement",
+      "passed": true,
+      "details": [
+        "accuracy-stage2",
+        [
+          160,
+          0,
+          256,
+          16
+        ]
+      ]
+    },
+    {
+      "check": "P2 Start enters native pause before freeze proof",
+      "passed": true,
+      "details": "accuracy-stage2"
+    },
+    {
+      "check": "actual controller contacts produce hitstop and KO",
+      "passed": true,
+      "details": [
+        "accuracy-stage2",
+        7,
+        42
+      ]
+    },
+    {
+      "check": "PPU shows bounded whole-scene contact shake",
+      "passed": true,
+      "details": [
+        "accuracy-stage2",
+        [
+          -2,
+          -1,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "check": "pinned core retains native NTSC video cadence",
+      "passed": true,
+      "details": 60.098811862348406
+    },
+    {
+      "check": "native SPC produces captured PCM without a device",
+      "passed": true,
+      "details": [
+        "accuracy-stage2",
+        1864754,
+        5433
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        2,
+        4,
+        6
+      ]
+    },
+    {
+      "check": "both ports issue simultaneous native low waves",
+      "passed": true,
+      "details": [
+        "accuracy-stress2",
+        44
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        2,
+        2,
+        3
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        1,
+        4,
+        5
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        0,
+        6,
+        7
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        2,
+        8,
+        9
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        1,
+        10,
+        11
+      ]
+    },
+    {
+      "check": "every fighter and both controller ports covered by native motion",
+      "passed": true,
+      "details": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        0,
+        4,
+        6
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        1,
+        4,
+        6
+      ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        2,
+        4,
+        6
+      ]
+    }
+  ],
+  "failure_arrays": {
+    "cadence": [],
+    "native_timing": [],
+    "overflow": [],
+    "transfer": [],
+    "ppu": [],
+    "freeze": [],
+    "spc": []
+  },
+  "stages": [
+    {
+      "stage": 0,
+      "core": "snes9x",
+      "video_timing": {
+        "fps": 60.098811862348406,
+        "pcm_sample_rate": 32040.0,
+        "callback_size": [
+          256,
+          224
+        ]
+      },
+      "intro_frozen_samples": 110,
+      "camera_bounds": [
+        -8,
+        8
+      ],
+      "pixel_oracle_frames": 492,
+      "contacts": 7,
+      "frozen_hitstop_samples": 42,
+      "impact_pixel_offsets": [
+        -2,
+        -1,
+        0,
+        1
+      ],
+      "movement_clip": "docs/screenshots/combat-24-stage08/snes9x-stage0-movement.gif",
+      "impact_clip": "docs/screenshots/combat-24-stage08/snes9x-stage0-contacts.gif",
+      "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
+      "pixel_samples_sha256": "c6b84c4f2103f94d65376d4ccbadc3a4712b22419a37fa839148c6122f08059e",
+      "measured_frames": 1212,
+      "cadence_deltas": [
+        1
+      ],
+      "max_spc_backlog": 3,
+      "obj_peak_sprites": 16,
+      "obj_peak_tiles": 32,
+      "actor_dma_frames": 345
+    },
+    {
+      "stage": 1,
+      "core": "snes9x",
+      "video_timing": {
+        "fps": 60.098811862348406,
+        "pcm_sample_rate": 32040.0,
+        "callback_size": [
+          256,
+          224
+        ]
+      },
+      "intro_frozen_samples": 110,
+      "camera_bounds": [
+        -8,
+        8
+      ],
+      "pixel_oracle_frames": 492,
+      "contacts": 7,
+      "frozen_hitstop_samples": 42,
+      "impact_pixel_offsets": [
+        -2,
+        -1,
+        0,
+        1
+      ],
+      "movement_clip": "docs/screenshots/combat-24-stage08/snes9x-stage1-movement.gif",
+      "impact_clip": "docs/screenshots/combat-24-stage08/snes9x-stage1-contacts.gif",
+      "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
+      "pixel_samples_sha256": "fc60484533559db72c24818ea074eb62f114ef333963b88c43b4d25670d335ac",
+      "measured_frames": 1212,
+      "cadence_deltas": [
+        1
+      ],
+      "max_spc_backlog": 3,
+      "obj_peak_sprites": 16,
+      "obj_peak_tiles": 32,
+      "actor_dma_frames": 345
+    },
+    {
+      "stage": 2,
+      "core": "snes9x",
+      "video_timing": {
+        "fps": 60.098811862348406,
+        "pcm_sample_rate": 32040.0,
+        "callback_size": [
+          256,
+          224
+        ]
+      },
+      "intro_frozen_samples": 110,
+      "camera_bounds": [
+        -8,
+        8
+      ],
+      "pixel_oracle_frames": 492,
+      "contacts": 7,
+      "frozen_hitstop_samples": 42,
+      "impact_pixel_offsets": [
+        -2,
+        -1,
+        0,
+        1
+      ],
+      "movement_clip": "docs/screenshots/combat-24-stage08/snes9x-stage2-movement.gif",
+      "impact_clip": "docs/screenshots/combat-24-stage08/snes9x-stage2-contacts.gif",
+      "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
+      "pixel_samples_sha256": "d2813f81b38e2435abc1ff5039c9592c4486fe51725927312ada97dea0ff5311",
+      "measured_frames": 1212,
+      "cadence_deltas": [
+        1
+      ],
+      "max_spc_backlog": 3,
+      "obj_peak_sprites": 16,
+      "obj_peak_tiles": 32,
+      "actor_dma_frames": 345
+    },
+    {
+      "stage": 0,
+      "core": "accuracy",
+      "video_timing": {
+        "fps": 60.098811862348406,
+        "pcm_sample_rate": 32040.5,
+        "callback_size": [
+          256,
+          224
+        ]
+      },
+      "intro_frozen_samples": 110,
+      "camera_bounds": [
+        -8,
+        8
+      ],
+      "pixel_oracle_frames": 492,
+      "contacts": 7,
+      "frozen_hitstop_samples": 42,
+      "impact_pixel_offsets": [
+        -2,
+        -1,
+        0,
+        1
+      ],
+      "movement_clip": "docs/screenshots/combat-24-stage08/accuracy-stage0-movement.gif",
+      "impact_clip": "docs/screenshots/combat-24-stage08/accuracy-stage0-contacts.gif",
+      "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
+      "pixel_samples_sha256": "ae53bed244a191db3ed9988905593407dc71532ecda26e827263ca7196eb77ae",
+      "measured_frames": 1212,
+      "cadence_deltas": [
+        1
+      ],
+      "max_spc_backlog": 3,
+      "obj_peak_sprites": 16,
+      "obj_peak_tiles": 32,
+      "actor_dma_frames": 345
+    },
+    {
+      "stage": 1,
+      "core": "accuracy",
+      "video_timing": {
+        "fps": 60.098811862348406,
+        "pcm_sample_rate": 32040.5,
+        "callback_size": [
+          256,
+          224
+        ]
+      },
+      "intro_frozen_samples": 110,
+      "camera_bounds": [
+        -8,
+        8
+      ],
+      "pixel_oracle_frames": 492,
+      "contacts": 7,
+      "frozen_hitstop_samples": 42,
+      "impact_pixel_offsets": [
+        -2,
+        -1,
+        0,
+        1
+      ],
+      "movement_clip": "docs/screenshots/combat-24-stage08/accuracy-stage1-movement.gif",
+      "impact_clip": "docs/screenshots/combat-24-stage08/accuracy-stage1-contacts.gif",
+      "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
+      "pixel_samples_sha256": "6cfdb36ad805ae60aa713d35fc5396f42d0715fc441211d262402bb869fd69f6",
+      "measured_frames": 1212,
+      "cadence_deltas": [
+        1
+      ],
+      "max_spc_backlog": 3,
+      "obj_peak_sprites": 16,
+      "obj_peak_tiles": 32,
+      "actor_dma_frames": 345
+    },
+    {
+      "stage": 2,
+      "core": "accuracy",
+      "video_timing": {
+        "fps": 60.098811862348406,
+        "pcm_sample_rate": 32040.5,
+        "callback_size": [
+          256,
+          224
+        ]
+      },
+      "intro_frozen_samples": 110,
+      "camera_bounds": [
+        -8,
+        8
+      ],
+      "pixel_oracle_frames": 492,
+      "contacts": 7,
+      "frozen_hitstop_samples": 42,
+      "impact_pixel_offsets": [
+        -2,
+        -1,
+        0,
+        1
+      ],
+      "movement_clip": "docs/screenshots/combat-24-stage08/accuracy-stage2-movement.gif",
+      "impact_clip": "docs/screenshots/combat-24-stage08/accuracy-stage2-contacts.gif",
+      "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
+      "pixel_samples_sha256": "b6861a11941d057733ff6ca501b5d0297a79155a21ba1adf091060b3ebaf68df",
+      "measured_frames": 1212,
+      "cadence_deltas": [
+        1
+      ],
+      "max_spc_backlog": 3,
+      "obj_peak_sprites": 16,
+      "obj_peak_tiles": 32,
+      "actor_dma_frames": 345
+    }
+  ],
+  "stress": [
+    {
+      "stage": 0,
+      "core": "snes9x",
+      "two_wave_frames": 44,
+      "wave_frames": 53,
+      "clip": "docs/screenshots/combat-24-stage08/snes9x-stress0.gif",
+      "measured_frames": 720,
+      "cadence_deltas": [
+        1
+      ],
+      "max_spc_backlog": 0,
+      "obj_peak_sprites": 16,
+      "obj_peak_tiles": 32,
+      "actor_dma_frames": 168
+    },
+    {
+      "stage": 1,
+      "core": "snes9x",
+      "two_wave_frames": 44,
+      "wave_frames": 53,
+      "clip": "docs/screenshots/combat-24-stage08/snes9x-stress1.gif",
+      "measured_frames": 720,
+      "cadence_deltas": [
+        1
+      ],
+      "max_spc_backlog": 0,
+      "obj_peak_sprites": 16,
+      "obj_peak_tiles": 32,
+      "actor_dma_frames": 168
+    },
+    {
+      "stage": 2,
+      "core": "snes9x",
+      "two_wave_frames": 44,
+      "wave_frames": 53,
+      "clip": "docs/screenshots/combat-24-stage08/snes9x-stress2.gif",
+      "measured_frames": 720,
+      "cadence_deltas": [
+        1
+      ],
+      "max_spc_backlog": 0,
+      "obj_peak_sprites": 16,
+      "obj_peak_tiles": 32,
+      "actor_dma_frames": 168
+    },
+    {
+      "stage": 0,
+      "core": "accuracy",
+      "two_wave_frames": 44,
+      "wave_frames": 53,
+      "clip": "docs/screenshots/combat-24-stage08/accuracy-stress0.gif",
+      "measured_frames": 720,
+      "cadence_deltas": [
+        1
+      ],
+      "max_spc_backlog": 0,
+      "obj_peak_sprites": 16,
+      "obj_peak_tiles": 32,
+      "actor_dma_frames": 168
+    },
+    {
+      "stage": 1,
+      "core": "accuracy",
+      "two_wave_frames": 44,
+      "wave_frames": 53,
+      "clip": "docs/screenshots/combat-24-stage08/accuracy-stress1.gif",
+      "measured_frames": 720,
+      "cadence_deltas": [
+        1
+      ],
+      "max_spc_backlog": 0,
+      "obj_peak_sprites": 16,
+      "obj_peak_tiles": 32,
+      "actor_dma_frames": 168
+    },
+    {
+      "stage": 2,
+      "core": "accuracy",
+      "two_wave_frames": 44,
+      "wave_frames": 53,
+      "clip": "docs/screenshots/combat-24-stage08/accuracy-stress2.gif",
+      "measured_frames": 720,
+      "cadence_deltas": [
+        1
+      ],
+      "max_spc_backlog": 0,
+      "obj_peak_sprites": 16,
+      "obj_peak_tiles": 32,
+      "actor_dma_frames": 168
+    }
+  ],
+  "roster": [
+    {
+      "fighters": [
+        0,
+        1
+      ],
+      "measured_frames": 180,
+      "cadence_deltas": [
+        1
+      ],
+      "max_spc_backlog": 0,
+      "obj_peak_sprites": 16,
+      "obj_peak_tiles": 32,
+      "actor_dma_frames": 71
+    },
+    {
+      "fighters": [
+        2,
+        3
+      ],
+      "measured_frames": 180,
+      "cadence_deltas": [
+        1
+      ],
+      "max_spc_backlog": 0,
+      "obj_peak_sprites": 16,
+      "obj_peak_tiles": 32,
+      "actor_dma_frames": 79
+    },
+    {
+      "fighters": [
+        4,
+        5
+      ],
+      "measured_frames": 180,
+      "cadence_deltas": [
+        1
+      ],
+      "max_spc_backlog": 0,
+      "obj_peak_sprites": 16,
+      "obj_peak_tiles": 32,
+      "actor_dma_frames": 66
+    },
+    {
+      "fighters": [
+        6,
+        7
+      ],
+      "measured_frames": 180,
+      "cadence_deltas": [
+        1
+      ],
+      "max_spc_backlog": 0,
+      "obj_peak_sprites": 16,
+      "obj_peak_tiles": 32,
+      "actor_dma_frames": 62
+    },
+    {
+      "fighters": [
+        8,
+        9
+      ],
+      "measured_frames": 180,
+      "cadence_deltas": [
+        1
+      ],
+      "max_spc_backlog": 0,
+      "obj_peak_sprites": 16,
+      "obj_peak_tiles": 32,
+      "actor_dma_frames": 82
+    },
+    {
+      "fighters": [
+        10,
+        11
+      ],
+      "measured_frames": 180,
+      "cadence_deltas": [
+        1
+      ],
+      "max_spc_backlog": 0,
+      "obj_peak_sprites": 16,
+      "obj_peak_tiles": 32,
+      "actor_dma_frames": 74
+    }
+  ],
+  "source_files_sha256": {
+    "src/game.c": "9c237758727b2d57da273e8cb2f21fd49e8ba47e3b42fd9b3b1832ad95be66c7",
+    "src/stage_depth.h": "90faee78052053f8e2e659a7657ce752b685b35fa00dfab84ecd8e84ef9daef7",
+    "tools/stage_depth_assets.py": "20ea0c7e291a7ed0bd292129dadb9500c0ee05790600b81f04d59db95d4fde80",
+    "tools/test_combat_24_stage08.py": "aa4cdf08ca131297f7ecb860c0c49450e6009d5d3fb43f14fb2dbeaf62d890bd",
+    "assets/art/stages/depth-v1/00-las-condes.json": "96b385badfdf50c8eed9762373366678dbe0324a46a5c72ad5d853d0b02e639b",
+    "assets/art/stages/depth-v1/00-las-condes.png": "4f3191e9acee6b4beb0670fb8f12d6145f7d96cd7a555312c082d1952fc94094",
+    "assets/art/stages/depth-v1/01-castillo.json": "e008cd94e52d4abec02ed537ce3d668e5e8abbaf9d4bd8e59907bbd70dede408",
+    "assets/art/stages/depth-v1/01-castillo.png": "d0301011c017370058308c4c8519dedd540fadcd1253fa3d2fec17594df27bdf",
+    "assets/art/stages/depth-v1/02-oficina.json": "71b2d1ad1a43001f28e0a741dc33129de84ee45fd6d8e4b80d5bc0b04a98e27d",
+    "assets/art/stages/depth-v1/02-oficina.png": "f4c617d58903f77b4a1643e5664c1f70b26a4320fecf7d663c5379f12e1dfa6f",
+    "assets/art/stages/depth-v1/source/00-las-condes-initial.png": "91d78a29e32802576fff36a253012644891c3726dc7bab2d184e4fa4fe5649b5",
+    "assets/art/stages/depth-v1/stages.json": "ea420db484cb560b11e30bc4882d2ac0651f3926e4c5f6d0b22b6a1580648614"
+  },
+  "retained_candidate_rom": "build/v024-stage08.sfc",
+  "version": "0.24.0",
+  "resources": {
+    "changed_generated": [
+      "assets/generated/assets.h",
+      "assets/generated/data.asm",
+      "assets/generated/stage0.png",
+      "assets/generated/stage0_map.bin",
+      "assets/generated/stage0_pal.bin",
+      "assets/generated/stage0_tiles.bin",
+      "assets/generated/stage1.png",
+      "assets/generated/stage1_map.bin",
+      "assets/generated/stage1_pal.bin",
+      "assets/generated/stage1_tiles.bin",
+      "assets/generated/stage2.png",
+      "assets/generated/stage2_map.bin",
+      "assets/generated/stage2_pal.bin",
+      "assets/generated/stage2_tiles.bin"
+    ],
+    "added_generated": [
+      "assets/generated/stage-depth.json",
+      "assets/generated/stage0_floor_map.bin",
+      "assets/generated/stage0_floor_tiles.bin",
+      "assets/generated/stage1_floor_map.bin",
+      "assets/generated/stage1_floor_tiles.bin",
+      "assets/generated/stage2_floor_map.bin",
+      "assets/generated/stage2_floor_tiles.bin"
+    ],
+    "preserved_generated": 205,
+    "generated_count": 226,
+    "existing_ram_symbols": 1318,
+    "ram_moved": {},
+    "new_ram_bytes": 0,
+    "reused_stage_bytes": 16,
+    "hdma_mask": 0,
+    "live_stage_dma_bytes": 0,
+    "new_obj_entries": 0,
+    "actor_pose_dma_bytes": 3840,
+    "actor_obj_entries": 30,
+    "linked_section_bytes": 3286985,
+    "stage_allocations": {
+      "schema": 1,
+      "scope": "stage-depth-v1",
+      "baseline_commit": "3f51120",
+      "bg1": {
+        "gfx_word": [
+          0,
+          12287
+        ],
+        "map_word": [
+          14336,
+          16383
+        ],
+        "map_size": [
+          64,
+          32
+        ],
+        "bpp": 4
+      },
+      "bg3": {
+        "gfx_word": [
+          12288,
+          14335
+        ],
+        "map_word": [
+          23552,
+          24575
+        ],
+        "map_size": [
+          32,
+          32
+        ],
+        "bpp": 2
+      },
+      "cgram": "BG1 uses existing stage colors32..127; BG3 reads unchanged UI colors0..31",
+      "hdma_mask": 0,
+      "live_dma_bytes": 0,
+      "obj_entries": 0,
+      "stages": [
+        {
+          "id": 0,
+          "name": "Las Condes",
+          "source": "assets/art/stages/depth-v1/00-las-condes.png",
+          "source_sha256": "4f3191e9acee6b4beb0670fb8f12d6145f7d96cd7a555312c082d1952fc94094",
+          "native_canvas": [
+            288,
+            224
+          ],
+          "viewport": [
+            16,
+            0,
+            272,
+            224
+          ],
+          "camera_range": [
+            -8,
+            8
+          ],
+          "edge_gutters": 16,
+          "floor_seam_y": 184,
+          "bg1_tiles": 639,
+          "bg3_tiles": 2,
+          "ambient_enabled": false,
+          "floor_quantization_rms": 42.62678393138912,
+          "outputs": {
+            "stage0_tiles.bin": {
+              "bytes": 20448,
+              "sha256": "af15a20631a917ecf0a0f238687f9b453100e5f226a803b82d48085cbaf50e56"
+            },
+            "stage0_map.bin": {
+              "bytes": 4096,
+              "sha256": "9110d6e0fddbc5adbe9881de561c3343e3dd7bb8dbb4a83d4eb5e8964efcdeca"
+            },
+            "stage0_pal.bin": {
+              "bytes": 192,
+              "sha256": "a41e09596b2273ec5dc809bf846ae145873f6975e96d8ba6710ba61b0d596f5f"
+            },
+            "stage0_floor_tiles.bin": {
+              "bytes": 32,
+              "sha256": "3e0e009586dd84839e67bc0635f9059e5a711780559539e0bccdfbc22de1b515"
+            },
+            "stage0_floor_map.bin": {
+              "bytes": 2048,
+              "sha256": "73be065b2b04739e10241497db4cb04f0303e243724eb6c9400be06caac1cc3b"
+            }
+          }
+        },
+        {
+          "id": 1,
+          "name": "El Castillo",
+          "source": "assets/art/stages/depth-v1/01-castillo.png",
+          "source_sha256": "d0301011c017370058308c4c8519dedd540fadcd1253fa3d2fec17594df27bdf",
+          "native_canvas": [
+            288,
+            224
+          ],
+          "viewport": [
+            16,
+            0,
+            272,
+            224
+          ],
+          "camera_range": [
+            -8,
+            8
+          ],
+          "edge_gutters": 16,
+          "floor_seam_y": 192,
+          "bg1_tiles": 680,
+          "bg3_tiles": 2,
+          "ambient_enabled": false,
+          "floor_quantization_rms": 19.941490547283465,
+          "outputs": {
+            "stage1_tiles.bin": {
+              "bytes": 21760,
+              "sha256": "d2cba8bbdd0dc8889d314c41e3df810b6b3dbd65d9e0b602091727249940e3fa"
+            },
+            "stage1_map.bin": {
+              "bytes": 4096,
+              "sha256": "4f341d2ddd8318ba789251d0febd4ba380a7d6a3bfa8f41169a36511c75b1f6c"
+            },
+            "stage1_pal.bin": {
+              "bytes": 192,
+              "sha256": "8ebae9d813b4c87deb418fee1f792be20df6dccfd3bfd2d51a366183b6fd8beb"
+            },
+            "stage1_floor_tiles.bin": {
+              "bytes": 32,
+              "sha256": "3e0e009586dd84839e67bc0635f9059e5a711780559539e0bccdfbc22de1b515"
+            },
+            "stage1_floor_map.bin": {
+              "bytes": 2048,
+              "sha256": "194088674399bd4b1054ac08d3e01a5b60910eb38b05a49c67be1ef2564e4b71"
+            }
+          }
+        },
+        {
+          "id": 2,
+          "name": "La Oficina",
+          "source": "assets/art/stages/depth-v1/02-oficina.png",
+          "source_sha256": "f4c617d58903f77b4a1643e5664c1f70b26a4320fecf7d663c5379f12e1dfa6f",
+          "native_canvas": [
+            288,
+            224
+          ],
+          "viewport": [
+            16,
+            0,
+            272,
+            224
+          ],
+          "camera_range": [
+            -8,
+            8
+          ],
+          "edge_gutters": 16,
+          "floor_seam_y": 184,
+          "bg1_tiles": 614,
+          "bg3_tiles": 2,
+          "ambient_enabled": false,
+          "floor_quantization_rms": 11.234252578146146,
+          "outputs": {
+            "stage2_tiles.bin": {
+              "bytes": 19648,
+              "sha256": "8aa74aea5788c4aa9778ea217069b091cafedd47fabc1511e19561e2e09056bd"
+            },
+            "stage2_map.bin": {
+              "bytes": 4096,
+              "sha256": "d8af8a009c1456a4d190e849de28fe244d59404bd4cbe98f921b82b3fc879232"
+            },
+            "stage2_pal.bin": {
+              "bytes": 192,
+              "sha256": "7183561eace000f59bbc607f92347bf3d9a14043febf8e79f4c5ec89a00df2bd"
+            },
+            "stage2_floor_tiles.bin": {
+              "bytes": 32,
+              "sha256": "3e0e009586dd84839e67bc0635f9059e5a711780559539e0bccdfbc22de1b515"
+            },
+            "stage2_floor_map.bin": {
+              "bytes": 2048,
+              "sha256": "ad67fdcfe915636050e04b8f8e07f51c51246d5a68109909aa2bbb94d0028ba6"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "accuracy_core": {
+    "rom_sha256": "2ec631011c9bde8e073b96f0d74863a52fdf756e411579495cf0d1d6497139a7",
+    "manifest_sha256": "2ec631011c9bde8e073b96f0d74863a52fdf756e411579495cf0d1d6497139a7",
+    "rom_bytes": 4194304,
+    "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
+    "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
+  },
+  "snes9x_core_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
+  "before": [
+    {
+      "stage": 0,
+      "rom_sha256": "057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd",
+      "clip": "docs/screenshots/combat-24-stage08/baseline-stage0.gif"
+    },
+    {
+      "stage": 1,
+      "rom_sha256": "057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd",
+      "clip": "docs/screenshots/combat-24-stage08/baseline-stage1.gif"
+    },
+    {
+      "stage": 2,
+      "rom_sha256": "057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd",
+      "clip": "docs/screenshots/combat-24-stage08/baseline-stage2.gif"
+    }
+  ],
+  "elapsed_seconds": 227.593,
+  "check_count": 710
+}

@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "id": 1,
+  "name": "El Castillo",
+  "mode": "built-in imagegen",
+  "reference": "assets/art/stages/01-castillo-cartoon-v2.png",
+  "input_roles": [
+    {
+      "file": "assets/art/stages/01-castillo-cartoon-v2.png",
+      "role": "location and arcade style reference"
+    }
+  ],
+  "prompts": [
+    "Use case: stylized-concept\nAsset type: new native SNES El Castillo house-party stage master for TWO coherent hardware background planes. Reference image is location/style guide. Create a clean wide9:7 scene: recognizable warm ivory/coral two-story Chilean party house, red clay roof, black balcony, central covered patio, right wing, string bulbs, lush rounded garden, a few tiny anonymous cartoon coworkers and a party table, clear blue sky and pink clouds. Bold 1990s arcade cartoon outlines, broad flat cel color clusters, no grain. Entire house and furniture are one coherent mid-distance plane, all architecture, plant pots, furniture and tiny people fully above76percent canvas height. A broad empty quiet paving apron extends across the entire bottom24percent. Lowest18percent must be flat cool gray-blue horizontal paving with only subtle horizontal seams, NO diagonal or vertical floor grid, no objects, no grass below82percent. Natural straight horizontal pavement joint at82percent height is plane boundary. Camera will shift ENTIRE house plane only8nativepixels behind fixed bottom40pixel pavement, never split objects or wrap architecture. Generous continuation of scenery16nativepixels at each side; house important features inside center256of288. Quiet sky top18percent covered byHUD. Empty fighting lane, no foreground fighters, no UI, no logos no watermark, no text, no copyright characters. Opaque wide9:7 artwork."
+  ],
+  "sources": [
+    "01-castillo.png"
+  ],
+  "processing": {
+    "crop": "single centered9:7 isotropic scene crop",
+    "native_canvas": [
+      288,
+      224
+    ],
+    "resampling": "nearest",
+    "whole_architecture_plane": [
+      0,
+      40,
+      288,
+      192
+    ],
+    "fixed_pavement": [
+      16,
+      192,
+      272,
+      224
+    ],
+    "top40": "fully occluded by existing opaque HUD"
+  },
+  "source_hashes": {
+    "01-castillo.png": "d0301011c017370058308c4c8519dedd540fadcd1253fa3d2fec17594df27bdf"
+  },
+  "reference_sha256": "8d7148129197f22bd2dc1c0a2afa2f76496299a114a54b5cbbac84aa6e41c3df",
+  "scope": "stage-depth-v1",
+  "generation_outputs": [
+    {
+      "file": "01-castillo.png",
+      "sha256": "d0301011c017370058308c4c8519dedd540fadcd1253fa3d2fec17594df27bdf",
+      "generated_image_id": "exec-87730a89-5686-49fd-aed7-a7ab61ce76df",
+      "raw_default_path": "C:/Users/user/.codex/generated_images/01a16b31-f438-7352-b9b9-168e75ef3c50/exec-87730a89-5686-49fd-aed7-a7ab61ce76df.png",
+      "size": [
+        1422,
+        1106
+      ],
+      "selected": true
+    }
+  ]
+}
