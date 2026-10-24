@@ -334,8 +334,9 @@ def punish():
         check(s["hp2"] == 128, "Atomic Cascade missed before the recovery punish")
         for _ in range(40):
             s = sample(e)
-            # Feature03's shorter Cristobal jab needs a genuine close punish.
-            if abs(s["x2"] - s["x1"]) <= 32 * 16:
+            # Use the spacing kick to punish a distant whiff. Slower walking
+            # cannot turn this far recovery into a close jab opportunity.
+            if abs(s["x2"] - s["x1"]) <= 40 * 16:
                 break
             step(e, p2=["left"])
         before = sample(e)
@@ -344,16 +345,17 @@ def punish():
         found = None
         for tick in range(24):
             prior = sample(e)
-            s = step(e, p2=["y"] if tick < 3 else [])
+            s = step(e, p2=["b"] if tick < 3 else [])
             if s["hp1"] < 128:
                 found = {"before_contact": prior, "after_contact": s}
                 break
         check(found is not None and found['after_contact']["counter2"] == 0
+              and found['after_contact']["action2"] == 4
               and found['before_contact']['superActive'][0]
               and ACTIVE_END[2] <= found['before_contact']['ticks'][0] + 1 < END[2],
-              "controller approach and light punch punish recovery without a startup counter")
+              "controller approach and spacing kick punish recovery without a startup counter")
         return {"recovery_tick": before["ticks"][0], "punish_hp": found['after_contact']["hp1"],
-                "contact": found}
+                "command": "B light kick", "gap_before_12_4": abs(before['x2']-before['x1']), "contact": found}
     finally:
         e.close()
 

@@ -656,6 +656,9 @@ def verify_native_proportions() -> dict[str, object]:
                                  "actions" if pose < 48 else "airborne")
                 if 20<=pose<28 and entry.get('walking_revision'):
                     expected_kind='walking-v2'
+                for revision in entry.get('combat_revisions',[]):
+                    if pose in revision['frame_ids']:
+                        expected_kind=revision['scope']
                 source_kind = item.get("source_kind", item.get("source_role"))
                 check(source_kind == expected_kind,
                       "frame metadata preserves its source role", {
@@ -1202,27 +1205,27 @@ def assert_special_family(e: Emulator, fighter: int) -> dict[str, object]:
     }
 
 
-def close_p1_to_guard_range(e: Emulator) -> int:
-    """Put P1 at 35--40 pixels from an idle P2 using only the controller."""
+def close_p1_to_guard_range(e: Emulator, near: int = 35, far: int = 40) -> int:
+    """Put P1 inside the requested neutral gap using only the controller."""
 
     for _ in range(260):
         s = state(e)
         distance = abs(signed16(s["x2"]) - signed16(s["x1"]))
-        if 35 * 16 <= distance <= 40 * 16:
+        if near * 16 <= distance <= far * 16:
             return distance
-        e.run(1, p1=["right"] if distance > 40 * 16 else ["left"])
+        e.run(1, p1=["right"] if distance > far * 16 else ["left"])
     raise AssertionError(("P1 could not close to the guard range", state(e)))
 
 
-def close_p2_to_attack_range(e: Emulator) -> int:
-    """Put a left-facing P2 at 35--40 pixels from a passive P1."""
+def close_p2_to_attack_range(e: Emulator, near: int = 35, far: int = 40) -> int:
+    """Put a left-facing P2 inside the requested neutral gap."""
 
     for _ in range(260):
         s = state(e)
         distance = abs(signed16(s["x2"]) - signed16(s["x1"]))
-        if 35 * 16 <= distance <= 40 * 16:
+        if near * 16 <= distance <= far * 16:
             return distance
-        e.run(1, p2=["left"] if distance > 40 * 16 else ["right"])
+        e.run(1, p2=["left"] if distance > far * 16 else ["right"])
     raise AssertionError(("P2 could not close to the attack range", state(e)))
 
 
@@ -1253,7 +1256,10 @@ def verify_guard_case(fighter: int, guard: str, blocked: bool) -> dict[str, obje
 
     e = boot(1, fighter, 0, 1)
     try:
-        distance = close_p1_to_guard_range(e)
+        # The visible rising fist replaces the old profile-wide rectangle.
+        # Begin close enough that holding standing back during its longer
+        # windup still tests a block, rather than a successful retreat/whiff.
+        distance = close_p1_to_guard_range(e, 22, 26) if SPECIAL_FAMILY[fighter] == 3 else close_p1_to_guard_range(e)
         guard_keys = ["right"] if guard == "standing" else ["down", "right"]
         before = state(e)
         face1 = side_field(before, 0, "face", "facing", "direction")
@@ -1300,7 +1306,7 @@ def verify_p2_special_hit(fighter: int) -> dict[str, object]:
 
     e = boot(1, 1, 0, fighter)
     try:
-        distance = close_p2_to_attack_range(e)
+        distance = close_p2_to_attack_range(e, 22, 26) if SPECIAL_FAMILY[fighter] == 3 else close_p2_to_attack_range(e)
         before = state(e)
         face2 = side_field(before, 1, "face", "facing", "direction")
         if face2 is not None:

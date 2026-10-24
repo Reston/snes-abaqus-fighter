@@ -1,0 +1,96 @@
+{
+  "status": "passed",
+  "version": "0.24.0",
+  "rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
+  "source_commit": "a1ee733aea036ad985bca9bdee29cc170cabd2ac",
+  "host_contract": {
+    "python": "3.12.10",
+    "pillow": "13.0.0",
+    "gui_opened": false,
+    "audio_device_opened": false,
+    "priority_class": 16384,
+    "logical_processors": [
+      12,
+      13
+    ]
+  },
+  "source_sha256": {
+    "tools/test_pose_revision_guards.py": "591ade0ac9fa3e83c0169a2900d0f6f642df9fceed5b031c6ecef47f52123093",
+    "tools/test_v024_preservation_guards.py": "34dd5d860208298f9bc405f7a535b449fa6329dcf06fda5f9d44f46acf235e82",
+    "tools/test_combat_24_evidence.py": "62811716e8f0f8c39b494038bf20ed372ed6fb4b56618863a067681efe06c79e",
+    "tools/pose_revision_assets.py": "7baca936c90d63dbedb732b1a222207322bed881e84841cb6d41179c7e539709",
+    "tools/v024_contracts.py": "1b8bbe9ffee65ff4f72410564e26941bb86da72ae914da3f5c74bdbb4891a076",
+    "tools/check_combat_24_guards.py": "32a9affd932696bdf409e650214d205773123e4e17947fe7471df741814eb698",
+    "tools/test_champion.py": "d2424acd2cb75a7e08c5a2832a0bf6e5dc3cdb708f6aa89293d4ac3fe2d1e4d5",
+    "tools/collate_combat_24.py": "5ece963d25e9ba1c37b17a3db76e3a06fb400dfb2454e8fe6f63c216ea3c3646",
+    "tools/compare_special_24_state.py": "cc9d89583125f0cc5e2d059db32bf64e242f9deccb3b1b85e1771e7862087e0f",
+    "tools/test_special_24_timing.py": "65f6aa8689ad7fa080e428bdf04399113275f04a9b40ff8070bdb80278d283ad",
+    "tools/test_special_24_cpu_timing.py": "4e57c11a7a8bf1a7472e5fe4319995b8b729b34dd4f06f944d1b2c2dad6e310d"
+  },
+  "runs": [
+    {
+      "suite": "tools/test_pose_revision_guards.py",
+      "optimized": false,
+      "arguments": [
+        "tools/test_pose_revision_guards.py"
+      ],
+      "exit_code": 0,
+      "tests": 9,
+      "output": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.159s\n\nOK\n"
+    },
+    {
+      "suite": "tools/test_pose_revision_guards.py",
+      "optimized": true,
+      "arguments": [
+        "-O",
+        "tools/test_pose_revision_guards.py"
+      ],
+      "exit_code": 0,
+      "tests": 9,
+      "output": ".........\n----------------------------------------------------------------------\nRan 9 tests in 0.087s\n\nOK\n"
+    },
+    {
+      "suite": "tools/test_v024_preservation_guards.py",
+      "optimized": false,
+      "arguments": [
+        "tools/test_v024_preservation_guards.py"
+      ],
+      "exit_code": 0,
+      "tests": 6,
+      "output": "......\n----------------------------------------------------------------------\nRan 6 tests in 1.344s\n\nOK\n"
+    },
+    {
+      "suite": "tools/test_v024_preservation_guards.py",
+      "optimized": true,
+      "arguments": [
+        "-O",
+        "tools/test_v024_preservation_guards.py"
+      ],
+      "exit_code": 0,
+      "tests": 6,
+      "output": "......\n----------------------------------------------------------------------\nRan 6 tests in 1.285s\n\nOK\n"
+    },
+    {
+      "suite": "tools/test_combat_24_evidence.py",
+      "optimized": false,
+      "arguments": [
+        "tools/test_combat_24_evidence.py"
+      ],
+      "exit_code": 0,
+      "tests": 6,
+      "output": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.026s\n\nOK\n"
+    },
+    {
+      "suite": "tools/test_combat_24_evidence.py",
+      "optimized": true,
+      "arguments": [
+        "-O",
+        "tools/test_combat_24_evidence.py"
+      ],
+      "exit_code": 0,
+      "tests": 6,
+      "output": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.026s\n\nOK\n"
+    }
+  ],
+  "elapsed_seconds": 3.859
+}

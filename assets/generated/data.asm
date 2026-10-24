@@ -819,3 +819,39 @@ sfx3:
 .incbin "assets/generated/sfx3.bin"
 sfx3_end:
 .ends
+
+.section "asset_stage0_floor_tiles" superfree
+stage0_floor_tiles:
+.incbin "assets/generated/stage0_floor_tiles.bin"
+stage0_floor_tiles_end:
+.ends
+
+.section "asset_stage0_floor_map" superfree
+stage0_floor_map:
+.incbin "assets/generated/stage0_floor_map.bin"
+stage0_floor_map_end:
+.ends
+
+.section "asset_stage1_floor_tiles" superfree
+stage1_floor_tiles:
+.incbin "assets/generated/stage1_floor_tiles.bin"
+stage1_floor_tiles_end:
+.ends
+
+.section "asset_stage1_floor_map" superfree
+stage1_floor_map:
+.incbin "assets/generated/stage1_floor_map.bin"
+stage1_floor_map_end:
+.ends
+
+.section "asset_stage2_floor_tiles" superfree
+stage2_floor_tiles:
+.incbin "assets/generated/stage2_floor_tiles.bin"
+stage2_floor_tiles_end:
+.ends
+
+.section "asset_stage2_floor_map" superfree
+stage2_floor_map:
+.incbin "assets/generated/stage2_floor_map.bin"
+stage2_floor_map_end:
+.ends

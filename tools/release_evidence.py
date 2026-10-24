@@ -41,7 +41,7 @@ INDEPENDENT_FRAMES = 600
 INDEPENDENT_TOTAL_FRAMES = INDEPENDENT_CASES * INDEPENDENT_FRAMES
 HOUR_SECONDS = 3600.0
 ROM_BYTES = 4 * 1024 * 1024
-GENERATED_ASSET_COUNT = 219
+GENERATED_ASSET_COUNT = 226
 
 EXPECTED_NATIVE_CORE = {
     "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
@@ -133,6 +133,11 @@ SOURCE_INPUT_EXACT = {
     "tools/preservation.py",
     "tools/expansion_contracts.py",
     "tools/walking_assets.py",
+    "tools/pose_revision_assets.py",
+    "tools/v024_contracts.py",
+    "tools/contact_geometry.py",
+    "tools/stage_test_contract.py",
+    "tools/stage_depth_assets.py",
 }
 SOURCE_INPUT_PREFIXES = ("src/", "assets/", "dist/")
 

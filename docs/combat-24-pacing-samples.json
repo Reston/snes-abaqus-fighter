@@ -1,0 +1,851 @@
+{
+  "status": "passed",
+  "version": "0.24.0",
+  "rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
+  "baseline_rom_sha256": "057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd",
+  "scope": "Limited native recoil review clips; full-roster proof is separate",
+  "producer": "tools/copy_combat_24_pacing_samples.py",
+  "producer_sha256": "01641b0eff23ab9271e423da3a7d35e732d3bda60605e9aa0b71f043636d1571",
+  "samples": {
+    "before": {
+      "rom_sha256": "057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd",
+      "source_commit": "a1ee733aea036ad985bca9bdee29cc170cabd2ac",
+      "command": "D:\\snes-abaqus-fighter\\.tools\\python\\python.exe tools/test_combat_24_pacing.py --sample before --baseline --report build/v024-recoil-before.json",
+      "host_contract": {
+        "python": "3.12.10",
+        "pillow": "13.0.0",
+        "gui_opened": false,
+        "audio_device_opened": false,
+        "priority_class": 16384,
+        "logical_processors": [
+          12,
+          13
+        ],
+        "platform": "Windows-11-10.0.26300-SP0",
+        "memory_writes": false,
+        "save_states": false
+      },
+      "source_sha256": {
+        "src/animation_banks.h": "8250cf1816ae8c0de0da6a876b76e0a0b40c10a44e35f782794ca82e283414e9",
+        "src/animation_weight.h": "cdc8308b9a98c000823b7869a20a122e531d9843f7d1143ae09749b6983adf09",
+        "src/arcade_story.h": "7ee6b766b4fdd2bc22670dc1ce72b907ded4e061d088674c90bbc2a08b0d994f",
+        "src/audio_presentation.h": "8b094475ec41af89befdf4875ef1f9a3bf303be8615f0508afccdbf24d3b35af",
+        "src/audio_presentation_state.h": "4129b01189826de5cc9266f529eb57f1dcb57bb93febcade1f1dc3bf6e6c730e",
+        "src/characters.h": "0b899896318ae5c7d99852a08ff455c98da15310856387ed45213f8e328f1f82",
+        "src/contact_geometry.h": "237d6b05f0e161cf08008629576f46a131b87f7a6928ea6e8e90c74ef8f49c30",
+        "src/cpu_personality.h": "2109954a94a1c9dbe5ca6a81bfcd028e074c8d0f6cdb82e899982b8202ab7d27",
+        "src/fighter_personality.h": "e15b92385c8620a8cbdaa1c2734af0f87a91fbdbeefc70fe8c04700998cad0ce",
+        "src/game.c": "920be6cf3423d905564f9a026a8c33dcec30b1842b6646cf72cdbb9bc472d04c",
+        "src/hardware.asm": "d4b895425f597992270bd558d92e8257e4e7a569f4d249cbe16a3df2b2288a9a",
+        "src/impact_presentation.h": "696f9d1c7c0e6f3ebbfb29027cb1bf4cc2d6330306352e3bf12a100bcab3a7f3",
+        "src/knockdown.h": "2c58e022b021aa9e08a2df1bd96396bd1a2bd9fcf52f0027b27f876311adc445",
+        "src/menu_portraits.h": "96a006a382dfc86e1807b32ac0eaaf652cb302558aea57496a20567d10713c9c",
+        "src/pacing_recoil.h": "89ed8daa2ae03179e53c69a74800e5b12e8ea035145e73df3365215fce6a6d73",
+        "src/pause_guide.h": "c34d81c821cf0716101dd0828a73d9703ad25093b1aa7aec45b7ab90e6c0afed",
+        "src/stage_depth.h": "90faee78052053f8e2e659a7657ce752b685b35fa00dfab84ecd8e84ef9daef7",
+        "src/super_moves.h": "3080606c1e70c2d1e72c8998f693758d9b0b08b320a4ac21bb02a5ddfa5b6f22",
+        "src/trace.asm": "301ec8a99aa326583c332a901903114f5fceeb7f17bbbf768c3e90ae65c3dc88",
+        "src/training_tools.h": "5be233628beab082972c76cbe42f93e8820549f8384913c9fb49977517d9b2af",
+        "src/version.h": "bad02e0d8489257322387e849c50a58889daa8fb54508bac0a06f5502c4e16ef"
+      },
+      "harness_sha256": {
+        "tools/test_combat_24_pacing.py": "dbdf7fd5c21b55bdf026b5ad8edf73ae59abb1393fe073dc0dfc282f605084f9",
+        "tools/test_characters.py": "c580589d5cf485165ffd83700b1b3044e1f48159101d3bf8ac31b1f41069b096",
+        "tools/test_inputs.py": "86c7b8f6f75c780f217310fba2b02845b27f984f38a551d7f1b49f561e1bc880",
+        "tools/emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
+        "tools/run_background.py": "0906fa836fa680964846049036fd2ea1ad48a2fcb68d1235bedff86e7afdf178",
+        "tools/test_champion.py": "d2424acd2cb75a7e08c5a2832a0bf6e5dc3cdb708f6aa89293d4ac3fe2d1e4d5",
+        "tools/test_presentation.py": "4d4cf9ae6814da7106684e0eefd060ca72e8ecc5b2141ed1cf71b045016d4ff5",
+        "tools/release_evidence.py": "d31bbdeebd9832425e3a7c69982e155bba0311d57df52c86bdd8585d81a7cc8c",
+        "tools/expansion_contracts.py": "b64c11cecf01d5ca672ffb137a416ec0ae2f16c94ea310594ea3250cc1803d51",
+        "tools/v024_contracts.py": "1b8bbe9ffee65ff4f72410564e26941bb86da72ae914da3f5c74bdbb4891a076",
+        "tools/test_expansion_03_normal_balance.py": "5b61e525f1c1cf6b45a84ba2af73612b66551c6395e7cacd96ae7e501618ea17",
+        "tools/contact_geometry.py": "21db5448946960a9b31d399dbcaf71c19e2e3b0888843f2d3d0141b56dbf2b47",
+        "tools/test_expansion_06_cpu_personality.py": "6d69503795a8b56b1f54cd5c9a418c3d6780c9aa2be8ee95ca12647a6075e8b0",
+        "tools/test_expansion_07_supers.py": "cc2a0a9f90973371f310216d81db0a02eb932e28067366f04ba059df1fce0fb7"
+      },
+      "source_only_report": "build/v024-recoil-before.json",
+      "original_report_sha256": "1c9aa9fc92e1c2711c546bc24b31f2dfaeef5b6e5d88d68b64f7821e43fd613b",
+      "measurements": {
+        "motion": {
+          "walk": {
+            "ticks": 24,
+            "distance_12_4": 480,
+            "speed_12_4": 20
+          },
+          "retreat": {
+            "ticks": 24,
+            "distance_12_4": 336,
+            "speed_12_4": 14
+          }
+        },
+        "projectile": {
+          "x_12_4": 781,
+          "remaining_life": 99,
+          "speed_12_4": 45,
+          "measured_steps": 30,
+          "step_deltas": [
+            45
+          ]
+        },
+        "recoil": {
+          "light": {
+            "distance_pixels": 9.875,
+            "live_deltas_12_4": [
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9
+            ],
+            "rows": [
+              {
+                "dx": 9,
+                "hurt": 13,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 9,
+                "hurt": 12,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 9,
+                "hurt": 11,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 9,
+                "hurt": 10,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 9,
+                "hurt": 9,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 9,
+                "hurt": 8,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 9,
+                "hurt": 7,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 9,
+                "hurt": 6,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 9,
+                "hurt": 5,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 9,
+                "hurt": 4,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 9,
+                "hurt": 3,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 9,
+                "hurt": 2,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 9,
+                "hurt": 1,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 9,
+                "hurt": 0,
+                "guard": 0,
+                "frame": 19
+              }
+            ],
+            "contact": {
+              "hitstop": 4,
+              "hurt2": 14,
+              "guard2": 0,
+              "hp2": 120,
+              "tick1": 4
+            },
+            "damage": 8
+          },
+          "strong": {
+            "distance_pixels": 11.5625,
+            "live_deltas_12_4": [
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9
+            ],
+            "rows": [
+              {
+                "dx": 9,
+                "hurt": 16,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 9,
+                "hurt": 15,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 9,
+                "hurt": 14,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 9,
+                "hurt": 13,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 9,
+                "hurt": 12,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 9,
+                "hurt": 11,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 9,
+                "hurt": 10,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 9,
+                "hurt": 9,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 9,
+                "hurt": 8,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 9,
+                "hurt": 7,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 9,
+                "hurt": 6,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 9,
+                "hurt": 5,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 9,
+                "hurt": 4,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 9,
+                "hurt": 3,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 9,
+                "hurt": 2,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 9,
+                "hurt": 1,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 9,
+                "hurt": 0,
+                "guard": 0,
+                "frame": 19
+              }
+            ],
+            "contact": {
+              "hitstop": 6,
+              "hurt2": 17,
+              "guard2": 0,
+              "hp2": 103,
+              "tick1": 9
+            },
+            "damage": 17
+          },
+          "guard": {
+            "distance_pixels": 1.0,
+            "live_deltas_12_4": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "rows": [
+              {
+                "dx": 0,
+                "hurt": 7,
+                "guard": 1,
+                "frame": 3
+              },
+              {
+                "dx": 0,
+                "hurt": 6,
+                "guard": 1,
+                "frame": 3
+              },
+              {
+                "dx": 0,
+                "hurt": 5,
+                "guard": 1,
+                "frame": 3
+              },
+              {
+                "dx": 0,
+                "hurt": 4,
+                "guard": 1,
+                "frame": 3
+              },
+              {
+                "dx": 0,
+                "hurt": 3,
+                "guard": 1,
+                "frame": 3
+              },
+              {
+                "dx": 0,
+                "hurt": 2,
+                "guard": 1,
+                "frame": 3
+              },
+              {
+                "dx": 0,
+                "hurt": 1,
+                "guard": 1,
+                "frame": 3
+              },
+              {
+                "dx": 0,
+                "hurt": 0,
+                "guard": 0,
+                "frame": 28
+              }
+            ],
+            "contact": {
+              "hitstop": 3,
+              "hurt2": 8,
+              "guard2": 1,
+              "hp2": 102,
+              "tick1": 9
+            },
+            "damage": 1
+          }
+        }
+      },
+      "captures": [
+        {
+          "path": "docs/screenshots/combat-24-pacing/damian-before-guard.gif",
+          "sha256": "e3ed9942a4075630e78afb3995cc56e96df55d1e33e6a77f4b0a86532696179d",
+          "evidence_scope": "historical approved baseline"
+        },
+        {
+          "path": "docs/screenshots/combat-24-pacing/damian-before-light.gif",
+          "sha256": "d0bce37455189c57e7d794ed97039440e35b547ecc1bcb262673a7adaea77719",
+          "evidence_scope": "historical approved baseline"
+        },
+        {
+          "path": "docs/screenshots/combat-24-pacing/damian-before-strong.gif",
+          "sha256": "4e8661a2ad59fa00c01d019de27ce40d2c19cf734137db39b931cbd8adeab09d",
+          "evidence_scope": "historical approved baseline"
+        }
+      ]
+    },
+    "after": {
+      "rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
+      "source_commit": "a1ee733aea036ad985bca9bdee29cc170cabd2ac",
+      "command": "D:\\snes-abaqus-fighter\\.tools\\python\\python.exe tools/test_combat_24_pacing.py --sample after --report build/v024-recoil-after.json",
+      "host_contract": {
+        "python": "3.12.10",
+        "pillow": "13.0.0",
+        "gui_opened": false,
+        "audio_device_opened": false,
+        "priority_class": 16384,
+        "logical_processors": [
+          12,
+          13
+        ],
+        "platform": "Windows-11-10.0.26300-SP0",
+        "memory_writes": false,
+        "save_states": false
+      },
+      "source_sha256": {
+        "src/animation_banks.h": "8250cf1816ae8c0de0da6a876b76e0a0b40c10a44e35f782794ca82e283414e9",
+        "src/animation_weight.h": "cdc8308b9a98c000823b7869a20a122e531d9843f7d1143ae09749b6983adf09",
+        "src/arcade_story.h": "7ee6b766b4fdd2bc22670dc1ce72b907ded4e061d088674c90bbc2a08b0d994f",
+        "src/audio_presentation.h": "8b094475ec41af89befdf4875ef1f9a3bf303be8615f0508afccdbf24d3b35af",
+        "src/audio_presentation_state.h": "4129b01189826de5cc9266f529eb57f1dcb57bb93febcade1f1dc3bf6e6c730e",
+        "src/characters.h": "0b899896318ae5c7d99852a08ff455c98da15310856387ed45213f8e328f1f82",
+        "src/contact_geometry.h": "237d6b05f0e161cf08008629576f46a131b87f7a6928ea6e8e90c74ef8f49c30",
+        "src/cpu_personality.h": "2109954a94a1c9dbe5ca6a81bfcd028e074c8d0f6cdb82e899982b8202ab7d27",
+        "src/fighter_personality.h": "e15b92385c8620a8cbdaa1c2734af0f87a91fbdbeefc70fe8c04700998cad0ce",
+        "src/game.c": "920be6cf3423d905564f9a026a8c33dcec30b1842b6646cf72cdbb9bc472d04c",
+        "src/hardware.asm": "d4b895425f597992270bd558d92e8257e4e7a569f4d249cbe16a3df2b2288a9a",
+        "src/impact_presentation.h": "696f9d1c7c0e6f3ebbfb29027cb1bf4cc2d6330306352e3bf12a100bcab3a7f3",
+        "src/knockdown.h": "2c58e022b021aa9e08a2df1bd96396bd1a2bd9fcf52f0027b27f876311adc445",
+        "src/menu_portraits.h": "96a006a382dfc86e1807b32ac0eaaf652cb302558aea57496a20567d10713c9c",
+        "src/pacing_recoil.h": "89ed8daa2ae03179e53c69a74800e5b12e8ea035145e73df3365215fce6a6d73",
+        "src/pause_guide.h": "c34d81c821cf0716101dd0828a73d9703ad25093b1aa7aec45b7ab90e6c0afed",
+        "src/stage_depth.h": "90faee78052053f8e2e659a7657ce752b685b35fa00dfab84ecd8e84ef9daef7",
+        "src/super_moves.h": "3080606c1e70c2d1e72c8998f693758d9b0b08b320a4ac21bb02a5ddfa5b6f22",
+        "src/trace.asm": "301ec8a99aa326583c332a901903114f5fceeb7f17bbbf768c3e90ae65c3dc88",
+        "src/training_tools.h": "5be233628beab082972c76cbe42f93e8820549f8384913c9fb49977517d9b2af",
+        "src/version.h": "bad02e0d8489257322387e849c50a58889daa8fb54508bac0a06f5502c4e16ef"
+      },
+      "harness_sha256": {
+        "tools/test_combat_24_pacing.py": "dbdf7fd5c21b55bdf026b5ad8edf73ae59abb1393fe073dc0dfc282f605084f9",
+        "tools/test_characters.py": "c580589d5cf485165ffd83700b1b3044e1f48159101d3bf8ac31b1f41069b096",
+        "tools/test_inputs.py": "86c7b8f6f75c780f217310fba2b02845b27f984f38a551d7f1b49f561e1bc880",
+        "tools/emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
+        "tools/run_background.py": "0906fa836fa680964846049036fd2ea1ad48a2fcb68d1235bedff86e7afdf178",
+        "tools/test_champion.py": "d2424acd2cb75a7e08c5a2832a0bf6e5dc3cdb708f6aa89293d4ac3fe2d1e4d5",
+        "tools/test_presentation.py": "4d4cf9ae6814da7106684e0eefd060ca72e8ecc5b2141ed1cf71b045016d4ff5",
+        "tools/release_evidence.py": "d31bbdeebd9832425e3a7c69982e155bba0311d57df52c86bdd8585d81a7cc8c",
+        "tools/expansion_contracts.py": "b64c11cecf01d5ca672ffb137a416ec0ae2f16c94ea310594ea3250cc1803d51",
+        "tools/v024_contracts.py": "1b8bbe9ffee65ff4f72410564e26941bb86da72ae914da3f5c74bdbb4891a076",
+        "tools/test_expansion_03_normal_balance.py": "5b61e525f1c1cf6b45a84ba2af73612b66551c6395e7cacd96ae7e501618ea17",
+        "tools/contact_geometry.py": "21db5448946960a9b31d399dbcaf71c19e2e3b0888843f2d3d0141b56dbf2b47",
+        "tools/test_expansion_06_cpu_personality.py": "6d69503795a8b56b1f54cd5c9a418c3d6780c9aa2be8ee95ca12647a6075e8b0",
+        "tools/test_expansion_07_supers.py": "cc2a0a9f90973371f310216d81db0a02eb932e28067366f04ba059df1fce0fb7"
+      },
+      "source_only_report": "build/v024-recoil-after.json",
+      "original_report_sha256": "b404296c4c69a7882c2aa79c5fb9b1157f63fa93f1e567ddaeec853c6222f17e",
+      "measurements": {
+        "motion": {
+          "walk": {
+            "ticks": 24,
+            "distance_12_4": 384,
+            "speed_12_4": 16
+          },
+          "retreat": {
+            "ticks": 24,
+            "distance_12_4": 264,
+            "speed_12_4": 11
+          }
+        },
+        "projectile": {
+          "x_12_4": 773,
+          "remaining_life": 121,
+          "speed_12_4": 37,
+          "measured_steps": 30,
+          "step_deltas": [
+            37
+          ]
+        },
+        "recoil": {
+          "light": {
+            "distance_pixels": 10.0,
+            "live_deltas_12_4": [
+              16,
+              16,
+              12,
+              12,
+              12,
+              12,
+              8,
+              8,
+              8,
+              8,
+              4,
+              4,
+              4,
+              4
+            ],
+            "rows": [
+              {
+                "dx": 16,
+                "hurt": 13,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 16,
+                "hurt": 12,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 12,
+                "hurt": 11,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 12,
+                "hurt": 10,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 12,
+                "hurt": 9,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 12,
+                "hurt": 8,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 8,
+                "hurt": 7,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 8,
+                "hurt": 6,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 8,
+                "hurt": 5,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 8,
+                "hurt": 4,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 4,
+                "hurt": 3,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 4,
+                "hurt": 2,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 4,
+                "hurt": 1,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 4,
+                "hurt": 0,
+                "guard": 0,
+                "frame": 19
+              }
+            ],
+            "contact": {
+              "hitstop": 4,
+              "hurt2": 14,
+              "guard2": 0,
+              "hp2": 120,
+              "tick1": 4
+            },
+            "damage": 8
+          },
+          "strong": {
+            "distance_pixels": 26.0,
+            "live_deltas_12_4": [
+              32,
+              32,
+              32,
+              32,
+              32,
+              24,
+              24,
+              24,
+              24,
+              16,
+              16,
+              16,
+              16,
+              8,
+              8,
+              8,
+              8
+            ],
+            "rows": [
+              {
+                "dx": 32,
+                "hurt": 16,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 32,
+                "hurt": 15,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 32,
+                "hurt": 14,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 32,
+                "hurt": 13,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 32,
+                "hurt": 12,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 24,
+                "hurt": 11,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 24,
+                "hurt": 10,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 24,
+                "hurt": 9,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 24,
+                "hurt": 8,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 16,
+                "hurt": 7,
+                "guard": 0,
+                "frame": 10
+              },
+              {
+                "dx": 16,
+                "hurt": 6,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 16,
+                "hurt": 5,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 16,
+                "hurt": 4,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 8,
+                "hurt": 3,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 8,
+                "hurt": 2,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 8,
+                "hurt": 1,
+                "guard": 0,
+                "frame": 41
+              },
+              {
+                "dx": 8,
+                "hurt": 0,
+                "guard": 0,
+                "frame": 19
+              }
+            ],
+            "contact": {
+              "hitstop": 6,
+              "hurt2": 17,
+              "guard2": 0,
+              "hp2": 103,
+              "tick1": 12
+            },
+            "damage": 17
+          },
+          "guard": {
+            "distance_pixels": 3.875,
+            "live_deltas_12_4": [
+              8,
+              8,
+              6,
+              6,
+              6,
+              4,
+              4,
+              4
+            ],
+            "rows": [
+              {
+                "dx": 8,
+                "hurt": 7,
+                "guard": 1,
+                "frame": 3
+              },
+              {
+                "dx": 8,
+                "hurt": 6,
+                "guard": 1,
+                "frame": 3
+              },
+              {
+                "dx": 6,
+                "hurt": 5,
+                "guard": 1,
+                "frame": 3
+              },
+              {
+                "dx": 6,
+                "hurt": 4,
+                "guard": 1,
+                "frame": 3
+              },
+              {
+                "dx": 6,
+                "hurt": 3,
+                "guard": 1,
+                "frame": 3
+              },
+              {
+                "dx": 4,
+                "hurt": 2,
+                "guard": 1,
+                "frame": 3
+              },
+              {
+                "dx": 4,
+                "hurt": 1,
+                "guard": 1,
+                "frame": 3
+              },
+              {
+                "dx": 4,
+                "hurt": 0,
+                "guard": 0,
+                "frame": 28
+              }
+            ],
+            "contact": {
+              "hitstop": 3,
+              "hurt2": 8,
+              "guard2": 1,
+              "hp2": 102,
+              "tick1": 12
+            },
+            "damage": 1
+          }
+        }
+      },
+      "captures": [
+        {
+          "path": "docs/screenshots/combat-24-pacing/damian-after-guard.gif",
+          "sha256": "3b44b727e03c95e8973d385d338fc608a16951c0db6b6f687e7bf6bfcc30b6a8",
+          "evidence_scope": "current ROM"
+        },
+        {
+          "path": "docs/screenshots/combat-24-pacing/damian-after-light.gif",
+          "sha256": "3addf8da0b2d0bb80f0ad789d26a752caa9f61975eac806a90b5ff2b030e784d",
+          "evidence_scope": "current ROM"
+        },
+        {
+          "path": "docs/screenshots/combat-24-pacing/damian-after-strong.gif",
+          "sha256": "2ebc10bb12c1d222adccf7e3bb69e12ed205ee4a7dacded72820beca6eb7e9fa",
+          "evidence_scope": "current ROM"
+        }
+      ]
+    }
+  }
+}

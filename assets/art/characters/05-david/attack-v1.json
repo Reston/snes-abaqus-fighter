@@ -1,0 +1,305 @@
+{
+  "schema": 1,
+  "fighter_id": 5,
+  "scope": "attack-v1",
+  "reference": "assets/art/characters/05-david/animation-actions.png",
+  "reference_sha256": "52afbbbbb5c48c6dc5b2a2c69edcdbc31ff05df81ed74f6b590e892d3eb15ab3",
+  "palette_sha256": "c5cb13513140c4cf740991e6f69c4dd71661e6177820ca7df52ed112149b2aba",
+  "generation": "built-in image_gen; transparent_background=true",
+  "prompts": {
+    "a": "Use case: identity-preserve.\nAsset type: native SNES fighting game whole-body attack atlas, 16 separate figures in exactly FOUR columns by FOUR rows, square canvas.\nReference image is david's individually approved character. Redraw the SAME adult long warm olive face, slicked back BLACK hair tied low at back, black moustache and pointed goatee, athletic compact boxer body, AMBER OCHRE rolled-sleeve shirt with suspenders, dark navy trousers, sturdy sneakers. Preserve likeness and costume; polished dark-outline cel-shaded cartoon matching reference, readable at native fighter scale.\nAll figures face RIGHT in three-quarter side view. Draw each as ONE anatomically continuous head-neck-shoulders-torso-pelvis-legs silhouette. SAME physical body scale and head size across all 16, a natural standing neutral about 75% of cell height, wide attack room; do not enlarge crouches. Safely framed full figures with generous transparent gutters, common sole floor in each row. Compact planted support feet, believable hip and shoulder rotation through attacks; guard hand remains near jaw.\nROW MAJOR EXACT POSES:\nRow1: (1) neutral planted combat guard, upright, both fists raised [scale anchor]; (2) ACTIVE lead-hand straight jab fully extended horizontally right at chest height, rear hand protects jaw and support foot planted; (3) jab retract, elbow half bent returning guard, weight settles; (4) strong cross anticipation: rear fist drawn near rear ribs, shoulder winds back, front guard raised.\nRow2: (5) ACTIVE strong rear-hand cross fully extended right, rear heel pivots and hips/shoulders rotate together; (6) cross recovery, punching elbow folds and torso unwinds toward guard; (7) kick anticipation: leading knee chambers at waist, hands guard, one planted supporting leg; (8) ACTIVE side kick right at waist/chest height, kicking leg extends clearly, supporting leg bent and heel planted, torso leans left, hands guard.\nRow3: (9) kick recovery: knee folds back under body and guard re-centers; (10) low sweep anticipation: deep compact crouch, torso rotates, front knee loaded, rear hand guards; (11) ACTIVE low sweep: one leg extends right at ankle/shin height with bent support leg and continuous hip connection; (12) sweep recovery: retract sweeping leg into crouch, pushing back toward guard.\nRow4: (13) block IMPACT: tight crossed forearm shield at face, shoulders brace and torso inclines backward left, both feet grounded; (14) block HOLD: calmer tight high guard with upright knees, distinct from impact; (15) HURT impact from right: head and chest recoil backward left, flexed rear knee catches weight, both shoes on ground, arms react without detaching; (16) hurt recovery: torso folds forward slightly, fists returning near guard, weight regains center, NOT the impact pose.\nNo text, labels, grid, scenery, floor, shadow, FX, extra people or detached body parts. True transparent alpha background. No body-part paste, no generic substitute, no cropping. Output square 4x4 atlas.",
+    "b": "Use case: identity-preserve. Create companion whole-body SPECIAL / UPPERCUT / RECOIL atlas for SAME 05-david as reference: adult long warm olive face, slicked back BLACK hair tied low at back, black moustache and pointed goatee, athletic compact boxer body, AMBER OCHRE rolled-sleeve shirt with suspenders, dark navy trousers, sturdy sneakers. Reference A is the new attack atlas and physical SCALE reference, reference B is old source/costume reference. Exactly4 columns by4 rows square transparent atlas, SAME canvas and per-cell body scale as reference A, standing neutral approximately310 source pixels. Each full figure anatomically continuous, one coherent body, costume identical, no pasted limbs. All face RIGHT three-quarter profile, generous gutters and no cropping. Compact movements so raised fist stays at or below standing crown height by bending knees. Same head size, limb length and torso proportions across all16 and reference A.\nRow1: (1) SPECIAL charge: planted wide bent-knee stance, shoulders rotate back, both open hands cupped near rear hip/abdomen gathering energy, no FX; (2) SPECIAL active cast: rear leg drives torso forward, two connected arms extended RIGHT at chest height, open palms, no projectile or effects; (3) CAST recovery: both elbows retract toward ribs, torso recenters, hands return to guard; (4) UPPERCUT anticipation: deep grounded crouch, rear fist near rear hip and front hand at jaw, shoulder dips.\nRow2: (5) ACTIVE compact uppercut: bent supporting knees grounded, torso twists up and right, rear fist rises diagonally in front of face with bent elbow and tops just at standing neutral crown, NOT tall overhead pose, other hand guards; (6) UPPERCUT recovery: knees bent, raised elbow lowers to guard and shoulder untwists, connected wholebody; (7) ACTIVE RUSH shoulder/body strike: leaning compact forward right, rear shoe pushes, leading elbow tucked and shoulder projects forward, front leg receives weight; (8) KNOCKDOWN RECOIL: losing balance backwards LEFT after hit from RIGHT, knees buckled and torso tilts left, head left and both feet visible, compact falling silhouette, no floor.\nRow3: (9) neutral planted upright combat guard for scale reference, both fists up; (10) strong anticipation rear fist drawn back; (11) block brace leaning backward left; (12) standing guarded recovery.\nRow4: (13) neutral upright guard same315 source pixel height as reference neutral; (14) low crouch guard; (15) weight regaining after recoil; (16) neutral planted upright guard.\nAll individual figures separately drawn with SAME fixed physical scale, lower poses actually compress knees/body, do not enlarge crouches. Refined cartoon ink and limited cel shading. Preserve the reference's individual face, physique, outfit and all identity cues: adult long warm olive face, slicked back BLACK hair tied low at back, black moustache and pointed goatee, athletic compact boxer body, AMBER OCHRE rolled-sleeve shirt with suspenders, dark navy trousers, sturdy sneakers. No text, labels, grid, background, floor, shadows, FX, extra limbs or props. True transparent background."
+  },
+  "sources": [
+    {
+      "file": "assets/art/characters/05-david/attack-v1-a.png",
+      "sha256": "10c051744775733c383fb810956a6c3888c2b881997c3089a2af45c82e8ba4bc",
+      "count": 16,
+      "poses": [
+        "ready-guard",
+        "jab-active",
+        "jab-retract",
+        "cross-windup",
+        "cross-active",
+        "cross-retract",
+        "kick-windup",
+        "kick-active",
+        "kick-retract",
+        "sweep-windup",
+        "sweep-active",
+        "sweep-recovery",
+        "block-impact",
+        "block-hold",
+        "hurt-impact",
+        "hurt-recovery"
+      ],
+      "frames": [
+        32,
+        5,
+        33,
+        34,
+        6,
+        35,
+        36,
+        7,
+        37,
+        38,
+        8,
+        39,
+        40,
+        9,
+        10,
+        41
+      ],
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a16b31-eec7-7d50-9f6e-72382bd23bf2\\exec-e1eab62b-37d3-4971-8b18-f6b0b49f7273.png",
+      "raw_output_sha256": "10c051744775733c383fb810956a6c3888c2b881997c3089a2af45c82e8ba4bc",
+      "prompt": "Use case: identity-preserve.\nAsset type: native SNES fighting game whole-body attack atlas, 16 separate figures in exactly FOUR columns by FOUR rows, square canvas.\nReference image is david's individually approved character. Redraw the SAME adult long warm olive face, slicked back BLACK hair tied low at back, black moustache and pointed goatee, athletic compact boxer body, AMBER OCHRE rolled-sleeve shirt with suspenders, dark navy trousers, sturdy sneakers. Preserve likeness and costume; polished dark-outline cel-shaded cartoon matching reference, readable at native fighter scale.\nAll figures face RIGHT in three-quarter side view. Draw each as ONE anatomically continuous head-neck-shoulders-torso-pelvis-legs silhouette. SAME physical body scale and head size across all 16, a natural standing neutral about 75% of cell height, wide attack room; do not enlarge crouches. Safely framed full figures with generous transparent gutters, common sole floor in each row. Compact planted support feet, believable hip and shoulder rotation through attacks; guard hand remains near jaw.\nROW MAJOR EXACT POSES:\nRow1: (1) neutral planted combat guard, upright, both fists raised [scale anchor]; (2) ACTIVE lead-hand straight jab fully extended horizontally right at chest height, rear hand protects jaw and support foot planted; (3) jab retract, elbow half bent returning guard, weight settles; (4) strong cross anticipation: rear fist drawn near rear ribs, shoulder winds back, front guard raised.\nRow2: (5) ACTIVE strong rear-hand cross fully extended right, rear heel pivots and hips/shoulders rotate together; (6) cross recovery, punching elbow folds and torso unwinds toward guard; (7) kick anticipation: leading knee chambers at waist, hands guard, one planted supporting leg; (8) ACTIVE side kick right at waist/chest height, kicking leg extends clearly, supporting leg bent and heel planted, torso leans left, hands guard.\nRow3: (9) kick recovery: knee folds back under body and guard re-centers; (10) low sweep anticipation: deep compact crouch, torso rotates, front knee loaded, rear hand guards; (11) ACTIVE low sweep: one leg extends right at ankle/shin height with bent support leg and continuous hip connection; (12) sweep recovery: retract sweeping leg into crouch, pushing back toward guard.\nRow4: (13) block IMPACT: tight crossed forearm shield at face, shoulders brace and torso inclines backward left, both feet grounded; (14) block HOLD: calmer tight high guard with upright knees, distinct from impact; (15) HURT impact from right: head and chest recoil backward left, flexed rear knee catches weight, both shoes on ground, arms react without detaching; (16) hurt recovery: torso folds forward slightly, fists returning near guard, weight regains center, NOT the impact pose.\nNo text, labels, grid, scenery, floor, shadow, FX, extra people or detached body parts. True transparent alpha background. No body-part paste, no generic substitute, no cropping. Output square 4x4 atlas.",
+      "source_boxes": [
+        [
+          35,
+          29,
+          271,
+          320
+        ],
+        [
+          333,
+          37,
+          645,
+          320
+        ],
+        [
+          674,
+          33,
+          916,
+          321
+        ],
+        [
+          978,
+          32,
+          1215,
+          320
+        ],
+        [
+          32,
+          340,
+          329,
+          632
+        ],
+        [
+          352,
+          338,
+          589,
+          632
+        ],
+        [
+          688,
+          328,
+          863,
+          635
+        ],
+        [
+          947,
+          355,
+          1244,
+          635
+        ],
+        [
+          60,
+          640,
+          250,
+          923
+        ],
+        [
+          341,
+          688,
+          623,
+          919
+        ],
+        [
+          654,
+          672,
+          980,
+          918
+        ],
+        [
+          995,
+          670,
+          1207,
+          919
+        ],
+        [
+          43,
+          934,
+          283,
+          1222
+        ],
+        [
+          350,
+          935,
+          590,
+          1222
+        ],
+        [
+          636,
+          939,
+          910,
+          1222
+        ],
+        [
+          976,
+          950,
+          1216,
+          1221
+        ]
+      ]
+    },
+    {
+      "file": "assets/art/characters/05-david/attack-v1-b.png",
+      "sha256": "598da8eea2042ec32a7fa695c32eff24a6378dcdded73978ac73c9256f3e6534",
+      "count": 16,
+      "poses": [
+        "special-charge",
+        "cast-active",
+        "cast-recovery",
+        "uppercut-anticipation",
+        "uppercut-active",
+        "uppercut-recovery",
+        "rush-active",
+        "knockout-fall",
+        "unused-neutral-a",
+        "unused-cross-load",
+        "unused-block",
+        "unused-guard-return",
+        "unused-neutral-b",
+        "unused-low-guard",
+        "unused-weight-return",
+        "unused-neutral-c"
+      ],
+      "frames": [
+        42,
+        12,
+        43,
+        44,
+        13,
+        45,
+        15,
+        47,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a16b31-eec7-7d50-9f6e-72382bd23bf2\\exec-fcd8d3b4-916c-4727-bb07-85b27d760c37.png",
+      "raw_output_sha256": "598da8eea2042ec32a7fa695c32eff24a6378dcdded73978ac73c9256f3e6534",
+      "prompt": "Use case: identity-preserve. Create companion whole-body SPECIAL / UPPERCUT / RECOIL atlas for SAME 05-david as reference: adult long warm olive face, slicked back BLACK hair tied low at back, black moustache and pointed goatee, athletic compact boxer body, AMBER OCHRE rolled-sleeve shirt with suspenders, dark navy trousers, sturdy sneakers. Reference A is the new attack atlas and physical SCALE reference, reference B is old source/costume reference. Exactly4 columns by4 rows square transparent atlas, SAME canvas and per-cell body scale as reference A, standing neutral approximately310 source pixels. Each full figure anatomically continuous, one coherent body, costume identical, no pasted limbs. All face RIGHT three-quarter profile, generous gutters and no cropping. Compact movements so raised fist stays at or below standing crown height by bending knees. Same head size, limb length and torso proportions across all16 and reference A.\nRow1: (1) SPECIAL charge: planted wide bent-knee stance, shoulders rotate back, both open hands cupped near rear hip/abdomen gathering energy, no FX; (2) SPECIAL active cast: rear leg drives torso forward, two connected arms extended RIGHT at chest height, open palms, no projectile or effects; (3) CAST recovery: both elbows retract toward ribs, torso recenters, hands return to guard; (4) UPPERCUT anticipation: deep grounded crouch, rear fist near rear hip and front hand at jaw, shoulder dips.\nRow2: (5) ACTIVE compact uppercut: bent supporting knees grounded, torso twists up and right, rear fist rises diagonally in front of face with bent elbow and tops just at standing neutral crown, NOT tall overhead pose, other hand guards; (6) UPPERCUT recovery: knees bent, raised elbow lowers to guard and shoulder untwists, connected wholebody; (7) ACTIVE RUSH shoulder/body strike: leaning compact forward right, rear shoe pushes, leading elbow tucked and shoulder projects forward, front leg receives weight; (8) KNOCKDOWN RECOIL: losing balance backwards LEFT after hit from RIGHT, knees buckled and torso tilts left, head left and both feet visible, compact falling silhouette, no floor.\nRow3: (9) neutral planted upright combat guard for scale reference, both fists up; (10) strong anticipation rear fist drawn back; (11) block brace leaning backward left; (12) standing guarded recovery.\nRow4: (13) neutral upright guard same315 source pixel height as reference neutral; (14) low crouch guard; (15) weight regaining after recoil; (16) neutral planted upright guard.\nAll individual figures separately drawn with SAME fixed physical scale, lower poses actually compress knees/body, do not enlarge crouches. Refined cartoon ink and limited cel shading. Preserve the reference's individual face, physique, outfit and all identity cues: adult long warm olive face, slicked back BLACK hair tied low at back, black moustache and pointed goatee, athletic compact boxer body, AMBER OCHRE rolled-sleeve shirt with suspenders, dark navy trousers, sturdy sneakers. No text, labels, grid, background, floor, shadows, FX, extra limbs or props. True transparent background.",
+      "source_boxes": [
+        [
+          29,
+          41,
+          288,
+          324
+        ],
+        [
+          324,
+          53,
+          648,
+          325
+        ],
+        [
+          664,
+          47,
+          918,
+          325
+        ],
+        [
+          984,
+          105,
+          1238,
+          325
+        ],
+        [
+          30,
+          348,
+          283,
+          647
+        ],
+        [
+          343,
+          367,
+          598,
+          647
+        ],
+        [
+          636,
+          413,
+          934,
+          647
+        ],
+        [
+          961,
+          388,
+          1245,
+          651
+        ],
+        [
+          29,
+          665,
+          273,
+          946
+        ],
+        [
+          327,
+          671,
+          615,
+          947
+        ],
+        [
+          665,
+          681,
+          933,
+          947
+        ],
+        [
+          984,
+          666,
+          1237,
+          947
+        ],
+        [
+          29,
+          953,
+          274,
+          1232
+        ],
+        [
+          351,
+          1018,
+          605,
+          1233
+        ],
+        [
+          658,
+          956,
+          931,
+          1232
+        ],
+        [
+          985,
+          953,
+          1243,
+          1233
+        ]
+      ]
+    }
+  ],
+  "anchor": {
+    "source": 0,
+    "pose": 0
+  },
+  "height_target": 68,
+  "physical_scale_policy": "One conversion height_target / source0 ready-guard height; all selected figures use that same isotropic scale; no anatomy, pose, palette or per-figure size edits."
+}

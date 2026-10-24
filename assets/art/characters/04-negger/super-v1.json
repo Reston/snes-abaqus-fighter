@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "fighter_id": 4,
+  "scope": "super-v1",
+  "reference": "assets/art/characters/04-negger/walking-v2.png",
+  "generation": "built-in image_gen; transparent_background=true",
+  "prompt": "Use case: identity-preserve. Asset type: native SNES dedicated super sprite sheet. Input reference is the SAME fighter's approved art; preserve individual face, build, costume, material colors and polished dark-contour cel-shaded cartoon style. Exactly EIGHT isolated complete connected full-body figures, four equal columns by two rows, generous true-transparent gutters, sole baseline consistent within each row. Face RIGHT, three-quarter side view. One anatomical scale across ALL figures; no limbs pasted onto a fixed torso, no per-pose body or head resizing. Neutral pose must stand tall enough to be the scale anchor. Arrange reading-order: Pose1 neutral upright standing guard with near-straight legs; Pose2 CHARGE; Pose3 STRIKE; Pose4 RECOVERY; Poses5-8 four unused relaxed grounded guard variants. ONLY these eight figures, no text, labels, grid, floor, shadows, aura, projectiles, weapons or scenery. Maintain the same size of head/torso/limbs across all cells; action poses may crouch but never shrink anatomically. Both shoes and hands complete; all anatomy joins. Fighter Negger: preserve long rectangular adult face, short nearly black slightly wavy hair with high natural hairline and small loose fringe, light patchy jaw and moustache stubble rather than beard, broad heavy bruiser, purple open bomber jacket, plain white shirt, charcoal trousers, sturdy shoes; retain reference purple-blue shoes and small silver buckle. Pose2 MACRO COLLAPSE charge: deep horse stance, both open hands gathered downward near center hips, elbows flared, broad shoulders over planted legs. Pose3 forceful low double-palm cast to the right at waist level, heavy torso leaning forward from hips, front knee deeply flexed, both soles anchored. Pose4 broad crouched recovery, palms draw inward and up toward ribs, torso recoils above centered planted stance.",
+  "raw_output_path": "C:/Users/user/.codex/generated_images/01a16b31-fc50-7ce2-93e9-b5542d746b31/exec-5cae99f6-2e9e-4dca-8f34-588df875d05e.png",
+  "sources": [
+    {
+      "file": "assets/art/characters/04-negger/super-v1.png",
+      "count": 8,
+      "poses": [
+        "neutral-anchor",
+        "negger-super-charge",
+        "negger-super-strike",
+        "negger-super-recovery",
+        "unused-guard-4",
+        "unused-guard-5",
+        "unused-guard-6",
+        "unused-guard-7"
+      ],
+      "frames": [
+        null,
+        1,
+        2,
+        4,
+        null,
+        null,
+        null,
+        null
+      ],
+      "sha256": "c9cda573fb681c3908dde3598315ad93bedbf8a714842aee5efb952eea5b175c"
+    }
+  ],
+  "anchor": {
+    "source": 0,
+    "pose": 0
+  },
+  "height_target": 72,
+  "reference_sha256": "a3cb66e866a951e3abaa8e7bb48f0182f740f728ebfdf3d3af746abcdeaec84a",
+  "palette_sha256": "207e656730f0aa78f7a3be33d21d6c88564b150487434808ccc1e744a507b8b5",
+  "raw_output_sha256": "c9cda573fb681c3908dde3598315ad93bedbf8a714842aee5efb952eea5b175c",
+  "selected_final": "assets/art/characters/04-negger/super-v1.png"
+}

@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "fighter_id": 2,
+  "scope": "super-v1",
+  "reference": "assets/art/characters/02-cristobal/walking-v2.png",
+  "generation": "built-in image_gen; transparent_background=true",
+  "prompt": "Use case: identity-preserve. Asset type: native SNES dedicated super sprite sheet. Input reference is the SAME fighter's approved art; preserve individual face, build, costume, material colors and polished dark-contour cel-shaded cartoon style. Exactly EIGHT isolated complete connected full-body figures, four equal columns by two rows, generous true-transparent gutters, sole baseline consistent within each row. Face RIGHT, three-quarter side view. One anatomical scale across ALL figures; no limbs pasted onto a fixed torso, no per-pose body or head resizing. Neutral pose must stand tall enough to be the scale anchor. Arrange reading-order: Pose1 neutral upright standing guard with near-straight legs; Pose2 CHARGE; Pose3 STRIKE; Pose4 RECOVERY; Poses5-8 four unused relaxed grounded guard variants. ONLY these eight figures, no text, labels, grid, floor, shadows, aura, projectiles, weapons or scenery. Maintain the same size of head/torso/limbs across all cells; action poses may crouch but never shrink anatomically. Both shoes and hands complete; all anatomy joins. Fighter Cristobal: preserve adult long oval face with high forehead, cropped jet-black hair and full rounded black beard and moustache, agile athletic build, orange/rust rolled-sleeve work jacket, pale shirt, charcoal trousers and dark shoes; keep his reference brown leather shoes. Pose2 ATOMIC CASCADE charge: compact runner-like coiled boxer stance, rear fist chambered at ribs, front fist guarding cheek, hips low. Pose3 explosive grounded driving cross with leading shoulder forward and rear hip rotating through, rear heel lifted but both feet near floor, other fist guarding jaw; whole-body forward rush silhouette. Pose4 forward-weighted brake into a bent-knee compact double-fist guard, jacket tails settling.",
+  "raw_output_path": "C:/Users/user/.codex/generated_images/01a16b31-fc50-7ce2-93e9-b5542d746b31/exec-8fedaffc-ee57-4bc7-8dfc-2252ee3d31c4.png",
+  "sources": [
+    {
+      "file": "assets/art/characters/02-cristobal/super-v1.png",
+      "count": 8,
+      "poses": [
+        "neutral-anchor",
+        "cristobal-super-charge",
+        "cristobal-super-strike",
+        "cristobal-super-recovery",
+        "unused-guard-4",
+        "unused-guard-5",
+        "unused-guard-6",
+        "unused-guard-7"
+      ],
+      "frames": [
+        null,
+        1,
+        2,
+        4,
+        null,
+        null,
+        null,
+        null
+      ],
+      "sha256": "5ce03d1c5ba93b9f960b1ae000b7f30f1f8efa6d97012239968478876a50d432"
+    }
+  ],
+  "anchor": {
+    "source": 0,
+    "pose": 0
+  },
+  "height_target": 68,
+  "reference_sha256": "a7ca1007361874e54cefeee986914948d32ed9e7032345abbbd5728179aadad8",
+  "palette_sha256": "39ae172ad89edf2a8a264e9058e8d7d582ef3a69d3d11737edbf4fe6c636aced",
+  "raw_output_sha256": "5ce03d1c5ba93b9f960b1ae000b7f30f1f8efa6d97012239968478876a50d432",
+  "selected_final": "assets/art/characters/02-cristobal/super-v1.png"
+}

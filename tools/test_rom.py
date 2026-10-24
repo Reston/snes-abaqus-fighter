@@ -152,7 +152,12 @@ def check_zero_hp_knockdown():
         e.close()
 
 def play_cpu(e):
-    for _ in range(10000):
+    # Three decisive 99-second rounds plus their intro/result transitions.
+    # Hitstop pauses the clock; allow a further 50% for actual contacts and
+    # one drawn round. A fixed 10000 ticks could end during round two.
+    max_frames = 4 * (99 * 60 + 110 + 180) * 3 // 2
+    start_frame = e.frames
+    while e.frames - start_frame < max_frames:
         s=e.state()
         if s['screen']==4:return
         forward='right' if s['x1']<s['x2'] else 'left'
@@ -211,6 +216,8 @@ def verify_animation_manifest():
                 source_kind=item.get('source_kind',item.get('source_role'))
                 expected='legacy' if index<16 else 'motion' if index<32 else 'actions' if index<48 else 'airborne'
                 if 20<=index<28 and entry.get('walking_revision'):expected='walking-v2'
+                for revision in entry.get('combat_revisions',[]):
+                    if index in revision['frame_ids']:expected=revision['scope']
                 check(source_kind==expected,'Frame metadata keeps its source role',{
                     'fighter':fighter,'frame':index,'expected':expected,'actual':source_kind})
                 frame_hash=item.get('native_hash',item.get('hash'))
@@ -287,8 +294,27 @@ with wave.open(str(ROOT/'docs/screenshots/audio-sample.wav'),'wb') as f:
 e.close()
 
 e=boot(1);close_in(e)
-e.run(7,p1=['y']);e.run(5);e.run(3,p1=['x']);e.run(12)
-check(e.state()['combo']>=2,'Confirmed light punch cancels into a medium-punch combo',e.state())
+hp=e.state()['hp2'];e.run(3,p1=['y']);e.run(1)
+first=None
+for _ in range(40):
+    s=e.state()
+    if s['hp2']<hp and s['connected1']==2:
+        first=s;break
+    e.run(1)
+check(first is not None and first['hitstop']>0,
+      'Combo confirm starts from an observed real jab contact',first or e.state())
+# Capture a fresh X edge during the observed jab hitstop. Waiting a fixed
+# number of quiet frames can let the slower grounded X outlast jab hitstun.
+e.run(3,p1=['x'])
+second=None
+for _ in range(45):
+    s=e.state()
+    if s['hp2']<first['hp2']:
+        second=s;break
+    e.run(1)
+check(second is not None and second['action1']==3 and second['connected1']==2 and
+      second['combo']>=2,'Confirmed light punch cancels into a strong-punch combo',
+      {'first':first,'second':second,'last':e.state()})
 e.shot('combo.png');e.close()
 
 e=boot(1,0,1,10)

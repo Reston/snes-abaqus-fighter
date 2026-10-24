@@ -1,0 +1,52 @@
+{
+  "scope": "Six feature PRs into one unmerged combined playtest PR",
+  "baseline_commit": "f75005d",
+  "integration_branch": "integration/readable-combat-v024",
+  "final_pr": "https://github.com/Reston/snes-abaqus-fighter/pull/14",
+  "feature_prs": {
+    "pacing": {
+      "branch": "t3/combat-pacing-recoil",
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/20",
+      "head": "f62ce580699092f5fd177ffd1db17aa6c71cfacb",
+      "merge_commit": "88f6edd72ce617907b3591d73dd6a8f60f127c1f",
+      "merged": true
+    },
+    "attacks": {
+      "branch": "t3/grounded-attack-art",
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/19",
+      "head": "321ad93c2e3352213c0922f40626a323bf49567d",
+      "merge_commit": "285ab2fbb030c49ee3c8bbfd2e7f54c03d1c9846",
+      "merged": true
+    },
+    "contacts": {
+      "branch": "t3/contact-alignment-geometry",
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/15",
+      "head": "5a7c9e65d9cdedb5ddee4186882db883e05fe93e",
+      "merge_commit": "066e7b68bab0639d3b7727f8f77a9f0a08daf0f6",
+      "merged": true
+    },
+    "stages": {
+      "branch": "t3/stage08-depth-rebuild",
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/16",
+      "head": "bac8b197bf300f7fe6c2758a7e5576a71090d4af",
+      "merge_commit": "9173f53a6e734cba4fc98fea31365263645a45ac",
+      "review_status": "coherent scenery and authored floor detail reviewed; combined human playtest pending",
+      "merged": true
+    },
+    "jumps": {
+      "branch": "t3/jump-landing-motion-art",
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/18",
+      "head": "15f3c58d2cd944f5f4767ca41d87b8cd5868909b",
+      "merge_commit": "8571dfc38f7b62ddd917393c31c98358706bf25f",
+      "merged": true
+    },
+    "supers": {
+      "branch": "t3/dedicated-super-art",
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/17",
+      "head": "448b3227a0566c70bfa25a69bfea3b1537c624fc",
+      "merge_commit": "e138f562d26b89d32e30507aae1b0c4d55fa08f8",
+      "merged": true
+    }
+  },
+  "final_combined_verification": "pending"
+}

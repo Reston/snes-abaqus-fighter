@@ -49,7 +49,7 @@ u16 cpuNormalKey(u8 choice) {
 u16 cpuKeys(void) {
     s16 distance;
     u16 k=0,forward,back,waveDistance,specialMax,phase;
-    u8 chance,enemyActive,waveApproaching,tempo,threshold,choice,specialFamily,spacing;
+    u8 chance,enemyActive,waveApproaching,tempo,threshold,choice,specialFamily,spacing,reaction;
     const CharacterProfile *c;
     const CpuPersonality *habit;
     if(mode==2 && trainingDummy<4)return trainingKeys();
@@ -69,11 +69,15 @@ u16 cpuKeys(void) {
     distance=abs16(fighters[1].x-fighters[0].x)>>4;
     chance=(rng()>>8)&31;
     habit=&cpuPersonalities[fighters[1].id];
+    phase=frame+fighters[1].id*13;
+    /* Observe only the current rendered attack clock. New guard decisions
+     * sample every 12/8/4 ticks (Easy/Normal/Hard); a guard already held may
+     * continue until its visible threat ends. Never read the opponent pad. */
+    reaction=phase%(difficulty==0?12:(difficulty==1?8:4))==0;
+    if(fighters[1].keys&back)reaction=1;
     enemyActive=0;
-    /* Current visible action only: input precedes the attack clock update.
-     * This existing tick+1 guard observes no opponent pad or future input. */
-    if(fighters[0].action && fighters[0].tick+1>=fighters[0].actionStartup) {
-        if(fighters[0].tick+1<fighters[0].actionActiveEnd)enemyActive=1;
+    if(fighters[0].action && fighters[0].tick>=fighters[0].actionStartup) {
+        if(fighters[0].tick<fighters[0].actionActiveEnd)enemyActive=1;
     }
     /* Incoming-wave priority and reliable Normal/Hard low guard are shared. */
     waveApproaching=0;
@@ -81,20 +85,19 @@ u16 cpuKeys(void) {
     if(waves[0].active && !waves[0].face && waves[0].x>fighters[1].x)waveApproaching=1;
     if(waveApproaching) {
         waveDistance=abs16(waves[0].x-fighters[1].x)>>4;
-        if(waveDistance<96) {
+        if(waveDistance<96 && reaction) {
             if(waves[0].low) {
                 if(difficulty>0 || chance<10)return back|KEY_DOWN;
             } else if(chance<18)return back;
         }
     }
-    if(enemyActive && distance<64 && chance<6+difficulty*5+habit->guard)
+    if(reaction && enemyActive && distance<64 && chance<6+difficulty*5+habit->guard)
         return back | (fighters[0].duck?KEY_DOWN:0);
     if(fighters[1].hurt)return 0;
     if(fighters[0].downState)return 0;
     c=combatProfiles[1];
     /* Unsigned phase keeps the original 16-bit wrap, once per decision.
      * Constant-index fighter accesses avoid repeated stack-held far pointers. */
-    phase=frame+fighters[1].id*13;
     /* Full-gauge decisions use the same fresh neutral Y+B chord as players.
      * Defense retains priority. Visible range and a fallible sampled chance
      * make commitment readable; no opponent input or future outcome is read. */
@@ -129,19 +132,19 @@ u16 cpuKeys(void) {
             }
         }
     }
-    /* Same fallible universal anti-air, height/range/cadence and chance.
+    /* Same fallible universal anti-air, height/range and chance; slower cadence.
      * It can commit to an empty jump or whiff a retreating target. */
     if(difficulty>0) {
         if(!fighters[0].hurt && distance<=40) {
             if(fighters[0].y<=-12*16 && fighters[0].y>=-56*16) {
                 if((fighters[0].x>fighters[1].x)==fighters[1].face &&
                    chance<(difficulty==2?24:16) &&
-                   phase%(difficulty==2?6:10)==0)return KEY_DOWN|KEY_X;
+                   phase%(difficulty==2?8:12)==0)return KEY_DOWN|KEY_X;
             }
         }
     }
     /* Counter habits sample visible recovery, never a future hit/whiff or
-     * an unpressed opponent button. Even Hard is capped at 28/32 and five
+     * an unpressed opponent button. Even Hard is capped at 28/32 and eight
      * ticks, so recovery can end or spacing can escape before the answer. */
     if(fighters[0].action && !fighters[0].hurt && !fighters[0].y) {
         if(fighters[0].tick>=fighters[0].actionActiveEnd && distance<=46) {
@@ -150,7 +153,7 @@ u16 cpuKeys(void) {
             if(difficulty==2)threshold+=2;
             if(threshold>28)threshold=28;
             if(chance<threshold &&
-               phase%(difficulty==0?14:(difficulty==1?9:5))==0)return cpuNormalKey(habit->secondary);
+               phase%(difficulty==0?18:(difficulty==1?12:8))==0)return cpuNormalKey(habit->secondary);
         }
     }
     if(distance>46) {
@@ -159,6 +162,7 @@ u16 cpuKeys(void) {
         return k;
     }
     tempo=habit->tempo;
+    tempo+=3;
     if(difficulty==0)tempo+=5;
     if(difficulty==2)tempo-=3;
     /* An even period cannot fire on an odd phase. This cheap prefilter

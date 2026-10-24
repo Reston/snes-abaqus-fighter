@@ -1,5 +1,93 @@
 # Native SNES implementation
-<!-- candidate-version: 0.23.1; rom-sha256: 057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd -->
+<!-- candidate-version: 0.24.0; identity: TECHNICALLY_VERIFIED_HUMAN_PENDING; rom-sha256: 408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79; source-freeze: a1ee733aea036ad985bca9bdee29cc170cabd2ac -->
+
+## Current v0.24 integration
+
+<!-- v024-development-status:start -->
+All six feature PRs are merged into `integration/readable-combat-v024`.
+Final source/test freeze: `a1ee733aea036ad985bca9bdee29cc170cabd2ac`. The exact-ROM verification passed;
+PR #14 remains unmerged into main for one human combined playtest.
+<!-- v024-development-status:end -->
+Read [the shared implementation contract](COMBAT-v0.24-CONTRACT.md) and
+[the playtest guide](RELEASE-v0.24.0.md) for ownership and scope.
+
+<!-- v024-technical-status:start -->
+**Technical verification passed; one human combined playtest remains pending.**
+
+| Identity | Final value |
+| --- | --- |
+| Version / mapping | 0.24.0 / 4 MiB NTSC FastROM LoROM |
+| ROM SHA256 | `408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79` |
+| Header checksum | `4857` |
+| Source/test freeze | `a1ee733aea036ad985bca9bdee29cc170cabd2ac` |
+| Generated assets / retained prior RAM labels | 226 / 1,318 |
+
+All six native suites pass **29,595 checks**: 2,595 gameplay, 17,906 roster, 3,728 presentation, 1,443 input, 735 stages, 3,188 Training. Matching pinned
+Accuracy smoke, all six focused proofs, final-freeze fresh ROM/assets/symbol
+reproduction and authoring guards pass. Focused counts: pacing/recoil 238,137; attacks 2,539; contacts 9,165; stages 735; jumps 1,741; supers 4,730.
+Stage focused coverage shares the stage suite's native execution and is not
+counted again as an independent run. Isolated/interim counts are not pooled.
+See [final exact-ROM verification](verification-v0.24.0.json).
+Human playtest remains pending; PR #14 stays unmerged. No offline package or human approval is claimed.
+<!-- v024-technical-status:end -->
+
+The current native allocation is:
+
+| Resource | Current contract |
+| --- | --- |
+| Cartridge | 4 MiB NTSC FastROM LoROM, PVSnesLib 4.6.0, 128 banks |
+| Actors | Fighter64 / Wave16 / TRACE0..122; one 3,840-byte actor upload per vblank, thirty 16x16 OBJ per actor |
+| Art | 226 generated files; 37 disjoint attack/jump/super poses per fighter revised, the other 27 preserved; approved walking, portraits, palettes and scale unchanged |
+| RAM | Existing 1,318 labels retain addresses; recoil reuses its byte, stage tracking reuses its sixteen-byte reservation |
+| BG1 scenery | Word gfx `$0000..$2FFF`, 64x32 map `$3800..$3FFF`; one connected 288px scene with a bounded eight-pixel look |
+| BG3 ground | Word gfx `$3000..$37FF`, map `$5C00..$5FFF`; fixed 2bpp floor, composing impact shake |
+| Other VRAM | UI/portraits/guide `$4000..$5BFF`, actor pages `$6000..$73FF`, effects `$7800..$7BFF` |
+| Stage transfers | No live stage DMA or HDMA; screen-off loads only. The old ambient window `$3C00` is now the right BG1 map |
+| Ambient trace | Static `(phase, clock, pending, age) = (0, 0, 255, 0)`; old ambient assets remain preserved history |
+
+Ordinary rising specials prepare grounded and launch at their first active
+tick. Jump and launch velocities retain their declared profiles. Visible
+contact regions are regenerated after all pose imports and before compilation.
+Keep strict direct-frame/VBlank/lag, actor transfer and audio checks when
+optimizing the contact path. Run native verification silently/headlessly.
+
+Contact resolution reads adjacent rectangle and Fighter bytes as pinned
+little-endian words. The two ordinary player pairs use direct WRAM operands
+from one C macro template; recoil expands at the existing victim pointer.
+There is no persistent geometry cache or added global RAM. The existing
+hit-resolution section is 7,744 bytes within one LoROM bank; its compiler
+stack locals are 68 bytes. Preserve operation order and atomic trade snapshots
+when editing these paths. [Timing comparison and retained evidence](COMBAT-24-CONTACT-TIMING.md)
+describe the measured optimization; final combined gates are separate.
+
+Ordinary strikes reject separated 96-pixel canvases before reading their
+contact rectangles; throws and dedicated supers keep their independent paths.
+Animation uses one C template expanded for the two direct fighter addresses,
+preserving selector and write order. Its linked section is 9,200 bytes and its
+compiler stack locals are 29 bytes, compared with 6,985 and 128 before this
+optimization. No global RAM or assembly changes are needed. The
+[special timing proof](COMBAT-24-SPECIAL-TIMING.md) records the regression
+streams, state comparisons and independent-core limits.
+Fighter updates and contact queries also select direct actor addresses once;
+their original condition, transform and write order remains intact.
+Commit verification JSON as UTF-8 with LF endings. Canonicalize report/capture
+line endings without changing JSON values before final collation, retaining
+raw capture copies. Collate and finalize the docs after that normalization so
+the recorded hashes identify the bytes retained by Git.
+
+The six `COMBAT-24-*` feature notes retain implementation and isolated history.
+Use current report identities and the final verification record for combined
+claims. [Review gallery](REVIEW-v0.24.0.html) distinguishes native comparisons
+from offline conversion/geometry diagnostics. Pacing/recoil plus proposals
+1–5 are the entire authorized scope; proposals 6–10 are excluded. Original
+masters and exact art prompts/provenance remain retained. No v0.24 offline
+package, main merge, physical-controller or original-hardware approval exists.
+
+## Historical implementation notes
+
+The checkpoints and older allocation tables below describe their named
+historical ROMs. In particular, their banded HDMA and live ambient contracts
+do not apply to the current whole-scene stage engine.
 
 ## Approved main walking revision: v0.23.1
 

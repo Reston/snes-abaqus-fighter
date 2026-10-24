@@ -39,6 +39,7 @@ from typing import Callable, Iterable
 
 sys.path.insert(0, str(Path(__file__).parent))
 from emulator import Emulator, ROOT
+from stage_test_contract import depth_manifest
 
 
 TITLE, SELECT, ARENA, FIGHT = 0, 1, 2, 3
@@ -1840,6 +1841,7 @@ def verify_start_select_priority(rom: Path) -> list[dict[str, object]]:
     from fightTick would avoid the reset but add an unwanted frozen tick.
     """
 
+    static_depth = depth_manifest(ROOT) is not None
     chords = (
         ("p1-start-select", ("start", "select"), ()),
         ("p2-start-p1-select", ("select",), ("start",)),
@@ -1900,9 +1902,19 @@ def verify_start_select_priority(rom: Path) -> list[dict[str, object]]:
                                       "START resume advances the existing hitstop on its first tick",
                                       {"case": label, "before": before, "resumed": current})
                             else:
+                                # Static scenery has no ambient clock. The
+                                # deliberately neutral P1's 96-tick breath
+                                # clock still proves that simulation resumes
+                                # on this callback rather than one tick late.
+                                if static_depth:
+                                    progress = (current["anim_state1"] == before["anim_state1"] == 0 and
+                                                current["anim_tick1"] == (before["anim_tick1"] + 1) % 96 and
+                                                (current["ambient_phase"], current["ambient_clock"],
+                                                 current["ambient_pending_phase"], current["ambient_pending_age"]) == (0, 0, 255, 0))
+                                else:
+                                    progress = current["ambient_clock"] == ((before["ambient_clock"] + 1) & 255)
                                 check(current["hitstop"] == 0 and
-                                      current["ambient_clock"] ==
-                                      ((before["ambient_clock"] + 1) & 255),
+                                      progress,
                                       "START resume advances combat on its first tick",
                                       {"case": label, "before": before, "resumed": current})
                         previous = current

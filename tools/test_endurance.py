@@ -33,6 +33,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from longrun_host import LongRunHost, ROOT
+from stage_test_contract import depth_manifest
 
 
 HOUR_SECONDS = 3600.0
@@ -144,7 +145,9 @@ def boot(host: LongRunHost, mode: int, fighter: int, fighter2: int,
         host.tap("down")
     host.tap("a")
     wait_screen(host, SCREEN_FIGHT)
-    for _ in range(240):
+    # Arcade's authored conversation holds the 110-tick intro for 360 ticks.
+    # Include that bounded controller-only route before measuring live combat.
+    for _ in range(600):
         current = host.state()
         if current["intro"] == 0:
             host.run(3)
@@ -507,6 +510,7 @@ class EnduranceRun:
         self.cadence_failures: list[dict[str, int]] = []
         self.native_timing_failures: list[dict[str, int]] = []
         self.ambient_failures: list[dict[str, int]] = []
+        self.static_depth_planes = depth_manifest(ROOT) is not None
         self.overflow_frames: list[dict[str, int]] = []
         self.frame_wraps = 0
         self.ambient_wraps = 0
@@ -753,10 +757,15 @@ class EnduranceRun:
                     self.ambient_wraps += 1
                 ambient_delta = wrap_delta(current["ambient_clock"],
                                            self.previous["ambient_clock"])
-                if ambient_delta != 1 and "select" not in p1:
+                expected_delta = 0 if self.static_depth_planes else 1
+                static_trace = (current['ambient_phase'], current['ambient_clock'],
+                                current['ambient_pending_phase'], current['ambient_phase_age'])
+                wrong_static = self.static_depth_planes and static_trace != (0, 0, 255, 0)
+                if (ambient_delta != expected_delta or wrong_static) and "select" not in p1:
                     self.ambient_failures.append({
                         "at": self.total_frames, "delta": ambient_delta,
                         "clock": current["ambient_clock"],
+                        "expected_delta": expected_delta,
                     })
             if current["round"] != self.previous["round"]:
                 self.events["round_change"] += 1
@@ -1075,7 +1084,7 @@ def tracked_wait_screen(host: LongRunHost, runner: EnduranceRun,
 
 
 def tracked_wait_live(host: LongRunHost, runner: EnduranceRun,
-                      maximum: int = 240) -> dict[str, int]:
+                      maximum: int = 600) -> dict[str, int]:
     for _ in range(maximum):
         current = host.state()
         if (screen_ready(current, SCREEN_FIGHT) and current["intro"] == 0):

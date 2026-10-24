@@ -12,10 +12,13 @@ from __future__ import annotations
 import ctypes as C
 import hashlib
 import json
+import sys
 import zipfile
 from pathlib import Path
 
 from PIL import Image
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+from stage_test_contract import depth_manifest
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -171,6 +174,8 @@ def stage_patch_rects(record: dict[str, object]) -> list[tuple[int, int, int, in
 def stage_phase_probe_rects(record: dict[str, object]) -> list[tuple[int, int, int, int]]:
     """Use manifest changed-pixel bounds to avoid actor/effect pixels in freezes."""
 
+    if record.get('ambient_enabled') is False and 'floor_seam_y' in record:
+        return [(0,40,256,72)]
     cells = record.get("cells", [])
     high_slots: set[int] | None = None
     if isinstance(cells, list):
@@ -234,6 +239,9 @@ def stage_slug(record: dict[str, object], stage_id: int) -> str:
 def load_stage_dynamics() -> tuple[dict[str, object], dict[str, int], dict[int, dict[str, object]]]:
     """Validate the generated stage contract before starting the core."""
 
+    depth=depth_manifest(ROOT)
+    if depth is not None:
+        return depth, dict(TRACE_DEFAULTS), {row['id']:row for row in depth['stages']}
     require(STAGE_MANIFEST_PATH.exists(),
             f"missing stage dynamics manifest: {STAGE_MANIFEST_PATH}")
     manifest = json.loads(STAGE_MANIFEST_PATH.read_text(encoding="utf-8"))
@@ -1166,6 +1174,16 @@ def stage_state(label: str, state: dict[str, int], frame: dict[str, object],
 
 def run_stage_engine_check(stage_id: int, record: dict[str, object],
                            trace_map: dict[str, int]) -> dict[str, object]:
+    if depth_manifest(ROOT) is not None:
+        # The depth driver decodes both real SNES tile planes and verifies
+        # each camera/impact offset, immutable maps, freeze and live budgets.
+        # Use a separate capture directory from the six-suite execution.
+        import test_combat_24_stage08 as depth
+        depth.OUT=CAPTURE_ROOT/'depth-v1';depth.OUT.mkdir(parents=True,exist_ok=True)
+        result=depth.stage_case(stage_id,independent=True)
+        result['stage_contract']='whole-scenery-fixed-floor'
+        result['passed']=True
+        return result
     rects = stage_phase_probe_rects(record)
     core = Probe()
     try:
@@ -1221,11 +1239,16 @@ def main() -> int:
         report["checks"]["pinned_inputs"] = pinned_inputs
         report["rom"]["sha256"] = pinned_inputs["rom_sha256"]
         stage_manifest, trace_map, stage_records = load_stage_dynamics()
+        static_depth=stage_manifest.get('scope')=='stage-depth-v1'
+        stage_manifest_path=(ROOT/'assets/generated/stage-depth.json') if static_depth else STAGE_MANIFEST_PATH
+        if static_depth:
+            report['scope']='independent-engine smoke, whole scenery/fixed floor, freeze and impact geometry, synchronized low-wave, neutral600frame cadence'
         report["stage_dynamics"] = {
-            "manifest": str(STAGE_MANIFEST_PATH.relative_to(ROOT)).replace("\\", "/"),
-            "manifest_sha256": sha256(STAGE_MANIFEST_PATH),
-            "phase_count": PHASE_COUNT,
-            "phase_period_frames": PHASE_PERIOD_FRAMES,
+            "manifest": str(stage_manifest_path.relative_to(ROOT)).replace("\\", "/"),
+            "manifest_sha256": sha256(stage_manifest_path),
+            "phase_count": 0 if static_depth else PHASE_COUNT,
+            "phase_period_frames": 0 if static_depth else PHASE_PERIOD_FRAMES,
+            "legacy_ambient_disabled": static_depth,
             "trace": trace_map,
             "stage_count": STAGE_COUNT,
         }
@@ -1345,7 +1368,8 @@ def main() -> int:
             stage_results[stage_slug(record, stage_id)] = run_stage_engine_check(
                 stage_id, record, trace_map)
         report["checks"]["stage_ambient_and_freeze"] = {
-            "manifest_phase_count": int(stage_manifest.get("phase_count", PHASE_COUNT)),
+            "manifest_phase_count": 0 if static_depth else int(stage_manifest.get("phase_count", PHASE_COUNT)),
+            "stage_contract": 'whole-scenery-fixed-floor' if static_depth else 'four-phase-ambient',
             "stages": stage_results,
             "passed": True,
         }

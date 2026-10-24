@@ -32,6 +32,9 @@ def canonical(path, raw):
 
 def preserved_assets(root):
     root = Path(root)
+    if '"0.24.' in (root/'src/version.h').read_text(encoding='utf-8'):
+        from v024_contracts import preserved_assets as current_assets
+        return current_assets(root)
     allowed_changes=set(GENERATED_CHANGES)
     if (root/'assets/art/walking-v2.json').is_file():
         allowed_changes.add('assets/generated/character-manifest.json')
@@ -82,6 +85,9 @@ def symbols(raw):
 
 def preserved_native(root):
     root = Path(root)
+    if '"0.24.' in (root/'src/version.h').read_text(encoding='utf-8'):
+        from v024_contracts import preserved_native as current_native
+        return current_native(root)
     old = symbols(git(root, 'show', BASE + ':dist/abaqus-after-hours.sym').decode('utf-8'))
     current = symbols((root / 'dist/abaqus-after-hours.sym').read_text(encoding='utf-8'))
     prior_ram = {n: a for n, a in old.items() if a < 0x2000 or 0x7e0000 <= a < 0x800000}

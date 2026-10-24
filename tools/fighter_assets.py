@@ -1008,6 +1008,12 @@ def prepare_roster(root, output):
         from walking_assets import apply_walking
         walking_revision=apply_walking(root,fighter,slug,indices,metadata,colors,
                                       preview,extract_atlas,HEIGHTS[fighter])
+        from pose_revision_assets import apply_pose_revision,SCOPES
+        combat_revisions=[]
+        for scope in SCOPES:
+            change=apply_pose_revision(root,fighter,slug,indices,metadata,colors,
+                                       preview,extract_atlas,HEIGHTS[fighter],scope)
+            if change:combat_revisions.append(change)
         _assert_native_animation_cycles(slug, indices)
         if not (len({bytes(ids) for ids in indices[:16]}) >= 14):
             raise AssertionError(f'{slug}: legacy key poses were duplicated')
@@ -1097,6 +1103,10 @@ def prepare_roster(root, output):
         if walking_revision:
             manifest_entry['walking_revision']=walking_revision
             if revision:manifest_entry['revision']['scope']='Approved base identity before the bounded walking overlay; walking_revision records the final native identity.'
+        if combat_revisions:
+            manifest_entry['combat_revisions']=combat_revisions
+            manifest_entry['native64_sha256']=_frame_hash_summary(_native_frame_hashes(indices))
+            manifest_entry['walking_revision']['scope']='Walking-only checkpoint before the disjoint combat revisions; native64_sha256 records the final set.'
         manifests.append(manifest_entry)
         print(f'Prepared {slug}: 64 individual frames, 15-color OBJ palette', flush=True)
     if not (len({tuple(f['indices'][0]) for f in fighters}) == 12):
