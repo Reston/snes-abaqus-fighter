@@ -148,8 +148,11 @@ def pulse_overlay(cases, path):
             continue
         sheet = Image.open(ROOT/f"assets/generated/fighter{case['fighter']:02d}.png").convert('RGBA')
         for phase in range(1, len(result['expected_hit_damage'])+1):
-            row = next((r for r in result['rows'] if r['phase'] == phase and
-                        r['tick'] < r['contact_end']), None)
+            event = next((e for e in result['events'] if e['phase'] == phase), None)
+            row = next((r for r in result['rows'] if r['callback'] == event['callback']), None) if event else None
+            if row is None:
+                row = next((r for r in result['rows'] if r['phase'] == phase and
+                            r['tick'] < r['contact_end']), None)
             if row is None:
                 continue
             im = Image.new('RGB', (384, 192), '#141c2c')
@@ -165,7 +168,6 @@ def pulse_overlay(cases, path):
             for rect, color in [(r, '#60d0ef') for r in row['hurt_12_4']] + [(row['strike_12_4'], '#ffb04b')]:
                 l, t, r, b = rect
                 draw.rectangle((ox+l/16, oy+t/16, ox+r/16, oy+b/16), outline=color)
-            event = next((e for e in result['events'] if e['phase'] == phase), None)
             draw.text((8, 5), f"ID{case['fighter']:02d} gap{result['requested_gap_px']} phase{phase} tick{row['tick']}", fill='white')
             draw.text((8, 20), f"HP event: {event['damage'] if event else 'MISS'} | overlap {row['spatial_overlap']}", fill='white')
             draw.text((8, 176), 'orange=strike  cyan=body | collision pose before animation', fill='white')
@@ -179,7 +181,7 @@ def pulse_overlay(cases, path):
             'meaning': 'read-only native-derived logical collision snapshots, not PPU screenshots'}
 
 
-def input_phase_probe(fighter):
+def input_phase_probe(fighter, width=1):
     """Keep the failed immediate-pause fixture intact; observe the next polls."""
     e = legacy.boot(1, fighter, fighter2=fighter, stage=fighter % 3)
     try:
@@ -187,9 +189,10 @@ def input_phase_probe(fighter):
         legacy.full(e)
         for _ in range(5):
             legacy.step(e, ['y', 'b'], ['y', 'b'])
-        states = [legacy.step(e, ['start'])]
+        states = [legacy.step(e, ['start']) for _ in range(width)]
         states += [legacy.step(e) for _ in range(3)]
         return {'fighter': fighter, 'pause_after_input_callbacks': [s['paused'] for s in states],
+                'start_held_callbacks': width,
                 'ticks': [s['ticks'] for s in states],
                 'meaning': 'observation only; original one-callback pause assertion is not changed'}
     finally:
@@ -202,6 +205,7 @@ def main():
     parser.add_argument('--rom', type=Path, default=ROOT/'dist/abaqus-after-hours.sfc')
     parser.add_argument('--runtime-source', help='commit used to build an explicitly retained ROM')
     parser.add_argument('--phase-probe', type=int, nargs='*', default=[])
+    parser.add_argument('--phase-width', type=int, choices=(1, 3), default=1)
     parser.add_argument('--dedicated', type=int, nargs='*', default=[0, 2, 5, 7, 10])
     parser.add_argument('--rising', type=int, nargs='*', default=[5, 7, 10])
     parser.add_argument('--gaps', type=int, nargs='+', default=[28, 22])
@@ -301,7 +305,7 @@ def main():
                                     'native_counters': copy.deepcopy(native_samples)})
         for fighter in args.phase_probe:
             reset_counters()
-            result = input_phase_probe(fighter)
+            result = input_phase_probe(fighter, args.phase_width)
             report['cases'].append({'kind': 'input-phase-diagnostic', 'fighter': fighter, 'result': result,
                                     'timing': copy.deepcopy(legacy.timing),
                                     'native_counters': copy.deepcopy(native_samples)})
