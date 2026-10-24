@@ -1,5 +1,12 @@
 # v0.24 isolated pacing / recoil workstream
 
+The combined integration also stages ordinary rising-special launch at the
+first active tick. This keeps the new longer preparation grounded instead of
+lifting the visible fist over a close crouching target before contact begins.
+Launch velocity and gravity stay unchanged. The combined focused proof checks
+the grounded startup and exact launch tick for all three rising fighters and
+both ports; the isolated results below predate this integration correction.
+
 This feature targets `integration/readable-combat-v024`, from contract commit
 `3f51120`, on approved main `f75005d`. It is an isolated native SNES candidate
 for the parent's combined human playtest. The game version remains unchanged;

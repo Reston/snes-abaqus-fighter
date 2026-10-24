@@ -548,7 +548,10 @@ void attackStart(u8 p,u8 a) {
     if(a==7) {
         c=combatProfiles[p];
         f->energy-=32;f->motion=0;f->downbuffer=0;f->duck=0;
-        if(c->specialFamily==SPECIAL_RISING){f->vy=c->specialVy;f->vx=0;f->y=-1;f->duck=0;}
+        /* Rising specials prepare on the ground. Launch with the active
+         * fist, so a longer readable windup does not lift it over a close
+         * crouching target before contact can begin. */
+        if(c->specialFamily==SPECIAL_RISING){f->vx=0;f->duck=0;}
         sound(2);
     }
     else if(a==8) {c=combatProfiles[p];f->vy=c->uppercutVy;f->vx=0;f->y=-1;f->duck=0;audioCue(0,1);}
@@ -810,6 +813,9 @@ void updateFighter(u8 p) {
     if(f->action) {
         action=f->action;tick=f->tick+1;f->tick=tick;
         if(superActive[p])updateSuper(p);
+        else if(action==7 && c->specialFamily==SPECIAL_RISING && tick==c->specialStartup) {
+            f->vy=c->specialVy;f->y=-1;f->duck=0;
+        }
         else if(action==7 && c->specialFamily==SPECIAL_RUSH && tick>3 && tick<=c->specialStartup+c->specialActive) {
             f->x+=f->face?c->specialSpeed:-c->specialSpeed;
         }

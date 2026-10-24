@@ -226,14 +226,28 @@ def special_timing(fighter, port):
                 timing['recovery'] == s[f'special_recovery{r.a}'],
                 r.tag + ' ordinary special exposes exact native startup/active/recovery', timing)
         xs = [s[f'x{r.a}'] - initial[f'x{r.a}']]
+        vertical = []
         while s[f'action{r.a}']:
+            if initial[f'family{r.a}'] == 3:
+                raw = r.read('fighters', 128)[port * 64:(port + 1) * 64]
+                vertical.append({'tick': raw[17], 'y_12_4': signed16(s[f'y{r.a}']),
+                                 'vy_12_4': int.from_bytes(bytes(raw[6:8]), 'little', signed=True)})
             s = r.step(); xs.append(s[f'x{r.a}'] - initial[f'x{r.a}'])
         if initial[f'family{r.a}'] == 1:
             speed = 48 if fighter == 2 else 42
             old_ticks = 13 if fighter == 2 else 15
             require(xs[:3] == [0, 0, 0] and abs(xs[-1]) == speed * old_ticks,
                     r.tag + ' rush adds stationary telegraph and preserves total travel', xs)
-        return {**timing, 'horizontal_travel_12_4': abs(xs[-1]), 'first_three_x_deltas': xs[:3]}
+        if vertical:
+            preparation = [row for row in vertical if row['tick'] < timing['startup']]
+            launch = [row for row in vertical if row['tick'] == timing['startup']]
+            require(preparation and all(row['y_12_4'] == row['vy_12_4'] == 0 for row in preparation),
+                    r.tag + ' rising special keeps its readable preparation grounded', preparation)
+            require(len(launch) == 1 and launch[0]['y_12_4'] == -1 and
+                    launch[0]['vy_12_4'] == {5: -86, 7: -80, 10: -97}[fighter],
+                    r.tag + ' rising special launches at active contact with preserved velocity', launch)
+        return {**timing, 'horizontal_travel_12_4': abs(xs[-1]), 'first_three_x_deltas': xs[:3],
+                'rising_launch_samples': vertical}
     finally:
         r.close()
 

@@ -1,0 +1,266 @@
+{
+  "schema": 1,
+  "scope": "stage-depth-v1",
+  "baseline_commit": "3f51120",
+  "bg1": {
+    "gfx_word": [
+      0,
+      12287
+    ],
+    "map_word": [
+      14336,
+      16383
+    ],
+    "map_size": [
+      64,
+      32
+    ],
+    "bpp": 4
+  },
+  "bg3": {
+    "gfx_word": [
+      12288,
+      14335
+    ],
+    "map_word": [
+      23552,
+      24575
+    ],
+    "map_size": [
+      32,
+      32
+    ],
+    "bpp": 2
+  },
+  "cgram": "BG1 uses existing stage colors32..127; BG3 reads unchanged UI colors0..31",
+  "hdma_mask": 0,
+  "live_dma_bytes": 0,
+  "obj_entries": 0,
+  "stages": [
+    {
+      "id": 0,
+      "name": "Las Condes",
+      "source": "assets/art/stages/depth-v1/00-las-condes.png",
+      "source_sha256": "4f3191e9acee6b4beb0670fb8f12d6145f7d96cd7a555312c082d1952fc94094",
+      "native_canvas": [
+        288,
+        224
+      ],
+      "viewport": [
+        16,
+        0,
+        272,
+        224
+      ],
+      "camera_range": [
+        -8,
+        8
+      ],
+      "edge_gutters": 16,
+      "floor_seam_y": 184,
+      "bg1_tiles": 639,
+      "bg3_tiles": 46,
+      "authored_floor": {
+        "source": "assets/art/stages/depth-floor-v2/00-las-condes.png",
+        "source_sha256": "5ab64219efe7d604009f363dcc7f4d422a3c5b5b93b3a8678034138d916317b7",
+        "provenance": "assets/art/stages/depth-floor-v2/00-las-condes.json",
+        "provenance_sha256": "17364c5654efa96ce92685546b1fbbea144029514d5b12d461ae8d0881874219",
+        "native_size": [
+          256,
+          40
+        ],
+        "cgram_indices": [
+          6,
+          7
+        ],
+        "source_tone_centers": [
+          [
+            158,
+            176,
+            203
+          ],
+          [
+            134,
+            148,
+            181
+          ]
+        ],
+        "resampling": "BOX full authored floor; MEDIANCUT two tones mapped to UI grays; no crop, synthetic geometry or dithering"
+      },
+      "ambient_enabled": false,
+      "floor_quantization_rms": 0.0,
+      "outputs": {
+        "stage0_tiles.bin": {
+          "bytes": 20448,
+          "sha256": "af15a20631a917ecf0a0f238687f9b453100e5f226a803b82d48085cbaf50e56"
+        },
+        "stage0_map.bin": {
+          "bytes": 4096,
+          "sha256": "9110d6e0fddbc5adbe9881de561c3343e3dd7bb8dbb4a83d4eb5e8964efcdeca"
+        },
+        "stage0_pal.bin": {
+          "bytes": 192,
+          "sha256": "a41e09596b2273ec5dc809bf846ae145873f6975e96d8ba6710ba61b0d596f5f"
+        },
+        "stage0_floor_tiles.bin": {
+          "bytes": 736,
+          "sha256": "88f1d85d5af8d0ed2cc4b7fa1dddad5e6129b9299f3ff49bf58c0642dd0f21a6"
+        },
+        "stage0_floor_map.bin": {
+          "bytes": 2048,
+          "sha256": "a64e3c1f4d5fb4500ee4c89508ad7a1e979748090231e2720af7f95686f24d1d"
+        }
+      }
+    },
+    {
+      "id": 1,
+      "name": "El Castillo",
+      "source": "assets/art/stages/depth-v1/01-castillo.png",
+      "source_sha256": "d0301011c017370058308c4c8519dedd540fadcd1253fa3d2fec17594df27bdf",
+      "native_canvas": [
+        288,
+        224
+      ],
+      "viewport": [
+        16,
+        0,
+        272,
+        224
+      ],
+      "camera_range": [
+        -8,
+        8
+      ],
+      "edge_gutters": 16,
+      "floor_seam_y": 192,
+      "bg1_tiles": 680,
+      "bg3_tiles": 95,
+      "authored_floor": {
+        "source": "assets/art/stages/depth-floor-v2/01-castillo.png",
+        "source_sha256": "ff533b755543f7b6af5cc85ceb89c657580e40c71f7e52e6fd34e01132e9584e",
+        "provenance": "assets/art/stages/depth-floor-v2/01-castillo.json",
+        "provenance_sha256": "fca0c9d06eb89365b0669f7259ea06b8757e4b06c0b25690c1adbf95593c8959",
+        "native_size": [
+          256,
+          32
+        ],
+        "cgram_indices": [
+          6,
+          7
+        ],
+        "source_tone_centers": [
+          [
+            138,
+            151,
+            184
+          ],
+          [
+            124,
+            136,
+            174
+          ]
+        ],
+        "resampling": "BOX full authored floor; MEDIANCUT two tones mapped to UI grays; no crop, synthetic geometry or dithering"
+      },
+      "ambient_enabled": false,
+      "floor_quantization_rms": 0.0,
+      "outputs": {
+        "stage1_tiles.bin": {
+          "bytes": 21760,
+          "sha256": "d2cba8bbdd0dc8889d314c41e3df810b6b3dbd65d9e0b602091727249940e3fa"
+        },
+        "stage1_map.bin": {
+          "bytes": 4096,
+          "sha256": "4f341d2ddd8318ba789251d0febd4ba380a7d6a3bfa8f41169a36511c75b1f6c"
+        },
+        "stage1_pal.bin": {
+          "bytes": 192,
+          "sha256": "8ebae9d813b4c87deb418fee1f792be20df6dccfd3bfd2d51a366183b6fd8beb"
+        },
+        "stage1_floor_tiles.bin": {
+          "bytes": 1520,
+          "sha256": "49b088619401f346926b4abb3e409484f48520b08c9b5621e428042cebcca559"
+        },
+        "stage1_floor_map.bin": {
+          "bytes": 2048,
+          "sha256": "8c812d96dc9af766ae2ce2d894583e4a300ca4f11d67f935d4ba650ec316192a"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "name": "La Oficina",
+      "source": "assets/art/stages/depth-v1/02-oficina.png",
+      "source_sha256": "f4c617d58903f77b4a1643e5664c1f70b26a4320fecf7d663c5379f12e1dfa6f",
+      "native_canvas": [
+        288,
+        224
+      ],
+      "viewport": [
+        16,
+        0,
+        272,
+        224
+      ],
+      "camera_range": [
+        -8,
+        8
+      ],
+      "edge_gutters": 16,
+      "floor_seam_y": 184,
+      "bg1_tiles": 614,
+      "bg3_tiles": 71,
+      "authored_floor": {
+        "source": "assets/art/stages/depth-floor-v2/02-oficina.png",
+        "source_sha256": "6fff285971b58e27c7f85f7a78076dc2e1d0e65446f5ca2c2ab0bb14f4a355c6",
+        "provenance": "assets/art/stages/depth-floor-v2/02-oficina.json",
+        "provenance_sha256": "7a46949cb41a94c8f7cc16119ab52bf376c12ee5bb1018e1e5f0f4469f0fc85a",
+        "native_size": [
+          256,
+          40
+        ],
+        "cgram_indices": [
+          6,
+          7
+        ],
+        "source_tone_centers": [
+          [
+            136,
+            150,
+            183
+          ],
+          [
+            129,
+            142,
+            177
+          ]
+        ],
+        "resampling": "BOX full authored floor; MEDIANCUT two tones mapped to UI grays; no crop, synthetic geometry or dithering"
+      },
+      "ambient_enabled": false,
+      "floor_quantization_rms": 0.0,
+      "outputs": {
+        "stage2_tiles.bin": {
+          "bytes": 19648,
+          "sha256": "8aa74aea5788c4aa9778ea217069b091cafedd47fabc1511e19561e2e09056bd"
+        },
+        "stage2_map.bin": {
+          "bytes": 4096,
+          "sha256": "d8af8a009c1456a4d190e849de28fe244d59404bd4cbe98f921b82b3fc879232"
+        },
+        "stage2_pal.bin": {
+          "bytes": 192,
+          "sha256": "7183561eace000f59bbc607f92347bf3d9a14043febf8e79f4c5ec89a00df2bd"
+        },
+        "stage2_floor_tiles.bin": {
+          "bytes": 1136,
+          "sha256": "94ec0b6446776df6fa536aaccab54c4885868f424cdacadde16ac2429193849a"
+        },
+        "stage2_floor_map.bin": {
+          "bytes": 2048,
+          "sha256": "3651c7307e8717733837b21202d555e2d53d142a168984f8d02e4db3199a42fe"
+        }
+      }
+    }
+  ]
+}
