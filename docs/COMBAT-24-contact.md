@@ -8,10 +8,11 @@ the interim cartridge `62b39ea0971d5e80ab28eef2b579cc4ef97dd0fa6d206261bb2390ca5
 This composition still precedes attack/jump art and combined pacing. The parent
 owns the final six-feature gates and human playtest.
 
-The scoped production change is the two conservative distance branches in
-`canHit`: actor canvases separated by at least96 pixels cannot contain any
-overlapping strike/hurt rectangles. This skips active-pose selection and
-far-ROM geometry reads for impossible remote contacts. Existing12.4 coordinates,
+The scoped production change is two conservative distance branches inside the
+eligible, non-volley direct-super block of `canHit`: actor canvases separated by
+at least96 pixels cannot contain overlapping strike/hurt rectangles. This skips
+active-pose selection and far-ROM reads for impossible remote pulses. Volley,
+startup, ordinary-strike and throw paths retain their original gates. Existing12.4 coordinates,
 strict edges, facing/cross-up gates, throws, profile clocks/damage and geometry
 remain unchanged. There are no new locals, mutable state or ROM tables.
 
@@ -37,7 +38,49 @@ The snapshot undoes the immediate post-contact16/32-unit displacement and
 finisher knockdown facing/y writes. Observed post-contact positions are retained
 separately. Its offline overlays add no runtime drawing or collision state.
 
-Follow-up candidate validation is recorded below after the native reruns.
+The final interim candidate is
+`00ede52d7b44725a4967afaad319757d622394149dc4bcebe96f505ed7d0d57b`,
+runtime source `8ea3f1b448eeea82fdf358e1d5319312602a0f38`. Its49 composition
+cases include simultaneous dedicated supers for all12 fighters on both ports,
+all three rising families at both spacings with neutral/timed standing guard,
+remote whiffs, startup interruptions and recovery punishment. Every measured
+direct-frame/vblank/lag, TRACE, OBJ, transfer, audio and phase failure array is
+empty. The recorded Roxana workload also passes on pinned Accuracy.
+
+The report retains a separate **failed** Accuracy five-case attempt: David's
+single-callback Start pulse was absent from actual native `rawKeys`, while
+frame/vblank/lag cadence remained healthy. A three-callback Start probe observes
+the real Start on callback2, pauses once and freezes both clocks. No controller
+code or old immediate-pause assertion is changed. Parent must reassess that
+fixture against actual sampled input on its final combined ROM; this note does
+not certify the failed attempt.
+
+The earlier broader rejection before the super eligibility block is rejected
+history (`712b32d4...`): it also changed the volley/startup observation boundary.
+The final runtime change confines the optimization to eligible direct pulses.
+Both intermediate failed attempts and the final results remain under ignored
+`build/`; the feature report identifies their exact hashes and commands.
+
+The final focused report records108 all-roster/both-port native sessions and
+52,083 callbacks. Their complete input/state trajectory hashes are compared to
+the reproduced62b39 interim ROM, rather than the older baseline-art proof.
+The219 generated outputs and geometry digest remain exact across this fix;
+their25 differences from approved v0.23.1 belong exclusively to merged super art.
+All1,318 prior RAM labels remain exact, with no additional state or geometry.
+
+`rising-super-pulses.png` uses the actual HP-event snapshot for each connection,
+or the first active snapshot for an entirely missed pulse. The exact per-tick
+rows retain later active ticks, observed/reconstructed positions and VRAM poses.
+In particular, Cristian's target28 finisher connects on tick30 after its tick29
+near miss; the diagram does not assign that hit to the earlier pose position.
+
+Parent has cherry-picked the runtime changes into `9bd9acc` after all-six
+source `88f6edd`. This child never builds that final art/pacing workload. Its
+source-only parent rebuild must refresh geometry and regenerate all final gates.
+The interim `--expect-legacy-david-miss` switch must not be used as a final
+pacing expectation: the merged recoil owner intentionally improves early-pulse
+linking without increasing reach. Parent also composes the focused RAM check
+with its independently audited eight-byte pacing allowance; contact remains0.
 
 ## Historical baseline-art isolated feature
 
