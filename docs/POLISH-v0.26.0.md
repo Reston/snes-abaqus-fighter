@@ -371,6 +371,15 @@ pass in normal and optimized Python. One topic-based review gallery binds
 native captures to the verification record, labels historical comparisons and
 starts with motion paused. Player and developer guides name the same cartridge.
 
+The standalone review now supplies its own readable dark palette, uses
+44-pixel controls and names the still-frame action accurately. Native PNG
+posters use lossless indexed storage where possible; every decoded RGB byte
+is checked against the capture. This roughly halves the document without
+changing approved art and keeps the inline review within its transport limit.
+All nine topics, keyboard wrapping and actual motion loading are checked;
+stateless HTML previews cover desktop/mobile after the browser screenshot
+adapter timed out. Final captures are regenerated from the final cartridge.
+
 ## Pass 26: long-session stability and score boundaries
 
 A supplemental native Arcade hour found one real SDK lag increment near its
