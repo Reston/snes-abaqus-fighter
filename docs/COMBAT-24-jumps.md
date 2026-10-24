@@ -86,8 +86,8 @@ four scalar differences and preserves all other character data. The art proof re
 all generated fighter changes to the ten owned frames and verifies exact
 palette, portrait and protected-pose preservation.
 
-The Damian native-size sequence was reviewed first, then all twelve roster
-sequences. `docs/screenshots/combat-24-jumps/` contains those conversion sheets
+Agent visual inspection covered the Damian native-size sequence first, then
+all twelve roster sequences. `docs/screenshots/combat-24-jumps/` contains those conversion sheets
 and headless native clips, including baseline/current paired jump and strong
 air-kick clips (baseline left, candidate right). GIF timing approximates the
 native capture; cadence conclusions use SDK counters and consecutive trace.
@@ -101,3 +101,32 @@ Walk speed also contributes to takeoff vx (`walkSpeed + 8`), so the pacing
 merge must repeat the fixed-distance standing-cross and rear-contact cases.
 This isolated driver's exact-other-fields/art guards need the parent's declared
 combined policy when other authorized workstreams are present.
+
+## Isolated result
+
+Source/harness freeze `c95dfea5ce67161ca823a7c72712bbf67e9a63e8` passes **1,530 checks** on ROM
+`74589f915d4429cf1af18fa001c6536d47e1d0a14bc6434683ae9872c4eaab40` (header `D6A3`).
+The twelve candidate sessions cover **52,478 consecutive live callbacks**,
+both ports, 24 standing-cross arcs and 72 real air contacts. All native timing,
+cadence, OBJ, actor payload/geometry and SPC/PCM failure arrays are empty.
+All 1,213 prior WRAM symbol addresses remain exact.
+
+| Fighter ID | jumpVy | Measured apex px | Flight samples |
+| --- | --- | --- | --- |
+| 1 | -84 → -96 | 46.81 → 60.69 | 35 → 40 |
+| 4 | -82 → -86 | 55.19 → 60.56 | 43 → 45 |
+| 6 | -80 → -86 | 52.56 → 60.56 | 42 → 45 |
+| 9 | -84 → -105 | 39.44 → 60.81 | 30 → 37 |
+
+Exactly 37 of the existing 219 generated files differ: character-manifest.json,
+and each fighter PNG plus banks d/g. Every packed 3,840-byte unowned frame is
+byte-exact, including all approved walking/idle frames; palettes and portraits
+are byte-exact. The frozen full-asset rebuild reproduces this same ROM. Generated
+files and dist output remain uncommitted; the retained isolated cartridge and
+symbols are `build/v024-jumps.sfc` and `build/v024-jumps.sym`.
+
+[Baseline/current native jump clip](screenshots/combat-24-jumps/jump-before-after.gif)
+and [air strong-kick clip](screenshots/combat-24-jumps/air-a-before-after.gif)
+show baseline left and isolated candidate right. These counts identify this
+isolated feature only; all combined-ROM evidence remains the parent
+integration's responsibility.
