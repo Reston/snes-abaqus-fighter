@@ -572,6 +572,63 @@ def cpu_checks(fighter):
     return {'encounters': runs, 'lookahead': cpu.lookahead_fixture(fighter)}
 
 
+def guarded_super_contact(fighter, port):
+    """Hold close 28px spacing between legal rising-super guard windows.
+
+    Continuous Back retreats during charge/gaps and can evade a finisher.
+    Keep every legacy contact assertion and change only the supplied pads.
+    This owner-local policy has no dependency on another producer's driver.
+    """
+    if fighter not in (5, 7, 10):
+        return supers.contact(fighter, port, guard=True)
+    original_step = supers.step
+    defender = 1 - port
+    back = 'right' if defender == 1 else 'left'
+    rows = []
+
+    def timed_guard_step(e, p1=(), p2=(), monitor=True):
+        before = supers.sample(e)
+        supplied = list((p1, p2)[defender])
+        next_tick = before['ticks'][port] + int(not before['hitstop'])
+        contact_now = (before['superPhase'][port] > 0 and
+                       next_tick < before['superContactEnd'][port])
+        new_pulse = (before['superPhase'][port] < len(supers.HITS[fighter]) and
+                     next_tick >= before['superNext'][port])
+        window = bool(before['superActive'][port] and (contact_now or new_pulse))
+        if not window:
+            if defender == 0:
+                p1 = ()
+            else:
+                p2 = ()
+        state = original_step(e, p1, p2, monitor)
+        if supplied:
+            rows.append({'clock_before': before['ticks'][port], 'phase_before': before['superPhase'][port],
+                         'next_clock': next_tick, 'next_pulse': before['superNext'][port],
+                         'contact_end': before['superContactEnd'][port], 'pulse_window': window,
+                         'super_active_before': before['superActive'][port],
+                         'supplied_defense': supplied, 'controller_keys': [list(p1), list(p2)],
+                         'defender_x_before': before[f'x{defender+1}'],
+                         'defender_x_after': state[f'x{defender+1}']})
+        return state
+
+    supers.step = timed_guard_step
+    try:
+        result = supers.contact(fighter, port, guard=True)
+    finally:
+        supers.step = original_step
+    require(rows and all(row['supplied_defense'] == [back] and
+                         row['controller_keys'][defender] == ([back] if row['pulse_window'] else [])
+                         for row in rows),
+            'rising guard uses relative back only in committed pulse windows', [fighter, port])
+    startup = [row for row in rows if row['super_active_before'] and
+               row['phase_before'] == 0 and not row['pulse_window']]
+    require(startup and all(row['defender_x_before'] == row['defender_x_after'] for row in startup),
+            'neutral rising-super startup guard fixture holds defender position', [fighter, port])
+    result['controller_policy'] = 'standing relative back during pulse windows; neutral startup gaps recovery'
+    result['guard_controller_rows'] = rows
+    return result
+
+
 def super_checks(fighter):
     supers.SYMBOLS = balance.symbols(SYM)
     supers.check = require
@@ -579,7 +636,7 @@ def super_checks(fighter):
     for port in (0, 1):
         result['ports'].append({'port': port + 1,
                                'hits': supers.contact(fighter, port),
-                               'guard': supers.contact(fighter, port, guard=True),
+                               'guard': guarded_super_contact(fighter, port),
                                'interrupt': supers.interrupt(fighter, port)})
     require(not supers.timing['cadence_failures'] and not supers.timing['overflow_failures'],
             'super contacts preserve native cadence and OBJ limits', supers.timing)

@@ -136,7 +136,10 @@ def scenario(rom,fighter,table,base=False):
             if abs(d-target)<2:return
             toward='right' if s[f'x{port+1}']<s[f'x{2-port}'] else 'left'
             key=toward if d>target else ('left' if toward=='right' else 'right')
-            drive(port,[key])
+            if d<target and ((key=='left' and s[f'x{port+1}']<=24*16) or (key=='right' and s[f'x{port+1}']>=232*16)):
+                drive(port,other=[toward])
+            else:
+                drive(port,[key])
         raise AssertionError(('spacing failed',fighter,target,d))
     try:
         p.run(120,['left'],['right'],label='separate')
