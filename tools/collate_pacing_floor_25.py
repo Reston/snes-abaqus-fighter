@@ -40,7 +40,10 @@ def collect(source_ref):
     for name in (*SIX,*FOCUSED.values(),'compatibility-test-report.json','fresh-build-test-report.json','authoring-guards-report.json'):
         path='docs/'+name;report=read(path)
         require(report.get('rom_sha256',report.get('rom',{}).get('sha256'))==rom,'Stale evidence: '+name)
-        require(report.get('status')=='passed','Failed evidence: '+name);failure_arrays(report,name)
+        # The original gameplay suite writes its complete report only after
+        # success and has no status field; its counted checks are mandatory.
+        require(report.get('status','passed' if name=='test-report.json' else None)=='passed',
+                'Failed evidence: '+name);failure_arrays(report,name)
         checks=count(report) if name in (*SIX,*FOCUSED.values()) else None
         if name in FOCUSED.values():
             require(report.get('source_commit')==freeze and report.get('diagnostic') is False,'Noncanonical focused proof: '+name)
