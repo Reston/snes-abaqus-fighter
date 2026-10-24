@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "fighter_id": 0,
+  "scope": "super-v1",
+  "reference": "assets/art/characters/00-damian/animation-motion-v5.png",
+  "generation": "built-in image_gen; transparent_background=true",
+  "prompt": "Use case: identity-preserve. Asset type: production native SNES fighting-game super sprite atlas. Input reference: approved Damian character sheet, identity and costume reference only. Redraw SAME Damian as EXACTLY EIGHT separated complete connected full-body figures, four equal columns by two rows, generous transparent gutters and matching sole baseline in each row. Face RIGHT in three-quarter side view. Preserve bald oval head, long nose, short facial stubble, compact broad stocky build, cobalt rolled-sleeve blazer with white cuffs, open white shirt, navy trousers, gold buckle and black dress shoes; same polished cartoon ink, dark contour and limited cel shades. ONE identical anatomical scale for all eight, no head/body resizing. Pose1 neutral UPRIGHT standing guard, tallest neutral anchor with legs nearly straight. Pose2 KERNEL OVERDRIVE charge: knees flex, pelvis settles over rear planted foot, torso coils, both cupped hands gathered at rear hip and eyes fixed right. Pose3 decisive cast: planted wide base, rear heel turns, hips and shoulders drive forward, both OPEN palms thrust right at chest height, one compact wholebody release, no projectile drawn. Pose4 fatigued but guarded recovery: weight returning to center, bent knees, forward shoulders exhaling, both open hands drawing back near chest. Poses5-8 unused alternate grounded guards with small coordinated posture changes, no new action. Charge, cast and recovery must visibly differ as whole silhouettes yet retain exact body proportions and scale. Keep hands connected, both shoes complete, no raised hands above neutral head, no large vertical leaps. No FX, props, text, grid, shadows, floor or scenery. True transparent background; all eight full figures isolated with no touching.",
+  "raw_output_path": "C:/Users/user/.codex/generated_images/01a16b31-fc50-7ce2-93e9-b5542d746b31/exec-aac96753-7c52-412a-aa21-12c0b6a3c054.png",
+  "sources": [
+    {
+      "file": "assets/art/characters/00-damian/super-v1.png",
+      "count": 8,
+      "poses": [
+        "neutral-anchor",
+        "kernel-charge",
+        "kernel-cast",
+        "kernel-recovery",
+        "unused-guard-4",
+        "unused-guard-5",
+        "unused-guard-6",
+        "unused-guard-7"
+      ],
+      "frames": [
+        null,
+        1,
+        2,
+        4,
+        null,
+        null,
+        null,
+        null
+      ],
+      "sha256": "19487cc01efed835d1dcd2dd381910842f13fd7d5bb4411a35ce74fcbb755245"
+    }
+  ],
+  "anchor": {
+    "source": 0,
+    "pose": 0
+  },
+  "height_target": 69,
+  "reference_sha256": "90b2bd7c230c040fa8ca809fc1039cd49adc4e98b0f2f951c939c974b43dd614",
+  "palette_sha256": "ef3f4e8213fe8fd940a89b40d9c39f4e6b0ac3e36dbf51f976118c305d8d3341",
+  "raw_output_sha256": "19487cc01efed835d1dcd2dd381910842f13fd7d5bb4411a35ce74fcbb755245",
+  "selected_final": "assets/art/characters/00-damian/super-v1.png"
+}
