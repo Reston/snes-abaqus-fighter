@@ -410,7 +410,11 @@ def crossups(fighter, port):
             for _ in range(90):
                 crossed = (s[f'x{r.a}']-s[f'x{r.d}'])*sign > 0
                 keys = ()
-                if crossed and signed(s[f'y{r.a}']) >= -48*16 and not sent:
+                # Leave the ordinary air startup time before the rear cap.
+                # On the combined Fernando arc, -48 waits one callback too
+                # long: the first active tick is already 26.25px behind.
+                # -50 sends one tick earlier without changing collision data.
+                if crossed and signed(s[f'y{r.a}']) >= -50*16 and not sent:
                     keys = (key,)
                     sent = True
                 s = r.step(keys, (r.direction(True, True),))
@@ -422,6 +426,11 @@ def crossups(fighter, port):
             if key == 'a':
                 check(contact is not None and signed(s[f'y{r.a}']) < 0 and s[f'face{r.a}'] == original,
                       'Air A connects behind locked facing', [r.tag, s])
+                check(s[f'connected{r.a}'] == 2 and s[f'hp{r.d}'] < before[f'hp{r.d}'] and not s[f'guard{r.d}'],
+                      'Rear air A deals real unguarded damage', [r.tag, before, s])
+                check(s[f'air_action{r.a}'] and s[f'startup{r.a}'] <= s[f'tick{r.a}'] < s[f'active_end{r.a}'] and
+                      s[f'anim_frame{r.a}'] == 53,
+                      'Rear contact uses the current active airborne kick pose', [r.tag, s])
                 collision = collision_snapshot(r, r.last_before, s, 53, rear=True)
                 (ax, _), (dx, _) = collision['collision_xy_12_4']
                 check((ax-dx)*sign > 0 and abs(ax-dx) <= 26*16,
