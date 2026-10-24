@@ -89,7 +89,7 @@ const CharacterProfile characterProfiles[12] = {
     },
     /* Ivo - emerald control / Capital Wave */
     {
-        17,12,-84,5,-66,31,18,SPECIAL_PROJECTILE,14,2,27,17,23,30,125,0,
+        17,12,-96,5,-66,31,18,SPECIAL_PROJECTILE,14,2,27,17,23,30,125,0,
         {4,7,10,6,8,11}, {8,13,20,8,19,23}, {7,11,17,8,15,17}, {28,36,43,46,50,50}
     },
     /* Cristobal - lean orange rush / Atomic Push */
@@ -104,7 +104,7 @@ const CharacterProfile characterProfiles[12] = {
     },
     /* Negger - purple broad bruiser / Macro Shock */
     {
-        16,11,-82,4,-64,33,26,SPECIAL_GROUNDWAVE,13,2,28,21,22,35,105,0,
+        16,11,-86,4,-64,33,26,SPECIAL_GROUNDWAVE,13,2,28,21,22,35,105,0,
         {5,8,11,7,9,12}, {8,16,23,9,22,26}, {10,13,21,11,18,22}, {30,39,48,49,53,53}
     },
     /* David - amber suspenders boxer / Audit Strike */
@@ -114,7 +114,7 @@ const CharacterProfile characterProfiles[12] = {
     },
     /* Fernando - teal stocky low pressure / Legacy Flash */
     {
-        17,12,-80,4,-65,30,21,SPECIAL_GROUNDWAVE,10,2,27,19,23,33,115,0,
+        17,12,-86,4,-65,30,21,SPECIAL_GROUNDWAVE,10,2,27,19,23,33,115,0,
         {5,8,11,7,9,12}, {7,15,22,9,21,25}, {8,12,19,9,16,20}, {29,37,45,47,51,51}
     },
     /* Cristian - navy sweater tall defense / Risk Reversal */
@@ -129,7 +129,7 @@ const CharacterProfile characterProfiles[12] = {
     },
     /* Reston - copper jacket pressure / Cloud Crash */
     {
-        18,12,-84,6,-68,32,22,SPECIAL_PROJECTILE,12,1,29,22,24,38,120,0,
+        18,12,-105,6,-68,32,22,SPECIAL_PROJECTILE,12,1,29,22,24,38,120,0,
         {5,8,10,7,9,11}, {7,14,21,8,20,24}, {10,14,20,11,18,21}, {30,38,47,49,56,56}
     },
     /* Roxana - magenta athletic agility / Close Out */

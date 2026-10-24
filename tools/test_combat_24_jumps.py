@@ -17,6 +17,7 @@ from fighter_assets import extract_atlas,HEIGHTS
 
 BASE='f75005d';OUT=ROOT/'docs/screenshots/combat-24-jumps'
 TARGET={29,30,31,*range(49,56)};checks=[]
+PHYSICS={1:(-84,-96),4:(-82,-86),6:(-80,-86),9:(-84,-105)}
 def sha(raw):return hashlib.sha256(raw).hexdigest()
 def git(path):return subprocess.check_output(['git','show',BASE+':'+path],cwd=ROOT)
 def check(ok,label,detail=None):
@@ -103,6 +104,31 @@ def session(i,rom,table,base=False):
      frames={r[f'anim_frame{a}'] for r in p.rows if r['label']==label}
      expected={49,50,51} if key in ('y','x') else {52,53,54}
      check(expected<=frames,'both ports stream windup/contact/recovery',[i,a,key,sorted(frames)])
+  arcs=[]
+  for port in (0,1):
+   a=str(port+1);d=str(2-port);wait_ground()
+   forward='right' if state(e)[f'face{a}'] else 'left';sign=1 if forward=='right' else -1
+   # A fixed 24px approach, independent of tuned jump values, proves that
+   # ordinary diagonal jumps can cross a standing opponent on both ports.
+   for _ in range(180):
+    s=state(e)
+    if abs(s['x1']-s['x2'])<=24*16:break
+    drive(port,[forward],label='cross-approach')
+   # Move a pair near the wall to open ground before measuring.
+   center=(state(e)['x1']+state(e)['x2'])//32
+   if center>185:run(60,['left'],['left'],'cross-center')
+   elif center<70:run(60,['right'],['right'],'cross-center')
+   run(3);initial=state(e);label=f'cross-arc-{port}'
+   drive(port,['up',forward],label=label);arc=[]
+   for _ in range(90):
+    s=state(e);arc.append(s)
+    if s[f'landing{a}']:break
+    run(label=label)
+   crossed=any((s[f'x{a}']-s[f'x{d}'])*sign>0 for s in arc)
+   evidence={'port':port,'jump_vy':signed16(initial[f'jump{a}']),'apex_pixels':-min(signed16(s[f'y{a}']) for s in arc)/16,'flight_samples':len(arc),'standing_crossed':crossed,'clearance_samples':sum(signed16(s[f'y{a}'])<=-50*16 for s in arc)}
+   if not base:check(crossed,'ordinary diagonal jump crosses standing opponent',[i,evidence])
+   arcs.append(evidence);run(14)
+  p.arcs=arcs;spread()
   # Both corner landings retain floor clamp; inward pad changes cannot steer.
   run(180,['left'],['right']);run(3,['up','left'],['up','right'],'corner',True)
   run(60,['right'],['left'],'corner',True);run(12)
@@ -157,8 +183,8 @@ def session(i,rom,table,base=False):
      back='left' if forward=='right' else 'right'
      run(60,[back],[back],'rear-center')
     run(3);initial=state(e);hp=initial[f'hp{d}'];label=f'p{a}-{key}-'+('rear' if rear else 'front')
-    drive(port,['up',forward] if rear else ['up'],label=label)
-    sent=False;contact=None;rows=[]
+    drive(port,['up',forward] if rear else ['up',key],label=label)
+    sent=not rear;contact=None;rows=[]
     for t in range(84):
      s=state(e);crossed=(s[f'x{a}']-s[f'x{d}'])*sign>0;keys=[]
      if not sent and ((rear and crossed) or (not rear and t>=1)):keys=[key];sent=True
@@ -166,7 +192,8 @@ def session(i,rom,table,base=False):
      # connected persists after a prior attack until the next attack starts;
      # identify a NEW contact from actual HP loss, never the stale latch.
      if contact is None and s[f'connected{a}']==2 and s[f'hp{d}']<hp:contact=s
-    check(contact is not None and contact[f'hp{d}']<hp,'air normal produces actual contact',{'fighter':i,'port':port,'key':key,'rear':rear,'initial':{k:initial[k] for k in ('x1','x2','face1','face2','hp1','hp2')},'active':[{k:s[k] for k in ('x1','x2','y1','y2','action1','action2','anim_frame1','anim_frame2','connected1','connected2','hp1','hp2')} for s in rows if s[f'anim_frame{a}'] in (50,53)]})
+    if not (base and i in PHYSICS and rear):
+     check(contact is not None and contact[f'hp{d}']<hp,'air normal produces actual contact',{'fighter':i,'port':port,'key':key,'rear':rear,'initial':{k:initial[k] for k in ('x1','x2','face1','face2','hp1','hp2')},'active':[{k:s[k] for k in ('x1','x2','y1','y2','action1','action2','anim_frame1','anim_frame2','connected1','connected2','hp1','hp2')} for s in rows if s[f'anim_frame{a}'] in (50,53)]})
     if not base:check(contact[f'anim_frame{a}']==(50 if key=='y' else 53),'contact uses dedicated active drawing',[i,port,key,rear,contact[f'anim_frame{a}']])
     check(all(s[f'face{a}']==initial[f'face{a}'] for s in rows if signed16(s[f'y{a}'])<0),'air attack locks takeoff facing',[i,port,key,rear])
     check(rows[-1][f'y{a}']==rows[-1][f'air_action{a}']==rows[-1][f'action{a}']==0,'air normal clears on landing',[i,port,key,rear])
@@ -196,9 +223,13 @@ def main():
  old=ROOT/'build/v024-jumps-baseline.sfc';old.write_bytes(git('dist/abaqus-after-hours.sfc'))
  oldsym=ROOT/'build/v024-jumps-baseline.sym';oldsym.write_bytes(git('dist/abaqus-after-hours.sym'))
  table=symbols(ROOT/'dist/abaqus-after-hours.sym');base_table=symbols(oldsym)
- report={'status':'failed','scope':'isolated jump-v1 only; no combined pass claim','source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'source_files_sha256':{p:sha((ROOT/p).read_bytes()) for p in ('src/animation_weight.h','tools/test_combat_24_jumps.py')},'rom_sha256':sha(candidate.read_bytes()),'baseline_commit':BASE,'baseline_rom_sha256':sha(old.read_bytes()),'command':'D:/snes-abaqus-fighter/.tools/python/python.exe tools/run_background.py --log build/combat-24-jumps.log -- D:/snes-abaqus-fighter/.tools/python/python.exe tools/test_combat_24_jumps.py','host':host_contract(),'checks':checks,'cases':[],'failures':[]}
+ report={'status':'failed','scope':'isolated jump-v1 only; no combined pass claim','source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'source_files_sha256':{p:sha((ROOT/p).read_bytes()) for p in ('src/animation_weight.h','src/characters.h','tools/test_combat_24_jumps.py')},'rom_sha256':sha(candidate.read_bytes()),'baseline_commit':BASE,'baseline_rom_sha256':sha(old.read_bytes()),'command':'D:/snes-abaqus-fighter/.tools/python/python.exe tools/run_background.py --log build/combat-24-jumps.log -- D:/snes-abaqus-fighter/.tools/python/python.exe tools/test_combat_24_jumps.py','host':host_contract(),'checks':checks,'cases':[],'failures':[]}
  try:
   report['art']=art()
+  original=git('src/characters.h').decode().replace('\r\n','\n');expected=original
+  for a,b in [('17,12,-84,5,-66','17,12,-96,5,-66'),('16,11,-82,4,-64','16,11,-86,4,-64'),('17,12,-80,4,-65','17,12,-86,4,-65'),('18,12,-84,6,-68','18,12,-105,6,-68')]:expected=expected.replace(a,b)
+  check((ROOT/'src/characters.h').read_text()==expected,'only four measured jumpVy values differ; all other profiles/physics fields exact')
+  report['jumpVy_changes']={i:{'before':v[0],'after':v[1]} for i,v in PHYSICS.items()}
   report['native_core_sha256']=sha((ROOT/'.tools/core/snes9x_libretro.dll').read_bytes())
   report['shared_harness_sha256']={name:sha((ROOT/'tools'/name).read_bytes()) for name in ('emulator.py','test_expansion_01_animation_weight.py','test_characters.py','test_inputs.py')}
   prior_ram={k:v for k,v in base_table.items() if 0x7e0000<=v<0x800000}
@@ -206,8 +237,10 @@ def main():
   check(not moved,'all prior WRAM symbols retain exact address',moved)
   report['prior_RAM_labels']=len(prior_ram);report['moved_RAM_labels']=moved
   for i in range(12):
-   before,_=session(i,old,base_table,True);after,contacts=session(i,candidate,table)
-   check(before.game_hash.hexdigest()==after.game_hash.hexdigest(),'identical input preserves every non-animation Fighter byte and trace sample',i)
+   before,baseline_contacts=session(i,old,base_table,True);after,contacts=session(i,candidate,table)
+   same=before.game_hash.hexdigest()==after.game_hash.hexdigest()
+   if i not in PHYSICS:check(same,'unchanged profile preserves every non-animation Fighter byte and trace sample',i)
+   else:check(not all(a['standing_crossed'] for a in before.arcs) and all(a['standing_crossed'] for a in after.arcs),'measured baseline cross-up limitation repaired on both ports',[i,before.arcs,after.arcs])
    for name,failures in [('cadence',after.drops),('native_timing',after.native_failures),('OBJ_overflow',after.overflow),('actor_payload',after.bad_payload),('OAM_geometry',after.geometry),('SPC_PCM_cadence',after.audio_failures)]:
     check(not failures,name+' failure array empty',[i,failures[:8]])
    check(not after.uploads[2],'at most one 3840B actor page changes per vblank',[i,dict(after.uploads)])
@@ -225,7 +258,7 @@ def main():
      path=OUT/(label+'-before-after.gif')
      frames[0].save(path,save_all=True,append_images=frames[1:],duration=17,loop=0,optimize=False)
      captures.append(path.relative_to(ROOT).as_posix())
-   report['cases'].append({'fighter':i,'both_ports':True,'samples':len(after.rows),'simulation_sha256':after.game_hash.hexdigest(),'contacts':contacts,'uploads':dict(after.uploads),'native_timing_failures':after.native_failures,'cadence_failures':after.drops,'OBJ_failures':after.overflow,'payload_failures':after.bad_payload,'geometry_failures':after.geometry,'SPC_PCM_failures':after.audio_failures,'max_SPC_backlog':after.max_backlog,'captures':captures})
+   report['cases'].append({'fighter':i,'both_ports':True,'samples':len(after.rows),'simulation_sha256':after.game_hash.hexdigest(),'simulation_baseline_equal':same,'intentional_jumpVy_change':i in PHYSICS,'baseline_arcs':before.arcs,'candidate_arcs':after.arcs,'baseline_contacts':baseline_contacts,'contacts':contacts,'uploads':dict(after.uploads),'native_timing_failures':after.native_failures,'cadence_failures':after.drops,'OBJ_failures':after.overflow,'payload_failures':after.bad_payload,'geometry_failures':after.geometry,'SPC_PCM_failures':after.audio_failures,'max_SPC_backlog':after.max_backlog,'captures':captures})
    print(json.dumps({'fighter':i,'samples':len(after.rows),'checks':len(checks)}),flush=True)
   names=subprocess.check_output(['git','ls-tree','-r','--name-only',BASE,'assets/generated'],cwd=ROOT,text=True).splitlines()
   report['generated_delta']=[name for name in names if git(name)!=(ROOT/name).read_bytes()]

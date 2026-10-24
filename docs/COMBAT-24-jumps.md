@@ -29,16 +29,28 @@ near the floor, so finishing an air attack does not restart takeoff. An air
 attack's final recovery returns to its actual flight phase. Ground contact
 selects 31; the existing six-sample presentation release then uses 54 before
 idle. Any accepted attack, jump, step, crouch or guard keeps selection priority
-over release. Physics, jump velocities, gravity, horizontal steering, combat
-timing, input buffers and landing availability are unchanged.
+over release. Active contact IDs remain **punch 50 / kick 53**, with no active
+cycling, matching the contact owner's `contactActionFrame()` mapping.
+
+A controller-only baseline arc survey found that Ivo and Reston never reached
+the standing-body clearance height; Negger and Fernando did not stay above it
+long enough for their slower horizontal motion to cross. Their jumpVy values
+change from -84 to -96, -84 to -105, -82 to -86 and -80 to -86 respectively.
+These are the only four physics scalar changes. All gravity, uppercut/special
+velocities, horizontal movement/steering, combat timing, input buffers and
+landing availability remain exact. The other eight jump profiles are exact.
+The focused report measures old/new arcs and requires both-port standing
+cross-ups plus real rear strong-kick contacts on the candidate for all twelve.
 
 ## Integration boundaries
 
 Only the state-4 flight branch, state-15 landing release and the `airAction`
 recovery tail change in `animation_weight.h`. The grounded-attack owner edits
 other branches in that file; retain both sets when resolving the shared-file
-conflict. There are no `game.c`, `characters.h`, version, native assembly or
-shared pipeline edits. Frames 1/2/4 remain the super owner's slots; frames
+conflict. In `characters.h`, preserve only the jumpVy columns for IDs 1/4/6/9
+when resolving the pacing owner's other profile fields. There are no `game.c`,
+collision, version, native assembly or shared pipeline edits. Frames 1/2/4
+remain the super owner's slots; frames
 48/56..63 remain the original throw/down/get-up drawings.
 
 There is no added RAM, ABI field, trace word, frame bank, VRAM, CGRAM, HDMA,
@@ -66,8 +78,11 @@ strong-kick contacts, locked facing, released jump/attack/wake buffers,
 immediate landing-release interruption and corner landings. Every sampled
 callback checks consecutive native ticks, SDK lag/vblank counters, intact actor
 payloads, thirty-piece OAM geometry, OBJ overflow, single-actor DMA and captured
-PCM/SPC FIFO health. Identical baseline inputs compare all non-animation
-Fighter bytes and non-animation public trace samples. The art proof restricts
+PCM/SPC FIFO health. The eight unchanged profiles compare all non-animation
+Fighter bytes and non-animation public trace samples against identical baseline
+inputs. The four intentional jumpVy revisions instead carry measured baseline
+and candidate flight arcs; an independent source check allows exactly those
+four scalar differences and preserves all other character data. The art proof restricts
 all generated fighter changes to the ten owned frames and verifies exact
 palette, portrait and protected-pose preservation.
 
