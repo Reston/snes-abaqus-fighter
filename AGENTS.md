@@ -6,6 +6,25 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+<!-- v028-agent:start -->
+- **v0.28.0 is the full-body selection preview**, branch
+  `feature/live-fighter-preview`, stacked on office-menu PR #24. User requested
+  a complete standing fighter and confirmation gesture like SFII. Original
+  frames16..19 breathe at (2,24); A/Start plays two signature poses and victory11
+  over18 ticks before one step. Original small portraits remain. Five menu
+  bytes append at $7F:0593..0597; all1,316 old variable/data labels stay exact,
+  only two end/size markers grow5. Actor0 VRAM/OBJ/palette are reused; UI972
+  and pose3840+palette32 transfers own separate blanks. Fighter/Wave/TRACE ABI,
+  hardware ASM, fighter/stage/audio art, combat and pacing stay unchanged.
+  221/226 generated assets stay exact. Both pinned cores pass36 sessions each,
+  all12/both roles/mirrors/live handoff: 49,286 focused checks and
+  6,455 presentation/Training checks. Normal/-O20 guards and fresh226/ROM/
+  symbol reproduction pass. Older six-suite records below are historical.
+  ROM `09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c`, checksum `ECEB`,
+  source/test freeze `16e9989497fa7f7bf16271d59555a13b57caeac4`. See docs/RELEASE-v0.28.0.md
+  and docs/menu-preview-review.json. Visual/merge review pending; no package.
+<!-- v028-agent:end -->
+
 <!-- v0271-agent:start -->
 - **v0.27.1 replaces the rejected world-map menu backdrop** with gold-duotone
   crops of the existing authored office stage, behind the title and above the
