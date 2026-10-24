@@ -1,5 +1,5 @@
 # v0.24.0 — readable combat playtest guide
-<!-- candidate-version: 0.24.0; identity: PENDING_FINAL_VERIFICATION; rom-sha256: PENDING_FINAL_VERIFICATION; source-freeze: PENDING_FINAL_VERIFICATION -->
+<!-- candidate-version: 0.24.0; identity: TECHNICALLY_VERIFIED_HUMAN_PENDING; rom-sha256: 408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79; source-freeze: a1ee733aea036ad985bca9bdee29cc170cabd2ac -->
 
 The combined revision gives attacks more time to read, clearer backward hit
 reactions and coordinated whole-body animation. All twelve fighters gain new
@@ -7,12 +7,11 @@ attack, jump/landing and dedicated super drawings; all three stages gain
 connected scenery and authored ground detail.
 
 <!-- v024-release-status:start -->
-**Combined candidate: PENDING_FINAL_VERIFICATION.** The six feature PRs are
-merged into `integration/readable-combat-v024`.
-[Draft playtest PR #14](https://github.com/Reston/snes-abaqus-fighter/pull/14)
-remains **unmerged** into main for one human combined playtest. Current combined
-captures are interim. A full attack proof found native startup lag; runtime
-optimization, regenerated media and final exact-ROM verification remain pending.
+**Combined candidate: technically verified; human playtest pending.**
+The six feature PRs are merged into `integration/readable-combat-v024`.
+[Playtest PR #14](https://github.com/Reston/snes-abaqus-fighter/pull/14) stays
+**unmerged** into main for one human combined playtest. Final media and gates
+are bound by [verification](verification-v0.24.0.json).
 <!-- v024-release-status:end -->
 
 ## What changes in play
@@ -33,21 +32,20 @@ preserves nominal travel. Hit reactions push away from the actual contact
 side, including rear hits and trades. CPU defense and recovery reactions use
 slower, fallible sampling. Supers keep their existing command and
 96-energy cost. Rising specials now prepare on the ground and launch with the
-active fist, keeping their longer windup readable at close range. Final
-technical status and human playtest remain pending.
+active fist, keeping their longer windup readable at close range. The human combined playtest remains pending.
 
 The revision preserves the approved full-body walking poses, fighter
 likeness/costume references, portraits, fighter palettes and physical scale;
-old masters remain retained. The current inventory is 226 generated assets;
-all 1,318 prior RAM labels retain their addresses. Final collation is pending.
+old masters remain retained. The final inventory is 226 generated assets;
+all 1,318 prior RAM labels retain their addresses. Final evidence is bound by the verification record.
 Scope is pacing/recoil plus proposals 1–5 only; proposals 6–10 are excluded.
 
 ## Play and controls
 
 This remains a **native SNES game requiring an SNES emulator**. Use
 [Play.cmd](../Play.cmd) or load `dist/abaqus-after-hours.sfc` in the emulator.
-The current combined runtime is identified below; final technical verification
-is still pending. Approved main remains v0.23.1.
+The technically verified combined runtime is identified below; the human
+playtest remains pending. Approved main remains v0.23.1.
 
 | SNES input | Action |
 | --- | --- |
@@ -90,64 +88,41 @@ in [review feedback](review-feedback.json); these tasks do not mark them done.
 
 ## Media and verification status
 
-The [review gallery](REVIEW-v0.24.0.html) separates interim combined native
+The [review gallery](REVIEW-v0.24.0.html) separates current combined native
 captures, approved v0.23.1 comparisons and offline art/geometry diagnostics.
 The six `COMBAT-24-*` feature notes are implementation/history links; their
 isolated runs do not establish current whole-game behavior. GIF playback
 approximates timing; native ROM cadence is authoritative.
 
 <!-- v024-media-status:start -->
-These captures bind the interim combined runtime below. The parent will
-regenerate them at the same paths for the corrected final ROM.
+- **Pacing:** six native before/current samples and the full-roster focused proof.
+- **Attacks:** all twelve new combined-versus-historical sequences and both-port hurt/block captures.
+- **Contacts:** native baseline-left/current-right clips; final-art overlays are offline diagnostics.
+- **Stages:** current Accuracy movement and right/left views; no stale center views or prototype comparisons.
+- **Jumps:** new combined comparisons and both-port native examples.
+- **Supers:** refreshed native before/current examples; roster conversion sheet remains an offline diagnostic.
 
-- **Pacing:** six current before/after light, strong and guard GIFs are bound by
-  [the sample record](combat-24-pacing-samples.json). This limited capture
-  record does not replace the pending full-roster pacing proof.
-- **Attacks:** new `XX-combined-vs-historical-sequences.gif` and
-  `XX-combined-P1/P2-hurt/block.gif` files are being produced. The gallery uses
-  existing new files as provisional media only; the successful full-run
-  [attack report](combat-24-attack-report.json) and complete inventory are pending.
-- **Contacts:** paired native clips compare approved baseline left/current
-  combined right. All64/roster/edge overlays use final art and are offline
-  diagnostics. [Current contact report](combat-24-contact-report.json).
-- **Stages:** current Accuracy stage0 movement, stage1 right and stage2 left
-  views are used. Earlier center views and the floor prototype are omitted.
-  [Both-core stage report](combat-24-stage08-report.json).
-- **Jumps:** the new `jump-combined-vs-historical.gif`,
-  `air-a-combined-vs-historical.gif` and `combined-*.gif` native media are bound
-  by [the current jump report](combat-24-jumps-report.json), with 19 captures.
-- **Supers:** the roster conversion sheet shows current art as an offline
-  diagnostic. Current native after clips await a successful full
-  [super report](combat-24-super-report.json); old after GIFs remain historical.
+All linked media hashes are checked against final verification or its hash-bound capture reports.
 <!-- v024-media-status:end -->
 
 <!-- v024-technical-status:start -->
-**Interim combined ROM only; final ROM will change:**
+**Technical verification passed; one human combined playtest remains pending.**
 
-| Identity | Interim value |
+| Identity | Final value |
 | --- | --- |
 | Version / mapping | 0.24.0 / 4 MiB NTSC FastROM LoROM |
-| ROM SHA256 | `28d770aca1cc489c70d7370329e785cb223c0703d807f07d627d461ba8dbdb85` |
-| Header checksum | `5872` |
-| Final source/test freeze | **Pending parent collation**; recent driver checkpoints are interim |
+| ROM SHA256 | `408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79` |
+| Header checksum | `4857` |
+| Source/test freeze | `a1ee733aea036ad985bca9bdee29cc170cabd2ac` |
 | Generated assets / retained prior RAM labels | 226 / 1,318 |
-| Final technical identity | **PENDING_FINAL_VERIFICATION** |
 
-`Test.cmd` exited 0 on this interim ROM: 2,595 gameplay, 17,906 roster, 3,728 presentation,
-1,443 input, 735 stages and 3,188 Training checks, **29,595 total** on this
-combined ROM. Matching pinned Accuracy smoke passed. Completed focused proofs
-are contact **9,165** (108 sessions / 61,704 callbacks), jumps **1,741** (all
-twelve / both ports) and stages **735** (both cores). The stage focused proof
-shares `Test.cmd`'s native execution; it is not counted again as an independent run.
-
-The full attack proof confirmed native startup lag during simultaneous
-Cristobal specials (tick 9 / frame 1039, SDK lag +1). Runtime optimization is
-underway. Full pacing, attack and super proofs remain unfinished; all final
-gates and media must bind the corrected ROM and settled source/test freeze.
-Interim passes above do not transfer to that ROM. The earlier `003661c` fresh export reproduced this ROM,
-226 assets and normalized symbols, but is **interim**, not final-freeze proof.
-The parent will write `docs/verification-v0.24.0.json` after collation succeeds.
-No isolated or incomplete result is pooled into a combined pass claim.
+All six native suites pass **29,595 checks**: 2,595 gameplay, 17,906 roster, 3,728 presentation, 1,443 input, 735 stages, 3,188 Training. Matching pinned
+Accuracy smoke, all six focused proofs, final-freeze fresh ROM/assets/symbol
+reproduction and authoring guards pass. Focused counts: pacing/recoil 238,137; attacks 2,539; contacts 9,165; stages 735; jumps 1,741; supers 4,730.
+Stage focused coverage shares the stage suite's native execution and is not
+counted again as an independent run. Isolated/interim counts are not pooled.
+See [final exact-ROM verification](verification-v0.24.0.json).
+Human playtest remains pending; PR #14 stays unmerged. No offline package or human approval is claimed.
 <!-- v024-technical-status:end -->
 
 Approved historical baseline: v0.23.1 [release](RELEASE-v0.23.1.md) and

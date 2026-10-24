@@ -1,14 +1,14 @@
 {
   "status": "passed",
-  "scope": "isolated-stage08-v024-floor-review-round2",
+  "scope": "current-cartridge whole scenery and authored-floor proof; combined completion remains parent-owned",
   "baseline_commit": "3f51120",
   "integration_base": "8d0505d",
   "previous_feature_head": "7c5bf13b1578d769d308a5e89d4913c08baf654d",
-  "source_commit": "8bc44749ffe63bdec2c2a09c86c19f250aefb2cb",
-  "command": "D:\\snes-abaqus-fighter\\.tools\\python\\python.exe tools/test_combat_24_stage08.py --floor-before-rom build/v024-stage08-before-floor.sfc",
-  "rom_sha256": "aafe7b26ff1cf26415e7211e4f19eed6696dd39d4936991141aac411fc1e641b",
+  "source_commit": "a1ee733aea036ad985bca9bdee29cc170cabd2ac",
+  "command": "D:\\snes-abaqus-fighter\\.tools\\python\\python.exe tools\\test_stages.py",
+  "rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
   "rom_bytes": 4194304,
-  "harness_sha256": "79e6683b61a1ca69267f27a88420e5d804b863abfced16c5a41b2186eba3f5c4",
+  "harness_sha256": "0e0e9afbb1d1ab3911b14c5f181698a15c7cae19879c7ea44db4a8bcc3592287",
   "host": {
     "python": "3.12.10",
     "pillow": "13.0.0",
@@ -22,12 +22,97 @@
   },
   "checks": [
     {
-      "check": "generated delta is exactly stage planes and declarations",
+      "check": "all declared stage planes are present within the combined allocation",
       "passed": true,
       "details": {
         "changed": [
           "assets/generated/assets.h",
+          "assets/generated/character-manifest.json",
           "assets/generated/data.asm",
+          "assets/generated/fighter00.bin",
+          "assets/generated/fighter00.png",
+          "assets/generated/fighter00b.bin",
+          "assets/generated/fighter00d.bin",
+          "assets/generated/fighter00e.bin",
+          "assets/generated/fighter00f.bin",
+          "assets/generated/fighter00g.bin",
+          "assets/generated/fighter01.bin",
+          "assets/generated/fighter01.png",
+          "assets/generated/fighter01b.bin",
+          "assets/generated/fighter01d.bin",
+          "assets/generated/fighter01e.bin",
+          "assets/generated/fighter01f.bin",
+          "assets/generated/fighter01g.bin",
+          "assets/generated/fighter02.bin",
+          "assets/generated/fighter02.png",
+          "assets/generated/fighter02b.bin",
+          "assets/generated/fighter02d.bin",
+          "assets/generated/fighter02e.bin",
+          "assets/generated/fighter02f.bin",
+          "assets/generated/fighter02g.bin",
+          "assets/generated/fighter03.bin",
+          "assets/generated/fighter03.png",
+          "assets/generated/fighter03b.bin",
+          "assets/generated/fighter03d.bin",
+          "assets/generated/fighter03e.bin",
+          "assets/generated/fighter03f.bin",
+          "assets/generated/fighter03g.bin",
+          "assets/generated/fighter04.bin",
+          "assets/generated/fighter04.png",
+          "assets/generated/fighter04b.bin",
+          "assets/generated/fighter04d.bin",
+          "assets/generated/fighter04e.bin",
+          "assets/generated/fighter04f.bin",
+          "assets/generated/fighter04g.bin",
+          "assets/generated/fighter05.bin",
+          "assets/generated/fighter05.png",
+          "assets/generated/fighter05b.bin",
+          "assets/generated/fighter05d.bin",
+          "assets/generated/fighter05e.bin",
+          "assets/generated/fighter05f.bin",
+          "assets/generated/fighter05g.bin",
+          "assets/generated/fighter06.bin",
+          "assets/generated/fighter06.png",
+          "assets/generated/fighter06b.bin",
+          "assets/generated/fighter06d.bin",
+          "assets/generated/fighter06e.bin",
+          "assets/generated/fighter06f.bin",
+          "assets/generated/fighter06g.bin",
+          "assets/generated/fighter07.bin",
+          "assets/generated/fighter07.png",
+          "assets/generated/fighter07b.bin",
+          "assets/generated/fighter07d.bin",
+          "assets/generated/fighter07e.bin",
+          "assets/generated/fighter07f.bin",
+          "assets/generated/fighter07g.bin",
+          "assets/generated/fighter08.bin",
+          "assets/generated/fighter08.png",
+          "assets/generated/fighter08b.bin",
+          "assets/generated/fighter08d.bin",
+          "assets/generated/fighter08e.bin",
+          "assets/generated/fighter08f.bin",
+          "assets/generated/fighter08g.bin",
+          "assets/generated/fighter09.bin",
+          "assets/generated/fighter09.png",
+          "assets/generated/fighter09b.bin",
+          "assets/generated/fighter09d.bin",
+          "assets/generated/fighter09e.bin",
+          "assets/generated/fighter09f.bin",
+          "assets/generated/fighter09g.bin",
+          "assets/generated/fighter10.bin",
+          "assets/generated/fighter10.png",
+          "assets/generated/fighter10b.bin",
+          "assets/generated/fighter10d.bin",
+          "assets/generated/fighter10e.bin",
+          "assets/generated/fighter10f.bin",
+          "assets/generated/fighter10g.bin",
+          "assets/generated/fighter11.bin",
+          "assets/generated/fighter11.png",
+          "assets/generated/fighter11b.bin",
+          "assets/generated/fighter11d.bin",
+          "assets/generated/fighter11e.bin",
+          "assets/generated/fighter11f.bin",
+          "assets/generated/fighter11g.bin",
           "assets/generated/stage0.png",
           "assets/generated/stage0_map.bin",
           "assets/generated/stage0_pal.bin",
@@ -50,1211 +135,1216 @@
           "assets/generated/stage2_floor_map.bin",
           "assets/generated/stage2_floor_tiles.bin"
         ],
-        "preserved": 205
+        "preserved": 120
       }
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "independent combined preservation policy binds every generated change",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/cartoon-prompts.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/animation-actions-v4.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/animation-actions-v5.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/animation-actions.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/animation-airborne-v4.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/animation-airborne-v4.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/animation-airborne-v5.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/animation-airborne-v5.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/animation-airborne.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/animation-airborne.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/animation-motion-v4.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/animation-motion-v5.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/animation-motion.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/animation-v4.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/animation-v5.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/animation.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/atlas-v4.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/atlas-v5.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/atlas.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/identity.md"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/likeness-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/likeness-v4.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/likeness-v5.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/native-revision-v4.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/native-revision.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/prompt.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/walking-v1.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/walking-v1.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/walking-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/00-damian/walking-v2.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/01-ivo/animation-actions.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/01-ivo/animation-airborne.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/01-ivo/animation-airborne.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/01-ivo/animation-motion.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/01-ivo/animation.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/01-ivo/atlas-v1.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/01-ivo/atlas.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/01-ivo/identity.md"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/01-ivo/likeness-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/01-ivo/prompt.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/01-ivo/walking-v1.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/01-ivo/walking-v1.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/01-ivo/walking-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/01-ivo/walking-v2.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/02-cristobal/animation-actions.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/02-cristobal/animation-airborne.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/02-cristobal/animation-airborne.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/02-cristobal/animation-motion.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/02-cristobal/animation.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/02-cristobal/atlas.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/02-cristobal/identity.md"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/02-cristobal/likeness-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/02-cristobal/prompt.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/02-cristobal/walking-v1.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/02-cristobal/walking-v1.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/02-cristobal/walking-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/02-cristobal/walking-v2.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/03-cote/animation-actions.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/03-cote/animation-airborne.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/03-cote/animation-airborne.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/03-cote/animation-motion.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/03-cote/animation.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/03-cote/atlas.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/03-cote/identity.md"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/03-cote/likeness-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/03-cote/prompt.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/03-cote/walking-v1.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/03-cote/walking-v1.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/03-cote/walking-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/03-cote/walking-v2.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/04-negger/animation-actions.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/04-negger/animation-airborne.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/04-negger/animation-airborne.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/04-negger/animation-motion.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/04-negger/animation.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/04-negger/atlas.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/04-negger/identity.md"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/04-negger/likeness-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/04-negger/prompt.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/04-negger/walking-v1.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/04-negger/walking-v1.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/04-negger/walking-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/04-negger/walking-v2.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/05-david/animation-actions.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/05-david/animation-airborne.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/05-david/animation-airborne.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/05-david/animation-motion.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/05-david/animation.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/05-david/atlas.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/05-david/identity.md"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/05-david/likeness-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/05-david/prompt.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/05-david/walking-v1.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/05-david/walking-v1.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/05-david/walking-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/05-david/walking-v2.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/06-fernando/animation-actions.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/06-fernando/animation-airborne.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/06-fernando/animation-airborne.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/06-fernando/animation-motion.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/06-fernando/animation.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/06-fernando/atlas.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/06-fernando/identity.md"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/06-fernando/likeness-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/06-fernando/prompt.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/06-fernando/walking-v1.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/06-fernando/walking-v1.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/06-fernando/walking-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/06-fernando/walking-v2.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/07-cristian/animation-actions.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/07-cristian/animation-airborne.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/07-cristian/animation-airborne.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/07-cristian/animation-motion.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/07-cristian/animation.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/07-cristian/atlas.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/07-cristian/identity.md"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/07-cristian/likeness-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/07-cristian/prompt.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/07-cristian/walking-v1.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/07-cristian/walking-v1.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/07-cristian/walking-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/07-cristian/walking-v2.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/08-mamariaga/animation-actions.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/08-mamariaga/animation-airborne.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/08-mamariaga/animation-airborne.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/08-mamariaga/animation-motion.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/08-mamariaga/animation.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/08-mamariaga/atlas.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/08-mamariaga/identity.md"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/08-mamariaga/likeness-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/08-mamariaga/prompt.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/08-mamariaga/walking-v1.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/08-mamariaga/walking-v1.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/08-mamariaga/walking-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/08-mamariaga/walking-v2.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/animation-actions-v4.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/animation-actions.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/animation-airborne-v4.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/animation-airborne-v4.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/animation-airborne.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/animation-airborne.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/animation-motion-v4.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/animation-motion.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/animation-v4.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/animation.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/atlas-v1.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/atlas-v2.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/atlas-v4.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/atlas.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/followup-prompt.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/identity.md"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/likeness-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/likeness-v3.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/likeness-v4.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/native-revision.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/prompt.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/revisedatlas.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/walking-v1.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/walking-v1.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/walking-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/09-reston/walking-v2.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/10-roxana/animation-actions.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/10-roxana/animation-airborne.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/10-roxana/animation-airborne.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/10-roxana/animation-motion.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/10-roxana/animation.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/10-roxana/atlas.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/10-roxana/identity.md"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/10-roxana/likeness-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/10-roxana/prompt.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/10-roxana/walking-v1.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/10-roxana/walking-v1.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/10-roxana/walking-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/10-roxana/walking-v2.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/animation-actions-v4.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/animation-actions.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/animation-airborne-v4.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/animation-airborne-v4.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/animation-airborne.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/animation-airborne.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/animation-motion-v4.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/animation-motion.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/animation-v4.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/animation.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/atlas-v4.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/atlas.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/identity.md"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/likeness-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/likeness-v4.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/native-revision.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/prompt.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/source-v4/airborne-layout-draft.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/walking-v1.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/walking-v1.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/walking-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/characters/11-lars/walking-v2.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/fighter-atlas-cartoon.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/fighter-atlas.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/menu/champion-ending-v1.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/menu/champion-ending-v1.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/menu/prompts.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/menu/source-champion-v1/champion-raw-v1.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/menu/source-champion-v1/generation-v1.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/menu/title-backdrop.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/portraits-cartoon.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/roster-baseline-v0.8.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/stage-atlas-cartoon.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/stage-atlas.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/stages/00-las-condes-cartoon-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/stages/00-las-condes-cartoon-v2.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/stages/00-las-condes.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/stages/01-castillo-cartoon-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/stages/01-castillo-cartoon-v2.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/stages/01-castillo.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/stages/02-oficina-cartoon-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/stages/02-oficina-cartoon-v2.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/stages/02-oficina.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/stages/source-v2/00-las-condes.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/stages/source-v2/01-castillo.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/stages/source-v2/02-oficina.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/stages/stages-v0.4.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/stages/stages.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/walking-v1.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/art/walking-v2.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/references/contact-sheet.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/references/fighter-00-v5.png"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/references/fighter-00.jpg"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/references/fighter-01.jpg"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/references/fighter-02.jpg"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/references/fighter-03.jpg"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/references/fighter-04.jpg"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/references/fighter-05.jpg"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/references/fighter-06.jpg"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/references/fighter-07.jpg"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/references/fighter-08.jpg"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/references/fighter-09.jpg"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/references/fighter-10.jpg"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/references/fighter-11.jpg"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/references/team.json"
     },
     {
-      "check": "original source or provenance preserved",
+      "check": "original source or provenance preserved (canonical text, exact binary)",
       "passed": true,
       "details": "assets/references/wealth.json"
     },
     {
-      "check": "all existing RAM symbol addresses retained",
+      "check": "prior RAM symbols obey the bounded combined policy",
       "passed": true,
       "details": {
         "count": 1318,
@@ -1734,187 +1824,202 @@
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.attackStarttext_0x60"
+      "details": "SECTIONSTART_.clearRecoiltext_0x60"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.cleanDirectionstext_0x61"
+      "details": "SECTIONSTART_.updateRecoiltext_0x61"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.discardFighterInputtext_0x62"
+      "details": "SECTIONSTART_.pacingAirSpeedtext_0x62"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.actionForInputtext_0x63"
+      "details": "SECTIONSTART_.attackStarttext_0x63"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.captureInputtext_0x64"
+      "details": "SECTIONSTART_.cleanDirectionstext_0x64"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.captureFightInputstext_0x65"
+      "details": "SECTIONSTART_.discardFighterInputtext_0x65"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.controlstext_0x66"
+      "details": "SECTIONSTART_.actionForInputtext_0x66"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.hurtWithRecoiltext_0x67"
+      "details": "SECTIONSTART_.captureInputtext_0x67"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.hurttext_0x68"
+      "details": "SECTIONSTART_.captureFightInputstext_0x68"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.clearWakeInputtext_0x69"
+      "details": "SECTIONSTART_.controlstext_0x69"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.clampDownedtext_0x6a"
+      "details": "SECTIONSTART_.hurtWithRecoiltext_0x6a"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.clearThrowLinkstext_0x6b"
+      "details": "SECTIONSTART_.hurttext_0x6b"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.releaseHeldVictimtext_0x6c"
+      "details": "SECTIONSTART_.clearWakeInputtext_0x6c"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.beginKnockdowntext_0x6d"
+      "details": "SECTIONSTART_.clampDownedtext_0x6d"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.knockdownAttacktext_0x6e"
+      "details": "SECTIONSTART_.clearThrowLinkstext_0x6e"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.beginThrowtext_0x6f"
+      "details": "SECTIONSTART_.releaseHeldVictimtext_0x6f"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.throwTechtext_0x70"
+      "details": "SECTIONSTART_.beginKnockdowntext_0x70"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.updateDownedtext_0x71"
+      "details": "SECTIONSTART_.knockdownAttacktext_0x71"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.updateFightertext_0x72"
+      "details": "SECTIONSTART_.beginThrowtext_0x72"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.contactActionFrametext_0x73"
+      "details": "SECTIONSTART_.throwTechtext_0x73"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.contactBodytext_0x74"
+      "details": "SECTIONSTART_.updateDownedtext_0x74"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.contactWorldHittext_0x75"
+      "details": "SECTIONSTART_.updateFightertext_0x75"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.contactStriketext_0x76"
+      "details": "SECTIONSTART_.contactActionFrametext_0x76"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.contactWavetext_0x77"
+      "details": "SECTIONSTART_.contactBodytext_0x77"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.canHittext_0x79"
+      "details": "SECTIONSTART_.contactWorldHittext_0x78"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.combattext_0x7a"
+      "details": "SECTIONSTART_.contactStriketext_0x79"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.poseFortext_0x7b"
+      "details": "SECTIONSTART_.contactWavetext_0x7a"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.personalityIntroFrametext_0x7c"
+      "details": "SECTIONSTART_.canHittext_0x7c"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.personalityVictoryFrametext_0x7d"
+      "details": "SECTIONSTART_.combattext_0x7d"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.personalityAccenttext_0x7e"
+      "details": "SECTIONSTART_.poseFortext_0x7e"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.animateFightertext_0x7f"
+      "details": "SECTIONSTART_.personalityIntroFrametext_0x7f"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.drawFightertext_0x80"
+      "details": "SECTIONSTART_.personalityVictoryFrametext_0x80"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.drawFighttext_0x81"
+      "details": "SECTIONSTART_.personalityAccenttext_0x81"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.fightTicktext_0x82"
+      "details": "SECTIONSTART_.animateFightertext_0x82"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.menuTicktext_0x83"
+      "details": "SECTIONSTART_.drawFightertext_0x83"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.traceProfilestext_0x84"
+      "details": "SECTIONSTART_.drawFighttext_0x84"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.maintext_0x85"
+      "details": "SECTIONSTART_.fightTicktext_0x85"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.menuTicktext_0x86"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.traceProfilestext_0x87"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.maintext_0x88"
     },
     {
       "check": "native linked section fits one32KiB bank",
@@ -3351,8 +3456,8 @@
       "passed": true,
       "details": [
         "snes9x-stage0",
-        1810332,
-        5468
+        2010786,
+        5711
       ]
     },
     {
@@ -3369,7 +3474,7 @@
       "passed": true,
       "details": [
         "snes9x-stress0",
-        44
+        48
       ]
     },
     {
@@ -3523,8 +3628,8 @@
       "passed": true,
       "details": [
         "snes9x-stage1",
-        1836988,
-        5307
+        2037440,
+        5279
       ]
     },
     {
@@ -3541,7 +3646,7 @@
       "passed": true,
       "details": [
         "snes9x-stress1",
-        44
+        48
       ]
     },
     {
@@ -3695,7 +3800,7 @@
       "passed": true,
       "details": [
         "snes9x-stage2",
-        1864710,
+        2065164,
         5511
       ]
     },
@@ -3713,7 +3818,7 @@
       "passed": true,
       "details": [
         "snes9x-stress2",
-        44
+        48
       ]
     },
     {
@@ -3867,8 +3972,8 @@
       "passed": true,
       "details": [
         "accuracy-stage0",
-        1809300,
-        5422
+        2009754,
+        5533
       ]
     },
     {
@@ -3885,7 +3990,7 @@
       "passed": true,
       "details": [
         "accuracy-stress0",
-        45
+        48
       ]
     },
     {
@@ -4039,7 +4144,7 @@
       "passed": true,
       "details": [
         "accuracy-stage1",
-        1838086,
+        2038540,
         5283
       ]
     },
@@ -4057,7 +4162,7 @@
       "passed": true,
       "details": [
         "accuracy-stress1",
-        44
+        48
       ]
     },
     {
@@ -4211,7 +4316,7 @@
       "passed": true,
       "details": [
         "accuracy-stage2",
-        1864754,
+        2065196,
         5433
       ]
     },
@@ -4229,7 +4334,7 @@
       "passed": true,
       "details": [
         "accuracy-stress2",
-        44
+        48
       ]
     },
     {
@@ -4330,63 +4435,6 @@
         4,
         6
       ]
-    },
-    {
-      "check": "controller menus reach chosen native local match",
-      "passed": true,
-      "details": [
-        0,
-        4,
-        6
-      ]
-    },
-    {
-      "check": "native floor review keeps the complete upper scene exact",
-      "passed": true,
-      "details": 0
-    },
-    {
-      "check": "native floor review shows actual ground material change",
-      "passed": true,
-      "details": 0
-    },
-    {
-      "check": "controller menus reach chosen native local match",
-      "passed": true,
-      "details": [
-        1,
-        4,
-        6
-      ]
-    },
-    {
-      "check": "native floor review keeps the complete upper scene exact",
-      "passed": true,
-      "details": 1
-    },
-    {
-      "check": "native floor review shows actual ground material change",
-      "passed": true,
-      "details": 1
-    },
-    {
-      "check": "controller menus reach chosen native local match",
-      "passed": true,
-      "details": [
-        2,
-        4,
-        6
-      ]
-    },
-    {
-      "check": "native floor review keeps the complete upper scene exact",
-      "passed": true,
-      "details": 2
-    },
-    {
-      "check": "native floor review shows actual ground material change",
-      "passed": true,
-      "details": 2
     }
   ],
   "failure_arrays": {
@@ -4427,15 +4475,37 @@
       "movement_clip": "docs/screenshots/combat-24-stage08/snes9x-stage0-movement.gif",
       "impact_clip": "docs/screenshots/combat-24-stage08/snes9x-stage0-contacts.gif",
       "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
-      "pixel_samples_sha256": "c6b84c4f2103f94d65376d4ccbadc3a4712b22419a37fa839148c6122f08059e",
-      "measured_frames": 1212,
+      "stills": [
+        {
+          "path": "docs/screenshots/combat-24-stage08/snes9x-stage0-center.png",
+          "sha256": "3c5c813e25fb8ca5630ededf4f08ba4f9a6caa2d59c869f7fe75ca86aa6ab76a",
+          "scope": "current native PPU"
+        },
+        {
+          "path": "docs/screenshots/combat-24-stage08/snes9x-stage0-guide.png",
+          "sha256": "d4d330a5dabd9f3875565a1b73bde394786939395c7bca4f6d4cd8852d4bc966",
+          "scope": "current native PPU"
+        },
+        {
+          "path": "docs/screenshots/combat-24-stage08/snes9x-stage0-left.png",
+          "sha256": "27bccbbc36b354aabd345d4dff90fe7c671125fb89d07125c1827c1795ea1b26",
+          "scope": "current native PPU"
+        },
+        {
+          "path": "docs/screenshots/combat-24-stage08/snes9x-stage0-right.png",
+          "sha256": "3fd9a3b5469469172d40fc04c81730a2372324e3c0bfe429c5e5b115b4c4cd63",
+          "scope": "current native PPU"
+        }
+      ],
+      "pixel_samples_sha256": "78779b674acd879e01379cfc97758bb180b10f663a2374915709939b33b5f339",
+      "measured_frames": 1400,
       "cadence_deltas": [
         1
       ],
       "max_spc_backlog": 3,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 346
+      "actor_dma_frames": 314
     },
     {
       "stage": 1,
@@ -4465,15 +4535,37 @@
       "movement_clip": "docs/screenshots/combat-24-stage08/snes9x-stage1-movement.gif",
       "impact_clip": "docs/screenshots/combat-24-stage08/snes9x-stage1-contacts.gif",
       "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
-      "pixel_samples_sha256": "fc60484533559db72c24818ea074eb62f114ef333963b88c43b4d25670d335ac",
-      "measured_frames": 1212,
+      "stills": [
+        {
+          "path": "docs/screenshots/combat-24-stage08/snes9x-stage1-center.png",
+          "sha256": "373214e048ab2dd300e1315c8b0d62e1a72e2337fc744e354715889d534d6e4f",
+          "scope": "current native PPU"
+        },
+        {
+          "path": "docs/screenshots/combat-24-stage08/snes9x-stage1-guide.png",
+          "sha256": "d4d330a5dabd9f3875565a1b73bde394786939395c7bca4f6d4cd8852d4bc966",
+          "scope": "current native PPU"
+        },
+        {
+          "path": "docs/screenshots/combat-24-stage08/snes9x-stage1-left.png",
+          "sha256": "1021130b772a9b5bad92fefc4face6fe20ab0003caba1695b00d534686ac9916",
+          "scope": "current native PPU"
+        },
+        {
+          "path": "docs/screenshots/combat-24-stage08/snes9x-stage1-right.png",
+          "sha256": "402ddf1b7616d3e3a6b8b9285b009d67bb423f7e56865368e6a69f0ca02b8c17",
+          "scope": "current native PPU"
+        }
+      ],
+      "pixel_samples_sha256": "1ee5c7d90e770a19a6776507b0ac1866acbcf235309dc9a932204b61670ed348",
+      "measured_frames": 1400,
       "cadence_deltas": [
         1
       ],
       "max_spc_backlog": 3,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 346
+      "actor_dma_frames": 314
     },
     {
       "stage": 2,
@@ -4503,15 +4595,37 @@
       "movement_clip": "docs/screenshots/combat-24-stage08/snes9x-stage2-movement.gif",
       "impact_clip": "docs/screenshots/combat-24-stage08/snes9x-stage2-contacts.gif",
       "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
-      "pixel_samples_sha256": "d2813f81b38e2435abc1ff5039c9592c4486fe51725927312ada97dea0ff5311",
-      "measured_frames": 1212,
+      "stills": [
+        {
+          "path": "docs/screenshots/combat-24-stage08/snes9x-stage2-center.png",
+          "sha256": "6775f8b0ae4f034ce651073c90e77e4d48b109d13a7fa3d31699ae4baf6157bf",
+          "scope": "current native PPU"
+        },
+        {
+          "path": "docs/screenshots/combat-24-stage08/snes9x-stage2-guide.png",
+          "sha256": "d4d330a5dabd9f3875565a1b73bde394786939395c7bca4f6d4cd8852d4bc966",
+          "scope": "current native PPU"
+        },
+        {
+          "path": "docs/screenshots/combat-24-stage08/snes9x-stage2-left.png",
+          "sha256": "4f3cf3f9dffa4d95a2ed6e7bbc5881e26f1f6b57cc568dd36e79ac15989849c7",
+          "scope": "current native PPU"
+        },
+        {
+          "path": "docs/screenshots/combat-24-stage08/snes9x-stage2-right.png",
+          "sha256": "b6b523cdf995bf858aa2721d0a8894cc3fd27a902fcced0d5420bbc0e02a9e62",
+          "scope": "current native PPU"
+        }
+      ],
+      "pixel_samples_sha256": "ba33cde74c6d46dcea615e34c22549012f28038115d5b3949d756487dd54c401",
+      "measured_frames": 1400,
       "cadence_deltas": [
         1
       ],
       "max_spc_backlog": 3,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 346
+      "actor_dma_frames": 314
     },
     {
       "stage": 0,
@@ -4541,15 +4655,37 @@
       "movement_clip": "docs/screenshots/combat-24-stage08/accuracy-stage0-movement.gif",
       "impact_clip": "docs/screenshots/combat-24-stage08/accuracy-stage0-contacts.gif",
       "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
-      "pixel_samples_sha256": "ae53bed244a191db3ed9988905593407dc71532ecda26e827263ca7196eb77ae",
-      "measured_frames": 1212,
+      "stills": [
+        {
+          "path": "docs/screenshots/combat-24-stage08/accuracy-stage0-center.png",
+          "sha256": "667cd67cb3715407a55ee16f03a27afd16bff7fc34a24a56876e1f9d694224a5",
+          "scope": "current native PPU"
+        },
+        {
+          "path": "docs/screenshots/combat-24-stage08/accuracy-stage0-guide.png",
+          "sha256": "45d4ae578527ba16134805ad9844d3ad22732306c11a7f8d42fd12cf3f279d77",
+          "scope": "current native PPU"
+        },
+        {
+          "path": "docs/screenshots/combat-24-stage08/accuracy-stage0-left.png",
+          "sha256": "3cfaeab710178933d921b8b72f62af0238d038ae92bdb3cfc2277dcd185dd957",
+          "scope": "current native PPU"
+        },
+        {
+          "path": "docs/screenshots/combat-24-stage08/accuracy-stage0-right.png",
+          "sha256": "96c6718c77dc15358e60c3def30b2f4b0e3969b97ae24579066e4b6f7384d85b",
+          "scope": "current native PPU"
+        }
+      ],
+      "pixel_samples_sha256": "6cc2d7d9e3211c3ed9c7d826aaa3fff3b77f66bc95722f7e215479aa071cd854",
+      "measured_frames": 1400,
       "cadence_deltas": [
         1
       ],
       "max_spc_backlog": 3,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 346
+      "actor_dma_frames": 314
     },
     {
       "stage": 1,
@@ -4579,15 +4715,37 @@
       "movement_clip": "docs/screenshots/combat-24-stage08/accuracy-stage1-movement.gif",
       "impact_clip": "docs/screenshots/combat-24-stage08/accuracy-stage1-contacts.gif",
       "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
-      "pixel_samples_sha256": "6cfdb36ad805ae60aa713d35fc5396f42d0715fc441211d262402bb869fd69f6",
-      "measured_frames": 1212,
+      "stills": [
+        {
+          "path": "docs/screenshots/combat-24-stage08/accuracy-stage1-center.png",
+          "sha256": "55799a2124cb17c43872abb38c093a3c2bee7ef5c79557b5a38d3bad5027e584",
+          "scope": "current native PPU"
+        },
+        {
+          "path": "docs/screenshots/combat-24-stage08/accuracy-stage1-guide.png",
+          "sha256": "45d4ae578527ba16134805ad9844d3ad22732306c11a7f8d42fd12cf3f279d77",
+          "scope": "current native PPU"
+        },
+        {
+          "path": "docs/screenshots/combat-24-stage08/accuracy-stage1-left.png",
+          "sha256": "7b3a9a3e0fa51edecfc76349278d5541050b0485262ce3fcf2875331bfbf7019",
+          "scope": "current native PPU"
+        },
+        {
+          "path": "docs/screenshots/combat-24-stage08/accuracy-stage1-right.png",
+          "sha256": "99303969158bd774046d5d26a6b4952837f1aedd39080583d184992a35b18f9a",
+          "scope": "current native PPU"
+        }
+      ],
+      "pixel_samples_sha256": "adc7a8674e478cf099fca27b126d0bb5143155eb19c1dbd8b9e7997ab97d4dc0",
+      "measured_frames": 1400,
       "cadence_deltas": [
         1
       ],
       "max_spc_backlog": 3,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 346
+      "actor_dma_frames": 314
     },
     {
       "stage": 2,
@@ -4617,23 +4775,45 @@
       "movement_clip": "docs/screenshots/combat-24-stage08/accuracy-stage2-movement.gif",
       "impact_clip": "docs/screenshots/combat-24-stage08/accuracy-stage2-contacts.gif",
       "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
-      "pixel_samples_sha256": "b6861a11941d057733ff6ca501b5d0297a79155a21ba1adf091060b3ebaf68df",
-      "measured_frames": 1212,
+      "stills": [
+        {
+          "path": "docs/screenshots/combat-24-stage08/accuracy-stage2-center.png",
+          "sha256": "fd471e01b7b84ddc3c6629b22478e93301975d5a7ef9977e840abf5bdd8c43d2",
+          "scope": "current native PPU"
+        },
+        {
+          "path": "docs/screenshots/combat-24-stage08/accuracy-stage2-guide.png",
+          "sha256": "45d4ae578527ba16134805ad9844d3ad22732306c11a7f8d42fd12cf3f279d77",
+          "scope": "current native PPU"
+        },
+        {
+          "path": "docs/screenshots/combat-24-stage08/accuracy-stage2-left.png",
+          "sha256": "f1319d362829f71fd13c729bfda39a75cb6f102a915dcf4ee6a6a203218c2822",
+          "scope": "current native PPU"
+        },
+        {
+          "path": "docs/screenshots/combat-24-stage08/accuracy-stage2-right.png",
+          "sha256": "2e3a8ded4f9377d29a99fcb00b11f63c7f1b8ef919eb63749824ec9215e1b7cd",
+          "scope": "current native PPU"
+        }
+      ],
+      "pixel_samples_sha256": "41be90801fe24b73ef699cec247f2352295599e32b483b06106b21aa12c43d02",
+      "measured_frames": 1400,
       "cadence_deltas": [
         1
       ],
       "max_spc_backlog": 3,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 346
+      "actor_dma_frames": 314
     }
   ],
   "stress": [
     {
       "stage": 0,
       "core": "snes9x",
-      "two_wave_frames": 44,
-      "wave_frames": 53,
+      "two_wave_frames": 48,
+      "wave_frames": 57,
       "clip": "docs/screenshots/combat-24-stage08/snes9x-stress0.gif",
       "measured_frames": 720,
       "cadence_deltas": [
@@ -4642,13 +4822,13 @@
       "max_spc_backlog": 0,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 168
+      "actor_dma_frames": 164
     },
     {
       "stage": 1,
       "core": "snes9x",
-      "two_wave_frames": 44,
-      "wave_frames": 53,
+      "two_wave_frames": 48,
+      "wave_frames": 57,
       "clip": "docs/screenshots/combat-24-stage08/snes9x-stress1.gif",
       "measured_frames": 720,
       "cadence_deltas": [
@@ -4657,13 +4837,13 @@
       "max_spc_backlog": 0,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 168
+      "actor_dma_frames": 164
     },
     {
       "stage": 2,
       "core": "snes9x",
-      "two_wave_frames": 44,
-      "wave_frames": 53,
+      "two_wave_frames": 48,
+      "wave_frames": 57,
       "clip": "docs/screenshots/combat-24-stage08/snes9x-stress2.gif",
       "measured_frames": 720,
       "cadence_deltas": [
@@ -4672,13 +4852,13 @@
       "max_spc_backlog": 0,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 168
+      "actor_dma_frames": 164
     },
     {
       "stage": 0,
       "core": "accuracy",
-      "two_wave_frames": 45,
-      "wave_frames": 54,
+      "two_wave_frames": 48,
+      "wave_frames": 57,
       "clip": "docs/screenshots/combat-24-stage08/accuracy-stress0.gif",
       "measured_frames": 720,
       "cadence_deltas": [
@@ -4687,13 +4867,13 @@
       "max_spc_backlog": 0,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 168
+      "actor_dma_frames": 164
     },
     {
       "stage": 1,
       "core": "accuracy",
-      "two_wave_frames": 44,
-      "wave_frames": 53,
+      "two_wave_frames": 48,
+      "wave_frames": 57,
       "clip": "docs/screenshots/combat-24-stage08/accuracy-stress1.gif",
       "measured_frames": 720,
       "cadence_deltas": [
@@ -4702,13 +4882,13 @@
       "max_spc_backlog": 0,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 168
+      "actor_dma_frames": 164
     },
     {
       "stage": 2,
       "core": "accuracy",
-      "two_wave_frames": 44,
-      "wave_frames": 53,
+      "two_wave_frames": 48,
+      "wave_frames": 57,
       "clip": "docs/screenshots/combat-24-stage08/accuracy-stress2.gif",
       "measured_frames": 720,
       "cadence_deltas": [
@@ -4717,7 +4897,7 @@
       "max_spc_backlog": 0,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 168
+      "actor_dma_frames": 163
     }
   ],
   "roster": [
@@ -4733,7 +4913,7 @@
       "max_spc_backlog": 0,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 71
+      "actor_dma_frames": 61
     },
     {
       "fighters": [
@@ -4747,7 +4927,7 @@
       "max_spc_backlog": 0,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 79
+      "actor_dma_frames": 71
     },
     {
       "fighters": [
@@ -4761,7 +4941,7 @@
       "max_spc_backlog": 0,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 66
+      "actor_dma_frames": 58
     },
     {
       "fighters": [
@@ -4775,7 +4955,7 @@
       "max_spc_backlog": 0,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 62
+      "actor_dma_frames": 55
     },
     {
       "fighters": [
@@ -4789,7 +4969,7 @@
       "max_spc_backlog": 0,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 82
+      "actor_dma_frames": 70
     },
     {
       "fighters": [
@@ -4803,14 +4983,14 @@
       "max_spc_backlog": 0,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 74
+      "actor_dma_frames": 66
     }
   ],
   "source_files_sha256": {
-    "src/game.c": "1dcd10b88b9c30e1daf1a64850bf802ac247108cfd26f223b701bc127ac90761",
+    "src/game.c": "920be6cf3423d905564f9a026a8c33dcec30b1842b6646cf72cdbb9bc472d04c",
     "src/stage_depth.h": "90faee78052053f8e2e659a7657ce752b685b35fa00dfab84ecd8e84ef9daef7",
     "tools/stage_depth_assets.py": "4f3f574abe854574e008457421b288ead153872750c2c23f747784321236f1e3",
-    "tools/test_combat_24_stage08.py": "79e6683b61a1ca69267f27a88420e5d804b863abfced16c5a41b2186eba3f5c4",
+    "tools/test_combat_24_stage08.py": "0e0e9afbb1d1ab3911b14c5f181698a15c7cae19879c7ea44db4a8bcc3592287",
     "assets/art/stages/depth-v1/00-las-condes.json": "96b385badfdf50c8eed9762373366678dbe0324a46a5c72ad5d853d0b02e639b",
     "assets/art/stages/depth-v1/00-las-condes.png": "4f3191e9acee6b4beb0670fb8f12d6145f7d96cd7a555312c082d1952fc94094",
     "assets/art/stages/depth-v1/01-castillo.json": "e008cd94e52d4abec02ed537ce3d668e5e8abbaf9d4bd8e59907bbd70dede408",
@@ -4832,7 +5012,92 @@
   "resources": {
     "changed_generated": [
       "assets/generated/assets.h",
+      "assets/generated/character-manifest.json",
       "assets/generated/data.asm",
+      "assets/generated/fighter00.bin",
+      "assets/generated/fighter00.png",
+      "assets/generated/fighter00b.bin",
+      "assets/generated/fighter00d.bin",
+      "assets/generated/fighter00e.bin",
+      "assets/generated/fighter00f.bin",
+      "assets/generated/fighter00g.bin",
+      "assets/generated/fighter01.bin",
+      "assets/generated/fighter01.png",
+      "assets/generated/fighter01b.bin",
+      "assets/generated/fighter01d.bin",
+      "assets/generated/fighter01e.bin",
+      "assets/generated/fighter01f.bin",
+      "assets/generated/fighter01g.bin",
+      "assets/generated/fighter02.bin",
+      "assets/generated/fighter02.png",
+      "assets/generated/fighter02b.bin",
+      "assets/generated/fighter02d.bin",
+      "assets/generated/fighter02e.bin",
+      "assets/generated/fighter02f.bin",
+      "assets/generated/fighter02g.bin",
+      "assets/generated/fighter03.bin",
+      "assets/generated/fighter03.png",
+      "assets/generated/fighter03b.bin",
+      "assets/generated/fighter03d.bin",
+      "assets/generated/fighter03e.bin",
+      "assets/generated/fighter03f.bin",
+      "assets/generated/fighter03g.bin",
+      "assets/generated/fighter04.bin",
+      "assets/generated/fighter04.png",
+      "assets/generated/fighter04b.bin",
+      "assets/generated/fighter04d.bin",
+      "assets/generated/fighter04e.bin",
+      "assets/generated/fighter04f.bin",
+      "assets/generated/fighter04g.bin",
+      "assets/generated/fighter05.bin",
+      "assets/generated/fighter05.png",
+      "assets/generated/fighter05b.bin",
+      "assets/generated/fighter05d.bin",
+      "assets/generated/fighter05e.bin",
+      "assets/generated/fighter05f.bin",
+      "assets/generated/fighter05g.bin",
+      "assets/generated/fighter06.bin",
+      "assets/generated/fighter06.png",
+      "assets/generated/fighter06b.bin",
+      "assets/generated/fighter06d.bin",
+      "assets/generated/fighter06e.bin",
+      "assets/generated/fighter06f.bin",
+      "assets/generated/fighter06g.bin",
+      "assets/generated/fighter07.bin",
+      "assets/generated/fighter07.png",
+      "assets/generated/fighter07b.bin",
+      "assets/generated/fighter07d.bin",
+      "assets/generated/fighter07e.bin",
+      "assets/generated/fighter07f.bin",
+      "assets/generated/fighter07g.bin",
+      "assets/generated/fighter08.bin",
+      "assets/generated/fighter08.png",
+      "assets/generated/fighter08b.bin",
+      "assets/generated/fighter08d.bin",
+      "assets/generated/fighter08e.bin",
+      "assets/generated/fighter08f.bin",
+      "assets/generated/fighter08g.bin",
+      "assets/generated/fighter09.bin",
+      "assets/generated/fighter09.png",
+      "assets/generated/fighter09b.bin",
+      "assets/generated/fighter09d.bin",
+      "assets/generated/fighter09e.bin",
+      "assets/generated/fighter09f.bin",
+      "assets/generated/fighter09g.bin",
+      "assets/generated/fighter10.bin",
+      "assets/generated/fighter10.png",
+      "assets/generated/fighter10b.bin",
+      "assets/generated/fighter10d.bin",
+      "assets/generated/fighter10e.bin",
+      "assets/generated/fighter10f.bin",
+      "assets/generated/fighter10g.bin",
+      "assets/generated/fighter11.bin",
+      "assets/generated/fighter11.png",
+      "assets/generated/fighter11b.bin",
+      "assets/generated/fighter11d.bin",
+      "assets/generated/fighter11e.bin",
+      "assets/generated/fighter11f.bin",
+      "assets/generated/fighter11g.bin",
       "assets/generated/stage0.png",
       "assets/generated/stage0_map.bin",
       "assets/generated/stage0_pal.bin",
@@ -4855,18 +5120,30 @@
       "assets/generated/stage2_floor_map.bin",
       "assets/generated/stage2_floor_tiles.bin"
     ],
-    "preserved_generated": 205,
+    "preserved_generated": 120,
     "generated_count": 226,
     "existing_ram_symbols": 1318,
     "ram_moved": {},
-    "new_ram_bytes": 0,
+    "new_stage_ram_bytes": 0,
+    "combined_native_policy": {
+      "baseline_commit": "f75005d",
+      "prior_ram_labels": 1318,
+      "unchanged_prior_ram_labels": 1318,
+      "documented_relocations": {},
+      "appended_ram_symbols": {},
+      "linked_section_bytes": 3319684,
+      "bank_crossings": [],
+      "abi_and_transfer_assembly_preserved": true,
+      "hit_reaction_assembly_changed": false,
+      "hardware_and_trace_assembly_preserved": true
+    },
     "reused_stage_bytes": 16,
     "hdma_mask": 0,
     "live_stage_dma_bytes": 0,
     "new_obj_entries": 0,
     "actor_pose_dma_bytes": 3840,
     "actor_obj_entries": 30,
-    "linked_section_bytes": 3290763,
+    "linked_section_bytes": 3301071,
     "stage_allocations": {
       "schema": 1,
       "scope": "stage-depth-v1",
@@ -5139,8 +5416,8 @@
     }
   },
   "accuracy_core": {
-    "rom_sha256": "aafe7b26ff1cf26415e7211e4f19eed6696dd39d4936991141aac411fc1e641b",
-    "manifest_sha256": "aafe7b26ff1cf26415e7211e4f19eed6696dd39d4936991141aac411fc1e641b",
+    "rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
+    "manifest_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
     "rom_bytes": 4194304,
     "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
     "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
@@ -5163,32 +5440,6 @@
       "clip": "docs/screenshots/combat-24-stage08/baseline-stage2.gif"
     }
   ],
-  "floor_before": [
-    {
-      "stage": 0,
-      "rom_sha256": "bcf4456fc9a61c90dbeec3655ca29679d743dda1d557727c3e1a3a98e5a12454",
-      "native_before": "docs/screenshots/combat-24-stage08/floor-before-stage0.png",
-      "native_comparison": "docs/screenshots/combat-24-stage08/floor-comparison-stage0.png",
-      "layout": "before left / after right;2x nearest native pixels",
-      "clip": "docs/screenshots/combat-24-stage08/floor-before-stage0.gif"
-    },
-    {
-      "stage": 1,
-      "rom_sha256": "bcf4456fc9a61c90dbeec3655ca29679d743dda1d557727c3e1a3a98e5a12454",
-      "native_before": "docs/screenshots/combat-24-stage08/floor-before-stage1.png",
-      "native_comparison": "docs/screenshots/combat-24-stage08/floor-comparison-stage1.png",
-      "layout": "before left / after right;2x nearest native pixels",
-      "clip": "docs/screenshots/combat-24-stage08/floor-before-stage1.gif"
-    },
-    {
-      "stage": 2,
-      "rom_sha256": "bcf4456fc9a61c90dbeec3655ca29679d743dda1d557727c3e1a3a98e5a12454",
-      "native_before": "docs/screenshots/combat-24-stage08/floor-before-stage2.png",
-      "native_comparison": "docs/screenshots/combat-24-stage08/floor-comparison-stage2.png",
-      "layout": "before left / after right;2x nearest native pixels",
-      "clip": "docs/screenshots/combat-24-stage08/floor-before-stage2.gif"
-    }
-  ],
-  "elapsed_seconds": 437.656,
-  "check_count": 740
+  "elapsed_seconds": 109.922,
+  "check_count": 735
 }

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="candidate-identity" content="PENDING_FINAL_VERIFICATION">
-<meta name="description" content="Interim combined v0.24 native SNES review. Final technical verification and human playtest pending.">
+<meta name="candidate-identity" content="0.24.0;408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79;a1ee733aea036ad985bca9bdee29cc170cabd2ac;4857">
+<meta name="description" content="Current combined v0.24 native SNES review. Technical verification complete; human playtest pending.">
 <title>Abaqus After Hours · v0.24 combined playtest</title>
 <style>
 :root{color-scheme:dark;--paper:#14171c;--panel:#1d222a;--ink:#edf0f4;--muted:#b6bdc8;--line:#39414d;--accent:#9bd1ef;--pending:#f0cf86;--current:#a5dcc2}
@@ -34,8 +34,8 @@ footer{margin-top:28px;color:var(--muted);font-size:.8rem}
 <p class="intro" style="margin-top:14px">Review slower combat and backward recoil together with coordinated attacks, visible contacts, connected stages, expressive jumps and dedicated super art.</p>
 <div class="notice">
 <!-- v024-review-notice:start -->
-<p><strong>Interim combined media · final technical verification pending.</strong></p>
-<p>All six features are combined. A full attack proof found native startup lag. Runtime optimization will change the ROM; media and all exact-ROM gates will be regenerated. This page does not declare technical readiness. <a href="https://github.com/Reston/snes-abaqus-fighter/pull/14">PR #14</a> stays unmerged into main for one human playtest.</p>
+<p><strong>Technical verification passed · human playtest pending.</strong></p>
+<p>All six features and final media bind the frozen native ROM. <a href="https://github.com/Reston/snes-abaqus-fighter/pull/14">PR #14</a> stays unmerged into main for one human combined playtest.</p>
 <!-- v024-review-notice:end -->
 </div>
 <nav aria-label="Review sections"><a href="#play">Controls &amp; checklist</a><a href="#pacing">Pacing</a><a href="#attacks">Attacks</a><a href="#contacts">Contacts</a><a href="#stages">Stages</a><a href="#jumps">Jumps</a><a href="#supers">Supers</a><a href="#roster">All twelve</a><a href="#identity">Technical status</a></nav>
@@ -52,7 +52,7 @@ footer{margin-top:28px;color:var(--muted);font-size:.8rem}
 
 <section id="play">
 <h2>Play in an SNES emulator</h2>
-<p>Use <a href="../Play.cmd">Play.cmd</a> or load <code>dist/abaqus-after-hours.sfc</code>. Choose <b>LOCAL 1V1 / 2P</b> for both native controller ports, or Training for repeatable spacing. Interim runtime identity and pending technical gates are <a href="#identity">at the end</a>.</p>
+<p>Use <a href="../Play.cmd">Play.cmd</a> or load <code>dist/abaqus-after-hours.sfc</code>. Choose <b>LOCAL 1V1 / 2P</b> for both native controller ports, or Training for repeatable spacing. Final runtime identity and completed technical gates are <a href="#identity">at the end</a>.</p>
 <div class="split">
 <div>
 <table aria-label="Native controls"><thead><tr><th>Input</th><th>Action</th></tr></thead><tbody>
@@ -78,44 +78,44 @@ footer{margin-top:28px;color:var(--muted);font-size:.8rem}
 <p class="meta">Report version, fighter pair, stage, port, repeatable input and what looked wrong. <a href="review-feedback.json">Human feedback record</a>; the playtest remains pending.</p>
 </div>
 </div>
-<p class="meta">Media key: <b>before / historical</b> means approved main v0.23.1; <b>interim combined</b> means this six-feature runtime; <b>provisional</b> awaits a successful full capture inventory; <b>offline diagnostic</b> shows converted art/regions rather than game execution.</p>
+<p class="meta">Media key: <b>before / historical</b> means approved main v0.23.1; <b>current combined</b> means this six-feature runtime; <b>provisional</b> awaits a successful full capture inventory; <b>offline diagnostic</b> shows converted art/regions rather than game execution.</p>
 </section>
 
-<section id="pacing" data-evidence-scope="interim-combined-samples" data-report="combat-24-pacing-samples.json">
-<span class="tag">INTERIM COMBINED · LIMITED NATIVE SAMPLES</span>
+<section id="pacing" data-evidence-scope="current-combined-samples" data-report="combat-24-pacing-samples.json">
+<span class="tag">CURRENT COMBINED · LIMITED NATIVE SAMPLES</span>
 <h2>Backward recoil that reads at a glance</h2>
 <p>Compare Damian's light and strong reactions. Hits drift away from the latched contact side and ease out; guard recoil stays smaller. Heavy attacks and ordinary specials give more time to read commitment.</p>
 <div class="pair">
 <figure><div class="screen scene"><img src="screenshots/combat-24-pacing/damian-before-light.gif" width="256" height="224" alt="Light recoil before: approved v0.23.1 Damian" loading="lazy"></div><figcaption>Light · before, approved baseline.</figcaption></figure>
-<figure><div class="screen scene"><img src="screenshots/combat-24-pacing/damian-after-light.gif" width="256" height="224" alt="Light recoil now: interim combined Damian" loading="lazy"></div><figcaption>Light · interim combined.</figcaption></figure>
+<figure><div class="screen scene"><img src="screenshots/combat-24-pacing/damian-after-light.gif" width="256" height="224" alt="Light recoil now: current combined Damian" loading="lazy"></div><figcaption>Light · current combined.</figcaption></figure>
 </div>
 <div class="pair">
 <figure><div class="screen scene"><img src="screenshots/combat-24-pacing/damian-before-strong.gif" width="256" height="224" alt="Strong recoil before: approved v0.23.1 Damian" loading="lazy"></div><figcaption>Strong · before, approved baseline.</figcaption></figure>
-<figure><div class="screen scene"><img src="screenshots/combat-24-pacing/damian-after-strong.gif" width="256" height="224" alt="Strong recoil now: interim combined Damian" loading="lazy"></div><figcaption>Strong · interim combined.</figcaption></figure>
+<figure><div class="screen scene"><img src="screenshots/combat-24-pacing/damian-after-strong.gif" width="256" height="224" alt="Strong recoil now: current combined Damian" loading="lazy"></div><figcaption>Strong · current combined.</figcaption></figure>
 </div>
 <details><summary>Compare guard recoil</summary><div class="pair">
 <figure><div class="screen scene"><img src="screenshots/combat-24-pacing/damian-before-guard.gif" width="256" height="224" alt="Guard recoil before: approved baseline" loading="lazy"></div><figcaption>Guard · before.</figcaption></figure>
-<figure><div class="screen scene"><img src="screenshots/combat-24-pacing/damian-after-guard.gif" width="256" height="224" alt="Guard recoil now: interim combined" loading="lazy"></div><figcaption>Guard · interim combined.</figcaption></figure>
+<figure><div class="screen scene"><img src="screenshots/combat-24-pacing/damian-after-guard.gif" width="256" height="224" alt="Guard recoil now: current combined" loading="lazy"></div><figcaption>Guard · current combined.</figcaption></figure>
 </div></details>
 <!-- v024-pacing-status:start -->
-<p class="meta" style="margin-top:10px"><a href="combat-24-pacing-samples.json">Exact-ROM record for these six samples</a>. The full-roster <a href="combat-24-pacing-report.json">pacing proof</a> is pending; these clips establish no full-proof pass.</p>
+<p class="meta"><a href="combat-24-pacing-samples.json">Six native sample identities</a> · <a href="combat-24-pacing-report.json">Final full-roster pacing proof</a>.</p>
 <!-- v024-pacing-status:end -->
 <p class="meta"><a href="COMBAT-24-PACING.md">Implementation / isolated history</a>.</p>
 </section>
 
-<section id="attacks" data-evidence-scope="interim-combined-provisional" data-report="combat-24-attack-report.json">
+<section id="attacks" data-evidence-scope="current-combined" data-report="combat-24-attack-report.json">
 <!-- v024-attack-tag:start -->
-<span class="tag provisional">INTERIM COMBINED CAPTURE · PROVISIONAL INVENTORY</span>
+<span class="tag">CURRENT COMBINED · FULL NATIVE CAPTURE INVENTORY</span>
 <!-- v024-attack-tag:end -->
 <h2>Anticipation, contact and return move as one figure</h2>
 <p>Watch Damian's planted foot and hip/shoulder rotation against his guard and striking limb. The two columns compare presentation across intentionally different gameplay timings and contact rules.</p>
-<figure><div class="screen single"><img src="screenshots/combat-24-attack/00-combined-vs-historical-sequences.gif" width="512" height="244" alt="Damian grounded sequences: historical baseline left, interim combined candidate right" loading="lazy"></div>
+<figure><div class="screen single"><img src="screenshots/combat-24-attack/00-combined-vs-historical-sequences.gif" width="512" height="244" alt="Damian grounded sequences: historical baseline left, current combined candidate right" loading="lazy"></div>
 <!-- v024-attack-caption:start -->
-<figcaption>Historical baseline left · interim combined right. Newly produced native media; successful full-run inventory pending.</figcaption>
+<figcaption>Approved historical baseline left · final combined ROM right. Presentation comparison across intentionally different gameplay timings and contacts.</figcaption>
 <!-- v024-attack-caption:end -->
 </figure>
 <!-- v024-attack-status:start -->
-<p class="meta" style="margin-top:10px">The new combined capture paths are used here. The <a href="combat-24-attack-report.json">full attack proof</a> is still pending after a measured setup correction; file existence does not establish a pass or complete roster coverage.</p>
+<p class="meta"><a href="combat-24-attack-report.json">Final all-twelve / both-port attack proof and capture inventory</a>.</p>
 <!-- v024-attack-status:end -->
 <details><summary>New native hurt / block captures</summary>
 <p class="meta">Damian: <a href="screenshots/combat-24-attack/00-combined-P1-hurt.gif">P1 hurt</a> · <a href="screenshots/combat-24-attack/00-combined-P1-block.gif">P1 block</a> · <a href="screenshots/combat-24-attack/00-combined-P2-hurt.gif">P2 hurt</a> · <a href="screenshots/combat-24-attack/00-combined-P2-block.gif">P2 block</a>.</p>
@@ -124,97 +124,89 @@ footer{margin-top:28px;color:var(--muted);font-size:.8rem}
 <p class="meta" style="margin-top:10px"><a href="COMBAT-24-attack.md">Implementation / isolated history</a> · <a href="#roster">Roster review index</a>.</p>
 </section>
 
-<section id="contacts" data-evidence-scope="interim-combined" data-report="combat-24-contact-report.json">
-<span class="tag">INTERIM COMBINED · NATIVE PAIRED CLIPS</span>
+<section id="contacts" data-evidence-scope="current-combined" data-report="combat-24-contact-report.json">
+<span class="tag">CURRENT COMBINED · NATIVE PAIRED CLIPS</span>
 <h2>Close hits should look connected</h2>
 <p>Visible fist/boot tips and projectile edges now meet stable pose-derived regions. These paired native clips use the final combined art, including rear airborne A contact.</p>
-<figure><div class="screen single"><img src="screenshots/combat-24-contact/jab-visible-tip-before-after.gif" width="512" height="240" alt="Jab visible-tip contact: approved baseline left, interim combined with final art right" loading="lazy"></div><figcaption>Historical baseline left · interim combined right. Native paired jab contact.</figcaption></figure>
-<details><summary>Rear air-kick contact comparison</summary><figure><div class="screen single"><img src="screenshots/combat-24-contact/air-crossup-before-after.gif" width="512" height="240" alt="Rear airborne A cross-up: approved baseline left, interim combined right" loading="lazy"></div><figcaption>Historical baseline left · interim combined right. Check contact side and backward recoil together.</figcaption></figure></details>
-<p class="meta" style="margin-top:10px"><a href="combat-24-contact-report.json">Interim full-roster contact report</a> · <a href="screenshots/combat-24-contact/exact-contact-boundaries.png">Edge diagnostic</a> · <a href="screenshots/combat-24-contact/roster-pose-regions.png">Roster regions</a>. Region overlays are <b>offline diagnostics</b> refreshed from final art; a drawn strike region still needs a legal active attack. <a href="COMBAT-24-contact.md">Implementation / isolated history</a>.</p>
+<figure><div class="screen single"><img src="screenshots/combat-24-contact/jab-visible-tip-before-after.gif" width="512" height="240" alt="Jab visible-tip contact: approved baseline left, current combined with final art right" loading="lazy"></div><figcaption>Historical baseline left · current combined right. Native paired jab contact.</figcaption></figure>
+<details><summary>Rear air-kick contact comparison</summary><figure><div class="screen single"><img src="screenshots/combat-24-contact/air-crossup-before-after.gif" width="512" height="240" alt="Rear airborne A cross-up: approved baseline left, current combined right" loading="lazy"></div><figcaption>Historical baseline left · current combined right. Check contact side and backward recoil together.</figcaption></figure></details>
+<p class="meta" style="margin-top:10px"><a href="combat-24-contact-report.json">Final full-roster contact report</a> · <a href="screenshots/combat-24-contact/exact-contact-boundaries.png">Edge diagnostic</a> · <a href="screenshots/combat-24-contact/roster-pose-regions.png">Roster regions</a>. Region overlays are <b>offline diagnostics</b> refreshed from final art; a drawn strike region still needs a legal active attack. <a href="COMBAT-24-contact.md">Implementation / isolated history</a>.</p>
 </section>
 
-<section id="stages" data-evidence-scope="interim-combined" data-report="combat-24-stage08-report.json">
-<span class="tag">INTERIM COMBINED · NATIVE ACCURACY VIEWS</span>
+<section id="stages" data-evidence-scope="current-combined" data-report="combat-24-stage08-report.json">
+<span class="tag">CURRENT COMBINED · NATIVE ACCURACY VIEWS</span>
 <h2>Connected scenery, quiet ground detail</h2>
 <p>Buildings and desks move as whole scenes behind the fixed floor. Review camera limits, feet/shadows, impact shake and pause readability across all three stages.</p>
 <div class="pair">
 <figure><div class="screen scene"><img src="screenshots/combat-24-stage08/baseline-stage0.gif" width="256" height="224" alt="Las Condes movement before: approved v0.23.1 baseline" loading="lazy"></div><figcaption>Las Condes before · approved baseline.</figcaption></figure>
-<figure><div class="screen scene"><img src="screenshots/combat-24-stage08/accuracy-stage0-movement.gif" width="256" height="224" alt="Las Condes movement now: interim combined, pinned Accuracy core" loading="lazy"></div><figcaption>Las Condes current · Accuracy core.</figcaption></figure>
+<figure><div class="screen scene"><img src="screenshots/combat-24-stage08/accuracy-stage0-movement.gif" width="256" height="224" alt="Las Condes movement now: current combined, pinned Accuracy core" loading="lazy"></div><figcaption>Las Condes current · Accuracy core.</figcaption></figure>
 <figure><div class="screen scene"><img src="screenshots/combat-24-stage08/accuracy-stage1-right.png" width="256" height="224" alt="Current El Castillo right view: connected architecture and courtyard stone floor" loading="lazy"></div><figcaption>El Castillo current · right view, Accuracy.</figcaption></figure>
 <figure><div class="screen scene"><img src="screenshots/combat-24-stage08/accuracy-stage2-left.png" width="256" height="224" alt="Current La Oficina left view: connected desks and carpet floor" loading="lazy"></div><figcaption>La Oficina current · left view, Accuracy.</figcaption></figure>
 </div>
-<p class="meta" style="margin-top:10px"><a href="combat-24-stage08-report.json">Interim both-core report and media</a> · <a href="COMBAT-24-stage08.md">Implementation / isolated history</a>. The earlier floor prototype and old center views are excluded from this current gallery.</p>
+<p class="meta" style="margin-top:10px"><a href="combat-24-stage08-report.json">Final both-core report and media</a> · <a href="COMBAT-24-stage08.md">Implementation / isolated history</a>. The earlier floor prototype and old center views are excluded from this current gallery.</p>
 </section>
 
-<section id="jumps" data-evidence-scope="interim-combined" data-report="combat-24-jumps-report.json">
-<span class="tag">INTERIM COMBINED · NATIVE PAIRED CLIPS</span>
+<section id="jumps" data-evidence-scope="current-combined" data-report="combat-24-jumps-report.json">
+<span class="tag">CURRENT COMBINED · NATIVE PAIRED CLIPS</span>
 <h2>Rise, apex, descent and landing have distinct weight</h2>
-<figure><div class="screen single"><img src="screenshots/combat-24-jumps/jump-combined-vs-historical.gif" width="512" height="244" alt="Full jump and landing: approved baseline left, interim combined right" loading="lazy"></div><figcaption>Historical baseline left · interim combined right. New combined jump/landing capture.</figcaption></figure>
+<figure><div class="screen single"><img src="screenshots/combat-24-jumps/jump-combined-vs-historical.gif" width="512" height="244" alt="Full jump and landing: approved baseline left, current combined right" loading="lazy"></div><figcaption>Historical baseline left · current combined right. New combined jump/landing capture.</figcaption></figure>
 <details><summary>Air strong kick and both-port cross-ups</summary>
-<figure><div class="screen single"><img src="screenshots/combat-24-jumps/air-a-combined-vs-historical.gif" width="512" height="244" alt="Air strong kick: approved baseline left, interim combined right" loading="lazy"></div><figcaption>Historical baseline left · interim combined right.</figcaption></figure>
-<p class="meta" style="margin-top:10px">Interim native examples: <a href="screenshots/combat-24-jumps/combined-air-y.gif">air Y</a> · <a href="screenshots/combat-24-jumps/combined-air-x.gif">air X</a> · <a href="screenshots/combat-24-jumps/combined-air-b.gif">air B</a> · <a href="screenshots/combat-24-jumps/combined-air-a.gif">air A</a> · <a href="screenshots/combat-24-jumps/combined-p1-a-rear.gif">P1 rear A</a> · <a href="screenshots/combat-24-jumps/combined-p2-a-rear.gif">P2 rear A</a> · <a href="screenshots/combat-24-jumps/combined-corner.gif">corner</a> · <a href="screenshots/combat-24-jumps/combined-wake.gif">wake transition</a>.</p>
+<figure><div class="screen single"><img src="screenshots/combat-24-jumps/air-a-combined-vs-historical.gif" width="512" height="244" alt="Air strong kick: approved baseline left, current combined right" loading="lazy"></div><figcaption>Historical baseline left · current combined right.</figcaption></figure>
+<p class="meta" style="margin-top:10px">Final native examples: <a href="screenshots/combat-24-jumps/combined-air-y.gif">air Y</a> · <a href="screenshots/combat-24-jumps/combined-air-x.gif">air X</a> · <a href="screenshots/combat-24-jumps/combined-air-b.gif">air B</a> · <a href="screenshots/combat-24-jumps/combined-air-a.gif">air A</a> · <a href="screenshots/combat-24-jumps/combined-p1-a-rear.gif">P1 rear A</a> · <a href="screenshots/combat-24-jumps/combined-p2-a-rear.gif">P2 rear A</a> · <a href="screenshots/combat-24-jumps/combined-corner.gif">corner</a> · <a href="screenshots/combat-24-jumps/combined-wake.gif">wake transition</a>.</p>
 </details>
-<p class="meta" style="margin-top:10px"><a href="combat-24-jumps-report.json">Interim all-twelve / both-port report, 19 captures</a> · <a href="COMBAT-24-jumps.md">Implementation / isolated history</a>. Ivo, Negger, Fernando and Reston have adjusted arcs for standing clearance.</p>
+<p class="meta" style="margin-top:10px"><a href="combat-24-jumps-report.json">Final all-twelve / both-port report, 19 captures</a> · <a href="COMBAT-24-jumps.md">Implementation / isolated history</a>. Ivo, Negger, Fernando and Reston have adjusted arcs for standing clearance.</p>
 </section>
 
-<section id="supers" data-evidence-scope="current-art-native-proof-pending" data-report="combat-24-super-report.json">
+<section id="supers" data-evidence-scope="current-combined" data-report="combat-24-super-report.json">
 <!-- v024-super-tag:start -->
-<span class="tag diagnostic">CURRENT ART DIAGNOSTIC · FULL NATIVE PROOF PENDING</span>
+<span class="tag">CURRENT COMBINED · NATIVE EXAMPLES</span>
 <!-- v024-super-tag:end -->
 <h2>A dedicated sequence for every full-meter super</h2>
 <p>Charge, contact/cast/peak and recovery use dedicated drawings for each fighter's existing super family. Activate with a fresh neutral Y+B and all 96 energy.</p>
 <!-- v024-super-media:start -->
-<div class="notice"><p><strong>Current native after clips pending.</strong> The full super run must succeed and bind its refreshed capture inventory before those clips are labeled current here. The old after GIFs remain isolated history.</p></div>
-<p class="meta">Approved-baseline native examples: <a href="screenshots/combat24-super/02-before.gif">Cristobal rush</a> · <a href="screenshots/combat24-super/00-before.gif">Damian volley</a> · <a href="screenshots/combat24-super/05-before.gif">David rising</a>.</p>
+<div class="pair">
+<figure><div class="screen scene"><img src="screenshots/combat24-super/02-before.gif" width="256" height="224" alt="Cristobal rush: Before · approved baseline" loading="lazy"></div><figcaption>Before · approved baseline.</figcaption></figure>
+<figure><div class="screen scene"><img src="screenshots/combat24-super/02-after.gif" width="256" height="224" alt="Cristobal rush: Current · final combined ROM" loading="lazy"></div><figcaption>Current · final combined ROM.</figcaption></figure></div>
+<p class="meta">Damian volley <a href="screenshots/combat24-super/00-before.gif">before</a> / <a href="screenshots/combat24-super/00-after.gif">current</a> · David rising <a href="screenshots/combat24-super/05-before.gif">before</a> / <a href="screenshots/combat24-super/05-after.gif">current</a>.</p>
 <!-- v024-super-media:end -->
 <details><summary>All twelve super drawings · offline conversion diagnostic</summary><figure><div class="screen single sheet"><img src="screenshots/combat24-super/roster-native.png" width="768" height="624" alt="Current converted art for all twelve: standing anchor, dedicated super charge, contact and recovery" loading="lazy"></div><figcaption>Current art conversion, not game execution or a full native-proof pass. Anchor / charge / contact / recovery; scroll within the sheet on small screens.</figcaption></figure></details>
 <!-- v024-super-status:start -->
-<p class="meta" style="margin-top:10px"><a href="combat-24-super-report.json">Super report, final success pending</a> · <a href="COMBAT-24-super.md">Implementation / isolated history</a>.</p>
+<p class="meta"><a href="combat-24-super-report.json">Final super proof and capture identities</a> · <a href="COMBAT-24-super.md">Implementation / isolated history</a>.</p>
 <!-- v024-super-status:end -->
 </section>
 
 <section id="roster">
 <h2>All twelve: inspect the final contact art</h2>
 <!-- v024-roster-status:start -->
-<p class="meta">All64 overlays are refreshed from the final combined attack, jump and super art. They are offline conversion/geometry diagnostics. The native contact and jump reports cover all twelve fighters and both ports; the full attack inventory is pending.</p>
+<p class="meta">All-twelve native attack comparisons use the final combined ROM. All64 overlays show final art as offline conversion/geometry diagnostics.</p>
 <!-- v024-roster-status:end -->
 <details><summary>Roster review index</summary><div class="scroll"><table class="roster" aria-label="Current roster media and diagnostics">
 <thead><tr><th>Fighter</th><th>Combined attack loop</th><th>Final-art regions</th></tr></thead>
 <!-- v024-roster-rows:start -->
 <tbody>
-<tr><td>00 Damian</td><td><a href="screenshots/combat-24-attack/00-combined-vs-historical-sequences.gif">Provisional native pair</a></td><td><a href="screenshots/combat-24-contact/00-all64-regions.png">All64 diagnostic</a></td></tr>
-<tr><td>01 Ivo</td><td><a href="screenshots/combat-24-attack/01-combined-vs-historical-sequences.gif">Provisional native pair</a></td><td><a href="screenshots/combat-24-contact/01-all64-regions.png">All64 diagnostic</a></td></tr>
-<tr><td>02 Cristobal</td><td>Pending full inventory</td><td><a href="screenshots/combat-24-contact/02-all64-regions.png">All64 diagnostic</a></td></tr>
-<tr><td>03 Cote</td><td>Pending full inventory</td><td><a href="screenshots/combat-24-contact/03-all64-regions.png">All64 diagnostic</a></td></tr>
-<tr><td>04 Negger</td><td>Pending full inventory</td><td><a href="screenshots/combat-24-contact/04-all64-regions.png">All64 diagnostic</a></td></tr>
-<tr><td>05 David</td><td>Pending full inventory</td><td><a href="screenshots/combat-24-contact/05-all64-regions.png">All64 diagnostic</a></td></tr>
-<tr><td>06 Fernando</td><td>Pending full inventory</td><td><a href="screenshots/combat-24-contact/06-all64-regions.png">All64 diagnostic</a></td></tr>
-<tr><td>07 Cristian</td><td>Pending full inventory</td><td><a href="screenshots/combat-24-contact/07-all64-regions.png">All64 diagnostic</a></td></tr>
-<tr><td>08 Mamariaga</td><td>Pending full inventory</td><td><a href="screenshots/combat-24-contact/08-all64-regions.png">All64 diagnostic</a></td></tr>
-<tr><td>09 Reston</td><td>Pending full inventory</td><td><a href="screenshots/combat-24-contact/09-all64-regions.png">All64 diagnostic</a></td></tr>
-<tr><td>10 Roxana</td><td>Pending full inventory</td><td><a href="screenshots/combat-24-contact/10-all64-regions.png">All64 diagnostic</a></td></tr>
-<tr><td>11 Lars</td><td>Pending full inventory</td><td><a href="screenshots/combat-24-contact/11-all64-regions.png">All64 diagnostic</a></td></tr>
+<tr><td>00 Damian</td><td><a href="screenshots/combat-24-attack/00-combined-vs-historical-sequences.gif">Native pair</a> · <a href="screenshots/combat-24-attack/00-combined-P1-hurt.gif">P1 hurt</a> / <a href="screenshots/combat-24-attack/00-combined-P1-block.gif">P1 block</a> / <a href="screenshots/combat-24-attack/00-combined-P2-hurt.gif">P2 hurt</a> / <a href="screenshots/combat-24-attack/00-combined-P2-block.gif">P2 block</a></td><td><a href="screenshots/combat-24-contact/00-all64-regions.png">All64 diagnostic</a></td></tr>
+<tr><td>01 Ivo</td><td><a href="screenshots/combat-24-attack/01-combined-vs-historical-sequences.gif">Native pair</a> · <a href="screenshots/combat-24-attack/01-combined-P1-hurt.gif">P1 hurt</a> / <a href="screenshots/combat-24-attack/01-combined-P1-block.gif">P1 block</a> / <a href="screenshots/combat-24-attack/01-combined-P2-hurt.gif">P2 hurt</a> / <a href="screenshots/combat-24-attack/01-combined-P2-block.gif">P2 block</a></td><td><a href="screenshots/combat-24-contact/01-all64-regions.png">All64 diagnostic</a></td></tr>
+<tr><td>02 Cristobal</td><td><a href="screenshots/combat-24-attack/02-combined-vs-historical-sequences.gif">Native pair</a> · <a href="screenshots/combat-24-attack/02-combined-P1-hurt.gif">P1 hurt</a> / <a href="screenshots/combat-24-attack/02-combined-P1-block.gif">P1 block</a> / <a href="screenshots/combat-24-attack/02-combined-P2-hurt.gif">P2 hurt</a> / <a href="screenshots/combat-24-attack/02-combined-P2-block.gif">P2 block</a></td><td><a href="screenshots/combat-24-contact/02-all64-regions.png">All64 diagnostic</a></td></tr>
+<tr><td>03 Cote</td><td><a href="screenshots/combat-24-attack/03-combined-vs-historical-sequences.gif">Native pair</a> · <a href="screenshots/combat-24-attack/03-combined-P1-hurt.gif">P1 hurt</a> / <a href="screenshots/combat-24-attack/03-combined-P1-block.gif">P1 block</a> / <a href="screenshots/combat-24-attack/03-combined-P2-hurt.gif">P2 hurt</a> / <a href="screenshots/combat-24-attack/03-combined-P2-block.gif">P2 block</a></td><td><a href="screenshots/combat-24-contact/03-all64-regions.png">All64 diagnostic</a></td></tr>
+<tr><td>04 Negger</td><td><a href="screenshots/combat-24-attack/04-combined-vs-historical-sequences.gif">Native pair</a> · <a href="screenshots/combat-24-attack/04-combined-P1-hurt.gif">P1 hurt</a> / <a href="screenshots/combat-24-attack/04-combined-P1-block.gif">P1 block</a> / <a href="screenshots/combat-24-attack/04-combined-P2-hurt.gif">P2 hurt</a> / <a href="screenshots/combat-24-attack/04-combined-P2-block.gif">P2 block</a></td><td><a href="screenshots/combat-24-contact/04-all64-regions.png">All64 diagnostic</a></td></tr>
+<tr><td>05 David</td><td><a href="screenshots/combat-24-attack/05-combined-vs-historical-sequences.gif">Native pair</a> · <a href="screenshots/combat-24-attack/05-combined-P1-hurt.gif">P1 hurt</a> / <a href="screenshots/combat-24-attack/05-combined-P1-block.gif">P1 block</a> / <a href="screenshots/combat-24-attack/05-combined-P2-hurt.gif">P2 hurt</a> / <a href="screenshots/combat-24-attack/05-combined-P2-block.gif">P2 block</a></td><td><a href="screenshots/combat-24-contact/05-all64-regions.png">All64 diagnostic</a></td></tr>
+<tr><td>06 Fernando</td><td><a href="screenshots/combat-24-attack/06-combined-vs-historical-sequences.gif">Native pair</a> · <a href="screenshots/combat-24-attack/06-combined-P1-hurt.gif">P1 hurt</a> / <a href="screenshots/combat-24-attack/06-combined-P1-block.gif">P1 block</a> / <a href="screenshots/combat-24-attack/06-combined-P2-hurt.gif">P2 hurt</a> / <a href="screenshots/combat-24-attack/06-combined-P2-block.gif">P2 block</a></td><td><a href="screenshots/combat-24-contact/06-all64-regions.png">All64 diagnostic</a></td></tr>
+<tr><td>07 Cristian</td><td><a href="screenshots/combat-24-attack/07-combined-vs-historical-sequences.gif">Native pair</a> · <a href="screenshots/combat-24-attack/07-combined-P1-hurt.gif">P1 hurt</a> / <a href="screenshots/combat-24-attack/07-combined-P1-block.gif">P1 block</a> / <a href="screenshots/combat-24-attack/07-combined-P2-hurt.gif">P2 hurt</a> / <a href="screenshots/combat-24-attack/07-combined-P2-block.gif">P2 block</a></td><td><a href="screenshots/combat-24-contact/07-all64-regions.png">All64 diagnostic</a></td></tr>
+<tr><td>08 Mamariaga</td><td><a href="screenshots/combat-24-attack/08-combined-vs-historical-sequences.gif">Native pair</a> · <a href="screenshots/combat-24-attack/08-combined-P1-hurt.gif">P1 hurt</a> / <a href="screenshots/combat-24-attack/08-combined-P1-block.gif">P1 block</a> / <a href="screenshots/combat-24-attack/08-combined-P2-hurt.gif">P2 hurt</a> / <a href="screenshots/combat-24-attack/08-combined-P2-block.gif">P2 block</a></td><td><a href="screenshots/combat-24-contact/08-all64-regions.png">All64 diagnostic</a></td></tr>
+<tr><td>09 Reston</td><td><a href="screenshots/combat-24-attack/09-combined-vs-historical-sequences.gif">Native pair</a> · <a href="screenshots/combat-24-attack/09-combined-P1-hurt.gif">P1 hurt</a> / <a href="screenshots/combat-24-attack/09-combined-P1-block.gif">P1 block</a> / <a href="screenshots/combat-24-attack/09-combined-P2-hurt.gif">P2 hurt</a> / <a href="screenshots/combat-24-attack/09-combined-P2-block.gif">P2 block</a></td><td><a href="screenshots/combat-24-contact/09-all64-regions.png">All64 diagnostic</a></td></tr>
+<tr><td>10 Roxana</td><td><a href="screenshots/combat-24-attack/10-combined-vs-historical-sequences.gif">Native pair</a> · <a href="screenshots/combat-24-attack/10-combined-P1-hurt.gif">P1 hurt</a> / <a href="screenshots/combat-24-attack/10-combined-P1-block.gif">P1 block</a> / <a href="screenshots/combat-24-attack/10-combined-P2-hurt.gif">P2 hurt</a> / <a href="screenshots/combat-24-attack/10-combined-P2-block.gif">P2 block</a></td><td><a href="screenshots/combat-24-contact/10-all64-regions.png">All64 diagnostic</a></td></tr>
+<tr><td>11 Lars</td><td><a href="screenshots/combat-24-attack/11-combined-vs-historical-sequences.gif">Native pair</a> · <a href="screenshots/combat-24-attack/11-combined-P1-hurt.gif">P1 hurt</a> / <a href="screenshots/combat-24-attack/11-combined-P1-block.gif">P1 block</a> / <a href="screenshots/combat-24-attack/11-combined-P2-hurt.gif">P2 hurt</a> / <a href="screenshots/combat-24-attack/11-combined-P2-block.gif">P2 block</a></td><td><a href="screenshots/combat-24-contact/11-all64-regions.png">All64 diagnostic</a></td></tr>
 </tbody>
 <!-- v024-roster-rows:end -->
 </table></div></details>
 </section>
 
 <section id="identity">
-<h2>Interim runtime, pending final technical identity</h2>
+<h2>Final technical identity · human playtest pending</h2>
 <!-- v024-technical-status:start -->
-<table class="identity" aria-label="Combined candidate identity"><tbody>
-<tr><th>Version / mapping</th><td>0.24.0 · 4 MiB NTSC FastROM LoROM · 128 banks</td></tr>
-<tr><th>ROM SHA256</th><td><code>28d770aca1cc489c70d7370329e785cb223c0703d807f07d627d461ba8dbdb85</code></td></tr>
-<tr><th>Header checksum</th><td><code>5872</code></td></tr>
-<tr><th>Final source/test freeze</th><td><b class="pending">Pending parent collation</b>. Recent driver checkpoints are interim.</td></tr>
-<tr><th>Preservation</th><td>226 generated assets; all 1,318 prior RAM labels retain addresses</td></tr>
-<tr><th>Final technical status</th><td><code>PENDING_FINAL_VERIFICATION</code> · verification JSON not yet available</td></tr>
-</tbody></table>
-<p style="margin-top:14px"><b>Completed on this interim combined ROM:</b> all six native suites, 29,595 checks (2,595 gameplay / 17,906 roster / 3,728 presentation / 1,443 input / 735 stages / 3,188 Training), and matching pinned Accuracy smoke. Complete focused proofs: contact 9,165 checks, 108 sessions / 61,704 callbacks; jumps 1,741 checks, all twelve / both ports; stages 735 checks, both cores.</p>
-<p class="meta">Stage focused coverage shares the same native execution as the stage suite; it is not counted again as an independent run. The full attack proof confirmed native startup lag during simultaneous Cristobal specials (tick 9 / frame 1039, SDK lag +1). Runtime optimization is underway. Full pacing, attack and super proofs remain unfinished; all final suites, focused proofs, smoke, fresh export, guards and media must bind the corrected ROM and settled source/test freeze. These interim passes do not transfer to it. The successful <code>003661c</code> fresh export reproduced this ROM, 226 assets and normalized symbols, but remains interim.</p>
-<p class="meta">The parent will write <code>docs/verification-v0.24.0.json</code> after collation succeeds. Partial or isolated reports do not establish combined readiness.</p>
+<table class="identity"><tbody><tr><th>Version / mapping</th><td><code>0.24.0 · 4 MiB NTSC FastROM LoROM</code></td></tr><tr><th>ROM SHA256</th><td><code>408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79</code></td></tr><tr><th>Header checksum</th><td><code>4857</code></td></tr><tr><th>Source/test freeze</th><td><code>a1ee733aea036ad985bca9bdee29cc170cabd2ac</code></td></tr><tr><th>Preservation</th><td><code>226 generated assets; all 1,318 prior RAM labels retain addresses</code></td></tr></tbody></table><p style="margin-top:14px"><b>All six native suites: 29,595 checks.</b> 2,595 gameplay, 17,906 roster, 3,728 presentation, 1,443 input, 735 stages, 3,188 Training. Matching pinned Accuracy smoke passed.</p><p class="meta">All six focused proofs passed: pacing/recoil 238,137; attacks 2,539; contacts 9,165; stages 735; jumps 1,741; supers 4,730. The stage proof shares the stage suite execution; it is not an additional independent run. Final-freeze fresh ROM/assets/symbol reproduction and authoring guards passed.</p><p class="meta"><a href="verification-v0.24.0.json">Final exact-ROM verification</a>. Technical verification is complete; one human combined playtest remains pending.</p>
 <!-- v024-technical-status:end -->
-<p class="meta">Historical before clips use approved main <a href="RELEASE-v0.23.1.md">v0.23.1</a> (<code>057139801b64</code> prefix; <a href="verification-v0.23.1.json">full baseline identity</a>). Interim media identities belong to their linked reports or sample record. Feature notes retain their isolated implementation history. <a href="COMBAT-v0.24-CONTRACT.md">Shared contract</a> · <a href="combat-24-prs.json">Six-feature PR record</a>.</p>
+<p class="meta">Historical before clips use approved main <a href="RELEASE-v0.23.1.md">v0.23.1</a> (<code>057139801b64</code> prefix; <a href="verification-v0.23.1.json">full baseline identity</a>). Final media identities belong to their linked reports or sample record. Feature notes retain their isolated implementation history. <a href="COMBAT-v0.24-CONTRACT.md">Shared contract</a> · <a href="combat-24-prs.json">Six-feature PR record</a>.</p>
 <p class="meta"><b>Playback:</b> native cadence is approximately 60.0988 Hz. GIF delays are quantized to hundredths of a second; some clips sample ticks or concatenate episodes. GIF playback is an inspection approximation. Judge exact timing on the native ROM.</p>
 </section>
 <footer>

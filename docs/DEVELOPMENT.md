@@ -1,36 +1,34 @@
 # Native SNES implementation
-<!-- candidate-version: 0.24.0; rom-sha256: PENDING_FINAL_VERIFICATION; identity: PENDING_FINAL_VERIFICATION -->
+<!-- candidate-version: 0.24.0; identity: TECHNICALLY_VERIFIED_HUMAN_PENDING; rom-sha256: 408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79; source-freeze: a1ee733aea036ad985bca9bdee29cc170cabd2ac -->
 
 ## Current v0.24 integration
 
 <!-- v024-development-status:start -->
 All six feature PRs are merged into `integration/readable-combat-v024`.
-The combined playtest PR #14 remains unmerged for one human playtest. Final
-source/test freeze and technical collation are pending while owner-local test
-fixtures settle. The interim combined checkpoint is ROM
-`28d770aca1cc489c70d7370329e785cb223c0703d807f07d627d461ba8dbdb85`, header `5872`.
-The `003661c` fresh export and `d4f1e1f` driver checkpoint are interim only.
-The full attack proof confirmed native startup lag during simultaneous
-Cristobal specials (tick 9 / frame 1039, SDK lag +1). Runtime optimization is
-underway; the final ROM SHA will change and exact-ROM gates must be regenerated.
+Final source/test freeze: `a1ee733aea036ad985bca9bdee29cc170cabd2ac`. The exact-ROM verification passed;
+PR #14 remains unmerged into main for one human combined playtest.
 <!-- v024-development-status:end -->
 Read [the shared implementation contract](COMBAT-v0.24-CONTRACT.md) and
 [the playtest guide](RELEASE-v0.24.0.md) for ownership and scope.
 
 <!-- v024-technical-status:start -->
-`Test.cmd` exited 0 on the interim combined ROM above: 2,595 gameplay, 17,906 roster,
-3,728 presentation, 1,443 input, 735 stages and 3,188 Training checks (29,595
-total). Matching pinned Accuracy smoke passed. Complete current focused proofs
-are contact (9,165 checks, 108 sessions, 61,704 callbacks), jumps (1,741 checks,
-all twelve/both ports) and stages (735 checks, both cores). The stage proof is
-the same native execution used by `Test.cmd`, not an additional independent run.
+**Technical verification passed; one human combined playtest remains pending.**
 
-Full pacing, attack and super proofs remain unfinished. Final focused runs,
-six suites, smoke, fresh export and guards must bind the corrected ROM and
-settled source/test freeze; the interim passes above do not transfer to it.
-The parent must collate the settled exact-ROM evidence into
-`docs/verification-v0.24.0.json` before final technical status is filled in.
-No combined readiness or human approval follows from partial reports.
+| Identity | Final value |
+| --- | --- |
+| Version / mapping | 0.24.0 / 4 MiB NTSC FastROM LoROM |
+| ROM SHA256 | `408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79` |
+| Header checksum | `4857` |
+| Source/test freeze | `a1ee733aea036ad985bca9bdee29cc170cabd2ac` |
+| Generated assets / retained prior RAM labels | 226 / 1,318 |
+
+All six native suites pass **29,595 checks**: 2,595 gameplay, 17,906 roster, 3,728 presentation, 1,443 input, 735 stages, 3,188 Training. Matching pinned
+Accuracy smoke, all six focused proofs, final-freeze fresh ROM/assets/symbol
+reproduction and authoring guards pass. Focused counts: pacing/recoil 238,137; attacks 2,539; contacts 9,165; stages 735; jumps 1,741; supers 4,730.
+Stage focused coverage shares the stage suite's native execution and is not
+counted again as an independent run. Isolated/interim counts are not pooled.
+See [final exact-ROM verification](verification-v0.24.0.json).
+Human playtest remains pending; PR #14 stays unmerged. No offline package or human approval is claimed.
 <!-- v024-technical-status:end -->
 
 The current native allocation is:
@@ -72,6 +70,10 @@ optimization. No global RAM or assembly changes are needed. The
 streams, state comparisons and independent-core limits.
 Fighter updates and contact queries also select direct actor addresses once;
 their original condition, transform and write order remains intact.
+Commit verification JSON as UTF-8 with LF endings. Canonicalize report/capture
+line endings without changing JSON values before final collation, retaining
+raw capture copies. Collate and finalize the docs after that normalization so
+the recorded hashes identify the bytes retained by Git.
 
 The six `COMBAT-24-*` feature notes retain implementation and isolated history.
 Use current report identities and the final verification record for combined

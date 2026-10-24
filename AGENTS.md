@@ -6,21 +6,34 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
-- **v0.24.0 readable-combat integration is authorized and in progress**, on
-  `integration/readable-combat-v024`, starting from main f75005d. The user
-  approved slower/reactable combat and clearer backward hit recoil, plus only
-  proposals1–5: attack art, contact alignment, stage08 rebuild, jump/landing
-  motion and dedicated super art. Proposals6–10 are excluded. Use six isolated
-  feature PRs into the integration branch, then one unmerged combined playtest
-  PR into main. Read docs/COMBAT-v0.24-CONTRACT.md for exact ownership, frame
-  allocation, common art/provenance schema and native budgets. Targeted combat
-  and jump art updates supersede the older other56-poses preservation rule;
-  preserve current walking20–27, portraits, palettes, scale and old masters.
-  Three dedicated super slots are1,2,4; all feature frame sets are disjoint.
-  Main's approved ROM/evidence below remain historical baseline until the
-  combined source is frozen and every exact-ROM gate is regenerated. Do not
-  claim combined pass counts from isolated child runs. Parent owns shared
-  pipeline/preservation policy, version, reports and hardware integration.
+- **v0.24.0 combined playtest candidate is technically verified**, on
+  `integration/readable-combat-v024`, starting from main f75005d. All six
+  feature PRs #15–20 are integrated. Combined PR #14 remains unmerged for one
+  human playtest; approved main remains v0.23.1. User-authorized scope is
+  slower/reactable combat and backward hit recoil, plus proposals1–5 only:
+  attack art, contact alignment, coherent stage08 rebuild, jump/landing motion
+  and dedicated super art. Proposals6–10 are excluded.
+  ROM SHA256 `408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79`,
+  header `4857`, source/test freeze `a1ee733aea036ad985bca9bdee29cc170cabd2ac`.
+  All six native suites pass 29,595 exact-ROM checks. Matching pinned Accuracy
+  smoke, all six full-roster focused proofs, fresh ROM/226-asset/normalized-symbol
+  reproduction, 20 authoring and 21 combat guards in both interpreter modes pass.
+  Stage focused coverage shares the stage suite execution and is counted once.
+  The special matrix passes 432 cases / 692,612 callbacks with zero SDK lag and
+  exact unmasked Snes9x state equality. Comparison retains the first coherent
+  baseline publication, collapsing 118 baseline callbacks and zero candidate
+  callbacks. CPU proof passes 36 Snes9x cases / 64,799 unmasked replay ticks
+  and twelve Hard CPUs / 21,600 Accuracy callbacks. Accuracy byte equivalence
+  is unclaimed; failed historical candidates/comparisons remain retained.
+  All 1,318 prior RAM addresses, Fighter64/Wave16/TRACE0..122 and hardware/trace
+  assembly remain preserved. Native C hot paths use direct actor operands.
+  Read docs/COMBAT-v0.24-CONTRACT.md for frame allocation and native budgets:
+  37 disjoint combat/jump/super poses per fighter change; the other 27,
+  walking20–27, portraits, palettes, scale and old masters remain preserved.
+  All three stages use connected scenery behind fixed ground, with no live
+  stage DMA or HDMA. Current evidence is docs/verification-v0.24.0.json and
+  docs/RELEASE-v0.24.0.md; docs/REVIEW-v0.24.0.html contains hash-bound media.
+  No new offline package, main merge or human/public-release approval is claimed.
 
 - The approved main walking revision is **v0.23.1**, through PR #12.
   The user explicitly approved it with "yes good, merge it" on 2026-10-23. The user rejected v0.23.0's legs/torso mismatch:
