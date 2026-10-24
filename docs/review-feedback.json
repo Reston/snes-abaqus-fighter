@@ -237,6 +237,18 @@
     "pull_request": 14,
     "merge_commit": "90370cec58ec297be8fc8023b1d53c62d439c942",
     "human_live_playtest_completed": null,
-    "scope": "User acceptance and merge authorization for the combined revision shown in this thread. No detailed live gameplay, physical-controller, subject-consent or public-release approval is inferred."
+    "scope": "User acceptance and merge authorization for the combined revision shown in this thread. No detailed live gameplay, physical-controller, subject-consent or public-release approval is inferred.",
+    "playtest_feedback": [
+      {
+        "recorded_at_utc": "2026-10-24T05:19:04.290779+00:00",
+        "response": "are you sure eveything is merged? I still fill the game too fast?",
+        "finding": "Combat still feels too fast after the merged v0.24 revision.",
+        "status": "open_pacing_feedback",
+        "launched_version": "0.24.0",
+        "launched_rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
+        "merge_and_source_verification": "Pacing PR #20 is an ancestor of main; runtime, tools, assets and ROM match the verified source freeze.",
+        "scope": "Qualitative combat-pacing feedback; detailed per-move or CPU-pressure observations have not been supplied."
+      }
+    ]
   }
 }
