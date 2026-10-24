@@ -145,7 +145,9 @@ def boot(host: LongRunHost, mode: int, fighter: int, fighter2: int,
         host.tap("down")
     host.tap("a")
     wait_screen(host, SCREEN_FIGHT)
-    for _ in range(240):
+    # Arcade's authored conversation holds the 110-tick intro for 360 ticks.
+    # Include that bounded controller-only route before measuring live combat.
+    for _ in range(600):
         current = host.state()
         if current["intro"] == 0:
             host.run(3)
@@ -1082,7 +1084,7 @@ def tracked_wait_screen(host: LongRunHost, runner: EnduranceRun,
 
 
 def tracked_wait_live(host: LongRunHost, runner: EnduranceRun,
-                      maximum: int = 240) -> dict[str, int]:
+                      maximum: int = 600) -> dict[str, int]:
     for _ in range(maximum):
         current = host.state()
         if (screen_ready(current, SCREEN_FIGHT) and current["intro"] == 0):

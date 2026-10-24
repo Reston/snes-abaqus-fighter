@@ -13,7 +13,13 @@
       "merge_commit": "066e7b68bab0639d3b7727f8f77a9f0a08daf0f6",
       "merged": true
     },
-    "stages": {"branch": "t3/stage08-depth-rebuild", "merged": false},
+    "stages": {
+      "branch": "t3/stage08-depth-rebuild",
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/16",
+      "reviewed_head": "7c5bf13b1578d769d308a5e89d4913c08baf654d",
+      "review_status": "floor visual polish requested; coherent scenery accepted for integration",
+      "merged": false
+    },
     "jumps": {"branch": "t3/jump-landing-motion-art", "merged": false},
     "supers": {"branch": "t3/dedicated-super-art", "merged": false}
   },
