@@ -77,3 +77,21 @@ loss and Continue. It also proves that P2's new local controls do not advance
 Arcade results. The checkpoint passes 89 focused checks plus native text/pixel
 and combat-health checks. Scene-load monitoring uses the direct scene byte;
 forced-blank result loaders are outside the live combat cadence interval.
+
+## Pass 6: two-person Training
+
+On the ordinary Training PAUSED card, **X selects P2 Controller**. The physical
+second controller then drives the opponent using the same movement, four
+attack buttons, specials and super as Local Versus, with Training health
+recovery and clock behavior. **X returns to Stand**. The original five dummy
+choices and Stand-to-CPU Up shortcut remain; manual control is an explicit
+toggle rather than an extra stop in that cycle. Up/Down leaves manual mode
+for CPU/Stand respectively.
+
+Either pad can enable manual practice. Start/B/A/Select keep priority; P2 live
+Select still cannot reset the round. Live P1 Select retains manual control.
+Selecting/restarting a prepared drill supplies its intended Stand/CPU partner.
+The focused checkpoint passes all twelve fighters' P2 movement, opposing
+directions, four normal buttons, ordinary special, naturally funded super,
+reset retention and return-to-Stand checks. Default Stand keeps ignoring P2
+combat buttons. No new global state or fighter ABI fields are added.

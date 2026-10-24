@@ -586,8 +586,9 @@ def check_menu_regressions() -> dict[str, object]:
 
 def boot(mode: int = 2, wait_intro: bool = True,
          fighter: int = 0, fighter2: int | None = None,
-         difficulty: int | None = None, title_delay: int = 0) -> Emulator:
-    e = Emulator()
+         difficulty: int | None = None, title_delay: int = 0,
+         core_options: dict[str, str] | None = None) -> Emulator:
+    e = Emulator(core_options=core_options)
     e.run(120)
     if title_delay:
         # This is only used by deterministic CPU probes to align the native

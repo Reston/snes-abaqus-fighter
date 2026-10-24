@@ -459,9 +459,107 @@ def arcade_orientation():
         Emulator.run = original
 
 
+def manual_training():
+    import test_pacing_floor_25 as monitor
+    original = Emulator.run
+
+    def singles(e, count=1, *args, **kwargs):
+        for _ in range(count):
+            s = monitor.monitored_run(e, 1, *args, **kwargs)
+        return s if count else e.state()
+
+    def recover(e):
+        for _ in range(320):
+            s = inputs.trace(e)
+            if not any(s[k] for k in ('action1', 'action2', 'y1', 'y2', 'hurt1', 'hurt2', 'wave1', 'wave2', 'down_state1', 'down_state2')):
+                e.run(3)
+                return
+            e.run(1)
+        raise AssertionError(('manual practice recovery did not finish', s))
+
+    rows = []
+    Emulator.run = singles
+    try:
+        for fighter in range(12):
+            e = inputs.boot(2, fighter=fighter, fighter2=fighter, core_options=inputs.MENU_CORE_OPTIONS)
+            try:
+                start = inputs.trace(e)
+                e.run(12, p2=['right', 'x'])
+                s = inputs.trace(e)
+                require(s['x2'] == start['x2'] and s['action2'] == 0,
+                        'default Stand still ignores physical P2 combat input', fighter)
+                port = fighter % 2
+                inputs.press(e, 'start', port)
+                before = inputs.trace(e)
+                inputs.press(e, 'x', port)
+                e.run(4)
+                s = training.public_state(e)
+                require(s['paused'] == 1 and s['training_dummy'] == 5 and s['x1'] == before['x1'] and s['x2'] == before['x2'],
+                        'either paused controller explicitly enables manual P2 without resetting the fight', [fighter, port, s])
+                presentation.verify_opaque_text_rows(e, [(11, 6, 'DUMMY: P2 CONTROLLER')], 'manual Training')
+                if fighter == 0:
+                    e.frame.save(OUT / 'training-p2-controller.png')
+                inputs.press(e, 'start', 1 - port)
+                e.run(12, p2=['right'])
+                s = inputs.trace(e)
+                require(s['x2'] > start['x2'] and s['action1'] == 0,
+                        'manual P2 movement follows its real controller independently', [fighter, s])
+                stationary = s['x2']
+                e.run(8, p2=['left', 'right'])
+                require(inputs.trace(e)['x2'] == stationary, 'manual P2 opposing directions cancel', fighter)
+                for key, action in (('y', 1), ('x', 3), ('b', 4), ('a', 5)):
+                    e.run(1, p2=[key])
+                    s = inputs.trace(e)
+                    require(s['action2'] == action and s['action1'] == 0,
+                            'manual P2 face buttons use the shared four-button commands', [fighter, key, s['action2']])
+                    recover(e)
+                e.run(1, p2=['down', 'y'])
+                s = inputs.trace(e)
+                require(s['action2'] == 7, 'manual P2 can execute its ordinary special', fighter)
+                recover(e)
+                for _ in range(1400):
+                    if inputs.trace(e)['energy2'] == 96:
+                        break
+                    e.run(1)
+                e.run(3)
+                e.run(1, p2=['y', 'b'])
+                s = inputs.trace(e)
+                require(s['energy2'] == 0 and s['action2'] == 7,
+                        'manual P2 can spend a naturally full super gauge', [fighter, s])
+                recover(e)
+                inputs.press(e, 'select')
+                e.run(30)
+                s = training.public_state(e)
+                require(s['training_dummy'] == 5 and s['x1'] == 66 * 16 and s['x2'] == 190 * 16 and s['hp1'] == s['hp2'] == 128,
+                        'live P1 reset preserves manual practice and restores both fighters', [fighter, s])
+                e.run(20, p2=['right'])
+                moved = inputs.trace(e)['x2']
+                inputs.press(e, 'select', 1)
+                require(inputs.trace(e)['x2'] == moved,
+                        'live P2 Select does not gain P1 reset ownership in manual practice', fighter)
+                inputs.press(e, 'start', 1)
+                inputs.press(e, 'x', 1)
+                s = training.public_state(e)
+                require(s['paused'] == 1 and s['training_dummy'] == 0,
+                        'manual toggle returns explicitly to Stand', [fighter, s])
+                inputs.press(e, 'start')
+                e.run(12, p2=['right', 'x'])
+                require(inputs.trace(e)['x2'] == moved and inputs.trace(e)['action2'] == 0,
+                        'returning to Stand restores ignored physical P2 combat input', fighter)
+                rows.append({'fighter': fighter, 'enable_port': port, 'normal_actions': [1, 3, 4, 5],
+                             'special_and_super': True, 'reset_retains_manual': True, 'passed': True})
+            finally:
+                e.close()
+            print(json.dumps({'part': 'manual', 'fighter': fighter, 'status': 'passed'}), flush=True)
+        require(not monitor.HEALTH['failures'], 'manual practice preserves strict native cadence audio and OBJ budgets', monitor.HEALTH)
+        return {'cases': rows, 'native_health': monitor.HEALTH, 'native_checks': list(monitor.CHECKS.values())}
+    finally:
+        Emulator.run = original
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--part', choices=('results', 'training', 'meter', 'arenas', 'arcade'), required=True)
+    parser.add_argument('--part', choices=('results', 'training', 'meter', 'arenas', 'arcade', 'manual'), required=True)
     parser.add_argument('--report', type=Path)
     args = parser.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
@@ -480,7 +578,7 @@ def main():
         require(sha((ROOT / '.tools/core/snes9x_libretro.dll').read_bytes()).lower() == EXPECTED_NATIVE_CORE['dll_sha256'].lower(),
                 'actual expanded native core matches its pin')
         report['result'] = {'results': result_routes, 'training': training_drills, 'meter': meter_feedback,
-                            'arenas': local_arenas, 'arcade': arcade_orientation}[args.part]()
+                            'arenas': local_arenas, 'arcade': arcade_orientation, 'manual': manual_training}[args.part]()
         require(source_hashes() == before, 'production and harness inputs remain fixed during proof')
         report['status'] = 'passed'
     except Exception as error:

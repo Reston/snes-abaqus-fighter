@@ -674,6 +674,7 @@ void captureFightInputs(void) {
             trainingCapture(fighters[0].keys);
     }
     if(mode==1)second=pad1;
+    else if(mode==2 && trainingDummy==5)second=pad1;
     else {
         if(!fighters[1].action && !fighters[1].hurt && !fighters[1].y && !fighters[1].downState)
             fighters[1].face=fighters[1].x<fighters[0].x?1:0;
@@ -1201,8 +1202,13 @@ void fightTick(void) {
                         trainingChooseChallenge();openPauseGuide(3);sound(0);
                     }
                 }
+            } else if(mode==2 && (pauseKeys&KEY_X)) {
+                /* Manual practice is explicit; the original five-choice
+                 * dummy cycle and quick Up-to-CPU shortcut stay intact. */
+                trainingDummy=trainingDummy==5?0:5;drawPauseCard();sound(0);
             } else if(mode==2 && (pauseDirections&(KEY_UP|KEY_DOWN))) {
-                if(pauseDirections&KEY_DOWN)trainingDummy=(trainingDummy+1)%5;
+                if(trainingDummy==5)trainingDummy=(pauseDirections&KEY_DOWN)?0:4;
+                else if(pauseDirections&KEY_DOWN)trainingDummy=(trainingDummy+1)%5;
                 else trainingDummy=(trainingDummy+4)%5;
                 drawPauseCard();sound(0);
             } else if(mode==2 && trainingDummy==4) {

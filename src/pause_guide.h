@@ -37,8 +37,10 @@ void drawPauseCard(void) {
             if(difficulty==0)guideCenter(11,"DUMMY: CPU EASY");
             else if(difficulty==1)guideCenter(11,"DUMMY: CPU NORMAL");
             else guideCenter(11,"DUMMY: CPU HARD");
-        } else guideCenter(11,trainingDummyNames[trainingDummy]);
-        guideCenter(13,trainingDummy==4?"U/D DUMMY L/R LEVEL SEL GUIDE":"UP/DOWN DUMMY  SELECT GUIDE");
+        } else if(trainingDummy==5)guideCenter(11,"DUMMY: P2 CONTROLLER");
+        else guideCenter(11,trainingDummyNames[trainingDummy]);
+        if(trainingDummy==4)guideCenter(13,"U/D DUMMY L/R LEVEL SEL GUIDE");
+        else guideCenter(13,trainingDummy==5?"X STAND U/D DUMMY SEL GUIDE":"X P2 PAD U/D DUMMY SEL GUIDE");
     } else {
         if(mode==0) {
             if(difficulty==0)guideCenter(11,"CPU: EASY");

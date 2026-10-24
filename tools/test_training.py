@@ -1684,7 +1684,7 @@ def verify_cpu_level_controls(rom: Path) -> dict[str, object]:
         for target in range(4):
             set_dummy(q, target)
             q.press("r", port=target % 2)
-            check(decode_text(vram_bytes(q), 13, 14).strip() == "UP/DOWN DUMMY  SELECT GUIDE",
+            check(decode_text(vram_bytes(q), 13, 14).strip() == "X P2 PAD U/D DUMMY SEL GUIDE",
                   "scripted dummy retains its original pause hint", target)
             set_dummy(q, 4)
             expect(level, "scripted dummy ignores shoulder")
