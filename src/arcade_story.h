@@ -128,8 +128,8 @@ void arcadeStoryDraw(void) {
     clearFightHint();
     drawGuideWord(26*64,"                                ");
     drawGuideWord(27*64,"                                ");
-    arcadeStoryCenter(26,"P1 A: FIGHT   AUTO: 6 SECONDS");
-    arcadeStoryCenter(27,"START PAUSE > SELECT GUIDE");
+    arcadeStoryCenter(26,"P1 A: FIGHT  AUTO 6S");
+    arcadeStoryCenter(27,"START: PAUSE");
 }
 
 void arcadeStoryBegin(void) {
@@ -152,7 +152,7 @@ void arcadeStoryTick(void) {
     drawGuideWord(26*64,"                                ");
     drawGuideWord(27*64,"                                ");
     arcadeStoryCenter(26,"Y/X PUNCH   B/A KICK");
-    arcadeStoryCenter(27,"START PAUSE > SELECT GUIDE");
+    arcadeStoryCenter(27,"START: PAUSE");
 }
 
 void arcadeStoryEnding(u8 id) {
@@ -161,7 +161,7 @@ void arcadeStoryEnding(u8 id) {
     center(22,arcadeStoryEndings[line]);
     center(23,arcadeStoryEndings[line+1]);
     center(24,arcadeStoryEndings[line+2]);
-    center(25,"A/START: TITLE");center(27,"B: CHARACTER SELECT");
+    center(25,"A/START: TITLE");center(27,"B: ROSTER");
 }
 
 #endif

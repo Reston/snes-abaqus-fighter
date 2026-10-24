@@ -1,0 +1,330 @@
+{
+  "status": "passed",
+  "baseline_commit": "dc1260b5512aa946e6006c8ac7bf2ebb2a02a9b3",
+  "version": "0.26.1",
+  "rom_sha256": "00029816d23adfe6fb950640ed4fa45fa0de05af46f3a802890333d4b4322aa3",
+  "scope": "UI string literals and version only; executable C tokens/call positions, all other native source, generated payloads and RAM preserved",
+  "changed_occurrences": 63,
+  "before_characters": 1288,
+  "after_characters": 738,
+  "reduction_percent": 42.7,
+  "preserved_generated": 226,
+  "preserved_ram_labels": 1318,
+  "changes": [
+    {
+      "source": "src/arcade_story.h",
+      "before": "P1 A: FIGHT   AUTO: 6 SECONDS",
+      "after": "P1 A: FIGHT  AUTO 6S"
+    },
+    {
+      "source": "src/arcade_story.h",
+      "before": "START PAUSE > SELECT GUIDE",
+      "after": "START: PAUSE"
+    },
+    {
+      "source": "src/arcade_story.h",
+      "before": "START PAUSE > SELECT GUIDE",
+      "after": "START: PAUSE"
+    },
+    {
+      "source": "src/arcade_story.h",
+      "before": "B: CHARACTER SELECT",
+      "after": "B: ROSTER"
+    },
+    {
+      "source": "src/game.c",
+      "before": "D-PAD SELECT A/START OK B BACK",
+      "after": "A/START OK  B BACK"
+    },
+    {
+      "source": "src/game.c",
+      "before": "START PAUSE > SELECT GUIDE",
+      "after": "START: PAUSE"
+    },
+    {
+      "source": "src/game.c",
+      "before": "MATCH COMPLETE",
+      "after": "RESULT"
+    },
+    {
+      "source": "src/game.c",
+      "before": "PLAYER 1 WINS",
+      "after": "P1 WINS"
+    },
+    {
+      "source": "src/game.c",
+      "before": "PLAYER 2 WINS",
+      "after": "P2 WINS"
+    },
+    {
+      "source": "src/game.c",
+      "before": "WINS THE MATCH",
+      "after": "WINS"
+    },
+    {
+      "source": "src/game.c",
+      "before": "ROUND WINS",
+      "after": "ROUNDS"
+    },
+    {
+      "source": "src/game.c",
+      "before": "SESSION WINS",
+      "after": "SESSION"
+    },
+    {
+      "source": "src/game.c",
+      "before": "A/START: NEXT CHALLENGER",
+      "after": "A/START: NEXT"
+    },
+    {
+      "source": "src/game.c",
+      "before": "A/START: CONTINUE",
+      "after": "A/START: RETRY"
+    },
+    {
+      "source": "src/game.c",
+      "before": "EITHER PLAYER",
+      "after": "BOTH PADS"
+    },
+    {
+      "source": "src/game.c",
+      "before": "B: CHARACTER SELECT",
+      "after": "B: ROSTER"
+    },
+    {
+      "source": "src/game.c",
+      "before": "P1 WINS THE ROUND",
+      "after": "P1 WINS"
+    },
+    {
+      "source": "src/game.c",
+      "before": "P2 WINS THE ROUND",
+      "after": "P2 WINS"
+    },
+    {
+      "source": "src/game.c",
+      "before": "CPU WINS THE ROUND",
+      "after": "CPU WINS"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "FORWARD PROJECTILE",
+      "after": "PROJECTILE"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "ADVANCING STRIKE",
+      "after": "RUSH"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "LOW SHOCKWAVE",
+      "after": "LOW WAVE"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "RISING STRIKE",
+      "after": "RISING"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "SELECT MOVE GUIDE",
+      "after": "SELECT HELP"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "HOW TO PLAY 1/3",
+      "after": "CONTROLS 1/3"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "TRAINING TOOLS 3/3",
+      "after": "TRAINING 3/3"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "HOW TO PLAY 1/2",
+      "after": "CONTROLS 1/2"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "A / START RESUME",
+      "after": "A/START RESUME  B ROSTER"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "MUSIC ON  L TO MUTE",
+      "after": "L MUSIC ON"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "MUSIC OFF L TO PLAY",
+      "after": "L MUSIC OFF"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "R BACKGROUND: STILL",
+      "after": "R SCENERY STILL"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "R BACKGROUND: MOVING",
+      "after": "R SCENERY MOVING"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "B ROSTER   SELECT BACK",
+      "after": "SELECT CLOSE GUIDE"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "B ROSTER   SELECT NEXT",
+      "after": "SELECT NEXT PAGE"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "UP: LIVE DISPLAY ON",
+      "after": "UP DISPLAY ON"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "UP: LIVE DISPLAY OFF",
+      "after": "UP DISPLAY OFF"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "DOWN: NEXT CHALLENGE",
+      "after": "DOWN NEXT DRILL"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "X: RESTART DRILL",
+      "after": "X RETRY"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "LAND LIGHT, THEN PRESS STRONG",
+      "after": "COMBO Y > X OR B > A"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "Y->X  B->A  OR LINK SPECIAL",
+      "after": "OR LINK A SPECIAL"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "SECOND MOVE MUST TRULY COMBO",
+      "after": ""
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "CPU DUMMY: WAIT FOR A LOW",
+      "after": "BLOCK THE CPU LOW"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "HOLD DOWN + AWAY TO BLOCK",
+      "after": "HOLD DOWN + AWAY"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "HIGH BLOCK DOES NOT COUNT",
+      "after": ""
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "STAND DUMMY: JUMP PAST",
+      "after": "JUMP PAST, THEN A"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "PRESS A JUST AFTER CROSSING",
+      "after": "HIT FROM BEHIND"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "REAR AIR KICK MUST HIT",
+      "after": ""
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "AFTER A HIT: PRESS HEAVIER",
+      "after": "CONFIRM LIGHT > STRONG"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "GROUNDED STANDING NORMALS",
+      "after": "STANDING ATTACKS - TICKS"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "HITSTOP ADDS A CONTACT PAUSE",
+      "after": "HITSTOP IS EXTRA"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "TICKS AT NORMAL VIDEO RATE",
+      "after": ""
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "UP: P2 NORMALS",
+      "after": "UP P2 TIMING"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "UP: SPECIAL MOVES",
+      "after": "UP SPECIALS"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "12-TICK WINDOW PER STEP",
+      "after": "12 TICKS PER STEP"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "COST: 32 ENERGY",
+      "after": "32 ENERGY"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "PRESS PUNCH WITH FINAL TOWARD",
+      "after": "PUNCH WITH FINAL TOWARD"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "UP: P1 NORMAL TIMING",
+      "after": "UP NORMAL TIMING"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "H HITS D DAMAGE SP! EXECUTED",
+      "after": "H HITS  D DAMAGE"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "INPUT: DIRECTION THEN YXBA",
+      "after": "INPUT: DIR + YXBA"
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "123 DOWN 456 LEVEL 789 UP",
+      "after": ""
+    },
+    {
+      "source": "src/pause_guide.h",
+      "before": "LIVE SELECT RESETS PROGRESS",
+      "after": "P1 SELECT RETRY"
+    },
+    {
+      "source": "src/training_tools.h",
+      "before": "BLOCK A LOW ATTACK",
+      "after": "BLOCK LOW"
+    },
+    {
+      "source": "src/training_tools.h",
+      "before": "AIR KICK CROSS-UP",
+      "after": "CROSS-UP"
+    }
+  ]
+}

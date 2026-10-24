@@ -13,6 +13,7 @@ Run after the 4 MiB 64-frame animation native build with::
 
 from __future__ import annotations
 
+import argparse
 import ctypes as C
 import hashlib
 import json
@@ -55,6 +56,8 @@ ARENA_THUMB_Y_INSET = 2
 ARENA_THUMB_W = 104
 ARENA_THUMB_H = 52
 checks: list[dict[str, object]] = []
+REPORT = ROOT / "docs/presentation-test-report.json"
+CAPTURE_DIR = ROOT / "docs/screenshots/presentation"
 
 
 def check(ok: bool, label: str, details: object | None = None) -> None:
@@ -93,7 +96,7 @@ def capture(e: Emulator, name: str) -> Path:
     })
     check(len(e.frame.getcolors(256 * 224) or []) > 12,
           "capture is a populated presentation frame", name)
-    path = ROOT / "docs/screenshots/presentation" / name
+    path = CAPTURE_DIR / name
     path.parent.mkdir(parents=True, exist_ok=True)
     e.frame.save(path)
     return path
@@ -474,33 +477,33 @@ def verify_result_font_bank(e: Emulator, current: dict[str, int]) -> dict[str, o
             *[(22 + line, centered_start(text), text) for line, text in
               enumerate(arcade_copy("arcadeStoryEndings")[winner_id * 3:winner_id * 3 + 3])],
             (25, centered_start("A/START: TITLE"), "A/START: TITLE"),
-            (27, centered_start("B: CHARACTER SELECT"), "B: CHARACTER SELECT"),
+            (27, centered_start("B: ROSTER"), "B: ROSTER"),
         ]
         return verify_opaque_text_rows(e, rows, "champion ending")
     elif current["mode"] == 1:
-        title, action, context = "MATCH COMPLETE", "A/START: REMATCH", "LOCAL 1V1"
+        title, action, context = "RESULT", "A/START: REMATCH", "LOCAL 1V1"
         if tuple(map(int, json.loads((ROOT / 'dist/manifest.json').read_bytes())['version'].split('.'))) >= (0, 26, 0):
-            context = "SESSION WINS"
+            context = "SESSION"
     else:
         won = current["wins1"] > current["wins2"]
         title = "SHIFT COMPLETE" if won else "SHIFT OVER"
-        action = "A/START: NEXT CHALLENGER" if won else "A/START: CONTINUE"
+        action = "A/START: NEXT" if won else "A/START: RETRY"
         context = f"SHIFT {current['arcade'] + 1:02}/11"
         quotes = arcade_copy("arcadeStoryWinnerQuotes")
     rows = [
         (5, centered_start(title), title),
         (9, 15, winner),
-        (11, 15, ("PLAYER 1 WINS" if current["wins1"] > current["wins2"] else "PLAYER 2 WINS")
-         if current["mode"] == 1 else "WINS THE MATCH"),
-        (13, 16, "ROUND WINS"),
+        (11, 15, ("P1 WINS" if current["wins1"] > current["wins2"] else "P2 WINS")
+         if current["mode"] == 1 else "WINS"),
+        (13, 16, "ROUNDS"),
         (14, 15, score),
         (17, 15, context),
         (21, centered_start(quotes[winner_id]), quotes[winner_id]),
         (24, centered_start(action), action),
-        (26, centered_start("B: CHARACTER SELECT"), "B: CHARACTER SELECT"),
+        (26, centered_start("B: ROSTER"), "B: ROSTER"),
     ]
     if current["mode"] == 1:
-        rows.append((23, centered_start("EITHER PLAYER"), "EITHER PLAYER"))
+        rows.append((23, centered_start("BOTH PADS"), "BOTH PADS"))
     return verify_opaque_text_rows(e, rows, "result card")
 
 
@@ -736,8 +739,8 @@ def title_and_select() -> dict[str, object]:
         verify_menu_font_bank(e, [
             (4, 23, "PLAYER 1"),
             (17, 22, NAMES[0]),
-            (27, centered_start("D-PAD SELECT A/START OK B BACK"),
-             "D-PAD SELECT A/START OK B BACK"),
+            (27, centered_start("A/START OK  B BACK"),
+             "A/START OK  B BACK"),
         ], "fighter select")
         select_card_render = verify_select_card_render(e)
         select_digests: dict[int, str] = {0: frame_digest(e)}
@@ -1037,6 +1040,13 @@ def timeout_draw_capture() -> dict[str, object]:
 
 
 def main() -> int:
+    global REPORT, CAPTURE_DIR
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--report', type=Path, default=REPORT)
+    parser.add_argument('--captures', type=Path, default=CAPTURE_DIR)
+    args = parser.parse_args()
+    REPORT, CAPTURE_DIR = args.report.resolve(), args.captures.resolve()
+    REPORT.parent.mkdir(parents=True, exist_ok=True)
     started = time.time()
     report: dict[str, object] = {
         "emulator": "Official Snes9x 1.63 x64 libretro core",
@@ -1066,12 +1076,12 @@ def main() -> int:
     finally:
         report["passed"] = len(checks)
         report["elapsed_seconds"] = round(time.time() - started, 2)
-        (ROOT / "docs/presentation-test-report.json").write_text(
+        REPORT.write_text(
             json.dumps(report, indent=2) + "\n"
         )
     print(json.dumps({"status": report["status"], "passed": report["passed"],
                       "seconds": report["elapsed_seconds"],
-                      "report": "docs/presentation-test-report.json"}))
+                      "report": str(REPORT)}))
     return 0
 
 
