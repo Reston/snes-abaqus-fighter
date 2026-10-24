@@ -14,6 +14,7 @@ import test_inputs as inputs
 import test_presentation as presentation
 from test_champion import host_contract
 from release_evidence import EXPECTED_NATIVE_CORE
+import test_training as training
 
 BASE = '7ba40c106000b2b2eb916f6b35d47065334dd4c7'
 CHECKS = []
@@ -123,9 +124,85 @@ def result_routes():
     return rows
 
 
+def training_drills():
+    import test_pacing_floor_25 as monitor
+    import re
+    addresses = {name: int(address, 16) & 0x1ffff for address, name in re.findall(
+        r'^([0-9a-fA-F]{8}) (\S+)$', (ROOT / 'dist/abaqus-after-hours.sym').read_text(), re.M)}
+    read = lambda e, name: C.string_at(e.ram + addresses[name], 1)[0]
+    original = Emulator.run
+
+    def singles(e, count=1, *args, **kwargs):
+        for _ in range(count):
+            s = monitor.monitored_run(e, 1, *args, **kwargs)
+        return s if count else e.state()
+
+    Emulator.run = singles
+    rows = []
+    try:
+        for fighter in range(12):
+            e = inputs.boot(2, fighter=fighter, fighter2=fighter, difficulty=2)
+            try:
+                e.run(24, p1=['right'])
+                moved = inputs.trace(e)['x1']
+                inputs.press(e, 'start')
+                e.run(4, p1=['x'])
+                e.run(4)
+                require(inputs.trace(e)['x1'] == moved and read(e, 'paused') == 1,
+                        'X on ordinary PAUSED does not reset the fight', fighter)
+                for _ in range(3):
+                    inputs.press(e, 'select')
+                require(read(e, 'pausePage') == 3, 'Training Tools is reached through the existing page cycle', fighter)
+                text = training.decode_text(presentation.vram_bytes(e), 11, 12).strip()
+                require(text == 'X: RESTART DRILL', 'restart command is present in actual native guide glyphs', text)
+                for port in (0, 1):
+                    for challenge in (1, 2, 0):
+                        prior = inputs.trace(e)
+                        inputs.press(e, 'down', port)
+                        s = training.public_state(e)
+                        expected_dummy = 4 if challenge == 1 else 0
+                        require(read(e, 'trainingChallenge') == challenge and s['training_dummy'] == expected_dummy,
+                                'choosing a drill prepares its required CPU or Stand dummy', [fighter, port, challenge, s['training_dummy']])
+                        require(s['paused'] == 1 and s['x1'] == prior['x1'] and s['x2'] == prior['x2'],
+                                'choosing a drill leaves the frozen position intact', [fighter, port, challenge])
+                        inputs.press(e, 'x', port)
+                        e.run(8)
+                        s = training.public_state(e)
+                        require(s['paused'] == 1 and s['pause_page'] == 3 and s['guide_build'] == s['guide_dirty'] == 0,
+                                'restart stays on the settled frozen Training guide', [fighter, port, challenge, s])
+                        require([s[k] for k in ('x1', 'x2', 'y1', 'y2', 'hp1', 'hp2', 'energy1', 'energy2')] ==
+                                [66 * 16, 190 * 16, 0, 0, 128, 128, 64, 64],
+                                'restart restores real positions health and energy', [fighter, port, challenge, s])
+                        require(read(e, 'trainingChallenge') == challenge and read(e, 'trainingResult') == 0 and
+                                s['training_dummy'] == expected_dummy and read(e, 'difficulty') == 2,
+                                'restart retains the drill and difficulty and clears its progress', [fighter, port, challenge])
+                        require(read(e, 'trainingHits') == 0 and read(e, 'trainingDamage') == 0 and
+                                C.string_at(e.ram + addresses['trainingHistory'], 10) == bytes(10),
+                                'restart clears combo statistics and input history', [fighter, port, challenge])
+                        require(s['screen'] == 3 and s['intro'] == s['hitstop'] == 0,
+                                'restart uses no scene load or countdown', [fighter, port, challenge])
+                        rows.append({'fighter': fighter, 'port': port, 'challenge': challenge, 'dummy': expected_dummy, 'passed': True})
+                        if fighter == 0 and port == 0:
+                            path = OUT / f'training-drill-{challenge + 1}.png'
+                            e.frame.save(path)
+                # Start remains the owner of a simultaneous restart sample.
+                e.run(1, p1=['start'], p2=['x'])
+                e.run(20)
+                require(read(e, 'paused') == 0 and read(e, 'pausePage') == 0,
+                        'Start from either pad beats a simultaneous drill restart', fighter)
+            finally:
+                e.close()
+            print(json.dumps({'part': 'training', 'fighter': fighter, 'status': 'passed'}), flush=True)
+        require(not monitor.HEALTH['failures'], 'guide restarts preserve strict native cadence audio and OBJ budgets', monitor.HEALTH)
+        return {'cases': rows, 'native_health': monitor.HEALTH,
+                'native_checks': list(monitor.CHECKS.values())}
+    finally:
+        Emulator.run = original
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--part', choices=('results',), required=True)
+    parser.add_argument('--part', choices=('results', 'training'), required=True)
     parser.add_argument('--report', type=Path)
     args = parser.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
@@ -143,7 +220,7 @@ def main():
                 'proof uses the exact current cartridge')
         require(sha((ROOT / '.tools/core/snes9x_libretro.dll').read_bytes()).lower() == EXPECTED_NATIVE_CORE['dll_sha256'].lower(),
                 'actual expanded native core matches its pin')
-        report['result'] = result_routes()
+        report['result'] = {'results': result_routes, 'training': training_drills}[args.part]()
         require(source_hashes() == before, 'production and harness inputs remain fixed during proof')
         report['status'] = 'passed'
     except Exception as error:

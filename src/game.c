@@ -1174,7 +1174,15 @@ void fightTick(void) {
                     } else openPauseGuide(pausePage==1?2:1);
                     sound(0);
                 } else if(mode==2 && pausePage==3) {
-                    if(pauseDirections&KEY_UP) {
+                    if(pauseKeys&KEY_X) {
+                        /* Retry in place in the guide, with the same actors,
+                         * selected drill and difficulty. No scene reload. */
+                        trainingPrepareChallenge();resetRoundState();intro=0;
+                        pauseHudPending=1;openPauseGuide(3);sound(0);
+                        /* Reset and guide-panel construction each have their
+                         * own frame; actor uploads already serialize below. */
+                        drawFight();return;
+                    } else if(pauseDirections&KEY_UP) {
                         trainingVisible=!trainingVisible;trainingRestore=1;openPauseGuide(3);sound(0);
                     } else if(pauseDirections&KEY_DOWN) {
                         trainingChooseChallenge();openPauseGuide(3);sound(0);

@@ -23,3 +23,20 @@ the final source freeze; checkpoint captures are under
 
 No new art, global RAM, fighter state fields or native transfer ranges are
 introduced. The v0.25 preservation/bank/asset check passes on this checkpoint.
+
+## Pass 2: quick Training retries
+
+Choosing a drill now supplies its required dummy: CPU for low-block practice,
+Stand for normal-to-special links and rear air kicks. CPU difficulty remains
+the player's choice. The ordinary PAUSED card can still override the dummy.
+
+On Training Tools 3/3, **X restarts the selected drill** while keeping the guide
+open. It restores positions, health and energy, clears recorded progress and
+input history, and retains the fighter choices, arena, drill and difficulty.
+Start/B/A/Select retain priority. X on other pause pages has no reset action.
+
+The first focused checkpoint passes 72 drill/port/fighter combinations and
+556 checks across all twelve fighters, with 5,088 measured native callbacks
+and zero cadence, OBJ or audio failures. Reset work and guide construction
+run on separate frames after an initial prototype exposed a one-frame stall;
+the failed prototype report remains under ignored build diagnostics.

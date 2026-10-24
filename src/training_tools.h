@@ -7,6 +7,7 @@ extern const char trainingChallengeNames[3][22];
 void trainingReset(void);
 void trainingNewMatch(void);
 void trainingChooseChallenge(void);
+void trainingPrepareChallenge(void);
 void trainingCapture(u16 keys);
 void trainingStarted(u8 player,u8 action);
 void trainingContact(u8 attacker,u8 blocked,u8 low,u8 actualDamage);
@@ -86,6 +87,12 @@ void trainingNewMatch(void) {
 void trainingChooseChallenge(void) {
     trainingChallenge++;if(trainingChallenge>=3)trainingChallenge=0;
     trainingResult=0;trainingNormalLink=0;trainingStatusDirty=1;
+    trainingPrepareChallenge();
+}
+void trainingPrepareChallenge(void) {
+    /* A selected drill supplies its required partner. Difficulty remains the
+     * player's choice; returning to PAUSED can still override the dummy. */
+    trainingDummy=trainingChallenge==1?4:0;
 }
 void trainingCapture(u16 keys) {
     keys&=KEY_UP|KEY_DOWN|KEY_LEFT|KEY_RIGHT|ATTACKS;

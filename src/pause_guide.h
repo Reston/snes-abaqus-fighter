@@ -82,6 +82,7 @@ void buildPauseGuide(void) {
         } else {
             guideCenter(9,trainingVisible?"UP: LIVE DISPLAY ON":"UP: LIVE DISPLAY OFF");
             guideCenter(10,"DOWN: NEXT CHALLENGE");
+            guideCenter(11,"X: RESTART DRILL");
             guideCenter(12,trainingChallengeNames[trainingChallenge]);
             if(trainingChallenge==0) {
                 guideCenter(14,"STAND DUMMY: GET CLOSE");
