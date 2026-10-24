@@ -720,6 +720,7 @@ void controls(u8 p) {
      * separation, jump and downed physics still use the ordinary rules. */
     if(mode==2 && p==1) {
         if(trainingDummy==1 || trainingDummy==2)return;
+        if(trainingDummy==6)return;
     }
     if(a<7 && !f->y) {
         if(((keys&KEY_UP) && !f->wakeLock) || f->jumpBuffer) {
@@ -1214,13 +1215,11 @@ void fightTick(void) {
                     musicOn=!musicOn;openPauseGuide(pausePage);sound(0);
                 }
             } else if(mode==2 && (pauseKeys&KEY_X)) {
-                /* Manual practice is explicit; the original five-choice
-                 * dummy cycle and quick Up-to-CPU shortcut stay intact. */
+                /* Manual practice is explicit and outside the automated
+                 * dummy cycle. Keep the quick Up-to-CPU shortcut. */
                 trainingDummy=trainingDummy==5?0:5;drawPauseCard();sound(0);
             } else if(mode==2 && (pauseDirections&(KEY_UP|KEY_DOWN))) {
-                if(trainingDummy==5)trainingDummy=(pauseDirections&KEY_DOWN)?0:4;
-                else if(pauseDirections&KEY_DOWN)trainingDummy=(trainingDummy+1)%5;
-                else trainingDummy=(trainingDummy+4)%5;
+                trainingCycleDummy((pauseDirections&KEY_DOWN)!=0);
                 drawPauseCard();sound(0);
             } else if(mode==2 && trainingDummy==4) {
                 /* Shoulders adjust only the CPU's existing home level.

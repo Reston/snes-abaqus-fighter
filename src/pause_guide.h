@@ -38,6 +38,7 @@ void drawPauseCard(void) {
             else if(difficulty==1)guideCenter(11,"DUMMY: CPU NORMAL");
             else guideCenter(11,"DUMMY: CPU HARD");
         } else if(trainingDummy==5)guideCenter(11,"DUMMY: P2 CONTROLLER");
+        else if(trainingDummy==6)guideCenter(11,"DUMMY: GUARD AFTER HIT");
         else guideCenter(11,trainingDummyNames[trainingDummy]);
         if(trainingDummy==4)guideCenter(13,"U/D DUMMY L/R LEVEL SEL GUIDE");
         else guideCenter(13,trainingDummy==5?"X STAND U/D DUMMY SEL GUIDE":"X P2 PAD U/D DUMMY SEL GUIDE");
@@ -95,9 +96,9 @@ void buildPauseGuide(void) {
             guideCenter(11,"X: RESTART DRILL");
             guideCenter(12,trainingChallengeNames[trainingChallenge]);
             if(trainingChallenge==0) {
-                guideCenter(14,"STAND DUMMY: GET CLOSE");
-                guideCenter(15,"HIT Y THEN DOWN+Y IN STUN");
-                guideCenter(16,"SPECIAL MUST LINK AND HIT");
+                guideCenter(14,"LAND LIGHT, THEN PRESS STRONG");
+                guideCenter(15,"Y->X  B->A  OR LINK SPECIAL");
+                guideCenter(16,"SECOND MOVE MUST TRULY COMBO");
             } else if(trainingChallenge==1) {
                 guideCenter(14,"CPU DUMMY: WAIT FOR A LOW");
                 guideCenter(15,"HOLD DOWN + AWAY TO BLOCK");
@@ -145,7 +146,29 @@ u16 trainingKeys(void) {
     if(trainingDummy==1)return back;
     if(trainingDummy==2)return back|KEY_DOWN;
     if(trainingDummy==3 && !f->y && !f->hurt)return KEY_UP;
+    if(trainingDummy==6) {
+        /* Stand for the opener, then guard the first legal recovery tick.
+         * Real hit-stun links still connect through the held back input. */
+        if(fighters[0].combotime || f->hurt)return back;
+    }
     return 0;
+}
+
+void trainingCycleDummy(u8 down) {
+    /* Preserve the indexed CPU value4 and the Stand->CPU Up shortcut.
+     * Manual value5 remains an explicit X toggle, outside this cycle. */
+    if(trainingDummy==5)trainingDummy=down?0:4;
+    else if(down) {
+        if(trainingDummy==3)trainingDummy=6;
+        else if(trainingDummy==6)trainingDummy=4;
+        else if(trainingDummy==4)trainingDummy=0;
+        else trainingDummy++;
+    } else {
+        if(!trainingDummy)trainingDummy=4;
+        else if(trainingDummy==4)trainingDummy=6;
+        else if(trainingDummy==6)trainingDummy=3;
+        else trainingDummy--;
+    }
 }
 
 #endif

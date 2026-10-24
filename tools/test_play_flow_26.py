@@ -162,7 +162,7 @@ def training_drills():
                         prior = inputs.trace(e)
                         inputs.press(e, 'down', port)
                         s = training.public_state(e)
-                        expected_dummy = 4 if challenge == 1 else 0
+                        expected_dummy = 4 if challenge == 1 else 6 if challenge == 0 else 0
                         require(read(e, 'trainingChallenge') == challenge and s['training_dummy'] == expected_dummy,
                                 'choosing a drill prepares its required CPU or Stand dummy', [fighter, port, challenge, s['training_dummy']])
                         require(s['paused'] == 1 and s['x1'] == prior['x1'] and s['x2'] == prior['x2'],

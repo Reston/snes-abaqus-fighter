@@ -168,3 +168,19 @@ audible restoration. Native cadence, OBJ, FIFO and clipping gates pass. Captures
 under docs/audio/play-flow-v026 are recordings only; the tests open no audio
 device and play nothing through speakers. The original five scores and sound
 assets remain byte-identical; the existing music preference byte is reused.
+
+## Pass 12: real hit-confirm practice
+
+The first drill is now **HIT CONFIRM**: Y into X or B into A teaches a real,
+uninterrupted two-hit combo on every fighter. A linked special remains valid.
+Selecting/restarting it supplies **Guard After Hit**, which stands for the
+opener and holds away during the following combo window. It cannot guard
+during hit stun, but blocks a late high follow-up. The result therefore reflects
+an actual confirm rather than two attacks hitting an idle opponent.
+
+Guard After Hit is also available between Jump and CPU on the ordinary pause
+card. The original Stand-to-CPU Up shortcut and explicit X manual-controller
+toggle remain. Existing combo timers provide the guard window; no state bytes,
+combat timings, damage or ordinary CPU behavior change. All twelve fighters'
+two normal confirms and blocked late follow-ups pass, with bounded independent
+Accuracy coverage and both-pad selector/restart checks.

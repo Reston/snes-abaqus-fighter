@@ -118,7 +118,9 @@ caption shows its state; opposite shoulders cancel. On ordinary Training
 PAUSED with CPU selected, L/R keep their difficulty-setting role.
 
 On Training's ordinary **PAUSED** card, Up/Down selects **Stand, Guard High,
-Guard Low, Jump or CPU**. Guards hold position and Jump repeats on landing.
+Guard Low, Jump, Guard After Hit or CPU**. Guards hold position and Jump repeats
+on landing. Guard After Hit stands for the opener, then holds away during the
+combo window: true links connect, while late high follow-ups are blocked.
 With CPU selected, either pad's L/R changes the shared difficulty once per
 press; opposing held shoulders cancel even across pads. These dummy/level
 controls stay on the ordinary card.
@@ -127,7 +129,7 @@ On that ordinary PAUSED card, **SNES X selects P2 Controller** (P1 keyboard
 **S**, P2 numpad **8**) for two-person
 Training. P2 then uses the complete shared fighting controls. X again returns
 to Stand; Up selects CPU and Down selects Stand from manual control. The
-original five-choice Up/Down dummy cycle stays intact. P1 live Select retains
+Up from Stand still selects CPU directly. P1 live Select retains
 manual control when resetting; P2 live Select does not reset the fight.
 
 ## Training tools
@@ -135,17 +137,17 @@ manual control when resetting; P2 live Select does not reset the fight.
 On **Training Tools 3/3**, **Up** shows/hides the live footer and **Down** chooses
 one of three drills:
 
-1. **Normal -> Special:** choose Stand and get close. Hit a normal, then link
-   a special while the opponent is still in the same hit-stun chain. Try Y
-   then Down+Y; a slower special may need A's longer hit stun. Both attacks
-   must hit. `SP!` alone does not complete the drill.
+1. **Hit Confirm:** get close, land Y, then press X; or land B, then press A.
+   Both hits must be in the same uninterrupted combo. The prepared opponent
+   guards after the opener, so a late follow-up shows Retry. A linked special
+   can also complete it; `SP!` alone does not.
 2. **Block a Low Attack:** choose CPU on the ordinary card, then hold
    Down+away against a real low attack. A high block does not count; taking
    damage shows Retry. Select restores space for another attempt.
 3. **Air Kick Cross-up:** choose Stand, jump past and press A just after
    crossing. The kick must hit from behind; a front hit or block does not count.
 
-Choosing a drill supplies its required CPU/Stand partner, keeping the chosen
+Choosing a drill supplies its required recovery-guard/CPU/Stand partner, keeping the chosen
 CPU difficulty. **SNES X on Training Tools 3/3 restarts that drill** while leaving
 the guide open: positions, health, energy, progress, history and combo totals
 reset. Fighter choices, arena, drill and display preference remain. Start/B/A/

@@ -34,7 +34,7 @@ u8 trainingHistoryDirty=0,trainingHistoryBuild=0,trainingStatusDirty=0,trainingR
 char trainingHistoryText[33]={0},trainingStatusText[33]={0};
 const char trainingResultNames[4][6]={"READY","LINK!","DONE!","RETRY"};
 const char trainingChallengeNames[3][22]={
-    "NORMAL -> SPECIAL", "BLOCK A LOW ATTACK", "AIR KICK CROSS-UP"
+    "HIT CONFIRM", "BLOCK A LOW ATTACK", "AIR KICK CROSS-UP"
 };
 
 /* Contact-budget adapter for the two fixed victim indices in combat().
@@ -90,9 +90,10 @@ void trainingChooseChallenge(void) {
     trainingPrepareChallenge();
 }
 void trainingPrepareChallenge(void) {
-    /* A selected drill supplies its required partner. Difficulty remains the
-     * player's choice; returning to PAUSED can still override the dummy. */
-    trainingDummy=trainingChallenge==1?4:0;
+    /* A selected drill supplies recovery guard, CPU or Stand as appropriate.
+     * Difficulty remains the player's choice; PAUSED can override a partner. */
+    if(!trainingChallenge)trainingDummy=6;
+    else trainingDummy=trainingChallenge==1?4:0;
 }
 void trainingCapture(u16 keys) {
     keys&=KEY_UP|KEY_DOWN|KEY_LEFT|KEY_RIGHT|ATTACKS;
@@ -147,11 +148,17 @@ void trainingMoveContact(u8 action,u8 air,u8 rear,u8 outcome) {
     if(trainingResult==2)return;
     if(trainingChallenge==0) {
         if(outcome!=2)return;
-        if(action==7) {
-            if(trainingNormalLink && fighters[0].combo>1) {
+        if(trainingNormalLink && fighters[0].combo>1) {
+            if(action==3 || action==5) {
                 trainingResult=2;trainingNormalLink=0;trainingStatusDirty=1;
+                return;
             }
-        } else if(action && action<7) {
+            if(action==7) {
+                trainingResult=2;trainingNormalLink=0;trainingStatusDirty=1;
+                return;
+            }
+        }
+        if(action && action<7) {
             trainingNormalLink=1;trainingResult=1;trainingStatusDirty=1;
         }
     } else if(trainingChallenge==2 && action==5 && air) {

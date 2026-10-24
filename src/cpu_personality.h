@@ -52,7 +52,7 @@ u16 cpuKeys(void) {
     u8 chance,enemyActive,waveApproaching,tempo,threshold,choice,specialFamily,spacing,reaction;
     const CharacterProfile *c;
     const CpuPersonality *habit;
-    if(mode==2 && trainingDummy<4)return trainingKeys();
+    if(mode==2 && trainingDummy!=4)return trainingKeys();
     if(!fighters[1].hp)return 0;
     if(!fighters[0].hp)return 0;
     if(fighters[1].downState && fighters[1].downState!=DOWN_WAKE)return 0;
