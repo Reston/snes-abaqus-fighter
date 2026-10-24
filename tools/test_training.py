@@ -1832,7 +1832,7 @@ def verify_dummy_reset_and_defaults(rom: Path) -> dict[str, object]:
               "new Training selection restores the adjacent default cursor", q.state())
         # Explicitly reselect Roxana for a new match after returning to roster.
         q.press("up")
-        q.press("left")
+        q.press("right")
         q.press("a")
         wait_screen(q, ARENA)
         q.press("a")

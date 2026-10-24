@@ -3939,8 +3939,12 @@ def _capture_cpu_approach(difficulty: int) -> dict[str, object]:
                     return {"initial": initial, "start": sample,
                             "after": after, "index": index}
                 continue
-            e.run(1, p1=["right"] if sample["x1"] < sample["x2"]
-                  else ["left"])
+            forward = "right" if sample["x1"] < sample["x2"] else "left"
+            back = "left" if sample["x1"] < sample["x2"] else "right"
+            # Hold the measured band while a normal finishes; continuously
+            # walking forward can cross the CPU before its neutral decision.
+            e.run(1, p1=[forward] if distance > 46 else
+                  ([back] if distance < 29 else [back, "down"]))
     finally:
         e.close()
     raise AssertionError(("CPU approach never enters 29..46px spacing",
@@ -4083,7 +4087,11 @@ def check_cpu_special_spacing() -> dict[str, object]:
             if DELIBERATE_PACING:
                 # Fresh jump edges across the signature's established phase,
                 # rather than a held UP that only creates one long arc.
-                return ['up'] if 89 <= (sample['frame']+5*13)%97 <= 91 else []
+                if 92 <= (sample['frame']+5*13)%97 <= 94:
+                    return ['up']
+                # Guard between attempts so an intervening normal
+                # cannot KO the fixture before a later signature window.
+                return ['left' if sample['x1'] < sample['x2'] else 'right', 'down']
             return ["up"]
         rising_phase=(12,4,16)[difficulty] if DELIBERATE_PACING else (16 if difficulty==1 else 0)
         rising = _capture_cpu_special(5, difficulty, rising_phase,
