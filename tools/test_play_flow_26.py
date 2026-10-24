@@ -347,9 +347,121 @@ def local_arenas():
     return rows
 
 
+def arcade_orientation():
+    import test_pacing_floor_25 as monitor
+    import test_expansion_09_arcade_story as story
+    story.SYMBOLS = story.symbols((ROOT / 'dist/abaqus-after-hours.sym').read_bytes())
+    original = Emulator.run
+
+    def singles(e, count=1, *args, **kwargs):
+        for _ in range(count):
+            try:
+                s = monitor.monitored_run(e, 1, *args, **kwargs)
+            except Exception:
+                detail = {'native_screen': inputs.native_screen(e), 'state': inputs.trace(e),
+                          'black_ppu': e.frame.getbbox() is None,
+                          'native_intro': monitor.read(e, 'intro', 1),
+                          'native_round_end': monitor.read(e, 'roundEnd', 1),
+                          'health': monitor.HEALTH}
+                (ROOT / 'build/v026-arcade-failure-detail.json').write_text(json.dumps(detail, indent=2))
+                raise
+        return s if count else e.state()
+
+    def text(e, y, x, expected):
+        presentation.verify_opaque_text_rows(e, [(y, x, expected)], 'Arcade orientation')
+        require(True, 'native Arcade progress/preview glyphs and pixels match the earned route', expected)
+
+    def pause_level(e, level):
+        inputs.press(e, 'start')
+        e.run(4)
+        expected = 'CPU: ' + ('EASY', 'NORMAL', 'HARD')[level]
+        text(e, 11, (32 - len(expected)) // 2, expected)
+        inputs.press(e, 'start')
+        e.run(4)
+
+    rows = []
+    Emulator.run = singles
+    try:
+        e = story.boot(hero=4)
+        try:
+            pause_level(e, 0)
+            for shift in range(11):
+                s = inputs.trace(e)
+                require(s['arcade'] == shift and s['fighter_id2'] == (5 + shift) % 12,
+                        'progress follows the actual eleven-opponent ladder', s)
+                text(e, 9, 19, f'SHIFT {shift + 1:02}/11')
+                if shift in (0, 9, 10):
+                    e.frame.save(OUT / f'arcade-shift-{shift + 1:02}.png')
+                story.skip_story(e)
+                attempts = []
+                for attempt in range(8):
+                    story.play_cpu(e)
+                    e.run(15)
+                    s = inputs.trace(e)
+                    attempts.append({'attempt': attempt + 1, 'wins1': s['wins1'], 'wins2': s['wins2']})
+                    if s['wins1'] == 2:
+                        break
+                    text(e, 17, 15, f'SHIFT {shift + 1:02}/11')
+                    text(e, 19, 15, 'RETRY')
+                    text(e, 19, 21, presentation.NAMES[s['fighter_id2']])
+                    inputs.menu_press(e, ['a'])
+                    require(inputs.trace(e)['arcade'] == shift, 'losing and continuing retains ladder progress', shift)
+                    story.skip_story(e)
+                require(s['wins1'] == 2, 'controller-only player earns each progress transition', [shift, attempts])
+                if shift == 10:
+                    require(s['champion'] == 1, 'eleventh win enters the existing Champion scene', s)
+                    presentation.verify_result_font_bank(e, s)
+                    break
+                text(e, 17, 15, f'SHIFT {shift + 1:02}/11')
+                text(e, 19, 15, 'NEXT')
+                next_id = (6 + shift) % 12
+                text(e, 19, 21, presentation.NAMES[next_id])
+                if shift == 0:
+                    e.frame.save(OUT / 'arcade-next-opponent.png')
+                    for keys in (['a'], ['start'], ['b']):
+                        inputs.menu_press(e, keys, port=1)
+                        require(inputs.trace(e)['screen'] == 4 and inputs.trace(e)['arcade'] == shift,
+                                'P2 local-flow controls do not advance an Arcade result', keys)
+                inputs.menu_press(e, ['a'])
+                require(inputs.trace(e)['arcade'] == shift + 1 and inputs.trace(e)['fighter_id2'] == next_id,
+                        'NEXT preview matches the actual next loaded opponent', [shift, next_id])
+                rows.append({'shift': shift + 1, 'opponent': s['fighter_id2'], 'next': next_id, 'attempts': attempts})
+                print(json.dumps({'part': 'arcade', 'shift': shift + 1, 'status': 'passed'}), flush=True)
+        finally:
+            e.close()
+        for level in (1, 2):
+            e = story.boot(hero=0, difficulty=level)
+            try:
+                pause_level(e, level)
+                if level == 2:
+                    story.skip_story(e)
+                    for _ in range(18000):
+                        if inputs.native_screen(e) == 4:
+                            break
+                        e.run(1)
+                    e.run(30)
+                    s = inputs.trace(e)
+                    require(s['screen'] == 4 and s['wins2'] == 2 and s['arcade'] == 0,
+                            'passive player genuinely loses before retry verification', s)
+                    text(e, 17, 15, 'SHIFT 01/11')
+                    text(e, 19, 15, 'RETRY')
+                    text(e, 19, 21, presentation.NAMES[1])
+                    e.frame.save(OUT / 'arcade-retry-opponent.png')
+                    inputs.menu_press(e, ['start'])
+                    s = inputs.trace(e)
+                    require(s['arcade'] == 0 and s['fighter_id2'] == 1 and s['wins1'] == s['wins2'] == 0,
+                            'Continue retries the shown opponent and same ladder position', s)
+            finally:
+                e.close()
+        require(not monitor.HEALTH['failures'], 'Arcade orientation retains strict native combat cadence audio and OBJ budgets', monitor.HEALTH)
+        return {'ladder': rows, 'native_health': monitor.HEALTH, 'native_checks': list(monitor.CHECKS.values())}
+    finally:
+        Emulator.run = original
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--part', choices=('results', 'training', 'meter', 'arenas'), required=True)
+    parser.add_argument('--part', choices=('results', 'training', 'meter', 'arenas', 'arcade'), required=True)
     parser.add_argument('--report', type=Path)
     args = parser.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
@@ -368,7 +480,7 @@ def main():
         require(sha((ROOT / '.tools/core/snes9x_libretro.dll').read_bytes()).lower() == EXPECTED_NATIVE_CORE['dll_sha256'].lower(),
                 'actual expanded native core matches its pin')
         report['result'] = {'results': result_routes, 'training': training_drills, 'meter': meter_feedback,
-                            'arenas': local_arenas}[args.part]()
+                            'arenas': local_arenas, 'arcade': arcade_orientation}[args.part]()
         require(source_hashes() == before, 'production and harness inputs remain fixed during proof')
         report['status'] = 'passed'
     except Exception as error:

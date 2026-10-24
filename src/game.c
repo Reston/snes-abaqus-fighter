@@ -525,7 +525,11 @@ void showResult(u8 won) {
     else word(15,11,"WINS THE MATCH");
     word(16,13,"ROUND WINS");word(15,14,"P1  0 - 0  P2");
     put(19,14,'0'+fighters[0].won);put(23,14,'0'+fighters[1].won);
-    word(15,17,mode==0?"ARCADE SHIFT":"LOCAL 1V1");
+    if(mode==0) {
+        arcadeStoryProgress(15,17);
+        word(15,19,won?"NEXT":"RETRY");
+        word(21,19,characterNames[won?(selected+2+arcade)%12:fighters[1].id]);
+    } else word(15,17,"LOCAL 1V1");
     center(21,mode==0?arcadeStoryWinnerQuotes[id]:characterQuotes[id]);
     if(mode==0)center(24,won?"A/START: NEXT CHALLENGER":"A/START: CONTINUE");
     else {center(23,"EITHER PLAYER");center(24,"A/START: REMATCH");}

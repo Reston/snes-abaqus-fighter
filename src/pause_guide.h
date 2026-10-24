@@ -39,7 +39,14 @@ void drawPauseCard(void) {
             else guideCenter(11,"DUMMY: CPU HARD");
         } else guideCenter(11,trainingDummyNames[trainingDummy]);
         guideCenter(13,trainingDummy==4?"U/D DUMMY L/R LEVEL SEL GUIDE":"UP/DOWN DUMMY  SELECT GUIDE");
-    } else guideCenter(13,"SELECT MOVE GUIDE");
+    } else {
+        if(mode==0) {
+            if(difficulty==0)guideCenter(11,"CPU: EASY");
+            else if(difficulty==1)guideCenter(11,"CPU: NORMAL");
+            else guideCenter(11,"CPU: HARD");
+        } else guideCenter(11,"LOCAL 1V1");
+        guideCenter(13,"SELECT MOVE GUIDE");
+    }
 }
 
 void closePauseGuide(void) {

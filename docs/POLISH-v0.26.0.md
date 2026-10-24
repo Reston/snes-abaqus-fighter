@@ -62,3 +62,18 @@ Versus. Its footer says **LOCAL 1V1: EITHER PAD**. Opposing directions cancel
 across controllers, and the shared Start/B/A priority matches the result card.
 Arcade and Training arena selection keep their existing ownership. The focused
 proof checks both ports' routes, simultaneous inputs and those mode boundaries.
+
+## Pass 5: Arcade orientation
+
+The matchup exchange and ordinary result card show **SHIFT 01/11** through
+**SHIFT 11/11**. A win previews the next opponent; a loss names the opponent
+you will retry. The ordinary Arcade pause card names Easy, Normal or Hard.
+Champion artwork, stories, six-second auto-advance, controls and ladder rules
+remain intact.
+
+The focused proof earns a complete eleven-opponent ladder, checks the 09/10/11
+boundary and wraparound opponent previews, and verifies an actual Hard-mode
+loss and Continue. It also proves that P2's new local controls do not advance
+Arcade results. The checkpoint passes 89 focused checks plus native text/pixel
+and combat-health checks. Scene-load monitoring uses the direct scene byte;
+forced-blank result loaders are outside the live combat cadence interval.

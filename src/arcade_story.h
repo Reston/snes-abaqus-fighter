@@ -105,11 +105,17 @@ void arcadeStoryCenter(u8 y,const char *text) {
     drawGuideWord(((u16)y*32+(32-length)/2)*2,text);
 }
 
+void arcadeStoryProgress(u8 x,u8 y) {
+    drawGuideWord(((u16)y*32+x)*2,"SHIFT 01/11");
+    number(x+6,y,arcade+1);
+}
+
 void arcadeStoryDraw(void) {
     u8 hero=fighters[0].id,opponent=fighters[1].id;
     clearBanner();fillPausePanel();
     drawGuideWord(9*64,"                                ");
     drawGuideWord((9*32+2)*2,characterNames[hero]);
+    arcadeStoryProgress(19,9);
     drawGuideWord((12*32+2)*2,characterNames[opponent]);
     if(arcadeStoryRivals[hero]==opponent) {
         drawGuideWord((10*32+2)*2,arcadeStoryRivalOpeners[hero]);

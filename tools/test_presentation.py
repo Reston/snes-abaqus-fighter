@@ -483,7 +483,7 @@ def verify_result_font_bank(e: Emulator, current: dict[str, int]) -> dict[str, o
         won = current["wins1"] > current["wins2"]
         title = "SHIFT COMPLETE" if won else "SHIFT OVER"
         action = "A/START: NEXT CHALLENGER" if won else "A/START: CONTINUE"
-        context = "ARCADE SHIFT"
+        context = f"SHIFT {current['arcade'] + 1:02}/11"
         quotes = arcade_copy("arcadeStoryWinnerQuotes")
     rows = [
         (5, centered_start(title), title),
