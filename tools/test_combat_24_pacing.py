@@ -242,11 +242,18 @@ def crossup(fighter, port):
             original = r.state()[f'face{r.a}']
             sign = 1 if original else -1
             s = r.step(('up', r.direction()), (r.direction(True, True),))
+            air_speed = abs(signed16(s[f'jump_vx{r.a}']))
+            start = balance.profiles()[fighter]['startup'][4 if key == 'a' else 2] - 3
+            # Reston's low arc always remains inside body separation height.
+            # Commit startup before crossing; waiting until after crossing
+            # would consume his remaining airtime at the slower chase speed.
+            anticipatory_gap = (start - 1) * (air_speed + s[f'speed{r.d}'] - 24) + air_speed + s[f'speed{r.d}'] - 1
             sent = False
             for _ in range(90):
                 crossed = (s[f'x{r.a}'] - s[f'x{r.d}']) * sign > 0
                 keys = ()
-                if crossed and signed16(s[f'y{r.a}']) >= -48 * 16 and not sent:
+                anticipatory = fighter == 9 and not crossed and (s[f'x{r.d}'] - s[f'x{r.a}']) * sign <= anticipatory_gap
+                if (anticipatory or (crossed and signed16(s[f'y{r.a}']) >= -48 * 16)) and not sent:
                     keys = (key,); sent = True
                 s = r.step(keys, (r.direction(True, True),))
                 if sent and s[f'connected{r.a}']:
@@ -274,7 +281,8 @@ def crossup(fighter, port):
                         landed |= not s[f'y{r.a}']
                 result = {'post_impulse_gap': gap, 'contact_gap_before_impulse': gap - 4,
                           'contact_tick': r.timing()['startup'], 'recoil_steps': steps,
-                          'recoil_pixels': abs(s[f'x{r.d}'] - oldx) / 16, 'attacker_landed_during_recoil': landed}
+                          'recoil_pixels': abs(s[f'x{r.d}'] - oldx) / 16, 'attacker_landed_during_recoil': landed,
+                          'startup_before_crossing': fighter == 9}
             r.settle()
         return result
     finally:
