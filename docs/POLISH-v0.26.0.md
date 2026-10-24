@@ -408,3 +408,19 @@ one real timing failure remain in ignored build records. An isolated recorder
 nested the root ROM identity inside its candidate diagnostic; the outer loaded
 ROM identity is correct and a separate erratum preserves that distinction.
 Final integrated records read the actual current root cartridge identity.
+
+## Pass 27: reproduce the complete verification with one command
+
+The versioned verifier checks a clean committed cartridge/source freeze,
+prepares the current-source comparison reference, and runs independent host
+proofs alongside the serial root build/publication checks. Native workers get
+bounded processor pairs and below-normal priority. Every command retains its
+log, hash, exit and completed result; the summary uses bounded-retry atomic
+publication. A failure stops new scheduling while active native writers finish.
+
+All required six-suite, focused, independent, hour, score-limit and 432 stress
+commands appear exactly once in the plan. Mode/stress merges, collation and
+review generation run only after every worker succeeds. Dry-run is explicitly
+plan-only. Nine normal/optimized guards cover full inventory, shard coverage,
+merge bindings, paths with spaces, concurrency and failure retention. The
+complete end-to-end command is the final source-freeze verification run.

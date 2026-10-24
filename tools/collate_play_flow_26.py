@@ -148,7 +148,7 @@ def feature_coverage(part, report):
         require(report.get('native_execution') is True and report.get('exit_code') == 0 and
                 set(report.get('suite_reports', {})) == set(SIX), 'Canonical six-program execution is incomplete')
         for key, producer in (('source_guard_runs', 'test_candidate_sources.py'), ('media_guard_runs', 'test_play_flow_media.py'),
-                              ('collation_guard_runs', 'test_play_flow_collation.py'), ('counterfactual_guard_runs', 'test_play_flow_counterfactual.py'), ('long_session_guard_runs', 'test_long_session_guards.py')):
+                              ('collation_guard_runs', 'test_play_flow_collation.py'), ('counterfactual_guard_runs', 'test_play_flow_counterfactual.py'), ('long_session_guard_runs', 'test_long_session_guards.py'), ('verification_runner_guard_runs', 'test_verification_runner_guards.py')):
             parsed = ast.parse((ROOT / 'tools' / producer).read_text())
             expected = sum(isinstance(n, ast.FunctionDef) and n.name.startswith('test_') for cls in parsed.body if isinstance(cls, ast.ClassDef) for n in cls.body)
             runs = report.get(key, [])

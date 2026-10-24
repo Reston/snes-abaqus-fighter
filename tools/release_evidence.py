@@ -151,6 +151,8 @@ SOURCE_INPUT_EXACT = {
     "tools/test_play_flow_long_26.py",
     "tools/test_session_limit_26.py",
     "tools/test_long_session_guards.py",
+    "tools/verify_play_flow_26.py",
+    "tools/test_verification_runner_guards.py",
     "tools/v026_contracts.py",
     "tools/collate_play_flow_26.py",
     "tools/check_play_flow_native_26.py",

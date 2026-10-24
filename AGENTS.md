@@ -12,9 +12,11 @@ Preserve the native emulator requirement when extending the project.
   The user requested sequential polish until weekly Codex remaining reaches
   5% or less. Read the live 10080-minute rate-limit window; do not confuse it
   with context/goal tokens. No new merge approval is inferred; main is v0.24.
-  Twenty-six polish/review topics are implemented. Current HUD-optimized ROM
+  Twenty-seven polish/review topics are implemented. Current HUD-optimized ROM
   is `27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b` / `3993`.
-  Final source freeze and integrated proofs are pending. The prior 6b392d
+  Runtime 27223b passed 49,689 six-suite checks, all focused/432 stress,
+  three current live native hours and 200 score-limit matches at e78c7f5.
+  The final one-command-verifier source freeze is still pending. Prior 6b392d
   checkpoint passed 49,689 six-suite checks/all focused/432 stress, but a later
   hour exposed one real SDK lag. The isolated fixed-actor HUD clears that hour
   with 244,237 unmasked logical states exact. Retain the failed original and
