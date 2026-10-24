@@ -111,6 +111,12 @@ List **2/3**, Training Tools **3/3**, then PAUSED. Versus and Arcade have the
 first two guide pages. Left/Right cycles within the guide pages. Move List
 names both fighters' specials and supers.
 
+On **Move List 2/3** (2/2 outside Training), **Up** cycles the special list,
+Player 1 normal timing and Player 2 normal timing. **S/A/R** shows startup,
+active time and recovery in live simulation ticks for the four standing
+ground attacks. Contact hitstop adds its separate pause; crouching/air moves
+can differ. The fight stays frozen while you browse.
+
 On a full guide page, **SNES L** (P1 keyboard **D**, P2 numpad **9**) toggles
 music with a short fade. Combat sounds and announcements remain audible.
 The preference survives menu/match changes and resets on cold boot. The

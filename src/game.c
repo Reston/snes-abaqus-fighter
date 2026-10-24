@@ -1172,7 +1172,7 @@ void fightTick(void) {
     animationAdvance=0;
     if(pauseKeys&KEY_START) {
         paused=!paused;impactBannerPending=0;clearBanner();
-        if(paused){pausePage=0;guideBuild=0;pauseHudPending=1;clearFightHint();drawPauseCard();}
+        if(paused){pausePage=0;guideBuild=0;stageDepthTable[3]=0;pauseHudPending=1;clearFightHint();drawPauseCard();}
         else {closePauseGuide();settlePausedHud();if(arcadeStoryTicks)arcadeStoryDraw();}
         sound(0);
     }
@@ -1195,6 +1195,9 @@ void fightTick(void) {
                         else openPauseGuide(pausePage==1?3:pausePage-1);
                     } else openPauseGuide(pausePage==1?2:1);
                     sound(0);
+                } else if(pausePage==2 && (pauseDirections&KEY_UP)) {
+                    stageDepthTable[3]++;if(stageDepthTable[3]>2)stageDepthTable[3]=0;
+                    openPauseGuide(2);sound(0);
                 } else if(mode==2 && pausePage==3) {
                     if(pauseKeys&KEY_X) {
                         /* Retry in place in the guide, with the same actors,

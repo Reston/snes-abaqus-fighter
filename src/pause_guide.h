@@ -21,6 +21,24 @@ void guideCenter(u8 y,const char *text) {
     drawGuideWord(((u16)y<<6)+(((32-n)>>1)<<1),text);
 }
 
+void guideTwoDigits(u8 x,u8 y,u8 value) {
+    char text[3];
+    text[0]='0'+value/10;text[1]='0'+value%10;text[2]=0;
+    guideWord(x,y,text);
+}
+
+void guideNormalRow(u8 action,u8 y) {
+    u8 index=action,player=stageDepthTable[3]-1;
+    if(player)index+=16;
+    if(action==1)guideWord(3,y,"Y LIGHT PUNCH");
+    else if(action==3)guideWord(3,y,"X HEAVY PUNCH");
+    else if(action==4)guideWord(3,y,"B LIGHT KICK");
+    else guideWord(3,y,"A HEAVY KICK");
+    guideTwoDigits(18,y,matchStartup[index]);
+    guideTwoDigits(21,y,matchActiveEnd[index]-matchStartup[index]);
+    guideTwoDigits(24,y,matchActionEnd[index]-matchActiveEnd[index]);
+}
+
 void settlePausedHud(void) {
     if(pauseHudPending) {
         /* A pause directly after contact must not leave yesterday's HP bar
@@ -70,9 +88,10 @@ void buildPauseGuide(void) {
         fillGuidePanel();
         if(mode==2) {
             if(pausePage==1)guideCenter(6,"HOW TO PLAY 1/3");
-            else if(pausePage==2)guideCenter(6,"MOVE LIST 2/3");
+            else if(pausePage==2)guideCenter(6,stageDepthTable[3]?"NORMAL TIMING 2/3":"MOVE LIST 2/3");
             else guideCenter(6,"TRAINING TOOLS 3/3");
-        } else guideCenter(6,pausePage==1?"HOW TO PLAY 1/2":"MOVE LIST 2/2");
+        } else if(pausePage==1)guideCenter(6,"HOW TO PLAY 1/2");
+        else guideCenter(6,stageDepthTable[3]?"NORMAL TIMING 2/2":"MOVE LIST 2/2");
         guideCenter(24,"A / START RESUME");
         guideCenter(25,musicOn?"MUSIC ON  L TO MUTE":"MUSIC OFF L TO PLAY");
         guideCenter(26,pausePage==(mode==2?3:2)?"B ROSTER   SELECT BACK":"B ROSTER   SELECT NEXT");
@@ -83,6 +102,11 @@ void buildPauseGuide(void) {
             guideWord(3,10,"JUMP          UP");
             guideWord(3,11,"STAND GUARD   AWAY");
             guideWord(3,12,"LOW GUARD     DOWN + AWAY");
+        } else if(pausePage==2 && stageDepthTable[3]) {
+            guideWord(3,9,stageDepthTable[3]==1?"P1":"P2");
+            guideWord(7,9,characterNames[fighters[stageDepthTable[3]-1].id]);
+            guideWord(18,11,"S  A  R");
+            guideNormalRow(1,12);guideNormalRow(3,13);
         } else if(pausePage==2) {
             guideWord(3,9,"P1");guideWord(7,9,characterNames[fighters[0].id]);
             guideWord(7,10,characterSpecialNames[fighters[0].id]);
@@ -119,6 +143,13 @@ void buildPauseGuide(void) {
             guideWord(3,19,"UPPERCUT      DOWN + X");
             guideCenter(21,"AFTER A HIT: PRESS HEAVIER");
             guideCenter(22,"CROSS-UP: JUMP PAST + A");
+        } else if(pausePage==2 && stageDepthTable[3]) {
+            guideNormalRow(4,14);guideNormalRow(5,15);
+            guideCenter(17,"S STARTUP A ACTIVE R RECOVERY");
+            guideCenter(18,"GROUNDED STANDING NORMALS");
+            guideCenter(19,"HITSTOP ADDS A CONTACT PAUSE");
+            guideCenter(21,"TICKS AT NORMAL VIDEO RATE");
+            guideCenter(22,stageDepthTable[3]==1?"UP: P2 NORMALS":"UP: SPECIAL MOVES");
         } else if(pausePage==2) {
             guideWord(3,15,"QUICK: DOWN + Y");
             guideWord(3,17,"MOTION: D, D+F, F + Y/X");
@@ -127,6 +158,7 @@ void buildPauseGuide(void) {
             guideWord(3,20,"COST: 32 ENERGY");
             guideWord(3,22,"PRESS PUNCH WITH FINAL TOWARD");
             drawSuperGuide();
+            guideCenter(23,"UP: P1 NORMAL TIMING");
         } else {
             trainingMakeStatus();guideWord(0,18,trainingStatusText);
             guideCenter(20,"H HITS D DAMAGE SP! EXECUTED");

@@ -184,3 +184,13 @@ toggle remain. Existing combo timers provide the guard window; no state bytes,
 combat timings, damage or ordinary CPU behavior change. All twelve fighters'
 two normal confirms and blocked late follow-ups pass, with bounded independent
 Accuracy coverage and both-pad selector/restart checks.
+
+## Pass 13: readable normal timing on the pause guide
+
+Up on Move List cycles specials, P1 normal timing and P2 normal timing. Each
+normal shows startup, active time and recovery from that match's actual timing
+cache. The guide explicitly limits the table to grounded standing attacks
+and explains contact hitstop. It uses two rows in each existing build stage,
+so no combat-frame formatting, transfer growth or new RAM allocation occurs.
+One unused byte in the retained stage table holds the paused view and clears
+at the next pause/scene. Gameplay values and timing remain unchanged.
