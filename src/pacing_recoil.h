@@ -2,7 +2,8 @@
 #define ABAQUS_PACING_RECOIL_H
 
 /* One existing byte, two private nibbles: bits 0..1 contact direction
- * (1 left / 2 right), bit 2 strong. No Fighter/Wave/TRACE or RAM changes.
+ * (1 left / 2 right), bit 2 strong, bit 3 direct-super linking pulse.
+ * No Fighter/Wave/TRACE or RAM changes.
  * Never consult the attacker's later facing: trades, landing and crossing
  * cannot turn a hurt reaction around. applyHitReaction remains the audited
  * native 12+floor(damage/3) transition; this module only moves its victim. */
@@ -14,6 +15,12 @@ void beginRecoil(u8 p,u8 direction,u8 action,u8 blocked) {
     Fighter *f=&fighters[p];
     u8 latch=direction+1,step;
     clearRecoil(p);
+    /* Early direct-super pulses must hold their established follow-up range.
+     * Use short easing until the finisher; preserve pulse timing/reach/damage,
+     * strong impact presentation and the final knockdown's ordinary launch. */
+    if(superActive[1-p] && superPhase[1-p]<superProfiles[fighters[1-p].id].count) {
+        if(superProfiles[fighters[1-p].id].family!=SUPER_VOLLEY){action=1;latch|=8;}
+    }
     if(blocked)step=16;
     else if(action==1 || action==4)step=32;
     else {latch|=4;step=64;}
@@ -32,9 +39,19 @@ void updateRecoil(u8 p) {
      * less than light hits; strong hits double the live drift. No extra
      * stun, hitstop, invulnerability, pressure timer or game-clock slowdown. */
     if(f->guard) {
-        if(remaining>=6)step=8;
+        /* Linking guards keep the prior one-pixel impulse; added travel
+         * before a stationary rising finisher would make it whiff. */
+        if(latch&8)step=0;
+        else if(remaining>=6)step=8;
         else if(remaining>=3)step=6;
         else step=4;
+    } else if(latch&8) {
+        /* Never exceed the old nine-unit per-tick drift before a linked
+         * pulse. Rising families have no forward rush to regain that range. */
+        if(remaining>=12)step=8;
+        else if(remaining>=8)step=6;
+        else if(remaining>=4)step=4;
+        else step=2;
     } else {
         if(remaining>=12)step=16;
         else if(remaining>=8)step=12;
