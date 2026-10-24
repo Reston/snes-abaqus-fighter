@@ -28,6 +28,7 @@ from test_champion import host_contract
 from test_inputs import trace, signed16
 from release_evidence import EXPECTED_NATIVE_CORE
 from expansion_contracts import combined_contract
+from contact_geometry import generate as generate_geometry, world
 import test_expansion_06_cpu_personality as cpu
 import test_expansion_07_supers as supers
 
@@ -49,6 +50,7 @@ HARNESS = ('tools/test_combat_24_pacing.py', 'tools/test_characters.py', 'tools/
            'tools/emulator.py', 'tools/run_background.py', 'tools/test_champion.py',
            'tools/test_presentation.py', 'tools/release_evidence.py', 'tools/expansion_contracts.py',
            'tools/v024_contracts.py', 'tools/test_expansion_03_normal_balance.py',
+           'tools/contact_geometry.py',
            'tools/test_expansion_06_cpu_personality.py', 'tools/test_expansion_07_supers.py')
 
 
@@ -231,7 +233,7 @@ def special_timing(fighter, port):
             if initial[f'family{r.a}'] == 3:
                 raw = r.read('fighters', 128)[port * 64:(port + 1) * 64]
                 vertical.append({'tick': raw[17], 'y_12_4': signed16(s[f'y{r.a}']),
-                                 'vy_12_4': int.from_bytes(bytes(raw[6:8]), 'little', signed=True)})
+                                 'vy_12_4': int.from_bytes(bytes(raw[4:6]), 'little', signed=True)})
             s = r.step(); xs.append(s[f'x{r.a}'] - initial[f'x{r.a}'])
         if initial[f'family{r.a}'] == 1:
             speed = 48 if fighter == 2 else 42
@@ -248,6 +250,85 @@ def special_timing(fighter, port):
                     r.tag + ' rising special launches at active contact with preserved velocity', launch)
         return {**timing, 'horizontal_travel_12_4': abs(xs[-1]), 'first_three_x_deltas': xs[:3],
                 'rising_launch_samples': vertical}
+    finally:
+        r.close()
+
+
+def geometry_contract():
+    header, data = generate_geometry(ROOT)
+    require(header == (ROOT/'build/contact_geometry_data.h').read_bytes(),
+            'pacing range oracle derives from the current native pixels')
+    syms = balance.symbols(SYM)
+    rom = ROM.read_bytes()
+    def linked(name, size):
+        address = syms[name]
+        offset = ((address >> 16) & 127) * 32768 + (address & 32767)
+        return rom[offset:offset+size]
+    table = bytes(v for fighter in data['poses'] for pose in fighter for rect in pose for v in rect)
+    require(linked('contactPoses', len(table)) == table and
+            linked('contactGeometryDigest', 32).hex() == data['digest'],
+            'exact cartridge contains the independently derived contact table and digest')
+    return data
+
+
+def normal_ranges(fighter, port, geometry):
+    """Bracket the raster boundary; legacy profile reach is no longer an oracle."""
+    r = Rig(fighter, port)
+    result = {}
+    try:
+        for key, action, role in balance.MOVES:
+            tag = f'{r.tag} {role}'
+            r.position(110)
+            hp = r.state()[f'hp{r.d}']
+            s = r.step((key,))
+            require(s[f'action{r.a}'] == action, tag+' uses the face-button action')
+            timing = r.timing(); ticks = [s[f'tick{r.a}']]
+            while s[f'action{r.a}']:
+                press = ('x',) if key == 'y' and s[f'tick{r.a}'] == timing['startup'] else ()
+                s = r.step(press)
+                if s[f'action{r.a}']:
+                    require(s[f'action{r.a}'] == action, tag+' whiff retains its commitment')
+                    ticks.append(s[f'tick{r.a}'])
+            require(ticks == list(range(1, timing['total'])) and s[f'hp{r.d}'] == hp,
+                    tag+' completes every native whiff tick', {**timing, 'ticks': ticks})
+            frame = 5 if action == 1 else 6 if action == 3 else 7
+            strike = world(geometry['poses'][fighter][frame][2])
+            limits = []
+            for idle in range(16, 20):
+                bands = [world(rect, face=0) for rect in geometry['poses'][fighter][idle][:2]]
+                limits.append(max((strike[2]-body[0])/16 for body in bands
+                                  if strike[1] < body[3] and strike[3] > body[1]))
+            lo, hi = min(limits), max(limits)
+            outside = r.position(hi+3)
+            hp = r.state()[f'hp{r.d}']; s = r.step((key,)); connected = 0
+            for _ in range(timing['total']+8):
+                connected = max(connected, s[f'connected{r.a}'])
+                s = r.step()
+            require(outside > hi and not connected and s[f'hp{r.d}'] == hp,
+                    tag+' whiffs beyond all idle pose bands', [outside, lo, hi])
+            inside = r.position(max(25, lo-3))
+            before = r.state(); s = r.step((key,))
+            for _ in range(timing['total']+8):
+                if s[f'connected{r.a}']:
+                    break
+                s = r.step()
+            damage = before[f'hp{r.d}']-s[f'hp{r.d}']
+            require(s[f'connected{r.a}'] == 2 and s[f'tick{r.a}'] == timing['startup'] and
+                    s[f'anim_frame{r.a}'] == frame and
+                    damage > 0 and not s[f'guard{r.d}'] and not s[f'down_state{r.d}'],
+                    tag+' first active tick causes real raster-overlap damage', [inside, s])
+            result[role] = {**timing, 'attack_frame': frame, 'idle_pose_cutoff_pixels': [lo, hi],
+                            'outside_whiff_gap': outside, 'inside_hit_gap': inside, 'damage': damage,
+                            'first_contact_tick': s[f'tick{r.a}']}
+            r.settle()
+        lp, sp, lk, sk = (result[name] for _, _, name in balance.MOVES)
+        require(lp['startup'] < lk['startup'] < sk['startup'] <= sp['startup'],
+                r.tag+' speed roles remain distinct', result)
+        require(lp['damage'] < lk['damage'] < sk['damage'] < sp['damage'],
+                r.tag+' damage roles remain distinct', result)
+        require(lp['total'] < lk['total'] < sk['total'] <= sp['total']+1,
+                r.tag+' stronger normals require longer commitment', result)
+        return result
     finally:
         r.close()
 
@@ -602,7 +683,7 @@ def profile_audit():
 
 
 def main():
-    global ROM, SYM
+    global ROM, SYM, OUT
     p = argparse.ArgumentParser()
     p.add_argument('--sample', choices=('before', 'after'))
     p.add_argument('--fighters', default=','.join(map(str, range(12))))
@@ -614,14 +695,18 @@ def main():
         p.error('--fighters must list distinct roster IDs 0..11')
     if args.baseline and not args.sample:
         p.error('--baseline is historical sample media only; it cannot supply combined evidence')
-    canonical_report = ROOT / 'docs/combat-24-pacing-report.json'
-    if (args.sample or set(fighters) != set(range(12))) and (ROOT / args.report).resolve() == canonical_report.resolve():
-        p.error('samples and partial rosters require --report with a separate diagnostic path')
+    partial = bool(args.sample) or set(fighters) != set(range(12))
+    if partial:
+        report_path = (ROOT/args.report).resolve()
+        if not report_path.is_relative_to((ROOT/'build').resolve()):
+            p.error('samples and partial rosters require --report under build; they are diagnostic only')
+        OUT = report_path.parent/(report_path.stem+'-captures')
     if args.baseline:
         ROM, SYM = ROOT / 'build/pacing-baseline.sfc', ROOT / 'build/pacing-baseline.sym'
     report = {'status': 'failed', 'scope': 'historical baseline sample' if args.baseline else (
                   'limited pacing sample' if args.sample else 'combined-ROM focused pacing/recoil'),
               'combined_pass_claimed': False, 'combined_focused_coverage_complete': False,
+              'diagnostic_only': partial, 'selected_fighters': fighters,
               'historical_evidence': 'Prior isolated reports and GIFs are historical; only captures produced by this invocation are current.',
               'rom_path': str(ROM), 'rom_sha256': sha(ROM.read_bytes()), 'symbols_sha256': sha(SYM.read_bytes()),
               'base_commit': BASE, 'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT).decode().strip(),
@@ -646,6 +731,8 @@ def main():
         else:
             report['preservation'] = preservation()
             report['profiles'] = profile_audit()
+            geometry = geometry_contract()
+            report['contact_geometry_digest'] = geometry['digest']
             for fighter in fighters:
                 for port in (0, 1):
                     row = {'fighter': fighter, 'port': port + 1}
@@ -653,7 +740,7 @@ def main():
                     row['motion'] = motion(fighter, port)
                     row['wave'] = wave(fighter, port)
                     row['special_timing'] = special_timing(fighter, port)
-                    row['normals'] = balance.whiffs_and_ranges(fighter, port, balance.profiles()[fighter])
+                    row['normals'] = normal_ranges(fighter, port, geometry)
                     row['confirms'] = balance.confirms_and_low(fighter, port)
                     row['blocks'] = balance.block_and_punish(fighter, port)
                     row['corner'] = balance.corner_jab_guard(fighter, port)
@@ -685,7 +772,7 @@ def main():
         require(source_hashes() == report['source_sha256'] and
                 {path: sha((ROOT / path).read_bytes()) for path in HARNESS} == report['harness_sha256'],
                 'production source and harness inputs retained throughout focused proof')
-        report['status'] = 'passed'
+        report['status'] = 'diagnostic_passed' if partial else 'passed'
     except Exception as error:
         report['error'] = repr(error)
         raise
@@ -693,6 +780,13 @@ def main():
         report['rom_sha256_after'] = sha(ROM.read_bytes())
         report['symbols_sha256_after'] = sha(SYM.read_bytes())
         report['source_sha256_after'] = source_hashes()
+        report['harness_sha256_after'] = {path: sha((ROOT/path).read_bytes()) for path in HARNESS}
+        report['changed_harness_inputs'] = [path for path in HARNESS if
+                                           report['harness_sha256'][path] != report['harness_sha256_after'][path]]
+        if report['changed_harness_inputs']:
+            report['diagnostic_provenance_issue'] = {
+                'changed_harness_inputs': report['changed_harness_inputs'],
+                'meaning': 'Concurrent harness edits invalidate stable-input evidence; this alone is not a ROM defect.'}
         report['dependency_sha256'] = report['harness_sha256']
         report['super_metrics'] = supers.timing
         report['captures'] = [{'path': path, 'sha256': sha((ROOT / path).read_bytes()),

@@ -318,8 +318,24 @@ def clip(fighter, phase, rom=None):
 
 
 def main():
+    global OUT
     parser = argparse.ArgumentParser();parser.add_argument('--baseline-rom', type=Path)
-    args = parser.parse_args();OUT.mkdir(parents=True, exist_ok=True)
+    parser.add_argument('--fighters', default=','.join(map(str, range(12))))
+    parser.add_argument('--report', type=Path, default=ROOT/'docs/combat-24-super-report.json')
+    args = parser.parse_args()
+    try:
+        fighters = list(map(int, args.fighters.split(',')))
+    except ValueError:
+        parser.error('--fighters must list distinct roster IDs 0..11')
+    if not fighters or len(set(fighters)) != len(fighters) or any(i not in range(12) for i in fighters):
+        parser.error('--fighters must list distinct roster IDs 0..11')
+    partial = set(fighters) != set(range(12))
+    report_path = (ROOT/args.report).resolve()
+    if partial:
+        if not report_path.is_relative_to((ROOT/'build').resolve()):
+            parser.error('partial rosters require --report under build; they are diagnostic only')
+        OUT = report_path.parent/(report_path.stem+'-captures')
+    OUT.mkdir(parents=True, exist_ok=True)
     started = time.time()
     legacy.SYMBOLS = legacy.symbols((ROOT/'dist/abaqus-after-hours.sym').read_text())
     report = {'feature': 'super', 'scope': 'combined-ROM focused dedicated super artwork and retained gameplay fixtures',
@@ -336,6 +352,7 @@ def main():
               'harness_sha256': {p: sha((ROOT/p).read_bytes()) for p in HARNESS},
               'core_sha256': sha((ROOT/'.tools/core/snes9x_libretro.dll').read_bytes()),
               'controller_only': True, 'memory_writes': False, 'save_states': False,
+              'selected_fighters': fighters, 'diagnostic_only': partial,
               'human_balance_likeness_controller_review': 'open', 'failures': []}
     old_shot = Emulator.shot
     Emulator.shot = lambda e, name: e.frame.save(OUT/('guide.png' if name == 'expansion-07-guide.png' else name))
@@ -347,19 +364,24 @@ def main():
         report['combined_contract'] = combined_preservation()
         report['art'] = art_contract(report['combined_contract'])
         report['native_contract'] = native_contract(report['combined_contract'])
-        report['dedicated_sequences'] = [dedicated_sequence(i) for i in range(12)]
-        report['training_resets'] = [training_reset(i) for i in range(12)]
-        report['activation'] = [legacy.activation(i) for i in range(12)]
-        report['hits'] = [legacy.contact(i, p) for i in range(12) for p in range(2)]
-        report['blocks'] = [legacy.contact(i, p, guard=True) for i in range(12) for p in range(2)]
-        report['whiffs'] = [legacy.whiff(i, p) for i in range(12) for p in range(2)]
-        report['interruptions'] = [legacy.interrupt(i, p) for i in range(12) for p in range(2)]
-        report['punish'] = legacy.punish();report['pause_reset'] = legacy.eligibility_pause_reset()
-        report['pause_reset']['guide'] = 'docs/screenshots/combat24-super/guide.png'
-        report['hurt_down_wake_dead'] = legacy.hurt_down_wake_dead()
-        report['ordinary_special_after_super'] = legacy.ordinary_special_after_super()
-        captures.append(OUT/'guide.png');report['clips'] = {}
-        for fighter in (0, 2, 5):
+        report['dedicated_sequences'] = [dedicated_sequence(i) for i in fighters]
+        report['training_resets'] = [training_reset(i) for i in fighters]
+        report['activation'] = [legacy.activation(i) for i in fighters]
+        report['hits'] = [legacy.contact(i, p) for i in fighters for p in range(2)]
+        report['blocks'] = [legacy.contact(i, p, guard=True) for i in fighters for p in range(2)]
+        report['whiffs'] = [legacy.whiff(i, p) for i in fighters for p in range(2)]
+        report['interruptions'] = [legacy.interrupt(i, p) for i in fighters for p in range(2)]
+        if not partial:
+            report['punish'] = legacy.punish();report['pause_reset'] = legacy.eligibility_pause_reset()
+            report['pause_reset']['guide'] = (OUT/'guide.png').relative_to(ROOT).as_posix()
+            report['hurt_down_wake_dead'] = legacy.hurt_down_wake_dead()
+            report['ordinary_special_after_super'] = legacy.ordinary_special_after_super()
+            captures.append(OUT/'guide.png')
+        else:
+            report['skipped_global_fixtures'] = ['punish', 'pause_reset', 'hurt_down_wake_dead',
+                                                 'ordinary_special_after_super', 'clips']
+        report['clips'] = {}
+        for fighter in (() if partial else (0, 2, 5)):
             after = clip(fighter, 'after')
             report['clips'][str(fighter)] = {'after': after}
             if args.baseline_rom:
@@ -391,8 +413,8 @@ def main():
               {p: sha((ROOT/p).read_bytes()) for p in HARNESS} == report['harness_sha256'] and
               sha((ROOT/'assets/art/super-v1.json').read_bytes()) == report['art_index_sha256'],
               'production source art index and harness inputs retained throughout proof')
-        report['combined_focused_coverage_complete'] = True
-        report['status'] = 'passed'
+        report['combined_focused_coverage_complete'] = not partial
+        report['status'] = 'diagnostic_passed' if partial else 'passed'
     except Exception as exc:
         report['status'] = 'failed';report['failures'].append(repr(exc))
         raise
@@ -411,7 +433,15 @@ def main():
                                'evidence_scope': 'historical baseline' if p.stem.endswith('-before') else 'current invocation'}
                               for p in captures if p.exists()]
         report['elapsed_seconds'] = round(time.time()-started, 3)
-        (ROOT/'docs/combat-24-super-report.json').write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8', newline='\n')
+        report['harness_sha256_after'] = {p: sha((ROOT/p).read_bytes()) for p in HARNESS}
+        report['changed_harness_inputs'] = [p for p in HARNESS if
+                                           report['harness_sha256'][p] != report['harness_sha256_after'][p]]
+        if report['changed_harness_inputs']:
+            report['diagnostic_provenance_issue'] = {
+                'changed_harness_inputs': report['changed_harness_inputs'],
+                'meaning': 'Concurrent harness edits invalidate stable-input evidence; this alone is not a ROM defect.'}
+        report_path.parent.mkdir(parents=True, exist_ok=True)
+        report_path.write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8', newline='\n')
         print(json.dumps({k: report[k] for k in ('status', 'rom_sha256', 'checks', 'elapsed_seconds')}))
 
 
