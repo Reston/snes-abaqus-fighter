@@ -87,3 +87,20 @@ The stronger active-VRAM check found that immediate cast retraction could
 skip P2's release art during simultaneous casts. That isolated regression
 (`b8ad1631...15a08`) was repaired by restoring the established release hold;
 the assertion that each port actually uploads its active pose remains enabled.
+
+The corrected isolated proof passes 1,829 checks on 12,603 measured native
+callbacks, all twelve fighters and both ports. Exact cartridge SHA256 is
+`c7f6663c5dfc875887ec0a41b27e2067acd25336bd4cf0dc1d2aa505637a7f75`,
+header checksum `CD30`, tested source commit
+`dcd9f93e5d42e4f9f17465e8f216fe313ed952a8`. All cadence, SDK timing, OBJ
+overflow, actor payload/geometry, SPC FIFO and assertion failure arrays are
+empty. All 1,318 prior RAM symbols, 240 old source/reference files, 480
+unowned native poses and every portrait/palette are preserved. The report
+identifies the pinned core, harness hashes, Windows host and actual commands.
+
+These strict baseline-equivalence assertions are intentionally isolated.
+After integrating pacing/contacts/jumps/supers, parent must apply the combined
+preservation and gameplay contracts when rerunning the phase/hardware proof;
+the isolated equivalence result cannot certify those intentional changes.
+The measured attack-native bounds remain available under each fighter's
+`native_bounds` in the focused report for final contact regeneration.
