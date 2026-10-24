@@ -1,4 +1,4 @@
-"""Isolated v0.24 super-art proof; controller-only native execution.
+"""Focused combined-ROM v0.24 super-art proof; controller-only native execution.
 
 Run with canonical .tools Python through tools/run_background.py after an
 asset build. Reuses the retained super gameplay fixtures without changing
@@ -25,12 +25,23 @@ import test_expansion_07_supers as legacy
 from emulator import Emulator
 from fighter_assets import HEIGHTS, SLUGS, extract_atlas
 from release_evidence import EXPECTED_NATIVE_CORE
+from expansion_contracts import combined_contract
 from test_champion import host_contract
 from test_characters import (actor_payload, boot, uploaded_frame_id,
                              verify_oam_geometry)
 
 BASE = 'f75005d'
 BASE_ROM_SHA = '057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd'
+FRAME_OWNERS = {
+    'attack-v1': {5, 6, 7, 8, 9, 10, 12, 13, 15, *range(32, 46), 47},
+    'jump-v1': {29, 30, 31, *range(49, 56)},
+    'super-v1': {1, 2, 4},
+}
+HARNESS = ('tools/test_combat24_super.py', 'tools/emulator.py', 'tools/test_characters.py',
+           'tools/test_inputs.py', 'tools/test_expansion_07_supers.py', 'tools/pose_revision_assets.py',
+           'tools/fighter_assets.py', 'tools/test_champion.py', 'tools/test_presentation.py',
+           'tools/release_evidence.py', 'tools/run_background.py', 'tools/expansion_contracts.py',
+           'tools/v024_contracts.py')
 OUT = ROOT / 'docs/screenshots/combat24-super'
 checks = []
 captures = []
@@ -43,6 +54,11 @@ health = {'frames': 0, 'cadence_failures': [], 'obj_failures': [],
 
 def sha(raw):
     return hashlib.sha256(raw).hexdigest()
+
+
+def source_hashes():
+    return {p.relative_to(ROOT).as_posix(): sha(p.read_bytes())
+            for p in sorted((ROOT/'src').rglob('*')) if p.is_file()}
 
 
 def git_file(path):
@@ -67,7 +83,24 @@ def check(ok, label, detail=None):
         raise AssertionError((label, detail))
 
 
-def art_contract():
+def combined_preservation():
+    shared = combined_contract(ROOT)
+    assets, native = shared['assets'], shared['native']
+    check(assets['baseline_commit'] == native['baseline_commit'] == BASE,
+          'independent combined policy uses approved v0.23.1 baseline')
+    check(assets['generated_count'] == 226, 'combined generated inventory contains exactly 226 files')
+    check(assets['frame_ownership'] == {k: sorted(v) for k, v in FRAME_OWNERS.items()} and
+          sum(map(len, FRAME_OWNERS.values())) == len(set().union(*FRAME_OWNERS.values())) == 37,
+          'three disjoint feature sets own 37 poses and preserve the other 27')
+    check(len(assets['fighters']) == 12 and all(r['preserved_frames'] >= 27 for r in assets['fighters']),
+          'all 27 unowned poses portraits palettes scales and original source masters remain exact')
+    check(native['prior_ram_labels'] == native['unchanged_prior_ram_labels'] == 1318 and
+          not native['documented_relocations'] and not native['appended_ram_symbols'],
+          'all 1318 prior RAM labels unchanged with no additional mutable RAM', native)
+    return shared
+
+
+def art_contract(shared):
     index = json.loads((ROOT / 'assets/art/super-v1.json').read_bytes())
     manifest = json.loads((ROOT / 'assets/generated/character-manifest.json').read_bytes())
     rows = manifest['fighters'] if isinstance(manifest, dict) else manifest
@@ -80,7 +113,10 @@ def art_contract():
         new = Image.open(ROOT / (stem + '.png')).convert('RGBA')
         changed = [n for n in range(64) if old.crop((n*96, 0, (n+1)*96, 80)).tobytes() !=
                    new.crop((n*96, 0, (n+1)*96, 80)).tobytes()]
-        check(changed == [1, 2, 4], 'exactly three owned frames differ', [i, changed])
+        owned_changed = sorted(set(changed) & FRAME_OWNERS['super-v1'])
+        check(owned_changed == [1, 2, 4], 'exactly three super-owned frames differ', [i, owned_changed])
+        check(set(changed) <= set().union(*FRAME_OWNERS.values()),
+              'other changes are limited to approved attack and jump ownership', [i, changed])
         check(git_file(stem + '_pal.bin') == (ROOT / (stem + '_pal.bin')).read_bytes(),
               'approved fifteen-color OBJ palette is exact', i)
         for suffix, ext in (('', '.png'), ('-large', '.png'), ('_tiles', '.bin'), ('_pal', '.bin')):
@@ -116,27 +152,23 @@ def art_contract():
         for col, n in enumerate((0, 1, 2, 4)):
             gallery.paste(new.crop((n*96, 0, (n+1)*96, 80)), (x+col*96, y+22),
                           new.crop((n*96, 0, (n+1)*96, 80)))
-        result.append({'id': i, 'slug': slug, 'changed_frames': changed, 'standing_height': HEIGHTS[i],
+        result.append({'id': i, 'slug': slug, 'changed_frames': changed, 'super_changed_frames': owned_changed,
+                       'standing_height': HEIGHTS[i],
                        'source_anchor_size': list(figures[0].size), 'conversion_scale': scale, 'frames': converted})
     path = OUT/'roster-native.png';gallery.save(path);captures.append(path)
-    tracked = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', BASE, 'assets/generated'], cwd=ROOT, text=True).splitlines()
-    delta = [p for p in tracked if git_file(p) != (ROOT/p).read_bytes()]
-    allowed = {'assets/generated/character-manifest.json'} | {
-        f'assets/generated/fighter{i:02d}{suffix}' for i in range(12) for suffix in ('.png', '.bin')}
-    check(set(delta) == allowed, 'generated delta is twelve first banks, twelve previews and metadata', delta)
-    masters = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', BASE, 'assets/art'], cwd=ROOT, text=True).splitlines()
-    check(all(git_file(p) == (ROOT/p).read_bytes() for p in masters), 'all original masters and provenance preserved', len(masters))
     old = git_file('src/super_moves.h').decode()
     new = (ROOT/'src/super_moves.h').read_text()
     pattern = r'u8 superFrame\(u8 p\) \{.*?\n\}'
     check(re.sub(pattern, '', old, flags=re.S).replace('\r\n', '\n') ==
           re.sub(pattern, '', new, flags=re.S).replace('\r\n', '\n'),
           'all super timing damage energy projectile and state source unchanged')
-    return {'fighters': result, 'generated_count': len(tracked), 'generated_delta': delta,
-            'existing_art_files_preserved': len(masters)}
+    return {'fighters': result, 'generated_count': shared['assets']['generated_count'],
+            'generated_delta': shared['assets']['changed_generated'],
+            'generated_additions': shared['assets']['added_generated'],
+            'existing_art_and_reference_files_preserved': shared['assets']['protected_source_count']}
 
 
-def native_contract():
+def native_contract(shared):
     old = legacy.symbols(git_file('dist/abaqus-after-hours.sym').decode())
     current = legacy.SYMBOLS
     ram = {n: a for n, a in old.items() if a < 0x2000 or 0x7E0000 <= a < 0x800000}
@@ -151,14 +183,13 @@ def native_contract():
             continue
         check(0 < b-a <= 32768 and a >> 16 == (b-1) >> 16, 'section fits one LoROM bank', [n, b-a])
         sections.append(b-a)
-    for path in ('src/hardware.asm', 'src/trace.asm', 'src/game.c', 'src/characters.h', 'src/animation_weight.h'):
-        check(git_file(path).replace(b'\r\n', b'\n') == (ROOT/path).read_bytes().replace(b'\r\n', b'\n'),
-              'native renderer ABI allocation and unowned gameplay source exact', path)
+    check(shared['native']['abi_and_transfer_assembly_preserved'],
+          'native transfer and trace ABI preserved under combined hit-reaction policy')
     rom = (ROOT/'dist/abaqus-after-hours.sfc').read_bytes()
     check(len(rom) == 4194304 and rom[0x7FD5] == 0x30, '4 MiB FastROM LoROM')
     return {'new_mutable_bytes': 0, 'preserved_ram_labels': len(ram), 'bank_local_sections': len(sections),
             'largest_section': max(sections), 'actor_transfer_bytes': 3840, 'obj_per_actor': 30,
-            'new_obj_vram_palette_sound_banks': 0, 'frame_ids': [1, 2, 4], 'abi': 'Fighter64/Wave16/TRACE0..122'}
+            'super_new_obj_vram_palette_sound_banks': 0, 'frame_ids': [1, 2, 4], 'abi': 'Fighter64/Wave16/TRACE0..122'}
 
 
 def observe(e, old, old_payload, before_audio, state):
@@ -291,15 +322,18 @@ def main():
     args = parser.parse_args();OUT.mkdir(parents=True, exist_ok=True)
     started = time.time()
     legacy.SYMBOLS = legacy.symbols((ROOT/'dist/abaqus-after-hours.sym').read_text())
-    report = {'feature': 'super', 'scope': 'isolated v0.24 dedicated super artwork; not combined verification',
+    report = {'feature': 'super', 'scope': 'combined-ROM focused dedicated super artwork and retained gameplay fixtures',
+              'combined_pass_claimed': False, 'combined_focused_coverage_complete': False,
+              'historical_evidence': 'Prior isolated reports and GIFs are historical; this report counts only the current cartridge run. Optional baseline clips are historical comparisons.',
               'baseline_commit': BASE, 'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
-              'source_sha256': {p: sha((ROOT/p).read_bytes()) for p in ('src/super_moves.h', 'assets/art/super-v1.json')},
+              'source_sha256': source_hashes(),
+              'art_index_sha256': sha((ROOT/'assets/art/super-v1.json').read_bytes()),
               'rom_sha256': sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes()),
               'symbols_sha256': sha((ROOT/'dist/abaqus-after-hours.sym').read_bytes()),
               'test_sha256': sha(Path(__file__).read_bytes()),
               'command': subprocess.list2cmdline([sys.executable, 'tools/test_combat24_super.py', *sys.argv[1:]]),
               'host': dict(host_contract(), platform=platform.platform(), machine=platform.machine()),
-              'harness_sha256': {p: sha((ROOT/p).read_bytes()) for p in ('tools/emulator.py', 'tools/test_characters.py', 'tools/test_expansion_07_supers.py', 'tools/pose_revision_assets.py')},
+              'harness_sha256': {p: sha((ROOT/p).read_bytes()) for p in HARNESS},
               'core_sha256': sha((ROOT/'.tools/core/snes9x_libretro.dll').read_bytes()),
               'controller_only': True, 'memory_writes': False, 'save_states': False,
               'human_balance_likeness_controller_review': 'open', 'failures': []}
@@ -310,7 +344,9 @@ def main():
         check(not report['host']['gui_opened'] and not report['host']['audio_device_opened'], 'silent headless host')
         check(report['host'].get('priority_class') == 0x4000 and len(report['host']['logical_processors']) <= 2,
               'background runner priority and affinity enforced', report['host'])
-        report['art'] = art_contract();report['native_contract'] = native_contract()
+        report['combined_contract'] = combined_preservation()
+        report['art'] = art_contract(report['combined_contract'])
+        report['native_contract'] = native_contract(report['combined_contract'])
         report['dedicated_sequences'] = [dedicated_sequence(i) for i in range(12)]
         report['training_resets'] = [training_reset(i) for i in range(12)]
         report['activation'] = [legacy.activation(i) for i in range(12)]
@@ -334,6 +370,7 @@ def main():
                 legacy.SYMBOLS = legacy.symbols(args.baseline_rom.with_suffix('.sym').read_text())
                 before = clip(fighter, 'before', args.baseline_rom)
                 legacy.SYMBOLS = saved
+                before['evidence_scope'] = 'historical approved v0.23.1 baseline comparison; excluded from current native check and timing counts'
                 before['observed_native_frames'] = legacy.timing['frames']-saved_timing['frames']
                 before['checks'] = len(legacy.checks)-saved_checks
                 before['cadence_failures'] = legacy.timing['cadence_failures'][len(saved_timing['cadence_failures']):]
@@ -348,6 +385,13 @@ def main():
         check(not legacy.timing['cadence_failures'] and not legacy.timing['overflow_failures'],
               'retained controller fixtures native cadence and OBJ checks pass', legacy.timing)
         check(sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes()) == report['rom_sha256'], 'exact cartridge retained throughout proof')
+        check(sha((ROOT/'dist/abaqus-after-hours.sym').read_bytes()) == report['symbols_sha256'],
+              'exact symbols retained throughout proof')
+        check(source_hashes() == report['source_sha256'] and
+              {p: sha((ROOT/p).read_bytes()) for p in HARNESS} == report['harness_sha256'] and
+              sha((ROOT/'assets/art/super-v1.json').read_bytes()) == report['art_index_sha256'],
+              'production source art index and harness inputs retained throughout proof')
+        report['combined_focused_coverage_complete'] = True
         report['status'] = 'passed'
     except Exception as exc:
         report['status'] = 'failed';report['failures'].append(repr(exc))
@@ -357,8 +401,15 @@ def main():
         if baseline_git is not None:
             baseline_git.stdin.close();baseline_git.wait(timeout=10)
         report['checks'] = len(checks) + len(legacy.checks)
+        report['own_check_inventory'] = checks
+        report['retained_fixture_check_count'] = len(legacy.checks)
         report['health'] = health;report['retained_fixture_timing'] = legacy.timing
-        report['captures'] = [{'path': p.relative_to(ROOT).as_posix(), 'sha256': sha(p.read_bytes())} for p in captures if p.exists()]
+        report['rom_sha256_after'] = sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes())
+        report['symbols_sha256_after'] = sha((ROOT/'dist/abaqus-after-hours.sym').read_bytes())
+        report['source_sha256_after'] = source_hashes()
+        report['captures'] = [{'path': p.relative_to(ROOT).as_posix(), 'sha256': sha(p.read_bytes()),
+                               'evidence_scope': 'historical baseline' if p.stem.endswith('-before') else 'current invocation'}
+                              for p in captures if p.exists()]
         report['elapsed_seconds'] = round(time.time()-started, 3)
         (ROOT/'docs/combat-24-super-report.json').write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8', newline='\n')
         print(json.dumps({k: report[k] for k in ('status', 'rom_sha256', 'checks', 'elapsed_seconds')}))

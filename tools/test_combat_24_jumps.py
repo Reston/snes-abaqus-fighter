@@ -1,19 +1,23 @@
-"""Isolated v0.24 jump art/motion proof, real two-port input, no WRAM writes.
+"""Combined v0.24 jump art/motion proof, real two-port input, no WRAM writes.
 
 Run with canonical Python via tools/run_background.py after tools/build.py
 --assets. The shared animation Probe reads native SDK timing, OAM and actor
-VRAM pages; its historical visual_checks are deliberately not invoked here.
+VRAM pages. Historical PPU clips are visual references, never evidence of
+unchanged combined gameplay. --fighter N writes only an ignored diagnostic.
 """
 from pathlib import Path
 import ctypes as C
-import hashlib,io,json,subprocess,sys,time
-from PIL import Image
+import argparse,hashlib,io,json,re,subprocess,sys,time
+from PIL import Image,ImageDraw
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'tools'))
 from test_characters import boot,state
 from test_inputs import signed16
 from test_champion import host_contract
 from test_expansion_01_animation_weight import Probe,symbols,address
 from fighter_assets import extract_atlas,HEIGHTS
+from expansion_contracts import combined_contract
+from v024_contracts import FRAME_OWNERS
+from test_endurance import core_identity
 
 BASE='f75005d';OUT=ROOT/'docs/screenshots/combat-24-jumps'
 TARGET={29,30,31,*range(49,56)};checks=[]
@@ -42,6 +46,9 @@ class JumpProbe(Probe):
 
 def art():
  result=[];index=json.loads((ROOT/'assets/art/jump-v1.json').read_bytes())
+ check(index['schema']==1 and index['scope']=='jump-v1' and index['baseline_commit']==BASE and
+       sorted(row['id'] for row in index['fighters'])==list(range(12)),'complete versioned jump index')
+ manifest=json.loads((ROOT/'assets/generated/character-manifest.json').read_bytes())
  for row in index['fighters']:
   i=row['id'];name=f'assets/generated/fighter{i:02d}'
   before=Image.open(io.BytesIO(git(name+'.png'))).convert('RGBA')
@@ -52,31 +59,90 @@ def art():
    if a.tobytes()!=b.tobytes():changed.append(n)
    if n in TARGET:
     box=b.getchannel('A').getbbox()
-    check(box and box[3]==78 and box[0]>0 and box[2]<96,'whole pose has sole baseline and safe margins',[i,n,box])
+    check(box and box[3]==78 and box[0]>0 and box[2]<96 and box[3]-box[1]<=77,'whole pose has sole baseline and safe margins',[i,n,box])
     check(all(b.getchannel('A').crop((0,y,96,y+1)).getbbox() for y in range(box[1],box[3])),'full silhouette has no detached body row',[i,n])
-  check(set(changed)==TARGET,'exactly ten jump-owned poses changed',[i,changed])
+  check(set(changed)&TARGET==TARGET,'all ten jump-owned poses change within combined allocation',[i,changed])
   packed_changes=[]
   for bank,suffix in enumerate(('','b','c','d','e','f','g','h')):
    path=name+suffix+'.bin';a=git(path);b=(ROOT/path).read_bytes()
    check(len(a)==len(b)==30720,'eight fixed 30,720-byte pose banks retained',[i,bank])
    for frame in range(8):
     if a[frame*3840:(frame+1)*3840]!=b[frame*3840:(frame+1)*3840]:packed_changes.append(bank*8+frame)
-  check(set(packed_changes)==TARGET,'packed SNES bytes preserve walking idle and every unowned frame',[i,packed_changes])
+  check(set(packed_changes)&TARGET==TARGET,'all ten jump drawings reach packed native banks',[i,packed_changes])
   check(git(name+'_pal.bin')==(ROOT/(name+'_pal.bin')).read_bytes(),'fixed OBJ palette byte-exact',i)
   for suffix in ('','-large','_tiles','_pal'):
    p=f'assets/generated/portrait{i:02d}{suffix}'+('.png' if suffix in ('','-large') else '.bin')
    check(git(p)==(ROOT/p).read_bytes(),'portrait byte-exact',p)
-  record=json.loads((ROOT/row['provenance']).read_bytes());figs,details=extract_atlas(ROOT/record['sources'][0]['file'],pose_names=record['sources'][0]['poses'])
-  scale=HEIGHTS[i]/figs[record['anchor']['pose']].height
-  meta=json.loads((ROOT/'assets/generated/character-manifest.json').read_bytes())[i]
-  # Generator metadata is authoritative evidence of the conversion actually used.
-  frames=meta['frames']
-  check(all(frames[n]['conversion_scale']==scale for n in TARGET),'one neutral-anchored isotropic scale for all ten poses',[i,scale])
+  provenance=ROOT/row['provenance'];record=json.loads(provenance.read_bytes())
+  check(sha(provenance.read_bytes())==row['provenance_sha256'],'exact individual jump provenance hash',i)
+  check(record['fighter_id']==i and record['scope']=='jump-v1','individual jump source identity',i)
+  check(sha((ROOT/record['reference']).read_bytes())==record['reference_sha256'],'exact retained reference hash',i)
+  check(sha((ROOT/(name+'_pal.bin')).read_bytes())==record['palette_sha256'],'palette hash binds source conversion',i)
+  sources=[];target=[]
+  for si,source in enumerate(record['sources']):
+   path=ROOT/source['file'];raw=path.read_bytes()
+   check(sha(raw)==source['sha256'] and (len(record['sources'])!=1 or sha(raw)==record['raw_output_sha256']),
+         'selected jump PNG is exact retained built-in output',[i,si])
+   figs,details=extract_atlas(path,pose_names=source['poses'],expected_count=source['count'])
+   check(len(figs)==source['count'] and source['count'] in (8,16),'complete connected source figures',[i,si])
+   width,height=Image.open(path).size
+   check(all(0<m['source_box'][0]<m['source_box'][2]<width and 0<m['source_box'][1]<m['source_box'][3]<height for m in details),
+         'jump source figures have transparent edge clearance',[i,si])
+   sources.append((source,figs,details));target.extend(n for n in source['frames'] if n is not None)
+  check(len(target)==len(set(target))==10 and set(target)==TARGET,'disjoint jump source-to-native mapping',i)
+  scale=HEIGHTS[i]/sources[record['anchor']['source']][1][record['anchor']['pose']].height
+  frames=manifest[i]['frames'];bounds=[]
+  for source,figs,details in sources:
+   for figure,detail,n in zip(figs,details,source['frames']):
+    if n is None:continue
+    frame=frames[n];size=[round(figure.width*scale),round(figure.height*scale)]
+    check(frame['source_kind']=='jump-v1' and frame['source_file']==source['file'] and frame['source_sha256']==source['sha256'] and
+          frame['revision_source_box']==detail['source_box'],
+          'own native frame binds selected jump source',[i,n])
+    pose=after.crop((n*96,0,(n+1)*96,80));bbox=pose.getchannel('A').getbbox()
+    check(frame['conversion_scale']==scale and frame['native_size']==[bbox[2]-bbox[0],bbox[3]-bbox[1]] and
+          frame['native_size'][0]<=size[0]<=94 and frame['native_size'][1]<=size[1]<=77,
+          'one neutral-anchored isotropic scale fits all jump poses',[i,n,size,scale])
+    bounds.append({'frame':n,'native_box':list(pose.getchannel('A').getbbox()),'native_rgba_sha256':sha(pose.tobytes())})
   check(record['height_target']==HEIGHTS[i],'neutral anchor exact approved height',[i,HEIGHTS[i]])
-  result.append({'fighter':i,'changed_frames':changed,'packed_changed_frames':packed_changes,'scale':scale,'height_target':HEIGHTS[i]})
+  result.append({'fighter':i,'owned_changed_frames':sorted(set(changed)&TARGET),'combined_changed_frames':changed,
+                 'packed_owned_changed_frames':sorted(set(packed_changes)&TARGET),'scale':scale,'height_target':HEIGHTS[i],
+                 'native_bounds':bounds,'sources':[{'file':s['file'],'sha256':s['sha256'],'source_boxes':[d['source_box'] for d in details]} for s,_,details in sources]})
  return result
 
-def session(i,rom,table,base=False):
+def profile_fields(raw):
+ """Read scalar profile fields independently of authorized movement/timing edits."""
+ text=re.sub(r'/\*.*?\*/|//[^\n]*','',raw,flags=re.S)
+ match=re.search(r'const\s+CharacterProfile\s+characterProfiles\s*\[12\]\s*=\s*\{',text)
+ if not match:raise AssertionError('missing twelve-profile initializer')
+ rows=[];depth=1;start=None
+ for at in range(match.end(),len(text)):
+  if text[at]=='{':
+   depth+=1
+   if depth==2:start=at+1
+  elif text[at]=='}':
+   if depth==2:
+    values=text[start:at].split('{',1)[0].split(',')
+    rows.append({key:int(values[n].strip()) for key,n in (('walkSpeed',0),('jumpVy',2),('gravity',3),('uppercutVy',4),('specialVy',15))})
+   depth-=1
+   if depth==0:break
+ check(len(rows)==12,'physics parser reads all twelve independent profiles',len(rows))
+ return rows
+
+def physics_contract():
+ before=profile_fields(git('src/characters.h').decode());after=profile_fields((ROOT/'src/characters.h').read_text())
+ result=[]
+ for i,(old,current) in enumerate(zip(before,after)):
+  expected=PHYSICS[i][1] if i in PHYSICS else old['jumpVy']
+  if i in PHYSICS:check(old['jumpVy']==PHYSICS[i][0],'historical measured jumpVy matches approved input',[i,old])
+  check(current['jumpVy']==expected,'only four approved vertical jump launch changes',[i,old['jumpVy'],current['jumpVy'],expected])
+  for key in ('gravity','uppercutVy','specialVy'):
+   check(current[key]==old[key],'other vertical physics field remains exact',[i,key,old[key],current[key]])
+  result.append({'fighter':i,'before_jumpVy':old['jumpVy'],'jumpVy':expected,'gravity':current['gravity'],
+                 'retained_horizontal_launch':old['walkSpeed']+8})
+ return result
+
+def session(i,rom,table,base=False,physics=None):
  e=boot(1,i,stage=i%3,fighter2=i,rom=rom);p=JumpProbe(e,i,table,base)
  def run(n=1,k1=(),k2=(),label='quiet',film=False):
   p.run(n,k1,k2,label,film);return state(e)
@@ -111,6 +177,10 @@ def session(i,rom,table,base=False):
      frames={r[f'anim_frame{a}'] for r in p.rows if r['label']==label}
      expected={49,50,51} if key in ('y','x') else {52,53,54}
      check(expected<=frames,'both ports stream windup/contact/recovery',[i,a,key,sorted(frames)])
+     active=[r for r in p.rows if r['label']==label and r['non_animation_trace'][f'air_action{a}'] and
+             r[f'startup{a}']<=r[f'tick{a}']<r[f'active_end{a}']]
+     check(active and all(r[f'anim_frame{a}']==(50 if key in ('y','x') else 53) for r in active),
+           'air normal keeps dedicated active frame throughout real contact window',[i,a,key])
   arcs=[]
   for port in (0,1):
    a=str(port+1);d=str(2-port);wait_ground()
@@ -133,7 +203,14 @@ def session(i,rom,table,base=False):
     run(label=label)
    crossed=any((s[f'x{a}']-s[f'x{d}'])*sign>0 for s in arc)
    evidence={'port':port,'jump_vy':signed16(initial[f'jump{a}']),'apex_pixels':-min(signed16(s[f'y{a}']) for s in arc)/16,'flight_samples':len(arc),'standing_crossed':crossed,'clearance_samples':sum(signed16(s[f'y{a}'])<=-50*16 for s in arc)}
-   if not base:check(crossed,'ordinary diagonal jump crosses standing opponent',[i,evidence])
+   if not base:
+    check(crossed,'ordinary diagonal jump crosses standing opponent',[i,evidence])
+    if physics is not None:
+     check(evidence['jump_vy']==physics['jumpVy'],'native profile exposes approved jumpVy',[i,evidence,physics])
+     launch=[signed16(s[f'jump_vx{a}']) for s in arc if signed16(s[f'y{a}'])<0]
+     check(launch and all(v==sign*physics['retained_horizontal_launch'] for v in launch),
+           'diagonal arc retains original horizontal launch without midair steering',[i,port,launch,physics])
+     evidence['horizontal_launch']=launch[0]
    arcs.append(evidence);run(14)
   p.arcs=arcs;spread()
   # Both corner landings retain floor clamp; inward pad changes cannot steer.
@@ -229,58 +306,102 @@ def session(i,rom,table,base=False):
   return p,contacts
  finally:e.close()
 
+def historical_visuals(i,rom,table):
+ """Fixed historical visual samples only; no old gameplay-equality gate."""
+ e=boot(1,i,stage=i%3,fighter2=i,rom=rom);p=JumpProbe(e,i,table,True)
+ try:
+  p.run(3,['up'],['up'],'jump');p.run(82,label='jump')
+  for key in ('y','x','b','a'):
+   label='air-'+key;p.run(3,['up'],['up'],label);p.run(3,label=label)
+   p.run(3,[key],[key],label);p.run(75,label=label)
+  return p
+ finally:e.close()
+
+def save_clips(after,before):
+ captures=[];ms=1000/60.098811862348406
+ def save(path,frames,**metadata):
+  durations=[10*(round((i+1)*ms/10)-round(i*ms/10)) for i in range(len(frames))]
+  frames[0].save(path,save_all=True,append_images=frames[1:],duration=durations,loop=0,optimize=False)
+  captures.append({'path':path.relative_to(ROOT).as_posix(),'sha256':sha(path.read_bytes()),'native_callbacks':len(frames),
+                   'playback':'10/20 ms cumulative GIF approximation to native 60.098811862348406 Hz',**metadata})
+ for label,clip in after.clips.items():
+  if not clip:continue
+  frames=[]
+  for image,_ in clip:
+   frame=Image.new('RGB',(256,244));frame.paste(image,(0,20))
+   ImageDraw.Draw(frame).text((5,4),'COMBINED v0.24 '+label,fill='white');frames.append(frame)
+  save(OUT/('combined-'+label+'.gif'),frames,scope='current combined native PPU')
+ for label in ('jump','air-a'):
+  frames=[]
+  a=before.clips[label];b=after.clips[label]
+  check(len(a)==len(b),'historical/current visual segments have identical fixed input length',[label,len(a),len(b)])
+  for (left,_),(right,_) in zip(a,b):
+   pair=Image.new('RGB',(512,244));pair.paste(left,(0,20));pair.paste(right,(256,20));draw=ImageDraw.Draw(pair)
+   draw.text((5,4),'HISTORICAL v0.23.1 '+label,fill='white');draw.text((261,4),'COMBINED v0.24 '+label,fill='white');frames.append(pair)
+  save(OUT/(label+'-combined-vs-historical.gif'),frames,left='HISTORICAL v0.23.1',right='combined v0.24',
+       comparison='presentation only; authorized pacing/contact/jump/super/stage behavior differs')
+ return captures
+
 def main():
- started=time.monotonic();OUT.mkdir(parents=True,exist_ok=True)
+ parser=argparse.ArgumentParser();parser.add_argument('--fighter',type=int,choices=range(12));parser.add_argument('--report',type=Path);args=parser.parse_args()
+ checks.clear();started=time.monotonic();OUT.mkdir(parents=True,exist_ok=True);(ROOT/'build').mkdir(exist_ok=True)
+ report_path=ROOT/(args.report or ('build/combat24-jumps-diagnostic.json' if args.fighter is not None else 'docs/combat-24-jumps-report.json'))
+ if args.fighter is not None and not report_path.resolve().is_relative_to((ROOT/'build').resolve()):
+  parser.error('--fighter diagnostics must write under ignored build/, never final docs evidence')
+ report_path.parent.mkdir(parents=True,exist_ok=True)
  candidate=ROOT/'build/v024-jumps.sfc';candidate.write_bytes((ROOT/'dist/abaqus-after-hours.sfc').read_bytes())
  old=ROOT/'build/v024-jumps-baseline.sfc';old.write_bytes(git('dist/abaqus-after-hours.sfc'))
  oldsym=ROOT/'build/v024-jumps-baseline.sym';oldsym.write_bytes(git('dist/abaqus-after-hours.sym'))
  table=symbols(ROOT/'dist/abaqus-after-hours.sym');base_table=symbols(oldsym)
- report={'status':'failed','scope':'isolated jump-v1 only; no combined pass claim','source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'source_files_sha256':{p:sha((ROOT/p).read_bytes()) for p in ('src/animation_weight.h','src/characters.h','tools/test_combat_24_jumps.py')},'rom_sha256':sha(candidate.read_bytes()),'baseline_commit':BASE,'baseline_rom_sha256':sha(old.read_bytes()),'command':'D:/snes-abaqus-fighter/.tools/python/python.exe tools/run_background.py --log build/combat-24-jumps.log -- D:/snes-abaqus-fighter/.tools/python/python.exe tools/test_combat_24_jumps.py','host':host_contract(),'checks':checks,'cases':[],'failures':[]}
+ manifest=json.loads((ROOT/'dist/manifest.json').read_bytes());producer='tools/test_combat_24_jumps.py'
+ report={'status':'failed','scope':'combined v0.24 jump art, physics, landing and both-port air contacts','diagnostic':args.fighter is not None,'full_roster':args.fighter is None,
+         'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+         'source_diff_sha256':sha(subprocess.check_output(['git','diff','HEAD','--','src','tools','assets/art'],cwd=ROOT)),
+         'producer':producer,'producer_sha256':sha(Path(__file__).read_bytes()),'harness_sha256':sha(Path(__file__).read_bytes().replace(b'\r\n',b'\n')),
+         'source_files_sha256':{p.relative_to(ROOT).as_posix():sha(p.read_bytes()) for p in sorted((ROOT/'src').iterdir()) if p.is_file()},
+         'rom_sha256':sha(candidate.read_bytes()),'rom_bytes':candidate.stat().st_size,'checksum':manifest['checksum'],
+         'baseline_commit':BASE,'baseline_rom_sha256':sha(old.read_bytes()),'baseline_role':'historical presentation comparison only; no gameplay equality claim',
+         'command':subprocess.list2cmdline([sys.executable,*sys.argv]),'host':host_contract(),'checks':checks,'cases':[],'failures':[]}
+ report['dependency_sha256']={p:sha((ROOT/p).read_bytes()) for p in ('tools/emulator.py','tools/test_expansion_01_animation_weight.py','tools/test_characters.py','tools/test_inputs.py','tools/test_champion.py','tools/test_presentation.py','tools/test_endurance.py','tools/release_evidence.py','tools/fighter_assets.py','tools/pose_revision_assets.py','tools/expansion_contracts.py','tools/v024_contracts.py','tools/run_background.py','dist/abaqus-after-hours.sym','dist/manifest.json','assets/art/jump-v1.json')}
+ inputs={'assets/generated/character-manifest.json','.tools/core/snes9x_libretro.dll'}
+ for row in json.loads((ROOT/'assets/art/jump-v1.json').read_bytes())['fighters']:
+  inputs.add(row['provenance']);record=json.loads((ROOT/row['provenance']).read_bytes());inputs.add(record['reference'])
+  inputs.update(source['file'] for source in record['sources']);stem=f'assets/generated/fighter{row["id"]:02d}'
+  inputs.update(stem+suffix for suffix in ('.png','_pal.bin','.bin','b.bin','c.bin','d.bin','e.bin','f.bin','g.bin','h.bin'))
+ report['dependency_sha256'].update({p:sha((ROOT/p).read_bytes()) for p in sorted(inputs)})
+ report['behavioral_proof']='Current both-port physical jump/cross-up/air-normal/buffer/wake/landing assertions; authorized combined changes invalidate historical non-animation replay equality.'
  try:
+  check(report['rom_sha256']==manifest['sha256'] and report['rom_bytes']==4194304 and manifest['version']=='0.24.0','exact manifest identifies combined native 4 MiB ROM')
+  report['combined_contract']=combined_contract(ROOT)
+  check(report['combined_contract']['assets']['frame_ownership']=={scope:sorted(frames) for scope,frames in FRAME_OWNERS.items()},'strict parent policy covers all three disjoint frame owners')
+  report['native_contract']=report['combined_contract']['native']
   report['art']=art()
   report['active_air_frames']={'punch':50,'kick':53,'active_phase_cycling':False}
   report['rom_header_checksum']=f'{int.from_bytes(candidate.read_bytes()[0x7fde:0x7fe0],"little"):04X}'
-  report['build_command']='D:/snes-abaqus-fighter/.tools/python/python.exe tools/run_background.py --log build/jump-frozen-build.log -- D:/snes-abaqus-fighter/.tools/python/python.exe tools/build.py --assets'
-  original=git('src/characters.h').decode().replace('\r\n','\n');expected=original
-  for a,b in [('17,12,-84,5,-66','17,12,-96,5,-66'),('16,11,-82,4,-64','16,11,-86,4,-64'),('17,12,-80,4,-65','17,12,-86,4,-65'),('18,12,-84,6,-68','18,12,-105,6,-68')]:expected=expected.replace(a,b)
-  check((ROOT/'src/characters.h').read_text()==expected,'only four measured jumpVy values differ; all other profiles/physics fields exact')
+  physics=physics_contract();report['physics']=physics
   report['jumpVy_changes']={i:{'before':v[0],'after':v[1]} for i,v in PHYSICS.items()}
-  report['native_core_sha256']=sha((ROOT/'.tools/core/snes9x_libretro.dll').read_bytes())
+  report['core']=core_identity();report['native_core_sha256']=sha((ROOT/'.tools/core/snes9x_libretro.dll').read_bytes())
   report['shared_harness_sha256']={name:sha((ROOT/'tools'/name).read_bytes()) for name in ('emulator.py','test_expansion_01_animation_weight.py','test_characters.py','test_inputs.py')}
-  prior_ram={k:v for k,v in base_table.items() if 0x7e0000<=v<0x800000}
-  moved={k:[v,table.get(k)] for k,v in prior_ram.items() if table.get(k)!=v}
-  check(not moved,'all prior WRAM symbols retain exact address',moved)
-  report['prior_RAM_labels']=len(prior_ram);report['moved_RAM_labels']=moved
-  for i in range(12):
-   before,baseline_contacts=session(i,old,base_table,True);after,contacts=session(i,candidate,table)
-   same=before.game_hash.hexdigest()==after.game_hash.hexdigest()
-   if i not in PHYSICS:check(same,'unchanged profile preserves every non-animation Fighter byte and trace sample',i)
-   else:check(not all(a['standing_crossed'] for a in before.arcs) and all(a['standing_crossed'] for a in after.arcs),'measured baseline cross-up limitation repaired on both ports',[i,before.arcs,after.arcs])
+  for i in ([args.fighter] if args.fighter is not None else range(12)):
+   after,contacts=session(i,candidate,table,physics=physics[i])
    for name,failures in [('cadence',after.drops),('native_timing',after.native_failures),('OBJ_overflow',after.overflow),('actor_payload',after.bad_payload),('OAM_geometry',after.geometry),('SPC_PCM_cadence',after.audio_failures)]:
     check(not failures,name+' failure array empty',[i,failures[:8]])
    check(not after.uploads[2],'at most one 3840B actor page changes per vblank',[i,dict(after.uploads)])
+   check(after.e.audio_samples>0 and after.e.audio_peak>0,'SPC PCM remains live without device playback',[i,after.e.audio_samples,after.e.audio_peak])
    captures=[]
    if i==0:
-    for label,clip in after.clips.items():
-     if not clip:continue
-     path=OUT/(label+'.gif');frames=[x[0] for x in clip]
-     frames[0].save(path,save_all=True,append_images=frames[1:],duration=17,loop=0,optimize=False)
-     captures.append(path.relative_to(ROOT).as_posix())
-    for label in ('jump','air-a'):
-     frames=[]
-     for (a,_),(b,_) in zip(before.clips[label],after.clips[label]):
-      pair=Image.new('RGB',(512,224));pair.paste(a,(0,0));pair.paste(b,(256,0));frames.append(pair)
-     path=OUT/(label+'-before-after.gif')
-     frames[0].save(path,save_all=True,append_images=frames[1:],duration=17,loop=0,optimize=False)
-     captures.append(path.relative_to(ROOT).as_posix())
-   report['cases'].append({'fighter':i,'both_ports':True,'samples':len(after.rows),'simulation_sha256':after.game_hash.hexdigest(),'simulation_baseline_equal':same,'intentional_jumpVy_change':i in PHYSICS,'baseline_arcs':before.arcs,'candidate_arcs':after.arcs,'baseline_contacts':baseline_contacts,'contacts':contacts,'uploads':dict(after.uploads),'native_timing_failures':after.native_failures,'cadence_failures':after.drops,'OBJ_failures':after.overflow,'payload_failures':after.bad_payload,'geometry_failures':after.geometry,'SPC_PCM_failures':after.audio_failures,'max_SPC_backlog':after.max_backlog,'captures':captures})
+    before=historical_visuals(i,old,base_table);captures=save_clips(after,before)
+   report['cases'].append({'fighter':i,'ports':[1,2],'both_ports':True,'samples':len(after.rows),'current_simulation_sha256':after.game_hash.hexdigest(),'intentional_jumpVy_change':i in PHYSICS,'candidate_arcs':after.arcs,'contacts':contacts,'uploads':dict(after.uploads),'native_lag_increments':after.lag_increments,'native_timing_failures':after.native_failures,'cadence_failures':after.drops,'OBJ_failures':after.overflow,'payload_failures':after.bad_payload,'geometry_failures':after.geometry,'SPC_PCM_failures':after.audio_failures,'max_SPC_backlog':after.max_backlog,'captures':captures})
    print(json.dumps({'fighter':i,'samples':len(after.rows),'checks':len(checks)}),flush=True)
-  names=subprocess.check_output(['git','ls-tree','-r','--name-only',BASE,'assets/generated'],cwd=ROOT,text=True).splitlines()
-  report['generated_delta']=[name for name in names if git(name)!=(ROOT/name).read_bytes()]
-  report['generated_count']=len(names);report['status']='passed'
+  check(sorted(row['fighter'] for row in report['cases'])==([args.fighter] if args.fighter is not None else list(range(12))),'requested roster coverage complete')
+  check(sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes())==report['rom_sha256'] and
+        all(sha((ROOT/p).read_bytes())==digest for p,digest in report['dependency_sha256'].items()) and
+        all(sha((ROOT/p).read_bytes())==digest for p,digest in report['source_files_sha256'].items()) and
+        sha(Path(__file__).read_bytes())==report['producer_sha256'],'ROM, production source, producer and dependencies remain frozen throughout run')
+  report['generated_count']=report['combined_contract']['assets']['generated_count'];report['status']='diagnostic_passed' if args.fighter is not None else 'passed'
  except Exception as exc:report['failures'].append(repr(exc));raise
  finally:
   report['elapsed_seconds']=round(time.monotonic()-started,3);report['check_count']=len(checks)
-  (ROOT/'docs/combat-24-jumps-report.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
-  print(json.dumps({'status':report['status'],'checks':len(checks),'rom_sha256':report['rom_sha256'],'failures':report['failures']}),flush=True)
+  report_path.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+  print(json.dumps({'status':report['status'],'checks':len(checks),'rom_sha256':report['rom_sha256'],'failures':report['failures'],'report':str(report_path)}),flush=True)
 if __name__=='__main__':main()

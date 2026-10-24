@@ -1,4 +1,4 @@
-"""Isolated pacing/recoil proof: real native pads, read-only telemetry, no GUI.
+"""Focused combined-ROM pacing/recoil proof: real pads, read-only telemetry.
 
 Run with .tools/python/python.exe tools/run_background.py --log build/pacing.log
 -- .tools/python/python.exe tools/test_combat_24_pacing.py. Shared suites and
@@ -27,10 +27,17 @@ from test_characters import uploaded_frame_id
 from test_champion import host_contract
 from test_inputs import trace, signed16
 from release_evidence import EXPECTED_NATIVE_CORE
+from expansion_contracts import combined_contract
 import test_expansion_06_cpu_personality as cpu
 import test_expansion_07_supers as supers
 
-BASE = '3f51120'
+BASE = 'f75005d'
+JUMP_VY_OVERRIDES = {1: -96, 4: -86, 6: -86, 9: -105}
+FRAME_OWNERS = {
+    'attack-v1': {5, 6, 7, 8, 9, 10, 12, 13, 15, *range(32, 46), 47},
+    'jump-v1': {29, 30, 31, *range(49, 56)},
+    'super-v1': {1, 2, 4},
+}
 OUT = ROOT / 'docs/screenshots/combat-24-pacing'
 ROM = ROOT / 'dist/abaqus-after-hours.sfc'
 SYM = ROOT / 'dist/abaqus-after-hours.sym'
@@ -38,10 +45,20 @@ CHECKS = []
 CHECK_INDEX = {}
 METRICS = balance.metrics
 FAILURES = {'cadence': [], 'ppu': [], 'spc': [], 'assertions': []}
+HARNESS = ('tools/test_combat_24_pacing.py', 'tools/test_characters.py', 'tools/test_inputs.py',
+           'tools/emulator.py', 'tools/run_background.py', 'tools/test_champion.py',
+           'tools/test_presentation.py', 'tools/release_evidence.py', 'tools/expansion_contracts.py',
+           'tools/v024_contracts.py', 'tools/test_expansion_03_normal_balance.py',
+           'tools/test_expansion_06_cpu_personality.py', 'tools/test_expansion_07_supers.py')
 
 
 def sha(data):
     return hashlib.sha256(data).hexdigest()
+
+
+def source_hashes():
+    return {p.relative_to(ROOT).as_posix(): sha(p.read_bytes())
+            for p in sorted((ROOT / 'src').rglob('*')) if p.is_file()}
 
 
 def git(path):
@@ -408,7 +425,7 @@ def clocks_and_dma(fighter):
                     require(len(offsets) <= 3840 and all(i % 512 < 384 for i in offsets),
                             'actor writes stay inside five 384-byte rows with native padding', [fighter, port, len(offsets)])
                     require(uploaded_frame_id(r.e, fighter, port) is not None,
-                            'uploaded actor matches an exact preserved native pose', [fighter, port])
+                            'uploaded actor matches an exact current native pose', [fighter, port])
             require(len(changed) <= 1, 'at most one actor changes VRAM per vblank', [fighter, index, changed])
             before = after
         require(r.state()['seconds'] == seconds - (tick + 120) // 60 and r.read('secondTick')[0] == (tick + 120) % 60,
@@ -475,17 +492,26 @@ def rear_trade(fighter, port):
 
 
 def preservation():
+    shared = combined_contract(ROOT)
+    assets, native = shared['assets'], shared['native']
+    require(assets['baseline_commit'] == native['baseline_commit'] == BASE,
+            'independent combined policy uses the approved v0.23.1 baseline')
+    require(assets['generated_count'] == 226,
+            'combined generated inventory contains exactly 226 files', assets['generated_count'])
+    require(assets['frame_ownership'] == {k: sorted(v) for k, v in FRAME_OWNERS.items()} and
+            sum(map(len, FRAME_OWNERS.values())) == len(set().union(*FRAME_OWNERS.values())) == 37,
+            'three disjoint feature sets own 37 poses and preserve the other 27')
+    require(len(assets['fighters']) == 12 and all(r['preserved_frames'] >= 27 for r in assets['fighters']),
+            'every fighter preserves all 27 unowned poses with exact portraits palettes scales and old sources')
+    require(native['prior_ram_labels'] == native['unchanged_prior_ram_labels'] == 1318 and
+            not native['documented_relocations'] and not native['appended_ram_symbols'],
+            'all 1318 prior RAM labels remain unchanged with no added mutable RAM', native)
     now = balance.symbols(SYM)
-    old = balance.symbols_text(git('dist/abaqus-after-hours.sym').decode())
-    ram = {n: a for n, a in old.items() if a < 0x2000 or 0x7e0000 <= a < 0x800000}
-    moved = {n: [a, now.get(n)] for n, a in ram.items() if now.get(n) != a}
-    added = {n: a for n, a in now.items() if n not in old and (a < 0x2000 or 0x7e0000 <= a < 0x800000)}
-    require(not moved and not added, 'no mutable RAM addresses or allocation change', {'moved': moved, 'added': added})
-    files = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', BASE, 'assets/generated'], cwd=ROOT).decode().splitlines()
-    delta = [p for p in files if git(p) != (ROOT / p).read_bytes()]
-    require(len(files) == 219 and not delta, 'all 219 generated assets retain exact baseline bytes', delta)
-    for path in ('src/hardware.asm', 'src/trace.asm', 'src/knockdown.h', 'src/super_moves.h', 'src/version.h'):
-        require(git(path) == (ROOT / path).read_bytes(), path + ' remains byte-identical')
+    # Shared policy audits hardware's bounded hit-reaction section and TRACE;
+    # sibling-owned animation, superFrame, version and game hooks may differ.
+    path = 'src/knockdown.h'
+    require(git(path).replace(b'\r\n', b'\n') == (ROOT / path).read_bytes().replace(b'\r\n', b'\n'),
+            path + ' remains byte-identical after newline normalization')
     sections = []
     for name, address in now.items():
         if not name.startswith('SECTIONSTART_') or address < 0x800000:
@@ -495,7 +521,8 @@ def preservation():
             sections.append([address, end, name])
     require(all(a >> 16 == (b - 1) >> 16 and b - a <= 32768 for a, b, _ in sections), 'all linked native sections fit 32 KiB LoROM banks')
     require(len(ROM.read_bytes()) == 4194304 and ROM.read_bytes()[0x7fd5] == 0x30, 'native 4 MiB FastROM LoROM cartridge')
-    return {'prior_ram_labels': len(ram), 'moved': moved, 'added': added, 'generated_count': len(files), 'generated_delta': delta, 'sections': len(sections)}
+    return {'combined': shared, 'sections': len(sections), 'pacing_new_mutable_bytes': 0,
+            'recoil_storage': 'existing rearKickRecoil byte: one nibble per port; direction bits0..1, strong bit2, direct-super link bit3'}
 
 
 def profile_audit():
@@ -512,15 +539,19 @@ def profile_audit():
     require(len(old) == len(new) == 12, 'profile audit sees exactly twelve fighters')
     result = []
     for fighter, (a, b) in enumerate(zip(old, new)):
-        require(all(a[0][i] == b[0][i] for i in (2, 3, 4, 5, 6, 7, 9, 11, 12, 15)) and a[3:] == b[3:],
-                'jump velocities/gravity, damage, reach, throws and family preserved', fighter)
+        require(b[0][2] == JUMP_VY_OVERRIDES.get(fighter, a[0][2]),
+                'only four approved jump launch overrides differ from the baseline',
+                [fighter, a[0][2], b[0][2]])
+        require(all(a[0][i] == b[0][i] for i in (3, 4, 5, 6, 7, 9, 11, 12, 15)) and a[3:] == b[3:],
+                'gravity uppercut special launch damage reach throws and family preserved', fighter)
         require(all(b[0][i] == round(a[0][i] * .82) for i in (0, 1)), 'movement speed is rounded to 82 percent', fighter)
         require(b[1] == [v + (3 if i in (2, 4, 5) else 0) for i, v in enumerate(a[1])] and
                 b[2] == [v + (4 if i in (2, 4, 5) else 0) for i, v in enumerate(a[2])],
                 'ground heavy timing changes are exact and fast light timing preserved', fighter)
         require(b[0][8] == a[0][8] + 3 and b[0][10] == a[0][10] + 5,
                 'ordinary special gains three startup and five recovery ticks', fighter)
-        row = {'fighter': fighter, 'walk_12_4': [a[0][0], b[0][0]], 'retreat_12_4': [a[0][1], b[0][1]]}
+        row = {'fighter': fighter, 'walk_12_4': [a[0][0], b[0][0]], 'retreat_12_4': [a[0][1], b[0][1]],
+               'jump_vy': [a[0][2], b[0][2]], 'approved_jump_override': fighter in JUMP_VY_OVERRIDES}
         if a[0][7] in (0, 2):
             old_range, new_range = a[0][13] * a[0][14], b[0][13] * b[0][14]
             require(abs(old_range - new_range) <= b[0][13] and b[0][13] == round(a[0][13] * .82),
@@ -530,6 +561,23 @@ def profile_audit():
         else:
             require(a[0][13:15] == b[0][13:15], 'direct special speed/life preserved', fighter)
         result.append(row)
+    pacing = (ROOT / 'src/pacing_recoil.h').read_text(encoding='utf-8')
+    air = re.search(r'u8 pacingAirSpeed\(u8 id\)\s*\{(.*?)\n\}', pacing, re.S)
+    require(air is not None, 'old horizontal jump launch has a dedicated pacingAirSpeed hook')
+    air_speeds = {int(i): int(v) for i, v in re.findall(r'case\s+(\d+):\s*return\s+(\d+);', air[1])}
+    default = re.search(r'default:\s*return\s+(\d+);', air[1])
+    require(set(air_speeds) == set(range(11)) and default is not None,
+            'horizontal launch switch explicitly covers the twelve fighters')
+    air_speeds[11] = int(default[1])
+    require(all(air_speeds[i] == row[0][0] + 8 for i, row in enumerate(old)),
+            'all twelve horizontal jump launches preserve old walk speed plus eight', air_speeds)
+    game = (ROOT / 'src/game.c').read_text(encoding='utf-8')
+    require(re.search(r'if\(keys&KEY_RIGHT\)f->vx=pacingAirSpeed\(f->id\);\s*'
+                      r'else if\(keys&KEY_LEFT\)f->vx=-pacingAirSpeed\(f->id\);', game) is not None,
+            'both horizontal takeoff directions use the preserved air speed')
+    require(re.search(r'if\(f->airAction && \(a==3 \|\| a>=5\)\)\s*\{\s*'
+                      r'f->actionStartup-=3;f->actionActiveEnd-=3;f->actionEnd-=7;', game) is not None,
+            'airborne heavy startup active and recovery restore original timing')
     symbols = balance.symbols(SYM)
     address = symbols['hitStunByDamage']
     offset = ((address >> 16) & 127) * 32768 + (address & 32767)
@@ -547,16 +595,35 @@ def main():
     p.add_argument('--report', default='docs/combat-24-pacing-report.json')
     p.add_argument('--baseline', action='store_true')
     args = p.parse_args()
+    fighters = list(map(int, args.fighters.split(',')))
+    if not fighters or len(set(fighters)) != len(fighters) or any(i not in range(12) for i in fighters):
+        p.error('--fighters must list distinct roster IDs 0..11')
+    if args.baseline and not args.sample:
+        p.error('--baseline is historical sample media only; it cannot supply combined evidence')
+    canonical_report = ROOT / 'docs/combat-24-pacing-report.json'
+    if (args.sample or set(fighters) != set(range(12))) and (ROOT / args.report).resolve() == canonical_report.resolve():
+        p.error('samples and partial rosters require --report with a separate diagnostic path')
     if args.baseline:
         ROM, SYM = ROOT / 'build/pacing-baseline.sfc', ROOT / 'build/pacing-baseline.sym'
-    report = {'status': 'failed', 'scope': 'isolated-pacing-recoil', 'combined_pass_claimed': False,
+    report = {'status': 'failed', 'scope': 'historical baseline sample' if args.baseline else (
+                  'limited pacing sample' if args.sample else 'combined-ROM focused pacing/recoil'),
+              'combined_pass_claimed': False, 'combined_focused_coverage_complete': False,
+              'historical_evidence': 'Prior isolated reports and GIFs are historical; only captures produced by this invocation are current.',
               'rom_path': str(ROM), 'rom_sha256': sha(ROM.read_bytes()), 'symbols_sha256': sha(SYM.read_bytes()),
               'base_commit': BASE, 'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT).decode().strip(),
               'command': subprocess.list2cmdline([sys.executable, *sys.argv]),
               'host_contract': {**host_contract(), 'platform': platform.platform(), 'memory_writes': False, 'save_states': False},
-              'harness_sha256': sha(Path(__file__).read_bytes()), 'checks': CHECKS, 'metrics': METRICS, 'failure_arrays': FAILURES, 'roster': []}
+              'test_sha256': sha(Path(__file__).read_bytes()),
+              'source_sha256': source_hashes(),
+              'harness_sha256': {path: sha((ROOT / path).read_bytes()) for path in HARNESS},
+              'checks': CHECKS, 'metrics': METRICS, 'failure_arrays': FAILURES, 'roster': []}
     start = time.monotonic()
     try:
+        require(not report['host_contract']['gui_opened'] and not report['host_contract']['audio_device_opened'],
+                'silent headless host')
+        require(report['host_contract'].get('priority_class') == 0x4000 and
+                len(report['host_contract']['logical_processors']) <= 2,
+                'background runner priority and affinity enforced', report['host_contract'])
         core = sha((ROOT / '.tools/core/snes9x_libretro.dll').read_bytes())
         require(core == EXPECTED_NATIVE_CORE['dll_sha256'], 'pinned native Snes9x core', core)
         report['core_sha256'] = core
@@ -565,7 +632,7 @@ def main():
         else:
             report['preservation'] = preservation()
             report['profiles'] = profile_audit()
-            for fighter in map(int, args.fighters.split(',')):
+            for fighter in fighters:
                 for port in (0, 1):
                     row = {'fighter': fighter, 'port': port + 1}
                     report['roster'].append(row)
@@ -598,23 +665,28 @@ def main():
                 row['cpu'] = cpu_checks(fighter)
                 row['clocks_and_dma'] = clocks_and_dma(fighter)
                 print(f'fighter {fighter:02d} super/CPU complete', flush=True)
+            report['combined_focused_coverage_complete'] = set(fighters) == set(range(12))
+        require(sha(ROM.read_bytes()) == report['rom_sha256'] and sha(SYM.read_bytes()) == report['symbols_sha256'],
+                'exact ROM and symbols retained throughout focused proof')
+        require(source_hashes() == report['source_sha256'] and
+                {path: sha((ROOT / path).read_bytes()) for path in HARNESS} == report['harness_sha256'],
+                'production source and harness inputs retained throughout focused proof')
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)
         raise
     finally:
-        report['source_sha256'] = {path: sha((ROOT / path).read_bytes()) for path in
-                                   ('src/game.c', 'src/characters.h', 'src/cpu_personality.h', 'tools/test_combat_24_pacing.py')}
-        if (ROOT / 'src/pacing_recoil.h').exists():
-            report['source_sha256']['src/pacing_recoil.h'] = sha((ROOT / 'src/pacing_recoil.h').read_bytes())
-        report['dependency_sha256'] = {path: sha((ROOT / path).read_bytes()) for path in
-                ('tools/test_characters.py', 'tools/test_inputs.py', 'tools/emulator.py', 'tools/run_background.py',
-                 'tools/test_expansion_03_normal_balance.py', 'tools/test_expansion_06_cpu_personality.py',
-                 'tools/test_expansion_07_supers.py', 'src/hardware.asm', 'src/trace.asm')}
+        report['rom_sha256_after'] = sha(ROM.read_bytes())
+        report['symbols_sha256_after'] = sha(SYM.read_bytes())
+        report['source_sha256_after'] = source_hashes()
+        report['dependency_sha256'] = report['harness_sha256']
         report['super_metrics'] = supers.timing
-        report['captures'] = [{'path': p.relative_to(ROOT).as_posix(), 'sha256': sha(p.read_bytes())}
-                              for p in sorted(OUT.glob('*'))]
+        report['captures'] = [{'path': path, 'sha256': sha((ROOT / path).read_bytes()),
+                               'evidence_scope': 'historical baseline' if args.baseline else 'current invocation'}
+                              for path in sorted(set(METRICS['captures']))]
         report['elapsed_seconds'] = round(time.monotonic() - start, 3)
+        report['check_inventory'] = CHECKS
+        report['checks'] = sum(c['executions'] for c in CHECKS)
         report['passed'] = sum(c['executions'] for c in CHECKS if c['passed'])
         path = ROOT / args.report
         path.parent.mkdir(parents=True, exist_ok=True)

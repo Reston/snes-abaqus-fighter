@@ -1,8 +1,10 @@
-"""Isolated v0.24 attack-art proof: canonical background Python, native PPU.
+"""Combined v0.24 attack-art proof: background Python, native PPU.
 
 Read-only WRAM/VRAM/OAM and actual controllers only. No saves, windows or
 audio devices. This does not run or replace the parent's six native suites.
-Run after tools/build.py --assets; --fighter N is an ignored diagnostic run.
+Run after the final combined tools/build.py --assets. --fighter N writes an
+ignored diagnostic report, never the final roster report. Historical baseline
+clips compare presentation only; current gameplay is asserted independently.
 """
 from pathlib import Path
 import argparse,ctypes as C,hashlib,io,json,platform,subprocess,sys,time
@@ -15,6 +17,8 @@ from test_inputs import trace
 from test_champion import host_contract
 from test_endurance import core_identity
 from test_expansion_01_animation_weight import Probe,symbols,address
+from expansion_contracts import combined_contract
+from v024_contracts import FRAME_OWNERS
 
 BASE='f75005d'
 OWNED={5,6,7,8,9,10,12,13,15,*range(32,46),47}
@@ -30,11 +34,14 @@ def write(path,value):path.write_bytes((json.dumps(value,indent=2)+'\n').encode(
 
 def art_contract():
     index=json.loads((ROOT/'assets/art/attack-v1.json').read_bytes())
-    check(index['schema']==1 and len(index['fighters'])==12,'complete versioned attack index')
+    check(index['schema']==1 and index['scope']=='attack-v1' and index['baseline_commit']==BASE and
+          sorted(row['id'] for row in index['fighters'])==list(range(12)),'complete versioned attack index')
+    manifest=json.loads((ROOT/'assets/generated/character-manifest.json').read_bytes())
     result=[]
     for row in index['fighters']:
         f=row['id'];p=ROOT/row['provenance'];record=json.loads(p.read_bytes())
         check(sha(p.read_bytes())==row['provenance_sha256'],'exact individual provenance hash',f)
+        check(record['fighter_id']==f and record['scope']=='attack-v1','individual attack source identity',f)
         check(sha((ROOT/record['reference']).read_bytes())==record['reference_sha256'],'exact approved reference hash',f)
         new=Image.open(ROOT/f'assets/generated/fighter{f:02d}.png').convert('RGBA')
         prior=Image.open(io.BytesIO(old(f'assets/generated/fighter{f:02d}.png'))).convert('RGBA')
@@ -52,7 +59,13 @@ def art_contract():
                     line=alpha.crop((0,y,96,y+1)).getbbox()
                     if line:edges.append([y,line[0],line[2]-1])
                 bounds.append({'frame':n,'native_box':list(bbox),'native_sha256':sha(b.tobytes()),'opaque_row_edges_y_left_right':edges})
-        check(set(changed)==OWNED,'exactly 24 owned poses change; other 40 remain byte exact',[f,changed])
+        check(set(changed)&OWNED==OWNED,'all 24 attack-owned poses change within combined allocation',[f,changed])
+        packed_changes=[]
+        for bank,suffix in enumerate(('','b','c','d','e','f','g','h')):
+            path=f'assets/generated/fighter{f:02d}{suffix}.bin';a=old(path);b=(ROOT/path).read_bytes()
+            check(len(a)==len(b)==30720,'fixed 30,720-byte native pose bank',[f,bank])
+            packed_changes.extend(bank*8+n for n in range(8) if a[n*3840:(n+1)*3840]!=b[n*3840:(n+1)*3840])
+        check(set(packed_changes)&OWNED==OWNED,'all 24 attack drawings reach packed native banks',[f,packed_changes])
         for suffix in ('_pal.bin',):
             path=f'assets/generated/fighter{f:02d}'+suffix
             check(old(path)==(ROOT/path).read_bytes(),'fixed native OBJ palette',f)
@@ -72,48 +85,35 @@ def art_contract():
             source_rows.append({'path':source['file'],'sha256':source['sha256'],'count':len(figures),'source_boxes':[m['source_box'] for m in details]})
         check(len(target)==len(set(target))==24 and set(target)==OWNED,'disjoint source-to-native frame mapping',f)
         check(record['height_target']==HEIGHTS[f],'approved neutral physical height',f)
-        result.append({'fighter':f,'changed_frames':changed,'preserved_frames':sorted(set(range(64))-OWNED),'height_target':HEIGHTS[f],'shared_conversion_scale':HEIGHTS[f]/anchor.height,'sources':source_rows,'native_bounds':bounds})
-    # Check every previously committed source/reference, not merely selected inputs.
-    protected=git('ls-tree','-r','--name-only',BASE,'--','assets/art','assets/references').decode().splitlines()
-    bad=[p for p in protected if old(p)!=((ROOT/p).read_bytes().replace(b'\r\n',b'\n') if Path(p).suffix in ('.json','.md','.txt') else (ROOT/p).read_bytes())]
-    check(not bad,'all prior source masters and provenance preserved',bad)
-    generated=git('ls-tree','-r','--name-only',BASE,'--','assets/generated').decode().splitlines()
-    # Binary data must not be newline-normalized.
-    delta=[p for p in generated if old(p)!=((ROOT/p).read_bytes().replace(b'\r\n',b'\n') if Path(p).suffix in ('.json','.asm','.h') else (ROOT/p).read_bytes())]
-    allowed={'assets/generated/character-manifest.json'}
-    for f in range(12):
-        allowed.add(f'assets/generated/fighter{f:02d}.png')
-        for suffix in ('','b','e','f'):allowed.add(f'assets/generated/fighter{f:02d}{suffix}.bin')
-    check(set(delta)==allowed,'only four owned banks and review strip per fighter plus metadata differ',delta)
-    names={p.relative_to(ROOT).as_posix() for p in (ROOT/'assets/generated').iterdir() if p.is_file() and p.name!='soundbank.h'}
-    check(names==set(generated) and len(names)==219,'generated inventory stays 219',len(names))
-    return {'fighters':result,'old_source_files_preserved':len(protected),'generated_delta':sorted(delta),'generated_preserved':len(generated)-len(delta)}
-
-def memory_contract(table):
-    before={n:int(a,16) for a,n in __import__('re').findall(r'^([0-9a-fA-F]{6,8})\s+(\S+)\s*$',old('dist/abaqus-after-hours.sym').decode(),__import__('re').M)}
-    ram={n:a for n,a in before.items() if a<0x2000 or 0x7e0000<=a<0x800000}
-    moved={n:[a,table.get(n)] for n,a in ram.items() if table.get(n)!=a}
-    added={n:a for n,a in table.items() if n not in before and (a<0x2000 or 0x7e0000<=a<0x800000)}
-    check(not moved and not added,'all RAM symbols remain exact with no additions',[moved,added])
-    for path in ('src/hardware.asm','src/trace.asm','src/game.c','src/characters.h','src/super_moves.h','src/version.h','tools/fighter_assets.py','tools/pose_revision_assets.py'):
-        check((ROOT/path).read_bytes().replace(b'\r\n',b'\n')==git('show','3f51120:'+path).replace(b'\r\n',b'\n'),'shared module or hardware ABI unchanged',path)
-    crossings=[]
-    for n,start in table.items():
-        if not n.startswith('SECTIONSTART_') or start<0x8000 or 0x7e0000<=start<0x800000:continue
-        end=table.get('SECTIONEND_'+n[len('SECTIONSTART_'):])
-        if end and end>start and start//0x10000!=(end-1)//0x10000:crossings.append([n,start,end])
-    check(not crossings,'ROM sections remain within native banks',crossings)
-    return {'existing_ram_symbols_preserved':len(ram),'new_ram_symbols':added,'bank_crossings':crossings,'fighter_stride':64,'wave_stride':16,'trace_words':123,'pose_bytes':3840,'actor_obj':30}
+        scale=HEIGHTS[f]/anchor.height
+        for source in record['sources']:
+            figures,details=extract_atlas(ROOT/source['file'],pose_names=source['poses'],expected_count=source['count'])
+            for figure,detail,n in zip(figures,details,source['frames']):
+                if n is None:continue
+                meta=manifest[f]['frames'][n];size=[round(figure.width*scale),round(figure.height*scale)]
+                bbox=new.crop((n*96,0,(n+1)*96,80)).getchannel('A').getbbox()
+                check(meta['source_kind']=='attack-v1' and meta['source_file']==source['file'] and
+                      meta['source_sha256']==source['sha256'] and meta['revision_source_box']==detail['source_box'],
+                      'own native frame binds selected attack source',[f,n])
+                check(meta['conversion_scale']==scale and meta['native_size']==[bbox[2]-bbox[0],bbox[3]-bbox[1]] and
+                      meta['native_size'][0]<=size[0]<=94 and meta['native_size'][1]<=size[1]<=77,
+                      'one neutral-anchored isotropic conversion fits native bounds',[f,n,size,scale])
+        result.append({'fighter':f,'owned_changed_frames':sorted(set(changed)&OWNED),'combined_changed_frames':changed,
+                       'packed_owned_changed_frames':sorted(set(packed_changes)&OWNED),'height_target':HEIGHTS[f],
+                       'shared_conversion_scale':scale,'sources':source_rows,'native_bounds':bounds})
+    return {'fighters':result,'global_preservation_policy':'combined_contract; all 768 native frames, protected sources, generated inventory and prior RAM'}
 
 class AttackProbe(Probe):
     def __init__(self,e,fighter,table,base=False):
         super().__init__(e,fighter,table,base)
-        self.table=table;self.films={};self.spc_failures=[];self.peak_spc=0
+        self.table=table;self.films={};self.spc_failures=[];self.pcm_failures=[];self.peak_spc=0
     def step(self,p1=(),p2=(),label='',film=False):
+        samples=self.e.audio_samples
         s=super().step(p1,p2,label,False)
         ptrs=[C.string_at(self.e.ram+(address(self.table,n)&0x1ffff),1)[0] for n in ('spc_fread','spc_fwrite')]
         backlog=(ptrs[1]-ptrs[0])&255;self.peak_spc=max(self.peak_spc,backlog)
         if backlog>32:self.spc_failures.append([label,s['frame'],backlog])
+        if self.e.audio_samples<=samples:self.pcm_failures.append([label,s['frame'],self.e.audio_samples-samples])
         if film:self.films.setdefault(label,[]).append(self.e.frame.copy().convert('RGB'))
         return s
 
@@ -173,6 +173,7 @@ def scenario(rom,fighter,table,base=False):
                 label=f'P{port+1}-'+('block' if guarded else 'hurt')
                 if guarded:
                     for _ in range(12):drive(port,['right' if port==0 else 'left'],[back],label,True)
+                before_hp=trace(e)[f'hp{defender}']
                 for _ in range(3):drive(port,['x'],[back] if guarded else [],label,True)
                 for _ in range(62):drive(port,[],[back] if guarded else [],label,True)
                 if not base:
@@ -180,6 +181,11 @@ def scenario(rom,fighter,table,base=False):
                     observed={r[f'anim_frame{defender}'] for r in seq}
                     needed={40,9} if guarded else {10,41}
                     check(needed.issubset(observed),'held guard braces or hurt recoils then recovers',[fighter,port,guarded,sorted(observed)])
+                    if guarded:
+                        check(any(r['non_animation_trace'][f'guard{defender}'] and r['non_animation_trace'][f'hurt{defender}'] for r in seq),
+                              'guard art accompanies actual native block stun',[fighter,port])
+                    else:
+                        check(min(r[f'hp{defender}'] for r in seq)<before_hp,'hurt art accompanies actual native HP loss',[fighter,port,before_hp])
         # Physical pause freezes both requested animation clocks during an attack.
         settle();p.run(1,['x'],['x'],label='pause-attack');p.run(1,p2=['start'],label='pause')
         p.run(12,label='pause');paused=[r for r in p.rows if r['label']=='pause' and r['paused']]
@@ -187,7 +193,7 @@ def scenario(rom,fighter,table,base=False):
             check(paused and len({(r['anim_frame1'],r['anim_frame2'],r['anim_tick1'],r['anim_tick2']) for r in paused})==1,'P2 pause freezes both attack clocks',fighter)
         p.run(1,p1=['start'],label='resume');p.run(55,label='resume')
         if not base:
-            for name,failures in (('cadence',p.drops),('SDK timing',p.native_failures),('OBJ overflow',p.overflow),('native actor payload',p.bad_payload),('30-piece actor geometry',p.geometry),('SPC FIFO',p.spc_failures)):
+            for name,failures in (('cadence',p.drops),('SDK timing',p.native_failures),('OBJ overflow',p.overflow),('native actor payload',p.bad_payload),('30-piece actor geometry',p.geometry),('SPC FIFO',p.spc_failures),('PCM callback cadence',p.pcm_failures)):
                 check(not failures,name+' stays healthy',{'fighter':fighter,'failures':failures[:4]})
             check(p.uploads[2]==0,'at most one 3840-byte actor page changes per callback',[fighter,dict(p.uploads)])
             check(e.audio_samples>0 and e.audio_peak>0,'SPC PCM remains live without device playback',[fighter,e.audio_samples,e.audio_peak])
@@ -196,44 +202,85 @@ def scenario(rom,fighter,table,base=False):
         return p
     finally:e.close()
 
+def historical_visuals(rom,fighter,table):
+    """Historical PPU comparison only; never compare simulation fingerprints."""
+    e=boot(1,fighter,fighter%3,fighter,rom=rom);p=AttackProbe(e,fighter,table,True)
+    try:
+        p.run(12,['left'],['right'],label='separate')
+        for label,keys,_,_ in MOVES:
+            p.run(3,keys,keys,label,True);p.run(75,label=label,film=True)
+        return p
+    finally:e.close()
+
 def save_clips(before,after,fighter):
     captures=[]
     # Each roster clip includes anticipation, active, retraction and neutral.
     labels=[m[0] for m in MOVES]
-    labels+=['P1-hurt','P1-block']
     pairs=[]
     for label in labels:
         a=before.films[label];b=after.films[label]
-        check(len(a)==len(b),'before/after capture has identical physical-input length',[fighter,label,len(a),len(b)])
+        check(len(a)==len(b),'historical/current visual segments have identical fixed input length',[fighter,label,len(a),len(b)])
         for x,y in zip(a,b):
             im=Image.new('RGB',(512,244));im.paste(x,(0,20));im.paste(y,(256,20))
-            d=ImageDraw.Draw(im);d.text((5,4),'v0.23.1 '+label,fill='white');d.text((261,4),'attack-v1 '+label,fill='white');pairs.append(im)
-    path=OUT/f'{fighter:02d}-complete-sequences.gif'
+            d=ImageDraw.Draw(im);d.text((5,4),'HISTORICAL v0.23.1 '+label,fill='white');d.text((261,4),'COMBINED v0.24 '+label,fill='white');pairs.append(im)
+    path=OUT/f'{fighter:02d}-combined-vs-historical-sequences.gif'
     ms=1000/60.098811862348406
     durations=[10*(round((i+1)*ms/10)-round(i*ms/10)) for i in range(len(pairs))]
     pairs[0].save(path,save_all=True,append_images=pairs[1:],duration=durations,loop=0,optimize=True)
-    captures.append({'path':path.relative_to(ROOT).as_posix(),'sha256':sha(path.read_bytes()),'native_callbacks':len(pairs),'playback':'10/20 ms cumulative GIF approximation to native 60.098811862348406 Hz','left':'approved v0.23.1 baseline','right':'isolated attack candidate','labels':labels})
+    captures.append({'path':path.relative_to(ROOT).as_posix(),'sha256':sha(path.read_bytes()),'native_callbacks':len(pairs),'playback':'10/20 ms cumulative GIF approximation to native 60.098811862348406 Hz','left':'HISTORICAL approved v0.23.1 baseline','right':'combined v0.24 candidate','comparison':'presentation only; pacing/contact/jump/super/stage behavior differs by authorization','labels':labels})
+    for label in ('P1-hurt','P1-block','P2-hurt','P2-block'):
+        frames=[]
+        for image in after.films[label]:
+            im=Image.new('RGB',(256,244));im.paste(image,(0,20));ImageDraw.Draw(im).text((5,4),'COMBINED v0.24 '+label,fill='white');frames.append(im)
+        path=OUT/f'{fighter:02d}-combined-{label}.gif'
+        durations=[10*(round((i+1)*ms/10)-round(i*ms/10)) for i in range(len(frames))]
+        frames[0].save(path,save_all=True,append_images=frames[1:],duration=durations,loop=0,optimize=True)
+        captures.append({'path':path.relative_to(ROOT).as_posix(),'sha256':sha(path.read_bytes()),'native_callbacks':len(frames),'scope':'current combined hurt/block native PPU'})
     return captures
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--fighter',type=int);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--fighter',type=int,choices=range(12));parser.add_argument('--report',type=Path);args=parser.parse_args()
+    CHECKS.clear()
     OUT.mkdir(parents=True,exist_ok=True);(ROOT/'build').mkdir(exist_ok=True)
-    report_path=ROOT/('build/combat24-attack-diagnostic.json' if args.fighter is not None else 'docs/combat-24-attack-report.json')
+    report_path=ROOT/(args.report or ('build/combat24-attack-diagnostic.json' if args.fighter is not None else 'docs/combat-24-attack-report.json'))
+    if args.fighter is not None and not report_path.resolve().is_relative_to((ROOT/'build').resolve()):
+        parser.error('--fighter diagnostics must write under ignored build/, never final docs evidence')
+    report_path.parent.mkdir(parents=True,exist_ok=True)
     baseline=ROOT/'build/v024-attack-baseline.sfc';baseline.write_bytes(old('dist/abaqus-after-hours.sfc'))
-    rom=ROOT/'dist/abaqus-after-hours.sfc';manifest=json.loads((ROOT/'dist/manifest.json').read_bytes())
+    baseline_symbols=ROOT/'build/v024-attack-baseline.sym';baseline_symbols.write_bytes(old('dist/abaqus-after-hours.sym'))
+    base_table=symbols(baseline_symbols)
+    rom=ROOT/'build/v024-attack.sfc';rom.write_bytes((ROOT/'dist/abaqus-after-hours.sfc').read_bytes())
+    manifest=json.loads((ROOT/'dist/manifest.json').read_bytes())
     table=symbols(ROOT/'dist/abaqus-after-hours.sym');started=time.monotonic()
-    report={'status':'failed','scope':'isolated attack art/grounded sequencing; not final combined evidence','baseline_commit':BASE,'baseline_rom_sha256':sha(baseline.read_bytes()),'source_commit':git('rev-parse','HEAD').decode().strip(),'source_diff_sha256':sha(git('diff','HEAD','--','src','tools/test_combat24_attack.py','assets/art/attack-v1.json')),'harness_sha256':sha(Path(__file__).read_bytes().replace(b'\r\n',b'\n')),'rom_sha256':sha(rom.read_bytes()),'rom_bytes':rom.stat().st_size,'checksum':manifest['checksum'],'host':host_contract(),'platform':platform.platform(),'command':subprocess.list2cmdline([sys.executable,*sys.argv]),'cases':[],'checks':CHECKS,'failures':{'cadence':[],'native_timing':[],'ppu_overflow':[],'actor_payload':[],'actor_geometry':[],'spc_fifo':[],'assertions':[]}}
+    producer='tools/test_combat24_attack.py'
+    report={'status':'failed','scope':'combined v0.24 attack art and grounded sequencing','diagnostic':args.fighter is not None,'full_roster':args.fighter is None,'baseline_commit':BASE,'baseline_rom_sha256':sha(baseline.read_bytes()),'baseline_role':'historical presentation comparison only; no gameplay equality claim','source_commit':git('rev-parse','HEAD').decode().strip(),'source_diff_sha256':sha(git('diff','HEAD','--','src','tools','assets/art')),'producer':producer,'harness_sha256':sha(Path(__file__).read_bytes().replace(b'\r\n',b'\n')),'producer_sha256':sha(Path(__file__).read_bytes()),'rom_sha256':sha(rom.read_bytes()),'rom_bytes':rom.stat().st_size,'checksum':manifest['checksum'],'host':host_contract(),'platform':platform.platform(),'command':subprocess.list2cmdline([sys.executable,*sys.argv]),'cases':[],'checks':CHECKS,'failures':{'cadence':[],'native_timing':[],'ppu_overflow':[],'actor_payload':[],'actor_geometry':[],'spc_fifo':[],'pcm':[],'assertions':[]}}
+    report['dependency_sha256']={p:sha((ROOT/p).read_bytes()) for p in ('tools/emulator.py','tools/test_expansion_01_animation_weight.py','tools/test_characters.py','tools/test_inputs.py','tools/test_champion.py','tools/test_presentation.py','tools/test_endurance.py','tools/release_evidence.py','tools/fighter_assets.py','tools/pose_revision_assets.py','tools/expansion_contracts.py','tools/v024_contracts.py','tools/run_background.py','dist/abaqus-after-hours.sym','dist/manifest.json','assets/art/attack-v1.json')}
+    report['source_files_sha256']={p.relative_to(ROOT).as_posix():sha(p.read_bytes()) for p in sorted((ROOT/'src').iterdir()) if p.is_file()}
+    inputs={'assets/generated/character-manifest.json','.tools/core/snes9x_libretro.dll'}
+    for row in json.loads((ROOT/'assets/art/attack-v1.json').read_bytes())['fighters']:
+        inputs.add(row['provenance']);record=json.loads((ROOT/row['provenance']).read_bytes());inputs.add(record['reference'])
+        inputs.update(source['file'] for source in record['sources'])
+        stem=f'assets/generated/fighter{row["id"]:02d}'
+        inputs.update(stem+suffix for suffix in ('.png','_pal.bin','.bin','b.bin','c.bin','d.bin','e.bin','f.bin','g.bin','h.bin'))
+    report['dependency_sha256'].update({p:sha((ROOT/p).read_bytes()) for p in sorted(inputs)})
+    report['behavioral_proof']='Current both-port command/active/recovery/HP/block/hitstop/pause assertions; historical non-animation replay equality is invalid for the combined scope.'
     try:
         report['core']=core_identity()
-        check(report['rom_sha256']==manifest['sha256'] and report['rom_bytes']==4194304,'exact manifest identifies native 4 MiB ROM')
-        report['art']=art_contract();report['native_contract']=memory_contract(table)
+        check(report['rom_sha256']==manifest['sha256'] and report['rom_bytes']==4194304 and manifest['version']=='0.24.0','exact manifest identifies combined native 4 MiB ROM')
+        report['combined_contract']=combined_contract(ROOT)
+        check(report['combined_contract']['assets']['frame_ownership']=={scope:sorted(frames) for scope,frames in FRAME_OWNERS.items()},'strict parent policy covers all three disjoint frame owners')
+        report['art']=art_contract();report['native_contract']=report['combined_contract']['native']
         for fighter in ([args.fighter] if args.fighter is not None else range(12)):
-            before=scenario(baseline,fighter,table,True);after=scenario(rom,fighter,table)
-            check(before.game_hash.hexdigest()==after.game_hash.hexdigest(),'identical controller replay preserves all non-animation Fighter bytes and trace',[fighter,before.game_hash.hexdigest(),after.game_hash.hexdigest()])
+            before=historical_visuals(baseline,fighter,base_table);after=scenario(rom,fighter,table)
             captures=save_clips(before,after,fighter)
-            report['cases'].append({'fighter':fighter,'ports':[1,2],'callbacks':len(after.rows),'non_animation_sha256':after.game_hash.hexdigest(),'peak_spc_backlog':after.peak_spc,'native_lag_increments':after.lag_increments,'uploads_per_callback':dict(after.uploads),'uploaded_frame_ids':[sorted(x) for x in after.frames],'captures':captures})
+            report['cases'].append({'fighter':fighter,'ports':[1,2],'callbacks':len(after.rows),'current_non_animation_sha256':after.game_hash.hexdigest(),'peak_spc_backlog':after.peak_spc,'native_lag_increments':after.lag_increments,'uploads_per_callback':dict(after.uploads),'uploaded_frame_ids':[sorted(x) for x in after.frames],'cadence_failures':after.drops,'native_timing_failures':after.native_failures,'OBJ_failures':after.overflow,'payload_failures':after.bad_payload,'geometry_failures':after.geometry,'SPC_failures':after.spc_failures,'PCM_failures':after.pcm_failures,'captures':captures})
             print(json.dumps({'fighter':fighter,'callbacks':len(after.rows),'checks':len(CHECKS)}),flush=True)
-        report['status']='passed'
+        check(sorted(row['fighter'] for row in report['cases'])==([args.fighter] if args.fighter is not None else list(range(12))),'requested roster coverage complete')
+        check(sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes())==report['rom_sha256'] and
+              all(sha((ROOT/p).read_bytes())==digest for p,digest in report['dependency_sha256'].items()) and
+              all(sha((ROOT/p).read_bytes())==digest for p,digest in report['source_files_sha256'].items()) and
+              sha(Path(__file__).read_bytes())==report['producer_sha256'],'ROM, production source, producer and dependencies remain frozen throughout run')
+        report['status']='diagnostic_passed' if args.fighter is not None else 'passed'
     except Exception as error:
         report['failures']['assertions'].append(repr(error));raise
     finally:
