@@ -7,15 +7,17 @@ across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
 <!-- v0261-agent:start -->
-- **v0.26.1 is the concise-text follow-up**, branch `feature/concise-game-text`,
-  stacked on v0.26 PR #22. The user asked to reduce bloated text. Only UI
-  literals and the version change in native source; call positions, executable
-  C tokens, all 226 generated assets and 1,318 RAM addresses stay exact.
-  ROM `00029816d23adfe6fb950640ed4fa45fa0de05af46f3a802890333d4b4322aa3`,
-  checksum `A4A4`, source snapshot `3feabef37f45a96e1ab7a82eea5d5af9159132cd`.
+- **v0.26.2 is the concise-text/readability follow-up**, branch
+  `feature/concise-game-text`, PR #23 stacked on v0.26 PR #22. The user approved
+  the shorter wording but found centered blocks hard to read. Longer help now
+  starts at column3; headings and scores remain centered. The 32 changed guide
+  draw sites retain their order and three-phase schedule. All 226 generated
+  assets and 1,318 RAM addresses stay exact; gameplay is unchanged.
+  ROM `ca7c35a9cfa6d633f759d9d46ba19bfcfc17176fef22b2dc9312ed5fe5a9a45b`,
+  checksum `B1E5`, source snapshot `903c9c70e3f7f3c0e3c265cdcf798aadf9b3a09a`.
   Focused presentation/Training suites pass 6,606 checks. Both-core native
-  captures pass strict health checks. See docs/RELEASE-v0.26.1.md and
-  docs/concise-text-review.json. Full v0.26 six-suite evidence below is
+  captures pass strict health checks. See docs/RELEASE-v0.26.2.md and
+  docs/readable-help-review.json. Full v0.26 six-suite evidence below is
   historical for this new ROM. Human review/merge approval remain pending.
 <!-- v0261-agent:end -->
 

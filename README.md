@@ -1,12 +1,12 @@
 # Abaqus: After Hours
-<!-- candidate-version: 0.26.1; identity: FOCUSED_UI_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 00029816d23adfe6fb950640ed4fa45fa0de05af46f3a802890333d4b4322aa3; source-freeze: 3feabef37f45a96e1ab7a82eea5d5af9159132cd -->
+<!-- candidate-version: 0.26.2; identity: FOCUSED_UI_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: ca7c35a9cfa6d633f759d9d46ba19bfcfc17176fef22b2dc9312ed5fe5a9a45b; source-freeze: 903c9c70e3f7f3c0e3c265cdcf798aadf9b3a09a -->
 
 An original four-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II and the people and places of Abaqus in Santiago.
 Twelve fighters, three illustrated stages and five original music scores.
 
-**Ready to playtest:** [v0.26.1](docs/RELEASE-v0.26.1.md), with slower combat,
-detailed floors and shorter game text. [Native comparisons](docs/REVIEW-v0.26.1.html).
+**Ready to playtest:** [v0.26.2](docs/RELEASE-v0.26.2.md), with slower combat,
+detailed floors and left-aligned help. [Native comparisons](docs/REVIEW-v0.26.2.html).
 The approved main revision is [v0.24.0](docs/RELEASE-v0.24.0.md).
 
 <img src="docs/screenshots/play-flow-v026/pacing/after-movement.gif" alt="Current native combat and detailed floor" width="640">
@@ -68,7 +68,7 @@ intermediates stay in ignored `.tools/` and `build/` directories.
 ## Documentation
 
 - [Player guide](docs/PLAYER-GUIDE.md) — controls, modes and practice.
-- [Current text polish](docs/RELEASE-v0.26.1.md).
+- [Current text polish](docs/RELEASE-v0.26.2.md).
 - [Development guide](docs/DEVELOPMENT.md) — native architecture and hardware budgets.
 - [Roadmap](docs/ROADMAP.md) — planned work and historical milestones.
 - [Credits and art provenance](docs/CREDITS.md) · [License](LICENSE).
