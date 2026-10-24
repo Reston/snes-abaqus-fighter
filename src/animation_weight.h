@@ -68,9 +68,12 @@ void animateFighter(u8 p) {
         else f->animFrame=55;
     } else if(state==6) {
         if(f->duck)f->animFrame=3;
-        else f->animFrame=f->animTick<3?40:9;
+        /* The brace is contact feedback, never a neutral back-guard pose. */
+        else f->animFrame=f->hurt>4?40:9;
     }
-    else if(state==7)f->animFrame=f->animTick<6?10:41;
+    /* Hold the backward impact through the recoil; recover only as stun ends.
+     * The clock and gameplay hurt timer already freeze together in hitstop. */
+    else if(state==7)f->animFrame=f->hurt>6?10:41;
     /* Retain the winner hook for feature 04. */
     else if(state==8)f->animFrame=personalityVictoryFrame(f->id);
     else if(state==9) {
@@ -106,19 +109,16 @@ void animateFighter(u8 p) {
         else if(action==2 || action==3) {
             if(hold)f->animFrame=tick<3?32:34;
             else if(!recover)f->animFrame=6;
-            else if(tick<end+2)f->animFrame=6;
             else f->animFrame=tick+4<f->actionEnd?35:32;
         }
         else if(action>=4 && action<=6) {
             if(f->duck) {
                 if(hold)f->animFrame=tick<3?28:38;
                 else if(!recover)f->animFrame=8;
-                else if(tick<end+2)f->animFrame=8;
                 else f->animFrame=tick+4<f->actionEnd?39:28;
             } else {
                 if(hold)f->animFrame=(action==4 || tick>=3)?36:32;
                 else if(!recover)f->animFrame=7;
-                else if(action!=4 && tick<end+2)f->animFrame=7;
                 else f->animFrame=tick+4<f->actionEnd?37:32;
             }
         } else if(action==7) {
@@ -129,7 +129,7 @@ void animateFighter(u8 p) {
             }
             else if(c->specialFamily==SPECIAL_RISING)f->animFrame=hold?44:(recover?45:13);
             else {
-                f->animFrame=hold?42:(tick<end+7?12:43);
+                f->animFrame=hold?42:(recover?43:12);
                 if(recover && tick+4>=f->actionEnd)f->animFrame=32;
             }
         } else if(action==8)f->animFrame=hold?44:(recover?45:13);
