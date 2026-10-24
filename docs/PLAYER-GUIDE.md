@@ -133,6 +133,12 @@ The preference survives menu/match changes and resets on cold boot. The
 caption shows its state; opposite shoulders cancel. On ordinary Training
 PAUSED with CPU selected, L/R keep their difficulty-setting role.
 
+On those full guide pages, **SNES R** (P1 keyboard **C**, P2 numpad **3**)
+toggles **BACKGROUND: STILL/MOVING**. Still removes scenery drift and contact
+shake from the background; fighters, recoil, effects and fight timing remain
+unchanged. The preference persists through scene changes and defaults to
+Moving on cold boot. Hold neither shoulder when pressing the other option.
+
 On Training's ordinary **PAUSED** card, Up/Down selects **Stand, Guard High,
 Guard Low, Jump, Guard After Hit or CPU**. Guards hold position and Jump repeats
 on landing. Guard After Hit stands for the opener, then holds away during the

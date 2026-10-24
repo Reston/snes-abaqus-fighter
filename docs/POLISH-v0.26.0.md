@@ -234,3 +234,18 @@ the shared super chord stay visible during both players' choices. Short copy
 leaves an eight-pixel right margin. Portrait bytes, roster cards, cursor and
 footer remain exact. Both pinned cores verify all twelve hints on both
 selection steps, approved native portraits and clearing of longer old labels.
+
+## Pass 18: background-motion comfort
+
+R on a full pause guide toggles the background between moving and still.
+Still keeps the scenery at its centered offset, removing drift and background
+shake while retaining all actor movement, recoil, effects and timing. The
+setting persists between scenes and is explicitly initialized on cold boot.
+Opposite shoulders cancel; ordinary paused CPU shoulders still set difficulty.
+
+Both cores verify actual fixed scenery pixels across walking and real hits
+on all three stages. Snes9x's complete unmasked Fighter/Wave/RNG/recoil/input
+streams remain exact between moving and still. Independent Accuracy coverage
+checks observable behavior, cadence and pixels; byte equivalence is unclaimed.
+The cold-boot initialization failure is retained under build, separate from
+the passing current report. The last unused stage-table byte holds the option.

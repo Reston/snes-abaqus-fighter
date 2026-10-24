@@ -42,7 +42,9 @@ void stageDepthPublish(u16 scroll) {
     if(!stageDepthTable[0])return;
     /* Impact shake composes once on the complete scenery/ground plane. Shake
      * policy freezes when paused; floor and scenery always move together. */
-    bgSetScroll(0,16+stageDepthFar+scroll,511);
+    /* Comfort preference affects only the scenery presentation. Actor
+     * positions, contact recoil, simulation clocks and shake expiry stay live. */
+    bgSetScroll(0,stageDepthTable[9]?16:16+stageDepthFar+scroll,511);
 }
 
 u8 stageDepthAmbientReady(void) {

@@ -1229,9 +1229,13 @@ void fightTick(void) {
                         trainingChooseChallenge();openPauseGuide(3);sound(0);
                     } else if((pauseKeys&KEY_L) && !((pad0|pad1)&KEY_R)) {
                         musicOn=!musicOn;openPauseGuide(pausePage);sound(0);
+                    } else if((pauseKeys&KEY_R) && !((pad0|pad1)&KEY_L)) {
+                        stageDepthTable[9]=!stageDepthTable[9];openPauseGuide(pausePage);sound(0);
                     }
                 } else if((pauseKeys&KEY_L) && !((pad0|pad1)&KEY_R)) {
                     musicOn=!musicOn;openPauseGuide(pausePage);sound(0);
+                } else if((pauseKeys&KEY_R) && !((pad0|pad1)&KEY_L)) {
+                    stageDepthTable[9]=!stageDepthTable[9];openPauseGuide(pausePage);sound(0);
                 }
             } else if(mode==2 && (pauseKeys&KEY_X)) {
                 /* Manual practice is explicit and outside the automated
@@ -1412,7 +1416,7 @@ int main(void) {
     randomseed=0xABA;frame=0;menu=0;mode=0;difficulty=1;selected=0;selected2=1;arena=0;
     combatProfiles[0]=&characterProfiles[0];combatProfiles[1]=&characterProfiles[0];
     traceProfiles();
-    musicIndex=255;musicOn=1;
+    musicIndex=255;musicOn=1;stageDepthTable[9]=0;
     pendingSound=0;
     spcBoot();spcSetBank(&SOUNDBANK__);spcAllocateSoundRegion(0);
     oamInit();showTitle();
