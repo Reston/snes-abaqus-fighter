@@ -10,7 +10,13 @@
       "source": "assets/art/stages/depth-v1/00-las-condes.png",
       "source_sha256": "4f3191e9acee6b4beb0670fb8f12d6145f7d96cd7a555312c082d1952fc94094",
       "provenance": "assets/art/stages/depth-v1/00-las-condes.json",
-      "provenance_sha256": "96b385badfdf50c8eed9762373366678dbe0324a46a5c72ad5d853d0b02e639b"
+      "provenance_sha256": "96b385badfdf50c8eed9762373366678dbe0324a46a5c72ad5d853d0b02e639b",
+      "floor": {
+        "source": "assets/art/stages/depth-floor-v2/00-las-condes.png",
+        "source_sha256": "5ab64219efe7d604009f363dcc7f4d422a3c5b5b93b3a8678034138d916317b7",
+        "provenance": "assets/art/stages/depth-floor-v2/00-las-condes.json",
+        "provenance_sha256": "17364c5654efa96ce92685546b1fbbea144029514d5b12d461ae8d0881874219"
+      }
     },
     {
       "id": 1,
@@ -19,7 +25,13 @@
       "source": "assets/art/stages/depth-v1/01-castillo.png",
       "source_sha256": "d0301011c017370058308c4c8519dedd540fadcd1253fa3d2fec17594df27bdf",
       "provenance": "assets/art/stages/depth-v1/01-castillo.json",
-      "provenance_sha256": "e008cd94e52d4abec02ed537ce3d668e5e8abbaf9d4bd8e59907bbd70dede408"
+      "provenance_sha256": "e008cd94e52d4abec02ed537ce3d668e5e8abbaf9d4bd8e59907bbd70dede408",
+      "floor": {
+        "source": "assets/art/stages/depth-floor-v2/01-castillo.png",
+        "source_sha256": "ff533b755543f7b6af5cc85ceb89c657580e40c71f7e52e6fd34e01132e9584e",
+        "provenance": "assets/art/stages/depth-floor-v2/01-castillo.json",
+        "provenance_sha256": "fca0c9d06eb89365b0669f7259ea06b8757e4b06c0b25690c1adbf95593c8959"
+      }
     },
     {
       "id": 2,
@@ -28,7 +40,13 @@
       "source": "assets/art/stages/depth-v1/02-oficina.png",
       "source_sha256": "f4c617d58903f77b4a1643e5664c1f70b26a4320fecf7d663c5379f12e1dfa6f",
       "provenance": "assets/art/stages/depth-v1/02-oficina.json",
-      "provenance_sha256": "71b2d1ad1a43001f28e0a741dc33129de84ee45fd6d8e4b80d5bc0b04a98e27d"
+      "provenance_sha256": "71b2d1ad1a43001f28e0a741dc33129de84ee45fd6d8e4b80d5bc0b04a98e27d",
+      "floor": {
+        "source": "assets/art/stages/depth-floor-v2/02-oficina.png",
+        "source_sha256": "6fff285971b58e27c7f85f7a78076dc2e1d0e65446f5ca2c2ab0bb14f4a355c6",
+        "provenance": "assets/art/stages/depth-floor-v2/02-oficina.json",
+        "provenance_sha256": "7a46949cb41a94c8f7cc16119ab52bf376c12ee5bb1018e1e5f0f4469f0fc85a"
+      }
     }
   ]
 }

@@ -7,6 +7,7 @@ asset generator, stage_depth_assets.py, and native build. Shared reports stay.
 from __future__ import annotations
 
 import ctypes as C
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -23,7 +24,7 @@ from emulator import Emulator
 from test_compatibility import Probe, verify_manifest_and_pinned_core
 from test_champion import host_contract
 from test_stages import vram_bytes, oam_memory, scanline_budget, actor_contract
-from stage_depth_assets import colors
+from stage_depth_assets import colors, install
 
 OUT = ROOT/'docs/screenshots/combat-24-stage08'
 REPORT = ROOT/'docs/combat-24-stage08-report.json'
@@ -128,7 +129,7 @@ def oracle(e,plane,floor,offsets,impact=False):
     for d,shake in pairs:
         scenery_error=difference(actual.crop((0,top,256,bottom)),plane.crop((16+d,top,272+d,bottom)))
         expected_floor=ImageChops.offset(floor,-shake,0)
-        floor_error=difference(actual.crop((0,216,256,224)),expected_floor.crop((0,216,256,224)))
+        floor_error=difference(actual.crop((0,208,256,224)),expected_floor.crop((0,208,256,224)))
         scores.append(max(scenery_error,floor_error))
     if min(scores)>8:
         actual.save(ROOT/'build/stage08-oracle-failure.png')
@@ -244,7 +245,9 @@ def stage_case(stage,independent=False):
         saw_hitstop=0;shake_pixels=set();hits=0;oldhp=e.state()['hp2']
         for i in range(2600):
             s=e.state();distance=abs(s['x1']-s['x2'])//16
-            keys=['right' if s['x1']<s['x2'] else 'left'] if distance>26 else (['down','x'] if i%38<2 else [])
+            # Contacts now follow the actual active fist/body rectangles.
+            # Approach inside24px instead of the historical26px whiff edge.
+            keys=['right' if s['x1']<s['x2'] else 'left'] if distance>22 else (['down','x'] if i%38<3 else [])
             before=camera(e);oldstop=s['hitstop'];obs.tick(keys)
             if oldstop and not s['round_end']:
                 require(camera(e)==before,'freeze',{'case':label,'policy':'hitstop look','frame':s['frame']});saw_hitstop+=1
@@ -326,6 +329,41 @@ def before_clips():
     return rows
 
 
+def before_floor_clips(path):
+    """Optional same-contact-base old-floor ROM, retained under ignored build.
+
+    Capture native before/after material comparisons. This additional review
+    input never replaces any assertions on the current candidate cartridge.
+    """
+    rows=[]
+    for stage in range(3):
+        e=Emulator(rom=path);frames=[]
+        try:
+            boot(e,stage,4,6)
+            while e.state()['intro']:e.run(1)
+            e.run(8)
+            before=image(e);before.save(OUT/f'floor-before-stage{stage}.png')
+            after=Image.open(OUT/f'snes9x-stage{stage}-center.png').convert('RGB')
+            seam=(184,192,184)[stage]
+            check(difference(before.crop((0,40,256,seam)),after.crop((0,40,256,seam)))==0,
+                  'native floor review keeps the complete upper scene exact',stage)
+            check(difference(before.crop((0,208,256,224)),after.crop((0,208,256,224)))>8,
+                  'native floor review shows actual ground material change',stage)
+            # Left is before, right is after. Nearest enlargement preserves
+            # native pixels; this review artifact never changes source art.
+            comparison=Image.new('RGB',(512,224));comparison.paste(before,(0,0));comparison.paste(after,(256,0))
+            comparison.resize((1024,448),Image.Resampling.NEAREST).save(OUT/f'floor-comparison-stage{stage}.png')
+            for direction,count in (('left',90),('right',170),('left',170)):
+                for _ in range(count):e.run(1,[direction],[direction]);frames.append(image(e))
+            rows.append({'stage':stage,'rom_sha256':sha(path.read_bytes()),
+                         'native_before':f'docs/screenshots/combat-24-stage08/floor-before-stage{stage}.png',
+                         'native_comparison':f'docs/screenshots/combat-24-stage08/floor-comparison-stage{stage}.png',
+                         'layout':'before left / after right;2x nearest native pixels',
+                         'clip':gif(frames,f'floor-before-stage{stage}.gif')})
+        finally:e.close()
+    return rows
+
+
 def resources():
     changed=[];added=[];preserved=0
     tracked=git('ls-tree','-r','--name-only',BASE,'--','assets/generated').decode().splitlines()
@@ -358,24 +396,45 @@ def resources():
     data=(ROOT/'dist/abaqus-after-hours.sfc').read_bytes()
     check(len(data)==4194304 and data[0x7fd5]==0x30,'native4MiB NTSC FastROM LoROM retained')
     manifest=json.loads((ROOT/'assets/generated/stage-depth.json').read_text())
+    previous=json.loads(git('show','7c5bf13:docs/combat-24-stage08-report.json'))['resources']['stage_allocations']
     for stage in manifest['stages']:
         for name,record in stage['outputs'].items():
             check(sha((ROOT/'assets/generated'/name).read_bytes())==record['sha256'],'generated stage payload matches exact encoder manifest',name)
+        old=previous['stages'][stage['id']]
+        for part in ('tiles','map','pal'):
+            name=f"stage{stage['id']}_{part}.bin"
+            check(stage['outputs'][name]==old['outputs'][name],'round2 preserves complete upper scenery byte for byte',name)
+        check(2<stage['bg3_tiles']<=256,'authored ground has genuine material tiles within existing BG3 allocation',[stage['id'],stage['bg3_tiles']])
+        floor=render_plane(stage['id'],True).crop((0,stage['floor_seam_y'],256,224))
+        palette=set(floor.get_flattened_data())
+        check(palette==set(colors((ROOT/'assets/generated/ui_pal.bin').read_bytes())[6:8]),
+              'ground uses exactly two quiet existing blue-gray UI colors',[stage['id'],sorted(palette)])
+        check(max(abs(a[k]-b[k]) for a in palette for b in palette for k in range(3))<=48,
+              'floor contrast remains restrained beneath dark actor shadows',stage['id'])
+    generated=lambda:{p.name:sha(p.read_bytes()) for p in (ROOT/'assets/generated').iterdir() if p.is_file()}
+    before=generated();install(ROOT);after=generated()
+    check(before==after,'full authored stage generation is byte-idempotent',{'files':len(before),'changed':[n for n in before if before[n]!=after.get(n)]})
     return {'changed_generated':changed,'added_generated':sorted(added),'preserved_generated':preserved,
             'generated_count':len(tracked)+len(added),'existing_ram_symbols':len(ram),'ram_moved':moved,
             'new_ram_bytes':0,'reused_stage_bytes':16,'hdma_mask':0,'live_stage_dma_bytes':0,'new_obj_entries':0,
-            'actor_pose_dma_bytes':3840,'actor_obj_entries':30,'linked_section_bytes':sum(sections),'stage_allocations':manifest}
+            'actor_pose_dma_bytes':3840,'actor_obj_entries':30,'linked_section_bytes':sum(sections),'stage_allocations':manifest,
+            'idempotent_encoder':{'files':len(before),'changed':[]}}
 
 
 def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--floor-before-rom',type=Path)
+    args=parser.parse_args()
     started=time.monotonic();OUT.mkdir(parents=True,exist_ok=True)
-    report={'status':'failed','scope':'isolated-stage08-v024','baseline_commit':BASE,
+    report={'status':'failed','scope':'isolated-stage08-v024-floor-review-round2','baseline_commit':BASE,
+            'integration_base':'8d0505d','previous_feature_head':'7c5bf13b1578d769d308a5e89d4913c08baf654d',
             'source_commit':git('rev-parse','HEAD').decode().strip(),'command':subprocess.list2cmdline([sys.executable,*sys.argv]),
             'rom_sha256':sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes()),'rom_bytes':4194304,
             'harness_sha256':sha(Path(__file__).read_bytes().replace(b'\r\n',b'\n')),'host':host_contract(),
             'checks':checks,'failure_arrays':failures,'stages':[],'stress':[],'roster':[]}
     owned=[ROOT/'src/game.c',ROOT/'src/stage_depth.h',ROOT/'tools/stage_depth_assets.py',Path(__file__),
-           *sorted((ROOT/'assets/art/stages/depth-v1').rglob('*'))]
+           *sorted((ROOT/'assets/art/stages/depth-v1').rglob('*')),
+           *sorted((ROOT/'assets/art/stages/depth-floor-v2').rglob('*'))]
     report['source_files_sha256']={p.relative_to(ROOT).as_posix():sha(p.read_bytes().replace(b'\r\n',b'\n') if p.suffix in ('.py','.h','.c','.json') else p.read_bytes()) for p in owned if p.is_file()}
     report['retained_candidate_rom']='build/v024-stage08.sfc'
     report['version']=json.loads((ROOT/'dist/manifest.json').read_text())['version']
@@ -387,6 +446,7 @@ def main():
             for stage in range(3):
                 report['stages'].append(stage_case(stage,independent));report['stress'].append(stress(stage,independent))
         report['roster']=roster();report['before']=before_clips()
+        if args.floor_before_rom:report['floor_before']=before_floor_clips(args.floor_before_rom)
         report['status']='passed'
     except Exception as exc:
         report['error']=repr(exc)

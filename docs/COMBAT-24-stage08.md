@@ -1,8 +1,54 @@
-# v0.24 stage08: whole scenery and fixed pavement
+# v0.24 stage08: whole scenery and authored fixed ground
 
 Isolated feature for `integration/readable-combat-v024`, based on contract
 commit `3f51120`. This is source for the combined human playtest, not approval
 to merge main or a combined verification claim.
+
+## Round2 ground review
+
+This checkout starts at integration `8d0505d` (including contact PR15), then
+merges PR16 head `7c5bf13`. It updates that same PR16 without importing the
+rejected old08 implementation. The parent's remaining visual objection was
+the nearly uniform two-tile floor. New built-in imagegen masters and exact
+prompts/source/reference/palette hashes live under
+`assets/art/stages/depth-floor-v2/`: Las Condes slab joints, El Castillo
+staggered courtyard stones and La Oficina modular carpet. The selected
+Las Condes floor and its initial generation are both retained.
+
+The full authored floor is reduced with BOX filtering, then its two authored
+tonal groups are mapped by luminance to unchanged UI CGRAM6/7. No joints are
+drawn by code; there is no dithering. These two blue-grays have at most41
+channel levels of contrast, keeping the navy actor shadows visible. This
+explicit two-group conversion avoids the direct RGB quantization that had
+flattened the earlier source art. Upper BG1 tiles, both map screens and all
+six palettes remain byte-identical to the first PR16 implementation.
+
+The new floors use46/95/71 tiles (736/1520/1136 bytes), including transparent
+tile0, all within the existing256-tile BG3 allocation. No production runtime
+module/hook, RAM, live DMA, OBJ or CGRAM allocation changes in this round.
+The14-changed/7-added generated-file allowlist remains identical.
+
+Las Condes was reviewed first in the actual Snes9x PPU at center and both
+camera limits:260 measured callbacks all advanced exactly one native tick,
+with empty overflow/transfer/pixel failures. Prototype ROM was
+`c8d4db1e2d4c1ebe4e657fef01c38a8c31bb43312b8bb6340c5444cb282de5a9`;
+final two-tone conversion and all-three-stage proof are separate below.
+The unchanged-contact-base before-floor ROM is
+`bcf4456fc9a61c90dbeec3655ca29679d743dda1d557727c3e1a3a98e5a12454`.
+
+The focused driver now additionally proves real floor material tiles, the
+two-color contrast bound, idempotent generation and exact upper-scene
+preservation against PR16. Its PPU floor oracle covers all rows208..223.
+The contact fixture approaches to22px and holds attack edges for three
+callbacks to exercise PR15's actual fist/body rectangles. Cadence, native
+vblank, OBJ, immutable VRAM and freeze assertions remain strict. Optional
+`--floor-before-rom build/v024-stage08-before-floor.sfc` captures native
+before/after floor images and continuous movement clips on the same contact
+base. Comparison PNGs place before left and after right, enlarged2x nearest.
+
+Round2 final exact-ROM evidence is written to
+`docs/combat-24-stage08-report.json`; the older figures later in this note
+are explicitly historical until replaced by the completed round2 result.
 
 Las Condes, El Castillo and La Oficina have new versioned built-in imagegen
 masters under `assets/art/stages/depth-v1/`. Every exact prompt, input role,
@@ -91,13 +137,13 @@ exact. No generated or dist output is committed in this feature PR.
 
 | Stage | BG1 tiles / bytes | BG3 tiles / bytes | BG1 / BG3 map bytes |
 | --- | --- | --- | --- |
-| Las Condes | 639 /20448 | 2 /32 | 4096 /2048 |
-| El Castillo | 680 /21760 | 2 /32 | 4096 /2048 |
-| La Oficina | 614 /19648 | 2 /32 | 4096 /2048 |
+| Las Condes | 639 /20448 | 46 /736 | 4096 /2048 |
+| El Castillo | 680 /21760 | 95 /1520 | 4096 /2048 |
+| La Oficina | 614 /19648 | 71 /1136 | 4096 /2048 |
 
-Each stage palette remains192 bytes. The floor's two encoded tiles are a
-transparent tile and an opaque tile; local map palette choices retain the
-authored broad horizontal tone changes. No architectural pixels are spliced.
+Each stage palette remains192 bytes. BG3 has a transparent tile and genuine
+authored slab/carpet material tiles, all in the same existing palette bank.
+No architectural pixels are spliced.
 
 `game.c` conflict boundaries: three stage map copy lengths in `loadBackground`,
 the initial ambient upload replaced with `stageDepthLoad(which)`, and the old
@@ -107,7 +153,7 @@ preservation/test policies and must adapt the old32x32/animated-stage oracles
 to the explicitly changed map/ambient policy. Do not weaken overflow, actor,
 cadence, UI or exact asset checks.
 
-## Native evidence
+## Historical first-round native evidence
 
 Las Condes was prototyped in the actual Snes9x PPU **before** generating the
 other two sources. Prototype ROM SHA256:

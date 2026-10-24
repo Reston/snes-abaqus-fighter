@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "scope": "stage-floor-v2",
+  "id": 1,
+  "name": "El Castillo",
+  "mode": "built-in imagegen",
+  "reference": "assets/art/stages/depth-v1/01-castillo.png",
+  "reference_sha256": "d0301011c017370058308c4c8519dedd540fadcd1253fa3d2fec17594df27bdf",
+  "input_roles": [
+    {
+      "file": "assets/art/stages/depth-v1/01-castillo.png",
+      "role": "upper architecture palette/style reference only"
+    }
+  ],
+  "prompts": [
+    "Use case: stylized-concept\nAsset type: NEW authored courtyard ground strip for native SNES El Castillo fighting stage. Reference image is location/style context ONLY; do not redraw buildings or people.\nCreate only an uninterrupted wide horizontal ground plane of large rectangular courtyard flagstone pavers in shallow arcade perspective. Fill entire wide 3:1 canvas with paving, no horizon, no lawn, no props, no walls, no characters, no text. Three staggered courses of large slightly irregular rectangular cut stone, each stone broad and calm, about eight stones per row. Rows gently grow taller toward foreground; thin perspective joints converge very slightly toward the top. Distinct from an office sidewalk: staggered masonry, occasional clipped corner, one or two broad flat shade patches per stone, NO pebbles or grain. Clean chunky restrained 1990s SNES arcade raster art. Strict TWO flat opaque blue-gray tones only: #8B94B4 and #ACBDD5. Main broad paver faces mostly #8B94B4 with a few #ACBDD5 faces/edge accents to make the stone courses readable. No black outlines or gradients. The entire image will reduce to 256x32 native pixels: sparse broad forms and joints roughly one native pixel wide, not tiny busy texture. Upper edge is one continuous natural paving joint where it meets the lawn from the reference. Left/right edges must tile horizontally into uninterrupted paving without a border or abrupt vertical seam. Calm material under colorful fighters; no checkerboard, no strong contrast."
+  ],
+  "source_hashes": {
+    "01-castillo.png": "ff533b755543f7b6af5cc85ceb89c657580e40c71f7e52e6fd34e01132e9584e"
+  },
+  "palette_sha256": "f99e1aad1efa10318c6c61a54c598518ffc723e22afbe7a5ecd502c57d2d507e",
+  "processing": {
+    "source_size": "full raw image retained",
+    "native_size": [
+      256,
+      32
+    ],
+    "resampling": "BOX full authored floor",
+    "palette_indices": [
+      6,
+      7
+    ],
+    "quantization": "MEDIANCUT two authored tonal groups mapped by luminance to existing opaque UI blue-grays, no dithering",
+    "native_geometry": "all paving/carpet joints authored by imagegen; no procedural lines"
+  },
+  "original_scene_unchanged": true
+}

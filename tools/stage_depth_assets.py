@@ -18,6 +18,7 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 ART = 'assets/art/stages/depth-v1'
+FLOOR_ART = 'assets/art/stages/depth-floor-v2'
 WIDTH = 288
 
 
@@ -97,6 +98,48 @@ def load_native(root, record):
     return im.crop((x,y,x+w,y+h)).resize((WIDTH,224), Image.Resampling.NEAREST)
 
 
+def load_floor(root, record, ui_palette):
+    """Convert the complete authored apron, without drawing synthetic joints.
+
+    Two existing UI grays (CGRAM6/7) keep the floor quiet and the navy actor
+    shadows readable. BOX reduction retains authored thin paving/carpet joints;
+    nearest-color conversion has no temporal or spatial dithering.
+    """
+    floor = record['floor']
+    path, provenance = (root/floor[key] for key in ('source','provenance'))
+    for p, key in ((path,'source_sha256'),(provenance,'provenance_sha256')):
+        if not p.resolve().is_relative_to((root/FLOOR_ART).resolve()):
+            raise ValueError(('floor source outside versioned art directory',p))
+        if digest(p.read_bytes()) != floor[key]:
+            raise ValueError(('floor source/provenance hash mismatch',p))
+    data = json.loads(provenance.read_text())
+    if data['mode'] != 'built-in imagegen' or data['id'] != record['id']:
+        raise ValueError(('floor generation identity mismatch',record['id']))
+    for name, expected in data['source_hashes'].items():
+        if digest((provenance.parent/name).read_bytes()) != expected:
+            raise ValueError(('retained floor source hash mismatch',name))
+    reference = root/data['reference']
+    if digest(reference.read_bytes()) != data['reference_sha256']:
+        raise ValueError(('floor scenery reference hash mismatch',reference))
+    if digest((root/'assets/generated/ui_pal.bin').read_bytes()) != data['palette_sha256']:
+        raise ValueError('floor UI palette changed; review authored conversion')
+    size = (256,224-record['floor_seam_y'])
+    im = Image.open(path).convert('RGB').resize(size,Image.Resampling.BOX)
+    # Imagegen's requested grays can drift in luminance. First recover its
+    # two authored tonal groups, then map those complete groups to legal UI
+    # grays. Direct RGB nearest-color matching flattened the office carpet.
+    q = im.quantize(colors=2,method=Image.Quantize.MEDIANCUT,dither=Image.Dither.NONE)
+    source_palette = [tuple(q.getpalette()[i:i+3]) for i in (0,3)]
+    order = sorted(range(2),key=lambda i:sum(source_palette[i]))
+    mapping = {order[0]:2,order[1]:3}
+    values = [mapping[v] for v in q.get_flattened_data()]
+    native = Image.new('RGB',size)
+    native.putdata([ui_palette[v+4] for v in values])
+    return native, {**floor,'native_size':list(size),'cgram_indices':[6,7],
+                    'source_tone_centers':source_palette,
+                    'resampling':'BOX full authored floor; MEDIANCUT two tones mapped to UI grays; no crop, synthetic geometry or dithering'}
+
+
 def build_stage(root, record, ui_palette):
     im = load_native(root, record)
     seam = record['floor_seam_y']
@@ -131,9 +174,10 @@ def build_stage(root, record, ui_palette):
     floor_qs = [quantizer(bank) for bank in banks]
     floor_gfx = bytearray(16);floor_lookup = {bytes(16):0};floor_map = [0]*1024
     floor_error = 0
+    authored_floor, floor_metadata = load_floor(root,record,ui_palette)
     for y in range(seam,224,8):
         for x in range(0,256,8):
-            t = im.crop((x+16,y,x+24,y+8))
+            t = authored_floor.crop((x,y-seam,x+8,y-seam+8))
             candidates = []
             pixels = list(t.get_flattened_data())
             for bank,q in zip(banks,floor_qs):
@@ -158,6 +202,7 @@ def build_stage(root, record, ui_palette):
                 'source_sha256':record['source_sha256'],'native_canvas':[288,224],
                 'viewport':[16,0,272,224],'camera_range':[-8,8],'edge_gutters':16,
                 'floor_seam_y':seam,'bg1_tiles':len(gfx)//32,'bg3_tiles':len(floor_gfx)//16,
+                'authored_floor':floor_metadata,
                 'ambient_enabled':False,'floor_quantization_rms':(floor_error/(256*(224-seam)*3))**0.5,
                 'outputs':{n:{'bytes':len(v),'sha256':digest(v)} for n,v in outputs.items()}}
     return outputs, preview, metadata
