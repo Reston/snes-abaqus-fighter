@@ -846,13 +846,6 @@ u8 canHit(u8 p) {
     if(d->invuln)return 0;
     if(!d->hp)return 0;
     dx=d->x-f->x;
-    /* Both poses fit the same 96px canvas centered on x. Disjoint canvases
-     * cannot contain overlapping strike/hurt rectangles, on either facing.
-     * Reject before any active-pose lookup/far-ROM geometry reads. In
-     * particular, simultaneous remote supers must not pay that hot path
-     * for every pulse. This conservative gate changes no contact boundary. */
-    if(dx>=ACTOR_FRAME_W*16)return 0;
-    if(dx<=-ACTOR_FRAME_W*16)return 0;
     rear=0;
     if(dx>0 && !f->face)rear=1;
     if(dx<0 && f->face)rear=1;
@@ -861,6 +854,11 @@ u8 canHit(u8 p) {
         if(!superPhase[p])return 0;
         if(f->tick>=superContactEnd[p])return 0;
         if(rear)return 0;
+        /* Both 96px pose canvases must overlap for a direct super strike.
+         * Reject impossible remote pulses before active-pose/far-ROM reads.
+         * Keep volley, startup, ordinary strike and throw paths unchanged. */
+        if(dx>=ACTOR_FRAME_W*16)return 0;
+        if(dx<=-ACTOR_FRAME_W*16)return 0;
         return contactStrike(p,0);
     }
     if(f->action==7 && (c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE))return 0;
