@@ -29,9 +29,11 @@ The only production code edit is in `src/animation_weight.h`:
   guard does not show an unsolicited impact pose.
 - Hurt uses backward impact `10` until the final six stun ticks, then recovery
   `41`. Both existing timers freeze during pause/hitstop.
-- Cross, grounded kick/sweep and cast switch to their authored retraction at
-  the native active-end boundary. Cross/kick/sweep previously held the contact
-  drawing two ticks into recovery; cast held it seven ticks into recovery.
+- Cross and grounded kick/sweep switch to their authored retraction at the
+  native active-end boundary. They previously held the contact drawing two
+  ticks into recovery. Projectile/groundwave casts retain their existing
+  seven-tick release hold before `43` retraction: their one-tick emit window
+  must remain visible across the alternating one-actor-per-vblank DMA.
 
 Active contact mappings are unchanged, explicitly for contact PR #15:
 
@@ -80,3 +82,8 @@ Validation results and exact tested identities are in
 timing is a cumulative 10/20 ms approximation to native NTSC playback.
 Human review of the combined animation and contact alignment remains with
 the parent playtest PR.
+
+The stronger active-VRAM check found that immediate cast retraction could
+skip P2's release art during simultaneous casts. That isolated regression
+(`b8ad1631...15a08`) was repaired by restoring the established release hold;
+the assertion that each port actually uploads its active pose remains enabled.

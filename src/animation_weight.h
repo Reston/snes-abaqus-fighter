@@ -129,7 +129,10 @@ void animateFighter(u8 p) {
             }
             else if(c->specialFamily==SPECIAL_RISING)f->animFrame=hold?44:(recover?45:13);
             else {
-                f->animFrame=hold?42:(recover?43:12);
+                /* The projectile emits on one tick, but two actors share one
+                 * pose upload per vblank. Keep its authored release hold so
+                 * neither port can lose the cast before VRAM publishes it. */
+                f->animFrame=hold?42:(tick<end+7?12:43);
                 if(recover && tick+4>=f->actionEnd)f->animFrame=32;
             }
         } else if(action==8)f->animFrame=hold?44:(recover?45:13);

@@ -153,7 +153,16 @@ def scenario(rom,fighter,table,base=False):
                     check(active and all(r[f'anim_frame{port}']==expect for r in active),'active frame ID aligns exactly with contact window',[fighter,port,label,expect])
                     check(any(r[f'uploaded{port}']==expect for r in rows),'contact pose reaches actual actor VRAM on both ports',[fighter,port,label,expect])
                     recovery=[r for r in seq if r[f'tick{port}']>=r[f'active_end{port}']]
-                    check(recovery and all(r[f'anim_frame{port}']!=expect for r in recovery),'active contact drawing retracts when recovery starts',[fighter,port,label])
+                    if label=='special' and expect==12:
+                        # Projectile active lasts one tick. Its established
+                        # release hold must survive the alternating actor DMA,
+                        # then visibly retract and reclaim guard before expiry.
+                        release=[r for r in recovery if r[f'tick{port}']<r[f'active_end{port}']+7 and r[f'tick{port}']+4<r[f'action_end{port}']]
+                        retract=[r for r in recovery if r[f'tick{port}']>=r[f'active_end{port}']+7 and r[f'tick{port}']+4<r[f'action_end{port}']]
+                        check(release and all(r[f'anim_frame{port}']==12 for r in release),'one-tick cast keeps its native release hold for alternating DMA',[fighter,port,label])
+                        check(retract and all(r[f'anim_frame{port}']==43 for r in retract),'cast retracts after release hold before neutral',[fighter,port,label])
+                    else:
+                        check(recovery and all(r[f'anim_frame{port}']!=expect for r in recovery),'active contact drawing retracts when recovery starts',[fighter,port,label])
                     check(any(r[f'tick{port}']<r[f'startup{port}'] for r in seq),'anticipation precedes contact',[fighter,port,label])
                     check(rows[-1][f'action{port}']==0,'complete sequence returns to neutral',[fighter,port,label])
         for port in (0,1):
