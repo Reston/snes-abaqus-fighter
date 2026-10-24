@@ -4,7 +4,13 @@
   "integration_branch": "integration/readable-combat-v024",
   "final_pr": "https://github.com/Reston/snes-abaqus-fighter/pull/14",
   "feature_prs": {
-    "pacing": {"branch": "t3/combat-pacing-recoil", "merged": false},
+    "pacing": {
+      "branch": "t3/combat-pacing-recoil",
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/20",
+      "head": "f62ce580699092f5fd177ffd1db17aa6c71cfacb",
+      "merge_commit": "88f6edd72ce617907b3591d73dd6a8f60f127c1f",
+      "merged": true
+    },
     "attacks": {
       "branch": "t3/grounded-attack-art",
       "url": "https://github.com/Reston/snes-abaqus-fighter/pull/19",
