@@ -40,3 +40,17 @@ The first focused checkpoint passes 72 drill/port/fighter combinations and
 and zero cadence, OBJ or audio failures. Reset work and guide construction
 run on separate frames after an initial prototype exposed a one-frame stall;
 the failed prototype report remains under ignored build diagnostics.
+
+## Pass 3: full super-meter cue
+
+A full 96-energy gauge adds **SUPER Y+B** beneath its own health/energy bars.
+The gold command cue occupies the existing HUD bottom rule, leaving the mode
+label and round medals visible. Spending the gauge restores the rule. The
+cue communicates full meter; the existing grounded/free-to-act requirements
+still apply. No flashing or new audio is added.
+
+The focused proof naturally regenerates 95 and 96 energy, spends each port's
+meter through a real super command, and checks native bar/cue cells for all
+twelve fighters. It also checks that both cues can coexist without replacing
+the central mode label. Native cadence, OBJ and audio checks remain strict.
+The HUD stays within its original 320-byte transfer and uses no new art/RAM.

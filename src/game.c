@@ -353,7 +353,7 @@ void showArenas(void) { setScreenOff();screen=ARENA;commonScreen();loadBackgroun
 #include "arcade_story.h"
 
 void hud(void) {
-    u8 p;
+    u8 p,x;
     Fighter *f;
     /* A recovery refresh can precede the periodic refresh in the same tick.
      * Check direct fields before entering the indexed changed-field path. */
@@ -369,8 +369,16 @@ void hud(void) {
             hudDirty=1;
         }
         if(hudEnergy[p]!=f->energy) {
-            hudEnergy[p]=f->energy;
             refreshEnergyBar(p);
+            /* Full gauge teaches the command in the existing bottom rule.
+             * Only threshold transitions touch these nine cached cells. */
+            if(f->energy==ENERGY_MAX) {
+                word(p?22:1,4,"SUPER Y+B");
+                for(x=p?22:1;x<(p?31:10);x++)ui[128+x]|=0x0400;
+            } else if(hudEnergy[p]==ENERGY_MAX || hudEnergy[p]==255) {
+                for(x=p?22:1;x<(p?31:10);x++)ui[128+x]=158|0x2000;
+            }
+            hudEnergy[p]=f->energy;
             hudDirty=1;
         }
         if(hudWins[p]!=f->won) {

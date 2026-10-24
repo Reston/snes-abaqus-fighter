@@ -200,9 +200,93 @@ def training_drills():
         Emulator.run = original
 
 
+def meter_feedback():
+    import test_pacing_floor_25 as monitor
+    original = Emulator.run
+
+    def singles(e, count=1, *args, **kwargs):
+        for _ in range(count):
+            s = monitor.monitored_run(e, 1, *args, **kwargs)
+        return s if count else e.state()
+
+    def verify(e, full, label):
+        # TRACE is published before the serialized HUD DMA. Observe its
+        # actual bounded publication rather than comparing yesterday's PPU.
+        for settled in range(5):
+            s = inputs.trace(e)
+            memory = presentation.vram_bytes(e)
+            ready = all([inputs.bg2_tile(memory, (30 - i) if port else (1 + i), 3) for i in range(12)] ==
+                        inputs.status_bar_expected(s[f'energy{port + 1}'], 12, inputs.ENERGY_TILE,
+                                                   inputs.P2_STATUS_ATTR if port else inputs.P1_STATUS_ATTR, False)
+                        for port in (0, 1))
+            if ready:
+                break
+            e.run(1)
+        require(ready, 'energy-bar publication settles within four native callbacks', [label, settled])
+        memory = presentation.vram_bytes(e)
+        for port, x in enumerate((1, 22)):
+            expected = [(256 + ord(c)) | 0x2400 for c in 'SUPER Y+B'] if full[port] else [158 | 0x2000] * 9
+            actual = [inputs.bg2_tile(memory, x + index, 4) for index in range(9)]
+            require(actual == expected, 'native full-meter cue and restored rule match the observed threshold',
+                    {'port': port, 'label': label, 'actual': actual, 'expected': expected})
+        center = [inputs.bg2_tile(memory, x, 4) for x in range(12, 20)]
+        require(center == [(256 + ord(c)) | 0x2000 for c in 'P1 VS P2'],
+                'super cues retain the central mode label', center)
+        inputs.check_status_bars(e, inputs.trace(e), label)
+
+    rows = []
+    Emulator.run = singles
+    try:
+        for fighter in range(12):
+            e = inputs.boot(1, fighter=fighter, fighter2=fighter)
+            try:
+                e.run(16)
+                verify(e, (False, False), 'round start')
+                for _ in range(800):
+                    s = inputs.trace(e)
+                    if s['energy1'] == s['energy2'] == 95:
+                        break
+                    e.run(1)
+                else:
+                    raise AssertionError(('natural meter did not reach 95', inputs.trace(e)))
+                e.run(3)
+                require(inputs.trace(e)['energy1'] == inputs.trace(e)['energy2'] == 95,
+                        'threshold-negative frame remains below full gauge', fighter)
+                verify(e, (False, False), '95 energy')
+                for _ in range(40):
+                    if inputs.trace(e)['energy1'] == inputs.trace(e)['energy2'] == 96:
+                        break
+                    e.run(1)
+                e.run(2)
+                verify(e, (True, True), '96 energy')
+                if fighter == 0:
+                    path = OUT / 'super-ready.png'
+                    e.frame.save(path)
+                # Each controller independently spends its own full gauge.
+                e.run(1, p1=['y', 'b'])
+                require(inputs.trace(e)['energy1'] == 0 and inputs.trace(e)['energy2'] == 96,
+                        'P1 cue corresponds to a real accepted full-gauge command', fighter)
+                e.run(16)
+                verify(e, (False, True), 'only P1 spent')
+                e.run(1, p2=['y', 'b'])
+                require(inputs.trace(e)['energy2'] == 0,
+                        'P2 cue corresponds to a real accepted full-gauge command', fighter)
+                e.run(16)
+                verify(e, (False, False), 'both spent')
+                e.run(220)
+                rows.append({'fighter': fighter, 'ports': [0, 1], 'thresholds': [95, 96, 0], 'passed': True})
+            finally:
+                e.close()
+            print(json.dumps({'part': 'meter', 'fighter': fighter, 'status': 'passed'}), flush=True)
+        require(not monitor.HEALTH['failures'], 'meter feedback preserves strict native cadence audio and OBJ budgets', monitor.HEALTH)
+        return {'cases': rows, 'native_health': monitor.HEALTH, 'native_checks': list(monitor.CHECKS.values())}
+    finally:
+        Emulator.run = original
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--part', choices=('results', 'training'), required=True)
+    parser.add_argument('--part', choices=('results', 'training', 'meter'), required=True)
     parser.add_argument('--report', type=Path)
     args = parser.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
@@ -220,7 +304,7 @@ def main():
                 'proof uses the exact current cartridge')
         require(sha((ROOT / '.tools/core/snes9x_libretro.dll').read_bytes()).lower() == EXPECTED_NATIVE_CORE['dll_sha256'].lower(),
                 'actual expanded native core matches its pin')
-        report['result'] = {'results': result_routes, 'training': training_drills}[args.part]()
+        report['result'] = {'results': result_routes, 'training': training_drills, 'meter': meter_feedback}[args.part]()
         require(source_hashes() == before, 'production and harness inputs remain fixed during proof')
         report['status'] = 'passed'
     except Exception as error:
