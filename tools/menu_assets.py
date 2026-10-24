@@ -1,7 +1,7 @@
 """Original code-authored arcade menus for the native SNES interface.
 
-The title uses original slanted bitmap lettering. Character selection puts a
-Natural Earth world silhouette above a six-by-two roster, with the existing
+The title uses original slanted bitmap lettering. Character selection puts an
+Abaqus office panorama above a six-by-two roster, with the existing
 64x80 profile and 32x40 portraits retained. The live C renderer owns player
 markers, names, controls and confirmation. Arena landmark crops stay intact.
 
@@ -17,13 +17,12 @@ Public contract::
 center=False)``.  The function does not write files or mutate its inputs.
 """
 
-import hashlib
 import json
 from pathlib import Path
 import struct
 from typing import Any, Callable, Mapping, Sequence
 
-from PIL import Image, ImageDraw, ImageEnhance, ImageFilter
+from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageOps
 
 
 Size = tuple[int, int]
@@ -96,41 +95,17 @@ def _rule(im: Image.Image, xy: tuple[int, int, int, int], color=BLUE_LINE) -> No
     ImageDraw.Draw(im).line(xy, fill=color, width=1)
 
 
-def _world(root: Path, size: Size, land, ocean, shore) -> Image.Image:
-    """Rasterize the retained public-domain land data, never an invented map."""
-    folder = root / "assets/art/menu/classic-v1"
-    source = (folder / "world-land.geojson").read_bytes()
-    metadata = json.loads((folder / "source.json").read_bytes())
-    if hashlib.sha256(source).hexdigest() != metadata["sha256"]:
-        raise ValueError("Classic menu world source differs from its recorded hash")
-    data = json.loads(source)
-    if data.get("type") != "FeatureCollection" or len(data["features"]) != 127:
-        raise ValueError("Unexpected Natural Earth land inventory")
-    im = Image.new("RGB", size, ocean)
-    d = ImageDraw.Draw(im)
-    width, height = size
-    def project(point):
-        longitude, latitude = point[:2]
-        return (round((longitude + 180) / 360 * (width - 1)),
-                round((85 - latitude) / 145 * (height - 1)))
-    for x in range(0, width, max(1, width // 12)):
-        d.line((x, 0, x, height - 1), fill=BLUE_SOFT)
-    for y in range(0, height, max(1, height // 5)):
-        d.line((0, y, width - 1, y), fill=BLUE_SOFT)
-    for feature in data["features"]:
-        geometry = feature["geometry"]
-        if geometry["type"] == "Polygon":
-            polygons = [geometry["coordinates"]]
-        elif geometry["type"] == "MultiPolygon":
-            polygons = geometry["coordinates"]
-        else:
-            raise ValueError("Land must contain polygon geometry")
-        for polygon in polygons:
-            for index, ring in enumerate(polygon):
-                d.polygon([project(point) for point in ring],
-                          fill=land if index == 0 else ocean,
-                          outline=shore if index == 0 else None)
-    return im
+def _office_backdrop(stage: Image.Image, size: Size, *, quiet: bool = False) -> Image.Image:
+    """Reuse the game's authored office windows, skyline and trading desks.
+
+    Aspect-matched crops keep the architecture intact. A restrained gold
+    duotone fits the menu palette; the title version stays behind its logo.
+    """
+    source = _rgb_image(stage)
+    box = (0, 40, 256, 143) if quiet else (0, 50, 256, 140)
+    crop = source.crop(box).resize(size, Image.Resampling.BOX)
+    gray = ImageOps.posterize(ImageOps.grayscale(crop), 3)
+    return ImageOps.colorize(gray, (24, 19, 14), (78, 58, 32) if quiet else (193, 152, 86))
 
 
 def _arcade_word(im: Image.Image, text_fn: TextFn, words: str,
@@ -158,9 +133,9 @@ def _arcade_word(im: Image.Image, text_fn: TextFn, words: str,
     im.paste(color, (x, y), mask)
 
 
-def _title(root: Path, text_fn: TextFn) -> Image.Image:
+def _title(office: Image.Image, text_fn: TextFn) -> Image.Image:
     im = _gradient((37, 29, 19), (11, 10, 9))
-    im.paste(_world(root, (224, 90), (61, 46, 27), (28, 23, 17), (94, 70, 36)), (16, 16))
+    im.paste(_office_backdrop(office, (224, 90), quiet=True), (16, 16))
     _arcade_word(im, text_fn, "ABAQUS", 25, 5, (255, 246, 187), (239, 146, 40))
     _arcade_word(im, text_fn, "AFTER HOURS", 75, 2, WHITE, GOLD)
     _text(text_fn, im, (128, 114), "OFFICE FIGHTERS", MUTED, center=True)
@@ -178,11 +153,11 @@ def _portrait(item: Mapping[str, Any]) -> Image.Image:
     return Image.new("RGB", (32, 40), BLUE)
 
 
-def _select(root: Path, roster: Sequence[Mapping[str, Any]], text_fn: TextFn) -> Image.Image:
+def _select(office: Image.Image, roster: Sequence[Mapping[str, Any]], text_fn: TextFn) -> Image.Image:
     im = _gradient((33, 27, 20), (12, 10, 9))
     d = ImageDraw.Draw(im)
     _arcade_word(im, text_fn, "PLAYER SELECT", 3, 2)
-    im.paste(_world(root, (160, 56), (124, 94, 48), (30, 25, 18), (187, 145, 73)), (88, 32))
+    im.paste(_office_backdrop(office, (160, 56)), (88, 32))
     d.rectangle((7, 23, 72, 104), outline=BLUE_LINE)
     _rule(im, (88, 92, 247, 92), BLUE_LINE)
     # Six by two, 40x56 cells. The 12px top inset reserves a separate badge
@@ -312,10 +287,12 @@ def make_menu_images(root: str | Path, stages: Sequence[Image.Image],
 
     if not callable(text):
         raise TypeError("make_menu_images requires the project's pixel text callback")
-    root_path = Path(root)
+    if len(stages) != 3:
+        raise ValueError("Menu backdrops require the three current native stages")
+    office = stages[2]
     return {
-        "title": _title(root_path, text),
-        "select": _select(root_path, roster, text),
+        "title": _title(office, text),
+        "select": _select(office, roster, text),
         "arenas": _arenas(stages, text),
     }
 

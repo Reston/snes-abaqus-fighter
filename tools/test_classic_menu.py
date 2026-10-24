@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import ctypes as C
+import argparse
 import hashlib
 import io
 import json
@@ -124,6 +125,17 @@ def run_core(independent, syms):
                 require(image is not None and image.size == (256, 224), 'Native menu video', label)
                 entry = {'mode': mode, 'label': label, 'state': host.state(),
                          'rgb_sha256': sha(image.tobytes())}
+                if label == 'title' or label.startswith('p') or label == 'mirror':
+                    plate = 'title' if label == 'title' else 'select'
+                    box = (16, 16, 240, 106) if plate == 'title' else (88, 32, 248, 88)
+                    with Image.open(ROOT / f'assets/generated/{plate}.png') as reference:
+                        # The preview precedes BGR555 encoding; compare the
+                        # hardware's five-bit channel values in RGB space.
+                        encoded = reference.convert('RGB').point(lambda value: (value >> 3) * 255 // 31)
+                        delta = presentation.image_delta(image.crop(box), encoded.crop(box))
+                    require(delta['max_channel_delta'] <= 3,
+                            'Native backdrop matches the generated menu plate', [label, delta])
+                    entry['backdrop_pixels'] = delta
                 if save:
                     path = CAPTURES / engine / f'mode{mode}-{label}.png'
                     path.parent.mkdir(parents=True, exist_ok=True)
@@ -178,6 +190,14 @@ def run_core(independent, syms):
 
 
 def main():
+    global REPORT, CAPTURES
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--report', type=Path, default=REPORT)
+    parser.add_argument('--captures', type=Path, default=CAPTURES)
+    args = parser.parse_args()
+    REPORT = (ROOT / args.report).resolve()
+    CAPTURES = (ROOT / args.captures).resolve()
+    REPORT.parent.mkdir(parents=True, exist_ok=True)
     start = time.monotonic()
     dependencies = {name: sha((ROOT / name).read_bytes()) for name in DEPENDENCIES}
     manifest = json.loads((ROOT / 'dist/manifest.json').read_bytes())
@@ -203,7 +223,7 @@ def main():
         raise
     finally:
         report['seconds'] = round(time.monotonic() - start, 3)
-        REPORT.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+        REPORT.write_bytes((json.dumps(report, indent=2) + '\n').encode('utf-8'))
     print(json.dumps({name: report[name] for name in ('status', 'version', 'rom_sha256', 'seconds')}))
 
 
