@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "scope": "stage-depth-v1",
+  "baseline_commit": "3f51120",
+  "stages": [
+    {
+      "id": 0,
+      "name": "Las Condes",
+      "floor_seam_y": 184,
+      "source": "assets/art/stages/depth-v1/00-las-condes.png",
+      "source_sha256": "4f3191e9acee6b4beb0670fb8f12d6145f7d96cd7a555312c082d1952fc94094",
+      "provenance": "assets/art/stages/depth-v1/00-las-condes.json",
+      "provenance_sha256": "96b385badfdf50c8eed9762373366678dbe0324a46a5c72ad5d853d0b02e639b"
+    },
+    {
+      "id": 1,
+      "name": "El Castillo",
+      "floor_seam_y": 192,
+      "source": "assets/art/stages/depth-v1/01-castillo.png",
+      "source_sha256": "d0301011c017370058308c4c8519dedd540fadcd1253fa3d2fec17594df27bdf",
+      "provenance": "assets/art/stages/depth-v1/01-castillo.json",
+      "provenance_sha256": "e008cd94e52d4abec02ed537ce3d668e5e8abbaf9d4bd8e59907bbd70dede408"
+    },
+    {
+      "id": 2,
+      "name": "La Oficina",
+      "floor_seam_y": 184,
+      "source": "assets/art/stages/depth-v1/02-oficina.png",
+      "source_sha256": "f4c617d58903f77b4a1643e5664c1f70b26a4320fecf7d663c5379f12e1dfa6f",
+      "provenance": "assets/art/stages/depth-v1/02-oficina.json",
+      "provenance_sha256": "71b2d1ad1a43001f28e0a741dc33129de84ee45fd6d8e4b80d5bc0b04a98e27d"
+    }
+  ]
+}

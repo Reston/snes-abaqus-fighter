@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "id": 2,
+  "name": "La Oficina",
+  "mode": "built-in imagegen",
+  "reference": "assets/art/stages/02-oficina-cartoon-v2.png",
+  "input_roles": [
+    {
+      "file": "assets/art/stages/02-oficina-cartoon-v2.png",
+      "role": "location and arcade style reference"
+    }
+  ],
+  "prompts": [
+    "Use case: stylized-concept\nAsset type: new native SNES La Oficina stage master designed as TWO coherent hardware background planes. Reference image is location/style reference. Wide9:7 original early1990s arcade cartoon office: actual open-plan rows of desks and dark rolling chairs, navy exposed ceiling and linear warm LED lights, teal/blue windows with blocky city outside, tiny anonymous coworkers at desks. Preserve iconic pair of foreground desktop monitors reading exactly11 on left and8.1 on right in dark navy frames with pale cyan screens. Broad clean cel colors and strong navy contours, large readable shapes, no grain or fine texture. Whole desks, chair wheels, cabinets, plant pots and people are one connected distant scenery plane and MUST end above76percent canvas height. Broad empty quiet neutral gray-blue floor apron across full bottom24percent; lowest18percent has only subtle HORIZONTAL parallel floor seams, NO vertical/diagonal/perspective lines, no reflections, no props, no shadows in fight lane. Natural straight horizontal floor joint at82percentheight. Game will move ENTIRE office plane up to8nativepixels behind fixed bottom40pixel floor, never split furniture. Author16nativepixels extra edge continuation each side, all important monitors and chairs within center256of288. Quiet top18percent HUD-safe area. No foreground fighters, no UI, no branding, no watermark, no other text. Wide9:7 opaque scene."
+  ],
+  "sources": [
+    "02-oficina.png"
+  ],
+  "processing": {
+    "crop": "single centered9:7 isotropic scene crop",
+    "native_canvas": [
+      288,
+      224
+    ],
+    "resampling": "nearest",
+    "whole_architecture_plane": [
+      0,
+      40,
+      288,
+      184
+    ],
+    "fixed_pavement": [
+      16,
+      184,
+      272,
+      224
+    ],
+    "top40": "fully occluded by existing opaque HUD"
+  },
+  "source_hashes": {
+    "02-oficina.png": "f4c617d58903f77b4a1643e5664c1f70b26a4320fecf7d663c5379f12e1dfa6f"
+  },
+  "reference_sha256": "d40612a3d47761d8c5dc735ed764c311ae9ac83ec44dbe8040df36b6b24fe9cc",
+  "scope": "stage-depth-v1",
+  "generation_outputs": [
+    {
+      "file": "02-oficina.png",
+      "sha256": "f4c617d58903f77b4a1643e5664c1f70b26a4320fecf7d663c5379f12e1dfa6f",
+      "generated_image_id": "exec-c0d5e2e7-09ab-4452-be93-610ffebd392a",
+      "raw_default_path": "C:/Users/user/.codex/generated_images/01a16b31-f438-7352-b9b9-168e75ef3c50/exec-c0d5e2e7-09ab-4452-be93-610ffebd392a.png",
+      "size": [
+        1422,
+        1106
+      ],
+      "selected": true
+    }
+  ]
+}

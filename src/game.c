@@ -294,9 +294,9 @@ void commonScreen(void) {
 }
 void loadBackground(u8 which) {
     switch(which) {
-    case 0:dmaCopyVram(&stage0_tiles,0,STAGE0_TILES_SIZE);dmaCopyVram(&stage0_map,0x3800,2048);dmaCopyCGram(&stage0_pal,32,192);break;
-    case 1:dmaCopyVram(&stage1_tiles,0,STAGE1_TILES_SIZE);dmaCopyVram(&stage1_map,0x3800,2048);dmaCopyCGram(&stage1_pal,32,192);break;
-    case 2:dmaCopyVram(&stage2_tiles,0,STAGE2_TILES_SIZE);dmaCopyVram(&stage2_map,0x3800,2048);dmaCopyCGram(&stage2_pal,32,192);break;
+    case 0:dmaCopyVram(&stage0_tiles,0,STAGE0_TILES_SIZE);dmaCopyVram(&stage0_map,0x3800,STAGE0_MAP_SIZE);dmaCopyCGram(&stage0_pal,32,192);break;
+    case 1:dmaCopyVram(&stage1_tiles,0,STAGE1_TILES_SIZE);dmaCopyVram(&stage1_map,0x3800,STAGE1_MAP_SIZE);dmaCopyCGram(&stage1_pal,32,192);break;
+    case 2:dmaCopyVram(&stage2_tiles,0,STAGE2_TILES_SIZE);dmaCopyVram(&stage2_map,0x3800,STAGE2_MAP_SIZE);dmaCopyCGram(&stage2_pal,32,192);break;
     case 3:dmaCopyVram(&title_tiles,0,TITLE_TILES_SIZE);dmaCopyVram(&title_map,0x3800,2048);dmaCopyCGram(&title_pal,32,192);break;
     case 4:dmaCopyVram(&select_tiles,0,SELECT_TILES_SIZE);dmaCopyVram(&select_map,0x3800,2048);dmaCopyCGram(&select_pal,32,192);break;
     default:dmaCopyVram(&arenas_tiles,0,ARENAS_TILES_SIZE);dmaCopyVram(&arenas_map,0x3800,2048);dmaCopyCGram(&arenas_pal,32,192);break;
@@ -305,7 +305,7 @@ void loadBackground(u8 which) {
         if(which==0)ambientData=&stage0_ambient;
         else if(which==1)ambientData=&stage1_ambient;
         else ambientData=&stage2_ambient;
-        dmaCopyVram(ambientData,AMBIENT_VRAM,AMBIENT_BYTES);
+        stageDepthLoad(which);
     }
 }
 void finishScreen(void) { dmaCopyVram((u8 *)ui,0x5800,2048);fullDirty=0;footerDirty=0;setScreenOn(); }
@@ -1192,12 +1192,9 @@ void fightTick(void) {
     else {
         combat();animationAdvance=1;
         stageDepthTrack();
-        /* Four restrained phases, one beat per sixteen live fight ticks.
-         * Intro, pause, impact freeze and round results keep the scene still. */
-        ambientClock++;
-        if(ambientWanted<4 && ambientAge<255)ambientAge++;
-        if(((ambientClock>>4)&3)!=ambientPhase)ambientWanted=(ambientClock>>4)&3;
-        else {ambientWanted=255;ambientAge=0;}
+        /* v0.24 planes are static art: only the bounded scenery look moves.
+         * The old ambient destination is now the wide BG1 map's right half.
+         * Keep its trace fields quiet instead of requesting an unsafe DMA. */
     }
     if(animationAdvance)fightClock++;
     if((frame&15)==0 && !impactHudPending && !roundBannerPending)hud();
