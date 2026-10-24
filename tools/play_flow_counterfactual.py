@@ -68,7 +68,7 @@ def validate(root, record):
 
 def prepare(root):
     root = Path(root).resolve()
-    with workspace_lock(root, 'feedback-reference.lock'):
+    with workspace_lock(root, 'native-build.lock'):
         sources = snapshot(root)
         signature = sha(json.dumps(sources, sort_keys=True).encode())
         folder = root / 'build' / ('feedback-reference-' + signature[:16])
