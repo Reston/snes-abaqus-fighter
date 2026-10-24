@@ -375,7 +375,7 @@ def boot(rom: Path, mode: int = 2, fighter: int = 0,
         if difficulty != 1:
             q.press("l" if difficulty == 0 else "r")
         level = ("EASY", "NORMAL", "HARD")[difficulty]
-        check(level in decode_text(vram_bytes(q), 25, 26),
+        check(level in decode_text(vram_bytes(q), 24, 25),
               "Training CPU uses the difficulty selected on native home", level)
     for _ in range(mode):
         q.press("down")
@@ -388,7 +388,7 @@ def boot(rom: Path, mode: int = 2, fighter: int = 0,
         second = q.state()
         check(second["screen"] == SELECT,
               "first confirm keeps the native second roster step", second)
-        heading = decode_text(vram_bytes(q), 4, 5).strip()
+        heading = decode_text(vram_bytes(q), 3, 4)[11:19].strip()
         check(heading == ("DUMMY" if mode == 2 else "PLAYER 2"),
               "second roster names the actual player or Training dummy", heading)
         target = fighter2 if fighter2 is not None else (
@@ -1749,7 +1749,7 @@ def verify_cpu_level_controls(rom: Path) -> dict[str, object]:
         priorities.append("b")
         q.press("b")
         wait_screen(q, TITLE)
-        check(names[level] in decode_text(vram_bytes(q), 25, 26),
+        check(names[level] in decode_text(vram_bytes(q), 24, 25),
               "Training shoulder setting stays synchronized with native home difficulty", level)
         return {"cycle": cycle, "holds": holds, "opposites": opposites,
                 "held_opposites": held_opposites, "exclusions": exclusions,
@@ -1773,7 +1773,7 @@ def verify_nontraining_level_scope(rom: Path) -> list[dict[str, object]]:
             wait_screen(q, SELECT)
             q.press("b")
             wait_screen(q, TITLE)
-            text = decode_text(vram_bytes(q), 25, 26)
+            text = decode_text(vram_bytes(q), 24, 25)
             check("NORMAL" in text,
                   "Arcade/Versus paused shoulder cannot change the home difficulty",
                   {"mode": mode, "home": text})
