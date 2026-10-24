@@ -1,0 +1,161 @@
+{
+  "schema": 1,
+  "fighter_id": 11,
+  "scope": "jump-v1",
+  "reference": "assets/art/characters/11-lars/animation-airborne-v4.png",
+  "reference_sha256": "768473d5638cc7471fddcdc3cbb7dd98f2b364fad0c8bcb5b47f5f514f76feec",
+  "palette_sha256": "a157c3c1cb19914da952d6211860562c11ff31ecd04cf9ac67b5afaa0710d236",
+  "generation": "built-in image_gen; transparent_background=true",
+  "prompt": "Use case: identity-preserve. Production SNES fighter JUMP/AIR/LANDING full-body sprite atlas for SAME Lars: tall long-limbed fighter, full oval softly square face/rounded jaw, clean-shaven chin, dense wavy near-black hair/forward fringe and curved forehead lock, ice-blue open rolled-sleeve jacket, light shirt, navy trousers, practical dark shoes (reference only, preserve EXACT reference facial likeness/costume/build). Draw 16 separate connected whole figures, facing RIGHT three-quarter, polished cartoon ink/limited cel shades, compact fighting guard. EXACT 4 columns x4 rows equal cells with generous transparent gutters, no overlap. ONE consistent anatomy/head/body size throughout; bent poses become shorter naturally, never shrink individual figures. Row-major poses: 0 neutral upright guarded standing anchor at full height with knees almost straight; 1 takeoff compression both feet grounded, hips lowered, knees flexed, torso/guard coordinated; 2 upward extension after push-off, legs lengthening, toes pointed down, guard held; 3 grounded landing compression, both soles flat, knees bent, hips absorbing impact. Row2: 4 airborne punch windup compact knees/guard/shoulder coil; 5 airborne punch contact leading fist extended RIGHT with shoulder/hip rotation, rear fist guards jaw; 6 airborne punch recovery retracting fist to guard; 7 airborne kick windup raised knee/hip coil, fists guarding. Row3: 8 airborne strong side kick contact one leg extended RIGHT horizontally, other leg bent, torso balanced and fists guarding; 9 spare air-kick retraction guard; 10 compact APEX guard both knees drawn up naturally and upright torso, visibly different silhouette from upward extension; 11 DESCENT / grounded landing RELEASE half rising from squat: legs extend DOWN with both feet low, hips higher than landing squat but lower than neutral; fists at jaw. Row4: 12 neutral standing guard; 13 compact airborne guard; 14 grounded soft landing guard; 15 neutral standing guard. Full connected figures, intact collars/waists/limbs, two hands/two feet each, same costume and face all16. Each figure fits its cell with margin, no clipping. Same upright body proportions in standing anchors. No text/numbers/grid/scenery/shadow/floor/projectiles/FX/watermarks. True transparent background. Generate 1536x1536 or similarly generous square sheet.",
+  "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a16b31-f865-7e40-92ca-03baa9baec7f\\exec-618ddaf2-dc6a-4b6b-9c1b-d4c73749d23c.png",
+  "raw_output_sha256": "da6f8b41c814be0f69bd93c412272afaa53a385ee84ee2ba37e7182189fc46b3",
+  "selected_final": "assets/art/characters/11-lars/jump-v1.png",
+  "sources": [
+    {
+      "file": "assets/art/characters/11-lars/jump-v1.png",
+      "sha256": "da6f8b41c814be0f69bd93c412272afaa53a385ee84ee2ba37e7182189fc46b3",
+      "count": 16,
+      "poses": [
+        "neutral-anchor",
+        "takeoff-compression",
+        "upward-extension",
+        "landing-compression",
+        "air-punch-windup",
+        "air-punch-contact",
+        "air-punch-recovery",
+        "air-kick-windup",
+        "air-kick-contact",
+        "kick-recovery-extra",
+        "apex-guard",
+        "descent-landing-release",
+        "neutral-extra",
+        "air-guard-extra",
+        "landing-extra",
+        "neutral-extra-2"
+      ],
+      "frames": [
+        null,
+        29,
+        30,
+        31,
+        49,
+        50,
+        51,
+        52,
+        53,
+        null,
+        55,
+        54,
+        null,
+        null,
+        null,
+        null
+      ]
+    }
+  ],
+  "anchor": {
+    "source": 0,
+    "pose": 0
+  },
+  "height_target": 74,
+  "source_boxes": [
+    [
+      38,
+      11,
+      286,
+      351
+    ],
+    [
+      382,
+      62,
+      594,
+      348
+    ],
+    [
+      707,
+      8,
+      908,
+      346
+    ],
+    [
+      1027,
+      82,
+      1220,
+      347
+    ],
+    [
+      37,
+      362,
+      252,
+      659
+    ],
+    [
+      338,
+      369,
+      648,
+      643
+    ],
+    [
+      699,
+      368,
+      897,
+      637
+    ],
+    [
+      1029,
+      359,
+      1220,
+      658
+    ],
+    [
+      13,
+      678,
+      367,
+      932
+    ],
+    [
+      402,
+      678,
+      585,
+      937
+    ],
+    [
+      712,
+      672,
+      898,
+      911
+    ],
+    [
+      1027,
+      674,
+      1206,
+      962
+    ],
+    [
+      29,
+      960,
+      279,
+      1247
+    ],
+    [
+      379,
+      960,
+      565,
+      1212
+    ],
+    [
+      703,
+      990,
+      896,
+      1247
+    ],
+    [
+      996,
+      961,
+      1236,
+      1247
+    ]
+  ],
+  "native_foot_baseline": 78,
+  "conversion": "One isotropic scale HEIGHTS[fighter]/neutral-anchor height for all poses; connected source silhouettes; no per-pose resizing or body-part splice."
+}
