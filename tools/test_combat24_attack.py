@@ -151,6 +151,7 @@ def scenario(rom,fighter,table,base=False):
                     expect=frame
                     if expect is None:expect=15 if trace(e)[f'family{port}']==1 else 13 if trace(e)[f'family{port}']==3 else 12
                     check(active and all(r[f'anim_frame{port}']==expect for r in active),'active frame ID aligns exactly with contact window',[fighter,port,label,expect])
+                    check(any(r[f'uploaded{port}']==expect for r in rows),'contact pose reaches actual actor VRAM on both ports',[fighter,port,label,expect])
                     recovery=[r for r in seq if r[f'tick{port}']>=r[f'active_end{port}']]
                     check(recovery and all(r[f'anim_frame{port}']!=expect for r in recovery),'active contact drawing retracts when recovery starts',[fighter,port,label])
                     check(any(r[f'tick{port}']<r[f'startup{port}'] for r in seq),'anticipation precedes contact',[fighter,port,label])
