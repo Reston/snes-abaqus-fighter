@@ -726,10 +726,62 @@ void controls(u8 p) {
     }
 }
 
+/* 816-tcc rebuilds generic far pointers for every actor field. Specialize
+ * the two ordinary player pairs to direct WRAM operands inside this existing
+ * function section. One template retains the original contact operation order.
+ * The original generic path remains for other pairs; no global cache is added. */
+#define RESOLVE_CONTACT_AT(A,D,AI,DI) do { \
+    direction=rearRecoil?rearRecoil-1:(A).face; \
+    back=(D).face?KEY_LEFT:KEY_RIGHT; \
+    blocked=((D).keys&back) && !(D).y && !(D).action && !unblockable && (!(D).hurt || (D).guard); \
+    if(air && (D).duck)blocked=0; \
+    if(low && !(D).duck)blocked=0; \
+    if(blocked) { \
+        (D).guard=1;(D).hurt=8;dmg=dmg>14?1:0; \
+        (A).combo=0;(A).combotime=0;(A).counter=0; \
+        impactBannerCombo=0;impactBannerCounter=0; \
+    } else { \
+        (A).counter=0; \
+        /* The empty-link case only writes 255 back to the same field. */ \
+        if((D).throwVictim!=255)releaseHeldVictim(DI); \
+        if((D).action && (D).tick<(D).actionStartup) {dmg+=3;(A).counter=1;} \
+        /* Only an uninterrupted hit reaction links a true combo.  The \
+         * display timer is cosmetic and must never establish a link. */ \
+        if((D).hurt && !(D).guard && (A).combo)(A).combo++;else (A).combo=1; \
+        (A).combotime=45;applyHitReaction(DI,dmg); \
+        back=(A).energy+8; \
+        (A).energy=back>ENERGY_MAX?ENERGY_MAX:back; \
+        impactBannerCombo=(A).combo;impactBannerCounter=(A).counter; \
+    } \
+    /* Snapshot feedback now; construct its tilemap after the first frozen \
+     * HUD tick, away from contact physics and the new actor pose uploads. */ \
+    impactBannerPlayer=AI;impactBannerPending=1;impactSettle=1; \
+    back=(D).hp; \
+    if(dmg>=back)(D).hp=0;else (D).hp=back-dmg; \
+    if(mode==2) { \
+        back-=(D).hp; \
+        if(!AI && !blocked)TRAINING_PLAYER_HIT(back); \
+        else trainingContact(AI,blocked,low,back); \
+    } \
+    BEGIN_RECOIL_AT(&(D),DI,direction,impactAction,blocked); \
+    if(beginImpact(impactAction,blocked,direction)) { \
+        fxX=((D).x>>4)+(direction?-12:6); \
+        fxY=FLOOR+((D).y>>4)-(low?22:((D).duck?32:53)); \
+        /* Match the strongest owned trade effect with its one queued cue. */ \
+        soundImpact(blocked?SOUND_GUARD:((impactAction==1 || impactAction==4)?SOUND_LIGHT:SOUND_STRONG)); \
+    } \
+    /* Rebuild changed bars on the first frozen impact tick, leaving the \
+     * contact frame's CPU budget for physics, effects and actor streams. */ \
+    impactHudPending=1;return blocked?1:2; \
+} while(0)
+
 u8 hurtWithRecoil(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable,u8 rearRecoil,u8 impactAction) {
-    Fighter *a=&fighters[attacker];Fighter *d=&fighters[defender];
+    Fighter *a,*d;
     u16 back;
     u8 blocked,direction;
+    if(!attacker && defender==1) { RESOLVE_CONTACT_AT(fighters[0],fighters[1],0,1); }
+    if(attacker==1 && !defender) { RESOLVE_CONTACT_AT(fighters[1],fighters[0],1,0); }
+    a=&fighters[attacker];d=&fighters[defender];
     direction=rearRecoil?rearRecoil-1:a->face;
     back=d->face?KEY_LEFT:KEY_RIGHT;
     blocked=(d->keys&back) && !d->y && !d->action && !unblockable && (!d->hurt || d->guard);
@@ -762,7 +814,7 @@ u8 hurtWithRecoil(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable,u8
         if(!attacker && !blocked)TRAINING_PLAYER_HIT(back);
         else trainingContact(attacker,blocked,low,back);
     }
-    beginRecoil(defender,direction,impactAction,blocked);
+    BEGIN_RECOIL_AT(d,defender,direction,impactAction,blocked);
     if(beginImpact(impactAction,blocked,direction)) {
         fxX=(d->x>>4)+(direction?-12:6);
         fxY=FLOOR+(d->y>>4)-(low?22:(d->duck?32:53));
@@ -773,6 +825,7 @@ u8 hurtWithRecoil(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable,u8
      * contact frame's CPU budget for physics, effects and actor streams. */
     impactHudPending=1;return blocked?1:2;
 }
+#undef RESOLVE_CONTACT_AT
 /* A released wave keeps its own direction if its owner crosses or turns. */
 u8 hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
     u8 direction;
@@ -840,13 +893,18 @@ u8 verticalContact(Fighter *d,s16 top,s16 bottom) {
     return 1;
 }
 u8 canHit(u8 p) {
-    Fighter *f=&fighters[p];Fighter *d=&fighters[1-p];
+    Fighter *f=p?&fighters[1]:&fighters[0];
+    Fighter *d=p?&fighters[0]:&fighters[1];
     const CharacterProfile *c=combatProfiles[p];
     s16 dx;
     u8 rear;
-    if(!f->action)return 0;
-    if(f->connected)return 0;
-    if(f->hurt)return 0;
+    u16 actionTick,action,tick;
+    /* These adjacent byte pairs have compile-time Fighter ABI pins above.
+     * Read each once on the simultaneous-contact path; no state is cached
+     * between calls or across the atomic contact snapshot. */
+    actionTick=((u16 *)f)[8];action=actionTick&255;
+    if(!action)return 0;
+    if(((u16 *)f)[9])return 0; /* connected or hurt */
     if(f->downState)return 0;
     if(d->downState)return 0;
     if(d->invuln)return 0;
@@ -867,16 +925,17 @@ u8 canHit(u8 p) {
         if(dx<=-ACTOR_FRAME_W*16)return 0;
         return contactStrike(p,0);
     }
-    if(f->action==7 && (c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE))return 0;
-    if(f->tick<f->actionStartup || f->tick>=f->actionActiveEnd)return 0;
+    if(action==7 && (c->specialFamily==SPECIAL_PROJECTILE || c->specialFamily==SPECIAL_GROUNDWAVE))return 0;
+    tick=actionTick>>8;
+    if(tick<f->actionStartup || tick>=f->actionActiveEnd)return 0;
     if(rear) {
         /* Only the airborne medium kick reaches behind its locked facing.
          * Its short rear box is independent of the normal front reach. */
-        if(f->action!=5)return 0;
+        if(action!=5)return 0;
         if(!f->airAction)return 0;
         if(abs16(dx)>(16+BODY_HALF_WIDTH)*16)return 0;
     }
-    if(f->action==9) {
+    if(action==9) {
         if(f->y)return 0;
         if(d->y)return 0;
         if(d->hurt)return 0;

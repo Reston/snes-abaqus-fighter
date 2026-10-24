@@ -11,23 +11,28 @@ void clearRecoil(u8 p) {
     rearKickRecoil&=p?15:240;
 }
 
-void beginRecoil(u8 p,u8 direction,u8 action,u8 blocked) {
-    Fighter *f=&fighters[p];
-    u8 latch=direction+1,step;
-    clearRecoil(p);
-    /* Early direct-super pulses must hold their established follow-up range.
-     * Use short easing until the finisher; preserve pulse timing/reach/damage,
-     * strong impact presentation and the final knockdown's ordinary launch. */
-    if(superActive[1-p] && superPhase[1-p]<superProfiles[fighters[1-p].id].count) {
-        if(superProfiles[fighters[1-p].id].family!=SUPER_VOLLEY){action=1;latch|=8;}
-    }
-    if(blocked)step=16;
-    else if(action==1 || action==4)step=32;
-    else {latch|=4;step=64;}
-    if(p)latch<<=4;
-    rearKickRecoil|=latch;
-    f->x+=direction?step:-step;
-}
+/* Reuse hurtWithRecoil's existing victim pointer. 816-tcc does not inline a
+ * C helper, so avoid rebuilding it and pushing four byte arguments twice on
+ * simultaneous contact. This is the same immediate latch/impulse operation;
+ * recoilAction stays private so linked supers keep strong presentation. */
+#define BEGIN_RECOIL_AT(f,p,direction,action,blocked) do { \
+    u8 recoilLatch=(direction)+1,recoilStep,recoilAction=(action); \
+    u8 opponent=1-(p); \
+    const SuperProfile *recoilProfile; \
+    rearKickRecoil&=(p)?15:240; \
+    if(superActive[opponent]) { \
+        recoilProfile=&superProfiles[fighters[opponent].id]; \
+        if(superPhase[opponent]<recoilProfile->count) { \
+            if(recoilProfile->family!=SUPER_VOLLEY){recoilAction=1;recoilLatch|=8;} \
+        } \
+    } \
+    if(blocked)recoilStep=16; \
+    else if(recoilAction==1 || recoilAction==4)recoilStep=32; \
+    else {recoilLatch|=4;recoilStep=64;} \
+    if(p)recoilLatch<<=4; \
+    rearKickRecoil|=recoilLatch; \
+    (f)->x+=(direction)?recoilStep:-recoilStep; \
+} while(0)
 
 void updateRecoil(u8 p) {
     Fighter *f=&fighters[p];
