@@ -350,8 +350,54 @@ def training_reset(fighter):
 
 def clip(fighter, phase, rom=None):
     old_boot = legacy.boot;old_step = legacy.step
+    old_position = legacy.position;old_uploaded = legacy.uploaded_frame_id
     images = []
+    fixture = {'controller_only': True, 'defender_corner_px': 232, 'approach_distance_px': 28}
+    baseline_banks = []
+    if rom is not None:
+        raw = rom.read_bytes()
+        check(sha(raw) == BASE_ROM_SHA, 'historical clip uses exact approved baseline cartridge')
+        lookup = {}
+        for bank, suffix in enumerate(('', 'b', 'c', 'd', 'e', 'f', 'g', 'h')):
+            name = f'fighter{fighter:02d}{suffix}'
+            data = git_file(f'assets/generated/{name}.bin')
+            address = legacy.SYMBOLS[name]
+            offset = ((address >> 16) & 127) * 32768 + (address & 32767)
+            check(len(data) == 30720 and raw[offset:offset+len(data)] == data,
+                  'historical native bank exactly matches approved cartridge and source', name)
+            baseline_banks.append({'symbol': name, 'rom_offset': offset, 'sha256': sha(data)})
+            for pose in range(8):
+                lookup[data[pose*3840:(pose+1)*3840]] = bank*8+pose
+
+        def historical_uploaded(e, requested, side):
+            if requested != fighter:
+                raise AssertionError(('unexpected historical clip fighter', requested, fighter))
+            return lookup.get(actor_payload(e, side))
+        legacy.uploaded_frame_id = historical_uploaded
+
+    def corner_position(e, distance=28, far=False):
+        if far:
+            return old_position(e, distance=distance, far=far)
+        for _ in range(280):
+            if legacy.sample(e)['x2'] == 232*16:
+                break
+            legacy.step(e, p2=['right'])
+        else:
+            raise AssertionError('legal defender movement did not reach right corner')
+        for _ in range(280):
+            state = legacy.sample(e)
+            if abs(state['x2']-state['x1']) <= distance*16:
+                break
+            legacy.step(e, p1=['right'])
+        else:
+            raise AssertionError('legal attacker approach did not reach close corner spacing')
+        state = legacy.run(e, 3)
+        check(state['x2'] == 232*16 and abs(state['x2']-state['x1']) <= distance*16,
+              'comparison clip earns close corner fixture through both controllers', [fighter, phase])
+        fixture['initial_x_12_4'] = [state['x1'], state['x2']]
+
     legacy.boot = lambda *a, **kw: boot(*a, rom=rom, **kw)
+    legacy.position = corner_position
     def step(e, *a, **kw):
         state = old_step(e, *a, **kw)
         if (state['superActive'][0] or images) and state['frame'] % 3 == 0:
@@ -360,12 +406,16 @@ def clip(fighter, phase, rom=None):
     legacy.step = step
     try:
         result = legacy.contact(fighter, 0, capture=False)
+        result['clip_fixture'] = fixture
+        if baseline_banks:
+            result['historical_native_banks'] = baseline_banks
         path = OUT/f'{fighter:02d}-{phase}.gif'
         images[0].save(path, save_all=True, append_images=images[1:], duration=50, loop=0)
         captures.append(path)
         return result
     finally:
         legacy.boot = old_boot;legacy.step = old_step
+        legacy.position = old_position;legacy.uploaded_frame_id = old_uploaded
 
 
 def main():
