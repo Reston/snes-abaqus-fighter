@@ -1,4 +1,4 @@
-"""Read-only contact/super composition repro; not final six-feature evidence.
+"""Read-only contact/super composition proof; separate from six feature suites.
 
 Fresh counters per controller-only session preserve attribution. Failed legacy
 fixtures remain failed observations; a closer fixture is a separate experiment.
@@ -264,8 +264,8 @@ def main():
     started = time.monotonic()
     _, data = generate()
     legacy.SYMBOLS = legacy.symbols(args.rom.with_suffix('.sym').read_text())
-    report = {'status': 'failed', 'scope': 'interim-contact-plus-dedicated-super-composition',
-              'final_art_timing_rerun_required': True,
+    report = {'status': 'failed', 'scope': 'focused-contact-plus-dedicated-super-composition',
+              'combined_release_certification': False,
               'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT).decode().strip(),
               'built_runtime_source_commit': args.runtime_source,
               'source_diff_sha256': digest(subprocess.check_output(['git', 'diff', 'HEAD', '--', 'src', 'tools'], cwd=ROOT)),

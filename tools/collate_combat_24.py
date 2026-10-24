@@ -98,6 +98,36 @@ def collect(source_ref):
             require(host.get('gui_opened') is False and host.get('audio_device_opened') is False,name+' headless contract missing')
         media_files(report,media)
         records[name]={'path':path,'sha256':sha((ROOT/path).read_bytes()),'checks':count}
+    composition_path='docs/combat-24-composition-report.json'
+    composition=read(composition_path)
+    require(composition.get('status')=='passed' and composition.get('rom_sha256')==rom,
+            'Stale or failed contact/super composition proof')
+    failure_arrays(composition,'composition')
+    cases=composition.get('cases',[])
+    expected={'dedicated-simultaneous':12,'rising-pulses':24,'remote-whiff':6,
+              'startup-interrupt':6,'recovery-punish':1}
+    require(len(cases)==49 and
+            {kind:sum(row.get('kind')==kind for row in cases) for kind in expected}==expected and
+            {row['fighter'] for row in cases if row['kind']=='dedicated-simultaneous'}==set(range(12)),
+            'Composition coverage is incomplete')
+    for row in cases:
+        samples=row.get('native_counters',[])
+        require(samples and all(sample['delta']['frame']==1 and
+                sample['delta']['snes_vblank_count']==1 and sample['delta']['lag_frame_counter']==0
+                for sample in samples),'Composition native cadence differs')
+    require(composition['harness_sha256']==sha(canonical('tools/test_contact_super_composition.py',
+            (ROOT/'tools/test_contact_super_composition.py').read_bytes())),
+            'Composition producer differs')
+    records[Path(composition_path).name]={'path':composition_path,
+            'sha256':sha((ROOT/composition_path).read_bytes()),'cases':len(cases)}
+    timing_path='docs/combat-24-special-timing-report.json'
+    timing=read(timing_path)
+    require(timing.get('status')=='passed' and timing.get('version')==manifest['version'] and
+            timing.get('rom_sha256')==rom,'Stale or failed native optimization regression proof')
+    # This report deliberately retains failing historical baseline and
+    # Accuracy byte comparisons. Its counts are not pooled with current suites.
+    records[Path(timing_path).name]={'path':timing_path,'sha256':sha((ROOT/timing_path).read_bytes()),
+            'scope':'Optimization regression; historical failures retained separately'}
     stage=read('docs/stage-test-report.json')
     require(stage.get('shared_native_execution') is True and
             stage.get('focused_report')=='docs/'+FEATURES['stages'] and

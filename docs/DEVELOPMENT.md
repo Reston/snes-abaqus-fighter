@@ -61,6 +61,16 @@ hit-resolution section is 7,744 bytes within one LoROM bank; its compiler
 stack locals are 68 bytes. Preserve operation order and atomic trade snapshots
 when editing these paths. [Timing comparison and retained evidence](COMBAT-24-CONTACT-TIMING.md)
 describe the measured optimization; final combined gates are separate.
+
+Ordinary strikes reject separated 96-pixel canvases before reading their
+contact rectangles; throws and dedicated supers keep their independent paths.
+Animation uses one C template expanded for the two direct fighter addresses,
+preserving selector and write order. Its linked section is 9,200 bytes and its
+compiler stack locals are 29 bytes, compared with 6,985 and 128 before this
+optimization. No global RAM or assembly changes are needed. The
+[special timing proof](COMBAT-24-SPECIAL-TIMING.md) records the regression
+streams, state comparisons and independent-core limits.
+
 The six `COMBAT-24-*` feature notes retain implementation and isolated history.
 Use current report identities and the final verification record for combined
 claims. [Review gallery](REVIEW-v0.24.0.html) distinguishes native comparisons
