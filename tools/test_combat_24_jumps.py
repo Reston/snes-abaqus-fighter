@@ -187,7 +187,11 @@ def session(i,rom,table,base=False):
     sent=not rear;contact=None;rows=[]
     for t in range(84):
      s=state(e);crossed=(s[f'x{a}']-s[f'x{d}'])*sign>0;keys=[]
-     if not sent and ((rear and crossed) or (not rear and t>=1)):keys=[key];sent=True
+     # Telegraph one simulation step before crossing. Waiting until after
+     # crossing wastes a startup sample and can overshoot the short rear box
+     # on Cote's faster horizontal jump. Contact itself must still be rear.
+     will_cross=(s[f'x{a}']+signed16(s[f'jump_vx{a}'])-s[f'x{d}'])*sign>0
+     if not sent and rear and (crossed or will_cross):keys=[key];sent=True
      s=drive(port,keys,label=label);rows.append(s)
      # connected persists after a prior attack until the next attack starts;
      # identify a NEW contact from actual HP loss, never the stale latch.
@@ -195,6 +199,7 @@ def session(i,rom,table,base=False):
     if not (base and i in PHYSICS and rear):
      check(contact is not None and contact[f'hp{d}']<hp,'air normal produces actual contact',{'fighter':i,'port':port,'key':key,'rear':rear,'initial':{k:initial[k] for k in ('x1','x2','face1','face2','hp1','hp2')},'active':[{k:s[k] for k in ('x1','x2','y1','y2','action1','action2','anim_frame1','anim_frame2','connected1','connected2','hp1','hp2')} for s in rows if s[f'anim_frame{a}'] in (50,53)]})
     if not base:check(contact[f'anim_frame{a}']==(50 if key=='y' else 53),'contact uses dedicated active drawing',[i,port,key,rear,contact[f'anim_frame{a}']])
+    if not base and rear:check((contact[f'x{a}']-contact[f'x{d}'])*sign>0,'strong kick contacts behind locked takeoff facing',[i,port])
     check(all(s[f'face{a}']==initial[f'face{a}'] for s in rows if signed16(s[f'y{a}'])<0),'air attack locks takeoff facing',[i,port,key,rear])
     check(rows[-1][f'y{a}']==rows[-1][f'air_action{a}']==rows[-1][f'action{a}']==0,'air normal clears on landing',[i,port,key,rear])
     contacts.append({'port':port,'key':key,'rear':rear,'contact':contact})
@@ -226,6 +231,9 @@ def main():
  report={'status':'failed','scope':'isolated jump-v1 only; no combined pass claim','source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'source_files_sha256':{p:sha((ROOT/p).read_bytes()) for p in ('src/animation_weight.h','src/characters.h','tools/test_combat_24_jumps.py')},'rom_sha256':sha(candidate.read_bytes()),'baseline_commit':BASE,'baseline_rom_sha256':sha(old.read_bytes()),'command':'D:/snes-abaqus-fighter/.tools/python/python.exe tools/run_background.py --log build/combat-24-jumps.log -- D:/snes-abaqus-fighter/.tools/python/python.exe tools/test_combat_24_jumps.py','host':host_contract(),'checks':checks,'cases':[],'failures':[]}
  try:
   report['art']=art()
+  report['active_air_frames']={'punch':50,'kick':53,'active_phase_cycling':False}
+  report['rom_header_checksum']=f'{int.from_bytes(candidate.read_bytes()[0x7fde:0x7fe0],"little"):04X}'
+  report['build_command']='D:/snes-abaqus-fighter/.tools/python/python.exe tools/run_background.py --log build/jump-frozen-build.log -- D:/snes-abaqus-fighter/.tools/python/python.exe tools/build.py --assets'
   original=git('src/characters.h').decode().replace('\r\n','\n');expected=original
   for a,b in [('17,12,-84,5,-66','17,12,-96,5,-66'),('16,11,-82,4,-64','16,11,-86,4,-64'),('17,12,-80,4,-65','17,12,-86,4,-65'),('18,12,-84,6,-68','18,12,-105,6,-68')]:expected=expected.replace(a,b)
   check((ROOT/'src/characters.h').read_text()==expected,'only four measured jumpVy values differ; all other profiles/physics fields exact')
