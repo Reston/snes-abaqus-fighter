@@ -19,6 +19,7 @@ Keyboard/controller mappings are in the [player guide](PLAYER-GUIDE.md).
 
 - Local results identify the winning player even in mirror matches. Either
   pad can rematch or return to character select.
+- Round-win cards also identify P1/P2/CPU, and result cards cover the full footer.
 - Either pad can choose and confirm the Local Versus arena. Opposing
   directions cancel across controllers; Start, then B, then A wins a conflict.
 - Arena thumbnails show the current stage scenery rather than older pictures.

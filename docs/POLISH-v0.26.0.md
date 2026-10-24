@@ -138,3 +138,17 @@ countdowns, item order, cancellation, owner changes, held confirm/back and
 entry into combat without an accidental pause or attack. Two unused bytes of
 the retained stage table hold menu-only state; they clear before native combat.
 There are no new RAM symbols and all 1,318 prior addresses remain exact.
+
+## Pass 10: round and result clarity
+
+The first KO/timeout card identifies PLAYER 1, PLAYER 2 or CPU, followed by
+the fighter name. The following victory card says **P1/P2/CPU WINS THE ROUND**.
+Mirror matches are therefore clear before the final match result as well.
+Tied timeouts retain DRAW without a stale player label. Round durations,
+scores and transitions remain unchanged.
+
+The ordinary result panel now covers its bottom row, removing the distracting
+eight-pixel floor strip below the controls. All twelve fighters' earned mirror
+round wins pass on both ports, plus a real healthy tied timeout. The twenty
+result routes also pass on the updated cartridge; native cadence/OBJ/audio
+checks and actual glyph/pixel comparisons remain strict.

@@ -510,7 +510,7 @@ void showResult(u8 won) {
         sound(3);finishScreen();return;
     }
     loadBackground(arena);
-    panel(4,23);
+    panel(4,24);
     if(mode==1)center(5,"MATCH COMPLETE");
     else center(5,won?"SHIFT COMPLETE":"SHIFT OVER");
     for(x=3;x<29;x++)put(x,7,154);
@@ -1252,12 +1252,20 @@ void fightTick(void) {
         else if(roundBannerPending) {
             roundBannerPending=0;clearBanner();fillBannerPanel();
             center(10,seconds?"K.O.":"TIME OVER");
-            if(winner<2)center(12,characterNames[fighters[winner].id]);
+            if(winner<2) {
+                center(11,winner?(mode==1?"PLAYER 2":"CPU"):"PLAYER 1");
+                center(12,characterNames[fighters[winner].id]);
+            }
             else center(12,seconds?"DOUBLE K.O.":"DRAW");
             hud();
         }
         roundEnd--;
-        if(roundEnd==100) {clearBanner();fillBannerPanel();center(10,winner<2?characterNames[fighters[winner].id]:"DRAW");center(12,winner<2?"WINS THE ROUND":"TRY AGAIN");}
+        if(roundEnd==100) {
+            clearBanner();fillBannerPanel();center(10,winner<2?characterNames[fighters[winner].id]:"DRAW");
+            if(!winner)center(12,"P1 WINS THE ROUND");
+            else if(winner==1)center(12,mode==1?"P2 WINS THE ROUND":"CPU WINS THE ROUND");
+            else center(12,"TRY AGAIN");
+        }
         if(!roundEnd) {
             if(fighters[0].won>=2 || fighters[1].won>=2) {
                 resultWin=fighters[0].won>=2;

@@ -87,6 +87,8 @@ def result_routes():
                     before = len(presentation.checks)
                     presentation.verify_result_font_bank(e, inputs.trace(e))
                     presentation.verify_result_score(e, winner)
+                    require(presentation.map_row(presentation.vram_bytes(e), 27) == [0x2080] * 32,
+                            'ordinary result card covers the full bottom row without a floor strip', winner)
                     require(all(r['passed'] for r in presentation.checks[before:]),
                             'actual result PPU text identifies the winning port and both-pad controls', winner)
                     path = OUT / f'result-p{winner + 1}-mirror.png'
@@ -557,9 +559,93 @@ def manual_training():
         Emulator.run = original
 
 
+def round_clarity():
+    import test_pacing_floor_25 as monitor
+    original = Emulator.run
+
+    def singles(e, count=1, *args, **kwargs):
+        for _ in range(count):
+            s = monitor.monitored_run(e, 1, *args, **kwargs)
+        return s if count else e.state()
+
+    rows = []
+    Emulator.run = singles
+    try:
+        for fighter in range(12):
+            for port in (0, 1):
+                e = inputs.boot(1, fighter=fighter, fighter2=fighter)
+                try:
+                    side, other = str(port + 1), str(2 - port)
+                    for callbacks in range(10000):
+                        s = inputs.trace(e)
+                        if s['round_end'] and s['wins' + side] == 1:
+                            break
+                        if s['intro'] or s['round_end'] or s['hitstop']:
+                            e.run(1)
+                        elif s['action' + side] or s['hurt' + side] or s['down_state' + side]:
+                            e.run(1)
+                        else:
+                            delta = inputs.signed16(s['x' + other]) - inputs.signed16(s['x' + side])
+                            if abs(delta) > 29 * 16:
+                                e.run(1, **{'p1' if port == 0 else 'p2': ['right' if delta > 0 else 'left']})
+                            else:
+                                e.run(1, **{'p1' if port == 0 else 'p2': ['x']})
+                                e.run(1)
+                    else:
+                        raise AssertionError(('real first round did not finish', fighter, port, s))
+                    e.run(8)
+                    name = presentation.NAMES[fighter]
+                    role = 'PLAYER ' + side
+                    presentation.verify_opaque_text_rows(e, [(10, (32 - len('K.O.')) // 2, 'K.O.'),
+                        (11, (32 - len(role)) // 2, role), (12, (32 - len(name)) // 2, name)], 'first round winner')
+                    require(inputs.trace(e)['wins' + side] == 1 and inputs.trace(e)['wins' + other] == 0,
+                            'KO player identity agrees with the earned round score', [fighter, port])
+                    if fighter == 0:
+                        e.frame.save(OUT / f'round-ko-p{port + 1}.png')
+                    for _ in range(180):
+                        if inputs.trace(e)['round_end'] <= 95:
+                            break
+                        e.run(1)
+                    e.run(3)
+                    text = f'P{port + 1} WINS THE ROUND'
+                    presentation.verify_opaque_text_rows(e, [(10, (32 - len(name)) // 2, name),
+                        (12, (32 - len(text)) // 2, text)], 'round victory')
+                    require(inputs.trace(e)['round'] == 1 and inputs.trace(e)['wins' + side] == 1,
+                            'victory card retains the same round and score until its ordinary transition', [fighter, port])
+                    if fighter == 0:
+                        e.frame.save(OUT / f'round-winner-p{port + 1}.png')
+                    rows.append({'fighter': fighter, 'winner_port': port, 'earned_callbacks': callbacks,
+                                 'ko_role': role, 'victory_text': text, 'passed': True})
+                finally:
+                    e.close()
+            print(json.dumps({'part': 'rounds', 'fighter': fighter, 'status': 'passed'}), flush=True)
+        e = inputs.boot(1, fighter=0, fighter2=0)
+        try:
+            for _ in range(6200):
+                s = inputs.trace(e)
+                if s['seconds'] == 0 and s['round_end'] > 100:
+                    break
+                e.run(1)
+            e.run(8)
+            s = inputs.trace(e)
+            require(s['hp1'] == s['hp2'] == 128 and s['wins1'] == s['wins2'] == 0,
+                    'tied timeout is reached without inventing a winner', s)
+            presentation.verify_opaque_text_rows(e, [(10, (32 - len('TIME OVER')) // 2, 'TIME OVER'),
+                (12, (32 - len('DRAW')) // 2, 'DRAW')], 'tied timeout')
+            require(presentation.map_row(presentation.vram_bytes(e), 11) == [0x2080] * 32,
+                    'draw card contains no stale player-winner label')
+            e.frame.save(OUT / 'round-timeout-draw.png')
+        finally:
+            e.close()
+        require(not monitor.HEALTH['failures'], 'round clarity keeps strict native cadence audio and OBJ budgets', monitor.HEALTH)
+        return {'cases': rows, 'native_health': monitor.HEALTH, 'native_checks': list(monitor.CHECKS.values())}
+    finally:
+        Emulator.run = original
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--part', choices=('results', 'training', 'meter', 'arenas', 'arcade', 'manual'), required=True)
+    parser.add_argument('--part', choices=('results', 'training', 'meter', 'arenas', 'arcade', 'manual', 'rounds'), required=True)
     parser.add_argument('--report', type=Path)
     args = parser.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
@@ -578,7 +664,8 @@ def main():
         require(sha((ROOT / '.tools/core/snes9x_libretro.dll').read_bytes()).lower() == EXPECTED_NATIVE_CORE['dll_sha256'].lower(),
                 'actual expanded native core matches its pin')
         report['result'] = {'results': result_routes, 'training': training_drills, 'meter': meter_feedback,
-                            'arenas': local_arenas, 'arcade': arcade_orientation, 'manual': manual_training}[args.part]()
+                            'arenas': local_arenas, 'arcade': arcade_orientation, 'manual': manual_training,
+                            'rounds': round_clarity}[args.part]()
         require(source_hashes() == before, 'production and harness inputs remain fixed during proof')
         report['status'] = 'passed'
     except Exception as error:
