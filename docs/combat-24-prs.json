@@ -5,7 +5,13 @@
   "final_pr": "https://github.com/Reston/snes-abaqus-fighter/pull/14",
   "feature_prs": {
     "pacing": {"branch": "t3/combat-pacing-recoil", "merged": false},
-    "attacks": {"branch": "t3/grounded-attack-art", "merged": false},
+    "attacks": {
+      "branch": "t3/grounded-attack-art",
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/19",
+      "head": "321ad93c2e3352213c0922f40626a323bf49567d",
+      "merge_commit": "285ab2fbb030c49ee3c8bbfd2e7f54c03d1c9846",
+      "merged": true
+    },
     "contacts": {
       "branch": "t3/contact-alignment-geometry",
       "url": "https://github.com/Reston/snes-abaqus-fighter/pull/15",
@@ -21,7 +27,13 @@
       "review_status": "coherent scenery and authored floor detail reviewed; combined human playtest pending",
       "merged": true
     },
-    "jumps": {"branch": "t3/jump-landing-motion-art", "merged": false},
+    "jumps": {
+      "branch": "t3/jump-landing-motion-art",
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/18",
+      "head": "15f3c58d2cd944f5f4767ca41d87b8cd5868909b",
+      "merge_commit": "8571dfc38f7b62ddd917393c31c98358706bf25f",
+      "merged": true
+    },
     "supers": {
       "branch": "t3/dedicated-super-art",
       "url": "https://github.com/Reston/snes-abaqus-fighter/pull/17",
