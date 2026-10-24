@@ -511,13 +511,15 @@ void showResult(u8 won) {
     portraitId=id;uploadMenuPortrait();cursor(3,8,10,12);
     for(y=0;y<10;y++)for(x=0;x<8;x++)
         ui[(u16)(y+9)*32+x+4]=(160+(u16)y*8+x)|0x2400;
-    word(15,9,characterNames[id]);word(15,11,"WINS THE MATCH");
+    word(15,9,characterNames[id]);
+    if(mode==1)word(15,11,won?"PLAYER 1 WINS":"PLAYER 2 WINS");
+    else word(15,11,"WINS THE MATCH");
     word(16,13,"ROUND WINS");word(15,14,"P1  0 - 0  P2");
     put(19,14,'0'+fighters[0].won);put(23,14,'0'+fighters[1].won);
     word(15,17,mode==0?"ARCADE SHIFT":"LOCAL 1V1");
     center(21,mode==0?arcadeStoryWinnerQuotes[id]:characterQuotes[id]);
     if(mode==0)center(24,won?"A/START: NEXT CHALLENGER":"A/START: CONTINUE");
-    else center(24,"A/START: REMATCH");
+    else {center(23,"EITHER PLAYER");center(24,"A/START: REMATCH");}
     center(26,"B: CHARACTER SELECT");sound(3);finishScreen();
 }
 
@@ -1277,6 +1279,9 @@ void menuTick(void) {
     u16 keys,held,directions;
     keys=edge0;held=pad0;
     if(screen==SELECT && selectPlayer){keys|=edge1;held|=pad1;}
+    /* Local matches belong to both players, including the rematch card.
+     * Merge participating inputs before applying the shared menu priority. */
+    if(screen==RESULT && mode==1){keys|=edge1;held|=pad1;}
     directions=cleanDirections(held)&keys;
     directions&=KEY_RIGHT|KEY_LEFT|KEY_UP|KEY_DOWN;
     /* One menu action per sample. Match pause: Start, then Back, then A.

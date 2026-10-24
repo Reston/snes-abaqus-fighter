@@ -488,7 +488,8 @@ def verify_result_font_bank(e: Emulator, current: dict[str, int]) -> dict[str, o
     rows = [
         (5, centered_start(title), title),
         (9, 15, winner),
-        (11, 15, "WINS THE MATCH"),
+        (11, 15, ("PLAYER 1 WINS" if current["wins1"] > current["wins2"] else "PLAYER 2 WINS")
+         if current["mode"] == 1 else "WINS THE MATCH"),
         (13, 16, "ROUND WINS"),
         (14, 15, score),
         (17, 15, context),
@@ -496,6 +497,8 @@ def verify_result_font_bank(e: Emulator, current: dict[str, int]) -> dict[str, o
         (24, centered_start(action), action),
         (26, centered_start("B: CHARACTER SELECT"), "B: CHARACTER SELECT"),
     ]
+    if current["mode"] == 1:
+        rows.append((23, centered_start("EITHER PLAYER"), "EITHER PLAYER"))
     return verify_opaque_text_rows(e, rows, "result card")
 
 

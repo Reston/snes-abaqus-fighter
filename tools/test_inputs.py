@@ -28,7 +28,7 @@ ENERGY_TILE = 138
 P1_STATUS_ATTR = 0x2000
 P2_STATUS_ATTR = 0x6000
 MENU_CORE_OPTIONS = {"snes9x_up_down_allowed": "enabled"}
-DELIBERATE_PACING=json.loads((ROOT/'dist/manifest.json').read_bytes())['version']=='0.25.0'
+DELIBERATE_PACING=tuple(map(int,json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.'))) >= (0,25,0)
 _screen_address: int | None = None
 
 
@@ -730,7 +730,7 @@ def _run_transition_stress(cadence: str, fighter: int) -> dict[str, object]:
 
     e = _cadence_boot(cadence, 2, fighter=fighter)
     try:
-        if fighter == 4 or json.loads((ROOT/'dist/manifest.json').read_bytes())['version']=='0.25.0':
+        if fighter == 4 or DELIBERATE_PACING:
             # Slower travel must not turn transition coverage into a long
             # out-of-range walk. Establish genuine close spacing first;
             # every original 600 measured ticks and all bank/state checks stay.
@@ -740,7 +740,7 @@ def _run_transition_stress(cadence: str, fighter: int) -> dict[str, object]:
         drops: list[dict[str, int]] = []
         banks: set[int] = set()
         down_states: set[int] = set()
-        deliberate=json.loads((ROOT/'dist/manifest.json').read_bytes())['version']=='0.25.0'
+        deliberate=DELIBERATE_PACING
         plan={'stage':0,'held':0,'started':False,'seen':False,'completed':[]}
         for index in range(600):
             phase = index % 150
