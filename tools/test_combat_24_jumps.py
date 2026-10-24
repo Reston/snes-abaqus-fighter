@@ -55,6 +55,13 @@ def art():
     check(box and box[3]==78 and box[0]>0 and box[2]<96,'whole pose has sole baseline and safe margins',[i,n,box])
     check(all(b.getchannel('A').crop((0,y,96,y+1)).getbbox() for y in range(box[1],box[3])),'full silhouette has no detached body row',[i,n])
   check(set(changed)==TARGET,'exactly ten jump-owned poses changed',[i,changed])
+  packed_changes=[]
+  for bank,suffix in enumerate(('','b','c','d','e','f','g','h')):
+   path=name+suffix+'.bin';a=git(path);b=(ROOT/path).read_bytes()
+   check(len(a)==len(b)==30720,'eight fixed 30,720-byte pose banks retained',[i,bank])
+   for frame in range(8):
+    if a[frame*3840:(frame+1)*3840]!=b[frame*3840:(frame+1)*3840]:packed_changes.append(bank*8+frame)
+  check(set(packed_changes)==TARGET,'packed SNES bytes preserve walking idle and every unowned frame',[i,packed_changes])
   check(git(name+'_pal.bin')==(ROOT/(name+'_pal.bin')).read_bytes(),'fixed OBJ palette byte-exact',i)
   for suffix in ('','-large','_tiles','_pal'):
    p=f'assets/generated/portrait{i:02d}{suffix}'+('.png' if suffix in ('','-large') else '.bin')
@@ -66,7 +73,7 @@ def art():
   frames=meta['frames']
   check(all(frames[n]['conversion_scale']==scale for n in TARGET),'one neutral-anchored isotropic scale for all ten poses',[i,scale])
   check(record['height_target']==HEIGHTS[i],'neutral anchor exact approved height',[i,HEIGHTS[i]])
-  result.append({'fighter':i,'changed_frames':changed,'scale':scale,'height_target':HEIGHTS[i]})
+  result.append({'fighter':i,'changed_frames':changed,'packed_changed_frames':packed_changes,'scale':scale,'height_target':HEIGHTS[i]})
  return result
 
 def session(i,rom,table,base=False):
