@@ -1,13 +1,37 @@
 # Native SNES implementation
-<!-- candidate-version: 0.24.0; rom-sha256: PENDING_FINAL_VERIFICATION -->
+<!-- candidate-version: 0.24.0; rom-sha256: PENDING_FINAL_VERIFICATION; identity: PENDING_FINAL_VERIFICATION -->
 
 ## Current v0.24 integration
 
+<!-- v024-development-status:start -->
 All six feature PRs are merged into `integration/readable-combat-v024`.
-The combined playtest PR #14 remains unmerged. Source freeze and final native
-verification are pending; isolated feature reports remain historical.
+The combined playtest PR #14 remains unmerged for one human playtest. Final
+source/test freeze and technical collation are pending while owner-local test
+fixtures settle. The interim combined checkpoint is ROM
+`28d770aca1cc489c70d7370329e785cb223c0703d807f07d627d461ba8dbdb85`, header `5872`.
+The `003661c` fresh export and `d4f1e1f` driver checkpoint are interim only.
+The full attack proof confirmed native startup lag during simultaneous
+Cristobal specials (tick 9 / frame 1039, SDK lag +1). Runtime optimization is
+underway; the final ROM SHA will change and exact-ROM gates must be regenerated.
+<!-- v024-development-status:end -->
 Read [the shared implementation contract](COMBAT-v0.24-CONTRACT.md) and
 [the playtest guide](RELEASE-v0.24.0.md) for ownership and scope.
+
+<!-- v024-technical-status:start -->
+`Test.cmd` exited 0 on the interim combined ROM above: 2,595 gameplay, 17,906 roster,
+3,728 presentation, 1,443 input, 735 stages and 3,188 Training checks (29,595
+total). Matching pinned Accuracy smoke passed. Complete current focused proofs
+are contact (9,165 checks, 108 sessions, 61,704 callbacks), jumps (1,741 checks,
+all twelve/both ports) and stages (735 checks, both cores). The stage proof is
+the same native execution used by `Test.cmd`, not an additional independent run.
+
+Full pacing, attack and super proofs remain unfinished. Final focused runs,
+six suites, smoke, fresh export and guards must bind the corrected ROM and
+settled source/test freeze; the interim passes above do not transfer to it.
+The parent must collate the settled exact-ROM evidence into
+`docs/verification-v0.24.0.json` before final technical status is filled in.
+No combined readiness or human approval follows from partial reports.
+<!-- v024-technical-status:end -->
 
 The current native allocation is:
 
@@ -37,6 +61,13 @@ hit-resolution section is 7,744 bytes within one LoROM bank; its compiler
 stack locals are 68 bytes. Preserve operation order and atomic trade snapshots
 when editing these paths. [Timing comparison and retained evidence](COMBAT-24-CONTACT-TIMING.md)
 describe the measured optimization; final combined gates are separate.
+The six `COMBAT-24-*` feature notes retain implementation and isolated history.
+Use current report identities and the final verification record for combined
+claims. [Review gallery](REVIEW-v0.24.0.html) distinguishes native comparisons
+from offline conversion/geometry diagnostics. Pacing/recoil plus proposals
+1–5 are the entire authorized scope; proposals 6–10 are excluded. Original
+masters and exact art prompts/provenance remain retained. No v0.24 offline
+package, main merge, physical-controller or original-hardware approval exists.
 
 ## Historical implementation notes
 

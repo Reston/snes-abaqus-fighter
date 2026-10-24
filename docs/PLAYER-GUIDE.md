@@ -1,9 +1,15 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.24.0; rom-sha256: PENDING_FINAL_VERIFICATION -->
+<!-- candidate-version: 0.24.0; rom-sha256: PENDING_FINAL_VERIFICATION; identity: PENDING_FINAL_VERIFICATION -->
 
 The v0.24 combined playtest adds more readable combat, backward hit reactions,
 coordinated attack and jump drawings, individual super poses and rebuilt stages.
-Final verification is pending on `integration/readable-combat-v024`.
+<!-- v024-player-status:start -->
+All six changes are combined on `integration/readable-combat-v024`; final
+technical verification and one human playtest remain pending. PR #14 stays
+unmerged into main. Approved main remains v0.23.1.
+The gallery's combined captures are interim while a native startup lag is
+addressed; the final ROM and media will be regenerated.
+<!-- v024-player-status:end -->
 See the [playtest guide](RELEASE-v0.24.0.md) and [native review gallery](REVIEW-v0.24.0.html).
 
 This is a native SNES game. On Windows use [Play.cmd](../Play.cmd); on other
@@ -39,6 +45,11 @@ Opposite directions cancel. Menu priority is Start, then B, then A.
 
 ## Fighting
 
+- Walk, retreat and ordinary projectiles move about 18% slower. Ground heavy
+  attacks and ordinary specials have longer windup and recovery; native video,
+  input sampling, clocks and audio retain their normal cadence. Hit reactions
+  ease away from the contact side, with heavier recoil for strong hits and
+  smaller recoil on guard. Read the windup, then test a block or whiff punish.
 - **Y** is the quick close jab. **X** is the heavy punch with committed
   recovery. **B** reaches farther for spacing; Down+B attacks low. **A** is
   the strong kick with a longer windup. Close blocked heavy punches/kicks
@@ -131,20 +142,24 @@ A new Training match returns to Stand, a visible footer and the first drill.
 
 ## What to try in the combined game
 
-- With Damian and Reston, walk, jump, throw and win a round. Watch planted
-  steps, landing/get-up transitions, individual opening gestures and winner poses.
-- In Training, compare Y/X/B/A reach and hit/block feedback, confirm Y-to-X
-  and B-to-A, and complete a drill using the history and damage display.
-- Compare CPUs at the same difficulty, then spend a full gauge on different
-  supers. Try blocking and interrupting them as well as landing them.
-- Walk together across **Las Condes, El Castillo and La Oficina**. Scenery
-  moves as one connected scene above the fixed floor, without split bands.
-- Play Arcade with a rival pair such as Damian/Reston. Read or skip the
-  exchange, hear Round/Fight/K O, compare light/heavy/guard sounds and listen
-  for music ducking and the victory cadence. Finish a ladder for its ending.
+- Alternate light and heavy attacks. Watch feet, hips, shoulders and guard
+  move together; try reading and punishing a heavy windup or recovery.
+- Compare light hits, strong hits and blocks at center and both walls. Recoil
+  should move away from contact, including trades and rear airborne A kicks.
+- Test fist/boot tips and projectile edges against standing, crouching and
+  airborne targets. Report visible gap hits or clear overlapping misses.
+- Jump and land with all twelve fighters, then try all four air buttons and
+  rear A cross-ups from both ports. Watch takeoff, apex, descent and compression.
+- Walk across **Las Condes, El Castillo and La Oficina**; check connected
+  scenery, planted feet, floor detail, impact shake and the paused guide.
+- Spend a full gauge on several supers. Compare charge, contact/cast/peak and
+  recovery drawings; try interrupting and blocking them as well as landing them.
 
 Approved walking, portraits, fighter palettes and physical height remain.
 The revised combat poses are original full-body drawings; prior source masters
-are retained. Include the title version and a repeatable example with feedback.
+are retained. Include the title version, fighter pair, stage, player port and
+repeatable input with feedback. Interim combined clips are labeled separately
+from the approved baseline and offline art diagnostics in the gallery. GIF
+playback approximates timing; the native ROM's cadence is authoritative.
 The combined human playtest is still pending. Historical approved-main notes
 remain in [v0.23.1](RELEASE-v0.23.1.md).

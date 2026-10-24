@@ -1,14 +1,14 @@
 # Abaqus: After Hours
-<!-- candidate-version: 0.23.1; rom-sha256: 057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd -->
+<!-- candidate-version: 0.24.0; rom-sha256: PENDING_FINAL_VERIFICATION; identity: PENDING_FINAL_VERIFICATION -->
 
 An original four-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II and the people and places of Abaqus in Santiago.
-Twelve fighters, three illustrated stages and five original music scores,
-running as a native SNES cartridge.
+Twelve fighters, three illustrated stages and five original music scores.
 
-**Current version:** [v0.23.1](docs/RELEASE-v0.23.1.md) on `main`.
+**Combined playtest:** [v0.24.0](docs/RELEASE-v0.24.0.md), final verification pending.
+PR #14 stays unmerged. Approved main: [v0.23.1](docs/RELEASE-v0.23.1.md).
 
-<img src="docs/screenshots/stages/las-condes-two-waves-contact.png" alt="Negger and Fernando fighting at Las Condes" width="640">
+<img src="docs/screenshots/combat-24-stage08/accuracy-stage0-right.png" alt="Interim combined v0.24 native view of Las Condes" width="640">
 
 ## Play
 
@@ -25,8 +25,8 @@ in a SNES emulator. Original SNES and flash-cartridge support remain unverified.
 - **Training:** practice against a dummy or CPU with input history, combo damage
   and three drills.
 
-Combat includes high/low blocking, throws, specials and a unique super for each
-fighter. The pause menu includes controls and a move list.
+v0.24 adds slower combat, backward recoil, revised attacks, contacts and stages.
+Jump/landing and super art complete the [combined review](docs/REVIEW-v0.24.0.html).
 
 ## Controls
 
@@ -67,9 +67,9 @@ intermediates stay in ignored `.tools/` and `build/` directories.
 ## Documentation
 
 - [Player guide](docs/PLAYER-GUIDE.md) — controls, modes and practice.
-- [Current release](docs/RELEASE-v0.23.1.md) and [verification](docs/verification-v0.23.1.json).
+- [Combined playtest status](docs/RELEASE-v0.24.0.md) · [approved-main verification](docs/verification-v0.23.1.json).
 - [Development guide](docs/DEVELOPMENT.md) — native architecture and hardware budgets.
 - [Roadmap](docs/ROADMAP.md) — planned work and historical milestones.
 - [Credits and art provenance](docs/CREDITS.md) · [License](LICENSE).
 
-Older releases and detailed evidence remain under `docs/`.
+Human combined playtest is pending. No v0.24 offline package or main merge.
