@@ -109,3 +109,18 @@ and kick into real jab retaliation, startup counter, ordinary hit and guard,
 for all twelve fighters on both ports. Identical controller streams preserve
 every unmasked Fighter/Wave byte, RNG and controller latch. Native glyph/PPU
 checks verify the actual feedback; strict cadence, OBJ and audio checks pass.
+
+## Pass 8: arena previews match current stages
+
+The picker previously retained historical cartoon-stage pictures while combat
+used the rebuilt scenery. It now derives each 104x52 landmark view from the
+current converted native BG1 tiles, map and palette, including the center
+viewport's camera gutters. The aspect-correct crop avoids hidden HUD rows.
+Names, descriptions, cursor geometry, title/roster plates and fighter portraits
+are retained. No new stage artwork is generated or retouched.
+
+The focused proof rebuilds the arena payloads in an isolated sink, checks the
+native picker on Snes9x and pinned Accuracy, loads each chosen stage and
+independently decodes its uploaded VRAM. All three source viewports match
+exactly. Only the four arena outputs and their size declaration change in
+this pass; the existing 226-file asset inventory remains.

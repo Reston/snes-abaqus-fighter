@@ -8,7 +8,7 @@ from PIL import Image, ImageDraw
 import hashlib, json, math, random, struct, subprocess, sys
 sys.path.insert(0, str(Path(__file__).parent))
 from fighter_assets import prepare_roster
-from menu_assets import make_menu_images
+from menu_assets import make_menu_images, native_stage_previews
 from champion_assets import load_champion
 from effect_assets import make_effect_sheet
 from stage_assets import build_stage_animation
@@ -162,7 +162,11 @@ for source in load_stage_sources(ROOT):
     stage_dynamics.append(dynamic['manifest'])
 
 roster=prepare_roster(ROOT,OUT)
-for name,image in make_menu_images(ROOT,stages,roster,text).items():
+# Current native scenery supplies the arena landmarks. Other menu plates
+# retain their existing sources, geometry, palettes and portrait contract.
+native_ui_palette=[tuple((v>>3)*255//31 for v in color) for color in UI_COLORS]
+menu_stages=native_stage_previews(ROOT,native_ui_palette)
+for name,image in make_menu_images(ROOT,menu_stages,roster,text).items():
     background(name,image)
 background('champion',load_champion(ROOT))
 if (OUT/'champion_tiles.bin').stat().st_size >= 896*32:

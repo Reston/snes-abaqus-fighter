@@ -2,8 +2,9 @@
 
 Run AFTER make_assets.py for isolated development. The parent can call
 install(ROOT) at the end of make_assets.py, after data.asm/assets.h are written.
-Only declared stage outputs and generated declarations are replaced. Menu
-plates keep their approved historical previews; all fighter/audio/UI bytes stay.
+Only declared stage outputs and generated declarations are replaced. The menu
+generator separately derives its arena previews from these native BG1 bytes;
+all fighter/audio/UI bytes stay.
 """
 from __future__ import annotations
 

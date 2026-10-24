@@ -270,7 +270,7 @@ def main(argv=None):
                 file=CORE_PATH
             else:file=ROOT/path
             require(sha(Path(file).read_bytes()).lower()==pin['dll_sha256'].lower(),'expanded native core is pinned',str(file))
-        report['preservation']=validate(ROOT)
+        report['preservation']=validate(ROOT,allow_arena_previews=manifest['version']=='0.26.0')
         Emulator.run=monitored_run
         report['result']=({'static':lambda:report['preservation'],'pacing':lambda:pacing(fighters),
                            'supers':lambda:supers(fighters),'cpu':lambda:cpu(fighters),'stages':stages}[args.part])()
