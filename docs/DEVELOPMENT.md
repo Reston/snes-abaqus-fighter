@@ -29,6 +29,15 @@ contact regions are regenerated after all pose imports and before compilation.
 Keep strict direct-frame/VBlank/lag, actor transfer and audio checks when
 optimizing the contact path. Run native verification silently/headlessly.
 
+Contact resolution reads adjacent rectangle and Fighter bytes as pinned
+little-endian words. The two ordinary player pairs use direct WRAM operands
+from one C macro template; recoil expands at the existing victim pointer.
+There is no persistent geometry cache or added global RAM. The existing
+hit-resolution section is 7,744 bytes within one LoROM bank; its compiler
+stack locals are 68 bytes. Preserve operation order and atomic trade snapshots
+when editing these paths. [Timing comparison and retained evidence](COMBAT-24-CONTACT-TIMING.md)
+describe the measured optimization; final combined gates are separate.
+
 ## Historical implementation notes
 
 The checkpoints and older allocation tables below describe their named
