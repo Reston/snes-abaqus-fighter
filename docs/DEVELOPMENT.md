@@ -1,9 +1,49 @@
 # Native SNES implementation
 
+## Current native candidate: v0.26.0
+
+<!-- candidate-version: 0.26.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b; source-freeze: c89239901491a239e10194f1399820527b0ebf74 -->
+
+The [polish contract](POLISH-v0.26-CONTRACT.md) adds explicit practice/menu
+state ownership while preserving v0.25 combat timing and native ABI.
+The [verification record](verification-v0.26.0.json) binds 49,689 six-suite
+checks, focused proofs, fresh-source reproduction and 432 current stress cases.
+No additional global RAM, live stage DMA or HDMA is used.
+
+Builds fingerprint art/encoder inputs, validate cached outputs, stage complete
+asset sets and validate native candidates before replacing the ROM last.
+Publication journals recover interruption; old candidates stay under ignored
+build. Play validates cartridge identity before provisioning/opening Snes9x.
+
+Run `tools/collate_play_flow_26.py --source-freeze c89239901491a239e10194f1399820527b0ebf74`
+after the source-bound gates. Gallery generation consumes only passed current
+verification. Main remains approved v0.24; candidate PRs stay unmerged.
+The v0.25 and older sections below retain historical scope.
+
+
+## Complete current-candidate verification
+
+After `Build.cmd`, commit the exact source and cartridge. Then run from the
+checkout root with project-local Python:
+
+```powershell
+& .tools/python/python.exe tools/verify_play_flow_26.py --source-ref HEAD --jobs 4
+```
+
+Use `--dry-run` to inspect the complete plan without emulation or writing a
+passing record. One to eight workers are supported, constrained to processor
+pairs allowed by the calling process. The runner keeps completed outcomes and
+logs under `build/verify-v026-*`; an error stops new jobs and lets active native
+writers finish. All full native/focused/hour/score-limit/stress reports must
+pass before it collates `verification-v0.26.0.json` and generates the review.
+The source ref must be current HEAD; source/build inputs remain fixed while
+it runs. The older commands below retain their historical version scope.
+
+
 <!-- v025-development:start -->
 <!-- candidate-version: 0.25.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2; source-freeze: b41ce034ac12f6aa10740a0075feebd1f392d117 -->
 
-## Current playtest candidate: v0.25.0
+## Historical playtest candidate: v0.25.0
 
 All six native suites pass **49,494 checks** on this exact ROM. Focused pacing, 48 super hit/guard sequences, before/after CPU36 plus twelve Hard replays, and all three stages on both cores pass. Matching pinned Accuracy smoke, normal/optimized authoring guards and a fresh committed-source export reproduce the ROM, all 226 assets and normalized symbols. The shared stage suite and focused stage appendix use one execution, counted once.
 Read [the v0.25 contract](COMBAT-v0.25-CONTRACT.md) and

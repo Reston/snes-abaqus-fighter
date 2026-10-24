@@ -13,7 +13,8 @@ the existing ``tools/emulator.py`` interface remains unchanged:
     TRACE[118]  ambient pending age
     TRACE[119]  pause page (0 normal, 1 controls, 2 specials, 3 Training tools)
     TRACE[120]  guide build stage (0 settled, 1..3 staged)
-    TRACE[121]  Training dummy (0 stand, 1 high guard, 2 low guard, 3 jump, 4 CPU)
+    TRACE[121]  Training dummy (0 stand, 1 high guard, 2 low guard, 3 jump,
+                4 CPU, 5 P2 controller, 6 guard after hit)
     TRACE[122]  guide dirty flag (0 settled, 1 pending)
 
 The suite drives the official pinned Snes9x libretro core through controller
@@ -760,15 +761,19 @@ def verify_b_roster_and_second_port(rom: Path) -> dict[str, object]:
 
 
 def set_dummy(q: QA, target: int) -> dict[str, int]:
-    """Set one of five paused Training behaviors with directional edges."""
+    """Set an indexed automated behavior, preserving the CPU Up shortcut."""
 
     current = q.state()
     check(current["paused"] == 1, "dummy configuration is paused-only", current)
     current_mode = current["training_dummy"]
-    check(target in range(5), "requested Training behavior is valid", target)
-    distance = (target - current_mode) % 5
-    key = "down" if distance <= 2 else "up"
-    count = distance if distance <= 2 else 5 - distance
+    modern=tuple(map(int,json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.'))) >= (0,26,0)
+    order=(0,1,2,3,6,4) if modern else (0,1,2,3,4)
+    if current_mode==5:
+        q.press('x');wait_guide_settled(q,'manual-to-stand');current_mode=0
+    check(target in order, "requested Training behavior is valid", target)
+    distance = (order.index(target) - order.index(current_mode)) % len(order)
+    key = "down" if distance <= len(order)//2 else "up"
+    count = distance if key=='down' else len(order) - distance
     for _ in range(count):
         q.press(key)
         wait_guide_settled(q, f"dummy-{target}")
@@ -1341,16 +1346,16 @@ def verify_cpu_selector(rom: Path) -> dict[str, object]:
               all(s["training_dummy"] == 0 for s in down[3:]),
               "DOWN wraps CPU to Stand once while held", down)
         q.run(3)
-        labels = ("STAND", "GUARD HIGH", "GUARD LOW", "JUMP", "CPU NORMAL")
-        for key, targets in (("down", (1, 2, 3, 4, 0)),
-                             ("up", (4, 3, 2, 1, 0))):
+        labels = {0:"STAND",1:"GUARD HIGH",2:"GUARD LOW",3:"JUMP",4:"CPU NORMAL",6:"GUARD AFTER HIT"}
+        for key, targets in (("down", (1, 2, 3, 6, 4, 0)),
+                             ("up", (4, 6, 3, 2, 1, 0))):
             for index, target in enumerate(targets):
                 q.press(key, port=index % 2)
                 wait_guide_settled(q, f"cpu-selector-{key}-{target}")
                 actual = decode_text(vram_bytes(q), 11, 12).strip()
                 check(q.state()["training_dummy"] == target and
                       actual == "DUMMY: " + labels[target],
-                      "both ports cycle five exact indexed Training labels in either direction",
+                      "both ports cycle every exact indexed automated Training label in either direction",
                       {"key": key, "target": target, "label": actual})
         set_dummy(q, 4)
         # START wins over B/A and directions, and A wins over directions.
@@ -1684,7 +1689,7 @@ def verify_cpu_level_controls(rom: Path) -> dict[str, object]:
         for target in range(4):
             set_dummy(q, target)
             q.press("r", port=target % 2)
-            check(decode_text(vram_bytes(q), 13, 14).strip() == "UP/DOWN DUMMY  SELECT GUIDE",
+            check(decode_text(vram_bytes(q), 13, 14).strip() == "X P2 PAD U/D DUMMY SEL GUIDE",
                   "scripted dummy retains its original pause hint", target)
             set_dummy(q, 4)
             expect(level, "scripted dummy ignores shoulder")

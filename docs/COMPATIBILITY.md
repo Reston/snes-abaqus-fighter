@@ -1,11 +1,23 @@
 # Independent-engine compatibility
 
+## Current native candidate: v0.26.0
+
+<!-- candidate-version: 0.26.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b; source-freeze: c89239901491a239e10194f1399820527b0ebf74 -->
+
+Pinned Snes9x and bsnes Accuracy checks pass on the cartridge above.
+[Verification](verification-v0.26.0.json) binds the actual expanded core pins,
+controller-only proofs, live native cadence and source freeze. Fresh isolated
+source/tool extraction reproduces all 226 outputs and the cartridge.
+The [release guide](RELEASE-v0.26.0.md) states current scope. Hardware remains
+unverified. All versioned sections below retain historical identities.
+
+
 <!-- v025-compat:start -->
 <!-- candidate-version: 0.25.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2; source-freeze: b41ce034ac12f6aa10740a0075feebd1f392d117 -->
 
-## v0.25 native playtest candidate
+## Historical v0.25 native playtest candidate
 
-The current cartridge is `f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2` / `FF9C`.
+The v0.25 cartridge is `f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2` / `FF9C`.
 Pinned Snes9x and independent bsnes Accuracy checks pass; the fresh committed export reproduces the cartridge.
 The stage oracle checks connected detailed-color scenery/ground, fixed
 allocation, pause/guide freezes, hit shake and strict native transfer/cadence

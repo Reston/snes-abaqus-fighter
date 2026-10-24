@@ -321,7 +321,7 @@ void showTitle(void) {
     music(0);finishScreen();
 }
 void drawSelect(void) {
-    u8 id,x,y;
+    u8 id,x,y,family;
     clearUi();id=selectPlayer ? selected2:selected;
     cursor(1+(id%4)*5,6+(id/4)*6,5,6);
     /* Dedicated source-master portrait: eight by ten BG2 tiles. */
@@ -330,6 +330,13 @@ void drawSelect(void) {
     if(mode==2 && selectPlayer)word(23,4,"DUMMY");
     else word(23,4,selectPlayer ? "PLAYER 2":"PLAYER 1");
     word(22,17,characterNames[id]);
+    family=profileFor(id)->specialFamily;
+    word(22,19,"SPECIAL");
+    if(family==SPECIAL_PROJECTILE)word(22,20,"WAVE SHOT");
+    else if(family==SPECIAL_RUSH)word(22,20,"RUSH");
+    else if(family==SPECIAL_GROUNDWAVE)word(22,20,"LOW WAVE");
+    else word(22,20,"RISING");
+    word(22,22,"DOWN+Y");word(22,23,"32 ENERGY");word(22,25,"SUPER Y+B");
     center(27,"D-PAD SELECT A/START OK B BACK");
     portraitId=id;portraitDirty=1;fullDirty=1;
 }
@@ -339,6 +346,8 @@ void uploadMenuPortrait(void) {
     portraitDirty=0;
 }
 void showSelect(void) {
+    /* Character selection starts a new local rivalry. Rematches bypass it. */
+    stageDepthTable[7]=0;stageDepthTable[8]=0;
     setScreenOff();screen=SELECT;arcade=0;champion=0;commonScreen();loadBackground(4);selectPlayer=0;drawSelect();uploadMenuPortrait();music(0);finishScreen();
 }
 void drawArenas(void) {
@@ -346,39 +355,47 @@ void drawArenas(void) {
     /* Cover only the raster footer below the three unchanged choice rows.
      * Opaque original glyphs keep the old lettering from showing through. */
     panel(26,2);drawGuideWord((27*32+3)*2,"UP/DOWN A/START OK B BACK");
+    if(mode==1)drawGuideWord((26*32+5)*2,"LOCAL 1V1: EITHER PAD");
     fullDirty=1;
 }
 void showArenas(void) { setScreenOff();screen=ARENA;commonScreen();loadBackground(5);drawArenas();finishScreen(); }
 
 #include "arcade_story.h"
 
+#define HUD_ACTOR(p) do { \
+    if(hudHp[p]!=fighters[p].hp) { \
+    hudHp[p]=fighters[p].hp; \
+    refreshHealthBar(p); \
+    hudDirty=1; \
+    } \
+    if(hudEnergy[p]!=fighters[p].energy) { \
+    refreshEnergyBar(p); \
+    /* Full gauge teaches the command in the existing bottom rule. \
+    * Only threshold transitions touch these nine cached cells. */ \
+    if(fighters[p].energy==ENERGY_MAX) { \
+    word(p?22:1,4,"SUPER Y+B"); \
+    for(x=p?22:1;x<(p?31:10);x++)ui[128+x]|=0x0400; \
+    } else if(hudEnergy[p]==ENERGY_MAX || hudEnergy[p]==255) { \
+    for(x=p?22:1;x<(p?31:10);x++)ui[128+x]=158|0x2000; \
+    } \
+    hudEnergy[p]=fighters[p].energy; \
+    hudDirty=1; \
+    } \
+    if(hudWins[p]!=fighters[p].won) { \
+    hudWins[p]=fighters[p].won; \
+    ui[64+(p?29:1)]=(fighters[p].won>0?147:148)|0x2000;ui[64+(p?30:2)]=(fighters[p].won>1?147:148)|0x2000; \
+    hudDirty=1; \
+    } \
+} while(0)
 void hud(void) {
-    u8 p;
-    Fighter *f;
+    u8 x;
     /* A recovery refresh can precede the periodic refresh in the same tick.
      * Check direct fields before entering the indexed changed-field path. */
     if(hudSeconds==seconds && hudHp[0]==fighters[0].hp && hudHp[1]==fighters[1].hp &&
        hudEnergy[0]==fighters[0].energy && hudEnergy[1]==fighters[1].energy &&
        hudWins[0]==fighters[0].won && hudWins[1]==fighters[1].won)return;
     if(hudSeconds!=seconds){number(15,0,seconds);hudSeconds=seconds;hudDirty=1;}
-    for(p=0;p<2;p++) {
-        f=&fighters[p];
-        if(hudHp[p]!=f->hp) {
-            hudHp[p]=f->hp;
-            refreshHealthBar(p);
-            hudDirty=1;
-        }
-        if(hudEnergy[p]!=f->energy) {
-            hudEnergy[p]=f->energy;
-            refreshEnergyBar(p);
-            hudDirty=1;
-        }
-        if(hudWins[p]!=f->won) {
-            hudWins[p]=f->won;
-            ui[64+(p?29:1)]=(f->won>0?147:148)|0x2000;ui[64+(p?30:2)]=(f->won>1?147:148)|0x2000;
-            hudDirty=1;
-        }
-    }
+    HUD_ACTOR(0);HUD_ACTOR(1);
 }
 #include "super_moves.h"
 
@@ -501,7 +518,7 @@ void showResult(u8 won) {
         sound(3);finishScreen();return;
     }
     loadBackground(arena);
-    panel(4,23);
+    panel(4,24);
     if(mode==1)center(5,"MATCH COMPLETE");
     else center(5,won?"SHIFT COMPLETE":"SHIFT OVER");
     for(x=3;x<29;x++)put(x,7,154);
@@ -511,13 +528,26 @@ void showResult(u8 won) {
     portraitId=id;uploadMenuPortrait();cursor(3,8,10,12);
     for(y=0;y<10;y++)for(x=0;x<8;x++)
         ui[(u16)(y+9)*32+x+4]=(160+(u16)y*8+x)|0x2400;
-    word(15,9,characterNames[id]);word(15,11,"WINS THE MATCH");
+    word(15,9,characterNames[id]);
+    if(mode==1)word(15,11,won?"PLAYER 1 WINS":"PLAYER 2 WINS");
+    else word(15,11,"WINS THE MATCH");
     word(16,13,"ROUND WINS");word(15,14,"P1  0 - 0  P2");
     put(19,14,'0'+fighters[0].won);put(23,14,'0'+fighters[1].won);
-    word(15,17,mode==0?"ARCADE SHIFT":"LOCAL 1V1");
+    if(mode==0) {
+        arcadeStoryProgress(15,17);
+        word(15,19,won?"NEXT":"RETRY");
+        word(21,19,characterNames[won?(selected+2+arcade)%12:fighters[1].id]);
+    } else {
+        /* The two otherwise-unused reserved bytes survive commonScreen and
+         * ordinary round resets. Count once when an earned result is loaded. */
+        if(won){if(stageDepthTable[7]<99)stageDepthTable[7]++;}
+        else {if(stageDepthTable[8]<99)stageDepthTable[8]++;}
+        word(15,17,"SESSION WINS");word(15,19,"P1 00 - 00 P2");
+        number(18,19,stageDepthTable[7]);number(23,19,stageDepthTable[8]);
+    }
     center(21,mode==0?arcadeStoryWinnerQuotes[id]:characterQuotes[id]);
     if(mode==0)center(24,won?"A/START: NEXT CHALLENGER":"A/START: CONTINUE");
-    else center(24,"A/START: REMATCH");
+    else {center(23,"EITHER PLAYER");center(24,"A/START: REMATCH");}
     center(26,"B: CHARACTER SELECT");sound(3);finishScreen();
 }
 
@@ -564,6 +594,7 @@ u16 cleanDirections(u16 keys) {
     if((keys&(KEY_UP|KEY_DOWN))==(KEY_UP|KEY_DOWN))keys&=~(KEY_UP|KEY_DOWN);
     return keys;
 }
+#include "menu_repeat.h"
 void discardFighterInput(Fighter *f) {
     f->bufferedAction=0;f->bufferAge=0;f->bufferKeys=0;f->jumpBuffer=0;
 }
@@ -659,6 +690,7 @@ void captureFightInputs(void) {
             trainingCapture(fighters[0].keys);
     }
     if(mode==1)second=pad1;
+    else if(mode==2 && trainingDummy==5)second=pad1;
     else {
         if(!fighters[1].action && !fighters[1].hurt && !fighters[1].y && !fighters[1].downState)
             fighters[1].face=fighters[1].x<fighters[0].x?1:0;
@@ -703,6 +735,7 @@ void controls(u8 p) {
      * separation, jump and downed physics still use the ordinary rules. */
     if(mode==2 && p==1) {
         if(trainingDummy==1 || trainingDummy==2)return;
+        if(trainingDummy==6)return;
     }
     if(a<7 && !f->y) {
         if(((keys&KEY_UP) && !f->wakeLock) || f->jumpBuffer) {
@@ -742,17 +775,20 @@ void controls(u8 p) {
         (A).combo=0;(A).combotime=0;(A).counter=0; \
         impactBannerCombo=0;impactBannerCounter=0; \
     } else { \
-        (A).counter=0; \
+        (A).counter=0;impactBannerCounter=0; \
         /* The empty-link case only writes 255 back to the same field. */ \
         if((D).throwVictim!=255)releaseHeldVictim(DI); \
-        if((D).action && (D).tick<(D).actionStartup) {dmg+=3;(A).counter=1;} \
+        if((D).action) { \
+            if((D).tick<(D).actionStartup) {dmg+=3;(A).counter=1;impactBannerCounter=1;} \
+            else if((D).tick>=(D).actionActiveEnd)impactBannerCounter=2; \
+        } \
         /* Only an uninterrupted hit reaction links a true combo.  The \
          * display timer is cosmetic and must never establish a link. */ \
         if((D).hurt && !(D).guard && (A).combo)(A).combo++;else (A).combo=1; \
         (A).combotime=45;applyHitReaction(DI,dmg); \
         back=(A).energy+8; \
         (A).energy=back>ENERGY_MAX?ENERGY_MAX:back; \
-        impactBannerCombo=(A).combo;impactBannerCounter=(A).counter; \
+        impactBannerCombo=(A).combo; \
     } \
     /* Snapshot feedback now; construct its tilemap after the first frozen \
      * HUD tick, away from contact physics and the new actor pose uploads. */ \
@@ -793,17 +829,20 @@ u8 hurtWithRecoil(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable,u8
         a->combo=0;a->combotime=0;a->counter=0;
         impactBannerCombo=0;impactBannerCounter=0;
     } else {
-        a->counter=0;
+        a->counter=0;impactBannerCounter=0;
         /* The empty-link case only writes 255 back to the same field. */
         if(d->throwVictim!=255)releaseHeldVictim(defender);
-        if(d->action && d->tick<d->actionStartup) {dmg+=3;a->counter=1;}
+        if(d->action) {
+            if(d->tick<d->actionStartup) {dmg+=3;a->counter=1;impactBannerCounter=1;}
+            else if(d->tick>=d->actionActiveEnd)impactBannerCounter=2;
+        }
         /* Only an uninterrupted hit reaction links a true combo.  The
          * display timer is cosmetic and must never establish a link. */
         if(d->hurt && !d->guard && a->combo)a->combo++;else a->combo=1;
         a->combotime=45;applyHitReaction(defender,dmg);
         back=a->energy+8;
         a->energy=back>ENERGY_MAX?ENERGY_MAX:back;
-        impactBannerCombo=a->combo;impactBannerCounter=a->counter;
+        impactBannerCombo=a->combo;
     }
     /* Snapshot feedback now; construct its tilemap after the first frozen
      * HUD tick, away from contact physics and the new actor pose uploads. */
@@ -1145,16 +1184,17 @@ void drawFight(void) {
 }
 void fightTick(void) {
     u16 pauseKeys=edge0|edge1,pauseDirections;
+    u8 settledPauseHud=0;
     animationAdvance=0;
     if(pauseKeys&KEY_START) {
         paused=!paused;impactBannerPending=0;clearBanner();
-        if(paused){pausePage=0;guideBuild=0;pauseHudPending=1;clearFightHint();drawPauseCard();}
+        if(paused){pausePage=0;guideBuild=0;stageDepthTable[3]=0;pauseHudPending=1;clearFightHint();drawPauseCard();}
         else {closePauseGuide();settlePausedHud();if(arcadeStoryTicks)arcadeStoryDraw();}
         sound(0);
     }
     if(paused) {
         pauseDirections=cleanDirections(pad0|pad1)&pauseKeys;
-        if(!(pauseKeys&KEY_START))settlePausedHud();
+        if(!(pauseKeys&KEY_START)){settledPauseHud=pauseHudPending;settlePausedHud();}
         fighters[0].bufferedAction=0;fighters[0].bufferAge=0;fighters[0].jumpBuffer=0;
         fighters[1].bufferedAction=0;fighters[1].bufferAge=0;fighters[1].jumpBuffer=0;
         if(!(pauseKeys&KEY_START)) {
@@ -1171,16 +1211,38 @@ void fightTick(void) {
                         else openPauseGuide(pausePage==1?3:pausePage-1);
                     } else openPauseGuide(pausePage==1?2:1);
                     sound(0);
+                } else if(pausePage==2 && (pauseDirections&KEY_UP)) {
+                    stageDepthTable[3]++;if(stageDepthTable[3]>2)stageDepthTable[3]=0;
+                    openPauseGuide(2);sound(0);
                 } else if(mode==2 && pausePage==3) {
-                    if(pauseDirections&KEY_UP) {
+                    if(pauseKeys&KEY_X) {
+                        /* Retry in place in the guide, with the same actors,
+                         * selected drill and difficulty. No scene reload. */
+                        trainingPrepareChallenge();resetRoundState();intro=0;
+                        pauseHudPending=1;openPauseGuide(3);sound(0);
+                        /* Reset and guide-panel construction each have their
+                         * own frame; actor uploads already serialize below. */
+                        drawFight();return;
+                    } else if(pauseDirections&KEY_UP) {
                         trainingVisible=!trainingVisible;trainingRestore=1;openPauseGuide(3);sound(0);
                     } else if(pauseDirections&KEY_DOWN) {
                         trainingChooseChallenge();openPauseGuide(3);sound(0);
+                    } else if((pauseKeys&KEY_L) && !((pad0|pad1)&KEY_R)) {
+                        musicOn=!musicOn;openPauseGuide(pausePage);sound(0);
+                    } else if((pauseKeys&KEY_R) && !((pad0|pad1)&KEY_L)) {
+                        stageDepthTable[9]=!stageDepthTable[9];openPauseGuide(pausePage);sound(0);
                     }
+                } else if((pauseKeys&KEY_L) && !((pad0|pad1)&KEY_R)) {
+                    musicOn=!musicOn;openPauseGuide(pausePage);sound(0);
+                } else if((pauseKeys&KEY_R) && !((pad0|pad1)&KEY_L)) {
+                    stageDepthTable[9]=!stageDepthTable[9];openPauseGuide(pausePage);sound(0);
                 }
+            } else if(mode==2 && (pauseKeys&KEY_X)) {
+                /* Manual practice is explicit and outside the automated
+                 * dummy cycle. Keep the quick Up-to-CPU shortcut. */
+                trainingDummy=trainingDummy==5?0:5;drawPauseCard();sound(0);
             } else if(mode==2 && (pauseDirections&(KEY_UP|KEY_DOWN))) {
-                if(pauseDirections&KEY_DOWN)trainingDummy=(trainingDummy+1)%5;
-                else trainingDummy=(trainingDummy+4)%5;
+                trainingCycleDummy((pauseDirections&KEY_DOWN)!=0);
                 drawPauseCard();sound(0);
             } else if(mode==2 && trainingDummy==4) {
                 /* Shoulders adjust only the CPU's existing home level.
@@ -1194,7 +1256,8 @@ void fightTick(void) {
                 }
             }
         }
-        if(paused && guideBuild)buildPauseGuide();
+        /* Bar reconstruction and a full guide phase each own one frame. */
+        if(paused && guideBuild && !settledPauseHud)buildPauseGuide();
         drawFight();return;
     }
     /* Either pad's Start owns this sample, including the resumed live tick. */
@@ -1216,12 +1279,20 @@ void fightTick(void) {
         else if(roundBannerPending) {
             roundBannerPending=0;clearBanner();fillBannerPanel();
             center(10,seconds?"K.O.":"TIME OVER");
-            if(winner<2)center(12,characterNames[fighters[winner].id]);
+            if(winner<2) {
+                center(11,winner?(mode==1?"PLAYER 2":"CPU"):"PLAYER 1");
+                center(12,characterNames[fighters[winner].id]);
+            }
             else center(12,seconds?"DOUBLE K.O.":"DRAW");
             hud();
         }
         roundEnd--;
-        if(roundEnd==100) {clearBanner();fillBannerPanel();center(10,winner<2?characterNames[fighters[winner].id]:"DRAW");center(12,winner<2?"WINS THE ROUND":"TRY AGAIN");}
+        if(roundEnd==100) {
+            clearBanner();fillBannerPanel();center(10,winner<2?characterNames[fighters[winner].id]:"DRAW");
+            if(!winner)center(12,"P1 WINS THE ROUND");
+            else if(winner==1)center(12,mode==1?"P2 WINS THE ROUND":"CPU WINS THE ROUND");
+            else center(12,"TRY AGAIN");
+        }
         if(!roundEnd) {
             if(fighters[0].won>=2 || fighters[1].won>=2) {
                 resultWin=fighters[0].won>=2;
@@ -1251,8 +1322,10 @@ void fightTick(void) {
             if(impactHudPending){hud();impactHudPending=0;}
             if(impactBannerPending) {
                 clearBanner();impactBannerPending=0;
-                if(impactBannerCombo>1 || impactBannerCounter) {
-                    word(impactBannerPlayer?20:2,9,impactBannerCounter?"COUNTER!":"COMBO!");
+                if(impactBannerCounter==3)center(9,"THROW TECH!");
+                else if(impactBannerCombo>1 || impactBannerCounter) {
+                    if(impactBannerCounter==2)word(impactBannerPlayer?20:2,9,"PUNISH!");
+                    else word(impactBannerPlayer?20:2,9,impactBannerCounter?"COUNTER!":"COMBO!");
                     if(impactBannerCombo>1)put(impactBannerPlayer?28:10,9,'0'+(impactBannerCombo%10));
                 }
                 if(resetFooterPending){clearFightHint();resetFooterPending=0;}
@@ -1277,8 +1350,11 @@ void menuTick(void) {
     u16 keys,held,directions;
     keys=edge0;held=pad0;
     if(screen==SELECT && selectPlayer){keys|=edge1;held|=pad1;}
-    directions=cleanDirections(held)&keys;
-    directions&=KEY_RIGHT|KEY_LEFT|KEY_UP|KEY_DOWN;
+    /* Local matches belong to both players, including the rematch card.
+     * Merge participating inputs before applying the shared menu priority. */
+    if(screen==RESULT && mode==1){keys|=edge1;held|=pad1;}
+    if(screen==ARENA && mode==1){keys|=edge1;held|=pad1;}
+    directions=menuDirectionEdges(held,keys);
     /* One menu action per sample. Match pause: Start, then Back, then A.
      * Clean held directions before masking edges, so an opposite held on
      * either participating pad cannot turn a new edge into cursor movement. */
@@ -1297,12 +1373,12 @@ void menuTick(void) {
         if(directions&KEY_UP)*choice=(*choice+8)%12;
         if(directions&KEY_DOWN)*choice=(*choice+4)%12;
         if(directions){sound(0);drawSelect();}
-        if(keys&KEY_B){if(selectPlayer){selectPlayer=0;drawSelect();}else showTitle();return;}
+        if(keys&KEY_B){if(selectPlayer){selectPlayer=0;resetMenuRepeat();drawSelect();}else showTitle();return;}
         if(keys&(KEY_A|KEY_START)) {
             sound(3);
             if(mode!=0 && !selectPlayer){
                 if(mode==2)selected2=(selected+1)%12;
-                selectPlayer=1;drawSelect();
+                selectPlayer=1;resetMenuRepeat();drawSelect();
             }
             else {if(mode==0)selected2=(selected+1)%12;showArenas();}
         }
@@ -1341,7 +1417,7 @@ int main(void) {
     randomseed=0xABA;frame=0;menu=0;mode=0;difficulty=1;selected=0;selected2=1;arena=0;
     combatProfiles[0]=&characterProfiles[0];combatProfiles[1]=&characterProfiles[0];
     traceProfiles();
-    musicIndex=255;musicOn=1;
+    musicIndex=255;musicOn=1;stageDepthTable[9]=0;
     pendingSound=0;
     spcBoot();spcSetBank(&SOUNDBANK__);spcAllocateSoundRegion(0);
     oamInit();showTitle();

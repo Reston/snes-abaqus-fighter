@@ -8,3 +8,6 @@
 *.it binary
 *.sfc binary
 *.wav binary
+# Native evidence hashes bind the producer's exact serialized bytes.
+# Keep JSON diffs readable while preventing checkout newline conversion.
+docs/*-report.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

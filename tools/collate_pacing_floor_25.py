@@ -17,7 +17,9 @@ def read(path):return json.loads((ROOT/path).read_bytes())
 def count(report):
     rows=report['checks']
     require(rows and all(row.get('passed') is True for row in rows),'Failed or empty assertion inventory')
-    total=sum(row.get('executions',1) for row in rows)
+    executions=[row.get('executions',1) for row in rows]
+    require(all(isinstance(n,int) and not isinstance(n,bool) and n>0 for n in executions),'Assertion execution count must be positive')
+    total=sum(executions)
     if report.get('part')=='stages':
         extra=report['result']['checks']
         require(extra and all(row.get('passed') is True for row in extra),'Failed stage oracle checks')

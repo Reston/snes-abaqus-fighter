@@ -18,7 +18,9 @@ Public contract::
 center=False)``.  The function does not write files or mutate its inputs.
 """
 
+import json
 from pathlib import Path
+import struct
 from typing import Any, Callable, Mapping, Sequence
 
 from PIL import Image, ImageDraw, ImageEnhance
@@ -155,9 +157,9 @@ def _select(root: Path, roster: Sequence[Mapping[str, Any]], text_fn: TextFn) ->
 
 
 ARENA_PREVIEW_CROPS = (
-    (0, 32, 256, 160),  # Las Condes: canopy, 140 sign and glass entrance.
-    (0, 16, 256, 144),  # El Castillo: house, garden and patio gathering.
-    (0, 24, 256, 152),  # La Oficina: skyline, monitors and desk chairs.
+    (0, 64, 256, 192),  # Current Las Condes: 140 sign, entrance and paving seam.
+    (0, 64, 256, 192),  # Current El Castillo: patio gathering, garden and grass.
+    (0, 64, 256, 192),  # Current La Oficina: skyline, desks and carpet seam.
 )
 
 
@@ -169,6 +171,64 @@ def _stage_preview(stage: Image.Image, stage_index: int) -> Image.Image:
     # is exactly 2:1, matching the 104x52 destination without stretching.
     landmark = source.crop(ARENA_PREVIEW_CROPS[stage_index])
     return landmark.resize((104, 52), Image.Resampling.BOX)
+
+
+def native_stage_previews(root: str | Path, ui_palette, prepared=None) -> list[Image.Image]:
+    """Use current converted BG1 bytes, including its 16px camera gutters.
+
+    Menu generation runs before the final stage install on a clean build.
+    Rebuild those deterministic payloads in memory instead of reading stale
+    generated PNGs or the historical cartoon-stage masters.
+    """
+    from stage_depth_assets import stage_payload, colors
+    root = Path(root)
+    records = json.loads((root / 'assets/art/stages/depth-v1/stages.json').read_bytes())
+    if records.get('schema') != 1 or records.get('scope') != 'stage-depth-v1':
+        raise ValueError('unknown current arena-preview stage source')
+    if [r['id'] for r in records['stages']] != [0, 1, 2]:
+        raise ValueError('arena previews require all three current stages')
+    result = []
+    for record in records['stages']:
+        payload, _, metadata = stage_payload(root, record, ui_palette, prepared)
+        name = 'stage' + str(record['id'])
+        gfx, raw_map, raw_palette = (payload[name + suffix] for suffix in ('_tiles.bin', '_map.bin', '_pal.bin'))
+        if len(raw_map) != 4096 or len(raw_palette) != 192 or len(gfx) > 0x7000:
+            raise ValueError('current preview exceeds its native BG1 contract')
+        entries = struct.unpack('<2048H', raw_map)
+        palette = colors(raw_palette)
+        viewport = Image.new('RGB', (256, 224))
+        cache = {}
+        for y in range(28):
+            for x in range(32):
+                column = x + 2  # center viewport x16..271 of the 288px scene
+                entry = entries[(column // 32) * 1024 + y * 32 + column % 32]
+                if entry not in cache:
+                    if entry == 0 and gfx[:32] == bytes(32):
+                        # The five HUD-covered top rows deliberately use the
+                        # transparent tile in map palette zero.
+                        cache[entry] = Image.new('RGB', (8, 8))
+                        viewport.paste(cache[entry], (x * 8, y * 8))
+                        continue
+                    index, bank = entry & 1023, ((entry >> 10) & 7) - 2
+                    if not (0 <= bank < 6 and (index + 1) * 32 <= len(gfx)):
+                        raise ValueError('current arena preview references an invalid tile or palette')
+                    tile = gfx[index * 32:(index + 1) * 32]
+                    pixels = []
+                    for yy in range(8):
+                        row = 7 - yy if entry & 0x8000 else yy
+                        for xx in range(8):
+                            bit = xx if entry & 0x4000 else 7 - xx
+                            value = sum(((tile[(plane // 2) * 16 + row * 2 + plane % 2] >> bit) & 1) << plane
+                                        for plane in range(4))
+                            pixels.append(palette[bank * 16 + value])
+                    image = Image.new('RGB', (8, 8))
+                    image.putdata(pixels)
+                    cache[entry] = image
+                viewport.paste(cache[entry], (x * 8, y * 8))
+        if metadata['viewport'] != [16, 0, 272, 224]:
+            raise ValueError('review arena crop for a changed native viewport')
+        result.append(viewport)
+    return result
 
 
 def _arenas(stages: Sequence[Image.Image], text_fn: TextFn) -> Image.Image:

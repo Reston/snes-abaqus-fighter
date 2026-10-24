@@ -15,7 +15,7 @@ extern u8 audioPreviousScreen,audioPreviousEnd,audioLastCue,audioPreviousIntro;
 const u8 audioVolpan[AUDIO_EFFECT_COUNT]={0x88,0xc8,0xa8,0x98,0xc8,0xb8,0xf8,0xf8,0xf8,0x98,0xa8};
 
 void audioCue(u8 slot,u8 priority) {
-    if(!musicOn)return;
+    /* Music preference never silences contact/announcer feedback. */
     if(slot>=AUDIO_EFFECT_COUNT)return;
     if(audioSpeechTicks && priority<4)return;
     if(pendingSound && priority<audioPriority)return;
@@ -44,7 +44,7 @@ void sound(u8 n) {
 
 void audioSceneLoaded(void) {
     pendingSound=0;audioPriority=0;audioSpeechTicks=0;
-    audioVolume=48;audioTargetVolume=86;
+    audioVolume=musicOn?48:0;audioTargetVolume=86;
     audioPreviousScreen=255;audioPreviousEnd=0;audioLastCue=255;audioPreviousIntro=255;
     spcSetModuleVolume(audioVolume);
 }
@@ -79,7 +79,7 @@ void audioPresentationTick(void) {
     }
     audioPreviousScreen=screen;
     if(!audioSpeechTicks)audioTargetVolume=86;
-    target=audioTargetVolume;
+    target=musicOn?audioTargetVolume:0;
     /* Cue and envelope writes are mutually exclusive: no per-frame producer
      * burst, and ordinary combat performs no extra SPC command work. */
     if(pendingSound) {

@@ -1094,13 +1094,15 @@ def main() -> int:
 
 def depth_stage_suite() -> int:
     """One native execution backs the stage suite and its focused appendix."""
-    if json.loads((ROOT/'dist/manifest.json').read_bytes())['version']=='0.25.0':
+    version=json.loads((ROOT/'dist/manifest.json').read_bytes())['version']
+    if tuple(map(int,version.split('.'))) >= (0,25,0):
         import test_pacing_floor_25 as current
         result=current.stage_main()
-        focused=json.loads((ROOT/'docs/pacing-floor-v025-stage-report.json').read_bytes())
+        focused_path=ROOT/f'docs/{current.candidate_stem(version)}-stage-report.json'
+        focused=json.loads(focused_path.read_bytes())
         shared={**focused,'suite':'stage-depth','shared_native_execution':True,
-                'focused_report':'docs/pacing-floor-v025-stage-report.json',
-                'focused_report_sha256':hashlib.sha256((ROOT/'docs/pacing-floor-v025-stage-report.json').read_bytes()).hexdigest(),
+                'focused_report':focused_path.relative_to(ROOT).as_posix(),
+                'focused_report_sha256':hashlib.sha256(focused_path.read_bytes()).hexdigest(),
                 'passed':focused['check_count']}
         (ROOT/'docs/stage-test-report.json').write_bytes((json.dumps(shared,indent=2)+'\n').encode())
         return result

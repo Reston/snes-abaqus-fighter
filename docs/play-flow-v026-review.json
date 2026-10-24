@@ -1,0 +1,179 @@
+{
+  "status": "verified-native-review",
+  "version": "0.26.0",
+  "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+  "source_commit": "c89239901491a239e10194f1399820527b0ebf74",
+  "verification_sha256": "d9c7407b1c0706821812d3a58af6846c1e29d70d165a80b1e58fe5f3e8058efd",
+  "media": [
+    {
+      "path": "docs/screenshots/play-flow-v026/pacing/before-movement.gif",
+      "caption": "Before: approved v0.24",
+      "rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
+      "sha256": "18708e8bc9f3114e73d573383f532c9eff3711d97bb5df2584aaf616fa79e67c",
+      "animated": true
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/pacing/after-movement.gif",
+      "caption": "Current: slower native combat",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "5fc46ac288d02efb1790299430cb4a99da106df0483e169ec41505fd44b915b4",
+      "animated": true
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-movement.gif",
+      "caption": "Las Condes",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "288395eb9cd55f52b9cec547a462e12b36058683ed5c3ac3e3435275de68f3f9",
+      "animated": true
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-movement.gif",
+      "caption": "El Castillo",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "1d88c7924a4848daaaf05e00cba5fd041527cd68baf8645a830103ec4bbd2f0a",
+      "animated": true
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-movement.gif",
+      "caption": "La Oficina",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "8fb72d0434e5acdb347961901631f7a82061ddd07dcaa3c202020c781335e8ab",
+      "animated": true
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/local-session-2-1.png",
+      "caption": "A running 2\u20131 local session",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "7e7b140f2287f51aba51b1c25321b409d110274c20011b924d495f367c36bccb",
+      "animated": false
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/result-p2-mirror.png",
+      "caption": "Player 2 earns the mirror-match result",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "f6ba5734d895b03f2254e3457c2543dafb0c227317814f91772ff9a5635dc67f",
+      "animated": false
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/hit-confirm-y-x.png",
+      "caption": "Earned two-hit confirm",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "12976adfdabdffc5cf2140ab3350b48abbd880f3946b1f27cbb48efbdc2e7939",
+      "animated": false
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/hit-confirm-late-block.png",
+      "caption": "A late follow-up is genuinely blocked",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "d5031602d9e697cff494839b8f3c90c43dfb545db0b7a9dcdf761d425dc925fd",
+      "animated": false
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/training-best-combo.png",
+      "caption": "Session best survives retries",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "a9c49b9a99e7face218c1900a066d539b1489bf45bf4e1b94c3fee694b83e3c5",
+      "animated": false
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/normal-timing-p1.png",
+      "caption": "Startup, active time and recovery",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "414915629c09377a172c59e72c99e008eac0dd08b23bbe82963c2f1c63ddb0eb",
+      "animated": false
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/super-ready.png",
+      "caption": "Full meter: SUPER Y+B",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "c8dec14af93cd86d8e5b9e9c312b8de866e56d00a2577a2b1c22d8a81afc7123",
+      "animated": false
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/punish-punch-p2.png",
+      "caption": "A real recovery punish",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "5cb56ce93880422a18052ca8871099fe90e073c0cdf05b311e28185583ff325e",
+      "animated": false
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/throw-tech-p1.png",
+      "caption": "The existing non-damaging throw escape",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "f91f8b68672c18ce72278421c5eebf51d35bac5026c8a6f6963eeb337ae2c2a1",
+      "animated": false
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/music-muted-guide.png",
+      "caption": "Music preference on the guide",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "1572d596112d76cd848aa9549d711e8d17925049f9eebdba282805c73766ff04",
+      "animated": false
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/background-still-guide.png",
+      "caption": "Background-motion preference",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "d6faba33b0a37d42997efb84b16db610559745cac2bd2984311d127b79551066",
+      "animated": false
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/background-moving.gif",
+      "caption": "Normal bounded background movement",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "b9b935b18bb73493f7d0e746d913e9482cff426100725ae5bc8e7d76b3f50dae",
+      "animated": true
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/background-still.gif",
+      "caption": "Still scenery with the same combat",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "f6ec1adccebfe342443d7c896cab06d675f7ac4a15efa92223150b1e86938689",
+      "animated": true
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/arcade-next-opponent.png",
+      "caption": "Next challenger",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "a41da26b04d0566f4738f38665b6117539391c420b201c4ddec5fe84611c582a",
+      "animated": false
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/arcade-retry-opponent.png",
+      "caption": "Continue against the shown opponent",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "ead8ad81569eddf8d50b1532fcc40c69114d39539d8c0710413ee61bce5f3c7a",
+      "animated": false
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/before-arena-0.png",
+      "caption": "Historical v0.25 picker",
+      "rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
+      "sha256": "88fd3075fba3ded8b007e2d54f9dbd90435b41a1b605ef49268b832edb2f7a7c",
+      "animated": false
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/arena-current-0-snes9x.png",
+      "caption": "Current native-stage previews",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "0c8264dc0de47e322e4d6d91484043d2e9f7fbbe819a355acb832182d7c3f764",
+      "animated": false
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/roster-family-0.png",
+      "caption": "Wave-shot fighter",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "e2d5f9d3574313c446a643d78e08812e746f80af38b0138894f4f13eea3db8a2",
+      "animated": false
+    },
+    {
+      "path": "docs/screenshots/play-flow-v026/roster-family-3.png",
+      "caption": "Rising-strike fighter",
+      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "sha256": "f15624cb3addc017db2f96272abb1a9608900b72528615438d005f39c9e6b4be",
+      "animated": false
+    }
+  ],
+  "human_playtest_approved": null,
+  "gif_timing_is_approximate": true
+}

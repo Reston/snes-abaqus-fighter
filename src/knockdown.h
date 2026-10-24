@@ -61,6 +61,9 @@ void throwTech(void) {
         discardFighterInput(&fighters[p]);clearWakeInput(&fighters[p]);
     }
     clearThrowLinks();clearBanner();hitstop=3;fxType=1;fxLife=6;
+    /* Explain an earned simultaneous-throw escape without changing it.
+     * Reuse the existing deferred banner after both actor uploads settle. */
+    impactBannerCounter=3;impactBannerCombo=0;impactBannerPending=1;impactSettle=1;
     fxX=(fighters[0].x+fighters[1].x)>>5;fxY=FLOOR-40;sound(1);
 }
 void updateDowned(u8 p) {

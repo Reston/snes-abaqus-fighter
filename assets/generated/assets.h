@@ -36,7 +36,7 @@ extern char select_map, select_map_end;
 extern char select_pal, select_pal_end;
 #define SELECT_PAL_SIZE 192
 extern char arenas_tiles, arenas_tiles_end;
-#define ARENAS_TILES_SIZE 15712
+#define ARENAS_TILES_SIZE 15744
 extern char arenas_map, arenas_map_end;
 #define ARENAS_MAP_SIZE 2048
 extern char arenas_pal, arenas_pal_end;

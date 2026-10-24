@@ -21,6 +21,35 @@ void guideCenter(u8 y,const char *text) {
     drawGuideWord(((u16)y<<6)+(((32-n)>>1)<<1),text);
 }
 
+void guideTwoDigits(u8 x,u8 y,u8 value) {
+    char text[3];
+    text[0]='0'+value/10;text[1]='0'+value%10;text[2]=0;
+    guideWord(x,y,text);
+}
+
+void guideNormalRow(u8 action,u8 y) {
+    u8 index=action,player=stageDepthTable[3]-1;
+    if(player)index+=16;
+    if(action==1)guideWord(3,y,"Y LIGHT PUNCH");
+    else if(action==3)guideWord(3,y,"X HEAVY PUNCH");
+    else if(action==4)guideWord(3,y,"B LIGHT KICK");
+    else guideWord(3,y,"A HEAVY KICK");
+    guideTwoDigits(18,y,matchStartup[index]);
+    guideTwoDigits(21,y,matchActiveEnd[index]-matchStartup[index]);
+    guideTwoDigits(24,y,matchActionEnd[index]-matchActiveEnd[index]);
+}
+
+void guideBestCombo(void) {
+    char text[18];
+    u16 damage=stageDepthTable[5]+((u16)stageDepthTable[6]<<8);
+    /* Paused-only formatting. The live contact path performs no divides. */
+    text[0]='B';text[1]='E';text[2]='S';text[3]='T';text[4]=' ';
+    text[5]='0'+stageDepthTable[4]/10;text[6]='0'+stageDepthTable[4]%10;
+    text[7]='H';text[8]=' ';text[9]='0'+damage/100;
+    text[10]='0'+(damage/10)%10;text[11]='0'+damage%10;
+    text[12]='D';text[13]=0;guideCenter(19,text);
+}
+
 void settlePausedHud(void) {
     if(pauseHudPending) {
         /* A pause directly after contact must not leave yesterday's HP bar
@@ -37,9 +66,19 @@ void drawPauseCard(void) {
             if(difficulty==0)guideCenter(11,"DUMMY: CPU EASY");
             else if(difficulty==1)guideCenter(11,"DUMMY: CPU NORMAL");
             else guideCenter(11,"DUMMY: CPU HARD");
-        } else guideCenter(11,trainingDummyNames[trainingDummy]);
-        guideCenter(13,trainingDummy==4?"U/D DUMMY L/R LEVEL SEL GUIDE":"UP/DOWN DUMMY  SELECT GUIDE");
-    } else guideCenter(13,"SELECT MOVE GUIDE");
+        } else if(trainingDummy==5)guideCenter(11,"DUMMY: P2 CONTROLLER");
+        else if(trainingDummy==6)guideCenter(11,"DUMMY: GUARD AFTER HIT");
+        else guideCenter(11,trainingDummyNames[trainingDummy]);
+        if(trainingDummy==4)guideCenter(13,"U/D DUMMY L/R LEVEL SEL GUIDE");
+        else guideCenter(13,trainingDummy==5?"X STAND U/D DUMMY SEL GUIDE":"X P2 PAD U/D DUMMY SEL GUIDE");
+    } else {
+        if(mode==0) {
+            if(difficulty==0)guideCenter(11,"CPU: EASY");
+            else if(difficulty==1)guideCenter(11,"CPU: NORMAL");
+            else guideCenter(11,"CPU: HARD");
+        } else guideCenter(11,"LOCAL 1V1");
+        guideCenter(13,"SELECT MOVE GUIDE");
+    }
 }
 
 void closePauseGuide(void) {
@@ -60,10 +99,13 @@ void buildPauseGuide(void) {
         fillGuidePanel();
         if(mode==2) {
             if(pausePage==1)guideCenter(6,"HOW TO PLAY 1/3");
-            else if(pausePage==2)guideCenter(6,"MOVE LIST 2/3");
+            else if(pausePage==2)guideCenter(6,stageDepthTable[3]?"NORMAL TIMING 2/3":"MOVE LIST 2/3");
             else guideCenter(6,"TRAINING TOOLS 3/3");
-        } else guideCenter(6,pausePage==1?"HOW TO PLAY 1/2":"MOVE LIST 2/2");
+        } else if(pausePage==1)guideCenter(6,"HOW TO PLAY 1/2");
+        else guideCenter(6,stageDepthTable[3]?"NORMAL TIMING 2/2":"MOVE LIST 2/2");
         guideCenter(24,"A / START RESUME");
+        guideCenter(25,musicOn?"MUSIC ON  L TO MUTE":"MUSIC OFF L TO PLAY");
+        guideCenter(27,stageDepthTable[9]?"R BACKGROUND: STILL":"R BACKGROUND: MOVING");
         guideCenter(26,pausePage==(mode==2?3:2)?"B ROSTER   SELECT BACK":"B ROSTER   SELECT NEXT");
         guideBuild=2;
     } else if(guideBuild==2) {
@@ -72,6 +114,11 @@ void buildPauseGuide(void) {
             guideWord(3,10,"JUMP          UP");
             guideWord(3,11,"STAND GUARD   AWAY");
             guideWord(3,12,"LOW GUARD     DOWN + AWAY");
+        } else if(pausePage==2 && stageDepthTable[3]) {
+            guideWord(3,9,stageDepthTable[3]==1?"P1":"P2");
+            guideWord(7,9,characterNames[fighters[stageDepthTable[3]-1].id]);
+            guideWord(18,11,"S  A  R");
+            guideNormalRow(1,12);guideNormalRow(3,13);
         } else if(pausePage==2) {
             guideWord(3,9,"P1");guideWord(7,9,characterNames[fighters[0].id]);
             guideWord(7,10,characterSpecialNames[fighters[0].id]);
@@ -82,11 +129,12 @@ void buildPauseGuide(void) {
         } else {
             guideCenter(9,trainingVisible?"UP: LIVE DISPLAY ON":"UP: LIVE DISPLAY OFF");
             guideCenter(10,"DOWN: NEXT CHALLENGE");
+            guideCenter(11,"X: RESTART DRILL");
             guideCenter(12,trainingChallengeNames[trainingChallenge]);
             if(trainingChallenge==0) {
-                guideCenter(14,"STAND DUMMY: GET CLOSE");
-                guideCenter(15,"HIT Y THEN DOWN+Y IN STUN");
-                guideCenter(16,"SPECIAL MUST LINK AND HIT");
+                guideCenter(14,"LAND LIGHT, THEN PRESS STRONG");
+                guideCenter(15,"Y->X  B->A  OR LINK SPECIAL");
+                guideCenter(16,"SECOND MOVE MUST TRULY COMBO");
             } else if(trainingChallenge==1) {
                 guideCenter(14,"CPU DUMMY: WAIT FOR A LOW");
                 guideCenter(15,"HOLD DOWN + AWAY TO BLOCK");
@@ -105,8 +153,16 @@ void buildPauseGuide(void) {
             guideWord(3,16,"SWEEP         DOWN + A");
             guideWord(3,18,"THROW         TOWARD + X");
             guideWord(3,19,"UPPERCUT      DOWN + X");
+            guideWord(3,20,"THROW TECH    BOTH THROW");
             guideCenter(21,"AFTER A HIT: PRESS HEAVIER");
             guideCenter(22,"CROSS-UP: JUMP PAST + A");
+        } else if(pausePage==2 && stageDepthTable[3]) {
+            guideNormalRow(4,14);guideNormalRow(5,15);
+            guideCenter(17,"S STARTUP A ACTIVE R RECOVERY");
+            guideCenter(18,"GROUNDED STANDING NORMALS");
+            guideCenter(19,"HITSTOP ADDS A CONTACT PAUSE");
+            guideCenter(21,"TICKS AT NORMAL VIDEO RATE");
+            guideCenter(22,stageDepthTable[3]==1?"UP: P2 NORMALS":"UP: SPECIAL MOVES");
         } else if(pausePage==2) {
             guideWord(3,15,"QUICK: DOWN + Y");
             guideWord(3,17,"MOTION: D, D+F, F + Y/X");
@@ -115,8 +171,10 @@ void buildPauseGuide(void) {
             guideWord(3,20,"COST: 32 ENERGY");
             guideWord(3,22,"PRESS PUNCH WITH FINAL TOWARD");
             drawSuperGuide();
+            guideCenter(23,"UP: P1 NORMAL TIMING");
         } else {
             trainingMakeStatus();guideWord(0,18,trainingStatusText);
+            guideBestCombo();
             guideCenter(20,"H HITS D DAMAGE SP! EXECUTED");
             guideCenter(21,"INPUT: DIRECTION THEN YXBA");
             guideCenter(22,"123 DOWN 456 LEVEL 789 UP");
@@ -134,7 +192,29 @@ u16 trainingKeys(void) {
     if(trainingDummy==1)return back;
     if(trainingDummy==2)return back|KEY_DOWN;
     if(trainingDummy==3 && !f->y && !f->hurt)return KEY_UP;
+    if(trainingDummy==6) {
+        /* Stand for the opener, then guard the first legal recovery tick.
+         * Real hit-stun links still connect through the held back input. */
+        if(fighters[0].combotime || f->hurt)return back;
+    }
     return 0;
+}
+
+void trainingCycleDummy(u8 down) {
+    /* Preserve the indexed CPU value4 and the Stand->CPU Up shortcut.
+     * Manual value5 remains an explicit X toggle, outside this cycle. */
+    if(trainingDummy==5)trainingDummy=down?0:4;
+    else if(down) {
+        if(trainingDummy==3)trainingDummy=6;
+        else if(trainingDummy==6)trainingDummy=4;
+        else if(trainingDummy==4)trainingDummy=0;
+        else trainingDummy++;
+    } else {
+        if(!trainingDummy)trainingDummy=4;
+        else if(trainingDummy==4)trainingDummy=6;
+        else if(trainingDummy==6)trainingDummy=3;
+        else trainingDummy--;
+    }
 }
 
 #endif
