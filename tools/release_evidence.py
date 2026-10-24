@@ -146,6 +146,8 @@ SOURCE_INPUT_EXACT = {
     "tools/native_artifacts.py",
     "tools/candidate_sources.py",
     "tools/play_flow_media.py",
+    "tools/play_flow_counterfactual.py",
+    "tools/test_play_flow_counterfactual.py",
     "tools/v026_contracts.py",
     "tools/collate_play_flow_26.py",
     "tools/check_play_flow_native_26.py",

@@ -1185,6 +1185,7 @@ void drawFight(void) {
 }
 void fightTick(void) {
     u16 pauseKeys=edge0|edge1,pauseDirections;
+    u8 settledPauseHud=0;
     animationAdvance=0;
     if(pauseKeys&KEY_START) {
         paused=!paused;impactBannerPending=0;clearBanner();
@@ -1194,7 +1195,7 @@ void fightTick(void) {
     }
     if(paused) {
         pauseDirections=cleanDirections(pad0|pad1)&pauseKeys;
-        if(!(pauseKeys&KEY_START))settlePausedHud();
+        if(!(pauseKeys&KEY_START)){settledPauseHud=pauseHudPending;settlePausedHud();}
         fighters[0].bufferedAction=0;fighters[0].bufferAge=0;fighters[0].jumpBuffer=0;
         fighters[1].bufferedAction=0;fighters[1].bufferAge=0;fighters[1].jumpBuffer=0;
         if(!(pauseKeys&KEY_START)) {
@@ -1256,7 +1257,8 @@ void fightTick(void) {
                 }
             }
         }
-        if(paused && guideBuild)buildPauseGuide();
+        /* Bar reconstruction and a full guide phase each own one frame. */
+        if(paused && guideBuild && !settledPauseHud)buildPauseGuide();
         drawFight();return;
     }
     /* Either pad's Start owns this sample, including the resumed live tick. */

@@ -17,6 +17,7 @@ from v026_contracts import validate, canonical, BASE as INHERITED_BASE
 from candidate_sources import snapshot as source_snapshot
 from test_compatibility import CORE_PATH as INDEPENDENT_CORE_PATH
 from play_flow_media import inventory as media_inventory
+from play_flow_counterfactual import validate as validate_reference
 
 INHERITED = {p: f'play-flow-v026-{p}-report.json' for p in ('pacing', 'supers', 'cpu', 'stage')}
 PARTS = ('results', 'training', 'meter', 'arenas', 'arcade', 'manual', 'rounds',
@@ -145,7 +146,7 @@ def feature_coverage(part, report):
         require(report.get('native_execution') is True and report.get('exit_code') == 0 and
                 set(report.get('suite_reports', {})) == set(SIX), 'Canonical six-program execution is incomplete')
         for key, producer in (('source_guard_runs', 'test_candidate_sources.py'), ('media_guard_runs', 'test_play_flow_media.py'),
-                              ('collation_guard_runs', 'test_play_flow_collation.py')):
+                              ('collation_guard_runs', 'test_play_flow_collation.py'), ('counterfactual_guard_runs', 'test_play_flow_counterfactual.py')):
             parsed = ast.parse((ROOT / 'tools' / producer).read_text())
             expected = sum(isinstance(n, ast.FunctionDef) and n.name.startswith('test_') for cls in parsed.body if isinstance(cls, ast.ClassDef) for n in cls.body)
             runs = report.get(key, [])
@@ -227,6 +228,9 @@ def collect(source_ref):
             part = name[len('play-flow-v026-'):-len('-report.json')]
             total = validate_record(report, name, rom, sources)
             feature_coverage(part, report)
+            if part in ('feedback', 'throw'):
+                require(report['counterfactual']['source_commit'] == freeze, 'Counterfactual freeze differs')
+                validate_reference(ROOT, report['counterfactual'])
             if part != 'stress':
                 require(report.get('captures') == media_inventory(ROOT, part), 'Current capture inventory/bytes differ: ' + part)
             features[part] = total

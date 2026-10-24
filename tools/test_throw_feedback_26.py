@@ -19,6 +19,7 @@ import test_compatibility as compatibility
 import test_inputs as inputs
 import test_music_26 as native
 from test_play_flow_26 import source_hashes
+from play_flow_counterfactual import prepare as prepare_reference
 from test_champion import host_contract
 
 BASE = 'a047b54'
@@ -151,10 +152,11 @@ def main():
         return s if count else e.state()
 
     try:
-        baseline = subprocess.check_output(['git', 'show', BASE + ':dist/abaqus-after-hours.sfc'], cwd=ROOT)
-        require(sha(baseline) == BASE_ROM, 'tech reference is the exact committed pre-feedback parent')
-        (OUT / 'before.sfc').write_bytes(baseline)
-        subprocess.run(['git', 'merge-base', '--is-ancestor', BASE, 'HEAD'], cwd=ROOT, check=True)
+        reference_rom, reference = prepare_reference(ROOT)
+        (OUT / 'before.sfc').write_bytes(reference_rom.read_bytes())
+        report['counterfactual'] = reference
+        report['baseline_commit'] = reference['source_commit']
+        report['baseline_rom_sha256'] = reference['baseline_rom_sha256']
         require(sha((ROOT / 'dist/abaqus-after-hours.sfc').read_bytes()) == manifest['sha256'],
                 'throw proof loads the exact current cartridge')
         require(sha((ROOT / '.tools/core/snes9x_libretro.dll').read_bytes()).lower() == monitor.EXPECTED_NATIVE_CORE['dll_sha256'].lower(),

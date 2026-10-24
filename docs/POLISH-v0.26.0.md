@@ -337,3 +337,23 @@ The actual launcher and six isolated valid/corrupt/stale fixtures pass without
 creating tool files, rewriting configuration or invoking setup/GUI. The default
 normal-speed and fast-forward bindings were inspected; game attack keys do not
 share the default fast-forward key. No speed or personal mapping was changed.
+
+## Combined verification correction: separate paused work and menu timing
+
+The first final-freeze run caught a real SDK lag increment when a Training
+retry rebuilt all health bars and the first guide phase together. The paused
+path now schedules those jobs on separate frames. A local byte records work
+already performed; no global state or gameplay rule changes. All twelve
+Training retry proofs and both-core music/guide regressions pass in isolation.
+An earlier reset-unrolling experiment did not fix it and was not integrated.
+
+Later roster hints also changed the clock phase at the end of older menu
+fixtures. Two historical feedback comparisons therefore differed in passive
+energy cadence. Current full-byte proofs instead derive a current-source
+counterfactual with only the recovery/throw banner stores removed. Menus,
+assets and all gameplay stores stay current; every Fighter/Wave/RNG/controller
+byte still compares without masking. Historical failed comparisons are retained.
+Fixed anti-air menu delays were remeasured; all hit/whiff/startup/negative
+assertions remain intact, including an equal-opening difficulty comparison
+and an empty jump intercepted before any attack input. Complete old reports
+and captures are archived in ignored build/v026-first-freeze-evidence.zip.

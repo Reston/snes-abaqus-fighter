@@ -23,6 +23,7 @@ import test_pacing_floor_25 as monitor
 import test_presentation as presentation
 from test_champion import host_contract
 from test_play_flow_26 import source_hashes
+from play_flow_counterfactual import prepare as prepare_reference
 
 BASE = '7e1e68d'
 BASE_ROM = '558bff28c45765e7b6997e3cdbb0ced8fa631237f30b267011dc5d269a63e4ce'
@@ -156,15 +157,15 @@ def main():
     require(fighters == list(range(12)) or path.is_relative_to(ROOT / 'build'), 'partial feedback proof remains diagnostic')
     OUT.mkdir(parents=True, exist_ok=True)
     STREAMS.mkdir(parents=True, exist_ok=True)
-    baseline = subprocess.check_output(['git', 'show', BASE + ':dist/abaqus-after-hours.sfc'], cwd=ROOT)
-    require(sha(baseline) == BASE_ROM, 'paired reference is the committed pre-feedback cartridge')
+    reference_rom, reference = prepare_reference(ROOT)
+    baseline = reference_rom.read_bytes()
     (STREAMS / 'before.sfc').write_bytes(baseline)
-    subprocess.run(['git', 'merge-base', '--is-ancestor', BASE, 'HEAD'], cwd=ROOT, check=True)
     before = source_hashes()
     started = time.monotonic()
     manifest = json.loads((ROOT / 'dist/manifest.json').read_bytes())
     report = {'status': 'failed', 'version': manifest['version'], 'rom_sha256': manifest['sha256'],
-              'baseline_commit': BASE, 'baseline_rom_sha256': BASE_ROM, 'source_sha256': before,
+              'baseline_commit': reference['source_commit'], 'baseline_rom_sha256': reference['baseline_rom_sha256'],
+              'counterfactual': reference, 'source_sha256': before,
               'host_contract': host_contract(), 'controller_only': True, 'memory_writes': False,
               'save_states': False, 'checks': CHECKS, 'cases': [], 'native_health': monitor.HEALTH}
     original = Emulator.run
