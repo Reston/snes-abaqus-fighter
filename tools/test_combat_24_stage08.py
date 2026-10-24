@@ -25,6 +25,7 @@ from test_compatibility import Probe, verify_manifest_and_pinned_core
 from test_champion import host_contract
 from test_stages import vram_bytes, oam_memory, scanline_budget, actor_contract
 from stage_depth_assets import colors, install
+from expansion_contracts import combined_contract
 
 OUT = ROOT/'docs/screenshots/combat-24-stage08'
 REPORT = ROOT/'docs/combat-24-stage08-report.json'
@@ -365,6 +366,7 @@ def before_floor_clips(path):
 
 
 def resources():
+    combined=combined_contract(ROOT)
     changed=[];added=[];preserved=0
     tracked=git('ls-tree','-r','--name-only',BASE,'--','assets/generated').decode().splitlines()
     allowed={'assets/generated/'+n for n in ('assets.h','data.asm')}
@@ -379,13 +381,16 @@ def resources():
         name=path.relative_to(ROOT).as_posix()
         if name not in tracked and path.name!='soundbank.h':added.append(name)
     expected={f'assets/generated/stage{i}_floor_{part}.bin' for i in range(3) for part in ('tiles','map')}|{'assets/generated/stage-depth.json'}
-    check(set(changed)==allowed and set(added)==expected,'generated delta is exactly stage planes and declarations',{'changed':changed,'added':added,'preserved':preserved})
+    check(allowed<=set(changed) and set(added)==expected,'all declared stage planes are present within the combined allocation',{'changed':changed,'added':added,'preserved':preserved})
+    check(set(changed)==set(combined['assets']['changed_generated']) and set(added)==set(combined['assets']['added_generated']),
+          'independent combined preservation policy binds every generated change')
     protected=git('ls-tree','-r','--name-only',BASE,'--','assets/art','assets/references').decode().splitlines()
     for name in protected:check((ROOT/name).read_bytes()==git('show',BASE+':'+name),'original source or provenance preserved',name)
     oldsyms=symbol_map(git('show',BASE+':dist/abaqus-after-hours.sym').decode())
     ram={n:v for n,v in oldsyms.items() if v<0x2000 or 0x7e0000<=v<0x800000}
     moved={n:[hex(v),hex(SYMS.get(n,0))] for n,v in ram.items() if SYMS.get(n)!=v}
-    check(not moved,'all existing RAM symbol addresses retained',{'count':len(ram),'moved':moved})
+    check(set(moved)==set(combined['native']['documented_relocations']),
+          'prior RAM symbols obey the bounded combined policy',{'count':len(ram),'moved':moved})
     check(SYMS['stageVictoryPhase']+1-SYMS['stageDepthTable']==16,'exact historical sixteen-byte stage reservation retained')
     sections=[]
     for name,start in SYMS.items():
@@ -416,7 +421,7 @@ def resources():
     check(before==after,'full authored stage generation is byte-idempotent',{'files':len(before),'changed':[n for n in before if before[n]!=after.get(n)]})
     return {'changed_generated':changed,'added_generated':sorted(added),'preserved_generated':preserved,
             'generated_count':len(tracked)+len(added),'existing_ram_symbols':len(ram),'ram_moved':moved,
-            'new_ram_bytes':0,'reused_stage_bytes':16,'hdma_mask':0,'live_stage_dma_bytes':0,'new_obj_entries':0,
+            'new_stage_ram_bytes':0,'combined_native_policy':combined['native'],'reused_stage_bytes':16,'hdma_mask':0,'live_stage_dma_bytes':0,'new_obj_entries':0,
             'actor_pose_dma_bytes':3840,'actor_obj_entries':30,'linked_section_bytes':sum(sections),'stage_allocations':manifest,
             'idempotent_encoder':{'files':len(before),'changed':[]}}
 
@@ -426,7 +431,7 @@ def main():
     parser.add_argument('--floor-before-rom',type=Path)
     args=parser.parse_args()
     started=time.monotonic();OUT.mkdir(parents=True,exist_ok=True)
-    report={'status':'failed','scope':'isolated-stage08-v024-floor-review-round2','baseline_commit':BASE,
+    report={'status':'failed','scope':'current-cartridge whole scenery and authored-floor proof; combined completion remains parent-owned','baseline_commit':BASE,
             'integration_base':'8d0505d','previous_feature_head':'7c5bf13b1578d769d308a5e89d4913c08baf654d',
             'source_commit':git('rev-parse','HEAD').decode().strip(),'command':subprocess.list2cmdline([sys.executable,*sys.argv]),
             'rom_sha256':sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes()),'rom_bytes':4194304,

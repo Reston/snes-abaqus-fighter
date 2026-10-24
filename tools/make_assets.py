@@ -457,4 +457,6 @@ for i,h in enumerate(effect_hashes):print(f'Effects PCM {i}: {h}')
 },indent=2)+'\n')
 (OUT/'data.asm').write_text('\n'.join(asm)+'\n')
 (OUT/'assets.h').write_text('\n'.join(header)+'\n')
+from stage_depth_assets import install as install_stage_depth
+install_stage_depth(ROOT)
 print('Encoded seven backgrounds, 768 fighter frames, UI, effects, 5 music tracks and 11 resident sounds.')
