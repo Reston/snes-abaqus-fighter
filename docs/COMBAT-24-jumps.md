@@ -97,3 +97,7 @@ refresh shared jump/landing fixtures honestly (old release expected 28/19;
 the new release is 54), update preservation policy for these disjoint frames,
 and regenerate all exact-ROM shared evidence. Human combined motion/likeness
 review and physical controller/original hardware checks remain separate.
+Walk speed also contributes to takeoff vx (`walkSpeed + 8`), so the pacing
+merge must repeat the fixed-distance standing-cross and rear-contact cases.
+This isolated driver's exact-other-fields/art guards need the parent's declared
+combined policy when other authorized workstreams are present.

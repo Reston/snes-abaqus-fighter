@@ -194,11 +194,11 @@ def session(i,rom,table,base=False):
     sent=not rear;contact=None;rows=[]
     for t in range(84):
      s=state(e);crossed=(s[f'x{a}']-s[f'x{d}'])*sign>0;keys=[]
-     # Telegraph one simulation step before crossing. Waiting until after
-     # crossing wastes a startup sample and can overshoot the short rear box
-     # on Cote's faster horizontal jump. Contact itself must still be rear.
+     # Cote's eight-sample windup needs its edge just before crossing to
+     # retain the short rear box. The other arcs start after crossing so the
+     # active window overlaps the standing body on descent, below the apex.
      will_cross=(s[f'x{a}']+signed16(s[f'jump_vx{a}'])-s[f'x{d}'])*sign>0
-     if not sent and rear and (crossed or will_cross):keys=[key];sent=True
+     if not sent and rear and (crossed or (i==3 and will_cross)):keys=[key];sent=True
      s=drive(port,keys,label=label);rows.append(s)
      # connected persists after a prior attack until the next attack starts;
      # identify a NEW contact from actual HP loss, never the stale latch.
