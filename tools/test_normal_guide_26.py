@@ -8,6 +8,7 @@ import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from emulator import ROOT
+from play_flow_media import inventory as media_inventory
 import test_inputs as inputs
 import test_music_26 as native
 import test_presentation as presentation
@@ -144,6 +145,7 @@ def main():
                 report['cases'].append(case(fighter, independent))
         require(not native.HEALTH['failures'], 'normal tables retain strict native health on both cores')
         require(source_hashes() == sources, 'normal-guide inputs remain fixed during execution')
+        report['captures'] = media_inventory(ROOT, 'normal-guide')
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)

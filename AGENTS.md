@@ -13,13 +13,13 @@ Preserve the native emulator requirement when extending the project.
   allowance reaches 5% or less. Read the live 10080-minute rate-limit window;
   do not invent a meter value or confuse it with context/goal tokens. Do not
   infer a new merge approval. Main remains approved v0.24.0.
-  Eight completed checkpoints cover local result/arena ownership, Training
-  drill retries and explicit P2 practice, super and punish cues, Arcade
-  orientation and previews derived from current native stages. Read
-  docs/POLISH-v0.26.0.md and docs/RELEASE-v0.26.0.md. The eight-pass ROM
-  `e349b756fac379766501de87f7b58f9d45f924c439afbecb6e3099173f1d33d4`
-  passes all six native suites (49,640 checks). This is an intermediate
-  checkpoint; later work must regenerate final exact-ROM evidence.
+  Twenty-four completed polish passes cover local result/arena ownership,
+  Training confirms/manual practice/best records, readable combat cues, roster
+  and Arcade orientation, comfort preferences and reproducible build/launch
+  publication. Read docs/POLISH-v0.26.0.md and its native contract.
+  Current ROM is `de6d7f36e09ea1e6aa1d6fdbb35fb55c1737c8e1d35aeac47b99e9a38933e62c`,
+  checksum `9B30`. The fourteen-pass checkpoint passed 49,656 native checks;
+  that checkpoint remains historical while final combined proofs run.
   Preserve v0.25's slower physics/timing, all fighter art/portraits/palettes,
   existing 1,318 RAM addresses and ABI, audio assets and stage payloads. The
   arena's four outputs and size declaration are an authorized derived-art

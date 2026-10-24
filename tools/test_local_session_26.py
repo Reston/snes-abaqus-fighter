@@ -7,6 +7,7 @@ import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from emulator import ROOT
+from play_flow_media import inventory as media_inventory
 import test_inputs as inputs
 import test_music_26 as native
 import test_presentation as presentation
@@ -109,6 +110,7 @@ def main():
         report['cases'].append(case(0, True))
         require(not native.HEALTH['failures'], 'local sessions retain strict native cadence OBJ FIFO and PCM health')
         require(source_hashes() == sources, 'session runtime and producer inputs stay fixed')
+        report['captures'] = media_inventory(ROOT, 'session')
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)

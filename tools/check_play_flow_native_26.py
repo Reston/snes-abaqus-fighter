@@ -9,11 +9,13 @@ import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from emulator import ROOT
+from play_flow_media import inventory as media_inventory
 from candidate_sources import snapshot
 from collate_pacing_floor_25 import SIX, count
 from collate_combat_24 import failure_arrays
 from release_evidence import EXPECTED_NATIVE_CORE
 from test_champion import host_contract
+from test_stage_pipeline_26 import host_guards
 
 CHECKS = []
 
@@ -43,6 +45,9 @@ def main():
         core = ROOT / '.tools/core/snes9x_libretro.dll'
         require(sha(core).lower() == EXPECTED_NATIVE_CORE['dll_sha256'].lower(), 'suite runner hashes the actual pinned expanded native core')
         report['core_sha256'] = sha(core)
+        report['source_guard_runs'] = host_guards('test_candidate_sources.py')
+        report['media_guard_runs'] = host_guards('test_play_flow_media.py')
+        report['collation_guard_runs'] = host_guards('test_play_flow_collation.py')
         environment = dict(os.environ, ABAQUS_HEADLESS='1')
         run = subprocess.run(['cmd', '/d', '/c', str(ROOT / 'Test.cmd')], cwd=ROOT,
                              stdin=subprocess.DEVNULL, capture_output=True, env=environment,
@@ -66,6 +71,7 @@ def main():
         require(sha(core) == report['core_sha256'], 'expanded native core stays fixed during all suites')
         require(subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip() == commit, 'suite source commit remains the frozen execution commit')
         report['native_six_suite_checks'] = sum(row['checks'] for row in report['suite_reports'].values())
+        report['captures'] = media_inventory(ROOT, 'native-suite')
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)

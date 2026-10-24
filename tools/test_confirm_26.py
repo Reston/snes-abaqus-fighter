@@ -8,6 +8,7 @@ import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from emulator import ROOT
+from play_flow_media import inventory as media_inventory
 import test_inputs as inputs
 import test_training as training
 import test_presentation as presentation
@@ -189,6 +190,7 @@ def main():
         report['cases'].extend((combo(0, 'y', 'x', True), combo(0, 'b', 'a', True), delayed(0, True)))
         require(not native.HEALTH['failures'], 'recovery guard and confirms add no native timing failures', native.HEALTH)
         require(source_hashes() == before, 'confirm production and proof inputs remain fixed')
+        report['captures'] = media_inventory(ROOT, 'confirm')
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)

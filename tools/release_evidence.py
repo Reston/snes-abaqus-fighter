@@ -110,12 +110,12 @@ STRICT_ENDURANCE_FLAGS = (
     "strict_trace_magic",
 )
 
-# These are the source inputs which can alter the cartridge or its generated
-# data.  Packaging and report-only edits are intentionally outside this list:
-# reports may be committed after the source freeze without invalidating a
-# fresh build that was already performed from the recorded source commit.
+# Inputs which can alter the cartridge, generated data or candidate evidence
+# policy. Captured reports/document outputs can follow the source freeze.
 SOURCE_INPUT_EXACT = {
     "Build.cmd",
+    "Test.cmd",
+    "Play.cmd",
     "tools/setup.ps1",
     "tools/build.py",
     "tools/make_assets.py",
@@ -141,6 +141,41 @@ SOURCE_INPUT_EXACT = {
     "tools/contact_geometry.py",
     "tools/stage_test_contract.py",
     "tools/stage_depth_assets.py",
+    "tools/asset_transaction.py",
+    "tools/asset_cache.py",
+    "tools/native_artifacts.py",
+    "tools/candidate_sources.py",
+    "tools/play_flow_media.py",
+    "tools/v026_contracts.py",
+    "tools/collate_play_flow_26.py",
+    "tools/check_play_flow_native_26.py",
+    "tools/test_play_flow_26.py",
+    "tools/test_feedback_26.py",
+    "tools/test_arena_preview_26.py",
+    "tools/test_menu_repeat_26.py",
+    "tools/test_music_26.py",
+    "tools/test_confirm_26.py",
+    "tools/test_normal_guide_26.py",
+    "tools/test_throw_feedback_26.py",
+    "tools/test_training_best_26.py",
+    "tools/test_local_session_26.py",
+    "tools/test_roster_hints_26.py",
+    "tools/test_motion_26.py",
+    "tools/test_stage_pipeline_26.py",
+    "tools/test_native_build_26.py",
+    "tools/test_launcher_26.py",
+    "tools/test_asset_transaction.py",
+    "tools/test_asset_cache.py",
+    "tools/test_native_artifacts.py",
+    "tools/test_candidate_sources.py",
+    "tools/test_play_flow_media.py",
+    "tools/test_play_flow_collation.py",
+    "tools/test_play_flow_stress_26.py",
+    "tools/make_play_flow_review_26.py",
+    "tools/check_authoring_guards.py",
+    "tools/release_evidence.py",
+    "tools/play.ps1",
+    "tools/validate_cartridge.ps1",
 }
 SOURCE_INPUT_PREFIXES = ("src/", "assets/", "dist/")
 

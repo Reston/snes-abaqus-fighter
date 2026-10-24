@@ -12,6 +12,7 @@ import time
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from PIL import Image, ImageDraw
 from emulator import Emulator, ROOT
+from play_flow_media import inventory as media_inventory
 import menu_assets
 import test_inputs as inputs
 import test_presentation as presentation
@@ -160,6 +161,7 @@ def main():
                 report['cases'].append(native_case(stage, independent, stages[stage]))
                 print(json.dumps({'stage': stage, 'accuracy': independent, 'status': 'passed'}), flush=True)
         require(source_hashes() == source, 'preview source and harness remain fixed throughout proof')
+        report['captures'] = media_inventory(ROOT, 'previews')
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)

@@ -12,6 +12,7 @@ from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from emulator import Emulator, ROOT
+from play_flow_media import inventory as media_inventory
 import test_inputs as inputs
 import test_training as training
 import test_presentation as presentation
@@ -242,6 +243,7 @@ def main():
             report['cases'].append(case(independent))
         require(not HEALTH['failures'], 'both-core music control has no native timing failures', HEALTH)
         require(source_hashes() == before, 'music preference and proof sources remain fixed throughout execution')
+        report['captures'] = media_inventory(ROOT, 'music')
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)

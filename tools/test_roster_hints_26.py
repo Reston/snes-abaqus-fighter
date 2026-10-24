@@ -7,6 +7,7 @@ import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from emulator import ROOT
+from play_flow_media import inventory as media_inventory
 import test_inputs as inputs
 import test_music_26 as native
 import test_presentation as presentation
@@ -85,6 +86,7 @@ def main():
             report['cases'].append(case(independent))
         require(not native.HEALTH['failures'], 'roster-to-fight transition keeps native cadence OBJ FIFO and PCM health')
         require(source_hashes() == sources, 'roster proof runtime and producers remain fixed')
+        report['captures'] = media_inventory(ROOT, 'roster')
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)

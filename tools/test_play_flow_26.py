@@ -10,6 +10,7 @@ import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from emulator import Emulator, ROOT
+from play_flow_media import inventory as media_inventory
 import test_inputs as inputs
 import test_presentation as presentation
 from test_champion import host_contract
@@ -667,6 +668,7 @@ def main():
                             'arenas': local_arenas, 'arcade': arcade_orientation, 'manual': manual_training,
                             'rounds': round_clarity}[args.part]()
         require(source_hashes() == before, 'production and harness inputs remain fixed during proof')
+        report['captures'] = media_inventory(ROOT, args.part)
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)

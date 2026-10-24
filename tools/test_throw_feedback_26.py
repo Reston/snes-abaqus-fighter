@@ -10,6 +10,7 @@ import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from emulator import Emulator, ROOT
+from play_flow_media import inventory as media_inventory
 from test_characters import boot
 import test_expansion_03_normal_balance as balance
 import test_pacing_floor_25 as monitor
@@ -173,6 +174,7 @@ def main():
         accuracy()
         require(not monitor.HEALTH['failures'], 'throw feedback has no native cadence OBJ or audio failures')
         require(source_hashes() == sources, 'throw proof inputs remain fixed')
+        report['captures'] = media_inventory(ROOT, 'throw')
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)

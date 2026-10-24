@@ -11,6 +11,7 @@ import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from emulator import ROOT
+from play_flow_media import inventory as media_inventory
 from candidate_sources import snapshot
 
 CHECKS = []
@@ -81,6 +82,7 @@ def main():
                 require(before == after, 'validating or rejecting a cartridge does not rewrite user files', scenario)
                 report['cases'].append({'scenario': scenario, 'accepted': result.returncode == 0, 'passed': True})
         require(snapshot(ROOT) == sources, 'launcher commands and source inputs stay fixed during proof')
+        report['captures'] = media_inventory(ROOT, 'launcher')
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)

@@ -7,10 +7,10 @@ v0.24 revision. [PR #22](https://github.com/Reston/snes-abaqus-fighter/pull/22)
 stacks on the unmerged [PR #21](https://github.com/Reston/snes-abaqus-fighter/pull/21).
 Combined verification and human playtest are pending while polish continues.
 
-The eight-pass checkpoint passes **49,640 checks across all six native
-suites** on ROM `e349b756fac379766501de87f7b58f9d45f924c439afbecb6e3099173f1d33d4`.
-Later work will receive a new final frozen-ROM verification record; this
-checkpoint does not certify untested follow-up edits.
+The fourteen-pass checkpoint passed **49,656 checks across all six native
+suites**. The final twenty-four-pass source is being frozen and reverified on
+ROM `de6d7f36e09ea1e6aa1d6fdbb35fb55c1737c8e1d35aeac47b99e9a38933e62c`.
+The checkpoint does not certify the final combined cartridge.
 
 Run [Play.cmd](../Play.cmd) from this checkout. Read **V0.26.0** on the title.
 Keyboard/controller mappings are in the [player guide](PLAYER-GUIDE.md).

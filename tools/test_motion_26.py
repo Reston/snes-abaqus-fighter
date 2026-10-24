@@ -9,6 +9,7 @@ import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from emulator import ROOT
+from play_flow_media import inventory as media_inventory
 import test_inputs as inputs
 import test_music_26 as native
 import test_presentation as presentation
@@ -145,6 +146,7 @@ def main():
                     'exact_unmasked_equality': True if not independent else None, 'callbacks': len(plan)})
         require(not native.HEALTH['failures'], 'background comfort adds no native timing OBJ PCM or FIFO failures')
         require(source_hashes() == sources, 'motion runtime and producer inputs stay fixed')
+        report['captures'] = media_inventory(ROOT, 'motion')
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)

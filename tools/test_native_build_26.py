@@ -8,6 +8,7 @@ import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from emulator import ROOT
+from play_flow_media import inventory as media_inventory
 from test_play_flow_26 import source_hashes
 from test_stage_pipeline_26 import host_guards
 import native_artifacts
@@ -62,6 +63,7 @@ def main():
         report['published_files'] = first
         report['cartridge_reproduced'] = True
         report['identical_outputs_not_replaced'] = True
+        report['captures'] = media_inventory(ROOT, 'native-build')
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)

@@ -11,6 +11,7 @@ import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from emulator import ROOT
+from play_flow_media import inventory as media_inventory
 from test_play_flow_26 import source_hashes
 from v025_contracts import canonical
 import stage_depth_assets as stages
@@ -127,6 +128,7 @@ def main():
         report['ordinary_build_reused_assets'] = True
         report['publication_guard_runs'] = host_guards('test_asset_transaction.py')
         report['cache_guard_runs'] = host_guards('test_asset_cache.py')
+        report['captures'] = media_inventory(ROOT, 'build')
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)

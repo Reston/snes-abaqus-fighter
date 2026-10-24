@@ -16,6 +16,7 @@ import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from emulator import Emulator, ROOT
+from play_flow_media import inventory as media_inventory
 from test_characters import boot
 import test_expansion_03_normal_balance as balance
 import test_pacing_floor_25 as monitor
@@ -191,6 +192,7 @@ def main():
             print(json.dumps({'part': 'feedback', 'fighter': fighter, 'status': 'passed'}), flush=True)
         require(not monitor.HEALTH['failures'], 'feedback adds no native cadence OBJ or audio failures', monitor.HEALTH)
         require(source_hashes() == before, 'source and harness bytes remain fixed throughout feedback proof')
+        report['captures'] = media_inventory(ROOT, 'feedback')
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)

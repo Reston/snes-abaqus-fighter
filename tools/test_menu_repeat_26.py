@@ -9,6 +9,7 @@ import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from emulator import Emulator, ROOT
+from play_flow_media import inventory as media_inventory
 import test_inputs as inputs
 from test_play_flow_26 import source_hashes
 from test_champion import host_contract
@@ -175,6 +176,7 @@ def main():
         finally:
             inputs.Emulator = original
         require(source_hashes() == before, 'menu-repeat production and harness inputs remain fixed')
+        report['captures'] = media_inventory(ROOT, 'repeat')
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)

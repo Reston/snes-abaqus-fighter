@@ -7,6 +7,7 @@ import time
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from emulator import ROOT
+from play_flow_media import inventory as media_inventory
 import test_confirm_26 as confirm
 import test_inputs as inputs
 import test_music_26 as native
@@ -112,6 +113,7 @@ def main():
             report['cases'].append(case(fighter, True))
         require(not native.HEALTH['failures'], 'session best has no native cadence OBJ FIFO or PCM failures')
         require(source_hashes() == sources, 'best-combo inputs remain fixed')
+        report['captures'] = media_inventory(ROOT, 'best')
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)
