@@ -1,4 +1,4 @@
-"""Focused baseline-art contact proof. Controllers only, silent pinned core.
+"""Focused interim contact composition proof. Controllers only, silent core.
 
 This is an isolated feature result, never a combined v0.24 certification.
 Refresh contact_geometry.py and rerun after final art/timing integration.
@@ -59,6 +59,7 @@ class Rig:
         self.old_vram = self.vram()
         self.transfers = 0
         self.max_changed_bytes = 0
+        self.trajectory = hashlib.sha256()
         self.step()
 
     def state(self):
@@ -92,7 +93,10 @@ class Rig:
         self.transfers += bool(sum(changed))
         self.max_changed_bytes = max(self.max_changed_bytes, sum(changed))
         self.old_vram = current
-        return self.state()
+        detailed = self.state()
+        self.trajectory.update(json.dumps({'keys': keys, 'state': detailed}, sort_keys=True,
+                                          separators=(',', ':')).encode())
+        return detailed
 
     def run(self, frames, attack=(), defend=()):
         s = self.state()
@@ -145,6 +149,7 @@ class Rig:
         row.update(case=self.tag, actor_update_callbacks=self.transfers,
                    max_changed_actor_bytes=self.max_changed_bytes, audio_samples=self.host.audio_samples,
                    native_fps=self.host.video_fps, max_spc_backlog=self.runner.max_spc_backlog)
+        row['trajectory_sha256'] = self.trajectory.hexdigest()
         native.append(row)
         try:
             self.runner.result(self.host, time.monotonic()-self.started)
@@ -296,6 +301,8 @@ def crossups(fighter, port):
 def trades_throws(fighter):
     r = Rig(fighter)
     try:
+        check(all(0 < r.state()[f'throw_range{p}'] <= 96 for p in (1, 2)),
+              'Native throw ranges fit the conservative canvas rejection', fighter)
         r.position(29)
         before = r.state()
         s = r.step(physical=(('y',), ('y',)))
@@ -381,20 +388,9 @@ def static_contract():
     table = bytes(v for poses in DATA['poses'] for pose in poses for rect in pose for v in rect)
     check(rom_data('contactPoses', len(table)) == table, 'Exact cartridge contains refreshed raster geometry')
     check(rom_data('contactGeometryDigest', 32).hex() == DATA['digest'], 'Exact cartridge identifies its geometry inputs')
-    changed = []
-    names = subprocess.check_output(['git', 'ls-files', 'assets/generated'], cwd=ROOT).decode().splitlines()
-    check(len(names) == 219, 'Native generated inventory remains 219 files')
-    archive = subprocess.check_output(['git', 'archive', '--format=tar', '3f51120', 'assets/generated'], cwd=ROOT)
-    with tarfile.open(fileobj=io.BytesIO(archive)) as source:
-        originals = {m.name: source.extractfile(m).read() for m in source.getmembers() if m.isfile()}
-    for name in names:
-        original = originals[name]
-        current = (ROOT/name).read_bytes()
-        if name.endswith(('.h', '.asm', '.json')):
-            original, current = original.replace(b'\r\n', b'\n'), current.replace(b'\r\n', b'\n')
-        if original != current:
-            changed.append(name)
-    check(not changed, 'Isolated contact work preserves all 219 generated assets', changed)
+    from expansion_contracts import combined_contract
+    composition = combined_contract(ROOT)
+    changed = composition['assets']['changed_generated']
     for poses in DATA['poses']:
         for pose in poses:
             for rect in pose[:3]:
@@ -406,7 +402,8 @@ def static_contract():
                 check(not overlap(a, [a[2], a[1], a[2]+16, a[3]]) and
                       overlap(a, [a[2]-1, a[1], a[2]+16, a[3]]), 'Touching edges miss; one fixed-point unit overlaps')
     return {'prior_ram_labels': len(ram), 'added_ram': added, 'changed_generated': changed,
-            'rom_geometry_bytes': len(table)+32, 'geometry_address': hex(SYMS['contactPoses'])}
+            'rom_geometry_bytes': len(table)+32, 'geometry_address': hex(SYMS['contactPoses']),
+            'composition': composition}
 
 
 def capture_comparison():
@@ -475,7 +472,7 @@ def main():
     header, DATA = generate()
     check((ROOT/'build/contact_geometry_data.h').read_bytes() == header, 'Geometry header is current')
     SYMS = sym((ROOT/'dist/abaqus-after-hours.sym').read_text())
-    report = {'status': 'failed', 'scope': 'isolated-contact-alignment-baseline-v0.23.1-art',
+    report = {'status': 'failed', 'scope': 'interim-contact-plus-dedicated-super-composition',
               'final_art_rebase_rerun_required': True, 'rom_sha256': sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes()),
               'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT).decode().strip(),
               'source_diff_sha256': sha(subprocess.check_output(['git', 'diff', 'HEAD', '--', 'src', 'tools/contact_geometry.py', 'tools/test_combat_24_contact.py'], cwd=ROOT)),
