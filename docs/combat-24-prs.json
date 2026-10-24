@@ -1,0 +1,21 @@
+{
+  "scope": "Six feature PRs into one unmerged combined playtest PR",
+  "baseline_commit": "f75005d",
+  "integration_branch": "integration/readable-combat-v024",
+  "final_pr": "https://github.com/Reston/snes-abaqus-fighter/pull/14",
+  "feature_prs": {
+    "pacing": {"branch": "t3/combat-pacing-recoil", "merged": false},
+    "attacks": {"branch": "t3/grounded-attack-art", "merged": false},
+    "contacts": {
+      "branch": "t3/contact-alignment-geometry",
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/15",
+      "head": "5a7c9e65d9cdedb5ddee4186882db883e05fe93e",
+      "merge_commit": "066e7b68bab0639d3b7727f8f77a9f0a08daf0f6",
+      "merged": true
+    },
+    "stages": {"branch": "t3/stage08-depth-rebuild", "merged": false},
+    "jumps": {"branch": "t3/jump-landing-motion-art", "merged": false},
+    "supers": {"branch": "t3/dedicated-super-art", "merged": false}
+  },
+  "final_combined_verification": "pending"
+}

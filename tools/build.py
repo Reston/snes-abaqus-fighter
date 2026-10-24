@@ -44,6 +44,10 @@ for asset in (ROOT/'assets/generated').iterdir():
         canonical = raw.replace(b'\r\n',b'\n')
         if canonical != raw: asset.write_bytes(canonical)
 
+# Contact rectangles follow the final quantized poses on regeneration AND reuse.
+# This ignored header is a build product, not a hand-maintained art side table.
+run(sys.executable, ROOT/'tools/contact_geometry.py')
+
 template = (SDK/'devkitsnes/include/hdr.asm.in').read_text()
 values = dict(HIROMDEF='', FASTROMDEF='.DEFINE FASTROM 1', ROMTITLE='ABAQUS AFTER HOURS',
               CARTRIDGETYPE='00', ROMSIZE='0C', SRAMSIZE='00', COUNTRY='01',
