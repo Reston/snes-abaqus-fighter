@@ -1,5 +1,25 @@
 # Native SNES implementation
-<!-- candidate-version: 0.24.0; identity: TECHNICALLY_VERIFIED_USER_MERGE_APPROVED; rom-sha256: 408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79; source-freeze: a1ee733aea036ad985bca9bdee29cc170cabd2ac -->
+
+<!-- v025-development:start -->
+<!-- candidate-version: 0.25.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2; source-freeze: b41ce034ac12f6aa10740a0075feebd1f392d117 -->
+
+## Current playtest candidate: v0.25.0
+
+All six native suites pass **49,494 checks** on this exact ROM. Focused pacing, 48 super hit/guard sequences, before/after CPU36 plus twelve Hard replays, and all three stages on both cores pass. Matching pinned Accuracy smoke, normal/optimized authoring guards and a fresh committed-source export reproduce the ROM, all 226 assets and normalized symbols. The shared stage suite and focused stage appendix use one execution, counted once.
+Read [the v0.25 contract](COMBAT-v0.25-CONTRACT.md) and
+[release guide](RELEASE-v0.25.0.md). Main remains approved v0.24.0.
+Current BG1 scenery **and floor** use word gfx `$0000..$37FF` (28 KiB),
+with the existing map `$3800..$3FFF`. BG3 is disabled. All UI, actor and
+effect allocations, 1,318 RAM labels and Fighter/Wave/TRACE ABI are preserved.
+The hit-stun table alone changes in hardware assembly; instructions stay exact.
+Run `tools/collate_pacing_floor_25.py --source-freeze b41ce034ac12f6aa10740a0075feebd1f392d117` after the gates.
+The v0.24 identities and allocation table below are retained as history.
+<!-- v025-development:end -->
+
+
+
+
+
 
 ## Current main revision: v0.24.0
 
@@ -31,7 +51,7 @@ See [final exact-ROM verification](verification-v0.24.0.json).
 The user approved PR #14 for merge. Detailed live playtest feedback remains unrecorded; no new offline package or public-release approval is claimed.
 <!-- v024-technical-status:end -->
 
-The current native allocation is:
+The historical v0.24 native allocation is:
 
 | Resource | Current contract |
 | --- | --- |

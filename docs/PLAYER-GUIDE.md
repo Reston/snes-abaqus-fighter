@@ -1,15 +1,10 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.24.0; identity: TECHNICALLY_VERIFIED_USER_MERGE_APPROVED; rom-sha256: 408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79; source-freeze: a1ee733aea036ad985bca9bdee29cc170cabd2ac -->
+<!-- candidate-version: 0.25.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2; source-freeze: b41ce034ac12f6aa10740a0075feebd1f392d117 -->
 
-The v0.24 combined playtest adds more readable combat, backward hit reactions,
-coordinated attack and jump drawings, individual super poses and rebuilt stages.
-<!-- v024-player-status:start -->
-All six changes are merged into main through PR #14 with user approval.
-Final technical verification passed; v0.24.0 is the current main revision.
-Detailed live playtest feedback has not been recorded.
-See the release guide for the final ROM and source/test identity.
-<!-- v024-player-status:end -->
-See the [playtest guide](RELEASE-v0.24.0.md) and [native review gallery](REVIEW-v0.24.0.html).
+The v0.25 playtest candidate slows the fight rhythm and restores illustrated,
+textured floors. Controls, fighter drawings, damage and local 1v1 remain.
+Main's approved revision is v0.24.0; this new candidate awaits human playtest.
+See the [playtest guide](RELEASE-v0.25.0.md) and [native comparisons](REVIEW-v0.25.0.html).
 
 This is a native SNES game. On Windows use [Play.cmd](../Play.cmd); on other
 platforms load `dist/abaqus-after-hours.sfc` in a SNES emulator.
@@ -44,8 +39,10 @@ Opposite directions cancel. Menu priority is Start, then B, then A.
 
 ## Fighting
 
-- Walk, retreat and ordinary projectiles move about 18% slower. Ground heavy
-  attacks and ordinary specials have longer windup and recovery; native video,
+- Walk, retreat and ordinary projectiles move about 25% slower than v0.24.
+  All normals have longer windup and recovery, jumps have more airtime, and
+  CPU pressure is less frequent. Light/strong/guard contact pauses are 7/10/5
+  ticks. Ground heavy attacks and ordinary specials commit for longer; native video,
   input sampling, clocks and audio retain their normal cadence. Hit reactions
   ease away from the contact side, with heavier recoil for strong hits and
   smaller recoil on guard. Read the windup, then test a block or whiff punish.

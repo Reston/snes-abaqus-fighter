@@ -1,0 +1,113 @@
+{
+  "status": "passed",
+  "version": "0.25.0",
+  "rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
+  "source_freeze": "b41ce034ac12f6aa10740a0075feebd1f392d117",
+  "baseline_rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
+  "verification": {
+    "path": "docs/verification-v0.25.0.json",
+    "sha256": "1fa93480e5aa01986550ba0f0adeff7893e9cec80ba806a6ae68927511c7aacd"
+  },
+  "media": [
+    {
+      "path": "docs/screenshots/pacing-floor-v025/after-crossing.gif",
+      "sha256": "aaa6a86ec59b8739d5b5d008ab03ca42d34e69e12378823d3718689876e94740",
+      "rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
+      "scope": "Snes9x native callback capture; three callbacks per 50 ms GIF frame"
+    },
+    {
+      "path": "docs/screenshots/pacing-floor-v025/after-guard.gif",
+      "sha256": "21d592ed1634ffc902c13d88c6a5bb3a50f55b4a4f4c971840c77c1ad0c0f9af",
+      "rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
+      "scope": "Snes9x native callback capture; three callbacks per 50 ms GIF frame"
+    },
+    {
+      "path": "docs/screenshots/pacing-floor-v025/after-heavy.gif",
+      "sha256": "e415a7de8aa2c3090f4a0b3d2fe4f8c70dcdd62278a8487db586ba25425a03f1",
+      "rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
+      "scope": "Snes9x native callback capture; three callbacks per 50 ms GIF frame"
+    },
+    {
+      "path": "docs/screenshots/pacing-floor-v025/after-jump.gif",
+      "sha256": "a769ccb7d41e0404d1ef12be67ecbf62a7a2766c50556a83e141373f235d9b3a",
+      "rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
+      "scope": "Snes9x native callback capture; three callbacks per 50 ms GIF frame"
+    },
+    {
+      "path": "docs/screenshots/pacing-floor-v025/after-light-hit.gif",
+      "sha256": "304cb63349637e9ff265761c8f2590ee79f5279a9a1719e88fe2fa573bbfb373",
+      "rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
+      "scope": "Snes9x native callback capture; three callbacks per 50 ms GIF frame"
+    },
+    {
+      "path": "docs/screenshots/pacing-floor-v025/after-movement.gif",
+      "sha256": "7bb65caa3d7e4401112acf04e614c588f417a44d4f643a0066e6746e7e8b2229",
+      "rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
+      "scope": "Snes9x native callback capture; three callbacks per 50 ms GIF frame"
+    },
+    {
+      "path": "docs/screenshots/pacing-floor-v025/after-strong-hit.gif",
+      "sha256": "2cc1019ac30ef937f56f79216cf57ef6ef3fc18b4fc905db1d14ead3441c92e9",
+      "rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
+      "scope": "Snes9x native callback capture; three callbacks per 50 ms GIF frame"
+    },
+    {
+      "path": "docs/screenshots/pacing-floor-v025/before-guard.gif",
+      "sha256": "a3da3e2fa93b32db2b5aaecc0b07212c7c29ffab602df1247d1e9cd685c800e7",
+      "rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
+      "scope": "Snes9x native callback capture; three callbacks per 50 ms GIF frame"
+    },
+    {
+      "path": "docs/screenshots/pacing-floor-v025/before-heavy.gif",
+      "sha256": "4d32a60eb60a08993864259e24b71b87401d82cc2b1a8586c51585bbaf3ee57f",
+      "rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
+      "scope": "Snes9x native callback capture; three callbacks per 50 ms GIF frame"
+    },
+    {
+      "path": "docs/screenshots/pacing-floor-v025/before-jump.gif",
+      "sha256": "153328f78214fe5cb3a7e642cc2026cc521e78c563f2315334c23371054ee8e9",
+      "rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
+      "scope": "Snes9x native callback capture; three callbacks per 50 ms GIF frame"
+    },
+    {
+      "path": "docs/screenshots/pacing-floor-v025/before-light-hit.gif",
+      "sha256": "27cc0f5143627c8cb0d2d40ba1323969a6e4c1f42b54ea432f8f226090f340c8",
+      "rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
+      "scope": "Snes9x native callback capture; three callbacks per 50 ms GIF frame"
+    },
+    {
+      "path": "docs/screenshots/pacing-floor-v025/before-movement.gif",
+      "sha256": "18708e8bc9f3114e73d573383f532c9eff3711d97bb5df2584aaf616fa79e67c",
+      "rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
+      "scope": "Snes9x native callback capture; three callbacks per 50 ms GIF frame"
+    },
+    {
+      "path": "docs/screenshots/pacing-floor-v025/before-strong-hit.gif",
+      "sha256": "8cbe805cfdeef4e07360cef4e918e0229d32df8967e52d0e66afc16df4432403",
+      "rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
+      "scope": "Snes9x native callback capture; three callbacks per 50 ms GIF frame"
+    },
+    {
+      "path": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage0-center.png",
+      "sha256": "fcc43174ac8924c571f35ff83dded81f5532ca5fdfc6b0259e017e44c6077e60",
+      "rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
+      "scope": "Snes9x native stage geometry proof"
+    },
+    {
+      "path": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage1-center.png",
+      "sha256": "0bddeaf322c09e69ed7ce69776df7a231f85f2351492d117abd12a9e6c52582d",
+      "rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
+      "scope": "Snes9x native stage geometry proof"
+    },
+    {
+      "path": "docs/screenshots/pacing-floor-v025/stages/snes9x-stage2-center.png",
+      "sha256": "f9656a0ce4913fff39a5cd573baf3679cc41cfa52c4f4fae26f5f2aac77d3911",
+      "rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
+      "scope": "Snes9x native stage geometry proof"
+    }
+  ],
+  "human_playtest_approved": null,
+  "merge_authorized": null,
+  "art_source": "assets/art/stages/floor-v025/02-oficina.png",
+  "prompt_and_provenance": "assets/art/stages/floor-v025/02-oficina.json"
+}

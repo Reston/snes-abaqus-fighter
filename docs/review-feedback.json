@@ -250,5 +250,17 @@
         "scope": "Qualitative combat-pacing feedback; detailed per-move or CPU-pressure observations have not been supplied."
       }
     ]
+  },
+  "pacing_floor_v0250": {
+    "baseline_version": "0.24.0",
+    "baseline_rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
+    "source": "Direct user playtest feedback",
+    "response": "something else is that the floor of the stages was better before now its a blank stuff which is not nice. let's fix the pacing becasue the game feel too fast it does not resamble street fighter II.",
+    "reference": "docs/screenshots/pacing-floor-v025/user-floor-feedback.png",
+    "candidate_version": "0.25.0",
+    "candidate_rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
+    "status": "implemented_awaiting_human_review",
+    "human_playtest_approved": null,
+    "merge_authorized": null
   }
 }
