@@ -1,9 +1,10 @@
 """Host-only one-pass stage generation and exact-cartridge reproduction proof."""
-import copy
+import ast
 import hashlib
 import json
 from pathlib import Path
 import runpy
+import re
 import subprocess
 import sys
 import time
@@ -13,6 +14,7 @@ from emulator import ROOT
 from test_play_flow_26 import source_hashes
 from v025_contracts import canonical
 import stage_depth_assets as stages
+import menu_assets
 
 CHECKS = []
 
@@ -30,6 +32,24 @@ def require(ok, label, details=None):
 def inventory():
     return {p.relative_to(ROOT).as_posix(): sha(canonical(p.name, p.read_bytes()))
             for p in sorted((ROOT / 'assets/generated').iterdir()) if p.is_file() and p.name != 'soundbank.h'}
+
+
+def publication_guards():
+    source = ROOT / 'tools/test_asset_transaction.py'
+    parsed = ast.parse(source.read_text())
+    expected = sum(isinstance(n, ast.FunctionDef) and n.name.startswith('test_')
+                   for cls in parsed.body if isinstance(cls, ast.ClassDef) for n in cls.body)
+    runs = []
+    for optimized in (False, True):
+        command = [sys.executable] + (['-O'] if optimized else []) + [str(source)]
+        run = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
+        output = run.stdout + run.stderr
+        count = re.search(r'Ran (\d+) tests?', output)
+        total = int(count[1]) if count else 0
+        require(expected > 0 and run.returncode == 0 and total == expected and output.rstrip().endswith('OK'),
+                'publication fault guards pass in the requested interpreter mode', [optimized, total, run.returncode, output[-500:]])
+        runs.append({'optimized': optimized, 'tests': total, 'exit_code': run.returncode, 'output': output})
+    return runs
 
 
 def main():
@@ -51,6 +71,21 @@ def main():
     try:
         require(len(before) == 226, 'generation proof begins with the complete expected inventory')
         require(sha((ROOT / 'dist/abaqus-after-hours.sfc').read_bytes()) == manifest['sha256'], 'before cartridge matches its manifest')
+        menu_writer = menu_assets.make_menu_images
+
+        def interrupted(*args, **kwargs):
+            raise RuntimeError('injected mid-generation failure')
+
+        menu_assets.make_menu_images = interrupted
+        failed_as_expected = False
+        try:
+            runpy.run_path(str(ROOT / 'tools/make_assets.py'), run_name='__main__')
+        except RuntimeError as error:
+            failed_as_expected = str(error) == 'injected mid-generation failure'
+        finally:
+            menu_assets.make_menu_images = menu_writer
+        require(failed_as_expected and inventory() == before, 'an interrupted real generation leaves the entire live asset set intact')
+        report['generation_failure_preserved_live_assets'] = True
         stages.build_stage = counted
         try:
             context = runpy.run_path(str(ROOT / 'tools/make_assets.py'), run_name='__main__')
@@ -87,6 +122,7 @@ def main():
         require(inventory() == before, 'native text canonicalization preserves the same complete output inventory')
         require(source_hashes() == sources, 'all generation and proof source inputs stay fixed')
         report['cartridge_reproduced'] = True
+        report['publication_guard_runs'] = publication_guards()
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)

@@ -247,8 +247,8 @@ def stage_payload(root, record, ui_palette, prepared=None):
     return prepared['payloads'][record['id']]
 
 
-def install(root=ROOT, only=None, prepared=None):
-    root = Path(root);out = root/'assets/generated'
+def install(root=ROOT, only=None, prepared=None, out=None):
+    root = Path(root);out = Path(out) if out is not None else root/'assets/generated'
     records_source = stage_records(root)
     ui_palette = colors((out/'ui_pal.bin').read_bytes())
     asm = (out/'data.asm').read_text();header = (out/'assets.h').read_text()

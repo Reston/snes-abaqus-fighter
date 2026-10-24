@@ -263,3 +263,18 @@ The host-only proof regenerates all 226 outputs byte-identically after text
 canonicalization, rejects four snapshot mutations and rebuilds the exact same
 cartridge/manifest. Native scene/art/audio payloads do not change. Independent
 stage/arena tests continue rebuilding their oracle directly from source.
+
+## Pass 20: preserve the last complete asset set on failures
+
+Full generation writes into a private build directory. A validated complete
+set is published under a short OS lock; the previous set remains under build.
+Directory-promotion failure restores the previous set. A small journal lets
+the next generation recover an interrupted directory swap. Binary references
+must resolve inside the completed set before publication.
+
+Eight fault-injection tests pass normally and under optimized Python, covering
+missing outputs, invalid binary references, promotion failure, interrupted
+swaps, first-publication recovery, competing publication and path containment.
+The full pipeline proof also interrupts a real encoder run before publication
+and checks that the live 226-file inventory remains intact, then performs a
+complete generation and exact-cartridge rebuild.

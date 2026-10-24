@@ -16,10 +16,10 @@ from stage_sources import load_stage_sources
 from stage_cartoon import cartoon_stage_animation
 from victory_music import make_victory_it, soundbank_budget
 from audio_assets import expand_effects
+from asset_transaction import begin as begin_assets, publish as publish_assets
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT/'assets/generated'
-OUT.mkdir(exist_ok=True)
+OUT = begin_assets(ROOT)
 random.seed(7)
 GLYPHS = {
 'A':['01110','10001','10001','11111','10001','10001','10001'],
@@ -444,8 +444,13 @@ effect_hashes=make_effects_it(effects_it,sfx_pcm)
 effect_hashes=expand_effects(effects_it,sfx_pcm)
 make_victory_it(OUT/'music4.it',OUT/'music0.it')
 smconv=ROOT/'.tools/sdk/pvsneslib/devkitsnes/tools/smconv.exe'
-r=subprocess.run([str(smconv),'-s','-o','assets/generated/soundbank','-b','24','-f','-V',str(effects_it),*[str(OUT/f'music{i}.it') for i in range(5)]],cwd=ROOT,capture_output=True,text=True)
+soundbank_prefix=(OUT/'soundbank').relative_to(ROOT).as_posix()
+r=subprocess.run([str(smconv),'-s','-o',soundbank_prefix,'-b','24','-f','-V',str(effects_it),*[str(OUT/f'music{i}.it') for i in range(5)]],cwd=ROOT,capture_output=True,text=True)
 if r.returncode:raise RuntimeError(r.stdout+r.stderr)
+soundbank_asm=(OUT/'soundbank.asm').read_text()
+if soundbank_asm.count('"'+soundbank_prefix+'.bnk"')!=1:
+    raise RuntimeError('SMConv binary reference differs from its staged output')
+(OUT/'soundbank.asm').write_text(soundbank_asm.replace('"'+soundbank_prefix+'.bnk"','"assets/generated/soundbank.bnk"'),newline='\n')
 print(r.stdout)
 effect_report=r.stdout.split('Adding module, Filename:',2)
 if len(effect_report)<2 or 'Samples: [11/64]' not in effect_report[1]:
@@ -464,5 +469,6 @@ for i,h in enumerate(effect_hashes):print(f'Effects PCM {i}: {h}')
 (OUT/'data.asm').write_text('\n'.join(asm)+'\n')
 (OUT/'assets.h').write_text('\n'.join(header)+'\n')
 from stage_depth_assets import install as install_stage_depth
-install_stage_depth(ROOT,prepared=native_stage_data)
+install_stage_depth(ROOT,prepared=native_stage_data,out=OUT)
+print('Published asset set:',json.dumps(publish_assets(ROOT,OUT)))
 print('Encoded seven backgrounds, 768 fighter frames, UI, effects, 5 music tracks and 11 resident sounds.')
