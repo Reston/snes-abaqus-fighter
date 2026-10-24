@@ -1,0 +1,81 @@
+{
+  "status": "passed",
+  "version": "0.27.1",
+  "rom_sha256": "c6682d3da92ae7ae41f80e62580163c169b4017cb81c83abcdbc611f8b1d7000",
+  "checksum": "3C43",
+  "source_commit": "2e6f947a43d148b44f8b7528769bfef1865ed85f",
+  "presentation_training_checks": 6642,
+  "evidence": {
+    "native": {
+      "path": "docs/office-menu-native.json",
+      "sha256": "0da9a6e657d26e3c8101c06329128243e6fbba4e0d8076b07c0272c55c2de4f7"
+    },
+    "presentation": {
+      "path": "docs/office-menu-presentation.json",
+      "sha256": "bf2cf8a0d52fed7fe503c3e9603a38ef1544a05b9def8ce82b72be4f198cd3fe"
+    },
+    "training": {
+      "path": "docs/office-menu-training.json",
+      "sha256": "3226338dc9ce6f90b23e8dd521d7b7df9eedb58985fe9ce4088eee94554cd594"
+    },
+    "fresh": {
+      "path": "docs/office-menu-fresh.json",
+      "sha256": "11fdf502ddd00ef935c1e102cb61c39374a9b67d0f998ee858420432597ae030"
+    }
+  },
+  "preservation": {
+    "baseline_commit": "16a57a369290223464a09dd1ce8c6340bcf18d0c",
+    "generated_total": 226,
+    "generated_preserved": 217,
+    "changed": [
+      "assets/generated/assets.h",
+      "assets/generated/select.png",
+      "assets/generated/select_map.bin",
+      "assets/generated/select_pal.bin",
+      "assets/generated/select_tiles.bin",
+      "assets/generated/title.png",
+      "assets/generated/title_map.bin",
+      "assets/generated/title_pal.bin",
+      "assets/generated/title_tiles.bin",
+      "src/version.h"
+    ],
+    "prior_ram_labels": 1318,
+    "gameplay_sources_exact_except_version": true
+  },
+  "native": {
+    "snes9x": {
+      "state_count": 74,
+      "steady_callbacks": 2353,
+      "native_failures": []
+    },
+    "accuracy": {
+      "state_count": 74,
+      "steady_callbacks": 2353,
+      "native_failures": []
+    }
+  },
+  "authoring_guards": {
+    "normal": 20,
+    "optimized": 20
+  },
+  "media": [
+    {
+      "label": "Fighter select",
+      "path": "docs/screenshots/office-menu/select-00.png",
+      "sha256": "500df7d0f0492e675ab86c0cf3cdc9d36394106302cb6b2c2fda0e1077f6888c",
+      "caption": "Abaqus office windows and trading desks replace the world map.",
+      "alt": "Native six-by-two fighter roster with Damian selected and a gold office panorama above the portraits."
+    },
+    {
+      "label": "Main menu",
+      "path": "docs/screenshots/office-menu/title.png",
+      "sha256": "a23b20e0ea39396ce1f41457fde79f6a343d50e5be0199ffd896f0c64cbae7b5",
+      "caption": "The same office artwork sits quietly behind the arcade lettering.",
+      "alt": "Native Abaqus After Hours title with an office backdrop, gold lettering and three short mode choices."
+    }
+  ],
+  "scope": "focused menu/presentation/Training follow-up; v0.27.0 six-suite results remain historical",
+  "human_review": "pending",
+  "merged": false,
+  "pull_request": "https://github.com/Reston/snes-abaqus-fighter/pull/24"
+}

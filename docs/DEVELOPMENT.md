@@ -803,6 +803,9 @@ deterministic hardware steps after authoring.
 
 The v0.5 stage pipeline loads three independent PNG masters from `assets/art/stages/`, with `assets/art/stages/stages.json` describing their source metadata. The home screen, four-by-three fighter selection and arena plates use original art under `assets/art/menu/`, with prompts in `assets/art/menu/prompts.json`. Menu lettering is rendered from the project's original bitmap glyph set. Selected 64x80 profile portraits use a dedicated BG2 block and palette 1; v0.9.0 adds the shared head-anchored contained composition for both 32x40 and 64x80 portraits, recorded as `portrait_framing` in `assets/generated/character-manifest.json`. Images use nearest-neighbor reduction to retain hard edges. `tools/portrait_assets.py` owns the shared crop metadata. The manifest records source hashes, palette values, extraction boxes, uniform scales and native frame hashes for review.
 
+The v0.27.1 title/select backdrops reuse the current native office panorama
+in gold duotone. The Natural Earth world-map study is retained as history.
+
 The v0.27 classic-menu revision supersedes the historical selection layout
 above with a six-by-two roster. Cards occupy 40x56 cells at (8,104), with
 32x40 portraits inset by (4,12); the upper row is reserved for P1/P2 badges.

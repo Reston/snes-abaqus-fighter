@@ -1,11 +1,11 @@
 # Public-release quality target
-<!-- candidate-version: 0.27.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: d5263c777cbb3a02ce438e07c1c425f2d39dd73d294cd4d2aa8c2cbc2da78e3d; source-freeze: 4d7e8fe17f1a0a534bc06e3e059fc4c03cd556d0 -->
+<!-- candidate-version: 0.27.1; identity: FOCUSED_UI_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: c6682d3da92ae7ae41f80e62580163c169b4017cb81c83abcdbc611f8b1d7000; source-freeze: 2e6f947a43d148b44f8b7528769bfef1865ed85f -->
 
-## Current playtest candidate: v0.27.0
+## Current playtest candidate: v0.27.1
 
-The classic-menu revision is unmerged, stacked on the v0.26.2 help revision.
-Main remains the approved v0.24.0. [Current scope](RELEASE-v0.27.0.md) and
-[native verification](classic-menu-review.json) do not certify a public or
+The office-menu revision is unmerged, stacked on the v0.26.2 help revision.
+Main remains the approved v0.24.0. [Current scope](RELEASE-v0.27.1.md) and
+[native verification](office-menu-review.json) do not certify a public or
 offline release. Earlier sections below are historical.
 
 <!-- candidate-version: 0.23.1; rom-sha256: 057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd -->

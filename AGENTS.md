@@ -6,6 +6,21 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+<!-- v0271-agent:start -->
+- **v0.27.1 replaces the rejected world-map menu backdrop** with gold-duotone
+  crops of the existing authored office stage, behind the title and above the
+  six-by-two roster. Same branch/PR #24; human visual and merge review pending.
+  ROM `c6682d3da92ae7ae41f80e62580163c169b4017cb81c83abcdbc611f8b1d7000`, checksum `3C43`,
+  source/test freeze `2e6f947a43d148b44f8b7528769bfef1865ed85f`. Both pinned cores pass
+  74 menu states each, including actual rendered office pixels; presentation/
+  Training pass 6,642 checks, normal/-O guards 20/20 and fresh 226-asset/
+  ROM/symbol reproduction pass. 217 generated files match v0.27.0; only
+  title/select art and assets.h change. Gameplay C/ASM, all original portraits,
+  fighter/stage/audio assets and all 1,318 RAM labels remain exact. Old map data
+  stays historical, no longer rendered. v0.27.0 six-suite results below are
+  historical for this ROM. See docs/RELEASE-v0.27.1.md and docs/office-menu-review.json.
+<!-- v0271-agent:end -->
+
 <!-- v027-agent:start -->
 - **v0.27.0 is the classic arcade menu playtest candidate**, branch
   `feature/classic-arcade-menus`, stacked on `feature/concise-game-text`.

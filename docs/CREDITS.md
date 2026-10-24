@@ -7,9 +7,10 @@ Abaqus: After Hours is an original four-button homebrew fighting game created fo
 Game code, UI, tile pipeline, combat implementation, tracker compositions and synthesized BRR effects were authored for this repository. Pixel-art master atlases were created with the built-in image generation tool, then converted to SNES tiles and palettes. Prompts and processing notes are in [ART-DIRECTION.md](ART-DIRECTION.md).
 
 The v0.27 menu logo and lettering are code-authored from the project's original
-bitmap glyphs. Its decorative world silhouette uses [Natural Earth land data](https://www.naturalearthdata.com/downloads/110m-physical-vectors/110m-land/),
+bitmap glyphs. v0.27.1 reuses the authored office-stage panorama in gold duotone.
+The rejected v0.27.0 world silhouette used [Natural Earth land data](https://www.naturalearthdata.com/downloads/110m-physical-vectors/110m-land/),
 released in the [public domain](https://www.naturalearthdata.com/about/terms-of-use/).
-The retained geometry, source URL and exact hash are in
+The historical geometry, source URL and exact hash are retained in
 [the source record](../assets/art/menu/classic-v1/source.json).
 
 The v0.13 Office Champion victory score is an original sixteen-bar tracker
