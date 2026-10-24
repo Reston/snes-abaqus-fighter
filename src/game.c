@@ -898,6 +898,9 @@ void combat(void) {
     /* Snapshot both contact sides before either trade cancels an action.
      * Knockdown launch retains its existing independent facing snapshot. */
     rear0=distance<0?1:2;rear1=distance>0?1:2;
+    /* Equal horizontal centers have no geometric side. Preserve each
+     * attack's facing snapshot instead of introducing a rightward bias. */
+    if(!distance){rear0=face0+1;rear1=face1+1;}
     /* Resolve the contact snapshot atomically: mutual throws tech, throws
      * beat normals, active specials beat throws, and strikes may trade. */
     if(a0 && a1 && m0==9 && m1==9){throwTech();a0=0;a1=0;}

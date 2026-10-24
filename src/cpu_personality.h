@@ -132,7 +132,7 @@ u16 cpuKeys(void) {
             }
         }
     }
-    /* Same fallible universal anti-air, height/range/cadence and chance.
+    /* Same fallible universal anti-air, height/range and chance; slower cadence.
      * It can commit to an empty jump or whiff a retreating target. */
     if(difficulty>0) {
         if(!fighters[0].hurt && distance<=40) {
@@ -144,7 +144,7 @@ u16 cpuKeys(void) {
         }
     }
     /* Counter habits sample visible recovery, never a future hit/whiff or
-     * an unpressed opponent button. Even Hard is capped at 28/32 and five
+     * an unpressed opponent button. Even Hard is capped at 28/32 and eight
      * ticks, so recovery can end or spacing can escape before the answer. */
     if(fighters[0].action && !fighters[0].hurt && !fighters[0].y) {
         if(fighters[0].tick>=fighters[0].actionActiveEnd && distance<=46) {

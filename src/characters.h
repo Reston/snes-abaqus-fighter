@@ -74,8 +74,8 @@ const char characterQuotes[12][32] = {
  * Four-button roles: the short jab recovers quickly; light kick trades speed
  * for space (Down+B is low); strong punch trades recovery for damage; strong
  * kick trades jab speed/safety for reach, damage and the existing air cross-up.
- * Individual speed/power/reach differences remain. Legacy action 2, sweep 6,
- * throws, damage, reach and all four special identities retain prior values.
+ * Individual speed/power/reach differences remain. Legacy action 2, throws,
+ * damage, reach and all four special identities retain prior values.
  * Jab recovery also leaves a guard opportunity between repeated corner jabs;
  * hit confirmation, rather than mash pressure, earns the Y-to-X combo.
  * v0.24: ground speeds are rounded to 82% (12.4 units); projectile speeds
