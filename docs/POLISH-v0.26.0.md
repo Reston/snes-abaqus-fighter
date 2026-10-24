@@ -124,3 +124,17 @@ native picker on Snes9x and pinned Accuracy, loads each chosen stage and
 independently decodes its uploaded VRAM. All three source viewports match
 exactly. Only the four arena outputs and their size declaration change in
 this pass; the existing 226-file asset inventory remains.
+
+## Pass 9: deliberate directional menu repeat
+
+Holding a direction now scrolls after a 24-menu-tick delay. Rosters repeat
+every eight menu updates; title/arena choices use twelve. Portrait/card redraws
+can add one video callback, recorded by the proof. Releasing directions or
+changing roster ownership clears the delay. Opposing directions cancel across
+participating pads. Confirm and Back never repeat while held.
+
+Snes9x and pinned Accuracy pass 953 focused checks, including actual repeat
+countdowns, item order, cancellation, owner changes, held confirm/back and
+entry into combat without an accidental pause or attack. Two unused bytes of
+the retained stage table hold menu-only state; they clear before native combat.
+There are no new RAM symbols and all 1,318 prior addresses remain exact.

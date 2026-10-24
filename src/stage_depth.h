@@ -7,7 +7,7 @@ u8 stageVictoryTick,stageVictoryPhase;
 
 void stageDepthReset(void) {
     REG_HDMAEN=0;
-    stageDepthTable[0]=0;
+    stageDepthTable[0]=0;stageDepthTable[1]=0;stageDepthTable[2]=0;
     stageDepthFar=0;stageDepthNear=0;
 }
 

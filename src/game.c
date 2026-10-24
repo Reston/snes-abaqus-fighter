@@ -579,6 +579,7 @@ u16 cleanDirections(u16 keys) {
     if((keys&(KEY_UP|KEY_DOWN))==(KEY_UP|KEY_DOWN))keys&=~(KEY_UP|KEY_DOWN);
     return keys;
 }
+#include "menu_repeat.h"
 void discardFighterInput(Fighter *f) {
     f->bufferedAction=0;f->bufferAge=0;f->bufferKeys=0;f->jumpBuffer=0;
 }
@@ -1317,8 +1318,7 @@ void menuTick(void) {
      * Merge participating inputs before applying the shared menu priority. */
     if(screen==RESULT && mode==1){keys|=edge1;held|=pad1;}
     if(screen==ARENA && mode==1){keys|=edge1;held|=pad1;}
-    directions=cleanDirections(held)&keys;
-    directions&=KEY_RIGHT|KEY_LEFT|KEY_UP|KEY_DOWN;
+    directions=menuDirectionEdges(held,keys);
     /* One menu action per sample. Match pause: Start, then Back, then A.
      * Clean held directions before masking edges, so an opposite held on
      * either participating pad cannot turn a new edge into cursor movement. */
@@ -1337,12 +1337,12 @@ void menuTick(void) {
         if(directions&KEY_UP)*choice=(*choice+8)%12;
         if(directions&KEY_DOWN)*choice=(*choice+4)%12;
         if(directions){sound(0);drawSelect();}
-        if(keys&KEY_B){if(selectPlayer){selectPlayer=0;drawSelect();}else showTitle();return;}
+        if(keys&KEY_B){if(selectPlayer){selectPlayer=0;resetMenuRepeat();drawSelect();}else showTitle();return;}
         if(keys&(KEY_A|KEY_START)) {
             sound(3);
             if(mode!=0 && !selectPlayer){
                 if(mode==2)selected2=(selected+1)%12;
-                selectPlayer=1;drawSelect();
+                selectPlayer=1;resetMenuRepeat();drawSelect();
             }
             else {if(mode==0)selected2=(selected+1)%12;showArenas();}
         }

@@ -22,6 +22,7 @@ Keyboard/controller mappings are in the [player guide](PLAYER-GUIDE.md).
 - Either pad can choose and confirm the Local Versus arena. Opposing
   directions cancel across controllers; Start, then B, then A wins a conflict.
 - Arena thumbnails show the current stage scenery rather than older pictures.
+- Holding a direction scrolls after a short delay. Confirm and Back never repeat.
 - A full super gauge shows **SUPER Y+B** under that player's bars.
 - **PUNISH!** identifies a hit that catches attack recovery, with unchanged
   damage/stun. Startup hits keep the existing **COUNTER!** meaning.
@@ -41,7 +42,7 @@ final combined result. No new offline archive or public-use approval is claimed.
    rematch and select the next arena.
 2. Let the thin energy bar fill. Use a fresh neutral Y+B chord, then check
    that its cue clears. Full meter still requires being grounded and free to act.
-3. Open Training Tools 3/3. Choose a drill, restart with X and resume. Check
+3. Open Training Tools 3/3. Choose a drill, restart with SNES X (keyboard S) and resume. Check
    that the guide, drill and CPU level stay useful for another attempt.
 4. On ordinary PAUSED, choose P2 Controller with X. Practice real hit/block
    exchanges with both pads, then return to Stand with X.

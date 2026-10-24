@@ -36,6 +36,8 @@ installation. Existing emulator mappings may differ from the defaults below.
 kick, Space is Start, Q is Select and numpad 9/3 are L/R. Enable Num Lock.
 The P2 super is fresh neutral numpad 7+1. Shoulders do not attack.
 Opposite directions cancel. Menu priority is Start, then B, then A.
+Hold a D-pad direction or arrow key to scroll after a short delay. Confirm
+and Back remain single-press actions even when held.
 
 ## Fighting
 
@@ -115,7 +117,8 @@ With CPU selected, either pad's L/R changes the shared difficulty once per
 press; opposing held shoulders cancel even across pads. These dummy/level
 controls stay on the ordinary card.
 
-On that ordinary PAUSED card, **X selects P2 Controller** for two-person
+On that ordinary PAUSED card, **SNES X selects P2 Controller** (P1 keyboard
+**S**, P2 numpad **8**) for two-person
 Training. P2 then uses the complete shared fighting controls. X again returns
 to Stand; Up selects CPU and Down selects Stand from manual control. The
 original five-choice Up/Down dummy cycle stays intact. P1 live Select retains
@@ -137,7 +140,7 @@ one of three drills:
    crossing. The kick must hit from behind; a front hit or block does not count.
 
 Choosing a drill supplies its required CPU/Stand partner, keeping the chosen
-CPU difficulty. **X on Training Tools 3/3 restarts that drill** while leaving
+CPU difficulty. **SNES X on Training Tools 3/3 restarts that drill** while leaving
 the guide open: positions, health, energy, progress, history and combo totals
 reset. Fighter choices, arena, drill and display preference remain. Start/B/A/
 Select still take priority over X. Override the prepared partner on ordinary
