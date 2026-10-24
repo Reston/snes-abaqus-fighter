@@ -78,6 +78,11 @@ the bank silhouette. Its digest includes these inputs and all evaluated boxes.
 
 The small `contactActionFrame` function mirrors the ACTIVE selections in
 `animation_weight.h`, calling the super owner's `superFrame` for supers.
+For dedicated super slot2, the generator reads the frozen twelve-super family
+inventory: David, Cristian and Roxana use the raised-fist region; the other
+families use their grounded cast/strike region. The profile source hash is
+part of the geometry digest. This composes the super artwork with collision;
+it does not change pulse timing, damage or energy.
 Parent must keep the selectors coordinated if attack/jump animation mappings
 change. The focused native driver checks the ordinary active selections, and
 the generator refreshes all64 poses so new super mappings need no table edits.

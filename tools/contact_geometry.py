@@ -9,6 +9,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+import re
 from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -52,7 +53,7 @@ def quantile(values, q):
     return values[round((len(values) - 1) * q)]
 
 
-def derive(points, frame):
+def derive(points, frame, super_family=None):
     """Two stable body bands and a distal strike; no per-pixel runtime test.
 
     Trim each body band's outer fifth of x mass, retaining head/torso/legs
@@ -73,7 +74,7 @@ def derive(points, frame):
         left, right = max(left, center - 13), min(right, center + 14)
         body.append([max(1, left - 1), lo, min(95, right + 1), hi])
     kind = 'kick' if frame in (7, 8, 53) else 'punch'
-    if frame == 13:
+    if frame == 13 or (frame == 2 and super_family == 'SUPER_RISE'):
         kind = 'rise'
     elif frame in (1, 2, 4, 15):
         kind = 'body'
@@ -96,6 +97,14 @@ def generate(root=ROOT):
     manifest = json.loads(manifest_path.read_bytes())
     require(len(manifest) == 12, 'Expected complete roster manifest')
     dependencies = {'assets/generated/character-manifest.json': sha(manifest_path.read_bytes().replace(b'\r\n', b'\n'))}
+    profiles_path=root/'src/super_moves.h'
+    profiles_raw=profiles_path.read_bytes().replace(b'\r\n',b'\n')
+    profile_block=re.search(r'const SuperProfile superProfiles\[12\]=\{(.*?)\n\};',profiles_raw.decode(),re.S)
+    require(profile_block is not None,'Missing twelve-super profile inventory')
+    super_families=re.findall(r'\{\s*(SUPER_\w+)\s*,',profile_block[1])
+    require(len(super_families)==12 and set(super_families)<={'SUPER_VOLLEY','SUPER_RUSH','SUPER_RISE'},
+            'Unknown super family; audit its active geometry')
+    dependencies['src/super_moves.h']=sha(profiles_raw)
     roster = []
     for fighter, entry in enumerate(manifest):
         require(entry['id'] == fighter and entry['frame_count'] == 64, 'Roster order/frame count mismatch')
@@ -120,7 +129,8 @@ def generate(root=ROOT):
                     f'{fighter}/{frame}: preview/native silhouette mismatch')
             points = [(x, y) for y in range(80) for x in range(96) if ids[y * 96 + x]]
             require(bounds(points) == meta['native_box'], f'{fighter}/{frame}: manifest bounds mismatch')
-            poses.append(derive(points, frame))
+            family=super_families[fighter] if meta.get('source_kind')=='super-v1' else None
+            poses.append(derive(points, frame, family))
         roster.append(poses)
     payload = {'schema': SCHEMA, 'algorithm': 'two-body-bands-distal-strike-v1',
                'dependencies': dependencies, 'poses': roster}

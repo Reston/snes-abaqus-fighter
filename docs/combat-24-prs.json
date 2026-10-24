@@ -21,7 +21,13 @@
       "merged": false
     },
     "jumps": {"branch": "t3/jump-landing-motion-art", "merged": false},
-    "supers": {"branch": "t3/dedicated-super-art", "merged": false}
+    "supers": {
+      "branch": "t3/dedicated-super-art",
+      "url": "https://github.com/Reston/snes-abaqus-fighter/pull/17",
+      "head": "448b3227a0566c70bfa25a69bfea3b1537c624fc",
+      "merge_commit": "e138f562d26b89d32e30507aae1b0c4d55fa08f8",
+      "merged": true
+    }
   },
   "final_combined_verification": "pending"
 }
