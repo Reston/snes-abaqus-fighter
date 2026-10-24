@@ -2,8 +2,8 @@
   "status": "passed",
   "part": "stages",
   "version": "0.26.0",
-  "rom_sha256": "e349b756fac379766501de87f7b58f9d45f924c439afbecb6e3099173f1d33d4",
-  "source_commit": "49226a37f8b975cd9bb4deacb8b658bfcfc5f011",
+  "rom_sha256": "9b34dac54abe5de56b7cff3e8820a2c6b8b5653cced55c74df88bffa3b0f5442",
+  "source_commit": "026fa1ea0947515e363c7db68b16c1b000141111",
   "diagnostic": false,
   "selected_fighters": [
     0,
@@ -26,31 +26,32 @@
     "audio_device_opened": false,
     "priority_class": 16384,
     "logical_processors": [
-      4,
-      5
+      14,
+      15
     ]
   },
   "source_sha256": {
     "src/animation_banks.h": "8250cf1816ae8c0de0da6a876b76e0a0b40c10a44e35f782794ca82e283414e9",
     "src/animation_weight.h": "cdc8308b9a98c000823b7869a20a122e531d9843f7d1143ae09749b6983adf09",
     "src/arcade_story.h": "5b896901165ffae1eb85e303f0add0e4fffc8d4e5ceb5be473d0195c54720fdf",
-    "src/audio_presentation.h": "8b094475ec41af89befdf4875ef1f9a3bf303be8615f0508afccdbf24d3b35af",
+    "src/audio_presentation.h": "106ac802c7fe95b9eda67f6113b9278a407c8d0a06bba6c83ebd2d4c510e903a",
     "src/audio_presentation_state.h": "4129b01189826de5cc9266f529eb57f1dcb57bb93febcade1f1dc3bf6e6c730e",
     "src/characters.h": "f2c66a8984e16cc0e6b360e48c31bad1dee785e280a3bb5cbf7302e3c8e01858",
     "src/contact_geometry.h": "237d6b05f0e161cf08008629576f46a131b87f7a6928ea6e8e90c74ef8f49c30",
-    "src/cpu_personality.h": "a362c9df6cfa3f0f3c9246f1b2005f7f954751855452d1a7a4571cc4c6e44f90",
+    "src/cpu_personality.h": "859831dcb5708712b1319512e83018bd9c42dcdae4d04cf7c743888bdaaa8e82",
     "src/fighter_personality.h": "e15b92385c8620a8cbdaa1c2734af0f87a91fbdbeefc70fe8c04700998cad0ce",
-    "src/game.c": "1f1761638d4d9bb88c460d18fd0ef85866769fd43e0b7cbd4dba43b401de4c13",
+    "src/game.c": "4a2e5d26a504c9c5e5f52f8a4f71a402f0824942f49809fcad48d64e1208da4e",
     "src/hardware.asm": "9b6dd260dca337e06b012e9b4fdafdc2c9103750ffcf5cf803d01e9092bab424",
     "src/impact_presentation.h": "f40dd53fe3c21a026072e1ec362d93b4b8c023ad6cb1b3d1cfaed711c130aa55",
-    "src/knockdown.h": "2c58e022b021aa9e08a2df1bd96396bd1a2bd9fcf52f0027b27f876311adc445",
+    "src/knockdown.h": "b4728ac05f282613114b0931a54f5867fc1caeb29ef9cebd5c771614e5d11da3",
     "src/menu_portraits.h": "96a006a382dfc86e1807b32ac0eaaf652cb302558aea57496a20567d10713c9c",
+    "src/menu_repeat.h": "f94c56e7da218b8859016596c2994f936ea4538db51c2d720abea51970836188",
     "src/pacing_recoil.h": "79518af5f3293ad65c6143e6fdbc836ee0916afc61dce8ab5bc9d3ff8e11611b",
-    "src/pause_guide.h": "8730729f8a5b4ae38996d5f9cded2bab2c8d9bb769b4c6f5a0fca3c529bfd184",
-    "src/stage_depth.h": "be0fa4448f115d91faf865fb01ff14ebb85f13d5152bc315f80b4343e8859270",
+    "src/pause_guide.h": "20081edcb85a7c89672bf35985bda4e4deb8965cd9adda4252fa3379afd3e512",
+    "src/stage_depth.h": "c266870f08265d498d65680c08b323d38c44a51e25fe0e2e9e82bf51a74acd2d",
     "src/super_moves.h": "6b5d0f67851c1b7dc370d25f5a4dd1c41c44ad04b41d3928a663c2859374e0b0",
     "src/trace.asm": "301ec8a99aa326583c332a901903114f5fceeb7f17bbbf768c3e90ae65c3dc88",
-    "src/training_tools.h": "02e491bfe89b818ed2bb13d5dc5332b20072077b81e7d28f7ea5e8abb8e2461a",
+    "src/training_tools.h": "a71d65232dd50e247ad82afa36bd9b7dafe48ebe7c9fd2d3c91f02a1b963057d",
     "src/version.h": "3ac21275dd7527f01223188b87a3afbd9e9ff0879d50d0c312a27b3ed7738356",
     "tools/audio_assets.py": "1a55aa69ae2df232f61c9af9bc032d433461776da31ad91ea0e5108e8592a6cb",
     "tools/audit_release.py": "6d1abcdb71daffcb124de5096a9e625e6880636ff00b0e4614e3718f848c33af",
@@ -112,6 +113,7 @@
     "tools/test_combat_24_stage08.py": "a35f914c5ab4fdb6336ee218782d96c14ebf0b4bbc4009300e4f2bd052cdcdf3",
     "tools/test_compatibility.py": "f30da40e7bfb7e931ae6c3331dbaa955b2150d703edb7fa7afe0c1ca4befb73d",
     "tools/test_compatibility_combat.py": "c50712f19042bf69da0978ce7e4321cf6de1a33bd2269118483403beb9e4a754",
+    "tools/test_confirm_26.py": "f1113594a4596097b3d73b53617e1d6e09211cef36d0bc1b093ea32a24d09279",
     "tools/test_contact_24_timing.py": "6039be9b4bd515a8fffe4d627dea5ace99a03a3eb6d42ee83450398f73f43a06",
     "tools/test_contact_budget.py": "f8acb5525d0e3d627c70894ac8c4cce3c3a5bd63421ef4139d3a0f4f5c6cc2c5",
     "tools/test_contact_super_composition.py": "0f9d0144fd945044f8c67774c8f49c4e553de9f56eeb9746cf1e6d953710f637",
@@ -134,10 +136,13 @@
     "tools/test_inputs.py": "1934479db429eac2010c95c5a1b77fb9f487bf562a643a302e2b6f6422146147",
     "tools/test_matchups.py": "1979c79b5ed465f798c9528267e9debce412a1f2c19ca84c13d34995db060a1c",
     "tools/test_menu_footers.py": "f8b5e777271eda28f0eba79a1b2c5fbfef7a0e61b2946c1ffe9722ce6c6e69fc",
+    "tools/test_menu_repeat_26.py": "9db9a8d11da0413ae3c454123248b199614f9563f72eb1205b4e91729ea2283f",
     "tools/test_mesen.py": "c1d044e8dd108c1ac05ff7d5e6d5dbc5757ce42c0c45e9c31d59d6bdd887b3c0",
+    "tools/test_music_26.py": "b86e9fcb09009604562200d9988d3ca2d16e7787df7a96bc45d73ceabf5431e5",
+    "tools/test_normal_guide_26.py": "dc443ea4c9e52bb6c15099aa1d6568c73f6a874ee6e3719c68bda41e04324ef2",
     "tools/test_pacing_floor_25.py": "f7d8f81a79b599cd1ee2aae963a0b66f6dd7cbd42084215d8685661700cbccc6",
     "tools/test_package.py": "1174274d5eeec4610fd98fb11bbef90b213a9f5a61a776f634a6d99fcb15d3d9",
-    "tools/test_play_flow_26.py": "0a846b12e1a50010cc31e4f2a21510fdaeeffee526668f885e881788cfca6954",
+    "tools/test_play_flow_26.py": "5e21a167068cbdedd48120ca51f4f2a28c0b233e405ec81a3ef7f0601f92c6f9",
     "tools/test_pose_revision_guards.py": "591ade0ac9fa3e83c0169a2900d0f6f642df9fceed5b031c6ecef47f52123093",
     "tools/test_presentation.py": "bda0278c9b7676863e44a94467862b3f0d8003ad8aea4b4c3943655a775bf934",
     "tools/test_preservation.py": "635b1201940579ede2c6edaecc0d4e72f36616918f0119676026f38dcfb52bdf",
@@ -146,7 +151,8 @@
     "tools/test_special_24_cpu_timing.py": "4e57c11a7a8bf1a7472e5fe4319995b8b729b34dd4f06f944d1b2c2dad6e310d",
     "tools/test_special_24_timing.py": "65f6aa8689ad7fa080e428bdf04399113275f04a9b40ff8070bdb80278d283ad",
     "tools/test_stages.py": "08cb003e6cbc7057ed092bf6a4e8ce101b7191d8f223460062f9d4fbef230acf",
-    "tools/test_training.py": "9057d15a3ea45e0f1727ef9230e077ab56157f2936b89dd02311f007819c5632",
+    "tools/test_throw_feedback_26.py": "04f67947cf8cdb30748d55cdddd14b5132cad633724286de12921bb9a6e23b91",
+    "tools/test_training.py": "1309ffe5cb7e3a3614324b69f8bce607ee3b5d321e77ff012d6d62091cc81fd6",
     "tools/test_v024_preservation_guards.py": "34dd5d860208298f9bc405f7a535b449fa6329dcf06fda5f9d44f46acf235e82",
     "tools/test_walking.py": "f98a337905aecbc6c12ae539d3d4ae1b3914b449d944805129da316462b1068a",
     "tools/v024_contracts.py": "1b8bbe9ffee65ff4f72410564e26941bb86da72ae914da3f5c74bdbb4891a076",
@@ -303,7 +309,7 @@
             },
             {
               "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-guide.png",
-              "sha256": "d4d330a5dabd9f3875565a1b73bde394786939395c7bca4f6d4cd8852d4bc966",
+              "sha256": "eae0eaef6bcf0546c0f86277f3014deea6d17dd8905d4537c3748751bd1afb7e",
               "scope": "current native PPU"
             },
             {
@@ -380,7 +386,7 @@
             },
             {
               "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-guide.png",
-              "sha256": "d4d330a5dabd9f3875565a1b73bde394786939395c7bca4f6d4cd8852d4bc966",
+              "sha256": "eae0eaef6bcf0546c0f86277f3014deea6d17dd8905d4537c3748751bd1afb7e",
               "scope": "current native PPU"
             },
             {
@@ -457,7 +463,7 @@
             },
             {
               "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-guide.png",
-              "sha256": "d4d330a5dabd9f3875565a1b73bde394786939395c7bca4f6d4cd8852d4bc966",
+              "sha256": "eae0eaef6bcf0546c0f86277f3014deea6d17dd8905d4537c3748751bd1afb7e",
               "scope": "current native PPU"
             },
             {
@@ -534,7 +540,7 @@
             },
             {
               "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage0-guide.png",
-              "sha256": "45d4ae578527ba16134805ad9844d3ad22732306c11a7f8d42fd12cf3f279d77",
+              "sha256": "c0c3978f9224a82bae083a6e441caef0afc8896d4524f436f71d7e1359faec12",
               "scope": "current native PPU"
             },
             {
@@ -611,7 +617,7 @@
             },
             {
               "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage1-guide.png",
-              "sha256": "45d4ae578527ba16134805ad9844d3ad22732306c11a7f8d42fd12cf3f279d77",
+              "sha256": "c0c3978f9224a82bae083a6e441caef0afc8896d4524f436f71d7e1359faec12",
               "scope": "current native PPU"
             },
             {
@@ -688,7 +694,7 @@
             },
             {
               "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage2-guide.png",
-              "sha256": "45d4ae578527ba16134805ad9844d3ad22732306c11a7f8d42fd12cf3f279d77",
+              "sha256": "c0c3978f9224a82bae083a6e441caef0afc8896d4524f436f71d7e1359faec12",
               "scope": "current native PPU"
             },
             {
@@ -1053,7 +1059,7 @@
         "passed": true,
         "details": [
           "snes9x-stage1",
-          2132338,
+          2132336,
           5291
         ]
       },
@@ -1398,7 +1404,7 @@
         "details": [
           "accuracy-stage0",
           2104648,
-          5259
+          5178
         ]
       },
       {
@@ -1569,8 +1575,8 @@
         "passed": true,
         "details": [
           "accuracy-stage1",
-          2133438,
-          5240
+          2133436,
+          5385
         ]
       },
       {
@@ -1741,8 +1747,8 @@
         "passed": true,
         "details": [
           "accuracy-stage2",
-          2160120,
-          5365
+          2160128,
+          5511
         ]
       },
       {
@@ -1774,10 +1780,10 @@
     }
   },
   "check_count": 19002,
-  "elapsed_seconds": 84.375,
+  "elapsed_seconds": 86.016,
   "suite": "stage-depth",
   "shared_native_execution": true,
   "focused_report": "docs/play-flow-v026-stage-report.json",
-  "focused_report_sha256": "9385cba5fda9df251bac5e668d9ea969fefddf3924206b7f3a258d1192ccb614",
+  "focused_report_sha256": "cafe95f613330d919a338fddcd206e3293fd7d33e3140d3e8b53eb6d7654e939",
   "passed": 19002
 }
