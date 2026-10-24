@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "scope": "stage-floor-v2",
+  "id": 2,
+  "name": "La Oficina",
+  "mode": "built-in imagegen",
+  "reference": "assets/art/stages/depth-v1/02-oficina.png",
+  "reference_sha256": "f4c617d58903f77b4a1643e5664c1f70b26a4320fecf7d663c5379f12e1dfa6f",
+  "input_roles": [
+    {
+      "file": "assets/art/stages/depth-v1/02-oficina.png",
+      "role": "upper architecture palette/style reference only"
+    }
+  ],
+  "prompts": [
+    "Use case: stylized-concept\nAsset type: NEW quiet office floor plane for native SNES La Oficina fighting stage, below the supplied office scenery. Reference is location and color context ONLY.\nCreate a wide 3:1 uninterrupted horizontal strip showing installed slate blue-gray commercial carpet tiles in shallow arcade perspective. Ground only filling the complete frame, no horizon, no desk legs, no furniture, no people, no text. About eight large rectangular carpet tiles across in three staggered courses, very fine recessed joins, sparse broad softly stepped tone blocks within a few tiles suggesting woven carpet direction without drawing fibers. Visually distinct from outdoor stone: clean modular carpet, calm and flat. Strict two flat opaque tones #8B94B4 and #ACBDD5 only, predominantly #8B94B4 and restrained #ACBDD5 broad accents; no black, no strong checkerboard, no speckles, no dithering, no gradients. Large chunky 1990s SNES pixel-art clusters designed to reduce to 256x40. Thin carpet seams should remain one pixel at native size, use widely spaced geometric joins. Perspective recedes only gently. Upper edge is a straight quiet carpet boundary meeting the office apron. Left/right edges continue seamlessly into matching carpet with no border and no abrupt vertical seam. Floor must stay quieter than the colorful fighters and navy shadows, no bright reflections. Full opaque floor illustration only."
+  ],
+  "source_hashes": {
+    "02-oficina.png": "6fff285971b58e27c7f85f7a78076dc2e1d0e65446f5ca2c2ab0bb14f4a355c6"
+  },
+  "palette_sha256": "f99e1aad1efa10318c6c61a54c598518ffc723e22afbe7a5ecd502c57d2d507e",
+  "processing": {
+    "source_size": "full raw image retained",
+    "native_size": [
+      256,
+      40
+    ],
+    "resampling": "BOX full authored floor",
+    "palette_indices": [
+      6,
+      7
+    ],
+    "quantization": "MEDIANCUT two authored tonal groups mapped by luminance to existing opaque UI blue-grays, no dithering",
+    "native_geometry": "all paving/carpet joints authored by imagegen; no procedural lines"
+  },
+  "original_scene_unchanged": true
+}

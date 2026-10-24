@@ -1,0 +1,39 @@
+{
+  "schema": 1,
+  "scope": "stage-floor-v2",
+  "id": 0,
+  "name": "Las Condes",
+  "mode": "built-in imagegen",
+  "reference": "assets/art/stages/depth-v1/00-las-condes.png",
+  "reference_sha256": "4f3191e9acee6b4beb0670fb8f12d6145f7d96cd7a555312c082d1952fc94094",
+  "input_roles": [
+    {
+      "file": "assets/art/stages/depth-v1/00-las-condes.png",
+      "role": "upper architecture palette/style reference only"
+    }
+  ],
+  "prompts": [
+    "Use case: stylized-concept\nAsset type: NEW authored fixed ground plane for native SNES fighting stage Las Condes. Input image is only a style/location reference of the building above this ground, do not redraw the building.\nPrimary request: create a wide horizontal uninterrupted strip of cool slate blue-gray sidewalk paving, viewed at a shallow elevated arcade fighting game camera angle. Entire image is pavement ONLY, no horizon, no architecture, no text, no props, no people, no shadows belonging to people. Large rectangular slabs with clean restrained perspective: two broad horizontal courses and widely spaced thin slightly converging joints, about six slabs across the width. Material is clean stone with a few broad subtle shade variations, no grain or speckles. Bottom foreground paving slabs slightly larger than the back row. Quiet chunky 1990s arcade raster illustration, crisp large shapes. This floor will be reduced to just 256x40 pixels; seams should remain roughly one native pixel wide, clear but restrained. Finite colors dominated by #8B94B4 base, #ACBDD5 gentle lit slab, thin desaturated #68758E joints. NO dark black outlines, NO high contrast checkerboard, no tiny texture, no gradients. Upper edge is a continuous horizontal paving joint matching the blue-gray apron of the reference. Side edges continue as an uninterrupted paved plane, designed to tile horizontally with no border or conspicuous seam. Fill all the image with paving. Wide 3:1 canvas.",
+    "Use case: precise-object-edit\nEdit target: supplied sidewalk ground strip. Keep exactly this slab layout and shallow perspective, pavement filling the entire canvas. Change the rendering to clean flat two-tone chunky SNES arcade ground art. Use ONLY two opaque flat colors: #8B94B4 for thin joints and occasional subtly shaded slabs, #ACBDD5 for the main paving slab faces. Absolutely no gradients, soft shading, texture, grain, anti-aliased noise, blue accents or extra hues. Crisp edges, joints wide enough to survive downsampling to 256x40 (approximately 8 pixels at this source resolution), restrained sparse lines. Uppermost edge a thin straight joint. No text no border no new objects. Maintain uninterrupted horizontal continuation at left/right edges. Output wide ground strip only. This will sit below a very colorful office entrance, so keep a quiet slate-gray low contrast design."
+  ],
+  "source_hashes": {
+    "00-las-condes.png": "5ab64219efe7d604009f363dcc7f4d422a3c5b5b93b3a8678034138d916317b7",
+    "source/00-las-condes-initial.png": "aa006b6a3cf082f1d95c01be2c0f4b50a87049512b7ed463f8634294a8c89937"
+  },
+  "palette_sha256": "f99e1aad1efa10318c6c61a54c598518ffc723e22afbe7a5ecd502c57d2d507e",
+  "processing": {
+    "source_size": "full raw image retained",
+    "native_size": [
+      256,
+      40
+    ],
+    "resampling": "BOX full authored floor",
+    "palette_indices": [
+      6,
+      7
+    ],
+    "quantization": "MEDIANCUT two authored tonal groups mapped by luminance to existing opaque UI blue-grays, no dithering",
+    "native_geometry": "all paving/carpet joints authored by imagegen; no procedural lines"
+  },
+  "original_scene_unchanged": true
+}
