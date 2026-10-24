@@ -1,11 +1,13 @@
 """Verify command inventory, bounded scheduling and retained failure outcomes."""
 from pathlib import Path
+import json
 import sys
+import tempfile
 import threading
 import time
 import unittest
 sys.path.insert(0,str(Path(__file__).resolve().parent))
-from verify_play_flow_26 import plan,pool,expand
+from verify_play_flow_26 import plan,pool,expand,run_job
 
 class VerificationRunnerGuards(unittest.TestCase):
     def test_full_plan_has_each_required_feature_and_native_run_once(self):
@@ -27,6 +29,16 @@ class VerificationRunnerGuards(unittest.TestCase):
     def test_argument_expansion_preserves_space_containing_paths(self):
         row=expand({'id':'a','arguments':['--source-ref','<FREEZE>','<RUN>/file.json']},'a'*40,'build/space containing run')
         self.assertEqual(row['arguments'],['--source-ref','a'*40,'build/space containing run/file.json'])
+    def test_command_metadata_never_replaces_the_producer_report(self):
+        with tempfile.TemporaryDirectory(prefix='verification proof ') as temporary:
+            root=Path(temporary);folder=root/'run';folder.mkdir()
+            raw=b'{"status":"passed","native_cases":[1,2,3]}\n'
+            item={'id':'stress-0','arguments':['-c',"from pathlib import Path; Path('run/stress-0.json').write_bytes("+repr(raw)+")"]}
+            result=run_job(root,item,folder,[])
+            self.assertEqual(result['exit_code'],0)
+            self.assertEqual((folder/'stress-0.json').read_bytes(),raw)
+            self.assertEqual(json.loads((folder/'stress-0.command.json').read_bytes()),result)
+            self.assertEqual(result['log'],'run/stress-0.log')
     def test_single_worker_stops_before_starting_another_job_after_failure(self):
         started=[];retained=[]
         def execute(item,slot):started.append(item['id']);return {'id':item['id'],'exit_code':1 if item['id']=='bad' else 0}

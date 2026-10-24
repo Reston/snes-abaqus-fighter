@@ -123,7 +123,9 @@ def run_job(root,item,log_dir,processors):
     result={'id':item['id'],'command':command,'exit_code':code,'affinity_error':affinity_error,
             'processors':processors,'elapsed_seconds':round(time.monotonic()-started,3),
             'log':path.relative_to(root).as_posix(),'log_sha256':hashlib.sha256(raw).hexdigest()}
-    persist(log_dir/(item['id']+'.json'),result)
+    # A producer may itself write <id>.json (hour/stress shards do). Keep
+    # command outcomes separate so publication never replaces native evidence.
+    persist(log_dir/(item['id']+'.command.json'),result)
     return result
 
 
