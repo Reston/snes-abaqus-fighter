@@ -7,11 +7,14 @@ across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
 <!-- v026-agent:start -->
-- **v0.26.0 is the active autonomous polish candidate**, branch
+- **v0.26.0 is the verified polish playtest candidate**, branch
   `feature/play-flow-polish-v026`, stacked PR #22 on unmerged PR #21 (v0.25).
   The user requested sequential polish until weekly Codex remaining reaches
   5% or less. Read the live 10080-minute rate-limit window; do not confuse it
   with context/goal tokens. No new merge approval is inferred; main is v0.24.
+  This autonomous run completed on 2026-10-24 at 5% weekly allowance remaining.
+  All 28 passes are complete; PR #22 is ready for review and both PRs remain
+  unmerged. Do not restart allowance-driven polishing without a new request.
   Twenty-eight completed polish/review passes are technically verified on
   ROM `27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b`,
   checksum `3993`, source/test freeze `c89239901491a239e10194f1399820527b0ebf74`.
