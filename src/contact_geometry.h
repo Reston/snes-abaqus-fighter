@@ -14,26 +14,34 @@ typedef char ContactPoseMustBe16[sizeof(ContactPose)==16?1:-1];
  * and recovery never acquire attack geometry. Super art owns superFrame().
  * Keep this small mapping audited when the animation selectors change. */
 u8 contactActionFrame(u8 p) {
-    Fighter *f=&fighters[p];
+    Fighter *f=p?&fighters[1]:&fighters[0];
+    u16 action;
     if(superActive[p])return superFrame(p);
-    if(f->airAction)return f->action<=3?50:53;
-    if(f->action==1)return 5;
-    if(f->action<=3)return 6;
-    if(f->action<=6)return f->duck?8:7;
-    if(f->action==8)return 13;
-    if(f->action==9)return 57;
+    action=f->action;
+    if(f->airAction)return action<=3?50:53;
+    if(action==1)return 5;
+    if(action<=3)return 6;
+    if(action<=6)return f->duck?8:7;
+    if(action==8)return 13;
+    if(action==9)return 57;
     if(combatProfiles[p]->specialFamily==SPECIAL_RISING)return 13;
     if(combatProfiles[p]->specialFamily==SPECIAL_RUSH)return 15;
     return 12;
 }
 
 const ContactPose *contactBody(u8 p) {
-    Fighter *f=&fighters[p];
+    Fighter *f=p?&fighters[1]:&fighters[0];
     u8 pose=f->animFrame;
-    if(f->duck && !f->action && !f->hurt)pose=3;
-    else if(f->action && !f->hurt) {
-        if(f->tick>=f->actionStartup && f->tick<f->actionActiveEnd)
-            pose=contactActionFrame(p);
+    u16 actionTick=((u16 *)f)[8];
+    u16 action=actionTick&255,tick;
+    if(!f->hurt) {
+        if(!action) {
+            if(f->duck)pose=3;
+        } else {
+            tick=actionTick>>8;
+            if(tick>=f->actionStartup && tick<f->actionActiveEnd)
+                pose=contactActionFrame(p);
+        }
     }
     return &contactPoses[((u16)f->id<<6)+pose];
 }
@@ -42,39 +50,48 @@ const ContactPose *contactBody(u8 p) {
  * (pixel x maps to 95-x). Exact touching edges do not count as overlap. */
 u8 contactWorldHit(u8 defender,s16 left,s16 top,s16 right,s16 bottom) {
     const ContactPose *body=contactBody(defender);
-    Fighter *d=&fighters[defender];
+    const u16 *bounds=(const u16 *)body;
+    Fighter *d=defender?&fighters[1]:&fighters[0];
     s16 x=d->x,y=d->y,temp;
+    u16 lt,rb;
     /* Transform the incoming box once into defender-local coordinates.
      * Avoid repeated far-pointer setup and four nested calls per body band
      * on the native simultaneous-trade hot path. */
     left-=x;right-=x;top-=y;bottom-=y;
     if(!d->face){temp=left;left=-right;right=-temp;}
-    if(bottom>((s16)body->upper.top-78)*16 && top<((s16)body->upper.bottom-78)*16) {
-        if(right>((s16)body->upper.left-48)*16 && left<((s16)body->upper.right-48)*16)return 1;
+    /* Paired native reads preserve the exact little-endian byte table.
+     * Cache its bounds on the stack instead of rebuilding a far pointer
+     * for every u8 field. No mutable cache survives this contact query. */
+    lt=bounds[0];rb=bounds[1];
+    if(bottom>((s16)(lt>>8)-78)*16 && top<((s16)(rb>>8)-78)*16) {
+        if(right>((s16)(lt&255)-48)*16 && left<((s16)(rb&255)-48)*16)return 1;
     }
-    if(bottom<=((s16)body->lower.top-78)*16)return 0;
-    if(top>=((s16)body->lower.bottom-78)*16)return 0;
-    if(right<=((s16)body->lower.left-48)*16)return 0;
-    if(left>=((s16)body->lower.right-48)*16)return 0;
+    lt=bounds[2];rb=bounds[3];
+    if(bottom<=((s16)(lt>>8)-78)*16)return 0;
+    if(top>=((s16)(rb>>8)-78)*16)return 0;
+    if(right<=((s16)(lt&255)-48)*16)return 0;
+    if(left>=((s16)(rb&255)-48)*16)return 0;
     return 1;
 }
 
 u8 contactStrike(u8 p,u8 rear) {
-    Fighter *f=&fighters[p];
+    Fighter *f=p?&fighters[1]:&fighters[0];
     const ContactPose *pose;
     const ContactRect *r;
     u8 frame;
+    u16 lt,rb;
     s16 left,right,temp,x,y;
     frame=contactActionFrame(p);
     pose=&contactPoses[((u16)f->id<<6)+frame];
     r=&pose->strike;
     if(rear)r=&pose->rear;
-    if(r->left==r->right)return 0;
-    left=((s16)r->left-48)*16;right=((s16)r->right-48)*16;
+    lt=((const u16 *)r)[0];rb=((const u16 *)r)[1];
+    if((lt&255)==(rb&255))return 0;
+    left=((s16)(lt&255)-48)*16;right=((s16)(rb&255)-48)*16;
     if(!f->face){temp=left;left=-right;right=-temp;}
     x=f->x;y=f->y;
-    return contactWorldHit(1-p,x+left,y+((s16)r->top-78)*16,
-        x+right,y+((s16)r->bottom-78)*16);
+    return contactWorldHit(1-p,x+left,y+((s16)(lt>>8)-78)*16,
+        x+right,y+((s16)(rb>>8)-78)*16);
 }
 
 /* The single 16x16 wave OBJ is drawn at (x-8,y). Do not grant an invisible
