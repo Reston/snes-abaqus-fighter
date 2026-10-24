@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "fighter_id": 8,
+  "scope": "super-v1",
+  "reference": "assets/art/characters/08-mamariaga/walking-v2.png",
+  "generation": "built-in image_gen; transparent_background=true",
+  "prompt": "Use case: identity-preserve. Asset type: native SNES dedicated super sprite sheet. Input reference is the SAME fighter's approved art; preserve individual face, build, costume, material colors and polished dark-contour cel-shaded cartoon style. Exactly EIGHT isolated complete connected full-body figures, four equal columns by two rows, generous true-transparent gutters, sole baseline consistent within each row. Face RIGHT, three-quarter side view. One anatomical scale across ALL figures; no limbs pasted onto a fixed torso, no per-pose body or head resizing. Neutral pose must stand tall enough to be the scale anchor. Arrange reading-order: Pose1 neutral upright standing guard with near-straight legs; Pose2 CHARGE; Pose3 STRIKE; Pose4 RECOVERY; Poses5-8 four unused relaxed grounded guard variants. ONLY these eight figures, no text, labels, grid, floor, shadows, aura, projectiles, weapons or scenery. Maintain the same size of head/torso/limbs across all cells; action poses may crouch but never shrink anatomically. Both shoes and hands complete; all anatomy joins. Fighter Mamariaga: preserve slim adult oval face, long straight nose, clean-shaven, thin rounded rectangular metal glasses, nearly black dark brown tousled side-swept hair, slim springy build, chartreuse lime zip hoodie over near-black shirt, charcoal trousers and light warm-gray sneakers. Pose2 MERGE STORM charge: nimble low split stance, both palms gathered near front shoulder, elbows close and body coiled. Pose3 quick asymmetric double-palm cast forward at chest height, front arm reaching right and rear palm angled beneath, hips snap over bent front leg and rear sneaker pushes from toe. Pose4 springy compact recovery with tucked elbows, palms retract near jaw and weight returns over narrowly planted feet.",
+  "raw_output_path": "C:/Users/user/.codex/generated_images/01a16b31-fc50-7ce2-93e9-b5542d746b31/exec-1255992b-eead-466c-9ffd-64e085500b5d.png",
+  "sources": [
+    {
+      "file": "assets/art/characters/08-mamariaga/super-v1.png",
+      "count": 8,
+      "poses": [
+        "neutral-anchor",
+        "mamariaga-super-charge",
+        "mamariaga-super-strike",
+        "mamariaga-super-recovery",
+        "unused-guard-4",
+        "unused-guard-5",
+        "unused-guard-6",
+        "unused-guard-7"
+      ],
+      "frames": [
+        null,
+        1,
+        2,
+        4,
+        null,
+        null,
+        null,
+        null
+      ],
+      "sha256": "ac5094fa1fd4c250a02739f8aad8665f39929b93f70dbc19422f13b0c4b65b3e"
+    }
+  ],
+  "anchor": {
+    "source": 0,
+    "pose": 0
+  },
+  "height_target": 66,
+  "reference_sha256": "e32b9791ac45b78f080c171952af658153f0f2974f016103605f6e7b9204cd37",
+  "palette_sha256": "2fc1e702ab7d8323d94df3c6e7164891e7dc6f2e75b6ab4b8ce82dfb866094f1",
+  "raw_output_sha256": "ac5094fa1fd4c250a02739f8aad8665f39929b93f70dbc19422f13b0c4b65b3e",
+  "selected_final": "assets/art/characters/08-mamariaga/super-v1.png"
+}

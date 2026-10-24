@@ -1,0 +1,5419 @@
+{
+  "feature": "super",
+  "scope": "isolated v0.24 dedicated super artwork; not combined verification",
+  "baseline_commit": "f75005d",
+  "source_commit": "22c0d98f190403b3e7a570c63d4146d8f6520889",
+  "source_sha256": {
+    "src/super_moves.h": "3080606c1e70c2d1e72c8998f693758d9b0b08b320a4ac21bb02a5ddfa5b6f22",
+    "assets/art/super-v1.json": "6abe8d069c7fb878ba5432c50de8d69fc885b20161d1b9519867da79628a65fe"
+  },
+  "rom_sha256": "320c26fc8f9a41d788f4b2213b16e73fa2c3e9e14d93e262786ad2f4285ab531",
+  "symbols_sha256": "ea172e3e9bcafa4ca68ea000059f64f5b8c7d7e8eef355dda13d5c4a6a7d165e",
+  "test_sha256": "2ffd49035b95e5bb0e9074e6309cfa9b3585785d936c61c151ff7d304bada992",
+  "command": "D:\\snes-abaqus-fighter\\.tools\\python\\python.exe tools/test_combat24_super.py --baseline-rom build/v024-super-baseline/abaqus-after-hours.sfc",
+  "host": {
+    "python": "3.12.10",
+    "pillow": "13.0.0",
+    "gui_opened": false,
+    "audio_device_opened": false,
+    "priority_class": 16384,
+    "logical_processors": [
+      14,
+      15
+    ],
+    "platform": "Windows-11-10.0.26300-SP0",
+    "machine": "AMD64"
+  },
+  "harness_sha256": {
+    "tools/emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
+    "tools/test_characters.py": "1704dc1b731aa313fad4ce0a2789f15c350a31b1d7c5ca16f9153ad85f7edc0f",
+    "tools/test_expansion_07_supers.py": "95cfa9f2070c92c9e89e74fcf776533a2cc9230cf12708d64c85304ca1e44794",
+    "tools/pose_revision_assets.py": "7baca936c90d63dbedb732b1a222207322bed881e84841cb6d41179c7e539709"
+  },
+  "core_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
+  "controller_only": true,
+  "memory_writes": false,
+  "save_states": false,
+  "human_balance_likeness_controller_review": "open",
+  "failures": [],
+  "art": {
+    "fighters": [
+      {
+        "id": 0,
+        "slug": "damian",
+        "changed_frames": [
+          1,
+          2,
+          4
+        ],
+        "standing_height": 69,
+        "source_anchor_size": [
+          374,
+          490
+        ],
+        "conversion_scale": 0.14081632653061224,
+        "frames": [
+          {
+            "frame": 1,
+            "size": [
+              55,
+              60
+            ],
+            "source_box": [
+              479,
+              88,
+              868,
+              511
+            ],
+            "native_hash": "ef076f7064d0e1ece7d13b4ea48d892616ac06ecec40b4245de17d0d264c42ec"
+          },
+          {
+            "frame": 2,
+            "size": [
+              67,
+              60
+            ],
+            "source_box": [
+              912,
+              84,
+              1389,
+              510
+            ],
+            "native_hash": "f923399c9dc96d425f317c2b518815557bbf1cade078b4be060a62e02935815f"
+          },
+          {
+            "frame": 4,
+            "size": [
+              50,
+              59
+            ],
+            "source_box": [
+              1408,
+              89,
+              1762,
+              511
+            ],
+            "native_hash": "b504a62a6e4bde8ab318065046308232f18eba0abf01dea9a014b716a836ee41"
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "slug": "ivo",
+        "changed_frames": [
+          1,
+          2,
+          4
+        ],
+        "standing_height": 72,
+        "source_anchor_size": [
+          291,
+          438
+        ],
+        "conversion_scale": 0.1643835616438356,
+        "frames": [
+          {
+            "frame": 1,
+            "size": [
+              53,
+              71
+            ],
+            "source_box": [
+              517,
+              20,
+              839,
+              451
+            ],
+            "native_hash": "ecccee5268eb93eb3dda60560fc510fcf73491146f903ab823f082ae1d7e2f51"
+          },
+          {
+            "frame": 2,
+            "size": [
+              67,
+              66
+            ],
+            "source_box": [
+              900,
+              46,
+              1305,
+              450
+            ],
+            "native_hash": "8020e13534a13ffd389a7daa06d58fead2dc0cef7b6c8186e76687f688bee929"
+          },
+          {
+            "frame": 4,
+            "size": [
+              55,
+              69
+            ],
+            "source_box": [
+              1388,
+              32,
+              1724,
+              450
+            ],
+            "native_hash": "37464c4b238e502a31d2e910a49a95c6ddf39eb33f70e7bf4b3a483d2f9f0d6f"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "slug": "cristobal",
+        "changed_frames": [
+          1,
+          2,
+          4
+        ],
+        "standing_height": 68,
+        "source_anchor_size": [
+          317,
+          456
+        ],
+        "conversion_scale": 0.14912280701754385,
+        "frames": [
+          {
+            "frame": 1,
+            "size": [
+              44,
+              55
+            ],
+            "source_box": [
+              504,
+              100,
+              799,
+              471
+            ],
+            "native_hash": "85c8159837ce4df2ea9bde5865427ccc8b2edf788b61ca4e60c6661870e97f08"
+          },
+          {
+            "frame": 2,
+            "size": [
+              76,
+              60
+            ],
+            "source_box": [
+              922,
+              70,
+              1435,
+              469
+            ],
+            "native_hash": "8c95da4aa3127f5b573d4c646f4d3a4a2ceb115dc60ead51fe63b6c4b3aabc7b"
+          },
+          {
+            "frame": 4,
+            "size": [
+              45,
+              57
+            ],
+            "source_box": [
+              1449,
+              86,
+              1754,
+              470
+            ],
+            "native_hash": "5b307dddd2a7f9e01ef75c436a148afa7348deb67dd6ad8ae2f42759a134fa98"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "slug": "cote",
+        "changed_frames": [
+          1,
+          2,
+          4
+        ],
+        "standing_height": 69,
+        "source_anchor_size": [
+          290,
+          441
+        ],
+        "conversion_scale": 0.1564625850340136,
+        "frames": [
+          {
+            "frame": 1,
+            "size": [
+              64,
+              63
+            ],
+            "source_box": [
+              473,
+              47,
+              879,
+              450
+            ],
+            "native_hash": "c86f14d7ac596fd2d539fc42340e9b694c518736a2f4bd6eb2314a486a5dba8d"
+          },
+          {
+            "frame": 2,
+            "size": [
+              77,
+              61
+            ],
+            "source_box": [
+              907,
+              62,
+              1402,
+              450
+            ],
+            "native_hash": "2dcce3727e551d058a2ea496ebec420d1ab77421f83772bc806ea5571c5af8fc"
+          },
+          {
+            "frame": 4,
+            "size": [
+              48,
+              64
+            ],
+            "source_box": [
+              1422,
+              40,
+              1730,
+              451
+            ],
+            "native_hash": "fab82b18ad81e0d768998d04010819060d843176401e7e3d221215ba29822007"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "slug": "negger",
+        "changed_frames": [
+          1,
+          2,
+          4
+        ],
+        "standing_height": 72,
+        "source_anchor_size": [
+          306,
+          445
+        ],
+        "conversion_scale": 0.16179775280898875,
+        "frames": [
+          {
+            "frame": 1,
+            "size": [
+              70,
+              58
+            ],
+            "source_box": [
+              449,
+              98,
+              884,
+              458
+            ],
+            "native_hash": "b21c01b3f59f06bda0c3d992e799a98aafd8e03a611fe9361df087a2b9281cef"
+          },
+          {
+            "frame": 2,
+            "size": [
+              75,
+              58
+            ],
+            "source_box": [
+              928,
+              100,
+              1390,
+              458
+            ],
+            "native_hash": "6e23c5946666ee3cf41fa8954a0c1dc4d8d5ad037c0392bfe210454a69f50d2c"
+          },
+          {
+            "frame": 4,
+            "size": [
+              55,
+              59
+            ],
+            "source_box": [
+              1420,
+              92,
+              1757,
+              458
+            ],
+            "native_hash": "ff5b33613fb5a70649f814af423a8f90f378ff15d56ac6692630c83a5feb2ad3"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "slug": "david",
+        "changed_frames": [
+          1,
+          2,
+          4
+        ],
+        "standing_height": 68,
+        "source_anchor_size": [
+          278,
+          438
+        ],
+        "conversion_scale": 0.1552511415525114,
+        "frames": [
+          {
+            "frame": 1,
+            "size": [
+              57,
+              54
+            ],
+            "source_box": [
+              501,
+              125,
+              865,
+              473
+            ],
+            "native_hash": "447986ac22aeb3f1e025f6bd81091c394abc672264eb93cdcbf70020afcb41aa"
+          },
+          {
+            "frame": 2,
+            "size": [
+              50,
+              72
+            ],
+            "source_box": [
+              958,
+              16,
+              1280,
+              478
+            ],
+            "native_hash": "2ee0f1dcb31a71322c824ce81d00fbd68dc58c2e13b3e6a66f8ff97bb9cd34c0"
+          },
+          {
+            "frame": 4,
+            "size": [
+              56,
+              54
+            ],
+            "source_box": [
+              1383,
+              129,
+              1745,
+              474
+            ],
+            "native_hash": "faac858b336f45b6fd1f3381c163790148fbd0162e4415c6ae3a5f317c0f97bb"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "slug": "fernando",
+        "changed_frames": [
+          1,
+          2,
+          4
+        ],
+        "standing_height": 67,
+        "source_anchor_size": [
+          289,
+          443
+        ],
+        "conversion_scale": 0.15124153498871332,
+        "frames": [
+          {
+            "frame": 1,
+            "size": [
+              60,
+              60
+            ],
+            "source_box": [
+              487,
+              62,
+              881,
+              460
+            ],
+            "native_hash": "6412192778b7309de4ae3397856da39615f1fb3167d65b42909ebe041b81b76e"
+          },
+          {
+            "frame": 2,
+            "size": [
+              66,
+              60
+            ],
+            "source_box": [
+              914,
+              65,
+              1351,
+              460
+            ],
+            "native_hash": "942a25fcfad2bb4c19f5b7ba987de21d458d528f60d278f09598e62ecb831f03"
+          },
+          {
+            "frame": 4,
+            "size": [
+              54,
+              60
+            ],
+            "source_box": [
+              1400,
+              65,
+              1758,
+              460
+            ],
+            "native_hash": "800bc82db174d70514f76d91a0777a5793193160a3d814917925e07ab1d4525d"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "slug": "cristian",
+        "changed_frames": [
+          1,
+          2,
+          4
+        ],
+        "standing_height": 73,
+        "source_anchor_size": [
+          274,
+          439
+        ],
+        "conversion_scale": 0.1662870159453303,
+        "frames": [
+          {
+            "frame": 1,
+            "size": [
+              46,
+              67
+            ],
+            "source_box": [
+              567,
+              54,
+              846,
+              455
+            ],
+            "native_hash": "5ac817d487174e271c34296fcc906e508e952ceb73ee56982d8eaaf0587d4ede"
+          },
+          {
+            "frame": 2,
+            "size": [
+              56,
+              73
+            ],
+            "source_box": [
+              952,
+              18,
+              1291,
+              458
+            ],
+            "native_hash": "a6945fbda5bb8c5d85afd4f74f33f384e8971d921a79443bc38ca0a917a0649b"
+          },
+          {
+            "frame": 4,
+            "size": [
+              44,
+              73
+            ],
+            "source_box": [
+              1408,
+              19,
+              1672,
+              457
+            ],
+            "native_hash": "f227380c9d396009075fa5838c983a04039aa399413e1a3f201b8e6e3e4174f8"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "slug": "mamariaga",
+        "changed_frames": [
+          1,
+          2,
+          4
+        ],
+        "standing_height": 66,
+        "source_anchor_size": [
+          268,
+          448
+        ],
+        "conversion_scale": 0.14732142857142858,
+        "frames": [
+          {
+            "frame": 1,
+            "size": [
+              64,
+              54
+            ],
+            "source_box": [
+              450,
+              87,
+              886,
+              453
+            ],
+            "native_hash": "7c6ce63084d6f72b88e008728fa2791b981ed7429c2473f07b33744635a050dd"
+          },
+          {
+            "frame": 2,
+            "size": [
+              77,
+              55
+            ],
+            "source_box": [
+              905,
+              84,
+              1428,
+              456
+            ],
+            "native_hash": "121210c2133a570ef7a52cc89354f8e67e536e3deaa2ab0639751a18b7957016"
+          },
+          {
+            "frame": 4,
+            "size": [
+              34,
+              62
+            ],
+            "source_box": [
+              1484,
+              32,
+              1712,
+              455
+            ],
+            "native_hash": "c3f9b26998e891fa84537f216a6e07d18a02b468af1067782e381baf99145eb5"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "slug": "reston",
+        "changed_frames": [
+          1,
+          2,
+          4
+        ],
+        "standing_height": 70,
+        "source_anchor_size": [
+          351,
+          433
+        ],
+        "conversion_scale": 0.16166281755196305,
+        "frames": [
+          {
+            "frame": 1,
+            "size": [
+              69,
+              67
+            ],
+            "source_box": [
+              467,
+              35,
+              895,
+              450
+            ],
+            "native_hash": "05e6e10c3bdacb3b6d9d11bc5a8d4bb5f8e4fb79662ecebb26441e3589a101d6"
+          },
+          {
+            "frame": 2,
+            "size": [
+              76,
+              65
+            ],
+            "source_box": [
+              916,
+              48,
+              1386,
+              450
+            ],
+            "native_hash": "92414aaf03396bc3d725f9798dc7e1cd4fc4f13aa9d282933fa2340ac04b0da0"
+          },
+          {
+            "frame": 4,
+            "size": [
+              59,
+              68
+            ],
+            "source_box": [
+              1397,
+              32,
+              1765,
+              450
+            ],
+            "native_hash": "00141bb4fbff79c900c825fecb7869acbf64a762eab1fd00be9d319a40724423"
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "slug": "roxana",
+        "changed_frames": [
+          1,
+          2,
+          4
+        ],
+        "standing_height": 68,
+        "source_anchor_size": [
+          277,
+          425
+        ],
+        "conversion_scale": 0.16,
+        "frames": [
+          {
+            "frame": 1,
+            "size": [
+              56,
+              56
+            ],
+            "source_box": [
+              526,
+              97,
+              878,
+              446
+            ],
+            "native_hash": "b20963262a1534c45200be1baec965b5b404da770d2ef490654ec629f5368b69"
+          },
+          {
+            "frame": 2,
+            "size": [
+              47,
+              65
+            ],
+            "source_box": [
+              970,
+              39,
+              1266,
+              447
+            ],
+            "native_hash": "7b0b77bc90571fb1db1234808d1efd1d2d8ed39dd22df319062d8d8c3a65182b"
+          },
+          {
+            "frame": 4,
+            "size": [
+              46,
+              62
+            ],
+            "source_box": [
+              1432,
+              61,
+              1719,
+              446
+            ],
+            "native_hash": "f3dc2424d3d88635cf89f2c798b4713d0b7eb2025e6819d0fce9af9d5ea1fd40"
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "slug": "lars",
+        "changed_frames": [
+          1,
+          2,
+          4
+        ],
+        "standing_height": 74,
+        "source_anchor_size": [
+          290,
+          457
+        ],
+        "conversion_scale": 0.16192560175054704,
+        "frames": [
+          {
+            "frame": 1,
+            "size": [
+              46,
+              74
+            ],
+            "source_box": [
+              532,
+              10,
+              819,
+              466
+            ],
+            "native_hash": "5c7999b650480252f1a9927be1cec4fad4abb2104c97d47c4e34bf70feb5bb6a"
+          },
+          {
+            "frame": 2,
+            "size": [
+              69,
+              70
+            ],
+            "source_box": [
+              916,
+              33,
+              1342,
+              466
+            ],
+            "native_hash": "20ebcaf3d43b970b08dd2a44fccea1ccbae2b33a1e91ede4c8b25c78fd89508d"
+          },
+          {
+            "frame": 4,
+            "size": [
+              44,
+              74
+            ],
+            "source_box": [
+              1446,
+              9,
+              1718,
+              466
+            ],
+            "native_hash": "83069b5abe24dd60a15e6c41802efd880d128def327275046875f77eca612ab3"
+          }
+        ]
+      }
+    ],
+    "generated_count": 219,
+    "generated_delta": [
+      "assets/generated/character-manifest.json",
+      "assets/generated/fighter00.bin",
+      "assets/generated/fighter00.png",
+      "assets/generated/fighter01.bin",
+      "assets/generated/fighter01.png",
+      "assets/generated/fighter02.bin",
+      "assets/generated/fighter02.png",
+      "assets/generated/fighter03.bin",
+      "assets/generated/fighter03.png",
+      "assets/generated/fighter04.bin",
+      "assets/generated/fighter04.png",
+      "assets/generated/fighter05.bin",
+      "assets/generated/fighter05.png",
+      "assets/generated/fighter06.bin",
+      "assets/generated/fighter06.png",
+      "assets/generated/fighter07.bin",
+      "assets/generated/fighter07.png",
+      "assets/generated/fighter08.bin",
+      "assets/generated/fighter08.png",
+      "assets/generated/fighter09.bin",
+      "assets/generated/fighter09.png",
+      "assets/generated/fighter10.bin",
+      "assets/generated/fighter10.png",
+      "assets/generated/fighter11.bin",
+      "assets/generated/fighter11.png"
+    ],
+    "existing_art_files_preserved": 224
+  },
+  "native_contract": {
+    "new_mutable_bytes": 0,
+    "preserved_ram_labels": 1318,
+    "bank_local_sections": 329,
+    "largest_section": 30720,
+    "actor_transfer_bytes": 3840,
+    "obj_per_actor": 30,
+    "new_obj_vram_palette_sound_banks": 0,
+    "frame_ids": [
+      1,
+      2,
+      4
+    ],
+    "abi": "Fighter64/Wave16/TRACE0..122"
+  },
+  "dedicated_sequences": [
+    {
+      "fighter": 0,
+      "selected": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "uploaded": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "phase_samples": [
+        [
+          {
+            "frame": 1,
+            "clock": 2,
+            "pulse": 0,
+            "payload_sha256": "5a80911677b75ff3df30eda709538bbff742c89daa254f53cdeae01f35645800"
+          },
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "5a80911677b75ff3df30eda709538bbff742c89daa254f53cdeae01f35645800"
+          },
+          {
+            "frame": 2,
+            "clock": 13,
+            "pulse": 1,
+            "payload_sha256": "5061b34e8aaeac1c567ac43a712f8c33ecadc99223c5b11a46fd34bf75a6bfbc"
+          },
+          {
+            "frame": 2,
+            "clock": 14,
+            "pulse": 1,
+            "payload_sha256": "5061b34e8aaeac1c567ac43a712f8c33ecadc99223c5b11a46fd34bf75a6bfbc"
+          },
+          {
+            "frame": 4,
+            "clock": 54,
+            "pulse": 3,
+            "payload_sha256": "9c9809ee07b011678d00aa9c86b6417f01e7cb83646659cff6986d6192b0ed89"
+          },
+          {
+            "frame": 4,
+            "clock": 55,
+            "pulse": 3,
+            "payload_sha256": "9c9809ee07b011678d00aa9c86b6417f01e7cb83646659cff6986d6192b0ed89"
+          }
+        ],
+        [
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "5a80911677b75ff3df30eda709538bbff742c89daa254f53cdeae01f35645800"
+          },
+          {
+            "frame": 1,
+            "clock": 4,
+            "pulse": 0,
+            "payload_sha256": "5a80911677b75ff3df30eda709538bbff742c89daa254f53cdeae01f35645800"
+          },
+          {
+            "frame": 2,
+            "clock": 14,
+            "pulse": 1,
+            "payload_sha256": "5061b34e8aaeac1c567ac43a712f8c33ecadc99223c5b11a46fd34bf75a6bfbc"
+          },
+          {
+            "frame": 2,
+            "clock": 33,
+            "pulse": 2,
+            "payload_sha256": "5061b34e8aaeac1c567ac43a712f8c33ecadc99223c5b11a46fd34bf75a6bfbc"
+          },
+          {
+            "frame": 4,
+            "clock": 55,
+            "pulse": 3,
+            "payload_sha256": "9c9809ee07b011678d00aa9c86b6417f01e7cb83646659cff6986d6192b0ed89"
+          },
+          {
+            "frame": 4,
+            "clock": 56,
+            "pulse": 3,
+            "payload_sha256": "9c9809ee07b011678d00aa9c86b6417f01e7cb83646659cff6986d6192b0ed89"
+          }
+        ]
+      ],
+      "audio_peak": 5201,
+      "ordinary_ticks": 180,
+      "pause_resume_ports": [
+        0,
+        1
+      ]
+    },
+    {
+      "fighter": 1,
+      "selected": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "uploaded": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "phase_samples": [
+        [
+          {
+            "frame": 1,
+            "clock": 2,
+            "pulse": 0,
+            "payload_sha256": "9b269dad54294b6f7a17f0655a845e453b80297dec6295998753a3b18d9bcd40"
+          },
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "9b269dad54294b6f7a17f0655a845e453b80297dec6295998753a3b18d9bcd40"
+          },
+          {
+            "frame": 2,
+            "clock": 19,
+            "pulse": 1,
+            "payload_sha256": "0a263b8b2985b9831ad36e0b1faf87585d711eef8d2b2f88e17160d0b2b27e87"
+          },
+          {
+            "frame": 2,
+            "clock": 20,
+            "pulse": 1,
+            "payload_sha256": "0a263b8b2985b9831ad36e0b1faf87585d711eef8d2b2f88e17160d0b2b27e87"
+          },
+          {
+            "frame": 4,
+            "clock": 50,
+            "pulse": 2,
+            "payload_sha256": "a23d38db6b8ad37269a57f69f627ba2e06e8875c23b9f52258135be99fb38f59"
+          },
+          {
+            "frame": 4,
+            "clock": 51,
+            "pulse": 2,
+            "payload_sha256": "a23d38db6b8ad37269a57f69f627ba2e06e8875c23b9f52258135be99fb38f59"
+          }
+        ],
+        [
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "9b269dad54294b6f7a17f0655a845e453b80297dec6295998753a3b18d9bcd40"
+          },
+          {
+            "frame": 1,
+            "clock": 4,
+            "pulse": 0,
+            "payload_sha256": "9b269dad54294b6f7a17f0655a845e453b80297dec6295998753a3b18d9bcd40"
+          },
+          {
+            "frame": 2,
+            "clock": 20,
+            "pulse": 1,
+            "payload_sha256": "0a263b8b2985b9831ad36e0b1faf87585d711eef8d2b2f88e17160d0b2b27e87"
+          },
+          {
+            "frame": 2,
+            "clock": 47,
+            "pulse": 2,
+            "payload_sha256": "0a263b8b2985b9831ad36e0b1faf87585d711eef8d2b2f88e17160d0b2b27e87"
+          },
+          {
+            "frame": 4,
+            "clock": 49,
+            "pulse": 2,
+            "payload_sha256": "a23d38db6b8ad37269a57f69f627ba2e06e8875c23b9f52258135be99fb38f59"
+          },
+          {
+            "frame": 4,
+            "clock": 50,
+            "pulse": 2,
+            "payload_sha256": "a23d38db6b8ad37269a57f69f627ba2e06e8875c23b9f52258135be99fb38f59"
+          }
+        ]
+      ],
+      "audio_peak": 5115,
+      "ordinary_ticks": 180,
+      "pause_resume_ports": [
+        0,
+        1
+      ]
+    },
+    {
+      "fighter": 2,
+      "selected": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "uploaded": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "phase_samples": [
+        [
+          {
+            "frame": 1,
+            "clock": 2,
+            "pulse": 0,
+            "payload_sha256": "dd643ceb97e1969c7b3464fb5d7e13cb657071600ea6d0e52a255536ea29f881"
+          },
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "dd643ceb97e1969c7b3464fb5d7e13cb657071600ea6d0e52a255536ea29f881"
+          },
+          {
+            "frame": 2,
+            "clock": 9,
+            "pulse": 1,
+            "payload_sha256": "e91f6ca2e4a88ad853f1670ff677f5657fac5a4eeecdf8583b51ab938d6fa55e"
+          },
+          {
+            "frame": 2,
+            "clock": 10,
+            "pulse": 1,
+            "payload_sha256": "e91f6ca2e4a88ad853f1670ff677f5657fac5a4eeecdf8583b51ab938d6fa55e"
+          },
+          {
+            "frame": 4,
+            "clock": 32,
+            "pulse": 3,
+            "payload_sha256": "b8f27a688150abd0a8af69bd638bf5e71a7152589bcc35a099833798030a9ab9"
+          },
+          {
+            "frame": 4,
+            "clock": 33,
+            "pulse": 3,
+            "payload_sha256": "b8f27a688150abd0a8af69bd638bf5e71a7152589bcc35a099833798030a9ab9"
+          }
+        ],
+        [
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "dd643ceb97e1969c7b3464fb5d7e13cb657071600ea6d0e52a255536ea29f881"
+          },
+          {
+            "frame": 1,
+            "clock": 4,
+            "pulse": 0,
+            "payload_sha256": "dd643ceb97e1969c7b3464fb5d7e13cb657071600ea6d0e52a255536ea29f881"
+          },
+          {
+            "frame": 2,
+            "clock": 10,
+            "pulse": 1,
+            "payload_sha256": "e91f6ca2e4a88ad853f1670ff677f5657fac5a4eeecdf8583b51ab938d6fa55e"
+          },
+          {
+            "frame": 2,
+            "clock": 19,
+            "pulse": 2,
+            "payload_sha256": "e91f6ca2e4a88ad853f1670ff677f5657fac5a4eeecdf8583b51ab938d6fa55e"
+          },
+          {
+            "frame": 4,
+            "clock": 33,
+            "pulse": 3,
+            "payload_sha256": "b8f27a688150abd0a8af69bd638bf5e71a7152589bcc35a099833798030a9ab9"
+          },
+          {
+            "frame": 4,
+            "clock": 34,
+            "pulse": 3,
+            "payload_sha256": "b8f27a688150abd0a8af69bd638bf5e71a7152589bcc35a099833798030a9ab9"
+          }
+        ]
+      ],
+      "audio_peak": 5633,
+      "ordinary_ticks": 180,
+      "pause_resume_ports": [
+        0,
+        1
+      ]
+    },
+    {
+      "fighter": 3,
+      "selected": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "uploaded": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "phase_samples": [
+        [
+          {
+            "frame": 1,
+            "clock": 2,
+            "pulse": 0,
+            "payload_sha256": "9d19e19c326eb722740b339b946d8c5699f1d298c6a1b879d4fae58e8fd45876"
+          },
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "9d19e19c326eb722740b339b946d8c5699f1d298c6a1b879d4fae58e8fd45876"
+          },
+          {
+            "frame": 2,
+            "clock": 15,
+            "pulse": 1,
+            "payload_sha256": "b431ffaa477b697fee08e1cf29cc2395f33afa3374857e00b3060623582527be"
+          },
+          {
+            "frame": 2,
+            "clock": 16,
+            "pulse": 1,
+            "payload_sha256": "b431ffaa477b697fee08e1cf29cc2395f33afa3374857e00b3060623582527be"
+          },
+          {
+            "frame": 4,
+            "clock": 38,
+            "pulse": 2,
+            "payload_sha256": "8835fbb65797b4f37fea91491dce1f048ee1f64c8de49362f8fe8712422e812c"
+          },
+          {
+            "frame": 4,
+            "clock": 39,
+            "pulse": 2,
+            "payload_sha256": "8835fbb65797b4f37fea91491dce1f048ee1f64c8de49362f8fe8712422e812c"
+          }
+        ],
+        [
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "9d19e19c326eb722740b339b946d8c5699f1d298c6a1b879d4fae58e8fd45876"
+          },
+          {
+            "frame": 1,
+            "clock": 4,
+            "pulse": 0,
+            "payload_sha256": "9d19e19c326eb722740b339b946d8c5699f1d298c6a1b879d4fae58e8fd45876"
+          },
+          {
+            "frame": 2,
+            "clock": 16,
+            "pulse": 1,
+            "payload_sha256": "b431ffaa477b697fee08e1cf29cc2395f33afa3374857e00b3060623582527be"
+          },
+          {
+            "frame": 2,
+            "clock": 17,
+            "pulse": 1,
+            "payload_sha256": "b431ffaa477b697fee08e1cf29cc2395f33afa3374857e00b3060623582527be"
+          },
+          {
+            "frame": 4,
+            "clock": 37,
+            "pulse": 2,
+            "payload_sha256": "8835fbb65797b4f37fea91491dce1f048ee1f64c8de49362f8fe8712422e812c"
+          },
+          {
+            "frame": 4,
+            "clock": 38,
+            "pulse": 2,
+            "payload_sha256": "8835fbb65797b4f37fea91491dce1f048ee1f64c8de49362f8fe8712422e812c"
+          }
+        ]
+      ],
+      "audio_peak": 5140,
+      "ordinary_ticks": 180,
+      "pause_resume_ports": [
+        0,
+        1
+      ]
+    },
+    {
+      "fighter": 4,
+      "selected": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "uploaded": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "phase_samples": [
+        [
+          {
+            "frame": 1,
+            "clock": 2,
+            "pulse": 0,
+            "payload_sha256": "9f4b2a5eef76e0504f52e9c845b2d87d96b5c0452af47a942b7ea60f9d8c0b91"
+          },
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "9f4b2a5eef76e0504f52e9c845b2d87d96b5c0452af47a942b7ea60f9d8c0b91"
+          },
+          {
+            "frame": 2,
+            "clock": 21,
+            "pulse": 1,
+            "payload_sha256": "dc6f7d98d132a8b5940f973709f526fc55ffba1f2fcb6adb8661cef3bcb0972b"
+          },
+          {
+            "frame": 2,
+            "clock": 22,
+            "pulse": 1,
+            "payload_sha256": "dc6f7d98d132a8b5940f973709f526fc55ffba1f2fcb6adb8661cef3bcb0972b"
+          },
+          {
+            "frame": 4,
+            "clock": 54,
+            "pulse": 2,
+            "payload_sha256": "0620c857f71d5f90c8aa9efff853cec87028b39f65eaeff392a85a3b22249cde"
+          },
+          {
+            "frame": 4,
+            "clock": 55,
+            "pulse": 2,
+            "payload_sha256": "0620c857f71d5f90c8aa9efff853cec87028b39f65eaeff392a85a3b22249cde"
+          }
+        ],
+        [
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "9f4b2a5eef76e0504f52e9c845b2d87d96b5c0452af47a942b7ea60f9d8c0b91"
+          },
+          {
+            "frame": 1,
+            "clock": 4,
+            "pulse": 0,
+            "payload_sha256": "9f4b2a5eef76e0504f52e9c845b2d87d96b5c0452af47a942b7ea60f9d8c0b91"
+          },
+          {
+            "frame": 2,
+            "clock": 22,
+            "pulse": 1,
+            "payload_sha256": "dc6f7d98d132a8b5940f973709f526fc55ffba1f2fcb6adb8661cef3bcb0972b"
+          },
+          {
+            "frame": 2,
+            "clock": 51,
+            "pulse": 2,
+            "payload_sha256": "dc6f7d98d132a8b5940f973709f526fc55ffba1f2fcb6adb8661cef3bcb0972b"
+          },
+          {
+            "frame": 4,
+            "clock": 55,
+            "pulse": 2,
+            "payload_sha256": "0620c857f71d5f90c8aa9efff853cec87028b39f65eaeff392a85a3b22249cde"
+          },
+          {
+            "frame": 4,
+            "clock": 56,
+            "pulse": 2,
+            "payload_sha256": "0620c857f71d5f90c8aa9efff853cec87028b39f65eaeff392a85a3b22249cde"
+          }
+        ]
+      ],
+      "audio_peak": 5258,
+      "ordinary_ticks": 180,
+      "pause_resume_ports": [
+        0,
+        1
+      ]
+    },
+    {
+      "fighter": 5,
+      "selected": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "uploaded": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "phase_samples": [
+        [
+          {
+            "frame": 1,
+            "clock": 2,
+            "pulse": 0,
+            "payload_sha256": "bceacd10977a6ac90a54e6bf8cb71aee5c62761df68bdf8827100d276759b0ce"
+          },
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "bceacd10977a6ac90a54e6bf8cb71aee5c62761df68bdf8827100d276759b0ce"
+          },
+          {
+            "frame": 2,
+            "clock": 11,
+            "pulse": 1,
+            "payload_sha256": "423db95ffc0e44743b940dab9674d8e2cec35bb11eac26bb7bcbf4a57adaf8b0"
+          },
+          {
+            "frame": 2,
+            "clock": 12,
+            "pulse": 1,
+            "payload_sha256": "423db95ffc0e44743b940dab9674d8e2cec35bb11eac26bb7bcbf4a57adaf8b0"
+          },
+          {
+            "frame": 4,
+            "clock": 36,
+            "pulse": 3,
+            "payload_sha256": "d8734c28c47de1c86af1ee0fdce357de2bcf153b0abbf40bda7752ee964a3a20"
+          },
+          {
+            "frame": 4,
+            "clock": 37,
+            "pulse": 3,
+            "payload_sha256": "d8734c28c47de1c86af1ee0fdce357de2bcf153b0abbf40bda7752ee964a3a20"
+          }
+        ],
+        [
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "bceacd10977a6ac90a54e6bf8cb71aee5c62761df68bdf8827100d276759b0ce"
+          },
+          {
+            "frame": 1,
+            "clock": 4,
+            "pulse": 0,
+            "payload_sha256": "bceacd10977a6ac90a54e6bf8cb71aee5c62761df68bdf8827100d276759b0ce"
+          },
+          {
+            "frame": 2,
+            "clock": 10,
+            "pulse": 1,
+            "payload_sha256": "423db95ffc0e44743b940dab9674d8e2cec35bb11eac26bb7bcbf4a57adaf8b0"
+          },
+          {
+            "frame": 2,
+            "clock": 11,
+            "pulse": 1,
+            "payload_sha256": "423db95ffc0e44743b940dab9674d8e2cec35bb11eac26bb7bcbf4a57adaf8b0"
+          },
+          {
+            "frame": 4,
+            "clock": 37,
+            "pulse": 3,
+            "payload_sha256": "d8734c28c47de1c86af1ee0fdce357de2bcf153b0abbf40bda7752ee964a3a20"
+          },
+          {
+            "frame": 4,
+            "clock": 38,
+            "pulse": 3,
+            "payload_sha256": "d8734c28c47de1c86af1ee0fdce357de2bcf153b0abbf40bda7752ee964a3a20"
+          }
+        ]
+      ],
+      "audio_peak": 5523,
+      "ordinary_ticks": 180,
+      "pause_resume_ports": [
+        0,
+        1
+      ]
+    },
+    {
+      "fighter": 6,
+      "selected": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "uploaded": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "phase_samples": [
+        [
+          {
+            "frame": 1,
+            "clock": 2,
+            "pulse": 0,
+            "payload_sha256": "35e7f2503adec92018f018b1662fb4d3e529bb7fd4cbf45f12c9f5251cb06a06"
+          },
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "35e7f2503adec92018f018b1662fb4d3e529bb7fd4cbf45f12c9f5251cb06a06"
+          },
+          {
+            "frame": 2,
+            "clock": 15,
+            "pulse": 1,
+            "payload_sha256": "0f8f00cdd74a92289948eca6e5dfc8b8c3446d2e3d00cfdf81a85d6a3fff0a78"
+          },
+          {
+            "frame": 2,
+            "clock": 16,
+            "pulse": 1,
+            "payload_sha256": "0f8f00cdd74a92289948eca6e5dfc8b8c3446d2e3d00cfdf81a85d6a3fff0a78"
+          },
+          {
+            "frame": 4,
+            "clock": 68,
+            "pulse": 3,
+            "payload_sha256": "10a45ca9fb278ef22721c6f02ce49f6b1705d5900dfb90806e2aa9c4ca4f154a"
+          },
+          {
+            "frame": 4,
+            "clock": 69,
+            "pulse": 3,
+            "payload_sha256": "10a45ca9fb278ef22721c6f02ce49f6b1705d5900dfb90806e2aa9c4ca4f154a"
+          }
+        ],
+        [
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "35e7f2503adec92018f018b1662fb4d3e529bb7fd4cbf45f12c9f5251cb06a06"
+          },
+          {
+            "frame": 1,
+            "clock": 4,
+            "pulse": 0,
+            "payload_sha256": "35e7f2503adec92018f018b1662fb4d3e529bb7fd4cbf45f12c9f5251cb06a06"
+          },
+          {
+            "frame": 2,
+            "clock": 16,
+            "pulse": 1,
+            "payload_sha256": "0f8f00cdd74a92289948eca6e5dfc8b8c3446d2e3d00cfdf81a85d6a3fff0a78"
+          },
+          {
+            "frame": 2,
+            "clock": 41,
+            "pulse": 2,
+            "payload_sha256": "0f8f00cdd74a92289948eca6e5dfc8b8c3446d2e3d00cfdf81a85d6a3fff0a78"
+          },
+          {
+            "frame": 4,
+            "clock": 69,
+            "pulse": 3,
+            "payload_sha256": "10a45ca9fb278ef22721c6f02ce49f6b1705d5900dfb90806e2aa9c4ca4f154a"
+          },
+          {
+            "frame": 4,
+            "clock": 70,
+            "pulse": 3,
+            "payload_sha256": "10a45ca9fb278ef22721c6f02ce49f6b1705d5900dfb90806e2aa9c4ca4f154a"
+          }
+        ]
+      ],
+      "audio_peak": 5318,
+      "ordinary_ticks": 180,
+      "pause_resume_ports": [
+        0,
+        1
+      ]
+    },
+    {
+      "fighter": 7,
+      "selected": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "uploaded": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "phase_samples": [
+        [
+          {
+            "frame": 1,
+            "clock": 2,
+            "pulse": 0,
+            "payload_sha256": "3efe94c5a9e40f8e64b88bcfe3658c30cbfa8a646ed6db6ab38fab6fed84143c"
+          },
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "3efe94c5a9e40f8e64b88bcfe3658c30cbfa8a646ed6db6ab38fab6fed84143c"
+          },
+          {
+            "frame": 2,
+            "clock": 15,
+            "pulse": 1,
+            "payload_sha256": "1d8ef2ac75f0a53978083cda38e591bd877e4f525ca8f332f3f53b57c39b103d"
+          },
+          {
+            "frame": 2,
+            "clock": 16,
+            "pulse": 1,
+            "payload_sha256": "1d8ef2ac75f0a53978083cda38e591bd877e4f525ca8f332f3f53b57c39b103d"
+          },
+          {
+            "frame": 4,
+            "clock": 36,
+            "pulse": 2,
+            "payload_sha256": "2a45cce35edfb6595510079e0076243d4d6815e8bfc4f9e202c9686310ba1482"
+          },
+          {
+            "frame": 4,
+            "clock": 37,
+            "pulse": 2,
+            "payload_sha256": "2a45cce35edfb6595510079e0076243d4d6815e8bfc4f9e202c9686310ba1482"
+          }
+        ],
+        [
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "3efe94c5a9e40f8e64b88bcfe3658c30cbfa8a646ed6db6ab38fab6fed84143c"
+          },
+          {
+            "frame": 1,
+            "clock": 4,
+            "pulse": 0,
+            "payload_sha256": "3efe94c5a9e40f8e64b88bcfe3658c30cbfa8a646ed6db6ab38fab6fed84143c"
+          },
+          {
+            "frame": 2,
+            "clock": 14,
+            "pulse": 1,
+            "payload_sha256": "1d8ef2ac75f0a53978083cda38e591bd877e4f525ca8f332f3f53b57c39b103d"
+          },
+          {
+            "frame": 2,
+            "clock": 15,
+            "pulse": 1,
+            "payload_sha256": "1d8ef2ac75f0a53978083cda38e591bd877e4f525ca8f332f3f53b57c39b103d"
+          },
+          {
+            "frame": 4,
+            "clock": 35,
+            "pulse": 2,
+            "payload_sha256": "2a45cce35edfb6595510079e0076243d4d6815e8bfc4f9e202c9686310ba1482"
+          },
+          {
+            "frame": 4,
+            "clock": 36,
+            "pulse": 2,
+            "payload_sha256": "2a45cce35edfb6595510079e0076243d4d6815e8bfc4f9e202c9686310ba1482"
+          }
+        ]
+      ],
+      "audio_peak": 5420,
+      "ordinary_ticks": 180,
+      "pause_resume_ports": [
+        0,
+        1
+      ]
+    },
+    {
+      "fighter": 8,
+      "selected": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "uploaded": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "phase_samples": [
+        [
+          {
+            "frame": 1,
+            "clock": 2,
+            "pulse": 0,
+            "payload_sha256": "1e829da944c32c948b89721fc731c9f5f0a0b2fc754aaaf57acb124cbf149346"
+          },
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "1e829da944c32c948b89721fc731c9f5f0a0b2fc754aaaf57acb124cbf149346"
+          },
+          {
+            "frame": 2,
+            "clock": 9,
+            "pulse": 1,
+            "payload_sha256": "e4266b660ce18c8213d1032aee52109b467309170daa58f3b53a44c9d8901a23"
+          },
+          {
+            "frame": 2,
+            "clock": 10,
+            "pulse": 1,
+            "payload_sha256": "e4266b660ce18c8213d1032aee52109b467309170daa58f3b53a44c9d8901a23"
+          },
+          {
+            "frame": 4,
+            "clock": 46,
+            "pulse": 3,
+            "payload_sha256": "cd518bf80b26e7fb176dacd9c6af69353ea6e5117f100746973353a68949cd18"
+          },
+          {
+            "frame": 4,
+            "clock": 47,
+            "pulse": 3,
+            "payload_sha256": "cd518bf80b26e7fb176dacd9c6af69353ea6e5117f100746973353a68949cd18"
+          }
+        ],
+        [
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "1e829da944c32c948b89721fc731c9f5f0a0b2fc754aaaf57acb124cbf149346"
+          },
+          {
+            "frame": 1,
+            "clock": 4,
+            "pulse": 0,
+            "payload_sha256": "1e829da944c32c948b89721fc731c9f5f0a0b2fc754aaaf57acb124cbf149346"
+          },
+          {
+            "frame": 2,
+            "clock": 10,
+            "pulse": 1,
+            "payload_sha256": "e4266b660ce18c8213d1032aee52109b467309170daa58f3b53a44c9d8901a23"
+          },
+          {
+            "frame": 2,
+            "clock": 27,
+            "pulse": 2,
+            "payload_sha256": "e4266b660ce18c8213d1032aee52109b467309170daa58f3b53a44c9d8901a23"
+          },
+          {
+            "frame": 4,
+            "clock": 47,
+            "pulse": 3,
+            "payload_sha256": "cd518bf80b26e7fb176dacd9c6af69353ea6e5117f100746973353a68949cd18"
+          },
+          {
+            "frame": 4,
+            "clock": 48,
+            "pulse": 3,
+            "payload_sha256": "cd518bf80b26e7fb176dacd9c6af69353ea6e5117f100746973353a68949cd18"
+          }
+        ]
+      ],
+      "audio_peak": 5400,
+      "ordinary_ticks": 180,
+      "pause_resume_ports": [
+        0,
+        1
+      ]
+    },
+    {
+      "fighter": 9,
+      "selected": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "uploaded": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "phase_samples": [
+        [
+          {
+            "frame": 1,
+            "clock": 2,
+            "pulse": 0,
+            "payload_sha256": "1fec38193a814acbc2082d78e3a3b20faf01ae8539a77528830bf9190ab5a233"
+          },
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "1fec38193a814acbc2082d78e3a3b20faf01ae8539a77528830bf9190ab5a233"
+          },
+          {
+            "frame": 2,
+            "clock": 17,
+            "pulse": 1,
+            "payload_sha256": "61b979c3baff2ff74f44f844c89ff87d869f31068bd47a1afd67a8cbc7f58911"
+          },
+          {
+            "frame": 2,
+            "clock": 18,
+            "pulse": 1,
+            "payload_sha256": "61b979c3baff2ff74f44f844c89ff87d869f31068bd47a1afd67a8cbc7f58911"
+          },
+          {
+            "frame": 4,
+            "clock": 42,
+            "pulse": 2,
+            "payload_sha256": "5490b50390793f8d81a2a499440e7b7e14be9dafe9a6dd4648a5fb5ae570022a"
+          },
+          {
+            "frame": 4,
+            "clock": 43,
+            "pulse": 2,
+            "payload_sha256": "5490b50390793f8d81a2a499440e7b7e14be9dafe9a6dd4648a5fb5ae570022a"
+          }
+        ],
+        [
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "1fec38193a814acbc2082d78e3a3b20faf01ae8539a77528830bf9190ab5a233"
+          },
+          {
+            "frame": 1,
+            "clock": 4,
+            "pulse": 0,
+            "payload_sha256": "1fec38193a814acbc2082d78e3a3b20faf01ae8539a77528830bf9190ab5a233"
+          },
+          {
+            "frame": 2,
+            "clock": 18,
+            "pulse": 1,
+            "payload_sha256": "61b979c3baff2ff74f44f844c89ff87d869f31068bd47a1afd67a8cbc7f58911"
+          },
+          {
+            "frame": 2,
+            "clock": 39,
+            "pulse": 2,
+            "payload_sha256": "61b979c3baff2ff74f44f844c89ff87d869f31068bd47a1afd67a8cbc7f58911"
+          },
+          {
+            "frame": 4,
+            "clock": 43,
+            "pulse": 2,
+            "payload_sha256": "5490b50390793f8d81a2a499440e7b7e14be9dafe9a6dd4648a5fb5ae570022a"
+          },
+          {
+            "frame": 4,
+            "clock": 44,
+            "pulse": 2,
+            "payload_sha256": "5490b50390793f8d81a2a499440e7b7e14be9dafe9a6dd4648a5fb5ae570022a"
+          }
+        ]
+      ],
+      "audio_peak": 5134,
+      "ordinary_ticks": 180,
+      "pause_resume_ports": [
+        0,
+        1
+      ]
+    },
+    {
+      "fighter": 10,
+      "selected": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "uploaded": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "phase_samples": [
+        [
+          {
+            "frame": 1,
+            "clock": 2,
+            "pulse": 0,
+            "payload_sha256": "5cfda9f4ee737d0133100f72d9942000f7160c7a1b2897f64d94c7aea5f39ade"
+          },
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "5cfda9f4ee737d0133100f72d9942000f7160c7a1b2897f64d94c7aea5f39ade"
+          },
+          {
+            "frame": 2,
+            "clock": 9,
+            "pulse": 1,
+            "payload_sha256": "8f5e8d561b12b891dd1b19a78d0ccd9f23e8a57285a42092d3f674bb81ab4846"
+          },
+          {
+            "frame": 2,
+            "clock": 18,
+            "pulse": 2,
+            "payload_sha256": "8f5e8d561b12b891dd1b19a78d0ccd9f23e8a57285a42092d3f674bb81ab4846"
+          },
+          {
+            "frame": 4,
+            "clock": 30,
+            "pulse": 3,
+            "payload_sha256": "ce3586416ba821cfeb666afde477077a486b05cad15f1780320ed813619353cf"
+          },
+          {
+            "frame": 4,
+            "clock": 31,
+            "pulse": 3,
+            "payload_sha256": "ce3586416ba821cfeb666afde477077a486b05cad15f1780320ed813619353cf"
+          }
+        ],
+        [
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "5cfda9f4ee737d0133100f72d9942000f7160c7a1b2897f64d94c7aea5f39ade"
+          },
+          {
+            "frame": 1,
+            "clock": 4,
+            "pulse": 0,
+            "payload_sha256": "5cfda9f4ee737d0133100f72d9942000f7160c7a1b2897f64d94c7aea5f39ade"
+          },
+          {
+            "frame": 2,
+            "clock": 8,
+            "pulse": 1,
+            "payload_sha256": "8f5e8d561b12b891dd1b19a78d0ccd9f23e8a57285a42092d3f674bb81ab4846"
+          },
+          {
+            "frame": 2,
+            "clock": 9,
+            "pulse": 1,
+            "payload_sha256": "8f5e8d561b12b891dd1b19a78d0ccd9f23e8a57285a42092d3f674bb81ab4846"
+          },
+          {
+            "frame": 4,
+            "clock": 29,
+            "pulse": 3,
+            "payload_sha256": "ce3586416ba821cfeb666afde477077a486b05cad15f1780320ed813619353cf"
+          },
+          {
+            "frame": 4,
+            "clock": 30,
+            "pulse": 3,
+            "payload_sha256": "ce3586416ba821cfeb666afde477077a486b05cad15f1780320ed813619353cf"
+          }
+        ]
+      ],
+      "audio_peak": 5345,
+      "ordinary_ticks": 180,
+      "pause_resume_ports": [
+        0,
+        1
+      ]
+    },
+    {
+      "fighter": 11,
+      "selected": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "uploaded": [
+        [
+          1,
+          2,
+          4
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "phase_samples": [
+        [
+          {
+            "frame": 1,
+            "clock": 2,
+            "pulse": 0,
+            "payload_sha256": "51c0e7793efe32297ed8e74aa7ed64de0e7592f30e0d4617883467fd27be5bd5"
+          },
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "51c0e7793efe32297ed8e74aa7ed64de0e7592f30e0d4617883467fd27be5bd5"
+          },
+          {
+            "frame": 2,
+            "clock": 23,
+            "pulse": 1,
+            "payload_sha256": "35cecef70bbbe892a33faabd829aef7964ed99872db6d280aedd67a1a3744f11"
+          },
+          {
+            "frame": 2,
+            "clock": 24,
+            "pulse": 1,
+            "payload_sha256": "35cecef70bbbe892a33faabd829aef7964ed99872db6d280aedd67a1a3744f11"
+          },
+          {
+            "frame": 4,
+            "clock": 60,
+            "pulse": 2,
+            "payload_sha256": "fd6bffaa8d2830ce90bc61e81e15752c0ea3d0301080c75076955840d7fc21cc"
+          },
+          {
+            "frame": 4,
+            "clock": 61,
+            "pulse": 2,
+            "payload_sha256": "fd6bffaa8d2830ce90bc61e81e15752c0ea3d0301080c75076955840d7fc21cc"
+          }
+        ],
+        [
+          {
+            "frame": 1,
+            "clock": 3,
+            "pulse": 0,
+            "payload_sha256": "51c0e7793efe32297ed8e74aa7ed64de0e7592f30e0d4617883467fd27be5bd5"
+          },
+          {
+            "frame": 1,
+            "clock": 4,
+            "pulse": 0,
+            "payload_sha256": "51c0e7793efe32297ed8e74aa7ed64de0e7592f30e0d4617883467fd27be5bd5"
+          },
+          {
+            "frame": 2,
+            "clock": 24,
+            "pulse": 1,
+            "payload_sha256": "35cecef70bbbe892a33faabd829aef7964ed99872db6d280aedd67a1a3744f11"
+          },
+          {
+            "frame": 2,
+            "clock": 57,
+            "pulse": 2,
+            "payload_sha256": "35cecef70bbbe892a33faabd829aef7964ed99872db6d280aedd67a1a3744f11"
+          },
+          {
+            "frame": 4,
+            "clock": 59,
+            "pulse": 2,
+            "payload_sha256": "fd6bffaa8d2830ce90bc61e81e15752c0ea3d0301080c75076955840d7fc21cc"
+          },
+          {
+            "frame": 4,
+            "clock": 60,
+            "pulse": 2,
+            "payload_sha256": "fd6bffaa8d2830ce90bc61e81e15752c0ea3d0301080c75076955840d7fc21cc"
+          }
+        ]
+      ],
+      "audio_peak": 5345,
+      "ordinary_ticks": 180,
+      "pause_resume_ports": [
+        0,
+        1
+      ]
+    }
+  ],
+  "training_resets": [
+    {
+      "fighter": 0,
+      "activation_port": 0,
+      "pause_port": 1,
+      "reset_port": 0,
+      "state": "all14 private bytes zero"
+    },
+    {
+      "fighter": 1,
+      "activation_port": 0,
+      "pause_port": 1,
+      "reset_port": 0,
+      "state": "all14 private bytes zero"
+    },
+    {
+      "fighter": 2,
+      "activation_port": 0,
+      "pause_port": 1,
+      "reset_port": 0,
+      "state": "all14 private bytes zero"
+    },
+    {
+      "fighter": 3,
+      "activation_port": 0,
+      "pause_port": 1,
+      "reset_port": 0,
+      "state": "all14 private bytes zero"
+    },
+    {
+      "fighter": 4,
+      "activation_port": 0,
+      "pause_port": 1,
+      "reset_port": 0,
+      "state": "all14 private bytes zero"
+    },
+    {
+      "fighter": 5,
+      "activation_port": 0,
+      "pause_port": 1,
+      "reset_port": 0,
+      "state": "all14 private bytes zero"
+    },
+    {
+      "fighter": 6,
+      "activation_port": 0,
+      "pause_port": 1,
+      "reset_port": 0,
+      "state": "all14 private bytes zero"
+    },
+    {
+      "fighter": 7,
+      "activation_port": 0,
+      "pause_port": 1,
+      "reset_port": 0,
+      "state": "all14 private bytes zero"
+    },
+    {
+      "fighter": 8,
+      "activation_port": 0,
+      "pause_port": 1,
+      "reset_port": 0,
+      "state": "all14 private bytes zero"
+    },
+    {
+      "fighter": 9,
+      "activation_port": 0,
+      "pause_port": 1,
+      "reset_port": 0,
+      "state": "all14 private bytes zero"
+    },
+    {
+      "fighter": 10,
+      "activation_port": 0,
+      "pause_port": 1,
+      "reset_port": 0,
+      "state": "all14 private bytes zero"
+    },
+    {
+      "fighter": 11,
+      "activation_port": 0,
+      "pause_port": 1,
+      "reset_port": 0,
+      "state": "all14 private bytes zero"
+    }
+  ],
+  "activation": [
+    {
+      "fighter": 0,
+      "name": "KERNEL OVERDRIVE",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 106,
+      "observed_duration": [
+        65,
+        65
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "fighter": 1,
+      "name": "COMPOUND INTEREST",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 108,
+      "observed_duration": [
+        77,
+        77
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ]
+    },
+    {
+      "fighter": 2,
+      "name": "ATOMIC CASCADE",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 55,
+      "observed_duration": [
+        55,
+        55
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [],
+        []
+      ]
+    },
+    {
+      "fighter": 3,
+      "name": "FINAL BALANCE",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 68,
+      "observed_duration": [
+        68,
+        68
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [],
+        []
+      ]
+    },
+    {
+      "fighter": 4,
+      "name": "MACRO COLLAPSE",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 117,
+      "observed_duration": [
+        79,
+        79
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "fighter": 5,
+      "name": "FINAL AUDIT",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 63,
+      "observed_duration": [
+        63,
+        63
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [],
+        []
+      ]
+    },
+    {
+      "fighter": 6,
+      "name": "LEGACY ROLLOUT",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 120,
+      "observed_duration": [
+        65,
+        65
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [
+          1
+        ],
+        [
+          1
+        ]
+      ]
+    },
+    {
+      "fighter": 7,
+      "name": "ZERO RISK",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 68,
+      "observed_duration": [
+        68,
+        68
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [],
+        []
+      ]
+    },
+    {
+      "fighter": 8,
+      "name": "MERGE STORM",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 94,
+      "observed_duration": [
+        49,
+        49
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "fighter": 9,
+      "name": "CLOUD NINE",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 114,
+      "observed_duration": [
+        69,
+        69
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "fighter": 10,
+      "name": "CLOSING BELL",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 54,
+      "observed_duration": [
+        54,
+        54
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [],
+        []
+      ]
+    },
+    {
+      "fighter": 11,
+      "name": "ABSOLUTE ZERO",
+      "start_energy": [
+        96,
+        96
+      ],
+      "full_cost": [
+        96,
+        96
+      ],
+      "maximum_duration": 118,
+      "observed_duration": [
+        81,
+        81
+      ],
+      "starts": [
+        1,
+        1
+      ],
+      "observed_wave_heights": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ]
+    }
+  ],
+  "hits": [
+    {
+      "fighter": 0,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 11,
+          "damage": 10,
+          "phase": 1,
+          "guard": 0,
+          "tick": 12
+        },
+        {
+          "frame": 29,
+          "damage": 10,
+          "phase": 2,
+          "guard": 0,
+          "tick": 24
+        },
+        {
+          "frame": 47,
+          "damage": 12,
+          "phase": 3,
+          "guard": 0,
+          "tick": 36
+        }
+      ],
+      "damage": 32,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 0,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 11,
+          "damage": 10,
+          "phase": 1,
+          "guard": 0,
+          "tick": 12
+        },
+        {
+          "frame": 29,
+          "damage": 10,
+          "phase": 2,
+          "guard": 0,
+          "tick": 24
+        },
+        {
+          "frame": 47,
+          "damage": 12,
+          "phase": 3,
+          "guard": 0,
+          "tick": 36
+        }
+      ],
+      "damage": 32,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 1,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 17,
+          "damage": 15,
+          "phase": 1,
+          "guard": 0,
+          "tick": 18
+        },
+        {
+          "frame": 47,
+          "damage": 19,
+          "phase": 2,
+          "guard": 0,
+          "tick": 42
+        }
+      ],
+      "damage": 34,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 1,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 17,
+          "damage": 15,
+          "phase": 1,
+          "guard": 0,
+          "tick": 18
+        },
+        {
+          "frame": 47,
+          "damage": 19,
+          "phase": 2,
+          "guard": 0,
+          "tick": 42
+        }
+      ],
+      "damage": 34,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 2,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 7,
+          "damage": 9,
+          "phase": 1,
+          "guard": 0,
+          "tick": 8
+        },
+        {
+          "frame": 23,
+          "damage": 9,
+          "phase": 2,
+          "guard": 0,
+          "tick": 18
+        },
+        {
+          "frame": 39,
+          "damage": 14,
+          "phase": 3,
+          "guard": 0,
+          "tick": 28
+        }
+      ],
+      "damage": 32,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        18
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 2,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 7,
+          "damage": 9,
+          "phase": 1,
+          "guard": 0,
+          "tick": 8
+        },
+        {
+          "frame": 23,
+          "damage": 9,
+          "phase": 2,
+          "guard": 0,
+          "tick": 18
+        },
+        {
+          "frame": 39,
+          "damage": 14,
+          "phase": 3,
+          "guard": 0,
+          "tick": 28
+        }
+      ],
+      "damage": 32,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        18
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 3,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 13,
+          "damage": 13,
+          "phase": 1,
+          "guard": 0,
+          "tick": 14
+        },
+        {
+          "frame": 37,
+          "damage": 21,
+          "phase": 2,
+          "guard": 0,
+          "tick": 32
+        }
+      ],
+      "damage": 34,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        18
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 3,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 13,
+          "damage": 13,
+          "phase": 1,
+          "guard": 0,
+          "tick": 14
+        },
+        {
+          "frame": 37,
+          "damage": 21,
+          "phase": 2,
+          "guard": 0,
+          "tick": 32
+        }
+      ],
+      "damage": 34,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        18
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 4,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 19,
+          "damage": 15,
+          "phase": 1,
+          "guard": 0,
+          "tick": 20
+        },
+        {
+          "frame": 49,
+          "damage": 21,
+          "phase": 2,
+          "guard": 0,
+          "tick": 44
+        }
+      ],
+      "damage": 36,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 4,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 19,
+          "damage": 15,
+          "phase": 1,
+          "guard": 0,
+          "tick": 20
+        },
+        {
+          "frame": 49,
+          "damage": 21,
+          "phase": 2,
+          "guard": 0,
+          "tick": 44
+        }
+      ],
+      "damage": 36,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 5,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 8,
+          "damage": 8,
+          "phase": 1,
+          "guard": 0,
+          "tick": 9
+        },
+        {
+          "frame": 25,
+          "damage": 8,
+          "phase": 2,
+          "guard": 0,
+          "tick": 20
+        },
+        {
+          "frame": 42,
+          "damage": 18,
+          "phase": 3,
+          "guard": 0,
+          "tick": 31
+        }
+      ],
+      "damage": 34,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": true
+    },
+    {
+      "fighter": 5,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 8,
+          "damage": 8,
+          "phase": 1,
+          "guard": 0,
+          "tick": 9
+        },
+        {
+          "frame": 25,
+          "damage": 8,
+          "phase": 2,
+          "guard": 0,
+          "tick": 20
+        },
+        {
+          "frame": 42,
+          "damage": 18,
+          "phase": 3,
+          "guard": 0,
+          "tick": 31
+        }
+      ],
+      "damage": 34,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": true
+    },
+    {
+      "fighter": 6,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 13,
+          "damage": 10,
+          "phase": 1,
+          "guard": 0,
+          "tick": 14
+        },
+        {
+          "frame": 31,
+          "damage": 10,
+          "phase": 2,
+          "guard": 0,
+          "tick": 26
+        },
+        {
+          "frame": 49,
+          "damage": 13,
+          "phase": 3,
+          "guard": 0,
+          "tick": 38
+        }
+      ],
+      "damage": 33,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        16
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 6,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 13,
+          "damage": 10,
+          "phase": 1,
+          "guard": 0,
+          "tick": 14
+        },
+        {
+          "frame": 31,
+          "damage": 10,
+          "phase": 2,
+          "guard": 0,
+          "tick": 26
+        },
+        {
+          "frame": 49,
+          "damage": 13,
+          "phase": 3,
+          "guard": 0,
+          "tick": 38
+        }
+      ],
+      "damage": 33,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 7,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 12,
+          "damage": 12,
+          "phase": 1,
+          "guard": 0,
+          "tick": 13
+        },
+        {
+          "frame": 34,
+          "damage": 22,
+          "phase": 2,
+          "guard": 0,
+          "tick": 29
+        }
+      ],
+      "damage": 34,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": true
+    },
+    {
+      "fighter": 7,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 12,
+          "damage": 12,
+          "phase": 1,
+          "guard": 0,
+          "tick": 13
+        },
+        {
+          "frame": 34,
+          "damage": 22,
+          "phase": 2,
+          "guard": 0,
+          "tick": 29
+        }
+      ],
+      "damage": 34,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": true
+    },
+    {
+      "fighter": 8,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 7,
+          "damage": 8,
+          "phase": 1,
+          "guard": 0,
+          "tick": 8
+        },
+        {
+          "frame": 21,
+          "damage": 8,
+          "phase": 2,
+          "guard": 0,
+          "tick": 16
+        },
+        {
+          "frame": 35,
+          "damage": 13,
+          "phase": 3,
+          "guard": 0,
+          "tick": 24
+        }
+      ],
+      "damage": 29,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        18
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 8,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 7,
+          "damage": 8,
+          "phase": 1,
+          "guard": 0,
+          "tick": 8
+        },
+        {
+          "frame": 21,
+          "damage": 8,
+          "phase": 2,
+          "guard": 0,
+          "tick": 16
+        },
+        {
+          "frame": 35,
+          "damage": 13,
+          "phase": 3,
+          "guard": 0,
+          "tick": 24
+        }
+      ],
+      "damage": 29,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        19
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 9,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 15,
+          "damage": 14,
+          "phase": 1,
+          "guard": 0,
+          "tick": 16
+        },
+        {
+          "frame": 41,
+          "damage": 22,
+          "phase": 2,
+          "guard": 0,
+          "tick": 36
+        }
+      ],
+      "damage": 36,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        18
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 9,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 15,
+          "damage": 14,
+          "phase": 1,
+          "guard": 0,
+          "tick": 16
+        },
+        {
+          "frame": 41,
+          "damage": 22,
+          "phase": 2,
+          "guard": 0,
+          "tick": 36
+        }
+      ],
+      "damage": 36,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        18
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 10,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 6,
+          "damage": 7,
+          "phase": 1,
+          "guard": 0,
+          "tick": 7
+        },
+        {
+          "frame": 21,
+          "damage": 7,
+          "phase": 2,
+          "guard": 0,
+          "tick": 16
+        },
+        {
+          "frame": 36,
+          "damage": 17,
+          "phase": 3,
+          "guard": 0,
+          "tick": 25
+        }
+      ],
+      "damage": 31,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        18
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": true
+    },
+    {
+      "fighter": 10,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 6,
+          "damage": 7,
+          "phase": 1,
+          "guard": 0,
+          "tick": 7
+        },
+        {
+          "frame": 21,
+          "damage": 7,
+          "phase": 2,
+          "guard": 0,
+          "tick": 16
+        },
+        {
+          "frame": 36,
+          "damage": 17,
+          "phase": 3,
+          "guard": 0,
+          "tick": 25
+        }
+      ],
+      "damage": 31,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        18
+      ],
+      "down_states": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ],
+      "guarded_phases": [],
+      "left_ground": true
+    },
+    {
+      "fighter": 11,
+      "port": 0,
+      "guard": false,
+      "events": [
+        {
+          "frame": 21,
+          "damage": 16,
+          "phase": 1,
+          "guard": 0,
+          "tick": 22
+        },
+        {
+          "frame": 55,
+          "damage": 22,
+          "phase": 2,
+          "guard": 0,
+          "tick": 50
+        }
+      ],
+      "damage": 38,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    },
+    {
+      "fighter": 11,
+      "port": 1,
+      "guard": false,
+      "events": [
+        {
+          "frame": 21,
+          "damage": 16,
+          "phase": 1,
+          "guard": 0,
+          "tick": 22
+        },
+        {
+          "frame": 55,
+          "damage": 22,
+          "phase": 2,
+          "guard": 0,
+          "tick": 50
+        }
+      ],
+      "damage": 38,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [],
+      "left_ground": false
+    }
+  ],
+  "blocks": [
+    {
+      "fighter": 0,
+      "port": 0,
+      "guard": true,
+      "events": [],
+      "damage": 0,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 0,
+      "port": 1,
+      "guard": true,
+      "events": [],
+      "damage": 0,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 1,
+      "port": 0,
+      "guard": true,
+      "events": [
+        {
+          "frame": 17,
+          "damage": 1,
+          "phase": 1,
+          "guard": 1,
+          "tick": 18
+        },
+        {
+          "frame": 44,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 42
+        }
+      ],
+      "damage": 2,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 1,
+      "port": 1,
+      "guard": true,
+      "events": [
+        {
+          "frame": 17,
+          "damage": 1,
+          "phase": 1,
+          "guard": 1,
+          "tick": 18
+        },
+        {
+          "frame": 44,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 42
+        }
+      ],
+      "damage": 2,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 2,
+      "port": 0,
+      "guard": true,
+      "events": [],
+      "damage": 0,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        18
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 2,
+      "port": 1,
+      "guard": true,
+      "events": [],
+      "damage": 0,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        18
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 3,
+      "port": 0,
+      "guard": true,
+      "events": [
+        {
+          "frame": 34,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 32
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        18
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 3,
+      "port": 1,
+      "guard": true,
+      "events": [
+        {
+          "frame": 34,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 32
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        18
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 4,
+      "port": 0,
+      "guard": true,
+      "events": [
+        {
+          "frame": 19,
+          "damage": 1,
+          "phase": 1,
+          "guard": 1,
+          "tick": 20
+        },
+        {
+          "frame": 46,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 44
+        }
+      ],
+      "damage": 2,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 4,
+      "port": 1,
+      "guard": true,
+      "events": [
+        {
+          "frame": 19,
+          "damage": 1,
+          "phase": 1,
+          "guard": 1,
+          "tick": 20
+        },
+        {
+          "frame": 46,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 44
+        }
+      ],
+      "damage": 2,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 5,
+      "port": 0,
+      "guard": true,
+      "events": [
+        {
+          "frame": 36,
+          "damage": 1,
+          "phase": 3,
+          "guard": 1,
+          "tick": 31
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": true
+    },
+    {
+      "fighter": 5,
+      "port": 1,
+      "guard": true,
+      "events": [
+        {
+          "frame": 36,
+          "damage": 1,
+          "phase": 3,
+          "guard": 1,
+          "tick": 31
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": true
+    },
+    {
+      "fighter": 6,
+      "port": 0,
+      "guard": true,
+      "events": [],
+      "damage": 0,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        16
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 6,
+      "port": 1,
+      "guard": true,
+      "events": [],
+      "damage": 0,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 7,
+      "port": 0,
+      "guard": true,
+      "events": [
+        {
+          "frame": 31,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 29
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": true
+    },
+    {
+      "fighter": 7,
+      "port": 1,
+      "guard": true,
+      "events": [
+        {
+          "frame": 31,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 29
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": true
+    },
+    {
+      "fighter": 8,
+      "port": 0,
+      "guard": true,
+      "events": [],
+      "damage": 0,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        18
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 8,
+      "port": 1,
+      "guard": true,
+      "events": [],
+      "damage": 0,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        19
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 9,
+      "port": 0,
+      "guard": true,
+      "events": [
+        {
+          "frame": 38,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 36
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        18
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 9,
+      "port": 1,
+      "guard": true,
+      "events": [
+        {
+          "frame": 38,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 36
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        18
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 10,
+      "port": 0,
+      "guard": true,
+      "events": [
+        {
+          "frame": 30,
+          "damage": 1,
+          "phase": 3,
+          "guard": 1,
+          "tick": 25
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        18
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": true
+    },
+    {
+      "fighter": 10,
+      "port": 1,
+      "guard": true,
+      "events": [
+        {
+          "frame": 30,
+          "damage": 1,
+          "phase": 3,
+          "guard": 1,
+          "tick": 25
+        }
+      ],
+      "damage": 1,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        18
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2,
+        3
+      ],
+      "left_ground": true
+    },
+    {
+      "fighter": 11,
+      "port": 0,
+      "guard": true,
+      "events": [
+        {
+          "frame": 21,
+          "damage": 1,
+          "phase": 1,
+          "guard": 1,
+          "tick": 22
+        },
+        {
+          "frame": 52,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 50
+        }
+      ],
+      "damage": 2,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    },
+    {
+      "fighter": 11,
+      "port": 1,
+      "guard": true,
+      "events": [
+        {
+          "frame": 21,
+          "damage": 1,
+          "phase": 1,
+          "guard": 1,
+          "tick": 22
+        },
+        {
+          "frame": 52,
+          "damage": 1,
+          "phase": 2,
+          "guard": 1,
+          "tick": 50
+        }
+      ],
+      "damage": 2,
+      "frames": [
+        1,
+        2,
+        4
+      ],
+      "uploaded_frames": [
+        1,
+        2,
+        4,
+        17
+      ],
+      "down_states": [
+        0
+      ],
+      "guarded_phases": [
+        1,
+        2
+      ],
+      "left_ground": false
+    }
+  ],
+  "whiffs": [
+    {
+      "fighter": 0,
+      "port": 0,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 8
+    },
+    {
+      "fighter": 0,
+      "port": 1,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 8
+    },
+    {
+      "fighter": 1,
+      "port": 0,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 8
+    },
+    {
+      "fighter": 1,
+      "port": 1,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 8
+    },
+    {
+      "fighter": 2,
+      "port": 0,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 11
+    },
+    {
+      "fighter": 2,
+      "port": 1,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 11
+    },
+    {
+      "fighter": 3,
+      "port": 0,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 10
+    },
+    {
+      "fighter": 3,
+      "port": 1,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 10
+    },
+    {
+      "fighter": 4,
+      "port": 0,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 8
+    },
+    {
+      "fighter": 4,
+      "port": 1,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 8
+    },
+    {
+      "fighter": 5,
+      "port": 0,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 10
+    },
+    {
+      "fighter": 5,
+      "port": 1,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 10
+    },
+    {
+      "fighter": 6,
+      "port": 0,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 8
+    },
+    {
+      "fighter": 6,
+      "port": 1,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 8
+    },
+    {
+      "fighter": 7,
+      "port": 0,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 10
+    },
+    {
+      "fighter": 7,
+      "port": 1,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 10
+    },
+    {
+      "fighter": 8,
+      "port": 0,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 10
+    },
+    {
+      "fighter": 8,
+      "port": 1,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 10
+    },
+    {
+      "fighter": 9,
+      "port": 0,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 9
+    },
+    {
+      "fighter": 9,
+      "port": 1,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 9
+    },
+    {
+      "fighter": 10,
+      "port": 0,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 11
+    },
+    {
+      "fighter": 10,
+      "port": 1,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 11
+    },
+    {
+      "fighter": 11,
+      "port": 0,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 8
+    },
+    {
+      "fighter": 11,
+      "port": 1,
+      "distance": 208,
+      "hp": 128,
+      "remaining_energy": 8
+    }
+  ],
+  "interruptions": [
+    {
+      "fighter": 0,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 117
+    },
+    {
+      "fighter": 0,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 117
+    },
+    {
+      "fighter": 1,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 116
+    },
+    {
+      "fighter": 1,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 116
+    },
+    {
+      "fighter": 2,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 119
+    },
+    {
+      "fighter": 2,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 119
+    },
+    {
+      "fighter": 3,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 115
+    },
+    {
+      "fighter": 3,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 115
+    },
+    {
+      "fighter": 4,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 112
+    },
+    {
+      "fighter": 4,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 112
+    },
+    {
+      "fighter": 5,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 115
+    },
+    {
+      "fighter": 5,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 115
+    },
+    {
+      "fighter": 6,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 115
+    },
+    {
+      "fighter": 6,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 115
+    },
+    {
+      "fighter": 7,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 116
+    },
+    {
+      "fighter": 7,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 116
+    },
+    {
+      "fighter": 8,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 120
+    },
+    {
+      "fighter": 8,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 120
+    },
+    {
+      "fighter": 9,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 114
+    },
+    {
+      "fighter": 9,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 114
+    },
+    {
+      "fighter": 10,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 118
+    },
+    {
+      "fighter": 10,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 118
+    },
+    {
+      "fighter": 11,
+      "port": 0,
+      "max_phase": 0,
+      "hp": 115
+    },
+    {
+      "fighter": 11,
+      "port": 1,
+      "max_phase": 0,
+      "hp": 115
+    }
+  ],
+  "punish": {
+    "recovery_tick": 50,
+    "punish_hp": 122,
+    "contact": {
+      "before_contact": {
+        "magic": 43706,
+        "screen": 3,
+        "frame": 951,
+        "mode": 1,
+        "hp1": 128,
+        "hp2": 128,
+        "x1": 1716,
+        "x2": 2224,
+        "y1": 0,
+        "y2": 0,
+        "action1": 7,
+        "action2": 1,
+        "wins1": 0,
+        "wins2": 0,
+        "arena": 0,
+        "round": 1,
+        "intro": 0,
+        "paused": 0,
+        "energy1": 0,
+        "energy2": 96,
+        "wave1": 0,
+        "wave2": 0,
+        "selected": 2,
+        "selected2": 2,
+        "arcade": 0,
+        "seconds": 90,
+        "pose1": 15,
+        "pose2": 0,
+        "round_end": 0,
+        "hitstop": 0,
+        "combo": 0,
+        "champion": 0,
+        "fighter_id1": 2,
+        "fighter_id2": 2,
+        "family1": 1,
+        "family2": 1,
+        "speed1": 24,
+        "speed2": 24,
+        "jump1": 65440,
+        "jump2": 65440,
+        "face1": 1,
+        "face2": 0,
+        "back_speed1": 17,
+        "back_speed2": 17,
+        "special_startup1": 5,
+        "special_startup2": 5,
+        "special_active1": 8,
+        "special_active2": 8,
+        "special_recovery1": 18,
+        "special_recovery2": 18,
+        "special_damage1": 18,
+        "special_damage2": 18,
+        "special_reach1": 34,
+        "special_reach2": 34,
+        "throw_range1": 25,
+        "throw_range2": 25,
+        "wave_low1": 0,
+        "wave_low2": 0,
+        "wave_speed1": 0,
+        "wave_speed2": 0,
+        "wave_life1": 0,
+        "wave_life2": 0,
+        "anim_frame1": 4,
+        "anim_frame2": 32,
+        "anim_state1": 5,
+        "anim_state2": 5,
+        "anim_tick1": 52,
+        "anim_tick2": 2,
+        "buffered_action1": 0,
+        "buffered_action2": 0,
+        "buffer_age1": 0,
+        "buffer_age2": 0,
+        "jump_buffer1": 0,
+        "jump_buffer2": 0,
+        "command_stage1": 0,
+        "command_stage2": 0,
+        "raw_keys1": 0,
+        "raw_keys2": 16384,
+        "landing1": 0,
+        "landing2": 0,
+        "jump_vx1": 0,
+        "jump_vx2": 0,
+        "hurt1": 0,
+        "hurt2": 0,
+        "guard1": 0,
+        "guard2": 0,
+        "connected1": 0,
+        "connected2": 0,
+        "combo1": 0,
+        "combo2": 0,
+        "combo_display1": 0,
+        "combo_display2": 0,
+        "counter1": 0,
+        "counter2": 0,
+        "down_state1": 0,
+        "down_state2": 0,
+        "down_tick1": 0,
+        "down_tick2": 0,
+        "invuln1": 0,
+        "invuln2": 0,
+        "pending_throw_damage1": 0,
+        "pending_throw_damage2": 0,
+        "throw_owner1": 255,
+        "throw_owner2": 255,
+        "air_action1": 0,
+        "air_action2": 0,
+        "throw_victim1": 255,
+        "throw_victim2": 255,
+        "wake_action1": 0,
+        "wake_action2": 0,
+        "wake_age1": 0,
+        "wake_age2": 0,
+        "wake_jump1": 0,
+        "wake_jump2": 0,
+        "superActive": [
+          1,
+          0
+        ],
+        "superRequest": [
+          0,
+          0
+        ],
+        "superPhase": [
+          3,
+          0
+        ],
+        "superNext": [
+          38,
+          0
+        ],
+        "superContactEnd": [
+          31,
+          0
+        ],
+        "superWaveDamage": [
+          0,
+          0
+        ],
+        "superWaveReach": [
+          0,
+          0
+        ],
+        "ticks": [
+          52,
+          2
+        ],
+        "ends": [
+          55,
+          14
+        ],
+        "active_ends": [
+          31,
+          6
+        ],
+        "stat77": 1
+      },
+      "after_contact": {
+        "magic": 43706,
+        "screen": 3,
+        "frame": 952,
+        "mode": 1,
+        "hp1": 122,
+        "hp2": 128,
+        "x1": 1684,
+        "x2": 2224,
+        "y1": 0,
+        "y2": 0,
+        "action1": 0,
+        "action2": 1,
+        "wins1": 0,
+        "wins2": 0,
+        "arena": 0,
+        "round": 1,
+        "intro": 0,
+        "paused": 0,
+        "energy1": 0,
+        "energy2": 96,
+        "wave1": 0,
+        "wave2": 0,
+        "selected": 2,
+        "selected2": 2,
+        "arcade": 0,
+        "seconds": 90,
+        "pose1": 10,
+        "pose2": 5,
+        "round_end": 0,
+        "hitstop": 4,
+        "combo": 0,
+        "champion": 0,
+        "fighter_id1": 2,
+        "fighter_id2": 2,
+        "family1": 1,
+        "family2": 1,
+        "speed1": 24,
+        "speed2": 24,
+        "jump1": 65440,
+        "jump2": 65440,
+        "face1": 1,
+        "face2": 0,
+        "back_speed1": 17,
+        "back_speed2": 17,
+        "special_startup1": 5,
+        "special_startup2": 5,
+        "special_active1": 8,
+        "special_active2": 8,
+        "special_recovery1": 18,
+        "special_recovery2": 18,
+        "special_damage1": 18,
+        "special_damage2": 18,
+        "special_reach1": 34,
+        "special_reach2": 34,
+        "throw_range1": 25,
+        "throw_range2": 25,
+        "wave_low1": 0,
+        "wave_low2": 0,
+        "wave_speed1": 0,
+        "wave_speed2": 0,
+        "wave_life1": 0,
+        "wave_life2": 0,
+        "anim_frame1": 10,
+        "anim_frame2": 5,
+        "anim_state1": 7,
+        "anim_state2": 5,
+        "anim_tick1": 1,
+        "anim_tick2": 3,
+        "buffered_action1": 0,
+        "buffered_action2": 0,
+        "buffer_age1": 0,
+        "buffer_age2": 0,
+        "jump_buffer1": 0,
+        "jump_buffer2": 0,
+        "command_stage1": 0,
+        "command_stage2": 0,
+        "raw_keys1": 0,
+        "raw_keys2": 16384,
+        "landing1": 0,
+        "landing2": 0,
+        "jump_vx1": 0,
+        "jump_vx2": 0,
+        "hurt1": 14,
+        "hurt2": 0,
+        "guard1": 0,
+        "guard2": 0,
+        "connected1": 0,
+        "connected2": 2,
+        "combo1": 0,
+        "combo2": 1,
+        "combo_display1": 0,
+        "combo_display2": 45,
+        "counter1": 0,
+        "counter2": 0,
+        "down_state1": 0,
+        "down_state2": 0,
+        "down_tick1": 0,
+        "down_tick2": 0,
+        "invuln1": 0,
+        "invuln2": 0,
+        "pending_throw_damage1": 0,
+        "pending_throw_damage2": 0,
+        "throw_owner1": 255,
+        "throw_owner2": 255,
+        "air_action1": 0,
+        "air_action2": 0,
+        "throw_victim1": 255,
+        "throw_victim2": 255,
+        "wake_action1": 0,
+        "wake_action2": 0,
+        "wake_age1": 0,
+        "wake_age2": 0,
+        "wake_jump1": 0,
+        "wake_jump2": 0,
+        "superActive": [
+          1,
+          0
+        ],
+        "superRequest": [
+          0,
+          0
+        ],
+        "superPhase": [
+          3,
+          0
+        ],
+        "superNext": [
+          38,
+          0
+        ],
+        "superContactEnd": [
+          31,
+          0
+        ],
+        "superWaveDamage": [
+          0,
+          0
+        ],
+        "superWaveReach": [
+          0,
+          0
+        ],
+        "ticks": [
+          0,
+          3
+        ],
+        "ends": [
+          55,
+          14
+        ],
+        "active_ends": [
+          31,
+          6
+        ],
+        "stat77": 1
+      }
+    }
+  },
+  "pause_reset": {
+    "pause_freeze_tick": 14,
+    "reset": "all 14 bytes zero",
+    "guide": "docs/screenshots/combat24-super/guide.png"
+  },
+  "hurt_down_wake_dead": {
+    "hurt_down_wake": "rejects without spending; fresh grounded command works after wake",
+    "dead": "rejects after actual controller KO"
+  },
+  "ordinary_special_after_super": {
+    "command": "Down+Y",
+    "cost": 32,
+    "damage": [
+      16
+    ]
+  },
+  "clips": {
+    "0": {
+      "after": {
+        "fighter": 0,
+        "port": 0,
+        "guard": false,
+        "events": [
+          {
+            "frame": 11,
+            "damage": 10,
+            "phase": 1,
+            "guard": 0,
+            "tick": 12
+          },
+          {
+            "frame": 29,
+            "damage": 10,
+            "phase": 2,
+            "guard": 0,
+            "tick": 24
+          },
+          {
+            "frame": 47,
+            "damage": 12,
+            "phase": 3,
+            "guard": 0,
+            "tick": 36
+          }
+        ],
+        "damage": 32,
+        "frames": [
+          1,
+          2,
+          4
+        ],
+        "uploaded_frames": [
+          1,
+          2,
+          4,
+          17
+        ],
+        "down_states": [
+          0
+        ],
+        "guarded_phases": [],
+        "left_ground": false
+      },
+      "before": {
+        "fighter": 0,
+        "port": 0,
+        "guard": false,
+        "events": [
+          {
+            "frame": 11,
+            "damage": 10,
+            "phase": 1,
+            "guard": 0,
+            "tick": 12
+          },
+          {
+            "frame": 29,
+            "damage": 10,
+            "phase": 2,
+            "guard": 0,
+            "tick": 24
+          },
+          {
+            "frame": 47,
+            "damage": 12,
+            "phase": 3,
+            "guard": 0,
+            "tick": 36
+          }
+        ],
+        "damage": 32,
+        "frames": [
+          12,
+          42,
+          43
+        ],
+        "uploaded_frames": [
+          12,
+          17,
+          42,
+          43
+        ],
+        "down_states": [
+          0
+        ],
+        "guarded_phases": [],
+        "left_ground": false,
+        "observed_native_frames": 226,
+        "checks": 33,
+        "cadence_failures": [],
+        "overflow_failures": []
+      }
+    },
+    "2": {
+      "after": {
+        "fighter": 2,
+        "port": 0,
+        "guard": false,
+        "events": [
+          {
+            "frame": 7,
+            "damage": 9,
+            "phase": 1,
+            "guard": 0,
+            "tick": 8
+          },
+          {
+            "frame": 23,
+            "damage": 9,
+            "phase": 2,
+            "guard": 0,
+            "tick": 18
+          },
+          {
+            "frame": 39,
+            "damage": 14,
+            "phase": 3,
+            "guard": 0,
+            "tick": 28
+          }
+        ],
+        "damage": 32,
+        "frames": [
+          1,
+          2,
+          4
+        ],
+        "uploaded_frames": [
+          1,
+          2,
+          4,
+          18
+        ],
+        "down_states": [
+          0,
+          2,
+          3,
+          4,
+          5
+        ],
+        "guarded_phases": [],
+        "left_ground": false
+      },
+      "before": {
+        "fighter": 2,
+        "port": 0,
+        "guard": false,
+        "events": [
+          {
+            "frame": 7,
+            "damage": 9,
+            "phase": 1,
+            "guard": 0,
+            "tick": 8
+          },
+          {
+            "frame": 23,
+            "damage": 9,
+            "phase": 2,
+            "guard": 0,
+            "tick": 18
+          },
+          {
+            "frame": 39,
+            "damage": 14,
+            "phase": 3,
+            "guard": 0,
+            "tick": 28
+          }
+        ],
+        "damage": 32,
+        "frames": [
+          6,
+          7,
+          15,
+          42,
+          43
+        ],
+        "uploaded_frames": [
+          6,
+          7,
+          15,
+          18,
+          42,
+          43
+        ],
+        "down_states": [
+          0,
+          2,
+          3,
+          4,
+          5
+        ],
+        "guarded_phases": [],
+        "left_ground": false,
+        "observed_native_frames": 226,
+        "checks": 30,
+        "cadence_failures": [],
+        "overflow_failures": []
+      }
+    },
+    "5": {
+      "after": {
+        "fighter": 5,
+        "port": 0,
+        "guard": false,
+        "events": [
+          {
+            "frame": 8,
+            "damage": 8,
+            "phase": 1,
+            "guard": 0,
+            "tick": 9
+          },
+          {
+            "frame": 25,
+            "damage": 8,
+            "phase": 2,
+            "guard": 0,
+            "tick": 20
+          },
+          {
+            "frame": 42,
+            "damage": 18,
+            "phase": 3,
+            "guard": 0,
+            "tick": 31
+          }
+        ],
+        "damage": 34,
+        "frames": [
+          1,
+          2,
+          4
+        ],
+        "uploaded_frames": [
+          1,
+          2,
+          4,
+          17
+        ],
+        "down_states": [
+          0,
+          2,
+          3,
+          4,
+          5
+        ],
+        "guarded_phases": [],
+        "left_ground": true
+      },
+      "before": {
+        "fighter": 5,
+        "port": 0,
+        "guard": false,
+        "events": [
+          {
+            "frame": 8,
+            "damage": 8,
+            "phase": 1,
+            "guard": 0,
+            "tick": 9
+          },
+          {
+            "frame": 25,
+            "damage": 8,
+            "phase": 2,
+            "guard": 0,
+            "tick": 20
+          },
+          {
+            "frame": 42,
+            "damage": 18,
+            "phase": 3,
+            "guard": 0,
+            "tick": 31
+          }
+        ],
+        "damage": 34,
+        "frames": [
+          5,
+          6,
+          13,
+          44,
+          45
+        ],
+        "uploaded_frames": [
+          5,
+          6,
+          13,
+          17,
+          44,
+          45
+        ],
+        "down_states": [
+          0,
+          2,
+          3,
+          4,
+          5
+        ],
+        "guarded_phases": [],
+        "left_ground": true,
+        "observed_native_frames": 226,
+        "checks": 33,
+        "cadence_failures": [],
+        "overflow_failures": []
+      }
+    }
+  },
+  "status": "passed",
+  "checks": 4657,
+  "health": {
+    "frames": 2424,
+    "cadence_failures": [],
+    "obj_failures": [],
+    "transfer_failures": [],
+    "audio_failures": [],
+    "phase_failures": [],
+    "peak_spc_backlog": 0,
+    "actor_updates": [
+      143,
+      146
+    ],
+    "maximum_changed_actor_payload_bytes": 3840
+  },
+  "retained_fixture_timing": {
+    "frames": 36774,
+    "cadence_failures": [],
+    "overflow_failures": []
+  },
+  "captures": [
+    {
+      "path": "docs/screenshots/combat24-super/roster-native.png",
+      "sha256": "562b343735955c8e536a734bafc5d1ec973b03ce72f590615ee1d69e9ad553f5"
+    },
+    {
+      "path": "docs/screenshots/combat24-super/guide.png",
+      "sha256": "1c5a58f35bba1ae171324b3247594865ed5cf1e50510ab9e2ce35d8974c611b6"
+    },
+    {
+      "path": "docs/screenshots/combat24-super/00-after.gif",
+      "sha256": "83c5642dfaaa431a4f96614eaab688fa9ba7e1a8ae320cb1eab63e18367b089c"
+    },
+    {
+      "path": "docs/screenshots/combat24-super/00-before.gif",
+      "sha256": "557e4b8f0f53db1d7b53303b3c2e2601435f4002ffeb10053c6321102278b991"
+    },
+    {
+      "path": "docs/screenshots/combat24-super/02-after.gif",
+      "sha256": "ad618344f3c1cfb25852da893c591fc49c5120d778e76591bb6c36be4308f493"
+    },
+    {
+      "path": "docs/screenshots/combat24-super/02-before.gif",
+      "sha256": "cf0ca41b5b87a9ff00a00aafb695e11d1d13a6149154e0ac092e61124f08721e"
+    },
+    {
+      "path": "docs/screenshots/combat24-super/05-after.gif",
+      "sha256": "77796f174be28b149a79b8d6567284e0fc45dc7e8daa4014086613142142a176"
+    },
+    {
+      "path": "docs/screenshots/combat24-super/05-before.gif",
+      "sha256": "cad6c94990b8e812c16293482e97e78c1ecc276036377a4ee4b809f130ece2f4"
+    }
+  ],
+  "elapsed_seconds": 355.501
+}

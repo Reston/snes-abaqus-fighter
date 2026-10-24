@@ -204,11 +204,14 @@ u8 superKnockdown(u8 p) {
 u8 superFrame(u8 p) {
     Fighter *f=&fighters[p];
     const SuperProfile *s=&superProfiles[f->id];
-    if(f->tick<s->start)return s->family==SUPER_RISE?44:42;
-    if(f->tick>=f->actionActiveEnd)return s->family==SUPER_RISE?45:43;
-    if(superPhase[p]==s->count)return s->finishFrame;
-    if(superPhase[p]&1)return s->firstFrame;
-    return s->nextFrame;
+    /* Three disjoint whole-body drawings, authored for each signature.
+     * Keep every gameplay clock and pulse unchanged. A serialized volley
+     * returns to its charge between releases instead of holding a cast
+     * throughout the potentially long single-Wave wait. */
+    if(f->tick<s->start)return 1;
+    if(f->tick>=f->actionActiveEnd)return 4;
+    if(f->tick<superContactEnd[p])return 2;
+    return 1;
 }
 
 /* Fill previously empty guide rows, retaining the original specials help,
