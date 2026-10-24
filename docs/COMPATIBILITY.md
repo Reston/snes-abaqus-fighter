@@ -1,6 +1,16 @@
 # Independent-engine compatibility
 
-## Current native candidate: v0.26.0
+## Current native candidate: v0.27.0
+
+<!-- candidate-version: 0.27.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: d5263c777cbb3a02ce438e07c1c425f2d39dd73d294cd4d2aa8c2cbc2da78e3d; source-freeze: 4d7e8fe17f1a0a534bc06e3e059fc4c03cd556d0 -->
+
+The pinned Snes9x and bsnes Accuracy menu proofs pass, including all twelve
+fighters, both selection steps, mirror badges and all three locations.
+The current independent smoke passes on the same cartridge.
+[Evidence and scope](classic-menu-review.json) · [Release note](RELEASE-v0.27.0.md).
+The older sections below keep their historical cartridge identities.
+
+## Historical native candidate: v0.26.0
 
 <!-- candidate-version: 0.26.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b; source-freeze: c89239901491a239e10194f1399820527b0ebf74 -->
 

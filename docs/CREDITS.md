@@ -2,9 +2,15 @@
 
 ## Original game
 
-Abaqus: After Hours is an original homebrew fighting game created for this project. Its arcade match format and six-button combat are inspired by Street Fighter II. No Capcom ROM, sprites, music or source code are included.
+Abaqus: After Hours is an original four-button homebrew fighting game created for this project. Its arcade match format and classic menus are inspired by Street Fighter II. No Capcom ROM, sprites, music or source code are included.
 
 Game code, UI, tile pipeline, combat implementation, tracker compositions and synthesized BRR effects were authored for this repository. Pixel-art master atlases were created with the built-in image generation tool, then converted to SNES tiles and palettes. Prompts and processing notes are in [ART-DIRECTION.md](ART-DIRECTION.md).
+
+The v0.27 menu logo and lettering are code-authored from the project's original
+bitmap glyphs. Its decorative world silhouette uses [Natural Earth land data](https://www.naturalearthdata.com/downloads/110m-physical-vectors/110m-land/),
+released in the [public domain](https://www.naturalearthdata.com/about/terms-of-use/).
+The retained geometry, source URL and exact hash are in
+[the source record](../assets/art/menu/classic-v1/source.json).
 
 The v0.13 Office Champion victory score is an original sixteen-bar tracker
 arrangement using the title's existing synthesized instruments. Its authoring

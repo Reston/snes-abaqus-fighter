@@ -1,9 +1,9 @@
 {
   "status": "passed",
   "part": "stages",
-  "version": "0.26.0",
-  "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
-  "source_commit": "c89239901491a239e10194f1399820527b0ebf74",
+  "version": "0.27.0",
+  "rom_sha256": "d5263c777cbb3a02ce438e07c1c425f2d39dd73d294cd4d2aa8c2cbc2da78e3d",
+  "source_commit": "4d7e8fe17f1a0a534bc06e3e059fc4c03cd556d0",
   "diagnostic": false,
   "selected_fighters": [
     0,
@@ -26,8 +26,8 @@
     "audio_device_opened": false,
     "priority_class": 16384,
     "logical_processors": [
-      14,
-      15
+      6,
+      7
     ]
   },
   "source_sha256": {
@@ -35,26 +35,26 @@
     "Play.cmd": "e62783c0e60d5f0271d159d53427b7eb2cf9f4325206a4cf0a4b40ccd09876d0",
     "src/animation_banks.h": "8250cf1816ae8c0de0da6a876b76e0a0b40c10a44e35f782794ca82e283414e9",
     "src/animation_weight.h": "cdc8308b9a98c000823b7869a20a122e531d9843f7d1143ae09749b6983adf09",
-    "src/arcade_story.h": "5b896901165ffae1eb85e303f0add0e4fffc8d4e5ceb5be473d0195c54720fdf",
+    "src/arcade_story.h": "219b418d41b5c8e35d4617e1b3e21d683236a34efceb4efa1bfebd8866697104",
     "src/audio_presentation.h": "106ac802c7fe95b9eda67f6113b9278a407c8d0a06bba6c83ebd2d4c510e903a",
     "src/audio_presentation_state.h": "4129b01189826de5cc9266f529eb57f1dcb57bb93febcade1f1dc3bf6e6c730e",
     "src/characters.h": "f2c66a8984e16cc0e6b360e48c31bad1dee785e280a3bb5cbf7302e3c8e01858",
     "src/contact_geometry.h": "237d6b05f0e161cf08008629576f46a131b87f7a6928ea6e8e90c74ef8f49c30",
     "src/cpu_personality.h": "859831dcb5708712b1319512e83018bd9c42dcdae4d04cf7c743888bdaaa8e82",
     "src/fighter_personality.h": "e15b92385c8620a8cbdaa1c2734af0f87a91fbdbeefc70fe8c04700998cad0ce",
-    "src/game.c": "ec3a565a97fb0b5696170e54b4790d53f46e76597ee21903d0009315e74d3f23",
+    "src/game.c": "dfc13bb06b751c86e0edcfe130336245613624c93aeaf8060793eb2e270524df",
     "src/hardware.asm": "9b6dd260dca337e06b012e9b4fdafdc2c9103750ffcf5cf803d01e9092bab424",
     "src/impact_presentation.h": "f40dd53fe3c21a026072e1ec362d93b4b8c023ad6cb1b3d1cfaed711c130aa55",
     "src/knockdown.h": "b4728ac05f282613114b0931a54f5867fc1caeb29ef9cebd5c771614e5d11da3",
     "src/menu_portraits.h": "96a006a382dfc86e1807b32ac0eaaf652cb302558aea57496a20567d10713c9c",
     "src/menu_repeat.h": "f94c56e7da218b8859016596c2994f936ea4538db51c2d720abea51970836188",
     "src/pacing_recoil.h": "79518af5f3293ad65c6143e6fdbc836ee0916afc61dce8ab5bc9d3ff8e11611b",
-    "src/pause_guide.h": "3f3079c68b52b858a596ffcf056923946705af93e8563a8dae32bca4766b64ce",
+    "src/pause_guide.h": "ce65ff058cf8ce98d9403e1f8c89ebc7b5bdd47d80d988d6a3412bbb188f6688",
     "src/stage_depth.h": "6c69ed49f745ae20215e808d276cd41c9834e2722cd690a034d9b5a6b665b051",
     "src/super_moves.h": "6b5d0f67851c1b7dc370d25f5a4dd1c41c44ad04b41d3928a663c2859374e0b0",
     "src/trace.asm": "301ec8a99aa326583c332a901903114f5fceeb7f17bbbf768c3e90ae65c3dc88",
-    "src/training_tools.h": "ff46068323d51dd18cda5ba191bb44e673e02dd5223457a561bfb09f2b5eefa4",
-    "src/version.h": "3ac21275dd7527f01223188b87a3afbd9e9ff0879d50d0c312a27b3ed7738356",
+    "src/training_tools.h": "bad6ffc456e48c0b346ffaa069c33871988716828db75a18f511266c3de33961",
+    "src/version.h": "87e3c9fedef8c9ec73521d19ccc3cc7d158c0f0404dabc7c480bd6d47b6e8b80",
     "Test.cmd": "6c38ea238c7481f1529954a1652f34e72367b2c251562166c81e2e629e10b632",
     "tools/asset_cache.py": "091478ff866f99aed1b3714b1746c0fc934705905f3d370ffcd0473e381dcccc",
     "tools/asset_transaction.py": "9df3ad06bdd448627bf0747e755d16864149d3660f922594b690620f97015bb8",
@@ -93,7 +93,7 @@
     "tools/make_review_gallery.py": "e5bab41cd7aede547a281f894ab477f765fda0fea8ece199d47bb73b28be0b31",
     "tools/make_roster_review.py": "d2b8b7fd211452887218ef07cd691efdb52efd2f0ddcb555a02137233010461e",
     "tools/make_training_cpu_review.py": "60977b144de38f340dfeb4e65daf1d161ebcb3ef6f58820bfb480ff948f92a82",
-    "tools/menu_assets.py": "03d3f13595d7869e94189021d935f5df921afa48fbd4ec30f646afa702ccdfd6",
+    "tools/menu_assets.py": "5d2c940edd868092787826a4b0a7b248f9f767e8db27e5e2f9ba108b11ed2dbc",
     "tools/native_artifacts.py": "8d11fd37f1d275647ee9898c5c145be9d219cf891d68d383c7a6c1e9cb00514b",
     "tools/package.py": "024ff1f51574460e611d10ae6db570ee4b1e3dc1e34b05323b4b5bea23eb216e",
     "tools/play.ps1": "914d0bd48cc8a83650bcb45aed9658c549db5cbe3411921dd81da7cc6cbfe3b7",
@@ -102,7 +102,7 @@
     "tools/portrait_assets.py": "f95047e2ad5e1c292809ced20ca2e9cc77dc4a0e5f3c10d43cadf8e0843107d3",
     "tools/pose_revision_assets.py": "7baca936c90d63dbedb732b1a222207322bed881e84841cb6d41179c7e539709",
     "tools/preservation.py": "40e13816f5a7086c18e6053789e209722316a6c2675fb9583647eed20891ae76",
-    "tools/release_evidence.py": "2dfdcd8c32d560210616c04f409e2a049bdcb5ff4811e3e925b20d5c921c5168",
+    "tools/release_evidence.py": "7483e49507c8b3e8d8bd71a35c62f3096017cd27fee22297719b8a6078dc68d9",
     "tools/report_training_timing.py": "1c1153a39f8c207da55db46b974e196911c9e61aed43bd62b618fcf985ca7606",
     "tools/review_media.py": "e35af4eb143791128f8f2ceabdb72b662993238127005534018753e95b67174a",
     "tools/run_background.py": "0906fa836fa680964846049036fd2ea1ad48a2fcb68d1235bedff86e7afdf178",
@@ -124,6 +124,7 @@
     "tools/test_champion.py": "d2424acd2cb75a7e08c5a2832a0bf6e5dc3cdb708f6aa89293d4ac3fe2d1e4d5",
     "tools/test_champion_audio.py": "10d2cdf896dde9530008dcfb9fff2912d5415cfbd99bd00c61d9f19b0c9dca3e",
     "tools/test_characters.py": "c580589d5cf485165ffd83700b1b3044e1f48159101d3bf8ac31b1f41069b096",
+    "tools/test_classic_menu.py": "fdf9638d9ef14250798d76abd145ca9bf8365c6dc473a36df73015a6f6471660",
     "tools/test_combat24_attack.py": "bf619bc29ef2b1df12dbc6dd9f538802ff675ba52ea4645099560a6fd442e191",
     "tools/test_combat24_super.py": "85849f6cb922f384c3f55f84721b7af0af917d21aea03ce4f37862a7566560e0",
     "tools/test_combat_24_contact.py": "8e6f481e28743880624cb03cea2efac89c0c7408ab748f74c19433113645ff07",
@@ -131,14 +132,14 @@
     "tools/test_combat_24_jumps.py": "bea0dd4207dfeb65d65d6142e0cdee438e0389d5cfb6f20336dfbf1e3277e567",
     "tools/test_combat_24_pacing.py": "dbdf7fd5c21b55bdf026b5ad8edf73ae59abb1393fe073dc0dfc282f605084f9",
     "tools/test_combat_24_stage08.py": "a35f914c5ab4fdb6336ee218782d96c14ebf0b4bbc4009300e4f2bd052cdcdf3",
-    "tools/test_compatibility.py": "f30da40e7bfb7e931ae6c3331dbaa955b2150d703edb7fa7afe0c1ca4befb73d",
+    "tools/test_compatibility.py": "c751c44eb3dbaf4542f54c1f6dfd3be4365bbe1336a1705bdaf9f6ff002c123d",
     "tools/test_compatibility_combat.py": "c50712f19042bf69da0978ce7e4321cf6de1a33bd2269118483403beb9e4a754",
     "tools/test_confirm_26.py": "c51954e650212b9690179d339544c3bb45b9c13ecbf9a9e03b0eae4346a746be",
     "tools/test_contact_24_timing.py": "6039be9b4bd515a8fffe4d627dea5ace99a03a3eb6d42ee83450398f73f43a06",
     "tools/test_contact_budget.py": "f8acb5525d0e3d627c70894ac8c4cce3c3a5bd63421ef4139d3a0f4f5c6cc2c5",
     "tools/test_contact_super_composition.py": "0f9d0144fd945044f8c67774c8f49c4e553de9f56eeb9746cf1e6d953710f637",
     "tools/test_crossup_practice.py": "087c4f0cffe9c791619afc6a7419f5fafbaa3c4fe053ab14dbee715bbc279d50",
-    "tools/test_endurance.py": "8081b7ee9a67f1e70746b1d64bf638b1226bc4e936a84bc3cbe5f9d365c1eb0d",
+    "tools/test_endurance.py": "7c190efdf822baeb4bf7ccebbd75025d60b62598babee1bf9d673c77b81b3ed0",
     "tools/test_endurance_reporting.py": "5533ab27348e4f532b1beef81db9514d28cffaea883d48f52cebc6a2373b9fa0",
     "tools/test_expansion_01_animation_weight.py": "4e9900b1e8d3100ac417d3dbed29b900ddda865572583f2149784c825b31a9a7",
     "tools/test_expansion_02_impact.py": "d12ea9213524efc3bfac044b84570e423dfb92513302abcbec850b255f1ee5a0",
@@ -153,7 +154,7 @@
     "tools/test_feedback_26.py": "05041d4b2342719e54304ed689a7fbf42b14f60fdd3c364d8766d4fa9ded524a",
     "tools/test_four_button_hud.py": "a5a049919b38c87f30f981b301ef3718f9dc3810835f3497db7aceecd44afbeb",
     "tools/test_fresh_build.py": "75b6c3622d1ad96411feb8b13a9fc71e0d47fa5357fbe8c93d0c11a21c348b8b",
-    "tools/test_inputs.py": "8b1413552d6cc210fe4f60ac92833d90ccc529c00004343918e955121215706d",
+    "tools/test_inputs.py": "cf3db1c9ba93514ca36fa5eec433ffa30c5131e18903f42c7967dc5fd18ecb48",
     "tools/test_launcher_26.py": "972531769a22a3d85f652104912f981bd9a3d027244702e1efdadfa2e1803e46",
     "tools/test_local_session_26.py": "869597abe87ff42c46c333ac27148c2f871fb7804696e3aed446de924ef8a6a8",
     "tools/test_long_session_guards.py": "72f528248cb1369681a62cf53cb13ace31273c279ccea7e7c9f1a53dea5a1643",
@@ -166,7 +167,7 @@
     "tools/test_native_artifacts.py": "905cdccf4f6055d34b09387c26205879b839520cad119fe8c01de3c3ac2b1327",
     "tools/test_native_build_26.py": "0ac64bfec8e4db1c8420745891578bb8b914a6764a275a970a7ae2f5fcede8c5",
     "tools/test_normal_guide_26.py": "93be4467c72686dfb312ccf5b5a957d15ca54ecf5bd083f6b03527af6a48336a",
-    "tools/test_pacing_floor_25.py": "0f538c4decb9724d64e756973416d216e503a92b4531c07d1c7c44752a727559",
+    "tools/test_pacing_floor_25.py": "63ed240c93d3fcd40b72f9e38d23dbb34170f4e8ba9c25b4845e25cfd2674711",
     "tools/test_package.py": "1174274d5eeec4610fd98fb11bbef90b213a9f5a61a776f634a6d99fcb15d3d9",
     "tools/test_play_flow_26.py": "f85bdd5f85cb5df1e611449406654d42f281d7c9335d13ee5c91549ac2330b6c",
     "tools/test_play_flow_collation.py": "c15d9965c6a966f7c4e8e095629e441dfb0895cf2652833881cca0367fc0679c",
@@ -175,7 +176,7 @@
     "tools/test_play_flow_media.py": "cf9bd688d5f6d62e90ff29bff116cf295da8b18bcc92dfef74888c86bd4c445e",
     "tools/test_play_flow_stress_26.py": "30192c13e6d118bc49e5502ccd7e8cd5774eb089491e1ad0cbae80aaad3cfa7e",
     "tools/test_pose_revision_guards.py": "591ade0ac9fa3e83c0169a2900d0f6f642df9fceed5b031c6ecef47f52123093",
-    "tools/test_presentation.py": "cce0fc6bfb1f1892a6d54c2ff6f703b53af778f5b0b3e76abde60f44dc3d40b9",
+    "tools/test_presentation.py": "ce002b44ff9bb702f8559461325e60c64e9772ce11e281a3efad9120b562d6e7",
     "tools/test_preservation.py": "635b1201940579ede2c6edaecc0d4e72f36616918f0119676026f38dcfb52bdf",
     "tools/test_review_media.py": "ac1827f8455fcecc11ba088af109a3bcd9fcb2083c267b574316fd662ebc0253",
     "tools/test_rom.py": "b3fb77db409dd230443a22fc6f8209e8ff501c88843131237bab600e13e03612",
@@ -186,13 +187,13 @@
     "tools/test_stage_pipeline_26.py": "fe6e8b520cf612b6cd2f7c1609ddb9039f2133148ed97479f86ef6a7e96ab982",
     "tools/test_stages.py": "08cb003e6cbc7057ed092bf6a4e8ce101b7191d8f223460062f9d4fbef230acf",
     "tools/test_throw_feedback_26.py": "5b06add180acc546cfa81491c765fe5c6fcb93202d14d60f5e9f2eb61191799c",
-    "tools/test_training.py": "1309ffe5cb7e3a3614324b69f8bce607ee3b5d321e77ff012d6d62091cc81fd6",
+    "tools/test_training.py": "bd34247458be9e38cf75361e810116e07a3479398f907c46f298cb64498a0978",
     "tools/test_training_best_26.py": "0a9f12bc33a1fdc6bffa8daac0506ad6ebe2aeb155de883631c5d9933d0a6a78",
     "tools/test_v024_preservation_guards.py": "34dd5d860208298f9bc405f7a535b449fa6329dcf06fda5f9d44f46acf235e82",
     "tools/test_verification_runner_guards.py": "22bfafd5fc95925bbb9242ce516f53cbcb0196326006de7e87cfe8e580527c35",
     "tools/test_walking.py": "f98a337905aecbc6c12ae539d3d4ae1b3914b449d944805129da316462b1068a",
     "tools/v024_contracts.py": "1b8bbe9ffee65ff4f72410564e26941bb86da72ae914da3f5c74bdbb4891a076",
-    "tools/v025_contracts.py": "72390351c4b558fd266e77b6f46f2d15ce8a1f6e5a8e71b5559e5c35ab4a84f8",
+    "tools/v025_contracts.py": "fd17ca4c9c748708c0a0b1a4e798dd6ccf37cea9355a6cabade729d1acaef719",
     "tools/v026_contracts.py": "4f255533d9f3920dc1bf8296b7729b5e87abd45a8f155c6f73da04bd459cac65",
     "tools/validate_cartridge.ps1": "a2b7f6cde999fac60b8708012baf84db3f8410d8e64eb33a6c90a82d2fa4ad47",
     "tools/verify_play_flow_26.py": "0954750a9e899a4aa38a0d2d41b6e414a4fa525151800ca729bd02cdd5b72d04",
@@ -274,6 +275,10 @@
       "assets/generated/arenas_pal.bin",
       "assets/generated/arenas_tiles.bin",
       "assets/generated/assets.h",
+      "assets/generated/select.png",
+      "assets/generated/select_map.bin",
+      "assets/generated/select_pal.bin",
+      "assets/generated/select_tiles.bin",
       "assets/generated/stage-depth.json",
       "assets/generated/stage0.png",
       "assets/generated/stage0_floor_map.bin",
@@ -292,9 +297,13 @@
       "assets/generated/stage2_floor_tiles.bin",
       "assets/generated/stage2_map.bin",
       "assets/generated/stage2_pal.bin",
-      "assets/generated/stage2_tiles.bin"
+      "assets/generated/stage2_tiles.bin",
+      "assets/generated/title.png",
+      "assets/generated/title_map.bin",
+      "assets/generated/title_pal.bin",
+      "assets/generated/title_tiles.bin"
     ],
-    "preserved_generated": 202,
+    "preserved_generated": 194,
     "protected_art_inputs": 342,
     "unchanged_ram_labels": 1318,
     "added_ram_symbols": {},
@@ -337,37 +346,37 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-movement.gif",
-          "impact_clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-contacts.gif",
+          "movement_clip": "docs/screenshots/classic-menu/stages/stages/snes9x-stage0-movement.gif",
+          "impact_clip": "docs/screenshots/classic-menu/stages/stages/snes9x-stage0-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-center.png",
+              "path": "docs/screenshots/classic-menu/stages/stages/snes9x-stage0-center.png",
               "sha256": "fcc43174ac8924c571f35ff83dded81f5532ca5fdfc6b0259e017e44c6077e60",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-guide.png",
-              "sha256": "d0decb47c20a44a297582c241ccfc5772816a92fd2ec0d7ee7a710d1e0b881d5",
+              "path": "docs/screenshots/classic-menu/stages/stages/snes9x-stage0-guide.png",
+              "sha256": "94ad05151bf9064387185af7313c451d267761df418239a6b0e0f202a9638cf3",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-left.png",
+              "path": "docs/screenshots/classic-menu/stages/stages/snes9x-stage0-left.png",
               "sha256": "d27ee591c92f2a6940e1f7781fb24409768ad91e2a9c0cf24d0bde052383cb15",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage0-right.png",
+              "path": "docs/screenshots/classic-menu/stages/stages/snes9x-stage0-right.png",
               "sha256": "e7dfc8eff3c5025771a0d6aaadb03f6c71096badc429a0283aeb84d7d17762f3",
               "scope": "current native PPU"
             }
           ],
-          "pixel_samples_sha256": "c07a06900084ab656e4e48d8ea8894074eb2607f18f6194af28c6e98d508c6f3",
+          "pixel_samples_sha256": "bbefb9baa644446dbdc5de610d40ce3c4d629418a5abe51882d6e02d3ef3972d",
           "measured_frames": 1489,
           "cadence_deltas": [
             1
           ],
-          "max_spc_backlog": 6,
+          "max_spc_backlog": 3,
           "obj_peak_sprites": 17,
           "obj_peak_tiles": 34,
           "actor_dma_frames": 279
@@ -377,7 +386,7 @@
           "core": "snes9x",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stress0.gif",
+          "clip": "docs/screenshots/classic-menu/stages/stages/snes9x-stress0.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -385,7 +394,7 @@
           "max_spc_backlog": 0,
           "obj_peak_sprites": 16,
           "obj_peak_tiles": 32,
-          "actor_dma_frames": 132
+          "actor_dma_frames": 137
         }
       },
       {
@@ -414,32 +423,32 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-movement.gif",
-          "impact_clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-contacts.gif",
+          "movement_clip": "docs/screenshots/classic-menu/stages/stages/snes9x-stage1-movement.gif",
+          "impact_clip": "docs/screenshots/classic-menu/stages/stages/snes9x-stage1-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-center.png",
+              "path": "docs/screenshots/classic-menu/stages/stages/snes9x-stage1-center.png",
               "sha256": "ac174e48f8671930536987a5924a8e4c5385bf5ca7ba987cb91397f34492b5ae",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-guide.png",
-              "sha256": "1011805b8d8637fef01ecbdaf550a96fc655e1edd88bf3e457b6765859584b5e",
+              "path": "docs/screenshots/classic-menu/stages/stages/snes9x-stage1-guide.png",
+              "sha256": "94ad05151bf9064387185af7313c451d267761df418239a6b0e0f202a9638cf3",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-left.png",
-              "sha256": "c81308109f21c30b2e1b93bff916114ff44e02cb669cbd2ee00bb933b27b3eac",
+              "path": "docs/screenshots/classic-menu/stages/stages/snes9x-stage1-left.png",
+              "sha256": "7f955acb2d58a6f59ee823ef38366852940f5fe8c51873d0938b984f2494dc0e",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage1-right.png",
-              "sha256": "beae011151584eb5403438652cf01ec709a4d24dbc0daf3ceae031a61417e9b1",
+              "path": "docs/screenshots/classic-menu/stages/stages/snes9x-stage1-right.png",
+              "sha256": "31569ace1c4cd0892c2001b6a19b90c29986153781d2c0347cfd38be5ad24cd2",
               "scope": "current native PPU"
             }
           ],
-          "pixel_samples_sha256": "616ce151caa28026db83611469c32ece7b5da0b21971b88ce50def53b91ea48d",
+          "pixel_samples_sha256": "374d4a5d18c536216b741c74f22353df353050b0361190d3b3a239028d85da5c",
           "measured_frames": 1489,
           "cadence_deltas": [
             1
@@ -454,7 +463,7 @@
           "core": "snes9x",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stress1.gif",
+          "clip": "docs/screenshots/classic-menu/stages/stages/snes9x-stress1.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -491,32 +500,32 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-movement.gif",
-          "impact_clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-contacts.gif",
+          "movement_clip": "docs/screenshots/classic-menu/stages/stages/snes9x-stage2-movement.gif",
+          "impact_clip": "docs/screenshots/classic-menu/stages/stages/snes9x-stage2-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-center.png",
+              "path": "docs/screenshots/classic-menu/stages/stages/snes9x-stage2-center.png",
               "sha256": "078338a9597893582f480616700d8ffd5f602f358d6bb98b9f1429d4ea98e0ff",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-guide.png",
-              "sha256": "d0decb47c20a44a297582c241ccfc5772816a92fd2ec0d7ee7a710d1e0b881d5",
+              "path": "docs/screenshots/classic-menu/stages/stages/snes9x-stage2-guide.png",
+              "sha256": "94ad05151bf9064387185af7313c451d267761df418239a6b0e0f202a9638cf3",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-left.png",
+              "path": "docs/screenshots/classic-menu/stages/stages/snes9x-stage2-left.png",
               "sha256": "e32569283ef4228ee6baff4f820e16088c42b1152a8fbed1d66f74168536d384",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stage2-right.png",
+              "path": "docs/screenshots/classic-menu/stages/stages/snes9x-stage2-right.png",
               "sha256": "dda0734e5be8b94b93130bf81cacd131e487666c59bf5e23ebb3c2f2cedf9851",
               "scope": "current native PPU"
             }
           ],
-          "pixel_samples_sha256": "836b8b04d1fc921e04296a5f5ddde0bab8d59cf36a2e9df09a6aa8055e3fbf5d",
+          "pixel_samples_sha256": "70d485677c59625eb11adab66cd9a5948641c501b9fe30c954397a3a8e2f98af",
           "measured_frames": 1489,
           "cadence_deltas": [
             1
@@ -531,7 +540,7 @@
           "core": "snes9x",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/play-flow-v026/pacing/stages/snes9x-stress2.gif",
+          "clip": "docs/screenshots/classic-menu/stages/stages/snes9x-stress2.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -539,7 +548,7 @@
           "max_spc_backlog": 0,
           "obj_peak_sprites": 16,
           "obj_peak_tiles": 32,
-          "actor_dma_frames": 132
+          "actor_dma_frames": 137
         }
       },
       {
@@ -568,32 +577,32 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage0-movement.gif",
-          "impact_clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage0-contacts.gif",
+          "movement_clip": "docs/screenshots/classic-menu/stages/stages/accuracy-stage0-movement.gif",
+          "impact_clip": "docs/screenshots/classic-menu/stages/stages/accuracy-stage0-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage0-center.png",
+              "path": "docs/screenshots/classic-menu/stages/stages/accuracy-stage0-center.png",
               "sha256": "80c15c778011185544ea4db468a2d176cd28f362f05463b5896c18db15a13eaf",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage0-guide.png",
-              "sha256": "1f2ae9b50254a333fc4be8db8c6203f413facd40077d55d9e7638e0dc1e18441",
+              "path": "docs/screenshots/classic-menu/stages/stages/accuracy-stage0-guide.png",
+              "sha256": "14dc5f4530aff6a44617d9145d8b81eb42bd6e8ca99101715d17f9367d562481",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage0-left.png",
-              "sha256": "590e3dd822dfc01c4f6fc8b57ace1c5aa04d8999f6dc663a99770a3b3c26c014",
+              "path": "docs/screenshots/classic-menu/stages/stages/accuracy-stage0-left.png",
+              "sha256": "b3fdb64f6891ea4f0ba0d35496f5922ee7c08a86f9529bb11345d3f10ec6906c",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage0-right.png",
-              "sha256": "3629531ef002bde5c8a0f9bbf8f78ce4085bdd8f10b2506ac5fa411400bcd187",
+              "path": "docs/screenshots/classic-menu/stages/stages/accuracy-stage0-right.png",
+              "sha256": "daace665afa92d093e6905422003aefdcb12b54d43b25b67c88f94d03bc72fa9",
               "scope": "current native PPU"
             }
           ],
-          "pixel_samples_sha256": "a9475b5f4d175af20db1356e4407d70c2c62904eced4fd97c2f74a70af774200",
+          "pixel_samples_sha256": "7220955afa1e9d860cb383b4122636a42174b1f3263e0af92c9bf3e567715147",
           "measured_frames": 1489,
           "cadence_deltas": [
             1
@@ -608,7 +617,7 @@
           "core": "accuracy",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stress0.gif",
+          "clip": "docs/screenshots/classic-menu/stages/stages/accuracy-stress0.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -645,32 +654,32 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage1-movement.gif",
-          "impact_clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage1-contacts.gif",
+          "movement_clip": "docs/screenshots/classic-menu/stages/stages/accuracy-stage1-movement.gif",
+          "impact_clip": "docs/screenshots/classic-menu/stages/stages/accuracy-stage1-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage1-center.png",
+              "path": "docs/screenshots/classic-menu/stages/stages/accuracy-stage1-center.png",
               "sha256": "999202a3cc12d3c691ee6a56476390976e86ce29a997c670ce5ba6e7afb230ac",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage1-guide.png",
-              "sha256": "d3936f8eaf24360d1f77c6902244b60a277467c4d34f84a875e040e07241fb84",
+              "path": "docs/screenshots/classic-menu/stages/stages/accuracy-stage1-guide.png",
+              "sha256": "14dc5f4530aff6a44617d9145d8b81eb42bd6e8ca99101715d17f9367d562481",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage1-left.png",
-              "sha256": "226d6a22adaaac48c30c57b40f60fd317ff0170ea5d458138e441879952681b8",
+              "path": "docs/screenshots/classic-menu/stages/stages/accuracy-stage1-left.png",
+              "sha256": "35233c5677f40fb736d8277062f72b148551684f563bc3bbaaa08bea01c732c1",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage1-right.png",
-              "sha256": "31ea672d3e4fb18d0ed236e35ba9e07445e7c32ff79c9cf6ba8a545a03290b6c",
+              "path": "docs/screenshots/classic-menu/stages/stages/accuracy-stage1-right.png",
+              "sha256": "e729a8b60fc20c0be2f0bc372ada9d1577b7372e27163ef36dfb2f4bb43f24f6",
               "scope": "current native PPU"
             }
           ],
-          "pixel_samples_sha256": "94aa8398fd84d55dd0da995ebf4220610a9a6cbe5b359d8175f076627859e9c6",
+          "pixel_samples_sha256": "ee93ea4a1451ef0cdadeb58502ee19334409970c844e76c8d9bb4e4f7e56d3c0",
           "measured_frames": 1489,
           "cadence_deltas": [
             1
@@ -685,7 +694,7 @@
           "core": "accuracy",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stress1.gif",
+          "clip": "docs/screenshots/classic-menu/stages/stages/accuracy-stress1.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -722,32 +731,32 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage2-movement.gif",
-          "impact_clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage2-contacts.gif",
+          "movement_clip": "docs/screenshots/classic-menu/stages/stages/accuracy-stage2-movement.gif",
+          "impact_clip": "docs/screenshots/classic-menu/stages/stages/accuracy-stage2-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage2-center.png",
+              "path": "docs/screenshots/classic-menu/stages/stages/accuracy-stage2-center.png",
               "sha256": "861acdbd3502372170e0938705fb6052c9d4b5c7ff7e48cbb660ca1a805f1679",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage2-guide.png",
-              "sha256": "1f2ae9b50254a333fc4be8db8c6203f413facd40077d55d9e7638e0dc1e18441",
+              "path": "docs/screenshots/classic-menu/stages/stages/accuracy-stage2-guide.png",
+              "sha256": "14dc5f4530aff6a44617d9145d8b81eb42bd6e8ca99101715d17f9367d562481",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage2-left.png",
+              "path": "docs/screenshots/classic-menu/stages/stages/accuracy-stage2-left.png",
               "sha256": "56d5dd5af87dc55a4f73bf2c67bdac0e406fcb4f76e95253758f5077ebef13c3",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stage2-right.png",
+              "path": "docs/screenshots/classic-menu/stages/stages/accuracy-stage2-right.png",
               "sha256": "f2e846c15a463bc602ba06b9471e5366cb69dcbd6eb3834d54b4ad2c9e4bd014",
               "scope": "current native PPU"
             }
           ],
-          "pixel_samples_sha256": "1e17bdd4b7744a02fdcb380b7c296e1cc794780358af8ec06ab28e47707c6dd6",
+          "pixel_samples_sha256": "83067ed1b87a76260a495db653a5fe4055fab49527e71e496f66cf00103bb95d",
           "measured_frames": 1489,
           "cadence_deltas": [
             1
@@ -762,7 +771,7 @@
           "core": "accuracy",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/play-flow-v026/pacing/stages/accuracy-stress2.gif",
+          "clip": "docs/screenshots/classic-menu/stages/stages/accuracy-stress2.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -770,7 +779,7 @@
           "max_spc_backlog": 0,
           "obj_peak_sprites": 16,
           "obj_peak_tiles": 32,
-          "actor_dma_frames": 132
+          "actor_dma_frames": 137
         }
       }
     ],
@@ -926,8 +935,8 @@
         "passed": true,
         "details": [
           "snes9x-stage0",
-          2105680,
-          5605
+          2104614,
+          5841
         ]
       },
       {
@@ -1099,7 +1108,7 @@
         "details": [
           "snes9x-stage1",
           2132336,
-          5345
+          5338
         ]
       },
       {
@@ -1271,7 +1280,7 @@
         "details": [
           "snes9x-stage2",
           2160060,
-          5433
+          5511
         ]
       },
       {
@@ -1442,8 +1451,8 @@
         "passed": true,
         "details": [
           "accuracy-stage0",
-          2104648,
-          5310
+          2105714,
+          5841
         ]
       },
       {
@@ -1614,8 +1623,8 @@
         "passed": true,
         "details": [
           "accuracy-stage1",
-          2133436,
-          5335
+          2132370,
+          5338
         ]
       },
       {
@@ -1787,7 +1796,7 @@
         "details": [
           "accuracy-stage2",
           2160128,
-          5407
+          5511
         ]
       },
       {
@@ -1819,10 +1828,10 @@
     }
   },
   "check_count": 19002,
-  "elapsed_seconds": 90.313,
+  "elapsed_seconds": 88.157,
   "suite": "stage-depth",
   "shared_native_execution": true,
-  "focused_report": "docs/play-flow-v026-stage-report.json",
-  "focused_report_sha256": "c0ea80f208d5cdc5bac18df1e0401cd8fb996253bcfc797e100e74be9391f9fe",
+  "focused_report": "docs/classic-menu-stage-report.json",
+  "focused_report_sha256": "2d31d3d71f081be8d8e4266ca46c13694630bbbd97181d0f18eca0edb20eb7fb",
   "passed": 19002
 }

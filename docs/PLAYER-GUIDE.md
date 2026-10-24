@@ -1,10 +1,9 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.26.2; identity: FOCUSED_UI_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: ca7c35a9cfa6d633f759d9d46ba19bfcfc17176fef22b2dc9312ed5fe5a9a45b; source-freeze: 903c9c70e3f7f3c0e3c265cdcf798aadf9b3a09a -->
+<!-- candidate-version: 0.27.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: d5263c777cbb3a02ce438e07c1c425f2d39dd73d294cd4d2aa8c2cbc2da78e3d; source-freeze: 4d7e8fe17f1a0a534bc06e3e059fc4c03cd556d0 -->
 
-The v0.26.2 text pass retains v0.25's slower fight rhythm and detailed
-floors, with clearer local menus, super cues and quicker practice retries.
-Main's approved revision is v0.24.0. Combined native checks pass; human playtest is pending.
-See the [current text pass](RELEASE-v0.26.2.md) and [pass notes](POLISH-v0.26.0.md).
+v0.27.0 adds classic arcade menus and a six-by-two roster. The slower combat,
+detailed floors and left-aligned help remain. Native checks pass; playtest
+review is pending. [Current release note](RELEASE-v0.27.0.md).
 
 This is a native SNES game. On Windows use [Play.cmd](../Play.cmd); on other
 platforms load `dist/abaqus-after-hours.sfc` in a SNES emulator.
@@ -114,7 +113,7 @@ bonus or extra stun; a displayed combo still requires uninterrupted hit stun.
 
 ## Modes and pause
 
-**Arcade Shift:** defeat all eleven other fighters. Each matchup opens with a
+**Arcade:** defeat all eleven other fighters. Each matchup opens with a
 short two-speaker exchange: wait about six seconds or press **P1 A** (keyboard
 X) to skip into the countdown. Start pauses first. Continue retries the same
 opponent after a loss. Individual winner quotes and a personal trophy ending

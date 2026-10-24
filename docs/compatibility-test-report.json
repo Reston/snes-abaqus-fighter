@@ -4,7 +4,7 @@
   "pinned_core": true,
   "source_url": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/bsnes2014_accuracy_libretro.dll.zip",
   "rom": {
-    "sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+    "sha256": "d5263c777cbb3a02ce438e07c1c425f2d39dd73d294cd4d2aa8c2cbc2da78e3d",
     "bytes": 4194304
   },
   "core": {
@@ -23,13 +23,13 @@
       "bytes_per_pixel": 4.0,
       "callbacks": 120,
       "decoded_packing": "BGRX-8888 (stride-authoritative)",
-      "raw_prefix_hex": "42180800421808004218080042180800421808004218080042180800421808004218080042180800421808004218080042180800421808004218080042180800"
+      "raw_prefix_hex": "10182100101821001018210010182100101821001018210010182100101821001018210010182100101821001018210010182100101821001018210010182100"
     }
   },
   "checks": {
     "pinned_inputs": {
-      "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
-      "manifest_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+      "rom_sha256": "d5263c777cbb3a02ce438e07c1c425f2d39dd73d294cd4d2aa8c2cbc2da78e3d",
+      "manifest_sha256": "d5263c777cbb3a02ce438e07c1c425f2d39dd73d294cd4d2aa8c2cbc2da78e3d",
       "rom_bytes": 4194304,
       "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
       "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
@@ -40,9 +40,9 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "b3815837f0176a8fc06aa61603491b7e23c7634560e072821b0d48012653754f",
-        "distinct_sampled_rgb": 79,
-        "nonzero_bytes": 308616,
+        "sha256_rgb": "84f54b7e958606f34f55c9d763a4d9821af845489f899797ce4a61b629e094ed",
+        "distinct_sampled_rgb": 239,
+        "nonzero_bytes": 344064,
         "nonblank": true
       },
       "capture": "docs/screenshots/compatibility/title.png"
@@ -53,9 +53,9 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "a634d22131cb7c9af2225bfb5d050fcc6f4e7207c10bf1c0d9d3d15a5d050cb9",
-        "distinct_sampled_rgb": 344,
-        "nonzero_bytes": 254796,
+        "sha256_rgb": "e90066fcb0c21ddf1fd09f346d105e4df9e537ad589501a41ebfb7449e3809fe",
+        "distinct_sampled_rgb": 618,
+        "nonzero_bytes": 306008,
         "nonblank": true
       },
       "capture": "docs/screenshots/compatibility/select.png",
@@ -67,9 +67,9 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "aaf1ced9aaf3b71d526baecdad098ff153ab18638c985065050eb5fdb5119cea",
-        "distinct_sampled_rgb": 437,
-        "nonzero_bytes": 313868,
+        "sha256_rgb": "0d86b91ab47b30883dd79714d5548ea1fa6ab11c0f1c464123acd2f0aa8af846",
+        "distinct_sampled_rgb": 448,
+        "nonzero_bytes": 340756,
         "nonblank": true
       },
       "capture": "docs/screenshots/compatibility/arena.png",
@@ -81,7 +81,7 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "e9496955e837f88f7f3e5d1df7ccfa3b58ae798880df8aaa99d6543fb8c8709f",
+        "sha256_rgb": "cb91abca41f38bab7c8c723d35ebd79b5e57cfa680e6919728611922aa2107e9",
         "distinct_sampled_rgb": 618,
         "nonzero_bytes": 320374,
         "nonblank": true
@@ -114,8 +114,8 @@
     },
     "audio": {
       "samples": 1049050,
-      "energy": 194031755667,
-      "peak": 5201,
+      "energy": 195232769650,
+      "peak": 5140,
       "passed": true
     },
     "stage_ambient_and_freeze": {
@@ -158,21 +158,21 @@
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage0-guide.png",
-              "sha256": "1f2ae9b50254a333fc4be8db8c6203f413facd40077d55d9e7638e0dc1e18441",
+              "sha256": "14dc5f4530aff6a44617d9145d8b81eb42bd6e8ca99101715d17f9367d562481",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage0-left.png",
-              "sha256": "590e3dd822dfc01c4f6fc8b57ace1c5aa04d8999f6dc663a99770a3b3c26c014",
+              "sha256": "b3fdb64f6891ea4f0ba0d35496f5922ee7c08a86f9529bb11345d3f10ec6906c",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage0-right.png",
-              "sha256": "3629531ef002bde5c8a0f9bbf8f78ce4085bdd8f10b2506ac5fa411400bcd187",
+              "sha256": "daace665afa92d093e6905422003aefdcb12b54d43b25b67c88f94d03bc72fa9",
               "scope": "current native PPU"
             }
           ],
-          "pixel_samples_sha256": "a9475b5f4d175af20db1356e4407d70c2c62904eced4fd97c2f74a70af774200",
+          "pixel_samples_sha256": "7220955afa1e9d860cb383b4122636a42174b1f3263e0af92c9bf3e567715147",
           "measured_frames": 1489,
           "cadence_deltas": [
             1
@@ -220,21 +220,21 @@
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage1-guide.png",
-              "sha256": "d3936f8eaf24360d1f77c6902244b60a277467c4d34f84a875e040e07241fb84",
+              "sha256": "14dc5f4530aff6a44617d9145d8b81eb42bd6e8ca99101715d17f9367d562481",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage1-left.png",
-              "sha256": "226d6a22adaaac48c30c57b40f60fd317ff0170ea5d458138e441879952681b8",
+              "sha256": "35233c5677f40fb736d8277062f72b148551684f563bc3bbaaa08bea01c732c1",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage1-right.png",
-              "sha256": "31ea672d3e4fb18d0ed236e35ba9e07445e7c32ff79c9cf6ba8a545a03290b6c",
+              "sha256": "e729a8b60fc20c0be2f0bc372ada9d1577b7372e27163ef36dfb2f4bb43f24f6",
               "scope": "current native PPU"
             }
           ],
-          "pixel_samples_sha256": "94aa8398fd84d55dd0da995ebf4220610a9a6cbe5b359d8175f076627859e9c6",
+          "pixel_samples_sha256": "ee93ea4a1451ef0cdadeb58502ee19334409970c844e76c8d9bb4e4f7e56d3c0",
           "measured_frames": 1489,
           "cadence_deltas": [
             1
@@ -282,7 +282,7 @@
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage2-guide.png",
-              "sha256": "1f2ae9b50254a333fc4be8db8c6203f413facd40077d55d9e7638e0dc1e18441",
+              "sha256": "14dc5f4530aff6a44617d9145d8b81eb42bd6e8ca99101715d17f9367d562481",
               "scope": "current native PPU"
             },
             {
@@ -296,7 +296,7 @@
               "scope": "current native PPU"
             }
           ],
-          "pixel_samples_sha256": "1e17bdd4b7744a02fdcb380b7c296e1cc794780358af8ec06ab28e47707c6dd6",
+          "pixel_samples_sha256": "83067ed1b87a76260a495db653a5fe4055fab49527e71e496f66cf00103bb95d",
           "measured_frames": 1489,
           "cadence_deltas": [
             1
@@ -321,7 +321,7 @@
       "synchronized_initial_frames": 1,
       "synchronized_frames_in_600": 47,
       "stat77_values": [
-        1
+        17
       ],
       "stat77_overflow_bits": [
         0

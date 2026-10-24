@@ -1,12 +1,12 @@
 # Abaqus: After Hours
-<!-- candidate-version: 0.26.2; identity: FOCUSED_UI_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: ca7c35a9cfa6d633f759d9d46ba19bfcfc17176fef22b2dc9312ed5fe5a9a45b; source-freeze: 903c9c70e3f7f3c0e3c265cdcf798aadf9b3a09a -->
+<!-- candidate-version: 0.27.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: d5263c777cbb3a02ce438e07c1c425f2d39dd73d294cd4d2aa8c2cbc2da78e3d; source-freeze: 4d7e8fe17f1a0a534bc06e3e059fc4c03cd556d0 -->
 
 An original four-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II and the people and places of Abaqus in Santiago.
 Twelve fighters, three illustrated stages and five original music scores.
 
-**Ready to playtest:** [v0.26.2](docs/RELEASE-v0.26.2.md), with slower combat,
-detailed floors and left-aligned help. [Native comparisons](docs/REVIEW-v0.26.2.html).
+**Ready to playtest:** [v0.27.0](docs/RELEASE-v0.27.0.md), with classic arcade menus,
+slower combat and detailed floors. [Native menu screens](docs/REVIEW-v0.27.0.html).
 The approved main revision is [v0.24.0](docs/RELEASE-v0.24.0.md).
 
 <img src="docs/screenshots/play-flow-v026/pacing/after-movement.gif" alt="Current native combat and detailed floor" width="640">
@@ -21,7 +21,7 @@ in a SNES emulator. Original SNES and flash-cartridge support remain unverified.
 
 ## Game modes
 
-- **Arcade Shift:** fight all eleven coworkers, with personal exchanges and endings.
+- **Arcade:** fight all eleven coworkers, with personal exchanges and endings.
 - **Local 1v1 / 2P:** choose two fighters and play a best-of-three match.
 - **Training:** practice against a dummy or CPU with input history, combo damage
   and three drills, or enable **P2 Controller** for two-person practice.
@@ -68,10 +68,10 @@ intermediates stay in ignored `.tools/` and `build/` directories.
 ## Documentation
 
 - [Player guide](docs/PLAYER-GUIDE.md) — controls, modes and practice.
-- [Current text polish](docs/RELEASE-v0.26.2.md).
+- [Current menu revision](docs/RELEASE-v0.27.0.md).
 - [Development guide](docs/DEVELOPMENT.md) — native architecture and hardware budgets.
 - [Roadmap](docs/ROADMAP.md) — planned work and historical milestones.
 - [Credits and art provenance](docs/CREDITS.md) · [License](LICENSE).
 
-Text pass: 6,606 presentation/Training checks pass; human playtest is pending.
+All six native suites pass 49,209 checks; human playtest is pending.
 The latest full Windows archive remains v0.19.0.

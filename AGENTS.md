@@ -6,6 +6,29 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+<!-- v027-agent:start -->
+- **v0.27.0 is the classic arcade menu playtest candidate**, branch
+  `feature/classic-arcade-menus`, stacked on `feature/concise-game-text`.
+  The user selected a Street Fighter II style after rejecting six concept
+  studies. Original slanted Abaqus lettering and a warm gold/charcoal palette
+  frame a six-by-two roster and a public-domain Natural Earth land silhouette.
+  Preserve all original portraits, fighter/stage/audio art, combat rules,
+  1,318 RAM labels and hardware/trace assembly. Only 13 generated menu/header
+  files change among 226. P1/P2 badges have a dedicated row, including mirrors;
+  Up/Down moves six slots. The fixed BG2 portrait map is set once, then hover
+  DMA updates 2,560 portrait + 980 UI bytes. Direct menu frame writes remove
+  the historical hover stall without adding state or changing fight paths.
+  ROM `d5263c777cbb3a02ce438e07c1c425f2d39dd73d294cd4d2aa8c2cbc2da78e3d`, checksum `FA37`,
+  source/test freeze `4d7e8fe17f1a0a534bc06e3e059fc4c03cd556d0`. All six suites pass
+  49,209 exact-ROM checks. Both pinned cores pass 74 focused states and
+  2,353 steady menu callbacks each; independent smoke, normal/-O guards and
+  fresh 226-asset/ROM/symbol reproduction pass. Tests retain strict assertions;
+  adapted routes account for the new grid and the existing low-HP palette.
+  See docs/RELEASE-v0.27.0.md, classic-menu-review.json and REVIEW-v0.27.0.html.
+  Direction approval does not imply final visual or merge approval. Keep
+  v0.25/26 pacing/floors/help. Main remains approved v0.24.0. No new package.
+<!-- v027-agent:end -->
+
 <!-- v0261-agent:start -->
 - **v0.26.2 is the concise-text/readability follow-up**, branch
   `feature/concise-game-text`, PR #23 stacked on v0.26 PR #22. The user approved
