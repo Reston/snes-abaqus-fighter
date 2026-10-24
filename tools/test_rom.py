@@ -211,6 +211,8 @@ def verify_animation_manifest():
                 source_kind=item.get('source_kind',item.get('source_role'))
                 expected='legacy' if index<16 else 'motion' if index<32 else 'actions' if index<48 else 'airborne'
                 if 20<=index<28 and entry.get('walking_revision'):expected='walking-v2'
+                for revision in entry.get('combat_revisions',[]):
+                    if index in revision['frame_ids']:expected=revision['scope']
                 check(source_kind==expected,'Frame metadata keeps its source role',{
                     'fighter':fighter,'frame':index,'expected':expected,'actual':source_kind})
                 frame_hash=item.get('native_hash',item.get('hash'))

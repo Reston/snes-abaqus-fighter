@@ -656,6 +656,9 @@ def verify_native_proportions() -> dict[str, object]:
                                  "actions" if pose < 48 else "airborne")
                 if 20<=pose<28 and entry.get('walking_revision'):
                     expected_kind='walking-v2'
+                for revision in entry.get('combat_revisions',[]):
+                    if pose in revision['frame_ids']:
+                        expected_kind=revision['scope']
                 source_kind = item.get("source_kind", item.get("source_role"))
                 check(source_kind == expected_kind,
                       "frame metadata preserves its source role", {
