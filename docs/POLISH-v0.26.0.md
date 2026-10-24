@@ -217,3 +217,11 @@ the new attempt's counters. A fresh Training selection starts at zero.
 The existing deferred formatter/reset path records the result; contact and
 normal live update paths gain no formatting work. Three unused reserved
 stage-table bytes hold the record without moving or adding RAM symbols.
+
+## Pass 16: a running local rivalry
+
+Local result cards separate **ROUND WINS** from **SESSION WINS**. A completed
+match adds one session win for its actual winner. Either-pad rematches retain
+the tally, while returning to character select begins a new session. Waiting
+on a result or winning only the first round never adds another match win.
+Two reserved bytes cap the display at 99 per player; no combat state changes.

@@ -479,6 +479,8 @@ def verify_result_font_bank(e: Emulator, current: dict[str, int]) -> dict[str, o
         return verify_opaque_text_rows(e, rows, "champion ending")
     elif current["mode"] == 1:
         title, action, context = "MATCH COMPLETE", "A/START: REMATCH", "LOCAL 1V1"
+        if tuple(map(int, json.loads((ROOT / 'dist/manifest.json').read_bytes())['version'].split('.'))) >= (0, 26, 0):
+            context = "SESSION WINS"
     else:
         won = current["wins1"] > current["wins2"]
         title = "SHIFT COMPLETE" if won else "SHIFT OVER"

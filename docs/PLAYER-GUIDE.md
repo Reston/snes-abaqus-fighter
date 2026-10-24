@@ -100,6 +100,9 @@ the next opponent or the opponent you will retry; pause names CPU difficulty.
 Both physical ports share the four-button layout, specials and super command.
 Either pad chooses the arena and controls the result card. A/Start rematches,
 B returns to character select, and the winner label names Player 1 or Player 2.
+The result also shows **SESSION WINS**, counting completed matches across
+rematches. The round score resets each match; session wins remain until either
+player returns to character select. The display caps at 99 wins per player.
 
 **Training:** choose PLAYER 1, any DUMMY (including a mirror), then an arena.
 Either pad can choose the dummy; B backs up to PLAYER 1. Health recovers and

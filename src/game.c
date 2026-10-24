@@ -339,6 +339,8 @@ void uploadMenuPortrait(void) {
     portraitDirty=0;
 }
 void showSelect(void) {
+    /* Character selection starts a new local rivalry. Rematches bypass it. */
+    stageDepthTable[7]=0;stageDepthTable[8]=0;
     setScreenOff();screen=SELECT;arcade=0;champion=0;commonScreen();loadBackground(4);selectPlayer=0;drawSelect();uploadMenuPortrait();music(0);finishScreen();
 }
 void drawArenas(void) {
@@ -529,7 +531,14 @@ void showResult(u8 won) {
         arcadeStoryProgress(15,17);
         word(15,19,won?"NEXT":"RETRY");
         word(21,19,characterNames[won?(selected+2+arcade)%12:fighters[1].id]);
-    } else word(15,17,"LOCAL 1V1");
+    } else {
+        /* The two otherwise-unused reserved bytes survive commonScreen and
+         * ordinary round resets. Count once when an earned result is loaded. */
+        if(won){if(stageDepthTable[7]<99)stageDepthTable[7]++;}
+        else {if(stageDepthTable[8]<99)stageDepthTable[8]++;}
+        word(15,17,"SESSION WINS");word(15,19,"P1 00 - 00 P2");
+        number(18,19,stageDepthTable[7]);number(23,19,stageDepthTable[8]);
+    }
     center(21,mode==0?arcadeStoryWinnerQuotes[id]:characterQuotes[id]);
     if(mode==0)center(24,won?"A/START: NEXT CHALLENGER":"A/START: CONTINUE");
     else {center(23,"EITHER PLAYER");center(24,"A/START: REMATCH");}
