@@ -141,6 +141,7 @@ void buildPauseGuide(void) {
             guideWord(3,16,"SWEEP         DOWN + A");
             guideWord(3,18,"THROW         TOWARD + X");
             guideWord(3,19,"UPPERCUT      DOWN + X");
+            guideWord(3,20,"THROW TECH    BOTH THROW");
             guideCenter(21,"AFTER A HIT: PRESS HEAVIER");
             guideCenter(22,"CROSS-UP: JUMP PAST + A");
         } else if(pausePage==2 && stageDepthTable[3]) {

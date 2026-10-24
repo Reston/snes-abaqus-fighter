@@ -194,3 +194,17 @@ and explains contact hitstop. It uses two rows in each existing build stage,
 so no combat-frame formatting, transfer growth or new RAM allocation occurs.
 One unused byte in the retained stage table holds the paused view and clears
 at the next pause/scene. Gameplay values and timing remain unchanged.
+
+## Pass 14: explain simultaneous throw escapes
+
+An earned simultaneous throw displays **THROW TECH!** after the existing
+deferred actor uploads. Its damage, push-apart, guard/hurt state and three-tick
+contact pause remain unchanged. One-sided throws never advertise the cue.
+The Controls guide names the simultaneous-throw escape; no new command exists.
+
+All twelve fighters on both ports pass paired tech/ordinary-throw cases:
+48 baseline/candidate pairs retain every unmasked Fighter/Wave byte, RNG and
+controller latch. The actual glyphs are verified on Snes9x with independent
+Accuracy coverage. The first positioning fixture could land exactly at the
+strict throw-range boundary for David; its retained failed baseline diagnostic
+led to an inside-range setup, with every outcome assertion retained.

@@ -69,8 +69,12 @@ and Back remain single-press actions even when held.
   cross-up; switch guard direction after a crossing.
 - Toward+X throws at close range, including through guard; damage lands when
   the defender reaches the floor. Simultaneous throws tech. During the final
-  get-up phase, a fresh attack or jump can buffer; enter special motions after
+get-up phase, a fresh attack or jump can buffer; enter special motions after
   recovery.
+
+If both grounded throws connect together, **THROW TECH!** identifies the
+existing non-damaging escape. Toward+X must request a throw for both fighters;
+an ordinary throw against a late button still follows the normal throw rules.
 
 Gold health turns red at one quarter or less; the thin teal bar is energy and
 diamond medals count round wins. Win two rounds to take a match. At timeout,

@@ -1301,7 +1301,8 @@ void fightTick(void) {
             if(impactHudPending){hud();impactHudPending=0;}
             if(impactBannerPending) {
                 clearBanner();impactBannerPending=0;
-                if(impactBannerCombo>1 || impactBannerCounter) {
+                if(impactBannerCounter==3)center(9,"THROW TECH!");
+                else if(impactBannerCombo>1 || impactBannerCounter) {
                     if(impactBannerCounter==2)word(impactBannerPlayer?20:2,9,"PUNISH!");
                     else word(impactBannerPlayer?20:2,9,impactBannerCounter?"COUNTER!":"COMBO!");
                     if(impactBannerCombo>1)put(impactBannerPlayer?28:10,9,'0'+(impactBannerCombo%10));
