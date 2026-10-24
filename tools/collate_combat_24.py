@@ -103,6 +103,15 @@ def collect(source_ref):
             stage.get('focused_report')=='docs/'+FEATURES['stages'] and
             stage.get('focused_report_sha256')==records[FEATURES['stages']]['sha256'],
             'Shared stage execution differs from its focused appendix')
+    sample_path='docs/combat-24-pacing-samples.json';samples=read(sample_path)
+    require(samples.get('status')=='passed' and samples.get('rom_sha256')==rom and
+            samples['samples']['after']['rom_sha256']==rom and
+            samples['samples']['before']['rom_sha256']==samples['baseline_rom_sha256'],
+            'Recoil review clips do not identify current and historical cartridges')
+    require(samples['producer_sha256']==sha(canonical(samples['producer'],(ROOT/samples['producer']).read_bytes())),
+            'Recoil clip retention producer differs')
+    media_files(samples,media)
+    records['combat-24-pacing-samples.json']={'path':sample_path,'sha256':sha((ROOT/sample_path).read_bytes())}
     for name in ('fresh-build-test-report.json','authoring-guards-report.json','combat-24-guards-report.json'):
         report=read('docs/'+name)
         require(report.get('status')=='passed' and report.get('rom_sha256')==rom and report.get('source_commit')==freeze,name+' does not identify passing frozen-source evidence')

@@ -1,5 +1,39 @@
 # Native SNES implementation
-<!-- candidate-version: 0.23.1; rom-sha256: 057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd -->
+<!-- candidate-version: 0.24.0; rom-sha256: PENDING_FINAL_VERIFICATION -->
+
+## Current v0.24 integration
+
+All six feature PRs are merged into `integration/readable-combat-v024`.
+The combined playtest PR #14 remains unmerged. Source freeze and final native
+verification are pending; isolated feature reports remain historical.
+Read [the shared implementation contract](COMBAT-v0.24-CONTRACT.md) and
+[the playtest guide](RELEASE-v0.24.0.md) for ownership and scope.
+
+The current native allocation is:
+
+| Resource | Current contract |
+| --- | --- |
+| Cartridge | 4 MiB NTSC FastROM LoROM, PVSnesLib 4.6.0, 128 banks |
+| Actors | Fighter64 / Wave16 / TRACE0..122; one 3,840-byte actor upload per vblank, thirty 16x16 OBJ per actor |
+| Art | 226 generated files; 37 disjoint attack/jump/super poses per fighter revised, the other 27 preserved; approved walking, portraits, palettes and scale unchanged |
+| RAM | Existing 1,318 labels retain addresses; recoil reuses its byte, stage tracking reuses its sixteen-byte reservation |
+| BG1 scenery | Word gfx `$0000..$2FFF`, 64x32 map `$3800..$3FFF`; one connected 288px scene with a bounded eight-pixel look |
+| BG3 ground | Word gfx `$3000..$37FF`, map `$5C00..$5FFF`; fixed 2bpp floor, composing impact shake |
+| Other VRAM | UI/portraits/guide `$4000..$5BFF`, actor pages `$6000..$73FF`, effects `$7800..$7BFF` |
+| Stage transfers | No live stage DMA or HDMA; screen-off loads only. The old ambient window `$3C00` is now the right BG1 map |
+| Ambient trace | Static `(phase, clock, pending, age) = (0, 0, 255, 0)`; old ambient assets remain preserved history |
+
+Ordinary rising specials prepare grounded and launch at their first active
+tick. Jump and launch velocities retain their declared profiles. Visible
+contact regions are regenerated after all pose imports and before compilation.
+Keep strict direct-frame/VBlank/lag, actor transfer and audio checks when
+optimizing the contact path. Run native verification silently/headlessly.
+
+## Historical implementation notes
+
+The checkpoints and older allocation tables below describe their named
+historical ROMs. In particular, their banded HDMA and live ambient contracts
+do not apply to the current whole-scene stage engine.
 
 ## Approved main walking revision: v0.23.1
 

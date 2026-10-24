@@ -1,53 +1,13 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.23.1; rom-sha256: 057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd -->
+<!-- candidate-version: 0.24.0; rom-sha256: PENDING_FINAL_VERIFICATION -->
 
-## Approved main walking revision: v0.23.1
+The v0.24 combined playtest adds more readable combat, backward hit reactions,
+coordinated attack and jump drawings, individual super poses and rebuilt stages.
+Final verification is pending on `integration/readable-combat-v024`.
+See the [playtest guide](RELEASE-v0.24.0.md) and [native review gallery](REVIEW-v0.24.0.html).
 
-The user rejected v0.23.0's torso/legs mismatch. PR #12 now replaces each
-fighter's eight complete walking poses with coordinated head, guard, torso,
-hip and foot motion, removing the fixed waist splice. Other 56 poses and
-original portraits/palettes remain. All six suites pass 36,219 current-ROM
-checks, matching independent smoke and fresh reproduction pass. The user
-approved the revision and PR #12 merge on 2026-10-23 ("yes good, merge it").
-Run `Play.cmd` from main to play v0.23.1.
-[Current art, native clips, controls and evidence](RELEASE-v0.23.1.md). Main is
-v0.23.1; 08 remains deferred. The notes below retain their historical scope.
-
-## Rejected historical walking candidate: v0.23.0
-
-Main is v0.22.1 with the nine approved improvements merged; feature 08 remains
-deferred and its checkout is retained. The old merged branches/worktrees are
-cleaned. [PR #12](https://github.com/Reston/snes-abaqus-fighter/pull/12) adds
-eight-phase walking to all twelve fighters and the clearer **LOCAL 1V1 / 2P**
-menu label. Local two-port multiplayer was already supported. Run `Play.cmd`
-from `feature/walking-cycles-v023` to test this unmerged candidate.
-All six native suites pass 36,219 current-ROM checks; independent smoke,
-all-roster walking proof and fresh-source reproduction pass.
-[Walking, two-player controls, art/prompts and evidence](RELEASE-v0.23.0.md).
-The older notes below retain their historical scope.
-
-## Current v0.22.1: nine approved improvements
-
-Features 01–07, 09 and 10 are approved for main. **Feature 08 is deferred**:
-the camera and ambient art are restored to v0.21.0; its branch/worktree remain
-for polish. The six native suites pass 36,253 exact-ROM checks and matching
-independent smoke passes. [Current release and scope](RELEASE-v0.22.1.md).
-Local 1v1 already works in **Local Versus** with separate controller ports.
-Walking improvements and clearer local-play discovery are the next follow-ups.
-The v0.22.0 material below is historical, including its ten-feature review gallery.
-
-## Historical v0.22.0 combined notes
-
-This guide describes all ten improvements together on
-`integration/ten-improvements-v022`. Run the root [Play.cmd](../Play.cmd) from
-that checkout to play in Snes9x; on other platforms open
-`dist/abaqus-after-hours.sfc` in a SNES emulator. Main remains v0.21.0 pending
-your combined playtest and [final PR #1](https://github.com/Reston/snes-abaqus-fighter/pull/1).
-The title's lower-right version label identifies your game. Combined native
-verification passes; no v0.22.0 playtest approval or offline ZIP exists.
-The latest full offline archive is v0.19.0, which uses its older six-button
-combat layout. See the [combined release guide](RELEASE-v0.22.0.md) for all ten
-changes and their feature links.
+This is a native SNES game. On Windows use [Play.cmd](../Play.cmd); on other
+platforms load `dist/abaqus-after-hours.sfc` in a SNES emulator.
 
 Focus Snes9x and press **Enter**. **Alt+Enter** toggles fullscreen;
 **Input -> Input Configuration** maps controllers. The launcher prepares
@@ -81,8 +41,9 @@ Opposite directions cancel. Menu priority is Start, then B, then A.
 
 - **Y** is the quick close jab. **X** is the heavy punch with committed
   recovery. **B** reaches farther for spacing; Down+B attacks low. **A** is
-  the longest normal. Close blocked heavy punches/kicks leave time for a jab
-  punish. Each fighter still has individual speed, power and reach.
+  the strong kick with a longer windup. Close blocked heavy punches/kicks
+  leave time for a jab punish; use B to punish a more distant whiff. Each fighter
+  still has individual speed, power and reach.
 - Confirm a real **Y hit into X**, or **B into A**. A confirmed light normal
   or strong kick can cancel into a special during its window. A whiff or block
   does not enable a cancel; repeating Y is not an automatic continuous combo.
@@ -95,8 +56,8 @@ Opposite directions cancel. Menu priority is Start, then B, then A.
   until meter fills will not activate it. Supers have vulnerable startup and
   punishable recovery; some multi-hit sequences have gaps.
 - Hold away to guard, or Down+away against low attacks. Jump-ins can beat low
-  guard. Jump past the opponent and press **A** just after crossing for the
-  short rear air-kick cross-up; switch guard direction after a crossing.
+  guard. Time **A** as you jump past the opponent for the short rear air-kick
+  cross-up; switch guard direction after a crossing.
 - Toward+X throws at close range, including through guard; damage lands when
   the defender reaches the floor. Simultaneous throws tech. During the final
   get-up phase, a fresh attack or jump can buffer; enter special motions after
@@ -177,14 +138,13 @@ A new Training match returns to Stand, a visible footer and the first drill.
 - Compare CPUs at the same difficulty, then spend a full gauge on different
   supers. Try blocking and interrupting them as well as landing them.
 - Walk together across **Las Condes, El Castillo and La Oficina**. Scenery
-  shifts subtly above the fixed floor; a round win triggers ambient cheers.
+  moves as one connected scene above the fixed floor, without split bands.
 - Play Arcade with a rival pair such as Damian/Reston. Read or skip the
   exchange, hear Round/Fight/K O, compare light/heavy/guard sounds and listen
   for music ducking and the victory cadence. Finish a ladder for its ending.
 
-All twelve original illustrated fighters, approved Damian likeness, portraits
-and costumes are retained. Record the title version, exact cartridge hash and
-a repeatable example with feedback. No v0.22.0 human approval is recorded;
-gameplay/balance, full listening, physical controllers, likeness/consent and
-public-use reviews remain open. `public_release_certified` is false, and
-original-console/flash-cartridge support remains unverified.
+Approved walking, portraits, fighter palettes and physical height remain.
+The revised combat poses are original full-body drawings; prior source masters
+are retained. Include the title version and a repeatable example with feedback.
+The combined human playtest is still pending. Historical approved-main notes
+remain in [v0.23.1](RELEASE-v0.23.1.md).
