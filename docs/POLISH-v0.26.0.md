@@ -225,3 +225,12 @@ match adds one session win for its actual winner. Either-pad rematches retain
 the tally, while returning to character select begins a new session. Waiting
 on a result or winning only the first round never adds another match win.
 Two reserved bytes cap the display at 99 per player; no combat state changes.
+
+## Pass 17: learn a fighter before choosing
+
+The roster's unused portrait-side rows show the ordinary-special family:
+wave shot, rush, low wave or rising strike. Down+Y, its 32-energy cost and
+the shared super chord stay visible during both players' choices. Short copy
+leaves an eight-pixel right margin. Portrait bytes, roster cards, cursor and
+footer remain exact. Both pinned cores verify all twelve hints on both
+selection steps, approved native portraits and clearing of longer old labels.

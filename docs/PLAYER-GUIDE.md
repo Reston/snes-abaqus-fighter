@@ -97,6 +97,9 @@ The exchange/result shows **SHIFT 01/11** through **SHIFT 11/11**. Results name
 the next opponent or the opponent you will retry; pause names CPU difficulty.
 
 **Local Versus:** choose both fighters and an arena for a best-of-three match.
+Roster portraits now show the fighter's ordinary-special type, Down+Y shortcut
+and energy cost, plus the shared super chord. Their detailed move names remain
+on the pause guide.
 Both physical ports share the four-button layout, specials and super command.
 Either pad chooses the arena and controls the result card. A/Start rematches,
 B returns to character select, and the winner label names Player 1 or Player 2.

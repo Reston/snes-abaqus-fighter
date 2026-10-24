@@ -321,7 +321,7 @@ void showTitle(void) {
     music(0);finishScreen();
 }
 void drawSelect(void) {
-    u8 id,x,y;
+    u8 id,x,y,family;
     clearUi();id=selectPlayer ? selected2:selected;
     cursor(1+(id%4)*5,6+(id/4)*6,5,6);
     /* Dedicated source-master portrait: eight by ten BG2 tiles. */
@@ -330,6 +330,13 @@ void drawSelect(void) {
     if(mode==2 && selectPlayer)word(23,4,"DUMMY");
     else word(23,4,selectPlayer ? "PLAYER 2":"PLAYER 1");
     word(22,17,characterNames[id]);
+    family=profileFor(id)->specialFamily;
+    word(22,19,"SPECIAL");
+    if(family==SPECIAL_PROJECTILE)word(22,20,"WAVE SHOT");
+    else if(family==SPECIAL_RUSH)word(22,20,"RUSH");
+    else if(family==SPECIAL_GROUNDWAVE)word(22,20,"LOW WAVE");
+    else word(22,20,"RISING");
+    word(22,22,"DOWN+Y");word(22,23,"32 ENERGY");word(22,25,"SUPER Y+B");
     center(27,"D-PAD SELECT A/START OK B BACK");
     portraitId=id;portraitDirty=1;fullDirty=1;
 }
