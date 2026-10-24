@@ -202,7 +202,10 @@ class Observe:
 
 def stage_case(stage,independent=False):
     label=('accuracy' if independent else 'snes9x')+'-stage'+str(stage)
-    e=Probe() if independent else Emulator();frames=[];impact_frames=[];states=[]
+    e=Probe() if independent else Emulator();frames=[];impact_frames=[];states=[];stills={}
+    def save_still(frame,name):
+        path=OUT/(label+'-'+name+'.png');frame.save(path)
+        stills[path.relative_to(ROOT).as_posix()]=sha(path.read_bytes())
     plane,floor=render_plane(stage),render_plane(stage,True)
     try:
         boot(e,stage,4,6)
@@ -212,7 +215,7 @@ def stage_case(stage,independent=False):
             old=camera(e);obs.tick(['left'],['right']);intro_samples+=1
             require(camera(e)==old==0,'freeze',{'case':label,'policy':'intro'})
         obs.run(8)
-        initial=image(e);initial.save(OUT/(label+'-center.png'))
+        initial=image(e);save_still(initial,'center')
         oracle(e,plane,floor,[0])
         glyphs=vram_bytes(e)[0x8000:0xb000]
         pixel_checks=1
@@ -231,7 +234,7 @@ def stage_case(stage,independent=False):
             for rect in ((0,0,112,16),(160,0,256,16)):
                 check(difference(initial.crop(rect),image(e).crop(rect))==0,'HUD names/health stay exact during whole-plane movement',[label,rect])
             actor_contract(e,expected_floor=201)
-            image(e).save(OUT/(label+'-'+direction+'.png'))
+            save_still(image(e),direction)
         # Match the shared controller fixtures' three-frame button press.
         # One callback pulses can fall between this core's joypad samples.
         obs.run(3,p2=['start']);obs.run(10)
@@ -241,7 +244,7 @@ def stage_case(stage,independent=False):
         obs.run(3,['select']);obs.run(15);frozen_image=image(e)
         obs.run(24)
         require(image(e).tobytes()==frozen_image.tobytes(),'freeze',{'case':label,'policy':'opaque Controls guide'})
-        image(e).save(OUT/(label+'-guide.png'))
+        save_still(image(e),'guide')
         obs.run(3,['start']);obs.run(10)
         # Native contact, hitstop, shake and real KO. Never write game state.
         saw_hitstop=0;shake_pixels=set();hits=0;oldhp=e.state()['hp2']
@@ -269,6 +272,7 @@ def stage_case(stage,independent=False):
                 'impact_pixel_offsets':sorted(shake_pixels),'movement_clip':gif(frames,label+'-movement.gif'),
                 'impact_clip':gif(impact_frames,label+'-contacts.gif',step=1),
                 'impact_clip_policy':'selected contact/hitstop episodes concatenated; GIF playback timing is approximate',
+                'stills':[{'path':path,'sha256':digest,'scope':'current native PPU'} for path,digest in sorted(stills.items())],
                 'pixel_samples_sha256':sha(json.dumps(states).encode()),**obs.report()}
         check(e.audio_samples>0 and e.audio_peak>0,'native SPC produces captured PCM without a device',[label,e.audio_samples,e.audio_peak])
         return result

@@ -674,6 +674,13 @@ def main():
             directory = ROOT/('docs/screenshots/combat-24-contact' if full_roster else 'build/v024-contact-captures')
             overlays(ROOT, DATA, directory)
             report['captures'] = capture_comparison(directory)
+            diagnostics = [directory/f'{fighter:02d}-all64-regions.png' for fighter in range(12)]
+            diagnostics += [directory/'roster-pose-regions.png', directory/'exact-contact-boundaries.png']
+            report['conversion_diagnostics'] = [
+                {'path':path.relative_to(ROOT).as_posix(), 'sha256':sha(path.read_bytes()),
+                 'geometry_digest':DATA['digest'],
+                 'scope':'offline encoded-art and geometry diagnostic; not native video evidence'}
+                for path in diagnostics]
         report['status'] = 'passed' if full_roster else 'diagnostic-passed'
     except Exception as error:
         report['error'] = repr(error)
