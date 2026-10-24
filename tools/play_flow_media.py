@@ -26,6 +26,7 @@ FILES = {
     'roster': [f'roster-family-{i}.png' for i in range(4)],
     'motion': ['background-still-guide.png', 'background-moving.gif', 'background-still.gif'],
     'build': [], 'native-build': [], 'native-suite': [], 'launcher': [],
+    'long-session': [], 'session-limit': ['local-session-cap-p1.png', 'local-session-cap-both.png'],
 }
 WAVS = ('music-on', 'music-muted', 'muted-menu-cue', 'muted-round-fight', 'music-restored')
 

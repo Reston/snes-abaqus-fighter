@@ -62,3 +62,25 @@ and host guards, focused pacing/supers/CPU/stage proofs and the complete new
 polish proofs must pass before final verification. Stage suite/focused coverage
 shares one execution, counted once. No new offline package or human approval
 is implied by these technical checks.
+
+## Fixed-actor HUD and continuous-session proof
+
+The HUD's indexed two-actor loop is expanded at literal actor indices 0 and 1.
+The validator derives the exact source expansion from freeze 41b2c7e, retaining
+read/store/call order, bar pixels, cue thresholds and transfer bounds. No
+physics, input, damage or mutable state is added. It clears a measured native
+frame miss in an otherwise unchanged one-hour Arcade trajectory.
+
+Current long-session gates use all four real face-button normal actions
+1/3/4/5, three actual arenas, real contacts, one continuous core per mode and
+strict original cadence/PCM/FIFO/OBJ predicates. Training covers a full live
+CPU hour and all twelve opponents. Roster waits are neutral, at most 32
+callbacks, and start only after direct WRAM already says SELECT. The old
+six-normal/champion-in-one-hour traffic completeness contract stays historical;
+focused Arcade coverage separately proves the complete ladder.
+
+The Arcade comparison retains the first complete TRACE/native publication,
+requires the complete baseline logical span and compares every raw gameplay
+and controller byte. A candidate repeat, missing publication, changed padding
+or input, or unjustified trailing span fails. Full physical streams remain
+under ignored build. Session limits are earned through 200 real matches.

@@ -49,6 +49,7 @@ def main():
         report['media_guard_runs'] = host_guards('test_play_flow_media.py')
         report['collation_guard_runs'] = host_guards('test_play_flow_collation.py')
         report['counterfactual_guard_runs'] = host_guards('test_play_flow_counterfactual.py')
+        report['long_session_guard_runs'] = host_guards('test_long_session_guards.py')
         environment = dict(os.environ, ABAQUS_HEADLESS='1')
         run = subprocess.run(['cmd', '/d', '/c', str(ROOT / 'Test.cmd')], cwd=ROOT,
                              stdin=subprocess.DEVNULL, capture_output=True, env=environment,

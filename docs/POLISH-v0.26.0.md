@@ -3,8 +3,10 @@
 This candidate stacks on the unmerged v0.25 pacing/floor candidate in
 [PR #21](https://github.com/Reston/snes-abaqus-fighter/pull/21). It retains that
 slower fight rhythm, detailed floors and approved fighter art. Main remains
-v0.24.0. These are focused work checkpoints; final combined verification and
-human playtest are pending.
+v0.24.0. The pass measurements below are historical checkpoints. Final combined
+verification passes; human playtest is pending. See
+[the current release guide](RELEASE-v0.26.0.md) and
+[verification record](verification-v0.26.0.json).
 
 ## Pass 1: local match results
 
@@ -357,3 +359,43 @@ Fixed anti-air menu delays were remeasured; all hit/whiff/startup/negative
 assertions remain intact, including an equal-opening difficulty comparison
 and an empty jump intercepted before any attack input. Complete old reports
 and captures are archived in ignored build/v026-first-freeze-evidence.zip.
+
+## Pass 25: make current proof and review easy to follow
+
+One final frozen source inventory binds every native producer and entry
+command. The current 432-case stress run retains complete per-case reports
+and unmasked streams, uses no candidate callback collapse and makes no
+baseline byte-equivalence claim. Collation rejects stale identities, missing
+coverage/media and failed health checks. Source/media/collation mutation tests
+pass in normal and optimized Python. One topic-based review gallery binds
+native captures to the verification record, labels historical comparisons and
+starts with motion paused. Player and developer guides name the same cartridge.
+
+## Pass 26: long-session stability and score boundaries
+
+A supplemental native Arcade hour found one real SDK lag increment near its
+end on 6b392d / AA3D. The fixed-actor HUD expansion reduces emitted indirect
+accesses from 22 to 10 while preserving every original HUD read/store/call in
+order. The preservation contract derives that expansion from frozen 41b2c7e;
+combat, RNG, art, RAM and ABI remain unchanged. The isolated 27223b candidate
+clears the complete hour and matches 244,237 complete coherent native states
+and controller inputs with every state byte unmasked. All physical streams
+are retained. The original reference has one repeated live publication; the
+candidate has none. The final integrated cartridge must repeat these gates.
+
+The score boundary probe earns 200 real two-round matches: P1 wins one hundred,
+then P2 wins one hundred. Both counters saturate at 99, native result glyphs
+match every earned score, either-pad rematches retain the session and Back
+clears it. Current-cartridge evidence is regenerated after the final freeze.
+
+The v0.7-era endurance traffic harness retains its original health predicates.
+A current producer adds four-face-button coverage, bounded neutral waiting
+only after Back has already changed the direct native scene, and roster
+rotation relative to the actual arena. Its three native live hours do not
+claim the historical six-attack contract or require its traffic bot to finish
+a champion ladder within an hour; the focused Arcade proof separately earns
+all eleven victories. The earlier canonical route/coverage failures and the
+one real timing failure remain in ignored build records. An isolated recorder
+nested the root ROM identity inside its candidate diagnostic; the outer loaded
+ROM identity is correct and a separate erratum preserves that distinction.
+Final integrated records read the actual current root cartridge identity.

@@ -18,11 +18,13 @@ from candidate_sources import snapshot as source_snapshot
 from test_compatibility import CORE_PATH as INDEPENDENT_CORE_PATH
 from play_flow_media import inventory as media_inventory
 from play_flow_counterfactual import validate as validate_reference
+from test_play_flow_long_26 import current_coverage as hour_coverage, compare_streams as compare_hour_streams
+import math
 
 INHERITED = {p: f'play-flow-v026-{p}-report.json' for p in ('pacing', 'supers', 'cpu', 'stage')}
 PARTS = ('results', 'training', 'meter', 'arenas', 'arcade', 'manual', 'rounds',
          'feedback', 'previews', 'repeat', 'music', 'confirm', 'normal-guide', 'throw',
-         'best', 'session', 'roster', 'motion', 'build', 'native-build', 'native-suite', 'launcher', 'stress')
+         'best', 'session', 'roster', 'motion', 'build', 'native-build', 'native-suite', 'launcher', 'stress', 'long-session', 'session-limit')
 
 
 def require(ok, message):
@@ -146,7 +148,7 @@ def feature_coverage(part, report):
         require(report.get('native_execution') is True and report.get('exit_code') == 0 and
                 set(report.get('suite_reports', {})) == set(SIX), 'Canonical six-program execution is incomplete')
         for key, producer in (('source_guard_runs', 'test_candidate_sources.py'), ('media_guard_runs', 'test_play_flow_media.py'),
-                              ('collation_guard_runs', 'test_play_flow_collation.py'), ('counterfactual_guard_runs', 'test_play_flow_counterfactual.py')):
+                              ('collation_guard_runs', 'test_play_flow_collation.py'), ('counterfactual_guard_runs', 'test_play_flow_counterfactual.py'), ('long_session_guard_runs', 'test_long_session_guards.py')):
             parsed = ast.parse((ROOT / 'tools' / producer).read_text())
             expected = sum(isinstance(n, ast.FunctionDef) and n.name.startswith('test_') for cls in parsed.body if isinstance(cls, ast.ClassDef) for n in cls.body)
             runs = report.get(key, [])
@@ -157,6 +159,25 @@ def feature_coverage(part, report):
         rows_equal(cases, ('scenario',), [(s,) for s in ('valid', 'wrong-sha', 'stale-version', 'truncated-rom', 'missing-manifest', 'malformed-manifest')], part)
         require(report.get('gui_opened') is False and report.get('setup_invoked') is False and
                 [r['accepted'] for r in cases] == [True, False, False, False, False, False], 'Launcher validation scope differs')
+    elif part == 'session-limit':
+        matches=report['matches']
+        require(len(matches)==200 and report['native_health']['callbacks']>0 and not report['native_health']['failures'] and report['native_health']['max_spc_backlog']<=6, 'Session limit lacks real native coverage')
+        for index,row in enumerate(matches):
+            score=[min(99,index+1),0] if index<100 else [99,min(99,index-99)]
+            require(row['match']==index+1 and row['winner']==int(index>=100) and row['score']==score and row['earned_callbacks']>0 and row['native_checks']>0, 'Session saturation route/count differs')
+        require(report['native_assertions']==sum(row['native_checks'] for row in matches), 'Session saturation native assertion count differs')
+    elif part == 'long-session':
+        rows_equal(cases, ('mode',), [(0,), (1,), (2,)], part)
+        require(report['diagnostic'] is False, 'Long-session summary is partial')
+        for row in cases:
+            proof=row['native']
+            require(proof['rom_sha256']==report['rom_sha256'] and proof['core']==report['core'] and row['legacy_six_button_champion_completeness_claimed'] is False, 'Continuous hour native identity/scope differs')
+            require(hour_coverage(row['mode'],proof,math.ceil(proof['video_fps']*3600))==row['coverage'], 'Continuous hour current coverage differs')
+            require(all(event['before_native']==event['after_trace']==event['after_native']==1 and 0<=event['neutral_callbacks']<=32 for event in row['roster_publication_waits']), 'Continuous hour route wait escapes its native roster transition')
+        row=cases[0];baseline=read(row['baseline_reference']['path'])
+        require(sha((ROOT/row['baseline_reference']['path']).read_bytes())==row['baseline_reference']['sha256'] and baseline['rom_sha256']==row['baseline_reference']['rom_sha256'], 'Original rare-lag reference differs')
+        candidate=ROOT/row['stream']['path'];require(candidate.resolve().is_relative_to(ROOT/'build') and sha(candidate.read_bytes())==row['stream']['sha256'], 'Current complete unmasked hour stream changed')
+        require(compare_hour_streams(ROOT/baseline['stream_path'],candidate)==row['comparison'] and row['comparison']['compared_logical_frames']>=200000, 'Full hour unmasked gameplay comparison differs')
     elif part == 'stress':
         rows_equal(cases, ('fighter', 'stage', 'phase', 'approach_port', 'spacing'),
                    list(itertools.product(range(12), range(3), range(3), range(2), ('wide', 'close'))), part)

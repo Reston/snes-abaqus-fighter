@@ -67,6 +67,19 @@ def validate(root):
         require(raw.count(allowed_line) == 1 and raw.replace(allowed_line, '') == function_source(before, name),
                 'Practice input change escapes its explicit manual/recovery-guard branch', name)
         functions[name] = sha(raw.encode())
+    # Fixed actor operands preserve every prior HUD read/store/call, in order.
+    # This removes repeated far-pointer construction on a measured live hotspot.
+    hud_before = canonical('game.c', git(root, 'show', '41b2c7e27b9c63c54a2b0864db206f1c7a06a95f:src/game.c')).decode('utf-8')
+    hud = function_source(hud_before, 'hud')
+    prefix = '    for(p=0;p<2;p++) {\n        f=&fighters[p];\n'
+    begin = hud.index(prefix)
+    end = hud.rindex('\n    }\n}')
+    body = hud[begin+len(prefix):end].replace('f->', 'fighters[p].')
+    macro = '#define HUD_ACTOR(p) do { \\\n' + '\n'.join('    '+line.strip()+' \\' for line in body.splitlines()) + '\n} while(0)\n'
+    expected = hud[:begin].replace('    u8 p,x;\n    Fighter *f;', '    u8 x;') + '    HUD_ACTOR(0);HUD_ACTOR(1);' + hud[end+len('\n    }'):]
+    require(current.count(macro) == 1 and function_source(current, 'hud') == expected,
+            'HUD optimization escapes its exact fixed-actor expansion')
+    functions['hud_fixed_actor_expansion'] = sha((macro+expected).encode())
     cpu = canonical('cpu.h', (root / 'src/cpu_personality.h').read_bytes())
     # The only CPU dispatch addition sends new non-CPU practice dummies to
     # trainingKeys. The actual ordinary AI policy stays exactly v0.25.

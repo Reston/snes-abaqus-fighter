@@ -84,5 +84,22 @@ class PlayFlowCollationTests(unittest.TestCase):
             feature_coverage('arcade', data)
 
 
+    def test_session_saturation_requires_all_two_hundred_actual_scores(self):
+        matches=[{'match':i+1,'winner':int(i>=100),'score':[min(99,i+1),0] if i<100 else [99,min(99,i-99)],'earned_callbacks':100,'native_checks':300} for i in range(200)]
+        data={'matches':matches,'native_health':{'callbacks':20000,'failures':[],'max_spc_backlog':6},'native_assertions':60000}
+        feature_coverage('session-limit',data)
+        for bad in ('missing','wrong-score'):
+            changed=copy.deepcopy(data)
+            if bad=='missing':changed['matches'].pop()
+            else:changed['matches'][100]['score']=[0,1]
+            with self.subTest(bad=bad),self.assertRaises(RuntimeError):feature_coverage('session-limit',changed)
+
+    def test_long_session_requires_exactly_three_full_modes(self):
+        for modes in ((0,1),(0,0,2)):
+            data={'cases':[{'mode':mode} for mode in modes],'diagnostic':False}
+            with self.subTest(modes=modes),self.assertRaises(RuntimeError):feature_coverage('long-session',data)
+        with self.assertRaises(RuntimeError):feature_coverage('long-session',{'cases':[{'mode':i} for i in range(3)],'diagnostic':True})
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

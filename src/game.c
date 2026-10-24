@@ -362,41 +362,40 @@ void showArenas(void) { setScreenOff();screen=ARENA;commonScreen();loadBackgroun
 
 #include "arcade_story.h"
 
+#define HUD_ACTOR(p) do { \
+    if(hudHp[p]!=fighters[p].hp) { \
+    hudHp[p]=fighters[p].hp; \
+    refreshHealthBar(p); \
+    hudDirty=1; \
+    } \
+    if(hudEnergy[p]!=fighters[p].energy) { \
+    refreshEnergyBar(p); \
+    /* Full gauge teaches the command in the existing bottom rule. \
+    * Only threshold transitions touch these nine cached cells. */ \
+    if(fighters[p].energy==ENERGY_MAX) { \
+    word(p?22:1,4,"SUPER Y+B"); \
+    for(x=p?22:1;x<(p?31:10);x++)ui[128+x]|=0x0400; \
+    } else if(hudEnergy[p]==ENERGY_MAX || hudEnergy[p]==255) { \
+    for(x=p?22:1;x<(p?31:10);x++)ui[128+x]=158|0x2000; \
+    } \
+    hudEnergy[p]=fighters[p].energy; \
+    hudDirty=1; \
+    } \
+    if(hudWins[p]!=fighters[p].won) { \
+    hudWins[p]=fighters[p].won; \
+    ui[64+(p?29:1)]=(fighters[p].won>0?147:148)|0x2000;ui[64+(p?30:2)]=(fighters[p].won>1?147:148)|0x2000; \
+    hudDirty=1; \
+    } \
+} while(0)
 void hud(void) {
-    u8 p,x;
-    Fighter *f;
+    u8 x;
     /* A recovery refresh can precede the periodic refresh in the same tick.
      * Check direct fields before entering the indexed changed-field path. */
     if(hudSeconds==seconds && hudHp[0]==fighters[0].hp && hudHp[1]==fighters[1].hp &&
        hudEnergy[0]==fighters[0].energy && hudEnergy[1]==fighters[1].energy &&
        hudWins[0]==fighters[0].won && hudWins[1]==fighters[1].won)return;
     if(hudSeconds!=seconds){number(15,0,seconds);hudSeconds=seconds;hudDirty=1;}
-    for(p=0;p<2;p++) {
-        f=&fighters[p];
-        if(hudHp[p]!=f->hp) {
-            hudHp[p]=f->hp;
-            refreshHealthBar(p);
-            hudDirty=1;
-        }
-        if(hudEnergy[p]!=f->energy) {
-            refreshEnergyBar(p);
-            /* Full gauge teaches the command in the existing bottom rule.
-             * Only threshold transitions touch these nine cached cells. */
-            if(f->energy==ENERGY_MAX) {
-                word(p?22:1,4,"SUPER Y+B");
-                for(x=p?22:1;x<(p?31:10);x++)ui[128+x]|=0x0400;
-            } else if(hudEnergy[p]==ENERGY_MAX || hudEnergy[p]==255) {
-                for(x=p?22:1;x<(p?31:10);x++)ui[128+x]=158|0x2000;
-            }
-            hudEnergy[p]=f->energy;
-            hudDirty=1;
-        }
-        if(hudWins[p]!=f->won) {
-            hudWins[p]=f->won;
-            ui[64+(p?29:1)]=(f->won>0?147:148)|0x2000;ui[64+(p?30:2)]=(f->won>1?147:148)|0x2000;
-            hudDirty=1;
-        }
-    }
+    HUD_ACTOR(0);HUD_ACTOR(1);
 }
 #include "super_moves.h"
 

@@ -9,24 +9,22 @@ Preserve the native emulator requirement when extending the project.
 <!-- v026-agent:start -->
 - **v0.26.0 is the active autonomous polish candidate**, branch
   `feature/play-flow-polish-v026`, stacked PR #22 on unmerged PR #21 (v0.25).
-  The user requested sequential topic-based polish until weekly Codex remaining
-  allowance reaches 5% or less. Read the live 10080-minute rate-limit window;
-  do not invent a meter value or confuse it with context/goal tokens. Do not
-  infer a new merge approval. Main remains approved v0.24.0.
-  Twenty-four completed polish passes cover local result/arena ownership,
-  Training confirms/manual practice/best records, readable combat cues, roster
-  and Arcade orientation, comfort preferences and reproducible build/launch
-  publication. Read docs/POLISH-v0.26.0.md and its native contract.
-  Current ROM is `de6d7f36e09ea1e6aa1d6fdbb35fb55c1737c8e1d35aeac47b99e9a38933e62c`,
-  checksum `9B30`. The fourteen-pass checkpoint passed 49,656 native checks;
-  that checkpoint remains historical while final combined proofs run.
-  Preserve v0.25's slower physics/timing, all fighter art/portraits/palettes,
-  existing 1,318 RAM addresses and ABI, audio assets and stage payloads. The
-  arena's four outputs and size declaration are an authorized derived-art
-  exception; generated count remains226. No new offline package is claimed.
-  Current progress/active jobs and the actual meter source path are retained
-  in ignored build/v026-state.json. Final source freeze/combined verification
-  and human review are still pending; do not mark the PR ready prematurely.
+  The user requested sequential polish until weekly Codex remaining reaches
+  5% or less. Read the live 10080-minute rate-limit window; do not confuse it
+  with context/goal tokens. No new merge approval is inferred; main is v0.24.
+  Twenty-six polish/review topics are implemented. Current HUD-optimized ROM
+  is `27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b` / `3993`.
+  Final source freeze and integrated proofs are pending. The prior 6b392d
+  checkpoint passed 49,689 six-suite checks/all focused/432 stress, but a later
+  hour exposed one real SDK lag. The isolated fixed-actor HUD clears that hour
+  with 244,237 unmasked logical states exact. Retain the failed original and
+  its metadata erratum; regenerate current evidence before PR readiness.
+  Preserve v0.25 slower rules, all fighter/stage/audio art, existing 1,318 RAM
+  addresses and ABI. Only the derived arena outputs/size declaration differ
+  among v0.26's 226 generated outputs. No new offline package is claimed.
+  Current work and jobs are retained in ignored build/v026-state.json.
+  Read docs/POLISH-v0.26.0.md and docs/POLISH-v0.26-CONTRACT.md.
+  Human playtest and merge approval remain pending for both candidate PRs.
 <!-- v026-agent:end -->
 
 
