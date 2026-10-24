@@ -7,11 +7,13 @@ from __future__ import annotations
 import argparse
 import ctypes as C
 import hashlib
+import io
 import json
 from pathlib import Path
 import re
 import subprocess
 import sys
+import tarfile
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -382,8 +384,11 @@ def static_contract():
     changed = []
     names = subprocess.check_output(['git', 'ls-files', 'assets/generated'], cwd=ROOT).decode().splitlines()
     check(len(names) == 219, 'Native generated inventory remains 219 files')
+    archive = subprocess.check_output(['git', 'archive', '--format=tar', '3f51120', 'assets/generated'], cwd=ROOT)
+    with tarfile.open(fileobj=io.BytesIO(archive)) as source:
+        originals = {m.name: source.extractfile(m).read() for m in source.getmembers() if m.isfile()}
     for name in names:
-        original = subprocess.check_output(['git', 'show', '3f51120:'+name], cwd=ROOT)
+        original = originals[name]
         current = (ROOT/name).read_bytes()
         if name.endswith(('.h', '.asm', '.json')):
             original, current = original.replace(b'\r\n', b'\n'), current.replace(b'\r\n', b'\n')
