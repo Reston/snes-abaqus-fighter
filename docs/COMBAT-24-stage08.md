@@ -46,9 +46,9 @@ vblank, OBJ, immutable VRAM and freeze assertions remain strict. Optional
 before/after floor images and continuous movement clips on the same contact
 base. Comparison PNGs place before left and after right, enlarged2x nearest.
 
-Round2 final exact-ROM evidence is written to
-`docs/combat-24-stage08-report.json`; the older figures later in this note
-are explicitly historical until replaced by the completed round2 result.
+Round2 final exact-ROM evidence is in
+`docs/combat-24-stage08-report.json` and the round2 evidence section below.
+The first-round evidence later in this note remains historical.
 
 Las Condes, El Castillo and La Oficina have new versioned built-in imagegen
 masters under `assets/art/stages/depth-v1/`. Every exact prompt, input role,
@@ -152,6 +152,49 @@ All other runtime behavior lives in `src/stage_depth.h`. Parent owns shared
 preservation/test policies and must adapt the old32x32/animated-stage oracles
 to the explicitly changed map/ambient policy. Do not weaken overflow, actor,
 cadence, UI or exact asset checks.
+
+## Round2 exact native evidence
+
+Production source/harness freeze `8bc44749ffe63bdec2c2a09c86c19f250aefb2cb` builds the
+isolated 4 MiB ROM `aafe7b26ff1cf26415e7211e4f19eed6696dd39d4936991141aac411fc1e641b`, header `D6EC`.
+The full focused driver passes 740 checks in
+437.656 seconds on the pinned Snes9x 1.63 and bsnes2014
+Accuracy cores. Six stage/contact cases, six 720-frame simultaneous-wave/jump
+cases and six 180-frame roster pairs total 12672 measured native callbacks,
+covering all three stages, all twelve fighters and both controller ports.
+Every measured simulation/vblank delta is 1 with no added lag. Peak SPC backlog
+is 3 bytes and peak scanline use is
+16 sprites/32 tiles. All cadence,
+native-timing, overflow, transfer, PPU, freeze and SPC failure arrays are empty.
+
+All 1318 prior RAM labels retain their
+addresses. Generation is byte-idempotent across
+227 local files (226 delivery
+outputs plus ignored SMConv `soundbank.h`). Git-blob hashes independently
+validate each committed floor source/provenance. Runtime stage hooks and
+allocations are unchanged from PR16; upper stage payloads are byte-identical.
+
+Actual PPU center/left/right, movement, contact and stress evidence is under
+`docs/screenshots/combat-24-stage08/`, for both cores. Three
+`floor-comparison-stageN.png` images show before left / after right at 2x nearest;
+`floor-before-stageN.gif` preserves continuous native movement on the same
+contact-code base before material replacement. Native pixels show quiet floor
+detail and readable shadows without split architecture, wrap seams, flicker
+or tearing in the sampled scenes and clips. GIF playback timing is approximate.
+
+Exact commands (all native runs silent/headless and below normal priority):
+
+```text
+D:/snes-abaqus-fighter/.tools/python/python.exe tools/run_background.py --log build/stage08-regenerate.log -- D:/snes-abaqus-fighter/.tools/python/python.exe tools/make_assets.py
+D:/snes-abaqus-fighter/.tools/python/python.exe tools/stage_depth_assets.py
+D:/snes-abaqus-fighter/.tools/python/python.exe tools/run_background.py --log build/stage08-floor-final-build.log -- D:/snes-abaqus-fighter/.tools/python/python.exe tools/build.py
+D:/snes-abaqus-fighter/.tools/python/python.exe tools/run_background.py --log build/stage08-floor-focused.log -- D:/snes-abaqus-fighter/.tools/python/python.exe tools/test_combat_24_stage08.py --floor-before-rom build/v024-stage08-before-floor.sfc
+```
+
+`build/v024-stage08.sfc`, `.sym` and `-manifest.json` retain this exact isolated
+candidate. Tracked generated/dist outputs are restored before handoff; none
+are committed. These are feature results on the contact integration base,
+not combined main verification or human playtest approval.
 
 ## Historical first-round native evidence
 

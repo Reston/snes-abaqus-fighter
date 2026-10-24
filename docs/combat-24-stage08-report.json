@@ -1,12 +1,14 @@
 {
   "status": "passed",
-  "scope": "isolated-stage08-v024",
+  "scope": "isolated-stage08-v024-floor-review-round2",
   "baseline_commit": "3f51120",
-  "source_commit": "a1af3dbfa8ad8b448adb70b1c16cd24bd8a314e7",
-  "command": "D:\\snes-abaqus-fighter\\.tools\\python\\python.exe tools/test_combat_24_stage08.py",
-  "rom_sha256": "2ec631011c9bde8e073b96f0d74863a52fdf756e411579495cf0d1d6497139a7",
+  "integration_base": "8d0505d",
+  "previous_feature_head": "7c5bf13b1578d769d308a5e89d4913c08baf654d",
+  "source_commit": "8bc44749ffe63bdec2c2a09c86c19f250aefb2cb",
+  "command": "D:\\snes-abaqus-fighter\\.tools\\python\\python.exe tools/test_combat_24_stage08.py --floor-before-rom build/v024-stage08-before-floor.sfc",
+  "rom_sha256": "aafe7b26ff1cf26415e7211e4f19eed6696dd39d4936991141aac411fc1e641b",
   "rom_bytes": 4194304,
-  "harness_sha256": "aa4cdf08ca131297f7ecb860c0c49450e6009d5d3fb43f14fb2dbeaf62d890bd",
+  "harness_sha256": "79e6683b61a1ca69267f27a88420e5d804b863abfced16c5a41b2186eba3f5c4",
   "host": {
     "python": "3.12.10",
     "pillow": "13.0.0",
@@ -1347,11 +1349,6 @@
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.attackReachtext_0x10"
-    },
-    {
-      "check": "native linked section fits one32KiB bank",
-      "passed": true,
       "details": "SECTIONSTART_.rngtext_0x11"
     },
     {
@@ -1583,11 +1580,6 @@
       "check": "native linked section fits one32KiB bank",
       "passed": true,
       "details": "SECTIONSTART_.updateSupertext_0x40"
-    },
-    {
-      "check": "native linked section fits one32KiB bank",
-      "passed": true,
-      "details": "SECTIONSTART_.superCanHittext_0x41"
     },
     {
       "check": "native linked section fits one32KiB bank",
@@ -1837,72 +1829,92 @@
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.verticalContacttext_0x73"
+      "details": "SECTIONSTART_.contactActionFrametext_0x73"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.canHittext_0x74"
+      "details": "SECTIONSTART_.contactBodytext_0x74"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.combattext_0x75"
+      "details": "SECTIONSTART_.contactWorldHittext_0x75"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.poseFortext_0x76"
+      "details": "SECTIONSTART_.contactStriketext_0x76"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.personalityIntroFrametext_0x77"
+      "details": "SECTIONSTART_.contactWavetext_0x77"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.personalityVictoryFrametext_0x78"
+      "details": "SECTIONSTART_.canHittext_0x79"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.personalityAccenttext_0x79"
+      "details": "SECTIONSTART_.combattext_0x7a"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.animateFightertext_0x7a"
+      "details": "SECTIONSTART_.poseFortext_0x7b"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.drawFightertext_0x7b"
+      "details": "SECTIONSTART_.personalityIntroFrametext_0x7c"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.drawFighttext_0x7c"
+      "details": "SECTIONSTART_.personalityVictoryFrametext_0x7d"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.fightTicktext_0x7d"
+      "details": "SECTIONSTART_.personalityAccenttext_0x7e"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.menuTicktext_0x7e"
+      "details": "SECTIONSTART_.animateFightertext_0x7f"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.traceProfilestext_0x7f"
+      "details": "SECTIONSTART_.drawFightertext_0x80"
     },
     {
       "check": "native linked section fits one32KiB bank",
       "passed": true,
-      "details": "SECTIONSTART_.maintext_0x80"
+      "details": "SECTIONSTART_.drawFighttext_0x81"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.fightTicktext_0x82"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.menuTicktext_0x83"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.traceProfilestext_0x84"
+    },
+    {
+      "check": "native linked section fits one32KiB bank",
+      "passed": true,
+      "details": "SECTIONSTART_.maintext_0x85"
     },
     {
       "check": "native linked section fits one32KiB bank",
@@ -2985,6 +2997,53 @@
       "details": "stage0_floor_map.bin"
     },
     {
+      "check": "round2 preserves complete upper scenery byte for byte",
+      "passed": true,
+      "details": "stage0_tiles.bin"
+    },
+    {
+      "check": "round2 preserves complete upper scenery byte for byte",
+      "passed": true,
+      "details": "stage0_map.bin"
+    },
+    {
+      "check": "round2 preserves complete upper scenery byte for byte",
+      "passed": true,
+      "details": "stage0_pal.bin"
+    },
+    {
+      "check": "authored ground has genuine material tiles within existing BG3 allocation",
+      "passed": true,
+      "details": [
+        0,
+        46
+      ]
+    },
+    {
+      "check": "ground uses exactly two quiet existing blue-gray UI colors",
+      "passed": true,
+      "details": [
+        0,
+        [
+          [
+            139,
+            148,
+            180
+          ],
+          [
+            172,
+            189,
+            213
+          ]
+        ]
+      ]
+    },
+    {
+      "check": "floor contrast remains restrained beneath dark actor shadows",
+      "passed": true,
+      "details": 0
+    },
+    {
       "check": "generated stage payload matches exact encoder manifest",
       "passed": true,
       "details": "stage1_tiles.bin"
@@ -3010,6 +3069,53 @@
       "details": "stage1_floor_map.bin"
     },
     {
+      "check": "round2 preserves complete upper scenery byte for byte",
+      "passed": true,
+      "details": "stage1_tiles.bin"
+    },
+    {
+      "check": "round2 preserves complete upper scenery byte for byte",
+      "passed": true,
+      "details": "stage1_map.bin"
+    },
+    {
+      "check": "round2 preserves complete upper scenery byte for byte",
+      "passed": true,
+      "details": "stage1_pal.bin"
+    },
+    {
+      "check": "authored ground has genuine material tiles within existing BG3 allocation",
+      "passed": true,
+      "details": [
+        1,
+        95
+      ]
+    },
+    {
+      "check": "ground uses exactly two quiet existing blue-gray UI colors",
+      "passed": true,
+      "details": [
+        1,
+        [
+          [
+            139,
+            148,
+            180
+          ],
+          [
+            172,
+            189,
+            213
+          ]
+        ]
+      ]
+    },
+    {
+      "check": "floor contrast remains restrained beneath dark actor shadows",
+      "passed": true,
+      "details": 1
+    },
+    {
       "check": "generated stage payload matches exact encoder manifest",
       "passed": true,
       "details": "stage2_tiles.bin"
@@ -3033,6 +3139,61 @@
       "check": "generated stage payload matches exact encoder manifest",
       "passed": true,
       "details": "stage2_floor_map.bin"
+    },
+    {
+      "check": "round2 preserves complete upper scenery byte for byte",
+      "passed": true,
+      "details": "stage2_tiles.bin"
+    },
+    {
+      "check": "round2 preserves complete upper scenery byte for byte",
+      "passed": true,
+      "details": "stage2_map.bin"
+    },
+    {
+      "check": "round2 preserves complete upper scenery byte for byte",
+      "passed": true,
+      "details": "stage2_pal.bin"
+    },
+    {
+      "check": "authored ground has genuine material tiles within existing BG3 allocation",
+      "passed": true,
+      "details": [
+        2,
+        71
+      ]
+    },
+    {
+      "check": "ground uses exactly two quiet existing blue-gray UI colors",
+      "passed": true,
+      "details": [
+        2,
+        [
+          [
+            139,
+            148,
+            180
+          ],
+          [
+            172,
+            189,
+            213
+          ]
+        ]
+      ]
+    },
+    {
+      "check": "floor contrast remains restrained beneath dark actor shadows",
+      "passed": true,
+      "details": 2
+    },
+    {
+      "check": "full authored stage generation is byte-idempotent",
+      "passed": true,
+      "details": {
+        "files": 227,
+        "changed": []
+      }
     },
     {
       "check": "official Snes9x1.63 x64 core is pinned",
@@ -3363,7 +3524,7 @@
       "details": [
         "snes9x-stage1",
         1836988,
-        5363
+        5307
       ]
     },
     {
@@ -3706,8 +3867,8 @@
       "passed": true,
       "details": [
         "accuracy-stage0",
-        1809296,
-        5343
+        1809300,
+        5422
       ]
     },
     {
@@ -3724,7 +3885,7 @@
       "passed": true,
       "details": [
         "accuracy-stress0",
-        44
+        45
       ]
     },
     {
@@ -3878,8 +4039,8 @@
       "passed": true,
       "details": [
         "accuracy-stage1",
-        1837018,
-        5279
+        1838086,
+        5283
       ]
     },
     {
@@ -4169,6 +4330,63 @@
         4,
         6
       ]
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        0,
+        4,
+        6
+      ]
+    },
+    {
+      "check": "native floor review keeps the complete upper scene exact",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "native floor review shows actual ground material change",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        1,
+        4,
+        6
+      ]
+    },
+    {
+      "check": "native floor review keeps the complete upper scene exact",
+      "passed": true,
+      "details": 1
+    },
+    {
+      "check": "native floor review shows actual ground material change",
+      "passed": true,
+      "details": 1
+    },
+    {
+      "check": "controller menus reach chosen native local match",
+      "passed": true,
+      "details": [
+        2,
+        4,
+        6
+      ]
+    },
+    {
+      "check": "native floor review keeps the complete upper scene exact",
+      "passed": true,
+      "details": 2
+    },
+    {
+      "check": "native floor review shows actual ground material change",
+      "passed": true,
+      "details": 2
     }
   ],
   "failure_arrays": {
@@ -4217,7 +4435,7 @@
       "max_spc_backlog": 3,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 345
+      "actor_dma_frames": 346
     },
     {
       "stage": 1,
@@ -4255,7 +4473,7 @@
       "max_spc_backlog": 3,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 345
+      "actor_dma_frames": 346
     },
     {
       "stage": 2,
@@ -4293,7 +4511,7 @@
       "max_spc_backlog": 3,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 345
+      "actor_dma_frames": 346
     },
     {
       "stage": 0,
@@ -4331,7 +4549,7 @@
       "max_spc_backlog": 3,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 345
+      "actor_dma_frames": 346
     },
     {
       "stage": 1,
@@ -4369,7 +4587,7 @@
       "max_spc_backlog": 3,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 345
+      "actor_dma_frames": 346
     },
     {
       "stage": 2,
@@ -4407,7 +4625,7 @@
       "max_spc_backlog": 3,
       "obj_peak_sprites": 16,
       "obj_peak_tiles": 32,
-      "actor_dma_frames": 345
+      "actor_dma_frames": 346
     }
   ],
   "stress": [
@@ -4459,8 +4677,8 @@
     {
       "stage": 0,
       "core": "accuracy",
-      "two_wave_frames": 44,
-      "wave_frames": 53,
+      "two_wave_frames": 45,
+      "wave_frames": 54,
       "clip": "docs/screenshots/combat-24-stage08/accuracy-stress0.gif",
       "measured_frames": 720,
       "cadence_deltas": [
@@ -4589,10 +4807,10 @@
     }
   ],
   "source_files_sha256": {
-    "src/game.c": "9c237758727b2d57da273e8cb2f21fd49e8ba47e3b42fd9b3b1832ad95be66c7",
+    "src/game.c": "1dcd10b88b9c30e1daf1a64850bf802ac247108cfd26f223b701bc127ac90761",
     "src/stage_depth.h": "90faee78052053f8e2e659a7657ce752b685b35fa00dfab84ecd8e84ef9daef7",
-    "tools/stage_depth_assets.py": "20ea0c7e291a7ed0bd292129dadb9500c0ee05790600b81f04d59db95d4fde80",
-    "tools/test_combat_24_stage08.py": "aa4cdf08ca131297f7ecb860c0c49450e6009d5d3fb43f14fb2dbeaf62d890bd",
+    "tools/stage_depth_assets.py": "4f3f574abe854574e008457421b288ead153872750c2c23f747784321236f1e3",
+    "tools/test_combat_24_stage08.py": "79e6683b61a1ca69267f27a88420e5d804b863abfced16c5a41b2186eba3f5c4",
     "assets/art/stages/depth-v1/00-las-condes.json": "96b385badfdf50c8eed9762373366678dbe0324a46a5c72ad5d853d0b02e639b",
     "assets/art/stages/depth-v1/00-las-condes.png": "4f3191e9acee6b4beb0670fb8f12d6145f7d96cd7a555312c082d1952fc94094",
     "assets/art/stages/depth-v1/01-castillo.json": "e008cd94e52d4abec02ed537ce3d668e5e8abbaf9d4bd8e59907bbd70dede408",
@@ -4600,7 +4818,14 @@
     "assets/art/stages/depth-v1/02-oficina.json": "71b2d1ad1a43001f28e0a741dc33129de84ee45fd6d8e4b80d5bc0b04a98e27d",
     "assets/art/stages/depth-v1/02-oficina.png": "f4c617d58903f77b4a1643e5664c1f70b26a4320fecf7d663c5379f12e1dfa6f",
     "assets/art/stages/depth-v1/source/00-las-condes-initial.png": "91d78a29e32802576fff36a253012644891c3726dc7bab2d184e4fa4fe5649b5",
-    "assets/art/stages/depth-v1/stages.json": "ea420db484cb560b11e30bc4882d2ac0651f3926e4c5f6d0b22b6a1580648614"
+    "assets/art/stages/depth-v1/stages.json": "d8e627c8c45929111b6cb91ef3786097e468df4a6a3897d718b48169610b10aa",
+    "assets/art/stages/depth-floor-v2/00-las-condes.json": "17364c5654efa96ce92685546b1fbbea144029514d5b12d461ae8d0881874219",
+    "assets/art/stages/depth-floor-v2/00-las-condes.png": "5ab64219efe7d604009f363dcc7f4d422a3c5b5b93b3a8678034138d916317b7",
+    "assets/art/stages/depth-floor-v2/01-castillo.json": "fca0c9d06eb89365b0669f7259ea06b8757e4b06c0b25690c1adbf95593c8959",
+    "assets/art/stages/depth-floor-v2/01-castillo.png": "ff533b755543f7b6af5cc85ceb89c657580e40c71f7e52e6fd34e01132e9584e",
+    "assets/art/stages/depth-floor-v2/02-oficina.json": "7a46949cb41a94c8f7cc16119ab52bf376c12ee5bb1018e1e5f0f4469f0fc85a",
+    "assets/art/stages/depth-floor-v2/02-oficina.png": "6fff285971b58e27c7f85f7a78076dc2e1d0e65446f5ca2c2ab0bb14f4a355c6",
+    "assets/art/stages/depth-floor-v2/source/00-las-condes-initial.png": "aa006b6a3cf082f1d95c01be2c0f4b50a87049512b7ed463f8634294a8c89937"
   },
   "retained_candidate_rom": "build/v024-stage08.sfc",
   "version": "0.24.0",
@@ -4641,7 +4866,7 @@
     "new_obj_entries": 0,
     "actor_pose_dma_bytes": 3840,
     "actor_obj_entries": 30,
-    "linked_section_bytes": 3286985,
+    "linked_section_bytes": 3290763,
     "stage_allocations": {
       "schema": 1,
       "scope": "stage-depth-v1",
@@ -4703,9 +4928,36 @@
           "edge_gutters": 16,
           "floor_seam_y": 184,
           "bg1_tiles": 639,
-          "bg3_tiles": 2,
+          "bg3_tiles": 46,
+          "authored_floor": {
+            "source": "assets/art/stages/depth-floor-v2/00-las-condes.png",
+            "source_sha256": "5ab64219efe7d604009f363dcc7f4d422a3c5b5b93b3a8678034138d916317b7",
+            "provenance": "assets/art/stages/depth-floor-v2/00-las-condes.json",
+            "provenance_sha256": "17364c5654efa96ce92685546b1fbbea144029514d5b12d461ae8d0881874219",
+            "native_size": [
+              256,
+              40
+            ],
+            "cgram_indices": [
+              6,
+              7
+            ],
+            "source_tone_centers": [
+              [
+                158,
+                176,
+                203
+              ],
+              [
+                134,
+                148,
+                181
+              ]
+            ],
+            "resampling": "BOX full authored floor; MEDIANCUT two tones mapped to UI grays; no crop, synthetic geometry or dithering"
+          },
           "ambient_enabled": false,
-          "floor_quantization_rms": 42.62678393138912,
+          "floor_quantization_rms": 0.0,
           "outputs": {
             "stage0_tiles.bin": {
               "bytes": 20448,
@@ -4720,12 +4972,12 @@
               "sha256": "a41e09596b2273ec5dc809bf846ae145873f6975e96d8ba6710ba61b0d596f5f"
             },
             "stage0_floor_tiles.bin": {
-              "bytes": 32,
-              "sha256": "3e0e009586dd84839e67bc0635f9059e5a711780559539e0bccdfbc22de1b515"
+              "bytes": 736,
+              "sha256": "88f1d85d5af8d0ed2cc4b7fa1dddad5e6129b9299f3ff49bf58c0642dd0f21a6"
             },
             "stage0_floor_map.bin": {
               "bytes": 2048,
-              "sha256": "73be065b2b04739e10241497db4cb04f0303e243724eb6c9400be06caac1cc3b"
+              "sha256": "a64e3c1f4d5fb4500ee4c89508ad7a1e979748090231e2720af7f95686f24d1d"
             }
           }
         },
@@ -4751,9 +5003,36 @@
           "edge_gutters": 16,
           "floor_seam_y": 192,
           "bg1_tiles": 680,
-          "bg3_tiles": 2,
+          "bg3_tiles": 95,
+          "authored_floor": {
+            "source": "assets/art/stages/depth-floor-v2/01-castillo.png",
+            "source_sha256": "ff533b755543f7b6af5cc85ceb89c657580e40c71f7e52e6fd34e01132e9584e",
+            "provenance": "assets/art/stages/depth-floor-v2/01-castillo.json",
+            "provenance_sha256": "fca0c9d06eb89365b0669f7259ea06b8757e4b06c0b25690c1adbf95593c8959",
+            "native_size": [
+              256,
+              32
+            ],
+            "cgram_indices": [
+              6,
+              7
+            ],
+            "source_tone_centers": [
+              [
+                138,
+                151,
+                184
+              ],
+              [
+                124,
+                136,
+                174
+              ]
+            ],
+            "resampling": "BOX full authored floor; MEDIANCUT two tones mapped to UI grays; no crop, synthetic geometry or dithering"
+          },
           "ambient_enabled": false,
-          "floor_quantization_rms": 19.941490547283465,
+          "floor_quantization_rms": 0.0,
           "outputs": {
             "stage1_tiles.bin": {
               "bytes": 21760,
@@ -4768,12 +5047,12 @@
               "sha256": "8ebae9d813b4c87deb418fee1f792be20df6dccfd3bfd2d51a366183b6fd8beb"
             },
             "stage1_floor_tiles.bin": {
-              "bytes": 32,
-              "sha256": "3e0e009586dd84839e67bc0635f9059e5a711780559539e0bccdfbc22de1b515"
+              "bytes": 1520,
+              "sha256": "49b088619401f346926b4abb3e409484f48520b08c9b5621e428042cebcca559"
             },
             "stage1_floor_map.bin": {
               "bytes": 2048,
-              "sha256": "194088674399bd4b1054ac08d3e01a5b60910eb38b05a49c67be1ef2564e4b71"
+              "sha256": "8c812d96dc9af766ae2ce2d894583e4a300ca4f11d67f935d4ba650ec316192a"
             }
           }
         },
@@ -4799,9 +5078,36 @@
           "edge_gutters": 16,
           "floor_seam_y": 184,
           "bg1_tiles": 614,
-          "bg3_tiles": 2,
+          "bg3_tiles": 71,
+          "authored_floor": {
+            "source": "assets/art/stages/depth-floor-v2/02-oficina.png",
+            "source_sha256": "6fff285971b58e27c7f85f7a78076dc2e1d0e65446f5ca2c2ab0bb14f4a355c6",
+            "provenance": "assets/art/stages/depth-floor-v2/02-oficina.json",
+            "provenance_sha256": "7a46949cb41a94c8f7cc16119ab52bf376c12ee5bb1018e1e5f0f4469f0fc85a",
+            "native_size": [
+              256,
+              40
+            ],
+            "cgram_indices": [
+              6,
+              7
+            ],
+            "source_tone_centers": [
+              [
+                136,
+                150,
+                183
+              ],
+              [
+                129,
+                142,
+                177
+              ]
+            ],
+            "resampling": "BOX full authored floor; MEDIANCUT two tones mapped to UI grays; no crop, synthetic geometry or dithering"
+          },
           "ambient_enabled": false,
-          "floor_quantization_rms": 11.234252578146146,
+          "floor_quantization_rms": 0.0,
           "outputs": {
             "stage2_tiles.bin": {
               "bytes": 19648,
@@ -4816,21 +5122,25 @@
               "sha256": "7183561eace000f59bbc607f92347bf3d9a14043febf8e79f4c5ec89a00df2bd"
             },
             "stage2_floor_tiles.bin": {
-              "bytes": 32,
-              "sha256": "3e0e009586dd84839e67bc0635f9059e5a711780559539e0bccdfbc22de1b515"
+              "bytes": 1136,
+              "sha256": "94ec0b6446776df6fa536aaccab54c4885868f424cdacadde16ac2429193849a"
             },
             "stage2_floor_map.bin": {
               "bytes": 2048,
-              "sha256": "ad67fdcfe915636050e04b8f8e07f51c51246d5a68109909aa2bbb94d0028ba6"
+              "sha256": "3651c7307e8717733837b21202d555e2d53d142a168984f8d02e4db3199a42fe"
             }
           }
         }
       ]
+    },
+    "idempotent_encoder": {
+      "files": 227,
+      "changed": []
     }
   },
   "accuracy_core": {
-    "rom_sha256": "2ec631011c9bde8e073b96f0d74863a52fdf756e411579495cf0d1d6497139a7",
-    "manifest_sha256": "2ec631011c9bde8e073b96f0d74863a52fdf756e411579495cf0d1d6497139a7",
+    "rom_sha256": "aafe7b26ff1cf26415e7211e4f19eed6696dd39d4936991141aac411fc1e641b",
+    "manifest_sha256": "aafe7b26ff1cf26415e7211e4f19eed6696dd39d4936991141aac411fc1e641b",
     "rom_bytes": 4194304,
     "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
     "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
@@ -4853,6 +5163,32 @@
       "clip": "docs/screenshots/combat-24-stage08/baseline-stage2.gif"
     }
   ],
-  "elapsed_seconds": 227.593,
-  "check_count": 710
+  "floor_before": [
+    {
+      "stage": 0,
+      "rom_sha256": "bcf4456fc9a61c90dbeec3655ca29679d743dda1d557727c3e1a3a98e5a12454",
+      "native_before": "docs/screenshots/combat-24-stage08/floor-before-stage0.png",
+      "native_comparison": "docs/screenshots/combat-24-stage08/floor-comparison-stage0.png",
+      "layout": "before left / after right;2x nearest native pixels",
+      "clip": "docs/screenshots/combat-24-stage08/floor-before-stage0.gif"
+    },
+    {
+      "stage": 1,
+      "rom_sha256": "bcf4456fc9a61c90dbeec3655ca29679d743dda1d557727c3e1a3a98e5a12454",
+      "native_before": "docs/screenshots/combat-24-stage08/floor-before-stage1.png",
+      "native_comparison": "docs/screenshots/combat-24-stage08/floor-comparison-stage1.png",
+      "layout": "before left / after right;2x nearest native pixels",
+      "clip": "docs/screenshots/combat-24-stage08/floor-before-stage1.gif"
+    },
+    {
+      "stage": 2,
+      "rom_sha256": "bcf4456fc9a61c90dbeec3655ca29679d743dda1d557727c3e1a3a98e5a12454",
+      "native_before": "docs/screenshots/combat-24-stage08/floor-before-stage2.png",
+      "native_comparison": "docs/screenshots/combat-24-stage08/floor-comparison-stage2.png",
+      "layout": "before left / after right;2x nearest native pixels",
+      "clip": "docs/screenshots/combat-24-stage08/floor-before-stage2.gif"
+    }
+  ],
+  "elapsed_seconds": 437.656,
+  "check_count": 740
 }
