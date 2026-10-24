@@ -98,6 +98,11 @@ def collect(source_ref):
             require(host.get('gui_opened') is False and host.get('audio_device_opened') is False,name+' headless contract missing')
         media_files(report,media)
         records[name]={'path':path,'sha256':sha((ROOT/path).read_bytes()),'checks':count}
+    stage=read('docs/stage-test-report.json')
+    require(stage.get('shared_native_execution') is True and
+            stage.get('focused_report')=='docs/'+FEATURES['stages'] and
+            stage.get('focused_report_sha256')==records[FEATURES['stages']]['sha256'],
+            'Shared stage execution differs from its focused appendix')
     for name in ('fresh-build-test-report.json','authoring-guards-report.json','combat-24-guards-report.json'):
         report=read('docs/'+name)
         require(report.get('status')=='passed' and report.get('rom_sha256')==rom and report.get('source_commit')==freeze,name+' does not identify passing frozen-source evidence')
