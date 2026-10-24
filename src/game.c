@@ -942,6 +942,13 @@ u8 canHit(u8 p) {
         if(d->hurt)return 0;
         return abs16(dx)<c->throwRange*16;
     }
+    /* Ordinary active strikes use the same 96px pose canvases as direct
+     * supers. Wide simultaneous rushes otherwise read and transform both
+     * pose tables on every active tick, even before their canvases meet.
+     * Half-open rectangles cannot intersect at or beyond this separation.
+     * Keep the independent profile-based throw above this geometry gate. */
+    if(dx>=ACTOR_FRAME_W*16)return 0;
+    if(dx<=-ACTOR_FRAME_W*16)return 0;
     return contactStrike(p,rear);
 }
 void combat(void) {
