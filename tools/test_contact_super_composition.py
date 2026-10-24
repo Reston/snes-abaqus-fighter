@@ -101,11 +101,20 @@ def rising(fighter, port, distance, guard, data):
                 collision_xy = copy.deepcopy(observed_xy)
                 collision_face = [s['face1'], s['face2']]
                 impact = s['hitstop'] > previous['hitstop'] and s[f'connected{p}'] > 0
+                impulse = 0
                 if impact:
                     # hurtWithRecoil immediately shifts x AFTER the overlap;
                     # a real final hit also changes facing/y in knockdown.
                     # Undo those documented writes for the evaluated snapshot.
-                    collision_xy[1-port][0] -= (1 if s[f'face{p}'] else -1) * (16 if s[f'guard{d}'] else 32)
+                    direction = 1 if s[f'face{p}'] else -1
+                    impulse = 16 if s[f'guard{d}'] else 32
+                    if 'beginRecoil' in legacy.SYMBOLS:
+                        latch = legacy.read(e, 'rearKickRecoil', 1)[0] >> ((1-port)*4) & 15
+                        if (latch & 3) not in (1, 2):
+                            raise AssertionError(('impact has no latched recoil direction', fighter, port, latch))
+                        direction = 1 if latch & 3 == 2 else -1
+                        impulse = 16 if s[f'guard{d}'] else (64 if latch & 4 else 32)
+                    collision_xy[1-port][0] -= direction * impulse
                     collision_face[1-port] = previous[f'face{d}']
                     if s[f'down_state{d}'] and not previous[f'down_state{d}'] and s[f'y{d}'] == 65535:
                         collision_xy[1-port][1] = 0
@@ -117,6 +126,7 @@ def rising(fighter, port, distance, guard, data):
                              'phase': s['superPhase'][port], 'contact_end': s['superContactEnd'][port],
                              'observed_xy_12_4': observed_xy, 'collision_xy_12_4': collision_xy,
                              'collision_face': collision_face, 'post_impact_reconstructed': impact,
+                             'impact_recoil_12_4': impulse,
                              'face': [s['face1'], s['face2']],
                              'selected': [s['anim_frame1'], s['anim_frame2']],
                              'uploaded': [dedicated.uploaded_frame_id(e, fighter, q) for q in (0, 1)],

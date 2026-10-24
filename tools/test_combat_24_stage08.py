@@ -26,6 +26,7 @@ from test_champion import host_contract
 from test_stages import vram_bytes, oam_memory, scanline_budget, actor_contract
 from stage_depth_assets import colors, install
 from expansion_contracts import combined_contract
+from v024_contracts import canonical
 
 OUT = ROOT/'docs/screenshots/combat-24-stage08'
 REPORT = ROOT/'docs/combat-24-stage08-report.json'
@@ -372,7 +373,6 @@ def resources():
     allowed={'assets/generated/'+n for n in ('assets.h','data.asm')}
     for i in range(3):
         allowed|={f'assets/generated/stage{i}'+ext for ext in ('.png','_tiles.bin','_map.bin','_pal.bin')}
-    canonical=lambda p,b:b.replace(b'\r\n',b'\n') if Path(p).suffix in ('.json','.asm','.h') else b
     for name in tracked:
         new=canonical(name,(ROOT/name).read_bytes());old=canonical(name,git('show',BASE+':'+name))
         if new!=old:changed.append(name)
@@ -385,7 +385,9 @@ def resources():
     check(set(changed)==set(combined['assets']['changed_generated']) and set(added)==set(combined['assets']['added_generated']),
           'independent combined preservation policy binds every generated change')
     protected=git('ls-tree','-r','--name-only',BASE,'--','assets/art','assets/references').decode().splitlines()
-    for name in protected:check((ROOT/name).read_bytes()==git('show',BASE+':'+name),'original source or provenance preserved',name)
+    for name in protected:
+        check(canonical(name, (ROOT/name).read_bytes()) == canonical(name, git('show', BASE+':'+name)),
+              'original source or provenance preserved (canonical text, exact binary)', name)
     oldsyms=symbol_map(git('show',BASE+':dist/abaqus-after-hours.sym').decode())
     ram={n:v for n,v in oldsyms.items() if v<0x2000 or 0x7e0000<=v<0x800000}
     moved={n:[hex(v),hex(SYMS.get(n,0))] for n,v in ram.items() if SYMS.get(n)!=v}
