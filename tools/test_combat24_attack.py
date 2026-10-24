@@ -131,7 +131,7 @@ def scenario(rom,fighter,table,base=False):
         raise AssertionError(('settle failed',fighter,label,trace(e)))
     def gap(target,port=0):
         settle()
-        for _ in range(180):
+        for _ in range(320):
             s=trace(e);d=abs(s['x1']-s['x2'])/16
             if abs(d-target)<2:return
             toward='right' if s[f'x{port+1}']<s[f'x{2-port}'] else 'left'
@@ -139,7 +139,7 @@ def scenario(rom,fighter,table,base=False):
             drive(port,[key])
         raise AssertionError(('spacing failed',fighter,target,d))
     try:
-        p.run(12,['left'],['right'],label='separate')
+        p.run(120,['left'],['right'],label='separate')
         for label,keys,action,frame in MOVES:
             p.run(3,keys,keys,label,True);p.run(75,label=label,film=True)
             if not base:
@@ -206,7 +206,7 @@ def historical_visuals(rom,fighter,table):
     """Historical PPU comparison only; never compare simulation fingerprints."""
     e=boot(1,fighter,fighter%3,fighter,rom=rom);p=AttackProbe(e,fighter,table,True)
     try:
-        p.run(12,['left'],['right'],label='separate')
+        p.run(120,['left'],['right'],label='separate')
         for label,keys,_,_ in MOVES:
             p.run(3,keys,keys,label,True);p.run(75,label=label,film=True)
         return p

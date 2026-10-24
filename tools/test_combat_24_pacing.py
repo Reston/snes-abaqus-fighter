@@ -333,6 +333,93 @@ def normal_ranges(fighter, port, geometry):
         r.close()
 
 
+def block_and_punish(fighter, port):
+    """Keep the original risk/punish proof against legal standing guards.
+
+    These four neutral normals are high/mid. Final-art Fernando's jab ends
+    exactly at his crouch band's top (row 29), so Down+Back correctly ducks
+    it at every spacing. Standing Back proves actual blocked contact and
+    the original timing/punish outcomes; Down+B retains its separate low test.
+    """
+    r = Rig(fighter, port)
+    result = {}
+    try:
+        for key, action, role in balance.MOVES:
+            for punish in (False, True):
+                r.position(26)
+                guard = (r.direction(False, True),)
+                attacker_guard = (r.direction(False),)
+                hp = r.state()[f'hp{r.a}']
+                defender_hp = r.state()[f'hp{r.d}']
+                s = r.step((key,), guard)
+                for _ in range(40):
+                    if s[f'connected{r.a}']:
+                        break
+                    s = r.step((), guard)
+                require(s[f'connected{r.a}'] == 1 and s[f'guard{r.d}'] == 1,
+                        f'{r.tag} {role} is honestly blocked', s)
+                contact = s
+                frozen = s['hitstop']
+                # A blocked hit cannot confirm into a special, even if pressed
+                # during hitstop. Preserve the original command and clocks.
+                s = r.step(('down', 'y'), guard)
+                while s['hitstop']:
+                    s = r.step(attacker_guard, guard)
+                s = r.step(attacker_guard, guard)
+                require(s[f'action{r.a}'] == action and s[f'energy{r.a}'] >= contact[f'energy{r.a}'],
+                        f'{r.tag} {role} cannot special-cancel blocked contact', s)
+                live = 1
+                attacker_free = defender_free = None
+                jab_sent = False
+                response = None
+                for _ in range(70):
+                    if not s[f'action{r.a}'] and attacker_free is None:
+                        attacker_free = live
+                    if not s[f'hurt{r.d}'] and defender_free is None:
+                        defender_free = live
+                    dk = guard
+                    if punish and not jab_sent and not s[f'hurt{r.d}']:
+                        dk = ('y', r.direction(False, True))
+                        jab_sent = True
+                    s = r.step(attacker_guard, dk)
+                    live += int(not s['hitstop'])
+                    if punish and jab_sent and s[f'connected{r.d}']:
+                        response = s
+                        break
+                    if not punish and attacker_free is not None and defender_free is not None:
+                        break
+                if not punish:
+                    advantage = defender_free - attacker_free
+                    require((-4 <= advantage <= -2 if role == 'jab' else
+                             -4 <= advantage <= -2 if role == 'light_kick' else advantage <= -10),
+                            f'{r.tag} {role} has the intended measured block risk',
+                            {'advantage': advantage, 'attacker_free': attacker_free,
+                             'defender_free': defender_free})
+                    result[role] = {'block_advantage_first_active': advantage,
+                                    'attacker_recovers_after': attacker_free,
+                                    'defender_recovers_after': defender_free,
+                                    'captured_hitstop': frozen,
+                                    'blocked_contact_chip': defender_hp - contact[f'hp{r.d}'],
+                                    'guard_command': 'standing relative Back'}
+                else:
+                    if role == 'jab':
+                        advantage = result[role]['block_advantage_first_active']
+                        jab_startup = balance.profiles()[fighter]['startup'][0]
+                        expected_hit = jab_startup < -advantage
+                        require(response is not None and (s[f'hp{r.a}'] < hp) == expected_hit,
+                                r.tag + ' jab response follows its actual startup and block disadvantage', response)
+                    if role in ('strong_punch', 'strong_kick'):
+                        require(response is not None and response[f'connected{r.d}'] == 2 and s[f'hp{r.a}'] < hp,
+                                f'{r.tag} blocked {role} is actually jab-punishable', response)
+                    result[role]['immediate_jab_response'] = (
+                        'hit' if response and response[f'connected{r.d}'] == 2 else
+                        'blocked' if response else 'whiff')
+                r.settle()
+        return result
+    finally:
+        r.close()
+
+
 def damian_sample(label):
     r = Rig(0, 0)
     try:
@@ -742,7 +829,7 @@ def main():
                     row['special_timing'] = special_timing(fighter, port)
                     row['normals'] = normal_ranges(fighter, port, geometry)
                     row['confirms'] = balance.confirms_and_low(fighter, port)
-                    row['blocks'] = balance.block_and_punish(fighter, port)
+                    row['blocks'] = block_and_punish(fighter, port)
                     row['corner'] = balance.corner_jab_guard(fighter, port)
                     row['air_crossup'] = crossup(fighter, port)
                     row['special_confirm'] = balance.special_confirm(fighter, port)

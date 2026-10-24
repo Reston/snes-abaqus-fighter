@@ -276,6 +276,57 @@ def dedicated_sequence(fighter):
         e.close()
 
 
+def guarded_contact(fighter, port):
+    """Keep a rising defender in place between legal standing-guard windows."""
+    if fighter not in (5, 7, 10):
+        return legacy.contact(fighter, port, guard=True)
+    original_step = legacy.step
+    defender = 1 - port
+    back = 'right' if defender == 1 else 'left'
+    rows = []
+
+    def timed_guard_step(e, p1=(), p2=(), monitor=True):
+        before = legacy.sample(e)
+        supplied = list((p1, p2)[defender])
+        next_tick = before['ticks'][port] + int(not before['hitstop'])
+        contact_now = (before['superPhase'][port] > 0 and
+                       next_tick < before['superContactEnd'][port])
+        new_pulse = (before['superPhase'][port] < len(legacy.HITS[fighter]) and
+                     next_tick >= before['superNext'][port])
+        window = bool(before['superActive'][port] and (contact_now or new_pulse))
+        if not window:
+            if defender == 0:
+                p1 = ()
+            else:
+                p2 = ()
+        state = original_step(e, p1, p2, monitor)
+        if supplied:
+            rows.append({'clock_before': before['ticks'][port], 'phase_before': before['superPhase'][port],
+                         'next_clock': next_tick, 'next_pulse': before['superNext'][port],
+                         'contact_end': before['superContactEnd'][port], 'pulse_window': window,
+                         'super_active_before': before['superActive'][port],
+                         'supplied_defense': supplied, 'controller_keys': [list(p1), list(p2)],
+                         'defender_x_before': before[f'x{defender+1}'],
+                         'defender_x_after': state[f'x{defender+1}']})
+        return state
+
+    legacy.step = timed_guard_step
+    try:
+        result = legacy.contact(fighter, port, guard=True)
+    finally:
+        legacy.step = original_step
+    check(rows and all(row['supplied_defense'] == [back] and
+                       row['controller_keys'][defender] == ([back] if row['pulse_window'] else [])
+                       for row in rows),
+          'rising guard uses relative back only in committed pulse windows', [fighter, port])
+    startup = [row for row in rows if row['super_active_before'] and
+               row['phase_before'] == 0 and not row['pulse_window']]
+    check(startup and all(row['defender_x_before'] == row['defender_x_after'] for row in startup),
+          'neutral rising-super startup guard fixture holds defender position', [fighter, port])
+    result['controller_policy'] = 'standing relative back during pulse windows; neutral startup gaps recovery'
+    result['guard_controller_rows'] = rows
+    return result
+
 def training_reset(fighter):
     e = boot(2, fighter, fighter2=fighter)
     try:
@@ -368,7 +419,7 @@ def main():
         report['training_resets'] = [training_reset(i) for i in fighters]
         report['activation'] = [legacy.activation(i) for i in fighters]
         report['hits'] = [legacy.contact(i, p) for i in fighters for p in range(2)]
-        report['blocks'] = [legacy.contact(i, p, guard=True) for i in fighters for p in range(2)]
+        report['blocks'] = [guarded_contact(i, p) for i in fighters for p in range(2)]
         report['whiffs'] = [legacy.whiff(i, p) for i in fighters for p in range(2)]
         report['interruptions'] = [legacy.interrupt(i, p) for i in fighters for p in range(2)]
         if not partial:
