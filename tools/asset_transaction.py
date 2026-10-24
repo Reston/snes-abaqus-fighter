@@ -35,9 +35,11 @@ def candidate_path(root, path, prefix):
 
 
 @contextmanager
-def publication_lock(root):
+def workspace_lock(root, name):
     root, build, _ = locations(root)
-    path = build / 'asset-publication.lock'
+    if name not in ('asset-publication.lock', 'native-build.lock'):
+        raise ValueError('unknown workspace build lock')
+    path = build / name
     if path.resolve() != path:
         raise ValueError('asset publication lock must stay in the workspace')
     with path.open('a+b') as handle:
@@ -59,6 +61,10 @@ def publication_lock(root):
                 msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
             else:
                 fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+
+
+def publication_lock(root):
+    return workspace_lock(root, 'asset-publication.lock')
 
 
 def journal_path(root):

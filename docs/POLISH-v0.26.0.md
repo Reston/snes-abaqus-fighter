@@ -294,3 +294,24 @@ source/output pair. Ten isolated cache-mutation tests pass normally and under
 optimized Python; all 371 current dependency/data inputs hash in about 0.3s on
 this workstation. This is a local performance cache, separate from release
 evidence and fresh-build verification.
+
+## Pass 22: keep the playable cartridge after failed builds
+
+Native builds now link into a private candidate directory, validate the full
+4 MiB NTSC FastROM image/checksum and matching manifest/symbol trio, then
+replace the authoritative cartridge last. A failed promotion restores prior
+metadata; a journal recovers interrupted publication or recognizes an already
+complete new trio. Historical files in dist remain untouched. Identical trios
+need no replacement. A checkout-local compiler lock and an asset read lock
+prevent competing builds/publication from mixing their files.
+
+Eleven fault tests pass normally and under optimized Python, including real
+child-process termination during partial and completed publication. The native
+build also checks source and generated inputs for edits during compilation.
+Synthetic unit-test ROMs are file-format fixtures only; they are never emulated.
+The integrated proof repeats real native builds and retains the exact ROM,
+manifest and symbols without replacing identical files. The first validator
+assumed another symbol format and correctly kept the previous cartridge;
+the current validator accepts the SDK's no$snes format. Only its filename
+comment points from the private candidate to the published ROM; numeric
+labels and addresses are preserved without normalization.
