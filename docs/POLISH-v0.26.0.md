@@ -208,3 +208,12 @@ controller latch. The actual glyphs are verified on Snes9x with independent
 Accuracy coverage. The first positioning fixture could land exactly at the
 strict throw-range boundary for David; its retained failed baseline diagnostic
 led to an inside-range setup, with every outcome assertion retained.
+
+## Pass 15: session-best practice combos
+
+Training Tools shows the highest-damage real combo this session, preferring
+more hits when damage ties. Both kinds of retry preserve it while clearing
+the new attempt's counters. A fresh Training selection starts at zero.
+The existing deferred formatter/reset path records the result; contact and
+normal live update paths gain no formatting work. Three unused reserved
+stage-table bytes hold the record without moving or adding RAM symbols.

@@ -14,6 +14,7 @@ void trainingContact(u8 attacker,u8 blocked,u8 low,u8 actualDamage);
 void trainingMoveContact(u8 action,u8 air,u8 rear,u8 outcome);
 void trainingObserve(void);
 void trainingMakeStatus(void);
+void trainingKeepBest(void);
 void trainingService(void);
 
 #endif
@@ -68,6 +69,8 @@ const char trainingChallengeNames[3][22]={
 
 void trainingReset(void) {
     u8 i;
+    /* A retry may arrive before the deferred footer publishes this combo. */
+    trainingKeepBest();
     for(i=0;i<5;i++){trainingHistory[i]=0;trainingHistorySnapshot[i]=0;}
     for(i=0;i<32;i++){trainingHistoryText[i]=' ';trainingStatusText[i]=' ';}
     trainingHistoryText[32]=0;trainingStatusText[32]=0;
@@ -82,7 +85,20 @@ void trainingReset(void) {
 }
 void trainingNewMatch(void) {
     trainingVisible=1;trainingChallenge=0;
+    trainingHits=0;trainingDamage=0;
+    stageDepthTable[4]=0;stageDepthTable[5]=0;stageDepthTable[6]=0;
     trainingReset();
+}
+
+void trainingKeepBest(void) {
+    u16 best=stageDepthTable[5]+((u16)stageDepthTable[6]<<8);
+    /* Record an earned chain. Prefer damage, then hits for ties. Formatting
+     * and this comparison run in the deferred UI/reset path, never contact.
+     * Three unused reserved bytes survive ordinary Select/X retries. */
+    if(trainingDamage<best)return;
+    if(trainingDamage==best && trainingHits<=stageDepthTable[4])return;
+    stageDepthTable[4]=trainingHits;stageDepthTable[5]=trainingDamage;
+    stageDepthTable[6]=trainingDamage>>8;
 }
 void trainingChooseChallenge(void) {
     trainingChallenge++;if(trainingChallenge>=3)trainingChallenge=0;
@@ -186,6 +202,7 @@ void trainingMakeStatus(void) {
     u16 value;
     u8 digit;
     const char *result=trainingResultNames[trainingResult];
+    trainingKeepBest();
     if(trainingChain) {
         trainingStatusText[0]='N';trainingStatusText[1]='O';
         trainingStatusText[2]='W';trainingStatusText[3]=' ';

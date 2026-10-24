@@ -169,6 +169,12 @@ Directions use absolute numpad notation: 1/2/3 down, 4/5/6 level, 7/8/9 up.
 `6Y---` means Right+Y; `-` marks an unpressed button. Neutral releases leave
 useful motion steps visible. History keeps recording while hidden.
 
+Tools 3/3 also shows **BEST**: your highest-damage earned combo in this Training
+session, with its hit count. Equal damage keeps the combo with more hits.
+Select and X retries keep that record; returning to character select clears
+it for a new session. The live NOW/LAST totals still describe the current or
+last attempt separately.
+
 `NOW` gives the current combo's hits (`H`) and real HP damage (`D`); `LAST`
 retains it after the chain ends. `SP!` means an accepted ordinary special
 executed and paid energy, even if it missed. It does not identify a super.

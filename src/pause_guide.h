@@ -39,6 +39,17 @@ void guideNormalRow(u8 action,u8 y) {
     guideTwoDigits(24,y,matchActionEnd[index]-matchActiveEnd[index]);
 }
 
+void guideBestCombo(void) {
+    char text[18];
+    u16 damage=stageDepthTable[5]+((u16)stageDepthTable[6]<<8);
+    /* Paused-only formatting. The live contact path performs no divides. */
+    text[0]='B';text[1]='E';text[2]='S';text[3]='T';text[4]=' ';
+    text[5]='0'+stageDepthTable[4]/10;text[6]='0'+stageDepthTable[4]%10;
+    text[7]='H';text[8]=' ';text[9]='0'+damage/100;
+    text[10]='0'+(damage/10)%10;text[11]='0'+damage%10;
+    text[12]='D';text[13]=0;guideCenter(19,text);
+}
+
 void settlePausedHud(void) {
     if(pauseHudPending) {
         /* A pause directly after contact must not leave yesterday's HP bar
@@ -162,6 +173,7 @@ void buildPauseGuide(void) {
             guideCenter(23,"UP: P1 NORMAL TIMING");
         } else {
             trainingMakeStatus();guideWord(0,18,trainingStatusText);
+            guideBestCombo();
             guideCenter(20,"H HITS D DAMAGE SP! EXECUTED");
             guideCenter(21,"INPUT: DIRECTION THEN YXBA");
             guideCenter(22,"123 DOWN 456 LEVEL 789 UP");
