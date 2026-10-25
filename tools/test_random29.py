@@ -42,7 +42,10 @@ def inputs_snapshot():
             if p.is_file() and p.suffix in ('.c', '.h', '.asm', '.py')}
 
 
-def preservation(syms):
+def preservation(syms, combined=False):
+    if combined:
+        from v029_contracts import validate
+        return {'scope': 'parent-reviewed combined v0.29 ROM', **validate(ROOT)}
     archive = subprocess.check_output(['git', 'archive', BASE, 'assets/generated',
                                        'src/hardware.asm', 'src/trace.asm'], cwd=ROOT)
     unchanged = []
@@ -354,21 +357,23 @@ def main():
     parser.add_argument('--core', choices=('snes9x', 'accuracy', 'both'), default='both')
     parser.add_argument('--report', type=Path, default=ROOT / 'docs/random29-report.json')
     parser.add_argument('--captures', type=Path, default=ROOT / 'docs/screenshots/random29')
+    parser.add_argument('--combined', action='store_true', help='Use the parent-reviewed six-feature preservation policy')
     args = parser.parse_args()
     started = time.monotonic()
     sources = inputs_snapshot()
     manifest = json.loads((ROOT / 'dist/manifest.json').read_bytes())
     syms = symbols((ROOT / 'dist/abaqus-after-hours.sym').read_text())
-    report = {'status': 'failed', 'rom_sha256': sha((ROOT / 'dist/abaqus-after-hours.sfc').read_bytes()),
+    report = {'status': 'failed', 'version': manifest['version'], 'rom_sha256': sha((ROOT / 'dist/abaqus-after-hours.sfc').read_bytes()),
               'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
               'sources_sha256_lf': sources, 'host': host_contract(), 'sessions': [], 'cores': {},
               'timing_proof': {},
-              'memory_writes': False, 'save_states': False, 'combined_verification_claimed': False}
+              'memory_writes': False, 'save_states': False, 'combined_rom_context': args.combined,
+              'combined_verification_claimed': False}
     try:
         require(report['rom_sha256'] == manifest['sha256'], 'Exact ROM manifest')
         require(report['host'].get('logical_processors') == [8, 9] and report['host'].get('priority_class') == 0x4000,
                 'Assigned processor pair / below-normal priority', report['host'])
-        report['preservation'] = preservation(syms)
+        report['preservation'] = preservation(syms, args.combined)
         # Exact rejection domain: each outcome owns the same number of bytes.
         report['uniform_domain'] = {str(n): [sum(x % n == y for x in range(252)) for y in range(n)] for n in (12, 3)}
         for n in (12, 3):
