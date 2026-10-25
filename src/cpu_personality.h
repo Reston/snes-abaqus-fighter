@@ -55,6 +55,7 @@ u16 cpuKeys(void) {
     if(mode==2 && trainingDummy!=4)return trainingKeys();
     if(!fighters[1].hp)return 0;
     if(!fighters[0].hp)return 0;
+    if(fighters[1].downState==DOWN_LIFT)return defense29CpuKeys();
     if(fighters[1].downState && fighters[1].downState!=DOWN_WAKE)return 0;
     /* The single existing wake edge retains captureInput's six-tick buffer. */
     if(fighters[1].downState==DOWN_WAKE) {
