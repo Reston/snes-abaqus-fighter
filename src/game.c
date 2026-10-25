@@ -158,6 +158,8 @@ extern void refreshHealthBar(u8 player);
 extern void refreshEnergyBar(u8 player);
 void releaseHeldVictim(u8 owner);
 void traceProfiles(void);
+void defense29Reset(void);
+u16 defense29CpuKeys(void);
 
 #include "stage_depth.h"
 void arenaLife29Load(u8 which);
@@ -429,6 +431,7 @@ void hud(void) {
 void resetRoundState(void) {
     u8 p;
     resetSupers();
+    defense29Reset();
     for(p=0;p<2;p++) {
         fighters[p].x=(p ? 190:66)*16;fighters[p].y=0;fighters[p].vy=0;fighters[p].vx=0;
         fighters[p].hp=HP_MAX;fighters[p].energy=64;fighters[p].face=p?0:1;
@@ -904,6 +907,7 @@ u8 hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
 }
 
 #include "knockdown.h"
+#include "defense29.h"
 
 /* Keep the original update order in one template. Direct actor operands avoid
  * rebuilding generic far pointers through simultaneous contact/launch ticks;
@@ -917,7 +921,7 @@ u8 hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
     if((F).wakeJust)(F).wakeJust=0; \
     else if((F).invuln)(F).invuln--; \
     if(!(F).hurt)clearRecoil(P); \
-    if((F).downState){updateDowned(P);return;} \
+    if((F).downState){updateDowned(P);if((F).wakeJust)v29DefenseState[P]=DEFENSE29_WAKE_TICKS;return;} \
     if((F).hurt) { \
         (F).hurt--; \
         updateRecoil(P); \
@@ -1003,6 +1007,7 @@ u8 verticalContact(Fighter *d,s16 top,s16 bottom) {
         if(abs16(dx)>(16+BODY_HALF_WIDTH)*16)return 0; \
     } \
     if(action==9) { \
+        if(v29DefenseState[1-(P)])return 0; \
         if((F).y)return 0; \
         if((D).y)return 0; \
         if((D).hurt)return 0; \
@@ -1023,8 +1028,12 @@ void combat(void) {
     u8 a0,a1,m0,m1,p,finished,low0,low1,air0,air1,face0,face1,k0,k1,expired,rear0,rear1,contact;
     s16 distance;
     const CharacterProfile *c0,*c1,*cw;
+    if(v29DefenseState[0])v29DefenseState[0]--;
+    if(v29DefenseState[1])v29DefenseState[1]--;
     controls(0);controls(1);
     updateFighter(0);updateFighter(1);
+    if(fighters[0].downState==DOWN_LIFT)defense29TryTech(0);
+    if(fighters[1].downState==DOWN_LIFT)defense29TryTech(1);
     distance=fighters[1].x-fighters[0].x;
     if(!fighters[0].downState && !fighters[1].downState && abs16(distance)<22*16 && abs16(fighters[0].y-fighters[1].y)<50*16) {
         if(distance>=0){fighters[0].x-=12;fighters[1].x+=12;}else{fighters[0].x+=12;fighters[1].x-=12;}
