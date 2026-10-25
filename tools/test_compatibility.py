@@ -1255,6 +1255,19 @@ def main() -> int:
             "trace": trace_map,
             "stage_count": STAGE_COUNT,
         }
+        if stage_manifest.get('arena_life29'):
+            from arena_life29_checks import metadata as arena_metadata
+            animation=arena_metadata(ROOT)
+            animation_path=ROOT/'assets/generated/arena-life29.json'
+            report['stage_dynamics']['arena_animation']={
+                'manifest':animation_path.relative_to(ROOT).as_posix(),
+                'manifest_sha256':sha256(animation_path),
+                'phase_count':animation['phase_count'],
+                'pool_vram_words':[animation['tile_vram_word'],animation['tile_vram_end_word']],
+                'bytes_per_quiet_blank':animation['chunk_bytes'],
+                'legacy_ambient_still_disabled':True,
+            }
+            report['scope']+='; source-bound spectators and event reactions with independent dynamic-pool pixel decoding'
         core = Probe()
         require(core.library_name == "bsnes2014",
                 f"unexpected independent core name: {core.library_name!r}")
