@@ -172,9 +172,10 @@ class Session:
             seen.add(picked)
             values.append(picked)
             if role and picked == self.read('selected'):
-                mirror = True
                 presentation.verify_select_markers(self.host)
-                self.save('random-mirror')
+                if not mirror:
+                    self.save('random-mirror')
+                mirror = True
             if len(seen) == 12 and (not role or mirror):
                 break
         require(seen == set(range(12)), 'Every fighter reachable through fresh SELECT', values)
@@ -390,6 +391,9 @@ def main():
                     session.host.close()
         require(sources == inputs_snapshot(), 'Producer/harness inputs stayed frozen')
         require(report['rom_sha256'] == sha((ROOT / 'dist/abaqus-after-hours.sfc').read_bytes()), 'Exact ROM stayed frozen')
+        for session in report['sessions']:
+            for media in session['media']:
+                require(sha((ROOT / media['path']).read_bytes()) == media['sha256'], 'Final capture bytes match recorded hash', media['path'])
         report['status'] = 'passed'
     except BaseException as error:
         report['error'] = repr(error)
