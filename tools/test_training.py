@@ -11,7 +11,8 @@ the existing ``tools/emulator.py`` interface remains unchanged:
     TRACE[116]  ambient clock
     TRACE[117]  pending ambient phase
     TRACE[118]  ambient pending age
-    TRACE[119]  pause page (0 normal, 1 controls, 2 specials, 3 Training tools)
+    TRACE[119]  pause page (0 normal, 1 controls, 2 specials, 3 Training tools,
+                4 sound levels on the v0.29 audio cartridge)
     TRACE[120]  guide build stage (0 settled, 1..3 staged)
     TRACE[121]  Training dummy (0 stand, 1 high guard, 2 low guard, 3 jump,
                 4 CPU, 5 P2 controller, 6 guard after hit)
@@ -634,9 +635,17 @@ def page_text(q: QA, expected: Iterable[str], label: str) -> dict[str, object]:
 
 
 def cycle_to_page(q: QA, target: int) -> list[dict[str, int]]:
-    """Cycle SELECT in the native pause state until target page is visible."""
+    """Reach a guide via SELECT, or the dedicated sound page via Y."""
 
     current = q.state()
+    if target == 4:
+        if current['pause_page'] == 4:
+            return []
+        q.press('y')
+        seen = wait_guide_settled(q, 'sound-page')
+        check(q.state()['pause_page'] == 4,
+              'Y opens the dedicated native sound page', q.state())
+        return seen
     seen: list[dict[str, int]] = []
     for _ in range(4 if current["mode"] == 2 else 3):
         if current["pause_page"] == target:
@@ -1866,6 +1875,11 @@ def verify_start_select_priority(rom: Path) -> list[dict[str, object]]:
     stage_contract = depth_manifest(ROOT)
     static_depth = stage_contract is not None
     animated_depth = bool(stage_contract and stage_contract.get('arena_life29'))
+    # The partially integrated v0.29 cartridge can precede the audio PR. Bind
+    # this additional route to the actual linked native function, not version
+    # text or the reservation that all six topics already share.
+    sound_page = bool(re.search(r'^[0-9a-fA-F]{8} audio29Open$',
+                               rom.with_suffix('.sym').read_text(), re.M))
     chords = (
         ("p1-start-select", ("start", "select"), ()),
         ("p2-start-p1-select", ("select",), ("start",)),
@@ -1874,7 +1888,7 @@ def verify_start_select_priority(rom: Path) -> list[dict[str, object]]:
     )
     results: list[dict[str, object]] = []
     for fixture in ("moved", "damaged"):
-        for page in range(4):
+        for page in range(5 if sound_page else 4):
             for name, p1, p2 in chords:
                 label = f"training-resume-{fixture}-page{page}-{name}"
                 q = boot(rom, mode=2, fighter=0, fighter2=10, label=label)
