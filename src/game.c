@@ -370,6 +370,7 @@ void uploadMenuPortrait(void) {
     portraitDirty=0;
 }
 void showSelect(void) {
+    v29BonusState[0]=0; /* A new roster run resets earned bonus milestones. */
     /* Character selection starts a new local rivalry. Rematches bypass it. */
     stageDepthTable[7]=0;stageDepthTable[8]=0;
     setScreenOff();screen=SELECT;arcade=0;champion=0;commonScreen();loadBackground(4);selectPlayer=0;drawSelect();
@@ -1370,6 +1371,7 @@ void fightTick(void) {
     if(mode==2 && !intro && !roundEnd) {trainingObserve();trainingService();}
     drawFight();
 }
+#include "bonus29.h"
 void menuTick(void) {
     u8 *choice;
     u16 keys,held,directions;
@@ -1425,7 +1427,7 @@ void menuTick(void) {
     } else if(screen==RESULT) {
         if(keys&KEY_B){showSelect();return;}
         if(keys&(KEY_A|KEY_START)) {
-            if(mode==0 && resultWin && !champion){arcade++;arena=(arena+1)%3;}
+            if(mode==0 && resultWin && !champion){if(bonus29TryBegin())return;arcade++;arena=(arena+1)%3;}
             else if(champion){arcade=0;champion=0;showTitle();return;}
             beginMatch();
         }
@@ -1458,7 +1460,9 @@ int main(void) {
     oamInit();showTitle();
     while(1) {
         pad0=padsCurrent(0);pad1=padsCurrent(1);edge0=padsDown(0);edge1=padsDown(1);
-        if(screen==FIGHT){captureFightInputs();fightTick();}else menuTick();
+        if(screen==FIGHT){captureFightInputs();fightTick();}
+        else if(screen==BONUS)bonus29TickFrame();
+        else menuTick();
         if(screen==FIGHT) {
             /* Resolve bank pointers and pose offsets during active display.
              * Vblank only executes the already prepared 3840-byte upload. */
@@ -1513,7 +1517,7 @@ int main(void) {
         publishImpactPriority();
         scroll=0;
         if(shake && screen==FIGHT){if(!paused)shake--;scroll=impactScroll();}
-        bgSetScroll(0,scroll,511);
+        bgSetScroll(0,screen==BONUS?16:scroll,511);
         stageDepthPublish(scroll);
         frame++;
     }
