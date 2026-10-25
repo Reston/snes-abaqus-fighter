@@ -1,11 +1,11 @@
 # Public-release quality target
-<!-- candidate-version: 0.27.1; identity: FOCUSED_UI_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: c6682d3da92ae7ae41f80e62580163c169b4017cb81c83abcdbc611f8b1d7000; source-freeze: 2e6f947a43d148b44f8b7528769bfef1865ed85f -->
+<!-- candidate-version: 0.28.0; identity: FOCUSED_UI_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c; source-freeze: 16e9989497fa7f7bf16271d59555a13b57caeac4 -->
 
-## Current playtest candidate: v0.27.1
+## Current playtest candidate: v0.28.0
 
-The office-menu revision is unmerged, stacked on the v0.26.2 help revision.
-Main remains the approved v0.24.0. [Current scope](RELEASE-v0.27.1.md) and
-[native verification](office-menu-review.json) do not certify a public or
+The full-body preview is unmerged, stacked on office-menu PR #24.
+Main remains the approved v0.24.0. [Current scope](RELEASE-v0.28.0.md) and
+[native verification](menu-preview-review.json) do not certify a public or
 offline release. Earlier sections below are historical.
 
 <!-- candidate-version: 0.23.1; rom-sha256: 057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd -->

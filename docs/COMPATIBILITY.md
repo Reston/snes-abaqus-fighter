@@ -1,6 +1,17 @@
 # Independent-engine compatibility
 
-## Current menu candidate: v0.27.1
+## Current preview candidate: v0.28.0
+
+<!-- candidate-version: 0.28.0; identity: FOCUSED_UI_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c; source-freeze: 16e9989497fa7f7bf16271d59555a13b57caeac4 -->
+
+Both pinned cores pass 36 full-body preview sessions: all twelve fighters,
+idle/confirm pixels, P1/P2, Training mirrors and live combat handoff. Strict
+cadence/OBJ, presentation/Training and fresh export checks pass. Earlier
+six-suite/smoke sections below retain their historical cartridge identities.
+[Current evidence](menu-preview-review.json) · [Release note](RELEASE-v0.28.0.md).
+
+
+## Historical menu candidate: v0.27.1
 
 <!-- candidate-version: 0.27.1; identity: FOCUSED_UI_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: c6682d3da92ae7ae41f80e62580163c169b4017cb81c83abcdbc611f8b1d7000; source-freeze: 2e6f947a43d148b44f8b7528769bfef1865ed85f -->
 

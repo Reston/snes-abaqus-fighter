@@ -1,0 +1,164 @@
+{
+  "status": "passed",
+  "version": "0.28.0",
+  "rom_sha256": "09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c",
+  "checksum": "ECEB",
+  "source_commit": "16e9989497fa7f7bf16271d59555a13b57caeac4",
+  "evidence": {
+    "snes9x": {
+      "path": "docs/menu-preview-snes9x.json",
+      "sha256": "8aa99f93ed3958ca172a554d9bef692d576b4d472458c35de15d97ed954c203b"
+    },
+    "accuracy": {
+      "path": "docs/menu-preview-accuracy.json",
+      "sha256": "c594c929d4f7e30958451173bcab9fd142d37a09b654d7a777e6074a9b4e610d"
+    },
+    "presentation": {
+      "path": "docs/menu-preview-presentation.json",
+      "sha256": "b1d53eda6455fa6cee0060a5ec7f8c94ae571b8b7010a0870edb37b6646c2c95"
+    },
+    "training": {
+      "path": "docs/menu-preview-training.json",
+      "sha256": "bb22e2905b26815163a19fb488052df98d115148a3dbc7b8156ec8581e01e0d1"
+    },
+    "fresh": {
+      "path": "docs/menu-preview-fresh.json",
+      "sha256": "73dfbc3cc31ac61bdd03fe96292b022c839f8c84ef3b8866de29e05bdb5536c4"
+    }
+  },
+  "native_preview_checks": 49286,
+  "presentation_training_checks": 6455,
+  "core_cases": {
+    "snes9x": 36,
+    "accuracy": 36
+  },
+  "preservation": {
+    "baseline_commit": "adb522efb5dbed00005e47dfe662275b047e7e30",
+    "generated_count": 226,
+    "generated_preserved": 221,
+    "changed": [
+      "assets/generated/assets.h",
+      "assets/generated/select.png",
+      "assets/generated/select_map.bin",
+      "assets/generated/select_pal.bin",
+      "assets/generated/select_tiles.bin"
+    ],
+    "existing_variable_labels_unchanged": 1316,
+    "allocation_markers": {
+      "SECTIONEND_globram.data": [
+        8324499,
+        8324504
+      ],
+      "RAM_USAGE_SLOT_3_BANK_127_END": [
+        1426,
+        1431
+      ]
+    },
+    "new_menu_bytes": {
+      "menuPreviewId": 8324499,
+      "menuPreviewFrame": 8324500,
+      "menuPreviewClock": 8324501,
+      "menuPreviewConfirm": 8324502,
+      "menuPreviewPaletteDirty": 8324503
+    },
+    "hardware_and_trace_assembly_exact": true
+  },
+  "authoring_guards": {
+    "normal": 20,
+    "optimized": 20
+  },
+  "media": [
+    {
+      "id": 0,
+      "name": "Damian",
+      "path": "docs/screenshots/menu-preview/snes9x/00-idle-confirm.gif",
+      "sha256": "9c38bac9b9ff71c70a49b705f1d8af6c80b073398f992c7b08839a96e392f14d"
+    },
+    {
+      "id": 1,
+      "name": "Ivo",
+      "path": "docs/screenshots/menu-preview/snes9x/01-idle-confirm.gif",
+      "sha256": "0b01fccbb86702daa68f1088e8b1886470b04972bd58687eb43398484f86f5ea"
+    },
+    {
+      "id": 2,
+      "name": "Cristobal",
+      "path": "docs/screenshots/menu-preview/snes9x/02-idle-confirm.gif",
+      "sha256": "26438bb563f2e0aa6f92b2af864048120482bcc735194d8c3749bc12fb1a7602"
+    },
+    {
+      "id": 3,
+      "name": "Cote",
+      "path": "docs/screenshots/menu-preview/snes9x/03-idle-confirm.gif",
+      "sha256": "0fb46dbf532bc760817bfeb6d264603c43c71fb569f376e1cfef5180fc2bf9fb"
+    },
+    {
+      "id": 4,
+      "name": "Negger",
+      "path": "docs/screenshots/menu-preview/snes9x/04-idle-confirm.gif",
+      "sha256": "14426bc7e70460fbe3094f66c602274aef007a5876ac856bc54ea40c856669a3"
+    },
+    {
+      "id": 5,
+      "name": "David",
+      "path": "docs/screenshots/menu-preview/snes9x/05-idle-confirm.gif",
+      "sha256": "0729f57c507365661cf453686fa578745eeb6fc5ff9cf05d9ad2c177e509f029"
+    },
+    {
+      "id": 6,
+      "name": "Fernando",
+      "path": "docs/screenshots/menu-preview/snes9x/06-idle-confirm.gif",
+      "sha256": "2ff4fb508c5ca91ff2c67e80254ca0c2f3c9623b75aead442e1bc343cfb73bf3"
+    },
+    {
+      "id": 7,
+      "name": "Cristian",
+      "path": "docs/screenshots/menu-preview/snes9x/07-idle-confirm.gif",
+      "sha256": "acd3008a0ea472b61e8a79d11b5271e98ce1576e24c7e911a0ef762f98e3df5d"
+    },
+    {
+      "id": 8,
+      "name": "Mamariaga",
+      "path": "docs/screenshots/menu-preview/snes9x/08-idle-confirm.gif",
+      "sha256": "75edd7ccf02608c1ffdfb22070ac6304a2b821304a49cad9ec21a82ec84b3b0d"
+    },
+    {
+      "id": 9,
+      "name": "Reston",
+      "path": "docs/screenshots/menu-preview/snes9x/09-idle-confirm.gif",
+      "sha256": "b0cc44f3027cf231630035e92dab2cdf3f31636cd3eed547487e2af54661994e"
+    },
+    {
+      "id": 10,
+      "name": "Roxana",
+      "path": "docs/screenshots/menu-preview/snes9x/10-idle-confirm.gif",
+      "sha256": "91bf1580575f7c9adb502d04de022f929b29db37aedcef7d626e0ee1ea3bd228"
+    },
+    {
+      "id": 11,
+      "name": "Lars",
+      "path": "docs/screenshots/menu-preview/snes9x/11-idle-confirm.gif",
+      "sha256": "79ab8ed6f19910b52d5f4a673b3dd46ff433ebfcf121c18d5b26e295e862b201"
+    }
+  ],
+  "scope": "full-body preview follow-up; older six-suite results remain historical",
+  "human_review": "accepted",
+  "merged": false,
+  "acceptance": {
+    "version": "0.28.0",
+    "rom_sha256": "09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c",
+    "recorded_at_utc": "2026-10-25T00:04:29.044745+00:00",
+    "response": "ok let's go with this one",
+    "source": "Direct user acceptance after the native full-body preview and PR #25 review",
+    "status": "accepted_for_integration",
+    "human_visual_accepted": true,
+    "scope": "Chosen v0.28.0 preview and integration of its dependency stack; no detailed live-gameplay or public-distribution approval inferred.",
+    "pull_request": 25,
+    "dependency_pull_requests": [
+      21,
+      22,
+      23,
+      24
+    ]
+  }
+}

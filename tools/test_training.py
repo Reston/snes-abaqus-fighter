@@ -315,6 +315,13 @@ class QA:
         current = self.state()
         for _ in range(release_frames):
             current = self.step(allow_menu_load_duplicate=menu_transition)
+        if before.get('screen') == SELECT and key in ('a','start'):
+            version=tuple(map(int,json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.')))
+            if version >= (0,28,0):
+                # Native confirmation now owns an 18-tick signature gesture.
+                # Observe it through ordinary neutral controller callbacks.
+                for _ in range(18):
+                    current = self.step(allow_menu_load_duplicate=menu_transition)
         if menu_transition:
             duplicate_count = len(self.menu_load_duplicates) - menu_duplicates_before
             check(duplicate_count <= MENU_LOAD_DUPLICATE_LIMIT,
@@ -388,7 +395,8 @@ def boot(rom: Path, mode: int = 2, fighter: int = 0,
         second = q.state()
         check(second["screen"] == SELECT,
               "first confirm keeps the native second roster step", second)
-        heading = decode_text(vram_bytes(q), 3, 4)[11:19].strip()
+        column=13 if tuple(map(int,json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.'))) >= (0,28,0) else 11
+        heading = decode_text(vram_bytes(q), 3, 4)[column:column+8].strip()
         check(heading == ("DUMMY" if mode == 2 else "PLAYER 2"),
               "second roster names the actual player or Training dummy", heading)
         target = fighter2 if fighter2 is not None else (

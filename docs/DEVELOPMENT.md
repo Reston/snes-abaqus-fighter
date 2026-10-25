@@ -803,6 +803,13 @@ deterministic hardware steps after authoring.
 
 The v0.5 stage pipeline loads three independent PNG masters from `assets/art/stages/`, with `assets/art/stages/stages.json` describing their source metadata. The home screen, four-by-three fighter selection and arena plates use original art under `assets/art/menu/`, with prompts in `assets/art/menu/prompts.json`. Menu lettering is rendered from the project's original bitmap glyph set. Selected 64x80 profile portraits use a dedicated BG2 block and palette 1; v0.9.0 adds the shared head-anchored contained composition for both 32x40 and 64x80 portraits, recorded as `portrait_framing` in `assets/generated/character-manifest.json`. Images use nearest-neighbor reduction to retain hard edges. `tools/portrait_assets.py` owns the shared crop metadata. The manifest records source hashes, palette values, extraction boxes, uniform scales and native frame hashes for review.
 
+The v0.28 selection uses actor0 at (2,24), a 96x80 canvas, OBJ VRAM $6000
+and original CGRAM128 palette. Office labels begin at x104. Idle uses the
+four standing frames; an 18-tick confirm plays two signature poses and frame11.
+UI972 and actor3840+palette32 byte transfers own separate vblanks. Five
+initialized menu bytes append after audio; no prior variable address moves.
+The old BG2 portrait page still serves result/champion scenes.
+
 The v0.27.1 title/select backdrops reuse the current native office panorama
 in gold duotone. The Natural Earth world-map study is retained as history.
 
