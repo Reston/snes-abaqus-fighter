@@ -22,10 +22,22 @@ def tile(values):
 
 
 def target(sheet, index):
-    # The authored halves are separate transparent cutouts. Fit the complete
-    # silhouette, preserving aspect ratio, with a shared native feet baseline.
+    # Imagegen places the objects unevenly. Project the thresholded alpha to
+    # columns and require two isolated spans, rather than cutting a silhouette
+    # at the mathematical midpoint of the sheet.
     w, h = sheet.size
-    cut = sheet.crop((index * (w // 2), 0, (index + 1) * (w // 2), h))
+    alpha = sheet.getchannel('A').point(lambda value: 255 if value >= 200 else 0)
+    spans = []; start = None
+    for x in range(w + 1):
+        occupied = x < w and alpha.crop((x, 0, x + 1, h)).getbbox() is not None
+        if occupied and start is None:
+            start = x
+        if not occupied and start is not None:
+            spans.append((start, x)); start = None
+    if len(spans) != 2:
+        raise ValueError(('Expected two separate authored silhouettes', spans))
+    left, right = spans[index]
+    cut = sheet.crop((left, 0, right, h))
     alpha = cut.getchannel('A').point(lambda value: 255 if value >= 200 else 0)
     bbox = alpha.getbbox()
     if bbox is None:
@@ -55,7 +67,7 @@ def target(sheet, index):
     preview.putdata([(*colors[value], 255) if value else (0, 0, 0, 0) for value in ids])
     if len(data) != 3840 or len(packed) != 32:
         raise ValueError('Target breaks actor-page geometry')
-    return bytes(data), packed, preview
+    return bytes(data), packed, preview, [left, bbox[1], right, bbox[3]]
 
 
 def install(root, out):
@@ -71,7 +83,7 @@ def install(root, out):
     header = (out / 'assets.h').read_text()
     records = []
     for index, name in enumerate(('bonus29_printer', 'bonus29_inbox')):
-        pose, palette, preview = target(sheet, index)
+        pose, palette, preview, region = target(sheet, index)
         payloads = {name: pose, name + '_pal': palette}
         for label, payload in payloads.items():
             if label + ':' in asm:
@@ -81,13 +93,13 @@ def install(root, out):
                 f'.incbin "assets/generated/{label}.bin"', label + '_end:', '.ends']) + '\n'
             header += f'extern char {label}, {label}_end;\n#define {label.upper()}_SIZE {len(payload)}\n'
         preview.save(out / (name + '.png'))
-        records.append({'name': name, 'bytes': len(pose), 'palette_bytes': len(palette),
+        records.append({'name': name, 'source_region': region, 'bytes': len(pose), 'palette_bytes': len(palette),
                         'pose_sha256': sha(pose), 'palette_sha256': sha(palette)})
     (out / 'data.asm').write_text(asm, newline='\n')
     (out / 'assets.h').write_text(header, newline='\n')
     report = {'scope': 'bonus-v029', 'source_sha256': sha(source.read_bytes()),
               'actor_canvas': [96, 80], 'vram_word': [0x6a00, 0x73ff],
               'cgram_color': [144, 159], 'live_target_dma': 0,
-              'encoding': 'alpha>=200; aspect fit 90x76; bottom78; MEDIANCUT15; no dither; 4bpp', 'targets': records}
+              'encoding': 'alpha>=200; two isolated column spans; aspect fit 90x76; bottom78; MEDIANCUT15; no dither; 4bpp', 'targets': records}
     (out / 'bonus29-assets.json').write_text(json.dumps(report, indent=2) + '\n', newline='\n')
     return report
