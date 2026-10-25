@@ -1,0 +1,82 @@
+{
+  "status": "passed",
+  "old_rom_sha256": "33d0e7bfe67ab349d3b5d554fd76cd71ceebb81070b6e08e5bebe4aea483b0a2",
+  "final_rom_sha256": "7b44bcfd833a2b43ca80830dad264926f5fdf7b9934dd61e8b8b9625e0b32bb2",
+  "all_linked_addresses_identical": true,
+  "compiled_game_assembly_identical": true,
+  "compiled_game_assembly_sha256": "744762d6bf6c0e62b1aff7d0a6a37dedf8970ba269138a69a77f824ef72f7741",
+  "all_bytes_outside_four_target_payloads_and_header_checksum_identical": true,
+  "changed_bytes": 5011,
+  "permitted_physical_ranges": [
+    [
+      815254,
+      819094
+    ],
+    [
+      1407883,
+      1407915
+    ],
+    [
+      28821,
+      32661
+    ],
+    [
+      1407979,
+      1408011
+    ],
+    [
+      32732,
+      32736
+    ]
+  ],
+  "prior_full_roster_report": "build/bonus29-33d0e7bf/snes9x-full.json",
+  "prior_full_roster_report_committed_copy": "docs/bonus29-prior-full-roster.json",
+  "prior_full_roster_report_sha256": "93391995a934a193a06ea3df480151302c9c98087fbaf10f0850b7071ed2dbf6",
+  "prior_checks_pooled_with_final_counts": false,
+  "final_asset_metadata": {
+    "scope": "bonus-v029",
+    "source_sha256": "bdd4eca7ccdddfe3ac0d0eba788a072c07fee1b53006e556d90db394680598bd",
+    "actor_canvas": [
+      96,
+      80
+    ],
+    "vram_word": [
+      27136,
+      29695
+    ],
+    "cgram_color": [
+      144,
+      159
+    ],
+    "live_target_dma": 0,
+    "encoding": "alpha>=200; two isolated column spans; aspect fit 90x76; bottom78; MEDIANCUT15; no dither; 4bpp",
+    "targets": [
+      {
+        "name": "bonus29_printer",
+        "source_region": [
+          66,
+          16,
+          976,
+          810
+        ],
+        "bytes": 3840,
+        "palette_bytes": 32,
+        "pose_sha256": "b002cdec5ab757c4332e28673175341da872ea21c7da66fb264b0445935bb4fc",
+        "palette_sha256": "e886768c5c9ba8f4168523e0c4a9b46dc6fa55c49fb63c84f1b07ec5e76301e2"
+      },
+      {
+        "name": "bonus29_inbox",
+        "source_region": [
+          1112,
+          22,
+          1816,
+          821
+        ],
+        "bytes": 3840,
+        "palette_bytes": 32,
+        "pose_sha256": "6a35a860d63c94d8ff868205a12da19811e61a4cc921a14abec84afa37c14612",
+        "palette_sha256": "7ff4ff60d5b6592b03ea9ef80c4662f8e8e133cb1f8363b7add119927a99561e"
+      }
+    ]
+  }
+}

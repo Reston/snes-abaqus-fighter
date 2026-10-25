@@ -1,0 +1,537 @@
+{
+  "status": "passed",
+  "scope": "topic2 isolated office bonus focused proof",
+  "pr": "https://github.com/Reston/snes-abaqus-fighter/pull/30",
+  "branch": "t3/office-bonus-rounds",
+  "rom_sha256": "7b44bcfd833a2b43ca80830dad264926f5fdf7b9934dd61e8b8b9625e0b32bb2",
+  "source_freeze": "8024db8c456ee3cffed6d9423fc47655b5c8f083",
+  "source_inventory_sha256": "da940dd1ae9eb2924cd04bbe403bb6b8635ae9f0d86214e66241392521495ab9",
+  "harness_sha256": "49ec68ed0a90ef914022ae58ae0384873d18139bca7bdd65f204193e7655398e",
+  "encoder_sha256": "88191286772b144c8ac534f7c385a3c098fe9a87f47df588f6256dde67d20eea",
+  "runtime_sha256": "8c86dcdf1520d87349ac31b0a84c3e9aa45312b44071122b06367d30625cae1e",
+  "art_source_sha256": "bdd4eca7ccdddfe3ac0d0eba788a072c07fee1b53006e556d90db394680598bd",
+  "producer_inputs_sha256": "315293ef04d0fe182707aeb98d74a6080422ebc3a62ea37a526ffc612afc0e61",
+  "core_identities": {
+    "snes9x": {
+      "archive": ".tools\\core.zip",
+      "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
+      "member": "snes9x_libretro.dll",
+      "member_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
+      "dll": ".tools\\core\\snes9x_libretro.dll",
+      "dll_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343"
+    },
+    "accuracy": {
+      "rom_sha256": "7b44bcfd833a2b43ca80830dad264926f5fdf7b9934dd61e8b8b9625e0b32bb2",
+      "manifest_sha256": "7b44bcfd833a2b43ca80830dad264926f5fdf7b9934dd61e8b8b9625e0b32bb2",
+      "rom_bytes": 4194304,
+      "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
+      "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
+    }
+  },
+  "source_and_dependencies_stable_during_each_run": true,
+  "reports": [
+    {
+      "report": "docs/bonus29-snes9x.json",
+      "sha256": "b226ef56951994fdae46dfc5a36f39f026c5e83903982d52984d4d5074fcb771",
+      "core": "snes9x",
+      "heroes": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "earned_wins": 44,
+      "bonuses": [
+        "success",
+        "success",
+        "success",
+        "success",
+        "success",
+        "success",
+        "success",
+        "success",
+        "success",
+        "success",
+        "success",
+        "success",
+        "success"
+      ],
+      "health": {
+        "bonus_callbacks": 9598,
+        "fight_callbacks": 164765,
+        "max_spc_backlog": 3,
+        "max_changed_actor_pages_per_bonus_callback": 1,
+        "failures": []
+      },
+      "passed": 707746,
+      "seconds": 282.094,
+      "command": [
+        "C:\\Users\\user\\.t3\\worktrees\\snes-abaqus-fighter\\t3-0829970a\\.tools\\python\\python.exe",
+        "tools/test_bonus29.py",
+        "--core",
+        "snes9x",
+        "--through",
+        "3",
+        "--report",
+        "docs/bonus29-snes9x.json",
+        "--captures",
+        "docs/screenshots/bonus-v029/final-art"
+      ]
+    },
+    {
+      "report": "docs/bonus29-accuracy.json",
+      "sha256": "42522c539792241271ebb3216e011682ff9ae1def25b3b9cd5acc950ff536943",
+      "core": "accuracy",
+      "heroes": [
+        8
+      ],
+      "earned_wins": 7,
+      "bonuses": [
+        "success",
+        "success"
+      ],
+      "health": {
+        "bonus_callbacks": 1375,
+        "fight_callbacks": 81538,
+        "max_spc_backlog": 0,
+        "max_changed_actor_pages_per_bonus_callback": 1,
+        "failures": []
+      },
+      "passed": 333300,
+      "seconds": 530.469,
+      "command": [
+        "C:\\Users\\user\\.t3\\worktrees\\snes-abaqus-fighter\\t3-0829970a\\.tools\\python\\python.exe",
+        "tools/test_bonus29.py",
+        "--core",
+        "accuracy",
+        "--fighters",
+        "8",
+        "--champion-hero",
+        "-1",
+        "--report",
+        "docs/bonus29-accuracy.json",
+        "--captures",
+        "docs/screenshots/bonus-v029/final-art"
+      ]
+    },
+    {
+      "report": "docs/bonus29-timeout-snes9x.json",
+      "sha256": "30dd627069a6453d2308911d3e42b38d8ce56586b1e00d9965b6e205df685080",
+      "core": "snes9x",
+      "heroes": [
+        0
+      ],
+      "earned_wins": 7,
+      "bonuses": [
+        "timeout",
+        "timeout"
+      ],
+      "health": {
+        "bonus_callbacks": 1984,
+        "fight_callbacks": 30941,
+        "max_spc_backlog": 3,
+        "max_changed_actor_pages_per_bonus_callback": 1,
+        "failures": []
+      },
+      "passed": 133954,
+      "seconds": 53.36,
+      "command": [
+        "C:\\Users\\user\\.t3\\worktrees\\snes-abaqus-fighter\\t3-0829970a\\.tools\\python\\python.exe",
+        "tools/test_bonus29.py",
+        "--core",
+        "snes9x",
+        "--fighters",
+        "0",
+        "--champion-hero",
+        "-1",
+        "--outcome",
+        "timeout",
+        "--report",
+        "docs/bonus29-timeout-snes9x.json",
+        "--captures",
+        "docs/screenshots/bonus-v029/timeout"
+      ]
+    },
+    {
+      "report": "docs/bonus29-skip-snes9x.json",
+      "sha256": "457cbadd021cae8b0581187689d7d7ab69407e0839a12b949549c81e333dc664",
+      "core": "snes9x",
+      "heroes": [
+        1
+      ],
+      "earned_wins": 7,
+      "bonuses": [
+        "skip",
+        "skip"
+      ],
+      "health": {
+        "bonus_callbacks": 552,
+        "fight_callbacks": 31026,
+        "max_spc_backlog": 3,
+        "max_changed_actor_pages_per_bonus_callback": 1,
+        "failures": []
+      },
+      "passed": 127132,
+      "seconds": 51.391,
+      "command": [
+        "C:\\Users\\user\\.t3\\worktrees\\snes-abaqus-fighter\\t3-0829970a\\.tools\\python\\python.exe",
+        "tools/test_bonus29.py",
+        "--core",
+        "snes9x",
+        "--fighters",
+        "1",
+        "--champion-hero",
+        "-1",
+        "--outcome",
+        "skip",
+        "--report",
+        "docs/bonus29-skip-snes9x.json",
+        "--captures",
+        "docs/screenshots/bonus-v029/skip"
+      ]
+    },
+    {
+      "report": "docs/bonus29-timeout-accuracy.json",
+      "sha256": "d6e855e6e3422991704fc1626e89676c510d0f051e9226893b9d29cb22b4db6d",
+      "core": "accuracy",
+      "heroes": [
+        0
+      ],
+      "earned_wins": 7,
+      "bonuses": [
+        "timeout",
+        "timeout"
+      ],
+      "health": {
+        "bonus_callbacks": 1984,
+        "fight_callbacks": 25025,
+        "max_spc_backlog": 3,
+        "max_changed_actor_pages_per_bonus_callback": 1,
+        "failures": []
+      },
+      "passed": 110290,
+      "seconds": 122.703,
+      "command": [
+        "C:\\Users\\user\\.t3\\worktrees\\snes-abaqus-fighter\\t3-0829970a\\.tools\\python\\python.exe",
+        "tools/test_bonus29.py",
+        "--core",
+        "accuracy",
+        "--fighters",
+        "0",
+        "--champion-hero",
+        "-1",
+        "--outcome",
+        "timeout",
+        "--report",
+        "docs/bonus29-timeout-accuracy.json",
+        "--captures",
+        "docs/screenshots/bonus-v029/timeout"
+      ]
+    },
+    {
+      "report": "docs/bonus29-skip-accuracy.json",
+      "sha256": "a5495d067b0f66af9c4422706c3503160c76e4cd52d05c2cc7f62ca5280cf3be",
+      "core": "accuracy",
+      "heroes": [
+        1
+      ],
+      "earned_wins": 7,
+      "bonuses": [
+        "skip",
+        "skip"
+      ],
+      "health": {
+        "bonus_callbacks": 552,
+        "fight_callbacks": 29905,
+        "max_spc_backlog": 0,
+        "max_changed_actor_pages_per_bonus_callback": 1,
+        "failures": []
+      },
+      "passed": 122648,
+      "seconds": 136.453,
+      "command": [
+        "C:\\Users\\user\\.t3\\worktrees\\snes-abaqus-fighter\\t3-0829970a\\.tools\\python\\python.exe",
+        "tools/test_bonus29.py",
+        "--core",
+        "accuracy",
+        "--fighters",
+        "1",
+        "--champion-hero",
+        "-1",
+        "--outcome",
+        "skip",
+        "--report",
+        "docs/bonus29-skip-accuracy.json",
+        "--captures",
+        "docs/screenshots/bonus-v029/skip"
+      ]
+    }
+  ],
+  "passed": 1535070,
+  "media": [
+    {
+      "path": "docs/screenshots/bonus-v029/final-art/snes9x/hero00-bonus1-paused.png",
+      "sha256": "2c44c1a1e49314078ee168ec86cac9f3e44da495e9b7951b582caaae95603116"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/final-art/snes9x/hero00-bonus1-start.png",
+      "sha256": "5f351702bfb0c760ccede98b3a699a035796a9ea050bdfdeb6bbd2bf1c7706dc"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/final-art/snes9x/hero00-bonus1-success.png",
+      "sha256": "ee00820f57a7d1f7242b4959b77488ff93d85207cd7bfa17fb6c55960f4a09dd"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/final-art/snes9x/hero00-bonus2-paused.png",
+      "sha256": "2653f99667e608a5fb07df91181c3519f9b70a25b35caa32be88a42dced47a1e"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/final-art/snes9x/hero00-bonus2-start.png",
+      "sha256": "08776ac28d3fccb3aaaa56f634f6e62819d367bab9c0b5d2b589a99a0c791bbd"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/final-art/snes9x/hero00-bonus2-success.png",
+      "sha256": "a5891c17006c55719f2ccd098b14a0b39d0c5b9195f6bde6eaa4d90be160ec0a"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/final-art/snes9x/hero00-champion.png",
+      "sha256": "68719b464dbcca857d99c8cc8f7246ac143dcf2613be0c2ef77ea5402c3ea838"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/final-art/snes9x/hero01-bonus1-success.png",
+      "sha256": "45d722cd4a46f6906a7ab941d5636618f6bf90657b66a397750034b5d15f202f"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/final-art/snes9x/hero02-bonus1-success.png",
+      "sha256": "4923c04ba243dc449c7d36da39013f94c9d102859a920a0422eb535c6b1f2775"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/final-art/snes9x/hero11-bonus1-start.png",
+      "sha256": "8cc1baf01ed83684db5bf6307b420f5ae6aaa47a3ae0947d198e02ae13150192"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/final-art/snes9x/hero11-bonus1-success.png",
+      "sha256": "ee22cf672486879636b9fe901c2f9b8a77ba8bed1b2f150ceb52c543ee00e924"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/skip/accuracy/hero01-bonus1-skip.png",
+      "sha256": "6d49f853320a433d3ed4c0212120cdbd66702fb3afc5ab68116327eb280b14e8"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/skip/accuracy/hero01-bonus2-skip.png",
+      "sha256": "e22471ca9038e9cbc49c3486dda2ff1b856567923741b7ec57a5a00ee0f7a513"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/skip/snes9x/hero01-bonus1-skip.png",
+      "sha256": "d38f14f909b875ce07a51c12ffc77744bf3fcb57f1e98cd2cf841278362a272d"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/skip/snes9x/hero01-bonus2-skip.png",
+      "sha256": "e360c385c9cc5a91526e09def5a8c4a72cd6b3712f6c6dd83b516570daca38b1"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/timeout/accuracy/hero00-bonus1-paused.png",
+      "sha256": "d3e10c0237efc4333603d97cc089dc6c990c05139eca1ec936edd513947d7214"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/timeout/accuracy/hero00-bonus1-start.png",
+      "sha256": "0c0615ea6f6d07b06434d9e2c44ea469614fc6fc1982e505f2d5cfcaa7955eef"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/timeout/accuracy/hero00-bonus1-timeout.png",
+      "sha256": "22cef954bd1a72c60c552ac1b383aa77d212770c08d6d66f2dcbe5be5aaae95d"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/timeout/accuracy/hero00-bonus2-paused.png",
+      "sha256": "5f8d909d0074ce3e9a63ac6bdcc59009c3e2afc4b016f8c376c33e176c1fc7f2"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/timeout/accuracy/hero00-bonus2-start.png",
+      "sha256": "763f5780028803ce173c6b665c18dd174b0ce94b56214d3cef41edc1b3c81514"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/timeout/accuracy/hero00-bonus2-timeout.png",
+      "sha256": "0443644d1a208a736c0575d7eb915c97e479f3324376447bcf089b61fde33aaa"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/timeout/snes9x/hero00-bonus1-paused.png",
+      "sha256": "101c0f97d9f160d7bed2f59e4f12929c17c52a294191fa86490a46d7a84b70da"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/timeout/snes9x/hero00-bonus1-start.png",
+      "sha256": "5f351702bfb0c760ccede98b3a699a035796a9ea050bdfdeb6bbd2bf1c7706dc"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/timeout/snes9x/hero00-bonus1-timeout.png",
+      "sha256": "2b9d81729615c35f7af7cb8dba18670a999a66d27e8e8b1157f52f65a6127a4b"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/timeout/snes9x/hero00-bonus2-paused.png",
+      "sha256": "2653f99667e608a5fb07df91181c3519f9b70a25b35caa32be88a42dced47a1e"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/timeout/snes9x/hero00-bonus2-start.png",
+      "sha256": "4679a166271542d3f2c057d1a9ca795224673709ff8d8a903865342ae37a8290"
+    },
+    {
+      "path": "docs/screenshots/bonus-v029/timeout/snes9x/hero00-bonus2-timeout.png",
+      "sha256": "5c4c6ae283a50b9b40e00cd2dfe252857f5e73e794d02ad218d04fc5f615101a"
+    }
+  ],
+  "historical_full_roster": {
+    "report": "docs/bonus29-prior-full-roster.json",
+    "sha256": "93391995a934a193a06ea3df480151302c9c98087fbaf10f0850b7071ed2dbf6",
+    "rom_sha256": "33d0e7bfe67ab349d3b5d554fd76cd71ceebb81070b6e08e5bebe4aea483b0a2",
+    "all_twelve_heroes_both_bonus_rounds": true,
+    "checks_excluded_from_final_totals": true,
+    "final_art_equivalence_report": "docs/bonus29-art-equivalence.json",
+    "final_art_equivalence_sha256": "ac0f4053ac31062cbfafaca8117f780e0991ea6c143843a267b8ff05bead7260"
+  },
+  "earned_wins": 79,
+  "bonus_sessions": 23,
+  "health": {
+    "bonus_callbacks": 16045,
+    "fight_callbacks": 363200,
+    "sdk_lag_events": 0,
+    "obj_overflow_events": 0,
+    "failures": [],
+    "max_spc_backlog": 3,
+    "max_changed_actor_pages_per_bonus_callback": 1
+  },
+  "native_budgets": {
+    "state_reservation": "$7F:05A8..05E7",
+    "state_reserved_bytes": 64,
+    "state_used_bytes": 29,
+    "new_mutable_definitions": 0,
+    "hero_pose_bytes_per_live_blank": 3840,
+    "target_live_dma_bytes": 0,
+    "hud_bytes": 320,
+    "banner_bytes": 320,
+    "ui_yields_to_actor": true,
+    "visible_obj_entries": 64,
+    "maximum_line_objects": 16,
+    "maximum_line_fetch_tiles": 32,
+    "bg1_live_dma_bytes": 0,
+    "hdma_mask": 0,
+    "asset_rom_bytes": 7744,
+    "constant_timing_bytes": 12,
+    "code_sections": {
+      "bonus29PublishScroll": {
+        "start": "AAF85C",
+        "bytes": 44,
+        "stack_locals_bytes": 0
+      },
+      "bonus29Hud": {
+        "start": "8AFE8B",
+        "bytes": 370,
+        "stack_locals_bytes": 8
+      },
+      "bonus29Card": {
+        "start": "9EFE8B",
+        "bytes": 369,
+        "stack_locals_bytes": 0
+      },
+      "bonus29Finish": {
+        "start": "A8F800",
+        "bytes": 152,
+        "stack_locals_bytes": 0
+      },
+      "bonus29Queue": {
+        "start": "A7FAF6",
+        "bytes": 181,
+        "stack_locals_bytes": 0
+      },
+      "bonus29Draw": {
+        "start": "89FEE3",
+        "bytes": 284,
+        "stack_locals_bytes": 12
+      },
+      "bonus29Begin": {
+        "start": "95FBE3",
+        "bytes": 984,
+        "stack_locals_bytes": 1
+      },
+      "bonus29TryBegin": {
+        "start": "A3F929",
+        "bytes": 297,
+        "stack_locals_bytes": 2
+      },
+      "bonus29TickLive": {
+        "start": "E8D0C9",
+        "bytes": 3347,
+        "stack_locals_bytes": 16
+      },
+      "bonus29TickFrame": {
+        "start": "AAF800",
+        "bytes": 46,
+        "stack_locals_bytes": 0
+      }
+    },
+    "code_bytes": 6074
+  },
+  "preservation": {
+    "baseline": "c7510c30e129465bcca0b32e2142daec60546d0f",
+    "old_generated": 226,
+    "preserved_old_payloads": 224,
+    "changed_declarations": [
+      "assets/generated/assets.h",
+      "assets/generated/data.asm"
+    ],
+    "new_outputs": [
+      "assets/generated/bonus29-assets.json",
+      "assets/generated/bonus29_inbox.bin",
+      "assets/generated/bonus29_inbox.png",
+      "assets/generated/bonus29_inbox_pal.bin",
+      "assets/generated/bonus29_printer.bin",
+      "assets/generated/bonus29_printer.png",
+      "assets/generated/bonus29_printer_pal.bin"
+    ],
+    "old_variable_addresses_preserved": 1321,
+    "ram_markers": {
+      "SECTIONEND_globram.data": [
+        8324504,
+        8324680
+      ],
+      "RAM_USAGE_SLOT_3_BANK_127_END": [
+        1431,
+        1607
+      ]
+    },
+    "parent_reservations": {
+      "v29DefenseState": 8324504,
+      "v29BonusState": 8324520,
+      "v29AutoState": 8324584,
+      "v29RandomState": 8324592,
+      "v29AudioState": 8324600,
+      "v29ArenaState": 8324632
+    },
+    "hardware_trace_exact": true
+  },
+  "candidate_retained": "build/bonus29-tested",
+  "compiled_symbol_sha256": "6a082a5fafad8237de668697eeddd81499a438472d7c68de9ff81762e6ed0c8a",
+  "compiled_assembly_sha256": "744762d6bf6c0e62b1aff7d0a6a37dedf8970ba269138a69a77f824ef72f7741",
+  "build": {
+    "command": [
+      ".tools/python/python.exe",
+      "tools/build.py"
+    ],
+    "exit_code": 0,
+    "log": "build/bonus29-build-art-final.log",
+    "log_sha256": "ff63c079f97117fef9bebbe0e74fab20ef7c30e62aeb9e3b0082e3ebcc6a19d5",
+    "rom_bytes": 4194304
+  },
+  "limits": [
+    "Parent owns combined six-suite verification, integration conflicts, freeze and source reproduction.",
+    "No final integration/main merge or generated/dist output commit by this child.",
+    "No hardware, physical-controller or human gameplay acceptance claim.",
+    "Earlier failed harness observations and partial roster run remain ignored diagnostics; counts exclude them."
+  ]
+}
