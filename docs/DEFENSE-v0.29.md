@@ -143,3 +143,14 @@ artifacts, adapt that source/asset allowlist to the combined contract, and
 account for the other features' menu routes. The live cadence, damage and
 defense-window assertions must remain strict. This tool does not replace the
 parent's six native suites or combined transfer/stress proof.
+
+The ordinary-play byte comparison begins after the native menu/intro boot
+helper has reached fully initialized live combat. Both complete boot streams
+remain retained and hashed separately. The first full run found Reston's
+candidate loader one frontend callback later than its parent while forced
+blank was active: one stream had already initialized FIGHT/intro, while the
+other still exposed ARENA and the core's old `$55` fill bytes. This is not
+live simulation state. No live callback, game-frame value, Fighter/Wave/RNG
+byte or native input is masked, shifted or omitted from the subsequent
+ordinary-play comparison. That failed attempt remains under ignored
+`build/defense29/failed-loader-preservation-report.json` with its original log.

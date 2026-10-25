@@ -461,7 +461,11 @@ def defense_case(core, fighter, port):
         for airborne in (False, True):
             r.reset()
             if airborne:
-                r.step((), ('up',))
+                s = r.step((), ('up',))
+                if core == 'accuracy' and not s[f'y{r.d}']:
+                    s = r.step((), ('up',))
+                require(s[f'y{r.d}'] != 0 and s[f'down_state{r.d}'] == 0,
+                        'air rejection fixture is genuinely airborne through a controller jump', [r.tag, s])
             s = r.step((), command(r))
             if core == 'accuracy' and s[f'action{r.d}'] != 3:
                 s = r.step((), command(r))
@@ -585,9 +589,9 @@ def cpu_case(core, level, delay):
         r.close()
 
 
-def ko_case(core, port):
-    r = Rig(0, port, core)
-    row = {'core': core, 'port': port, 'throws': 0}
+def ko_case(core, port, fighter=0):
+    r = Rig(fighter, port, core)
+    row = {'core': core, 'fighter': fighter, 'port': port, 'throws': 0}
     try:
         for _ in range(10):
             r.settle()
@@ -622,6 +626,12 @@ def ko_case(core, port):
 def unaffected(fighter, port, phase):
     r = Rig(fighter, port, rom=OUT / 'baseline/abaqus-after-hours.sfc' if phase == 'before' else None)
     try:
+        # Forced-blank loader callbacks can straddle the frontend boundary;
+        # old 0x55 core-fill bytes are not initialized combat state. Retain
+        # that complete route separately, then compare every LIVE byte and
+        # game-frame value without masks, time offsets or omitted live ticks.
+        boot_stream = r.stream(f'boot-unaffected-{phase}')
+        r.e.stream = []
         r.position(112)
         for _ in range(12):
             r.step((r.direction(),))
@@ -637,8 +647,9 @@ def unaffected(fighter, port, phase):
         r.step(('y',))
         r.e.run(70)
         # Hash complete, unmasked traces, Fighter/Wave/RNG and native pads,
-        # including every callback of the menu route and ordinary play.
+        # throughout ordinary live play. The complete loader is also retained.
         row = r.stream(f'unaffected-{phase}')
+        row['boot_stream'] = boot_stream
         return r.e.stream, row
     finally:
         r.close()
@@ -782,9 +793,12 @@ def main():
                 for core in ('snes9x', 'accuracy'):
                     if args.core != 'both' and args.core != core:
                         continue
-                    for port in (0, 1):
-                        report['ko_cases'].append(ko_case(core, port))
-                    print(json.dumps({'core': core, 'ko_roles': 'passed'}), flush=True)
+                    fighters = ((range(12) if core == 'snes9x' else (0, 1, 8, 11))
+                                if args.fighter is None else (args.fighter,))
+                    for fighter in fighters:
+                        for port in (0, 1):
+                            report['ko_cases'].append(ko_case(core, port, fighter))
+                        print(json.dumps({'core': core, 'ko_fighter': fighter, 'roles': 'passed'}), flush=True)
             if args.section in ('all', 'preservation'):
                 for fighter in (range(12) if args.fighter is None else [args.fighter]):
                     for port in (0, 1):
@@ -792,7 +806,7 @@ def main():
                         after, new = unaffected(fighter, port, 'after')
                         difference = next((i for i, (a, b) in enumerate(zip(before, after)) if a != b), None)
                         require(before == after,
-                                'ordinary movement jump and four normals preserve every unmasked native state byte',
+                                'ordinary movement jump and four normals preserve every unmasked live native state byte',
                                 {'fighter': fighter, 'port': port, 'first_difference': difference,
                                  'before': before[difference] if difference is not None else len(before),
                                  'after': after[difference] if difference is not None else len(after)})
