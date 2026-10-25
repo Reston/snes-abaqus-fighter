@@ -8,6 +8,7 @@
 #include "characters.h"
 #include "menu_portraits.h"
 #include "version.h"
+#include "expansion29.h"
 
 #if MOD_EFFECTS != 0 || MOD_MUSIC0 != 1 || MOD_MUSIC1 != 2 || MOD_MUSIC2 != 3 || MOD_MUSIC3 != 4 || MOD_MUSIC4 != 5
 #error Regenerate the resident effects-first soundbank with Build.cmd --assets
@@ -1521,3 +1522,4 @@ int main(void) {
 
 #include "audio_presentation_state.h"
 #include "menu_preview_state.h"
+#include "expansion29_state.h"
