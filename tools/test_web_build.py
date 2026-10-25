@@ -4,6 +4,7 @@ import hashlib
 import io
 import json
 from pathlib import Path
+import subprocess
 import tempfile
 import sys
 import unittest
@@ -14,6 +15,33 @@ import build_web
 
 
 class WebBuildTests(unittest.TestCase):
+    def test_default_vsync_uses_the_supported_pinned_runtime_setting(self):
+        # Evaluate the wrapper configuration without loading a core or building
+        # the site, then bind its literal value to the verified vendor handler.
+        root = build_web.ROOT
+        node = root / '.tools/node/node-v24.22.1-win-x64/node.exe'
+        script = r'''
+const fs=require('node:fs'),vm=require('node:vm');
+const noop=()=>{},elements=new Map();
+const element=()=>({addEventListener:noop,setAttribute:noop,hidden:true,textContent:''});
+const sandbox={navigator:{maxTouchPoints:0},WebAssembly:{},URL,
+  MutationObserver:class {observe(){} disconnect(){}},setTimeout:()=>1,clearTimeout:noop,
+  HTMLScriptElement:class {},HTMLLinkElement:class {},
+  document:{querySelector:id=>{if(!elements.has(id))elements.set(id,element());return elements.get(id)},
+    addEventListener:noop,removeEventListener:noop,createElement:element,head:{append:noop}},
+  window:{ABAQUS_RELEASE:{version:'0.29.0',emulator_path:'emulator/4.2.3/',rom_sha256:'fixture'},
+    location:{href:'http://127.0.0.1/'},addEventListener:noop}};
+vm.runInNewContext(fs.readFileSync(process.argv[1],'utf8'),sandbox,{timeout:1000});
+process.stdout.write(JSON.stringify(sandbox.window.EJS_defaultOptions));
+'''
+        completed = subprocess.run([str(node), '-e', script, str(root / 'web/player.js')],
+                                   check=True, capture_output=True, text=True, timeout=5)
+        self.assertEqual(json.loads(completed.stdout)['vsync'], 'disabled')
+        lock = json.loads((root / 'web/vendor-lock.json').read_text())
+        runtime = (root / '.tools/emulatorjs' / lock['emulatorjs_version'] / 'emulator.min.js').read_bytes()
+        self.assertEqual(hashlib.sha256(runtime).hexdigest(), lock['files']['emulator.min.js'])
+        self.assertIn('else if("vsync"===t)this.gameManager.setVSync("enabled"===e)', runtime.decode())
+
     def test_bundle_matches_native_rom_and_pinned_runtime(self):
         with redirect_stdout(io.StringIO()):
             build_web.build()

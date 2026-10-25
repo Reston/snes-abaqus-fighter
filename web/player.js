@@ -86,7 +86,7 @@
   // Saved emulator volumes must not bypass the first-interaction sound gate.
   window.EJS_disableLocalStorage = true;
   window.EJS_volume = 0;
-  window.EJS_defaultOptions = {menubarBehavior: 'anywhere', 'virtual-gamepad': navigator.maxTouchPoints > 0 ? 'enabled' : 'disabled'};
+  window.EJS_defaultOptions = {vsync: 'disabled', menubarBehavior: 'anywhere', 'virtual-gamepad': navigator.maxTouchPoints > 0 ? 'enabled' : 'disabled'};
   window.EJS_defaultControls = {
     0: controls({0: 'z', 1: 'a', 2: 'shift', 3: 'enter', 4: 'up arrow', 5: 'down arrow', 6: 'left arrow', 7: 'right arrow', 8: 'x', 9: 's', 10: 'd', 11: 'f'}),
     1: controls({0: 'numpad 1', 1: 'numpad 7', 2: 'q', 3: 'space', 4: 'i', 5: 'k', 6: 'j', 7: 'l', 8: 'numpad 2', 9: 'numpad 8', 10: 'u', 11: 'o'}),

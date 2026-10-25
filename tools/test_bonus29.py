@@ -257,7 +257,11 @@ class Rig:
                 self.run(3, p1=[forward, 'up'])
             elif s['action2'] and distance < 55:
                 self.run(p1=[back, 'down'] if 4 <= s['action2'] <= 6 else [back])
-            elif distance >= s['throw_range1'] - 2:
+            # At the observed 32px spacing, a short-range hero must try X
+            # rather than walk forever. Native input chooses a legal throw
+            # only strictly inside its cap, otherwise the ordinary strong
+            # punch; retain exact fixed-point boundary and all tick limits.
+            elif abs(s['x1'] - s['x2']) > max(s['throw_range1'], 32) * 16:
                 self.run(p1=[forward])
             else:
                 self.run(3, p1=[forward, 'x']); self.run(p1=[forward])

@@ -216,6 +216,22 @@ def wait_screen(e: Emulator, wanted: int) -> None:
     raise AssertionError(("screen did not arrive", wanted, trace(e)))
 
 
+@lru_cache(maxsize=1)
+def menu_preview_symbols() -> dict[str, int] | None:
+    """Bind the v0.28 gesture wait to actual linked native state/counters."""
+    version = tuple(map(int, json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.')))
+    if version < (0, 28, 0):
+        return None
+    linked = {name: int(address, 16) & 0x1ffff for address, name in re.findall(
+        r"^([0-9a-fA-F]{8}) (\S+)$",
+        (ROOT/'dist/abaqus-after-hours.sym').read_text(), re.MULTILINE)}
+    required = {'menuPreviewConfirm', 'selectPlayer', 'mode', 'frame',
+                'snes_vblank_count', 'lag_frame_counter'}
+    check(required <= linked.keys(), "preview fixture has linked gesture and health symbols",
+          sorted(required - linked.keys()))
+    return {name: linked[name] for name in required}
+
+
 def menu_press(e: Emulator, keys: list[str], port: int = 0,
                hold: int = 12, release: int = 4) -> None:
     """Send one settled controller edge without opening a frontend.
@@ -227,17 +243,60 @@ def menu_press(e: Emulator, keys: list[str], port: int = 0,
 
     kwargs = {"p1" if port == 0 else "p2": keys}
     before = native_screen(e)
-    first = None
-    for callback in range(hold):
-        e.run(1, **kwargs)
-        if native_screen(e) != before and first is None:
-            first = callback + 1
-    e.run(release)
+    preview = menu_preview_symbols() if before == 1 else None
+    def read(name, size=1):
+        return int.from_bytes(C.string_at(e.ram + preview[name], size), "little")
+    role = read("selectPlayer") if preview else None
+    target = 1 if preview and role == 0 and read("mode") != 0 else 2
+    first = preview_first = completed = None
+    callbacks = 0
+    def advance(held):
+        nonlocal first, preview_first, completed, callbacks
+        scene = native_screen(e)
+        counters = [read(name, 2) for name in ("frame", "snes_vblank_count", "lag_frame_counter")] if preview else []
+        e.run(1, **held)
+        callbacks += 1
+        after = native_screen(e)
+        if after != before and first is None:
+            first = callbacks
+        if preview:
+            phase = read("menuPreviewConfirm")
+            if phase and preview_first is None:
+                preview_first = callbacks
+                check(phase == 1 and callbacks <= 2,
+                      "roster confirm accepts the edge within two callbacks",
+                      {"callback": callbacks, "phase": phase, "role": role})
+            if preview_first is not None:
+                if scene == after == 1:
+                    current = [read(name, 2) for name in ("frame", "snes_vblank_count", "lag_frame_counter")]
+                    delta = [(a-b) & 65535 for a, b in zip(current, counters)]
+                    check(delta == [1, 1, 0], "roster gesture keeps native frame/VBlank/SDK cadence", delta)
+                    stat = int.from_bytes(C.string_at(e.ram + 0x1ff00 + 114*2, 2), "little")
+                    check(not stat & 0xc0, "roster gesture has no OBJ overflow", stat)
+                if not phase and (after != 1 or read("selectPlayer") != role) and completed is None:
+                    completed = callbacks
+    for _ in range(hold):
+        advance(kwargs)
+    if preview_first is not None:
+        for _ in range(release):
+            advance({})
+        # Wait only for the observed roster gesture, never for live gameplay.
+        while completed is None and callbacks < preview_first + 18:
+            advance({})
+        check(completed == preview_first + 18 and native_screen(e) == target
+              and read("menuPreviewConfirm") == 0 and (target != 1 or read("selectPlayer") == 1),
+              "18-tick roster gesture publishes exactly the next selection step",
+              {"accepted": preview_first, "completed": completed, "target": target,
+               "scene": native_screen(e), "role": read("selectPlayer")})
+    else:
+        e.run(release)
     destination = native_screen(e)
     if destination != before:
-        check(first is not None and first <= 2,
-              "menu edge changes the actual scene within two callbacks",
-              {"from": before, "to": destination, "first_callback": first})
+        bound = preview_first + 18 if preview_first is not None else 2
+        check(first is not None and first <= bound,
+              "menu edge changes the actual scene within two callbacks" if preview_first is None else
+              "roster scene change respects the measured gesture bound",
+              {"from": before, "to": destination, "first_callback": first, "bound": bound})
         for settled in range(37):
             if trace(e)["screen"] == destination:
                 break
@@ -4486,6 +4545,7 @@ def check_cpu_anti_air() -> dict[str, object]:
     run separately with their original assertions.
     """
 
+    preview_menus = menu_preview_symbols() is not None
     fixtures = ((0, 1, 1), (0, 2, 0), (2, 2, 13), (4, 1, 6),
                 (4, 2, 5), (5, 1, 8), (5, 2, 5))
     if DELIBERATE_PACING:
@@ -4501,16 +4561,22 @@ def check_cpu_anti_air() -> dict[str, object]:
         # Measured controller-only delays retain the same hit/startup checks.
         fixtures=((0,1,0),(0,2,7),(2,2,0),(4,1,5),
                   (6,2,0),(5,1,1),(5,2,5))
+    if preview_menus:
+        # Measured on the linked 18-tick standing-preview menu path. Only
+        # title-controller timing changes; every original 65-sample reaction,
+        # first-active contact and grounded/visible eligibility check remains.
+        fixtures=((0,1,42),(0,2,6),(2,2,4),(4,1,3),
+                  (6,2,0),(5,1,1),(5,2,39))
     cases = [_cpu_jump_in(cpu, difficulty, delay)
              for cpu, difficulty, delay in fixtures]
     hits = [_cpu_uppercut_start(case, hit=True) for case in cases]
-    retreat = _cpu_jump_in(2, 2, 23 if CLASSIC_MENUS else 25 if PLAY_FLOW else 24 if DELIBERATE_PACING else 13, retreat=True, kick=False)
+    retreat = _cpu_jump_in(2, 2, 15 if preview_menus else 23 if CLASSIC_MENUS else 25 if PLAY_FLOW else 24 if DELIBERATE_PACING else 13, retreat=True, kick=False)
     whiff = _cpu_uppercut_start(retreat, hit=False)
 
     # Equal menu frame counts align Normal's title+20 with Hard/Easy's
     # difficulty-button tap. The same visible opening does not assure a
     # reaction: Hard intercepts here, Normal misses its sampled opportunity.
-    comparison_cpu,comparison_delay=(5,5) if CLASSIC_MENUS else (5,10) if PLAY_FLOW else (5,9) if DELIBERATE_PACING else (4,5)
+    comparison_cpu,comparison_delay=(5,39) if preview_menus else (5,5) if CLASSIC_MENUS else (5,10) if PLAY_FLOW else (5,9) if DELIBERATE_PACING else (4,5)
     easy = _cpu_jump_in(comparison_cpu, 0, comparison_delay)
     normal = _cpu_jump_in(comparison_cpu, 1, comparison_delay+20)
     hard = cases[6 if DELIBERATE_PACING else 4]
@@ -4551,7 +4617,7 @@ def check_cpu_anti_air() -> dict[str, object]:
     # the jump kick. Its locked facing exposes a real behind-target window;
     # free grounded CPUs turn normally before choosing their input.
     busy = _cpu_jump_in(2, 1, 21 if CLASSIC_MENUS else 0)
-    crossed = _cpu_jump_in(2, 2, 1 if CLASSIC_MENUS else 4)
+    crossed = _cpu_jump_in(2, 2, 0 if preview_menus else 1 if CLASSIC_MENUS else 4)
     cases.extend((retreat, easy, normal, normal_decline, empty_jump, busy, crossed))
     negatives: dict[str, list[tuple[dict[str, int], dict[str, int]]]] = {
         name: [] for name in ("grounded", "far", "behind-locked", "unavailable",
@@ -4591,7 +4657,9 @@ def check_cpu_anti_air() -> dict[str, object]:
         negative_counts[name] = len(pairs)
     return {"hits": hits, "retreat_whiff": whiff, "empty_jump": empty_hit,
             "normal_declined_title_delay": decline_delay,
-            "normal_declined_ticks": len(opportunities), "negative_ticks": negative_counts,
+            "normal_declined_ticks": len(opportunities),
+            "normal_declined_opportunities": [_cpu_summary(sample) for sample in opportunities],
+            "negative_ticks": negative_counts,
             "ko": [_cpu_anti_air_ko(victim) for victim in (1, 2)]}
 
 

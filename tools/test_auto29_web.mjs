@@ -29,13 +29,13 @@ const symbolSha = sha(symbolBytes);
 const symbols = Object.fromEntries([...symbolBytes.toString('utf8')
   .matchAll(/^([0-9a-fA-F]{6,8})\s+(\S+)\s*$/gm)].map(m=>[m[2],parseInt(m[1],16)]));
 const nativeOffsets = Object.fromEntries(['pad0','pad1','selectPlayer','menuPreviewConfirm','pausePage','guideBuild',
-  'v29AudioState','v29RandomState','randomseed','arcadeStoryTicks'].map(name=>{
+  'v29AudioState','v29RandomState','randomseed','arcadeStoryTicks','frame','snes_vblank_count','lag_frame_counter'].map(name=>{
   if (!Number.isInteger(symbols[name])) throw new Error(`Required read-only native symbol missing: ${name}`);
   return [name,symbols[name]&0x1ffff];
 }));
 const report = {status: 'failed', rom_sha256: manifest.sha256, sources: frozen, checks: [], cases: [], media: [],
   source_commit:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),
-  symbols_sha256:symbolSha, native_read_offsets:nativeOffsets, integration_checks:[],
+  symbols_sha256:symbolSha, native_read_offsets:nativeOffsets, integration_checks:[], pacing_windows:[],
   outputs:{report:reportPath,captures:out,site},
   browser: {executable: executablePath, sha256: sha(readFileSync(executablePath)),
     playwright: JSON.parse(readFileSync(resolve(root, '.tools/web-qa/node_modules/playwright-core/package.json'))).version,
@@ -100,6 +100,55 @@ async function boot(page, path = '/', loadingCapture = false) {
   await page.waitForFunction(() => window.EJS_emulator?.gameManager?.getFrameNum() > 120, null, {timeout:30000});
   check(await page.locator('.ejs_start_button').count() === 0, 'No browser Play gate');
   check((await state(page)).screen === 0, 'Page boots actual native title without input');
+  const timing = await page.evaluate(() => ({configured:EJS_defaultOptions.vsync,
+    registry:EJS_emulator.allSettings.vsync,value:EJS_emulator.getSettingValue('vsync'),
+    fastForward:EJS_emulator.isFastForward,slowMotion:EJS_emulator.isSlowMotion}));
+  check(timing.configured==='disabled' && timing.registry==='disabled' && timing.value==='disabled',
+    'Supported pinned VSync setting binds to the actual runtime registry', timing);
+  check(!timing.fastForward && !timing.slowMotion, 'Normal emulator speed modes remain active', timing);
+}
+async function measureNtsc(page, label) {
+  // Observe five real seconds independently of display RAF. A 30 Hz monitor
+  // must still receive the cartridge's normal NTSC logic/audio cadence.
+  await state(page);
+  const window = await page.evaluate(offsets => new Promise(done => {
+    const trace=window.auto29Trace,ram=trace-0x1ff00;
+    const read=() => {
+      const heap=EJS_emulator.Module.HEAPU8,byte=i=>heap[ram+i],word=i=>byte(i)|byte(i+1)<<8;
+      const words=new Uint16Array(heap.buffer,trace,34);
+      return {sample_ms:performance.now(),coreFrame:EJS_emulator.gameManager.getFrameNum(),
+        directFrame:word(offsets.frame),traceFrame:words[2],vblank:word(offsets.snes_vblank_count),
+        lag:word(offsets.lag_frame_counter),pad0:word(offsets.pad0),pad1:word(offsets.pad1),
+        paused:words[17],story:word(offsets.arcadeStoryTicks),intro:words[16],
+        audioTime:EJS_emulator.Module.AL.currentCtx.audioCtx.currentTime};
+    };
+    const begin=performance.now(),start=read(),samples=[];
+    let finished=false;
+    const sample=raf => {if(finished)return;samples.push({...read(),raf_ms:raf});requestAnimationFrame(sample)};
+    requestAnimationFrame(sample);
+    setTimeout(() => {finished=true;done({target_ms:5000,actual_ms:performance.now()-begin,start,end:read(),samples})},5000);
+  }), nativeOffsets);
+  window.label=label;
+  const seconds=window.actual_ms/1000;
+  window.summary={raf_hz:window.samples.length/seconds};
+  for (const field of ['coreFrame','directFrame','traceFrame','vblank']) {
+    const delta=(window.end[field]-window.start[field])&65535;
+    window.summary[field]={delta,hz:delta/seconds};
+  }
+  window.summary.lag_delta=(window.end.lag-window.start.lag)&65535;
+  window.summary.audio_clock_delta=window.end.audioTime-window.start.audioTime;
+  // Retain failed measurements in the report before any assertion can throw.
+  report.pacing_windows.push(window);
+  for (const field of ['coreFrame','directFrame','traceFrame','vblank'])
+    check(window.summary[field].hz>=58.5 && window.summary[field].hz<=61.5,
+      `${label}: ${field} advances at normal NTSC wall-clock speed`, window.summary);
+  check(new Set(['coreFrame','directFrame','traceFrame','vblank'].map(field=>window.summary[field].delta)).size===1,
+    `${label}: core/direct/TRACE/vblank deltas match`, window.summary);
+  check(window.summary.lag_delta===0, `${label}: no steady SDK lag`, window.summary);
+  check(window.samples.every(s=>s.pad0===0 && s.pad1===0 && s.paused===0),
+    `${label}: all observed controllers remain released and unpaused`, window.summary);
+  check(window.summary.audio_clock_delta>=4.85 && window.summary.audio_clock_delta<=5.15,
+    `${label}: audio clock advances at wall-clock speed`, window.summary);
 }
 async function key(page, key) {
   await page.keyboard.down(key); await page.waitForTimeout(65); await page.keyboard.up(key);
@@ -178,7 +227,10 @@ try {
     const quiet = await page.evaluate(() => ({volume:EJS_emulator.volume,muted:EJS_emulator.muted,
       gains:EJS_emulator.Module.AL.currentCtx.sources.filter(s=>s.gain).map(s=>s.gain.gain.value)}));
     check(quiet.muted && quiet.gains.every(x=>x===0), 'Boot is silent until first interaction', quiet);
-    if (mode===0) await capture(page,'automatic-native-title');
+    if (mode===0) {
+      await capture(page,'automatic-native-title');
+      await measureNtsc(page,'native-title');
+    }
     for (let n=0;n<mode;n++) await key(page,'ArrowDown');
     await key(page,'Enter');
     await waitScene(page,1);
@@ -221,6 +273,8 @@ try {
     const start = Date.now();
     let seenIntro = false, seenFight = false;
     const samples = [];
+    // This observation is INSIDE the original 12-second no-input deadline.
+    if (mode===0) await measureNtsc(page,'arcade-story');
     while (Date.now()-start < 12000) {
       const s = await state(page);
       // raw_keys2 is the CPU's generated command in Arcade; pad0/pad1 are the
@@ -242,6 +296,7 @@ try {
     check(seenFight, 'WASM runs the native FIGHT countdown');
     if (mode===0) check(seenIntro && Date.now()-start>=5500, 'Arcade dialogue remains visible and auto advances after six seconds');
     await capture(page,`mode${mode}-unassisted-combat`);
+    if (mode===0) await measureNtsc(page,'arcade-live');
     await key(page,'Enter');
     check((await state(page)).paused===1, 'Keyboard Start still pauses');
     await key(page,'Enter');
@@ -309,6 +364,7 @@ try {
   }
   check(report.cases.length===7, 'All original seven browser scenarios completed');
   check(report.integration_checks.length===2, 'Bounded keyboard random and native Sound-page bridges completed');
+  check(report.pacing_windows.length===3, 'Five-second title/story/live NTSC wall-clock proofs completed');
   check(JSON.stringify(fingerprint())===JSON.stringify(frozen), 'Browser producer and harness bytes stayed frozen');
   check(sha(readFileSync(resolve(site,'abaqus-after-hours.sfc')))===manifest.sha256, 'WASM bundle uses exact candidate ROM');
   check(sha(readFileSync(resolve(root,'dist/abaqus-after-hours.sfc')))===manifest.sha256, 'Native ROM stayed frozen during browser proof');

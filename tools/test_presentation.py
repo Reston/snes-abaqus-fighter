@@ -58,7 +58,11 @@ ARENA_THUMB_H = 52
 checks: list[dict[str, object]] = []
 REPORT = ROOT / "docs/presentation-test-report.json"
 CAPTURE_DIR = ROOT / "docs/screenshots/presentation"
-SELECT_TEXT_X = 13 if tuple(map(int,json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.'))) >= (0,28,0) else 11
+MENU_VERSION = tuple(map(int, json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.')))
+SELECT_TEXT_X = 13 if MENU_VERSION >= (0, 28, 0) else 11
+RANDOM_MENU_HINTS = MENU_VERSION >= (0, 29, 0) and re.search(
+    r"^[0-9a-fA-F]{8} random29Pick$",
+    (ROOT/'dist/abaqus-after-hours.sym').read_text(), re.MULTILINE) is not None
 
 
 def check(ok: bool, label: str, details: object | None = None) -> None:
@@ -770,10 +774,12 @@ def title_and_select() -> dict[str, object]:
         wait_screen(e, SELECT)
 
         check(state(e)["selected"] == 0, "roster opens on the first fighter")
+        select_footer = ([(27, 1, "A/START  SELECT: RANDOM  B BACK")] if RANDOM_MENU_HINTS else
+                         [(27, 3, "A/START OK"), (27, 23, "B BACK")])
         verify_menu_font_bank(e, [
             (3, SELECT_TEXT_X, "PLAYER 1"),
             (12, SELECT_TEXT_X, NAMES[0]),
-            (27, 3, "A/START OK"), (27, 23, "B BACK"),
+            *select_footer,
         ], "fighter select")
         select_card_render = verify_select_card_render(e)
         verify_select_markers(e)
@@ -838,10 +844,13 @@ def title_and_select() -> dict[str, object]:
             arena_digests.append(frame_digest(e))
             verify_arena_cursor(e, index)
             arena_plate = verify_arena_plate(e, index)
-            verify_opaque_text_rows(e, [
+            arena_footer = [
                 (27, centered_start("UP/DOWN A/START OK B BACK"),
                  "UP/DOWN A/START OK B BACK"),
-            ], "arena footer")
+            ]
+            if RANDOM_MENU_HINTS:
+                arena_footer.append((26, 9, "SELECT: RANDOM"))
+            verify_opaque_text_rows(e, arena_footer, "arena footer")
             arena_renders[stage] = arena_plate
             arena_paths[stage] = str(capture(e, f"arena-{index}.png"))
         press(e, "down")
