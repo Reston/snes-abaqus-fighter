@@ -1,0 +1,26 @@
+{
+  "status": "failed",
+  "mode": "candidate-champion",
+  "rom_sha256": "afc7ff2c883a5cb473df63e71e742abc7e7527b7bdeab6c42ea0fe94c05432b1",
+  "harness_sha256": "30cb952c8f855139ad005cfe420059c2454fa53c5457e8e811fffc9f987a5161",
+  "audio_harness_sha256": "898bc4100d92e171b9aec77a6e8d85e7cdd99314242ec705d9746a80478f063f",
+  "symbols_sha256": "a81d946601c81a5ce04a366c38e3990785f6123edebb1cda74a6cc7044cc531c",
+  "host": {
+    "python": "3.12.10",
+    "pillow": "13.0.0",
+    "gui_opened": false,
+    "audio_device_opened": false,
+    "priority_class": 16384,
+    "logical_processors": [
+      10,
+      11
+    ]
+  },
+  "controller_only": true,
+  "emulated_memory_writes": 0,
+  "savestate_calls": 0,
+  "audio_device_opened": false,
+  "error": "AssertionError(('Actual next ladder win', [0, {'magic': 43706, 'screen': 4, 'frame': 7212, 'mode': 0, 'hp1': 0, 'hp2': 104, 'x1': 702, 'x2': 1292, 'y1': 0, 'y2': 0, 'action1': 0, 'action2': 1, 'wins1': 0, 'wins2': 2, 'arena': 0, 'round': 2, 'intro': 0, 'paused': 0, 'energy1': 4, 'energy2': 96, 'wave1': 0, 'wave2': 0, 'selected': 4, 'selected2': 5, 'arcade': 0, 'seconds': 91, 'pose1': 14, 'pose2': 11, 'round_end': 0, 'hitstop': 7, 'combo': 0, 'champion': 0, 'fighter_id1': 4, 'fighter_id2': 5, 'family1': 2, 'family2': 3, 'speed1': 10, 'speed2': 12, 'jump1': 65461, 'jump2': 65450, 'face1': 1, 'face2': 0, 'back_speed1': 7, 'back_speed2': 8, 'special_startup1': 21, 'special_startup2': 12, 'special_active1': 2, 'special_active2': 8, 'special_recovery1': 43, 'special_recovery2': 37, 'special_damage1': 21, 'special_damage2': 20, 'special_reach1': 22, 'special_reach2': 34, 'throw_range1': 33, 'throw_range2': 28, 'wave_low1': 0, 'wave_low2': 0, 'wave_speed1': 0, 'wave_speed2': 0, 'wave_life1': 0, 'wave_life2': 0, 'anim_frame1': 14, 'anim_frame2': 46, 'anim_state1': 9, 'anim_state2': 8, 'anim_tick1': 180, 'anim_tick2': 180, 'buffered_action1': 0, 'buffered_action2': 0, 'buffer_age1': 0, 'buffer_age2': 0, 'jump_buffer1': 0, 'jump_buffer2': 0, 'command_stage1': 0, 'command_stage2': 0, 'raw_keys1': 0, 'raw_keys2': 0, 'landing1': 0, 'landing2': 0, 'jump_vx1': 0, 'jump_vx2': 0, 'hurt1': 20, 'hurt2': 0, 'guard1': 0, 'guard2': 0, 'connected1': 0, 'connected2': 2, 'combo1': 0, 'combo2': 1, 'combo_display1': 0, 'combo_display2': 45, 'counter1': 0, 'counter2': 1, 'down_state1': 0, 'down_state2': 0, 'down_tick1': 0, 'down_tick2': 0, 'invuln1': 0, 'invuln2': 0, 'pending_throw_damage1': 0, 'pending_throw_damage2': 0, 'throw_owner1': 255, 'throw_owner2': 255, 'air_action1': 0, 'air_action2': 0, 'throw_victim1': 255, 'throw_victim2': 255, 'wake_action1': 0, 'wake_action2': 0, 'wake_age1': 0, 'wake_age2': 0, 'wake_jump1': 0, 'wake_jump2': 0}]))",
+  "strict_callbacks": 7007,
+  "failures": []
+}

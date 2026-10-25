@@ -652,61 +652,7 @@ u8 actionForInput(u8 p,u16 keys,u16 edge) {
     return 0;
 }
 
-void captureInput(u8 p,u16 raw,u8 live) {
-    Fighter *f=&fighters[p];
-    u16 keys,edge,forward,back;
-    keys=cleanDirections(raw);
-    f->rawKeys=raw;f->oldkeys=f->keys;f->keys=keys;
-    edge=keys&~f->oldkeys;f->inputEdge=edge;
-    if(!live || superRequest[p]) {
-        if(captureSuper(p,keys,edge,live)){f->motion=0;f->downbuffer=0;return;}
-    } else if((keys&SUPER_CHORD)==SUPER_CHORD) {
-        if(captureSuper(p,keys,edge,live)){f->motion=0;f->downbuffer=0;return;}
-    }
-    if(!live) {
-        f->bufferedAction=0;f->bufferAge=0;f->jumpBuffer=0;
-        f->motion=0;f->downbuffer=0;return;
-    }
-    if(f->downState && f->downState!=DOWN_WAKE) {
-        discardFighterInput(f);f->motion=0;f->downbuffer=0;return;
-    }
-    /* Hitstop samples the pad but freezes expiry, movement and animation. */
-    if(!hitstop) {
-        if(f->bufferAge){f->bufferAge--;if(!f->bufferAge)f->bufferedAction=0;}
-        if(f->jumpBuffer)f->jumpBuffer--;
-        if(f->downbuffer){f->downbuffer--;if(!f->downbuffer)f->motion=0;}
-        if(f->wakeAge){f->wakeAge--;if(!f->wakeAge)f->wakeAction=0;}
-        if(f->wakeJump)f->wakeJump--;
-    }
-    if(f->downState==DOWN_WAKE)f->face=f->x<fighters[1-p].x?1:0;
-    else if(!f->action && !f->hurt && !f->y && !f->downState)f->face=f->x<fighters[1-p].x?1:0;
-    forward=f->face?KEY_RIGHT:KEY_LEFT;back=f->face?KEY_LEFT:KEY_RIGHT;
-    if(keys&back){f->motion=0;f->downbuffer=0;}
-    else if(keys&KEY_DOWN) {
-        if(keys&forward) {
-            if(f->motion==1){f->motion=2;f->downbuffer=12;}
-        } else {f->motion=1;f->downbuffer=12;}
-    } else if((keys&forward) && f->motion==2) {f->motion=3;f->downbuffer=12;}
-    if(f->downState==DOWN_WAKE) {
-        /* Wake accepts attack/jump edges only.  Directional motion sampled
-         * during wake must not become a post-wake special command. */
-        discardFighterInput(f);
-        f->motion=0;f->downbuffer=0;
-        if(edge&KEY_UP)f->wakeJump=INPUT_BUFFER_TICKS;
-        if(edge&ATTACKS) {
-            f->wakeKeys=keys;f->wakeAction=actionForInput(p,keys,edge);
-            f->wakeAge=INPUT_BUFFER_TICKS;
-        }
-        return;
-    }
-    if(!(keys&KEY_UP))f->wakeLock=0;
-    if(edge&KEY_UP){f->jumpBuffer=INPUT_BUFFER_TICKS;f->wakeLock=0;}
-    if(edge&ATTACKS) {
-        f->bufferKeys=keys;
-        f->bufferedAction=actionForInput(p,keys,edge);
-        f->bufferAge=INPUT_BUFFER_TICKS;
-    }
-}
+#include "audio29_native.h"
 void captureFightInputs(void) {
     u8 live=1;
     u16 second;
@@ -728,68 +674,6 @@ void captureFightInputs(void) {
     }
     captureInput(1,second,live);
 }
-void controls(u8 p) {
-    Fighter *f=&fighters[p];Fighter *enemy=&fighters[1-p];
-    const CharacterProfile *c;
-    u16 keys,forward,back;
-    u8 a,cancel;
-    c=combatProfiles[p];
-    keys=f->keys;
-    f->walking=0;
-    /* Three chained OR operands are mislowered by this 816-tcc build. */
-    if(f->hurt)return;
-    if(f->downState)return;
-    if(!f->hp)return;
-    if(superRequest[p] && startSuper(p))return;
-    f->guard=0;
-    if(!f->action && !f->y)f->face=f->x<enemy->x?1:0;
-    forward=f->face?KEY_RIGHT:KEY_LEFT;back=f->face?KEY_LEFT:KEY_RIGHT;
-    a=f->bufferedAction;
-    if(f->action) {
-        cancel=0;
-        if(f->connected==2 && a) {
-            if(a==7 && f->tick<f->actionActiveEnd+5) {
-                if(f->action==1 || f->action==2)cancel=1;
-                if(f->action==4 || f->action==5)cancel=1;
-            }
-            if(f->tick<f->actionActiveEnd+5) {
-                if(f->action<3 && a>f->action && a<=3)cancel=1;
-                if(f->action>=4 && f->action<6 && a>f->action && a<=6)cancel=1;
-            }
-        }
-        if(cancel)f->action=0;else return;
-    }
-    f->duck=(keys&KEY_DOWN) && !f->y;
-    f->guard=(keys&back) && !f->y;
-    /* Guard dummies hold their position rather than walking away. Recoil,
-     * separation, jump and downed physics still use the ordinary rules. */
-    if(mode==2 && p==1) {
-        if(trainingDummy==1 || trainingDummy==2)return;
-        if(trainingDummy==6)return;
-    }
-    if(a<7 && !f->y) {
-        if(((keys&KEY_UP) && !f->wakeLock) || f->jumpBuffer) {
-            f->vy=c->jumpVy;f->y=-1;f->duck=0;f->jumpBuffer=0;f->landing=0;
-            f->vx=0;
-            if(keys&KEY_RIGHT)f->vx=pacingAirSpeed(f->id);
-            else if(keys&KEY_LEFT)f->vx=-pacingAirSpeed(f->id);
-        }
-    }
-    if(a) {
-        f->duck=(f->bufferKeys&KEY_DOWN) && !f->y;
-        if(a==7 && (f->y || f->energy<32))a=2;
-        if(a==8 && f->y)a=3;
-        if(a==9) {
-            if(f->y || enemy->y)a=3;
-            else if(abs16(f->x-enemy->x)>=c->throwRange*16)a=3;
-        }
-        attackStart(p,a);
-    } else if(!f->y && !(keys&KEY_DOWN)) {
-        if(keys&forward){f->x+=f->face?c->walkSpeed:-c->walkSpeed;f->walking=1;f->stride+=c->walkSpeed;}
-        else if(keys&back){f->x+=f->face?-c->backSpeed:c->backSpeed;f->walking=2;f->stride+=c->backSpeed;}
-    }
-}
-
 /* 816-tcc rebuilds generic far pointers for every actor field. Specialize
  * the two ordinary player pairs to direct WRAM operands inside this existing
  * function section. One template retains the original contact operation order.
@@ -1236,12 +1120,19 @@ void fightTick(void) {
         if(!(pauseKeys&KEY_START)) {
             if(pauseKeys&KEY_B){closePauseGuide();showSelect();return;}
             if(pauseKeys&KEY_A){paused=0;closePauseGuide();clearBanner();if(arcadeStoryTicks)arcadeStoryDraw();}
+            else if(pauseKeys&KEY_Y) {audio29Open();sound(0);}
             else if(pauseKeys&KEY_SELECT) {
+                if(pausePage==AUDIO29_PAGE) {
+                    if(v29AudioState[11])openPauseGuide(v29AudioState[11]);
+                    else {closePauseGuide();drawPauseCard();}
+                }
+                else
                 if(pausePage==(mode==2?3:2)){closePauseGuide();drawPauseCard();}
                 else openPauseGuide(pausePage+1);
                 sound(0);
             } else if(pausePage) {
-                if(pauseDirections&(KEY_LEFT|KEY_RIGHT)) {
+                if(pausePage==AUDIO29_PAGE)audio29Keys(pauseKeys,pauseDirections);
+                else if(pauseDirections&(KEY_LEFT|KEY_RIGHT)) {
                     if(mode==2) {
                         if(pauseDirections&KEY_RIGHT)openPauseGuide(pausePage==3?1:pausePage+1);
                         else openPauseGuide(pausePage==1?3:pausePage-1);
@@ -1264,12 +1155,12 @@ void fightTick(void) {
                     } else if(pauseDirections&KEY_DOWN) {
                         trainingChooseChallenge();openPauseGuide(3);sound(0);
                     } else if((pauseKeys&KEY_L) && !((pad0|pad1)&KEY_R)) {
-                        musicOn=!musicOn;openPauseGuide(pausePage);sound(0);
+                        audio29ToggleMusic();openPauseGuide(pausePage);sound(0);
                     } else if((pauseKeys&KEY_R) && !((pad0|pad1)&KEY_L)) {
                         stageDepthTable[9]=!stageDepthTable[9];openPauseGuide(pausePage);sound(0);
                     }
                 } else if((pauseKeys&KEY_L) && !((pad0|pad1)&KEY_R)) {
-                    musicOn=!musicOn;openPauseGuide(pausePage);sound(0);
+                    audio29ToggleMusic();openPauseGuide(pausePage);sound(0);
                 } else if((pauseKeys&KEY_R) && !((pad0|pad1)&KEY_L)) {
                     stageDepthTable[9]=!stageDepthTable[9];openPauseGuide(pausePage);sound(0);
                 }

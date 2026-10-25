@@ -1,0 +1,153 @@
+{
+  "status": "passed",
+  "mode": "accuracy-clock",
+  "rom_sha256": "09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c",
+  "harness_sha256": "144ed6628d8bccddaa99037589af292835ba6bb992d3ae257b789b3bb3293579",
+  "audio_harness_sha256": "84f047239e72fc39e809ccdfe2f66d71778939aabad2b0f3a689d7cfb137569c",
+  "symbols_sha256": "18b27526640d7ca0491c07f16966a3b381398053d0d204b2014b8eebbe87d47c",
+  "host": {
+    "python": "3.12.10",
+    "pillow": "13.0.0",
+    "gui_opened": false,
+    "audio_device_opened": false,
+    "priority_class": 16384,
+    "logical_processors": [
+      10,
+      11
+    ]
+  },
+  "controller_only": true,
+  "emulated_memory_writes": 0,
+  "savestate_calls": 0,
+  "audio_device_opened": false,
+  "windows": [
+    {
+      "video_frames": 240,
+      "sample_frames": 127940,
+      "expected": 127951.28159293228,
+      "error_samples": -11.281592932282365
+    },
+    {
+      "video_frames": 240,
+      "sample_frames": 127963,
+      "expected": 127951.28159293228,
+      "error_samples": 11.718407067717635
+    },
+    {
+      "video_frames": 240,
+      "sample_frames": 127939,
+      "expected": 127951.28159293228,
+      "error_samples": -12.281592932282365
+    },
+    {
+      "video_frames": 240,
+      "sample_frames": 127952,
+      "expected": 127951.28159293228,
+      "error_samples": 0.7184070677176351
+    },
+    {
+      "video_frames": 240,
+      "sample_frames": 127951,
+      "expected": 127951.28159293228,
+      "error_samples": -0.2815929322823649
+    },
+    {
+      "video_frames": 240,
+      "sample_frames": 127952,
+      "expected": 127951.28159293228,
+      "error_samples": 0.7184070677176351
+    },
+    {
+      "video_frames": 240,
+      "sample_frames": 127951,
+      "expected": 127951.28159293228,
+      "error_samples": -0.2815929322823649
+    },
+    {
+      "video_frames": 240,
+      "sample_frames": 127951,
+      "expected": 127951.28159293228,
+      "error_samples": -0.2815929322823649
+    },
+    {
+      "video_frames": 240,
+      "sample_frames": 127951,
+      "expected": 127951.28159293228,
+      "error_samples": -0.2815929322823649
+    },
+    {
+      "video_frames": 240,
+      "sample_frames": 127955,
+      "expected": 127951.28159293228,
+      "error_samples": 3.718407067717635
+    },
+    {
+      "video_frames": 240,
+      "sample_frames": 127947,
+      "expected": 127951.28159293228,
+      "error_samples": -4.281592932282365
+    },
+    {
+      "video_frames": 240,
+      "sample_frames": 127952,
+      "expected": 127951.28159293228,
+      "error_samples": 0.7184070677176351
+    }
+  ],
+  "health": {
+    "strict_callbacks": 2880,
+    "max_fifo_bytes": 0,
+    "max_scene_load_fifo_bytes": 6,
+    "av_fps": 60.098811862348406,
+    "av_sample_rate": 32040.5,
+    "wav_integer_sample_rate": 32040,
+    "pcm_callback_sizes": {
+      "64": 23998,
+      "42": 1,
+      "21": 957,
+      "53": 1,
+      "22": 515,
+      "20": 362,
+      "19": 70,
+      "25": 37,
+      "30": 47,
+      "12": 30,
+      "29": 54,
+      "14": 38,
+      "23": 83,
+      "32": 30,
+      "11": 42,
+      "24": 46,
+      "8": 31,
+      "13": 32,
+      "36": 34,
+      "7": 33,
+      "10": 44,
+      "34": 38,
+      "6": 35,
+      "31": 34,
+      "16": 24,
+      "18": 34,
+      "33": 27,
+      "26": 27,
+      "5": 21,
+      "15": 28,
+      "9": 34,
+      "4": 18,
+      "28": 42,
+      "27": 39,
+      "35": 21,
+      "17": 19,
+      "39": 7,
+      "41": 2,
+      "2": 3,
+      "37": 26,
+      "3": 11,
+      "38": 23
+    },
+    "pcm_windows": [],
+    "commands_observed": 0,
+    "cues": [],
+    "volume_envelope_values": []
+  }
+}

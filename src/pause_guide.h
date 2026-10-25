@@ -59,7 +59,7 @@ void settlePausedHud(void) {
 }
 
 void drawPauseCard(void) {
-    clearBanner();fillPausePanel();guideCenter(10,"PAUSED");
+    clearBanner();fillPausePanel();guideCenter(10,"PAUSED - Y SOUND");
     guideWord(3,12,"A/START RESUME B ROSTER");
     if(mode==2) {
         if(trainingDummy==4) {
@@ -94,7 +94,10 @@ void openPauseGuide(u8 page) {
     guideDirty=0;bannerDirty=0;footerDirty=0;
 }
 
+#include "audio29_ui.h"
+
 void buildPauseGuide(void) {
+    if(pausePage==AUDIO29_PAGE){audio29Draw();return;}
     if(guideBuild==1) {
         fillGuidePanel();
         if(mode==2) {
@@ -104,6 +107,7 @@ void buildPauseGuide(void) {
         } else if(pausePage==1)guideCenter(6,"CONTROLS 1/2");
         else guideCenter(6,stageDepthTable[3]?"NORMAL TIMING 2/2":"MOVE LIST 2/2");
         guideWord(3,24,"A/START RESUME  B ROSTER");
+        guideWord(3,8,"Y SOUND LEVELS");
         guideWord(3,25,musicOn?"L MUSIC ON":"L MUSIC OFF");
         guideWord(3,27,stageDepthTable[9]?"R SCENERY STILL":"R SCENERY MOVING");
         guideWord(3,26,pausePage==(mode==2?3:2)?"SELECT CLOSE GUIDE":"SELECT NEXT PAGE");

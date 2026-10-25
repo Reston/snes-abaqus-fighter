@@ -1,7 +1,7 @@
-"""Bounded original resident audio; no downloads, runtime synthesis or RNG drift.
+"""Resident IT writer and retained v22 synthesis history.
 
-The first four cues remain byte-exact. New speech comes only from the retained
-project utterance WAVs exported by synthesize_announcements.ps1, never a game.
+audio29_assets owns current scores/contact PCM. Speech remains the retained
+project Zira utterances, never an external service or imported game material.
 """
 from pathlib import Path
 import array
@@ -17,7 +17,7 @@ import wave
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 NAMES = ['swing', 'light', 'special', 'legacy-confirm', 'strong', 'guard',
-         'round', 'fight', 'ko', 'menu-chord', 'victory-cadence']
+         'round', 'fight', 'ko', 'menu-chord', 'victory-cadence', 'throw', 'landing']
 RATE = 8000
 
 
@@ -124,11 +124,12 @@ def write_effects(path, samples):
 
 
 def expand_effects(path, legacy):
-    return write_effects(path, [pcm8(cue) for cue in legacy]+[pcm8(cue) for cue in new_cues()])
+    from audio29_assets import make_effects
+    return make_effects(path)
 
 
 def rebuild_audio():
-    """Audio-only regeneration, preserving existing scores and all visual assets."""
+    """Audio-only v29 regeneration, preserving all visual assets."""
     out = ROOT/'assets/generated'
     raw = (out/'effects.it').read_bytes()
     orders, instruments, count = struct.unpack_from('<3H', raw, 32)
@@ -138,7 +139,9 @@ def rebuild_audio():
         size = struct.unpack_from('<I', raw, offset+48)[0]
         start = struct.unpack_from('<I', raw, offset+72)[0]
         samples.append(raw[start:start+size])
-    write_effects(out/'effects.it', samples+[pcm8(cue) for cue in new_cues()])
+    from audio29_assets import make_scores, make_effects
+    make_scores(out)
+    make_effects(out/'effects.it')
     command = [str(ROOT/'.tools/sdk/pvsneslib/devkitsnes/tools/smconv.exe'), '-s', '-o',
                'assets/generated/soundbank', '-b', '24', '-f', '-V', str(out/'effects.it')]
     command += [str(out/f'music{i}.it') for i in range(5)]
