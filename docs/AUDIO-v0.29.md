@@ -174,3 +174,9 @@ bound. The core's [audio callback and retro_run flush](https://github.com/libret
 provide the packet contract. Every native frame/VBlank/SDK/OBJ/FIFO assertion
 remains unchanged; every PCM sample is retained. Captures store integer WAV
 rate 32040 Hz, so their export time base rounds the fractional AV rate.
+
+## Frozen delivery
+
+Focused Snes9x and Accuracy each pass **225 checks / 20,209 strict callbacks** on ROM `240c194a09975158dfdc7d17b4569d171caba0e1caa4fa51dc9a80dea1c59360`, source freeze `8fffcf371246114fc63eb75dda05d6daf87aa8f8`. The separate earned-Champion route retains its one failed cadence callback and is not pooled into those passes. Parent must resolve the documented blocker before claiming full native cadence or combined verified merge.
+
+Native excerpts: [menu](audio29/snes9x/menu.wav), [Las Condes](audio29/snes9x/stage0-music.wav), [El Castillo](audio29/snes9x/stage1-music.wav), [La Oficina](audio29/snes9x/stage2-music.wav), [earned Champion](audio29/champion/champion.wav). [Sound page](audio29/snes9x/05-sound-levels.png) is an actual native capture. Exact commands and all hashes are in [audio29-report.json](audio29-report.json).
