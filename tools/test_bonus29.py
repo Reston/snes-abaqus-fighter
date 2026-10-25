@@ -91,7 +91,9 @@ def preservation(syms):
 
 class Rig:
     def __init__(self, core, syms, captures):
-        self.host = AccuracyMenu() if core == 'accuracy' else Emulator()
+        # Snes9x's default frontend rejects simultaneous opposites. This
+        # documented frontend option lets the native cancellation see both.
+        self.host = AccuracyMenu() if core == 'accuracy' else Emulator(core_options={'snes9x_up_down_allowed': 'enabled'})
         self.syms = syms; self.core = core; self.captures = captures
         self.callbacks = 0; self.bonus_upload_rows = 0
 
