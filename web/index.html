@@ -20,22 +20,24 @@
 
     <section class="arcade" aria-label="SNES game player">
       <div class="player" id="player">
-        <div id="game" tabindex="0" aria-label="Game. Enter to start, arrow keys to move, A and S to punch, Z and X to kick."></div>
+        <div id="game" tabindex="0" aria-busy="true" aria-label="Game. Enter to choose mode or pause, arrow keys to move, A and S to punch, Z and X to kick."></div>
         <noscript><p class="notice">Enable JavaScript to play, or <a href="abaqus-after-hours.sfc">download the SNES ROM</a>.</p></noscript>
       </div>
       <div class="player-bar">
-        <p id="status" role="status">Preparing the arcade…</p>
+        <p id="status" role="status">Loading the native title…</p>
         <span>12 FIGHTERS <span aria-hidden="true">·</span> 3 STAGES</span>
       </div>
     </section>
 
     <div class="below-game">
-      <p class="quick-start"><kbd>Enter</kbd> start <span aria-hidden="true">/</span> <kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd> move <span aria-hidden="true">/</span> <kbd>A</kbd><kbd>S</kbd> punch <span aria-hidden="true">/</span> <kbd>Z</kbd><kbd>X</kbd> kick</p>
+      <p class="quick-start"><kbd>Enter</kbd> choose / pause <span aria-hidden="true">/</span> <kbd>←</kbd><kbd>↑</kbd><kbd>↓</kbd><kbd>→</kbd> move <span aria-hidden="true">/</span> <kbd>A</kbd><kbd>S</kbd> punch <span aria-hidden="true">/</span> <kbd>Z</kbd><kbd>X</kbd> kick</p>
       <button id="retry" hidden type="button">Try again</button>
+      <button id="enable-sound" hidden type="button">Enable sound</button>
+      <p class="sound-note">Sound starts with your first key or tap. Using a controller? Enable sound here when ready.</p>
       <details id="controls">
         <summary>Controls &amp; local 1v1</summary>
         <div class="controls-body">
-          <p>Choose <strong>Local 1v1 / 2P</strong> to play together on this device. For controllers, use the gamepad button in the player to assign each pad.</p>
+          <p>Choose <strong>Local 1v1 / 2P</strong> to play together on this device. Connected controllers are assigned in order. Use the gamepad button in the player to change each pad's assignment.</p>
           <div class="table-wrap">
             <table>
               <caption class="sr-only">Default keyboard controls for both players</caption>
@@ -51,6 +53,7 @@
             </table>
           </div>
           <p>Menus: <strong>X or Enter</strong> confirms; <strong>Z</strong> goes back. Super: release directions, then press <strong>A + Z</strong> with full energy. Enable Num Lock for Player 2.</p>
+          <p>After choosing an arena, wait for the fight. Arcade dialogue advances in six seconds; <strong>X</strong> skips it. <strong>Enter</strong> pauses as usual.</p>
           <p class="muted">Best played on desktop with a keyboard or controller. Local 1v1 shares one device.</p>
         </div>
       </details>
