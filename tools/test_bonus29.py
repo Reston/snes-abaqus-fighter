@@ -198,12 +198,12 @@ class Rig:
         self.until(lambda: self.read('intro') == 0, 500)
         self.run(5)
 
-    def play(self, lose=False):
+    def play(self, lose=False, policy='close'):
         self.live()
         for _ in range(16000):
             if self.read('screen') == 4:
                 self.until(lambda: self.state()['screen'] == 4); self.run(8)
-                return {'wins': [self.state()['wins1'], self.state()['wins2']], 'arcade': self.read('arcade')}
+                return {'wins': [self.state()['wins1'], self.state()['wins2']], 'arcade': self.read('arcade'), 'controller_policy': policy}
             s = self.state()
             forward = 'right' if s['x1'] < s['x2'] else 'left'
             back = 'left' if forward == 'right' else 'right'
@@ -214,6 +214,10 @@ class Rig:
                 self.run(p1=[forward])
             elif s['action1']:
                 self.run(p1=[forward])
+            elif policy == 'jump-in' and s['y1'] >= 32768:
+                self.run(3, p1=[forward, 'a'] if distance < 62 and s['y1'] < 65536 - 16 else [forward])
+            elif policy == 'jump-in' and (distance > 38 or (s['wave2'] and s['wave_low2'])):
+                self.run(3, p1=[forward, 'up'])
             elif s['action2'] and distance < 55:
                 self.run(p1=[back, 'down'] if 4 <= s['action2'] <= 6 else [back])
             elif distance >= s['throw_range1'] - 2:
@@ -381,8 +385,11 @@ def traversal(args, syms, outcome='success'):
                     require(rig.read('arcade') == shift and rig.bonus()['seen'] == seen,
                             'Continue retries the same opponent without repeating the earned bonus')
                 attempts = []
-                for attempt in range(8):
-                    match = rig.play(); attempts.append(match)
+                for attempt in range(16):
+                    policy = 'close' if attempt == 0 else 'jump-in'
+                    match = rig.play(policy=policy); attempts.append(match)
+                    print(json.dumps({'core': args.core, 'hero': hero, 'shift': shift + 1,
+                                      'attempt': attempt + 1, **match}), flush=True)
                     if match['wins'][0] == 2:
                         break
                     require(rig.read('screen') == 4 and rig.read('arcade') == shift,
