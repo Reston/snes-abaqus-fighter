@@ -5,12 +5,16 @@ An original four-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II and the people and places of Abaqus in Santiago.
 Twelve fighters, three illustrated stages and five original music scores.
 
-**Current main:** [v0.28.0](docs/RELEASE-v0.28.0.md), with animated full-body fighter previews,
-slower combat and detailed floors. [Native selection animations](docs/REVIEW-v0.28.0.html).
+<a href="https://abaqus-after-hours.restonjd.workers.dev/">
+  <img src="docs/images/abaqus-after-hours-cartridge-v1.png" alt="Abaqus: After Hours — fictional SNES cartridge. Click to play in your browser." width="640">
+</a>
 
-<img src="docs/screenshots/play-flow-v026/pacing/after-movement.gif" alt="Current native combat and detailed floor" width="640">
+**[▶ Play in your browser](https://abaqus-after-hours.restonjd.workers.dev/)** — no download needed.
 
-## Play
+Press **Play game**, then **Enter** to start. Arcade, Training and local 1v1
+use the same native SNES cartridge. [Gameplay preview](docs/screenshots/play-flow-v026/pacing/after-movement.gif).
+
+## Play locally
 
 **Windows:** run **[Play.cmd](Play.cmd)**. On first launch it downloads and
 prepares Snes9x locally. Press **Enter** to start; **Alt+Enter** toggles fullscreen.
@@ -18,8 +22,8 @@ prepares Snes9x locally. Press **Enter** to start; **Alt+Enter** toggles fullscr
 **Other platforms:** open [dist/abaqus-after-hours.sfc](dist/abaqus-after-hours.sfc)
 in a SNES emulator. Original SNES and flash-cartridge support remain unverified.
 
-**Browser / Cloudflare:** run [Web.cmd](Web.cmd) for a local browser player.
-[Hosting setup](docs/CLOUDFLARE.md) explains how to publish it on Cloudflare.
+**Local browser player:** run [Web.cmd](Web.cmd).
+[Cloudflare setup](docs/CLOUDFLARE.md) covers hosting your own copy.
 
 ## Game modes
 
@@ -27,9 +31,6 @@ in a SNES emulator. Original SNES and flash-cartridge support remain unverified.
 - **Local 1v1 / 2P:** choose two fighters and play a best-of-three match.
 - **Training:** practice against a dummy or CPU with input history, combo damage
   and three drills, or enable **P2 Controller** for two-person practice.
-
-v0.26 adds shared local menus, clear feedback, Training confirms and comfort options.
-It retains v0.25's slower fight rhythm; video, inputs and audio keep native speed.
 
 ## Controls
 
@@ -48,8 +49,8 @@ In menus, **X or Enter** confirms and **Z** goes back for Player 1.
 For a super, release directions and attack buttons, then press **Y+B** together
 with full energy (**A+Z** on the P1 keyboard).
 
-Enable **Num Lock** for P2. To use controllers, map each one to **Joypad 1** or
-**Joypad 2** in Snes9x under **Input → Input Configuration**.
+Enable **Num Lock** for P2. In the browser, use the player's **gamepad** button
+to configure controllers. In Snes9x, map them under **Input → Input Configuration**.
 
 Start with [your first minute](docs/PLAYER-GUIDE.md#your-first-minute), then
 use the player guide for specials, blocking, combos and Training options.
@@ -70,10 +71,7 @@ intermediates stay in ignored `.tools/` and `build/` directories.
 ## Documentation
 
 - [Player guide](docs/PLAYER-GUIDE.md) — controls, modes and practice.
-- [Current menu revision](docs/RELEASE-v0.28.0.md).
+- [Current release: v0.28.0](docs/RELEASE-v0.28.0.md) · [Selection animations](docs/REVIEW-v0.28.0.html).
 - [Development guide](docs/DEVELOPMENT.md) — native architecture and hardware budgets.
 - [Roadmap](docs/ROADMAP.md) — planned work and historical milestones.
 - [Credits and art provenance](docs/CREDITS.md) · [License](LICENSE).
-
-Preview follow-up: 6,455 presentation/Training checks pass; approved and merged.
-The latest full Windows archive remains v0.19.0.
