@@ -1,0 +1,31 @@
+{
+  "mode": "built-in imagegen",
+  "files": {
+    "environment-source.json": "5a288f72c8f85e5f46891ed020cabdd40a5e470892f5a526e359e3ff5f2cf8bb",
+    "environment-source.png": "41c39233e356c5bb988b2e0c8196394ccb343761dd85d619734bd3d930b7bde0",
+    "spectators-source.json": "4933ce6817474ee6c1962ac32047767e5466bb037fb8d408b98df36b7f8e1f6a",
+    "spectators-source.png": "d6e224d400f6ca8fffd7a9795f2dc8ec9ec0c4531d5f7f7828bdb716c375b78e"
+  },
+  "references_for_native_compositing": {
+    "assets/art/stages/depth-v1/00-las-condes.png": "4f3191e9acee6b4beb0670fb8f12d6145f7d96cd7a555312c082d1952fc94094",
+    "assets/art/stages/depth-v1/01-castillo.png": "d0301011c017370058308c4c8519dedd540fadcd1253fa3d2fec17594df27bdf",
+    "assets/art/stages/depth-v1/02-oficina.png": "f4c617d58903f77b4a1643e5664c1f70b26a4320fecf7d663c5379f12e1dfa6f"
+  },
+  "people_rows_native": [
+    0,
+    180,
+    356,
+    540,
+    720,
+    902,
+    1092,
+    1272,
+    1400,
+    1500,
+    1600,
+    1712,
+    1774
+  ],
+  "unused_cropped_final_row": true,
+  "processing": "Original alpha preserved; explicit contact-sheet crops; shared per-character scale and baseline; BOX reduction; fixed original stage palettes; no synthesized poses; fourth coworker uses burgundy upper-body crop."
+}

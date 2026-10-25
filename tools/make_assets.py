@@ -16,6 +16,7 @@ from stage_sources import load_stage_sources
 from stage_cartoon import cartoon_stage_animation
 from victory_music import make_victory_it, soundbank_budget
 from audio_assets import expand_effects
+from audio29_assets import make_scores
 from asset_transaction import begin as begin_assets, publish as publish_assets
 import asset_cache
 
@@ -445,6 +446,7 @@ effect_hashes=make_effects_it(effects_it,sfx_pcm)
 # Retain the legacy writer/shape guards, then append the resident presentation.
 effect_hashes=expand_effects(effects_it,sfx_pcm)
 make_victory_it(OUT/'music4.it',OUT/'music0.it')
+make_scores(OUT)
 smconv=ROOT/'.tools/sdk/pvsneslib/devkitsnes/tools/smconv.exe'
 soundbank_prefix=(OUT/'soundbank').relative_to(ROOT).as_posix()
 r=subprocess.run([str(smconv),'-s','-o',soundbank_prefix,'-b','24','-f','-V',str(effects_it),*[str(OUT/f'music{i}.it') for i in range(5)]],cwd=ROOT,capture_output=True,text=True)
@@ -455,8 +457,8 @@ if soundbank_asm.count('"'+soundbank_prefix+'.bnk"')!=1:
 (OUT/'soundbank.asm').write_text(soundbank_asm.replace('"'+soundbank_prefix+'.bnk"','"assets/generated/soundbank.bnk"'),newline='\n')
 print(r.stdout)
 effect_report=r.stdout.split('Adding module, Filename:',2)
-if len(effect_report)<2 or 'Samples: [11/64]' not in effect_report[1]:
-    raise RuntimeError('SMConv did not retain all eleven resident effect samples')
+if len(effect_report)<2 or 'Samples: [13/64]' not in effect_report[1]:
+    raise RuntimeError('SMConv did not retain all thirteen resident effect samples')
 print('Soundbank budget:',json.dumps(soundbank_budget(OUT/'soundbank.bnk')))
 for i,h in enumerate(effect_hashes):print(f'Effects PCM {i}: {h}')
 (OUT/'stage-dynamics.json').write_text(json.dumps({
@@ -472,6 +474,8 @@ for i,h in enumerate(effect_hashes):print(f'Effects PCM {i}: {h}')
 (OUT/'assets.h').write_text('\n'.join(header)+'\n')
 from stage_depth_assets import install as install_stage_depth
 install_stage_depth(ROOT,prepared=native_stage_data,out=OUT)
+from arena_life29_assets import install as install_arena_life29
+install_arena_life29(ROOT,out=OUT)
 from bonus29_assets import install as install_bonus29
 install_bonus29(ROOT,OUT)
 if asset_cache.inputs(ROOT)!=asset_source_inputs:
@@ -480,4 +484,4 @@ asset_output_hashes=asset_cache.outputs(ROOT,OUT)
 print('Published asset set:',json.dumps(publish_assets(ROOT,OUT)))
 if not asset_cache.save(ROOT,asset_source_inputs,asset_output_hashes):
     print('Asset cache could not be saved; the next build will regenerate.')
-print('Encoded seven backgrounds, 768 fighter frames, UI, effects, 5 music tracks and 11 resident sounds.')
+print('Encoded seven backgrounds, 768 fighter frames, UI, effects, 5 original arrangements and 13 resident sounds.')

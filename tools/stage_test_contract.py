@@ -26,4 +26,10 @@ def depth_manifest(root):
             raw=source.read_bytes()
             if len(raw)!=record['bytes'] or hashlib.sha256(raw).hexdigest()!=record['sha256']:
                 raise ValueError('Stage payload differs from the native allocation record: '+name)
+    if value.get('arena_life29') is not None:
+        if value['arena_life29']!='arena-life29.json':
+            raise ValueError('Unknown arena-animation sidecar')
+        from arena_life29_checks import metadata
+        if metadata(root) is None:
+            raise ValueError('Stage allocation names missing arena-animation evidence')
     return value

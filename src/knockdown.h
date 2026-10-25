@@ -49,7 +49,7 @@ void beginThrow(u8 owner,u8 victim) {
     d->x=a->x+(a->face?16*16:-16*16);d->y=-8*16;clampDowned(d);
     d->combo=0;d->combotime=0;d->counter=0;
     discardFighterInput(d);clearWakeInput(d);d->motion=0;d->downbuffer=0;
-    hitstop=3;fxType=1;fxLife=6;fxX=d->x>>4;fxY=FLOOR-40;sound(1);
+    hitstop=3;fxType=1;fxLife=6;fxX=d->x>>4;fxY=FLOOR-40;audioCue(11,3);
 }
 void throwTech(void) {
     u8 p;
@@ -87,6 +87,7 @@ void updateDowned(u8 p) {
             f->downOwner=255;f->downDamage=0;
             if(damage && owner<2)hurt(owner,p,damage,0,0,1);
             else {fxX=f->x>>4;fxY=FLOOR-4;fxType=0;fxLife=6;shake=3;}
+            audioCue(12,3);
         }
     } else if(f->downState==DOWN_FLOOR) {
         if(f->downTick>=18 && (f->hp || mode==2)) {
