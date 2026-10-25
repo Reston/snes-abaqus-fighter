@@ -1,10 +1,9 @@
-"""Small, code-authored menu plates for the native SNES interface.
+"""Original code-authored arcade menus for the native SNES interface.
 
-The menu plates intentionally stay quiet.  The live C renderer owns the
-cursor, labels and selected profile portrait; this module supplies a dark
-royal-blue field, a few one-pixel rules, and enough breathing room for those
-elements to remain readable on a CRT.  All lettering still comes from the
-project's bitmap glyph callback.
+The title uses original slanted bitmap lettering. Character selection puts an
+Abaqus office panorama above a six-by-two roster, with the existing
+64x80 profile and 32x40 portraits retained. The live C renderer owns player
+markers, names, controls and confirmation. Arena landmark crops stay intact.
 
 Public contract::
 
@@ -23,7 +22,7 @@ from pathlib import Path
 import struct
 from typing import Any, Callable, Mapping, Sequence
 
-from PIL import Image, ImageDraw, ImageEnhance
+from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageOps
 
 
 Size = tuple[int, int]
@@ -33,14 +32,14 @@ W, H = 256, 224
 # The native converter has its own per-tile palette reduction.  Keeping menu
 # art within this compact family prevents a card or rule from becoming noisy
 # after conversion while preserving a little SNES-era warm/cool contrast.
-INK = (4, 9, 25)
-ROYAL = (8, 18, 50)
-BLUE = (13, 31, 73)
-BLUE_LINE = (38, 65, 112)
-BLUE_SOFT = (24, 47, 93)
-WHITE = (246, 242, 220)
-MUTED = (154, 169, 197)
-GOLD = (238, 190, 58)
+INK = (15, 12, 10)
+ROYAL = (35, 28, 21)
+BLUE = (48, 36, 25)
+BLUE_LINE = (113, 83, 45)
+BLUE_SOFT = (68, 51, 31)
+WHITE = (255, 240, 206)
+MUTED = (190, 165, 123)
+GOLD = (244, 189, 81)
 GOLD_DARK = (126, 78, 24)
 
 
@@ -96,29 +95,55 @@ def _rule(im: Image.Image, xy: tuple[int, int, int, int], color=BLUE_LINE) -> No
     ImageDraw.Draw(im).line(xy, fill=color, width=1)
 
 
-def _title(root: Path, text_fn: TextFn) -> Image.Image:
-    im = _quiet_backdrop(root, 0.08)
-    d = ImageDraw.Draw(im)
+def _office_backdrop(stage: Image.Image, size: Size, *, quiet: bool = False) -> Image.Image:
+    """Reuse the game's authored office windows, skyline and trading desks.
 
-    # A barely-there horizon and low band give the title a stable baseline;
-    # native rows 20/22/24 remain open for the live menu labels.
-    d.rectangle((0, 143, 255, 223), fill=(5, 11, 31))
-    _rule(im, (18, 143, 237, 143), BLUE_LINE)
-    _rule(im, (25, 205, 230, 205), BLUE_SOFT)
+    Aspect-matched crops keep the architecture intact. A restrained gold
+    duotone fits the menu palette; the title version stays behind its logo.
+    """
+    source = _rgb_image(stage)
+    box = (0, 40, 256, 143) if quiet else (0, 50, 256, 140)
+    crop = source.crop(box).resize(size, Image.Resampling.BOX)
+    gray = ImageOps.posterize(ImageOps.grayscale(crop), 3)
+    return ImageOps.colorize(gray, (24, 19, 14), (78, 58, 32) if quiet else (193, 152, 86))
 
-    _text(text_fn, im, (128, 31), "ABAQUS", GOLD, scale=4, center=True, shadow=True)
-    _text(text_fn, im, (128, 73), "AFTER HOURS", WHITE, scale=2, center=True, shadow=True)
-    _rule(im, (78, 96, 178, 96), GOLD)
-    _text(text_fn, im, (128, 111), "OFFICE WORLD WARRIORS", MUTED, center=True)
 
-    # These are simple wells, rather than separate cards.  drawTitle() writes
-    # its rows on top of them and keeps the cursor legible in either state.
-    for y in (155, 171, 187):
-        d.rectangle((24, y, 231, y + 12), fill=ROYAL)
-        _rule(im, (25, y, 230, y), BLUE_SOFT)
-        _rule(im, (25, y + 12, 230, y + 12), INK)
-    _text(text_fn, im, (128, 213), "PRESS START", MUTED, center=True)
-    return im.convert("RGB")
+def _arcade_word(im: Image.Image, text_fn: TextFn, words: str,
+                 y: int, scale: int, top=WHITE, bottom=GOLD) -> None:
+    """Original glyphs with a pixel slant, warm gradient and short extrusion."""
+    height = 7 * scale
+    slant = height // 4
+    mask = Image.new("L", (len(words) * 6 * scale + slant + 8, height + 8))
+    flat = Image.new("L", mask.size)
+    text_fn(flat, (2, 2), words, 255, scale=scale)
+    for row in range(height + 4):
+        offset = max(0, (height + 1 - row) // 4)
+        mask.paste(flat.crop((0, row, flat.width - offset, row + 1)), (offset, row))
+    x = (W - mask.width) // 2
+    outline = mask.filter(ImageFilter.MaxFilter(3))
+    for dx, dy in ((4, 5), (3, 4), (2, 3)):
+        im.paste((139, 48, 28), (x + dx, y + dy), outline)
+    im.paste(INK, (x, y), outline)
+    color = Image.new("RGB", mask.size)
+    d = ImageDraw.Draw(color)
+    for row in range(mask.height):
+        t = min(1.0, max(0.0, (row - 2) / max(1, height - 1)))
+        rgb = tuple(round(top[k] * (1 - t) + bottom[k] * t) for k in range(3))
+        d.line((0, row, color.width - 1, row), fill=rgb)
+    im.paste(color, (x, y), mask)
+
+
+def _title(office: Image.Image, text_fn: TextFn) -> Image.Image:
+    im = _gradient((37, 29, 19), (11, 10, 9))
+    im.paste(_office_backdrop(office, (224, 90), quiet=True), (16, 16))
+    _arcade_word(im, text_fn, "ABAQUS", 25, 5, (255, 246, 187), (239, 146, 40))
+    _arcade_word(im, text_fn, "AFTER HOURS", 75, 2, WHITE, GOLD)
+    _text(text_fn, im, (128, 114), "OFFICE FIGHTERS", MUTED, center=True)
+    _rule(im, (48, 133, 207, 133), GOLD_DARK)
+    # Plain live mode rows at 18/20/22 evoke the console title menu.
+    _rule(im, (48, 187, 207, 187), BLUE_SOFT)
+    _rule(im, (8, 210, 247, 210), BLUE_LINE)
+    return im
 
 
 def _portrait(item: Mapping[str, Any]) -> Image.Image:
@@ -128,32 +153,21 @@ def _portrait(item: Mapping[str, Any]) -> Image.Image:
     return Image.new("RGB", (32, 40), BLUE)
 
 
-def _select(root: Path, roster: Sequence[Mapping[str, Any]], text_fn: TextFn) -> Image.Image:
-    # A flat field lets the portraits and the native cursor do the work.
-    im = _gradient((8, 19, 49), (3, 8, 24))
+def _select(office: Image.Image, roster: Sequence[Mapping[str, Any]], text_fn: TextFn) -> Image.Image:
+    im = _gradient((33, 27, 20), (12, 10, 9))
     d = ImageDraw.Draw(im)
-    d.rectangle((0, 0, 255, 39), fill=INK)
-    d.rectangle((175, 40, 255, 207), fill=(5, 12, 34))
-    _rule(im, (8, 39, 167, 39), BLUE_LINE)
-    _rule(im, (175, 40, 175, 207), BLUE_LINE)
-
-    _text(text_fn, im, (8, 9), "SELECT FIGHTER", WHITE, scale=2, shadow=True)
-
-    # Four by three, 40x48 cells.  The portrait remains inset by four pixels;
-    # the native 5x6-tile cursor occupies the outer cell origin.
+    _arcade_word(im, text_fn, "PLAYER SELECT", 3, 2)
+    im.paste(_office_backdrop(office, (160, 56)), (88, 32))
+    d.rectangle((7, 23, 72, 104), outline=BLUE_LINE)
+    _rule(im, (88, 92, 247, 92), BLUE_LINE)
+    # Six by two, 40x56 cells. The 12px top inset reserves a separate badge
+    # row, so the 1P/2P labels never cover the retained 32x40 portrait pixels.
     for n in range(12):
-        col, row = n % 4, n // 4
-        x, y = 8 + col * 40, 48 + row * 48
-        d.rectangle((x, y, x + 39, y + 47), fill=ROYAL, outline=BLUE_LINE)
-        im.paste(_portrait(roster[n] if n < len(roster) else {}), (x + 4, y + 4))
-    # Right portrait is filled by the native BG2 portrait DMA at (184,48).
-    d = ImageDraw.Draw(im)
-    d.rectangle((183, 47, 248, 129), fill=INK, outline=BLUE_LINE)
-    _rule(im, (183, 131, 248, 131), BLUE_LINE)
-    # Live name/special/footer rows have a clear, quiet surface underneath.
-    _rule(im, (8, 198, 248, 198), BLUE_LINE)
-    _rule(im, (8, 210, 248, 210), BLUE_LINE)
-    return im.convert("RGB")
+        col, row = n % 6, n // 6
+        x, y = 8 + col * 40, 104 + row * 56
+        d.rectangle((x, y, x + 39, y + 55), fill=ROYAL, outline=BLUE_LINE)
+        im.paste(_portrait(roster[n] if n < len(roster) else {}), (x + 4, y + 12))
+    return im
 
 
 ARENA_PREVIEW_CROPS = (
@@ -232,7 +246,7 @@ def native_stage_previews(root: str | Path, ui_palette, prepared=None) -> list[I
 
 
 def _arenas(stages: Sequence[Image.Image], text_fn: TextFn) -> Image.Image:
-    im = _gradient((9, 21, 52), (3, 8, 24))
+    im = _gradient((33, 27, 20), (12, 10, 9))
     d = ImageDraw.Draw(im)
     d.rectangle((0, 0, 255, 35), fill=INK)
     _text(text_fn, im, (8, 7), "SELECT ARENA", WHITE, scale=2, shadow=True)
@@ -273,10 +287,12 @@ def make_menu_images(root: str | Path, stages: Sequence[Image.Image],
 
     if not callable(text):
         raise TypeError("make_menu_images requires the project's pixel text callback")
-    root_path = Path(root)
+    if len(stages) != 3:
+        raise ValueError("Menu backdrops require the three current native stages")
+    office = stages[2]
     return {
-        "title": _title(root_path, text),
-        "select": _select(root_path, roster, text),
+        "title": _title(office, text),
+        "select": _select(office, roster, text),
         "arenas": _arenas(stages, text),
     }
 

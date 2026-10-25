@@ -24,19 +24,19 @@ extern char stage2_pal, stage2_pal_end;
 extern char stage2_ambient, stage2_ambient_end;
 #define STAGE2_AMBIENT_SIZE 1024
 extern char title_tiles, title_tiles_end;
-#define TITLE_TILES_SIZE 8000
+#define TITLE_TILES_SIZE 10848
 extern char title_map, title_map_end;
 #define TITLE_MAP_SIZE 2048
 extern char title_pal, title_pal_end;
 #define TITLE_PAL_SIZE 192
 extern char select_tiles, select_tiles_end;
-#define SELECT_TILES_SIZE 12160
+#define SELECT_TILES_SIZE 16800
 extern char select_map, select_map_end;
 #define SELECT_MAP_SIZE 2048
 extern char select_pal, select_pal_end;
 #define SELECT_PAL_SIZE 192
 extern char arenas_tiles, arenas_tiles_end;
-#define ARENAS_TILES_SIZE 15744
+#define ARENAS_TILES_SIZE 15872
 extern char arenas_map, arenas_map_end;
 #define ARENAS_MAP_SIZE 2048
 extern char arenas_pal, arenas_pal_end;

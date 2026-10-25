@@ -1,0 +1,121 @@
+{
+  "status": "passed",
+  "scope": "native menu playtest candidate; no new offline release",
+  "version": "0.27.0",
+  "rom_sha256": "d5263c777cbb3a02ce438e07c1c425f2d39dd73d294cd4d2aa8c2cbc2da78e3d",
+  "checksum": "FA37",
+  "source_commit": "4d7e8fe17f1a0a534bc06e3e059fc4c03cd556d0",
+  "native_checks": 49209,
+  "suites": {
+    "gameplay": {
+      "path": "docs/test-report.json",
+      "sha256": "9d7f9cdd285a161b40ae77c8956472a49a79195306f792ef5ddfe49ca3aeaff4",
+      "passed": 2595
+    },
+    "characters": {
+      "path": "docs/character-test-report.json",
+      "sha256": "3f4bd26d823d02f24b511bdfd2e37354ec7fc5e5c41b7fc4b4efe661c43d75b3",
+      "passed": 19459
+    },
+    "presentation": {
+      "path": "docs/presentation-test-report.json",
+      "sha256": "092eb222026275ea85c83c8e579412e051ac6a985135a02dc4ff393dfdc11a88",
+      "passed": 3489
+    },
+    "inputs": {
+      "path": "docs/input-test-report.json",
+      "sha256": "395d2b7930ec853bc3fe07db9f7b1d92e7294d33f02e0885d8d6ae8bcc0e57d7",
+      "passed": 1511
+    },
+    "stages": {
+      "path": "docs/stage-test-report.json",
+      "sha256": "b8edf07c4d76729b49928ff881009049c7c2e52de2d351e144c8cb524eb01a0d",
+      "passed": 19002
+    },
+    "training": {
+      "path": "docs/training-test-report.json",
+      "sha256": "a06cc393b2f3a460dbf289756311e4752c9c493a5a43f69e53d3e2db3d69680c",
+      "passed": 3153
+    }
+  },
+  "focused_native": {
+    "path": "docs/classic-menu-native.json",
+    "sha256": "77688a464e1bfca7af990bf151e43a101a00e093e17c75104bc930385bbfc22b",
+    "snes9x": {
+      "state_count": 74,
+      "steady_callbacks": 2353,
+      "native_failures": []
+    },
+    "accuracy": {
+      "state_count": 74,
+      "steady_callbacks": 2353,
+      "native_failures": []
+    }
+  },
+  "preservation": {
+    "baseline_commit": "2886087473a66b89898088b89a1ce78c02d41c99",
+    "generated_total": 226,
+    "generated_preserved": 213,
+    "changed": [
+      "assets/generated/arenas.png",
+      "assets/generated/arenas_map.bin",
+      "assets/generated/arenas_pal.bin",
+      "assets/generated/arenas_tiles.bin",
+      "assets/generated/assets.h",
+      "assets/generated/select.png",
+      "assets/generated/select_map.bin",
+      "assets/generated/select_pal.bin",
+      "assets/generated/select_tiles.bin",
+      "assets/generated/title.png",
+      "assets/generated/title_map.bin",
+      "assets/generated/title_pal.bin",
+      "assets/generated/title_tiles.bin"
+    ],
+    "prior_ram_labels": 1318,
+    "moved_ram": {},
+    "added_ram": {},
+    "hardware_and_trace_preserved": true
+  },
+  "fresh_build": {
+    "path": "docs/fresh-build-test-report.json",
+    "sha256": "760cd59619de8d92ed12b34c8ccd2b67394ba41c725e6137d8df41be52db897a",
+    "source_commit": "4d7e8fe17f1a0a534bc06e3e059fc4c03cd556d0",
+    "generated_assets_verified": 226
+  },
+  "independent_smoke": {
+    "path": "docs/compatibility-test-report.json",
+    "sha256": "f6d6617c7bba390a96664efa58bb4120a629a7585853376a7cf26cee21ecc75d"
+  },
+  "media": [
+    {
+      "label": "Main menu",
+      "path": "docs/screenshots/classic-menu/title.png",
+      "sha256": "78b3fa0b38c322792c4969abbcad3dfc654d658b0acecb8ef59fe9c528773654",
+      "caption": "Original arcade lettering, three short mode choices, warm gold and charcoal.",
+      "alt": "Native v0.27 title with a gold slanted Abaqus logo over a dark world map, and Arcade, Local 1v1 and Training choices."
+    },
+    {
+      "label": "Fighter select",
+      "path": "docs/screenshots/classic-menu/select-00.png",
+      "sha256": "d15c7a939c757dd1cbaa50cf676aa180cfbfdd8b63e3148f0d7e1190a09d079d",
+      "caption": "Six-by-two roster, world-map backdrop and the existing selected portrait.",
+      "alt": "Native player-one selection: Damian portrait at upper left, world map at upper right, twelve portraits below and a 1P badge."
+    },
+    {
+      "label": "Player 2",
+      "path": "docs/screenshots/classic-menu/both-cores/snes9x/mode1-p2-11.png",
+      "sha256": "5967fa8685d268a1b028b51002223b1e5f6137cce559efac236f2d8a7b9375c6",
+      "caption": "P1 stays marked while P2 chooses. Badges sit above the portraits.",
+      "alt": "Native local player-two selection with Lars highlighted, Damian marked as player one, and both badges above their portraits."
+    },
+    {
+      "label": "Locations",
+      "path": "docs/screenshots/classic-menu/arena-0.png",
+      "sha256": "32884836ae935531d2a86e3335f6f8a1ed54cb5753cb740c03b49b3761a04244",
+      "caption": "Matching menu palette. The existing stage landmark previews remain.",
+      "alt": "Native arena menu with warm charcoal panels and the existing Las Condes, El Castillo and La Oficina landmark previews."
+    }
+  ],
+  "human_review": "pending",
+  "merged": false
+}

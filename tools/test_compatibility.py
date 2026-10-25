@@ -791,12 +791,13 @@ def boot_match(core: Probe, stage_id: int, trace_map: dict[str, int],
     select = wait_screen(core, 1)
     if low_wave_pair:
         # Negger (4) and Fernando (6) are the authored low-wave pair.
-        press(core, "down")
+        for _ in range(4):
+            press(core, "right")
         press(core, "a")
         # The second fighter is confirmed by port 1; keeping the input on
         # port 0 leaves the selection screen active and eventually times out.
-        press(core, "down", 1)
-        press(core, "right", 1)
+        for _ in range(5):
+            press(core, "right", 1)
         press(core, "a", 1)
     else:
         press(core, "a")

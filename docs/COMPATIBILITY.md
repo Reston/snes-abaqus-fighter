@@ -1,6 +1,27 @@
 # Independent-engine compatibility
 
-## Current native candidate: v0.26.0
+## Current menu candidate: v0.27.1
+
+<!-- candidate-version: 0.27.1; identity: FOCUSED_UI_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: c6682d3da92ae7ae41f80e62580163c169b4017cb81c83abcdbc611f8b1d7000; source-freeze: 2e6f947a43d148b44f8b7528769bfef1865ed85f -->
+
+Both pinned cores pass the office-menu proof on this ROM: 74 states each,
+including rendered backdrop pixels, with zero steady-menu cadence/SDK faults.
+Presentation/Training and fresh reproduction also pass. The older full smoke
+and six-suite records below retain their historical ROM identities.
+[Current evidence](office-menu-review.json) · [Release note](RELEASE-v0.27.1.md).
+
+
+## Historical native candidate: v0.27.0
+
+<!-- candidate-version: 0.27.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: d5263c777cbb3a02ce438e07c1c425f2d39dd73d294cd4d2aa8c2cbc2da78e3d; source-freeze: 4d7e8fe17f1a0a534bc06e3e059fc4c03cd556d0 -->
+
+The pinned Snes9x and bsnes Accuracy menu proofs pass, including all twelve
+fighters, both selection steps, mirror badges and all three locations.
+The current independent smoke passes on the same cartridge.
+[Evidence and scope](classic-menu-review.json) · [Release note](RELEASE-v0.27.0.md).
+The older sections below keep their historical cartridge identities.
+
+## Historical native candidate: v0.26.0
 
 <!-- candidate-version: 0.26.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b; source-freeze: c89239901491a239e10194f1399820527b0ebf74 -->
 

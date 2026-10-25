@@ -1,7 +1,7 @@
 """Silent, headless presentation checks for the native menus and arenas.
 
 This suite drives the actual cartridge through the official Snes9x libretro
-core.  It checks title/select/arena state transitions, the four-by-three roster
+core.  It checks title/select/arena state transitions, the six-by-two roster
 navigation contract, selected portrait updates, and all three fight stages.
 Frames are captured from the core's video callback for human review; no window
 or audio device is opened and the host never writes emulated memory.
@@ -39,8 +39,8 @@ PORTRAIT_VRAM_BYTE = PORTRAIT_VRAM_WORD * 2
 PORTRAIT_BYTES = 64 * 80 // 2
 BG2_MAP_WORD = 0x5800
 BG2_MAP_BYTE = BG2_MAP_WORD * 2
-PORTRAIT_MAP_X = 23
-PORTRAIT_MAP_Y = 6
+PORTRAIT_MAP_X = 1
+PORTRAIT_MAP_Y = 3
 PORTRAIT_TILE_BASE = 160
 PORTRAIT_MAP_PALETTE = 1
 UI_TILE_VRAM_WORD = 0x4000
@@ -320,10 +320,10 @@ def verify_select_card_render(e: Emulator) -> dict[str, object]:
     assert e.frame is not None
     metrics: dict[str, object] = {}
     for fighter in range(12):
-        col, row = fighter % 4, fighter // 4
-        x, y = 8 + col * 40 + 4, 48 + row * 48 + 4
+        col, row = fighter % 6, fighter // 6
+        x, y = 8 + col * 40 + 4, 104 + row * 56 + 12
         # Cursor lines are one native pixel at the card's outer boundary
-        # (x=8/47, y=48/95); the portrait inset starts four pixels inside, so
+        # (x=8/47, y=104/159); the badge row is above the full portrait, so
         # the full authored 32x40 crop is safe to compare and catches a face
         # or hair edge clipped by a bad portrait composition.
         crop = (x, y, x + 32, y + 40)
@@ -338,6 +338,25 @@ def verify_select_card_render(e: Emulator) -> dict[str, object]:
               })
         metrics[f"{fighter:02}"] = {"rect": list(crop), **delta}
     return metrics
+
+
+def verify_select_markers(e: Emulator) -> None:
+    """Player badges occupy their own row, including shared-fighter mirrors."""
+    current = state(e)
+    memory = vram_bytes(e)
+    first = current["selected"]
+    second = current["selected2"]
+    # selectPlayer is a native symbol rather than part of the fixed TRACE ABI.
+    active_second = "PLAYER 2" in "".join(
+        chr(value & 1023) if 32 <= (value & 1023) < 127 else " "
+        for value in map_row(memory, 3)) or current["mode"] == 2 and "DUMMY" in "".join(
+        chr(value & 1023) if 32 <= (value & 1023) < 127 else " "
+        for value in map_row(memory, 3))
+    verify_menu_font_bank(e, [(13 + first // 6 * 7, 1 + first % 6 * 5, "1P")],
+                          "P1 roster marker")
+    if active_second:
+        verify_menu_font_bank(e, [(13 + second // 6 * 7, 4 + second % 6 * 5, "2P")],
+                              "P2/dummy roster marker")
 
 
 def verify_fight_font_bank(e: Emulator, current: dict[str, int]) -> dict[str, object]:
@@ -391,6 +410,15 @@ def verify_opaque_text_rows(e: Emulator, rows: list[tuple[int, int, str]],
 
     memory = vram_bytes(e)
     palette = (ROOT / "assets/generated/ui_pal.bin").read_bytes()
+    if state(e)["screen"] < FIGHT:
+        # Menu palette zero is deliberately warmer than combat. Bind its
+        # complete declared palette, then retain every native pixel check.
+        source = (ROOT / "src/game.c").read_text(encoding="utf-8")
+        colors = re.search(r"const u16 menuUiColors\[16\] = \{([^}]+)\}", source)
+        check(colors is not None, "menu palette declaration is present")
+        values = [int(value, 16) for value in re.findall(r"0x[0-9a-fA-F]+", colors.group(1))]
+        check(len(values) == 16, "menu palette has exactly sixteen native colors")
+        palette = b"".join(value.to_bytes(2, "little") for value in values) + palette[32:]
     check(e.frame is not None, "opaque UI text comparison has a native frame", label)
     assert e.frame is not None
     seen: set[int] = set()
@@ -720,11 +748,11 @@ def title_and_select() -> dict[str, object]:
         check(state(e)["screen"] == TITLE, "cold boot reaches the redesigned home screen")
         version = json.loads((ROOT / "dist/manifest.json").read_bytes())["version"]
         verify_menu_font_bank(e, [
-            (20, 9, "ARCADE SHIFT"),
-            (22, 9, "LOCAL 1V1 / 2P"),
-            (24, 9, "TRAINING"),
-            (25, 3, "L/R LEVEL"),
-            (25, 18, "NORMAL"),
+            (18, 11, "ARCADE"),
+            (20, 11, "LOCAL 1V1"),
+            (22, 11, "TRAINING"),
+            (24, 9, "L/R"),
+            (24, 14, "NORMAL"),
             (27, 24, "V" + version),
         ], "title")
         title_path = capture(e, "title.png")
@@ -737,12 +765,12 @@ def title_and_select() -> dict[str, object]:
 
         check(state(e)["selected"] == 0, "roster opens on the first fighter")
         verify_menu_font_bank(e, [
-            (4, 23, "PLAYER 1"),
-            (17, 22, NAMES[0]),
-            (27, centered_start("A/START OK  B BACK"),
-             "A/START OK  B BACK"),
+            (3, 11, "PLAYER 1"),
+            (12, 11, NAMES[0]),
+            (27, 3, "A/START OK"), (27, 23, "B BACK"),
         ], "fighter select")
         select_card_render = verify_select_card_render(e)
+        verify_select_markers(e)
         select_digests: dict[int, str] = {0: frame_digest(e)}
         portrait_paths: dict[str, str] = {"00": str(capture(e, "select-00.png"))}
         portrait_vram: dict[str, dict[str, object]] = {
@@ -751,7 +779,7 @@ def title_and_select() -> dict[str, object]:
         optional_portrait_trace(e, 0)
 
         # Horizontal movement covers every card and its wrap.  The expected
-        # 4x3 visual grid is then exercised with +/-4 vertical steps.
+        # 6x2 visual grid is then exercised with six-slot vertical steps.
         for expected in range(1, 12):
             press(e, "right")
             check(state(e)["selected"] == expected,
@@ -761,21 +789,22 @@ def title_and_select() -> dict[str, object]:
             select_digests[expected] = frame_digest(e)
             portrait_paths[f"{expected:02}"] = str(capture(e, f"select-{expected:02}.png"))
             portrait_vram[f"{expected:02}"] = verify_large_portrait(e, expected)
+            verify_select_markers(e)
             optional_portrait_trace(e, expected)
         press(e, "right")
         check(state(e)["selected"] == 0, "roster horizontal navigation wraps")
 
         press(e, "down")
-        check(state(e)["selected"] == 4, "roster down moves one four-card row")
-        select_digests[4] = frame_digest(e)
+        check(state(e)["selected"] == 6, "roster down moves one six-card row")
+        select_digests[6] = frame_digest(e)
         press(e, "down")
-        check(state(e)["selected"] == 8, "roster down reaches the third four-card row")
+        check(state(e)["selected"] == 0, "roster down wraps after the second row")
         press(e, "down")
-        check(state(e)["selected"] == 0, "roster down wraps after the third row")
+        check(state(e)["selected"] == 6, "roster down returns to the second row")
         press(e, "up")
-        check(state(e)["selected"] == 8, "roster up wraps to the third row")
+        check(state(e)["selected"] == 0, "roster up returns to the first row")
         press(e, "up")
-        check(state(e)["selected"] == 4, "roster up moves one four-card row")
+        check(state(e)["selected"] == 6, "roster up wraps to the second row")
         press(e, "up")
         check(state(e)["selected"] == 0, "roster up returns to the first row")
 
@@ -844,8 +873,9 @@ def boot_fight(mode: int = 1, stage: int = 0) -> Emulator:
         check(state(e)["screen"] == SELECT,
               "first fighter confirm leaves the second roster visible", state(e))
         heading = "DUMMY" if mode == 2 else "PLAYER 2"
-        verify_menu_font_bank(e, [(4, 23, heading)], "second roster heading")
+        verify_menu_font_bank(e, [(3, 11, heading)], "second roster heading")
         verify_large_portrait(e, state(e)["selected2"])
+        verify_select_markers(e)
         press(e, "a", 0 if mode == 2 else 1)
     wait_screen(e, ARENA)
     for _ in range(stage):
@@ -991,22 +1021,24 @@ def training_selection_capture() -> dict[str, object]:
         wait_screen(e, SELECT)
         check(state(e)["selected"] == 2 and state(e)["selected2"] == 3,
               "Training opens DUMMY after the chosen player with an adjacent cursor", state(e))
-        press(e, "up", 1); press(e, "left", 1)
+        press(e, "up", 1); press(e, "right", 1)
         check(state(e)["selected"] == 2 and state(e)["selected2"] == 10,
               "P2 can choose a nonadjacent dummy without changing PLAYER 1", state(e))
-        verify_menu_font_bank(e, [(4, 23, "DUMMY"), (17, 22, "ROXANA")],
+        verify_menu_font_bank(e, [(3, 11, "DUMMY"), (12, 11, "ROXANA")],
                               "Training arbitrary dummy")
         arbitrary = {"state": state(e), "portrait": verify_large_portrait(e, 10),
                      "capture": str(capture(e, "training-dummy.png"))}
-        press(e, "down")
+        verify_select_markers(e)
+        press(e, "down"); press(e, "left"); press(e, "left")
         check(state(e)["selected2"] == state(e)["selected"] == 2,
               "P1 can choose the same fighter for a visible mirror selection", state(e))
-        verify_menu_font_bank(e, [(4, 23, "DUMMY"), (17, 22, "CRISTOBAL")],
+        verify_menu_font_bank(e, [(3, 11, "DUMMY"), (12, 11, "CRISTOBAL")],
                               "Training mirror dummy")
         mirror = {"state": state(e), "portrait": verify_large_portrait(e, 2),
                   "capture": str(capture(e, "training-mirror.png"))}
+        verify_select_markers(e)
         press(e, "b", 1)
-        verify_menu_font_bank(e, [(4, 23, "PLAYER 1"), (17, 22, "CRISTOBAL")],
+        verify_menu_font_bank(e, [(3, 11, "PLAYER 1"), (12, 11, "CRISTOBAL")],
                               "Training Back to PLAYER 1")
         returned = verify_large_portrait(e, 2)
         return {"arbitrary": arbitrary, "mirror": mirror, "back_portrait": returned}

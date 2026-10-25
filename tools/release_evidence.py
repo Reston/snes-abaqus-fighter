@@ -122,6 +122,7 @@ SOURCE_INPUT_EXACT = {
     "tools/fighter_assets.py",
     "tools/portrait_assets.py",
     "tools/menu_assets.py",
+    "tools/test_classic_menu.py",
     "tools/champion_assets.py",
     "tools/stage_assets.py",
     "tools/stage_sources.py",

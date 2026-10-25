@@ -1,7 +1,16 @@
 # Public-release quality target
+<!-- candidate-version: 0.27.1; identity: FOCUSED_UI_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: c6682d3da92ae7ae41f80e62580163c169b4017cb81c83abcdbc611f8b1d7000; source-freeze: 2e6f947a43d148b44f8b7528769bfef1865ed85f -->
+
+## Current playtest candidate: v0.27.1
+
+The office-menu revision is unmerged, stacked on the v0.26.2 help revision.
+Main remains the approved v0.24.0. [Current scope](RELEASE-v0.27.1.md) and
+[native verification](office-menu-review.json) do not certify a public or
+offline release. Earlier sections below are historical.
+
 <!-- candidate-version: 0.23.1; rom-sha256: 057139801b64d1d486c91e18f456e01519dd4d25c3d0d6a92e61f311b99da3fd -->
 
-## Approved main walking revision: v0.23.1
+## Historical approved walking revision: v0.23.1
 
 The user rejected v0.23.0's torso/legs mismatch. PR #12 now replaces each
 fighter's eight complete walking poses with coordinated head, guard, torso,
