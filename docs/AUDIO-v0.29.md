@@ -145,7 +145,7 @@ not pooled into the final record. The parent must rerun combined six-suite,
 reproduction and browser proofs after integrating the other five topics.
 Human listening and original-console/controller review remain unclaimed.
 
-## Known integration blocker
+## Historical isolated integration blocker
 
 The default eleven-win Negger Champion fixture encounters one strict SDK
 stall at native frame 37312, Arcade opponent index 9, round 2, Negger versus
@@ -175,8 +175,89 @@ provide the packet contract. Every native frame/VBlank/SDK/OBJ/FIFO assertion
 remains unchanged; every PCM sample is retained. Captures store integer WAV
 rate 32040 Hz, so their export time base rounds the fractional AV rate.
 
-## Frozen delivery
+## Historical isolated delivery
 
 Focused Snes9x and Accuracy each pass **225 checks / 20,209 strict callbacks** on ROM `240c194a09975158dfdc7d17b4569d171caba0e1caa4fa51dc9a80dea1c59360`, source freeze `8fffcf371246114fc63eb75dda05d6daf87aa8f8`. The separate earned-Champion route retains its one failed cadence callback and is not pooled into those passes. Parent must resolve the documented blocker before claiming full native cadence or combined verified merge.
 
 Native excerpts: [menu](audio29/snes9x/menu.wav), [Las Condes](audio29/snes9x/stage0-music.wav), [El Castillo](audio29/snes9x/stage1-music.wav), [La Oficina](audio29/snes9x/stage2-music.wav), [earned Champion](audio29/champion/champion.wav). [Sound page](audio29/snes9x/05-sound-levels.png) is an actual native capture. Exact commands and all hashes are in [audio29-report.json](audio29-report.json).
+
+
+## Current integration follow-up
+
+The audio branch merged integration `1648122` and reviewed defense `99cdb4c`.
+Current focused source/test freeze is `fcf6b1e7ac401d0bbc03d5d7b0594058a5b3be09`. ROM
+`afc7ff2c883a5cb473df63e71e742abc7e7527b7bdeab6c42ea0fe94c05432b1` (checksum `4325`) includes Random, animated Arenas,
+Auto and Defense alongside Audio; Bonus is still pending. The parent owns
+final combined verification, reproduction and merge. Draft PR33 stays open.
+
+The unchanged original earned Negger route reproduced frame 37312 on the
+first merged context, ROM `4e5f7e11fb80055a6004a7c96f401a8dde5ec236cf6101d846bf415382a8a651`.
+Its exact native/controller/RNG failure remains in
+[the retained report](audio29-followup-original-failure.json).
+Input-only, controls-only, modulo and diagnostic trials are retained separately.
+The final fix changes only `captureInput` and `controls` to two direct actor
+expansions in `src/audio29_native.h`. The original tests, calls and writes
+remain in order, mechanically checked against the reviewed defense merge.
+All 1,329 existing RAM labels remain exact, including reservations and markers.
+CPU source, hardware/trace assembly and every generated asset remain exact
+against that same current-audio control. No timing, decision or music change
+is used. The original route then passes on the pre-defense context with only
+these same two replacements: ROM
+`40dd19d9bb8d031f4ae4d27032cefe4a863da2718c07d98d8696d1edadcc07c9`,
+[full earned result](audio29-followup-original-route-fixed.json).
+
+Emitted `captureInput` grows 2,803 to 3,090 bytes, locals shrink 28 to 16,
+and indirect field instructions fall 77 to zero. `controls` grows 3,353 to
+4,258 bytes, locals shrink 52 to 24, and indirect field instructions fall
+81 to 16 (remaining profile accesses). Total ROM growth is 1,192 bytes;
+142 static indirect field instructions disappear. Total instruction counts
+include both actor branches, so they are not a per-call cycle measurement.
+No direct scanline/cycle claim is made. Every native section remains within
+one 32 KiB LoROM bank; the largest retained section is 30,720 bytes.
+
+The unmodified historical throw policy hits its existing 10,000-step match
+bound after Defense changes wake protection; that report is retained with
+zero cadence failures up to its bound. A separate current policy guards
+startup/active time, then approaches during visibly observed recovery.
+The original policy stays callable. The current policy retains the same
+10,000-step bound, maximum three attempts, eleven actual earned wins and all
+native counters. It passes the complete Champion route on the current ROM.
+The failed exploratory kick/super policy also remains a failed report.
+
+Snes9x passes **254 checks / 52,606 strict callbacks**,
+including the complete current earned Champion route. Accuracy passes
+**224 checks / 20,209 strict callbacks**.
+All five arrangements, all three arenas, actual contacts/announcements,
+independent levels/mutes, duck restore, paired supers and rapid mixed contacts
+retain the original sound and PCM assertions. Peak FIFO backlog is three bytes;
+no candidate SDK lag, dropped callback, OBJ overflow or clipping is accepted.
+`--combined` calls the parent's `v029_contracts.validate` for added arena assets;
+it does not weaken audio or native assertions. The bank remains 27,470 bytes.
+The native page/routes and generator output allowlist above remain unchanged;
+the Defense `soundImpact(SOUND_GUARD)` hook stays exact.
+
+The independent replay runs 39 cases (all twelve CPUs at three difficulties
+plus three both-pad Local cases). All candidate cases pass strict cadence.
+**38 cases / 37,050 snapshots** match
+every unmasked Fighter128/Wave32 byte, all TRACE0..122, RNG, CPU, pads/edges,
+recoil and super bytes at the identical physical callback. The unoptimized
+control's separate stalls and resulting timestamp differences remain **failed**
+in [the replay report](audio29-followup-native.json), including full paired
+streams. That diagnostic command exits 1; it is never called an all-pass
+equivalence suite. No callback is removed, aligned or collapsed, no field is
+masked, and no baseline/candidate cadence allowance is added. The independent
+structural check proves the two C templates retain the exact original operation
+order; behavior equality across stalled physical callback timestamps remains
+unclaimed. This limitation does not conceal a candidate cadence failure.
+
+[Current Sound page](audio29-followup/snes9x/05-sound-levels.png),
+[current menu music](audio29-followup/snes9x/menu.wav) and
+[current earned Champion](audio29-followup/snes9x/champion.wav) are actual native
+captures. Exact commands, hashes, counts, all negative controls and media are
+bound in [audio29-report.json](audio29-report.json). The old aggregate is retained
+byte-for-byte as [audio29-isolated-report.json](audio29-isolated-report.json).
+The exact tested cartridge, symbols, manifest, assembly and all generated
+outputs remain ignored under `build/audio29-followup-final-afc7ff2c`; tracked
+generated/dist outputs are restored before the evidence commit.
+Human listening, physical controllers, original hardware and final six-topic
+combined verification remain separate from this focused delivery.
