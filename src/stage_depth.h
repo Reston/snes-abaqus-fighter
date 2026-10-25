@@ -2,12 +2,16 @@
  * BG3 is disabled. No scanline bands, wrapping, HDMA, OBJ or live DMA.
  * Keep the historical sixteen-byte reservation and every following address. */
 u8 stageDepthTable[10];
+/* Reservation ownership: 0 scenery enabled; 1..2 menu repeat; 3 guide view;
+ * 4..6 Training best; 7..8 local session wins; 9 background-motion preference.
+ * No byte is an HDMA table. The latter preferences clear in their own entry
+ * paths; scene reset clears only transient menu/view state. */
 s16 stageDepthFar,stageDepthNear;
 u8 stageVictoryTick,stageVictoryPhase;
 
 void stageDepthReset(void) {
     REG_HDMAEN=0;
-    stageDepthTable[0]=0;
+    stageDepthTable[0]=0;stageDepthTable[1]=0;stageDepthTable[2]=0;stageDepthTable[3]=0;
     stageDepthFar=0;stageDepthNear=0;
 }
 
@@ -42,7 +46,9 @@ void stageDepthPublish(u16 scroll) {
     if(!stageDepthTable[0])return;
     /* Impact shake composes once on the complete scenery/ground plane. Shake
      * policy freezes when paused; floor and scenery always move together. */
-    bgSetScroll(0,16+stageDepthFar+scroll,511);
+    /* Comfort preference affects only the scenery presentation. Actor
+     * positions, contact recoil, simulation clocks and shake expiry stay live. */
+    bgSetScroll(0,stageDepthTable[9]?16:16+stageDepthFar+scroll,511);
 }
 
 u8 stageDepthAmbientReady(void) {

@@ -1,6 +1,6 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
+  "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
   "rom_bytes": 4194304,
   "status": "passed",
   "checks": [
@@ -9,11 +9,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.25.0",
+        "version": "0.26.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
-        "checksum": "FF9C",
+        "sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+        "checksum": "3993",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -1064,7 +1064,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 170,
+        "frame": 169,
         "mode": 1,
         "hp1": 85,
         "hp2": 85,
@@ -1448,7 +1448,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 320,
+        "frame": 319,
         "mode": 1,
         "hp1": 128,
         "hp2": 128,
@@ -1642,7 +1642,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 196,
+        "frame": 195,
         "mode": 2,
         "hp1": 85,
         "hp2": 85,
@@ -1919,7 +1919,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 358,
+        "frame": 357,
         "mode": 2,
         "hp1": 128,
         "hp2": 128,
@@ -2781,8 +2781,8 @@
         "label": "title",
         "row": 27,
         "x": 28,
-        "character": "5",
-        "tile": 53
+        "character": "6",
+        "tile": 54
       }
     },
     {
@@ -6213,7 +6213,7 @@
           122,
           94
         ],
-        "mean_channel_delta": 2.996363412228797,
+        "mean_channel_delta": 2.7160379684418148,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 5408
@@ -6244,7 +6244,7 @@
           240,
           95
         ],
-        "mean_channel_delta": 2.292493386243386,
+        "mean_channel_delta": 2.0531856261022927,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 12096
@@ -8958,7 +8958,7 @@
           122,
           150
         ],
-        "mean_channel_delta": 2.9228920118343193,
+        "mean_channel_delta": 2.4530325443786984,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 5408
@@ -8989,7 +8989,7 @@
           240,
           151
         ],
-        "mean_channel_delta": 2.2426697530864197,
+        "mean_channel_delta": 1.9672343474426808,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 12096
@@ -11703,7 +11703,7 @@
           122,
           206
         ],
-        "mean_channel_delta": 2.826060157790927,
+        "mean_channel_delta": 2.8373397435897436,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 5408
@@ -11734,7 +11734,7 @@
           240,
           207
         ],
-        "mean_channel_delta": 2.2026289682539684,
+        "mean_channel_delta": 2.1103670634920637,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 12096
@@ -13537,7 +13537,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 256,
+        "frame": 255,
         "mode": 2,
         "hp1": 85,
         "hp2": 85,
@@ -13657,7 +13657,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 306,
+        "frame": 305,
         "mode": 2,
         "hp1": 85,
         "hp2": 85,
@@ -14013,7 +14013,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 331,
+        "frame": 330,
         "mode": 2,
         "hp1": 85,
         "hp2": 85,
@@ -20617,7 +20617,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 170,
+        "frame": 169,
         "mode": 1,
         "hp1": 85,
         "hp2": 85,
@@ -20927,7 +20927,7 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 2044,
+        "frame": 2043,
         "mode": 1,
         "hp1": 128,
         "hp2": 0,
@@ -21047,7 +21047,7 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 2044,
+        "frame": 2043,
         "mode": 1,
         "hp1": 128,
         "hp2": 0,
@@ -22643,6 +22643,606 @@
         "label": "result card",
         "row": 11,
         "x": 15,
+        "character": "P",
+        "tile": 336,
+        "expected": 336
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 15,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 15,
+        "character": "P",
+        "tile": 336,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 16,
+        "character": "L",
+        "tile": 332,
+        "expected": 332
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 16,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 16,
+        "character": "L",
+        "tile": 332,
+        "mean_channel_delta": 0.390625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 17,
+        "character": "A",
+        "tile": 321,
+        "expected": 321
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 17,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 17,
+        "character": "A",
+        "tile": 321,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 18,
+        "character": "Y",
+        "tile": 345,
+        "expected": 345
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "tile": 345,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 18,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 18,
+        "character": "Y",
+        "tile": 345,
+        "mean_channel_delta": 0.3854166666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 19,
+        "character": "E",
+        "tile": 325,
+        "expected": 325
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 19,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 19,
+        "character": "E",
+        "tile": 325,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 20,
+        "character": "R",
+        "tile": 338,
+        "expected": 338
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "tile": 338,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 20,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 20,
+        "character": "R",
+        "tile": 338,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 21,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 21,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 21,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.3333333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 22,
+        "character": "1",
+        "tile": 305,
+        "expected": 305
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "tile": 305,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 22,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 22,
+        "character": "1",
+        "tile": 305,
+        "mean_channel_delta": 0.3854166666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 23,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 23,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 23,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.3333333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 24,
         "character": "W",
         "tile": 343,
         "expected": 343
@@ -22668,7 +23268,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 15,
+        "x": 24,
         "actual": 0,
         "expected": 0
       }
@@ -22703,7 +23303,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 15,
+        "x": 24,
         "character": "W",
         "tile": 343,
         "mean_channel_delta": 0.4270833333333333,
@@ -22718,7 +23318,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 16,
+        "x": 25,
         "character": "I",
         "tile": 329,
         "expected": 329
@@ -22730,7 +23330,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 16,
+        "x": 25,
         "actual": 0,
         "expected": 0
       }
@@ -22765,7 +23365,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 16,
+        "x": 25,
         "character": "I",
         "tile": 329,
         "mean_channel_delta": 0.390625,
@@ -22780,7 +23380,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 17,
+        "x": 26,
         "character": "N",
         "tile": 334,
         "expected": 334
@@ -22792,7 +23392,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 17,
+        "x": 26,
         "actual": 0,
         "expected": 0
       }
@@ -22827,7 +23427,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 17,
+        "x": 26,
         "character": "N",
         "tile": 334,
         "mean_channel_delta": 0.421875,
@@ -22842,7 +23442,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 18,
+        "x": 27,
         "character": "S",
         "tile": 339,
         "expected": 339
@@ -22868,7 +23468,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 18,
+        "x": 27,
         "actual": 0,
         "expected": 0
       }
@@ -22903,630 +23503,10 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 18,
+        "x": 27,
         "character": "S",
         "tile": 339,
         "mean_channel_delta": 0.4114583333333333,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 19,
-        "character": " ",
-        "tile": 288,
-        "expected": 288
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 19,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 19,
-        "character": " ",
-        "tile": 288,
-        "mean_channel_delta": 0.3333333333333333,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 20,
-        "character": "T",
-        "tile": 340,
-        "expected": 340
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 20,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 20,
-        "character": "T",
-        "tile": 340,
-        "mean_channel_delta": 0.390625,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 21,
-        "character": "H",
-        "tile": 328,
-        "expected": 328
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 21,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 21,
-        "character": "H",
-        "tile": 328,
-        "mean_channel_delta": 0.421875,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 22,
-        "character": "E",
-        "tile": 325,
-        "expected": 325
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 22,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 22,
-        "character": "E",
-        "tile": 325,
-        "mean_channel_delta": 0.4270833333333333,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 23,
-        "character": " ",
-        "tile": 288,
-        "expected": 288
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 23,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 23,
-        "character": " ",
-        "tile": 288,
-        "mean_channel_delta": 0.3333333333333333,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 24,
-        "character": "M",
-        "tile": 333,
-        "expected": 333
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 24,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 24,
-        "character": "M",
-        "tile": 333,
-        "mean_channel_delta": 0.4270833333333333,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 25,
-        "character": "A",
-        "tile": 321,
-        "expected": 321
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 25,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 25,
-        "character": "A",
-        "tile": 321,
-        "mean_channel_delta": 0.4270833333333333,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 26,
-        "character": "T",
-        "tile": 340,
-        "expected": 340
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 26,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 26,
-        "character": "T",
-        "tile": 340,
-        "mean_channel_delta": 0.390625,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 27,
-        "character": "C",
-        "tile": 323,
-        "expected": 323
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 27,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 27,
-        "character": "C",
-        "tile": 323,
-        "mean_channel_delta": 0.4010416666666667,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 28,
-        "character": "H",
-        "tile": 328,
-        "expected": 328
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 28,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 28,
-        "character": "H",
-        "tile": 328,
-        "mean_channel_delta": 0.421875,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -23542,20 +23522,6 @@
         "character": "R",
         "tile": 338,
         "expected": 338
-      }
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "opaque glyph tile has no transparent palette-zero pixels",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "tile": 338,
-        "min_palette_index": 1
       }
     },
     {
@@ -24252,20 +24218,6 @@
         "character": "1",
         "tile": 305,
         "expected": 305
-      }
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "opaque glyph tile has no transparent palette-zero pixels",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "tile": 305,
-        "min_palette_index": 1
       }
     },
     {
@@ -25049,9 +25001,9 @@
         "label": "result card",
         "row": 17,
         "x": 15,
-        "character": "L",
-        "tile": 332,
-        "expected": 332
+        "character": "S",
+        "tile": 339,
+        "expected": 339
       }
     },
     {
@@ -25096,9 +25048,9 @@
         "label": "result card",
         "row": 17,
         "x": 15,
-        "character": "L",
-        "tile": 332,
-        "mean_channel_delta": 0.390625,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.4114583333333333,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -25111,9 +25063,9 @@
         "label": "result card",
         "row": 17,
         "x": 16,
-        "character": "O",
-        "tile": 335,
-        "expected": 335
+        "character": "E",
+        "tile": 325,
+        "expected": 325
       }
     },
     {
@@ -25158,6 +25110,254 @@
         "label": "result card",
         "row": 17,
         "x": 16,
+        "character": "E",
+        "tile": 325,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 17,
+        "character": "S",
+        "tile": 339,
+        "expected": 339
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 17,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 17,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 18,
+        "character": "S",
+        "tile": 339,
+        "expected": 339
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 18,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 18,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 19,
+        "character": "I",
+        "tile": 329,
+        "expected": 329
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 19,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 19,
+        "character": "I",
+        "tile": 329,
+        "mean_channel_delta": 0.390625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 20,
+        "character": "O",
+        "tile": 335,
+        "expected": 335
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 20,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 20,
         "character": "O",
         "tile": 335,
         "mean_channel_delta": 0.4166666666666667,
@@ -25172,10 +25372,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 17,
-        "character": "C",
-        "tile": 323,
-        "expected": 323
+        "x": 21,
+        "character": "N",
+        "tile": 334,
+        "expected": 334
       }
     },
     {
@@ -25184,7 +25384,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 17,
+        "x": 21,
         "actual": 0,
         "expected": 0
       }
@@ -25219,10 +25419,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 17,
-        "character": "C",
-        "tile": 323,
-        "mean_channel_delta": 0.4010416666666667,
+        "x": 21,
+        "character": "N",
+        "tile": 334,
+        "mean_channel_delta": 0.421875,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -25234,131 +25434,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 18,
-        "character": "A",
-        "tile": 321,
-        "expected": 321
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 18,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 18,
-        "character": "A",
-        "tile": 321,
-        "mean_channel_delta": 0.4270833333333333,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 19,
-        "character": "L",
-        "tile": 332,
-        "expected": 332
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 19,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 19,
-        "character": "L",
-        "tile": 332,
-        "mean_channel_delta": 0.390625,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 20,
+        "x": 22,
         "character": " ",
         "tile": 288,
         "expected": 288
@@ -25370,7 +25446,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 20,
+        "x": 22,
         "actual": 0,
         "expected": 0
       }
@@ -25405,7 +25481,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 20,
+        "x": 22,
         "character": " ",
         "tile": 288,
         "mean_channel_delta": 0.3333333333333333,
@@ -25420,10 +25496,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 21,
-        "character": "1",
-        "tile": 305,
-        "expected": 305
+        "x": 23,
+        "character": "W",
+        "tile": 343,
+        "expected": 343
       }
     },
     {
@@ -25432,7 +25508,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 21,
+        "x": 23,
         "actual": 0,
         "expected": 0
       }
@@ -25467,10 +25543,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 21,
-        "character": "1",
-        "tile": 305,
-        "mean_channel_delta": 0.3854166666666667,
+        "x": 23,
+        "character": "W",
+        "tile": 343,
+        "mean_channel_delta": 0.4270833333333333,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -25482,24 +25558,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 22,
-        "character": "V",
-        "tile": 342,
-        "expected": 342
-      }
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "opaque glyph tile has no transparent palette-zero pixels",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "tile": 342,
-        "min_palette_index": 1
+        "x": 24,
+        "character": "I",
+        "tile": 329,
+        "expected": 329
       }
     },
     {
@@ -25508,7 +25570,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 22,
+        "x": 24,
         "actual": 0,
         "expected": 0
       }
@@ -25543,10 +25605,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 22,
-        "character": "V",
-        "tile": 342,
-        "mean_channel_delta": 0.4010416666666667,
+        "x": 24,
+        "character": "I",
+        "tile": 329,
+        "mean_channel_delta": 0.390625,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -25558,10 +25620,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 23,
-        "character": "1",
-        "tile": 305,
-        "expected": 305
+        "x": 25,
+        "character": "N",
+        "tile": 334,
+        "expected": 334
       }
     },
     {
@@ -25570,7 +25632,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 23,
+        "x": 25,
         "actual": 0,
         "expected": 0
       }
@@ -25605,10 +25667,72 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 23,
-        "character": "1",
-        "tile": 305,
-        "mean_channel_delta": 0.3854166666666667,
+        "x": 25,
+        "character": "N",
+        "tile": 334,
+        "mean_channel_delta": 0.421875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 26,
+        "character": "S",
+        "tile": 339,
+        "expected": 339
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 26,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 26,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.4114583333333333,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -26444,20 +26568,6 @@
         "character": "Y",
         "tile": 345,
         "expected": 345
-      }
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "opaque glyph tile has no transparent palette-zero pixels",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "tile": 345,
-        "min_palette_index": 1
       }
     },
     {
@@ -29295,6 +29405,812 @@
       }
     },
     {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 9,
+        "character": "E",
+        "tile": 325,
+        "expected": 325
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 9,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 9,
+        "character": "E",
+        "tile": 325,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 10,
+        "character": "I",
+        "tile": 329,
+        "expected": 329
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 10,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 10,
+        "character": "I",
+        "tile": 329,
+        "mean_channel_delta": 0.390625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 11,
+        "character": "T",
+        "tile": 340,
+        "expected": 340
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 11,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 11,
+        "character": "T",
+        "tile": 340,
+        "mean_channel_delta": 0.390625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 12,
+        "character": "H",
+        "tile": 328,
+        "expected": 328
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 12,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 12,
+        "character": "H",
+        "tile": 328,
+        "mean_channel_delta": 0.421875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 13,
+        "character": "E",
+        "tile": 325,
+        "expected": 325
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 13,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 13,
+        "character": "E",
+        "tile": 325,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 14,
+        "character": "R",
+        "tile": 338,
+        "expected": 338
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 14,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 14,
+        "character": "R",
+        "tile": 338,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 15,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 15,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 15,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.3333333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 16,
+        "character": "P",
+        "tile": 336,
+        "expected": 336
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 16,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 16,
+        "character": "P",
+        "tile": 336,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 17,
+        "character": "L",
+        "tile": 332,
+        "expected": 332
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 17,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 17,
+        "character": "L",
+        "tile": 332,
+        "mean_channel_delta": 0.390625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 18,
+        "character": "A",
+        "tile": 321,
+        "expected": 321
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 18,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 18,
+        "character": "A",
+        "tile": 321,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 19,
+        "character": "Y",
+        "tile": 345,
+        "expected": 345
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 19,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 19,
+        "character": "Y",
+        "tile": 345,
+        "mean_channel_delta": 0.3854166666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 20,
+        "character": "E",
+        "tile": 325,
+        "expected": 325
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 20,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 20,
+        "character": "E",
+        "tile": 325,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 21,
+        "character": "R",
+        "tile": 338,
+        "expected": 338
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 21,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 21,
+        "character": "R",
+        "tile": 338,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
       "check": "native large portrait asset exists",
       "passed": true,
       "details": {
@@ -29415,7 +30331,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 2074,
+        "frame": 2073,
         "mode": 1,
         "hp1": 128,
         "hp2": 128,
@@ -29535,7 +30451,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 170,
+        "frame": 169,
         "mode": 1,
         "hp1": 85,
         "hp2": 85,
@@ -29845,7 +30761,7 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 2004,
+        "frame": 2003,
         "mode": 1,
         "hp1": 0,
         "hp2": 128,
@@ -29965,7 +30881,7 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 2004,
+        "frame": 2003,
         "mode": 1,
         "hp1": 0,
         "hp2": 128,
@@ -31361,6 +32277,606 @@
         "label": "result card",
         "row": 11,
         "x": 15,
+        "character": "P",
+        "tile": 336,
+        "expected": 336
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 15,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 15,
+        "character": "P",
+        "tile": 336,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 16,
+        "character": "L",
+        "tile": 332,
+        "expected": 332
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 16,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 16,
+        "character": "L",
+        "tile": 332,
+        "mean_channel_delta": 0.390625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 17,
+        "character": "A",
+        "tile": 321,
+        "expected": 321
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 17,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 17,
+        "character": "A",
+        "tile": 321,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 18,
+        "character": "Y",
+        "tile": 345,
+        "expected": 345
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "tile": 345,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 18,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 18,
+        "character": "Y",
+        "tile": 345,
+        "mean_channel_delta": 0.3854166666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 19,
+        "character": "E",
+        "tile": 325,
+        "expected": 325
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 19,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 19,
+        "character": "E",
+        "tile": 325,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 20,
+        "character": "R",
+        "tile": 338,
+        "expected": 338
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "tile": 338,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 20,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 20,
+        "character": "R",
+        "tile": 338,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 21,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 21,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 21,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.3333333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 22,
+        "character": "2",
+        "tile": 306,
+        "expected": 306
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "tile": 306,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 22,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 22,
+        "character": "2",
+        "tile": 306,
+        "mean_channel_delta": 0.40625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 23,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 23,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 23,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.3333333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 11,
+        "x": 24,
         "character": "W",
         "tile": 343,
         "expected": 343
@@ -31386,7 +32902,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 15,
+        "x": 24,
         "actual": 0,
         "expected": 0
       }
@@ -31421,7 +32937,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 15,
+        "x": 24,
         "character": "W",
         "tile": 343,
         "mean_channel_delta": 0.4270833333333333,
@@ -31436,7 +32952,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 16,
+        "x": 25,
         "character": "I",
         "tile": 329,
         "expected": 329
@@ -31448,7 +32964,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 16,
+        "x": 25,
         "actual": 0,
         "expected": 0
       }
@@ -31483,7 +32999,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 16,
+        "x": 25,
         "character": "I",
         "tile": 329,
         "mean_channel_delta": 0.390625,
@@ -31498,7 +33014,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 17,
+        "x": 26,
         "character": "N",
         "tile": 334,
         "expected": 334
@@ -31524,7 +33040,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 17,
+        "x": 26,
         "actual": 0,
         "expected": 0
       }
@@ -31559,7 +33075,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 17,
+        "x": 26,
         "character": "N",
         "tile": 334,
         "mean_channel_delta": 0.421875,
@@ -31574,7 +33090,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 18,
+        "x": 27,
         "character": "S",
         "tile": 339,
         "expected": 339
@@ -31600,7 +33116,7 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 18,
+        "x": 27,
         "actual": 0,
         "expected": 0
       }
@@ -31635,630 +33151,10 @@
       "details": {
         "label": "result card",
         "row": 11,
-        "x": 18,
+        "x": 27,
         "character": "S",
         "tile": 339,
         "mean_channel_delta": 0.4114583333333333,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 19,
-        "character": " ",
-        "tile": 288,
-        "expected": 288
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 19,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 19,
-        "character": " ",
-        "tile": 288,
-        "mean_channel_delta": 0.3333333333333333,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 20,
-        "character": "T",
-        "tile": 340,
-        "expected": 340
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 20,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 20,
-        "character": "T",
-        "tile": 340,
-        "mean_channel_delta": 0.390625,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 21,
-        "character": "H",
-        "tile": 328,
-        "expected": 328
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 21,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 21,
-        "character": "H",
-        "tile": 328,
-        "mean_channel_delta": 0.421875,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 22,
-        "character": "E",
-        "tile": 325,
-        "expected": 325
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 22,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 22,
-        "character": "E",
-        "tile": 325,
-        "mean_channel_delta": 0.4270833333333333,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 23,
-        "character": " ",
-        "tile": 288,
-        "expected": 288
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 23,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 23,
-        "character": " ",
-        "tile": 288,
-        "mean_channel_delta": 0.3333333333333333,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 24,
-        "character": "M",
-        "tile": 333,
-        "expected": 333
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 24,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 24,
-        "character": "M",
-        "tile": 333,
-        "mean_channel_delta": 0.4270833333333333,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 25,
-        "character": "A",
-        "tile": 321,
-        "expected": 321
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 25,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 25,
-        "character": "A",
-        "tile": 321,
-        "mean_channel_delta": 0.4270833333333333,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 26,
-        "character": "T",
-        "tile": 340,
-        "expected": 340
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 26,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 26,
-        "character": "T",
-        "tile": 340,
-        "mean_channel_delta": 0.390625,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 27,
-        "character": "C",
-        "tile": 323,
-        "expected": 323
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 27,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 27,
-        "character": "C",
-        "tile": 323,
-        "mean_channel_delta": 0.4010416666666667,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 28,
-        "character": "H",
-        "tile": 328,
-        "expected": 328
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 28,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 11,
-        "x": 28,
-        "character": "H",
-        "tile": 328,
-        "mean_channel_delta": 0.421875,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -32274,20 +33170,6 @@
         "character": "R",
         "tile": 338,
         "expected": 338
-      }
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "opaque glyph tile has no transparent palette-zero pixels",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "tile": 338,
-        "min_palette_index": 1
       }
     },
     {
@@ -33477,20 +34359,6 @@
       }
     },
     {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "opaque glyph tile has no transparent palette-zero pixels",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "tile": 306,
-        "min_palette_index": 1
-      }
-    },
-    {
       "check": "native HUD/result glyph uses its intended palette",
       "passed": true,
       "details": {
@@ -33795,9 +34663,9 @@
         "label": "result card",
         "row": 17,
         "x": 15,
-        "character": "L",
-        "tile": 332,
-        "expected": 332
+        "character": "S",
+        "tile": 339,
+        "expected": 339
       }
     },
     {
@@ -33842,9 +34710,9 @@
         "label": "result card",
         "row": 17,
         "x": 15,
-        "character": "L",
-        "tile": 332,
-        "mean_channel_delta": 0.390625,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.4114583333333333,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -33857,9 +34725,9 @@
         "label": "result card",
         "row": 17,
         "x": 16,
-        "character": "O",
-        "tile": 335,
-        "expected": 335
+        "character": "E",
+        "tile": 325,
+        "expected": 325
       }
     },
     {
@@ -33904,6 +34772,254 @@
         "label": "result card",
         "row": 17,
         "x": 16,
+        "character": "E",
+        "tile": 325,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 17,
+        "character": "S",
+        "tile": 339,
+        "expected": 339
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 17,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 17,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 18,
+        "character": "S",
+        "tile": 339,
+        "expected": 339
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 18,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 18,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 19,
+        "character": "I",
+        "tile": 329,
+        "expected": 329
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 19,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 19,
+        "character": "I",
+        "tile": 329,
+        "mean_channel_delta": 0.390625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 20,
+        "character": "O",
+        "tile": 335,
+        "expected": 335
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 20,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 20,
         "character": "O",
         "tile": 335,
         "mean_channel_delta": 0.4166666666666667,
@@ -33918,10 +35034,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 17,
-        "character": "C",
-        "tile": 323,
-        "expected": 323
+        "x": 21,
+        "character": "N",
+        "tile": 334,
+        "expected": 334
       }
     },
     {
@@ -33930,7 +35046,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 17,
+        "x": 21,
         "actual": 0,
         "expected": 0
       }
@@ -33965,10 +35081,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 17,
-        "character": "C",
-        "tile": 323,
-        "mean_channel_delta": 0.4010416666666667,
+        "x": 21,
+        "character": "N",
+        "tile": 334,
+        "mean_channel_delta": 0.421875,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -33980,131 +35096,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 18,
-        "character": "A",
-        "tile": 321,
-        "expected": 321
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 18,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 18,
-        "character": "A",
-        "tile": 321,
-        "mean_channel_delta": 0.4270833333333333,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 19,
-        "character": "L",
-        "tile": 332,
-        "expected": 332
-      }
-    },
-    {
-      "check": "native HUD/result glyph uses its intended palette",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 19,
-        "actual": 0,
-        "expected": 0
-      }
-    },
-    {
-      "check": "UI palette contains the first 16 colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "UI 4bpp tile has 32 native bytes",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          8,
-          8
-        ],
-        "expected": [
-          8,
-          8
-        ]
-      }
-    },
-    {
-      "check": "opaque UI glyph composes over the panel without stage bleed",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 19,
-        "character": "L",
-        "tile": 332,
-        "mean_channel_delta": 0.390625,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 64
-      }
-    },
-    {
-      "check": "combat/result text uses opaque glyph bank 256..383",
-      "passed": true,
-      "details": {
-        "label": "result card",
-        "row": 17,
-        "x": 20,
+        "x": 22,
         "character": " ",
         "tile": 288,
         "expected": 288
@@ -34116,7 +35108,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 20,
+        "x": 22,
         "actual": 0,
         "expected": 0
       }
@@ -34151,7 +35143,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 20,
+        "x": 22,
         "character": " ",
         "tile": 288,
         "mean_channel_delta": 0.3333333333333333,
@@ -34166,10 +35158,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 21,
-        "character": "1",
-        "tile": 305,
-        "expected": 305
+        "x": 23,
+        "character": "W",
+        "tile": 343,
+        "expected": 343
       }
     },
     {
@@ -34178,7 +35170,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 21,
+        "x": 23,
         "actual": 0,
         "expected": 0
       }
@@ -34213,10 +35205,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 21,
-        "character": "1",
-        "tile": 305,
-        "mean_channel_delta": 0.3854166666666667,
+        "x": 23,
+        "character": "W",
+        "tile": 343,
+        "mean_channel_delta": 0.4270833333333333,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -34228,10 +35220,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 22,
-        "character": "V",
-        "tile": 342,
-        "expected": 342
+        "x": 24,
+        "character": "I",
+        "tile": 329,
+        "expected": 329
       }
     },
     {
@@ -34240,7 +35232,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 22,
+        "x": 24,
         "actual": 0,
         "expected": 0
       }
@@ -34275,10 +35267,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 22,
-        "character": "V",
-        "tile": 342,
-        "mean_channel_delta": 0.4010416666666667,
+        "x": 24,
+        "character": "I",
+        "tile": 329,
+        "mean_channel_delta": 0.390625,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -34290,10 +35282,10 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 23,
-        "character": "1",
-        "tile": 305,
-        "expected": 305
+        "x": 25,
+        "character": "N",
+        "tile": 334,
+        "expected": 334
       }
     },
     {
@@ -34302,7 +35294,7 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 23,
+        "x": 25,
         "actual": 0,
         "expected": 0
       }
@@ -34337,10 +35329,72 @@
       "details": {
         "label": "result card",
         "row": 17,
-        "x": 23,
-        "character": "1",
-        "tile": 305,
-        "mean_channel_delta": 0.3854166666666667,
+        "x": 25,
+        "character": "N",
+        "tile": 334,
+        "mean_channel_delta": 0.421875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 26,
+        "character": "S",
+        "tile": 339,
+        "expected": 339
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 26,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 17,
+        "x": 26,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.4114583333333333,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -37951,6 +39005,812 @@
       }
     },
     {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 9,
+        "character": "E",
+        "tile": 325,
+        "expected": 325
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 9,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 9,
+        "character": "E",
+        "tile": 325,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 10,
+        "character": "I",
+        "tile": 329,
+        "expected": 329
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 10,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 10,
+        "character": "I",
+        "tile": 329,
+        "mean_channel_delta": 0.390625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 11,
+        "character": "T",
+        "tile": 340,
+        "expected": 340
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 11,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 11,
+        "character": "T",
+        "tile": 340,
+        "mean_channel_delta": 0.390625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 12,
+        "character": "H",
+        "tile": 328,
+        "expected": 328
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 12,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 12,
+        "character": "H",
+        "tile": 328,
+        "mean_channel_delta": 0.421875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 13,
+        "character": "E",
+        "tile": 325,
+        "expected": 325
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 13,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 13,
+        "character": "E",
+        "tile": 325,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 14,
+        "character": "R",
+        "tile": 338,
+        "expected": 338
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 14,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 14,
+        "character": "R",
+        "tile": 338,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 15,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 15,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 15,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.3333333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 16,
+        "character": "P",
+        "tile": 336,
+        "expected": 336
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 16,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 16,
+        "character": "P",
+        "tile": 336,
+        "mean_channel_delta": 0.4114583333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 17,
+        "character": "L",
+        "tile": 332,
+        "expected": 332
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 17,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 17,
+        "character": "L",
+        "tile": 332,
+        "mean_channel_delta": 0.390625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 18,
+        "character": "A",
+        "tile": 321,
+        "expected": 321
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 18,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 18,
+        "character": "A",
+        "tile": 321,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 19,
+        "character": "Y",
+        "tile": 345,
+        "expected": 345
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 19,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 19,
+        "character": "Y",
+        "tile": 345,
+        "mean_channel_delta": 0.3854166666666667,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 20,
+        "character": "E",
+        "tile": 325,
+        "expected": 325
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 20,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 20,
+        "character": "E",
+        "tile": 325,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 21,
+        "character": "R",
+        "tile": 338,
+        "expected": 338
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 21,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "result card",
+        "row": 23,
+        "x": 21,
+        "character": "R",
+        "tile": 338,
+        "mean_channel_delta": 0.4270833333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
       "check": "native large portrait asset exists",
       "passed": true,
       "details": {
@@ -38071,7 +39931,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 2034,
+        "frame": 2033,
         "mode": 1,
         "hp1": 128,
         "hp2": 128,
@@ -38191,7 +40051,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 170,
+        "frame": 169,
         "mode": 1,
         "hp1": 85,
         "hp2": 85,
@@ -38501,7 +40361,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 6259,
+        "frame": 6258,
         "mode": 1,
         "hp1": 128,
         "hp2": 128,
@@ -39929,9 +41789,9 @@
         "la-oficina": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\arena-2.png"
       },
       "arena_digests": [
-        "7f807842d29b810c21394813782c0c14753d3f0cbfd8f4c223147b7c2d9e37b6",
-        "93355736eb4c52e0f1d0a05ebe416b93737ed33e2ce07bc7bd9ecb53494c419d",
-        "9b4fb8bef514a3b183e46ca1498f640b9c6841c67881e1e098565d82e2f8d78d"
+        "367d7dda7effe58fc8878552c18a5d6b579594026afd5aef2db858c21402534c",
+        "30936fce7a3bb9d771d446e2a4c246dce81a36a327652a6d1f40b371f6e2d9aa",
+        "0fa14ba549b89c37f841886605851edec6872311e922fdd91ee95cfa4bdfccae"
       ],
       "arena_renders": {
         "las-condes": {
@@ -39949,12 +41809,12 @@
             94
           ],
           "thumbnail_delta": {
-            "mean_channel_delta": 2.996363412228797,
+            "mean_channel_delta": 2.7160379684418148,
             "max_channel_delta": 7,
             "pixels_over_16": 0,
             "pixels": 5408
           },
-          "mean_channel_delta": 2.292493386243386,
+          "mean_channel_delta": 2.0531856261022927,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 12096
@@ -39974,12 +41834,12 @@
             150
           ],
           "thumbnail_delta": {
-            "mean_channel_delta": 2.9228920118343193,
+            "mean_channel_delta": 2.4530325443786984,
             "max_channel_delta": 7,
             "pixels_over_16": 0,
             "pixels": 5408
           },
-          "mean_channel_delta": 2.2426697530864197,
+          "mean_channel_delta": 1.9672343474426808,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 12096
@@ -39999,12 +41859,12 @@
             206
           ],
           "thumbnail_delta": {
-            "mean_channel_delta": 2.826060157790927,
+            "mean_channel_delta": 2.8373397435897436,
             "max_channel_delta": 7,
             "pixels_over_16": 0,
             "pixels": 5408
           },
-          "mean_channel_delta": 2.2026289682539684,
+          "mean_channel_delta": 2.1103670634920637,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 12096
@@ -40026,7 +41886,7 @@
         "state": {
           "magic": 43706,
           "screen": 1,
-          "frame": 306,
+          "frame": 305,
           "mode": 2,
           "hp1": 85,
           "hp2": 85,
@@ -40158,7 +42018,7 @@
         "state": {
           "magic": 43706,
           "screen": 1,
-          "frame": 331,
+          "frame": 330,
           "mode": 2,
           "hp1": 85,
           "hp2": 85,
@@ -40344,7 +42204,7 @@
       ],
       "opaque_text": {
         "label": "result card",
-        "tiles": 28,
+        "tiles": 27,
         "cells": [
           {
             "row": 5,
@@ -40549,9 +42409,9 @@
           {
             "row": 11,
             "x": 15,
-            "character": "W",
-            "tile": 343,
-            "mean_channel_delta": 0.4270833333333333,
+            "character": "P",
+            "tile": 336,
+            "mean_channel_delta": 0.4114583333333333,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
@@ -40559,8 +42419,8 @@
           {
             "row": 11,
             "x": 16,
-            "character": "I",
-            "tile": 329,
+            "character": "L",
+            "tile": 332,
             "mean_channel_delta": 0.390625,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
@@ -40569,9 +42429,9 @@
           {
             "row": 11,
             "x": 17,
-            "character": "N",
-            "tile": 334,
-            "mean_channel_delta": 0.421875,
+            "character": "A",
+            "tile": 321,
+            "mean_channel_delta": 0.4270833333333333,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
@@ -40579,9 +42439,9 @@
           {
             "row": 11,
             "x": 18,
-            "character": "S",
-            "tile": 339,
-            "mean_channel_delta": 0.4114583333333333,
+            "character": "Y",
+            "tile": 345,
+            "mean_channel_delta": 0.3854166666666667,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
@@ -40589,6 +42449,26 @@
           {
             "row": 11,
             "x": 19,
+            "character": "E",
+            "tile": 325,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 11,
+            "x": 20,
+            "character": "R",
+            "tile": 338,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 11,
+            "x": 21,
             "character": " ",
             "tile": 288,
             "mean_channel_delta": 0.3333333333333333,
@@ -40598,30 +42478,10 @@
           },
           {
             "row": 11,
-            "x": 20,
-            "character": "T",
-            "tile": 340,
-            "mean_channel_delta": 0.390625,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 11,
-            "x": 21,
-            "character": "H",
-            "tile": 328,
-            "mean_channel_delta": 0.421875,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 11,
             "x": 22,
-            "character": "E",
-            "tile": 325,
-            "mean_channel_delta": 0.4270833333333333,
+            "character": "1",
+            "tile": 305,
+            "mean_channel_delta": 0.3854166666666667,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
@@ -40639,8 +42499,8 @@
           {
             "row": 11,
             "x": 24,
-            "character": "M",
-            "tile": 333,
+            "character": "W",
+            "tile": 343,
             "mean_channel_delta": 0.4270833333333333,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
@@ -40649,18 +42509,8 @@
           {
             "row": 11,
             "x": 25,
-            "character": "A",
-            "tile": 321,
-            "mean_channel_delta": 0.4270833333333333,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 11,
-            "x": 26,
-            "character": "T",
-            "tile": 340,
+            "character": "I",
+            "tile": 329,
             "mean_channel_delta": 0.390625,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
@@ -40668,20 +42518,20 @@
           },
           {
             "row": 11,
-            "x": 27,
-            "character": "C",
-            "tile": 323,
-            "mean_channel_delta": 0.4010416666666667,
+            "x": 26,
+            "character": "N",
+            "tile": 334,
+            "mean_channel_delta": 0.421875,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
           },
           {
             "row": 11,
-            "x": 28,
-            "character": "H",
-            "tile": 328,
-            "mean_channel_delta": 0.421875,
+            "x": 27,
+            "character": "S",
+            "tile": 339,
+            "mean_channel_delta": 0.4114583333333333,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
@@ -40919,9 +42769,9 @@
           {
             "row": 17,
             "x": 15,
-            "character": "L",
-            "tile": 332,
-            "mean_channel_delta": 0.390625,
+            "character": "S",
+            "tile": 339,
+            "mean_channel_delta": 0.4114583333333333,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
@@ -40929,6 +42779,46 @@
           {
             "row": 17,
             "x": 16,
+            "character": "E",
+            "tile": 325,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 17,
+            "character": "S",
+            "tile": 339,
+            "mean_channel_delta": 0.4114583333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 18,
+            "character": "S",
+            "tile": 339,
+            "mean_channel_delta": 0.4114583333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 19,
+            "character": "I",
+            "tile": 329,
+            "mean_channel_delta": 0.390625,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 20,
             "character": "O",
             "tile": 335,
             "mean_channel_delta": 0.4166666666666667,
@@ -40938,37 +42828,17 @@
           },
           {
             "row": 17,
-            "x": 17,
-            "character": "C",
-            "tile": 323,
-            "mean_channel_delta": 0.4010416666666667,
+            "x": 21,
+            "character": "N",
+            "tile": 334,
+            "mean_channel_delta": 0.421875,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
           },
           {
             "row": 17,
-            "x": 18,
-            "character": "A",
-            "tile": 321,
-            "mean_channel_delta": 0.4270833333333333,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 17,
-            "x": 19,
-            "character": "L",
-            "tile": 332,
-            "mean_channel_delta": 0.390625,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 17,
-            "x": 20,
+            "x": 22,
             "character": " ",
             "tile": 288,
             "mean_channel_delta": 0.3333333333333333,
@@ -40978,30 +42848,40 @@
           },
           {
             "row": 17,
-            "x": 21,
-            "character": "1",
-            "tile": 305,
-            "mean_channel_delta": 0.3854166666666667,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 17,
-            "x": 22,
-            "character": "V",
-            "tile": 342,
-            "mean_channel_delta": 0.4010416666666667,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 17,
             "x": 23,
-            "character": "1",
-            "tile": 305,
-            "mean_channel_delta": 0.3854166666666667,
+            "character": "W",
+            "tile": 343,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 24,
+            "character": "I",
+            "tile": 329,
+            "mean_channel_delta": 0.390625,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 25,
+            "character": "N",
+            "tile": 334,
+            "mean_channel_delta": 0.421875,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 26,
+            "character": "S",
+            "tile": 339,
+            "mean_channel_delta": 0.4114583333333333,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
@@ -41585,6 +43465,136 @@
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 9,
+            "character": "E",
+            "tile": 325,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 10,
+            "character": "I",
+            "tile": 329,
+            "mean_channel_delta": 0.390625,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 11,
+            "character": "T",
+            "tile": 340,
+            "mean_channel_delta": 0.390625,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 12,
+            "character": "H",
+            "tile": 328,
+            "mean_channel_delta": 0.421875,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 13,
+            "character": "E",
+            "tile": 325,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 14,
+            "character": "R",
+            "tile": 338,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 15,
+            "character": " ",
+            "tile": 288,
+            "mean_channel_delta": 0.3333333333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 16,
+            "character": "P",
+            "tile": 336,
+            "mean_channel_delta": 0.4114583333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 17,
+            "character": "L",
+            "tile": 332,
+            "mean_channel_delta": 0.390625,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 18,
+            "character": "A",
+            "tile": 321,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 19,
+            "character": "Y",
+            "tile": 345,
+            "mean_channel_delta": 0.3854166666666667,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 20,
+            "character": "E",
+            "tile": 325,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 21,
+            "character": "R",
+            "tile": 338,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
           }
         ]
       },
@@ -41642,7 +43652,7 @@
       ],
       "opaque_text": {
         "label": "result card",
-        "tiles": 27,
+        "tiles": 28,
         "cells": [
           {
             "row": 5,
@@ -41817,9 +43827,9 @@
           {
             "row": 11,
             "x": 15,
-            "character": "W",
-            "tile": 343,
-            "mean_channel_delta": 0.4270833333333333,
+            "character": "P",
+            "tile": 336,
+            "mean_channel_delta": 0.4114583333333333,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
@@ -41827,8 +43837,8 @@
           {
             "row": 11,
             "x": 16,
-            "character": "I",
-            "tile": 329,
+            "character": "L",
+            "tile": 332,
             "mean_channel_delta": 0.390625,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
@@ -41837,9 +43847,9 @@
           {
             "row": 11,
             "x": 17,
-            "character": "N",
-            "tile": 334,
-            "mean_channel_delta": 0.421875,
+            "character": "A",
+            "tile": 321,
+            "mean_channel_delta": 0.4270833333333333,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
@@ -41847,9 +43857,9 @@
           {
             "row": 11,
             "x": 18,
-            "character": "S",
-            "tile": 339,
-            "mean_channel_delta": 0.4114583333333333,
+            "character": "Y",
+            "tile": 345,
+            "mean_channel_delta": 0.3854166666666667,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
@@ -41857,6 +43867,26 @@
           {
             "row": 11,
             "x": 19,
+            "character": "E",
+            "tile": 325,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 11,
+            "x": 20,
+            "character": "R",
+            "tile": 338,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 11,
+            "x": 21,
             "character": " ",
             "tile": 288,
             "mean_channel_delta": 0.3333333333333333,
@@ -41866,30 +43896,10 @@
           },
           {
             "row": 11,
-            "x": 20,
-            "character": "T",
-            "tile": 340,
-            "mean_channel_delta": 0.390625,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 11,
-            "x": 21,
-            "character": "H",
-            "tile": 328,
-            "mean_channel_delta": 0.421875,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 11,
             "x": 22,
-            "character": "E",
-            "tile": 325,
-            "mean_channel_delta": 0.4270833333333333,
+            "character": "2",
+            "tile": 306,
+            "mean_channel_delta": 0.40625,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
@@ -41907,8 +43917,8 @@
           {
             "row": 11,
             "x": 24,
-            "character": "M",
-            "tile": 333,
+            "character": "W",
+            "tile": 343,
             "mean_channel_delta": 0.4270833333333333,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
@@ -41917,18 +43927,8 @@
           {
             "row": 11,
             "x": 25,
-            "character": "A",
-            "tile": 321,
-            "mean_channel_delta": 0.4270833333333333,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 11,
-            "x": 26,
-            "character": "T",
-            "tile": 340,
+            "character": "I",
+            "tile": 329,
             "mean_channel_delta": 0.390625,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
@@ -41936,20 +43936,20 @@
           },
           {
             "row": 11,
-            "x": 27,
-            "character": "C",
-            "tile": 323,
-            "mean_channel_delta": 0.4010416666666667,
+            "x": 26,
+            "character": "N",
+            "tile": 334,
+            "mean_channel_delta": 0.421875,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
           },
           {
             "row": 11,
-            "x": 28,
-            "character": "H",
-            "tile": 328,
-            "mean_channel_delta": 0.421875,
+            "x": 27,
+            "character": "S",
+            "tile": 339,
+            "mean_channel_delta": 0.4114583333333333,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
@@ -42187,9 +44187,9 @@
           {
             "row": 17,
             "x": 15,
-            "character": "L",
-            "tile": 332,
-            "mean_channel_delta": 0.390625,
+            "character": "S",
+            "tile": 339,
+            "mean_channel_delta": 0.4114583333333333,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
@@ -42197,6 +44197,46 @@
           {
             "row": 17,
             "x": 16,
+            "character": "E",
+            "tile": 325,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 17,
+            "character": "S",
+            "tile": 339,
+            "mean_channel_delta": 0.4114583333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 18,
+            "character": "S",
+            "tile": 339,
+            "mean_channel_delta": 0.4114583333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 19,
+            "character": "I",
+            "tile": 329,
+            "mean_channel_delta": 0.390625,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 20,
             "character": "O",
             "tile": 335,
             "mean_channel_delta": 0.4166666666666667,
@@ -42206,37 +44246,17 @@
           },
           {
             "row": 17,
-            "x": 17,
-            "character": "C",
-            "tile": 323,
-            "mean_channel_delta": 0.4010416666666667,
+            "x": 21,
+            "character": "N",
+            "tile": 334,
+            "mean_channel_delta": 0.421875,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
           },
           {
             "row": 17,
-            "x": 18,
-            "character": "A",
-            "tile": 321,
-            "mean_channel_delta": 0.4270833333333333,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 17,
-            "x": 19,
-            "character": "L",
-            "tile": 332,
-            "mean_channel_delta": 0.390625,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 17,
-            "x": 20,
+            "x": 22,
             "character": " ",
             "tile": 288,
             "mean_channel_delta": 0.3333333333333333,
@@ -42246,30 +44266,40 @@
           },
           {
             "row": 17,
-            "x": 21,
-            "character": "1",
-            "tile": 305,
-            "mean_channel_delta": 0.3854166666666667,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 17,
-            "x": 22,
-            "character": "V",
-            "tile": 342,
-            "mean_channel_delta": 0.4010416666666667,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 64
-          },
-          {
-            "row": 17,
             "x": 23,
-            "character": "1",
-            "tile": 305,
-            "mean_channel_delta": 0.3854166666666667,
+            "character": "W",
+            "tile": 343,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 24,
+            "character": "I",
+            "tile": 329,
+            "mean_channel_delta": 0.390625,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 25,
+            "character": "N",
+            "tile": 334,
+            "mean_channel_delta": 0.421875,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 17,
+            "x": 26,
+            "character": "S",
+            "tile": 339,
+            "mean_channel_delta": 0.4114583333333333,
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
@@ -42843,6 +44873,136 @@
             "max_channel_delta": 1,
             "pixels_over_16": 0,
             "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 9,
+            "character": "E",
+            "tile": 325,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 10,
+            "character": "I",
+            "tile": 329,
+            "mean_channel_delta": 0.390625,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 11,
+            "character": "T",
+            "tile": 340,
+            "mean_channel_delta": 0.390625,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 12,
+            "character": "H",
+            "tile": 328,
+            "mean_channel_delta": 0.421875,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 13,
+            "character": "E",
+            "tile": 325,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 14,
+            "character": "R",
+            "tile": 338,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 15,
+            "character": " ",
+            "tile": 288,
+            "mean_channel_delta": 0.3333333333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 16,
+            "character": "P",
+            "tile": 336,
+            "mean_channel_delta": 0.4114583333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 17,
+            "character": "L",
+            "tile": 332,
+            "mean_channel_delta": 0.390625,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 18,
+            "character": "A",
+            "tile": 321,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 19,
+            "character": "Y",
+            "tile": 345,
+            "mean_channel_delta": 0.3854166666666667,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 20,
+            "character": "E",
+            "tile": 325,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
+          },
+          {
+            "row": 23,
+            "x": 21,
+            "character": "R",
+            "tile": 338,
+            "mean_channel_delta": 0.4270833333333333,
+            "max_channel_delta": 1,
+            "pixels_over_16": 0,
+            "pixels": 64
           }
         ]
       },
@@ -42865,7 +45025,7 @@
       "state": {
         "magic": 43706,
         "screen": 3,
-        "frame": 6259,
+        "frame": 6258,
         "mode": 1,
         "hp1": 128,
         "hp2": 128,
@@ -44166,6 +46326,6 @@
     ],
     "frame_count": 64
   },
-  "passed": 3728,
-  "elapsed_seconds": 11.03
+  "passed": 3908,
+  "elapsed_seconds": 11.31
 }

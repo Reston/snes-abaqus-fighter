@@ -1,4 +1,29 @@
-# v0.21.0 human playtest guide
+# Human playtest guide
+
+## Current v0.26 polish candidate
+
+<!-- candidate-version: 0.26.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b; source-freeze: c89239901491a239e10194f1399820527b0ebf74 -->
+
+All six native suites pass **49,689 checks**, with focused full-roster,
+independent-core and fresh-build verification. Human playtest remains pending.
+Use [the current five-step route](RELEASE-v0.26.0.md#a-short-playtest),
+[native comparisons](REVIEW-v0.26.0.html) and [controls](PLAYER-GUIDE.md).
+Read V0.26.0 on the title. Main remains approved v0.24.0; both candidate PRs
+remain unmerged.
+
+Start with fight rhythm, visible recoil and detailed floors. Then check local
+mirror winners/rematches, real Training confirms and late blocks, P2 practice,
+retained best combos, comfort settings and Arcade next/retry opponents.
+Include the fighter pair, stage, port, command and repeatable observation in
+[review-feedback.json](review-feedback.json). Automated proof does not record
+a human approval.
+
+## Historical v0.21.0 route
+
+The version, hash and instructions in the following archived section describe
+v0.21.0. Its automated-Training-only P2 restriction predates v0.26's explicit
+manual partner. Use the current guide above for new feedback.
+
 <!-- candidate-version: 0.21.0; rom-sha256: aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205 -->
 
 Review cartridge SHA256 `aad68e7d0563df905e9136c0c7d26bac70b5fbaa1ab6c347e94e1208094ea205`.

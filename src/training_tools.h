@@ -7,12 +7,14 @@ extern const char trainingChallengeNames[3][22];
 void trainingReset(void);
 void trainingNewMatch(void);
 void trainingChooseChallenge(void);
+void trainingPrepareChallenge(void);
 void trainingCapture(u16 keys);
 void trainingStarted(u8 player,u8 action);
 void trainingContact(u8 attacker,u8 blocked,u8 low,u8 actualDamage);
 void trainingMoveContact(u8 action,u8 air,u8 rear,u8 outcome);
 void trainingObserve(void);
 void trainingMakeStatus(void);
+void trainingKeepBest(void);
 void trainingService(void);
 
 #endif
@@ -33,7 +35,7 @@ u8 trainingHistoryDirty=0,trainingHistoryBuild=0,trainingStatusDirty=0,trainingR
 char trainingHistoryText[33]={0},trainingStatusText[33]={0};
 const char trainingResultNames[4][6]={"READY","LINK!","DONE!","RETRY"};
 const char trainingChallengeNames[3][22]={
-    "NORMAL -> SPECIAL", "BLOCK A LOW ATTACK", "AIR KICK CROSS-UP"
+    "HIT CONFIRM", "BLOCK A LOW ATTACK", "AIR KICK CROSS-UP"
 };
 
 /* Contact-budget adapter for the two fixed victim indices in combat().
@@ -67,6 +69,8 @@ const char trainingChallengeNames[3][22]={
 
 void trainingReset(void) {
     u8 i;
+    /* A retry may arrive before the deferred footer publishes this combo. */
+    trainingKeepBest();
     for(i=0;i<5;i++){trainingHistory[i]=0;trainingHistorySnapshot[i]=0;}
     for(i=0;i<32;i++){trainingHistoryText[i]=' ';trainingStatusText[i]=' ';}
     trainingHistoryText[32]=0;trainingStatusText[32]=0;
@@ -81,11 +85,31 @@ void trainingReset(void) {
 }
 void trainingNewMatch(void) {
     trainingVisible=1;trainingChallenge=0;
+    trainingHits=0;trainingDamage=0;
+    stageDepthTable[4]=0;stageDepthTable[5]=0;stageDepthTable[6]=0;
     trainingReset();
+}
+
+void trainingKeepBest(void) {
+    u16 best=stageDepthTable[5]+((u16)stageDepthTable[6]<<8);
+    /* Record an earned chain. Prefer damage, then hits for ties. Formatting
+     * and this comparison run in the deferred UI/reset path, never contact.
+     * Three unused reserved bytes survive ordinary Select/X retries. */
+    if(trainingDamage<best)return;
+    if(trainingDamage==best && trainingHits<=stageDepthTable[4])return;
+    stageDepthTable[4]=trainingHits;stageDepthTable[5]=trainingDamage;
+    stageDepthTable[6]=trainingDamage>>8;
 }
 void trainingChooseChallenge(void) {
     trainingChallenge++;if(trainingChallenge>=3)trainingChallenge=0;
     trainingResult=0;trainingNormalLink=0;trainingStatusDirty=1;
+    trainingPrepareChallenge();
+}
+void trainingPrepareChallenge(void) {
+    /* A selected drill supplies recovery guard, CPU or Stand as appropriate.
+     * Difficulty remains the player's choice; PAUSED can override a partner. */
+    if(!trainingChallenge)trainingDummy=6;
+    else trainingDummy=trainingChallenge==1?4:0;
 }
 void trainingCapture(u16 keys) {
     keys&=KEY_UP|KEY_DOWN|KEY_LEFT|KEY_RIGHT|ATTACKS;
@@ -140,11 +164,17 @@ void trainingMoveContact(u8 action,u8 air,u8 rear,u8 outcome) {
     if(trainingResult==2)return;
     if(trainingChallenge==0) {
         if(outcome!=2)return;
-        if(action==7) {
-            if(trainingNormalLink && fighters[0].combo>1) {
+        if(trainingNormalLink && fighters[0].combo>1) {
+            if(action==3 || action==5) {
                 trainingResult=2;trainingNormalLink=0;trainingStatusDirty=1;
+                return;
             }
-        } else if(action && action<7) {
+            if(action==7) {
+                trainingResult=2;trainingNormalLink=0;trainingStatusDirty=1;
+                return;
+            }
+        }
+        if(action && action<7) {
             trainingNormalLink=1;trainingResult=1;trainingStatusDirty=1;
         }
     } else if(trainingChallenge==2 && action==5 && air) {
@@ -172,6 +202,7 @@ void trainingMakeStatus(void) {
     u16 value;
     u8 digit;
     const char *result=trainingResultNames[trainingResult];
+    trainingKeepBest();
     if(trainingChain) {
         trainingStatusText[0]='N';trainingStatusText[1]='O';
         trainingStatusText[2]='W';trainingStatusText[3]=' ';

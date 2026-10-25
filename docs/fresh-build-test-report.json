@@ -7,11 +7,11 @@
     "pre_extracted_tools_reused": false,
     "build_intermediates_reused": false
   },
-  "source_commit": "b41ce034ac12f6aa10740a0075feebd1f392d117",
-  "source_tree": "8f2fca25a9890870118746c1d534b4aad60ad54a",
-  "rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
-  "work_directory": "build/fresh-build/b41ce034-7rvfhrk_",
-  "source_archive_sha256": "5c97da490c90cef7e8e865985eb28c5a84ea0991fc6151788a1aa023cc1e9f47",
+  "source_commit": "c89239901491a239e10194f1399820527b0ebf74",
+  "source_tree": "5e867d2ceb43efb6b69c5558833118829b9801c3",
+  "rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
+  "work_directory": "build/fresh-build/c8923990-jj10l4iu",
+  "source_archive_sha256": "10a817e652e811e5555b3449423871374e6752926c8246388a83816f21ed44a9",
   "cached_archives_reused": [
     "snes9x.zip",
     "pvsneslib.zip",
@@ -26,7 +26,7 @@
     "sdk_tree_sha256": "0cd7a571b0a020394ead285b887c81b717c55c39540335abd8c7774b55bccb7b"
   },
   "build_exit_code": 0,
-  "build_log": "build/fresh-build/b41ce034-7rvfhrk_/build.log",
+  "build_log": "build/fresh-build/c8923990-jj10l4iu/build.log",
   "bootstrap_archives": [
     {
       "name": "snes9x.zip",
@@ -53,31 +53,31 @@
     "python": "3.12.10",
     "pillow": "13.0.0"
   },
-  "rebuilt_rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
+  "rebuilt_rom_sha256": "27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b",
   "generated_assets": [
     {
       "file": "assets/generated/arenas.png",
-      "sha256": "0d274f3a0305e5d3ee4afe97ed638676e1f0d82db6e252cf8095f1d0c55ed1bf",
+      "sha256": "48ec80249a9644d5a5cc6a3bcd8080d65390220a8e924b907865e21d0f8feca5",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/arenas_map.bin",
-      "sha256": "b003dfee17f146ab7bd9de55f4a5514cecf67bf9670e6dd5c32f7d1e67c030b1",
+      "sha256": "9010a24e220d2aab8c96209441f442718815bf0598589666166cad7068ab68bb",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/arenas_pal.bin",
-      "sha256": "356808fa913a03d4e42370d45f875843c86185dbb67b800af0d987efa38bca36",
+      "sha256": "481b2c3ee7d701b5f9ae15c973e5b6c5ad37bb2fc44ace58564d63160fc3ee9f",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/arenas_tiles.bin",
-      "sha256": "6cfcf0edb1e3c759bfbf82dc4350438f2c409bb9657b328c3b4ad17520b4ce3e",
+      "sha256": "09ff37df10deb5f4822ef7eff03a2748a96667303b9899c51ed817abf56972ae",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/assets.h",
-      "sha256": "d9e4d5a60d7936bcb44d3de2099cf86527c11e39939459740ba8d7f0c884ceaa",
+      "sha256": "e56de3725929a7097626a4a18a238d97db19d70a969d3a561d2f97aa3ea496a3",
       "comparison": "LF-normalized text"
     },
     {
@@ -1188,5 +1188,5 @@
   ],
   "generated_assets_verified": 226,
   "symbols_equal_after_source_path_normalization": true,
-  "elapsed_seconds": 92.234
+  "elapsed_seconds": 94.891
 }

@@ -1,8 +1,22 @@
 """Reproducible native SNES build using PVSnesLib 4.6.0."""
 from pathlib import Path
 import hashlib, json, os, re, subprocess, sys
+import atexit
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import asset_cache
+from asset_transaction import ensure_complete, publication_lock, workspace_lock
+import native_artifacts
 
 ROOT = Path(__file__).resolve().parents[1]
+native_lock=workspace_lock(ROOT,'native-build.lock')
+try:native_lock.__enter__()
+except OSError:raise SystemExit('Another native build is active in this checkout.')
+atexit.register(native_lock.__exit__,None,None,None)
+native_artifacts.recover(ROOT)
+def source_fingerprint():
+    paths=list((ROOT/'src').glob('*'))+[Path(__file__),ROOT/'tools/contact_geometry.py',ROOT/'tools/native_artifacts.py']
+    return {p.relative_to(ROOT).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in paths if p.is_file()}
+source_inputs=source_fingerprint()
 versions = re.findall(r'^\s*#define\s+ABAQUS_GAME_VERSION\s+"([0-9]+\.[0-9]+\.[0-9]+)"\s*$',
                       (ROOT/'src/version.h').read_text(), flags=re.M)
 if len(versions) != 1:
@@ -33,8 +47,19 @@ def run(*args):
 
 # soundbank.h is emitted by SMConv and intentionally absent from a clean checkout.
 required_assets = ('data.asm', 'assets.h', 'soundbank.h')
-if '--assets' in sys.argv or any(not (ROOT/'assets/generated'/name).is_file() for name in required_assets):
+ensure_complete(ROOT)
+assets_unchanged,asset_reason=asset_cache.status(ROOT)
+if '--assets' in sys.argv or any(not (ROOT/'assets/generated'/name).is_file() for name in required_assets) or not assets_unchanged:
+    print('Regenerating assets:', 'explicit --assets' if '--assets' in sys.argv else asset_reason)
     run(sys.executable, ROOT/'tools/make_assets.py')
+else:
+    print('Using unchanged generated assets:',asset_reason)
+
+# Keep publication out of the compiler/linker's read window. A parallel
+# encoder may prepare its private candidate, then publish on a later retry.
+asset_read_lock=publication_lock(ROOT)
+asset_read_lock.__enter__()
+atexit.register(asset_read_lock.__exit__,None,None,None)
 
 # Windows generators and SMConv may emit CRLF. Keep the repository's LF
 # contract on both regeneration and reuse so byte-bound evidence is portable.
@@ -43,6 +68,7 @@ for asset in (ROOT/'assets/generated').iterdir():
         raw = asset.read_bytes()
         canonical = raw.replace(b'\r\n',b'\n')
         if canonical != raw: asset.write_bytes(canonical)
+linked_asset_inputs=asset_cache.outputs(ROOT)
 
 # Contact rectangles follow the final quantized poses on regeneration AND reuse.
 # This ignored header is a build product, not a hand-maintained art side table.
@@ -68,8 +94,17 @@ lib = SDK/'pvsneslib/lib/LoROM_FastROM'
 objects = [BUILD/'header.obj',BUILD/'game.obj',BUILD/'hardware.obj',BUILD/'trace.obj',BUILD/'assets.obj',BUILD/'soundbank.obj'] + sorted(lib.glob('*.obj'))
 (BUILD/'linkfile').write_text('[objects]\n'+'\n'.join(str(p).replace('\\','/') for p in objects)+'\n')
 rom = ROOT/'dist/abaqus-after-hours.sfc'
-run(binary/'wlalink.exe','-d','-s','-A','-c','-L',lib,BUILD/'linkfile',rom)
-data = rom.read_bytes()
+candidate=native_artifacts.begin(ROOT)
+candidate_rom=candidate/rom.name
+run(binary/'wlalink.exe','-d','-s','-A','-c','-L',lib,BUILD/'linkfile',candidate_rom)
+# no$snes stores the output filename in one comment. Point the debugger at
+# the published cartridge; labels/addresses and all other bytes stay exact.
+candidate_symbols=candidate/'abaqus-after-hours.sym'
+symbol_text=candidate_symbols.read_text()
+symbol_heading=f'; no$snes symbolic information for "{candidate_rom}".'
+if symbol_text.count(symbol_heading)!=1:raise RuntimeError('Unexpected no$snes symbol filename header')
+candidate_symbols.write_text(symbol_text.replace(symbol_heading,f'; no$snes symbolic information for "{rom}".'),newline='\n')
+data = candidate_rom.read_bytes()
 if len(data)!=4*1024*1024:raise RuntimeError('Expected 4 MiB LoROM')
 if data[0x7fd5] != 0x30:raise RuntimeError('Expected FastROM LoROM header')
 checksum = int.from_bytes(data[0x7fde:0x7fe0],'little')
@@ -77,5 +112,10 @@ if checksum != (sum(data)&65535):raise RuntimeError('ROM checksum mismatch')
 manifest = {'title':'Abaqus: After Hours','version':version,'rom':rom.name,'bytes':len(data),
             'sha256':hashlib.sha256(data).hexdigest(),'checksum':f'{checksum:04X}',
             'toolchain':'PVSnesLib 4.6.0 / 816-tcc / WLA-DX','mapping':'4 MiB FastROM LoROM','region':'NTSC 60 Hz'}
-(ROOT/'dist/manifest.json').write_bytes((json.dumps(manifest,indent=2)+'\n').encode())
+(candidate/'manifest.json').write_bytes((json.dumps(manifest,indent=2)+'\n').encode())
+if source_fingerprint()!=source_inputs:
+    raise RuntimeError('Native source changed during compilation; prior cartridge retained.')
+if asset_cache.outputs(ROOT)!=linked_asset_inputs:
+    raise RuntimeError('Generated assets changed during linking; prior cartridge retained.')
+native_artifacts.publish(ROOT,candidate)
 print('Built',rom.name, len(data),'bytes; SHA256',manifest['sha256'])

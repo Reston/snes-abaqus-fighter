@@ -37,6 +37,10 @@ def require(ok,label,details=None):
         raise AssertionError((label,details))
 
 def inputs():
+    version=tuple(map(int,json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.')))
+    if version>=(0,26,0):
+        from candidate_sources import snapshot
+        return snapshot(ROOT)
     files=sorted(set(HARNESS)|{p.relative_to(ROOT).as_posix() for directory in ('src','tools')
                               for p in (ROOT/directory).iterdir() if p.is_file() and p.suffix in ('.py','.c','.h','.asm')})
     return {name:sha((ROOT/name).read_bytes().replace(b'\r\n',b'\n')) for name in files}
@@ -44,13 +48,15 @@ def inputs():
 def read(e,name,size=2):return int.from_bytes(C.string_at(e.ram+(SYMS[name]&0x1ffff),size),'little')
 ORIGINAL_RUN=Emulator.run
 def monitored_run(e,count=1,*args,**kwargs):
-    before=e.state();watch=count==1 and before['screen']==3 and not before['intro']
+    before=e.state();watch=count==1 and before['screen']==3 and read(e,'screen',1)==3 and not before['intro']
     if watch:
         counters=[read(e,n) for n in ('frame','snes_vblank_count','lag_frame_counter')]
         samples=e.audio_samples
     result=ORIGINAL_RUN(e,count,*args,**kwargs)
     after=e.state()
-    if watch and after['screen']==3 and not after['intro']:
+    # A result loader assigns its real scene byte before the next TRACE
+    # publication. Forced-blank scene loads are outside live fight cadence.
+    if watch and after['screen']==3 and read(e,'screen',1)==3 and not after['intro']:
         current=[read(e,n) for n in ('frame','snes_vblank_count','lag_frame_counter')]
         deltas=[(a-b)&65535 for a,b in zip(current,counters)]
         HEALTH['measured_callbacks']+=1
@@ -222,8 +228,13 @@ def stages():
     require(all(not a for a in depth.failures.values()),'both cores preserve stage geometry freezes cadence and transfer/OBJ budgets',depth.failures)
     return {'cases':rows,'checks':depth.checks,'failure_arrays':depth.failures}
 
+def candidate_stem(version):
+    if version=='0.25.0':return 'pacing-floor-v025'
+    if version=='0.26.0':return 'play-flow-v026'
+    raise AssertionError(('Unreviewed pacing/floor fixture version',version))
+
 def stage_main():
-    return main(['--part','stages','--report','docs/pacing-floor-v025-stage-report.json'])
+    return main(['--part','stages'])
 
 def main(argv=None):
     global OUT
@@ -233,10 +244,14 @@ def main(argv=None):
     parser.add_argument('--report',type=Path)
     args=parser.parse_args(argv);fighters=list(map(int,args.fighters.split(',')))
     require(bool(fighters) and len(set(fighters))==len(fighters) and all(i in range(12) for i in fighters),'roster selection is valid')
-    report_path=(ROOT/(args.report or Path(f'docs/pacing-floor-v025-{args.part}-report.json'))).resolve()
+    manifest=json.loads((ROOT/'dist/manifest.json').read_bytes())
+    stem=candidate_stem(manifest['version'])
+    part_name='stage' if args.part=='stages' else args.part
+    report_path=(ROOT/(args.report or Path(f'docs/{stem}-{part_name}-report.json'))).resolve()
     diagnostic=report_path.is_relative_to((ROOT/'build').resolve())
     require(diagnostic or fighters==list(range(12)),'partial roster evidence remains diagnostic under build')
     if diagnostic:OUT=report_path.parent/(report_path.stem+'-captures')
+    elif manifest['version']=='0.26.0':OUT=ROOT/'docs/screenshots/play-flow-v026/pacing'
     OUT.mkdir(parents=True,exist_ok=True);report_path.parent.mkdir(parents=True,exist_ok=True)
     started=time.monotonic();manifest=json.loads((ROOT/'dist/manifest.json').read_bytes());before=inputs()
     report={'status':'failed','part':args.part,'version':manifest['version'],'rom_sha256':manifest['sha256'],
@@ -244,7 +259,7 @@ def main(argv=None):
             'diagnostic':diagnostic,'selected_fighters':fighters,'host_contract':host_contract(),'source_sha256':before,
             'checks':[],'native_health':HEALTH,'memory_writes':False,'save_states':False,'audio_device_opened':False}
     try:
-        require(manifest['version']=='0.25.0' and sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes())==manifest['sha256'],'candidate is the exact native v0.25 cartridge')
+        require(manifest['version'] in ('0.25.0','0.26.0') and sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes())==manifest['sha256'],'candidate is the exact native cartridge retaining the v0.25 pacing contract')
         if not BEFORE.exists():
             BEFORE.parent.mkdir(parents=True,exist_ok=True)
             baseline=subprocess.check_output(['git','show',BASE+':dist/abaqus-after-hours.sfc'],cwd=ROOT)
@@ -259,7 +274,7 @@ def main(argv=None):
                 file=CORE_PATH
             else:file=ROOT/path
             require(sha(Path(file).read_bytes()).lower()==pin['dll_sha256'].lower(),'expanded native core is pinned',str(file))
-        report['preservation']=validate(ROOT)
+        report['preservation']=validate(ROOT,allow_arena_previews=manifest['version']=='0.26.0')
         Emulator.run=monitored_run
         report['result']=({'static':lambda:report['preservation'],'pacing':lambda:pacing(fighters),
                            'supers':lambda:supers(fighters),'cpu':lambda:cpu(fighters),'stages':stages}[args.part])()

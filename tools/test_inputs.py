@@ -28,7 +28,8 @@ ENERGY_TILE = 138
 P1_STATUS_ATTR = 0x2000
 P2_STATUS_ATTR = 0x6000
 MENU_CORE_OPTIONS = {"snes9x_up_down_allowed": "enabled"}
-DELIBERATE_PACING=json.loads((ROOT/'dist/manifest.json').read_bytes())['version']=='0.25.0'
+DELIBERATE_PACING=tuple(map(int,json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.'))) >= (0,25,0)
+PLAY_FLOW=tuple(map(int,json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.'))) >= (0,26,0)
 _screen_address: int | None = None
 
 
@@ -586,8 +587,9 @@ def check_menu_regressions() -> dict[str, object]:
 
 def boot(mode: int = 2, wait_intro: bool = True,
          fighter: int = 0, fighter2: int | None = None,
-         difficulty: int | None = None, title_delay: int = 0) -> Emulator:
-    e = Emulator()
+         difficulty: int | None = None, title_delay: int = 0,
+         core_options: dict[str, str] | None = None) -> Emulator:
+    e = Emulator(core_options=core_options)
     e.run(120)
     if title_delay:
         # This is only used by deterministic CPU probes to align the native
@@ -730,7 +732,7 @@ def _run_transition_stress(cadence: str, fighter: int) -> dict[str, object]:
 
     e = _cadence_boot(cadence, 2, fighter=fighter)
     try:
-        if fighter == 4 or json.loads((ROOT/'dist/manifest.json').read_bytes())['version']=='0.25.0':
+        if fighter == 4 or DELIBERATE_PACING:
             # Slower travel must not turn transition coverage into a long
             # out-of-range walk. Establish genuine close spacing first;
             # every original 600 measured ticks and all bank/state checks stay.
@@ -740,7 +742,7 @@ def _run_transition_stress(cadence: str, fighter: int) -> dict[str, object]:
         drops: list[dict[str, int]] = []
         banks: set[int] = set()
         down_states: set[int] = set()
-        deliberate=json.loads((ROOT/'dist/manifest.json').read_bytes())['version']=='0.25.0'
+        deliberate=DELIBERATE_PACING
         plan={'stage':0,'held':0,'started':False,'seen':False,'completed':[]}
         for index in range(600):
             phase = index % 150
@@ -4480,16 +4482,21 @@ def check_cpu_anti_air() -> dict[str, object]:
     if DELIBERATE_PACING:
         fixtures=((0,1,1),(0,2,18),(2,2,13),(4,1,14),
                   (6,2,1),(5,1,7),(5,2,9))
+    if PLAY_FLOW:
+        # Current roster hints change menu elapsed time. Fixed measured
+        # controller-only phases retain every original reaction assertion.
+        fixtures=((0,1,2),(0,2,19),(2,2,1),(4,1,3),
+                  (6,2,2),(5,1,7),(5,2,10))
     cases = [_cpu_jump_in(cpu, difficulty, delay)
              for cpu, difficulty, delay in fixtures]
     hits = [_cpu_uppercut_start(case, hit=True) for case in cases]
-    retreat = _cpu_jump_in(2, 2, 24 if DELIBERATE_PACING else 13, retreat=True, kick=False)
+    retreat = _cpu_jump_in(2, 2, 25 if PLAY_FLOW else 24 if DELIBERATE_PACING else 13, retreat=True, kick=False)
     whiff = _cpu_uppercut_start(retreat, hit=False)
 
     # Equal menu frame counts align Normal's title+20 with Hard/Easy's
     # difficulty-button tap. The same visible opening does not assure a
     # reaction: Hard intercepts here, Normal misses its sampled opportunity.
-    comparison_cpu,comparison_delay=(5,9) if DELIBERATE_PACING else (4,5)
+    comparison_cpu,comparison_delay=(5,10) if PLAY_FLOW else (5,9) if DELIBERATE_PACING else (4,5)
     easy = _cpu_jump_in(comparison_cpu, 0, comparison_delay)
     normal = _cpu_jump_in(comparison_cpu, 1, comparison_delay+20)
     hard = cases[6 if DELIBERATE_PACING else 4]

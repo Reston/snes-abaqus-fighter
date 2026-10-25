@@ -6,6 +6,35 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+<!-- v026-agent:start -->
+- **v0.26.0 is the verified polish playtest candidate**, branch
+  `feature/play-flow-polish-v026`, stacked PR #22 on unmerged PR #21 (v0.25).
+  The user requested sequential polish until weekly Codex remaining reaches
+  5% or less. Read the live 10080-minute rate-limit window; do not confuse it
+  with context/goal tokens. No new merge approval is inferred; main is v0.24.
+  This autonomous run completed on 2026-10-24 at 5% weekly allowance remaining.
+  All 28 passes are complete; PR #22 is ready for review and both PRs remain
+  unmerged. Do not restart allowance-driven polishing without a new request.
+  Twenty-eight completed polish/review passes are technically verified on
+  ROM `27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b`,
+  checksum `3993`, source/test freeze `c89239901491a239e10194f1399820527b0ebf74`.
+  All six suites pass 49,689 exact-ROM checks. Current native stress passes
+  432 cases with zero SDK lag and no candidate callback collapse. Three current
+  live hours pass, including all twelve Training CPUs; 200 earned local matches
+  prove both session counters cap at 99. The fixed-actor HUD clears the retained
+  original rare lag with complete unmasked gameplay/input equality. Matching
+  pinned Accuracy, full-roster pacing/supers/CPU/play-flow proofs, normal/-O
+  guards and fresh 226-asset/ROM/symbol reproduction pass. Current evidence is
+  docs/verification-v0.26.0.json; docs/REVIEW-v0.26.0.html binds current media.
+  Checkpoint counts below the current release are historical, not pooled.
+  Preserve v0.25 slower rules, all fighter/stage/audio art, existing 1,318 RAM
+  addresses and ABI. Only the derived arena outputs/size declaration differ
+  among v0.26's 226 generated outputs. No new offline package is claimed.
+  Current work and jobs are retained in ignored build/v026-state.json.
+  Read docs/POLISH-v0.26.0.md and docs/POLISH-v0.26-CONTRACT.md.
+  Human playtest and merge approval remain pending for both candidate PRs.
+<!-- v026-agent:end -->
+
 
 
 <!-- v025-agent:start -->

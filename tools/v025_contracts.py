@@ -21,7 +21,7 @@ def canonical(path,raw):return raw.replace(b'\r\n',b'\n') if Path(path).suffix i
 def git(root,*args):return subprocess.check_output(['git',*args],cwd=root)
 def symbols(raw):return {n:int(a,16) for a,n in re.findall(r'^([0-9a-fA-F]{8}) (\S+)$',raw.decode(),re.M)}
 
-def validate(root):
+def validate(root, allow_arena_previews=False):
     root=Path(root)
     git(root,'merge-base','--is-ancestor',BASE,'HEAD')
     prior_manifest=json.loads(git(root,'show',BASE+':dist/manifest.json'))
@@ -34,7 +34,9 @@ def validate(root):
         raw=canonical(name,(root/name).read_bytes())
         before=canonical(name,git(root,'show',BASE+':'+name))
         (preserved if raw==before else changed).append(name)
-    require(set(changed)<=STAGE_CHANGES,'Generated change escapes floor scope',sorted(set(changed)-STAGE_CHANGES))
+    allowed=STAGE_CHANGES|({'assets/generated/arenas'+suffix for suffix in ('.png','_tiles.bin','_map.bin','_pal.bin')}
+                           if allow_arena_previews else set())
+    require(set(changed)<=allowed,'Generated change escapes reviewed floor/menu scope',sorted(set(changed)-allowed))
     protected=git(root,'ls-tree','-r','--name-only',BASE,'--','assets/art','assets/references').decode().splitlines()
     for name in protected:
         require(canonical(name,(root/name).read_bytes())==canonical(name,git(root,'show',BASE+':'+name)),

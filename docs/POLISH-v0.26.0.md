@@ -1,0 +1,443 @@
+# v0.26 play-flow polish
+
+This candidate stacks on the unmerged v0.25 pacing/floor candidate in
+[PR #21](https://github.com/Reston/snes-abaqus-fighter/pull/21). It retains that
+slower fight rhythm, detailed floors and approved fighter art. Main remains
+v0.24.0. The pass measurements below are historical checkpoints. Final combined
+verification passes; human playtest is pending. See
+[the current release guide](RELEASE-v0.26.0.md) and
+[verification record](verification-v0.26.0.json).
+
+## Pass 1: local match results
+
+Local result cards identify the winning controller as **PLAYER 1 WINS** or
+**PLAYER 2 WINS**, so a mirror match is unambiguous. Either player can press
+A/Start for a rematch or B for character select. Start, then B, then A owns a
+simultaneous sample across both participating pads. Rematches preserve the
+fighters and arena and reset both scores. Other modes retain their ownership.
+
+The controller-only focused proof earns twenty real two-round victories and
+checks ten routes for each winning side. Both mirror-match winner cards are
+checked against native glyph/score pixels. The first checkpoint passed 141
+focused checks and 1,752 presentation checks. Reports are regenerated after
+the final source freeze; checkpoint captures are under
+[screenshots/play-flow-v026](screenshots/play-flow-v026/result-p2-mirror.png).
+
+No new art, global RAM, fighter state fields or native transfer ranges are
+introduced. The v0.25 preservation/bank/asset check passes on this checkpoint.
+
+## Pass 2: quick Training retries
+
+Choosing a drill now supplies its required dummy: CPU for low-block practice,
+Stand for normal-to-special links and rear air kicks. CPU difficulty remains
+the player's choice. The ordinary PAUSED card can still override the dummy.
+
+On Training Tools 3/3, **X restarts the selected drill** while keeping the guide
+open. It restores positions, health and energy, clears recorded progress and
+input history, and retains the fighter choices, arena, drill and difficulty.
+Start/B/A/Select retain priority. X on other pause pages has no reset action.
+
+The first focused checkpoint passes 72 drill/port/fighter combinations and
+556 checks across all twelve fighters, with 5,088 measured native callbacks
+and zero cadence, OBJ or audio failures. Reset work and guide construction
+run on separate frames after an initial prototype exposed a one-frame stall;
+the failed prototype report remains under ignored build diagnostics.
+
+## Pass 3: full super-meter cue
+
+A full 96-energy gauge adds **SUPER Y+B** beneath its own health/energy bars.
+The gold command cue occupies the existing HUD bottom rule, leaving the mode
+label and round medals visible. Spending the gauge restores the rule. The
+cue communicates full meter; the existing grounded/free-to-act requirements
+still apply. No flashing or new audio is added.
+
+The focused proof naturally regenerates 95 and 96 energy, spends each port's
+meter through a real super command, and checks native bar/cue cells for all
+twelve fighters. It also checks that both cues can coexist without replacing
+the central mode label. Native cadence, OBJ and audio checks remain strict.
+The HUD stays within its original 320-byte transfer and uses no new art/RAM.
+
+## Pass 4: shared local arena selection
+
+Either controller can now move, confirm or leave the arena picker in Local
+Versus. Its footer says **LOCAL 1V1: EITHER PAD**. Opposing directions cancel
+across controllers, and the shared Start/B/A priority matches the result card.
+Arcade and Training arena selection keep their existing ownership. The focused
+proof checks both ports' routes, simultaneous inputs and those mode boundaries.
+
+## Pass 5: Arcade orientation
+
+The matchup exchange and ordinary result card show **SHIFT 01/11** through
+**SHIFT 11/11**. A win previews the next opponent; a loss names the opponent
+you will retry. The ordinary Arcade pause card names Easy, Normal or Hard.
+Champion artwork, stories, six-second auto-advance, controls and ladder rules
+remain intact.
+
+The focused proof earns a complete eleven-opponent ladder, checks the 09/10/11
+boundary and wraparound opponent previews, and verifies an actual Hard-mode
+loss and Continue. It also proves that P2's new local controls do not advance
+Arcade results. The checkpoint passes 89 focused checks plus native text/pixel
+and combat-health checks. Scene-load monitoring uses the direct scene byte;
+forced-blank result loaders are outside the live combat cadence interval.
+
+## Pass 6: two-person Training
+
+On the ordinary Training PAUSED card, **X selects P2 Controller**. The physical
+second controller then drives the opponent using the same movement, four
+attack buttons, specials and super as Local Versus, with Training health
+recovery and clock behavior. **X returns to Stand**. The original five dummy
+choices and Stand-to-CPU Up shortcut remain; manual control is an explicit
+toggle rather than an extra stop in that cycle. Up/Down leaves manual mode
+for CPU/Stand respectively.
+
+Either pad can enable manual practice. Start/B/A/Select keep priority; P2 live
+Select still cannot reset the round. Live P1 Select retains manual control.
+Selecting/restarting a prepared drill supplies its intended Stand/CPU partner.
+The focused checkpoint passes all twelve fighters' P2 movement, opposing
+directions, four normal buttons, ordinary special, naturally funded super,
+reset retention and return-to-Stand checks. Default Stand keeps ignoring P2
+combat buttons. No new global state or fighter ABI fields are added.
+
+## Pass 7: reward readable defense
+
+An unblocked hit during an opponent's attack recovery displays **PUNISH!**.
+The existing **COUNTER!** cue retains its startup-hit meaning and damage bonus.
+Punish feedback adds no damage, stun, meter gain or recovery changes. Blocks
+and ordinary neutral hits do not advertise a punish. The existing deferred
+impact banner carries the cue; no new RAM or transfer range is used.
+
+The full proof passes 120 paired baseline/candidate cases: blocked heavy punch
+and kick into real jab retaliation, startup counter, ordinary hit and guard,
+for all twelve fighters on both ports. Identical controller streams preserve
+every unmasked Fighter/Wave byte, RNG and controller latch. Native glyph/PPU
+checks verify the actual feedback; strict cadence, OBJ and audio checks pass.
+
+## Pass 8: arena previews match current stages
+
+The picker previously retained historical cartoon-stage pictures while combat
+used the rebuilt scenery. It now derives each 104x52 landmark view from the
+current converted native BG1 tiles, map and palette, including the center
+viewport's camera gutters. The aspect-correct crop avoids hidden HUD rows.
+Names, descriptions, cursor geometry, title/roster plates and fighter portraits
+are retained. No new stage artwork is generated or retouched.
+
+The focused proof rebuilds the arena payloads in an isolated sink, checks the
+native picker on Snes9x and pinned Accuracy, loads each chosen stage and
+independently decodes its uploaded VRAM. All three source viewports match
+exactly. Only the four arena outputs and their size declaration change in
+this pass; the existing 226-file asset inventory remains.
+
+## Pass 9: deliberate directional menu repeat
+
+Holding a direction now scrolls after a 24-menu-tick delay. Rosters repeat
+every eight menu updates; title/arena choices use twelve. Portrait/card redraws
+can add one video callback, recorded by the proof. Releasing directions or
+changing roster ownership clears the delay. Opposing directions cancel across
+participating pads. Confirm and Back never repeat while held.
+
+Snes9x and pinned Accuracy pass 953 focused checks, including actual repeat
+countdowns, item order, cancellation, owner changes, held confirm/back and
+entry into combat without an accidental pause or attack. Two unused bytes of
+the retained stage table hold menu-only state; they clear before native combat.
+There are no new RAM symbols and all 1,318 prior addresses remain exact.
+
+## Pass 10: round and result clarity
+
+The first KO/timeout card identifies PLAYER 1, PLAYER 2 or CPU, followed by
+the fighter name. The following victory card says **P1/P2/CPU WINS THE ROUND**.
+Mirror matches are therefore clear before the final match result as well.
+Tied timeouts retain DRAW without a stale player label. Round durations,
+scores and transitions remain unchanged.
+
+The ordinary result panel now covers its bottom row, removing the distracting
+eight-pixel floor strip below the controls. All twelve fighters' earned mirror
+round wins pass on both ports, plus a real healthy tied timeout. The twenty
+result routes also pass on the updated cartridge; native cadence/OBJ/audio
+checks and actual glyph/pixel comparisons remain strict.
+
+## Pass 11: music control for longer practice
+
+On a full pause-guide page, **L toggles music**. The caption shows the current
+state and next action. Music fades smoothly, while hit/menu sounds and spoken
+Round/Fight/KO feedback remain enabled. The preference persists through scene
+changes until a cold boot. Ordinary PAUSED CPU shoulders still change difficulty;
+the music control lives on guide pages. Opposing shoulders cancel, and existing
+Start/B/A/Select, page navigation and drill-restart priorities remain intact.
+
+Both pinned cores pass native PCM checks for audible music, an actually silent
+muted score, audible resident cues and announcements over that silence, and
+audible restoration. Native cadence, OBJ, FIFO and clipping gates pass. Captures
+under docs/audio/play-flow-v026 are recordings only; the tests open no audio
+device and play nothing through speakers. The original five scores and sound
+assets remain byte-identical; the existing music preference byte is reused.
+
+## Pass 12: real hit-confirm practice
+
+The first drill is now **HIT CONFIRM**: Y into X or B into A teaches a real,
+uninterrupted two-hit combo on every fighter. A linked special remains valid.
+Selecting/restarting it supplies **Guard After Hit**, which stands for the
+opener and holds away during the following combo window. It cannot guard
+during hit stun, but blocks a late high follow-up. The result therefore reflects
+an actual confirm rather than two attacks hitting an idle opponent.
+
+Guard After Hit is also available between Jump and CPU on the ordinary pause
+card. The original Stand-to-CPU Up shortcut and explicit X manual-controller
+toggle remain. Existing combo timers provide the guard window; no state bytes,
+combat timings, damage or ordinary CPU behavior change. All twelve fighters'
+two normal confirms and blocked late follow-ups pass, with bounded independent
+Accuracy coverage and both-pad selector/restart checks.
+
+## Pass 13: readable normal timing on the pause guide
+
+Up on Move List cycles specials, P1 normal timing and P2 normal timing. Each
+normal shows startup, active time and recovery from that match's actual timing
+cache. The guide explicitly limits the table to grounded standing attacks
+and explains contact hitstop. It uses two rows in each existing build stage,
+so no combat-frame formatting, transfer growth or new RAM allocation occurs.
+One unused byte in the retained stage table holds the paused view and clears
+at the next pause/scene. Gameplay values and timing remain unchanged.
+
+## Pass 14: explain simultaneous throw escapes
+
+An earned simultaneous throw displays **THROW TECH!** after the existing
+deferred actor uploads. Its damage, push-apart, guard/hurt state and three-tick
+contact pause remain unchanged. One-sided throws never advertise the cue.
+The Controls guide names the simultaneous-throw escape; no new command exists.
+
+All twelve fighters on both ports pass paired tech/ordinary-throw cases:
+48 baseline/candidate pairs retain every unmasked Fighter/Wave byte, RNG and
+controller latch. The actual glyphs are verified on Snes9x with independent
+Accuracy coverage. The first positioning fixture could land exactly at the
+strict throw-range boundary for David; its retained failed baseline diagnostic
+led to an inside-range setup, with every outcome assertion retained.
+
+## Pass 15: session-best practice combos
+
+Training Tools shows the highest-damage real combo this session, preferring
+more hits when damage ties. Both kinds of retry preserve it while clearing
+the new attempt's counters. A fresh Training selection starts at zero.
+The existing deferred formatter/reset path records the result; contact and
+normal live update paths gain no formatting work. Three unused reserved
+stage-table bytes hold the record without moving or adding RAM symbols.
+
+## Pass 16: a running local rivalry
+
+Local result cards separate **ROUND WINS** from **SESSION WINS**. A completed
+match adds one session win for its actual winner. Either-pad rematches retain
+the tally, while returning to character select begins a new session. Waiting
+on a result or winning only the first round never adds another match win.
+Two reserved bytes cap the display at 99 per player; no combat state changes.
+
+## Pass 17: learn a fighter before choosing
+
+The roster's unused portrait-side rows show the ordinary-special family:
+wave shot, rush, low wave or rising strike. Down+Y, its 32-energy cost and
+the shared super chord stay visible during both players' choices. Short copy
+leaves an eight-pixel right margin. Portrait bytes, roster cards, cursor and
+footer remain exact. Both pinned cores verify all twelve hints on both
+selection steps, approved native portraits and clearing of longer old labels.
+
+## Pass 18: background-motion comfort
+
+R on a full pause guide toggles the background between moving and still.
+Still keeps the scenery at its centered offset, removing drift and background
+shake while retaining all actor movement, recoil, effects and timing. The
+setting persists between scenes and is explicitly initialized on cold boot.
+Opposite shoulders cancel; ordinary paused CPU shoulders still set difficulty.
+
+Both cores verify actual fixed scenery pixels across walking and real hits
+on all three stages. Snes9x's complete unmasked Fighter/Wave/RNG/recoil/input
+streams remain exact between moving and still. Independent Accuracy coverage
+checks observable behavior, cadence and pixels; byte equivalence is unclaimed.
+The cold-boot initialization failure is retained under build, separate from
+the passing current report. The last unused stage-table byte holds the option.
+
+## Pass 19: encode scenery once per build
+
+Arena thumbnails and the final stage install now share one build-local
+conversion snapshot. Full asset generation calls each stage encoder exactly
+once instead of converting the same three scenes separately for both consumers.
+The snapshot checks workspace, source inventory and the complete native UI
+palette. The first attempt correctly rejected a 16-versus-32-color palette
+mismatch; preparation now includes both existing UI banks.
+
+The host-only proof regenerates all 226 outputs byte-identically after text
+canonicalization, rejects four snapshot mutations and rebuilds the exact same
+cartridge/manifest. Native scene/art/audio payloads do not change. Independent
+stage/arena tests continue rebuilding their oracle directly from source.
+
+## Pass 20: preserve the last complete asset set on failures
+
+Full generation writes into a private build directory. A validated complete
+set is published under a short OS lock; the previous set remains under build.
+Directory-promotion failure restores the previous set. A small journal lets
+the next generation recover an interrupted directory swap. Binary references
+must resolve inside the completed set before publication.
+
+Eight fault-injection tests pass normally and under optimized Python, covering
+missing outputs, invalid binary references, promotion failure, interrupted
+swaps, first-publication recovery, competing publication and path containment.
+The full pipeline proof also interrupts a real encoder run before publication
+and checks that the live 226-file inventory remains intact, then performs a
+complete generation and exact-cartridge rebuild.
+
+## Pass 21: correct automatic asset reuse
+
+Ordinary builds hash the encoder's transitive Python dependencies, authored
+asset inputs, SMConv binary and encoder environment. They also hash the current
+generated outputs. Unchanged source/output pairs reuse their assets; edits to
+art, encoder code or generated bytes automatically regenerate. C-only gameplay
+and unrelated test edits keep the fast native-build path. A fresh export has
+no local cache and therefore always encodes from source.
+
+Generation captures its source fingerprint before and after encoding and
+retains the candidate if inputs changed. The saved cache binds that exact
+source/output pair. Ten isolated cache-mutation tests pass normally and under
+optimized Python; the current dependency/data inputs hash in about 0.3s on
+this workstation. This is a local performance cache, separate from release
+evidence and fresh-build verification.
+
+## Pass 22: keep the playable cartridge after failed builds
+
+Native builds now link into a private candidate directory, validate the full
+4 MiB NTSC FastROM image/checksum and matching manifest/symbol trio, then
+replace the authoritative cartridge last. A failed promotion restores prior
+metadata; a journal recovers interrupted publication or recognizes an already
+complete new trio. Historical files in dist remain untouched. Identical trios
+need no replacement. A checkout-local compiler lock and an asset read lock
+prevent competing builds/publication from mixing their files.
+
+Eleven fault tests pass normally and under optimized Python, including real
+child-process termination during partial and completed publication. The native
+build also checks source and generated inputs for edits during compilation.
+Synthetic unit-test ROMs are file-format fixtures only; they are never emulated.
+The integrated proof repeats real native builds and retains the exact ROM,
+manifest and symbols without replacing identical files. The first validator
+assumed another symbol format and correctly kept the previous cartridge;
+the current validator accepts the SDK's no$snes format. Only its filename
+comment points from the private candidate to the published ROM; numeric
+labels and addresses are preserved without normalization.
+
+## Pass 23: bind the complete native test run
+
+Evidence producers share one canonical source inventory, including nested
+helpers, PowerShell launchers and Build/Test/Play entry commands. Six inventory
+guards pass in both interpreter modes. The canonical six-suite runner records
+the actual command result, core hash, frozen source identity and hashes/counts
+of all six output reports. Headless failures exit without an interactive pause.
+This separates a completed current run from historical reports with the same
+cartridge bytes. The final combined run passes against the source freeze recorded in the current verification.
+
+## Pass 24: identify and validate the game being opened
+
+Play validates the cartridge's format, size, SHA and manifest version before
+tool provisioning or opening a window. A source checkout also checks its
+version header. The console names the version being started; existing emulator
+configuration remains intact. ValidateOnly provides a read-only diagnostic.
+
+The actual launcher and six isolated valid/corrupt/stale fixtures pass without
+creating tool files, rewriting configuration or invoking setup/GUI. The default
+normal-speed and fast-forward bindings were inspected; game attack keys do not
+share the default fast-forward key. No speed or personal mapping was changed.
+
+## Combined verification correction: separate paused work and menu timing
+
+The first final-freeze run caught a real SDK lag increment when a Training
+retry rebuilt all health bars and the first guide phase together. The paused
+path now schedules those jobs on separate frames. A local byte records work
+already performed; no global state or gameplay rule changes. All twelve
+Training retry proofs and both-core music/guide regressions pass in isolation.
+An earlier reset-unrolling experiment did not fix it and was not integrated.
+
+Later roster hints also changed the clock phase at the end of older menu
+fixtures. Two historical feedback comparisons therefore differed in passive
+energy cadence. Current full-byte proofs instead derive a current-source
+counterfactual with only the recovery/throw banner stores removed. Menus,
+assets and all gameplay stores stay current; every Fighter/Wave/RNG/controller
+byte still compares without masking. Historical failed comparisons are retained.
+Fixed anti-air menu delays were remeasured; all hit/whiff/startup/negative
+assertions remain intact, including an equal-opening difficulty comparison
+and an empty jump intercepted before any attack input. Complete old reports
+and captures are archived in ignored build/v026-first-freeze-evidence.zip.
+
+## Pass 25: make current proof and review easy to follow
+
+One final frozen source inventory binds every native producer and entry
+command. The current 432-case stress run retains complete per-case reports
+and unmasked streams, uses no candidate callback collapse and makes no
+baseline byte-equivalence claim. Collation rejects stale identities, missing
+coverage/media and failed health checks. Source/media/collation mutation tests
+pass in normal and optimized Python. One topic-based review gallery binds
+native captures to the verification record, labels historical comparisons and
+starts with motion paused. Player and developer guides name the same cartridge.
+
+The standalone review supplies its own readable dark palette, 44-pixel
+controls and an explicit still-frame action. Indexed PNG posters preserve
+every decoded native RGB byte while keeping the inline document small.
+All nine topics, keyboard wrapping and actual motion loading are checked;
+desktop/mobile previews cover the final review.
+Native report hashes bind their serialized bytes. Git retains those JSON
+bytes without newline conversion while keeping readable text diffs.
+
+## Pass 26: long-session stability and score boundaries
+
+A supplemental native Arcade hour found one real SDK lag increment near its
+end on 6b392d / AA3D. The fixed-actor HUD expansion reduces emitted indirect
+accesses from 22 to 10 while preserving every original HUD read/store/call in
+order. The preservation contract derives that expansion from frozen 41b2c7e;
+combat, RNG, art, RAM and ABI remain unchanged. The isolated 27223b candidate
+clears the complete hour and matches 244,237 complete coherent native states
+and controller inputs with every state byte unmasked. All physical streams
+are retained. The original reference has one repeated live publication; the
+candidate has none. The final integrated cartridge passes all three current live-hour modes on the final source freeze.
+
+The score boundary probe earns 200 real two-round matches: P1 wins one hundred,
+then P2 wins one hundred. Both counters saturate at 99, native result glyphs
+match every earned score, either-pad rematches retain the session and Back
+clears it. The final current-cartridge proof earns all 200 matches and checks each displayed score.
+
+The v0.7-era endurance traffic harness retains its original health predicates.
+A current producer adds four-face-button coverage, bounded neutral waiting
+only after Back has already changed the direct native scene, and roster
+rotation relative to the actual arena. Its three native live hours do not
+claim the historical six-attack contract or require its traffic bot to finish
+a champion ladder within an hour; the focused Arcade proof separately earns
+all eleven victories. The earlier canonical route/coverage failures and the
+one real timing failure remain in ignored build records. An isolated recorder
+nested the root ROM identity inside its candidate diagnostic; the outer loaded
+ROM identity is correct and a separate erratum preserves that distinction.
+Final integrated records read the actual current root cartridge identity.
+
+## Pass 27: reproduce the complete verification with one command
+
+The versioned verifier checks a clean committed cartridge/source freeze,
+prepares the current-source comparison reference, and runs independent host
+proofs alongside the serial root build/publication checks. Native workers get
+bounded processor pairs and below-normal priority. Every command retains its
+log, hash, exit and completed result; the summary uses bounded-retry atomic
+publication. A failure stops new scheduling while active native writers finish.
+
+All required six-suite, focused, independent, hour, score-limit and 432 stress
+commands appear exactly once in the plan. Mode/stress merges, collation and
+review generation run only after every worker succeeds. Dry-run is explicitly
+plan-only. Ten normal/optimized guards cover full inventory, shard coverage,
+merge bindings, paths with spaces, concurrency and failure retention. The
+complete end-to-end command passes all 40 commands on the final source freeze.
+
+The first end-to-end invocation exposed an orchestration filename collision:
+command metadata replaced the hour/stress producer reports before merging.
+Every native command had passed, but the overall run correctly failed. Command
+records now use a separate `.command.json` suffix. A real subprocess regression
+proves that a same-named producer JSON survives byte-for-byte. The failed
+execution and logs remain under ignored build; complete final-source proofs
+are repeated rather than relabeled.
+
+## Pass 28: make the first minute easier to play
+
+The player guide opens with a short pad/keyboard translation, a real
+light-to-strong practice route, blocking and returning from pause. It calls
+out the easy-to-confuse keyboard X / SNES A and keyboard A / SNES Y names.
+The README links directly to this route; the complete move and contextual
+pause tables remain available below it. Local setup gives each physical
+controller its own joypad and names Num Lock for the second keyboard player.
+These documentation changes leave the frozen cartridge and proof inputs exact.

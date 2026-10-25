@@ -14,5 +14,5 @@ if errorlevel 1 goto failed
 if errorlevel 1 goto failed
 exit /b 0
 :failed
-pause
+if not "%ABAQUS_HEADLESS%"=="1" pause
 exit /b 1
