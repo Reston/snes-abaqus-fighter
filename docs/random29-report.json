@@ -1,0 +1,3984 @@
+{
+  "status": "passed",
+  "rom_sha256": "cc020350b8f4bc94a0c6d5e01e37ae4066dd953b2ac0807f422e62be85acd80e",
+  "source_commit": "c20a80533bf4bb76c63b27b29ccb4faa8710e316",
+  "sources_sha256_lf": {
+    "src/animation_banks.h": "8250cf1816ae8c0de0da6a876b76e0a0b40c10a44e35f782794ca82e283414e9",
+    "src/animation_weight.h": "cdc8308b9a98c000823b7869a20a122e531d9843f7d1143ae09749b6983adf09",
+    "src/arcade_story.h": "219b418d41b5c8e35d4617e1b3e21d683236a34efceb4efa1bfebd8866697104",
+    "src/audio_presentation.h": "106ac802c7fe95b9eda67f6113b9278a407c8d0a06bba6c83ebd2d4c510e903a",
+    "src/audio_presentation_state.h": "4129b01189826de5cc9266f529eb57f1dcb57bb93febcade1f1dc3bf6e6c730e",
+    "src/characters.h": "f2c66a8984e16cc0e6b360e48c31bad1dee785e280a3bb5cbf7302e3c8e01858",
+    "src/contact_geometry.h": "237d6b05f0e161cf08008629576f46a131b87f7a6928ea6e8e90c74ef8f49c30",
+    "src/cpu_personality.h": "859831dcb5708712b1319512e83018bd9c42dcdae4d04cf7c743888bdaaa8e82",
+    "src/expansion29.h": "5937b2f568a2df5f6796696b2d9da58b29460fa524e8ba5e818f9e21ed4b3a3b",
+    "src/expansion29_state.h": "43f05141910cd071f88b18de7c526d229cd4dae1b3d0803c9f75f96fba393ae0",
+    "src/fighter_personality.h": "e15b92385c8620a8cbdaa1c2734af0f87a91fbdbeefc70fe8c04700998cad0ce",
+    "src/game.c": "96d214160d1c176ba75e350ae9864db0c35805ad1c6814cc50ec1c4d9a3f0514",
+    "src/hardware.asm": "9b6dd260dca337e06b012e9b4fdafdc2c9103750ffcf5cf803d01e9092bab424",
+    "src/impact_presentation.h": "f40dd53fe3c21a026072e1ec362d93b4b8c023ad6cb1b3d1cfaed711c130aa55",
+    "src/knockdown.h": "b4728ac05f282613114b0931a54f5867fc1caeb29ef9cebd5c771614e5d11da3",
+    "src/menu_portraits.h": "96a006a382dfc86e1807b32ac0eaaf652cb302558aea57496a20567d10713c9c",
+    "src/menu_preview.h": "57726013de7927621dac45bf7814d15c1157e53eee6405b1442b5c50dfa2f785",
+    "src/menu_preview_state.h": "a11dda5695fe33302d390eb04b57aaffd0fd268e2dc3cd00613400b719a7315c",
+    "src/menu_repeat.h": "f94c56e7da218b8859016596c2994f936ea4538db51c2d720abea51970836188",
+    "src/pacing_recoil.h": "79518af5f3293ad65c6143e6fdbc836ee0916afc61dce8ab5bc9d3ff8e11611b",
+    "src/pause_guide.h": "ce65ff058cf8ce98d9403e1f8c89ebc7b5bdd47d80d988d6a3412bbb188f6688",
+    "src/random29.h": "2425fbd5e562e49862e337d58096d1c3f2ea4fffb99815a71da84ccc313a98b5",
+    "src/stage_depth.h": "6c69ed49f745ae20215e808d276cd41c9834e2722cd690a034d9b5a6b665b051",
+    "src/super_moves.h": "6b5d0f67851c1b7dc370d25f5a4dd1c41c44ad04b41d3928a663c2859374e0b0",
+    "src/trace.asm": "301ec8a99aa326583c332a901903114f5fceeb7f17bbbf768c3e90ae65c3dc88",
+    "src/training_tools.h": "bad6ffc456e48c0b346ffaa069c33871988716828db75a18f511266c3de33961",
+    "src/version.h": "af007fb875b1a397ffeb6fdfc578cfef0c522db0ae6ac971d2a0990df55a5de1",
+    "tools/asset_cache.py": "091478ff866f99aed1b3714b1746c0fc934705905f3d370ffcd0473e381dcccc",
+    "tools/asset_transaction.py": "9df3ad06bdd448627bf0747e755d16864149d3660f922594b690620f97015bb8",
+    "tools/audio_assets.py": "1a55aa69ae2df232f61c9af9bc032d433461776da31ad91ea0e5108e8592a6cb",
+    "tools/audit_release.py": "6d1abcdb71daffcb124de5096a9e625e6880636ff00b0e4614e3718f848c33af",
+    "tools/build.py": "f262826aed503e4b98a261f1ae1a02ca7e82053334d342b439c78ea894874fb8",
+    "tools/build_web.py": "4bd8f2e6e257a1d785b0acbe08cadcae2bca7329fc68befeb0e03a52b636189b",
+    "tools/candidate_sources.py": "94115dfe0468887b6cd8de790cb0a98ff5afd96ecff5f5e69b1ab1f754e941ad",
+    "tools/champion_assets.py": "1526aa565cd9e1a01075bd5ad699b75b486e17f9b2899b9276a504bc2024ccf2",
+    "tools/check_authoring_guards.py": "41887dd7f9a962ac3bb77b6fb1223bb4a065a015b1624c04ad04ee8622cd5c1b",
+    "tools/check_combat_24_guards.py": "32a9affd932696bdf409e650214d205773123e4e17947fe7471df741814eb698",
+    "tools/check_play_flow_native_26.py": "b41d8f4f084d13b3ef8e6d4fb59a9da9263bf413f9441ef4a9e12e8168f6bdcc",
+    "tools/collate_combat_24.py": "5ece963d25e9ba1c37b17a3db76e3a06fb400dfb2454e8fe6f63c216ea3c3646",
+    "tools/collate_expansion.py": "78eff65f23971796896a7f0f163a246bda5ef5222171231bb3481dac0eca077b",
+    "tools/collate_pacing_floor_25.py": "55be592418ce39a865129b0232acf984964b41e753549f8023ded4324322dc14",
+    "tools/collate_play_flow_26.py": "c3295b76579d912588507d955793e55af520b8ab7db3eefe523f9fc44348a6df",
+    "tools/collate_verification.py": "7b188bc7771a2f6401b699795a4690a90a53f45beeeea25c6d6adfa2858e2f82",
+    "tools/collate_walking.py": "726c98d34b6d4a28eb5458cf3b5de6f14f9618873d818a321cd16082b240dbd3",
+    "tools/compare_special_24_state.py": "cc9d89583125f0cc5e2d059db32bf64e242f9deccb3b1b85e1771e7862087e0f",
+    "tools/contact_geometry.py": "21db5448946960a9b31d399dbcaf71c19e2e3b0888843f2d3d0141b56dbf2b47",
+    "tools/copy_combat_24_pacing_samples.py": "01641b0eff23ab9271e423da3a7d35e732d3bda60605e9aa0b71f043636d1571",
+    "tools/effect_assets.py": "f5079057e2314469d4befb9974ab61281c1156c6adfd6516058fb66e01735150",
+    "tools/emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
+    "tools/expansion_contracts.py": "b64c11cecf01d5ca672ffb137a416ec0ae2f16c94ea310594ea3250cc1803d51",
+    "tools/fetch_references.py": "a630e9cb073f7a20b4ddb720a3af812d6e7790398c5dc19cd88ece7c13a65254",
+    "tools/fighter_assets.py": "73d34baa92e573f6808eeee0474b1a0d619e5bc3cd31e4b8f2ad8b3b304ffdad",
+    "tools/longrun_host.py": "432bed2b7505131d639794ee4b1d857292df4465e7f219c39a14fa433f11cc8e",
+    "tools/make_assets.py": "f0d3dc9f6be5d5ea5d90b54c241a0856251a624b4e541bfaa3fefa16e1fe10c1",
+    "tools/make_champion_budget.py": "f5ffcfec6c09729f72f19815613d244794bfe4e0ad7a5d708c63a634552e24ad",
+    "tools/make_cpu_antiair_review.py": "806c08ef0095dacafcb5209ae7f543a01db12ad5e05c1f112691488ceb718fab",
+    "tools/make_crossup_practice_review.py": "b9386e97c1114ecee7730fa05dc42931f8447594b4d07d47507b0f08272506b2",
+    "tools/make_crossup_review.py": "e45c814c00a01e070d2534fdc6d293363c14abeb99a170fd8df78aa4641a3b22",
+    "tools/make_expansion_review.py": "feb522c84bb46c750f8cbdaa79dd4b8a20dcdb373bad0e3db8f1fd716208d001",
+    "tools/make_focused_listening_pack.py": "f864dd37f7c1b4f967af09b76951b2cede7058e9be1d1699b18fd16e87a94c94",
+    "tools/make_play_flow_review_26.py": "286e12a76ab3c509968e80006279c59d3b538eb6d882bd7f95a568464d67e4fa",
+    "tools/make_preservation_report.py": "3fe295216aa69d570896e70f3901d97842d03acaee2ff1850080f292326ee18b",
+    "tools/make_review_gallery.py": "e5bab41cd7aede547a281f894ab477f765fda0fea8ece199d47bb73b28be0b31",
+    "tools/make_roster_review.py": "d2b8b7fd211452887218ef07cd691efdb52efd2f0ddcb555a02137233010461e",
+    "tools/make_training_cpu_review.py": "60977b144de38f340dfeb4e65daf1d161ebcb3ef6f58820bfb480ff948f92a82",
+    "tools/menu_assets.py": "be192cb00fd2ce73b0ec4434572ce9501b7bac10cf2e8e05819c4422631e19f6",
+    "tools/menu_preview_checks.py": "f4d43edce678d7ee3cf05fca815ccc11878fca13893bd9d2706cac73295d93a6",
+    "tools/native_artifacts.py": "8d11fd37f1d275647ee9898c5c145be9d219cf891d68d383c7a6c1e9cb00514b",
+    "tools/package.py": "024ff1f51574460e611d10ae6db570ee4b1e3dc1e34b05323b4b5bea23eb216e",
+    "tools/play_flow_counterfactual.py": "424dc06c62168d0d43f66cba20a0a02938307391da972f39e729b27cb55ba286",
+    "tools/play_flow_media.py": "7e542a9ac96d0668116877124081ead3b0a1e9b39e1e7492cdda938477dbf4fe",
+    "tools/portrait_assets.py": "f95047e2ad5e1c292809ced20ca2e9cc77dc4a0e5f3c10d43cadf8e0843107d3",
+    "tools/pose_revision_assets.py": "7baca936c90d63dbedb732b1a222207322bed881e84841cb6d41179c7e539709",
+    "tools/preservation.py": "40e13816f5a7086c18e6053789e209722316a6c2675fb9583647eed20891ae76",
+    "tools/release_evidence.py": "b7d779838bc61c2c63ae272968e04abba19694c36b7127c0302f5f6afaccac35",
+    "tools/report_training_timing.py": "1c1153a39f8c207da55db46b974e196911c9e61aed43bd62b618fcf985ca7606",
+    "tools/review_media.py": "e35af4eb143791128f8f2ceabdb72b662993238127005534018753e95b67174a",
+    "tools/run_background.py": "0906fa836fa680964846049036fd2ea1ad48a2fcb68d1235bedff86e7afdf178",
+    "tools/stage_assets.py": "28ccd1c8f6dfff94bc0556211af788c08acffb04d41d29f1a69fbea1db8440ce",
+    "tools/stage_cartoon.py": "3cedf521885bcdb0391b65f0337eb8a5aee79fbb93b007c81b5671b008354f4f",
+    "tools/stage_depth_assets.py": "8e3376327d818c59448056bc19775d5cf1210c46f8357d9fddaaafbde08730ac",
+    "tools/stage_sources.py": "b3c249050b7ed53408b9c6aa9c31748fae92125c3a3b055ce991bf7ef77c4008",
+    "tools/stage_test_contract.py": "ce846412c276ade58baba3fd940d13cfba1ae21c9b925c1aa4c87308f4c2fa9f",
+    "tools/test_arena_preview_26.py": "c96d827d377270a00e51baa3033597a982d5c558af674388dc90dea7100b1c27",
+    "tools/test_asset_cache.py": "cd6abc619c54a8af064584da652c7f9a6b85ebd80c540f76648c382e82916e90",
+    "tools/test_asset_transaction.py": "3d5fc5a49f40cb27f7bef3da1f1af6594edcb2fcf9b94c0902ab6be55df53e5f",
+    "tools/test_audio.py": "542ad545a023db85c9fe14066823cea5fa58848932d92057d55e26c76a28a73d",
+    "tools/test_authoring_guards.py": "99e5197dedb642aeca6d6f13c416588f23551bdfdb04fa2a528ea068bb98014a",
+    "tools/test_candidate_sources.py": "fcedacec4e5f020600b58d21349f168d1b81562b2fe570f8dc24c4bc3d59bf2b",
+    "tools/test_champion.py": "d2424acd2cb75a7e08c5a2832a0bf6e5dc3cdb708f6aa89293d4ac3fe2d1e4d5",
+    "tools/test_champion_audio.py": "10d2cdf896dde9530008dcfb9fff2912d5415cfbd99bd00c61d9f19b0c9dca3e",
+    "tools/test_characters.py": "c580589d5cf485165ffd83700b1b3044e1f48159101d3bf8ac31b1f41069b096",
+    "tools/test_classic_menu.py": "c469ac2469c19bf12441e9aee8c36240d8c318b1ad2b5d250e7eccab49a8427c",
+    "tools/test_combat24_attack.py": "bf619bc29ef2b1df12dbc6dd9f538802ff675ba52ea4645099560a6fd442e191",
+    "tools/test_combat24_super.py": "85849f6cb922f384c3f55f84721b7af0af917d21aea03ce4f37862a7566560e0",
+    "tools/test_combat_24_contact.py": "8e6f481e28743880624cb03cea2efac89c0c7408ab748f74c19433113645ff07",
+    "tools/test_combat_24_evidence.py": "62811716e8f0f8c39b494038bf20ed372ed6fb4b56618863a067681efe06c79e",
+    "tools/test_combat_24_jumps.py": "bea0dd4207dfeb65d65d6142e0cdee438e0389d5cfb6f20336dfbf1e3277e567",
+    "tools/test_combat_24_pacing.py": "dbdf7fd5c21b55bdf026b5ad8edf73ae59abb1393fe073dc0dfc282f605084f9",
+    "tools/test_combat_24_stage08.py": "a35f914c5ab4fdb6336ee218782d96c14ebf0b4bbc4009300e4f2bd052cdcdf3",
+    "tools/test_compatibility.py": "c751c44eb3dbaf4542f54c1f6dfd3be4365bbe1336a1705bdaf9f6ff002c123d",
+    "tools/test_compatibility_combat.py": "c50712f19042bf69da0978ce7e4321cf6de1a33bd2269118483403beb9e4a754",
+    "tools/test_confirm_26.py": "c51954e650212b9690179d339544c3bb45b9c13ecbf9a9e03b0eae4346a746be",
+    "tools/test_contact_24_timing.py": "6039be9b4bd515a8fffe4d627dea5ace99a03a3eb6d42ee83450398f73f43a06",
+    "tools/test_contact_budget.py": "f8acb5525d0e3d627c70894ac8c4cce3c3a5bd63421ef4139d3a0f4f5c6cc2c5",
+    "tools/test_contact_super_composition.py": "0f9d0144fd945044f8c67774c8f49c4e553de9f56eeb9746cf1e6d953710f637",
+    "tools/test_crossup_practice.py": "087c4f0cffe9c791619afc6a7419f5fafbaa3c4fe053ab14dbee715bbc279d50",
+    "tools/test_endurance.py": "7c190efdf822baeb4bf7ccebbd75025d60b62598babee1bf9d673c77b81b3ed0",
+    "tools/test_endurance_reporting.py": "5533ab27348e4f532b1beef81db9514d28cffaea883d48f52cebc6a2373b9fa0",
+    "tools/test_expansion_01_animation_weight.py": "4e9900b1e8d3100ac417d3dbed29b900ddda865572583f2149784c825b31a9a7",
+    "tools/test_expansion_02_impact.py": "d12ea9213524efc3bfac044b84570e423dfb92513302abcbec850b255f1ee5a0",
+    "tools/test_expansion_03_normal_balance.py": "5b61e525f1c1cf6b45a84ba2af73612b66551c6395e7cacd96ae7e501618ea17",
+    "tools/test_expansion_04_fighter_personality.py": "78495a19076b90e564ca2a665c47857b3e8d883963aef263827e8f8173ecd231",
+    "tools/test_expansion_05_training_tools.py": "ffa3f0b9802a371c4bb30c9c0c555609f792541186f5a1b38796d8dd7d52ebcf",
+    "tools/test_expansion_06_cpu_personality.py": "6d69503795a8b56b1f54cd5c9a418c3d6780c9aa2be8ee95ca12647a6075e8b0",
+    "tools/test_expansion_07_supers.py": "cc2a0a9f90973371f310216d81db0a02eb932e28067366f04ba059df1fce0fb7",
+    "tools/test_expansion_08_stage_depth.py": "a9c3e96130d7046fefd3c644b40560661102790bb3f65bef36e09f4606b1b4c8",
+    "tools/test_expansion_09_arcade_story.py": "bf01de14c55a46ed68a2eb2d7774eca094f1daf288e622fd86078a17543f1114",
+    "tools/test_expansion_10_audio.py": "2fb8352dc3e9932dd85f38174bbc5fe385a7ea9c42a878737a191860b36dc39e",
+    "tools/test_feedback_26.py": "05041d4b2342719e54304ed689a7fbf42b14f60fdd3c364d8766d4fa9ded524a",
+    "tools/test_four_button_hud.py": "a5a049919b38c87f30f981b301ef3718f9dc3810835f3497db7aceecd44afbeb",
+    "tools/test_fresh_build.py": "75b6c3622d1ad96411feb8b13a9fc71e0d47fa5357fbe8c93d0c11a21c348b8b",
+    "tools/test_inputs.py": "cf3db1c9ba93514ca36fa5eec433ffa30c5131e18903f42c7967dc5fd18ecb48",
+    "tools/test_launcher_26.py": "972531769a22a3d85f652104912f981bd9a3d027244702e1efdadfa2e1803e46",
+    "tools/test_local_session_26.py": "869597abe87ff42c46c333ac27148c2f871fb7804696e3aed446de924ef8a6a8",
+    "tools/test_long_session_guards.py": "72f528248cb1369681a62cf53cb13ace31273c279ccea7e7c9f1a53dea5a1643",
+    "tools/test_matchups.py": "1979c79b5ed465f798c9528267e9debce412a1f2c19ca84c13d34995db060a1c",
+    "tools/test_menu_footers.py": "f8b5e777271eda28f0eba79a1b2c5fbfef7a0e61b2946c1ffe9722ce6c6e69fc",
+    "tools/test_menu_preview.py": "25c7098dd6bf84d688a684adcb91c2159744203828b13c2f6b7d37d7d8ec38f6",
+    "tools/test_menu_repeat_26.py": "4c523aa0e6075d6cf8c1527dafbd3dc89981be327938a50cdef860529adc60f5",
+    "tools/test_mesen.py": "c1d044e8dd108c1ac05ff7d5e6d5dbc5757ce42c0c45e9c31d59d6bdd887b3c0",
+    "tools/test_motion_26.py": "1296884ca3a0fab2a4bcfef541682f023ab85b7f632756169639bd97f418064d",
+    "tools/test_music_26.py": "ed9a97cf8cc7c63212977cbba28523c99245945a84e5f1b13cd8b3646caa9030",
+    "tools/test_native_artifacts.py": "905cdccf4f6055d34b09387c26205879b839520cad119fe8c01de3c3ac2b1327",
+    "tools/test_native_build_26.py": "0ac64bfec8e4db1c8420745891578bb8b914a6764a275a970a7ae2f5fcede8c5",
+    "tools/test_normal_guide_26.py": "93be4467c72686dfb312ccf5b5a957d15ca54ecf5bd083f6b03527af6a48336a",
+    "tools/test_pacing_floor_25.py": "63ed240c93d3fcd40b72f9e38d23dbb34170f4e8ba9c25b4845e25cfd2674711",
+    "tools/test_package.py": "1174274d5eeec4610fd98fb11bbef90b213a9f5a61a776f634a6d99fcb15d3d9",
+    "tools/test_play_flow_26.py": "f85bdd5f85cb5df1e611449406654d42f281d7c9335d13ee5c91549ac2330b6c",
+    "tools/test_play_flow_collation.py": "c15d9965c6a966f7c4e8e095629e441dfb0895cf2652833881cca0367fc0679c",
+    "tools/test_play_flow_counterfactual.py": "7437ea224c929a74955b940aa33de647d21227e616ce2ea3e6147c8a569fbbcc",
+    "tools/test_play_flow_long_26.py": "1afe0bac92d2dd9a2dafa438b19b603a02d0b77b22311b785c7dc99110e9d2b4",
+    "tools/test_play_flow_media.py": "cf9bd688d5f6d62e90ff29bff116cf295da8b18bcc92dfef74888c86bd4c445e",
+    "tools/test_play_flow_stress_26.py": "30192c13e6d118bc49e5502ccd7e8cd5774eb089491e1ad0cbae80aaad3cfa7e",
+    "tools/test_pose_revision_guards.py": "591ade0ac9fa3e83c0169a2900d0f6f642df9fceed5b031c6ecef47f52123093",
+    "tools/test_presentation.py": "b848936bf59953a4a8febf66cde6bc7b2f56adac858aaa4a973d92ae2ad1b006",
+    "tools/test_preservation.py": "635b1201940579ede2c6edaecc0d4e72f36616918f0119676026f38dcfb52bdf",
+    "tools/test_random29.py": "ca33b36f45fc82f4206e0f07dead90adc9521a561e1d09941d0bbee0a03af49e",
+    "tools/test_review_media.py": "ac1827f8455fcecc11ba088af109a3bcd9fcb2083c267b574316fd662ebc0253",
+    "tools/test_rom.py": "b3fb77db409dd230443a22fc6f8209e8ff501c88843131237bab600e13e03612",
+    "tools/test_roster_hints_26.py": "24d2e56901cf5af23b3b84b0ff1de05b27b31fec02e3f4b338fc9bf9e0293d57",
+    "tools/test_session_limit_26.py": "bb8fd62cf0bcabf688d22e62e108af59c27d0267afc49580b1a36e1ee2291775",
+    "tools/test_special_24_cpu_timing.py": "4e57c11a7a8bf1a7472e5fe4319995b8b729b34dd4f06f944d1b2c2dad6e310d",
+    "tools/test_special_24_timing.py": "65f6aa8689ad7fa080e428bdf04399113275f04a9b40ff8070bdb80278d283ad",
+    "tools/test_stage_pipeline_26.py": "fe6e8b520cf612b6cd2f7c1609ddb9039f2133148ed97479f86ef6a7e96ab982",
+    "tools/test_stages.py": "08cb003e6cbc7057ed092bf6a4e8ce101b7191d8f223460062f9d4fbef230acf",
+    "tools/test_throw_feedback_26.py": "5b06add180acc546cfa81491c765fe5c6fcb93202d14d60f5e9f2eb61191799c",
+    "tools/test_training.py": "80be92d2237932fc9d5afb267cad4f2a1a6349de7a4c7270e5c30484c28e9783",
+    "tools/test_training_best_26.py": "0a9f12bc33a1fdc6bffa8daac0506ad6ebe2aeb155de883631c5d9933d0a6a78",
+    "tools/test_v024_preservation_guards.py": "34dd5d860208298f9bc405f7a535b449fa6329dcf06fda5f9d44f46acf235e82",
+    "tools/test_verification_runner_guards.py": "22bfafd5fc95925bbb9242ce516f53cbcb0196326006de7e87cfe8e580527c35",
+    "tools/test_walking.py": "f98a337905aecbc6c12ae539d3d4ae1b3914b449d944805129da316462b1068a",
+    "tools/test_web_build.py": "30c4ff742e0b673055e8cf061506e51c93fcd54c8269fb8b96de2c5382ba0ea2",
+    "tools/v024_contracts.py": "1b8bbe9ffee65ff4f72410564e26941bb86da72ae914da3f5c74bdbb4891a076",
+    "tools/v025_contracts.py": "fd17ca4c9c748708c0a0b1a4e798dd6ccf37cea9355a6cabade729d1acaef719",
+    "tools/v026_contracts.py": "4f255533d9f3920dc1bf8296b7729b5e87abd45a8f155c6f73da04bd459cac65",
+    "tools/verify_play_flow_26.py": "0954750a9e899a4aa38a0d2d41b6e414a4fa525151800ca729bd02cdd5b72d04",
+    "tools/victory_music.py": "6da647ea3b1d58129d3f91a95d7a516433b8e609b4a847a180ff0bb96ac28528",
+    "tools/walking_assets.py": "cf36efcb8fc9971eef11ed65c9afb487333d12902bcc22a285616486873d8694"
+  },
+  "host": {
+    "python": "3.12.10",
+    "pillow": "13.0.0",
+    "gui_opened": false,
+    "audio_device_opened": false,
+    "priority_class": 16384,
+    "logical_processors": [
+      8,
+      9
+    ]
+  },
+  "sessions": [
+    {
+      "core": "snes9x",
+      "mode": 0,
+      "roles": [
+        {
+          "role": 0,
+          "values": [
+            2,
+            7,
+            7,
+            5,
+            8,
+            0,
+            2,
+            8,
+            11,
+            4,
+            3,
+            4,
+            5,
+            11,
+            2,
+            4,
+            11,
+            7,
+            9,
+            3,
+            2,
+            8,
+            11,
+            5,
+            11,
+            6,
+            5,
+            9,
+            8,
+            6,
+            9,
+            5,
+            1,
+            1,
+            10
+          ],
+          "reachable": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "mirror": false,
+          "ports": [
+            0
+          ],
+          "preview_pixels": [
+            {
+              "fighter": 2,
+              "pose": 18,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 7,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 5,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 8,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 0,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 11,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 4,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 3,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 9,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 6,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 1,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 10,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            }
+          ]
+        }
+      ],
+      "gestures": [
+        {
+          "role": 0,
+          "fighter": 10,
+          "ticks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "poses": [
+            16,
+            35,
+            35,
+            35,
+            35,
+            35,
+            35,
+            45,
+            45,
+            45,
+            45,
+            45,
+            45,
+            11,
+            11,
+            11,
+            11,
+            11
+          ],
+          "pads": {
+            "p1": [
+              "start",
+              "b",
+              "a",
+              "select"
+            ],
+            "p2": []
+          },
+          "input_callbacks_until_accepted": 1
+        }
+      ],
+      "arenas": {
+        "values": [
+          2,
+          1,
+          0
+        ],
+        "reachable": [
+          0,
+          1,
+          2
+        ],
+        "ports": [
+          0
+        ],
+        "fight_ids": [
+          10,
+          11
+        ],
+        "fight_arena": 0,
+        "fight_samples": 36
+      },
+      "strict_callbacks": 707,
+      "media": [
+        {
+          "path": "docs/screenshots/random29/snes9x/mode0-random-02.png",
+          "sha256": "60d1016b7bd806d82fbdae8aae8379cdb9c800a129bef2483f168fe93f0d6b26"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode0-random-07.png",
+          "sha256": "53168a50ab22b5b63f035bc4dc09643fd293c62ed9f767c5ea4bc00fd5a6aecf"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode0-random-05.png",
+          "sha256": "fc0f2034b8f27ac9d873e6ac7fc1cb662cc6d4f009a3b128c00c0dd35a2b375a"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode0-random-08.png",
+          "sha256": "8174898d4642427744a217e3ecc8ad9dbe0cb37b0193f99ad273c4f1e8320014"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode0-random-00.png",
+          "sha256": "183accea037ec9ba5920fcf326ce428230d618d41cf0d76feaa0ad2c0d419f77"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode0-random-11.png",
+          "sha256": "6cb9785a13b74baf1a197a3ffebbb14e86d80b2d46bd794ff26f3c17aa8a1523"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode0-random-04.png",
+          "sha256": "09c8884bb21b9d09869fadc78f8dd5b9a0a3798289bf9639e9ac0419c486e84c"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode0-random-03.png",
+          "sha256": "10997fb5041bf9723b65803122cdfd26e908cf72c3d58cc383b83a8ae5cf01b1"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode0-random-09.png",
+          "sha256": "cafdce608ae31312cb0493d0eb8912bc467f028b9b842b591870a1a13efd1f74"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode0-random-06.png",
+          "sha256": "3f93c5233f5deea3018a9b54aeb5947cdb33581d26d748b53f8b96abae12b1a6"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode0-random-01.png",
+          "sha256": "13c3c913066fbfa6d5eac6cc1691a3ad943e91e01e4b673216fd24b98560d2a9"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode0-random-10.png",
+          "sha256": "d409f38f8c9d55ed9a3bcf27ec92560751d1f266f8383ff665bf831f518ff86c"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode0-arena-2.png",
+          "sha256": "1319af80312a04a756a97222efadf2f868eb9780d125554adf9cb8685fcf9ba1"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode0-arena-1.png",
+          "sha256": "dd184e930eb05b7945849847762768633b6989afa5d0e28250f1c74867e7da2b"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode0-arena-0.png",
+          "sha256": "23f4a606e4b184a95b077d6700749f64c15d09086bda0c9df9e1eeb96d93163a"
+        }
+      ]
+    },
+    {
+      "core": "snes9x",
+      "mode": 1,
+      "roles": [
+        {
+          "role": 0,
+          "values": [
+            9,
+            0,
+            7,
+            6,
+            2,
+            5,
+            11,
+            3,
+            11,
+            9,
+            5,
+            1,
+            0,
+            11,
+            5,
+            11,
+            1,
+            7,
+            8,
+            0,
+            11,
+            0,
+            0,
+            0,
+            2,
+            9,
+            2,
+            1,
+            6,
+            6,
+            7,
+            3,
+            2,
+            1,
+            4,
+            6,
+            9,
+            9,
+            3,
+            7,
+            2,
+            3,
+            9,
+            11,
+            0,
+            0,
+            10
+          ],
+          "reachable": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "mirror": false,
+          "ports": [
+            0
+          ],
+          "preview_pixels": [
+            {
+              "fighter": 9,
+              "pose": 18,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 0,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 7,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 6,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 2,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 5,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 11,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 3,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 1,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 8,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 4,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 10,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            }
+          ]
+        },
+        {
+          "role": 1,
+          "values": [
+            2,
+            8,
+            4,
+            1,
+            1,
+            7,
+            4,
+            3,
+            8,
+            5,
+            6,
+            2,
+            3,
+            6,
+            4,
+            0,
+            5,
+            9,
+            0,
+            11,
+            1,
+            7,
+            10
+          ],
+          "reachable": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "mirror": true,
+          "ports": [
+            0,
+            1
+          ],
+          "preview_pixels": [
+            {
+              "fighter": 2,
+              "pose": 18,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 8,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 4,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 1,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 7,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 3,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 5,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 6,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 0,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 9,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 11,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 10,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            }
+          ]
+        }
+      ],
+      "gestures": [
+        {
+          "role": 0,
+          "fighter": 10,
+          "ticks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "poses": [
+            16,
+            35,
+            35,
+            35,
+            35,
+            35,
+            35,
+            45,
+            45,
+            45,
+            45,
+            45,
+            45,
+            11,
+            11,
+            11,
+            11,
+            11
+          ],
+          "pads": {
+            "p1": [
+              "start",
+              "b",
+              "a",
+              "select"
+            ],
+            "p2": []
+          },
+          "input_callbacks_until_accepted": 1
+        },
+        {
+          "role": 0,
+          "fighter": 10,
+          "ticks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "poses": [
+            16,
+            35,
+            35,
+            35,
+            35,
+            35,
+            35,
+            45,
+            45,
+            45,
+            45,
+            45,
+            45,
+            11,
+            11,
+            11,
+            11,
+            11
+          ],
+          "pads": {
+            "p1": [
+              "a"
+            ],
+            "p2": []
+          },
+          "input_callbacks_until_accepted": 1
+        },
+        {
+          "role": 1,
+          "fighter": 9,
+          "ticks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "poses": [
+            16,
+            42,
+            42,
+            42,
+            42,
+            42,
+            42,
+            43,
+            43,
+            43,
+            43,
+            43,
+            43,
+            11,
+            11,
+            11,
+            11,
+            11
+          ],
+          "pads": {
+            "p1": [
+              "select"
+            ],
+            "p2": [
+              "a"
+            ]
+          },
+          "input_callbacks_until_accepted": 1
+        }
+      ],
+      "arenas": {
+        "values": [
+          0,
+          0,
+          0,
+          2,
+          1
+        ],
+        "reachable": [
+          0,
+          1,
+          2
+        ],
+        "ports": [
+          0,
+          1
+        ],
+        "fight_ids": [
+          10,
+          9
+        ],
+        "fight_arena": 1,
+        "fight_samples": 36
+      },
+      "strict_callbacks": 1232,
+      "media": [
+        {
+          "path": "docs/screenshots/random29/snes9x/mode1-random-mirror.png",
+          "sha256": "e4b4dccefcd4ea137ffa4cce47978d67fff1acac1d2d0e96926329b83f960a25"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode1-arena-0.png",
+          "sha256": "a5a22fac45ae6ffe0da68f9ca62d1f9428db7a4bd2ddf28f181e9acea109ded5"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode1-arena-2.png",
+          "sha256": "8f142a0cf529e08bc84db6b627763fa7413945354adec8ef0a1aa284aa4486d4"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode1-arena-1.png",
+          "sha256": "255f2d4fd5d1497dff68fcb221a72e351834348d99d30fc19a249eb03355fb07"
+        }
+      ]
+    },
+    {
+      "core": "snes9x",
+      "mode": 2,
+      "roles": [
+        {
+          "role": 0,
+          "values": [
+            4,
+            6,
+            8,
+            0,
+            3,
+            10,
+            9,
+            11,
+            0,
+            2,
+            4,
+            10,
+            7,
+            8,
+            11,
+            6,
+            11,
+            3,
+            8,
+            5,
+            4,
+            1
+          ],
+          "reachable": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "mirror": false,
+          "ports": [
+            0
+          ],
+          "preview_pixels": [
+            {
+              "fighter": 4,
+              "pose": 18,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 6,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 8,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 0,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 3,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 10,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 9,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 11,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 2,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 7,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 5,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 1,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            }
+          ]
+        },
+        {
+          "role": 1,
+          "values": [
+            5,
+            4,
+            8,
+            2,
+            0,
+            8,
+            4,
+            11,
+            6,
+            9,
+            3,
+            0,
+            1,
+            3,
+            1,
+            2,
+            2,
+            5,
+            6,
+            6,
+            10,
+            2,
+            0,
+            6,
+            9,
+            8,
+            0,
+            2,
+            8,
+            4,
+            4,
+            1,
+            7
+          ],
+          "reachable": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "mirror": true,
+          "ports": [
+            0,
+            1
+          ],
+          "preview_pixels": [
+            {
+              "fighter": 5,
+              "pose": 18,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 4,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 8,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 2,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 0,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 11,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 6,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 9,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 3,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 1,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 10,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            },
+            {
+              "fighter": 7,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 2
+            }
+          ]
+        }
+      ],
+      "gestures": [
+        {
+          "role": 0,
+          "fighter": 1,
+          "ticks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "poses": [
+            16,
+            40,
+            40,
+            40,
+            40,
+            40,
+            40,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            11,
+            11,
+            11,
+            11,
+            11
+          ],
+          "pads": {
+            "p1": [
+              "start",
+              "b",
+              "a",
+              "select"
+            ],
+            "p2": []
+          },
+          "input_callbacks_until_accepted": 1
+        },
+        {
+          "role": 0,
+          "fighter": 1,
+          "ticks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "poses": [
+            16,
+            40,
+            40,
+            40,
+            40,
+            40,
+            40,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            11,
+            11,
+            11,
+            11,
+            11
+          ],
+          "pads": {
+            "p1": [
+              "a"
+            ],
+            "p2": []
+          },
+          "input_callbacks_until_accepted": 1
+        },
+        {
+          "role": 1,
+          "fighter": 2,
+          "ticks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "poses": [
+            16,
+            34,
+            34,
+            34,
+            34,
+            34,
+            34,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            11,
+            11,
+            11,
+            11,
+            11
+          ],
+          "pads": {
+            "p1": [
+              "select"
+            ],
+            "p2": [
+              "a"
+            ]
+          },
+          "input_callbacks_until_accepted": 1
+        }
+      ],
+      "arenas": {
+        "values": [
+          2,
+          1,
+          1,
+          0
+        ],
+        "reachable": [
+          0,
+          1,
+          2
+        ],
+        "ports": [
+          0
+        ],
+        "fight_ids": [
+          1,
+          2
+        ],
+        "fight_arena": 0,
+        "fight_samples": 36
+      },
+      "strict_callbacks": 1057,
+      "media": [
+        {
+          "path": "docs/screenshots/random29/snes9x/mode2-random-mirror.png",
+          "sha256": "28ed48e64ade6d30bdd6e0a236f11a3d3a7d4c4e7dcd4faf231a9793cb1aaee9"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode2-arena-2.png",
+          "sha256": "1319af80312a04a756a97222efadf2f868eb9780d125554adf9cb8685fcf9ba1"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode2-arena-1.png",
+          "sha256": "dd184e930eb05b7945849847762768633b6989afa5d0e28250f1c74867e7da2b"
+        },
+        {
+          "path": "docs/screenshots/random29/snes9x/mode2-arena-0.png",
+          "sha256": "23f4a606e4b184a95b077d6700749f64c15d09086bda0c9df9e1eeb96d93163a"
+        }
+      ]
+    },
+    {
+      "core": "accuracy",
+      "mode": 0,
+      "roles": [
+        {
+          "role": 0,
+          "values": [
+            2,
+            7,
+            7,
+            5,
+            8,
+            0,
+            2,
+            8,
+            11,
+            4,
+            3,
+            4,
+            5,
+            11,
+            6,
+            5,
+            9,
+            7,
+            5,
+            1,
+            1,
+            6,
+            2,
+            5,
+            0,
+            6,
+            10
+          ],
+          "reachable": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "mirror": false,
+          "ports": [
+            0
+          ],
+          "preview_pixels": [
+            {
+              "fighter": 2,
+              "pose": 18,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 7,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 5,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 8,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 0,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 11,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 4,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 3,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 6,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 9,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 1,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 10,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            }
+          ]
+        }
+      ],
+      "gestures": [
+        {
+          "role": 0,
+          "fighter": 10,
+          "ticks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "poses": [
+            16,
+            35,
+            35,
+            35,
+            35,
+            35,
+            35,
+            45,
+            45,
+            45,
+            45,
+            45,
+            45,
+            11,
+            11,
+            11,
+            11,
+            11
+          ],
+          "pads": {
+            "p1": [
+              "start",
+              "b",
+              "a",
+              "select"
+            ],
+            "p2": []
+          },
+          "input_callbacks_until_accepted": 1
+        }
+      ],
+      "arenas": {
+        "values": [
+          2,
+          1,
+          0
+        ],
+        "reachable": [
+          0,
+          1,
+          2
+        ],
+        "ports": [
+          0
+        ],
+        "fight_ids": [
+          10,
+          11
+        ],
+        "fight_arena": 0,
+        "fight_samples": 36
+      },
+      "strict_callbacks": 608,
+      "media": [
+        {
+          "path": "docs/screenshots/random29/accuracy/mode0-random-02.png",
+          "sha256": "a1abcb06409269c088b8ae0bc563d70ac41b2075b88143b921167e6bddc3d274"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode0-random-07.png",
+          "sha256": "2178a4c2d7a5c92e737ff42d931d39571c48783433716ee9bb4aad305bc5d888"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode0-random-05.png",
+          "sha256": "42c4fee5e4374e8e5bbdafd5bb69c17a299006413148fbfa522251e8327548d2"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode0-random-08.png",
+          "sha256": "f4c1b862abe41ee5c2d05a1456e59540bc366d618be060f94ba20a264e1d79c4"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode0-random-00.png",
+          "sha256": "ae866926f3883a51a879b74729e985613aab7eb8fde284ac015ab7bcd6e35e79"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode0-random-11.png",
+          "sha256": "357222840e7ad6012707b7afbb1c0f4f297d565eac23de14c8cdf3b115db3430"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode0-random-04.png",
+          "sha256": "00c1bb8ceb038a07d6075735c48e3f6927bfefc4bd0f56d0243cf2f709882860"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode0-random-03.png",
+          "sha256": "c626c955ed9498f8a3cd149a96daebab12455e1fc2b1345aaec9c81fc4439d6b"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode0-random-06.png",
+          "sha256": "21f07c419d84a38ec2768d8a17c640357d16c65b87b4fec6d1e099d1a2ea4bd8"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode0-random-09.png",
+          "sha256": "3e5f1f8d0509ddc6994efbfbd193fb3bdba3ee8d83e6856a6c42b50b39f0f38c"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode0-random-01.png",
+          "sha256": "d14e89680b193894442635a0668b8b322a14dc7503328955fef15a7e016733e4"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode0-random-10.png",
+          "sha256": "915ca82da715a54d18e35228358c24ae2a6998279f74750024cadcd90b56f6fd"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode0-arena-2.png",
+          "sha256": "14e1bc453e28a177658fc08a9b5d7b498bbe93fc9e23e0842f3799d39ff465d1"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode0-arena-1.png",
+          "sha256": "35c1b2719f843ca3411f3fca46661128cdabf711fdc444cc4b38dc8cff0bd927"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode0-arena-0.png",
+          "sha256": "52045c9e5407f203d72ed502117ade4fb3bfc6be8665ef952075d6ba6f8746cf"
+        }
+      ]
+    },
+    {
+      "core": "accuracy",
+      "mode": 1,
+      "roles": [
+        {
+          "role": 0,
+          "values": [
+            9,
+            0,
+            7,
+            6,
+            2,
+            5,
+            0,
+            0,
+            1,
+            7,
+            6,
+            9,
+            6,
+            5,
+            3,
+            0,
+            10,
+            7,
+            10,
+            8,
+            4,
+            5,
+            7,
+            5,
+            2,
+            8,
+            1,
+            9,
+            11
+          ],
+          "reachable": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "mirror": false,
+          "ports": [
+            0
+          ],
+          "preview_pixels": [
+            {
+              "fighter": 9,
+              "pose": 18,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 0,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 7,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 6,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 2,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 5,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 1,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 3,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 10,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 8,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 4,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 11,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            }
+          ]
+        },
+        {
+          "role": 1,
+          "values": [
+            4,
+            4,
+            9,
+            8,
+            3,
+            6,
+            3,
+            6,
+            0,
+            6,
+            8,
+            6,
+            1,
+            8,
+            0,
+            0,
+            4,
+            0,
+            9,
+            1,
+            10,
+            2,
+            1,
+            7,
+            0,
+            8,
+            0,
+            11,
+            11,
+            2,
+            7,
+            11,
+            0,
+            11,
+            4,
+            2,
+            2,
+            2,
+            0,
+            5
+          ],
+          "reachable": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "mirror": true,
+          "ports": [
+            0,
+            1
+          ],
+          "preview_pixels": [
+            {
+              "fighter": 4,
+              "pose": 18,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 9,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 8,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 3,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 6,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 0,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 1,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 10,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 2,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 7,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 11,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 5,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            }
+          ]
+        }
+      ],
+      "gestures": [
+        {
+          "role": 0,
+          "fighter": 11,
+          "ticks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "poses": [
+            16,
+            44,
+            44,
+            44,
+            44,
+            44,
+            44,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            11,
+            11,
+            11,
+            11,
+            11
+          ],
+          "pads": {
+            "p1": [
+              "start",
+              "b",
+              "a",
+              "select"
+            ],
+            "p2": []
+          },
+          "input_callbacks_until_accepted": 1
+        },
+        {
+          "role": 0,
+          "fighter": 11,
+          "ticks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "poses": [
+            16,
+            44,
+            44,
+            44,
+            44,
+            44,
+            44,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            11,
+            11,
+            11,
+            11,
+            11
+          ],
+          "pads": {
+            "p1": [
+              "a"
+            ],
+            "p2": []
+          },
+          "input_callbacks_until_accepted": 1
+        },
+        {
+          "role": 1,
+          "fighter": 10,
+          "ticks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "poses": [
+            16,
+            35,
+            35,
+            35,
+            35,
+            35,
+            35,
+            45,
+            45,
+            45,
+            45,
+            45,
+            45,
+            11,
+            11,
+            11,
+            11,
+            11
+          ],
+          "pads": {
+            "p1": [
+              "select"
+            ],
+            "p2": [
+              "a"
+            ]
+          },
+          "input_callbacks_until_accepted": 1
+        }
+      ],
+      "arenas": {
+        "values": [
+          1,
+          1,
+          2,
+          0
+        ],
+        "reachable": [
+          0,
+          1,
+          2
+        ],
+        "ports": [
+          0,
+          1
+        ],
+        "fight_ids": [
+          11,
+          10
+        ],
+        "fight_arena": 0,
+        "fight_samples": 36
+      },
+      "strict_callbacks": 1213,
+      "media": [
+        {
+          "path": "docs/screenshots/random29/accuracy/mode1-random-mirror.png",
+          "sha256": "15074e5d2d27cf62e2c78e58cfa46152030fbd25cfcd94d0ddffa6cbe19e57d2"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode1-arena-1.png",
+          "sha256": "0f12a119598fc624e1abd22047cee87ca8dcf026020b5ff79f08af8b07660c90"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode1-arena-2.png",
+          "sha256": "21f6c9770ab7b9a2322ec293d3d2f7f489756bf70dfdfe793e7d2c51f334235b"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode1-arena-0.png",
+          "sha256": "006049809a3aeb703b66025c521ae37b961a6c314056014489ea66e0c5307cd9"
+        }
+      ]
+    },
+    {
+      "core": "accuracy",
+      "mode": 2,
+      "roles": [
+        {
+          "role": 0,
+          "values": [
+            4,
+            6,
+            8,
+            0,
+            3,
+            10,
+            9,
+            11,
+            0,
+            2,
+            4,
+            10,
+            7,
+            8,
+            11,
+            6,
+            0,
+            0,
+            5,
+            3,
+            8,
+            9,
+            10,
+            0,
+            4,
+            10,
+            0,
+            5,
+            6,
+            2,
+            10,
+            6,
+            10,
+            1
+          ],
+          "reachable": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "mirror": false,
+          "ports": [
+            0
+          ],
+          "preview_pixels": [
+            {
+              "fighter": 4,
+              "pose": 18,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 6,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 8,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 0,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 3,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 10,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 9,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 11,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 2,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 7,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 5,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 1,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            }
+          ]
+        },
+        {
+          "role": 1,
+          "values": [
+            2,
+            5,
+            4,
+            8,
+            8,
+            4,
+            1,
+            9,
+            1,
+            9,
+            8,
+            0,
+            6,
+            11,
+            9,
+            10,
+            3,
+            6,
+            6,
+            6,
+            10,
+            1,
+            7
+          ],
+          "reachable": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "mirror": true,
+          "ports": [
+            0,
+            1
+          ],
+          "preview_pixels": [
+            {
+              "fighter": 2,
+              "pose": 18,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 5,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 4,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 8,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 1,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 9,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 0,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 6,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 11,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 10,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 3,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            },
+            {
+              "fighter": 7,
+              "pose": 16,
+              "canvas": [
+                96,
+                80
+              ],
+              "origin": [
+                2,
+                24
+              ],
+              "max_channel_delta": 1
+            }
+          ]
+        }
+      ],
+      "gestures": [
+        {
+          "role": 0,
+          "fighter": 1,
+          "ticks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "poses": [
+            16,
+            40,
+            40,
+            40,
+            40,
+            40,
+            40,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            11,
+            11,
+            11,
+            11,
+            11
+          ],
+          "pads": {
+            "p1": [
+              "start",
+              "b",
+              "a",
+              "select"
+            ],
+            "p2": []
+          },
+          "input_callbacks_until_accepted": 1
+        },
+        {
+          "role": 0,
+          "fighter": 1,
+          "ticks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "poses": [
+            16,
+            40,
+            40,
+            40,
+            40,
+            40,
+            40,
+            28,
+            28,
+            28,
+            28,
+            28,
+            28,
+            11,
+            11,
+            11,
+            11,
+            11
+          ],
+          "pads": {
+            "p1": [
+              "a"
+            ],
+            "p2": []
+          },
+          "input_callbacks_until_accepted": 1
+        },
+        {
+          "role": 1,
+          "fighter": 2,
+          "ticks": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "poses": [
+            16,
+            34,
+            34,
+            34,
+            34,
+            34,
+            34,
+            6,
+            6,
+            6,
+            6,
+            6,
+            6,
+            11,
+            11,
+            11,
+            11,
+            11
+          ],
+          "pads": {
+            "p1": [
+              "select"
+            ],
+            "p2": [
+              "a"
+            ]
+          },
+          "input_callbacks_until_accepted": 1
+        }
+      ],
+      "arenas": {
+        "values": [
+          2,
+          2,
+          1,
+          2,
+          2,
+          2,
+          0
+        ],
+        "reachable": [
+          0,
+          1,
+          2
+        ],
+        "ports": [
+          0
+        ],
+        "fight_ids": [
+          1,
+          2
+        ],
+        "fight_arena": 0,
+        "fight_samples": 36
+      },
+      "strict_callbacks": 1119,
+      "media": [
+        {
+          "path": "docs/screenshots/random29/accuracy/mode2-random-mirror.png",
+          "sha256": "4eb88d546b29e21e38b59e4f089370904b36f0a977b745a2efeb36037a996c11"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode2-arena-2.png",
+          "sha256": "14e1bc453e28a177658fc08a9b5d7b498bbe93fc9e23e0842f3799d39ff465d1"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode2-arena-1.png",
+          "sha256": "35c1b2719f843ca3411f3fca46661128cdabf711fdc444cc4b38dc8cff0bd927"
+        },
+        {
+          "path": "docs/screenshots/random29/accuracy/mode2-arena-0.png",
+          "sha256": "52045c9e5407f203d72ed502117ade4fb3bfc6be8665ef952075d6ba6f8746cf"
+        }
+      ]
+    }
+  ],
+  "cores": {
+    "snes9x": {
+      "archive": ".tools\\core.zip",
+      "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
+      "member": "snes9x_libretro.dll",
+      "member_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
+      "dll": ".tools\\core\\snes9x_libretro.dll",
+      "dll_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343"
+    },
+    "accuracy": {
+      "rom_sha256": "cc020350b8f4bc94a0c6d5e01e37ae4066dd953b2ac0807f422e62be85acd80e",
+      "manifest_sha256": "cc020350b8f4bc94a0c6d5e01e37ae4066dd953b2ac0807f422e62be85acd80e",
+      "rom_bytes": 4194304,
+      "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
+      "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
+    }
+  },
+  "timing_proof": {
+    "snes9x": [
+      {
+        "extra_title_callbacks": 0,
+        "values": [
+          7,
+          5,
+          10,
+          11,
+          0,
+          3,
+          11,
+          2
+        ],
+        "strict_callbacks": 64
+      },
+      {
+        "extra_title_callbacks": 7,
+        "values": [
+          1,
+          5,
+          0,
+          11,
+          4,
+          6,
+          1,
+          9
+        ],
+        "strict_callbacks": 71
+      }
+    ],
+    "accuracy": [
+      {
+        "extra_title_callbacks": 0,
+        "values": [
+          7,
+          5,
+          10,
+          11,
+          0,
+          3,
+          11,
+          10
+        ],
+        "strict_callbacks": 64
+      },
+      {
+        "extra_title_callbacks": 7,
+        "values": [
+          1,
+          5,
+          0,
+          11,
+          4,
+          6,
+          1,
+          9
+        ],
+        "strict_callbacks": 71
+      }
+    ]
+  },
+  "memory_writes": false,
+  "save_states": false,
+  "combined_verification_claimed": false,
+  "preservation": {
+    "baseline": "c7510c30e129465bcca0b32e2142daec60546d0f",
+    "generated_preserved": 226,
+    "hardware_trace_exact": true,
+    "prior_ram_labels": 1323,
+    "moved_markers": {
+      "SECTIONEND_globram.data": [
+        8324504,
+        8324680
+      ],
+      "RAM_USAGE_SLOT_3_BANK_127_END": [
+        1431,
+        1607
+      ]
+    },
+    "new_reserved_labels": {
+      "v29DefenseState": 8324504,
+      "v29BonusState": 8324520,
+      "v29AutoState": 8324584,
+      "v29RandomState": 8324592,
+      "v29AudioState": 8324600,
+      "v29ArenaState": 8324632
+    },
+    "sections_bytes": {
+      "SECTIONSTART_.menuPortraitTilestext_0x0": 297,
+      "SECTIONSTART_.menuPortraitPalettetext_0x1": 297,
+      "SECTIONSTART_.stageDepthResettext_0x2": 67,
+      "SECTIONSTART_.stageDepthLoadtext_0x3": 148,
+      "SECTIONSTART_.stageDepthTracktext_0x4": 200,
+      "SECTIONSTART_.stageDepthPublishtext_0x5": 127,
+      "SECTIONSTART_.stageDepthAmbientReadytext_0x6": 6,
+      "SECTIONSTART_.beginImpacttext_0x7": 331,
+      "SECTIONSTART_.drawImpacttext_0x8": 521,
+      "SECTIONSTART_.publishImpactPrioritytext_0x9": 90,
+      "SECTIONSTART_.impactScrolltext_0xa": 229,
+      "SECTIONSTART_.profileFortext_0xb": 297,
+      "SECTIONSTART_.attackStartuptext_0xc": 246,
+      "SECTIONSTART_.attackActivetext_0xd": 110,
+      "SECTIONSTART_.attackRecoverytext_0xe": 246,
+      "SECTIONSTART_.attackDamagetext_0xf": 448,
+      "SECTIONSTART_.rngtext_0x11": 31,
+      "SECTIONSTART_.abs16text_0x12": 38,
+      "SECTIONSTART_.fighterDatatext_0x13": 297,
+      "SECTIONSTART_.fighterPalettetext_0x14": 297,
+      "SECTIONSTART_.fighterDataBtext_0x15": 297,
+      "SECTIONSTART_.fighterDataCtext_0x16": 297,
+      "SECTIONSTART_.fighterDataDtext_0x17": 297,
+      "SECTIONSTART_.fighterDataEtext_0x18": 297,
+      "SECTIONSTART_.fighterDataFtext_0x19": 297,
+      "SECTIONSTART_.fighterDataGtext_0x1a": 297,
+      "SECTIONSTART_.fighterDataHtext_0x1b": 297,
+      "SECTIONSTART_.fighterFrameBanktext_0x1c": 278,
+      "SECTIONSTART_.puttext_0x1d": 212,
+      "SECTIONSTART_.wordtext_0x1e": 163,
+      "SECTIONSTART_.centertext_0x1f": 183,
+      "SECTIONSTART_.numbertext_0x20": 123,
+      "SECTIONSTART_.paneltext_0x21": 141,
+      "SECTIONSTART_.cursortext_0x22": 677,
+      "SECTIONSTART_.menuCursortext_0x23": 520,
+      "SECTIONSTART_.audioCuetext_0x24": 208,
+      "SECTIONSTART_.soundImpacttext_0x25": 79,
+      "SECTIONSTART_.soundtext_0x27": 138,
+      "SECTIONSTART_.audioSceneLoadedtext_0x28": 153,
+      "SECTIONSTART_.audioAnnouncetext_0x29": 49,
+      "SECTIONSTART_.audioPresentationTicktext_0x2a": 1071,
+      "SECTIONSTART_.musictext_0x2b": 246,
+      "SECTIONSTART_.commonScreentext_0x2c": 451,
+      "SECTIONSTART_.loadBackgroundtext_0x2d": 626,
+      "SECTIONSTART_.finishScreentext_0x2e": 47,
+      "SECTIONSTART_.drawTitletext_0x2f": 288,
+      "SECTIONSTART_.showTitletext_0x30": 71,
+      "SECTIONSTART_.queueMenuPreviewtext_0x31": 775,
+      "SECTIONSTART_.loadMenuPreviewtext_0x32": 178,
+      "SECTIONSTART_.random29Ticktext_0x33": 61,
+      "SECTIONSTART_.random29Picktext_0x34": 150,
+      "SECTIONSTART_.drawSelecttext_0x35": 920,
+      "SECTIONSTART_.uploadSelectUitext_0x36": 67,
+      "SECTIONSTART_.uploadMenuPortraittext_0x37": 95,
+      "SECTIONSTART_.showSelecttext_0x38": 115,
+      "SECTIONSTART_.drawArenastext_0x39": 234,
+      "SECTIONSTART_.showArenastext_0x3a": 44,
+      "SECTIONSTART_.arcadeStoryCentertext_0x3b": 193,
+      "SECTIONSTART_.arcadeStoryProgresstext_0x3c": 114,
+      "SECTIONSTART_.arcadeStoryDrawtext_0x3d": 578,
+      "SECTIONSTART_.arcadeStoryBegintext_0x3e": 44,
+      "SECTIONSTART_.arcadeStoryTicktext_0x3f": 264,
+      "SECTIONSTART_.arcadeStoryEndingtext_0x40": 272,
+      "SECTIONSTART_.hudtext_0x41": 2303,
+      "SECTIONSTART_.superNameFortext_0x42": 297,
+      "SECTIONSTART_.resetSuperstext_0x43": 316,
+      "SECTIONSTART_.captureSupertext_0x44": 751,
+      "SECTIONSTART_.startSupertext_0x45": 1369,
+      "SECTIONSTART_.syncSupertext_0x46": 623,
+      "SECTIONSTART_.updateSupertext_0x47": 2358,
+      "SECTIONSTART_.superDamagetext_0x49": 306,
+      "SECTIONSTART_.superKnockdowntext_0x4a": 151,
+      "SECTIONSTART_.superFrametext_0x4b": 359,
+      "SECTIONSTART_.drawSuperGuidetext_0x4c": 134,
+      "SECTIONSTART_.resetRoundStatetext_0x4d": 3138,
+      "SECTIONSTART_.resetRoundtext_0x4e": 724,
+      "SECTIONSTART_.beginMatchtext_0x4f": 1624,
+      "SECTIONSTART_.loadChampionEndingtext_0x50": 686,
+      "SECTIONSTART_.showResulttext_0x51": 1763,
+      "SECTIONSTART_.guideWordtext_0x52": 57,
+      "SECTIONSTART_.guideCentertext_0x53": 191,
+      "SECTIONSTART_.guideTwoDigitstext_0x54": 147,
+      "SECTIONSTART_.guideNormalRowtext_0x55": 535,
+      "SECTIONSTART_.guideBestCombotext_0x56": 470,
+      "SECTIONSTART_.settlePausedHudtext_0x57": 46,
+      "SECTIONSTART_.drawPauseCardtext_0x58": 659,
+      "SECTIONSTART_.closePauseGuidetext_0x59": 98,
+      "SECTIONSTART_.openPauseGuidetext_0x5a": 55,
+      "SECTIONSTART_.buildPauseGuidetext_0x5b": 2651,
+      "SECTIONSTART_.trainingKeystext_0x5c": 397,
+      "SECTIONSTART_.trainingCycleDummytext_0x5d": 353,
+      "SECTIONSTART_.trainingResettext_0x5e": 503,
+      "SECTIONSTART_.trainingNewMatchtext_0x5f": 76,
+      "SECTIONSTART_.trainingKeepBesttext_0x60": 206,
+      "SECTIONSTART_.trainingChooseChallengetext_0x61": 119,
+      "SECTIONSTART_.trainingPrepareChallengetext_0x62": 81,
+      "SECTIONSTART_.trainingCapturetext_0x63": 110,
+      "SECTIONSTART_.trainingStartedtext_0x64": 64,
+      "SECTIONSTART_.trainingContacttext_0x65": 609,
+      "SECTIONSTART_.trainingMoveContacttext_0x66": 539,
+      "SECTIONSTART_.trainingObservetext_0x67": 278,
+      "SECTIONSTART_.trainingMakeStatustext_0x68": 793,
+      "SECTIONSTART_.trainingHistoryTokentext_0x69": 557,
+      "SECTIONSTART_.trainingServicetext_0x6a": 769,
+      "SECTIONSTART_.cpuNormalKeytext_0x6b": 84,
+      "SECTIONSTART_.cpuKeystext_0x6c": 4690,
+      "SECTIONSTART_.clearRecoiltext_0x6d": 54,
+      "SECTIONSTART_.updateRecoiltext_0x6e": 995,
+      "SECTIONSTART_.pacingAirSpeedtext_0x6f": 237,
+      "SECTIONSTART_.attackStarttext_0x70": 1337,
+      "SECTIONSTART_.cleanDirectionstext_0x71": 53,
+      "SECTIONSTART_.resetMenuRepeattext_0x72": 23,
+      "SECTIONSTART_.menuDirectionEdgestext_0x73": 280,
+      "SECTIONSTART_.discardFighterInputtext_0x74": 100,
+      "SECTIONSTART_.actionForInputtext_0x75": 782,
+      "SECTIONSTART_.captureInputtext_0x76": 2803,
+      "SECTIONSTART_.captureFightInputstext_0x77": 540,
+      "SECTIONSTART_.controlstext_0x78": 3353,
+      "SECTIONSTART_.hurtWithRecoiltext_0x79": 7944,
+      "SECTIONSTART_.hurttext_0x7a": 333,
+      "SECTIONSTART_.clearWakeInputtext_0x7b": 98,
+      "SECTIONSTART_.clampDownedtext_0x7c": 95,
+      "SECTIONSTART_.clearThrowLinkstext_0x7d": 267,
+      "SECTIONSTART_.releaseHeldVictimtext_0x7e": 438,
+      "SECTIONSTART_.beginKnockdowntext_0x7f": 593,
+      "SECTIONSTART_.knockdownAttacktext_0x80": 181,
+      "SECTIONSTART_.beginThrowtext_0x81": 1020,
+      "SECTIONSTART_.throwTechtext_0x82": 859,
+      "SECTIONSTART_.updateDownedtext_0x83": 2895,
+      "SECTIONSTART_.updateFightertext_0x84": 4281,
+      "SECTIONSTART_.contactActionFrametext_0x85": 786,
+      "SECTIONSTART_.contactBodytext_0x86": 539,
+      "SECTIONSTART_.contactWorldHittext_0x87": 699,
+      "SECTIONSTART_.contactStriketext_0x88": 833,
+      "SECTIONSTART_.contactWavetext_0x89": 171,
+      "SECTIONSTART_.canHittext_0x8b": 2361,
+      "SECTIONSTART_.combattext_0x8c": 5901,
+      "SECTIONSTART_.poseFortext_0x8d": 1300,
+      "SECTIONSTART_.personalityIntroFrametext_0x8e": 335,
+      "SECTIONSTART_.personalityVictoryFrametext_0x8f": 382,
+      "SECTIONSTART_.personalityAccenttext_0x90": 1827,
+      "SECTIONSTART_.animateFightertext_0x91": 9200,
+      "SECTIONSTART_.drawFightertext_0x92": 757,
+      "SECTIONSTART_.drawFighttext_0x93": 645,
+      "SECTIONSTART_.fightTicktext_0x94": 4809,
+      "SECTIONSTART_.menuTicktext_0x95": 2036,
+      "SECTIONSTART_.traceProfilestext_0x96": 809,
+      "SECTIONSTART_.maintext_0x97": 1603,
+      "SECTIONSTART_.rodata": 18919,
+      "SECTIONSTART_ui_clear_full_fast": 4112,
+      "SECTIONSTART_ui_clear_banner_fast": 656,
+      "SECTIONSTART_fight_panel_fast": 392,
+      "SECTIONSTART_fight_footer_fast": 792,
+      "SECTIONSTART_pause_guide_panel_fast": 5973,
+      "SECTIONSTART_hit_reaction_fast": 348,
+      "SECTIONSTART_health_bar_fast": 198,
+      "SECTIONSTART_fighter_render_dispatch": 290,
+      "SECTIONSTART_fighter_upload_queue_fast": 148,
+      "SECTIONSTART_actor_render_fast": 1282,
+      "SECTIONSTART_shadow_render_fast": 105,
+      "SECTIONSTART_resident_audio_ready": 98,
+      "SECTIONSTART_actor_dma_fast": 90,
+      "SECTIONSTART_trace_actors_fast": 1093,
+      "SECTIONSTART_asset_stage0_tiles": 26144,
+      "SECTIONSTART_asset_stage0_map": 4096,
+      "SECTIONSTART_asset_stage0_pal": 192,
+      "SECTIONSTART_asset_stage0_ambient": 1024,
+      "SECTIONSTART_asset_stage1_tiles": 25600,
+      "SECTIONSTART_asset_stage1_map": 4096,
+      "SECTIONSTART_asset_stage1_pal": 192,
+      "SECTIONSTART_asset_stage1_ambient": 1024,
+      "SECTIONSTART_asset_stage2_tiles": 26048,
+      "SECTIONSTART_asset_stage2_map": 4096,
+      "SECTIONSTART_asset_stage2_pal": 192,
+      "SECTIONSTART_asset_stage2_ambient": 1024,
+      "SECTIONSTART_asset_title_tiles": 10848,
+      "SECTIONSTART_asset_title_map": 2048,
+      "SECTIONSTART_asset_title_pal": 192,
+      "SECTIONSTART_asset_select_tiles": 16768,
+      "SECTIONSTART_asset_select_map": 2048,
+      "SECTIONSTART_asset_select_pal": 192,
+      "SECTIONSTART_asset_arenas_tiles": 15872,
+      "SECTIONSTART_asset_arenas_map": 2048,
+      "SECTIONSTART_asset_arenas_pal": 192,
+      "SECTIONSTART_asset_champion_tiles": 10560,
+      "SECTIONSTART_asset_champion_map": 2048,
+      "SECTIONSTART_asset_champion_pal": 192,
+      "SECTIONSTART_asset_portrait00_tiles": 2560,
+      "SECTIONSTART_asset_portrait00_pal": 32,
+      "SECTIONSTART_asset_portrait01_tiles": 2560,
+      "SECTIONSTART_asset_portrait01_pal": 32,
+      "SECTIONSTART_asset_portrait02_tiles": 2560,
+      "SECTIONSTART_asset_portrait02_pal": 32,
+      "SECTIONSTART_asset_portrait03_tiles": 2560,
+      "SECTIONSTART_asset_portrait03_pal": 32,
+      "SECTIONSTART_asset_portrait04_tiles": 2560,
+      "SECTIONSTART_asset_portrait04_pal": 32,
+      "SECTIONSTART_asset_portrait05_tiles": 2560,
+      "SECTIONSTART_asset_portrait05_pal": 32,
+      "SECTIONSTART_asset_portrait06_tiles": 2560,
+      "SECTIONSTART_asset_portrait06_pal": 32,
+      "SECTIONSTART_asset_portrait07_tiles": 2560,
+      "SECTIONSTART_asset_portrait07_pal": 32,
+      "SECTIONSTART_asset_portrait08_tiles": 2560,
+      "SECTIONSTART_asset_portrait08_pal": 32,
+      "SECTIONSTART_asset_portrait09_tiles": 2560,
+      "SECTIONSTART_asset_portrait09_pal": 32,
+      "SECTIONSTART_asset_portrait10_tiles": 2560,
+      "SECTIONSTART_asset_portrait10_pal": 32,
+      "SECTIONSTART_asset_portrait11_tiles": 2560,
+      "SECTIONSTART_asset_portrait11_pal": 32,
+      "SECTIONSTART_asset_ui_tiles": 12288,
+      "SECTIONSTART_asset_ui_pal": 64,
+      "SECTIONSTART_asset_fighter00": 30720,
+      "SECTIONSTART_asset_fighter00b": 30720,
+      "SECTIONSTART_asset_fighter00c": 30720,
+      "SECTIONSTART_asset_fighter00d": 30720,
+      "SECTIONSTART_asset_fighter00e": 30720,
+      "SECTIONSTART_asset_fighter00f": 30720,
+      "SECTIONSTART_asset_fighter00g": 30720,
+      "SECTIONSTART_asset_fighter00h": 30720,
+      "SECTIONSTART_asset_fighter00_pal": 32,
+      "SECTIONSTART_asset_fighter01": 30720,
+      "SECTIONSTART_asset_fighter01b": 30720,
+      "SECTIONSTART_asset_fighter01c": 30720,
+      "SECTIONSTART_asset_fighter01d": 30720,
+      "SECTIONSTART_asset_fighter01e": 30720,
+      "SECTIONSTART_asset_fighter01f": 30720,
+      "SECTIONSTART_asset_fighter01g": 30720,
+      "SECTIONSTART_asset_fighter01h": 30720,
+      "SECTIONSTART_asset_fighter01_pal": 32,
+      "SECTIONSTART_asset_fighter02": 30720,
+      "SECTIONSTART_asset_fighter02b": 30720,
+      "SECTIONSTART_asset_fighter02c": 30720,
+      "SECTIONSTART_asset_fighter02d": 30720,
+      "SECTIONSTART_asset_fighter02e": 30720,
+      "SECTIONSTART_asset_fighter02f": 30720,
+      "SECTIONSTART_asset_fighter02g": 30720,
+      "SECTIONSTART_asset_fighter02h": 30720,
+      "SECTIONSTART_asset_fighter02_pal": 32,
+      "SECTIONSTART_asset_fighter03": 30720,
+      "SECTIONSTART_asset_fighter03b": 30720,
+      "SECTIONSTART_asset_fighter03c": 30720,
+      "SECTIONSTART_asset_fighter03d": 30720,
+      "SECTIONSTART_asset_fighter03e": 30720,
+      "SECTIONSTART_asset_fighter03f": 30720,
+      "SECTIONSTART_asset_fighter03g": 30720,
+      "SECTIONSTART_asset_fighter03h": 30720,
+      "SECTIONSTART_asset_fighter03_pal": 32,
+      "SECTIONSTART_asset_fighter04": 30720,
+      "SECTIONSTART_asset_fighter04b": 30720,
+      "SECTIONSTART_asset_fighter04c": 30720,
+      "SECTIONSTART_asset_fighter04d": 30720,
+      "SECTIONSTART_asset_fighter04e": 30720,
+      "SECTIONSTART_asset_fighter04f": 30720,
+      "SECTIONSTART_asset_fighter04g": 30720,
+      "SECTIONSTART_asset_fighter04h": 30720,
+      "SECTIONSTART_asset_fighter04_pal": 32,
+      "SECTIONSTART_asset_fighter05": 30720,
+      "SECTIONSTART_asset_fighter05b": 30720,
+      "SECTIONSTART_asset_fighter05c": 30720,
+      "SECTIONSTART_asset_fighter05d": 30720,
+      "SECTIONSTART_asset_fighter05e": 30720,
+      "SECTIONSTART_asset_fighter05f": 30720,
+      "SECTIONSTART_asset_fighter05g": 30720,
+      "SECTIONSTART_asset_fighter05h": 30720,
+      "SECTIONSTART_asset_fighter05_pal": 32,
+      "SECTIONSTART_asset_fighter06": 30720,
+      "SECTIONSTART_asset_fighter06b": 30720,
+      "SECTIONSTART_asset_fighter06c": 30720,
+      "SECTIONSTART_asset_fighter06d": 30720,
+      "SECTIONSTART_asset_fighter06e": 30720,
+      "SECTIONSTART_asset_fighter06f": 30720,
+      "SECTIONSTART_asset_fighter06g": 30720,
+      "SECTIONSTART_asset_fighter06h": 30720,
+      "SECTIONSTART_asset_fighter06_pal": 32,
+      "SECTIONSTART_asset_fighter07": 30720,
+      "SECTIONSTART_asset_fighter07b": 30720,
+      "SECTIONSTART_asset_fighter07c": 30720,
+      "SECTIONSTART_asset_fighter07d": 30720,
+      "SECTIONSTART_asset_fighter07e": 30720,
+      "SECTIONSTART_asset_fighter07f": 30720,
+      "SECTIONSTART_asset_fighter07g": 30720,
+      "SECTIONSTART_asset_fighter07h": 30720,
+      "SECTIONSTART_asset_fighter07_pal": 32,
+      "SECTIONSTART_asset_fighter08": 30720,
+      "SECTIONSTART_asset_fighter08b": 30720,
+      "SECTIONSTART_asset_fighter08c": 30720,
+      "SECTIONSTART_asset_fighter08d": 30720,
+      "SECTIONSTART_asset_fighter08e": 30720,
+      "SECTIONSTART_asset_fighter08f": 30720,
+      "SECTIONSTART_asset_fighter08g": 30720,
+      "SECTIONSTART_asset_fighter08h": 30720,
+      "SECTIONSTART_asset_fighter08_pal": 32,
+      "SECTIONSTART_asset_fighter09": 30720,
+      "SECTIONSTART_asset_fighter09b": 30720,
+      "SECTIONSTART_asset_fighter09c": 30720,
+      "SECTIONSTART_asset_fighter09d": 30720,
+      "SECTIONSTART_asset_fighter09e": 30720,
+      "SECTIONSTART_asset_fighter09f": 30720,
+      "SECTIONSTART_asset_fighter09g": 30720,
+      "SECTIONSTART_asset_fighter09h": 30720,
+      "SECTIONSTART_asset_fighter09_pal": 32,
+      "SECTIONSTART_asset_fighter10": 30720,
+      "SECTIONSTART_asset_fighter10b": 30720,
+      "SECTIONSTART_asset_fighter10c": 30720,
+      "SECTIONSTART_asset_fighter10d": 30720,
+      "SECTIONSTART_asset_fighter10e": 30720,
+      "SECTIONSTART_asset_fighter10f": 30720,
+      "SECTIONSTART_asset_fighter10g": 30720,
+      "SECTIONSTART_asset_fighter10h": 30720,
+      "SECTIONSTART_asset_fighter10_pal": 32,
+      "SECTIONSTART_asset_fighter11": 30720,
+      "SECTIONSTART_asset_fighter11b": 30720,
+      "SECTIONSTART_asset_fighter11c": 30720,
+      "SECTIONSTART_asset_fighter11d": 30720,
+      "SECTIONSTART_asset_fighter11e": 30720,
+      "SECTIONSTART_asset_fighter11f": 30720,
+      "SECTIONSTART_asset_fighter11g": 30720,
+      "SECTIONSTART_asset_fighter11h": 30720,
+      "SECTIONSTART_asset_fighter11_pal": 32,
+      "SECTIONSTART_asset_effects": 2048,
+      "SECTIONSTART_asset_effects_pal": 32,
+      "SECTIONSTART_SOUNDBANK": 28822,
+      "SECTIONSTART_glob.data": 1608,
+      "SECTIONSTART_EmptyVectors": 2,
+      "SECTIONSTART_Snes_Init": 150,
+      "SECTIONSTART_.start": 145,
+      "SECTIONSTART_.malloc_inittext_0x9": 98,
+      "SECTIONSTART_.backgrounds0_text": 56,
+      "SECTIONSTART_.backgrounds1_text": 102,
+      "SECTIONSTART_.backgrounds4_text": 162,
+      "SECTIONSTART_.consoles3_text": 74,
+      "SECTIONSTART_.consoles4_text": 167,
+      "SECTIONSTART_.dmas0_text": 49,
+      "SECTIONSTART_.dmas1_text": 55,
+      "SECTIONSTART_.dmas5_text": 79,
+      "SECTIONSTART_.pads1_text": 31,
+      "SECTIONSTART_.soundmod": 1675,
+      "SECTIONSTART_.sm_spc": 5522,
+      "SECTIONSTART_spritestable_text": 512,
+      "SECTIONSTART_.sprites2_text": 276,
+      "SECTIONSTART_.sprites3_text": 90,
+      "SECTIONSTART_.sprites4_text": 121,
+      "SECTIONSTART_.sprites5_text": 42,
+      "SECTIONSTART_.sprites6_text": 252,
+      "SECTIONSTART_.spritestable1_text": 2432,
+      "SECTIONSTART_.videos1_text": 34,
+      "SECTIONSTART_.videos3_text": 139,
+      "SECTIONSTART_.vblank_isr": 772,
+      "SECTIONSTART_.nmiSet_text": 35,
+      "SECTIONSTART_.waitforvblank_text": 20,
+      "SECTIONSTART_.libc_mem": 768
+    },
+    "feature_mutable_bytes_used": 4,
+    "feature_reservation_bytes": 8,
+    "new_obj_entries": 0,
+    "actor_upload_bytes_per_vblank_max": 3840,
+    "new_dma_bytes": 0,
+    "generator_hooks": [],
+    "generated_output_allowlist": []
+  },
+  "uniform_domain": {
+    "12": [
+      21,
+      21,
+      21,
+      21,
+      21,
+      21,
+      21,
+      21,
+      21,
+      21,
+      21,
+      21
+    ],
+    "3": [
+      84,
+      84,
+      84
+    ]
+  },
+  "checks_passed": 21311,
+  "check_labels": [
+    "All 226 generated assets preserved",
+    "All menu RNG bytes freeze during fights",
+    "All original breathing frames retained",
+    "Approved signature and victory poses retained",
+    "Arena B beats A/SELECT and returns to roster",
+    "Arena Start beats Back/A/SELECT and launches confirmed arena",
+    "Assigned processor pair / below-normal priority",
+    "Baseline asset/assembly exact",
+    "Both participating pads exercised",
+    "Captured native PCM active and unclipped",
+    "Confirmation keeps the highlighted random pick",
+    "Down retains six-slot navigation",
+    "Every arena reachable through fresh SELECT",
+    "Every fighter reachable through fresh SELECT",
+    "Exact ROM manifest",
+    "Exact ROM stayed frozen",
+    "Fight uses confirmed random fighter/arena IDs",
+    "Final capture bytes match recorded hash",
+    "Held SELECT never rerolls",
+    "Held arena SELECT never rerolls",
+    "Held confirm advances only one step",
+    "Held opposite directions cancel",
+    "Linked section fits a LoROM bank",
+    "Menu never consumes combat RNG",
+    "Native frame/vblank/SDK cadence",
+    "Native title enters roster",
+    "No OBJ range/time overflow",
+    "No mutable globals beyond parent reservations",
+    "Nonparticipating P2 cannot randomize arena",
+    "Normal 18-tick confirmation lock preserved",
+    "Only two end markers grow by shared six-feature reservation",
+    "Opposites across participating pads cancel",
+    "P2 cannot randomize P1",
+    "Participating P2 Back beats A/SELECT",
+    "Producer/harness inputs stayed frozen",
+    "Random arena stays valid awaiting confirmation",
+    "Random awaits explicit confirmation",
+    "Random choices hand off to live combat",
+    "Random fighter remains valid on the same selection step",
+    "Random hover uses standing poses",
+    "Random permits mirrors",
+    "Releasing SELECT never rerolls",
+    "Roster B beats A/SELECT",
+    "Simultaneous held SELECT has one shared action",
+    "Start/A beats SELECT without consuming menu RNG",
+    "Unbiased accepted-byte domain",
+    "Up retains six-slot navigation",
+    "User timing changes repeated random picks"
+  ],
+  "shared_presentation_checks": 13106,
+  "seconds": 27.563
+}
