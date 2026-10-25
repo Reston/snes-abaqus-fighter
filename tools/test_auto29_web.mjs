@@ -114,6 +114,13 @@ try {
     for (let n=0;n<mode;n++) await key(page,'ArrowDown');
     await key(page,'x');
     await waitScene(page,3);
+    // beginMatch's first published trace still contains the arena-confirm
+    // sample taken before forced blank. Observe the next input poll without
+    // sending anything; every subsequent physical pad sample must be zero.
+    const handoffFrame = (await state(page)).frame;
+    const freshPollDeadline = Date.now()+1000;
+    while ((await state(page)).frame===handoffFrame && Date.now()<freshPollDeadline) await page.waitForTimeout(5);
+    check((await state(page)).frame!==handoffFrame, 'Native input polls again after match-load publication');
     const start = Date.now();
     let seenIntro = false, seenFight = false;
     const samples = [];
@@ -141,7 +148,7 @@ try {
     await key(page,'Enter');
     check((await state(page)).paused===0, 'Keyboard Start still resumes');
     check(errors.length===0, 'No page JavaScript errors', errors);
-    report.cases.push({route:'keyboard',mode,arena:mode,no_input_ms:noInputMs,samples});
+    report.cases.push({route:'keyboard',mode,arena:mode,handoff_frame:handoffFrame,no_input_ms:noInputMs,samples});
     await context.close();
   }
   // Touch: controls must be visible on initial boot even though the old start
