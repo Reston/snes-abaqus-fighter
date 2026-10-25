@@ -139,6 +139,8 @@ SOURCE_INPUT_EXACT = {
     "tools/pose_revision_assets.py",
     "tools/v024_contracts.py",
     "tools/v025_contracts.py",
+    "tools/v029_contracts.py",
+    "tools/test_v029_contracts.py",
     "tools/collate_pacing_floor_25.py",
     "tools/test_pacing_floor_25.py",
     "tools/contact_geometry.py",
