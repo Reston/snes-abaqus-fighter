@@ -126,9 +126,11 @@ class Native:
                     self.failures.append({'before_screen': screen, 'screen': self.read('screen'),
                                           'delta': delta, 'video_callbacks': self.video_calls-calls,
                                           'before_counters': before, 'state': self.state(),
+                                          'controller_input': {'p1': sorted(p1), 'p2': sorted(p2)},
+                                          'randomseed': self.read('randomseed', 2),
                                           'cue': self.a(8), 'command': self.a(9),
                                           'native_clock': {n:self.read(n) for n in ('secondTick','seconds','hudSeconds','hudDirty')},
-                                          'native_audio_state': [self.a(i) for i in range(16)]})
+                                          'native_audio_state': [self.a(i) for i in range(32)]})
                 if self.state()['screen'] == 3 and self.read('screen') == 3:
                     stat = int.from_bytes(C.string_at(self.ram+0x1ff00+228, 2), 'little')
                     if stat & 0xc0: self.failures.append({'obj_stat77': stat})
@@ -440,6 +442,31 @@ def play_cpu(e):
     raise AssertionError(('CPU match did not finish', e.state()))
 
 
+def play_cpu_defense(e):
+    """Earn wins under reviewed wake defense; pressure visible recovery.
+
+    Separate from the retained historical throw policy. Same 10,000-step
+    bound, three-attempt ladder and strict native counters; no loading flag
+    is granted to any live, intro, contact, pause or ordinary round-end tick.
+    """
+    for _ in range(10000):
+        s = e.state()
+        if s['screen'] == 4: return
+        forward = 'right' if s['x1'] < s['x2'] else 'left'
+        back = 'left' if forward == 'right' else 'right'
+        distance = abs(s['x1']-s['x2'])//16
+        clock = C.string_at(e.ram+(e.syms['fighters'] & 0x1ffff)+64, 64)
+        if s['intro'] or s['round_end'] or s['hitstop']:
+            e.run(1, transition=s['round_end'] == 1 and max(s['wins1'],s['wins2']) >= 2)
+        elif s['action1']: e.run(1,p1=[forward])
+        elif s['action2'] and clock[17] < clock[63] and distance < 55:
+            e.run(1,p1=[back,'down'] if 4 <= s['action2'] <= 6 else [back])
+        elif distance > 25: e.run(1,p1=[forward])
+        else:
+            e.run(1,p1=[forward,'x']); e.run(1,p1=[forward])
+    raise AssertionError(('Defense-aware CPU match did not finish',e.state()))
+
+
 def score_passage(e, index, label):
     """One full arrangement plus its loop boundary, with a short review WAV."""
     raw_it = (ROOT/f'assets/generated/music{index}.it').read_bytes()
@@ -455,7 +482,7 @@ def score_passage(e, index, label):
             'excerpt': save_pcm(e.folder, label, raw[:round(7*e.rate)*4], e.rate)}
 
 
-def champion(e):
+def champion(e, policy='legacy'):
     e.run(120, transition=True); e.tap('l'); e.tap('a', transition=True); e.wait(1)
     for _ in range(4): e.tap('right')
     e.tap('a', transition=True); e.wait(2); e.tap('a', transition=True); e.wait(3); e.run(180)
@@ -463,7 +490,7 @@ def champion(e):
     # Existing earned-win policy, bounded to three attempts per opponent.
     for match in range(11):
         for attempt in range(3):
-            play_cpu(e); s = e.state()
+            (play_cpu_defense if policy == 'defense' else play_cpu)(e); s = e.state()
             require(s['screen'] == 4, 'Earned Arcade result for Champion music')
             if s['wins1'] == 2: break
             e.tap('a', transition=True); e.wait(3)
@@ -473,10 +500,18 @@ def champion(e):
             e.tap('a', transition=True); e.wait(3)
     require(e.state()['champion'] == 1 and e.read('musicIndex') == 4, 'Eleventh earned win selects Champion arrangement')
     result = score_passage(e, 4, 'champion')
-    return {'ladder': ladder, 'pcm': result}
+    return {'policy': policy, 'ladder': ladder, 'pcm': result}
 
 
-def preservation(syms):
+def preservation(syms, combined=False):
+    if combined:
+        # Parent policy checks the added animated-arena outputs, exact prior
+        # addresses, immutable art/ASM, native sections and resident bank.
+        # Sound semantics, PCM and every per-callback assertion remain below.
+        from v029_contracts import validate
+        result = validate(ROOT)
+        require(result['status'] == 'passed', 'Parent v029 combined preservation policy passes')
+        return {'policy': 'parent tools/v029_contracts.py', 'combined': result}
     allowed = {'assets/generated/music'+str(i)+'.it' for i in range(5)} | {
         'assets/generated/effects.it', 'assets/generated/soundbank.bnk', 'assets/generated/soundbank.asm'}
     changed = []; preserved = 0
@@ -511,13 +546,19 @@ def main():
     parser.add_argument('--report', type=Path, required=True)
     parser.add_argument('--captures', type=Path, default=ROOT/'docs/audio29')
     parser.add_argument('--skip-champion', action='store_true')
+    parser.add_argument('--combined', action='store_true',
+                        help='Use parent v029 preservation policy for merged arena assets')
+    parser.add_argument('--champion-policy', choices=('legacy','defense'), default='legacy',
+                        help='Keep historical policy or pressure visible recovery under reviewed wake defense')
     args = parser.parse_args(); folder = args.captures.resolve()/args.core; folder.mkdir(parents=True, exist_ok=True)
     syms = symbols((ROOT/'dist/abaqus-after-hours.sym').read_text())
     paths = sorted([p for base in ('src', 'tools') for p in (ROOT/base).iterdir()
                     if p.is_file() and p.suffix in ('.py', '.h', '.asm', '.c')])
     paths += sorted((ROOT/'assets/audio').rglob('*'))
     inputs = {p.relative_to(ROOT).as_posix(): sha(p.read_bytes()) for p in paths if p.is_file()}
-    report = {'status': 'failed', 'scope': 'isolated topic5; parent owns combined suites/reproduction',
+    report = {'status': 'failed', 'scope': ('topic5 focused proof on merged v029 context; parent owns final combined suites/reproduction'
+                                          if args.combined else 'isolated topic5; parent owns combined suites/reproduction'),
+              'combined_preservation': args.combined,
               'rom_sha256': sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes()), 'core': args.core,
               'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
               'inputs': inputs, 'host': host_contract(), 'checks': CHECKS, 'media': MEDIA,
@@ -526,7 +567,7 @@ def main():
     started = time.monotonic(); e = None
     try:
         report['core_identity'] = core_identity() if args.core == 'snes9x' else verify_manifest_and_pinned_core()
-        report['preservation'] = preservation(syms)
+        report['preservation'] = preservation(syms, args.combined)
         e = Native(args.core, syms, folder); e.run(120, transition=True)
         title_full = score_passage(e, 0, 'menu'); title = title_full['excerpt']
         report['menu'] = title_full; report['cases'].append(e.finish()); e.close()
@@ -563,7 +604,7 @@ def main():
         report['mixed'] = mixed_contacts(e)
         report['cases'].append(e.finish()); e.close()
         if args.core == 'snes9x' and not args.skip_champion:
-            e = Native(args.core, syms, folder); report['champion'] = champion(e)
+            e = Native(args.core, syms, folder); report['champion'] = champion(e, args.champion_policy)
             report['cases'].append(e.finish()); e.close()
         require(all(sha((ROOT/path).read_bytes()) == value for path, value in inputs.items()),
                 'Producer/harness/dependency bytes stayed fixed through proof')

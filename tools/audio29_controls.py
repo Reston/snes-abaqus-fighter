@@ -23,6 +23,7 @@ def main():
     parser.add_argument('--symbols', type=Path, required=True)
     parser.add_argument('--report', type=Path, required=True)
     parser.add_argument('--captures', type=Path)
+    parser.add_argument('--champion-policy', choices=('legacy','defense'), default='legacy')
     args = parser.parse_args()
     rom = args.rom.resolve(); syms = symbols(args.symbols.read_text())
     folder = args.captures.resolve() if args.captures else ROOT/'build'/('audio29-control-'+args.mode)
@@ -43,7 +44,7 @@ def main():
               'emulated_memory_writes': 0, 'savestate_calls': 0, 'audio_device_opened': False}
     try:
         if args.mode != 'accuracy-clock':
-            report['champion'] = audio.champion(host)
+            report['champion'] = audio.champion(host, args.champion_policy)
         else:
             host.run(120, transition=True); report['windows'] = []
             for _ in range(12):
