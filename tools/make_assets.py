@@ -472,6 +472,8 @@ for i,h in enumerate(effect_hashes):print(f'Effects PCM {i}: {h}')
 (OUT/'assets.h').write_text('\n'.join(header)+'\n')
 from stage_depth_assets import install as install_stage_depth
 install_stage_depth(ROOT,prepared=native_stage_data,out=OUT)
+from arena_life29_assets import install as install_arena_life29
+install_arena_life29(ROOT,out=OUT)
 if asset_cache.inputs(ROOT)!=asset_source_inputs:
     raise RuntimeError('Art or encoder source changed during asset generation; candidate retained under build')
 asset_output_hashes=asset_cache.outputs(ROOT,OUT)
