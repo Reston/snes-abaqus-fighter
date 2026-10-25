@@ -96,6 +96,7 @@ class Rig:
         self.host = AccuracyMenu() if core == 'accuracy' else Emulator(core_options={'snes9x_up_down_allowed': 'enabled'})
         self.syms = syms; self.core = core; self.captures = captures
         self.callbacks = 0; self.bonus_upload_rows = 0
+        self.meter_verified = False
 
     def read(self, name, size=1):
         return int.from_bytes(C.string_at(self.host.ram + (self.syms[name] & 0x1ffff), size), 'little')
@@ -140,6 +141,12 @@ class Rig:
                 backlog = (self.read('spc_fwrite') - self.read('spc_fread')) & 255
                 HEALTH['max_spc_backlog'] = max(HEALTH['max_spc_backlog'], backlog)
                 require(backlog <= 6, 'Resident SPC FIFO stays at six or fewer queued bytes', backlog)
+                if steady_fight and not self.meter_verified and self.read('hudEnergy', 2) == 0x6060 and not self.read('hudDirty'):
+                    memory = presentation.vram_bytes(self.host)
+                    cells = [presentation.map_tile(memory, x + i, 4) for x in (1, 22) for i in range(9)]
+                    expected = [(ord(character) + 256) | 0x2400 for _ in range(2) for character in 'SUPER Y+B']
+                    require(cells == expected, 'Both full-meter hints preserve their exact opaque glyphs and gold attributes')
+                    self.meter_verified = True
                 if steady_bonus:
                     updated = self.actor_pages()
                     changed = sum(a != b for a, b in zip(pages, updated))

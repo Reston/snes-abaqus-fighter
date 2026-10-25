@@ -400,7 +400,7 @@ void showArenas(void) { setScreenOff();screen=ARENA;commonScreen();loadBackgroun
     /* Full gauge teaches the command in the existing bottom rule. \
     * Only threshold transitions touch these nine cached cells. */ \
     if(fighters[p].energy==ENERGY_MAX) { \
-    word(p?22:1,4,"SUPER Y+B"); \
+    drawGuideWord(p?300:258,"SUPER Y+B"); \
     for(x=p?22:1;x<(p?31:10);x++)ui[128+x]|=0x0400; \
     } else if(hudEnergy[p]==ENERGY_MAX || hudEnergy[p]==255) { \
     for(x=p?22:1;x<(p?31:10);x++)ui[128+x]=158|0x2000; \
