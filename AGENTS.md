@@ -7,8 +7,9 @@ across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
 <!-- v028-agent:start -->
-- **v0.28.0 is the full-body selection preview**, branch
-  `feature/live-fighter-preview`, stacked on office-menu PR #24. User requested
+- **v0.28.0 is approved main**, merged through PRs #21–25 after
+  the user accepted “ok let's go with this one”. Merge commit
+  `12a40ae699bcfc21795faf1c58889fed3c105a3b`. Older revision blocks below retain historical status. User requested
   a complete standing fighter and confirmation gesture like SFII. Original
   frames16..19 breathe at (2,24); A/Start plays two signature poses and victory11
   over18 ticks before one step. Original small portraits remain. Five menu
@@ -22,7 +23,9 @@ Preserve the native emulator requirement when extending the project.
   symbol reproduction pass. Older six-suite records below are historical.
   ROM `09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c`, checksum `ECEB`,
   source/test freeze `16e9989497fa7f7bf16271d59555a13b57caeac4`. See docs/RELEASE-v0.28.0.md
-  and docs/menu-preview-review.json. Visual/merge review pending; no package.
+  and docs/menu-preview-review.json. Visual acceptance is recorded; see
+  docs/integration-v0.28.0.json for the conflict-free merges and exact-ROM
+  main smoke on both cores. No new offline package is claimed.
 <!-- v028-agent:end -->
 
 <!-- v0271-agent:start -->

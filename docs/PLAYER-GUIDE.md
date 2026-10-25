@@ -1,10 +1,9 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.28.0; identity: FOCUSED_UI_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c; source-freeze: 16e9989497fa7f7bf16271d59555a13b57caeac4 -->
+<!-- candidate-version: 0.28.0; identity: APPROVED_MAIN_FOCUSED_UI_VERIFIED; rom-sha256: 09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c; source-freeze: 16e9989497fa7f7bf16271d59555a13b57caeac4 -->
 
 v0.28.0 adds an idle full-body preview and a short confirmation gesture.
 The office-themed six-by-two roster remains. The slower combat,
-detailed floors and left-aligned help remain. Native checks pass; playtest
-review is pending. [Current release note](RELEASE-v0.28.0.md).
+detailed floors and left-aligned help remain. Native checks pass; this revision is approved and merged. [Current release note](RELEASE-v0.28.0.md).
 
 This is a native SNES game. On Windows use [Play.cmd](../Play.cmd); on other
 platforms load `dist/abaqus-after-hours.sfc` in a SNES emulator.

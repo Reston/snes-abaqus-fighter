@@ -1,6 +1,18 @@
 # Human playtest guide
 
-## Current v0.26 polish candidate
+## Current main: v0.28.0
+
+Check **V0.28.0** on the title. The chosen revision and PRs #21–25 are merged.
+[Current release](RELEASE-v0.28.0.md) · [Controls](PLAYER-GUIDE.md) ·
+[Native selection animations](REVIEW-v0.28.0.html).
+
+Check the idle body preview and confirmation gesture, then a local match or
+Training session. The slower combat and detailed floors are included. Record
+new gameplay observations in [review-feedback.json](review-feedback.json).
+The native checks and exact-ROM merge verification pass; detailed live
+gameplay observations remain separate from the accepted visual design.
+
+## Historical v0.26 polish candidate
 
 <!-- candidate-version: 0.26.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b; source-freeze: c89239901491a239e10194f1399820527b0ebf74 -->
 

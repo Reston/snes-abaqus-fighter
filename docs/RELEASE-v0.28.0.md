@@ -23,5 +23,6 @@ change. Fighter/Wave/TRACE ABI, hardware assembly, combat and pacing remain.
 GIFs sample every three callbacks; GIF timing is an inspection approximation.
 
 ROM `09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c` · checksum `ECEB`.
-Source/test freeze `16e9989497fa7f7bf16271d59555a13b57caeac4`. Visual and merge review remain pending.
-Stacked on the office-menu branch; no new offline package is claimed.
+Source/test freeze `16e9989497fa7f7bf16271d59555a13b57caeac4`. User accepted this revision with “ok let's go with this one”. PRs #21–25
+are merged into main. [Integration record](integration-v0.28.0.json).
+No new offline package is claimed.

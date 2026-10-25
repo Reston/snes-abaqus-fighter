@@ -1,0 +1,47 @@
+{
+  "status": "passed",
+  "version": "0.28.0",
+  "rom_sha256": "09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c",
+  "checksum": "ECEB",
+  "merged_at_utc": "2026-10-25T00:07:34.008813+00:00",
+  "main_merge_commit": "12a40ae699bcfc21795faf1c58889fed3c105a3b",
+  "accepted_commit": "0b6f7bac72c3c37dce639d7a7ad88a9ae91efe64",
+  "merges": [
+    {
+      "pr": 21,
+      "head_sha": "7ba40c106000b2b2eb916f6b35d47065334dd4c7",
+      "merge_commit": "8c3818fcf2cfe8a369420948c64ad83536b432d1"
+    },
+    {
+      "pr": 22,
+      "head_sha": "dc1260b5512aa946e6006c8ac7bf2ebb2a02a9b3",
+      "merge_commit": "58dc650218f74ea89ced504f98ba9506218de744"
+    },
+    {
+      "pr": 23,
+      "head_sha": "2886087473a66b89898088b89a1ce78c02d41c99",
+      "merge_commit": "097d5aef01d0f25aa1c84e1d144c30d4788fdf5f"
+    },
+    {
+      "pr": 24,
+      "head_sha": "adb522efb5dbed00005e47dfe662275b047e7e30",
+      "merge_commit": "783c8f11369010be0713106d6dddbe448db17db5"
+    },
+    {
+      "pr": 25,
+      "head_sha": "0b6f7bac72c3c37dce639d7a7ad88a9ae91efe64",
+      "merge_commit": "12a40ae699bcfc21795faf1c58889fed3c105a3b"
+    }
+  ],
+  "merge_method": "merge",
+  "conflicts": false,
+  "approved_runtime_files_checked": 289,
+  "differing_runtime_files": [],
+  "approved_tree": "24fc883e609a64748b539320ffb2b3376f7c8e31",
+  "merged_tree": "24fc883e609a64748b539320ffb2b3376f7c8e31",
+  "native_smoke": {
+    "path": "docs/main-merge-smoke-v0.28.0.json",
+    "sha256": "ef14bf3ffc37b3eec1be770a6c4bb3fdced28d5474b1d4d505a6d3cba890c0d6"
+  },
+  "scope": "Integration and exact artifact preservation; existing v0.28 focused evidence remains unchanged."
+}

@@ -1,10 +1,9 @@
 # Public-release quality target
-<!-- candidate-version: 0.28.0; identity: FOCUSED_UI_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c; source-freeze: 16e9989497fa7f7bf16271d59555a13b57caeac4 -->
+<!-- candidate-version: 0.28.0; identity: APPROVED_MAIN_FOCUSED_UI_VERIFIED; rom-sha256: 09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c; source-freeze: 16e9989497fa7f7bf16271d59555a13b57caeac4 -->
 
-## Current playtest candidate: v0.28.0
+## Current approved main: v0.28.0
 
-The full-body preview is unmerged, stacked on office-menu PR #24.
-Main remains the approved v0.24.0. [Current scope](RELEASE-v0.28.0.md) and
+v0.28.0 is approved main after integration of PRs #21–25. [Current scope](RELEASE-v0.28.0.md) and
 [native verification](menu-preview-review.json) do not certify a public or
 offline release. Earlier sections below are historical.
 

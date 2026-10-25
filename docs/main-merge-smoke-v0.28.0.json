@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "version": "0.28.0",
+  "rom_sha256": "09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c",
+  "main_commit": "12a40ae699bcfc21795faf1c58889fed3c105a3b",
+  "cores": {
+    "snes9x": {
+      "steady_callbacks": 100,
+      "idle_poses": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "native_pixels": "passed",
+      "held_confirm_to_arena": "passed"
+    },
+    "accuracy": {
+      "steady_callbacks": 100,
+      "idle_poses": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "native_pixels": "passed",
+      "held_confirm_to_arena": "passed"
+    }
+  }
+}
