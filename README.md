@@ -18,6 +18,9 @@ prepares Snes9x locally. Press **Enter** to start; **Alt+Enter** toggles fullscr
 **Other platforms:** open [dist/abaqus-after-hours.sfc](dist/abaqus-after-hours.sfc)
 in a SNES emulator. Original SNES and flash-cartridge support remain unverified.
 
+**Browser / Cloudflare:** run [Web.cmd](Web.cmd) for a local browser player.
+[Hosting setup](docs/CLOUDFLARE.md) explains how to publish it on Cloudflare.
+
 ## Game modes
 
 - **Arcade:** fight all eleven coworkers, with personal exchanges and endings.
