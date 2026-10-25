@@ -111,3 +111,10 @@ Outdoor floor textures reuse the approved stage source masters. The office
 carpet strip was created with built-in imagegen; its [saved source](../assets/art/stages/floor-v025/02-oficina.png)
 and [exact prompt, references and provenance](../assets/art/stages/floor-v025/02-oficina.json)
 are retained. Native conversion uses the existing six 4bpp stage palettes.
+
+## README cartridge mockup
+
+The [fictional cartridge image](images/abaqus-after-hours-cartridge-v1.png) was
+created with built-in imagegen using the game's title screen and local 1v1
+capture as references. Its [exact prompt and provenance](images/abaqus-after-hours-cartridge-v1.json)
+are retained. It illustrates the README; it is not a physical product.

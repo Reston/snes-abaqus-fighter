@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "asset": "fictional-readme-cartridge",
+  "created": "2026-10-25",
+  "generator": {
+    "tool": "image_gen.imagegen",
+    "mode": "built-in",
+    "use_case": "product-mockup",
+    "transparent_background": true
+  },
+  "prompt": "Use case: product-mockup\nAsset type: GitHub README hero image for the original native SNES fighting game Abaqus: After Hours.\nPrimary request: create a beautiful, believable fictional retail cartridge for this game, as if an independent 1990s 16-bit fighting game had its own physical cartridge. One single authentic-shaped North American SNES-style gray cartridge, photographed at a restrained three-quarter angle with its front label almost facing the viewer. Complete cartridge in frame, large and centered, no box or controller.\nInput images: Image 1 is the game's actual title screen; use its original slanted gold ABAQUS lettering and warm gold/charcoal visual identity as the label typography reference. Image 2 is a screenshot of the actual game; use ONLY the two original pixel-art fighters and the detailed Santiago office entrance as artwork reference. Ignore screenshot UI, health bars, pause text and browser frame. The bald blue-shirted fighter and dark-haired orange-shirted fighter should be recognizable as the two small pixel-art combatants on the printed label, not redesigned realistic people.\nLabel design: attractive illustrated 1990s fighting-game label in charcoal, amber and warm gold, with large slanted ABAQUS at top and smaller AFTER HOURS directly beneath, the two pixel-art fighters facing one another against the office at dusk below. Crisp balanced typography, original game artwork feeling. Exact visible label text only: \"ABAQUS\", \"AFTER HOURS\", \"16-BIT\". Do not add other text.\nStyle/medium: premium photorealistic studio product photography, fine molded gray plastic grain, side grooves and recessed label cavity, satin printed paper label, subtle natural wear, realistic cartridge thickness and connector opening.\nComposition: landscape 3:2 canvas; cartridge fills around 85% width and 85% height with comfortable margins. Clean isolated cutout with genuine transparent background. Soft edge highlights and subtle contact shadow, no floor plane, no opaque rectangle or background gradient.\nConstraints: no Nintendo logo, no official licensing seal, no Capcom branding, no Street Fighter characters, no watermark, no extra objects. This is fictional original game packaging. Ensure ABAQUS is spelled A B A Q U S exactly and AFTER HOURS is exact and readable at README size. Keep the printed artwork entirely inside the cartridge label.",
+  "references": [
+    {
+      "path": "docs/screenshots/menu-preview/presentation/title.png",
+      "sha256": "cf998086b9131deb114782955e884dd1b66f95400312f3cbe22ffe4237974575",
+      "bytes": 9382,
+      "role": "Original title lettering and gold/charcoal visual identity"
+    },
+    {
+      "path": "docs/screenshots/cloudflare/local-1v1.png",
+      "sha256": "fbcd0e1a566794e7cce06981399ea60464ee0e207a9e0c01ed002388c45b786c",
+      "bytes": 71852,
+      "role": "Original pixel-art combatants and office-stage artwork; UI excluded"
+    }
+  ],
+  "selected_output": {
+    "path": "docs/images/abaqus-after-hours-cartridge-v1.png",
+    "sha256": "1ca9e8f44c5b9b7ad7cfee24e25523a4b5a0dabe92ee6bb9f792772025830aca",
+    "bytes": 2918863,
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  "scope": "README illustration only; fictional cartridge, no native game assets or runtime changes."
+}

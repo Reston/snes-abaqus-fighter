@@ -1,5 +1,7 @@
 # Browser play on Cloudflare
 
+**[Play Abaqus: After Hours](https://abaqus-after-hours.restonjd.workers.dev/)**
+
 This adds a browser player around the existing native SNES cartridge. It uses
 self-hosted EmulatorJS 4.2.3 and Snes9x. The game, combat speed, artwork and
 `dist/abaqus-after-hours.sfc` are unchanged. Arcade, Training and local two-player
@@ -76,5 +78,5 @@ Browser smoke testing covers the real WebAssembly emulator, title/selection/live
 combat, keyboard input for both local players, normal-speed frame progression,
 responsive layout, HTTP paths, pinned dependencies and a Wrangler dry run.
 Automated browser checks are muted; physical controllers and audible browser
-listening still need a human check. No live URL exists until deployment succeeds
-in your Cloudflare account.
+listening still need a human check. The public player linked above uses the
+approved v0.28.0 cartridge; follow the Publish steps to host your own copy.
