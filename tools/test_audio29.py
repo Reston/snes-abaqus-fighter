@@ -1,7 +1,8 @@
 """Bounded controller-only v29 audio proof. No window/device/writes/savestates.
 
 Both pinned cores: real PCM, all stages, native mixer UI, contacts, pause and
-FIFO/cadence. Snes9x additionally earns the eleven-win Champion score.
+FIFO/cadence. Combined Snes9x earns eleven wins through both real Bonuses
+before capturing the Champion score; historical controls stay separate.
 """
 from __future__ import annotations
 import argparse
@@ -84,6 +85,7 @@ class Native:
         self.cues = []; self.volumes = []; self.pcm = bytearray(); self.recording = False
         self.video_calls = 0; self.command_count = 0
         self.pcm_callback_sizes = {}; self.pcm_windows = []
+        self.scene_load_callbacks = []
         av = SystemAvInfo(); self.core.retro_get_system_av_info(C.byref(av))
         self.fps = float(av.timing.fps); self.exact_rate = float(av.timing.sample_rate)
         self.rate = round(self.exact_rate)
@@ -113,13 +115,34 @@ class Native:
     def counters(self):
         return [self.read(n, 2) for n in ('frame', 'snes_vblank_count', 'lag_frame_counter')]
 
-    def run(self, n=1, p1=(), p2=(), transition=False):
+    def run(self, n=1, p1=(), p2=(), transition=False, scene_change=None):
         for _ in range(n):
             before = self.counters(); screen = self.read('screen'); calls = self.video_calls
+            trace_screen = self.state()['screen'] if scene_change is not None else None
             serial = self.a(10)
             self.host.run(1, p1=p1, p2=p2)
             now = self.counters()
-            if not transition:
+            loading = transition
+            if scene_change is not None:
+                # Bonus route only: classify genuine scene loads from native
+                # and TRACE publication, never from lag/delta or quiet ticks.
+                after_screen = self.read('screen'); after_trace = self.state()['screen']
+                if transition or scene_change not in ((4, 5), (5, 3)):
+                    raise AssertionError(('Invalid declared Bonus scene route', scene_change, transition))
+                origin, target = scene_change
+                phases = {(origin, origin): 0, (target, origin): 1, (target, target): 2}
+                before_phase = phases.get((screen, trace_screen))
+                after_phase = phases.get((after_screen, after_trace))
+                if before_phase is None or after_phase is None or after_phase < before_phase:
+                    raise AssertionError(('Unexpected scene during Bonus handoff', scene_change,
+                                          [screen, trace_screen, after_screen, after_trace]))
+                loading = (screen != after_screen or screen != trace_screen or after_screen != after_trace)
+                if loading:
+                    self.scene_load_callbacks.append({'route': list(scene_change),
+                        'before': [screen, trace_screen], 'after': [after_screen, after_trace],
+                        'before_counters': before, 'after_counters': now,
+                        'controller_input': {'p1': sorted(p1), 'p2': sorted(p2)}})
+            if not loading:
                 self.strict += 1
                 delta = [(a-b)&65535 for a, b in zip(now, before)]
                 if delta != [1, 1, 0] or self.video_calls-calls != 1:
@@ -131,14 +154,14 @@ class Native:
                                           'cue': self.a(8), 'command': self.a(9),
                                           'native_clock': {n:self.read(n) for n in ('secondTick','seconds','hudSeconds','hudDirty')},
                                           'native_audio_state': [self.a(i) for i in range(32)]})
-                if self.state()['screen'] == 3 and self.read('screen') == 3:
+                if self.state()['screen'] in (3, 5) and self.read('screen') == self.state()['screen']:
                     stat = int.from_bytes(C.string_at(self.ram+0x1ff00+228, 2), 'little')
                     if stat & 0xc0: self.failures.append({'obj_stat77': stat})
             backlog = (self.read('spc_fwrite')-self.read('spc_fread'))&255
-            if not transition: self.max_fifo = max(self.max_fifo, backlog)
+            if not loading: self.max_fifo = max(self.max_fifo, backlog)
             elif self.state()['magic'] == 0xaaba: self.max_transition_fifo = max(self.max_transition_fifo, backlog)
-            if not transition and backlog > 3: self.failures.append({'fifo_bytes': backlog})
-            if not transition and (self.a(10)-serial)&255 > 1:
+            if not loading and backlog > 3: self.failures.append({'fifo_bytes': backlog})
+            if not loading and (self.a(10)-serial)&255 > 1:
                 self.failures.append({'producer_commands': (self.a(10)-serial)&255})
             if self.a(10) != serial:
                 self.command_count += 1
@@ -190,6 +213,7 @@ class Native:
                 'av_fps': self.fps, 'av_sample_rate': self.exact_rate, 'wav_integer_sample_rate': self.rate,
                 'pcm_callback_sizes': self.pcm_callback_sizes, 'pcm_windows': self.pcm_windows,
                 'commands_observed': self.command_count, 'cues': self.cues,
+                'observed_bonus_scene_load_callbacks': self.scene_load_callbacks,
                 'volume_envelope_values': sorted(set(self.volumes))}
 
 
@@ -482,11 +506,69 @@ def score_passage(e, index, label):
             'excerpt': save_pcm(e.folder, label, raw[:round(7*e.rate)*4], e.rate)}
 
 
-def champion(e, policy='legacy'):
+def champion_bonus_handoff(e, match):
+    """Real RESULT -> BONUS -> automatic FIGHT; Select is a controller edge.
+
+    Every coherent Bonus/live/result callback retains Native.run's strict
+    counters, video/OBJ/FIFO/producer checks. Only observed loader callbacks
+    use the declared (4,5)/(5,3) scene route; there is no settling waiver.
+    """
+    variant = {2: 0, 6: 1}[match]
+    before = e.state(); levels = [e.a(i) for i in range(3)]
+    loads = len(e.scene_load_callbacks); strict = e.strict
+    require(before['screen'] == 4 and before['wins1'] == 2 and before['arcade'] == match,
+            'Bonus follows the actual earned ladder result', [match, before])
+    # Hold the ordinary result confirmation for its existing three samples;
+    # quiet RESULT/BONUS samples remain strict, even during input latency.
+    e.run(3, p1=['a'], scene_change=(4, 5))
+    for _ in range(600):
+        if e.read('screen') == e.state()['screen'] == 5: break
+        e.run(1, scene_change=(4, 5))
+    else: raise AssertionError(('Earned Bonus entry timeout', match, e.state()))
+    require(e.read('v29BonusState', offset=1) == variant and e.read('arcade') == match,
+            'Real Bonus variant retains the just-won ladder index', [variant, e.state()])
+    require(e.read('v29BonusState') == (1 if match == 2 else 3),
+            'Both earned Bonus markers occur once in order')
+    require(e.read('v29BonusState', offset=2) == 0 and e.read('musicIndex') == 3,
+            'Bonus is live with the original office arrangement')
+    e.pcm.clear(); e.recording = True; cues = len(e.cues)
+    # Release A, then use fresh Select. No Start, state edit or direct jump.
+    e.run(12)
+    e.run(3, p1=['select']); e.run(1)
+    skipped = {'result': e.read('v29BonusState', offset=2),
+               'paused': e.read('v29BonusState', offset=3),
+               'result_ticks': e.read('v29BonusState', offset=22), 'arcade': e.read('arcade')}
+    require(skipped['result'] == 3 and skipped['paused'] == 0 and skipped['arcade'] == match,
+            'Controller Select skips the real optional Bonus without advancing the ladder', skipped)
+    result_shot = e.shot('bonus'+str(variant)+'-skipped')
+    for _ in range(130):
+        if e.read('screen') == e.state()['screen'] == 3: break
+        e.run(1, scene_change=(5, 3))
+    else: raise AssertionError(('Automatic Bonus handoff timeout', match, e.state()))
+    e.recording = False
+    after = e.state(); slots = [c['slot'] for c in e.cues[cues:]]
+    require(e.read('arcade') == match+1 and after['arcade'] == match+1 and
+            after['fighter_id2'] == (before['selected']+1+match+1) % 12 and
+            after['arena'] == (before['arena']+1) % 3,
+            'Bonus result automatically hands off exactly once to the correct next opponent/arena', after)
+    require(after['selected'] == before['selected'] and [e.a(i) for i in range(3)] == levels,
+            'Bonus loading and automatic handoff preserve selected fighter and independent sound levels')
+    require(0 in slots, 'Real Bonus skip produces the resident feedback cue', slots)
+    pcm = save_pcm(e.folder, 'bonus'+str(variant)+'-skip-handoff', bytes(e.pcm), e.rate)
+    require(pcm['rms'] > 32, 'Bonus office music/skip/automatic handoff have audible native PCM', pcm)
+    return {'after_earned_index': match, 'variant': variant, 'route': [4, 5, 3],
+            'controller_skip': 'P1 fresh Select', 'skip_result': skipped,
+            'next_index': after['arcade'], 'next_opponent': after['fighter_id2'],
+            'next_arena': after['arena'], 'strict_callbacks': e.strict-strict,
+            'scene_load_callbacks': e.scene_load_callbacks[loads:],
+            'cue_slots': slots, 'pcm': pcm, 'result_screenshot': result_shot}
+
+
+def champion(e, policy='legacy', with_bonus=False):
     e.run(120, transition=True); e.tap('l'); e.tap('a', transition=True); e.wait(1)
     for _ in range(4): e.tap('right')
     e.tap('a', transition=True); e.wait(2); e.tap('a', transition=True); e.wait(3); e.run(180)
-    ladder = []
+    ladder = []; bonus_handoffs = []
     # Existing earned-win policy, bounded to three attempts per opponent.
     for match in range(11):
         for attempt in range(3):
@@ -497,10 +579,18 @@ def champion(e, policy='legacy'):
         require(s['wins1'] == 2 and s['arcade'] == match, 'Actual next ladder win', [match, s])
         ladder.append({'opponent': s['fighter_id2'], 'arena': s['arena'], 'attempts': attempt+1})
         if match != 10:
-            e.tap('a', transition=True); e.wait(3)
+            if with_bonus and match in (2, 6):
+                bonus_handoffs.append(champion_bonus_handoff(e, match))
+            else:
+                e.tap('a', transition=True); e.wait(3)
+    if with_bonus:
+        require([b['after_earned_index'] for b in bonus_handoffs] == [2, 6] and
+                [b['next_index'] for b in bonus_handoffs] == [3, 7],
+                'Full earned Champion route includes both real Bonus handoffs', bonus_handoffs)
     require(e.state()['champion'] == 1 and e.read('musicIndex') == 4, 'Eleventh earned win selects Champion arrangement')
     result = score_passage(e, 4, 'champion')
-    return {'policy': policy, 'ladder': ladder, 'pcm': result}
+    return {'policy': policy, 'with_bonus': with_bonus, 'ladder': ladder,
+            'bonus_handoffs': bonus_handoffs, 'pcm': result}
 
 
 def preservation(syms, combined=False):
@@ -563,6 +653,11 @@ def main():
               'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
               'inputs': inputs, 'host': host_contract(), 'checks': CHECKS, 'media': MEDIA,
               'harness_sha256': sha(Path(__file__).read_bytes()),
+              'historical_failed_controls': [
+                  {'file': name, 'sha256': sha((ROOT/name).read_bytes()),
+                   'scope': 'historical failed control; never counted as a current pass'}
+                  for name in ('docs/audio29-champion.json', 'docs/audio29-legacy-control.json',
+                               'docs/audio29-followup-original-failure.json', 'docs/audio29-followup-native.json')],
               'human_listening_approved': False, 'cases': []}
     started = time.monotonic(); e = None
     try:
@@ -604,7 +699,8 @@ def main():
         report['mixed'] = mixed_contacts(e)
         report['cases'].append(e.finish()); e.close()
         if args.core == 'snes9x' and not args.skip_champion:
-            e = Native(args.core, syms, folder); report['champion'] = champion(e, args.champion_policy)
+            e = Native(args.core, syms, folder)
+            report['champion'] = champion(e, args.champion_policy, with_bonus=args.combined)
             report['cases'].append(e.finish()); e.close()
         require(all(sha((ROOT/path).read_bytes()) == value for path, value in inputs.items()),
                 'Producer/harness/dependency bytes stayed fixed through proof')

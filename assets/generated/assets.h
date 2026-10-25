@@ -345,3 +345,11 @@ extern char arena_life29_stage1, arena_life29_stage1_end;
 #define ARENA_LIFE29_STAGE1_SIZE 9216
 extern char arena_life29_stage2, arena_life29_stage2_end;
 #define ARENA_LIFE29_STAGE2_SIZE 9216
+extern char bonus29_printer, bonus29_printer_end;
+#define BONUS29_PRINTER_SIZE 3840
+extern char bonus29_printer_pal, bonus29_printer_pal_end;
+#define BONUS29_PRINTER_PAL_SIZE 32
+extern char bonus29_inbox, bonus29_inbox_end;
+#define BONUS29_INBOX_SIZE 3840
+extern char bonus29_inbox_pal, bonus29_inbox_pal_end;
+#define BONUS29_INBOX_PAL_SIZE 32

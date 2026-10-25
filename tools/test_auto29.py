@@ -31,18 +31,19 @@ def sha(data):
 
 
 def fingerprint():
-    paths = [p for folder in ('src', 'web') for p in (ROOT / folder).iterdir() if p.is_file()]
-    paths += [ROOT / 'tools' / name for name in (
-        'test_auto29.py', 'emulator.py', 'test_classic_menu.py', 'test_training.py',
-        'test_compatibility.py', 'test_champion.py', 'v024_contracts.py',
-        'stage_test_contract.py', 'build.py', 'build_web.py')]
+    # The parent freezes all six harnesses and their shared imports together.
+    # Hash tool sources as well as producers so transitive helpers are bound.
+    paths = [p for folder in ('src', 'web', 'tools') for p in (ROOT / folder).iterdir()
+             if p.is_file() and (folder != 'tools' or p.suffix in ('.py', '.mjs'))]
     return {p.relative_to(ROOT).as_posix(): sha(p.read_bytes()) for p in sorted(paths)}
 
 
-def serve(port):
+def serve(port, site):
     # Fault prefixes serve the SAME production bundle. Only the first real
     # loader/ROM HTTP request fails; Try again performs a genuine page reload.
-    site = ROOT / 'build/cloudflare/site'
+    site = site.resolve()
+    if not (site / 'release.json').is_file():
+        raise ValueError('Parent must prepare the exact web bundle before starting the fixture')
     failed = set()
 
     class Handler(SimpleHTTPRequestHandler):
@@ -72,7 +73,7 @@ def serve(port):
     ThreadingHTTPServer(('127.0.0.1', port), Handler).serve_forever()
 
 
-def native(core, report_path, captures):
+def native(core, report_path, captures, combined=False, expected_rom=None):
     report_path, captures = report_path.resolve(), captures.resolve()
     checks = []
 
@@ -82,16 +83,27 @@ def native(core, report_path, captures):
         checks.append(label)
 
     manifest = json.loads((ROOT / 'dist/manifest.json').read_bytes())
-    syms = symbols((ROOT / 'dist/abaqus-after-hours.sym').read_text())
+    symbol_path = ROOT / 'dist/abaqus-after-hours.sym'
+    symbol_sha = sha(symbol_path.read_bytes())
+    syms = symbols(symbol_path.read_text())
     frozen = fingerprint()
     start = time.monotonic()
     report = dict(status='failed', core=core, rom_sha256=manifest['sha256'],
                   source_commit=subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
                   source_and_harness=frozen, host=host_contract(), cases=[], media=[],
+                  symbols_sha256=symbol_sha, combined=combined,
+                  outputs={'report':str(report_path), 'captures':str(captures)},
                   memory_writes=False, save_states=False, post_arena_skip_inputs=0)
     steady = 0
     try:
         require(sha((ROOT / 'dist/abaqus-after-hours.sfc').read_bytes()) == manifest['sha256'], 'ROM matches manifest')
+        if expected_rom:
+            require(manifest['sha256'] == expected_rom.lower(), 'ROM matches parent frozen SHA-256')
+        if combined:
+            from v029_contracts import validate
+            report['integration_contract'] = validate(ROOT)
+            require(report['integration_contract']['generated']['current_count'] == 237,
+                    'Combined parent inventory contains exactly 237 generated files')
         report['core_identity'] = core_identity() if core == 'snes9x' else verify_manifest_and_pinned_core()
         for mode in range(3):
             for arena in range(3):
@@ -204,7 +216,9 @@ def native(core, report_path, captures):
                     print(json.dumps(report['cases'][-1]), flush=True)
                 finally:
                     host.close()
+        require(len(report['cases']) == 9, 'All three modes crossed with all three arenas completed')
         require(fingerprint() == frozen, 'Source/harness bytes stayed frozen during proof')
+        require(sha(symbol_path.read_bytes()) == symbol_sha, 'Read-only symbol offsets stayed frozen')
         require(sha((ROOT / 'dist/abaqus-after-hours.sfc').read_bytes()) == manifest['sha256'], 'Tested ROM stayed frozen')
         report['status'] = 'passed'
     except BaseException as error:
@@ -213,7 +227,7 @@ def native(core, report_path, captures):
     finally:
         report.update(passed=len(checks), steady_callbacks=steady, elapsed_seconds=round(time.monotonic()-start, 3))
         report_path.parent.mkdir(parents=True, exist_ok=True)
-        report_path.write_text(json.dumps(report, indent=2)+'\n', encoding='utf-8')
+        report_path.write_bytes((json.dumps(report, indent=2)+'\n').encode('utf-8'))
         print(json.dumps({k: report[k] for k in ('status', 'core', 'passed', 'steady_callbacks', 'elapsed_seconds')}), flush=True)
 
 
@@ -221,13 +235,17 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--core', choices=('snes9x', 'accuracy'))
     parser.add_argument('--report', type=Path)
-    parser.add_argument('--captures', type=Path, default=ROOT / 'docs/screenshots/auto29/native')
+    parser.add_argument('--captures', type=Path, default=ROOT / 'build/v029/auto/native')
+    parser.add_argument('--combined', action='store_true', help='Use the parent-owned 237-file integration contract')
+    parser.add_argument('--expect-rom-sha256', help='Require the parent frozen cartridge identity')
     parser.add_argument('--serve', type=int, metavar='PORT')
+    parser.add_argument('--site', type=Path, default=ROOT / 'build/cloudflare/site',
+                        help='Parent-prepared web bundle served by --serve; no web build is performed')
     args = parser.parse_args()
     if args.serve:
-        serve(args.serve)
+        serve(args.serve, args.site)
     elif args.core and args.report:
-        native(args.core, args.report, args.captures)
+        native(args.core, args.report, args.captures, args.combined, args.expect_rom_sha256)
     else:
         parser.error('--core and --report, or --serve, required')
 

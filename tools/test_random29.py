@@ -45,7 +45,11 @@ def inputs_snapshot():
 def preservation(syms, combined=False):
     if combined:
         from v029_contracts import validate
-        return {'scope': 'parent-reviewed combined v0.29 ROM', **validate(ROOT)}
+        result = validate(ROOT)
+        require(result['generated']['current_count'] == 237,
+                'Combined six-topic inventory contains exactly 237 generated files',
+                result['generated']['current_count'])
+        return {'scope': 'parent-reviewed combined v0.29 ROM', **result}
     archive = subprocess.check_output(['git', 'archive', BASE, 'assets/generated',
                                        'src/hardware.asm', 'src/trace.asm'], cwd=ROOT)
     unchanged = []
@@ -283,8 +287,12 @@ class Session:
             if self.host.state()['screen'] == 3 and self.host.state()['intro'] == 0:
                 break
             self.run(transition=True)
-        require(self.host.state()['intro'] == 0, 'Random choices hand off to live combat')
+        require(self.read('screen') == 3 and self.read('arcade') == 0
+                and self.host.state()['intro'] == 0 and not self.host.state()['paused'],
+                'Random choices hand off to the first live fight', self.host.state())
         self.run(36)
+        require(self.read('screen') == 3 and not self.host.state()['paused'],
+                'Random handoff remains in live combat, outside Bonus and sound pages', self.host.state())
         require(C.string_at(self.host.ram + (self.syms['v29RandomState'] & 0x1ffff), 8) == random_state,
                 'All menu RNG bytes freeze during fights')
         require(self.host.state()['arena'] == arena and self.host.state()['fighter_id1'] == selected[0]
@@ -355,10 +363,15 @@ def timing_proof(core, syms, captures):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--core', choices=('snes9x', 'accuracy', 'both'), default='both')
-    parser.add_argument('--report', type=Path, default=ROOT / 'docs/random29-report.json')
-    parser.add_argument('--captures', type=Path, default=ROOT / 'docs/screenshots/random29')
+    parser.add_argument('--report', type=Path)
+    parser.add_argument('--captures', type=Path)
     parser.add_argument('--combined', action='store_true', help='Use the parent-reviewed six-feature preservation policy')
     args = parser.parse_args()
+    # Keep isolated evidence historical when the all-six candidate is tested.
+    if args.report is None:
+        args.report = ROOT / ('docs/random29-combined-report.json' if args.combined else 'docs/random29-report.json')
+    if args.captures is None:
+        args.captures = ROOT / ('docs/screenshots/random29-combined' if args.combined else 'docs/screenshots/random29')
     started = time.monotonic()
     sources = inputs_snapshot()
     manifest = json.loads((ROOT / 'dist/manifest.json').read_bytes())

@@ -873,3 +873,27 @@ arena_life29_stage2:
 .incbin "assets/generated/arena_life29_stage2.bin"
 arena_life29_stage2_end:
 .ends
+
+.section "asset_bonus29_printer" superfree
+bonus29_printer:
+.incbin "assets/generated/bonus29_printer.bin"
+bonus29_printer_end:
+.ends
+
+.section "asset_bonus29_printer_pal" superfree
+bonus29_printer_pal:
+.incbin "assets/generated/bonus29_printer_pal.bin"
+bonus29_printer_pal_end:
+.ends
+
+.section "asset_bonus29_inbox" superfree
+bonus29_inbox:
+.incbin "assets/generated/bonus29_inbox.bin"
+bonus29_inbox_end:
+.ends
+
+.section "asset_bonus29_inbox_pal" superfree
+bonus29_inbox_pal:
+.incbin "assets/generated/bonus29_inbox_pal.bin"
+bonus29_inbox_pal_end:
+.ends

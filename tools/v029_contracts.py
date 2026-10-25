@@ -23,9 +23,12 @@ ALLOWED_CHANGED = {'assets/generated/assets.h', 'assets/generated/data.asm',
                    'assets/generated/soundbank.bnk', 'assets/generated/stage-depth.json'}
 ALLOWED_CHANGED.update(f'assets/generated/music{i}.it' for i in range(5))
 ALLOWED_CHANGED.update(f'assets/generated/stage{i}{suffix}' for i in range(3)
-                       for suffix in ('.png', '_tiles.bin', '_map.bin', '_pal.bin'))
+                       for suffix in ('.png', '_tiles.bin', '_map.bin'))
 ALLOWED_ADDED = {'assets/generated/arena-life29.json'} | {
     f'assets/generated/arena_life29_stage{i}.bin' for i in range(3)}
+ALLOWED_ADDED |= {'assets/generated/bonus29-assets.json'} | {
+    'assets/generated/bonus29_'+name+suffix for name in ('printer','inbox')
+    for suffix in ('.bin','_pal.bin','.png')}
 
 
 def require(ok, message, details=None):
@@ -131,6 +134,8 @@ def validate(root):
         require(normalize(name, (root/name).read_bytes()) == normalize(name, before[name]),
                 'Protected hardware/trace assembly changed', name)
     generated = generated_report(root, before)
+    require({row['path'] for row in generated['changed']} == ALLOWED_CHANGED,
+            'Complete six-feature generated changes differ from reviewed inventory')
     # Git's committed blob IDs independently bind every retained original art
     # and reference file; reports cannot authorize edited masters.
     protected = git(root, 'ls-tree', '-r', BASE, '--', 'assets/art', 'assets/references').decode().splitlines()
@@ -172,12 +177,29 @@ def validate(root):
     budget = soundbank_budget(root/'assets/generated/soundbank.bnk')
     from arena_life29_checks import metadata as arena_metadata
     arenas = arena_metadata(root)
+    bonus = json.loads((root/'assets/generated/bonus29-assets.json').read_bytes())
+    require(bonus.get('scope') == 'bonus-v029' and bonus.get('actor_canvas') == [96,80] and
+            bonus.get('vram_word') == [0x6a00,0x73ff] and bonus.get('cgram_color') == [144,159] and
+            bonus.get('live_target_dma') == 0, 'Bonus target native allocation differs')
+    source = root/'assets/art/bonus-v029/office-targets-v1.png'
+    provenance = json.loads(source.with_suffix('.json').read_bytes())
+    require(provenance.get('mode') == 'built-in imagegen' and
+            bonus.get('source_sha256') == provenance.get('output_sha256') == sha(source.read_bytes()),
+            'Bonus source/provenance differs')
+    require([row.get('name') for row in bonus.get('targets',[])] == ['bonus29_printer','bonus29_inbox'],
+            'Bonus target inventory differs')
+    for row in bonus['targets']:
+        pose = (root/'assets/generated'/(row['name']+'.bin')).read_bytes()
+        palette = (root/'assets/generated'/(row['name']+'_pal.bin')).read_bytes()
+        require(row.get('bytes') == len(pose) == 3840 and row.get('palette_bytes') == len(palette) == 32 and
+                row.get('pose_sha256') == sha(pose) and row.get('palette_sha256') == sha(palette),
+                'Bonus actor page/palette differs',row['name'])
     return {'status': 'passed', 'version': manifest['version'], 'rom_sha256': manifest['sha256'],
             'baseline_commit': BASE, 'baseline_rom_sha256': BASE_ROM,
             'generated': generated, 'original_art_reference_files_exact': len(protected),
             'memory': memory, 'hardware_trace_exact': True, 'floors': floors,
             'native_sections': sections, 'soundbank': budget,
-            'arena_animation_contract': arenas}
+            'arena_animation_contract': arenas, 'bonus_target_contract': bonus}
 
 
 if __name__ == '__main__':

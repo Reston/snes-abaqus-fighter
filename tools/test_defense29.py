@@ -34,6 +34,17 @@ CAPTURES = ROOT / 'docs/screenshots/defense29'
 CHECKS = {}
 HEALTH = {}
 SYMS = {}
+# These are the retained pre-defense artifacts, not the approved v0.28 ROM
+# or a prior feature candidate. Never regenerate them from the combined ROM.
+BASELINE_SHA256 = {
+    'build/defense29/baseline/abaqus-after-hours.sfc':
+        '46108c5e955733820f92c8baab4088a0f054e2b4986fb5d8093c1352e1023738',
+    'build/defense29/baseline/abaqus-after-hours.sym':
+        '4fcac2f06b84d6249e7fd52184954a86e8035305e80f5d3d01d9fe90b71ebbf0',
+    'build/defense29/baseline-measurement.json':
+        '3bbbd34c297404e4b72a2bb2d7cf4dca45ba86dcf0ffd65fdf9f6f5ae142c97c',
+}
+CAPTURED = set()
 
 
 def sha(raw):
@@ -55,6 +66,13 @@ def symbols(path):
 
 def read(e, name, size=1):
     return int.from_bytes(C.string_at(e.ram + SYMS[name], size), 'little')
+
+
+def capture(r, label):
+    path = CAPTURES / f'{r.core_name}-p{r.a}-{label}.png'
+    path.parent.mkdir(parents=True, exist_ok=True)
+    r.e.frame.save(path)
+    CAPTURED.add(path)
 
 
 class Host:
@@ -253,9 +271,7 @@ def verify_tech(r, before, label, late=True, observe_tail=True):
     require(all(row['passed'] for row in presentation.checks[start:]),
             'earned tech is readable in actual opaque native PPU glyphs', [r.tag, label])
     if r.fighter == 0 and label in ('tick-5', 'corner-right'):
-        path = CAPTURES / f'{r.core_name}-p{r.a}-{label}.png'
-        path.parent.mkdir(parents=True, exist_ok=True)
-        r.e.frame.save(path)
+        capture(r, label)
     for _ in range(110 if observe_tail else 0):
         s = r.step()
         require(s['hp1'] == before['hp1'] and s['hp2'] == before['hp2'],
@@ -331,9 +347,7 @@ def recovery(r, kind):
             r.e.run(8)
             presentation.verify_opaque_text_rows(r.e, [(20, 3, 'TECH: TOWARD + X ON GRAB'),
                                                        (23, 3, 'WAKE: BRIEF THROW PROTECTION')], r.tag + ' defense guide')
-            path = CAPTURES / f'{r.core_name}-p{r.a}-guide.png'
-            path.parent.mkdir(parents=True, exist_ok=True)
-            r.e.frame.save(path)
+            capture(r, 'guide')
         r.e.tap('start')
         r.settle()
         require(timer(r) == 0, 'throw protection expires after its bounded live ticks')
@@ -702,6 +716,14 @@ def static_contract(combined=False):
         for row in parent['generated']['added']:
             name=row['path']
             assets[name] = sha((ROOT/name).read_bytes())
+        require(parent['generated']['baseline_count'] == 226 and
+                parent['generated']['current_count'] == len(assets) == 237 and
+                len(parent['generated']['added']) == 11,
+                'combined inventory binds all 226 baseline and eleven reviewed new outputs',
+                {'bound': len(assets), 'parent': parent['generated']['current_count']})
+        reviewed = {row['path']: row['sha256'] for group in ('preserved', 'changed', 'added')
+                    for row in parent['generated'][group]}
+        require(assets == reviewed, 'defense binds the exact complete parent-reviewed generated inventory')
     sections = []
     for name, start in new.items():
         if not name.startswith('SECTIONSTART_') or start >> 16 in (0x7e, 0x7f) or start < 0x800000:
@@ -758,8 +780,11 @@ def main():
     started = time.monotonic()
     sources = snapshot(ROOT)
     artifact_names = ('dist/abaqus-after-hours.sfc', 'dist/abaqus-after-hours.sym', 'dist/manifest.json',
+                      'build/game.asm',
                       'build/defense29/baseline/abaqus-after-hours.sfc',
                       'build/defense29/baseline/abaqus-after-hours.sym')
+    if not args.measure:
+        artifact_names += ('build/defense29/baseline-measurement.json',)
     artifacts = {name: sha((ROOT / name).read_bytes()) for name in artifact_names}
     report = {'status': 'failed', 'rom_sha256': sha((ROOT / 'dist/abaqus-after-hours.sfc').read_bytes()),
               'diagnostic':diagnostic,'version':json.loads((ROOT/'dist/manifest.json').read_bytes())['version'],
@@ -795,10 +820,16 @@ def main():
                         report['cases'].append(measure(core, fighter, port))
                     print(json.dumps({'core': core, 'fighter': fighter, 'status': 'measured'}), flush=True)
         else:
+            require(all(artifacts[name] == digest for name, digest in BASELINE_SHA256.items()),
+                    'retained pre-defense ROM symbols and original measurement retain their frozen hashes',
+                    {name: artifacts[name] for name in BASELINE_SHA256})
             report['static_contract'] = static_contract(args.combined)
             report['combined_rom_context'] = args.combined
             report['combined_verification_claimed'] = False
             baseline = json.loads((OUT / 'baseline-measurement.json').read_bytes())
+            require(baseline['status'] == 'passed' and
+                    baseline['rom_sha256'] == artifacts['build/defense29/baseline/abaqus-after-hours.sfc'],
+                    'original successful throw measurement belongs to the retained baseline ROM')
             report['baseline'] = {'rom_sha256': baseline['rom_sha256'],
                 'measurement_sha256': sha((OUT / 'baseline-measurement.json').read_bytes()),
                 'callbacks': baseline['native_health'],
@@ -858,6 +889,18 @@ def main():
                         entry['baseline_replay'] = reference['stream']
                         report['throw_preservation'].append(entry)
                     print(json.dumps({'fighter': fighter, 'unaffected_and_throw_preservation': 'passed'}), flush=True)
+            if not partial:
+                require([len(report[key]) for key in ('cases', 'cpu_cases', 'ko_cases',
+                                                       'unaffected_cases', 'throw_preservation')] ==
+                        [32, 16, 32, 24, 24],
+                        'full proof retains all roster role Accuracy CPU KO and preservation cases')
+                expected_captures = {CAPTURES / f'{core}-p{port}-{label}.png'
+                                     for core in ('snes9x', 'accuracy') for port in (1, 2)
+                                     for label in (('tick-5', 'corner-right', 'guide') if core == 'snes9x'
+                                                   else ('corner-right', 'guide'))}
+                require(CAPTURED == expected_captures,
+                        'full proof freshly produces all ten owned native defense captures',
+                        sorted(p.name for p in CAPTURED))
             require(snapshot(ROOT) == sources, 'producer harness and all native sources stay fixed during the proof')
             require(all(sha((ROOT / name).read_bytes()) == digest for name, digest in artifacts.items()),
                     'tested ROM symbols and manifest stay fixed during the proof')
@@ -866,8 +909,11 @@ def main():
             require(all(sha((ROOT / name).read_bytes()) == digest for name, digest in
                         report['static_contract']['tracked_generated_assets'].items()),
                     'all preservation-bound generated asset bytes stay fixed during the proof')
+            require(sha((ROOT / 'assets/generated/soundbank.h').read_bytes()) ==
+                    report['static_contract']['extra_generated_header_sha256'],
+                    'untracked generated soundbank header stays fixed during the proof')
             report['captures'] = [{'path': p.relative_to(ROOT).as_posix(), 'sha256': sha(p.read_bytes())}
-                                  for p in sorted(CAPTURES.glob('*.png'))]
+                                  for p in sorted(CAPTURED)]
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)

@@ -41,7 +41,7 @@ INDEPENDENT_FRAMES = 600
 INDEPENDENT_TOTAL_FRAMES = INDEPENDENT_CASES * INDEPENDENT_FRAMES
 HOUR_SECONDS = 3600.0
 ROM_BYTES = 4 * 1024 * 1024
-GENERATED_ASSET_COUNT = 226
+GENERATED_ASSET_COUNT = 237
 
 EXPECTED_NATIVE_CORE = {
     "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
@@ -154,6 +154,8 @@ SOURCE_INPUT_EXACT = {
     "tools/test_arena_life29.py",
     "tools/test_random29.py",
     "tools/test_defense29.py",
+    "tools/bonus29_assets.py",
+    "tools/test_bonus29.py",
     "tools/test_auto29.py",
     "tools/test_auto29_web.mjs",
     "tools/build_web.py",

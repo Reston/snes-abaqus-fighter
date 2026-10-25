@@ -1,0 +1,46 @@
+{
+  "scope": "bonus-v029",
+  "source_sha256": "bdd4eca7ccdddfe3ac0d0eba788a072c07fee1b53006e556d90db394680598bd",
+  "actor_canvas": [
+    96,
+    80
+  ],
+  "vram_word": [
+    27136,
+    29695
+  ],
+  "cgram_color": [
+    144,
+    159
+  ],
+  "live_target_dma": 0,
+  "encoding": "alpha>=200; two isolated column spans; aspect fit 90x76; bottom78; MEDIANCUT15; no dither; 4bpp",
+  "targets": [
+    {
+      "name": "bonus29_printer",
+      "source_region": [
+        66,
+        16,
+        976,
+        810
+      ],
+      "bytes": 3840,
+      "palette_bytes": 32,
+      "pose_sha256": "b002cdec5ab757c4332e28673175341da872ea21c7da66fb264b0445935bb4fc",
+      "palette_sha256": "e886768c5c9ba8f4168523e0c4a9b46dc6fa55c49fb63c84f1b07ec5e76301e2"
+    },
+    {
+      "name": "bonus29_inbox",
+      "source_region": [
+        1112,
+        22,
+        1816,
+        821
+      ],
+      "bytes": 3840,
+      "palette_bytes": 32,
+      "pose_sha256": "6a35a860d63c94d8ff868205a12da19811e61a4cc921a14abec84afa37c14612",
+      "palette_sha256": "7ff4ff60d5b6592b03ea9ef80c4662f8e8e133cb1f8363b7add119927a99561e"
+    }
+  ]
+}

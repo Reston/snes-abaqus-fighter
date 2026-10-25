@@ -30,6 +30,7 @@ from v024_contracts import symbols
 from arena_life29_assets import render, colors
 
 BASE='29fee8343ceaa47c9c74921494142c2c02a1198f'
+BASE_ROM_SHA='09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c'
 CHECKS={}
 ACTOR_FRAMES={}
 
@@ -46,6 +47,29 @@ def snapshot():
     return {p.relative_to(ROOT).as_posix():sha(p.read_bytes())
             for directory in ('src','tools','assets/art/stages/arena-life-v029')
             for p in sorted((ROOT/directory).rglob('*')) if p.is_file() and '__pycache__' not in p.parts}
+
+
+def file_hashes(directory):
+    return {p.relative_to(ROOT).as_posix():sha(p.read_bytes())
+            for p in sorted(directory.iterdir()) if p.is_file()}
+
+
+def baseline_identity(rom, symbol_path):
+    """Bind the unchanged original replay to committed bytes before booting.
+
+    A combined-rule mismatch remains a failure. An animation-only current
+    source counterfactual requires a separately reviewed parent preparation;
+    this harness does not silently replace or normalize the original baseline.
+    """
+    result={'source_commit':BASE,'rom_path':str(rom),'symbols_path':str(symbol_path)}
+    for path, name in ((rom,'abaqus-after-hours.sfc'),(symbol_path,'abaqus-after-hours.sym')):
+        require(path.is_file(),'Original baseline artifact exists before native proof',str(path))
+        original=subprocess.check_output(['git','show',BASE+':dist/'+name],cwd=ROOT)
+        raw=path.read_bytes()
+        require(raw==original,'Replay baseline artifact equals exact committed original bytes',str(path))
+        result['rom_sha256' if name.endswith('.sfc') else 'symbols_sha256']=sha(raw)
+    require(result['rom_sha256']==BASE_ROM_SHA,'Replay baseline identifies approved v0.28 ROM',result)
+    return result
 
 
 def preservation(syms):
@@ -103,7 +127,7 @@ def preservation(syms):
 
 
 class Rig:
-    def __init__(self,core,stage,fighter,syms,report,rom=None,monitor=True):
+    def __init__(self,core,stage,fighter,syms,report,rom=None,monitor=True,captures=None):
         self.core=core;self.stage=stage;self.fighter=fighter;self.syms=syms;self.report=report;self.monitor=monitor
         if core=='accuracy':
             compat.ROM_PATH=Path(rom or ROOT/'dist/abaqus-after-hours.sfc');self.e=AccuracyMenu()
@@ -115,7 +139,8 @@ class Rig:
         self.last_trace_life=None;self.last_trace_pool=None
         self.meta=json.loads((ROOT/'assets/generated/arena-life29.json').read_bytes())
         self.sources=[(ROOT/'assets/generated'/s['phase_source']).read_bytes() for s in self.meta['stages']]
-        self.capture_dir=ROOT/'docs/screenshots/arena-life29'/core;self.capture_dir.mkdir(parents=True,exist_ok=True)
+        self.capture_dir=(Path(captures) if captures is not None else ROOT/'docs/screenshots/arena-life29')/core
+        self.capture_dir.mkdir(parents=True,exist_ok=True)
 
     def raw(self,name,size=1):return C.string_at(self.e.ram+(self.syms[name]&0x1ffff),size)
     def read(self,name,size=1):return int.from_bytes(self.raw(name,size),'little')
@@ -422,16 +447,19 @@ def arena_case(r):
 
 
 def replay_base(case,syms,report):
-    path=ROOT/'build/arena-life29-baseline/abaqus-after-hours.sfc'
-    prior=symbols((path.with_suffix('.sym')).read_text())
-    r=Rig('snes9x',case['stage'],case['fighter_mirror'],prior,report,rom=path,monitor=False)
+    identity=report['baseline_inputs'];path=Path(identity['rom_path']);symbol_path=Path(identity['symbols_path'])
+    require(sha(path.read_bytes())==identity['rom_sha256'] and sha(symbol_path.read_bytes())==identity['symbols_sha256'],
+            'Original replay ROM/symbol bytes remain frozen before each stage')
+    prior=symbols(symbol_path.read_text())
+    r=Rig('snes9x',case['stage'],case['fighter_mirror'],prior,report,rom=path,monitor=False,captures=report['capture_root'])
     try:
         r.boot();require(r.initial_game==case['replay']['initial_game'],'Baseline starts at identical unmasked gameplay state',case['stage'])
         for i,row in enumerate(case['replay']['inputs']):
             r.tick(row['p1'],row['p2'],record=False)
             require(r.game()==row['game'],'Unmasked gameplay trace/Fighter64/Wave16/RNG/private-super replay equals baseline',
                     {'stage':case['stage'],'callback':i,'before_sha':r.game(),'candidate_sha':row['game'],'keys':[row['p1'],row['p2']]})
-        return {'stage':case['stage'],'callbacks':len(case['replay']['inputs']),'all_unmasked_equal':True,'baseline_sha256':sha(path.read_bytes())}
+        return {'stage':case['stage'],'callbacks':len(case['replay']['inputs']),'all_unmasked_equal':True,
+                'baseline_sha256':identity['rom_sha256'],'baseline_symbols_sha256':identity['symbols_sha256']}
     finally:r.e.close()
 
 
@@ -440,26 +468,46 @@ def main():
     parser.add_argument('--core',choices=('snes9x','accuracy'),required=True)
     parser.add_argument('--stages',default='0,1,2')
     parser.add_argument('--report',type=Path,required=True)
+    parser.add_argument('--captures',type=Path,help='Capture base; each core owns its own subdirectory')
+    parser.add_argument('--baseline-rom',type=Path,default=ROOT/'build/arena-life29-baseline/abaqus-after-hours.sfc')
+    parser.add_argument('--baseline-symbols',type=Path,default=ROOT/'build/arena-life29-baseline/abaqus-after-hours.sym')
     parser.add_argument('--skip-replay',action='store_true')
     parser.add_argument('--combined',action='store_true',help='Bind preservation to the parent six-topic policy')
     args=parser.parse_args();started=time.monotonic();sources=snapshot();syms=symbols((ROOT/'dist/abaqus-after-hours.sym').read_text())
     stages=list(map(int,args.stages.split(',')))
-    require(stages==[0,1,2] or args.report.resolve().is_relative_to(ROOT/'build'),'Partial coverage stays diagnostic')
+    args.report=args.report.resolve()
+    captures=(args.captures or ROOT/'docs/screenshots/arena-life29'/('current' if args.combined else '')).resolve()
+    require(captures.is_relative_to(ROOT/'docs/screenshots') or captures.is_relative_to(ROOT/'build'),
+            'Captures stay in this root workspace',str(captures))
+    if args.combined:
+        require(args.report==ROOT/f'docs/arena-life29-current-{args.core}.json' or args.report.is_relative_to(ROOT/'build'),
+                'Combined proof uses its disjoint current report path',str(args.report))
+        require(captures.is_relative_to(ROOT/'docs/screenshots/arena-life29/current') or captures.is_relative_to(ROOT/'build'),
+                'Combined captures cannot overwrite isolated historical media',str(captures))
+        require(not(args.core=='snes9x' and args.skip_replay),'Combined Snes9x proof must retain original unmasked baseline replay')
+    require(stages==[0,1,2] or args.report.is_relative_to(ROOT/'build'),'Partial coverage stays diagnostic')
     manifest=json.loads((ROOT/'dist/manifest.json').read_bytes())
     report={'status':'failed','core':args.core,'rom':manifest,'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
-            'sources':sources,'memory_writes':False,'save_states':False,'audio_device':False,'media':[],'cases':[],'baseline_replays':[]}
+            'sources':sources,'memory_writes':False,'save_states':False,'audio_device':False,'media':[],'cases':[],'baseline_replays':[],
+            'capture_root':str(captures),'native_inputs':{p.relative_to(ROOT).as_posix():sha(p.read_bytes()) for p in
+                (ROOT/'dist/abaqus-after-hours.sfc',ROOT/'dist/abaqus-after-hours.sym',ROOT/'dist/manifest.json')},
+            'generated_inputs':file_hashes(ROOT/'assets/generated')}
     try:
         require(sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes())==manifest['sha256'],'Exact tested ROM identity')
         if args.combined:
             from v029_contracts import validate
             report['preservation']=validate(ROOT)
+            require(report['preservation']['generated']['current_count']==237,
+                    'Combined final inventory contains exactly 237 generated files excluding soundbank.h')
             report['combined_rom_context']=True
             report['combined_verification_claimed']=False
         else:report['preservation']=preservation(syms)
         report['core_identity']=core_identity() if args.core=='snes9x' else compat.verify_manifest_and_pinned_core()
         report['metadata']=json.loads((ROOT/'assets/generated/arena-life29.json').read_bytes())
+        if args.core=='snes9x' and not args.skip_replay:
+            report['baseline_inputs']=baseline_identity(args.baseline_rom.resolve(),args.baseline_symbols.resolve())
         for stage in stages:
-            r=Rig(args.core,stage,[8,10,0][stage],syms,report)
+            r=Rig(args.core,stage,[8,10,0][stage],syms,report,captures=captures)
             try:case=arena_case(r)
             finally:r.e.close()
             if args.core=='snes9x' and not args.skip_replay:report['baseline_replays'].append(replay_base(case,syms,report))
@@ -469,6 +517,12 @@ def main():
         require(all(coverage[key]>0 for key in coverage),'Strict TRACE coverage includes partial/idle/pause/intro-abort/KO/no-upload and last-chunk samples',coverage)
         report['trace_coverage']=coverage
         require(snapshot()==sources,'Producer/harness/dependency bytes frozen during proof')
+        require(file_hashes(ROOT/'assets/generated')==report['generated_inputs'],'Generated source/palette/phase bytes frozen during proof')
+        require(all(sha((ROOT/name).read_bytes())==digest for name,digest in report['native_inputs'].items()),
+                'Actual tested ROM/symbol/manifest bytes frozen during proof')
+        if 'baseline_inputs' in report:
+            require(baseline_identity(args.baseline_rom.resolve(),args.baseline_symbols.resolve())==report['baseline_inputs'],
+                    'Original unmasked replay baseline remains exact after the full proof')
         report['status']='passed'
     except BaseException as error:report['error']=repr(error);raise
     finally:

@@ -3,6 +3,8 @@
 No emulated-memory writes, save states, fixtures, GUI or audio playback.
 Default Snes9x coverage: every hero through both bonuses, hero0 to Champion.
 Accuracy may select a smaller explicit roster while retaining earned routes.
+Use --combined only after the parent freezes the six-feature v0.29 candidate;
+its preservation oracle is parent-owned v029_contracts.validate, not old reports.
 """
 from __future__ import annotations
 import argparse
@@ -30,6 +32,9 @@ import test_presentation as presentation
 import asset_cache
 
 BASE = 'c7510c30e129465bcca0b32e2142daec60546d0f'
+BONUS_OUTPUTS = {'assets/generated/bonus29-assets.json'} | {
+    f'assets/generated/bonus29_{name}{suffix}' for name in ('printer', 'inbox')
+    for suffix in ('.bin', '_pal.bin', '.png')}
 CHECKS = {}
 HEALTH = {'bonus_callbacks': 0, 'fight_callbacks': 0, 'max_spc_backlog': 0,
           'max_changed_actor_pages_per_bonus_callback': 0, 'failures': []}
@@ -48,7 +53,32 @@ def require(ok, label, details=None):
         raise AssertionError((label, details))
 
 
-def preservation(syms):
+def preservation(syms, combined=False):
+    # This feature-specific budget remains mandatory in both preservation modes.
+    # Assert all four labels explicitly; a missing linked asset must not pass an
+    # empty symbol scan. Parent validation owns the combined inventory policy.
+    sections = []
+    for name in ('bonus29_printer', 'bonus29_printer_pal', 'bonus29_inbox', 'bonus29_inbox_pal'):
+        require(name in syms and name + '_end' in syms, 'Every bonus target/palette has linked bounds', name)
+        start, end = syms[name], syms[name + '_end']
+        size = 32 if name.endswith('_pal') else 3840
+        require(end - start == size and start >> 16 == (end - 1) >> 16,
+                'Each bonus asset section stays within one LoROM bank', [name, hex(start), hex(end)])
+        require((ROOT / 'assets/generated' / (name + '.bin')).stat().st_size == size,
+                'Native bonus target/palette retains its exact upload budget', [name, size])
+        sections.append({'name': name, 'start': start, 'end': end, 'bytes': size})
+    require(sum(row['bytes'] for row in sections) == 7744, 'Bonus asset ROM budget remains 7744 bytes')
+    if combined:
+        from v029_contracts import validate
+        result = validate(ROOT)
+        generated = result['generated']
+        require(generated['baseline_count'] == 226 and generated['current_count'] == 237,
+                'Combined candidate has the parent-reviewed exact 237 generated files', generated['current_count'])
+        added = {row['path'] for row in generated['added']}
+        require(len(added) == 11 and BONUS_OUTPUTS <= added,
+                'Combined inventory includes all seven bonus outputs alongside four arena outputs', sorted(added))
+        return {'mode': 'combined', 'validator': 'v029_contracts.validate',
+                'contract': result, 'bonus_outputs': sorted(BONUS_OUTPUTS), 'bonus_asset_sections': sections}
     changed = []; count = 0
     archived = subprocess.check_output(['git', 'archive', BASE, 'assets/generated', 'src/hardware.asm', 'src/trace.asm'], cwd=ROOT)
     with tarfile.open(fileobj=io.BytesIO(archived)) as archive:
@@ -273,7 +303,7 @@ class Rig:
                 'Held result confirmation cannot become an automatic opening bonus attack')
         self.text(0, 'OFFICE BONUS'); self.text(1, 'INBOX OVERLOAD' if variant else 'PRINTER JAM')
         self.text(26, 'MOVE + Y/X PUNCH B/A KICK'); self.text(27, 'START PAUSE  SELECT SKIP')
-        if hero in (0, 11):
+        if hero in (0, 11) or self.core == 'accuracy':
             self.capture(f'hero{hero:02}-bonus{variant + 1}-start')
         # Whiff and held edge: B must be a light kick, never a menu-back route.
         # Accuracy's callback can precede the next native pad-scan phase.
@@ -340,7 +370,7 @@ class Rig:
         result = self.bonus()
         self.text(10, ('INBOX ZERO!' if variant else 'JAM CLEARED!') if outcome == 'success' else
                   ('TIME! THE SHIFT GOES ON' if outcome == 'timeout' else 'SKIPPED - ONWARD!'))
-        if hero in (0, 1, 2, 11):
+        if hero in (0, 1, 2, 11) or self.core == 'accuracy':
             self.capture(f'hero{hero:02}-bonus{variant + 1}-{outcome}')
         pending_arcade = 7 if variant else 3
         if hero == 0:
@@ -378,7 +408,7 @@ def traversal(args, syms, outcome='success'):
         rig = Rig(args.core, syms, args.captures)
         try:
             rig.boot(hero)
-            result = {'hero': hero, 'matches': [], 'bonuses': []}
+            result = {'hero': hero, 'matches': [], 'bonuses': [], 'champion': False}
             end = 11 if hero == args.champion_hero else args.through
             shift = 0
             while shift < end:
@@ -408,7 +438,7 @@ def traversal(args, syms, outcome='success'):
                     require(rig.read('champion') == 1 and rig.read('screen') == 4 and rig.bonus()['seen'] == 3,
                             'All eleven opponents and the earned Champion ending survive both optional bonuses')
                     rig.text(2, 'OFFICE CHAMPION')
-                    rig.capture(f'hero{hero:02}-champion'); break
+                    rig.capture(f'hero{hero:02}-champion'); result['champion'] = True; break
                 rig.run(3)
                 # Keep the confirmation held across the forced-blank loader.
                 rig.run(3, p1=['a'])
@@ -455,9 +485,36 @@ def other_modes(args, syms):
     return rows
 
 
+def coverage(args, cases):
+    require([case['hero'] for case in cases] == args.fighters,
+            'Every requested current-ROM hero completes its real earned route')
+    both = []; champions = []
+    for case in cases:
+        end = 11 if case['hero'] == args.champion_hero else args.through
+        require(len(case['matches']) == end,
+                'Each hero earns every requested ladder win without fixture shortcuts', [case['hero'], end])
+        variants = [bonus['variant'] for bonus in case['bonuses']]
+        require(variants == ([0, 1] if end >= 7 else [0]) and
+                all(bonus['outcome'] == args.outcome for bonus in case['bonuses']),
+                'Every requested current-ROM milestone proves its actual success/timeout/skip outcome',
+                [case['hero'], variants, args.outcome])
+        require(case['champion'] == (end == 11), 'Requested Champion route proves the earned ending', case['hero'])
+        if variants == [0, 1]:
+            both.append(case['hero'])
+        if case['champion']:
+            champions.append(case['hero'])
+    return {'current_rom_only': True, 'historical_reports_used': False,
+            'heroes': args.fighters, 'both_bonus_heroes': both, 'champion_heroes': champions,
+            'all_twelve_both_bonuses': set(both) == set(range(12)), 'outcome': args.outcome,
+            'earned_wins': sum(len(case['matches']) for case in cases),
+            'bonus_rounds': sum(len(case['bonuses']) for case in cases)}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--core', choices=('snes9x', 'accuracy'), required=True)
+    parser.add_argument('--combined', action='store_true',
+                        help='Use parent v029_contracts.validate for the frozen six-feature v0.29 candidate')
     parser.add_argument('--fighters', default=','.join(map(str, range(12))))
     parser.add_argument('--through', type=int, choices=(3, 7), default=7)
     parser.add_argument('--champion-hero', type=int, default=0)
@@ -465,11 +522,21 @@ def main():
     parser.add_argument('--report', type=Path, required=True)
     parser.add_argument('--captures', type=Path, default=ROOT / 'docs/screenshots/bonus-v029')
     args = parser.parse_args(); args.fighters = list(map(int, args.fighters.split(',')))
+    if not args.fighters or len(set(args.fighters)) != len(args.fighters) or any(hero not in range(12) for hero in args.fighters):
+        parser.error('--fighters must contain distinct hero IDs from 0 through 11')
+    if args.champion_hero not in range(-1, 12):
+        parser.error('--champion-hero must be -1 (disabled) or a hero ID from 0 through 11')
     args.captures = args.captures.resolve(); args.report = args.report.resolve()
     sources = snapshot(ROOT); producers = asset_cache.inputs(ROOT)
     syms = symbols((ROOT / 'dist/abaqus-after-hours.sym').read_text())
     manifest = json.loads((ROOT / 'dist/manifest.json').read_bytes())
-    report = {'status': 'failed', 'scope': 'isolated topic2 office bonus implementation', 'core': args.core,
+    report = {'status': 'failed',
+              'scope': 'combined v0.29 office bonus focused proof' if args.combined else 'isolated topic2 office bonus implementation',
+              'preservation_mode': 'combined' if args.combined else 'isolated', 'version': manifest['version'], 'core': args.core,
+              'source_inventory_sha256': sha(json.dumps(sources, sort_keys=True).encode()),
+              'harness_sha256': sources['tools/test_bonus29.py'], 'root': str(ROOT),
+              'requested_route': {'heroes': args.fighters, 'through': args.through,
+                                  'champion_hero': args.champion_hero, 'outcome': args.outcome},
               'rom_sha256': manifest['sha256'], 'source_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
               'sources': sources, 'producer_inputs': producers, 'host': host_contract(),
               'memory_writes': False, 'save_states': False, 'combined_verification_claimed': False,
@@ -480,8 +547,9 @@ def main():
         require(report['host']['logical_processors'] == [4, 5] and report['host']['priority_class'] == 0x4000,
                 'Native jobs stay silently below normal on assigned CPU4/5', report['host'])
         report['core_identity'] = verify_manifest_and_pinned_core() if args.core == 'accuracy' else core_identity()
-        report['preservation'] = preservation(syms)
+        report['preservation'] = preservation(syms, combined=args.combined)
         report['cases'] = traversal(args, syms, args.outcome)
+        report['coverage'] = coverage(args, report['cases'])
         report['other_modes'] = other_modes(args, syms)
         require(snapshot(ROOT) == sources and asset_cache.inputs(ROOT) == producers,
                 'Source, harness, encoder, art and dependency bytes stay frozen during proof')
