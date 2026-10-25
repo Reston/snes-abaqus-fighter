@@ -262,5 +262,22 @@
     "status": "implemented_awaiting_human_review",
     "human_playtest_approved": null,
     "merge_authorized": null
+  },
+  "full_body_selection_v0280": {
+    "version": "0.28.0",
+    "rom_sha256": "09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c",
+    "recorded_at_utc": "2026-10-25T00:04:29.044745+00:00",
+    "response": "ok let's go with this one",
+    "source": "Direct user acceptance after the native full-body preview and PR #25 review",
+    "status": "accepted_for_integration",
+    "human_visual_accepted": true,
+    "scope": "Chosen v0.28.0 preview and integration of its dependency stack; no detailed live-gameplay or public-distribution approval inferred.",
+    "pull_request": 25,
+    "dependency_pull_requests": [
+      21,
+      22,
+      23,
+      24
+    ]
   }
 }
