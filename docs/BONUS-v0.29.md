@@ -1,5 +1,7 @@
 # Office bonus rounds (isolated topic 2)
 
+Current combined release: [v0.29.0](RELEASE-v0.29.0.md) · [current verification](verification-v0.29.0.json). The implementation measurements below retain their isolated/historical scope.
+
 The Arcade ladder offers a short optional printer-jam round after the third
 earned opponent win, and an inbox-overload round after the seventh. Each
 starts immediately on the earned RESULT-to-next handoff. Their 12/15-second

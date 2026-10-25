@@ -6,6 +6,27 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+<!-- v029-agent:start -->
+- **v0.29.0 is the six-feature integration approved for merge and playtest.**
+  PRs #29–34 are integrated through PR #28. Native ROM `7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0`,
+  checksum `F187`, source freeze `4c35ee89d6269662269481ffafff0166a905c775`.
+  The six topics are late throw escapes/wake throw protection, earned office
+  bonus rounds after wins3/7, automatic browser/fight start, Select random picks,
+  five new arrangements/separate sound levels and animated/reactive arenas.
+  Keep four-button attacks, approved fighter art, detailed floors/slower rules,
+  Fighter64/Wave16/TRACE ABI and original hardware/trace ASM. Six initialized
+  leases append176 bytes; all prior variables retain addresses. There are237
+  generated assets (20 changed,11 added relative to v0.28). One actor3840-byte
+  upload owns a blank; arena256-byte transfers yield to actors/UI. No HDMA/extra
+  OBJ/palette budget. Soundbank27470/32768. Current feature proofs/shared suites,
+  both pinned cores, actual WASM/browser and fresh237/ROM/symbol reproduction
+  pass. Historical failed old-reference comparisons remain separate from
+  current-source feature-disabled comparisons; never claim those old failures
+  passed. See docs/verification-v0.29.0.json and docs/RELEASE-v0.29.0.md.
+  Main merge is user authorized after technical gates; human playtest remains.
+  No new offline ZIP or physical-hardware certification is claimed.
+<!-- v029-agent:end -->
+
 <!-- v028-agent:start -->
 - **v0.28.0 is approved main**, merged through PRs #21–25 after
   the user accepted “ok let's go with this one”. Merge commit

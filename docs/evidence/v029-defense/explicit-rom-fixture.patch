@@ -1,0 +1,15 @@
+--- a/tools/test_defense29.py
++++ b/tools/test_defense29.py
+@@ -638,8 +638,10 @@
+         r.close()
+ 
+ 
+-def unaffected(fighter, port, phase):
+-    r = Rig(fighter, port, rom=OUT / 'baseline/abaqus-after-hours.sfc' if phase == 'before' else None)
++def unaffected(fighter, port, phase, rom=None):
++    if rom is None:
++        rom = OUT / 'baseline/abaqus-after-hours.sfc' if phase == 'before' else None
++    r = Rig(fighter, port, rom=rom)
+     try:
+         # Forced-blank loader callbacks can straddle the frontend boundary;
+         # old 0x55 core-fill bytes are not initialized combat state. Retain

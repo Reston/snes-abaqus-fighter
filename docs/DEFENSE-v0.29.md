@@ -1,5 +1,22 @@
 # Defensive options for the v0.29 integration
 
+Current combined release: [v0.29.0](RELEASE-v0.29.0.md) · [current verification](verification-v0.29.0.json). The implementation measurements below retain their isolated/historical scope.
+
+Current accepted evidence is [defense29-combined-report.json](defense29-combined-report.json)
+(SHA256 `34665dcb4bf46db49e5a047dd7fe0bf11ef722f028f68d052787103dcc06cf26`):
+32 defense, 16 CPU and 32 KO functional cases, plus 24 ordinary and 24 throw pairs
+against the current defense-disabled reference. The functional prefix was reused.
+See the [evidence manifest](evidence/v029-defense/manifest.json) and
+[restore/exact-command guide](evidence/v029-defense/RESTORE.md) for committed,
+byte-identical reproducers, patches, provenance and raw reports.
+
+`defense29-report.json` remains the failed historical full-run report; it is not
+the accepted current envelope. Its completed functional prefix is retained, while
+its old-reference preservation failure remains excluded. A byte-exact copy is
+named [historical-functional-prefix-failed-report.json](evidence/v029-defense/historical-functional-prefix-failed-report.json).
+The original isolated feature design/results below are historical; the current
+combined evidence and its scope are in the linked envelope and manifest.
+
 Topic 1 only, based on integration commit `29fee83`. The authoritative
 deliverable remains the native 4 MiB NTSC FastROM LoROM cartridge. The parent
 owns the combined six-feature ROM, full suites, reproduction and final merge.

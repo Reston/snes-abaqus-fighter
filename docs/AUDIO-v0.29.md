@@ -1,5 +1,7 @@
 # Topic 5: original audio and native sound levels
 
+Current combined release: [v0.29.0](RELEASE-v0.29.0.md) · [current verification](verification-v0.29.0.json). The implementation measurements below retain their isolated/historical scope.
+
 This isolated feature targets `integration/six-improvements-v029`. The parent
 owns combined verification, fresh export, final generated outputs and merge.
 The cartridge remains the native 4 MiB NTSC FastROM LoROM game. No browser

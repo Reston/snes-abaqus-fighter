@@ -1,9 +1,9 @@
 # Abaqus: After Hours
-<!-- candidate-version: 0.28.0; identity: APPROVED_MAIN_FOCUSED_UI_VERIFIED; rom-sha256: 09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c; source-freeze: 16e9989497fa7f7bf16271d59555a13b57caeac4 -->
+<!-- candidate-version: 0.29.0; identity: TECHNICALLY_VERIFIED_MERGED_FOR_PLAYTEST; rom-sha256: 7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0; source-freeze: 4c35ee89d6269662269481ffafff0166a905c775 -->
 
 An original four-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II and the people and places of Abaqus in Santiago.
-Twelve fighters, three illustrated stages and five original music scores.
+Twelve fighters, three lively stages, office bonus rounds and five original scores.
 
 <a href="https://abaqus-after-hours.restonjd.workers.dev/">
   <img src="docs/images/abaqus-after-hours-cartridge-v1.png" alt="Abaqus: After Hours — fictional SNES cartridge. Click to play in your browser." width="640">
@@ -11,8 +11,9 @@ Twelve fighters, three illustrated stages and five original music scores.
 
 **[▶ Play in your browser](https://abaqus-after-hours.restonjd.workers.dev/)** — no download needed.
 
-Press **Play game**, then **Enter** to start. Arcade, Training and local 1v1
-use the same native SNES cartridge. [Gameplay preview](docs/screenshots/play-flow-v026/pacing/after-movement.gif).
+The game loads automatically. Choose your mode, fighters and arena; the fight
+starts after its countdown. Your first key or tap enables sound. Arcade,
+Training and local 1v1 use the same native SNES cartridge.
 
 ## Play locally
 
@@ -27,7 +28,7 @@ in a SNES emulator. Original SNES and flash-cartridge support remain unverified.
 
 ## Game modes
 
-- **Arcade:** fight all eleven coworkers, with personal exchanges and endings.
+- **Arcade:** fight all eleven coworkers, with office bonus rounds, personal exchanges and endings.
 - **Local 1v1 / 2P:** choose two fighters and play a best-of-three match.
 - **Training:** practice against a dummy or CPU with input history, combo damage
   and three drills, or enable **P2 Controller** for two-person practice.
@@ -52,6 +53,9 @@ with full energy (**A+Z** on the P1 keyboard).
 Enable **Num Lock** for P2. In the browser, use the player's **gamepad** button
 to configure controllers. In Snes9x, map them under **Input → Input Configuration**.
 
+**Select** picks a random fighter or arena. Pause, then press **Y** for separate
+music, effects and announcer levels.
+
 Start with [your first minute](docs/PLAYER-GUIDE.md#your-first-minute), then
 use the player guide for specials, blocking, combos and Training options.
 
@@ -71,7 +75,7 @@ intermediates stay in ignored `.tools/` and `build/` directories.
 ## Documentation
 
 - [Player guide](docs/PLAYER-GUIDE.md) — controls, modes and practice.
-- [Current release: v0.28.0](docs/RELEASE-v0.28.0.md) · [Selection animations](docs/REVIEW-v0.28.0.html).
+- [Current release: v0.29.0](docs/RELEASE-v0.29.0.md) · [What’s new](docs/REVIEW-v0.29.0.html).
 - [Development guide](docs/DEVELOPMENT.md) — native architecture and hardware budgets.
 - [Roadmap](docs/ROADMAP.md) — planned work and historical milestones.
 - [Credits and art provenance](docs/CREDITS.md) · [License](LICENSE).

@@ -1,6 +1,6 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "d5263c777cbb3a02ce438e07c1c425f2d39dd73d294cd4d2aa8c2cbc2da78e3d",
+  "rom_sha256": "7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0",
   "rom_bytes": 4194304,
   "status": "passed",
   "checks": [
@@ -9,11 +9,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.27.0",
+        "version": "0.29.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "d5263c777cbb3a02ce438e07c1c425f2d39dd73d294cd4d2aa8c2cbc2da78e3d",
-        "checksum": "FA37",
+        "sha256": "7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0",
+        "checksum": "F187",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -1064,7 +1064,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 171,
+        "frame": 170,
         "mode": 1,
         "hp1": 85,
         "hp2": 85,
@@ -1184,7 +1184,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 11,
+        "x": 13,
         "character": "P",
         "tile": 80
       }
@@ -1195,7 +1195,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 12,
+        "x": 14,
         "character": "L",
         "tile": 76
       }
@@ -1206,7 +1206,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 13,
+        "x": 15,
         "character": "A",
         "tile": 65
       }
@@ -1217,7 +1217,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 14,
+        "x": 16,
         "character": "Y",
         "tile": 89
       }
@@ -1228,7 +1228,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 15,
+        "x": 17,
         "character": "E",
         "tile": 69
       }
@@ -1239,7 +1239,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 16,
+        "x": 18,
         "character": "R",
         "tile": 82
       }
@@ -1250,7 +1250,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 17,
+        "x": 19,
         "character": " ",
         "tile": 32
       }
@@ -1261,103 +1261,26 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 18,
+        "x": 20,
         "character": "2",
         "tile": 50
       }
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait01_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "vram_word": "0x4a00",
-        "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait01_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 1
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 16,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.2919921875,
-        "max_channel_delta": 2,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -1492,7 +1415,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 321,
+        "frame": 320,
         "mode": 1,
         "hp1": 128,
         "hp2": 128,
@@ -1686,7 +1609,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 197,
+        "frame": 196,
         "mode": 2,
         "hp1": 85,
         "hp2": 85,
@@ -1806,7 +1729,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 11,
+        "x": 13,
         "character": "D",
         "tile": 68
       }
@@ -1817,7 +1740,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 12,
+        "x": 14,
         "character": "U",
         "tile": 85
       }
@@ -1828,125 +1751,48 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 13,
-        "character": "M",
-        "tile": 77
-      }
-    },
-    {
-      "check": "menu text stays in the original ASCII glyph bank",
-      "passed": true,
-      "details": {
-        "label": "second roster heading",
-        "row": 3,
-        "x": 14,
-        "character": "M",
-        "tile": 77
-      }
-    },
-    {
-      "check": "menu text stays in the original ASCII glyph bank",
-      "passed": true,
-      "details": {
-        "label": "second roster heading",
-        "row": 3,
         "x": 15,
+        "character": "M",
+        "tile": 77
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 3,
+        "x": 16,
+        "character": "M",
+        "tile": 77
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "second roster heading",
+        "row": 3,
+        "x": 17,
         "character": "Y",
         "tile": 89
       }
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait01_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "vram_word": "0x4a00",
-        "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait01_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 1
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 16,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.2919921875,
-        "max_channel_delta": 2,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -2007,7 +1853,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 359,
+        "frame": 358,
         "mode": 2,
         "hp1": 128,
         "hp2": 128,
@@ -2682,8 +2528,8 @@
         "label": "title",
         "row": 27,
         "x": 28,
-        "character": "7",
-        "tile": 55
+        "character": "9",
+        "tile": 57
       }
     },
     {
@@ -2760,7 +2606,7 @@
       "details": {
         "label": "fighter select",
         "row": 3,
-        "x": 11,
+        "x": 13,
         "character": "P",
         "tile": 80
       }
@@ -2771,7 +2617,7 @@
       "details": {
         "label": "fighter select",
         "row": 3,
-        "x": 12,
+        "x": 14,
         "character": "L",
         "tile": 76
       }
@@ -2782,7 +2628,7 @@
       "details": {
         "label": "fighter select",
         "row": 3,
-        "x": 13,
+        "x": 15,
         "character": "A",
         "tile": 65
       }
@@ -2793,7 +2639,7 @@
       "details": {
         "label": "fighter select",
         "row": 3,
-        "x": 14,
+        "x": 16,
         "character": "Y",
         "tile": 89
       }
@@ -2804,7 +2650,7 @@
       "details": {
         "label": "fighter select",
         "row": 3,
-        "x": 15,
+        "x": 17,
         "character": "E",
         "tile": 69
       }
@@ -2815,7 +2661,7 @@
       "details": {
         "label": "fighter select",
         "row": 3,
-        "x": 16,
+        "x": 18,
         "character": "R",
         "tile": 82
       }
@@ -2826,7 +2672,7 @@
       "details": {
         "label": "fighter select",
         "row": 3,
-        "x": 17,
+        "x": 19,
         "character": " ",
         "tile": 32
       }
@@ -2837,7 +2683,7 @@
       "details": {
         "label": "fighter select",
         "row": 3,
-        "x": 18,
+        "x": 20,
         "character": "1",
         "tile": 49
       }
@@ -2848,7 +2694,7 @@
       "details": {
         "label": "fighter select",
         "row": 12,
-        "x": 11,
+        "x": 13,
         "character": "D",
         "tile": 68
       }
@@ -2859,7 +2705,7 @@
       "details": {
         "label": "fighter select",
         "row": 12,
-        "x": 12,
+        "x": 14,
         "character": "A",
         "tile": 65
       }
@@ -2870,7 +2716,7 @@
       "details": {
         "label": "fighter select",
         "row": 12,
-        "x": 13,
+        "x": 15,
         "character": "M",
         "tile": 77
       }
@@ -2881,7 +2727,7 @@
       "details": {
         "label": "fighter select",
         "row": 12,
-        "x": 14,
+        "x": 16,
         "character": "I",
         "tile": 73
       }
@@ -2892,7 +2738,7 @@
       "details": {
         "label": "fighter select",
         "row": 12,
-        "x": 15,
+        "x": 17,
         "character": "A",
         "tile": 65
       }
@@ -2903,7 +2749,7 @@
       "details": {
         "label": "fighter select",
         "row": 12,
-        "x": 16,
+        "x": 18,
         "character": "N",
         "tile": 78
       }
@@ -2914,7 +2760,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 3,
+        "x": 1,
         "character": "A",
         "tile": 65
       }
@@ -2925,7 +2771,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 4,
+        "x": 2,
         "character": "/",
         "tile": 47
       }
@@ -2936,7 +2782,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 5,
+        "x": 3,
         "character": "S",
         "tile": 83
       }
@@ -2947,7 +2793,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 6,
+        "x": 4,
         "character": "T",
         "tile": 84
       }
@@ -2958,7 +2804,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 7,
+        "x": 5,
         "character": "A",
         "tile": 65
       }
@@ -2969,7 +2815,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 8,
+        "x": 6,
         "character": "R",
         "tile": 82
       }
@@ -2980,7 +2826,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 9,
+        "x": 7,
         "character": "T",
         "tile": 84
       }
@@ -2991,7 +2837,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 10,
+        "x": 8,
         "character": " ",
         "tile": 32
       }
@@ -3002,7 +2848,150 @@
       "details": {
         "label": "fighter select",
         "row": 27,
+        "x": 9,
+        "character": " ",
+        "tile": 32
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 10,
+        "character": "S",
+        "tile": 83
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
         "x": 11,
+        "character": "E",
+        "tile": 69
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 12,
+        "character": "L",
+        "tile": 76
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 13,
+        "character": "E",
+        "tile": 69
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 14,
+        "character": "C",
+        "tile": 67
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 15,
+        "character": "T",
+        "tile": 84
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 16,
+        "character": ":",
+        "tile": 58
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 17,
+        "character": " ",
+        "tile": 32
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 18,
+        "character": "R",
+        "tile": 82
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 19,
+        "character": "A",
+        "tile": 65
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 20,
+        "character": "N",
+        "tile": 78
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 21,
+        "character": "D",
+        "tile": 68
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 22,
         "character": "O",
         "tile": 79
       }
@@ -3013,20 +3002,9 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 12,
-        "character": "K",
-        "tile": 75
-      }
-    },
-    {
-      "check": "menu text stays in the original ASCII glyph bank",
-      "passed": true,
-      "details": {
-        "label": "fighter select",
-        "row": 27,
         "x": 23,
-        "character": "B",
-        "tile": 66
+        "character": "M",
+        "tile": 77
       }
     },
     {
@@ -3047,6 +3025,17 @@
         "label": "fighter select",
         "row": 27,
         "x": 25,
+        "character": " ",
+        "tile": 32
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 26,
         "character": "B",
         "tile": 66
       }
@@ -3057,7 +3046,29 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 26,
+        "x": 27,
+        "character": " ",
+        "tile": 32
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 28,
+        "character": "B",
+        "tile": 66
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "fighter select",
+        "row": 27,
+        "x": 29,
         "character": "A",
         "tile": 65
       }
@@ -3068,7 +3079,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 27,
+        "x": 30,
         "character": "C",
         "tile": 67
       }
@@ -3079,7 +3090,7 @@
       "details": {
         "label": "fighter select",
         "row": 27,
-        "x": 28,
+        "x": 31,
         "character": "K",
         "tile": 75
       }
@@ -3126,7 +3137,7 @@
           44,
           156
         ],
-        "mean_channel_delta": 1.8356770833333333,
+        "mean_channel_delta": 2.3229166666666665,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3156,7 +3167,7 @@
           84,
           156
         ],
-        "mean_channel_delta": 2.2390625,
+        "mean_channel_delta": 2.1578125,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3186,7 +3197,7 @@
           124,
           156
         ],
-        "mean_channel_delta": 2.4908854166666665,
+        "mean_channel_delta": 2.513541666666667,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3216,7 +3227,7 @@
           164,
           156
         ],
-        "mean_channel_delta": 2.5296875,
+        "mean_channel_delta": 2.5302083333333334,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3246,7 +3257,7 @@
           204,
           156
         ],
-        "mean_channel_delta": 2.2453125,
+        "mean_channel_delta": 2.571875,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3276,7 +3287,7 @@
           244,
           156
         ],
-        "mean_channel_delta": 2.3213541666666666,
+        "mean_channel_delta": 2.53125,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3306,7 +3317,7 @@
           44,
           212
         ],
-        "mean_channel_delta": 1.9557291666666667,
+        "mean_channel_delta": 2.30703125,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3336,7 +3347,7 @@
           84,
           212
         ],
-        "mean_channel_delta": 2.04375,
+        "mean_channel_delta": 2.5677083333333335,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3366,7 +3377,7 @@
           124,
           212
         ],
-        "mean_channel_delta": 2.603385416666667,
+        "mean_channel_delta": 2.8252604166666666,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3396,7 +3407,7 @@
           164,
           212
         ],
-        "mean_channel_delta": 2.2182291666666667,
+        "mean_channel_delta": 2.4010416666666665,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3426,7 +3437,7 @@
           204,
           212
         ],
-        "mean_channel_delta": 1.9549479166666666,
+        "mean_channel_delta": 2.2630208333333335,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3456,7 +3467,7 @@
           244,
           212
         ],
-        "mean_channel_delta": 1.86484375,
+        "mean_channel_delta": 2.31171875,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3511,97 +3522,20 @@
       "details": "select-00.png"
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 0,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait00_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 0,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 0,
-        "vram_word": "0x4a00",
-        "sha256": "cef8bc55342eea67d30e43e52852d560e421c25e9071fe7e7a9c52e02f75de09"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 0,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 0,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait00_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 0
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 17,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 0,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.3529296875,
-        "max_channel_delta": 2,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -3638,97 +3572,20 @@
       "details": "select-01.png"
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait01_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "vram_word": "0x4a00",
-        "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait01_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 1
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 16,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.2919921875,
-        "max_channel_delta": 2,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -3787,97 +3644,20 @@
       "details": "select-02.png"
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 2,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait02_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 2,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 2,
-        "vram_word": "0x4a00",
-        "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 2,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 2,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait02_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 2
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 16,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 2,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.343359375,
-        "max_channel_delta": 2,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -3936,97 +3716,20 @@
       "details": "select-03.png"
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 3,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait03_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 3,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 3,
-        "vram_word": "0x4a00",
-        "sha256": "61d80d1fa2da4692646a1f500dfc98d69692c0565754d3dc78b7f2d9584642e3"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 3,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 3,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait03_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 3
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 16,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 3,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.3204427083333333,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -4085,97 +3788,20 @@
       "details": "select-04.png"
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 4,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait04_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 4,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 4,
-        "vram_word": "0x4a00",
-        "sha256": "24c117db9e57d66ba9eccaecd75bece46c78f0eec848a7eb6a688806227ed2fd"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 4,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 4,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait04_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 4
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 16,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 4,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.32916666666666666,
-        "max_channel_delta": 2,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -4234,97 +3860,20 @@
       "details": "select-05.png"
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 5,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait05_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 5,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 5,
-        "vram_word": "0x4a00",
-        "sha256": "c0460efc186cc285ba6aba1fdd0e7c54dc21320b2201954973d6d2c31c8ba505"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 5,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 5,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait05_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 5
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 16,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 5,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.2957682291666667,
-        "max_channel_delta": 2,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -4383,97 +3932,20 @@
       "details": "select-06.png"
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 6,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait06_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 6,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 6,
-        "vram_word": "0x4a00",
-        "sha256": "f023d0d5dd115725202ed8a527b2ec45812a7f5e7af77bf579bcec09d39a5e2f"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 6,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 6,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait06_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 6
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 16,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 6,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.3294270833333333,
-        "max_channel_delta": 2,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -4532,97 +4004,20 @@
       "details": "select-07.png"
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 7,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait07_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 7,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 7,
-        "vram_word": "0x4a00",
-        "sha256": "d83d340dffeb196c8d1a961cd85d391bad6c849b385b921eca8868eb40d86537"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 7,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 7,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait07_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 7
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 16,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 7,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.21731770833333333,
-        "max_channel_delta": 2,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -4681,97 +4076,20 @@
       "details": "select-08.png"
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 8,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait08_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 8,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 8,
-        "vram_word": "0x4a00",
-        "sha256": "be1b936d3daa590cffbc0f2cbe6f1d4c0d951d01262706eb9e9ce4c4f5fd7d89"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 8,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 8,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait08_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 8
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 16,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 8,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.36015625,
-        "max_channel_delta": 2,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -4830,97 +4148,20 @@
       "details": "select-09.png"
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 9,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait09_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 9,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 9,
-        "vram_word": "0x4a00",
-        "sha256": "46ef8740ace707787e06eb45e7b60f1df5e308185b6367f5e62b0ae823122350"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 9,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 9,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait09_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 9
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 16,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 9,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.32154947916666665,
-        "max_channel_delta": 2,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -4979,97 +4220,20 @@
       "details": "select-10.png"
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 10,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait10_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 10,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 10,
-        "vram_word": "0x4a00",
-        "sha256": "91f53180fc9e25e5633ec62a380b62c7b90072213718a1a3b079b59c6d24a9e6"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 10,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 10,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait10_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 10
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 16,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 10,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.2921223958333333,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -5128,97 +4292,20 @@
       "details": "select-11.png"
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 11,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait11_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 11,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 11,
-        "vram_word": "0x4a00",
-        "sha256": "523beee6bbce840def42286687dde5c22d5a6c9720e365f510e65687beebbbbd"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 11,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 11,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait11_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 11
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 16,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 11,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.273046875,
-        "max_channel_delta": 2,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -8037,6 +7124,930 @@
       }
     },
     {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 9,
+        "character": "S",
+        "tile": 339,
+        "expected": 339
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 9,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 9,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.15625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 10,
+        "character": "E",
+        "tile": 325,
+        "expected": 325
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 325,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 10,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 10,
+        "character": "E",
+        "tile": 325,
+        "mean_channel_delta": 0.1875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 11,
+        "character": "L",
+        "tile": 332,
+        "expected": 332
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 332,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 11,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 11,
+        "character": "L",
+        "tile": 332,
+        "mean_channel_delta": 0.11458333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 12,
+        "character": "E",
+        "tile": 325,
+        "expected": 325
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 12,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 12,
+        "character": "E",
+        "tile": 325,
+        "mean_channel_delta": 0.1875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 13,
+        "character": "C",
+        "tile": 323,
+        "expected": 323
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 13,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 13,
+        "character": "C",
+        "tile": 323,
+        "mean_channel_delta": 0.13541666666666666,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 14,
+        "character": "T",
+        "tile": 340,
+        "expected": 340
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 14,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 14,
+        "character": "T",
+        "tile": 340,
+        "mean_channel_delta": 0.11458333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 15,
+        "character": ":",
+        "tile": 314,
+        "expected": 314
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 314,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 15,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 15,
+        "character": ":",
+        "tile": 314,
+        "mean_channel_delta": 0.041666666666666664,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 16,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 16,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 16,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.0,
+        "max_channel_delta": 0,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 17,
+        "character": "R",
+        "tile": 338,
+        "expected": 338
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 17,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 17,
+        "character": "R",
+        "tile": 338,
+        "mean_channel_delta": 0.1875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 18,
+        "character": "A",
+        "tile": 321,
+        "expected": 321
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 18,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 18,
+        "character": "A",
+        "tile": 321,
+        "mean_channel_delta": 0.1875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 19,
+        "character": "N",
+        "tile": 334,
+        "expected": 334
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 19,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 19,
+        "character": "N",
+        "tile": 334,
+        "mean_channel_delta": 0.17708333333333334,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 20,
+        "character": "D",
+        "tile": 324,
+        "expected": 324
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 20,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 20,
+        "character": "D",
+        "tile": 324,
+        "mean_channel_delta": 0.1875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 21,
+        "character": "O",
+        "tile": 335,
+        "expected": 335
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 21,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 21,
+        "character": "O",
+        "tile": 335,
+        "mean_channel_delta": 0.16666666666666666,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 22,
+        "character": "M",
+        "tile": 333,
+        "expected": 333
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 333,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 22,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 22,
+        "character": "M",
+        "tile": 333,
+        "mean_channel_delta": 0.1875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
       "check": "capture has a native video frame",
       "passed": true,
       "details": "arena-0.png"
@@ -10786,6 +10797,930 @@
         "character": "K",
         "tile": 331,
         "mean_channel_delta": 0.14583333333333334,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 9,
+        "character": "S",
+        "tile": 339,
+        "expected": 339
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 9,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 9,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.15625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 10,
+        "character": "E",
+        "tile": 325,
+        "expected": 325
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 325,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 10,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 10,
+        "character": "E",
+        "tile": 325,
+        "mean_channel_delta": 0.1875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 11,
+        "character": "L",
+        "tile": 332,
+        "expected": 332
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 332,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 11,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 11,
+        "character": "L",
+        "tile": 332,
+        "mean_channel_delta": 0.11458333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 12,
+        "character": "E",
+        "tile": 325,
+        "expected": 325
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 12,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 12,
+        "character": "E",
+        "tile": 325,
+        "mean_channel_delta": 0.1875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 13,
+        "character": "C",
+        "tile": 323,
+        "expected": 323
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 13,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 13,
+        "character": "C",
+        "tile": 323,
+        "mean_channel_delta": 0.13541666666666666,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 14,
+        "character": "T",
+        "tile": 340,
+        "expected": 340
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 14,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 14,
+        "character": "T",
+        "tile": 340,
+        "mean_channel_delta": 0.11458333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 15,
+        "character": ":",
+        "tile": 314,
+        "expected": 314
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 314,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 15,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 15,
+        "character": ":",
+        "tile": 314,
+        "mean_channel_delta": 0.041666666666666664,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 16,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 16,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 16,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.0,
+        "max_channel_delta": 0,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 17,
+        "character": "R",
+        "tile": 338,
+        "expected": 338
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 17,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 17,
+        "character": "R",
+        "tile": 338,
+        "mean_channel_delta": 0.1875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 18,
+        "character": "A",
+        "tile": 321,
+        "expected": 321
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 18,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 18,
+        "character": "A",
+        "tile": 321,
+        "mean_channel_delta": 0.1875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 19,
+        "character": "N",
+        "tile": 334,
+        "expected": 334
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 19,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 19,
+        "character": "N",
+        "tile": 334,
+        "mean_channel_delta": 0.17708333333333334,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 20,
+        "character": "D",
+        "tile": 324,
+        "expected": 324
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 20,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 20,
+        "character": "D",
+        "tile": 324,
+        "mean_channel_delta": 0.1875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 21,
+        "character": "O",
+        "tile": 335,
+        "expected": 335
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 21,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 21,
+        "character": "O",
+        "tile": 335,
+        "mean_channel_delta": 0.16666666666666666,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 22,
+        "character": "M",
+        "tile": 333,
+        "expected": 333
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 333,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 22,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 22,
+        "character": "M",
+        "tile": 333,
+        "mean_channel_delta": 0.1875,
         "max_channel_delta": 1,
         "pixels_over_16": 0,
         "pixels": 64
@@ -13547,6 +14482,930 @@
       }
     },
     {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 9,
+        "character": "S",
+        "tile": 339,
+        "expected": 339
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 9,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 9,
+        "character": "S",
+        "tile": 339,
+        "mean_channel_delta": 0.15625,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 10,
+        "character": "E",
+        "tile": 325,
+        "expected": 325
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 325,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 10,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 10,
+        "character": "E",
+        "tile": 325,
+        "mean_channel_delta": 0.1875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 11,
+        "character": "L",
+        "tile": 332,
+        "expected": 332
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 332,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 11,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 11,
+        "character": "L",
+        "tile": 332,
+        "mean_channel_delta": 0.11458333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 12,
+        "character": "E",
+        "tile": 325,
+        "expected": 325
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 12,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 12,
+        "character": "E",
+        "tile": 325,
+        "mean_channel_delta": 0.1875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 13,
+        "character": "C",
+        "tile": 323,
+        "expected": 323
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 13,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 13,
+        "character": "C",
+        "tile": 323,
+        "mean_channel_delta": 0.13541666666666666,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 14,
+        "character": "T",
+        "tile": 340,
+        "expected": 340
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 14,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 14,
+        "character": "T",
+        "tile": 340,
+        "mean_channel_delta": 0.11458333333333333,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 15,
+        "character": ":",
+        "tile": 314,
+        "expected": 314
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 314,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 15,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 15,
+        "character": ":",
+        "tile": 314,
+        "mean_channel_delta": 0.041666666666666664,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 16,
+        "character": " ",
+        "tile": 288,
+        "expected": 288
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 16,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 16,
+        "character": " ",
+        "tile": 288,
+        "mean_channel_delta": 0.0,
+        "max_channel_delta": 0,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 17,
+        "character": "R",
+        "tile": 338,
+        "expected": 338
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 17,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 17,
+        "character": "R",
+        "tile": 338,
+        "mean_channel_delta": 0.1875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 18,
+        "character": "A",
+        "tile": 321,
+        "expected": 321
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 18,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 18,
+        "character": "A",
+        "tile": 321,
+        "mean_channel_delta": 0.1875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 19,
+        "character": "N",
+        "tile": 334,
+        "expected": 334
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 19,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 19,
+        "character": "N",
+        "tile": 334,
+        "mean_channel_delta": 0.17708333333333334,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 20,
+        "character": "D",
+        "tile": 324,
+        "expected": 324
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 20,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 20,
+        "character": "D",
+        "tile": 324,
+        "mean_channel_delta": 0.1875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 21,
+        "character": "O",
+        "tile": 335,
+        "expected": 335
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 21,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 21,
+        "character": "O",
+        "tile": 335,
+        "mean_channel_delta": 0.16666666666666666,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
+      "check": "combat/result text uses opaque glyph bank 256..383",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 22,
+        "character": "M",
+        "tile": 333,
+        "expected": 333
+      }
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "opaque glyph tile has no transparent palette-zero pixels",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "tile": 333,
+        "min_palette_index": 1
+      }
+    },
+    {
+      "check": "native HUD/result glyph uses its intended palette",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 22,
+        "actual": 0,
+        "expected": 0
+      }
+    },
+    {
+      "check": "UI palette contains the first 16 colors",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "UI 4bpp tile has 32 native bytes",
+      "passed": true,
+      "details": 32
+    },
+    {
+      "check": "presentation comparison sizes match",
+      "passed": true,
+      "details": {
+        "actual": [
+          8,
+          8
+        ],
+        "expected": [
+          8,
+          8
+        ]
+      }
+    },
+    {
+      "check": "opaque UI glyph composes over the panel without stage bleed",
+      "passed": true,
+      "details": {
+        "label": "arena footer",
+        "row": 26,
+        "x": 22,
+        "character": "M",
+        "tile": 333,
+        "mean_channel_delta": 0.1875,
+        "max_channel_delta": 1,
+        "pixels_over_16": 0,
+        "pixels": 64
+      }
+    },
+    {
       "check": "capture has a native video frame",
       "passed": true,
       "details": "arena-2.png"
@@ -13578,7 +15437,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 259,
+        "frame": 258,
         "mode": 2,
         "hp1": 85,
         "hp2": 85,
@@ -13698,7 +15557,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 311,
+        "frame": 310,
         "mode": 2,
         "hp1": 85,
         "hp2": 85,
@@ -13818,7 +15677,7 @@
       "details": {
         "label": "Training arbitrary dummy",
         "row": 3,
-        "x": 11,
+        "x": 13,
         "character": "D",
         "tile": 68
       }
@@ -13829,7 +15688,7 @@
       "details": {
         "label": "Training arbitrary dummy",
         "row": 3,
-        "x": 12,
+        "x": 14,
         "character": "U",
         "tile": 85
       }
@@ -13840,29 +15699,29 @@
       "details": {
         "label": "Training arbitrary dummy",
         "row": 3,
-        "x": 13,
-        "character": "M",
-        "tile": 77
-      }
-    },
-    {
-      "check": "menu text stays in the original ASCII glyph bank",
-      "passed": true,
-      "details": {
-        "label": "Training arbitrary dummy",
-        "row": 3,
-        "x": 14,
-        "character": "M",
-        "tile": 77
-      }
-    },
-    {
-      "check": "menu text stays in the original ASCII glyph bank",
-      "passed": true,
-      "details": {
-        "label": "Training arbitrary dummy",
-        "row": 3,
         "x": 15,
+        "character": "M",
+        "tile": 77
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training arbitrary dummy",
+        "row": 3,
+        "x": 16,
+        "character": "M",
+        "tile": 77
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training arbitrary dummy",
+        "row": 3,
+        "x": 17,
         "character": "Y",
         "tile": 89
       }
@@ -13873,7 +15732,7 @@
       "details": {
         "label": "Training arbitrary dummy",
         "row": 12,
-        "x": 11,
+        "x": 13,
         "character": "R",
         "tile": 82
       }
@@ -13884,7 +15743,7 @@
       "details": {
         "label": "Training arbitrary dummy",
         "row": 12,
-        "x": 12,
+        "x": 14,
         "character": "O",
         "tile": 79
       }
@@ -13895,31 +15754,9 @@
       "details": {
         "label": "Training arbitrary dummy",
         "row": 12,
-        "x": 13,
+        "x": 15,
         "character": "X",
         "tile": 88
-      }
-    },
-    {
-      "check": "menu text stays in the original ASCII glyph bank",
-      "passed": true,
-      "details": {
-        "label": "Training arbitrary dummy",
-        "row": 12,
-        "x": 14,
-        "character": "A",
-        "tile": 65
-      }
-    },
-    {
-      "check": "menu text stays in the original ASCII glyph bank",
-      "passed": true,
-      "details": {
-        "label": "Training arbitrary dummy",
-        "row": 12,
-        "x": 15,
-        "character": "N",
-        "tile": 78
       }
     },
     {
@@ -13934,97 +15771,42 @@
       }
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training arbitrary dummy",
+        "row": 12,
+        "x": 17,
+        "character": "N",
+        "tile": 78
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training arbitrary dummy",
+        "row": 12,
+        "x": 18,
+        "character": "A",
+        "tile": 65
+      }
+    },
+    {
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 10,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait10_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 10,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 10,
-        "vram_word": "0x4a00",
-        "sha256": "91f53180fc9e25e5633ec62a380b62c7b90072213718a1a3b079b59c6d24a9e6"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 10,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 10,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait10_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 10
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 16,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 10,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.2921223958333333,
-        "max_channel_delta": 1,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -14098,7 +15880,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 389,
+        "frame": 388,
         "mode": 2,
         "hp1": 85,
         "hp2": 85,
@@ -14218,7 +16000,7 @@
       "details": {
         "label": "Training mirror dummy",
         "row": 3,
-        "x": 11,
+        "x": 13,
         "character": "D",
         "tile": 68
       }
@@ -14229,7 +16011,7 @@
       "details": {
         "label": "Training mirror dummy",
         "row": 3,
-        "x": 12,
+        "x": 14,
         "character": "U",
         "tile": 85
       }
@@ -14240,29 +16022,29 @@
       "details": {
         "label": "Training mirror dummy",
         "row": 3,
-        "x": 13,
-        "character": "M",
-        "tile": 77
-      }
-    },
-    {
-      "check": "menu text stays in the original ASCII glyph bank",
-      "passed": true,
-      "details": {
-        "label": "Training mirror dummy",
-        "row": 3,
-        "x": 14,
-        "character": "M",
-        "tile": 77
-      }
-    },
-    {
-      "check": "menu text stays in the original ASCII glyph bank",
-      "passed": true,
-      "details": {
-        "label": "Training mirror dummy",
-        "row": 3,
         "x": 15,
+        "character": "M",
+        "tile": 77
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training mirror dummy",
+        "row": 3,
+        "x": 16,
+        "character": "M",
+        "tile": 77
+      }
+    },
+    {
+      "check": "menu text stays in the original ASCII glyph bank",
+      "passed": true,
+      "details": {
+        "label": "Training mirror dummy",
+        "row": 3,
+        "x": 17,
         "character": "Y",
         "tile": 89
       }
@@ -14273,7 +16055,7 @@
       "details": {
         "label": "Training mirror dummy",
         "row": 12,
-        "x": 11,
+        "x": 13,
         "character": "C",
         "tile": 67
       }
@@ -14284,7 +16066,7 @@
       "details": {
         "label": "Training mirror dummy",
         "row": 12,
-        "x": 12,
+        "x": 14,
         "character": "R",
         "tile": 82
       }
@@ -14295,7 +16077,7 @@
       "details": {
         "label": "Training mirror dummy",
         "row": 12,
-        "x": 13,
+        "x": 15,
         "character": "I",
         "tile": 73
       }
@@ -14306,7 +16088,7 @@
       "details": {
         "label": "Training mirror dummy",
         "row": 12,
-        "x": 14,
+        "x": 16,
         "character": "S",
         "tile": 83
       }
@@ -14317,7 +16099,7 @@
       "details": {
         "label": "Training mirror dummy",
         "row": 12,
-        "x": 15,
+        "x": 17,
         "character": "T",
         "tile": 84
       }
@@ -14328,7 +16110,7 @@
       "details": {
         "label": "Training mirror dummy",
         "row": 12,
-        "x": 16,
+        "x": 18,
         "character": "O",
         "tile": 79
       }
@@ -14339,7 +16121,7 @@
       "details": {
         "label": "Training mirror dummy",
         "row": 12,
-        "x": 17,
+        "x": 19,
         "character": "B",
         "tile": 66
       }
@@ -14350,7 +16132,7 @@
       "details": {
         "label": "Training mirror dummy",
         "row": 12,
-        "x": 18,
+        "x": 20,
         "character": "A",
         "tile": 65
       }
@@ -14361,103 +16143,26 @@
       "details": {
         "label": "Training mirror dummy",
         "row": 12,
-        "x": 19,
+        "x": 21,
         "character": "L",
         "tile": 76
       }
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 2,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait02_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 2,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 2,
-        "vram_word": "0x4a00",
-        "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 2,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 2,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait02_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 2
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 16,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 2,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.343359375,
-        "max_channel_delta": 2,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -14531,7 +16236,7 @@
       "details": {
         "label": "Training Back to PLAYER 1",
         "row": 3,
-        "x": 11,
+        "x": 13,
         "character": "P",
         "tile": 80
       }
@@ -14542,7 +16247,7 @@
       "details": {
         "label": "Training Back to PLAYER 1",
         "row": 3,
-        "x": 12,
+        "x": 14,
         "character": "L",
         "tile": 76
       }
@@ -14553,7 +16258,7 @@
       "details": {
         "label": "Training Back to PLAYER 1",
         "row": 3,
-        "x": 13,
+        "x": 15,
         "character": "A",
         "tile": 65
       }
@@ -14564,7 +16269,7 @@
       "details": {
         "label": "Training Back to PLAYER 1",
         "row": 3,
-        "x": 14,
+        "x": 16,
         "character": "Y",
         "tile": 89
       }
@@ -14575,7 +16280,7 @@
       "details": {
         "label": "Training Back to PLAYER 1",
         "row": 3,
-        "x": 15,
+        "x": 17,
         "character": "E",
         "tile": 69
       }
@@ -14586,7 +16291,7 @@
       "details": {
         "label": "Training Back to PLAYER 1",
         "row": 3,
-        "x": 16,
+        "x": 18,
         "character": "R",
         "tile": 82
       }
@@ -14597,7 +16302,7 @@
       "details": {
         "label": "Training Back to PLAYER 1",
         "row": 3,
-        "x": 17,
+        "x": 19,
         "character": " ",
         "tile": 32
       }
@@ -14608,7 +16313,7 @@
       "details": {
         "label": "Training Back to PLAYER 1",
         "row": 3,
-        "x": 18,
+        "x": 20,
         "character": "1",
         "tile": 49
       }
@@ -14619,7 +16324,7 @@
       "details": {
         "label": "Training Back to PLAYER 1",
         "row": 12,
-        "x": 11,
+        "x": 13,
         "character": "C",
         "tile": 67
       }
@@ -14630,7 +16335,7 @@
       "details": {
         "label": "Training Back to PLAYER 1",
         "row": 12,
-        "x": 12,
+        "x": 14,
         "character": "R",
         "tile": 82
       }
@@ -14641,7 +16346,7 @@
       "details": {
         "label": "Training Back to PLAYER 1",
         "row": 12,
-        "x": 13,
+        "x": 15,
         "character": "I",
         "tile": 73
       }
@@ -14652,7 +16357,7 @@
       "details": {
         "label": "Training Back to PLAYER 1",
         "row": 12,
-        "x": 14,
+        "x": 16,
         "character": "S",
         "tile": 83
       }
@@ -14663,7 +16368,7 @@
       "details": {
         "label": "Training Back to PLAYER 1",
         "row": 12,
-        "x": 15,
+        "x": 17,
         "character": "T",
         "tile": 84
       }
@@ -14674,7 +16379,7 @@
       "details": {
         "label": "Training Back to PLAYER 1",
         "row": 12,
-        "x": 16,
+        "x": 18,
         "character": "O",
         "tile": 79
       }
@@ -14685,7 +16390,7 @@
       "details": {
         "label": "Training Back to PLAYER 1",
         "row": 12,
-        "x": 17,
+        "x": 19,
         "character": "B",
         "tile": 66
       }
@@ -14696,7 +16401,7 @@
       "details": {
         "label": "Training Back to PLAYER 1",
         "row": 12,
-        "x": 18,
+        "x": 20,
         "character": "A",
         "tile": 65
       }
@@ -14707,103 +16412,26 @@
       "details": {
         "label": "Training Back to PLAYER 1",
         "row": 12,
-        "x": 19,
+        "x": 21,
         "character": "L",
         "tile": 76
       }
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 2,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait02_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 2,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 2,
-        "vram_word": "0x4a00",
-        "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 2,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 2,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait02_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 2
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 16,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 2,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.343359375,
-        "max_channel_delta": 2,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -20726,18 +22354,18 @@
       "check": "all three stage captures are saved",
       "passed": true,
       "details": {
-        "las-condes": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\stage-0.png",
-        "el-castillo": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\stage-1.png",
-        "la-oficina": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\stage-2.png"
+        "las-condes": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\stage-0.png",
+        "el-castillo": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\stage-1.png",
+        "la-oficina": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\stage-2.png"
       }
     },
     {
       "check": "the three stage fights render distinct native architecture plates",
       "passed": true,
       "details": {
-        "las-condes": "71a72a58e3b50a54705683c0a35a5a09a1accb038fb2a0cd430bd50a35a2bd99",
-        "el-castillo": "edcb3fae2281f95bbecad0765a11e0aa7ba96d8cca4208b48ddadb767cbf5f00",
-        "la-oficina": "07731defe5300aafd4542650e59679ffdaa490f76a417617e1c078bdfe408139"
+        "las-condes": "39e9c9324b11395c57f70a4f9fa38b89852149871e5af883f4f94509c403a36c",
+        "el-castillo": "b2bf651a0e7eedd67f311a27fc74e81458cdd308712a8a063e5d73298d0bd496",
+        "la-oficina": "726898069289a1802de2f44f5877b203a11d0cee4d46497c7b588c19469c39eb"
       }
     },
     {
@@ -20746,7 +22374,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 171,
+        "frame": 170,
         "mode": 1,
         "hp1": 85,
         "hp2": 85,
@@ -20866,7 +22494,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 11,
+        "x": 13,
         "character": "P",
         "tile": 80
       }
@@ -20877,7 +22505,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 12,
+        "x": 14,
         "character": "L",
         "tile": 76
       }
@@ -20888,7 +22516,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 13,
+        "x": 15,
         "character": "A",
         "tile": 65
       }
@@ -20899,7 +22527,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 14,
+        "x": 16,
         "character": "Y",
         "tile": 89
       }
@@ -20910,7 +22538,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 15,
+        "x": 17,
         "character": "E",
         "tile": 69
       }
@@ -20921,7 +22549,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 16,
+        "x": 18,
         "character": "R",
         "tile": 82
       }
@@ -20932,7 +22560,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 17,
+        "x": 19,
         "character": " ",
         "tile": 32
       }
@@ -20943,103 +22571,26 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 18,
+        "x": 20,
         "character": "2",
         "tile": 50
       }
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait01_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "vram_word": "0x4a00",
-        "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait01_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 1
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 16,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.2919921875,
-        "max_channel_delta": 2,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -21100,7 +22651,7 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 2045,
+        "frame": 2044,
         "mode": 1,
         "hp1": 128,
         "hp2": 0,
@@ -21220,7 +22771,7 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 2045,
+        "frame": 2044,
         "mode": 1,
         "hp1": 128,
         "hp2": 0,
@@ -28210,7 +29761,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 2075,
+        "frame": 2074,
         "mode": 1,
         "hp1": 128,
         "hp2": 128,
@@ -28330,7 +29881,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 171,
+        "frame": 170,
         "mode": 1,
         "hp1": 85,
         "hp2": 85,
@@ -28450,7 +30001,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 11,
+        "x": 13,
         "character": "P",
         "tile": 80
       }
@@ -28461,7 +30012,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 12,
+        "x": 14,
         "character": "L",
         "tile": 76
       }
@@ -28472,7 +30023,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 13,
+        "x": 15,
         "character": "A",
         "tile": 65
       }
@@ -28483,7 +30034,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 14,
+        "x": 16,
         "character": "Y",
         "tile": 89
       }
@@ -28494,7 +30045,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 15,
+        "x": 17,
         "character": "E",
         "tile": 69
       }
@@ -28505,7 +30056,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 16,
+        "x": 18,
         "character": "R",
         "tile": 82
       }
@@ -28516,7 +30067,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 17,
+        "x": 19,
         "character": " ",
         "tile": 32
       }
@@ -28527,103 +30078,26 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 18,
+        "x": 20,
         "character": "2",
         "tile": 50
       }
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait01_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "vram_word": "0x4a00",
-        "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait01_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 1
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 16,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.2919921875,
-        "max_channel_delta": 2,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -28684,7 +30158,7 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 2005,
+        "frame": 2004,
         "mode": 1,
         "hp1": 0,
         "hp2": 128,
@@ -28804,7 +30278,7 @@
       "details": {
         "magic": 43706,
         "screen": 4,
-        "frame": 2005,
+        "frame": 2004,
         "mode": 1,
         "hp1": 0,
         "hp2": 128,
@@ -35546,7 +37020,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 2035,
+        "frame": 2034,
         "mode": 1,
         "hp1": 128,
         "hp2": 128,
@@ -35666,7 +37140,7 @@
       "details": {
         "magic": 43706,
         "screen": 1,
-        "frame": 171,
+        "frame": 170,
         "mode": 1,
         "hp1": 85,
         "hp2": 85,
@@ -35786,7 +37260,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 11,
+        "x": 13,
         "character": "P",
         "tile": 80
       }
@@ -35797,7 +37271,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 12,
+        "x": 14,
         "character": "L",
         "tile": 76
       }
@@ -35808,7 +37282,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 13,
+        "x": 15,
         "character": "A",
         "tile": 65
       }
@@ -35819,7 +37293,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 14,
+        "x": 16,
         "character": "Y",
         "tile": 89
       }
@@ -35830,7 +37304,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 15,
+        "x": 17,
         "character": "E",
         "tile": 69
       }
@@ -35841,7 +37315,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 16,
+        "x": 18,
         "character": "R",
         "tile": 82
       }
@@ -35852,7 +37326,7 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 17,
+        "x": 19,
         "character": " ",
         "tile": 32
       }
@@ -35863,103 +37337,26 @@
       "details": {
         "label": "second roster heading",
         "row": 3,
-        "x": 18,
+        "x": 20,
         "character": "2",
         "tile": 50
       }
     },
     {
-      "check": "native large portrait asset exists",
+      "check": "selection renders the exact native full-body preview",
       "passed": true,
       "details": {
         "fighter": 1,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait01_tiles.bin"
-      }
-    },
-    {
-      "check": "large portrait asset is an 8x10 tile block",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "bytes": 2560
-      }
-    },
-    {
-      "check": "large portrait reaches BG2 VRAM exactly",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "vram_word": "0x4a00",
-        "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1"
-      }
-    },
-    {
-      "check": "profile map anchor selects tile 160 with palette 1",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "x": 1,
-        "y": 3,
-        "entry": "0x24a0",
-        "tile": 160,
-        "palette": 1
-      }
-    },
-    {
-      "check": "native large portrait palette exists",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "path": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait01_pal.bin"
-      }
-    },
-    {
-      "check": "native portrait tile block has the expected byte count",
-      "passed": true,
-      "details": {
-        "bytes": 2560,
-        "expected": 2560
-      }
-    },
-    {
-      "check": "native portrait palette contains sixteen colors",
-      "passed": true,
-      "details": 32
-    },
-    {
-      "check": "large portrait has a rendered native frame",
-      "passed": true,
-      "details": 1
-    },
-    {
-      "check": "presentation comparison sizes match",
-      "passed": true,
-      "details": {
-        "actual": [
-          64,
+        "pose": 16,
+        "canvas": [
+          96,
           80
         ],
-        "expected": [
-          64,
-          80
-        ]
-      }
-    },
-    {
-      "check": "large portrait crop matches decoded native PPU pixels",
-      "passed": true,
-      "details": {
-        "fighter": 1,
-        "crop": [
-          8,
-          24,
-          72,
-          104
+        "origin": [
+          2,
+          24
         ],
-        "mean_channel_delta": 0.2919921875,
-        "max_channel_delta": 2,
-        "pixels_over_16": 0,
-        "pixels": 5120
+        "max_channel_delta": 2
       }
     },
     {
@@ -36020,7 +37417,7 @@
       "details": {
         "magic": 43706,
         "screen": 3,
-        "frame": 6260,
+        "frame": 6259,
         "mode": 1,
         "hp1": 128,
         "hp2": 128,
@@ -37123,177 +38520,177 @@
   ],
   "captures": {
     "menus": {
-      "title": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\title.png",
+      "title": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\title.png",
       "portraits": {
-        "00": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\select-00.png",
-        "01": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\select-01.png",
-        "02": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\select-02.png",
-        "03": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\select-03.png",
-        "04": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\select-04.png",
-        "05": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\select-05.png",
-        "06": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\select-06.png",
-        "07": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\select-07.png",
-        "08": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\select-08.png",
-        "09": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\select-09.png",
-        "10": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\select-10.png",
-        "11": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\select-11.png"
+        "00": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\select-00.png",
+        "01": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\select-01.png",
+        "02": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\select-02.png",
+        "03": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\select-03.png",
+        "04": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\select-04.png",
+        "05": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\select-05.png",
+        "06": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\select-06.png",
+        "07": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\select-07.png",
+        "08": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\select-08.png",
+        "09": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\select-09.png",
+        "10": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\select-10.png",
+        "11": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\select-11.png"
       },
       "portrait_vram": {
         "00": {
-          "asset": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait00_tiles.bin",
-          "sha256": "cef8bc55342eea67d30e43e52852d560e421c25e9071fe7e7a9c52e02f75de09",
-          "map_entry": 9376,
-          "tile": 160,
-          "palette": 1,
-          "rendered": {
-            "mean_channel_delta": 0.3529296875,
-            "max_channel_delta": 2,
-            "pixels_over_16": 0,
-            "pixels": 5120
-          }
+          "fighter": 0,
+          "pose": 17,
+          "canvas": [
+            96,
+            80
+          ],
+          "origin": [
+            2,
+            24
+          ],
+          "max_channel_delta": 2
         },
         "01": {
-          "asset": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait01_tiles.bin",
-          "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1",
-          "map_entry": 9376,
-          "tile": 160,
-          "palette": 1,
-          "rendered": {
-            "mean_channel_delta": 0.2919921875,
-            "max_channel_delta": 2,
-            "pixels_over_16": 0,
-            "pixels": 5120
-          }
+          "fighter": 1,
+          "pose": 16,
+          "canvas": [
+            96,
+            80
+          ],
+          "origin": [
+            2,
+            24
+          ],
+          "max_channel_delta": 2
         },
         "02": {
-          "asset": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait02_tiles.bin",
-          "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b",
-          "map_entry": 9376,
-          "tile": 160,
-          "palette": 1,
-          "rendered": {
-            "mean_channel_delta": 0.343359375,
-            "max_channel_delta": 2,
-            "pixels_over_16": 0,
-            "pixels": 5120
-          }
+          "fighter": 2,
+          "pose": 16,
+          "canvas": [
+            96,
+            80
+          ],
+          "origin": [
+            2,
+            24
+          ],
+          "max_channel_delta": 2
         },
         "03": {
-          "asset": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait03_tiles.bin",
-          "sha256": "61d80d1fa2da4692646a1f500dfc98d69692c0565754d3dc78b7f2d9584642e3",
-          "map_entry": 9376,
-          "tile": 160,
-          "palette": 1,
-          "rendered": {
-            "mean_channel_delta": 0.3204427083333333,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 5120
-          }
+          "fighter": 3,
+          "pose": 16,
+          "canvas": [
+            96,
+            80
+          ],
+          "origin": [
+            2,
+            24
+          ],
+          "max_channel_delta": 2
         },
         "04": {
-          "asset": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait04_tiles.bin",
-          "sha256": "24c117db9e57d66ba9eccaecd75bece46c78f0eec848a7eb6a688806227ed2fd",
-          "map_entry": 9376,
-          "tile": 160,
-          "palette": 1,
-          "rendered": {
-            "mean_channel_delta": 0.32916666666666666,
-            "max_channel_delta": 2,
-            "pixels_over_16": 0,
-            "pixels": 5120
-          }
+          "fighter": 4,
+          "pose": 16,
+          "canvas": [
+            96,
+            80
+          ],
+          "origin": [
+            2,
+            24
+          ],
+          "max_channel_delta": 2
         },
         "05": {
-          "asset": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait05_tiles.bin",
-          "sha256": "c0460efc186cc285ba6aba1fdd0e7c54dc21320b2201954973d6d2c31c8ba505",
-          "map_entry": 9376,
-          "tile": 160,
-          "palette": 1,
-          "rendered": {
-            "mean_channel_delta": 0.2957682291666667,
-            "max_channel_delta": 2,
-            "pixels_over_16": 0,
-            "pixels": 5120
-          }
+          "fighter": 5,
+          "pose": 16,
+          "canvas": [
+            96,
+            80
+          ],
+          "origin": [
+            2,
+            24
+          ],
+          "max_channel_delta": 2
         },
         "06": {
-          "asset": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait06_tiles.bin",
-          "sha256": "f023d0d5dd115725202ed8a527b2ec45812a7f5e7af77bf579bcec09d39a5e2f",
-          "map_entry": 9376,
-          "tile": 160,
-          "palette": 1,
-          "rendered": {
-            "mean_channel_delta": 0.3294270833333333,
-            "max_channel_delta": 2,
-            "pixels_over_16": 0,
-            "pixels": 5120
-          }
+          "fighter": 6,
+          "pose": 16,
+          "canvas": [
+            96,
+            80
+          ],
+          "origin": [
+            2,
+            24
+          ],
+          "max_channel_delta": 2
         },
         "07": {
-          "asset": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait07_tiles.bin",
-          "sha256": "d83d340dffeb196c8d1a961cd85d391bad6c849b385b921eca8868eb40d86537",
-          "map_entry": 9376,
-          "tile": 160,
-          "palette": 1,
-          "rendered": {
-            "mean_channel_delta": 0.21731770833333333,
-            "max_channel_delta": 2,
-            "pixels_over_16": 0,
-            "pixels": 5120
-          }
+          "fighter": 7,
+          "pose": 16,
+          "canvas": [
+            96,
+            80
+          ],
+          "origin": [
+            2,
+            24
+          ],
+          "max_channel_delta": 2
         },
         "08": {
-          "asset": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait08_tiles.bin",
-          "sha256": "be1b936d3daa590cffbc0f2cbe6f1d4c0d951d01262706eb9e9ce4c4f5fd7d89",
-          "map_entry": 9376,
-          "tile": 160,
-          "palette": 1,
-          "rendered": {
-            "mean_channel_delta": 0.36015625,
-            "max_channel_delta": 2,
-            "pixels_over_16": 0,
-            "pixels": 5120
-          }
+          "fighter": 8,
+          "pose": 16,
+          "canvas": [
+            96,
+            80
+          ],
+          "origin": [
+            2,
+            24
+          ],
+          "max_channel_delta": 2
         },
         "09": {
-          "asset": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait09_tiles.bin",
-          "sha256": "46ef8740ace707787e06eb45e7b60f1df5e308185b6367f5e62b0ae823122350",
-          "map_entry": 9376,
-          "tile": 160,
-          "palette": 1,
-          "rendered": {
-            "mean_channel_delta": 0.32154947916666665,
-            "max_channel_delta": 2,
-            "pixels_over_16": 0,
-            "pixels": 5120
-          }
+          "fighter": 9,
+          "pose": 16,
+          "canvas": [
+            96,
+            80
+          ],
+          "origin": [
+            2,
+            24
+          ],
+          "max_channel_delta": 2
         },
         "10": {
-          "asset": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait10_tiles.bin",
-          "sha256": "91f53180fc9e25e5633ec62a380b62c7b90072213718a1a3b079b59c6d24a9e6",
-          "map_entry": 9376,
-          "tile": 160,
-          "palette": 1,
-          "rendered": {
-            "mean_channel_delta": 0.2921223958333333,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 5120
-          }
+          "fighter": 10,
+          "pose": 16,
+          "canvas": [
+            96,
+            80
+          ],
+          "origin": [
+            2,
+            24
+          ],
+          "max_channel_delta": 2
         },
         "11": {
-          "asset": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait11_tiles.bin",
-          "sha256": "523beee6bbce840def42286687dde5c22d5a6c9720e365f510e65687beebbbbd",
-          "map_entry": 9376,
-          "tile": 160,
-          "palette": 1,
-          "rendered": {
-            "mean_channel_delta": 0.273046875,
-            "max_channel_delta": 2,
-            "pixels_over_16": 0,
-            "pixels": 5120
-          }
+          "fighter": 11,
+          "pose": 16,
+          "canvas": [
+            96,
+            80
+          ],
+          "origin": [
+            2,
+            24
+          ],
+          "max_channel_delta": 2
         }
       },
       "select_card_render": {
@@ -37304,7 +38701,7 @@
             44,
             156
           ],
-          "mean_channel_delta": 1.8356770833333333,
+          "mean_channel_delta": 2.3229166666666665,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -37316,7 +38713,7 @@
             84,
             156
           ],
-          "mean_channel_delta": 2.2390625,
+          "mean_channel_delta": 2.1578125,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -37328,7 +38725,7 @@
             124,
             156
           ],
-          "mean_channel_delta": 2.4908854166666665,
+          "mean_channel_delta": 2.513541666666667,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -37340,7 +38737,7 @@
             164,
             156
           ],
-          "mean_channel_delta": 2.5296875,
+          "mean_channel_delta": 2.5302083333333334,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -37352,7 +38749,7 @@
             204,
             156
           ],
-          "mean_channel_delta": 2.2453125,
+          "mean_channel_delta": 2.571875,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -37364,7 +38761,7 @@
             244,
             156
           ],
-          "mean_channel_delta": 2.3213541666666666,
+          "mean_channel_delta": 2.53125,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -37376,7 +38773,7 @@
             44,
             212
           ],
-          "mean_channel_delta": 1.9557291666666667,
+          "mean_channel_delta": 2.30703125,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -37388,7 +38785,7 @@
             84,
             212
           ],
-          "mean_channel_delta": 2.04375,
+          "mean_channel_delta": 2.5677083333333335,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -37400,7 +38797,7 @@
             124,
             212
           ],
-          "mean_channel_delta": 2.603385416666667,
+          "mean_channel_delta": 2.8252604166666666,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -37412,7 +38809,7 @@
             164,
             212
           ],
-          "mean_channel_delta": 2.2182291666666667,
+          "mean_channel_delta": 2.4010416666666665,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -37424,7 +38821,7 @@
             204,
             212
           ],
-          "mean_channel_delta": 1.9549479166666666,
+          "mean_channel_delta": 2.2630208333333335,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -37436,21 +38833,21 @@
             244,
             212
           ],
-          "mean_channel_delta": 1.86484375,
+          "mean_channel_delta": 2.31171875,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
         }
       },
       "arena_select": {
-        "las-condes": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\arena-0.png",
-        "el-castillo": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\arena-1.png",
-        "la-oficina": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\arena-2.png"
+        "las-condes": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\arena-0.png",
+        "el-castillo": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\arena-1.png",
+        "la-oficina": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\arena-2.png"
       },
       "arena_digests": [
-        "b020188fd4207cd9316e0b527c4a50dcefb3cb3183f49cfb89a7b283642c4ee1",
-        "3a71b3f1ee4b3f7751d6111602cf6975b012acf0503d9b48125b5a546c9336ef",
-        "8466386daa925ba52ed1465fbab61d8103fa6e680e943227271400fe5b2eabf3"
+        "4110b16234b56f5cfc48264369f966fdceb2ac57a6e5251f99833dfe94655993",
+        "198f4a93530fd2c96dd5b1a689936f3f3ead2fbf66a013cd0d905fd16ff865ce",
+        "498a5b66f558fc82b25e458c283a5d718859e73dca842b69d2fe74104b9a0252"
       ],
       "arena_renders": {
         "las-condes": {
@@ -37545,7 +38942,7 @@
         "state": {
           "magic": 43706,
           "screen": 1,
-          "frame": 311,
+          "frame": 310,
           "mode": 2,
           "hp1": 85,
           "hp2": 85,
@@ -37659,25 +39056,25 @@
           "wake_jump2": 85
         },
         "portrait": {
-          "asset": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait10_tiles.bin",
-          "sha256": "91f53180fc9e25e5633ec62a380b62c7b90072213718a1a3b079b59c6d24a9e6",
-          "map_entry": 9376,
-          "tile": 160,
-          "palette": 1,
-          "rendered": {
-            "mean_channel_delta": 0.2921223958333333,
-            "max_channel_delta": 1,
-            "pixels_over_16": 0,
-            "pixels": 5120
-          }
+          "fighter": 10,
+          "pose": 16,
+          "canvas": [
+            96,
+            80
+          ],
+          "origin": [
+            2,
+            24
+          ],
+          "max_channel_delta": 2
         },
-        "capture": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\training-dummy.png"
+        "capture": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\training-dummy.png"
       },
       "mirror": {
         "state": {
           "magic": 43706,
           "screen": 1,
-          "frame": 389,
+          "frame": 388,
           "mode": 2,
           "hp1": 85,
           "hp2": 85,
@@ -37791,38 +39188,38 @@
           "wake_jump2": 85
         },
         "portrait": {
-          "asset": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait02_tiles.bin",
-          "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b",
-          "map_entry": 9376,
-          "tile": 160,
-          "palette": 1,
-          "rendered": {
-            "mean_channel_delta": 0.343359375,
-            "max_channel_delta": 2,
-            "pixels_over_16": 0,
-            "pixels": 5120
-          }
+          "fighter": 2,
+          "pose": 16,
+          "canvas": [
+            96,
+            80
+          ],
+          "origin": [
+            2,
+            24
+          ],
+          "max_channel_delta": 2
         },
-        "capture": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\training-mirror.png"
+        "capture": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\training-mirror.png"
       },
       "back_portrait": {
-        "asset": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait02_tiles.bin",
-        "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b",
-        "map_entry": 9376,
-        "tile": 160,
-        "palette": 1,
-        "rendered": {
-          "mean_channel_delta": 0.343359375,
-          "max_channel_delta": 2,
-          "pixels_over_16": 0,
-          "pixels": 5120
-        }
+        "fighter": 2,
+        "pose": 16,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 2
       }
     },
     "stages": {
-      "las-condes": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\stage-0.png",
-      "el-castillo": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\stage-1.png",
-      "la-oficina": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\stage-2.png"
+      "las-condes": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\stage-0.png",
+      "el-castillo": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\stage-1.png",
+      "la-oficina": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\stage-2.png"
     },
     "result": {
       "wins1": 2,
@@ -38900,7 +40297,7 @@
           "pixels": 5120
         }
       },
-      "capture": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\result-score.png"
+      "capture": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\result-score.png"
     },
     "result_p2": {
       "wins1": 0,
@@ -39938,13 +41335,13 @@
           "pixels": 5120
         }
       },
-      "capture": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\result-score-p2.png"
+      "capture": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\result-score-p2.png"
     },
     "timeout_draw": {
       "state": {
         "magic": 43706,
         "screen": 3,
-        "frame": 6260,
+        "frame": 6259,
         "mode": 1,
         "hp1": 128,
         "hp2": 128,
@@ -40193,7 +41590,7 @@
           }
         ]
       },
-      "capture": "D:\\snes-abaqus-fighter\\docs\\screenshots\\classic-menu\\timeout-draw.png"
+      "capture": "D:\\snes-abaqus-fighter\\docs\\screenshots\\presentation\\timeout-draw.png"
     }
   },
   "animation_artifact": {
@@ -41245,6 +42642,6 @@
     ],
     "frame_count": 64
   },
-  "passed": 3489,
-  "elapsed_seconds": 11.68
+  "passed": 3600,
+  "elapsed_seconds": 10.54
 }

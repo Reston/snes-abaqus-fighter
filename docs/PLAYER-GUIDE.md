@@ -1,12 +1,14 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.28.0; identity: APPROVED_MAIN_FOCUSED_UI_VERIFIED; rom-sha256: 09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c; source-freeze: 16e9989497fa7f7bf16271d59555a13b57caeac4 -->
+<!-- candidate-version: 0.29.0; identity: TECHNICALLY_VERIFIED_MERGED_FOR_PLAYTEST; rom-sha256: 7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0; source-freeze: 4c35ee89d6269662269481ffafff0166a905c775 -->
 
-v0.28.0 adds an idle full-body preview and a short confirmation gesture.
-The office-themed six-by-two roster remains. The slower combat,
-detailed floors and left-aligned help remain. Native checks pass; this revision is approved and merged. [Current release note](RELEASE-v0.28.0.md).
+v0.29 adds throw escapes, office bonus rounds, random selection, automatic
+browser launch, new music and sound levels, and animated arena spectators.
+Combined native, browser and fresh-source verification passed. [Release note](RELEASE-v0.29.0.md).
 
 This is a native SNES game. On Windows use [Play.cmd](../Play.cmd); on other
 platforms load `dist/abaqus-after-hours.sfc` in a SNES emulator.
+The [browser player](https://abaqus-after-hours.restonjd.workers.dev/) loads
+automatically; your first key or tap enables sound.
 
 The launcher names the cartridge version before opening it. If its file or
 version differs from the checkout, run **Build.cmd** before trying again.
@@ -54,12 +56,13 @@ Snes9x's **Input -> Input Configuration**, one to each joypad.
 | Fresh neutral Y+B together | Release directions and A/Z, then press A+Z together | Super, costs the full 96 energy |
 | Start | Enter | Confirm / pause / resume |
 | A / B in menus or pause | X / Z | Confirm or resume / back or return to roster |
-| Select | Shift | Cycle pause pages; P1 live Training reset |
+| Select | Shift | Random fighter/arena; pause guide; P1 live Training reset |
 | L / R shoulders | D / C | CPU level at home or on Training's CPU PAUSED card |
 
 **P2 defaults:** I/J/K/L move up/left/down/right; numpad 7/8 punch, numpad 1/2
 kick, Space is Start, Q is Select and numpad 9/3 are L/R. Enable Num Lock.
 The P2 super is fresh neutral numpad 7+1. Shoulders do not attack.
+The browser uses D/F for P1 shoulders and U/O for P2; face buttons match above.
 Opposite directions cancel. Menu priority is Start, then B, then A.
 Hold a D-pad direction or arrow key to scroll after a short delay. Confirm
 and Back remain single-press actions even when held.
@@ -97,9 +100,10 @@ and Back remain single-press actions even when held.
   get-up phase, a fresh attack or jump can buffer; enter special motions after
   recovery.
 
-If both grounded throws connect together, **THROW TECH!** identifies the
-existing non-damaging escape. Toward+X must request a throw for both fighters;
-an ordinary throw against a late button still follows the normal throw rules.
+To escape a grab, release X, then press **toward+X** during its first five
+live lift ticks. Holding X or pressing during hitstop will not queue an escape.
+**THROW TECH!** confirms it; simultaneous throws still tech. After getting up,
+a brief throw-only protection window lets you act while ordinary strikes can hit.
 
 Gold health turns red at one quarter or less; the thin teal bar is energy and
 diamond medals count round wins. Win two rounds to take a match. At timeout,
@@ -117,9 +121,13 @@ bonus or extra stun; a displayed combo still requires uninterrupted hit stun.
 short two-speaker exchange: wait about six seconds or press **P1 A** (keyboard
 X) to skip into the countdown. Start pauses first. Continue retries the same
 opponent after a loss. Individual winner quotes and a personal trophy ending
-follow your victories; the original Champion music remains.
+follow your victories, with a new Champion arrangement.
 The exchange/result shows **SHIFT 01/11** through **SHIFT 11/11**. Results name
 the next opponent or the opponent you will retry; pause names CPU difficulty.
+
+After wins three and seven, clear the printer jam or overflowing inbox.
+Move, jump and use all four attacks: strong hits clear two points. Start pauses;
+Select skips. Success, timeout and skip all lead automatically to the next fight.
 
 **Local Versus:** choose both fighters and an arena for a best-of-three match.
 Roster portraits now show the fighter's ordinary-special type, Down+Y shortcut
@@ -146,6 +154,11 @@ List **2/3**, Training **3/3**, then PAUSED. Versus and Arcade have the
 first two guide pages. Left/Right cycles within the guide pages. Move List
 names both fighters' specials and supers.
 
+**Y** opens Sound Levels from any fight pause page. Up/Down chooses Music,
+Effects or Announcer; Left/Right changes its level. X previews effects or voice.
+Select returns to the previous pause page; A/Start resumes. Levels last until
+the game is restarted.
+
 On **Move List 2/3** (2/2 outside Training), **Up** cycles the special list,
 Player 1 normal timing and Player 2 normal timing. **S/A/R** shows startup,
 active time and recovery in live simulation ticks for the four standing
@@ -153,7 +166,7 @@ ground attacks. Contact hitstop adds its separate pause; crouching/air moves
 can differ. The fight stays frozen while you browse.
 
 On a full guide page, **SNES L** (P1 keyboard **D**, P2 numpad **9**) toggles
-music with a short fade. Combat sounds and announcements remain audible.
+music with a short fade. Effects and announcer follow their own sound levels.
 The preference survives menu/match changes and resets on cold boot. The
 caption shows its state; opposite shoulders cancel. On ordinary Training
 PAUSED with CPU selected, L/R keep their difficulty-setting role.

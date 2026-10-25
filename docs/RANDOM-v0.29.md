@@ -1,5 +1,7 @@
 # Random fighter and arena selection (topic 4)
 
+Current combined release: [v0.29.0](RELEASE-v0.29.0.md) · [current verification](verification-v0.29.0.json). The implementation measurements below retain their isolated/historical scope.
+
 Fresh **SELECT** picks a fighter on the roster or an arena on the location
 screen. Both screens show **SELECT: RANDOM** in their existing footer.
 The highlighted result stays on screen until the player confirms it.

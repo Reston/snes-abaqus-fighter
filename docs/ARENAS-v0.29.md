@@ -1,5 +1,7 @@
 # Animated arena life (topic 6)
 
+Current combined release: [v0.29.0](RELEASE-v0.29.0.md) · [current verification](verification-v0.29.0.json). The implementation measurements below retain their isolated/historical scope.
+
 Four small background people and four environmental details animate in each
 of the three existing arenas. Las Condes has business arrivals and onlookers,
 El Castillo has party guests, and La Oficina has coworkers behind the desks.
@@ -10,11 +12,61 @@ zero-HP KO elicits celebration. Priority is KO, super, then heavy contact.
 The observer only reads combat state. It never calls RNG or writes actors,
 waves, inputs, actions, HP, energy, combat timers or audio state.
 
-This is isolated feature evidence for the integration branch, not combined
-v0.29 verification or main-merge approval. The parent owns shared native
-suite adaptation, all six suites, final freeze/reproduction and integration.
+The current integrated-ROM arena proof is linked below. The parent owns
+combined six-suite verification, final reproduction, collation and merge.
 
-## Exact candidate and evidence
+## Current integrated-ROM proof and captured QA source
+
+The accepted Snes9x run uses producer
+`4c35ee89d6269662269481ffafff0166a905c775`, native source/assets unchanged from
+`cb61690501d0688050a453aabcdd6993bc6dcb49`, and ROM
+`7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0`.
+The [current Snes9x report](arena-life29-current-snes9x.json) passes 265,621
+checks, all three native arena cases and three current-source reference
+replays. All 8,201 controller callbacks plus three initial states match every
+one of the 414 unmasked gameplay bytes, including absolute TRACE2. The
+reference retains the other five features; only the arena tick/upload behavior
+is disabled by one approved early return. No masking, rebasing, state writes
+or callback collapse is used.
+
+Strict native health covers 8,627 candidate callbacks and 8,549 reference
+callbacks. There are 8,633 candidate TRACE samples, 1,358 completed 256-byte
+arena transfers and zero reference arena transfers. Reference pool pixels stay
+phase0. Actor uploads remain at most one 3,840-byte pose per blank; measured
+maxima remain 16 OBJ entries / 32 tile fetches and three SPC FIFO bytes.
+Frame/vblank, SDK lag, VRAM/DMA, OBJ and fresh/unclipped PCM assertions pass.
+All frozen root/reference/helper guards pass, with 237 identical generated
+assets and 1,329 identical mutable addresses.
+
+The [current Accuracy report](arena-life29-current-accuracy.json) retains its
+original cb61690-producer-bound 117,158-check pass on the same current ROM.
+It was not rerun after the test/web-only producer freeze. Current native
+captures are under [current media](screenshots/arena-life29/current/).
+
+The [captured QA manifest](evidence/v029-arenas/manifest.json) publishes the
+byte-identical executed wrapper/runner/native-producer snapshots as `.py.txt`,
+the exact one-line reference patch, source/native audits, reference build
+cache/header/symbols/manifest, logs and execution status. Every file has its
+original execution path, SHA256 and explicit restoration alias.
+[Restore instructions and exact commands](evidence/v029-arenas/RESTORE.md)
+explain reconstruction in the original ignored paths without editing the
+executed wrapper. SDK/core/Python and 34 old ignored release ZIPs included in
+its frozen-input guard remain explicitly hash-bound external prerequisites;
+the capsule does not claim to vendor those caches. This publication runs no
+new native job and leaves both passed current reports byte-identical.
+
+The original combined-ROM replay against v0.28 remains a **failed historical
+comparison**: its first state differs only in absolute TRACE2, original691
+versus current690. The [exact failed report](evidence/v029-arenas/historical-v028-comparison-snes9x.json)
+and its log/diagnostic/captures are preserved with hashes. The accepted new
+reference proves arena behavior preserves the current combined native rules;
+it does not claim v0.28 equivalence.
+
+The candidate, counts, inventory and reproduction sections below describe the
+earlier isolated feature proof. They are historical for the current integrated
+ROM and are not pooled into its results.
+
+## Historical isolated candidate and evidence
 
 - Source/harness freeze: `b7f6181fa36df5d1b4cb9d31334a1fcccfb31ea7`.
 - ROM SHA256: `0cee5cf59741dd9b5698ffa58e543209a308ae338d57f3e32483e06057b17b3a`.

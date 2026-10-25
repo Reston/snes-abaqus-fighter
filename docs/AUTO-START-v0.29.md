@@ -1,5 +1,7 @@
 # Topic 3: automatic browser launch
 
+Current combined release: [v0.29.0](RELEASE-v0.29.0.md) · [current verification](verification-v0.29.0.json). The implementation measurements below retain their isolated/historical scope.
+
 The redundant confirmation was the browser's **Play game** overlay. Native
 v0.28 already advanced automatically after arena confirmation: Arcade displays
 its six-second story, then the existing 110-tick intro; Local and Training enter

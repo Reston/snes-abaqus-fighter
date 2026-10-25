@@ -1,0 +1,16 @@
+{"status": "failed", "core": "snes9x", "passed": 53621, "elapsed_seconds": 6.672}
+Traceback (most recent call last):
+  File "D:\snes-abaqus-fighter\tools\test_arena_life29.py", line 536, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\snes-abaqus-fighter\tools\test_arena_life29.py", line 513, in main
+    if args.core=='snes9x' and not args.skip_replay:report['baseline_replays'].append(replay_base(case,syms,report))
+                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\snes-abaqus-fighter\tools\test_arena_life29.py", line 456, in replay_base
+    r.boot();require(r.initial_game==case['replay']['initial_game'],'Baseline starts at identical unmasked gameplay state',case['stage'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\snes-abaqus-fighter\tools\test_arena_life29.py", line 43, in require
+    raise AssertionError((label,detail))
+AssertionError: ('Baseline starts at identical unmasked gameplay state', 0)
+Map_LoROMMap
+Map_LoROMMap

@@ -9,7 +9,7 @@ run on the player's device; remote multiplayer is not included.
 
 ## Try it locally on Windows
 
-Run **`Web.cmd`**, then open **http://localhost:8787**. Click **Play game**.
+Run **`Web.cmd`**, then open **http://localhost:8787**. The cartridge loads automatically; your first key or tap enables sound.
 The keyboard layout matches `Play.cmd`; the player's gamepad button configures
 controllers. The controls panel includes both players and the four attack buttons.
 
@@ -79,4 +79,4 @@ combat, keyboard input for both local players, normal-speed frame progression,
 responsive layout, HTTP paths, pinned dependencies and a Wrangler dry run.
 Automated browser checks are muted; physical controllers and audible browser
 listening still need a human check. The public player linked above uses the
-approved v0.28.0 cartridge; follow the Publish steps to host your own copy.
+current v0.29.0 cartridge; follow the Publish steps to host your own copy.
