@@ -370,9 +370,10 @@ def traversal(args, syms, outcome='success'):
             while shift < end:
                 require(rig.read('arcade') == shift and rig.state()['fighter_id2'] == (hero + 1 + shift) % 12,
                         'Every real Arcade opponent remains in original order', [hero, shift, rig.state()])
-                if hero == args.champion_hero and shift == 3:
+                if hero == args.champion_hero and shift in (2, 3, 6):
                     lost = rig.play(lose=True)
-                    require(lost['wins'][1] == 2 and rig.read('resultWin') == 0, 'An ordinary controller-only loss is earned after the first bonus')
+                    require(lost['wins'][1] == 2 and rig.read('resultWin') == 0,
+                            'Controller-only losses are earned before both milestones and after the first bonus')
                     seen = rig.bonus()['seen']; rig.pulse('a'); rig.until(lambda: rig.read('screen') == 3)
                     require(rig.read('arcade') == shift and rig.bonus()['seen'] == seen,
                             'Continue retries the same opponent without repeating the earned bonus')
@@ -389,6 +390,7 @@ def traversal(args, syms, outcome='success'):
                 if shift == 10:
                     require(rig.read('champion') == 1 and rig.read('screen') == 4 and rig.bonus()['seen'] == 3,
                             'All eleven opponents and the earned Champion ending survive both optional bonuses')
+                    rig.text(2, 'OFFICE CHAMPION')
                     rig.capture(f'hero{hero:02}-champion'); break
                 rig.run(3)
                 # Keep the confirmation held across the forced-blank loader.
