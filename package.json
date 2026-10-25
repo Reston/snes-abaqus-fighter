@@ -1,0 +1,18 @@
+{
+  "name": "abaqus-after-hours-web",
+  "version": "0.28.0",
+  "private": true,
+  "description": "Browser player and Cloudflare hosting for the native SNES cartridge",
+  "scripts": {
+    "build": "node tools/build_web.mjs",
+    "dev": "npm run build && wrangler dev --port 8787",
+    "check:deploy": "npm run build && wrangler deploy --dry-run --outdir build/cloudflare/dry-run",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "4.152.0"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

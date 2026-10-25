@@ -1,0 +1,329 @@
+{
+  "status": "passed",
+  "version": "0.28.0",
+  "rom_sha256": "09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c",
+  "browser": "156.0.4314.42",
+  "checks": [
+    {
+      "label": "Player served by local Wrangler",
+      "passed": true
+    },
+    {
+      "label": "Security headers served by Wrangler",
+      "passed": true
+    },
+    {
+      "label": "Accessible Play button",
+      "passed": true
+    },
+    {
+      "label": "Actual Snes9x WebAssembly core boots",
+      "passed": true
+    },
+    {
+      "label": "Unique read-only native TRACE in emulator memory",
+      "passed": true,
+      "details": [
+        2340468
+      ]
+    },
+    {
+      "label": "Native title rendered",
+      "passed": true
+    },
+    {
+      "label": "Native Local 1v1 mode chosen through keyboard",
+      "passed": true
+    },
+    {
+      "label": "P2 keyboard changes only P2 fighter",
+      "passed": true,
+      "details": {
+        "before": {
+          "screen": 1,
+          "frame": 115,
+          "mode": 1,
+          "action1": 85,
+          "action2": 85,
+          "x1": 0,
+          "x2": 21845,
+          "hp1": 85,
+          "hp2": 85,
+          "selected": 0,
+          "selected2": 1,
+          "intro": 85,
+          "paused": 0
+        },
+        "after": {
+          "screen": 1,
+          "frame": 125,
+          "mode": 1,
+          "action1": 85,
+          "action2": 85,
+          "x1": 0,
+          "x2": 21845,
+          "hp1": 85,
+          "hp2": 85,
+          "selected": 0,
+          "selected2": 2,
+          "intro": 85,
+          "paused": 0
+        }
+      }
+    },
+    {
+      "label": "P2 numpad confirms fighter and advances to arena",
+      "passed": true
+    },
+    {
+      "label": "Both players move independently in native Local 1v1",
+      "passed": true,
+      "details": {
+        "before": {
+          "screen": 3,
+          "frame": 260,
+          "mode": 1,
+          "action1": 128,
+          "action2": 128,
+          "x1": 1056,
+          "x2": 3040,
+          "hp1": 0,
+          "hp2": 0,
+          "selected": 0,
+          "selected2": 2,
+          "intro": 0,
+          "paused": 0
+        },
+        "after": {
+          "screen": 3,
+          "frame": 274,
+          "mode": 1,
+          "action1": 128,
+          "action2": 128,
+          "x1": 1224,
+          "x2": 3180,
+          "hp1": 0,
+          "hp2": 0,
+          "selected": 0,
+          "selected2": 2,
+          "intro": 0,
+          "paused": 0
+        }
+      }
+    },
+    {
+      "label": "Four-button input reaches native port 1, button 1",
+      "passed": true
+    },
+    {
+      "label": "Four-button input reaches native port 1, button 9",
+      "passed": true
+    },
+    {
+      "label": "Four-button input reaches native port 1, button 0",
+      "passed": true
+    },
+    {
+      "label": "Four-button input reaches native port 1, button 8",
+      "passed": true
+    },
+    {
+      "label": "Four-button input reaches native port 2, button 1",
+      "passed": true
+    },
+    {
+      "label": "Four-button input reaches native port 2, button 9",
+      "passed": true
+    },
+    {
+      "label": "Four-button input reaches native port 2, button 0",
+      "passed": true
+    },
+    {
+      "label": "Four-button input reaches native port 2, button 8",
+      "passed": true
+    },
+    {
+      "label": "No touch fast-forward or slow-motion controls",
+      "passed": true
+    },
+    {
+      "label": "No unused emulator speed/save hotkeys",
+      "passed": true
+    },
+    {
+      "label": "Browser emulation progresses at normal approximately 60 Hz",
+      "passed": true,
+      "details": {
+        "fps": 60.283097418817654,
+        "a": {
+          "frame": 433,
+          "time": 8512.09999999404
+        },
+        "b": {
+          "frame": 614,
+          "time": 11514.59999999404
+        }
+      }
+    },
+    {
+      "label": "No emulator speed override enabled",
+      "passed": true
+    },
+    {
+      "label": "Native pause through Player 1 Start",
+      "passed": true
+    },
+    {
+      "label": "Controller remapping dialog opens",
+      "passed": true
+    },
+    {
+      "label": "Fullscreen API works",
+      "passed": true
+    },
+    {
+      "label": "HTTP ROM download matches native cartridge byte for byte",
+      "passed": true
+    },
+    {
+      "label": "All runtime HTTP requests succeed",
+      "passed": true,
+      "details": []
+    },
+    {
+      "label": "Player loads entirely from its own host",
+      "passed": true,
+      "details": []
+    },
+    {
+      "label": "No browser JavaScript errors",
+      "passed": true,
+      "details": []
+    },
+    {
+      "label": "Missing assets return genuine HTTP 404",
+      "passed": true
+    },
+    {
+      "label": "Mobile page and expanded controls fit viewport",
+      "passed": true
+    },
+    {
+      "label": "Mobile touch control visible: a",
+      "passed": true
+    },
+    {
+      "label": "Mobile touch control visible: b",
+      "passed": true
+    },
+    {
+      "label": "Mobile touch control visible: x",
+      "passed": true
+    },
+    {
+      "label": "Mobile touch control visible: y",
+      "passed": true
+    },
+    {
+      "label": "Mobile touch control visible: start",
+      "passed": true
+    },
+    {
+      "label": "Mobile touch control visible: select",
+      "passed": true
+    },
+    {
+      "label": "Mobile directional pad visible",
+      "passed": true
+    },
+    {
+      "label": "Mobile has only game controls",
+      "passed": true
+    },
+    {
+      "label": "Load failure exposes retry and readable message",
+      "passed": true
+    }
+  ],
+  "normal_speed_fps": 60.283097418817654,
+  "site_sha256": {
+    "404.html": "dc5d3c516722428ccc30d4c81fa93109f7bcc233ee5d9afbbfca4e04b4d75733",
+    "abaqus-after-hours.sfc": "09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c",
+    "credits.html": "1e071455b589a9a6ea373ad46ac23b49a53b3e69b0c3674d0accca4ba76e17d1",
+    "emulator/4.2.3/compression/extract7z.js": "4ac9933b995a516cb6b3ca4027db860278372a20c21c405d93ceb1998498853a",
+    "emulator/4.2.3/cores/reports/snes9x.json": "dc7ac963eb7935a7ac78956235ac0b8912ec785c57026336825aa2ed8031b3ad",
+    "emulator/4.2.3/cores/snes9x-legacy-wasm.data": "7d427a575cefad98ff400493fa1d7e892da63fe7bab68979babd9cea0bfaaf3b",
+    "emulator/4.2.3/cores/snes9x-wasm.data": "eaa0bcfce67673809886e50387a80a616b719502175db64c090d04c9d75958ee",
+    "emulator/4.2.3/emulator.min.css": "16406c60b2dc3b04ae9b115e308613e6f567a0cc7068e21d9d0c1e5030fb395e",
+    "emulator/4.2.3/emulator.min.js": "6aec3fd7bb2721255801b0a6af02e47e78b05e28a1822b1f213aacbd348abaee",
+    "emulator/4.2.3/loader.js": "69e0903bf1e2f62ced78895e7e511fa26e11316f7eb734925c35e919ba1287b2",
+    "icon.svg": "894d7f685dead3805af2317b0cc091f73b2d373ec558f1eb5dc02b6ffa3bb825",
+    "index.html": "7a6ecd2a4eb918aa5c1f49e88ae1ee74bf5f04972256fbdbe537a5abb7efff01",
+    "licenses/EmulatorJS.txt": "a617fab6d251b3302b1cb2c1c94f52d1c584f6fcb2fc218ec1a475bc08053a61",
+    "licenses/project.txt": "2798cc1ff311350ba1c30b89862c3f696bfb0445058908ef808590d3208c1b5c",
+    "licenses/PVSnesLib.txt": "4770ec720fbfc415d523b8649d6a38dd080f42ebb04579c5bed9cb4c4994e383",
+    "licenses/Snes9x.txt": "70efeee282d82a6e9d26aeed5466d08c632369858371dc6a4644c8dcedc2be78",
+    "licenses/SNESMod.txt": "5d386cf2fd44f21bcc0e495f8c0d966a94a18116decf070c4174ef899e637bd7",
+    "player.js": "44c47de82d6a2595b01ac20d1d2e11458d775d1a2f8d626af35ed5a672681f4d",
+    "poster.png": "cf998086b9131deb114782955e884dd1b66f95400312f3cbe22ffe4237974575",
+    "release.js": "5dbdd3c8d9eafc2f5b60a896cb20320c2dba52e23a019ab41db932eb67688c30",
+    "release.json": "06a8254cf17a75352b08ac17ea47cd1967ffc2e0d1d0644a9cb5c57211984a8d",
+    "style.css": "7f842ecc5e52042de5d506aa88806087f0bd839af31d6c5ea1e99d2b5db4c4b3",
+    "_headers": "b050da5852c3c80b2221d35358c7044be63495c9ea73067c7c9e04ae48fde7b0"
+  },
+  "muted": true,
+  "physical_controllers_tested": false,
+  "published": false,
+  "native_baseline_commit": "7f6259ce665defcf56733d1ca1dd1a222a66a8db",
+  "native_source_assets_dist_unchanged": true,
+  "build_integrity_tests": {
+    "normal": 4,
+    "python_optimized": 4,
+    "status": "passed"
+  },
+  "wrangler": {
+    "version": "4.152.0",
+    "command": "Web.cmd check",
+    "exit_code": 0,
+    "status": "dry_run_passed",
+    "account_authenticated": false
+  },
+  "browser_qa_harness": {
+    "path": "build/cloudflare/verify.cjs",
+    "scope": "retained local QA script; ignored build artifact",
+    "sha256": "1ba0db17297fd6e99249d22b8ebaded9d3de0dc677f53a402b68eca9972d0e9c",
+    "playwright_core_version": "1.58.2",
+    "native_observation": "read-only TRACE; only keyboard/controller events drive native game state",
+    "mobile_scope": "Pixel 7 user-agent, viewport and touch emulation in desktop Edge; no physical phone claim"
+  },
+  "source_inputs_lf_sha256": {
+    "Web.cmd": "24311b11b3f23363bdf668d7eb0c70ad75d667b6780e7e059cda8e6ec0cc64fa",
+    "package.json": "d9b98ba7748c114430543e7f7f5355f0f645ce4559bf34f4e06163b331191bf1",
+    "package-lock.json": "f8036d142e8fbb21af14c79ba58fb4071db6ded6182b7a464f89972c279486b5",
+    "wrangler.jsonc": "55bbace4c015c2ab6b82a3af73f7227b08a720166376e9ee32c5f672d68db73f",
+    "tools/build_web.py": "4bd8f2e6e257a1d785b0acbe08cadcae2bca7329fc68befeb0e03a52b636189b",
+    "tools/build_web.mjs": "bc34a9b4b83cf8a060a7a1fb7a4a96dd43c17714b36e4d00fc8f4e92e8d1e561",
+    "tools/web.ps1": "4898ab1183eb718e9b176962a0e37a419946df48a1e7c9d8614193bb69b79e71",
+    "tools/test_web_build.py": "30c4ff742e0b673055e8cf061506e51c93fcd54c8269fb8b96de2c5382ba0ea2",
+    "web/404.html": "dc5d3c516722428ccc30d4c81fa93109f7bcc233ee5d9afbbfca4e04b4d75733",
+    "web/credits.html": "1e071455b589a9a6ea373ad46ac23b49a53b3e69b0c3674d0accca4ba76e17d1",
+    "web/icon.svg": "894d7f685dead3805af2317b0cc091f73b2d373ec558f1eb5dc02b6ffa3bb825",
+    "web/index.html": "7a6ecd2a4eb918aa5c1f49e88ae1ee74bf5f04972256fbdbe537a5abb7efff01",
+    "web/player.js": "44c47de82d6a2595b01ac20d1d2e11458d775d1a2f8d626af35ed5a672681f4d",
+    "web/style.css": "7f842ecc5e52042de5d506aa88806087f0bd839af31d6c5ea1e99d2b5db4c4b3",
+    "web/vendor-lock.json": "5dd6fcf0729e835b544c8bd27ad2bb0242bb2f65ac28d9a131b8626562a4d636",
+    "web/_headers": "b050da5852c3c80b2221d35358c7044be63495c9ea73067c7c9e04ae48fde7b0"
+  },
+  "captures": [
+    {
+      "path": "docs/screenshots/cloudflare/player-ready.png",
+      "sha256": "0b2db7f36af0922d8b366519af5abc30137b5461fc4ebbaeb33005b38cb979e0"
+    },
+    {
+      "path": "docs/screenshots/cloudflare/local-1v1.png",
+      "sha256": "fbcd0e1a566794e7cce06981399ea60464ee0e207a9e0c01ed002388c45b786c"
+    }
+  ],
+  "verified_at_utc": "2026-10-25T04:19:36.800902+00:00"
+}

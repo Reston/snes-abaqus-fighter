@@ -11,3 +11,7 @@ __pycache__/
 dist/*.zip
 docs/screenshots/audio-sample.wav
 assets/generated/soundbank.h
+node_modules/
+.wrangler/
+.dev.vars*
+.env*
