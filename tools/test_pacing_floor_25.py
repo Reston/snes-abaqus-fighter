@@ -232,6 +232,7 @@ def candidate_stem(version):
     if version=='0.25.0':return 'pacing-floor-v025'
     if version=='0.26.0':return 'play-flow-v026'
     if version=='0.27.0':return 'classic-menu'
+    if version=='0.29.0':return 'expansion-v029'
     raise AssertionError(('Unreviewed pacing/floor fixture version',version))
 
 def stage_main():
@@ -254,6 +255,7 @@ def main(argv=None):
     if diagnostic:OUT=report_path.parent/(report_path.stem+'-captures')
     elif manifest['version']=='0.26.0':OUT=ROOT/'docs/screenshots/play-flow-v026/pacing'
     elif manifest['version']=='0.27.0':OUT=ROOT/'docs/screenshots/classic-menu/stages'
+    elif manifest['version']=='0.29.0':OUT=ROOT/'docs/screenshots/expansion-v029/stages'
     OUT.mkdir(parents=True,exist_ok=True);report_path.parent.mkdir(parents=True,exist_ok=True)
     started=time.monotonic();manifest=json.loads((ROOT/'dist/manifest.json').read_bytes());before=inputs()
     report={'status':'failed','part':args.part,'version':manifest['version'],'rom_sha256':manifest['sha256'],
@@ -262,7 +264,7 @@ def main(argv=None):
             'checks':[],'native_health':HEALTH,'memory_writes':False,'save_states':False,'audio_device_opened':False}
     try:
         require((manifest['version'] in ('0.25.0','0.26.0') or
-                 manifest['version']=='0.27.0' and args.part=='stages') and
+                 manifest['version'] in ('0.27.0','0.29.0') and args.part=='stages') and
                 sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes())==manifest['sha256'],
                 'candidate is the exact native cartridge retaining the v0.25 pacing contract')
         if not BEFORE.exists():
@@ -279,8 +281,12 @@ def main(argv=None):
                 file=CORE_PATH
             else:file=ROOT/path
             require(sha(Path(file).read_bytes()).lower()==pin['dll_sha256'].lower(),'expanded native core is pinned',str(file))
-        report['preservation']=validate(ROOT,allow_arena_previews=manifest['version']=='0.26.0',
-                                        allow_classic_menus=manifest['version']=='0.27.0')
+        if manifest['version']=='0.29.0':
+            from v029_contracts import validate as validate_combined
+            report['preservation']=validate_combined(ROOT)
+        else:
+            report['preservation']=validate(ROOT,allow_arena_previews=manifest['version']=='0.26.0',
+                                            allow_classic_menus=manifest['version']=='0.27.0')
         Emulator.run=monitored_run
         report['result']=({'static':lambda:report['preservation'],'pacing':lambda:pacing(fighters),
                            'supers':lambda:supers(fighters),'cpu':lambda:cpu(fighters),'stages':stages}[args.part])()

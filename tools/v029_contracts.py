@@ -24,7 +24,8 @@ ALLOWED_CHANGED = {'assets/generated/assets.h', 'assets/generated/data.asm',
 ALLOWED_CHANGED.update(f'assets/generated/music{i}.it' for i in range(5))
 ALLOWED_CHANGED.update(f'assets/generated/stage{i}{suffix}' for i in range(3)
                        for suffix in ('.png', '_tiles.bin', '_map.bin', '_pal.bin'))
-ALLOWED_ADDED: set[str] = set()
+ALLOWED_ADDED = {'assets/generated/arena-life29.json'} | {
+    f'assets/generated/arena_life29_stage{i}.bin' for i in range(3)}
 
 
 def require(ok, message, details=None):
@@ -169,11 +170,14 @@ def validate(root):
                        'bytes': len(current), 'baseline_sha256': sha(prior), 'sha256': sha(current)})
     from victory_music import soundbank_budget
     budget = soundbank_budget(root/'assets/generated/soundbank.bnk')
+    from arena_life29_checks import metadata as arena_metadata
+    arenas = arena_metadata(root)
     return {'status': 'passed', 'version': manifest['version'], 'rom_sha256': manifest['sha256'],
             'baseline_commit': BASE, 'baseline_rom_sha256': BASE_ROM,
             'generated': generated, 'original_art_reference_files_exact': len(protected),
             'memory': memory, 'hardware_trace_exact': True, 'floors': floors,
-            'native_sections': sections, 'soundbank': budget}
+            'native_sections': sections, 'soundbank': budget,
+            'arena_animation_contract': arenas}
 
 
 if __name__ == '__main__':

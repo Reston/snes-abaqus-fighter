@@ -140,6 +140,8 @@ SOURCE_INPUT_EXACT = {
     "tools/v024_contracts.py",
     "tools/v025_contracts.py",
     "tools/v029_contracts.py",
+    "tools/arena_life29_checks.py",
+    "tools/test_arena_life29_checks.py",
     "tools/test_v029_contracts.py",
     "tools/collate_pacing_floor_25.py",
     "tools/test_pacing_floor_25.py",

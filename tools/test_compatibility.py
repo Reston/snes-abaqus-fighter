@@ -1182,7 +1182,9 @@ def run_stage_engine_check(stage_id: int, record: dict[str, object],
         import test_combat_24_stage08 as depth
         depth.OUT=CAPTURE_ROOT/'depth-v1';depth.OUT.mkdir(parents=True,exist_ok=True)
         result=depth.stage_case(stage_id,independent=True)
-        result['stage_contract']=('whole-scenery-detailed-color-floor' if depth.FLOOR_IN_SCENERY else 'whole-scenery-fixed-floor')
+        result['stage_contract']=('whole-scenery-detailed-color-floor-and-source-bound-spectators'
+                                  if (ROOT/'assets/generated/arena-life29.json').is_file() else
+                                  ('whole-scenery-detailed-color-floor' if depth.FLOOR_IN_SCENERY else 'whole-scenery-fixed-floor'))
         result['passed']=True
         return result
     rects = stage_phase_probe_rects(record)
