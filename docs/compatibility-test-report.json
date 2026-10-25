@@ -1,10 +1,10 @@
 {
   "status": "passed",
-  "scope": "independent-engine smoke, whole scenery/fixed floor, freeze and impact geometry, synchronized low-wave, neutral600frame cadence",
+  "scope": "independent-engine smoke, whole scenery/ground, freeze and impact geometry, synchronized low-wave, neutral600frame cadence",
   "pinned_core": true,
   "source_url": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/bsnes2014_accuracy_libretro.dll.zip",
   "rom": {
-    "sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
+    "sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
     "bytes": 4194304
   },
   "core": {
@@ -28,8 +28,8 @@
   },
   "checks": {
     "pinned_inputs": {
-      "rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
-      "manifest_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
+      "rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
+      "manifest_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
       "rom_bytes": 4194304,
       "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
       "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
@@ -40,9 +40,9 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "2410862f442b782e751d21f5f9b30725f596f3accbd2916529fd8b7a386aeea8",
+        "sha256_rgb": "3b3ca7d9350bbb67fe3a0417f65878d7f412854ff910c4f1de7f5630b1214987",
         "distinct_sampled_rgb": 79,
-        "nonzero_bytes": 308606,
+        "nonzero_bytes": 308622,
         "nonblank": true
       },
       "capture": "docs/screenshots/compatibility/title.png"
@@ -81,9 +81,9 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "bb16215276b92f2aa759455e944c2e6873dcd1f0e0734282c4e321da3ea7f836",
-        "distinct_sampled_rgb": 562,
-        "nonzero_bytes": 320774,
+        "sha256_rgb": "e9496955e837f88f7f3e5d1df7ccfa3b58ae798880df8aaa99d6543fb8c8709f",
+        "distinct_sampled_rgb": 618,
+        "nonzero_bytes": 320374,
         "nonblank": true
       },
       "capture": "docs/screenshots/compatibility/fight.png",
@@ -100,8 +100,8 @@
     },
     "controller": {
       "right_x_before": 1056,
-      "right_x_after": 1376,
-      "jump_y_signed": -259,
+      "right_x_after": 1296,
+      "jump_y_signed": -144,
       "passed": true
     },
     "cadence": {
@@ -114,13 +114,13 @@
     },
     "audio": {
       "samples": 1049050,
-      "energy": 194120311130,
-      "peak": 5476,
+      "energy": 194244144188,
+      "peak": 5172,
       "passed": true
     },
     "stage_ambient_and_freeze": {
       "manifest_phase_count": 0,
-      "stage_contract": "whole-scenery-fixed-floor",
+      "stage_contract": "whole-scenery-detailed-color-floor",
       "stages": {
         "las-condes": {
           "stage": 0,
@@ -138,9 +138,9 @@
             -8,
             8
           ],
-          "pixel_oracle_frames": 492,
+          "pixel_oracle_frames": 520,
           "contacts": 7,
-          "frozen_hitstop_samples": 42,
+          "frozen_hitstop_samples": 70,
           "impact_pixel_offsets": [
             -2,
             -1,
@@ -153,7 +153,7 @@
           "stills": [
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage0-center.png",
-              "sha256": "667cd67cb3715407a55ee16f03a27afd16bff7fc34a24a56876e1f9d694224a5",
+              "sha256": "80c15c778011185544ea4db468a2d176cd28f362f05463b5896c18db15a13eaf",
               "scope": "current native PPU"
             },
             {
@@ -163,25 +163,25 @@
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage0-left.png",
-              "sha256": "3cfaeab710178933d921b8b72f62af0238d038ae92bdb3cfc2277dcd185dd957",
+              "sha256": "590e3dd822dfc01c4f6fc8b57ace1c5aa04d8999f6dc663a99770a3b3c26c014",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage0-right.png",
-              "sha256": "96c6718c77dc15358e60c3def30b2f4b0e3969b97ae24579066e4b6f7384d85b",
+              "sha256": "3629531ef002bde5c8a0f9bbf8f78ce4085bdd8f10b2506ac5fa411400bcd187",
               "scope": "current native PPU"
             }
           ],
-          "pixel_samples_sha256": "6cc2d7d9e3211c3ed9c7d826aaa3fff3b77f66bc95722f7e215479aa071cd854",
-          "measured_frames": 1400,
+          "pixel_samples_sha256": "073a391a8e2155e680f25cd02a5b2979c374cf8d738d3a81b760dd6c66f26598",
+          "measured_frames": 1489,
           "cadence_deltas": [
             1
           ],
           "max_spc_backlog": 3,
-          "obj_peak_sprites": 16,
-          "obj_peak_tiles": 32,
-          "actor_dma_frames": 314,
-          "stage_contract": "whole-scenery-fixed-floor",
+          "obj_peak_sprites": 17,
+          "obj_peak_tiles": 34,
+          "actor_dma_frames": 279,
+          "stage_contract": "whole-scenery-detailed-color-floor",
           "passed": true
         },
         "el-castillo": {
@@ -200,9 +200,9 @@
             -8,
             8
           ],
-          "pixel_oracle_frames": 492,
+          "pixel_oracle_frames": 520,
           "contacts": 7,
-          "frozen_hitstop_samples": 42,
+          "frozen_hitstop_samples": 70,
           "impact_pixel_offsets": [
             -2,
             -1,
@@ -215,7 +215,7 @@
           "stills": [
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage1-center.png",
-              "sha256": "55799a2124cb17c43872abb38c093a3c2bee7ef5c79557b5a38d3bad5027e584",
+              "sha256": "1b7c590e745f8c97f64aad8370fb66980c9bfc0a8d7b143dfb91d4a0ad1c789d",
               "scope": "current native PPU"
             },
             {
@@ -225,25 +225,25 @@
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage1-left.png",
-              "sha256": "7b3a9a3e0fa51edecfc76349278d5541050b0485262ce3fcf2875331bfbf7019",
+              "sha256": "35233c5677f40fb736d8277062f72b148551684f563bc3bbaaa08bea01c732c1",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage1-right.png",
-              "sha256": "99303969158bd774046d5d26a6b4952837f1aedd39080583d184992a35b18f9a",
+              "sha256": "e729a8b60fc20c0be2f0bc372ada9d1577b7372e27163ef36dfb2f4bb43f24f6",
               "scope": "current native PPU"
             }
           ],
-          "pixel_samples_sha256": "adc7a8674e478cf099fca27b126d0bb5143155eb19c1dbd8b9e7997ab97d4dc0",
-          "measured_frames": 1400,
+          "pixel_samples_sha256": "c4f52cbd26a0a48a30520da6d123bef63971b4dc73fc8272492ba4c7963d2ea1",
+          "measured_frames": 1489,
           "cadence_deltas": [
             1
           ],
           "max_spc_backlog": 3,
-          "obj_peak_sprites": 16,
-          "obj_peak_tiles": 32,
-          "actor_dma_frames": 314,
-          "stage_contract": "whole-scenery-fixed-floor",
+          "obj_peak_sprites": 17,
+          "obj_peak_tiles": 34,
+          "actor_dma_frames": 279,
+          "stage_contract": "whole-scenery-detailed-color-floor",
           "passed": true
         },
         "la-oficina": {
@@ -262,9 +262,9 @@
             -8,
             8
           ],
-          "pixel_oracle_frames": 492,
+          "pixel_oracle_frames": 520,
           "contacts": 7,
-          "frozen_hitstop_samples": 42,
+          "frozen_hitstop_samples": 70,
           "impact_pixel_offsets": [
             -2,
             -1,
@@ -277,7 +277,7 @@
           "stills": [
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage2-center.png",
-              "sha256": "fd471e01b7b84ddc3c6629b22478e93301975d5a7ef9977e840abf5bdd8c43d2",
+              "sha256": "eab48c663fb1fcce349c6d3b3fd6305f74b8b2cf6169ddfa1eaa96cfc368ae2e",
               "scope": "current native PPU"
             },
             {
@@ -287,25 +287,25 @@
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage2-left.png",
-              "sha256": "f1319d362829f71fd13c729bfda39a75cb6f102a915dcf4ee6a6a203218c2822",
+              "sha256": "56d5dd5af87dc55a4f73bf2c67bdac0e406fcb4f76e95253758f5077ebef13c3",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage2-right.png",
-              "sha256": "2e3a8ded4f9377d29a99fcb00b11f63c7f1b8ef919eb63749824ec9215e1b7cd",
+              "sha256": "f2e846c15a463bc602ba06b9471e5366cb69dcbd6eb3834d54b4ad2c9e4bd014",
               "scope": "current native PPU"
             }
           ],
-          "pixel_samples_sha256": "41be90801fe24b73ef699cec247f2352295599e32b483b06106b21aa12c43d02",
-          "measured_frames": 1400,
+          "pixel_samples_sha256": "04fd2902cac66e2356881bd8a25b862d9b8d356cfd78d4a0ec1186f29a4ccec0",
+          "measured_frames": 1489,
           "cadence_deltas": [
             1
           ],
           "max_spc_backlog": 3,
-          "obj_peak_sprites": 16,
-          "obj_peak_tiles": 32,
-          "actor_dma_frames": 314,
-          "stage_contract": "whole-scenery-fixed-floor",
+          "obj_peak_sprites": 17,
+          "obj_peak_tiles": 34,
+          "actor_dma_frames": 279,
+          "stage_contract": "whole-scenery-detailed-color-floor",
           "passed": true
         }
       },
@@ -319,7 +319,7 @@
         "family2": 2
       },
       "synchronized_initial_frames": 1,
-      "synchronized_frames_in_600": 40,
+      "synchronized_frames_in_600": 47,
       "stat77_values": [
         17
       ],
@@ -345,7 +345,7 @@
   },
   "stage_dynamics": {
     "manifest": "assets/generated/stage-depth.json",
-    "manifest_sha256": "315E749BE1AF6438115DE6A9262114512B1D925B93525EE1773A210B3FD62ECC",
+    "manifest_sha256": "AEB03172A2711E8378F3D40BF7406D9DAC716E68D926F39FF688631018FD45FE",
     "phase_count": 0,
     "phase_period_frames": 0,
     "legacy_ambient_disabled": true,

@@ -1,10 +1,10 @@
 {
   "status": "passed",
   "scope": "Source-authoring mutation checks; no emulator or asset generation.",
-  "version": "0.24.0",
-  "rom_sha256": "408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79",
-  "source_commit": "a1ee733aea036ad985bca9bdee29cc170cabd2ac",
-  "producer_commit": "a1ee733aea036ad985bca9bdee29cc170cabd2ac",
+  "version": "0.25.0",
+  "rom_sha256": "f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2",
+  "source_commit": "b41ce034ac12f6aa10740a0075feebd1f392d117",
+  "producer_commit": "b41ce034ac12f6aa10740a0075feebd1f392d117",
   "host_contract": {
     "python": "3.12.10",
     "pillow": "13.0.0",
@@ -12,8 +12,8 @@
     "audio_device_opened": false,
     "priority_class": 16384,
     "logical_processors": [
-      12,
-      13
+      14,
+      15
     ]
   },
   "runs": [
@@ -24,7 +24,7 @@
       ],
       "exit_code": 0,
       "tests": 20,
-      "output": "Authoring guard mutations: optimize=0\ntest_airborne_provenance (__main__.AuthoringGuards.test_airborne_provenance) ... ok\ntest_atlas_shape_and_cycle_uniqueness (__main__.AuthoringGuards.test_atlas_shape_and_cycle_uniqueness) ... ok\ntest_bg1_budget_before_publication (__main__.AuthoringGuards.test_bg1_budget_before_publication) ... ok\ntest_fighter_source_descriptors (__main__.AuthoringGuards.test_fighter_source_descriptors) ... ok\ntest_immutable_baseline_mutation (__main__.AuthoringGuards.test_immutable_baseline_mutation) ... ok\ntest_it_header_and_sample_shapes_before_write (__main__.AuthoringGuards.test_it_header_and_sample_shapes_before_write) ... ok\ntest_native_baseline_and_reviewed_output_identity (__main__.AuthoringGuards.test_native_baseline_and_reviewed_output_identity) ... ok\ntest_native_frame_and_palette_shapes (__main__.AuthoringGuards.test_native_frame_and_palette_shapes) ... ok\ntest_portrait_ui_and_fighter_shapes_before_publication (__main__.AuthoringGuards.test_portrait_ui_and_fighter_shapes_before_publication) ... ok\ntest_production_authoring_guards_are_not_removable (__main__.AuthoringGuards.test_production_authoring_guards_are_not_removable) ... ok\ntest_real_selected_stage_and_baseline_contracts (__main__.AuthoringGuards.test_real_selected_stage_and_baseline_contracts) ... ok\ntest_registered_source_version (__main__.AuthoringGuards.test_registered_source_version) ... ok\ntest_revision_native_metadata_mutations (__main__.AuthoringGuards.test_revision_native_metadata_mutations) ... ok\ntest_scales_and_lazy_error_messages (__main__.AuthoringGuards.test_scales_and_lazy_error_messages) ... ok\ntest_stage_fixture_is_valid (__main__.AuthoringGuards.test_stage_fixture_is_valid) ... ok\ntest_stage_hashes_and_containment (__main__.AuthoringGuards.test_stage_hashes_and_containment) ... ok\ntest_stage_provenance_mode (__main__.AuthoringGuards.test_stage_provenance_mode) ... ok\ntest_stage_schema_canvas_and_order_mutations (__main__.AuthoringGuards.test_stage_schema_canvas_and_order_mutations) ... ok\ntest_stage_shape_grid_and_color_mutations (__main__.AuthoringGuards.test_stage_shape_grid_and_color_mutations) ... ok\ntest_unapproved_revision_mutations (__main__.AuthoringGuards.test_unapproved_revision_mutations) ... ok\n\n----------------------------------------------------------------------\nRan 20 tests in 5.881s\n\nOK\n"
+      "output": "Authoring guard mutations: optimize=0\ntest_airborne_provenance (__main__.AuthoringGuards.test_airborne_provenance) ... ok\ntest_atlas_shape_and_cycle_uniqueness (__main__.AuthoringGuards.test_atlas_shape_and_cycle_uniqueness) ... ok\ntest_bg1_budget_before_publication (__main__.AuthoringGuards.test_bg1_budget_before_publication) ... ok\ntest_fighter_source_descriptors (__main__.AuthoringGuards.test_fighter_source_descriptors) ... ok\ntest_immutable_baseline_mutation (__main__.AuthoringGuards.test_immutable_baseline_mutation) ... ok\ntest_it_header_and_sample_shapes_before_write (__main__.AuthoringGuards.test_it_header_and_sample_shapes_before_write) ... ok\ntest_native_baseline_and_reviewed_output_identity (__main__.AuthoringGuards.test_native_baseline_and_reviewed_output_identity) ... ok\ntest_native_frame_and_palette_shapes (__main__.AuthoringGuards.test_native_frame_and_palette_shapes) ... ok\ntest_portrait_ui_and_fighter_shapes_before_publication (__main__.AuthoringGuards.test_portrait_ui_and_fighter_shapes_before_publication) ... ok\ntest_production_authoring_guards_are_not_removable (__main__.AuthoringGuards.test_production_authoring_guards_are_not_removable) ... ok\ntest_real_selected_stage_and_baseline_contracts (__main__.AuthoringGuards.test_real_selected_stage_and_baseline_contracts) ... ok\ntest_registered_source_version (__main__.AuthoringGuards.test_registered_source_version) ... ok\ntest_revision_native_metadata_mutations (__main__.AuthoringGuards.test_revision_native_metadata_mutations) ... ok\ntest_scales_and_lazy_error_messages (__main__.AuthoringGuards.test_scales_and_lazy_error_messages) ... ok\ntest_stage_fixture_is_valid (__main__.AuthoringGuards.test_stage_fixture_is_valid) ... ok\ntest_stage_hashes_and_containment (__main__.AuthoringGuards.test_stage_hashes_and_containment) ... ok\ntest_stage_provenance_mode (__main__.AuthoringGuards.test_stage_provenance_mode) ... ok\ntest_stage_schema_canvas_and_order_mutations (__main__.AuthoringGuards.test_stage_schema_canvas_and_order_mutations) ... ok\ntest_stage_shape_grid_and_color_mutations (__main__.AuthoringGuards.test_stage_shape_grid_and_color_mutations) ... ok\ntest_unapproved_revision_mutations (__main__.AuthoringGuards.test_unapproved_revision_mutations) ... ok\n\n----------------------------------------------------------------------\nRan 20 tests in 5.769s\n\nOK\n"
     },
     {
       "optimized": true,
@@ -34,13 +34,14 @@
       ],
       "exit_code": 0,
       "tests": 20,
-      "output": "Authoring guard mutations: optimize=1\ntest_airborne_provenance (__main__.AuthoringGuards.test_airborne_provenance) ... ok\ntest_atlas_shape_and_cycle_uniqueness (__main__.AuthoringGuards.test_atlas_shape_and_cycle_uniqueness) ... ok\ntest_bg1_budget_before_publication (__main__.AuthoringGuards.test_bg1_budget_before_publication) ... ok\ntest_fighter_source_descriptors (__main__.AuthoringGuards.test_fighter_source_descriptors) ... ok\ntest_immutable_baseline_mutation (__main__.AuthoringGuards.test_immutable_baseline_mutation) ... ok\ntest_it_header_and_sample_shapes_before_write (__main__.AuthoringGuards.test_it_header_and_sample_shapes_before_write) ... ok\ntest_native_baseline_and_reviewed_output_identity (__main__.AuthoringGuards.test_native_baseline_and_reviewed_output_identity) ... ok\ntest_native_frame_and_palette_shapes (__main__.AuthoringGuards.test_native_frame_and_palette_shapes) ... ok\ntest_portrait_ui_and_fighter_shapes_before_publication (__main__.AuthoringGuards.test_portrait_ui_and_fighter_shapes_before_publication) ... ok\ntest_production_authoring_guards_are_not_removable (__main__.AuthoringGuards.test_production_authoring_guards_are_not_removable) ... ok\ntest_real_selected_stage_and_baseline_contracts (__main__.AuthoringGuards.test_real_selected_stage_and_baseline_contracts) ... ok\ntest_registered_source_version (__main__.AuthoringGuards.test_registered_source_version) ... ok\ntest_revision_native_metadata_mutations (__main__.AuthoringGuards.test_revision_native_metadata_mutations) ... ok\ntest_scales_and_lazy_error_messages (__main__.AuthoringGuards.test_scales_and_lazy_error_messages) ... ok\ntest_stage_fixture_is_valid (__main__.AuthoringGuards.test_stage_fixture_is_valid) ... ok\ntest_stage_hashes_and_containment (__main__.AuthoringGuards.test_stage_hashes_and_containment) ... ok\ntest_stage_provenance_mode (__main__.AuthoringGuards.test_stage_provenance_mode) ... ok\ntest_stage_schema_canvas_and_order_mutations (__main__.AuthoringGuards.test_stage_schema_canvas_and_order_mutations) ... ok\ntest_stage_shape_grid_and_color_mutations (__main__.AuthoringGuards.test_stage_shape_grid_and_color_mutations) ... ok\ntest_unapproved_revision_mutations (__main__.AuthoringGuards.test_unapproved_revision_mutations) ... ok\n\n----------------------------------------------------------------------\nRan 20 tests in 5.624s\n\nOK\n"
+      "output": "Authoring guard mutations: optimize=1\ntest_airborne_provenance (__main__.AuthoringGuards.test_airborne_provenance) ... ok\ntest_atlas_shape_and_cycle_uniqueness (__main__.AuthoringGuards.test_atlas_shape_and_cycle_uniqueness) ... ok\ntest_bg1_budget_before_publication (__main__.AuthoringGuards.test_bg1_budget_before_publication) ... ok\ntest_fighter_source_descriptors (__main__.AuthoringGuards.test_fighter_source_descriptors) ... ok\ntest_immutable_baseline_mutation (__main__.AuthoringGuards.test_immutable_baseline_mutation) ... ok\ntest_it_header_and_sample_shapes_before_write (__main__.AuthoringGuards.test_it_header_and_sample_shapes_before_write) ... ok\ntest_native_baseline_and_reviewed_output_identity (__main__.AuthoringGuards.test_native_baseline_and_reviewed_output_identity) ... ok\ntest_native_frame_and_palette_shapes (__main__.AuthoringGuards.test_native_frame_and_palette_shapes) ... ok\ntest_portrait_ui_and_fighter_shapes_before_publication (__main__.AuthoringGuards.test_portrait_ui_and_fighter_shapes_before_publication) ... ok\ntest_production_authoring_guards_are_not_removable (__main__.AuthoringGuards.test_production_authoring_guards_are_not_removable) ... ok\ntest_real_selected_stage_and_baseline_contracts (__main__.AuthoringGuards.test_real_selected_stage_and_baseline_contracts) ... ok\ntest_registered_source_version (__main__.AuthoringGuards.test_registered_source_version) ... ok\ntest_revision_native_metadata_mutations (__main__.AuthoringGuards.test_revision_native_metadata_mutations) ... ok\ntest_scales_and_lazy_error_messages (__main__.AuthoringGuards.test_scales_and_lazy_error_messages) ... ok\ntest_stage_fixture_is_valid (__main__.AuthoringGuards.test_stage_fixture_is_valid) ... ok\ntest_stage_hashes_and_containment (__main__.AuthoringGuards.test_stage_hashes_and_containment) ... ok\ntest_stage_provenance_mode (__main__.AuthoringGuards.test_stage_provenance_mode) ... ok\ntest_stage_schema_canvas_and_order_mutations (__main__.AuthoringGuards.test_stage_schema_canvas_and_order_mutations) ... ok\ntest_stage_shape_grid_and_color_mutations (__main__.AuthoringGuards.test_stage_shape_grid_and_color_mutations) ... ok\ntest_unapproved_revision_mutations (__main__.AuthoringGuards.test_unapproved_revision_mutations) ... ok\n\n----------------------------------------------------------------------\nRan 20 tests in 5.755s\n\nOK\n"
     }
   ],
   "source_sha256": {
     "tools/audio_assets.py": "1a55aa69ae2df232f61c9af9bc032d433461776da31ad91ea0e5108e8592a6cb",
     "tools/build.py": "b89d3abe469ef2ca0eea116f3324357c7d7cd600ea527dbeffd30f7e848dc473",
     "tools/champion_assets.py": "1526aa565cd9e1a01075bd5ad699b75b486e17f9b2899b9276a504bc2024ccf2",
+    "tools/collate_pacing_floor_25.py": "aea69f1bcc2ada9e21239b52a2084ecf97d428fa6dd9b1cf8deca5982779c27d",
     "tools/contact_geometry.py": "21db5448946960a9b31d399dbcaf71c19e2e3b0888843f2d3d0141b56dbf2b47",
     "tools/effect_assets.py": "f5079057e2314469d4befb9974ab61281c1156c6adfd6516058fb66e01735150",
     "tools/expansion_contracts.py": "b64c11cecf01d5ca672ffb137a416ec0ae2f16c94ea310594ea3250cc1803d51",
@@ -52,18 +53,20 @@
     "tools/preservation.py": "40e13816f5a7086c18e6053789e209722316a6c2675fb9583647eed20891ae76",
     "tools/stage_assets.py": "28ccd1c8f6dfff94bc0556211af788c08acffb04d41d29f1a69fbea1db8440ce",
     "tools/stage_cartoon.py": "3cedf521885bcdb0391b65f0337eb8a5aee79fbb93b007c81b5671b008354f4f",
-    "tools/stage_depth_assets.py": "4f3f574abe854574e008457421b288ead153872750c2c23f747784321236f1e3",
+    "tools/stage_depth_assets.py": "a7610eac4570d2e7ed8c66107bc50de3129261d5c102b05959088a75ba5ebb9f",
     "tools/stage_sources.py": "b3c249050b7ed53408b9c6aa9c31748fae92125c3a3b055ce991bf7ef77c4008",
-    "tools/stage_test_contract.py": "6028c8771e69395d5dfa50c9943ff39c201cd1e45790d77ef926ab9013a56980",
+    "tools/stage_test_contract.py": "ce846412c276ade58baba3fd940d13cfba1ae21c9b925c1aa4c87308f4c2fa9f",
     "tools/test_authoring_guards.py": "99e5197dedb642aeca6d6f13c416588f23551bdfdb04fa2a528ea068bb98014a",
     "tools/test_champion.py": "d2424acd2cb75a7e08c5a2832a0bf6e5dc3cdb708f6aa89293d4ac3fe2d1e4d5",
+    "tools/test_pacing_floor_25.py": "7efde5abf3970b679a5bc58c200dfb2a6b2861df6ce48ed9a39e8591dbe2e846",
     "tools/v024_contracts.py": "1b8bbe9ffee65ff4f72410564e26941bb86da72ae914da3f5c74bdbb4891a076",
+    "tools/v025_contracts.py": "3e5e679147f50e8773a32c488b65fa6ea1878fe5bab33f6a5e621058d27a7492",
     "tools/victory_music.py": "6da647ea3b1d58129d3f91a95d7a516433b8e609b4a847a180ff0bb96ac28528",
     "tools/walking_assets.py": "cf36efcb8fc9971eef11ed65c9afb487333d12902bcc22a285616486873d8694"
   },
   "producer_sha256": {
     "tools/check_authoring_guards.py": "41887dd7f9a962ac3bb77b6fb1223bb4a065a015b1624c04ad04ee8622cd5c1b",
-    "tools/release_evidence.py": "d31bbdeebd9832425e3a7c69982e155bba0311d57df52c86bdd8585d81a7cc8c"
+    "tools/release_evidence.py": "ed3744273255a9f0fd4b7112d0e616fc15c06eeedb3a05d2150aefd601c4cc67"
   },
-  "elapsed_seconds": 12.469
+  "elapsed_seconds": 12.484
 }

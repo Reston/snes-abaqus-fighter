@@ -40,18 +40,18 @@ const char *superNameFor(u8 id) {
  * shot can occupy that slot until expiry; there is never an extra projectile.
  * Direct sequences have gaps, individual confirms and a final knockdown. */
 const SuperProfile superProfiles[12]={
-    {SUPER_VOLLEY,12,80,26,3,12,3,10,12,18,64,28,0,  0,12,12,12},
-    {SUPER_VOLLEY,18,76,32,2,24,3,15,19,22,44,42,0,  0,12,42,12},
-    {SUPER_RUSH,   8,31,24,3,10,3, 9,14,34,50, 0,0,  0, 6, 7,15},
-    {SUPER_RUSH,  14,36,32,2,18,4,13,21,42,32, 0,0,  0,15, 6, 7},
-    {SUPER_VOLLEY,20,85,32,2,24,3,15,21,22,40,40,3,  0,12,38, 8},
-    {SUPER_RISE,   9,35,28,3,11,4, 8,18,36, 0, 0,0,-70, 5, 6,13},
-    {SUPER_VOLLEY,14,96,24,3,12,3,10,13,21,48,28,7,  0,12, 8,12},
-    {SUPER_RISE,  13,34,34,2,16,5,12,22,48, 0, 0,0,-80,40, 6,13},
-    {SUPER_VOLLEY, 8,72,22,3, 8,3, 8,13,17,72,22,5,  0, 8,12, 8},
-    {SUPER_VOLLEY,16,84,30,2,20,3,14,22,23,56,36,2,  0,12,42, 8},
-    {SUPER_RISE,   7,28,26,3, 9,3, 7,17,33,24, 0,0,-88, 7, 5,13},
-    {SUPER_VOLLEY,22,90,28,2,28,3,16,22,27,36,46,1,  0, 8,42,12}
+    {SUPER_VOLLEY,18,114,36,3,15,4,10,12,18,48,38,0,0,12,12,12},
+    {SUPER_VOLLEY,24,106,44,2,30,4,15,19,22,33,56,0,0,12,42,12},
+    {SUPER_RUSH,14,44,33,3,13,4,9,14,34,40,0,0,0,6,7,15},
+    {SUPER_RUSH,20,48,44,2,23,5,13,21,42,26,0,0,0,15,6,7},
+    {SUPER_VOLLEY,26,117,44,2,30,4,15,21,22,30,54,3,0,12,38,8},
+    {SUPER_RISE,15,43,38,3,11,5,8,18,36,0,0,0,-57,5,6,13},
+    {SUPER_VOLLEY,20,135,33,3,15,4,10,13,21,36,38,7,0,12,8,12},
+    {SUPER_RISE,19,43,46,2,16,7,12,22,48,0,0,0,-69,40,6,13},
+    {SUPER_VOLLEY,14,104,30,3,10,4,8,13,17,54,30,5,0,8,12,8},
+    {SUPER_VOLLEY,22,118,41,2,25,4,14,22,23,42,48,2,0,12,42,8},
+    {SUPER_RISE,13,36,36,3,9,4,7,17,33,19,0,0,-72,7,5,13},
+    {SUPER_VOLLEY,28,124,38,2,35,4,16,22,27,27,62,1,0,8,42,12}
 };
 
 /* 14 bytes total. Each index is one controller's fighter; every round/reset
@@ -205,7 +205,7 @@ u8 superFrame(u8 p) {
     Fighter *f=&fighters[p];
     const SuperProfile *s=&superProfiles[f->id];
     /* Three disjoint whole-body drawings, authored for each signature.
-     * Keep every gameplay clock and pulse unchanged. A serialized volley
+     * v0.25 retimes the profile but keeps every pulse and its damage. A volley
      * returns to its charge between releases instead of holding a cast
      * throughout the potentially long single-Wave wait. */
     if(f->tick<s->start)return 1;

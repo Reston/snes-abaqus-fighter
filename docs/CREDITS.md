@@ -97,3 +97,10 @@ The user supplied three photographs: the Las Condes glass entrance marked 140; E
 - Menu lettering uses original project-authored bitmap glyphs; no Arial or other system font is used or redistributed.
 
 Abaqus branding and team photography are not relicensed by the source-code MIT license. This repository was requested as a coworker-themed project; it does not claim to be an official Capcom product.
+
+## v0.25 detailed floor material
+
+Outdoor floor textures reuse the approved stage source masters. The office
+carpet strip was created with built-in imagegen; its [saved source](../assets/art/stages/floor-v025/02-oficina.png)
+and [exact prompt, references and provenance](../assets/art/stages/floor-v025/02-oficina.json)
+are retained. Native conversion uses the existing six 4bpp stage palettes.

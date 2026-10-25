@@ -19,6 +19,7 @@ import time
 from PIL import Image, ImageChops
 
 ROOT = Path(__file__).resolve().parents[1]
+FLOOR_IN_SCENERY=json.loads((ROOT/'assets/generated/stage-depth.json').read_bytes()).get('floor_plane')=='BG1'
 sys.path.insert(0,str(ROOT/'tools'))
 from emulator import Emulator
 from test_compatibility import Probe, verify_manifest_and_pinned_core
@@ -130,8 +131,9 @@ def oracle(e,plane,floor,offsets,impact=False):
     scores=[]
     for d,shake in pairs:
         scenery_error=difference(actual.crop((0,top,256,bottom)),plane.crop((16+d,top,272+d,bottom)))
-        expected_floor=ImageChops.offset(floor,-shake,0)
-        floor_error=difference(actual.crop((0,208,256,224)),expected_floor.crop((0,208,256,224)))
+        expected_floor=(plane.crop((16+d,208,272+d,224)) if FLOOR_IN_SCENERY else
+                        ImageChops.offset(floor,-shake,0).crop((0,208,256,224)))
+        floor_error=difference(actual.crop((0,208,256,224)),expected_floor)
         scores.append(max(scenery_error,floor_error))
     if min(scores)>8:
         actual.save(ROOT/'build/stage08-oracle-failure.png')

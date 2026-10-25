@@ -6,7 +6,7 @@
  * No Fighter/Wave/TRACE or RAM changes.
  * Never consult the attacker's later facing: trades, landing and crossing
  * cannot turn a hurt reaction around. applyHitReaction remains the audited
- * native 12+floor(damage/3) transition; this module only moves its victim. */
+ * native 16+floor(damage/3) transition; this module only moves its victim. */
 void clearRecoil(u8 p) {
     rearKickRecoil&=p?15:240;
 }
@@ -51,9 +51,14 @@ void updateRecoil(u8 p) {
         else if(remaining>=3)step=6;
         else step=4;
     } else if(latch&8) {
+        /* v0.25 adds four hurt ticks for readable ordinary hit reactions.
+         * Direct linked supers retain their old drift clock and distance;
+         * longer contact pauses provide their slower real-time rhythm. */
+        if(remaining>4)remaining-=4;else remaining=0;
         /* Never exceed the old nine-unit per-tick drift before a linked
          * pulse. Rising families have no forward rush to regain that range. */
-        if(remaining>=12)step=8;
+        if(!remaining)step=0;
+        else if(remaining>=12)step=8;
         else if(remaining>=8)step=6;
         else if(remaining>=4)step=4;
         else step=2;
@@ -68,14 +73,14 @@ void updateRecoil(u8 p) {
     if(!remaining)clearRecoil(p);
 }
 
-/* Ground walking is slower; keep the pre-revision jump horizontal launch.
+/* v0.25 slower launch balances the longer jump arc, preserving nominal travel.
  * A switch emits ROM immediates rather than another initialized RAM table.
  * Jump owner may replace this hook with its approved full arc implementation. */
 u8 pacingAirSpeed(u8 id) {
     switch(id) {
-    case 0:return 28;case 1:return 25;case 2:return 32;case 3:return 29;
-    case 4:return 24;case 5:return 28;case 6:return 25;case 7:return 26;
-    case 8:return 34;case 9:return 26;case 10:return 32;default:return 27;
+    case 0:return 22;case 1:return 19;case 2:return 25;case 3:return 22;
+    case 4:return 21;case 5:return 23;case 6:return 22;case 7:return 23;
+    case 8:return 28;case 9:return 21;case 10:return 26;default:return 23;
     }
 }
 

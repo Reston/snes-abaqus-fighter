@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "scope": "detailed-floor-v025",
+  "id": 2,
+  "mode": "built-in imagegen",
+  "prompt": "Use case: precise-object-edit\nAsset type: ground-only office floor strip for an original native SNES fighting game.\nInput images: first image is the edit target, a blank blue-gray floor strip; second image is ONLY the office scene's palette, lighting and pixel-art style reference.\nPrimary request: redesign the entire first strip as a detailed, attractive warm ochre/tan commercial carpet-tile floor in shallow side-view arcade perspective. Keep its wide horizontal ground-only composition. Clearly readable staggered rectangular tile seams converge gently toward the upper edge. Add restrained woven material grain, small irregular pixel clusters, subtle wear and broad soft cool-blue desk-light shadows. Use about 12 distinct muted tan, warm-brown, cream and blue-gray shades. All detail must survive reduction to approximately 288x40 pixels: chunky intentional early-1990s pixel clusters, visible one-native-pixel seam edges, softly varied tile interiors. The floor should feel illustrated and substantial, not flat squares or smooth gradients.\nConstraints: the complete frame is uninterrupted walkable floor, including all edges. No horizon, furniture, desk legs, people, objects, words, numbers, borders, glow, or cast-character shadows. Opaque. Match the office's navy-contour cartoon style while keeping enough mid-tone contrast for dark blue fighter shoes and ground shadows. Do not alter or reproduce the office scenery itself. Retain the first strip's approximately 3:1 width-to-height aspect ratio.",
+  "input_roles": [
+    {
+      "file": "assets/art/stages/depth-floor-v2/02-oficina.png",
+      "role": "edit target: existing ground-only composition"
+    },
+    {
+      "file": "assets/art/stages/depth-v1/02-oficina.png",
+      "role": "office palette and illustration style reference"
+    }
+  ],
+  "raw_output_path": "assets/art/stages/floor-v025/02-oficina.png",
+  "selected_final_path": "assets/art/stages/floor-v025/02-oficina.png",
+  "processing": "Full authored strip, nearest native conversion to 288x40; native stage encoder assigns six 4bpp stage palettes. No synthetic lines or painted-over texture.",
+  "raw_output_sha256": "02309e1227bd60af0036707430c20113c5c59025780acf49c477624736cd96eb",
+  "selected_final_sha256": "02309e1227bd60af0036707430c20113c5c59025780acf49c477624736cd96eb",
+  "raw_size": [
+    2172,
+    724
+  ],
+  "input_sha256": {
+    "assets/art/stages/depth-floor-v2/02-oficina.png": "6fff285971b58e27c7f85f7a78076dc2e1d0e65446f5ca2c2ab0bb14f4a355c6",
+    "assets/art/stages/depth-v1/02-oficina.png": "f4c617d58903f77b4a1643e5664c1f70b26a4320fecf7d663c5379f12e1dfa6f"
+  }
+}

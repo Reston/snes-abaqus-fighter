@@ -1,14 +1,15 @@
 # Abaqus: After Hours
-<!-- candidate-version: 0.24.0; identity: TECHNICALLY_VERIFIED_USER_MERGE_APPROVED; rom-sha256: 408cadfdddef97a24215e40f6ddb366140bc68fc80e7f1de82ee87e4084beb79; source-freeze: a1ee733aea036ad985bca9bdee29cc170cabd2ac -->
+<!-- candidate-version: 0.25.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: f0223f8240e2338ec57674b465a93cc5b0145a6210b5d5933706bac7277168a2; source-freeze: b41ce034ac12f6aa10740a0075feebd1f392d117 -->
 
 An original four-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II and the people and places of Abaqus in Santiago.
 Twelve fighters, three illustrated stages and five original music scores.
 
-**Current version:** [v0.24.0](docs/RELEASE-v0.24.0.md), technically verified and approved by the user.
-[PR #14](https://github.com/Reston/snes-abaqus-fighter/pull/14) is merged into main. Previous version: [v0.23.1](docs/RELEASE-v0.23.1.md).
+**Playtest candidate:** [v0.25.0](docs/RELEASE-v0.25.0.md), with slower combat
+and detailed stage floors. [Native comparisons](docs/REVIEW-v0.25.0.html).
+The approved main revision is [v0.24.0](docs/RELEASE-v0.24.0.md).
 
-<img src="docs/screenshots/combat-24-stage08/accuracy-stage0-right.png" alt="Current combined v0.24 native view of Las Condes" width="640">
+<img src="docs/screenshots/pacing-floor-v025/after-movement.gif" alt="v0.25 native combat and restored detailed floor" width="640">
 
 ## Play
 
@@ -25,8 +26,8 @@ in a SNES emulator. Original SNES and flash-cartridge support remain unverified.
 - **Training:** practice against a dummy or CPU with input history, combo damage
   and three drills.
 
-v0.24 adds slower combat, backward recoil, revised attacks, contacts and stages.
-Jump/landing and super art complete the [combined review](docs/REVIEW-v0.24.0.html).
+v0.25 slows movement, attacks, jumps and CPU pressure, adds clearer contact
+pauses, and restores textured floors. Video, inputs and audio keep native speed.
 
 ## Controls
 
@@ -67,9 +68,9 @@ intermediates stay in ignored `.tools/` and `build/` directories.
 ## Documentation
 
 - [Player guide](docs/PLAYER-GUIDE.md) — controls, modes and practice.
-- [Combined playtest status](docs/RELEASE-v0.24.0.md) · [approved-main verification](docs/verification-v0.23.1.json).
+- [Current playtest and verification](docs/RELEASE-v0.25.0.md).
 - [Development guide](docs/DEVELOPMENT.md) — native architecture and hardware budgets.
 - [Roadmap](docs/ROADMAP.md) — planned work and historical milestones.
 - [Credits and art provenance](docs/CREDITS.md) · [License](LICENSE).
 
-Human combined playtest is pending. No v0.24 offline package or main merge.
+v0.25 awaits your playtest. The latest complete Windows archive remains v0.19.0.
