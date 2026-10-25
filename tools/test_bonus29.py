@@ -265,7 +265,10 @@ class Rig:
         if hero in (0, 11):
             self.capture(f'hero{hero:02}-bonus{variant + 1}-start')
         # Whiff and held edge: B must be a light kick, never a menu-back route.
-        self.run(); self.run(1, p1=['b'])
+        # Accuracy's callback can precede the next native pad-scan phase.
+        # Use the same three-callback held pulse as the existing native suites;
+        # all per-callback frame/vblank/lag/OBJ/SPC assertions stay strict.
+        self.run(); self.run(3, p1=['b'])
         require(self.bonus()['action'] == 4 and self.read('screen') == 5,
                 'B is a live light kick in BONUS')
         self.run(36, p1=['b'])
@@ -276,11 +279,11 @@ class Rig:
         original_x = self.bonus()['x']
         self.run(8, p1=['left', 'right'])
         require(self.bonus()['x'] == original_x, 'Opposing horizontal directions cancel in BONUS')
-        self.run(1, p1=['up'])
+        self.run(3, p1=['up'])
         require(self.bonus()['y'] < 0, 'The selected hero can jump through ordinary controller input')
         self.until(lambda: self.bonus()['y'] == 0, 150)
         # Pause priority, both ports, held controls, and resume-edge disposal.
-        self.run(1, p1=['start', 'select', 'a'])
+        self.run(3, p1=['start', 'select', 'a'])
         require(self.bonus()['paused'] == 1 and self.bonus()['result'] == 0, 'Start owns simultaneous skip/attack')
         self.run(8)
         self.text(10, 'BONUS PAUSED')
@@ -289,9 +292,9 @@ class Rig:
         require(self.bonus() == frozen, 'Pause freezes timer, target, actor, action and progress despite held inputs')
         if hero == 0:
             self.capture(f'hero00-bonus{variant + 1}-paused')
-        self.run(1, p2=['start']); self.run(2)
+        self.run(3, p2=['start']); self.run(2)
         require(not self.bonus()['paused'] and self.bonus()['action'] == 0, 'P2 Start resumes without converting held attacks into an action')
-        self.run(1, p2=['x', 'a', 'b', 'y'])
+        self.run(3, p2=['x', 'a', 'b', 'y'])
         require(self.bonus()['action'] == 0, 'P2 face attacks do not drive the solo bonus hero')
         if outcome == 'skip':
             self.pulse('start', settle=2)
