@@ -153,9 +153,10 @@ void buildPauseGuide(void) {
             guideWord(3,16,"SWEEP         DOWN + A");
             guideWord(3,18,"THROW         TOWARD + X");
             guideWord(3,19,"UPPERCUT      DOWN + X");
-            guideWord(3,20,"THROW TECH    BOTH THROW");
+            guideWord(3,20,"TECH: TOWARD + X ON GRAB");
             guideWord(3,21,"CONFIRM LIGHT > STRONG");
             guideWord(3,22,"CROSS-UP: JUMP PAST + A");
+            guideWord(3,23,"WAKE: BRIEF THROW PROTECTION");
         } else if(pausePage==2 && stageDepthTable[3]) {
             guideNormalRow(4,14);guideNormalRow(5,15);
             guideWord(3,17,"S STARTUP A ACTIVE R RECOVERY");
