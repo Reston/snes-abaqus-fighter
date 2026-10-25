@@ -30,6 +30,7 @@ from test_champion import host_contract
 from candidate_sources import snapshot
 
 OUT = ROOT / 'build/defense29'
+CAPTURES = ROOT / 'docs/screenshots/defense29'
 CHECKS = {}
 HEALTH = {}
 SYMS = {}
@@ -252,7 +253,7 @@ def verify_tech(r, before, label, late=True, observe_tail=True):
     require(all(row['passed'] for row in presentation.checks[start:]),
             'earned tech is readable in actual opaque native PPU glyphs', [r.tag, label])
     if r.fighter == 0 and label in ('tick-5', 'corner-right'):
-        path = ROOT / f'docs/screenshots/defense29/{r.core_name}-p{r.a}-{label}.png'
+        path = CAPTURES / f'{r.core_name}-p{r.a}-{label}.png'
         path.parent.mkdir(parents=True, exist_ok=True)
         r.e.frame.save(path)
     for _ in range(110 if observe_tail else 0):
@@ -330,7 +331,7 @@ def recovery(r, kind):
             r.e.run(8)
             presentation.verify_opaque_text_rows(r.e, [(20, 3, 'TECH: TOWARD + X ON GRAB'),
                                                        (23, 3, 'WAKE: BRIEF THROW PROTECTION')], r.tag + ' defense guide')
-            path = ROOT / f'docs/screenshots/defense29/{r.core_name}-p{r.a}-guide.png'
+            path = CAPTURES / f'{r.core_name}-p{r.a}-guide.png'
             path.parent.mkdir(parents=True, exist_ok=True)
             r.e.frame.save(path)
         r.e.tap('start')
@@ -659,7 +660,7 @@ def git_bytes(*args):
     return subprocess.check_output(['git', *args], cwd=ROOT)
 
 
-def static_contract():
+def static_contract(combined=False):
     current_text = (ROOT / 'dist/abaqus-after-hours.sym').read_text()
     baseline_text = (OUT / 'baseline/abaqus-after-hours.sym').read_text()
     full = lambda text: {name: int(address, 16) for address, name in re.findall(
@@ -673,9 +674,13 @@ def static_contract():
     require(not added_ram, 'no mutable definition or RAM label is added outside the parent reservation', added_ram)
     allowed = {'src/game.c', 'src/cpu_personality.h', 'src/pause_guide.h'}
     preserved = {}
+    parent = None
+    if combined:
+        from v029_contracts import validate
+        parent = validate(ROOT)
     for line in git_bytes('ls-tree', '-r', '29fee83', 'src').decode().splitlines():
         _, _, blob, name = line.split(None, 3)
-        if name in allowed:
+        if name in allowed or combined:
             continue
         raw = (ROOT / name).read_bytes().replace(b'\r\n', b'\n')
         actual = hashlib.sha1(f'blob {len(raw)}\0'.encode() + raw).hexdigest()
@@ -686,9 +691,17 @@ def static_contract():
         _, _, blob, name = line.split(None, 3)
         raw = (ROOT / name).read_bytes()
         actual = hashlib.sha1(f'blob {len(raw)}\0'.encode() + raw).hexdigest()
-        require(actual == blob, 'all tracked generated assets stay byte-identical', name)
+        if not combined:
+            require(actual == blob, 'all tracked generated assets stay byte-identical', name)
         assets[name] = sha(raw)
     require(len(assets) == 226, 'the complete tracked generated inventory remains 226 files', len(assets))
+    if combined:
+        # The parent recomputes every approved baseline blob and the complete
+        # reviewed output inventory. Bind this focused run to all its current
+        # assets without making an isolated all-assets-unchanged claim.
+        for row in parent['generated']['added']:
+            name=row['path']
+            assets[name] = sha((ROOT/name).read_bytes())
     sections = []
     for name, start in new.items():
         if not name.startswith('SECTIONSTART_') or start >> 16 in (0x7e, 0x7f) or start < 0x800000:
@@ -711,7 +724,8 @@ def static_contract():
             'rom_sections': sections, 'reservation_address': f'{new["v29DefenseState"]:06X}',
             'reservation_bytes': 16, 'used_bytes': [0, 1], 'new_mutable_definitions': 0,
             'new_obj_slots': 0, 'new_dma_bytes': 0, 'max_actor_upload_bytes': 3840,
-            'unsafe_bg1_map_dma_added': False, 'hardware_trace_asm_changes': False}
+            'unsafe_bg1_map_dma_added': False, 'hardware_trace_asm_changes': False,
+            'combined_parent_contract': parent}
 
 
 def main():
@@ -720,8 +734,25 @@ def main():
     parser.add_argument('--fighter', type=int, default=None)
     parser.add_argument('--section', choices=('all', 'defense', 'cpu', 'ko', 'preservation'), default='all')
     parser.add_argument('--core', choices=('both', 'snes9x', 'accuracy'), default='both')
+    parser.add_argument('--combined', action='store_true', help='Use the parent combined preservation policy')
+    parser.add_argument('--report', type=Path)
+    parser.add_argument('--captures', type=Path)
     args = parser.parse_args()
-    global SYMS
+    global SYMS,CAPTURES
+    partial=args.measure or args.fighter is not None or args.section!='all' or args.core!='both'
+    path = (OUT / 'baseline-measurement.json' if args.measure else
+            OUT / f'diagnostic-{args.section}.json' if partial else ROOT / 'docs/defense29-report.json')
+    if args.report:
+        path=args.report.resolve()
+        if partial and not path.is_relative_to(ROOT/'build'):
+            raise ValueError('Partial coverage must remain a diagnostic below build')
+    diagnostic=path.is_relative_to(ROOT/'build')
+    if args.captures:CAPTURES=args.captures.resolve()
+    elif diagnostic:CAPTURES=path.parent/(path.stem+'-captures')
+    if diagnostic and not CAPTURES.is_relative_to(ROOT/'build'):
+        raise ValueError('Diagnostic captures must remain below build')
+    CAPTURES.mkdir(parents=True,exist_ok=True)
+    path.parent.mkdir(parents=True,exist_ok=True)
     SYMS = symbols(ROOT / 'dist/abaqus-after-hours.sym')
     OUT.mkdir(parents=True, exist_ok=True)
     started = time.monotonic()
@@ -731,6 +762,7 @@ def main():
                       'build/defense29/baseline/abaqus-after-hours.sym')
     artifacts = {name: sha((ROOT / name).read_bytes()) for name in artifact_names}
     report = {'status': 'failed', 'rom_sha256': sha((ROOT / 'dist/abaqus-after-hours.sfc').read_bytes()),
+              'diagnostic':diagnostic,'version':json.loads((ROOT/'dist/manifest.json').read_bytes())['version'],
               'controller_only': True, 'memory_writes': False, 'save_states': False,
               'checks': CHECKS, 'native_health': HEALTH, 'cases': [], 'cpu_cases': [], 'ko_cases': [],
               'unaffected_cases': [], 'throw_preservation': [], 'source_sha256': sources,
@@ -763,7 +795,9 @@ def main():
                         report['cases'].append(measure(core, fighter, port))
                     print(json.dumps({'core': core, 'fighter': fighter, 'status': 'measured'}), flush=True)
         else:
-            report['static_contract'] = static_contract()
+            report['static_contract'] = static_contract(args.combined)
+            report['combined_rom_context'] = args.combined
+            report['combined_verification_claimed'] = False
             baseline = json.loads((OUT / 'baseline-measurement.json').read_bytes())
             report['baseline'] = {'rom_sha256': baseline['rom_sha256'],
                 'measurement_sha256': sha((OUT / 'baseline-measurement.json').read_bytes()),
@@ -831,9 +865,9 @@ def main():
                     'pinned core Python and compiler dependency bytes stay fixed during the proof')
             require(all(sha((ROOT / name).read_bytes()) == digest for name, digest in
                         report['static_contract']['tracked_generated_assets'].items()),
-                    'all 226 generated asset bytes stay fixed during the proof')
+                    'all preservation-bound generated asset bytes stay fixed during the proof')
             report['captures'] = [{'path': p.relative_to(ROOT).as_posix(), 'sha256': sha(p.read_bytes())}
-                                  for p in sorted((ROOT / 'docs/screenshots/defense29').glob('*.png'))]
+                                  for p in sorted(CAPTURES.glob('*.png'))]
         report['status'] = 'passed'
     except Exception as error:
         report['error'] = repr(error)
@@ -841,9 +875,6 @@ def main():
     finally:
         report['elapsed_seconds'] = round(time.monotonic() - started, 3)
         report['check_executions'] = sum(c['executions'] for c in CHECKS.values())
-        path = (OUT / 'baseline-measurement.json' if args.measure else
-                OUT / f'diagnostic-{args.section}.json' if args.fighter is not None or args.section != 'all' or args.core != 'both'
-                else ROOT / 'docs/defense29-report.json')
         temporary = path.with_suffix(path.suffix + '.tmp')
         temporary.write_bytes((json.dumps(report, indent=2) + '\n').encode())
         temporary.replace(path)

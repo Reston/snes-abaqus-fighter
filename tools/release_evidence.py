@@ -145,6 +145,7 @@ SOURCE_INPUT_EXACT = {
     "tools/test_arena_life29_checks.py",
     "tools/test_arena_life29.py",
     "tools/test_random29.py",
+    "tools/test_defense29.py",
     "tools/test_auto29.py",
     "tools/test_auto29_web.mjs",
     "tools/build_web.py",
