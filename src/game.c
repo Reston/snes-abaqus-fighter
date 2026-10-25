@@ -339,6 +339,7 @@ void showTitle(void) {
     music(0);finishScreen();
 }
 #include "menu_preview.h"
+#include "random29.h"
 void drawSelect(void) {
     u8 id,x,y;
     clearUi();id=selectPlayer ? selected2:selected;
@@ -354,7 +355,7 @@ void drawSelect(void) {
     else word(13,3,selectPlayer ? "PLAYER 2":"PLAYER 1");
     word(23,3,mode==0?"ARCADE":(mode==1?"LOCAL":"TRAINING"));
     word(13,12,characterNames[id]);
-    word(3,27,"A/START OK");word(23,27,"B BACK");
+    word(1,27,"A/START  SELECT: RANDOM  B BACK");
     portraitId=id;portraitDirty=0;menuPreviewClock=0;fullDirty=1;
 }
 void uploadSelectUi(void) {
@@ -380,7 +381,7 @@ void drawArenas(void) {
     /* Cover only the raster footer below the three unchanged choice rows.
      * Opaque original glyphs keep the old lettering from showing through. */
     panel(26,2);drawGuideWord((27*32+3)*2,"UP/DOWN A/START OK B BACK");
-    if(mode==1)drawGuideWord((26*32+5)*2,"LOCAL 1V1: EITHER PAD");
+    drawGuideWord((26*32+(mode==1?1:9))*2,mode==1?"SELECT: RANDOM / EITHER PAD":"SELECT: RANDOM");
     fullDirty=1;
 }
 void showArenas(void) { setScreenOff();screen=ARENA;commonScreen();loadBackground(5);drawArenas();finishScreen(); }
@@ -1373,6 +1374,7 @@ void fightTick(void) {
 void menuTick(void) {
     u8 *choice;
     u16 keys,held,directions;
+    random29Tick();
     keys=edge0;held=pad0;
     if(screen==SELECT && selectPlayer){keys|=edge1;held|=pad1;}
     /* Local matches belong to both players, including the rematch card.
@@ -1383,8 +1385,9 @@ void menuTick(void) {
     /* One menu action per sample. Match pause: Start, then Back, then A.
      * Clean held directions before masking edges, so an opposite held on
      * either participating pad cannot turn a new edge into cursor movement. */
-    if(keys&KEY_START)keys&=~(KEY_A|KEY_B);
-    else if(keys&KEY_B)keys&=~KEY_A;
+    if(keys&KEY_START)keys&=~(KEY_A|KEY_B|KEY_SELECT);
+    else if(keys&KEY_B)keys&=~(KEY_A|KEY_SELECT);
+    else if(keys&KEY_A)keys&=~KEY_SELECT;
     if(screen==TITLE) {
         if(directions&KEY_DOWN){menu=(menu+1)%3;sound(0);drawTitle();}
         if(directions&KEY_UP){menu=(menu+2)%3;sound(0);drawTitle();}
@@ -1416,12 +1419,15 @@ void menuTick(void) {
         if(keys&KEY_B){if(selectPlayer){selectPlayer=0;resetMenuRepeat();drawSelect();}else showTitle();return;}
         if(keys&(KEY_A|KEY_START)) {
             sound(3);menuPreviewConfirm=1;resetMenuRepeat();
+        } else if(keys&KEY_SELECT) {
+            *choice=random29Pick(12);sound(0);resetMenuRepeat();drawSelect();
         }
     } else if(screen==ARENA) {
         if(directions&KEY_DOWN){arena=(arena+1)%3;sound(0);drawArenas();}
         if(directions&KEY_UP){arena=(arena+2)%3;sound(0);drawArenas();}
         if(keys&KEY_B){showSelect();return;}
         if(keys&(KEY_A|KEY_START)){sound(3);beginMatch();}
+        else if(keys&KEY_SELECT){arena=random29Pick(3);sound(0);resetMenuRepeat();drawArenas();}
     } else if(screen==RESULT) {
         if(keys&KEY_B){showSelect();return;}
         if(keys&(KEY_A|KEY_START)) {
