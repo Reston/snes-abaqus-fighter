@@ -219,7 +219,7 @@ class Rig:
             elif distance >= s['throw_range1'] - 2:
                 self.run(p1=[forward])
             else:
-                self.run(p1=[forward, 'x']); self.run(p1=[forward])
+                self.run(3, p1=[forward, 'x']); self.run(p1=[forward])
         raise AssertionError(('Bounded ordinary CPU match did not finish', self.state()))
 
     def verify_target(self, variant):
@@ -320,7 +320,7 @@ class Rig:
                     # All four are exercised once, then strong attacks finish.
                     key = buttons[attempts] if attempts < 4 else ('x' if attempts % 2 else 'a')
                     used.add(key); attempts += 1
-                    self.run(1, p1=[key]); self.run()
+                    self.run(3, p1=[key]); self.run()
             require(self.bonus()['result'] == 1 and self.bonus()['progress'] == self.bonus()['goal'],
                     'Movement and real four-button attacks clear the challenge before timeout', self.bonus())
             require(used == {'a', 'b', 'x', 'y'} and self.bonus()['buttons'] == 15 and self.bonus()['stage'] == 2,
@@ -397,7 +397,7 @@ def traversal(args, syms, outcome='success'):
                     rig.capture(f'hero{hero:02}-champion'); break
                 rig.run(3)
                 # Keep the confirmation held across the forced-blank loader.
-                rig.run(1, p1=['a'])
+                rig.run(3, p1=['a'])
                 rig.until(lambda: rig.read('screen') in (3, 5))
                 if shift in (2, 6):
                     variant = int(shift == 6)
