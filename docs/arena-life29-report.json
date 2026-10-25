@@ -2,20 +2,20 @@
   "schema": 1,
   "scope": "isolated topic6 arena implementation; combined verification belongs to parent",
   "status": "passed",
-  "source_harness_freeze": "0baa6ae32a9329d49c3f3cd5c3c29013eb48a4f0",
+  "source_harness_freeze": "b7f6181fa36df5d1b4cb9d31334a1fcccfb31ea7",
   "rom": {
     "title": "Abaqus: After Hours",
     "version": "0.29.0",
     "rom": "abaqus-after-hours.sfc",
     "bytes": 4194304,
-    "sha256": "677bd91476fe92e745a1b072563a33b416d7e2803ea6b7030ebdf80c033a6d60",
-    "checksum": "C48A",
+    "sha256": "0cee5cf59741dd9b5698ffa58e543209a308ae338d57f3e32483e06057b17b3a",
+    "checksum": "515D",
     "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
     "mapping": "4 MiB FastROM LoROM",
     "region": "NTSC 60 Hz"
   },
   "commands": [
-    ".tools/python/python.exe tools/build.py --assets (then final cached native rebuild)",
+    ".tools/python/python.exe tools/build.py (automatic regeneration after metadata change)",
     ".tools/python/python.exe tools/test_arena_life29.py --core snes9x --report docs/arena-life29-snes9x.json",
     ".tools/python/python.exe tools/test_arena_life29.py --core accuracy --report docs/arena-life29-accuracy.json"
   ],
@@ -33,11 +33,11 @@
     "priority": "below_normal",
     "runner": "tools/run_background.py"
   },
-  "focused_executions": 130259,
+  "focused_executions": 243210,
   "reports": {
     "docs/arena-life29-snes9x.json": {
-      "sha256": "445491b46612441ebd07bc9cc77822d1a6d8e2d3a5eb93e8af6c5e1fda869321",
-      "passed": 68502,
+      "sha256": "f776a804f6af02ac7e5477d159a7cb3832373a59047c86d762ec3a73fc9be116",
+      "passed": 125711,
       "core_identity": {
         "archive": ".tools\\core.zip",
         "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
@@ -56,23 +56,63 @@
             "visible_matching": 424
           },
           "health": {
-            "callbacks": 2478,
-            "ambient_uploads": 384,
-            "actor_uploads": 409,
+            "callbacks": 3947,
+            "ambient_uploads": 686,
+            "actor_uploads": 629,
             "peak_spc": 3,
             "peak_obj_sprites": 16,
             "peak_obj_tiles": 32,
-            "frozen_hitstop_callbacks": 81,
+            "frozen_hitstop_callbacks": 401,
             "completed_phases": [
               0,
               1,
               3,
               2,
               4,
-              5
+              5,
+              255
+            ],
+            "trace": {
+              "callbacks": 3949,
+              "idle": 2790,
+              "partial_pool": 1009,
+              "queued_zero": 150,
+              "pause": 365,
+              "intro": 331,
+              "intro_abort": 1,
+              "mixed_pool": 208,
+              "ko": 425,
+              "no_upload": 3261,
+              "completed_upload": 686,
+              "last_chunk": 114
+            }
+          },
+          "intro_abort": {
+            "partial_trace": [
+              3,
+              63,
+              5,
+              2
+            ],
+            "aborted_trace": [
+              255,
+              63,
+              255,
+              0
+            ],
+            "mixed_pool_sha256": "d7eadaa2a7f155dbee4a23a22486012793737f86c7cb9b4a8fad1cb1fd68e08f",
+            "resumed_trace": [
+              0,
+              189,
+              255,
+              0
+            ],
+            "wins": [
+              1,
+              1
             ]
           },
-          "input_callbacks": 2336
+          "input_callbacks": 3805
         },
         {
           "stage": 1,
@@ -97,8 +137,23 @@
               2,
               4,
               5
-            ]
+            ],
+            "trace": {
+              "callbacks": 2312,
+              "idle": 1846,
+              "partial_pool": 374,
+              "queued_zero": 92,
+              "pause": 222,
+              "intro": 221,
+              "intro_abort": 0,
+              "mixed_pool": 0,
+              "ko": 180,
+              "no_upload": 1974,
+              "completed_upload": 336,
+              "last_chunk": 56
+            }
           },
+          "intro_abort": null,
           "input_callbacks": 2168
         },
         {
@@ -124,18 +179,33 @@
               2,
               4,
               5
-            ]
+            ],
+            "trace": {
+              "callbacks": 2371,
+              "idle": 1879,
+              "partial_pool": 387,
+              "queued_zero": 105,
+              "pause": 222,
+              "intro": 221,
+              "intro_abort": 0,
+              "mixed_pool": 0,
+              "ko": 180,
+              "no_upload": 2034,
+              "completed_upload": 335,
+              "last_chunk": 55
+            }
           },
+          "intro_abort": null,
           "input_callbacks": 2227
         }
       ]
     },
     "docs/arena-life29-accuracy.json": {
-      "sha256": "2ab4c1a725a64a8fd134e1656bac353657abbc8765cf24311d9b0d5cb7a2daab",
-      "passed": 61757,
+      "sha256": "5de67dea305154a48f64130bb8d8fd0c8ef29fae5b176c469ade512b91f5cda4",
+      "passed": 117499,
       "core_identity": {
-        "rom_sha256": "677bd91476fe92e745a1b072563a33b416d7e2803ea6b7030ebdf80c033a6d60",
-        "manifest_sha256": "677bd91476fe92e745a1b072563a33b416d7e2803ea6b7030ebdf80c033a6d60",
+        "rom_sha256": "0cee5cf59741dd9b5698ffa58e543209a308ae338d57f3e32483e06057b17b3a",
+        "manifest_sha256": "0cee5cf59741dd9b5698ffa58e543209a308ae338d57f3e32483e06057b17b3a",
         "rom_bytes": 4194304,
         "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
         "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
@@ -150,23 +220,63 @@
             "visible_matching": 424
           },
           "health": {
-            "callbacks": 2477,
-            "ambient_uploads": 384,
-            "actor_uploads": 410,
+            "callbacks": 3946,
+            "ambient_uploads": 692,
+            "actor_uploads": 630,
             "peak_spc": 3,
             "peak_obj_sprites": 16,
             "peak_obj_tiles": 32,
-            "frozen_hitstop_callbacks": 81,
+            "frozen_hitstop_callbacks": 401,
             "completed_phases": [
               0,
               1,
               3,
               2,
               4,
-              5
+              5,
+              255
+            ],
+            "trace": {
+              "callbacks": 3948,
+              "idle": 2761,
+              "partial_pool": 1030,
+              "queued_zero": 157,
+              "pause": 366,
+              "intro": 331,
+              "intro_abort": 1,
+              "mixed_pool": 208,
+              "ko": 425,
+              "no_upload": 3254,
+              "completed_upload": 692,
+              "last_chunk": 115
+            }
+          },
+          "intro_abort": {
+            "partial_trace": [
+              3,
+              61,
+              5,
+              2
+            ],
+            "aborted_trace": [
+              255,
+              61,
+              255,
+              0
+            ],
+            "mixed_pool_sha256": "d7eadaa2a7f155dbee4a23a22486012793737f86c7cb9b4a8fad1cb1fd68e08f",
+            "resumed_trace": [
+              0,
+              187,
+              255,
+              0
+            ],
+            "wins": [
+              1,
+              1
             ]
           },
-          "input_callbacks": 2335
+          "input_callbacks": 3804
         },
         {
           "stage": 1,
@@ -191,8 +301,23 @@
               2,
               4,
               5
-            ]
+            ],
+            "trace": {
+              "callbacks": 2312,
+              "idle": 1846,
+              "partial_pool": 374,
+              "queued_zero": 92,
+              "pause": 222,
+              "intro": 221,
+              "intro_abort": 0,
+              "mixed_pool": 0,
+              "ko": 180,
+              "no_upload": 1974,
+              "completed_upload": 336,
+              "last_chunk": 56
+            }
           },
+          "intro_abort": null,
           "input_callbacks": 2168
         },
         {
@@ -218,8 +343,23 @@
               2,
               4,
               5
-            ]
+            ],
+            "trace": {
+              "callbacks": 2371,
+              "idle": 1885,
+              "partial_pool": 390,
+              "queued_zero": 96,
+              "pause": 222,
+              "intro": 221,
+              "intro_abort": 0,
+              "mixed_pool": 0,
+              "ko": 180,
+              "no_upload": 2034,
+              "completed_upload": 335,
+              "last_chunk": 55
+            }
           },
+          "intro_abort": null,
           "input_callbacks": 2227
         }
       ]
@@ -228,7 +368,7 @@
   "baseline_replays": [
     {
       "stage": 0,
-      "callbacks": 2336,
+      "callbacks": 3805,
       "all_unmasked_equal": true,
       "baseline_sha256": "09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c"
     },
@@ -270,7 +410,7 @@
       "arena_life29_stage2.bin"
     ],
     "largest_rom_section_bytes": 30720,
-    "section_count": 358,
+    "section_count": 359,
     "state_bytes": 48,
     "parent_reservation_symbols": {
       "v29DefenseState": 8324504,
@@ -283,11 +423,69 @@
     "feature_added_mutable_symbols": {},
     "hardware_and_trace_exact": true
   },
+  "trace_correction": {
+    "publication": "arenaLife29Publish immediately after traceActorsFast, after completed DMA and on scene load; no ASM edits",
+    "every_fight_callback_checked": true,
+    "literal_four_word_equality": true,
+    "normalization": false,
+    "pool_oracle": "full 1536 bytes from independently retained completed DMA history; direct TRACE reconstruction when wholly completed base is known; explicit mixed marker remains literal",
+    "core_coverage": {
+      "snes9x": {
+        "callbacks": 8632,
+        "idle": 6515,
+        "partial_pool": 1770,
+        "queued_zero": 347,
+        "pause": 809,
+        "intro": 773,
+        "intro_abort": 1,
+        "mixed_pool": 208,
+        "ko": 785,
+        "no_upload": 7269,
+        "completed_upload": 1357,
+        "last_chunk": 225
+      },
+      "accuracy": {
+        "callbacks": 8631,
+        "idle": 6492,
+        "partial_pool": 1794,
+        "queued_zero": 345,
+        "pause": 810,
+        "intro": 773,
+        "intro_abort": 1,
+        "mixed_pool": 208,
+        "ko": 785,
+        "no_upload": 7262,
+        "completed_upload": 1363,
+        "last_chunk": 226
+      }
+    },
+    "historical_directory": "build/arena-life29-history-38489c4",
+    "old_rom_sha256": "677bd91476fe92e745a1b072563a33b416d7e2803ea6b7030ebdf80c033a6d60",
+    "reproduction": {
+      "status": "expected failure on historical ROM",
+      "frame": 686,
+      "actual": [
+        0,
+        0,
+        255,
+        0
+      ],
+      "expected": [
+        0,
+        1,
+        255,
+        0
+      ],
+      "report": "build/arena-life29-history-38489c4/trace-reproduction.json",
+      "sha256": "8cdb35b8cbd5498321fdb64ee4ce78510be636a47d1f947e98912f7126c5ae23"
+    },
+    "old_report_status": "historical; old harness omitted TRACE equality and cannot certify the new semantics"
+  },
   "sources": {
     "src/animation_banks.h": "8250cf1816ae8c0de0da6a876b76e0a0b40c10a44e35f782794ca82e283414e9",
     "src/animation_weight.h": "cdc8308b9a98c000823b7869a20a122e531d9843f7d1143ae09749b6983adf09",
     "src/arcade_story.h": "219b418d41b5c8e35d4617e1b3e21d683236a34efceb4efa1bfebd8866697104",
-    "src/arena_life29.h": "808df56809e6e91bc0e3dcfa759ed58e9dc545b1f86f8cc30f1bdf3b6590494d",
+    "src/arena_life29.h": "63c129b5c30ac2cbc1fadc97bbcf2aefb7f4e63894ecef35fec51f1ccc682b39",
     "src/audio_presentation.h": "106ac802c7fe95b9eda67f6113b9278a407c8d0a06bba6c83ebd2d4c510e903a",
     "src/audio_presentation_state.h": "4129b01189826de5cc9266f529eb57f1dcb57bb93febcade1f1dc3bf6e6c730e",
     "src/characters.h": "f2c66a8984e16cc0e6b360e48c31bad1dee785e280a3bb5cbf7302e3c8e01858",
@@ -296,7 +494,7 @@
     "src/expansion29.h": "5937b2f568a2df5f6796696b2d9da58b29460fa524e8ba5e818f9e21ed4b3a3b",
     "src/expansion29_state.h": "43f05141910cd071f88b18de7c526d229cd4dae1b3d0803c9f75f96fba393ae0",
     "src/fighter_personality.h": "e15b92385c8620a8cbdaa1c2734af0f87a91fbdbeefc70fe8c04700998cad0ce",
-    "src/game.c": "5947e689364c2e700c16e79aa684e7fa42586c30d08d8863a74e55ced1fd4944",
+    "src/game.c": "d9d7ab1ef51db2dde6c07a6664d5ac87af78cdd720c4b98e7cf5e266bd8496fb",
     "src/hardware.asm": "9b6dd260dca337e06b012e9b4fdafdc2c9103750ffcf5cf803d01e9092bab424",
     "src/impact_presentation.h": "f40dd53fe3c21a026072e1ec362d93b4b8c023ad6cb1b3d1cfaed711c130aa55",
     "src/knockdown.h": "b4728ac05f282613114b0931a54f5867fc1caeb29ef9cebd5c771614e5d11da3",
@@ -311,7 +509,7 @@
     "src/trace.asm": "301ec8a99aa326583c332a901903114f5fceeb7f17bbbf768c3e90ae65c3dc88",
     "src/training_tools.h": "bad6ffc456e48c0b346ffaa069c33871988716828db75a18f511266c3de33961",
     "src/version.h": "af007fb875b1a397ffeb6fdfc578cfef0c522db0ae6ac971d2a0990df55a5de1",
-    "tools/arena_life29_assets.py": "d370b38bd231a6546de84397dca05c16b56d205c2dc8847005ded91dc6fa55c9",
+    "tools/arena_life29_assets.py": "5274f75f2b45f30ff4f910f5f079383bd2ba7ed2608b952f9d3006041099b590",
     "tools/asset_cache.py": "091478ff866f99aed1b3714b1746c0fc934705905f3d370ffcd0473e381dcccc",
     "tools/asset_transaction.py": "9df3ad06bdd448627bf0747e755d16864149d3660f922594b690620f97015bb8",
     "tools/audio_assets.py": "1a55aa69ae2df232f61c9af9bc032d433461776da31ad91ea0e5108e8592a6cb",
@@ -375,7 +573,7 @@
     "tools/stage_sources.py": "b3c249050b7ed53408b9c6aa9c31748fae92125c3a3b055ce991bf7ef77c4008",
     "tools/stage_test_contract.py": "ce846412c276ade58baba3fd940d13cfba1ae21c9b925c1aa4c87308f4c2fa9f",
     "tools/synthesize_announcements.ps1": "a6fdad017831dbf5822fbe3c259ee7ff1620eb0fa3a745768a557475bfdd3498",
-    "tools/test_arena_life29.py": "e6f5e11812f6c6db4f7ad37206b68b6e1308faeaabd06d46861daca9ab6f40fc",
+    "tools/test_arena_life29.py": "ffc231da1981a97bb8c703833c8e8807d27e816690399537c6b5640f2f8673db",
     "tools/test_arena_preview_26.py": "c96d827d377270a00e51baa3033597a982d5c558af674388dc90dea7100b1c27",
     "tools/test_asset_cache.py": "cd6abc619c54a8af064584da652c7f9a6b85ebd80c540f76648c382e82916e90",
     "tools/test_asset_transaction.py": "3d5fc5a49f40cb27f7bef3da1f1af6594edcb2fcf9b94c0902ab6be55df53e5f",
@@ -472,21 +670,21 @@
   "native_artifacts": {
     "abaqus-after-hours.sfc": {
       "bytes": 4194304,
-      "sha256": "677bd91476fe92e745a1b072563a33b416d7e2803ea6b7030ebdf80c033a6d60"
+      "sha256": "0cee5cf59741dd9b5698ffa58e543209a308ae338d57f3e32483e06057b17b3a"
     },
     "abaqus-after-hours.sym": {
-      "bytes": 215324,
-      "sha256": "071ae146b737135dfbb55066e82eebf02e5f0b823867134eb0ae5b01b4b690cc"
+      "bytes": 215342,
+      "sha256": "bf8260f0bd1ecae1faf805dd72de25fb51a8ca3918e711e05c2bee57d6de11c7"
     },
     "manifest.json": {
       "bytes": 332,
-      "sha256": "fd0fc704bc02c70f7e78610ae06e4b541226f9fc5d40ac270a94888d08612ba0"
+      "sha256": "d407afc314a67e84a0561a673f72cf5bc532154a31ddf173895fb7905788d2c3"
     }
   },
   "generated_outputs": {
     "arena-life29.json": {
-      "bytes": 52233,
-      "sha256": "68fd08138ce636aa0b25938afec3df7b3b8870eb2c545521d15713e8522922a0"
+      "bytes": 52361,
+      "sha256": "9651c02409fd91958a3ea5def60043cc296e16766451077ff8739925c4e551f8"
     },
     "arenas.png": {
       "bytes": 26556,
@@ -1438,6 +1636,7 @@
       "in_flight_phase_or_255": 117,
       "completed_chunks_or_0": 118
     },
+    "trace_publication": "arenaLife29Publish after traceActorsFast, after completed DMA, and on scene load; no assembly changes",
     "state_bytes": {
       "stage_plus_one": 0,
       "live_clock": 1,
@@ -3900,7 +4099,7 @@
   "limitations": [
     "isolated feature ROM only; no combined six-suite or fresh-export claim",
     "three mirrors cover bounded worst-case super families; no full roster or 432-case matrix",
-    "Snes9x baseline equality covers 6731 controller callbacks and listed full gameplay fields, not all WRAM or cross-core byte equality",
+    "Snes9x baseline equality covers 8200 controller callbacks and listed full gameplay fields, not all WRAM or cross-core byte equality",
     "queued animation yields indefinitely to foreground actor/UI work",
     "GIF timing approximate; human aesthetics/listening, physical controllers and real hardware unverified"
   ],
@@ -3924,6 +4123,10 @@
     {
       "path": "docs/screenshots/arena-life29/snes9x/stage0-ko.png",
       "sha256": "331eef4fa9048d61aa5bdca15fec119dfd470921570135ad2bf01d3840158bac"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/snes9x/stage0-intro-abort.png",
+      "sha256": "317d51653534e9b248acec3acde1abce347aa1a9605f2533415a44b0acff3a38"
     },
     {
       "path": "docs/screenshots/arena-life29/snes9x/stage0-life-events.gif",
@@ -3994,15 +4197,19 @@
     },
     {
       "path": "docs/screenshots/arena-life29/accuracy/stage0-super.png",
-      "sha256": "d9225d8bfb18e9bf1419b7de36ede4c87120dd2185ed737bcd9d18b9990020a1"
+      "sha256": "c2ca03eb85173e47d1193742c20f02e4a7799504d90d017ab2e69c76eac3202e"
     },
     {
       "path": "docs/screenshots/arena-life29/accuracy/stage0-ko.png",
       "sha256": "a0a799b60b48cd8cfd147b8da0b0827ba92f41ba7897b024c73c17e33fbb91d8"
     },
     {
+      "path": "docs/screenshots/arena-life29/accuracy/stage0-intro-abort.png",
+      "sha256": "940080e05795736ef84661c5dedf4eac37743222288ce7f7b0acaa42fbf43549"
+    },
+    {
       "path": "docs/screenshots/arena-life29/accuracy/stage0-life-events.gif",
-      "sha256": "2991c7df40fdd0ab33d1514ede987b2064e44df0427e40f5f81f3f5859ba11cf",
+      "sha256": "8ee686b5a007073cfab88b3ff00de78a196930dce5f7b905bf033e3c7a5993d9",
       "scope": "actual PPU; samples every three callbacks; GIF timing approximate"
     },
     {

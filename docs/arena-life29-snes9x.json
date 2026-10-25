@@ -6,18 +6,18 @@
     "version": "0.29.0",
     "rom": "abaqus-after-hours.sfc",
     "bytes": 4194304,
-    "sha256": "677bd91476fe92e745a1b072563a33b416d7e2803ea6b7030ebdf80c033a6d60",
-    "checksum": "C48A",
+    "sha256": "0cee5cf59741dd9b5698ffa58e543209a308ae338d57f3e32483e06057b17b3a",
+    "checksum": "515D",
     "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
     "mapping": "4 MiB FastROM LoROM",
     "region": "NTSC 60 Hz"
   },
-  "source_commit": "0baa6ae32a9329d49c3f3cd5c3c29013eb48a4f0",
+  "source_commit": "b7f6181fa36df5d1b4cb9d31334a1fcccfb31ea7",
   "sources": {
     "src/animation_banks.h": "8250cf1816ae8c0de0da6a876b76e0a0b40c10a44e35f782794ca82e283414e9",
     "src/animation_weight.h": "cdc8308b9a98c000823b7869a20a122e531d9843f7d1143ae09749b6983adf09",
     "src/arcade_story.h": "219b418d41b5c8e35d4617e1b3e21d683236a34efceb4efa1bfebd8866697104",
-    "src/arena_life29.h": "808df56809e6e91bc0e3dcfa759ed58e9dc545b1f86f8cc30f1bdf3b6590494d",
+    "src/arena_life29.h": "63c129b5c30ac2cbc1fadc97bbcf2aefb7f4e63894ecef35fec51f1ccc682b39",
     "src/audio_presentation.h": "106ac802c7fe95b9eda67f6113b9278a407c8d0a06bba6c83ebd2d4c510e903a",
     "src/audio_presentation_state.h": "4129b01189826de5cc9266f529eb57f1dcb57bb93febcade1f1dc3bf6e6c730e",
     "src/characters.h": "f2c66a8984e16cc0e6b360e48c31bad1dee785e280a3bb5cbf7302e3c8e01858",
@@ -26,7 +26,7 @@
     "src/expansion29.h": "5937b2f568a2df5f6796696b2d9da58b29460fa524e8ba5e818f9e21ed4b3a3b",
     "src/expansion29_state.h": "43f05141910cd071f88b18de7c526d229cd4dae1b3d0803c9f75f96fba393ae0",
     "src/fighter_personality.h": "e15b92385c8620a8cbdaa1c2734af0f87a91fbdbeefc70fe8c04700998cad0ce",
-    "src/game.c": "5947e689364c2e700c16e79aa684e7fa42586c30d08d8863a74e55ced1fd4944",
+    "src/game.c": "d9d7ab1ef51db2dde6c07a6664d5ac87af78cdd720c4b98e7cf5e266bd8496fb",
     "src/hardware.asm": "9b6dd260dca337e06b012e9b4fdafdc2c9103750ffcf5cf803d01e9092bab424",
     "src/impact_presentation.h": "f40dd53fe3c21a026072e1ec362d93b4b8c023ad6cb1b3d1cfaed711c130aa55",
     "src/knockdown.h": "b4728ac05f282613114b0931a54f5867fc1caeb29ef9cebd5c771614e5d11da3",
@@ -41,7 +41,7 @@
     "src/trace.asm": "301ec8a99aa326583c332a901903114f5fceeb7f17bbbf768c3e90ae65c3dc88",
     "src/training_tools.h": "bad6ffc456e48c0b346ffaa069c33871988716828db75a18f511266c3de33961",
     "src/version.h": "af007fb875b1a397ffeb6fdfc578cfef0c522db0ae6ac971d2a0990df55a5de1",
-    "tools/arena_life29_assets.py": "d370b38bd231a6546de84397dca05c16b56d205c2dc8847005ded91dc6fa55c9",
+    "tools/arena_life29_assets.py": "5274f75f2b45f30ff4f910f5f079383bd2ba7ed2608b952f9d3006041099b590",
     "tools/asset_cache.py": "091478ff866f99aed1b3714b1746c0fc934705905f3d370ffcd0473e381dcccc",
     "tools/asset_transaction.py": "9df3ad06bdd448627bf0747e755d16864149d3660f922594b690620f97015bb8",
     "tools/audio_assets.py": "1a55aa69ae2df232f61c9af9bc032d433461776da31ad91ea0e5108e8592a6cb",
@@ -105,7 +105,7 @@
     "tools/stage_sources.py": "b3c249050b7ed53408b9c6aa9c31748fae92125c3a3b055ce991bf7ef77c4008",
     "tools/stage_test_contract.py": "ce846412c276ade58baba3fd940d13cfba1ae21c9b925c1aa4c87308f4c2fa9f",
     "tools/synthesize_announcements.ps1": "a6fdad017831dbf5822fbe3c259ee7ff1620eb0fa3a745768a557475bfdd3498",
-    "tools/test_arena_life29.py": "e6f5e11812f6c6db4f7ad37206b68b6e1308faeaabd06d46861daca9ab6f40fc",
+    "tools/test_arena_life29.py": "ffc231da1981a97bb8c703833c8e8807d27e816690399537c6b5640f2f8673db",
     "tools/test_arena_preview_26.py": "c96d827d377270a00e51baa3033597a982d5c558af674388dc90dea7100b1c27",
     "tools/test_asset_cache.py": "cd6abc619c54a8af064584da652c7f9a6b85ebd80c540f76648c382e82916e90",
     "tools/test_asset_transaction.py": "3d5fc5a49f40cb27f7bef3da1f1af6594edcb2fcf9b94c0902ab6be55df53e5f",
@@ -224,6 +224,10 @@
       "sha256": "331eef4fa9048d61aa5bdca15fec119dfd470921570135ad2bf01d3840158bac"
     },
     {
+      "path": "docs/screenshots/arena-life29/snes9x/stage0-intro-abort.png",
+      "sha256": "317d51653534e9b248acec3acde1abce347aa1a9605f2533415a44b0acff3a38"
+    },
+    {
       "path": "docs/screenshots/arena-life29/snes9x/stage0-life-events.gif",
       "sha256": "09ba97c52245647b3732256d63eefdf76b8a3240973d452b3ce0686d19a11985",
       "scope": "actual PPU; samples every three callbacks; GIF timing approximate"
@@ -289,23 +293,63 @@
         "visible_matching": 424
       },
       "health": {
-        "callbacks": 2478,
-        "ambient_uploads": 384,
-        "actor_uploads": 409,
+        "callbacks": 3947,
+        "ambient_uploads": 686,
+        "actor_uploads": 629,
         "peak_spc": 3,
         "peak_obj_sprites": 16,
         "peak_obj_tiles": 32,
-        "frozen_hitstop_callbacks": 81,
+        "frozen_hitstop_callbacks": 401,
         "completed_phases": [
           0,
           1,
           3,
           2,
           4,
-          5
+          5,
+          255
+        ],
+        "trace": {
+          "callbacks": 3949,
+          "idle": 2790,
+          "partial_pool": 1009,
+          "queued_zero": 150,
+          "pause": 365,
+          "intro": 331,
+          "intro_abort": 1,
+          "mixed_pool": 208,
+          "ko": 425,
+          "no_upload": 3261,
+          "completed_upload": 686,
+          "last_chunk": 114
+        }
+      },
+      "intro_abort": {
+        "partial_trace": [
+          3,
+          63,
+          5,
+          2
+        ],
+        "aborted_trace": [
+          255,
+          63,
+          255,
+          0
+        ],
+        "mixed_pool_sha256": "d7eadaa2a7f155dbee4a23a22486012793737f86c7cb9b4a8fad1cb1fd68e08f",
+        "resumed_trace": [
+          0,
+          189,
+          255,
+          0
+        ],
+        "wins": [
+          1,
+          1
         ]
       },
-      "input_callbacks": 2336
+      "input_callbacks": 3805
     },
     {
       "stage": 1,
@@ -330,8 +374,23 @@
           2,
           4,
           5
-        ]
+        ],
+        "trace": {
+          "callbacks": 2312,
+          "idle": 1846,
+          "partial_pool": 374,
+          "queued_zero": 92,
+          "pause": 222,
+          "intro": 221,
+          "intro_abort": 0,
+          "mixed_pool": 0,
+          "ko": 180,
+          "no_upload": 1974,
+          "completed_upload": 336,
+          "last_chunk": 56
+        }
       },
+      "intro_abort": null,
       "input_callbacks": 2168
     },
     {
@@ -357,15 +416,30 @@
           2,
           4,
           5
-        ]
+        ],
+        "trace": {
+          "callbacks": 2371,
+          "idle": 1879,
+          "partial_pool": 387,
+          "queued_zero": 105,
+          "pause": 222,
+          "intro": 221,
+          "intro_abort": 0,
+          "mixed_pool": 0,
+          "ko": 180,
+          "no_upload": 2034,
+          "completed_upload": 335,
+          "last_chunk": 55
+        }
       },
+      "intro_abort": null,
       "input_callbacks": 2227
     }
   ],
   "baseline_replays": [
     {
       "stage": 0,
-      "callbacks": 2336,
+      "callbacks": 3805,
       "all_unmasked_equal": true,
       "baseline_sha256": "09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c"
     },
@@ -407,7 +481,7 @@
       "arena_life29_stage2.bin"
     ],
     "largest_rom_section_bytes": 30720,
-    "section_count": 358,
+    "section_count": 359,
     "state_bytes": 48,
     "parent_reservation_symbols": {
       "v29DefenseState": 8324504,
@@ -456,6 +530,7 @@
       "in_flight_phase_or_255": 117,
       "completed_chunks_or_0": 118
     },
+    "trace_publication": "arenaLife29Publish after traceActorsFast, after completed DMA, and on scene load; no assembly changes",
     "state_bytes": {
       "stage_plus_one": 0,
       "live_clock": 1,
@@ -2888,6 +2963,20 @@
       }
     ]
   },
+  "trace_coverage": {
+    "callbacks": 8632,
+    "idle": 6515,
+    "partial_pool": 1770,
+    "queued_zero": 347,
+    "pause": 809,
+    "intro": 773,
+    "intro_abort": 1,
+    "mixed_pool": 208,
+    "ko": 785,
+    "no_upload": 7269,
+    "completed_upload": 1357,
+    "last_chunk": 225
+  },
   "checks": [
     {
       "check": "Partial coverage stays diagnostic",
@@ -2936,7 +3025,17 @@
     },
     {
       "check": "Every linked ROM section fits one LoROM bank",
-      "executions": 358,
+      "executions": 359,
+      "passed": true
+    },
+    {
+      "check": "Every callback TRACE115..118 equals exact arena reservation state",
+      "executions": 8632,
+      "passed": true
+    },
+    {
+      "check": "TRACE publication uses only legal phase/progress and explicit mixed marker",
+      "executions": 8632,
       "passed": true
     },
     {
@@ -2946,62 +3045,77 @@
     },
     {
       "check": "Strict native frame/vblank cadence, zero SDK lag",
-      "executions": 7157,
+      "executions": 8626,
       "passed": true
     },
     {
       "check": "STAT77 no OBJ overflow",
-      "executions": 7157,
+      "executions": 8626,
       "passed": true
     },
     {
       "check": "Original tile prefix and complete wide map immutable during play",
-      "executions": 7157,
+      "executions": 8626,
       "passed": true
     },
     {
       "check": "At most one actor page / 3840-byte upload per blank",
-      "executions": 7157,
+      "executions": 8626,
       "passed": true
     },
     {
       "check": "Every changed actor page is a complete exact approved 3840-byte pose",
-      "executions": 1147,
+      "executions": 1367,
       "passed": true
     },
     {
       "check": "At most one 256-byte arena transfer per blank",
-      "executions": 7157,
+      "executions": 8626,
       "passed": true
     },
     {
       "check": "Pool cannot change without completed DMA telemetry",
-      "executions": 6102,
+      "executions": 7269,
+      "passed": true
+    },
+    {
+      "check": "Live arena keeps completed-chunk oracle ownership",
+      "executions": 8626,
+      "passed": true
+    },
+    {
+      "check": "Full pool matches independently retained completed-DMA history, including mixed intro abort",
+      "executions": 8626,
+      "passed": true
+    },
+    {
+      "check": "TRACE completed/pending/progress directly reconstruct every actual pool byte",
+      "executions": 8418,
       "passed": true
     },
     {
       "check": "Intro/pause/hitstop/motion-off freeze clock and transfers",
-      "executions": 1869,
+      "executions": 2390,
       "passed": true
     },
     {
       "check": "All 128 OAM entries stay within scanline budgets",
-      "executions": 7157,
+      "executions": 8626,
       "passed": true
     },
     {
       "check": "SPC FIFO <=6 and fresh captured PCM each callback",
-      "executions": 7157,
+      "executions": 8626,
       "passed": true
     },
     {
       "check": "Completed telemetry identifies exact actual 256-byte source/destination",
-      "executions": 1055,
+      "executions": 1357,
       "passed": true
     },
     {
       "check": "Arena DMA yields to actor and interface DMA",
-      "executions": 1055,
+      "executions": 1357,
       "passed": true
     },
     {
@@ -3085,6 +3199,51 @@
       "passed": true
     },
     {
+      "check": "Controller P2 KO earns a third-round intro without ending the match",
+      "executions": 1,
+      "passed": true
+    },
+    {
+      "check": "P1 pauses an actual partially uploaded KO pool",
+      "executions": 1,
+      "passed": true
+    },
+    {
+      "check": "Controller motion-off retains the partial pool through round end",
+      "executions": 1,
+      "passed": true
+    },
+    {
+      "check": "Mixed TRACE marker is earned by aborting an actual partial pool at new-round intro",
+      "executions": 1,
+      "passed": true
+    },
+    {
+      "check": "Intro abort publishes mixed state without inventing a completed DMA",
+      "executions": 1,
+      "passed": true
+    },
+    {
+      "check": "New-round intro aborts a real partial pool with explicit mixed marker",
+      "executions": 1,
+      "passed": true
+    },
+    {
+      "check": "Aborted intro TRACE remains exact without advancing clock or completed DMA",
+      "executions": 1,
+      "passed": true
+    },
+    {
+      "check": "No-upload motion-off samples retain exact mixed TRACE after intro",
+      "executions": 1,
+      "passed": true
+    },
+    {
+      "check": "Motion-on resumes and converges a fresh complete phase after intro abort",
+      "executions": 1,
+      "passed": true
+    },
+    {
       "check": "Pause Back hands arena ownership to roster",
       "executions": 3,
       "passed": true
@@ -3106,7 +3265,12 @@
     },
     {
       "check": "Unmasked gameplay trace/Fighter64/Wave16/RNG/private-super replay equals baseline",
-      "executions": 6731,
+      "executions": 8200,
+      "passed": true
+    },
+    {
+      "check": "Strict TRACE coverage includes partial/idle/pause/intro-abort/KO/no-upload and last-chunk samples",
+      "executions": 1,
       "passed": true
     },
     {
@@ -3115,6 +3279,6 @@
       "passed": true
     }
   ],
-  "passed": 68502,
-  "elapsed_seconds": 18.735
+  "passed": 125711,
+  "elapsed_seconds": 20.953
 }

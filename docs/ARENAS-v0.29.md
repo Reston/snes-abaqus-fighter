@@ -16,17 +16,17 @@ suite adaptation, all six suites, final freeze/reproduction and integration.
 
 ## Exact candidate and evidence
 
-- Source/harness freeze: `0baa6ae32a9329d49c3f3cd5c3c29013eb48a4f0`.
-- ROM SHA256: `677bd91476fe92e745a1b072563a33b416d7e2803ea6b7030ebdf80c033a6d60`.
-- Header checksum: `C48A`; 4 MiB NTSC FastROM LoROM, PVSnesLib 4.6.0.
-- Runtime header SHA256: `808df56809e6e91bc0e3dcfa759ed58e9dc545b1f86f8cc30f1bdf3b6590494d`.
-- Focused harness SHA256: `e6f5e11812f6c6db4f7ad37206b68b6e1308faeaabd06d46861daca9ab6f40fc`.
+- Source/harness freeze: `b7f6181fa36df5d1b4cb9d31334a1fcccfb31ea7`.
+- ROM SHA256: `0cee5cf59741dd9b5698ffa58e543209a308ae338d57f3e32483e06057b17b3a`.
+- Header checksum: `515D`; 4 MiB NTSC FastROM LoROM, PVSnesLib 4.6.0.
+- Runtime header SHA256: `63c129b5c30ac2cbc1fadc97bbcf2aefb7f4e63894ecef35fec51f1ccc682b39`.
+- Focused harness SHA256: `ffc231da1981a97bb8c703833c8e8807d27e816690399537c6b5640f2f8673db`.
 - [Aggregate report](arena-life29-report.json), [Snes9x report](arena-life29-snes9x.json),
   [pinned Accuracy report](arena-life29-accuracy.json).
 
-Snes9x passes 68,502 focused check executions across all three stages;
-Accuracy passes 61,757. The two reports carry identical producer/harness/
-dependency hashes and ROM identity. They measure 7,157 and 7,156 native
+Snes9x passes 125,711 focused check executions across all three stages;
+Accuracy passes 117,499. The two reports carry identical producer/harness/
+dependency hashes and ROM identity. They measure 8,626 and 8,625 native
 fight/intro/round-end callbacks respectively, with zero SDK lag or frame
 collapse. Forced-blank menu/scene loads are outside live cadence measurement.
 Each stage reaches all six authored phases in actual native VRAM. Controller
@@ -45,7 +45,7 @@ pixels in the three conversation captures on each core. The entire detailed
 floor's native bytes are exact; rendered floor error versus decoded SNES
 colors is at most two channel levels on Snes9x and one on Accuracy.
 
-Snes9x replays 6,731 identical controller samples against approved v0.28 ROM
+Snes9x replays 8,200 identical controller samples against approved v0.28 ROM
 `09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c`.
 Every unmasked TRACE word 0..113, full Fighter64/Wave16 bytes, RNG, private
 super arrays, fight/CPU/second clocks, winner and effect/shake fields match.
@@ -58,6 +58,42 @@ three native callbacks; GIF playback is an inspection approximation, not a
 timing proof. No window or audio device was opened. Human aesthetic review,
 listening, physical controllers and real-console/flash-cartridge checks remain
 outside this focused proof.
+
+## TRACE correction after parent review
+
+The original `677bd914...` candidate had a real publication defect: unchanged
+`traceActorsFast` always stored legacy ambient values after the C tick wrote
+the new telemetry. Its focused harness checked the reservation and VRAM but
+omitted TRACE115..118 equality. A direct controller-only reproduction on that
+retained ROM fails at frame 686: actual `[0,0,255,0]`, expected `[0,1,255,0]`.
+The old ROM, reports, captures and failing reproduction remain ignored under
+`build/arena-life29-history-38489c4/`; those old reports cannot certify the
+documented new TRACE semantics.
+
+`arenaLife29Publish()` now explicitly owns the four words immediately after
+every `traceActorsFast()` call, after completed DMA, and on scene load. No
+assembly or art changed. The new harness checks every fight callback against
+the literal reservation formula, including idle/frozen/no-upload samples:
+`[state[3], state[1], state[5] if state[4]<6 else 255, state[4] if state[4]<6 else 0]`.
+There is no masking or normalization. It also independently retains each
+completed chunk to prove the entire 1,536-byte pool on every measured native
+callback. When a wholly completed base phase is known, the four TRACE words
+directly reconstruct every pool byte. The explicit 255 mixed marker is
+checked literally and its actual bytes remain covered by completed-DMA
+history.
+
+The corrected full proofs check 8,632 Snes9x and 8,631 Accuracy TRACE samples,
+including 1,770 / 1,794 partial-pool samples, 7,269 / 7,262 no-upload native
+samples, and 225 / 226 last-chunk completions. Each core additionally earns a
+P2 KO in round two, pauses a partially uploaded KO phase, turns background
+motion off through real guide controls, and allows the genuine round-end
+clock to enter round three. The intro abort publishes `[255,63,255,0]` on
+Snes9x and `[255,61,255,0]` on Accuracy without a transfer or clock advance,
+remains exact through 208 mixed-pool samples on each core,
+and converges after motion resumes. One intro abort per core is required;
+all previous cadence, VRAM, actor, OBJ, SPC and unmasked baseline gameplay
+assertions remain in place. The initial diagnostic reproduction and this
+new abort route are recorded in the aggregate report.
 
 ## Native allocation
 
@@ -87,8 +123,8 @@ patches are 16x32 pixels, one complete person per chunk; four props are 16x16,
 two complete props per chunk. All rectangles are above the floor seam.
 Existing coherent whole-scene camera motion and detailed floors remain.
 There are no bands, parallax, extra sprites, stage DMA to `$3C00`, or HDMA.
-All 358 linked ROM sections fit one LoROM bank; the largest remains 30,720
-bytes. The feature's five C code sections occupy 2,478 bytes.
+All 359 linked ROM sections fit one LoROM bank; the largest remains 30,720
+bytes. The feature's six C code sections occupy 2,294 bytes.
 
 The integration source already defines the parent's six initialized arrays.
 Relative to its still-v0.28 tracked symbols, only those 176 reservation bytes
@@ -138,7 +174,9 @@ reserved array, byte 14 is a wrapping completed-transfer serial; bytes 19/20
 record the **last actually uploaded** chunk/phase, independent of any newly
 queued phase. This distinction matters when the last chunk finishes and the
 next phase is queued during the same host callback. Every completion record
-is written only after the corresponding DMA. Full state-byte definitions are
+is written only after the corresponding DMA. The post-assembly publication
+hook repeats the exact current reservation on every callback, so frozen and
+no-upload samples retain those meanings. Full state-byte definitions are
 in the header and generated manifest. No legacy `ambient*` variable or unsafe
 destination drives this runtime.
 
@@ -151,7 +189,8 @@ historical for the new runtime. This child has not edited those suites/reports.
 
 Small shared hooks are: prototype before `commonScreen`; clear ownership in
 `commonScreen`; enable the stage after `stageDepthLoad`; include the module
-before `main`; resolve a quiet-blank source before the wait; and replace the
+before `main`; resolve a quiet-blank source before the wait; call
+`arenaLife29Publish()` immediately after `traceActorsFast()`; and replace the
 disabled legacy upload block with the bounded completion-tracked upload.
 Substantial runtime and encoding code remains feature-specific.
 
@@ -175,7 +214,7 @@ $p=[System.Diagnostics.Process]::GetCurrentProcess()
 $p.ProcessorAffinity=[IntPtr]12288
 $p.PriorityClass='BelowNormal'
 $taskPython=(Resolve-Path .tools/python/python.exe).Path
-& $taskPython tools/run_background.py --log build/arena-life29-build.log -- $taskPython tools/build.py --assets
+& $taskPython tools/run_background.py --log build/arena-life29-trace-build.log -- $taskPython tools/build.py
 & $taskPython tools/run_background.py --log build/arena-life29-snes9x.log -- $taskPython tools/test_arena_life29.py --core snes9x --report docs/arena-life29-snes9x.json
 & $taskPython tools/run_background.py --log build/arena-life29-accuracy.log -- $taskPython tools/test_arena_life29.py --core accuracy --report docs/arena-life29-accuracy.json
 ```
@@ -187,7 +226,12 @@ bytes. The first build's source-change guard correctly refused publication
 during development. A final LF canonicalization of art metadata was followed
 by both frozen proof runs. No failed diagnostic is represented as passing.
 
-Exact tested ROM, symbols, manifest, generated assets and fingerprints are
+The TRACE correction's native build regenerates metadata and exits 0. Both
+full corrected proof commands exit 0 on the same frozen source. Compared with
+the historical candidate, every generated art/audio/header payload stays
+exact; only `arena-life29.json` adds the C publication-ownership note.
+
+Exact corrected ROM, symbols, manifest, generated assets and fingerprints are
 retained under ignored `build/arena-life29-tested/`. Generated assets and dist
 are restored to the integration base before the evidence commit; the child
 PR intentionally contains source/art/docs/focused media only. Expected output
