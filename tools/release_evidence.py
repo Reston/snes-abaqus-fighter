@@ -139,6 +139,17 @@ SOURCE_INPUT_EXACT = {
     "tools/pose_revision_assets.py",
     "tools/v024_contracts.py",
     "tools/v025_contracts.py",
+    "tools/v029_contracts.py",
+    "tools/arena_life29_assets.py",
+    "tools/arena_life29_checks.py",
+    "tools/test_arena_life29_checks.py",
+    "tools/test_arena_life29.py",
+    "tools/test_random29.py",
+    "tools/test_auto29.py",
+    "tools/test_auto29_web.mjs",
+    "tools/build_web.py",
+    "tools/test_web_build.py",
+    "tools/test_v029_contracts.py",
     "tools/collate_pacing_floor_25.py",
     "tools/test_pacing_floor_25.py",
     "tools/contact_geometry.py",
@@ -187,7 +198,7 @@ SOURCE_INPUT_EXACT = {
     "tools/play.ps1",
     "tools/validate_cartridge.ps1",
 }
-SOURCE_INPUT_PREFIXES = ("src/", "assets/", "dist/")
+SOURCE_INPUT_PREFIXES = ("src/", "assets/", "dist/", "web/")
 
 Recorder = Callable[[bool, str, Any], None]
 

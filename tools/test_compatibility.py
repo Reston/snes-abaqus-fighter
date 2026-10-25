@@ -1182,7 +1182,9 @@ def run_stage_engine_check(stage_id: int, record: dict[str, object],
         import test_combat_24_stage08 as depth
         depth.OUT=CAPTURE_ROOT/'depth-v1';depth.OUT.mkdir(parents=True,exist_ok=True)
         result=depth.stage_case(stage_id,independent=True)
-        result['stage_contract']=('whole-scenery-detailed-color-floor' if depth.FLOOR_IN_SCENERY else 'whole-scenery-fixed-floor')
+        result['stage_contract']=('whole-scenery-detailed-color-floor-and-source-bound-spectators'
+                                  if (ROOT/'assets/generated/arena-life29.json').is_file() else
+                                  ('whole-scenery-detailed-color-floor' if depth.FLOOR_IN_SCENERY else 'whole-scenery-fixed-floor'))
         result['passed']=True
         return result
     rects = stage_phase_probe_rects(record)
@@ -1253,6 +1255,19 @@ def main() -> int:
             "trace": trace_map,
             "stage_count": STAGE_COUNT,
         }
+        if stage_manifest.get('arena_life29'):
+            from arena_life29_checks import metadata as arena_metadata
+            animation=arena_metadata(ROOT)
+            animation_path=ROOT/'assets/generated/arena-life29.json'
+            report['stage_dynamics']['arena_animation']={
+                'manifest':animation_path.relative_to(ROOT).as_posix(),
+                'manifest_sha256':sha256(animation_path),
+                'phase_count':animation['phase_count'],
+                'pool_vram_words':[animation['tile_vram_word'],animation['tile_vram_end_word']],
+                'bytes_per_quiet_blank':animation['chunk_bytes'],
+                'legacy_ambient_still_disabled':True,
+            }
+            report['scope']+='; source-bound spectators and event reactions with independent dynamic-pool pixel decoding'
         core = Probe()
         require(core.library_name == "bsnes2014",
                 f"unexpected independent core name: {core.library_name!r}")

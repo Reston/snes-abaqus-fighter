@@ -1,0 +1,208 @@
+{
+  "status": "passed",
+  "core": "snes9x",
+  "rom_sha256": "46108c5e955733820f92c8baab4088a0f054e2b4986fb5d8093c1352e1023738",
+  "source_commit": "875478f726f3517e8d87a701079a40beaf7df97b",
+  "source_and_harness": {
+    "src/animation_banks.h": "8250cf1816ae8c0de0da6a876b76e0a0b40c10a44e35f782794ca82e283414e9",
+    "src/animation_weight.h": "cdc8308b9a98c000823b7869a20a122e531d9843f7d1143ae09749b6983adf09",
+    "src/arcade_story.h": "219b418d41b5c8e35d4617e1b3e21d683236a34efceb4efa1bfebd8866697104",
+    "src/audio_presentation.h": "106ac802c7fe95b9eda67f6113b9278a407c8d0a06bba6c83ebd2d4c510e903a",
+    "src/audio_presentation_state.h": "4129b01189826de5cc9266f529eb57f1dcb57bb93febcade1f1dc3bf6e6c730e",
+    "src/characters.h": "f2c66a8984e16cc0e6b360e48c31bad1dee785e280a3bb5cbf7302e3c8e01858",
+    "src/contact_geometry.h": "237d6b05f0e161cf08008629576f46a131b87f7a6928ea6e8e90c74ef8f49c30",
+    "src/cpu_personality.h": "859831dcb5708712b1319512e83018bd9c42dcdae4d04cf7c743888bdaaa8e82",
+    "src/expansion29.h": "5937b2f568a2df5f6796696b2d9da58b29460fa524e8ba5e818f9e21ed4b3a3b",
+    "src/expansion29_state.h": "43f05141910cd071f88b18de7c526d229cd4dae1b3d0803c9f75f96fba393ae0",
+    "src/fighter_personality.h": "e15b92385c8620a8cbdaa1c2734af0f87a91fbdbeefc70fe8c04700998cad0ce",
+    "src/game.c": "806ce509aa63d24a98355937948308a45a5fb59d7fade0be274b47db48cbb635",
+    "src/hardware.asm": "9b6dd260dca337e06b012e9b4fdafdc2c9103750ffcf5cf803d01e9092bab424",
+    "src/impact_presentation.h": "f40dd53fe3c21a026072e1ec362d93b4b8c023ad6cb1b3d1cfaed711c130aa55",
+    "src/knockdown.h": "b4728ac05f282613114b0931a54f5867fc1caeb29ef9cebd5c771614e5d11da3",
+    "src/menu_portraits.h": "96a006a382dfc86e1807b32ac0eaaf652cb302558aea57496a20567d10713c9c",
+    "src/menu_preview.h": "57726013de7927621dac45bf7814d15c1157e53eee6405b1442b5c50dfa2f785",
+    "src/menu_preview_state.h": "a11dda5695fe33302d390eb04b57aaffd0fd268e2dc3cd00613400b719a7315c",
+    "src/menu_repeat.h": "f94c56e7da218b8859016596c2994f936ea4538db51c2d720abea51970836188",
+    "src/pacing_recoil.h": "79518af5f3293ad65c6143e6fdbc836ee0916afc61dce8ab5bc9d3ff8e11611b",
+    "src/pause_guide.h": "ce65ff058cf8ce98d9403e1f8c89ebc7b5bdd47d80d988d6a3412bbb188f6688",
+    "src/stage_depth.h": "6c69ed49f745ae20215e808d276cd41c9834e2722cd690a034d9b5a6b665b051",
+    "src/super_moves.h": "6b5d0f67851c1b7dc370d25f5a4dd1c41c44ad04b41d3928a663c2859374e0b0",
+    "src/trace.asm": "301ec8a99aa326583c332a901903114f5fceeb7f17bbbf768c3e90ae65c3dc88",
+    "src/training_tools.h": "bad6ffc456e48c0b346ffaa069c33871988716828db75a18f511266c3de33961",
+    "src/version.h": "af007fb875b1a397ffeb6fdfc578cfef0c522db0ae6ac971d2a0990df55a5de1",
+    "tools/build.py": "f262826aed503e4b98a261f1ae1a02ca7e82053334d342b439c78ea894874fb8",
+    "tools/build_web.py": "4bd8f2e6e257a1d785b0acbe08cadcae2bca7329fc68befeb0e03a52b636189b",
+    "tools/emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
+    "tools/stage_test_contract.py": "ce846412c276ade58baba3fd940d13cfba1ae21c9b925c1aa4c87308f4c2fa9f",
+    "tools/test_auto29.py": "f20ef65c71c4477b3b2cd28e80349bdc0ed2feb36d4f2ffd2c6ec84adf62541c",
+    "tools/test_champion.py": "d2424acd2cb75a7e08c5a2832a0bf6e5dc3cdb708f6aa89293d4ac3fe2d1e4d5",
+    "tools/test_classic_menu.py": "c469ac2469c19bf12441e9aee8c36240d8c318b1ad2b5d250e7eccab49a8427c",
+    "tools/test_compatibility.py": "c751c44eb3dbaf4542f54c1f6dfd3be4365bbe1336a1705bdaf9f6ff002c123d",
+    "tools/test_training.py": "80be92d2237932fc9d5afb267cad4f2a1a6349de7a4c7270e5c30484c28e9783",
+    "tools/v024_contracts.py": "1b8bbe9ffee65ff4f72410564e26941bb86da72ae914da3f5c74bdbb4891a076",
+    "web/404.html": "dc5d3c516722428ccc30d4c81fa93109f7bcc233ee5d9afbbfca4e04b4d75733",
+    "web/_headers": "b050da5852c3c80b2221d35358c7044be63495c9ea73067c7c9e04ae48fde7b0",
+    "web/credits.html": "1e071455b589a9a6ea373ad46ac23b49a53b3e69b0c3674d0accca4ba76e17d1",
+    "web/icon.svg": "894d7f685dead3805af2317b0cc091f73b2d373ec558f1eb5dc02b6ffa3bb825",
+    "web/index.html": "68b7c848c29ff20c4151b436af6913ec4341755f6677b9d0906c62b8ff115433",
+    "web/player.js": "0312d9e2db8a97b7e046ecf10133de3847acc8f54e3fb54aef4180a1a06ab814",
+    "web/style.css": "8879b9ac99298f6e09bc7b2d7f4025ac60af7a90eee7ddf4d8e97460bd881c00",
+    "web/vendor-lock.json": "5dd6fcf0729e835b544c8bd27ad2bb0242bb2f65ac28d9a131b8626562a4d636"
+  },
+  "host": {
+    "python": "3.12.10",
+    "pillow": "13.0.0",
+    "gui_opened": false,
+    "audio_device_opened": false,
+    "priority_class": 16384,
+    "logical_processors": [
+      6,
+      7
+    ]
+  },
+  "cases": [
+    {
+      "mode": 0,
+      "arena": 0,
+      "fighter": 0,
+      "confirm": "a",
+      "confirm_port": 0,
+      "pause_port": 0,
+      "no_input_callbacks_to_combat": 497,
+      "story_values": 361,
+      "intro_values": 111
+    },
+    {
+      "mode": 0,
+      "arena": 1,
+      "fighter": 4,
+      "confirm": "a",
+      "confirm_port": 0,
+      "pause_port": 1,
+      "no_input_callbacks_to_combat": 497,
+      "story_values": 361,
+      "intro_values": 111
+    },
+    {
+      "mode": 0,
+      "arena": 2,
+      "fighter": 8,
+      "confirm": "start",
+      "confirm_port": 0,
+      "pause_port": 0,
+      "no_input_callbacks_to_combat": 497,
+      "story_values": 361,
+      "intro_values": 111
+    },
+    {
+      "mode": 1,
+      "arena": 0,
+      "fighter": 0,
+      "confirm": "a",
+      "confirm_port": 0,
+      "pause_port": 0,
+      "no_input_callbacks_to_combat": 136,
+      "story_values": 1,
+      "intro_values": 111
+    },
+    {
+      "mode": 1,
+      "arena": 1,
+      "fighter": 4,
+      "confirm": "a",
+      "confirm_port": 1,
+      "pause_port": 1,
+      "no_input_callbacks_to_combat": 136,
+      "story_values": 1,
+      "intro_values": 111
+    },
+    {
+      "mode": 1,
+      "arena": 2,
+      "fighter": 8,
+      "confirm": "start",
+      "confirm_port": 0,
+      "pause_port": 0,
+      "no_input_callbacks_to_combat": 136,
+      "story_values": 1,
+      "intro_values": 111
+    },
+    {
+      "mode": 2,
+      "arena": 0,
+      "fighter": 0,
+      "confirm": "a",
+      "confirm_port": 0,
+      "pause_port": 0,
+      "no_input_callbacks_to_combat": 136,
+      "story_values": 1,
+      "intro_values": 111
+    },
+    {
+      "mode": 2,
+      "arena": 1,
+      "fighter": 4,
+      "confirm": "a",
+      "confirm_port": 0,
+      "pause_port": 1,
+      "no_input_callbacks_to_combat": 136,
+      "story_values": 1,
+      "intro_values": 111
+    },
+    {
+      "mode": 2,
+      "arena": 2,
+      "fighter": 8,
+      "confirm": "start",
+      "confirm_port": 0,
+      "pause_port": 0,
+      "no_input_callbacks_to_combat": 137,
+      "story_values": 1,
+      "intro_values": 111
+    }
+  ],
+  "media": [
+    {
+      "path": "docs/screenshots/auto29/native/snes9x/mode0-arena0-story-automatic.png",
+      "sha256": "5a07dc41a2c6717ca3d49f77359347180d87baa834dc1975b2cf41cb85392af6"
+    },
+    {
+      "path": "docs/screenshots/auto29/native/snes9x/mode0-arena0-fight-countdown.png",
+      "sha256": "a638b3249272d171485f2736b82960478a193479e0630f1cad474c5f7f26f334"
+    },
+    {
+      "path": "docs/screenshots/auto29/native/snes9x/mode0-arena0-unassisted-combat.png",
+      "sha256": "5ab581cac0a388294fc0e203812b0d1be59cf341cc89a990f82b1be22a24030a"
+    },
+    {
+      "path": "docs/screenshots/auto29/native/snes9x/mode1-arena0-fight-countdown.png",
+      "sha256": "e3896529bf86c63febe6bbd59267a18973269a293fc891dd28908f9553a9ee47"
+    },
+    {
+      "path": "docs/screenshots/auto29/native/snes9x/mode1-arena0-unassisted-combat.png",
+      "sha256": "913e16d10ca036fa5de0b81d0418833b63aeb5cc04fad1acbdb6c940a6589239"
+    },
+    {
+      "path": "docs/screenshots/auto29/native/snes9x/mode2-arena0-fight-countdown.png",
+      "sha256": "c2df74d5da8cabc676034ac8f27db9b74917ddc8741f9adf7dd42378b70e1461"
+    },
+    {
+      "path": "docs/screenshots/auto29/native/snes9x/mode2-arena0-unassisted-combat.png",
+      "sha256": "0ab3e4633bbd8299c2f7bbfc3a9c60d80c10c949d28d931c85a4e38c924abc5f"
+    }
+  ],
+  "memory_writes": false,
+  "save_states": false,
+  "post_arena_skip_inputs": 0,
+  "core_identity": {
+    "archive": ".tools\\core.zip",
+    "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
+    "member": "snes9x_libretro.dll",
+    "member_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
+    "dll": ".tools\\core\\snes9x_libretro.dll",
+    "dll_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343"
+  },
+  "passed": 9486,
+  "steady_callbacks": 2610,
+  "elapsed_seconds": 5.797
+}

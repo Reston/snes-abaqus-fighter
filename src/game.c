@@ -160,6 +160,7 @@ void releaseHeldVictim(u8 owner);
 void traceProfiles(void);
 
 #include "stage_depth.h"
+void arenaLife29Load(u8 which);
 
 const char arenaNames[3][12] = {"LAS CONDES","EL CASTILLO","LA OFICINA"};
 /* Menu-only palette zero. Portrait palette one and combat UI stay exact. */
@@ -291,7 +292,7 @@ void music(u8 index) {
     audioSceneLoaded();spcPlay(0);musicIndex=index;
 }
 void commonScreen(void) {
-    stageDepthReset();
+    stageDepthReset();arenaLife29Load(255);
     if(mode==2)trainingNewMatch();
     pausePage=0;guideBuild=0;guideDirty=0;trainingDummy=0;pauseHudPending=0;
     portraitDirty=0;
@@ -321,7 +322,7 @@ void loadBackground(u8 which) {
         if(which==0)ambientData=&stage0_ambient;
         else if(which==1)ambientData=&stage1_ambient;
         else ambientData=&stage2_ambient;
-        stageDepthLoad(which);
+        stageDepthLoad(which);arenaLife29Load(which);
     }
 }
 void finishScreen(void) { dmaCopyVram((u8 *)ui,0x5800,2048);fullDirty=0;footerDirty=0;setScreenOn(); }
@@ -339,6 +340,7 @@ void showTitle(void) {
     music(0);finishScreen();
 }
 #include "menu_preview.h"
+#include "random29.h"
 void drawSelect(void) {
     u8 id,x,y;
     clearUi();id=selectPlayer ? selected2:selected;
@@ -354,7 +356,7 @@ void drawSelect(void) {
     else word(13,3,selectPlayer ? "PLAYER 2":"PLAYER 1");
     word(23,3,mode==0?"ARCADE":(mode==1?"LOCAL":"TRAINING"));
     word(13,12,characterNames[id]);
-    word(3,27,"A/START OK");word(23,27,"B BACK");
+    word(1,27,"A/START  SELECT: RANDOM  B BACK");
     portraitId=id;portraitDirty=0;menuPreviewClock=0;fullDirty=1;
 }
 void uploadSelectUi(void) {
@@ -380,7 +382,7 @@ void drawArenas(void) {
     /* Cover only the raster footer below the three unchanged choice rows.
      * Opaque original glyphs keep the old lettering from showing through. */
     panel(26,2);drawGuideWord((27*32+3)*2,"UP/DOWN A/START OK B BACK");
-    if(mode==1)drawGuideWord((26*32+5)*2,"LOCAL 1V1: EITHER PAD");
+    drawGuideWord((26*32+(mode==1?1:9))*2,mode==1?"SELECT: RANDOM / EITHER PAD":"SELECT: RANDOM");
     fullDirty=1;
 }
 void showArenas(void) { setScreenOff();screen=ARENA;commonScreen();loadBackground(5);drawArenas();finishScreen(); }
@@ -1380,6 +1382,7 @@ void fightTick(void) {
 void menuTick(void) {
     u8 *choice;
     u16 keys,held,directions;
+    random29Tick();
     keys=edge0;held=pad0;
     if(screen==SELECT && selectPlayer){keys|=edge1;held|=pad1;}
     /* Local matches belong to both players, including the rematch card.
@@ -1390,8 +1393,9 @@ void menuTick(void) {
     /* One menu action per sample. Match pause: Start, then Back, then A.
      * Clean held directions before masking edges, so an opposite held on
      * either participating pad cannot turn a new edge into cursor movement. */
-    if(keys&KEY_START)keys&=~(KEY_A|KEY_B);
-    else if(keys&KEY_B)keys&=~KEY_A;
+    if(keys&KEY_START)keys&=~(KEY_A|KEY_B|KEY_SELECT);
+    else if(keys&KEY_B)keys&=~(KEY_A|KEY_SELECT);
+    else if(keys&KEY_A)keys&=~KEY_SELECT;
     if(screen==TITLE) {
         if(directions&KEY_DOWN){menu=(menu+1)%3;sound(0);drawTitle();}
         if(directions&KEY_UP){menu=(menu+2)%3;sound(0);drawTitle();}
@@ -1423,12 +1427,15 @@ void menuTick(void) {
         if(keys&KEY_B){if(selectPlayer){selectPlayer=0;resetMenuRepeat();drawSelect();}else showTitle();return;}
         if(keys&(KEY_A|KEY_START)) {
             sound(3);menuPreviewConfirm=1;resetMenuRepeat();
+        } else if(keys&KEY_SELECT) {
+            *choice=random29Pick(12);sound(0);resetMenuRepeat();drawSelect();
         }
     } else if(screen==ARENA) {
         if(directions&KEY_DOWN){arena=(arena+1)%3;sound(0);drawArenas();}
         if(directions&KEY_UP){arena=(arena+2)%3;sound(0);drawArenas();}
         if(keys&KEY_B){showSelect();return;}
         if(keys&(KEY_A|KEY_START)){sound(3);beginMatch();}
+        else if(keys&KEY_SELECT){arena=random29Pick(3);sound(0);resetMenuRepeat();drawArenas();}
     } else if(screen==RESULT) {
         if(keys&KEY_B){showSelect();return;}
         if(keys&(KEY_A|KEY_START)) {
@@ -1453,8 +1460,12 @@ void traceProfiles(void) {
     TRACE[52]=c0->specialReach;TRACE[53]=c1->specialReach;
     TRACE[54]=c0->throwRange;TRACE[55]=c1->throwRange;
 }
+#include "arena_life29.h"
+
 int main(void) {
     u8 sx,actorTransferred,interfaceTransferred,ambientReady;
+    u8 *arenaLifeUploadSource;
+    u16 arenaLifeUploadDestination;
     u16 scroll;
     randomseed=0xABA;frame=0;menu=0;mode=0;difficulty=1;selected=0;selected2=1;arena=0;
     combatProfiles[0]=&characterProfiles[0];combatProfiles[1]=&characterProfiles[0];
@@ -1478,11 +1489,16 @@ int main(void) {
             queueMenuPreview();
         }
         ambientReady=0;
-        if(stageDepthAmbientReady()) {
-            ambientUploadSource=ambientData+((u16)ambientWanted<<8);
-            ambientReady=1;
+        arenaLife29Tick();
+        if(v29ArenaState[12] && !actorUploadDirty) {
+            if(!fullDirty && !hudDirty && !bannerDirty && !footerDirty && !guideDirty) {
+                arenaLifeUploadSource=arenaLife29Source();
+                arenaLifeUploadDestination=ARENA_LIFE29_VRAM+((u16)v29ArenaState[4]<<7);
+                ambientReady=1;
+            }
         }
         traceActorsFast();
+        arenaLife29Publish();
         audioPresentationTick();
         processResidentAudioReady();WaitForVBlank();
         /* STAT77 retains the completed picture's OBJ overflow flags until
@@ -1512,10 +1528,8 @@ int main(void) {
             }
         }
         if(ambientReady && !actorTransferred && !interfaceTransferred) {
-            dmaCopyVram(ambientUploadSource,AMBIENT_VRAM,AMBIENT_BYTES);
-            ambientPhase=ambientWanted;ambientWanted=255;ambientAge=0;
-            /* Publish completed transfer ownership with the actual VRAM. */
-            TRACE[115]=ambientPhase;TRACE[117]=255;TRACE[118]=0;
+            dmaCopyVram(arenaLifeUploadSource,arenaLifeUploadDestination,ARENA_LIFE29_BYTES);
+            arenaLife29Completed();
         }
         publishImpactPriority();
         scroll=0;
