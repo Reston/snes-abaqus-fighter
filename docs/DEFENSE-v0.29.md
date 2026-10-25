@@ -10,8 +10,8 @@ The baseline was built and measured before implementation, with real
 controller streams on expanded Snes9x for all twelve fighters and both roles,
 plus both roles on pinned bsnes2014 Accuracy. Its integration-reservation ROM
 is `46108c5e955733820f92c8baab4088a0f054e2b4986fb5d8093c1352e1023738`;
-this differs from approved v0.28 because the parent already appended the six
-initialized feature reservations. The baseline measurement is retained under
+this includes the parent's v0.29 identity and six appended initialized feature
+reservations. The baseline measurement is retained under
 ignored `build/defense29/baseline-measurement.json` and summarized, with hashes,
 in the focused report.
 
@@ -105,7 +105,7 @@ when passing it as a child executable to the background wrapper:
 [System.Diagnostics.Process]::GetCurrentProcess().ProcessorAffinity = 12
 $defensePython = (Resolve-Path .tools/python/python.exe).Path
 & $defensePython tools/run_background.py --log build/defense29-build.log -- $defensePython tools/build.py
-& $defensePython tools/run_background.py --log build/defense29-proof.log -- $defensePython tools/test_defense29.py
+& $defensePython tools/run_background.py --log build/defense29-proof-final.log -- $defensePython tools/test_defense29.py
 ```
 
 The initial pre-change measurement used the same wrapper with
@@ -154,3 +154,36 @@ live simulation state. No live callback, game-frame value, Fighter/Wave/RNG
 byte or native input is masked, shifted or omitted from the subsequent
 ordinary-play comparison. That failed attempt remains under ignored
 `build/defense29/failed-loader-preservation-report.json` with its original log.
+
+## Final isolated result
+
+Both commands above exited **0**. The final native proof took 598.047 seconds
+and passed **1,353,426 focused assertion executions**. Earlier diagnostic and
+failed-run counts are not included. This is the topic-1 cartridge, not the
+later combined six-feature verification.
+
+- Source/test freeze: `26c5c4d5f9df6bb8a34c4e35a54421912f5d3448`.
+- Source-inventory SHA256: `09a97fa8801cda33ccec3bc82efc24a2bdcd9ed2a022b1c3c34a2d195f7d9a9b`.
+- Harness SHA256: `6fdacc1962cae1c30c1fba02ddca80eec21e07be8e72f2acf35f8c7a478c087e`.
+- ROM SHA256: `26ed8e783629e3cf413d4daa509f273122db9805bb21c7805c539347923d1f1d`;
+  native checksum `E20B`, 4 MiB NTSC FastROM LoROM, parent identity v0.29.0.
+- Focused report SHA256: `088496852b631fcc322f1d402581564f84e821d1342cc9fa45f90c3b76fc009f`.
+
+The report contains 32 complete defensive sessions (all twelve/both roles on
+Snes9x; Damian, Ivo, Mamariaga and Lars/both roles on Accuracy), 16 fallible CPU
+cases, 32 both-role KO cases with the same roster coverage, 24 complete
+unmasked ordinary-live-play comparison pairs and 24 exact throw/down/recovery
+comparison pairs. The final harness also reproduces the pre-implementation
+throw measurements from the retained baseline ROM. Every report input and all
+44 pinned Python/core/compiler/SDK dependency files remain byte-stable during
+the proof.
+
+Strict health covers **209,423 Snes9x + 54,420 Accuracy fight callbacks**:
+frame/vblank delta one, zero SDK lag, no OBJ overflow, at most one changed
+actor VRAM page and advancing silent PCM. The observed resident FIFO peak is
+zero pending bytes at the sampling point, within the existing six-byte bound.
+Host priority is below normal (`16384`), affinity is logical CPUs `[2,3]`, and
+no GUI or audio device was opened. Ten native PPU captures are hash-bound in
+the report. No shared suite/report, generated asset or tracked dist file is
+part of this feature change; the exact tested ROM/symbol/manifest/report copies
+remain under `build/defense29/candidate/`.
