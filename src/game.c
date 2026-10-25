@@ -158,6 +158,7 @@ extern void refreshHealthBar(u8 player);
 extern void refreshEnergyBar(u8 player);
 void releaseHeldVictim(u8 owner);
 void traceProfiles(void);
+void bonus29PublishScroll(void);
 
 #include "stage_depth.h"
 
@@ -1517,7 +1518,7 @@ int main(void) {
         publishImpactPriority();
         scroll=0;
         if(shake && screen==FIGHT){if(!paused)shake--;scroll=impactScroll();}
-        bgSetScroll(0,screen==BONUS?16:scroll,511);
+        bgSetScroll(0,scroll,511);
         stageDepthPublish(scroll);
         frame++;
     }

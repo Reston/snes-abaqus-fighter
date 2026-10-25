@@ -42,7 +42,7 @@ void stageDepthTrack(void) {
 #define stageDepthVictory() do { } while(0)
 
 void stageDepthPublish(u16 scroll) {
-    if(screen!=FIGHT)return;
+    if(screen!=FIGHT){bonus29PublishScroll();return;}
     if(!stageDepthTable[0])return;
     /* Impact shake composes once on the complete scenery/ground plane. Shake
      * policy freezes when paused; floor and scenery always move together. */

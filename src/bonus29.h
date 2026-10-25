@@ -37,6 +37,12 @@
 const u8 bonus29Starts[6]={0,4,7,0,5,8};
 const u8 bonus29Ends[6]={0,20,28,0,23,32};
 
+/* Called only by stageDepthPublish's existing non-FIGHT branch. Keep the
+ * original live-fight scroll call free of a per-frame bonus ternary. */
+void bonus29PublishScroll(void) {
+    if(screen==BONUS)bgSetScroll(0,16,511);
+}
+
 void bonus29Hud(void) {
     u8 x,filled;
     number(6,2,bonus29Seconds);number(19,2,bonus29Progress);
