@@ -1,0 +1,172 @@
+{
+  "status": "passed",
+  "baseline_commit": "bd501f94444b42df6d886842b55a7d61d51c863e",
+  "version": "0.26.2",
+  "rom_sha256": "ca7c35a9cfa6d633f759d9d46ba19bfcfc17176fef22b2dc9312ed5fe5a9a45b",
+  "scope": "32 guide draw sites change centering to column3 only; strings, call order/count, three-phase guide schedule and other native source stay exact except version",
+  "aligned_call_sites": 32,
+  "preserved_generated": 226,
+  "preserved_ram_labels": 1318,
+  "changes": [
+    {
+      "row": 12,
+      "before": "guideCenter(12,\"A/START RESUME B ROSTER\");",
+      "after": "guideWord(3,12,\"A/START RESUME B ROSTER\");"
+    },
+    {
+      "row": 13,
+      "before": "if(trainingDummy==4)guideCenter(13,\"U/D DUMMY L/R LEVEL SEL GUIDE\");",
+      "after": "if(trainingDummy==4)guideWord(3,13,\"U/D DUMMY L/R LEVEL SEL GUIDE\");"
+    },
+    {
+      "row": 13,
+      "before": "else guideCenter(13,trainingDummy==5?\"X STAND U/D DUMMY SEL GUIDE\":\"X P2 PAD U/D DUMMY SEL GUIDE\");",
+      "after": "else guideWord(3,13,trainingDummy==5?\"X STAND U/D DUMMY SEL GUIDE\":\"X P2 PAD U/D DUMMY SEL GUIDE\");"
+    },
+    {
+      "row": 13,
+      "before": "guideCenter(13,\"SELECT HELP\");",
+      "after": "guideWord(3,13,\"SELECT HELP\");"
+    },
+    {
+      "row": 24,
+      "before": "guideCenter(24,\"A/START RESUME  B ROSTER\");",
+      "after": "guideWord(3,24,\"A/START RESUME  B ROSTER\");"
+    },
+    {
+      "row": 25,
+      "before": "guideCenter(25,musicOn?\"L MUSIC ON\":\"L MUSIC OFF\");",
+      "after": "guideWord(3,25,musicOn?\"L MUSIC ON\":\"L MUSIC OFF\");"
+    },
+    {
+      "row": 27,
+      "before": "guideCenter(27,stageDepthTable[9]?\"R SCENERY STILL\":\"R SCENERY MOVING\");",
+      "after": "guideWord(3,27,stageDepthTable[9]?\"R SCENERY STILL\":\"R SCENERY MOVING\");"
+    },
+    {
+      "row": 26,
+      "before": "guideCenter(26,pausePage==(mode==2?3:2)?\"SELECT CLOSE GUIDE\":\"SELECT NEXT PAGE\");",
+      "after": "guideWord(3,26,pausePage==(mode==2?3:2)?\"SELECT CLOSE GUIDE\":\"SELECT NEXT PAGE\");"
+    },
+    {
+      "row": 9,
+      "before": "guideCenter(9,trainingVisible?\"UP DISPLAY ON\":\"UP DISPLAY OFF\");",
+      "after": "guideWord(3,9,trainingVisible?\"UP DISPLAY ON\":\"UP DISPLAY OFF\");"
+    },
+    {
+      "row": 10,
+      "before": "guideCenter(10,\"DOWN NEXT DRILL\");",
+      "after": "guideWord(3,10,\"DOWN NEXT DRILL\");"
+    },
+    {
+      "row": 11,
+      "before": "guideCenter(11,\"X RETRY\");",
+      "after": "guideWord(3,11,\"X RETRY\");"
+    },
+    {
+      "row": 14,
+      "before": "guideCenter(14,\"COMBO Y > X OR B > A\");",
+      "after": "guideWord(3,14,\"COMBO Y > X OR B > A\");"
+    },
+    {
+      "row": 15,
+      "before": "guideCenter(15,\"OR LINK A SPECIAL\");",
+      "after": "guideWord(3,15,\"OR LINK A SPECIAL\");"
+    },
+    {
+      "row": 16,
+      "before": "guideCenter(16,\"\");",
+      "after": "guideWord(3,16,\"\");"
+    },
+    {
+      "row": 14,
+      "before": "guideCenter(14,\"BLOCK THE CPU LOW\");",
+      "after": "guideWord(3,14,\"BLOCK THE CPU LOW\");"
+    },
+    {
+      "row": 15,
+      "before": "guideCenter(15,\"HOLD DOWN + AWAY\");",
+      "after": "guideWord(3,15,\"HOLD DOWN + AWAY\");"
+    },
+    {
+      "row": 16,
+      "before": "guideCenter(16,\"\");",
+      "after": "guideWord(3,16,\"\");"
+    },
+    {
+      "row": 14,
+      "before": "guideCenter(14,\"JUMP PAST, THEN A\");",
+      "after": "guideWord(3,14,\"JUMP PAST, THEN A\");"
+    },
+    {
+      "row": 15,
+      "before": "guideCenter(15,\"HIT FROM BEHIND\");",
+      "after": "guideWord(3,15,\"HIT FROM BEHIND\");"
+    },
+    {
+      "row": 16,
+      "before": "guideCenter(16,\"\");",
+      "after": "guideWord(3,16,\"\");"
+    },
+    {
+      "row": 21,
+      "before": "guideCenter(21,\"CONFIRM LIGHT > STRONG\");",
+      "after": "guideWord(3,21,\"CONFIRM LIGHT > STRONG\");"
+    },
+    {
+      "row": 22,
+      "before": "guideCenter(22,\"CROSS-UP: JUMP PAST + A\");",
+      "after": "guideWord(3,22,\"CROSS-UP: JUMP PAST + A\");"
+    },
+    {
+      "row": 17,
+      "before": "guideCenter(17,\"S STARTUP A ACTIVE R RECOVERY\");",
+      "after": "guideWord(3,17,\"S STARTUP A ACTIVE R RECOVERY\");"
+    },
+    {
+      "row": 18,
+      "before": "guideCenter(18,\"STANDING ATTACKS - TICKS\");",
+      "after": "guideWord(3,18,\"STANDING ATTACKS - TICKS\");"
+    },
+    {
+      "row": 19,
+      "before": "guideCenter(19,\"HITSTOP IS EXTRA\");",
+      "after": "guideWord(3,19,\"HITSTOP IS EXTRA\");"
+    },
+    {
+      "row": 21,
+      "before": "guideCenter(21,\"\");",
+      "after": "guideWord(3,21,\"\");"
+    },
+    {
+      "row": 22,
+      "before": "guideCenter(22,stageDepthTable[3]==1?\"UP P2 TIMING\":\"UP SPECIALS\");",
+      "after": "guideWord(3,22,stageDepthTable[3]==1?\"UP P2 TIMING\":\"UP SPECIALS\");"
+    },
+    {
+      "row": 23,
+      "before": "guideCenter(23,\"UP NORMAL TIMING\");",
+      "after": "guideWord(3,23,\"UP NORMAL TIMING\");"
+    },
+    {
+      "row": 20,
+      "before": "guideCenter(20,\"H HITS  D DAMAGE\");",
+      "after": "guideWord(3,20,\"H HITS  D DAMAGE\");"
+    },
+    {
+      "row": 21,
+      "before": "guideCenter(21,\"INPUT: DIR + YXBA\");",
+      "after": "guideWord(3,21,\"INPUT: DIR + YXBA\");"
+    },
+    {
+      "row": 22,
+      "before": "guideCenter(22,\"\");",
+      "after": "guideWord(3,22,\"\");"
+    },
+    {
+      "row": 23,
+      "before": "guideCenter(23,\"P1 SELECT RETRY\");",
+      "after": "guideWord(3,23,\"P1 SELECT RETRY\");"
+    }
+  ]
+}

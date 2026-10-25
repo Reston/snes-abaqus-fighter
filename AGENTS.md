@@ -6,6 +6,21 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+<!-- v0261-agent:start -->
+- **v0.26.2 is the concise-text/readability follow-up**, branch
+  `feature/concise-game-text`, PR #23 stacked on v0.26 PR #22. The user approved
+  the shorter wording but found centered blocks hard to read. Longer help now
+  starts at column3; headings and scores remain centered. The 32 changed guide
+  draw sites retain their order and three-phase schedule. All 226 generated
+  assets and 1,318 RAM addresses stay exact; gameplay is unchanged.
+  ROM `ca7c35a9cfa6d633f759d9d46ba19bfcfc17176fef22b2dc9312ed5fe5a9a45b`,
+  checksum `B1E5`, source snapshot `903c9c70e3f7f3c0e3c265cdcf798aadf9b3a09a`.
+  Focused presentation/Training suites pass 6,606 checks. Both-core native
+  captures pass strict health checks. See docs/RELEASE-v0.26.2.md and
+  docs/readable-help-review.json. Full v0.26 six-suite evidence below is
+  historical for this new ROM. Human review/merge approval remain pending.
+<!-- v0261-agent:end -->
+
 <!-- v026-agent:start -->
 - **v0.26.0 is the verified polish playtest candidate**, branch
   `feature/play-flow-polish-v026`, stacked PR #22 on unmerged PR #21 (v0.25).

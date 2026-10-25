@@ -337,7 +337,7 @@ void drawSelect(void) {
     else if(family==SPECIAL_GROUNDWAVE)word(22,20,"LOW WAVE");
     else word(22,20,"RISING");
     word(22,22,"DOWN+Y");word(22,23,"32 ENERGY");word(22,25,"SUPER Y+B");
-    center(27,"D-PAD SELECT A/START OK B BACK");
+    center(27,"A/START OK  B BACK");
     portraitId=id;portraitDirty=1;fullDirty=1;
 }
 void uploadMenuPortrait(void) {
@@ -485,7 +485,7 @@ void beginMatch(void) {
      * blocks.  drawActorFast restores the 16x16 size bit and signed X9 bit
      * for each of the thirty live entries on every render. */
     for(i=0;i<16;i++)oamMemory[512+i]=0;
-    resetRound();panel(26,2);center(26,"Y/X PUNCH     B/A KICK");center(27,"START PAUSE > SELECT GUIDE");
+    resetRound();panel(26,2);center(26,"Y/X PUNCH     B/A KICK");center(27,"START: PAUSE");
     arcadeStoryBegin();
     music(arena+1);finishScreen();
 }
@@ -519,7 +519,7 @@ void showResult(u8 won) {
     }
     loadBackground(arena);
     panel(4,24);
-    if(mode==1)center(5,"MATCH COMPLETE");
+    if(mode==1)center(5,"RESULT");
     else center(5,won?"SHIFT COMPLETE":"SHIFT OVER");
     for(x=3;x<29;x++)put(x,7,154);
     id=won?fighters[0].id:fighters[1].id;
@@ -529,9 +529,9 @@ void showResult(u8 won) {
     for(y=0;y<10;y++)for(x=0;x<8;x++)
         ui[(u16)(y+9)*32+x+4]=(160+(u16)y*8+x)|0x2400;
     word(15,9,characterNames[id]);
-    if(mode==1)word(15,11,won?"PLAYER 1 WINS":"PLAYER 2 WINS");
-    else word(15,11,"WINS THE MATCH");
-    word(16,13,"ROUND WINS");word(15,14,"P1  0 - 0  P2");
+    if(mode==1)word(15,11,won?"P1 WINS":"P2 WINS");
+    else word(15,11,"WINS");
+    word(16,13,"ROUNDS");word(15,14,"P1  0 - 0  P2");
     put(19,14,'0'+fighters[0].won);put(23,14,'0'+fighters[1].won);
     if(mode==0) {
         arcadeStoryProgress(15,17);
@@ -542,13 +542,13 @@ void showResult(u8 won) {
          * ordinary round resets. Count once when an earned result is loaded. */
         if(won){if(stageDepthTable[7]<99)stageDepthTable[7]++;}
         else {if(stageDepthTable[8]<99)stageDepthTable[8]++;}
-        word(15,17,"SESSION WINS");word(15,19,"P1 00 - 00 P2");
+        word(15,17,"SESSION");word(15,19,"P1 00 - 00 P2");
         number(18,19,stageDepthTable[7]);number(23,19,stageDepthTable[8]);
     }
     center(21,mode==0?arcadeStoryWinnerQuotes[id]:characterQuotes[id]);
-    if(mode==0)center(24,won?"A/START: NEXT CHALLENGER":"A/START: CONTINUE");
-    else {center(23,"EITHER PLAYER");center(24,"A/START: REMATCH");}
-    center(26,"B: CHARACTER SELECT");sound(3);finishScreen();
+    if(mode==0)center(24,won?"A/START: NEXT":"A/START: RETRY");
+    else {center(23,"BOTH PADS");center(24,"A/START: REMATCH");}
+    center(26,"B: ROSTER");sound(3);finishScreen();
 }
 
 #include "pause_guide.h"
@@ -1289,8 +1289,8 @@ void fightTick(void) {
         roundEnd--;
         if(roundEnd==100) {
             clearBanner();fillBannerPanel();center(10,winner<2?characterNames[fighters[winner].id]:"DRAW");
-            if(!winner)center(12,"P1 WINS THE ROUND");
-            else if(winner==1)center(12,mode==1?"P2 WINS THE ROUND":"CPU WINS THE ROUND");
+            if(!winner)center(12,"P1 WINS");
+            else if(winner==1)center(12,mode==1?"P2 WINS":"CPU WINS");
             else center(12,"TRY AGAIN");
         }
         if(!roundEnd) {
