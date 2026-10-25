@@ -123,6 +123,12 @@ def difference(a,b):
 
 def oracle(e,plane,floor,offsets,impact=False):
     actual=image(e)
+    arena_pool=getattr(e,'_arena_life29_pool',None)
+    if arena_pool is not None:
+        # The source-bound observer validates every uploaded chunk first.
+        # Decode those known phase bytes in the same immutable whole-scene
+        # map; all floor/camera/pixel assertions below remain unchanged.
+        plane=arena_pool.plane(plane)
     # Above every standing actor. Impact text begins at row72.
     top,bottom=(40,72) if impact else (40,112)
     # A single full-picture offset must explain every scenery row and the
@@ -172,6 +178,11 @@ class Observe:
         self.e=e;self.label=label;self.frames=0;self.deltas=set();self.max_backlog=0
         self.peak_sprites=0;self.peak_tiles=0;self.actor_dma_frames=0
         self.vram=vram_bytes(e)
+        self.arena_pool=None
+        if (ROOT/'assets/generated/arena-life29.json').is_file():
+            from arena_life29_checks import ArenaPool,metadata
+            self.arena_pool=ArenaPool(ROOT,e,SYMS,read(e,'arena'),metadata(ROOT))
+            e._arena_life29_pool=self.arena_pool
     def tick(self,p1=(),p2=()):
         e=self.e;old=e.state();vblank=read(e,'snes_vblank_count',2);lag=read(e,'lag_frame_counter',2)
         e.run(1,p1,p2);s=e.state();w=words(e);current=vram_bytes(e)
@@ -184,14 +195,19 @@ class Observe:
         require(backlog<=6,'spc',{'case':self.label,'frame':s['frame'],'backlog':backlog})
         # Entire wide BG1 map and floor map immutable: legacy ambient must
         # never corrupt the right map half. Guide/UI uploads cannot cross.
-        for a,b in ((0x7000,0x8000),(0xb800,0xc000),(0x6000,0x7000),(0xf000,0xf800)):
+        ranges=[(0x7000,0x8000),(0xb800,0xc000),(0xf000,0xf800)]
+        ranges+=([(0x6000,0x6800),(0x6e00,0x7000)] if self.arena_pool is not None else [(0x6000,0x7000)])
+        for a,b in ranges:
             require(current[a:b]==self.vram[a:b],'transfer',{'case':self.label,'range':[hex(a),hex(b)],'frame':s['frame']})
         changed=sum(current[a:b]!=self.vram[a:b] for a,b in ((0xc000,0xd400),(0xd400,0xe800)))
         require(changed<=1,'transfer',{'case':self.label,'actor_pages_changed':changed,'frame':s['frame']})
         self.actor_dma_frames+=changed
         budget=scanline_budget(oam_memory(e));self.peak_sprites=max(self.peak_sprites,budget['max_sprites']);self.peak_tiles=max(self.peak_tiles,budget['max_tiles'])
         require(self.peak_sprites<=32 and self.peak_tiles<=34,'overflow',{'case':self.label,'budget':budget})
-        require(w[115:119]==[0,0,255,0],'transfer',{'case':self.label,'ambient_trace':w[115:119]})
+        if self.arena_pool is not None:
+            self.arena_pool.observe(current)
+        else:
+            require(w[115:119]==[0,0,255,0],'transfer',{'case':self.label,'ambient_trace':w[115:119]})
         self.vram=current
         return s
     def run(self,n,p1=(),p2=()):
@@ -199,7 +215,8 @@ class Observe:
         return s
     def report(self):
         return {'measured_frames':self.frames,'cadence_deltas':sorted(self.deltas),'max_spc_backlog':self.max_backlog,
-                'obj_peak_sprites':self.peak_sprites,'obj_peak_tiles':self.peak_tiles,'actor_dma_frames':self.actor_dma_frames}
+                'obj_peak_sprites':self.peak_sprites,'obj_peak_tiles':self.peak_tiles,'actor_dma_frames':self.actor_dma_frames,
+                'arena_animation':self.arena_pool.report() if self.arena_pool is not None else None}
 
 
 def stage_case(stage,independent=False):

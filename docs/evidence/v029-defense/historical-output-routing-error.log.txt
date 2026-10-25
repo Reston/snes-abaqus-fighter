@@ -1,0 +1,14 @@
+{"status": "failed", "checks": 458}
+Traceback (most recent call last):
+  File "D:\snes-abaqus-fighter\build\v029\defense-reference-cb616905\run_equivalence.py", line 96, in <module>
+    before, old = h.unaffected(fighter, port, 'defense-disabled-reference', rom=reference_rom)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\snes-abaqus-fighter\build\v029\defense-reference-cb616905\workspace\tools\test_defense29.py", line 650, in unaffected
+    boot_stream = r.stream(f'boot-unaffected-{phase}')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\snes-abaqus-fighter\build\v029\defense-reference-cb616905\workspace\tools\test_defense29.py", line 215, in stream
+    'path': path.relative_to(ROOT).as_posix(), 'gzip_sha256': sha(path.read_bytes())}
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "pathlib.py", line 682, in relative_to
+ValueError: 'D:\\snes-abaqus-fighter\\build\\v029\\defense-current-reference-equivalence-streams\\snes9x-00-p1-boot-unaffected-defense-disabled-reference.json.gz' is not in the subpath of 'D:\\snes-abaqus-fighter\\build\\v029\\defense-reference-cb616905\\workspace'
+Map_LoROMMap

@@ -1,6 +1,16 @@
 # Independent-engine compatibility
 
-## Current main: v0.28.0
+## Current main: v0.29.0
+
+<!-- candidate-version: 0.29.0; identity: TECHNICALLY_VERIFIED_MERGED_FOR_PLAYTEST; rom-sha256: 7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0; source-freeze: 4c35ee89d6269662269481ffafff0166a905c775 -->
+
+The current cartridge passes the six shared suites, pinned Snes9x and Accuracy
+feature proofs, independent compatibility smoke and actual browser/WASM routes.
+The fresh source build reproduces the ROM, 237 assets and normalized symbols.
+[Current evidence](verification-v0.29.0.json) · [Release](RELEASE-v0.29.0.md).
+Earlier sections retain their historical cartridge identities.
+
+## Historical main: v0.28.0
 
 <!-- candidate-version: 0.28.0; identity: APPROVED_MAIN_FOCUSED_UI_VERIFIED; rom-sha256: 09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c; source-freeze: 16e9989497fa7f7bf16271d59555a13b57caeac4 -->
 

@@ -41,7 +41,7 @@ INDEPENDENT_FRAMES = 600
 INDEPENDENT_TOTAL_FRAMES = INDEPENDENT_CASES * INDEPENDENT_FRAMES
 HOUR_SECONDS = 3600.0
 ROM_BYTES = 4 * 1024 * 1024
-GENERATED_ASSET_COUNT = 226
+GENERATED_ASSET_COUNT = 237
 
 EXPECTED_NATIVE_CORE = {
     "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
@@ -116,6 +116,10 @@ SOURCE_INPUT_EXACT = {
     "Build.cmd",
     "Test.cmd",
     "Play.cmd",
+    "Web.cmd",
+    "package.json",
+    "package-lock.json",
+    "wrangler.jsonc",
     "tools/setup.ps1",
     "tools/build.py",
     "tools/make_assets.py",
@@ -132,6 +136,10 @@ SOURCE_INPUT_EXACT = {
     "tools/effect_assets.py",
     "tools/victory_music.py",
     "tools/audio_assets.py",
+    "tools/audio29_assets.py",
+    "tools/audio29_controls.py",
+    "tools/test_audio29.py",
+    "tools/test_audio29_native.py",
     "tools/synthesize_announcements.ps1",
     "tools/preservation.py",
     "tools/expansion_contracts.py",
@@ -139,6 +147,21 @@ SOURCE_INPUT_EXACT = {
     "tools/pose_revision_assets.py",
     "tools/v024_contracts.py",
     "tools/v025_contracts.py",
+    "tools/v029_contracts.py",
+    "tools/arena_life29_assets.py",
+    "tools/arena_life29_checks.py",
+    "tools/test_arena_life29_checks.py",
+    "tools/test_arena_life29.py",
+    "tools/test_random29.py",
+    "tools/test_defense29.py",
+    "tools/bonus29_assets.py",
+    "tools/test_bonus29.py",
+    "tools/test_auto29.py",
+    "tools/test_auto29_web.mjs",
+    "tools/build_web.py",
+    "tools/build_web.mjs",
+    "tools/test_web_build.py",
+    "tools/test_v029_contracts.py",
     "tools/collate_pacing_floor_25.py",
     "tools/test_pacing_floor_25.py",
     "tools/contact_geometry.py",
@@ -187,7 +210,7 @@ SOURCE_INPUT_EXACT = {
     "tools/play.ps1",
     "tools/validate_cartridge.ps1",
 }
-SOURCE_INPUT_PREFIXES = ("src/", "assets/", "dist/")
+SOURCE_INPUT_PREFIXES = ("src/", "assets/", "dist/", "web/")
 
 Recorder = Callable[[bool, str, Any], None]
 

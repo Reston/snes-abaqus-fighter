@@ -1,6 +1,21 @@
 # Native SNES implementation
 
-## Current native candidate: v0.26.0
+## Current native release: v0.29.0
+
+The [six-feature contract](EXPANSION-v0.29-CONTRACT.md) reserves 176 bytes after
+the previous state. Existing actor, Wave and trace layouts remain. Background
+animation uses one 256-byte transfer only when actor/UI uploads yield; it adds
+no OBJ, palette or HDMA ownership. Detailed floors and slower combat remain.
+The soundbank uses 27,470 of 32,768 bytes. The ROM stays a 4 MiB NTSC FastROM.
+
+[Verification](verification-v0.29.0.json) binds current feature, shared-suite,
+browser and fresh-build evidence. Per-report producer commits distinguish the
+native source freeze from later test-only fixture updates. Historical v0.28
+references are retained where their absolute boot frame differs; feature-only
+current-source references prove unmasked comparisons without rebasing frames.
+See [release notes](RELEASE-v0.29.0.md) for controls and review media.
+
+## Historical native candidate: v0.26.0
 
 <!-- candidate-version: 0.26.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 27223b80377173d9535ccd1374b2470cc138a15324852c8b8833fd4f8fd00c7b; source-freeze: c89239901491a239e10194f1399820527b0ebf74 -->
 

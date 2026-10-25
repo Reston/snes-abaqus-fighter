@@ -1,10 +1,10 @@
 {
   "status": "passed",
-  "scope": "independent-engine smoke, whole scenery/ground, freeze and impact geometry, synchronized low-wave, neutral600frame cadence",
+  "scope": "independent-engine smoke, whole scenery/ground, freeze and impact geometry, synchronized low-wave, neutral600frame cadence; source-bound spectators and event reactions with independent dynamic-pool pixel decoding",
   "pinned_core": true,
   "source_url": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/bsnes2014_accuracy_libretro.dll.zip",
   "rom": {
-    "sha256": "d5263c777cbb3a02ce438e07c1c425f2d39dd73d294cd4d2aa8c2cbc2da78e3d",
+    "sha256": "7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0",
     "bytes": 4194304
   },
   "core": {
@@ -28,8 +28,8 @@
   },
   "checks": {
     "pinned_inputs": {
-      "rom_sha256": "d5263c777cbb3a02ce438e07c1c425f2d39dd73d294cd4d2aa8c2cbc2da78e3d",
-      "manifest_sha256": "d5263c777cbb3a02ce438e07c1c425f2d39dd73d294cd4d2aa8c2cbc2da78e3d",
+      "rom_sha256": "7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0",
+      "manifest_sha256": "7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0",
       "rom_bytes": 4194304,
       "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
       "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
@@ -40,8 +40,8 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "84f54b7e958606f34f55c9d763a4d9821af845489f899797ce4a61b629e094ed",
-        "distinct_sampled_rgb": 239,
+        "sha256_rgb": "239d109ac7df93da03f1e83f90e5e4239ea440bb1467778a12248ac029389264",
+        "distinct_sampled_rgb": 308,
         "nonzero_bytes": 344064,
         "nonblank": true
       },
@@ -53,9 +53,9 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "e90066fcb0c21ddf1fd09f346d105e4df9e537ad589501a41ebfb7449e3809fe",
-        "distinct_sampled_rgb": 618,
-        "nonzero_bytes": 306008,
+        "sha256_rgb": "d5f17de1f3438d177294ea9b378e1c37ffb598fb9fabb0241504a1acd183e926",
+        "distinct_sampled_rgb": 608,
+        "nonzero_bytes": 312580,
         "nonblank": true
       },
       "capture": "docs/screenshots/compatibility/select.png",
@@ -67,7 +67,7 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "0d86b91ab47b30883dd79714d5548ea1fa6ab11c0f1c464123acd2f0aa8af846",
+        "sha256_rgb": "32560849aa97d2a36eb5ce06a487a658379add030764721111faef53105d0347",
         "distinct_sampled_rgb": 448,
         "nonzero_bytes": 340756,
         "nonblank": true
@@ -81,9 +81,9 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "cb91abca41f38bab7c8c723d35ebd79b5e57cfa680e6919728611922aa2107e9",
-        "distinct_sampled_rgb": 618,
-        "nonzero_bytes": 320374,
+        "sha256_rgb": "3f62381edc3dce0af078a46fc63a2339704ba44985a21142c6c28069232f4a56",
+        "distinct_sampled_rgb": 629,
+        "nonzero_bytes": 320724,
         "nonblank": true
       },
       "capture": "docs/screenshots/compatibility/fight.png",
@@ -113,9 +113,9 @@
       "passed": true
     },
     "audio": {
-      "samples": 1049050,
-      "energy": 195232769650,
-      "peak": 5140,
+      "samples": 1050122,
+      "energy": 63925759768,
+      "peak": 4867,
       "passed": true
     },
     "stage_ambient_and_freeze": {
@@ -153,35 +153,49 @@
           "stills": [
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage0-center.png",
-              "sha256": "80c15c778011185544ea4db468a2d176cd28f362f05463b5896c18db15a13eaf",
+              "sha256": "b59a193302b523172527ae4f29e7dfca72e875442cab5b52893fb23fe39022e0",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage0-guide.png",
-              "sha256": "14dc5f4530aff6a44617d9145d8b81eb42bd6e8ca99101715d17f9367d562481",
+              "sha256": "45cdb6973c2e7fbf333324a23c4eda6bc538c31797d0a772bdec3c93c3799301",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage0-left.png",
-              "sha256": "b3fdb64f6891ea4f0ba0d35496f5922ee7c08a86f9529bb11345d3f10ec6906c",
+              "sha256": "1d4b182bb85be8175de5d765f6c2512bab2d71fb6e45611d42bd3508f3b30ba8",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage0-right.png",
-              "sha256": "daace665afa92d093e6905422003aefdcb12b54d43b25b67c88f94d03bc72fa9",
+              "sha256": "ab4a9b5173ee93278e6f4bbe916374367576622eb86dbf6b2004b990920b925a",
               "scope": "current native PPU"
             }
           ],
-          "pixel_samples_sha256": "7220955afa1e9d860cb383b4122636a42174b1f3263e0af92c9bf3e567715147",
+          "pixel_samples_sha256": "4c76f840878460cf15153b26d66d5ae43e23379489b1250ba88f51c8962b9d16",
           "measured_frames": 1489,
           "cadence_deltas": [
             1
           ],
-          "max_spc_backlog": 6,
+          "max_spc_backlog": 3,
           "obj_peak_sprites": 17,
           "obj_peak_tiles": 34,
           "actor_dma_frames": 279,
-          "stage_contract": "whole-scenery-detailed-color-floor",
+          "arena_animation": {
+            "callbacks": 1489,
+            "uploads": 258,
+            "completed_phases": [
+              0,
+              1,
+              2,
+              3,
+              5
+            ],
+            "pool_source_bound": true,
+            "map_floor_immutable": true,
+            "trace_matches_direct_state": true
+          },
+          "stage_contract": "whole-scenery-detailed-color-floor-and-source-bound-spectators",
           "passed": true
         },
         "el-castillo": {
@@ -215,26 +229,26 @@
           "stills": [
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage1-center.png",
-              "sha256": "999202a3cc12d3c691ee6a56476390976e86ce29a997c670ce5ba6e7afb230ac",
+              "sha256": "1be7dc0186f44cac3e8c9f3c568a73facec8c57ad615377657f3942f50e1a07b",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage1-guide.png",
-              "sha256": "14dc5f4530aff6a44617d9145d8b81eb42bd6e8ca99101715d17f9367d562481",
+              "sha256": "45cdb6973c2e7fbf333324a23c4eda6bc538c31797d0a772bdec3c93c3799301",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage1-left.png",
-              "sha256": "35233c5677f40fb736d8277062f72b148551684f563bc3bbaaa08bea01c732c1",
+              "sha256": "87bf02cc768091c556e5a9db0f0ddba151f6f78ba4b61482959d4222185485fc",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage1-right.png",
-              "sha256": "e729a8b60fc20c0be2f0bc372ada9d1577b7372e27163ef36dfb2f4bb43f24f6",
+              "sha256": "36fd641a5ae0b09d60eeca8991301ec17b625199e11db4b5411ba7fbcca07b2d",
               "scope": "current native PPU"
             }
           ],
-          "pixel_samples_sha256": "ee93ea4a1451ef0cdadeb58502ee19334409970c844e76c8d9bb4e4f7e56d3c0",
+          "pixel_samples_sha256": "51d721ecd99389c605bdf7c41f2287c104ffa1dcfba4b737fa24ef35fd03c3ec",
           "measured_frames": 1489,
           "cadence_deltas": [
             1
@@ -243,7 +257,21 @@
           "obj_peak_sprites": 17,
           "obj_peak_tiles": 34,
           "actor_dma_frames": 279,
-          "stage_contract": "whole-scenery-detailed-color-floor",
+          "arena_animation": {
+            "callbacks": 1489,
+            "uploads": 258,
+            "completed_phases": [
+              0,
+              1,
+              2,
+              3,
+              5
+            ],
+            "pool_source_bound": true,
+            "map_floor_immutable": true,
+            "trace_matches_direct_state": true
+          },
+          "stage_contract": "whole-scenery-detailed-color-floor-and-source-bound-spectators",
           "passed": true
         },
         "la-oficina": {
@@ -277,26 +305,26 @@
           "stills": [
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage2-center.png",
-              "sha256": "861acdbd3502372170e0938705fb6052c9d4b5c7ff7e48cbb660ca1a805f1679",
+              "sha256": "48906a26230e5b861f6a939bb5ff3de2dc3250a5f69c052871da1ebd56bb2aef",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage2-guide.png",
-              "sha256": "14dc5f4530aff6a44617d9145d8b81eb42bd6e8ca99101715d17f9367d562481",
+              "sha256": "45cdb6973c2e7fbf333324a23c4eda6bc538c31797d0a772bdec3c93c3799301",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage2-left.png",
-              "sha256": "56d5dd5af87dc55a4f73bf2c67bdac0e406fcb4f76e95253758f5077ebef13c3",
+              "sha256": "aa16baa1431b269950c9a77a3643265eab4370324e491ac5fcc9d151c97f2214",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage2-right.png",
-              "sha256": "f2e846c15a463bc602ba06b9471e5366cb69dcbd6eb3834d54b4ad2c9e4bd014",
+              "sha256": "363870c5672c19c76f86848c206eca4ce0cfebfff89924688850ed8935b3a96a",
               "scope": "current native PPU"
             }
           ],
-          "pixel_samples_sha256": "83067ed1b87a76260a495db653a5fe4055fab49527e71e496f66cf00103bb95d",
+          "pixel_samples_sha256": "c9aeac968fbf024a05b8f66baba1c8caa61de3cbe8178e46168b39073d943507",
           "measured_frames": 1489,
           "cadence_deltas": [
             1
@@ -305,7 +333,21 @@
           "obj_peak_sprites": 17,
           "obj_peak_tiles": 34,
           "actor_dma_frames": 279,
-          "stage_contract": "whole-scenery-detailed-color-floor",
+          "arena_animation": {
+            "callbacks": 1489,
+            "uploads": 258,
+            "completed_phases": [
+              0,
+              1,
+              2,
+              3,
+              5
+            ],
+            "pool_source_bound": true,
+            "map_floor_immutable": true,
+            "trace_matches_direct_state": true
+          },
+          "stage_contract": "whole-scenery-detailed-color-floor-and-source-bound-spectators",
           "passed": true
         }
       },
@@ -321,7 +363,7 @@
       "synchronized_initial_frames": 1,
       "synchronized_frames_in_600": 47,
       "stat77_values": [
-        17
+        1
       ],
       "stat77_overflow_bits": [
         0
@@ -345,7 +387,7 @@
   },
   "stage_dynamics": {
     "manifest": "assets/generated/stage-depth.json",
-    "manifest_sha256": "AEB03172A2711E8378F3D40BF7406D9DAC716E68D926F39FF688631018FD45FE",
+    "manifest_sha256": "9BD6298718F750761BCD07B430284016A57022DF356046340BA5F1BF23F71E2D",
     "phase_count": 0,
     "phase_period_frames": 0,
     "legacy_ambient_disabled": true,
@@ -356,6 +398,17 @@
       "ambient_pending_phase": 117,
       "ambient_phase_age": 118
     },
-    "stage_count": 3
+    "stage_count": 3,
+    "arena_animation": {
+      "manifest": "assets/generated/arena-life29.json",
+      "manifest_sha256": "9651C02409FD91958A3EA5DEF60043CC296E16766451077FF8739925C4E551F8",
+      "phase_count": 6,
+      "pool_vram_words": [
+        13312,
+        14079
+      ],
+      "bytes_per_quiet_blank": 256,
+      "legacy_ambient_still_disabled": true
+    }
   }
 }

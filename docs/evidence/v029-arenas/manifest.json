@@ -1,0 +1,958 @@
+{
+  "schema": 1,
+  "kind": "Captured QA source and provenance; not production code or a new proof run",
+  "producer_commit": "4c35ee89d6269662269481ffafff0166a905c775",
+  "native_source_commit": "cb61690501d0688050a453aabcdd6993bc6dcb49",
+  "created_at_utc": "2026-10-25T07:08:46.999795+00:00",
+  "current_rom_sha256": "7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0",
+  "reference_rom": {
+    "original_execution_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\dist\\abaqus-after-hours.sfc",
+    "sha256": "ed0d22e6bfbec35cc728458bedc84917be53c55582d6cdfaf9e00e3d52843fa2",
+    "bytes": 4194304,
+    "checksum": "277A",
+    "published": false,
+    "reproduce_from": "Exact native source commit plus arena-life29-disabled.patch; all 237 assets unchanged"
+  },
+  "reference_source_export_sha256": "7a20b362778fe8530bcce71c09e4cd020bb308538fbb55ccfafd294e339ebbe2",
+  "reference_source_export_hash_definition": "SHA256 of compact sorted JSON mapping relative src/tools/web/assets paths to raw SHA256; approved one-line patch included",
+  "current_reports_unchanged": [
+    {
+      "path": "docs/arena-life29-current-snes9x.json",
+      "sha256": "7eb2d5cf92245071062da52600e3628b3d2594345d0987a3aacf9f41178742d1",
+      "bytes": 593632
+    },
+    {
+      "path": "docs/arena-life29-current-accuracy.json",
+      "sha256": "a92ea6d27645184c90abba6521c5c4bf59e3c09d4745b3d6b2dc5fb17a88c78f",
+      "bytes": 284015
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "current_source_wrapper",
+      "published_path": "docs/evidence/v029-arenas/run_arenas_current_source.py.txt",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\build\\v029\\run_arenas_current_source.py",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\build\\v029\\run_arenas_current_source.py",
+      "restore_policy": "restore_root_ignored",
+      "bytes": 19656,
+      "sha256": "db42e1df3352b597355aa6efa5a52d6372bfb40fe694d63504fb0d080268c5bb",
+      "role": "Byte-identical executed wrapper; imported native producer is not replaced"
+    },
+    {
+      "id": "background_runner",
+      "published_path": "docs/evidence/v029-arenas/run_background.py.txt",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\tools\\run_background.py",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\tools\\run_background.py",
+      "restore_policy": "verify_frozen_source_only",
+      "bytes": 1961,
+      "sha256": "0906fa836fa680964846049036fd2ea1ad48a2fcb68d1235bedff86e7afdf178",
+      "role": "background_runner"
+    },
+    {
+      "id": "native_harness",
+      "published_path": "docs/evidence/v029-arenas/test_arena_life29.py.txt",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\tools\\test_arena_life29.py",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\tools\\test_arena_life29.py",
+      "restore_policy": "verify_frozen_source_only",
+      "bytes": 35705,
+      "sha256": "493a43e2121ada350e23f80795232a0d35d65b6160fc4f44459a71992b173bc6",
+      "role": "native_harness"
+    },
+    {
+      "id": "reference_builder",
+      "published_path": "docs/evidence/v029-arenas/reference-build.py.txt",
+      "original_execution_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\tools\\build.py",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\tools\\build.py",
+      "restore_policy": "verify_reference_source_only",
+      "bytes": 7104,
+      "sha256": "f262826aed503e4b98a261f1ae1a02ca7e82053334d342b439c78ea894874fb8",
+      "role": "reference_builder"
+    },
+    {
+      "id": "minimal_native_patch",
+      "published_path": "docs/evidence/v029-arenas/arena-life29-disabled.patch",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\build\\v029\\arenas-counterfactual-minimal.patch",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\build\\v029\\arenas-counterfactual-minimal.patch",
+      "restore_policy": "restore_root_ignored",
+      "bytes": 340,
+      "sha256": "ce27ef171597b92c1e830b58ccfc05f2e401a528dd05fe7fe3312abe172da62e",
+      "role": "minimal_native_patch"
+    },
+    {
+      "id": "reference_source_audit",
+      "published_path": "docs/evidence/v029-arenas/reference-source-audit.json",
+      "original_execution_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\build\\arena-counterfactual-source-audit.json",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\build\\arena-counterfactual-source-audit.json",
+      "restore_policy": "restore_isolated_reference",
+      "bytes": 190485,
+      "sha256": "5ba5cbdbed3eff19662012b016775e079d8fdc8a3622605235654850a8c4d2f1",
+      "role": "reference_source_audit"
+    },
+    {
+      "id": "reference_native_audit",
+      "published_path": "docs/evidence/v029-arenas/reference-native-audit.json",
+      "original_execution_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\build\\arena-counterfactual-native-audit.json",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\build\\arena-counterfactual-native-audit.json",
+      "restore_policy": "restore_isolated_reference",
+      "bytes": 69655,
+      "sha256": "27c1871db2a0d79b85156477b9c1d80129a5c30edef57657afa338477857d74c",
+      "role": "reference_native_audit"
+    },
+    {
+      "id": "reference_asset_cache",
+      "published_path": "docs/evidence/v029-arenas/reference-asset-cache-v1.json",
+      "original_execution_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\build\\asset-cache-v1.json",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\build\\asset-cache-v1.json",
+      "restore_policy": "restore_isolated_reference",
+      "bytes": 69797,
+      "sha256": "01bea8b05c7aa5ca696e020023fcc459fd01665de0bb42e6c0ff9d5970ff9192",
+      "role": "reference_asset_cache"
+    },
+    {
+      "id": "reference_sdk_header",
+      "published_path": "docs/evidence/v029-arenas/reference-soundbank.h.txt",
+      "original_execution_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\assets\\generated\\soundbank.h",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\assets\\generated\\soundbank.h",
+      "restore_policy": "restore_isolated_reference",
+      "bytes": 676,
+      "sha256": "33bda8c686d5117a0b0a06d76a9c6fbd3d875493c421b0c58e1e81ed2a04d2f7",
+      "role": "reference_sdk_header",
+      "additional_execution_aliases": [
+        {
+          "path": "D:\\snes-abaqus-fighter\\assets\\generated\\soundbank.h",
+          "restore_policy": "restore_ignored_generated_input_only_before_freeze"
+        }
+      ]
+    },
+    {
+      "id": "reference_manifest",
+      "published_path": "docs/evidence/v029-arenas/reference-manifest.json",
+      "original_execution_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\dist\\manifest.json",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\dist\\manifest.json",
+      "restore_policy": "restore_isolated_reference",
+      "bytes": 332,
+      "sha256": "a7419e4ec31251a3810506ac3f394fa3f2351c268b9670f5a21ac02a28380f55",
+      "role": "reference_manifest"
+    },
+    {
+      "id": "reference_symbols",
+      "published_path": "docs/evidence/v029-arenas/reference-symbols.sym.txt",
+      "original_execution_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\dist\\abaqus-after-hours.sym",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\dist\\abaqus-after-hours.sym",
+      "restore_policy": "restore_isolated_reference",
+      "bytes": 229697,
+      "sha256": "2595d0ace16f90f239b891ad6f3dba2d2d3cf4de1df27a1f34e8b1409fa57358",
+      "role": "reference_symbols"
+    },
+    {
+      "id": "reference_build_log",
+      "published_path": "docs/evidence/v029-arenas/reference-build.log",
+      "original_execution_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\build\\arena-counterfactual-build.log",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\build\\arena-counterfactual-build.log",
+      "restore_policy": "restore_isolated_reference",
+      "bytes": 177,
+      "sha256": "f36db1d451c2798a412cd67433f7706683558cdd93e23c89dd3435d2b77489ad",
+      "role": "reference_build_log"
+    },
+    {
+      "id": "execution_status",
+      "published_path": "docs/evidence/v029-arenas/execution-status.json",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\build\\v029\\arenas-final-status.json",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\build\\v029\\arenas-final-status.json",
+      "restore_policy": "restore_root_ignored",
+      "bytes": 258664,
+      "sha256": "424ca44ccf54339f260e0b1ea3480e24f4de48f7217070a57d708ecb2836a3ef",
+      "role": "execution_status"
+    },
+    {
+      "id": "first_divergence",
+      "published_path": "docs/evidence/v029-arenas/historical-v028-first-divergence.json",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\build\\v029\\arenas-first-divergence.json",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\build\\v029\\arenas-first-divergence.json",
+      "restore_policy": "restore_root_ignored",
+      "bytes": 11925,
+      "sha256": "bf12b86c307870f57399360fbd20845b51458ddee40af0938d250054746698be",
+      "role": "first_divergence"
+    },
+    {
+      "id": "original_v028_failed_report",
+      "published_path": "docs/evidence/v029-arenas/historical-v028-comparison-snes9x.json",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\build\\v029\\arena-current-snes9x-v028-failed.json",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\build\\v029\\arena-current-snes9x-v028-failed.json",
+      "restore_policy": "restore_root_ignored",
+      "bytes": 278667,
+      "sha256": "675ec518b63ae9177f1b2643b0a56c97089621ce413b1921763acd0851157a8c",
+      "role": "Historical failed initial comparison, never a passing replay"
+    },
+    {
+      "id": "original_v028_failed_log",
+      "published_path": "docs/evidence/v029-arenas/historical-v028-comparison-snes9x.log",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\build\\v029\\arena-current-snes9x.log",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\build\\v029\\arena-current-snes9x.log",
+      "restore_policy": "restore_root_ignored",
+      "bytes": 1180,
+      "sha256": "3298af9abc7f613ffae9efc45cc2e790b1dc159fe698328795bf6120f2a23197",
+      "role": "original_v028_failed_log"
+    },
+    {
+      "id": "current_proof_log",
+      "published_path": "docs/evidence/v029-arenas/current-source-snes9x.log",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\build\\v029\\arena-current-snes9x-final.log",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\build\\v029\\arena-current-snes9x-final.log",
+      "restore_policy": "restore_root_ignored",
+      "bytes": 3724,
+      "sha256": "8a21e0575cbea89376b3399cbe7aea9b33c5f6bd2084c8b0aa979161d789945e",
+      "role": "current_proof_log"
+    },
+    {
+      "id": "proposal_plan",
+      "published_path": "docs/evidence/v029-arenas/historical-counterfactual-plan.md.txt",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\build\\v029\\arenas-counterfactual-plan.md",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\build\\v029\\arenas-counterfactual-plan.md",
+      "restore_policy": "restore_root_ignored",
+      "bytes": 4021,
+      "sha256": "3201d32632182c4b98fd2f99780f713b4476c2a7bb54d1c5574644e950fa9c58",
+      "role": "Proposal-stage document captured unchanged; subsequent approval/build/pass recorded separately"
+    },
+    {
+      "id": "historical_failed_media_0",
+      "published_path": "docs/evidence/v029-arenas/historical-v028-comparison-media/stage0-initial.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-initial.png",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-initial.png",
+      "restore_policy": "restore_historical_media_if_absent",
+      "bytes": 38878,
+      "sha256": "b9b9a78575b1f3809068508a89dc00a75a7189b94e99d95bd5c3f6e3735a9c6b",
+      "role": "Original failed comparison stage0 native capture; historical, not current pass media"
+    },
+    {
+      "id": "historical_failed_media_1",
+      "published_path": "docs/evidence/v029-arenas/historical-v028-comparison-media/stage0-conversation.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-conversation.png",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-conversation.png",
+      "restore_policy": "restore_historical_media_if_absent",
+      "bytes": 38931,
+      "sha256": "3a2eac65884566db982ff6e802874d657b390c3fb3dba8aa617ba764ac466c5c",
+      "role": "Original failed comparison stage0 native capture; historical, not current pass media"
+    },
+    {
+      "id": "historical_failed_media_2",
+      "published_path": "docs/evidence/v029-arenas/historical-v028-comparison-media/stage0-impact.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-impact.png",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-impact.png",
+      "restore_policy": "restore_historical_media_if_absent",
+      "bytes": 39068,
+      "sha256": "0783caa9b037ba5040eb00db737e0f9bcda472db8424d5d077ed9dd86eabd754",
+      "role": "Original failed comparison stage0 native capture; historical, not current pass media"
+    },
+    {
+      "id": "historical_failed_media_3",
+      "published_path": "docs/evidence/v029-arenas/historical-v028-comparison-media/stage0-super.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-super.png",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-super.png",
+      "restore_policy": "restore_historical_media_if_absent",
+      "bytes": 38423,
+      "sha256": "3e1f9a2b87af9a865757a02e69e5a31f868124640a34b052e5429599489d291f",
+      "role": "Original failed comparison stage0 native capture; historical, not current pass media"
+    },
+    {
+      "id": "historical_failed_media_4",
+      "published_path": "docs/evidence/v029-arenas/historical-v028-comparison-media/stage0-ko.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-ko.png",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-ko.png",
+      "restore_policy": "restore_historical_media_if_absent",
+      "bytes": 33809,
+      "sha256": "b8f96d73de64b03874cb605078eb01e97d5757e74291a1d981fbd1c305a4813d",
+      "role": "Original failed comparison stage0 native capture; historical, not current pass media"
+    },
+    {
+      "id": "historical_failed_media_5",
+      "published_path": "docs/evidence/v029-arenas/historical-v028-comparison-media/stage0-intro-abort.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-intro-abort.png",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-intro-abort.png",
+      "restore_policy": "restore_historical_media_if_absent",
+      "bytes": 33688,
+      "sha256": "317d51653534e9b248acec3acde1abce347aa1a9605f2533415a44b0acff3a38",
+      "role": "Original failed comparison stage0 native capture; historical, not current pass media"
+    },
+    {
+      "id": "historical_failed_media_6",
+      "published_path": "docs/evidence/v029-arenas/historical-v028-comparison-media/stage0-life-events.gif",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-life-events.gif",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-life-events.gif",
+      "restore_policy": "restore_historical_media_if_absent",
+      "bytes": 1938518,
+      "sha256": "1feb184fb83e96cffbb23035e5e8ff82e3f10953f856ba531cda539d2621b9c6",
+      "role": "Original failed comparison stage0 native capture; historical, not current pass media"
+    }
+  ],
+  "file_alias_map": [
+    {
+      "published_path": "docs/evidence/v029-arenas/run_arenas_current_source.py.txt",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\build\\v029\\run_arenas_current_source.py",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\build\\v029\\run_arenas_current_source.py",
+      "restore_policy": "restore_root_ignored",
+      "sha256": "db42e1df3352b597355aa6efa5a52d6372bfb40fe694d63504fb0d080268c5bb"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/run_background.py.txt",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\tools\\run_background.py",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\tools\\run_background.py",
+      "restore_policy": "verify_frozen_source_only",
+      "sha256": "0906fa836fa680964846049036fd2ea1ad48a2fcb68d1235bedff86e7afdf178"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/test_arena_life29.py.txt",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\tools\\test_arena_life29.py",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\tools\\test_arena_life29.py",
+      "restore_policy": "verify_frozen_source_only",
+      "sha256": "493a43e2121ada350e23f80795232a0d35d65b6160fc4f44459a71992b173bc6"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/reference-build.py.txt",
+      "original_execution_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\tools\\build.py",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\tools\\build.py",
+      "restore_policy": "verify_reference_source_only",
+      "sha256": "f262826aed503e4b98a261f1ae1a02ca7e82053334d342b439c78ea894874fb8"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/arena-life29-disabled.patch",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\build\\v029\\arenas-counterfactual-minimal.patch",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\build\\v029\\arenas-counterfactual-minimal.patch",
+      "restore_policy": "restore_root_ignored",
+      "sha256": "ce27ef171597b92c1e830b58ccfc05f2e401a528dd05fe7fe3312abe172da62e"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/reference-source-audit.json",
+      "original_execution_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\build\\arena-counterfactual-source-audit.json",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\build\\arena-counterfactual-source-audit.json",
+      "restore_policy": "restore_isolated_reference",
+      "sha256": "5ba5cbdbed3eff19662012b016775e079d8fdc8a3622605235654850a8c4d2f1"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/reference-native-audit.json",
+      "original_execution_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\build\\arena-counterfactual-native-audit.json",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\build\\arena-counterfactual-native-audit.json",
+      "restore_policy": "restore_isolated_reference",
+      "sha256": "27c1871db2a0d79b85156477b9c1d80129a5c30edef57657afa338477857d74c"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/reference-asset-cache-v1.json",
+      "original_execution_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\build\\asset-cache-v1.json",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\build\\asset-cache-v1.json",
+      "restore_policy": "restore_isolated_reference",
+      "sha256": "01bea8b05c7aa5ca696e020023fcc459fd01665de0bb42e6c0ff9d5970ff9192"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/reference-soundbank.h.txt",
+      "original_execution_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\assets\\generated\\soundbank.h",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\assets\\generated\\soundbank.h",
+      "restore_policy": "restore_isolated_reference",
+      "sha256": "33bda8c686d5117a0b0a06d76a9c6fbd3d875493c421b0c58e1e81ed2a04d2f7"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/reference-manifest.json",
+      "original_execution_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\dist\\manifest.json",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\dist\\manifest.json",
+      "restore_policy": "restore_isolated_reference",
+      "sha256": "a7419e4ec31251a3810506ac3f394fa3f2351c268b9670f5a21ac02a28380f55"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/reference-symbols.sym.txt",
+      "original_execution_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\dist\\abaqus-after-hours.sym",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\dist\\abaqus-after-hours.sym",
+      "restore_policy": "restore_isolated_reference",
+      "sha256": "2595d0ace16f90f239b891ad6f3dba2d2d3cf4de1df27a1f34e8b1409fa57358"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/reference-build.log",
+      "original_execution_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\build\\arena-counterfactual-build.log",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\build\\arena-counterfactual-build.log",
+      "restore_policy": "restore_isolated_reference",
+      "sha256": "f36db1d451c2798a412cd67433f7706683558cdd93e23c89dd3435d2b77489ad"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/execution-status.json",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\build\\v029\\arenas-final-status.json",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\build\\v029\\arenas-final-status.json",
+      "restore_policy": "restore_root_ignored",
+      "sha256": "424ca44ccf54339f260e0b1ea3480e24f4de48f7217070a57d708ecb2836a3ef"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/historical-v028-first-divergence.json",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\build\\v029\\arenas-first-divergence.json",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\build\\v029\\arenas-first-divergence.json",
+      "restore_policy": "restore_root_ignored",
+      "sha256": "bf12b86c307870f57399360fbd20845b51458ddee40af0938d250054746698be"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/historical-v028-comparison-snes9x.json",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\build\\v029\\arena-current-snes9x-v028-failed.json",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\build\\v029\\arena-current-snes9x-v028-failed.json",
+      "restore_policy": "restore_root_ignored",
+      "sha256": "675ec518b63ae9177f1b2643b0a56c97089621ce413b1921763acd0851157a8c"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/historical-v028-comparison-snes9x.log",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\build\\v029\\arena-current-snes9x.log",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\build\\v029\\arena-current-snes9x.log",
+      "restore_policy": "restore_root_ignored",
+      "sha256": "3298af9abc7f613ffae9efc45cc2e790b1dc159fe698328795bf6120f2a23197"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/current-source-snes9x.log",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\build\\v029\\arena-current-snes9x-final.log",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\build\\v029\\arena-current-snes9x-final.log",
+      "restore_policy": "restore_root_ignored",
+      "sha256": "8a21e0575cbea89376b3399cbe7aea9b33c5f6bd2084c8b0aa979161d789945e"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/historical-counterfactual-plan.md.txt",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\build\\v029\\arenas-counterfactual-plan.md",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\build\\v029\\arenas-counterfactual-plan.md",
+      "restore_policy": "restore_root_ignored",
+      "sha256": "3201d32632182c4b98fd2f99780f713b4476c2a7bb54d1c5574644e950fa9c58"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/historical-v028-comparison-media/stage0-initial.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-initial.png",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-initial.png",
+      "restore_policy": "restore_historical_media_if_absent",
+      "sha256": "b9b9a78575b1f3809068508a89dc00a75a7189b94e99d95bd5c3f6e3735a9c6b"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/historical-v028-comparison-media/stage0-conversation.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-conversation.png",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-conversation.png",
+      "restore_policy": "restore_historical_media_if_absent",
+      "sha256": "3a2eac65884566db982ff6e802874d657b390c3fb3dba8aa617ba764ac466c5c"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/historical-v028-comparison-media/stage0-impact.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-impact.png",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-impact.png",
+      "restore_policy": "restore_historical_media_if_absent",
+      "sha256": "0783caa9b037ba5040eb00db737e0f9bcda472db8424d5d077ed9dd86eabd754"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/historical-v028-comparison-media/stage0-super.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-super.png",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-super.png",
+      "restore_policy": "restore_historical_media_if_absent",
+      "sha256": "3e1f9a2b87af9a865757a02e69e5a31f868124640a34b052e5429599489d291f"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/historical-v028-comparison-media/stage0-ko.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-ko.png",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-ko.png",
+      "restore_policy": "restore_historical_media_if_absent",
+      "sha256": "b8f96d73de64b03874cb605078eb01e97d5757e74291a1d981fbd1c305a4813d"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/historical-v028-comparison-media/stage0-intro-abort.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-intro-abort.png",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-intro-abort.png",
+      "restore_policy": "restore_historical_media_if_absent",
+      "sha256": "317d51653534e9b248acec3acde1abce347aa1a9605f2533415a44b0acff3a38"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/historical-v028-comparison-media/stage0-life-events.gif",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-life-events.gif",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\snes9x\\stage0-life-events.gif",
+      "restore_policy": "restore_historical_media_if_absent",
+      "sha256": "1feb184fb83e96cffbb23035e5e8ff82e3f10953f856ba531cda539d2621b9c6"
+    },
+    {
+      "published_path": "docs/evidence/v029-arenas/reference-soundbank.h.txt",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\assets\\generated\\soundbank.h",
+      "restore_to_original_path": "D:\\snes-abaqus-fighter\\assets\\generated\\soundbank.h",
+      "restore_policy": "restore_ignored_generated_input_only_before_freeze",
+      "sha256": "33bda8c686d5117a0b0a06d76a9c6fbd3d875493c421b0c58e1e81ed2a04d2f7"
+    }
+  ],
+  "commands": {
+    "working_directory": "D:\\snes-abaqus-fighter",
+    "python": "D:\\snes-abaqus-fighter\\.tools\\python\\python.exe",
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "processor_affinity_mask": 12288,
+    "logical_processors": [
+      12,
+      13
+    ],
+    "priority": "BelowNormal",
+    "headless": true,
+    "audio_device": false,
+    "reference_build": {
+      "executable_argv": [
+        "D:\\snes-abaqus-fighter\\.tools\\python\\python.exe",
+        "D:\\snes-abaqus-fighter\\tools\\run_background.py",
+        "--log",
+        "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\build\\arena-counterfactual-build.log",
+        "--",
+        "D:\\snes-abaqus-fighter\\.tools\\python\\python.exe",
+        "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57\\tools\\build.py"
+      ],
+      "exit_code": 0
+    },
+    "current_source_snes9x": {
+      "executable_argv": [
+        "D:\\snes-abaqus-fighter\\.tools\\python\\python.exe",
+        "D:\\snes-abaqus-fighter\\tools\\run_background.py",
+        "--log",
+        "D:\\snes-abaqus-fighter\\build\\v029\\arena-current-snes9x-final.log",
+        "--",
+        "D:\\snes-abaqus-fighter\\.tools\\python\\python.exe",
+        "D:\\snes-abaqus-fighter\\build\\v029\\run_arenas_current_source.py"
+      ],
+      "exit_code": 0
+    },
+    "accuracy_retained_not_rerun": {
+      "executable_argv": [
+        "D:\\snes-abaqus-fighter\\.tools\\python\\python.exe",
+        "D:\\snes-abaqus-fighter\\tools\\run_background.py",
+        "--log",
+        "D:\\snes-abaqus-fighter\\build\\v029\\arena-current-accuracy.log",
+        "--",
+        "D:\\snes-abaqus-fighter\\.tools\\python\\python.exe",
+        "D:\\snes-abaqus-fighter\\tools\\test_arena_life29.py",
+        "--combined",
+        "--core",
+        "accuracy",
+        "--stages",
+        "0,1,2",
+        "--report",
+        "D:\\snes-abaqus-fighter\\docs\\arena-life29-current-accuracy.json",
+        "--captures",
+        "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current"
+      ],
+      "exit_code": 0
+    },
+    "historical_v028_failed": {
+      "executable_argv": [
+        "D:\\snes-abaqus-fighter\\.tools\\python\\python.exe",
+        "D:\\snes-abaqus-fighter\\tools\\run_background.py",
+        "--log",
+        "D:\\snes-abaqus-fighter\\build\\v029\\arena-current-snes9x.log",
+        "--",
+        "D:\\snes-abaqus-fighter\\.tools\\python\\python.exe",
+        "D:\\snes-abaqus-fighter\\tools\\test_arena_life29.py",
+        "--combined",
+        "--core",
+        "snes9x",
+        "--stages",
+        "0,1,2",
+        "--report",
+        "D:\\snes-abaqus-fighter\\docs\\arena-life29-current-snes9x.json",
+        "--captures",
+        "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current",
+        "--baseline-rom",
+        "D:\\snes-abaqus-fighter\\build\\arena-life29-baseline\\abaqus-after-hours.sfc",
+        "--baseline-symbols",
+        "D:\\snes-abaqus-fighter\\build\\arena-life29-baseline\\abaqus-after-hours.sym"
+      ],
+      "exit_code": 1
+    }
+  },
+  "passed_scope": {
+    "snes9x_checks": 265621,
+    "native_cases": 3,
+    "reference_replays": 3,
+    "unmasked_replay_callbacks": 8201,
+    "unmasked_initial_states": 3,
+    "bytes_per_unmasked_state": 414,
+    "absolute_TRACE2_included": true,
+    "candidate_arena_dma": 1358,
+    "reference_arena_dma": 0,
+    "accuracy_retained_checks": 117158,
+    "no_new_emulation_in_this_delivery": true
+  },
+  "historical_boundary": {
+    "original_v028_comparison_status": "failed",
+    "first_divergence": "Initial absolute TRACE2: original 691 versus current 690; all remaining unmasked bytes equal",
+    "historical_original_report_execution_path": "D:\\snes-abaqus-fighter\\docs\\arena-life29-current-snes9x.json",
+    "do_not_restore_failed_report_over_current_passed_report": true,
+    "current_reference_scope": "Current native rules/all other five features; only arena tick/upload disabled; not v0.28 equivalence"
+  },
+  "required_delivery_files_for_wrapper": [
+    {
+      "path": "docs/arena-life29-current-accuracy.json",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\arena-life29-current-accuracy.json",
+      "sha256": "a92ea6d27645184c90abba6521c5c4bf59e3c09d4745b3d6b2dc5fb17a88c78f",
+      "bytes": 284015,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/current/accuracy/stage0-initial.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\accuracy\\stage0-initial.png",
+      "sha256": "5de591b0f5f4d1dbf2292dedf248c9c16a40fa6e36ae6b85b5e655bde7bb429b",
+      "bytes": 37139,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/current/accuracy/stage0-conversation.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\accuracy\\stage0-conversation.png",
+      "sha256": "cd665fe26773fd14e53379d22ff21a5ef5bfad02e815144d1ed3ddb7f2cb0a9e",
+      "bytes": 37180,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/current/accuracy/stage0-impact.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\accuracy\\stage0-impact.png",
+      "sha256": "f6df0804db96ec8a82d134dab181afe6d14a9771995c9284a0659505b68731e1",
+      "bytes": 37248,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/current/accuracy/stage0-super.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\accuracy\\stage0-super.png",
+      "sha256": "d9225d8bfb18e9bf1419b7de36ede4c87120dd2185ed737bcd9d18b9990020a1",
+      "bytes": 36624,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/current/accuracy/stage0-ko.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\accuracy\\stage0-ko.png",
+      "sha256": "4ee2b287c223806e776133280096d15bb137006a48f4091b141ae07bc5f9e014",
+      "bytes": 32294,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/current/accuracy/stage0-intro-abort.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\accuracy\\stage0-intro-abort.png",
+      "sha256": "940080e05795736ef84661c5dedf4eac37743222288ce7f7b0acaa42fbf43549",
+      "bytes": 32189,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/current/accuracy/stage0-life-events.gif",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\accuracy\\stage0-life-events.gif",
+      "sha256": "ccca1dbea9e9f262a2355f20432fc203ccfa791efe7d32051ff9e8a9769ae3d7",
+      "bytes": 1938542,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/current/accuracy/stage1-initial.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\accuracy\\stage1-initial.png",
+      "sha256": "0b191c547f03b5a40a70cb661c88241a06018c7fd6659635aba77a0d40b96e12",
+      "bytes": 36324,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/current/accuracy/stage1-conversation.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\accuracy\\stage1-conversation.png",
+      "sha256": "f7d88936ea2b344d801dedb9e3febec282ee1e5a8c41e95a5c0b3932bc56822d",
+      "bytes": 36322,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/current/accuracy/stage1-impact.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\accuracy\\stage1-impact.png",
+      "sha256": "a73c701d22ee6896b5545a26b1308d85f2267d7cc5640b26958a6e5bd1ad6bc6",
+      "bytes": 36444,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/current/accuracy/stage1-super.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\accuracy\\stage1-super.png",
+      "sha256": "2be78c565bad29e60f0492ea6ac83489e7d3d4ebfdaee8f3042f84c2e7ac5afd",
+      "bytes": 36030,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/current/accuracy/stage1-ko.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\accuracy\\stage1-ko.png",
+      "sha256": "abe818ddb11631ff628d246f6112f75ad8410010106737c19c5d39edf911cb0b",
+      "bytes": 29956,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/current/accuracy/stage1-life-events.gif",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\accuracy\\stage1-life-events.gif",
+      "sha256": "c59d3d9ccc2aeceb36cad358a398594c5331b18b1c12c5452fbdfc157cc17d1e",
+      "bytes": 1689565,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/current/accuracy/stage2-initial.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\accuracy\\stage2-initial.png",
+      "sha256": "c41c5db3cbcdc486fe4d2f0e2d039f1f08d4561c328b5cc96a59b2b7531b1cba",
+      "bytes": 36248,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/current/accuracy/stage2-conversation.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\accuracy\\stage2-conversation.png",
+      "sha256": "13194e663947c43a8d21382534f437f6828ca5139d880d6dc317f5e8894f7262",
+      "bytes": 36493,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/current/accuracy/stage2-impact.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\accuracy\\stage2-impact.png",
+      "sha256": "7146441f9ac4de921b0e8434e1ee228e37a4512e1d1d289b50966b08010b05f6",
+      "bytes": 36781,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/current/accuracy/stage2-super.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\accuracy\\stage2-super.png",
+      "sha256": "5bf85afde0d5149e3a8507d66b70a2a93f596a73a4ef47042352dfd4cb2d21e9",
+      "bytes": 35701,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/current/accuracy/stage2-ko.png",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\accuracy\\stage2-ko.png",
+      "sha256": "d1eb6f98bcd6a42478a4379d106081864acb874dd4268a0f5a32e24a184d357c",
+      "bytes": 30186,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    },
+    {
+      "path": "docs/screenshots/arena-life29/current/accuracy/stage2-life-events.gif",
+      "original_execution_path": "D:\\snes-abaqus-fighter\\docs\\screenshots\\arena-life29\\current\\accuracy\\stage2-life-events.gif",
+      "sha256": "e631fbacf627c767532b50987bf98235233ccf760967c92e71462a5a91a087c5",
+      "bytes": 1904013,
+      "purpose": "Already delivered retained Accuracy input read by the unchanged wrapper; restore delivery docs at these paths for a historical checkout"
+    }
+  ],
+  "required_external_ignored_release_archives": [
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.1.0-Windows.zip",
+      "sha256": "5d3adce70e606aaa8b51bb4b6ff0851793bfb54cef08af80b248b47454c8d42e",
+      "bytes": 5287572,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.10.0-Audio-Review.zip",
+      "sha256": "5afec27e3022f87580e21991beb6785b9366dfb9bf16bf2abb45a08400309c70",
+      "bytes": 15447456,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.10.0-Windows.zip",
+      "sha256": "8402f8be6f4c928e5b56cf22955d990c8bb6c4e2107262d489d2b3fc84036a99",
+      "bytes": 6592864,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.11.0-Windows.zip",
+      "sha256": "157112e2f4b1008a4cd112dadbf33664286cc1f57581e606d994a59bf554a278",
+      "bytes": 6874448,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.12.0-Windows.zip",
+      "sha256": "04de3ba2ececd5b31e2c1aca8a2f367765351f49aeaa196b8b9245f7b8d35818",
+      "bytes": 7114333,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.13.0-Audio-Review.zip",
+      "sha256": "c1dadcaa215cf98a0e2e5a40ffaa8f7459219667aa7672f00a90bb786c252b9c",
+      "bytes": 19659730,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.13.0-Windows.zip",
+      "sha256": "c054e656ac840be746e785f11ea49325b67e7eea8a6586ddbb17e92b5fbbb174",
+      "bytes": 8533050,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.14.0-Audio-Review.zip",
+      "sha256": "f6de29e0e93acfa45b97b7a1a2703c5592882a6e15f66597efba4132f8808fc5",
+      "bytes": 19661537,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.14.0-Windows.zip",
+      "sha256": "dd880e6b5b068e0172b92cdad8a52011938df0d0f6adbc1b528d64ce3f9e6339",
+      "bytes": 13479437,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.15.0-Audio-Review.zip",
+      "sha256": "ab82ab54ab9e880650c4eedab41cc93808499fd76a4be00b5ef93b2c6aaaf8c6",
+      "bytes": 19661584,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.15.0-Windows.zip",
+      "sha256": "481d5fb0968c1ba44ffee1e46ed1009736d45f45fa0e79c415478d370661ba62",
+      "bytes": 14747425,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.16.0-Audio-Review.zip",
+      "sha256": "b671c4413e1a09971b3a3282e857fe4a0591cd848dcc225312b516c4b31b8413",
+      "bytes": 19661425,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.16.0-Windows.zip",
+      "sha256": "e8736a6f9a786fd7e9b66e639e7ba220928cd36411159da4b0ba59db08426679",
+      "bytes": 21689220,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.17.0-Audio-Review.zip",
+      "sha256": "c59152a689e6abd9e70ed4722622650a405ab770fe9dbdf674a2dd346b14262c",
+      "bytes": 19659637,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.17.0-Windows.zip",
+      "sha256": "1955e7c735978943f7ca409dff9bf1f853012490e502b60a51c9fe47eb211213",
+      "bytes": 22899854,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.18.0-Audio-Review.zip",
+      "sha256": "f3caca0e6d5d0b45bfb8abaa829aa65c0ab9e0e52ac42e00410fbce28e207213",
+      "bytes": 19659638,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.18.0-Windows.zip",
+      "sha256": "42d25616285e9275e527bb412529da21575671d38cbe239b99b2ba9e69a7d153",
+      "bytes": 22897834,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.19.0-Audio-Review.zip",
+      "sha256": "88312c8785798d28f7e4d7add448e005755e782ae5b61a78acd8cfd0dbb5d730",
+      "bytes": 19661021,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.19.0-Windows.zip",
+      "sha256": "b518ddf6eb6e20bfed1e55758aebb61fa2cca0462b5918412eb0837dc5eb1b07",
+      "bytes": 22904626,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.2.0-Windows.zip",
+      "sha256": "ee0a445ff8da25968ee9d9b3a8653e1229a1538bf049b07a6b2b33462bfef18d",
+      "bytes": 5253892,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.3.0-Windows.zip",
+      "sha256": "057730a2214b2f0a32240a728c79f48a93f0e0643587d045705d629f5f5d7632",
+      "bytes": 5287726,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.3.1-Windows.zip",
+      "sha256": "f98c765ec61da668879bd20fa5d57539953aa659ce2763c757163bebfff00239",
+      "bytes": 5287894,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.4.0-Windows.zip",
+      "sha256": "d66692be21db6a6475283f1941217adde15e8d0d6e041975a37b76b80fae874b",
+      "bytes": 5347813,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.4.1-Windows.zip",
+      "sha256": "6fe663fa346e02a018054faf507fc0f1c95f927d97e1225b0168cbf16fdf316d",
+      "bytes": 5348181,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.5.0-Windows.zip",
+      "sha256": "29a92ed4ee87def9b41f987df784d0b66dd4f49ae799f4b4e22e77a34feaed2a",
+      "bytes": 5717293,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.5.1-Windows.zip",
+      "sha256": "215d1280d77509a5d5f4c11116e7447c881b696c604e0ff37c5740794e6f3ffe",
+      "bytes": 5725526,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.6.0-Windows.zip",
+      "sha256": "6bdd7430b338225f58aa03da670eb867cf39543c22a59fd83203ce4af8e27c44",
+      "bytes": 6227285,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.6.1-Windows.zip",
+      "sha256": "d9257186d953d52603dee98a9e95cd44a1ca1e899f071a6c9633233c2fe6eb4b",
+      "bytes": 6246140,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.7.0-Windows.zip",
+      "sha256": "68da281bdcb064bb7a10bb824ee438f203923409e18e69a3e093b3966abb3d40",
+      "bytes": 6344890,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.7.1-Windows.zip",
+      "sha256": "6ab177a1ef5a101a6f60086fd651c9b7f3f92e3276d519385c3227cb10061a38",
+      "bytes": 6452958,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.8.0-Windows.zip",
+      "sha256": "44f92c041563badc1a6b903e859ad4dd5258b5bd85f6d253cdf74b5c06641869",
+      "bytes": 6546551,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.8.1-Audio-Review.zip",
+      "sha256": "5c66aeba230fded8e27507784a47fb72a918d1f854d57c7a983911a925871205",
+      "bytes": 15449631,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.8.1-Windows.zip",
+      "sha256": "04d951c3abef278afada5a666f9eec8a04d140650354bd82506e750e2849e0b6",
+      "bytes": 6546645,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    },
+    {
+      "original_execution_path": "D:\\snes-abaqus-fighter\\dist\\Abaqus-After-Hours-v0.9.0-Windows.zip",
+      "sha256": "8203ffab8d27b4205e25ebfcc2e74e09f5af199641b281a925a9b981c4d1f97e",
+      "bytes": 6578152,
+      "reason": "Ignored historical release archive included in the executed wrapper frozen-input guard; not vendored by this focused evidence delivery"
+    }
+  ],
+  "external_tool_cache": {
+    "python_path": "D:\\snes-abaqus-fighter\\.tools\\python\\python.exe",
+    "python_sha256": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+    "snes9x_core": {
+      "archive": ".tools\\core.zip",
+      "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
+      "member": "snes9x_libretro.dll",
+      "member_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
+      "dll": ".tools\\core\\snes9x_libretro.dll",
+      "dll_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343"
+    },
+    "note": "Pinned read-only SDK/core/Python/Pillow installation remains an external project prerequisite; no caches or binaries are republished here"
+  },
+  "restore_instructions": "RESTORE.md",
+  "delivery_guards": {
+    "root_src_tools_web_assets_dist_unchanged": true,
+    "current_snes9x_accuracy_report_bytes_unchanged": true,
+    "ignored_execution_status_bytes_unchanged": true,
+    "no_native_job_build_setup_git_mutation": true
+  },
+  "delivery_documents": [
+    {
+      "path": "docs/evidence/v029-arenas/RESTORE.md",
+      "sha256": "d114530f9614a6ba3be72c91c6d48e5c3e77b0b1c5227d70ad82208418605c31",
+      "bytes": 7518
+    },
+    {
+      "path": "docs/ARENAS-v0.29.md",
+      "sha256": "0ddf97e391440c94dec07f400b0db174c657eb7a66b6e3b15f669eb6a7a77f20",
+      "bytes": 17651
+    }
+  ],
+  "delivery_documentation_commands_executed": false
+}

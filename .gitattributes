@@ -11,3 +11,11 @@
 # Native evidence hashes bind the producer's exact serialized bytes.
 # Keep JSON diffs readable while preventing checkout newline conversion.
 docs/*-report.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# v0.29 current native/browser captures retain their original serialized bytes.
+docs/*29-current*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/auto29-media-v0.29.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/verification-v0.29.0.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/review-v0.29.0.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+docs/evidence/** whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Saved patch context lines intentionally contain a leading space.
+docs/evidence/**/*.patch -whitespace

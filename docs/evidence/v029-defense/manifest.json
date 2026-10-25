@@ -1,0 +1,534 @@
+{
+  "schema": 1,
+  "scope": "Repository delivery of accepted current defense proof reproducers and byte-exact raw QA data; no execution in this delivery.",
+  "created_utc": "2026-10-25T07:08:23.484830+00:00",
+  "current_guide": "docs/DEFENSE-v0.29.md",
+  "restore_instructions": "docs/evidence/v029-defense/RESTORE.md",
+  "accepted_combined_report": {
+    "path": "docs/defense29-combined-report.json",
+    "sha256": "34665dcb4bf46db49e5a047dd7fe0bf11ef722f028f68d052787103dcc06cf26",
+    "role": "Accepted current combined defense envelope, unchanged bytes."
+  },
+  "source_freeze": "cb61690501d0688050a453aabcdd6993bc6dcb49",
+  "final_producer_freeze": "4c35ee89d6269662269481ffafff0166a905c775",
+  "candidate_rom_sha256": "7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0",
+  "reference_rom_sha256": "c54a9774fe4f036535369099ebd815742a3325bee59290adf9c0d70403dc9d79",
+  "coverage": {
+    "defense": 32,
+    "cpu": 16,
+    "ko": 32,
+    "ordinary_preservation_pairs": 24,
+    "unteched_throw_preservation_pairs": 24,
+    "native_captures": 10
+  },
+  "native_source_patch_sha256": "f5f1add48fec395d35f9f2bcc1d2db50e19ca6f03421191ed4ec4215d3e9bcc4",
+  "fixture_patch_sha256": "007358d485e1379f6684bdc5009c86ac7b2ad9f88b46a5121b13feaca02f5dec",
+  "executed_runner_sha256": "920bea4fbdb4d4aa3b9ee3a3fe80fa17995f1004e274b086e363f1106d48428d",
+  "executed_fixture_sha256": "e4db62435a4d3e706a1529c56281821510f828d4f4fe62ce716b592277244001",
+  "files": [
+    {
+      "path": "docs/evidence/v029-defense/.gitattributes",
+      "sha256": "705fd4d6451a31d36b3df7de96f83f30ac976c9b4a6d1e51671d8e2f33e2d0da",
+      "bytes": 8,
+      "role": "Keep every captured QA artifact byte-exact; this attribute applies only to this evidence directory."
+    },
+    {
+      "path": "docs/evidence/v029-defense/run_equivalence.py.txt",
+      "sha256": "920bea4fbdb4d4aa3b9ee3a3fe80fa17995f1004e274b086e363f1106d48428d",
+      "bytes": 8353,
+      "role": "Exact executed supplemental runner after the documented output-routing correction; QA data, not an installed tool.",
+      "copied_from": "build/v029/defense-reference-cb616905/run_equivalence.py"
+    },
+    {
+      "path": "docs/evidence/v029-defense/test_defense29-explicit-rom.py.txt",
+      "sha256": "e4db62435a4d3e706a1529c56281821510f828d4f4fe62ce716b592277244001",
+      "bytes": 49320,
+      "role": "Exact executed isolated fixture; only approved explicit-ROM parameter differs from original fixture.",
+      "copied_from": "build/v029/defense-reference-cb616905/workspace/tools/test_defense29.py"
+    },
+    {
+      "path": "docs/evidence/v029-defense/helpers/test_inputs.py.txt",
+      "sha256": "cf3db1c9ba93514ca36fa5eec433ffa30c5131e18903f42c7967dc5fd18ecb48",
+      "bytes": 205230,
+      "role": "Exact cb616905 helper retained in the executed reference workspace; later root test-only edits are not substituted.",
+      "copied_from": "build/v029/defense-reference-cb616905/workspace/tools/test_inputs.py"
+    },
+    {
+      "path": "docs/evidence/v029-defense/helpers/test_presentation.py.txt",
+      "sha256": "b848936bf59953a4a8febf66cde6bc7b2f56adac858aaa4a973d92ae2ad1b006",
+      "bytes": 48778,
+      "role": "Exact cb616905 helper retained in the executed reference workspace; later root test-only edits are not substituted.",
+      "copied_from": "build/v029/defense-reference-cb616905/workspace/tools/test_presentation.py"
+    },
+    {
+      "path": "docs/evidence/v029-defense/helpers/test_bonus29.py.txt",
+      "sha256": "4dfe7c734da0a73bf5565cb69caa087c176dc0c7cde6cf8e91f9eee4b0cb8685",
+      "bytes": 35125,
+      "role": "Exact cb616905 helper retained in the executed reference workspace; later root test-only edits are not substituted.",
+      "copied_from": "build/v029/defense-reference-cb616905/workspace/tools/test_bonus29.py"
+    },
+    {
+      "path": "docs/evidence/v029-defense/defense-disabled-native.patch",
+      "sha256": "f5f1add48fec395d35f9f2bcc1d2db50e19ca6f03421191ed4ec4215d3e9bcc4",
+      "bytes": 1866,
+      "role": "Approved minimal native reference patch only: two source files; preserve reset/reservations/simultaneous tech and other five features.",
+      "copied_from": "counterfactual_proposal.native_source_patch, cpu_personality.h then game.c"
+    },
+    {
+      "path": "docs/evidence/v029-defense/explicit-rom-fixture.patch",
+      "sha256": "007358d485e1379f6684bdc5009c86ac7b2ad9f88b46a5121b13feaca02f5dec",
+      "bytes": 604,
+      "role": "Approved explicit-ROM-only fixture patch; apply only in the isolated workspace.",
+      "copied_from": "counterfactual_proposal.comparison_fixture_patch"
+    },
+    {
+      "path": "docs/evidence/v029-defense/reference-provenance.json",
+      "sha256": "760e0a8b4aef931fcdccf1d0c776aad10dcd5082cccaf8f537b6883435aac0c4",
+      "bytes": 185930,
+      "role": "Byte-exact native reference build snapshot. Its HOLD field records build-time status; final-status.json and the supplemental report record the later release/pass.",
+      "copied_from": "build/v029/defense-reference-cb616905/reference-provenance.json"
+    },
+    {
+      "path": "docs/evidence/v029-defense/final-status.json",
+      "sha256": "fad9610bdf02fe2494660c9f9924a3a07f7e32f518bea8b26b41cdfe082b919c",
+      "bytes": 450098,
+      "role": "Byte-exact completed current-scope terminal status, including exact argv, hashes and archived launch/error records.",
+      "copied_from": "build/v029/defense-final-status.json"
+    },
+    {
+      "path": "docs/evidence/v029-defense/historical-functional-prefix-failed-report.json",
+      "sha256": "37dcc2360c8ec4ba43c5d11758af04983fa36310efd453e036ef5f1d4d2d249a",
+      "bytes": 2668438,
+      "role": "HISTORICAL FAILED full-run report: contains accepted completed32 defense/16 CPU/32 KO prefix; historical ordinary equality failed and historical throw pairs were not reached.",
+      "copied_from": "build/v029/defense-failed-cb616905/docs/defense29-report.json"
+    },
+    {
+      "path": "docs/evidence/v029-defense/current-reference-equivalence-report.json",
+      "sha256": "18c2c2d9e804dd6f3847cfb9230793497307687b77ac151b1bd7bc6b58fb048d",
+      "bytes": 1588572,
+      "role": "Passed current-reference supplement only:24 exact ordinary pairs plus24 exact throw timelines.",
+      "copied_from": "build/v029/defense-current-reference-equivalence.json"
+    },
+    {
+      "path": "docs/evidence/v029-defense/reference-build.log.txt",
+      "sha256": "6bfdce5131bdbaf37703d99fe3cbaab97ad7f6d69adce5cd202bac8f7d486d46",
+      "bytes": 177,
+      "role": "Exact isolated native build log: asset reuse, exit0, reference c54a9774.",
+      "copied_from": "build/v029/defense-reference-cb616905/reference-build.log"
+    },
+    {
+      "path": "docs/evidence/v029-defense/current-reference-equivalence.log.txt",
+      "sha256": "c7685db2d747cb738f2bc7af73ec7f95916da906411d084cfe05dc412a69c152",
+      "bytes": 2034,
+      "role": "Exact passing48-pair supplemental execution log.",
+      "copied_from": "build/v029/defense-current-reference-equivalence.log"
+    },
+    {
+      "path": "docs/evidence/v029-defense/historical-full-run-failed.log.txt",
+      "sha256": "3f24b28324d7da9b9efc4138b4f56ae91bfa106ef383e3fc3871c053ce041dbb",
+      "bytes": 16574,
+      "role": "HISTORICAL failed full-run log; original equality failure remains explicit.",
+      "copied_from": "build/v029/defense-failed-cb616905/build/v029/defense29-combined.log"
+    },
+    {
+      "path": "docs/evidence/v029-defense/historical-output-routing-runner.py.txt",
+      "sha256": "e91989912d0a9c6069f352bc9d986c0671d9de54402d2b936546b5b6deb5cdfb",
+      "bytes": 8349,
+      "role": "Earlier runner before output-path correction; not the passing executed runner.",
+      "copied_from": "build/v029/defense-reference-cb616905/supplement-routing-failure/run_equivalence.py"
+    },
+    {
+      "path": "docs/evidence/v029-defense/historical-output-routing-error-report.json",
+      "sha256": "bbb1b99de2b65d00126794991651b41c23b8648b9c134c096af67d15e647d5b6",
+      "bytes": 339297,
+      "role": "HISTORICAL output-routing failure before any comparison pair.",
+      "copied_from": "build/v029/defense-reference-cb616905/supplement-routing-failure/defense-current-reference-equivalence.json"
+    },
+    {
+      "path": "docs/evidence/v029-defense/historical-output-routing-error.log.txt",
+      "sha256": "81464a4a317523bc27cb870fb387f843fbdd4afa042a307a2ae4d63c56dfb72b",
+      "bytes": 1196,
+      "role": "HISTORICAL output-routing failure log before comparison.",
+      "copied_from": "build/v029/defense-reference-cb616905/supplement-routing-failure/defense-current-reference-equivalence.log"
+    },
+    {
+      "path": "docs/evidence/v029-defense/RESTORE.md",
+      "sha256": "39a903e32f12dab2dc6ef8cf8c9dd682fc6a140034b22fb175485eb08671e09f",
+      "bytes": 6504,
+      "role": "Current guide/index, original ignored-path restoration and exact reference-build/supplemental commands."
+    },
+    {
+      "path": "docs/evidence/v029-defense/asset-cache-v1.json",
+      "sha256": "01bea8b05c7aa5ca696e020023fcc459fd01665de0bb42e6c0ff9d5970ff9192",
+      "bytes": 69797,
+      "role": "Exact asset-cache reuse stamp from the reference build; prevents an unnecessary asset regeneration.",
+      "copied_from": "build/v029/defense-reference-cb616905/workspace/build/asset-cache-v1.json"
+    }
+  ],
+  "path_aliases": [
+    {
+      "reported_paths": [
+        "build/v029/defense-reference-cb616905/run_equivalence.py",
+        "D:/snes-abaqus-fighter/build/v029/defense-reference-cb616905/run_equivalence.py",
+        "D:\\snes-abaqus-fighter\\build\\v029\\defense-reference-cb616905\\run_equivalence.py"
+      ],
+      "committed_copy": "docs/evidence/v029-defense/run_equivalence.py.txt",
+      "sha256": "920bea4fbdb4d4aa3b9ee3a3fe80fa17995f1004e274b086e363f1106d48428d",
+      "report_bytes_rewritten": false
+    },
+    {
+      "reported_paths": [
+        "build/v029/defense-reference-cb616905/workspace/tools/test_defense29.py",
+        "D:/snes-abaqus-fighter/build/v029/defense-reference-cb616905/workspace/tools/test_defense29.py",
+        "D:\\snes-abaqus-fighter\\build\\v029\\defense-reference-cb616905\\workspace\\tools\\test_defense29.py"
+      ],
+      "committed_copy": "docs/evidence/v029-defense/test_defense29-explicit-rom.py.txt",
+      "sha256": "e4db62435a4d3e706a1529c56281821510f828d4f4fe62ce716b592277244001",
+      "report_bytes_rewritten": false
+    },
+    {
+      "reported_paths": [
+        "build/v029/defense-reference-cb616905/workspace/tools/test_inputs.py",
+        "D:/snes-abaqus-fighter/build/v029/defense-reference-cb616905/workspace/tools/test_inputs.py",
+        "D:\\snes-abaqus-fighter\\build\\v029\\defense-reference-cb616905\\workspace\\tools\\test_inputs.py"
+      ],
+      "committed_copy": "docs/evidence/v029-defense/helpers/test_inputs.py.txt",
+      "sha256": "cf3db1c9ba93514ca36fa5eec433ffa30c5131e18903f42c7967dc5fd18ecb48",
+      "report_bytes_rewritten": false
+    },
+    {
+      "reported_paths": [
+        "build/v029/defense-reference-cb616905/workspace/tools/test_presentation.py",
+        "D:/snes-abaqus-fighter/build/v029/defense-reference-cb616905/workspace/tools/test_presentation.py",
+        "D:\\snes-abaqus-fighter\\build\\v029\\defense-reference-cb616905\\workspace\\tools\\test_presentation.py"
+      ],
+      "committed_copy": "docs/evidence/v029-defense/helpers/test_presentation.py.txt",
+      "sha256": "b848936bf59953a4a8febf66cde6bc7b2f56adac858aaa4a973d92ae2ad1b006",
+      "report_bytes_rewritten": false
+    },
+    {
+      "reported_paths": [
+        "build/v029/defense-reference-cb616905/workspace/tools/test_bonus29.py",
+        "D:/snes-abaqus-fighter/build/v029/defense-reference-cb616905/workspace/tools/test_bonus29.py",
+        "D:\\snes-abaqus-fighter\\build\\v029\\defense-reference-cb616905\\workspace\\tools\\test_bonus29.py"
+      ],
+      "committed_copy": "docs/evidence/v029-defense/helpers/test_bonus29.py.txt",
+      "sha256": "4dfe7c734da0a73bf5565cb69caa087c176dc0c7cde6cf8e91f9eee4b0cb8685",
+      "report_bytes_rewritten": false
+    },
+    {
+      "reported_paths": [
+        "build/v029/defense-reference-cb616905/reference-provenance.json",
+        "D:/snes-abaqus-fighter/build/v029/defense-reference-cb616905/reference-provenance.json",
+        "D:\\snes-abaqus-fighter\\build\\v029\\defense-reference-cb616905\\reference-provenance.json"
+      ],
+      "committed_copy": "docs/evidence/v029-defense/reference-provenance.json",
+      "sha256": "760e0a8b4aef931fcdccf1d0c776aad10dcd5082cccaf8f537b6883435aac0c4",
+      "report_bytes_rewritten": false
+    },
+    {
+      "reported_paths": [
+        "build/v029/defense-final-status.json",
+        "D:/snes-abaqus-fighter/build/v029/defense-final-status.json",
+        "D:\\snes-abaqus-fighter\\build\\v029\\defense-final-status.json"
+      ],
+      "committed_copy": "docs/evidence/v029-defense/final-status.json",
+      "sha256": "fad9610bdf02fe2494660c9f9924a3a07f7e32f518bea8b26b41cdfe082b919c",
+      "report_bytes_rewritten": false
+    },
+    {
+      "reported_paths": [
+        "build/v029/defense-failed-cb616905/docs/defense29-report.json",
+        "D:/snes-abaqus-fighter/build/v029/defense-failed-cb616905/docs/defense29-report.json",
+        "D:\\snes-abaqus-fighter\\build\\v029\\defense-failed-cb616905\\docs\\defense29-report.json"
+      ],
+      "committed_copy": "docs/evidence/v029-defense/historical-functional-prefix-failed-report.json",
+      "sha256": "37dcc2360c8ec4ba43c5d11758af04983fa36310efd453e036ef5f1d4d2d249a",
+      "report_bytes_rewritten": false
+    },
+    {
+      "reported_paths": [
+        "docs/defense29-report.json",
+        "D:/snes-abaqus-fighter/docs/defense29-report.json",
+        "D:\\snes-abaqus-fighter\\docs\\defense29-report.json"
+      ],
+      "committed_copy": "docs/evidence/v029-defense/historical-functional-prefix-failed-report.json",
+      "sha256": "37dcc2360c8ec4ba43c5d11758af04983fa36310efd453e036ef5f1d4d2d249a",
+      "report_bytes_rewritten": false
+    },
+    {
+      "reported_paths": [
+        "build/v029/defense-current-reference-equivalence.json",
+        "D:/snes-abaqus-fighter/build/v029/defense-current-reference-equivalence.json",
+        "D:\\snes-abaqus-fighter\\build\\v029\\defense-current-reference-equivalence.json"
+      ],
+      "committed_copy": "docs/evidence/v029-defense/current-reference-equivalence-report.json",
+      "sha256": "18c2c2d9e804dd6f3847cfb9230793497307687b77ac151b1bd7bc6b58fb048d",
+      "report_bytes_rewritten": false
+    },
+    {
+      "reported_paths": [
+        "build/v029/defense-reference-cb616905/reference-build.log",
+        "D:/snes-abaqus-fighter/build/v029/defense-reference-cb616905/reference-build.log",
+        "D:\\snes-abaqus-fighter\\build\\v029\\defense-reference-cb616905\\reference-build.log"
+      ],
+      "committed_copy": "docs/evidence/v029-defense/reference-build.log.txt",
+      "sha256": "6bfdce5131bdbaf37703d99fe3cbaab97ad7f6d69adce5cd202bac8f7d486d46",
+      "report_bytes_rewritten": false
+    },
+    {
+      "reported_paths": [
+        "build/v029/defense-current-reference-equivalence.log",
+        "D:/snes-abaqus-fighter/build/v029/defense-current-reference-equivalence.log",
+        "D:\\snes-abaqus-fighter\\build\\v029\\defense-current-reference-equivalence.log"
+      ],
+      "committed_copy": "docs/evidence/v029-defense/current-reference-equivalence.log.txt",
+      "sha256": "c7685db2d747cb738f2bc7af73ec7f95916da906411d084cfe05dc412a69c152",
+      "report_bytes_rewritten": false
+    },
+    {
+      "reported_paths": [
+        "build/v029/defense-failed-cb616905/build/v029/defense29-combined.log",
+        "D:/snes-abaqus-fighter/build/v029/defense-failed-cb616905/build/v029/defense29-combined.log",
+        "D:\\snes-abaqus-fighter\\build\\v029\\defense-failed-cb616905\\build\\v029\\defense29-combined.log"
+      ],
+      "committed_copy": "docs/evidence/v029-defense/historical-full-run-failed.log.txt",
+      "sha256": "3f24b28324d7da9b9efc4138b4f56ae91bfa106ef383e3fc3871c053ce041dbb",
+      "report_bytes_rewritten": false
+    },
+    {
+      "reported_paths": [
+        "build/v029/defense29-combined.log",
+        "D:/snes-abaqus-fighter/build/v029/defense29-combined.log",
+        "D:\\snes-abaqus-fighter\\build\\v029\\defense29-combined.log"
+      ],
+      "committed_copy": "docs/evidence/v029-defense/historical-full-run-failed.log.txt",
+      "sha256": "3f24b28324d7da9b9efc4138b4f56ae91bfa106ef383e3fc3871c053ce041dbb",
+      "report_bytes_rewritten": false
+    },
+    {
+      "reported_paths": [
+        "build/v029/defense-reference-cb616905/supplement-routing-failure/run_equivalence.py",
+        "D:/snes-abaqus-fighter/build/v029/defense-reference-cb616905/supplement-routing-failure/run_equivalence.py",
+        "D:\\snes-abaqus-fighter\\build\\v029\\defense-reference-cb616905\\supplement-routing-failure\\run_equivalence.py"
+      ],
+      "committed_copy": "docs/evidence/v029-defense/historical-output-routing-runner.py.txt",
+      "sha256": "e91989912d0a9c6069f352bc9d986c0671d9de54402d2b936546b5b6deb5cdfb",
+      "report_bytes_rewritten": false
+    },
+    {
+      "reported_paths": [
+        "build/v029/defense-reference-cb616905/supplement-routing-failure/defense-current-reference-equivalence.json",
+        "D:/snes-abaqus-fighter/build/v029/defense-reference-cb616905/supplement-routing-failure/defense-current-reference-equivalence.json",
+        "D:\\snes-abaqus-fighter\\build\\v029\\defense-reference-cb616905\\supplement-routing-failure\\defense-current-reference-equivalence.json"
+      ],
+      "committed_copy": "docs/evidence/v029-defense/historical-output-routing-error-report.json",
+      "sha256": "bbb1b99de2b65d00126794991651b41c23b8648b9c134c096af67d15e647d5b6",
+      "report_bytes_rewritten": false
+    },
+    {
+      "reported_paths": [
+        "build/v029/defense-reference-cb616905/supplement-routing-failure/defense-current-reference-equivalence.log",
+        "D:/snes-abaqus-fighter/build/v029/defense-reference-cb616905/supplement-routing-failure/defense-current-reference-equivalence.log",
+        "D:\\snes-abaqus-fighter\\build\\v029\\defense-reference-cb616905\\supplement-routing-failure\\defense-current-reference-equivalence.log"
+      ],
+      "committed_copy": "docs/evidence/v029-defense/historical-output-routing-error.log.txt",
+      "sha256": "81464a4a317523bc27cb870fb387f843fbdd4afa042a307a2ae4d63c56dfb72b",
+      "report_bytes_rewritten": false
+    },
+    {
+      "reported_paths": [
+        "build/v029/defense-reference-cb616905/workspace/build/asset-cache-v1.json",
+        "D:/snes-abaqus-fighter/build/v029/defense-reference-cb616905/workspace/build/asset-cache-v1.json",
+        "D:\\snes-abaqus-fighter\\build\\v029\\defense-reference-cb616905\\workspace\\build\\asset-cache-v1.json"
+      ],
+      "committed_copy": "docs/evidence/v029-defense/asset-cache-v1.json",
+      "sha256": "01bea8b05c7aa5ca696e020023fcc459fd01665de0bb42e6c0ff9d5970ff9192",
+      "report_bytes_rewritten": false
+    }
+  ],
+  "restore_to_ignored_paths": [
+    {
+      "committed_copy": "docs/evidence/v029-defense/run_equivalence.py.txt",
+      "restore_path": "build/v029/defense-reference-cb616905/run_equivalence.py",
+      "sha256": "920bea4fbdb4d4aa3b9ee3a3fe80fa17995f1004e274b086e363f1106d48428d",
+      "scope": "ignored build path only"
+    },
+    {
+      "committed_copy": "docs/evidence/v029-defense/test_defense29-explicit-rom.py.txt",
+      "restore_path": "build/v029/defense-reference-cb616905/workspace/tools/test_defense29.py",
+      "sha256": "e4db62435a4d3e706a1529c56281821510f828d4f4fe62ce716b592277244001",
+      "scope": "ignored build path only"
+    },
+    {
+      "committed_copy": "docs/evidence/v029-defense/helpers/test_inputs.py.txt",
+      "restore_path": "build/v029/defense-reference-cb616905/workspace/tools/test_inputs.py",
+      "sha256": "cf3db1c9ba93514ca36fa5eec433ffa30c5131e18903f42c7967dc5fd18ecb48",
+      "scope": "ignored build path only"
+    },
+    {
+      "committed_copy": "docs/evidence/v029-defense/helpers/test_presentation.py.txt",
+      "restore_path": "build/v029/defense-reference-cb616905/workspace/tools/test_presentation.py",
+      "sha256": "b848936bf59953a4a8febf66cde6bc7b2f56adac858aaa4a973d92ae2ad1b006",
+      "scope": "ignored build path only"
+    },
+    {
+      "committed_copy": "docs/evidence/v029-defense/helpers/test_bonus29.py.txt",
+      "restore_path": "build/v029/defense-reference-cb616905/workspace/tools/test_bonus29.py",
+      "sha256": "4dfe7c734da0a73bf5565cb69caa087c176dc0c7cde6cf8e91f9eee4b0cb8685",
+      "scope": "ignored build path only"
+    },
+    {
+      "committed_copy": "docs/evidence/v029-defense/defense-disabled-native.patch",
+      "restore_path": "build/v029/defense-reference-cb616905/defense-disabled-native.patch",
+      "sha256": "f5f1add48fec395d35f9f2bcc1d2db50e19ca6f03421191ed4ec4215d3e9bcc4",
+      "scope": "ignored build path only"
+    },
+    {
+      "committed_copy": "docs/evidence/v029-defense/explicit-rom-fixture.patch",
+      "restore_path": "build/v029/defense-reference-cb616905/explicit-rom-fixture.patch",
+      "sha256": "007358d485e1379f6684bdc5009c86ac7b2ad9f88b46a5121b13feaca02f5dec",
+      "scope": "ignored build path only"
+    },
+    {
+      "committed_copy": "docs/evidence/v029-defense/reference-provenance.json",
+      "restore_path": "build/v029/defense-reference-cb616905/reference-provenance.json",
+      "sha256": "760e0a8b4aef931fcdccf1d0c776aad10dcd5082cccaf8f537b6883435aac0c4",
+      "scope": "ignored build path only"
+    },
+    {
+      "committed_copy": "docs/evidence/v029-defense/historical-functional-prefix-failed-report.json",
+      "restore_path": "build/v029/defense-failed-cb616905/docs/defense29-report.json",
+      "sha256": "37dcc2360c8ec4ba43c5d11758af04983fa36310efd453e036ef5f1d4d2d249a",
+      "scope": "ignored build path only"
+    },
+    {
+      "committed_copy": "docs/evidence/v029-defense/current-reference-equivalence-report.json",
+      "restore_path": "build/v029/defense-current-reference-equivalence.json",
+      "sha256": "18c2c2d9e804dd6f3847cfb9230793497307687b77ac151b1bd7bc6b58fb048d",
+      "scope": "ignored build path only"
+    },
+    {
+      "committed_copy": "docs/evidence/v029-defense/reference-build.log.txt",
+      "restore_path": "build/v029/defense-reference-cb616905/reference-build.log",
+      "sha256": "6bfdce5131bdbaf37703d99fe3cbaab97ad7f6d69adce5cd202bac8f7d486d46",
+      "scope": "ignored build path only"
+    },
+    {
+      "committed_copy": "docs/evidence/v029-defense/current-reference-equivalence.log.txt",
+      "restore_path": "build/v029/defense-current-reference-equivalence.log",
+      "sha256": "c7685db2d747cb738f2bc7af73ec7f95916da906411d084cfe05dc412a69c152",
+      "scope": "ignored build path only"
+    },
+    {
+      "committed_copy": "docs/evidence/v029-defense/historical-full-run-failed.log.txt",
+      "restore_path": "build/v029/defense-failed-cb616905/build/v029/defense29-combined.log",
+      "sha256": "3f24b28324d7da9b9efc4138b4f56ae91bfa106ef383e3fc3871c053ce041dbb",
+      "scope": "ignored build path only"
+    },
+    {
+      "committed_copy": "docs/evidence/v029-defense/asset-cache-v1.json",
+      "restore_path": "build/v029/defense-reference-cb616905/workspace/build/asset-cache-v1.json",
+      "sha256": "01bea8b05c7aa5ca696e020023fcc459fd01665de0bb42e6c0ff9d5970ff9192",
+      "scope": "ignored build path only"
+    }
+  ],
+  "existing_repository_artifacts": [
+    {
+      "path": "docs/defense29-combined-report.json",
+      "sha256": "34665dcb4bf46db49e5a047dd7fe0bf11ef722f028f68d052787103dcc06cf26",
+      "role": "Accepted current combined defense envelope, unchanged bytes."
+    },
+    {
+      "path": "docs/defense29-report.json",
+      "sha256": "37dcc2360c8ec4ba43c5d11758af04983fa36310efd453e036ef5f1d4d2d249a",
+      "role": "Historical failed full run left unchanged; use explicitly historical committed copy above."
+    },
+    {
+      "path": "docs/screenshots/defense29/accuracy-p1-corner-right.png",
+      "sha256": "d7c52bc3f169e6b21ad6c78b458f3f7a7aa4ac4ae29e16e1021c520f256be592",
+      "role": "Existing native functional-prefix capture, unchanged."
+    },
+    {
+      "path": "docs/screenshots/defense29/accuracy-p1-guide.png",
+      "sha256": "dd1b82da859f984732e631ad7a14e0dbb7763ee7be34996ad16331430d1e0eda",
+      "role": "Existing native functional-prefix capture, unchanged."
+    },
+    {
+      "path": "docs/screenshots/defense29/accuracy-p2-corner-right.png",
+      "sha256": "d7c52bc3f169e6b21ad6c78b458f3f7a7aa4ac4ae29e16e1021c520f256be592",
+      "role": "Existing native functional-prefix capture, unchanged."
+    },
+    {
+      "path": "docs/screenshots/defense29/accuracy-p2-guide.png",
+      "sha256": "8253a04052f8c103be3a449f21bc6ece73a803e2df9be334558c46709e63fb4e",
+      "role": "Existing native functional-prefix capture, unchanged."
+    },
+    {
+      "path": "docs/screenshots/defense29/snes9x-p1-corner-right.png",
+      "sha256": "f976b99fbdb13dc668cbe5b1f70490c1ad33eb47535ae7e7805f57a8046e4099",
+      "role": "Existing native functional-prefix capture, unchanged."
+    },
+    {
+      "path": "docs/screenshots/defense29/snes9x-p1-guide.png",
+      "sha256": "f970670283e19f56ffae548b435d8032cf7254ca26401f93020d86d7845a1282",
+      "role": "Existing native functional-prefix capture, unchanged."
+    },
+    {
+      "path": "docs/screenshots/defense29/snes9x-p1-tick-5.png",
+      "sha256": "034bc7b27434613a0bf43b1ee3359f9a587d8b613fc228379e8d73962dc02109",
+      "role": "Existing native functional-prefix capture, unchanged."
+    },
+    {
+      "path": "docs/screenshots/defense29/snes9x-p2-corner-right.png",
+      "sha256": "f976b99fbdb13dc668cbe5b1f70490c1ad33eb47535ae7e7805f57a8046e4099",
+      "role": "Existing native functional-prefix capture, unchanged."
+    },
+    {
+      "path": "docs/screenshots/defense29/snes9x-p2-guide.png",
+      "sha256": "38634e54bb1ea2af6f21e9add6c249207c348ef500a2bac03ccc22d1c518bdb2",
+      "role": "Existing native functional-prefix capture, unchanged."
+    },
+    {
+      "path": "docs/screenshots/defense29/snes9x-p2-tick-5.png",
+      "sha256": "d7e89286ca41a499a7399a029de8008b229eae59fa5802b191a585a0f51ffb85",
+      "role": "Existing native functional-prefix capture, unchanged."
+    }
+  ],
+  "source_alias_rules": [
+    {
+      "reported_prefix": "D:/snes-abaqus-fighter/build/v029/defense-reference-cb616905/workspace/",
+      "source_commit": "cb61690501d0688050a453aabcdd6993bc6dcb49",
+      "committed_original_path": "Strip the workspace prefix; remaining source path names a Git-committed source at this revision.",
+      "exceptions": "Explicit path aliases above win for captured helpers/fixture. Apply the published minimal native patch for game.c/cpu_personality.h. Reference dist artifacts are rebuilt, not aliased to the current candidate ROM.",
+      "raw_hash_inventory": "docs/evidence/v029-defense/reference-provenance.json"
+    },
+    {
+      "reported_prefix": "D:/snes-abaqus-fighter/",
+      "source_commit": "4c35ee89d6269662269481ffafff0166a905c775",
+      "committed_original_path": "Strip the root prefix for current candidate sources; explicit report/artifact aliases above win.",
+      "source_inventory": "docs/defense29-combined-report.json current_source_sha256"
+    }
+  ],
+  "historical_status": {
+    "functional_prefix_raw_report": "failed",
+    "accepted_completed_functional_cases": [
+      32,
+      16,
+      32
+    ],
+    "historical_preservation_passed": false,
+    "historical_failure": "First tuple frame605/604; full pair includes energy and oldFrame differences. Old ordinary24/throw24 are not claimed passed.",
+    "original_root_report_restored": false,
+    "report_bytes_rewritten": false
+  },
+  "retained_not_embedded": {
+    "controller_streams": "Compressed stream binaries remain ignored; raw reports retain exact paths/hashes. Regenerate only with the published frozen runner and required inputs.",
+    "native_roms": "Current candidate remains in dist; reference ROM is recreated from exact native patch and pinned toolchain."
+  },
+  "integrity_notes": [
+    "Directory-local .gitattributes marks QA data -text to preserve bytes through commit/checkout.",
+    "This manifest aliases paths instead of rewriting any report fields.",
+    "reference-provenance.json is a build-time snapshot; final-status.json and current-reference-equivalence-report.json bind the later completed execution."
+  ]
+}

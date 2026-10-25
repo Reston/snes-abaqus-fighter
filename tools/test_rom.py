@@ -5,7 +5,7 @@ VRAM and actual emulator audio / video output. Run after tools/build.py.
 """
 from pathlib import Path
 import ctypes as C
-import json, sys, time, wave
+import json, re, sys, time, wave
 from PIL import Image
 sys.path.insert(0,str(Path(__file__).parent))
 from emulator import Emulator, ROOT
@@ -13,6 +13,9 @@ import test_presentation as presentation
 from test_champion import verify_background as verify_champion_background
 
 checks=[]
+bonus_handoffs=[]
+BONUS_ENABLED=bool(re.search(r'^[0-9a-fA-F]{8} bonus29TryBegin$',
+    (ROOT/'dist/abaqus-after-hours.sym').read_text(),re.M))
 # Native fighter frames are 96x80 (six 16x16 OBJ pieces by five rows),
 # encoded as twelve 8x8 4bpp tiles per physical 384-byte row.  Each VRAM page
 # is 16 tiles wide, so the next row begins 512 bytes later.  Actor 1 starts at
@@ -36,6 +39,27 @@ def wait(e,screen,maxframes=600):
     raise AssertionError(('Screen did not arrive',screen,e.state()))
 def press(e,key,port=0):
     e.tap(key,port);e.run(20)
+
+def next_arcade_fight(e):
+    """Observe the earned handoff, taking the ordinary bonus skip route."""
+    before=e.state()
+    check(before['screen']==4 and before['mode']==0 and before['wins1']==2,
+          'Only a genuine Arcade victory enters the next-opponent handoff',before)
+    press(e,'a')
+    if BONUS_ENABLED and before['arcade'] in (2,6):
+        wait(e,5)
+        entered=e.state()
+        check(entered['arcade']==before['arcade'] and entered['arena']==before['arena'] and
+              entered['fighter_id1']==before['fighter_id1'],
+              'Earned bonus retains the winning milestone and hero until handoff',entered)
+        press(e,'select')
+        wait(e,3)
+        after=e.state()
+        check(after['arcade']==before['arcade']+1 and after['arena']==(before['arena']+1)%3,
+              'Controller Select skip automatically advances exactly one opponent and arena',after)
+        bonus_handoffs.append({'won_index':before['arcade'],'entry':entered,'next_fight':after,
+                               'route':'native Select skip; automatic result handoff'})
+    else:wait(e,3)
 def boot(mode=0,fighter=0,stage=0,opponent=None,difficulty=1):
     e=Emulator();e.run(100)
     if difficulty==0:press(e,'l')
@@ -398,7 +422,7 @@ if e.state()['wins1']!=2:
         if e.state()['wins1']==2:break
         press(e,'a');wait(e,3)
     check(e.state()['wins1']==2,'Arcade player wins after continuing')
-press(e,'a');wait(e,3)
+next_arcade_fight(e)
 check(e.state()['arcade']==1 and e.state()['arena']==1,'Arcade victory advances opponent and arena')
 for match in range(1,11):
     for attempt in range(8):
@@ -407,8 +431,11 @@ for match in range(1,11):
         press(e,'a');wait(e,3)
     check(e.state()['screen']==4,'Arcade ladder match '+str(match+1)+' reaches a result',e.state())
     check(e.state()['wins1']==2,'Controller-only player wins ladder match '+str(match+1))
-    if match<10:press(e,'a');wait(e,3)
+    if match<10:next_arcade_fight(e)
 check(e.state()['champion']==1,'Defeating all eleven opponents awards Office Champion')
+if BONUS_ENABLED:
+    check([row['won_index'] for row in bonus_handoffs]==[2,6],
+          'Both earned bonus milestones occur once during the complete ladder',bonus_handoffs)
 champion_evidence={
     'background':verify_champion_background(e),
     'portrait':presentation.verify_large_portrait(e,e.state()['fighter_id1'],21,7),
@@ -434,6 +461,7 @@ check(manifest.get('bytes')==4*1024*1024,'Native ROM uses the 4 MiB animation Fa
 report={'emulator':'Official Snes9x 1.63 x64 libretro core','rom_sha256':manifest['sha256'],'rom_bytes':manifest.get('bytes'),
         'animation_manifest':animation_manifest,
         'champion_ending':champion_evidence,
+        'bonus_handoffs':bonus_handoffs,
         'passed':len(checks),'elapsed_seconds':round(time.time()-started,2),'checks':checks}
 (ROOT/'docs/test-report.json').write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps({'passed':len(checks),'seconds':report['elapsed_seconds'],'frame_cadence':advance,'report':'docs/test-report.json'}))

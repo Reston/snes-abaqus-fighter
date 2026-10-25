@@ -1,0 +1,11 @@
+{
+    "mode":  "built-in imagegen",
+    "prompt":  "Use case: stylized-concept. Asset type: original native SNES office bonus-round sprite master. Create a clean horizontal sprite sheet with TWO separate objects, on a truly transparent background. Left half: a humorous jammed unbranded office laser printer, three-quarter front view facing slightly left, boxy warm ivory casing, dark charcoal vents, amber warning light, a fan of crumpled white pages bursting upward, small cyan control panel. Right half: a tall messy inbox tray tower of cream paperwork and manila folders with red tabs, on a squat charcoal office cabinet, three-quarter front view facing slightly left. Both objects entirely inside their own equal rectangular halves, no overlap, feet on the same baseline. Style: hand-drawn 1990s arcade pixel-art-inspired cartoon, bold readable silhouettes, confident dark outlines, warm gold/ivory/teal accents, hard-edged cel shading, limited colors suitable for reducing each object to 15 SNES colors at 96 by 80 pixels. Each object should fill a 96:80 rectangle with generous 6% clear margins. No people, no letters, no words, no logos, no watermark, no ground or background shadows outside object. These are playful punching targets, original art, not copied from any existing game.",
+    "reference_images":  [
+
+                         ],
+    "output":  "assets/art/bonus-v029/office-targets-v1.png",
+    "output_sha256":  "bdd4eca7ccdddfe3ac0d0eba788a072c07fee1b53006e556d90db394680598bd",
+    "purpose":  "Original printer jam and inbox targets for BONUS scene; existing fighters and office scenery preserved",
+    "processing":  "Two complete alpha-isolated cutouts (uneven sheet columns 66..975 and 1112..1815); aspect fit, palette quantization and native 4bpp encoding only; see tools/bonus29_assets.py"
+}

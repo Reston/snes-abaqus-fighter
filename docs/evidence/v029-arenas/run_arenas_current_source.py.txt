@@ -1,0 +1,274 @@
+"""Parent-approved current-source arena-disabled replay; frozen native producer imported unchanged."""
+from pathlib import Path
+import ctypes as C
+import datetime, hashlib, inspect, json, struct, subprocess, sys, time
+
+ROOT=Path('D:/snes-abaqus-fighter')
+REFERENCE=Path('D:/snes-abaqus-fighter-arena-cf-cb61690-7e942e57')
+OUT=ROOT/'docs/arena-life29-current-snes9x.json'
+BUILD=ROOT/'build/v029/arenas-current-source'
+CAPTURES=ROOT/'docs/screenshots/arena-life29/current/final-producer-4c35ee'
+FREEZE='4c35ee89d6269662269481ffafff0166a905c775'
+NATIVE_FREEZE='cb61690501d0688050a453aabcdd6993bc6dcb49'
+ROM_SHA='7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0'
+REFERENCE_SHA='ed0d22e6bfbec35cc728458bedc84917be53c55582d6cdfaf9e00e3d52843fa2'
+HARNESS_SHA='493a43e2121ada350e23f80795232a0d35d65b6160fc4f44459a71992b173bc6'
+sys.path.insert(0,str(ROOT/'tools'))
+import test_arena_life29 as arena
+from v029_contracts import validate
+from v024_contracts import symbols
+
+sha=lambda raw:hashlib.sha256(raw).hexdigest()
+def files(base,directories):
+    return {p.relative_to(base).as_posix():sha(p.read_bytes())
+            for d in directories for p in sorted((base/d).rglob('*'))
+            if p.is_file() and '__pycache__' not in p.parts and p.suffix not in ('.pyc','.pyo')}
+def digest_map(mapping):
+    return sha(json.dumps(mapping,sort_keys=True,separators=(',',':')).encode())
+def counts():
+    return {key:value['executions'] for key,value in arena.CHECKS.items()}
+def delta(before):
+    return {key:row['executions']-before.get(key,0) for key,row in arena.CHECKS.items()
+            if row['executions']!=before.get(key,0)}
+def artifact(path):
+    return {'path':str(path),'sha256':sha(path.read_bytes()),'bytes':path.stat().st_size}
+
+# Read-only Python return observer retains the exact local 'data' already
+# hashed by the unchanged Rig.game. No Rig method, controller or state changes.
+observed_games={}
+game_code=arena.Rig.game.__code__
+def observe(frame,event,result):
+    if event=='return' and frame.f_code is game_code:
+        data=frame.f_locals['data']
+        if sha(data)!=result:
+            raise AssertionError('Unchanged Rig.game return does not hash its exact data')
+        previous=observed_games.setdefault(result,data)
+        if previous!=data:
+            raise AssertionError('Gameplay digest collision')
+
+def first_difference(expected_digest,r,stage,index,keys):
+    expected=observed_games[expected_digest]
+    actual=observed_games[r.game()]
+    differences=[{'offset':i,'candidate':a,'reference':b}
+                 for i,(a,b) in enumerate(zip(expected,actual)) if a!=b]
+    words=[{'word':i,'candidate':a,'reference':b}
+           for i,(a,b) in enumerate(zip(struct.unpack('<114H',expected[:228]),
+                                      struct.unpack('<114H',actual[:228]))) if a!=b]
+    return {'stage':stage,'callback':index,'keys':keys,
+            'candidate_game_sha256':expected_digest,'reference_game_sha256':sha(actual),
+            'candidate_game_bytes_hex':expected.hex(),'reference_game_bytes_hex':actual.hex(),
+            'differing_bytes':differences,'differing_trace_words':words,
+            'reference_state':r.state()}
+
+def replay_current_source(case,report,reference_symbols):
+    require=arena.require
+    r=arena.Rig('snes9x',case['stage'],case['fighter_mirror'],reference_symbols,report,
+                rom=REFERENCE/'dist/abaqus-after-hours.sfc',monitor=True,captures=CAPTURES)
+    start=counts()
+    try:
+        r.boot()
+        same=r.initial_game==case['replay']['initial_game']
+        if not same:
+            report['first_divergence']=first_difference(case['replay']['initial_game'],r,case['stage'],'initial',[])
+        require(same,'Current-source reference starts at identical complete unmasked gameplay state',report.get('first_divergence'))
+        initial_frame=r.state()['frame']
+        def zero_upload_guard():
+            state=r.life()
+            require(state[0]==case['stage']+1 and state[1:6]==bytes([0,0,0,6,0])
+                    and state[12]==state[14]==0,
+                    'Arena-disabled reference clock/phase/queue/arm/serial remain exact initialized values',list(state[:21]))
+            require(r.vram()[0x6800:0x6e00]==r.sources[case['stage']][:1536],
+                    'Arena-disabled reference entire pool remains exact phase zero')
+            require(r.health['ambient_uploads']==0,'Arena-disabled reference completes zero arena DMA')
+        zero_upload_guard()
+        for index,row in enumerate(case['replay']['inputs']):
+            r.tick(row['p1'],row['p2'],record=False)
+            actual=r.game()
+            same=actual==row['game']
+            if not same:
+                report['first_divergence']=first_difference(row['game'],r,case['stage'],index,[row['p1'],row['p2']])
+            require(same,'Every callback complete unmasked TRACE0..113/Fighter64/Wave16/RNG/private-super equals current-source reference',
+                    report.get('first_divergence'))
+            zero_upload_guard()
+        require(0<r.e.audio_peak<32767 and r.e.audio_energy>0,
+                'Reference full-session captured PCM stays active and unclipped',r.e.audio_peak)
+        require(r.monitor and r.health['callbacks']>=len(case['replay']['inputs']),
+                'Reference retains unchanged strict native health on every replay callback',r.health)
+        return {'stage':case['stage'],'fighter_mirror':case['fighter_mirror'],
+                'callbacks':len(case['replay']['inputs']),'initial_equal':True,'all_unmasked_equal':True,
+                'absolute_TRACE2_included':True,'initial_frame':initial_frame,
+                'gameplay_byte_count':len(observed_games[case['replay']['initial_game']]),
+                'reference_rom_sha256':REFERENCE_SHA,'arena_dma_count':r.health['ambient_uploads'],
+                'pool_phase':0,'strict_native_health':r.health,'checks':delta(start),
+                'pcm_peak':r.e.audio_peak,'pcm_energy':r.e.audio_energy}
+    finally:
+        r.e.close()
+
+def main():
+    BUILD.mkdir(parents=True,exist_ok=True)
+    started=time.monotonic()
+    old_status=json.loads((ROOT/'build/v029/arenas-final-status.json').read_bytes())
+    failed=old_status['jobs'][0]
+    old_report=ROOT/'build/v029/arena-current-snes9x-v028-failed.json'
+    frozen=files(ROOT,('src','tools','web','assets','dist'))
+    reference_frozen=files(REFERENCE,('src','tools','web','assets','dist'))
+    helper_before=sha(Path(__file__).read_bytes())
+    retained_paths=[old_report,Path(failed['log']),ROOT/'docs/arena-life29-current-accuracy.json']
+    old_failure=json.loads(old_report.read_bytes())
+    retained_paths += [ROOT/row['path'] for row in old_failure.get('media',[])]
+    accuracy=json.loads((ROOT/'docs/arena-life29-current-accuracy.json').read_bytes())
+    retained_paths += [ROOT/row['path'] for row in accuracy.get('media',[])]
+    retained={str(p):sha(p.read_bytes()) for p in retained_paths}
+    source_audit_path=REFERENCE/'build/arena-counterfactual-source-audit.json'
+    native_audit_path=REFERENCE/'build/arena-counterfactual-native-audit.json'
+    audit=json.loads(source_audit_path.read_bytes())
+    native_audit=json.loads(native_audit_path.read_bytes())
+    patch_path=ROOT/'build/v029/arenas-counterfactual-minimal.patch'
+    source_map={k:v for k,v in audit['reference_producer_inputs'].items() if not k.startswith('dist/')}
+    report={'status':'failed','core':'snes9x','source_commit':FREEZE,'native_source_freeze':NATIVE_FREEZE,
+            'rom':json.loads((ROOT/'dist/manifest.json').read_bytes()),'sources':arena.snapshot(),
+            'frozen_inputs':frozen,'frozen_inputs_sha256':digest_map(frozen),
+            'native_inputs':{k:v for k,v in frozen.items() if k in
+                             ('dist/abaqus-after-hours.sfc','dist/abaqus-after-hours.sym','dist/manifest.json')},
+            'generated_inputs':arena.file_hashes(ROOT/'assets/generated'),
+            'memory_writes':False,'save_states':False,'audio_device':False,
+            'normalization':False,'rebasing':False,'candidate_callback_collapse':0,'quiet_frame_waivers':False,
+            'capture_root':str(CAPTURES),'media':[],'cases':[],'baseline_replays':[],
+            'scope':'Full current-ROM three-arena native proof plus current-source arena-disabled unmasked causal reference; not v0.28 equality or combined six-suite certification',
+            'original_v028_comparison':{'status':'failed','archived_report':artifact(old_report),
+                 'original_log':artifact(Path(failed['log'])),'error':old_failure['error'],
+                 'diagnostic':artifact(ROOT/'build/v029/arenas-first-divergence.json'),
+                 'scope':'Retained failure: initial absolute TRACE2 691 versus 690; never normalized or counted passed'},
+            'retained_accuracy':{'report':artifact(ROOT/'docs/arena-life29-current-accuracy.json'),
+                 'status':accuracy['status'],'checks':accuracy['passed'],'source_commit':accuracy['source_commit'],
+                 'scope':'Original cb61690 producer-bound full current-ROM proof retained; not rerun'},
+            'producer':{'harness':artifact(ROOT/'tools/test_arena_life29.py'),
+                 'helper':artifact(Path(__file__)),
+                 'unchanged_functions':{n:sha(inspect.getsource(f).encode()) for n,f in (
+                     ('Rig.tick',arena.Rig.tick),('Rig.verify_trace',arena.Rig.verify_trace),
+                     ('Rig.game',arena.Rig.game),('Rig.boot',arena.Rig.boot),
+                     ('arena_case',arena.arena_case),('intro_abort_case',arena.intro_abort_case))}},
+            'reference':{'scope':'Exact cb61690 native runtime, all five other features and 237 identical assets; only approved one-line arenaLife29Tick return after byte12 clear',
+                 'native_source_freeze':NATIVE_FREEZE,'rom':artifact(REFERENCE/'dist/abaqus-after-hours.sfc'),
+                 'symbols':artifact(REFERENCE/'dist/abaqus-after-hours.sym'),
+                 'manifest':artifact(REFERENCE/'dist/manifest.json'),'minimal_patch':artifact(patch_path),
+                 'source_audit':artifact(source_audit_path),'native_audit':artifact(native_audit_path),
+                 'source_export_sha256':digest_map(source_map),'source_inputs':source_map,
+                 'frozen_inputs':reference_frozen,'frozen_inputs_sha256':digest_map(reference_frozen),
+                 'identical_generated_files_excluding_soundbank_h':237,'identical_mutable_addresses':1329,
+                 'largest_rom_section_bytes':native_audit['largest_section_bytes'],
+                 'strict_native_health_enabled':True,'memory_writes':False,'save_states':False,
+                 'game_observation':'Read-only Python return observer saves the unchanged Rig.game local data solely for exact first-divergence bytes'},
+            'guards':{},'cases_started':[]}
+    sys.setprofile(observe)
+    try:
+        require=arena.require
+        require(subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()==FREEZE,
+                'Final producer commit equals exact parent release')
+        require(sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes())==ROM_SHA,
+                'Current cartridge equals exact frozen native ROM')
+        require(report['producer']['harness']['sha256']==HARNESS_SHA,
+                'Full native Rig/arena_case/TRACE/game/health producer remains byte-exact')
+        require(sha(old_report.read_bytes())==failed['report_sha256'] and old_failure['status']=='failed',
+                'Original v0.28 unmasked failure is preserved byte-exact')
+        require(accuracy['status']=='passed' and sha((ROOT/'docs/arena-life29-current-accuracy.json').read_bytes())==old_status['jobs'][1]['report_sha256'],
+                'Original full Accuracy current-ROM proof remains byte-exact')
+        require(sha((REFERENCE/'dist/abaqus-after-hours.sfc').read_bytes())==REFERENCE_SHA
+                and sha((REFERENCE/'dist/abaqus-after-hours.sym').read_bytes())==native_audit['symbols_sha256'],
+                'Approved isolated reference ROM and symbols remain exact')
+        require(sha(source_audit_path.read_bytes())==old_status['counterfactual_plan']['source_audit_sha256']
+                and sha(native_audit_path.read_bytes())==old_status['counterfactual_plan']['native_audit_sha256']
+                and sha(patch_path.read_bytes())==old_status['counterfactual_plan']['minimal_patch_sha256'],
+                'Reference export/minimal patch/build audits remain byte-bound')
+        prior=old_status['frozen_inputs']
+        require(all(v==frozen.get(k) for k,v in prior.items() if k.startswith(('src/','assets/','dist/'))),
+                'Final runtime/assets/cartridge remain byte-exact to original native producer')
+        report['test_only_freeze_changes']={k:[prior.get(k),frozen.get(k)] for k in set(prior)|set(frozen) if prior.get(k)!=frozen.get(k)}
+        require(all(k.startswith(('tools/','web/')) for k in report['test_only_freeze_changes']),
+                'Parent final producer changes are limited to tools/web')
+        for k,v in source_map.items():
+            require(sha((REFERENCE/k).read_bytes())==v,'Isolated reference producer input matches export audit',k)
+        nl=b'\r\n' if b'\r\n' in (ROOT/'src/arena_life29.h').read_bytes() else b'\n'
+        inserted=b'    return; /* Counterfactual only: keep the arena upload unarmed. */'+nl
+        ref_header=(REFERENCE/'src/arena_life29.h').read_bytes()
+        require(ref_header.count(inserted)==1 and ref_header.replace(inserted,b'')==(ROOT/'src/arena_life29.h').read_bytes(),
+                'Reference differs by exact approved arena tick early return')
+        candidate_symbols=symbols((ROOT/'dist/abaqus-after-hours.sym').read_text())
+        reference_symbols=symbols((REFERENCE/'dist/abaqus-after-hours.sym').read_text())
+        ram=lambda a:a<0x2000 or 0x7e0000<=a<0x800000
+        current_ram={k:v for k,v in candidate_symbols.items() if ram(v)}
+        reference_ram={k:v for k,v in reference_symbols.items() if ram(v)}
+        require(current_ram==reference_ram and len(current_ram)==1329,
+                'All 1329 native mutable addresses identical in animation-only reference')
+        current_generated={p.name:sha(p.read_bytes()) for p in (ROOT/'assets/generated').iterdir() if p.is_file()}
+        reference_generated={p.name:sha(p.read_bytes()) for p in (REFERENCE/'assets/generated').iterdir() if p.is_file()}
+        require(current_generated==reference_generated and len(current_generated)==238,
+                'All 237 generated assets plus ignored soundbank header identical in reference')
+        report['preservation']=validate(ROOT)
+        require(report['preservation']['generated']['current_count']==237,
+                'Combined final inventory contains exactly 237 generated files excluding soundbank.h')
+        report['core_identity']=arena.core_identity()
+        report['metadata']=json.loads((ROOT/'assets/generated/arena-life29.json').read_bytes())
+        for stage in (0,1,2):
+            print(json.dumps({'core':'snes9x','stage':stage,'state':'candidate_full_native_started'}),flush=True)
+            start=counts()
+            r=arena.Rig('snes9x',stage,[8,10,0][stage],candidate_symbols,report,captures=CAPTURES)
+            report['cases_started'].append(stage)
+            try:
+                case=arena.arena_case(r)
+                require(0<r.e.audio_peak<32767 and r.e.audio_energy>0,
+                        'Candidate complete scenario including abort/handoff retains unclipped PCM',r.e.audio_peak)
+                case['pcm_peak']=r.e.audio_peak;case['pcm_energy']=r.e.audio_energy
+            finally:
+                r.e.close()
+            case['native_checks']=delta(start)
+            tape=BUILD/f'stage{stage}-controller-tape.json'
+            tape_data={'stage':stage,'fighter_mirror':case['fighter_mirror'],
+                       'initial_game':case['replay']['initial_game'],
+                       'initial_game_bytes_hex':observed_games[case['replay']['initial_game']].hex(),
+                       'inputs':[dict(row,game_bytes_hex=observed_games[row['game']].hex()) for row in case['replay']['inputs']]}
+            tape.write_text(json.dumps(tape_data,separators=(',',':'))+'\n',newline='\n')
+            case['controller_tape']=artifact(tape);case['input_callbacks']=len(case['replay']['inputs'])
+            report['cases'].append({k:v for k,v in case.items() if k!='replay'})
+            print(json.dumps({'core':'snes9x','stage':stage,'state':'candidate_native_passed_reference_started',
+                              'candidate_health':case['health']}),flush=True)
+            replay=replay_current_source(case,report,reference_symbols)
+            report['baseline_replays'].append(replay)
+            print(json.dumps({'core':'snes9x','stage':stage,'state':'full_native_and_unmasked_replay_passed',
+                              'replay_callbacks':replay['callbacks'],'reference_health':replay['strict_native_health']}),flush=True)
+        coverage={key:sum(c['health']['trace'][key] for c in report['cases']) for key in report['cases'][0]['health']['trace']}
+        require(all(value>0 for value in coverage.values()),
+                'Strict TRACE coverage includes partial/idle/pause/intro-abort/KO/no-upload and last-chunk samples',coverage)
+        require(len(report['cases'])==len(report['baseline_replays'])==3,
+                'Three complete native cases and three unmasked current-source reference replays')
+        report['trace_coverage']=coverage
+        require(files(ROOT,('src','tools','web','assets','dist'))==frozen,
+                'All final frozen root producer/native/generated/web bytes unchanged throughout proof')
+        require(files(REFERENCE,('src','tools','web','assets','dist'))==reference_frozen,
+                'Isolated reference source/native/generated bytes unchanged throughout proof')
+        require(sha(Path(__file__).read_bytes())==helper_before,
+                'Ignored baseline-binding helper bytes unchanged throughout proof')
+        require(all(sha(Path(p).read_bytes())==digest for p,digest in retained.items()),
+                'Archived original failure/log/media and retained Accuracy report/media remain byte-exact')
+        report['status']='passed'
+    except BaseException as error:
+        report['error']=repr(error)
+        raise
+    finally:
+        sys.setprofile(None)
+        actual=files(ROOT,('src','tools','web','assets','dist'))
+        actual_reference=files(REFERENCE,('src','tools','web','assets','dist'))
+        report['guards']={'root_frozen':actual==frozen,'reference_frozen':actual_reference==reference_frozen,
+            'helper_frozen':sha(Path(__file__).read_bytes())==helper_before,
+            'retained_original_failure_and_accuracy_frozen':all(sha(Path(p).read_bytes())==digest for p,digest in retained.items()),
+            'changed_root_files':{k:[frozen.get(k),actual.get(k)] for k in set(frozen)|set(actual) if frozen.get(k)!=actual.get(k)}}
+        report.update(checks=list(arena.CHECKS.values()),
+                      passed=sum(row['executions'] for row in arena.CHECKS.values() if row['passed']),
+                      elapsed_seconds=round(time.monotonic()-started,3),
+                      observed_unique_unmasked_states=len(observed_games),
+                      completed_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat())
+        OUT.write_text(json.dumps(report,indent=2)+'\n',newline='\n')
+        print(json.dumps({k:report[k] for k in ('status','core','passed','elapsed_seconds','guards')}),flush=True)
+
+if __name__=='__main__':
+    main()

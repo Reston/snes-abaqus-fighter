@@ -1,0 +1,315 @@
+{
+  "schema": 1,
+  "topic": 5,
+  "status": "IMPLEMENTED_FOCUSED_AUDIO_CASES_PASS_SHARED_CADENCE_BLOCKER",
+  "scope": "Isolated audio feature, not combined verification or release/merge approval.",
+  "source_freeze": "8fffcf371246114fc63eb75dda05d6daf87aa8f8",
+  "rom": {
+    "title": "Abaqus: After Hours",
+    "version": "0.29.0",
+    "rom": "abaqus-after-hours.sfc",
+    "bytes": 4194304,
+    "sha256": "240c194a09975158dfdc7d17b4569d171caba0e1caa4fa51dc9a80dea1c59360",
+    "checksum": "3097",
+    "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
+    "mapping": "4 MiB FastROM LoROM",
+    "region": "NTSC 60 Hz"
+  },
+  "harness_sha256": "84f047239e72fc39e809ccdfe2f66d71778939aabad2b0f3a689d7cfb137569c",
+  "controls_harness_sha256": "144ed6628d8bccddaa99037589af292835ba6bb992d3ae257b789b3bb3293579",
+  "dependency_hashes": {
+    ".tools/python/python.exe": "4d6f5f81a4bca11191c4c7c6b43632694d0a4ce74e068619d8fdc161d469859a",
+    ".tools/sdk/pvsneslib/devkitsnes/tools/smconv.exe": "8adea81168d7b78a9a1ccbafe7c82c4221f806c0cbb90e4fb106be84d3cc6611",
+    ".tools/sdk/pvsneslib/devkitsnes/bin/816-tcc.exe": "188fab6ba1ad6b54e2c169c7e607050c4addf0cd256e345c8e6668e15a24a8f9",
+    ".tools/sdk/pvsneslib/devkitsnes/tools/816-opt.exe": "6f4ea7ae1a62cb8c580bbca7f5a68c3db899987bd9216edbfc23ea693711122f",
+    ".tools/sdk/pvsneslib/devkitsnes/bin/wla-65816.exe": "645f1295a8eaebc11183dfcb8c833c546aae11f0728cd1a786232d1185af3f22",
+    ".tools/sdk/pvsneslib/devkitsnes/bin/wlalink.exe": "20cb5752e954d4e5b813536927edc8d7b6d31623ddc45ecb48f82a5028dc83e3"
+  },
+  "reports": [
+    {
+      "file": "docs/audio29-snes9x.json",
+      "sha256": "5bbdefb5dfecdac72e64fff41690117f67f447517f396f20d55e9d102283ee50",
+      "bytes": 140788
+    },
+    {
+      "file": "docs/audio29-accuracy.json",
+      "sha256": "710bd216265e1ee1b0db3d5bd16b8ec874bdc95c72eb24ebcb24f0ed01836e74",
+      "bytes": 144497
+    },
+    {
+      "file": "docs/audio29-champion.json",
+      "sha256": "4929c5de92b6f8fd0696c7b8f38997c5078c0a943aec5641e0aeb448e437063a",
+      "bytes": 8388
+    },
+    {
+      "file": "docs/audio29-legacy-control.json",
+      "sha256": "99835a08e02acaf8cfe06b805d87c4d4449a9f87422bb5dfc93f59a10d78daa2",
+      "bytes": 8390
+    },
+    {
+      "file": "docs/audio29-accuracy-clock-control.json",
+      "sha256": "67601c761de139ecfd29e581236cf294de11ae2e5b46c157a5a1ed0dff224435",
+      "bytes": 3576
+    },
+    {
+      "file": "docs/audio29-provenance.json",
+      "sha256": "b3ebd03318cc03b6ef7ea660d466b7001ad48e5d5fe5f6ae06db719afb880543",
+      "bytes": 5393
+    }
+  ],
+  "commands": [
+    {
+      "command": ".tools/python/python.exe tools/build.py",
+      "result": "exit 0"
+    },
+    {
+      "command": ".tools/python/python.exe tools/test_audio29.py --core snes9x --skip-champion --report docs/audio29-snes9x.json --captures docs/audio29",
+      "result": "exit 0; 225 checks"
+    },
+    {
+      "command": ".tools/python/python.exe tools/test_audio29.py --core accuracy --report docs/audio29-accuracy.json --captures docs/audio29",
+      "result": "exit 0; 225 checks"
+    },
+    {
+      "command": ".tools/python/python.exe tools/audio29_controls.py --mode candidate-champion --rom dist/abaqus-after-hours.sfc --symbols dist/abaqus-after-hours.sym --report docs/audio29-champion.json --captures docs/audio29/champion",
+      "result": "exit 1; one strict inherited/control-reproduced cadence failure; earned Champion PCM retained"
+    },
+    {
+      "command": ".tools/python/python.exe tools/audio29_controls.py --mode legacy-runtime --rom build/audio29-runtime-control/abaqus-after-hours.sfc --symbols build/audio29-runtime-control/abaqus-after-hours.sym --report docs/audio29-legacy-control.json",
+      "result": "exit 1; same single frame37312 failure and exact unmasked trace state"
+    },
+    {
+      "command": ".tools/python/python.exe tools/audio29_controls.py --mode accuracy-clock --rom build/audio29-baseline/baseline.sfc --symbols build/audio29-baseline/baseline.sym --report docs/audio29-accuracy-clock-control.json",
+      "result": "exit 0; twelve approved-ROM windows and zero native cadence failures"
+    }
+  ],
+  "wrapper": "All native commands were invoked through tools/run_background.py with inherited ProcessorAffinity=3072, below-normal priority, logical CPUs10/11; logs remain build/audio29-final-*.log.",
+  "focused_checks_passed": 450,
+  "strict_callbacks": {
+    "snes9x": 20209,
+    "accuracy": 20209
+  },
+  "core_identities": {
+    "snes9x": {
+      "archive": ".tools\\core.zip",
+      "archive_sha256": "f3e88ae8540840c838dbcd57715134809894c9fd31d389e613409923ac23ea4e",
+      "member": "snes9x_libretro.dll",
+      "member_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343",
+      "dll": ".tools\\core\\snes9x_libretro.dll",
+      "dll_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343"
+    },
+    "accuracy": {
+      "rom_sha256": "240c194a09975158dfdc7d17b4569d171caba0e1caa4fa51dc9a80dea1c59360",
+      "manifest_sha256": "240c194a09975158dfdc7d17b4569d171caba0e1caa4fa51dc9a80dea1c59360",
+      "rom_bytes": 4194304,
+      "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
+      "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
+    }
+  },
+  "preservation": {
+    "baseline": "29fee83",
+    "changed": [
+      "assets/generated/effects.it",
+      "assets/generated/music0.it",
+      "assets/generated/music1.it",
+      "assets/generated/music2.it",
+      "assets/generated/music3.it",
+      "assets/generated/music4.it",
+      "assets/generated/soundbank.asm",
+      "assets/generated/soundbank.bnk"
+    ],
+    "generated_preserved": 218,
+    "old_ram_count": 1323,
+    "markers": {
+      "SECTIONEND_globram.data": [
+        8324504,
+        8324680
+      ],
+      "RAM_USAGE_SLOT_3_BANK_127_END": [
+        1431,
+        1607
+      ]
+    },
+    "scaffold_reservations": {
+      "v29DefenseState": 8324504,
+      "v29BonusState": 8324520,
+      "v29AutoState": 8324584,
+      "v29RandomState": 8324592,
+      "v29AudioState": 8324600,
+      "v29ArenaState": 8324632
+    },
+    "soundbank": {
+      "soundbank_bytes": 27470,
+      "lorom_bank": 24,
+      "lorom_free_bytes": 5298,
+      "module_base": 6656,
+      "source_count": 19,
+      "module_count": 6,
+      "resident_count": 13,
+      "streaming_bytes": 0,
+      "echo_bytes": 0,
+      "modules": [
+        {
+          "module_id": 0,
+          "module_bytes": 888,
+          "music_brr_bytes": 11914,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "resident_cue_bytes": 11914,
+          "spc_end_exclusive": 31372,
+          "spc_free_bytes": 34164
+        },
+        {
+          "module_id": 1,
+          "module_bytes": 2472,
+          "music_brr_bytes": 1548,
+          "source_indices": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "resident_cue_bytes": 11914,
+          "spc_end_exclusive": 22590,
+          "spc_free_bytes": 42946
+        },
+        {
+          "module_id": 2,
+          "module_bytes": 2536,
+          "music_brr_bytes": 1548,
+          "source_indices": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "resident_cue_bytes": 11914,
+          "spc_end_exclusive": 22654,
+          "spc_free_bytes": 42882
+        },
+        {
+          "module_id": 3,
+          "module_bytes": 2472,
+          "music_brr_bytes": 1548,
+          "source_indices": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "resident_cue_bytes": 11914,
+          "spc_end_exclusive": 22590,
+          "spc_free_bytes": 42946
+        },
+        {
+          "module_id": 4,
+          "module_bytes": 2536,
+          "music_brr_bytes": 1548,
+          "source_indices": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "resident_cue_bytes": 11914,
+          "spc_end_exclusive": 22654,
+          "spc_free_bytes": 42882
+        },
+        {
+          "module_id": 5,
+          "module_bytes": 2472,
+          "music_brr_bytes": 1548,
+          "source_indices": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "resident_cue_bytes": 11914,
+          "spc_end_exclusive": 22590,
+          "spc_free_bytes": 42946
+        }
+      ]
+    }
+  },
+  "budgets": {
+    "new_mutable_reservation_bytes": 32,
+    "used_bytes": 12,
+    "audio_state_address": "7F:05F8",
+    "new_obj_entries": 0,
+    "max_actor_upload_bytes_per_vblank": 3840,
+    "sound_page_transfer_bytes": 1472,
+    "streaming_bytes": 0,
+    "max_producer_commands_per_steady_tick": 1,
+    "max_fifo_bytes_observed_steady": 0
+  },
+  "known_failure": {
+    "status": "BLOCKS_FULL_NATIVE_CADENCE_CLAIM",
+    "candidate_report": "docs/audio29-champion.json",
+    "legacy_runtime_report": "docs/audio29-legacy-control.json",
+    "same_unmasked_trace_state": true,
+    "native_frame": 37312,
+    "failure_count_candidate": 1,
+    "failure_count_legacy_runtime": 1,
+    "candidate_champion_music_earned": true,
+    "claim_about_exact_approved_ROM_champion_route": false
+  },
+  "pcm": {
+    "all_retained_focused_pcm_unclipped": true,
+    "audible_native_all_five_arrangements": true,
+    "gain_and_mute_isolation": "Native controller page plus actual PCM; Off controls silent, Low<Medium<High for all three channels.",
+    "human_listening_approved": false,
+    "speaker_playback": false
+  },
+  "parent_hooks": {
+    "pause_route": "Either Start then Y; page4; Select returns originating page; pages1/2/3 retained",
+    "shared_files": [
+      "src/game.c",
+      "src/audio_presentation.h",
+      "src/pause_guide.h",
+      "src/knockdown.h",
+      "tools/audio_assets.py",
+      "tools/make_assets.py"
+    ],
+    "generator_output_allowlist": [
+      "assets/generated/effects.it",
+      "assets/generated/music0.it",
+      "assets/generated/music1.it",
+      "assets/generated/music2.it",
+      "assets/generated/music3.it",
+      "assets/generated/music4.it",
+      "assets/generated/soundbank.asm",
+      "assets/generated/soundbank.bnk"
+    ],
+    "bonus_api": "Existing sound/audioCue/soundImpact/audioAnnounce signatures retained. Cues0..10 semantic order retained,11 throw lift,12 floor impact.",
+    "web_changes": false
+  },
+  "retained_exact_candidate": "build/audio29-final-240c194a",
+  "generated_and_dist_committed": false,
+  "combined_six_suites_claimed": false,
+  "fresh_source_reproduction_claimed": false,
+  "main_or_integration_merged": false
+}

@@ -1,0 +1,55 @@
+{
+  "scope": "retained live meter-hint timing observation, excluded from final passing counts",
+  "approved_baseline_sha256": "09eaa47ddc12d419e259f1330eb225f1e56f75d42efdd2faf5c27063f8f2357c",
+  "pre_correction_candidate_sha256": "9a3939020a4c7b373d534fdd814b5619d8749b0319495acab6c472b4ba5a7771",
+  "observer": "build/bonus29_phase_probe.py",
+  "observer_sha256": "b9fd62b2536ea7b9eb74c82e1dbe2a967112f96471372c19a3df797b49741450",
+  "observations": [
+    {
+      "kind": "baseline",
+      "log": "build/bonus29-phase-baseline.log",
+      "log_sha256": "f8277940c5ab5605f9e93ab4fb5a8dde11bffd2600fe5dff400c0a16bf8c0b99",
+      "frame": 18560,
+      "intro": 0,
+      "round_end": 0,
+      "energies_before": [
+        95,
+        95
+      ],
+      "energies_after": [
+        96,
+        96
+      ],
+      "delta": [
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "kind": "candidate",
+      "log": "build/bonus29-phase-candidate.log",
+      "log_sha256": "c6f723bd9358fc20a4c6eda7ba918daef2b96b497abfe1cd4c49ac8a4de73fce",
+      "frame": 56032,
+      "intro": 0,
+      "round_end": 0,
+      "energies_before": [
+        95,
+        95
+      ],
+      "energies_after": [
+        96,
+        96
+      ],
+      "delta": [
+        0,
+        1,
+        1
+      ]
+    }
+  ],
+  "assertion_relaxed": false,
+  "fix": "Use existing drawGuideWord at byte offsets258/300 for both SUPER Y+B strings; retain the original gold attribute loop.",
+  "pixel_contents_preserved": "Final harness verifies all eighteen opaque tile/attribute words after publication.",
+  "writes_or_save_states": false
+}

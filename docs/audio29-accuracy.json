@@ -1,0 +1,5340 @@
+{
+  "status": "passed",
+  "scope": "isolated topic5; parent owns combined suites/reproduction",
+  "rom_sha256": "240c194a09975158dfdc7d17b4569d171caba0e1caa4fa51dc9a80dea1c59360",
+  "core": "accuracy",
+  "source_commit": "8fffcf371246114fc63eb75dda05d6daf87aa8f8",
+  "inputs": {
+    "src/animation_banks.h": "8250cf1816ae8c0de0da6a876b76e0a0b40c10a44e35f782794ca82e283414e9",
+    "src/animation_weight.h": "cdc8308b9a98c000823b7869a20a122e531d9843f7d1143ae09749b6983adf09",
+    "src/arcade_story.h": "219b418d41b5c8e35d4617e1b3e21d683236a34efceb4efa1bfebd8866697104",
+    "src/audio29.h": "4b26dbf067157044e4680695b6f43309e72dfdf481ff682a96c6411296cbb964",
+    "src/audio29_ui.h": "9a27ffe6616ada858c4e32cefd5b81ad739d31a2d8d1f7ff39dd739a07e7f118",
+    "src/audio_presentation.h": "86ef067c796739eabfdb8381fd59883720b96c35472f12568be82e1657cc2d7a",
+    "src/audio_presentation_state.h": "4129b01189826de5cc9266f529eb57f1dcb57bb93febcade1f1dc3bf6e6c730e",
+    "src/characters.h": "f2c66a8984e16cc0e6b360e48c31bad1dee785e280a3bb5cbf7302e3c8e01858",
+    "src/contact_geometry.h": "237d6b05f0e161cf08008629576f46a131b87f7a6928ea6e8e90c74ef8f49c30",
+    "src/cpu_personality.h": "859831dcb5708712b1319512e83018bd9c42dcdae4d04cf7c743888bdaaa8e82",
+    "src/expansion29.h": "5937b2f568a2df5f6796696b2d9da58b29460fa524e8ba5e818f9e21ed4b3a3b",
+    "src/expansion29_state.h": "43f05141910cd071f88b18de7c526d229cd4dae1b3d0803c9f75f96fba393ae0",
+    "src/fighter_personality.h": "e15b92385c8620a8cbdaa1c2734af0f87a91fbdbeefc70fe8c04700998cad0ce",
+    "src/game.c": "9a23d0ead695505e826f9a82c2a3066cfcb81439e48a4b93691b63fbd514e9ad",
+    "src/hardware.asm": "9b6dd260dca337e06b012e9b4fdafdc2c9103750ffcf5cf803d01e9092bab424",
+    "src/impact_presentation.h": "f40dd53fe3c21a026072e1ec362d93b4b8c023ad6cb1b3d1cfaed711c130aa55",
+    "src/knockdown.h": "e67a1184262631b37334bdcc97f6db2c28252860fbe82d649747dabc67fa9579",
+    "src/menu_portraits.h": "96a006a382dfc86e1807b32ac0eaaf652cb302558aea57496a20567d10713c9c",
+    "src/menu_preview.h": "57726013de7927621dac45bf7814d15c1157e53eee6405b1442b5c50dfa2f785",
+    "src/menu_preview_state.h": "a11dda5695fe33302d390eb04b57aaffd0fd268e2dc3cd00613400b719a7315c",
+    "src/menu_repeat.h": "f94c56e7da218b8859016596c2994f936ea4538db51c2d720abea51970836188",
+    "src/pacing_recoil.h": "79518af5f3293ad65c6143e6fdbc836ee0916afc61dce8ab5bc9d3ff8e11611b",
+    "src/pause_guide.h": "071097466354820d0b8de3f8b6b77eb2f1ebef38f263100e7cb6f837f66f0217",
+    "src/stage_depth.h": "6c69ed49f745ae20215e808d276cd41c9834e2722cd690a034d9b5a6b665b051",
+    "src/super_moves.h": "6b5d0f67851c1b7dc370d25f5a4dd1c41c44ad04b41d3928a663c2859374e0b0",
+    "src/trace.asm": "301ec8a99aa326583c332a901903114f5fceeb7f17bbbf768c3e90ae65c3dc88",
+    "src/training_tools.h": "bad6ffc456e48c0b346ffaa069c33871988716828db75a18f511266c3de33961",
+    "src/version.h": "af007fb875b1a397ffeb6fdfc578cfef0c522db0ae6ac971d2a0990df55a5de1",
+    "tools/asset_cache.py": "091478ff866f99aed1b3714b1746c0fc934705905f3d370ffcd0473e381dcccc",
+    "tools/asset_transaction.py": "9df3ad06bdd448627bf0747e755d16864149d3660f922594b690620f97015bb8",
+    "tools/audio29_assets.py": "d0470e69df33e22e52ee8494bf6d165175c0159efaa2d1cd304ed02cb2c14c85",
+    "tools/audio29_controls.py": "144ed6628d8bccddaa99037589af292835ba6bb992d3ae257b789b3bb3293579",
+    "tools/audio_assets.py": "ca65f5074f8c823684e7d928925d3e77ed2735d4f417f3b717b06e4d98563ec6",
+    "tools/audit_release.py": "6d1abcdb71daffcb124de5096a9e625e6880636ff00b0e4614e3718f848c33af",
+    "tools/build.py": "f262826aed503e4b98a261f1ae1a02ca7e82053334d342b439c78ea894874fb8",
+    "tools/build_web.py": "4bd8f2e6e257a1d785b0acbe08cadcae2bca7329fc68befeb0e03a52b636189b",
+    "tools/candidate_sources.py": "94115dfe0468887b6cd8de790cb0a98ff5afd96ecff5f5e69b1ab1f754e941ad",
+    "tools/champion_assets.py": "1526aa565cd9e1a01075bd5ad699b75b486e17f9b2899b9276a504bc2024ccf2",
+    "tools/check_authoring_guards.py": "41887dd7f9a962ac3bb77b6fb1223bb4a065a015b1624c04ad04ee8622cd5c1b",
+    "tools/check_combat_24_guards.py": "32a9affd932696bdf409e650214d205773123e4e17947fe7471df741814eb698",
+    "tools/check_play_flow_native_26.py": "b41d8f4f084d13b3ef8e6d4fb59a9da9263bf413f9441ef4a9e12e8168f6bdcc",
+    "tools/collate_combat_24.py": "5ece963d25e9ba1c37b17a3db76e3a06fb400dfb2454e8fe6f63c216ea3c3646",
+    "tools/collate_expansion.py": "78eff65f23971796896a7f0f163a246bda5ef5222171231bb3481dac0eca077b",
+    "tools/collate_pacing_floor_25.py": "55be592418ce39a865129b0232acf984964b41e753549f8023ded4324322dc14",
+    "tools/collate_play_flow_26.py": "c3295b76579d912588507d955793e55af520b8ab7db3eefe523f9fc44348a6df",
+    "tools/collate_verification.py": "7b188bc7771a2f6401b699795a4690a90a53f45beeeea25c6d6adfa2858e2f82",
+    "tools/collate_walking.py": "726c98d34b6d4a28eb5458cf3b5de6f14f9618873d818a321cd16082b240dbd3",
+    "tools/compare_special_24_state.py": "cc9d89583125f0cc5e2d059db32bf64e242f9deccb3b1b85e1771e7862087e0f",
+    "tools/contact_geometry.py": "21db5448946960a9b31d399dbcaf71c19e2e3b0888843f2d3d0141b56dbf2b47",
+    "tools/copy_combat_24_pacing_samples.py": "01641b0eff23ab9271e423da3a7d35e732d3bda60605e9aa0b71f043636d1571",
+    "tools/effect_assets.py": "f5079057e2314469d4befb9974ab61281c1156c6adfd6516058fb66e01735150",
+    "tools/emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
+    "tools/expansion_contracts.py": "b64c11cecf01d5ca672ffb137a416ec0ae2f16c94ea310594ea3250cc1803d51",
+    "tools/fetch_references.py": "a630e9cb073f7a20b4ddb720a3af812d6e7790398c5dc19cd88ece7c13a65254",
+    "tools/fighter_assets.py": "73d34baa92e573f6808eeee0474b1a0d619e5bc3cd31e4b8f2ad8b3b304ffdad",
+    "tools/longrun_host.py": "432bed2b7505131d639794ee4b1d857292df4465e7f219c39a14fa433f11cc8e",
+    "tools/make_assets.py": "c7aa3c549032edc24a415907762b55a55f281375ce3a0c91b85c0d21c281f094",
+    "tools/make_champion_budget.py": "f5ffcfec6c09729f72f19815613d244794bfe4e0ad7a5d708c63a634552e24ad",
+    "tools/make_cpu_antiair_review.py": "806c08ef0095dacafcb5209ae7f543a01db12ad5e05c1f112691488ceb718fab",
+    "tools/make_crossup_practice_review.py": "b9386e97c1114ecee7730fa05dc42931f8447594b4d07d47507b0f08272506b2",
+    "tools/make_crossup_review.py": "e45c814c00a01e070d2534fdc6d293363c14abeb99a170fd8df78aa4641a3b22",
+    "tools/make_expansion_review.py": "feb522c84bb46c750f8cbdaa79dd4b8a20dcdb373bad0e3db8f1fd716208d001",
+    "tools/make_focused_listening_pack.py": "f864dd37f7c1b4f967af09b76951b2cede7058e9be1d1699b18fd16e87a94c94",
+    "tools/make_play_flow_review_26.py": "286e12a76ab3c509968e80006279c59d3b538eb6d882bd7f95a568464d67e4fa",
+    "tools/make_preservation_report.py": "3fe295216aa69d570896e70f3901d97842d03acaee2ff1850080f292326ee18b",
+    "tools/make_review_gallery.py": "e5bab41cd7aede547a281f894ab477f765fda0fea8ece199d47bb73b28be0b31",
+    "tools/make_roster_review.py": "d2b8b7fd211452887218ef07cd691efdb52efd2f0ddcb555a02137233010461e",
+    "tools/make_training_cpu_review.py": "60977b144de38f340dfeb4e65daf1d161ebcb3ef6f58820bfb480ff948f92a82",
+    "tools/menu_assets.py": "be192cb00fd2ce73b0ec4434572ce9501b7bac10cf2e8e05819c4422631e19f6",
+    "tools/menu_preview_checks.py": "f4d43edce678d7ee3cf05fca815ccc11878fca13893bd9d2706cac73295d93a6",
+    "tools/native_artifacts.py": "8d11fd37f1d275647ee9898c5c145be9d219cf891d68d383c7a6c1e9cb00514b",
+    "tools/package.py": "024ff1f51574460e611d10ae6db570ee4b1e3dc1e34b05323b4b5bea23eb216e",
+    "tools/play_flow_counterfactual.py": "424dc06c62168d0d43f66cba20a0a02938307391da972f39e729b27cb55ba286",
+    "tools/play_flow_media.py": "7e542a9ac96d0668116877124081ead3b0a1e9b39e1e7492cdda938477dbf4fe",
+    "tools/portrait_assets.py": "f95047e2ad5e1c292809ced20ca2e9cc77dc4a0e5f3c10d43cadf8e0843107d3",
+    "tools/pose_revision_assets.py": "7baca936c90d63dbedb732b1a222207322bed881e84841cb6d41179c7e539709",
+    "tools/preservation.py": "40e13816f5a7086c18e6053789e209722316a6c2675fb9583647eed20891ae76",
+    "tools/release_evidence.py": "b7d779838bc61c2c63ae272968e04abba19694c36b7127c0302f5f6afaccac35",
+    "tools/report_training_timing.py": "1c1153a39f8c207da55db46b974e196911c9e61aed43bd62b618fcf985ca7606",
+    "tools/review_media.py": "e35af4eb143791128f8f2ceabdb72b662993238127005534018753e95b67174a",
+    "tools/run_background.py": "0906fa836fa680964846049036fd2ea1ad48a2fcb68d1235bedff86e7afdf178",
+    "tools/stage_assets.py": "28ccd1c8f6dfff94bc0556211af788c08acffb04d41d29f1a69fbea1db8440ce",
+    "tools/stage_cartoon.py": "3cedf521885bcdb0391b65f0337eb8a5aee79fbb93b007c81b5671b008354f4f",
+    "tools/stage_depth_assets.py": "8e3376327d818c59448056bc19775d5cf1210c46f8357d9fddaaafbde08730ac",
+    "tools/stage_sources.py": "b3c249050b7ed53408b9c6aa9c31748fae92125c3a3b055ce991bf7ef77c4008",
+    "tools/stage_test_contract.py": "ce846412c276ade58baba3fd940d13cfba1ae21c9b925c1aa4c87308f4c2fa9f",
+    "tools/test_arena_preview_26.py": "c96d827d377270a00e51baa3033597a982d5c558af674388dc90dea7100b1c27",
+    "tools/test_asset_cache.py": "cd6abc619c54a8af064584da652c7f9a6b85ebd80c540f76648c382e82916e90",
+    "tools/test_asset_transaction.py": "3d5fc5a49f40cb27f7bef3da1f1af6594edcb2fcf9b94c0902ab6be55df53e5f",
+    "tools/test_audio.py": "542ad545a023db85c9fe14066823cea5fa58848932d92057d55e26c76a28a73d",
+    "tools/test_audio29.py": "84f047239e72fc39e809ccdfe2f66d71778939aabad2b0f3a689d7cfb137569c",
+    "tools/test_authoring_guards.py": "99e5197dedb642aeca6d6f13c416588f23551bdfdb04fa2a528ea068bb98014a",
+    "tools/test_candidate_sources.py": "fcedacec4e5f020600b58d21349f168d1b81562b2fe570f8dc24c4bc3d59bf2b",
+    "tools/test_champion.py": "d2424acd2cb75a7e08c5a2832a0bf6e5dc3cdb708f6aa89293d4ac3fe2d1e4d5",
+    "tools/test_champion_audio.py": "10d2cdf896dde9530008dcfb9fff2912d5415cfbd99bd00c61d9f19b0c9dca3e",
+    "tools/test_characters.py": "c580589d5cf485165ffd83700b1b3044e1f48159101d3bf8ac31b1f41069b096",
+    "tools/test_classic_menu.py": "c469ac2469c19bf12441e9aee8c36240d8c318b1ad2b5d250e7eccab49a8427c",
+    "tools/test_combat24_attack.py": "bf619bc29ef2b1df12dbc6dd9f538802ff675ba52ea4645099560a6fd442e191",
+    "tools/test_combat24_super.py": "85849f6cb922f384c3f55f84721b7af0af917d21aea03ce4f37862a7566560e0",
+    "tools/test_combat_24_contact.py": "8e6f481e28743880624cb03cea2efac89c0c7408ab748f74c19433113645ff07",
+    "tools/test_combat_24_evidence.py": "62811716e8f0f8c39b494038bf20ed372ed6fb4b56618863a067681efe06c79e",
+    "tools/test_combat_24_jumps.py": "bea0dd4207dfeb65d65d6142e0cdee438e0389d5cfb6f20336dfbf1e3277e567",
+    "tools/test_combat_24_pacing.py": "dbdf7fd5c21b55bdf026b5ad8edf73ae59abb1393fe073dc0dfc282f605084f9",
+    "tools/test_combat_24_stage08.py": "a35f914c5ab4fdb6336ee218782d96c14ebf0b4bbc4009300e4f2bd052cdcdf3",
+    "tools/test_compatibility.py": "c751c44eb3dbaf4542f54c1f6dfd3be4365bbe1336a1705bdaf9f6ff002c123d",
+    "tools/test_compatibility_combat.py": "c50712f19042bf69da0978ce7e4321cf6de1a33bd2269118483403beb9e4a754",
+    "tools/test_confirm_26.py": "c51954e650212b9690179d339544c3bb45b9c13ecbf9a9e03b0eae4346a746be",
+    "tools/test_contact_24_timing.py": "6039be9b4bd515a8fffe4d627dea5ace99a03a3eb6d42ee83450398f73f43a06",
+    "tools/test_contact_budget.py": "f8acb5525d0e3d627c70894ac8c4cce3c3a5bd63421ef4139d3a0f4f5c6cc2c5",
+    "tools/test_contact_super_composition.py": "0f9d0144fd945044f8c67774c8f49c4e553de9f56eeb9746cf1e6d953710f637",
+    "tools/test_crossup_practice.py": "087c4f0cffe9c791619afc6a7419f5fafbaa3c4fe053ab14dbee715bbc279d50",
+    "tools/test_endurance.py": "7c190efdf822baeb4bf7ccebbd75025d60b62598babee1bf9d673c77b81b3ed0",
+    "tools/test_endurance_reporting.py": "5533ab27348e4f532b1beef81db9514d28cffaea883d48f52cebc6a2373b9fa0",
+    "tools/test_expansion_01_animation_weight.py": "4e9900b1e8d3100ac417d3dbed29b900ddda865572583f2149784c825b31a9a7",
+    "tools/test_expansion_02_impact.py": "d12ea9213524efc3bfac044b84570e423dfb92513302abcbec850b255f1ee5a0",
+    "tools/test_expansion_03_normal_balance.py": "5b61e525f1c1cf6b45a84ba2af73612b66551c6395e7cacd96ae7e501618ea17",
+    "tools/test_expansion_04_fighter_personality.py": "78495a19076b90e564ca2a665c47857b3e8d883963aef263827e8f8173ecd231",
+    "tools/test_expansion_05_training_tools.py": "ffa3f0b9802a371c4bb30c9c0c555609f792541186f5a1b38796d8dd7d52ebcf",
+    "tools/test_expansion_06_cpu_personality.py": "6d69503795a8b56b1f54cd5c9a418c3d6780c9aa2be8ee95ca12647a6075e8b0",
+    "tools/test_expansion_07_supers.py": "cc2a0a9f90973371f310216d81db0a02eb932e28067366f04ba059df1fce0fb7",
+    "tools/test_expansion_08_stage_depth.py": "a9c3e96130d7046fefd3c644b40560661102790bb3f65bef36e09f4606b1b4c8",
+    "tools/test_expansion_09_arcade_story.py": "bf01de14c55a46ed68a2eb2d7774eca094f1daf288e622fd86078a17543f1114",
+    "tools/test_expansion_10_audio.py": "2fb8352dc3e9932dd85f38174bbc5fe385a7ea9c42a878737a191860b36dc39e",
+    "tools/test_feedback_26.py": "05041d4b2342719e54304ed689a7fbf42b14f60fdd3c364d8766d4fa9ded524a",
+    "tools/test_four_button_hud.py": "a5a049919b38c87f30f981b301ef3718f9dc3810835f3497db7aceecd44afbeb",
+    "tools/test_fresh_build.py": "75b6c3622d1ad96411feb8b13a9fc71e0d47fa5357fbe8c93d0c11a21c348b8b",
+    "tools/test_inputs.py": "cf3db1c9ba93514ca36fa5eec433ffa30c5131e18903f42c7967dc5fd18ecb48",
+    "tools/test_launcher_26.py": "972531769a22a3d85f652104912f981bd9a3d027244702e1efdadfa2e1803e46",
+    "tools/test_local_session_26.py": "869597abe87ff42c46c333ac27148c2f871fb7804696e3aed446de924ef8a6a8",
+    "tools/test_long_session_guards.py": "72f528248cb1369681a62cf53cb13ace31273c279ccea7e7c9f1a53dea5a1643",
+    "tools/test_matchups.py": "1979c79b5ed465f798c9528267e9debce412a1f2c19ca84c13d34995db060a1c",
+    "tools/test_menu_footers.py": "f8b5e777271eda28f0eba79a1b2c5fbfef7a0e61b2946c1ffe9722ce6c6e69fc",
+    "tools/test_menu_preview.py": "25c7098dd6bf84d688a684adcb91c2159744203828b13c2f6b7d37d7d8ec38f6",
+    "tools/test_menu_repeat_26.py": "4c523aa0e6075d6cf8c1527dafbd3dc89981be327938a50cdef860529adc60f5",
+    "tools/test_mesen.py": "c1d044e8dd108c1ac05ff7d5e6d5dbc5757ce42c0c45e9c31d59d6bdd887b3c0",
+    "tools/test_motion_26.py": "1296884ca3a0fab2a4bcfef541682f023ab85b7f632756169639bd97f418064d",
+    "tools/test_music_26.py": "ed9a97cf8cc7c63212977cbba28523c99245945a84e5f1b13cd8b3646caa9030",
+    "tools/test_native_artifacts.py": "905cdccf4f6055d34b09387c26205879b839520cad119fe8c01de3c3ac2b1327",
+    "tools/test_native_build_26.py": "0ac64bfec8e4db1c8420745891578bb8b914a6764a275a970a7ae2f5fcede8c5",
+    "tools/test_normal_guide_26.py": "93be4467c72686dfb312ccf5b5a957d15ca54ecf5bd083f6b03527af6a48336a",
+    "tools/test_pacing_floor_25.py": "63ed240c93d3fcd40b72f9e38d23dbb34170f4e8ba9c25b4845e25cfd2674711",
+    "tools/test_package.py": "1174274d5eeec4610fd98fb11bbef90b213a9f5a61a776f634a6d99fcb15d3d9",
+    "tools/test_play_flow_26.py": "f85bdd5f85cb5df1e611449406654d42f281d7c9335d13ee5c91549ac2330b6c",
+    "tools/test_play_flow_collation.py": "c15d9965c6a966f7c4e8e095629e441dfb0895cf2652833881cca0367fc0679c",
+    "tools/test_play_flow_counterfactual.py": "7437ea224c929a74955b940aa33de647d21227e616ce2ea3e6147c8a569fbbcc",
+    "tools/test_play_flow_long_26.py": "1afe0bac92d2dd9a2dafa438b19b603a02d0b77b22311b785c7dc99110e9d2b4",
+    "tools/test_play_flow_media.py": "cf9bd688d5f6d62e90ff29bff116cf295da8b18bcc92dfef74888c86bd4c445e",
+    "tools/test_play_flow_stress_26.py": "30192c13e6d118bc49e5502ccd7e8cd5774eb089491e1ad0cbae80aaad3cfa7e",
+    "tools/test_pose_revision_guards.py": "591ade0ac9fa3e83c0169a2900d0f6f642df9fceed5b031c6ecef47f52123093",
+    "tools/test_presentation.py": "b848936bf59953a4a8febf66cde6bc7b2f56adac858aaa4a973d92ae2ad1b006",
+    "tools/test_preservation.py": "635b1201940579ede2c6edaecc0d4e72f36616918f0119676026f38dcfb52bdf",
+    "tools/test_review_media.py": "ac1827f8455fcecc11ba088af109a3bcd9fcb2083c267b574316fd662ebc0253",
+    "tools/test_rom.py": "b3fb77db409dd230443a22fc6f8209e8ff501c88843131237bab600e13e03612",
+    "tools/test_roster_hints_26.py": "24d2e56901cf5af23b3b84b0ff1de05b27b31fec02e3f4b338fc9bf9e0293d57",
+    "tools/test_session_limit_26.py": "bb8fd62cf0bcabf688d22e62e108af59c27d0267afc49580b1a36e1ee2291775",
+    "tools/test_special_24_cpu_timing.py": "4e57c11a7a8bf1a7472e5fe4319995b8b729b34dd4f06f944d1b2c2dad6e310d",
+    "tools/test_special_24_timing.py": "65f6aa8689ad7fa080e428bdf04399113275f04a9b40ff8070bdb80278d283ad",
+    "tools/test_stage_pipeline_26.py": "fe6e8b520cf612b6cd2f7c1609ddb9039f2133148ed97479f86ef6a7e96ab982",
+    "tools/test_stages.py": "08cb003e6cbc7057ed092bf6a4e8ce101b7191d8f223460062f9d4fbef230acf",
+    "tools/test_throw_feedback_26.py": "5b06add180acc546cfa81491c765fe5c6fcb93202d14d60f5e9f2eb61191799c",
+    "tools/test_training.py": "80be92d2237932fc9d5afb267cad4f2a1a6349de7a4c7270e5c30484c28e9783",
+    "tools/test_training_best_26.py": "0a9f12bc33a1fdc6bffa8daac0506ad6ebe2aeb155de883631c5d9933d0a6a78",
+    "tools/test_v024_preservation_guards.py": "34dd5d860208298f9bc405f7a535b449fa6329dcf06fda5f9d44f46acf235e82",
+    "tools/test_verification_runner_guards.py": "22bfafd5fc95925bbb9242ce516f53cbcb0196326006de7e87cfe8e580527c35",
+    "tools/test_walking.py": "f98a337905aecbc6c12ae539d3d4ae1b3914b449d944805129da316462b1068a",
+    "tools/test_web_build.py": "30c4ff742e0b673055e8cf061506e51c93fcd54c8269fb8b96de2c5382ba0ea2",
+    "tools/v024_contracts.py": "1b8bbe9ffee65ff4f72410564e26941bb86da72ae914da3f5c74bdbb4891a076",
+    "tools/v025_contracts.py": "fd17ca4c9c748708c0a0b1a4e798dd6ccf37cea9355a6cabade729d1acaef719",
+    "tools/v026_contracts.py": "4f255533d9f3920dc1bf8296b7729b5e87abd45a8f155c6f73da04bd459cac65",
+    "tools/verify_play_flow_26.py": "0954750a9e899a4aa38a0d2d41b6e414a4fa525151800ca729bd02cdd5b72d04",
+    "tools/victory_music.py": "6da647ea3b1d58129d3f91a95d7a516433b8e609b4a847a180ff0bb96ac28528",
+    "tools/walking_assets.py": "cf36efcb8fc9971eef11ed65c9afb487333d12902bcc22a285616486873d8694",
+    "assets/audio/announcements/fight.wav": "e0db55e0e277183f1de1b1225e14c019e141631379a6547e9b16651c83f8ca26",
+    "assets/audio/announcements/ko.wav": "bad3d04173f492e3ea9dabd5f93a87dd71bc227e4092efb8f227ac4b2019bf0d",
+    "assets/audio/announcements/provenance.json": "7947659fa26e2686cc82127507bb8525717806813ba8b0db391b64ac66e65a69",
+    "assets/audio/announcements/round.wav": "c3eb4a981020225ab262ee271e4edc9f8ff298478567dbdb519fa18def518414",
+    "assets/audio/audio29/scores.json": "a6158e82167cd85c22b4cb88cde161499d8bc1c6cccb7fa8b178c789837886af",
+    "assets/audio/history-v028/audio_assets.py.txt": "1a55aa69ae2df232f61c9af9bc032d433461776da31ad91ea0e5108e8592a6cb",
+    "assets/audio/history-v028/effects.it": "9d39ff73af4f64de3dd6c2cd3d6b748f76516fd5dc12645243d65fea40f2d478",
+    "assets/audio/history-v028/music0.it": "281e74b07d44921f6b4e3cfa6b7d9aec5a9d684b2628ecb038c3556a8f5fe85b",
+    "assets/audio/history-v028/music1.it": "012ae86b1dfae79a82b7c2ea1627827e3607f3902eb252d3c8bc6a65706a925c",
+    "assets/audio/history-v028/music2.it": "b8b479c1fd7ad52a2f9a4150816445135af6fb662e71cdb0a0d43318d78112a1",
+    "assets/audio/history-v028/music3.it": "c0642846f0dc624787b3a37cc7fa636bb75dcfb2a9183877910a84f024431af3",
+    "assets/audio/history-v028/music4.it": "42319898be70a7570f3b0a0c628430e8df83f4546ac64d6944fe7fa194d08f0e"
+  },
+  "host": {
+    "python": "3.12.10",
+    "pillow": "13.0.0",
+    "gui_opened": false,
+    "audio_device_opened": false,
+    "priority_class": 16384,
+    "logical_processors": [
+      10,
+      11
+    ]
+  },
+  "checks": [
+    {
+      "check": "Only the eight allowed audio outputs change; visual/native ASM bytes preserved",
+      "passed": true,
+      "details": [
+        "assets/generated/effects.it",
+        "assets/generated/music0.it",
+        "assets/generated/music1.it",
+        "assets/generated/music2.it",
+        "assets/generated/music3.it",
+        "assets/generated/music4.it",
+        "assets/generated/soundbank.asm",
+        "assets/generated/soundbank.bnk"
+      ]
+    },
+    {
+      "check": "Old variable/data RAM addresses fixed; only six pre-reserved arrays added",
+      "passed": true,
+      "details": [
+        {
+          "SECTIONEND_globram.data": [
+            8324504,
+            8324680
+          ],
+          "RAM_USAGE_SLOT_3_BANK_127_END": [
+            1431,
+            1607
+          ]
+        },
+        {
+          "v29DefenseState": 8324504,
+          "v29BonusState": 8324520,
+          "v29AutoState": 8324584,
+          "v29RandomState": 8324592,
+          "v29AudioState": 8324600,
+          "v29ArenaState": 8324632
+        }
+      ]
+    },
+    {
+      "check": "PCM duration follows native AV cadence and core packet phase",
+      "passed": true,
+      "details": {
+        "frames": 2145,
+        "sample_frames": 1143565,
+        "expected": 1143564.5792368322,
+        "sample_error": 0.4207631677854806,
+        "bound": 64
+      }
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "menu: complete arrangement and loop boundary are audible/unclipped",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "ff253cac08b26fe27cab77deb5ca862581802991244a64865f98c36edb9da2a7",
+        "sample_frames": 1143565,
+        "peak": 1125,
+        "rms": 187.3812,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 3872
+      }
+    },
+    {
+      "check": "menu: no long silence through complete arrangement and loop boundary",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "menu: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "e7578fc3a8f745467418df2114796893f2b7d5b21647a1064cc84f29d7c3607f",
+        "sample_frames": 224280,
+        "peak": 1125,
+        "rms": 189.9156,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 3872
+      }
+    },
+    {
+      "check": "Strict native frame/vblank/SDK/OBJ/producer/FIFO cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "Cold boot defaults are medium music / high contacts / high voice",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Selected stage reaches live native fight",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage0-intro: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "58367220d38e4e414bda6705fd909813b72dc8f1ad686b3cb05f0c8dc26bc9a3",
+        "sample_frames": 113556,
+        "peak": 4902,
+        "rms": 340.6863,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 12878
+      }
+    },
+    {
+      "check": "Round/Fight announcements are real intro commands",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "PCM duration follows native AV cadence and core packet phase",
+      "passed": true,
+      "details": {
+        "frames": 1982,
+        "sample_frames": 1056664,
+        "expected": 1056664.3338216324,
+        "sample_error": -0.3338216324336827,
+        "bound": 64
+      }
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage0-music: complete arrangement and loop boundary are audible/unclipped",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "8ac4457e3d83a5ed3ae7c3e4dfde060d6bd87ba3d04b14c74b40ec01b4e07129",
+        "sample_frames": 1056664,
+        "peak": 1190,
+        "rms": 181.9367,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 5367
+      }
+    },
+    {
+      "check": "stage0-music: no long silence through complete arrangement and loop boundary",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage0-music: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "e8ca0182061012925d4d1845a85b4c0f3f2c0614acdb45dec870882f8ed138dd",
+        "sample_frames": 224280,
+        "peak": 1190,
+        "rms": 186.0035,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 5363
+      }
+    },
+    {
+      "check": "Both meters are earned through real controller contact",
+      "passed": true,
+      "details": [
+        0,
+        0,
+        {
+          "magic": 43706,
+          "screen": 3,
+          "frame": 2363,
+          "mode": 1,
+          "hp1": 128,
+          "hp2": 128,
+          "x1": 1056,
+          "x2": 3040,
+          "y1": 0,
+          "y2": 0,
+          "action1": 0,
+          "action2": 0,
+          "wins1": 0,
+          "wins2": 0,
+          "arena": 0,
+          "round": 1,
+          "intro": 0,
+          "paused": 0,
+          "energy1": 96,
+          "energy2": 96,
+          "wave1": 0,
+          "wave2": 0,
+          "selected": 0,
+          "selected2": 1,
+          "arcade": 0,
+          "seconds": 65,
+          "pose1": 0,
+          "pose2": 0,
+          "round_end": 0,
+          "hitstop": 0,
+          "combo": 0,
+          "champion": 0,
+          "fighter_id1": 0,
+          "fighter_id2": 1,
+          "family1": 0,
+          "family2": 0,
+          "speed1": 12,
+          "speed2": 10,
+          "jump1": 65463,
+          "jump2": 65461,
+          "face1": 1,
+          "face2": 0,
+          "back_speed1": 8,
+          "back_speed2": 8,
+          "special_startup1": 18,
+          "special_startup2": 22,
+          "special_active1": 1,
+          "special_active2": 2,
+          "special_recovery1": 38,
+          "special_recovery2": 42,
+          "special_damage1": 15,
+          "special_damage2": 17,
+          "special_reach1": 19,
+          "special_reach2": 23,
+          "throw_range1": 27,
+          "throw_range2": 31,
+          "wave_low1": 0,
+          "wave_low2": 0,
+          "wave_speed1": 0,
+          "wave_speed2": 0,
+          "wave_life1": 0,
+          "wave_life2": 0,
+          "anim_frame1": 17,
+          "anim_frame2": 17,
+          "anim_state1": 0,
+          "anim_state2": 0,
+          "anim_tick1": 41,
+          "anim_tick2": 44,
+          "buffered_action1": 0,
+          "buffered_action2": 0,
+          "buffer_age1": 0,
+          "buffer_age2": 0,
+          "jump_buffer1": 0,
+          "jump_buffer2": 0,
+          "command_stage1": 0,
+          "command_stage2": 0,
+          "raw_keys1": 0,
+          "raw_keys2": 0,
+          "landing1": 0,
+          "landing2": 0,
+          "jump_vx1": 0,
+          "jump_vx2": 0,
+          "hurt1": 0,
+          "hurt2": 0,
+          "guard1": 0,
+          "guard2": 0,
+          "connected1": 0,
+          "connected2": 0,
+          "combo1": 0,
+          "combo2": 0,
+          "combo_display1": 0,
+          "combo_display2": 0,
+          "counter1": 0,
+          "counter2": 0,
+          "down_state1": 0,
+          "down_state2": 0,
+          "down_tick1": 0,
+          "down_tick2": 0,
+          "invuln1": 0,
+          "invuln2": 0,
+          "pending_throw_damage1": 0,
+          "pending_throw_damage2": 0,
+          "throw_owner1": 255,
+          "throw_owner2": 255,
+          "air_action1": 0,
+          "air_action2": 0,
+          "throw_victim1": 255,
+          "throw_victim2": 255,
+          "wake_action1": 0,
+          "wake_action2": 0,
+          "wake_age1": 0,
+          "wake_age2": 0,
+          "wake_jump1": 0,
+          "wake_jump2": 0
+        }
+      ]
+    },
+    {
+      "check": "Both meters are earned through real controller contact",
+      "passed": true,
+      "details": [
+        0,
+        1,
+        {
+          "magic": 43706,
+          "screen": 3,
+          "frame": 2363,
+          "mode": 1,
+          "hp1": 128,
+          "hp2": 128,
+          "x1": 1056,
+          "x2": 3040,
+          "y1": 0,
+          "y2": 0,
+          "action1": 0,
+          "action2": 0,
+          "wins1": 0,
+          "wins2": 0,
+          "arena": 0,
+          "round": 1,
+          "intro": 0,
+          "paused": 0,
+          "energy1": 96,
+          "energy2": 96,
+          "wave1": 0,
+          "wave2": 0,
+          "selected": 0,
+          "selected2": 1,
+          "arcade": 0,
+          "seconds": 65,
+          "pose1": 0,
+          "pose2": 0,
+          "round_end": 0,
+          "hitstop": 0,
+          "combo": 0,
+          "champion": 0,
+          "fighter_id1": 0,
+          "fighter_id2": 1,
+          "family1": 0,
+          "family2": 0,
+          "speed1": 12,
+          "speed2": 10,
+          "jump1": 65463,
+          "jump2": 65461,
+          "face1": 1,
+          "face2": 0,
+          "back_speed1": 8,
+          "back_speed2": 8,
+          "special_startup1": 18,
+          "special_startup2": 22,
+          "special_active1": 1,
+          "special_active2": 2,
+          "special_recovery1": 38,
+          "special_recovery2": 42,
+          "special_damage1": 15,
+          "special_damage2": 17,
+          "special_reach1": 19,
+          "special_reach2": 23,
+          "throw_range1": 27,
+          "throw_range2": 31,
+          "wave_low1": 0,
+          "wave_low2": 0,
+          "wave_speed1": 0,
+          "wave_speed2": 0,
+          "wave_life1": 0,
+          "wave_life2": 0,
+          "anim_frame1": 17,
+          "anim_frame2": 17,
+          "anim_state1": 0,
+          "anim_state2": 0,
+          "anim_tick1": 41,
+          "anim_tick2": 44,
+          "buffered_action1": 0,
+          "buffered_action2": 0,
+          "buffer_age1": 0,
+          "buffer_age2": 0,
+          "jump_buffer1": 0,
+          "jump_buffer2": 0,
+          "command_stage1": 0,
+          "command_stage2": 0,
+          "raw_keys1": 0,
+          "raw_keys2": 0,
+          "landing1": 0,
+          "landing2": 0,
+          "jump_vx1": 0,
+          "jump_vx2": 0,
+          "hurt1": 0,
+          "hurt2": 0,
+          "guard1": 0,
+          "guard2": 0,
+          "connected1": 0,
+          "connected2": 0,
+          "combo1": 0,
+          "combo2": 0,
+          "combo_display1": 0,
+          "combo_display2": 0,
+          "counter1": 0,
+          "counter2": 0,
+          "down_state1": 0,
+          "down_state2": 0,
+          "down_tick1": 0,
+          "down_tick2": 0,
+          "invuln1": 0,
+          "invuln2": 0,
+          "pending_throw_damage1": 0,
+          "pending_throw_damage2": 0,
+          "throw_owner1": 255,
+          "throw_owner2": 255,
+          "air_action1": 0,
+          "air_action2": 0,
+          "throw_victim1": 255,
+          "throw_victim2": 255,
+          "wake_action1": 0,
+          "wake_action2": 0,
+          "wake_age1": 0,
+          "wake_age2": 0,
+          "wake_jump1": 0,
+          "wake_jump2": 0
+        }
+      ]
+    },
+    {
+      "check": "Both pads accept simultaneous neutral super chords",
+      "passed": true,
+      "details": [
+        0,
+        {
+          "magic": 43706,
+          "screen": 3,
+          "frame": 2476,
+          "mode": 1,
+          "hp1": 128,
+          "hp2": 128,
+          "x1": 1056,
+          "x2": 3040,
+          "y1": 0,
+          "y2": 0,
+          "action1": 7,
+          "action2": 7,
+          "wins1": 0,
+          "wins2": 0,
+          "arena": 0,
+          "round": 1,
+          "intro": 0,
+          "paused": 0,
+          "energy1": 0,
+          "energy2": 0,
+          "wave1": 0,
+          "wave2": 0,
+          "selected": 0,
+          "selected2": 1,
+          "arcade": 0,
+          "seconds": 63,
+          "pose1": 12,
+          "pose2": 12,
+          "round_end": 0,
+          "hitstop": 0,
+          "combo": 0,
+          "champion": 0,
+          "fighter_id1": 0,
+          "fighter_id2": 1,
+          "family1": 0,
+          "family2": 0,
+          "speed1": 12,
+          "speed2": 10,
+          "jump1": 65463,
+          "jump2": 65461,
+          "face1": 1,
+          "face2": 0,
+          "back_speed1": 8,
+          "back_speed2": 8,
+          "special_startup1": 18,
+          "special_startup2": 22,
+          "special_active1": 1,
+          "special_active2": 2,
+          "special_recovery1": 38,
+          "special_recovery2": 42,
+          "special_damage1": 15,
+          "special_damage2": 17,
+          "special_reach1": 19,
+          "special_reach2": 23,
+          "throw_range1": 27,
+          "throw_range2": 31,
+          "wave_low1": 0,
+          "wave_low2": 0,
+          "wave_speed1": 0,
+          "wave_speed2": 0,
+          "wave_life1": 0,
+          "wave_life2": 0,
+          "anim_frame1": 1,
+          "anim_frame2": 1,
+          "anim_state1": 5,
+          "anim_state2": 5,
+          "anim_tick1": 1,
+          "anim_tick2": 1,
+          "buffered_action1": 0,
+          "buffered_action2": 0,
+          "buffer_age1": 0,
+          "buffer_age2": 0,
+          "jump_buffer1": 0,
+          "jump_buffer2": 0,
+          "command_stage1": 0,
+          "command_stage2": 0,
+          "raw_keys1": 49152,
+          "raw_keys2": 49152,
+          "landing1": 0,
+          "landing2": 0,
+          "jump_vx1": 0,
+          "jump_vx2": 0,
+          "hurt1": 0,
+          "hurt2": 0,
+          "guard1": 0,
+          "guard2": 0,
+          "connected1": 0,
+          "connected2": 0,
+          "combo1": 0,
+          "combo2": 0,
+          "combo_display1": 0,
+          "combo_display2": 0,
+          "counter1": 0,
+          "counter2": 0,
+          "down_state1": 0,
+          "down_state2": 0,
+          "down_tick1": 0,
+          "down_tick2": 0,
+          "invuln1": 0,
+          "invuln2": 0,
+          "pending_throw_damage1": 0,
+          "pending_throw_damage2": 0,
+          "throw_owner1": 255,
+          "throw_owner2": 255,
+          "air_action1": 0,
+          "air_action2": 0,
+          "throw_victim1": 255,
+          "throw_victim2": 255,
+          "wake_action1": 0,
+          "wake_action2": 0,
+          "wake_age1": 0,
+          "wake_age2": 0,
+          "wake_jump1": 0,
+          "wake_jump2": 0
+        }
+      ]
+    },
+    {
+      "check": "Two native super waves overlap within strict audio/OBJ cadence",
+      "passed": true,
+      "details": [
+        0,
+        9
+      ]
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage0-paired-supers: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "f32bb1b9d0c489c14f9afc8b1250a57d222666ed0f9bc1d3dccc9c04c9c74bb7",
+        "sample_frames": 128475,
+        "peak": 4114,
+        "rms": 428.057,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 5361
+      }
+    },
+    {
+      "check": "Pause sound route is present in actual uploaded BG2",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Y opens completed sound panel from either pad",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Opposite cross-pad sound inputs cancel",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        0,
+        1,
+        [
+          1,
+          3,
+          3
+        ]
+      ]
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        1,
+        2,
+        [
+          1,
+          2,
+          3
+        ]
+      ]
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        2,
+        0,
+        [
+          1,
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "check": "Non-default levels persist through roster scene",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Non-default levels persist through music reload and match reset",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Pause sound route is present in actual uploaded BG2",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Y opens completed sound panel from either pad",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Music toggle remains off through music reload with announcer muted",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Music restores after a scene load even when announcer is off",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        0,
+        0,
+        [
+          0,
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        2,
+        0,
+        [
+          0,
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        1,
+        1,
+        [
+          0,
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "effects-level-1: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "c865fe59dad89ed265b7bc00922cc6e3147f8e1989a9521162c3f15fa7742001",
+        "sample_frames": 37323,
+        "peak": 1451,
+        "rms": 103.0317,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 32493
+      }
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        1,
+        2,
+        [
+          0,
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "effects-level-2: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "85e390964ee7be0fc6395fd94aff20eba8d62c0b8dfb7f44cdce0e0148295f8d",
+        "sample_frames": 37319,
+        "peak": 2938,
+        "rms": 208.5402,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 32245
+      }
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        1,
+        3,
+        [
+          0,
+          3,
+          0
+        ]
+      ]
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "effects-level-3: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "65f19fe738727015c5f43fe77d130ad71d92e30cd8805005117d261c0e0dd6d9",
+        "sample_frames": 37319,
+        "peak": 4114,
+        "rms": 291.9581,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 32361
+      }
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        1,
+        0,
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "effects-level-0: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "e1b26e8bbb6e0a8abbc2f4e4bc505a8957acfe4e4012b43528e4771564410190",
+        "sample_frames": 37338,
+        "peak": 0,
+        "rms": 0.0,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 37338
+      }
+    },
+    {
+      "check": "Effects low/medium/high have strictly increasing audible native RMS",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Effects off is silent with music/voice off",
+      "passed": true,
+      "details": {
+        "level": 0,
+        "file": "docs/audio29/accuracy/effects-level-0.wav",
+        "bytes": 149396,
+        "sha256": "91792cab71861886ebc8e20bfb7110f37e35f6b42222b5039973a2c7d0635bd4",
+        "pcm_sha256": "e1b26e8bbb6e0a8abbc2f4e4bc505a8957acfe4e4012b43528e4771564410190",
+        "sample_frames": 37338,
+        "peak": 0,
+        "rms": 0.0,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 37338,
+        "rate": 32040
+      }
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        2,
+        1,
+        [
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "voice-level-1: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "a8a6f08f2791a01392108cb5cd348ead7bfbf8233e897f8d400b2c14f89b2580",
+        "sample_frames": 42651,
+        "peak": 1660,
+        "rms": 87.1923,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 31642
+      }
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        2,
+        2,
+        [
+          0,
+          0,
+          2
+        ]
+      ]
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "voice-level-2: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "7419e7d7f337c81c38054406567bda5b4b5cda82dfcf00e3f37e5aa105c4ac51",
+        "sample_frames": 42651,
+        "peak": 3361,
+        "rms": 176.5379,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 31534
+      }
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        2,
+        3,
+        [
+          0,
+          0,
+          3
+        ]
+      ]
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "voice-level-3: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "6acd53e145bf75fc9763369ab7052a19212d0ca404d01671c3ea7244b9d886d4",
+        "sample_frames": 42637,
+        "peak": 4706,
+        "rms": 247.2272,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 31637
+      }
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        2,
+        0,
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "voice-level-0: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "ef3cc3d6392d230f898d3b26612db29068ba9d28a664d87ef0672914b8ea03e6",
+        "sample_frames": 42651,
+        "peak": 0,
+        "rms": 0.0,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 42651
+      }
+    },
+    {
+      "check": "Announcer low/medium/high remain audible with effects and music off",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Announcer off is silent with music/effects off",
+      "passed": true,
+      "details": {
+        "level": 0,
+        "file": "docs/audio29/accuracy/voice-level-0.wav",
+        "bytes": 170648,
+        "sha256": "3c5ced1157700fb4563f7f2f6e0daab754a7244ced774c458894e6aed74e4760",
+        "pcm_sha256": "ef3cc3d6392d230f898d3b26612db29068ba9d28a664d87ef0672914b8ea03e6",
+        "sample_frames": 42651,
+        "peak": 0,
+        "rms": 0.0,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 42651,
+        "rate": 32040
+      }
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        0,
+        1,
+        [
+          1,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "check": "PCM duration follows native AV cadence and core packet phase",
+      "passed": true,
+      "details": {
+        "frames": 240,
+        "sample_frames": 127951,
+        "expected": 127951.28159293228,
+        "sample_error": -0.2815929322823649,
+        "bound": 64
+      }
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "music-level-1: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "69d6fe0d3eeceb86e1d69ddbdf77a45466ade3469d51512487827acb1d92e3a3",
+        "sample_frames": 127951,
+        "peak": 560,
+        "rms": 86.894,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 6027
+      }
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        0,
+        2,
+        [
+          2,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "check": "PCM duration follows native AV cadence and core packet phase",
+      "passed": true,
+      "details": {
+        "frames": 240,
+        "sample_frames": 127952,
+        "expected": 127951.28159293228,
+        "sample_error": 0.7184070677176351,
+        "bound": 64
+      }
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "music-level-2: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "278076a8016979a3a4ded422d0223a0f54ebc191432ee3f921c968997bc4bbdd",
+        "sample_frames": 127952,
+        "peak": 1094,
+        "rms": 183.8519,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 5361
+      }
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        0,
+        3,
+        [
+          3,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "check": "PCM duration follows native AV cadence and core packet phase",
+      "passed": true,
+      "details": {
+        "frames": 240,
+        "sample_frames": 127966,
+        "expected": 127951.28159293228,
+        "sample_error": 14.718407067717635,
+        "bound": 64
+      }
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "music-level-3: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "efe461ca79b56edb65425e61fc069a083b6bde34fcd09631271474a2b665896f",
+        "sample_frames": 127966,
+        "peak": 1800,
+        "rms": 275.3764,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 5357
+      }
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        0,
+        0,
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "check": "PCM duration follows native AV cadence and core packet phase",
+      "passed": true,
+      "details": {
+        "frames": 240,
+        "sample_frames": 127953,
+        "expected": 127951.28159293228,
+        "sample_error": 1.718407067717635,
+        "bound": 64
+      }
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "music-level-0: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "ec6328f87058bcf09a953637a3751742e022fa4344b20aa610f4b9caa33628d3",
+        "sample_frames": 127953,
+        "peak": 0,
+        "rms": 0.0,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 127953
+      }
+    },
+    {
+      "check": "Music low/medium/high remain audible with effects and announcer off",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Music off is silent without muting other channel preferences",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Legacy toggle restores the last audible level from Off",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        0,
+        2,
+        [
+          2,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        1,
+        3,
+        [
+          2,
+          3,
+          0
+        ]
+      ]
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        2,
+        3,
+        [
+          2,
+          3,
+          3
+        ]
+      ]
+    },
+    {
+      "check": "Speech duck restores the selected music gain",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Legacy music toggle preserves chosen level",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Legacy music toggle restores chosen level",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Scenery comfort control remains available",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Start retains priority over B/A/Select",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Existing controls route remains page 1",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Sound Select returns to originating guide",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "A resumes from guide",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Pause sound route is present in actual uploaded BG2",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Y opens completed sound panel from either pad",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        0,
+        0,
+        [
+          0,
+          3,
+          3
+        ]
+      ]
+    },
+    {
+      "check": "PCM duration follows native AV cadence and core packet phase",
+      "passed": true,
+      "details": {
+        "frames": 90,
+        "sample_frames": 47980,
+        "expected": 47981.730597349604,
+        "sample_error": -1.7305973496040679,
+        "bound": 64
+      }
+    },
+    {
+      "check": "light: semantic cue is produced by actual controller combat",
+      "passed": true,
+      "details": [
+        0,
+        1
+      ]
+    },
+    {
+      "check": "light: damage agrees with intended contact",
+      "passed": true,
+      "details": [
+        128,
+        120
+      ]
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "light: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "e03603cc88790c411ebf5932d0aa824ac92dffee387be4aa5566254f25851b88",
+        "sample_frames": 47980,
+        "peak": 3220,
+        "rms": 155.7106,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 42421
+      }
+    },
+    {
+      "check": "PCM duration follows native AV cadence and core packet phase",
+      "passed": true,
+      "details": {
+        "frames": 90,
+        "sample_frames": 47983,
+        "expected": 47981.730597349604,
+        "sample_error": 1.2694026503959321,
+        "bound": 64
+      }
+    },
+    {
+      "check": "strong: semantic cue is produced by actual controller combat",
+      "passed": true,
+      "details": [
+        0,
+        4
+      ]
+    },
+    {
+      "check": "strong: damage agrees with intended contact",
+      "passed": true,
+      "details": [
+        120,
+        105
+      ]
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "strong: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "d7857b1b16d7c6bc894374c7e2e759f32aae42df4ccdddff9242ab5d97ebfeee",
+        "sample_frames": 47983,
+        "peak": 4114,
+        "rms": 268.1686,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 36554
+      }
+    },
+    {
+      "check": "PCM duration follows native AV cadence and core packet phase",
+      "passed": true,
+      "details": {
+        "frames": 90,
+        "sample_frames": 48002,
+        "expected": 47981.730597349604,
+        "sample_error": 20.269402650395932,
+        "bound": 64
+      }
+    },
+    {
+      "check": "block: semantic cue is produced by actual controller combat",
+      "passed": true,
+      "details": [
+        0,
+        5
+      ]
+    },
+    {
+      "check": "block: damage agrees with intended contact",
+      "passed": true,
+      "details": [
+        105,
+        105
+      ]
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "block: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "52a3c2e36ed9c2a4c9bd153430323aa7269a8f4a69cfb8a9d03eed3ddc7c8e1c",
+        "sample_frames": 48002,
+        "peak": 2710,
+        "rms": 140.2146,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 42020
+      }
+    },
+    {
+      "check": "PCM duration follows native AV cadence and core packet phase",
+      "passed": true,
+      "details": {
+        "frames": 90,
+        "sample_frames": 47986,
+        "expected": 47981.730597349604,
+        "sample_error": 4.269402650395932,
+        "bound": 64
+      }
+    },
+    {
+      "check": "throw: semantic cue is produced by actual controller combat",
+      "passed": true,
+      "details": [
+        0,
+        11,
+        12
+      ]
+    },
+    {
+      "check": "throw: damage agrees with intended contact",
+      "passed": true,
+      "details": [
+        105,
+        86
+      ]
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "throw: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "b8842d5de20e77ee231875e334df57642011b814248fffeaa2fd018cfd27dd56",
+        "sample_frames": 47986,
+        "peak": 3924,
+        "rms": 380.8258,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 24461
+      }
+    },
+    {
+      "check": "PCM duration follows native AV cadence and core packet phase",
+      "passed": true,
+      "details": {
+        "frames": 90,
+        "sample_frames": 47979,
+        "expected": 47981.730597349604,
+        "sample_error": -2.730597349604068,
+        "bound": 64
+      }
+    },
+    {
+      "check": "knockdown: semantic cue is produced by actual controller combat",
+      "passed": true,
+      "details": [
+        0,
+        4,
+        12
+      ]
+    },
+    {
+      "check": "knockdown: damage agrees with intended contact",
+      "passed": true,
+      "details": [
+        86,
+        69
+      ]
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "knockdown: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "41a02cb9ab160282e82dad5e581b43c70d46e1c00123175b25287fdaef8e5fc7",
+        "sample_frames": 47979,
+        "peak": 4114,
+        "rms": 374.168,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 15481
+      }
+    },
+    {
+      "check": "Five controller-produced contact cues have distinct music-muted native PCM",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Pause sound route is present in actual uploaded BG2",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Y opens completed sound panel from either pad",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        0,
+        2,
+        [
+          2,
+          3,
+          3
+        ]
+      ]
+    },
+    {
+      "check": "Actual local KO rounds reach native result",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Actual KO and result preserve announcer/cadence hooks",
+      "passed": true,
+      "details": [
+        0,
+        11,
+        12,
+        0,
+        0,
+        11,
+        12,
+        0,
+        0,
+        11,
+        12,
+        0,
+        0,
+        11,
+        8,
+        10,
+        9,
+        6,
+        7,
+        0,
+        11,
+        12,
+        0,
+        0,
+        11,
+        12,
+        0,
+        0,
+        11,
+        12,
+        0,
+        0,
+        11,
+        12,
+        0,
+        0,
+        11,
+        12,
+        0,
+        0,
+        11,
+        12,
+        0,
+        0,
+        11,
+        8,
+        10,
+        10
+      ]
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "ko-result-last12s: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "c35b6fdfd8313b240c07daeaa16e40101d5b281d3e0b7374727f5c3d264e4e4e",
+        "sample_frames": 384480,
+        "peak": 4647,
+        "rms": 370.0554,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 5363
+      }
+    },
+    {
+      "check": "Strict native frame/vblank/SDK/OBJ/producer/FIFO cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "Cold boot defaults are medium music / high contacts / high voice",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Selected stage reaches live native fight",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage1-intro: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "53cc7248501977e28069edbf4f62678dbe6b5093eb1e1686d90b5e59f89b2a39",
+        "sample_frames": 113555,
+        "peak": 4846,
+        "rms": 335.6121,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 12860
+      }
+    },
+    {
+      "check": "Round/Fight announcements are real intro commands",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "PCM duration follows native AV cadence and core packet phase",
+      "passed": true,
+      "details": {
+        "frames": 2258,
+        "sample_frames": 1203820,
+        "expected": 1203808.3076535047,
+        "sample_error": 11.692346495343372,
+        "bound": 64
+      }
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage1-music: complete arrangement and loop boundary are audible/unclipped",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "8e3a7a255386ac1a291010ac4777294cc9fd281ed39b2c659c50e09776ddcba3",
+        "sample_frames": 1203820,
+        "peak": 1190,
+        "rms": 179.0459,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 4154
+      }
+    },
+    {
+      "check": "stage1-music: no long silence through complete arrangement and loop boundary",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage1-music: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "fda2460333e83acd9e4b3f2853326915c6f94910859cbc7e355b8fb70bf2101f",
+        "sample_frames": 224280,
+        "peak": 1159,
+        "rms": 183.338,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 4154
+      }
+    },
+    {
+      "check": "Both meters are earned through real controller contact",
+      "passed": true,
+      "details": [
+        1,
+        0,
+        {
+          "magic": 43706,
+          "screen": 3,
+          "frame": 2664,
+          "mode": 1,
+          "hp1": 128,
+          "hp2": 128,
+          "x1": 1056,
+          "x2": 3040,
+          "y1": 0,
+          "y2": 0,
+          "action1": 0,
+          "action2": 0,
+          "wins1": 0,
+          "wins2": 0,
+          "arena": 1,
+          "round": 1,
+          "intro": 0,
+          "paused": 0,
+          "energy1": 96,
+          "energy2": 96,
+          "wave1": 0,
+          "wave2": 0,
+          "selected": 0,
+          "selected2": 1,
+          "arcade": 0,
+          "seconds": 61,
+          "pose1": 0,
+          "pose2": 0,
+          "round_end": 0,
+          "hitstop": 0,
+          "combo": 0,
+          "champion": 0,
+          "fighter_id1": 0,
+          "fighter_id2": 1,
+          "family1": 0,
+          "family2": 0,
+          "speed1": 12,
+          "speed2": 10,
+          "jump1": 65463,
+          "jump2": 65461,
+          "face1": 1,
+          "face2": 0,
+          "back_speed1": 8,
+          "back_speed2": 8,
+          "special_startup1": 18,
+          "special_startup2": 22,
+          "special_active1": 1,
+          "special_active2": 2,
+          "special_recovery1": 38,
+          "special_recovery2": 42,
+          "special_damage1": 15,
+          "special_damage2": 17,
+          "special_reach1": 19,
+          "special_reach2": 23,
+          "throw_range1": 27,
+          "throw_range2": 31,
+          "wave_low1": 0,
+          "wave_low2": 0,
+          "wave_speed1": 0,
+          "wave_speed2": 0,
+          "wave_life1": 0,
+          "wave_life2": 0,
+          "anim_frame1": 16,
+          "anim_frame2": 16,
+          "anim_state1": 0,
+          "anim_state2": 0,
+          "anim_tick1": 29,
+          "anim_tick2": 32,
+          "buffered_action1": 0,
+          "buffered_action2": 0,
+          "buffer_age1": 0,
+          "buffer_age2": 0,
+          "jump_buffer1": 0,
+          "jump_buffer2": 0,
+          "command_stage1": 0,
+          "command_stage2": 0,
+          "raw_keys1": 0,
+          "raw_keys2": 0,
+          "landing1": 0,
+          "landing2": 0,
+          "jump_vx1": 0,
+          "jump_vx2": 0,
+          "hurt1": 0,
+          "hurt2": 0,
+          "guard1": 0,
+          "guard2": 0,
+          "connected1": 0,
+          "connected2": 0,
+          "combo1": 0,
+          "combo2": 0,
+          "combo_display1": 0,
+          "combo_display2": 0,
+          "counter1": 0,
+          "counter2": 0,
+          "down_state1": 0,
+          "down_state2": 0,
+          "down_tick1": 0,
+          "down_tick2": 0,
+          "invuln1": 0,
+          "invuln2": 0,
+          "pending_throw_damage1": 0,
+          "pending_throw_damage2": 0,
+          "throw_owner1": 255,
+          "throw_owner2": 255,
+          "air_action1": 0,
+          "air_action2": 0,
+          "throw_victim1": 255,
+          "throw_victim2": 255,
+          "wake_action1": 0,
+          "wake_action2": 0,
+          "wake_age1": 0,
+          "wake_age2": 0,
+          "wake_jump1": 0,
+          "wake_jump2": 0
+        }
+      ]
+    },
+    {
+      "check": "Both meters are earned through real controller contact",
+      "passed": true,
+      "details": [
+        1,
+        1,
+        {
+          "magic": 43706,
+          "screen": 3,
+          "frame": 2664,
+          "mode": 1,
+          "hp1": 128,
+          "hp2": 128,
+          "x1": 1056,
+          "x2": 3040,
+          "y1": 0,
+          "y2": 0,
+          "action1": 0,
+          "action2": 0,
+          "wins1": 0,
+          "wins2": 0,
+          "arena": 1,
+          "round": 1,
+          "intro": 0,
+          "paused": 0,
+          "energy1": 96,
+          "energy2": 96,
+          "wave1": 0,
+          "wave2": 0,
+          "selected": 0,
+          "selected2": 1,
+          "arcade": 0,
+          "seconds": 61,
+          "pose1": 0,
+          "pose2": 0,
+          "round_end": 0,
+          "hitstop": 0,
+          "combo": 0,
+          "champion": 0,
+          "fighter_id1": 0,
+          "fighter_id2": 1,
+          "family1": 0,
+          "family2": 0,
+          "speed1": 12,
+          "speed2": 10,
+          "jump1": 65463,
+          "jump2": 65461,
+          "face1": 1,
+          "face2": 0,
+          "back_speed1": 8,
+          "back_speed2": 8,
+          "special_startup1": 18,
+          "special_startup2": 22,
+          "special_active1": 1,
+          "special_active2": 2,
+          "special_recovery1": 38,
+          "special_recovery2": 42,
+          "special_damage1": 15,
+          "special_damage2": 17,
+          "special_reach1": 19,
+          "special_reach2": 23,
+          "throw_range1": 27,
+          "throw_range2": 31,
+          "wave_low1": 0,
+          "wave_low2": 0,
+          "wave_speed1": 0,
+          "wave_speed2": 0,
+          "wave_life1": 0,
+          "wave_life2": 0,
+          "anim_frame1": 16,
+          "anim_frame2": 16,
+          "anim_state1": 0,
+          "anim_state2": 0,
+          "anim_tick1": 29,
+          "anim_tick2": 32,
+          "buffered_action1": 0,
+          "buffered_action2": 0,
+          "buffer_age1": 0,
+          "buffer_age2": 0,
+          "jump_buffer1": 0,
+          "jump_buffer2": 0,
+          "command_stage1": 0,
+          "command_stage2": 0,
+          "raw_keys1": 0,
+          "raw_keys2": 0,
+          "landing1": 0,
+          "landing2": 0,
+          "jump_vx1": 0,
+          "jump_vx2": 0,
+          "hurt1": 0,
+          "hurt2": 0,
+          "guard1": 0,
+          "guard2": 0,
+          "connected1": 0,
+          "connected2": 0,
+          "combo1": 0,
+          "combo2": 0,
+          "combo_display1": 0,
+          "combo_display2": 0,
+          "counter1": 0,
+          "counter2": 0,
+          "down_state1": 0,
+          "down_state2": 0,
+          "down_tick1": 0,
+          "down_tick2": 0,
+          "invuln1": 0,
+          "invuln2": 0,
+          "pending_throw_damage1": 0,
+          "pending_throw_damage2": 0,
+          "throw_owner1": 255,
+          "throw_owner2": 255,
+          "air_action1": 0,
+          "air_action2": 0,
+          "throw_victim1": 255,
+          "throw_victim2": 255,
+          "wake_action1": 0,
+          "wake_action2": 0,
+          "wake_age1": 0,
+          "wake_age2": 0,
+          "wake_jump1": 0,
+          "wake_jump2": 0
+        }
+      ]
+    },
+    {
+      "check": "Both pads accept simultaneous neutral super chords",
+      "passed": true,
+      "details": [
+        1,
+        {
+          "magic": 43706,
+          "screen": 3,
+          "frame": 2777,
+          "mode": 1,
+          "hp1": 128,
+          "hp2": 128,
+          "x1": 1056,
+          "x2": 3040,
+          "y1": 0,
+          "y2": 0,
+          "action1": 7,
+          "action2": 7,
+          "wins1": 0,
+          "wins2": 0,
+          "arena": 1,
+          "round": 1,
+          "intro": 0,
+          "paused": 0,
+          "energy1": 0,
+          "energy2": 0,
+          "wave1": 0,
+          "wave2": 0,
+          "selected": 0,
+          "selected2": 1,
+          "arcade": 0,
+          "seconds": 59,
+          "pose1": 12,
+          "pose2": 12,
+          "round_end": 0,
+          "hitstop": 0,
+          "combo": 0,
+          "champion": 0,
+          "fighter_id1": 0,
+          "fighter_id2": 1,
+          "family1": 0,
+          "family2": 0,
+          "speed1": 12,
+          "speed2": 10,
+          "jump1": 65463,
+          "jump2": 65461,
+          "face1": 1,
+          "face2": 0,
+          "back_speed1": 8,
+          "back_speed2": 8,
+          "special_startup1": 18,
+          "special_startup2": 22,
+          "special_active1": 1,
+          "special_active2": 2,
+          "special_recovery1": 38,
+          "special_recovery2": 42,
+          "special_damage1": 15,
+          "special_damage2": 17,
+          "special_reach1": 19,
+          "special_reach2": 23,
+          "throw_range1": 27,
+          "throw_range2": 31,
+          "wave_low1": 0,
+          "wave_low2": 0,
+          "wave_speed1": 0,
+          "wave_speed2": 0,
+          "wave_life1": 0,
+          "wave_life2": 0,
+          "anim_frame1": 1,
+          "anim_frame2": 1,
+          "anim_state1": 5,
+          "anim_state2": 5,
+          "anim_tick1": 1,
+          "anim_tick2": 1,
+          "buffered_action1": 0,
+          "buffered_action2": 0,
+          "buffer_age1": 0,
+          "buffer_age2": 0,
+          "jump_buffer1": 0,
+          "jump_buffer2": 0,
+          "command_stage1": 0,
+          "command_stage2": 0,
+          "raw_keys1": 49152,
+          "raw_keys2": 49152,
+          "landing1": 0,
+          "landing2": 0,
+          "jump_vx1": 0,
+          "jump_vx2": 0,
+          "hurt1": 0,
+          "hurt2": 0,
+          "guard1": 0,
+          "guard2": 0,
+          "connected1": 0,
+          "connected2": 0,
+          "combo1": 0,
+          "combo2": 0,
+          "combo_display1": 0,
+          "combo_display2": 0,
+          "counter1": 0,
+          "counter2": 0,
+          "down_state1": 0,
+          "down_state2": 0,
+          "down_tick1": 0,
+          "down_tick2": 0,
+          "invuln1": 0,
+          "invuln2": 0,
+          "pending_throw_damage1": 0,
+          "pending_throw_damage2": 0,
+          "throw_owner1": 255,
+          "throw_owner2": 255,
+          "air_action1": 0,
+          "air_action2": 0,
+          "throw_victim1": 255,
+          "throw_victim2": 255,
+          "wake_action1": 0,
+          "wake_action2": 0,
+          "wake_age1": 0,
+          "wake_age2": 0,
+          "wake_jump1": 0,
+          "wake_jump2": 0
+        }
+      ]
+    },
+    {
+      "check": "Two native super waves overlap within strict audio/OBJ cadence",
+      "passed": true,
+      "details": [
+        1,
+        9
+      ]
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage1-paired-supers: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "a82a9382ac6c3a38cf1830d98f59f0e4a83ba982055085533a2567b2d4c44c34",
+        "sample_frames": 128484,
+        "peak": 4114,
+        "rms": 426.5512,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 4152
+      }
+    },
+    {
+      "check": "Strict native frame/vblank/SDK/OBJ/producer/FIFO cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "Cold boot defaults are medium music / high contacts / high voice",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Selected stage reaches live native fight",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage2-intro: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "7bd199d78bb7988a876bacd35cbf7d09300f468aa8377cedbbbd089315e5eea4",
+        "sample_frames": 113569,
+        "peak": 4862,
+        "rms": 336.7613,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 12818
+      }
+    },
+    {
+      "check": "Round/Fight announcements are real intro commands",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "PCM duration follows native AV cadence and core packet phase",
+      "passed": true,
+      "details": {
+        "frames": 2044,
+        "sample_frames": 1089705,
+        "expected": 1089718.4148998067,
+        "sample_error": -13.414899806724861,
+        "bound": 64
+      }
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage2-music: complete arrangement and loop boundary are audible/unclipped",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "eb46545a81a757c9bec8c82ecf90edf64ff71b5c0f0f4ba8373c82136c72300d",
+        "sample_frames": 1089705,
+        "peak": 1106,
+        "rms": 190.5136,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 5527
+      }
+    },
+    {
+      "check": "stage2-music: no long silence through complete arrangement and loop boundary",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage2-music: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "e8002f2f01412f559c787617a39083f1b6aa425edb74a373d67a4fa57da90eae",
+        "sample_frames": 224280,
+        "peak": 1105,
+        "rms": 193.7274,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 5527
+      }
+    },
+    {
+      "check": "Both meters are earned through real controller contact",
+      "passed": true,
+      "details": [
+        2,
+        0,
+        {
+          "magic": 43706,
+          "screen": 3,
+          "frame": 2475,
+          "mode": 1,
+          "hp1": 128,
+          "hp2": 128,
+          "x1": 1056,
+          "x2": 3040,
+          "y1": 0,
+          "y2": 0,
+          "action1": 0,
+          "action2": 0,
+          "wins1": 0,
+          "wins2": 0,
+          "arena": 2,
+          "round": 1,
+          "intro": 0,
+          "paused": 0,
+          "energy1": 96,
+          "energy2": 96,
+          "wave1": 0,
+          "wave2": 0,
+          "selected": 0,
+          "selected2": 1,
+          "arcade": 0,
+          "seconds": 64,
+          "pose1": 0,
+          "pose2": 0,
+          "round_end": 0,
+          "hitstop": 0,
+          "combo": 0,
+          "champion": 0,
+          "fighter_id1": 0,
+          "fighter_id2": 1,
+          "family1": 0,
+          "family2": 0,
+          "speed1": 12,
+          "speed2": 10,
+          "jump1": 65463,
+          "jump2": 65461,
+          "face1": 1,
+          "face2": 0,
+          "back_speed1": 8,
+          "back_speed2": 8,
+          "special_startup1": 18,
+          "special_startup2": 22,
+          "special_active1": 1,
+          "special_active2": 2,
+          "special_recovery1": 38,
+          "special_recovery2": 42,
+          "special_damage1": 15,
+          "special_damage2": 17,
+          "special_reach1": 19,
+          "special_reach2": 23,
+          "throw_range1": 27,
+          "throw_range2": 31,
+          "wave_low1": 0,
+          "wave_low2": 0,
+          "wave_speed1": 0,
+          "wave_speed2": 0,
+          "wave_life1": 0,
+          "wave_life2": 0,
+          "anim_frame1": 16,
+          "anim_frame2": 16,
+          "anim_state1": 0,
+          "anim_state2": 0,
+          "anim_tick1": 7,
+          "anim_tick2": 10,
+          "buffered_action1": 0,
+          "buffered_action2": 0,
+          "buffer_age1": 0,
+          "buffer_age2": 0,
+          "jump_buffer1": 0,
+          "jump_buffer2": 0,
+          "command_stage1": 0,
+          "command_stage2": 0,
+          "raw_keys1": 0,
+          "raw_keys2": 0,
+          "landing1": 0,
+          "landing2": 0,
+          "jump_vx1": 0,
+          "jump_vx2": 0,
+          "hurt1": 0,
+          "hurt2": 0,
+          "guard1": 0,
+          "guard2": 0,
+          "connected1": 0,
+          "connected2": 0,
+          "combo1": 0,
+          "combo2": 0,
+          "combo_display1": 0,
+          "combo_display2": 0,
+          "counter1": 0,
+          "counter2": 0,
+          "down_state1": 0,
+          "down_state2": 0,
+          "down_tick1": 0,
+          "down_tick2": 0,
+          "invuln1": 0,
+          "invuln2": 0,
+          "pending_throw_damage1": 0,
+          "pending_throw_damage2": 0,
+          "throw_owner1": 255,
+          "throw_owner2": 255,
+          "air_action1": 0,
+          "air_action2": 0,
+          "throw_victim1": 255,
+          "throw_victim2": 255,
+          "wake_action1": 0,
+          "wake_action2": 0,
+          "wake_age1": 0,
+          "wake_age2": 0,
+          "wake_jump1": 0,
+          "wake_jump2": 0
+        }
+      ]
+    },
+    {
+      "check": "Both meters are earned through real controller contact",
+      "passed": true,
+      "details": [
+        2,
+        1,
+        {
+          "magic": 43706,
+          "screen": 3,
+          "frame": 2475,
+          "mode": 1,
+          "hp1": 128,
+          "hp2": 128,
+          "x1": 1056,
+          "x2": 3040,
+          "y1": 0,
+          "y2": 0,
+          "action1": 0,
+          "action2": 0,
+          "wins1": 0,
+          "wins2": 0,
+          "arena": 2,
+          "round": 1,
+          "intro": 0,
+          "paused": 0,
+          "energy1": 96,
+          "energy2": 96,
+          "wave1": 0,
+          "wave2": 0,
+          "selected": 0,
+          "selected2": 1,
+          "arcade": 0,
+          "seconds": 64,
+          "pose1": 0,
+          "pose2": 0,
+          "round_end": 0,
+          "hitstop": 0,
+          "combo": 0,
+          "champion": 0,
+          "fighter_id1": 0,
+          "fighter_id2": 1,
+          "family1": 0,
+          "family2": 0,
+          "speed1": 12,
+          "speed2": 10,
+          "jump1": 65463,
+          "jump2": 65461,
+          "face1": 1,
+          "face2": 0,
+          "back_speed1": 8,
+          "back_speed2": 8,
+          "special_startup1": 18,
+          "special_startup2": 22,
+          "special_active1": 1,
+          "special_active2": 2,
+          "special_recovery1": 38,
+          "special_recovery2": 42,
+          "special_damage1": 15,
+          "special_damage2": 17,
+          "special_reach1": 19,
+          "special_reach2": 23,
+          "throw_range1": 27,
+          "throw_range2": 31,
+          "wave_low1": 0,
+          "wave_low2": 0,
+          "wave_speed1": 0,
+          "wave_speed2": 0,
+          "wave_life1": 0,
+          "wave_life2": 0,
+          "anim_frame1": 16,
+          "anim_frame2": 16,
+          "anim_state1": 0,
+          "anim_state2": 0,
+          "anim_tick1": 7,
+          "anim_tick2": 10,
+          "buffered_action1": 0,
+          "buffered_action2": 0,
+          "buffer_age1": 0,
+          "buffer_age2": 0,
+          "jump_buffer1": 0,
+          "jump_buffer2": 0,
+          "command_stage1": 0,
+          "command_stage2": 0,
+          "raw_keys1": 0,
+          "raw_keys2": 0,
+          "landing1": 0,
+          "landing2": 0,
+          "jump_vx1": 0,
+          "jump_vx2": 0,
+          "hurt1": 0,
+          "hurt2": 0,
+          "guard1": 0,
+          "guard2": 0,
+          "connected1": 0,
+          "connected2": 0,
+          "combo1": 0,
+          "combo2": 0,
+          "combo_display1": 0,
+          "combo_display2": 0,
+          "counter1": 0,
+          "counter2": 0,
+          "down_state1": 0,
+          "down_state2": 0,
+          "down_tick1": 0,
+          "down_tick2": 0,
+          "invuln1": 0,
+          "invuln2": 0,
+          "pending_throw_damage1": 0,
+          "pending_throw_damage2": 0,
+          "throw_owner1": 255,
+          "throw_owner2": 255,
+          "air_action1": 0,
+          "air_action2": 0,
+          "throw_victim1": 255,
+          "throw_victim2": 255,
+          "wake_action1": 0,
+          "wake_action2": 0,
+          "wake_age1": 0,
+          "wake_age2": 0,
+          "wake_jump1": 0,
+          "wake_jump2": 0
+        }
+      ]
+    },
+    {
+      "check": "Both pads accept simultaneous neutral super chords",
+      "passed": true,
+      "details": [
+        2,
+        {
+          "magic": 43706,
+          "screen": 3,
+          "frame": 2588,
+          "mode": 1,
+          "hp1": 128,
+          "hp2": 128,
+          "x1": 1056,
+          "x2": 3040,
+          "y1": 0,
+          "y2": 0,
+          "action1": 7,
+          "action2": 7,
+          "wins1": 0,
+          "wins2": 0,
+          "arena": 2,
+          "round": 1,
+          "intro": 0,
+          "paused": 0,
+          "energy1": 0,
+          "energy2": 0,
+          "wave1": 0,
+          "wave2": 0,
+          "selected": 0,
+          "selected2": 1,
+          "arcade": 0,
+          "seconds": 62,
+          "pose1": 12,
+          "pose2": 12,
+          "round_end": 0,
+          "hitstop": 0,
+          "combo": 0,
+          "champion": 0,
+          "fighter_id1": 0,
+          "fighter_id2": 1,
+          "family1": 0,
+          "family2": 0,
+          "speed1": 12,
+          "speed2": 10,
+          "jump1": 65463,
+          "jump2": 65461,
+          "face1": 1,
+          "face2": 0,
+          "back_speed1": 8,
+          "back_speed2": 8,
+          "special_startup1": 18,
+          "special_startup2": 22,
+          "special_active1": 1,
+          "special_active2": 2,
+          "special_recovery1": 38,
+          "special_recovery2": 42,
+          "special_damage1": 15,
+          "special_damage2": 17,
+          "special_reach1": 19,
+          "special_reach2": 23,
+          "throw_range1": 27,
+          "throw_range2": 31,
+          "wave_low1": 0,
+          "wave_low2": 0,
+          "wave_speed1": 0,
+          "wave_speed2": 0,
+          "wave_life1": 0,
+          "wave_life2": 0,
+          "anim_frame1": 1,
+          "anim_frame2": 1,
+          "anim_state1": 5,
+          "anim_state2": 5,
+          "anim_tick1": 1,
+          "anim_tick2": 1,
+          "buffered_action1": 0,
+          "buffered_action2": 0,
+          "buffer_age1": 0,
+          "buffer_age2": 0,
+          "jump_buffer1": 0,
+          "jump_buffer2": 0,
+          "command_stage1": 0,
+          "command_stage2": 0,
+          "raw_keys1": 49152,
+          "raw_keys2": 49152,
+          "landing1": 0,
+          "landing2": 0,
+          "jump_vx1": 0,
+          "jump_vx2": 0,
+          "hurt1": 0,
+          "hurt2": 0,
+          "guard1": 0,
+          "guard2": 0,
+          "connected1": 0,
+          "connected2": 0,
+          "combo1": 0,
+          "combo2": 0,
+          "combo_display1": 0,
+          "combo_display2": 0,
+          "counter1": 0,
+          "counter2": 0,
+          "down_state1": 0,
+          "down_state2": 0,
+          "down_tick1": 0,
+          "down_tick2": 0,
+          "invuln1": 0,
+          "invuln2": 0,
+          "pending_throw_damage1": 0,
+          "pending_throw_damage2": 0,
+          "throw_owner1": 255,
+          "throw_owner2": 255,
+          "air_action1": 0,
+          "air_action2": 0,
+          "throw_victim1": 255,
+          "throw_victim2": 255,
+          "wake_action1": 0,
+          "wake_action2": 0,
+          "wake_age1": 0,
+          "wake_age2": 0,
+          "wake_jump1": 0,
+          "wake_jump2": 0
+        }
+      ]
+    },
+    {
+      "check": "Two native super waves overlap within strict audio/OBJ cadence",
+      "passed": true,
+      "details": [
+        2,
+        9
+      ]
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "stage2-paired-supers: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "7a062e119bb1317259dab066ce4de2c1a64d1cbfd63ab899c2b6aac9f8f886a1",
+        "sample_frames": 128485,
+        "peak": 3918,
+        "rms": 432.987,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 5519
+      }
+    },
+    {
+      "check": "Strict native frame/vblank/SDK/OBJ/producer/FIFO cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "Menu and three stages have distinct actual PCM",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Cold boot defaults are medium music / high contacts / high voice",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Selected stage reaches live native fight",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Pause sound route is present in actual uploaded BG2",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Y opens completed sound panel from either pad",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        0,
+        1,
+        [
+          1,
+          3,
+          3
+        ]
+      ]
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        1,
+        2,
+        [
+          1,
+          2,
+          3
+        ]
+      ]
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        2,
+        0,
+        [
+          1,
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "check": "Sound back returns to ordinary Training pause",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Training X still chooses manual P2 dummy",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Training Up still chooses CPU",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "P2 shoulder still changes CPU level on ordinary Training pause",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Existing Training tools retain page 3",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Sound back returns to Training tools",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Live Training reset retains independent sound preferences",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Pause sound route is present in actual uploaded BG2",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Y opens completed sound panel from either pad",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        0,
+        2,
+        [
+          2,
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        1,
+        3,
+        [
+          2,
+          3,
+          0
+        ]
+      ]
+    },
+    {
+      "check": "Level edits use native sound page",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Controller changes only selected independent level",
+      "passed": true,
+      "details": [
+        2,
+        3,
+        [
+          2,
+          3,
+          3
+        ]
+      ]
+    },
+    {
+      "check": "Rapid-mix fixture uses real P2 controller dummy",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "PCM capture contains actual stereo samples",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "rapid-two-pad-mix: no full-scale clipped PCM",
+      "passed": true,
+      "details": {
+        "pcm_sha256": "c2977da3272cdc6a09825299b0d3cc4494c9ae63b13cf5d929d9765f5356c190",
+        "sample_frames": 383842,
+        "peak": 4503,
+        "rms": 378.1305,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 4374
+      }
+    },
+    {
+      "check": "Strict native frame/vblank/SDK/OBJ/producer/FIFO cadence",
+      "passed": true,
+      "details": []
+    },
+    {
+      "check": "Producer/harness/dependency bytes stayed fixed through proof",
+      "passed": true,
+      "details": null
+    },
+    {
+      "check": "Every retained capture matches its bound hash",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "media": [
+    {
+      "file": "docs/audio29/accuracy/menu.wav",
+      "bytes": 897164,
+      "sha256": "57e41dd4a91a72966a67fff0975b19d8d8f4079f4a0db131440d3519f46d4c77"
+    },
+    {
+      "file": "docs/audio29/accuracy/stage0-intro.wav",
+      "bytes": 454268,
+      "sha256": "52835ee4c2b08bf8541e589c6d2487926e34c7783b6a50aac1eab5f7a7a101f4"
+    },
+    {
+      "file": "docs/audio29/accuracy/stage0-music.wav",
+      "bytes": 897164,
+      "sha256": "7de363f1719a11f56f6f030f058e1ae6245fb36c13fbcd1bda50d8bad752b4d6"
+    },
+    {
+      "file": "docs/audio29/accuracy/stage0-paired-supers.wav",
+      "bytes": 513944,
+      "sha256": "9963d2bb347077791cbb33fccea7854780f3a2bb6e5222a2fcbda60dbe4a781d"
+    },
+    {
+      "file": "docs/audio29/accuracy/04-pause-sound-entry.png",
+      "bytes": 30721,
+      "sha256": "2591ed28bad2f9d8b60975c7f573704710f8d25139b0aa8efd9998440f4ca5af"
+    },
+    {
+      "file": "docs/audio29/accuracy/05-sound-levels.png",
+      "bytes": 2866,
+      "sha256": "3e8966994f7124ec48baa68dd7e509a512badb778ecc932e99a3ade0bc56ab90"
+    },
+    {
+      "file": "docs/audio29/accuracy/06-pause-sound-entry.png",
+      "bytes": 30986,
+      "sha256": "04fae1a37c0f9b398638bd5d7b3582feb45f4c5d23e329d2c8d853205e1f90bb"
+    },
+    {
+      "file": "docs/audio29/accuracy/effects-level-1.wav",
+      "bytes": 149336,
+      "sha256": "b8dbe637ab8035e03a416d9a97fc4afebcbd2d57b9c136ea7cb175f1f840539f"
+    },
+    {
+      "file": "docs/audio29/accuracy/effects-level-2.wav",
+      "bytes": 149320,
+      "sha256": "9fdfdec3bdb8993866de3d27b0f913d53fe51e2586279e22693413be55bdb22b"
+    },
+    {
+      "file": "docs/audio29/accuracy/effects-level-3.wav",
+      "bytes": 149320,
+      "sha256": "18f83ff92ae88d9b6c1a299e2a3ac691049a9659f5a8fba812035842693ea781"
+    },
+    {
+      "file": "docs/audio29/accuracy/effects-level-0.wav",
+      "bytes": 149396,
+      "sha256": "91792cab71861886ebc8e20bfb7110f37e35f6b42222b5039973a2c7d0635bd4"
+    },
+    {
+      "file": "docs/audio29/accuracy/voice-level-1.wav",
+      "bytes": 170648,
+      "sha256": "f934485b139b181bb749ea3ae75c08abb05acbaac23c848adce1b15d584823a3"
+    },
+    {
+      "file": "docs/audio29/accuracy/voice-level-2.wav",
+      "bytes": 170648,
+      "sha256": "7beebdd84033d65881cf8d5aec79dfdefd2b3e900e9380e3f96ac08040aa6a78"
+    },
+    {
+      "file": "docs/audio29/accuracy/voice-level-3.wav",
+      "bytes": 170592,
+      "sha256": "073dddc499f6bb4256c4c603129e78077285e1ca69401d14ec6d46d684baeb4d"
+    },
+    {
+      "file": "docs/audio29/accuracy/voice-level-0.wav",
+      "bytes": 170648,
+      "sha256": "3c5ced1157700fb4563f7f2f6e0daab754a7244ced774c458894e6aed74e4760"
+    },
+    {
+      "file": "docs/audio29/accuracy/music-level-1.wav",
+      "bytes": 511848,
+      "sha256": "42828f623188d335307544466ed556cd467fc62fe438cdac6ac65cba19724252"
+    },
+    {
+      "file": "docs/audio29/accuracy/music-level-2.wav",
+      "bytes": 511852,
+      "sha256": "615840c0b2839bd255e41be7542172aa1d0c3eec505d7ea3d574f9dc6373f1c5"
+    },
+    {
+      "file": "docs/audio29/accuracy/music-level-3.wav",
+      "bytes": 511908,
+      "sha256": "ecb9c742e1332f170403a5bab9d7126163f76d4791d5c52695faec353b86e281"
+    },
+    {
+      "file": "docs/audio29/accuracy/music-level-0.wav",
+      "bytes": 511856,
+      "sha256": "7651be78769740bea51140e45da9b3a7597a750b5128e6a0a40ec10227a0eb27"
+    },
+    {
+      "file": "docs/audio29/accuracy/19-pause-sound-entry.png",
+      "bytes": 30984,
+      "sha256": "d01cb1743f3bec33f8c9e750629cd4b1ade20015ce98bdb15d529b497b3c83ba"
+    },
+    {
+      "file": "docs/audio29/accuracy/light.wav",
+      "bytes": 191964,
+      "sha256": "3b71e806b97dc5a179baeab2f84b09319cc048adcd119b8e856f4e6873484d72"
+    },
+    {
+      "file": "docs/audio29/accuracy/strong.wav",
+      "bytes": 191976,
+      "sha256": "3ec1abfaf4e6981e6a5dfd1d5294de3ec2fa4b563ff61a503ee3db4e7a0c1236"
+    },
+    {
+      "file": "docs/audio29/accuracy/block.wav",
+      "bytes": 192052,
+      "sha256": "d6279e6091be0927dc3ffdbf67ebf7a5818a2056f070bfb97a8a2fc9d6df4db8"
+    },
+    {
+      "file": "docs/audio29/accuracy/throw.wav",
+      "bytes": 191988,
+      "sha256": "83b4b9eddeb449c4df7595c7518d8b0d5950b635af25565bc3bd026c6b37833e"
+    },
+    {
+      "file": "docs/audio29/accuracy/knockdown.wav",
+      "bytes": 191960,
+      "sha256": "4a8b66d5766aedeea2a7f4ade99b29e978205493ef3d51255433a0af5d458212"
+    },
+    {
+      "file": "docs/audio29/accuracy/25-pause-sound-entry.png",
+      "bytes": 30234,
+      "sha256": "750503a1f83a173d0c2c2017f54119b53636f834e8b161577045801f688c1c21"
+    },
+    {
+      "file": "docs/audio29/accuracy/ko-result-last12s.wav",
+      "bytes": 1537964,
+      "sha256": "a50deb647e7e9e1767f36c7755f455a27b352f38862dc73586791ddd004a09c1"
+    },
+    {
+      "file": "docs/audio29/accuracy/stage1-intro.wav",
+      "bytes": 454264,
+      "sha256": "51984232c6d8bd30bac5570cf92a4a2db66a8bf6363fda191cfbc222f9a90c75"
+    },
+    {
+      "file": "docs/audio29/accuracy/stage1-music.wav",
+      "bytes": 897164,
+      "sha256": "a507f1b07dee8b53e34919dcba02077b6b2f60e465808cea04af9039a8e96120"
+    },
+    {
+      "file": "docs/audio29/accuracy/stage1-paired-supers.wav",
+      "bytes": 513980,
+      "sha256": "51de8f30377aa5f56e00cc9529af9edb968004cafaaa0bcf16796776d412f476"
+    },
+    {
+      "file": "docs/audio29/accuracy/stage2-intro.wav",
+      "bytes": 454320,
+      "sha256": "9daf8f8e0c10572f46919f4ac9c79883ae6965b587e9b13bef31b17b58bd2fcd"
+    },
+    {
+      "file": "docs/audio29/accuracy/stage2-music.wav",
+      "bytes": 897164,
+      "sha256": "3bb53fa871fdd977a98cde8df32cf1e58ece96be48b04d0f80110d1115912541"
+    },
+    {
+      "file": "docs/audio29/accuracy/stage2-paired-supers.wav",
+      "bytes": 513984,
+      "sha256": "cb674778547dd656116f7b17e307edf2f2efc4addd3c54d2c3a0df84ffc09dd4"
+    },
+    {
+      "file": "docs/audio29/accuracy/33-pause-sound-entry.png",
+      "bytes": 31128,
+      "sha256": "130db74cd197fcfe387b3ce160c5a9bd6d84e4b795f7171117f64a901f01106e"
+    },
+    {
+      "file": "docs/audio29/accuracy/34-pause-sound-entry.png",
+      "bytes": 30856,
+      "sha256": "8353ac9114d90fef4ec26f6bbb67446304755840594a7aa3a24a8d947c400959"
+    },
+    {
+      "file": "docs/audio29/accuracy/rapid-two-pad-mix.wav",
+      "bytes": 1535412,
+      "sha256": "ab42e04af22b8ba30ecec256d519ec3fe070aa9695c10af676bbf4d89e1e76c0"
+    }
+  ],
+  "harness_sha256": "84f047239e72fc39e809ccdfe2f66d71778939aabad2b0f3a689d7cfb137569c",
+  "human_listening_approved": false,
+  "cases": [
+    {
+      "strict_callbacks": 2145,
+      "max_fifo_bytes": 0,
+      "max_scene_load_fifo_bytes": 3,
+      "av_fps": 60.098811862348406,
+      "av_sample_rate": 32040.5,
+      "wav_integer_sample_rate": 32040,
+      "pcm_callback_sizes": {
+        "64": 18118,
+        "42": 1,
+        "21": 665,
+        "53": 1,
+        "22": 345,
+        "20": 247,
+        "26": 26,
+        "17": 27,
+        "35": 31,
+        "7": 23,
+        "37": 32,
+        "6": 27,
+        "29": 22,
+        "14": 21,
+        "32": 25,
+        "11": 21,
+        "23": 92,
+        "9": 28,
+        "31": 19,
+        "13": 26,
+        "24": 55,
+        "19": 76,
+        "12": 34,
+        "39": 9,
+        "3": 8,
+        "2": 7,
+        "16": 33,
+        "34": 34,
+        "4": 21,
+        "38": 26,
+        "5": 27,
+        "10": 19,
+        "27": 20,
+        "8": 26,
+        "18": 41,
+        "30": 27,
+        "36": 18,
+        "28": 22,
+        "15": 19,
+        "33": 22,
+        "25": 32,
+        "41": 3,
+        "1": 2,
+        "40": 5
+      },
+      "pcm_windows": [
+        {
+          "frames": 2145,
+          "sample_frames": 1143565,
+          "expected": 1143564.5792368322,
+          "sample_error": 0.4207631677854806,
+          "bound": 64
+        }
+      ],
+      "commands_observed": 1,
+      "cues": [],
+      "volume_envelope_values": []
+    },
+    {
+      "strict_callbacks": 10696,
+      "max_fifo_bytes": 0,
+      "max_scene_load_fifo_bytes": 6,
+      "av_fps": 60.098811862348406,
+      "av_sample_rate": 32040.5,
+      "wav_integer_sample_rate": 32040,
+      "pcm_callback_sizes": {
+        "64": 88582,
+        "42": 4,
+        "21": 3313,
+        "53": 1,
+        "22": 1839,
+        "20": 1261,
+        "32": 111,
+        "11": 115,
+        "41": 29,
+        "1": 14,
+        "25": 141,
+        "18": 178,
+        "38": 74,
+        "5": 95,
+        "29": 125,
+        "13": 128,
+        "14": 125,
+        "31": 110,
+        "27": 133,
+        "15": 160,
+        "40": 74,
+        "3": 50,
+        "24": 193,
+        "33": 112,
+        "17": 129,
+        "12": 139,
+        "23": 423,
+        "10": 127,
+        "36": 98,
+        "7": 110,
+        "19": 341,
+        "2": 33,
+        "30": 115,
+        "34": 111,
+        "16": 142,
+        "6": 97,
+        "39": 78,
+        "35": 97,
+        "4": 80,
+        "28": 111,
+        "37": 94,
+        "26": 140,
+        "9": 115,
+        "8": 107
+      },
+      "pcm_windows": [
+        {
+          "frames": 1982,
+          "sample_frames": 1056664,
+          "expected": 1056664.3338216324,
+          "sample_error": -0.3338216324336827,
+          "bound": 64
+        },
+        {
+          "frames": 240,
+          "sample_frames": 127951,
+          "expected": 127951.28159293228,
+          "sample_error": -0.2815929322823649,
+          "bound": 64
+        },
+        {
+          "frames": 240,
+          "sample_frames": 127952,
+          "expected": 127951.28159293228,
+          "sample_error": 0.7184070677176351,
+          "bound": 64
+        },
+        {
+          "frames": 240,
+          "sample_frames": 127966,
+          "expected": 127951.28159293228,
+          "sample_error": 14.718407067717635,
+          "bound": 64
+        },
+        {
+          "frames": 240,
+          "sample_frames": 127953,
+          "expected": 127951.28159293228,
+          "sample_error": 1.718407067717635,
+          "bound": 64
+        },
+        {
+          "frames": 90,
+          "sample_frames": 47980,
+          "expected": 47981.730597349604,
+          "sample_error": -1.7305973496040679,
+          "bound": 64
+        },
+        {
+          "frames": 90,
+          "sample_frames": 47983,
+          "expected": 47981.730597349604,
+          "sample_error": 1.2694026503959321,
+          "bound": 64
+        },
+        {
+          "frames": 90,
+          "sample_frames": 48002,
+          "expected": 47981.730597349604,
+          "sample_error": 20.269402650395932,
+          "bound": 64
+        },
+        {
+          "frames": 90,
+          "sample_frames": 47986,
+          "expected": 47981.730597349604,
+          "sample_error": 4.269402650395932,
+          "bound": 64
+        },
+        {
+          "frames": 90,
+          "sample_frames": 47979,
+          "expected": 47981.730597349604,
+          "sample_error": -2.730597349604068,
+          "bound": 64
+        }
+      ],
+      "commands_observed": 186,
+      "cues": [
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 86
+        },
+        {
+          "slot": 9,
+          "volpan": 168,
+          "frame": 111
+        },
+        {
+          "slot": 9,
+          "volpan": 168,
+          "frame": 141
+        },
+        {
+          "slot": 9,
+          "volpan": 168,
+          "frame": 166
+        },
+        {
+          "slot": 9,
+          "volpan": 168,
+          "frame": 197
+        },
+        {
+          "slot": 6,
+          "volpan": 232,
+          "frame": 202
+        },
+        {
+          "slot": 7,
+          "volpan": 232,
+          "frame": 256
+        },
+        {
+          "slot": 2,
+          "volpan": 232,
+          "frame": 2476
+        },
+        {
+          "slot": 2,
+          "volpan": 232,
+          "frame": 2493
+        },
+        {
+          "slot": 2,
+          "volpan": 232,
+          "frame": 2499
+        },
+        {
+          "slot": 1,
+          "volpan": 232,
+          "frame": 2508
+        },
+        {
+          "slot": 2,
+          "volpan": 232,
+          "frame": 2509
+        },
+        {
+          "slot": 1,
+          "volpan": 232,
+          "frame": 2529
+        },
+        {
+          "slot": 2,
+          "volpan": 232,
+          "frame": 2530
+        },
+        {
+          "slot": 4,
+          "volpan": 232,
+          "frame": 2557
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 2717
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 2742
+        },
+        {
+          "slot": 9,
+          "volpan": 120,
+          "frame": 2999
+        },
+        {
+          "slot": 9,
+          "volpan": 120,
+          "frame": 3024
+        },
+        {
+          "slot": 9,
+          "volpan": 120,
+          "frame": 3055
+        },
+        {
+          "slot": 9,
+          "volpan": 120,
+          "frame": 3114
+        },
+        {
+          "slot": 0,
+          "volpan": 88,
+          "frame": 3240
+        },
+        {
+          "slot": 0,
+          "volpan": 88,
+          "frame": 3265
+        },
+        {
+          "slot": 4,
+          "volpan": 88,
+          "frame": 3640
+        },
+        {
+          "slot": 4,
+          "volpan": 168,
+          "frame": 3785
+        },
+        {
+          "slot": 4,
+          "volpan": 232,
+          "frame": 3930
+        },
+        {
+          "slot": 7,
+          "volpan": 88,
+          "frame": 4295
+        },
+        {
+          "slot": 7,
+          "volpan": 168,
+          "frame": 4450
+        },
+        {
+          "slot": 7,
+          "volpan": 232,
+          "frame": 4605
+        },
+        {
+          "slot": 7,
+          "volpan": 232,
+          "frame": 6875
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 7300
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 7313
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 7338
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 7363
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 7388
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 7438
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 7463
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 7563
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 7815
+        },
+        {
+          "slot": 1,
+          "volpan": 232,
+          "frame": 7820
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 8031
+        },
+        {
+          "slot": 4,
+          "volpan": 232,
+          "frame": 8043
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 8276
+        },
+        {
+          "slot": 5,
+          "volpan": 232,
+          "frame": 8281
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 8676
+        },
+        {
+          "slot": 11,
+          "volpan": 232,
+          "frame": 8679
+        },
+        {
+          "slot": 12,
+          "volpan": 232,
+          "frame": 8732
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 8876
+        },
+        {
+          "slot": 4,
+          "volpan": 232,
+          "frame": 8891
+        },
+        {
+          "slot": 12,
+          "volpan": 232,
+          "frame": 8929
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 8966
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 8991
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 9067
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 9091
+        },
+        {
+          "slot": 11,
+          "volpan": 232,
+          "frame": 9094
+        },
+        {
+          "slot": 12,
+          "volpan": 232,
+          "frame": 9147
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 9192
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 9217
+        },
+        {
+          "slot": 11,
+          "volpan": 232,
+          "frame": 9220
+        },
+        {
+          "slot": 12,
+          "volpan": 232,
+          "frame": 9273
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 9318
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 9343
+        },
+        {
+          "slot": 11,
+          "volpan": 232,
+          "frame": 9346
+        },
+        {
+          "slot": 12,
+          "volpan": 232,
+          "frame": 9399
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 9444
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 9469
+        },
+        {
+          "slot": 11,
+          "volpan": 232,
+          "frame": 9472
+        },
+        {
+          "slot": 8,
+          "volpan": 232,
+          "frame": 9525
+        },
+        {
+          "slot": 10,
+          "volpan": 232,
+          "frame": 9575
+        },
+        {
+          "slot": 9,
+          "volpan": 168,
+          "frame": 9706
+        },
+        {
+          "slot": 6,
+          "volpan": 232,
+          "frame": 9711
+        },
+        {
+          "slot": 7,
+          "volpan": 232,
+          "frame": 9765
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 9951
+        },
+        {
+          "slot": 11,
+          "volpan": 232,
+          "frame": 9954
+        },
+        {
+          "slot": 12,
+          "volpan": 232,
+          "frame": 10007
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 10052
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 10077
+        },
+        {
+          "slot": 11,
+          "volpan": 232,
+          "frame": 10080
+        },
+        {
+          "slot": 12,
+          "volpan": 232,
+          "frame": 10133
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 10178
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 10203
+        },
+        {
+          "slot": 11,
+          "volpan": 232,
+          "frame": 10206
+        },
+        {
+          "slot": 12,
+          "volpan": 232,
+          "frame": 10259
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 10304
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 10329
+        },
+        {
+          "slot": 11,
+          "volpan": 232,
+          "frame": 10332
+        },
+        {
+          "slot": 12,
+          "volpan": 232,
+          "frame": 10385
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 10430
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 10455
+        },
+        {
+          "slot": 11,
+          "volpan": 232,
+          "frame": 10458
+        },
+        {
+          "slot": 12,
+          "volpan": 232,
+          "frame": 10511
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 10556
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 10581
+        },
+        {
+          "slot": 11,
+          "volpan": 232,
+          "frame": 10584
+        },
+        {
+          "slot": 12,
+          "volpan": 232,
+          "frame": 10637
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 10682
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 10707
+        },
+        {
+          "slot": 11,
+          "volpan": 232,
+          "frame": 10710
+        },
+        {
+          "slot": 8,
+          "volpan": 232,
+          "frame": 10763
+        },
+        {
+          "slot": 10,
+          "volpan": 232,
+          "frame": 10813
+        },
+        {
+          "slot": 10,
+          "volpan": 232,
+          "frame": 10943
+        }
+      ],
+      "volume_envelope_values": [
+        0,
+        8,
+        16,
+        24,
+        32,
+        40,
+        48,
+        56,
+        64,
+        72
+      ]
+    },
+    {
+      "strict_callbacks": 2841,
+      "max_fifo_bytes": 0,
+      "max_scene_load_fifo_bytes": 6,
+      "av_fps": 60.098811862348406,
+      "av_sample_rate": 32040.5,
+      "wav_integer_sample_rate": 32040,
+      "pcm_callback_sizes": {
+        "64": 24678,
+        "42": 3,
+        "21": 940,
+        "53": 1,
+        "22": 488,
+        "20": 344,
+        "26": 28,
+        "16": 24,
+        "23": 128,
+        "19": 109,
+        "29": 36,
+        "14": 32,
+        "35": 46,
+        "7": 38,
+        "33": 30,
+        "8": 39,
+        "18": 55,
+        "24": 62,
+        "25": 44,
+        "15": 30,
+        "30": 21,
+        "12": 30,
+        "28": 32,
+        "39": 20,
+        "3": 25,
+        "31": 36,
+        "10": 21,
+        "32": 22,
+        "6": 41,
+        "34": 30,
+        "9": 22,
+        "38": 28,
+        "37": 31,
+        "5": 34,
+        "17": 30,
+        "36": 34,
+        "27": 25,
+        "11": 34,
+        "13": 32,
+        "43": 1,
+        "4": 17,
+        "41": 7,
+        "1": 8,
+        "2": 10,
+        "40": 16
+      },
+      "pcm_windows": [
+        {
+          "frames": 2258,
+          "sample_frames": 1203820,
+          "expected": 1203808.3076535047,
+          "sample_error": 11.692346495343372,
+          "bound": 64
+        }
+      ],
+      "commands_observed": 27,
+      "cues": [
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 86
+        },
+        {
+          "slot": 9,
+          "volpan": 168,
+          "frame": 111
+        },
+        {
+          "slot": 9,
+          "volpan": 168,
+          "frame": 141
+        },
+        {
+          "slot": 9,
+          "volpan": 168,
+          "frame": 166
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 196
+        },
+        {
+          "slot": 9,
+          "volpan": 168,
+          "frame": 222
+        },
+        {
+          "slot": 6,
+          "volpan": 232,
+          "frame": 227
+        },
+        {
+          "slot": 7,
+          "volpan": 232,
+          "frame": 281
+        },
+        {
+          "slot": 2,
+          "volpan": 232,
+          "frame": 2777
+        },
+        {
+          "slot": 2,
+          "volpan": 232,
+          "frame": 2794
+        },
+        {
+          "slot": 2,
+          "volpan": 232,
+          "frame": 2800
+        },
+        {
+          "slot": 1,
+          "volpan": 232,
+          "frame": 2809
+        },
+        {
+          "slot": 2,
+          "volpan": 232,
+          "frame": 2810
+        },
+        {
+          "slot": 1,
+          "volpan": 232,
+          "frame": 2830
+        },
+        {
+          "slot": 2,
+          "volpan": 232,
+          "frame": 2831
+        },
+        {
+          "slot": 4,
+          "volpan": 232,
+          "frame": 2858
+        }
+      ],
+      "volume_envelope_values": [
+        24,
+        32,
+        40,
+        48
+      ]
+    },
+    {
+      "strict_callbacks": 2652,
+      "max_fifo_bytes": 0,
+      "max_scene_load_fifo_bytes": 6,
+      "av_fps": 60.098811862348406,
+      "av_sample_rate": 32040.5,
+      "wav_integer_sample_rate": 32040,
+      "pcm_callback_sizes": {
+        "64": 23166,
+        "42": 1,
+        "21": 848,
+        "53": 1,
+        "22": 472,
+        "20": 337,
+        "26": 30,
+        "16": 19,
+        "19": 99,
+        "23": 122,
+        "30": 32,
+        "14": 41,
+        "36": 36,
+        "6": 20,
+        "33": 29,
+        "8": 32,
+        "28": 40,
+        "18": 44,
+        "24": 70,
+        "25": 41,
+        "15": 27,
+        "12": 35,
+        "29": 39,
+        "39": 23,
+        "2": 16,
+        "10": 21,
+        "31": 35,
+        "9": 35,
+        "32": 21,
+        "40": 16,
+        "3": 17,
+        "17": 30,
+        "34": 21,
+        "37": 22,
+        "5": 22,
+        "11": 28,
+        "7": 33,
+        "4": 22,
+        "27": 37,
+        "35": 24,
+        "38": 15,
+        "13": 32,
+        "41": 5,
+        "1": 6
+      },
+      "pcm_windows": [
+        {
+          "frames": 2044,
+          "sample_frames": 1089705,
+          "expected": 1089718.4148998067,
+          "sample_error": -13.414899806724861,
+          "bound": 64
+        }
+      ],
+      "commands_observed": 28,
+      "cues": [
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 86
+        },
+        {
+          "slot": 9,
+          "volpan": 168,
+          "frame": 111
+        },
+        {
+          "slot": 9,
+          "volpan": 168,
+          "frame": 141
+        },
+        {
+          "slot": 9,
+          "volpan": 168,
+          "frame": 166
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 196
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 221
+        },
+        {
+          "slot": 9,
+          "volpan": 168,
+          "frame": 247
+        },
+        {
+          "slot": 6,
+          "volpan": 232,
+          "frame": 252
+        },
+        {
+          "slot": 7,
+          "volpan": 232,
+          "frame": 306
+        },
+        {
+          "slot": 2,
+          "volpan": 232,
+          "frame": 2588
+        },
+        {
+          "slot": 2,
+          "volpan": 232,
+          "frame": 2605
+        },
+        {
+          "slot": 2,
+          "volpan": 232,
+          "frame": 2611
+        },
+        {
+          "slot": 1,
+          "volpan": 232,
+          "frame": 2620
+        },
+        {
+          "slot": 2,
+          "volpan": 232,
+          "frame": 2621
+        },
+        {
+          "slot": 1,
+          "volpan": 232,
+          "frame": 2641
+        },
+        {
+          "slot": 2,
+          "volpan": 232,
+          "frame": 2642
+        },
+        {
+          "slot": 4,
+          "volpan": 232,
+          "frame": 2669
+        }
+      ],
+      "volume_envelope_values": [
+        24,
+        32,
+        40,
+        48
+      ]
+    },
+    {
+      "strict_callbacks": 1875,
+      "max_fifo_bytes": 0,
+      "max_scene_load_fifo_bytes": 6,
+      "av_fps": 60.098811862348406,
+      "av_sample_rate": 32040.5,
+      "wav_integer_sample_rate": 32040,
+      "pcm_callback_sizes": {
+        "64": 16950,
+        "42": 1,
+        "21": 684,
+        "53": 1,
+        "22": 326,
+        "20": 228,
+        "31": 36,
+        "11": 34,
+        "23": 62,
+        "19": 59,
+        "33": 21,
+        "9": 24,
+        "24": 42,
+        "36": 13,
+        "6": 23,
+        "27": 30,
+        "15": 18,
+        "25": 20,
+        "17": 18,
+        "16": 21,
+        "18": 35,
+        "26": 27,
+        "30": 22,
+        "29": 33,
+        "12": 23,
+        "35": 20,
+        "5": 17,
+        "37": 23,
+        "14": 20,
+        "10": 23,
+        "34": 27,
+        "7": 21,
+        "13": 23,
+        "38": 16,
+        "4": 18,
+        "39": 10,
+        "32": 24,
+        "3": 8,
+        "8": 30,
+        "28": 26,
+        "40": 6,
+        "1": 1,
+        "2": 4,
+        "41": 1
+      },
+      "pcm_windows": [],
+      "commands_observed": 73,
+      "cues": [
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 86
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 111
+        },
+        {
+          "slot": 9,
+          "volpan": 168,
+          "frame": 136
+        },
+        {
+          "slot": 9,
+          "volpan": 168,
+          "frame": 166
+        },
+        {
+          "slot": 9,
+          "volpan": 168,
+          "frame": 191
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 221
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 246
+        },
+        {
+          "slot": 9,
+          "volpan": 168,
+          "frame": 272
+        },
+        {
+          "slot": 6,
+          "volpan": 232,
+          "frame": 277
+        },
+        {
+          "slot": 7,
+          "volpan": 232,
+          "frame": 331
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 457
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 482
+        },
+        {
+          "slot": 0,
+          "volpan": 88,
+          "frame": 682
+        },
+        {
+          "slot": 0,
+          "volpan": 88,
+          "frame": 707
+        },
+        {
+          "slot": 0,
+          "volpan": 88,
+          "frame": 732
+        },
+        {
+          "slot": 0,
+          "volpan": 88,
+          "frame": 757
+        },
+        {
+          "slot": 0,
+          "volpan": 88,
+          "frame": 782
+        },
+        {
+          "slot": 0,
+          "volpan": 88,
+          "frame": 807
+        },
+        {
+          "slot": 0,
+          "volpan": 88,
+          "frame": 832
+        },
+        {
+          "slot": 0,
+          "volpan": 88,
+          "frame": 857
+        },
+        {
+          "slot": 0,
+          "volpan": 88,
+          "frame": 882
+        },
+        {
+          "slot": 0,
+          "volpan": 88,
+          "frame": 907
+        },
+        {
+          "slot": 0,
+          "volpan": 88,
+          "frame": 932
+        },
+        {
+          "slot": 2,
+          "volpan": 168,
+          "frame": 933
+        },
+        {
+          "slot": 2,
+          "volpan": 168,
+          "frame": 961
+        },
+        {
+          "slot": 0,
+          "volpan": 88,
+          "frame": 982
+        },
+        {
+          "slot": 0,
+          "volpan": 88,
+          "frame": 1007
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 1232
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 1257
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 1282
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 1307
+        },
+        {
+          "slot": 4,
+          "volpan": 232,
+          "frame": 1343
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 1357
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 1384
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 1477
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 1504
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 1597
+        },
+        {
+          "slot": 1,
+          "volpan": 232,
+          "frame": 1602
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 1625
+        },
+        {
+          "slot": 2,
+          "volpan": 232,
+          "frame": 1629
+        },
+        {
+          "slot": 4,
+          "volpan": 232,
+          "frame": 1640
+        },
+        {
+          "slot": 12,
+          "volpan": 232,
+          "frame": 1678
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 1717
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 1744
+        },
+        {
+          "slot": 4,
+          "volpan": 232,
+          "frame": 1759
+        },
+        {
+          "slot": 12,
+          "volpan": 232,
+          "frame": 1797
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 1837
+        },
+        {
+          "slot": 1,
+          "volpan": 232,
+          "frame": 1842
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 1865
+        },
+        {
+          "slot": 2,
+          "volpan": 232,
+          "frame": 1869
+        },
+        {
+          "slot": 4,
+          "volpan": 232,
+          "frame": 1880
+        },
+        {
+          "slot": 12,
+          "volpan": 232,
+          "frame": 1918
+        },
+        {
+          "slot": 0,
+          "volpan": 120,
+          "frame": 1957
+        },
+        {
+          "slot": 4,
+          "volpan": 232,
+          "frame": 1970
+        },
+        {
+          "slot": 2,
+          "volpan": 232,
+          "frame": 2017
+        },
+        {
+          "slot": 2,
+          "volpan": 232,
+          "frame": 2034
+        },
+        {
+          "slot": 5,
+          "volpan": 232,
+          "frame": 2035
+        }
+      ],
+      "volume_envelope_values": [
+        24,
+        32,
+        40,
+        48
+      ]
+    }
+  ],
+  "core_identity": {
+    "rom_sha256": "240c194a09975158dfdc7d17b4569d171caba0e1caa4fa51dc9a80dea1c59360",
+    "manifest_sha256": "240c194a09975158dfdc7d17b4569d171caba0e1caa4fa51dc9a80dea1c59360",
+    "rom_bytes": 4194304,
+    "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
+    "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
+  },
+  "preservation": {
+    "baseline": "29fee83",
+    "changed": [
+      "assets/generated/effects.it",
+      "assets/generated/music0.it",
+      "assets/generated/music1.it",
+      "assets/generated/music2.it",
+      "assets/generated/music3.it",
+      "assets/generated/music4.it",
+      "assets/generated/soundbank.asm",
+      "assets/generated/soundbank.bnk"
+    ],
+    "generated_preserved": 218,
+    "old_ram_count": 1323,
+    "markers": {
+      "SECTIONEND_globram.data": [
+        8324504,
+        8324680
+      ],
+      "RAM_USAGE_SLOT_3_BANK_127_END": [
+        1431,
+        1607
+      ]
+    },
+    "scaffold_reservations": {
+      "v29DefenseState": 8324504,
+      "v29BonusState": 8324520,
+      "v29AutoState": 8324584,
+      "v29RandomState": 8324592,
+      "v29AudioState": 8324600,
+      "v29ArenaState": 8324632
+    },
+    "soundbank": {
+      "soundbank_bytes": 27470,
+      "lorom_bank": 24,
+      "lorom_free_bytes": 5298,
+      "module_base": 6656,
+      "source_count": 19,
+      "module_count": 6,
+      "resident_count": 13,
+      "streaming_bytes": 0,
+      "echo_bytes": 0,
+      "modules": [
+        {
+          "module_id": 0,
+          "module_bytes": 888,
+          "music_brr_bytes": 11914,
+          "source_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "resident_cue_bytes": 11914,
+          "spc_end_exclusive": 31372,
+          "spc_free_bytes": 34164
+        },
+        {
+          "module_id": 1,
+          "module_bytes": 2472,
+          "music_brr_bytes": 1548,
+          "source_indices": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "resident_cue_bytes": 11914,
+          "spc_end_exclusive": 22590,
+          "spc_free_bytes": 42946
+        },
+        {
+          "module_id": 2,
+          "module_bytes": 2536,
+          "music_brr_bytes": 1548,
+          "source_indices": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "resident_cue_bytes": 11914,
+          "spc_end_exclusive": 22654,
+          "spc_free_bytes": 42882
+        },
+        {
+          "module_id": 3,
+          "module_bytes": 2472,
+          "music_brr_bytes": 1548,
+          "source_indices": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "resident_cue_bytes": 11914,
+          "spc_end_exclusive": 22590,
+          "spc_free_bytes": 42946
+        },
+        {
+          "module_id": 4,
+          "module_bytes": 2536,
+          "music_brr_bytes": 1548,
+          "source_indices": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "resident_cue_bytes": 11914,
+          "spc_end_exclusive": 22654,
+          "spc_free_bytes": 42882
+        },
+        {
+          "module_id": 5,
+          "module_bytes": 2472,
+          "music_brr_bytes": 1548,
+          "source_indices": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "resident_cue_bytes": 11914,
+          "spc_end_exclusive": 22590,
+          "spc_free_bytes": 42946
+        }
+      ]
+    }
+  },
+  "menu": {
+    "module_sha256": "36f7a4b0313fc61cf7ec6c8f3fb98b2b05fc277809db97cef66977fcf06cc3c5",
+    "nominal_cycle_seconds": 33.68421052631579,
+    "complete_passage": {
+      "pcm_sha256": "ff253cac08b26fe27cab77deb5ca862581802991244a64865f98c36edb9da2a7",
+      "sample_frames": 1143565,
+      "peak": 1125,
+      "rms": 187.3812,
+      "clipped_samples": 0,
+      "longest_near_silence_samples": 3872
+    },
+    "excerpt": {
+      "file": "docs/audio29/accuracy/menu.wav",
+      "bytes": 897164,
+      "sha256": "57e41dd4a91a72966a67fff0975b19d8d8f4079f4a0db131440d3519f46d4c77",
+      "pcm_sha256": "e7578fc3a8f745467418df2114796893f2b7d5b21647a1064cc84f29d7c3607f",
+      "sample_frames": 224280,
+      "peak": 1125,
+      "rms": 189.9156,
+      "clipped_samples": 0,
+      "longest_near_silence_samples": 3872,
+      "rate": 32040
+    }
+  },
+  "intros": [
+    {
+      "file": "docs/audio29/accuracy/stage0-intro.wav",
+      "bytes": 454268,
+      "sha256": "52835ee4c2b08bf8541e589c6d2487926e34c7783b6a50aac1eab5f7a7a101f4",
+      "pcm_sha256": "58367220d38e4e414bda6705fd909813b72dc8f1ad686b3cb05f0c8dc26bc9a3",
+      "sample_frames": 113556,
+      "peak": 4902,
+      "rms": 340.6863,
+      "clipped_samples": 0,
+      "longest_near_silence_samples": 12878,
+      "rate": 32040
+    },
+    {
+      "file": "docs/audio29/accuracy/stage1-intro.wav",
+      "bytes": 454264,
+      "sha256": "51984232c6d8bd30bac5570cf92a4a2db66a8bf6363fda191cfbc222f9a90c75",
+      "pcm_sha256": "53cc7248501977e28069edbf4f62678dbe6b5093eb1e1686d90b5e59f89b2a39",
+      "sample_frames": 113555,
+      "peak": 4846,
+      "rms": 335.6121,
+      "clipped_samples": 0,
+      "longest_near_silence_samples": 12860,
+      "rate": 32040
+    },
+    {
+      "file": "docs/audio29/accuracy/stage2-intro.wav",
+      "bytes": 454320,
+      "sha256": "9daf8f8e0c10572f46919f4ac9c79883ae6965b587e9b13bef31b17b58bd2fcd",
+      "pcm_sha256": "7bd199d78bb7988a876bacd35cbf7d09300f468aa8377cedbbbd089315e5eea4",
+      "sample_frames": 113569,
+      "peak": 4862,
+      "rms": 336.7613,
+      "clipped_samples": 0,
+      "longest_near_silence_samples": 12818,
+      "rate": 32040
+    }
+  ],
+  "complete_scores": [
+    {
+      "module_sha256": "5975cca254986cd6a3e119430720231a3acbd924b91e65cb570fbecc1b817603",
+      "nominal_cycle_seconds": 30.967741935483872,
+      "complete_passage": {
+        "pcm_sha256": "8ac4457e3d83a5ed3ae7c3e4dfde060d6bd87ba3d04b14c74b40ec01b4e07129",
+        "sample_frames": 1056664,
+        "peak": 1190,
+        "rms": 181.9367,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 5367
+      },
+      "excerpt": {
+        "file": "docs/audio29/accuracy/stage0-music.wav",
+        "bytes": 897164,
+        "sha256": "7de363f1719a11f56f6f030f058e1ae6245fb36c13fbcd1bda50d8bad752b4d6",
+        "pcm_sha256": "e8ca0182061012925d4d1845a85b4c0f3f2c0614acdb45dec870882f8ed138dd",
+        "sample_frames": 224280,
+        "peak": 1190,
+        "rms": 186.0035,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 5363,
+        "rate": 32040
+      }
+    },
+    {
+      "module_sha256": "c358ba99b2935c06071428deb378b8cf1dbb4589678209a4dc7a7070ff2b7ee2",
+      "nominal_cycle_seconds": 35.55555555555556,
+      "complete_passage": {
+        "pcm_sha256": "8e3a7a255386ac1a291010ac4777294cc9fd281ed39b2c659c50e09776ddcba3",
+        "sample_frames": 1203820,
+        "peak": 1190,
+        "rms": 179.0459,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 4154
+      },
+      "excerpt": {
+        "file": "docs/audio29/accuracy/stage1-music.wav",
+        "bytes": 897164,
+        "sha256": "a507f1b07dee8b53e34919dcba02077b6b2f60e465808cea04af9039a8e96120",
+        "pcm_sha256": "fda2460333e83acd9e4b3f2853326915c6f94910859cbc7e355b8fb70bf2101f",
+        "sample_frames": 224280,
+        "peak": 1159,
+        "rms": 183.338,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 4154,
+        "rate": 32040
+      }
+    },
+    {
+      "module_sha256": "e160f204c2e109b87327621304293f953ef141b5a7ca5d8e8ab01f60788e0931",
+      "nominal_cycle_seconds": 32.0,
+      "complete_passage": {
+        "pcm_sha256": "eb46545a81a757c9bec8c82ecf90edf64ff71b5c0f0f4ba8373c82136c72300d",
+        "sample_frames": 1089705,
+        "peak": 1106,
+        "rms": 190.5136,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 5527
+      },
+      "excerpt": {
+        "file": "docs/audio29/accuracy/stage2-music.wav",
+        "bytes": 897164,
+        "sha256": "3bb53fa871fdd977a98cde8df32cf1e58ece96be48b04d0f80110d1115912541",
+        "pcm_sha256": "e8002f2f01412f559c787617a39083f1b6aa425edb74a373d67a4fa57da90eae",
+        "sample_frames": 224280,
+        "peak": 1105,
+        "rms": 193.7274,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 5527,
+        "rate": 32040
+      }
+    }
+  ],
+  "paired_supers": [
+    {
+      "arena": 0,
+      "two_wave_frames": 9,
+      "pcm": {
+        "file": "docs/audio29/accuracy/stage0-paired-supers.wav",
+        "bytes": 513944,
+        "sha256": "9963d2bb347077791cbb33fccea7854780f3a2bb6e5222a2fcbda60dbe4a781d",
+        "pcm_sha256": "f32bb1b9d0c489c14f9afc8b1250a57d222666ed0f9bc1d3dccc9c04c9c74bb7",
+        "sample_frames": 128475,
+        "peak": 4114,
+        "rms": 428.057,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 5361,
+        "rate": 32040
+      }
+    },
+    {
+      "arena": 1,
+      "two_wave_frames": 9,
+      "pcm": {
+        "file": "docs/audio29/accuracy/stage1-paired-supers.wav",
+        "bytes": 513980,
+        "sha256": "51de8f30377aa5f56e00cc9529af9edb968004cafaaa0bcf16796776d412f476",
+        "pcm_sha256": "a82a9382ac6c3a38cf1830d98f59f0e4a83ba982055085533a2567b2d4c44c34",
+        "sample_frames": 128484,
+        "peak": 4114,
+        "rms": 426.5512,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 4152,
+        "rate": 32040
+      }
+    },
+    {
+      "arena": 2,
+      "two_wave_frames": 9,
+      "pcm": {
+        "file": "docs/audio29/accuracy/stage2-paired-supers.wav",
+        "bytes": 513984,
+        "sha256": "cb674778547dd656116f7b17e307edf2f2efc4addd3c54d2c3a0df84ffc09dd4",
+        "pcm_sha256": "7a062e119bb1317259dab066ce4de2c1a64d1cbfd63ab899c2b6aac9f8f886a1",
+        "sample_frames": 128485,
+        "peak": 3918,
+        "rms": 432.987,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 5519,
+        "rate": 32040
+      }
+    }
+  ],
+  "settings": {
+    "screenshot": {
+      "file": "docs/audio29/accuracy/05-sound-levels.png",
+      "bytes": 2866,
+      "sha256": "3e8966994f7124ec48baa68dd7e509a512badb778ecc932e99a3ade0bc56ab90"
+    },
+    "effects": [
+      {
+        "level": 1,
+        "file": "docs/audio29/accuracy/effects-level-1.wav",
+        "bytes": 149336,
+        "sha256": "b8dbe637ab8035e03a416d9a97fc4afebcbd2d57b9c136ea7cb175f1f840539f",
+        "pcm_sha256": "c865fe59dad89ed265b7bc00922cc6e3147f8e1989a9521162c3f15fa7742001",
+        "sample_frames": 37323,
+        "peak": 1451,
+        "rms": 103.0317,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 32493,
+        "rate": 32040
+      },
+      {
+        "level": 2,
+        "file": "docs/audio29/accuracy/effects-level-2.wav",
+        "bytes": 149320,
+        "sha256": "9fdfdec3bdb8993866de3d27b0f913d53fe51e2586279e22693413be55bdb22b",
+        "pcm_sha256": "85e390964ee7be0fc6395fd94aff20eba8d62c0b8dfb7f44cdce0e0148295f8d",
+        "sample_frames": 37319,
+        "peak": 2938,
+        "rms": 208.5402,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 32245,
+        "rate": 32040
+      },
+      {
+        "level": 3,
+        "file": "docs/audio29/accuracy/effects-level-3.wav",
+        "bytes": 149320,
+        "sha256": "18f83ff92ae88d9b6c1a299e2a3ac691049a9659f5a8fba812035842693ea781",
+        "pcm_sha256": "65f19fe738727015c5f43fe77d130ad71d92e30cd8805005117d261c0e0dd6d9",
+        "sample_frames": 37319,
+        "peak": 4114,
+        "rms": 291.9581,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 32361,
+        "rate": 32040
+      },
+      {
+        "level": 0,
+        "file": "docs/audio29/accuracy/effects-level-0.wav",
+        "bytes": 149396,
+        "sha256": "91792cab71861886ebc8e20bfb7110f37e35f6b42222b5039973a2c7d0635bd4",
+        "pcm_sha256": "e1b26e8bbb6e0a8abbc2f4e4bc505a8957acfe4e4012b43528e4771564410190",
+        "sample_frames": 37338,
+        "peak": 0,
+        "rms": 0.0,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 37338,
+        "rate": 32040
+      }
+    ],
+    "voice": [
+      {
+        "level": 1,
+        "file": "docs/audio29/accuracy/voice-level-1.wav",
+        "bytes": 170648,
+        "sha256": "f934485b139b181bb749ea3ae75c08abb05acbaac23c848adce1b15d584823a3",
+        "pcm_sha256": "a8a6f08f2791a01392108cb5cd348ead7bfbf8233e897f8d400b2c14f89b2580",
+        "sample_frames": 42651,
+        "peak": 1660,
+        "rms": 87.1923,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 31642,
+        "rate": 32040
+      },
+      {
+        "level": 2,
+        "file": "docs/audio29/accuracy/voice-level-2.wav",
+        "bytes": 170648,
+        "sha256": "7beebdd84033d65881cf8d5aec79dfdefd2b3e900e9380e3f96ac08040aa6a78",
+        "pcm_sha256": "7419e7d7f337c81c38054406567bda5b4b5cda82dfcf00e3f37e5aa105c4ac51",
+        "sample_frames": 42651,
+        "peak": 3361,
+        "rms": 176.5379,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 31534,
+        "rate": 32040
+      },
+      {
+        "level": 3,
+        "file": "docs/audio29/accuracy/voice-level-3.wav",
+        "bytes": 170592,
+        "sha256": "073dddc499f6bb4256c4c603129e78077285e1ca69401d14ec6d46d684baeb4d",
+        "pcm_sha256": "6acd53e145bf75fc9763369ab7052a19212d0ca404d01671c3ea7244b9d886d4",
+        "sample_frames": 42637,
+        "peak": 4706,
+        "rms": 247.2272,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 31637,
+        "rate": 32040
+      },
+      {
+        "level": 0,
+        "file": "docs/audio29/accuracy/voice-level-0.wav",
+        "bytes": 170648,
+        "sha256": "3c5ced1157700fb4563f7f2f6e0daab754a7244ced774c458894e6aed74e4760",
+        "pcm_sha256": "ef3cc3d6392d230f898d3b26612db29068ba9d28a664d87ef0672914b8ea03e6",
+        "sample_frames": 42651,
+        "peak": 0,
+        "rms": 0.0,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 42651,
+        "rate": 32040
+      }
+    ],
+    "music": [
+      {
+        "level": 1,
+        "file": "docs/audio29/accuracy/music-level-1.wav",
+        "bytes": 511848,
+        "sha256": "42828f623188d335307544466ed556cd467fc62fe438cdac6ac65cba19724252",
+        "pcm_sha256": "69d6fe0d3eeceb86e1d69ddbdf77a45466ade3469d51512487827acb1d92e3a3",
+        "sample_frames": 127951,
+        "peak": 560,
+        "rms": 86.894,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 6027,
+        "rate": 32040
+      },
+      {
+        "level": 2,
+        "file": "docs/audio29/accuracy/music-level-2.wav",
+        "bytes": 511852,
+        "sha256": "615840c0b2839bd255e41be7542172aa1d0c3eec505d7ea3d574f9dc6373f1c5",
+        "pcm_sha256": "278076a8016979a3a4ded422d0223a0f54ebc191432ee3f921c968997bc4bbdd",
+        "sample_frames": 127952,
+        "peak": 1094,
+        "rms": 183.8519,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 5361,
+        "rate": 32040
+      },
+      {
+        "level": 3,
+        "file": "docs/audio29/accuracy/music-level-3.wav",
+        "bytes": 511908,
+        "sha256": "ecb9c742e1332f170403a5bab9d7126163f76d4791d5c52695faec353b86e281",
+        "pcm_sha256": "efe461ca79b56edb65425e61fc069a083b6bde34fcd09631271474a2b665896f",
+        "sample_frames": 127966,
+        "peak": 1800,
+        "rms": 275.3764,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 5357,
+        "rate": 32040
+      },
+      {
+        "level": 0,
+        "file": "docs/audio29/accuracy/music-level-0.wav",
+        "bytes": 511856,
+        "sha256": "7651be78769740bea51140e45da9b3a7597a750b5128e6a0a40ec10227a0eb27",
+        "pcm_sha256": "ec6328f87058bcf09a953637a3751742e022fa4344b20aa610f4b9caa33628d3",
+        "sample_frames": 127953,
+        "peak": 0,
+        "rms": 0.0,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 127953,
+        "rate": 32040
+      }
+    ]
+  },
+  "contacts": {
+    "light": {
+      "slots": [
+        0,
+        1
+      ],
+      "hp_before": 128,
+      "hp_after": 120,
+      "pcm": {
+        "file": "docs/audio29/accuracy/light.wav",
+        "bytes": 191964,
+        "sha256": "3b71e806b97dc5a179baeab2f84b09319cc048adcd119b8e856f4e6873484d72",
+        "pcm_sha256": "e03603cc88790c411ebf5932d0aa824ac92dffee387be4aa5566254f25851b88",
+        "sample_frames": 47980,
+        "peak": 3220,
+        "rms": 155.7106,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 42421,
+        "rate": 32040
+      }
+    },
+    "strong": {
+      "slots": [
+        0,
+        4
+      ],
+      "hp_before": 120,
+      "hp_after": 105,
+      "pcm": {
+        "file": "docs/audio29/accuracy/strong.wav",
+        "bytes": 191976,
+        "sha256": "3ec1abfaf4e6981e6a5dfd1d5294de3ec2fa4b563ff61a503ee3db4e7a0c1236",
+        "pcm_sha256": "d7857b1b16d7c6bc894374c7e2e759f32aae42df4ccdddff9242ab5d97ebfeee",
+        "sample_frames": 47983,
+        "peak": 4114,
+        "rms": 268.1686,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 36554,
+        "rate": 32040
+      }
+    },
+    "block": {
+      "slots": [
+        0,
+        5
+      ],
+      "hp_before": 105,
+      "hp_after": 105,
+      "pcm": {
+        "file": "docs/audio29/accuracy/block.wav",
+        "bytes": 192052,
+        "sha256": "d6279e6091be0927dc3ffdbf67ebf7a5818a2056f070bfb97a8a2fc9d6df4db8",
+        "pcm_sha256": "52a3c2e36ed9c2a4c9bd153430323aa7269a8f4a69cfb8a9d03eed3ddc7c8e1c",
+        "sample_frames": 48002,
+        "peak": 2710,
+        "rms": 140.2146,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 42020,
+        "rate": 32040
+      }
+    },
+    "throw": {
+      "slots": [
+        0,
+        11,
+        12
+      ],
+      "hp_before": 105,
+      "hp_after": 86,
+      "pcm": {
+        "file": "docs/audio29/accuracy/throw.wav",
+        "bytes": 191988,
+        "sha256": "83b4b9eddeb449c4df7595c7518d8b0d5950b635af25565bc3bd026c6b37833e",
+        "pcm_sha256": "b8842d5de20e77ee231875e334df57642011b814248fffeaa2fd018cfd27dd56",
+        "sample_frames": 47986,
+        "peak": 3924,
+        "rms": 380.8258,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 24461,
+        "rate": 32040
+      }
+    },
+    "knockdown": {
+      "slots": [
+        0,
+        4,
+        12
+      ],
+      "hp_before": 86,
+      "hp_after": 69,
+      "pcm": {
+        "file": "docs/audio29/accuracy/knockdown.wav",
+        "bytes": 191960,
+        "sha256": "4a8b66d5766aedeea2a7f4ade99b29e978205493ef3d51255433a0af5d458212",
+        "pcm_sha256": "41a02cb9ab160282e82dad5e581b43c70d46e1c00123175b25287fdaef8e5fc7",
+        "sample_frames": 47979,
+        "peak": 4114,
+        "rms": 374.168,
+        "clipped_samples": 0,
+        "longest_near_silence_samples": 15481,
+        "rate": 32040
+      }
+    }
+  },
+  "result": {
+    "slots": [
+      0,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "pcm": {
+      "file": "docs/audio29/accuracy/ko-result-last12s.wav",
+      "bytes": 1537964,
+      "sha256": "a50deb647e7e9e1767f36c7755f455a27b352f38862dc73586791ddd004a09c1",
+      "pcm_sha256": "c35b6fdfd8313b240c07daeaa16e40101d5b281d3e0b7374727f5c3d264e4e4e",
+      "sample_frames": 384480,
+      "peak": 4647,
+      "rms": 370.0554,
+      "clipped_samples": 0,
+      "longest_near_silence_samples": 5363,
+      "rate": 32040
+    }
+  },
+  "scores": [
+    {
+      "file": "docs/audio29/accuracy/stage0-music.wav",
+      "bytes": 897164,
+      "sha256": "7de363f1719a11f56f6f030f058e1ae6245fb36c13fbcd1bda50d8bad752b4d6",
+      "pcm_sha256": "e8ca0182061012925d4d1845a85b4c0f3f2c0614acdb45dec870882f8ed138dd",
+      "sample_frames": 224280,
+      "peak": 1190,
+      "rms": 186.0035,
+      "clipped_samples": 0,
+      "longest_near_silence_samples": 5363,
+      "rate": 32040
+    },
+    {
+      "file": "docs/audio29/accuracy/stage1-music.wav",
+      "bytes": 897164,
+      "sha256": "a507f1b07dee8b53e34919dcba02077b6b2f60e465808cea04af9039a8e96120",
+      "pcm_sha256": "fda2460333e83acd9e4b3f2853326915c6f94910859cbc7e355b8fb70bf2101f",
+      "sample_frames": 224280,
+      "peak": 1159,
+      "rms": 183.338,
+      "clipped_samples": 0,
+      "longest_near_silence_samples": 4154,
+      "rate": 32040
+    },
+    {
+      "file": "docs/audio29/accuracy/stage2-music.wav",
+      "bytes": 897164,
+      "sha256": "3bb53fa871fdd977a98cde8df32cf1e58ece96be48b04d0f80110d1115912541",
+      "pcm_sha256": "e8002f2f01412f559c787617a39083f1b6aa425edb74a373d67a4fa57da90eae",
+      "sample_frames": 224280,
+      "peak": 1105,
+      "rms": 193.7274,
+      "clipped_samples": 0,
+      "longest_near_silence_samples": 5527,
+      "rate": 32040
+    }
+  ],
+  "training": {
+    "levels_after_live_reset": [
+      1,
+      2,
+      0
+    ],
+    "dummy": 4
+  },
+  "mixed": {
+    "slots": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      12
+    ],
+    "pcm": {
+      "file": "docs/audio29/accuracy/rapid-two-pad-mix.wav",
+      "bytes": 1535412,
+      "sha256": "ab42e04af22b8ba30ecec256d519ec3fe070aa9695c10af676bbf4d89e1e76c0",
+      "pcm_sha256": "c2977da3272cdc6a09825299b0d3cc4494c9ae63b13cf5d929d9765f5356c190",
+      "sample_frames": 383842,
+      "peak": 4503,
+      "rms": 378.1305,
+      "clipped_samples": 0,
+      "longest_near_silence_samples": 4374,
+      "rate": 32040
+    }
+  },
+  "elapsed_seconds": 143.172,
+  "passed": 225
+}

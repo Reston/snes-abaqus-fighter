@@ -1,0 +1,10 @@
+--- a/src/arena_life29.h
++++ b/src/arena_life29.h
+@@ -49,6 +49,7 @@
+ void arenaLife29Tick(void) {
+     u8 supers,heavy,ko;
+     v29ArenaState[12]=0;
++    return; /* Counterfactual only: keep the arena upload unarmed. */
+     if(screen!=FIGHT)return;
+     if(!v29ArenaState[0])return;
+     supers=superActive[0];if(superActive[1])supers|=2;

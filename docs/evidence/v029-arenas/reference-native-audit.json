@@ -1,0 +1,2188 @@
+{
+  "status": "passed",
+  "isolated_reference": "D:\\snes-abaqus-fighter-arena-cf-cb61690-7e942e57",
+  "rom_sha256": "ed0d22e6bfbec35cc728458bedc84917be53c55582d6cdfaf9e00e3d52843fa2",
+  "symbols_sha256": "2595d0ace16f90f239b891ad6f3dba2d2d3cf4de1df27a1f34e8b1409fa57358",
+  "checksum": "277A",
+  "bytes": 4194304,
+  "identical_mutable_symbols": 1329,
+  "added_moved_mutable_symbols": {},
+  "identical_generated_files": 238,
+  "generated_inventory_excluding_soundbank_h": 237,
+  "generated_hashes": {
+    "arena-life29.json": "9651c02409fd91958a3ea5def60043cc296e16766451077ff8739925c4e551f8",
+    "arenas.png": "072ea1cf398506603e15174cd3032268fdd887c9387d6ee6ebbf84ed27186f1c",
+    "arenas_map.bin": "a04c8aaaa6ffe846f8c92d2c84ddd7c03070913b4cf3cf912907903fbb666046",
+    "arenas_pal.bin": "73aac32d743affdc4e38a04b2f424424069437d40d712926b5665c2f1f71498e",
+    "arenas_tiles.bin": "f2ed19291b18445479f05b57eb40865cd1764a1c1935e42fff1f1c3de156b9a5",
+    "arena_life29_stage0.bin": "21aa938ff92f59bdbd9287169995cddd60d6a88bc930e1df5148fa0e75899075",
+    "arena_life29_stage1.bin": "23adbf5214a341eddb9dddb4ecdde88192ce6f5e6e5c56d180e07b840a55391f",
+    "arena_life29_stage2.bin": "5c735f9bcb198860feb7d25862213e35f1963b826bf54aeab486f1fc368cbcf5",
+    "assets.h": "fe5dd039186e4c73182b219e6b2b4854b5fbfb5d7506e54fb8082b99f9018f99",
+    "bonus29-assets.json": "e0b80fdf6d441efe40504a1bf64d2ebc972f91e189305220280b0342feb287ec",
+    "bonus29_inbox.bin": "6a35a860d63c94d8ff868205a12da19811e61a4cc921a14abec84afa37c14612",
+    "bonus29_inbox.png": "f61d419bd884ded8aa85132f756b2ba5724706e9cbec6f93b1d622d5feb5fff6",
+    "bonus29_inbox_pal.bin": "7ff4ff60d5b6592b03ea9ef80c4662f8e8e133cb1f8363b7add119927a99561e",
+    "bonus29_printer.bin": "b002cdec5ab757c4332e28673175341da872ea21c7da66fb264b0445935bb4fc",
+    "bonus29_printer.png": "0c742fee93aa6a7b9e89a531b7f8c961d2d71417d857294bc39ddf48d5309c88",
+    "bonus29_printer_pal.bin": "e886768c5c9ba8f4168523e0c4a9b46dc6fa55c49fb63c84f1b07ec5e76301e2",
+    "champion.png": "e0301816094931a17ec1e338a09bcb6c2857d90187f6abeec69ba2279682de88",
+    "champion_map.bin": "4149213bbe977c91e8e847129ce64976879c4fbc9ae9a4e1431d505e375a1e9a",
+    "champion_pal.bin": "02e0569819891084a53ce2bf072b806eb611013e066b18c8c5480f76e00170bd",
+    "champion_tiles.bin": "7791af0e6eb849de844433cfbef99f4c16d921aec75e478964b6b1475f6a784e",
+    "character-manifest.json": "fbe6ee2d0aae1c75001010c6ac59950dd08b26c23c1c703ff7717c6c2b112843",
+    "data.asm": "1f7608a61e4380d46344c09c6c8a8f3a840b0880933b43816099f786845ba09b",
+    "effects.bin": "241d5530383cebbdf0f9b7939f8d2271008b946192f18d113236b22f86f646b3",
+    "effects.it": "4e188fef857a1d5f9d54a1181ed1a3230a8d69867cc406da3114bbeefa3b372b",
+    "effects_pal.bin": "f8e903fc390df59be26ea8c5bc8f570f654b0dabb85acf32c7ed92359735c1db",
+    "fighter00.bin": "e4b2c7419db1fe7e3c94ca85df47bf8596125b7208a651463aed01be72e37eb8",
+    "fighter00.png": "8196b57cb4f585aec4ef0af48b3a6a2306e64ad9f1425180f2a48d169b48a2cb",
+    "fighter00b.bin": "9d973c592bb58a331ae0e85f67976f39500a977d633a28b0a48403fe155d1112",
+    "fighter00c.bin": "3df3db9e81b682e6bb5930644939381328987650d614dabd2b3a784cea8c4049",
+    "fighter00d.bin": "8c2fcb7a8e829a2f2c40edd32f1c5039f7181743e9b838d8bfa99f7d7e9efd7b",
+    "fighter00e.bin": "b8517bcbe5bfac7de72971c7bee01370d408ba37b25b50f55ce0f1c8cf0adb5b",
+    "fighter00f.bin": "c39df0d296976aba9f599c65a8b7175a33bb36d97248a2c6a48db510c80b2b29",
+    "fighter00g.bin": "2112b614e61fd7a5460383083c6a5a327d1fc7950aa503eacfd999f6d0784bb9",
+    "fighter00h.bin": "7c4735b5b8e133e468be53d2383ef068d7bb623dea05ef39b78348be50408b5d",
+    "fighter00_pal.bin": "ef3f4e8213fe8fd940a89b40d9c39f4e6b0ac3e36dbf51f976118c305d8d3341",
+    "fighter01.bin": "f934113e838abaabe85a467b87589072bbadf118e44af52f2dc476e57192deaf",
+    "fighter01.png": "899682ee149c6f0e25338ff2c18955d4b269819e53c2fb3172d2d49ce1a0f53b",
+    "fighter01b.bin": "28bcf26d6cfbedd0ab024ec982ef2e90ecffcf17964e333966e9f8fdddcadf3f",
+    "fighter01c.bin": "94c116e71b1774aa18651e1541128d1ae3dce86c7e5337f35af7871e55399fb2",
+    "fighter01d.bin": "938c46405a2d7a6d8c55cdebf238c2011291f0072ef39139e31036452c7ad2b9",
+    "fighter01e.bin": "c0e831e4658d63cddc525166e142fca2f7b6c9e73776aed538585e015d8c900c",
+    "fighter01f.bin": "46c20fa18de6fcd45c37edb93213e6f2ea80342797cc3c92d305b38391e0757a",
+    "fighter01g.bin": "b15cee1683279be889e6222021dc080b66faab244f096280834f0947824afece",
+    "fighter01h.bin": "257375a4df8195c12f1700d856127dd3f959499544c2d85d18ee6ca6571e4f58",
+    "fighter01_pal.bin": "c253838df2e0dcbd6e784bd419b68c641cddbe17a6cde73526fc9d91658d41ac",
+    "fighter02.bin": "82532f6afeb68e7b3cc697b35c99f730bbff8c6522c1a822f9f22c858cd93db2",
+    "fighter02.png": "94eb446afa775b6530df011f5761f9b3d272ed9be1fee4fdd3ccec5af740c811",
+    "fighter02b.bin": "78a5ba739f61b4fda00bc69e329b8f6c953fba2bb78bc12bb3a396085c63dc08",
+    "fighter02c.bin": "d9c4705865bd5dcfd95ec78e6eeb4f8284456b2c224b85a9b96f0896d0c14077",
+    "fighter02d.bin": "1f1f3a9cc3324ddc81987f845f0f6f0c40f94b017d358e28788e5bd6de101a31",
+    "fighter02e.bin": "a88459685ea7d7f1bf871ceeeb5f33a616f1eeef57a7c5caef89a11314d7f340",
+    "fighter02f.bin": "31287cc2bb75439cb7d66c24f9031ad2bf0ef60ce8993d3b0664f36192cf7aa9",
+    "fighter02g.bin": "d43341a186a235c97c41e24f8649a70a0e309e2b5faae0e26b116a8f92c4651e",
+    "fighter02h.bin": "bfde2a7f5018979f201676e0604169d4b62869ef4c733c8f84bc9f661d8d4171",
+    "fighter02_pal.bin": "39ae172ad89edf2a8a264e9058e8d7d582ef3a69d3d11737edbf4fe6c636aced",
+    "fighter03.bin": "48fad119a54060c6f797aa97c0d8c8e1ca619d9480a17a988371c6cd25ecf28a",
+    "fighter03.png": "f52a2f9b74e31dff8daa5a448cee4d1db31e8b4818da1f744aab765669df6a85",
+    "fighter03b.bin": "230eb08a41416ff4a3d562bb0643112568c6b2d269f3fe26f9287ad298116054",
+    "fighter03c.bin": "4aad3f14ed3c9d3859025af867fdc9683b73e5a4dc7dbf16226f8f7094172be1",
+    "fighter03d.bin": "90d5eb791528436e7efc77d031ab540b58e53fd884730926e95507d3e43188e4",
+    "fighter03e.bin": "e83739b4937e1f572b0987d9cd5e28252ae1b76d6964d24ae8a95ff0c433ec98",
+    "fighter03f.bin": "2fb584b7a409c5cc1863f9623883043d9e06f5349975a6669de802d6556f5b40",
+    "fighter03g.bin": "5d88b5209fd2e323e4404e2256fb5718b176b0c584a948efac5e668961ef16e1",
+    "fighter03h.bin": "2cbaa62a33154a8780356f8630126034b5f382752387c68f7d2507b8ae62c738",
+    "fighter03_pal.bin": "28aefb1442c602557a4e103541928ebb6967c85397f02358af0478b491392414",
+    "fighter04.bin": "c8e077e3ff21a9dafb4aa179a28d6b51081711d21aca3afb69cabbe6afbb05a9",
+    "fighter04.png": "52c468a380c61ddd6540066388687e58685ea6f0610e60ff44a1254f263943b7",
+    "fighter04b.bin": "97ba9f30bab3615e36ade648bcf1f396ee7dbe0fc3ba75497a38ec61aa9f0650",
+    "fighter04c.bin": "e28d4589e272ee3a1fe249ea0bf6b76e2756f2e46f924a3ab018433cd04729b1",
+    "fighter04d.bin": "04bd18be5a76b666d789ca3ca1615f767da9f39f99128108f92e9b0e5a4b5df8",
+    "fighter04e.bin": "3f0dcd9ce239f60c212cc30ad3cb491ca5d3f48b865179d7288568e84b73b346",
+    "fighter04f.bin": "1523005f996097760bdbaf8dac36b35617e8a6c3fa80b4cce6631b2465d4e5d4",
+    "fighter04g.bin": "b60a7df5fad8d3167e67277a16bc142fa04fe0dcb148ecfc4fed4a64ed4d564b",
+    "fighter04h.bin": "d512c49366eb9520ea73a8218c5ea30b345a2d403fcea86fcaa5c1f3b0afc884",
+    "fighter04_pal.bin": "207e656730f0aa78f7a3be33d21d6c88564b150487434808ccc1e744a507b8b5",
+    "fighter05.bin": "27a09297567630ae29e2efd957a34f6a694435b364d167777292e826d4608701",
+    "fighter05.png": "3c6d2c79bae4f8c9ec6994da2871306cab0dfd1e81941a1705d4d1dbd116145d",
+    "fighter05b.bin": "ca5652f7db642aa739c61f41192937593f42516bc968080d113fe097dba76918",
+    "fighter05c.bin": "09c9476a22f7fc5aa6cea11ffe9af7274f6da213ad704f39a4538b98bc596aa7",
+    "fighter05d.bin": "b80a4505ea6768772fceae3f4d1646dde0e013f1b3511aec900d6b4554631e56",
+    "fighter05e.bin": "516a4a38eb45cf3f58d7ff02a45790b88b813adfd31a11082a92a3bce7ad8b21",
+    "fighter05f.bin": "bf55055782b6834a3cd8237e8afc4617bfaebe3b2f25be7522c2f5e8785d4458",
+    "fighter05g.bin": "5b2d72682f2486633420f9ef953997f6d5bc958367c0a31d80d56b4b235ce838",
+    "fighter05h.bin": "48964e91186d3a7938383536467605be7e617ca0869986a6bbb5258f29a8124c",
+    "fighter05_pal.bin": "c5cb13513140c4cf740991e6f69c4dd71661e6177820ca7df52ed112149b2aba",
+    "fighter06.bin": "eabba881ce33f7ae43b51f460758d2981e1c101015f1cdff0e67de690072301d",
+    "fighter06.png": "19a36cc2d330e20c37f44b2748733bf7443595ef179c04dc23d0b92cac8abbbd",
+    "fighter06b.bin": "551a097d9b40e41cd5a41b66e68794d4cb65d9cf9ad4366f1d0283c23181b69c",
+    "fighter06c.bin": "968880971eedb9c1390e28551da7c37e63267dd81cd4ec17998a60adf67b7818",
+    "fighter06d.bin": "14624f315f0b5f215614c63ba22ba2ad1a7e33846dfc19c85d8fe9b0d9c970ec",
+    "fighter06e.bin": "ce9c5a86062fda17d3b96c96b000f89cbc06da86b1d0b60fe54b3a2ee4815678",
+    "fighter06f.bin": "1c7ec2ec7409f1001bd2b578c1bfc8e7b6c3627579aa894dc7a7acb9abf3d021",
+    "fighter06g.bin": "c8530c36a1de832f08e6fca614deb06b93153311b24a1e218088791a4043e895",
+    "fighter06h.bin": "f7335d7fd02fab62f4d6fafd67f898bfb8d47d30e1b4abb1f23141ff43235b11",
+    "fighter06_pal.bin": "8157261a8813a14f129fe05c4cd41d219ec1d8213fda5e9de62173601a680a1c",
+    "fighter07.bin": "99220e23b1ef1be5388dcb3888e73176cd2ea8476ba48b4bcf29bb24ec6a154a",
+    "fighter07.png": "5aa315a2a073c6023ae863b89863afb8568597797ccb5e4644c92557269a692d",
+    "fighter07b.bin": "3045a00c89070108b3b86631f6479ef4ca375bdbfd01d564e1ab77b6f0722aa8",
+    "fighter07c.bin": "18fe7259dabf4d0e338a0c5dafbd7a1c50b86469ff99edaba145a8ad779a6b7c",
+    "fighter07d.bin": "d79f7f7ded9961d2da4f7e85e66f93fb60cbb762003ec0485d6883e1dbcb3726",
+    "fighter07e.bin": "e49ae37c211c9b6b55919be375d7b5fa4a7665a1427396eacb563c388279f52b",
+    "fighter07f.bin": "2e8f9bc29b04b195603bb67aceb88b67e6aa03e0226e5bb31aff983f3481c8fb",
+    "fighter07g.bin": "a5d8e8ff291f1b0cee7f8117eccecb16da46c1d33673251be2917fe15f26d4a5",
+    "fighter07h.bin": "288b6068ce239b133db31e639a65edf856acd96b8676b4d8ce4a33f1e4eab213",
+    "fighter07_pal.bin": "5488f08bd6b0b18a4d65a681f3a88257f93ac2e55c9fafa5834af4f52b55b069",
+    "fighter08.bin": "b55dcc1225e89f1343ae23e5671d9afd3c11934e81b4f36ee4afa767e0449024",
+    "fighter08.png": "98b913a458478cbe8417e496eed747d2f3909b4d50621166ad3fe97171d15804",
+    "fighter08b.bin": "a73f3e7bff94fdb6cf29539a2303fc803747114451ad60578c68c23078bbfd4f",
+    "fighter08c.bin": "02685dd59c018761cb3bcd366aada7ffefdbfcbb6efb5c803dbea1b52953734c",
+    "fighter08d.bin": "99f7bc3c045fa3c631352c02736aa6f338839046aaed80d8289c09e262422b89",
+    "fighter08e.bin": "163ac72e1a40b7b8dcd4972bb9110169f776a31d704a96221513d561724e9c3e",
+    "fighter08f.bin": "ed48faf7ad3031baaa2173643424fda05fc8af11810ccd8dea8731a650e95175",
+    "fighter08g.bin": "3e544207bf66327e92a1a60d202597244b2bb6f6b4029c830688007a66e3ebb5",
+    "fighter08h.bin": "0cb54b41eac8f08b0712fd8c325237b24db4e6cfec223cc9e53a855abdeec637",
+    "fighter08_pal.bin": "2fc1e702ab7d8323d94df3c6e7164891e7dc6f2e75b6ab4b8ce82dfb866094f1",
+    "fighter09.bin": "90f21f269776d61d04bb2622d920ae6a01ac2e85d92882fbe96de876da52f076",
+    "fighter09.png": "ded66f07eb1e1cc6437af72a8de7f490a3dfc33b057a4faca199f18e1e7dd811",
+    "fighter09b.bin": "02730e60a9947c31be69f449b221e333a62b51b8570fb189acbcff58b73cc4ae",
+    "fighter09c.bin": "ab816e4eb310c46bd21e647714e4f589fc156671bf519ef64a53087b55b98c85",
+    "fighter09d.bin": "fe6a37310e3cfde6b1014a0e86ab60f02bb528bd4011e6616955a05eab19b9fe",
+    "fighter09e.bin": "0fa8401b208ddc61c284cb4a5b95105f8366bbf7be09e6e2cd9fa3823b9cdfe6",
+    "fighter09f.bin": "fb84ee2c2606ea97791130c36cd540e7a8477dcac6acf656878b3b00018b76fa",
+    "fighter09g.bin": "f6594ef133dd2529667caa7b59ceb77a1b86b9527d6563576e72b3091f70ee4a",
+    "fighter09h.bin": "b2d2079c3a5f61e1cb057602f8b06eec0fb9abb0a861b5b5bb4f332f13b8b561",
+    "fighter09_pal.bin": "0fa34b1d226a993d001bd2df79e0b4f69827c214668446fe7b3b19bb3c64aa1d",
+    "fighter10.bin": "07e0fba410a612ece4db2f23f71eb0f8404572ab0e86cf8c7e67d98440e19b1d",
+    "fighter10.png": "bea4cb0aa0f785adb2cad736cd2f5dab1ffe953e86f014d15057bd63c27cf629",
+    "fighter10b.bin": "03f72633a3fa47619bd60c84eb7762f987bde225c18a651ade833047a0960054",
+    "fighter10c.bin": "dd728a3cba6c11a6636063bb1fddf15a1040f3ec6839e9b3935c6b361a4c44bc",
+    "fighter10d.bin": "5c637c2e897f72fa3711487deb262e776f6321cfd55d2a49cd65b63880d00e66",
+    "fighter10e.bin": "199ec0327f6db0598768308422ecf4675653701517fc6db8dc87fbdd699d06f2",
+    "fighter10f.bin": "04be780513f0fb707e7e2577a277c4f9d532e119739b0d6e7f6800b3ceecb3ee",
+    "fighter10g.bin": "6e04529090303406a1dcb638e62521e93dcb6f94e327a2c8b7cc1aad2211c830",
+    "fighter10h.bin": "8ac0c5d03adac633cd614c00974e391725935a16529e7bb190e55de9cd82ad75",
+    "fighter10_pal.bin": "6984a493d80efd48f7935eb13bbc928866e261bd140d8137854f78f534777d0e",
+    "fighter11.bin": "0cff5122527646f69f5a9f4225d3bf1dcdd4916e86ba065ae55592c36ab05f18",
+    "fighter11.png": "4b885d2908cbb3b7601c7a8b2a1715ab27e5949d2c2e522181141e6c20bc0b63",
+    "fighter11b.bin": "a5103bd71d49156bc8dd6a58463a93b4f0a2ca9e594033756ab353d5945e273b",
+    "fighter11c.bin": "9a62eb38feb5c20e8bd46a05be0ef87d67d2208c64c1a97a3f581896904f0595",
+    "fighter11d.bin": "0c577fe1210c49cf6daa0080776893dcd56607d92cd940486439a0c8ec8e58f3",
+    "fighter11e.bin": "671ae700fffe89bb444f87c9d3fa5c43532be2b09b5c06ca00d5958e8e9145a4",
+    "fighter11f.bin": "71c87f3eab8877e19c17ee1810b05b3c3dd6eee5dd30062a74c0806fa9033543",
+    "fighter11g.bin": "835fdf5b8944728440c47d0cfd84f7233b3f5d5bd637f2168b0bb89ae5d71bd6",
+    "fighter11h.bin": "34050cd58ef9139eac5f33a10ec8e68f6af004238512a9d2f3c3b49e9d13a729",
+    "fighter11_pal.bin": "a157c3c1cb19914da952d6211860562c11ff31ecd04cf9ac67b5afaa0710d236",
+    "music0.it": "36f7a4b0313fc61cf7ec6c8f3fb98b2b05fc277809db97cef66977fcf06cc3c5",
+    "music1.it": "5975cca254986cd6a3e119430720231a3acbd924b91e65cb570fbecc1b817603",
+    "music2.it": "c358ba99b2935c06071428deb378b8cf1dbb4589678209a4dc7a7070ff2b7ee2",
+    "music3.it": "e160f204c2e109b87327621304293f953ef141b5a7ca5d8e8ab01f60788e0931",
+    "music4.it": "e25a09bcac4b8cd0f60e5b632a9e58c0b61d269a38bbbec256efa458e0bb86be",
+    "portrait00-large.png": "a74d321aa05586da8f30117f802fc92768d3346b6f01ff35d9323fcc46198504",
+    "portrait00.png": "0b036835df577d227a082f039b959be030a838011d810542359145481917299b",
+    "portrait00_pal.bin": "3ba05a56984fbf9692d2ac0d4de5efb29782984a8a2ae8aeb0876021d9cc8aac",
+    "portrait00_tiles.bin": "cef8bc55342eea67d30e43e52852d560e421c25e9071fe7e7a9c52e02f75de09",
+    "portrait01-large.png": "ddaaf1405c6c9d7950df0bd6c56449fead35820ca31aa78800db8c2af6f020e9",
+    "portrait01.png": "26de480b79a6c721d6928d94d524e62e0c345140e39227788caf0fcef7026c41",
+    "portrait01_pal.bin": "08989818b479b17741576eb89afc057096957585f57d317897de1d70809aef87",
+    "portrait01_tiles.bin": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1",
+    "portrait02-large.png": "c5c198ea1ce40a6d37780654dd0f164a7032930d3519561b19b96ed74e6cf6b9",
+    "portrait02.png": "963b82496c52bb77e2aaeb80b4bd1adcca6a67274241bf2f8cdd7834ea3c0e2a",
+    "portrait02_pal.bin": "ab5564cfe06b696bb124b469dbe3f20beb3f0919a2cd26de627f1fc52e021946",
+    "portrait02_tiles.bin": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b",
+    "portrait03-large.png": "cd7993ab1498f552a29ac07f5082fd1fb0756d2c114a80c671d1c8e0f5e44763",
+    "portrait03.png": "10b4ec8db326f941420f1203da2dce2fc3edbda0d041ca6299a133f1e055f9e9",
+    "portrait03_pal.bin": "4d5862c7463d7358b00c9b87de4a7f31496be87f0e26f82cf71bdbc4716c8da5",
+    "portrait03_tiles.bin": "61d80d1fa2da4692646a1f500dfc98d69692c0565754d3dc78b7f2d9584642e3",
+    "portrait04-large.png": "02e66f29e24de974aa632c7dcb5fcd2b090140c44fe9eb0436deae2f08309ec9",
+    "portrait04.png": "df5fc3f9851fc554182a64251cedbbe04a904a00ad3abcc6bcb8c32a6124aa1b",
+    "portrait04_pal.bin": "720c6166fd9f14733233d4ff9bb884d2cfa725364c8aad84ab63435e5865848a",
+    "portrait04_tiles.bin": "24c117db9e57d66ba9eccaecd75bece46c78f0eec848a7eb6a688806227ed2fd",
+    "portrait05-large.png": "502b063408ab54b872911a6f69eba4873a01f73be8bf71eb905663cb956eec5c",
+    "portrait05.png": "c71f79d3d326c31bf4eb339c40f46a7a12198441b8e4c72f847e490c5fd0aa42",
+    "portrait05_pal.bin": "6c2c4b9401849a420de191a9795f24569b16e4fdf74f39e85c20c2df457cd2f9",
+    "portrait05_tiles.bin": "c0460efc186cc285ba6aba1fdd0e7c54dc21320b2201954973d6d2c31c8ba505",
+    "portrait06-large.png": "9b1afd3adc03cdc55d5f4803b0a057f4d853fb4c9f8ba45731072e45b5a44b9d",
+    "portrait06.png": "8d02f2b788cb49ba20935aeb3f60e3af05052b663d400b0eb1b3d50341bc308e",
+    "portrait06_pal.bin": "5db63711260962bc338f05f445b584c372033a97bcdaa538e089ed2e5d5fc972",
+    "portrait06_tiles.bin": "f023d0d5dd115725202ed8a527b2ec45812a7f5e7af77bf579bcec09d39a5e2f",
+    "portrait07-large.png": "e635436d5ad0795a671d777ddfff313a01551bf5c2aae72ba59cd7e70d72f1dd",
+    "portrait07.png": "c982e5997517db0b4bfd478a312cbe2b3047801f6c05b5ead2e7216d65b1c2a6",
+    "portrait07_pal.bin": "656c585b5d15a36aaa07d2ad016ab60e63c59281fd9be66d330c33042684db42",
+    "portrait07_tiles.bin": "d83d340dffeb196c8d1a961cd85d391bad6c849b385b921eca8868eb40d86537",
+    "portrait08-large.png": "7b6546202fff49fbce12601303ca5c8f737bb6e0b59e725a3e70a17a10cd7c28",
+    "portrait08.png": "a98c204b90d8ef8cf09a07ff551048c2b23bc134a85ec4d448dfc2ce68323486",
+    "portrait08_pal.bin": "cde01ea2b56e2d94ef8852813189cc0cf77e38f4596c2c451ae04e81aeb132b1",
+    "portrait08_tiles.bin": "be1b936d3daa590cffbc0f2cbe6f1d4c0d951d01262706eb9e9ce4c4f5fd7d89",
+    "portrait09-large.png": "ca6b09d0f309c90768c8651c50fbde8aeb45fb34392ada0563b0034c1b923b72",
+    "portrait09.png": "0270698812e559528f164d7384468a0bb77d25315d4306603d0a270514f38cfa",
+    "portrait09_pal.bin": "31fc8dbd67e0c15b97ae258d945d85dc40324ce448da8afe18465bdb5e51ff7e",
+    "portrait09_tiles.bin": "46ef8740ace707787e06eb45e7b60f1df5e308185b6367f5e62b0ae823122350",
+    "portrait10-large.png": "ee6564a4d7bcd8c53b947847c1fc876a6d961a82ed0d1af4a9188cfa6c8afb71",
+    "portrait10.png": "cf3175c29aea6b596738cdb18fd582dd299e174ab683a171cecb506af1964e92",
+    "portrait10_pal.bin": "3d1c4f3e174efea3bf460726ab55128a30fcad3671dd8859a81941a803802e9f",
+    "portrait10_tiles.bin": "91f53180fc9e25e5633ec62a380b62c7b90072213718a1a3b079b59c6d24a9e6",
+    "portrait11-large.png": "c946be417ad643408a81140f0e1e055152cf1891c701465b5ea9a350b6684a6a",
+    "portrait11.png": "b5b7515b42cf1ce6d59db6588242ada40a5f4405eda40b6129d2f422b0d1e1bc",
+    "portrait11_pal.bin": "57ac795f22b5565d1716c350d358d5b41262c1ba9dd6de1c4e4eb2144819ca3f",
+    "portrait11_tiles.bin": "523beee6bbce840def42286687dde5c22d5a6c9720e365f510e65687beebbbbd",
+    "select.png": "736d3b8ee8c13cb8a78c1e5e4a8bf5a74d8ec6d700e9f1105832fe535b2375e9",
+    "select_map.bin": "b79ef9e5586334aee8ef1c822138ff1fd7cc16de24be1df67f526842eb1d79f3",
+    "select_pal.bin": "7548310daef646223f609a2224d1a050c66650f377082499487b649f57b1abd9",
+    "select_tiles.bin": "3d01874c5f86f4f53a50c3927db6c61e0e3e5ea86e14b2c18873818382716827",
+    "sfx0.bin": "778c185fc8fd3a71ac677c2cb591f1ed6b58445c8ac495374669054728a5e092",
+    "sfx1.bin": "437b5d56693931d422445f81c0b1f09280c3212262526df8fb4de9a502c2e628",
+    "sfx2.bin": "2920de1e6f3349029656041fb43bd0d11520382efc0fe7d6c34d54dc085a24fa",
+    "sfx3.bin": "c9e2da2810ef129f59e9fabd7d30059d39cb5e0fe996ab9a0df6cef27e28d8ac",
+    "soundbank.asm": "d60e02c53fb20f963bb330e035bd77c1968d7aa1d3f1ebeaeaf32cb036247b6e",
+    "soundbank.bnk": "6150c44493ea1f76172ab6d9a97de83a9d872313f5b59b314849fe555cf51795",
+    "soundbank.h": "33bda8c686d5117a0b0a06d76a9c6fbd3d875493c421b0c58e1e81ed2a04d2f7",
+    "stage-depth.json": "9bd6298718f750761bcd07b430284016a57022df356046340ba5f1bf23f71e2d",
+    "stage-dynamics.json": "1d1ea5e2b67fac083fb9afd827abb4cc581825d71c573f19fe3efd9380402ced",
+    "stage0.png": "0a26c2e9535043ad7f3bc8a40aa6484917bc65782d3a2eb2460bae7a9a2ba2a7",
+    "stage0_ambient.bin": "c04aadd73505ef5d9023b355cc952f33ed5b8cf8fe566a7c6b3d2663a603c165",
+    "stage0_floor_map.bin": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+    "stage0_floor_tiles.bin": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+    "stage0_map.bin": "ac7db5138bb249e62a9aee08edfe6b661eb1ae07373712ab752070d5049fb1f4",
+    "stage0_pal.bin": "ba3c4b9a9c92a2db1e62421893b95e250f8959f7c80bcbdf344cb4bf8e70d628",
+    "stage0_tiles.bin": "06997513099a94a7a7de13215661621ade355a0710010db76a9d2bd6e5fd2f7c",
+    "stage1.png": "66e24af05a518cd35715881d68b9ad69ea1f6b0e2ffe4e7cf970552a166d2840",
+    "stage1_ambient.bin": "23a821d2fc3f885143c6a43c9605f65545ee9c9465912a980e6c22f4baef8d0b",
+    "stage1_floor_map.bin": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+    "stage1_floor_tiles.bin": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+    "stage1_map.bin": "948e2e6e5aa519016c5adf2ccbb2ec079dfe52ee39ec9e20a332d5bea7f6d038",
+    "stage1_pal.bin": "b994e260b51c5b5ad3cf79113acc0a83e2c475c6eb4051ff63e77db2e90d6a6f",
+    "stage1_tiles.bin": "f81a3dbf062eeecae60aae5562145eee3e0a41567af7b0624e12e306243ad32f",
+    "stage2.png": "b2cdbd14041069009c27501c2ba749347a5671c75bd8853922ab770e7369dfbb",
+    "stage2_ambient.bin": "54f1ad7b421c05accf8d5026877ce4b2621b2e9df51e4fb5bb115388a9003a6c",
+    "stage2_floor_map.bin": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+    "stage2_floor_tiles.bin": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+    "stage2_map.bin": "deea0bad2d220c4122de24f15e1c907def92ea1c89b2d9d43701faf929666107",
+    "stage2_pal.bin": "979a96e8194eb3e8a2c87540b8d4f1b7037928fa52cb2c7364090d8f25f6108c",
+    "stage2_tiles.bin": "2d587ac6e166e1304a67bd9db53e6d8585f9cb6d6a272ee50501e1f0743958aa",
+    "title.png": "1e31d62540497a20effb8bf2f4b2910eb33fceed274a24d2778608bf52ebb5f4",
+    "title_map.bin": "2c28834a1297bbcd3c88209fbd9c4c97fea8bd10bf8676537112150b386691fc",
+    "title_pal.bin": "2f4fc0f18aaee50beb677411e53e1f2e005022347c04359c0ae22cee3c8b7034",
+    "title_tiles.bin": "8e8307d1054c5e21266439a39cd5c2823fcf85319ba8af99b5719f77fdd93c2d",
+    "ui_pal.bin": "f99e1aad1efa10318c6c61a54c598518ffc723e22afbe7a5ecd502c57d2d507e",
+    "ui_tiles.bin": "de322b22b9749e58d0bd89f743b4952735274533fc21d6c60c3116037dcea1ab"
+  },
+  "source_audit_sha256": "5ba5cbdbed3eff19662012b016775e079d8fdc8a3622605235654850a8c4d2f1",
+  "source_difference_after_build": {
+    "src/arena_life29.h": [
+      "63c129b5c30ac2cbc1fadc97bbcf2aefb7f4e63894ecef35fec51f1ccc682b39",
+      "41e65b25f1324964515f7e3b4a9a06711d6ecd6a2b6306a7bc51e8d329cb2d8c"
+    ]
+  },
+  "sections": {
+    "SECTIONSTART_.menuPortraitTilestext_0x0": {
+      "start": 10746153,
+      "end": 10746450,
+      "bytes": 297
+    },
+    "SECTIONSTART_.menuPortraitPalettetext_0x1": {
+      "start": 10681539,
+      "end": 10681836,
+      "bytes": 297
+    },
+    "SECTIONSTART_.stageDepthResettext_0x2": {
+      "start": 9830331,
+      "end": 9830398,
+      "bytes": 67
+    },
+    "SECTIONSTART_.stageDepthLoadtext_0x3": {
+      "start": 11139687,
+      "end": 11139835,
+      "bytes": 148
+    },
+    "SECTIONSTART_.stageDepthTracktext_0x4": {
+      "start": 10943874,
+      "end": 10944074,
+      "bytes": 200
+    },
+    "SECTIONSTART_.stageDepthPublishtext_0x5": {
+      "start": 11009916,
+      "end": 11010047,
+      "bytes": 131
+    },
+    "SECTIONSTART_.beginImpacttext_0x7": {
+      "start": 10616153,
+      "end": 10616484,
+      "bytes": 331
+    },
+    "SECTIONSTART_.drawImpacttext_0x8": {
+      "start": 10223088,
+      "end": 10223609,
+      "bytes": 521
+    },
+    "SECTIONSTART_.publishImpactPrioritytext_0x9": {
+      "start": 11205963,
+      "end": 11206053,
+      "bytes": 90
+    },
+    "SECTIONSTART_.impactScrolltext_0xa": {
+      "start": 10943439,
+      "end": 10943668,
+      "bytes": 229
+    },
+    "SECTIONSTART_.profileFortext_0xb": {
+      "start": 10681242,
+      "end": 10681539,
+      "bytes": 297
+    },
+    "SECTIONSTART_.attackStartuptext_0xc": {
+      "start": 10942464,
+      "end": 10942710,
+      "bytes": 246
+    },
+    "SECTIONSTART_.attackActivetext_0xd": {
+      "start": 11204954,
+      "end": 11205064,
+      "bytes": 110
+    },
+    "SECTIONSTART_.attackRecoverytext_0xe": {
+      "start": 10942710,
+      "end": 10942956,
+      "bytes": 246
+    },
+    "SECTIONSTART_.attackDamagetext_0xf": {
+      "start": 10550806,
+      "end": 10551254,
+      "bytes": 448
+    },
+    "SECTIONSTART_.rngtext_0x11": {
+      "start": 11271869,
+      "end": 11271900,
+      "bytes": 31
+    },
+    "SECTIONSTART_.abs16text_0x12": {
+      "start": 11270967,
+      "end": 11271005,
+      "bytes": 38
+    },
+    "SECTIONSTART_.fighterDatatext_0x13": {
+      "start": 10747341,
+      "end": 10747638,
+      "bytes": 297
+    },
+    "SECTIONSTART_.fighterPalettetext_0x14": {
+      "start": 10811392,
+      "end": 10811689,
+      "bytes": 297
+    },
+    "SECTIONSTART_.fighterDataBtext_0x15": {
+      "start": 10745856,
+      "end": 10746153,
+      "bytes": 297
+    },
+    "SECTIONSTART_.fighterDataCtext_0x16": {
+      "start": 10747044,
+      "end": 10747341,
+      "bytes": 297
+    },
+    "SECTIONSTART_.fighterDataDtext_0x17": {
+      "start": 10811689,
+      "end": 10811986,
+      "bytes": 297
+    },
+    "SECTIONSTART_.fighterDataEtext_0x18": {
+      "start": 10681836,
+      "end": 10682133,
+      "bytes": 297
+    },
+    "SECTIONSTART_.fighterDataFtext_0x19": {
+      "start": 10746747,
+      "end": 10747044,
+      "bytes": 297
+    },
+    "SECTIONSTART_.fighterDataGtext_0x1a": {
+      "start": 10812283,
+      "end": 10812580,
+      "bytes": 297
+    },
+    "SECTIONSTART_.fighterDataHtext_0x1b": {
+      "start": 10811986,
+      "end": 10812283,
+      "bytes": 297
+    },
+    "SECTIONSTART_.fighterFrameBanktext_0x1c": {
+      "start": 10877484,
+      "end": 10877762,
+      "bytes": 278
+    },
+    "SECTIONSTART_.puttext_0x1d": {
+      "start": 10354465,
+      "end": 10354677,
+      "bytes": 212
+    },
+    "SECTIONSTART_.wordtext_0x1e": {
+      "start": 11075302,
+      "end": 11075465,
+      "bytes": 163
+    },
+    "SECTIONSTART_.centertext_0x1f": {
+      "start": 11073536,
+      "end": 11073719,
+      "bytes": 183
+    },
+    "SECTIONSTART_.numbertext_0x20": {
+      "start": 11140796,
+      "end": 11140919,
+      "bytes": 123
+    },
+    "SECTIONSTART_.paneltext_0x21": {
+      "start": 11139983,
+      "end": 11140124,
+      "bytes": 141
+    },
+    "SECTIONSTART_.cursortext_0x22": {
+      "start": 9239897,
+      "end": 9240574,
+      "bytes": 677
+    },
+    "SECTIONSTART_.menuCursortext_0x23": {
+      "start": 10549783,
+      "end": 10550303,
+      "bytes": 520
+    },
+    "SECTIONSTART_.audio29Inittext_0x24": {
+      "start": 11204725,
+      "end": 11204840,
+      "bytes": 115
+    },
+    "SECTIONSTART_.audio29Volpantext_0x25": {
+      "start": 10877206,
+      "end": 10877484,
+      "bytes": 278
+    },
+    "SECTIONSTART_.audioCuetext_0x26": {
+      "start": 10616484,
+      "end": 10616806,
+      "bytes": 322
+    },
+    "SECTIONSTART_.soundImpacttext_0x27": {
+      "start": 11206396,
+      "end": 11206475,
+      "bytes": 79
+    },
+    "SECTIONSTART_.soundtext_0x29": {
+      "start": 11140263,
+      "end": 11140401,
+      "bytes": 138
+    },
+    "SECTIONSTART_.audioSceneLoadedtext_0x2a": {
+      "start": 11074966,
+      "end": 11075135,
+      "bytes": 169
+    },
+    "SECTIONSTART_.audioAnnouncetext_0x2b": {
+      "start": 11206143,
+      "end": 11206231,
+      "bytes": 88
+    },
+    "SECTIONSTART_.audioPresentationTicktext_0x2c": {
+      "start": 9500672,
+      "end": 9501971,
+      "bytes": 1299
+    },
+    "SECTIONSTART_.musictext_0x2d": {
+      "start": 10942956,
+      "end": 10943202,
+      "bytes": 246
+    },
+    "SECTIONSTART_.commonScreentext_0x2e": {
+      "start": 10157589,
+      "end": 10158057,
+      "bytes": 468
+    },
+    "SECTIONSTART_.loadBackgroundtext_0x2f": {
+      "start": 10287760,
+      "end": 10288406,
+      "bytes": 646
+    },
+    "SECTIONSTART_.finishScreentext_0x30": {
+      "start": 10944465,
+      "end": 10944512,
+      "bytes": 47
+    },
+    "SECTIONSTART_.drawTitletext_0x31": {
+      "start": 10812870,
+      "end": 10813158,
+      "bytes": 288
+    },
+    "SECTIONSTART_.showTitletext_0x32": {
+      "start": 11270144,
+      "end": 11270215,
+      "bytes": 71
+    },
+    "SECTIONSTART_.queueMenuPreviewtext_0x33": {
+      "start": 10156814,
+      "end": 10157589,
+      "bytes": 775
+    },
+    "SECTIONSTART_.loadMenuPreviewtext_0x34": {
+      "start": 11074444,
+      "end": 11074622,
+      "bytes": 178
+    },
+    "SECTIONSTART_.random29Ticktext_0x35": {
+      "start": 9437122,
+      "end": 9437183,
+      "bytes": 61
+    },
+    "SECTIONSTART_.random29Picktext_0x36": {
+      "start": 11139537,
+      "end": 11139687,
+      "bytes": 150
+    },
+    "SECTIONSTART_.drawSelecttext_0x37": {
+      "start": 9632837,
+      "end": 9633757,
+      "bytes": 920
+    },
+    "SECTIONSTART_.uploadSelectUitext_0x38": {
+      "start": 11270215,
+      "end": 11270282,
+      "bytes": 67
+    },
+    "SECTIONSTART_.uploadMenuPortraittext_0x39": {
+      "start": 11205773,
+      "end": 11205868,
+      "bytes": 95
+    },
+    "SECTIONSTART_.showSelecttext_0x3a": {
+      "start": 11140670,
+      "end": 11140796,
+      "bytes": 126
+    },
+    "SECTIONSTART_.drawArenastext_0x3b": {
+      "start": 10682133,
+      "end": 10682367,
+      "bytes": 234
+    },
+    "SECTIONSTART_.showArenastext_0x3c": {
+      "start": 11270923,
+      "end": 11270967,
+      "bytes": 44
+    },
+    "SECTIONSTART_.arcadeStoryCentertext_0x3d": {
+      "start": 10944272,
+      "end": 10944465,
+      "bytes": 193
+    },
+    "SECTIONSTART_.arcadeStoryProgresstext_0x3e": {
+      "start": 11204840,
+      "end": 11204954,
+      "bytes": 114
+    },
+    "SECTIONSTART_.arcadeStoryDrawtext_0x3f": {
+      "start": 10418176,
+      "end": 10418754,
+      "bytes": 578
+    },
+    "SECTIONSTART_.arcadeStoryBegintext_0x40": {
+      "start": 11270879,
+      "end": 11270923,
+      "bytes": 44
+    },
+    "SECTIONSTART_.arcadeStoryTicktext_0x41": {
+      "start": 10747638,
+      "end": 10747902,
+      "bytes": 264
+    },
+    "SECTIONSTART_.arcadeStoryEndingtext_0x42": {
+      "start": 10878038,
+      "end": 10878310,
+      "bytes": 272
+    },
+    "SECTIONSTART_.hudtext_0x43": {
+      "start": 15443623,
+      "end": 15445896,
+      "bytes": 2273
+    },
+    "SECTIONSTART_.superNameFortext_0x44": {
+      "start": 10746450,
+      "end": 10746747,
+      "bytes": 297
+    },
+    "SECTIONSTART_.resetSuperstext_0x45": {
+      "start": 9895620,
+      "end": 9895936,
+      "bytes": 316
+    },
+    "SECTIONSTART_.captureSupertext_0x46": {
+      "start": 10222337,
+      "end": 10223088,
+      "bytes": 751
+    },
+    "SECTIONSTART_.startSupertext_0x47": {
+      "start": 9238528,
+      "end": 9239897,
+      "bytes": 1369
+    },
+    "SECTIONSTART_.syncSupertext_0x48": {
+      "start": 10352640,
+      "end": 10353263,
+      "bytes": 623
+    },
+    "SECTIONSTART_.updateSupertext_0x49": {
+      "start": 15441265,
+      "end": 15443623,
+      "bytes": 2358
+    },
+    "SECTIONSTART_.superDamagetext_0x4b": {
+      "start": 10680639,
+      "end": 10680945,
+      "bytes": 306
+    },
+    "SECTIONSTART_.superKnockdowntext_0x4c": {
+      "start": 11139386,
+      "end": 11139537,
+      "bytes": 151
+    },
+    "SECTIONSTART_.superFrametext_0x4d": {
+      "start": 10419864,
+      "end": 10420223,
+      "bytes": 359
+    },
+    "SECTIONSTART_.drawSuperGuidetext_0x4e": {
+      "start": 11140536,
+      "end": 11140670,
+      "bytes": 134
+    },
+    "SECTIONSTART_.resetRoundStatetext_0x4f": {
+      "start": 15330083,
+      "end": 15333225,
+      "bytes": 3142
+    },
+    "SECTIONSTART_.resetRoundtext_0x50": {
+      "start": 9370901,
+      "end": 9371625,
+      "bytes": 724
+    },
+    "SECTIONSTART_.beginMatchtext_0x51": {
+      "start": 9107456,
+      "end": 9109080,
+      "bytes": 1624
+    },
+    "SECTIONSTART_.loadChampionEndingtext_0x52": {
+      "start": 9436436,
+      "end": 9437122,
+      "bytes": 686
+    },
+    "SECTIONSTART_.showResulttext_0x53": {
+      "start": 8910848,
+      "end": 8912611,
+      "bytes": 1763
+    },
+    "SECTIONSTART_.guideWordtext_0x54": {
+      "start": 10485699,
+      "end": 10485756,
+      "bytes": 57
+    },
+    "SECTIONSTART_.guideCentertext_0x55": {
+      "start": 11009344,
+      "end": 11009535,
+      "bytes": 191
+    },
+    "SECTIONSTART_.guideTwoDigitstext_0x56": {
+      "start": 10878829,
+      "end": 10878976,
+      "bytes": 147
+    },
+    "SECTIONSTART_.guideNormalRowtext_0x57": {
+      "start": 10549248,
+      "end": 10549783,
+      "bytes": 535
+    },
+    "SECTIONSTART_.guideBestCombotext_0x58": {
+      "start": 10092074,
+      "end": 10092544,
+      "bytes": 470
+    },
+    "SECTIONSTART_.settlePausedHudtext_0x59": {
+      "start": 11270789,
+      "end": 11270835,
+      "bytes": 46
+    },
+    "SECTIONSTART_.drawPauseCardtext_0x5a": {
+      "start": 9501971,
+      "end": 9502630,
+      "bytes": 659
+    },
+    "SECTIONSTART_.closePauseGuidetext_0x5b": {
+      "start": 11205577,
+      "end": 11205675,
+      "bytes": 98
+    },
+    "SECTIONSTART_.openPauseGuidetext_0x5c": {
+      "start": 11270586,
+      "end": 11270641,
+      "bytes": 55
+    },
+    "SECTIONSTART_.audio29Opentext_0x5d": {
+      "start": 11270282,
+      "end": 11270347,
+      "bytes": 65
+    },
+    "SECTIONSTART_.audio29ToggleMusictext_0x5e": {
+      "start": 11009726,
+      "end": 11009916,
+      "bytes": 190
+    },
+    "SECTIONSTART_.audio29DrawLeveltext_0x5f": {
+      "start": 11073719,
+      "end": 11073902,
+      "bytes": 183
+    },
+    "SECTIONSTART_.audio29Drawtext_0x60": {
+      "start": 10419311,
+      "end": 10419864,
+      "bytes": 553
+    },
+    "SECTIONSTART_.audio29Keystext_0x61": {
+      "start": 9893888,
+      "end": 9894787,
+      "bytes": 899
+    },
+    "SECTIONSTART_.buildPauseGuidetext_0x62": {
+      "start": 15371282,
+      "end": 15374006,
+      "bytes": 2724
+    },
+    "SECTIONSTART_.trainingKeystext_0x63": {
+      "start": 9109080,
+      "end": 9109477,
+      "bytes": 397
+    },
+    "SECTIONSTART_.trainingCycleDummytext_0x64": {
+      "start": 10614784,
+      "end": 10615137,
+      "bytes": 353
+    },
+    "SECTIONSTART_.trainingResettext_0x65": {
+      "start": 10550303,
+      "end": 10550806,
+      "bytes": 503
+    },
+    "SECTIONSTART_.trainingNewMatchtext_0x66": {
+      "start": 11206475,
+      "end": 11206551,
+      "bytes": 76
+    },
+    "SECTIONSTART_.trainingKeepBesttext_0x67": {
+      "start": 10943668,
+      "end": 10943874,
+      "bytes": 206
+    },
+    "SECTIONSTART_.trainingChooseChallengetext_0x68": {
+      "start": 11075465,
+      "end": 11075584,
+      "bytes": 119
+    },
+    "SECTIONSTART_.trainingPrepareChallengetext_0x69": {
+      "start": 11206315,
+      "end": 11206396,
+      "bytes": 81
+    },
+    "SECTIONSTART_.trainingCapturetext_0x6a": {
+      "start": 11205064,
+      "end": 11205174,
+      "bytes": 110
+    },
+    "SECTIONSTART_.trainingStartedtext_0x6b": {
+      "start": 11270411,
+      "end": 11270475,
+      "bytes": 64
+    },
+    "SECTIONSTART_.trainingContacttext_0x6c": {
+      "start": 10353263,
+      "end": 10353872,
+      "bytes": 609
+    },
+    "SECTIONSTART_.trainingMoveContacttext_0x6d": {
+      "start": 10484791,
+      "end": 10485330,
+      "bytes": 539
+    },
+    "SECTIONSTART_.trainingObservetext_0x6e": {
+      "start": 10876928,
+      "end": 10877206,
+      "bytes": 278
+    },
+    "SECTIONSTART_.trainingMakeStatustext_0x6f": {
+      "start": 9960233,
+      "end": 9961026,
+      "bytes": 793
+    },
+    "SECTIONSTART_.trainingHistoryTokentext_0x70": {
+      "start": 10418754,
+      "end": 10419311,
+      "bytes": 557
+    },
+    "SECTIONSTART_.trainingServicetext_0x71": {
+      "start": 10221568,
+      "end": 10222337,
+      "bytes": 769
+    },
+    "SECTIONSTART_.cpuNormalKeytext_0x72": {
+      "start": 11206231,
+      "end": 11206315,
+      "bytes": 84
+    },
+    "SECTIONSTART_.cpuKeystext_0x73": {
+      "start": 15199216,
+      "end": 15203933,
+      "bytes": 4717
+    },
+    "SECTIONSTART_.clearRecoiltext_0x74": {
+      "start": 9961418,
+      "end": 9961472,
+      "bytes": 54
+    },
+    "SECTIONSTART_.updateRecoiltext_0x75": {
+      "start": 9828352,
+      "end": 9829347,
+      "bytes": 995
+    },
+    "SECTIONSTART_.pacingAirSpeedtext_0x76": {
+      "start": 10943202,
+      "end": 10943439,
+      "bytes": 237
+    },
+    "SECTIONSTART_.attackStarttext_0x77": {
+      "start": 9304064,
+      "end": 9305401,
+      "bytes": 1337
+    },
+    "SECTIONSTART_.cleanDirectionstext_0x78": {
+      "start": 11270641,
+      "end": 11270694,
+      "bytes": 53
+    },
+    "SECTIONSTART_.resetMenuRepeattext_0x79": {
+      "start": 8454040,
+      "end": 8454063,
+      "bytes": 23
+    },
+    "SECTIONSTART_.menuDirectionEdgestext_0x7a": {
+      "start": 10813158,
+      "end": 10813438,
+      "bytes": 280
+    },
+    "SECTIONSTART_.discardFighterInputtext_0x7b": {
+      "start": 10289051,
+      "end": 10289151,
+      "bytes": 100
+    },
+    "SECTIONSTART_.actionForInputtext_0x7c": {
+      "start": 10156032,
+      "end": 10156814,
+      "bytes": 782
+    },
+    "SECTIONSTART_.captureInputtext_0x7d": {
+      "start": 15368192,
+      "end": 15371282,
+      "bytes": 3090
+    },
+    "SECTIONSTART_.controlstext_0x7e": {
+      "start": 15262636,
+      "end": 15266894,
+      "bytes": 4258
+    },
+    "SECTIONSTART_.captureFightInputstext_0x7f": {
+      "start": 10483712,
+      "end": 10484252,
+      "bytes": 540
+    },
+    "SECTIONSTART_.hurtWithRecoiltext_0x80": {
+      "start": 15237120,
+      "end": 15245064,
+      "bytes": 7944
+    },
+    "SECTIONSTART_.hurttext_0x81": {
+      "start": 10615820,
+      "end": 10616153,
+      "bytes": 333
+    },
+    "SECTIONSTART_.clearWakeInputtext_0x82": {
+      "start": 11205675,
+      "end": 11205773,
+      "bytes": 98
+    },
+    "SECTIONSTART_.clampDownedtext_0x83": {
+      "start": 11205868,
+      "end": 11205963,
+      "bytes": 95
+    },
+    "SECTIONSTART_.clearThrowLinkstext_0x84": {
+      "start": 10878310,
+      "end": 10878577,
+      "bytes": 267
+    },
+    "SECTIONSTART_.releaseHeldVictimtext_0x85": {
+      "start": 9174601,
+      "end": 9175039,
+      "bytes": 438
+    },
+    "SECTIONSTART_.beginKnockdowntext_0x86": {
+      "start": 10353872,
+      "end": 10354465,
+      "bytes": 593
+    },
+    "SECTIONSTART_.knockdownAttacktext_0x87": {
+      "start": 11074083,
+      "end": 11074264,
+      "bytes": 181
+    },
+    "SECTIONSTART_.beginThrowtext_0x88": {
+      "start": 9763840,
+      "end": 9764858,
+      "bytes": 1018
+    },
+    "SECTIONSTART_.throwTechtext_0x89": {
+      "start": 8518784,
+      "end": 8519643,
+      "bytes": 859
+    },
+    "SECTIONSTART_.updateDownedtext_0x8a": {
+      "start": 15266894,
+      "end": 15269801,
+      "bytes": 2907
+    },
+    "SECTIONSTART_.defense29Resettext_0x8b": {
+      "start": 11204608,
+      "end": 11204725,
+      "bytes": 117
+    },
+    "SECTIONSTART_.defense29CpuKeystext_0x8c": {
+      "start": 8978064,
+      "end": 8978426,
+      "bytes": 362
+    },
+    "SECTIONSTART_.defense29TryTechtext_0x8d": {
+      "start": 9172992,
+      "end": 9174601,
+      "bytes": 1609
+    },
+    "SECTIONSTART_.updateFightertext_0x8e": {
+      "start": 14937600,
+      "end": 14941945,
+      "bytes": 4345
+    },
+    "SECTIONSTART_.contactActionFrametext_0x8f": {
+      "start": 10091288,
+      "end": 10092074,
+      "bytes": 786
+    },
+    "SECTIONSTART_.contactBodytext_0x90": {
+      "start": 10484252,
+      "end": 10484791,
+      "bytes": 539
+    },
+    "SECTIONSTART_.contactWorldHittext_0x91": {
+      "start": 9305401,
+      "end": 9306100,
+      "bytes": 699
+    },
+    "SECTIONSTART_.contactStriketext_0x92": {
+      "start": 9894787,
+      "end": 9895620,
+      "bytes": 833
+    },
+    "SECTIONSTART_.contactWavetext_0x93": {
+      "start": 11074795,
+      "end": 11074966,
+      "bytes": 171
+    },
+    "SECTIONSTART_.canHittext_0x95": {
+      "start": 15438848,
+      "end": 15441265,
+      "bytes": 2417
+    },
+    "SECTIONSTART_.combattext_0x96": {
+      "start": 15245064,
+      "end": 15251141,
+      "bytes": 6077
+    },
+    "SECTIONSTART_.poseFortext_0x97": {
+      "start": 9435136,
+      "end": 9436436,
+      "bytes": 1300
+    },
+    "SECTIONSTART_.personalityIntroFrametext_0x98": {
+      "start": 10615485,
+      "end": 10615820,
+      "bytes": 335
+    },
+    "SECTIONSTART_.personalityVictoryFrametext_0x99": {
+      "start": 10026609,
+      "end": 10026991,
+      "bytes": 382
+    },
+    "SECTIONSTART_.personalityAccenttext_0x9a": {
+      "start": 8452213,
+      "end": 8454040,
+      "bytes": 1827
+    },
+    "SECTIONSTART_.animateFightertext_0x9b": {
+      "start": 15190016,
+      "end": 15199216,
+      "bytes": 9200
+    },
+    "SECTIONSTART_.drawFightertext_0x9c": {
+      "start": 9567490,
+      "end": 9568247,
+      "bytes": 757
+    },
+    "SECTIONSTART_.drawFighttext_0x9d": {
+      "start": 10288406,
+      "end": 10289051,
+      "bytes": 645
+    },
+    "SECTIONSTART_.fightTicktext_0x9e": {
+      "start": 10021710,
+      "end": 10026609,
+      "bytes": 4899
+    },
+    "SECTIONSTART_.bonus29PublishScrolltext_0x9f": {
+      "start": 11270835,
+      "end": 11270879,
+      "bytes": 44
+    },
+    "SECTIONSTART_.bonus29Hudtext_0xa0": {
+      "start": 9043595,
+      "end": 9043965,
+      "bytes": 370
+    },
+    "SECTIONSTART_.bonus29Cardtext_0xa1": {
+      "start": 10485330,
+      "end": 10485699,
+      "bytes": 369
+    },
+    "SECTIONSTART_.bonus29Finishtext_0xa2": {
+      "start": 11139234,
+      "end": 11139386,
+      "bytes": 152
+    },
+    "SECTIONSTART_.bonus29Queuetext_0xa3": {
+      "start": 11073902,
+      "end": 11074083,
+      "bytes": 181
+    },
+    "SECTIONSTART_.bonus29Drawtext_0xa4": {
+      "start": 8912611,
+      "end": 8912895,
+      "bytes": 284
+    },
+    "SECTIONSTART_.bonus29Begintext_0xa5": {
+      "start": 9829347,
+      "end": 9830331,
+      "bytes": 984
+    },
+    "SECTIONSTART_.bonus29TryBegintext_0xa6": {
+      "start": 10680945,
+      "end": 10681242,
+      "bytes": 297
+    },
+    "SECTIONSTART_.bonus29TickLivetext_0xa7": {
+      "start": 15326736,
+      "end": 15330083,
+      "bytes": 3347
+    },
+    "SECTIONSTART_.bonus29TickFrametext_0xa8": {
+      "start": 11270743,
+      "end": 11270789,
+      "bytes": 46
+    },
+    "SECTIONSTART_.menuTicktext_0xa9": {
+      "start": 15136672,
+      "end": 15138723,
+      "bytes": 2051
+    },
+    "SECTIONSTART_.traceProfilestext_0xaa": {
+      "start": 9959424,
+      "end": 9960233,
+      "bytes": 809
+    },
+    "SECTIONSTART_.arenaLife29Publishtext_0xab": {
+      "start": 11074622,
+      "end": 11074795,
+      "bytes": 173
+    },
+    "SECTIONSTART_.arenaLife29Loadtext_0xac": {
+      "start": 11074264,
+      "end": 11074444,
+      "bytes": 180
+    },
+    "SECTIONSTART_.arenaLife29Eventtext_0xad": {
+      "start": 10680320,
+      "end": 10680639,
+      "bytes": 319
+    },
+    "SECTIONSTART_.arenaLife29Ticktext_0xae": {
+      "start": 9369600,
+      "end": 9370901,
+      "bytes": 1301
+    },
+    "SECTIONSTART_.arenaLife29Sourcetext_0xaf": {
+      "start": 11009535,
+      "end": 11009726,
+      "bytes": 191
+    },
+    "SECTIONSTART_.arenaLife29Completedtext_0xb0": {
+      "start": 11140401,
+      "end": 11140536,
+      "bytes": 135
+    },
+    "SECTIONSTART_.maintext_0xb1": {
+      "start": 8976384,
+      "end": 8978064,
+      "bytes": 1680
+    },
+    "SECTIONSTART_.rodata": {
+      "start": 6586368,
+      "end": 6605797,
+      "bytes": 19429
+    },
+    "SECTIONSTART_ui_clear_full_fast": {
+      "start": 15302656,
+      "end": 15306768,
+      "bytes": 4112
+    },
+    "SECTIONSTART_ui_clear_banner_fast": {
+      "start": 10287104,
+      "end": 10287760,
+      "bytes": 656
+    },
+    "SECTIONSTART_fight_panel_fast": {
+      "start": 9961026,
+      "end": 9961418,
+      "bytes": 392
+    },
+    "SECTIONSTART_fight_footer_fast": {
+      "start": 10090496,
+      "end": 10091288,
+      "bytes": 792
+    },
+    "SECTIONSTART_pause_guide_panel_fast": {
+      "start": 15251141,
+      "end": 15257114,
+      "bytes": 5973
+    },
+    "SECTIONSTART_hit_reaction_fast": {
+      "start": 10615137,
+      "end": 10615485,
+      "bytes": 348
+    },
+    "SECTIONSTART_health_bar_fast": {
+      "start": 10944074,
+      "end": 10944272,
+      "bytes": 198
+    },
+    "SECTIONSTART_fighter_render_dispatch": {
+      "start": 10812580,
+      "end": 10812870,
+      "bytes": 290
+    },
+    "SECTIONSTART_fighter_upload_queue_fast": {
+      "start": 11139835,
+      "end": 11139983,
+      "bytes": 148
+    },
+    "SECTIONSTART_actor_render_fast": {
+      "start": 9566208,
+      "end": 9567490,
+      "bytes": 1282
+    },
+    "SECTIONSTART_shadow_render_fast": {
+      "start": 11205174,
+      "end": 11205279,
+      "bytes": 105
+    },
+    "SECTIONSTART_resident_audio_ready": {
+      "start": 11205381,
+      "end": 11205479,
+      "bytes": 98
+    },
+    "SECTIONSTART_actor_dma_fast": {
+      "start": 11206053,
+      "end": 11206143,
+      "bytes": 90
+    },
+    "SECTIONSTART_trace_actors_fast": {
+      "start": 9631744,
+      "end": 9632837,
+      "bytes": 1093
+    },
+    "SECTIONSTART_asset_stage0_tiles": {
+      "start": 8490624,
+      "end": 8518784,
+      "bytes": 28160
+    },
+    "SECTIONSTART_asset_stage0_map": {
+      "start": 15306768,
+      "end": 15310864,
+      "bytes": 4096
+    },
+    "SECTIONSTART_asset_stage0_pal": {
+      "start": 11009152,
+      "end": 11009344,
+      "bytes": 192
+    },
+    "SECTIONSTART_asset_stage0_ambient": {
+      "start": 9762816,
+      "end": 9763840,
+      "bytes": 1024
+    },
+    "SECTIONSTART_asset_stage1_tiles": {
+      "start": 14909440,
+      "end": 14937600,
+      "bytes": 28160
+    },
+    "SECTIONSTART_asset_stage1_map": {
+      "start": 15314960,
+      "end": 15319056,
+      "bytes": 4096
+    },
+    "SECTIONSTART_asset_stage1_pal": {
+      "start": 11008960,
+      "end": 11009152,
+      "bytes": 192
+    },
+    "SECTIONSTART_asset_stage1_ambient": {
+      "start": 9697280,
+      "end": 9698304,
+      "bytes": 1024
+    },
+    "SECTIONSTART_asset_stage2_tiles": {
+      "start": 8424053,
+      "end": 8452213,
+      "bytes": 28160
+    },
+    "SECTIONSTART_asset_stage2_map": {
+      "start": 15310864,
+      "end": 15314960,
+      "bytes": 4096
+    },
+    "SECTIONSTART_asset_stage2_pal": {
+      "start": 11008384,
+      "end": 11008576,
+      "bytes": 192
+    },
+    "SECTIONSTART_asset_stage2_ambient": {
+      "start": 9698304,
+      "end": 9699328,
+      "bytes": 1024
+    },
+    "SECTIONSTART_asset_title_tiles": {
+      "start": 15106048,
+      "end": 15116896,
+      "bytes": 10848
+    },
+    "SECTIONSTART_asset_title_map": {
+      "start": 8648704,
+      "end": 8650752,
+      "bytes": 2048
+    },
+    "SECTIONSTART_asset_title_pal": {
+      "start": 11008192,
+      "end": 11008384,
+      "bytes": 192
+    },
+    "SECTIONSTART_asset_select_tiles": {
+      "start": 15040512,
+      "end": 15057280,
+      "bytes": 16768
+    },
+    "SECTIONSTART_asset_select_map": {
+      "start": 8714240,
+      "end": 8716288,
+      "bytes": 2048
+    },
+    "SECTIONSTART_asset_select_pal": {
+      "start": 11008000,
+      "end": 11008192,
+      "bytes": 192
+    },
+    "SECTIONSTART_asset_arenas_tiles": {
+      "start": 15057280,
+      "end": 15073152,
+      "bytes": 15872
+    },
+    "SECTIONSTART_asset_arenas_map": {
+      "start": 8845312,
+      "end": 8847360,
+      "bytes": 2048
+    },
+    "SECTIONSTART_asset_arenas_pal": {
+      "start": 11008768,
+      "end": 11008960,
+      "bytes": 192
+    },
+    "SECTIONSTART_asset_champion_tiles": {
+      "start": 15116896,
+      "end": 15127456,
+      "bytes": 10560
+    },
+    "SECTIONSTART_asset_champion_map": {
+      "start": 8583168,
+      "end": 8585216,
+      "bytes": 2048
+    },
+    "SECTIONSTART_asset_champion_pal": {
+      "start": 11008576,
+      "end": 11008768,
+      "bytes": 192
+    },
+    "SECTIONSTART_asset_portrait00_tiles": {
+      "start": 15379126,
+      "end": 15381686,
+      "bytes": 2560
+    },
+    "SECTIONSTART_asset_portrait00_pal": {
+      "start": 11271709,
+      "end": 11271741,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_portrait01_tiles": {
+      "start": 15381686,
+      "end": 15384246,
+      "bytes": 2560
+    },
+    "SECTIONSTART_asset_portrait01_pal": {
+      "start": 11271421,
+      "end": 11271453,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_portrait02_tiles": {
+      "start": 15391926,
+      "end": 15394486,
+      "bytes": 2560
+    },
+    "SECTIONSTART_asset_portrait02_pal": {
+      "start": 11271197,
+      "end": 11271229,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_portrait03_tiles": {
+      "start": 15397046,
+      "end": 15399606,
+      "bytes": 2560
+    },
+    "SECTIONSTART_asset_portrait03_pal": {
+      "start": 11271069,
+      "end": 11271101,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_portrait04_tiles": {
+      "start": 15384246,
+      "end": 15386806,
+      "bytes": 2560
+    },
+    "SECTIONSTART_asset_portrait04_pal": {
+      "start": 11271229,
+      "end": 11271261,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_portrait05_tiles": {
+      "start": 15389366,
+      "end": 15391926,
+      "bytes": 2560
+    },
+    "SECTIONSTART_asset_portrait05_pal": {
+      "start": 11271293,
+      "end": 11271325,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_portrait06_tiles": {
+      "start": 15394486,
+      "end": 15397046,
+      "bytes": 2560
+    },
+    "SECTIONSTART_asset_portrait06_pal": {
+      "start": 11271741,
+      "end": 11271773,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_portrait07_tiles": {
+      "start": 15433728,
+      "end": 15436288,
+      "bytes": 2560
+    },
+    "SECTIONSTART_asset_portrait07_pal": {
+      "start": 11271517,
+      "end": 11271549,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_portrait08_tiles": {
+      "start": 15436288,
+      "end": 15438848,
+      "bytes": 2560
+    },
+    "SECTIONSTART_asset_portrait08_pal": {
+      "start": 11271837,
+      "end": 11271869,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_portrait09_tiles": {
+      "start": 15376566,
+      "end": 15379126,
+      "bytes": 2560
+    },
+    "SECTIONSTART_asset_portrait09_pal": {
+      "start": 11271645,
+      "end": 11271677,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_portrait10_tiles": {
+      "start": 15386806,
+      "end": 15389366,
+      "bytes": 2560
+    },
+    "SECTIONSTART_asset_portrait10_pal": {
+      "start": 11271389,
+      "end": 11271421,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_portrait11_tiles": {
+      "start": 15374006,
+      "end": 15376566,
+      "bytes": 2560
+    },
+    "SECTIONSTART_asset_portrait11_pal": {
+      "start": 11271261,
+      "end": 11271293,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_ui_tiles": {
+      "start": 14994405,
+      "end": 15006693,
+      "bytes": 12288
+    },
+    "SECTIONSTART_asset_ui_pal": {
+      "start": 11270347,
+      "end": 11270411,
+      "bytes": 64
+    },
+    "SECTIONSTART_asset_fighter00": {
+      "start": 8814592,
+      "end": 8845312,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter00b": {
+      "start": 8552448,
+      "end": 8583168,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter00c": {
+      "start": 8617984,
+      "end": 8648704,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter00d": {
+      "start": 8683520,
+      "end": 8714240,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter00e": {
+      "start": 8749056,
+      "end": 8779776,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter00f": {
+      "start": 8880128,
+      "end": 8910848,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter00g": {
+      "start": 8945664,
+      "end": 8976384,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter00h": {
+      "start": 9011200,
+      "end": 9041920,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter00_pal": {
+      "start": 11271101,
+      "end": 11271133,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_fighter01": {
+      "start": 9076736,
+      "end": 9107456,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter01b": {
+      "start": 9142272,
+      "end": 9172992,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter01c": {
+      "start": 9207808,
+      "end": 9238528,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter01d": {
+      "start": 9273344,
+      "end": 9304064,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter01e": {
+      "start": 9338880,
+      "end": 9369600,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter01f": {
+      "start": 9404416,
+      "end": 9435136,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter01g": {
+      "start": 9469952,
+      "end": 9500672,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter01h": {
+      "start": 9535488,
+      "end": 9566208,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter01_pal": {
+      "start": 11271805,
+      "end": 11271837,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_fighter02": {
+      "start": 9601024,
+      "end": 9631744,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter02b": {
+      "start": 9666560,
+      "end": 9697280,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter02c": {
+      "start": 9732096,
+      "end": 9762816,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter02d": {
+      "start": 9797632,
+      "end": 9828352,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter02e": {
+      "start": 9863168,
+      "end": 9893888,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter02f": {
+      "start": 9928704,
+      "end": 9959424,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter02g": {
+      "start": 10125312,
+      "end": 10156032,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter02h": {
+      "start": 10190848,
+      "end": 10221568,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter02_pal": {
+      "start": 11271773,
+      "end": 11271805,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_fighter03": {
+      "start": 10256384,
+      "end": 10287104,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter03b": {
+      "start": 10321920,
+      "end": 10352640,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter03c": {
+      "start": 10387456,
+      "end": 10418176,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter03d": {
+      "start": 10452992,
+      "end": 10483712,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter03e": {
+      "start": 10518528,
+      "end": 10549248,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter03f": {
+      "start": 10059776,
+      "end": 10090496,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter03g": {
+      "start": 10584064,
+      "end": 10614784,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter03h": {
+      "start": 10649600,
+      "end": 10680320,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter03_pal": {
+      "start": 11271677,
+      "end": 11271709,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_fighter04": {
+      "start": 10715136,
+      "end": 10745856,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter04b": {
+      "start": 11567104,
+      "end": 11597824,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter04c": {
+      "start": 12025856,
+      "end": 12056576,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter04d": {
+      "start": 12288000,
+      "end": 12318720,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter04e": {
+      "start": 13074432,
+      "end": 13105152,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter04f": {
+      "start": 13336576,
+      "end": 13367296,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter04g": {
+      "start": 13467648,
+      "end": 13498368,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter04h": {
+      "start": 13533184,
+      "end": 13563904,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter04_pal": {
+      "start": 11271581,
+      "end": 11271613,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_fighter05": {
+      "start": 13860864,
+      "end": 13891584,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter05b": {
+      "start": 13991936,
+      "end": 14022656,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter05c": {
+      "start": 14123008,
+      "end": 14153728,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter05d": {
+      "start": 14843904,
+      "end": 14874624,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter05e": {
+      "start": 14778368,
+      "end": 14809088,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter05f": {
+      "start": 14712832,
+      "end": 14743552,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter05g": {
+      "start": 14647296,
+      "end": 14678016,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter05h": {
+      "start": 14581760,
+      "end": 14612480,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter05_pal": {
+      "start": 11271485,
+      "end": 11271517,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_fighter06": {
+      "start": 14516224,
+      "end": 14546944,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter06b": {
+      "start": 14450688,
+      "end": 14481408,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter06c": {
+      "start": 14385152,
+      "end": 14415872,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter06d": {
+      "start": 14319616,
+      "end": 14350336,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter06e": {
+      "start": 14254080,
+      "end": 14284800,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter06f": {
+      "start": 14188544,
+      "end": 14219264,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter06g": {
+      "start": 14057472,
+      "end": 14088192,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter06h": {
+      "start": 13926400,
+      "end": 13957120,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter06_pal": {
+      "start": 11271357,
+      "end": 11271389,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_fighter07": {
+      "start": 13795328,
+      "end": 13826048,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter07b": {
+      "start": 13729792,
+      "end": 13760512,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter07c": {
+      "start": 13664256,
+      "end": 13694976,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter07d": {
+      "start": 13598720,
+      "end": 13629440,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter07e": {
+      "start": 13402112,
+      "end": 13432832,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter07f": {
+      "start": 13271040,
+      "end": 13301760,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter07g": {
+      "start": 13205504,
+      "end": 13236224,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter07h": {
+      "start": 13139968,
+      "end": 13170688,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter07_pal": {
+      "start": 11271325,
+      "end": 11271357,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_fighter08": {
+      "start": 13008896,
+      "end": 13039616,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter08b": {
+      "start": 12943360,
+      "end": 12974080,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter08c": {
+      "start": 12877824,
+      "end": 12908544,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter08d": {
+      "start": 12812288,
+      "end": 12843008,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter08e": {
+      "start": 12746752,
+      "end": 12777472,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter08f": {
+      "start": 12681216,
+      "end": 12711936,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter08g": {
+      "start": 12615680,
+      "end": 12646400,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter08h": {
+      "start": 12550144,
+      "end": 12580864,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter08_pal": {
+      "start": 11271133,
+      "end": 11271165,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_fighter09": {
+      "start": 12484608,
+      "end": 12515328,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter09b": {
+      "start": 12419072,
+      "end": 12449792,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter09c": {
+      "start": 12353536,
+      "end": 12384256,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter09d": {
+      "start": 12222464,
+      "end": 12253184,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter09e": {
+      "start": 12156928,
+      "end": 12187648,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter09f": {
+      "start": 12091392,
+      "end": 12122112,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter09g": {
+      "start": 11960320,
+      "end": 11991040,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter09h": {
+      "start": 11894784,
+      "end": 11925504,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter09_pal": {
+      "start": 11271165,
+      "end": 11271197,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_fighter10": {
+      "start": 11829248,
+      "end": 11859968,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter10b": {
+      "start": 11763712,
+      "end": 11794432,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter10c": {
+      "start": 11698176,
+      "end": 11728896,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter10d": {
+      "start": 11632640,
+      "end": 11663360,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter10e": {
+      "start": 11501568,
+      "end": 11532288,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter10f": {
+      "start": 11436032,
+      "end": 11466752,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter10g": {
+      "start": 11370496,
+      "end": 11401216,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter10h": {
+      "start": 11304960,
+      "end": 11335680,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter10_pal": {
+      "start": 11271613,
+      "end": 11271645,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_fighter11": {
+      "start": 11239424,
+      "end": 11270144,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter11b": {
+      "start": 11173888,
+      "end": 11204608,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter11c": {
+      "start": 11108352,
+      "end": 11139072,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter11d": {
+      "start": 11042816,
+      "end": 11073536,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter11e": {
+      "start": 10977280,
+      "end": 11008000,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter11f": {
+      "start": 10911744,
+      "end": 10942464,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter11g": {
+      "start": 10846208,
+      "end": 10876928,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter11h": {
+      "start": 10780672,
+      "end": 10811392,
+      "bytes": 30720
+    },
+    "SECTIONSTART_asset_fighter11_pal": {
+      "start": 11271549,
+      "end": 11271581,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_effects": {
+      "start": 8779776,
+      "end": 8781824,
+      "bytes": 2048
+    },
+    "SECTIONSTART_asset_effects_pal": {
+      "start": 11271453,
+      "end": 11271485,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_arena_life29_stage0": {
+      "start": 15127456,
+      "end": 15136672,
+      "bytes": 9216
+    },
+    "SECTIONSTART_asset_arena_life29_stage1": {
+      "start": 15171584,
+      "end": 15180800,
+      "bytes": 9216
+    },
+    "SECTIONSTART_asset_arena_life29_stage2": {
+      "start": 15180800,
+      "end": 15190016,
+      "bytes": 9216
+    },
+    "SECTIONSTART_asset_bonus29_printer": {
+      "start": 15319056,
+      "end": 15322896,
+      "bytes": 3840
+    },
+    "SECTIONSTART_asset_bonus29_printer_pal": {
+      "start": 11271005,
+      "end": 11271037,
+      "bytes": 32
+    },
+    "SECTIONSTART_asset_bonus29_inbox": {
+      "start": 15322896,
+      "end": 15326736,
+      "bytes": 3840
+    },
+    "SECTIONSTART_asset_bonus29_inbox_pal": {
+      "start": 11271037,
+      "end": 11271069,
+      "bytes": 32
+    },
+    "SECTIONSTART_SOUNDBANK": {
+      "start": 9994240,
+      "end": 10021710,
+      "bytes": 27470
+    },
+    "SECTIONSTART_glob.data": {
+      "start": 8422445,
+      "end": 8424053,
+      "bytes": 1608
+    },
+    "SECTIONSTART_EmptyVectors": {
+      "start": 8422443,
+      "end": 8422445,
+      "bytes": 2
+    },
+    "SECTIONSTART_Snes_Init": {
+      "start": 8422148,
+      "end": 8422298,
+      "bytes": 150
+    },
+    "SECTIONSTART_.start": {
+      "start": 8422298,
+      "end": 8422443,
+      "bytes": 145
+    },
+    "SECTIONSTART_.malloc_inittext_0x9": {
+      "start": 11205479,
+      "end": 11205577,
+      "bytes": 98
+    },
+    "SECTIONSTART_.backgrounds0_text": {
+      "start": 11270475,
+      "end": 11270531,
+      "bytes": 56
+    },
+    "SECTIONSTART_.backgrounds1_text": {
+      "start": 11205279,
+      "end": 11205381,
+      "bytes": 102
+    },
+    "SECTIONSTART_.backgrounds4_text": {
+      "start": 11139072,
+      "end": 11139234,
+      "bytes": 162
+    },
+    "SECTIONSTART_.consoles3_text": {
+      "start": 11206551,
+      "end": 11206625,
+      "bytes": 74
+    },
+    "SECTIONSTART_.consoles4_text": {
+      "start": 11075135,
+      "end": 11075302,
+      "bytes": 167
+    },
+    "SECTIONSTART_.dmas0_text": {
+      "start": 11270694,
+      "end": 11270743,
+      "bytes": 49
+    },
+    "SECTIONSTART_.dmas1_text": {
+      "start": 11270531,
+      "end": 11270586,
+      "bytes": 55
+    },
+    "SECTIONSTART_.dmas5_text": {
+      "start": 11141040,
+      "end": 11141119,
+      "bytes": 79
+    },
+    "SECTIONSTART_.pads1_text": {
+      "start": 11206625,
+      "end": 11206656,
+      "bytes": 31
+    },
+    "SECTIONSTART_.soundmod": {
+      "start": 9041920,
+      "end": 9043595,
+      "bytes": 1675
+    },
+    "SECTIONSTART_.sm_spc": {
+      "start": 15257114,
+      "end": 15262636,
+      "bytes": 5522
+    },
+    "SECTIONSTART_spritestable_text": {
+      "start": 8490112,
+      "end": 8490624,
+      "bytes": 512
+    },
+    "SECTIONSTART_.sprites2_text": {
+      "start": 10877762,
+      "end": 10878038,
+      "bytes": 276
+    },
+    "SECTIONSTART_.sprites3_text": {
+      "start": 9502630,
+      "end": 9502720,
+      "bytes": 90
+    },
+    "SECTIONSTART_.sprites4_text": {
+      "start": 11140919,
+      "end": 11141040,
+      "bytes": 121
+    },
+    "SECTIONSTART_.sprites5_text": {
+      "start": 10551254,
+      "end": 10551296,
+      "bytes": 42
+    },
+    "SECTIONSTART_.sprites6_text": {
+      "start": 10878577,
+      "end": 10878829,
+      "bytes": 252
+    },
+    "SECTIONSTART_.spritestable1_text": {
+      "start": 8487680,
+      "end": 8490112,
+      "bytes": 2432
+    },
+    "SECTIONSTART_.videos1_text": {
+      "start": 9633757,
+      "end": 9633791,
+      "bytes": 34
+    },
+    "SECTIONSTART_.videos3_text": {
+      "start": 11140124,
+      "end": 11140263,
+      "bytes": 139
+    },
+    "SECTIONSTART_.vblank_isr": {
+      "start": 8421376,
+      "end": 8422148,
+      "bytes": 772
+    },
+    "SECTIONSTART_.nmiSet_text": {
+      "start": 8519643,
+      "end": 8519678,
+      "bytes": 35
+    },
+    "SECTIONSTART_.waitforvblank_text": {
+      "start": 9109477,
+      "end": 9109497,
+      "bytes": 20
+    },
+    "SECTIONSTART_.libc_mem": {
+      "start": 8486912,
+      "end": 8487680,
+      "bytes": 768
+    }
+  },
+  "largest_section_bytes": 30720,
+  "shared_frozen_inputs_unchanged": true
+}

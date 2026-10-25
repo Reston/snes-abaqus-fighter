@@ -1,0 +1,42 @@
+--- a/src/cpu_personality.h
++++ b/src/cpu_personality.h
+@@ -55,7 +55,6 @@
+     if(mode==2 && trainingDummy!=4)return trainingKeys();
+     if(!fighters[1].hp)return 0;
+     if(!fighters[0].hp)return 0;
+-    if(fighters[1].downState==DOWN_LIFT)return defense29CpuKeys();
+     if(fighters[1].downState && fighters[1].downState!=DOWN_WAKE)return 0;
+     /* The single existing wake edge retains captureInput's six-tick buffer. */
+     if(fighters[1].downState==DOWN_WAKE) {
+--- a/src/game.c
++++ b/src/game.c
+@@ -807,7 +807,7 @@
+     if((F).wakeJust)(F).wakeJust=0; \
+     else if((F).invuln)(F).invuln--; \
+     if(!(F).hurt)clearRecoil(P); \
+-    if((F).downState){updateDowned(P);if((F).wakeJust)v29DefenseState[P]=DEFENSE29_WAKE_TICKS;return;} \
++    if((F).downState){updateDowned(P);return;} \
+     if((F).hurt) { \
+         (F).hurt--; \
+         updateRecoil(P); \
+@@ -893,7 +893,6 @@
+         if(abs16(dx)>(16+BODY_HALF_WIDTH)*16)return 0; \
+     } \
+     if(action==9) { \
+-        if(v29DefenseState[1-(P)])return 0; \
+         if((F).y)return 0; \
+         if((D).y)return 0; \
+         if((D).hurt)return 0; \
+@@ -914,12 +913,8 @@
+     u8 a0,a1,m0,m1,p,finished,low0,low1,air0,air1,face0,face1,k0,k1,expired,rear0,rear1,contact;
+     s16 distance;
+     const CharacterProfile *c0,*c1,*cw;
+-    if(v29DefenseState[0])v29DefenseState[0]--;
+-    if(v29DefenseState[1])v29DefenseState[1]--;
+     controls(0);controls(1);
+     updateFighter(0);updateFighter(1);
+-    if(fighters[0].downState==DOWN_LIFT)defense29TryTech(0);
+-    if(fighters[1].downState==DOWN_LIFT)defense29TryTech(1);
+     distance=fighters[1].x-fighters[0].x;
+     if(!fighters[0].downState && !fighters[1].downState && abs16(distance)<22*16 && abs16(fighters[0].y-fighters[1].y)<50*16) {
+         if(distance>=0){fighters[0].x-=12;fighters[1].x+=12;}else{fighters[0].x+=12;fighters[1].x-=12;}

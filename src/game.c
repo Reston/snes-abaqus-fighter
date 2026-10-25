@@ -8,6 +8,7 @@
 #include "characters.h"
 #include "menu_portraits.h"
 #include "version.h"
+#include "expansion29.h"
 
 #if MOD_EFFECTS != 0 || MOD_MUSIC0 != 1 || MOD_MUSIC1 != 2 || MOD_MUSIC2 != 3 || MOD_MUSIC3 != 4 || MOD_MUSIC4 != 5
 #error Regenerate the resident effects-first soundbank with Build.cmd --assets
@@ -157,8 +158,12 @@ extern void refreshHealthBar(u8 player);
 extern void refreshEnergyBar(u8 player);
 void releaseHeldVictim(u8 owner);
 void traceProfiles(void);
+void bonus29PublishScroll(void);
+void defense29Reset(void);
+u16 defense29CpuKeys(void);
 
 #include "stage_depth.h"
+void arenaLife29Load(u8 which);
 
 const char arenaNames[3][12] = {"LAS CONDES","EL CASTILLO","LA OFICINA"};
 /* Menu-only palette zero. Portrait palette one and combat UI stay exact. */
@@ -290,7 +295,7 @@ void music(u8 index) {
     audioSceneLoaded();spcPlay(0);musicIndex=index;
 }
 void commonScreen(void) {
-    stageDepthReset();
+    stageDepthReset();arenaLife29Load(255);
     if(mode==2)trainingNewMatch();
     pausePage=0;guideBuild=0;guideDirty=0;trainingDummy=0;pauseHudPending=0;
     portraitDirty=0;
@@ -320,7 +325,7 @@ void loadBackground(u8 which) {
         if(which==0)ambientData=&stage0_ambient;
         else if(which==1)ambientData=&stage1_ambient;
         else ambientData=&stage2_ambient;
-        stageDepthLoad(which);
+        stageDepthLoad(which);arenaLife29Load(which);
     }
 }
 void finishScreen(void) { dmaCopyVram((u8 *)ui,0x5800,2048);fullDirty=0;footerDirty=0;setScreenOn(); }
@@ -338,6 +343,7 @@ void showTitle(void) {
     music(0);finishScreen();
 }
 #include "menu_preview.h"
+#include "random29.h"
 void drawSelect(void) {
     u8 id,x,y;
     clearUi();id=selectPlayer ? selected2:selected;
@@ -353,7 +359,7 @@ void drawSelect(void) {
     else word(13,3,selectPlayer ? "PLAYER 2":"PLAYER 1");
     word(23,3,mode==0?"ARCADE":(mode==1?"LOCAL":"TRAINING"));
     word(13,12,characterNames[id]);
-    word(3,27,"A/START OK");word(23,27,"B BACK");
+    word(1,27,"A/START  SELECT: RANDOM  B BACK");
     portraitId=id;portraitDirty=0;menuPreviewClock=0;fullDirty=1;
 }
 void uploadSelectUi(void) {
@@ -369,6 +375,7 @@ void uploadMenuPortrait(void) {
     portraitDirty=0;
 }
 void showSelect(void) {
+    v29BonusState[0]=0; /* A new roster run resets earned bonus milestones. */
     /* Character selection starts a new local rivalry. Rematches bypass it. */
     stageDepthTable[7]=0;stageDepthTable[8]=0;
     setScreenOff();screen=SELECT;arcade=0;champion=0;commonScreen();loadBackground(4);selectPlayer=0;drawSelect();
@@ -379,7 +386,7 @@ void drawArenas(void) {
     /* Cover only the raster footer below the three unchanged choice rows.
      * Opaque original glyphs keep the old lettering from showing through. */
     panel(26,2);drawGuideWord((27*32+3)*2,"UP/DOWN A/START OK B BACK");
-    if(mode==1)drawGuideWord((26*32+5)*2,"LOCAL 1V1: EITHER PAD");
+    drawGuideWord((26*32+(mode==1?1:9))*2,mode==1?"SELECT: RANDOM / EITHER PAD":"SELECT: RANDOM");
     fullDirty=1;
 }
 void showArenas(void) { setScreenOff();screen=ARENA;commonScreen();loadBackground(5);drawArenas();finishScreen(); }
@@ -397,7 +404,7 @@ void showArenas(void) { setScreenOff();screen=ARENA;commonScreen();loadBackgroun
     /* Full gauge teaches the command in the existing bottom rule. \
     * Only threshold transitions touch these nine cached cells. */ \
     if(fighters[p].energy==ENERGY_MAX) { \
-    word(p?22:1,4,"SUPER Y+B"); \
+    drawGuideWord(p?300:258,"SUPER Y+B"); \
     for(x=p?22:1;x<(p?31:10);x++)ui[128+x]|=0x0400; \
     } else if(hudEnergy[p]==ENERGY_MAX || hudEnergy[p]==255) { \
     for(x=p?22:1;x<(p?31:10);x++)ui[128+x]=158|0x2000; \
@@ -426,6 +433,7 @@ void hud(void) {
 void resetRoundState(void) {
     u8 p;
     resetSupers();
+    defense29Reset();
     for(p=0;p<2;p++) {
         fighters[p].x=(p ? 190:66)*16;fighters[p].y=0;fighters[p].vy=0;fighters[p].vx=0;
         fighters[p].hp=HP_MAX;fighters[p].energy=64;fighters[p].face=p?0:1;
@@ -646,61 +654,7 @@ u8 actionForInput(u8 p,u16 keys,u16 edge) {
     return 0;
 }
 
-void captureInput(u8 p,u16 raw,u8 live) {
-    Fighter *f=&fighters[p];
-    u16 keys,edge,forward,back;
-    keys=cleanDirections(raw);
-    f->rawKeys=raw;f->oldkeys=f->keys;f->keys=keys;
-    edge=keys&~f->oldkeys;f->inputEdge=edge;
-    if(!live || superRequest[p]) {
-        if(captureSuper(p,keys,edge,live)){f->motion=0;f->downbuffer=0;return;}
-    } else if((keys&SUPER_CHORD)==SUPER_CHORD) {
-        if(captureSuper(p,keys,edge,live)){f->motion=0;f->downbuffer=0;return;}
-    }
-    if(!live) {
-        f->bufferedAction=0;f->bufferAge=0;f->jumpBuffer=0;
-        f->motion=0;f->downbuffer=0;return;
-    }
-    if(f->downState && f->downState!=DOWN_WAKE) {
-        discardFighterInput(f);f->motion=0;f->downbuffer=0;return;
-    }
-    /* Hitstop samples the pad but freezes expiry, movement and animation. */
-    if(!hitstop) {
-        if(f->bufferAge){f->bufferAge--;if(!f->bufferAge)f->bufferedAction=0;}
-        if(f->jumpBuffer)f->jumpBuffer--;
-        if(f->downbuffer){f->downbuffer--;if(!f->downbuffer)f->motion=0;}
-        if(f->wakeAge){f->wakeAge--;if(!f->wakeAge)f->wakeAction=0;}
-        if(f->wakeJump)f->wakeJump--;
-    }
-    if(f->downState==DOWN_WAKE)f->face=f->x<fighters[1-p].x?1:0;
-    else if(!f->action && !f->hurt && !f->y && !f->downState)f->face=f->x<fighters[1-p].x?1:0;
-    forward=f->face?KEY_RIGHT:KEY_LEFT;back=f->face?KEY_LEFT:KEY_RIGHT;
-    if(keys&back){f->motion=0;f->downbuffer=0;}
-    else if(keys&KEY_DOWN) {
-        if(keys&forward) {
-            if(f->motion==1){f->motion=2;f->downbuffer=12;}
-        } else {f->motion=1;f->downbuffer=12;}
-    } else if((keys&forward) && f->motion==2) {f->motion=3;f->downbuffer=12;}
-    if(f->downState==DOWN_WAKE) {
-        /* Wake accepts attack/jump edges only.  Directional motion sampled
-         * during wake must not become a post-wake special command. */
-        discardFighterInput(f);
-        f->motion=0;f->downbuffer=0;
-        if(edge&KEY_UP)f->wakeJump=INPUT_BUFFER_TICKS;
-        if(edge&ATTACKS) {
-            f->wakeKeys=keys;f->wakeAction=actionForInput(p,keys,edge);
-            f->wakeAge=INPUT_BUFFER_TICKS;
-        }
-        return;
-    }
-    if(!(keys&KEY_UP))f->wakeLock=0;
-    if(edge&KEY_UP){f->jumpBuffer=INPUT_BUFFER_TICKS;f->wakeLock=0;}
-    if(edge&ATTACKS) {
-        f->bufferKeys=keys;
-        f->bufferedAction=actionForInput(p,keys,edge);
-        f->bufferAge=INPUT_BUFFER_TICKS;
-    }
-}
+#include "audio29_native.h"
 void captureFightInputs(void) {
     u8 live=1;
     u16 second;
@@ -722,68 +676,6 @@ void captureFightInputs(void) {
     }
     captureInput(1,second,live);
 }
-void controls(u8 p) {
-    Fighter *f=&fighters[p];Fighter *enemy=&fighters[1-p];
-    const CharacterProfile *c;
-    u16 keys,forward,back;
-    u8 a,cancel;
-    c=combatProfiles[p];
-    keys=f->keys;
-    f->walking=0;
-    /* Three chained OR operands are mislowered by this 816-tcc build. */
-    if(f->hurt)return;
-    if(f->downState)return;
-    if(!f->hp)return;
-    if(superRequest[p] && startSuper(p))return;
-    f->guard=0;
-    if(!f->action && !f->y)f->face=f->x<enemy->x?1:0;
-    forward=f->face?KEY_RIGHT:KEY_LEFT;back=f->face?KEY_LEFT:KEY_RIGHT;
-    a=f->bufferedAction;
-    if(f->action) {
-        cancel=0;
-        if(f->connected==2 && a) {
-            if(a==7 && f->tick<f->actionActiveEnd+5) {
-                if(f->action==1 || f->action==2)cancel=1;
-                if(f->action==4 || f->action==5)cancel=1;
-            }
-            if(f->tick<f->actionActiveEnd+5) {
-                if(f->action<3 && a>f->action && a<=3)cancel=1;
-                if(f->action>=4 && f->action<6 && a>f->action && a<=6)cancel=1;
-            }
-        }
-        if(cancel)f->action=0;else return;
-    }
-    f->duck=(keys&KEY_DOWN) && !f->y;
-    f->guard=(keys&back) && !f->y;
-    /* Guard dummies hold their position rather than walking away. Recoil,
-     * separation, jump and downed physics still use the ordinary rules. */
-    if(mode==2 && p==1) {
-        if(trainingDummy==1 || trainingDummy==2)return;
-        if(trainingDummy==6)return;
-    }
-    if(a<7 && !f->y) {
-        if(((keys&KEY_UP) && !f->wakeLock) || f->jumpBuffer) {
-            f->vy=c->jumpVy;f->y=-1;f->duck=0;f->jumpBuffer=0;f->landing=0;
-            f->vx=0;
-            if(keys&KEY_RIGHT)f->vx=pacingAirSpeed(f->id);
-            else if(keys&KEY_LEFT)f->vx=-pacingAirSpeed(f->id);
-        }
-    }
-    if(a) {
-        f->duck=(f->bufferKeys&KEY_DOWN) && !f->y;
-        if(a==7 && (f->y || f->energy<32))a=2;
-        if(a==8 && f->y)a=3;
-        if(a==9) {
-            if(f->y || enemy->y)a=3;
-            else if(abs16(f->x-enemy->x)>=c->throwRange*16)a=3;
-        }
-        attackStart(p,a);
-    } else if(!f->y && !(keys&KEY_DOWN)) {
-        if(keys&forward){f->x+=f->face?c->walkSpeed:-c->walkSpeed;f->walking=1;f->stride+=c->walkSpeed;}
-        else if(keys&back){f->x+=f->face?-c->backSpeed:c->backSpeed;f->walking=2;f->stride+=c->backSpeed;}
-    }
-}
-
 /* 816-tcc rebuilds generic far pointers for every actor field. Specialize
  * the two ordinary player pairs to direct WRAM operands inside this existing
  * function section. One template retains the original contact operation order.
@@ -901,6 +793,7 @@ u8 hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
 }
 
 #include "knockdown.h"
+#include "defense29.h"
 
 /* Keep the original update order in one template. Direct actor operands avoid
  * rebuilding generic far pointers through simultaneous contact/launch ticks;
@@ -914,7 +807,7 @@ u8 hurt(u8 attacker,u8 defender,u8 dmg,u8 low,u8 air,u8 unblockable) {
     if((F).wakeJust)(F).wakeJust=0; \
     else if((F).invuln)(F).invuln--; \
     if(!(F).hurt)clearRecoil(P); \
-    if((F).downState){updateDowned(P);return;} \
+    if((F).downState){updateDowned(P);if((F).wakeJust)v29DefenseState[P]=DEFENSE29_WAKE_TICKS;return;} \
     if((F).hurt) { \
         (F).hurt--; \
         updateRecoil(P); \
@@ -1000,6 +893,7 @@ u8 verticalContact(Fighter *d,s16 top,s16 bottom) {
         if(abs16(dx)>(16+BODY_HALF_WIDTH)*16)return 0; \
     } \
     if(action==9) { \
+        if(v29DefenseState[1-(P)])return 0; \
         if((F).y)return 0; \
         if((D).y)return 0; \
         if((D).hurt)return 0; \
@@ -1020,8 +914,12 @@ void combat(void) {
     u8 a0,a1,m0,m1,p,finished,low0,low1,air0,air1,face0,face1,k0,k1,expired,rear0,rear1,contact;
     s16 distance;
     const CharacterProfile *c0,*c1,*cw;
+    if(v29DefenseState[0])v29DefenseState[0]--;
+    if(v29DefenseState[1])v29DefenseState[1]--;
     controls(0);controls(1);
     updateFighter(0);updateFighter(1);
+    if(fighters[0].downState==DOWN_LIFT)defense29TryTech(0);
+    if(fighters[1].downState==DOWN_LIFT)defense29TryTech(1);
     distance=fighters[1].x-fighters[0].x;
     if(!fighters[0].downState && !fighters[1].downState && abs16(distance)<22*16 && abs16(fighters[0].y-fighters[1].y)<50*16) {
         if(distance>=0){fighters[0].x-=12;fighters[1].x+=12;}else{fighters[0].x+=12;fighters[1].x-=12;}
@@ -1224,12 +1122,19 @@ void fightTick(void) {
         if(!(pauseKeys&KEY_START)) {
             if(pauseKeys&KEY_B){closePauseGuide();showSelect();return;}
             if(pauseKeys&KEY_A){paused=0;closePauseGuide();clearBanner();if(arcadeStoryTicks)arcadeStoryDraw();}
+            else if(pauseKeys&KEY_Y) {audio29Open();sound(0);}
             else if(pauseKeys&KEY_SELECT) {
+                if(pausePage==AUDIO29_PAGE) {
+                    if(v29AudioState[11])openPauseGuide(v29AudioState[11]);
+                    else {closePauseGuide();drawPauseCard();}
+                }
+                else
                 if(pausePage==(mode==2?3:2)){closePauseGuide();drawPauseCard();}
                 else openPauseGuide(pausePage+1);
                 sound(0);
             } else if(pausePage) {
-                if(pauseDirections&(KEY_LEFT|KEY_RIGHT)) {
+                if(pausePage==AUDIO29_PAGE)audio29Keys(pauseKeys,pauseDirections);
+                else if(pauseDirections&(KEY_LEFT|KEY_RIGHT)) {
                     if(mode==2) {
                         if(pauseDirections&KEY_RIGHT)openPauseGuide(pausePage==3?1:pausePage+1);
                         else openPauseGuide(pausePage==1?3:pausePage-1);
@@ -1252,12 +1157,12 @@ void fightTick(void) {
                     } else if(pauseDirections&KEY_DOWN) {
                         trainingChooseChallenge();openPauseGuide(3);sound(0);
                     } else if((pauseKeys&KEY_L) && !((pad0|pad1)&KEY_R)) {
-                        musicOn=!musicOn;openPauseGuide(pausePage);sound(0);
+                        audio29ToggleMusic();openPauseGuide(pausePage);sound(0);
                     } else if((pauseKeys&KEY_R) && !((pad0|pad1)&KEY_L)) {
                         stageDepthTable[9]=!stageDepthTable[9];openPauseGuide(pausePage);sound(0);
                     }
                 } else if((pauseKeys&KEY_L) && !((pad0|pad1)&KEY_R)) {
-                    musicOn=!musicOn;openPauseGuide(pausePage);sound(0);
+                    audio29ToggleMusic();openPauseGuide(pausePage);sound(0);
                 } else if((pauseKeys&KEY_R) && !((pad0|pad1)&KEY_L)) {
                     stageDepthTable[9]=!stageDepthTable[9];openPauseGuide(pausePage);sound(0);
                 }
@@ -1369,9 +1274,11 @@ void fightTick(void) {
     if(mode==2 && !intro && !roundEnd) {trainingObserve();trainingService();}
     drawFight();
 }
+#include "bonus29.h"
 void menuTick(void) {
     u8 *choice;
     u16 keys,held,directions;
+    random29Tick();
     keys=edge0;held=pad0;
     if(screen==SELECT && selectPlayer){keys|=edge1;held|=pad1;}
     /* Local matches belong to both players, including the rematch card.
@@ -1382,8 +1289,9 @@ void menuTick(void) {
     /* One menu action per sample. Match pause: Start, then Back, then A.
      * Clean held directions before masking edges, so an opposite held on
      * either participating pad cannot turn a new edge into cursor movement. */
-    if(keys&KEY_START)keys&=~(KEY_A|KEY_B);
-    else if(keys&KEY_B)keys&=~KEY_A;
+    if(keys&KEY_START)keys&=~(KEY_A|KEY_B|KEY_SELECT);
+    else if(keys&KEY_B)keys&=~(KEY_A|KEY_SELECT);
+    else if(keys&KEY_A)keys&=~KEY_SELECT;
     if(screen==TITLE) {
         if(directions&KEY_DOWN){menu=(menu+1)%3;sound(0);drawTitle();}
         if(directions&KEY_UP){menu=(menu+2)%3;sound(0);drawTitle();}
@@ -1415,16 +1323,19 @@ void menuTick(void) {
         if(keys&KEY_B){if(selectPlayer){selectPlayer=0;resetMenuRepeat();drawSelect();}else showTitle();return;}
         if(keys&(KEY_A|KEY_START)) {
             sound(3);menuPreviewConfirm=1;resetMenuRepeat();
+        } else if(keys&KEY_SELECT) {
+            *choice=random29Pick(12);sound(0);resetMenuRepeat();drawSelect();
         }
     } else if(screen==ARENA) {
         if(directions&KEY_DOWN){arena=(arena+1)%3;sound(0);drawArenas();}
         if(directions&KEY_UP){arena=(arena+2)%3;sound(0);drawArenas();}
         if(keys&KEY_B){showSelect();return;}
         if(keys&(KEY_A|KEY_START)){sound(3);beginMatch();}
+        else if(keys&KEY_SELECT){arena=random29Pick(3);sound(0);resetMenuRepeat();drawArenas();}
     } else if(screen==RESULT) {
         if(keys&KEY_B){showSelect();return;}
         if(keys&(KEY_A|KEY_START)) {
-            if(mode==0 && resultWin && !champion){arcade++;arena=(arena+1)%3;}
+            if(mode==0 && resultWin && !champion){if(bonus29TryBegin())return;arcade++;arena=(arena+1)%3;}
             else if(champion){arcade=0;champion=0;showTitle();return;}
             beginMatch();
         }
@@ -1445,8 +1356,12 @@ void traceProfiles(void) {
     TRACE[52]=c0->specialReach;TRACE[53]=c1->specialReach;
     TRACE[54]=c0->throwRange;TRACE[55]=c1->throwRange;
 }
+#include "arena_life29.h"
+
 int main(void) {
     u8 sx,actorTransferred,interfaceTransferred,ambientReady;
+    u8 *arenaLifeUploadSource;
+    u16 arenaLifeUploadDestination;
     u16 scroll;
     randomseed=0xABA;frame=0;menu=0;mode=0;difficulty=1;selected=0;selected2=1;arena=0;
     combatProfiles[0]=&characterProfiles[0];combatProfiles[1]=&characterProfiles[0];
@@ -1457,7 +1372,9 @@ int main(void) {
     oamInit();showTitle();
     while(1) {
         pad0=padsCurrent(0);pad1=padsCurrent(1);edge0=padsDown(0);edge1=padsDown(1);
-        if(screen==FIGHT){captureFightInputs();fightTick();}else menuTick();
+        if(screen==FIGHT){captureFightInputs();fightTick();}
+        else if(screen==BONUS)bonus29TickFrame();
+        else menuTick();
         if(screen==FIGHT) {
             /* Resolve bank pointers and pose offsets during active display.
              * Vblank only executes the already prepared 3840-byte upload. */
@@ -1470,11 +1387,16 @@ int main(void) {
             queueMenuPreview();
         }
         ambientReady=0;
-        if(stageDepthAmbientReady()) {
-            ambientUploadSource=ambientData+((u16)ambientWanted<<8);
-            ambientReady=1;
+        arenaLife29Tick();
+        if(v29ArenaState[12] && !actorUploadDirty) {
+            if(!fullDirty && !hudDirty && !bannerDirty && !footerDirty && !guideDirty) {
+                arenaLifeUploadSource=arenaLife29Source();
+                arenaLifeUploadDestination=ARENA_LIFE29_VRAM+((u16)v29ArenaState[4]<<7);
+                ambientReady=1;
+            }
         }
         traceActorsFast();
+        arenaLife29Publish();
         audioPresentationTick();
         processResidentAudioReady();WaitForVBlank();
         /* STAT77 retains the completed picture's OBJ overflow flags until
@@ -1504,10 +1426,8 @@ int main(void) {
             }
         }
         if(ambientReady && !actorTransferred && !interfaceTransferred) {
-            dmaCopyVram(ambientUploadSource,AMBIENT_VRAM,AMBIENT_BYTES);
-            ambientPhase=ambientWanted;ambientWanted=255;ambientAge=0;
-            /* Publish completed transfer ownership with the actual VRAM. */
-            TRACE[115]=ambientPhase;TRACE[117]=255;TRACE[118]=0;
+            dmaCopyVram(arenaLifeUploadSource,arenaLifeUploadDestination,ARENA_LIFE29_BYTES);
+            arenaLife29Completed();
         }
         publishImpactPriority();
         scroll=0;
@@ -1521,3 +1441,4 @@ int main(void) {
 
 #include "audio_presentation_state.h"
 #include "menu_preview_state.h"
+#include "expansion29_state.h"

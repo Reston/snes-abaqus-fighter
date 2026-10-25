@@ -1,0 +1,2461 @@
+{
+  "schema": 1,
+  "scope": "arena-life29",
+  "state": "v29ArenaState[48]",
+  "tile_base": 832,
+  "tile_count": 48,
+  "tile_vram_word": 13312,
+  "tile_vram_end_word": 14079,
+  "pool_bytes": 1536,
+  "phase_count": 6,
+  "chunk_bytes": 256,
+  "chunks_per_phase": 6,
+  "max_uploads_per_blank": 1,
+  "map_vram_words": [
+    14336,
+    16383
+  ],
+  "legacy_ambient_disabled": true,
+  "palette_transfers": 0,
+  "obj_entries": 0,
+  "hdma_mask": 0,
+  "scheduling": "one 256-byte chunk only on a blank without actor or UI DMA; pause/hitstop/intro/motion-off freeze; KO round-end may celebrate",
+  "trace": {
+    "completed_phase": 115,
+    "live_clock": 116,
+    "in_flight_phase_or_255": 117,
+    "completed_chunks_or_0": 118
+  },
+  "trace_publication": "arenaLife29Publish after traceActorsFast, after completed DMA, and on scene load; no assembly changes",
+  "state_bytes": {
+    "stage_plus_one": 0,
+    "live_clock": 1,
+    "desired_phase": 2,
+    "completed_phase": 3,
+    "next_chunk_or_6": 4,
+    "in_flight_phase": 5,
+    "observed_super_mask": 6,
+    "reaction_remaining": 7,
+    "observed_hp": [
+      8,
+      9
+    ],
+    "ko_latch": 10,
+    "reaction_kind": 11,
+    "may_upload": 12,
+    "transfer_serial": 14,
+    "last_event": 15,
+    "event_counts": [
+      16,
+      17,
+      18
+    ],
+    "last_uploaded_chunk": 19,
+    "last_uploaded_phase": 20
+  },
+  "stages": [
+    {
+      "id": 0,
+      "rectangles_world": [
+        [
+          64,
+          136,
+          16,
+          32
+        ],
+        [
+          104,
+          136,
+          16,
+          32
+        ],
+        [
+          192,
+          136,
+          16,
+          32
+        ],
+        [
+          240,
+          136,
+          16,
+          32
+        ],
+        [
+          24,
+          144,
+          16,
+          16
+        ],
+        [
+          144,
+          144,
+          16,
+          16
+        ],
+        [
+          264,
+          144,
+          16,
+          16
+        ],
+        [
+          128,
+          80,
+          16,
+          16
+        ]
+      ],
+      "viewport_origin": [
+        16,
+        0
+      ],
+      "animated_cells": [
+        {
+          "offset_words": 552,
+          "world_rect": [
+            64,
+            136,
+            8,
+            8
+          ],
+          "original_word": 5556,
+          "word": 8000,
+          "pool_tile": 0,
+          "palette_bank": 7,
+          "chunk": 0
+        },
+        {
+          "offset_words": 553,
+          "world_rect": [
+            72,
+            136,
+            8,
+            8
+          ],
+          "original_word": 4533,
+          "word": 8001,
+          "pool_tile": 1,
+          "palette_bank": 7,
+          "chunk": 0
+        },
+        {
+          "offset_words": 584,
+          "world_rect": [
+            64,
+            144,
+            8,
+            8
+          ],
+          "original_word": 6616,
+          "word": 8002,
+          "pool_tile": 2,
+          "palette_bank": 7,
+          "chunk": 0
+        },
+        {
+          "offset_words": 585,
+          "world_rect": [
+            72,
+            144,
+            8,
+            8
+          ],
+          "original_word": 4569,
+          "word": 8003,
+          "pool_tile": 3,
+          "palette_bank": 7,
+          "chunk": 0
+        },
+        {
+          "offset_words": 616,
+          "world_rect": [
+            64,
+            152,
+            8,
+            8
+          ],
+          "original_word": 2556,
+          "word": 8004,
+          "pool_tile": 4,
+          "palette_bank": 7,
+          "chunk": 0
+        },
+        {
+          "offset_words": 617,
+          "world_rect": [
+            72,
+            152,
+            8,
+            8
+          ],
+          "original_word": 4605,
+          "word": 8005,
+          "pool_tile": 5,
+          "palette_bank": 7,
+          "chunk": 0
+        },
+        {
+          "offset_words": 648,
+          "world_rect": [
+            64,
+            160,
+            8,
+            8
+          ],
+          "original_word": 7712,
+          "word": 8006,
+          "pool_tile": 6,
+          "palette_bank": 7,
+          "chunk": 0
+        },
+        {
+          "offset_words": 649,
+          "world_rect": [
+            72,
+            160,
+            8,
+            8
+          ],
+          "original_word": 4641,
+          "word": 8007,
+          "pool_tile": 7,
+          "palette_bank": 7,
+          "chunk": 0
+        },
+        {
+          "offset_words": 557,
+          "world_rect": [
+            104,
+            136,
+            8,
+            8
+          ],
+          "original_word": 6585,
+          "word": 5960,
+          "pool_tile": 8,
+          "palette_bank": 5,
+          "chunk": 1
+        },
+        {
+          "offset_words": 558,
+          "world_rect": [
+            112,
+            136,
+            8,
+            8
+          ],
+          "original_word": 5562,
+          "word": 5961,
+          "pool_tile": 9,
+          "palette_bank": 5,
+          "chunk": 1
+        },
+        {
+          "offset_words": 589,
+          "world_rect": [
+            104,
+            144,
+            8,
+            8
+          ],
+          "original_word": 6621,
+          "word": 5962,
+          "pool_tile": 10,
+          "palette_bank": 5,
+          "chunk": 1
+        },
+        {
+          "offset_words": 590,
+          "world_rect": [
+            112,
+            144,
+            8,
+            8
+          ],
+          "original_word": 5598,
+          "word": 5963,
+          "pool_tile": 11,
+          "palette_bank": 5,
+          "chunk": 1
+        },
+        {
+          "offset_words": 621,
+          "world_rect": [
+            104,
+            152,
+            8,
+            8
+          ],
+          "original_word": 5633,
+          "word": 5964,
+          "pool_tile": 12,
+          "palette_bank": 5,
+          "chunk": 1
+        },
+        {
+          "offset_words": 622,
+          "world_rect": [
+            112,
+            152,
+            8,
+            8
+          ],
+          "original_word": 6658,
+          "word": 5965,
+          "pool_tile": 13,
+          "palette_bank": 5,
+          "chunk": 1
+        },
+        {
+          "offset_words": 653,
+          "world_rect": [
+            104,
+            160,
+            8,
+            8
+          ],
+          "original_word": 5669,
+          "word": 5966,
+          "pool_tile": 14,
+          "palette_bank": 5,
+          "chunk": 1
+        },
+        {
+          "offset_words": 654,
+          "world_rect": [
+            112,
+            160,
+            8,
+            8
+          ],
+          "original_word": 5670,
+          "word": 5967,
+          "pool_tile": 15,
+          "palette_bank": 5,
+          "chunk": 1
+        },
+        {
+          "offset_words": 568,
+          "world_rect": [
+            192,
+            136,
+            8,
+            8
+          ],
+          "original_word": 4548,
+          "word": 8016,
+          "pool_tile": 16,
+          "palette_bank": 7,
+          "chunk": 2
+        },
+        {
+          "offset_words": 569,
+          "world_rect": [
+            200,
+            136,
+            8,
+            8
+          ],
+          "original_word": 4549,
+          "word": 8017,
+          "pool_tile": 17,
+          "palette_bank": 7,
+          "chunk": 2
+        },
+        {
+          "offset_words": 600,
+          "world_rect": [
+            192,
+            144,
+            8,
+            8
+          ],
+          "original_word": 4584,
+          "word": 8018,
+          "pool_tile": 18,
+          "palette_bank": 7,
+          "chunk": 2
+        },
+        {
+          "offset_words": 601,
+          "world_rect": [
+            200,
+            144,
+            8,
+            8
+          ],
+          "original_word": 4585,
+          "word": 8019,
+          "pool_tile": 19,
+          "palette_bank": 7,
+          "chunk": 2
+        },
+        {
+          "offset_words": 632,
+          "world_rect": [
+            192,
+            152,
+            8,
+            8
+          ],
+          "original_word": 4620,
+          "word": 8020,
+          "pool_tile": 20,
+          "palette_bank": 7,
+          "chunk": 2
+        },
+        {
+          "offset_words": 633,
+          "world_rect": [
+            200,
+            152,
+            8,
+            8
+          ],
+          "original_word": 4621,
+          "word": 8021,
+          "pool_tile": 21,
+          "palette_bank": 7,
+          "chunk": 2
+        },
+        {
+          "offset_words": 664,
+          "world_rect": [
+            192,
+            160,
+            8,
+            8
+          ],
+          "original_word": 4656,
+          "word": 8022,
+          "pool_tile": 22,
+          "palette_bank": 7,
+          "chunk": 2
+        },
+        {
+          "offset_words": 665,
+          "world_rect": [
+            200,
+            160,
+            8,
+            8
+          ],
+          "original_word": 4657,
+          "word": 8023,
+          "pool_tile": 23,
+          "palette_bank": 7,
+          "chunk": 2
+        },
+        {
+          "offset_words": 574,
+          "world_rect": [
+            240,
+            136,
+            8,
+            8
+          ],
+          "original_word": 6602,
+          "word": 7000,
+          "pool_tile": 24,
+          "palette_bank": 6,
+          "chunk": 3
+        },
+        {
+          "offset_words": 575,
+          "world_rect": [
+            248,
+            136,
+            8,
+            8
+          ],
+          "original_word": 6603,
+          "word": 7001,
+          "pool_tile": 25,
+          "palette_bank": 6,
+          "chunk": 3
+        },
+        {
+          "offset_words": 606,
+          "world_rect": [
+            240,
+            144,
+            8,
+            8
+          ],
+          "original_word": 2542,
+          "word": 7002,
+          "pool_tile": 26,
+          "palette_bank": 6,
+          "chunk": 3
+        },
+        {
+          "offset_words": 607,
+          "world_rect": [
+            248,
+            144,
+            8,
+            8
+          ],
+          "original_word": 6639,
+          "word": 7003,
+          "pool_tile": 27,
+          "palette_bank": 6,
+          "chunk": 3
+        },
+        {
+          "offset_words": 638,
+          "world_rect": [
+            240,
+            152,
+            8,
+            8
+          ],
+          "original_word": 6674,
+          "word": 7004,
+          "pool_tile": 28,
+          "palette_bank": 6,
+          "chunk": 3
+        },
+        {
+          "offset_words": 639,
+          "world_rect": [
+            248,
+            152,
+            8,
+            8
+          ],
+          "original_word": 6675,
+          "word": 7005,
+          "pool_tile": 29,
+          "palette_bank": 6,
+          "chunk": 3
+        },
+        {
+          "offset_words": 670,
+          "world_rect": [
+            240,
+            160,
+            8,
+            8
+          ],
+          "original_word": 2614,
+          "word": 7006,
+          "pool_tile": 30,
+          "palette_bank": 6,
+          "chunk": 3
+        },
+        {
+          "offset_words": 671,
+          "world_rect": [
+            248,
+            160,
+            8,
+            8
+          ],
+          "original_word": 2615,
+          "word": 7007,
+          "pool_tile": 31,
+          "palette_bank": 6,
+          "chunk": 3
+        },
+        {
+          "offset_words": 579,
+          "world_rect": [
+            24,
+            144,
+            8,
+            8
+          ],
+          "original_word": 2515,
+          "word": 7008,
+          "pool_tile": 32,
+          "palette_bank": 6,
+          "chunk": 4
+        },
+        {
+          "offset_words": 580,
+          "world_rect": [
+            32,
+            144,
+            8,
+            8
+          ],
+          "original_word": 6612,
+          "word": 7009,
+          "pool_tile": 33,
+          "palette_bank": 6,
+          "chunk": 4
+        },
+        {
+          "offset_words": 611,
+          "world_rect": [
+            24,
+            152,
+            8,
+            8
+          ],
+          "original_word": 6647,
+          "word": 7010,
+          "pool_tile": 34,
+          "palette_bank": 6,
+          "chunk": 4
+        },
+        {
+          "offset_words": 612,
+          "world_rect": [
+            32,
+            152,
+            8,
+            8
+          ],
+          "original_word": 2552,
+          "word": 7011,
+          "pool_tile": 35,
+          "palette_bank": 6,
+          "chunk": 4
+        },
+        {
+          "offset_words": 594,
+          "world_rect": [
+            144,
+            144,
+            8,
+            8
+          ],
+          "original_word": 5602,
+          "word": 2916,
+          "pool_tile": 36,
+          "palette_bank": 2,
+          "chunk": 4
+        },
+        {
+          "offset_words": 595,
+          "world_rect": [
+            152,
+            144,
+            8,
+            8
+          ],
+          "original_word": 2531,
+          "word": 2917,
+          "pool_tile": 37,
+          "palette_bank": 2,
+          "chunk": 4
+        },
+        {
+          "offset_words": 626,
+          "world_rect": [
+            144,
+            152,
+            8,
+            8
+          ],
+          "original_word": 6662,
+          "word": 2918,
+          "pool_tile": 38,
+          "palette_bank": 2,
+          "chunk": 4
+        },
+        {
+          "offset_words": 627,
+          "world_rect": [
+            152,
+            152,
+            8,
+            8
+          ],
+          "original_word": 2567,
+          "word": 2919,
+          "pool_tile": 39,
+          "palette_bank": 2,
+          "chunk": 4
+        },
+        {
+          "offset_words": 1601,
+          "world_rect": [
+            264,
+            144,
+            8,
+            8
+          ],
+          "original_word": 3569,
+          "word": 2920,
+          "pool_tile": 40,
+          "palette_bank": 2,
+          "chunk": 5
+        },
+        {
+          "offset_words": 1602,
+          "world_rect": [
+            272,
+            144,
+            8,
+            8
+          ],
+          "original_word": 6642,
+          "word": 2921,
+          "pool_tile": 41,
+          "palette_bank": 2,
+          "chunk": 5
+        },
+        {
+          "offset_words": 1633,
+          "world_rect": [
+            264,
+            152,
+            8,
+            8
+          ],
+          "original_word": 7701,
+          "word": 2922,
+          "pool_tile": 42,
+          "palette_bank": 2,
+          "chunk": 5
+        },
+        {
+          "offset_words": 1634,
+          "world_rect": [
+            272,
+            152,
+            8,
+            8
+          ],
+          "original_word": 6678,
+          "word": 2923,
+          "pool_tile": 43,
+          "palette_bank": 2,
+          "chunk": 5
+        },
+        {
+          "offset_words": 336,
+          "world_rect": [
+            128,
+            80,
+            8,
+            8
+          ],
+          "original_word": 7363,
+          "word": 7020,
+          "pool_tile": 44,
+          "palette_bank": 6,
+          "chunk": 5
+        },
+        {
+          "offset_words": 337,
+          "world_rect": [
+            136,
+            80,
+            8,
+            8
+          ],
+          "original_word": 7364,
+          "word": 7021,
+          "pool_tile": 45,
+          "palette_bank": 6,
+          "chunk": 5
+        },
+        {
+          "offset_words": 368,
+          "world_rect": [
+            128,
+            88,
+            8,
+            8
+          ],
+          "original_word": 5351,
+          "word": 7022,
+          "pool_tile": 46,
+          "palette_bank": 6,
+          "chunk": 5
+        },
+        {
+          "offset_words": 369,
+          "world_rect": [
+            136,
+            88,
+            8,
+            8
+          ],
+          "original_word": 5352,
+          "word": 7023,
+          "pool_tile": 47,
+          "palette_bank": 6,
+          "chunk": 5
+        }
+      ],
+      "original_tiles_bytes": 26144,
+      "original_tiles_sha256": "0c98418d95728c5f0e140ce372aa51d944fb76c31ab4aa0977e7845e0c9f54a0",
+      "original_map_sha256": "b9f6d7fd7b96f1c88178fb25bfb485a0f85ff3363544108af14f84b6eb7d8074",
+      "palette_sha256": "ba3c4b9a9c92a2db1e62421893b95e250f8959f7c80bcbdf344cb4bf8e70d628",
+      "palette_cgram_colors": [
+        32,
+        127
+      ],
+      "floor_seam_y": 184,
+      "phase_source": "arena_life29_stage0.bin",
+      "phase_source_bytes": 9216,
+      "phase_source_sha256": "21aa938ff92f59bdbd9287169995cddd60d6a88bc930e1df5148fa0e75899075",
+      "phases": [
+        {
+          "id": 0,
+          "event": "conversation-a",
+          "offset_bytes": 0,
+          "bytes": 1536,
+          "sha256": "db309e26745c38a01fc8b7e4300215cec65f25ac6f1bc5e6aeaa9b14811c5ede"
+        },
+        {
+          "id": 1,
+          "event": "conversation-b",
+          "offset_bytes": 1536,
+          "bytes": 1536,
+          "sha256": "7a4efa21539f8bfa962537cf7372ed2a64a5a79e601019cfe73c136c4b6157ce"
+        },
+        {
+          "id": 2,
+          "event": "impact-flinch",
+          "offset_bytes": 3072,
+          "bytes": 1536,
+          "sha256": "d7fb89acc213a12041ac3888be207c1746739d95a95ebb1b4300b239c9631324"
+        },
+        {
+          "id": 3,
+          "event": "impact-gasp",
+          "offset_bytes": 4608,
+          "bytes": 1536,
+          "sha256": "ec96c00b7741e26e889bda8f1e3cf7760697c4d0f17d1c079e7f9dafb1187891"
+        },
+        {
+          "id": 4,
+          "event": "super-excitement",
+          "offset_bytes": 6144,
+          "bytes": 1536,
+          "sha256": "0ba598e5310e765706422d2018d6a3244ba545994b96c995258342aeb5a7941b"
+        },
+        {
+          "id": 5,
+          "event": "ko-celebration",
+          "offset_bytes": 7680,
+          "bytes": 1536,
+          "sha256": "8d9a73094230694258aa118c15b2d197c98753f9ee17f44742b312f0a39bd058"
+        }
+      ],
+      "outputs": {
+        "stage0_tiles.bin": {
+          "bytes": 28160,
+          "sha256": "06997513099a94a7a7de13215661621ade355a0710010db76a9d2bd6e5fd2f7c"
+        },
+        "stage0_map.bin": {
+          "bytes": 4096,
+          "sha256": "ac7db5138bb249e62a9aee08edfe6b661eb1ae07373712ab752070d5049fb1f4"
+        },
+        "arena_life29_stage0.bin": {
+          "bytes": 9216,
+          "sha256": "21aa938ff92f59bdbd9287169995cddd60d6a88bc930e1df5148fa0e75899075"
+        }
+      }
+    },
+    {
+      "id": 1,
+      "rectangles_world": [
+        [
+          40,
+          112,
+          16,
+          32
+        ],
+        [
+          88,
+          112,
+          16,
+          32
+        ],
+        [
+          184,
+          112,
+          16,
+          32
+        ],
+        [
+          232,
+          112,
+          16,
+          32
+        ],
+        [
+          16,
+          136,
+          16,
+          16
+        ],
+        [
+          136,
+          88,
+          16,
+          16
+        ],
+        [
+          264,
+          136,
+          16,
+          16
+        ],
+        [
+          184,
+          88,
+          16,
+          16
+        ]
+      ],
+      "viewport_origin": [
+        16,
+        0
+      ],
+      "animated_cells": [
+        {
+          "offset_words": 453,
+          "world_rect": [
+            40,
+            112,
+            8,
+            8
+          ],
+          "original_word": 3400,
+          "word": 2880,
+          "pool_tile": 0,
+          "palette_bank": 2,
+          "chunk": 0
+        },
+        {
+          "offset_words": 454,
+          "world_rect": [
+            48,
+            112,
+            8,
+            8
+          ],
+          "original_word": 2377,
+          "word": 2881,
+          "pool_tile": 1,
+          "palette_bank": 2,
+          "chunk": 0
+        },
+        {
+          "offset_words": 485,
+          "world_rect": [
+            40,
+            120,
+            8,
+            8
+          ],
+          "original_word": 3436,
+          "word": 2882,
+          "pool_tile": 2,
+          "palette_bank": 2,
+          "chunk": 0
+        },
+        {
+          "offset_words": 486,
+          "world_rect": [
+            48,
+            120,
+            8,
+            8
+          ],
+          "original_word": 7533,
+          "word": 2883,
+          "pool_tile": 3,
+          "palette_bank": 2,
+          "chunk": 0
+        },
+        {
+          "offset_words": 517,
+          "world_rect": [
+            40,
+            128,
+            8,
+            8
+          ],
+          "original_word": 5520,
+          "word": 2884,
+          "pool_tile": 4,
+          "palette_bank": 2,
+          "chunk": 0
+        },
+        {
+          "offset_words": 518,
+          "world_rect": [
+            48,
+            128,
+            8,
+            8
+          ],
+          "original_word": 5521,
+          "word": 2885,
+          "pool_tile": 5,
+          "palette_bank": 2,
+          "chunk": 0
+        },
+        {
+          "offset_words": 549,
+          "world_rect": [
+            40,
+            136,
+            8,
+            8
+          ],
+          "original_word": 5556,
+          "word": 2886,
+          "pool_tile": 6,
+          "palette_bank": 2,
+          "chunk": 0
+        },
+        {
+          "offset_words": 550,
+          "world_rect": [
+            48,
+            136,
+            8,
+            8
+          ],
+          "original_word": 5557,
+          "word": 2887,
+          "pool_tile": 7,
+          "palette_bank": 2,
+          "chunk": 0
+        },
+        {
+          "offset_words": 459,
+          "world_rect": [
+            88,
+            112,
+            8,
+            8
+          ],
+          "original_word": 5454,
+          "word": 2888,
+          "pool_tile": 8,
+          "palette_bank": 2,
+          "chunk": 1
+        },
+        {
+          "offset_words": 460,
+          "world_rect": [
+            96,
+            112,
+            8,
+            8
+          ],
+          "original_word": 4431,
+          "word": 2889,
+          "pool_tile": 9,
+          "palette_bank": 2,
+          "chunk": 1
+        },
+        {
+          "offset_words": 491,
+          "world_rect": [
+            88,
+            120,
+            8,
+            8
+          ],
+          "original_word": 5490,
+          "word": 2890,
+          "pool_tile": 10,
+          "palette_bank": 2,
+          "chunk": 1
+        },
+        {
+          "offset_words": 492,
+          "world_rect": [
+            96,
+            120,
+            8,
+            8
+          ],
+          "original_word": 2419,
+          "word": 2891,
+          "pool_tile": 11,
+          "palette_bank": 2,
+          "chunk": 1
+        },
+        {
+          "offset_words": 523,
+          "world_rect": [
+            88,
+            128,
+            8,
+            8
+          ],
+          "original_word": 5526,
+          "word": 2892,
+          "pool_tile": 12,
+          "palette_bank": 2,
+          "chunk": 1
+        },
+        {
+          "offset_words": 524,
+          "world_rect": [
+            96,
+            128,
+            8,
+            8
+          ],
+          "original_word": 5527,
+          "word": 2893,
+          "pool_tile": 13,
+          "palette_bank": 2,
+          "chunk": 1
+        },
+        {
+          "offset_words": 555,
+          "world_rect": [
+            88,
+            136,
+            8,
+            8
+          ],
+          "original_word": 5562,
+          "word": 2894,
+          "pool_tile": 14,
+          "palette_bank": 2,
+          "chunk": 1
+        },
+        {
+          "offset_words": 556,
+          "world_rect": [
+            96,
+            136,
+            8,
+            8
+          ],
+          "original_word": 2491,
+          "word": 2895,
+          "pool_tile": 15,
+          "palette_bank": 2,
+          "chunk": 1
+        },
+        {
+          "offset_words": 471,
+          "world_rect": [
+            184,
+            112,
+            8,
+            8
+          ],
+          "original_word": 4442,
+          "word": 8016,
+          "pool_tile": 16,
+          "palette_bank": 7,
+          "chunk": 2
+        },
+        {
+          "offset_words": 472,
+          "world_rect": [
+            192,
+            112,
+            8,
+            8
+          ],
+          "original_word": 3419,
+          "word": 8017,
+          "pool_tile": 17,
+          "palette_bank": 7,
+          "chunk": 2
+        },
+        {
+          "offset_words": 503,
+          "world_rect": [
+            184,
+            120,
+            8,
+            8
+          ],
+          "original_word": 2430,
+          "word": 8018,
+          "pool_tile": 18,
+          "palette_bank": 7,
+          "chunk": 2
+        },
+        {
+          "offset_words": 504,
+          "world_rect": [
+            192,
+            120,
+            8,
+            8
+          ],
+          "original_word": 2431,
+          "word": 8019,
+          "pool_tile": 19,
+          "palette_bank": 7,
+          "chunk": 2
+        },
+        {
+          "offset_words": 535,
+          "world_rect": [
+            184,
+            128,
+            8,
+            8
+          ],
+          "original_word": 2466,
+          "word": 8020,
+          "pool_tile": 20,
+          "palette_bank": 7,
+          "chunk": 2
+        },
+        {
+          "offset_words": 536,
+          "world_rect": [
+            192,
+            128,
+            8,
+            8
+          ],
+          "original_word": 5539,
+          "word": 8021,
+          "pool_tile": 21,
+          "palette_bank": 7,
+          "chunk": 2
+        },
+        {
+          "offset_words": 567,
+          "world_rect": [
+            184,
+            136,
+            8,
+            8
+          ],
+          "original_word": 7620,
+          "word": 8022,
+          "pool_tile": 22,
+          "palette_bank": 7,
+          "chunk": 2
+        },
+        {
+          "offset_words": 568,
+          "world_rect": [
+            192,
+            136,
+            8,
+            8
+          ],
+          "original_word": 7621,
+          "word": 8023,
+          "pool_tile": 23,
+          "palette_bank": 7,
+          "chunk": 2
+        },
+        {
+          "offset_words": 477,
+          "world_rect": [
+            232,
+            112,
+            8,
+            8
+          ],
+          "original_word": 3424,
+          "word": 2904,
+          "pool_tile": 24,
+          "palette_bank": 2,
+          "chunk": 3
+        },
+        {
+          "offset_words": 478,
+          "world_rect": [
+            240,
+            112,
+            8,
+            8
+          ],
+          "original_word": 3425,
+          "word": 2905,
+          "pool_tile": 25,
+          "palette_bank": 2,
+          "chunk": 3
+        },
+        {
+          "offset_words": 509,
+          "world_rect": [
+            232,
+            120,
+            8,
+            8
+          ],
+          "original_word": 2436,
+          "word": 2906,
+          "pool_tile": 26,
+          "palette_bank": 2,
+          "chunk": 3
+        },
+        {
+          "offset_words": 510,
+          "world_rect": [
+            240,
+            120,
+            8,
+            8
+          ],
+          "original_word": 2437,
+          "word": 2907,
+          "pool_tile": 27,
+          "palette_bank": 2,
+          "chunk": 3
+        },
+        {
+          "offset_words": 541,
+          "world_rect": [
+            232,
+            128,
+            8,
+            8
+          ],
+          "original_word": 2472,
+          "word": 2908,
+          "pool_tile": 28,
+          "palette_bank": 2,
+          "chunk": 3
+        },
+        {
+          "offset_words": 542,
+          "world_rect": [
+            240,
+            128,
+            8,
+            8
+          ],
+          "original_word": 2473,
+          "word": 2909,
+          "pool_tile": 29,
+          "palette_bank": 2,
+          "chunk": 3
+        },
+        {
+          "offset_words": 573,
+          "world_rect": [
+            232,
+            136,
+            8,
+            8
+          ],
+          "original_word": 2506,
+          "word": 2910,
+          "pool_tile": 30,
+          "palette_bank": 2,
+          "chunk": 3
+        },
+        {
+          "offset_words": 574,
+          "world_rect": [
+            240,
+            136,
+            8,
+            8
+          ],
+          "original_word": 2507,
+          "word": 2911,
+          "pool_tile": 31,
+          "palette_bank": 2,
+          "chunk": 3
+        },
+        {
+          "offset_words": 546,
+          "world_rect": [
+            16,
+            136,
+            8,
+            8
+          ],
+          "original_word": 5553,
+          "word": 5984,
+          "pool_tile": 32,
+          "palette_bank": 5,
+          "chunk": 4
+        },
+        {
+          "offset_words": 547,
+          "world_rect": [
+            24,
+            136,
+            8,
+            8
+          ],
+          "original_word": 5554,
+          "word": 5985,
+          "pool_tile": 33,
+          "palette_bank": 5,
+          "chunk": 4
+        },
+        {
+          "offset_words": 578,
+          "world_rect": [
+            16,
+            144,
+            8,
+            8
+          ],
+          "original_word": 5587,
+          "word": 5986,
+          "pool_tile": 34,
+          "palette_bank": 5,
+          "chunk": 4
+        },
+        {
+          "offset_words": 579,
+          "world_rect": [
+            24,
+            144,
+            8,
+            8
+          ],
+          "original_word": 5588,
+          "word": 5987,
+          "pool_tile": 35,
+          "palette_bank": 5,
+          "chunk": 4
+        },
+        {
+          "offset_words": 369,
+          "world_rect": [
+            136,
+            88,
+            8,
+            8
+          ],
+          "original_word": 4329,
+          "word": 3940,
+          "pool_tile": 36,
+          "palette_bank": 3,
+          "chunk": 4
+        },
+        {
+          "offset_words": 370,
+          "world_rect": [
+            144,
+            88,
+            8,
+            8
+          ],
+          "original_word": 4330,
+          "word": 3941,
+          "pool_tile": 37,
+          "palette_bank": 3,
+          "chunk": 4
+        },
+        {
+          "offset_words": 401,
+          "world_rect": [
+            136,
+            96,
+            8,
+            8
+          ],
+          "original_word": 3341,
+          "word": 3942,
+          "pool_tile": 38,
+          "palette_bank": 3,
+          "chunk": 4
+        },
+        {
+          "offset_words": 402,
+          "world_rect": [
+            144,
+            96,
+            8,
+            8
+          ],
+          "original_word": 3342,
+          "word": 3943,
+          "pool_tile": 39,
+          "palette_bank": 3,
+          "chunk": 4
+        },
+        {
+          "offset_words": 1569,
+          "world_rect": [
+            264,
+            136,
+            8,
+            8
+          ],
+          "original_word": 5582,
+          "word": 5992,
+          "pool_tile": 40,
+          "palette_bank": 5,
+          "chunk": 5
+        },
+        {
+          "offset_words": 1570,
+          "world_rect": [
+            272,
+            136,
+            8,
+            8
+          ],
+          "original_word": 5583,
+          "word": 5993,
+          "pool_tile": 41,
+          "palette_bank": 5,
+          "chunk": 5
+        },
+        {
+          "offset_words": 1601,
+          "world_rect": [
+            264,
+            144,
+            8,
+            8
+          ],
+          "original_word": 5618,
+          "word": 5994,
+          "pool_tile": 42,
+          "palette_bank": 5,
+          "chunk": 5
+        },
+        {
+          "offset_words": 1602,
+          "world_rect": [
+            272,
+            144,
+            8,
+            8
+          ],
+          "original_word": 5619,
+          "word": 5995,
+          "pool_tile": 43,
+          "palette_bank": 5,
+          "chunk": 5
+        },
+        {
+          "offset_words": 375,
+          "world_rect": [
+            184,
+            88,
+            8,
+            8
+          ],
+          "original_word": 4335,
+          "word": 2924,
+          "pool_tile": 44,
+          "palette_bank": 2,
+          "chunk": 5
+        },
+        {
+          "offset_words": 376,
+          "world_rect": [
+            192,
+            88,
+            8,
+            8
+          ],
+          "original_word": 4336,
+          "word": 2925,
+          "pool_tile": 45,
+          "palette_bank": 2,
+          "chunk": 5
+        },
+        {
+          "offset_words": 407,
+          "world_rect": [
+            184,
+            96,
+            8,
+            8
+          ],
+          "original_word": 4370,
+          "word": 2926,
+          "pool_tile": 46,
+          "palette_bank": 2,
+          "chunk": 5
+        },
+        {
+          "offset_words": 408,
+          "world_rect": [
+            192,
+            96,
+            8,
+            8
+          ],
+          "original_word": 4371,
+          "word": 2927,
+          "pool_tile": 47,
+          "palette_bank": 2,
+          "chunk": 5
+        }
+      ],
+      "original_tiles_bytes": 25600,
+      "original_tiles_sha256": "681cf71f72dc6012864bba680255413433361bb30235158d8709d70221df7816",
+      "original_map_sha256": "99a6a1d03d9cbf260b8436664c67ad8c4423ea5e90518f0acfab6a67e01a23d8",
+      "palette_sha256": "b994e260b51c5b5ad3cf79113acc0a83e2c475c6eb4051ff63e77db2e90d6a6f",
+      "palette_cgram_colors": [
+        32,
+        127
+      ],
+      "floor_seam_y": 192,
+      "phase_source": "arena_life29_stage1.bin",
+      "phase_source_bytes": 9216,
+      "phase_source_sha256": "23adbf5214a341eddb9dddb4ecdde88192ce6f5e6e5c56d180e07b840a55391f",
+      "phases": [
+        {
+          "id": 0,
+          "event": "conversation-a",
+          "offset_bytes": 0,
+          "bytes": 1536,
+          "sha256": "9231b9115353fcdf4f121334c472a56bdad8390f4b87f6a3a9283a400a802d63"
+        },
+        {
+          "id": 1,
+          "event": "conversation-b",
+          "offset_bytes": 1536,
+          "bytes": 1536,
+          "sha256": "937164865601ffada4886aec6df6ddeff96aae819ae6beabefb51244c28b99f4"
+        },
+        {
+          "id": 2,
+          "event": "impact-flinch",
+          "offset_bytes": 3072,
+          "bytes": 1536,
+          "sha256": "240c31d053e57a2dee7d43c4f07f4908e682d250aa4b895dd61cc24cc4da7102"
+        },
+        {
+          "id": 3,
+          "event": "impact-gasp",
+          "offset_bytes": 4608,
+          "bytes": 1536,
+          "sha256": "36f75fd7c282ce14599889cf5cf6729817bc54872b875933013552ea2494ec58"
+        },
+        {
+          "id": 4,
+          "event": "super-excitement",
+          "offset_bytes": 6144,
+          "bytes": 1536,
+          "sha256": "cf9581cb6f4ae2439ad0cdea0c24bebec4eefbce8f76e243995639eb593d4e67"
+        },
+        {
+          "id": 5,
+          "event": "ko-celebration",
+          "offset_bytes": 7680,
+          "bytes": 1536,
+          "sha256": "6e9d9b77a89aeaba6ed0d00fe75f09aaaee1e5a4a850c37e2583eec6bca12334"
+        }
+      ],
+      "outputs": {
+        "stage1_tiles.bin": {
+          "bytes": 28160,
+          "sha256": "f81a3dbf062eeecae60aae5562145eee3e0a41567af7b0624e12e306243ad32f"
+        },
+        "stage1_map.bin": {
+          "bytes": 4096,
+          "sha256": "948e2e6e5aa519016c5adf2ccbb2ec079dfe52ee39ec9e20a332d5bea7f6d038"
+        },
+        "arena_life29_stage1.bin": {
+          "bytes": 9216,
+          "sha256": "23adbf5214a341eddb9dddb4ecdde88192ce6f5e6e5c56d180e07b840a55391f"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "rectangles_world": [
+        [
+          32,
+          72,
+          16,
+          32
+        ],
+        [
+          104,
+          72,
+          16,
+          32
+        ],
+        [
+          176,
+          72,
+          16,
+          32
+        ],
+        [
+          248,
+          72,
+          16,
+          32
+        ],
+        [
+          56,
+          88,
+          16,
+          16
+        ],
+        [
+          16,
+          112,
+          16,
+          16
+        ],
+        [
+          208,
+          88,
+          16,
+          16
+        ],
+        [
+          256,
+          56,
+          16,
+          16
+        ]
+      ],
+      "viewport_origin": [
+        16,
+        0
+      ],
+      "animated_cells": [
+        {
+          "offset_words": 292,
+          "world_rect": [
+            32,
+            72,
+            8,
+            8
+          ],
+          "original_word": 7307,
+          "word": 6976,
+          "pool_tile": 0,
+          "palette_bank": 6,
+          "chunk": 0
+        },
+        {
+          "offset_words": 293,
+          "world_rect": [
+            40,
+            72,
+            8,
+            8
+          ],
+          "original_word": 7308,
+          "word": 6977,
+          "pool_tile": 1,
+          "palette_bank": 6,
+          "chunk": 0
+        },
+        {
+          "offset_words": 324,
+          "world_rect": [
+            32,
+            80,
+            8,
+            8
+          ],
+          "original_word": 6319,
+          "word": 6978,
+          "pool_tile": 2,
+          "palette_bank": 6,
+          "chunk": 0
+        },
+        {
+          "offset_words": 325,
+          "world_rect": [
+            40,
+            80,
+            8,
+            8
+          ],
+          "original_word": 5296,
+          "word": 6979,
+          "pool_tile": 3,
+          "palette_bank": 6,
+          "chunk": 0
+        },
+        {
+          "offset_words": 356,
+          "world_rect": [
+            32,
+            88,
+            8,
+            8
+          ],
+          "original_word": 4307,
+          "word": 6980,
+          "pool_tile": 4,
+          "palette_bank": 6,
+          "chunk": 0
+        },
+        {
+          "offset_words": 357,
+          "world_rect": [
+            40,
+            88,
+            8,
+            8
+          ],
+          "original_word": 4308,
+          "word": 6981,
+          "pool_tile": 5,
+          "palette_bank": 6,
+          "chunk": 0
+        },
+        {
+          "offset_words": 388,
+          "world_rect": [
+            32,
+            96,
+            8,
+            8
+          ],
+          "original_word": 6391,
+          "word": 6982,
+          "pool_tile": 6,
+          "palette_bank": 6,
+          "chunk": 0
+        },
+        {
+          "offset_words": 389,
+          "world_rect": [
+            40,
+            96,
+            8,
+            8
+          ],
+          "original_word": 6392,
+          "word": 6983,
+          "pool_tile": 7,
+          "palette_bank": 6,
+          "chunk": 0
+        },
+        {
+          "offset_words": 301,
+          "world_rect": [
+            104,
+            72,
+            8,
+            8
+          ],
+          "original_word": 3220,
+          "word": 5960,
+          "pool_tile": 8,
+          "palette_bank": 5,
+          "chunk": 1
+        },
+        {
+          "offset_words": 302,
+          "world_rect": [
+            112,
+            72,
+            8,
+            8
+          ],
+          "original_word": 3221,
+          "word": 5961,
+          "pool_tile": 9,
+          "palette_bank": 5,
+          "chunk": 1
+        },
+        {
+          "offset_words": 333,
+          "world_rect": [
+            104,
+            80,
+            8,
+            8
+          ],
+          "original_word": 4280,
+          "word": 5962,
+          "pool_tile": 10,
+          "palette_bank": 5,
+          "chunk": 1
+        },
+        {
+          "offset_words": 334,
+          "world_rect": [
+            112,
+            80,
+            8,
+            8
+          ],
+          "original_word": 4281,
+          "word": 5963,
+          "pool_tile": 11,
+          "palette_bank": 5,
+          "chunk": 1
+        },
+        {
+          "offset_words": 365,
+          "world_rect": [
+            104,
+            88,
+            8,
+            8
+          ],
+          "original_word": 4316,
+          "word": 5964,
+          "pool_tile": 12,
+          "palette_bank": 5,
+          "chunk": 1
+        },
+        {
+          "offset_words": 366,
+          "world_rect": [
+            112,
+            88,
+            8,
+            8
+          ],
+          "original_word": 4317,
+          "word": 5965,
+          "pool_tile": 13,
+          "palette_bank": 5,
+          "chunk": 1
+        },
+        {
+          "offset_words": 397,
+          "world_rect": [
+            104,
+            96,
+            8,
+            8
+          ],
+          "original_word": 5376,
+          "word": 5966,
+          "pool_tile": 14,
+          "palette_bank": 5,
+          "chunk": 1
+        },
+        {
+          "offset_words": 398,
+          "world_rect": [
+            112,
+            96,
+            8,
+            8
+          ],
+          "original_word": 5377,
+          "word": 5967,
+          "pool_tile": 15,
+          "palette_bank": 5,
+          "chunk": 1
+        },
+        {
+          "offset_words": 310,
+          "world_rect": [
+            176,
+            72,
+            8,
+            8
+          ],
+          "original_word": 6301,
+          "word": 5968,
+          "pool_tile": 16,
+          "palette_bank": 5,
+          "chunk": 2
+        },
+        {
+          "offset_words": 311,
+          "world_rect": [
+            184,
+            72,
+            8,
+            8
+          ],
+          "original_word": 3230,
+          "word": 5969,
+          "pool_tile": 17,
+          "palette_bank": 5,
+          "chunk": 2
+        },
+        {
+          "offset_words": 342,
+          "world_rect": [
+            176,
+            80,
+            8,
+            8
+          ],
+          "original_word": 5313,
+          "word": 5970,
+          "pool_tile": 18,
+          "palette_bank": 5,
+          "chunk": 2
+        },
+        {
+          "offset_words": 343,
+          "world_rect": [
+            184,
+            80,
+            8,
+            8
+          ],
+          "original_word": 5314,
+          "word": 5971,
+          "pool_tile": 19,
+          "palette_bank": 5,
+          "chunk": 2
+        },
+        {
+          "offset_words": 374,
+          "world_rect": [
+            176,
+            88,
+            8,
+            8
+          ],
+          "original_word": 5349,
+          "word": 5972,
+          "pool_tile": 20,
+          "palette_bank": 5,
+          "chunk": 2
+        },
+        {
+          "offset_words": 375,
+          "world_rect": [
+            184,
+            88,
+            8,
+            8
+          ],
+          "original_word": 5350,
+          "word": 5973,
+          "pool_tile": 21,
+          "palette_bank": 5,
+          "chunk": 2
+        },
+        {
+          "offset_words": 406,
+          "world_rect": [
+            176,
+            96,
+            8,
+            8
+          ],
+          "original_word": 6409,
+          "word": 5974,
+          "pool_tile": 22,
+          "palette_bank": 5,
+          "chunk": 2
+        },
+        {
+          "offset_words": 407,
+          "world_rect": [
+            184,
+            96,
+            8,
+            8
+          ],
+          "original_word": 5386,
+          "word": 5975,
+          "pool_tile": 23,
+          "palette_bank": 5,
+          "chunk": 2
+        },
+        {
+          "offset_words": 319,
+          "world_rect": [
+            248,
+            72,
+            8,
+            8
+          ],
+          "original_word": 7334,
+          "word": 5976,
+          "pool_tile": 24,
+          "palette_bank": 5,
+          "chunk": 3
+        },
+        {
+          "offset_words": 1312,
+          "world_rect": [
+            256,
+            72,
+            8,
+            8
+          ],
+          "original_word": 7335,
+          "word": 5977,
+          "pool_tile": 25,
+          "palette_bank": 5,
+          "chunk": 3
+        },
+        {
+          "offset_words": 351,
+          "world_rect": [
+            248,
+            80,
+            8,
+            8
+          ],
+          "original_word": 6346,
+          "word": 5978,
+          "pool_tile": 26,
+          "palette_bank": 5,
+          "chunk": 3
+        },
+        {
+          "offset_words": 1344,
+          "world_rect": [
+            256,
+            80,
+            8,
+            8
+          ],
+          "original_word": 5323,
+          "word": 5979,
+          "pool_tile": 27,
+          "palette_bank": 5,
+          "chunk": 3
+        },
+        {
+          "offset_words": 383,
+          "world_rect": [
+            248,
+            88,
+            8,
+            8
+          ],
+          "original_word": 4334,
+          "word": 5980,
+          "pool_tile": 28,
+          "palette_bank": 5,
+          "chunk": 3
+        },
+        {
+          "offset_words": 1376,
+          "world_rect": [
+            256,
+            88,
+            8,
+            8
+          ],
+          "original_word": 5359,
+          "word": 5981,
+          "pool_tile": 29,
+          "palette_bank": 5,
+          "chunk": 3
+        },
+        {
+          "offset_words": 415,
+          "world_rect": [
+            248,
+            96,
+            8,
+            8
+          ],
+          "original_word": 4370,
+          "word": 5982,
+          "pool_tile": 30,
+          "palette_bank": 5,
+          "chunk": 3
+        },
+        {
+          "offset_words": 1408,
+          "world_rect": [
+            256,
+            96,
+            8,
+            8
+          ],
+          "original_word": 4371,
+          "word": 5983,
+          "pool_tile": 31,
+          "palette_bank": 5,
+          "chunk": 3
+        },
+        {
+          "offset_words": 359,
+          "world_rect": [
+            56,
+            88,
+            8,
+            8
+          ],
+          "original_word": 4310,
+          "word": 5984,
+          "pool_tile": 32,
+          "palette_bank": 5,
+          "chunk": 4
+        },
+        {
+          "offset_words": 360,
+          "world_rect": [
+            64,
+            88,
+            8,
+            8
+          ],
+          "original_word": 4311,
+          "word": 5985,
+          "pool_tile": 33,
+          "palette_bank": 5,
+          "chunk": 4
+        },
+        {
+          "offset_words": 391,
+          "world_rect": [
+            56,
+            96,
+            8,
+            8
+          ],
+          "original_word": 4346,
+          "word": 5986,
+          "pool_tile": 34,
+          "palette_bank": 5,
+          "chunk": 4
+        },
+        {
+          "offset_words": 392,
+          "world_rect": [
+            64,
+            96,
+            8,
+            8
+          ],
+          "original_word": 5371,
+          "word": 5987,
+          "pool_tile": 35,
+          "palette_bank": 5,
+          "chunk": 4
+        },
+        {
+          "offset_words": 450,
+          "world_rect": [
+            16,
+            112,
+            8,
+            8
+          ],
+          "original_word": 6461,
+          "word": 7012,
+          "pool_tile": 36,
+          "palette_bank": 6,
+          "chunk": 4
+        },
+        {
+          "offset_words": 451,
+          "world_rect": [
+            24,
+            112,
+            8,
+            8
+          ],
+          "original_word": 2366,
+          "word": 7013,
+          "pool_tile": 37,
+          "palette_bank": 6,
+          "chunk": 4
+        },
+        {
+          "offset_words": 482,
+          "world_rect": [
+            16,
+            120,
+            8,
+            8
+          ],
+          "original_word": 5473,
+          "word": 7014,
+          "pool_tile": 38,
+          "palette_bank": 6,
+          "chunk": 4
+        },
+        {
+          "offset_words": 483,
+          "world_rect": [
+            24,
+            120,
+            8,
+            8
+          ],
+          "original_word": 5474,
+          "word": 7015,
+          "pool_tile": 39,
+          "palette_bank": 6,
+          "chunk": 4
+        },
+        {
+          "offset_words": 378,
+          "world_rect": [
+            208,
+            88,
+            8,
+            8
+          ],
+          "original_word": 4329,
+          "word": 8040,
+          "pool_tile": 40,
+          "palette_bank": 7,
+          "chunk": 5
+        },
+        {
+          "offset_words": 379,
+          "world_rect": [
+            216,
+            88,
+            8,
+            8
+          ],
+          "original_word": 6378,
+          "word": 8041,
+          "pool_tile": 41,
+          "palette_bank": 7,
+          "chunk": 5
+        },
+        {
+          "offset_words": 410,
+          "world_rect": [
+            208,
+            96,
+            8,
+            8
+          ],
+          "original_word": 4365,
+          "word": 8042,
+          "pool_tile": 42,
+          "palette_bank": 7,
+          "chunk": 5
+        },
+        {
+          "offset_words": 411,
+          "world_rect": [
+            216,
+            96,
+            8,
+            8
+          ],
+          "original_word": 7438,
+          "word": 8043,
+          "pool_tile": 43,
+          "palette_bank": 7,
+          "chunk": 5
+        },
+        {
+          "offset_words": 1248,
+          "world_rect": [
+            256,
+            56,
+            8,
+            8
+          ],
+          "original_word": 7265,
+          "word": 7020,
+          "pool_tile": 44,
+          "palette_bank": 6,
+          "chunk": 5
+        },
+        {
+          "offset_words": 1249,
+          "world_rect": [
+            264,
+            56,
+            8,
+            8
+          ],
+          "original_word": 3170,
+          "word": 7021,
+          "pool_tile": 45,
+          "palette_bank": 6,
+          "chunk": 5
+        },
+        {
+          "offset_words": 1280,
+          "world_rect": [
+            256,
+            64,
+            8,
+            8
+          ],
+          "original_word": 7239,
+          "word": 7022,
+          "pool_tile": 46,
+          "palette_bank": 6,
+          "chunk": 5
+        },
+        {
+          "offset_words": 1281,
+          "world_rect": [
+            264,
+            64,
+            8,
+            8
+          ],
+          "original_word": 3204,
+          "word": 7023,
+          "pool_tile": 47,
+          "palette_bank": 6,
+          "chunk": 5
+        }
+      ],
+      "original_tiles_bytes": 26048,
+      "original_tiles_sha256": "453b8997f94d05b6fdd2976d3fdca8f8e753750bd2146e5d911f7aa4038d6a34",
+      "original_map_sha256": "04238b26a86dff86116fa5c81f1a2528b32f064fb25639e9e3ca6139b9b4a5ae",
+      "palette_sha256": "979a96e8194eb3e8a2c87540b8d4f1b7037928fa52cb2c7364090d8f25f6108c",
+      "palette_cgram_colors": [
+        32,
+        127
+      ],
+      "floor_seam_y": 184,
+      "phase_source": "arena_life29_stage2.bin",
+      "phase_source_bytes": 9216,
+      "phase_source_sha256": "5c735f9bcb198860feb7d25862213e35f1963b826bf54aeab486f1fc368cbcf5",
+      "phases": [
+        {
+          "id": 0,
+          "event": "conversation-a",
+          "offset_bytes": 0,
+          "bytes": 1536,
+          "sha256": "eee3d3b2d412fc2f7c086058400d7781cff40d0bb244ee9a8a24426f936499a8"
+        },
+        {
+          "id": 1,
+          "event": "conversation-b",
+          "offset_bytes": 1536,
+          "bytes": 1536,
+          "sha256": "b28e0a4a311dd041b41d4f527d2f254ec80a1afcfc138569f06dfd5332f8657d"
+        },
+        {
+          "id": 2,
+          "event": "impact-flinch",
+          "offset_bytes": 3072,
+          "bytes": 1536,
+          "sha256": "2c64f144def3c9b7b61b8cc8fe78809a0c48eb3351859ec137d9f4bdc66fe68e"
+        },
+        {
+          "id": 3,
+          "event": "impact-gasp",
+          "offset_bytes": 4608,
+          "bytes": 1536,
+          "sha256": "cc8e4f3bef7c895a18de930cbffc60a59011443012f88136a0b6d412e65d1a5c"
+        },
+        {
+          "id": 4,
+          "event": "super-excitement",
+          "offset_bytes": 6144,
+          "bytes": 1536,
+          "sha256": "0f981f2e1c62e004c96899bd97d601ea56754a2354833f831ab062c522d095d2"
+        },
+        {
+          "id": 5,
+          "event": "ko-celebration",
+          "offset_bytes": 7680,
+          "bytes": 1536,
+          "sha256": "a30a1279165bb39c41571d2fcb7da6148aad842f04f8e2149626a7011b19b044"
+        }
+      ],
+      "outputs": {
+        "stage2_tiles.bin": {
+          "bytes": 28160,
+          "sha256": "2d587ac6e166e1304a67bd9db53e6d8585f9cb6d6a272ee50501e1f0743958aa"
+        },
+        "stage2_map.bin": {
+          "bytes": 4096,
+          "sha256": "deea0bad2d220c4122de24f15e1c907def92ea1c89b2d9d43701faf929666107"
+        },
+        "arena_life29_stage2.bin": {
+          "bytes": 9216,
+          "sha256": "5c735f9bcb198860feb7d25862213e35f1963b826bf54aeab486f1fc368cbcf5"
+        }
+      }
+    }
+  ]
+}

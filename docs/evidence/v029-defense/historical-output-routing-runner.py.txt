@@ -1,0 +1,126 @@
+"""Current defense-on/off equivalence only; historical failed proof is retained."""
+import argparse
+import hashlib
+import importlib.util
+import json
+from pathlib import Path
+import re
+import sys
+import time
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--workspace', type=Path, required=True)
+parser.add_argument('--candidate-root', type=Path, required=True)
+parser.add_argument('--prefix-report', type=Path, required=True)
+parser.add_argument('--report', type=Path, required=True)
+a = parser.parse_args()
+workspace, candidate = a.workspace.resolve(), a.candidate_root.resolve()
+reference_rom = workspace / 'dist/abaqus-after-hours.sfc'
+current_rom = candidate / 'dist/abaqus-after-hours.sfc'
+sys.path.insert(0, str(workspace / 'tools'))
+spec = importlib.util.spec_from_file_location('defense_equivalence_fixture', workspace / 'tools/test_defense29.py')
+h = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(h)
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+require = h.require
+prefix = json.loads(a.prefix_report.read_bytes())
+require(prefix['status'] == 'failed' and prefix['rom_sha256'] == sha(current_rom), 'prefix belongs to unchanged current ROM')
+require([len(prefix[k]) for k in ('cases', 'cpu_cases', 'ko_cases')] == [32, 16, 32], 'retain full current functional prefix')
+require(sha(current_rom) == '7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0', 'current candidate freeze identity')
+require(workspace != candidate and not workspace.is_relative_to(candidate / 'src'), 'independent counterfactual workspace')
+a.report = a.report.resolve()
+require(a.report.is_relative_to(candidate / 'build/v029'), 'supplement remains ignored; original failed report preserved')
+h.OUT = a.report.parent / (a.report.stem + '-streams')
+h.OUT.mkdir(parents=True, exist_ok=True)
+h.SYMS = h.symbols(candidate / 'dist/abaqus-after-hours.sym')
+require(h.SYMS == h.symbols(workspace / 'dist/abaqus-after-hours.sym') or all(
+    address == h.symbols(workspace / 'dist/abaqus-after-hours.sym').get(name)
+    for name, address in h.SYMS.items() if name in ('fighters', 'waves', 'randomseed', 'v29DefenseState')),
+    'host operands exist at matching reference addresses')
+
+def full_symbols(path):
+    return {name: int(address, 16) for address, name in re.findall(r'^([0-9A-Fa-f]{8}) (\S+)$', path.read_text(), re.M)}
+
+ram = lambda address: address < 0x2000 or 0x7e0000 <= address < 0x800000
+old, new = [full_symbols(base / 'dist/abaqus-after-hours.sym') for base in (candidate, workspace)]
+require({n: v for n, v in old.items() if ram(v)} == {n: v for n, v in new.items() if ram(v)}, 'complete RAM and reservation ABI exact')
+for name, start in new.items():
+    if not name.startswith('SECTIONSTART_') or start < 0x800000 or start >> 16 in (0x7e, 0x7f):
+        continue
+    end = new.get(name.replace('SECTIONSTART_', 'SECTIONEND_', 1))
+    if end is not None:
+        require(start >> 16 == (end-1 if end > start else end) >> 16 and
+                (start & 65535) >= 0x8000 and 0 <= end-start <= 32768,
+                'reference section remains within one LoROM bank', [name, start, end])
+assets = {}
+for base in (candidate, workspace):
+    rows = {p.name: sha(p) for p in (base/'assets/generated').iterdir() if p.is_file()}
+    require(len(rows) == 238 and 'soundbank.h' in rows, 'reference/current 237 outputs and separate header complete')
+    assets[str(base)] = rows
+require(assets[str(candidate)] == assets[str(workspace)], 'all current assets exact including new audio and arenas')
+for name in ('src/audio29_native.h', 'src/knockdown.h', 'src/expansion29.h', 'src/expansion29_state.h'):
+    require(sha(candidate/name) == sha(workspace/name), 'current audio/input/knockdown/reservations remain exact', name)
+changed_src = [p.name for p in (candidate/'src').iterdir() if p.is_file() and sha(p) != sha(workspace/'src'/p.name)]
+require(set(changed_src) == {'game.c', 'cpu_personality.h'}, 'only approved defense hook source changes')
+for base in (candidate, workspace):
+    raw = (base/'dist/abaqus-after-hours.sfc').read_bytes()
+    manifest = json.loads((base/'dist/manifest.json').read_bytes())
+    require(len(raw) == 4194304 and raw[0x7fd5] == 0x30 and manifest['sha256'] == hashlib.sha256(raw).hexdigest()
+            and int.from_bytes(raw[0x7fde:0x7fe0], 'little') == sum(raw) & 65535,
+            'reference/current FastROM checksum and manifest exact', str(base))
+
+stable = {}
+for base in (candidate, workspace):
+    for folder in ('src', 'tools', 'web', 'assets', 'dist'):
+        for path in (base/folder).rglob('*'):
+            if path.is_file() and '__pycache__' not in path.parts and path.suffix not in ('.pyc', '.pyo'):
+                stable[str(path)] = sha(path)
+    stable[str(base/'build/game.asm')] = sha(base/'build/game.asm')
+for name, digest in prefix['dependencies_sha256'].items():
+    require(sha(candidate/name) == digest, 'all pinned dependencies retained', name)
+    stable[str(candidate/name)] = digest
+stable[str(a.prefix_report.resolve())] = sha(a.prefix_report)
+stable[str(Path(__file__).resolve())] = sha(Path(__file__))
+report = {'status': 'failed', 'scope': 'current-six-feature defense-disabled counterfactual only',
+          'historical_baseline_equivalence_passed': False, 'full_functional_prefix_rerun': False,
+          'prefix_report': str(a.prefix_report), 'prefix_report_sha256': sha(a.prefix_report),
+          'candidate_rom_sha256': sha(current_rom), 'reference_rom_sha256': sha(reference_rom),
+          'harness_sha256': sha(workspace/'tools/test_defense29.py'), 'runner_sha256': sha(Path(__file__)),
+          'command': [sys.executable, *sys.argv], 'host_contract': h.host_contract(),
+          'checks': h.CHECKS, 'native_health': h.HEALTH, 'ordinary': [], 'throws': [],
+          'frozen_inputs_sha256': stable, 'generated_sha256': assets}
+started = time.monotonic()
+try:
+    for fighter in range(12):
+        for port in (0, 1):
+            before, old = h.unaffected(fighter, port, 'defense-disabled-reference', rom=reference_rom)
+            after, new = h.unaffected(fighter, port, 'current-candidate', rom=current_rom)
+            difference = next((i for i, (x, y) in enumerate(zip(before, after)) if x != y), None)
+            require(before == after, 'ordinary movement jump and four normals preserve every unmasked live native state byte',
+                    {'fighter': fighter, 'port': port, 'first_difference': difference,
+                     'before': before[difference] if difference is not None else len(before),
+                     'after': after[difference] if difference is not None else len(after)})
+            report['ordinary'].append({'fighter': fighter, 'port': port, 'before': old, 'after': new,
+                                       'complete_unmasked_equality': True})
+            current = h.measure('snes9x', fighter, port, label='current-candidate-throw', rom=current_rom)
+            reference = h.measure('snes9x', fighter, port, label='defense-disabled-reference-throw', rom=reference_rom)
+            require(current['states'] == reference['states'],
+                    'unteched throw damage launch floor rise wake and invulnerability stay exact', [fighter, port])
+            report['throws'].append({'current': current, 'reference': reference})
+        print(json.dumps({'fighter': fighter, 'ordinary_and_throw_pairs': 'passed'}), flush=True)
+    require(len(report['ordinary']) == len(report['throws']) == 24, 'all24 ordinary and24 throw pairs required')
+    require(all(sha(Path(name)) == digest for name, digest in stable.items()), 'all counterfactual and current inputs stable')
+    report['frozen_input_guard'] = 'passed'
+    report['status'] = 'passed'
+except Exception as error:
+    report['error'] = repr(error)
+    raise
+finally:
+    report['elapsed_seconds'] = round(time.monotonic()-started, 3)
+    report['check_executions'] = sum(row['executions'] for row in h.CHECKS.values())
+    report['postrun_input_drift'] = [name for name, digest in stable.items() if sha(Path(name)) != digest]
+    a.report.parent.mkdir(parents=True, exist_ok=True)
+    temp = a.report.with_suffix(a.report.suffix+'.tmp')
+    temp.write_bytes((json.dumps(report, indent=2)+'\n').encode())
+    temp.replace(a.report)
+    print(json.dumps({'status': report['status'], 'checks': report['check_executions']}), flush=True)
