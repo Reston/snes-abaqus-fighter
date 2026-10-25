@@ -160,6 +160,7 @@ void releaseHeldVictim(u8 owner);
 void traceProfiles(void);
 
 #include "stage_depth.h"
+void arenaLife29Load(u8 which);
 
 const char arenaNames[3][12] = {"LAS CONDES","EL CASTILLO","LA OFICINA"};
 /* Menu-only palette zero. Portrait palette one and combat UI stay exact. */
@@ -291,7 +292,7 @@ void music(u8 index) {
     audioSceneLoaded();spcPlay(0);musicIndex=index;
 }
 void commonScreen(void) {
-    stageDepthReset();
+    stageDepthReset();arenaLife29Load(255);
     if(mode==2)trainingNewMatch();
     pausePage=0;guideBuild=0;guideDirty=0;trainingDummy=0;pauseHudPending=0;
     portraitDirty=0;
@@ -321,7 +322,7 @@ void loadBackground(u8 which) {
         if(which==0)ambientData=&stage0_ambient;
         else if(which==1)ambientData=&stage1_ambient;
         else ambientData=&stage2_ambient;
-        stageDepthLoad(which);
+        stageDepthLoad(which);arenaLife29Load(which);
     }
 }
 void finishScreen(void) { dmaCopyVram((u8 *)ui,0x5800,2048);fullDirty=0;footerDirty=0;setScreenOn(); }
@@ -1446,8 +1447,12 @@ void traceProfiles(void) {
     TRACE[52]=c0->specialReach;TRACE[53]=c1->specialReach;
     TRACE[54]=c0->throwRange;TRACE[55]=c1->throwRange;
 }
+#include "arena_life29.h"
+
 int main(void) {
     u8 sx,actorTransferred,interfaceTransferred,ambientReady;
+    u8 *arenaLifeUploadSource;
+    u16 arenaLifeUploadDestination;
     u16 scroll;
     randomseed=0xABA;frame=0;menu=0;mode=0;difficulty=1;selected=0;selected2=1;arena=0;
     combatProfiles[0]=&characterProfiles[0];combatProfiles[1]=&characterProfiles[0];
@@ -1471,9 +1476,13 @@ int main(void) {
             queueMenuPreview();
         }
         ambientReady=0;
-        if(stageDepthAmbientReady()) {
-            ambientUploadSource=ambientData+((u16)ambientWanted<<8);
-            ambientReady=1;
+        arenaLife29Tick();
+        if(v29ArenaState[12] && !actorUploadDirty) {
+            if(!fullDirty && !hudDirty && !bannerDirty && !footerDirty && !guideDirty) {
+                arenaLifeUploadSource=arenaLife29Source();
+                arenaLifeUploadDestination=ARENA_LIFE29_VRAM+((u16)v29ArenaState[4]<<7);
+                ambientReady=1;
+            }
         }
         traceActorsFast();
         audioPresentationTick();
@@ -1505,10 +1514,8 @@ int main(void) {
             }
         }
         if(ambientReady && !actorTransferred && !interfaceTransferred) {
-            dmaCopyVram(ambientUploadSource,AMBIENT_VRAM,AMBIENT_BYTES);
-            ambientPhase=ambientWanted;ambientWanted=255;ambientAge=0;
-            /* Publish completed transfer ownership with the actual VRAM. */
-            TRACE[115]=ambientPhase;TRACE[117]=255;TRACE[118]=0;
+            dmaCopyVram(arenaLifeUploadSource,arenaLifeUploadDestination,ARENA_LIFE29_BYTES);
+            arenaLife29Completed();
         }
         publishImpactPriority();
         scroll=0;
