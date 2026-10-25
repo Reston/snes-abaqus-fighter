@@ -18,12 +18,22 @@
 #define ARENA_LIFE29_VRAM 0x3400
 #define ARENA_LIFE29_BYTES 256
 
+void arenaLife29Publish(void) {
+    /* traceActorsFast retains its historical assembly stores. C explicitly
+     * owns these four slots after that call, including frozen/idle samples.
+     * Publish again only after a DMA has actually advanced completion state. */
+    TRACE[115]=v29ArenaState[3];TRACE[116]=v29ArenaState[1];
+    if(v29ArenaState[4]<6) {
+        TRACE[117]=v29ArenaState[5];TRACE[118]=v29ArenaState[4];
+    } else {TRACE[117]=255;TRACE[118]=0;}
+}
+
 void arenaLife29Load(u8 which) {
     u8 i;
     for(i=0;i<48;i++)v29ArenaState[i]=0;
-    TRACE[115]=0;TRACE[116]=0;TRACE[117]=255;TRACE[118]=0;
     v29ArenaState[4]=6;
     if(which<3)v29ArenaState[0]=which+1;
+    arenaLife29Publish();
 }
 
 void arenaLife29Event(u8 kind,u8 life) {
@@ -63,8 +73,7 @@ void arenaLife29Tick(void) {
         if(v29ArenaState[13]!=roundNumber) {
             v29ArenaState[13]=roundNumber;
             if(v29ArenaState[4]<6)v29ArenaState[3]=255;
-            v29ArenaState[4]=6;TRACE[115]=v29ArenaState[3];
-            TRACE[117]=255;TRACE[118]=0;
+            v29ArenaState[4]=6;
         }
         return;
     }
@@ -94,9 +103,6 @@ void arenaLife29Tick(void) {
         v29ArenaState[5]=v29ArenaState[2];v29ArenaState[4]=0;
     }
     if(v29ArenaState[4]<6)v29ArenaState[12]=1;
-    TRACE[116]=v29ArenaState[1];
-    TRACE[117]=v29ArenaState[4]<6?v29ArenaState[5]:255;
-    TRACE[118]=v29ArenaState[4]<6?v29ArenaState[4]:0;
 }
 
 u8 *arenaLife29Source(void) {
@@ -113,10 +119,8 @@ void arenaLife29Completed(void) {
     v29ArenaState[19]=v29ArenaState[4];v29ArenaState[20]=v29ArenaState[5];
     v29ArenaState[14]++;
     v29ArenaState[4]++;
-    if(v29ArenaState[4]==6) {
-        v29ArenaState[3]=v29ArenaState[5];TRACE[115]=v29ArenaState[3];
-        TRACE[117]=255;TRACE[118]=0;
-    } else TRACE[118]=v29ArenaState[4];
+    if(v29ArenaState[4]==6)v29ArenaState[3]=v29ArenaState[5];
+    arenaLife29Publish();
 }
 
 #endif

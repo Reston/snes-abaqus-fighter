@@ -212,6 +212,7 @@ def install(root=ROOT, out=None):
               'palette_transfers':0,'obj_entries':0,'hdma_mask':0,
               'scheduling':'one 256-byte chunk only on a blank without actor or UI DMA; pause/hitstop/intro/motion-off freeze; KO round-end may celebrate',
               'trace':{'completed_phase':115,'live_clock':116,'in_flight_phase_or_255':117,'completed_chunks_or_0':118},
+              'trace_publication':'arenaLife29Publish after traceActorsFast, after completed DMA, and on scene load; no assembly changes',
               'state_bytes':{'stage_plus_one':0,'live_clock':1,'desired_phase':2,'completed_phase':3,'next_chunk_or_6':4,
                              'in_flight_phase':5,'observed_super_mask':6,'reaction_remaining':7,'observed_hp':[8,9],
                              'ko_latch':10,'reaction_kind':11,'may_upload':12,'transfer_serial':14,'last_event':15,

@@ -109,7 +109,10 @@ class Rig:
             compat.ROM_PATH=Path(rom or ROOT/'dist/abaqus-after-hours.sfc');self.e=AccuracyMenu()
         else:self.e=Emulator(rom)
         self.record=[];self.frames=[];self.health={'callbacks':0,'ambient_uploads':0,'actor_uploads':0,
-                         'peak_spc':0,'peak_obj_sprites':0,'peak_obj_tiles':0,'frozen_hitstop_callbacks':0,'completed_phases':[]}
+                         'peak_spc':0,'peak_obj_sprites':0,'peak_obj_tiles':0,'frozen_hitstop_callbacks':0,'completed_phases':[],
+                         'trace':{key:0 for key in ('callbacks','idle','partial_pool','queued_zero','pause','intro','intro_abort','mixed_pool','ko','no_upload','completed_upload','last_chunk')}}
+        self.pool_phases=[0]*6;self.pool_stage=stage+1
+        self.last_trace_life=None;self.last_trace_pool=None
         self.meta=json.loads((ROOT/'assets/generated/arena-life29.json').read_bytes())
         self.sources=[(ROOT/'assets/generated'/s['phase_source']).read_bytes() for s in self.meta['stages']]
         self.capture_dir=ROOT/'docs/screenshots/arena-life29'/core;self.capture_dir.mkdir(parents=True,exist_ok=True)
@@ -120,6 +123,31 @@ class Rig:
     def life(self):return self.raw('v29ArenaState',48)
     def vram(self):return C.string_at(self.e.core.retro_get_memory_data(3),65536)
     def trace(self):return C.string_at(self.e.ram+0x1ff00,246)
+    def verify_trace(self):
+        current=self.life();actual=list(struct.unpack('<4H',self.trace()[230:238]))
+        expected=[current[3],current[1],current[5] if current[4]<6 else 255,current[4] if current[4]<6 else 0]
+        require(actual==expected,'Every callback TRACE115..118 equals exact arena reservation state',
+                {'core':self.core,'stage':self.stage,'frame':self.state()['frame'],'trace':actual,'expected':expected,'state':list(current[:21])})
+        require(current[3] in (*range(6),255) and current[4]<=6 and current[5]<6,
+                'TRACE publication uses only legal phase/progress and explicit mixed marker',list(current[:21]))
+        counts=self.health['trace'];counts['callbacks']+=1
+        counts['idle']+=int(actual[2]==255)
+        counts['partial_pool']+=int(actual[2]!=255 and 0<actual[3]<6)
+        counts['queued_zero']+=int(actual[2]!=255 and actual[3]==0)
+        counts['pause']+=int(bool(self.read('paused')))
+        counts['intro']+=int(bool(self.read('intro')))
+        counts['mixed_pool']+=int(actual[0]==255)
+        counts['ko']+=int(bool(self.read('roundEnd')) and (not self.state()['hp1'] or not self.state()['hp2']))
+        pool=C.string_at(self.e.core.retro_get_memory_data(3)+0x6800,1536)
+        previous=self.last_trace_life
+        if current[3]==255 and previous is not None and previous[3]!=255:
+            require(previous[4]<6 and current[4]==6 and self.read('intro')>0 and current[13]!=previous[13],
+                    'Mixed TRACE marker is earned by aborting an actual partial pool at new-round intro',[list(previous[:21]),list(current[:21])])
+            require(pool==self.last_trace_pool and current[14]==previous[14],
+                    'Intro abort publishes mixed state without inventing a completed DMA')
+            counts['intro_abort']+=1
+        self.last_trace_life=current;self.last_trace_pool=pool
+        return actual
     def game(self):
         # No masking of trace words 0..113, full actors, waves or RNG. Include
         # all private super state and presentation/combat clocks explicitly.
@@ -137,6 +165,8 @@ class Rig:
             life=self.life();vram=self.vram();samples=self.e.audio_samples
             before_frozen=(self.read('hitstop') and not self.read('roundEnd')) or self.read('paused') or self.raw('stageDepthTable',10)[9] or self.read('intro')
         self.e.run(1,p1,p2);s=self.state()
+        actual_trace=None
+        if self.monitor and self.read('screen')==3 and s['screen']==3:actual_trace=self.verify_trace()
         if active and watch and self.monitor and self.read('screen')==3 and s['screen']==3:
             self.health['callbacks']+=1
             delta=[(self.read(n,2)-v)&65535 for n,v in zip(('frame','snes_vblank_count','lag_frame_counter'),counters)]
@@ -161,13 +191,26 @@ class Rig:
             require(changed<=1,'At most one 256-byte arena transfer per blank',changed)
             if changed:
                 self.health['ambient_uploads']+=1;chunk=current[19];phase=current[20]
+                self.health['trace']['completed_upload']+=1
+                self.health['trace']['last_chunk']+=int(chunk==5)
                 pool=now[0x6800:0x6e00];oldpool=vram[0x6800:0x6e00];a=chunk*256;b=a+256
                 source=self.sources[current[0]-1][phase*1536+a:phase*1536+b]
                 require(pool[a:b]==source and pool[:a]==oldpool[:a] and pool[b:]==oldpool[b:],
                         'Completed telemetry identifies exact actual 256-byte source/destination',list(current[:20]))
                 require(actors==0 and now[0xb000:0xb800]==vram[0xb000:0xb800],
                         'Arena DMA yields to actor and interface DMA')
-            else:require(now[0x6800:0x6e00]==vram[0x6800:0x6e00],'Pool cannot change without completed DMA telemetry')
+                self.pool_phases[chunk]=phase
+            else:
+                self.health['trace']['no_upload']+=1
+                require(now[0x6800:0x6e00]==vram[0x6800:0x6e00],'Pool cannot change without completed DMA telemetry')
+            require(current[0]==self.pool_stage,'Live arena keeps completed-chunk oracle ownership',current[0])
+            source=self.sources[current[0]-1]
+            expected_pool=b''.join(source[phase*1536+chunk*256:phase*1536+(chunk+1)*256] for chunk,phase in enumerate(self.pool_phases))
+            require(now[0x6800:0x6e00]==expected_pool,'Full pool matches independently retained completed-DMA history, including mixed intro abort')
+            if actual_trace[0]!=255:
+                trace_pool=b''.join(source[(actual_trace[2] if chunk<actual_trace[3] else actual_trace[0])*1536+chunk*256:
+                                          (actual_trace[2] if chunk<actual_trace[3] else actual_trace[0])*1536+(chunk+1)*256] for chunk in range(6))
+                require(now[0x6800:0x6e00]==trace_pool,'TRACE completed/pending/progress directly reconstruct every actual pool byte')
             # Stable frozen samples only; resume is allowed to start live work.
             after_frozen=(self.read('hitstop') and not self.read('roundEnd')) or self.read('paused') or self.raw('stageDepthTable',10)[9] or self.read('intro')
             if before_frozen and after_frozen:
@@ -249,6 +292,50 @@ class Rig:
         raise AssertionError(('Arena phase did not complete',wanted,list(self.life()),self.state()))
 
 
+def intro_abort_case(r):
+    """Earn P2's first win, freeze a partial KO phase, and let round 3 start.
+
+    Motion OFF keeps the partial pool intact while the real round-end clock
+    expires. The new-round intro must explicitly publish 255/clock/255/0;
+    the completed-DMA history continues to prove every mixed VRAM byte.
+    """
+    for attempt in range(18):
+        if not r.state()['hp1']:break
+        r.close_gap();r.run(3,p2=['x'])
+        for _ in range(80):
+            if not r.state()['hp1']:break
+            r.tick()
+    require(r.state()['hp1']==0 and r.state()['wins1']==r.state()['wins2']==1,
+            'Controller P2 KO earns a third-round intro without ending the match',r.state())
+    for _ in range(160):
+        life=r.life()
+        if life[5]==5 and 0<life[4]<6:break
+        r.tick()
+    else:raise AssertionError(('KO partial pool not reached for intro-abort fixture',list(r.life())))
+    r.run(3,['start']);r.run(10)
+    require(r.read('paused')==1 and 0<r.life()[4]<6,'P1 pauses an actual partially uploaded KO pool',list(r.life()[:21]))
+    r.pulse('select');r.pulse('r')
+    require(r.raw('stageDepthTable',10)[9]==1,'Controller motion-off retains the partial pool through round end')
+    before=list(struct.unpack('<4H',r.trace()[230:238]));pool=r.vram()[0x6800:0x6e00];serial=r.life()[14]
+    r.pulse('start')
+    for _ in range(220):
+        if r.read('intro'):break
+        r.tick()
+    require(r.read('intro')>0 and r.life()[3]==255 and r.life()[4]==6,'New-round intro aborts a real partial pool with explicit mixed marker',list(r.life()[:21]))
+    after=list(struct.unpack('<4H',r.trace()[230:238]))
+    require(after==[255,before[1],255,0] and pool==r.vram()[0x6800:0x6e00] and r.life()[14]==serial,
+            'Aborted intro TRACE remains exact without advancing clock or completed DMA',[before,after])
+    r.save('intro-abort')
+    while r.read('intro'):r.tick()
+    r.run(12)
+    require(list(struct.unpack('<4H',r.trace()[230:238]))==after,'No-upload motion-off samples retain exact mixed TRACE after intro')
+    r.pulse('start');r.pulse('select');r.pulse('r');r.pulse('start');r.run(100)
+    require(r.raw('stageDepthTable',10)[9]==0 and r.life()[3] in (0,1) and r.life()[11]==0,
+            'Motion-on resumes and converges a fresh complete phase after intro abort',list(r.life()[:21]))
+    return {'partial_trace':before,'aborted_trace':after,'mixed_pool_sha256':sha(pool),
+            'resumed_trace':list(struct.unpack('<4H',r.trace()[230:238])),'wins':[r.state()['wins1'],r.state()['wins2']]}
+
+
 def arena_case(r):
     r.boot();r.save('initial');r.phase(1);ambient=r.pixels();r.save('conversation')
     clip=[]
@@ -314,6 +401,7 @@ def arena_case(r):
     r.run(100);require(r.life()[3] in (0,1) and r.life()[11]==0,'Next round returns to quiet conversation')
     require(set(r.health['completed_phases'])==set(range(6)),'All six authored phases complete in actual native VRAM',r.health['completed_phases'])
     require(0<r.e.audio_peak<32767 and r.e.audio_energy>0,'Captured native PCM stays active and unclipped',r.e.audio_peak)
+    aborted=intro_abort_case(r) if r.stage==0 else None
     path=r.capture_dir/f'stage{r.stage}-life-events.gif'
     clip[0].save(path,save_all=True,append_images=clip[1:],duration=50,loop=0,disposal=2)
     r.report['media'].append({'path':path.relative_to(ROOT).as_posix(),'sha256':sha(path.read_bytes()),'scope':'actual PPU; samples every three callbacks; GIF timing approximate'})
@@ -330,7 +418,7 @@ def arena_case(r):
         r.tick(watch=False)
     require(r.read('arena')==target and r.life()[0]==target+1,'New arena handoff loads only its own animation state')
     require(r.vram()[0x6800:0x6e00]==r.sources[target][:1536],'New arena begins with exact phase-zero bytes')
-    return {'stage':r.stage,'fighter_mirror':r.fighter,'ambient_pixels':ambient,'health':r.health,'replay':replay}
+    return {'stage':r.stage,'fighter_mirror':r.fighter,'ambient_pixels':ambient,'health':r.health,'intro_abort':aborted,'replay':replay}
 
 
 def replay_base(case,syms,report):
@@ -371,6 +459,9 @@ def main():
             if args.core=='snes9x' and not args.skip_replay:report['baseline_replays'].append(replay_base(case,syms,report))
             case['input_callbacks']=len(case.pop('replay')['inputs']);report['cases'].append(case)
             print(json.dumps({'core':args.core,'stage':stage,'status':'passed','health':r.health}),flush=True)
+        coverage={key:sum(c['health']['trace'][key] for c in report['cases']) for key in report['cases'][0]['health']['trace']}
+        require(all(coverage[key]>0 for key in coverage),'Strict TRACE coverage includes partial/idle/pause/intro-abort/KO/no-upload and last-chunk samples',coverage)
+        report['trace_coverage']=coverage
         require(snapshot()==sources,'Producer/harness/dependency bytes frozen during proof')
         report['status']='passed'
     except BaseException as error:report['error']=repr(error);raise

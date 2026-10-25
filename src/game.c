@@ -1485,6 +1485,7 @@ int main(void) {
             }
         }
         traceActorsFast();
+        arenaLife29Publish();
         audioPresentationTick();
         processResidentAudioReady();WaitForVBlank();
         /* STAT77 retains the completed picture's OBJ overflow flags until
