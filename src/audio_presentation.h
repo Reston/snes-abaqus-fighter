@@ -1,8 +1,9 @@
 #ifndef AUDIO_PRESENTATION_H
 #define AUDIO_PRESENTATION_H
-/* Resident slots 0..3 retain the original cues. Keep this order synchronized
- * with tools/audio_assets.py. No gameplay structure or trace field changes. */
-#define AUDIO_EFFECT_COUNT 11
+/* Resident slots retain semantic identity; v29 replaces their original PCM
+ * and appends throw/landing at 11/12. tools/audio_assets.py owns the order. */
+#include "audio29.h"
+#define AUDIO_EFFECT_COUNT 13
 #define SOUND_LIGHT 0
 #define SOUND_STRONG 1
 #define SOUND_GUARD 2
@@ -12,11 +13,11 @@
  * transfers at most one ready record and never polls or streams. */
 extern u8 audioPriority,audioSpeechTicks,audioVolume,audioTargetVolume;
 extern u8 audioPreviousScreen,audioPreviousEnd,audioLastCue,audioPreviousIntro;
-const u8 audioVolpan[AUDIO_EFFECT_COUNT]={0x88,0xc8,0xa8,0x98,0xc8,0xb8,0xf8,0xf8,0xf8,0x98,0xa8};
 
 void audioCue(u8 slot,u8 priority) {
     /* Music preference never silences contact/announcer feedback. */
     if(slot>=AUDIO_EFFECT_COUNT)return;
+    if(!AUDIO29_CUE_LEVEL(slot))return;
     if(audioSpeechTicks && priority<4)return;
     if(pendingSound && priority<audioPriority)return;
     pendingSound=slot+1;audioPriority=priority;
@@ -44,17 +45,21 @@ void sound(u8 n) {
 
 void audioSceneLoaded(void) {
     pendingSound=0;audioPriority=0;audioSpeechTicks=0;
-    audioVolume=musicOn?48:0;audioTargetVolume=86;
+    audio29Init();audioVolume=AUDIO29_MUSIC_TARGET;audioTargetVolume=v29AudioState[12];
     audioPreviousScreen=255;audioPreviousEnd=0;audioLastCue=255;audioPreviousIntro=255;
     spcSetModuleVolume(audioVolume);
 }
 void audioAnnounce(u8 slot,u8 ticks) {
-    audioCue(slot,4);audioSpeechTicks=ticks;audioTargetVolume=42;
+    if(!AUDIO29_VOICE)return;
+    audioCue(slot,4);audioSpeechTicks=ticks;audioTargetVolume=v29AudioState[12]>>1;
 }
 
 void audioPresentationTick(void) {
     u8 target;
-    if(audioSpeechTicks)audioSpeechTicks--;
+    if(audioSpeechTicks) {
+        audioSpeechTicks--;
+        if(!audioSpeechTicks)audioTargetVolume=v29AudioState[12];
+    }
     if(screen==FIGHT) {
         if(!paused) {
             if(intro!=audioPreviousIntro) {
@@ -78,13 +83,16 @@ void audioPresentationTick(void) {
         if(screen!=audioPreviousScreen && screen==RESULT)audioCue(10,4);
     }
     audioPreviousScreen=screen;
-    if(!audioSpeechTicks)audioTargetVolume=86;
     target=musicOn?audioTargetVolume:0;
     /* Cue and envelope writes are mutually exclusive: no per-frame producer
      * burst, and ordinary combat performs no extra SPC command work. */
     if(pendingSound) {
         audioLastCue=pendingSound-1;
-        spcEffect(2,audioLastCue,audioVolpan[audioLastCue]);
+        if(AUDIO29_CUE_LEVEL(audioLastCue)) {
+            v29AudioState[7]=audio29Volpan(audioLastCue);v29AudioState[8]=audioLastCue;
+            spcEffect(2,audioLastCue,v29AudioState[7]);
+            v29AudioState[9]=1;v29AudioState[10]++;
+        }
         pendingSound=0;audioPriority=0;
     } else if((frame&3)==0 && audioVolume!=target) {
         if(audioVolume<target) {
@@ -93,6 +101,7 @@ void audioPresentationTick(void) {
             if(audioVolume-target<16)audioVolume=target;else audioVolume-=16;
         }
         spcSetModuleVolume(audioVolume);
+        v29AudioState[9]=2;v29AudioState[10]++;
     }
 }
 #endif

@@ -1225,12 +1225,19 @@ void fightTick(void) {
         if(!(pauseKeys&KEY_START)) {
             if(pauseKeys&KEY_B){closePauseGuide();showSelect();return;}
             if(pauseKeys&KEY_A){paused=0;closePauseGuide();clearBanner();if(arcadeStoryTicks)arcadeStoryDraw();}
+            else if(pauseKeys&KEY_Y) {audio29Open();sound(0);}
             else if(pauseKeys&KEY_SELECT) {
+                if(pausePage==AUDIO29_PAGE) {
+                    if(v29AudioState[11])openPauseGuide(v29AudioState[11]);
+                    else {closePauseGuide();drawPauseCard();}
+                }
+                else
                 if(pausePage==(mode==2?3:2)){closePauseGuide();drawPauseCard();}
                 else openPauseGuide(pausePage+1);
                 sound(0);
             } else if(pausePage) {
-                if(pauseDirections&(KEY_LEFT|KEY_RIGHT)) {
+                if(pausePage==AUDIO29_PAGE)audio29Keys(pauseKeys,pauseDirections);
+                else if(pauseDirections&(KEY_LEFT|KEY_RIGHT)) {
                     if(mode==2) {
                         if(pauseDirections&KEY_RIGHT)openPauseGuide(pausePage==3?1:pausePage+1);
                         else openPauseGuide(pausePage==1?3:pausePage-1);
@@ -1253,12 +1260,12 @@ void fightTick(void) {
                     } else if(pauseDirections&KEY_DOWN) {
                         trainingChooseChallenge();openPauseGuide(3);sound(0);
                     } else if((pauseKeys&KEY_L) && !((pad0|pad1)&KEY_R)) {
-                        musicOn=!musicOn;openPauseGuide(pausePage);sound(0);
+                        audio29ToggleMusic();openPauseGuide(pausePage);sound(0);
                     } else if((pauseKeys&KEY_R) && !((pad0|pad1)&KEY_L)) {
                         stageDepthTable[9]=!stageDepthTable[9];openPauseGuide(pausePage);sound(0);
                     }
                 } else if((pauseKeys&KEY_L) && !((pad0|pad1)&KEY_R)) {
-                    musicOn=!musicOn;openPauseGuide(pausePage);sound(0);
+                    audio29ToggleMusic();openPauseGuide(pausePage);sound(0);
                 } else if((pauseKeys&KEY_R) && !((pad0|pad1)&KEY_L)) {
                     stageDepthTable[9]=!stageDepthTable[9];openPauseGuide(pausePage);sound(0);
                 }
