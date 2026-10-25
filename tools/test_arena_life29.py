@@ -441,6 +441,7 @@ def main():
     parser.add_argument('--stages',default='0,1,2')
     parser.add_argument('--report',type=Path,required=True)
     parser.add_argument('--skip-replay',action='store_true')
+    parser.add_argument('--combined',action='store_true',help='Bind preservation to the parent six-topic policy')
     args=parser.parse_args();started=time.monotonic();sources=snapshot();syms=symbols((ROOT/'dist/abaqus-after-hours.sym').read_text())
     stages=list(map(int,args.stages.split(',')))
     require(stages==[0,1,2] or args.report.resolve().is_relative_to(ROOT/'build'),'Partial coverage stays diagnostic')
@@ -449,7 +450,12 @@ def main():
             'sources':sources,'memory_writes':False,'save_states':False,'audio_device':False,'media':[],'cases':[],'baseline_replays':[]}
     try:
         require(sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes())==manifest['sha256'],'Exact tested ROM identity')
-        report['preservation']=preservation(syms)
+        if args.combined:
+            from v029_contracts import validate
+            report['preservation']=validate(ROOT)
+            report['combined_rom_context']=True
+            report['combined_verification_claimed']=False
+        else:report['preservation']=preservation(syms)
         report['core_identity']=core_identity() if args.core=='snes9x' else compat.verify_manifest_and_pinned_core()
         report['metadata']=json.loads((ROOT/'assets/generated/arena-life29.json').read_bytes())
         for stage in stages:

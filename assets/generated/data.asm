@@ -855,3 +855,21 @@ stage2_floor_map:
 .incbin "assets/generated/stage2_floor_map.bin"
 stage2_floor_map_end:
 .ends
+
+.section "asset_arena_life29_stage0" superfree
+arena_life29_stage0:
+.incbin "assets/generated/arena_life29_stage0.bin"
+arena_life29_stage0_end:
+.ends
+
+.section "asset_arena_life29_stage1" superfree
+arena_life29_stage1:
+.incbin "assets/generated/arena_life29_stage1.bin"
+arena_life29_stage1_end:
+.ends
+
+.section "asset_arena_life29_stage2" superfree
+arena_life29_stage2:
+.incbin "assets/generated/arena_life29_stage2.bin"
+arena_life29_stage2_end:
+.ends
