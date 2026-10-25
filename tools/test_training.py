@@ -105,7 +105,8 @@ def harness_identity() -> str:
     """Hash the exact two Python sources that define this suite's host."""
 
     digest = hashlib.sha256()
-    for path in (ROOT / "tools/test_training.py", ROOT / "tools/emulator.py"):
+    for path in (ROOT / "tools/test_training.py", ROOT / "tools/emulator.py",
+                 ROOT / "tools/stage_test_contract.py", ROOT / "tools/arena_life29_checks.py"):
         if not path.is_file():
             raise AssertionError(("training harness source is missing", str(path)))
         digest.update(path.read_bytes())
@@ -1862,7 +1863,9 @@ def verify_start_select_priority(rom: Path) -> list[dict[str, object]]:
     from fightTick would avoid the reset but add an unwanted frozen tick.
     """
 
-    static_depth = depth_manifest(ROOT) is not None
+    stage_contract = depth_manifest(ROOT)
+    static_depth = stage_contract is not None
+    animated_depth = bool(stage_contract and stage_contract.get('arena_life29'))
     chords = (
         ("p1-start-select", ("start", "select"), ()),
         ("p2-start-p1-select", ("select",), ("start",)),
@@ -1923,15 +1926,19 @@ def verify_start_select_priority(rom: Path) -> list[dict[str, object]]:
                                       "START resume advances the existing hitstop on its first tick",
                                       {"case": label, "before": before, "resumed": current})
                             else:
-                                # Static scenery has no ambient clock. The
-                                # deliberately neutral P1's 96-tick breath
-                                # clock still proves that simulation resumes
-                                # on this callback rather than one tick late.
+                                # The deliberately neutral P1's 96-tick breath
+                                # clock proves simulation resumes on this very
+                                # callback. The new arena clock must resume too;
+                                # older static scenery retains its zero tuple.
                                 if static_depth:
+                                    ambient_progress = (
+                                        current["ambient_clock"] == ((before["ambient_clock"] + 1) & 255)
+                                        if animated_depth else
+                                        (current["ambient_phase"], current["ambient_clock"],
+                                         current["ambient_pending_phase"], current["ambient_pending_age"]) == (0, 0, 255, 0))
                                     progress = (current["anim_state1"] == before["anim_state1"] == 0 and
                                                 current["anim_tick1"] == (before["anim_tick1"] + 1) % 96 and
-                                                (current["ambient_phase"], current["ambient_clock"],
-                                                 current["ambient_pending_phase"], current["ambient_pending_age"]) == (0, 0, 255, 0))
+                                                ambient_progress)
                                 else:
                                     progress = current["ambient_clock"] == ((before["ambient_clock"] + 1) & 255)
                                 check(current["hitstop"] == 0 and
