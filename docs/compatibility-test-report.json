@@ -4,7 +4,7 @@
   "pinned_core": true,
   "source_url": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/bsnes2014_accuracy_libretro.dll.zip",
   "rom": {
-    "sha256": "7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0",
+    "sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
     "bytes": 4194304
   },
   "core": {
@@ -28,8 +28,8 @@
   },
   "checks": {
     "pinned_inputs": {
-      "rom_sha256": "7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0",
-      "manifest_sha256": "7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0",
+      "rom_sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
+      "manifest_sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
       "rom_bytes": 4194304,
       "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
       "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
@@ -40,7 +40,7 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "239d109ac7df93da03f1e83f90e5e4239ea440bb1467778a12248ac029389264",
+        "sha256_rgb": "e5c386591451f2a78cdfeb7484e9cfdabb9d50f7cb01b681d3a670ed246d35fa",
         "distinct_sampled_rgb": 308,
         "nonzero_bytes": 344064,
         "nonblank": true
@@ -53,9 +53,9 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "d5f17de1f3438d177294ea9b378e1c37ffb598fb9fabb0241504a1acd183e926",
+        "sha256_rgb": "e681bc0a028161ec83d5d74bcecd0f158b5a4db8cc343316ab60beb9c6421c35",
         "distinct_sampled_rgb": 608,
-        "nonzero_bytes": 312580,
+        "nonzero_bytes": 313332,
         "nonblank": true
       },
       "capture": "docs/screenshots/compatibility/select.png",
@@ -113,9 +113,9 @@
       "passed": true
     },
     "audio": {
-      "samples": 1050122,
-      "energy": 63925759768,
-      "peak": 4867,
+      "samples": 1050120,
+      "energy": 64140283797,
+      "peak": 4812,
       "passed": true
     },
     "stage_ambient_and_freeze": {
@@ -153,7 +153,7 @@
           "stills": [
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage0-center.png",
-              "sha256": "b59a193302b523172527ae4f29e7dfca72e875442cab5b52893fb23fe39022e0",
+              "sha256": "761ab4eff5855c1d84e8ce52ea2a653732f2fcc00b241efe155720a4d4884d12",
               "scope": "current native PPU"
             },
             {
@@ -163,16 +163,16 @@
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage0-left.png",
-              "sha256": "1d4b182bb85be8175de5d765f6c2512bab2d71fb6e45611d42bd3508f3b30ba8",
+              "sha256": "5a31431b91a7a53dedf32f982dff48c88c84cfa6411519c79d7e8772bc691eb3",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage0-right.png",
-              "sha256": "ab4a9b5173ee93278e6f4bbe916374367576622eb86dbf6b2004b990920b925a",
+              "sha256": "ed33e6306c1774f8ba7a19c6ee5d80c2e9acbfb9db35829716435342d9a730e5",
               "scope": "current native PPU"
             }
           ],
-          "pixel_samples_sha256": "4c76f840878460cf15153b26d66d5ae43e23379489b1250ba88f51c8962b9d16",
+          "pixel_samples_sha256": "252197df9785540fe76bc7967f8c607b6af5ba9f06fcf2bd96b1847883fa7581",
           "measured_frames": 1489,
           "cadence_deltas": [
             1
@@ -229,7 +229,7 @@
           "stills": [
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage1-center.png",
-              "sha256": "1be7dc0186f44cac3e8c9f3c568a73facec8c57ad615377657f3942f50e1a07b",
+              "sha256": "fb521ade36895157d59190c22c27bce860b65855d6323bfe2a08c22baab40545",
               "scope": "current native PPU"
             },
             {
@@ -239,12 +239,12 @@
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage1-left.png",
-              "sha256": "87bf02cc768091c556e5a9db0f0ddba151f6f78ba4b61482959d4222185485fc",
+              "sha256": "674925560baa93f3d388611483bfa7550166c0bd828d8b74809197497d1ad2b1",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage1-right.png",
-              "sha256": "36fd641a5ae0b09d60eeca8991301ec17b625199e11db4b5411ba7fbcca07b2d",
+              "sha256": "cded1eb3f2e871b995e46ea3fbb14811944229c75cbf4b86b3646d163d3b88aa",
               "scope": "current native PPU"
             }
           ],
@@ -305,7 +305,7 @@
           "stills": [
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage2-center.png",
-              "sha256": "48906a26230e5b861f6a939bb5ff3de2dc3250a5f69c052871da1ebd56bb2aef",
+              "sha256": "692c268ca4a560e04b2ce90b6137064b4b6e2b9b8387e66fa46229fb4b855152",
               "scope": "current native PPU"
             },
             {
@@ -315,12 +315,12 @@
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage2-left.png",
-              "sha256": "aa16baa1431b269950c9a77a3643265eab4370324e491ac5fcc9d151c97f2214",
+              "sha256": "ab8cc720a6fc82e20a767651cd5c9a9668353199838f92bccf37e0d4a0a97791",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage2-right.png",
-              "sha256": "363870c5672c19c76f86848c206eca4ce0cfebfff89924688850ed8935b3a96a",
+              "sha256": "9407d3d0e6f635fdb60dea94bf5024b11690e4fe8fc1198aa06c51bda1a8d9ac",
               "scope": "current native PPU"
             }
           ],
@@ -363,7 +363,7 @@
       "synchronized_initial_frames": 1,
       "synchronized_frames_in_600": 47,
       "stat77_values": [
-        1
+        17
       ],
       "stat77_overflow_bits": [
         0

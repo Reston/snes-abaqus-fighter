@@ -2,7 +2,7 @@
   "emulator": "Official Snes9x 1.63 x64 libretro core",
   "suite": "input-feel",
   "status": "passed",
-  "rom_sha256": "7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0",
+  "rom_sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
   "rom_bytes": 4194304,
   "checks": [
     {
@@ -10,11 +10,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.29.0",
+        "version": "0.30.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0",
-        "checksum": "F187",
+        "sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
+        "checksum": "B2BB",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -1710,7 +1710,7 @@
       "passed": true,
       "details": {
         "cue": "normal-contact",
-        "differing_bytes": 4734,
+        "differing_bytes": 4732,
         "compared_bytes": 8532
       }
     },
@@ -1777,7 +1777,7 @@
       "passed": true,
       "details": {
         "cue": "special",
-        "differing_bytes": 9098,
+        "differing_bytes": 9072,
         "compared_bytes": 17060
       }
     },
@@ -1790,7 +1790,7 @@
           "bytes": 17060,
           "samples": 8530,
           "nonzero": 8380,
-          "peak": 3669,
+          "peak": 3663,
           "clipped": false
         }
       }
@@ -1811,7 +1811,7 @@
           "bytes": 17060,
           "samples": 8530,
           "nonzero": 8380,
-          "peak": 3669,
+          "peak": 3663,
           "clipped": false
         }
       }
@@ -667371,7 +667371,7 @@
         "peak": 1722,
         "clipped": false
       },
-      "differing_bytes": 4734
+      "differing_bytes": 4732
     },
     "special": {
       "cue": "special",
@@ -667392,10 +667392,10 @@
         "bytes": 17060,
         "samples": 8530,
         "nonzero": 8380,
-        "peak": 3669,
+        "peak": 3663,
         "clipped": false
       },
-      "differing_bytes": 9098
+      "differing_bytes": 9072
     }
   },
   "status_bars": {
@@ -689571,5 +689571,5 @@
     }
   ],
   "passed": 2296,
-  "elapsed_seconds": 104.468
+  "elapsed_seconds": 145.297
 }

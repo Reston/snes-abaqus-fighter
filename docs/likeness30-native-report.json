@@ -1,0 +1,789 @@
+{
+  "status": "passed",
+  "rom_sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
+  "version": "0.30.0",
+  "emulated_memory_writes": false,
+  "save_states": false,
+  "cases": [
+    {
+      "core": "snes9x",
+      "Fernando_port": 1,
+      "fighters": [
+        6,
+        8
+      ],
+      "native_MADARIAGA_HUD": "passed",
+      "Fernando_OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          [
+            32,
+            34,
+            36,
+            38,
+            40,
+            42
+          ],
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74
+          ],
+          [
+            96,
+            98,
+            100,
+            102,
+            104,
+            106
+          ],
+          [
+            128,
+            130,
+            132,
+            134,
+            136,
+            138
+          ]
+        ],
+        "flip": 0
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          38,
+          132,
+          94,
+          199
+        ],
+        "observed": [
+          38,
+          132,
+          94,
+          199
+        ],
+        "changed_pixels": 2091,
+        "opaque_pixels": 2103
+      }
+    },
+    {
+      "core": "snes9x",
+      "Fernando_port": 2,
+      "fighters": [
+        8,
+        6
+      ],
+      "native_MADARIAGA_HUD": "passed",
+      "Fernando_OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            160,
+            162,
+            164,
+            166,
+            168,
+            170
+          ],
+          [
+            192,
+            194,
+            196,
+            198,
+            200,
+            202
+          ],
+          [
+            224,
+            226,
+            228,
+            230,
+            232,
+            234
+          ],
+          [
+            256,
+            258,
+            260,
+            262,
+            264,
+            266
+          ],
+          [
+            288,
+            290,
+            292,
+            294,
+            296,
+            298
+          ]
+        ],
+        "flip": 64
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          162,
+          132,
+          218,
+          199
+        ],
+        "observed": [
+          162,
+          132,
+          218,
+          199
+        ],
+        "changed_pixels": 2090,
+        "opaque_pixels": 2103
+      }
+    },
+    {
+      "core": "accuracy",
+      "Fernando_port": 1,
+      "fighters": [
+        6,
+        8
+      ],
+      "native_MADARIAGA_HUD": "passed",
+      "Fernando_OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          [
+            32,
+            34,
+            36,
+            38,
+            40,
+            42
+          ],
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74
+          ],
+          [
+            96,
+            98,
+            100,
+            102,
+            104,
+            106
+          ],
+          [
+            128,
+            130,
+            132,
+            134,
+            136,
+            138
+          ]
+        ],
+        "flip": 0
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          38,
+          132,
+          94,
+          199
+        ],
+        "observed": [
+          38,
+          132,
+          94,
+          199
+        ],
+        "changed_pixels": 2091,
+        "opaque_pixels": 2103
+      }
+    },
+    {
+      "core": "accuracy",
+      "Fernando_port": 2,
+      "fighters": [
+        8,
+        6
+      ],
+      "native_MADARIAGA_HUD": "passed",
+      "Fernando_OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            160,
+            162,
+            164,
+            166,
+            168,
+            170
+          ],
+          [
+            192,
+            194,
+            196,
+            198,
+            200,
+            202
+          ],
+          [
+            224,
+            226,
+            228,
+            230,
+            232,
+            234
+          ],
+          [
+            256,
+            258,
+            260,
+            262,
+            264,
+            266
+          ],
+          [
+            288,
+            290,
+            292,
+            294,
+            296,
+            298
+          ]
+        ],
+        "flip": 64
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          162,
+          132,
+          218,
+          199
+        ],
+        "observed": [
+          162,
+          132,
+          218,
+          199
+        ],
+        "changed_pixels": 2086,
+        "opaque_pixels": 2103
+      }
+    }
+  ],
+  "media": [
+    {
+      "path": "docs/screenshots/likeness-v030/native/snes9x-p1-fight.png",
+      "sha256": "51bb42cac8925c2cf8d07e19d648c556f30ffb1e3beb8e5a11f9bdf30f55acee"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/snes9x-p1-walk.png",
+      "sha256": "f4151d316ac6b5fbd8281d34afb214acbe43968aec695c914b0e675595e6f153"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/snes9x-p1-jump.png",
+      "sha256": "034daeeec889649a0d72f1552b93bbe65e624c365e7b851e19817061e80227a6"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/snes9x-p1-jab.png",
+      "sha256": "268613f002dfbd836d37efbe34f7f7b91e4f39105e3be60df1f2b6c27edbf24d"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/snes9x-p1-strong.png",
+      "sha256": "4823a39a358d06c00097ab2591b215a8a087ddee5e483bf4d9b89aca1636e51d"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/snes9x-p1-kick.png",
+      "sha256": "39012d0a580f383e3d71fa2a3763e3a6e3ce07a285f6438b4ff875b768bfb47c"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/snes9x-p1-heavy-kick.png",
+      "sha256": "84130bfac99cd2024579ada16b45511d524af8be4766bc316fee134ccca2cb38"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/snes9x-p1-uppercut.png",
+      "sha256": "1ad634ac47216acad79a0531490b49df39a1ac9280f32f8081bbfe94859d5501"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/snes9x-p2-fight.png",
+      "sha256": "f011960f68d453b14f38c3d6510972276c8dec5da97067dad255eff146ccfb42"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/snes9x-p2-walk.png",
+      "sha256": "208440243bd4efb48ee398bbdeec0136afe618d00383693d56745c40512533eb"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/snes9x-p2-jump.png",
+      "sha256": "93389fcecf22524664fedae86bd0e93e68ab7144f7ae802e1c5440cc7717fbc0"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/snes9x-p2-jab.png",
+      "sha256": "970302da68c4ba365618187f285828a1db0f6eab5a528826533c05eb6bd241b9"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/snes9x-p2-strong.png",
+      "sha256": "e529f4e8e1e5cefb9f878e3e975d27f35c43f2938f28491bfe70c7e2cbd0b37d"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/snes9x-p2-kick.png",
+      "sha256": "516efe8ed242129bb8c4b841152462ec2f2ce4bb8891874b7d13107589bb424a"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/snes9x-p2-heavy-kick.png",
+      "sha256": "e8f46933112f425de35f15ea53c586bd5955986124b871f244ef9796625ad8ce"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/snes9x-p2-uppercut.png",
+      "sha256": "312cb1bf9dc6181b9da48faa8267b4538273c92482ece829a97b45a895fa0bf5"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/accuracy-p1-fight.png",
+      "sha256": "1f2f360e6bacef0cfefa7c40258d12194f40a579192851f06b03a0f414b5d101"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/accuracy-p1-walk.png",
+      "sha256": "f590f1da1c5439475fba8955300e8a4fa12d47187c6d4f913314c220179fd104"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/accuracy-p1-jump.png",
+      "sha256": "ad5550af556a032fd2d69bd4f2c8bfb349f5e23f1f548dd98382882f67baec00"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/accuracy-p1-jab.png",
+      "sha256": "309184ade6a288cf022ab802325d3c4ac3843e2f3f3544ebb46e1c9d8670f6fe"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/accuracy-p1-strong.png",
+      "sha256": "edc550b1b068eac3f281cb9a817bcd2101e8e8b9e7f14c18ed9fa06e3ff1a58d"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/accuracy-p1-kick.png",
+      "sha256": "140f437014f34387b202d8f0ea5b5a0d6da3fc0210cc8109434d6108da1256a2"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/accuracy-p1-heavy-kick.png",
+      "sha256": "ea06ffcdfbbbb87e17a8a2f2b3d20b5e2e7847f4e12deb3443302c1c4ee10d2a"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/accuracy-p1-uppercut.png",
+      "sha256": "479e43c4046884389e1c28637228cf0ea4e4baff657dc183f1810063b04cc1e1"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/accuracy-p2-fight.png",
+      "sha256": "56209b9cca1d7b18fe75d76d34d51b2b27fd1240f4170bb75db09f3a1ce15873"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/accuracy-p2-walk.png",
+      "sha256": "4e2e8018cdef79214e9cc851edbe19c48911600dfdde750dc5f92a5930255200"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/accuracy-p2-jump.png",
+      "sha256": "dab447552e328a9c7595b73d11df92323ac0626472e84626ee5dc049591aed5b"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/accuracy-p2-jab.png",
+      "sha256": "27ae94220a31936dbf183c4330a8685912b2937f0b3e4ad59cb107cc3614f01b"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/accuracy-p2-strong.png",
+      "sha256": "921625bc652ecb1678f2ff34c98c8e4e450473be64e619969e386dea78aebbcf"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/accuracy-p2-kick.png",
+      "sha256": "ce4ecb1564aa1a1e227bb403c7e3dec6efb2879dc32011aab55bffd25b4d1858"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/accuracy-p2-heavy-kick.png",
+      "sha256": "cdcd4582cd43100db396650d584025ef493341c95bf68fe4a4e436857d6a672c"
+    },
+    {
+      "path": "docs/screenshots/likeness-v030/native/accuracy-p2-uppercut.png",
+      "sha256": "ce9e90db4117aa7ecdba0ea316c38454ce882d36d8abf882e48ce8d47e511759"
+    }
+  ],
+  "health": {
+    "snes9x": {
+      "callbacks": 1470,
+      "max_spc_backlog": 0,
+      "actor_page_changes": [
+        88,
+        88
+      ],
+      "failures": []
+    },
+    "accuracy": {
+      "callbacks": 1470,
+      "max_spc_backlog": 0,
+      "actor_page_changes": [
+        88,
+        88
+      ],
+      "failures": []
+    }
+  },
+  "source_commit": "c4cf41148f76e202d958e8f2e3e2f040505054c1",
+  "assertion_executions": 14700
+}

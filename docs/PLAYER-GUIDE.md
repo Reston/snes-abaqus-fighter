@@ -1,5 +1,8 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.29.0; identity: TECHNICALLY_VERIFIED_MERGED_FOR_PLAYTEST; rom-sha256: 7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0; source-freeze: 4c35ee89d6269662269481ffafff0166a905c775 -->
+<!-- candidate-version: 0.30.0; identity: TECHNICALLY_VERIFIED_LIKENESS_REVIEW_PENDING; rom-sha256: 9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e; source-freeze: 654e03249348ea89c8857561cedd70e8f60e51cf -->
+
+This branch adds the v0.30 Fernando likeness and Madariaga spelling update.
+[Visual review](FERNANDO-REVIEW-v3.html). The public player follows main.
 
 v0.29 adds throw escapes, office bonus rounds, random selection, automatic
 browser launch, new music and sound levels, and animated arena spectators.

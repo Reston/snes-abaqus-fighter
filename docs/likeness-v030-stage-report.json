@@ -1,0 +1,3180 @@
+{
+  "status": "passed",
+  "part": "stages",
+  "version": "0.30.0",
+  "rom_sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
+  "source_commit": "52e9f020804415f2c9694f8be40f689d695e01cc",
+  "diagnostic": false,
+  "selected_fighters": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "host_contract": {
+    "python": "3.12.10",
+    "pillow": "13.0.0",
+    "gui_opened": false,
+    "audio_device_opened": false,
+    "priority_class": 16384,
+    "logical_processors": [
+      6,
+      7
+    ]
+  },
+  "source_sha256": {
+    "Build.cmd": "48a4106122a4a843a718efeba307c255dab2929c11c48961fe34d41fdc1d6dae",
+    "Play.cmd": "e62783c0e60d5f0271d159d53427b7eb2cf9f4325206a4cf0a4b40ccd09876d0",
+    "src/animation_banks.h": "8250cf1816ae8c0de0da6a876b76e0a0b40c10a44e35f782794ca82e283414e9",
+    "src/animation_weight.h": "cdc8308b9a98c000823b7869a20a122e531d9843f7d1143ae09749b6983adf09",
+    "src/arcade_story.h": "f95e8d79e824cd3c6232c7d9e44bea44ebfcd6fa270c65cfb6cd713b6c0d98f5",
+    "src/arena_life29.h": "63c129b5c30ac2cbc1fadc97bbcf2aefb7f4e63894ecef35fec51f1ccc682b39",
+    "src/audio29.h": "4b26dbf067157044e4680695b6f43309e72dfdf481ff682a96c6411296cbb964",
+    "src/audio29_native.h": "30c4df18a7a12f8844045cae8cf298c23d764b6e228c2f62fee285a93c43fe52",
+    "src/audio29_ui.h": "9a27ffe6616ada858c4e32cefd5b81ad739d31a2d8d1f7ff39dd739a07e7f118",
+    "src/audio_presentation.h": "86ef067c796739eabfdb8381fd59883720b96c35472f12568be82e1657cc2d7a",
+    "src/audio_presentation_state.h": "4129b01189826de5cc9266f529eb57f1dcb57bb93febcade1f1dc3bf6e6c730e",
+    "src/bonus29.h": "8c86dcdf1520d87349ac31b0a84c3e9aa45312b44071122b06367d30625cae1e",
+    "src/characters.h": "95395761e9511fc28b60b839bad180fd01e7bddf0d4c39bc2c0d92950e25051f",
+    "src/contact_geometry.h": "237d6b05f0e161cf08008629576f46a131b87f7a6928ea6e8e90c74ef8f49c30",
+    "src/cpu_personality.h": "474bfc05d6ea33ac3e0b46ccf78848c78729d5650b61569c42bf592be477426f",
+    "src/defense29.h": "078917aabc08f18e6c34386f516192de7ee610c14bda312a09421af7afb19a90",
+    "src/expansion29.h": "5937b2f568a2df5f6796696b2d9da58b29460fa524e8ba5e818f9e21ed4b3a3b",
+    "src/expansion29_state.h": "43f05141910cd071f88b18de7c526d229cd4dae1b3d0803c9f75f96fba393ae0",
+    "src/fighter_personality.h": "3b62f537e10029265d1cb5483880c1461edb66b3eb0451bc0243bc4b97cf85d7",
+    "src/game.c": "592140fc02186c4890695d4d2e406874fc31269acab14a7d857caa044550dfd4",
+    "src/hardware.asm": "9b6dd260dca337e06b012e9b4fdafdc2c9103750ffcf5cf803d01e9092bab424",
+    "src/impact_presentation.h": "f40dd53fe3c21a026072e1ec362d93b4b8c023ad6cb1b3d1cfaed711c130aa55",
+    "src/knockdown.h": "e67a1184262631b37334bdcc97f6db2c28252860fbe82d649747dabc67fa9579",
+    "src/menu_portraits.h": "96a006a382dfc86e1807b32ac0eaaf652cb302558aea57496a20567d10713c9c",
+    "src/menu_preview.h": "57726013de7927621dac45bf7814d15c1157e53eee6405b1442b5c50dfa2f785",
+    "src/menu_preview_state.h": "a11dda5695fe33302d390eb04b57aaffd0fd268e2dc3cd00613400b719a7315c",
+    "src/menu_repeat.h": "f94c56e7da218b8859016596c2994f936ea4538db51c2d720abea51970836188",
+    "src/pacing_recoil.h": "79518af5f3293ad65c6143e6fdbc836ee0916afc61dce8ab5bc9d3ff8e11611b",
+    "src/pause_guide.h": "80b5a1198cb054a492ce77aa65508e7ca97c18b4fb35110783b17e19f3f44eff",
+    "src/random29.h": "2425fbd5e562e49862e337d58096d1c3f2ea4fffb99815a71da84ccc313a98b5",
+    "src/stage_depth.h": "8c3d294a33ffe4aa5b385ffd19b98d0564b5e84c804b31c83fd45904a9bc2be6",
+    "src/super_moves.h": "6b5d0f67851c1b7dc370d25f5a4dd1c41c44ad04b41d3928a663c2859374e0b0",
+    "src/trace.asm": "301ec8a99aa326583c332a901903114f5fceeb7f17bbbf768c3e90ae65c3dc88",
+    "src/training_tools.h": "bad6ffc456e48c0b346ffaa069c33871988716828db75a18f511266c3de33961",
+    "src/version.h": "7e994d55f0d3fe59d8df0b503d6281fe50ef90d33ba72cd3cfa6d871220e9fb9",
+    "Test.cmd": "6c38ea238c7481f1529954a1652f34e72367b2c251562166c81e2e629e10b632",
+    "tools/arena_life29_assets.py": "5274f75f2b45f30ff4f910f5f079383bd2ba7ed2608b952f9d3006041099b590",
+    "tools/arena_life29_checks.py": "2cc91f0200707b331d3d7d7a0009c81ceefe9d295a48c846fe0761441ed7bb02",
+    "tools/asset_cache.py": "091478ff866f99aed1b3714b1746c0fc934705905f3d370ffcd0473e381dcccc",
+    "tools/asset_transaction.py": "9df3ad06bdd448627bf0747e755d16864149d3660f922594b690620f97015bb8",
+    "tools/audio29_assets.py": "d0470e69df33e22e52ee8494bf6d165175c0159efaa2d1cd304ed02cb2c14c85",
+    "tools/audio29_controls.py": "30cb952c8f855139ad005cfe420059c2454fa53c5457e8e811fffc9f987a5161",
+    "tools/audio_assets.py": "ca65f5074f8c823684e7d928925d3e77ed2735d4f417f3b717b06e4d98563ec6",
+    "tools/audit_release.py": "6d1abcdb71daffcb124de5096a9e625e6880636ff00b0e4614e3718f848c33af",
+    "tools/bonus29_assets.py": "88191286772b144c8ac534f7c385a3c098fe9a87f47df588f6256dde67d20eea",
+    "tools/build.py": "f262826aed503e4b98a261f1ae1a02ca7e82053334d342b439c78ea894874fb8",
+    "tools/build_web.py": "4bd8f2e6e257a1d785b0acbe08cadcae2bca7329fc68befeb0e03a52b636189b",
+    "tools/candidate_sources.py": "94115dfe0468887b6cd8de790cb0a98ff5afd96ecff5f5e69b1ab1f754e941ad",
+    "tools/champion_assets.py": "1526aa565cd9e1a01075bd5ad699b75b486e17f9b2899b9276a504bc2024ccf2",
+    "tools/check_authoring_guards.py": "41887dd7f9a962ac3bb77b6fb1223bb4a065a015b1624c04ad04ee8622cd5c1b",
+    "tools/check_combat_24_guards.py": "32a9affd932696bdf409e650214d205773123e4e17947fe7471df741814eb698",
+    "tools/check_play_flow_native_26.py": "b41d8f4f084d13b3ef8e6d4fb59a9da9263bf413f9441ef4a9e12e8168f6bdcc",
+    "tools/collate_combat_24.py": "5ece963d25e9ba1c37b17a3db76e3a06fb400dfb2454e8fe6f63c216ea3c3646",
+    "tools/collate_expansion.py": "78eff65f23971796896a7f0f163a246bda5ef5222171231bb3481dac0eca077b",
+    "tools/collate_pacing_floor_25.py": "55be592418ce39a865129b0232acf984964b41e753549f8023ded4324322dc14",
+    "tools/collate_play_flow_26.py": "c3295b76579d912588507d955793e55af520b8ab7db3eefe523f9fc44348a6df",
+    "tools/collate_verification.py": "7b188bc7771a2f6401b699795a4690a90a53f45beeeea25c6d6adfa2858e2f82",
+    "tools/collate_walking.py": "726c98d34b6d4a28eb5458cf3b5de6f14f9618873d818a321cd16082b240dbd3",
+    "tools/compare_special_24_state.py": "cc9d89583125f0cc5e2d059db32bf64e242f9deccb3b1b85e1771e7862087e0f",
+    "tools/contact_geometry.py": "21db5448946960a9b31d399dbcaf71c19e2e3b0888843f2d3d0141b56dbf2b47",
+    "tools/copy_combat_24_pacing_samples.py": "01641b0eff23ab9271e423da3a7d35e732d3bda60605e9aa0b71f043636d1571",
+    "tools/effect_assets.py": "f5079057e2314469d4befb9974ab61281c1156c6adfd6516058fb66e01735150",
+    "tools/emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
+    "tools/expansion_contracts.py": "b64c11cecf01d5ca672ffb137a416ec0ae2f16c94ea310594ea3250cc1803d51",
+    "tools/fetch_references.py": "a630e9cb073f7a20b4ddb720a3af812d6e7790398c5dc19cd88ece7c13a65254",
+    "tools/fighter_assets.py": "7b357e65e5e90da3273a75c0009d97aa7b1252c56bc005f782b44c67461d132d",
+    "tools/likeness30_contracts.py": "8c681f5ea01e918e7b70fcbd29ac023b71707ae5d2f665e81df4de8637420595",
+    "tools/longrun_host.py": "432bed2b7505131d639794ee4b1d857292df4465e7f219c39a14fa433f11cc8e",
+    "tools/make_assets.py": "b74e2827309e53b0df2fdad5af9b49327bedd0a0271e5b87d982a875e6d9b8dd",
+    "tools/make_champion_budget.py": "f5ffcfec6c09729f72f19815613d244794bfe4e0ad7a5d708c63a634552e24ad",
+    "tools/make_cpu_antiair_review.py": "806c08ef0095dacafcb5209ae7f543a01db12ad5e05c1f112691488ceb718fab",
+    "tools/make_crossup_practice_review.py": "b9386e97c1114ecee7730fa05dc42931f8447594b4d07d47507b0f08272506b2",
+    "tools/make_crossup_review.py": "e45c814c00a01e070d2534fdc6d293363c14abeb99a170fd8df78aa4641a3b22",
+    "tools/make_expansion_review.py": "feb522c84bb46c750f8cbdaa79dd4b8a20dcdb373bad0e3db8f1fd716208d001",
+    "tools/make_focused_listening_pack.py": "f864dd37f7c1b4f967af09b76951b2cede7058e9be1d1699b18fd16e87a94c94",
+    "tools/make_play_flow_review_26.py": "286e12a76ab3c509968e80006279c59d3b538eb6d882bd7f95a568464d67e4fa",
+    "tools/make_preservation_report.py": "3fe295216aa69d570896e70f3901d97842d03acaee2ff1850080f292326ee18b",
+    "tools/make_review_gallery.py": "e5bab41cd7aede547a281f894ab477f765fda0fea8ece199d47bb73b28be0b31",
+    "tools/make_roster_review.py": "d2b8b7fd211452887218ef07cd691efdb52efd2f0ddcb555a02137233010461e",
+    "tools/make_training_cpu_review.py": "60977b144de38f340dfeb4e65daf1d161ebcb3ef6f58820bfb480ff948f92a82",
+    "tools/menu_assets.py": "be192cb00fd2ce73b0ec4434572ce9501b7bac10cf2e8e05819c4422631e19f6",
+    "tools/menu_preview_checks.py": "f4d43edce678d7ee3cf05fca815ccc11878fca13893bd9d2706cac73295d93a6",
+    "tools/native_artifacts.py": "8d11fd37f1d275647ee9898c5c145be9d219cf891d68d383c7a6c1e9cb00514b",
+    "tools/package.py": "024ff1f51574460e611d10ae6db570ee4b1e3dc1e34b05323b4b5bea23eb216e",
+    "tools/play.ps1": "914d0bd48cc8a83650bcb45aed9658c549db5cbe3411921dd81da7cc6cbfe3b7",
+    "tools/play_flow_counterfactual.py": "424dc06c62168d0d43f66cba20a0a02938307391da972f39e729b27cb55ba286",
+    "tools/play_flow_media.py": "7e542a9ac96d0668116877124081ead3b0a1e9b39e1e7492cdda938477dbf4fe",
+    "tools/portrait_assets.py": "f95047e2ad5e1c292809ced20ca2e9cc77dc4a0e5f3c10d43cadf8e0843107d3",
+    "tools/pose_revision_assets.py": "7baca936c90d63dbedb732b1a222207322bed881e84841cb6d41179c7e539709",
+    "tools/preservation.py": "40e13816f5a7086c18e6053789e209722316a6c2675fb9583647eed20891ae76",
+    "tools/release_evidence.py": "83fbaeffb70c4cf58c50ed93847ff081b9ff565d1a4af75cd05d45cffc87c442",
+    "tools/report_training_timing.py": "1c1153a39f8c207da55db46b974e196911c9e61aed43bd62b618fcf985ca7606",
+    "tools/review_media.py": "c844329bf758f038337b27aa7192b904befd8c9beba04cde2b75deac69b09e66",
+    "tools/run_background.py": "0906fa836fa680964846049036fd2ea1ad48a2fcb68d1235bedff86e7afdf178",
+    "tools/setup-compat.ps1": "341a502bc4dc2240cfb610129f2950177cd49a2c509b22ae18350f893902a6ea",
+    "tools/setup-mesen.ps1": "05ce08d8f2a411f64693b1dd55a485d9c35d155276748e64bef615ca293bbc3c",
+    "tools/setup.ps1": "711ea1a58631829b6b1a0b27a061619b54314ad7ebcc5f1a5e9df1656f312eef",
+    "tools/stage_assets.py": "28ccd1c8f6dfff94bc0556211af788c08acffb04d41d29f1a69fbea1db8440ce",
+    "tools/stage_cartoon.py": "3cedf521885bcdb0391b65f0337eb8a5aee79fbb93b007c81b5671b008354f4f",
+    "tools/stage_depth_assets.py": "8e3376327d818c59448056bc19775d5cf1210c46f8357d9fddaaafbde08730ac",
+    "tools/stage_sources.py": "b3c249050b7ed53408b9c6aa9c31748fae92125c3a3b055ce991bf7ef77c4008",
+    "tools/stage_test_contract.py": "298399b406ae105bbff36901e4225c486a031482ab8a175e28c2e6247343e7eb",
+    "tools/synthesize_announcements.ps1": "3010e324a205413123d1ab343e2c68e9aa24211d8d5c73cd70bdbe4fc8c6f6dc",
+    "tools/test_arena_life29.py": "493a43e2121ada350e23f80795232a0d35d65b6160fc4f44459a71992b173bc6",
+    "tools/test_arena_life29_checks.py": "ab35d1423f93558d0f2c5f8531bdd24a8d67093418c2ec8fe3132cca773e9667",
+    "tools/test_arena_preview_26.py": "c96d827d377270a00e51baa3033597a982d5c558af674388dc90dea7100b1c27",
+    "tools/test_asset_cache.py": "cd6abc619c54a8af064584da652c7f9a6b85ebd80c540f76648c382e82916e90",
+    "tools/test_asset_transaction.py": "3d5fc5a49f40cb27f7bef3da1f1af6594edcb2fcf9b94c0902ab6be55df53e5f",
+    "tools/test_audio.py": "542ad545a023db85c9fe14066823cea5fa58848932d92057d55e26c76a28a73d",
+    "tools/test_audio29.py": "3007a5bddf23563bfbc1c725e8401cd0c0a551a93eab283212788b40304904b7",
+    "tools/test_audio29_native.py": "eae4517593bfc5d721ff870e16b896fbc4475200e00ed9f6fc08b53762ea9895",
+    "tools/test_authoring_guards.py": "99e5197dedb642aeca6d6f13c416588f23551bdfdb04fa2a528ea068bb98014a",
+    "tools/test_auto29.py": "b0dcf32828c95a0989d9fb9326fa7e39c9fd14485682969a60078e70cf4db9e2",
+    "tools/test_bonus29.py": "1bbe5409f936f51e3997347485aeb92322bba0ef2c29ee2153caeb604d129a66",
+    "tools/test_candidate_sources.py": "fcedacec4e5f020600b58d21349f168d1b81562b2fe570f8dc24c4bc3d59bf2b",
+    "tools/test_champion.py": "d2424acd2cb75a7e08c5a2832a0bf6e5dc3cdb708f6aa89293d4ac3fe2d1e4d5",
+    "tools/test_champion_audio.py": "10d2cdf896dde9530008dcfb9fff2912d5415cfbd99bd00c61d9f19b0c9dca3e",
+    "tools/test_characters.py": "928589e1a897d548f470c90a002a1142f00ab482c32883fd4945715a373fae02",
+    "tools/test_classic_menu.py": "c469ac2469c19bf12441e9aee8c36240d8c318b1ad2b5d250e7eccab49a8427c",
+    "tools/test_combat24_attack.py": "bf619bc29ef2b1df12dbc6dd9f538802ff675ba52ea4645099560a6fd442e191",
+    "tools/test_combat24_super.py": "85849f6cb922f384c3f55f84721b7af0af917d21aea03ce4f37862a7566560e0",
+    "tools/test_combat_24_contact.py": "8e6f481e28743880624cb03cea2efac89c0c7408ab748f74c19433113645ff07",
+    "tools/test_combat_24_evidence.py": "62811716e8f0f8c39b494038bf20ed372ed6fb4b56618863a067681efe06c79e",
+    "tools/test_combat_24_jumps.py": "bea0dd4207dfeb65d65d6142e0cdee438e0389d5cfb6f20336dfbf1e3277e567",
+    "tools/test_combat_24_pacing.py": "dbdf7fd5c21b55bdf026b5ad8edf73ae59abb1393fe073dc0dfc282f605084f9",
+    "tools/test_combat_24_stage08.py": "c7823b1c2d3f779cb5930505c0685bc3dcc9642dcedc013ccd4bb2e610db25e8",
+    "tools/test_compatibility.py": "f2faed60729c238cf23bdddf315dd4015acd1b7239aaf8c4fe07ec8c4121d55d",
+    "tools/test_compatibility_combat.py": "c50712f19042bf69da0978ce7e4321cf6de1a33bd2269118483403beb9e4a754",
+    "tools/test_confirm_26.py": "c51954e650212b9690179d339544c3bb45b9c13ecbf9a9e03b0eae4346a746be",
+    "tools/test_contact_24_timing.py": "6039be9b4bd515a8fffe4d627dea5ace99a03a3eb6d42ee83450398f73f43a06",
+    "tools/test_contact_budget.py": "f8acb5525d0e3d627c70894ac8c4cce3c3a5bd63421ef4139d3a0f4f5c6cc2c5",
+    "tools/test_contact_super_composition.py": "0f9d0144fd945044f8c67774c8f49c4e553de9f56eeb9746cf1e6d953710f637",
+    "tools/test_crossup_practice.py": "5eeb0ae013e6653bd7147612a62f1c73594be1d22e53f8101a7185d1193e79ed",
+    "tools/test_defense29.py": "23f92f1a1f33bd6ff94146364ac0d2ee5e6d5c4e7370c4660ab11dae382bd94c",
+    "tools/test_endurance.py": "7c190efdf822baeb4bf7ccebbd75025d60b62598babee1bf9d673c77b81b3ed0",
+    "tools/test_endurance_reporting.py": "5533ab27348e4f532b1beef81db9514d28cffaea883d48f52cebc6a2373b9fa0",
+    "tools/test_expansion_01_animation_weight.py": "4e9900b1e8d3100ac417d3dbed29b900ddda865572583f2149784c825b31a9a7",
+    "tools/test_expansion_02_impact.py": "d12ea9213524efc3bfac044b84570e423dfb92513302abcbec850b255f1ee5a0",
+    "tools/test_expansion_03_normal_balance.py": "2553c0e15bede439e520f25ea51bc97e616bb916390e4054a8078cc289aabaff",
+    "tools/test_expansion_04_fighter_personality.py": "09c57e0fff748413853a262cad9330564b9e4758983acdcb6bdb76a12323d0ec",
+    "tools/test_expansion_05_training_tools.py": "ffa3f0b9802a371c4bb30c9c0c555609f792541186f5a1b38796d8dd7d52ebcf",
+    "tools/test_expansion_06_cpu_personality.py": "4a76e2b155fde4118b5934552127b4663d42e2c9d2feb0e889b808eee8713077",
+    "tools/test_expansion_07_supers.py": "cc2a0a9f90973371f310216d81db0a02eb932e28067366f04ba059df1fce0fb7",
+    "tools/test_expansion_08_stage_depth.py": "a9c3e96130d7046fefd3c644b40560661102790bb3f65bef36e09f4606b1b4c8",
+    "tools/test_expansion_09_arcade_story.py": "bf01de14c55a46ed68a2eb2d7774eca094f1daf288e622fd86078a17543f1114",
+    "tools/test_expansion_10_audio.py": "2fb8352dc3e9932dd85f38174bbc5fe385a7ea9c42a878737a191860b36dc39e",
+    "tools/test_feedback_26.py": "05041d4b2342719e54304ed689a7fbf42b14f60fdd3c364d8766d4fa9ded524a",
+    "tools/test_four_button_hud.py": "a5a049919b38c87f30f981b301ef3718f9dc3810835f3497db7aceecd44afbeb",
+    "tools/test_fresh_build.py": "75b6c3622d1ad96411feb8b13a9fc71e0d47fa5357fbe8c93d0c11a21c348b8b",
+    "tools/test_inputs.py": "0e454be6e1fc45abda97ecb368012db4fd14d6d9cf653326aa112d69ec440bbc",
+    "tools/test_launcher_26.py": "972531769a22a3d85f652104912f981bd9a3d027244702e1efdadfa2e1803e46",
+    "tools/test_local_session_26.py": "869597abe87ff42c46c333ac27148c2f871fb7804696e3aed446de924ef8a6a8",
+    "tools/test_long_session_guards.py": "72f528248cb1369681a62cf53cb13ace31273c279ccea7e7c9f1a53dea5a1643",
+    "tools/test_matchups.py": "1979c79b5ed465f798c9528267e9debce412a1f2c19ca84c13d34995db060a1c",
+    "tools/test_menu_footers.py": "f8b5e777271eda28f0eba79a1b2c5fbfef7a0e61b2946c1ffe9722ce6c6e69fc",
+    "tools/test_menu_preview.py": "25c7098dd6bf84d688a684adcb91c2159744203828b13c2f6b7d37d7d8ec38f6",
+    "tools/test_menu_repeat_26.py": "4c523aa0e6075d6cf8c1527dafbd3dc89981be327938a50cdef860529adc60f5",
+    "tools/test_mesen.py": "c1d044e8dd108c1ac05ff7d5e6d5dbc5757ce42c0c45e9c31d59d6bdd887b3c0",
+    "tools/test_motion_26.py": "1296884ca3a0fab2a4bcfef541682f023ab85b7f632756169639bd97f418064d",
+    "tools/test_music_26.py": "ed9a97cf8cc7c63212977cbba28523c99245945a84e5f1b13cd8b3646caa9030",
+    "tools/test_native_artifacts.py": "905cdccf4f6055d34b09387c26205879b839520cad119fe8c01de3c3ac2b1327",
+    "tools/test_native_build_26.py": "0ac64bfec8e4db1c8420745891578bb8b914a6764a275a970a7ae2f5fcede8c5",
+    "tools/test_normal_guide_26.py": "93be4467c72686dfb312ccf5b5a957d15ca54ecf5bd083f6b03527af6a48336a",
+    "tools/test_pacing_floor_25.py": "e4af00aabaec4caf266c1719273b4c393486088e8e5503727024e02c2125b9c7",
+    "tools/test_package.py": "1174274d5eeec4610fd98fb11bbef90b213a9f5a61a776f634a6d99fcb15d3d9",
+    "tools/test_play_flow_26.py": "f85bdd5f85cb5df1e611449406654d42f281d7c9335d13ee5c91549ac2330b6c",
+    "tools/test_play_flow_collation.py": "c15d9965c6a966f7c4e8e095629e441dfb0895cf2652833881cca0367fc0679c",
+    "tools/test_play_flow_counterfactual.py": "7437ea224c929a74955b940aa33de647d21227e616ce2ea3e6147c8a569fbbcc",
+    "tools/test_play_flow_long_26.py": "1afe0bac92d2dd9a2dafa438b19b603a02d0b77b22311b785c7dc99110e9d2b4",
+    "tools/test_play_flow_media.py": "cf9bd688d5f6d62e90ff29bff116cf295da8b18bcc92dfef74888c86bd4c445e",
+    "tools/test_play_flow_stress_26.py": "30192c13e6d118bc49e5502ccd7e8cd5774eb089491e1ad0cbae80aaad3cfa7e",
+    "tools/test_pose_revision_guards.py": "591ade0ac9fa3e83c0169a2900d0f6f642df9fceed5b031c6ecef47f52123093",
+    "tools/test_presentation.py": "e187842e670d65427e38b6d75f2b1f43f65908ae1a98f9436c56c3b6a40d0110",
+    "tools/test_preservation.py": "635b1201940579ede2c6edaecc0d4e72f36616918f0119676026f38dcfb52bdf",
+    "tools/test_random29.py": "73ece4c534dd88b78c1c80c532f1f62ac86811ca9a0ba12a292cc5831b5a97b0",
+    "tools/test_review_media.py": "ac1827f8455fcecc11ba088af109a3bcd9fcb2083c267b574316fd662ebc0253",
+    "tools/test_rom.py": "434b4cac7a601c66cf5cf11ad924904bb4b9c5eb72f9414ee97539fb9d5e41be",
+    "tools/test_roster_hints_26.py": "24d2e56901cf5af23b3b84b0ff1de05b27b31fec02e3f4b338fc9bf9e0293d57",
+    "tools/test_session_limit_26.py": "bb8fd62cf0bcabf688d22e62e108af59c27d0267afc49580b1a36e1ee2291775",
+    "tools/test_special_24_cpu_timing.py": "4e57c11a7a8bf1a7472e5fe4319995b8b729b34dd4f06f944d1b2c2dad6e310d",
+    "tools/test_special_24_timing.py": "65f6aa8689ad7fa080e428bdf04399113275f04a9b40ff8070bdb80278d283ad",
+    "tools/test_stage_pipeline_26.py": "fe6e8b520cf612b6cd2f7c1609ddb9039f2133148ed97479f86ef6a7e96ab982",
+    "tools/test_stages.py": "08cb003e6cbc7057ed092bf6a4e8ce101b7191d8f223460062f9d4fbef230acf",
+    "tools/test_throw_feedback_26.py": "5b06add180acc546cfa81491c765fe5c6fcb93202d14d60f5e9f2eb61191799c",
+    "tools/test_training.py": "ac068169b0a145c6e22dcdd8e75e0286e03e82df3b7789279ce62979ccb3fb79",
+    "tools/test_training_best_26.py": "0a9f12bc33a1fdc6bffa8daac0506ad6ebe2aeb155de883631c5d9933d0a6a78",
+    "tools/test_v024_preservation_guards.py": "34dd5d860208298f9bc405f7a535b449fa6329dcf06fda5f9d44f46acf235e82",
+    "tools/test_v029_contracts.py": "06e2a1b49e4dc58a15f8f7a97642ab09dfbdcb69cf0e35e666b307b90e589f74",
+    "tools/test_verification_runner_guards.py": "22bfafd5fc95925bbb9242ce516f53cbcb0196326006de7e87cfe8e580527c35",
+    "tools/test_walking.py": "f98a337905aecbc6c12ae539d3d4ae1b3914b449d944805129da316462b1068a",
+    "tools/test_web_build.py": "25e9298e000413b59804d3a816a4cc4d88e60f081616fe5aef9574af613017bc",
+    "tools/v024_contracts.py": "1b8bbe9ffee65ff4f72410564e26941bb86da72ae914da3f5c74bdbb4891a076",
+    "tools/v025_contracts.py": "fd17ca4c9c748708c0a0b1a4e798dd6ccf37cea9355a6cabade729d1acaef719",
+    "tools/v026_contracts.py": "4f255533d9f3920dc1bf8296b7729b5e87abd45a8f155c6f73da04bd459cac65",
+    "tools/v029_contracts.py": "834150d1c9272ab43a006a49c6cf38df01895b7938401a9cb85ef0faf169382e",
+    "tools/validate_cartridge.ps1": "a2b7f6cde999fac60b8708012baf84db3f8410d8e64eb33a6c90a82d2fa4ad47",
+    "tools/verify_play_flow_26.py": "0954750a9e899a4aa38a0d2d41b6e414a4fa525151800ca729bd02cdd5b72d04",
+    "tools/victory_music.py": "6da647ea3b1d58129d3f91a95d7a516433b8e609b4a847a180ff0bb96ac28528",
+    "tools/walking_assets.py": "cf36efcb8fc9971eef11ed65c9afb487333d12902bcc22a285616486873d8694",
+    "tools/web.ps1": "4898ab1183eb718e9b176962a0e37a419946df48a1e7c9d8614193bb69b79e71"
+  },
+  "checks": [
+    {
+      "check": "roster selection is valid",
+      "passed": true,
+      "executions": 1
+    },
+    {
+      "check": "partial roster evidence remains diagnostic under build",
+      "passed": true,
+      "executions": 1
+    },
+    {
+      "check": "candidate is the exact native cartridge retaining the v0.25 pacing contract",
+      "passed": true,
+      "executions": 1
+    },
+    {
+      "check": "before measurements use the approved v0.24 cartridge",
+      "passed": true,
+      "executions": 1
+    },
+    {
+      "check": "expanded native core is pinned",
+      "passed": true,
+      "executions": 2
+    },
+    {
+      "check": "native STAT77 stays within OBJ limits",
+      "passed": true,
+      "executions": 6297
+    },
+    {
+      "check": "PCM callback advances without opening a device",
+      "passed": true,
+      "executions": 6297
+    },
+    {
+      "check": "resident SPC FIFO remains bounded",
+      "passed": true,
+      "executions": 6297
+    },
+    {
+      "check": "both cores preserve stage geometry freezes cadence and transfer/OBJ budgets",
+      "passed": true,
+      "executions": 1
+    },
+    {
+      "check": "production and harness inputs stayed stable throughout the run",
+      "passed": true,
+      "executions": 1
+    },
+    {
+      "check": "strict native health contains no failure",
+      "passed": true,
+      "executions": 1
+    }
+  ],
+  "native_health": {
+    "measured_callbacks": 6297,
+    "max_spc_backlog": 0,
+    "failures": []
+  },
+  "memory_writes": false,
+  "save_states": false,
+  "audio_device_opened": false,
+  "preservation": {
+    "status": "passed",
+    "baseline_commit": "c4cf41148f76e202d958e8f2e3e2f040505054c1",
+    "version": "0.30.0",
+    "rom_sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
+    "generated": {
+      "baseline_count": 237,
+      "current_count": 237,
+      "preserved_count": 218,
+      "changed": [
+        {
+          "path": "assets/generated/assets.h",
+          "sha256": "d8e353cda5137547af035c2ab0cb286aa73520a0fc5858e61c051c4efcd5a09a",
+          "baseline_sha256": "fe5dd039186e4c73182b219e6b2b4854b5fbfb5d7506e54fb8082b99f9018f99"
+        },
+        {
+          "path": "assets/generated/character-manifest.json",
+          "sha256": "80e35a49d70a06a1237f77ec49a7864afce548f44c483104e8f7fb92ac1752e6",
+          "baseline_sha256": "fbe6ee2d0aae1c75001010c6ac59950dd08b26c23c1c703ff7717c6c2b112843"
+        },
+        {
+          "path": "assets/generated/fighter06.bin",
+          "sha256": "3a9e343236351225a538d664874ea5f94a833a32a83b310384cc2c86640c932d",
+          "baseline_sha256": "eabba881ce33f7ae43b51f460758d2981e1c101015f1cdff0e67de690072301d"
+        },
+        {
+          "path": "assets/generated/fighter06.png",
+          "sha256": "b90951b3443246932ace31d778bc05d26101334a3c115210026328c0fb57ab28",
+          "baseline_sha256": "19a36cc2d330e20c37f44b2748733bf7443595ef179c04dc23d0b92cac8abbbd"
+        },
+        {
+          "path": "assets/generated/fighter06b.bin",
+          "sha256": "4820d42bf338710c29fff0155959c0f26de066eb3ad52506cdccbff08da88e09",
+          "baseline_sha256": "551a097d9b40e41cd5a41b66e68794d4cb65d9cf9ad4366f1d0283c23181b69c"
+        },
+        {
+          "path": "assets/generated/fighter06c.bin",
+          "sha256": "7e1134fd00842fa636cd09293a3ab91c238cd14d8a05fa92c6672bf31ed584ac",
+          "baseline_sha256": "968880971eedb9c1390e28551da7c37e63267dd81cd4ec17998a60adf67b7818"
+        },
+        {
+          "path": "assets/generated/fighter06d.bin",
+          "sha256": "0524b033f2ec18160e5b0a7b2ad95806ab37696def0728a24585254529238217",
+          "baseline_sha256": "14624f315f0b5f215614c63ba22ba2ad1a7e33846dfc19c85d8fe9b0d9c970ec"
+        },
+        {
+          "path": "assets/generated/fighter06e.bin",
+          "sha256": "ec5297a4a8ff2c4509ea2c9f2778290ad5fe4fe8d3f2ecf6ca6b0cda573a8420",
+          "baseline_sha256": "ce9c5a86062fda17d3b96c96b000f89cbc06da86b1d0b60fe54b3a2ee4815678"
+        },
+        {
+          "path": "assets/generated/fighter06f.bin",
+          "sha256": "83b0722e3864e9e845e4b6e2d23f4e531e65117306e4a00a52ce59a561984394",
+          "baseline_sha256": "1c7ec2ec7409f1001bd2b578c1bfc8e7b6c3627579aa894dc7a7acb9abf3d021"
+        },
+        {
+          "path": "assets/generated/fighter06g.bin",
+          "sha256": "62179004c65c96e480a0017f1f36e6d503ffcec6e66b6e7931714d632054080d",
+          "baseline_sha256": "c8530c36a1de832f08e6fca614deb06b93153311b24a1e218088791a4043e895"
+        },
+        {
+          "path": "assets/generated/fighter06h.bin",
+          "sha256": "9021c2cc799d910f707b7fb9e834e1630da8ca4f6ac466cfdad46d34a4e30c80",
+          "baseline_sha256": "f7335d7fd02fab62f4d6fafd67f898bfb8d47d30e1b4abb1f23141ff43235b11"
+        },
+        {
+          "path": "assets/generated/portrait06-large.png",
+          "sha256": "a831df74cfa8bb28852f52f1beaefaea04127d9090323499f6cd33f3f05d4264",
+          "baseline_sha256": "9b1afd3adc03cdc55d5f4803b0a057f4d853fb4c9f8ba45731072e45b5a44b9d"
+        },
+        {
+          "path": "assets/generated/portrait06.png",
+          "sha256": "e096247c758bd0cdd27e0d54a9d8c875cbf13d449183dca5454106ca9a033113",
+          "baseline_sha256": "8d02f2b788cb49ba20935aeb3f60e3af05052b663d400b0eb1b3d50341bc308e"
+        },
+        {
+          "path": "assets/generated/portrait06_pal.bin",
+          "sha256": "2df40db63b446ec979b98663408776345ee8d3fc54fe07844f1aedd61a058727",
+          "baseline_sha256": "5db63711260962bc338f05f445b584c372033a97bcdaa538e089ed2e5d5fc972"
+        },
+        {
+          "path": "assets/generated/portrait06_tiles.bin",
+          "sha256": "b3efe196d08ae5db2c92f5482e5713f7acee003d1c2b0d8e1d12b61d3f8e747f",
+          "baseline_sha256": "f023d0d5dd115725202ed8a527b2ec45812a7f5e7af77bf579bcec09d39a5e2f"
+        },
+        {
+          "path": "assets/generated/select.png",
+          "sha256": "e87d47414f62a29869131977543ab7cdb0e69a564ae8ffd1de6ff9c9ead887d7",
+          "baseline_sha256": "736d3b8ee8c13cb8a78c1e5e4a8bf5a74d8ec6d700e9f1105832fe535b2375e9"
+        },
+        {
+          "path": "assets/generated/select_map.bin",
+          "sha256": "067015b8b4ef15196a7af06f491a62fee6a62c09cfd666a015b4fa16c6f36b69",
+          "baseline_sha256": "b79ef9e5586334aee8ef1c822138ff1fd7cc16de24be1df67f526842eb1d79f3"
+        },
+        {
+          "path": "assets/generated/select_pal.bin",
+          "sha256": "a01fb8ca5558982eeec1db901fed40ccbd4c27ce8e15730dfb9e70f83b30885b",
+          "baseline_sha256": "7548310daef646223f609a2224d1a050c66650f377082499487b649f57b1abd9"
+        },
+        {
+          "path": "assets/generated/select_tiles.bin",
+          "sha256": "6bcce704dd5cce499d705835bb2c8ef2053f0a3734bd88d58e34cf85a4ff773f",
+          "baseline_sha256": "3d01874c5f86f4f53a50c3927db6c61e0e3e5ea86e14b2c18873818382716827"
+        }
+      ],
+      "added": [],
+      "preserved": [
+        {
+          "path": "assets/generated/arena-life29.json",
+          "sha256": "9651c02409fd91958a3ea5def60043cc296e16766451077ff8739925c4e551f8",
+          "baseline_sha256": "9651c02409fd91958a3ea5def60043cc296e16766451077ff8739925c4e551f8"
+        },
+        {
+          "path": "assets/generated/arena_life29_stage0.bin",
+          "sha256": "21aa938ff92f59bdbd9287169995cddd60d6a88bc930e1df5148fa0e75899075",
+          "baseline_sha256": "21aa938ff92f59bdbd9287169995cddd60d6a88bc930e1df5148fa0e75899075"
+        },
+        {
+          "path": "assets/generated/arena_life29_stage1.bin",
+          "sha256": "23adbf5214a341eddb9dddb4ecdde88192ce6f5e6e5c56d180e07b840a55391f",
+          "baseline_sha256": "23adbf5214a341eddb9dddb4ecdde88192ce6f5e6e5c56d180e07b840a55391f"
+        },
+        {
+          "path": "assets/generated/arena_life29_stage2.bin",
+          "sha256": "5c735f9bcb198860feb7d25862213e35f1963b826bf54aeab486f1fc368cbcf5",
+          "baseline_sha256": "5c735f9bcb198860feb7d25862213e35f1963b826bf54aeab486f1fc368cbcf5"
+        },
+        {
+          "path": "assets/generated/arenas.png",
+          "sha256": "072ea1cf398506603e15174cd3032268fdd887c9387d6ee6ebbf84ed27186f1c",
+          "baseline_sha256": "072ea1cf398506603e15174cd3032268fdd887c9387d6ee6ebbf84ed27186f1c"
+        },
+        {
+          "path": "assets/generated/arenas_map.bin",
+          "sha256": "a04c8aaaa6ffe846f8c92d2c84ddd7c03070913b4cf3cf912907903fbb666046",
+          "baseline_sha256": "a04c8aaaa6ffe846f8c92d2c84ddd7c03070913b4cf3cf912907903fbb666046"
+        },
+        {
+          "path": "assets/generated/arenas_pal.bin",
+          "sha256": "73aac32d743affdc4e38a04b2f424424069437d40d712926b5665c2f1f71498e",
+          "baseline_sha256": "73aac32d743affdc4e38a04b2f424424069437d40d712926b5665c2f1f71498e"
+        },
+        {
+          "path": "assets/generated/arenas_tiles.bin",
+          "sha256": "f2ed19291b18445479f05b57eb40865cd1764a1c1935e42fff1f1c3de156b9a5",
+          "baseline_sha256": "f2ed19291b18445479f05b57eb40865cd1764a1c1935e42fff1f1c3de156b9a5"
+        },
+        {
+          "path": "assets/generated/bonus29-assets.json",
+          "sha256": "e0b80fdf6d441efe40504a1bf64d2ebc972f91e189305220280b0342feb287ec",
+          "baseline_sha256": "e0b80fdf6d441efe40504a1bf64d2ebc972f91e189305220280b0342feb287ec"
+        },
+        {
+          "path": "assets/generated/bonus29_inbox.bin",
+          "sha256": "6a35a860d63c94d8ff868205a12da19811e61a4cc921a14abec84afa37c14612",
+          "baseline_sha256": "6a35a860d63c94d8ff868205a12da19811e61a4cc921a14abec84afa37c14612"
+        },
+        {
+          "path": "assets/generated/bonus29_inbox.png",
+          "sha256": "f61d419bd884ded8aa85132f756b2ba5724706e9cbec6f93b1d622d5feb5fff6",
+          "baseline_sha256": "f61d419bd884ded8aa85132f756b2ba5724706e9cbec6f93b1d622d5feb5fff6"
+        },
+        {
+          "path": "assets/generated/bonus29_inbox_pal.bin",
+          "sha256": "7ff4ff60d5b6592b03ea9ef80c4662f8e8e133cb1f8363b7add119927a99561e",
+          "baseline_sha256": "7ff4ff60d5b6592b03ea9ef80c4662f8e8e133cb1f8363b7add119927a99561e"
+        },
+        {
+          "path": "assets/generated/bonus29_printer.bin",
+          "sha256": "b002cdec5ab757c4332e28673175341da872ea21c7da66fb264b0445935bb4fc",
+          "baseline_sha256": "b002cdec5ab757c4332e28673175341da872ea21c7da66fb264b0445935bb4fc"
+        },
+        {
+          "path": "assets/generated/bonus29_printer.png",
+          "sha256": "0c742fee93aa6a7b9e89a531b7f8c961d2d71417d857294bc39ddf48d5309c88",
+          "baseline_sha256": "0c742fee93aa6a7b9e89a531b7f8c961d2d71417d857294bc39ddf48d5309c88"
+        },
+        {
+          "path": "assets/generated/bonus29_printer_pal.bin",
+          "sha256": "e886768c5c9ba8f4168523e0c4a9b46dc6fa55c49fb63c84f1b07ec5e76301e2",
+          "baseline_sha256": "e886768c5c9ba8f4168523e0c4a9b46dc6fa55c49fb63c84f1b07ec5e76301e2"
+        },
+        {
+          "path": "assets/generated/champion.png",
+          "sha256": "e0301816094931a17ec1e338a09bcb6c2857d90187f6abeec69ba2279682de88",
+          "baseline_sha256": "e0301816094931a17ec1e338a09bcb6c2857d90187f6abeec69ba2279682de88"
+        },
+        {
+          "path": "assets/generated/champion_map.bin",
+          "sha256": "4149213bbe977c91e8e847129ce64976879c4fbc9ae9a4e1431d505e375a1e9a",
+          "baseline_sha256": "4149213bbe977c91e8e847129ce64976879c4fbc9ae9a4e1431d505e375a1e9a"
+        },
+        {
+          "path": "assets/generated/champion_pal.bin",
+          "sha256": "02e0569819891084a53ce2bf072b806eb611013e066b18c8c5480f76e00170bd",
+          "baseline_sha256": "02e0569819891084a53ce2bf072b806eb611013e066b18c8c5480f76e00170bd"
+        },
+        {
+          "path": "assets/generated/champion_tiles.bin",
+          "sha256": "7791af0e6eb849de844433cfbef99f4c16d921aec75e478964b6b1475f6a784e",
+          "baseline_sha256": "7791af0e6eb849de844433cfbef99f4c16d921aec75e478964b6b1475f6a784e"
+        },
+        {
+          "path": "assets/generated/data.asm",
+          "sha256": "1f7608a61e4380d46344c09c6c8a8f3a840b0880933b43816099f786845ba09b",
+          "baseline_sha256": "1f7608a61e4380d46344c09c6c8a8f3a840b0880933b43816099f786845ba09b"
+        },
+        {
+          "path": "assets/generated/effects.bin",
+          "sha256": "241d5530383cebbdf0f9b7939f8d2271008b946192f18d113236b22f86f646b3",
+          "baseline_sha256": "241d5530383cebbdf0f9b7939f8d2271008b946192f18d113236b22f86f646b3"
+        },
+        {
+          "path": "assets/generated/effects.it",
+          "sha256": "4e188fef857a1d5f9d54a1181ed1a3230a8d69867cc406da3114bbeefa3b372b",
+          "baseline_sha256": "4e188fef857a1d5f9d54a1181ed1a3230a8d69867cc406da3114bbeefa3b372b"
+        },
+        {
+          "path": "assets/generated/effects_pal.bin",
+          "sha256": "f8e903fc390df59be26ea8c5bc8f570f654b0dabb85acf32c7ed92359735c1db",
+          "baseline_sha256": "f8e903fc390df59be26ea8c5bc8f570f654b0dabb85acf32c7ed92359735c1db"
+        },
+        {
+          "path": "assets/generated/fighter00.bin",
+          "sha256": "e4b2c7419db1fe7e3c94ca85df47bf8596125b7208a651463aed01be72e37eb8",
+          "baseline_sha256": "e4b2c7419db1fe7e3c94ca85df47bf8596125b7208a651463aed01be72e37eb8"
+        },
+        {
+          "path": "assets/generated/fighter00.png",
+          "sha256": "8196b57cb4f585aec4ef0af48b3a6a2306e64ad9f1425180f2a48d169b48a2cb",
+          "baseline_sha256": "8196b57cb4f585aec4ef0af48b3a6a2306e64ad9f1425180f2a48d169b48a2cb"
+        },
+        {
+          "path": "assets/generated/fighter00_pal.bin",
+          "sha256": "ef3f4e8213fe8fd940a89b40d9c39f4e6b0ac3e36dbf51f976118c305d8d3341",
+          "baseline_sha256": "ef3f4e8213fe8fd940a89b40d9c39f4e6b0ac3e36dbf51f976118c305d8d3341"
+        },
+        {
+          "path": "assets/generated/fighter00b.bin",
+          "sha256": "9d973c592bb58a331ae0e85f67976f39500a977d633a28b0a48403fe155d1112",
+          "baseline_sha256": "9d973c592bb58a331ae0e85f67976f39500a977d633a28b0a48403fe155d1112"
+        },
+        {
+          "path": "assets/generated/fighter00c.bin",
+          "sha256": "3df3db9e81b682e6bb5930644939381328987650d614dabd2b3a784cea8c4049",
+          "baseline_sha256": "3df3db9e81b682e6bb5930644939381328987650d614dabd2b3a784cea8c4049"
+        },
+        {
+          "path": "assets/generated/fighter00d.bin",
+          "sha256": "8c2fcb7a8e829a2f2c40edd32f1c5039f7181743e9b838d8bfa99f7d7e9efd7b",
+          "baseline_sha256": "8c2fcb7a8e829a2f2c40edd32f1c5039f7181743e9b838d8bfa99f7d7e9efd7b"
+        },
+        {
+          "path": "assets/generated/fighter00e.bin",
+          "sha256": "b8517bcbe5bfac7de72971c7bee01370d408ba37b25b50f55ce0f1c8cf0adb5b",
+          "baseline_sha256": "b8517bcbe5bfac7de72971c7bee01370d408ba37b25b50f55ce0f1c8cf0adb5b"
+        },
+        {
+          "path": "assets/generated/fighter00f.bin",
+          "sha256": "c39df0d296976aba9f599c65a8b7175a33bb36d97248a2c6a48db510c80b2b29",
+          "baseline_sha256": "c39df0d296976aba9f599c65a8b7175a33bb36d97248a2c6a48db510c80b2b29"
+        },
+        {
+          "path": "assets/generated/fighter00g.bin",
+          "sha256": "2112b614e61fd7a5460383083c6a5a327d1fc7950aa503eacfd999f6d0784bb9",
+          "baseline_sha256": "2112b614e61fd7a5460383083c6a5a327d1fc7950aa503eacfd999f6d0784bb9"
+        },
+        {
+          "path": "assets/generated/fighter00h.bin",
+          "sha256": "7c4735b5b8e133e468be53d2383ef068d7bb623dea05ef39b78348be50408b5d",
+          "baseline_sha256": "7c4735b5b8e133e468be53d2383ef068d7bb623dea05ef39b78348be50408b5d"
+        },
+        {
+          "path": "assets/generated/fighter01.bin",
+          "sha256": "f934113e838abaabe85a467b87589072bbadf118e44af52f2dc476e57192deaf",
+          "baseline_sha256": "f934113e838abaabe85a467b87589072bbadf118e44af52f2dc476e57192deaf"
+        },
+        {
+          "path": "assets/generated/fighter01.png",
+          "sha256": "899682ee149c6f0e25338ff2c18955d4b269819e53c2fb3172d2d49ce1a0f53b",
+          "baseline_sha256": "899682ee149c6f0e25338ff2c18955d4b269819e53c2fb3172d2d49ce1a0f53b"
+        },
+        {
+          "path": "assets/generated/fighter01_pal.bin",
+          "sha256": "c253838df2e0dcbd6e784bd419b68c641cddbe17a6cde73526fc9d91658d41ac",
+          "baseline_sha256": "c253838df2e0dcbd6e784bd419b68c641cddbe17a6cde73526fc9d91658d41ac"
+        },
+        {
+          "path": "assets/generated/fighter01b.bin",
+          "sha256": "28bcf26d6cfbedd0ab024ec982ef2e90ecffcf17964e333966e9f8fdddcadf3f",
+          "baseline_sha256": "28bcf26d6cfbedd0ab024ec982ef2e90ecffcf17964e333966e9f8fdddcadf3f"
+        },
+        {
+          "path": "assets/generated/fighter01c.bin",
+          "sha256": "94c116e71b1774aa18651e1541128d1ae3dce86c7e5337f35af7871e55399fb2",
+          "baseline_sha256": "94c116e71b1774aa18651e1541128d1ae3dce86c7e5337f35af7871e55399fb2"
+        },
+        {
+          "path": "assets/generated/fighter01d.bin",
+          "sha256": "938c46405a2d7a6d8c55cdebf238c2011291f0072ef39139e31036452c7ad2b9",
+          "baseline_sha256": "938c46405a2d7a6d8c55cdebf238c2011291f0072ef39139e31036452c7ad2b9"
+        },
+        {
+          "path": "assets/generated/fighter01e.bin",
+          "sha256": "c0e831e4658d63cddc525166e142fca2f7b6c9e73776aed538585e015d8c900c",
+          "baseline_sha256": "c0e831e4658d63cddc525166e142fca2f7b6c9e73776aed538585e015d8c900c"
+        },
+        {
+          "path": "assets/generated/fighter01f.bin",
+          "sha256": "46c20fa18de6fcd45c37edb93213e6f2ea80342797cc3c92d305b38391e0757a",
+          "baseline_sha256": "46c20fa18de6fcd45c37edb93213e6f2ea80342797cc3c92d305b38391e0757a"
+        },
+        {
+          "path": "assets/generated/fighter01g.bin",
+          "sha256": "b15cee1683279be889e6222021dc080b66faab244f096280834f0947824afece",
+          "baseline_sha256": "b15cee1683279be889e6222021dc080b66faab244f096280834f0947824afece"
+        },
+        {
+          "path": "assets/generated/fighter01h.bin",
+          "sha256": "257375a4df8195c12f1700d856127dd3f959499544c2d85d18ee6ca6571e4f58",
+          "baseline_sha256": "257375a4df8195c12f1700d856127dd3f959499544c2d85d18ee6ca6571e4f58"
+        },
+        {
+          "path": "assets/generated/fighter02.bin",
+          "sha256": "82532f6afeb68e7b3cc697b35c99f730bbff8c6522c1a822f9f22c858cd93db2",
+          "baseline_sha256": "82532f6afeb68e7b3cc697b35c99f730bbff8c6522c1a822f9f22c858cd93db2"
+        },
+        {
+          "path": "assets/generated/fighter02.png",
+          "sha256": "94eb446afa775b6530df011f5761f9b3d272ed9be1fee4fdd3ccec5af740c811",
+          "baseline_sha256": "94eb446afa775b6530df011f5761f9b3d272ed9be1fee4fdd3ccec5af740c811"
+        },
+        {
+          "path": "assets/generated/fighter02_pal.bin",
+          "sha256": "39ae172ad89edf2a8a264e9058e8d7d582ef3a69d3d11737edbf4fe6c636aced",
+          "baseline_sha256": "39ae172ad89edf2a8a264e9058e8d7d582ef3a69d3d11737edbf4fe6c636aced"
+        },
+        {
+          "path": "assets/generated/fighter02b.bin",
+          "sha256": "78a5ba739f61b4fda00bc69e329b8f6c953fba2bb78bc12bb3a396085c63dc08",
+          "baseline_sha256": "78a5ba739f61b4fda00bc69e329b8f6c953fba2bb78bc12bb3a396085c63dc08"
+        },
+        {
+          "path": "assets/generated/fighter02c.bin",
+          "sha256": "d9c4705865bd5dcfd95ec78e6eeb4f8284456b2c224b85a9b96f0896d0c14077",
+          "baseline_sha256": "d9c4705865bd5dcfd95ec78e6eeb4f8284456b2c224b85a9b96f0896d0c14077"
+        },
+        {
+          "path": "assets/generated/fighter02d.bin",
+          "sha256": "1f1f3a9cc3324ddc81987f845f0f6f0c40f94b017d358e28788e5bd6de101a31",
+          "baseline_sha256": "1f1f3a9cc3324ddc81987f845f0f6f0c40f94b017d358e28788e5bd6de101a31"
+        },
+        {
+          "path": "assets/generated/fighter02e.bin",
+          "sha256": "a88459685ea7d7f1bf871ceeeb5f33a616f1eeef57a7c5caef89a11314d7f340",
+          "baseline_sha256": "a88459685ea7d7f1bf871ceeeb5f33a616f1eeef57a7c5caef89a11314d7f340"
+        },
+        {
+          "path": "assets/generated/fighter02f.bin",
+          "sha256": "31287cc2bb75439cb7d66c24f9031ad2bf0ef60ce8993d3b0664f36192cf7aa9",
+          "baseline_sha256": "31287cc2bb75439cb7d66c24f9031ad2bf0ef60ce8993d3b0664f36192cf7aa9"
+        },
+        {
+          "path": "assets/generated/fighter02g.bin",
+          "sha256": "d43341a186a235c97c41e24f8649a70a0e309e2b5faae0e26b116a8f92c4651e",
+          "baseline_sha256": "d43341a186a235c97c41e24f8649a70a0e309e2b5faae0e26b116a8f92c4651e"
+        },
+        {
+          "path": "assets/generated/fighter02h.bin",
+          "sha256": "bfde2a7f5018979f201676e0604169d4b62869ef4c733c8f84bc9f661d8d4171",
+          "baseline_sha256": "bfde2a7f5018979f201676e0604169d4b62869ef4c733c8f84bc9f661d8d4171"
+        },
+        {
+          "path": "assets/generated/fighter03.bin",
+          "sha256": "48fad119a54060c6f797aa97c0d8c8e1ca619d9480a17a988371c6cd25ecf28a",
+          "baseline_sha256": "48fad119a54060c6f797aa97c0d8c8e1ca619d9480a17a988371c6cd25ecf28a"
+        },
+        {
+          "path": "assets/generated/fighter03.png",
+          "sha256": "f52a2f9b74e31dff8daa5a448cee4d1db31e8b4818da1f744aab765669df6a85",
+          "baseline_sha256": "f52a2f9b74e31dff8daa5a448cee4d1db31e8b4818da1f744aab765669df6a85"
+        },
+        {
+          "path": "assets/generated/fighter03_pal.bin",
+          "sha256": "28aefb1442c602557a4e103541928ebb6967c85397f02358af0478b491392414",
+          "baseline_sha256": "28aefb1442c602557a4e103541928ebb6967c85397f02358af0478b491392414"
+        },
+        {
+          "path": "assets/generated/fighter03b.bin",
+          "sha256": "230eb08a41416ff4a3d562bb0643112568c6b2d269f3fe26f9287ad298116054",
+          "baseline_sha256": "230eb08a41416ff4a3d562bb0643112568c6b2d269f3fe26f9287ad298116054"
+        },
+        {
+          "path": "assets/generated/fighter03c.bin",
+          "sha256": "4aad3f14ed3c9d3859025af867fdc9683b73e5a4dc7dbf16226f8f7094172be1",
+          "baseline_sha256": "4aad3f14ed3c9d3859025af867fdc9683b73e5a4dc7dbf16226f8f7094172be1"
+        },
+        {
+          "path": "assets/generated/fighter03d.bin",
+          "sha256": "90d5eb791528436e7efc77d031ab540b58e53fd884730926e95507d3e43188e4",
+          "baseline_sha256": "90d5eb791528436e7efc77d031ab540b58e53fd884730926e95507d3e43188e4"
+        },
+        {
+          "path": "assets/generated/fighter03e.bin",
+          "sha256": "e83739b4937e1f572b0987d9cd5e28252ae1b76d6964d24ae8a95ff0c433ec98",
+          "baseline_sha256": "e83739b4937e1f572b0987d9cd5e28252ae1b76d6964d24ae8a95ff0c433ec98"
+        },
+        {
+          "path": "assets/generated/fighter03f.bin",
+          "sha256": "2fb584b7a409c5cc1863f9623883043d9e06f5349975a6669de802d6556f5b40",
+          "baseline_sha256": "2fb584b7a409c5cc1863f9623883043d9e06f5349975a6669de802d6556f5b40"
+        },
+        {
+          "path": "assets/generated/fighter03g.bin",
+          "sha256": "5d88b5209fd2e323e4404e2256fb5718b176b0c584a948efac5e668961ef16e1",
+          "baseline_sha256": "5d88b5209fd2e323e4404e2256fb5718b176b0c584a948efac5e668961ef16e1"
+        },
+        {
+          "path": "assets/generated/fighter03h.bin",
+          "sha256": "2cbaa62a33154a8780356f8630126034b5f382752387c68f7d2507b8ae62c738",
+          "baseline_sha256": "2cbaa62a33154a8780356f8630126034b5f382752387c68f7d2507b8ae62c738"
+        },
+        {
+          "path": "assets/generated/fighter04.bin",
+          "sha256": "c8e077e3ff21a9dafb4aa179a28d6b51081711d21aca3afb69cabbe6afbb05a9",
+          "baseline_sha256": "c8e077e3ff21a9dafb4aa179a28d6b51081711d21aca3afb69cabbe6afbb05a9"
+        },
+        {
+          "path": "assets/generated/fighter04.png",
+          "sha256": "52c468a380c61ddd6540066388687e58685ea6f0610e60ff44a1254f263943b7",
+          "baseline_sha256": "52c468a380c61ddd6540066388687e58685ea6f0610e60ff44a1254f263943b7"
+        },
+        {
+          "path": "assets/generated/fighter04_pal.bin",
+          "sha256": "207e656730f0aa78f7a3be33d21d6c88564b150487434808ccc1e744a507b8b5",
+          "baseline_sha256": "207e656730f0aa78f7a3be33d21d6c88564b150487434808ccc1e744a507b8b5"
+        },
+        {
+          "path": "assets/generated/fighter04b.bin",
+          "sha256": "97ba9f30bab3615e36ade648bcf1f396ee7dbe0fc3ba75497a38ec61aa9f0650",
+          "baseline_sha256": "97ba9f30bab3615e36ade648bcf1f396ee7dbe0fc3ba75497a38ec61aa9f0650"
+        },
+        {
+          "path": "assets/generated/fighter04c.bin",
+          "sha256": "e28d4589e272ee3a1fe249ea0bf6b76e2756f2e46f924a3ab018433cd04729b1",
+          "baseline_sha256": "e28d4589e272ee3a1fe249ea0bf6b76e2756f2e46f924a3ab018433cd04729b1"
+        },
+        {
+          "path": "assets/generated/fighter04d.bin",
+          "sha256": "04bd18be5a76b666d789ca3ca1615f767da9f39f99128108f92e9b0e5a4b5df8",
+          "baseline_sha256": "04bd18be5a76b666d789ca3ca1615f767da9f39f99128108f92e9b0e5a4b5df8"
+        },
+        {
+          "path": "assets/generated/fighter04e.bin",
+          "sha256": "3f0dcd9ce239f60c212cc30ad3cb491ca5d3f48b865179d7288568e84b73b346",
+          "baseline_sha256": "3f0dcd9ce239f60c212cc30ad3cb491ca5d3f48b865179d7288568e84b73b346"
+        },
+        {
+          "path": "assets/generated/fighter04f.bin",
+          "sha256": "1523005f996097760bdbaf8dac36b35617e8a6c3fa80b4cce6631b2465d4e5d4",
+          "baseline_sha256": "1523005f996097760bdbaf8dac36b35617e8a6c3fa80b4cce6631b2465d4e5d4"
+        },
+        {
+          "path": "assets/generated/fighter04g.bin",
+          "sha256": "b60a7df5fad8d3167e67277a16bc142fa04fe0dcb148ecfc4fed4a64ed4d564b",
+          "baseline_sha256": "b60a7df5fad8d3167e67277a16bc142fa04fe0dcb148ecfc4fed4a64ed4d564b"
+        },
+        {
+          "path": "assets/generated/fighter04h.bin",
+          "sha256": "d512c49366eb9520ea73a8218c5ea30b345a2d403fcea86fcaa5c1f3b0afc884",
+          "baseline_sha256": "d512c49366eb9520ea73a8218c5ea30b345a2d403fcea86fcaa5c1f3b0afc884"
+        },
+        {
+          "path": "assets/generated/fighter05.bin",
+          "sha256": "27a09297567630ae29e2efd957a34f6a694435b364d167777292e826d4608701",
+          "baseline_sha256": "27a09297567630ae29e2efd957a34f6a694435b364d167777292e826d4608701"
+        },
+        {
+          "path": "assets/generated/fighter05.png",
+          "sha256": "3c6d2c79bae4f8c9ec6994da2871306cab0dfd1e81941a1705d4d1dbd116145d",
+          "baseline_sha256": "3c6d2c79bae4f8c9ec6994da2871306cab0dfd1e81941a1705d4d1dbd116145d"
+        },
+        {
+          "path": "assets/generated/fighter05_pal.bin",
+          "sha256": "c5cb13513140c4cf740991e6f69c4dd71661e6177820ca7df52ed112149b2aba",
+          "baseline_sha256": "c5cb13513140c4cf740991e6f69c4dd71661e6177820ca7df52ed112149b2aba"
+        },
+        {
+          "path": "assets/generated/fighter05b.bin",
+          "sha256": "ca5652f7db642aa739c61f41192937593f42516bc968080d113fe097dba76918",
+          "baseline_sha256": "ca5652f7db642aa739c61f41192937593f42516bc968080d113fe097dba76918"
+        },
+        {
+          "path": "assets/generated/fighter05c.bin",
+          "sha256": "09c9476a22f7fc5aa6cea11ffe9af7274f6da213ad704f39a4538b98bc596aa7",
+          "baseline_sha256": "09c9476a22f7fc5aa6cea11ffe9af7274f6da213ad704f39a4538b98bc596aa7"
+        },
+        {
+          "path": "assets/generated/fighter05d.bin",
+          "sha256": "b80a4505ea6768772fceae3f4d1646dde0e013f1b3511aec900d6b4554631e56",
+          "baseline_sha256": "b80a4505ea6768772fceae3f4d1646dde0e013f1b3511aec900d6b4554631e56"
+        },
+        {
+          "path": "assets/generated/fighter05e.bin",
+          "sha256": "516a4a38eb45cf3f58d7ff02a45790b88b813adfd31a11082a92a3bce7ad8b21",
+          "baseline_sha256": "516a4a38eb45cf3f58d7ff02a45790b88b813adfd31a11082a92a3bce7ad8b21"
+        },
+        {
+          "path": "assets/generated/fighter05f.bin",
+          "sha256": "bf55055782b6834a3cd8237e8afc4617bfaebe3b2f25be7522c2f5e8785d4458",
+          "baseline_sha256": "bf55055782b6834a3cd8237e8afc4617bfaebe3b2f25be7522c2f5e8785d4458"
+        },
+        {
+          "path": "assets/generated/fighter05g.bin",
+          "sha256": "5b2d72682f2486633420f9ef953997f6d5bc958367c0a31d80d56b4b235ce838",
+          "baseline_sha256": "5b2d72682f2486633420f9ef953997f6d5bc958367c0a31d80d56b4b235ce838"
+        },
+        {
+          "path": "assets/generated/fighter05h.bin",
+          "sha256": "48964e91186d3a7938383536467605be7e617ca0869986a6bbb5258f29a8124c",
+          "baseline_sha256": "48964e91186d3a7938383536467605be7e617ca0869986a6bbb5258f29a8124c"
+        },
+        {
+          "path": "assets/generated/fighter06_pal.bin",
+          "sha256": "8157261a8813a14f129fe05c4cd41d219ec1d8213fda5e9de62173601a680a1c",
+          "baseline_sha256": "8157261a8813a14f129fe05c4cd41d219ec1d8213fda5e9de62173601a680a1c"
+        },
+        {
+          "path": "assets/generated/fighter07.bin",
+          "sha256": "99220e23b1ef1be5388dcb3888e73176cd2ea8476ba48b4bcf29bb24ec6a154a",
+          "baseline_sha256": "99220e23b1ef1be5388dcb3888e73176cd2ea8476ba48b4bcf29bb24ec6a154a"
+        },
+        {
+          "path": "assets/generated/fighter07.png",
+          "sha256": "5aa315a2a073c6023ae863b89863afb8568597797ccb5e4644c92557269a692d",
+          "baseline_sha256": "5aa315a2a073c6023ae863b89863afb8568597797ccb5e4644c92557269a692d"
+        },
+        {
+          "path": "assets/generated/fighter07_pal.bin",
+          "sha256": "5488f08bd6b0b18a4d65a681f3a88257f93ac2e55c9fafa5834af4f52b55b069",
+          "baseline_sha256": "5488f08bd6b0b18a4d65a681f3a88257f93ac2e55c9fafa5834af4f52b55b069"
+        },
+        {
+          "path": "assets/generated/fighter07b.bin",
+          "sha256": "3045a00c89070108b3b86631f6479ef4ca375bdbfd01d564e1ab77b6f0722aa8",
+          "baseline_sha256": "3045a00c89070108b3b86631f6479ef4ca375bdbfd01d564e1ab77b6f0722aa8"
+        },
+        {
+          "path": "assets/generated/fighter07c.bin",
+          "sha256": "18fe7259dabf4d0e338a0c5dafbd7a1c50b86469ff99edaba145a8ad779a6b7c",
+          "baseline_sha256": "18fe7259dabf4d0e338a0c5dafbd7a1c50b86469ff99edaba145a8ad779a6b7c"
+        },
+        {
+          "path": "assets/generated/fighter07d.bin",
+          "sha256": "d79f7f7ded9961d2da4f7e85e66f93fb60cbb762003ec0485d6883e1dbcb3726",
+          "baseline_sha256": "d79f7f7ded9961d2da4f7e85e66f93fb60cbb762003ec0485d6883e1dbcb3726"
+        },
+        {
+          "path": "assets/generated/fighter07e.bin",
+          "sha256": "e49ae37c211c9b6b55919be375d7b5fa4a7665a1427396eacb563c388279f52b",
+          "baseline_sha256": "e49ae37c211c9b6b55919be375d7b5fa4a7665a1427396eacb563c388279f52b"
+        },
+        {
+          "path": "assets/generated/fighter07f.bin",
+          "sha256": "2e8f9bc29b04b195603bb67aceb88b67e6aa03e0226e5bb31aff983f3481c8fb",
+          "baseline_sha256": "2e8f9bc29b04b195603bb67aceb88b67e6aa03e0226e5bb31aff983f3481c8fb"
+        },
+        {
+          "path": "assets/generated/fighter07g.bin",
+          "sha256": "a5d8e8ff291f1b0cee7f8117eccecb16da46c1d33673251be2917fe15f26d4a5",
+          "baseline_sha256": "a5d8e8ff291f1b0cee7f8117eccecb16da46c1d33673251be2917fe15f26d4a5"
+        },
+        {
+          "path": "assets/generated/fighter07h.bin",
+          "sha256": "288b6068ce239b133db31e639a65edf856acd96b8676b4d8ce4a33f1e4eab213",
+          "baseline_sha256": "288b6068ce239b133db31e639a65edf856acd96b8676b4d8ce4a33f1e4eab213"
+        },
+        {
+          "path": "assets/generated/fighter08.bin",
+          "sha256": "b55dcc1225e89f1343ae23e5671d9afd3c11934e81b4f36ee4afa767e0449024",
+          "baseline_sha256": "b55dcc1225e89f1343ae23e5671d9afd3c11934e81b4f36ee4afa767e0449024"
+        },
+        {
+          "path": "assets/generated/fighter08.png",
+          "sha256": "98b913a458478cbe8417e496eed747d2f3909b4d50621166ad3fe97171d15804",
+          "baseline_sha256": "98b913a458478cbe8417e496eed747d2f3909b4d50621166ad3fe97171d15804"
+        },
+        {
+          "path": "assets/generated/fighter08_pal.bin",
+          "sha256": "2fc1e702ab7d8323d94df3c6e7164891e7dc6f2e75b6ab4b8ce82dfb866094f1",
+          "baseline_sha256": "2fc1e702ab7d8323d94df3c6e7164891e7dc6f2e75b6ab4b8ce82dfb866094f1"
+        },
+        {
+          "path": "assets/generated/fighter08b.bin",
+          "sha256": "a73f3e7bff94fdb6cf29539a2303fc803747114451ad60578c68c23078bbfd4f",
+          "baseline_sha256": "a73f3e7bff94fdb6cf29539a2303fc803747114451ad60578c68c23078bbfd4f"
+        },
+        {
+          "path": "assets/generated/fighter08c.bin",
+          "sha256": "02685dd59c018761cb3bcd366aada7ffefdbfcbb6efb5c803dbea1b52953734c",
+          "baseline_sha256": "02685dd59c018761cb3bcd366aada7ffefdbfcbb6efb5c803dbea1b52953734c"
+        },
+        {
+          "path": "assets/generated/fighter08d.bin",
+          "sha256": "99f7bc3c045fa3c631352c02736aa6f338839046aaed80d8289c09e262422b89",
+          "baseline_sha256": "99f7bc3c045fa3c631352c02736aa6f338839046aaed80d8289c09e262422b89"
+        },
+        {
+          "path": "assets/generated/fighter08e.bin",
+          "sha256": "163ac72e1a40b7b8dcd4972bb9110169f776a31d704a96221513d561724e9c3e",
+          "baseline_sha256": "163ac72e1a40b7b8dcd4972bb9110169f776a31d704a96221513d561724e9c3e"
+        },
+        {
+          "path": "assets/generated/fighter08f.bin",
+          "sha256": "ed48faf7ad3031baaa2173643424fda05fc8af11810ccd8dea8731a650e95175",
+          "baseline_sha256": "ed48faf7ad3031baaa2173643424fda05fc8af11810ccd8dea8731a650e95175"
+        },
+        {
+          "path": "assets/generated/fighter08g.bin",
+          "sha256": "3e544207bf66327e92a1a60d202597244b2bb6f6b4029c830688007a66e3ebb5",
+          "baseline_sha256": "3e544207bf66327e92a1a60d202597244b2bb6f6b4029c830688007a66e3ebb5"
+        },
+        {
+          "path": "assets/generated/fighter08h.bin",
+          "sha256": "0cb54b41eac8f08b0712fd8c325237b24db4e6cfec223cc9e53a855abdeec637",
+          "baseline_sha256": "0cb54b41eac8f08b0712fd8c325237b24db4e6cfec223cc9e53a855abdeec637"
+        },
+        {
+          "path": "assets/generated/fighter09.bin",
+          "sha256": "90f21f269776d61d04bb2622d920ae6a01ac2e85d92882fbe96de876da52f076",
+          "baseline_sha256": "90f21f269776d61d04bb2622d920ae6a01ac2e85d92882fbe96de876da52f076"
+        },
+        {
+          "path": "assets/generated/fighter09.png",
+          "sha256": "ded66f07eb1e1cc6437af72a8de7f490a3dfc33b057a4faca199f18e1e7dd811",
+          "baseline_sha256": "ded66f07eb1e1cc6437af72a8de7f490a3dfc33b057a4faca199f18e1e7dd811"
+        },
+        {
+          "path": "assets/generated/fighter09_pal.bin",
+          "sha256": "0fa34b1d226a993d001bd2df79e0b4f69827c214668446fe7b3b19bb3c64aa1d",
+          "baseline_sha256": "0fa34b1d226a993d001bd2df79e0b4f69827c214668446fe7b3b19bb3c64aa1d"
+        },
+        {
+          "path": "assets/generated/fighter09b.bin",
+          "sha256": "02730e60a9947c31be69f449b221e333a62b51b8570fb189acbcff58b73cc4ae",
+          "baseline_sha256": "02730e60a9947c31be69f449b221e333a62b51b8570fb189acbcff58b73cc4ae"
+        },
+        {
+          "path": "assets/generated/fighter09c.bin",
+          "sha256": "ab816e4eb310c46bd21e647714e4f589fc156671bf519ef64a53087b55b98c85",
+          "baseline_sha256": "ab816e4eb310c46bd21e647714e4f589fc156671bf519ef64a53087b55b98c85"
+        },
+        {
+          "path": "assets/generated/fighter09d.bin",
+          "sha256": "fe6a37310e3cfde6b1014a0e86ab60f02bb528bd4011e6616955a05eab19b9fe",
+          "baseline_sha256": "fe6a37310e3cfde6b1014a0e86ab60f02bb528bd4011e6616955a05eab19b9fe"
+        },
+        {
+          "path": "assets/generated/fighter09e.bin",
+          "sha256": "0fa8401b208ddc61c284cb4a5b95105f8366bbf7be09e6e2cd9fa3823b9cdfe6",
+          "baseline_sha256": "0fa8401b208ddc61c284cb4a5b95105f8366bbf7be09e6e2cd9fa3823b9cdfe6"
+        },
+        {
+          "path": "assets/generated/fighter09f.bin",
+          "sha256": "fb84ee2c2606ea97791130c36cd540e7a8477dcac6acf656878b3b00018b76fa",
+          "baseline_sha256": "fb84ee2c2606ea97791130c36cd540e7a8477dcac6acf656878b3b00018b76fa"
+        },
+        {
+          "path": "assets/generated/fighter09g.bin",
+          "sha256": "f6594ef133dd2529667caa7b59ceb77a1b86b9527d6563576e72b3091f70ee4a",
+          "baseline_sha256": "f6594ef133dd2529667caa7b59ceb77a1b86b9527d6563576e72b3091f70ee4a"
+        },
+        {
+          "path": "assets/generated/fighter09h.bin",
+          "sha256": "b2d2079c3a5f61e1cb057602f8b06eec0fb9abb0a861b5b5bb4f332f13b8b561",
+          "baseline_sha256": "b2d2079c3a5f61e1cb057602f8b06eec0fb9abb0a861b5b5bb4f332f13b8b561"
+        },
+        {
+          "path": "assets/generated/fighter10.bin",
+          "sha256": "07e0fba410a612ece4db2f23f71eb0f8404572ab0e86cf8c7e67d98440e19b1d",
+          "baseline_sha256": "07e0fba410a612ece4db2f23f71eb0f8404572ab0e86cf8c7e67d98440e19b1d"
+        },
+        {
+          "path": "assets/generated/fighter10.png",
+          "sha256": "bea4cb0aa0f785adb2cad736cd2f5dab1ffe953e86f014d15057bd63c27cf629",
+          "baseline_sha256": "bea4cb0aa0f785adb2cad736cd2f5dab1ffe953e86f014d15057bd63c27cf629"
+        },
+        {
+          "path": "assets/generated/fighter10_pal.bin",
+          "sha256": "6984a493d80efd48f7935eb13bbc928866e261bd140d8137854f78f534777d0e",
+          "baseline_sha256": "6984a493d80efd48f7935eb13bbc928866e261bd140d8137854f78f534777d0e"
+        },
+        {
+          "path": "assets/generated/fighter10b.bin",
+          "sha256": "03f72633a3fa47619bd60c84eb7762f987bde225c18a651ade833047a0960054",
+          "baseline_sha256": "03f72633a3fa47619bd60c84eb7762f987bde225c18a651ade833047a0960054"
+        },
+        {
+          "path": "assets/generated/fighter10c.bin",
+          "sha256": "dd728a3cba6c11a6636063bb1fddf15a1040f3ec6839e9b3935c6b361a4c44bc",
+          "baseline_sha256": "dd728a3cba6c11a6636063bb1fddf15a1040f3ec6839e9b3935c6b361a4c44bc"
+        },
+        {
+          "path": "assets/generated/fighter10d.bin",
+          "sha256": "5c637c2e897f72fa3711487deb262e776f6321cfd55d2a49cd65b63880d00e66",
+          "baseline_sha256": "5c637c2e897f72fa3711487deb262e776f6321cfd55d2a49cd65b63880d00e66"
+        },
+        {
+          "path": "assets/generated/fighter10e.bin",
+          "sha256": "199ec0327f6db0598768308422ecf4675653701517fc6db8dc87fbdd699d06f2",
+          "baseline_sha256": "199ec0327f6db0598768308422ecf4675653701517fc6db8dc87fbdd699d06f2"
+        },
+        {
+          "path": "assets/generated/fighter10f.bin",
+          "sha256": "04be780513f0fb707e7e2577a277c4f9d532e119739b0d6e7f6800b3ceecb3ee",
+          "baseline_sha256": "04be780513f0fb707e7e2577a277c4f9d532e119739b0d6e7f6800b3ceecb3ee"
+        },
+        {
+          "path": "assets/generated/fighter10g.bin",
+          "sha256": "6e04529090303406a1dcb638e62521e93dcb6f94e327a2c8b7cc1aad2211c830",
+          "baseline_sha256": "6e04529090303406a1dcb638e62521e93dcb6f94e327a2c8b7cc1aad2211c830"
+        },
+        {
+          "path": "assets/generated/fighter10h.bin",
+          "sha256": "8ac0c5d03adac633cd614c00974e391725935a16529e7bb190e55de9cd82ad75",
+          "baseline_sha256": "8ac0c5d03adac633cd614c00974e391725935a16529e7bb190e55de9cd82ad75"
+        },
+        {
+          "path": "assets/generated/fighter11.bin",
+          "sha256": "0cff5122527646f69f5a9f4225d3bf1dcdd4916e86ba065ae55592c36ab05f18",
+          "baseline_sha256": "0cff5122527646f69f5a9f4225d3bf1dcdd4916e86ba065ae55592c36ab05f18"
+        },
+        {
+          "path": "assets/generated/fighter11.png",
+          "sha256": "4b885d2908cbb3b7601c7a8b2a1715ab27e5949d2c2e522181141e6c20bc0b63",
+          "baseline_sha256": "4b885d2908cbb3b7601c7a8b2a1715ab27e5949d2c2e522181141e6c20bc0b63"
+        },
+        {
+          "path": "assets/generated/fighter11_pal.bin",
+          "sha256": "a157c3c1cb19914da952d6211860562c11ff31ecd04cf9ac67b5afaa0710d236",
+          "baseline_sha256": "a157c3c1cb19914da952d6211860562c11ff31ecd04cf9ac67b5afaa0710d236"
+        },
+        {
+          "path": "assets/generated/fighter11b.bin",
+          "sha256": "a5103bd71d49156bc8dd6a58463a93b4f0a2ca9e594033756ab353d5945e273b",
+          "baseline_sha256": "a5103bd71d49156bc8dd6a58463a93b4f0a2ca9e594033756ab353d5945e273b"
+        },
+        {
+          "path": "assets/generated/fighter11c.bin",
+          "sha256": "9a62eb38feb5c20e8bd46a05be0ef87d67d2208c64c1a97a3f581896904f0595",
+          "baseline_sha256": "9a62eb38feb5c20e8bd46a05be0ef87d67d2208c64c1a97a3f581896904f0595"
+        },
+        {
+          "path": "assets/generated/fighter11d.bin",
+          "sha256": "0c577fe1210c49cf6daa0080776893dcd56607d92cd940486439a0c8ec8e58f3",
+          "baseline_sha256": "0c577fe1210c49cf6daa0080776893dcd56607d92cd940486439a0c8ec8e58f3"
+        },
+        {
+          "path": "assets/generated/fighter11e.bin",
+          "sha256": "671ae700fffe89bb444f87c9d3fa5c43532be2b09b5c06ca00d5958e8e9145a4",
+          "baseline_sha256": "671ae700fffe89bb444f87c9d3fa5c43532be2b09b5c06ca00d5958e8e9145a4"
+        },
+        {
+          "path": "assets/generated/fighter11f.bin",
+          "sha256": "71c87f3eab8877e19c17ee1810b05b3c3dd6eee5dd30062a74c0806fa9033543",
+          "baseline_sha256": "71c87f3eab8877e19c17ee1810b05b3c3dd6eee5dd30062a74c0806fa9033543"
+        },
+        {
+          "path": "assets/generated/fighter11g.bin",
+          "sha256": "835fdf5b8944728440c47d0cfd84f7233b3f5d5bd637f2168b0bb89ae5d71bd6",
+          "baseline_sha256": "835fdf5b8944728440c47d0cfd84f7233b3f5d5bd637f2168b0bb89ae5d71bd6"
+        },
+        {
+          "path": "assets/generated/fighter11h.bin",
+          "sha256": "34050cd58ef9139eac5f33a10ec8e68f6af004238512a9d2f3c3b49e9d13a729",
+          "baseline_sha256": "34050cd58ef9139eac5f33a10ec8e68f6af004238512a9d2f3c3b49e9d13a729"
+        },
+        {
+          "path": "assets/generated/music0.it",
+          "sha256": "36f7a4b0313fc61cf7ec6c8f3fb98b2b05fc277809db97cef66977fcf06cc3c5",
+          "baseline_sha256": "36f7a4b0313fc61cf7ec6c8f3fb98b2b05fc277809db97cef66977fcf06cc3c5"
+        },
+        {
+          "path": "assets/generated/music1.it",
+          "sha256": "5975cca254986cd6a3e119430720231a3acbd924b91e65cb570fbecc1b817603",
+          "baseline_sha256": "5975cca254986cd6a3e119430720231a3acbd924b91e65cb570fbecc1b817603"
+        },
+        {
+          "path": "assets/generated/music2.it",
+          "sha256": "c358ba99b2935c06071428deb378b8cf1dbb4589678209a4dc7a7070ff2b7ee2",
+          "baseline_sha256": "c358ba99b2935c06071428deb378b8cf1dbb4589678209a4dc7a7070ff2b7ee2"
+        },
+        {
+          "path": "assets/generated/music3.it",
+          "sha256": "e160f204c2e109b87327621304293f953ef141b5a7ca5d8e8ab01f60788e0931",
+          "baseline_sha256": "e160f204c2e109b87327621304293f953ef141b5a7ca5d8e8ab01f60788e0931"
+        },
+        {
+          "path": "assets/generated/music4.it",
+          "sha256": "e25a09bcac4b8cd0f60e5b632a9e58c0b61d269a38bbbec256efa458e0bb86be",
+          "baseline_sha256": "e25a09bcac4b8cd0f60e5b632a9e58c0b61d269a38bbbec256efa458e0bb86be"
+        },
+        {
+          "path": "assets/generated/portrait00-large.png",
+          "sha256": "a74d321aa05586da8f30117f802fc92768d3346b6f01ff35d9323fcc46198504",
+          "baseline_sha256": "a74d321aa05586da8f30117f802fc92768d3346b6f01ff35d9323fcc46198504"
+        },
+        {
+          "path": "assets/generated/portrait00.png",
+          "sha256": "0b036835df577d227a082f039b959be030a838011d810542359145481917299b",
+          "baseline_sha256": "0b036835df577d227a082f039b959be030a838011d810542359145481917299b"
+        },
+        {
+          "path": "assets/generated/portrait00_pal.bin",
+          "sha256": "3ba05a56984fbf9692d2ac0d4de5efb29782984a8a2ae8aeb0876021d9cc8aac",
+          "baseline_sha256": "3ba05a56984fbf9692d2ac0d4de5efb29782984a8a2ae8aeb0876021d9cc8aac"
+        },
+        {
+          "path": "assets/generated/portrait00_tiles.bin",
+          "sha256": "cef8bc55342eea67d30e43e52852d560e421c25e9071fe7e7a9c52e02f75de09",
+          "baseline_sha256": "cef8bc55342eea67d30e43e52852d560e421c25e9071fe7e7a9c52e02f75de09"
+        },
+        {
+          "path": "assets/generated/portrait01-large.png",
+          "sha256": "ddaaf1405c6c9d7950df0bd6c56449fead35820ca31aa78800db8c2af6f020e9",
+          "baseline_sha256": "ddaaf1405c6c9d7950df0bd6c56449fead35820ca31aa78800db8c2af6f020e9"
+        },
+        {
+          "path": "assets/generated/portrait01.png",
+          "sha256": "26de480b79a6c721d6928d94d524e62e0c345140e39227788caf0fcef7026c41",
+          "baseline_sha256": "26de480b79a6c721d6928d94d524e62e0c345140e39227788caf0fcef7026c41"
+        },
+        {
+          "path": "assets/generated/portrait01_pal.bin",
+          "sha256": "08989818b479b17741576eb89afc057096957585f57d317897de1d70809aef87",
+          "baseline_sha256": "08989818b479b17741576eb89afc057096957585f57d317897de1d70809aef87"
+        },
+        {
+          "path": "assets/generated/portrait01_tiles.bin",
+          "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1",
+          "baseline_sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1"
+        },
+        {
+          "path": "assets/generated/portrait02-large.png",
+          "sha256": "c5c198ea1ce40a6d37780654dd0f164a7032930d3519561b19b96ed74e6cf6b9",
+          "baseline_sha256": "c5c198ea1ce40a6d37780654dd0f164a7032930d3519561b19b96ed74e6cf6b9"
+        },
+        {
+          "path": "assets/generated/portrait02.png",
+          "sha256": "963b82496c52bb77e2aaeb80b4bd1adcca6a67274241bf2f8cdd7834ea3c0e2a",
+          "baseline_sha256": "963b82496c52bb77e2aaeb80b4bd1adcca6a67274241bf2f8cdd7834ea3c0e2a"
+        },
+        {
+          "path": "assets/generated/portrait02_pal.bin",
+          "sha256": "ab5564cfe06b696bb124b469dbe3f20beb3f0919a2cd26de627f1fc52e021946",
+          "baseline_sha256": "ab5564cfe06b696bb124b469dbe3f20beb3f0919a2cd26de627f1fc52e021946"
+        },
+        {
+          "path": "assets/generated/portrait02_tiles.bin",
+          "sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b",
+          "baseline_sha256": "29697a7904efda933fc30fab2376b57a048b07f90df29258997ce1aa83efec7b"
+        },
+        {
+          "path": "assets/generated/portrait03-large.png",
+          "sha256": "cd7993ab1498f552a29ac07f5082fd1fb0756d2c114a80c671d1c8e0f5e44763",
+          "baseline_sha256": "cd7993ab1498f552a29ac07f5082fd1fb0756d2c114a80c671d1c8e0f5e44763"
+        },
+        {
+          "path": "assets/generated/portrait03.png",
+          "sha256": "10b4ec8db326f941420f1203da2dce2fc3edbda0d041ca6299a133f1e055f9e9",
+          "baseline_sha256": "10b4ec8db326f941420f1203da2dce2fc3edbda0d041ca6299a133f1e055f9e9"
+        },
+        {
+          "path": "assets/generated/portrait03_pal.bin",
+          "sha256": "4d5862c7463d7358b00c9b87de4a7f31496be87f0e26f82cf71bdbc4716c8da5",
+          "baseline_sha256": "4d5862c7463d7358b00c9b87de4a7f31496be87f0e26f82cf71bdbc4716c8da5"
+        },
+        {
+          "path": "assets/generated/portrait03_tiles.bin",
+          "sha256": "61d80d1fa2da4692646a1f500dfc98d69692c0565754d3dc78b7f2d9584642e3",
+          "baseline_sha256": "61d80d1fa2da4692646a1f500dfc98d69692c0565754d3dc78b7f2d9584642e3"
+        },
+        {
+          "path": "assets/generated/portrait04-large.png",
+          "sha256": "02e66f29e24de974aa632c7dcb5fcd2b090140c44fe9eb0436deae2f08309ec9",
+          "baseline_sha256": "02e66f29e24de974aa632c7dcb5fcd2b090140c44fe9eb0436deae2f08309ec9"
+        },
+        {
+          "path": "assets/generated/portrait04.png",
+          "sha256": "df5fc3f9851fc554182a64251cedbbe04a904a00ad3abcc6bcb8c32a6124aa1b",
+          "baseline_sha256": "df5fc3f9851fc554182a64251cedbbe04a904a00ad3abcc6bcb8c32a6124aa1b"
+        },
+        {
+          "path": "assets/generated/portrait04_pal.bin",
+          "sha256": "720c6166fd9f14733233d4ff9bb884d2cfa725364c8aad84ab63435e5865848a",
+          "baseline_sha256": "720c6166fd9f14733233d4ff9bb884d2cfa725364c8aad84ab63435e5865848a"
+        },
+        {
+          "path": "assets/generated/portrait04_tiles.bin",
+          "sha256": "24c117db9e57d66ba9eccaecd75bece46c78f0eec848a7eb6a688806227ed2fd",
+          "baseline_sha256": "24c117db9e57d66ba9eccaecd75bece46c78f0eec848a7eb6a688806227ed2fd"
+        },
+        {
+          "path": "assets/generated/portrait05-large.png",
+          "sha256": "502b063408ab54b872911a6f69eba4873a01f73be8bf71eb905663cb956eec5c",
+          "baseline_sha256": "502b063408ab54b872911a6f69eba4873a01f73be8bf71eb905663cb956eec5c"
+        },
+        {
+          "path": "assets/generated/portrait05.png",
+          "sha256": "c71f79d3d326c31bf4eb339c40f46a7a12198441b8e4c72f847e490c5fd0aa42",
+          "baseline_sha256": "c71f79d3d326c31bf4eb339c40f46a7a12198441b8e4c72f847e490c5fd0aa42"
+        },
+        {
+          "path": "assets/generated/portrait05_pal.bin",
+          "sha256": "6c2c4b9401849a420de191a9795f24569b16e4fdf74f39e85c20c2df457cd2f9",
+          "baseline_sha256": "6c2c4b9401849a420de191a9795f24569b16e4fdf74f39e85c20c2df457cd2f9"
+        },
+        {
+          "path": "assets/generated/portrait05_tiles.bin",
+          "sha256": "c0460efc186cc285ba6aba1fdd0e7c54dc21320b2201954973d6d2c31c8ba505",
+          "baseline_sha256": "c0460efc186cc285ba6aba1fdd0e7c54dc21320b2201954973d6d2c31c8ba505"
+        },
+        {
+          "path": "assets/generated/portrait07-large.png",
+          "sha256": "e635436d5ad0795a671d777ddfff313a01551bf5c2aae72ba59cd7e70d72f1dd",
+          "baseline_sha256": "e635436d5ad0795a671d777ddfff313a01551bf5c2aae72ba59cd7e70d72f1dd"
+        },
+        {
+          "path": "assets/generated/portrait07.png",
+          "sha256": "c982e5997517db0b4bfd478a312cbe2b3047801f6c05b5ead2e7216d65b1c2a6",
+          "baseline_sha256": "c982e5997517db0b4bfd478a312cbe2b3047801f6c05b5ead2e7216d65b1c2a6"
+        },
+        {
+          "path": "assets/generated/portrait07_pal.bin",
+          "sha256": "656c585b5d15a36aaa07d2ad016ab60e63c59281fd9be66d330c33042684db42",
+          "baseline_sha256": "656c585b5d15a36aaa07d2ad016ab60e63c59281fd9be66d330c33042684db42"
+        },
+        {
+          "path": "assets/generated/portrait07_tiles.bin",
+          "sha256": "d83d340dffeb196c8d1a961cd85d391bad6c849b385b921eca8868eb40d86537",
+          "baseline_sha256": "d83d340dffeb196c8d1a961cd85d391bad6c849b385b921eca8868eb40d86537"
+        },
+        {
+          "path": "assets/generated/portrait08-large.png",
+          "sha256": "7b6546202fff49fbce12601303ca5c8f737bb6e0b59e725a3e70a17a10cd7c28",
+          "baseline_sha256": "7b6546202fff49fbce12601303ca5c8f737bb6e0b59e725a3e70a17a10cd7c28"
+        },
+        {
+          "path": "assets/generated/portrait08.png",
+          "sha256": "a98c204b90d8ef8cf09a07ff551048c2b23bc134a85ec4d448dfc2ce68323486",
+          "baseline_sha256": "a98c204b90d8ef8cf09a07ff551048c2b23bc134a85ec4d448dfc2ce68323486"
+        },
+        {
+          "path": "assets/generated/portrait08_pal.bin",
+          "sha256": "cde01ea2b56e2d94ef8852813189cc0cf77e38f4596c2c451ae04e81aeb132b1",
+          "baseline_sha256": "cde01ea2b56e2d94ef8852813189cc0cf77e38f4596c2c451ae04e81aeb132b1"
+        },
+        {
+          "path": "assets/generated/portrait08_tiles.bin",
+          "sha256": "be1b936d3daa590cffbc0f2cbe6f1d4c0d951d01262706eb9e9ce4c4f5fd7d89",
+          "baseline_sha256": "be1b936d3daa590cffbc0f2cbe6f1d4c0d951d01262706eb9e9ce4c4f5fd7d89"
+        },
+        {
+          "path": "assets/generated/portrait09-large.png",
+          "sha256": "ca6b09d0f309c90768c8651c50fbde8aeb45fb34392ada0563b0034c1b923b72",
+          "baseline_sha256": "ca6b09d0f309c90768c8651c50fbde8aeb45fb34392ada0563b0034c1b923b72"
+        },
+        {
+          "path": "assets/generated/portrait09.png",
+          "sha256": "0270698812e559528f164d7384468a0bb77d25315d4306603d0a270514f38cfa",
+          "baseline_sha256": "0270698812e559528f164d7384468a0bb77d25315d4306603d0a270514f38cfa"
+        },
+        {
+          "path": "assets/generated/portrait09_pal.bin",
+          "sha256": "31fc8dbd67e0c15b97ae258d945d85dc40324ce448da8afe18465bdb5e51ff7e",
+          "baseline_sha256": "31fc8dbd67e0c15b97ae258d945d85dc40324ce448da8afe18465bdb5e51ff7e"
+        },
+        {
+          "path": "assets/generated/portrait09_tiles.bin",
+          "sha256": "46ef8740ace707787e06eb45e7b60f1df5e308185b6367f5e62b0ae823122350",
+          "baseline_sha256": "46ef8740ace707787e06eb45e7b60f1df5e308185b6367f5e62b0ae823122350"
+        },
+        {
+          "path": "assets/generated/portrait10-large.png",
+          "sha256": "ee6564a4d7bcd8c53b947847c1fc876a6d961a82ed0d1af4a9188cfa6c8afb71",
+          "baseline_sha256": "ee6564a4d7bcd8c53b947847c1fc876a6d961a82ed0d1af4a9188cfa6c8afb71"
+        },
+        {
+          "path": "assets/generated/portrait10.png",
+          "sha256": "cf3175c29aea6b596738cdb18fd582dd299e174ab683a171cecb506af1964e92",
+          "baseline_sha256": "cf3175c29aea6b596738cdb18fd582dd299e174ab683a171cecb506af1964e92"
+        },
+        {
+          "path": "assets/generated/portrait10_pal.bin",
+          "sha256": "3d1c4f3e174efea3bf460726ab55128a30fcad3671dd8859a81941a803802e9f",
+          "baseline_sha256": "3d1c4f3e174efea3bf460726ab55128a30fcad3671dd8859a81941a803802e9f"
+        },
+        {
+          "path": "assets/generated/portrait10_tiles.bin",
+          "sha256": "91f53180fc9e25e5633ec62a380b62c7b90072213718a1a3b079b59c6d24a9e6",
+          "baseline_sha256": "91f53180fc9e25e5633ec62a380b62c7b90072213718a1a3b079b59c6d24a9e6"
+        },
+        {
+          "path": "assets/generated/portrait11-large.png",
+          "sha256": "c946be417ad643408a81140f0e1e055152cf1891c701465b5ea9a350b6684a6a",
+          "baseline_sha256": "c946be417ad643408a81140f0e1e055152cf1891c701465b5ea9a350b6684a6a"
+        },
+        {
+          "path": "assets/generated/portrait11.png",
+          "sha256": "b5b7515b42cf1ce6d59db6588242ada40a5f4405eda40b6129d2f422b0d1e1bc",
+          "baseline_sha256": "b5b7515b42cf1ce6d59db6588242ada40a5f4405eda40b6129d2f422b0d1e1bc"
+        },
+        {
+          "path": "assets/generated/portrait11_pal.bin",
+          "sha256": "57ac795f22b5565d1716c350d358d5b41262c1ba9dd6de1c4e4eb2144819ca3f",
+          "baseline_sha256": "57ac795f22b5565d1716c350d358d5b41262c1ba9dd6de1c4e4eb2144819ca3f"
+        },
+        {
+          "path": "assets/generated/portrait11_tiles.bin",
+          "sha256": "523beee6bbce840def42286687dde5c22d5a6c9720e365f510e65687beebbbbd",
+          "baseline_sha256": "523beee6bbce840def42286687dde5c22d5a6c9720e365f510e65687beebbbbd"
+        },
+        {
+          "path": "assets/generated/sfx0.bin",
+          "sha256": "778c185fc8fd3a71ac677c2cb591f1ed6b58445c8ac495374669054728a5e092",
+          "baseline_sha256": "778c185fc8fd3a71ac677c2cb591f1ed6b58445c8ac495374669054728a5e092"
+        },
+        {
+          "path": "assets/generated/sfx1.bin",
+          "sha256": "437b5d56693931d422445f81c0b1f09280c3212262526df8fb4de9a502c2e628",
+          "baseline_sha256": "437b5d56693931d422445f81c0b1f09280c3212262526df8fb4de9a502c2e628"
+        },
+        {
+          "path": "assets/generated/sfx2.bin",
+          "sha256": "2920de1e6f3349029656041fb43bd0d11520382efc0fe7d6c34d54dc085a24fa",
+          "baseline_sha256": "2920de1e6f3349029656041fb43bd0d11520382efc0fe7d6c34d54dc085a24fa"
+        },
+        {
+          "path": "assets/generated/sfx3.bin",
+          "sha256": "c9e2da2810ef129f59e9fabd7d30059d39cb5e0fe996ab9a0df6cef27e28d8ac",
+          "baseline_sha256": "c9e2da2810ef129f59e9fabd7d30059d39cb5e0fe996ab9a0df6cef27e28d8ac"
+        },
+        {
+          "path": "assets/generated/soundbank.asm",
+          "sha256": "d60e02c53fb20f963bb330e035bd77c1968d7aa1d3f1ebeaeaf32cb036247b6e",
+          "baseline_sha256": "d60e02c53fb20f963bb330e035bd77c1968d7aa1d3f1ebeaeaf32cb036247b6e"
+        },
+        {
+          "path": "assets/generated/soundbank.bnk",
+          "sha256": "6150c44493ea1f76172ab6d9a97de83a9d872313f5b59b314849fe555cf51795",
+          "baseline_sha256": "6150c44493ea1f76172ab6d9a97de83a9d872313f5b59b314849fe555cf51795"
+        },
+        {
+          "path": "assets/generated/stage-depth.json",
+          "sha256": "9bd6298718f750761bcd07b430284016a57022df356046340ba5f1bf23f71e2d",
+          "baseline_sha256": "9bd6298718f750761bcd07b430284016a57022df356046340ba5f1bf23f71e2d"
+        },
+        {
+          "path": "assets/generated/stage-dynamics.json",
+          "sha256": "1d1ea5e2b67fac083fb9afd827abb4cc581825d71c573f19fe3efd9380402ced",
+          "baseline_sha256": "1d1ea5e2b67fac083fb9afd827abb4cc581825d71c573f19fe3efd9380402ced"
+        },
+        {
+          "path": "assets/generated/stage0.png",
+          "sha256": "0a26c2e9535043ad7f3bc8a40aa6484917bc65782d3a2eb2460bae7a9a2ba2a7",
+          "baseline_sha256": "0a26c2e9535043ad7f3bc8a40aa6484917bc65782d3a2eb2460bae7a9a2ba2a7"
+        },
+        {
+          "path": "assets/generated/stage0_ambient.bin",
+          "sha256": "c04aadd73505ef5d9023b355cc952f33ed5b8cf8fe566a7c6b3d2663a603c165",
+          "baseline_sha256": "c04aadd73505ef5d9023b355cc952f33ed5b8cf8fe566a7c6b3d2663a603c165"
+        },
+        {
+          "path": "assets/generated/stage0_floor_map.bin",
+          "sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+          "baseline_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad"
+        },
+        {
+          "path": "assets/generated/stage0_floor_tiles.bin",
+          "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+          "baseline_sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb"
+        },
+        {
+          "path": "assets/generated/stage0_map.bin",
+          "sha256": "ac7db5138bb249e62a9aee08edfe6b661eb1ae07373712ab752070d5049fb1f4",
+          "baseline_sha256": "ac7db5138bb249e62a9aee08edfe6b661eb1ae07373712ab752070d5049fb1f4"
+        },
+        {
+          "path": "assets/generated/stage0_pal.bin",
+          "sha256": "ba3c4b9a9c92a2db1e62421893b95e250f8959f7c80bcbdf344cb4bf8e70d628",
+          "baseline_sha256": "ba3c4b9a9c92a2db1e62421893b95e250f8959f7c80bcbdf344cb4bf8e70d628"
+        },
+        {
+          "path": "assets/generated/stage0_tiles.bin",
+          "sha256": "06997513099a94a7a7de13215661621ade355a0710010db76a9d2bd6e5fd2f7c",
+          "baseline_sha256": "06997513099a94a7a7de13215661621ade355a0710010db76a9d2bd6e5fd2f7c"
+        },
+        {
+          "path": "assets/generated/stage1.png",
+          "sha256": "66e24af05a518cd35715881d68b9ad69ea1f6b0e2ffe4e7cf970552a166d2840",
+          "baseline_sha256": "66e24af05a518cd35715881d68b9ad69ea1f6b0e2ffe4e7cf970552a166d2840"
+        },
+        {
+          "path": "assets/generated/stage1_ambient.bin",
+          "sha256": "23a821d2fc3f885143c6a43c9605f65545ee9c9465912a980e6c22f4baef8d0b",
+          "baseline_sha256": "23a821d2fc3f885143c6a43c9605f65545ee9c9465912a980e6c22f4baef8d0b"
+        },
+        {
+          "path": "assets/generated/stage1_floor_map.bin",
+          "sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+          "baseline_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad"
+        },
+        {
+          "path": "assets/generated/stage1_floor_tiles.bin",
+          "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+          "baseline_sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb"
+        },
+        {
+          "path": "assets/generated/stage1_map.bin",
+          "sha256": "948e2e6e5aa519016c5adf2ccbb2ec079dfe52ee39ec9e20a332d5bea7f6d038",
+          "baseline_sha256": "948e2e6e5aa519016c5adf2ccbb2ec079dfe52ee39ec9e20a332d5bea7f6d038"
+        },
+        {
+          "path": "assets/generated/stage1_pal.bin",
+          "sha256": "b994e260b51c5b5ad3cf79113acc0a83e2c475c6eb4051ff63e77db2e90d6a6f",
+          "baseline_sha256": "b994e260b51c5b5ad3cf79113acc0a83e2c475c6eb4051ff63e77db2e90d6a6f"
+        },
+        {
+          "path": "assets/generated/stage1_tiles.bin",
+          "sha256": "f81a3dbf062eeecae60aae5562145eee3e0a41567af7b0624e12e306243ad32f",
+          "baseline_sha256": "f81a3dbf062eeecae60aae5562145eee3e0a41567af7b0624e12e306243ad32f"
+        },
+        {
+          "path": "assets/generated/stage2.png",
+          "sha256": "b2cdbd14041069009c27501c2ba749347a5671c75bd8853922ab770e7369dfbb",
+          "baseline_sha256": "b2cdbd14041069009c27501c2ba749347a5671c75bd8853922ab770e7369dfbb"
+        },
+        {
+          "path": "assets/generated/stage2_ambient.bin",
+          "sha256": "54f1ad7b421c05accf8d5026877ce4b2621b2e9df51e4fb5bb115388a9003a6c",
+          "baseline_sha256": "54f1ad7b421c05accf8d5026877ce4b2621b2e9df51e4fb5bb115388a9003a6c"
+        },
+        {
+          "path": "assets/generated/stage2_floor_map.bin",
+          "sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+          "baseline_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad"
+        },
+        {
+          "path": "assets/generated/stage2_floor_tiles.bin",
+          "sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb",
+          "baseline_sha256": "374708fff7719dd5979ec875d56cd2286f6d3cf7ec317a3b25632aab28ec37bb"
+        },
+        {
+          "path": "assets/generated/stage2_map.bin",
+          "sha256": "deea0bad2d220c4122de24f15e1c907def92ea1c89b2d9d43701faf929666107",
+          "baseline_sha256": "deea0bad2d220c4122de24f15e1c907def92ea1c89b2d9d43701faf929666107"
+        },
+        {
+          "path": "assets/generated/stage2_pal.bin",
+          "sha256": "979a96e8194eb3e8a2c87540b8d4f1b7037928fa52cb2c7364090d8f25f6108c",
+          "baseline_sha256": "979a96e8194eb3e8a2c87540b8d4f1b7037928fa52cb2c7364090d8f25f6108c"
+        },
+        {
+          "path": "assets/generated/stage2_tiles.bin",
+          "sha256": "2d587ac6e166e1304a67bd9db53e6d8585f9cb6d6a272ee50501e1f0743958aa",
+          "baseline_sha256": "2d587ac6e166e1304a67bd9db53e6d8585f9cb6d6a272ee50501e1f0743958aa"
+        },
+        {
+          "path": "assets/generated/title.png",
+          "sha256": "1e31d62540497a20effb8bf2f4b2910eb33fceed274a24d2778608bf52ebb5f4",
+          "baseline_sha256": "1e31d62540497a20effb8bf2f4b2910eb33fceed274a24d2778608bf52ebb5f4"
+        },
+        {
+          "path": "assets/generated/title_map.bin",
+          "sha256": "2c28834a1297bbcd3c88209fbd9c4c97fea8bd10bf8676537112150b386691fc",
+          "baseline_sha256": "2c28834a1297bbcd3c88209fbd9c4c97fea8bd10bf8676537112150b386691fc"
+        },
+        {
+          "path": "assets/generated/title_pal.bin",
+          "sha256": "2f4fc0f18aaee50beb677411e53e1f2e005022347c04359c0ae22cee3c8b7034",
+          "baseline_sha256": "2f4fc0f18aaee50beb677411e53e1f2e005022347c04359c0ae22cee3c8b7034"
+        },
+        {
+          "path": "assets/generated/title_tiles.bin",
+          "sha256": "8e8307d1054c5e21266439a39cd5c2823fcf85319ba8af99b5719f77fdd93c2d",
+          "baseline_sha256": "8e8307d1054c5e21266439a39cd5c2823fcf85319ba8af99b5719f77fdd93c2d"
+        },
+        {
+          "path": "assets/generated/ui_pal.bin",
+          "sha256": "f99e1aad1efa10318c6c61a54c598518ffc723e22afbe7a5ecd502c57d2d507e",
+          "baseline_sha256": "f99e1aad1efa10318c6c61a54c598518ffc723e22afbe7a5ecd502c57d2d507e"
+        },
+        {
+          "path": "assets/generated/ui_tiles.bin",
+          "sha256": "de322b22b9749e58d0bd89f743b4952735274533fc21d6c60c3116037dcea1ab",
+          "baseline_sha256": "de322b22b9749e58d0bd89f743b4952735274533fc21d6c60c3116037dcea1ab"
+        }
+      ]
+    },
+    "other_fighters_exact": 11,
+    "Fernando_palette_scale_roles_exact": true,
+    "prior_ram_labels_exact": 1331,
+    "native_rules_except_spelling_version_exact": true,
+    "maximum_native_section_bytes": 30720,
+    "native_geometry": "Rectangles are regenerated from the revised Fernando pixels; eleven other fighter geometry blocks remain exact."
+  },
+  "result": {
+    "cases": [
+      {
+        "stage": {
+          "stage": 0,
+          "core": "snes9x",
+          "video_timing": {
+            "fps": 60.098811862348406,
+            "pcm_sample_rate": 32040.0,
+            "callback_size": [
+              256,
+              224
+            ]
+          },
+          "intro_frozen_samples": 110,
+          "camera_bounds": [
+            -8,
+            8
+          ],
+          "pixel_oracle_frames": 520,
+          "contacts": 7,
+          "frozen_hitstop_samples": 70,
+          "impact_pixel_offsets": [
+            -2,
+            -1,
+            0,
+            1
+          ],
+          "movement_clip": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage0-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage0-contacts.gif",
+          "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
+          "stills": [
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage0-center.png",
+              "sha256": "db09843dec0649c45bd5fcf3a2f5a47e392e80370a08494403d36468eeb129b7",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage0-guide.png",
+              "sha256": "251e7ed9b6b13c5f9df4f3f20614e7d2ccb7425b0ab77444e03d89675295a02b",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage0-left.png",
+              "sha256": "e3c37cb2a55610dbda431814c9c18bb34e39260822d0e3119ed409a71639737c",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage0-right.png",
+              "sha256": "f342b5222e582a1bc8d192ef895d6738680aa0e5d41bd01e2dce9074607dde44",
+              "scope": "current native PPU"
+            }
+          ],
+          "pixel_samples_sha256": "f7e68d3359f71ec3e24b8d85333160ea79e1318cad136fade620ab93240b99f7",
+          "measured_frames": 1489,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 3,
+          "obj_peak_sprites": 17,
+          "obj_peak_tiles": 34,
+          "actor_dma_frames": 279,
+          "arena_animation": {
+            "callbacks": 1489,
+            "uploads": 258,
+            "completed_phases": [
+              0,
+              1,
+              2,
+              3,
+              5
+            ],
+            "pool_source_bound": true,
+            "map_floor_immutable": true,
+            "trace_matches_direct_state": true
+          }
+        },
+        "stress": {
+          "stage": 0,
+          "core": "snes9x",
+          "two_wave_frames": 22,
+          "wave_frames": 31,
+          "clip": "docs/screenshots/likeness-v030/stages/stages/snes9x-stress0.gif",
+          "measured_frames": 720,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 0,
+          "obj_peak_sprites": 16,
+          "obj_peak_tiles": 32,
+          "actor_dma_frames": 132,
+          "arena_animation": {
+            "callbacks": 720,
+            "uploads": 129,
+            "completed_phases": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "pool_source_bound": true,
+            "map_floor_immutable": true,
+            "trace_matches_direct_state": true
+          }
+        }
+      },
+      {
+        "stage": {
+          "stage": 1,
+          "core": "snes9x",
+          "video_timing": {
+            "fps": 60.098811862348406,
+            "pcm_sample_rate": 32040.0,
+            "callback_size": [
+              256,
+              224
+            ]
+          },
+          "intro_frozen_samples": 110,
+          "camera_bounds": [
+            -8,
+            8
+          ],
+          "pixel_oracle_frames": 520,
+          "contacts": 7,
+          "frozen_hitstop_samples": 70,
+          "impact_pixel_offsets": [
+            -2,
+            -1,
+            0,
+            1
+          ],
+          "movement_clip": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage1-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage1-contacts.gif",
+          "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
+          "stills": [
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage1-center.png",
+              "sha256": "60b5f870082ffbc26aa82d45b759f64856a8f56af7d15fde1cc0f37707cefa0e",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage1-guide.png",
+              "sha256": "251e7ed9b6b13c5f9df4f3f20614e7d2ccb7425b0ab77444e03d89675295a02b",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage1-left.png",
+              "sha256": "e73941e1a14076e1035e1bcd97063de35ce425be841711c42c4b19e373afc186",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage1-right.png",
+              "sha256": "cac800cdbe31c2b8750d34e8dfcd429e1536d83e2471feaf3a4dd3b1554f3182",
+              "scope": "current native PPU"
+            }
+          ],
+          "pixel_samples_sha256": "a482583bbe2571a889a050f450149fbce679b1a92c3d5b647512106f145f4c62",
+          "measured_frames": 1489,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 3,
+          "obj_peak_sprites": 17,
+          "obj_peak_tiles": 34,
+          "actor_dma_frames": 279,
+          "arena_animation": {
+            "callbacks": 1489,
+            "uploads": 258,
+            "completed_phases": [
+              0,
+              1,
+              2,
+              3,
+              5
+            ],
+            "pool_source_bound": true,
+            "map_floor_immutable": true,
+            "trace_matches_direct_state": true
+          }
+        },
+        "stress": {
+          "stage": 1,
+          "core": "snes9x",
+          "two_wave_frames": 22,
+          "wave_frames": 31,
+          "clip": "docs/screenshots/likeness-v030/stages/stages/snes9x-stress1.gif",
+          "measured_frames": 720,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 0,
+          "obj_peak_sprites": 16,
+          "obj_peak_tiles": 32,
+          "actor_dma_frames": 132,
+          "arena_animation": {
+            "callbacks": 720,
+            "uploads": 128,
+            "completed_phases": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "pool_source_bound": true,
+            "map_floor_immutable": true,
+            "trace_matches_direct_state": true
+          }
+        }
+      },
+      {
+        "stage": {
+          "stage": 2,
+          "core": "snes9x",
+          "video_timing": {
+            "fps": 60.098811862348406,
+            "pcm_sample_rate": 32040.0,
+            "callback_size": [
+              256,
+              224
+            ]
+          },
+          "intro_frozen_samples": 110,
+          "camera_bounds": [
+            -8,
+            8
+          ],
+          "pixel_oracle_frames": 520,
+          "contacts": 7,
+          "frozen_hitstop_samples": 70,
+          "impact_pixel_offsets": [
+            -2,
+            -1,
+            0,
+            1
+          ],
+          "movement_clip": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage2-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage2-contacts.gif",
+          "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
+          "stills": [
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage2-center.png",
+              "sha256": "dfb8e62dd8e296b4d4400d9f9252382b78741bcf240b5c051e64248587e8d2a3",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage2-guide.png",
+              "sha256": "251e7ed9b6b13c5f9df4f3f20614e7d2ccb7425b0ab77444e03d89675295a02b",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage2-left.png",
+              "sha256": "d96e60b6ec47307b04cde3be5a92f31d965216c961782580f86a39ed062f3dad",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage2-right.png",
+              "sha256": "50031f60c963a6d30660aa947dfc093b7b6392304adc584e8bce31537fcbd022",
+              "scope": "current native PPU"
+            }
+          ],
+          "pixel_samples_sha256": "5462b4d2e0945b74487e9614905c7fea3549a4d1162822191682031b7de720e4",
+          "measured_frames": 1489,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 3,
+          "obj_peak_sprites": 17,
+          "obj_peak_tiles": 34,
+          "actor_dma_frames": 279,
+          "arena_animation": {
+            "callbacks": 1489,
+            "uploads": 258,
+            "completed_phases": [
+              0,
+              1,
+              2,
+              3,
+              5
+            ],
+            "pool_source_bound": true,
+            "map_floor_immutable": true,
+            "trace_matches_direct_state": true
+          }
+        },
+        "stress": {
+          "stage": 2,
+          "core": "snes9x",
+          "two_wave_frames": 22,
+          "wave_frames": 31,
+          "clip": "docs/screenshots/likeness-v030/stages/stages/snes9x-stress2.gif",
+          "measured_frames": 720,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 0,
+          "obj_peak_sprites": 16,
+          "obj_peak_tiles": 32,
+          "actor_dma_frames": 132,
+          "arena_animation": {
+            "callbacks": 720,
+            "uploads": 129,
+            "completed_phases": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "pool_source_bound": true,
+            "map_floor_immutable": true,
+            "trace_matches_direct_state": true
+          }
+        }
+      },
+      {
+        "stage": {
+          "stage": 0,
+          "core": "accuracy",
+          "video_timing": {
+            "fps": 60.098811862348406,
+            "pcm_sample_rate": 32040.5,
+            "callback_size": [
+              256,
+              224
+            ]
+          },
+          "intro_frozen_samples": 110,
+          "camera_bounds": [
+            -8,
+            8
+          ],
+          "pixel_oracle_frames": 520,
+          "contacts": 7,
+          "frozen_hitstop_samples": 70,
+          "impact_pixel_offsets": [
+            -2,
+            -1,
+            0,
+            1
+          ],
+          "movement_clip": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage0-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage0-contacts.gif",
+          "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
+          "stills": [
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage0-center.png",
+              "sha256": "761ab4eff5855c1d84e8ce52ea2a653732f2fcc00b241efe155720a4d4884d12",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage0-guide.png",
+              "sha256": "45cdb6973c2e7fbf333324a23c4eda6bc538c31797d0a772bdec3c93c3799301",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage0-left.png",
+              "sha256": "5a31431b91a7a53dedf32f982dff48c88c84cfa6411519c79d7e8772bc691eb3",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage0-right.png",
+              "sha256": "ed33e6306c1774f8ba7a19c6ee5d80c2e9acbfb9db35829716435342d9a730e5",
+              "scope": "current native PPU"
+            }
+          ],
+          "pixel_samples_sha256": "252197df9785540fe76bc7967f8c607b6af5ba9f06fcf2bd96b1847883fa7581",
+          "measured_frames": 1489,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 3,
+          "obj_peak_sprites": 17,
+          "obj_peak_tiles": 34,
+          "actor_dma_frames": 279,
+          "arena_animation": {
+            "callbacks": 1489,
+            "uploads": 258,
+            "completed_phases": [
+              0,
+              1,
+              2,
+              3,
+              5
+            ],
+            "pool_source_bound": true,
+            "map_floor_immutable": true,
+            "trace_matches_direct_state": true
+          }
+        },
+        "stress": {
+          "stage": 0,
+          "core": "accuracy",
+          "two_wave_frames": 22,
+          "wave_frames": 31,
+          "clip": "docs/screenshots/likeness-v030/stages/stages/accuracy-stress0.gif",
+          "measured_frames": 720,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 0,
+          "obj_peak_sprites": 16,
+          "obj_peak_tiles": 32,
+          "actor_dma_frames": 132,
+          "arena_animation": {
+            "callbacks": 720,
+            "uploads": 129,
+            "completed_phases": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "pool_source_bound": true,
+            "map_floor_immutable": true,
+            "trace_matches_direct_state": true
+          }
+        }
+      },
+      {
+        "stage": {
+          "stage": 1,
+          "core": "accuracy",
+          "video_timing": {
+            "fps": 60.098811862348406,
+            "pcm_sample_rate": 32040.5,
+            "callback_size": [
+              256,
+              224
+            ]
+          },
+          "intro_frozen_samples": 110,
+          "camera_bounds": [
+            -8,
+            8
+          ],
+          "pixel_oracle_frames": 520,
+          "contacts": 7,
+          "frozen_hitstop_samples": 70,
+          "impact_pixel_offsets": [
+            -2,
+            -1,
+            0,
+            1
+          ],
+          "movement_clip": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage1-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage1-contacts.gif",
+          "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
+          "stills": [
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage1-center.png",
+              "sha256": "fb521ade36895157d59190c22c27bce860b65855d6323bfe2a08c22baab40545",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage1-guide.png",
+              "sha256": "45cdb6973c2e7fbf333324a23c4eda6bc538c31797d0a772bdec3c93c3799301",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage1-left.png",
+              "sha256": "674925560baa93f3d388611483bfa7550166c0bd828d8b74809197497d1ad2b1",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage1-right.png",
+              "sha256": "cded1eb3f2e871b995e46ea3fbb14811944229c75cbf4b86b3646d163d3b88aa",
+              "scope": "current native PPU"
+            }
+          ],
+          "pixel_samples_sha256": "51d721ecd99389c605bdf7c41f2287c104ffa1dcfba4b737fa24ef35fd03c3ec",
+          "measured_frames": 1489,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 3,
+          "obj_peak_sprites": 17,
+          "obj_peak_tiles": 34,
+          "actor_dma_frames": 279,
+          "arena_animation": {
+            "callbacks": 1489,
+            "uploads": 258,
+            "completed_phases": [
+              0,
+              1,
+              2,
+              3,
+              5
+            ],
+            "pool_source_bound": true,
+            "map_floor_immutable": true,
+            "trace_matches_direct_state": true
+          }
+        },
+        "stress": {
+          "stage": 1,
+          "core": "accuracy",
+          "two_wave_frames": 22,
+          "wave_frames": 31,
+          "clip": "docs/screenshots/likeness-v030/stages/stages/accuracy-stress1.gif",
+          "measured_frames": 720,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 0,
+          "obj_peak_sprites": 16,
+          "obj_peak_tiles": 32,
+          "actor_dma_frames": 132,
+          "arena_animation": {
+            "callbacks": 720,
+            "uploads": 128,
+            "completed_phases": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "pool_source_bound": true,
+            "map_floor_immutable": true,
+            "trace_matches_direct_state": true
+          }
+        }
+      },
+      {
+        "stage": {
+          "stage": 2,
+          "core": "accuracy",
+          "video_timing": {
+            "fps": 60.098811862348406,
+            "pcm_sample_rate": 32040.5,
+            "callback_size": [
+              256,
+              224
+            ]
+          },
+          "intro_frozen_samples": 110,
+          "camera_bounds": [
+            -8,
+            8
+          ],
+          "pixel_oracle_frames": 520,
+          "contacts": 7,
+          "frozen_hitstop_samples": 70,
+          "impact_pixel_offsets": [
+            -2,
+            -1,
+            0,
+            1
+          ],
+          "movement_clip": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage2-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage2-contacts.gif",
+          "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
+          "stills": [
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage2-center.png",
+              "sha256": "692c268ca4a560e04b2ce90b6137064b4b6e2b9b8387e66fa46229fb4b855152",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage2-guide.png",
+              "sha256": "45cdb6973c2e7fbf333324a23c4eda6bc538c31797d0a772bdec3c93c3799301",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage2-left.png",
+              "sha256": "ab8cc720a6fc82e20a767651cd5c9a9668353199838f92bccf37e0d4a0a97791",
+              "scope": "current native PPU"
+            },
+            {
+              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage2-right.png",
+              "sha256": "9407d3d0e6f635fdb60dea94bf5024b11690e4fe8fc1198aa06c51bda1a8d9ac",
+              "scope": "current native PPU"
+            }
+          ],
+          "pixel_samples_sha256": "c9aeac968fbf024a05b8f66baba1c8caa61de3cbe8178e46168b39073d943507",
+          "measured_frames": 1489,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 3,
+          "obj_peak_sprites": 17,
+          "obj_peak_tiles": 34,
+          "actor_dma_frames": 279,
+          "arena_animation": {
+            "callbacks": 1489,
+            "uploads": 258,
+            "completed_phases": [
+              0,
+              1,
+              2,
+              3,
+              5
+            ],
+            "pool_source_bound": true,
+            "map_floor_immutable": true,
+            "trace_matches_direct_state": true
+          }
+        },
+        "stress": {
+          "stage": 2,
+          "core": "accuracy",
+          "two_wave_frames": 22,
+          "wave_frames": 31,
+          "clip": "docs/screenshots/likeness-v030/stages/stages/accuracy-stress2.gif",
+          "measured_frames": 720,
+          "cadence_deltas": [
+            1
+          ],
+          "max_spc_backlog": 0,
+          "obj_peak_sprites": 16,
+          "obj_peak_tiles": 32,
+          "actor_dma_frames": 132,
+          "arena_animation": {
+            "callbacks": 720,
+            "uploads": 129,
+            "completed_phases": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "pool_source_bound": true,
+            "map_floor_immutable": true,
+            "trace_matches_direct_state": true
+          }
+        }
+      }
+    ],
+    "checks": [
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          0,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          "right",
+          8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "P2 Start enters native pause before freeze proof",
+        "passed": true,
+        "details": "snes9x-stage0"
+      },
+      {
+        "check": "actual controller contacts produce hitstop and KO",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          7,
+          70
+        ]
+      },
+      {
+        "check": "PPU shows bounded whole-scene contact shake",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          [
+            -2,
+            -1,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "check": "pinned core retains native NTSC video cadence",
+        "passed": true,
+        "details": 60.098811862348406
+      },
+      {
+        "check": "native SPC produces captured PCM without a device",
+        "passed": true,
+        "details": [
+          "snes9x-stage0",
+          2105680,
+          4861
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          0,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports issue simultaneous native low waves",
+        "passed": true,
+        "details": [
+          "snes9x-stress0",
+          22
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          1,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          "right",
+          8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "P2 Start enters native pause before freeze proof",
+        "passed": true,
+        "details": "snes9x-stage1"
+      },
+      {
+        "check": "actual controller contacts produce hitstop and KO",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          7,
+          70
+        ]
+      },
+      {
+        "check": "PPU shows bounded whole-scene contact shake",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          [
+            -2,
+            -1,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "check": "pinned core retains native NTSC video cadence",
+        "passed": true,
+        "details": 60.098811862348406
+      },
+      {
+        "check": "native SPC produces captured PCM without a device",
+        "passed": true,
+        "details": [
+          "snes9x-stage1",
+          2133404,
+          4881
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          1,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports issue simultaneous native low waves",
+        "passed": true,
+        "details": [
+          "snes9x-stress1",
+          22
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          2,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          "right",
+          8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "P2 Start enters native pause before freeze proof",
+        "passed": true,
+        "details": "snes9x-stage2"
+      },
+      {
+        "check": "actual controller contacts produce hitstop and KO",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          7,
+          70
+        ]
+      },
+      {
+        "check": "PPU shows bounded whole-scene contact shake",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          [
+            -2,
+            -1,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "check": "pinned core retains native NTSC video cadence",
+        "passed": true,
+        "details": 60.098811862348406
+      },
+      {
+        "check": "native SPC produces captured PCM without a device",
+        "passed": true,
+        "details": [
+          "snes9x-stage2",
+          2161126,
+          4661
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          2,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports issue simultaneous native low waves",
+        "passed": true,
+        "details": [
+          "snes9x-stress2",
+          22
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          0,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          "right",
+          8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "P2 Start enters native pause before freeze proof",
+        "passed": true,
+        "details": "accuracy-stage0"
+      },
+      {
+        "check": "actual controller contacts produce hitstop and KO",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          7,
+          70
+        ]
+      },
+      {
+        "check": "PPU shows bounded whole-scene contact shake",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          [
+            -2,
+            -1,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "check": "pinned core retains native NTSC video cadence",
+        "passed": true,
+        "details": 60.098811862348406
+      },
+      {
+        "check": "native SPC produces captured PCM without a device",
+        "passed": true,
+        "details": [
+          "accuracy-stage0",
+          2105714,
+          4850
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          0,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports issue simultaneous native low waves",
+        "passed": true,
+        "details": [
+          "accuracy-stress0",
+          22
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          1,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          "right",
+          8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "P2 Start enters native pause before freeze proof",
+        "passed": true,
+        "details": "accuracy-stage1"
+      },
+      {
+        "check": "actual controller contacts produce hitstop and KO",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          7,
+          70
+        ]
+      },
+      {
+        "check": "PPU shows bounded whole-scene contact shake",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          [
+            -2,
+            -1,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "check": "pinned core retains native NTSC video cadence",
+        "passed": true,
+        "details": 60.098811862348406
+      },
+      {
+        "check": "native SPC produces captured PCM without a device",
+        "passed": true,
+        "details": [
+          "accuracy-stage1",
+          2133438,
+          4881
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          1,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports issue simultaneous native low waves",
+        "passed": true,
+        "details": [
+          "accuracy-stress1",
+          22
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          2,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          "right",
+          8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "both ports drive full authored camera bounds",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          "left",
+          -8
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          [
+            0,
+            0,
+            112,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "HUD names/health stay exact during whole-plane movement",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          [
+            160,
+            0,
+            256,
+            16
+          ]
+        ]
+      },
+      {
+        "check": "P2 Start enters native pause before freeze proof",
+        "passed": true,
+        "details": "accuracy-stage2"
+      },
+      {
+        "check": "actual controller contacts produce hitstop and KO",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          7,
+          70
+        ]
+      },
+      {
+        "check": "PPU shows bounded whole-scene contact shake",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          [
+            -2,
+            -1,
+            0,
+            1
+          ]
+        ]
+      },
+      {
+        "check": "pinned core retains native NTSC video cadence",
+        "passed": true,
+        "details": 60.098811862348406
+      },
+      {
+        "check": "native SPC produces captured PCM without a device",
+        "passed": true,
+        "details": [
+          "accuracy-stage2",
+          2161160,
+          4962
+        ]
+      },
+      {
+        "check": "controller menus reach chosen native local match",
+        "passed": true,
+        "details": [
+          2,
+          4,
+          6
+        ]
+      },
+      {
+        "check": "both ports issue simultaneous native low waves",
+        "passed": true,
+        "details": [
+          "accuracy-stress2",
+          22
+        ]
+      }
+    ],
+    "failure_arrays": {
+      "cadence": [],
+      "native_timing": [],
+      "overflow": [],
+      "transfer": [],
+      "ppu": [],
+      "freeze": [],
+      "spc": []
+    }
+  },
+  "check_count": 19002,
+  "elapsed_seconds": 156.015
+}
