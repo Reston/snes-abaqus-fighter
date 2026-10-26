@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "ram_labels": 1331,
+  "moved_ram": {},
+  "generated_total": 237,
+  "generated_preserved": 218,
+  "generated_changed": [
+    "assets/generated/assets.h",
+    "assets/generated/character-manifest.json",
+    "assets/generated/fighter06.bin",
+    "assets/generated/fighter06.png",
+    "assets/generated/fighter06b.bin",
+    "assets/generated/fighter06c.bin",
+    "assets/generated/fighter06d.bin",
+    "assets/generated/fighter06e.bin",
+    "assets/generated/fighter06f.bin",
+    "assets/generated/fighter06g.bin",
+    "assets/generated/fighter06h.bin",
+    "assets/generated/portrait06-large.png",
+    "assets/generated/portrait06.png",
+    "assets/generated/portrait06_pal.bin",
+    "assets/generated/portrait06_tiles.bin",
+    "assets/generated/select.png",
+    "assets/generated/select_map.bin",
+    "assets/generated/select_pal.bin",
+    "assets/generated/select_tiles.bin"
+  ],
+  "contact_geometry_changes": [
+    {
+      "fighter": 6,
+      "changed_bytes": 220
+    }
+  ],
+  "runtime_source_diff": [
+    "src/arcade_story.h",
+    "src/characters.h",
+    "src/cpu_personality.h",
+    "src/fighter_personality.h",
+    "src/version.h"
+  ],
+  "rom_sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
+  "version": "0.30.0",
+  "baseline_commit": "c4cf41148f76e202d958e8f2e3e2f040505054c1",
+  "baseline_rom_sha256": "7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0"
+}

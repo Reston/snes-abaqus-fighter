@@ -3,7 +3,7 @@
   "suite": "training",
   "status": "passed",
   "passed": 3636,
-  "rom_sha256": "7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0",
+  "rom_sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
   "rom_bytes": 4194304,
   "core": {
     "archive": ".tools\\core.zip",
@@ -13,7 +13,7 @@
     "dll": ".tools\\core\\snes9x_libretro.dll",
     "dll_sha256": "f00db5bd97bbe0e80761e590449eb14716bd9ab5785a1b50725c55e10505c343"
   },
-  "harness_sha256": "0ded84501446b28e4f2444e0f4854dee89c398eb6b08e4cdc0a5f17a8e0a7724",
+  "harness_sha256": "9c4d23bc8437879d1249b675017878efb864a32cb1c53ca27a96efb3ac37e0dc",
   "core_options": {
     "snes9x_up_down_allowed": "enabled"
   },
@@ -51446,14 +51446,14 @@
       "p1": 7,
       "p2": 8,
       "special": "RISK REVERSAL",
-      "text": " CRISTIAN      99   MAMARIAGA\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  CRISTIAN\n       RISK REVERSAL\n       RISING\n   P2  MAMARIAGA\n       MERGE FORCE\n       LOW WAVE\n   QUICK: DOWN + Y\n   P1 ZERO RISK\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 MERGE STORM\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
+      "text": " CRISTIAN      99   MADARIAGA\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  CRISTIAN\n       RISK REVERSAL\n       RISING\n   P2  MADARIAGA\n       MERGE FORCE\n       LOW WAVE\n   QUICK: DOWN + Y\n   P1 ZERO RISK\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 MERGE STORM\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
     },
     {
       "fighter": 8,
       "p1": 8,
       "p2": 9,
       "special": "MERGE FORCE",
-      "text": " MAMARIAGA     99   RESTON\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  MAMARIAGA\n       MERGE FORCE\n       LOW WAVE\n   P2  RESTON\n       CLOUD CRASH\n       PROJECTILE\n   QUICK: DOWN + Y\n   P1 MERGE STORM\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 CLOUD NINE\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
+      "text": " MADARIAGA     99   RESTON\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  MADARIAGA\n       MERGE FORCE\n       LOW WAVE\n   P2  RESTON\n       CLOUD CRASH\n       PROJECTILE\n   QUICK: DOWN + Y\n   P1 MERGE STORM\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 CLOUD NINE\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
     },
     {
       "fighter": 9,
@@ -342082,7 +342082,7 @@
       "details": {
         "fighter": 7,
         "token": "CRISTIAN",
-        "text": " CRISTIAN      99   MAMARIAGA\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  CRISTIAN\n       RISK REVERSAL\n       RISING\n   P2  MAMARIAGA\n       MERGE FORCE\n       LOW WAVE\n   QUICK: DOWN + Y\n   P1 ZERO RISK\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 MERGE STORM\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
+        "text": " CRISTIAN      99   MADARIAGA\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  CRISTIAN\n       RISK REVERSAL\n       RISING\n   P2  MADARIAGA\n       MERGE FORCE\n       LOW WAVE\n   QUICK: DOWN + Y\n   P1 ZERO RISK\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 MERGE STORM\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
       }
     },
     {
@@ -342091,7 +342091,7 @@
       "details": {
         "fighter": 7,
         "token": "RISK REVERSAL",
-        "text": " CRISTIAN      99   MAMARIAGA\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  CRISTIAN\n       RISK REVERSAL\n       RISING\n   P2  MAMARIAGA\n       MERGE FORCE\n       LOW WAVE\n   QUICK: DOWN + Y\n   P1 ZERO RISK\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 MERGE STORM\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
+        "text": " CRISTIAN      99   MADARIAGA\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  CRISTIAN\n       RISK REVERSAL\n       RISING\n   P2  MADARIAGA\n       MERGE FORCE\n       LOW WAVE\n   QUICK: DOWN + Y\n   P1 ZERO RISK\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 MERGE STORM\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
       }
     },
     {
@@ -342100,7 +342100,7 @@
       "details": {
         "fighter": 7,
         "token": "RISING",
-        "text": " CRISTIAN      99   MAMARIAGA\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  CRISTIAN\n       RISK REVERSAL\n       RISING\n   P2  MAMARIAGA\n       MERGE FORCE\n       LOW WAVE\n   QUICK: DOWN + Y\n   P1 ZERO RISK\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 MERGE STORM\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
+        "text": " CRISTIAN      99   MADARIAGA\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  CRISTIAN\n       RISK REVERSAL\n       RISING\n   P2  MADARIAGA\n       MERGE FORCE\n       LOW WAVE\n   QUICK: DOWN + Y\n   P1 ZERO RISK\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 MERGE STORM\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
       }
     },
     {
@@ -342108,8 +342108,8 @@
       "passed": true,
       "details": {
         "fighter": 7,
-        "token": "MAMARIAGA",
-        "text": " CRISTIAN      99   MAMARIAGA\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  CRISTIAN\n       RISK REVERSAL\n       RISING\n   P2  MAMARIAGA\n       MERGE FORCE\n       LOW WAVE\n   QUICK: DOWN + Y\n   P1 ZERO RISK\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 MERGE STORM\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
+        "token": "MADARIAGA",
+        "text": " CRISTIAN      99   MADARIAGA\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  CRISTIAN\n       RISK REVERSAL\n       RISING\n   P2  MADARIAGA\n       MERGE FORCE\n       LOW WAVE\n   QUICK: DOWN + Y\n   P1 ZERO RISK\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 MERGE STORM\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
       }
     },
     {
@@ -342118,7 +342118,7 @@
       "details": {
         "fighter": 7,
         "token": "MERGE FORCE",
-        "text": " CRISTIAN      99   MAMARIAGA\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  CRISTIAN\n       RISK REVERSAL\n       RISING\n   P2  MAMARIAGA\n       MERGE FORCE\n       LOW WAVE\n   QUICK: DOWN + Y\n   P1 ZERO RISK\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 MERGE STORM\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
+        "text": " CRISTIAN      99   MADARIAGA\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  CRISTIAN\n       RISK REVERSAL\n       RISING\n   P2  MADARIAGA\n       MERGE FORCE\n       LOW WAVE\n   QUICK: DOWN + Y\n   P1 ZERO RISK\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 MERGE STORM\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
       }
     },
     {
@@ -342127,7 +342127,7 @@
       "details": {
         "fighter": 7,
         "token": "LOW WAVE",
-        "text": " CRISTIAN      99   MAMARIAGA\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  CRISTIAN\n       RISK REVERSAL\n       RISING\n   P2  MAMARIAGA\n       MERGE FORCE\n       LOW WAVE\n   QUICK: DOWN + Y\n   P1 ZERO RISK\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 MERGE STORM\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
+        "text": " CRISTIAN      99   MADARIAGA\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  CRISTIAN\n       RISK REVERSAL\n       RISING\n   P2  MADARIAGA\n       MERGE FORCE\n       LOW WAVE\n   QUICK: DOWN + Y\n   P1 ZERO RISK\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 MERGE STORM\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
       }
     },
     {
@@ -343503,8 +343503,8 @@
       "passed": true,
       "details": {
         "fighter": 8,
-        "token": "MAMARIAGA",
-        "text": " MAMARIAGA     99   RESTON\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  MAMARIAGA\n       MERGE FORCE\n       LOW WAVE\n   P2  RESTON\n       CLOUD CRASH\n       PROJECTILE\n   QUICK: DOWN + Y\n   P1 MERGE STORM\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 CLOUD NINE\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
+        "token": "MADARIAGA",
+        "text": " MADARIAGA     99   RESTON\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  MADARIAGA\n       MERGE FORCE\n       LOW WAVE\n   P2  RESTON\n       CLOUD CRASH\n       PROJECTILE\n   QUICK: DOWN + Y\n   P1 MERGE STORM\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 CLOUD NINE\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
       }
     },
     {
@@ -343513,7 +343513,7 @@
       "details": {
         "fighter": 8,
         "token": "MERGE FORCE",
-        "text": " MAMARIAGA     99   RESTON\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  MAMARIAGA\n       MERGE FORCE\n       LOW WAVE\n   P2  RESTON\n       CLOUD CRASH\n       PROJECTILE\n   QUICK: DOWN + Y\n   P1 MERGE STORM\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 CLOUD NINE\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
+        "text": " MADARIAGA     99   RESTON\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  MADARIAGA\n       MERGE FORCE\n       LOW WAVE\n   P2  RESTON\n       CLOUD CRASH\n       PROJECTILE\n   QUICK: DOWN + Y\n   P1 MERGE STORM\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 CLOUD NINE\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
       }
     },
     {
@@ -343522,7 +343522,7 @@
       "details": {
         "fighter": 8,
         "token": "LOW WAVE",
-        "text": " MAMARIAGA     99   RESTON\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  MAMARIAGA\n       MERGE FORCE\n       LOW WAVE\n   P2  RESTON\n       CLOUD CRASH\n       PROJECTILE\n   QUICK: DOWN + Y\n   P1 MERGE STORM\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 CLOUD NINE\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
+        "text": " MADARIAGA     99   RESTON\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  MADARIAGA\n       MERGE FORCE\n       LOW WAVE\n   P2  RESTON\n       CLOUD CRASH\n       PROJECTILE\n   QUICK: DOWN + Y\n   P1 MERGE STORM\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 CLOUD NINE\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
       }
     },
     {
@@ -343531,7 +343531,7 @@
       "details": {
         "fighter": 8,
         "token": "RESTON",
-        "text": " MAMARIAGA     99   RESTON\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  MAMARIAGA\n       MERGE FORCE\n       LOW WAVE\n   P2  RESTON\n       CLOUD CRASH\n       PROJECTILE\n   QUICK: DOWN + Y\n   P1 MERGE STORM\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 CLOUD NINE\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
+        "text": " MADARIAGA     99   RESTON\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  MADARIAGA\n       MERGE FORCE\n       LOW WAVE\n   P2  RESTON\n       CLOUD CRASH\n       PROJECTILE\n   QUICK: DOWN + Y\n   P1 MERGE STORM\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 CLOUD NINE\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
       }
     },
     {
@@ -343540,7 +343540,7 @@
       "details": {
         "fighter": 8,
         "token": "CLOUD CRASH",
-        "text": " MAMARIAGA     99   RESTON\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  MAMARIAGA\n       MERGE FORCE\n       LOW WAVE\n   P2  RESTON\n       CLOUD CRASH\n       PROJECTILE\n   QUICK: DOWN + Y\n   P1 MERGE STORM\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 CLOUD NINE\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
+        "text": " MADARIAGA     99   RESTON\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  MADARIAGA\n       MERGE FORCE\n       LOW WAVE\n   P2  RESTON\n       CLOUD CRASH\n       PROJECTILE\n   QUICK: DOWN + Y\n   P1 MERGE STORM\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 CLOUD NINE\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
       }
     },
     {
@@ -343549,7 +343549,7 @@
       "details": {
         "fighter": 8,
         "token": "PROJECTILE",
-        "text": " MAMARIAGA     99   RESTON\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  MAMARIAGA\n       MERGE FORCE\n       LOW WAVE\n   P2  RESTON\n       CLOUD CRASH\n       PROJECTILE\n   QUICK: DOWN + Y\n   P1 MERGE STORM\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 CLOUD NINE\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
+        "text": " MADARIAGA     99   RESTON\n               KO\n    WINS     ROUND 1    WINS\n\n            TRAINING\n\n         MOVE LIST 2/3\n   SUPER: Y+B NEUTRAL FULL 96\n   Y SOUND LEVELS\n   P1  MADARIAGA\n       MERGE FORCE\n       LOW WAVE\n   P2  RESTON\n       CLOUD CRASH\n       PROJECTILE\n   QUICK: DOWN + Y\n   P1 MERGE STORM\n   MOTION: D, D+F, F + Y/X\n   D=DOWN  F=TOWARD OPPONENT\n   12 TICKS PER STEP\n   32 ENERGY\n   P2 CLOUD NINE\n   PUNCH WITH FINAL TOWARD\n   UP NORMAL TIMING\n   A/START RESUME  B ROSTER\n   L MUSIC ON\n   SELECT NEXT PAGE\n   R SCENERY MOVING\n\n\n\n"
       }
     },
     {
@@ -356231,5 +356231,5 @@
       }
     }
   ],
-  "elapsed_seconds": 36.046
+  "elapsed_seconds": 57.297
 }

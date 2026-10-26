@@ -24,7 +24,7 @@ from release_evidence import EXPECTED_NATIVE_CORE
 from expansion_contracts import combined_contract
 
 NAMES = ("Damian", "Ivo", "Cristobal", "Cote", "Negger", "David",
-         "Fernando", "Cristian", "Mamariaga", "Reston", "Roxana", "Lars")
+         "Fernando", "Cristian", "Madariaga", "Reston", "Roxana", "Lars")
 ATTACKS = 0xC0C0
 CHECKS = []
 SYMBOLS = {}

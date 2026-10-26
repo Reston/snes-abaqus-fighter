@@ -1,0 +1,163 @@
+{
+  "schema": 1,
+  "fighter_id": 6,
+  "scope": "attack-v1",
+  "palette_sha256": "8157261a8813a14f129fe05c4cd41d219ec1d8213fda5e9de62173601a680a1c",
+  "anchor": {
+    "source": 0,
+    "pose": 0
+  },
+  "height_target": 67,
+  "reference": "assets/art/characters/06-fernando/face-study-v3.png",
+  "reference_sha256": "4cd29965f0adcbe320f91f77aaca3c1952508f841b47b240d98354e6fbd90dfa",
+  "revises": "assets/art/characters/06-fernando/attack-v1.json",
+  "pose_contract_sha256": "c3060bdc3735b6ba0199e3bf3272a077dfed50c248b4f1acf8320052e6ed1a87",
+  "generation_edits": [
+    {
+      "source": "assets/art/characters/06-fernando/attack-v2-a.png",
+      "sha256": "bef939f7fb4b6066a6ad36cfa592e82954b948fbfa935edcf6be8313cb2e94d6",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-e173c32d-186c-4852-99c8-2359e8390289.png",
+      "raw_output_sha256": "bef939f7fb4b6066a6ad36cfa592e82954b948fbfa935edcf6be8313cb2e94d6",
+      "prompt": "Use case: identity-preserve. Image1 is EDIT TARGET attack-v1-a.png; Image2 is Fernando's photographed identity; Image3 is his new likeness study. Replace every visible head in Image1 with Fernando's recognizable face from Image3, adapted to each existing angle, rendered in Image1's crisp limited-color cartoon style. Fuller rounded-oval face and forehead, straight heavy natural eyebrows (not angry V), soft hooded dark eyes, substantial straight rounded-tip nose, modest almost-straight lips, rounded chin with very subtle jaw shadow, short naturally side-swept dark brown hair with low volume. Preserve pose emotion and facing, no generic sharp-jawed anime face, no beard or quiff. Change ONLY head/hair and immediate collar junction. Preserve EXACT bodies, coherent hips/torso/limbs, costume, hands/shoes, relative positions, head height, physical scale, all pose order and canvas layout. Exactly 16 separate full-body figures, FOUR COLUMNS by 4 ROWS, true transparent gutters and background. Do not enlarge, shrink, crop, rearrange, add/delete figures, redraw below collar, add effects/grid/labels/scenery/floor/shadows. Keep the target's existing crouched/falling/airborne anatomy and head orientation, no upright replacement in action poses. Output complete revised atlas only.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        {
+          "path": "assets/references/fighter-06.jpg",
+          "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+          "role": "photographed identity"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/attack-v1-a.png",
+          "sha256": "f3a3b594747584ac334c514dece06ce67cd6caf44fccfdf6f4b002691a53417e",
+          "role": "edit target; preserve pose and costume"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/face-study-v3.png",
+          "sha256": "4cd29965f0adcbe320f91f77aaca3c1952508f841b47b240d98354e6fbd90dfa",
+          "role": "facial design study"
+        }
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "selected_final": "assets/art/characters/06-fernando/attack-v2-a.png"
+    },
+    {
+      "source": "assets/art/characters/06-fernando/attack-v2-b.png",
+      "sha256": "fc679b0d7c15075a150e16bc553911f2e3673f4e0bf5409f8284c42163cc4a2a",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-38ec7677-4966-43cb-8d2a-d9c653f23e0a.png",
+      "raw_output_sha256": "fc679b0d7c15075a150e16bc553911f2e3673f4e0bf5409f8284c42163cc4a2a",
+      "prompt": "Use case: identity-preserve. Image1 is EDIT TARGET attack-v1-b.png; Image2 is Fernando's photographed identity; Image3 is his new likeness study. Replace every visible head in Image1 with Fernando's recognizable face from Image3, adapted to each existing angle, rendered in Image1's crisp limited-color cartoon style. Fuller rounded-oval face and forehead, straight heavy natural eyebrows (not angry V), soft hooded dark eyes, substantial straight rounded-tip nose, modest almost-straight lips, rounded chin with very subtle jaw shadow, short naturally side-swept dark brown hair with low volume. Preserve pose emotion and facing; no generic sharp-jawed anime face, beard or quiff. Change ONLY head/hair and immediate collar junction. Preserve EXACT bodies, coordinated hips/torso/limbs, costume, hands/shoes, positions, head height and physical scale, every pose order and canvas layout. Exactly 16 separate full-body figures, FOUR COLUMNS by 4 ROWS, true transparent gutters and background. Do not enlarge/shrink/rearrange/crop/add/delete figures or redraw below collar. In raised-fist, crouch, flying kick and recoil poses preserve the original head angle and contact silhouette. No new effects, props, grid, labels, scenery, floor or shadows. Output complete revised atlas only.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        {
+          "path": "assets/references/fighter-06.jpg",
+          "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+          "role": "photographed identity"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/attack-v1-b.png",
+          "sha256": "e706cdfa6153d793fda52d9c367ec195c11e504ea345758e0f769414e1d6f2ef",
+          "role": "edit target; preserve pose and costume"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/face-study-v3.png",
+          "sha256": "4cd29965f0adcbe320f91f77aaca3c1952508f841b47b240d98354e6fbd90dfa",
+          "role": "facial design study"
+        }
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "selected_final": "assets/art/characters/06-fernando/attack-v2-b.png"
+    }
+  ],
+  "sources": [
+    {
+      "count": 16,
+      "poses": [
+        "ready-guard",
+        "jab-active",
+        "jab-retract",
+        "cross-windup",
+        "cross-active",
+        "cross-retract",
+        "kick-windup",
+        "kick-active",
+        "kick-retract",
+        "sweep-windup",
+        "sweep-active",
+        "sweep-recovery",
+        "block-impact",
+        "block-hold",
+        "hurt-impact",
+        "hurt-recovery"
+      ],
+      "frames": [
+        32,
+        5,
+        33,
+        34,
+        6,
+        35,
+        36,
+        7,
+        37,
+        38,
+        8,
+        39,
+        40,
+        9,
+        10,
+        41
+      ],
+      "file": "assets/art/characters/06-fernando/attack-v2-a.png",
+      "sha256": "bef939f7fb4b6066a6ad36cfa592e82954b948fbfa935edcf6be8313cb2e94d6"
+    },
+    {
+      "count": 16,
+      "poses": [
+        "special-charge",
+        "cast-active",
+        "cast-recovery",
+        "uppercut-anticipation",
+        "uppercut-active",
+        "uppercut-recovery",
+        "rush-active",
+        "knockout-fall",
+        "unused-neutral-a",
+        "unused-cross-load",
+        "unused-block",
+        "unused-guard-return",
+        "unused-neutral-b",
+        "unused-low-guard",
+        "unused-weight-return",
+        "unused-neutral-c"
+      ],
+      "frames": [
+        42,
+        12,
+        43,
+        44,
+        13,
+        45,
+        15,
+        47,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "file": "assets/art/characters/06-fernando/attack-v2-b.png",
+      "sha256": "fc679b0d7c15075a150e16bc553911f2e3673f4e0bf5409f8284c42163cc4a2a"
+    }
+  ]
+}

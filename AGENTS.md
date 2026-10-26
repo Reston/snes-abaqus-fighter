@@ -6,6 +6,29 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+<!-- v030-agent:start -->
+- **v0.30.0 is the user-approved likeness revision**, branch
+  `feature/madariaga-fernando-likeness`, delivered through PR #35.
+  Displayed Mamariaga is corrected to Madariaga; internal 08-mamariaga paths
+  remain historical stable IDs. Fernando alone uses nine versioned imagegen
+  atlases, with the photographed identity and face-study-v3 as references.
+  All64 poses/portraits update; his palette, physical scale and move roles stay.
+  Preserve all eleven other fighters and the original source masters. Fernando's
+  exact native revision contract pin is
+  00b56eeaa8d92e19fbff5a4071857c248ea7541d38e522aca7e3cc6a692911b4.
+  Native ROM 9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e, checksum B2BB;
+  native source freeze 654e03249348ea89c8857561cedd70e8f60e51cf. All six suites pass
+  50,605 checks; both-core/both-port focused rendering, pinned
+  Accuracy smoke, 20 normal/-O authoring guards, and fresh237/ROM/symbol rebuild
+  pass. Of237 generated files,218 stay exact;19 Fernando/selection/metadata
+  files change. All prior RAM/data labels stay exact. Collision rectangles
+  refresh from Fernando pixels; other eleven blocks remain exact. Runtime C
+  rules differ only in spelling/version strings; hardware/trace ASM is exact.
+  See docs/FERNANDO-LIKENESS-v3.md and docs/verification-v0.30.0.json.
+  The user accepted the likeness ("ok better") and authorized merge ("merge it").
+  See docs/likeness30-approval.json. No new offline package.
+<!-- v030-agent:end -->
+
 <!-- v029-agent:start -->
 - **v0.29.0 is the six-feature integration approved for merge and playtest.**
   PRs #29–34 are integrated through PR #28. Native ROM `7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0`,

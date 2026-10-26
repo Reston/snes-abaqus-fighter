@@ -34,7 +34,7 @@ from emulator import Emulator, ROOT
 
 NAMES = (
     "DAMIAN", "IVO", "CRISTOBAL", "COTE", "NEGGER", "DAVID",
-    "FERNANDO", "CRISTIAN", "MAMARIAGA", "RESTON", "ROXANA", "LARS",
+    "FERNANDO", "CRISTIAN", "MADARIAGA", "RESTON", "ROXANA", "LARS",
 )
 
 # This is a behavioral contract for the upgraded roster, not a lookup into the

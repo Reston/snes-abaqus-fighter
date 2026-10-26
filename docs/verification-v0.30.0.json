@@ -1,0 +1,97 @@
+{
+  "status": "passed",
+  "version": "0.30.0",
+  "rom_sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
+  "checksum": "B2BB",
+  "native_source_freeze": "654e03249348ea89c8857561cedd70e8f60e51cf",
+  "verification_producer_commit": "52e9f020804415f2c9694f8be40f689d695e01cc",
+  "reports": {
+    "docs/test-report.json": {
+      "sha256": "f4a1a06c3976097451904ec2b72ecf90eeffe0bfc3852202d3086b2aa01c126d",
+      "scope": "shared-native-suite",
+      "checks": 2610
+    },
+    "docs/character-test-report.json": {
+      "sha256": "6438fd4dd74bbd88348484e6da7fd365054102109b6707c15b9c3f42692a692d",
+      "scope": "shared-native-suite",
+      "checks": 19461
+    },
+    "docs/likeness30-presentation-report.json": {
+      "sha256": "6c6600843a0dcea8e6d98ce6e3b18f5928552f9a8694061623f188befb38d2d4",
+      "scope": "shared-native-suite",
+      "checks": 3600
+    },
+    "docs/input-test-report.json": {
+      "sha256": "e37e70c6f61d74ac38937e74b66aa2d8edcc5325a022e750cbfe1dca7d8ec16e",
+      "scope": "shared-native-suite",
+      "checks": 2296
+    },
+    "docs/stage-test-report.json": {
+      "sha256": "3f420bdf6eec30309eafc9686083b4f9e97207da018f22ffe5e3f115ffad12f2",
+      "scope": "shared-native-suite",
+      "checks": 19002
+    },
+    "docs/training-test-report.json": {
+      "sha256": "efcb004b1906faf91ef272b0df806679de2fc735121b8e63f78e130dd57272de",
+      "scope": "shared-native-suite",
+      "checks": 3636
+    },
+    "docs/compatibility-test-report.json": {
+      "sha256": "fb38fc03f40541f6979b809dbe9b7eb97a59fe1bfca276b01469a4bc589d8018",
+      "scope": "pinned-Accuracy-independent-smoke"
+    },
+    "docs/fresh-build-test-report.json": {
+      "sha256": "39e9b56282e19bd1205df95ba2baf6ea5010692cecf8cd58a9cd4b8d6d72b4f4",
+      "scope": "fresh-committed-native-source"
+    },
+    "docs/likeness30-native-report.json": {
+      "sha256": "ed5ba7df7c954e279cff3c9c2ff233fd884ac9b9091d45b4370bcb05d9785d49",
+      "scope": "both-cores-both-ports-Fernando-Madariaga"
+    },
+    "docs/likeness30-policy-report.json": {
+      "sha256": "a01b972ca5f69f84f59f433ef28796b89d476f68ac8a4a99685ec631183c2d58",
+      "scope": "bounded-single-fighter-preservation"
+    },
+    "docs/likeness30-preservation-report.json": {
+      "sha256": "a8ec990f5dad112bfbc6811be5c079452d28cee0a2ce57f3df73171c1b06887e",
+      "scope": "generated-assets-RAM-and-geometry-comparison"
+    }
+  },
+  "native_suite_checks": 50605,
+  "human_likeness_approval": {
+    "path": "docs/likeness30-approval.json",
+    "sha256": "9bb09dc42c4b059e26c8d7a32ecbfc236ce2e6b6974eaabd978712f552614811"
+  },
+  "new_offline_package": false,
+  "physical_hardware_verified": false,
+  "focused_native_callbacks": 2940,
+  "focused_execution_head": "c4cf41148f76e202d958e8f2e3e2f040505054c1",
+  "focused_provenance": "Ran on the revised working tree before its source commit; the exact ROM is reproduced from native_source_freeze. The raw execution-head field remains unchanged.",
+  "authoring_guards": [
+    {
+      "optimized": false,
+      "tests": 20,
+      "path": "docs/evidence/v030-likeness/guards.txt",
+      "sha256": "789f2cf29ea3025fc6eca039a6a2d11f4148a5ec4ab30d7d214b8a112cc7db93"
+    },
+    {
+      "optimized": true,
+      "tests": 20,
+      "path": "docs/evidence/v030-likeness/guards-optimized.txt",
+      "sha256": "16a58e3f9e26859f4f0bbe2a1a2506770e4f7329814ad82babfc909941d83aaf"
+    }
+  ],
+  "focused_producer": {
+    "path": "docs/evidence/v030-likeness/focused-native.py.txt",
+    "sha256": "b7e6c2d0da188506bbab423443f9e603cf6a35cf532f987be7f4812b033fb23b"
+  },
+  "browser_scope": "Current v0.30 static bundle build and five web build tests pass; the browser JS is unchanged from v0.29. Full v0.29 actual-WASM route evidence retains its historical ROM identity.",
+  "art_generation": {
+    "path": "assets/art/characters/06-fernando/likeness-v3-generation.json",
+    "sha256": "36915cbe376c0435977cf6ceff2d7c68015629edc22d36b241166506722ca66f",
+    "mode": "built-in image_gen",
+    "selected_images": 10
+  },
+  "main_deployed_version_at_technical_verification": "0.29.0",
+  "merge_authorized": true
+}

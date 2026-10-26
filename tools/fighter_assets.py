@@ -71,6 +71,10 @@ NATIVE_REVISION_REGISTRY = {
         'source_version': 'v5',
         'contract_sha256': 'b6b94f879ed72b1eb0e84e100076f6cb80fddd990c162bc0361f1cd7da4631fc',
     },
+    6: {
+        'contract_file': 'assets/art/characters/06-fernando/native-revision.json',
+        'contract_sha256': '00b56eeaa8d92e19fbff5a4071857c248ea7541d38e522aca7e3cc6a692911b4',
+    },
     9: {
         'contract_file': 'assets/art/characters/09-reston/native-revision.json',
         'contract_sha256': '9b45e7dcb253a485faa28fb3c287a01399728cfafc23e7808f3bbb3f3b972dbc',

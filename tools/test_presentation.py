@@ -31,7 +31,7 @@ from emulator import Emulator, ROOT
 TITLE, SELECT, ARENA, FIGHT = 0, 1, 2, 3
 NAMES = (
     "DAMIAN", "IVO", "CRISTOBAL", "COTE", "NEGGER", "DAVID",
-    "FERNANDO", "CRISTIAN", "MAMARIAGA", "RESTON", "ROXANA", "LARS",
+    "FERNANDO", "CRISTIAN", "MADARIAGA", "RESTON", "ROXANA", "LARS",
 )
 STAGES = ("las-condes", "el-castillo", "la-oficina")
 PORTRAIT_VRAM_WORD = 0x4A00

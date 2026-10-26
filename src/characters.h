@@ -47,7 +47,7 @@ typedef struct {
  */
 const char characterNames[12][12] = {
     "DAMIAN", "IVO", "CRISTOBAL", "COTE", "NEGGER", "DAVID",
-    "FERNANDO", "CRISTIAN", "MAMARIAGA", "RESTON", "ROXANA", "LARS"
+    "FERNANDO", "CRISTIAN", "MADARIAGA", "RESTON", "ROXANA", "LARS"
 };
 const char characterSpecialNames[12][17] = {
     "KERNEL BURST", "CAPITAL WAVE", "ATOMIC PUSH", "BALANCE BREAK",
@@ -114,7 +114,7 @@ const CharacterProfile characterProfiles[12] = {
         11,8,-77,3,-62,34,19,SPECIAL_RISING,15,10,40,16,40,0,1,-69,
         {6,9,15,8,14,17}, {13,18,32,13,31,34}, {7,10,16,8,14,17}, {31,38,46,49,54,54}
     },
-    /* Mamariaga - chartreuse slim speed / Merge Force low shockwave */
+    /* Madariaga - chartreuse slim speed / Merge Force low shockwave */
     {
         16,11,-84,4,-69,24,17,SPECIAL_GROUNDWAVE,14,2,33,16,23,26,178,0,
         {4,6,12,5,11,14}, {13,14,26,13,26,29}, {5,8,13,6,11,14}, {23,30,34,37,42,42}

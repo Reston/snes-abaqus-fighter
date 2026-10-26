@@ -1,0 +1,38 @@
+"""Both-core, controller-only Fernando/Madariaga visual and live health proof."""
+from pathlib import Path
+import hashlib,json,subprocess,sys
+ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'tools'))
+import test_characters as ch
+import test_defense29 as defense
+import test_presentation as ui
+defense.SYMS.update(defense.symbols(ROOT/'dist/abaqus-after-hours.sym'))
+OUT=ROOT/'docs/screenshots/likeness-v030/native';OUT.mkdir(parents=True,exist_ok=True)
+manifest=json.loads((ROOT/'dist/manifest.json').read_bytes())
+report={'status':'failed','rom_sha256':manifest['sha256'],'version':manifest['version'],'emulated_memory_writes':False,'save_states':False,'cases':[],'media':[]}
+def shot(e,name):
+ p=OUT/(name+'.png');e.frame.save(p);report['media'].append({'path':p.relative_to(ROOT).as_posix(),'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+for core in ('snes9x','accuracy'):
+ for port in (0,1):
+  prior=ch.Emulator;ch.Emulator=lambda rom=None:defense.Host(core,rom)
+  try:e=ch.boot(1,6 if port==0 else 8,2 if port==0 else 1,8 if port==0 else 6,quiet_frames=8)
+  finally:ch.Emulator=prior
+  try:
+   tag=f'{core}-p{port+1}';state=ch.state(e)
+   expected=(6,8) if port==0 else (8,6)
+   if (state['fighter_id1'],state['fighter_id2'])!=expected:raise ValueError('Wrong fighters')
+   text=ui.verify_fight_font_bank(e,ui.state(e))
+   geometry=ch.verify_oam_geometry(e,port,tag)
+   pixels=ch.verify_rendered_actor(e,6,port,geometry)
+   shot(e,tag+'-fight')
+   def run(n,keys=()):return e.run(n,**{'p1' if port==0 else 'p2':keys})
+   toward='right' if not port else 'left';away='left' if not port else 'right'
+   run(24,[toward]);shot(e,tag+'-walk');run(24,[away]);run(12)
+   run(3,['up',toward]);run(14);shot(e,tag+'-jump');run(90)
+   for action,keys in [('jab',['y']),('strong',['x']),('kick',['b']),('heavy-kick',['a']),('uppercut',['down','x'])]:
+    run(3,keys);run(9);shot(e,tag+'-'+action);run(100)
+   if e.health['failures']:raise ValueError(e.health['failures'])
+   report['cases'].append({'core':core,'Fernando_port':port+1,'fighters':expected,'native_MADARIAGA_HUD':'passed','Fernando_OAM_and_native_pixels':'passed','geometry':geometry,'pixels':pixels})
+  finally:e.close()
+report.update(status='passed',health=defense.HEALTH,source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),assertion_executions=sum(x['executions'] for x in defense.CHECKS.values()))
+(ROOT/'docs/likeness30-native-report.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
+print(json.dumps({'status':'passed','cases':len(report['cases']),'captures':len(report['media']),'checks':report['assertion_executions']}))

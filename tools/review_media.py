@@ -17,7 +17,7 @@ from PIL import Image, ImageSequence
 from release_evidence import EXPECTED_NATIVE_CORE
 
 NAMES = ('Damian', 'Ivo', 'Cristobal', 'Cote', 'Negger', 'David',
-         'Fernando', 'Cristian', 'Mamariaga', 'Reston', 'Roxana', 'Lars')
+         'Fernando', 'Cristian', 'Madariaga', 'Reston', 'Roxana', 'Lars')
 PRACTICE_HELPERS = {'tools/test_crossup_practice.py', 'tools/test_matchups.py',
                     'tools/test_inputs.py', 'tools/emulator.py', 'tools/make_crossup_review.py'}
 AI_HELPERS = {'tools/make_cpu_antiair_review.py', 'tools/test_inputs.py',

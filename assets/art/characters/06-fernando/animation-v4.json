@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "fighter_id": 6,
+  "motion": {
+    "source": "assets/art/characters/06-fernando/animation-motion-v4.png",
+    "sha256": "83d083fc9905047454b852a3c0acf3348ccd3fabff622fb9f13e727d79d85c33",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-2310bbac-0774-4bb4-9f87-5f8e09f1a240.png",
+    "raw_output_sha256": "83d083fc9905047454b852a3c0acf3348ccd3fabff622fb9f13e727d79d85c33",
+    "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET (animation-motion.png), exactly sixteen full-body poses in four columns/four rows. Image2 is Fernando's real photo. Image3 is the new facial design study. Revise ONLY the heads in Image1 so every figure looks like the same specific man in Images2/3: rounded-oval adult face, fuller forehead/cheeks, substantial straight nose with rounded tip, straight heavy brows rather than an angry V, relaxed slightly hooded dark eyes, small closed natural lips, rounded chin with faint jaw shadow, short dark brown naturally side-swept textured hair with low volume. No beard, moustache, giant quiff or generic angular anime face. Simplify the study into the target's clear limited-color cartoon ink/cel shading, while retaining likeness. Preserve every pose, exact body/limb geometry, hands, 4x4 arrangement, teal jacket and white collar, trousers/shoes, anatomical scale, head height and facing. No changes below collar, no added or removed figures, no rearranging/resize/cropping. In hurt/KO preserve strain and original head angle on the revised face. Exactly16 disconnected transparent silhouettes, large clear gutters, true RGBA transparency, no text/grid/floor/shadow/extra objects. Output the entire revised atlas.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      {
+        "path": "assets/references/fighter-06.jpg",
+        "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+        "role": "photographed identity"
+      },
+      {
+        "path": "assets/art/characters/06-fernando/animation-motion.png",
+        "sha256": "4a68f9b8b39af0a23a0bf41f240096c7b3b0e1a75b9fa0df060abccde400705c",
+        "role": "edit target; preserve pose and costume"
+      },
+      {
+        "path": "assets/art/characters/06-fernando/face-study-v3.png",
+        "sha256": "4cd29965f0adcbe320f91f77aaca3c1952508f841b47b240d98354e6fbd90dfa",
+        "role": "facial design study"
+      }
+    ],
+    "size": [
+      1254,
+      1254
+    ],
+    "selected_final": "assets/art/characters/06-fernando/animation-motion-v4.png"
+  },
+  "actions": {
+    "source": "assets/art/characters/06-fernando/animation-actions-v4.png",
+    "sha256": "5ee1cbc0153223d6f7411b2f5ffaf7a57e536849814000cf84017d0d954c3d37",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-9e22d642-b88e-4360-a56e-637deac8904d.png",
+    "raw_output_sha256": "5ee1cbc0153223d6f7411b2f5ffaf7a57e536849814000cf84017d0d954c3d37",
+    "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET (animation-actions.png), exactly sixteen full-body poses in four columns/four rows. Image2 is Fernando's real photo. Image3 is the new facial design study. Revise ONLY the heads in Image1 so every figure looks like the same specific man in Images2/3: rounded-oval adult face, fuller forehead/cheeks, substantial straight nose with rounded tip, straight heavy brows rather than an angry V, relaxed slightly hooded dark eyes, small closed natural lips, rounded chin with faint jaw shadow, short dark brown naturally side-swept textured hair with low volume. No beard, moustache, giant quiff or generic angular anime face. Simplify the study into the target's clear limited-color cartoon ink/cel shading, while retaining likeness. Preserve every pose, exact body/limb geometry, hands, 4x4 arrangement, teal jacket and white collar, trousers/shoes, anatomical scale, head height and facing. No changes below collar, no added or removed figures, no rearranging/resize/cropping. In hurt/KO preserve strain and original head angle on the revised face. Exactly16 disconnected transparent silhouettes, large clear gutters, true RGBA transparency, no text/grid/floor/shadow/extra objects. Output the entire revised atlas.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      {
+        "path": "assets/references/fighter-06.jpg",
+        "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+        "role": "photographed identity"
+      },
+      {
+        "path": "assets/art/characters/06-fernando/animation-actions.png",
+        "sha256": "02e6a95b89c927ccc148fbce5633b9addc37f7e069d5f0d6563425f83c8dcfa0",
+        "role": "edit target; preserve pose and costume"
+      },
+      {
+        "path": "assets/art/characters/06-fernando/face-study-v3.png",
+        "sha256": "4cd29965f0adcbe320f91f77aaca3c1952508f841b47b240d98354e6fbd90dfa",
+        "role": "facial design study"
+      }
+    ],
+    "size": [
+      1254,
+      1254
+    ],
+    "selected_final": "assets/art/characters/06-fernando/animation-actions-v4.png"
+  }
+}
