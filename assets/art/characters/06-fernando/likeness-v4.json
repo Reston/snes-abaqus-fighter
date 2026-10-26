@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "fighter_id": 6,
+  "revision": "photo-likeness-v3",
+  "human_approval": null,
+  "legacy": {
+    "source": "assets/art/characters/06-fernando/atlas-v4.png",
+    "sha256": "afae491aaf04ea8da55a479b8af46f02c9f1cff30794914205d736d00c5b1f48",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-cef8fbd2-83e8-4f12-9285-a2d5b8e97da4.png",
+    "raw_output_sha256": "afae491aaf04ea8da55a479b8af46f02c9f1cff30794914205d736d00c5b1f48",
+    "prompt": "Use case: identity-preserve. Image1 is the real Fernando photo. Image2 is his NEW LIKENESS STUDY and the facial design to copy. Image3 is the EDIT TARGET, the old transparent sixteen-pose 4x4 atlas. Replace EVERY old head in Image3 with the recognizably rounded-oval, gently heavy-browed Fernando head from Image2, adapted to each existing head angle. This must be a conspicuous change from the old generic angular angry fighter face: use Image2's fuller forehead and cheeks, longer substantial rounded nose, straight almost-horizontal brows, softer slightly hooded eyes, small closed natural mouth, rounded lower face with subtle gray jaw shadow, and naturally textured short dark side-swept hair with lower flatter volume. Simplify Image2 to the crisp limited-color cartoon shading of Image3, retaining the particular likeness. Preserve the exact pose layout, relative positions, sixteen separated figures, whole-body scale, head height, limbs, fists, teal jacket, white collar, dark trousers, shoes and everything below the collar in Image3. Do not redesign bodies, change poses, crop, add or merge figures. All face right except original KO. Maintain exact 4 columns by4 rows and genuinely transparent background. No text, props, floor, extra effects or scenery. Output only the revised full atlas, not the study.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      {
+        "path": "assets/references/fighter-06.jpg",
+        "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+        "role": "photographed identity"
+      },
+      {
+        "path": "assets/art/characters/06-fernando/atlas.png",
+        "sha256": "2effcc94d918b989d9f13f96d6ef483cb54d29186afb46d0459a6655687d8eb8",
+        "role": "edit target; preserve pose and costume"
+      },
+      {
+        "path": "assets/art/characters/06-fernando/face-study-v3.png",
+        "sha256": "4cd29965f0adcbe320f91f77aaca3c1952508f841b47b240d98354e6fbd90dfa",
+        "role": "facial design study"
+      }
+    ],
+    "size": [
+      1216,
+      1293
+    ],
+    "selected_final": "assets/art/characters/06-fernando/atlas-v4.png"
+  },
+  "face_study": {
+    "source": "assets/art/characters/06-fernando/face-study-v3.png",
+    "sha256": "4cd29965f0adcbe320f91f77aaca3c1952508f841b47b240d98354e6fbd90dfa",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-92bd9af1-647a-4303-be51-b0d6ccb7e1cc.png",
+    "raw_output_sha256": "4cd29965f0adcbe320f91f77aaca3c1952508f841b47b240d98354e6fbd90dfa",
+    "prompt": "Use case: stylized-concept. Draw a high likeness original arcade-game character study of the specific MAN IN THE ATTACHED PHOTOGRAPH. The photo is the identity authority: match his real facial proportions, naturally side-swept short dark hair, broad forehead, straight thick brows, slightly hooded almond eyes, substantial nose, modest almost-straight lips and rounded-oval face and jaw. Keep his apparent adult age. Do not substitute a handsome generic square-jawed action hero. Draw a SINGLE chest-up three-quarter portrait facing slightly RIGHT, both eyes visible, neutral calm determined expression, no scowl, warm medium skin and subtle jaw shadow (no beard/moustache). Costume is a TEAL/TURQUOISE open jacket with WHITE open-collar shirt; no logo. Art direction: crisp hand-inked 1993 arcade fighting-game cartoon, chunky dark navy contour, flat limited three-tone cel shading with clear facial clusters, not photorealism, not anime, not 3D. Prioritize recognizable likeness to this exact face over glamorization. Center head and shoulders with all hair contained, enough neck and white collar visible. TRUE TRANSPARENT BACKGROUND, no frame, text, caption, extra figures, objects, or scenery.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      {
+        "path": "assets/references/fighter-06.jpg",
+        "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+        "role": "photographed identity"
+      }
+    ],
+    "size": [
+      1302,
+      1208
+    ],
+    "selected_final": "assets/art/characters/06-fernando/face-study-v3.png"
+  },
+  "prompt": "Use case: identity-preserve. Image1 is the real Fernando photo. Image2 is his NEW LIKENESS STUDY and the facial design to copy. Image3 is the EDIT TARGET, the old transparent sixteen-pose 4x4 atlas. Replace EVERY old head in Image3 with the recognizably rounded-oval, gently heavy-browed Fernando head from Image2, adapted to each existing head angle. This must be a conspicuous change from the old generic angular angry fighter face: use Image2's fuller forehead and cheeks, longer substantial rounded nose, straight almost-horizontal brows, softer slightly hooded eyes, small closed natural mouth, rounded lower face with subtle gray jaw shadow, and naturally textured short dark side-swept hair with lower flatter volume. Simplify Image2 to the crisp limited-color cartoon shading of Image3, retaining the particular likeness. Preserve the exact pose layout, relative positions, sixteen separated figures, whole-body scale, head height, limbs, fists, teal jacket, white collar, dark trousers, shoes and everything below the collar in Image3. Do not redesign bodies, change poses, crop, add or merge figures. All face right except original KO. Maintain exact 4 columns by4 rows and genuinely transparent background. No text, props, floor, extra effects or scenery. Output only the revised full atlas, not the study."
+}

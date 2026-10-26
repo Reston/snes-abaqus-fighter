@@ -1,6 +1,6 @@
 # Character combat profiles
 
-`Abaqus: After Hours` uses one shared six-button ruleset, with a data-driven
+`Abaqus: After Hours` uses one shared four-button ruleset, with a data-driven
 combat profile for each roster slot. The concepts below are fictional game
 design: they do not describe the real jobs, personalities, or abilities of
 the people whose public names inspired the roster.
@@ -32,7 +32,7 @@ families: projectile `0`, rush strike `1`, low shockwave `2`, and rising strike
 | 5 | David | Amber boxer | 20 walk, 14 back; fast, compact normals | **Audit Strike** — rising strike | 4 / 6 / 22 | 28 / 20 |
 | 6 | Fernando | Teal stocky low pressure | 17 walk, 12 back; slow ground control | **Legacy Flash** — persistent low shockwave | 10 / 2 / 27 | 30 / 21 |
 | 7 | Cristian | Navy sweater defense | 18 walk, 13 back; tall reach and safer recovery | **Risk Reversal** — defensive rising strike | 7 / 7 / 25 | 34 / 19 |
-| 8 | Ignacio “Mamariaga” | Chartreuse speed | 26 walk, 18 back; fastest, lightest normals | **Merge Force** — fast low shockwave | 6 / 2 / 18 | 24 / 17 |
+| 8 | Ignacio “Madariaga” | Chartreuse speed | 26 walk, 18 back; fastest, lightest normals | **Merge Force** — fast low shockwave | 6 / 2 / 18 | 24 / 17 |
 | 9 | José “Reston” | Copper pressure | 18 walk, 12 back; heavy pressure normals | **Cloud Crash** — heavy projectile | 12 / 1 / 29 | 32 / 22 |
 | 10 | Roxana | Magenta athletic agility | 24 walk, 17 back; quick normals and agile jump | **Close Out** — fast rising strike | 4 / 8 / 18 | 26 / 19 |
 | 11 | Rodrigo “Lars” | Ice-blue long reach | 19 walk, 14 back; longest normal reach | **Nordic Byte** — long-life low shockwave | 15 / 2 / 24 | 36 / 22 |

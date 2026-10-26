@@ -29,7 +29,7 @@ const CpuPersonality cpuPersonalities[12]={
     {46,22,26,10, 4,2,3,12,6},
     /* Cristian: bait and strong-punch recovery answers. */
     {40,20,18,29, 6,2,1,18,4},
-    /* Mamariaga: forward strong-kick pressure and throws. */
+    /* Madariaga: forward strong-kick pressure and throws. */
     {31,14, 5, 7,18,3,2,30,1},
     /* Reston: mobile light punches and strong-kick checks. */
     {36,16,12,16, 8,0,3,25,2},

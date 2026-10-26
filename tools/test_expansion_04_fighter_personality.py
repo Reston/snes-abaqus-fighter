@@ -27,7 +27,7 @@ OUT = ROOT / 'docs/screenshots/expansion-04'
 REPORT = ROOT / 'docs/expansion-04-report.json'
 BASE = '610537d'
 NAMES = ('DAMIAN', 'IVO', 'CRISTOBAL', 'COTE', 'NEGGER', 'DAVID',
-         'FERNANDO', 'CRISTIAN', 'MAMARIAGA', 'RESTON', 'ROXANA', 'LARS')
+         'FERNANDO', 'CRISTIAN', 'MADARIAGA', 'RESTON', 'ROXANA', 'LARS')
 TITLES = ('Kernel salute', 'Capital guard', 'Atomic one-two', 'Balance check',
           'Macro brace', 'Audit rise', 'Legacy seal', 'Risk reversal',
           'Merge pulse', 'Cloud horizon', 'Close-out flourish', 'Nordic stamp')

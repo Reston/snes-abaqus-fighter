@@ -395,7 +395,7 @@ def fast_jab_spacing(fighter, port):
                 if s[f"connected{r.a}"]:
                     break
                 s = r.step((), defender_guard)
-            check(s[f"connected{r.a}"] == 1, f"{r.tag} {label} kick is guarded by Mamariaga")
+            check(s[f"connected{r.a}"] == 1, f"{r.tag} {label} kick is guarded by Madariaga")
             for _ in range(40):
                 if not s[f"hitstop"] and not s[f"hurt{r.d}"]:
                     break

@@ -1,0 +1,43 @@
+{
+  "fighter_id": 6,
+  "palette_sha256": "8157261a8813a14f129fe05c4cd41d219ec1d8213fda5e9de62173601a680a1c",
+  "native_frame_range": [
+    20,
+    27
+  ],
+  "native_foot_baseline": 78,
+  "scope": "coordinated-full-body",
+  "source": "assets/art/characters/06-fernando/walking-v3.png",
+  "sha256": "a36aaf7ee82df78762c21b7443074d2f7db596f3263618b79e6be9d22b461a85",
+  "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-2893a66c-8f22-44e7-952f-cbc0c5dcf518.png",
+  "raw_output_sha256": "a36aaf7ee82df78762c21b7443074d2f7db596f3263618b79e6be9d22b461a85",
+  "prompt": "Use case: identity-preserve. Image1 is EDIT TARGET walking-v2.png; Image2 is Fernando's photographed identity; Image3 is his new likeness study. Replace every visible head in Image1 with Fernando's recognizable face from Image3, adapted to each existing angle, rendered in Image1's crisp limited-color cartoon style. Fuller rounded-oval face and forehead, straight heavy natural eyebrows (not angry V), soft hooded dark eyes, substantial straight rounded-tip nose, modest almost-straight lips, rounded chin with very subtle jaw shadow, short naturally side-swept dark brown hair with low volume. Preserve pose emotion and facing, no generic sharp-jawed anime face, no beard or quiff. Change ONLY head/hair and immediate collar junction. Preserve EXACT bodies, coherent hips/torso/limbs, costume, hands/shoes, relative positions, head height, physical scale, all pose order and canvas layout. Exactly 8 separate full-body figures, FOUR COLUMNS by 2 ROWS, true transparent gutters and background. Do not enlarge, shrink, crop, rearrange, add/delete figures, redraw below collar, add effects/grid/labels/scenery/floor/shadows. Keep the target's existing crouched/falling/airborne anatomy and head orientation, no upright replacement in action poses. Output complete revised atlas only.",
+  "mode": "built-in image_gen",
+  "transparent_background": true,
+  "references": [
+    {
+      "path": "assets/references/fighter-06.jpg",
+      "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+      "role": "photographed identity"
+    },
+    {
+      "path": "assets/art/characters/06-fernando/walking-v2.png",
+      "sha256": "88748a37f01b534333d5ff412e35db94ee8aa0d9562e4d8b1fe7e11b1c7c59b4",
+      "role": "edit target; preserve pose and costume"
+    },
+    {
+      "path": "assets/art/characters/06-fernando/face-study-v3.png",
+      "sha256": "4cd29965f0adcbe320f91f77aaca3c1952508f841b47b240d98354e6fbd90dfa",
+      "role": "facial design study"
+    }
+  ],
+  "size": [
+    1774,
+    887
+  ],
+  "selected_final": "assets/art/characters/06-fernando/walking-v3.png",
+  "reference": "assets/art/characters/06-fernando/face-study-v3.png",
+  "reference_sha256": "4cd29965f0adcbe320f91f77aaca3c1952508f841b47b240d98354e6fbd90dfa",
+  "supersedes": "assets/art/characters/06-fernando/walking-v2.json",
+  "pose_contract_sha256": "3801e64cf1dff1ce5e895f8c28634440f05a08fbe529a5b2f2ef7fc00b9ef302"
+}

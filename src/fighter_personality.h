@@ -17,7 +17,7 @@ const u8 personalityIntroFrames[12][4]={
     {44,45,46,32}, /* David: Audit rise */
     {40,42,43,35}, /* Fernando: Legacy seal */
     {40,34,35,32}, /* Cristian: Risk reversal */
-    {28,42,43,32}, /* Mamariaga: Merge pulse */
+    {28,42,43,32}, /* Madariaga: Merge pulse */
     {42,43,45,32}, /* Reston: Cloud horizon */
     {35,45,46,32}, /* Roxana: Close-out flourish */
     {44,28,42,35}  /* Lars: Nordic stamp */

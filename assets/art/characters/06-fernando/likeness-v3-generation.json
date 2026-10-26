@@ -1,0 +1,98 @@
+{
+  "mode": "built-in image_gen",
+  "transparent_background": true,
+  "photo": "assets/references/fighter-06.jpg",
+  "photo_sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+  "assets": [
+    {
+      "role": "legacy",
+      "selected_final": "assets/art/characters/06-fernando/atlas-v4.png",
+      "sha256": "afae491aaf04ea8da55a479b8af46f02c9f1cff30794914205d736d00c5b1f48",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-cef8fbd2-83e8-4f12-9285-a2d5b8e97da4.png",
+      "raw_output_sha256": "afae491aaf04ea8da55a479b8af46f02c9f1cff30794914205d736d00c5b1f48",
+      "prompt": "Use case: identity-preserve. Image1 is the real Fernando photo. Image2 is his NEW LIKENESS STUDY and the facial design to copy. Image3 is the EDIT TARGET, the old transparent sixteen-pose 4x4 atlas. Replace EVERY old head in Image3 with the recognizably rounded-oval, gently heavy-browed Fernando head from Image2, adapted to each existing head angle. This must be a conspicuous change from the old generic angular angry fighter face: use Image2's fuller forehead and cheeks, longer substantial rounded nose, straight almost-horizontal brows, softer slightly hooded eyes, small closed natural mouth, rounded lower face with subtle gray jaw shadow, and naturally textured short dark side-swept hair with lower flatter volume. Simplify Image2 to the crisp limited-color cartoon shading of Image3, retaining the particular likeness. Preserve the exact pose layout, relative positions, sixteen separated figures, whole-body scale, head height, limbs, fists, teal jacket, white collar, dark trousers, shoes and everything below the collar in Image3. Do not redesign bodies, change poses, crop, add or merge figures. All face right except original KO. Maintain exact 4 columns by4 rows and genuinely transparent background. No text, props, floor, extra effects or scenery. Output only the revised full atlas, not the study.",
+      "edit_target": "assets/art/characters/06-fernando/atlas.png"
+    },
+    {
+      "role": "face-study",
+      "selected_final": "assets/art/characters/06-fernando/face-study-v3.png",
+      "sha256": "4cd29965f0adcbe320f91f77aaca3c1952508f841b47b240d98354e6fbd90dfa",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-92bd9af1-647a-4303-be51-b0d6ccb7e1cc.png",
+      "raw_output_sha256": "4cd29965f0adcbe320f91f77aaca3c1952508f841b47b240d98354e6fbd90dfa",
+      "prompt": "Use case: stylized-concept. Draw a high likeness original arcade-game character study of the specific MAN IN THE ATTACHED PHOTOGRAPH. The photo is the identity authority: match his real facial proportions, naturally side-swept short dark hair, broad forehead, straight thick brows, slightly hooded almond eyes, substantial nose, modest almost-straight lips and rounded-oval face and jaw. Keep his apparent adult age. Do not substitute a handsome generic square-jawed action hero. Draw a SINGLE chest-up three-quarter portrait facing slightly RIGHT, both eyes visible, neutral calm determined expression, no scowl, warm medium skin and subtle jaw shadow (no beard/moustache). Costume is a TEAL/TURQUOISE open jacket with WHITE open-collar shirt; no logo. Art direction: crisp hand-inked 1993 arcade fighting-game cartoon, chunky dark navy contour, flat limited three-tone cel shading with clear facial clusters, not photorealism, not anime, not 3D. Prioritize recognizable likeness to this exact face over glamorization. Center head and shoulders with all hair contained, enough neck and white collar visible. TRUE TRANSPARENT BACKGROUND, no frame, text, caption, extra figures, objects, or scenery.",
+      "edit_target": null
+    },
+    {
+      "role": "motion",
+      "selected_final": "assets/art/characters/06-fernando/animation-motion-v4.png",
+      "sha256": "83d083fc9905047454b852a3c0acf3348ccd3fabff622fb9f13e727d79d85c33",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-2310bbac-0774-4bb4-9f87-5f8e09f1a240.png",
+      "raw_output_sha256": "83d083fc9905047454b852a3c0acf3348ccd3fabff622fb9f13e727d79d85c33",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET (animation-motion.png), exactly sixteen full-body poses in four columns/four rows. Image2 is Fernando's real photo. Image3 is the new facial design study. Revise ONLY the heads in Image1 so every figure looks like the same specific man in Images2/3: rounded-oval adult face, fuller forehead/cheeks, substantial straight nose with rounded tip, straight heavy brows rather than an angry V, relaxed slightly hooded dark eyes, small closed natural lips, rounded chin with faint jaw shadow, short dark brown naturally side-swept textured hair with low volume. No beard, moustache, giant quiff or generic angular anime face. Simplify the study into the target's clear limited-color cartoon ink/cel shading, while retaining likeness. Preserve every pose, exact body/limb geometry, hands, 4x4 arrangement, teal jacket and white collar, trousers/shoes, anatomical scale, head height and facing. No changes below collar, no added or removed figures, no rearranging/resize/cropping. In hurt/KO preserve strain and original head angle on the revised face. Exactly16 disconnected transparent silhouettes, large clear gutters, true RGBA transparency, no text/grid/floor/shadow/extra objects. Output the entire revised atlas.",
+      "edit_target": "assets/art/characters/06-fernando/animation-motion.png"
+    },
+    {
+      "role": "actions",
+      "selected_final": "assets/art/characters/06-fernando/animation-actions-v4.png",
+      "sha256": "5ee1cbc0153223d6f7411b2f5ffaf7a57e536849814000cf84017d0d954c3d37",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-9e22d642-b88e-4360-a56e-637deac8904d.png",
+      "raw_output_sha256": "5ee1cbc0153223d6f7411b2f5ffaf7a57e536849814000cf84017d0d954c3d37",
+      "prompt": "Use case: identity-preserve. Image1 is the EDIT TARGET (animation-actions.png), exactly sixteen full-body poses in four columns/four rows. Image2 is Fernando's real photo. Image3 is the new facial design study. Revise ONLY the heads in Image1 so every figure looks like the same specific man in Images2/3: rounded-oval adult face, fuller forehead/cheeks, substantial straight nose with rounded tip, straight heavy brows rather than an angry V, relaxed slightly hooded dark eyes, small closed natural lips, rounded chin with faint jaw shadow, short dark brown naturally side-swept textured hair with low volume. No beard, moustache, giant quiff or generic angular anime face. Simplify the study into the target's clear limited-color cartoon ink/cel shading, while retaining likeness. Preserve every pose, exact body/limb geometry, hands, 4x4 arrangement, teal jacket and white collar, trousers/shoes, anatomical scale, head height and facing. No changes below collar, no added or removed figures, no rearranging/resize/cropping. In hurt/KO preserve strain and original head angle on the revised face. Exactly16 disconnected transparent silhouettes, large clear gutters, true RGBA transparency, no text/grid/floor/shadow/extra objects. Output the entire revised atlas.",
+      "edit_target": "assets/art/characters/06-fernando/animation-actions.png"
+    },
+    {
+      "role": "airborne",
+      "selected_final": "assets/art/characters/06-fernando/animation-airborne-v4.png",
+      "sha256": "b74cf121251da10d69a83c28ab5209bcdaca6faed9aa549def0578259c911a3d",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-8fcb324b-cfef-4d5a-bd87-9b35e497a147.png",
+      "raw_output_sha256": "b74cf121251da10d69a83c28ab5209bcdaca6faed9aa549def0578259c911a3d",
+      "prompt": "Use case: identity-preserve. Image1 is EDIT TARGET animation-airborne.png; Image2 is Fernando's photographed identity; Image3 is his new likeness study. Replace every visible head in Image1 with Fernando's recognizable face from Image3, adapted to each existing angle, rendered in Image1's crisp limited-color cartoon style. Fuller rounded-oval face and forehead, straight heavy natural eyebrows (not angry V), soft hooded dark eyes, substantial straight rounded-tip nose, modest almost-straight lips, rounded chin with very subtle jaw shadow, short naturally side-swept dark brown hair with low volume. Preserve pose emotion and facing, no generic sharp-jawed anime face, no beard or quiff. Change ONLY head/hair and immediate collar junction. Preserve EXACT bodies, coherent hips/torso/limbs, costume, hands/shoes, relative positions, head height, physical scale, all pose order and canvas layout. Exactly 16 separate full-body figures, FOUR COLUMNS by 4 ROWS, true transparent gutters and background. Do not enlarge, shrink, crop, rearrange, add/delete figures, redraw below collar, add effects/grid/labels/scenery/floor/shadows. Keep the target's existing crouched/falling/airborne anatomy and head orientation, no upright replacement in action poses. Output complete revised atlas only.",
+      "edit_target": "assets/art/characters/06-fernando/animation-airborne.png"
+    },
+    {
+      "role": "walking",
+      "selected_final": "assets/art/characters/06-fernando/walking-v3.png",
+      "sha256": "a36aaf7ee82df78762c21b7443074d2f7db596f3263618b79e6be9d22b461a85",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-2893a66c-8f22-44e7-952f-cbc0c5dcf518.png",
+      "raw_output_sha256": "a36aaf7ee82df78762c21b7443074d2f7db596f3263618b79e6be9d22b461a85",
+      "prompt": "Use case: identity-preserve. Image1 is EDIT TARGET walking-v2.png; Image2 is Fernando's photographed identity; Image3 is his new likeness study. Replace every visible head in Image1 with Fernando's recognizable face from Image3, adapted to each existing angle, rendered in Image1's crisp limited-color cartoon style. Fuller rounded-oval face and forehead, straight heavy natural eyebrows (not angry V), soft hooded dark eyes, substantial straight rounded-tip nose, modest almost-straight lips, rounded chin with very subtle jaw shadow, short naturally side-swept dark brown hair with low volume. Preserve pose emotion and facing, no generic sharp-jawed anime face, no beard or quiff. Change ONLY head/hair and immediate collar junction. Preserve EXACT bodies, coherent hips/torso/limbs, costume, hands/shoes, relative positions, head height, physical scale, all pose order and canvas layout. Exactly 8 separate full-body figures, FOUR COLUMNS by 2 ROWS, true transparent gutters and background. Do not enlarge, shrink, crop, rearrange, add/delete figures, redraw below collar, add effects/grid/labels/scenery/floor/shadows. Keep the target's existing crouched/falling/airborne anatomy and head orientation, no upright replacement in action poses. Output complete revised atlas only.",
+      "edit_target": "assets/art/characters/06-fernando/walking-v2.png"
+    },
+    {
+      "role": "attack-a",
+      "selected_final": "assets/art/characters/06-fernando/attack-v2-a.png",
+      "sha256": "bef939f7fb4b6066a6ad36cfa592e82954b948fbfa935edcf6be8313cb2e94d6",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-e173c32d-186c-4852-99c8-2359e8390289.png",
+      "raw_output_sha256": "bef939f7fb4b6066a6ad36cfa592e82954b948fbfa935edcf6be8313cb2e94d6",
+      "prompt": "Use case: identity-preserve. Image1 is EDIT TARGET attack-v1-a.png; Image2 is Fernando's photographed identity; Image3 is his new likeness study. Replace every visible head in Image1 with Fernando's recognizable face from Image3, adapted to each existing angle, rendered in Image1's crisp limited-color cartoon style. Fuller rounded-oval face and forehead, straight heavy natural eyebrows (not angry V), soft hooded dark eyes, substantial straight rounded-tip nose, modest almost-straight lips, rounded chin with very subtle jaw shadow, short naturally side-swept dark brown hair with low volume. Preserve pose emotion and facing, no generic sharp-jawed anime face, no beard or quiff. Change ONLY head/hair and immediate collar junction. Preserve EXACT bodies, coherent hips/torso/limbs, costume, hands/shoes, relative positions, head height, physical scale, all pose order and canvas layout. Exactly 16 separate full-body figures, FOUR COLUMNS by 4 ROWS, true transparent gutters and background. Do not enlarge, shrink, crop, rearrange, add/delete figures, redraw below collar, add effects/grid/labels/scenery/floor/shadows. Keep the target's existing crouched/falling/airborne anatomy and head orientation, no upright replacement in action poses. Output complete revised atlas only.",
+      "edit_target": "assets/art/characters/06-fernando/attack-v1-a.png"
+    },
+    {
+      "role": "attack-b",
+      "selected_final": "assets/art/characters/06-fernando/attack-v2-b.png",
+      "sha256": "fc679b0d7c15075a150e16bc553911f2e3673f4e0bf5409f8284c42163cc4a2a",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-38ec7677-4966-43cb-8d2a-d9c653f23e0a.png",
+      "raw_output_sha256": "fc679b0d7c15075a150e16bc553911f2e3673f4e0bf5409f8284c42163cc4a2a",
+      "prompt": "Use case: identity-preserve. Image1 is EDIT TARGET attack-v1-b.png; Image2 is Fernando's photographed identity; Image3 is his new likeness study. Replace every visible head in Image1 with Fernando's recognizable face from Image3, adapted to each existing angle, rendered in Image1's crisp limited-color cartoon style. Fuller rounded-oval face and forehead, straight heavy natural eyebrows (not angry V), soft hooded dark eyes, substantial straight rounded-tip nose, modest almost-straight lips, rounded chin with very subtle jaw shadow, short naturally side-swept dark brown hair with low volume. Preserve pose emotion and facing; no generic sharp-jawed anime face, beard or quiff. Change ONLY head/hair and immediate collar junction. Preserve EXACT bodies, coordinated hips/torso/limbs, costume, hands/shoes, positions, head height and physical scale, every pose order and canvas layout. Exactly 16 separate full-body figures, FOUR COLUMNS by 4 ROWS, true transparent gutters and background. Do not enlarge/shrink/rearrange/crop/add/delete figures or redraw below collar. In raised-fist, crouch, flying kick and recoil poses preserve the original head angle and contact silhouette. No new effects, props, grid, labels, scenery, floor or shadows. Output complete revised atlas only.",
+      "edit_target": "assets/art/characters/06-fernando/attack-v1-b.png"
+    },
+    {
+      "role": "jump",
+      "selected_final": "assets/art/characters/06-fernando/jump-v2.png",
+      "sha256": "da0c50593f3ffca4b70bc60a0dfaee681dc4b2906b2664248b9afd379b1c7045",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-67e33f29-67b2-4170-a647-488e8a997a5f.png",
+      "raw_output_sha256": "da0c50593f3ffca4b70bc60a0dfaee681dc4b2906b2664248b9afd379b1c7045",
+      "prompt": "Use case: identity-preserve. Image1 is EDIT TARGET jump-v1.png; Image2 is Fernando's photographed identity; Image3 is his new likeness study. Replace every visible head in Image1 with Fernando's recognizable face from Image3, adapted to each existing angle, rendered in Image1's crisp limited-color cartoon style. Fuller rounded-oval face and forehead, straight heavy natural eyebrows (not angry V), soft hooded dark eyes, substantial straight rounded-tip nose, modest almost-straight lips, rounded chin with very subtle jaw shadow, short naturally side-swept dark brown hair with low volume. Preserve pose emotion and facing; no generic sharp-jawed anime face, beard or quiff. Change ONLY head/hair and immediate collar junction. Preserve EXACT bodies, coordinated hips/torso/limbs, costume, hands/shoes, positions, head height and physical scale, every pose order and canvas layout. Exactly 16 separate full-body figures, FOUR COLUMNS by 4 ROWS, true transparent gutters and background. Do not enlarge/shrink/rearrange/crop/add/delete figures or redraw below collar. In raised-fist, crouch, flying kick and recoil poses preserve the original head angle and contact silhouette. No new effects, props, grid, labels, scenery, floor or shadows. Output complete revised atlas only.",
+      "edit_target": "assets/art/characters/06-fernando/jump-v1.png"
+    },
+    {
+      "role": "super",
+      "selected_final": "assets/art/characters/06-fernando/super-v2.png",
+      "sha256": "afbf654ac47e01deb355d5895a3ca2d85f20ad2bca3ffaeb019cd2974323f22b",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-7c762faf-7a9e-4599-85ab-6dec9e2c3f6e.png",
+      "raw_output_sha256": "afbf654ac47e01deb355d5895a3ca2d85f20ad2bca3ffaeb019cd2974323f22b",
+      "prompt": "Use case: identity-preserve. Image1 is EDIT TARGET super-v1.png; Image2 is Fernando's photographed identity; Image3 is his new likeness study. Replace every visible head in Image1 with Fernando's recognizable face from Image3, adapted to each existing angle, rendered in Image1's crisp limited-color cartoon style. Fuller rounded-oval face and forehead, straight heavy natural eyebrows (not angry V), soft hooded dark eyes, substantial straight rounded-tip nose, modest almost-straight lips, rounded chin with very subtle jaw shadow, short naturally side-swept dark brown hair with low volume. Preserve pose emotion and facing; no generic sharp-jawed anime face, beard or quiff. Change ONLY head/hair and immediate collar junction. Preserve EXACT bodies, coordinated hips/torso/limbs, costume, hands/shoes, positions, head height and physical scale, every pose order and canvas layout. Exactly 8 separate full-body figures, FOUR COLUMNS by 2 ROWS, true transparent gutters and background. Do not enlarge/shrink/rearrange/crop/add/delete figures or redraw below collar. In raised-fist, crouch, flying kick and recoil poses preserve the original head angle and contact silhouette. No new effects, props, grid, labels, scenery, floor or shadows. Output complete revised atlas only.",
+      "edit_target": "assets/art/characters/06-fernando/super-v1.png"
+    }
+  ]
+}

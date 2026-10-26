@@ -23,7 +23,7 @@ from release_evidence import EXPECTED_NATIVE_CORE
 from test_inputs import signed16, trace
 
 NAMES = ('Damian', 'Ivo', 'Cristobal', 'Cote', 'Negger', 'David',
-         'Fernando', 'Cristian', 'Mamariaga', 'Reston', 'Roxana', 'Lars')
+         'Fernando', 'Cristian', 'Madariaga', 'Reston', 'Roxana', 'Lars')
 # These are reproducible controller setups, not new profile or balance values.
 # Understep means the defender walks toward the jump until centers cross.
 RECIPES = {fighter: ('neutral', 24) for fighter in range(12)}
