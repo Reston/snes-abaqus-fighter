@@ -1,6 +1,6 @@
 # Fernando likeness and Madariaga spelling
 
-The v0.30.0 review candidate corrects **Madariaga** in the roster, HUD, results,
+The approved v0.30.0 revision corrects **Madariaga** in the roster, HUD, results,
 winner/Champion text and current guides. The internal `08-mamariaga` asset path
 stays stable so historical art and provenance remain reproducible.
 
@@ -32,5 +32,6 @@ pins the four base atlases. The versioned walking, attack, jump and super
 provenance pins their disjoint frame replacements.
 
 Technical results and exact cartridge identity are recorded in
-[verification-v0.30.0.json](verification-v0.30.0.json). Likeness acceptance remains
-for the user's visual review; this candidate is separate from the deployed v0.29.
+[verification-v0.30.0.json](verification-v0.30.0.json). The user accepted the likeness
+and authorized merge in [PR #35](https://github.com/Reston/snes-abaqus-fighter/pull/35);
+see the [approval record](likeness30-approval.json).

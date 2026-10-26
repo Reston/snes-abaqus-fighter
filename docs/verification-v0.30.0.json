@@ -58,8 +58,10 @@
     }
   },
   "native_suite_checks": 50605,
-  "human_likeness_approval": null,
-  "main_deployed_version": "0.29.0",
+  "human_likeness_approval": {
+    "path": "docs/likeness30-approval.json",
+    "sha256": "9bb09dc42c4b059e26c8d7a32ecbfc236ce2e6b6974eaabd978712f552614811"
+  },
   "new_offline_package": false,
   "physical_hardware_verified": false,
   "focused_native_callbacks": 2940,
@@ -89,5 +91,7 @@
     "sha256": "36915cbe376c0435977cf6ceff2d7c68015629edc22d36b241166506722ca66f",
     "mode": "built-in image_gen",
     "selected_images": 10
-  }
+  },
+  "main_deployed_version_at_technical_verification": "0.29.0",
+  "merge_authorized": true
 }

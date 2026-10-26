@@ -1,5 +1,5 @@
 # Abaqus: After Hours
-<!-- candidate-version: 0.30.0; identity: TECHNICALLY_VERIFIED_LIKENESS_REVIEW_PENDING; rom-sha256: 9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e; source-freeze: 654e03249348ea89c8857561cedd70e8f60e51cf -->
+<!-- candidate-version: 0.30.0; identity: USER_APPROVED; rom-sha256: 9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e; source-freeze: 654e03249348ea89c8857561cedd70e8f60e51cf -->
 
 An original four-button fighting game for the **Super Nintendo**, inspired by
 Street Fighter II and the people and places of Abaqus in Santiago.
@@ -75,7 +75,7 @@ intermediates stay in ignored `.tools/` and `build/` directories.
 ## Documentation
 
 - [Player guide](docs/PLAYER-GUIDE.md) — controls, modes and practice.
-- [v0.30 likeness candidate](docs/RELEASE-v0.30.0.md) · [Fernando before/after](docs/FERNANDO-REVIEW-v3.html).
+- [v0.30 likeness update](docs/RELEASE-v0.30.0.md) · [Fernando before/after](docs/FERNANDO-REVIEW-v3.html).
 - [Development guide](docs/DEVELOPMENT.md) — native architecture and hardware budgets.
 - [Roadmap](docs/ROADMAP.md) — planned work and historical milestones.
 - [Credits and art provenance](docs/CREDITS.md) · [License](LICENSE).

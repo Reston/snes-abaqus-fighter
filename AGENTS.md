@@ -7,8 +7,8 @@ across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
 <!-- v030-agent:start -->
-- **v0.30.0 is a technically verified likeness-review candidate**, branch
-  `feature/madariaga-fernando-likeness`. Approved/deployed main remains v0.29.
+- **v0.30.0 is the user-approved likeness revision**, branch
+  `feature/madariaga-fernando-likeness`, delivered through PR #35.
   Displayed Mamariaga is corrected to Madariaga; internal 08-mamariaga paths
   remain historical stable IDs. Fernando alone uses nine versioned imagegen
   atlases, with the photographed identity and face-study-v3 as references.
@@ -25,7 +25,8 @@ Preserve the native emulator requirement when extending the project.
   refresh from Fernando pixels; other eleven blocks remain exact. Runtime C
   rules differ only in spelling/version strings; hardware/trace ASM is exact.
   See docs/FERNANDO-LIKENESS-v3.md and docs/verification-v0.30.0.json.
-  Human likeness acceptance and merge remain pending. No new offline package.
+  The user accepted the likeness ("ok better") and authorized merge ("merge it").
+  See docs/likeness30-approval.json. No new offline package.
 <!-- v030-agent:end -->
 
 <!-- v029-agent:start -->
