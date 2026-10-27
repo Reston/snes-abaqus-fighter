@@ -1,0 +1,205 @@
+{
+  "status": "passed",
+  "version": "0.33.0",
+  "rom_sha256": "64f7db0dea8b42be855abd836a8f7c9d2f249873a74116e4a0f06ee773631aad",
+  "checksum": "5A59",
+  "native_source_freeze": "fd4bee3acd8ef92d2437d1a9ead4125edb641a88",
+  "verification_producer_commit": "847862be6f12ca7fe5d28c018ee23e83faaba664",
+  "reports": {
+    "docs/test-report.json": {
+      "sha256": "4052f89e871a5376e5f5f02f225251eb498321b1e996a3279ae085f94d1e6a94",
+      "scope": "shared-native-suite",
+      "checks": 3378
+    },
+    "docs/character-test-report.json": {
+      "sha256": "ec31ff8cc736fd053514567339a4b9bf4c0cbdd022dfffd7a5656e1f9c1cb089",
+      "scope": "shared-native-suite",
+      "checks": 20229
+    },
+    "docs/presentation-test-report.json": {
+      "sha256": "c6c1fe3cc54551fb28f60bae75176ee54bbb6a3bd5e2cd412ed11412cdc50d71",
+      "scope": "shared-native-suite",
+      "checks": 3600
+    },
+    "docs/input-test-report.json": {
+      "sha256": "1eb12bdbebd9fa88f57c50d5947d5d620156d3e82d090d3756b7fc1c3910ac72",
+      "scope": "shared-native-suite",
+      "checks": 2296
+    },
+    "docs/stage-test-report.json": {
+      "sha256": "a5e080901af18904f9687ad002cdb5f1e71e345c50bb68286885876a9258ce1e",
+      "scope": "shared-native-suite",
+      "checks": 19002
+    },
+    "docs/training-test-report.json": {
+      "sha256": "3c9439eeba81c06795c0d6a4d25005090a7b8bc8b0b1e4417c2b39b98e449189",
+      "scope": "shared-native-suite",
+      "checks": 3636
+    },
+    "docs/compatibility-test-report.json": {
+      "sha256": "5b36b64cf5206251eb7fc4cb8d0be5d8cfa9fe83fbda779d0c5fc23e3aa66557",
+      "scope": "pinned-Accuracy-smoke"
+    },
+    "docs/fresh-build-test-report.json": {
+      "sha256": "7664fc65ee58f1a6247ed7618c41b45ffba8ba10959233594ec94c87d310cf9f",
+      "scope": "fresh-export-full-source-rebuild"
+    },
+    "docs/native-faces33-native-report.json": {
+      "sha256": "0de6f577f777ea4fac149733a8ecd950d0012452417cdb347b3905867e3ffc6b",
+      "scope": "all12-both-cores-both-ports-selection-and-combat"
+    },
+    "docs/native-faces33-policy-report.json": {
+      "sha256": "c37748394c1b05909cae342765444fd52045a72945842064c0a68242460f6a0c",
+      "scope": "all12-native-art-and-preservation"
+    }
+  },
+  "native_suite_checks": 52141,
+  "human_likeness_approval": null,
+  "merge_authorized": false,
+  "public_game_version": "0.30.0",
+  "new_offline_package": false,
+  "physical_hardware_verified": false,
+  "test_fixture_followup": "test_rom metadata binding and measured 40px-to-38px trade setup follow native freeze; all gameplay/effect assertions remain unchanged.",
+  "focused_native_callbacks": 35280,
+  "focused_native_checks": 176400,
+  "focused_native_cases": 48,
+  "selection_portraits_exact": true,
+  "poses_revised": 768,
+  "unit_guards": [
+    {
+      "path": "docs/evidence/v033-native-faces/guards.txt",
+      "sha256": "a766fd1a57ec45245146b586784305f7c83f84e23306fb91bf36423f94d7b5f0",
+      "tests": 23,
+      "optimized": false,
+      "producer_source": "tools/test_authoring_guards.py",
+      "producer_sha256": "ac9212499fac1e5ebc071ea4cc5d8346257c166c01ee50d76d7a49c9e5251feb"
+    },
+    {
+      "path": "docs/evidence/v033-native-faces/guards-optimized.txt",
+      "sha256": "0e769de5b6e022585786ec80c8c189cdcb30cb6f6a711720061f83a1bdc246a2",
+      "tests": 23,
+      "optimized": true,
+      "producer_source": "tools/test_authoring_guards.py",
+      "producer_sha256": "ac9212499fac1e5ebc071ea4cc5d8346257c166c01ee50d76d7a49c9e5251feb"
+    },
+    {
+      "path": "docs/evidence/v033-native-faces/web-unit.txt",
+      "sha256": "fbfa845aa5fb7541384ad6136837a3a89cceb0f5d339f045cd907e09b7769cba",
+      "tests": 5,
+      "optimized": false,
+      "producer_source": "tools/test_web_build.py",
+      "producer_sha256": "25e9298e000413b59804d3a816a4cc4d88e60f081616fe5aef9574af613017bc"
+    }
+  ],
+  "art_generation": [
+    {
+      "fighter_id": 0,
+      "source": "assets/art/native-faces-v033/00-damian-native64-v2.png",
+      "sha256": "6a9da7150b9422bc555560b088f3ab2b3add8ec5e51b2b46b3d28ba45466ecbb",
+      "provenance": "assets/art/native-faces-v033/00-damian-native64-v2.json",
+      "provenance_sha256": "c079444efc791da082bafaa22ad8ce17be57cb03392e926a367b573c2ec25635",
+      "mode": "built-in image_gen",
+      "poses": 64
+    },
+    {
+      "fighter_id": 1,
+      "source": "assets/art/native-faces-v033/01-ivo-native64-v2.png",
+      "sha256": "46035bd32970834c445d1abc63b0bbbfc12ab76b22cbffee619a08e04d85a502",
+      "provenance": "assets/art/native-faces-v033/01-ivo-native64-v2.json",
+      "provenance_sha256": "30d5b325a2bcc1ab4bb94f3ab4080b5c8e94161a605826095cb30afeaebcd7ad",
+      "mode": "built-in image_gen",
+      "poses": 64
+    },
+    {
+      "fighter_id": 2,
+      "source": "assets/art/native-faces-v033/02-cristobal-native64-v2.png",
+      "sha256": "39541e0db0608fca96031dc8b8a1fe7e9e6dd8bb2b8943263560988bce47cb81",
+      "provenance": "assets/art/native-faces-v033/02-cristobal-native64-v2.json",
+      "provenance_sha256": "488c6041f16be832ad4d765a6b964ce5937293a18b38200dd715a7870bde705c",
+      "mode": "built-in image_gen",
+      "poses": 64
+    },
+    {
+      "fighter_id": 3,
+      "source": "assets/art/native-faces-v033/03-cote-native64-v3.png",
+      "sha256": "3b6bee5419e3295928dfc3662d84990dd568a114486f0665b74ae8429515f7de",
+      "provenance": "assets/art/native-faces-v033/03-cote-native64-v3.json",
+      "provenance_sha256": "d99e956c65f34a210650e5bcac7cb1b1c20ac43731ac08b35670e623b1e7c73a",
+      "mode": "built-in image_gen",
+      "poses": 64
+    },
+    {
+      "fighter_id": 4,
+      "source": "assets/art/native-faces-v033/04-negger-native64-v2.png",
+      "sha256": "f8db48d9fc919775085f9dabc917219e139aa0537681307ade33e7182f7a3ab0",
+      "provenance": "assets/art/native-faces-v033/04-negger-native64-v2.json",
+      "provenance_sha256": "ede37925772e3e7f4e50ec35ba5d7346e6a61aaab5735a0a6ff0ab0b93655a01",
+      "mode": "built-in image_gen",
+      "poses": 64
+    },
+    {
+      "fighter_id": 5,
+      "source": "assets/art/native-faces-v033/05-david-native64-v2.png",
+      "sha256": "89c08921e1ba151dd2598b8bdd09a44cbe6975ff389c174e6c1f83f3e1ce67a6",
+      "provenance": "assets/art/native-faces-v033/05-david-native64-v2.json",
+      "provenance_sha256": "5e42ce5548fb8cd212297cfc5af32767f007558ec97e5d7717b07895d114683d",
+      "mode": "built-in image_gen",
+      "poses": 64
+    },
+    {
+      "fighter_id": 6,
+      "source": "assets/art/native-faces-v033/06-fernando-native64-v2.png",
+      "sha256": "ae28c994f378a884b2996938c6051f0f93bc734d88fa5fced12816bcf966734f",
+      "provenance": "assets/art/native-faces-v033/06-fernando-native64-v2.json",
+      "provenance_sha256": "dfa1e4614df5d8b2d3126ac26b5da55e448fe56a2e68c9a9de13fbc897d99e8e",
+      "mode": "built-in image_gen",
+      "poses": 64
+    },
+    {
+      "fighter_id": 7,
+      "source": "assets/art/native-faces-v033/07-cristian-native64-v2.png",
+      "sha256": "1f4c849bcaa1622a7da54abb6375c77504b5df92a04f14521848f3594b32367a",
+      "provenance": "assets/art/native-faces-v033/07-cristian-native64-v2.json",
+      "provenance_sha256": "bfbcc88db36b0b002db9855671e65d4e8a6e86a00d00ba26b4d7748297da68b3",
+      "mode": "built-in image_gen",
+      "poses": 64
+    },
+    {
+      "fighter_id": 8,
+      "source": "assets/art/native-faces-v033/08-mamariaga-native64-v2.png",
+      "sha256": "ab38c1b2dc05bd4709c724d5d8379fe3d9b83647d5475008356b2697d53542b0",
+      "provenance": "assets/art/native-faces-v033/08-mamariaga-native64-v2.json",
+      "provenance_sha256": "3ac9b3e3467ce4c012dc9a0769e7dc6eca879a683ad00efff42a0c57515ce4a0",
+      "mode": "built-in image_gen",
+      "poses": 64
+    },
+    {
+      "fighter_id": 9,
+      "source": "assets/art/native-faces-v033/09-reston-native64-v2.png",
+      "sha256": "2b9f5c1482c72286b2decc02b6baf4d621ddbb9bd37dc0967d9ddc1a74e94df9",
+      "provenance": "assets/art/native-faces-v033/09-reston-native64-v2.json",
+      "provenance_sha256": "a5c96ddd1e99363920289487d71dea347cefc01e647b5bdb48a44d2658084ba9",
+      "mode": "built-in image_gen",
+      "poses": 64
+    },
+    {
+      "fighter_id": 10,
+      "source": "assets/art/native-faces-v033/10-roxana-native64-v2.png",
+      "sha256": "6bc2596474fd59ac8fab322cc6d7eb1c0d048e5ab1aa4e458de804bc71757665",
+      "provenance": "assets/art/native-faces-v033/10-roxana-native64-v2.json",
+      "provenance_sha256": "d37077d43e04f4359908fcd01f267a63351dc472d28b0f64c5cbb671021db42d",
+      "mode": "built-in image_gen",
+      "poses": 64
+    },
+    {
+      "fighter_id": 11,
+      "source": "assets/art/native-faces-v033/11-lars-native64-v2.png",
+      "sha256": "fc83789dbc8c1f54343a7acd56a6d2bed7bc0beca02234728d814de5ba9936dc",
+      "provenance": "assets/art/native-faces-v033/11-lars-native64-v2.json",
+      "provenance_sha256": "818034a527aa84ff222e673ce0d35fcb0a7b67b468b5871ea531ec86c5eecab0",
+      "mode": "built-in image_gen",
+      "poses": 64
+    }
+  ],
+  "browser_scope": "Five current web build integrity tests pass; wrapper/runtime unchanged. Prior actual-WASM evidence remains historical and is not counted for this ROM."
+}

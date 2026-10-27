@@ -1,6 +1,6 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0",
+  "rom_sha256": "64f7db0dea8b42be855abd836a8f7c9d2f249873a74116e4a0f06ee773631aad",
   "rom_bytes": 4194304,
   "status": "passed",
   "checks": [
@@ -9,11 +9,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.29.0",
+        "version": "0.33.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "7e93c7f233ac557f0f5687e952f0ece9ab9c0e54e3c108d04dd0b39c7d26afa0",
-        "checksum": "F187",
+        "sha256": "64f7db0dea8b42be855abd836a8f7c9d2f249873a74116e4a0f06ee773631aad",
+        "checksum": "5A59",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -2517,8 +2517,8 @@
         "label": "title",
         "row": 27,
         "x": 27,
-        "character": "2",
-        "tile": 50
+        "character": "3",
+        "tile": 51
       }
     },
     {
@@ -2528,8 +2528,8 @@
         "label": "title",
         "row": 27,
         "x": 28,
-        "character": "9",
-        "tile": 57
+        "character": "3",
+        "tile": 51
       }
     },
     {
@@ -3137,7 +3137,7 @@
           44,
           156
         ],
-        "mean_channel_delta": 2.3229166666666665,
+        "mean_channel_delta": 1.8877604166666666,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3167,7 +3167,7 @@
           84,
           156
         ],
-        "mean_channel_delta": 2.1578125,
+        "mean_channel_delta": 1.778125,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3197,7 +3197,7 @@
           124,
           156
         ],
-        "mean_channel_delta": 2.513541666666667,
+        "mean_channel_delta": 2.558854166666667,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3227,7 +3227,7 @@
           164,
           156
         ],
-        "mean_channel_delta": 2.5302083333333334,
+        "mean_channel_delta": 2.480208333333333,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3257,7 +3257,7 @@
           204,
           156
         ],
-        "mean_channel_delta": 2.571875,
+        "mean_channel_delta": 2.396614583333333,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3287,7 +3287,7 @@
           244,
           156
         ],
-        "mean_channel_delta": 2.53125,
+        "mean_channel_delta": 2.10625,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3317,7 +3317,7 @@
           44,
           212
         ],
-        "mean_channel_delta": 2.30703125,
+        "mean_channel_delta": 1.7302083333333333,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3347,7 +3347,7 @@
           84,
           212
         ],
-        "mean_channel_delta": 2.5677083333333335,
+        "mean_channel_delta": 2.4106770833333333,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3377,7 +3377,7 @@
           124,
           212
         ],
-        "mean_channel_delta": 2.8252604166666666,
+        "mean_channel_delta": 2.53984375,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3407,7 +3407,7 @@
           164,
           212
         ],
-        "mean_channel_delta": 2.4010416666666665,
+        "mean_channel_delta": 2.1979166666666665,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3437,7 +3437,7 @@
           204,
           212
         ],
-        "mean_channel_delta": 2.2630208333333335,
+        "mean_channel_delta": 2.1606770833333333,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -3467,7 +3467,7 @@
           244,
           212
         ],
-        "mean_channel_delta": 2.31171875,
+        "mean_channel_delta": 1.8752604166666667,
         "max_channel_delta": 7,
         "pixels_over_16": 0,
         "pixels": 1280
@@ -22363,9 +22363,9 @@
       "check": "the three stage fights render distinct native architecture plates",
       "passed": true,
       "details": {
-        "las-condes": "39e9c9324b11395c57f70a4f9fa38b89852149871e5af883f4f94509c403a36c",
-        "el-castillo": "b2bf651a0e7eedd67f311a27fc74e81458cdd308712a8a063e5d73298d0bd496",
-        "la-oficina": "726898069289a1802de2f44f5877b203a11d0cee4d46497c7b588c19469c39eb"
+        "las-condes": "10cd3f7f7528ea6fba58c607ee76e41ad0a5bc9ed9fe66256868981f3c6cc3e2",
+        "el-castillo": "7346d40c548d65d53047dbddd010bedae801607d0271df36c6105396bc22253c",
+        "la-oficina": "321fa3a81dcd827771818952c8b507fe57803da16e83ec89b2b78a2b5c839d77"
       }
     },
     {
@@ -36921,7 +36921,7 @@
       "details": {
         "fighter": 1,
         "vram_word": "0x4a00",
-        "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1"
+        "sha256": "7be715df67625f9889a1d4a27a1dc4cb5608c5dfc6e9d3bb4e3d54e43e4355a9"
       }
     },
     {
@@ -36987,7 +36987,7 @@
           96,
           152
         ],
-        "mean_channel_delta": 0.2919921875,
+        "mean_channel_delta": 0.2513671875,
         "max_channel_delta": 2,
         "pixels_over_16": 0,
         "pixels": 5120
@@ -38701,7 +38701,7 @@
             44,
             156
           ],
-          "mean_channel_delta": 2.3229166666666665,
+          "mean_channel_delta": 1.8877604166666666,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -38713,7 +38713,7 @@
             84,
             156
           ],
-          "mean_channel_delta": 2.1578125,
+          "mean_channel_delta": 1.778125,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -38725,7 +38725,7 @@
             124,
             156
           ],
-          "mean_channel_delta": 2.513541666666667,
+          "mean_channel_delta": 2.558854166666667,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -38737,7 +38737,7 @@
             164,
             156
           ],
-          "mean_channel_delta": 2.5302083333333334,
+          "mean_channel_delta": 2.480208333333333,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -38749,7 +38749,7 @@
             204,
             156
           ],
-          "mean_channel_delta": 2.571875,
+          "mean_channel_delta": 2.396614583333333,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -38761,7 +38761,7 @@
             244,
             156
           ],
-          "mean_channel_delta": 2.53125,
+          "mean_channel_delta": 2.10625,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -38773,7 +38773,7 @@
             44,
             212
           ],
-          "mean_channel_delta": 2.30703125,
+          "mean_channel_delta": 1.7302083333333333,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -38785,7 +38785,7 @@
             84,
             212
           ],
-          "mean_channel_delta": 2.5677083333333335,
+          "mean_channel_delta": 2.4106770833333333,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -38797,7 +38797,7 @@
             124,
             212
           ],
-          "mean_channel_delta": 2.8252604166666666,
+          "mean_channel_delta": 2.53984375,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -38809,7 +38809,7 @@
             164,
             212
           ],
-          "mean_channel_delta": 2.4010416666666665,
+          "mean_channel_delta": 2.1979166666666665,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -38821,7 +38821,7 @@
             204,
             212
           ],
-          "mean_channel_delta": 2.2630208333333335,
+          "mean_channel_delta": 2.1606770833333333,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -38833,7 +38833,7 @@
             244,
             212
           ],
-          "mean_channel_delta": 2.31171875,
+          "mean_channel_delta": 1.8752604166666667,
           "max_channel_delta": 7,
           "pixels_over_16": 0,
           "pixels": 1280
@@ -41324,12 +41324,12 @@
       },
       "portrait": {
         "asset": "D:\\snes-abaqus-fighter\\assets\\generated\\portrait01_tiles.bin",
-        "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1",
+        "sha256": "7be715df67625f9889a1d4a27a1dc4cb5608c5dfc6e9d3bb4e3d54e43e4355a9",
         "map_entry": 9376,
         "tile": 160,
         "palette": 1,
         "rendered": {
-          "mean_channel_delta": 0.2919921875,
+          "mean_channel_delta": 0.2513671875,
           "max_channel_delta": 2,
           "pixels_over_16": 0,
           "pixels": 5120
@@ -41689,31 +41689,31 @@
         "portrait_framing": {
           "schema": 1,
           "source_size": [
-            249,
+            219,
             313
           ],
           "source_alpha_box": [
             0,
             0,
-            249,
+            219,
             313
           ],
           "crop_box": [
-            77,
+            55,
             0,
-            217,
+            195,
             175
           ],
           "head_anchor_box": [
-            92,
+            86,
             0,
-            184,
+            149,
             50
           ],
           "head_margin_source": {
-            "left": 15,
+            "left": 31,
             "top": 0,
-            "right": 33,
+            "right": 46,
             "bottom": 125
           },
           "target_sizes": [
@@ -42124,31 +42124,31 @@
         "portrait_framing": {
           "schema": 1,
           "source_size": [
-            256,
+            219,
             311
           ],
           "source_alpha_box": [
             0,
             0,
-            256,
+            219,
             311
           ],
           "crop_box": [
-            86,
+            52,
             0,
-            225,
+            191,
             174
           ],
           "head_anchor_box": [
-            98,
+            78,
             0,
-            197,
+            150,
             50
           ],
           "head_margin_source": {
-            "left": 12,
+            "left": 26,
             "top": 0,
-            "right": 28,
+            "right": 41,
             "bottom": 124
           },
           "target_sizes": [
@@ -42211,31 +42211,31 @@
         "portrait_framing": {
           "schema": 1,
           "source_size": [
-            254,
+            224,
             316
           ],
           "source_alpha_box": [
             0,
             0,
-            254,
+            224,
             316
           ],
           "crop_box": [
-            90,
+            63,
             0,
-            232,
+            205,
             177
           ],
           "head_anchor_box": [
-            113,
+            93,
             0,
-            191,
+            160,
             51
           ],
           "head_margin_source": {
-            "left": 23,
+            "left": 30,
             "top": 0,
-            "right": 41,
+            "right": 45,
             "bottom": 126
           },
           "target_sizes": [
@@ -42643,5 +42643,5 @@
     "frame_count": 64
   },
   "passed": 3600,
-  "elapsed_seconds": 10.54
+  "elapsed_seconds": 11.2
 }

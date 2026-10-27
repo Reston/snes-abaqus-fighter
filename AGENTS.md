@@ -7,7 +7,7 @@ across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
 <!-- v033-agent:start -->
-- **v0.33.0 is the all-roster native-face revision in progress**, PR #36 draft.
+- **v0.33.0 is the technically verified all-roster native-face candidate**, PR #36 draft.
   After rejecting the tiny Ivo face, the user requested "do it for everyone".
   This supersedes earlier fighter appearance pins for all twelve in-game models.
   Use deliberate pixel-readable eyes, nose, mouth and jaw, with six skin values
@@ -16,7 +16,13 @@ Preserve the native emulator requirement when extending the project.
   Preserve selection portraits/roster art byte-for-byte, body/costume designs,
   physical heights, original masters, native rules/pacing/controls and ABI.
   Final likeness approval is pending. Keep PR #36 draft; do not merge/deploy.
-  Current sources and exact prompts: assets/art/native-faces-v033/roster.json.
+  ROM 64f7db0dea8b42be855abd836a8f7c9d2f249873a74116e4a0f06ee773631aad, checksum 5A59;
+  native source freeze fd4bee3acd8ef92d2437d1a9ead4125edb641a88. Six suites pass 52,141 checks.
+  Both pinned cores/both ports pass 48 focused cases; independent Accuracy,
+  23 normal/-O authoring guards, five web guards and fresh 237/ROM/symbol
+  reproduction pass. All 1,331 prior RAM labels remain; 116 outputs stay exact.
+  Sources/prompts: assets/art/native-faces-v033/roster.json; verification:
+  docs/verification-v0.33.0.json and docs/NATIVE-FACES-v0.33.html.
   v0.32.1 verification below remains historical for the new candidate.
 <!-- v033-agent:end -->
 

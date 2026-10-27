@@ -24,8 +24,8 @@ attempt remain as history; only the selected sources in the roster are used.
 
 Game rules, move timing, damage, input, slower pacing, stages, audio, RAM/ABI and
 hardware/trace assembly remain. Contact rectangles are regenerated from the
-final quantized drawings. Technical verification and native comparison media
-will be recorded for this exact candidate before delivery.
+final quantized drawings. [Current technical verification](verification-v0.33.0.json) and
+[native comparison media](NATIVE-FACES-v0.33.html) bind this exact candidate.
 
 PR [#36](https://github.com/Reston/snes-abaqus-fighter/pull/36) stays draft for
 native likeness review. The public player remains v0.30; no new offline package
