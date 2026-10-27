@@ -1,8 +1,8 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.30.0; identity: USER_APPROVED; rom-sha256: 9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e; source-freeze: 654e03249348ea89c8857561cedd70e8f60e51cf -->
+<!-- candidate-version: 0.31.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 187a327c8854bfe568184dcc46c6c59f7d1d3460a60c02a6c1aeb18151b39579; source-freeze: 46644cb971b71ddcc3971a0f29f924aff4be79f2 -->
 
-v0.30 adds the approved Fernando likeness and Madariaga spelling update.
-[Visual review](FERNANDO-REVIEW-v3.html). The public player follows main.
+This branch revises Ivo, Fernando and Cristian across all 64 poses.
+[Before/after review](MODEL-REVIEW-v0.31.html). The public player remains v0.30 until merge.
 
 v0.29 adds throw escapes, office bonus rounds, random selection, automatic
 browser launch, new music and sound levels, and animated arena spectators.

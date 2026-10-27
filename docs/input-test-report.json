@@ -2,7 +2,7 @@
   "emulator": "Official Snes9x 1.63 x64 libretro core",
   "suite": "input-feel",
   "status": "passed",
-  "rom_sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
+  "rom_sha256": "187a327c8854bfe568184dcc46c6c59f7d1d3460a60c02a6c1aeb18151b39579",
   "rom_bytes": 4194304,
   "checks": [
     {
@@ -10,11 +10,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.30.0",
+        "version": "0.31.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
-        "checksum": "B2BB",
+        "sha256": "187a327c8854bfe568184dcc46c6c59f7d1d3460a60c02a6c1aeb18151b39579",
+        "checksum": "8285",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"
@@ -1710,7 +1710,7 @@
       "passed": true,
       "details": {
         "cue": "normal-contact",
-        "differing_bytes": 4732,
+        "differing_bytes": 4736,
         "compared_bytes": 8532
       }
     },
@@ -1777,7 +1777,7 @@
       "passed": true,
       "details": {
         "cue": "special",
-        "differing_bytes": 9072,
+        "differing_bytes": 9104,
         "compared_bytes": 17060
       }
     },
@@ -1790,7 +1790,7 @@
           "bytes": 17060,
           "samples": 8530,
           "nonzero": 8380,
-          "peak": 3663,
+          "peak": 3669,
           "clipped": false
         }
       }
@@ -1811,7 +1811,7 @@
           "bytes": 17060,
           "samples": 8530,
           "nonzero": 8380,
-          "peak": 3663,
+          "peak": 3669,
           "clipped": false
         }
       }
@@ -216656,7 +216656,7 @@
         },
         "live_ticks": 180,
         "action7_frames": 94,
-        "wave_frames": 103,
+        "wave_frames": 109,
         "wave_low": [
           1
         ],
@@ -216934,7 +216934,7 @@
         },
         "live_ticks": 180,
         "action7_frames": 94,
-        "wave_frames": 103,
+        "wave_frames": 109,
         "wave_low": [
           1
         ],
@@ -217212,7 +217212,7 @@
         },
         "live_ticks": 180,
         "action7_frames": 94,
-        "wave_frames": 103,
+        "wave_frames": 109,
         "wave_low": [
           1
         ],
@@ -222564,7 +222564,7 @@
         },
         "live_ticks": 180,
         "action7_frames": 94,
-        "wave_frames": 91,
+        "wave_frames": 97,
         "wave_low": [
           1
         ],
@@ -222842,7 +222842,7 @@
         },
         "live_ticks": 180,
         "action7_frames": 94,
-        "wave_frames": 91,
+        "wave_frames": 97,
         "wave_low": [
           1
         ],
@@ -223120,7 +223120,7 @@
         },
         "live_ticks": 180,
         "action7_frames": 94,
-        "wave_frames": 91,
+        "wave_frames": 97,
         "wave_low": [
           1
         ],
@@ -228472,7 +228472,7 @@
         },
         "live_ticks": 180,
         "action7_frames": 94,
-        "wave_frames": 103,
+        "wave_frames": 109,
         "wave_low": [
           1
         ],
@@ -228750,7 +228750,7 @@
         },
         "live_ticks": 180,
         "action7_frames": 94,
-        "wave_frames": 103,
+        "wave_frames": 109,
         "wave_low": [
           1
         ],
@@ -229028,7 +229028,7 @@
         },
         "live_ticks": 180,
         "action7_frames": 94,
-        "wave_frames": 103,
+        "wave_frames": 109,
         "wave_low": [
           1
         ],
@@ -667371,7 +667371,7 @@
         "peak": 1722,
         "clipped": false
       },
-      "differing_bytes": 4732
+      "differing_bytes": 4736
     },
     "special": {
       "cue": "special",
@@ -667392,10 +667392,10 @@
         "bytes": 17060,
         "samples": 8530,
         "nonzero": 8380,
-        "peak": 3663,
+        "peak": 3669,
         "clipped": false
       },
-      "differing_bytes": 9072
+      "differing_bytes": 9104
     }
   },
   "status_bars": {
@@ -670391,7 +670391,7 @@
         },
         "live_ticks": 180,
         "action7_frames": 94,
-        "wave_frames": 103,
+        "wave_frames": 109,
         "wave_low": [
           1
         ],
@@ -672309,7 +672309,7 @@
         },
         "live_ticks": 180,
         "action7_frames": 94,
-        "wave_frames": 91,
+        "wave_frames": 97,
         "wave_low": [
           1
         ],
@@ -674227,7 +674227,7 @@
         },
         "live_ticks": 180,
         "action7_frames": 94,
-        "wave_frames": 103,
+        "wave_frames": 109,
         "wave_low": [
           1
         ],
@@ -689571,5 +689571,5 @@
     }
   ],
   "passed": 2296,
-  "elapsed_seconds": 145.297
+  "elapsed_seconds": 126.594
 }

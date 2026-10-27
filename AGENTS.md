@@ -6,6 +6,25 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+<!-- v031-agent:start -->
+- **v0.31.0 is a technically verified three-model review candidate**, branch
+  `feature/roster-likeness-v031`. Main/public game remain v0.30. The user asked
+  for better Ivo, Fernando and Cristian likenesses. This supersedes their prior
+  appearance pins only; preserve all nine other fighters and original masters.
+  Thirty selected built-in imagegen assets comprise three photographed model
+  sheets and 27 full-body pose atlases. All64 poses/portraits change for each;
+  original palettes, physical heights and move roles stay. Of237 outputs,
+  192 remain exact and45 change. All1,331 prior RAM/data labels and hardware/
+  trace ASM stay exact. Native rules differ only in version; pixel-derived
+  geometry changes only for ids1/6/7. ROM 187a327c8854bfe568184dcc46c6c59f7d1d3460a60c02a6c1aeb18151b39579,
+  checksum 8285; native source freeze 46644cb971b71ddcc3971a0f29f924aff4be79f2.
+  Six suites pass50,605 checks; twelve focused both-core/both-port sessions
+  pass8,820 callbacks without health failures. Accuracy smoke,20 normal/-O
+  authoring guards, five web build tests and fresh237/ROM/symbol reproduction pass.
+  See docs/MODELS-v0.31.md, docs/MODEL-REVIEW-v0.31.html and verification-v0.31.0.json.
+  Human likeness acceptance and merge remain pending. No new offline package.
+<!-- v031-agent:end -->
+
 <!-- v030-agent:start -->
 - **v0.30.0 is the user-approved likeness revision**, branch
   `feature/madariaga-fernando-likeness`, delivered through PR #35.

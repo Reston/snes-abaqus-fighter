@@ -1,9 +1,9 @@
 {
   "status": "passed",
   "part": "stages",
-  "version": "0.30.0",
-  "rom_sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
-  "source_commit": "52e9f020804415f2c9694f8be40f689d695e01cc",
+  "version": "0.31.0",
+  "rom_sha256": "187a327c8854bfe568184dcc46c6c59f7d1d3460a60c02a6c1aeb18151b39579",
+  "source_commit": "46644cb971b71ddcc3971a0f29f924aff4be79f2",
   "diagnostic": false,
   "selected_fighters": [
     0,
@@ -26,8 +26,8 @@
     "audio_device_opened": false,
     "priority_class": 16384,
     "logical_processors": [
-      6,
-      7
+      10,
+      11
     ]
   },
   "source_sha256": {
@@ -65,7 +65,7 @@
     "src/super_moves.h": "6b5d0f67851c1b7dc370d25f5a4dd1c41c44ad04b41d3928a663c2859374e0b0",
     "src/trace.asm": "301ec8a99aa326583c332a901903114f5fceeb7f17bbbf768c3e90ae65c3dc88",
     "src/training_tools.h": "bad6ffc456e48c0b346ffaa069c33871988716828db75a18f511266c3de33961",
-    "src/version.h": "7e994d55f0d3fe59d8df0b503d6281fe50ef90d33ba72cd3cfa6d871220e9fb9",
+    "src/version.h": "34d9bc96736d0e92d630aeba2061b14f76a6ee61a9e5d46c2aa23cea6b7c3024",
     "Test.cmd": "6c38ea238c7481f1529954a1652f34e72367b2c251562166c81e2e629e10b632",
     "tools/arena_life29_assets.py": "5274f75f2b45f30ff4f910f5f079383bd2ba7ed2608b952f9d3006041099b590",
     "tools/arena_life29_checks.py": "2cc91f0200707b331d3d7d7a0009c81ceefe9d295a48c846fe0761441ed7bb02",
@@ -96,8 +96,9 @@
     "tools/emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
     "tools/expansion_contracts.py": "b64c11cecf01d5ca672ffb137a416ec0ae2f16c94ea310594ea3250cc1803d51",
     "tools/fetch_references.py": "a630e9cb073f7a20b4ddb720a3af812d6e7790398c5dc19cd88ece7c13a65254",
-    "tools/fighter_assets.py": "7b357e65e5e90da3273a75c0009d97aa7b1252c56bc005f782b44c67461d132d",
+    "tools/fighter_assets.py": "feda7d608dc017ef63f48b33bc73cc985c6df6e3c276a1f0626def460ee33115",
     "tools/likeness30_contracts.py": "8c681f5ea01e918e7b70fcbd29ac023b71707ae5d2f665e81df4de8637420595",
+    "tools/likeness31_contracts.py": "e8da42b6aaff712d4bfe5121b0388d394554809dab402e8e2c07ce73c9307a0e",
     "tools/longrun_host.py": "432bed2b7505131d639794ee4b1d857292df4465e7f219c39a14fa433f11cc8e",
     "tools/make_assets.py": "b74e2827309e53b0df2fdad5af9b49327bedd0a0271e5b87d982a875e6d9b8dd",
     "tools/make_champion_budget.py": "f5ffcfec6c09729f72f19815613d244794bfe4e0ad7a5d708c63a634552e24ad",
@@ -182,6 +183,7 @@
     "tools/test_fresh_build.py": "75b6c3622d1ad96411feb8b13a9fc71e0d47fa5357fbe8c93d0c11a21c348b8b",
     "tools/test_inputs.py": "0e454be6e1fc45abda97ecb368012db4fd14d6d9cf653326aa112d69ec440bbc",
     "tools/test_launcher_26.py": "972531769a22a3d85f652104912f981bd9a3d027244702e1efdadfa2e1803e46",
+    "tools/test_likeness31.py": "a006303b4946ec5b7064e34168fdf2493c5aeff545805de830d4f54a042ffe5d",
     "tools/test_local_session_26.py": "869597abe87ff42c46c333ac27148c2f871fb7804696e3aed446de924ef8a6a8",
     "tools/test_long_session_guards.py": "72f528248cb1369681a62cf53cb13ace31273c279ccea7e7c9f1a53dea5a1643",
     "tools/test_matchups.py": "1979c79b5ed465f798c9528267e9debce412a1f2c19ca84c13d34995db060a1c",
@@ -194,7 +196,7 @@
     "tools/test_native_artifacts.py": "905cdccf4f6055d34b09387c26205879b839520cad119fe8c01de3c3ac2b1327",
     "tools/test_native_build_26.py": "0ac64bfec8e4db1c8420745891578bb8b914a6764a275a970a7ae2f5fcede8c5",
     "tools/test_normal_guide_26.py": "93be4467c72686dfb312ccf5b5a957d15ca54ecf5bd083f6b03527af6a48336a",
-    "tools/test_pacing_floor_25.py": "e4af00aabaec4caf266c1719273b4c393486088e8e5503727024e02c2125b9c7",
+    "tools/test_pacing_floor_25.py": "6ae0700ab8f41fe5c17c500c7e9d3ac91dc6242a3c4968096f28a52a3051dce3",
     "tools/test_package.py": "1174274d5eeec4610fd98fb11bbef90b213a9f5a61a776f634a6d99fcb15d3d9",
     "tools/test_play_flow_26.py": "f85bdd5f85cb5df1e611449406654d42f281d7c9335d13ee5c91549ac2330b6c",
     "tools/test_play_flow_collation.py": "c15d9965c6a966f7c4e8e095629e441dfb0895cf2652833881cca0367fc0679c",
@@ -299,108 +301,238 @@
   "audio_device_opened": false,
   "preservation": {
     "status": "passed",
-    "baseline_commit": "c4cf41148f76e202d958e8f2e3e2f040505054c1",
-    "version": "0.30.0",
-    "rom_sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
+    "baseline_commit": "67d7fc08e6bcbc20f864215c200705cbbd048303",
+    "version": "0.31.0",
+    "rom_sha256": "187a327c8854bfe568184dcc46c6c59f7d1d3460a60c02a6c1aeb18151b39579",
     "generated": {
       "baseline_count": 237,
       "current_count": 237,
-      "preserved_count": 218,
+      "preserved_count": 192,
       "changed": [
         {
           "path": "assets/generated/assets.h",
-          "sha256": "d8e353cda5137547af035c2ab0cb286aa73520a0fc5858e61c051c4efcd5a09a",
-          "baseline_sha256": "fe5dd039186e4c73182b219e6b2b4854b5fbfb5d7506e54fb8082b99f9018f99"
+          "sha256": "9b48750ea95ffa4e6fd3bdaa98768f3d42518d15a23bc6cc86eac1c05e7ac82e",
+          "baseline_sha256": "d8e353cda5137547af035c2ab0cb286aa73520a0fc5858e61c051c4efcd5a09a"
         },
         {
           "path": "assets/generated/character-manifest.json",
-          "sha256": "80e35a49d70a06a1237f77ec49a7864afce548f44c483104e8f7fb92ac1752e6",
-          "baseline_sha256": "fbe6ee2d0aae1c75001010c6ac59950dd08b26c23c1c703ff7717c6c2b112843"
+          "sha256": "996a8e9e5dd12d7c93782fcfd9759986becd22c9a9712bc5533900974250b8cf",
+          "baseline_sha256": "80e35a49d70a06a1237f77ec49a7864afce548f44c483104e8f7fb92ac1752e6"
+        },
+        {
+          "path": "assets/generated/fighter01.bin",
+          "sha256": "a7ca9e1cc6baac9833b1e723db725b5a3d5a28ef51b7a670747e5b56d367a13c",
+          "baseline_sha256": "f934113e838abaabe85a467b87589072bbadf118e44af52f2dc476e57192deaf"
+        },
+        {
+          "path": "assets/generated/fighter01.png",
+          "sha256": "263f39779e11f4ed086bd9bb237ebf6c3cf2923e8413df85f5a4441073ade2ef",
+          "baseline_sha256": "899682ee149c6f0e25338ff2c18955d4b269819e53c2fb3172d2d49ce1a0f53b"
+        },
+        {
+          "path": "assets/generated/fighter01b.bin",
+          "sha256": "c1d66e66aa8082d1266c45dfadd9b791ec2352f136c73bfde99d8bf95c3cb0e6",
+          "baseline_sha256": "28bcf26d6cfbedd0ab024ec982ef2e90ecffcf17964e333966e9f8fdddcadf3f"
+        },
+        {
+          "path": "assets/generated/fighter01c.bin",
+          "sha256": "fcd88119000d44eb532d3e45c9a25ac960463fa4c741cb8ddc888ea0347cc37d",
+          "baseline_sha256": "94c116e71b1774aa18651e1541128d1ae3dce86c7e5337f35af7871e55399fb2"
+        },
+        {
+          "path": "assets/generated/fighter01d.bin",
+          "sha256": "081e66a3defbcbe80fc9d1098b466371b1d0e8a0aac83eff357e02463548f8dd",
+          "baseline_sha256": "938c46405a2d7a6d8c55cdebf238c2011291f0072ef39139e31036452c7ad2b9"
+        },
+        {
+          "path": "assets/generated/fighter01e.bin",
+          "sha256": "8f2426fc864debf0e716fb629bc6eb28a43811c084120a4796c1b6fbf865afc7",
+          "baseline_sha256": "c0e831e4658d63cddc525166e142fca2f7b6c9e73776aed538585e015d8c900c"
+        },
+        {
+          "path": "assets/generated/fighter01f.bin",
+          "sha256": "946f7e6af1219bd458da7b04ac571455afa50fd1f71f5bfe7ca3ffe8783905ec",
+          "baseline_sha256": "46c20fa18de6fcd45c37edb93213e6f2ea80342797cc3c92d305b38391e0757a"
+        },
+        {
+          "path": "assets/generated/fighter01g.bin",
+          "sha256": "08a75d598c79894883aff5449d8d9fec129e1608b94561757105671d7bec9240",
+          "baseline_sha256": "b15cee1683279be889e6222021dc080b66faab244f096280834f0947824afece"
+        },
+        {
+          "path": "assets/generated/fighter01h.bin",
+          "sha256": "f74685a557edd808af7ed1ca3b9883529729221b97dd562f78212064f2599c2a",
+          "baseline_sha256": "257375a4df8195c12f1700d856127dd3f959499544c2d85d18ee6ca6571e4f58"
         },
         {
           "path": "assets/generated/fighter06.bin",
-          "sha256": "3a9e343236351225a538d664874ea5f94a833a32a83b310384cc2c86640c932d",
-          "baseline_sha256": "eabba881ce33f7ae43b51f460758d2981e1c101015f1cdff0e67de690072301d"
+          "sha256": "8bf01bd83840514f948aeaf84f53d9236840e0d20ba813b0f6bb6e37c97cdc1b",
+          "baseline_sha256": "3a9e343236351225a538d664874ea5f94a833a32a83b310384cc2c86640c932d"
         },
         {
           "path": "assets/generated/fighter06.png",
-          "sha256": "b90951b3443246932ace31d778bc05d26101334a3c115210026328c0fb57ab28",
-          "baseline_sha256": "19a36cc2d330e20c37f44b2748733bf7443595ef179c04dc23d0b92cac8abbbd"
+          "sha256": "ccd203dbe38d5d2a227116f1a5b0a910bc2f09d96f7791e4010cb9742dcce98e",
+          "baseline_sha256": "b90951b3443246932ace31d778bc05d26101334a3c115210026328c0fb57ab28"
         },
         {
           "path": "assets/generated/fighter06b.bin",
-          "sha256": "4820d42bf338710c29fff0155959c0f26de066eb3ad52506cdccbff08da88e09",
-          "baseline_sha256": "551a097d9b40e41cd5a41b66e68794d4cb65d9cf9ad4366f1d0283c23181b69c"
+          "sha256": "ea589a1090d5ec426e3a5029b1d285b49d2ab9fd4394bb0c4069fbf891c85d69",
+          "baseline_sha256": "4820d42bf338710c29fff0155959c0f26de066eb3ad52506cdccbff08da88e09"
         },
         {
           "path": "assets/generated/fighter06c.bin",
-          "sha256": "7e1134fd00842fa636cd09293a3ab91c238cd14d8a05fa92c6672bf31ed584ac",
-          "baseline_sha256": "968880971eedb9c1390e28551da7c37e63267dd81cd4ec17998a60adf67b7818"
+          "sha256": "5d722196654baad65f5903febdb852feeb6f104756a69f786c6e89e0550170d1",
+          "baseline_sha256": "7e1134fd00842fa636cd09293a3ab91c238cd14d8a05fa92c6672bf31ed584ac"
         },
         {
           "path": "assets/generated/fighter06d.bin",
-          "sha256": "0524b033f2ec18160e5b0a7b2ad95806ab37696def0728a24585254529238217",
-          "baseline_sha256": "14624f315f0b5f215614c63ba22ba2ad1a7e33846dfc19c85d8fe9b0d9c970ec"
+          "sha256": "532d5d367002583c6a31bda6453ec302df8334153c8266ffe654a48b2553a55f",
+          "baseline_sha256": "0524b033f2ec18160e5b0a7b2ad95806ab37696def0728a24585254529238217"
         },
         {
           "path": "assets/generated/fighter06e.bin",
-          "sha256": "ec5297a4a8ff2c4509ea2c9f2778290ad5fe4fe8d3f2ecf6ca6b0cda573a8420",
-          "baseline_sha256": "ce9c5a86062fda17d3b96c96b000f89cbc06da86b1d0b60fe54b3a2ee4815678"
+          "sha256": "1a65737d2343cff79ca244855be0c62f98a10005ee746238a4eaf61f95c47340",
+          "baseline_sha256": "ec5297a4a8ff2c4509ea2c9f2778290ad5fe4fe8d3f2ecf6ca6b0cda573a8420"
         },
         {
           "path": "assets/generated/fighter06f.bin",
-          "sha256": "83b0722e3864e9e845e4b6e2d23f4e531e65117306e4a00a52ce59a561984394",
-          "baseline_sha256": "1c7ec2ec7409f1001bd2b578c1bfc8e7b6c3627579aa894dc7a7acb9abf3d021"
+          "sha256": "d118fab323f957878e2e31433be10c5c5111c61889e1ca9b5dcbc3f7e76302bc",
+          "baseline_sha256": "83b0722e3864e9e845e4b6e2d23f4e531e65117306e4a00a52ce59a561984394"
         },
         {
           "path": "assets/generated/fighter06g.bin",
-          "sha256": "62179004c65c96e480a0017f1f36e6d503ffcec6e66b6e7931714d632054080d",
-          "baseline_sha256": "c8530c36a1de832f08e6fca614deb06b93153311b24a1e218088791a4043e895"
+          "sha256": "74a7a975a0e32286255c1e12a7a1950f60520c9212cfd51d0f20890ebbe5381a",
+          "baseline_sha256": "62179004c65c96e480a0017f1f36e6d503ffcec6e66b6e7931714d632054080d"
         },
         {
           "path": "assets/generated/fighter06h.bin",
-          "sha256": "9021c2cc799d910f707b7fb9e834e1630da8ca4f6ac466cfdad46d34a4e30c80",
-          "baseline_sha256": "f7335d7fd02fab62f4d6fafd67f898bfb8d47d30e1b4abb1f23141ff43235b11"
+          "sha256": "ae093fae2f8f78421de0135188dd15d51403afd174dbf9f41af0c87bac3641b4",
+          "baseline_sha256": "9021c2cc799d910f707b7fb9e834e1630da8ca4f6ac466cfdad46d34a4e30c80"
+        },
+        {
+          "path": "assets/generated/fighter07.bin",
+          "sha256": "e92fe5f447159064c3531d69109c9cf4e2204dce0ec26358b09ad07d2970c0ce",
+          "baseline_sha256": "99220e23b1ef1be5388dcb3888e73176cd2ea8476ba48b4bcf29bb24ec6a154a"
+        },
+        {
+          "path": "assets/generated/fighter07.png",
+          "sha256": "92f6110da0f1a8bfa3db0815f794b82f9eb14a0f70aef37c881a3da72bd8bf05",
+          "baseline_sha256": "5aa315a2a073c6023ae863b89863afb8568597797ccb5e4644c92557269a692d"
+        },
+        {
+          "path": "assets/generated/fighter07b.bin",
+          "sha256": "d7069dc973eb51d1810a0ebb4d76630c584408923887609d5f80b8fc200af6ef",
+          "baseline_sha256": "3045a00c89070108b3b86631f6479ef4ca375bdbfd01d564e1ab77b6f0722aa8"
+        },
+        {
+          "path": "assets/generated/fighter07c.bin",
+          "sha256": "6cbe0223fa7ea53d000fadceca80b7aae6792976e90423c6730fa3f7de4e32b5",
+          "baseline_sha256": "18fe7259dabf4d0e338a0c5dafbd7a1c50b86469ff99edaba145a8ad779a6b7c"
+        },
+        {
+          "path": "assets/generated/fighter07d.bin",
+          "sha256": "f85e3688e08487d8bb33cbb8c003c3187d9410df9cad167c734210657c4c5d2f",
+          "baseline_sha256": "d79f7f7ded9961d2da4f7e85e66f93fb60cbb762003ec0485d6883e1dbcb3726"
+        },
+        {
+          "path": "assets/generated/fighter07e.bin",
+          "sha256": "3198e155f6b63bfc6418e1783a709cb86a90a3bf791e3fc818c6afd1a0350ea4",
+          "baseline_sha256": "e49ae37c211c9b6b55919be375d7b5fa4a7665a1427396eacb563c388279f52b"
+        },
+        {
+          "path": "assets/generated/fighter07f.bin",
+          "sha256": "e9cf6ec3c97101a3108c5013c14a384a42369ff5c7ca4fa31918970d895e4eab",
+          "baseline_sha256": "2e8f9bc29b04b195603bb67aceb88b67e6aa03e0226e5bb31aff983f3481c8fb"
+        },
+        {
+          "path": "assets/generated/fighter07g.bin",
+          "sha256": "d07b671fc79656c3aa114e4251c6c3ba4ae99d1fea34f56e732d1999bad05a11",
+          "baseline_sha256": "a5d8e8ff291f1b0cee7f8117eccecb16da46c1d33673251be2917fe15f26d4a5"
+        },
+        {
+          "path": "assets/generated/fighter07h.bin",
+          "sha256": "61208af1482ef58432ee2e4c6c3e2e6c3b4d1eaf60c6af96a2e5880679f0d547",
+          "baseline_sha256": "288b6068ce239b133db31e639a65edf856acd96b8676b4d8ce4a33f1e4eab213"
+        },
+        {
+          "path": "assets/generated/portrait01-large.png",
+          "sha256": "a703f0ebb004fb5bc986a50d0295fb4b1863792f0c6eb6274b52ca169ad90873",
+          "baseline_sha256": "ddaaf1405c6c9d7950df0bd6c56449fead35820ca31aa78800db8c2af6f020e9"
+        },
+        {
+          "path": "assets/generated/portrait01.png",
+          "sha256": "550e911ee8f2feb4d32a75a7ef8aa922a49a81cbfd3b581e525dacab54afe310",
+          "baseline_sha256": "26de480b79a6c721d6928d94d524e62e0c345140e39227788caf0fcef7026c41"
+        },
+        {
+          "path": "assets/generated/portrait01_pal.bin",
+          "sha256": "0dec67be9d5d7d6b9c1c22ec2570baae3025b459f22d8d12dd8f64cb1a342cca",
+          "baseline_sha256": "08989818b479b17741576eb89afc057096957585f57d317897de1d70809aef87"
+        },
+        {
+          "path": "assets/generated/portrait01_tiles.bin",
+          "sha256": "7be715df67625f9889a1d4a27a1dc4cb5608c5dfc6e9d3bb4e3d54e43e4355a9",
+          "baseline_sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1"
         },
         {
           "path": "assets/generated/portrait06-large.png",
-          "sha256": "a831df74cfa8bb28852f52f1beaefaea04127d9090323499f6cd33f3f05d4264",
-          "baseline_sha256": "9b1afd3adc03cdc55d5f4803b0a057f4d853fb4c9f8ba45731072e45b5a44b9d"
+          "sha256": "fb6967d16e7c7ad37489d07e83b752d3636d7369a0f441024c0a16543901f0de",
+          "baseline_sha256": "a831df74cfa8bb28852f52f1beaefaea04127d9090323499f6cd33f3f05d4264"
         },
         {
           "path": "assets/generated/portrait06.png",
-          "sha256": "e096247c758bd0cdd27e0d54a9d8c875cbf13d449183dca5454106ca9a033113",
-          "baseline_sha256": "8d02f2b788cb49ba20935aeb3f60e3af05052b663d400b0eb1b3d50341bc308e"
+          "sha256": "f182e3b764fe07d610900898b09117b3046de7cc1a0be4852616670c8934140d",
+          "baseline_sha256": "e096247c758bd0cdd27e0d54a9d8c875cbf13d449183dca5454106ca9a033113"
         },
         {
           "path": "assets/generated/portrait06_pal.bin",
-          "sha256": "2df40db63b446ec979b98663408776345ee8d3fc54fe07844f1aedd61a058727",
-          "baseline_sha256": "5db63711260962bc338f05f445b584c372033a97bcdaa538e089ed2e5d5fc972"
+          "sha256": "76a1cdedf0f09c1d622141e3ee1f6e4d05fd78fd4eba6543685edefcbd6d5745",
+          "baseline_sha256": "2df40db63b446ec979b98663408776345ee8d3fc54fe07844f1aedd61a058727"
         },
         {
           "path": "assets/generated/portrait06_tiles.bin",
-          "sha256": "b3efe196d08ae5db2c92f5482e5713f7acee003d1c2b0d8e1d12b61d3f8e747f",
-          "baseline_sha256": "f023d0d5dd115725202ed8a527b2ec45812a7f5e7af77bf579bcec09d39a5e2f"
+          "sha256": "df05f7757cc4d0eebba0487de254a92410d99b62795dbba979795b02d6f0e628",
+          "baseline_sha256": "b3efe196d08ae5db2c92f5482e5713f7acee003d1c2b0d8e1d12b61d3f8e747f"
+        },
+        {
+          "path": "assets/generated/portrait07-large.png",
+          "sha256": "2b56878c08517472b24cc9a478e124d3b261f690920993259b12ca4380ddc246",
+          "baseline_sha256": "e635436d5ad0795a671d777ddfff313a01551bf5c2aae72ba59cd7e70d72f1dd"
+        },
+        {
+          "path": "assets/generated/portrait07.png",
+          "sha256": "ddf4ddbc7f13047f69ed1d97689118bd81c8a5f22750224b48c580ba630a83c3",
+          "baseline_sha256": "c982e5997517db0b4bfd478a312cbe2b3047801f6c05b5ead2e7216d65b1c2a6"
+        },
+        {
+          "path": "assets/generated/portrait07_pal.bin",
+          "sha256": "c6a978d34a8d52967735b2b569f943bee810340558a5278890311f8bf64dfb86",
+          "baseline_sha256": "656c585b5d15a36aaa07d2ad016ab60e63c59281fd9be66d330c33042684db42"
+        },
+        {
+          "path": "assets/generated/portrait07_tiles.bin",
+          "sha256": "92b1df0e95c3e3911830ce913ce46f254438e1e22afeb3a0823833260ee79fe6",
+          "baseline_sha256": "d83d340dffeb196c8d1a961cd85d391bad6c849b385b921eca8868eb40d86537"
         },
         {
           "path": "assets/generated/select.png",
-          "sha256": "e87d47414f62a29869131977543ab7cdb0e69a564ae8ffd1de6ff9c9ead887d7",
-          "baseline_sha256": "736d3b8ee8c13cb8a78c1e5e4a8bf5a74d8ec6d700e9f1105832fe535b2375e9"
+          "sha256": "4f7e45c17ff9b5a907e1673c3b6cea947f285ad0cef201099c8ba1518e78a0fb",
+          "baseline_sha256": "e87d47414f62a29869131977543ab7cdb0e69a564ae8ffd1de6ff9c9ead887d7"
         },
         {
           "path": "assets/generated/select_map.bin",
-          "sha256": "067015b8b4ef15196a7af06f491a62fee6a62c09cfd666a015b4fa16c6f36b69",
-          "baseline_sha256": "b79ef9e5586334aee8ef1c822138ff1fd7cc16de24be1df67f526842eb1d79f3"
+          "sha256": "7e75c815922cbf7ac30d4ac1aff36c6c57c10155e558d7ac371b5af41746a721",
+          "baseline_sha256": "067015b8b4ef15196a7af06f491a62fee6a62c09cfd666a015b4fa16c6f36b69"
         },
         {
           "path": "assets/generated/select_pal.bin",
-          "sha256": "a01fb8ca5558982eeec1db901fed40ccbd4c27ce8e15730dfb9e70f83b30885b",
-          "baseline_sha256": "7548310daef646223f609a2224d1a050c66650f377082499487b649f57b1abd9"
+          "sha256": "9dc220b09d4c80bd7f9530b88161ed5e87d3c4b0bec1d9c66cca052169c80ddb",
+          "baseline_sha256": "a01fb8ca5558982eeec1db901fed40ccbd4c27ce8e15730dfb9e70f83b30885b"
         },
         {
           "path": "assets/generated/select_tiles.bin",
-          "sha256": "6bcce704dd5cce499d705835bb2c8ef2053f0a3734bd88d58e34cf85a4ff773f",
-          "baseline_sha256": "3d01874c5f86f4f53a50c3927db6c61e0e3e5ea86e14b2c18873818382716827"
+          "sha256": "4046fcdea1f07c2d06425a52b9df6a1c4cea5a99f9e468b22776017c0b31f90c",
+          "baseline_sha256": "6bcce704dd5cce499d705835bb2c8ef2053f0a3734bd88d58e34cf85a4ff773f"
         }
       ],
       "added": [],
@@ -571,54 +703,9 @@
           "baseline_sha256": "7c4735b5b8e133e468be53d2383ef068d7bb623dea05ef39b78348be50408b5d"
         },
         {
-          "path": "assets/generated/fighter01.bin",
-          "sha256": "f934113e838abaabe85a467b87589072bbadf118e44af52f2dc476e57192deaf",
-          "baseline_sha256": "f934113e838abaabe85a467b87589072bbadf118e44af52f2dc476e57192deaf"
-        },
-        {
-          "path": "assets/generated/fighter01.png",
-          "sha256": "899682ee149c6f0e25338ff2c18955d4b269819e53c2fb3172d2d49ce1a0f53b",
-          "baseline_sha256": "899682ee149c6f0e25338ff2c18955d4b269819e53c2fb3172d2d49ce1a0f53b"
-        },
-        {
           "path": "assets/generated/fighter01_pal.bin",
           "sha256": "c253838df2e0dcbd6e784bd419b68c641cddbe17a6cde73526fc9d91658d41ac",
           "baseline_sha256": "c253838df2e0dcbd6e784bd419b68c641cddbe17a6cde73526fc9d91658d41ac"
-        },
-        {
-          "path": "assets/generated/fighter01b.bin",
-          "sha256": "28bcf26d6cfbedd0ab024ec982ef2e90ecffcf17964e333966e9f8fdddcadf3f",
-          "baseline_sha256": "28bcf26d6cfbedd0ab024ec982ef2e90ecffcf17964e333966e9f8fdddcadf3f"
-        },
-        {
-          "path": "assets/generated/fighter01c.bin",
-          "sha256": "94c116e71b1774aa18651e1541128d1ae3dce86c7e5337f35af7871e55399fb2",
-          "baseline_sha256": "94c116e71b1774aa18651e1541128d1ae3dce86c7e5337f35af7871e55399fb2"
-        },
-        {
-          "path": "assets/generated/fighter01d.bin",
-          "sha256": "938c46405a2d7a6d8c55cdebf238c2011291f0072ef39139e31036452c7ad2b9",
-          "baseline_sha256": "938c46405a2d7a6d8c55cdebf238c2011291f0072ef39139e31036452c7ad2b9"
-        },
-        {
-          "path": "assets/generated/fighter01e.bin",
-          "sha256": "c0e831e4658d63cddc525166e142fca2f7b6c9e73776aed538585e015d8c900c",
-          "baseline_sha256": "c0e831e4658d63cddc525166e142fca2f7b6c9e73776aed538585e015d8c900c"
-        },
-        {
-          "path": "assets/generated/fighter01f.bin",
-          "sha256": "46c20fa18de6fcd45c37edb93213e6f2ea80342797cc3c92d305b38391e0757a",
-          "baseline_sha256": "46c20fa18de6fcd45c37edb93213e6f2ea80342797cc3c92d305b38391e0757a"
-        },
-        {
-          "path": "assets/generated/fighter01g.bin",
-          "sha256": "b15cee1683279be889e6222021dc080b66faab244f096280834f0947824afece",
-          "baseline_sha256": "b15cee1683279be889e6222021dc080b66faab244f096280834f0947824afece"
-        },
-        {
-          "path": "assets/generated/fighter01h.bin",
-          "sha256": "257375a4df8195c12f1700d856127dd3f959499544c2d85d18ee6ca6571e4f58",
-          "baseline_sha256": "257375a4df8195c12f1700d856127dd3f959499544c2d85d18ee6ca6571e4f58"
         },
         {
           "path": "assets/generated/fighter02.bin",
@@ -826,54 +913,9 @@
           "baseline_sha256": "8157261a8813a14f129fe05c4cd41d219ec1d8213fda5e9de62173601a680a1c"
         },
         {
-          "path": "assets/generated/fighter07.bin",
-          "sha256": "99220e23b1ef1be5388dcb3888e73176cd2ea8476ba48b4bcf29bb24ec6a154a",
-          "baseline_sha256": "99220e23b1ef1be5388dcb3888e73176cd2ea8476ba48b4bcf29bb24ec6a154a"
-        },
-        {
-          "path": "assets/generated/fighter07.png",
-          "sha256": "5aa315a2a073c6023ae863b89863afb8568597797ccb5e4644c92557269a692d",
-          "baseline_sha256": "5aa315a2a073c6023ae863b89863afb8568597797ccb5e4644c92557269a692d"
-        },
-        {
           "path": "assets/generated/fighter07_pal.bin",
           "sha256": "5488f08bd6b0b18a4d65a681f3a88257f93ac2e55c9fafa5834af4f52b55b069",
           "baseline_sha256": "5488f08bd6b0b18a4d65a681f3a88257f93ac2e55c9fafa5834af4f52b55b069"
-        },
-        {
-          "path": "assets/generated/fighter07b.bin",
-          "sha256": "3045a00c89070108b3b86631f6479ef4ca375bdbfd01d564e1ab77b6f0722aa8",
-          "baseline_sha256": "3045a00c89070108b3b86631f6479ef4ca375bdbfd01d564e1ab77b6f0722aa8"
-        },
-        {
-          "path": "assets/generated/fighter07c.bin",
-          "sha256": "18fe7259dabf4d0e338a0c5dafbd7a1c50b86469ff99edaba145a8ad779a6b7c",
-          "baseline_sha256": "18fe7259dabf4d0e338a0c5dafbd7a1c50b86469ff99edaba145a8ad779a6b7c"
-        },
-        {
-          "path": "assets/generated/fighter07d.bin",
-          "sha256": "d79f7f7ded9961d2da4f7e85e66f93fb60cbb762003ec0485d6883e1dbcb3726",
-          "baseline_sha256": "d79f7f7ded9961d2da4f7e85e66f93fb60cbb762003ec0485d6883e1dbcb3726"
-        },
-        {
-          "path": "assets/generated/fighter07e.bin",
-          "sha256": "e49ae37c211c9b6b55919be375d7b5fa4a7665a1427396eacb563c388279f52b",
-          "baseline_sha256": "e49ae37c211c9b6b55919be375d7b5fa4a7665a1427396eacb563c388279f52b"
-        },
-        {
-          "path": "assets/generated/fighter07f.bin",
-          "sha256": "2e8f9bc29b04b195603bb67aceb88b67e6aa03e0226e5bb31aff983f3481c8fb",
-          "baseline_sha256": "2e8f9bc29b04b195603bb67aceb88b67e6aa03e0226e5bb31aff983f3481c8fb"
-        },
-        {
-          "path": "assets/generated/fighter07g.bin",
-          "sha256": "a5d8e8ff291f1b0cee7f8117eccecb16da46c1d33673251be2917fe15f26d4a5",
-          "baseline_sha256": "a5d8e8ff291f1b0cee7f8117eccecb16da46c1d33673251be2917fe15f26d4a5"
-        },
-        {
-          "path": "assets/generated/fighter07h.bin",
-          "sha256": "288b6068ce239b133db31e639a65edf856acd96b8676b4d8ce4a33f1e4eab213",
-          "baseline_sha256": "288b6068ce239b133db31e639a65edf856acd96b8676b4d8ce4a33f1e4eab213"
         },
         {
           "path": "assets/generated/fighter08.bin",
@@ -1121,26 +1163,6 @@
           "baseline_sha256": "cef8bc55342eea67d30e43e52852d560e421c25e9071fe7e7a9c52e02f75de09"
         },
         {
-          "path": "assets/generated/portrait01-large.png",
-          "sha256": "ddaaf1405c6c9d7950df0bd6c56449fead35820ca31aa78800db8c2af6f020e9",
-          "baseline_sha256": "ddaaf1405c6c9d7950df0bd6c56449fead35820ca31aa78800db8c2af6f020e9"
-        },
-        {
-          "path": "assets/generated/portrait01.png",
-          "sha256": "26de480b79a6c721d6928d94d524e62e0c345140e39227788caf0fcef7026c41",
-          "baseline_sha256": "26de480b79a6c721d6928d94d524e62e0c345140e39227788caf0fcef7026c41"
-        },
-        {
-          "path": "assets/generated/portrait01_pal.bin",
-          "sha256": "08989818b479b17741576eb89afc057096957585f57d317897de1d70809aef87",
-          "baseline_sha256": "08989818b479b17741576eb89afc057096957585f57d317897de1d70809aef87"
-        },
-        {
-          "path": "assets/generated/portrait01_tiles.bin",
-          "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1",
-          "baseline_sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1"
-        },
-        {
           "path": "assets/generated/portrait02-large.png",
           "sha256": "c5c198ea1ce40a6d37780654dd0f164a7032930d3519561b19b96ed74e6cf6b9",
           "baseline_sha256": "c5c198ea1ce40a6d37780654dd0f164a7032930d3519561b19b96ed74e6cf6b9"
@@ -1219,26 +1241,6 @@
           "path": "assets/generated/portrait05_tiles.bin",
           "sha256": "c0460efc186cc285ba6aba1fdd0e7c54dc21320b2201954973d6d2c31c8ba505",
           "baseline_sha256": "c0460efc186cc285ba6aba1fdd0e7c54dc21320b2201954973d6d2c31c8ba505"
-        },
-        {
-          "path": "assets/generated/portrait07-large.png",
-          "sha256": "e635436d5ad0795a671d777ddfff313a01551bf5c2aae72ba59cd7e70d72f1dd",
-          "baseline_sha256": "e635436d5ad0795a671d777ddfff313a01551bf5c2aae72ba59cd7e70d72f1dd"
-        },
-        {
-          "path": "assets/generated/portrait07.png",
-          "sha256": "c982e5997517db0b4bfd478a312cbe2b3047801f6c05b5ead2e7216d65b1c2a6",
-          "baseline_sha256": "c982e5997517db0b4bfd478a312cbe2b3047801f6c05b5ead2e7216d65b1c2a6"
-        },
-        {
-          "path": "assets/generated/portrait07_pal.bin",
-          "sha256": "656c585b5d15a36aaa07d2ad016ab60e63c59281fd9be66d330c33042684db42",
-          "baseline_sha256": "656c585b5d15a36aaa07d2ad016ab60e63c59281fd9be66d330c33042684db42"
-        },
-        {
-          "path": "assets/generated/portrait07_tiles.bin",
-          "sha256": "d83d340dffeb196c8d1a961cd85d391bad6c849b385b921eca8868eb40d86537",
-          "baseline_sha256": "d83d340dffeb196c8d1a961cd85d391bad6c849b385b921eca8868eb40d86537"
         },
         {
           "path": "assets/generated/portrait08-large.png",
@@ -1497,12 +1499,17 @@
         }
       ]
     },
-    "other_fighters_exact": 11,
-    "Fernando_palette_scale_roles_exact": true,
+    "other_fighters_exact": 9,
+    "revised_palette_scale_roles_exact": true,
+    "revised_ids": [
+      1,
+      6,
+      7
+    ],
     "prior_ram_labels_exact": 1331,
-    "native_rules_except_spelling_version_exact": true,
+    "native_rules_except_version_exact": true,
     "maximum_native_section_bytes": 30720,
-    "native_geometry": "Rectangles are regenerated from the revised Fernando pixels; eleven other fighter geometry blocks remain exact."
+    "native_geometry": "Rectangles are regenerated from the three revised models; the other nine geometry blocks remain exact."
   },
   "result": {
     "cases": [
@@ -1532,28 +1539,28 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage0-movement.gif",
-          "impact_clip": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage0-contacts.gif",
+          "movement_clip": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage0-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage0-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage0-center.png",
-              "sha256": "db09843dec0649c45bd5fcf3a2f5a47e392e80370a08494403d36468eeb129b7",
+              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage0-center.png",
+              "sha256": "6e170f13cecebe7d8a0773a150a64171eb724e21e206e73913ca6d2ac2f9c359",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage0-guide.png",
+              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage0-guide.png",
               "sha256": "251e7ed9b6b13c5f9df4f3f20614e7d2ccb7425b0ab77444e03d89675295a02b",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage0-left.png",
-              "sha256": "e3c37cb2a55610dbda431814c9c18bb34e39260822d0e3119ed409a71639737c",
+              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage0-left.png",
+              "sha256": "9378fafcfdc1e5de14fc6f5590986dd9007348d6c1c36b3645d58b16a36fabe6",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage0-right.png",
-              "sha256": "f342b5222e582a1bc8d192ef895d6738680aa0e5d41bd01e2dce9074607dde44",
+              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage0-right.png",
+              "sha256": "f524ab6949ba673245e63722d83509cf845397c9b440e676c532b10392d15e37",
               "scope": "current native PPU"
             }
           ],
@@ -1586,7 +1593,7 @@
           "core": "snes9x",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/likeness-v030/stages/stages/snes9x-stress0.gif",
+          "clip": "docs/screenshots/likeness-v031/stages/stages/snes9x-stress0.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -1636,28 +1643,28 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage1-movement.gif",
-          "impact_clip": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage1-contacts.gif",
+          "movement_clip": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage1-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage1-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage1-center.png",
-              "sha256": "60b5f870082ffbc26aa82d45b759f64856a8f56af7d15fde1cc0f37707cefa0e",
+              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage1-center.png",
+              "sha256": "415c2f293432523971b5b300ee2680f1042581ec48fa915fadd5d32091354b06",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage1-guide.png",
+              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage1-guide.png",
               "sha256": "251e7ed9b6b13c5f9df4f3f20614e7d2ccb7425b0ab77444e03d89675295a02b",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage1-left.png",
-              "sha256": "e73941e1a14076e1035e1bcd97063de35ce425be841711c42c4b19e373afc186",
+              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage1-left.png",
+              "sha256": "691d57a82c07eba54d076a89b86d117bc29dc64501188284bf0ed1cb58319215",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage1-right.png",
-              "sha256": "cac800cdbe31c2b8750d34e8dfcd429e1536d83e2471feaf3a4dd3b1554f3182",
+              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage1-right.png",
+              "sha256": "db1a62f0bd209c06d2045ff6f92e4983ac58008de532b74c59d89c61a69acd3c",
               "scope": "current native PPU"
             }
           ],
@@ -1690,7 +1697,7 @@
           "core": "snes9x",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/likeness-v030/stages/stages/snes9x-stress1.gif",
+          "clip": "docs/screenshots/likeness-v031/stages/stages/snes9x-stress1.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -1740,28 +1747,28 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage2-movement.gif",
-          "impact_clip": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage2-contacts.gif",
+          "movement_clip": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage2-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage2-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage2-center.png",
-              "sha256": "dfb8e62dd8e296b4d4400d9f9252382b78741bcf240b5c051e64248587e8d2a3",
+              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage2-center.png",
+              "sha256": "867e6014fa4565dc382f841550d2aa9be449f31a8ea9eb184f637c81d343728e",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage2-guide.png",
+              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage2-guide.png",
               "sha256": "251e7ed9b6b13c5f9df4f3f20614e7d2ccb7425b0ab77444e03d89675295a02b",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage2-left.png",
-              "sha256": "d96e60b6ec47307b04cde3be5a92f31d965216c961782580f86a39ed062f3dad",
+              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage2-left.png",
+              "sha256": "7a0073ac6965dd91e601f79d48e5490e951b93883374ad363c98e9ab2b10ade0",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/snes9x-stage2-right.png",
-              "sha256": "50031f60c963a6d30660aa947dfc093b7b6392304adc584e8bce31537fcbd022",
+              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage2-right.png",
+              "sha256": "a5de8501c82d5f5a0fd1947a0354e2e5a914333135d43d32ebbcb7e2351323da",
               "scope": "current native PPU"
             }
           ],
@@ -1794,7 +1801,7 @@
           "core": "snes9x",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/likeness-v030/stages/stages/snes9x-stress2.gif",
+          "clip": "docs/screenshots/likeness-v031/stages/stages/snes9x-stress2.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -1844,28 +1851,28 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage0-movement.gif",
-          "impact_clip": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage0-contacts.gif",
+          "movement_clip": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage0-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage0-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage0-center.png",
-              "sha256": "761ab4eff5855c1d84e8ce52ea2a653732f2fcc00b241efe155720a4d4884d12",
+              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage0-center.png",
+              "sha256": "b3984bf287fa10223eefe77f4c004136085357855c7f632b5a446d0deb0d8617",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage0-guide.png",
+              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage0-guide.png",
               "sha256": "45cdb6973c2e7fbf333324a23c4eda6bc538c31797d0a772bdec3c93c3799301",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage0-left.png",
-              "sha256": "5a31431b91a7a53dedf32f982dff48c88c84cfa6411519c79d7e8772bc691eb3",
+              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage0-left.png",
+              "sha256": "aa8d5c5826b3b25ff7283d918f45e86037008d10022f857dbab8200c123c1a69",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage0-right.png",
-              "sha256": "ed33e6306c1774f8ba7a19c6ee5d80c2e9acbfb9db35829716435342d9a730e5",
+              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage0-right.png",
+              "sha256": "5d765ab134d5aaf432cb43e8e2be3da49b0309a68bdb8fe4af665343c0a70013",
               "scope": "current native PPU"
             }
           ],
@@ -1898,7 +1905,7 @@
           "core": "accuracy",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/likeness-v030/stages/stages/accuracy-stress0.gif",
+          "clip": "docs/screenshots/likeness-v031/stages/stages/accuracy-stress0.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -1948,28 +1955,28 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage1-movement.gif",
-          "impact_clip": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage1-contacts.gif",
+          "movement_clip": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage1-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage1-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage1-center.png",
-              "sha256": "fb521ade36895157d59190c22c27bce860b65855d6323bfe2a08c22baab40545",
+              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage1-center.png",
+              "sha256": "539dbc47a639c3d5f53c75d14927ed75fbb88953375e73a36aa48c50330c9605",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage1-guide.png",
+              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage1-guide.png",
               "sha256": "45cdb6973c2e7fbf333324a23c4eda6bc538c31797d0a772bdec3c93c3799301",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage1-left.png",
-              "sha256": "674925560baa93f3d388611483bfa7550166c0bd828d8b74809197497d1ad2b1",
+              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage1-left.png",
+              "sha256": "a127b31032a432aa0873f76de23ff76d8f79192a4a23ba2f7763be585efebce9",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage1-right.png",
-              "sha256": "cded1eb3f2e871b995e46ea3fbb14811944229c75cbf4b86b3646d163d3b88aa",
+              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage1-right.png",
+              "sha256": "4fc919daf1f8a69160e9787a828e9e689304968a90c2ead744dcc946fb9b78c0",
               "scope": "current native PPU"
             }
           ],
@@ -2002,7 +2009,7 @@
           "core": "accuracy",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/likeness-v030/stages/stages/accuracy-stress1.gif",
+          "clip": "docs/screenshots/likeness-v031/stages/stages/accuracy-stress1.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -2052,28 +2059,28 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage2-movement.gif",
-          "impact_clip": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage2-contacts.gif",
+          "movement_clip": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage2-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage2-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage2-center.png",
-              "sha256": "692c268ca4a560e04b2ce90b6137064b4b6e2b9b8387e66fa46229fb4b855152",
+              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage2-center.png",
+              "sha256": "d62c1fe022a5a1f4f38c10d299098904f839d6311426b12fa6339fe35b1716b8",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage2-guide.png",
+              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage2-guide.png",
               "sha256": "45cdb6973c2e7fbf333324a23c4eda6bc538c31797d0a772bdec3c93c3799301",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage2-left.png",
-              "sha256": "ab8cc720a6fc82e20a767651cd5c9a9668353199838f92bccf37e0d4a0a97791",
+              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage2-left.png",
+              "sha256": "394811053fa06953ca8f78ef9cdc4b71775aad0d307a79e50807724b0b94c74b",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v030/stages/stages/accuracy-stage2-right.png",
-              "sha256": "9407d3d0e6f635fdb60dea94bf5024b11690e4fe8fc1198aa06c51bda1a8d9ac",
+              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage2-right.png",
+              "sha256": "f2fa3227525e9f8ab659689dd229e06b79acec6c5266a7a4dc06667df10d676b",
               "scope": "current native PPU"
             }
           ],
@@ -2106,7 +2113,7 @@
           "core": "accuracy",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/likeness-v030/stages/stages/accuracy-stress2.gif",
+          "clip": "docs/screenshots/likeness-v031/stages/stages/accuracy-stress2.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -2800,7 +2807,7 @@
         "details": [
           "accuracy-stage0",
           2105714,
-          4850
+          4792
         ]
       },
       {
@@ -2971,7 +2978,7 @@
         "passed": true,
         "details": [
           "accuracy-stage1",
-          2133438,
+          2133436,
           4881
         ]
       },
@@ -3144,7 +3151,7 @@
         "details": [
           "accuracy-stage2",
           2161160,
-          4962
+          4990
         ]
       },
       {
@@ -3176,10 +3183,10 @@
     }
   },
   "check_count": 19002,
-  "elapsed_seconds": 156.015,
+  "elapsed_seconds": 95.891,
   "suite": "stage-depth",
   "shared_native_execution": true,
-  "focused_report": "docs/likeness-v030-stage-report.json",
-  "focused_report_sha256": "8dc41071f23486cbb3009ede9e44599192a5d7a2ec4e81fae3f0a0818e64193e",
+  "focused_report": "docs/likeness-v031-stage-report.json",
+  "focused_report_sha256": "be9d11a3e6d838eb321fca6c6acd8dbc863848a0b3dc0ac5778cd1a673e36153",
   "passed": 19002
 }
