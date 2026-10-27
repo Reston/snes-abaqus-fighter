@@ -11,7 +11,7 @@ from pathlib import Path
 from PIL import Image
 
 MANIFEST = 'assets/art/native-faces-v033/roster.json'
-MANIFEST_SHA256 = '508ac8af243500efc54d76869f511d9c181a3e0d792e67988ad3be8a970a133f'
+MANIFEST_SHA256 = '101009d958efc5c81a2ba8aaba41547e3e81bc04bd054075a4a133c95714c5f5'
 
 
 def require(ok, message):
@@ -102,6 +102,12 @@ def apply_native_faces(root, fighter, slug, indices, metadata, old_palette,
         packed.extend(((r>>3)|((g>>3)<<5)|((b>>3)<<10)).to_bytes(2,'little'))
     require(hashlib.sha256(packed).hexdigest() == row.get('baseline_palette_sha256'),
             'Historical actor palette changed before the face revision: '+slug)
+    if row.get('restore_original'):
+        require(fighter == 5 and row['restore_original'].get('version')=='0.32.1' and
+                before == row['frame_sha256'] and
+                frame_summary(before)==row['native64_sha256'],
+                'Only the pinned original David model may bypass the new face art')
+        return None
     source = (root/row['source']).resolve()
     directory = (root/'assets/art/native-faces-v033').resolve()
     require(source.parent == directory and source.name.startswith(f'{fighter:02d}-{slug}-'),

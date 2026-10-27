@@ -475,6 +475,10 @@ class AuthoringGuards(unittest.TestCase):
         from native_face_assets import native_indices
         records=json.loads((ROOT/'assets/art/native-faces-v033/roster.json').read_bytes())
         for row in records['fighters']:
+            if row.get('restore_original'):
+                # This actor retains its historical encoder/palette; the new
+                # reserved-skin mapper is intentionally not applied to it.
+                continue
             palette=row['palette']
             image=Image.new('RGBA',(16,1))
             image.putdata([(*c,255) for c in palette]+[(0,0,0,0)])

@@ -9,7 +9,6 @@
     2,
     3,
     4,
-    5,
     6,
     7,
     8,
@@ -17,11 +16,15 @@
     11
   ],
   "requested_followup": {
-    "id": 9,
-    "name": "Reston",
-    "change": "A little short hair on top, keeping a receding hairline."
+    "Reston": "A little short hair on top, keeping recession.",
+    "David": "Restore the Before comparison in-game model exactly."
   },
   "selection_portraits": "Keep unchanged",
   "reston_final_hair_approval": null,
-  "merge_authorized": false
+  "merge_authorized": false,
+  "additional_feedback": {
+    "quote": "also david before was better",
+    "fighter_id": 5,
+    "restore_model_version": "0.32.1"
+  }
 }

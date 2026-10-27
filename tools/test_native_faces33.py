@@ -26,7 +26,7 @@ def main():
         report['media'].append({'path':p.relative_to(ROOT).as_posix(),'sha256':sha(p)})
     for core in ('snes9x','accuracy'):
         for fid,slug in enumerate(SLUGS):
-            if hair and fid!=9:continue
+            if hair and fid not in (5,9):continue
             for port in (0,1):
                 tag=f'{core}-{slug}-p{port+1}'
                 menu=defense.Host(core)
@@ -70,7 +70,7 @@ def main():
     report.update(status='passed',health=defense.HEALTH,
         source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
         assertion_executions=sum(x['executions'] for x in defense.CHECKS.values()))
-    report_name='docs/reston-hair331-native-report.json' if hair else 'docs/native-faces33-native-report.json'
+    report_name='docs/roster331-native-report.json' if hair else 'docs/native-faces33-native-report.json'
     (ROOT/report_name).write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps({'status':'passed','cases':len(report['cases']),'captures':len(report['media']),'checks':report['assertion_executions']}))
 if __name__=='__main__':main()

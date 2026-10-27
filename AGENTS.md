@@ -7,13 +7,16 @@ across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
 <!-- v0331-agent:start -->
-- **v0.33.1 is Reston's small hair follow-up in progress**, PR #36 draft.
+- **v0.33.1 is the Reston/David follow-up in progress**, PR #36 draft.
   User feedback: "all good except reston put me a littlebit of hair".
-  Eleven v0.33 models are visually accepted; preserve them byte-for-byte.
+  The user then said "also david before was better". Restore David's exact
+  v0.32.1 model/palette from the Before comparison. Ten other v0.33 models
+  are visually accepted; preserve them byte-for-byte.
   Reston alone gets short dark hair on top with a naturally receding hairline
   across all 64 poses. Retain his beard, face/costume design, existing palette,
   physical height and move roles. All selection portraits stay exact.
-  Native rules/ABI, stages, audio and other eleven contact blocks remain exact.
+  Native rules/ABI, stages, audio and ten other contact blocks remain exact;
+  David's contact block must match the original v0.32.1 model exactly.
   Keep original sources; selected art is 09-reston-native64-v3.png with the
   adjacent exact built-in imagegen prompt/provenance. Final hair review is
   pending; no merge approval is inferred. See docs/likeness33-approval.json.

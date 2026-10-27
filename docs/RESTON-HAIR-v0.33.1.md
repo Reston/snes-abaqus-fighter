@@ -1,7 +1,9 @@
-# Reston — a little hair
+# Reston's hair and David's previous model
 
 The user accepted the roster and requested: **“all good except reston put me a
-littlebit of hair.”** The other eleven in-game models are now pinned exactly.
+littlebit of hair.”** They then requested **“also david before was better.”**
+David returns exactly to his v0.32.1 Before-comparison sprite set and palette.
+The other ten accepted in-game models are pinned exactly to v0.33.
 
 Reston gets a little short dark hair over the crown, with a high receding
 hairline. His existing beard, face and red-jacket design remain. The edit covers
@@ -15,6 +17,7 @@ pin the original output and references. Earlier art is retained.
 
 Native rules, slower pacing, controls, RAM/ABI, hardware/trace assembly, stages
 and audio remain. Pixel-derived contact rectangles may refresh for Reston;
-the other eleven contact blocks stay exact. Technical verification and native
+David's contact block returns to its old model; the other ten stay exact.
+Technical verification and native
 comparison captures will accompany the final candidate. Hair acceptance and
 merge remain pending; the public player is still v0.30.
