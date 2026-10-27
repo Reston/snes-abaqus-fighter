@@ -8,9 +8,9 @@ import test_presentation as ui
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def main():
     defense.SYMS.update(defense.symbols(ROOT/'dist/abaqus-after-hours.sym'))
-    out=ROOT/'docs/screenshots/likeness-v032/native';out.mkdir(parents=True,exist_ok=True)
+    out=ROOT/'docs/screenshots/likeness-v0321/native';out.mkdir(parents=True,exist_ok=True)
     manifest=json.loads((ROOT/'dist/manifest.json').read_bytes())
-    if manifest['version']!='0.32.0' or sha(ROOT/'dist/abaqus-after-hours.sfc')!=manifest['sha256']:raise ValueError('Wrong native expression candidate')
+    if manifest['version']!='0.32.1' or sha(ROOT/'dist/abaqus-after-hours.sfc')!=manifest['sha256']:raise ValueError('Wrong native expression candidate')
     dependencies=['tools/test_likeness32.py','tools/likeness32_contracts.py','tools/test_characters.py',
         'tools/test_defense29.py','tools/test_presentation.py','tools/emulator.py','tools/test_classic_menu.py',
         'tools/test_compatibility.py','tools/fighter_assets.py','tools/portrait_assets.py']
@@ -66,6 +66,6 @@ def main():
     report.update(status='passed',health=defense.HEALTH,
         source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
         assertion_executions=sum(x['executions'] for x in defense.CHECKS.values()))
-    (ROOT/'docs/likeness32-native-report.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
+    (ROOT/'docs/likeness321-native-report.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps({'status':'passed','cases':len(report['cases']),'captures':len(report['media']),'checks':report['assertion_executions']}))
 if __name__=='__main__':main()

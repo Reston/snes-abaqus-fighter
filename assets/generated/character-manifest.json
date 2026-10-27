@@ -4172,32 +4172,32 @@
     "portrait_framing": {
       "schema": 1,
       "source_size": [
-        1122,
-        1402
+        219,
+        313
       ],
       "source_alpha_box": [
-        108,
-        8,
-        1053,
-        1400
+        0,
+        0,
+        219,
+        313
       ],
       "crop_box": [
-        108,
-        8,
-        1053,
-        1400
+        55,
+        0,
+        195,
+        175
       ],
       "head_anchor_box": [
-        108,
-        8,
-        1053,
-        1400
+        86,
+        0,
+        149,
+        50
       ],
       "head_margin_source": {
-        "left": 0,
+        "left": 31,
         "top": 0,
-        "right": 0,
-        "bottom": 0
+        "right": 46,
+        "bottom": 125
       },
       "target_sizes": [
         [
@@ -4212,33 +4212,33 @@
       "render": {
         "small": {
           "content_box": [
-            3,
             1,
-            29,
+            1,
+            31,
             39
           ],
           "padding": [
-            3,
             1,
-            3,
+            1,
+            1,
             1
           ],
-          "scale": 0.027298850574712645
+          "scale": 0.21428571428571427
         },
         "large": {
           "content_box": [
-            6,
             2,
-            58,
-            78
+            2,
+            62,
+            77
           ],
           "padding": [
-            6,
             2,
-            6,
-            2
+            2,
+            2,
+            3
           ],
-          "scale": 0.05459770114942529
+          "scale": 0.42857142857142855
         }
       },
       "backdrop_rgb": [
@@ -4249,9 +4249,7 @@
       "resampling": "nearest",
       "shared_composition": true,
       "head_clipped": false,
-      "source_figure": "registered_head_master",
-      "source_file": "assets/art/characters/01-ivo/expression-study-v032/head.png",
-      "source_sha256": "721585de5590e4cbb6287d7720fc057bea5f6a8d9124098fd8b0d77c86febfb2"
+      "source_figure": "legacy_idle_frame0"
     },
     "palette": [
       [
@@ -8043,7 +8041,7 @@
     ],
     "revision": {
       "contract_file": "assets/art/characters/01-ivo/native-revision.json",
-      "contract_sha256": "a14e497dbeae3fb5a61369bbeae4837659a28f90cfbb0c82d7bd05e12b5cddad",
+      "contract_sha256": "65946c636694bb85ecb27f070c600b5ba93dcd0bbd3291335fbf8cf91b4457fa",
       "baseline_native64_sha256": "c9461cb602a4d1ad1e1772b1f71b133ff8e6578fb377abb236c4aa4936fb2d32",
       "expected_native64_sha256": "42962003753011e0cf72534cb7470cd014c171f6c2938c4e98b2f9125f2bd6df",
       "replacement_sources": {
@@ -24558,32 +24556,32 @@
     "portrait_framing": {
       "schema": 1,
       "source_size": [
-        1122,
-        1402
+        219,
+        311
       ],
       "source_alpha_box": [
-        98,
-        2,
-        1063,
-        1400
+        0,
+        0,
+        219,
+        311
       ],
       "crop_box": [
-        98,
-        2,
-        1063,
-        1400
+        52,
+        0,
+        191,
+        174
       ],
       "head_anchor_box": [
-        98,
-        2,
-        1063,
-        1400
+        78,
+        0,
+        150,
+        50
       ],
       "head_margin_source": {
-        "left": 0,
+        "left": 26,
         "top": 0,
-        "right": 0,
-        "bottom": 0
+        "right": 41,
+        "bottom": 124
       },
       "target_sizes": [
         [
@@ -24598,33 +24596,33 @@
       "render": {
         "small": {
           "content_box": [
-            3,
             1,
-            29,
+            1,
+            31,
             39
           ],
           "padding": [
-            3,
             1,
-            3,
+            1,
+            1,
             1
           ],
-          "scale": 0.027181688125894134
+          "scale": 0.2158273381294964
         },
         "large": {
           "content_box": [
-            6,
             2,
-            58,
-            78
+            2,
+            62,
+            77
           ],
           "padding": [
-            6,
             2,
-            6,
-            2
+            2,
+            2,
+            3
           ],
-          "scale": 0.05436337625178827
+          "scale": 0.4316546762589928
         }
       },
       "backdrop_rgb": [
@@ -24635,9 +24633,7 @@
       "resampling": "nearest",
       "shared_composition": true,
       "head_clipped": false,
-      "source_figure": "registered_head_master",
-      "source_file": "assets/art/characters/06-fernando/expression-study-v032/head.png",
-      "source_sha256": "1732ef5bfa8325117eacff2a63e7d563b63aeaba8f4137ad0ad0af9f28a7bac3"
+      "source_figure": "legacy_idle_frame0"
     },
     "palette": [
       [
@@ -28429,7 +28425,7 @@
     ],
     "revision": {
       "contract_file": "assets/art/characters/06-fernando/native-revision.json",
-      "contract_sha256": "f79bba26ade95510e9434c0cafefc40c2b415903ad5719efadb882c66248f4b0",
+      "contract_sha256": "d6dd085bd2c42a25084bf398fbd530011c5535b095035c1e233bf9ab403c8c59",
       "baseline_native64_sha256": "1b300fe5f20db8f7bfe612f734ec53f55787f675a2955eb20d12bfe3e029b7f0",
       "expected_native64_sha256": "2e7697a31ad0d1023005b863d138103695ce9805333d0d665a1cd235116be4cf",
       "replacement_sources": {
@@ -28660,32 +28656,32 @@
     "portrait_framing": {
       "schema": 1,
       "source_size": [
-        1122,
-        1402
+        224,
+        316
       ],
       "source_alpha_box": [
-        89,
-        14,
-        1049,
-        1402
+        0,
+        0,
+        224,
+        316
       ],
       "crop_box": [
-        89,
-        14,
-        1049,
-        1402
+        63,
+        0,
+        205,
+        177
       ],
       "head_anchor_box": [
-        89,
-        14,
-        1049,
-        1402
+        93,
+        0,
+        160,
+        51
       ],
       "head_margin_source": {
-        "left": 0,
+        "left": 30,
         "top": 0,
-        "right": 0,
-        "bottom": 0
+        "right": 45,
+        "bottom": 126
       },
       "target_sizes": [
         [
@@ -28700,33 +28696,33 @@
       "render": {
         "small": {
           "content_box": [
-            3,
             1,
-            29,
-            39
+            1,
+            31,
+            38
           ],
           "padding": [
-            3,
             1,
-            3,
-            1
+            1,
+            1,
+            2
           ],
-          "scale": 0.027377521613832854
+          "scale": 0.2112676056338028
         },
         "large": {
           "content_box": [
-            5,
             2,
-            58,
-            78
+            2,
+            62,
+            77
           ],
           "padding": [
-            5,
             2,
-            6,
-            2
+            2,
+            2,
+            3
           ],
-          "scale": 0.05475504322766571
+          "scale": 0.4225352112676056
         }
       },
       "backdrop_rgb": [
@@ -28737,9 +28733,7 @@
       "resampling": "nearest",
       "shared_composition": true,
       "head_clipped": false,
-      "source_figure": "registered_head_master",
-      "source_file": "assets/art/characters/07-cristian/expression-study-v032/head.png",
-      "source_sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5"
+      "source_figure": "legacy_idle_frame0"
     },
     "palette": [
       [
@@ -32531,7 +32525,7 @@
     ],
     "revision": {
       "contract_file": "assets/art/characters/07-cristian/native-revision.json",
-      "contract_sha256": "59a12dba4ca2c06cba0837f8f8d1e31c59bd4430ad923cbba9c1f03795883fea",
+      "contract_sha256": "2dcbf73413ca1899cdfa7a4e6428e8f803a52468f165ec2ffdf3f5a733d6c389",
       "baseline_native64_sha256": "5dabf6570f2fbb41956b58b3c0126c85d590f67660d5b1d341b467191404da50",
       "expected_native64_sha256": "85361a59378a8c34d86dd9e317d4c0f21b13c205aa48afb5e87a99515ae2e4de",
       "replacement_sources": {

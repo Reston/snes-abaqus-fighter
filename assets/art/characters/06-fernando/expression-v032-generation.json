@@ -283,13 +283,21 @@
       ]
     }
   ],
-  "portrait_source": {
-    "file": "assets/art/characters/06-fernando/expression-study-v032/head.png",
-    "sha256": "1732ef5bfa8325117eacff2a63e7d563b63aeaba8f4137ad0ad0af9f28a7bac3"
-  },
   "reference_direction_approval": {
     "quote": "Yes, use this direction",
     "scope": "photographed eye and expression references for Ivo, Fernando and Cristian; not final native likeness or merge approval"
   },
-  "human_approval": null
+  "human_approval": null,
+  "selection_portrait_scope": "Head master is an animation reference only. Native selection portraits remain at their v0.31 source.",
+  "expression_reference": {
+    "file": "assets/art/characters/06-fernando/expression-study-v032/head.png",
+    "sha256": "1732ef5bfa8325117eacff2a63e7d563b63aeaba8f4137ad0ad0af9f28a7bac3"
+  },
+  "selection_portrait_source": {
+    "file": "assets/art/characters/06-fernando/atlas-v5.png",
+    "sha256": "5f8fb9deb783f672afcce0b81a7b1f0533868a474da1f6f60faf62eadacf73c1",
+    "mode": "preserved-idle-atlas",
+    "source_normalization": 1.013029315960912,
+    "reference_commit": "961214932f2ff0cef388635f16ca883e688b3668"
+  }
 }

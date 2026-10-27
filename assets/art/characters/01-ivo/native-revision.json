@@ -2,7 +2,7 @@
   "schema": 1,
   "fighter_id": 1,
   "slug": "ivo",
-  "revision": "eye-expression-v032",
+  "revision": "in-game-eye-expression-v0321",
   "baseline": {
     "file": "assets/art/roster-baseline-v0.8.json",
     "sha256": "386a430db966c7f5c843811d78d9e06043838d8893f166bdc58637ddde773bd5"
@@ -56,8 +56,11 @@
     }
   },
   "portrait_source": {
-    "file": "assets/art/characters/01-ivo/expression-study-v032/head.png",
-    "sha256": "721585de5590e4cbb6287d7720fc057bea5f6a8d9124098fd8b0d77c86febfb2"
+    "file": "assets/art/characters/01-ivo/atlas-v4.png",
+    "sha256": "da2dd4770430a64f37889576d1704b6d7ac638bc00764f0602aec30ed254b295",
+    "mode": "preserved-idle-atlas",
+    "source_normalization": 1.0262295081967212,
+    "reference_commit": "961214932f2ff0cef388635f16ca883e688b3668"
   },
   "normalization_policy": "neutral-height",
   "normalization_reference_height": 313,
@@ -234,6 +237,7 @@
       "scope": "photographed eye and expression references for Ivo, Fernando and Cristian; not final native likeness or merge approval"
     },
     "human_approval": null,
-    "scope": "face-focused full-body edits; retain v0.31 body design, palette, physical height and move roles"
+    "scope": "face-focused full-body edits; retain v0.31 body design, palette, physical height and move roles",
+    "selection_portrait_scope": "User clarified that the original selection portraits must remain unchanged. Restore exact v0.31 portraits; preserve all v0.32 in-game animation pixels."
   }
 }

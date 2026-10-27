@@ -1,0 +1,239 @@
+{
+  "schema": 1,
+  "fighter_id": 1,
+  "slug": "ivo",
+  "revision": "eye-expression-v032",
+  "baseline": {
+    "file": "assets/art/roster-baseline-v0.8.json",
+    "sha256": "386a430db966c7f5c843811d78d9e06043838d8893f166bdc58637ddde773bd5"
+  },
+  "old_sources": {
+    "actions": {
+      "file": "assets/art/characters/01-ivo/animation-actions.png",
+      "sha256": "a122dcb4e0ce49936fd51caa2fb072669bb88320d4d303e45b0c299cc893b6ba",
+      "source_normalization": 1.0032051282051282
+    },
+    "airborne": {
+      "file": "assets/art/characters/01-ivo/animation-airborne.png",
+      "sha256": "1cf0aee0312ebf85261b0a22bf242c2bbf038d6c5f8d063e48d00d196d14bc40",
+      "source_normalization": 1.0162337662337662
+    },
+    "airborne_metadata": {
+      "file": "assets/art/characters/01-ivo/animation-airborne.json",
+      "sha256": "9acdd8d9b3616350164b1f77d58c58dd3289ffc7c9abb01b5dcdfeb1faeb67e7"
+    },
+    "legacy": {
+      "file": "assets/art/characters/01-ivo/atlas.png",
+      "sha256": "064e7b676f4049d00c265c1feb279a175589a9b7141836bcebf5419801f6c485",
+      "source_normalization": 1.0
+    },
+    "motion": {
+      "file": "assets/art/characters/01-ivo/animation-motion.png",
+      "sha256": "96b59557d668292d62d9a846fff7f4322c36ee2eaddd1c908e68f0b470daf337",
+      "source_normalization": 1.0433333333333332
+    }
+  },
+  "new_sources": {
+    "legacy": {
+      "file": "assets/art/characters/01-ivo/atlas-v6.png",
+      "sha256": "b766e1a566ab6208b33c153481944c99e59bbb7569fb2f8c5ddf5e8e9a9357ee"
+    },
+    "motion": {
+      "file": "assets/art/characters/01-ivo/animation-motion-v6.png",
+      "sha256": "9e5ccd24da1267e5e6b183363f93424a26688bb054f9492646f9230fbe1b1559"
+    },
+    "actions": {
+      "file": "assets/art/characters/01-ivo/animation-actions-v6.png",
+      "sha256": "f17ac3f6aa92dec029bcd19e9c8f12c71b6db034e42bb9c9b04bd941124b54bf"
+    },
+    "airborne": {
+      "file": "assets/art/characters/01-ivo/animation-airborne-v6.png",
+      "sha256": "138279f566adf7ccf096ce48a2e2efa82bf7969850d3f7d73a5c8e8526697ae7"
+    },
+    "airborne_metadata": {
+      "file": "assets/art/characters/01-ivo/animation-airborne-v6.json",
+      "sha256": "59f6b6c2c1c337b2909a1c3efd81dee7662436d22722cc07683a86d3ad4a9703"
+    }
+  },
+  "portrait_source": {
+    "file": "assets/art/characters/01-ivo/expression-study-v032/head.png",
+    "sha256": "721585de5590e4cbb6287d7720fc057bea5f6a8d9124098fd8b0d77c86febfb2"
+  },
+  "normalization_policy": "neutral-height",
+  "normalization_reference_height": 313,
+  "source_normalization": {
+    "legacy": 1.019543973941368,
+    "motion": 0.9660493827160493,
+    "actions": 0.9873817034700315,
+    "airborne": 0.8694444444444445
+  },
+  "old_native": {
+    "frame_hashes": [
+      "c4a09057f9c5545049cd95a9e3d114b3cd27fa1456d62f6ca4e3a8d7b0aa1aa4",
+      "bcfa06277754bcc841818500671945c463b5decaa951113b85191ef6c677e0b6",
+      "c0750f7d66cc5106290e07526757672a4a1dbbd012d22e0a778f47dcc934d2f7",
+      "f9ee7e992182c241fed21f4b866505bc0455f41dd0d2db126568727cae2b827f",
+      "ba13871f17739a1e1e63bb52577196f9425b4653b4d57fc8cd49a19a0903bcb3",
+      "fb66efc44fd732cf5ac63f292bb107b6e2acda598076375cd90b0277d91fbed9",
+      "290017b5261cd4f622e92184a46303f93aef19f1b8c15a9fa9b7389ed57cbe2a",
+      "bd6ea36d1e3141ee966342f107075a0f824b85f43178e61bfd6ff0fdcdb4fcef",
+      "3dd967578a01e4e5639fbda22767ad5d63bd414a285ee0b2bbe9860e14afd7c0",
+      "4cd92f8f3659cd04c1ddce62ff4d9016378902b34726ecb90a792f3f6b3ef8e2",
+      "642186b36996a55302130b4fd1417cc1ecaddff9240b61347325017514153112",
+      "c88392d23e42cc37b68988cea4778314689b5ab248ad1a5d698b7a4b79dda62a",
+      "e9dd9bf4c8c674bdfcf3c6ccfa7eb1ec39e7c3abfc506e33b551f47d1ace1f4e",
+      "a3607fc52870c20720e8cc3455bab54c110eeb6061e8727f252e3de8878859e4",
+      "0093e18530fbe89839edcee2019468addb5e63a0c3aaa873ea89d2a371fe245e",
+      "25732f03d80aee4c58b4d76ba53d7a73f99d0a4f7d0d5a82d595103f12d7da6c",
+      "9103a219e678034cd7775ccb99933313bffdcb73c7165ae9e084491f63d13455",
+      "f355459911de72e014742903aaa2676661cf82a87c23cda735a7a211d4348d8d",
+      "e764af79292950b0954312a33bf81298611c35054bbbcd9b94067f48718feabc",
+      "5ebc78d0368a53642a16983360b4324b55dff20e6cfdbe3b0dcc6e9fcc282704",
+      "1dc63b631fca46f428540fb916464db41e6131c2fc05067233fae9d3f7ae4fc8",
+      "e382001d83d0f4146d1c76828fe7b67c60516636f184d9dc6264e7062d340c55",
+      "194ebc88eda9d85232b4d6a3299afaaf523c439b6a0b9bb169929aa01750d758",
+      "141cac11dc3e0de1e9501be4e397d00e953ee42ccbbb965aafa736580d32cace",
+      "17bbca111f876c4bec3edade01b06b5475657fc2bde25d9393af01298e050d4a",
+      "727ad4a7af1accca0174d4b4e54ebcbe94f6a2b431d417cd4eb766a395b53556",
+      "71334bd9758a481c773e584d9e2b5e397887eb6f7482946784f3dadd9773c42e",
+      "175e3fee2955d65ede8320c1176e3e6cf00315c4983a5fae8908e20d8e068a69",
+      "8a590c566c5c79e61dc3114924a12fce7381ae313a19efd458023df3ab7b7276",
+      "d1aba373ab5906d080b7fc68566cfa330dcf6672ec6cbd61f90e9f427874efa6",
+      "e62300ca1eef7f04c3e21796f2103eaef2bd034091ab1ced87339ebceff6db4e",
+      "466a9b730cfde1e31c8e5e8f9b9e2a02a0f5a2c5033c5c1c15720fa732c8b8f6",
+      "e5248779d36dac053887409f1c6438b5519a6aeb781c2c8af5ec2f00cbc7e673",
+      "8bcc5b4eb73a5dac83c55e2a055f40e022742defdd7cda158c5035919f079f77",
+      "e65eab5ae11e6047970d27adc5d06d2d984d27c69a49ade151ace412e3714dc9",
+      "9394b07afb71f67bfa481a2d3aa1255b4fefc3f3c2a9589f5279317d69d86e2d",
+      "c5d6d5f3a51b3b763db91b1c72ba255f4e3be6903b201e0d04d0df08901d947a",
+      "6dd54b5b816bffd2acc2c808d332684ef7d43ebcdae17b8e89622d0048aa2743",
+      "29a7fce65e8736172e35bc6fe67ae4c7d88d1de6d7a62e1f6ee009f5a2e77a4e",
+      "d644d53a87678fc7b693a83c78a3f5d97494c652f8a4894683139d37b6f0b000",
+      "c1bdaaf98979136fde9ea50f4b61b831288550c0f637dea13f6c7678155a341e",
+      "4f1806cde108e66bb1bc60b6d6f4bd8a8cefad7b255ebb143a3b8cc5f4344f4c",
+      "49039ec2da5a5662d3df85ee3eef0d9a50d6a7d30cd0d1b69b585aed81431765",
+      "9c3147224dd0bd943c1c0d8987dd1f8bbeb3e7c182f54321368c23ed2f1e0959",
+      "6b4678164965f825629b2fd36397cdcfcbf201982a448745ae9e2c4308165fdf",
+      "1b003980518ce395b0ddb94985fc18944f9df6fd5f10a8167da610afb263c0c6",
+      "815f3a4570dc39df64549f32192faaa282b489594a5ac2c84c44c133183aab74",
+      "d1895f5117156774474171fd09b7268647d4746a3371b55c710a9d02c04751d4",
+      "8bc14bb7fc4bb678b6a2e4e25c24ff9726c76225ccba1a6254e21d723f06195a",
+      "06197608e7e0cf3f82b57baeb468ee9df3c1089c4ad616d2006c710393f3d01a",
+      "34d313bf08a8748c22a8d9aa37b072d00825832fa1f18c1f1bf79fca9a2f05b8",
+      "33980c01e461c0facfa90107c0ab9db4b32dc001bee519b7cab1e8c4249f6df4",
+      "8af3a74c44c6af55c33c2cf154547d278f8982d617df631393fa65d293618d2c",
+      "1e2aeb5c9fbebfccd01532d05d3751aa5bc99f2346872efd05b43dda85df0ef9",
+      "111a46fe2290d56792e080841836b9d1fce54589fb7d974c8309a2c38ebd8c0b",
+      "840adb65a47951d525e2ea0ea8078481a28357e51eb95c141d7d7897b9d280bd",
+      "9cd441f704e7eee0f64f1b521c668a8b45a640e9f0549774051369845d4c88e7",
+      "b3c7f59c4f016fac9089a63edf8bd7910934fa7efffd47d12ae0ef50850c9bd3",
+      "f89384a3536589199e61f3bce4e4fafe430162f79d128f3d2ccd9f569ad1177c",
+      "d672e567ab1f171411c8ce2359d85d52302843f71c97ad89b9aa99776b1e795d",
+      "a6e5b2ce1c8594f14476949afe2e10fb6be69b960988791aa9e2927e206329fd",
+      "6ee09cbf12f484f98da74951bab93dae6e6221c3acebe1bc61004bfdfec62834",
+      "d07e068dcc672eb2f49ba73e6a4ecbd9bfab1972698de7738b0492eca932e27b",
+      "1bea287999783bf9b178bd916da136c506e8fb78a95d39e22b6cd847dc49685b"
+    ],
+    "frame_hashes_sha256": "c9461cb602a4d1ad1e1772b1f71b133ff8e6578fb377abb236c4aa4936fb2d32",
+    "palette_hex": "00000008000c401422106318a51c0421a918e620a025e7200b21a925bf2eda46",
+    "palette_sha256": "c253838df2e0dcbd6e784bd419b68c641cddbe17a6cde73526fc9d91658d41ac",
+    "uniform_scale": 0.23003194888178913,
+    "physical_scale": 0.23003194888178913
+  },
+  "expected_native": {
+    "frame_hashes": [
+      "d85308980b5b4161ad1169fd11a6119202eb4680926c3d1c24237cb716765562",
+      "d976810be8ffea9e660c2bb6728a0df7a6d04b161f7e2e4c8828eb20ad36cbed",
+      "f5cb2d04d3b5854610599a692d25fa24e0f16ef9b98eff6fd67218606c7c5f32",
+      "aa859f7a11591a1817c19558b469ad7e518c35d665b6163f7563e7398edf822d",
+      "1d5359af0d9938c1fabf59c13f1e0ad2853d23729120ebc4ace5a2d974ac9cc4",
+      "00857dc47848c3a5409a36bc61b6b196e9b8d1ac1c0910960e878e979113c210",
+      "ef63888ce227270ee863a6f685ef03d1736182aaf8cb0d6292da3cd42d0d1099",
+      "1eb8eab462f80dc1008a54b66e48d1bf449475730e7d08d62068835a5a7c1b88",
+      "f5cd0633a56e8bbf354014282f09b397e5417f2d44fe7f51c79509459656e6fc",
+      "04ce5239e077cc2566eac81bb19e71934f6114d6ef415203b6a78998f710bb1a",
+      "3832658a33fc36aa605091e7ba8ab1a9cf868ee06a4448b93737ee3d42f10583",
+      "fc87c364a05a5fba198a335749f7db2815c4e6d974b55ad57479140374644fab",
+      "bf734c527c7aaba420f455276c487727e7de2ca64c82b140d5a317cc7c2ab6a8",
+      "3d8519a4ca1f20eacbce69bd8f053bcff1ae9f85ea2101bc2a5322318c728fe4",
+      "f50b9a542d04433adee2948c5cef9eb30bdb1955653c6d11486bf9409376303a",
+      "bd9c37c058f6891a8d9ad3d97c4a2f83ffc3af39c3feb4c5c727c17ab5a83d9a",
+      "dad6f8696cd2e8b1192bf18a6753291da2be9bb2c289a0679bc8b7ad0a02f6ed",
+      "e263fedab8e4ff1436a86a68d31c72c67bdf2df4023249037e4c81d395150850",
+      "98eb2cc0ab98d88289e3c77a02a94ad4c0cc047d0e50ce91c01e7f0ae7a394f5",
+      "9a18ea2cba2cadb47ab11812fbc3e026821698f27ec3a8e5ea884b99ed8bebe6",
+      "6aba2a7832da9e34e944fc14e3492c33ae0e4facac0097e85fa433e8c9e05d82",
+      "07a35a61ac0392aca72046cbf4866398c01aab4745e06bfa9b28a9bc1513fa90",
+      "dd834eb578806f75554c61d2e52105f87fbe188eb87e82374f37743e8c7d5ed9",
+      "097eda3bf18fb034d49e02bad26242c8584d8b7c9f7230fcda50c3d40c220083",
+      "4a18d285f404570ecaa8b1695bd34afa7c07b7952cd6cecdd7ae848948d98a76",
+      "eefcb4456ea9ed7680a22c93aab40a6012ab4a8e0b1b172a1d61d5697f76276d",
+      "7b94500ef7edec8f1900f59ad307b62d764f8a89052a30970065b87d45d22bf7",
+      "a0b464ecf00c4d1ccd06a3be078e883f947723258325751e53529a8b68b40fa1",
+      "a00d7cabd3c0c5997c803ebb7e3a9fe072097cf3595f427b1ed4a44dbc6e672a",
+      "4be7df7a078e0a66c652455dd1448430699e1e4fa13e70ec3405c0d3e248a1d9",
+      "8e7dfddc384922fbdd94f1e26690794afc13ffa93c65357a5a8f547dbb7e8ba9",
+      "518686f960e166db54ec23787ab58c77982de59662f58d8f547c57fe3be4e9e9",
+      "54fc9b53da301c801d9d783d026f1b20536185f425108f5b38f4f7fa1eda1f38",
+      "5447c85ab436a8e644e9ed806983f0f5b26456a0f162bac861144c779cdf0122",
+      "529db460c34bd106becc5f00fdbed29535496b0d4c2443813cf711ac958384db",
+      "eec2ee0bd5251a94f7c0d3e9b459ba3fab42ff72a5f6f664f77997c72383bc9b",
+      "f49d5e7ad998f8cfd68b03247c57d61a1e5448172e95fa2814142a4146932854",
+      "7a78168f6be57bc183530afe028d9db5d5fd8bc20929a565d95389fdcfac2b49",
+      "185561cad536ecd3714691b8305a3443e9daec20f157cf2af0fa9cb320ebdb40",
+      "8581a1f799b2f4e9e71b08a3684f210e2b59a060913c17b16d481c3754830189",
+      "7a533a5ae2e0264f0a983c8780b191a5dfc469ede9635db1bfe3f844fef868bc",
+      "58c30c65822f052130d24270d21f667f581bd32c81285ce7d2c108e4abd8b306",
+      "83f1e95d602eccf8cf737702b9e362e2fb4a0b39a4dfcfef0f90f133bdd2a665",
+      "239cea6a665d98c90179b6b4e69645756c3d151d14db758ca5744573e20a6eb0",
+      "b5e4d9cab690da68c8ff0527c1f62dba8e9ec0d8504d73e846dad5933756b2c3",
+      "167cb2ee94b90714f22fb9f406c03e1f22ade56ea03318a716c027a2e58f4d7a",
+      "32dcd0e5b8caaefb553c9163a2dc11d7378e752eeb6113c8c4410047013f908e",
+      "bcb8cb8e04d863b5dab1bcd6bd0dfcad677101d9f5ac58254b5bcdd12147d914",
+      "9f8679f3da9dfe1bf3e5ceec886b475341460b86e055addcf3d53de8c730287c",
+      "c6139e9f85fa83335aab5e00e5fa46c4c6cda35d2ea7dcbab53422d31f085ec6",
+      "4a27d9da6d3d7b5b4fa87be5d52cfb1afd596dca708302702e7f983cfa1ab257",
+      "0d0711fea1fd41bfca55d7bc6d425cb2dd86fea59ed678bb85cf17eb1a651a82",
+      "01454a652f52830847ba2fad1ce5d7b2d9d67cfccb1851c86594bef4c02b8dc9",
+      "6c1f82dd6cbf45c907eebbc8accc301e580da027dcfa88397864668367d33326",
+      "4e3f4d389582180cc93c7739893c202192a327e4430f704c72da6150418c1973",
+      "d9d7030775b339dfb5ab1a4b1fe667f5d67aee54e3e742ba0f03a9c315ae23b0",
+      "d38c753d692035773440a90fe72bf0d55f6783b8c43beff83705b67de10abfd8",
+      "cbedc88f3774074a8cba031aef0e587b6830749415e07609273ae0476fbfe81e",
+      "b3e7d7fe4768e071aaeda78ce638ebc01fb0ba58cd06d3447364e190caa78474",
+      "7f613d3be337eb20bc27bfd1388b13825a86e7e6f8302ebc7cc7017bf7dfc391",
+      "cd75acd5eee7d56d552c499e85d98dd572ff54c76dca282f3c670fe13d119390",
+      "4d9a97519b2297aa5728ad09a758e822cae87ebda988dd7cc310aae8ada20583",
+      "3fc9449f499159adffc9d9d9c11e2e84b7e4de0a52dbb433db5152f9c686ef43",
+      "ebcbca135798e732cd5bfaaff7d115a4dda07c3ff30be28ea52d0b01f28777a6"
+    ],
+    "frame_hashes_sha256": "42962003753011e0cf72534cb7470cd014c171f6c2938c4e98b2f9125f2bd6df",
+    "palette_hex": "00000008000c401422106318a51c0421a918e620a025e7200b21a925bf2eda46",
+    "palette_sha256": "c253838df2e0dcbd6e784bd419b68c641cddbe17a6cde73526fc9d91658d41ac",
+    "uniform_scale": 0.23003194888178913,
+    "physical_scale": 0.23003194888178913
+  },
+  "provenance_files": [
+    {
+      "file": "assets/art/characters/01-ivo/likeness-v6.json",
+      "sha256": "3eadb247e7331f45a3c2c74760880d0bf1d13f0d61a4084cb768820cd2dcd089"
+    },
+    {
+      "file": "assets/art/characters/01-ivo/animation-v6.json",
+      "sha256": "d170df0157ac54aeecf056f53273560180a22ea0ea6e5b6729ee0ef04b237153"
+    },
+    {
+      "file": "assets/art/characters/01-ivo/animation-airborne-v6.json",
+      "sha256": "59f6b6c2c1c337b2909a1c3efd81dee7662436d22722cc07683a86d3ad4a9703"
+    }
+  ],
+  "review": {
+    "request": "Apply the approved natural eyes and expression throughout Ivo, Fernando and Cristian animations.",
+    "reference_direction_approval": {
+      "quote": "Yes, use this direction",
+      "scope": "photographed eye and expression references for Ivo, Fernando and Cristian; not final native likeness or merge approval"
+    },
+    "human_approval": null,
+    "scope": "face-focused full-body edits; retain v0.31 body design, palette, physical height and move roles"
+  }
+}

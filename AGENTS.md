@@ -7,6 +7,10 @@ across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
 <!-- v032-agent:start -->
+- **Current correction in progress: v0.32.1.** The user clarified that only
+  in-game model faces should improve. Restore exact v0.31 selection portraits
+  and roster art; preserve all v0.32 in-game sprite bytes and contact geometry.
+  The v0.32 portrait replacement below is rejected scope. PR #36 remains open.
 - **v0.32.0 is the verified eyes/expression playtest candidate**, PR #36.
   The user approved the photographed reference direction, "Yes, use this direction".
   Nine new full-body imagegen atlases per fighter propagate it across Ivo,

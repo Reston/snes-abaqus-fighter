@@ -69,12 +69,12 @@ NATIVE_REVISION_REGISTRY = {
     7: {
         'contract_file': 'assets/art/characters/07-cristian/native-revision.json',
         'source_version': 'v6',
-        'contract_sha256': '59a12dba4ca2c06cba0837f8f8d1e31c59bd4430ad923cbba9c1f03795883fea',
+        'contract_sha256': '2dcbf73413ca1899cdfa7a4e6428e8f803a52468f165ec2ffdf3f5a733d6c389',
     },
     1: {
         'contract_file': 'assets/art/characters/01-ivo/native-revision.json',
         'source_version': 'v6',
-        'contract_sha256': 'a14e497dbeae3fb5a61369bbeae4837659a28f90cfbb0c82d7bd05e12b5cddad',
+        'contract_sha256': '65946c636694bb85ecb27f070c600b5ba93dcd0bbd3291335fbf8cf91b4457fa',
     },
     0: {
         'contract_file': 'assets/art/characters/00-damian/native-revision.json',
@@ -84,7 +84,7 @@ NATIVE_REVISION_REGISTRY = {
     6: {
         'contract_file': 'assets/art/characters/06-fernando/native-revision.json',
         'source_version': 'v6',
-        'contract_sha256': 'f79bba26ade95510e9434c0cafefc40c2b415903ad5719efadb882c66248f4b0',
+        'contract_sha256': 'd6dd085bd2c42a25084bf398fbd530011c5535b095035c1e233bf9ab403c8c59',
     },
     9: {
         'contract_file': 'assets/art/characters/09-reston/native-revision.json',
@@ -543,7 +543,15 @@ def _load_revision_sources(root, fighter, slug, directory, baseline_entry):
     if source_version == 'v6':
         portrait_source = _resolve_checked_source(
             root, directory, contract.get('portrait_source'),
-            f'{slug} approved expression portrait')
+            f'{slug} preserved selection portrait')
+        portrait_descriptor = contract['portrait_source']
+        if portrait_descriptor.get('mode') != 'preserved-idle-atlas':
+            raise AssertionError(f'{slug}: selection portrait must use its preserved idle atlas')
+        portrait_reference = extract_atlas(root / baseline_entry['source_files']['legacy']['file'])[0][0].height
+        portrait_height = extract_atlas(portrait_source)[0][0].height
+        _assert_same_scale(portrait_descriptor.get('source_normalization'),
+                           portrait_reference / portrait_height,
+                           f'{slug} preserved portrait normalization')
     provenance_files = contract.get('provenance_files')
     expected_provenance_names = (
         f'likeness-{source_version}.json', f'animation-{source_version}.json',
@@ -628,6 +636,8 @@ def _load_revision_sources(root, fighter, slug, directory, baseline_entry):
         'source_normalization': scales,
         'provenance_files': provenance_paths,
         'portrait_source': portrait_source,
+        'portrait_normalization': (contract['portrait_source']['source_normalization']
+                                   if portrait_source else None),
     }
 
 
@@ -1040,18 +1050,15 @@ def prepare_roster(root, output):
             raise AssertionError(f'{slug}: legacy key poses were duplicated')
         pending_images.append((output / f'fighter{fighter:02}.png', preview))
 
-        # Older fighters derive the portrait from idle; v6 pins the separately
-        # authored expression master while keeping both native portrait sizes.
+        # Combat-face edits must not redraw the selection portraits. v6 pins
+        # the earlier idle atlas independently from the current combat atlas.
         portrait_source = revision.get('portrait_source') if revision else None
         if portrait_source:
-            portrait_master = Image.open(portrait_source).convert('RGBA')
-            portrait_master.putalpha(portrait_master.getchannel('A').point(
-                lambda value: 255 if value > 200 else 0))
-            portrait_pair = build_portrait_pair(
-                portrait_master, backdrop=colors[0], full_head=True)
-            portrait_pair['metadata'].update(
-                source_file=str(portrait_source.relative_to(root)).replace('\\', '/'),
-                source_sha256=_sha256(portrait_source))
+            portrait_figures, _ = extract_atlas(portrait_source)
+            portrait_master = _normalize_animation_locked(
+                portrait_figures, revision['portrait_normalization'],
+                f'{slug} preserved portrait')[0]
+            portrait_pair = build_portrait_pair(portrait_master, backdrop=colors[0])
         else:
             portrait_pair = build_portrait_pair(figures[0], backdrop=colors[0])
         backdrop = portrait_pair['small']

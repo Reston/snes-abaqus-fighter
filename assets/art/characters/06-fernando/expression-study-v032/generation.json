@@ -53,15 +53,16 @@
     "portrait-64x80.png": "f248a6fc89e87505395da33d6e1bb25b1dcdfc87598ee89c077d800dce76d7b2",
     "reference-crop.png": "848609ee027127920567502c6d9ed032eb8f3ffa10d86b1c14f27db04b8e0e36"
   },
-  "integrated_into_game": true,
+  "integrated_into_game": false,
   "human_approval": {
     "quote": "Yes, use this direction",
     "scope": "photographed eye and expression references for Ivo, Fernando and Cristian; not final native likeness or merge approval"
   },
   "native_usage": {
-    "revision": "0.32.0",
-    "portrait": "complete approved head master, scaled into existing native portrait slots",
+    "revision": "0.32.1",
+    "portrait": "not used; selection portraits restored to the prior idle-atlas source",
     "animation": "reference for nine full-body atlas edits; no head pasted onto body",
     "final_likeness_approval": null
-  }
+  },
+  "used_as_animation_reference": true
 }

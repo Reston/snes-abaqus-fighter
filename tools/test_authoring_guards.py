@@ -277,7 +277,7 @@ class AuthoringGuards(unittest.TestCase):
             with self.assertRaisesRegex(AssertionError, 'unsupported registered source version'):
                 fighters._load_revision_sources(self.root, 0, 'damian', directory, baseline[0])
 
-    def test_registered_head_portrait_mutations(self):
+    def test_preserved_selection_portrait_mutations(self):
         baseline = fighters._load_native_baseline(ROOT)[1]
         directory = self.root / 'assets/art/characters/01-ivo'
         directory.mkdir(parents=True)
@@ -290,20 +290,26 @@ class AuthoringGuards(unittest.TestCase):
             ('hash', {**original['portrait_source'], 'sha256':'0' * 64}),
             ('escape', {'file':'assets/art/characters/outside-head.png',
                         'sha256':sha(outside.read_bytes())}),
+            ('mode', {**original['portrait_source'], 'mode':'head-master'}),
+            ('scale', {**original['portrait_source'], 'source_normalization':2}),
         ):
             record = copy.deepcopy(original)
             record['portrait_source'] = value
-            if label == 'hash':
+            if label in ('hash','mode','scale'):
                 master = self.root / value['file']
                 master.parent.mkdir(parents=True, exist_ok=True)
                 master.write_bytes((ROOT / value['file']).read_bytes())
+            if label == 'scale':
+                prior = self.root / baseline['source_files']['legacy']['file']
+                prior.parent.mkdir(parents=True,exist_ok=True)
+                prior.write_bytes((ROOT / baseline['source_files']['legacy']['file']).read_bytes())
             write_json(path, record)
             registration = {**fighters.NATIVE_REVISION_REGISTRY[1],
                             'contract_sha256':sha(path.read_bytes())}
             with self.subTest(mutation=label), mock.patch.dict(
                     fighters.NATIVE_REVISION_REGISTRY, {1:registration}):
                 with self.assertRaisesRegex(AssertionError,
-                        'source descriptor|source hash changed|source escapes'):
+                        'source descriptor|source hash changed|source escapes|preserved idle atlas|preserved portrait normalization'):
                     fighters._load_revision_sources(self.root, 1, 'ivo', directory, baseline)
 
     def test_native_frame_and_palette_shapes(self):
