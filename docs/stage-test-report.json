@@ -1,9 +1,9 @@
 {
   "status": "passed",
   "part": "stages",
-  "version": "0.32.0",
-  "rom_sha256": "096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f",
-  "source_commit": "6933f4908f839957145c463fea9522918e62e142",
+  "version": "0.32.1",
+  "rom_sha256": "1dc456430a706fd0e6ac3a4d25bc0455b1cf9e034599d15e581962202dda628b",
+  "source_commit": "dfb7ef1dd032e5ca6765d6b0776f09f417898fe6",
   "diagnostic": false,
   "selected_fighters": [
     0,
@@ -65,7 +65,7 @@
     "src/super_moves.h": "6b5d0f67851c1b7dc370d25f5a4dd1c41c44ad04b41d3928a663c2859374e0b0",
     "src/trace.asm": "301ec8a99aa326583c332a901903114f5fceeb7f17bbbf768c3e90ae65c3dc88",
     "src/training_tools.h": "bad6ffc456e48c0b346ffaa069c33871988716828db75a18f511266c3de33961",
-    "src/version.h": "d2e4bcbd819ad4bfcfde05cbff67e17d1bd04a21ec0d406a7fca64c2d913c7f6",
+    "src/version.h": "1bd048e4617156bed9dfd2ff582b9f6390c1bf7dd13b49e5ef2816d9318fc93a",
     "Test.cmd": "6c38ea238c7481f1529954a1652f34e72367b2c251562166c81e2e629e10b632",
     "tools/arena_life29_assets.py": "5274f75f2b45f30ff4f910f5f079383bd2ba7ed2608b952f9d3006041099b590",
     "tools/arena_life29_checks.py": "2cc91f0200707b331d3d7d7a0009c81ceefe9d295a48c846fe0761441ed7bb02",
@@ -96,10 +96,10 @@
     "tools/emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
     "tools/expansion_contracts.py": "b64c11cecf01d5ca672ffb137a416ec0ae2f16c94ea310594ea3250cc1803d51",
     "tools/fetch_references.py": "a630e9cb073f7a20b4ddb720a3af812d6e7790398c5dc19cd88ece7c13a65254",
-    "tools/fighter_assets.py": "aea7126d79f1c42874ffd5f399124efee331642c34152fa8dc5569a74faf7c34",
+    "tools/fighter_assets.py": "83d190b0c392f692bea69f2b2a2beb04a696cbc48c3001d2dff8288f4586f4d5",
     "tools/likeness30_contracts.py": "8c681f5ea01e918e7b70fcbd29ac023b71707ae5d2f665e81df4de8637420595",
     "tools/likeness31_contracts.py": "e8da42b6aaff712d4bfe5121b0388d394554809dab402e8e2c07ce73c9307a0e",
-    "tools/likeness32_contracts.py": "430ef69353e63020704d524d4f7ab70398785f80e31f90c41c338da382d2fe34",
+    "tools/likeness32_contracts.py": "53db8a25b71277e65a7a9ac340f1997a41342e524fea3c9eb5221fed12fb4b78",
     "tools/longrun_host.py": "432bed2b7505131d639794ee4b1d857292df4465e7f219c39a14fa433f11cc8e",
     "tools/make_assets.py": "b74e2827309e53b0df2fdad5af9b49327bedd0a0271e5b87d982a875e6d9b8dd",
     "tools/make_champion_budget.py": "f5ffcfec6c09729f72f19815613d244794bfe4e0ad7a5d708c63a634552e24ad",
@@ -120,7 +120,7 @@
     "tools/play.ps1": "914d0bd48cc8a83650bcb45aed9658c549db5cbe3411921dd81da7cc6cbfe3b7",
     "tools/play_flow_counterfactual.py": "424dc06c62168d0d43f66cba20a0a02938307391da972f39e729b27cb55ba286",
     "tools/play_flow_media.py": "7e542a9ac96d0668116877124081ead3b0a1e9b39e1e7492cdda938477dbf4fe",
-    "tools/portrait_assets.py": "463fd5a6b7b9a9711c713e5389435673a100dcc92a188f3517cf0bc1a3dbf12c",
+    "tools/portrait_assets.py": "f95047e2ad5e1c292809ced20ca2e9cc77dc4a0e5f3c10d43cadf8e0843107d3",
     "tools/pose_revision_assets.py": "7baca936c90d63dbedb732b1a222207322bed881e84841cb6d41179c7e539709",
     "tools/preservation.py": "40e13816f5a7086c18e6053789e209722316a6c2675fb9583647eed20891ae76",
     "tools/release_evidence.py": "83fbaeffb70c4cf58c50ed93847ff081b9ff565d1a4af75cd05d45cffc87c442",
@@ -144,7 +144,7 @@
     "tools/test_audio.py": "542ad545a023db85c9fe14066823cea5fa58848932d92057d55e26c76a28a73d",
     "tools/test_audio29.py": "3007a5bddf23563bfbc1c725e8401cd0c0a551a93eab283212788b40304904b7",
     "tools/test_audio29_native.py": "eae4517593bfc5d721ff870e16b896fbc4475200e00ed9f6fc08b53762ea9895",
-    "tools/test_authoring_guards.py": "0ca8ef306a135b9758d840b287483161832cb980d4730ac6b516e2783a17f9f9",
+    "tools/test_authoring_guards.py": "fad5ae537fa1ccf716336f985697c3aecaf24d059e38b6b8bc3ba1609d22f365",
     "tools/test_auto29.py": "b0dcf32828c95a0989d9fb9326fa7e39c9fd14485682969a60078e70cf4db9e2",
     "tools/test_bonus29.py": "1bbe5409f936f51e3997347485aeb92322bba0ef2c29ee2153caeb604d129a66",
     "tools/test_candidate_sources.py": "fcedacec4e5f020600b58d21349f168d1b81562b2fe570f8dc24c4bc3d59bf2b",
@@ -185,7 +185,7 @@
     "tools/test_inputs.py": "0e454be6e1fc45abda97ecb368012db4fd14d6d9cf653326aa112d69ec440bbc",
     "tools/test_launcher_26.py": "972531769a22a3d85f652104912f981bd9a3d027244702e1efdadfa2e1803e46",
     "tools/test_likeness31.py": "a006303b4946ec5b7064e34168fdf2493c5aeff545805de830d4f54a042ffe5d",
-    "tools/test_likeness32.py": "351d6f60da81b817c4960dca779282b3a763602dc1ee9e8e2e8c54d1b9b3faae",
+    "tools/test_likeness32.py": "a398fc2d7486627ef40db6914faa983970f082af0cc63fff577e23f1ee8d7903",
     "tools/test_local_session_26.py": "869597abe87ff42c46c333ac27148c2f871fb7804696e3aed446de924ef8a6a8",
     "tools/test_long_session_guards.py": "72f528248cb1369681a62cf53cb13ace31273c279ccea7e7c9f1a53dea5a1643",
     "tools/test_matchups.py": "1979c79b5ed465f798c9528267e9debce412a1f2c19ca84c13d34995db060a1c",
@@ -198,7 +198,7 @@
     "tools/test_native_artifacts.py": "905cdccf4f6055d34b09387c26205879b839520cad119fe8c01de3c3ac2b1327",
     "tools/test_native_build_26.py": "0ac64bfec8e4db1c8420745891578bb8b914a6764a275a970a7ae2f5fcede8c5",
     "tools/test_normal_guide_26.py": "93be4467c72686dfb312ccf5b5a957d15ca54ecf5bd083f6b03527af6a48336a",
-    "tools/test_pacing_floor_25.py": "0100c17dd89385317e65ae2fea1ebdf5c71900e6c44515e561de1bc096db15f0",
+    "tools/test_pacing_floor_25.py": "516c6b131e7bdcb4c67d6ecb3d0a253a070d5c91cb45872d7105e1aaaab056f7",
     "tools/test_package.py": "1174274d5eeec4610fd98fb11bbef90b213a9f5a61a776f634a6d99fcb15d3d9",
     "tools/test_play_flow_26.py": "f85bdd5f85cb5df1e611449406654d42f281d7c9335d13ee5c91549ac2330b6c",
     "tools/test_play_flow_collation.py": "c15d9965c6a966f7c4e8e095629e441dfb0895cf2652833881cca0367fc0679c",
@@ -304,22 +304,20 @@
   "preservation": {
     "status": "passed",
     "baseline_commit": "961214932f2ff0cef388635f16ca883e688b3668",
-    "baseline_scope": "v0.31 body-design reference; its faces were rejected",
-    "version": "0.32.0",
-    "rom_sha256": "096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f",
+    "baseline_scope": "v0.31 selection portrait and body-design reference; its in-game faces were rejected",
+    "combat_reference": "1f95209d29cf7be240d5868dee0e09d52e949f03",
+    "all_existing_v032_combat_frames_exact": true,
+    "all_selection_portraits_and_roster_art_exact": true,
+    "version": "0.32.1",
+    "rom_sha256": "1dc456430a706fd0e6ac3a4d25bc0455b1cf9e034599d15e581962202dda628b",
     "generated": {
       "baseline_count": 237,
       "current_count": 237,
-      "preserved_count": 192,
+      "preserved_count": 209,
       "changed": [
         {
-          "path": "assets/generated/assets.h",
-          "sha256": "8be23312e485c856df6a69c045e088bd810b613c8a024b23344e2d3e69ebb3e9",
-          "baseline_sha256": "9b48750ea95ffa4e6fd3bdaa98768f3d42518d15a23bc6cc86eac1c05e7ac82e"
-        },
-        {
           "path": "assets/generated/character-manifest.json",
-          "sha256": "50b7c3fc33b348a440b4630c2059d500f1eb079b36f0d55347b5ba944bffad1d",
+          "sha256": "ebec21cae0748822c7d0aaddaf61a8c688f651cc70997d44fa065ef42cc7c102",
           "baseline_sha256": "996a8e9e5dd12d7c93782fcfd9759986becd22c9a9712bc5533900974250b8cf"
         },
         {
@@ -456,86 +454,6 @@
           "path": "assets/generated/fighter07h.bin",
           "sha256": "e0944ebab914adc7c09b41f3d04314d751b2b5cb529bc6ef0cb50a904f534c3a",
           "baseline_sha256": "61208af1482ef58432ee2e4c6c3e2e6c3b4d1eaf60c6af96a2e5880679f0d547"
-        },
-        {
-          "path": "assets/generated/portrait01-large.png",
-          "sha256": "ce7bc7d46638eaeedb8ac4324e7d4d49debf10031c090bd1605dd2784f13d33e",
-          "baseline_sha256": "a703f0ebb004fb5bc986a50d0295fb4b1863792f0c6eb6274b52ca169ad90873"
-        },
-        {
-          "path": "assets/generated/portrait01.png",
-          "sha256": "2fc915fcf185a946750a6796043a714b7f30d0a204c47584792213729b922995",
-          "baseline_sha256": "550e911ee8f2feb4d32a75a7ef8aa922a49a81cbfd3b581e525dacab54afe310"
-        },
-        {
-          "path": "assets/generated/portrait01_pal.bin",
-          "sha256": "9aad7f6af23fb3dd63f04589e57f8496052d40f8a16a06b88a1a9ad88e958ccc",
-          "baseline_sha256": "0dec67be9d5d7d6b9c1c22ec2570baae3025b459f22d8d12dd8f64cb1a342cca"
-        },
-        {
-          "path": "assets/generated/portrait01_tiles.bin",
-          "sha256": "fc14754a3d73a5426b003dc80c14fb0cabbf5b10b25f42aa4f3f31344290f0e7",
-          "baseline_sha256": "7be715df67625f9889a1d4a27a1dc4cb5608c5dfc6e9d3bb4e3d54e43e4355a9"
-        },
-        {
-          "path": "assets/generated/portrait06-large.png",
-          "sha256": "6351701a982d5db0323a0b46d677da117065bad6433bbb6fa23e25fca4ab8c5d",
-          "baseline_sha256": "fb6967d16e7c7ad37489d07e83b752d3636d7369a0f441024c0a16543901f0de"
-        },
-        {
-          "path": "assets/generated/portrait06.png",
-          "sha256": "7da4ce9914a0ca9c01e7f310330925f28157199719ed3cecd69d0efb17707842",
-          "baseline_sha256": "f182e3b764fe07d610900898b09117b3046de7cc1a0be4852616670c8934140d"
-        },
-        {
-          "path": "assets/generated/portrait06_pal.bin",
-          "sha256": "a1a197fbb2cba1e45992cfabd235b89d0499fb568c4822c547114678bf8047ed",
-          "baseline_sha256": "76a1cdedf0f09c1d622141e3ee1f6e4d05fd78fd4eba6543685edefcbd6d5745"
-        },
-        {
-          "path": "assets/generated/portrait06_tiles.bin",
-          "sha256": "4c95408dbf238f46b92feceeb0346fe1dc22566bfd4b7204e7db61f6d088e783",
-          "baseline_sha256": "df05f7757cc4d0eebba0487de254a92410d99b62795dbba979795b02d6f0e628"
-        },
-        {
-          "path": "assets/generated/portrait07-large.png",
-          "sha256": "bf88793e0395cb245b0aa18c6453fcbcd93b3ed61b35bd7d9b5921cd421c72d2",
-          "baseline_sha256": "2b56878c08517472b24cc9a478e124d3b261f690920993259b12ca4380ddc246"
-        },
-        {
-          "path": "assets/generated/portrait07.png",
-          "sha256": "672dd2dfde6497094a901271b45ac85619e128155c1880be937a93c2755c9f73",
-          "baseline_sha256": "ddf4ddbc7f13047f69ed1d97689118bd81c8a5f22750224b48c580ba630a83c3"
-        },
-        {
-          "path": "assets/generated/portrait07_pal.bin",
-          "sha256": "2713a0d1639703bd12826d1ad7592ee15ad9635ebf8f8ebf6f487466736d1568",
-          "baseline_sha256": "c6a978d34a8d52967735b2b569f943bee810340558a5278890311f8bf64dfb86"
-        },
-        {
-          "path": "assets/generated/portrait07_tiles.bin",
-          "sha256": "8bed8e286d62afc6e2b61adc89639969e816dfacae3124162635abf215c5fdf2",
-          "baseline_sha256": "92b1df0e95c3e3911830ce913ce46f254438e1e22afeb3a0823833260ee79fe6"
-        },
-        {
-          "path": "assets/generated/select.png",
-          "sha256": "66ad69fb0029da20d19428411be4de56ce99dc9017416c903c8892fe87363846",
-          "baseline_sha256": "4f7e45c17ff9b5a907e1673c3b6cea947f285ad0cef201099c8ba1518e78a0fb"
-        },
-        {
-          "path": "assets/generated/select_map.bin",
-          "sha256": "90162680675230a4386dc1613f7e7f0e4f87e6aed0d9b517f3c93b4cd89c0bbb",
-          "baseline_sha256": "7e75c815922cbf7ac30d4ac1aff36c6c57c10155e558d7ac371b5af41746a721"
-        },
-        {
-          "path": "assets/generated/select_pal.bin",
-          "sha256": "f6015c76a1d690e73587a6a5604dbf32f8d9e1d110dbf0b1a880de3770a67c5d",
-          "baseline_sha256": "9dc220b09d4c80bd7f9530b88161ed5e87d3c4b0bec1d9c66cca052169c80ddb"
-        },
-        {
-          "path": "assets/generated/select_tiles.bin",
-          "sha256": "584bfb73f5abf00c39c7a9a5895c48ed40c3f108b93d8803c0ef7aa969169529",
-          "baseline_sha256": "4046fcdea1f07c2d06425a52b9df6a1c4cea5a99f9e468b22776017c0b31f90c"
         }
       ],
       "added": [],
@@ -579,6 +497,11 @@
           "path": "assets/generated/arenas_tiles.bin",
           "sha256": "f2ed19291b18445479f05b57eb40865cd1764a1c1935e42fff1f1c3de156b9a5",
           "baseline_sha256": "f2ed19291b18445479f05b57eb40865cd1764a1c1935e42fff1f1c3de156b9a5"
+        },
+        {
+          "path": "assets/generated/assets.h",
+          "sha256": "9b48750ea95ffa4e6fd3bdaa98768f3d42518d15a23bc6cc86eac1c05e7ac82e",
+          "baseline_sha256": "9b48750ea95ffa4e6fd3bdaa98768f3d42518d15a23bc6cc86eac1c05e7ac82e"
         },
         {
           "path": "assets/generated/bonus29-assets.json",
@@ -1166,6 +1089,26 @@
           "baseline_sha256": "cef8bc55342eea67d30e43e52852d560e421c25e9071fe7e7a9c52e02f75de09"
         },
         {
+          "path": "assets/generated/portrait01-large.png",
+          "sha256": "a703f0ebb004fb5bc986a50d0295fb4b1863792f0c6eb6274b52ca169ad90873",
+          "baseline_sha256": "a703f0ebb004fb5bc986a50d0295fb4b1863792f0c6eb6274b52ca169ad90873"
+        },
+        {
+          "path": "assets/generated/portrait01.png",
+          "sha256": "550e911ee8f2feb4d32a75a7ef8aa922a49a81cbfd3b581e525dacab54afe310",
+          "baseline_sha256": "550e911ee8f2feb4d32a75a7ef8aa922a49a81cbfd3b581e525dacab54afe310"
+        },
+        {
+          "path": "assets/generated/portrait01_pal.bin",
+          "sha256": "0dec67be9d5d7d6b9c1c22ec2570baae3025b459f22d8d12dd8f64cb1a342cca",
+          "baseline_sha256": "0dec67be9d5d7d6b9c1c22ec2570baae3025b459f22d8d12dd8f64cb1a342cca"
+        },
+        {
+          "path": "assets/generated/portrait01_tiles.bin",
+          "sha256": "7be715df67625f9889a1d4a27a1dc4cb5608c5dfc6e9d3bb4e3d54e43e4355a9",
+          "baseline_sha256": "7be715df67625f9889a1d4a27a1dc4cb5608c5dfc6e9d3bb4e3d54e43e4355a9"
+        },
+        {
           "path": "assets/generated/portrait02-large.png",
           "sha256": "c5c198ea1ce40a6d37780654dd0f164a7032930d3519561b19b96ed74e6cf6b9",
           "baseline_sha256": "c5c198ea1ce40a6d37780654dd0f164a7032930d3519561b19b96ed74e6cf6b9"
@@ -1246,6 +1189,46 @@
           "baseline_sha256": "c0460efc186cc285ba6aba1fdd0e7c54dc21320b2201954973d6d2c31c8ba505"
         },
         {
+          "path": "assets/generated/portrait06-large.png",
+          "sha256": "fb6967d16e7c7ad37489d07e83b752d3636d7369a0f441024c0a16543901f0de",
+          "baseline_sha256": "fb6967d16e7c7ad37489d07e83b752d3636d7369a0f441024c0a16543901f0de"
+        },
+        {
+          "path": "assets/generated/portrait06.png",
+          "sha256": "f182e3b764fe07d610900898b09117b3046de7cc1a0be4852616670c8934140d",
+          "baseline_sha256": "f182e3b764fe07d610900898b09117b3046de7cc1a0be4852616670c8934140d"
+        },
+        {
+          "path": "assets/generated/portrait06_pal.bin",
+          "sha256": "76a1cdedf0f09c1d622141e3ee1f6e4d05fd78fd4eba6543685edefcbd6d5745",
+          "baseline_sha256": "76a1cdedf0f09c1d622141e3ee1f6e4d05fd78fd4eba6543685edefcbd6d5745"
+        },
+        {
+          "path": "assets/generated/portrait06_tiles.bin",
+          "sha256": "df05f7757cc4d0eebba0487de254a92410d99b62795dbba979795b02d6f0e628",
+          "baseline_sha256": "df05f7757cc4d0eebba0487de254a92410d99b62795dbba979795b02d6f0e628"
+        },
+        {
+          "path": "assets/generated/portrait07-large.png",
+          "sha256": "2b56878c08517472b24cc9a478e124d3b261f690920993259b12ca4380ddc246",
+          "baseline_sha256": "2b56878c08517472b24cc9a478e124d3b261f690920993259b12ca4380ddc246"
+        },
+        {
+          "path": "assets/generated/portrait07.png",
+          "sha256": "ddf4ddbc7f13047f69ed1d97689118bd81c8a5f22750224b48c580ba630a83c3",
+          "baseline_sha256": "ddf4ddbc7f13047f69ed1d97689118bd81c8a5f22750224b48c580ba630a83c3"
+        },
+        {
+          "path": "assets/generated/portrait07_pal.bin",
+          "sha256": "c6a978d34a8d52967735b2b569f943bee810340558a5278890311f8bf64dfb86",
+          "baseline_sha256": "c6a978d34a8d52967735b2b569f943bee810340558a5278890311f8bf64dfb86"
+        },
+        {
+          "path": "assets/generated/portrait07_tiles.bin",
+          "sha256": "92b1df0e95c3e3911830ce913ce46f254438e1e22afeb3a0823833260ee79fe6",
+          "baseline_sha256": "92b1df0e95c3e3911830ce913ce46f254438e1e22afeb3a0823833260ee79fe6"
+        },
+        {
           "path": "assets/generated/portrait08-large.png",
           "sha256": "7b6546202fff49fbce12601303ca5c8f737bb6e0b59e725a3e70a17a10cd7c28",
           "baseline_sha256": "7b6546202fff49fbce12601303ca5c8f737bb6e0b59e725a3e70a17a10cd7c28"
@@ -1324,6 +1307,26 @@
           "path": "assets/generated/portrait11_tiles.bin",
           "sha256": "523beee6bbce840def42286687dde5c22d5a6c9720e365f510e65687beebbbbd",
           "baseline_sha256": "523beee6bbce840def42286687dde5c22d5a6c9720e365f510e65687beebbbbd"
+        },
+        {
+          "path": "assets/generated/select.png",
+          "sha256": "4f7e45c17ff9b5a907e1673c3b6cea947f285ad0cef201099c8ba1518e78a0fb",
+          "baseline_sha256": "4f7e45c17ff9b5a907e1673c3b6cea947f285ad0cef201099c8ba1518e78a0fb"
+        },
+        {
+          "path": "assets/generated/select_map.bin",
+          "sha256": "7e75c815922cbf7ac30d4ac1aff36c6c57c10155e558d7ac371b5af41746a721",
+          "baseline_sha256": "7e75c815922cbf7ac30d4ac1aff36c6c57c10155e558d7ac371b5af41746a721"
+        },
+        {
+          "path": "assets/generated/select_pal.bin",
+          "sha256": "9dc220b09d4c80bd7f9530b88161ed5e87d3c4b0bec1d9c66cca052169c80ddb",
+          "baseline_sha256": "9dc220b09d4c80bd7f9530b88161ed5e87d3c4b0bec1d9c66cca052169c80ddb"
+        },
+        {
+          "path": "assets/generated/select_tiles.bin",
+          "sha256": "4046fcdea1f07c2d06425a52b9df6a1c4cea5a99f9e468b22776017c0b31f90c",
+          "baseline_sha256": "4046fcdea1f07c2d06425a52b9df6a1c4cea5a99f9e468b22776017c0b31f90c"
         },
         {
           "path": "assets/generated/sfx0.bin",
@@ -1513,26 +1516,29 @@
       {
         "id": 1,
         "changed_frames": 64,
-        "approved_portrait_sha256": "721585de5590e4cbb6287d7720fc057bea5f6a8d9124098fd8b0d77c86febfb2",
-        "new_atlases": 9
+        "approved_expression_reference_sha256": "721585de5590e4cbb6287d7720fc057bea5f6a8d9124098fd8b0d77c86febfb2",
+        "animation_atlases": 9,
+        "selection_portrait_restored_exact": true
       },
       {
         "id": 6,
         "changed_frames": 64,
-        "approved_portrait_sha256": "1732ef5bfa8325117eacff2a63e7d563b63aeaba8f4137ad0ad0af9f28a7bac3",
-        "new_atlases": 9
+        "approved_expression_reference_sha256": "1732ef5bfa8325117eacff2a63e7d563b63aeaba8f4137ad0ad0af9f28a7bac3",
+        "animation_atlases": 9,
+        "selection_portrait_restored_exact": true
       },
       {
         "id": 7,
         "changed_frames": 64,
-        "approved_portrait_sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5",
-        "new_atlases": 9
+        "approved_expression_reference_sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5",
+        "animation_atlases": 9,
+        "selection_portrait_restored_exact": true
       }
     ],
     "prior_ram_labels_exact": 1331,
     "native_rules_except_version_exact": true,
     "maximum_native_section_bytes": 30720,
-    "native_geometry": "Only the three revised fighter blocks may refresh from final pixels."
+    "native_geometry": "Only the three revised fighter blocks may differ from v0.31; the full geometry must stay exact to v0.32."
   },
   "result": {
     "cases": [
@@ -1562,27 +1568,27 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage0-movement.gif",
-          "impact_clip": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage0-contacts.gif",
+          "movement_clip": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stage0-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stage0-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage0-center.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stage0-center.png",
               "sha256": "f8d3a268f77c1f7a75da369a72479f23bacd6014c6cd6dfb627332eadd2bd48c",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage0-guide.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stage0-guide.png",
               "sha256": "251e7ed9b6b13c5f9df4f3f20614e7d2ccb7425b0ab77444e03d89675295a02b",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage0-left.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stage0-left.png",
               "sha256": "48e990c7871d1f192bbd847d3c1106356c5ee4a2ac571e2efa4158e9bdb4c17f",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage0-right.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stage0-right.png",
               "sha256": "b2ba7651eca0349c36dbfd7fa661e895e71a0ebbdc2c906c89dd40b20f0f15ca",
               "scope": "current native PPU"
             }
@@ -1616,7 +1622,7 @@
           "core": "snes9x",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/likeness-v032/stages/stages/snes9x-stress0.gif",
+          "clip": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stress0.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -1666,27 +1672,27 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage1-movement.gif",
-          "impact_clip": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage1-contacts.gif",
+          "movement_clip": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stage1-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stage1-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage1-center.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stage1-center.png",
               "sha256": "d03af304bd09bd3e030a367fff0d9dc56a9c31cacb9a0aaf17538cd15bef454f",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage1-guide.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stage1-guide.png",
               "sha256": "251e7ed9b6b13c5f9df4f3f20614e7d2ccb7425b0ab77444e03d89675295a02b",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage1-left.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stage1-left.png",
               "sha256": "58a1e9781e73650060bfaabbfa2f00124755ccabbd24373ab05c57346aae6d05",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage1-right.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stage1-right.png",
               "sha256": "05207f823f4f0926c89c1775d545e9d1151f55740346680c4b2ae4c2fd0bebf4",
               "scope": "current native PPU"
             }
@@ -1720,7 +1726,7 @@
           "core": "snes9x",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/likeness-v032/stages/stages/snes9x-stress1.gif",
+          "clip": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stress1.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -1770,27 +1776,27 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage2-movement.gif",
-          "impact_clip": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage2-contacts.gif",
+          "movement_clip": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stage2-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stage2-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage2-center.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stage2-center.png",
               "sha256": "0f4dfbcb1a392b0ef122efc11dba50680c1f5413575541e93b9f11138e4a784b",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage2-guide.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stage2-guide.png",
               "sha256": "251e7ed9b6b13c5f9df4f3f20614e7d2ccb7425b0ab77444e03d89675295a02b",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage2-left.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stage2-left.png",
               "sha256": "ec83d8743996effff72a1684df1feecc02b14a32df6f722b6e271f89bbc2c0d6",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage2-right.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stage2-right.png",
               "sha256": "78cfc8d56c1c6bff9c6f68dfd55c5c0fdea34da11a12a2ea5d014ec47f819779",
               "scope": "current native PPU"
             }
@@ -1824,7 +1830,7 @@
           "core": "snes9x",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/likeness-v032/stages/stages/snes9x-stress2.gif",
+          "clip": "docs/screenshots/likeness-v0321/stages/stages/snes9x-stress2.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -1874,27 +1880,27 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage0-movement.gif",
-          "impact_clip": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage0-contacts.gif",
+          "movement_clip": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stage0-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stage0-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage0-center.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stage0-center.png",
               "sha256": "6a350bfff229fd4826d947d58055918f684daf4de3b940b648e547edd7819949",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage0-guide.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stage0-guide.png",
               "sha256": "45cdb6973c2e7fbf333324a23c4eda6bc538c31797d0a772bdec3c93c3799301",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage0-left.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stage0-left.png",
               "sha256": "9c3ba970c759b89c6caedb841282a86802f6c06199152413d7acedbaf18e542f",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage0-right.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stage0-right.png",
               "sha256": "019c364439b1a2b3b6457ed98c00b25bfbadaacb91f65ff9fd701ddef75e74be",
               "scope": "current native PPU"
             }
@@ -1928,7 +1934,7 @@
           "core": "accuracy",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/likeness-v032/stages/stages/accuracy-stress0.gif",
+          "clip": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stress0.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -1978,27 +1984,27 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage1-movement.gif",
-          "impact_clip": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage1-contacts.gif",
+          "movement_clip": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stage1-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stage1-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage1-center.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stage1-center.png",
               "sha256": "c8586521c90311adc26f8e189e541172c50a61e3d8e0daab58cacc053203310d",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage1-guide.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stage1-guide.png",
               "sha256": "45cdb6973c2e7fbf333324a23c4eda6bc538c31797d0a772bdec3c93c3799301",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage1-left.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stage1-left.png",
               "sha256": "abf2780830a3dd6dee2a70ba8d04a2a4b7c15151fc52ab15eae1be1275876891",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage1-right.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stage1-right.png",
               "sha256": "c98f0b05a1c40b4a26b9e09f58a6bf1e5552b20e33f8be19c87aa5b3ca316ebb",
               "scope": "current native PPU"
             }
@@ -2032,7 +2038,7 @@
           "core": "accuracy",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/likeness-v032/stages/stages/accuracy-stress1.gif",
+          "clip": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stress1.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -2082,27 +2088,27 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage2-movement.gif",
-          "impact_clip": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage2-contacts.gif",
+          "movement_clip": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stage2-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stage2-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage2-center.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stage2-center.png",
               "sha256": "fa901a9491391beb37a3dbea7ac4d781e7556e219e6537796c8649e99c871527",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage2-guide.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stage2-guide.png",
               "sha256": "45cdb6973c2e7fbf333324a23c4eda6bc538c31797d0a772bdec3c93c3799301",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage2-left.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stage2-left.png",
               "sha256": "aad425378dfb552490dc90c3088e712745ea9aa45ef743e3189ab5555f8092c9",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage2-right.png",
+              "path": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stage2-right.png",
               "sha256": "31c722e79638581f565e03d0bff18a861bfccb0f14c25defd9316f6e3b45590d",
               "scope": "current native PPU"
             }
@@ -2136,7 +2142,7 @@
           "core": "accuracy",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/likeness-v032/stages/stages/accuracy-stress2.gif",
+          "clip": "docs/screenshots/likeness-v0321/stages/stages/accuracy-stress2.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -2830,7 +2836,7 @@
         "details": [
           "accuracy-stage0",
           2105714,
-          4827
+          4969
         ]
       },
       {
@@ -3002,7 +3008,7 @@
         "details": [
           "accuracy-stage1",
           2133438,
-          4801
+          4881
         ]
       },
       {
@@ -3173,8 +3179,8 @@
         "passed": true,
         "details": [
           "accuracy-stage2",
-          2161162,
-          4883
+          2161160,
+          4880
         ]
       },
       {
@@ -3206,10 +3212,10 @@
     }
   },
   "check_count": 19002,
-  "elapsed_seconds": 88.86,
+  "elapsed_seconds": 89.797,
   "suite": "stage-depth",
   "shared_native_execution": true,
-  "focused_report": "docs/likeness-v032-stage-report.json",
-  "focused_report_sha256": "15ab991489dd70ed8913d31830710d4accbcd4773ad171dab55ff3ea630a9e24",
+  "focused_report": "docs/likeness-v0321-stage-report.json",
+  "focused_report_sha256": "a820086a9b2d84d0820ef29bf4602f739567c6beaaaa637c804391c40df339f5",
   "passed": 19002
 }

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "approved-direction-implemented-native-review-pending",
+  "status": "in-game-model-review-pending-selection-scope-corrected",
   "candidate_version": "0.31.0",
   "candidate_rom_sha256": "187a327c8854bfe568184dcc46c6c59f7d1d3460a60c02a6c1aeb18151b39579",
   "user_feedback": "much better but still the face are off I don't like them",
@@ -20,6 +20,7 @@
     "quote": "Yes, use this direction",
     "scope": "photographed eye and expression references for Ivo, Fernando and Cristian; not final native likeness or merge approval"
   },
-  "successor_version": "0.32.0",
-  "successor_rom_sha256": "096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f"
+  "successor_version": "0.32.1",
+  "successor_rom_sha256": "1dc456430a706fd0e6ac3a4d25bc0455b1cf9e034599d15e581962202dda628b",
+  "selection_scope_correction": "Restore original selection portraits; face work belongs on in-game character models."
 }

@@ -1,8 +1,9 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.32.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f; source-freeze: 6933f4908f839957145c463fea9522918e62e142 -->
+<!-- candidate-version: 0.32.1; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 1dc456430a706fd0e6ac3a4d25bc0455b1cf9e034599d15e581962202dda628b; source-freeze: dfb7ef1dd032e5ca6765d6b0776f09f417898fe6 -->
 
-This branch revises Ivo, Fernando and Cristian’s eyes and expressions across all 64 poses.
-[Before/after review](EXPRESSION-REVIEW-v0.32.html). The public player remains v0.30 until merge.
+This branch revises Ivo, Fernando and Cristian’s in-game faces across all 64 poses.
+The selection portraits retain their earlier appearance.
+[Before/after review](IN-GAME-FACES-v0.32.1.html). The public player remains v0.30 until merge.
 
 v0.29 adds throw escapes, office bonus rounds, random selection, automatic
 browser launch, new music and sound levels, and animated arena spectators.

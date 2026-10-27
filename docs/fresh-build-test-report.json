@@ -7,11 +7,11 @@
     "pre_extracted_tools_reused": false,
     "build_intermediates_reused": false
   },
-  "source_commit": "6933f4908f839957145c463fea9522918e62e142",
-  "source_tree": "7ac550386768bdaa0be5007061c0b6d8a936c966",
-  "rom_sha256": "096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f",
-  "work_directory": "build/fresh-build/6933f490-67q1cd3g",
-  "source_archive_sha256": "e66549271ad3ec1ce6bf2a720ddee4aef5dc2dc966fbbb8d40d9a4381e030c09",
+  "source_commit": "dfb7ef1dd032e5ca6765d6b0776f09f417898fe6",
+  "source_tree": "72a32a3017d20f313f76eedceb9de42ea022f379",
+  "rom_sha256": "1dc456430a706fd0e6ac3a4d25bc0455b1cf9e034599d15e581962202dda628b",
+  "work_directory": "build/fresh-build/dfb7ef1d-js8bchlc",
+  "source_archive_sha256": "b4b2f342e9dad650ce1a0ee85138f2cc6b7e796b5ef7dc9769682b686f38212b",
   "cached_archives_reused": [
     "snes9x.zip",
     "pvsneslib.zip",
@@ -26,7 +26,7 @@
     "sdk_tree_sha256": "0cd7a571b0a020394ead285b887c81b717c55c39540335abd8c7774b55bccb7b"
   },
   "build_exit_code": 0,
-  "build_log": "build/fresh-build/6933f490-67q1cd3g/build.log",
+  "build_log": "build/fresh-build/dfb7ef1d-js8bchlc/build.log",
   "bootstrap_archives": [
     {
       "name": "snes9x.zip",
@@ -53,7 +53,7 @@
     "python": "3.12.10",
     "pillow": "13.0.0"
   },
-  "rebuilt_rom_sha256": "096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f",
+  "rebuilt_rom_sha256": "1dc456430a706fd0e6ac3a4d25bc0455b1cf9e034599d15e581962202dda628b",
   "generated_assets": [
     {
       "file": "assets/generated/arena-life29.json",
@@ -97,7 +97,7 @@
     },
     {
       "file": "assets/generated/assets.h",
-      "sha256": "8be23312e485c856df6a69c045e088bd810b613c8a024b23344e2d3e69ebb3e9",
+      "sha256": "9b48750ea95ffa4e6fd3bdaa98768f3d42518d15a23bc6cc86eac1c05e7ac82e",
       "comparison": "LF-normalized text"
     },
     {
@@ -157,7 +157,7 @@
     },
     {
       "file": "assets/generated/character-manifest.json",
-      "sha256": "50b7c3fc33b348a440b4630c2059d500f1eb079b36f0d55347b5ba944bffad1d",
+      "sha256": "ebec21cae0748822c7d0aaddaf61a8c688f651cc70997d44fa065ef42cc7c102",
       "comparison": "LF-normalized text"
     },
     {
@@ -827,22 +827,22 @@
     },
     {
       "file": "assets/generated/portrait01-large.png",
-      "sha256": "ce7bc7d46638eaeedb8ac4324e7d4d49debf10031c090bd1605dd2784f13d33e",
+      "sha256": "a703f0ebb004fb5bc986a50d0295fb4b1863792f0c6eb6274b52ca169ad90873",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait01.png",
-      "sha256": "2fc915fcf185a946750a6796043a714b7f30d0a204c47584792213729b922995",
+      "sha256": "550e911ee8f2feb4d32a75a7ef8aa922a49a81cbfd3b581e525dacab54afe310",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait01_pal.bin",
-      "sha256": "9aad7f6af23fb3dd63f04589e57f8496052d40f8a16a06b88a1a9ad88e958ccc",
+      "sha256": "0dec67be9d5d7d6b9c1c22ec2570baae3025b459f22d8d12dd8f64cb1a342cca",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait01_tiles.bin",
-      "sha256": "fc14754a3d73a5426b003dc80c14fb0cabbf5b10b25f42aa4f3f31344290f0e7",
+      "sha256": "7be715df67625f9889a1d4a27a1dc4cb5608c5dfc6e9d3bb4e3d54e43e4355a9",
       "comparison": "exact bytes"
     },
     {
@@ -927,42 +927,42 @@
     },
     {
       "file": "assets/generated/portrait06-large.png",
-      "sha256": "6351701a982d5db0323a0b46d677da117065bad6433bbb6fa23e25fca4ab8c5d",
+      "sha256": "fb6967d16e7c7ad37489d07e83b752d3636d7369a0f441024c0a16543901f0de",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait06.png",
-      "sha256": "7da4ce9914a0ca9c01e7f310330925f28157199719ed3cecd69d0efb17707842",
+      "sha256": "f182e3b764fe07d610900898b09117b3046de7cc1a0be4852616670c8934140d",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait06_pal.bin",
-      "sha256": "a1a197fbb2cba1e45992cfabd235b89d0499fb568c4822c547114678bf8047ed",
+      "sha256": "76a1cdedf0f09c1d622141e3ee1f6e4d05fd78fd4eba6543685edefcbd6d5745",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait06_tiles.bin",
-      "sha256": "4c95408dbf238f46b92feceeb0346fe1dc22566bfd4b7204e7db61f6d088e783",
+      "sha256": "df05f7757cc4d0eebba0487de254a92410d99b62795dbba979795b02d6f0e628",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait07-large.png",
-      "sha256": "bf88793e0395cb245b0aa18c6453fcbcd93b3ed61b35bd7d9b5921cd421c72d2",
+      "sha256": "2b56878c08517472b24cc9a478e124d3b261f690920993259b12ca4380ddc246",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait07.png",
-      "sha256": "672dd2dfde6497094a901271b45ac85619e128155c1880be937a93c2755c9f73",
+      "sha256": "ddf4ddbc7f13047f69ed1d97689118bd81c8a5f22750224b48c580ba630a83c3",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait07_pal.bin",
-      "sha256": "2713a0d1639703bd12826d1ad7592ee15ad9635ebf8f8ebf6f487466736d1568",
+      "sha256": "c6a978d34a8d52967735b2b569f943bee810340558a5278890311f8bf64dfb86",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait07_tiles.bin",
-      "sha256": "8bed8e286d62afc6e2b61adc89639969e816dfacae3124162635abf215c5fdf2",
+      "sha256": "92b1df0e95c3e3911830ce913ce46f254438e1e22afeb3a0823833260ee79fe6",
       "comparison": "exact bytes"
     },
     {
@@ -1047,22 +1047,22 @@
     },
     {
       "file": "assets/generated/select.png",
-      "sha256": "66ad69fb0029da20d19428411be4de56ce99dc9017416c903c8892fe87363846",
+      "sha256": "4f7e45c17ff9b5a907e1673c3b6cea947f285ad0cef201099c8ba1518e78a0fb",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/select_map.bin",
-      "sha256": "90162680675230a4386dc1613f7e7f0e4f87e6aed0d9b517f3c93b4cd89c0bbb",
+      "sha256": "7e75c815922cbf7ac30d4ac1aff36c6c57c10155e558d7ac371b5af41746a721",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/select_pal.bin",
-      "sha256": "f6015c76a1d690e73587a6a5604dbf32f8d9e1d110dbf0b1a880de3770a67c5d",
+      "sha256": "9dc220b09d4c80bd7f9530b88161ed5e87d3c4b0bec1d9c66cca052169c80ddb",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/select_tiles.bin",
-      "sha256": "584bfb73f5abf00c39c7a9a5895c48ed40c3f108b93d8803c0ef7aa969169529",
+      "sha256": "4046fcdea1f07c2d06425a52b9df6a1c4cea5a99f9e468b22776017c0b31f90c",
       "comparison": "exact bytes"
     },
     {
@@ -1243,5 +1243,5 @@
   ],
   "generated_assets_verified": 237,
   "symbols_equal_after_source_path_normalization": true,
-  "elapsed_seconds": 123.172
+  "elapsed_seconds": 121.813
 }

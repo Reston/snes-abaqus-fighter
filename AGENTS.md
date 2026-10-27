@@ -6,26 +6,27 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+<!-- v0321-agent:start -->
+- **v0.32.1 is the corrected in-game face candidate**, PR #36, unmerged.
+  The user clarified that selection portraits should stay unchanged. All
+  portrait pixels/palettes/framing and roster art now match pre-change v0.31.
+  Preserve the v0.32 in-game models: all 64 poses per Ivo/Fernando/Cristian,
+  sprite banks and contact geometry stay byte-exact. Their portrait source
+  is pinned independently to the earlier idle atlas. Other nine fighters,
+  palettes/heights, 1,331 RAM/data labels, hardware/trace ASM and game rules
+  remain. Relative to v0.31, 209/237 assets stay exact and 28 change.
+  ROM 1dc456430a706fd0e6ac3a4d25bc0455b1cf9e034599d15e581962202dda628b, checksum 1A4C; source freeze dfb7ef1dd032e5ca6765d6b0776f09f417898fe6.
+  Six suites pass 50,605 checks; both-core/both-port native portrait
+  and combat proof, Accuracy smoke, 21 normal/-O authoring guards and fresh
+  237-asset/ROM/symbol reproduction pass. See docs/IN-GAME-FACES-v0.32.1.md
+  and docs/verification-v0.32.1.json. Final native likeness/merge approval
+  remain pending; public player remains v0.30. No new offline package.
+<!-- v0321-agent:end -->
+
 <!-- v032-agent:start -->
-- **Current correction in progress: v0.32.1.** The user clarified that only
-  in-game model faces should improve. Restore exact v0.31 selection portraits
-  and roster art; preserve all v0.32 in-game sprite bytes and contact geometry.
-  The v0.32 portrait replacement below is rejected scope. PR #36 remains open.
-- **v0.32.0 is the verified eyes/expression playtest candidate**, PR #36.
-  The user approved the photographed reference direction, "Yes, use this direction".
-  Nine new full-body imagegen atlases per fighter propagate it across Ivo,
-  Fernando and Cristian's 64 poses; complete approved head masters occupy the
-  existing portraits. Their v0.31 body designs, original palettes/heights and
-  move roles remain. The other nine fighters, all 1,331 RAM/data labels and native
-  hardware/trace ASM stay exact. C rules differ only in version. 192/237 assets
-  stay exact; 45 allowed outputs and only three geometry blocks change.
-  ROM 096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f, checksum 21E6;
-  source freeze 6933f4908f839957145c463fea9522918e62e142. Six suites pass 50,605 checks;
-  both-core/both-port portrait/gameplay proof, Accuracy smoke, 21 normal/-O
-  authoring guards and fresh 237-asset/ROM/symbol reproduction pass. See
-  docs/EXPRESSIONS-v0.32.md and docs/verification-v0.32.0.json.
-  Final native likeness and merge approval remain pending; main/public remain
-  v0.30. Preserve all old masters and contracts. No new offline package.
+- v0.32.0 is historical: its in-game expression drawings are retained, but
+  the separate photo-head selection portrait replacement was rejected scope.
+  Use v0.32.1 above. Original evidence remains in its retained commit.
 <!-- v032-agent:end -->
 
 <!-- v031-agent:start -->

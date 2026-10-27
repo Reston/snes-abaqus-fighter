@@ -1,5 +1,6 @@
 # Eyes and expression review
 
+Historical reference: selection portrait replacement was rejected scope. [Current in-game model revision](IN-GAME-FACES-v0.32.1.md).
 The user liked v0.31's body improvement but rejected its faces. Their specific
 feedback is **eyes and expression**. These three studies translate the reference
 photos' relaxed eyelids, natural brows, gaze and closed mouths directly, without

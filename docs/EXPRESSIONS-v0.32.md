@@ -1,5 +1,6 @@
 # Ivo, Fernando and Cristian — eyes and expression
 
+Historical reference: selection portrait replacement was rejected scope. [Current in-game model revision](IN-GAME-FACES-v0.32.1.md).
 The user accepted the body improvement but found the eyes and expressions off.
 They then approved the photographed head studies: **"Yes, use this direction"**.
 That approval covers the reference direction; final native likeness remains

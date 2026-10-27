@@ -4,7 +4,7 @@
   "pinned_core": true,
   "source_url": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/bsnes2014_accuracy_libretro.dll.zip",
   "rom": {
-    "sha256": "096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f",
+    "sha256": "1dc456430a706fd0e6ac3a4d25bc0455b1cf9e034599d15e581962202dda628b",
     "bytes": 4194304
   },
   "core": {
@@ -28,8 +28,8 @@
   },
   "checks": {
     "pinned_inputs": {
-      "rom_sha256": "096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f",
-      "manifest_sha256": "096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f",
+      "rom_sha256": "1dc456430a706fd0e6ac3a4d25bc0455b1cf9e034599d15e581962202dda628b",
+      "manifest_sha256": "1dc456430a706fd0e6ac3a4d25bc0455b1cf9e034599d15e581962202dda628b",
       "rom_bytes": 4194304,
       "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
       "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
@@ -40,7 +40,7 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "fe43082f5c9586e7fb3b18ccc29d61ae54751a9517948718238d2aacf43a3341",
+        "sha256_rgb": "bf38f19b7200215ec437868991eaf01a4c014d03cc263ff3454fd1bfb358bc2e",
         "distinct_sampled_rgb": 308,
         "nonzero_bytes": 344064,
         "nonblank": true
@@ -53,9 +53,9 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "d438bc43930a4477d748a3d0197b162e0c7cd70b267f0307de3f9f76f243fed0",
+        "sha256_rgb": "82b43229f5c10886eaa559756d1cad659ed5dfe0c3aaf5f10382586a227732f0",
         "distinct_sampled_rgb": 616,
-        "nonzero_bytes": 312302,
+        "nonzero_bytes": 312080,
         "nonblank": true
       },
       "capture": "docs/screenshots/compatibility/select.png",
@@ -113,9 +113,9 @@
       "passed": true
     },
     "audio": {
-      "samples": 1050122,
-      "energy": 64006844778,
-      "peak": 4868,
+      "samples": 1050120,
+      "energy": 64063464786,
+      "peak": 4905,
       "passed": true
     },
     "stage_ambient_and_freeze": {
@@ -363,7 +363,7 @@
       "synchronized_initial_frames": 1,
       "synchronized_frames_in_600": 47,
       "stat77_values": [
-        17
+        1
       ],
       "stat77_overflow_bits": [
         0
