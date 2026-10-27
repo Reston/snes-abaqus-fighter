@@ -66,6 +66,14 @@ NATIVE_BASELINE_SHA256 = '386a430db966c7f5c843811d78d9e06043838d8893f166bdc58637
 # Art revisions are allowlisted by exact reviewed contract hash. There is
 # intentionally no CLI switch that bypasses the immutable roster baseline.
 NATIVE_REVISION_REGISTRY = {
+    7: {
+        'contract_file': 'assets/art/characters/07-cristian/native-revision.json',
+        'contract_sha256': '76ee73991b65aa8f477fcb701cae14b027d8b1e3255039d7c03ba23dc7518d58',
+    },
+    1: {
+        'contract_file': 'assets/art/characters/01-ivo/native-revision.json',
+        'contract_sha256': '10f492e7d73a7beb38e3ed86cb357f3edb5432babcea37915dce7a52edbdb22c',
+    },
     0: {
         'contract_file': 'assets/art/characters/00-damian/native-revision.json',
         'source_version': 'v5',
@@ -73,7 +81,8 @@ NATIVE_REVISION_REGISTRY = {
     },
     6: {
         'contract_file': 'assets/art/characters/06-fernando/native-revision.json',
-        'contract_sha256': '00b56eeaa8d92e19fbff5a4071857c248ea7541d38e522aca7e3cc6a692911b4',
+        'source_version': 'v5',
+        'contract_sha256': '322d43f496156df10e1f2ef83174f95d22becdb28b2cea8e13e1015b4d7cfb72',
     },
     9: {
         'contract_file': 'assets/art/characters/09-reston/native-revision.json',

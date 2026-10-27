@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "fighter_id": 1,
+  "motion": {
+    "source": "assets/art/characters/01-ivo/animation-motion-v4.png",
+    "sha256": "927f400a9f53a1f537428d1cdbc574d3c44f5fe5cac0c860e6273f76ff0c25a1",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-8ad91d14-58b5-42f8-92e7-7cc51f58df1f.png",
+    "raw_output_sha256": "927f400a9f53a1f537428d1cdbc574d3c44f5fe5cac0c860e6273f76ff0c25a1",
+    "prompt": "Use case: identity-preserve. Draw a NEW whole-body animation atlas for the EXACT specific man in Image1 (new full model design) and Image2 (new sixteen-pose model). Image3 supplies only OLD POSE ORDER/motion guide; IGNORE its old face and body design. Image4 is real photographic identity.\nIvo: middle-aged man in the photograph, LONG RECTANGULAR face, visible mature brow and under-eye creases, gently receding temples, modest flat natural side-parted short dark-brown hair, straight substantial nose, thin closed lips, squared chin. Serious calm experienced adult, not a young anime fighter.\nPreserve the NEW larger expressive realistic-caricature head, adult face, body build and outfit of Images1/2 across all frames. Do not revert to the generic angular anime head from Image3. All heads near-frontal three-quarter looking RIGHT when pose permits; this likeness is vital at 72-pixel native height. Entire body drawn continuously, never pasted heads/legs. Same fixed physical scale in all cells, neutral standing figure about 300 source pixels tall; lower poses truly compress/bend, never resize per cell. Compact any raised-arm pose so fist remains no higher than neutral standing crown by bending knees. Hands/cuff/torso/legs/shoes/head proportions match the new model throughout.\nExactly 16 separate figures, FOUR columns by 4 rows. Row-major poses, one each in EXACT order:\n1. breath neutral; 2. breath inhale; 3. breath exhale; 4. breath return; 5. walk forward contact; 6. walk forward pass; 7. walk forward rear pass; 8. walk forward opposite; 9. walk back contact; 10. walk back pass; 11. walk back lead pass; 12. walk back opposite; 13. crouch halfway; 14. jump anticipation; 15. jump extension; 16. landing compression.\nFour breathing phases have subtle but genuinely distinct chest/head/guard positions. Walking contact/pass phases coordinate pelvis, torso, guard and feet, no sliding duplicated figures.\nCopy Image3's action geometry and compact silhouettes, but draw the new photographed character. Clean original 1992 arcade cartoon, broad flat light/medium/shadow shapes, deep navy contour, no busy texture. Keep new costume colors and 5.5-head proportion, do not replace the person with a generic athletic model. True transparent background. Generous empty gutters; every figure a separate connected silhouette. No FX, grid, shadows, labels, background or extra limbs/figures. Feet and hands complete and uncropped.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      {
+        "path": "assets/art/characters/01-ivo/model-study-v031.png",
+        "sha256": "f116b68c69c34dbe593ca6fd28a4d7e4e7bbd3ccf36f531dd1998956e146e1cd",
+        "role": "new identity and full-body model"
+      },
+      {
+        "path": "assets/art/characters/01-ivo/atlas-v4.png",
+        "sha256": "da2dd4770430a64f37889576d1704b6d7ac638bc00764f0602aec30ed254b295",
+        "role": "new full-body key poses"
+      },
+      {
+        "path": "assets/art/characters/01-ivo/animation-motion.png",
+        "sha256": "96b59557d668292d62d9a846fff7f4322c36ee2eaddd1c908e68f0b470daf337",
+        "role": "historical pose guide only"
+      },
+      {
+        "path": "assets/references/fighter-01.jpg",
+        "sha256": "0231dbe0a4c3a1b3aa0e4e18609f14d1811a8332a5189ced51d020ae3c332ffa",
+        "role": "photographic identity"
+      }
+    ],
+    "size": [
+      1361,
+      1156
+    ],
+    "selected_final": "assets/art/characters/01-ivo/animation-motion-v4.png"
+  },
+  "actions": {
+    "source": "assets/art/characters/01-ivo/animation-actions-v4.png",
+    "sha256": "b14801c5bf4cdadf098601bd65aa1da65dae2cfdb440cfd541d742dd75144481",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-2a12a3f5-71f2-4265-b7c1-5a90cf3180cf.png",
+    "raw_output_sha256": "b14801c5bf4cdadf098601bd65aa1da65dae2cfdb440cfd541d742dd75144481",
+    "prompt": "Use case: identity-preserve. Draw a NEW whole-body animation atlas for the EXACT specific man in Image1 (new full model design) and Image2 (new sixteen-pose model). Image3 supplies only OLD POSE ORDER/motion guide; IGNORE its old face and body design. Image4 is real photographic identity.\nIvo: middle-aged man in the photograph, LONG RECTANGULAR face, visible mature brow and under-eye creases, gently receding temples, modest flat natural side-parted short dark-brown hair, straight substantial nose, thin closed lips, squared chin. Serious calm experienced adult, not a young anime fighter.\nPreserve the NEW larger expressive realistic-caricature head, adult face, body build and outfit of Images1/2 across all frames. Do not revert to the generic angular anime head from Image3. All heads near-frontal three-quarter looking RIGHT when pose permits; this likeness is vital at 72-pixel native height. Entire body drawn continuously, never pasted heads/legs. Same fixed physical scale in all cells, neutral standing figure about 300 source pixels tall; lower poses truly compress/bend, never resize per cell. Compact any raised-arm pose so fist remains no higher than neutral standing crown by bending knees. Hands/cuff/torso/legs/shoes/head proportions match the new model throughout.\nExactly 16 separate figures, FOUR columns by 4 rows. Row-major poses, one each in EXACT order:\n1. ready guard; 2. jab retract; 3. cross windup; 4. cross retract; 5. kick windup; 6. kick retract; 7. sweep windup; 8. sweep recovery; 9. block impact; 10. hurt recovery; 11. special charge; 12. cast recovery; 13. uppercut anticipation; 14. uppercut recovery; 15. victory transition; 16. knockout fall.\nAnticipation and recovery must be genuinely different complete poses. Turn torso with each attack. Recoil and falling lose balance toward LEFT, no floating.\nCopy Image3's action geometry and compact silhouettes, but draw the new photographed character. Clean original 1992 arcade cartoon, broad flat light/medium/shadow shapes, deep navy contour, no busy texture. Keep new costume colors and 5.5-head proportion, do not replace the person with a generic athletic model. True transparent background. Generous empty gutters; every figure a separate connected silhouette. No FX, grid, shadows, labels, background or extra limbs/figures. Feet and hands complete and uncropped.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      {
+        "path": "assets/art/characters/01-ivo/model-study-v031.png",
+        "sha256": "f116b68c69c34dbe593ca6fd28a4d7e4e7bbd3ccf36f531dd1998956e146e1cd",
+        "role": "new identity and full-body model"
+      },
+      {
+        "path": "assets/art/characters/01-ivo/atlas-v4.png",
+        "sha256": "da2dd4770430a64f37889576d1704b6d7ac638bc00764f0602aec30ed254b295",
+        "role": "new full-body key poses"
+      },
+      {
+        "path": "assets/art/characters/01-ivo/animation-actions.png",
+        "sha256": "a122dcb4e0ce49936fd51caa2fb072669bb88320d4d303e45b0c299cc893b6ba",
+        "role": "historical pose guide only"
+      },
+      {
+        "path": "assets/references/fighter-01.jpg",
+        "sha256": "0231dbe0a4c3a1b3aa0e4e18609f14d1811a8332a5189ced51d020ae3c332ffa",
+        "role": "photographic identity"
+      }
+    ],
+    "size": [
+      1402,
+      1122
+    ],
+    "selected_final": "assets/art/characters/01-ivo/animation-actions-v4.png"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "fighter_id": 1,
+  "scope": "super-v1",
+  "palette_sha256": "c253838df2e0dcbd6e784bd419b68c641cddbe17a6cde73526fc9d91658d41ac",
+  "anchor": {
+    "source": 0,
+    "pose": 0
+  },
+  "height_target": 72,
+  "reference": "assets/art/characters/01-ivo/model-study-v031.png",
+  "reference_sha256": "f116b68c69c34dbe593ca6fd28a4d7e4e7bbd3ccf36f531dd1998956e146e1cd",
+  "revises": "assets/art/characters/01-ivo/super-v1.json",
+  "pose_contract_sha256": "d1a50c2e20583b7d386d0ac14bf4704b2ac593cfb4e99f94d294748a6ba672ac",
+  "generation_edits": [
+    {
+      "source": "assets/art/characters/01-ivo/super-v031.png",
+      "sha256": "e868207c4f347dd8727c9f1f4fc81a1338c629eda348f6acc16e43d134e499fb",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-15ff1b83-5011-4228-9642-8cf3d4a69c7d.png",
+      "raw_output_sha256": "e868207c4f347dd8727c9f1f4fc81a1338c629eda348f6acc16e43d134e499fb",
+      "prompt": "Use case: identity-preserve. Image1 is the EXACT EIGHT-POSE super atlas to redraw. Image2 is the new identity/full-body model. Image3 is the photograph. Keep all eight actions from Image1 in their exact locations, replacing the old generic young face/body with this specific new person. Ivo: middle-aged man in the photograph, LONG RECTANGULAR face, visible mature brow and under-eye creases, gently receding temples, modest flat natural side-parted short dark-brown hair, straight substantial nose, thin closed lips, squared chin. Serious calm experienced adult, not a young anime fighter.\nOnly FOUR columns by TWO rows. Pose1 normal neutral upright standing combat guard, SAME scale/likeness/outfit as Image2. Pose2 CHARGE: BOTH OPEN PALMS pressed VERTICALLY TOGETHER at sternum, elbows tucked. Pose3 STRIKE: TWO OPEN PALMS cast diagonally RIGHT, leading palm high at chest height and trailing palm low at abdomen, hips/shoulders turn over planted long legs. Pose4 RECOVERY: weight shifts back, forward open palm hovering protectively, rear hand returns to sternum. NO PUNCHES. Poses5-8 four unused relaxed standing guard variants. Exactly8 figures; no walking/high kicks/KO extras. Entire costume and face follow NEW model Image2, not generic face in Image1. Larger expressive adult head, calm near-frontal-three-quarter eyes and nose looking right. Fixed body/head/limb proportions in all poses; neutral anchor about300px high, lower poses really bend knees, no per-cell resizing. Clean hand-drawn1992 arcade cartoon with broad flat cel shading and dark navy outlines. Fully connected anatomy, generous transparent gutters, no clipping, text/grid/shadow/FX/projectiles/weapons/extra figures. True transparent background.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        {
+          "path": "assets/art/characters/01-ivo/super-v1.png",
+          "sha256": "033c669f8e95ccf12e8d22764c8747cb417aacce8155c3a495b0be92ffca9185",
+          "role": "historical pose guide only"
+        },
+        {
+          "path": "assets/art/characters/01-ivo/model-study-v031.png",
+          "sha256": "f116b68c69c34dbe593ca6fd28a4d7e4e7bbd3ccf36f531dd1998956e146e1cd",
+          "role": "new identity and full-body model"
+        },
+        {
+          "path": "assets/references/fighter-01.jpg",
+          "sha256": "0231dbe0a4c3a1b3aa0e4e18609f14d1811a8332a5189ced51d020ae3c332ffa",
+          "role": "photographic identity"
+        }
+      ],
+      "size": [
+        1774,
+        887
+      ],
+      "selected_final": "assets/art/characters/01-ivo/super-v031.png"
+    }
+  ],
+  "sources": [
+    {
+      "count": 8,
+      "poses": [
+        "neutral-anchor",
+        "ivo-super-charge",
+        "ivo-super-strike",
+        "ivo-super-recovery",
+        "unused-guard-4",
+        "unused-guard-5",
+        "unused-guard-6",
+        "unused-guard-7"
+      ],
+      "frames": [
+        null,
+        1,
+        2,
+        4,
+        null,
+        null,
+        null,
+        null
+      ],
+      "file": "assets/art/characters/01-ivo/super-v031.png",
+      "sha256": "e868207c4f347dd8727c9f1f4fc81a1338c629eda348f6acc16e43d134e499fb"
+    }
+  ]
+}

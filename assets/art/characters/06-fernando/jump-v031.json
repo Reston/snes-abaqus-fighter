@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "fighter_id": 6,
+  "scope": "jump-v1",
+  "palette_sha256": "8157261a8813a14f129fe05c4cd41d219ec1d8213fda5e9de62173601a680a1c",
+  "anchor": {
+    "source": 0,
+    "pose": 0
+  },
+  "height_target": 67,
+  "reference": "assets/art/characters/06-fernando/model-study-v031.png",
+  "reference_sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+  "revises": "assets/art/characters/06-fernando/jump-likeness-v3.json",
+  "pose_contract_sha256": "79c998fc9334f71c8b6d40116007fbf49786e343cfb8527c586e18e59fb84720",
+  "generation_edits": [
+    {
+      "source": "assets/art/characters/06-fernando/jump-v031.png",
+      "sha256": "c71a1b0e25fd3790a4faefff5d2eaaa9f9370d5f3eb844f832a6f3caf7c5e196",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-c14ac00d-4bb3-4ec9-91d9-09ca11ae285a.png",
+      "raw_output_sha256": "c71a1b0e25fd3790a4faefff5d2eaaa9f9370d5f3eb844f832a6f3caf7c5e196",
+      "prompt": "Use case: identity-preserve. NEW production jump whole-body animation atlas of the EXACT man in Image1 (new character design) and Image2 (new full pose model). Image3 is only the OLD pose/role guide; IGNORE its generic young face. Image4 is the photograph.\nFernando: the man in the photograph has a FULLER ROUNDED OVAL face and soft cheeks, very thick straight low eyebrows, deep-set dark eyes, prominent broad straight nose, small relaxed mouth, short dark softly waved side-swept hair with a low natural crown. Clean-shaven, adult soft substantial chin. Do not give him a narrow angular jaw, high quiff, thin brows, orange hair or an aggressive scowl.\nPreserve the NEW model's larger expressive head, real face proportions, adult age, body build and entire outfit in EVERY cell, including long/rolled sleeves exactly as the new model wears them. Never regress to the old angry anime face or muscular substitute. Face near-frontal three-quarter looking RIGHT where possible, identity recognizable at native SNES 67-73px whole-body height. Connected full drawings, no pasted parts. Same fixed physical scale, limb/head proportions and costume across all poses. Neutral standing height about 300 source pixels, lower crouches/jumps compress naturally. Any raised fist must stay at or BELOW neutral standing crown by bending knees, NEVER enlarge a crouched figure to fill its cell.\nExactly 16 separated figures, FOUR columns by 4 rows, row-major order:\n1. neutral anchor; 2. takeoff compression; 3. upward extension; 4. landing compression; 5. air punch windup; 6. air punch contact; 7. air punch recovery; 8. air kick windup; 9. air kick contact; 10. kick recovery extra; 11. apex guard; 12. descent landing release; 13. neutral extra; 14. air guard extra; 15. landing extra; 16. neutral extra 2.\nKeep neutral and scale-reference poses upright. Active airborne punch/kick must extend toward RIGHT, other guarded/jump anticipation/landing poses remain compact with consistent head size and body scale.\nUse Image3 for exact pose role/placement only and redraw the photographed NEW model from Images1/2. Original 1992 arcade cel cartoon, strong dark navy contours, broad clean flat shading. Generous transparent gutters and SINGLE connected silhouette per cell. No FX/glow/shadow, floor, grid, text, labels, background, extra people or detached limbs. True transparent PNG. Complete hands and feet, no clipping or cropped silhouettes.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        {
+          "path": "assets/art/characters/06-fernando/model-study-v031.png",
+          "sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+          "role": "new identity and full-body model"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/atlas-v5.png",
+          "sha256": "5f8fb9deb783f672afcce0b81a7b1f0533868a474da1f6f60faf62eadacf73c1",
+          "role": "new full-body key poses"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/jump-v2.png",
+          "sha256": "da0c50593f3ffca4b70bc60a0dfaee681dc4b2906b2664248b9afd379b1c7045",
+          "role": "historical pose guide only"
+        },
+        {
+          "path": "assets/references/fighter-06.jpg",
+          "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+          "role": "photographic identity"
+        }
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "selected_final": "assets/art/characters/06-fernando/jump-v031.png"
+    }
+  ],
+  "sources": [
+    {
+      "count": 16,
+      "poses": [
+        "neutral-anchor",
+        "takeoff-compression",
+        "upward-extension",
+        "landing-compression",
+        "air-punch-windup",
+        "air-punch-contact",
+        "air-punch-recovery",
+        "air-kick-windup",
+        "air-kick-contact",
+        "kick-recovery-extra",
+        "apex-guard",
+        "descent-landing-release",
+        "neutral-extra",
+        "air-guard-extra",
+        "landing-extra",
+        "neutral-extra-2"
+      ],
+      "frames": [
+        null,
+        29,
+        30,
+        31,
+        49,
+        50,
+        51,
+        52,
+        53,
+        null,
+        55,
+        54,
+        null,
+        null,
+        null,
+        null
+      ],
+      "file": "assets/art/characters/06-fernando/jump-v031.png",
+      "sha256": "c71a1b0e25fd3790a4faefff5d2eaaa9f9370d5f3eb844f832a6f3caf7c5e196"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "fighter_id": 7,
+  "motion": {
+    "source": "assets/art/characters/07-cristian/animation-motion-v4.png",
+    "sha256": "58ad552cc7815c7b5971e72044cfe0333b5cf1d54b36bf454b30046a3f38e485",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-b5146819-2166-47fa-a40b-db7cdc3433eb.png",
+    "raw_output_sha256": "58ad552cc7815c7b5971e72044cfe0333b5cf1d54b36bf454b30046a3f38e485",
+    "prompt": "Use case: identity-preserve. Draw a NEW whole-body animation atlas for the EXACT specific man in Image1 (new full model design) and Image2 (new sixteen-pose model). Image3 supplies only OLD POSE ORDER/motion guide; IGNORE its old face and body design. Image4 is real photographic identity.\nCristian: the man in the photograph has a BROAD ROUND-SQUARE face with a substantial squared lower jaw, broad cheeks, slightly hooded horizontally shaped eyes, thick near-straight brows, broad short straight nose, small neutral mouth, very short dense nearly black hair brushed slightly upward with a low textured crown, visible natural temples. A solid adult face, not a teenager and not spiky anime hair.\nPreserve the NEW larger expressive realistic-caricature head, adult face, body build and outfit of Images1/2 across all frames. Do not revert to the generic angular anime head from Image3. All heads near-frontal three-quarter looking RIGHT when pose permits; this likeness is vital at 72-pixel native height. Entire body drawn continuously, never pasted heads/legs. Same fixed physical scale in all cells, neutral standing figure about 300 source pixels tall; lower poses truly compress/bend, never resize per cell. Compact any raised-arm pose so fist remains no higher than neutral standing crown by bending knees. Hands/cuff/torso/legs/shoes/head proportions match the new model throughout.\nExactly 16 separate figures, FOUR columns by 4 rows. Row-major poses, one each in EXACT order:\n1. breath neutral; 2. breath inhale; 3. breath exhale; 4. breath return; 5. walk forward contact; 6. walk forward pass; 7. walk forward rear pass; 8. walk forward opposite; 9. walk back contact; 10. walk back pass; 11. walk back lead pass; 12. walk back opposite; 13. crouch halfway; 14. jump anticipation; 15. jump extension; 16. landing compression.\nFour breathing phases have subtle but genuinely distinct chest/head/guard positions. Walking contact/pass phases coordinate pelvis, torso, guard and feet, no sliding duplicated figures.\nCopy Image3's action geometry and compact silhouettes, but draw the new photographed character. Clean original 1992 arcade cartoon, broad flat light/medium/shadow shapes, deep navy contour, no busy texture. Keep new costume colors and 5.5-head proportion, do not replace the person with a generic athletic model. True transparent background. Generous empty gutters; every figure a separate connected silhouette. No FX, grid, shadows, labels, background or extra limbs/figures. Feet and hands complete and uncropped.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      {
+        "path": "assets/art/characters/07-cristian/model-study-v031.png",
+        "sha256": "60890c35457a3548a2e0fb054e9d87452bb0959f099440ef2a15c65bcd95d3eb",
+        "role": "new identity and full-body model"
+      },
+      {
+        "path": "assets/art/characters/07-cristian/atlas-v4.png",
+        "sha256": "6c18c84321b7043b786ac97a9e0659e75990e68f1179b3a1ce6c11817352ef29",
+        "role": "new full-body key poses"
+      },
+      {
+        "path": "assets/art/characters/07-cristian/animation-motion.png",
+        "sha256": "e8bbe78349335778d8ee631af0ffc523670f7a9fb316749967144ca73169217d",
+        "role": "historical pose guide only"
+      },
+      {
+        "path": "assets/references/fighter-07.jpg",
+        "sha256": "5edcd42a4afcdbd2ab1e341a25b7ad65884bbf417b5a47396d2de2cff651d19c",
+        "role": "photographic identity"
+      }
+    ],
+    "size": [
+      1254,
+      1254
+    ],
+    "selected_final": "assets/art/characters/07-cristian/animation-motion-v4.png"
+  },
+  "actions": {
+    "source": "assets/art/characters/07-cristian/animation-actions-v4.png",
+    "sha256": "72cd4459da210077e5fd06568b487c318fa879c7e8bf83240a38ceb3b0c3abe4",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-72a54ad0-4e3e-4788-9b4d-465b866acda7.png",
+    "raw_output_sha256": "72cd4459da210077e5fd06568b487c318fa879c7e8bf83240a38ceb3b0c3abe4",
+    "prompt": "Use case: identity-preserve. Draw a NEW whole-body animation atlas for the EXACT specific man in Image1 (new full model design) and Image2 (new sixteen-pose model). Image3 supplies only OLD POSE ORDER/motion guide; IGNORE its old face and body design. Image4 is real photographic identity.\nCristian: the man in the photograph has a BROAD ROUND-SQUARE face with a substantial squared lower jaw, broad cheeks, slightly hooded horizontally shaped eyes, thick near-straight brows, broad short straight nose, small neutral mouth, very short dense nearly black hair brushed slightly upward with a low textured crown, visible natural temples. A solid adult face, not a teenager and not spiky anime hair.\nPreserve the NEW larger expressive realistic-caricature head, adult face, body build and outfit of Images1/2 across all frames. Do not revert to the generic angular anime head from Image3. All heads near-frontal three-quarter looking RIGHT when pose permits; this likeness is vital at 72-pixel native height. Entire body drawn continuously, never pasted heads/legs. Same fixed physical scale in all cells, neutral standing figure about 300 source pixels tall; lower poses truly compress/bend, never resize per cell. Compact any raised-arm pose so fist remains no higher than neutral standing crown by bending knees. Hands/cuff/torso/legs/shoes/head proportions match the new model throughout.\nExactly 16 separate figures, FOUR columns by 4 rows. Row-major poses, one each in EXACT order:\n1. ready guard; 2. jab retract; 3. cross windup; 4. cross retract; 5. kick windup; 6. kick retract; 7. sweep windup; 8. sweep recovery; 9. block impact; 10. hurt recovery; 11. special charge; 12. cast recovery; 13. uppercut anticipation; 14. uppercut recovery; 15. victory transition; 16. knockout fall.\nAnticipation and recovery must be genuinely different complete poses. Turn torso with each attack. Recoil and falling lose balance toward LEFT, no floating.\nCopy Image3's action geometry and compact silhouettes, but draw the new photographed character. Clean original 1992 arcade cartoon, broad flat light/medium/shadow shapes, deep navy contour, no busy texture. Keep new costume colors and 5.5-head proportion, do not replace the person with a generic athletic model. True transparent background. Generous empty gutters; every figure a separate connected silhouette. No FX, grid, shadows, labels, background or extra limbs/figures. Feet and hands complete and uncropped.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      {
+        "path": "assets/art/characters/07-cristian/model-study-v031.png",
+        "sha256": "60890c35457a3548a2e0fb054e9d87452bb0959f099440ef2a15c65bcd95d3eb",
+        "role": "new identity and full-body model"
+      },
+      {
+        "path": "assets/art/characters/07-cristian/atlas-v4.png",
+        "sha256": "6c18c84321b7043b786ac97a9e0659e75990e68f1179b3a1ce6c11817352ef29",
+        "role": "new full-body key poses"
+      },
+      {
+        "path": "assets/art/characters/07-cristian/animation-actions.png",
+        "sha256": "22569dfc92042e46cc29a6a8146d82d80af28fa39f13c5ae6fd2d5883540a203",
+        "role": "historical pose guide only"
+      },
+      {
+        "path": "assets/references/fighter-07.jpg",
+        "sha256": "5edcd42a4afcdbd2ab1e341a25b7ad65884bbf417b5a47396d2de2cff651d19c",
+        "role": "photographic identity"
+      }
+    ],
+    "size": [
+      1267,
+      1241
+    ],
+    "selected_final": "assets/art/characters/07-cristian/animation-actions-v4.png"
+  }
+}

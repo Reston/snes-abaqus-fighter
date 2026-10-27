@@ -1,0 +1,48 @@
+{
+  "fighter_id": 6,
+  "palette_sha256": "8157261a8813a14f129fe05c4cd41d219ec1d8213fda5e9de62173601a680a1c",
+  "native_frame_range": [
+    20,
+    27
+  ],
+  "native_foot_baseline": 78,
+  "scope": "coordinated-full-body",
+  "source": "assets/art/characters/06-fernando/walking-v031.png",
+  "sha256": "b417c4108e3ba4b4d8ffc85db5ab8191b3f8d78a826cbbad1c21c62839e1482b",
+  "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-37ea670b-fdd9-4dfc-b81b-7946af1a1a6e.png",
+  "raw_output_sha256": "b417c4108e3ba4b4d8ffc85db5ab8191b3f8d78a826cbbad1c21c62839e1482b",
+  "prompt": "Use case: identity-preserve. NEW production walking whole-body animation atlas of the EXACT man in Image1 (new character design) and Image2 (new full pose model). Image3 is only the OLD pose/role guide; IGNORE its generic young face. Image4 is the photograph.\nFernando: the man in the photograph has a FULLER ROUNDED OVAL face and soft cheeks, very thick straight low eyebrows, deep-set dark eyes, prominent broad straight nose, small relaxed mouth, short dark softly waved side-swept hair with a low natural crown. Clean-shaven, adult soft substantial chin. Do not give him a narrow angular jaw, high quiff, thin brows, orange hair or an aggressive scowl.\nPreserve the NEW model's larger expressive head, real face proportions, adult age, body build and entire outfit in EVERY cell, including long/rolled sleeves exactly as the new model wears them. Never regress to the old angry anime face or muscular substitute. Face near-frontal three-quarter looking RIGHT where possible, identity recognizable at native SNES 67-73px whole-body height. Connected full drawings, no pasted parts. Same fixed physical scale, limb/head proportions and costume across all poses. Neutral standing height about 300 source pixels, lower crouches/jumps compress naturally. Any raised fist must stay at or BELOW neutral standing crown by bending knees, NEVER enlarge a crouched figure to fill its cell.\nExactly 8 separated figures, FOUR columns by 2 rows, row-major order:\n1. left contact; 2. left recoil; 3. right pass; 4. right extension; 5. right contact; 6. right recoil; 7. left pass; 8. left extension.\nA coherent eight-phase COMPLETE BODY walk cycle. All face RIGHT, feet alternate left contact/recoil/right pass/extension then opposite half-cycle. Keep guard up, torso/hips/head/arms shift together naturally with footfalls. Every pose distinct. Foot soles share floor baseline. Very small height bob. Do not redraw a fixed torso above unrelated legs.\nUse Image3 for exact pose role/placement only and redraw the photographed NEW model from Images1/2. Original 1992 arcade cel cartoon, strong dark navy contours, broad clean flat shading. Generous transparent gutters and SINGLE connected silhouette per cell. No FX/glow/shadow, floor, grid, text, labels, background, extra people or detached limbs. True transparent PNG. Complete hands and feet, no clipping or cropped silhouettes.",
+  "mode": "built-in image_gen",
+  "transparent_background": true,
+  "references": [
+    {
+      "path": "assets/art/characters/06-fernando/model-study-v031.png",
+      "sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+      "role": "new identity and full-body model"
+    },
+    {
+      "path": "assets/art/characters/06-fernando/atlas-v5.png",
+      "sha256": "5f8fb9deb783f672afcce0b81a7b1f0533868a474da1f6f60faf62eadacf73c1",
+      "role": "new full-body key poses"
+    },
+    {
+      "path": "assets/art/characters/06-fernando/walking-v3.png",
+      "sha256": "a36aaf7ee82df78762c21b7443074d2f7db596f3263618b79e6be9d22b461a85",
+      "role": "historical pose guide only"
+    },
+    {
+      "path": "assets/references/fighter-06.jpg",
+      "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+      "role": "photographic identity"
+    }
+  ],
+  "size": [
+    1774,
+    887
+  ],
+  "selected_final": "assets/art/characters/06-fernando/walking-v031.png",
+  "reference": "assets/art/characters/06-fernando/model-study-v031.png",
+  "reference_sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+  "supersedes": "assets/art/characters/06-fernando/walking-v3.json",
+  "pose_contract_sha256": "28f7729149c2780d9f815cd018a11edfa3a9bf6c587e21d7e60451d35c32b341"
+}

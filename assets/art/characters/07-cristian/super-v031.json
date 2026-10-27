@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "fighter_id": 7,
+  "scope": "super-v1",
+  "palette_sha256": "5488f08bd6b0b18a4d65a681f3a88257f93ac2e55c9fafa5834af4f52b55b069",
+  "anchor": {
+    "source": 0,
+    "pose": 0
+  },
+  "height_target": 73,
+  "reference": "assets/art/characters/07-cristian/model-study-v031.png",
+  "reference_sha256": "60890c35457a3548a2e0fb054e9d87452bb0959f099440ef2a15c65bcd95d3eb",
+  "revises": "assets/art/characters/07-cristian/super-v1.json",
+  "pose_contract_sha256": "e8c85be6d7973009eda09d309c27b80ea6b05e75d3d6e82f293914809c777bbd",
+  "generation_edits": [
+    {
+      "source": "assets/art/characters/07-cristian/super-v031.png",
+      "sha256": "06d9a8a90c15683c9d3a1676b2731b0a5493d6b381bc69f0034c97cd6feb6418",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-acf26d4d-de96-4454-858f-799a21f102f6.png",
+      "raw_output_sha256": "06d9a8a90c15683c9d3a1676b2731b0a5493d6b381bc69f0034c97cd6feb6418",
+      "prompt": "Use case: identity-preserve. Image1 is the EXACT EIGHT-POSE super atlas to redraw. Image2 is the new identity/full-body model. Image3 is the photograph. Keep all eight actions from Image1 in their exact locations, replacing the old generic young face/body with this specific new person. Cristian: the man in the photograph has a BROAD ROUND-SQUARE face with a substantial squared lower jaw, broad cheeks, slightly hooded horizontally shaped eyes, thick near-straight brows, broad short straight nose, small neutral mouth, very short dense nearly black hair brushed slightly upward with a low textured crown, visible natural temples. A solid adult face, not a teenager and not spiky anime hair.\nOnly FOUR columns by TWO rows. Pose1 normal neutral upright standing combat guard, SAME scale/likeness/outfit as Image2. Pose2 CHARGE: closed DEFENSIVE guard, forearms CROSSED at chest, knees slightly bent. Pose3 STRIKE: COMPACT RISING counter, ONE fist VERTICAL directly beside upper face, other forearm covers ribs, supporting knees bent. Raised fist NEVER above standing crown by >4 percent; neutral73px must fit77px. Pose4 RECOVERY: both forearms collect over chest, knees bent. NO HORIZONTAL PUNCH. Poses5-8 four unused relaxed standing guard variants. Exactly8 figures; no walking/high kicks/KO extras. Entire costume and face follow NEW model Image2, not generic face in Image1. Larger expressive adult head, calm near-frontal-three-quarter eyes and nose looking right. Fixed body/head/limb proportions in all poses; neutral anchor about300px high, lower poses really bend knees, no per-cell resizing. Clean hand-drawn1992 arcade cartoon with broad flat cel shading and dark navy outlines. Fully connected anatomy, generous transparent gutters, no clipping, text/grid/shadow/FX/projectiles/weapons/extra figures. True transparent background.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        {
+          "path": "assets/art/characters/07-cristian/super-v1.png",
+          "sha256": "f71ec91040ca7498caef65f8b1398930dcb498551ea0eadd3c0fb1a539d72866",
+          "role": "historical pose guide only"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/model-study-v031.png",
+          "sha256": "60890c35457a3548a2e0fb054e9d87452bb0959f099440ef2a15c65bcd95d3eb",
+          "role": "new identity and full-body model"
+        },
+        {
+          "path": "assets/references/fighter-07.jpg",
+          "sha256": "5edcd42a4afcdbd2ab1e341a25b7ad65884bbf417b5a47396d2de2cff651d19c",
+          "role": "photographic identity"
+        }
+      ],
+      "size": [
+        1774,
+        887
+      ],
+      "selected_final": "assets/art/characters/07-cristian/super-v031.png"
+    }
+  ],
+  "sources": [
+    {
+      "count": 8,
+      "poses": [
+        "neutral-anchor",
+        "cristian-super-charge",
+        "cristian-super-strike",
+        "cristian-super-recovery",
+        "unused-guard-4",
+        "unused-guard-5",
+        "unused-guard-6",
+        "unused-guard-7"
+      ],
+      "frames": [
+        null,
+        1,
+        2,
+        4,
+        null,
+        null,
+        null,
+        null
+      ],
+      "file": "assets/art/characters/07-cristian/super-v031.png",
+      "sha256": "06d9a8a90c15683c9d3a1676b2731b0a5493d6b381bc69f0034c97cd6feb6418"
+    }
+  ]
+}

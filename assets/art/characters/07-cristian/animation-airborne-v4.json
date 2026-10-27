@@ -1,0 +1,46 @@
+{
+  "schema": "abaqus-combat-animation-source/v2",
+  "fighter": "07-cristian",
+  "path": "assets/art/characters/07-cristian/animation-airborne-v4.png",
+  "prompt": "Use case: identity-preserve. NEW production airborne whole-body animation atlas of the EXACT man in Image1 (new character design) and Image2 (new full pose model). Image3 is only the OLD pose/role guide; IGNORE its generic young face. Image4 is the photograph.\nCristian: the man in the photograph has a BROAD ROUND-SQUARE face with a substantial squared lower jaw, broad cheeks, slightly hooded horizontally shaped eyes, thick near-straight brows, broad short straight nose, small neutral mouth, very short dense nearly black hair brushed slightly upward with a low textured crown, visible natural temples. A solid adult face, not a teenager and not spiky anime hair.\nPreserve the NEW model's larger expressive head, real face proportions, adult age, body build and entire outfit in EVERY cell, including long/rolled sleeves exactly as the new model wears them. Never regress to the old angry anime face or muscular substitute. Face near-frontal three-quarter looking RIGHT where possible, identity recognizable at native SNES 67-73px whole-body height. Connected full drawings, no pasted parts. Same fixed physical scale, limb/head proportions and costume across all poses. Neutral standing height about 300 source pixels, lower crouches/jumps compress naturally. Any raised fist must stay at or BELOW neutral standing crown by bending knees, NEVER enlarge a crouched figure to fill its cell.\nExactly 16 separated figures, FOUR columns by 4 rows, row-major order:\n1. upright neutral; 2. air punch anticipation; 3. air punch active; 4. air punch recovery; 5. air kick anticipation; 6. air kick active; 7. air kick recovery; 8. compact apex guard; 9. thrower grip; 10. thrower release; 11. victim lift; 12. victim impact; 13. knockdown launch; 14. knockdown fall; 15. grounded getup; 16. wakeup guard.\nPose1 upright neutral guard is the scale reference. Air punches/kicks have anticipation, active EXTENDED hand/foot and distinct recovery. Thrower and victim roles separate, victim lift and horizontal impact/falls remain compact; feet and heads uncropped.\nUse Image3 for exact pose role/placement only and redraw the photographed NEW model from Images1/2. Original 1992 arcade cel cartoon, strong dark navy contours, broad clean flat shading. Generous transparent gutters and SINGLE connected silhouette per cell. No FX/glow/shadow, floor, grid, text, labels, background, extra people or detached limbs. True transparent PNG. Complete hands and feet, no clipping or cropped silhouettes.",
+  "range": [
+    48,
+    63
+  ],
+  "generation": {
+    "source": "assets/art/characters/07-cristian/animation-airborne-v4.png",
+    "sha256": "35666ec4e84b6175214b2625817173cfbe334c256b9bdc36de81a3e3be4f29e4",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-5060da20-ee95-401f-ba8d-8d064067d524.png",
+    "raw_output_sha256": "35666ec4e84b6175214b2625817173cfbe334c256b9bdc36de81a3e3be4f29e4",
+    "prompt": "Use case: identity-preserve. NEW production airborne whole-body animation atlas of the EXACT man in Image1 (new character design) and Image2 (new full pose model). Image3 is only the OLD pose/role guide; IGNORE its generic young face. Image4 is the photograph.\nCristian: the man in the photograph has a BROAD ROUND-SQUARE face with a substantial squared lower jaw, broad cheeks, slightly hooded horizontally shaped eyes, thick near-straight brows, broad short straight nose, small neutral mouth, very short dense nearly black hair brushed slightly upward with a low textured crown, visible natural temples. A solid adult face, not a teenager and not spiky anime hair.\nPreserve the NEW model's larger expressive head, real face proportions, adult age, body build and entire outfit in EVERY cell, including long/rolled sleeves exactly as the new model wears them. Never regress to the old angry anime face or muscular substitute. Face near-frontal three-quarter looking RIGHT where possible, identity recognizable at native SNES 67-73px whole-body height. Connected full drawings, no pasted parts. Same fixed physical scale, limb/head proportions and costume across all poses. Neutral standing height about 300 source pixels, lower crouches/jumps compress naturally. Any raised fist must stay at or BELOW neutral standing crown by bending knees, NEVER enlarge a crouched figure to fill its cell.\nExactly 16 separated figures, FOUR columns by 4 rows, row-major order:\n1. upright neutral; 2. air punch anticipation; 3. air punch active; 4. air punch recovery; 5. air kick anticipation; 6. air kick active; 7. air kick recovery; 8. compact apex guard; 9. thrower grip; 10. thrower release; 11. victim lift; 12. victim impact; 13. knockdown launch; 14. knockdown fall; 15. grounded getup; 16. wakeup guard.\nPose1 upright neutral guard is the scale reference. Air punches/kicks have anticipation, active EXTENDED hand/foot and distinct recovery. Thrower and victim roles separate, victim lift and horizontal impact/falls remain compact; feet and heads uncropped.\nUse Image3 for exact pose role/placement only and redraw the photographed NEW model from Images1/2. Original 1992 arcade cel cartoon, strong dark navy contours, broad clean flat shading. Generous transparent gutters and SINGLE connected silhouette per cell. No FX/glow/shadow, floor, grid, text, labels, background, extra people or detached limbs. True transparent PNG. Complete hands and feet, no clipping or cropped silhouettes.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      {
+        "path": "assets/art/characters/07-cristian/model-study-v031.png",
+        "sha256": "60890c35457a3548a2e0fb054e9d87452bb0959f099440ef2a15c65bcd95d3eb",
+        "role": "new identity and full-body model"
+      },
+      {
+        "path": "assets/art/characters/07-cristian/atlas-v4.png",
+        "sha256": "6c18c84321b7043b786ac97a9e0659e75990e68f1179b3a1ce6c11817352ef29",
+        "role": "new full-body key poses"
+      },
+      {
+        "path": "assets/art/characters/07-cristian/animation-airborne.png",
+        "sha256": "daa47d481771a97379bf6c480197ee57808955bbc6f6ef24c58f5c21d98904a6",
+        "role": "historical pose guide only"
+      },
+      {
+        "path": "assets/references/fighter-07.jpg",
+        "sha256": "5edcd42a4afcdbd2ab1e341a25b7ad65884bbf417b5a47396d2de2cff651d19c",
+        "role": "photographic identity"
+      }
+    ],
+    "size": [
+      1288,
+      1221
+    ],
+    "selected_final": "assets/art/characters/07-cristian/animation-airborne-v4.png"
+  }
+}

@@ -2,7 +2,7 @@
   "schema": 1,
   "fighter_id": 6,
   "slug": "fernando",
-  "revision": "v3-photo-likeness",
+  "revision": "photo-model-v031",
   "baseline": {
     "file": "assets/art/roster-baseline-v0.8.json",
     "sha256": "386a430db966c7f5c843811d78d9e06043838d8893f166bdc58637ddde773bd5"
@@ -35,33 +35,33 @@
   },
   "new_sources": {
     "legacy": {
-      "file": "assets/art/characters/06-fernando/atlas-v4.png",
-      "sha256": "afae491aaf04ea8da55a479b8af46f02c9f1cff30794914205d736d00c5b1f48"
+      "file": "assets/art/characters/06-fernando/atlas-v5.png",
+      "sha256": "5f8fb9deb783f672afcce0b81a7b1f0533868a474da1f6f60faf62eadacf73c1"
     },
     "motion": {
-      "file": "assets/art/characters/06-fernando/animation-motion-v4.png",
-      "sha256": "83d083fc9905047454b852a3c0acf3348ccd3fabff622fb9f13e727d79d85c33"
+      "file": "assets/art/characters/06-fernando/animation-motion-v5.png",
+      "sha256": "971607b572bf954bdbbf9ddc6d941e7f53c2e57a2d12362e22ea2cb45bea9a21"
     },
     "actions": {
-      "file": "assets/art/characters/06-fernando/animation-actions-v4.png",
-      "sha256": "5ee1cbc0153223d6f7411b2f5ffaf7a57e536849814000cf84017d0d954c3d37"
+      "file": "assets/art/characters/06-fernando/animation-actions-v5.png",
+      "sha256": "a567d1ee1235ec3076624cdae71a4471b3687e8d6ebc8128b50e6707637f12cc"
     },
     "airborne": {
-      "file": "assets/art/characters/06-fernando/animation-airborne-v4.png",
-      "sha256": "b74cf121251da10d69a83c28ab5209bcdaca6faed9aa549def0578259c911a3d"
+      "file": "assets/art/characters/06-fernando/animation-airborne-v5.png",
+      "sha256": "ed4f4e39fe13c0b18e9257412403eddd041e87d61b6abd1857cae6f2d5b30e58"
     },
     "airborne_metadata": {
-      "file": "assets/art/characters/06-fernando/animation-airborne-v4.json",
-      "sha256": "2a0c15ed8d037899648bb99c3770cce6cc8feb3b0d97bf9a2703312fb9a86b33"
+      "file": "assets/art/characters/06-fernando/animation-airborne-v5.json",
+      "sha256": "339116447e486520f760a92a95d9932dc24f2a0551a18951799365fd3bc2d25f"
     }
   },
   "normalization_policy": "neutral-height",
   "normalization_reference_height": 311,
   "source_normalization": {
-    "legacy": 0.9539877300613497,
-    "motion": 1.019672131147541,
-    "actions": 1.0163398692810457,
-    "airborne": 1.013029315960912
+    "legacy": 1.013029315960912,
+    "motion": 0.9810725552050473,
+    "actions": 0.9628482972136223,
+    "airborne": 0.8735955056179775
   },
   "old_native": {
     "frame_hashes": [
@@ -138,72 +138,72 @@
   },
   "expected_native": {
     "frame_hashes": [
-      "dc8c1af05ebccd6ec3622f82df674a18cd5f7d43c90cfa142f8eb5dbae89d197",
-      "833e8feb0308f8b007aaff45a4e94aef8d5d2656ed519963a0168bfb98dcc218",
-      "f285fe2568360d7464269534f8b8e1120d990642c13bc9da93c49d48390ef7cd",
-      "864fda4b89ab8c13bdb3982bb617c28d2dbe44ab7238765a27ac1097a77078f1",
-      "fe12f8f2f497ba9376a16bb4999992a49cdd8b03e6d85e668169f85c8da85eb7",
-      "b597aa2ce77b34f67c4d2b3cd3ea02f7e272c7ad0ba0dc4ef7abad9690ff806d",
-      "9469a8a401af927f4c8cfd5e400629eb18c345cb8a799d77775532b36c2e50a4",
-      "ceeafa81a7e231f2d3e8439b26ff4fa14d3afd9da9bb1fd510b5794f7d29ea8a",
-      "b53f6ea4fa142f37a00f6b7b653c3ed8c700eebe25bbf63f1948230e7b972b02",
-      "5c3ac1f6daad1ecefa29b49c120b3aa8f6da3035ed237ae38e6bae8f20569e6f",
-      "b322ce3f03752f24ae8d5e57dd407e3125dcb5dc97743e0fe8af0c30ae01cd10",
-      "da5f6ec4fffa169225c78e059f5a52058e6fb041cb322e8587ea265c0dad18b2",
-      "0dbc9340e6955c4d242ffe048c703a7881e6133de6fa0a3915e520a321690ae7",
-      "aa4c3c7b5b2d74a1cfafce3872194ffa460a9441e621cdead2d20ed1c6a32341",
-      "95c9fdc4d00f9ee53e92695e1ea5300861fba1cf8c42009a77dc9786727ee519",
-      "d030fe7133a12f4ed61e635ba83908de413b5a7c5b2a7c168be9e6b03241cd20",
-      "42d5f551dc6ecd691fac5f2c527172e02dea04ae621d162f6dd804c84fef62a8",
-      "593c108ab46b38c87398ae729be961906f763b32d12e398070f54ef9a522cd3e",
-      "f6f5f49bce7e9afebf24a8e5102f0bd4f655e452bb6a9492e8e720a3e4d9d5aa",
-      "94af339e0c9ec9f8ca3beb76502ebdc0ca270b8a0efb1b5e6cfe9b0add203887",
-      "e1479d3778d762ab151cd7400a4eb0cc1510cf276222ad5f73f7f6703d7c5566",
-      "11c569732380cd03595e5c88c001438cddd144f579d664f667f0dd6ae0f39cd2",
-      "52cdb0bdb9040cea25c3e78139a73f9c8db531059b0b223bba35df7eb01c934a",
-      "f3487b28dd68dc8ff6b919e66878722e736757607db3fbb19c1d453a763677ef",
-      "18ef3cb2c87d26acad193270c4f3a922a33ad74e298f5f157f3f63aeac2ad070",
-      "1ed8b9a6eca8d9a526c89950bd9609827c7e747e2f1382952ead5be917070d19",
-      "53fe2284ac2c6cd0ee9d060d7beba4c50beca5b0d8bce695cac330b5cbe7b681",
-      "77effeed0530d182a386223b5315bf94ec3744f480a036f3242ee8c50d217af3",
-      "05ce86d49ec48266342382ed11ce69fd424fdc29b056ccbeada9c0b2ab85bd83",
-      "f068b877b96c8decc761e28e307eb48cc92a287bde2cb681db297109804cb612",
-      "b3d02635c741104e18cab6cd44c65aefbb695468aac12f63c8c44a9ad4929348",
-      "06bf2a0b5d59bca023fb3a3ab5f3a0f13ec650f0424af6378bbef58632e5c4ef",
-      "3018490e6d520a9edb137a2e9e94a45ca071c94b45e76048ea957e585ef93c94",
-      "2bb0ba387e91afb6ac005155650b101ec136339b96b92c8c86910385dc7c2afa",
-      "5a2908c9fe729fe1f0390f145beed9758bd6c120bad823a7e4639043ee7e048a",
-      "8d815a8d6c8bd103840e53a1da779dff04d0946137a39c7214c7d03168b2e948",
-      "c65f0b34bbc7baa4590a6d1df017e7b17eb2087d2f143a1351024fbb9901c524",
-      "644d95785833d311f8ca594c4a7ded95c17fe4d93e75171949858ed9ea1c3503",
-      "aa8fe9d79f1377b0fc6ccb9a4d6abc9be0565c3015c325b9185cbb17f926cd70",
-      "85d92cec25d0b20ec10c5f4fa8b53000404e88c2a16440bb7f2fc6817f2c153a",
-      "00014224c4d6096be7d08f24dfb446cb107da60a008278ef3a75a1693e7dd3d3",
-      "1cde000feb3237b8a97dad4385524cb6616cd619a44056f9dbb1e4c785c7b1fc",
-      "cd1689ef0e44c1176a75f8f3eab95d145d29f2f22df01be05ac8354cd7ab8431",
-      "8327089e809bfdb23d97f7796a9a20bd77ebee4494845e1aa6f3a2214f044797",
-      "e3973b45dd2105e003c622a8d237981c9b5f1b4e350e531d5dd31fdda98f1798",
-      "ff7a95a631ed154173b2454f66f44a54a67edb62b81ee8426124c9f3b8465b68",
-      "58f7a44b924e57ccdd89e6a16d55f78b3996da33fd700e186bed365c19a3f125",
-      "82c6829a0b15d197efe6c253b0ae0407afd5a11f1ff0c691b2f3bd4bb9c34017",
-      "e03a7a3bf3e7ed2700936f3bc204b416c386e232d466c8dfafc824aed90a9147",
-      "bedac7e13de3b0cc2116506d71c525567f18826d8b4e0296a0712f31b1d27545",
-      "026d54390754be7272818c32bf748e5bda56092f9bd725ab8d6984955526d018",
-      "09f924b6d5e5cf9c702d8b558f75d26739e6040de583d0b228a16275b7defee0",
-      "7ff0e2622fd9b969c7229278f03bb8ebfce21ea774a473ede2667b266aedf3c8",
-      "9d0989092df3cafde0747d3c629f0d53d10cc4b9f8956841b2953cb074d2e75f",
-      "35a4682a796f42e6f961f113d2f1af80a163a062372fcbcb85a5e5f647a44ccf",
-      "0d180873a93f8081225be3e573b3da5c68a85feea1eb09726b4265a9ca8f820e",
-      "f4ca4ace893f32befc1fa0804414f0d0b9798b61b34fa7b31916456779dac620",
-      "86909f82aeac37ff08ed934f87e304d4a72818377cb570fe8396456a881dfe31",
-      "fe0a85f337c30ee18c84cbf457558015a8df3d09540658aceb03ee05d1873e19",
-      "889c034a4e1cec293a63bb0ec5cdec1d718d2793dfc9c797de8ea0c5e6e32688",
-      "4639bc473c6751b57077825c4b5ac868a86f29f71f79be0d92e600fe742ecb4c",
-      "44c4b974947af08068d7174227ea7f16ffb8153aa05a77378de19abd2cace6af",
-      "1de947866581ba7459d3f9ea769d102b588408de82db8875e818d9e203f2f691",
-      "494196b0b8f0e16d783e463961f16918fa64832c9af9f26c9806b7778a0e95a3"
+      "d643fb77159c784880c9aadddbd57321b362a6fd9e8fc0769007467de55365ed",
+      "9cdbfd3ca827c62ec160b962c61db683941676a7af62a12b2d68ed9f312a32f3",
+      "8e9d42b4c2118bf41b19fba28d0135db71f4def3b18d4368ae2317c97267654a",
+      "774a10e33f0f1fc1b44b30d7751bce5efbb561b00dde1554176f1c908780cbe5",
+      "e4d7d49f314b9b8d28acfc938956db14afd33f50584b4bb3b01110befc5d94c2",
+      "482eb7c8d28e468cbe18a51e3fdc32b98628dab7e145476735f7aef24c55870a",
+      "4bcb77eb0e6e9c35d1145025722ee7cd09742990392173e65b4f4cfa63a5cb65",
+      "d0c88f1f3114c1434af03d4426394438f45a14801cb48f4bb57273da4a391740",
+      "f2e1fd5ab367ec87a5f2b0be9e108701dc13ca65da975d9b014364d7afcddc24",
+      "44c80860e369472d32b476a8175f05bd4c23e6d7479e6bde61f49a9d1505798d",
+      "568cc3e6d7be55d23e47770fea71a436bcaafa449c8e60ba41c6dee546056f69",
+      "67ded212cd0b98a9a304cc353ba8f546f0462182d7ae624bebc93c671fcab586",
+      "c4eb3db3db934b5740b28c5232f5286dda90feaf53cb7e31ea130cb847621ff7",
+      "3531454cfd68c38bb811f54c65a35dbc6fc0f8ff9f93fd1620d7deab7c47fdc7",
+      "7bb5edef1e4b66a8fd5e160b0105ac05fe14afef7b207fee92a03f69a5202a08",
+      "f76cfb970669951d947f6b18cad2c9b2de935d209bb21d6b963115204d42498c",
+      "b867a084359bac3ef48c0c2b42a4df62f69f1726b669c1e121cc09d239f102da",
+      "4eb9ef9d2901dfb399657797967b56cb69c01c88605beb5b0d1d142dda99a4f3",
+      "7b18f15b84b581509f2870c6c5c4b9331c0e9a2ac5300db3711f63585b85a307",
+      "d2bd41133beb05561a5bbb92c61e4396eec5825eac34870b75c05f1f936f4733",
+      "805cad4378475099d19234c01ff0e82f16c80c5393a60bf76ed803059883e1f2",
+      "8a323de72d2d504d61a4dc5ff8ca411fa72cda8b228c6e4c32512c17eaa4bf82",
+      "32753416dbe41d39b0414d0c8d3bf19643244484039b158274be0edf6a8757d8",
+      "90f05f70b0dba065742732a9c72277e26974c339385d26fb22ce9360b23bf7cd",
+      "8e5c51c871a0cd11774cf71387671de58103e3ac066cdb3891338b20a9e7d6c3",
+      "5c2c88d196e4fbd6a5176cca7247de2c5d9f9d5e91b09dbc520d84bbd1734456",
+      "262a4039061c4093b1a6d6458ce80151dd56e5facdf5c4c9610e6a82974575d3",
+      "54b3b052b39b846ede4c25b9b18c78365ee03772e8faf8b75dd2889a84411ddf",
+      "cc630f7fe0b2142f809ef17f6730c5756faf189647adb2fac9f6f9398ceabe5f",
+      "4b1ca6e3e164e850e38ffbfe00a5e85ab0d0ba8ec5901b0f71dd1424e81d44ea",
+      "a8f78edd0bf28a46e09aa437dcbf31715047ad6c089062ea2c281b0df59e4fb3",
+      "fbc4700ca604bb4c4c1e897e1153af1187634d6c4c09689ccfe49813fcb4162d",
+      "bdc77c5fc23dfc91c7d98749c7664ba1ee312067cdf5b46ad029fd4d7ea25c90",
+      "b3d04e20801a4cd143c8ad48743fc3aab468d11a7550a5ba9bc1e43255521427",
+      "72ca86aaa1b26bb2fe851ebf23765d96b92d3ba2fc7629a035abf906c46bc80d",
+      "c1aa84becc8ff23bc5c79725c472472c76edb3192b1973253017ec721641ae91",
+      "d6818329ab26a20791e44e73e9b0ce97944d44a13746d956090c653f3257f0bf",
+      "e62b7cd294db80b4377bf0aad2870e591d9d4a71e27c2ac89e038a280f4da858",
+      "6ff5f937e23881ac4942e82df79083a432c1e1e311ee7ed761ad7d69874231af",
+      "94af3c205094ce4de008c4f59ca1dcf94e8c05a577a4d12c9fd073506dfe4d97",
+      "6996f6a419c48c42ca83f10329bc2505d80f79cbbdf4002774f34677e3fddc3a",
+      "fffe2c62ecccc2ce8abf591ddb36c08cb0fd332b1f5d732235737522bedc804d",
+      "6b89e1489028d2860479de548c7d7ae22ec6a510f1cb841f354defef3f66ed7e",
+      "c4313d698e164964e0ec4fbf85cc36db502f0398ed0d398669d6d765e20229eb",
+      "389ea46388237102c8943ff15de68121abea90f045b153f20cec01d3f4ff3a19",
+      "d4f6668860c120d23203f105aa921faab6e3b38bde3c423c967c356847afefea",
+      "066f5fce34a80186a821b007dfe919c4dbaa8369d076591094408035308cad2f",
+      "4b89c15296986f9810f46a39aaffb0789e5e7a7d19ef011d3c084c9ca0e98bda",
+      "9f1b519587287f3b44c43d444cea062314ff8e2ed1fb7f21899af99ac566d757",
+      "81c1c5c714029b5617d66a2361f46f05e1aeaac0b7140304f5101bdbea16e3bb",
+      "218677df3bd667911611d64f8ae08109fb59da4e391f28e9fbf19382c3d949fc",
+      "e27fdc18aece7a46487625e3efdaeaaf8f26b5ca581477e818de3284495e27e6",
+      "a44352faaf0b521d986414a50cd585e909394fa4609db4da2977b1576d5ae1d2",
+      "e2ec30cadbe8f63ee965f4c51d21082c80e386d2ec45a78b46a213543d93a51a",
+      "ba58eebfb79d20ed8a79c4f9c3a0512e30751dc96334364a6d4ba596d8e4c44c",
+      "02ead6c2366621bbf60cc582f8f59189032257f7fc69fd1367408e900da31ceb",
+      "2c8b29e007051e157a46cee4524943c52929b6827e61bb3f0bd1a26f41e0e5d1",
+      "88d0e89e9d7412cc7ef24b7d808551725c59780f3a260b1ccdc7e253957a89e7",
+      "e6ac417e168990e6386d1c95f8b558eaa89284bd9597eed38f499745b016709e",
+      "ddf38e0acdcb18ec93e9f33dfd25dd477bb804e3a359d91842fdc42542bdbce5",
+      "395255decfbca75b637edfc4a1938ee83a4b6b3c68c8537917ddc9103fe0ae48",
+      "53c34d52beda5b0a690e172551ed8e963b3fbeb773a59c47bf2605226f892b4a",
+      "623c45fef60a515b13c013915efce5eb2656b82077dd721d5363b061640422be",
+      "10796581cdab0aff3fd859baa8e723b8a8499d05c4804dd32a4f15240521bda6"
     ],
-    "frame_hashes_sha256": "cd65ff31f358642c3fb2902951010549e06e0f554209399c69797f83ff3c7d71",
+    "frame_hashes_sha256": "479a9d56db9e553c5f6417338ac02c2f8a9962189a7616fd0270161ce5db34f1",
     "palette_hex": "00000000400c42086414c620ea20292d833d9425605e9f2614635f535f535f53",
     "palette_sha256": "8157261a8813a14f129fe05c4cd41d219ec1d8213fda5e9de62173601a680a1c",
     "uniform_scale": 0.21543408360128619,
@@ -211,22 +211,22 @@
   },
   "provenance_files": [
     {
-      "file": "assets/art/characters/06-fernando/likeness-v4.json",
-      "sha256": "275d9be997ca07cb8b1d48b47575448f872d3584c7490ec07b5bbc76ebc4598f"
+      "file": "assets/art/characters/06-fernando/likeness-v5.json",
+      "sha256": "46ecb002ec852dca50eaf7d231e82a4a19b2a0368ac3589b23cefb5f2caf4086"
     },
     {
-      "file": "assets/art/characters/06-fernando/animation-v4.json",
-      "sha256": "c3e89e6304fde44fa4f3b37b46c34c9f2e5e2990ba1a84232471896bc4ae8b98"
+      "file": "assets/art/characters/06-fernando/animation-v5.json",
+      "sha256": "8ccbd8eb47ff61378c8a2f351357aaecd52cbe79284ae8024b8cd1b0f51e06ca"
     },
     {
-      "file": "assets/art/characters/06-fernando/animation-airborne-v4.json",
-      "sha256": "2a0c15ed8d037899648bb99c3770cce6cc8feb3b0d97bf9a2703312fb9a86b33"
+      "file": "assets/art/characters/06-fernando/animation-airborne-v5.json",
+      "sha256": "339116447e486520f760a92a95d9932dc24f2a0551a18951799365fd3bc2d25f"
     }
   ],
   "review": {
-    "request": "User says Fernando still does not resemble Fernando; improve likeness.",
+    "request": "Improve likeness of Ivo, Fernando and Cristian from their photographed identities.",
     "mode": "agent source and native visual review",
     "human_approval": null,
-    "scope": "four base identity atlases followed by disjoint walking/attack/jump/super likeness revisions"
+    "scope": "complete photo-based body/face model across all 64 poses; original palette, physical height and move roles"
   }
 }

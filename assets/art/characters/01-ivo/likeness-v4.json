@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "fighter_id": 1,
+  "revision": "photo-model-v031",
+  "human_approval": null,
+  "legacy": {
+    "source": "assets/art/characters/01-ivo/atlas-v4.png",
+    "sha256": "da2dd4770430a64f37889576d1704b6d7ac638bc00764f0602aec30ed254b295",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-9d71c3af-f4de-41b9-a12d-bf14953f4b0c.png",
+    "raw_output_sha256": "da2dd4770430a64f37889576d1704b6d7ac638bc00764f0602aec30ed254b295",
+    "prompt": "Use case: identity-preserve. Production full-body fighting sprite atlas of the SPECIFIC photographed man, NOT a generic fighter. Image1 is the new model sheet: reproduce that SAME man's face and costume. Image2 is his real photograph: likeness takes priority over conventional anime beauty. Ivo: middle-aged man in the photograph, LONG RECTANGULAR face, visible mature brow and under-eye creases, gently receding temples, modest flat natural side-parted short dark-brown hair, straight substantial nose, thin closed lips, squared chin. Serious calm experienced adult, not a young anime fighter.\nCreate exactly SIXTEEN independent full-body figures on a square transparent 4x4 atlas, row-major action order:\nROW1 idle guard; forward walking step; retreat walking step; deep crouch guard.\nROW2 airborne tucked-knee jump; full straight jab right; full rear-hand cross right; extended high side kick right.\nROW3 low sweeping kick right; raised standing block; struck torso recoil backwards left; upright victory both fists lifted.\nROW4 two-palm forward energy cast NO FX; compact uppercut with raised bent arm; horizontal knocked-out figure head LEFT feet RIGHT; compact forward shoulder rush RIGHT.\nUse Image1's FULL BODY design faithfully in each pose. Clothing emerald green jacket over charcoal gray open-neck shirt, white turned cuffs, dark trousers and shoes. One fixed physical scale and continuous whole-body anatomy, same face in every angle. Neutral standing figure approximately 280-310 source pixels in its cell. Lower crouching figures genuinely lower, don't scale each pose to fill the cell. Head should occupy about ONE FIFTH to ONE SIXTH of standing height with broad nose/eyes/jaw shapes readable when downsampled. Mature faithful human caricature, near-frontal three-quarter face looking right, low natural hair. Keep photographer's individual identity; no sharp stock heroic profile, no angry slanted anime eyes, no idealized chiseled jaw. Clean 1992 arcade cartoon with thick dark navy ink and only 2-3 flat shading values per material. Generous space between all sixteen silhouettes. No grid/labels/text/background/shadows/FX/weapons/detached heads/extra figures. Complete hands and feet and no cropping. Genuinely transparent background.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      {
+        "path": "assets/art/characters/01-ivo/model-study-v031.png",
+        "sha256": "f116b68c69c34dbe593ca6fd28a4d7e4e7bbd3ccf36f531dd1998956e146e1cd",
+        "role": "new identity and full-body model"
+      },
+      {
+        "path": "assets/references/fighter-01.jpg",
+        "sha256": "0231dbe0a4c3a1b3aa0e4e18609f14d1811a8332a5189ced51d020ae3c332ffa",
+        "role": "photographic identity"
+      }
+    ],
+    "size": [
+      1254,
+      1254
+    ],
+    "selected_final": "assets/art/characters/01-ivo/atlas-v4.png"
+  },
+  "model_study": {
+    "source": "assets/art/characters/01-ivo/model-study-v031.png",
+    "sha256": "f116b68c69c34dbe593ca6fd28a4d7e4e7bbd3ccf36f531dd1998956e146e1cd",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-24a7b2f9-6307-4d2e-8669-eaf25abf50c0.png",
+    "raw_output_sha256": "f116b68c69c34dbe593ca6fd28a4d7e4e7bbd3ccf36f531dd1998956e146e1cd",
+    "prompt": "Use case: identity-preserve. Create a fresh likeness model sheet of the SPECIFIC REAL MAN IN THE PHOTO as an original 1992 SNES fighting-game cartoon. Photograph is the primary identity reference, not a generic stylistic suggestion. Ivo: middle-aged man in the photograph, LONG RECTANGULAR face, visible mature brow and under-eye creases, gently receding temples, modest flat natural side-parted short dark-brown hair, straight substantial nose, thin closed lips, squared chin. Serious calm experienced adult, not a young anime fighter.\nComposition: LEFT TWO THIRDS one COMPLETE standing full-body fighter in a compact right-facing guard, feet apart and both fists up, head seen near frontal three-quarter so recognizable facial features are visible. RIGHT THIRD three large head studies of THE EXACT SAME MAN: front, right-facing three-quarter, right profile. No text or borders. Transparent background. Full body must be one continuous drawing, all head studies separated with gutters.\nCostume: emerald green jacket over charcoal gray open-neck shirt, white turned cuffs, dark trousers and shoes. Body height about FIVE AND A HALF heads, noticeably enlarged expressive head for a 72-pixel-tall native sprite. Photo-accurate hair silhouette, facial proportions, age, nose, eyes and jaw. Preserve individual asymmetries and calm mouth from photo. Strong dark navy ink, restrained simple flat cel-shading, broad feature shapes. Original cartoon caricature based directly on the photograph. Face must NOT become a handsome angular anime/video-game stock hero. No huge slanted angry eyebrows, no chiseled triangular jaw, no high sculpted pompadour. No photographic texture, no 3D, no tiny fussy details. Do not copy photo clothing colors; use the specified game costume.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      {
+        "path": "assets/references/fighter-01.jpg",
+        "sha256": "0231dbe0a4c3a1b3aa0e4e18609f14d1811a8332a5189ced51d020ae3c332ffa",
+        "role": "photographic identity"
+      }
+    ],
+    "size": [
+      1120,
+      1404
+    ],
+    "selected_final": "assets/art/characters/01-ivo/model-study-v031.png"
+  },
+  "prompt": "Use case: identity-preserve. Production full-body fighting sprite atlas of the SPECIFIC photographed man, NOT a generic fighter. Image1 is the new model sheet: reproduce that SAME man's face and costume. Image2 is his real photograph: likeness takes priority over conventional anime beauty. Ivo: middle-aged man in the photograph, LONG RECTANGULAR face, visible mature brow and under-eye creases, gently receding temples, modest flat natural side-parted short dark-brown hair, straight substantial nose, thin closed lips, squared chin. Serious calm experienced adult, not a young anime fighter.\nCreate exactly SIXTEEN independent full-body figures on a square transparent 4x4 atlas, row-major action order:\nROW1 idle guard; forward walking step; retreat walking step; deep crouch guard.\nROW2 airborne tucked-knee jump; full straight jab right; full rear-hand cross right; extended high side kick right.\nROW3 low sweeping kick right; raised standing block; struck torso recoil backwards left; upright victory both fists lifted.\nROW4 two-palm forward energy cast NO FX; compact uppercut with raised bent arm; horizontal knocked-out figure head LEFT feet RIGHT; compact forward shoulder rush RIGHT.\nUse Image1's FULL BODY design faithfully in each pose. Clothing emerald green jacket over charcoal gray open-neck shirt, white turned cuffs, dark trousers and shoes. One fixed physical scale and continuous whole-body anatomy, same face in every angle. Neutral standing figure approximately 280-310 source pixels in its cell. Lower crouching figures genuinely lower, don't scale each pose to fill the cell. Head should occupy about ONE FIFTH to ONE SIXTH of standing height with broad nose/eyes/jaw shapes readable when downsampled. Mature faithful human caricature, near-frontal three-quarter face looking right, low natural hair. Keep photographer's individual identity; no sharp stock heroic profile, no angry slanted anime eyes, no idealized chiseled jaw. Clean 1992 arcade cartoon with thick dark navy ink and only 2-3 flat shading values per material. Generous space between all sixteen silhouettes. No grid/labels/text/background/shadows/FX/weapons/detached heads/extra figures. Complete hands and feet and no cropping. Genuinely transparent background."
+}

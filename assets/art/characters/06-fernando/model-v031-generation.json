@@ -1,0 +1,333 @@
+{
+  "schema": 1,
+  "fighter_id": 6,
+  "revision": "photo-model-v031",
+  "assets": [
+    {
+      "source": "assets/art/characters/06-fernando/model-study-v031.png",
+      "sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-2cd27dab-cf37-4569-b68c-ecbedc31e6ae.png",
+      "raw_output_sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+      "prompt": "Use case: identity-preserve. Create a fresh likeness model sheet of the SPECIFIC REAL MAN IN THE PHOTO as an original 1992 SNES fighting-game cartoon. Photograph is the primary identity reference, not a generic stylistic suggestion. Fernando: the man in the photograph has a FULLER ROUNDED OVAL face and soft cheeks, very thick straight low eyebrows, deep-set dark eyes, prominent broad straight nose, small relaxed mouth, short dark softly waved side-swept hair with a low natural crown. Clean-shaven, adult soft substantial chin. Do not give him a narrow angular jaw, high quiff, thin brows, orange hair or an aggressive scowl.\nComposition: LEFT TWO THIRDS one COMPLETE standing full-body fighter in a compact right-facing guard, feet apart and both fists up, head seen near frontal three-quarter so recognizable facial features are visible. RIGHT THIRD three large head studies of THE EXACT SAME MAN: front, right-facing three-quarter, right profile. No text or borders. Transparent background. Full body must be one continuous drawing, all head studies separated with gutters.\nCostume: teal jacket, white open collar shirt, dark trousers and shoes. Body height about FIVE AND A HALF heads, noticeably enlarged expressive head for a 72-pixel-tall native sprite. Photo-accurate hair silhouette, facial proportions, age, nose, eyes and jaw. Preserve individual asymmetries and calm mouth from photo. Strong dark navy ink, restrained simple flat cel-shading, broad feature shapes. Original cartoon caricature based directly on the photograph. Face must NOT become a handsome angular anime/video-game stock hero. No huge slanted angry eyebrows, no chiseled triangular jaw, no high sculpted pompadour. No photographic texture, no 3D, no tiny fussy details. Do not copy photo clothing colors; use the specified game costume.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        {
+          "path": "assets/references/fighter-06.jpg",
+          "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+          "role": "photographic identity"
+        }
+      ],
+      "size": [
+        1145,
+        1374
+      ],
+      "selected_final": "assets/art/characters/06-fernando/model-study-v031.png"
+    },
+    {
+      "source": "assets/art/characters/06-fernando/atlas-v5.png",
+      "sha256": "5f8fb9deb783f672afcce0b81a7b1f0533868a474da1f6f60faf62eadacf73c1",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-f8d05cae-c0aa-4975-b0a5-b57a7ae45a13.png",
+      "raw_output_sha256": "5f8fb9deb783f672afcce0b81a7b1f0533868a474da1f6f60faf62eadacf73c1",
+      "prompt": "Use case: identity-preserve. Production full-body fighting sprite atlas of the SPECIFIC photographed man, NOT a generic fighter. Image1 is the new model sheet: reproduce that SAME man's face and costume. Image2 is his real photograph: likeness takes priority over conventional anime beauty. Fernando: the man in the photograph has a FULLER ROUNDED OVAL face and soft cheeks, very thick straight low eyebrows, deep-set dark eyes, prominent broad straight nose, small relaxed mouth, short dark softly waved side-swept hair with a low natural crown. Clean-shaven, adult soft substantial chin. Do not give him a narrow angular jaw, high quiff, thin brows, orange hair or an aggressive scowl.\nCreate exactly SIXTEEN independent full-body figures on a square transparent 4x4 atlas, row-major action order:\nROW1 idle guard; forward walking step; retreat walking step; deep crouch guard.\nROW2 airborne tucked-knee jump; full straight jab right; full rear-hand cross right; extended high side kick right.\nROW3 low sweeping kick right; raised standing block; struck torso recoil backwards left; upright victory both fists lifted.\nROW4 two-palm forward energy cast NO FX; compact uppercut with raised bent arm; horizontal knocked-out figure head LEFT feet RIGHT; compact forward shoulder rush RIGHT.\nUse Image1's FULL BODY design faithfully in each pose. Clothing teal jacket, white open collar shirt, dark trousers and shoes. One fixed physical scale and continuous whole-body anatomy, same face in every angle. Neutral standing figure approximately 280-310 source pixels in its cell. Lower crouching figures genuinely lower, don't scale each pose to fill the cell. Head should occupy about ONE FIFTH to ONE SIXTH of standing height with broad nose/eyes/jaw shapes readable when downsampled. Mature faithful human caricature, near-frontal three-quarter face looking right, low natural hair. Keep photographer's individual identity; no sharp stock heroic profile, no angry slanted anime eyes, no idealized chiseled jaw. Clean 1992 arcade cartoon with thick dark navy ink and only 2-3 flat shading values per material. Generous space between all sixteen silhouettes. No grid/labels/text/background/shadows/FX/weapons/detached heads/extra figures. Complete hands and feet and no cropping. Genuinely transparent background.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        {
+          "path": "assets/art/characters/06-fernando/model-study-v031.png",
+          "sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+          "role": "new identity and full-body model"
+        },
+        {
+          "path": "assets/references/fighter-06.jpg",
+          "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+          "role": "photographic identity"
+        }
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "selected_final": "assets/art/characters/06-fernando/atlas-v5.png"
+    },
+    {
+      "source": "assets/art/characters/06-fernando/animation-actions-v5.png",
+      "sha256": "a567d1ee1235ec3076624cdae71a4471b3687e8d6ebc8128b50e6707637f12cc",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-b8c8a84b-c20d-4554-86a4-33d83b73ed16.png",
+      "raw_output_sha256": "a567d1ee1235ec3076624cdae71a4471b3687e8d6ebc8128b50e6707637f12cc",
+      "prompt": "Use case: identity-preserve. Draw a NEW whole-body animation atlas for the EXACT specific man in Image1 (new full model design) and Image2 (new sixteen-pose model). Image3 supplies only OLD POSE ORDER/motion guide; IGNORE its old face and body design. Image4 is real photographic identity.\nFernando: the man in the photograph has a FULLER ROUNDED OVAL face and soft cheeks, very thick straight low eyebrows, deep-set dark eyes, prominent broad straight nose, small relaxed mouth, short dark softly waved side-swept hair with a low natural crown. Clean-shaven, adult soft substantial chin. Do not give him a narrow angular jaw, high quiff, thin brows, orange hair or an aggressive scowl.\nPreserve the NEW larger expressive realistic-caricature head, adult face, body build and outfit of Images1/2 across all frames. Do not revert to the generic angular anime head from Image3. All heads near-frontal three-quarter looking RIGHT when pose permits; this likeness is vital at 72-pixel native height. Entire body drawn continuously, never pasted heads/legs. Same fixed physical scale in all cells, neutral standing figure about 300 source pixels tall; lower poses truly compress/bend, never resize per cell. Compact any raised-arm pose so fist remains no higher than neutral standing crown by bending knees. Hands/cuff/torso/legs/shoes/head proportions match the new model throughout.\nExactly 16 separate figures, FOUR columns by 4 rows. Row-major poses, one each in EXACT order:\n1. ready guard; 2. jab retract; 3. cross windup; 4. cross retract; 5. kick windup; 6. kick retract; 7. sweep windup; 8. sweep recovery; 9. block impact; 10. hurt recovery; 11. special charge; 12. cast recovery; 13. uppercut anticipation; 14. uppercut recovery; 15. victory transition; 16. knockout fall.\nAnticipation and recovery must be genuinely different complete poses. Turn torso with each attack. Recoil and falling lose balance toward LEFT, no floating.\nCopy Image3's action geometry and compact silhouettes, but draw the new photographed character. Clean original 1992 arcade cartoon, broad flat light/medium/shadow shapes, deep navy contour, no busy texture. Keep new costume colors and 5.5-head proportion, do not replace the person with a generic athletic model. True transparent background. Generous empty gutters; every figure a separate connected silhouette. No FX, grid, shadows, labels, background or extra limbs/figures. Feet and hands complete and uncropped.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        {
+          "path": "assets/art/characters/06-fernando/model-study-v031.png",
+          "sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+          "role": "new identity and full-body model"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/atlas-v5.png",
+          "sha256": "5f8fb9deb783f672afcce0b81a7b1f0533868a474da1f6f60faf62eadacf73c1",
+          "role": "new full-body key poses"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/animation-actions-v4.png",
+          "sha256": "5ee1cbc0153223d6f7411b2f5ffaf7a57e536849814000cf84017d0d954c3d37",
+          "role": "historical pose guide only"
+        },
+        {
+          "path": "assets/references/fighter-06.jpg",
+          "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+          "role": "photographic identity"
+        }
+      ],
+      "size": [
+        1327,
+        1185
+      ],
+      "selected_final": "assets/art/characters/06-fernando/animation-actions-v5.png"
+    },
+    {
+      "source": "assets/art/characters/06-fernando/animation-airborne-v5.png",
+      "sha256": "ed4f4e39fe13c0b18e9257412403eddd041e87d61b6abd1857cae6f2d5b30e58",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-d59e7853-4160-485a-8ccb-5f754d8f208b.png",
+      "raw_output_sha256": "ed4f4e39fe13c0b18e9257412403eddd041e87d61b6abd1857cae6f2d5b30e58",
+      "prompt": "Use case: identity-preserve. NEW production airborne whole-body animation atlas of the EXACT man in Image1 (new character design) and Image2 (new full pose model). Image3 is only the OLD pose/role guide; IGNORE its generic young face. Image4 is the photograph.\nFernando: the man in the photograph has a FULLER ROUNDED OVAL face and soft cheeks, very thick straight low eyebrows, deep-set dark eyes, prominent broad straight nose, small relaxed mouth, short dark softly waved side-swept hair with a low natural crown. Clean-shaven, adult soft substantial chin. Do not give him a narrow angular jaw, high quiff, thin brows, orange hair or an aggressive scowl.\nPreserve the NEW model's larger expressive head, real face proportions, adult age, body build and entire outfit in EVERY cell, including long/rolled sleeves exactly as the new model wears them. Never regress to the old angry anime face or muscular substitute. Face near-frontal three-quarter looking RIGHT where possible, identity recognizable at native SNES 67-73px whole-body height. Connected full drawings, no pasted parts. Same fixed physical scale, limb/head proportions and costume across all poses. Neutral standing height about 300 source pixels, lower crouches/jumps compress naturally. Any raised fist must stay at or BELOW neutral standing crown by bending knees, NEVER enlarge a crouched figure to fill its cell.\nExactly 16 separated figures, FOUR columns by 4 rows, row-major order:\n1. upright neutral; 2. air punch anticipation; 3. air punch active; 4. air punch recovery; 5. air kick anticipation; 6. air kick active; 7. air kick recovery; 8. compact apex guard; 9. thrower grip; 10. thrower release; 11. victim lift; 12. victim impact; 13. knockdown launch; 14. knockdown fall; 15. grounded getup; 16. wakeup guard.\nPose1 upright neutral guard is the scale reference. Air punches/kicks have anticipation, active EXTENDED hand/foot and distinct recovery. Thrower and victim roles separate, victim lift and horizontal impact/falls remain compact; feet and heads uncropped.\nUse Image3 for exact pose role/placement only and redraw the photographed NEW model from Images1/2. Original 1992 arcade cel cartoon, strong dark navy contours, broad clean flat shading. Generous transparent gutters and SINGLE connected silhouette per cell. No FX/glow/shadow, floor, grid, text, labels, background, extra people or detached limbs. True transparent PNG. Complete hands and feet, no clipping or cropped silhouettes.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        {
+          "path": "assets/art/characters/06-fernando/model-study-v031.png",
+          "sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+          "role": "new identity and full-body model"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/atlas-v5.png",
+          "sha256": "5f8fb9deb783f672afcce0b81a7b1f0533868a474da1f6f60faf62eadacf73c1",
+          "role": "new full-body key poses"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/animation-airborne-v4.png",
+          "sha256": "b74cf121251da10d69a83c28ab5209bcdaca6faed9aa549def0578259c911a3d",
+          "role": "historical pose guide only"
+        },
+        {
+          "path": "assets/references/fighter-06.jpg",
+          "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+          "role": "photographic identity"
+        }
+      ],
+      "size": [
+        1266,
+        1243
+      ],
+      "selected_final": "assets/art/characters/06-fernando/animation-airborne-v5.png"
+    },
+    {
+      "source": "assets/art/characters/06-fernando/attack-a-v031.png",
+      "sha256": "c7720631155f887fcce68c3afd5975045973df461bc8dc986e310da660e254f7",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-77919f64-2573-41a1-b2c6-debc039bf179.png",
+      "raw_output_sha256": "c7720631155f887fcce68c3afd5975045973df461bc8dc986e310da660e254f7",
+      "prompt": "Use case: identity-preserve. NEW production attack-a whole-body animation atlas of the EXACT man in Image1 (new character design) and Image2 (new full pose model). Image3 is only the OLD pose/role guide; IGNORE its generic young face. Image4 is the photograph.\nFernando: the man in the photograph has a FULLER ROUNDED OVAL face and soft cheeks, very thick straight low eyebrows, deep-set dark eyes, prominent broad straight nose, small relaxed mouth, short dark softly waved side-swept hair with a low natural crown. Clean-shaven, adult soft substantial chin. Do not give him a narrow angular jaw, high quiff, thin brows, orange hair or an aggressive scowl.\nPreserve the NEW model's larger expressive head, real face proportions, adult age, body build and entire outfit in EVERY cell, including long/rolled sleeves exactly as the new model wears them. Never regress to the old angry anime face or muscular substitute. Face near-frontal three-quarter looking RIGHT where possible, identity recognizable at native SNES 67-73px whole-body height. Connected full drawings, no pasted parts. Same fixed physical scale, limb/head proportions and costume across all poses. Neutral standing height about 300 source pixels, lower crouches/jumps compress naturally. Any raised fist must stay at or BELOW neutral standing crown by bending knees, NEVER enlarge a crouched figure to fill its cell.\nExactly 16 separated figures, FOUR columns by 4 rows, row-major order:\n1. ready guard; 2. jab active; 3. jab retract; 4. cross windup; 5. cross active; 6. cross retract; 7. kick windup; 8. kick active; 9. kick retract; 10. sweep windup; 11. sweep active; 12. sweep recovery; 13. block impact; 14. block hold; 15. hurt impact; 16. hurt recovery.\nPrecise attack sequence: anticipation loads hip/shoulder, active contact hand/foot extends RIGHT, recovery retracts to guard. Distinct windup, active and recoil. Compact uppercut grounded with bent knees, raised fist below neutral crown. Preserve OLD pose ordering and contact directions, including floor sweep and backward LEFT knockdown.\nUse Image3 for exact pose role/placement only and redraw the photographed NEW model from Images1/2. Original 1992 arcade cel cartoon, strong dark navy contours, broad clean flat shading. Generous transparent gutters and SINGLE connected silhouette per cell. No FX/glow/shadow, floor, grid, text, labels, background, extra people or detached limbs. True transparent PNG. Complete hands and feet, no clipping or cropped silhouettes.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        {
+          "path": "assets/art/characters/06-fernando/model-study-v031.png",
+          "sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+          "role": "new identity and full-body model"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/atlas-v5.png",
+          "sha256": "5f8fb9deb783f672afcce0b81a7b1f0533868a474da1f6f60faf62eadacf73c1",
+          "role": "new full-body key poses"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/attack-v2-a.png",
+          "sha256": "bef939f7fb4b6066a6ad36cfa592e82954b948fbfa935edcf6be8313cb2e94d6",
+          "role": "historical pose guide only"
+        },
+        {
+          "path": "assets/references/fighter-06.jpg",
+          "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+          "role": "photographic identity"
+        }
+      ],
+      "size": [
+        1241,
+        1268
+      ],
+      "selected_final": "assets/art/characters/06-fernando/attack-a-v031.png"
+    },
+    {
+      "source": "assets/art/characters/06-fernando/attack-b-v031.png",
+      "sha256": "696fa0926014486242c418fadae722df354e10edc52b9a4ceaae60298fbcb301",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-54802740-fee0-4755-bd51-779868253636.png",
+      "raw_output_sha256": "696fa0926014486242c418fadae722df354e10edc52b9a4ceaae60298fbcb301",
+      "prompt": "Use case: identity-preserve. Image1 is the EXACT POSE LAYOUT TO EDIT. Image2 is the NEW FACE AND WHOLE BODY MODEL. Image3 is photographic identity.\nRedraw Image1 as the actual man from Images2/3, keeping ALL16 ORIGINAL POSES IN THE EXACT SAME CELLS. Fernando: the man in the photograph has a FULLER ROUNDED OVAL face and soft cheeks, very thick straight low eyebrows, deep-set dark eyes, prominent broad straight nose, small relaxed mouth, short dark softly waved side-swept hair with a low natural crown. Clean-shaven, adult soft substantial chin. Do not give him a narrow angular jaw, high quiff, thin brows, orange hair or an aggressive scowl. Use Image2's head, proportions, relaxed brows, costume and likeness. Discard Image1's old generic anime head. Head/neck/body one continuous drawing, no pasted parts.\nThis is a SPECIAL/UPPERCUT atlas, NOT the usual idle/walk/jab/kick atlas. Absolutely NO walking, high kick or crouched jump poses. EXACT4x4 cells:\nROW1: 1 TWO hands cupped at REAR hip charging; 2 BOTH open palms extended RIGHT together at chest height CAST; 3 hands retracting toward guard CAST RECOVERY; 4 deep grounded crouch with rear FIST near hip UPPERCUT windup.\nROW2: 5 compact UPPERCUT rear arm bent with fist raised IN FRONT OF FACE, knees bent so fist below neutral crown, feet grounded; 6 UPPERCUT recovery with fist lowering toward guard; 7 low forward RIGHT SHOULDER RUSH, rear leg drives, shoulder leads; 8 falling BACKWARD LEFT, torso tilts left knees buckle, head left, no floor.\nROW3: 9 NORMAL UPRIGHT GUARD neutral scale anchor; 10 rear fist loaded, shoulder twisted for cross; 11 leaning backwards left BLOCK with forearms up; 12 NORMAL upright guard return.\nROW4: 13 NORMAL UPRIGHT GUARD second scale anchor; 14 deep low crouch guard; 15 torso regaining balance after recoil; 16 NORMAL UPRIGHT GUARD.\nExactly16 separated complete connected figures, same fixed physical proportions and neutral height (~300 source pixels) as Image2. Lower crouches genuinely compress body. Preserve pose positions, rightward action direction and hands/feet visibility from Image1. Match the NEW MODEL outfit fully. Clean original 1992 arcade cartoon, bold navy contours and broad flat cel shading, not photorealistic/anime. True transparent background, large gutters, no shadows/FX/text/grid/extra people.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        {
+          "path": "assets/art/characters/06-fernando/attack-v2-b.png",
+          "sha256": "fc679b0d7c15075a150e16bc553911f2e3673f4e0bf5409f8284c42163cc4a2a",
+          "role": "historical pose guide only"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/model-study-v031.png",
+          "sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+          "role": "new identity and full-body model"
+        },
+        {
+          "path": "assets/references/fighter-06.jpg",
+          "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+          "role": "photographic identity"
+        }
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "selected_final": "assets/art/characters/06-fernando/attack-b-v031.png"
+    },
+    {
+      "source": "assets/art/characters/06-fernando/jump-v031.png",
+      "sha256": "c71a1b0e25fd3790a4faefff5d2eaaa9f9370d5f3eb844f832a6f3caf7c5e196",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-c14ac00d-4bb3-4ec9-91d9-09ca11ae285a.png",
+      "raw_output_sha256": "c71a1b0e25fd3790a4faefff5d2eaaa9f9370d5f3eb844f832a6f3caf7c5e196",
+      "prompt": "Use case: identity-preserve. NEW production jump whole-body animation atlas of the EXACT man in Image1 (new character design) and Image2 (new full pose model). Image3 is only the OLD pose/role guide; IGNORE its generic young face. Image4 is the photograph.\nFernando: the man in the photograph has a FULLER ROUNDED OVAL face and soft cheeks, very thick straight low eyebrows, deep-set dark eyes, prominent broad straight nose, small relaxed mouth, short dark softly waved side-swept hair with a low natural crown. Clean-shaven, adult soft substantial chin. Do not give him a narrow angular jaw, high quiff, thin brows, orange hair or an aggressive scowl.\nPreserve the NEW model's larger expressive head, real face proportions, adult age, body build and entire outfit in EVERY cell, including long/rolled sleeves exactly as the new model wears them. Never regress to the old angry anime face or muscular substitute. Face near-frontal three-quarter looking RIGHT where possible, identity recognizable at native SNES 67-73px whole-body height. Connected full drawings, no pasted parts. Same fixed physical scale, limb/head proportions and costume across all poses. Neutral standing height about 300 source pixels, lower crouches/jumps compress naturally. Any raised fist must stay at or BELOW neutral standing crown by bending knees, NEVER enlarge a crouched figure to fill its cell.\nExactly 16 separated figures, FOUR columns by 4 rows, row-major order:\n1. neutral anchor; 2. takeoff compression; 3. upward extension; 4. landing compression; 5. air punch windup; 6. air punch contact; 7. air punch recovery; 8. air kick windup; 9. air kick contact; 10. kick recovery extra; 11. apex guard; 12. descent landing release; 13. neutral extra; 14. air guard extra; 15. landing extra; 16. neutral extra 2.\nKeep neutral and scale-reference poses upright. Active airborne punch/kick must extend toward RIGHT, other guarded/jump anticipation/landing poses remain compact with consistent head size and body scale.\nUse Image3 for exact pose role/placement only and redraw the photographed NEW model from Images1/2. Original 1992 arcade cel cartoon, strong dark navy contours, broad clean flat shading. Generous transparent gutters and SINGLE connected silhouette per cell. No FX/glow/shadow, floor, grid, text, labels, background, extra people or detached limbs. True transparent PNG. Complete hands and feet, no clipping or cropped silhouettes.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        {
+          "path": "assets/art/characters/06-fernando/model-study-v031.png",
+          "sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+          "role": "new identity and full-body model"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/atlas-v5.png",
+          "sha256": "5f8fb9deb783f672afcce0b81a7b1f0533868a474da1f6f60faf62eadacf73c1",
+          "role": "new full-body key poses"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/jump-v2.png",
+          "sha256": "da0c50593f3ffca4b70bc60a0dfaee681dc4b2906b2664248b9afd379b1c7045",
+          "role": "historical pose guide only"
+        },
+        {
+          "path": "assets/references/fighter-06.jpg",
+          "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+          "role": "photographic identity"
+        }
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "selected_final": "assets/art/characters/06-fernando/jump-v031.png"
+    },
+    {
+      "source": "assets/art/characters/06-fernando/animation-motion-v5.png",
+      "sha256": "971607b572bf954bdbbf9ddc6d941e7f53c2e57a2d12362e22ea2cb45bea9a21",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-678188f9-8d2b-4f0f-bae2-e170852f6ae6.png",
+      "raw_output_sha256": "971607b572bf954bdbbf9ddc6d941e7f53c2e57a2d12362e22ea2cb45bea9a21",
+      "prompt": "Use case: identity-preserve. Draw a NEW whole-body animation atlas for the EXACT specific man in Image1 (new full model design) and Image2 (new sixteen-pose model). Image3 supplies only OLD POSE ORDER/motion guide; IGNORE its old face and body design. Image4 is real photographic identity.\nFernando: the man in the photograph has a FULLER ROUNDED OVAL face and soft cheeks, very thick straight low eyebrows, deep-set dark eyes, prominent broad straight nose, small relaxed mouth, short dark softly waved side-swept hair with a low natural crown. Clean-shaven, adult soft substantial chin. Do not give him a narrow angular jaw, high quiff, thin brows, orange hair or an aggressive scowl.\nPreserve the NEW larger expressive realistic-caricature head, adult face, body build and outfit of Images1/2 across all frames. Do not revert to the generic angular anime head from Image3. All heads near-frontal three-quarter looking RIGHT when pose permits; this likeness is vital at 72-pixel native height. Entire body drawn continuously, never pasted heads/legs. Same fixed physical scale in all cells, neutral standing figure about 300 source pixels tall; lower poses truly compress/bend, never resize per cell. Compact any raised-arm pose so fist remains no higher than neutral standing crown by bending knees. Hands/cuff/torso/legs/shoes/head proportions match the new model throughout.\nExactly 16 separate figures, FOUR columns by 4 rows. Row-major poses, one each in EXACT order:\n1. breath neutral; 2. breath inhale; 3. breath exhale; 4. breath return; 5. walk forward contact; 6. walk forward pass; 7. walk forward rear pass; 8. walk forward opposite; 9. walk back contact; 10. walk back pass; 11. walk back lead pass; 12. walk back opposite; 13. crouch halfway; 14. jump anticipation; 15. jump extension; 16. landing compression.\nFour breathing phases have subtle but genuinely distinct chest/head/guard positions. Walking contact/pass phases coordinate pelvis, torso, guard and feet, no sliding duplicated figures.\nCopy Image3's action geometry and compact silhouettes, but draw the new photographed character. Clean original 1992 arcade cartoon, broad flat light/medium/shadow shapes, deep navy contour, no busy texture. Keep new costume colors and 5.5-head proportion, do not replace the person with a generic athletic model. True transparent background. Generous empty gutters; every figure a separate connected silhouette. No FX, grid, shadows, labels, background or extra limbs/figures. Feet and hands complete and uncropped.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        {
+          "path": "assets/art/characters/06-fernando/model-study-v031.png",
+          "sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+          "role": "new identity and full-body model"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/atlas-v5.png",
+          "sha256": "5f8fb9deb783f672afcce0b81a7b1f0533868a474da1f6f60faf62eadacf73c1",
+          "role": "new full-body key poses"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/animation-motion-v4.png",
+          "sha256": "83d083fc9905047454b852a3c0acf3348ccd3fabff622fb9f13e727d79d85c33",
+          "role": "historical pose guide only"
+        },
+        {
+          "path": "assets/references/fighter-06.jpg",
+          "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+          "role": "photographic identity"
+        }
+      ],
+      "size": [
+        1389,
+        1132
+      ],
+      "selected_final": "assets/art/characters/06-fernando/animation-motion-v5.png"
+    },
+    {
+      "source": "assets/art/characters/06-fernando/super-v031.png",
+      "sha256": "2eaac27a208acd1203dad2189b77f95937ba1ee7a7b8745087da73378ffefffc",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-0359eb1b-d44e-4bf7-8a44-67a3cfcd7624.png",
+      "raw_output_sha256": "2eaac27a208acd1203dad2189b77f95937ba1ee7a7b8745087da73378ffefffc",
+      "prompt": "Use case: identity-preserve. Image1 is the EXACT EIGHT-POSE super atlas to redraw. Image2 is the new identity/full-body model. Image3 is the photograph. Keep all eight actions from Image1 in their exact locations, replacing the old generic young face/body with this specific new person. Fernando: the man in the photograph has a FULLER ROUNDED OVAL face and soft cheeks, very thick straight low eyebrows, deep-set dark eyes, prominent broad straight nose, small relaxed mouth, short dark softly waved side-swept hair with a low natural crown. Clean-shaven, adult soft substantial chin. Do not give him a narrow angular jaw, high quiff, thin brows, orange hair or an aggressive scowl.\nOnly FOUR columns by TWO rows. Pose1 normal neutral upright standing combat guard, SAME scale/likeness/outfit as Image2. Pose2 CHARGE: wide low planted stance, TWO OPEN PALMS stacked LOW at REAR THIGH, torso wound backward. Pose3 STRIKE: LOW TWO-HAND sweeping cast RIGHT at WAIST height, one open palm extended with the other supporting, hips/shoulders uncoil. Pose4 RECOVERY: low stable front knee absorbs weight, both hands retract toward belt. NO UPPERCUTS OR PUNCHES. Poses5-8 four unused relaxed standing guard variants. Exactly8 figures; no walking/high kicks/KO extras. Entire costume and face follow NEW model Image2, not generic face in Image1. Larger expressive adult head, calm near-frontal-three-quarter eyes and nose looking right. Fixed body/head/limb proportions in all poses; neutral anchor about300px high, lower poses really bend knees, no per-cell resizing. Clean hand-drawn1992 arcade cartoon with broad flat cel shading and dark navy outlines. Fully connected anatomy, generous transparent gutters, no clipping, text/grid/shadow/FX/projectiles/weapons/extra figures. True transparent background.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        {
+          "path": "assets/art/characters/06-fernando/super-v2.png",
+          "sha256": "afbf654ac47e01deb355d5895a3ca2d85f20ad2bca3ffaeb019cd2974323f22b",
+          "role": "historical pose guide only"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/model-study-v031.png",
+          "sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+          "role": "new identity and full-body model"
+        },
+        {
+          "path": "assets/references/fighter-06.jpg",
+          "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+          "role": "photographic identity"
+        }
+      ],
+      "size": [
+        1774,
+        887
+      ],
+      "selected_final": "assets/art/characters/06-fernando/super-v031.png"
+    },
+    {
+      "source": "assets/art/characters/06-fernando/walking-v031.png",
+      "sha256": "b417c4108e3ba4b4d8ffc85db5ab8191b3f8d78a826cbbad1c21c62839e1482b",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-37ea670b-fdd9-4dfc-b81b-7946af1a1a6e.png",
+      "raw_output_sha256": "b417c4108e3ba4b4d8ffc85db5ab8191b3f8d78a826cbbad1c21c62839e1482b",
+      "prompt": "Use case: identity-preserve. NEW production walking whole-body animation atlas of the EXACT man in Image1 (new character design) and Image2 (new full pose model). Image3 is only the OLD pose/role guide; IGNORE its generic young face. Image4 is the photograph.\nFernando: the man in the photograph has a FULLER ROUNDED OVAL face and soft cheeks, very thick straight low eyebrows, deep-set dark eyes, prominent broad straight nose, small relaxed mouth, short dark softly waved side-swept hair with a low natural crown. Clean-shaven, adult soft substantial chin. Do not give him a narrow angular jaw, high quiff, thin brows, orange hair or an aggressive scowl.\nPreserve the NEW model's larger expressive head, real face proportions, adult age, body build and entire outfit in EVERY cell, including long/rolled sleeves exactly as the new model wears them. Never regress to the old angry anime face or muscular substitute. Face near-frontal three-quarter looking RIGHT where possible, identity recognizable at native SNES 67-73px whole-body height. Connected full drawings, no pasted parts. Same fixed physical scale, limb/head proportions and costume across all poses. Neutral standing height about 300 source pixels, lower crouches/jumps compress naturally. Any raised fist must stay at or BELOW neutral standing crown by bending knees, NEVER enlarge a crouched figure to fill its cell.\nExactly 8 separated figures, FOUR columns by 2 rows, row-major order:\n1. left contact; 2. left recoil; 3. right pass; 4. right extension; 5. right contact; 6. right recoil; 7. left pass; 8. left extension.\nA coherent eight-phase COMPLETE BODY walk cycle. All face RIGHT, feet alternate left contact/recoil/right pass/extension then opposite half-cycle. Keep guard up, torso/hips/head/arms shift together naturally with footfalls. Every pose distinct. Foot soles share floor baseline. Very small height bob. Do not redraw a fixed torso above unrelated legs.\nUse Image3 for exact pose role/placement only and redraw the photographed NEW model from Images1/2. Original 1992 arcade cel cartoon, strong dark navy contours, broad clean flat shading. Generous transparent gutters and SINGLE connected silhouette per cell. No FX/glow/shadow, floor, grid, text, labels, background, extra people or detached limbs. True transparent PNG. Complete hands and feet, no clipping or cropped silhouettes.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        {
+          "path": "assets/art/characters/06-fernando/model-study-v031.png",
+          "sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+          "role": "new identity and full-body model"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/atlas-v5.png",
+          "sha256": "5f8fb9deb783f672afcce0b81a7b1f0533868a474da1f6f60faf62eadacf73c1",
+          "role": "new full-body key poses"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/walking-v3.png",
+          "sha256": "a36aaf7ee82df78762c21b7443074d2f7db596f3263618b79e6be9d22b461a85",
+          "role": "historical pose guide only"
+        },
+        {
+          "path": "assets/references/fighter-06.jpg",
+          "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+          "role": "photographic identity"
+        }
+      ],
+      "size": [
+        1774,
+        887
+      ],
+      "selected_final": "assets/art/characters/06-fernando/walking-v031.png"
+    }
+  ],
+  "human_approval": null
+}

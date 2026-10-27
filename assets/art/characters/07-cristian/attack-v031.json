@@ -1,0 +1,168 @@
+{
+  "schema": 1,
+  "fighter_id": 7,
+  "scope": "attack-v1",
+  "palette_sha256": "5488f08bd6b0b18a4d65a681f3a88257f93ac2e55c9fafa5834af4f52b55b069",
+  "anchor": {
+    "source": 0,
+    "pose": 0
+  },
+  "height_target": 73,
+  "reference": "assets/art/characters/07-cristian/model-study-v031.png",
+  "reference_sha256": "60890c35457a3548a2e0fb054e9d87452bb0959f099440ef2a15c65bcd95d3eb",
+  "revises": "assets/art/characters/07-cristian/attack-v1.json",
+  "pose_contract_sha256": "446b021f4cc8c679fa60df740d596f31c78096e2dd03e2f335e80a549cd0c744",
+  "generation_edits": [
+    {
+      "source": "assets/art/characters/07-cristian/attack-a-v031.png",
+      "sha256": "2dfdd45be911f70cdbdd55a377a319ccd33895f9161a61aa2961ea362e660354",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-1a91cc46-d45c-448b-8874-e5cf9cdf4951.png",
+      "raw_output_sha256": "2dfdd45be911f70cdbdd55a377a319ccd33895f9161a61aa2961ea362e660354",
+      "prompt": "Use case: identity-preserve. NEW production attack-a whole-body animation atlas of the EXACT man in Image1 (new character design) and Image2 (new full pose model). Image3 is only the OLD pose/role guide; IGNORE its generic young face. Image4 is the photograph.\nCristian: the man in the photograph has a BROAD ROUND-SQUARE face with a substantial squared lower jaw, broad cheeks, slightly hooded horizontally shaped eyes, thick near-straight brows, broad short straight nose, small neutral mouth, very short dense nearly black hair brushed slightly upward with a low textured crown, visible natural temples. A solid adult face, not a teenager and not spiky anime hair.\nPreserve the NEW model's larger expressive head, real face proportions, adult age, body build and entire outfit in EVERY cell, including long/rolled sleeves exactly as the new model wears them. Never regress to the old angry anime face or muscular substitute. Face near-frontal three-quarter looking RIGHT where possible, identity recognizable at native SNES 67-73px whole-body height. Connected full drawings, no pasted parts. Same fixed physical scale, limb/head proportions and costume across all poses. Neutral standing height about 300 source pixels, lower crouches/jumps compress naturally. Any raised fist must stay at or BELOW neutral standing crown by bending knees, NEVER enlarge a crouched figure to fill its cell.\nExactly 16 separated figures, FOUR columns by 4 rows, row-major order:\n1. ready guard; 2. jab active; 3. jab retract; 4. cross windup; 5. cross active; 6. cross retract; 7. kick windup; 8. kick active; 9. kick retract; 10. sweep windup; 11. sweep active; 12. sweep recovery; 13. block impact; 14. block hold; 15. hurt impact; 16. hurt recovery.\nPrecise attack sequence: anticipation loads hip/shoulder, active contact hand/foot extends RIGHT, recovery retracts to guard. Distinct windup, active and recoil. Compact uppercut grounded with bent knees, raised fist below neutral crown. Preserve OLD pose ordering and contact directions, including floor sweep and backward LEFT knockdown.\nUse Image3 for exact pose role/placement only and redraw the photographed NEW model from Images1/2. Original 1992 arcade cel cartoon, strong dark navy contours, broad clean flat shading. Generous transparent gutters and SINGLE connected silhouette per cell. No FX/glow/shadow, floor, grid, text, labels, background, extra people or detached limbs. True transparent PNG. Complete hands and feet, no clipping or cropped silhouettes.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        {
+          "path": "assets/art/characters/07-cristian/model-study-v031.png",
+          "sha256": "60890c35457a3548a2e0fb054e9d87452bb0959f099440ef2a15c65bcd95d3eb",
+          "role": "new identity and full-body model"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/atlas-v4.png",
+          "sha256": "6c18c84321b7043b786ac97a9e0659e75990e68f1179b3a1ce6c11817352ef29",
+          "role": "new full-body key poses"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/attack-v1-a.png",
+          "sha256": "7e5ba1c7e86937376ee81ce9abdda6b6409b4a7fb3bfd5e6fe35167c5691d294",
+          "role": "historical pose guide only"
+        },
+        {
+          "path": "assets/references/fighter-07.jpg",
+          "sha256": "5edcd42a4afcdbd2ab1e341a25b7ad65884bbf417b5a47396d2de2cff651d19c",
+          "role": "photographic identity"
+        }
+      ],
+      "size": [
+        1351,
+        1164
+      ],
+      "selected_final": "assets/art/characters/07-cristian/attack-a-v031.png"
+    },
+    {
+      "source": "assets/art/characters/07-cristian/attack-b-v031.png",
+      "sha256": "a496325a1050c6afdc6a179f08cba5721c778bee41e0fe019e84170126fa66ad",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-61417aa3-ea94-42ec-8b56-b1b360a6b2a9.png",
+      "raw_output_sha256": "a496325a1050c6afdc6a179f08cba5721c778bee41e0fe019e84170126fa66ad",
+      "prompt": "Use case: identity-preserve. Image1 is the EXACT POSE LAYOUT TO EDIT. Image2 is the NEW FACE AND WHOLE BODY MODEL. Image3 is photographic identity.\nRedraw Image1 as the actual man from Images2/3, keeping ALL16 ORIGINAL POSES IN THE EXACT SAME CELLS. Cristian: the man in the photograph has a BROAD ROUND-SQUARE face with a substantial squared lower jaw, broad cheeks, slightly hooded horizontally shaped eyes, thick near-straight brows, broad short straight nose, small neutral mouth, very short dense nearly black hair brushed slightly upward with a low textured crown, visible natural temples. A solid adult face, not a teenager and not spiky anime hair. Use Image2's head, proportions, relaxed brows, costume and likeness. Discard Image1's old generic anime head. Head/neck/body one continuous drawing, no pasted parts.\nThis is a SPECIAL/UPPERCUT atlas, NOT the usual idle/walk/jab/kick atlas. Absolutely NO walking, high kick or crouched jump poses. EXACT4x4 cells:\nROW1: 1 TWO hands cupped at REAR hip charging; 2 BOTH open palms extended RIGHT together at chest height CAST; 3 hands retracting toward guard CAST RECOVERY; 4 deep grounded crouch with rear FIST near hip UPPERCUT windup.\nROW2: 5 compact UPPERCUT rear arm bent with fist raised IN FRONT OF FACE, knees bent so fist below neutral crown, feet grounded; 6 UPPERCUT recovery with fist lowering toward guard; 7 low forward RIGHT SHOULDER RUSH, rear leg drives, shoulder leads; 8 falling BACKWARD LEFT, torso tilts left knees buckle, head left, no floor.\nROW3: 9 NORMAL UPRIGHT GUARD neutral scale anchor; 10 rear fist loaded, shoulder twisted for cross; 11 leaning backwards left BLOCK with forearms up; 12 NORMAL upright guard return.\nROW4: 13 NORMAL UPRIGHT GUARD second scale anchor; 14 deep low crouch guard; 15 torso regaining balance after recoil; 16 NORMAL UPRIGHT GUARD.\nExactly16 separated complete connected figures, same fixed physical proportions and neutral height (~300 source pixels) as Image2. Lower crouches genuinely compress body. Preserve pose positions, rightward action direction and hands/feet visibility from Image1. Match the NEW MODEL outfit fully. Clean original 1992 arcade cartoon, bold navy contours and broad flat cel shading, not photorealistic/anime. True transparent background, large gutters, no shadows/FX/text/grid/extra people.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        {
+          "path": "assets/art/characters/07-cristian/attack-v1-b.png",
+          "sha256": "7325b5bcac24ef8e0b56877db3ac6bc8d393aa6b08e479b74efbb576772e5b22",
+          "role": "historical pose guide only"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/model-study-v031.png",
+          "sha256": "60890c35457a3548a2e0fb054e9d87452bb0959f099440ef2a15c65bcd95d3eb",
+          "role": "new identity and full-body model"
+        },
+        {
+          "path": "assets/references/fighter-07.jpg",
+          "sha256": "5edcd42a4afcdbd2ab1e341a25b7ad65884bbf417b5a47396d2de2cff651d19c",
+          "role": "photographic identity"
+        }
+      ],
+      "size": [
+        1254,
+        1254
+      ],
+      "selected_final": "assets/art/characters/07-cristian/attack-b-v031.png"
+    }
+  ],
+  "sources": [
+    {
+      "count": 16,
+      "poses": [
+        "ready-guard",
+        "jab-active",
+        "jab-retract",
+        "cross-windup",
+        "cross-active",
+        "cross-retract",
+        "kick-windup",
+        "kick-active",
+        "kick-retract",
+        "sweep-windup",
+        "sweep-active",
+        "sweep-recovery",
+        "block-impact",
+        "block-hold",
+        "hurt-impact",
+        "hurt-recovery"
+      ],
+      "frames": [
+        32,
+        5,
+        33,
+        34,
+        6,
+        35,
+        36,
+        7,
+        37,
+        38,
+        8,
+        39,
+        40,
+        9,
+        10,
+        41
+      ],
+      "file": "assets/art/characters/07-cristian/attack-a-v031.png",
+      "sha256": "2dfdd45be911f70cdbdd55a377a319ccd33895f9161a61aa2961ea362e660354"
+    },
+    {
+      "count": 16,
+      "poses": [
+        "special-charge",
+        "cast-active",
+        "cast-recovery",
+        "uppercut-anticipation",
+        "uppercut-active",
+        "uppercut-recovery",
+        "rush-active",
+        "knockout-fall",
+        "unused-neutral-a",
+        "unused-cross-load",
+        "unused-block",
+        "unused-guard-return",
+        "unused-neutral-b",
+        "unused-low-guard",
+        "unused-weight-return",
+        "unused-neutral-c"
+      ],
+      "frames": [
+        42,
+        12,
+        43,
+        44,
+        13,
+        45,
+        15,
+        47,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "file": "assets/art/characters/07-cristian/attack-b-v031.png",
+      "sha256": "a496325a1050c6afdc6a179f08cba5721c778bee41e0fe019e84170126fa66ad"
+    }
+  ]
+}
