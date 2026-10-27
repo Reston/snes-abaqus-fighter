@@ -2,6 +2,6 @@
 #define ABAQUS_VERSION_H
 
 /* Shared by the native title and tools/build.py's cartridge manifest. */
-#define ABAQUS_GAME_VERSION "0.32.1"
+#define ABAQUS_GAME_VERSION "0.33.0"
 
 #endif

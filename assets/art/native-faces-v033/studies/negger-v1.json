@@ -1,0 +1,178 @@
+{
+  "id": 4,
+  "slug": "negger",
+  "name": "Negger",
+  "height": 72,
+  "description": "Adult olive-skinned man with short dark slightly wavy hair, lean mature face and firm jaw, light dark stubble, prominent natural nose, restrained dark eyes and brows. Purple jacket, light top and navy trousers.",
+  "palette": [
+    [
+      8,
+      16,
+      24
+    ],
+    [
+      24,
+      24,
+      32
+    ],
+    [
+      56,
+      40,
+      40
+    ],
+    [
+      64,
+      8,
+      112
+    ],
+    [
+      112,
+      32,
+      176
+    ],
+    [
+      176,
+      72,
+      224
+    ],
+    [
+      24,
+      32,
+      56
+    ],
+    [
+      64,
+      72,
+      88
+    ],
+    [
+      224,
+      216,
+      192
+    ],
+    [
+      96,
+      40,
+      24
+    ],
+    [
+      144,
+      88,
+      56
+    ],
+    [
+      184,
+      128,
+      88
+    ],
+    [
+      224,
+      168,
+      120
+    ],
+    [
+      248,
+      200,
+      152
+    ],
+    [
+      248,
+      224,
+      192
+    ]
+  ],
+  "reference": "assets/references/fighter-04.jpg",
+  "prompt": "Use case: identity-preserve. Native SNES sprite face correction.\nImage1 is the exact EDIT TARGET: a 96x80 complete in-game fighter. Image2 is the photographed identity REFERENCE. Preserve Image1's full-body stance, body design, costume hues, proportions, hand/foot positions, facing and silhouette size. Adult olive-skinned man with short dark slightly wavy hair, lean mature face and firm jaw, light dark stubble, prominent natural nose, restrained dark eyes and brows. Purple jacket, light top and navy trousers.\nRedesign only face/hair/face shading as readable original 1992 fighting-game PIXEL ART. Logical fighter height 72 pixels; head approximately 13-16 logical pixels high. Show the logical pixels enlarged with crisp square cells. Do not paint a high-resolution face that depends on tiny details.\nUse clear broad native pixel clusters and six warm natural skin values from deep shadow to pale highlight. Small calm dark eyes; separate natural brow; skin space between brow and eye where possible; a distinct nose tip and warm shadow; a two/three-pixel softly closed mouth; readable cheek and jaw. No fused eye/brow/nose black stripe, orange rectangle face, noise, fine wrinkles, dithering, blurry antialiasing, angry anime eyes, chibi or generic hero identity. Preserve the specific hairline, beard/stubble/glasses or mature feminine features in the photo.\nEntire sprite has at most15 opaque colours plus transparent. Reserve SIX for skin; use the remaining colours for the existing outfit/hair. Keep original clothing hues and design; do not repaint trousers brown. Original whole figure only; no floating heads, portrait, extra figures, text, caption, grid, props, special FX, shadows, framing or cropping. Transparent PNG, complete hands and feet, same composition as Image1.",
+  "refs": [
+    "D:/snes-abaqus-fighter/build/v033/04-idle.png",
+    "D:/snes-abaqus-fighter/assets/references/fighter-04.jpg"
+  ],
+  "raw": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-35bfc016-86b4-4773-a9bb-d8dd7609baad.png",
+  "mode": "built-in image_gen",
+  "selected_final": "assets/art/native-faces-v033/studies/negger-v1.png",
+  "stage": "native palette study",
+  "raw_output_sha256": "e44095d7d98a35c2f2e724ad1f952f9c9cdf65d421baa95c68f648dae381440e",
+  "native_palette": [
+    [
+      8,
+      16,
+      24
+    ],
+    [
+      24,
+      24,
+      32
+    ],
+    [
+      56,
+      40,
+      40
+    ],
+    [
+      64,
+      8,
+      112
+    ],
+    [
+      112,
+      32,
+      176
+    ],
+    [
+      176,
+      72,
+      224
+    ],
+    [
+      24,
+      32,
+      56
+    ],
+    [
+      64,
+      72,
+      88
+    ],
+    [
+      224,
+      216,
+      192
+    ],
+    [
+      96,
+      40,
+      24
+    ],
+    [
+      144,
+      88,
+      56
+    ],
+    [
+      184,
+      128,
+      88
+    ],
+    [
+      224,
+      168,
+      120
+    ],
+    [
+      248,
+      200,
+      152
+    ],
+    [
+      248,
+      224,
+      192
+    ]
+  ],
+  "native_size": [
+    55,
+    72
+  ],
+  "conversion": 0.07010710808179163,
+  "operations": "alpha>200; isolate whole figure; one uniform nearest scaling; explicit15-colour native palette"
+}

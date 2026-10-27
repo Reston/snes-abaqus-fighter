@@ -471,6 +471,39 @@ class AuthoringGuards(unittest.TestCase):
                             namespace[function](*args)
                     self.assertFalse(output.exists())
 
+    def test_native_face_palette_keeps_skin_and_exact_costume_colours(self):
+        from native_face_assets import native_indices
+        records=json.loads((ROOT/'assets/art/native-faces-v033/roster.json').read_bytes())
+        for row in records['fighters']:
+            palette=row['palette']
+            image=Image.new('RGBA',(16,1))
+            image.putdata([(*c,255) for c in palette]+[(0,0,0,0)])
+            self.assertEqual(native_indices(image,palette),list(range(1,16))+[0])
+            # Muted facial midtones must not become saturated red/orange cloth.
+            image=Image.new('RGBA',(3,1))
+            image.putdata([(192,144,104,255),(218,176,136,255),(160,112,80,255)])
+            self.assertTrue(all(10<=n<=15 for n in native_indices(image,palette)),row['slug'])
+
+    def test_native_face_source_requires_sixty_four_separate_figures(self):
+        path=self.root/'atlas.png'
+        sheet=Image.new('RGBA',(400,400))
+        draw=ImageDraw.Draw(sheet)
+        for n in range(64):
+            x,y=n%8*50+5,n//8*50+5
+            draw.rectangle((x,y,x+29,y+29),fill=(80+n,32,24,255))
+        sheet.save(path)
+        figures,details=fighters.extract_atlas(path,pose_names=list(map(str,range(64))),expected_count=64)
+        self.assertEqual(len(figures),64)
+        self.assertEqual([d['source_box'][:2] for d in details],
+                         [(n%8*50+5,n//8*50+5) for n in range(64)])
+        for mutation in ('missing','joined'):
+            bad=sheet.copy();paint=ImageDraw.Draw(bad)
+            if mutation=='missing':paint.rectangle((5,5,34,34),fill=(0,0,0,0))
+            else:paint.rectangle((34,10,55,20),fill=(80,32,24,255))
+            bad.save(path)
+            with self.assertRaisesRegex(AssertionError,'got 63'):
+                fighters.extract_atlas(path,pose_names=list(map(str,range(64))),expected_count=64)
+
 
 if __name__ == '__main__':
     print(f'Authoring guard mutations: optimize={sys.flags.optimize}', flush=True)

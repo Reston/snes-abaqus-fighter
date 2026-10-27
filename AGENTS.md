@@ -6,6 +6,20 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+<!-- v033-agent:start -->
+- **v0.33.0 is the all-roster native-face revision in progress**, PR #36 draft.
+  After rejecting the tiny Ivo face, the user requested "do it for everyone".
+  This supersedes earlier fighter appearance pins for all twelve in-game models.
+  Use deliberate pixel-readable eyes, nose, mouth and jaw, with six skin values
+  inside each existing fifteen-colour OBJ palette. Twelve versioned built-in
+  imagegen atlases cover all 768 poses; complete figures use one scale per atlas.
+  Preserve selection portraits/roster art byte-for-byte, body/costume designs,
+  physical heights, original masters, native rules/pacing/controls and ABI.
+  Final likeness approval is pending. Keep PR #36 draft; do not merge/deploy.
+  Current sources and exact prompts: assets/art/native-faces-v033/roster.json.
+  v0.32.1 verification below remains historical for the new candidate.
+<!-- v033-agent:end -->
+
 <!-- v0321-agent:start -->
 - **Latest visual rejection:** the user rejected the Ivo fighting-sprite face
   ("why does this looks so bad?"). v0.32.1 is technically tested but its native

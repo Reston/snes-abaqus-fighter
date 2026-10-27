@@ -111,8 +111,8 @@ def extract_atlas(path, alpha_threshold=200, pose_names=None, expected_count=16)
     extraction algorithm and its alpha-threshold semantics remain unchanged.
     """
     names = tuple(POSES if pose_names is None else pose_names)
-    count_label='sixteen' if expected_count==16 else 'eight'
-    if expected_count not in (8,16) or len(names)!=expected_count:
+    count_label={8:'eight',16:'sixteen',64:'sixty-four'}.get(expected_count,str(expected_count))
+    if expected_count not in (8,16,64) or len(names)!=expected_count:
         raise AssertionError(f'{path}: an atlas must contain exactly {count_label} pose names')
     sheet = Image.open(path).convert('RGBA')
     width, height = sheet.size
@@ -155,8 +155,9 @@ def extract_atlas(path, alpha_threshold=200, pose_names=None, expected_count=16)
         raise AssertionError(f'{path}: expected {count_label} separate fighter silhouettes; got {len(selected)}: {[(c[0], c[1]) for c in selected]}')
     selected.sort(key=lambda item: item[1][3])
     ordered = []
-    for row in range(0, expected_count, 4):
-        ordered.extend(sorted(selected[row:row + 4], key=lambda item: item[1][0]))
+    columns = 8 if expected_count == 64 else 4
+    for row in range(0, expected_count, columns):
+        ordered.extend(sorted(selected[row:row + columns], key=lambda item: item[1][0]))
     figures = []
     metadata = []
     for pose, (count, box, component) in zip(names, ordered):
@@ -1048,8 +1049,6 @@ def prepare_roster(root, output):
         _assert_native_animation_cycles(slug, indices)
         if not (len({bytes(ids) for ids in indices[:16]}) >= 14):
             raise AssertionError(f'{slug}: legacy key poses were duplicated')
-        pending_images.append((output / f'fighter{fighter:02}.png', preview))
-
         # Combat-face edits must not redraw the selection portraits. v6 pins
         # the earlier idle atlas independently from the current combat atlas.
         portrait_source = revision.get('portrait_source') if revision else None
@@ -1065,6 +1064,16 @@ def prepare_roster(root, output):
         backdrop_large = portrait_pair['large']
         pending_images.append((output / f'portrait{fighter:02}.png', backdrop))
         pending_images.append((output / f'portrait{fighter:02}-large.png', backdrop_large))
+
+        from native_face_assets import apply_native_faces
+        native_faces = apply_native_faces(root,fighter,slug,indices,metadata,
+            fighter_palette,uniform_scale,HEIGHTS[fighter],extract_atlas)
+        if native_faces:
+            indices = native_faces['indices']
+            fighter_palette = native_faces['palette']
+            preview = native_faces['preview']
+            _assert_native_animation_cycles(slug,indices)
+        pending_images.append((output / f'fighter{fighter:02}.png', preview))
 
         effective_standing_height = metadata[0]['effective_height']
         effective_height = max(item['effective_height'] for item in metadata)
@@ -1147,6 +1156,10 @@ def prepare_roster(root, output):
             manifest_entry['combat_revisions']=combat_revisions
             manifest_entry['native64_sha256']=_frame_hash_summary(_native_frame_hashes(indices))
             manifest_entry['walking_revision']['scope']='Walking-only checkpoint before the disjoint combat revisions; native64_sha256 records the final set.'
+        if native_faces:
+            manifest_entry['native_face_revision']=native_faces['revision']
+            manifest_entry['native64_sha256']=native_faces['revision']['native64_sha256']
+            manifest_entry['walking_revision']['scope']='Historical walking checkpoint before the native face/palette revision; native_face_revision records the final complete model.'
         manifests.append(manifest_entry)
         print(f'Prepared {slug}: 64 individual frames, 15-color OBJ palette', flush=True)
     if not (len({tuple(f['indices'][0]) for f in fighters}) == 12):

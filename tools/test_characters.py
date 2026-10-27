@@ -659,6 +659,13 @@ def verify_native_proportions() -> dict[str, object]:
                 for revision in entry.get('combat_revisions',[]):
                     if pose in revision['frame_ids']:
                         expected_kind=revision['scope']
+                native_faces=entry.get('native_face_revision')
+                if native_faces:
+                    check(native_faces.get('frame_range')==[0,63] and
+                          native_faces.get('scope')=='native-pixel-faces',
+                          'native face revision explicitly covers all pose roles',
+                          {'fighter':fighter,'revision':native_faces})
+                    expected_kind='native-face-pixels'
                 source_kind = item.get("source_kind", item.get("source_role"))
                 check(source_kind == expected_kind,
                       "frame metadata preserves its source role", {

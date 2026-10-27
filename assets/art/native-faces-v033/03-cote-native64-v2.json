@@ -1,0 +1,104 @@
+{
+  "id": 3,
+  "slug": "cote",
+  "name": "Cote",
+  "height": 69,
+  "description": "Adult fair-skinned man with short reddish-brown hair swept to the side, clearly ginger beard and moustache, adult long oval face, natural light brows and small calm eyes. White rolled sleeves, burgundy waistcoat and navy trousers.",
+  "palette": [
+    [
+      8,
+      16,
+      24
+    ],
+    [
+      80,
+      32,
+      16
+    ],
+    [
+      144,
+      64,
+      24
+    ],
+    [
+      208,
+      112,
+      48
+    ],
+    [
+      88,
+      8,
+      32
+    ],
+    [
+      144,
+      24,
+      56
+    ],
+    [
+      24,
+      32,
+      56
+    ],
+    [
+      64,
+      72,
+      88
+    ],
+    [
+      232,
+      224,
+      208
+    ],
+    [
+      96,
+      40,
+      24
+    ],
+    [
+      144,
+      88,
+      56
+    ],
+    [
+      184,
+      128,
+      88
+    ],
+    [
+      224,
+      168,
+      120
+    ],
+    [
+      248,
+      200,
+      152
+    ],
+    [
+      248,
+      224,
+      192
+    ]
+  ],
+  "reference": "assets/references/fighter-03.jpg",
+  "refs": [
+    "assets/art/native-faces-v033/baseline/03-native64-2x.png",
+    "assets/art/native-faces-v033/studies/cote-native-guide-v2-8x.png",
+    "assets/references/fighter-03.jpg"
+  ],
+  "prompt": "Use case: identity-preserve. Native SNES game artwork EDIT.\nImage1 is the EXACT EDIT TARGET: all64 existing Cote game poses in an EIGHT-column by EIGHT-row atlas. It is a2x nearest-neighbour view of a logical768x640 sheet with96x80 logical cells. Preserve exactly8 columns/8 rows, every pose in its existing cell, complete full-body action, stance/silhouette, proportions, costume and size. No new poses, body redesign or portrait sheet.\nImage2 is the NATIVE FACE/PIXEL-PALETTE DESIGN GUIDE, an enlarged actual69-pixel fighter. Image3 is the photographed identity. Adult fair-skinned man with short reddish-brown hair swept to the side, clearly ginger beard and moustache, adult long oval face, natural light brows and small calm eyes. White rolled sleeves, burgundy waistcoat and navy trousers.\nChange facial/hair rendering throughout Image1 toward Image2/Image3's readable natural adult identity. Keep the original outfit's hues/design and all original body, limb and face directions in each cell. In-game face is about13-16 pixels high: use deliberate original1992 arcade PIXEL-ART clusters on that logical grid, NOT a detailed illustration relying on tiny marks.\nUse SIX separate warm natural skin values: deep brown shadow, shadow, midtone, base, light and pale highlight. Allocate remaining colours to original costume/hair. Separate natural brow from small dark eye; keep a skin pixel between where possible. Nose tip, warm nose shadow, softly closed2/3-pixel mouth and mature cheek/jaw must read independently. Beard, stubble, glasses, hairline or mature feminine features follow this specific person. Keep cheeks readable. No fused brow/eye/nose stripe, flat orange rectangle face, generic hero scowl, anime eyes, photographic pasted head, head enlargement, chibi, dithering, noisy wrinkles or blurred shading.\nEXACTLY64 separate complete transparent figures in Image1's row-major order. Preserve every original crouch, hurt, falling, floor KO, airborne and walking action. Upright height approximately69 logical pixels, baseline78 inside each80-pixel cell. Keep original source relative sizes; crouched/lying poses genuinely lower. Complete hands/feet, clear transparent gutters, no touching figures. No text, labels, grid lines, extra people/heads, shadows, FX or props. True transparent PNG. Entire sheet, no cropping.",
+  "selected_final": "assets/art/native-faces-v033/03-cote-native64-v2.png",
+  "reference_sha256": {
+    "assets/art/native-faces-v033/baseline/03-native64-2x.png": "840b4b7e0f5fce085e3c048c24a6fa177770f38f88868a029e7351da1bdbad22",
+    "assets/art/native-faces-v033/studies/cote-native-guide-v2-8x.png": "b8fca4c9d028fd6ff4785d9853773f64e9bb580926d6e2770138b75a219ac899",
+    "assets/references/fighter-03.jpg": "00c738a6e137cb069970a8c26b822c52c1fba8c6594ee31a89f57709838cfb3b"
+  },
+  "baseline_commit": "5c1bb02",
+  "variant": "v2: immutable final guide inputs, chroma-safe native palette",
+  "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-1213838d-dead-4f7b-a7b2-dbbb130bd955.png",
+  "raw_output_sha256": "2fabd99142fe8759e6a8b407242856219ceb00b9223c300049b5c7e736a851ee",
+  "sha256": "2fabd99142fe8759e6a8b407242856219ceb00b9223c300049b5c7e736a851ee",
+  "mode": "built-in image_gen",
+  "status": "generated-awaiting-native-review"
+}

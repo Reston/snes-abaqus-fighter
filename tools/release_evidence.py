@@ -124,6 +124,8 @@ SOURCE_INPUT_EXACT = {
     "tools/build.py",
     "tools/make_assets.py",
     "tools/fighter_assets.py",
+    "tools/native_face_assets.py",
+    "tools/native_faces33_contracts.py",
     "tools/portrait_assets.py",
     "tools/menu_assets.py",
     "tools/test_classic_menu.py",
