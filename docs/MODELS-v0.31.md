@@ -1,5 +1,10 @@
 # Ivo, Fernando and Cristian model revision
 
+**Visual follow-up:** the user liked the body improvement but found the faces
+off, specifically their eyes and expression. The ROM below remains the tested
+v0.31 candidate, not an accepted facial revision. New [expression studies](FACE-EXPRESSION-REVIEW.md)
+are awaiting visual feedback before adaptation through the animations.
+
 The user's three supplied native screenshots identified these faces as too
 generic. The first restrained atlas edits retained that problem and were
 discarded. Fresh photo-based model sheets established distinct facial shapes
