@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "fighter_id": 7,
+  "scope": "jump-v1",
+  "palette_sha256": "5488f08bd6b0b18a4d65a681f3a88257f93ac2e55c9fafa5834af4f52b55b069",
+  "anchor": {
+    "source": 0,
+    "pose": 0
+  },
+  "height_target": 73,
+  "reference": "assets/art/characters/07-cristian/model-study-v031.png",
+  "reference_sha256": "60890c35457a3548a2e0fb054e9d87452bb0959f099440ef2a15c65bcd95d3eb",
+  "revises": "assets/art/characters/07-cristian/jump-v1.json",
+  "pose_contract_sha256": "e1ba8577216fa965dbc37f4da51cac15179a52d545783c0909640f3eebe2c313",
+  "generation_edits": [
+    {
+      "source": "assets/art/characters/07-cristian/jump-v031.png",
+      "sha256": "96feeee9853741b3b073d4b815b61c73e02e2c47dd5b0e36bb95d01bb53d877e",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-6ce93321-5b87-48b0-8bbb-45e72e9e0c13.png",
+      "raw_output_sha256": "96feeee9853741b3b073d4b815b61c73e02e2c47dd5b0e36bb95d01bb53d877e",
+      "prompt": "Use case: identity-preserve. NEW production jump whole-body animation atlas of the EXACT man in Image1 (new character design) and Image2 (new full pose model). Image3 is only the OLD pose/role guide; IGNORE its generic young face. Image4 is the photograph.\nCristian: the man in the photograph has a BROAD ROUND-SQUARE face with a substantial squared lower jaw, broad cheeks, slightly hooded horizontally shaped eyes, thick near-straight brows, broad short straight nose, small neutral mouth, very short dense nearly black hair brushed slightly upward with a low textured crown, visible natural temples. A solid adult face, not a teenager and not spiky anime hair.\nPreserve the NEW model's larger expressive head, real face proportions, adult age, body build and entire outfit in EVERY cell, including long/rolled sleeves exactly as the new model wears them. Never regress to the old angry anime face or muscular substitute. Face near-frontal three-quarter looking RIGHT where possible, identity recognizable at native SNES 67-73px whole-body height. Connected full drawings, no pasted parts. Same fixed physical scale, limb/head proportions and costume across all poses. Neutral standing height about 300 source pixels, lower crouches/jumps compress naturally. Any raised fist must stay at or BELOW neutral standing crown by bending knees, NEVER enlarge a crouched figure to fill its cell.\nExactly 16 separated figures, FOUR columns by 4 rows, row-major order:\n1. neutral anchor; 2. takeoff compression; 3. upward extension; 4. landing compression; 5. air punch windup; 6. air punch contact; 7. air punch recovery; 8. air kick windup; 9. air kick contact; 10. kick recovery extra; 11. apex guard; 12. descent landing release; 13. neutral extra; 14. air guard extra; 15. landing extra; 16. neutral extra 2.\nKeep neutral and scale-reference poses upright. Active airborne punch/kick must extend toward RIGHT, other guarded/jump anticipation/landing poses remain compact with consistent head size and body scale.\nUse Image3 for exact pose role/placement only and redraw the photographed NEW model from Images1/2. Original 1992 arcade cel cartoon, strong dark navy contours, broad clean flat shading. Generous transparent gutters and SINGLE connected silhouette per cell. No FX/glow/shadow, floor, grid, text, labels, background, extra people or detached limbs. True transparent PNG. Complete hands and feet, no clipping or cropped silhouettes.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        {
+          "path": "assets/art/characters/07-cristian/model-study-v031.png",
+          "sha256": "60890c35457a3548a2e0fb054e9d87452bb0959f099440ef2a15c65bcd95d3eb",
+          "role": "new identity and full-body model"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/atlas-v4.png",
+          "sha256": "6c18c84321b7043b786ac97a9e0659e75990e68f1179b3a1ce6c11817352ef29",
+          "role": "new full-body key poses"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/jump-v1.png",
+          "sha256": "4e1630f8f35016460a037978f5d202d34912921d5e67e0b79a359d8e5efb1b6a",
+          "role": "historical pose guide only"
+        },
+        {
+          "path": "assets/references/fighter-07.jpg",
+          "sha256": "5edcd42a4afcdbd2ab1e341a25b7ad65884bbf417b5a47396d2de2cff651d19c",
+          "role": "photographic identity"
+        }
+      ],
+      "size": [
+        1261,
+        1247
+      ],
+      "selected_final": "assets/art/characters/07-cristian/jump-v031.png"
+    }
+  ],
+  "sources": [
+    {
+      "count": 16,
+      "poses": [
+        "neutral-anchor",
+        "takeoff-compression",
+        "upward-extension",
+        "landing-compression",
+        "air-punch-windup",
+        "air-punch-contact",
+        "air-punch-recovery",
+        "air-kick-windup",
+        "air-kick-contact",
+        "kick-recovery-extra",
+        "apex-guard",
+        "descent-landing-release",
+        "neutral-extra",
+        "air-guard-extra",
+        "landing-extra",
+        "neutral-extra-2"
+      ],
+      "frames": [
+        null,
+        29,
+        30,
+        31,
+        49,
+        50,
+        51,
+        52,
+        53,
+        null,
+        55,
+        54,
+        null,
+        null,
+        null,
+        null
+      ],
+      "file": "assets/art/characters/07-cristian/jump-v031.png",
+      "sha256": "96feeee9853741b3b073d4b815b61c73e02e2c47dd5b0e36bb95d01bb53d877e"
+    }
+  ]
+}

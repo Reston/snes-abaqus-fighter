@@ -4,7 +4,7 @@
   "pinned_core": true,
   "source_url": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/bsnes2014_accuracy_libretro.dll.zip",
   "rom": {
-    "sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
+    "sha256": "5a1e5c89b4b0682c1a22f51a43b52ac3a20542e08ed05e2766663ca1e1a96ebd",
     "bytes": 4194304
   },
   "core": {
@@ -28,8 +28,8 @@
   },
   "checks": {
     "pinned_inputs": {
-      "rom_sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
-      "manifest_sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
+      "rom_sha256": "5a1e5c89b4b0682c1a22f51a43b52ac3a20542e08ed05e2766663ca1e1a96ebd",
+      "manifest_sha256": "5a1e5c89b4b0682c1a22f51a43b52ac3a20542e08ed05e2766663ca1e1a96ebd",
       "rom_bytes": 4194304,
       "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
       "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
@@ -40,7 +40,7 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "e5c386591451f2a78cdfeb7484e9cfdabb9d50f7cb01b681d3a670ed246d35fa",
+        "sha256_rgb": "3bc9942116168c647d360b2f75b1dcdff0e4fd9e83139b1aec846649f887963a",
         "distinct_sampled_rgb": 308,
         "nonzero_bytes": 344064,
         "nonblank": true
@@ -53,9 +53,9 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "e681bc0a028161ec83d5d74bcecd0f158b5a4db8cc343316ab60beb9c6421c35",
-        "distinct_sampled_rgb": 608,
-        "nonzero_bytes": 313332,
+        "sha256_rgb": "b9c1f9809439463cf835892a589a9d61ae0aa555ff609d8000969eb97d3e0141",
+        "distinct_sampled_rgb": 630,
+        "nonzero_bytes": 313948,
         "nonblank": true
       },
       "capture": "docs/screenshots/compatibility/select.png",
@@ -81,9 +81,9 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "3f62381edc3dce0af078a46fc63a2339704ba44985a21142c6c28069232f4a56",
-        "distinct_sampled_rgb": 629,
-        "nonzero_bytes": 320724,
+        "sha256_rgb": "3636feda41963cf17895c2bae212c74606d03c66144f769eb0a0ff4c8fd32e1e",
+        "distinct_sampled_rgb": 661,
+        "nonzero_bytes": 324134,
         "nonblank": true
       },
       "capture": "docs/screenshots/compatibility/fight.png",
@@ -114,8 +114,8 @@
     },
     "audio": {
       "samples": 1050120,
-      "energy": 64140283797,
-      "peak": 4812,
+      "energy": 63904749615,
+      "peak": 4905,
       "passed": true
     },
     "stage_ambient_and_freeze": {
@@ -153,7 +153,7 @@
           "stills": [
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage0-center.png",
-              "sha256": "761ab4eff5855c1d84e8ce52ea2a653732f2fcc00b241efe155720a4d4884d12",
+              "sha256": "fc4adf529d9885432bc78726a9e98748e8ff5bdf41a2b072e9d6f0d9e47945f1",
               "scope": "current native PPU"
             },
             {
@@ -163,12 +163,12 @@
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage0-left.png",
-              "sha256": "5a31431b91a7a53dedf32f982dff48c88c84cfa6411519c79d7e8772bc691eb3",
+              "sha256": "70d25a6e43c0a3b473ba0f0dee60883626f5a04ea400478eac07b8a9fa118dec",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage0-right.png",
-              "sha256": "ed33e6306c1774f8ba7a19c6ee5d80c2e9acbfb9db35829716435342d9a730e5",
+              "sha256": "4be93c34d2bf4259e413cfa9a08d6a7fd5d117dbf3d68a697fa85c7f453cb7ab",
               "scope": "current native PPU"
             }
           ],
@@ -229,7 +229,7 @@
           "stills": [
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage1-center.png",
-              "sha256": "fb521ade36895157d59190c22c27bce860b65855d6323bfe2a08c22baab40545",
+              "sha256": "ad4c71d9e3fab59935ecc7ae67a06fb27dc8a034e783654042a31bc84efefbc7",
               "scope": "current native PPU"
             },
             {
@@ -239,12 +239,12 @@
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage1-left.png",
-              "sha256": "674925560baa93f3d388611483bfa7550166c0bd828d8b74809197497d1ad2b1",
+              "sha256": "abd7c941eaa1749598581b4c54f1d4d4e614234ca54ec25d79e16376b7f9e829",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage1-right.png",
-              "sha256": "cded1eb3f2e871b995e46ea3fbb14811944229c75cbf4b86b3646d163d3b88aa",
+              "sha256": "ad9885ff11a0d65d699a4c3a7d0198196d9137840e4c1e9fa6b10ae375a334d3",
               "scope": "current native PPU"
             }
           ],
@@ -305,7 +305,7 @@
           "stills": [
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage2-center.png",
-              "sha256": "692c268ca4a560e04b2ce90b6137064b4b6e2b9b8387e66fa46229fb4b855152",
+              "sha256": "578b969ad62de733b861b74922fcf4526d556a7e39eab8304c745a92866ff096",
               "scope": "current native PPU"
             },
             {
@@ -315,12 +315,12 @@
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage2-left.png",
-              "sha256": "ab8cc720a6fc82e20a767651cd5c9a9668353199838f92bccf37e0d4a0a97791",
+              "sha256": "70e108577e6c8319156f4eabeee02b2a91c7facb1ed2e3353a97e0d56ced51b0",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage2-right.png",
-              "sha256": "9407d3d0e6f635fdb60dea94bf5024b11690e4fe8fc1198aa06c51bda1a8d9ac",
+              "sha256": "1a485cb41d865ffc3d8a819e9254d3c9c9ba2923110e13461c105cd031278ec3",
               "scope": "current native PPU"
             }
           ],
@@ -363,7 +363,7 @@
       "synchronized_initial_frames": 1,
       "synchronized_frames_in_600": 47,
       "stat77_values": [
-        17
+        1
       ],
       "stat77_overflow_bits": [
         0

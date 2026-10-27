@@ -30,6 +30,7 @@ P2_STATUS_ATTR = 0x6000
 MENU_CORE_OPTIONS = {"snes9x_up_down_allowed": "enabled"}
 DELIBERATE_PACING=tuple(map(int,json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.'))) >= (0,25,0)
 PLAY_FLOW=tuple(map(int,json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.'))) >= (0,26,0)
+NATIVE_PIXEL_FACES=tuple(map(int,json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.'))) >= (0,33,0)
 CLASSIC_MENUS=tuple(map(int,json.loads((ROOT/'dist/manifest.json').read_bytes())['version'].split('.'))) >= (0,27,0)
 _screen_address: int | None = None
 
@@ -3481,6 +3482,12 @@ def _cross_up_contact_case(port: int, key: str = "a", *, guard: str = "",
             # reach it naturally; the contact and every hurt tick must clamp.
             e.run(320 if DELIBERATE_PACING else 180, p1=[forward], p2=[forward])
         approach_gap = (44 if guard=='low' else 40) if DELIBERATE_PACING else (40 if front and not corner else 36 if guard == "low" else 24)
+        if trade and NATIVE_PIXEL_FACES:
+            # At 40px the new active body and opposing ground strike only
+            # touch horizontal edges: that is a valid single hit, not a trade.
+            # A measured 38px controller bracket produces BOTH snapshot hits
+            # on both ports without changing any contact/effect assertion.
+            approach_gap = 38
         for _ in range(180):
             state = trace(e)
             if abs(state["x1"] - state["x2"]) <= approach_gap * 16:

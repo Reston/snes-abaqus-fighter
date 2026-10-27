@@ -1,0 +1,170 @@
+{
+  "id": 9,
+  "slug": "reston",
+  "name": "Reston",
+  "height": 70,
+  "description": "Reston with a small amount of short dark hair on top, retaining a naturally high receding hairline, dark beard and existing red-jacket design.",
+  "palette": [
+    [
+      8,
+      16,
+      24
+    ],
+    [
+      24,
+      24,
+      32
+    ],
+    [
+      56,
+      40,
+      40
+    ],
+    [
+      136,
+      8,
+      16
+    ],
+    [
+      224,
+      40,
+      24
+    ],
+    [
+      240,
+      88,
+      64
+    ],
+    [
+      16,
+      24,
+      56
+    ],
+    [
+      32,
+      56,
+      112
+    ],
+    [
+      80,
+      104,
+      144
+    ],
+    [
+      96,
+      40,
+      24
+    ],
+    [
+      144,
+      88,
+      56
+    ],
+    [
+      184,
+      128,
+      88
+    ],
+    [
+      224,
+      168,
+      120
+    ],
+    [
+      248,
+      200,
+      152
+    ],
+    [
+      248,
+      224,
+      192
+    ]
+  ],
+  "reference": "assets/references/fighter-09.jpg",
+  "refs": [
+    "assets/art/native-faces-v033/09-reston-native64-v2.png",
+    "assets/references/fighter-09.jpg"
+  ],
+  "prompt": "Use case: identity-preserve. Asset type: existing native SNES fighting-game sprite atlas. Image 1 is the EDIT TARGET: Reston's complete 8-column by 8-row, 64-pose transparent sprite sheet. Image 2 is his photographic identity reference. Make ONE SMALL CHANGE ONLY: give Reston a little more hair on top of his head in every pose where the scalp is visible. Add very short, close-cropped dark brown/black hair and a modest receding hairline, with a little thin coverage on the crown; he should no longer read as bald on top. Keep a naturally high forehead and recession, not a thick/full hairstyle, long hair, a tuft, or a youthful dense hairline. At native scale this should read as just a few clear dark pixel clusters over the existing scalp. Keep the existing beard, face, eyes, nose, mouth, expression, olive skin tones, red jacket, dark shirt, blue trousers, shoes, hands, all body anatomy, all 64 poses, order, silhouette sizes, spacing, transparency and exact sheet layout as unchanged as possible. Do not increase total head height, enlarge the head, move figures, crop hands or soles, change clothing colours, redraw body poses, add text, background, grids, shadows or effects. Preserve the transparent background and complete outer margins. This is a precise restrained hair correction to the supplied sheet, not a new character design or restyle. Same native-readable pixel-art structure and limited existing palette.",
+  "selected_final": "assets/art/native-faces-v033/09-reston-native64-v3.png",
+  "reference_sha256": {
+    "assets/art/native-faces-v033/09-reston-native64-v2.png": "2b9f5c1482c72286b2decc02b6baf4d621ddbb9bd37dc0967d9ddc1a74e94df9",
+    "assets/references/fighter-09.jpg": "85c079b23c7b2e3747da1ca208da3ac86ec08e6c061bc02f858186fa5fe99140"
+  },
+  "baseline_commit": "5c1bb02",
+  "variant": "v2: immutable final guide inputs, chroma-safe native palette",
+  "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-85949999-c030-430b-ba9c-6be5d158a676.png",
+  "raw_output_sha256": "0244791a9792583ff09896648b51450bdd020fde3d05c5ef80a7243e0a3bce76",
+  "sha256": "0244791a9792583ff09896648b51450bdd020fde3d05c5ef80a7243e0a3bce76",
+  "mode": "built-in image_gen",
+  "status": "native-size-hair-reviewed-human-review-pending",
+  "native_conversion": 0.5263157894736842,
+  "native_frame_sha256": [
+    "9cf572f20b61bf78755e44a246947aef4ea118b48ac851da1909a7d133b76f5b",
+    "84aac570b772efe27adee5b07fd9c0141005628ccafe72dc7f2548c54c19b690",
+    "f25d12f4055a60371fd5a545c2d2f9ebc85991adc729292801b3e68cf1197302",
+    "3106594cf9b679d3ecb0eb58ca193e9f2468cfa6d5ccfb46c16f62c650557ce8",
+    "5b69b27d95ca9a14fede9d2fb78f32a8de835345de576eccbce2968b6826b40a",
+    "c046808b68cbd4a854aedcc93bf9a7b9b04e438ea28ae2c2f63be1174f3861a1",
+    "644359cc81555cb484373b09cd546b866fd8195976e0916196581f8dd4cbece1",
+    "922a5249c39ec1835dde24088b72ca4649f192fff4cd1a1cc06aae1e12dfe065",
+    "8ea19cd4749dc950be5a896f70b2be25de473a6e9720d7c3197cb77e7a3e72d0",
+    "04756a12f840f154a5bf0181b179b332f79b41aa223eaa1cc279bb45edc9d992",
+    "e67a27743b7636b1181c65434a448c907be3fe3dd3874f9fea0e52e441a185f7",
+    "c21fd0c8d1341524ad652af8c8d6bdd2dc14d901fb0d7f63f74704315638d461",
+    "c571924c687e455990c355ab108129ed4d7a03400d02fc0d75d9adee46ca03e8",
+    "11a5f3c6a1430d7eb252ddd3606202683d3085e2eae04fef0adafe898fb52e0a",
+    "a9a3996dcae1e02c557809c6495c81b32d626294b22bbdbc1f075ad2c4225c7b",
+    "08a899cc00b919665bd12be8a820620c18ffe71e8f8dc7b21ba92e90beaa1e47",
+    "af86201ed1d4960ca1b2f84106876cfabe67639e193bc12308de0f9c74a1ccea",
+    "ee8c42639bdfff3275bdd1621692a2b7bc020d1eaa9ca08235ee1517820fa0f4",
+    "74806417f7509c8fe6988dc61dd505ff26c0282bc94ad39a6bdca00d03fba228",
+    "0859f9c1bcc83df2a58badf994e58c65721d26e6c6a77ba81236e09cabd8f18c",
+    "faddbad944378fcf7e1aef1e65aec36475975bf1fccf021420d6fefdb4a92148",
+    "2698e0776b86dabef72737ba71c7ac0e08b0287c3da4937e0393067c93297095",
+    "f5981cc6d78a8541ad3d59cf3fdcb807fa792e168270173e3908aaf2e6820e84",
+    "36be40c491c628b2d505bb71cf8845ca5f44f0c15bb3877bde5fdc003d923a0b",
+    "f0b13e8e173dc3a91c0e3153bb45198f9610cf6ec3d51925616b247e3c3a2b99",
+    "5a6e934d84999bf74fcbd0ce8c45659f683733b97b77efc99af607a01af75706",
+    "06d3543ea436c3a312c44452a0b3236f421c644e523cc89bd577b298e8a32fea",
+    "6af3d71e86c0f0b16fa25e47b1ace833e40fc3bdeff65262f8ea58f766c100ba",
+    "7b78ea0aaad4e61ef74028ea80b6f6509b9ea79a2c59a9715fa903e182ad9edc",
+    "d5ddfdac344e3bd34feafba114cb4c4e6a6f33a60d4e51524fded58054ec04ef",
+    "8635dfe5415d14c9ef1cfb1aab2344c922b938f2883912b924966f073f9568c3",
+    "4003fdda2a2a32764ab5310eaf03d84b4dcbd67a58194197e1fffb5111336235",
+    "6291cfaf087f83e13b3369ac4f7246a91077d49ca817239ac37b2b3fb1f527d1",
+    "cf41a9ce334f32965de53035626d3144fe96223a43c83f468b82cbb950c0be1a",
+    "3d932c498f1d38c592088f1e20aeebecfeffa24ccc4377200c1789534c17f3db",
+    "91ec7a5265f65d0b0dfffd2ddef3af19cd5e01134b28308ac6f6c3c64bf5499c",
+    "d684ba3bf33ba696eb05b5e88935c268669b3bc96a76c987e0313129ec3bc8b0",
+    "1de2067e778e70111dcd9cab864a2e68499280c69de744423805b4b708f1fbb3",
+    "f2a1cf15c3de9add644d40c2c4a7ec407bf446fe697a7192619a0d0e85fad457",
+    "ebfe21666ea225ac9660fe50cb34573d8eb96b254bbcacdb9474d3ecc896123d",
+    "e8ffa9c11f09f924ee8800277b889a6636ff94b9dd2988da2cee7b7ffc35b446",
+    "a9dcc21b7908142883dc702bd7fd0edbe3d6b1b3938afdd130e83bc4084565cc",
+    "bdeb27786d758e28cf8983e16461463a85521b527fda68f5f08ed6dc221eab87",
+    "28c203ed792d8f7d911b53b5e18e16f9a5e4c2c6bd3f444bb3eb95cd9620d5be",
+    "78596801510d655fbb0f3643eb38752a337ce8b78535c2f46fe94e49de140d21",
+    "b2627fb32c07ea66ba54115a8c073ad9a2557767a6b52090ac5e107601bf70fc",
+    "1fe66d6e4233f3d70c0cfba7cd5b7b35bbf08ad1b6a50ca33e266aabb4f8b368",
+    "69df1d9eccf5c8a22ae96f4dcbf8bd4cc8fcd0d12344d36decd7202245f33bb8",
+    "64c756bfaa383f7c18ac41299c6a9f5465674e63badbf912e224a79f5a2af8b3",
+    "d23bcf9a8cd75ce28a4b24cf29692ef7bd768ed40424b75e95cf0e33ed6109e5",
+    "338440489ac3258801b8f613af02bfa8c3872592b191ec2d177fa600fc835dad",
+    "3dbfae3fc36964b496956dd0c5900f8c05d67c620c159d8600bd9440253135bb",
+    "ead4b1c7384516f86a065d8eeb3ff5db5506b71b666392056eeb8c40f3b68fcc",
+    "0ee10fe834ca4b1d0db05f289480110cd63ebc606c0c82819e321f5386728842",
+    "c00323c119e647415daab686b51fe474513bc4de0b00d45acd9123594bd0ca3a",
+    "97dd8001a46517131ae5e7d362d67a25a7ea0110197e7c0c544be802e3f40bca",
+    "b4295646d4639d51201e54ee61128c0ab1354f8e83bc1eedb885205aac73e567",
+    "7ad0d94af049c495573fbf674ee500b80f6d030bff871d36725c36f48c698e3b",
+    "c2ec54a6f6bb369bbbb60a9054c08b52c21b38c7cab7e5c9160c93d11da954ad",
+    "b20f2ba2fae6f986996383d0415f5dee620513db9a61be2ed6ce1e50d2be1914",
+    "0fafbca3cc6d1a0f333099bcf330584c599f9159b93b5adaf947c5201d15773a",
+    "0e8cd32c58aa81691a905a876003ee2d025406ff1c89f99fec25557bcfc6d816",
+    "a448dda03d1b857f3dcda5e25f48a8711fe35dc2b0c0d86742e121f269e00d85",
+    "2acb7fc83c26a0ae35054b404a702d44e6aea53ceca9d51620876712ef35d002"
+  ],
+  "human_likeness_approval": null
+}

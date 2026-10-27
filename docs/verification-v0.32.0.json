@@ -1,0 +1,120 @@
+{
+  "status": "passed",
+  "version": "0.32.0",
+  "rom_sha256": "096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f",
+  "checksum": "21E6",
+  "native_source_freeze": "6933f4908f839957145c463fea9522918e62e142",
+  "verification_producer_commit": "6933f4908f839957145c463fea9522918e62e142",
+  "reports": {
+    "docs/test-report.json": {
+      "sha256": "13fa008abe18ba643733c455266972540058d0c1e2eed280eec394d823366817",
+      "scope": "shared-native-suite",
+      "checks": 2610
+    },
+    "docs/character-test-report.json": {
+      "sha256": "5cd66c0ab33182f7e07a47cda16df780783875a23b539e1896694597e78f310a",
+      "scope": "shared-native-suite",
+      "checks": 19461
+    },
+    "docs/likeness32-presentation-report.json": {
+      "sha256": "5addde42cc02b3f5f0094b6bf891ecb8fe8ee8d2155175b9bc1aac639480caae",
+      "scope": "shared-native-suite",
+      "checks": 3600
+    },
+    "docs/input-test-report.json": {
+      "sha256": "47347d8603f567e19e10acfbe24936f942c7304a222386cc1b0314cec30e3706",
+      "scope": "shared-native-suite",
+      "checks": 2296
+    },
+    "docs/stage-test-report.json": {
+      "sha256": "21561ada0302d90bcf2c31b60258730f8da661f548a9df953fbac14206d94f80",
+      "scope": "shared-native-suite",
+      "checks": 19002
+    },
+    "docs/training-test-report.json": {
+      "sha256": "24431be1efc251c655f49b8c74e869860c1904539e30578f5dcd573ae04dad22",
+      "scope": "shared-native-suite",
+      "checks": 3636
+    },
+    "docs/compatibility-test-report.json": {
+      "sha256": "2c78c7847fa1c414769e003576a06901f1f43e18c82f58f478c552988226dd62",
+      "scope": "pinned-Accuracy-independent-smoke"
+    },
+    "docs/fresh-build-test-report.json": {
+      "sha256": "0a134f51c483563e1d4f00067f20fbdfb9479e3205bd12b301d7083b34eb4fef",
+      "scope": "fresh-committed-native-source"
+    },
+    "docs/likeness32-native-report.json": {
+      "sha256": "b225f2288e4c823129cf4e8721d31f18ebe08551a9807ecc9df455781e21e7b5",
+      "scope": "three-fighters-both-cores-both-ports-portrait-and-gameplay"
+    },
+    "docs/likeness32-policy-report.json": {
+      "sha256": "d39556802d299473512c45252bfb12501e71e06c80ff6724df493371e2e324dd",
+      "scope": "bounded-three-fighter-preservation"
+    },
+    "docs/likeness32-preservation-report.json": {
+      "sha256": "d0962dcc525bf693f92612152fcb186d9d6d29e0956b5a1c1ed20f4ff58f9a55",
+      "scope": "assets-RAM-geometry-and-assembly"
+    }
+  },
+  "native_suite_checks": 50605,
+  "reference_direction_approval": "Yes, use this direction",
+  "final_native_likeness_approval": null,
+  "merge_authorized": false,
+  "main_deployed_version_at_technical_verification": "0.30.0",
+  "new_offline_package": false,
+  "physical_hardware_verified": false,
+  "focused_native_callbacks": 8820,
+  "focused_native_checks": 44100,
+  "focused_execution_head": "6933f4908f839957145c463fea9522918e62e142",
+  "unit_guards": [
+    {
+      "path": "docs/evidence/v032-expression/guards.txt",
+      "sha256": "07877ef6e89adcab861e26847d8292f752312e3e7021e7c933e6ce6317f78c4c",
+      "tests": 21,
+      "optimized": false,
+      "producer_source": "tools/test_authoring_guards.py",
+      "producer_sha256": "0ca8ef306a135b9758d840b287483161832cb980d4730ac6b516e2783a17f9f9"
+    },
+    {
+      "path": "docs/evidence/v032-expression/guards-optimized.txt",
+      "sha256": "dc320af8eaadf4135782cc334274226e2f41512bb5bdd6917944128aecddb319",
+      "tests": 21,
+      "optimized": true,
+      "producer_source": "tools/test_authoring_guards.py",
+      "producer_sha256": "0ca8ef306a135b9758d840b287483161832cb980d4730ac6b516e2783a17f9f9"
+    },
+    {
+      "path": "docs/evidence/v032-expression/web-unit.txt",
+      "sha256": "26717a7236fda8ff9291a896074aa337f7af2ac63716e05626ff3186c44b4291",
+      "tests": 5,
+      "optimized": false,
+      "producer_source": "tools/test_web_build.py",
+      "producer_sha256": "25e9298e000413b59804d3a816a4cc4d88e60f081616fe5aef9574af613017bc"
+    }
+  ],
+  "art_generation": [
+    {
+      "path": "assets/art/characters/01-ivo/expression-v032-generation.json",
+      "sha256": "77df911c85033b2e414841f73a991544eb97621c0ef5ddb92d96a182960d14fc",
+      "fighter_id": 1,
+      "mode": "built-in image_gen",
+      "selected_images": 9
+    },
+    {
+      "path": "assets/art/characters/06-fernando/expression-v032-generation.json",
+      "sha256": "59fdede4a2b44ba100efa43d7ef25654d8355e8c8a3605f40f95ab9c72eead75",
+      "fighter_id": 6,
+      "mode": "built-in image_gen",
+      "selected_images": 9
+    },
+    {
+      "path": "assets/art/characters/07-cristian/expression-v032-generation.json",
+      "sha256": "88f544d48aaa5e8a417473396ec7bdeefacfc7113ac9ccf2f3b8db95d33cf3f7",
+      "fighter_id": 7,
+      "mode": "built-in image_gen",
+      "selected_images": 9
+    }
+  ],
+  "browser_scope": "Current static bundle and five web build tests pass. Browser JS is unchanged from approved v0.30; full historical actual-WASM route evidence retains its original ROM identity."
+}

@@ -7,11 +7,11 @@
     "pre_extracted_tools_reused": false,
     "build_intermediates_reused": false
   },
-  "source_commit": "654e03249348ea89c8857561cedd70e8f60e51cf",
-  "source_tree": "1c51380f636cdf7cc32197446c7e37908903af37",
-  "rom_sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
-  "work_directory": "build/fresh-build/654e0324-qdc78urm",
-  "source_archive_sha256": "5fb5d8873625258e1f027ba269b0998cc1b4c30f081eb95645af5c7ec5060c61",
+  "source_commit": "c0e44b5a3926ac4f193c608de88c00e20d1581d8",
+  "source_tree": "d65d47e8d8f2ecf19b998dc066d9d2e117f989d1",
+  "rom_sha256": "5a1e5c89b4b0682c1a22f51a43b52ac3a20542e08ed05e2766663ca1e1a96ebd",
+  "work_directory": "build/fresh-build/c0e44b5a-rldlwev2",
+  "source_archive_sha256": "dd7067b3beeb6d6087b0eda20d3d3cc88ea5a20d90506368acbec7d201c4010e",
   "cached_archives_reused": [
     "snes9x.zip",
     "pvsneslib.zip",
@@ -26,7 +26,7 @@
     "sdk_tree_sha256": "0cd7a571b0a020394ead285b887c81b717c55c39540335abd8c7774b55bccb7b"
   },
   "build_exit_code": 0,
-  "build_log": "build/fresh-build/654e0324-qdc78urm/build.log",
+  "build_log": "build/fresh-build/c0e44b5a-rldlwev2/build.log",
   "bootstrap_archives": [
     {
       "name": "snes9x.zip",
@@ -53,7 +53,7 @@
     "python": "3.12.10",
     "pillow": "13.0.0"
   },
-  "rebuilt_rom_sha256": "9ad9ca5f30a52871d7ea7efd71ce82af3d2e69e72b844db01e07bddbb63b736e",
+  "rebuilt_rom_sha256": "5a1e5c89b4b0682c1a22f51a43b52ac3a20542e08ed05e2766663ca1e1a96ebd",
   "generated_assets": [
     {
       "file": "assets/generated/arena-life29.json",
@@ -97,7 +97,7 @@
     },
     {
       "file": "assets/generated/assets.h",
-      "sha256": "d8e353cda5137547af035c2ab0cb286aa73520a0fc5858e61c051c4efcd5a09a",
+      "sha256": "9b48750ea95ffa4e6fd3bdaa98768f3d42518d15a23bc6cc86eac1c05e7ac82e",
       "comparison": "LF-normalized text"
     },
     {
@@ -157,7 +157,7 @@
     },
     {
       "file": "assets/generated/character-manifest.json",
-      "sha256": "80e35a49d70a06a1237f77ec49a7864afce548f44c483104e8f7fb92ac1752e6",
+      "sha256": "536fb91ca97d76b3f22f3b26ba7cb78ee91c1ed5e51fd9db4ffc523b46279533",
       "comparison": "LF-normalized text"
     },
     {
@@ -182,252 +182,252 @@
     },
     {
       "file": "assets/generated/fighter00.bin",
-      "sha256": "e4b2c7419db1fe7e3c94ca85df47bf8596125b7208a651463aed01be72e37eb8",
+      "sha256": "8387ed3ee45b3cc2306dedde8f56886be33353fd7ccffb7aa4f5acd80c4dae36",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter00.png",
-      "sha256": "8196b57cb4f585aec4ef0af48b3a6a2306e64ad9f1425180f2a48d169b48a2cb",
+      "sha256": "0b33a3aa272b2080ce69beff511137a454ecc297f2206f68ffdec124974c890c",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter00_pal.bin",
-      "sha256": "ef3f4e8213fe8fd940a89b40d9c39f4e6b0ac3e36dbf51f976118c305d8d3341",
+      "sha256": "f42a2237cd4a6678ec39332fb89a3211271d43e5a58fd3beab492275cf7e2604",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter00b.bin",
-      "sha256": "9d973c592bb58a331ae0e85f67976f39500a977d633a28b0a48403fe155d1112",
+      "sha256": "ba4924643edbf737fbe544fc7085521c8639bfcba612c1ed5573c771326358c9",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter00c.bin",
-      "sha256": "3df3db9e81b682e6bb5930644939381328987650d614dabd2b3a784cea8c4049",
+      "sha256": "e0b1dc952642eacaf2ed2d760d3f80a4c648f26900dbf19b812d019b2e007366",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter00d.bin",
-      "sha256": "8c2fcb7a8e829a2f2c40edd32f1c5039f7181743e9b838d8bfa99f7d7e9efd7b",
+      "sha256": "814133e6a4fafba858557a35d3325e20ee4b707dc78b823644a3a7cb26b1c83d",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter00e.bin",
-      "sha256": "b8517bcbe5bfac7de72971c7bee01370d408ba37b25b50f55ce0f1c8cf0adb5b",
+      "sha256": "11f82366df0d48ec614696626998d4099e5ecdeed8376bbd5cbbf806ead109d3",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter00f.bin",
-      "sha256": "c39df0d296976aba9f599c65a8b7175a33bb36d97248a2c6a48db510c80b2b29",
+      "sha256": "a6def543b8495a8ee2e8ba0d1c32ad53f747251342de0787fac3a5260feccd19",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter00g.bin",
-      "sha256": "2112b614e61fd7a5460383083c6a5a327d1fc7950aa503eacfd999f6d0784bb9",
+      "sha256": "2c554fb8ec5e36a2136975a9add688f50ba248ed3d30069dafc390f2f881f3b1",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter00h.bin",
-      "sha256": "7c4735b5b8e133e468be53d2383ef068d7bb623dea05ef39b78348be50408b5d",
+      "sha256": "b4a81cd935050956a2b56794119e0464b26fa8207de621a36ed148dcac8cf0a2",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter01.bin",
-      "sha256": "f934113e838abaabe85a467b87589072bbadf118e44af52f2dc476e57192deaf",
+      "sha256": "b85c465f0270899f38bc178e9097d5364ed2b601cdbbbb5f0cf45734d85d8a4c",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter01.png",
-      "sha256": "899682ee149c6f0e25338ff2c18955d4b269819e53c2fb3172d2d49ce1a0f53b",
+      "sha256": "891af25981920da257173baa45c04168e547274de43921aa7a306f76221843f8",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter01_pal.bin",
-      "sha256": "c253838df2e0dcbd6e784bd419b68c641cddbe17a6cde73526fc9d91658d41ac",
+      "sha256": "6045f0e7bd3a6f841056e54a52f6b8402c2746e255503a90d4ed6a6d6283ca33",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter01b.bin",
-      "sha256": "28bcf26d6cfbedd0ab024ec982ef2e90ecffcf17964e333966e9f8fdddcadf3f",
+      "sha256": "1c31c7aeb5ab3974acb8d8f6269a4e3923ed2c4ddc1b6c5852fb9fcc135616e6",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter01c.bin",
-      "sha256": "94c116e71b1774aa18651e1541128d1ae3dce86c7e5337f35af7871e55399fb2",
+      "sha256": "43e7de0a2fd825c690b791d088dee306ad0418f1a5f8c71de82652093274bf64",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter01d.bin",
-      "sha256": "938c46405a2d7a6d8c55cdebf238c2011291f0072ef39139e31036452c7ad2b9",
+      "sha256": "34934025ba2dfaacb6bf8c189985828d9b61b1eb5cd36a0b3892cd1c294136ae",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter01e.bin",
-      "sha256": "c0e831e4658d63cddc525166e142fca2f7b6c9e73776aed538585e015d8c900c",
+      "sha256": "f8f9327c94b4b0f69993b401adaed45917779c08ba0e3a4c3b04d8314665fe82",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter01f.bin",
-      "sha256": "46c20fa18de6fcd45c37edb93213e6f2ea80342797cc3c92d305b38391e0757a",
+      "sha256": "e021995fb9eab26b18e9ec47b8bcd1ce11db5c71e33caa8726b61027b7562c78",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter01g.bin",
-      "sha256": "b15cee1683279be889e6222021dc080b66faab244f096280834f0947824afece",
+      "sha256": "1ebabbc4a25758e202be05be789e403efc0361ebd21cf5c50c8549509e16a7bb",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter01h.bin",
-      "sha256": "257375a4df8195c12f1700d856127dd3f959499544c2d85d18ee6ca6571e4f58",
+      "sha256": "ef58ea6571959602e851481b29fae4931ec2864c47057ffe554975abb36ee793",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter02.bin",
-      "sha256": "82532f6afeb68e7b3cc697b35c99f730bbff8c6522c1a822f9f22c858cd93db2",
+      "sha256": "7729dba815cc68b785fd45adb48970656d20a8d6cc860669ed5c22185942726a",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter02.png",
-      "sha256": "94eb446afa775b6530df011f5761f9b3d272ed9be1fee4fdd3ccec5af740c811",
+      "sha256": "463212b333afad8c871086b4f88736767997a2dbe57a5739e438e4ed39f21510",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter02_pal.bin",
-      "sha256": "39ae172ad89edf2a8a264e9058e8d7d582ef3a69d3d11737edbf4fe6c636aced",
+      "sha256": "37a8b45c219fd55e123c5da3f13cc937b1ec2ad4118201b3e8c9183c8e09f40f",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter02b.bin",
-      "sha256": "78a5ba739f61b4fda00bc69e329b8f6c953fba2bb78bc12bb3a396085c63dc08",
+      "sha256": "d6d8f6feda3672e02b740a04bf79fc50fb9f35a73be0fa9ed86f102b28984a10",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter02c.bin",
-      "sha256": "d9c4705865bd5dcfd95ec78e6eeb4f8284456b2c224b85a9b96f0896d0c14077",
+      "sha256": "4c73e7d053c0d5af57b69ab2165703799a56a9e2600b895f1cb2e974e5105f9d",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter02d.bin",
-      "sha256": "1f1f3a9cc3324ddc81987f845f0f6f0c40f94b017d358e28788e5bd6de101a31",
+      "sha256": "5bb1768e5345f4664cdf4351de1067c96d469ffcf1fe9c8a79c8bbad7109688b",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter02e.bin",
-      "sha256": "a88459685ea7d7f1bf871ceeeb5f33a616f1eeef57a7c5caef89a11314d7f340",
+      "sha256": "fa86b66f85d842f93327fd7f342c7241f757ddbbdbb662b9fc933e1fa962bf07",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter02f.bin",
-      "sha256": "31287cc2bb75439cb7d66c24f9031ad2bf0ef60ce8993d3b0664f36192cf7aa9",
+      "sha256": "6d2b1b87b7ec165fc734fb9bf17b77937479c197b62f44172ad9f58d0ac21809",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter02g.bin",
-      "sha256": "d43341a186a235c97c41e24f8649a70a0e309e2b5faae0e26b116a8f92c4651e",
+      "sha256": "a4fb16c79484f36a008ab3647583feedfac405064a4b4a63a983039cfe28109d",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter02h.bin",
-      "sha256": "bfde2a7f5018979f201676e0604169d4b62869ef4c733c8f84bc9f661d8d4171",
+      "sha256": "9fb305c55b89bcd88bde3c086f2f3f9aee0ac6a8308f509ee899ff254a8ff5e8",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter03.bin",
-      "sha256": "48fad119a54060c6f797aa97c0d8c8e1ca619d9480a17a988371c6cd25ecf28a",
+      "sha256": "48bd49ad47909651a3d9fd9794dfb00ff121d06c3cfa7b05bdff42c9fc300283",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter03.png",
-      "sha256": "f52a2f9b74e31dff8daa5a448cee4d1db31e8b4818da1f744aab765669df6a85",
+      "sha256": "bf049d7a9de5a18c77d29b0fed5365778766b2a1df063c40b53168d84d3e4774",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter03_pal.bin",
-      "sha256": "28aefb1442c602557a4e103541928ebb6967c85397f02358af0478b491392414",
+      "sha256": "627e64f9ea53b77d52919a74efb1ba77d2b490c0bc0448b711d2fd0313148cf6",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter03b.bin",
-      "sha256": "230eb08a41416ff4a3d562bb0643112568c6b2d269f3fe26f9287ad298116054",
+      "sha256": "48847f22bb34e333965d0a91f573abdf728b33fb3e08f955d1241c0d5542de0a",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter03c.bin",
-      "sha256": "4aad3f14ed3c9d3859025af867fdc9683b73e5a4dc7dbf16226f8f7094172be1",
+      "sha256": "6fc82b145ebb206811bdf7280b1e1957a48bad2d2a03b177a27cf7dab9df0cc3",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter03d.bin",
-      "sha256": "90d5eb791528436e7efc77d031ab540b58e53fd884730926e95507d3e43188e4",
+      "sha256": "4b97929ad9180995c159a0a3691aa6bf42c5bf6a878e2d9ad07f3c7a693b6ffb",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter03e.bin",
-      "sha256": "e83739b4937e1f572b0987d9cd5e28252ae1b76d6964d24ae8a95ff0c433ec98",
+      "sha256": "51419e4e41e17090c626996a83c61e79e687aaf38fc84a29e895ae92e19063fe",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter03f.bin",
-      "sha256": "2fb584b7a409c5cc1863f9623883043d9e06f5349975a6669de802d6556f5b40",
+      "sha256": "e6fbcda7dd0078ba32a4d2a722fc9d681a44fa60cbf392d7a477bbcb357af6d4",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter03g.bin",
-      "sha256": "5d88b5209fd2e323e4404e2256fb5718b176b0c584a948efac5e668961ef16e1",
+      "sha256": "3461d44835095f6680cb70eef92509b667c61acc18cdbacd62b664b444011346",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter03h.bin",
-      "sha256": "2cbaa62a33154a8780356f8630126034b5f382752387c68f7d2507b8ae62c738",
+      "sha256": "eda7dc436d3ee690e149c4ffc5ff0013e0d76a424ee9c43e6d3483f6fde610fa",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter04.bin",
-      "sha256": "c8e077e3ff21a9dafb4aa179a28d6b51081711d21aca3afb69cabbe6afbb05a9",
+      "sha256": "e060e7386706dc2c0be6e86c4ded06d31b39306d2462cdca067e629e63ed717a",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter04.png",
-      "sha256": "52c468a380c61ddd6540066388687e58685ea6f0610e60ff44a1254f263943b7",
+      "sha256": "c86d0d3271e01728254af74e7e7eddd32efabcdc557434cf99d1c70e4cf0697e",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter04_pal.bin",
-      "sha256": "207e656730f0aa78f7a3be33d21d6c88564b150487434808ccc1e744a507b8b5",
+      "sha256": "b01c5a065f66fe09dbd6dcdb954091a9b6b1b437b935fb4a908641c6a635d149",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter04b.bin",
-      "sha256": "97ba9f30bab3615e36ade648bcf1f396ee7dbe0fc3ba75497a38ec61aa9f0650",
+      "sha256": "2ad3fed40042e1f9429cf434749c9c44634a0d436ae7491e6619d252ecc7bffe",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter04c.bin",
-      "sha256": "e28d4589e272ee3a1fe249ea0bf6b76e2756f2e46f924a3ab018433cd04729b1",
+      "sha256": "24599e4b453d9e854750b1f21ff40208545c8942f9a90f597030369cc53b3034",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter04d.bin",
-      "sha256": "04bd18be5a76b666d789ca3ca1615f767da9f39f99128108f92e9b0e5a4b5df8",
+      "sha256": "3165215ae2059d3e232991538091245f47fd4da775ed0a8f7f8dd9c24309fc98",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter04e.bin",
-      "sha256": "3f0dcd9ce239f60c212cc30ad3cb491ca5d3f48b865179d7288568e84b73b346",
+      "sha256": "770baa79f328701b8ea8107370826d65c015bc4b46f5ff698d8587a25012bd25",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter04f.bin",
-      "sha256": "1523005f996097760bdbaf8dac36b35617e8a6c3fa80b4cce6631b2465d4e5d4",
+      "sha256": "5bf15fffa7ae9ac2b552ecdec9faa31f0f55a612ed6055a32eec6f55d1a3e649",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter04g.bin",
-      "sha256": "b60a7df5fad8d3167e67277a16bc142fa04fe0dcb148ecfc4fed4a64ed4d564b",
+      "sha256": "c0d6fcf2a1fbb07ef282ca368b79f458feeed3952b6d86525e47f1d4e454d594",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter04h.bin",
-      "sha256": "d512c49366eb9520ea73a8218c5ea30b345a2d403fcea86fcaa5c1f3b0afc884",
+      "sha256": "dfa2fdc9858b3d3d5ebdad9be02245bcb448f13f0d407e4c4af9a1037741cb5f",
       "comparison": "exact bytes"
     },
     {
@@ -482,302 +482,302 @@
     },
     {
       "file": "assets/generated/fighter06.bin",
-      "sha256": "3a9e343236351225a538d664874ea5f94a833a32a83b310384cc2c86640c932d",
+      "sha256": "10aef4e73a304652a76bfd8c330d422780e798bd5009973d9599e3d4074b4c5c",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter06.png",
-      "sha256": "b90951b3443246932ace31d778bc05d26101334a3c115210026328c0fb57ab28",
+      "sha256": "03bc0f83065da27a124ce840244ebcb3bf70652ad4e91ffaaf31ca2705d6070c",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter06_pal.bin",
-      "sha256": "8157261a8813a14f129fe05c4cd41d219ec1d8213fda5e9de62173601a680a1c",
+      "sha256": "b7c5e8559ad043c66a96927609ab3ac9aa1ec85be300fb89dc934ce02d9fb971",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter06b.bin",
-      "sha256": "4820d42bf338710c29fff0155959c0f26de066eb3ad52506cdccbff08da88e09",
+      "sha256": "33bc6300b1982c26bbef7474a71e1999c0953923068e889dc0617a3a4fd8f230",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter06c.bin",
-      "sha256": "7e1134fd00842fa636cd09293a3ab91c238cd14d8a05fa92c6672bf31ed584ac",
+      "sha256": "fd56c8a6f1f14ec9a91a44bff7a65a4bf06e147cbf1d19769763e9c61725515f",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter06d.bin",
-      "sha256": "0524b033f2ec18160e5b0a7b2ad95806ab37696def0728a24585254529238217",
+      "sha256": "641b35ce0c0c1b6d31d23a682f30579861ef11ccdddfe1532a5a33ab9cc51454",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter06e.bin",
-      "sha256": "ec5297a4a8ff2c4509ea2c9f2778290ad5fe4fe8d3f2ecf6ca6b0cda573a8420",
+      "sha256": "40da3ad99c12ad6359a82b2c46f3e9a67626c18d7f45336115ba6ee98c3c4774",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter06f.bin",
-      "sha256": "83b0722e3864e9e845e4b6e2d23f4e531e65117306e4a00a52ce59a561984394",
+      "sha256": "66e945ff3559af07168f60af7f0c769017b428f03fdd1211acd7a39b6a28d615",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter06g.bin",
-      "sha256": "62179004c65c96e480a0017f1f36e6d503ffcec6e66b6e7931714d632054080d",
+      "sha256": "099230130e65b14313e9453c9ae8591f3f113fddc7b2f1eed75386a96f818b72",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter06h.bin",
-      "sha256": "9021c2cc799d910f707b7fb9e834e1630da8ca4f6ac466cfdad46d34a4e30c80",
+      "sha256": "28b6ace4e8d5e6b7b9a51358dd05af18734548a33c188aef5bd0c2c95a6e1ac0",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter07.bin",
-      "sha256": "99220e23b1ef1be5388dcb3888e73176cd2ea8476ba48b4bcf29bb24ec6a154a",
+      "sha256": "b2be1d5f105eb098b9ae56bfe26ec4b75bbcfe1dffccf348e48bea90c7a7947f",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter07.png",
-      "sha256": "5aa315a2a073c6023ae863b89863afb8568597797ccb5e4644c92557269a692d",
+      "sha256": "f6be87c14981c2aa7eb66c7befc5dd30a64b0a8577cb02f4c4209e01fb1886d2",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter07_pal.bin",
-      "sha256": "5488f08bd6b0b18a4d65a681f3a88257f93ac2e55c9fafa5834af4f52b55b069",
+      "sha256": "d69cc669ed99d5d1816301f8d0df77ace2ad70a99149d5ab351a528e897856b3",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter07b.bin",
-      "sha256": "3045a00c89070108b3b86631f6479ef4ca375bdbfd01d564e1ab77b6f0722aa8",
+      "sha256": "5d39de29e015818b35f192c30ad5f6e8dde13871e5b93203f27d61384309c320",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter07c.bin",
-      "sha256": "18fe7259dabf4d0e338a0c5dafbd7a1c50b86469ff99edaba145a8ad779a6b7c",
+      "sha256": "d72005b5269384ecdee0b7787520cbeba4b825133e7b4cbc9b2c3fbc2141a0d2",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter07d.bin",
-      "sha256": "d79f7f7ded9961d2da4f7e85e66f93fb60cbb762003ec0485d6883e1dbcb3726",
+      "sha256": "68998d0ed2f4115c62dcd0b2e597ca23f98dd1af44b99a03af4baa700c966999",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter07e.bin",
-      "sha256": "e49ae37c211c9b6b55919be375d7b5fa4a7665a1427396eacb563c388279f52b",
+      "sha256": "cceaf70008930c48ec1e8212a58f8786d84e7d6658b23a41a21114ad2f6b03fa",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter07f.bin",
-      "sha256": "2e8f9bc29b04b195603bb67aceb88b67e6aa03e0226e5bb31aff983f3481c8fb",
+      "sha256": "88e5bcd92c87a9f02c0a7d637eaeb1e860e2d62f123a08437f1c22c4e27c38a2",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter07g.bin",
-      "sha256": "a5d8e8ff291f1b0cee7f8117eccecb16da46c1d33673251be2917fe15f26d4a5",
+      "sha256": "8a32f86d04ca0e6864b3e3dfc3af03e3eaeae558db8fbcb3eebbc585cf3dcf1d",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter07h.bin",
-      "sha256": "288b6068ce239b133db31e639a65edf856acd96b8676b4d8ce4a33f1e4eab213",
+      "sha256": "42c13fada1dd5a254a773c1f0b8d96c0bf251daedfc93f6040ffe379d2f11353",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter08.bin",
-      "sha256": "b55dcc1225e89f1343ae23e5671d9afd3c11934e81b4f36ee4afa767e0449024",
+      "sha256": "cde65f69bb38e60b2d980ca96927346839b757c87bfebeaf8b69796006d2a850",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter08.png",
-      "sha256": "98b913a458478cbe8417e496eed747d2f3909b4d50621166ad3fe97171d15804",
+      "sha256": "df415b3ce2de7147928d9cecabd653f36cc1032f4cf7e572885e622c062adf41",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter08_pal.bin",
-      "sha256": "2fc1e702ab7d8323d94df3c6e7164891e7dc6f2e75b6ab4b8ce82dfb866094f1",
+      "sha256": "c4b748249118c5cbebeba58a4d18092d78f7ccf956129ce34fdb5cc6bc0f2874",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter08b.bin",
-      "sha256": "a73f3e7bff94fdb6cf29539a2303fc803747114451ad60578c68c23078bbfd4f",
+      "sha256": "da8206dfe2c1a9cdfe672eed3b5f7c1542226bb3e66166acf83879440f4c6f20",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter08c.bin",
-      "sha256": "02685dd59c018761cb3bcd366aada7ffefdbfcbb6efb5c803dbea1b52953734c",
+      "sha256": "65e3c550973e73a7e0858d4322f7acf664289c251ec79f2709d2cc5f6a78515a",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter08d.bin",
-      "sha256": "99f7bc3c045fa3c631352c02736aa6f338839046aaed80d8289c09e262422b89",
+      "sha256": "52be1a02d6b638a039aa54965fca24cc7bc6f79d954e23a24ffd329ff7434e94",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter08e.bin",
-      "sha256": "163ac72e1a40b7b8dcd4972bb9110169f776a31d704a96221513d561724e9c3e",
+      "sha256": "24a034918b04a923f6a6b52025cf6517ca019aab97668d59d2811be1fa74c55f",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter08f.bin",
-      "sha256": "ed48faf7ad3031baaa2173643424fda05fc8af11810ccd8dea8731a650e95175",
+      "sha256": "c53100737c0452564e0da3cc1f273b9542861b4e005ff1152db22fda043ba0a0",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter08g.bin",
-      "sha256": "3e544207bf66327e92a1a60d202597244b2bb6f6b4029c830688007a66e3ebb5",
+      "sha256": "4fa8dcebd1dc7754975ea4d1e6593f55c2d7928d235fbf407a3aa671c6aa9fb4",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter08h.bin",
-      "sha256": "0cb54b41eac8f08b0712fd8c325237b24db4e6cfec223cc9e53a855abdeec637",
+      "sha256": "432a79295abefda35ab74110a9149625cb8545e835dfa03045981b4c370932aa",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter09.bin",
-      "sha256": "90f21f269776d61d04bb2622d920ae6a01ac2e85d92882fbe96de876da52f076",
+      "sha256": "6fe0e16db5f4d0ee2ad1daea1434e0d2302653c61efd651682e68c041b4eebf7",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter09.png",
-      "sha256": "ded66f07eb1e1cc6437af72a8de7f490a3dfc33b057a4faca199f18e1e7dd811",
+      "sha256": "e8dff7da56ca76f80aff195b943214c914844a7686fc307030ce230b7b0c7727",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter09_pal.bin",
-      "sha256": "0fa34b1d226a993d001bd2df79e0b4f69827c214668446fe7b3b19bb3c64aa1d",
+      "sha256": "600a1e22517ebb6efd0b03f8d6308dbc2e95510eb1dfc203ff9670146b9203a7",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter09b.bin",
-      "sha256": "02730e60a9947c31be69f449b221e333a62b51b8570fb189acbcff58b73cc4ae",
+      "sha256": "5565d74b10394d85b0faee1250df026731adfb673d8533939c5f9b84b46a41a5",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter09c.bin",
-      "sha256": "ab816e4eb310c46bd21e647714e4f589fc156671bf519ef64a53087b55b98c85",
+      "sha256": "8293644240a1009ddfee3e17e7ba428ca4c21800a807cb3a15f350f9428163de",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter09d.bin",
-      "sha256": "fe6a37310e3cfde6b1014a0e86ab60f02bb528bd4011e6616955a05eab19b9fe",
+      "sha256": "79a83f98ce5babb812b3c153274498c8cc1174a081f247ba523c3ec07e70423c",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter09e.bin",
-      "sha256": "0fa8401b208ddc61c284cb4a5b95105f8366bbf7be09e6e2cd9fa3823b9cdfe6",
+      "sha256": "f3d0de34ba20720f66dc6adb64a8c02eeda3c26579761586ff589d6153361a43",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter09f.bin",
-      "sha256": "fb84ee2c2606ea97791130c36cd540e7a8477dcac6acf656878b3b00018b76fa",
+      "sha256": "f94309a89c1d6d7e61440450d1708fb7743634029befe105821ae3c8506c3bfd",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter09g.bin",
-      "sha256": "f6594ef133dd2529667caa7b59ceb77a1b86b9527d6563576e72b3091f70ee4a",
+      "sha256": "87d334538153f9ea6ff721dba8370a6c9770afcbd2dc1fd3dcd5d1eb5bf29b4c",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter09h.bin",
-      "sha256": "b2d2079c3a5f61e1cb057602f8b06eec0fb9abb0a861b5b5bb4f332f13b8b561",
+      "sha256": "0252d9f24b7d677ad65163d41da188b973df46377eb202bdc77e28af6c92d58d",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter10.bin",
-      "sha256": "07e0fba410a612ece4db2f23f71eb0f8404572ab0e86cf8c7e67d98440e19b1d",
+      "sha256": "51b5b0c99a17db8bf91f753b8f082d54190e5293bb3b7dae84c57d0405f2c38f",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter10.png",
-      "sha256": "bea4cb0aa0f785adb2cad736cd2f5dab1ffe953e86f014d15057bd63c27cf629",
+      "sha256": "461a4e6c8313ce17723c30cc608bece0e045168c9990d9f7561d3f6d663f708f",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter10_pal.bin",
-      "sha256": "6984a493d80efd48f7935eb13bbc928866e261bd140d8137854f78f534777d0e",
+      "sha256": "fec3ee50724f4f8dfa2cad6a0af0fcfd1cf3793e042ef8d98b941167f0fafa48",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter10b.bin",
-      "sha256": "03f72633a3fa47619bd60c84eb7762f987bde225c18a651ade833047a0960054",
+      "sha256": "cf891677c6bab38f6665e32f6fd2d79b56ba01329a0f4617f6fa92816462d6bf",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter10c.bin",
-      "sha256": "dd728a3cba6c11a6636063bb1fddf15a1040f3ec6839e9b3935c6b361a4c44bc",
+      "sha256": "2d3d458deb7e572ba83c65b9470b5e3bc0d438ebb9ccc258529c6b67edbb2d74",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter10d.bin",
-      "sha256": "5c637c2e897f72fa3711487deb262e776f6321cfd55d2a49cd65b63880d00e66",
+      "sha256": "7fca5fb47416f2098b3a13854d064cf2dcf1de4936ce72505aaeb9f43c1d5967",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter10e.bin",
-      "sha256": "199ec0327f6db0598768308422ecf4675653701517fc6db8dc87fbdd699d06f2",
+      "sha256": "2777f87b18690251c3764600f237d96d8422003480902c02ade3c274b95ebbee",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter10f.bin",
-      "sha256": "04be780513f0fb707e7e2577a277c4f9d532e119739b0d6e7f6800b3ceecb3ee",
+      "sha256": "b626a78f31a4274500ea33d723a4e320d4d852e49b4a567899d56aea6552876e",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter10g.bin",
-      "sha256": "6e04529090303406a1dcb638e62521e93dcb6f94e327a2c8b7cc1aad2211c830",
+      "sha256": "6ed86248607e33a56a5a8867155403479b6538e01f2ca770ff39fb5656e2b1af",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter10h.bin",
-      "sha256": "8ac0c5d03adac633cd614c00974e391725935a16529e7bb190e55de9cd82ad75",
+      "sha256": "88e087d0be743ac2e8c1b98d41e23367f8d0035a79f040679a142a3a45bb07e6",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter11.bin",
-      "sha256": "0cff5122527646f69f5a9f4225d3bf1dcdd4916e86ba065ae55592c36ab05f18",
+      "sha256": "b25d4117dd25651cd2c8f6beece5d92b3df743f15357775b9457b5090a9c3bed",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter11.png",
-      "sha256": "4b885d2908cbb3b7601c7a8b2a1715ab27e5949d2c2e522181141e6c20bc0b63",
+      "sha256": "ad7b89da7a6a333c3ef3df3d2a679353b65e5647be2ef70397e9452de7ba030e",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter11_pal.bin",
-      "sha256": "a157c3c1cb19914da952d6211860562c11ff31ecd04cf9ac67b5afaa0710d236",
+      "sha256": "f97792e2d35612f42611398c942cdc932433e74a973ea895cc3590d406dc783a",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter11b.bin",
-      "sha256": "a5103bd71d49156bc8dd6a58463a93b4f0a2ca9e594033756ab353d5945e273b",
+      "sha256": "8f6a03a7116717b4b5f215db42561e2ca79cc6a5572368b4b9402e6b32d908fc",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter11c.bin",
-      "sha256": "9a62eb38feb5c20e8bd46a05be0ef87d67d2208c64c1a97a3f581896904f0595",
+      "sha256": "14411d52fde834e04c090b362c3064b2a66687e78c07900a0aa1c977dec8b89c",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter11d.bin",
-      "sha256": "0c577fe1210c49cf6daa0080776893dcd56607d92cd940486439a0c8ec8e58f3",
+      "sha256": "7bcd7b5dc3f4b2b772a531e76ce85e093418c0d0a128092ad47d8a2fe8e82a73",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter11e.bin",
-      "sha256": "671ae700fffe89bb444f87c9d3fa5c43532be2b09b5c06ca00d5958e8e9145a4",
+      "sha256": "f5f9dc1ad45c71aa30fbaf1daf9805af84d79a160e39f6ed2de77554bb347993",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter11f.bin",
-      "sha256": "71c87f3eab8877e19c17ee1810b05b3c3dd6eee5dd30062a74c0806fa9033543",
+      "sha256": "abf20bfd911e151758f71481cfb5d6fdb74550cfff97fe32c8b3cb53308da007",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter11g.bin",
-      "sha256": "835fdf5b8944728440c47d0cfd84f7233b3f5d5bd637f2168b0bb89ae5d71bd6",
+      "sha256": "158e80465fdce263eab2758ac19ba33ad84ca853c33d4269aa02b445523e9e7b",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter11h.bin",
-      "sha256": "34050cd58ef9139eac5f33a10ec8e68f6af004238512a9d2f3c3b49e9d13a729",
+      "sha256": "919dddd0a2c621da9c49f1b98e880db4a65f2d5ce26a3ac4799ef47fa048f0d1",
       "comparison": "exact bytes"
     },
     {
@@ -827,22 +827,22 @@
     },
     {
       "file": "assets/generated/portrait01-large.png",
-      "sha256": "ddaaf1405c6c9d7950df0bd6c56449fead35820ca31aa78800db8c2af6f020e9",
+      "sha256": "a703f0ebb004fb5bc986a50d0295fb4b1863792f0c6eb6274b52ca169ad90873",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait01.png",
-      "sha256": "26de480b79a6c721d6928d94d524e62e0c345140e39227788caf0fcef7026c41",
+      "sha256": "550e911ee8f2feb4d32a75a7ef8aa922a49a81cbfd3b581e525dacab54afe310",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait01_pal.bin",
-      "sha256": "08989818b479b17741576eb89afc057096957585f57d317897de1d70809aef87",
+      "sha256": "0dec67be9d5d7d6b9c1c22ec2570baae3025b459f22d8d12dd8f64cb1a342cca",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait01_tiles.bin",
-      "sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1",
+      "sha256": "7be715df67625f9889a1d4a27a1dc4cb5608c5dfc6e9d3bb4e3d54e43e4355a9",
       "comparison": "exact bytes"
     },
     {
@@ -927,42 +927,42 @@
     },
     {
       "file": "assets/generated/portrait06-large.png",
-      "sha256": "a831df74cfa8bb28852f52f1beaefaea04127d9090323499f6cd33f3f05d4264",
+      "sha256": "fb6967d16e7c7ad37489d07e83b752d3636d7369a0f441024c0a16543901f0de",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait06.png",
-      "sha256": "e096247c758bd0cdd27e0d54a9d8c875cbf13d449183dca5454106ca9a033113",
+      "sha256": "f182e3b764fe07d610900898b09117b3046de7cc1a0be4852616670c8934140d",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait06_pal.bin",
-      "sha256": "2df40db63b446ec979b98663408776345ee8d3fc54fe07844f1aedd61a058727",
+      "sha256": "76a1cdedf0f09c1d622141e3ee1f6e4d05fd78fd4eba6543685edefcbd6d5745",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait06_tiles.bin",
-      "sha256": "b3efe196d08ae5db2c92f5482e5713f7acee003d1c2b0d8e1d12b61d3f8e747f",
+      "sha256": "df05f7757cc4d0eebba0487de254a92410d99b62795dbba979795b02d6f0e628",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait07-large.png",
-      "sha256": "e635436d5ad0795a671d777ddfff313a01551bf5c2aae72ba59cd7e70d72f1dd",
+      "sha256": "2b56878c08517472b24cc9a478e124d3b261f690920993259b12ca4380ddc246",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait07.png",
-      "sha256": "c982e5997517db0b4bfd478a312cbe2b3047801f6c05b5ead2e7216d65b1c2a6",
+      "sha256": "ddf4ddbc7f13047f69ed1d97689118bd81c8a5f22750224b48c580ba630a83c3",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait07_pal.bin",
-      "sha256": "656c585b5d15a36aaa07d2ad016ab60e63c59281fd9be66d330c33042684db42",
+      "sha256": "c6a978d34a8d52967735b2b569f943bee810340558a5278890311f8bf64dfb86",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/portrait07_tiles.bin",
-      "sha256": "d83d340dffeb196c8d1a961cd85d391bad6c849b385b921eca8868eb40d86537",
+      "sha256": "92b1df0e95c3e3911830ce913ce46f254438e1e22afeb3a0823833260ee79fe6",
       "comparison": "exact bytes"
     },
     {
@@ -1047,22 +1047,22 @@
     },
     {
       "file": "assets/generated/select.png",
-      "sha256": "e87d47414f62a29869131977543ab7cdb0e69a564ae8ffd1de6ff9c9ead887d7",
+      "sha256": "4f7e45c17ff9b5a907e1673c3b6cea947f285ad0cef201099c8ba1518e78a0fb",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/select_map.bin",
-      "sha256": "067015b8b4ef15196a7af06f491a62fee6a62c09cfd666a015b4fa16c6f36b69",
+      "sha256": "7e75c815922cbf7ac30d4ac1aff36c6c57c10155e558d7ac371b5af41746a721",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/select_pal.bin",
-      "sha256": "a01fb8ca5558982eeec1db901fed40ccbd4c27ce8e15730dfb9e70f83b30885b",
+      "sha256": "9dc220b09d4c80bd7f9530b88161ed5e87d3c4b0bec1d9c66cca052169c80ddb",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/select_tiles.bin",
-      "sha256": "6bcce704dd5cce499d705835bb2c8ef2053f0a3734bd88d58e34cf85a4ff773f",
+      "sha256": "4046fcdea1f07c2d06425a52b9df6a1c4cea5a99f9e468b22776017c0b31f90c",
       "comparison": "exact bytes"
     },
     {
@@ -1243,5 +1243,5 @@
   ],
   "generated_assets_verified": 237,
   "symbols_equal_after_source_path_normalization": true,
-  "elapsed_seconds": 143.234
+  "elapsed_seconds": 139.765
 }

@@ -30,7 +30,7 @@ extern char title_map, title_map_end;
 extern char title_pal, title_pal_end;
 #define TITLE_PAL_SIZE 192
 extern char select_tiles, select_tiles_end;
-#define SELECT_TILES_SIZE 16736
+#define SELECT_TILES_SIZE 16800
 extern char select_map, select_map_end;
 #define SELECT_MAP_SIZE 2048
 extern char select_pal, select_pal_end;

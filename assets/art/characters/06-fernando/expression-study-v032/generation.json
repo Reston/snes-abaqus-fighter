@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "status": "reference-direction-approved",
+  "fighter_id": 6,
+  "slug": "fernando",
+  "user_feedback": "Bodies improved, faces still off; eyes and expression specifically.",
+  "mode": "built-in image_gen",
+  "prompt": "Use case: style-transfer, identity-preserve.\nEDIT THIS PHOTOGRAPH into a faithful early-1990s arcade PIXEL-ART HEAD PORTRAIT of THE SAME REAL MAN.\nThe only supplied image is the real face. Preserve its exact facial expression, gaze, eyelid opening, eyebrow angle and spacing, eye distance, nose width, cheek volume, mouth, hair shape and age. Keep the photograph's same head orientation and angle. This is a careful pixel-art translation of that photo, NOT a character redesign.\nThe eyes and expression are the most important requirement: closely observe and reproduce the photo's naturally relaxed lids, brows and tiny asymmetries. Mouth stays relaxed and closed exactly as in the photo. Ordinary calm adult expression. Do not invent a fighting scowl, sad or worried expression, frown, clenched jaw, broad grin, angry diagonal brows, big round staring eyes, cartoon teardrop eyes or anime beauty. Do not exaggerate, masculinize, age or idealize any trait.\nComposition: exactly ONE isolated complete HEAD with all hair, ears, chin and a VERY SHORT neck. No torso, no hands or guard pose, no shirt, no scene. Centered, face fills almost entire canvas, generous tiny transparent margin. Portrait 4:5 aspect.\nStyle: accomplished classic SNES portrait artist, clear deliberate PIXEL CLUSTERS on a 64x80 logical-pixel grid, enlarged with nearest-neighbour pixels. Restrained 12-color palette: near-black/dark brown hair, dark brown eye details, subtle warm middle brown shadow, peach skin and light warm skin highlights. The face should still read when reduced to 16x20 logical pixels: preserve the photo's shape of eyes, calm expression and actual feature spacing with clear broad color shapes, not fine texture. Small natural eyes with horizontal upper lids and tiny dark pupils. Distinct soft eyebrows, not a dark eye mask. Clean-shaven skin from photo.\nNo oil painting, airbrush, detailed illustration, photoreal texture, gradients, antialiasing, dither noise, duplicate head, sprite body, labels, captions, border, watermark or background. True transparent cutout, no shadow.",
+  "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-3856157c-c47c-4347-8e12-20a9544a92d3.png",
+  "raw_output_sha256": "1732ef5bfa8325117eacff2a63e7d563b63aeaba8f4137ad0ad0af9f28a7bac3",
+  "selected_final": "assets/art/characters/06-fernando/expression-study-v032/head.png",
+  "selected_final_sha256": "1732ef5bfa8325117eacff2a63e7d563b63aeaba8f4137ad0ad0af9f28a7bac3",
+  "transparent_background": true,
+  "reference": {
+    "photo": "assets/references/fighter-06.jpg",
+    "photo_sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+    "crop_box": [
+      155,
+      8,
+      329,
+      250
+    ],
+    "crop": "assets/art/characters/06-fernando/expression-study-v032/reference-crop.png",
+    "crop_sha256": "848609ee027127920567502c6d9ed032eb8f3ffa10d86b1c14f27db04b8e0e36",
+    "role": "Specific photographed eye shape, eyelid opening, gaze, brows and relaxed expression"
+  },
+  "preparation": {
+    "portrait_size": [
+      64,
+      80
+    ],
+    "small_canvas": [
+      16,
+      20
+    ],
+    "small_fit": [
+      14,
+      18
+    ],
+    "small_head_size": [
+      12,
+      18
+    ],
+    "small_palette_sha256": "8157261a8813a14f129fe05c4cd41d219ec1d8213fda5e9de62173601a680a1c",
+    "small_palette_exact": true,
+    "operations": "alpha>200 / crop complete head / uniform nearest scaling / small OBJ-palette quantization",
+    "unmodified_source_retained": true,
+    "pasted_onto_game_body": false
+  },
+  "output_sha256": {
+    "head-small-palette-test.png": "20dfdc75c738dbe028729b264b95a5eba0f3f30387a73cb0c991b48b305cbf3b",
+    "head.png": "1732ef5bfa8325117eacff2a63e7d563b63aeaba8f4137ad0ad0af9f28a7bac3",
+    "portrait-64x80.png": "f248a6fc89e87505395da33d6e1bb25b1dcdfc87598ee89c077d800dce76d7b2",
+    "reference-crop.png": "848609ee027127920567502c6d9ed032eb8f3ffa10d86b1c14f27db04b8e0e36"
+  },
+  "integrated_into_game": false,
+  "human_approval": {
+    "quote": "Yes, use this direction",
+    "scope": "photographed eye and expression references for Ivo, Fernando and Cristian; not final native likeness or merge approval"
+  },
+  "native_usage": {
+    "revision": "0.32.1",
+    "portrait": "not used; selection portraits restored to the prior idle-atlas source",
+    "animation": "reference for nine full-body atlas edits; no head pasted onto body",
+    "final_likeness_approval": null
+  },
+  "used_as_animation_reference": true
+}

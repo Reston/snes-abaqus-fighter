@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "fighter_id": 6,
+  "scope": "super-v1",
+  "palette_sha256": "8157261a8813a14f129fe05c4cd41d219ec1d8213fda5e9de62173601a680a1c",
+  "anchor": {
+    "source": 0,
+    "pose": 0
+  },
+  "height_target": 67,
+  "reference": "assets/art/characters/06-fernando/model-study-v031.png",
+  "reference_sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+  "revises": "assets/art/characters/06-fernando/super-likeness-v3.json",
+  "pose_contract_sha256": "08687df723214c41032e6588a6909867438e23a07b8c84da34aab56f16aa4350",
+  "generation_edits": [
+    {
+      "source": "assets/art/characters/06-fernando/super-v031.png",
+      "sha256": "2eaac27a208acd1203dad2189b77f95937ba1ee7a7b8745087da73378ffefffc",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-0359eb1b-d44e-4bf7-8a44-67a3cfcd7624.png",
+      "raw_output_sha256": "2eaac27a208acd1203dad2189b77f95937ba1ee7a7b8745087da73378ffefffc",
+      "prompt": "Use case: identity-preserve. Image1 is the EXACT EIGHT-POSE super atlas to redraw. Image2 is the new identity/full-body model. Image3 is the photograph. Keep all eight actions from Image1 in their exact locations, replacing the old generic young face/body with this specific new person. Fernando: the man in the photograph has a FULLER ROUNDED OVAL face and soft cheeks, very thick straight low eyebrows, deep-set dark eyes, prominent broad straight nose, small relaxed mouth, short dark softly waved side-swept hair with a low natural crown. Clean-shaven, adult soft substantial chin. Do not give him a narrow angular jaw, high quiff, thin brows, orange hair or an aggressive scowl.\nOnly FOUR columns by TWO rows. Pose1 normal neutral upright standing combat guard, SAME scale/likeness/outfit as Image2. Pose2 CHARGE: wide low planted stance, TWO OPEN PALMS stacked LOW at REAR THIGH, torso wound backward. Pose3 STRIKE: LOW TWO-HAND sweeping cast RIGHT at WAIST height, one open palm extended with the other supporting, hips/shoulders uncoil. Pose4 RECOVERY: low stable front knee absorbs weight, both hands retract toward belt. NO UPPERCUTS OR PUNCHES. Poses5-8 four unused relaxed standing guard variants. Exactly8 figures; no walking/high kicks/KO extras. Entire costume and face follow NEW model Image2, not generic face in Image1. Larger expressive adult head, calm near-frontal-three-quarter eyes and nose looking right. Fixed body/head/limb proportions in all poses; neutral anchor about300px high, lower poses really bend knees, no per-cell resizing. Clean hand-drawn1992 arcade cartoon with broad flat cel shading and dark navy outlines. Fully connected anatomy, generous transparent gutters, no clipping, text/grid/shadow/FX/projectiles/weapons/extra figures. True transparent background.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "references": [
+        {
+          "path": "assets/art/characters/06-fernando/super-v2.png",
+          "sha256": "afbf654ac47e01deb355d5895a3ca2d85f20ad2bca3ffaeb019cd2974323f22b",
+          "role": "historical pose guide only"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/model-study-v031.png",
+          "sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+          "role": "new identity and full-body model"
+        },
+        {
+          "path": "assets/references/fighter-06.jpg",
+          "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+          "role": "photographic identity"
+        }
+      ],
+      "size": [
+        1774,
+        887
+      ],
+      "selected_final": "assets/art/characters/06-fernando/super-v031.png"
+    }
+  ],
+  "sources": [
+    {
+      "count": 8,
+      "poses": [
+        "neutral-anchor",
+        "fernando-super-charge",
+        "fernando-super-strike",
+        "fernando-super-recovery",
+        "unused-guard-4",
+        "unused-guard-5",
+        "unused-guard-6",
+        "unused-guard-7"
+      ],
+      "frames": [
+        null,
+        1,
+        2,
+        4,
+        null,
+        null,
+        null,
+        null
+      ],
+      "file": "assets/art/characters/06-fernando/super-v031.png",
+      "sha256": "2eaac27a208acd1203dad2189b77f95937ba1ee7a7b8745087da73378ffefffc"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "schema": "abaqus-combat-animation-source/v2",
+  "fighter": "07-cristian",
+  "path": "assets/art/characters/07-cristian/animation-airborne-v6.png",
+  "prompt": "Use case: identity-preserve. FACE AND EXPRESSION EDIT to an existing complete production fighting animation sheet.\nImage1 EDIT TARGET is the EXACT body/pose/costume/layout guide. Preserve every complete body drawing, stance, arm/leg motion, proportions, costume and colors. This is NOT permission to redesign the bodies or animation.\nImage2 is this SPECIFIC MAN'S USER-APPROVED FACE/EXPRESSION reference. Image3 is his photographic face. Carefully replace the target's old generic stern eyes/expression with the actual eyelid opening, eye distance, gaze, brows, nose, cheek/jaw shape, hair and relaxed closed mouth of Image2.\nKeep his individual small natural eye/brow asymmetries. Calm ready expression in movement/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining the same identity. No stock hero scowl, diagonal angry brows, dark eye sockets, black eye-mask stripe, glaring anime eyes, long downward eye tails, childish dot eyes, exaggerated chin or clenched lips. A guard pose should NOT automatically make him angry. Keep head naturally integrated with neck and torso, same head size and full-body physical scale.\nNative use: 67-73 pixels tall, so the approved face must become a few deliberate BROAD CEL COLOR PLANES with separate small eye marks, softer middle-tone brows and clear light skin between eyebrow and eye. Short nose and understated relaxed mouth. Keep cheeks bright; no fine skin texture, micro-wrinkles, black face shadows or noisy dithering. Retain the target's original 1992 arcade cartoon body rendering and full clothing details. No photographic pasted head and no chibi body.\nEXACTLY 16 independent COMPLETE full-body figures on the same FOUR-COLUMN by 4-ROW square atlas. Row-major pose contract, matching Image1:\nROW1: upright-neutral; air-punch-anticipation; air-punch-active; air-punch-recovery\nROW2: air-kick-anticipation; air-kick-active; air-kick-recovery; compact-apex-guard\nROW3: thrower-grip; thrower-release; victim-lift; victim-impact\nROW4: knockdown-launch; knockdown-fall; grounded-getup; wakeup-guard\nEvery pose stays in its original cell and keeps the original silhouette/action role. First figure retains the original neutral/anchor scale. Crouching/airborne/floor drawings remain genuinely lower than upright poses; never stretch all poses to equal height. Preserve complete feet/hands and generous transparent separation so no figures touch.\nNo added poses, duplicate floating head studies, captions, grid lines, frame, background, cast shadows, energy/projectile FX, props or cropping. True transparent PNG.",
+  "range": [
+    48,
+    63
+  ],
+  "generation": {
+    "source": "assets/art/characters/07-cristian/animation-airborne-v6.png",
+    "sha256": "d750ca264247c4536b392a2d09c6d3a624bcc68fd124b540b952593a1dc5bfa2",
+    "selected_final": "assets/art/characters/07-cristian/animation-airborne-v6.png",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-9a5bacae-4a59-40ad-9870-7dd635f3036a.png",
+    "raw_output_sha256": "d750ca264247c4536b392a2d09c6d3a624bcc68fd124b540b952593a1dc5bfa2",
+    "prompt": "Use case: identity-preserve. FACE AND EXPRESSION EDIT to an existing complete production fighting animation sheet.\nImage1 EDIT TARGET is the EXACT body/pose/costume/layout guide. Preserve every complete body drawing, stance, arm/leg motion, proportions, costume and colors. This is NOT permission to redesign the bodies or animation.\nImage2 is this SPECIFIC MAN'S USER-APPROVED FACE/EXPRESSION reference. Image3 is his photographic face. Carefully replace the target's old generic stern eyes/expression with the actual eyelid opening, eye distance, gaze, brows, nose, cheek/jaw shape, hair and relaxed closed mouth of Image2.\nKeep his individual small natural eye/brow asymmetries. Calm ready expression in movement/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining the same identity. No stock hero scowl, diagonal angry brows, dark eye sockets, black eye-mask stripe, glaring anime eyes, long downward eye tails, childish dot eyes, exaggerated chin or clenched lips. A guard pose should NOT automatically make him angry. Keep head naturally integrated with neck and torso, same head size and full-body physical scale.\nNative use: 67-73 pixels tall, so the approved face must become a few deliberate BROAD CEL COLOR PLANES with separate small eye marks, softer middle-tone brows and clear light skin between eyebrow and eye. Short nose and understated relaxed mouth. Keep cheeks bright; no fine skin texture, micro-wrinkles, black face shadows or noisy dithering. Retain the target's original 1992 arcade cartoon body rendering and full clothing details. No photographic pasted head and no chibi body.\nEXACTLY 16 independent COMPLETE full-body figures on the same FOUR-COLUMN by 4-ROW square atlas. Row-major pose contract, matching Image1:\nROW1: upright-neutral; air-punch-anticipation; air-punch-active; air-punch-recovery\nROW2: air-kick-anticipation; air-kick-active; air-kick-recovery; compact-apex-guard\nROW3: thrower-grip; thrower-release; victim-lift; victim-impact\nROW4: knockdown-launch; knockdown-fall; grounded-getup; wakeup-guard\nEvery pose stays in its original cell and keeps the original silhouette/action role. First figure retains the original neutral/anchor scale. Crouching/airborne/floor drawings remain genuinely lower than upright poses; never stretch all poses to equal height. Preserve complete feet/hands and generous transparent separation so no figures touch.\nNo added poses, duplicate floating head studies, captions, grid lines, frame, background, cast shadows, energy/projectile FX, props or cropping. True transparent PNG.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "size": [
+      1289,
+      1221
+    ],
+    "references": [
+      {
+        "path": "assets/art/characters/07-cristian/animation-airborne-v4.png",
+        "sha256": "35666ec4e84b6175214b2625817173cfbe334c256b9bdc36de81a3e3be4f29e4",
+        "role": "v0.31 body, costume, pose and layout edit target"
+      },
+      {
+        "path": "assets/art/characters/07-cristian/expression-study-v032/head.png",
+        "sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5",
+        "role": "user-approved eye and expression direction"
+      },
+      {
+        "path": "assets/art/characters/07-cristian/expression-study-v032/reference-crop.png",
+        "sha256": "c95086b9ef274e6d5fe3ffb4853bf91762241403422116c68ee7c5b872ad43f0",
+        "role": "photographic identity and natural expression"
+      }
+    ]
+  }
+}

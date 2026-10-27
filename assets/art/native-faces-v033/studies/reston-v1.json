@@ -1,0 +1,98 @@
+{
+  "id": 9,
+  "slug": "reston",
+  "description": "Adult medium olive-skinned man with broad oval face, strongly receding dark hairline with bald high forehead, dense dark beard along jaw and chin and connected moustache, natural dark brows and a broad nose. The beard is clear pixel masses around a visible lighter mouth/nose, not an orange face with a black stripe. Original red jacket, dark top, blue trousers.",
+  "prompt": "Use case: identity-preserve. Native-resolution game sprite correction.\nImage1 is the EDIT TARGET: an existing 96x80 SNES fighting sprite enlarged exactly 8x without smoothing. Image2 is the photographic identity REFERENCE.\nKeep the exact full-body pose, body design, costume, silhouette size, hand/foot positions, body proportions and transparent canvas placement of Image1. Concentrate the correction on the in-game face and hair. Adult medium olive-skinned man with broad oval face, strongly receding dark hairline with bald high forehead, dense dark beard along jaw and chin and connected moustache, natural dark brows and a broad nose. The beard is clear pixel masses around a visible lighter mouth/nose, not an orange face with a black stripe. Original red jacket, dark top, blue trousers.\nRedesign facial marks as deliberate readable 1992 arcade PIXEL ART on the ORIGINAL 96x80 logical grid, shown enlarged with hard square pixels. Every visible art pixel must be one logical pixel; do not draw a high-resolution illustration to be shrunk. Character stays approximately 70-74 logical pixels high, head around 13-16 pixels high, proportional to original body. Use broad well-chosen single-pixel clusters and clean negative space.\nCritical face design: a distinct brow separated from the small dark eye by a light skin pixel where possible; one visible near eye and a restrained far eye in three-quarter view, clearly shaped nose tip with a warm midtone shadow rather than a black vertical bar, closed mouth of two or three muted warm pixels separated from nose and chin. Keep cheek planes, jaw/chin contour and ear readable. The face must not become orange rectangular fill with a joined brow/eye/nose stripe. No tiny photographic wrinkles, no dithering/noise, no blurry antialiasing and no painterly shading.\nUse at most 15 opaque colours plus transparency in the complete sprite. Allocate SIX distinct natural skin values from deep warm shadow through midtones to a pale highlight; the remaining colours cover the original costume and hair. Skin hues are beige/olive, not fluorescent orange. Retain the outfit hues and avoid changing clothes/poses. Black/navy mostly outlines the silhouette, not the facial anatomy. Keep eyes understated and naturally focused, not a stock hero scowl.\nExactly ONE complete figure, all hands/feet visible, transparent background, no text, grid, border, shadows, props, effects, portraits, extra heads or comparison layouts. Keep the target canvas aspect and placement.",
+  "refs": [
+    "D:/snes-abaqus-fighter/build/v033/09-idle-8x.png",
+    "D:/snes-abaqus-fighter/assets/references/fighter-09.jpg"
+  ],
+  "raw": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-c9bb6375-7e6f-4db0-92a9-babe220a1938.png",
+  "mode": "built-in image_gen",
+  "selected_final": "assets/art/native-faces-v033/studies/reston-v1.png",
+  "stage": "native pixel style prototype; not yet integrated",
+  "raw_output_sha256": "848728491fc77920385948cae5bcc8f6efb16188de4366a55a488259165a7e77",
+  "native_palette": [
+    [
+      8,
+      16,
+      24
+    ],
+    [
+      24,
+      24,
+      32
+    ],
+    [
+      56,
+      40,
+      40
+    ],
+    [
+      136,
+      8,
+      16
+    ],
+    [
+      224,
+      40,
+      24
+    ],
+    [
+      240,
+      88,
+      64
+    ],
+    [
+      16,
+      24,
+      56
+    ],
+    [
+      32,
+      56,
+      112
+    ],
+    [
+      80,
+      104,
+      144
+    ],
+    [
+      96,
+      40,
+      24
+    ],
+    [
+      144,
+      88,
+      56
+    ],
+    [
+      184,
+      128,
+      88
+    ],
+    [
+      224,
+      168,
+      120
+    ],
+    [
+      248,
+      200,
+      152
+    ],
+    [
+      248,
+      224,
+      192
+    ]
+  ],
+  "native_size": [
+    59,
+    70
+  ],
+  "conversion": 0.07179487179487179,
+  "operations": "alpha>200; isolate whole figure; one uniform nearest scaling; explicit15-colour native palette"
+}

@@ -1,0 +1,172 @@
+{
+  "id": 7,
+  "slug": "cristian",
+  "name": "Cristian",
+  "height": 73,
+  "description": "Adult light-olive-skinned man with a broad square rounded jaw, short dense dark hair and natural front fringe, fuller cheeks, natural straight brows and relaxed small eyes and mouth. Clean shaven. White rolled sleeves, navy waistcoat and charcoal trousers.",
+  "palette": [
+    [
+      8,
+      16,
+      24
+    ],
+    [
+      16,
+      16,
+      32
+    ],
+    [
+      48,
+      40,
+      48
+    ],
+    [
+      16,
+      32,
+      64
+    ],
+    [
+      40,
+      64,
+      96
+    ],
+    [
+      88,
+      112,
+      144
+    ],
+    [
+      32,
+      40,
+      56
+    ],
+    [
+      72,
+      80,
+      96
+    ],
+    [
+      224,
+      232,
+      224
+    ],
+    [
+      96,
+      40,
+      24
+    ],
+    [
+      144,
+      88,
+      56
+    ],
+    [
+      184,
+      128,
+      88
+    ],
+    [
+      224,
+      168,
+      120
+    ],
+    [
+      248,
+      200,
+      152
+    ],
+    [
+      248,
+      224,
+      192
+    ]
+  ],
+  "reference": "assets/references/fighter-07.jpg",
+  "refs": [
+    "assets/art/native-faces-v033/baseline/07-native64-2x.png",
+    "assets/art/native-faces-v033/studies/cristian-native-guide-v2-8x.png",
+    "assets/references/fighter-07.jpg"
+  ],
+  "prompt": "Use case: identity-preserve. Native SNES game artwork EDIT.\nImage1 is the EXACT EDIT TARGET: all64 existing Cristian game poses in an EIGHT-column by EIGHT-row atlas. It is a2x nearest-neighbour view of a logical768x640 sheet with96x80 logical cells. Preserve exactly8 columns/8 rows, every pose in its existing cell, complete full-body action, stance/silhouette, proportions, costume and size. No new poses, body redesign or portrait sheet.\nImage2 is the NATIVE FACE/PIXEL-PALETTE DESIGN GUIDE, an enlarged actual73-pixel fighter. Image3 is the photographed identity. Adult light-olive-skinned man with a broad square rounded jaw, short dense dark hair and natural front fringe, fuller cheeks, natural straight brows and relaxed small eyes and mouth. Clean shaven. White rolled sleeves, navy waistcoat and charcoal trousers.\nChange facial/hair rendering throughout Image1 toward Image2/Image3's readable natural adult identity. Keep the original outfit's hues/design and all original body, limb and face directions in each cell. In-game face is about13-16 pixels high: use deliberate original1992 arcade PIXEL-ART clusters on that logical grid, NOT a detailed illustration relying on tiny marks.\nUse SIX separate warm natural skin values: deep brown shadow, shadow, midtone, base, light and pale highlight. Allocate remaining colours to original costume/hair. Separate natural brow from small dark eye; keep a skin pixel between where possible. Nose tip, warm nose shadow, softly closed2/3-pixel mouth and mature cheek/jaw must read independently. Beard, stubble, glasses, hairline or mature feminine features follow this specific person. Keep cheeks readable. No fused brow/eye/nose stripe, flat orange rectangle face, generic hero scowl, anime eyes, photographic pasted head, head enlargement, chibi, dithering, noisy wrinkles or blurred shading.\nEXACTLY64 separate complete transparent figures in Image1's row-major order. Preserve every original crouch, hurt, falling, floor KO, airborne and walking action. Upright height approximately73 logical pixels, baseline78 inside each80-pixel cell. Keep original source relative sizes; crouched/lying poses genuinely lower. Complete hands/feet, clear transparent gutters, no touching figures. No text, labels, grid lines, extra people/heads, shadows, FX or props. True transparent PNG. Entire sheet, no cropping.",
+  "selected_final": "assets/art/native-faces-v033/07-cristian-native64-v2.png",
+  "reference_sha256": {
+    "assets/art/native-faces-v033/baseline/07-native64-2x.png": "f9610821e8b00886665c47dfebff14ee283df03bbba5bed285f0b76310b91b02",
+    "assets/art/native-faces-v033/studies/cristian-native-guide-v2-8x.png": "297c704f34ecd98825f26f0a8dad98862eaf1523adbc1064b648525058fb0073",
+    "assets/references/fighter-07.jpg": "5edcd42a4afcdbd2ab1e341a25b7ad65884bbf417b5a47396d2de2cff651d19c"
+  },
+  "baseline_commit": "5c1bb02",
+  "variant": "v2: immutable final guide inputs, chroma-safe native palette",
+  "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-010a3136-e8e6-4eca-b33b-bad70785538e.png",
+  "raw_output_sha256": "1f4c849bcaa1622a7da54abb6375c77504b5df92a04f14521848f3594b32367a",
+  "sha256": "1f4c849bcaa1622a7da54abb6375c77504b5df92a04f14521848f3594b32367a",
+  "mode": "built-in image_gen",
+  "status": "source-and-native-size-reviewed-human-review-pending",
+  "native_conversion": 0.5488721804511278,
+  "native_frame_sha256": [
+    "86ef9166caef09f21e1173199f7abb0d3d1c51f54a47ff2a10fdc46cfbe95eb9",
+    "1859fcdd70938cf1e276cc8c44e65c6c0da0237d748f6604df74de0dc159f738",
+    "816737a9e37e0552c6756cc46b2aef35ca1ed5ed9bf430c8d0c68516675b413a",
+    "9d27721c1fdef98b63bcfdc98d9dd3f06e3e4aa61e3ab46b2c233e512e31ae67",
+    "2fe7921dd02cbfc17c8890ffb371e136a27dd789deac76058a70bd419e05adb5",
+    "c00df2d135f4f5078552fe5eb835c9501bbd76ffab8c3a038236c33156744b7a",
+    "aa269b7d6b9c12c53db3606436061ac629fc3009966973e7af7f947e8b4b1dfe",
+    "06aead533b1a59129158a46d8732925b77e7fecb6a3f90bbbb4b3fb781826f50",
+    "0b6a8cb7f7284eb0a07e3e97ec1d6d81adf4758d431d19063e59292c435c17eb",
+    "8dafe0eab42135db4ae3f0e33ab5899f82359c11d9b535a52d5a5aadc8c6224d",
+    "4a8e7f34c77ff483c7badbc5bb0afbe1af62d957b81ce68a42e8abe377f199bd",
+    "ec4999ab5fd555e5ced65b75c98265f22084a6802d0dd9b66b6f02ad79f80f3f",
+    "ef6aa140a13f621d8f7e5f0214511af60c759f0e71ee7ca56c54872114b1bfe4",
+    "2553f23989f779ca3b6d9543b56b0a31d4b5fb7f0ee9b981b02b4d7916e3843d",
+    "b76583577d1161dd1c4b82781721bcd7b1a88cf885eacaafe92a0be72fcbc470",
+    "cda2cb2de0ea3d3a92b807b2834132a81d09f588bc494b6a0591b52024133e6d",
+    "7374013a226a3d120bdb73eedbd31f504cb24eda6704f5f4da66b28a46f6b725",
+    "7e02c4af411216d8dbd81d627e1d47287b9c5dc85c472792c6b8f9a11472374b",
+    "7b47539cb35b5559c3924c11d2725dcc6cf3e9379df9edf5fe92ac49883927b1",
+    "a88df824f83b71adad514c714ed6027fb08d592ea46a1d1873fe413e642c57b1",
+    "b7ff0dce5d005f60bab2398f8983c3308bb3260a0d5e069490768d4d9b7c8c75",
+    "8fba4cd56f45693b216dc41d74eb0d56c41699ca7a2b2e50713487c8d4aac3f0",
+    "31a7fb13c34ecd82753d9e62ae1cbaa3e1a17093afa40d020f5bed8969422789",
+    "dba058c399ae70a675ee29432e61a3e5a95a62d07d69a38e6391ceb3c4753e4a",
+    "ae3951e63dfac2d61afc81efd9d81efddc86763804ed363cca493d648fd973ee",
+    "19fc16078c239749094ba5bbc22fbce4b307d02bde777865a2dd624dd4739564",
+    "4e4d348e792e1b1ed408162e9d175d379b897346749cb676353e6378e53d8364",
+    "f8eb2407f731a7ba1c090d6390fa5a6168fe9a06d94777fe9e84bdddcb451a3a",
+    "ea05a56a383f4886f6a89dc124bae831d754adbdcd5c0fb0f360318126d15c36",
+    "60eea57eb82fb6188859519c6d0cd4576d825c46df563b1d264cc7fadb11a822",
+    "098d3628e33e6aae3969150ef99d6475c8cc3b84d4f7dfd07c8b85b5fa256344",
+    "5aae21d698a2e4847abd9d3a1bd7cb89258484053ec73b88cefb8b2336ee06e6",
+    "53032f21e6d61ac1e81c9e885244e53a9c5333832c5e3aebb95e29a4a56d6a10",
+    "f867c3b50c94ab6ad4eb1117e9771195c88413a0388b1c7287e74b62630ab3f4",
+    "bd6fef528a6860ed409f5d11760b377474a274f5fcd432b6f13c5d516f6b924d",
+    "cb8b3906479292649d242a2a677943504901ac24ca35152ef636a4969e7a43fd",
+    "cda5f2de8e578f70eee6f01fbd635e3370287ba43838a7c24cbb098010da3fbb",
+    "41e301940481e8746cbcfed449bde439162aabba43df05ff7df83a4a14521024",
+    "74083c44d85302e8ddc8a8ed6308ec868534c9fc71981ff244d1dafd68bc4e29",
+    "90fb7eafbbc20c4bb9a145153d9f1f8d3d5d292113d0ff85efb19630ba88962c",
+    "3cef3c8135559457a5c86d0ca326d0c10820257020932bd980be6482e82ba0c5",
+    "c34b0e54635fafd9f0960db514f092e42fafc76fc42d92bb213ef3c99d491173",
+    "6db5891311527d07e4bd88729c336fdb0fa088cfd31dbd3724f96831aa6e9c20",
+    "d900aabb47064c8811adbc3478a13743f86c7a4cd4cd9afc2f6167eba6f03d94",
+    "e81ea57941b2d35bd4561f8f7a4145cd8c31c8607a6bab1ecde9abe56697a34f",
+    "117464070c64184785ed76fc7aa2506cc20902c2a0a22917dfe086820e86f13c",
+    "e551ebb37cdbbfc19f05f92e6ac390ad33ab4cac3101bacbdc43b90a6a02aafd",
+    "a9045808af183eca66c62588eb96956779dcefedba8ae9bb87e217821a01d7b8",
+    "98e7832131020eb59b8fae896e47d9fc3ab6183ab058bb13f802316ca123edf7",
+    "419a6e606e77ed5df9cf4dcc727c24cc09ebc0661be6aa147cb88f416de09fef",
+    "5177834e35ea911c0e17d13ee118c713395daeb178535748b110ed47e95e9c06",
+    "72bad697b9a2ed462febe725eead7d3d98d0cd7f84c0bc1075d5743ca13bcfc4",
+    "95d50df1955a5445eb46c07fe4e64cb979d0a20c5fff745588384a05a8241e8a",
+    "b4f09dd79fc5d5a535c83a46030dded3c37b91efefe48f2c14c0f6b8f6b178f7",
+    "92246d1395e7f1e3981c8c97565a4f336ccb30e2475838bc4b2ff4e841386cc7",
+    "5446c10e46649542ed4b6ebfc8028fdb4b7936604a1b9f5d99eb88400ef46040",
+    "7f3e51f88f28eea46238cc5c551f905b4b9ce25e386fa629f9418831daee5170",
+    "fc4acd26e664a534de1b3090a25a1e65c12e18f788c34856352c0475a4ffcb40",
+    "b3d5dcd023bbd64da809f4f5a82d5b0f15374a7f4be2f97ea660ce30ea678933",
+    "30f4d90d9dffe25a535b084e539eb064ce6e2f129ca406b1fbda37fe7d6ffdcf",
+    "089ed472699ae007d1284662ca24f86242feeab45c05a8b493eee29e553b46f7",
+    "09662b2963e0b45e2b04ad8004631ae6e07e620569431a0b9b854892bd1263e5",
+    "9394438d0ac2d437a682e91b09fa1b08e1e3080f7bfc56f8f9b9dd3408b47956",
+    "5e0a4d434d1dd3b79d331e13dac2560d3f59b1b77b817666d4ce23f88b1c018c"
+  ],
+  "human_likeness_approval": null
+}

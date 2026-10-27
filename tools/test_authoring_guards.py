@@ -213,13 +213,16 @@ class AuthoringGuards(unittest.TestCase):
                 fighters._load_native_baseline(self.root)
 
     def test_unapproved_revision_mutations(self):
-        slug = 'ivo'
-        directory = self.root / 'assets/art/characters/01-ivo'
+        # Ivo now has an explicitly registered likeness revision. Exercise
+        # the same rejection against Cristobal's still-unregistered slot.
+        fighter_id, slug = 2, 'cristobal'
+        self.assertNotIn(fighter_id, fighters.NATIVE_REVISION_REGISTRY)
+        directory = self.root / 'assets/art/characters/02-cristobal'
         directory.mkdir(parents=True)
-        self.assertIsNone(fighters._load_revision_sources(self.root, 1, slug, directory, {}))
+        self.assertIsNone(fighters._load_revision_sources(self.root, fighter_id, slug, directory, {}))
         (directory / 'atlas-v4.png').write_bytes(b'unapproved art')
         with self.assertRaisesRegex(AssertionError, 'no approved revision slot'):
-            fighters._load_revision_sources(self.root, 1, slug, directory, {})
+            fighters._load_revision_sources(self.root, fighter_id, slug, directory, {})
         relative = fighters.NATIVE_REVISION_REGISTRY[9]['contract_file']
         path = self.root / relative
         contract = json.loads((ROOT / relative).read_text())
@@ -242,7 +245,8 @@ class AuthoringGuards(unittest.TestCase):
     def test_registered_source_version(self):
         baseline = fighters._load_native_baseline(ROOT)
         for fighter, slug, version in ((0, 'damian', 'v5'), (9, 'reston', 'v4'),
-                                       (11, 'lars', 'v4')):
+                                       (11, 'lars', 'v4'), (1, 'ivo', 'v6'),
+                                       (6, 'fernando', 'v6'), (7, 'cristian', 'v6')):
             directory = ROOT / f'assets/art/characters/{fighter:02}-{slug}'
             revision = fighters._load_revision_sources(ROOT, fighter, slug, directory,
                                                        baseline[fighter])
@@ -268,10 +272,45 @@ class AuthoringGuards(unittest.TestCase):
                                                            {0:registration}):
                 with self.assertRaisesRegex(AssertionError, 'registered v5|same-folder likeness-v5'):
                     fighters._load_revision_sources(self.root, 0, 'damian', directory, baseline[0])
-        registration = {**fighters.NATIVE_REVISION_REGISTRY[0], 'source_version':'v6'}
+        registration = {**fighters.NATIVE_REVISION_REGISTRY[0], 'source_version':'v7'}
         with mock.patch.dict(fighters.NATIVE_REVISION_REGISTRY, {0:registration}):
             with self.assertRaisesRegex(AssertionError, 'unsupported registered source version'):
                 fighters._load_revision_sources(self.root, 0, 'damian', directory, baseline[0])
+
+    def test_preserved_selection_portrait_mutations(self):
+        baseline = fighters._load_native_baseline(ROOT)[1]
+        directory = self.root / 'assets/art/characters/01-ivo'
+        directory.mkdir(parents=True)
+        path = directory / 'native-revision.json'
+        original = json.loads((ROOT / path.relative_to(self.root)).read_text())
+        outside = directory.parent / 'outside-head.png'
+        outside.write_bytes(b'unapproved external portrait')
+        for label, value in (
+            ('missing', None),
+            ('hash', {**original['portrait_source'], 'sha256':'0' * 64}),
+            ('escape', {'file':'assets/art/characters/outside-head.png',
+                        'sha256':sha(outside.read_bytes())}),
+            ('mode', {**original['portrait_source'], 'mode':'head-master'}),
+            ('scale', {**original['portrait_source'], 'source_normalization':2}),
+        ):
+            record = copy.deepcopy(original)
+            record['portrait_source'] = value
+            if label in ('hash','mode','scale'):
+                master = self.root / value['file']
+                master.parent.mkdir(parents=True, exist_ok=True)
+                master.write_bytes((ROOT / value['file']).read_bytes())
+            if label == 'scale':
+                prior = self.root / baseline['source_files']['legacy']['file']
+                prior.parent.mkdir(parents=True,exist_ok=True)
+                prior.write_bytes((ROOT / baseline['source_files']['legacy']['file']).read_bytes())
+            write_json(path, record)
+            registration = {**fighters.NATIVE_REVISION_REGISTRY[1],
+                            'contract_sha256':sha(path.read_bytes())}
+            with self.subTest(mutation=label), mock.patch.dict(
+                    fighters.NATIVE_REVISION_REGISTRY, {1:registration}):
+                with self.assertRaisesRegex(AssertionError,
+                        'source descriptor|source hash changed|source escapes|preserved idle atlas|preserved portrait normalization'):
+                    fighters._load_revision_sources(self.root, 1, 'ivo', directory, baseline)
 
     def test_native_frame_and_palette_shapes(self):
         frames, palette, block, expected = self.native_fixture()
@@ -431,6 +470,43 @@ class AuthoringGuards(unittest.TestCase):
                         with self.assertRaises(AssertionError):
                             namespace[function](*args)
                     self.assertFalse(output.exists())
+
+    def test_native_face_palette_keeps_skin_and_exact_costume_colours(self):
+        from native_face_assets import native_indices
+        records=json.loads((ROOT/'assets/art/native-faces-v033/roster.json').read_bytes())
+        for row in records['fighters']:
+            if row.get('restore_original'):
+                # This actor retains its historical encoder/palette; the new
+                # reserved-skin mapper is intentionally not applied to it.
+                continue
+            palette=row['palette']
+            image=Image.new('RGBA',(16,1))
+            image.putdata([(*c,255) for c in palette]+[(0,0,0,0)])
+            self.assertEqual(native_indices(image,palette),list(range(1,16))+[0])
+            # Muted facial midtones must not become saturated red/orange cloth.
+            image=Image.new('RGBA',(3,1))
+            image.putdata([(192,144,104,255),(218,176,136,255),(160,112,80,255)])
+            self.assertTrue(all(10<=n<=15 for n in native_indices(image,palette)),row['slug'])
+
+    def test_native_face_source_requires_sixty_four_separate_figures(self):
+        path=self.root/'atlas.png'
+        sheet=Image.new('RGBA',(400,400))
+        draw=ImageDraw.Draw(sheet)
+        for n in range(64):
+            x,y=n%8*50+5,n//8*50+5
+            draw.rectangle((x,y,x+29,y+29),fill=(80+n,32,24,255))
+        sheet.save(path)
+        figures,details=fighters.extract_atlas(path,pose_names=list(map(str,range(64))),expected_count=64)
+        self.assertEqual(len(figures),64)
+        self.assertEqual([d['source_box'][:2] for d in details],
+                         [(n%8*50+5,n//8*50+5) for n in range(64)])
+        for mutation in ('missing','joined'):
+            bad=sheet.copy();paint=ImageDraw.Draw(bad)
+            if mutation=='missing':paint.rectangle((5,5,34,34),fill=(0,0,0,0))
+            else:paint.rectangle((34,10,55,20),fill=(80,32,24,255))
+            bad.save(path)
+            with self.assertRaisesRegex(AssertionError,'got 63'):
+                fighters.extract_atlas(path,pose_names=list(map(str,range(64))),expected_count=64)
 
 
 if __name__ == '__main__':

@@ -66,6 +66,16 @@ NATIVE_BASELINE_SHA256 = '386a430db966c7f5c843811d78d9e06043838d8893f166bdc58637
 # Art revisions are allowlisted by exact reviewed contract hash. There is
 # intentionally no CLI switch that bypasses the immutable roster baseline.
 NATIVE_REVISION_REGISTRY = {
+    7: {
+        'contract_file': 'assets/art/characters/07-cristian/native-revision.json',
+        'source_version': 'v6',
+        'contract_sha256': '2dcbf73413ca1899cdfa7a4e6428e8f803a52468f165ec2ffdf3f5a733d6c389',
+    },
+    1: {
+        'contract_file': 'assets/art/characters/01-ivo/native-revision.json',
+        'source_version': 'v6',
+        'contract_sha256': '65946c636694bb85ecb27f070c600b5ba93dcd0bbd3291335fbf8cf91b4457fa',
+    },
     0: {
         'contract_file': 'assets/art/characters/00-damian/native-revision.json',
         'source_version': 'v5',
@@ -73,7 +83,8 @@ NATIVE_REVISION_REGISTRY = {
     },
     6: {
         'contract_file': 'assets/art/characters/06-fernando/native-revision.json',
-        'contract_sha256': '00b56eeaa8d92e19fbff5a4071857c248ea7541d38e522aca7e3cc6a692911b4',
+        'source_version': 'v6',
+        'contract_sha256': 'd6dd085bd2c42a25084bf398fbd530011c5535b095035c1e233bf9ab403c8c59',
     },
     9: {
         'contract_file': 'assets/art/characters/09-reston/native-revision.json',
@@ -100,8 +111,8 @@ def extract_atlas(path, alpha_threshold=200, pose_names=None, expected_count=16)
     extraction algorithm and its alpha-threshold semantics remain unchanged.
     """
     names = tuple(POSES if pose_names is None else pose_names)
-    count_label='sixteen' if expected_count==16 else 'eight'
-    if expected_count not in (8,16) or len(names)!=expected_count:
+    count_label={8:'eight',16:'sixteen',64:'sixty-four'}.get(expected_count,str(expected_count))
+    if expected_count not in (8,16,64) or len(names)!=expected_count:
         raise AssertionError(f'{path}: an atlas must contain exactly {count_label} pose names')
     sheet = Image.open(path).convert('RGBA')
     width, height = sheet.size
@@ -144,8 +155,9 @@ def extract_atlas(path, alpha_threshold=200, pose_names=None, expected_count=16)
         raise AssertionError(f'{path}: expected {count_label} separate fighter silhouettes; got {len(selected)}: {[(c[0], c[1]) for c in selected]}')
     selected.sort(key=lambda item: item[1][3])
     ordered = []
-    for row in range(0, expected_count, 4):
-        ordered.extend(sorted(selected[row:row + 4], key=lambda item: item[1][0]))
+    columns = 8 if expected_count == 64 else 4
+    for row in range(0, expected_count, columns):
+        ordered.extend(sorted(selected[row:row + columns], key=lambda item: item[1][0]))
     figures = []
     metadata = []
     for pose, (count, box, component) in zip(names, ordered):
@@ -494,7 +506,7 @@ def _load_revision_sources(root, fighter, slug, directory, baseline_entry):
     """Resolve an explicitly allowlisted four-atlas revision, if present."""
     registry = NATIVE_REVISION_REGISTRY.get(fighter)
     source_version = registry.get('source_version', 'v4') if registry else 'v4'
-    if source_version not in ('v4', 'v5'):
+    if source_version not in ('v4', 'v5', 'v6'):
         raise AssertionError(f'{slug}: unsupported registered source version')
     candidates = [directory / f'{stem}-{source_version}{suffix}'
                   for stem, suffix in (('atlas', '.png'),
@@ -528,6 +540,19 @@ def _load_revision_sources(root, fighter, slug, directory, baseline_entry):
         raise AssertionError()
     if not (contract.get('baseline', {}).get('sha256') == NATIVE_BASELINE_SHA256):
         raise AssertionError()
+    portrait_source = None
+    if source_version == 'v6':
+        portrait_source = _resolve_checked_source(
+            root, directory, contract.get('portrait_source'),
+            f'{slug} preserved selection portrait')
+        portrait_descriptor = contract['portrait_source']
+        if portrait_descriptor.get('mode') != 'preserved-idle-atlas':
+            raise AssertionError(f'{slug}: selection portrait must use its preserved idle atlas')
+        portrait_reference = extract_atlas(root / baseline_entry['source_files']['legacy']['file'])[0][0].height
+        portrait_height = extract_atlas(portrait_source)[0][0].height
+        _assert_same_scale(portrait_descriptor.get('source_normalization'),
+                           portrait_reference / portrait_height,
+                           f'{slug} preserved portrait normalization')
     provenance_files = contract.get('provenance_files')
     expected_provenance_names = (
         f'likeness-{source_version}.json', f'animation-{source_version}.json',
@@ -611,6 +636,9 @@ def _load_revision_sources(root, fighter, slug, directory, baseline_entry):
         'expected_native': expected_native,
         'source_normalization': scales,
         'provenance_files': provenance_paths,
+        'portrait_source': portrait_source,
+        'portrait_normalization': (contract['portrait_source']['source_normalization']
+                                   if portrait_source else None),
     }
 
 
@@ -1021,14 +1049,31 @@ def prepare_roster(root, output):
         _assert_native_animation_cycles(slug, indices)
         if not (len({bytes(ids) for ids in indices[:16]}) >= 14):
             raise AssertionError(f'{slug}: legacy key poses were duplicated')
-        pending_images.append((output / f'fighter{fighter:02}.png', preview))
-
-        # Reuse the same illustrated face and costume for the select portrait.
-        portrait_pair = build_portrait_pair(figures[0], backdrop=colors[0])
+        # Combat-face edits must not redraw the selection portraits. v6 pins
+        # the earlier idle atlas independently from the current combat atlas.
+        portrait_source = revision.get('portrait_source') if revision else None
+        if portrait_source:
+            portrait_figures, _ = extract_atlas(portrait_source)
+            portrait_master = _normalize_animation_locked(
+                portrait_figures, revision['portrait_normalization'],
+                f'{slug} preserved portrait')[0]
+            portrait_pair = build_portrait_pair(portrait_master, backdrop=colors[0])
+        else:
+            portrait_pair = build_portrait_pair(figures[0], backdrop=colors[0])
         backdrop = portrait_pair['small']
         backdrop_large = portrait_pair['large']
         pending_images.append((output / f'portrait{fighter:02}.png', backdrop))
         pending_images.append((output / f'portrait{fighter:02}-large.png', backdrop_large))
+
+        from native_face_assets import apply_native_faces
+        native_faces = apply_native_faces(root,fighter,slug,indices,metadata,
+            fighter_palette,uniform_scale,HEIGHTS[fighter],extract_atlas)
+        if native_faces:
+            indices = native_faces['indices']
+            fighter_palette = native_faces['palette']
+            preview = native_faces['preview']
+            _assert_native_animation_cycles(slug,indices)
+        pending_images.append((output / f'fighter{fighter:02}.png', preview))
 
         effective_standing_height = metadata[0]['effective_height']
         effective_height = max(item['effective_height'] for item in metadata)
@@ -1111,6 +1156,10 @@ def prepare_roster(root, output):
             manifest_entry['combat_revisions']=combat_revisions
             manifest_entry['native64_sha256']=_frame_hash_summary(_native_frame_hashes(indices))
             manifest_entry['walking_revision']['scope']='Walking-only checkpoint before the disjoint combat revisions; native64_sha256 records the final set.'
+        if native_faces:
+            manifest_entry['native_face_revision']=native_faces['revision']
+            manifest_entry['native64_sha256']=native_faces['revision']['native64_sha256']
+            manifest_entry['walking_revision']['scope']='Historical walking checkpoint before the native face/palette revision; native_face_revision records the final complete model.'
         manifests.append(manifest_entry)
         print(f'Prepared {slug}: 64 individual frames, 15-color OBJ palette', flush=True)
     if not (len({tuple(f['indices'][0]) for f in fighters}) == 12):

@@ -1,0 +1,163 @@
+{
+  "schema": 1,
+  "fighter_id": 6,
+  "scope": "attack-v1",
+  "palette_sha256": "8157261a8813a14f129fe05c4cd41d219ec1d8213fda5e9de62173601a680a1c",
+  "anchor": {
+    "source": 0,
+    "pose": 0
+  },
+  "height_target": 67,
+  "reference": "assets/art/characters/06-fernando/expression-study-v032/head.png",
+  "reference_sha256": "1732ef5bfa8325117eacff2a63e7d563b63aeaba8f4137ad0ad0af9f28a7bac3",
+  "revises": "assets/art/characters/06-fernando/attack-v031.json",
+  "pose_contract_sha256": "77ad124fdbb94bd2f402ac084795440a16d721bf6133f077e6f02d0c2f699e4d",
+  "generation_edits": [
+    {
+      "source": "assets/art/characters/06-fernando/attack-a-v032.png",
+      "sha256": "918ccdafc1bb0dc99c886698a303e08b8ded4892dd3f3abeffbfb1dbd3721077",
+      "selected_final": "assets/art/characters/06-fernando/attack-a-v032.png",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-b77acf8a-0df2-4aee-8ed7-ef94420a74ab.png",
+      "raw_output_sha256": "918ccdafc1bb0dc99c886698a303e08b8ded4892dd3f3abeffbfb1dbd3721077",
+      "prompt": "Use case: identity-preserve. FACE AND EXPRESSION EDIT to an existing complete production fighting animation sheet.\nImage1 EDIT TARGET is the EXACT body/pose/costume/layout guide. Preserve every complete body drawing, stance, arm/leg motion, proportions, costume and colors. This is NOT permission to redesign the bodies or animation.\nImage2 is this SPECIFIC MAN'S USER-APPROVED FACE/EXPRESSION reference. Image3 is his photographic face. Carefully replace the target's old generic stern eyes/expression with the actual eyelid opening, eye distance, gaze, brows, nose, cheek/jaw shape, hair and relaxed closed mouth of Image2.\nKeep his individual small natural eye/brow asymmetries. Calm ready expression in movement/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining the same identity. No stock hero scowl, diagonal angry brows, dark eye sockets, black eye-mask stripe, glaring anime eyes, long downward eye tails, childish dot eyes, exaggerated chin or clenched lips. A guard pose should NOT automatically make him angry. Keep head naturally integrated with neck and torso, same head size and full-body physical scale.\nNative use: 67-73 pixels tall, so the approved face must become a few deliberate BROAD CEL COLOR PLANES with separate small eye marks, softer middle-tone brows and clear light skin between eyebrow and eye. Short nose and understated relaxed mouth. Keep cheeks bright; no fine skin texture, micro-wrinkles, black face shadows or noisy dithering. Retain the target's original 1992 arcade cartoon body rendering and full clothing details. No photographic pasted head and no chibi body.\nEXACTLY 16 independent COMPLETE full-body figures on the same FOUR-COLUMN by 4-ROW square atlas. Row-major pose contract, matching Image1:\nROW1: ready-guard; jab-active; jab-retract; cross-windup\nROW2: cross-active; cross-retract; kick-windup; kick-active\nROW3: kick-retract; sweep-windup; sweep-active; sweep-recovery\nROW4: block-impact; block-hold; hurt-impact; hurt-recovery\nEvery pose stays in its original cell and keeps the original silhouette/action role. First figure retains the original neutral/anchor scale. Crouching/airborne/floor drawings remain genuinely lower than upright poses; never stretch all poses to equal height. Preserve complete feet/hands and generous transparent separation so no figures touch.\nNo added poses, duplicate floating head studies, captions, grid lines, frame, background, cast shadows, energy/projectile FX, props or cropping. True transparent PNG.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "size": [
+        1241,
+        1268
+      ],
+      "references": [
+        {
+          "path": "assets/art/characters/06-fernando/attack-a-v031.png",
+          "sha256": "c7720631155f887fcce68c3afd5975045973df461bc8dc986e310da660e254f7",
+          "role": "v0.31 body, costume, pose and layout edit target"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/expression-study-v032/head.png",
+          "sha256": "1732ef5bfa8325117eacff2a63e7d563b63aeaba8f4137ad0ad0af9f28a7bac3",
+          "role": "user-approved eye and expression direction"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/expression-study-v032/reference-crop.png",
+          "sha256": "848609ee027127920567502c6d9ed032eb8f3ffa10d86b1c14f27db04b8e0e36",
+          "role": "photographic identity and natural expression"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/characters/06-fernando/attack-b-v032.png",
+      "sha256": "777ed6505a5205c660b0cc541ec4f5cbd25ee622840f451052fc296058d9dddb",
+      "selected_final": "assets/art/characters/06-fernando/attack-b-v032.png",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-2e914103-d4ca-493c-906d-a972ae94a1d1.png",
+      "raw_output_sha256": "777ed6505a5205c660b0cc541ec4f5cbd25ee622840f451052fc296058d9dddb",
+      "prompt": "Use case: identity-preserve. FACE AND EXPRESSION EDIT to an existing complete production fighting animation sheet.\nImage1 EDIT TARGET is the EXACT body/pose/costume/layout guide. Preserve every complete body drawing, stance, arm/leg motion, proportions, costume and colors. This is NOT permission to redesign the bodies or animation.\nImage2 is this SPECIFIC MAN'S USER-APPROVED FACE/EXPRESSION reference. Image3 is his photographic face. Carefully replace the target's old generic stern eyes/expression with the actual eyelid opening, eye distance, gaze, brows, nose, cheek/jaw shape, hair and relaxed closed mouth of Image2.\nKeep his individual small natural eye/brow asymmetries. Calm ready expression in movement/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining the same identity. No stock hero scowl, diagonal angry brows, dark eye sockets, black eye-mask stripe, glaring anime eyes, long downward eye tails, childish dot eyes, exaggerated chin or clenched lips. A guard pose should NOT automatically make him angry. Keep head naturally integrated with neck and torso, same head size and full-body physical scale.\nNative use: 67-73 pixels tall, so the approved face must become a few deliberate BROAD CEL COLOR PLANES with separate small eye marks, softer middle-tone brows and clear light skin between eyebrow and eye. Short nose and understated relaxed mouth. Keep cheeks bright; no fine skin texture, micro-wrinkles, black face shadows or noisy dithering. Retain the target's original 1992 arcade cartoon body rendering and full clothing details. No photographic pasted head and no chibi body.\nEXACTLY 16 independent COMPLETE full-body figures on the same FOUR-COLUMN by 4-ROW square atlas. Row-major pose contract, matching Image1:\nROW1: special-charge; cast-active; cast-recovery; uppercut-anticipation\nROW2: uppercut-active; uppercut-recovery; rush-active; knockout-fall\nROW3: unused-neutral-a; unused-cross-load; unused-block; unused-guard-return\nROW4: unused-neutral-b; unused-low-guard; unused-weight-return; unused-neutral-c\nEvery pose stays in its original cell and keeps the original silhouette/action role. First figure retains the original neutral/anchor scale. Crouching/airborne/floor drawings remain genuinely lower than upright poses; never stretch all poses to equal height. Preserve complete feet/hands and generous transparent separation so no figures touch.\nNo added poses, duplicate floating head studies, captions, grid lines, frame, background, cast shadows, energy/projectile FX, props or cropping. True transparent PNG.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "references": [
+        {
+          "path": "assets/art/characters/06-fernando/attack-b-v031.png",
+          "sha256": "696fa0926014486242c418fadae722df354e10edc52b9a4ceaae60298fbcb301",
+          "role": "v0.31 body, costume, pose and layout edit target"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/expression-study-v032/head.png",
+          "sha256": "1732ef5bfa8325117eacff2a63e7d563b63aeaba8f4137ad0ad0af9f28a7bac3",
+          "role": "user-approved eye and expression direction"
+        },
+        {
+          "path": "assets/art/characters/06-fernando/expression-study-v032/reference-crop.png",
+          "sha256": "848609ee027127920567502c6d9ed032eb8f3ffa10d86b1c14f27db04b8e0e36",
+          "role": "photographic identity and natural expression"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "count": 16,
+      "poses": [
+        "ready-guard",
+        "jab-active",
+        "jab-retract",
+        "cross-windup",
+        "cross-active",
+        "cross-retract",
+        "kick-windup",
+        "kick-active",
+        "kick-retract",
+        "sweep-windup",
+        "sweep-active",
+        "sweep-recovery",
+        "block-impact",
+        "block-hold",
+        "hurt-impact",
+        "hurt-recovery"
+      ],
+      "frames": [
+        32,
+        5,
+        33,
+        34,
+        6,
+        35,
+        36,
+        7,
+        37,
+        38,
+        8,
+        39,
+        40,
+        9,
+        10,
+        41
+      ],
+      "file": "assets/art/characters/06-fernando/attack-a-v032.png",
+      "sha256": "918ccdafc1bb0dc99c886698a303e08b8ded4892dd3f3abeffbfb1dbd3721077"
+    },
+    {
+      "count": 16,
+      "poses": [
+        "special-charge",
+        "cast-active",
+        "cast-recovery",
+        "uppercut-anticipation",
+        "uppercut-active",
+        "uppercut-recovery",
+        "rush-active",
+        "knockout-fall",
+        "unused-neutral-a",
+        "unused-cross-load",
+        "unused-block",
+        "unused-guard-return",
+        "unused-neutral-b",
+        "unused-low-guard",
+        "unused-weight-return",
+        "unused-neutral-c"
+      ],
+      "frames": [
+        42,
+        12,
+        43,
+        44,
+        13,
+        45,
+        15,
+        47,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "file": "assets/art/characters/06-fernando/attack-b-v032.png",
+      "sha256": "777ed6505a5205c660b0cc541ec4f5cbd25ee622840f451052fc296058d9dddb"
+    }
+  ]
+}

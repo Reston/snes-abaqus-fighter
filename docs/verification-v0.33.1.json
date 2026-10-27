@@ -1,0 +1,111 @@
+{
+  "status": "passed",
+  "version": "0.33.1",
+  "rom_sha256": "5a1e5c89b4b0682c1a22f51a43b52ac3a20542e08ed05e2766663ca1e1a96ebd",
+  "checksum": "C80C",
+  "native_source_freeze": "c0e44b5a3926ac4f193c608de88c00e20d1581d8",
+  "verification_producer_commit": "c0e44b5a3926ac4f193c608de88c00e20d1581d8",
+  "reports": {
+    "docs/test-report.json": {
+      "sha256": "2dfa02af58b111ad7c5cfe072233d01d6492358f66964e51dd0985b0ebe70384",
+      "scope": "shared-native-suite",
+      "checks": 3314
+    },
+    "docs/character-test-report.json": {
+      "sha256": "2a6793474c4575379b4afbd1dae709f6c8fed642bd9d3146d2d4337d7239bb04",
+      "scope": "shared-native-suite",
+      "checks": 20165
+    },
+    "docs/presentation-test-report.json": {
+      "sha256": "4d9579057b2feba0130e01185100ac9de95c831c7e3ab121636c705ee6e91d42",
+      "scope": "shared-native-suite",
+      "checks": 3600
+    },
+    "docs/input-test-report.json": {
+      "sha256": "b92785f8d5c6446a2e04110c33f1a0b947a02f8fccd89b9de8d912d3c2a5be12",
+      "scope": "shared-native-suite",
+      "checks": 2296
+    },
+    "docs/stage-test-report.json": {
+      "sha256": "e34e3b148fd49060bc374d0783bf7c8d8c305322dd6f7f34b1490d623f5c64e2",
+      "scope": "shared-native-suite",
+      "checks": 19002
+    },
+    "docs/training-test-report.json": {
+      "sha256": "702bab51d50863f10319c51d4f49a311aefea8970458afd9ff70533c589b6090",
+      "scope": "shared-native-suite",
+      "checks": 3636
+    },
+    "docs/compatibility-test-report.json": {
+      "sha256": "6ea606918e55984b13d0d901763654b1a8b92d33a619599f3c640669c670e198",
+      "scope": "independent-Accuracy-smoke"
+    },
+    "docs/fresh-build-test-report.json": {
+      "sha256": "2b2471912bd01e4986eb8d6b7e6737e95a600e0ead43623c67213cd6344c253c",
+      "scope": "fresh-source-export"
+    },
+    "docs/roster331-native-report.json": {
+      "sha256": "bc1e42a679674267802195d6578e4fcf1369fc6bff1fc2402bca88d849b3c753",
+      "scope": "Reston-and-David-both-cores-both-ports"
+    },
+    "docs/roster331-policy-report.json": {
+      "sha256": "9ca504a7455de9c0fdc49ffd14d10a195dbb0f93c23006d917d47ef5de1c1620",
+      "scope": "Reston-hair-David-restoration-and-ten-model-preservation"
+    }
+  },
+  "native_suite_checks": 52013,
+  "accepted_other_fighter_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    6,
+    7,
+    8,
+    10,
+    11
+  ],
+  "reston_hair_approval": null,
+  "david_restored_model_version": "0.32.1",
+  "merge_authorized": false,
+  "public_game_version": "0.30.0",
+  "new_offline_package": false,
+  "focused_callbacks": 5880,
+  "focused_checks": 29400,
+  "art": {
+    "source": "assets/art/native-faces-v033/09-reston-native64-v3.png",
+    "sha256": "0244791a9792583ff09896648b51450bdd020fde3d05c5ef80a7243e0a3bce76",
+    "provenance": "assets/art/native-faces-v033/09-reston-native64-v3.json",
+    "provenance_sha256": "ae64a77d591db0c450ca8383db626cdcb058edeccf2717cb4f139f564b0ea6cf",
+    "mode": "built-in image_gen",
+    "poses": 64
+  },
+  "unit_guards": [
+    {
+      "path": "docs/evidence/v0331-reston-hair/guards.txt",
+      "sha256": "bd0c8ef41685aa46d6bc572cd0c1ab1be9a86b7137c25284f31993c45a47ee1b",
+      "tests": 23,
+      "optimized": false,
+      "producer_source": "tools/test_authoring_guards.py",
+      "producer_sha256": "ad06c268b411000a1874a1c771d7768d6d06fd29d0c05bedad349f5a9b726809"
+    },
+    {
+      "path": "docs/evidence/v0331-reston-hair/guards-optimized.txt",
+      "sha256": "0f730ad29fcd426e357860c9cc6aa10b75803829d63f86707d50b2c02eb944af",
+      "tests": 23,
+      "optimized": true,
+      "producer_source": "tools/test_authoring_guards.py",
+      "producer_sha256": "ad06c268b411000a1874a1c771d7768d6d06fd29d0c05bedad349f5a9b726809"
+    },
+    {
+      "path": "docs/evidence/v0331-reston-hair/web-unit.txt",
+      "sha256": "cae399dbc6d1c787477c3a93ad89c45cf7a13bef096873bf72a44c45e9bd84d6",
+      "tests": 5,
+      "optimized": false,
+      "producer_source": "tools/test_web_build.py",
+      "producer_sha256": "25e9298e000413b59804d3a816a4cc4d88e60f081616fe5aef9574af613017bc"
+    }
+  ],
+  "browser_scope": "Five current build integrity checks pass; wrapper/runtime unchanged. No current-ROM actual-WASM run is claimed."
+}

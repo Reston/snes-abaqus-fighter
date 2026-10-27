@@ -1,0 +1,2542 @@
+{
+  "status": "passed",
+  "rom_sha256": "1dc456430a706fd0e6ac3a4d25bc0455b1cf9e034599d15e581962202dda628b",
+  "version": "0.32.1",
+  "emulated_memory_writes": false,
+  "save_states": false,
+  "controller_only": true,
+  "cases": [
+    {
+      "core": "snes9x",
+      "fighter_id": 1,
+      "fighter": "ivo",
+      "port": 1,
+      "fighters": [
+        1,
+        8
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 1,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 2
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          [
+            32,
+            34,
+            36,
+            38,
+            40,
+            42
+          ],
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74
+          ],
+          [
+            96,
+            98,
+            100,
+            102,
+            104,
+            106
+          ],
+          [
+            128,
+            130,
+            132,
+            134,
+            136,
+            138
+          ]
+        ],
+        "flip": 0
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          40,
+          127,
+          91,
+          199
+        ],
+        "observed": [
+          40,
+          127,
+          91,
+          199
+        ],
+        "changed_pixels": 1645,
+        "opaque_pixels": 1671
+      }
+    },
+    {
+      "core": "snes9x",
+      "fighter_id": 1,
+      "fighter": "ivo",
+      "port": 2,
+      "fighters": [
+        8,
+        1
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 1,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 2
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            160,
+            162,
+            164,
+            166,
+            168,
+            170
+          ],
+          [
+            192,
+            194,
+            196,
+            198,
+            200,
+            202
+          ],
+          [
+            224,
+            226,
+            228,
+            230,
+            232,
+            234
+          ],
+          [
+            256,
+            258,
+            260,
+            262,
+            264,
+            266
+          ],
+          [
+            288,
+            290,
+            292,
+            294,
+            296,
+            298
+          ]
+        ],
+        "flip": 64
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          165,
+          127,
+          216,
+          199
+        ],
+        "observed": [
+          165,
+          127,
+          216,
+          199
+        ],
+        "changed_pixels": 1625,
+        "opaque_pixels": 1671
+      }
+    },
+    {
+      "core": "snes9x",
+      "fighter_id": 6,
+      "fighter": "fernando",
+      "port": 1,
+      "fighters": [
+        6,
+        8
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 6,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 2
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          [
+            32,
+            34,
+            36,
+            38,
+            40,
+            42
+          ],
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74
+          ],
+          [
+            96,
+            98,
+            100,
+            102,
+            104,
+            106
+          ],
+          [
+            128,
+            130,
+            132,
+            134,
+            136,
+            138
+          ]
+        ],
+        "flip": 0
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          41,
+          132,
+          91,
+          199
+        ],
+        "observed": [
+          41,
+          132,
+          91,
+          199
+        ],
+        "changed_pixels": 1715,
+        "opaque_pixels": 1715
+      }
+    },
+    {
+      "core": "snes9x",
+      "fighter_id": 6,
+      "fighter": "fernando",
+      "port": 2,
+      "fighters": [
+        8,
+        6
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 6,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 2
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            160,
+            162,
+            164,
+            166,
+            168,
+            170
+          ],
+          [
+            192,
+            194,
+            196,
+            198,
+            200,
+            202
+          ],
+          [
+            224,
+            226,
+            228,
+            230,
+            232,
+            234
+          ],
+          [
+            256,
+            258,
+            260,
+            262,
+            264,
+            266
+          ],
+          [
+            288,
+            290,
+            292,
+            294,
+            296,
+            298
+          ]
+        ],
+        "flip": 64
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          165,
+          132,
+          215,
+          199
+        ],
+        "observed": [
+          165,
+          132,
+          215,
+          199
+        ],
+        "changed_pixels": 1703,
+        "opaque_pixels": 1715
+      }
+    },
+    {
+      "core": "snes9x",
+      "fighter_id": 7,
+      "fighter": "cristian",
+      "port": 1,
+      "fighters": [
+        7,
+        8
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 7,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 2
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          [
+            32,
+            34,
+            36,
+            38,
+            40,
+            42
+          ],
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74
+          ],
+          [
+            96,
+            98,
+            100,
+            102,
+            104,
+            106
+          ],
+          [
+            128,
+            130,
+            132,
+            134,
+            136,
+            138
+          ]
+        ],
+        "flip": 0
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          40,
+          126,
+          91,
+          199
+        ],
+        "observed": [
+          40,
+          126,
+          91,
+          199
+        ],
+        "changed_pixels": 1828,
+        "opaque_pixels": 1860
+      }
+    },
+    {
+      "core": "snes9x",
+      "fighter_id": 7,
+      "fighter": "cristian",
+      "port": 2,
+      "fighters": [
+        8,
+        7
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 7,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 2
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            160,
+            162,
+            164,
+            166,
+            168,
+            170
+          ],
+          [
+            192,
+            194,
+            196,
+            198,
+            200,
+            202
+          ],
+          [
+            224,
+            226,
+            228,
+            230,
+            232,
+            234
+          ],
+          [
+            256,
+            258,
+            260,
+            262,
+            264,
+            266
+          ],
+          [
+            288,
+            290,
+            292,
+            294,
+            296,
+            298
+          ]
+        ],
+        "flip": 64
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          165,
+          126,
+          216,
+          199
+        ],
+        "observed": [
+          165,
+          126,
+          216,
+          199
+        ],
+        "changed_pixels": 1802,
+        "opaque_pixels": 1860
+      }
+    },
+    {
+      "core": "accuracy",
+      "fighter_id": 1,
+      "fighter": "ivo",
+      "port": 1,
+      "fighters": [
+        1,
+        8
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 1,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 1
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          [
+            32,
+            34,
+            36,
+            38,
+            40,
+            42
+          ],
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74
+          ],
+          [
+            96,
+            98,
+            100,
+            102,
+            104,
+            106
+          ],
+          [
+            128,
+            130,
+            132,
+            134,
+            136,
+            138
+          ]
+        ],
+        "flip": 0
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          40,
+          127,
+          91,
+          199
+        ],
+        "observed": [
+          40,
+          127,
+          91,
+          199
+        ],
+        "changed_pixels": 1647,
+        "opaque_pixels": 1671
+      }
+    },
+    {
+      "core": "accuracy",
+      "fighter_id": 1,
+      "fighter": "ivo",
+      "port": 2,
+      "fighters": [
+        8,
+        1
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 1,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 1
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            160,
+            162,
+            164,
+            166,
+            168,
+            170
+          ],
+          [
+            192,
+            194,
+            196,
+            198,
+            200,
+            202
+          ],
+          [
+            224,
+            226,
+            228,
+            230,
+            232,
+            234
+          ],
+          [
+            256,
+            258,
+            260,
+            262,
+            264,
+            266
+          ],
+          [
+            288,
+            290,
+            292,
+            294,
+            296,
+            298
+          ]
+        ],
+        "flip": 64
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          165,
+          127,
+          216,
+          199
+        ],
+        "observed": [
+          165,
+          127,
+          216,
+          199
+        ],
+        "changed_pixels": 1625,
+        "opaque_pixels": 1671
+      }
+    },
+    {
+      "core": "accuracy",
+      "fighter_id": 6,
+      "fighter": "fernando",
+      "port": 1,
+      "fighters": [
+        6,
+        8
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 6,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 1
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          [
+            32,
+            34,
+            36,
+            38,
+            40,
+            42
+          ],
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74
+          ],
+          [
+            96,
+            98,
+            100,
+            102,
+            104,
+            106
+          ],
+          [
+            128,
+            130,
+            132,
+            134,
+            136,
+            138
+          ]
+        ],
+        "flip": 0
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          41,
+          132,
+          91,
+          199
+        ],
+        "observed": [
+          41,
+          132,
+          91,
+          199
+        ],
+        "changed_pixels": 1715,
+        "opaque_pixels": 1715
+      }
+    },
+    {
+      "core": "accuracy",
+      "fighter_id": 6,
+      "fighter": "fernando",
+      "port": 2,
+      "fighters": [
+        8,
+        6
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 6,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 1
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            160,
+            162,
+            164,
+            166,
+            168,
+            170
+          ],
+          [
+            192,
+            194,
+            196,
+            198,
+            200,
+            202
+          ],
+          [
+            224,
+            226,
+            228,
+            230,
+            232,
+            234
+          ],
+          [
+            256,
+            258,
+            260,
+            262,
+            264,
+            266
+          ],
+          [
+            288,
+            290,
+            292,
+            294,
+            296,
+            298
+          ]
+        ],
+        "flip": 64
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          165,
+          132,
+          215,
+          199
+        ],
+        "observed": [
+          165,
+          132,
+          215,
+          199
+        ],
+        "changed_pixels": 1698,
+        "opaque_pixels": 1715
+      }
+    },
+    {
+      "core": "accuracy",
+      "fighter_id": 7,
+      "fighter": "cristian",
+      "port": 1,
+      "fighters": [
+        7,
+        8
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 7,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 1
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          [
+            32,
+            34,
+            36,
+            38,
+            40,
+            42
+          ],
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74
+          ],
+          [
+            96,
+            98,
+            100,
+            102,
+            104,
+            106
+          ],
+          [
+            128,
+            130,
+            132,
+            134,
+            136,
+            138
+          ]
+        ],
+        "flip": 0
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          40,
+          126,
+          91,
+          199
+        ],
+        "observed": [
+          40,
+          126,
+          91,
+          199
+        ],
+        "changed_pixels": 1832,
+        "opaque_pixels": 1860
+      }
+    },
+    {
+      "core": "accuracy",
+      "fighter_id": 7,
+      "fighter": "cristian",
+      "port": 2,
+      "fighters": [
+        8,
+        7
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 7,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 1
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            160,
+            162,
+            164,
+            166,
+            168,
+            170
+          ],
+          [
+            192,
+            194,
+            196,
+            198,
+            200,
+            202
+          ],
+          [
+            224,
+            226,
+            228,
+            230,
+            232,
+            234
+          ],
+          [
+            256,
+            258,
+            260,
+            262,
+            264,
+            266
+          ],
+          [
+            288,
+            290,
+            292,
+            294,
+            296,
+            298
+          ]
+        ],
+        "flip": 64
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          165,
+          126,
+          216,
+          199
+        ],
+        "observed": [
+          165,
+          126,
+          216,
+          199
+        ],
+        "changed_pixels": 1800,
+        "opaque_pixels": 1860
+      }
+    }
+  ],
+  "media": [
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-ivo-p1-select.png",
+      "sha256": "6633f6085d61f8cbefea197ebdcb29db0afdfe98f31f3a598a61633ace460821"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-ivo-p1-fight.png",
+      "sha256": "eda3f43511ea0c81bb2688af7457bc08efdd9dae06d18a3d9b0b2fa5db048f07"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-ivo-p1-walk.png",
+      "sha256": "6175ee7c8fd377c70aa80f8c56842b6c0c7fc7a4a746b8e14188b831d9154b87"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-ivo-p1-jump.png",
+      "sha256": "62e89762ced85ad385411cc3af05798e482e679193997a8f0770786233a83ea5"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-ivo-p1-jab.png",
+      "sha256": "51bc8d46fd370d0c5d446fb8ac29fb69ae9895efdb31e7385bc981cf3fc57640"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-ivo-p1-strong.png",
+      "sha256": "380549e6f86b34b8e2258cc99f12dd6351b6a9345dbbce60a432768eb163e97a"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-ivo-p1-kick.png",
+      "sha256": "91c9e61e2ddddbdfb2a8b17b50784ba3e94653e2ac206b85155b331856e3bf44"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-ivo-p1-heavy-kick.png",
+      "sha256": "d31f2d131d26c1a51d7ed118a3eba8cefeb54c646b6477e05943b0213911eac0"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-ivo-p1-uppercut.png",
+      "sha256": "e47ee77c742ac055f68405cccb131d3388acf62a0413ead2223c0a81be8fe9ef"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-ivo-p2-select.png",
+      "sha256": "e7472e89a874132add87c0d516ce848bf6f32b53b9c36ff87c6b57d50d35bbd8"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-ivo-p2-fight.png",
+      "sha256": "037d43f97c413a2aeabadc7cecbbb9a021f68ab13deb44fa109fc27a09a4b19e"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-ivo-p2-walk.png",
+      "sha256": "9ea79f7cb9632c1637f38925e4fd84b2d90febc112d75c5eb993a6958f7ae111"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-ivo-p2-jump.png",
+      "sha256": "304c4fee2848a24521f0f1bec45093d3add21f33d950141485bd651725f04dac"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-ivo-p2-jab.png",
+      "sha256": "958f7320855c8d13afc18a9431a694340341580c1c763c356811eafe37634943"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-ivo-p2-strong.png",
+      "sha256": "fe065c7456f7f73b714f59cb4b33443debcb0ff3ceace12876637b49520a83c3"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-ivo-p2-kick.png",
+      "sha256": "aadbf88c47800d4c137f125e758434fdb90a7fc06c92efb625934b68292e23b2"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-ivo-p2-heavy-kick.png",
+      "sha256": "b17e69a15329979c0dc4717f20d5ed926d2d8f82663fd9a55ad0b44eb373f062"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-ivo-p2-uppercut.png",
+      "sha256": "cd3cfa4f6130dc027637af712ec908c3a9354f7f34ea8b3d7b627d1995f7bf42"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-fernando-p1-select.png",
+      "sha256": "b93df8d262ad431636ada2078fd47663dbd04088124c6f7f4093f82f274db53c"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-fernando-p1-fight.png",
+      "sha256": "1cbae6307f621735b2b42d93dbc66818a647628b3e7964ea61fd9bc4316e6853"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-fernando-p1-walk.png",
+      "sha256": "5c335e64dc1cf25118a0635b5970e7582daf0d5252edb3356a85182c61e63ef6"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-fernando-p1-jump.png",
+      "sha256": "fbafd2d2ac697a198270f4b0385766850ff80d8b744757d8df67caf1ed74f579"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-fernando-p1-jab.png",
+      "sha256": "0565b4395496e3d70a15e8bb4ddc580aff5eddff0728aaf3a455b0b23f35b64f"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-fernando-p1-strong.png",
+      "sha256": "a02a9a2c83a5f92b8e80ed35a2c570c6e727081c8e71243c4640dd57813ebb5b"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-fernando-p1-kick.png",
+      "sha256": "0ff00655af4f0509ae8c44dbc0971451ef2fc6f01b54229268d08d4501969f9e"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-fernando-p1-heavy-kick.png",
+      "sha256": "48873522068bc8c4cfbcf3ea6c99a4e181f09f8e9df272ef6bb7fd9436838b71"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-fernando-p1-uppercut.png",
+      "sha256": "99f7e9709bbf72c4ef857ae1dfdd55d88644c31b55e1d6d927ff817e6904fec3"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-fernando-p2-select.png",
+      "sha256": "433b3039c42186cb11f2336a3f73e47250a6a77451acba49d3cf903d822340db"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-fernando-p2-fight.png",
+      "sha256": "21fc34faf4567106363195ba47cf85150cfa4f231309709f88159b008b59096e"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-fernando-p2-walk.png",
+      "sha256": "f692431fedc2aeb18e02e3548b2ad5bb00d78f43426b01377dbbf7846fb6a737"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-fernando-p2-jump.png",
+      "sha256": "b39a84887786323d736fd7048ae041e0c38e33f1a0f481f0fab19ad1297008e2"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-fernando-p2-jab.png",
+      "sha256": "274039651806deab22d79d6740bd3555734a3fdca13f785d84b9eec5639de0b3"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-fernando-p2-strong.png",
+      "sha256": "de15f7c5da4393fe653059f687ca7dbe6fcbbfee4fbdb1d619a542b35344fca5"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-fernando-p2-kick.png",
+      "sha256": "674b4bf0d1baea1066456d37deb4f2534ad936530b2ca5d14aabc187e1b849b6"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-fernando-p2-heavy-kick.png",
+      "sha256": "f21bd4e2d73058b124916871aea9254dae605bd88e4a9a152d2418b710106320"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-fernando-p2-uppercut.png",
+      "sha256": "fe9900686d3af2990368ac67f516cab4f7decc8ff5c2e98a8d00dfe8fc2afe40"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-cristian-p1-select.png",
+      "sha256": "c1c76bcf0d7e9d45976bc53e46c138cdac4429bd77d887593930f78311f17d08"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-cristian-p1-fight.png",
+      "sha256": "7df54860982360dda005026fd60a59df5e860f8b3e188549a926af83eeabd505"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-cristian-p1-walk.png",
+      "sha256": "f6fc57719f98807bf42885066ce5b2afdea26893ec34b746f2a251fb1fdd19e6"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-cristian-p1-jump.png",
+      "sha256": "7b074520516957ebcf2c6b6eccf23a3ede15fc993a838b6e3661f72528fad588"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-cristian-p1-jab.png",
+      "sha256": "a3b442d90b9bb66b0704d85c87dc9639ffca1ae170297d62b1ba624dcd0b69d9"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-cristian-p1-strong.png",
+      "sha256": "dfaeec883a9ee6f2d66124535a92a2630c66cf06e28b7995195fe9586b20c624"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-cristian-p1-kick.png",
+      "sha256": "14fdaef241b92067ead9beeeb253cce259bd5b01f8c23e0b35e60783f1b786c7"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-cristian-p1-heavy-kick.png",
+      "sha256": "dbedd10543e11d4c021cb84ad8440cc56dfaf5ba29e35c43cf11f3d30ce3d55c"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-cristian-p1-uppercut.png",
+      "sha256": "c8d48714a77cea64694b7cface819893b570e391754ab816fcabe716001db95f"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-cristian-p2-select.png",
+      "sha256": "a8b7e52dcf3eb48e9710954dfe7545cf329fe4749f78f5869aa25521bc92406f"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-cristian-p2-fight.png",
+      "sha256": "2e4342d72bf67bd9226723da5f2f6b11f2eeabe3f6562fa35975610b005c213e"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-cristian-p2-walk.png",
+      "sha256": "53003f1e7be9f73d7705926ec2c335ae65684f87222ca54560af0418a9ff7a08"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-cristian-p2-jump.png",
+      "sha256": "aa80456c2ca213c827692558a5e70dba015c28cde19bcd56aa2965ea5323c547"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-cristian-p2-jab.png",
+      "sha256": "87ce9b1719e98b8cc3f2f431ed1ad762871f3200034fe9bc5d7f1902d6bb62ba"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-cristian-p2-strong.png",
+      "sha256": "8e2a3fac8ebf5e3f1778c6789fb864a2af723253083b89e4666335256395d9c1"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-cristian-p2-kick.png",
+      "sha256": "6a3b8d94d95589cd3f1fdff7c843f170a07223edee2fc93ba8a65ecd3a1583f0"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-cristian-p2-heavy-kick.png",
+      "sha256": "6b940213bc4cf1c57ad970bfb4c7ebee0a951ef2f8695218e7484e1d1bbce9bc"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/snes9x-cristian-p2-uppercut.png",
+      "sha256": "f8fae923caf68ee07ec5a3867417478fe6c8508ee43f84c01c75aaff4c052284"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-ivo-p1-select.png",
+      "sha256": "e6f2fbfe72fbc0105e1a3a48949cc7acf294cf70925c0d9e3248e78d993b7316"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-ivo-p1-fight.png",
+      "sha256": "8e143de7e2de22131337dbc1ec0bcd49ea429756f8a72a9d77e28dd3e9d434b2"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-ivo-p1-walk.png",
+      "sha256": "ad35cf6aa72bfec6f61fe1418ea560aa36bb7fad8341f9795c9494f376251c4d"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-ivo-p1-jump.png",
+      "sha256": "1567f4b13ddae72b1ebc5af9996b94667a4fd7ed91031c4906773ddff43de5da"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-ivo-p1-jab.png",
+      "sha256": "d6dbeb7a363001c67c6fa3d77c87cc8ca9f1d4b91311dab8ae032c98724a4b7b"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-ivo-p1-strong.png",
+      "sha256": "c6c3a2cb3efa5bc6736e5f6c1eb3ce4a8816b1ced1da57bcf18aa8300a1d9b86"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-ivo-p1-kick.png",
+      "sha256": "12ff015cc403dd6af923deec8417aa0598d97377269d74c5983e433688e18c8b"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-ivo-p1-heavy-kick.png",
+      "sha256": "95c674d58e6b8db36790d47ff6569bd4d39258cce654fbe744858aaeeeee0e7c"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-ivo-p1-uppercut.png",
+      "sha256": "3f0e9dbae6f728fb5eeef43c7388f02ad8755cb966f53e46565d4b9482d84578"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-ivo-p2-select.png",
+      "sha256": "1c91a5244e6ff2a2af0f253a5b88c71cc062fa3016bda90236eb6786c1acbc03"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-ivo-p2-fight.png",
+      "sha256": "79e4f1ea1c4bc0e6daa175f1a087a76cea54eb33de4ab7b42113cafe0f8ecc28"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-ivo-p2-walk.png",
+      "sha256": "36e180c1f2335239c6bc5e84d0eea669b8adbc0f1454b93c6562d583d1e0fdb2"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-ivo-p2-jump.png",
+      "sha256": "1b46eb3e442957d009097a33c388bdc8c86f020a0841a3a5b21469f073bc390a"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-ivo-p2-jab.png",
+      "sha256": "f5c8313e09112d83e78b72f3a365591e3fac08e03badc606fd331018458a3753"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-ivo-p2-strong.png",
+      "sha256": "40a1978406817f5a4ebbe1b64befa267c084f28f9864f2f47d3454a10cabc8bb"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-ivo-p2-kick.png",
+      "sha256": "745c5cecbf2c834d88e14b067c796f9975edc2a9dd30dab806fc6a49a56e0e16"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-ivo-p2-heavy-kick.png",
+      "sha256": "fe4ac8d1c6d50c0a4257032c0022e9c2e2d89ca682fb6d4ac5fc797c2c731c40"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-ivo-p2-uppercut.png",
+      "sha256": "ceb0b32b26ec9d1bea484c4a9229e3be01f5d31bbb56d66ad83d9145841f200c"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-fernando-p1-select.png",
+      "sha256": "eeffbdeed6e92819666dd1729a8d1fb57366cc9e6779350b3eaa86b0d2596486"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-fernando-p1-fight.png",
+      "sha256": "11b06a2811b7208fdaacebfa3992b8388880ec4d903670724e4bd5c7083a55fe"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-fernando-p1-walk.png",
+      "sha256": "cb5ebe565b8515d5cf94f941b636335cd4876dc90cd62b77f71c940a17788f78"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-fernando-p1-jump.png",
+      "sha256": "dcc9a9b8b914a21c6f1ce20cf2120358b0589f846ac9e43ec22af90263660ed0"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-fernando-p1-jab.png",
+      "sha256": "87aa770a79c78e916fd0f3a07e8283950c70d419ab3ea14eabd3a8480cebd3aa"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-fernando-p1-strong.png",
+      "sha256": "cb1bc54e75555f106a0f352c07447b05983b25f858866af9aee1df09299683e8"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-fernando-p1-kick.png",
+      "sha256": "25645f90fbcd9f15b1a5abd6ecf895b37dc96c2beeabc2c66aff08047a862d63"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-fernando-p1-heavy-kick.png",
+      "sha256": "a91a6a8277691353f333e4d6d2be9d7f5fe01c03986649b1b784f6db2df10ecf"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-fernando-p1-uppercut.png",
+      "sha256": "0d0cfdcd5a216579b5e7459f7f879635b45162666b0841bffd9d8397703fb0c6"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-fernando-p2-select.png",
+      "sha256": "ef482e9fa7347d7ceb5ee81b8f8be6f4bc49deaae6986f4621ccb1cdce3667f8"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-fernando-p2-fight.png",
+      "sha256": "ae08cfa6b2be1626ae4c66fe0b30257cdb6b2755453b7a4f14477cf5aad13e44"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-fernando-p2-walk.png",
+      "sha256": "f6ca7270e6d941f95d74519b910870d9480f2fb20f59251eccc81d265c219c51"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-fernando-p2-jump.png",
+      "sha256": "f9c7ba41692f91d6347b4f4505aee67d01d0cd91c5820ae4cb0125fbb1be3f33"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-fernando-p2-jab.png",
+      "sha256": "8d7d592528b35f7f6abd82897bfcd14849d084540b5aa3548b219f3f776476fd"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-fernando-p2-strong.png",
+      "sha256": "217f10a248d4a61cbacfc54d7bb919494f0ae76a9d73b35a75b032da697aaa34"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-fernando-p2-kick.png",
+      "sha256": "0db7630d09d61dedc2679d33012909923cc1527aefffcda7ee8276c3e2e898a5"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-fernando-p2-heavy-kick.png",
+      "sha256": "1705660a018c51eb93e8321e308318ba5e95f2dfff0331ef0465c0ed3e1c9850"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-fernando-p2-uppercut.png",
+      "sha256": "0f68b03d07e4d5a782940a621fbcd236a9f4fc88ce0dff1807b5bb2461028eda"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-cristian-p1-select.png",
+      "sha256": "55606c7886e7817ee4c06a0ec22073a65f1379717db771da54681d913041b831"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-cristian-p1-fight.png",
+      "sha256": "ea7b62dea0ec40b669e33a6f7f382c911b32adfbc1d2d16453d3104b631b7414"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-cristian-p1-walk.png",
+      "sha256": "070641278967635214c826576f2b8f057d8d183af9d8bec9f3f6510bf2eb6395"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-cristian-p1-jump.png",
+      "sha256": "75492729e16aa6dc89f7d5aabcfa8c76cb6daee911be58ab7a086d17e230501b"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-cristian-p1-jab.png",
+      "sha256": "055fa1f46532724a3ab79394797f31da56dec4a1b2b92f1692e7a2b8c08ae217"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-cristian-p1-strong.png",
+      "sha256": "d70161d0b081eeb75fbb6a3e0f0296257c0350dd8a6363121d6f2b857ab7a8be"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-cristian-p1-kick.png",
+      "sha256": "4355c836b59199582fe8aa02ee81ec11e565396e0d8c9a951618734677afbf16"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-cristian-p1-heavy-kick.png",
+      "sha256": "ea2389882d02da665cc82b2af76da4ef39940696889657b5738580241e972c12"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-cristian-p1-uppercut.png",
+      "sha256": "b7e356e0616621ec8021680ce43d84a7f1192bea88bacb006b1953feb34eb25d"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-cristian-p2-select.png",
+      "sha256": "959600c68a7ebfa558bd66a77376d996877f47f011f8342b8b20d78aa2ad38ae"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-cristian-p2-fight.png",
+      "sha256": "1f92f1eee3bd33dd098951dd7684ebdac1f3dc883b3c11815570eb9489994cba"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-cristian-p2-walk.png",
+      "sha256": "39a4c49b163a33188cf832bc162bcb304778d0fd985ddc7f5c93b1d9e9eb21ce"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-cristian-p2-jump.png",
+      "sha256": "f86fa66b4011ddace748346fa016fcba63d4383cdde817445a7c65073c4aa445"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-cristian-p2-jab.png",
+      "sha256": "e5ed8ff7b802a0760c00d20b5f0f0ab59fc6f683d643e8f58106e46bee61b26e"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-cristian-p2-strong.png",
+      "sha256": "c471b4c7fc83661631455b00131d6b4f05b2e4b844cd554d3343dfe24af89cb1"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-cristian-p2-kick.png",
+      "sha256": "c295323cb4499a4e312d0a096ff1b8f5aeea3c931ee5c0d0d55e1d1b98288f5d"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-cristian-p2-heavy-kick.png",
+      "sha256": "0edccceb3b970000bc660119b9590918408badc47d1f0160372a8bd1ac7edf4f"
+    },
+    {
+      "path": "docs/screenshots/likeness-v0321/native/accuracy-cristian-p2-uppercut.png",
+      "sha256": "02ddc755ac6b024f7f1ff24e98269ead794adf6870e6eb88debcfde7191dcb67"
+    }
+  ],
+  "dependencies_sha256": {
+    "tools/test_likeness32.py": "a398fc2d7486627ef40db6914faa983970f082af0cc63fff577e23f1ee8d7903",
+    "tools/likeness32_contracts.py": "53db8a25b71277e65a7a9ac340f1997a41342e524fea3c9eb5221fed12fb4b78",
+    "tools/test_characters.py": "928589e1a897d548f470c90a002a1142f00ab482c32883fd4945715a373fae02",
+    "tools/test_defense29.py": "23f92f1a1f33bd6ff94146364ac0d2ee5e6d5c4e7370c4660ab11dae382bd94c",
+    "tools/test_presentation.py": "e187842e670d65427e38b6d75f2b1f43f65908ae1a98f9436c56c3b6a40d0110",
+    "tools/emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
+    "tools/test_classic_menu.py": "c469ac2469c19bf12441e9aee8c36240d8c318b1ad2b5d250e7eccab49a8427c",
+    "tools/test_compatibility.py": "f2faed60729c238cf23bdddf315dd4015acd1b7239aaf8c4fe07ec8c4121d55d",
+    "tools/fighter_assets.py": "83d190b0c392f692bea69f2b2a2beb04a696cbc48c3001d2dff8288f4586f4d5",
+    "tools/portrait_assets.py": "f95047e2ad5e1c292809ced20ca2e9cc77dc4a0e5f3c10d43cadf8e0843107d3"
+  },
+  "health": {
+    "snes9x": {
+      "callbacks": 4410,
+      "max_spc_backlog": 0,
+      "actor_page_changes": [
+        261,
+        261
+      ],
+      "failures": []
+    },
+    "accuracy": {
+      "callbacks": 4410,
+      "max_spc_backlog": 0,
+      "actor_page_changes": [
+        261,
+        262
+      ],
+      "failures": []
+    }
+  },
+  "source_commit": "dfb7ef1dd032e5ca6765d6b0776f09f417898fe6",
+  "assertion_executions": 44100
+}

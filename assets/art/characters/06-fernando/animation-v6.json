@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "fighter_id": 6,
+  "motion": {
+    "source": "assets/art/characters/06-fernando/animation-motion-v6.png",
+    "sha256": "bafa101fb3d5fa87c10b0cc6671c5186cfd6354318c4d3ec559ca35478133546",
+    "selected_final": "assets/art/characters/06-fernando/animation-motion-v6.png",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-5e1db28c-c2e9-4c66-8e84-7907e7915117.png",
+    "raw_output_sha256": "bafa101fb3d5fa87c10b0cc6671c5186cfd6354318c4d3ec559ca35478133546",
+    "prompt": "Use case: identity-preserve. FACE AND EXPRESSION EDIT to an existing complete production fighting animation sheet.\nImage1 EDIT TARGET is the EXACT body/pose/costume/layout guide. Preserve every complete body drawing, stance, arm/leg motion, proportions, costume and colors. This is NOT permission to redesign the bodies or animation.\nImage2 is this SPECIFIC MAN'S USER-APPROVED FACE/EXPRESSION reference. Image3 is his photographic face. Carefully replace the target's old generic stern eyes/expression with the actual eyelid opening, eye distance, gaze, brows, nose, cheek/jaw shape, hair and relaxed closed mouth of Image2.\nKeep his individual small natural eye/brow asymmetries. Calm ready expression in movement/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining the same identity. No stock hero scowl, diagonal angry brows, dark eye sockets, black eye-mask stripe, glaring anime eyes, long downward eye tails, childish dot eyes, exaggerated chin or clenched lips. A guard pose should NOT automatically make him angry. Keep head naturally integrated with neck and torso, same head size and full-body physical scale.\nNative use: 67-73 pixels tall, so the approved face must become a few deliberate BROAD CEL COLOR PLANES with separate small eye marks, softer middle-tone brows and clear light skin between eyebrow and eye. Short nose and understated relaxed mouth. Keep cheeks bright; no fine skin texture, micro-wrinkles, black face shadows or noisy dithering. Retain the target's original 1992 arcade cartoon body rendering and full clothing details. No photographic pasted head and no chibi body.\nEXACTLY 16 independent COMPLETE full-body figures on the same FOUR-COLUMN by 4-ROW tall 4:5 portrait atlas. Row-major pose contract, matching Image1:\nROW1: breath-neutral; breath-inhale; breath-exhale; breath-return\nROW2: walk-forward-contact; walk-forward-pass; walk-forward-rear-pass; walk-forward-opposite\nROW3: walk-back-contact; walk-back-pass; walk-back-lead-pass; walk-back-opposite\nROW4: crouch-halfway; jump-anticipation; jump-extension; landing-compression\nEvery pose stays in its original cell and keeps the original silhouette/action role. First figure retains the original neutral/anchor scale. Crouching/airborne/floor drawings remain genuinely lower than upright poses; never stretch all poses to equal height. Preserve complete feet/hands and generous transparent separation so no figures touch.\nNo added poses, duplicate floating head studies, captions, grid lines, frame, background, cast shadows, energy/projectile FX, props or cropping. True transparent PNG.\nCRITICAL LAYOUT CORRECTION: the prior trial accidentally let the third row's third figure touch the fourth row's raised jump fist. Use a TALLER 4:5 canvas. Each of the SIXTEEN complete figures must fit wholly inside its own cell with at least 30 completely TRANSPARENT source pixels above AND below it and at least 20 pixels on either side. Leave continuous empty horizontal gutters between ALL FOUR ROWS. Row3 col3 rear-pass walking shoe must remain far above row4 col3 jump fist. Do not join any two silhouettes. Keep the same anatomy, body design, facial expression direction, whole-sheet scale and all distinct motion phases. Increase the EMPTY GUTTERS, not individual pose scale. No extra background or grid.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "size": [
+      1122,
+      1402
+    ],
+    "references": [
+      {
+        "path": "assets/art/characters/06-fernando/animation-motion-v5.png",
+        "sha256": "971607b572bf954bdbbf9ddc6d941e7f53c2e57a2d12362e22ea2cb45bea9a21",
+        "role": "v0.31 body, costume, pose and layout edit target"
+      },
+      {
+        "path": "assets/art/characters/06-fernando/expression-study-v032/head.png",
+        "sha256": "1732ef5bfa8325117eacff2a63e7d563b63aeaba8f4137ad0ad0af9f28a7bac3",
+        "role": "user-approved eye and expression direction"
+      },
+      {
+        "path": "assets/art/characters/06-fernando/expression-study-v032/reference-crop.png",
+        "sha256": "848609ee027127920567502c6d9ed032eb8f3ffa10d86b1c14f27db04b8e0e36",
+        "role": "photographic identity and natural expression"
+      }
+    ]
+  },
+  "actions": {
+    "source": "assets/art/characters/06-fernando/animation-actions-v6.png",
+    "sha256": "864eafc7129c9239f2c72d97d51725cac6715c24f35778394a457f312562a6cd",
+    "selected_final": "assets/art/characters/06-fernando/animation-actions-v6.png",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-6e6a9260-c6d4-4b07-b3ad-8a344eafec7a.png",
+    "raw_output_sha256": "864eafc7129c9239f2c72d97d51725cac6715c24f35778394a457f312562a6cd",
+    "prompt": "Use case: identity-preserve. FACE AND EXPRESSION EDIT to an existing complete production fighting animation sheet.\nImage1 EDIT TARGET is the EXACT body/pose/costume/layout guide. Preserve every complete body drawing, stance, arm/leg motion, proportions, costume and colors. This is NOT permission to redesign the bodies or animation.\nImage2 is this SPECIFIC MAN'S USER-APPROVED FACE/EXPRESSION reference. Image3 is his photographic face. Carefully replace the target's old generic stern eyes/expression with the actual eyelid opening, eye distance, gaze, brows, nose, cheek/jaw shape, hair and relaxed closed mouth of Image2.\nKeep his individual small natural eye/brow asymmetries. Calm ready expression in movement/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining the same identity. No stock hero scowl, diagonal angry brows, dark eye sockets, black eye-mask stripe, glaring anime eyes, long downward eye tails, childish dot eyes, exaggerated chin or clenched lips. A guard pose should NOT automatically make him angry. Keep head naturally integrated with neck and torso, same head size and full-body physical scale.\nNative use: 67-73 pixels tall, so the approved face must become a few deliberate BROAD CEL COLOR PLANES with separate small eye marks, softer middle-tone brows and clear light skin between eyebrow and eye. Short nose and understated relaxed mouth. Keep cheeks bright; no fine skin texture, micro-wrinkles, black face shadows or noisy dithering. Retain the target's original 1992 arcade cartoon body rendering and full clothing details. No photographic pasted head and no chibi body.\nEXACTLY 16 independent COMPLETE full-body figures on the same FOUR-COLUMN by 4-ROW square atlas. Row-major pose contract, matching Image1:\nROW1: ready-guard; jab-retract; cross-windup; cross-retract\nROW2: kick-windup; kick-retract; sweep-windup; sweep-recovery\nROW3: block-impact; hurt-recovery; special-charge; cast-recovery\nROW4: uppercut-anticipation; uppercut-recovery; victory-transition; knockout-fall\nEvery pose stays in its original cell and keeps the original silhouette/action role. First figure retains the original neutral/anchor scale. Crouching/airborne/floor drawings remain genuinely lower than upright poses; never stretch all poses to equal height. Preserve complete feet/hands and generous transparent separation so no figures touch.\nNo added poses, duplicate floating head studies, captions, grid lines, frame, background, cast shadows, energy/projectile FX, props or cropping. True transparent PNG.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "size": [
+      1327,
+      1185
+    ],
+    "references": [
+      {
+        "path": "assets/art/characters/06-fernando/animation-actions-v5.png",
+        "sha256": "a567d1ee1235ec3076624cdae71a4471b3687e8d6ebc8128b50e6707637f12cc",
+        "role": "v0.31 body, costume, pose and layout edit target"
+      },
+      {
+        "path": "assets/art/characters/06-fernando/expression-study-v032/head.png",
+        "sha256": "1732ef5bfa8325117eacff2a63e7d563b63aeaba8f4137ad0ad0af9f28a7bac3",
+        "role": "user-approved eye and expression direction"
+      },
+      {
+        "path": "assets/art/characters/06-fernando/expression-study-v032/reference-crop.png",
+        "sha256": "848609ee027127920567502c6d9ed032eb8f3ffa10d86b1c14f27db04b8e0e36",
+        "role": "photographic identity and natural expression"
+      }
+    ]
+  }
+}

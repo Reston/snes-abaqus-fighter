@@ -1,0 +1,172 @@
+{
+  "id": 3,
+  "slug": "cote",
+  "name": "Cote",
+  "height": 69,
+  "description": "Adult fair-skinned man with short reddish-brown hair swept to the side, clearly ginger beard and moustache, adult long oval face, natural light brows and small calm eyes. White rolled sleeves, burgundy waistcoat and navy trousers.",
+  "palette": [
+    [
+      8,
+      16,
+      24
+    ],
+    [
+      80,
+      32,
+      16
+    ],
+    [
+      144,
+      64,
+      24
+    ],
+    [
+      208,
+      112,
+      48
+    ],
+    [
+      88,
+      8,
+      32
+    ],
+    [
+      144,
+      24,
+      56
+    ],
+    [
+      24,
+      32,
+      56
+    ],
+    [
+      64,
+      72,
+      88
+    ],
+    [
+      232,
+      224,
+      208
+    ],
+    [
+      96,
+      40,
+      24
+    ],
+    [
+      144,
+      88,
+      56
+    ],
+    [
+      184,
+      128,
+      88
+    ],
+    [
+      224,
+      168,
+      120
+    ],
+    [
+      248,
+      200,
+      152
+    ],
+    [
+      248,
+      224,
+      192
+    ]
+  ],
+  "reference": "assets/references/fighter-03.jpg",
+  "refs": [
+    "assets/art/native-faces-v033/03-cote-native64-v2.png",
+    "assets/art/native-faces-v033/baseline/03-native64-2x.png",
+    "assets/art/native-faces-v033/studies/cote-native-guide-v2-8x.png"
+  ],
+  "prompt": "Precise framing correction to a native fighting animation sheet.\nImage1 is the EDIT TARGET:64 existing Cote poses in8columns by8rows, current natural ginger-haired/bearded identity and burgundy-vest outfit. Preserve all64 exact pose roles, row-major order, full-body proportions, face design, clothing and pixel-art rendering. Image2 supplies original complete pose/foot geometry; Image3 is the native face colour guide.\nFix the cropped soles at the BOTTOM of the last row, particularly last-row columns1,2,3 and8. Complete the missing bottom edge of those shoes using the matching complete foot poses in Image2. Reframe the sheet with generous TRANSPARENT OUTER MARGINS (at least two percent of full canvas height/width) and transparent gutters between all8rows/8columns. All64 figures must be visibly complete and isolated; no head, finger or sole may touch the outside canvas. Uniform original physical proportions across every pose, no individual pose fitting or equalizing crouched/floor heights. Retain clear negative space around long kicks and raised hands. Do not redesign other anatomy or identity.\nExactly64 complete figures on true transparent background,8x8 layout. Clean crisp1992 native pixel-art clusters with six warm skin values; no blur, dithering, neon fringe, added effects, new poses, numbers, text, grid lines, borders, props or shadows. Full sheet, all feet and hands visible.",
+  "selected_final": "assets/art/native-faces-v033/03-cote-native64-v3.png",
+  "reference_sha256": {
+    "assets/art/native-faces-v033/03-cote-native64-v2.png": "2fabd99142fe8759e6a8b407242856219ceb00b9223c300049b5c7e736a851ee",
+    "assets/art/native-faces-v033/baseline/03-native64-2x.png": "840b4b7e0f5fce085e3c048c24a6fa177770f38f88868a029e7351da1bdbad22",
+    "assets/art/native-faces-v033/studies/cote-native-guide-v2-8x.png": "b8fca4c9d028fd6ff4785d9853773f64e9bb580926d6e2770138b75a219ac899"
+  },
+  "baseline_commit": "5c1bb02",
+  "variant": "v3 complete-sole framing correction",
+  "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-f60fb20a-bed1-4398-b380-117ca8e189ad.png",
+  "raw_output_sha256": "3b6bee5419e3295928dfc3662d84990dd568a114486f0665b74ae8429515f7de",
+  "sha256": "3b6bee5419e3295928dfc3662d84990dd568a114486f0665b74ae8429515f7de",
+  "mode": "built-in image_gen",
+  "status": "source-and-native-size-reviewed-human-review-pending",
+  "native_conversion": 0.5267175572519084,
+  "native_frame_sha256": [
+    "3e6c5c15154f08bfa7ec6652f7a2898d453ed4e5aed7930b21ab7a8c67758368",
+    "b6a498b1c64151cf61103aebd46ad0f0bd4e226b618e5b8e29c53bedda84c949",
+    "3c7fcec7ab7e724b860fbb8ad41f808ac758d21285830bd55c4310bb2ea547d6",
+    "e57df51e8bf815a56b2f6ec30f18a5f50fc522c858fe96cc960df8eadb1d7c48",
+    "c5e51ffbda1e7cbb2e593fb8a72bec9ecf497e88defda6ea378dbb7ee0cc2e00",
+    "7f5a2680ab13a2e2f0e1fba90b8c42ae5c6b43de1fc7c7b571b444937ae166ca",
+    "8c9ce42b46745a34b17d333398e5e44818529e62c40bb99cf058a56891b70a69",
+    "d9eec003b52a918c90b12d09ccff2c4d68df152ccaf4ac9bd01b6a239f2a9732",
+    "788a8534617d0146bd47ba0dab82be068a4451dda41c31e25e04af62a131bb3c",
+    "4ea4f7be98909adc5dcfee21d1af71f19172610a4db4d73d2d91872f381bd5b1",
+    "0e4e868570b15f02ac22aeab9e3823292461dcddf57c85a904804fee919bacc7",
+    "1b3d6f3e9477385585107aaf2cfa6f8f1b4730815d44cd5c8abded3bb20a7d3d",
+    "9358ecf9c243e111c90328e9ef42d217784401eb9e730493fcce4f4d1859c95c",
+    "ce97b6c1624f2272e7362dcf10eafcb7f27afb3265bec25b297d76a3dc00c499",
+    "12475e09dd81d19c41c86337f0907a8f2efd7746bacff0d6c3361c06567bbd45",
+    "038760904478695c28931abe5c504d082bd28124cbc8bede8a199fe7ddd25831",
+    "fbc4e2bc6f219fe8b8bda08198f780531419794625f003e7a4eb57c32b0c4ec5",
+    "f198110cbe87d61d38aa1486f5ffe6fa87aae415f052594a4d34874a94f84c05",
+    "05162f9d4b3f2bd07bbf49cbfde1d833810696ac735ae4a1b2ff65fb9fe2cf72",
+    "3e3cf455ab4aaddf218bdd68b9ea33aa5e109beca19b245ad289ae7183506d34",
+    "fd3e744b41b928d6cbbced6099caede22611fadab61af05ee31b5b0619807a08",
+    "872767a30972550c34497bf8bc28e9df7fb7093be62759e8828d8635a328623e",
+    "1ed5e4515908dfcb7e4baa463fc4ac31cd56d9f4e1edf3acff7aa4bb7cb0fc92",
+    "ebb284e81ae102fc6587cde1d572513834668796cdf7ce675f7a6777af7c1e4e",
+    "d8a5a22896d5babe50fe1a97de4b38088d56bb8489fbf9f59d44735d5aeeb865",
+    "a89d38523684b2f689662e0052faa113ab6ba489c0cc4c0d030f6a98c05b9183",
+    "a32495d6482f4f4de3b29b637b5cd389e0adef8e4d4c47041516a1257706f573",
+    "48b38ef35323125147a9dccc6ae02164cdfb516d42f4f6408ea47beab9aaa362",
+    "394e96825f48fe05ec6210e1ff6bd9f30c2da111df4ba9e7508410d35d39badd",
+    "72e7eac2a515cb1e5032127dc7ff801de29da7ed3f4847724b576d3a50f6fcb5",
+    "fab9885207bacd0d68b29d41103c29bbb7a739eb50cd96257d1fc69aeccb8d15",
+    "d7c3530037bf5902fc2433926fee74d61d9e426fc96ef16a2453ac5fa3ce7be9",
+    "ce54edee15ef26be2fcf88386ee28793b1a5438a8bc652912e866c6288775ef4",
+    "bc1c00b1bb7507e5aef1fc94a84d0cff2f8e7f293faf185af569a0cf599d9033",
+    "1bda62207fa57c20fc3d351b738ef96b0950cc10cc81a3b69833fdd37eea66a0",
+    "d260d722f4a1d9c6af2f6cb356a7304c62da2ac6e989b2308af91d04e9c6f51a",
+    "4c13549d9a6648e15c01275cf94b99622f5098aaf3b3beaf93b1dc687b1d03be",
+    "10b4530605abf06e9ee93d1f91ffe769bff101cd1b5cd458d6a490b0d769f372",
+    "f2a0a38b1e97043e66fcbc3466ef155ba2548e00566e7008ee9847dd79f038b3",
+    "3cffd77768add2dd48e025102c474d51a1a4eb852b3fbb42173982941f9ac58b",
+    "42261fed66d766d1573fd3d6285b16b5879c0a9f78278fca0c56b9206cf49816",
+    "92aa99c1a6f8c419aff75180452495b7e4e8d27b5941671989d3398bfb350d8b",
+    "2f2af0dd313bb8f427bf9cdf3a74436702455217186d2cbbb60e86c93859bbb9",
+    "84c3474c3c0aeca44b22c7fad20c5f55076663858570b8abbe013a2495b369fd",
+    "ba30998ed41bbdc1b4f79ee57b7aaaa48056677711130e22256d929dce2aeb59",
+    "3683149ecad5cf8934272b47815f9f28243255cc4b124bb80010aadd80cdb509",
+    "6863baecf3160a1bd5279efdfff1c56189d8c105d1882c607a6bb60e414ffcb0",
+    "2969f19198d2cf3721042484476b5a49f4210b3eebbd037097dd2d355ecaf177",
+    "69a32acc51d737c3e5ee4dab72ee832228575737fd2365dd7d11995032cc4635",
+    "371ce08fb02a89d5592b601b584978dce49b4e4647a2a8502cde59c7875de5a2",
+    "55d1b6b184d98423800ffa3786d8f45573e4696832b5e709d34409270db44713",
+    "ed912ea645610f0543ef7dba6513c32899a8be138c8a7f9815a44451608492f2",
+    "0c5f52be4187d85a8704701d9bec7eb6f170bcdd425ad37ab103cd141a968bf0",
+    "7d5d6777e441f1229d3508efe40ea0ea082839927588f9590621a36fb9e6c008",
+    "8ab13f214ac03529d0a92589c89d8d79417c9b55d0314c9c1bbb6d3aba99cc8e",
+    "4f02f646beadaedcb7a8b6102311ba3f88c7358d2fe6c96566587761edd6d8be",
+    "8325dfac44f5df941d5ea2f7ebda28040b9c5d1e4d50d1390c181af628e0f1ed",
+    "96ab2c4f7266a073109114f87e815e7ff9f4e1c7450a73da682f66644e7e4fc8",
+    "9d5721e28eefd449a37707163014b3d7dfb7616979167ec927eb0be723feece3",
+    "d44bbde056583e7c39960aca2bc76ba67d569e4d984335b042f12a2c1ed6d16b",
+    "9741b806e2e6d1f7fda5d52698abfea0b217579755f6c94dd608ff636684da51",
+    "c7fd003db3576ebe2656b3cf59ae6222fbd6232889fadf043c219bea8625f20d",
+    "d06e0616e072230cd690fc072f6eaa354aa16b6530af25efd5a3cbbf7c9c3ba8",
+    "e00de3447239268f341fb171c2db07553b95014619d83e47eb26c047e206d050"
+  ],
+  "human_likeness_approval": null
+}

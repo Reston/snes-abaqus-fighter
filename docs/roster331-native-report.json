@@ -1,0 +1,1712 @@
+{
+  "status": "passed",
+  "rom_sha256": "5a1e5c89b4b0682c1a22f51a43b52ac3a20542e08ed05e2766663ca1e1a96ebd",
+  "version": "0.33.1",
+  "emulated_memory_writes": false,
+  "save_states": false,
+  "controller_only": true,
+  "cases": [
+    {
+      "core": "snes9x",
+      "fighter_id": 5,
+      "fighter": "david",
+      "port": 1,
+      "fighters": [
+        5,
+        8
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 5,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 2
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          [
+            32,
+            34,
+            36,
+            38,
+            40,
+            42
+          ],
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74
+          ],
+          [
+            96,
+            98,
+            100,
+            102,
+            104,
+            106
+          ],
+          [
+            128,
+            130,
+            132,
+            134,
+            136,
+            138
+          ]
+        ],
+        "flip": 0
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          40,
+          131,
+          91,
+          199
+        ],
+        "observed": [
+          40,
+          131,
+          91,
+          199
+        ],
+        "changed_pixels": 1693,
+        "opaque_pixels": 1776
+      }
+    },
+    {
+      "core": "snes9x",
+      "fighter_id": 5,
+      "fighter": "david",
+      "port": 2,
+      "fighters": [
+        8,
+        5
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 5,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 2
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            160,
+            162,
+            164,
+            166,
+            168,
+            170
+          ],
+          [
+            192,
+            194,
+            196,
+            198,
+            200,
+            202
+          ],
+          [
+            224,
+            226,
+            228,
+            230,
+            232,
+            234
+          ],
+          [
+            256,
+            258,
+            260,
+            262,
+            264,
+            266
+          ],
+          [
+            288,
+            290,
+            292,
+            294,
+            296,
+            298
+          ]
+        ],
+        "flip": 64
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          165,
+          131,
+          216,
+          199
+        ],
+        "observed": [
+          165,
+          131,
+          216,
+          199
+        ],
+        "changed_pixels": 1770,
+        "opaque_pixels": 1776
+      }
+    },
+    {
+      "core": "snes9x",
+      "fighter_id": 9,
+      "fighter": "reston",
+      "port": 1,
+      "fighters": [
+        9,
+        8
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 9,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 2
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          [
+            32,
+            34,
+            36,
+            38,
+            40,
+            42
+          ],
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74
+          ],
+          [
+            96,
+            98,
+            100,
+            102,
+            104,
+            106
+          ],
+          [
+            128,
+            130,
+            132,
+            134,
+            136,
+            138
+          ]
+        ],
+        "flip": 0
+      },
+      "pixels": {
+        "frame": 17,
+        "expected": [
+          37,
+          130,
+          95,
+          199
+        ],
+        "observed": [
+          37,
+          130,
+          95,
+          199
+        ],
+        "changed_pixels": 2243,
+        "opaque_pixels": 2244
+      }
+    },
+    {
+      "core": "snes9x",
+      "fighter_id": 9,
+      "fighter": "reston",
+      "port": 2,
+      "fighters": [
+        8,
+        9
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 9,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 2
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            160,
+            162,
+            164,
+            166,
+            168,
+            170
+          ],
+          [
+            192,
+            194,
+            196,
+            198,
+            200,
+            202
+          ],
+          [
+            224,
+            226,
+            228,
+            230,
+            232,
+            234
+          ],
+          [
+            256,
+            258,
+            260,
+            262,
+            264,
+            266
+          ],
+          [
+            288,
+            290,
+            292,
+            294,
+            296,
+            298
+          ]
+        ],
+        "flip": 64
+      },
+      "pixels": {
+        "frame": 17,
+        "expected": [
+          161,
+          130,
+          219,
+          199
+        ],
+        "observed": [
+          161,
+          130,
+          219,
+          199
+        ],
+        "changed_pixels": 2213,
+        "opaque_pixels": 2244
+      }
+    },
+    {
+      "core": "accuracy",
+      "fighter_id": 5,
+      "fighter": "david",
+      "port": 1,
+      "fighters": [
+        5,
+        8
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 5,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 1
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          [
+            32,
+            34,
+            36,
+            38,
+            40,
+            42
+          ],
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74
+          ],
+          [
+            96,
+            98,
+            100,
+            102,
+            104,
+            106
+          ],
+          [
+            128,
+            130,
+            132,
+            134,
+            136,
+            138
+          ]
+        ],
+        "flip": 0
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          40,
+          131,
+          91,
+          199
+        ],
+        "observed": [
+          40,
+          131,
+          91,
+          199
+        ],
+        "changed_pixels": 1685,
+        "opaque_pixels": 1776
+      }
+    },
+    {
+      "core": "accuracy",
+      "fighter_id": 5,
+      "fighter": "david",
+      "port": 2,
+      "fighters": [
+        8,
+        5
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 5,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 1
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            160,
+            162,
+            164,
+            166,
+            168,
+            170
+          ],
+          [
+            192,
+            194,
+            196,
+            198,
+            200,
+            202
+          ],
+          [
+            224,
+            226,
+            228,
+            230,
+            232,
+            234
+          ],
+          [
+            256,
+            258,
+            260,
+            262,
+            264,
+            266
+          ],
+          [
+            288,
+            290,
+            292,
+            294,
+            296,
+            298
+          ]
+        ],
+        "flip": 64
+      },
+      "pixels": {
+        "frame": 16,
+        "expected": [
+          165,
+          131,
+          216,
+          199
+        ],
+        "observed": [
+          165,
+          131,
+          216,
+          199
+        ],
+        "changed_pixels": 1769,
+        "opaque_pixels": 1776
+      }
+    },
+    {
+      "core": "accuracy",
+      "fighter_id": 9,
+      "fighter": "reston",
+      "port": 1,
+      "fighters": [
+        9,
+        8
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 9,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 1
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ],
+          [
+            18,
+            34,
+            50,
+            66,
+            82,
+            98
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          [
+            32,
+            34,
+            36,
+            38,
+            40,
+            42
+          ],
+          [
+            64,
+            66,
+            68,
+            70,
+            72,
+            74
+          ],
+          [
+            96,
+            98,
+            100,
+            102,
+            104,
+            106
+          ],
+          [
+            128,
+            130,
+            132,
+            134,
+            136,
+            138
+          ]
+        ],
+        "flip": 0
+      },
+      "pixels": {
+        "frame": 17,
+        "expected": [
+          37,
+          130,
+          95,
+          199
+        ],
+        "observed": [
+          37,
+          130,
+          95,
+          199
+        ],
+        "changed_pixels": 2242,
+        "opaque_pixels": 2244
+      }
+    },
+    {
+      "core": "accuracy",
+      "fighter_id": 9,
+      "fighter": "reston",
+      "port": 2,
+      "fighters": [
+        8,
+        9
+      ],
+      "portrait_PPU_pixels": "passed",
+      "portrait": {
+        "fighter": 9,
+        "pose": 18,
+        "canvas": [
+          96,
+          80
+        ],
+        "origin": [
+          2,
+          24
+        ],
+        "max_channel_delta": 1
+      },
+      "OAM_and_native_pixels": "passed",
+      "geometry": {
+        "floor": 201,
+        "x": [
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ],
+          [
+            222,
+            206,
+            190,
+            174,
+            158,
+            142
+          ]
+        ],
+        "y": [
+          [
+            121,
+            121,
+            121,
+            121,
+            121,
+            121
+          ],
+          [
+            137,
+            137,
+            137,
+            137,
+            137,
+            137
+          ],
+          [
+            153,
+            153,
+            153,
+            153,
+            153,
+            153
+          ],
+          [
+            169,
+            169,
+            169,
+            169,
+            169,
+            169
+          ],
+          [
+            185,
+            185,
+            185,
+            185,
+            185,
+            185
+          ]
+        ],
+        "tiles": [
+          [
+            160,
+            162,
+            164,
+            166,
+            168,
+            170
+          ],
+          [
+            192,
+            194,
+            196,
+            198,
+            200,
+            202
+          ],
+          [
+            224,
+            226,
+            228,
+            230,
+            232,
+            234
+          ],
+          [
+            256,
+            258,
+            260,
+            262,
+            264,
+            266
+          ],
+          [
+            288,
+            290,
+            292,
+            294,
+            296,
+            298
+          ]
+        ],
+        "flip": 64
+      },
+      "pixels": {
+        "frame": 17,
+        "expected": [
+          161,
+          130,
+          219,
+          199
+        ],
+        "observed": [
+          161,
+          130,
+          219,
+          199
+        ],
+        "changed_pixels": 2213,
+        "opaque_pixels": 2244
+      }
+    }
+  ],
+  "media": [
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-david-p1-select.png",
+      "sha256": "4426dca4002d6f4c7b4cd5a46f1bb7df8b6b9dd69a89d60cd7143879ab660e12"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-david-p1-fight.png",
+      "sha256": "1d67bc2bea5b270839404fc9ec1e8fcedbd8c00c0945fff268714d89041be6cd"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-david-p1-walk.png",
+      "sha256": "74eaefd305d596abef21ffc7b03d6e71ff1eff32a87f016c3f314afe87071234"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-david-p1-jump.png",
+      "sha256": "3c043cd80327e294bf2945d4e1499a8816e9313e75c9f9ca79c8c92e4a36726b"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-david-p1-jab.png",
+      "sha256": "c9bcf4af3ea50c78ca74f9fc3440bf8a5ea86af4303658655dc51010878c621c"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-david-p1-strong.png",
+      "sha256": "d349a397a2e150afbe95f21e22ff2218b558e77d543bf96b35f817c8047f09f3"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-david-p1-kick.png",
+      "sha256": "063001aa2f98a9ea316c15a4504dfe0a6e56635c643f13f22c120b57afb55615"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-david-p1-heavy-kick.png",
+      "sha256": "5b71465f4321228bf9129f328673fc771cc35a3ffa5393a98395ab8f9afe4a0e"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-david-p1-uppercut.png",
+      "sha256": "8142c3ced98ee1ee5783c8214b8e078b550f879340d7e2aad69ea01795b865ef"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-david-p2-select.png",
+      "sha256": "29013a7a6311e9fde9d0e5011e85595d2522577179c26fc633dc9e228b5ec895"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-david-p2-fight.png",
+      "sha256": "ec14ab8c055f6c5f50db91a7959a68b0e26a1f3904c259c4c5d2fb866b1da67c"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-david-p2-walk.png",
+      "sha256": "d6d68169afa183cd87a832e4380fd1f6e9327e4d91eb2cc05f2cbb48b0b376f7"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-david-p2-jump.png",
+      "sha256": "e268bb81900d305dcce95d720673c26c5039e94c5e9e2c6ef76bc5bcc0b083de"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-david-p2-jab.png",
+      "sha256": "30e54d0d6d1872a88823f2b6ce20d58716b0539fc926f7351891ffe2f2b21709"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-david-p2-strong.png",
+      "sha256": "45e7abec3c4f9c9ca7ec5b151b3cbc9b60a42d1872f11659e653064019d4decc"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-david-p2-kick.png",
+      "sha256": "285cd1060083d5c02732c9d56bb082ea56af2c71af5d85c310c3c9df5b445a99"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-david-p2-heavy-kick.png",
+      "sha256": "36f34283fbea2fae81b186df41369c43e978917cab2d1fe1166e0a58d98cce16"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-david-p2-uppercut.png",
+      "sha256": "628b4eb60348a184a416f44c1075847274ba59b4a2328be95dc156c85d6750a0"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-reston-p1-select.png",
+      "sha256": "d0b7c6519309c02595f1fe43a1df932d5b3ab14fb914354251c2f1ea840335ad"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-reston-p1-fight.png",
+      "sha256": "1a589640741c54c148a0e66bc269412688447cae67c39315986e365abe984803"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-reston-p1-walk.png",
+      "sha256": "0a4578d0f7b6a430746c1dd618e509177f65bf58e032679b829823284875b3bb"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-reston-p1-jump.png",
+      "sha256": "0037766d222c572b25e5ea0a20c9c53aa3af60c30d31f9ce9a5f62495bde6847"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-reston-p1-jab.png",
+      "sha256": "5031117f895a2a5831eeab30f4ec15d4ce98c8b6ef70f0bbf23b770ebc0f046a"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-reston-p1-strong.png",
+      "sha256": "d93671390cb62b57e1cb62a0ef0f86f813e72ba1b4b9f21b98ec479258aabb53"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-reston-p1-kick.png",
+      "sha256": "1b7ae55a89bad06a867b65e8b151d7f5cd187fdca726bb230fa94cb832880034"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-reston-p1-heavy-kick.png",
+      "sha256": "fff25b19381fc816f47c0f2a9e0990f7c56f913c389069a0a8daeea7e8b7c9f5"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-reston-p1-uppercut.png",
+      "sha256": "0e005c2d202ff566efe7f7f0dadfee6c24ad04debf1e0c3018f1574e505bd5db"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-reston-p2-select.png",
+      "sha256": "20ec0e41c21ee215be9d34215b6e066000d80524b5dfc2c0cc0592a8991cd785"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-reston-p2-fight.png",
+      "sha256": "6e04e058efbf15cff012c4ea5d501883a6591ae49ad3a39b3030241e5a1e0593"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-reston-p2-walk.png",
+      "sha256": "a2a50fbddb832c10c7266b01d8cc86e67ac839b761cda1c92c2c0cc15eb86a08"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-reston-p2-jump.png",
+      "sha256": "85c51236d5f15d99fed22b7e729184d1ef3854ae63afafad04c3fe665d1f5760"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-reston-p2-jab.png",
+      "sha256": "dcc12d7e9361effa1e39f2afed82cafa92cb959a35795310722a78acc47cd9dd"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-reston-p2-strong.png",
+      "sha256": "12228a3c70a74ff8e440a686c7e8e272959f0a2c2157071bf8e0d7a72e65294d"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-reston-p2-kick.png",
+      "sha256": "f71d180ad6e7dc48ad00d20ccb1eb1b2445543993838a315e28add86dd5010f8"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-reston-p2-heavy-kick.png",
+      "sha256": "76d49aa6cf5ca0af49bc103c9c0bcae04ea94e583ab20a2910cab944906d5732"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/snes9x-reston-p2-uppercut.png",
+      "sha256": "c8398b2baab0e27c4e21ceb98c1037eb30652ec8d5f798c0cb643f262c9f3dcb"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-david-p1-select.png",
+      "sha256": "00eb8944aaa5a6b47d21ed5869a8d951b99816502124673a9d477ae185b5a947"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-david-p1-fight.png",
+      "sha256": "734bdeb4c99fb6be3f9ff660edad3355dd957536a6c94bb2ab63183adec8564e"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-david-p1-walk.png",
+      "sha256": "3c4e8ee50a909dff118656a6f3b9eeb51fa392a8c512061bdb1e2a3cab875dbb"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-david-p1-jump.png",
+      "sha256": "6e6db17daa319feb547db1c119ff1c3a45b639356c41b9c7d175c8b5b7e11a88"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-david-p1-jab.png",
+      "sha256": "3634317d95d14588fd26be0d370be3a49ab78bd3bc8cb457c4b0195ac68a469b"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-david-p1-strong.png",
+      "sha256": "ff6ad6b88e7263baec47004d904aa880522d4317130915d6dbaf858789027ebe"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-david-p1-kick.png",
+      "sha256": "433f6a47c39def0acf5fa3c2ed881efba8d79eda8989ac571c8b89e3a6e79cd3"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-david-p1-heavy-kick.png",
+      "sha256": "81f5bd1c509c6cb90606cbd0db5540b893a91c0346d8901609f485051fdb3ae7"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-david-p1-uppercut.png",
+      "sha256": "3e092848aeafc9376573b7e15852ea46d091d943919ad00b844268bcb6311d37"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-david-p2-select.png",
+      "sha256": "bf95d91838b93c2983fa92d01b98a3c1be60f2bc286d98b2d34a20ac53ca772f"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-david-p2-fight.png",
+      "sha256": "ba83376ca6b0a73efc1e2d48f56fbeb2a83da7d69dfa43dfd828a27ad01bf4b4"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-david-p2-walk.png",
+      "sha256": "47ba9e2b49f24ecf870cd3e378e36681ef22e27893e6e81f4ee920c12e9b5684"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-david-p2-jump.png",
+      "sha256": "2596d0fc74c4db8423e7123685c2ce2c029907e5b4f38d18883add34e5e365a5"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-david-p2-jab.png",
+      "sha256": "10963edf79fe176a030753218dee088f41b516eb3d4ca63df06e93ec37cb88af"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-david-p2-strong.png",
+      "sha256": "0cc0a5d94b3021cd20b40d5859062e2349ca4220b9b7f47129317a5a871761b7"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-david-p2-kick.png",
+      "sha256": "118c204e8e774943f5162510dc646df899ffbed5ac4ee61a9c4470aa955dc89c"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-david-p2-heavy-kick.png",
+      "sha256": "319051e4c897fa39fd2d932036b0370288ff0fa49294c9d2bc68c759f732ef9b"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-david-p2-uppercut.png",
+      "sha256": "7d6903bb4c583065f9846ff81068ccc81ab23a606704ec0c3425b3e938df9510"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-reston-p1-select.png",
+      "sha256": "4ed4bae22427b8e6e9343b4e61d24b22180699c06358406c0e4893886f5a8427"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-reston-p1-fight.png",
+      "sha256": "06a74f0454062e614aa1e3a7be114ddfd8823a16d3561df9febc2292018a497d"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-reston-p1-walk.png",
+      "sha256": "8ac29497799bc858faa595835e964f47e4094740d7a14443fc9d77667945eedd"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-reston-p1-jump.png",
+      "sha256": "2e7da980d5e97b3da3fd8b4f8b481c70e327bf8f48b8714699075b6fa8e4ff90"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-reston-p1-jab.png",
+      "sha256": "b0dab820dd9c43112f04dc30b1c5c062370fa5ec8eb8d589e008ea587482b6ec"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-reston-p1-strong.png",
+      "sha256": "ada644ce14d42a790da25d72a4522eb015bf8760541af2aa0afe62eb16f656d4"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-reston-p1-kick.png",
+      "sha256": "c97e9bb4632b510cc1062009f9faa78849b61bcdbe6c2f82cb81c389f2bc4a7c"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-reston-p1-heavy-kick.png",
+      "sha256": "e53eea09c4ac3f8bbddd2355d6efd2ae1134551a6efae4497a96fe13b8a835f5"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-reston-p1-uppercut.png",
+      "sha256": "bb2919bc5de605f3a3fd8871978c8f72a03f007bac495d08eea32faa15ea163d"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-reston-p2-select.png",
+      "sha256": "f2322ebb5f5ea430f50adddcf9a9cbfcddd028ff62e6c3c0cdf1b5032c786c11"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-reston-p2-fight.png",
+      "sha256": "f0252067185e0506bdbbe384ae20d19fb4ec1ade6748ef3f98782fafdcaa2163"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-reston-p2-walk.png",
+      "sha256": "1f6e5bac07c7fade9946f862a35a5456c82ca1aed844d463b56b1832f4d903ea"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-reston-p2-jump.png",
+      "sha256": "9ab50099bfe20c8429f0f8e38a2ce33247659e50062fb702cc803f4d08a8c701"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-reston-p2-jab.png",
+      "sha256": "904540d57440e36d56c872a4fbcd2f3459941fffe751be3b6bdd04455161122a"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-reston-p2-strong.png",
+      "sha256": "8f4c7e88e3fb5a2664759380b05705dc11de13ab356f041a8b09a6da90b2fbda"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-reston-p2-kick.png",
+      "sha256": "a89a356ecd58830281905de419ff31bd0c988aae0dfc8280d428f9ea680b0c85"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-reston-p2-heavy-kick.png",
+      "sha256": "83576c2bf004091f51d64377191a92accfde0d4b1ff67fc7453bccac9746c2cf"
+    },
+    {
+      "path": "docs/screenshots/reston-hair-v0331/native/accuracy-reston-p2-uppercut.png",
+      "sha256": "52a8e7d43eda189d99f450270ffb4acad9f59a96e16369dd6c2b6ff2ac2d9f88"
+    }
+  ],
+  "dependencies_sha256": {
+    "tools/test_native_faces33.py": "7afbc5ecd7e2694cfaaed2cf862f747cb65b95687aec25dabe82099980dfcafe",
+    "tools/native_faces33_contracts.py": "abd45c69bcc81fb5ef6e569d24809cb7927b25b16d7850017babcc96fe3bbd52",
+    "tools/test_characters.py": "2b1ede150034a87a18197fd1a6deec3df7646b8fdddff0a824007e8108eba553",
+    "tools/test_defense29.py": "23f92f1a1f33bd6ff94146364ac0d2ee5e6d5c4e7370c4660ab11dae382bd94c",
+    "tools/test_presentation.py": "e187842e670d65427e38b6d75f2b1f43f65908ae1a98f9436c56c3b6a40d0110",
+    "tools/emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
+    "tools/test_classic_menu.py": "c469ac2469c19bf12441e9aee8c36240d8c318b1ad2b5d250e7eccab49a8427c",
+    "tools/test_compatibility.py": "f2faed60729c238cf23bdddf315dd4015acd1b7239aaf8c4fe07ec8c4121d55d",
+    "tools/fighter_assets.py": "5b6fdbc1dcd6a267b9d0ce86b0f4edefe88f6f6698f6c39449de39d831206bf5",
+    "tools/portrait_assets.py": "f95047e2ad5e1c292809ced20ca2e9cc77dc4a0e5f3c10d43cadf8e0843107d3",
+    "tools/native_face_assets.py": "0ac61d46c644fbd679b2284ea8acde52c1f18c3a2e9756ada9f9f69ba3140829",
+    "tools/native_faces331_contracts.py": "79887c166c4e08bb031824be18fca3e01f99b8e168c5fb178984d488c2fe6b76"
+  },
+  "health": {
+    "snes9x": {
+      "callbacks": 2940,
+      "max_spc_backlog": 0,
+      "actor_page_changes": [
+        177,
+        177
+      ],
+      "failures": []
+    },
+    "accuracy": {
+      "callbacks": 2940,
+      "max_spc_backlog": 0,
+      "actor_page_changes": [
+        178,
+        177
+      ],
+      "failures": []
+    }
+  },
+  "source_commit": "c0e44b5a3926ac4f193c608de88c00e20d1581d8",
+  "assertion_executions": 29400
+}

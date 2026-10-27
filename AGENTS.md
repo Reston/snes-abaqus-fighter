@@ -6,6 +6,101 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+<!-- v0331-agent:start -->
+- **v0.33.1 is the user-approved Reston/David revision**, PR #36.
+  User feedback: "all good except reston put me a littlebit of hair".
+  The user then said "also david before was better". Restore David's exact
+  v0.32.1 model/palette from the Before comparison. Ten other v0.33 models
+  are visually accepted; preserve them byte-for-byte.
+  Reston alone gets short dark hair on top with a naturally receding hairline
+  across all 64 poses. Retain his beard, face/costume design, existing palette,
+  physical height and move roles. All selection portraits stay exact.
+  Native rules/ABI, stages, audio and ten other contact blocks remain exact;
+  David's contact block must match the original v0.32.1 model exactly.
+  Keep original sources; selected art is 09-reston-native64-v3.png with the
+  adjacent exact built-in imagegen prompt/provenance. The user approved the
+  final hair/restored David and explicitly requested merge on 2026-10-27.
+  See docs/likeness331-approval.json. R36S card installation is authorized;
+  physical handheld execution remains unverified.
+  ROM 5a1e5c89b4b0682c1a22f51a43b52ac3a20542e08ed05e2766663ca1e1a96ebd, checksum C80C;
+  source freeze c0e44b5a3926ac4f193c608de88c00e20d1581d8. Six suites pass 52013 checks;
+  eight focused both-core/port cases, independent Accuracy, 23 normal/-O guards,
+  five web guards and fresh 237-asset/ROM/symbol reproduction pass.
+  Current evidence: docs/verification-v0.33.1.json.
+<!-- v0331-agent:end -->
+
+<!-- v033-agent:start -->
+- **v0.33.0 is the technically verified all-roster native-face candidate**, PR #36 draft.
+  After rejecting the tiny Ivo face, the user requested "do it for everyone".
+  This supersedes earlier fighter appearance pins for all twelve in-game models.
+  Use deliberate pixel-readable eyes, nose, mouth and jaw, with six skin values
+  inside each existing fifteen-colour OBJ palette. Twelve versioned built-in
+  imagegen atlases cover all 768 poses; complete figures use one scale per atlas.
+  Preserve selection portraits/roster art byte-for-byte, body/costume designs,
+  physical heights, original masters, native rules/pacing/controls and ABI.
+  Final likeness approval is pending. Keep PR #36 draft; do not merge/deploy.
+  ROM 64f7db0dea8b42be855abd836a8f7c9d2f249873a74116e4a0f06ee773631aad, checksum 5A59;
+  native source freeze fd4bee3acd8ef92d2437d1a9ead4125edb641a88. Six suites pass 52,141 checks.
+  Both pinned cores/both ports pass 48 focused cases; independent Accuracy,
+  23 normal/-O authoring guards, five web guards and fresh 237/ROM/symbol
+  reproduction pass. All 1,331 prior RAM labels remain; 116 outputs stay exact.
+  Sources/prompts: assets/art/native-faces-v033/roster.json; verification:
+  docs/verification-v0.33.0.json and docs/NATIVE-FACES-v0.33.html.
+  v0.32.1 verification below remains historical for the new candidate.
+<!-- v033-agent:end -->
+
+<!-- v0321-agent:start -->
+- **Latest visual rejection:** the user rejected the Ivo fighting-sprite face
+  ("why does this looks so bad?"). v0.32.1 is technically tested but its native
+  likeness is not accepted; PR #36 must remain draft while art is revised.
+  The large generated drawing was reduced into a tiny face with very few
+  skin tones, merging brow/eye/nose and flattening mouth/jaw. Review deliberate
+  native-size pixel structure and colour readability before propagating more
+  poses. Preserve restored selection portraits and existing body designs.
+  See docs/likeness32-visual-feedback.json and the retained rejected screenshot.
+
+- **v0.32.1 is the corrected in-game face candidate**, PR #36, unmerged.
+  The user clarified that selection portraits should stay unchanged. All
+  portrait pixels/palettes/framing and roster art now match pre-change v0.31.
+  Preserve the v0.32 in-game models: all 64 poses per Ivo/Fernando/Cristian,
+  sprite banks and contact geometry stay byte-exact. Their portrait source
+  is pinned independently to the earlier idle atlas. Other nine fighters,
+  palettes/heights, 1,331 RAM/data labels, hardware/trace ASM and game rules
+  remain. Relative to v0.31, 209/237 assets stay exact and 28 change.
+  ROM 1dc456430a706fd0e6ac3a4d25bc0455b1cf9e034599d15e581962202dda628b, checksum 1A4C; source freeze dfb7ef1dd032e5ca6765d6b0776f09f417898fe6.
+  Six suites pass 50,605 checks; both-core/both-port native portrait
+  and combat proof, Accuracy smoke, 21 normal/-O authoring guards and fresh
+  237-asset/ROM/symbol reproduction pass. See docs/IN-GAME-FACES-v0.32.1.md
+  and docs/verification-v0.32.1.json. Final native likeness/merge approval
+  remain pending; public player remains v0.30. No new offline package.
+<!-- v0321-agent:end -->
+
+<!-- v032-agent:start -->
+- v0.32.0 is historical: its in-game expression drawings are retained, but
+  the separate photo-head selection portrait replacement was rejected scope.
+  Use v0.32.1 above. Original evidence remains in its retained commit.
+<!-- v032-agent:end -->
+
+<!-- v031-agent:start -->
+- **v0.31.0 is the historical three-model review candidate**, branch
+  `feature/roster-likeness-v031`. Main/public game remain v0.30. The user asked
+  for better Ivo, Fernando and Cristian likenesses. This supersedes their prior
+  appearance pins only; preserve all nine other fighters and original masters.
+  Thirty selected built-in imagegen assets comprise three photographed model
+  sheets and 27 full-body pose atlases. All64 poses/portraits change for each;
+  original palettes, physical heights and move roles stay. Of237 outputs,
+  192 remain exact and45 change. All1,331 prior RAM/data labels and hardware/
+  trace ASM stay exact. Native rules differ only in version; pixel-derived
+  geometry changes only for ids1/6/7. ROM 187a327c8854bfe568184dcc46c6c59f7d1d3460a60c02a6c1aeb18151b39579,
+  checksum 8285; native source freeze 46644cb971b71ddcc3971a0f29f924aff4be79f2.
+  Six suites pass50,605 checks; twelve focused both-core/both-port sessions
+  pass8,820 callbacks without health failures. Accuracy smoke,20 normal/-O
+  authoring guards, five web build tests and fresh237/ROM/symbol reproduction pass.
+  See docs/MODELS-v0.31.md, docs/MODEL-REVIEW-v0.31.html and verification-v0.31.0.json.
+  The body improvement was received positively; eyes/expression were rejected.
+  v0.32 above supersedes its faces. No new offline package.
+<!-- v031-agent:end -->
+
 <!-- v030-agent:start -->
 - **v0.30.0 is the user-approved likeness revision**, branch
   `feature/madariaga-fernando-likeness`, delivered through PR #35.

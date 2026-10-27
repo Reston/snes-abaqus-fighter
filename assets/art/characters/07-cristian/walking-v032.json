@@ -1,0 +1,43 @@
+{
+  "fighter_id": 7,
+  "palette_sha256": "5488f08bd6b0b18a4d65a681f3a88257f93ac2e55c9fafa5834af4f52b55b069",
+  "native_frame_range": [
+    20,
+    27
+  ],
+  "native_foot_baseline": 78,
+  "scope": "coordinated-full-body",
+  "source": "assets/art/characters/07-cristian/walking-v032.png",
+  "sha256": "b7a839358964529a7e158e36ac44e1f2941847f727782e2c075d5bd993383051",
+  "selected_final": "assets/art/characters/07-cristian/walking-v032.png",
+  "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-9b48266b-f0be-4ccb-b5d7-028bce07565e.png",
+  "raw_output_sha256": "b7a839358964529a7e158e36ac44e1f2941847f727782e2c075d5bd993383051",
+  "prompt": "Use case: identity-preserve. FACE AND EXPRESSION EDIT to an existing complete production fighting animation sheet.\nImage1 EDIT TARGET is the EXACT body/pose/costume/layout guide. Preserve every complete body drawing, stance, arm/leg motion, proportions, costume and colors. This is NOT permission to redesign the bodies or animation.\nImage2 is this SPECIFIC MAN'S USER-APPROVED FACE/EXPRESSION reference. Image3 is his photographic face. Carefully replace the target's old generic stern eyes/expression with the actual eyelid opening, eye distance, gaze, brows, nose, cheek/jaw shape, hair and relaxed closed mouth of Image2.\nKeep his individual small natural eye/brow asymmetries. Calm ready expression in movement/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining the same identity. No stock hero scowl, diagonal angry brows, dark eye sockets, black eye-mask stripe, glaring anime eyes, long downward eye tails, childish dot eyes, exaggerated chin or clenched lips. A guard pose should NOT automatically make him angry. Keep head naturally integrated with neck and torso, same head size and full-body physical scale.\nNative use: 67-73 pixels tall, so the approved face must become a few deliberate BROAD CEL COLOR PLANES with separate small eye marks, softer middle-tone brows and clear light skin between eyebrow and eye. Short nose and understated relaxed mouth. Keep cheeks bright; no fine skin texture, micro-wrinkles, black face shadows or noisy dithering. Retain the target's original 1992 arcade cartoon body rendering and full clothing details. No photographic pasted head and no chibi body.\nEXACTLY 8 independent COMPLETE full-body figures on the same FOUR-COLUMN by 2-ROW wide atlas. Row-major pose contract, matching Image1:\nROW1: left contact; left recoil; right pass; right extension\nROW2: right contact; right recoil; left pass; left extension\nEvery pose stays in its original cell and keeps the original silhouette/action role. First figure retains the original neutral/anchor scale. Crouching/airborne/floor drawings remain genuinely lower than upright poses; never stretch all poses to equal height. Preserve complete feet/hands and generous transparent separation so no figures touch.\nNo added poses, duplicate floating head studies, captions, grid lines, frame, background, cast shadows, energy/projectile FX, props or cropping. True transparent PNG.",
+  "mode": "built-in image_gen",
+  "transparent_background": true,
+  "size": [
+    1774,
+    887
+  ],
+  "references": [
+    {
+      "path": "assets/art/characters/07-cristian/walking-v031.png",
+      "sha256": "53d759109e170d5e6b2b141bfa2070c377cb7ff990ddd573014777f0cd87f1e8",
+      "role": "v0.31 body, costume, pose and layout edit target"
+    },
+    {
+      "path": "assets/art/characters/07-cristian/expression-study-v032/head.png",
+      "sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5",
+      "role": "user-approved eye and expression direction"
+    },
+    {
+      "path": "assets/art/characters/07-cristian/expression-study-v032/reference-crop.png",
+      "sha256": "c95086b9ef274e6d5fe3ffb4853bf91762241403422116c68ee7c5b872ad43f0",
+      "role": "photographic identity and natural expression"
+    }
+  ],
+  "reference": "assets/art/characters/07-cristian/expression-study-v032/head.png",
+  "reference_sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5",
+  "supersedes": "assets/art/characters/07-cristian/walking-v031.json",
+  "pose_contract_sha256": "82684a60a76ecb922b7adaf90ffc5a5455ba5f7040ab08e0ccd015bdc9a72798"
+}

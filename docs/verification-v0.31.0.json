@@ -1,0 +1,111 @@
+{
+  "status": "passed",
+  "version": "0.31.0",
+  "rom_sha256": "187a327c8854bfe568184dcc46c6c59f7d1d3460a60c02a6c1aeb18151b39579",
+  "checksum": "8285",
+  "native_source_freeze": "46644cb971b71ddcc3971a0f29f924aff4be79f2",
+  "verification_producer_commit": "0238c2cdd8347372ec62d371fa4a5aa7b0de178e",
+  "reports": {
+    "docs/test-report.json": {
+      "sha256": "27cf39e0a639e634eadafd0f3453e18b9e9e14f0634bb8e169fca36f6efdde4b",
+      "scope": "shared-native-suite",
+      "checks": 2610
+    },
+    "docs/character-test-report.json": {
+      "sha256": "269c85cfab7ac995c57c51040be3a6069515de00ffa900c070c9c87d9d8dd0c2",
+      "scope": "shared-native-suite",
+      "checks": 19461
+    },
+    "docs/likeness31-presentation-report.json": {
+      "sha256": "3a94f50d6494c9332d7b4fdbc8c645b217305861b9f524d80b6163462d425db9",
+      "scope": "shared-native-suite",
+      "checks": 3600
+    },
+    "docs/input-test-report.json": {
+      "sha256": "3e21013a4dfb5aa9a8f5f6ded5f4f6e03f9fd4e96b22171c469414f281167a71",
+      "scope": "shared-native-suite",
+      "checks": 2296
+    },
+    "docs/stage-test-report.json": {
+      "sha256": "bd59e26b148ecf7fd720741094f811885fd7ac1d31da59155e403015fd2273ca",
+      "scope": "shared-native-suite",
+      "checks": 19002
+    },
+    "docs/training-test-report.json": {
+      "sha256": "71dbfb4028403aab6647482347b691a9fd72b756da7befb4937acbbeca7177dc",
+      "scope": "shared-native-suite",
+      "checks": 3636
+    },
+    "docs/compatibility-test-report.json": {
+      "sha256": "f25bc89100e3252297931ef2a49bb9d887ddac7e1a565df2005ac0bf99ce2625",
+      "scope": "pinned-Accuracy-independent-smoke"
+    },
+    "docs/fresh-build-test-report.json": {
+      "sha256": "f85bd384b3c83052772cde447ca99c283bc9f0b403fade14b61d7f282e8a5b85",
+      "scope": "fresh-committed-native-source"
+    },
+    "docs/likeness31-native-report.json": {
+      "sha256": "388e3e4619d7a5f694b0c8d0f89570f9d01138bb7441b0a718f71b7c2cf6f6e2",
+      "scope": "three-fighters-both-cores-both-ports"
+    },
+    "docs/likeness31-policy-report.json": {
+      "sha256": "2e3a8df58865c0c8397881843626285851b490cc04be49b5c7949a703c374e9d",
+      "scope": "bounded-three-fighter-preservation"
+    },
+    "docs/likeness31-preservation-report.json": {
+      "sha256": "687cdb66c8bcf54d26ddc765b136954d36fa78d7abcbde3eb157a2a6d8271ea3",
+      "scope": "assets-RAM-geometry-and-assembly"
+    }
+  },
+  "native_suite_checks": 50605,
+  "human_likeness_approval": null,
+  "main_deployed_version_at_technical_verification": "0.30.0",
+  "new_offline_package": false,
+  "physical_hardware_verified": false,
+  "focused_native_callbacks": 8820,
+  "focused_native_checks": 44100,
+  "focused_execution_head": "46644cb971b71ddcc3971a0f29f924aff4be79f2",
+  "authoring_guards": [
+    {
+      "path": "docs/evidence/v031-likeness/guards.txt",
+      "sha256": "8c8e79aa79ee6c586fb12f5b6f6fdf4a54d98a3deed06b826bbafb31db6c7664",
+      "tests": 20,
+      "optimized": false,
+      "producer_source": "tools/test_authoring_guards.py",
+      "producer_sha256": "d51183d92b128443fad0ce0a46fa17db11d64444b0107e612c3023b0ced8bd67"
+    },
+    {
+      "path": "docs/evidence/v031-likeness/guards-optimized.txt",
+      "sha256": "ca33c1d160a976668b4729c309814eca793e2c906f71f4bfd83b9e0e8222bd8b",
+      "tests": 20,
+      "optimized": true,
+      "producer_source": "tools/test_authoring_guards.py",
+      "producer_sha256": "d51183d92b128443fad0ce0a46fa17db11d64444b0107e612c3023b0ced8bd67"
+    }
+  ],
+  "authoring_fixture_update": "Ivo is now registered. The unchanged unapproved-art rejection is exercised on still-unregistered Cristobal; the explicit unregistered-slot assertion remains. Native source/assets are identical to native_source_freeze.",
+  "art_generation": [
+    {
+      "path": "assets/art/characters/01-ivo/model-v031-generation.json",
+      "sha256": "56f3313f30933c9bcf9703b56c92146ff93d04cd61b0226d6b821011584fe891",
+      "fighter_id": 1,
+      "mode": "built-in image_gen",
+      "selected_images": 10
+    },
+    {
+      "path": "assets/art/characters/06-fernando/model-v031-generation.json",
+      "sha256": "ba4a575d2a3d3e7b9c49ede0f57bad66004870c57358657ddc689802aa72561a",
+      "fighter_id": 6,
+      "mode": "built-in image_gen",
+      "selected_images": 10
+    },
+    {
+      "path": "assets/art/characters/07-cristian/model-v031-generation.json",
+      "sha256": "74e0bd5d1f0432557367f37548599cab2dc29927aa36d15b74c8029537f0339c",
+      "fighter_id": 7,
+      "mode": "built-in image_gen",
+      "selected_images": 10
+    }
+  ],
+  "browser_scope": "Current static bundle and five web build tests pass. Browser JS is unchanged from approved v0.30; full historical actual-WASM route evidence retains its original ROM identity."
+}

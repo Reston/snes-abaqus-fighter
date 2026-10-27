@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "fighter_id": 6,
+  "revision": "photo-model-v031",
+  "human_approval": null,
+  "legacy": {
+    "source": "assets/art/characters/06-fernando/atlas-v5.png",
+    "sha256": "5f8fb9deb783f672afcce0b81a7b1f0533868a474da1f6f60faf62eadacf73c1",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-f8d05cae-c0aa-4975-b0a5-b57a7ae45a13.png",
+    "raw_output_sha256": "5f8fb9deb783f672afcce0b81a7b1f0533868a474da1f6f60faf62eadacf73c1",
+    "prompt": "Use case: identity-preserve. Production full-body fighting sprite atlas of the SPECIFIC photographed man, NOT a generic fighter. Image1 is the new model sheet: reproduce that SAME man's face and costume. Image2 is his real photograph: likeness takes priority over conventional anime beauty. Fernando: the man in the photograph has a FULLER ROUNDED OVAL face and soft cheeks, very thick straight low eyebrows, deep-set dark eyes, prominent broad straight nose, small relaxed mouth, short dark softly waved side-swept hair with a low natural crown. Clean-shaven, adult soft substantial chin. Do not give him a narrow angular jaw, high quiff, thin brows, orange hair or an aggressive scowl.\nCreate exactly SIXTEEN independent full-body figures on a square transparent 4x4 atlas, row-major action order:\nROW1 idle guard; forward walking step; retreat walking step; deep crouch guard.\nROW2 airborne tucked-knee jump; full straight jab right; full rear-hand cross right; extended high side kick right.\nROW3 low sweeping kick right; raised standing block; struck torso recoil backwards left; upright victory both fists lifted.\nROW4 two-palm forward energy cast NO FX; compact uppercut with raised bent arm; horizontal knocked-out figure head LEFT feet RIGHT; compact forward shoulder rush RIGHT.\nUse Image1's FULL BODY design faithfully in each pose. Clothing teal jacket, white open collar shirt, dark trousers and shoes. One fixed physical scale and continuous whole-body anatomy, same face in every angle. Neutral standing figure approximately 280-310 source pixels in its cell. Lower crouching figures genuinely lower, don't scale each pose to fill the cell. Head should occupy about ONE FIFTH to ONE SIXTH of standing height with broad nose/eyes/jaw shapes readable when downsampled. Mature faithful human caricature, near-frontal three-quarter face looking right, low natural hair. Keep photographer's individual identity; no sharp stock heroic profile, no angry slanted anime eyes, no idealized chiseled jaw. Clean 1992 arcade cartoon with thick dark navy ink and only 2-3 flat shading values per material. Generous space between all sixteen silhouettes. No grid/labels/text/background/shadows/FX/weapons/detached heads/extra figures. Complete hands and feet and no cropping. Genuinely transparent background.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      {
+        "path": "assets/art/characters/06-fernando/model-study-v031.png",
+        "sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+        "role": "new identity and full-body model"
+      },
+      {
+        "path": "assets/references/fighter-06.jpg",
+        "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+        "role": "photographic identity"
+      }
+    ],
+    "size": [
+      1254,
+      1254
+    ],
+    "selected_final": "assets/art/characters/06-fernando/atlas-v5.png"
+  },
+  "model_study": {
+    "source": "assets/art/characters/06-fernando/model-study-v031.png",
+    "sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-2cd27dab-cf37-4569-b68c-ecbedc31e6ae.png",
+    "raw_output_sha256": "2bb115b170a3ecccd7898eb227616dd5ccff1440de5d13c740537ca4b2a8c25a",
+    "prompt": "Use case: identity-preserve. Create a fresh likeness model sheet of the SPECIFIC REAL MAN IN THE PHOTO as an original 1992 SNES fighting-game cartoon. Photograph is the primary identity reference, not a generic stylistic suggestion. Fernando: the man in the photograph has a FULLER ROUNDED OVAL face and soft cheeks, very thick straight low eyebrows, deep-set dark eyes, prominent broad straight nose, small relaxed mouth, short dark softly waved side-swept hair with a low natural crown. Clean-shaven, adult soft substantial chin. Do not give him a narrow angular jaw, high quiff, thin brows, orange hair or an aggressive scowl.\nComposition: LEFT TWO THIRDS one COMPLETE standing full-body fighter in a compact right-facing guard, feet apart and both fists up, head seen near frontal three-quarter so recognizable facial features are visible. RIGHT THIRD three large head studies of THE EXACT SAME MAN: front, right-facing three-quarter, right profile. No text or borders. Transparent background. Full body must be one continuous drawing, all head studies separated with gutters.\nCostume: teal jacket, white open collar shirt, dark trousers and shoes. Body height about FIVE AND A HALF heads, noticeably enlarged expressive head for a 72-pixel-tall native sprite. Photo-accurate hair silhouette, facial proportions, age, nose, eyes and jaw. Preserve individual asymmetries and calm mouth from photo. Strong dark navy ink, restrained simple flat cel-shading, broad feature shapes. Original cartoon caricature based directly on the photograph. Face must NOT become a handsome angular anime/video-game stock hero. No huge slanted angry eyebrows, no chiseled triangular jaw, no high sculpted pompadour. No photographic texture, no 3D, no tiny fussy details. Do not copy photo clothing colors; use the specified game costume.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      {
+        "path": "assets/references/fighter-06.jpg",
+        "sha256": "66b7c01ee1e241cca6a470d63314c86a58ad81085d59f7f0a6206c8b1929f46c",
+        "role": "photographic identity"
+      }
+    ],
+    "size": [
+      1145,
+      1374
+    ],
+    "selected_final": "assets/art/characters/06-fernando/model-study-v031.png"
+  },
+  "prompt": "Use case: identity-preserve. Production full-body fighting sprite atlas of the SPECIFIC photographed man, NOT a generic fighter. Image1 is the new model sheet: reproduce that SAME man's face and costume. Image2 is his real photograph: likeness takes priority over conventional anime beauty. Fernando: the man in the photograph has a FULLER ROUNDED OVAL face and soft cheeks, very thick straight low eyebrows, deep-set dark eyes, prominent broad straight nose, small relaxed mouth, short dark softly waved side-swept hair with a low natural crown. Clean-shaven, adult soft substantial chin. Do not give him a narrow angular jaw, high quiff, thin brows, orange hair or an aggressive scowl.\nCreate exactly SIXTEEN independent full-body figures on a square transparent 4x4 atlas, row-major action order:\nROW1 idle guard; forward walking step; retreat walking step; deep crouch guard.\nROW2 airborne tucked-knee jump; full straight jab right; full rear-hand cross right; extended high side kick right.\nROW3 low sweeping kick right; raised standing block; struck torso recoil backwards left; upright victory both fists lifted.\nROW4 two-palm forward energy cast NO FX; compact uppercut with raised bent arm; horizontal knocked-out figure head LEFT feet RIGHT; compact forward shoulder rush RIGHT.\nUse Image1's FULL BODY design faithfully in each pose. Clothing teal jacket, white open collar shirt, dark trousers and shoes. One fixed physical scale and continuous whole-body anatomy, same face in every angle. Neutral standing figure approximately 280-310 source pixels in its cell. Lower crouching figures genuinely lower, don't scale each pose to fill the cell. Head should occupy about ONE FIFTH to ONE SIXTH of standing height with broad nose/eyes/jaw shapes readable when downsampled. Mature faithful human caricature, near-frontal three-quarter face looking right, low natural hair. Keep photographer's individual identity; no sharp stock heroic profile, no angry slanted anime eyes, no idealized chiseled jaw. Clean 1992 arcade cartoon with thick dark navy ink and only 2-3 flat shading values per material. Generous space between all sixteen silhouettes. No grid/labels/text/background/shadows/FX/weapons/detached heads/extra figures. Complete hands and feet and no cropping. Genuinely transparent background."
+}

@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "fighter_id": 7,
+  "revision": "photo-model-v031",
+  "human_approval": null,
+  "legacy": {
+    "source": "assets/art/characters/07-cristian/atlas-v4.png",
+    "sha256": "6c18c84321b7043b786ac97a9e0659e75990e68f1179b3a1ce6c11817352ef29",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-1418fb4c-933e-4627-a3df-845c627bd4ac.png",
+    "raw_output_sha256": "6c18c84321b7043b786ac97a9e0659e75990e68f1179b3a1ce6c11817352ef29",
+    "prompt": "Use case: identity-preserve. Production full-body fighting sprite atlas of the SPECIFIC photographed man, NOT a generic fighter. Image1 is the new model sheet: reproduce that SAME man's face and costume. Image2 is his real photograph: likeness takes priority over conventional anime beauty. Cristian: the man in the photograph has a BROAD ROUND-SQUARE face with a substantial squared lower jaw, broad cheeks, slightly hooded horizontally shaped eyes, thick near-straight brows, broad short straight nose, small neutral mouth, very short dense nearly black hair brushed slightly upward with a low textured crown, visible natural temples. A solid adult face, not a teenager and not spiky anime hair.\nCreate exactly SIXTEEN independent full-body figures on a square transparent 4x4 atlas, row-major action order:\nROW1 idle guard; forward walking step; retreat walking step; deep crouch guard.\nROW2 airborne tucked-knee jump; full straight jab right; full rear-hand cross right; extended high side kick right.\nROW3 low sweeping kick right; raised standing block; struck torso recoil backwards left; upright victory both fists lifted.\nROW4 two-palm forward energy cast NO FX; compact uppercut with raised bent arm; horizontal knocked-out figure head LEFT feet RIGHT; compact forward shoulder rush RIGHT.\nUse Image1's FULL BODY design faithfully in each pose. Clothing navy sleeveless sweater vest over pale shirt with rolled sleeves and white collar, dark trousers and shoes. One fixed physical scale and continuous whole-body anatomy, same face in every angle. Neutral standing figure approximately 280-310 source pixels in its cell. Lower crouching figures genuinely lower, don't scale each pose to fill the cell. Head should occupy about ONE FIFTH to ONE SIXTH of standing height with broad nose/eyes/jaw shapes readable when downsampled. Mature faithful human caricature, near-frontal three-quarter face looking right, low natural hair. Keep photographer's individual identity; no sharp stock heroic profile, no angry slanted anime eyes, no idealized chiseled jaw. Clean 1992 arcade cartoon with thick dark navy ink and only 2-3 flat shading values per material. Generous space between all sixteen silhouettes. No grid/labels/text/background/shadows/FX/weapons/detached heads/extra figures. Complete hands and feet and no cropping. Genuinely transparent background.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      {
+        "path": "assets/art/characters/07-cristian/model-study-v031.png",
+        "sha256": "60890c35457a3548a2e0fb054e9d87452bb0959f099440ef2a15c65bcd95d3eb",
+        "role": "new identity and full-body model"
+      },
+      {
+        "path": "assets/references/fighter-07.jpg",
+        "sha256": "5edcd42a4afcdbd2ab1e341a25b7ad65884bbf417b5a47396d2de2cff651d19c",
+        "role": "photographic identity"
+      }
+    ],
+    "size": [
+      1254,
+      1254
+    ],
+    "selected_final": "assets/art/characters/07-cristian/atlas-v4.png"
+  },
+  "model_study": {
+    "source": "assets/art/characters/07-cristian/model-study-v031.png",
+    "sha256": "60890c35457a3548a2e0fb054e9d87452bb0959f099440ef2a15c65bcd95d3eb",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-7a6230a6-8380-41ad-beef-396f60b9e34a.png",
+    "raw_output_sha256": "60890c35457a3548a2e0fb054e9d87452bb0959f099440ef2a15c65bcd95d3eb",
+    "prompt": "Use case: identity-preserve. Create a fresh likeness model sheet of the SPECIFIC REAL MAN IN THE PHOTO as an original 1992 SNES fighting-game cartoon. Photograph is the primary identity reference, not a generic stylistic suggestion. Cristian: the man in the photograph has a BROAD ROUND-SQUARE face with a substantial squared lower jaw, broad cheeks, slightly hooded horizontally shaped eyes, thick near-straight brows, broad short straight nose, small neutral mouth, very short dense nearly black hair brushed slightly upward with a low textured crown, visible natural temples. A solid adult face, not a teenager and not spiky anime hair.\nComposition: LEFT TWO THIRDS one COMPLETE standing full-body fighter in a compact right-facing guard, feet apart and both fists up, head seen near frontal three-quarter so recognizable facial features are visible. RIGHT THIRD three large head studies of THE EXACT SAME MAN: front, right-facing three-quarter, right profile. No text or borders. Transparent background. Full body must be one continuous drawing, all head studies separated with gutters.\nCostume: navy sleeveless sweater vest over pale shirt with rolled sleeves and white collar, dark trousers and shoes. Body height about FIVE AND A HALF heads, noticeably enlarged expressive head for a 72-pixel-tall native sprite. Photo-accurate hair silhouette, facial proportions, age, nose, eyes and jaw. Preserve individual asymmetries and calm mouth from photo. Strong dark navy ink, restrained simple flat cel-shading, broad feature shapes. Original cartoon caricature based directly on the photograph. Face must NOT become a handsome angular anime/video-game stock hero. No huge slanted angry eyebrows, no chiseled triangular jaw, no high sculpted pompadour. No photographic texture, no 3D, no tiny fussy details. Do not copy photo clothing colors; use the specified game costume.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "references": [
+      {
+        "path": "assets/references/fighter-07.jpg",
+        "sha256": "5edcd42a4afcdbd2ab1e341a25b7ad65884bbf417b5a47396d2de2cff651d19c",
+        "role": "photographic identity"
+      }
+    ],
+    "size": [
+      1132,
+      1390
+    ],
+    "selected_final": "assets/art/characters/07-cristian/model-study-v031.png"
+  },
+  "prompt": "Use case: identity-preserve. Production full-body fighting sprite atlas of the SPECIFIC photographed man, NOT a generic fighter. Image1 is the new model sheet: reproduce that SAME man's face and costume. Image2 is his real photograph: likeness takes priority over conventional anime beauty. Cristian: the man in the photograph has a BROAD ROUND-SQUARE face with a substantial squared lower jaw, broad cheeks, slightly hooded horizontally shaped eyes, thick near-straight brows, broad short straight nose, small neutral mouth, very short dense nearly black hair brushed slightly upward with a low textured crown, visible natural temples. A solid adult face, not a teenager and not spiky anime hair.\nCreate exactly SIXTEEN independent full-body figures on a square transparent 4x4 atlas, row-major action order:\nROW1 idle guard; forward walking step; retreat walking step; deep crouch guard.\nROW2 airborne tucked-knee jump; full straight jab right; full rear-hand cross right; extended high side kick right.\nROW3 low sweeping kick right; raised standing block; struck torso recoil backwards left; upright victory both fists lifted.\nROW4 two-palm forward energy cast NO FX; compact uppercut with raised bent arm; horizontal knocked-out figure head LEFT feet RIGHT; compact forward shoulder rush RIGHT.\nUse Image1's FULL BODY design faithfully in each pose. Clothing navy sleeveless sweater vest over pale shirt with rolled sleeves and white collar, dark trousers and shoes. One fixed physical scale and continuous whole-body anatomy, same face in every angle. Neutral standing figure approximately 280-310 source pixels in its cell. Lower crouching figures genuinely lower, don't scale each pose to fill the cell. Head should occupy about ONE FIFTH to ONE SIXTH of standing height with broad nose/eyes/jaw shapes readable when downsampled. Mature faithful human caricature, near-frontal three-quarter face looking right, low natural hair. Keep photographer's individual identity; no sharp stock heroic profile, no angry slanted anime eyes, no idealized chiseled jaw. Clean 1992 arcade cartoon with thick dark navy ink and only 2-3 flat shading values per material. Generous space between all sixteen silhouettes. No grid/labels/text/background/shadows/FX/weapons/detached heads/extra figures. Complete hands and feet and no cropping. Genuinely transparent background."
+}
