@@ -3,7 +3,7 @@
   "version": "0.33.1",
   "rom_sha256": "5a1e5c89b4b0682c1a22f51a43b52ac3a20542e08ed05e2766663ca1e1a96ebd",
   "verification_sha256": "d563503de9ce8a442c093fcaa7c273df117811e3cc6bb894abd232fdb031ad89",
-  "gallery_sha256": "61352f99b242d44e12b0264d205882fbad53f7d9486b5b766f8064e4b485225b",
+  "gallery_sha256": "50ded5a93d72a94e3fed0cd5c7ae848cc7b7ddc537afc926229deed8ae2fc7ae",
   "media_sha256": {
     "docs/images/abaqus-after-hours-cartridge-v1.png": "1ca9e8f44c5b9b7ad7cfee24e25523a4b5a0dabe92ee6bb9f792772025830aca",
     "assets/art/native-faces-v033/09-reston-native64-v3.png": "0244791a9792583ff09896648b51450bdd020fde3d05c5ef80a7243e0a3bce76",
@@ -21,5 +21,7 @@
   "responsive_widths_checked": [
     390,
     900
-  ]
+  ],
+  "likeness_approval": "docs/likeness331-approval.json",
+  "likeness_approval_sha256": "aea041da95f2327b23690397177b7daf102a0baabfa8a2da7461ad318a1696b0"
 }

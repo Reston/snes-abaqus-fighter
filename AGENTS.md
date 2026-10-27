@@ -7,7 +7,7 @@ across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
 <!-- v0331-agent:start -->
-- **v0.33.1 is the technically verified Reston/David follow-up**, PR #36 draft.
+- **v0.33.1 is the user-approved Reston/David revision**, PR #36.
   User feedback: "all good except reston put me a littlebit of hair".
   The user then said "also david before was better". Restore David's exact
   v0.32.1 model/palette from the Before comparison. Ten other v0.33 models
@@ -18,8 +18,10 @@ Preserve the native emulator requirement when extending the project.
   Native rules/ABI, stages, audio and ten other contact blocks remain exact;
   David's contact block must match the original v0.32.1 model exactly.
   Keep original sources; selected art is 09-reston-native64-v3.png with the
-  adjacent exact built-in imagegen prompt/provenance. Final hair review is
-  pending; no merge approval is inferred. See docs/likeness33-approval.json.
+  adjacent exact built-in imagegen prompt/provenance. The user approved the
+  final hair/restored David and explicitly requested merge on 2026-10-27.
+  See docs/likeness331-approval.json. R36S card installation is authorized;
+  physical handheld execution remains unverified.
   ROM 5a1e5c89b4b0682c1a22f51a43b52ac3a20542e08ed05e2766663ca1e1a96ebd, checksum C80C;
   source freeze c0e44b5a3926ac4f193c608de88c00e20d1581d8. Six suites pass 52013 checks;
   eight focused both-core/port cases, independent Accuracy, 23 normal/-O guards,

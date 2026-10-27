@@ -19,5 +19,5 @@ Native rules, slower pacing, controls, RAM/ABI, hardware/trace assembly, stages
 and audio remain. Pixel-derived contact rectangles may refresh for Reston;
 David's contact block returns to its old model; the other ten stay exact.
 [Technical verification](verification-v0.33.1.json) and
-[native comparison captures](ROSTER-FOLLOWUP-v0.33.1.html) bind this candidate. Hair acceptance and
-merge remain pending; the public player is still v0.30.
+[native comparison captures](ROSTER-FOLLOWUP-v0.33.1.html) bind this candidate. The user approved the final
+likenesses and requested merge; see [approval record](likeness331-approval.json).
