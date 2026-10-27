@@ -1,9 +1,10 @@
 # Abaqus: After Hours - player guide
-<!-- candidate-version: 0.33.0; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 64f7db0dea8b42be855abd836a8f7c9d2f249873a74116e4a0f06ee773631aad; source-freeze: fd4bee3acd8ef92d2437d1a9ead4125edb641a88 -->
+<!-- candidate-version: 0.33.1; identity: TECHNICALLY_VERIFIED_HUMAN_REVIEW_PENDING; rom-sha256: 5a1e5c89b4b0682c1a22f51a43b52ac3a20542e08ed05e2766663ca1e1a96ebd; source-freeze: c0e44b5a3926ac4f193c608de88c00e20d1581d8 -->
 
-This branch revises all twelve fighters’ in-game faces across all 64 poses each.
+Reston gets a little short hair; David returns to his previous in-game model.
+The other ten accepted models stay unchanged.
 The selection portraits retain their earlier appearance.
-[Before/after review](NATIVE-FACES-v0.33.html). The public player remains v0.30 until merge.
+[Before/after review](ROSTER-FOLLOWUP-v0.33.1.html). The public player remains v0.30 until merge.
 
 v0.29 adds throw escapes, office bonus rounds, random selection, automatic
 browser launch, new music and sound levels, and animated arena spectators.

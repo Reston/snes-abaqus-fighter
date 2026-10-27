@@ -7,7 +7,7 @@ across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
 <!-- v0331-agent:start -->
-- **v0.33.1 is the Reston/David follow-up in progress**, PR #36 draft.
+- **v0.33.1 is the technically verified Reston/David follow-up**, PR #36 draft.
   User feedback: "all good except reston put me a littlebit of hair".
   The user then said "also david before was better". Restore David's exact
   v0.32.1 model/palette from the Before comparison. Ten other v0.33 models
@@ -20,6 +20,11 @@ Preserve the native emulator requirement when extending the project.
   Keep original sources; selected art is 09-reston-native64-v3.png with the
   adjacent exact built-in imagegen prompt/provenance. Final hair review is
   pending; no merge approval is inferred. See docs/likeness33-approval.json.
+  ROM 5a1e5c89b4b0682c1a22f51a43b52ac3a20542e08ed05e2766663ca1e1a96ebd, checksum C80C;
+  source freeze c0e44b5a3926ac4f193c608de88c00e20d1581d8. Six suites pass 52013 checks;
+  eight focused both-core/port cases, independent Accuracy, 23 normal/-O guards,
+  five web guards and fresh 237-asset/ROM/symbol reproduction pass.
+  Current evidence: docs/verification-v0.33.1.json.
 <!-- v0331-agent:end -->
 
 <!-- v033-agent:start -->

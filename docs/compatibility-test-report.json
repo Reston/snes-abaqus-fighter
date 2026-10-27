@@ -4,7 +4,7 @@
   "pinned_core": true,
   "source_url": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/bsnes2014_accuracy_libretro.dll.zip",
   "rom": {
-    "sha256": "64f7db0dea8b42be855abd836a8f7c9d2f249873a74116e4a0f06ee773631aad",
+    "sha256": "5a1e5c89b4b0682c1a22f51a43b52ac3a20542e08ed05e2766663ca1e1a96ebd",
     "bytes": 4194304
   },
   "core": {
@@ -28,8 +28,8 @@
   },
   "checks": {
     "pinned_inputs": {
-      "rom_sha256": "64f7db0dea8b42be855abd836a8f7c9d2f249873a74116e4a0f06ee773631aad",
-      "manifest_sha256": "64f7db0dea8b42be855abd836a8f7c9d2f249873a74116e4a0f06ee773631aad",
+      "rom_sha256": "5a1e5c89b4b0682c1a22f51a43b52ac3a20542e08ed05e2766663ca1e1a96ebd",
+      "manifest_sha256": "5a1e5c89b4b0682c1a22f51a43b52ac3a20542e08ed05e2766663ca1e1a96ebd",
       "rom_bytes": 4194304,
       "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
       "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
@@ -40,7 +40,7 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "8d7d8eac38d32058c9645f82536d8110136465fded3f983d0eedfc85b8ed5363",
+        "sha256_rgb": "3bc9942116168c647d360b2f75b1dcdff0e4fd9e83139b1aec846649f887963a",
         "distinct_sampled_rgb": 308,
         "nonzero_bytes": 344064,
         "nonblank": true
@@ -114,8 +114,8 @@
     },
     "audio": {
       "samples": 1050120,
-      "energy": 63894532377,
-      "peak": 4977,
+      "energy": 63904749615,
+      "peak": 4905,
       "passed": true
     },
     "stage_ambient_and_freeze": {
@@ -363,7 +363,7 @@
       "synchronized_initial_frames": 1,
       "synchronized_frames_in_600": 47,
       "stat77_values": [
-        17
+        1
       ],
       "stat77_overflow_bits": [
         0

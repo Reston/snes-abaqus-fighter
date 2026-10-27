@@ -1,0 +1,29 @@
+Authoring guard mutations: optimize=1
+test_airborne_provenance (__main__.AuthoringGuards.test_airborne_provenance) ... ok
+test_atlas_shape_and_cycle_uniqueness (__main__.AuthoringGuards.test_atlas_shape_and_cycle_uniqueness) ... ok
+test_bg1_budget_before_publication (__main__.AuthoringGuards.test_bg1_budget_before_publication) ... ok
+test_fighter_source_descriptors (__main__.AuthoringGuards.test_fighter_source_descriptors) ... ok
+test_immutable_baseline_mutation (__main__.AuthoringGuards.test_immutable_baseline_mutation) ... ok
+test_it_header_and_sample_shapes_before_write (__main__.AuthoringGuards.test_it_header_and_sample_shapes_before_write) ... ok
+test_native_baseline_and_reviewed_output_identity (__main__.AuthoringGuards.test_native_baseline_and_reviewed_output_identity) ... ok
+test_native_face_palette_keeps_skin_and_exact_costume_colours (__main__.AuthoringGuards.test_native_face_palette_keeps_skin_and_exact_costume_colours) ... ok
+test_native_face_source_requires_sixty_four_separate_figures (__main__.AuthoringGuards.test_native_face_source_requires_sixty_four_separate_figures) ... ok
+test_native_frame_and_palette_shapes (__main__.AuthoringGuards.test_native_frame_and_palette_shapes) ... ok
+test_portrait_ui_and_fighter_shapes_before_publication (__main__.AuthoringGuards.test_portrait_ui_and_fighter_shapes_before_publication) ... ok
+test_preserved_selection_portrait_mutations (__main__.AuthoringGuards.test_preserved_selection_portrait_mutations) ... ok
+test_production_authoring_guards_are_not_removable (__main__.AuthoringGuards.test_production_authoring_guards_are_not_removable) ... ok
+test_real_selected_stage_and_baseline_contracts (__main__.AuthoringGuards.test_real_selected_stage_and_baseline_contracts) ... ok
+test_registered_source_version (__main__.AuthoringGuards.test_registered_source_version) ... ok
+test_revision_native_metadata_mutations (__main__.AuthoringGuards.test_revision_native_metadata_mutations) ... ok
+test_scales_and_lazy_error_messages (__main__.AuthoringGuards.test_scales_and_lazy_error_messages) ... ok
+test_stage_fixture_is_valid (__main__.AuthoringGuards.test_stage_fixture_is_valid) ... ok
+test_stage_hashes_and_containment (__main__.AuthoringGuards.test_stage_hashes_and_containment) ... ok
+test_stage_provenance_mode (__main__.AuthoringGuards.test_stage_provenance_mode) ... ok
+test_stage_schema_canvas_and_order_mutations (__main__.AuthoringGuards.test_stage_schema_canvas_and_order_mutations) ... ok
+test_stage_shape_grid_and_color_mutations (__main__.AuthoringGuards.test_stage_shape_grid_and_color_mutations) ... ok
+test_unapproved_revision_mutations (__main__.AuthoringGuards.test_unapproved_revision_mutations) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 17.090s
+
+OK

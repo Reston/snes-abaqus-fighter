@@ -7,11 +7,11 @@
     "pre_extracted_tools_reused": false,
     "build_intermediates_reused": false
   },
-  "source_commit": "fd4bee3acd8ef92d2437d1a9ead4125edb641a88",
-  "source_tree": "484e30e0c71d6b08f9e94d4f122b960084d0a235",
-  "rom_sha256": "64f7db0dea8b42be855abd836a8f7c9d2f249873a74116e4a0f06ee773631aad",
-  "work_directory": "build/fresh-build/fd4bee3a-53_pgxr8",
-  "source_archive_sha256": "7fa7fb52a7a62c8403de77a49af96dcada6039f816fc3bf1a7eebd95feed9da4",
+  "source_commit": "c0e44b5a3926ac4f193c608de88c00e20d1581d8",
+  "source_tree": "d65d47e8d8f2ecf19b998dc066d9d2e117f989d1",
+  "rom_sha256": "5a1e5c89b4b0682c1a22f51a43b52ac3a20542e08ed05e2766663ca1e1a96ebd",
+  "work_directory": "build/fresh-build/c0e44b5a-rldlwev2",
+  "source_archive_sha256": "dd7067b3beeb6d6087b0eda20d3d3cc88ea5a20d90506368acbec7d201c4010e",
   "cached_archives_reused": [
     "snes9x.zip",
     "pvsneslib.zip",
@@ -26,7 +26,7 @@
     "sdk_tree_sha256": "0cd7a571b0a020394ead285b887c81b717c55c39540335abd8c7774b55bccb7b"
   },
   "build_exit_code": 0,
-  "build_log": "build/fresh-build/fd4bee3a-53_pgxr8/build.log",
+  "build_log": "build/fresh-build/c0e44b5a-rldlwev2/build.log",
   "bootstrap_archives": [
     {
       "name": "snes9x.zip",
@@ -53,7 +53,7 @@
     "python": "3.12.10",
     "pillow": "13.0.0"
   },
-  "rebuilt_rom_sha256": "64f7db0dea8b42be855abd836a8f7c9d2f249873a74116e4a0f06ee773631aad",
+  "rebuilt_rom_sha256": "5a1e5c89b4b0682c1a22f51a43b52ac3a20542e08ed05e2766663ca1e1a96ebd",
   "generated_assets": [
     {
       "file": "assets/generated/arena-life29.json",
@@ -157,7 +157,7 @@
     },
     {
       "file": "assets/generated/character-manifest.json",
-      "sha256": "69cb540ffcf0378170837dc9b934c03bbd6c833f1f4ddc71ac5af3893596d847",
+      "sha256": "536fb91ca97d76b3f22f3b26ba7cb78ee91c1ed5e51fd9db4ffc523b46279533",
       "comparison": "LF-normalized text"
     },
     {
@@ -432,52 +432,52 @@
     },
     {
       "file": "assets/generated/fighter05.bin",
-      "sha256": "bd9ea060d35b17e655bce2f8019cf872c26f084cb2d47da9d0b91c94e531079d",
+      "sha256": "27a09297567630ae29e2efd957a34f6a694435b364d167777292e826d4608701",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter05.png",
-      "sha256": "f495a8981361ea3b132413282e5b3714c3e07606bfda8e12411a36daf9e21839",
+      "sha256": "3c6d2c79bae4f8c9ec6994da2871306cab0dfd1e81941a1705d4d1dbd116145d",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter05_pal.bin",
-      "sha256": "1ac2524f12a2f825211fc185a919f24f759ee952b46aa6864db02e4ecb7676aa",
+      "sha256": "c5cb13513140c4cf740991e6f69c4dd71661e6177820ca7df52ed112149b2aba",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter05b.bin",
-      "sha256": "436063e0e0219df63f91b82b9ba9dc83d59ade00027ecf54fd8f4ce2e4899e88",
+      "sha256": "ca5652f7db642aa739c61f41192937593f42516bc968080d113fe097dba76918",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter05c.bin",
-      "sha256": "f19673a72877040b065881aa1358f34fd7f357fdaad849498623b8856948c1c2",
+      "sha256": "09c9476a22f7fc5aa6cea11ffe9af7274f6da213ad704f39a4538b98bc596aa7",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter05d.bin",
-      "sha256": "7a1a7faf1d7425add0ebce015446d43ad5fa66525e5c7720221949f5516f36bf",
+      "sha256": "b80a4505ea6768772fceae3f4d1646dde0e013f1b3511aec900d6b4554631e56",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter05e.bin",
-      "sha256": "9e2e0890feba3319034b8a35505c97cf73f7c9754c0ef78bf175a5682dfd57bc",
+      "sha256": "516a4a38eb45cf3f58d7ff02a45790b88b813adfd31a11082a92a3bce7ad8b21",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter05f.bin",
-      "sha256": "aae59e176925588a847f2d0f18eab7bfec6f4dc0d3ba3e9b0eea8c3e873b7a16",
+      "sha256": "bf55055782b6834a3cd8237e8afc4617bfaebe3b2f25be7522c2f5e8785d4458",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter05g.bin",
-      "sha256": "008c0fbbafc8994742f02ca000676fd309ac7d79431e2cde55241b5af677c852",
+      "sha256": "5b2d72682f2486633420f9ef953997f6d5bc958367c0a31d80d56b4b235ce838",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter05h.bin",
-      "sha256": "fd7522072e51d05e3c1750746e581e5c5b141576fa60c904f8344a3f16bdb5eb",
+      "sha256": "48964e91186d3a7938383536467605be7e617ca0869986a6bbb5258f29a8124c",
       "comparison": "exact bytes"
     },
     {
@@ -632,12 +632,12 @@
     },
     {
       "file": "assets/generated/fighter09.bin",
-      "sha256": "20728248d95879498e05f74ecc4a40162f2c2c681d1a17b1f8c197aa1730c4b7",
+      "sha256": "6fe0e16db5f4d0ee2ad1daea1434e0d2302653c61efd651682e68c041b4eebf7",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter09.png",
-      "sha256": "fb6e3f0ab1ae300dd4f805cd606fa60a225f0a8e2fc7cddcb2e396a3698f5352",
+      "sha256": "e8dff7da56ca76f80aff195b943214c914844a7686fc307030ce230b7b0c7727",
       "comparison": "exact bytes"
     },
     {
@@ -647,37 +647,37 @@
     },
     {
       "file": "assets/generated/fighter09b.bin",
-      "sha256": "67e1b57a6bfc9cb592e4ab79449f1c5dd02c7b4eddc7b78e9b2d8d7c90a291f1",
+      "sha256": "5565d74b10394d85b0faee1250df026731adfb673d8533939c5f9b84b46a41a5",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter09c.bin",
-      "sha256": "3cb2d23cf80c7af08bee7d87ab0e63502d59ee221bce7fb2b8e911a10d3a7a9a",
+      "sha256": "8293644240a1009ddfee3e17e7ba428ca4c21800a807cb3a15f350f9428163de",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter09d.bin",
-      "sha256": "265ac151aa201fa17dc6d35094aaf3ba1ffe5b9c9aaa705bb16e5fcc6db259d2",
+      "sha256": "79a83f98ce5babb812b3c153274498c8cc1174a081f247ba523c3ec07e70423c",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter09e.bin",
-      "sha256": "233a0f3714cfcc1319742babac9fcf4d140532bb3b8199a776e4e18a1f6641d2",
+      "sha256": "f3d0de34ba20720f66dc6adb64a8c02eeda3c26579761586ff589d6153361a43",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter09f.bin",
-      "sha256": "a435984441163d11461f0049035746b4b0513f305bba28ab786931b3ad36a88c",
+      "sha256": "f94309a89c1d6d7e61440450d1708fb7743634029befe105821ae3c8506c3bfd",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter09g.bin",
-      "sha256": "5470003247ef899c0fd7338452c305ced9c5e209ef6544bfbfb95644c0b8faba",
+      "sha256": "87d334538153f9ea6ff721dba8370a6c9770afcbd2dc1fd3dcd5d1eb5bf29b4c",
       "comparison": "exact bytes"
     },
     {
       "file": "assets/generated/fighter09h.bin",
-      "sha256": "722ca6b49b212d0445c34b34462aad366ec103075a3c5102ea8f956e265f6abd",
+      "sha256": "0252d9f24b7d677ad65163d41da188b973df46377eb202bdc77e28af6c92d58d",
       "comparison": "exact bytes"
     },
     {
@@ -1243,5 +1243,5 @@
   ],
   "generated_assets_verified": 237,
   "symbols_equal_after_source_path_normalization": true,
-  "elapsed_seconds": 139.031
+  "elapsed_seconds": 139.765
 }
