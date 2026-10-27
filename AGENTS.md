@@ -7,6 +7,15 @@ across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
 <!-- v0321-agent:start -->
+- **Latest visual rejection:** the user rejected the Ivo fighting-sprite face
+  ("why does this looks so bad?"). v0.32.1 is technically tested but its native
+  likeness is not accepted; PR #36 must remain draft while art is revised.
+  The large generated drawing was reduced into a tiny face with very few
+  skin tones, merging brow/eye/nose and flattening mouth/jaw. Review deliberate
+  native-size pixel structure and colour readability before propagating more
+  poses. Preserve restored selection portraits and existing body designs.
+  See docs/likeness32-visual-feedback.json and the retained rejected screenshot.
+
 - **v0.32.1 is the corrected in-game face candidate**, PR #36, unmerged.
   The user clarified that selection portraits should stay unchanged. All
   portrait pixels/palettes/framing and roster art now match pre-change v0.31.

@@ -1,5 +1,6 @@
 # In-game face scope
 
+**Visual revision required:** the user rejected the Ivo in-game face. Technical checks remain valid; likeness is not accepted. [Feedback and retained example](likeness32-visual-feedback.json).
 The user clarified: **"I didn't want to change the face in the character
 selection, I wanted to change or improve the face in-game of the models of
 characters."** The v0.32 photo-head selection change was outside that request.
