@@ -238,6 +238,7 @@ def candidate_stem(version):
     if version=='0.32.0':return 'likeness-v032'
     if version=='0.32.1':return 'likeness-v0321'
     if version=='0.33.0':return 'native-faces-v033'
+    if version=='0.33.1':return 'reston-hair-v0331'
     raise AssertionError(('Unreviewed pacing/floor fixture version',version))
 
 def stage_main():
@@ -266,6 +267,7 @@ def main(argv=None):
     elif manifest['version']=='0.32.0':OUT=ROOT/'docs/screenshots/likeness-v032/stages'
     elif manifest['version']=='0.32.1':OUT=ROOT/'docs/screenshots/likeness-v0321/stages'
     elif manifest['version']=='0.33.0':OUT=ROOT/'docs/screenshots/native-faces-v033/stages'
+    elif manifest['version']=='0.33.1':OUT=ROOT/'docs/screenshots/reston-hair-v0331/stages'
     OUT.mkdir(parents=True,exist_ok=True);report_path.parent.mkdir(parents=True,exist_ok=True)
     started=time.monotonic();manifest=json.loads((ROOT/'dist/manifest.json').read_bytes());before=inputs()
     report={'status':'failed','part':args.part,'version':manifest['version'],'rom_sha256':manifest['sha256'],
@@ -274,7 +276,7 @@ def main(argv=None):
             'checks':[],'native_health':HEALTH,'memory_writes':False,'save_states':False,'audio_device_opened':False}
     try:
         require((manifest['version'] in ('0.25.0','0.26.0') or
-                 manifest['version'] in ('0.27.0','0.29.0','0.30.0','0.31.0','0.32.0','0.32.1','0.33.0') and args.part=='stages') and
+                 manifest['version'] in ('0.27.0','0.29.0','0.30.0','0.31.0','0.32.0','0.32.1','0.33.0','0.33.1') and args.part=='stages') and
                 sha((ROOT/'dist/abaqus-after-hours.sfc').read_bytes())==manifest['sha256'],
                 'candidate is the exact native cartridge retaining the v0.25 pacing contract')
         if not BEFORE.exists():
@@ -291,8 +293,10 @@ def main(argv=None):
                 file=CORE_PATH
             else:file=ROOT/path
             require(sha(Path(file).read_bytes()).lower()==pin['dll_sha256'].lower(),'expanded native core is pinned',str(file))
-        if manifest['version'] in ('0.30.0','0.31.0','0.32.0','0.32.1','0.33.0'):
-            if manifest['version']=='0.33.0':
+        if manifest['version'] in ('0.30.0','0.31.0','0.32.0','0.32.1','0.33.0','0.33.1'):
+            if manifest['version']=='0.33.1':
+                from native_faces331_contracts import validate as validate_likeness
+            elif manifest['version']=='0.33.0':
                 from native_faces33_contracts import validate as validate_likeness
             elif manifest['version'] in ('0.32.0','0.32.1'):
                 from likeness32_contracts import validate as validate_likeness

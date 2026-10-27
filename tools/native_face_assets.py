@@ -11,7 +11,7 @@ from pathlib import Path
 from PIL import Image
 
 MANIFEST = 'assets/art/native-faces-v033/roster.json'
-MANIFEST_SHA256 = 'fb81d4971ea56316e7a83d11f4498a824cbbe9d4cdfd3ea0727d3467f309e7d4'
+MANIFEST_SHA256 = '508ac8af243500efc54d76869f511d9c181a3e0d792e67988ad3be8a970a133f'
 
 
 def require(ok, message):

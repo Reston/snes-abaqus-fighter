@@ -6,6 +6,19 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+<!-- v0331-agent:start -->
+- **v0.33.1 is Reston's small hair follow-up in progress**, PR #36 draft.
+  User feedback: "all good except reston put me a littlebit of hair".
+  Eleven v0.33 models are visually accepted; preserve them byte-for-byte.
+  Reston alone gets short dark hair on top with a naturally receding hairline
+  across all 64 poses. Retain his beard, face/costume design, existing palette,
+  physical height and move roles. All selection portraits stay exact.
+  Native rules/ABI, stages, audio and other eleven contact blocks remain exact.
+  Keep original sources; selected art is 09-reston-native64-v3.png with the
+  adjacent exact built-in imagegen prompt/provenance. Final hair review is
+  pending; no merge approval is inferred. See docs/likeness33-approval.json.
+<!-- v0331-agent:end -->
+
 <!-- v033-agent:start -->
 - **v0.33.0 is the technically verified all-roster native-face candidate**, PR #36 draft.
   After rejecting the tiny Ivo face, the user requested "do it for everyone".

@@ -9,12 +9,14 @@ import test_presentation as ui
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def main():
     defense.SYMS.update(defense.symbols(ROOT/'dist/abaqus-after-hours.sym'))
-    out=ROOT/'docs/screenshots/native-faces-v033/native';out.mkdir(parents=True,exist_ok=True)
     manifest=json.loads((ROOT/'dist/manifest.json').read_bytes())
-    if manifest['version']!='0.33.0' or sha(ROOT/'dist/abaqus-after-hours.sfc')!=manifest['sha256']:raise ValueError('Wrong native expression candidate')
+    if manifest['version'] not in ('0.33.0','0.33.1') or sha(ROOT/'dist/abaqus-after-hours.sfc')!=manifest['sha256']:raise ValueError('Wrong native expression candidate')
+    hair=manifest['version']=='0.33.1'
+    out=ROOT/('docs/screenshots/reston-hair-v0331/native' if hair else 'docs/screenshots/native-faces-v033/native');out.mkdir(parents=True,exist_ok=True)
     dependencies=['tools/test_native_faces33.py','tools/native_faces33_contracts.py','tools/test_characters.py',
         'tools/test_defense29.py','tools/test_presentation.py','tools/emulator.py','tools/test_classic_menu.py',
         'tools/test_compatibility.py','tools/fighter_assets.py','tools/portrait_assets.py','tools/native_face_assets.py']
+    if hair:dependencies.append('tools/native_faces331_contracts.py')
     hashes={p:sha(ROOT/p) for p in dependencies}
     report={'status':'failed','rom_sha256':manifest['sha256'],'version':manifest['version'],
         'emulated_memory_writes':False,'save_states':False,'controller_only':True,'cases':[],
@@ -24,6 +26,7 @@ def main():
         report['media'].append({'path':p.relative_to(ROOT).as_posix(),'sha256':sha(p)})
     for core in ('snes9x','accuracy'):
         for fid,slug in enumerate(SLUGS):
+            if hair and fid!=9:continue
             for port in (0,1):
                 tag=f'{core}-{slug}-p{port+1}'
                 menu=defense.Host(core)
@@ -67,6 +70,7 @@ def main():
     report.update(status='passed',health=defense.HEALTH,
         source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
         assertion_executions=sum(x['executions'] for x in defense.CHECKS.values()))
-    (ROOT/'docs/native-faces33-native-report.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
+    report_name='docs/reston-hair331-native-report.json' if hair else 'docs/native-faces33-native-report.json'
+    (ROOT/report_name).write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8',newline='\n')
     print(json.dumps({'status':'passed','cases':len(report['cases']),'captures':len(report['media']),'checks':report['assertion_executions']}))
 if __name__=='__main__':main()
