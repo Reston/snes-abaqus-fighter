@@ -30,3 +30,6 @@ The native fighter reductions are independently authored whole figures; the
 diagnostic small-head tests are not inserted into them. Original body designs,
 palettes and physical heights remain. Final native likeness review and merge
 approval remain separate from this reference-direction approval.
+
+[Applied native portraits and animations](EXPRESSION-REVIEW-v0.32.html) ·
+[Implementation and full-body prompts](EXPRESSIONS-v0.32.md).

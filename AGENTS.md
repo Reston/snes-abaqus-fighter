@@ -6,16 +6,26 @@ assembly. The current integration targets a 4 MiB NTSC FastROM LoROM image
 across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
+<!-- v032-agent:start -->
+- **v0.32.0 is the verified eyes/expression playtest candidate**, PR #36.
+  The user approved the photographed reference direction, "Yes, use this direction".
+  Nine new full-body imagegen atlases per fighter propagate it across Ivo,
+  Fernando and Cristian's 64 poses; complete approved head masters occupy the
+  existing portraits. Their v0.31 body designs, original palettes/heights and
+  move roles remain. The other nine fighters, all 1,331 RAM/data labels and native
+  hardware/trace ASM stay exact. C rules differ only in version. 192/237 assets
+  stay exact; 45 allowed outputs and only three geometry blocks change.
+  ROM 096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f, checksum 21E6;
+  source freeze 6933f4908f839957145c463fea9522918e62e142. Six suites pass 50,605 checks;
+  both-core/both-port portrait/gameplay proof, Accuracy smoke, 21 normal/-O
+  authoring guards and fresh 237-asset/ROM/symbol reproduction pass. See
+  docs/EXPRESSIONS-v0.32.md and docs/verification-v0.32.0.json.
+  Final native likeness and merge approval remain pending; main/public remain
+  v0.30. Preserve all old masters and contracts. No new offline package.
+<!-- v032-agent:end -->
+
 <!-- v031-agent:start -->
-- **v0.32 expression direction is user-approved:** "Yes, use this direction"
-  authorizes applying the photographed eye/expression studies to Ivo, Fernando
-  and Cristian across all animations. It is not final likeness or merge approval.
-  Preserve the v0.31 body designs, original palettes/heights and other nine
-  fighters. New v6 core atlases and v032 whole-body animation edits retain all
-  old masters. The approved head masters also fill existing portrait slots.
-  Current implementation/verification is in progress on PR #36; main/public
-  remain v0.30. See docs/FACE-EXPRESSION-REVIEW.md.
-- **v0.31.0 is a technically verified three-model review candidate**, branch
+- **v0.31.0 is the historical three-model review candidate**, branch
   `feature/roster-likeness-v031`. Main/public game remain v0.30. The user asked
   for better Ivo, Fernando and Cristian likenesses. This supersedes their prior
   appearance pins only; preserve all nine other fighters and original masters.
@@ -30,7 +40,8 @@ Preserve the native emulator requirement when extending the project.
   pass8,820 callbacks without health failures. Accuracy smoke,20 normal/-O
   authoring guards, five web build tests and fresh237/ROM/symbol reproduction pass.
   See docs/MODELS-v0.31.md, docs/MODEL-REVIEW-v0.31.html and verification-v0.31.0.json.
-  Human likeness acceptance and merge remain pending. No new offline package.
+  The body improvement was received positively; eyes/expression were rejected.
+  v0.32 above supersedes its faces. No new offline package.
 <!-- v031-agent:end -->
 
 <!-- v030-agent:start -->

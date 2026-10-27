@@ -4,7 +4,7 @@
   "pinned_core": true,
   "source_url": "https://buildbot.libretro.com/nightly/windows/x86_64/latest/bsnes2014_accuracy_libretro.dll.zip",
   "rom": {
-    "sha256": "187a327c8854bfe568184dcc46c6c59f7d1d3460a60c02a6c1aeb18151b39579",
+    "sha256": "096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f",
     "bytes": 4194304
   },
   "core": {
@@ -28,8 +28,8 @@
   },
   "checks": {
     "pinned_inputs": {
-      "rom_sha256": "187a327c8854bfe568184dcc46c6c59f7d1d3460a60c02a6c1aeb18151b39579",
-      "manifest_sha256": "187a327c8854bfe568184dcc46c6c59f7d1d3460a60c02a6c1aeb18151b39579",
+      "rom_sha256": "096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f",
+      "manifest_sha256": "096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f",
       "rom_bytes": 4194304,
       "archive_sha256": "CB1211AE6B6838ED60BEB7CC8AE5AD8074327733F1042CCC8BABA32A62C6D18C",
       "dll_sha256": "F2AAC1DDB314A001467A26B56604020F0A29C3A4DD1658B072884ACE75343CF4"
@@ -40,7 +40,7 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "ac5aec224019a9f750a20cbc2848d3ebcf543762191dde3591ac2cf8461e0c77",
+        "sha256_rgb": "fe43082f5c9586e7fb3b18ccc29d61ae54751a9517948718238d2aacf43a3341",
         "distinct_sampled_rgb": 308,
         "nonzero_bytes": 344064,
         "nonblank": true
@@ -53,9 +53,9 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "82b43229f5c10886eaa559756d1cad659ed5dfe0c3aaf5f10382586a227732f0",
+        "sha256_rgb": "d438bc43930a4477d748a3d0197b162e0c7cd70b267f0307de3f9f76f243fed0",
         "distinct_sampled_rgb": 616,
-        "nonzero_bytes": 312080,
+        "nonzero_bytes": 312302,
         "nonblank": true
       },
       "capture": "docs/screenshots/compatibility/select.png",
@@ -81,9 +81,9 @@
         "width": 512,
         "height": 224,
         "pitch": 2048,
-        "sha256_rgb": "2c786bf5457efc6fd1e36f54591b3e2c93e50550191fe7f08c4c3ce5b3191292",
-        "distinct_sampled_rgb": 627,
-        "nonzero_bytes": 321312,
+        "sha256_rgb": "f2f19d522c0c9af28a33185ff5b62fb248844295697c6caafcf7ba25a2b11560",
+        "distinct_sampled_rgb": 626,
+        "nonzero_bytes": 321290,
         "nonblank": true
       },
       "capture": "docs/screenshots/compatibility/fight.png",
@@ -113,9 +113,9 @@
       "passed": true
     },
     "audio": {
-      "samples": 1050124,
-      "energy": 64279255367,
-      "peak": 4891,
+      "samples": 1050122,
+      "energy": 64006844778,
+      "peak": 4868,
       "passed": true
     },
     "stage_ambient_and_freeze": {
@@ -153,7 +153,7 @@
           "stills": [
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage0-center.png",
-              "sha256": "b3984bf287fa10223eefe77f4c004136085357855c7f632b5a446d0deb0d8617",
+              "sha256": "6a350bfff229fd4826d947d58055918f684daf4de3b940b648e547edd7819949",
               "scope": "current native PPU"
             },
             {
@@ -163,12 +163,12 @@
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage0-left.png",
-              "sha256": "aa8d5c5826b3b25ff7283d918f45e86037008d10022f857dbab8200c123c1a69",
+              "sha256": "9c3ba970c759b89c6caedb841282a86802f6c06199152413d7acedbaf18e542f",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage0-right.png",
-              "sha256": "5d765ab134d5aaf432cb43e8e2be3da49b0309a68bdb8fe4af665343c0a70013",
+              "sha256": "019c364439b1a2b3b6457ed98c00b25bfbadaacb91f65ff9fd701ddef75e74be",
               "scope": "current native PPU"
             }
           ],
@@ -229,7 +229,7 @@
           "stills": [
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage1-center.png",
-              "sha256": "539dbc47a639c3d5f53c75d14927ed75fbb88953375e73a36aa48c50330c9605",
+              "sha256": "c8586521c90311adc26f8e189e541172c50a61e3d8e0daab58cacc053203310d",
               "scope": "current native PPU"
             },
             {
@@ -239,12 +239,12 @@
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage1-left.png",
-              "sha256": "a127b31032a432aa0873f76de23ff76d8f79192a4a23ba2f7763be585efebce9",
+              "sha256": "abf2780830a3dd6dee2a70ba8d04a2a4b7c15151fc52ab15eae1be1275876891",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage1-right.png",
-              "sha256": "4fc919daf1f8a69160e9787a828e9e689304968a90c2ead744dcc946fb9b78c0",
+              "sha256": "c98f0b05a1c40b4a26b9e09f58a6bf1e5552b20e33f8be19c87aa5b3ca316ebb",
               "scope": "current native PPU"
             }
           ],
@@ -305,7 +305,7 @@
           "stills": [
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage2-center.png",
-              "sha256": "d62c1fe022a5a1f4f38c10d299098904f839d6311426b12fa6339fe35b1716b8",
+              "sha256": "fa901a9491391beb37a3dbea7ac4d781e7556e219e6537796c8649e99c871527",
               "scope": "current native PPU"
             },
             {
@@ -315,12 +315,12 @@
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage2-left.png",
-              "sha256": "394811053fa06953ca8f78ef9cdc4b71775aad0d307a79e50807724b0b94c74b",
+              "sha256": "aad425378dfb552490dc90c3088e712745ea9aa45ef743e3189ab5555f8092c9",
               "scope": "current native PPU"
             },
             {
               "path": "docs/screenshots/compatibility/depth-v1/accuracy-stage2-right.png",
-              "sha256": "f2fa3227525e9f8ab659689dd229e06b79acec6c5266a7a4dc06667df10d676b",
+              "sha256": "31c722e79638581f565e03d0bff18a861bfccb0f14c25defd9316f6e3b45590d",
               "scope": "current native PPU"
             }
           ],
@@ -363,7 +363,7 @@
       "synchronized_initial_frames": 1,
       "synchronized_frames_in_600": 47,
       "stat77_values": [
-        1
+        17
       ],
       "stat77_overflow_bits": [
         0

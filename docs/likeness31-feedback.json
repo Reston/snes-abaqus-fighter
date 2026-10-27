@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "approved-direction-being-adapted",
+  "status": "approved-direction-implemented-native-review-pending",
   "candidate_version": "0.31.0",
   "candidate_rom_sha256": "187a327c8854bfe568184dcc46c6c59f7d1d3460a60c02a6c1aeb18151b39579",
   "user_feedback": "much better but still the face are off I don't like them",
@@ -14,10 +14,12 @@
   "face_approval": null,
   "merge_authorized": false,
   "proposed_references": "FACE-EXPRESSION-REVIEW.md",
-  "studies_integrated_into_game": false,
-  "native_rom_unchanged": true,
+  "studies_integrated_into_game": true,
+  "native_rom_unchanged": false,
   "reference_direction_approval": {
     "quote": "Yes, use this direction",
     "scope": "photographed eye and expression references for Ivo, Fernando and Cristian; not final native likeness or merge approval"
-  }
+  },
+  "successor_version": "0.32.0",
+  "successor_rom_sha256": "096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f"
 }

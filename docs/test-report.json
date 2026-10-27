@@ -1,6 +1,6 @@
 {
   "emulator": "Official Snes9x 1.63 x64 libretro core",
-  "rom_sha256": "187a327c8854bfe568184dcc46c6c59f7d1d3460a60c02a6c1aeb18151b39579",
+  "rom_sha256": "096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f",
   "rom_bytes": 4194304,
   "animation_manifest": [
     {
@@ -2123,7 +2123,7 @@
     }
   ],
   "passed": 2610,
-  "elapsed_seconds": 58.3,
+  "elapsed_seconds": 63.94,
   "checks": [
     {
       "check": "64-frame character manifest contains twelve fighters",
@@ -3969,7 +3969,7 @@
       "details": {
         "fighter": 1,
         "frame": 0,
-        "hash": "92f95b3328b155871831d9c613c0f58c725f2ec5af5967a8973ff70b4ee42796"
+        "hash": "d85308980b5b4161ad1169fd11a6119202eb4680926c3d1c24237cb716765562"
       }
     },
     {
@@ -3996,7 +3996,7 @@
       "details": {
         "fighter": 1,
         "frame": 1,
-        "hash": "d169f6e385d853bd1a90edab611f98d239b217edf5e41eab23d07db7e98db210"
+        "hash": "0a0a7c72ec3b3f1e0ca91e31f66cc1a3c3b63270bfbb4a3d434c3d2d8af7565d"
       }
     },
     {
@@ -4023,7 +4023,7 @@
       "details": {
         "fighter": 1,
         "frame": 2,
-        "hash": "7dab4e2e4323af67573349d20f46097374bdb6c503429f5f7b9247b39a0bf699"
+        "hash": "4cabb537aef9f2d5dcd6ff60de31fbcb8f380b817a5d027835720aaf57f3c5fd"
       }
     },
     {
@@ -4050,7 +4050,7 @@
       "details": {
         "fighter": 1,
         "frame": 3,
-        "hash": "09f39a5faeb0a23022053b0ebf692b06fd154b29b22630c1bc55b3a7746b478d"
+        "hash": "aa859f7a11591a1817c19558b469ad7e518c35d665b6163f7563e7398edf822d"
       }
     },
     {
@@ -4077,7 +4077,7 @@
       "details": {
         "fighter": 1,
         "frame": 4,
-        "hash": "3972f50aa7fda1f4b525516a1e3dcac13b1f895a09599d9023290cb6d10d3828"
+        "hash": "3e460a460d43507e36c2f2d477a1b00c0bcd8406340cb0636a2666c874bc3d99"
       }
     },
     {
@@ -4104,7 +4104,7 @@
       "details": {
         "fighter": 1,
         "frame": 5,
-        "hash": "1d987a765d8cf634a81e3fb73d2d657be9b842a426a3e62672ab6fad2faf4332"
+        "hash": "5bf72f0f5eb6b5081d470988bb936254088146e7be143d596f1c213ca1c2cbfa"
       }
     },
     {
@@ -4131,7 +4131,7 @@
       "details": {
         "fighter": 1,
         "frame": 6,
-        "hash": "79939b9d5630f271e6c54e0a3f872b3c296c599dc8d92a7a81e882acb3fd0507"
+        "hash": "7542c277fc5e1aa1fe142b8e3f30fc105da8dbe61b2b7f991c483cc71fc1e803"
       }
     },
     {
@@ -4158,7 +4158,7 @@
       "details": {
         "fighter": 1,
         "frame": 7,
-        "hash": "22d1e87c56b759fa64f985c12f58d49743a11e29f4ba3cac0e0d019340983311"
+        "hash": "f3d08fc81ab2b1de878a6099bb0cf59f43c0150d57847e64efe813432b131f65"
       }
     },
     {
@@ -4185,7 +4185,7 @@
       "details": {
         "fighter": 1,
         "frame": 8,
-        "hash": "ab1611f04525ab9b494f7d9be87bab46f1e29817a8797d32b467a1ef798f1435"
+        "hash": "0159b293d2c248bf3e9ea9c5d02263189af5b602f2d62ba05145052864082ecb"
       }
     },
     {
@@ -4212,7 +4212,7 @@
       "details": {
         "fighter": 1,
         "frame": 9,
-        "hash": "e77a0490905f81bf3721af4f67a32b14dff5cf950dea589e44a3d3ccd670bf93"
+        "hash": "a6abb957a71bbefcdd566dd7735071aa2e79b7eba4468c82a2b0de4f523457e8"
       }
     },
     {
@@ -4239,7 +4239,7 @@
       "details": {
         "fighter": 1,
         "frame": 10,
-        "hash": "7b2bbea1624422e976b63ae9ae2f98551f0c5668ef7f6d43cf138acf55e0511a"
+        "hash": "f22884696358799134e36d84c0bba14ee5ea0203ab6725c1d5c8fc0e0defeb81"
       }
     },
     {
@@ -4266,7 +4266,7 @@
       "details": {
         "fighter": 1,
         "frame": 11,
-        "hash": "1bf37a8901a26dfe707ccc41b97d2823f8e2e2e9f60d6873be6aeb4db68c0e66"
+        "hash": "fc87c364a05a5fba198a335749f7db2815c4e6d974b55ad57479140374644fab"
       }
     },
     {
@@ -4293,7 +4293,7 @@
       "details": {
         "fighter": 1,
         "frame": 12,
-        "hash": "e177ea35d518781c5f5e77a812cc543e38ab6cd1ce25281267a9e1bd61829a3c"
+        "hash": "282f8eec4f974dea42eae6c5407e0219d79373a947f72bb3ebf9e0572f80fa18"
       }
     },
     {
@@ -4320,7 +4320,7 @@
       "details": {
         "fighter": 1,
         "frame": 13,
-        "hash": "4b49c5670956f6c698bcbec2463590b3b8eca9850af93cab35b81d5113dd17a7"
+        "hash": "8ff5b1dfcc62aa5041cf790631ea900317795a9fbb6f4d52be4041e9322c1d3b"
       }
     },
     {
@@ -4347,7 +4347,7 @@
       "details": {
         "fighter": 1,
         "frame": 14,
-        "hash": "9656abd333af0997b843a3b55063a62a512decf9f0efacee8b3916544a0c537d"
+        "hash": "f50b9a542d04433adee2948c5cef9eb30bdb1955653c6d11486bf9409376303a"
       }
     },
     {
@@ -4374,7 +4374,7 @@
       "details": {
         "fighter": 1,
         "frame": 15,
-        "hash": "2a753d21ff34b6d9a830222ee9234b9fde0a7a284af4c5051267d802ccf9c9e7"
+        "hash": "12ba2cd721b97087296d2b42f3f2bb1623ac4097ebe0ce70745272266221bb0c"
       }
     },
     {
@@ -4401,7 +4401,7 @@
       "details": {
         "fighter": 1,
         "frame": 16,
-        "hash": "ac25d32dee28191c2b4e4d1ba9eee672845058b60860876ca993adcdf10f1a28"
+        "hash": "dad6f8696cd2e8b1192bf18a6753291da2be9bb2c289a0679bc8b7ad0a02f6ed"
       }
     },
     {
@@ -4428,7 +4428,7 @@
       "details": {
         "fighter": 1,
         "frame": 17,
-        "hash": "e5ace647272ec6775d4fb2fba83e8da20c0b711fc84b234f55c38ff5b69bbedf"
+        "hash": "e263fedab8e4ff1436a86a68d31c72c67bdf2df4023249037e4c81d395150850"
       }
     },
     {
@@ -4455,7 +4455,7 @@
       "details": {
         "fighter": 1,
         "frame": 18,
-        "hash": "11f54c65fd625419b911a0e439d6d4cb599a92f51a3ecb1c605d2cf48358c4f5"
+        "hash": "98eb2cc0ab98d88289e3c77a02a94ad4c0cc047d0e50ce91c01e7f0ae7a394f5"
       }
     },
     {
@@ -4482,7 +4482,7 @@
       "details": {
         "fighter": 1,
         "frame": 19,
-        "hash": "246816b074b30cf75698953821037e40f60845a75f26cdab389993a319c06ccf"
+        "hash": "9a18ea2cba2cadb47ab11812fbc3e026821698f27ec3a8e5ea884b99ed8bebe6"
       }
     },
     {
@@ -4509,7 +4509,7 @@
       "details": {
         "fighter": 1,
         "frame": 20,
-        "hash": "cf0ca2b8ad9d0a0711e3a92408ca1af8698b9111a07c8ba584f169ffa99f7dec"
+        "hash": "f58e205f294acb1c068e7125e6d64f2615e3274171ef78b7b3d3745cef7d5fbc"
       }
     },
     {
@@ -4536,7 +4536,7 @@
       "details": {
         "fighter": 1,
         "frame": 21,
-        "hash": "82c9e7777f66f0c9d8a0a7c5ebc5e66ce66af4bf5aa1f8c77f7f8111e3512afa"
+        "hash": "b25c45a876509925b2b1243f63463ceada1a3db5e2915e874b509dc884010d0d"
       }
     },
     {
@@ -4563,7 +4563,7 @@
       "details": {
         "fighter": 1,
         "frame": 22,
-        "hash": "189e92208e5fb589edca0758470cdcdca4a1b71b9c9b76dfbca6358df5e14bfc"
+        "hash": "29b84c03e3eda5b9d943afa841d0b07f07586c88402d24c9cf707596b303fb15"
       }
     },
     {
@@ -4590,7 +4590,7 @@
       "details": {
         "fighter": 1,
         "frame": 23,
-        "hash": "89917102eecdf71812c711a96b7f8962b01aa58d2367dd673704057ac71b93db"
+        "hash": "c4028739a0a41da84e75a68f3ea83ee1240e688d6eceb5e537b9604871123cdd"
       }
     },
     {
@@ -4617,7 +4617,7 @@
       "details": {
         "fighter": 1,
         "frame": 24,
-        "hash": "f4ae0c4bb8c44ba207ece62cdf18ed39b9a04804b2f736959fcb3ed5d1d82f2d"
+        "hash": "f19a35e15c78997c5108d70c27702c92cf40e600a0867a834c1146ccfb4a07b3"
       }
     },
     {
@@ -4644,7 +4644,7 @@
       "details": {
         "fighter": 1,
         "frame": 25,
-        "hash": "1d57e5c4ff734094e82f93499519bec72f61a7aaa34a36f9a7f2268620a2bb62"
+        "hash": "e7a3bddce33a9019554280f73671a33d052d45af520c6b5370f10b18b17acaf0"
       }
     },
     {
@@ -4671,7 +4671,7 @@
       "details": {
         "fighter": 1,
         "frame": 26,
-        "hash": "7baabcd0fc9d3479e6ec1e3826d81feb91a113d79ea539f3301391434560ae52"
+        "hash": "4a713b941c086c9a7f7cbf260b0a86ab9e4ad2495a1b3a61bde8f834c452f27e"
       }
     },
     {
@@ -4698,7 +4698,7 @@
       "details": {
         "fighter": 1,
         "frame": 27,
-        "hash": "5687649c75b64c759173811b22fa37fecf7b8693ef994f4122fad06a1a9ea785"
+        "hash": "9f402f5e928129ddf14e357c89f25f915ba349c9ed1e4c015e220bb9967c014e"
       }
     },
     {
@@ -4725,7 +4725,7 @@
       "details": {
         "fighter": 1,
         "frame": 28,
-        "hash": "5550afb6aa8e02937eb55cb43ac7ac5ae5f3bf442256cfea3fba18562efdd799"
+        "hash": "a00d7cabd3c0c5997c803ebb7e3a9fe072097cf3595f427b1ed4a44dbc6e672a"
       }
     },
     {
@@ -4752,7 +4752,7 @@
       "details": {
         "fighter": 1,
         "frame": 29,
-        "hash": "973b44533839c5850e59e45bdd63e5b8008f1ab867420c08c1d4b75a7ef08154"
+        "hash": "4af137fffb61a2b73fae6e16cf84cc1c65c1f56ef6e88c5c20b2df8b673f967b"
       }
     },
     {
@@ -4779,7 +4779,7 @@
       "details": {
         "fighter": 1,
         "frame": 30,
-        "hash": "ca0f86627514ea36c99d3b9ea576fe76c4423a3d2741011c82589acfa412228a"
+        "hash": "83bb4fad8786c97c40e28c5477a4433307d3295f8e93f085bd60ea0160ac6ede"
       }
     },
     {
@@ -4806,7 +4806,7 @@
       "details": {
         "fighter": 1,
         "frame": 31,
-        "hash": "881094569205d712debe43a4b7d6ab72a28b811fc2e25166911c0f5b92a1ccf1"
+        "hash": "d1d5dbf020d0933848b0360f97110ca867c50c1d18deb78c5feb72cd1d007509"
       }
     },
     {
@@ -4833,7 +4833,7 @@
       "details": {
         "fighter": 1,
         "frame": 32,
-        "hash": "936e908c75a634fb61ca09edba2b3cff18b99005df6ac16a91350128797ed163"
+        "hash": "c998c172d9153b34dea05035d860642240f775686a3752b1f9af6a391b9e4439"
       }
     },
     {
@@ -4860,7 +4860,7 @@
       "details": {
         "fighter": 1,
         "frame": 33,
-        "hash": "d262a9680b9265806d29fcd6498fbe9c6a01e497ff6a2f75bf1a404d930140bc"
+        "hash": "d774e5d99c755bfc6676d2d167a57fa79d33f3c415d74bb55c82e3cb2b052326"
       }
     },
     {
@@ -4887,7 +4887,7 @@
       "details": {
         "fighter": 1,
         "frame": 34,
-        "hash": "c2d37d84157a8ca235c9dda14ec7afaa6149133b9839f85f5fb922fb4523a019"
+        "hash": "b74030c929793e3ed59db873c016fd1f87c82f07a502eb1be3ca5077339d5525"
       }
     },
     {
@@ -4914,7 +4914,7 @@
       "details": {
         "fighter": 1,
         "frame": 35,
-        "hash": "8b030dbb1c49890c6916c47c6c14a7d2530eb672d556101d7a9c5efbb8addeed"
+        "hash": "2ca8dd5c815256aacd23dd93e637fa3d15f328727deb0cafc458008c6d16c23c"
       }
     },
     {
@@ -4941,7 +4941,7 @@
       "details": {
         "fighter": 1,
         "frame": 36,
-        "hash": "4f0345017d77b13920bed440d8841fb6386946e72b3ae5ffd69bbd8b005c060b"
+        "hash": "a88a2c785215c3aeeba6d8068e689c55d06ca3dd86a1e815cc329a78289342c1"
       }
     },
     {
@@ -4968,7 +4968,7 @@
       "details": {
         "fighter": 1,
         "frame": 37,
-        "hash": "81c73d9fdbb8174cb72a569a1ba83078b14aeda97142d8302286e26d27baf450"
+        "hash": "157ddfc0c39130c078f53974d9a37389844763e90ea66059f3e3b3dd69145eea"
       }
     },
     {
@@ -4995,7 +4995,7 @@
       "details": {
         "fighter": 1,
         "frame": 38,
-        "hash": "e90cc5ad3bb71d2180558dfff1c7f1fb056a13ee33161c42d336cc58e381dbd1"
+        "hash": "f614d1c8209fa0560c9d974357e884e4fdc00c18849b497c8964cd01a97ebcd5"
       }
     },
     {
@@ -5022,7 +5022,7 @@
       "details": {
         "fighter": 1,
         "frame": 39,
-        "hash": "c33b5a2d0a541a253f1dd12085abbd16538af4b41ad30b6dc806d56f5bd5f5fc"
+        "hash": "613edf5fc4cc94c35db2f07d080d5b1d1a8ca1d9411220ea49e6293f998810b7"
       }
     },
     {
@@ -5049,7 +5049,7 @@
       "details": {
         "fighter": 1,
         "frame": 40,
-        "hash": "0a578965664aca761bfd5a2e77716a7df48280d3858ab1203773b95973a4b265"
+        "hash": "cea1f11f564d724050ffab34ef5328479d8e0fd11db9efdccdc8ff83c253bffb"
       }
     },
     {
@@ -5076,7 +5076,7 @@
       "details": {
         "fighter": 1,
         "frame": 41,
-        "hash": "81a9023281dd32fa131268dcfe3f8da791e54c5ab7ca86faced85f0a342978cb"
+        "hash": "56178f5e8b7c62a9441a68d799279dc23b58761f8a615a87df3888ebcaefa13c"
       }
     },
     {
@@ -5103,7 +5103,7 @@
       "details": {
         "fighter": 1,
         "frame": 42,
-        "hash": "00c1f78450ca65fae7e29c56335c24d2ea31607c9653d400fb18f176e32989e8"
+        "hash": "94f8b9c792ea3a30f101af3e718a1f46699b29d93389b120f1bdec6642ba8eff"
       }
     },
     {
@@ -5130,7 +5130,7 @@
       "details": {
         "fighter": 1,
         "frame": 43,
-        "hash": "4cb28956c454164bae06016d2759295caf4639e046047fca341482431c916c64"
+        "hash": "2bd15740bdec30a2d67dd181daabf78f93dce9dca4bee6b22d95b7bc1a88657f"
       }
     },
     {
@@ -5157,7 +5157,7 @@
       "details": {
         "fighter": 1,
         "frame": 44,
-        "hash": "43804108b9f101535ad2bfefd883b1033bcee2dfc5d82e8140f6b8bc68d7161f"
+        "hash": "218e25db60570e25a027279fcb84fde2f0611e54bb2d95a5f5c09e6cfed170bb"
       }
     },
     {
@@ -5184,7 +5184,7 @@
       "details": {
         "fighter": 1,
         "frame": 45,
-        "hash": "faf59cc73cd3855b024f54c2e326bee66ed667ec1784e823f7efb155a5a44ffe"
+        "hash": "8a52e5f4ca6b14bb03e3014bdc3752a9dccba5a26d4818abbc227e0cbfcd4658"
       }
     },
     {
@@ -5211,7 +5211,7 @@
       "details": {
         "fighter": 1,
         "frame": 46,
-        "hash": "f2db97f2d164487ab94fbd1933d0c4a60c8ba5e7157120d910491839a088b6ea"
+        "hash": "32dcd0e5b8caaefb553c9163a2dc11d7378e752eeb6113c8c4410047013f908e"
       }
     },
     {
@@ -5238,7 +5238,7 @@
       "details": {
         "fighter": 1,
         "frame": 47,
-        "hash": "6bf4c543895abc87db13fdd585c4a877eb611b3f7d1668efb1d396777e69d939"
+        "hash": "678bf43fc86a8a54850d857ac2f13d0185b8b99e766523a38d8726b0ed2be8bf"
       }
     },
     {
@@ -5265,7 +5265,7 @@
       "details": {
         "fighter": 1,
         "frame": 48,
-        "hash": "1293635a26bce60b232fd5d910c7aca73f2b4eadef23bf2ebd716f5ad1788e26"
+        "hash": "9f8679f3da9dfe1bf3e5ceec886b475341460b86e055addcf3d53de8c730287c"
       }
     },
     {
@@ -5292,7 +5292,7 @@
       "details": {
         "fighter": 1,
         "frame": 49,
-        "hash": "ee9ccfb63b282129a5f2e1c3380653ca06b01da95b78727ef35359862c3735c5"
+        "hash": "a300c06d885af8d7b706d65e9975942811973b423a120cc8c4355d33c8df5c97"
       }
     },
     {
@@ -5319,7 +5319,7 @@
       "details": {
         "fighter": 1,
         "frame": 50,
-        "hash": "d879c640172c87c9992b2e62ec4c58577c94d1a6a6548faa89c51a1588bedd85"
+        "hash": "b00fa466dddb70c625265ea9a6a7de365d3993f0ca3cd8b81961a88aed48447e"
       }
     },
     {
@@ -5346,7 +5346,7 @@
       "details": {
         "fighter": 1,
         "frame": 51,
-        "hash": "00f4d1f787b9c2a5a842b8c71c2a0547af6b1dfc3bb4fd8911cc4e1d510175e3"
+        "hash": "cb574cdfd622d473c318c90c93f5cc8fc42489bce63f8acf8b7046f7da9f3358"
       }
     },
     {
@@ -5373,7 +5373,7 @@
       "details": {
         "fighter": 1,
         "frame": 52,
-        "hash": "93e62ea887437fcb5183f424b3c2990d9eb1cb5a894a566b82c3e0dbd97689f2"
+        "hash": "8a31cb251c4fcf33b240256fe7ddb5e5f0e0bd90ba03c685f33d0c4522cc6b01"
       }
     },
     {
@@ -5400,7 +5400,7 @@
       "details": {
         "fighter": 1,
         "frame": 53,
-        "hash": "feb443e88b6d692bfa4ddccee7b97fd56417509318a4c001b886421a8b85cd21"
+        "hash": "cf210c6cfb1491d7f972924342ceca0c6c429d3e5c764c13a5ba1d6c488b21ce"
       }
     },
     {
@@ -5427,7 +5427,7 @@
       "details": {
         "fighter": 1,
         "frame": 54,
-        "hash": "1ba0208903740ada8784ee8063114291d0b05847959a323e0c77b6291de34760"
+        "hash": "0d8e7e0af250d068d8d88031ca5c7357f4363b89c8e94ae3b58069df54239786"
       }
     },
     {
@@ -5454,7 +5454,7 @@
       "details": {
         "fighter": 1,
         "frame": 55,
-        "hash": "016070b2e47cc33bf08740ce79ea28e050db857a187b5f0f75c217e12255796f"
+        "hash": "51f46fef08932cb6370ff0aa60a2421898cc60b097d3adc58a9db87cac810baa"
       }
     },
     {
@@ -5481,7 +5481,7 @@
       "details": {
         "fighter": 1,
         "frame": 56,
-        "hash": "601d8af4421d53dc05e2a72e8489d11a7802f44f4e78222e5e103d458db14aa4"
+        "hash": "d38c753d692035773440a90fe72bf0d55f6783b8c43beff83705b67de10abfd8"
       }
     },
     {
@@ -5508,7 +5508,7 @@
       "details": {
         "fighter": 1,
         "frame": 57,
-        "hash": "c9ee29e34b75c2918cb2908119f135b5210b26246c3af939d248868a7b7d3faf"
+        "hash": "cbedc88f3774074a8cba031aef0e587b6830749415e07609273ae0476fbfe81e"
       }
     },
     {
@@ -5535,7 +5535,7 @@
       "details": {
         "fighter": 1,
         "frame": 58,
-        "hash": "e168e03221dba6d727fc8c84a006f04e8c988756116932caee8f1f98aad0bf0f"
+        "hash": "b3e7d7fe4768e071aaeda78ce638ebc01fb0ba58cd06d3447364e190caa78474"
       }
     },
     {
@@ -5562,7 +5562,7 @@
       "details": {
         "fighter": 1,
         "frame": 59,
-        "hash": "d48f6e41b26339fd66ba532f2a4f1c9d57685fce0e274d2775bd375dbb4537b8"
+        "hash": "7f613d3be337eb20bc27bfd1388b13825a86e7e6f8302ebc7cc7017bf7dfc391"
       }
     },
     {
@@ -5589,7 +5589,7 @@
       "details": {
         "fighter": 1,
         "frame": 60,
-        "hash": "c7e086638cf52401327def2c521cb46b592e3294100859b946644b37c138d47e"
+        "hash": "cd75acd5eee7d56d552c499e85d98dd572ff54c76dca282f3c670fe13d119390"
       }
     },
     {
@@ -5616,7 +5616,7 @@
       "details": {
         "fighter": 1,
         "frame": 61,
-        "hash": "7c3498c162836bf63abc70d47b4616d14dddc0ea9e1850a068477c1fa0192cf6"
+        "hash": "4d9a97519b2297aa5728ad09a758e822cae87ebda988dd7cc310aae8ada20583"
       }
     },
     {
@@ -5643,7 +5643,7 @@
       "details": {
         "fighter": 1,
         "frame": 62,
-        "hash": "260bd46544b47bf3cf3d041f218931c6ddc26bb47c614e5ffc4cccd20d8769b6"
+        "hash": "3fc9449f499159adffc9d9d9c11e2e84b7e4de0a52dbb433db5152f9c686ef43"
       }
     },
     {
@@ -5670,7 +5670,7 @@
       "details": {
         "fighter": 1,
         "frame": 63,
-        "hash": "03c1941b3cbd6b6a28b704586320da6fc7bfbcde4b90dd1cc22f89f08762bf90"
+        "hash": "ebcbca135798e732cd5bfaaff7d115a4dda07c3ff30be28ea52d0b01f28777a6"
       }
     },
     {
@@ -12859,7 +12859,7 @@
       "details": {
         "fighter": 6,
         "frame": 0,
-        "hash": "d643fb77159c784880c9aadddbd57321b362a6fd9e8fc0769007467de55365ed"
+        "hash": "ea3006762db6c092c04a2cdb859a1011acc42864e5adbbd4d27adcb1a9ca210c"
       }
     },
     {
@@ -12886,7 +12886,7 @@
       "details": {
         "fighter": 6,
         "frame": 1,
-        "hash": "c62e0523cac2d754ef75ecfa4060fcb8aa59413f30aba293360b088b619e3e1e"
+        "hash": "4af00261257fe2dc64895cd39d7c66567c16c7669290a594165aecf4d2814695"
       }
     },
     {
@@ -12913,7 +12913,7 @@
       "details": {
         "fighter": 6,
         "frame": 2,
-        "hash": "0604c69ede0371a867e81ff7a061ec2c44586a2c11f50a69ad6ba39554072cf4"
+        "hash": "1bb27c60416a0887f78c4119064f802b6f8a216704dfb735cf3adc9f6584093e"
       }
     },
     {
@@ -12940,7 +12940,7 @@
       "details": {
         "fighter": 6,
         "frame": 3,
-        "hash": "774a10e33f0f1fc1b44b30d7751bce5efbb561b00dde1554176f1c908780cbe5"
+        "hash": "9819ea43a67c543253cae89aeb38b93c2f2166623b3e7cbf584b0d6345884813"
       }
     },
     {
@@ -12967,7 +12967,7 @@
       "details": {
         "fighter": 6,
         "frame": 4,
-        "hash": "2c21ed976248ef1051bc1e757e9a54b4910da27794c0a5e1b4075ca4af3d9f03"
+        "hash": "6141f7832ae27975e7e945a97968551fe7049b4cc614ca3f20238a31ed289776"
       }
     },
     {
@@ -12994,7 +12994,7 @@
       "details": {
         "fighter": 6,
         "frame": 5,
-        "hash": "9d49fcc7ed956a703b8da7699903682164e5dbca12768d59d6c5cfd18f1a7f24"
+        "hash": "d7c24683697c76d80ed2a8f8826f3e44f664efbcb1fae25149e2ff2cba284d3d"
       }
     },
     {
@@ -13021,7 +13021,7 @@
       "details": {
         "fighter": 6,
         "frame": 6,
-        "hash": "3a091c6be483ead317e4cb9e52e6d7e209e4dc89be20d5e87a62bd8dd5a7b757"
+        "hash": "9d6c9d8ca37eeada60481d83275247b7acaa69d698ade8c8896dc95a82770076"
       }
     },
     {
@@ -13048,7 +13048,7 @@
       "details": {
         "fighter": 6,
         "frame": 7,
-        "hash": "e6d674cefe4e6cfa298ecdbb48b477e21b874a6324cf6b075057141d35b96150"
+        "hash": "ef5f788ea60c3308b3e7d18a1a919a447567943f3b7be8eccc39c0a7ffafd76c"
       }
     },
     {
@@ -13075,7 +13075,7 @@
       "details": {
         "fighter": 6,
         "frame": 8,
-        "hash": "1a4cc05055c5fcf3724a509efe09cea4c303f0d88e20dbd7606a919ce69da811"
+        "hash": "4a18c54de009ad5a9a279a3a46c5399afb6b04df660e906a3600b699355b6ba1"
       }
     },
     {
@@ -13102,7 +13102,7 @@
       "details": {
         "fighter": 6,
         "frame": 9,
-        "hash": "96ebe74941021b27057f684075971580c93916b648dee2ad73f0baeb254f6659"
+        "hash": "b6962dbdb1388e4fc130caccc8c327501e6f224d16d683b5ef9d6163dc7b752d"
       }
     },
     {
@@ -13129,7 +13129,7 @@
       "details": {
         "fighter": 6,
         "frame": 10,
-        "hash": "3a13a14af4c4015183bff02b26405dd30bd37df60cf206d87c1fc8fe038f4b1f"
+        "hash": "dcc7aeb54990d9d2a912c457c154d0ad722777241249bf0846b671ea009effea"
       }
     },
     {
@@ -13156,7 +13156,7 @@
       "details": {
         "fighter": 6,
         "frame": 11,
-        "hash": "67ded212cd0b98a9a304cc353ba8f546f0462182d7ae624bebc93c671fcab586"
+        "hash": "cf405eab123826c7baa850181bf00a248e00fbb3f37c1eac39b6b821650918a7"
       }
     },
     {
@@ -13183,7 +13183,7 @@
       "details": {
         "fighter": 6,
         "frame": 12,
-        "hash": "64f77e83cb0e36a8e66cd81fe58244097bda55292c43c7a9aa7e900af0088d40"
+        "hash": "ac786d33963063c3796db39d538db88e36647c0820d7cbb192163f7a2eb05900"
       }
     },
     {
@@ -13210,7 +13210,7 @@
       "details": {
         "fighter": 6,
         "frame": 13,
-        "hash": "94c73815c14bc9299b8a9c8d162476883177c1e37dee40592ed39667e4b693a4"
+        "hash": "d3155a62e2c590564a10ab290047b4babed43259f148f304dd553f6d00b857e4"
       }
     },
     {
@@ -13237,7 +13237,7 @@
       "details": {
         "fighter": 6,
         "frame": 14,
-        "hash": "7bb5edef1e4b66a8fd5e160b0105ac05fe14afef7b207fee92a03f69a5202a08"
+        "hash": "da320a6c773cd3aee129c8aa666522eee3783567c52b9b4db462724c68b258bc"
       }
     },
     {
@@ -13264,7 +13264,7 @@
       "details": {
         "fighter": 6,
         "frame": 15,
-        "hash": "fd80603322093cc5b5dddbd2b6191b19753b806a2b317ba009f0897e8b6afb5b"
+        "hash": "3c7a40887ded9f1892ee3fc94ed91187ee5527545057610782f1bfaa1daec02c"
       }
     },
     {
@@ -13291,7 +13291,7 @@
       "details": {
         "fighter": 6,
         "frame": 16,
-        "hash": "b867a084359bac3ef48c0c2b42a4df62f69f1726b669c1e121cc09d239f102da"
+        "hash": "f3d77919f3879cddf89f8a1395acc1dcb805afe63959b6f3b5dd67af08317a99"
       }
     },
     {
@@ -13318,7 +13318,7 @@
       "details": {
         "fighter": 6,
         "frame": 17,
-        "hash": "4eb9ef9d2901dfb399657797967b56cb69c01c88605beb5b0d1d142dda99a4f3"
+        "hash": "fdf26fded1c90c83a7313bf4d999dda904835b9fe7068b62d28e6fe088d01268"
       }
     },
     {
@@ -13345,7 +13345,7 @@
       "details": {
         "fighter": 6,
         "frame": 18,
-        "hash": "7b18f15b84b581509f2870c6c5c4b9331c0e9a2ac5300db3711f63585b85a307"
+        "hash": "91a3aff0c1956e85807b74b3f488c85bac8da7930fc4446893c6ca161d3c2d99"
       }
     },
     {
@@ -13372,7 +13372,7 @@
       "details": {
         "fighter": 6,
         "frame": 19,
-        "hash": "d2bd41133beb05561a5bbb92c61e4396eec5825eac34870b75c05f1f936f4733"
+        "hash": "2332f3295f4bc9041f379503a96af779dce55d9e0eebcd498e9b87b82b44d5b4"
       }
     },
     {
@@ -13399,7 +13399,7 @@
       "details": {
         "fighter": 6,
         "frame": 20,
-        "hash": "fcc0c876cdbaa4cd1612a3bf7f4a2d8427acbb60861035bb39fd1e0fe744dee3"
+        "hash": "4daed68dca78b656b0dd72a50aaed525637cd5946c409ba8e7ec089857f98fd6"
       }
     },
     {
@@ -13426,7 +13426,7 @@
       "details": {
         "fighter": 6,
         "frame": 21,
-        "hash": "60fe4d46561db4cd312afb27e015ccf19cfe1c64de7b217046414ab19ca8d5db"
+        "hash": "2064237356f3e5c0aef37f7571db2b0f897d5cf960af36c51235f95322a34446"
       }
     },
     {
@@ -13453,7 +13453,7 @@
       "details": {
         "fighter": 6,
         "frame": 22,
-        "hash": "c72e0239c70dee201d1d1173aebdac6ebe9add0431faf7cb06f00099c7850870"
+        "hash": "0cb710fac53504b8dbff0a3b89e2920357b17df66b477eb235425b519b1d5807"
       }
     },
     {
@@ -13480,7 +13480,7 @@
       "details": {
         "fighter": 6,
         "frame": 23,
-        "hash": "6b6318e0db379b6adcaa59f03f0316fcf1f5682c147df817af075c39c09bb6ad"
+        "hash": "49579e174e641903b9e57d1f3a8b1aff2c65c62819dfeeba3fb13c06b379e132"
       }
     },
     {
@@ -13507,7 +13507,7 @@
       "details": {
         "fighter": 6,
         "frame": 24,
-        "hash": "8e04c1b4ddaffc2ca4531530de66a28da3aa8bf5a7f2c8ff4beef5bee783ed6d"
+        "hash": "d5eafc4d1079f8e75f5e3f49776d691731d66eae34942ac3e29b36f938d8ee02"
       }
     },
     {
@@ -13534,7 +13534,7 @@
       "details": {
         "fighter": 6,
         "frame": 25,
-        "hash": "8aafacbbf9d2b1b8dc9dac10d7ee6910d265e6a4c228664a83ebcf4bc66a7018"
+        "hash": "5ab8b9cea8eeab37d831368c2c27cb2efa94d2b2e92de6adf442e4b1f7e9c9ba"
       }
     },
     {
@@ -13561,7 +13561,7 @@
       "details": {
         "fighter": 6,
         "frame": 26,
-        "hash": "4ca0c66592902f7f45d59338c1805467b5a7cb1308600a1c90bd302a04543fa4"
+        "hash": "c78edac4be9da10db069c902eed2b549f7be7500010893598b2e01fa7cf41970"
       }
     },
     {
@@ -13588,7 +13588,7 @@
       "details": {
         "fighter": 6,
         "frame": 27,
-        "hash": "7c9db9ce6aaad9a8d313dcb7d0dea785b080d8430fb74b58aec1e767e572e36a"
+        "hash": "ca7107c33e1007ac5d8cf61ce516525b4bd616ae0ffb12f78b6e6bab79a41ab2"
       }
     },
     {
@@ -13615,7 +13615,7 @@
       "details": {
         "fighter": 6,
         "frame": 28,
-        "hash": "cc630f7fe0b2142f809ef17f6730c5756faf189647adb2fac9f6f9398ceabe5f"
+        "hash": "0f9b57e526d313993cd05affd07641b9f6f2e300c4cdb270fc5553f490d2fa87"
       }
     },
     {
@@ -13642,7 +13642,7 @@
       "details": {
         "fighter": 6,
         "frame": 29,
-        "hash": "ffbfcfb71c280306103cfec56017c05e6cebec6b13d2104d66c70049bbaf351f"
+        "hash": "be2637f443268bc75fa67dc42f35dad55c4d9ebdb20305bdf8bafb64b2894789"
       }
     },
     {
@@ -13669,7 +13669,7 @@
       "details": {
         "fighter": 6,
         "frame": 30,
-        "hash": "210d35af81beece0100e1d8aff8fe5c0ca2c954b2ddee61e41abf748b4484c72"
+        "hash": "2b55da1ac43679bcbe5590027f9c84a11d0478bba10f7bded551ad3dc008a526"
       }
     },
     {
@@ -13696,7 +13696,7 @@
       "details": {
         "fighter": 6,
         "frame": 31,
-        "hash": "5dce563523c4d6b7fe7a176ef0719d9e23ba7ade81edc5c7578ec35848c0dbb1"
+        "hash": "59d5b97f64f4c6e9c62eb8ae22a18017220ad63d1e3e2fe4a746e26c700488df"
       }
     },
     {
@@ -13723,7 +13723,7 @@
       "details": {
         "fighter": 6,
         "frame": 32,
-        "hash": "6e196153466bd680737669cf4af11a21994a474d4e36781a7f35471be2d6f680"
+        "hash": "ff1483d363d3366dc92e17a6d814a096f6b07aafea53d284bf9db7e544990d41"
       }
     },
     {
@@ -13750,7 +13750,7 @@
       "details": {
         "fighter": 6,
         "frame": 33,
-        "hash": "7b9bd9bb4d5521068269c0e6caf0bdc0feafc306c1edb0eeffbb5597f0ce6c25"
+        "hash": "a642662bf87672972e87c97abfd7ea70f7cb64e7c9b8ebe02a36d1e3ca50345b"
       }
     },
     {
@@ -13777,7 +13777,7 @@
       "details": {
         "fighter": 6,
         "frame": 34,
-        "hash": "71c539010eb448771fb874928460994e50221a93d08d448b4a7999fae6bb0c2a"
+        "hash": "783c107f7d8ace5948867dfe17b18d99dadcc474063a1a5cdf0f064bb2e6fab4"
       }
     },
     {
@@ -13804,7 +13804,7 @@
       "details": {
         "fighter": 6,
         "frame": 35,
-        "hash": "25980adfca01269bc8925140783c2acf2142c9703560ab85855f75dd15567619"
+        "hash": "9979418b3eb721c148f680344c6d4de8915440feb9741b593fbdaafab7d3f362"
       }
     },
     {
@@ -13831,7 +13831,7 @@
       "details": {
         "fighter": 6,
         "frame": 36,
-        "hash": "1a6e8802e9b61fdac034b4c8e256dc501d8419b18056e723718ddfc962ba2113"
+        "hash": "16e8b0c10762cadd300491c74ad744dfe2e0efbec7d3361124956a73e5df93e3"
       }
     },
     {
@@ -13858,7 +13858,7 @@
       "details": {
         "fighter": 6,
         "frame": 37,
-        "hash": "ad830a723371ed2d715cfdbcb2a05df553e63391da4e9a7811f1cc25073630b8"
+        "hash": "ae44cca6cdae4b92a224d277903e759a08e11585823e7d57472ddfba61a168cf"
       }
     },
     {
@@ -13885,7 +13885,7 @@
       "details": {
         "fighter": 6,
         "frame": 38,
-        "hash": "a1fab1c6a1c0404e5bfefe78f3b8b03b9fc6c95819286dc45c15b7051bf50dc2"
+        "hash": "2aab7ebf73784086725bf5529404ba9fa5262188e12cdfc2e16c3ed3727eec44"
       }
     },
     {
@@ -13912,7 +13912,7 @@
       "details": {
         "fighter": 6,
         "frame": 39,
-        "hash": "16b20dec9c818c8ddd9a3e5f21d58a3eceaa999022952cc2ec4f31eb717b8fab"
+        "hash": "3819f7d8403f163a1ede0cd264a3a3c42e6cb34a40959a636d70533c1668bb15"
       }
     },
     {
@@ -13939,7 +13939,7 @@
       "details": {
         "fighter": 6,
         "frame": 40,
-        "hash": "5cee5e6f00336ffb3db4c5b078e2606aaffe9e5b8acb9776a84867d3ddd72dde"
+        "hash": "4a096cc39204c1bd259a54cf72d65bb2680d8983b9dd040045bc1fbac20a4753"
       }
     },
     {
@@ -13966,7 +13966,7 @@
       "details": {
         "fighter": 6,
         "frame": 41,
-        "hash": "73d8fc5b1b0e84d18bfb8f2d6a49cc36557a0ce81b67e71ce679f4ffc4a7f663"
+        "hash": "804aa4a94813c32b0dfe49d8d89ec6f3aa3ab2e48e2d313919c5ed992591c762"
       }
     },
     {
@@ -13993,7 +13993,7 @@
       "details": {
         "fighter": 6,
         "frame": 42,
-        "hash": "2700196ff6ab1068361a23b623fe030e8e74be3584e9484d1eeb4d907520a889"
+        "hash": "b1d07959d5f7c3ca6b2b2b703b903587bbf4234b1a89b6f2bdcdb7e3f23b4d28"
       }
     },
     {
@@ -14020,7 +14020,7 @@
       "details": {
         "fighter": 6,
         "frame": 43,
-        "hash": "0f42add83bdbd3f99b36a4c312cd61c4c7c1667d643022649750f6d6e5831b8a"
+        "hash": "88e8e6fb5829709240c9e1582d9f68b221d0e571498c2a063713fdfbbfd346d2"
       }
     },
     {
@@ -14047,7 +14047,7 @@
       "details": {
         "fighter": 6,
         "frame": 44,
-        "hash": "ead4805935a4124691196bcbd4a377a5563b70ab96e6e7770cf3831a8421165b"
+        "hash": "2fae3b1eb7b0171faf01d663ef6ba3ac510acd63e0b498cccbe01bc6f322c3b4"
       }
     },
     {
@@ -14074,7 +14074,7 @@
       "details": {
         "fighter": 6,
         "frame": 45,
-        "hash": "d10c8a575b5236da1f688b7b01655e31ccdc3384ce654b1cb15505b54719f493"
+        "hash": "80e0455294ce254e727636d61c7892fcca8a47fd22cbf1fe92500e3b800278cb"
       }
     },
     {
@@ -14101,7 +14101,7 @@
       "details": {
         "fighter": 6,
         "frame": 46,
-        "hash": "066f5fce34a80186a821b007dfe919c4dbaa8369d076591094408035308cad2f"
+        "hash": "58d58b4c23fc95d54390b9a5147a2ad68e55748361a9d108ab652c5b6db41be7"
       }
     },
     {
@@ -14128,7 +14128,7 @@
       "details": {
         "fighter": 6,
         "frame": 47,
-        "hash": "54548b12f981a55006581c00fd0e9b3997ce730112e64c941f9b36ce26e938e5"
+        "hash": "243ab4dec9686a5fe478a02c6dcb4f602fcd820c59969b8f3c6c972bd7ea6713"
       }
     },
     {
@@ -14155,7 +14155,7 @@
       "details": {
         "fighter": 6,
         "frame": 48,
-        "hash": "9f1b519587287f3b44c43d444cea062314ff8e2ed1fb7f21899af99ac566d757"
+        "hash": "85c3fb7d15ea056a6ce2f08be81636880d1813808b0ea4fa40a4376fab5feded"
       }
     },
     {
@@ -14182,7 +14182,7 @@
       "details": {
         "fighter": 6,
         "frame": 49,
-        "hash": "6f83627a2011fb5445db1732e9fc5513e2843a58f5f3415220cb9d913757ab74"
+        "hash": "456ec9b08323453e93ee24416087899e9ca13d45f054f1c0fc964a24e6fb1550"
       }
     },
     {
@@ -14209,7 +14209,7 @@
       "details": {
         "fighter": 6,
         "frame": 50,
-        "hash": "b0689c74639e40fa3b6cca6bcff815424f7dee967a1ec87019c21f47168a96de"
+        "hash": "aee5094b3e1bd5457aef9ed77811c9fcc04f744c3d5557f01640a857de32b5e6"
       }
     },
     {
@@ -14236,7 +14236,7 @@
       "details": {
         "fighter": 6,
         "frame": 51,
-        "hash": "5d86b7e6950f3e44a79cd0eb080dfbd0e7e6b91b8a051e01b12dcb7c65af39aa"
+        "hash": "1e74d90bf430763e7575185beebf446ec72e0289a90241547e2c16a12878ab3c"
       }
     },
     {
@@ -14263,7 +14263,7 @@
       "details": {
         "fighter": 6,
         "frame": 52,
-        "hash": "97dbdc99cbfc77388422aebd7a477fdd25890a4800a16809f037b657bcdcdf1d"
+        "hash": "daa40e1a4a517a83ace6ec0c76b3817ca2c892a6afeef57de441be1326f5252e"
       }
     },
     {
@@ -14290,7 +14290,7 @@
       "details": {
         "fighter": 6,
         "frame": 53,
-        "hash": "e7052faf411344425772da08e2d1b7967afc654d21301bb5c0938d793515e470"
+        "hash": "9ceb26a88645d2f283ebdec77c7a037ab7040b0eef18fc2a92e3856ac9c06d73"
       }
     },
     {
@@ -14317,7 +14317,7 @@
       "details": {
         "fighter": 6,
         "frame": 54,
-        "hash": "d2238728fb0106e0456dfbedf0988e15ba905e0ac1184e7e169f8ce41483313b"
+        "hash": "645c8495d5edfc0f487837d38449a22646cf397fd9935b99972e7e9772e7d6fc"
       }
     },
     {
@@ -14344,7 +14344,7 @@
       "details": {
         "fighter": 6,
         "frame": 55,
-        "hash": "e5a960ba6e84b3eabe379446ceb43c9ca1a6564395f938a6ae790cb6dedd41c3"
+        "hash": "72639bdccd5990dd2c0913c536722f85793796fb46beb097d21bd57f92f36eaf"
       }
     },
     {
@@ -14371,7 +14371,7 @@
       "details": {
         "fighter": 6,
         "frame": 56,
-        "hash": "2c8b29e007051e157a46cee4524943c52929b6827e61bb3f0bd1a26f41e0e5d1"
+        "hash": "aa3a1092da64629d4188ba24ca53b7aa7846913ce4c499743e9b5bf35863fa57"
       }
     },
     {
@@ -14398,7 +14398,7 @@
       "details": {
         "fighter": 6,
         "frame": 57,
-        "hash": "88d0e89e9d7412cc7ef24b7d808551725c59780f3a260b1ccdc7e253957a89e7"
+        "hash": "546634a02e8236538c699c8563b0ea60025b2e044d1083a9650e5312bea2696c"
       }
     },
     {
@@ -14425,7 +14425,7 @@
       "details": {
         "fighter": 6,
         "frame": 58,
-        "hash": "e6ac417e168990e6386d1c95f8b558eaa89284bd9597eed38f499745b016709e"
+        "hash": "21d24023c657123eabef006449553bcbe709f51b56798450df2fbddcee934c96"
       }
     },
     {
@@ -14452,7 +14452,7 @@
       "details": {
         "fighter": 6,
         "frame": 59,
-        "hash": "ddf38e0acdcb18ec93e9f33dfd25dd477bb804e3a359d91842fdc42542bdbce5"
+        "hash": "232404a1b7cd7671832be7f3a68096002211ce1da6ee0caa64b70ad10a2710f0"
       }
     },
     {
@@ -14479,7 +14479,7 @@
       "details": {
         "fighter": 6,
         "frame": 60,
-        "hash": "395255decfbca75b637edfc4a1938ee83a4b6b3c68c8537917ddc9103fe0ae48"
+        "hash": "c8f58400c7605d9776b0da6f4edb4c4fed26245c3c0e23a598bcc2449b547438"
       }
     },
     {
@@ -14506,7 +14506,7 @@
       "details": {
         "fighter": 6,
         "frame": 61,
-        "hash": "53c34d52beda5b0a690e172551ed8e963b3fbeb773a59c47bf2605226f892b4a"
+        "hash": "0891d4b79b9949c1fa7299ffc41d8a98fe5137a411726950766fe295bcd39d95"
       }
     },
     {
@@ -14533,7 +14533,7 @@
       "details": {
         "fighter": 6,
         "frame": 62,
-        "hash": "623c45fef60a515b13c013915efce5eb2656b82077dd721d5363b061640422be"
+        "hash": "f60458ba38e30737b6630e6d1b6b0ccf6e71bc9667509450c8fa2a817b41cac0"
       }
     },
     {
@@ -14560,7 +14560,7 @@
       "details": {
         "fighter": 6,
         "frame": 63,
-        "hash": "10796581cdab0aff3fd859baa8e723b8a8499d05c4804dd32a4f15240521bda6"
+        "hash": "21654083946ad257cbef89c6d135d3592ce82509ed7f12be7659639d0250c718"
       }
     },
     {
@@ -14637,7 +14637,7 @@
       "details": {
         "fighter": 7,
         "frame": 0,
-        "hash": "a139163b16f721eaed9404631dfba56459f4ced831e64fbc1dabe12ef99b6918"
+        "hash": "17e44d8f7b159bade575708d8c171cab5a5541c3d7252d867e4505d0e000e041"
       }
     },
     {
@@ -14664,7 +14664,7 @@
       "details": {
         "fighter": 7,
         "frame": 1,
-        "hash": "8ca1a74df4e8decd13b3e6482e656efb0b6fc2818ccd96b8dcfd6d1203b25cc1"
+        "hash": "45368673dcc2de29b7b43f51215a66491c50a32510f25a0ca64ec2e96e61fc90"
       }
     },
     {
@@ -14691,7 +14691,7 @@
       "details": {
         "fighter": 7,
         "frame": 2,
-        "hash": "96a6e3f1be3b7e6713f1f933df96863bc635f9e4f30b8233af3d01ba3bb2c7c3"
+        "hash": "6e633d18c5c4189f0d6ebf690821a4114c944708fc0fc8f0d6c6179a69f2d544"
       }
     },
     {
@@ -14718,7 +14718,7 @@
       "details": {
         "fighter": 7,
         "frame": 3,
-        "hash": "0c973fe79fbdd3d0d451b819100dd0526316e19b3089db0dbe5345b83ce9b652"
+        "hash": "6e634ef72bf76e336ed35df6a6e178793306630650f9ed4def014354b6476d81"
       }
     },
     {
@@ -14745,7 +14745,7 @@
       "details": {
         "fighter": 7,
         "frame": 4,
-        "hash": "b5f0c66587da52b7faded3a2af3a61ea74ff408f9e87cfd7f52dd9d30cfeefbe"
+        "hash": "084726f84df493778061bcaadf304c67e0ee76afb9abe530c0de90201fc142dc"
       }
     },
     {
@@ -14772,7 +14772,7 @@
       "details": {
         "fighter": 7,
         "frame": 5,
-        "hash": "250401863a643399490a3f9de7fdc3f9575d1266b7a309a0b5c55964daede424"
+        "hash": "952a284b116c8679ad67176c2bdc0d5c29623bf79385310caf5a9dd375dddfd9"
       }
     },
     {
@@ -14799,7 +14799,7 @@
       "details": {
         "fighter": 7,
         "frame": 6,
-        "hash": "669f4ca3b7ef92ac297f3927d04faa2452a823eee665175ee203e989e62d9753"
+        "hash": "66075f7b312f6da522ed3498e298e54c5d485a06d2355acf23b9daefbd3bf31b"
       }
     },
     {
@@ -14826,7 +14826,7 @@
       "details": {
         "fighter": 7,
         "frame": 7,
-        "hash": "72aa87c3f58414033fffd217066071e6f9136acf7e4e7838ba6703ce31f7be5a"
+        "hash": "83fdda57f60f60216ed925dd7c25404a0b4c69f7f0132550fbb0a851ddc4aa7f"
       }
     },
     {
@@ -14853,7 +14853,7 @@
       "details": {
         "fighter": 7,
         "frame": 8,
-        "hash": "4fbb489de383e02a13cc0557fa1d7a1ac685d0f83a8fb05036a3e7762f02e932"
+        "hash": "5d64a360f34aa665b58a35a7223bfb5364e76fb4e8e634eb87875e2c834b6418"
       }
     },
     {
@@ -14880,7 +14880,7 @@
       "details": {
         "fighter": 7,
         "frame": 9,
-        "hash": "5e4d900047f4462fa9142ed2c299804fa71eb43b2a5037cda66713a8074cf9aa"
+        "hash": "eb8a53e855a1912cf212bdd10de1b291ccd0d6198dd7968454e8fc255133e61b"
       }
     },
     {
@@ -14907,7 +14907,7 @@
       "details": {
         "fighter": 7,
         "frame": 10,
-        "hash": "995f496a72c698545dc4b2ff62955922a663f4903457a4ec69e4988f7bc47502"
+        "hash": "d9dfbbeefa68e5df9247522bf6ff3843e755780ca9840dea164bd32e05156a0d"
       }
     },
     {
@@ -14934,7 +14934,7 @@
       "details": {
         "fighter": 7,
         "frame": 11,
-        "hash": "a2a4038a2648835974556c227de8f01fa77a61ef7745c7601e9a2760a1f23552"
+        "hash": "8b4bdfadbafaf25f3f532581cea5344f3f050405773d4dc322a5a32c13115f8b"
       }
     },
     {
@@ -14961,7 +14961,7 @@
       "details": {
         "fighter": 7,
         "frame": 12,
-        "hash": "7192b7cde1ac7fde467374b7cfcdf09d6b1d6c8e9298328de2e327e0db68da39"
+        "hash": "5163b7a5901958c3cb0ba6d4a01533cb4e0cd56722a43933cd37a98a42b35510"
       }
     },
     {
@@ -14988,7 +14988,7 @@
       "details": {
         "fighter": 7,
         "frame": 13,
-        "hash": "3dde390b0a2513ea30b4a12e6e5508718df3c9100681f472059774580d865962"
+        "hash": "fa5ae5a25447d7b9d035fedfd933e9b83dc55f887bf162db41333dfcea90f848"
       }
     },
     {
@@ -15015,7 +15015,7 @@
       "details": {
         "fighter": 7,
         "frame": 14,
-        "hash": "65ace08c4d9dc226526fdd76751c23e6fc9372f1ca3d8065e7698cb15c9ae113"
+        "hash": "7e6c4b273d9ec87512a373b1c0e3cadbdf828d26e80851d88bdf804332de4fe5"
       }
     },
     {
@@ -15042,7 +15042,7 @@
       "details": {
         "fighter": 7,
         "frame": 15,
-        "hash": "8591ab42dacee099d3d463794ffab081f3266b3a2bf26756a7185c4bbbeda1e8"
+        "hash": "dc8cc034a8aaab2defa6657f9157e751fe0fa8608306885fc1d39791f4be5bb7"
       }
     },
     {
@@ -15069,7 +15069,7 @@
       "details": {
         "fighter": 7,
         "frame": 16,
-        "hash": "e9d18d2d0845a070779ac2bfe5bae23c2b4566454901e6b51ac9dfc2acdc7498"
+        "hash": "5ed2cc2534e1e887947ca460c7032d8e636d28f3dc7dce7a3961e842eec4f947"
       }
     },
     {
@@ -15096,7 +15096,7 @@
       "details": {
         "fighter": 7,
         "frame": 17,
-        "hash": "5d695fd549815535b65b0c0b10751a3cefd1fbcdf4bd1da7edec42376804ffd6"
+        "hash": "b15af784faeb4103cec41f94ec3aa2e776b4a474c2e10a05e6a38fa846769a6e"
       }
     },
     {
@@ -15123,7 +15123,7 @@
       "details": {
         "fighter": 7,
         "frame": 18,
-        "hash": "08add95c86189ff13047d4109e19726fbe33897bd5afbfe61cd7c76206144c60"
+        "hash": "b3f7420609d2a57668c0f2398177835b53acb4ec20a943047babfe56164d94df"
       }
     },
     {
@@ -15150,7 +15150,7 @@
       "details": {
         "fighter": 7,
         "frame": 19,
-        "hash": "b70be12dfe5e94669019d92f96ec19dddc77158ec94b3ad593e3da0b9d3bb4ea"
+        "hash": "ac5cf4bb2b9e8a9cbf42c3b45266fe8ff59cfc1e0ed5d633f14f9d5150ac96da"
       }
     },
     {
@@ -15177,7 +15177,7 @@
       "details": {
         "fighter": 7,
         "frame": 20,
-        "hash": "1b103ef51423f658845a345302c82c3285af7fd6500de9c9f0570ff9034e9834"
+        "hash": "8c34f6c8cd7295b700df06ca59e81374396d53321b176bce3d3460bd27424d8d"
       }
     },
     {
@@ -15204,7 +15204,7 @@
       "details": {
         "fighter": 7,
         "frame": 21,
-        "hash": "83bd59a48490a3c0f691a13b15da351681452533745e79b87a6c249d933e119e"
+        "hash": "254eca8ac0c70ffac8ab2dd41a7863d60f5b60901aa59e3a30a12585d4c48858"
       }
     },
     {
@@ -15231,7 +15231,7 @@
       "details": {
         "fighter": 7,
         "frame": 22,
-        "hash": "668453a5c71bacb5c9309f52b952b50db9d5f864eb1a69c3a93b8bf4c4ab232c"
+        "hash": "3c9a1197e5a0909ce2e362d12093ae1e9007a504e0d2ed89accddb8e31d0c98e"
       }
     },
     {
@@ -15258,7 +15258,7 @@
       "details": {
         "fighter": 7,
         "frame": 23,
-        "hash": "ed8dd25a1fcd110df8d9df96d06f4cea7af17d95f60f392177190db92dcd3b50"
+        "hash": "8d466600533b6592ea4e6eb106f556833ad834b77f842413bbe53a0711d7de86"
       }
     },
     {
@@ -15285,7 +15285,7 @@
       "details": {
         "fighter": 7,
         "frame": 24,
-        "hash": "75de3cf850058d61a949aabe986cbb9473687e83ba9e94be77962e2bed6975d1"
+        "hash": "2871431ec618f7b014e052936a5f3d3ea2cb5a7ac3ba2e4320d336a58bfdb181"
       }
     },
     {
@@ -15312,7 +15312,7 @@
       "details": {
         "fighter": 7,
         "frame": 25,
-        "hash": "d4458e0fd802c7a35734c2df2a7ba8ca0845d92ed76d9ea15af09a9bcf8335d4"
+        "hash": "75973481eaf5605365b5ee43c8cb0d6bd7d82934911b3852753ab0e2c6f05bd5"
       }
     },
     {
@@ -15339,7 +15339,7 @@
       "details": {
         "fighter": 7,
         "frame": 26,
-        "hash": "05a442f756ef3a83789ab48b8a2ba6df4cd261d8b6f9ced0bf85e62aa7cade41"
+        "hash": "ed3a08ef158ef960a4365681972cd8289bd31a02d16c15426202f41b2b9a887f"
       }
     },
     {
@@ -15366,7 +15366,7 @@
       "details": {
         "fighter": 7,
         "frame": 27,
-        "hash": "3c5d9f22c86f16f0cba90e15d6a4aa6ac20e6e4f4c4078e08808a3b4b9700747"
+        "hash": "3e41aaa55a3c798a7be1cf2cfe619381964b152b80f00482f00162cc6986eaa3"
       }
     },
     {
@@ -15393,7 +15393,7 @@
       "details": {
         "fighter": 7,
         "frame": 28,
-        "hash": "889a115108d6224df931c6fb3e1bd5e7feab8dd5f6be112bbac10eab902d524c"
+        "hash": "3d74eb5acb81cdd59c10a16938272f77774526eb3874b79fc0918e24e4fb0132"
       }
     },
     {
@@ -15420,7 +15420,7 @@
       "details": {
         "fighter": 7,
         "frame": 29,
-        "hash": "db454848f0538c5b0b67145278c70d048d0f28a5d25613c4f484381c31e429b8"
+        "hash": "77f0a185619548032e9298ab7525fb56d62640300a71d5c3f0b23fea3f6e72e5"
       }
     },
     {
@@ -15447,7 +15447,7 @@
       "details": {
         "fighter": 7,
         "frame": 30,
-        "hash": "45188fb34c529f6a7d23ad594634fcfceca55789fdb6e4eb2629dfec13d00e10"
+        "hash": "2c81d95690fdf053d463fb50fd6427b8a5298e93a02da5d063c1684c266fc2a6"
       }
     },
     {
@@ -15474,7 +15474,7 @@
       "details": {
         "fighter": 7,
         "frame": 31,
-        "hash": "96488b1cf5c39058d72f59f56a63f2886314ea0de2a72757785ff4f81df13b5e"
+        "hash": "837d46a5b1a54b6175c101fa7f8b130fc324f4a1099c0cf158b59154fd163099"
       }
     },
     {
@@ -15501,7 +15501,7 @@
       "details": {
         "fighter": 7,
         "frame": 32,
-        "hash": "ab6a342736da2dbee06823f4f34616b166c16f738a6df48d2cc110ca7965ed62"
+        "hash": "d070991f9316c8769d87225850874321fcb2ff59d60e8dc134c6767211b75e19"
       }
     },
     {
@@ -15528,7 +15528,7 @@
       "details": {
         "fighter": 7,
         "frame": 33,
-        "hash": "db8a8a7d20b2aca44bc6b84861fc39dfa69d13d0ec2df6de35806600c15ad871"
+        "hash": "21df78b2aad03166512bad207840dcf1fc9084b9dce2f420b06ed7373be1bab5"
       }
     },
     {
@@ -15555,7 +15555,7 @@
       "details": {
         "fighter": 7,
         "frame": 34,
-        "hash": "568f41f40fb346a15af15634ef5c27899164aa649289e5a682a19685a8368f58"
+        "hash": "c30582e51256d82434d585b60abe97a6548e1e38168605ac0a272f76905ab4bc"
       }
     },
     {
@@ -15582,7 +15582,7 @@
       "details": {
         "fighter": 7,
         "frame": 35,
-        "hash": "8afa280dc48690ad35e452312006c3f01fd37db8ddc3b6cf0b47927ab4952dc2"
+        "hash": "33994557c7ecff76a35342a82b2649e06f1064173e11e8e477cb42b9fd60c7f5"
       }
     },
     {
@@ -15609,7 +15609,7 @@
       "details": {
         "fighter": 7,
         "frame": 36,
-        "hash": "d55e886846d1067124a3a231f8b9d0f1bec9901c0d1b5e4787c3757bc4669aeb"
+        "hash": "6c8892576008c859c3b27f87aa99d9cfcc49af3ee6c87e24215a3f1bdb147577"
       }
     },
     {
@@ -15636,7 +15636,7 @@
       "details": {
         "fighter": 7,
         "frame": 37,
-        "hash": "22b06521b6bec75dbbcb748324cb2e51b5c1eacef5ba4348faeeba013537a980"
+        "hash": "244a4c14861f127e3a5fb290c263972b70bbe637127795c3e5e26840bd7c2eb6"
       }
     },
     {
@@ -15663,7 +15663,7 @@
       "details": {
         "fighter": 7,
         "frame": 38,
-        "hash": "b9cd8127a56c1cb49aeedfc526944cacc004e47df5755b3b8938682e62dfbf57"
+        "hash": "b851d8d87cb450ef21bec71f0b10af80ebd5bd5712ca40ccfb8488ad6c1c526e"
       }
     },
     {
@@ -15690,7 +15690,7 @@
       "details": {
         "fighter": 7,
         "frame": 39,
-        "hash": "16b23edcaaa128d08549babe1ee237efe4216c059b979315337317caef955b1e"
+        "hash": "d74cb9fb06b019e3d8f5fbb34b889cc1587a6533b599bb9cee700df0acbd3ce2"
       }
     },
     {
@@ -15717,7 +15717,7 @@
       "details": {
         "fighter": 7,
         "frame": 40,
-        "hash": "ad6597e8d951f864bc8f2fa2e60c5fca89d4525b297e541f5fc0ab3f32ab9bed"
+        "hash": "2577cad08014c7d049afc3a5edb9d05e8cac766b7939411df6ce88ad12cf16a0"
       }
     },
     {
@@ -15744,7 +15744,7 @@
       "details": {
         "fighter": 7,
         "frame": 41,
-        "hash": "48b4d8f0cea96fffee79436afad58890ab3d24e1c1e4258fb8a59c3576ccbfd3"
+        "hash": "6b1416823c92f70900ba0a59f3dbc5cc4df9f51a82773af165acbf910161ae4a"
       }
     },
     {
@@ -15771,7 +15771,7 @@
       "details": {
         "fighter": 7,
         "frame": 42,
-        "hash": "b14f7983e74f62a5999f5b08acc522db7a005e30f6c697e030fc8ec7ac5d510e"
+        "hash": "0bdc3388b812ed2d2cd2d8f40d1615b862b33eceab3537ac6d673eb69970a922"
       }
     },
     {
@@ -15798,7 +15798,7 @@
       "details": {
         "fighter": 7,
         "frame": 43,
-        "hash": "754fd9a6a5df4addc35c2cb508dba4f2e3814a959501889d62e49262988bd934"
+        "hash": "0d9fd794da3579dde7329b1c6d5ea21dc4a9160ca4cd1ea89d008a7a8912d99c"
       }
     },
     {
@@ -15825,7 +15825,7 @@
       "details": {
         "fighter": 7,
         "frame": 44,
-        "hash": "892a6b0358d7743fd30cf8d1c95fc51a5d373aeec2aafe62e3d75a0a926a3ac2"
+        "hash": "d63fc18bccf5b198b29cfbe697481e3e11942d902a273c088329722f7420b25d"
       }
     },
     {
@@ -15852,7 +15852,7 @@
       "details": {
         "fighter": 7,
         "frame": 45,
-        "hash": "c6630ca0c55386a0d6e05b5122622845a39a2a4ddb5c53584865c394e8ed02ca"
+        "hash": "b683db4eeb810366adf20c775df66ad902adbf1ea9c3d7e977aaff7d4612eb0f"
       }
     },
     {
@@ -15879,7 +15879,7 @@
       "details": {
         "fighter": 7,
         "frame": 46,
-        "hash": "6adf607e9d66ebd18a4580599fc4344ad8cee2523d73ac117cd36ba2f3879752"
+        "hash": "f80b3dd5c30aebe464e253950943469c950f79b06b826ac3bde73ee94c32f84f"
       }
     },
     {
@@ -15906,7 +15906,7 @@
       "details": {
         "fighter": 7,
         "frame": 47,
-        "hash": "0d730f5c08142186e200f8af00edfb6d3b75c1aafb574d1944972a7b22c84f8e"
+        "hash": "95c24e90a73ccb796550e596c15c621bae4adc10524b80753136d80053c6f8d9"
       }
     },
     {
@@ -15933,7 +15933,7 @@
       "details": {
         "fighter": 7,
         "frame": 48,
-        "hash": "76801ffbb92362c6a4f6a478e24a476b688c82e52d6d6edb097e776fe769e902"
+        "hash": "7cbe70183c832625ec2bfe4fe1c5b2a012947201dc91609d04c52dbdd9bd3975"
       }
     },
     {
@@ -15960,7 +15960,7 @@
       "details": {
         "fighter": 7,
         "frame": 49,
-        "hash": "7323a86c38b20bc83ed3f700942ae9754611afb6e4f81ee3dd5f8c71deb705bc"
+        "hash": "a83470d08afc0468386e845811292ffbb440d2119f273fc82bd8dea52d45201d"
       }
     },
     {
@@ -15987,7 +15987,7 @@
       "details": {
         "fighter": 7,
         "frame": 50,
-        "hash": "445c580285513b241186a6a89b298e56b221caa5f4a3d402af1c0c9c33042699"
+        "hash": "4a461dcbe87fbbc53646bdf8ce2dcb562a19b90cf3ea1daf007eb29ae27c36ea"
       }
     },
     {
@@ -16014,7 +16014,7 @@
       "details": {
         "fighter": 7,
         "frame": 51,
-        "hash": "41237741519228773abad5be161991bf8c72e212b3cb19c3116e54eed90587d6"
+        "hash": "ace47cd1ee35b457237a7e374175c0e47a8b4903df7ea433c0389e66248a4833"
       }
     },
     {
@@ -16041,7 +16041,7 @@
       "details": {
         "fighter": 7,
         "frame": 52,
-        "hash": "6cc7c5c3df315416e2d0468f6a82c498525ae13774a2eb21ebe1cff1ef213eec"
+        "hash": "feddec04a81ae89435314286b93ec92fb06bb82446d06834f412dcc5aa328613"
       }
     },
     {
@@ -16068,7 +16068,7 @@
       "details": {
         "fighter": 7,
         "frame": 53,
-        "hash": "209df08bdcbd2e0c4ffade5c7d5971ccb5b14718df9c7b4fdad90c367b5d4094"
+        "hash": "1430bccc5e6b605c38c1e9424c7c6e4b233ade775f89509ac80abe6b23ed12c6"
       }
     },
     {
@@ -16095,7 +16095,7 @@
       "details": {
         "fighter": 7,
         "frame": 54,
-        "hash": "1f4b0cd08f28e870a1e7db65ce2e191d6298a07d0bf013a94cc18563732f37bb"
+        "hash": "0b0a63213fffa95163dbbe033f12b2c3f1e273c3e1d0cb76c0fb99e0df29949d"
       }
     },
     {
@@ -16122,7 +16122,7 @@
       "details": {
         "fighter": 7,
         "frame": 55,
-        "hash": "67d33a99c2343b727e1fec0e36e579b3eb5422e0ac57a45353fd676652c99fc6"
+        "hash": "c707cac02e0238a3c56d4740153a6c1c8f8284774a7bb1de970c6e41fc06907e"
       }
     },
     {
@@ -16149,7 +16149,7 @@
       "details": {
         "fighter": 7,
         "frame": 56,
-        "hash": "56d7003d75f040d3246abe5000ec3350f6096ae387f4d383dbdb6ed19c1a9e60"
+        "hash": "5f8b221519ebc4727591683d0b99d668fcdf641731dbf55fc0d687ce70037016"
       }
     },
     {
@@ -16176,7 +16176,7 @@
       "details": {
         "fighter": 7,
         "frame": 57,
-        "hash": "b4f72f5e698d63086074f9654e59e6ae1ca80b6f48e8039003cade890e342bfe"
+        "hash": "f9158e80c722757c4a9614041cf1d16b9bacfcc21fbda4c812ab47f062104cd7"
       }
     },
     {
@@ -16203,7 +16203,7 @@
       "details": {
         "fighter": 7,
         "frame": 58,
-        "hash": "09877ac02b774cf2d1a7b39eb38cd343b811614e57cdeda0f27d4c72e1c1d052"
+        "hash": "3f1153820c26092f2a4fd8ad6028bb9a402020bc67ac0d15a24ae9e4339bba8b"
       }
     },
     {
@@ -16230,7 +16230,7 @@
       "details": {
         "fighter": 7,
         "frame": 59,
-        "hash": "9d2aa47294bdc92c31f5b73d46962c1d7f06973e93d63ca87d6f3c5b75b8281e"
+        "hash": "5639a6fcee72848d720fbeda2343257609afc70da79e15b73d0769d706a25666"
       }
     },
     {
@@ -16257,7 +16257,7 @@
       "details": {
         "fighter": 7,
         "frame": 60,
-        "hash": "350db77515c4070887275219852e23d1e648c3192b64b8fd726e9a276cac187d"
+        "hash": "fae54246084b113ad0bf750f3d6fef61f465e76d0da0992367493cb8bdad1f93"
       }
     },
     {
@@ -16284,7 +16284,7 @@
       "details": {
         "fighter": 7,
         "frame": 61,
-        "hash": "1281e16383711641bf4a8809bc27addc9a32a512317a69d5898566f880315634"
+        "hash": "346faa152d84545a94cd1512cad48ebb721fbc881b95d7553fa6107fcf13b549"
       }
     },
     {
@@ -16311,7 +16311,7 @@
       "details": {
         "fighter": 7,
         "frame": 62,
-        "hash": "8a3ac749b9b5c04d30554869340fc5775511f285055d303cd073268c5cd4b955"
+        "hash": "4b6eed4e1353c1be062d941a7ccfcf0533c30d46144b7428281960d94e83d92e"
       }
     },
     {
@@ -16338,7 +16338,7 @@
       "details": {
         "fighter": 7,
         "frame": 63,
-        "hash": "61abe633d5d4ab391bb211fbc51ef4f2ca69f11f5f002d5f644a0793d62f4d41"
+        "hash": "1fe49b5f6077b59b2708c71c022e93888ce4d8579535987a7359062336094379"
       }
     },
     {
@@ -30676,11 +30676,11 @@
       "passed": true,
       "details": {
         "title": "Abaqus: After Hours",
-        "version": "0.31.0",
+        "version": "0.32.0",
         "rom": "abaqus-after-hours.sfc",
         "bytes": 4194304,
-        "sha256": "187a327c8854bfe568184dcc46c6c59f7d1d3460a60c02a6c1aeb18151b39579",
-        "checksum": "8285",
+        "sha256": "096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f",
+        "checksum": "21E6",
         "toolchain": "PVSnesLib 4.6.0 / 816-tcc / WLA-DX",
         "mapping": "4 MiB FastROM LoROM",
         "region": "NTSC 60 Hz"

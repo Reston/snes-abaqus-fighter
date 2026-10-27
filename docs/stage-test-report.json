@@ -1,9 +1,9 @@
 {
   "status": "passed",
   "part": "stages",
-  "version": "0.31.0",
-  "rom_sha256": "187a327c8854bfe568184dcc46c6c59f7d1d3460a60c02a6c1aeb18151b39579",
-  "source_commit": "46644cb971b71ddcc3971a0f29f924aff4be79f2",
+  "version": "0.32.0",
+  "rom_sha256": "096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f",
+  "source_commit": "6933f4908f839957145c463fea9522918e62e142",
   "diagnostic": false,
   "selected_fighters": [
     0,
@@ -26,8 +26,8 @@
     "audio_device_opened": false,
     "priority_class": 16384,
     "logical_processors": [
-      10,
-      11
+      12,
+      13
     ]
   },
   "source_sha256": {
@@ -65,7 +65,7 @@
     "src/super_moves.h": "6b5d0f67851c1b7dc370d25f5a4dd1c41c44ad04b41d3928a663c2859374e0b0",
     "src/trace.asm": "301ec8a99aa326583c332a901903114f5fceeb7f17bbbf768c3e90ae65c3dc88",
     "src/training_tools.h": "bad6ffc456e48c0b346ffaa069c33871988716828db75a18f511266c3de33961",
-    "src/version.h": "34d9bc96736d0e92d630aeba2061b14f76a6ee61a9e5d46c2aa23cea6b7c3024",
+    "src/version.h": "d2e4bcbd819ad4bfcfde05cbff67e17d1bd04a21ec0d406a7fca64c2d913c7f6",
     "Test.cmd": "6c38ea238c7481f1529954a1652f34e72367b2c251562166c81e2e629e10b632",
     "tools/arena_life29_assets.py": "5274f75f2b45f30ff4f910f5f079383bd2ba7ed2608b952f9d3006041099b590",
     "tools/arena_life29_checks.py": "2cc91f0200707b331d3d7d7a0009c81ceefe9d295a48c846fe0761441ed7bb02",
@@ -96,9 +96,10 @@
     "tools/emulator.py": "d6ae6095aa5aae72e9177cde3173cdcf1a1acc1aeccd480734d2a3f09dbc7ce8",
     "tools/expansion_contracts.py": "b64c11cecf01d5ca672ffb137a416ec0ae2f16c94ea310594ea3250cc1803d51",
     "tools/fetch_references.py": "a630e9cb073f7a20b4ddb720a3af812d6e7790398c5dc19cd88ece7c13a65254",
-    "tools/fighter_assets.py": "feda7d608dc017ef63f48b33bc73cc985c6df6e3c276a1f0626def460ee33115",
+    "tools/fighter_assets.py": "aea7126d79f1c42874ffd5f399124efee331642c34152fa8dc5569a74faf7c34",
     "tools/likeness30_contracts.py": "8c681f5ea01e918e7b70fcbd29ac023b71707ae5d2f665e81df4de8637420595",
     "tools/likeness31_contracts.py": "e8da42b6aaff712d4bfe5121b0388d394554809dab402e8e2c07ce73c9307a0e",
+    "tools/likeness32_contracts.py": "430ef69353e63020704d524d4f7ab70398785f80e31f90c41c338da382d2fe34",
     "tools/longrun_host.py": "432bed2b7505131d639794ee4b1d857292df4465e7f219c39a14fa433f11cc8e",
     "tools/make_assets.py": "b74e2827309e53b0df2fdad5af9b49327bedd0a0271e5b87d982a875e6d9b8dd",
     "tools/make_champion_budget.py": "f5ffcfec6c09729f72f19815613d244794bfe4e0ad7a5d708c63a634552e24ad",
@@ -119,7 +120,7 @@
     "tools/play.ps1": "914d0bd48cc8a83650bcb45aed9658c549db5cbe3411921dd81da7cc6cbfe3b7",
     "tools/play_flow_counterfactual.py": "424dc06c62168d0d43f66cba20a0a02938307391da972f39e729b27cb55ba286",
     "tools/play_flow_media.py": "7e542a9ac96d0668116877124081ead3b0a1e9b39e1e7492cdda938477dbf4fe",
-    "tools/portrait_assets.py": "f95047e2ad5e1c292809ced20ca2e9cc77dc4a0e5f3c10d43cadf8e0843107d3",
+    "tools/portrait_assets.py": "463fd5a6b7b9a9711c713e5389435673a100dcc92a188f3517cf0bc1a3dbf12c",
     "tools/pose_revision_assets.py": "7baca936c90d63dbedb732b1a222207322bed881e84841cb6d41179c7e539709",
     "tools/preservation.py": "40e13816f5a7086c18e6053789e209722316a6c2675fb9583647eed20891ae76",
     "tools/release_evidence.py": "83fbaeffb70c4cf58c50ed93847ff081b9ff565d1a4af75cd05d45cffc87c442",
@@ -143,7 +144,7 @@
     "tools/test_audio.py": "542ad545a023db85c9fe14066823cea5fa58848932d92057d55e26c76a28a73d",
     "tools/test_audio29.py": "3007a5bddf23563bfbc1c725e8401cd0c0a551a93eab283212788b40304904b7",
     "tools/test_audio29_native.py": "eae4517593bfc5d721ff870e16b896fbc4475200e00ed9f6fc08b53762ea9895",
-    "tools/test_authoring_guards.py": "99e5197dedb642aeca6d6f13c416588f23551bdfdb04fa2a528ea068bb98014a",
+    "tools/test_authoring_guards.py": "0ca8ef306a135b9758d840b287483161832cb980d4730ac6b516e2783a17f9f9",
     "tools/test_auto29.py": "b0dcf32828c95a0989d9fb9326fa7e39c9fd14485682969a60078e70cf4db9e2",
     "tools/test_bonus29.py": "1bbe5409f936f51e3997347485aeb92322bba0ef2c29ee2153caeb604d129a66",
     "tools/test_candidate_sources.py": "fcedacec4e5f020600b58d21349f168d1b81562b2fe570f8dc24c4bc3d59bf2b",
@@ -184,6 +185,7 @@
     "tools/test_inputs.py": "0e454be6e1fc45abda97ecb368012db4fd14d6d9cf653326aa112d69ec440bbc",
     "tools/test_launcher_26.py": "972531769a22a3d85f652104912f981bd9a3d027244702e1efdadfa2e1803e46",
     "tools/test_likeness31.py": "a006303b4946ec5b7064e34168fdf2493c5aeff545805de830d4f54a042ffe5d",
+    "tools/test_likeness32.py": "351d6f60da81b817c4960dca779282b3a763602dc1ee9e8e2e8c54d1b9b3faae",
     "tools/test_local_session_26.py": "869597abe87ff42c46c333ac27148c2f871fb7804696e3aed446de924ef8a6a8",
     "tools/test_long_session_guards.py": "72f528248cb1369681a62cf53cb13ace31273c279ccea7e7c9f1a53dea5a1643",
     "tools/test_matchups.py": "1979c79b5ed465f798c9528267e9debce412a1f2c19ca84c13d34995db060a1c",
@@ -196,7 +198,7 @@
     "tools/test_native_artifacts.py": "905cdccf4f6055d34b09387c26205879b839520cad119fe8c01de3c3ac2b1327",
     "tools/test_native_build_26.py": "0ac64bfec8e4db1c8420745891578bb8b914a6764a275a970a7ae2f5fcede8c5",
     "tools/test_normal_guide_26.py": "93be4467c72686dfb312ccf5b5a957d15ca54ecf5bd083f6b03527af6a48336a",
-    "tools/test_pacing_floor_25.py": "6ae0700ab8f41fe5c17c500c7e9d3ac91dc6242a3c4968096f28a52a3051dce3",
+    "tools/test_pacing_floor_25.py": "0100c17dd89385317e65ae2fea1ebdf5c71900e6c44515e561de1bc096db15f0",
     "tools/test_package.py": "1174274d5eeec4610fd98fb11bbef90b213a9f5a61a776f634a6d99fcb15d3d9",
     "tools/test_play_flow_26.py": "f85bdd5f85cb5df1e611449406654d42f281d7c9335d13ee5c91549ac2330b6c",
     "tools/test_play_flow_collation.py": "c15d9965c6a966f7c4e8e095629e441dfb0895cf2652833881cca0367fc0679c",
@@ -301,9 +303,10 @@
   "audio_device_opened": false,
   "preservation": {
     "status": "passed",
-    "baseline_commit": "67d7fc08e6bcbc20f864215c200705cbbd048303",
-    "version": "0.31.0",
-    "rom_sha256": "187a327c8854bfe568184dcc46c6c59f7d1d3460a60c02a6c1aeb18151b39579",
+    "baseline_commit": "961214932f2ff0cef388635f16ca883e688b3668",
+    "baseline_scope": "v0.31 body-design reference; its faces were rejected",
+    "version": "0.32.0",
+    "rom_sha256": "096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f",
     "generated": {
       "baseline_count": 237,
       "current_count": 237,
@@ -311,228 +314,228 @@
       "changed": [
         {
           "path": "assets/generated/assets.h",
-          "sha256": "9b48750ea95ffa4e6fd3bdaa98768f3d42518d15a23bc6cc86eac1c05e7ac82e",
-          "baseline_sha256": "d8e353cda5137547af035c2ab0cb286aa73520a0fc5858e61c051c4efcd5a09a"
+          "sha256": "8be23312e485c856df6a69c045e088bd810b613c8a024b23344e2d3e69ebb3e9",
+          "baseline_sha256": "9b48750ea95ffa4e6fd3bdaa98768f3d42518d15a23bc6cc86eac1c05e7ac82e"
         },
         {
           "path": "assets/generated/character-manifest.json",
-          "sha256": "996a8e9e5dd12d7c93782fcfd9759986becd22c9a9712bc5533900974250b8cf",
-          "baseline_sha256": "80e35a49d70a06a1237f77ec49a7864afce548f44c483104e8f7fb92ac1752e6"
+          "sha256": "50b7c3fc33b348a440b4630c2059d500f1eb079b36f0d55347b5ba944bffad1d",
+          "baseline_sha256": "996a8e9e5dd12d7c93782fcfd9759986becd22c9a9712bc5533900974250b8cf"
         },
         {
           "path": "assets/generated/fighter01.bin",
-          "sha256": "a7ca9e1cc6baac9833b1e723db725b5a3d5a28ef51b7a670747e5b56d367a13c",
-          "baseline_sha256": "f934113e838abaabe85a467b87589072bbadf118e44af52f2dc476e57192deaf"
+          "sha256": "15984588854de2f03fd0598ed5af800000dad0221acc2cd6bf3ab99c78330b2e",
+          "baseline_sha256": "a7ca9e1cc6baac9833b1e723db725b5a3d5a28ef51b7a670747e5b56d367a13c"
         },
         {
           "path": "assets/generated/fighter01.png",
-          "sha256": "263f39779e11f4ed086bd9bb237ebf6c3cf2923e8413df85f5a4441073ade2ef",
-          "baseline_sha256": "899682ee149c6f0e25338ff2c18955d4b269819e53c2fb3172d2d49ce1a0f53b"
+          "sha256": "42599f07c8b4f43edfa5a40b72209edec7dd8254ecfa12ee132742017e8fa9e4",
+          "baseline_sha256": "263f39779e11f4ed086bd9bb237ebf6c3cf2923e8413df85f5a4441073ade2ef"
         },
         {
           "path": "assets/generated/fighter01b.bin",
-          "sha256": "c1d66e66aa8082d1266c45dfadd9b791ec2352f136c73bfde99d8bf95c3cb0e6",
-          "baseline_sha256": "28bcf26d6cfbedd0ab024ec982ef2e90ecffcf17964e333966e9f8fdddcadf3f"
+          "sha256": "051ac2f1b0aa45d3f3dc6fadfb8d15cd265c876306ec9f8a08d621c80417723b",
+          "baseline_sha256": "c1d66e66aa8082d1266c45dfadd9b791ec2352f136c73bfde99d8bf95c3cb0e6"
         },
         {
           "path": "assets/generated/fighter01c.bin",
-          "sha256": "fcd88119000d44eb532d3e45c9a25ac960463fa4c741cb8ddc888ea0347cc37d",
-          "baseline_sha256": "94c116e71b1774aa18651e1541128d1ae3dce86c7e5337f35af7871e55399fb2"
+          "sha256": "e16c912bfcabfa1ec0a259a2d24ad815e1e6b8bc9b4b05afc37a8941419c4343",
+          "baseline_sha256": "fcd88119000d44eb532d3e45c9a25ac960463fa4c741cb8ddc888ea0347cc37d"
         },
         {
           "path": "assets/generated/fighter01d.bin",
-          "sha256": "081e66a3defbcbe80fc9d1098b466371b1d0e8a0aac83eff357e02463548f8dd",
-          "baseline_sha256": "938c46405a2d7a6d8c55cdebf238c2011291f0072ef39139e31036452c7ad2b9"
+          "sha256": "3f616f914d909b4d1788e2f7de97973f29616a643fd27a3fa6e2ceb4e227c4e1",
+          "baseline_sha256": "081e66a3defbcbe80fc9d1098b466371b1d0e8a0aac83eff357e02463548f8dd"
         },
         {
           "path": "assets/generated/fighter01e.bin",
-          "sha256": "8f2426fc864debf0e716fb629bc6eb28a43811c084120a4796c1b6fbf865afc7",
-          "baseline_sha256": "c0e831e4658d63cddc525166e142fca2f7b6c9e73776aed538585e015d8c900c"
+          "sha256": "9dfd02abb4c1d11f92747acfb7c4104d4e9ee9c5992f4ee54a61970eeb08e7dc",
+          "baseline_sha256": "8f2426fc864debf0e716fb629bc6eb28a43811c084120a4796c1b6fbf865afc7"
         },
         {
           "path": "assets/generated/fighter01f.bin",
-          "sha256": "946f7e6af1219bd458da7b04ac571455afa50fd1f71f5bfe7ca3ffe8783905ec",
-          "baseline_sha256": "46c20fa18de6fcd45c37edb93213e6f2ea80342797cc3c92d305b38391e0757a"
+          "sha256": "c2168cab78e66ca7b15845641c1509ab6c72f6ec0a755a39176ff2424b0959dd",
+          "baseline_sha256": "946f7e6af1219bd458da7b04ac571455afa50fd1f71f5bfe7ca3ffe8783905ec"
         },
         {
           "path": "assets/generated/fighter01g.bin",
-          "sha256": "08a75d598c79894883aff5449d8d9fec129e1608b94561757105671d7bec9240",
-          "baseline_sha256": "b15cee1683279be889e6222021dc080b66faab244f096280834f0947824afece"
+          "sha256": "855c692f50d49330703bff02d321cab6f8e89a38c1804a6f346c3c9e34c098d7",
+          "baseline_sha256": "08a75d598c79894883aff5449d8d9fec129e1608b94561757105671d7bec9240"
         },
         {
           "path": "assets/generated/fighter01h.bin",
-          "sha256": "f74685a557edd808af7ed1ca3b9883529729221b97dd562f78212064f2599c2a",
-          "baseline_sha256": "257375a4df8195c12f1700d856127dd3f959499544c2d85d18ee6ca6571e4f58"
+          "sha256": "50a7257661bb75f6bf8a6c101b903e6cd29f5d41ad6550e1867b5ccb0f18093e",
+          "baseline_sha256": "f74685a557edd808af7ed1ca3b9883529729221b97dd562f78212064f2599c2a"
         },
         {
           "path": "assets/generated/fighter06.bin",
-          "sha256": "8bf01bd83840514f948aeaf84f53d9236840e0d20ba813b0f6bb6e37c97cdc1b",
-          "baseline_sha256": "3a9e343236351225a538d664874ea5f94a833a32a83b310384cc2c86640c932d"
+          "sha256": "4794d2138ee3609084cefcbde11998a32d32259a9ac4fa97f5af20e3a02bc1a0",
+          "baseline_sha256": "8bf01bd83840514f948aeaf84f53d9236840e0d20ba813b0f6bb6e37c97cdc1b"
         },
         {
           "path": "assets/generated/fighter06.png",
-          "sha256": "ccd203dbe38d5d2a227116f1a5b0a910bc2f09d96f7791e4010cb9742dcce98e",
-          "baseline_sha256": "b90951b3443246932ace31d778bc05d26101334a3c115210026328c0fb57ab28"
+          "sha256": "199ab8afbc58a2ecea56ba1457b25e0b7959dfd7b7c5df2d0f3ac6374e6a3f0f",
+          "baseline_sha256": "ccd203dbe38d5d2a227116f1a5b0a910bc2f09d96f7791e4010cb9742dcce98e"
         },
         {
           "path": "assets/generated/fighter06b.bin",
-          "sha256": "ea589a1090d5ec426e3a5029b1d285b49d2ab9fd4394bb0c4069fbf891c85d69",
-          "baseline_sha256": "4820d42bf338710c29fff0155959c0f26de066eb3ad52506cdccbff08da88e09"
+          "sha256": "9bf18da88305d508c855183dc98f09b2e22e4ee4870cb29325f1aba35f3251fc",
+          "baseline_sha256": "ea589a1090d5ec426e3a5029b1d285b49d2ab9fd4394bb0c4069fbf891c85d69"
         },
         {
           "path": "assets/generated/fighter06c.bin",
-          "sha256": "5d722196654baad65f5903febdb852feeb6f104756a69f786c6e89e0550170d1",
-          "baseline_sha256": "7e1134fd00842fa636cd09293a3ab91c238cd14d8a05fa92c6672bf31ed584ac"
+          "sha256": "55e63e2480a89768ce221d15de5d64726214f28b4d80972d382eda351e3fbd5a",
+          "baseline_sha256": "5d722196654baad65f5903febdb852feeb6f104756a69f786c6e89e0550170d1"
         },
         {
           "path": "assets/generated/fighter06d.bin",
-          "sha256": "532d5d367002583c6a31bda6453ec302df8334153c8266ffe654a48b2553a55f",
-          "baseline_sha256": "0524b033f2ec18160e5b0a7b2ad95806ab37696def0728a24585254529238217"
+          "sha256": "377c2fcfa082f650413c8fa686da7bdcaa8fd0b2e6abe46480b61619cad51cc8",
+          "baseline_sha256": "532d5d367002583c6a31bda6453ec302df8334153c8266ffe654a48b2553a55f"
         },
         {
           "path": "assets/generated/fighter06e.bin",
-          "sha256": "1a65737d2343cff79ca244855be0c62f98a10005ee746238a4eaf61f95c47340",
-          "baseline_sha256": "ec5297a4a8ff2c4509ea2c9f2778290ad5fe4fe8d3f2ecf6ca6b0cda573a8420"
+          "sha256": "6e2157ab2b755ceacc0eeb95ff03daa90e0f0de170a682ec49004bf20b45bc69",
+          "baseline_sha256": "1a65737d2343cff79ca244855be0c62f98a10005ee746238a4eaf61f95c47340"
         },
         {
           "path": "assets/generated/fighter06f.bin",
-          "sha256": "d118fab323f957878e2e31433be10c5c5111c61889e1ca9b5dcbc3f7e76302bc",
-          "baseline_sha256": "83b0722e3864e9e845e4b6e2d23f4e531e65117306e4a00a52ce59a561984394"
+          "sha256": "69ac45c8b7caef546c766a1dc05555f4d889de86f5821a355d081bc296773cc7",
+          "baseline_sha256": "d118fab323f957878e2e31433be10c5c5111c61889e1ca9b5dcbc3f7e76302bc"
         },
         {
           "path": "assets/generated/fighter06g.bin",
-          "sha256": "74a7a975a0e32286255c1e12a7a1950f60520c9212cfd51d0f20890ebbe5381a",
-          "baseline_sha256": "62179004c65c96e480a0017f1f36e6d503ffcec6e66b6e7931714d632054080d"
+          "sha256": "dbbc983b0bdb228ae4128efd853195c002399af2931406313cdf709af8641a35",
+          "baseline_sha256": "74a7a975a0e32286255c1e12a7a1950f60520c9212cfd51d0f20890ebbe5381a"
         },
         {
           "path": "assets/generated/fighter06h.bin",
-          "sha256": "ae093fae2f8f78421de0135188dd15d51403afd174dbf9f41af0c87bac3641b4",
-          "baseline_sha256": "9021c2cc799d910f707b7fb9e834e1630da8ca4f6ac466cfdad46d34a4e30c80"
+          "sha256": "ef789e152feef4d377a6b1119391926cec2a39245dd6b015169cc8092c0dde85",
+          "baseline_sha256": "ae093fae2f8f78421de0135188dd15d51403afd174dbf9f41af0c87bac3641b4"
         },
         {
           "path": "assets/generated/fighter07.bin",
-          "sha256": "e92fe5f447159064c3531d69109c9cf4e2204dce0ec26358b09ad07d2970c0ce",
-          "baseline_sha256": "99220e23b1ef1be5388dcb3888e73176cd2ea8476ba48b4bcf29bb24ec6a154a"
+          "sha256": "9a700755531fc4cfc8427b0fdbe35402f6801bd856bdd3ebde01fdc1eabf1ad1",
+          "baseline_sha256": "e92fe5f447159064c3531d69109c9cf4e2204dce0ec26358b09ad07d2970c0ce"
         },
         {
           "path": "assets/generated/fighter07.png",
-          "sha256": "92f6110da0f1a8bfa3db0815f794b82f9eb14a0f70aef37c881a3da72bd8bf05",
-          "baseline_sha256": "5aa315a2a073c6023ae863b89863afb8568597797ccb5e4644c92557269a692d"
+          "sha256": "7531aa39de4e55c4ff5f9fd7041e29cbd1c4c544d680cbdaf24c6e91344eb0a4",
+          "baseline_sha256": "92f6110da0f1a8bfa3db0815f794b82f9eb14a0f70aef37c881a3da72bd8bf05"
         },
         {
           "path": "assets/generated/fighter07b.bin",
-          "sha256": "d7069dc973eb51d1810a0ebb4d76630c584408923887609d5f80b8fc200af6ef",
-          "baseline_sha256": "3045a00c89070108b3b86631f6479ef4ca375bdbfd01d564e1ab77b6f0722aa8"
+          "sha256": "6e68d8bc7cf7f2bce722284760b0f6f325516fe9b966d48045171ac3568abcae",
+          "baseline_sha256": "d7069dc973eb51d1810a0ebb4d76630c584408923887609d5f80b8fc200af6ef"
         },
         {
           "path": "assets/generated/fighter07c.bin",
-          "sha256": "6cbe0223fa7ea53d000fadceca80b7aae6792976e90423c6730fa3f7de4e32b5",
-          "baseline_sha256": "18fe7259dabf4d0e338a0c5dafbd7a1c50b86469ff99edaba145a8ad779a6b7c"
+          "sha256": "719e2b48a31c439ccd54cc21afcb3e6d6401696bc426fa87074c87d5748231cd",
+          "baseline_sha256": "6cbe0223fa7ea53d000fadceca80b7aae6792976e90423c6730fa3f7de4e32b5"
         },
         {
           "path": "assets/generated/fighter07d.bin",
-          "sha256": "f85e3688e08487d8bb33cbb8c003c3187d9410df9cad167c734210657c4c5d2f",
-          "baseline_sha256": "d79f7f7ded9961d2da4f7e85e66f93fb60cbb762003ec0485d6883e1dbcb3726"
+          "sha256": "6a4b197a4d2ceadab4213d7bd697d9c05317cb2131c4b4f9d9f10c168da6d115",
+          "baseline_sha256": "f85e3688e08487d8bb33cbb8c003c3187d9410df9cad167c734210657c4c5d2f"
         },
         {
           "path": "assets/generated/fighter07e.bin",
-          "sha256": "3198e155f6b63bfc6418e1783a709cb86a90a3bf791e3fc818c6afd1a0350ea4",
-          "baseline_sha256": "e49ae37c211c9b6b55919be375d7b5fa4a7665a1427396eacb563c388279f52b"
+          "sha256": "ff39221f2ac81cdfcc3f13190113a67a44f0f97c609e6a5fdb1ee9564814edb8",
+          "baseline_sha256": "3198e155f6b63bfc6418e1783a709cb86a90a3bf791e3fc818c6afd1a0350ea4"
         },
         {
           "path": "assets/generated/fighter07f.bin",
-          "sha256": "e9cf6ec3c97101a3108c5013c14a384a42369ff5c7ca4fa31918970d895e4eab",
-          "baseline_sha256": "2e8f9bc29b04b195603bb67aceb88b67e6aa03e0226e5bb31aff983f3481c8fb"
+          "sha256": "c6eab6fb478697d90486145351faa6662b08634fd31a88d3c05abecb73fd923c",
+          "baseline_sha256": "e9cf6ec3c97101a3108c5013c14a384a42369ff5c7ca4fa31918970d895e4eab"
         },
         {
           "path": "assets/generated/fighter07g.bin",
-          "sha256": "d07b671fc79656c3aa114e4251c6c3ba4ae99d1fea34f56e732d1999bad05a11",
-          "baseline_sha256": "a5d8e8ff291f1b0cee7f8117eccecb16da46c1d33673251be2917fe15f26d4a5"
+          "sha256": "01cd84008c6d0a72b7e5d2a99fbf4456b109185fc88cc9e56d415fdcc278c0b4",
+          "baseline_sha256": "d07b671fc79656c3aa114e4251c6c3ba4ae99d1fea34f56e732d1999bad05a11"
         },
         {
           "path": "assets/generated/fighter07h.bin",
-          "sha256": "61208af1482ef58432ee2e4c6c3e2e6c3b4d1eaf60c6af96a2e5880679f0d547",
-          "baseline_sha256": "288b6068ce239b133db31e639a65edf856acd96b8676b4d8ce4a33f1e4eab213"
+          "sha256": "e0944ebab914adc7c09b41f3d04314d751b2b5cb529bc6ef0cb50a904f534c3a",
+          "baseline_sha256": "61208af1482ef58432ee2e4c6c3e2e6c3b4d1eaf60c6af96a2e5880679f0d547"
         },
         {
           "path": "assets/generated/portrait01-large.png",
-          "sha256": "a703f0ebb004fb5bc986a50d0295fb4b1863792f0c6eb6274b52ca169ad90873",
-          "baseline_sha256": "ddaaf1405c6c9d7950df0bd6c56449fead35820ca31aa78800db8c2af6f020e9"
+          "sha256": "ce7bc7d46638eaeedb8ac4324e7d4d49debf10031c090bd1605dd2784f13d33e",
+          "baseline_sha256": "a703f0ebb004fb5bc986a50d0295fb4b1863792f0c6eb6274b52ca169ad90873"
         },
         {
           "path": "assets/generated/portrait01.png",
-          "sha256": "550e911ee8f2feb4d32a75a7ef8aa922a49a81cbfd3b581e525dacab54afe310",
-          "baseline_sha256": "26de480b79a6c721d6928d94d524e62e0c345140e39227788caf0fcef7026c41"
+          "sha256": "2fc915fcf185a946750a6796043a714b7f30d0a204c47584792213729b922995",
+          "baseline_sha256": "550e911ee8f2feb4d32a75a7ef8aa922a49a81cbfd3b581e525dacab54afe310"
         },
         {
           "path": "assets/generated/portrait01_pal.bin",
-          "sha256": "0dec67be9d5d7d6b9c1c22ec2570baae3025b459f22d8d12dd8f64cb1a342cca",
-          "baseline_sha256": "08989818b479b17741576eb89afc057096957585f57d317897de1d70809aef87"
+          "sha256": "9aad7f6af23fb3dd63f04589e57f8496052d40f8a16a06b88a1a9ad88e958ccc",
+          "baseline_sha256": "0dec67be9d5d7d6b9c1c22ec2570baae3025b459f22d8d12dd8f64cb1a342cca"
         },
         {
           "path": "assets/generated/portrait01_tiles.bin",
-          "sha256": "7be715df67625f9889a1d4a27a1dc4cb5608c5dfc6e9d3bb4e3d54e43e4355a9",
-          "baseline_sha256": "de618b54b515f435e3049b2498ac4dca78383aaa5e43b04c866560b572bb4fb1"
+          "sha256": "fc14754a3d73a5426b003dc80c14fb0cabbf5b10b25f42aa4f3f31344290f0e7",
+          "baseline_sha256": "7be715df67625f9889a1d4a27a1dc4cb5608c5dfc6e9d3bb4e3d54e43e4355a9"
         },
         {
           "path": "assets/generated/portrait06-large.png",
-          "sha256": "fb6967d16e7c7ad37489d07e83b752d3636d7369a0f441024c0a16543901f0de",
-          "baseline_sha256": "a831df74cfa8bb28852f52f1beaefaea04127d9090323499f6cd33f3f05d4264"
+          "sha256": "6351701a982d5db0323a0b46d677da117065bad6433bbb6fa23e25fca4ab8c5d",
+          "baseline_sha256": "fb6967d16e7c7ad37489d07e83b752d3636d7369a0f441024c0a16543901f0de"
         },
         {
           "path": "assets/generated/portrait06.png",
-          "sha256": "f182e3b764fe07d610900898b09117b3046de7cc1a0be4852616670c8934140d",
-          "baseline_sha256": "e096247c758bd0cdd27e0d54a9d8c875cbf13d449183dca5454106ca9a033113"
+          "sha256": "7da4ce9914a0ca9c01e7f310330925f28157199719ed3cecd69d0efb17707842",
+          "baseline_sha256": "f182e3b764fe07d610900898b09117b3046de7cc1a0be4852616670c8934140d"
         },
         {
           "path": "assets/generated/portrait06_pal.bin",
-          "sha256": "76a1cdedf0f09c1d622141e3ee1f6e4d05fd78fd4eba6543685edefcbd6d5745",
-          "baseline_sha256": "2df40db63b446ec979b98663408776345ee8d3fc54fe07844f1aedd61a058727"
+          "sha256": "a1a197fbb2cba1e45992cfabd235b89d0499fb568c4822c547114678bf8047ed",
+          "baseline_sha256": "76a1cdedf0f09c1d622141e3ee1f6e4d05fd78fd4eba6543685edefcbd6d5745"
         },
         {
           "path": "assets/generated/portrait06_tiles.bin",
-          "sha256": "df05f7757cc4d0eebba0487de254a92410d99b62795dbba979795b02d6f0e628",
-          "baseline_sha256": "b3efe196d08ae5db2c92f5482e5713f7acee003d1c2b0d8e1d12b61d3f8e747f"
+          "sha256": "4c95408dbf238f46b92feceeb0346fe1dc22566bfd4b7204e7db61f6d088e783",
+          "baseline_sha256": "df05f7757cc4d0eebba0487de254a92410d99b62795dbba979795b02d6f0e628"
         },
         {
           "path": "assets/generated/portrait07-large.png",
-          "sha256": "2b56878c08517472b24cc9a478e124d3b261f690920993259b12ca4380ddc246",
-          "baseline_sha256": "e635436d5ad0795a671d777ddfff313a01551bf5c2aae72ba59cd7e70d72f1dd"
+          "sha256": "bf88793e0395cb245b0aa18c6453fcbcd93b3ed61b35bd7d9b5921cd421c72d2",
+          "baseline_sha256": "2b56878c08517472b24cc9a478e124d3b261f690920993259b12ca4380ddc246"
         },
         {
           "path": "assets/generated/portrait07.png",
-          "sha256": "ddf4ddbc7f13047f69ed1d97689118bd81c8a5f22750224b48c580ba630a83c3",
-          "baseline_sha256": "c982e5997517db0b4bfd478a312cbe2b3047801f6c05b5ead2e7216d65b1c2a6"
+          "sha256": "672dd2dfde6497094a901271b45ac85619e128155c1880be937a93c2755c9f73",
+          "baseline_sha256": "ddf4ddbc7f13047f69ed1d97689118bd81c8a5f22750224b48c580ba630a83c3"
         },
         {
           "path": "assets/generated/portrait07_pal.bin",
-          "sha256": "c6a978d34a8d52967735b2b569f943bee810340558a5278890311f8bf64dfb86",
-          "baseline_sha256": "656c585b5d15a36aaa07d2ad016ab60e63c59281fd9be66d330c33042684db42"
+          "sha256": "2713a0d1639703bd12826d1ad7592ee15ad9635ebf8f8ebf6f487466736d1568",
+          "baseline_sha256": "c6a978d34a8d52967735b2b569f943bee810340558a5278890311f8bf64dfb86"
         },
         {
           "path": "assets/generated/portrait07_tiles.bin",
-          "sha256": "92b1df0e95c3e3911830ce913ce46f254438e1e22afeb3a0823833260ee79fe6",
-          "baseline_sha256": "d83d340dffeb196c8d1a961cd85d391bad6c849b385b921eca8868eb40d86537"
+          "sha256": "8bed8e286d62afc6e2b61adc89639969e816dfacae3124162635abf215c5fdf2",
+          "baseline_sha256": "92b1df0e95c3e3911830ce913ce46f254438e1e22afeb3a0823833260ee79fe6"
         },
         {
           "path": "assets/generated/select.png",
-          "sha256": "4f7e45c17ff9b5a907e1673c3b6cea947f285ad0cef201099c8ba1518e78a0fb",
-          "baseline_sha256": "e87d47414f62a29869131977543ab7cdb0e69a564ae8ffd1de6ff9c9ead887d7"
+          "sha256": "66ad69fb0029da20d19428411be4de56ce99dc9017416c903c8892fe87363846",
+          "baseline_sha256": "4f7e45c17ff9b5a907e1673c3b6cea947f285ad0cef201099c8ba1518e78a0fb"
         },
         {
           "path": "assets/generated/select_map.bin",
-          "sha256": "7e75c815922cbf7ac30d4ac1aff36c6c57c10155e558d7ac371b5af41746a721",
-          "baseline_sha256": "067015b8b4ef15196a7af06f491a62fee6a62c09cfd666a015b4fa16c6f36b69"
+          "sha256": "90162680675230a4386dc1613f7e7f0e4f87e6aed0d9b517f3c93b4cd89c0bbb",
+          "baseline_sha256": "7e75c815922cbf7ac30d4ac1aff36c6c57c10155e558d7ac371b5af41746a721"
         },
         {
           "path": "assets/generated/select_pal.bin",
-          "sha256": "9dc220b09d4c80bd7f9530b88161ed5e87d3c4b0bec1d9c66cca052169c80ddb",
-          "baseline_sha256": "a01fb8ca5558982eeec1db901fed40ccbd4c27ce8e15730dfb9e70f83b30885b"
+          "sha256": "f6015c76a1d690e73587a6a5604dbf32f8d9e1d110dbf0b1a880de3770a67c5d",
+          "baseline_sha256": "9dc220b09d4c80bd7f9530b88161ed5e87d3c4b0bec1d9c66cca052169c80ddb"
         },
         {
           "path": "assets/generated/select_tiles.bin",
-          "sha256": "4046fcdea1f07c2d06425a52b9df6a1c4cea5a99f9e468b22776017c0b31f90c",
-          "baseline_sha256": "6bcce704dd5cce499d705835bb2c8ef2053f0a3734bd88d58e34cf85a4ff773f"
+          "sha256": "584bfb73f5abf00c39c7a9a5895c48ed40c3f108b93d8803c0ef7aa969169529",
+          "baseline_sha256": "4046fcdea1f07c2d06425a52b9df6a1c4cea5a99f9e468b22776017c0b31f90c"
         }
       ],
       "added": [],
@@ -1506,10 +1509,30 @@
       6,
       7
     ],
+    "expression_art": [
+      {
+        "id": 1,
+        "changed_frames": 64,
+        "approved_portrait_sha256": "721585de5590e4cbb6287d7720fc057bea5f6a8d9124098fd8b0d77c86febfb2",
+        "new_atlases": 9
+      },
+      {
+        "id": 6,
+        "changed_frames": 64,
+        "approved_portrait_sha256": "1732ef5bfa8325117eacff2a63e7d563b63aeaba8f4137ad0ad0af9f28a7bac3",
+        "new_atlases": 9
+      },
+      {
+        "id": 7,
+        "changed_frames": 64,
+        "approved_portrait_sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5",
+        "new_atlases": 9
+      }
+    ],
     "prior_ram_labels_exact": 1331,
     "native_rules_except_version_exact": true,
     "maximum_native_section_bytes": 30720,
-    "native_geometry": "Rectangles are regenerated from the three revised models; the other nine geometry blocks remain exact."
+    "native_geometry": "Only the three revised fighter blocks may refresh from final pixels."
   },
   "result": {
     "cases": [
@@ -1539,28 +1562,28 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage0-movement.gif",
-          "impact_clip": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage0-contacts.gif",
+          "movement_clip": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage0-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage0-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage0-center.png",
-              "sha256": "6e170f13cecebe7d8a0773a150a64171eb724e21e206e73913ca6d2ac2f9c359",
+              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage0-center.png",
+              "sha256": "f8d3a268f77c1f7a75da369a72479f23bacd6014c6cd6dfb627332eadd2bd48c",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage0-guide.png",
+              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage0-guide.png",
               "sha256": "251e7ed9b6b13c5f9df4f3f20614e7d2ccb7425b0ab77444e03d89675295a02b",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage0-left.png",
-              "sha256": "9378fafcfdc1e5de14fc6f5590986dd9007348d6c1c36b3645d58b16a36fabe6",
+              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage0-left.png",
+              "sha256": "48e990c7871d1f192bbd847d3c1106356c5ee4a2ac571e2efa4158e9bdb4c17f",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage0-right.png",
-              "sha256": "f524ab6949ba673245e63722d83509cf845397c9b440e676c532b10392d15e37",
+              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage0-right.png",
+              "sha256": "b2ba7651eca0349c36dbfd7fa661e895e71a0ebbdc2c906c89dd40b20f0f15ca",
               "scope": "current native PPU"
             }
           ],
@@ -1593,7 +1616,7 @@
           "core": "snes9x",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/likeness-v031/stages/stages/snes9x-stress0.gif",
+          "clip": "docs/screenshots/likeness-v032/stages/stages/snes9x-stress0.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -1643,28 +1666,28 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage1-movement.gif",
-          "impact_clip": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage1-contacts.gif",
+          "movement_clip": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage1-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage1-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage1-center.png",
-              "sha256": "415c2f293432523971b5b300ee2680f1042581ec48fa915fadd5d32091354b06",
+              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage1-center.png",
+              "sha256": "d03af304bd09bd3e030a367fff0d9dc56a9c31cacb9a0aaf17538cd15bef454f",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage1-guide.png",
+              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage1-guide.png",
               "sha256": "251e7ed9b6b13c5f9df4f3f20614e7d2ccb7425b0ab77444e03d89675295a02b",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage1-left.png",
-              "sha256": "691d57a82c07eba54d076a89b86d117bc29dc64501188284bf0ed1cb58319215",
+              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage1-left.png",
+              "sha256": "58a1e9781e73650060bfaabbfa2f00124755ccabbd24373ab05c57346aae6d05",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage1-right.png",
-              "sha256": "db1a62f0bd209c06d2045ff6f92e4983ac58008de532b74c59d89c61a69acd3c",
+              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage1-right.png",
+              "sha256": "05207f823f4f0926c89c1775d545e9d1151f55740346680c4b2ae4c2fd0bebf4",
               "scope": "current native PPU"
             }
           ],
@@ -1697,7 +1720,7 @@
           "core": "snes9x",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/likeness-v031/stages/stages/snes9x-stress1.gif",
+          "clip": "docs/screenshots/likeness-v032/stages/stages/snes9x-stress1.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -1747,28 +1770,28 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage2-movement.gif",
-          "impact_clip": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage2-contacts.gif",
+          "movement_clip": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage2-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage2-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage2-center.png",
-              "sha256": "867e6014fa4565dc382f841550d2aa9be449f31a8ea9eb184f637c81d343728e",
+              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage2-center.png",
+              "sha256": "0f4dfbcb1a392b0ef122efc11dba50680c1f5413575541e93b9f11138e4a784b",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage2-guide.png",
+              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage2-guide.png",
               "sha256": "251e7ed9b6b13c5f9df4f3f20614e7d2ccb7425b0ab77444e03d89675295a02b",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage2-left.png",
-              "sha256": "7a0073ac6965dd91e601f79d48e5490e951b93883374ad363c98e9ab2b10ade0",
+              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage2-left.png",
+              "sha256": "ec83d8743996effff72a1684df1feecc02b14a32df6f722b6e271f89bbc2c0d6",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/snes9x-stage2-right.png",
-              "sha256": "a5de8501c82d5f5a0fd1947a0354e2e5a914333135d43d32ebbcb7e2351323da",
+              "path": "docs/screenshots/likeness-v032/stages/stages/snes9x-stage2-right.png",
+              "sha256": "78cfc8d56c1c6bff9c6f68dfd55c5c0fdea34da11a12a2ea5d014ec47f819779",
               "scope": "current native PPU"
             }
           ],
@@ -1801,7 +1824,7 @@
           "core": "snes9x",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/likeness-v031/stages/stages/snes9x-stress2.gif",
+          "clip": "docs/screenshots/likeness-v032/stages/stages/snes9x-stress2.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -1851,28 +1874,28 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage0-movement.gif",
-          "impact_clip": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage0-contacts.gif",
+          "movement_clip": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage0-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage0-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage0-center.png",
-              "sha256": "b3984bf287fa10223eefe77f4c004136085357855c7f632b5a446d0deb0d8617",
+              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage0-center.png",
+              "sha256": "6a350bfff229fd4826d947d58055918f684daf4de3b940b648e547edd7819949",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage0-guide.png",
+              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage0-guide.png",
               "sha256": "45cdb6973c2e7fbf333324a23c4eda6bc538c31797d0a772bdec3c93c3799301",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage0-left.png",
-              "sha256": "aa8d5c5826b3b25ff7283d918f45e86037008d10022f857dbab8200c123c1a69",
+              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage0-left.png",
+              "sha256": "9c3ba970c759b89c6caedb841282a86802f6c06199152413d7acedbaf18e542f",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage0-right.png",
-              "sha256": "5d765ab134d5aaf432cb43e8e2be3da49b0309a68bdb8fe4af665343c0a70013",
+              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage0-right.png",
+              "sha256": "019c364439b1a2b3b6457ed98c00b25bfbadaacb91f65ff9fd701ddef75e74be",
               "scope": "current native PPU"
             }
           ],
@@ -1905,7 +1928,7 @@
           "core": "accuracy",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/likeness-v031/stages/stages/accuracy-stress0.gif",
+          "clip": "docs/screenshots/likeness-v032/stages/stages/accuracy-stress0.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -1955,28 +1978,28 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage1-movement.gif",
-          "impact_clip": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage1-contacts.gif",
+          "movement_clip": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage1-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage1-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage1-center.png",
-              "sha256": "539dbc47a639c3d5f53c75d14927ed75fbb88953375e73a36aa48c50330c9605",
+              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage1-center.png",
+              "sha256": "c8586521c90311adc26f8e189e541172c50a61e3d8e0daab58cacc053203310d",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage1-guide.png",
+              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage1-guide.png",
               "sha256": "45cdb6973c2e7fbf333324a23c4eda6bc538c31797d0a772bdec3c93c3799301",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage1-left.png",
-              "sha256": "a127b31032a432aa0873f76de23ff76d8f79192a4a23ba2f7763be585efebce9",
+              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage1-left.png",
+              "sha256": "abf2780830a3dd6dee2a70ba8d04a2a4b7c15151fc52ab15eae1be1275876891",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage1-right.png",
-              "sha256": "4fc919daf1f8a69160e9787a828e9e689304968a90c2ead744dcc946fb9b78c0",
+              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage1-right.png",
+              "sha256": "c98f0b05a1c40b4a26b9e09f58a6bf1e5552b20e33f8be19c87aa5b3ca316ebb",
               "scope": "current native PPU"
             }
           ],
@@ -2009,7 +2032,7 @@
           "core": "accuracy",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/likeness-v031/stages/stages/accuracy-stress1.gif",
+          "clip": "docs/screenshots/likeness-v032/stages/stages/accuracy-stress1.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -2059,28 +2082,28 @@
             0,
             1
           ],
-          "movement_clip": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage2-movement.gif",
-          "impact_clip": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage2-contacts.gif",
+          "movement_clip": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage2-movement.gif",
+          "impact_clip": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage2-contacts.gif",
           "impact_clip_policy": "selected contact/hitstop episodes concatenated; GIF playback timing is approximate",
           "stills": [
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage2-center.png",
-              "sha256": "d62c1fe022a5a1f4f38c10d299098904f839d6311426b12fa6339fe35b1716b8",
+              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage2-center.png",
+              "sha256": "fa901a9491391beb37a3dbea7ac4d781e7556e219e6537796c8649e99c871527",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage2-guide.png",
+              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage2-guide.png",
               "sha256": "45cdb6973c2e7fbf333324a23c4eda6bc538c31797d0a772bdec3c93c3799301",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage2-left.png",
-              "sha256": "394811053fa06953ca8f78ef9cdc4b71775aad0d307a79e50807724b0b94c74b",
+              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage2-left.png",
+              "sha256": "aad425378dfb552490dc90c3088e712745ea9aa45ef743e3189ab5555f8092c9",
               "scope": "current native PPU"
             },
             {
-              "path": "docs/screenshots/likeness-v031/stages/stages/accuracy-stage2-right.png",
-              "sha256": "f2fa3227525e9f8ab659689dd229e06b79acec6c5266a7a4dc06667df10d676b",
+              "path": "docs/screenshots/likeness-v032/stages/stages/accuracy-stage2-right.png",
+              "sha256": "31c722e79638581f565e03d0bff18a861bfccb0f14c25defd9316f6e3b45590d",
               "scope": "current native PPU"
             }
           ],
@@ -2113,7 +2136,7 @@
           "core": "accuracy",
           "two_wave_frames": 22,
           "wave_frames": 31,
-          "clip": "docs/screenshots/likeness-v031/stages/stages/accuracy-stress2.gif",
+          "clip": "docs/screenshots/likeness-v032/stages/stages/accuracy-stress2.gif",
           "measured_frames": 720,
           "cadence_deltas": [
             1
@@ -2807,7 +2830,7 @@
         "details": [
           "accuracy-stage0",
           2105714,
-          4792
+          4827
         ]
       },
       {
@@ -2978,8 +3001,8 @@
         "passed": true,
         "details": [
           "accuracy-stage1",
-          2133436,
-          4881
+          2133438,
+          4801
         ]
       },
       {
@@ -3150,8 +3173,8 @@
         "passed": true,
         "details": [
           "accuracy-stage2",
-          2161160,
-          4990
+          2161162,
+          4883
         ]
       },
       {
@@ -3183,10 +3206,10 @@
     }
   },
   "check_count": 19002,
-  "elapsed_seconds": 95.891,
+  "elapsed_seconds": 88.86,
   "suite": "stage-depth",
   "shared_native_execution": true,
-  "focused_report": "docs/likeness-v031-stage-report.json",
-  "focused_report_sha256": "be9d11a3e6d838eb321fca6c6acd8dbc863848a0b3dc0ac5778cd1a673e36153",
+  "focused_report": "docs/likeness-v032-stage-report.json",
+  "focused_report_sha256": "15ab991489dd70ed8913d31830710d4accbcd4773ad171dab55ff3ea630a9e24",
   "passed": 19002
 }
