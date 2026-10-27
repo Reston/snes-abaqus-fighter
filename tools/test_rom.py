@@ -242,6 +242,13 @@ def verify_animation_manifest():
                 if 20<=index<28 and entry.get('walking_revision'):expected='walking-v2'
                 for revision in entry.get('combat_revisions',[]):
                     if index in revision['frame_ids']:expected=revision['scope']
+                native_faces=entry.get('native_face_revision')
+                if native_faces:
+                    check(native_faces.get('frame_range')==[0,63] and
+                          native_faces.get('scope')=='native-pixel-faces',
+                          'Native face source covers all stable pose roles',
+                          {'fighter':fighter,'revision':native_faces})
+                    expected='native-face-pixels'
                 check(source_kind==expected,'Frame metadata keeps its source role',{
                     'fighter':fighter,'frame':index,'expected':expected,'actual':source_kind})
                 frame_hash=item.get('native_hash',item.get('hash'))
