@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "fighter_id": 7,
+  "revision": "eye-expression-v032",
+  "legacy": {
+    "source": "assets/art/characters/07-cristian/atlas-v6.png",
+    "sha256": "ca588233e70e71857a1f974805251f79240cf7d137eb6933096de6a3ace5f1b3",
+    "selected_final": "assets/art/characters/07-cristian/atlas-v6.png",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-bfb0ac02-77d4-4f86-872f-3dbd647f1468.png",
+    "raw_output_sha256": "ca588233e70e71857a1f974805251f79240cf7d137eb6933096de6a3ace5f1b3",
+    "prompt": "Use case: identity-preserve. FACE-EXPRESSION CORRECTION of an existing production game atlas.\nImage1 is the EDIT TARGET and the exact 16-POSE/BODY/COSTUME/LAYOUT contract. Keep every body drawing, limb, stance, size, clothing color and pose composition.\nImage2 is the USER-APPROVED FACE/EXPRESSION reference of this specific man. Image3 is his real photographic face, supporting identity.\nReplace the rejected generic stern facial design in EVERY figure with this SAME man's actual eyes, eyelid opening, gaze, eyebrows, cheek/jaw shape, nose, hair and relaxed closed mouth from Image2. Faithful identity and expression take priority over conventional hero features. Especially preserve the photo's individual small eye/brow asymmetries. Do not add scowling diagonal brows, dark eye sockets, black eye-mask bands, anime eyes, long downward eye tails, clenched lips or an exaggerated jaw. Natural calm ready expression in idle/walk/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining identity. A fighting stance must NOT turn the photographed expression into an angry stock fighter.\nKeep the target's complete body, physical scale, palette character, costume, anatomical continuity and all sixteen actions. Head remains naturally attached to neck, same size. In forward poses use near-frontal three-quarter head so both eyes can read, not a razor profile.\nThe result is reduced to a 67-73 PIXEL-TALL sprite. Adapt the approved face into SIMPLE BROAD CEL PLANES with small separate eye marks, softer middle-tone eyebrows, clear light skin between brow and eye, short nose and a subtle relaxed mouth. Keep the cheeks open and bright. 2-3 flat skin tones, restrained outlines around features; no microscopic skin texture, noisy wrinkles or heavy black eye details. Match the target's original 1992 arcade cartoon body style, not the head study's high-resolution photographic texture. No chibi/childish expression.\nExact 4x4 row-major poses, preserve target compositions:\nROW1 idle guard, forward walking step, retreat walking step, deep crouch guard.\nROW2 tucked airborne jump, full right jab, full right rear-hand cross, extended right high side kick.\nROW3 right low sweep, standing block, struck backward torso recoil, upright two-fist victory.\nROW4 forward two-palm cast NO FX, compact raised-fist uppercut, horizontal knockout head LEFT feet RIGHT, right shoulder rush.\nExactly SIXTEEN complete separate full-body figures, generous transparent gutters. Keep uniform scale across the sheet, crouch/jump/floor poses genuinely lower. No extra floating heads, studies, labels, grid, backgrounds, cast shadows, projectiles or effects. No cropping. True transparent PNG.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "size": [
+      1254,
+      1254
+    ],
+    "references": [
+      {
+        "path": "assets/art/characters/07-cristian/atlas-v4.png",
+        "sha256": "6c18c84321b7043b786ac97a9e0659e75990e68f1179b3a1ce6c11817352ef29",
+        "role": "v0.31 body, costume, pose and layout edit target"
+      },
+      {
+        "path": "assets/art/characters/07-cristian/expression-study-v032/head.png",
+        "sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5",
+        "role": "user-approved eye and expression direction"
+      },
+      {
+        "path": "assets/art/characters/07-cristian/expression-study-v032/reference-crop.png",
+        "sha256": "c95086b9ef274e6d5fe3ffb4853bf91762241403422116c68ee7c5b872ad43f0",
+        "role": "photographic identity and natural expression"
+      }
+    ]
+  },
+  "approved_expression": {
+    "file": "assets/art/characters/07-cristian/expression-study-v032/head.png",
+    "sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5"
+  },
+  "reference_direction_approval": {
+    "quote": "Yes, use this direction",
+    "scope": "photographed eye and expression references for Ivo, Fernando and Cristian; not final native likeness or merge approval"
+  },
+  "human_approval": null
+}

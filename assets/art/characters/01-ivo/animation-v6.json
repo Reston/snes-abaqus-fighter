@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "fighter_id": 1,
+  "motion": {
+    "source": "assets/art/characters/01-ivo/animation-motion-v6.png",
+    "sha256": "9e5ccd24da1267e5e6b183363f93424a26688bb054f9492646f9230fbe1b1559",
+    "selected_final": "assets/art/characters/01-ivo/animation-motion-v6.png",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-047e3453-0faa-4e40-add6-cf30e2e53894.png",
+    "raw_output_sha256": "9e5ccd24da1267e5e6b183363f93424a26688bb054f9492646f9230fbe1b1559",
+    "prompt": "Use case: identity-preserve. FACE AND EXPRESSION EDIT to an existing complete production fighting animation sheet.\nImage1 EDIT TARGET is the EXACT body/pose/costume/layout guide. Preserve every complete body drawing, stance, arm/leg motion, proportions, costume and colors. This is NOT permission to redesign the bodies or animation.\nImage2 is this SPECIFIC MAN'S USER-APPROVED FACE/EXPRESSION reference. Image3 is his photographic face. Carefully replace the target's old generic stern eyes/expression with the actual eyelid opening, eye distance, gaze, brows, nose, cheek/jaw shape, hair and relaxed closed mouth of Image2.\nKeep his individual small natural eye/brow asymmetries. Calm ready expression in movement/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining the same identity. No stock hero scowl, diagonal angry brows, dark eye sockets, black eye-mask stripe, glaring anime eyes, long downward eye tails, childish dot eyes, exaggerated chin or clenched lips. A guard pose should NOT automatically make him angry. Keep head naturally integrated with neck and torso, same head size and full-body physical scale.\nNative use: 67-73 pixels tall, so the approved face must become a few deliberate BROAD CEL COLOR PLANES with separate small eye marks, softer middle-tone brows and clear light skin between eyebrow and eye. Short nose and understated relaxed mouth. Keep cheeks bright; no fine skin texture, micro-wrinkles, black face shadows or noisy dithering. Retain the target's original 1992 arcade cartoon body rendering and full clothing details. No photographic pasted head and no chibi body.\nEXACTLY 16 independent COMPLETE full-body figures on the same FOUR-COLUMN by 4-ROW square atlas. Row-major pose contract, matching Image1:\nROW1: breath-neutral; breath-inhale; breath-exhale; breath-return\nROW2: walk-forward-contact; walk-forward-pass; walk-forward-rear-pass; walk-forward-opposite\nROW3: walk-back-contact; walk-back-pass; walk-back-lead-pass; walk-back-opposite\nROW4: crouch-halfway; jump-anticipation; jump-extension; landing-compression\nEvery pose stays in its original cell and keeps the original silhouette/action role. First figure retains the original neutral/anchor scale. Crouching/airborne/floor drawings remain genuinely lower than upright poses; never stretch all poses to equal height. Preserve complete feet/hands and generous transparent separation so no figures touch.\nNo added poses, duplicate floating head studies, captions, grid lines, frame, background, cast shadows, energy/projectile FX, props or cropping. True transparent PNG.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "size": [
+      1361,
+      1156
+    ],
+    "references": [
+      {
+        "path": "assets/art/characters/01-ivo/animation-motion-v4.png",
+        "sha256": "927f400a9f53a1f537428d1cdbc574d3c44f5fe5cac0c860e6273f76ff0c25a1",
+        "role": "v0.31 body, costume, pose and layout edit target"
+      },
+      {
+        "path": "assets/art/characters/01-ivo/expression-study-v032/head.png",
+        "sha256": "721585de5590e4cbb6287d7720fc057bea5f6a8d9124098fd8b0d77c86febfb2",
+        "role": "user-approved eye and expression direction"
+      },
+      {
+        "path": "assets/art/characters/01-ivo/expression-study-v032/reference-crop.png",
+        "sha256": "ae8796f0202024e2a17506ea1056cefe2269234c0eede4887d7f5f8dc46561ea",
+        "role": "photographic identity and natural expression"
+      }
+    ]
+  },
+  "actions": {
+    "source": "assets/art/characters/01-ivo/animation-actions-v6.png",
+    "sha256": "f17ac3f6aa92dec029bcd19e9c8f12c71b6db034e42bb9c9b04bd941124b54bf",
+    "selected_final": "assets/art/characters/01-ivo/animation-actions-v6.png",
+    "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-34f45876-3944-480e-b5a9-6c63c842140c.png",
+    "raw_output_sha256": "f17ac3f6aa92dec029bcd19e9c8f12c71b6db034e42bb9c9b04bd941124b54bf",
+    "prompt": "Use case: identity-preserve. FACE AND EXPRESSION EDIT to an existing complete production fighting animation sheet.\nImage1 EDIT TARGET is the EXACT body/pose/costume/layout guide. Preserve every complete body drawing, stance, arm/leg motion, proportions, costume and colors. This is NOT permission to redesign the bodies or animation.\nImage2 is this SPECIFIC MAN'S USER-APPROVED FACE/EXPRESSION reference. Image3 is his photographic face. Carefully replace the target's old generic stern eyes/expression with the actual eyelid opening, eye distance, gaze, brows, nose, cheek/jaw shape, hair and relaxed closed mouth of Image2.\nKeep his individual small natural eye/brow asymmetries. Calm ready expression in movement/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining the same identity. No stock hero scowl, diagonal angry brows, dark eye sockets, black eye-mask stripe, glaring anime eyes, long downward eye tails, childish dot eyes, exaggerated chin or clenched lips. A guard pose should NOT automatically make him angry. Keep head naturally integrated with neck and torso, same head size and full-body physical scale.\nNative use: 67-73 pixels tall, so the approved face must become a few deliberate BROAD CEL COLOR PLANES with separate small eye marks, softer middle-tone brows and clear light skin between eyebrow and eye. Short nose and understated relaxed mouth. Keep cheeks bright; no fine skin texture, micro-wrinkles, black face shadows or noisy dithering. Retain the target's original 1992 arcade cartoon body rendering and full clothing details. No photographic pasted head and no chibi body.\nEXACTLY 16 independent COMPLETE full-body figures on the same FOUR-COLUMN by 4-ROW square atlas. Row-major pose contract, matching Image1:\nROW1: ready-guard; jab-retract; cross-windup; cross-retract\nROW2: kick-windup; kick-retract; sweep-windup; sweep-recovery\nROW3: block-impact; hurt-recovery; special-charge; cast-recovery\nROW4: uppercut-anticipation; uppercut-recovery; victory-transition; knockout-fall\nEvery pose stays in its original cell and keeps the original silhouette/action role. First figure retains the original neutral/anchor scale. Crouching/airborne/floor drawings remain genuinely lower than upright poses; never stretch all poses to equal height. Preserve complete feet/hands and generous transparent separation so no figures touch.\nNo added poses, duplicate floating head studies, captions, grid lines, frame, background, cast shadows, energy/projectile FX, props or cropping. True transparent PNG.",
+    "mode": "built-in image_gen",
+    "transparent_background": true,
+    "size": [
+      1402,
+      1122
+    ],
+    "references": [
+      {
+        "path": "assets/art/characters/01-ivo/animation-actions-v4.png",
+        "sha256": "b14801c5bf4cdadf098601bd65aa1da65dae2cfdb440cfd541d742dd75144481",
+        "role": "v0.31 body, costume, pose and layout edit target"
+      },
+      {
+        "path": "assets/art/characters/01-ivo/expression-study-v032/head.png",
+        "sha256": "721585de5590e4cbb6287d7720fc057bea5f6a8d9124098fd8b0d77c86febfb2",
+        "role": "user-approved eye and expression direction"
+      },
+      {
+        "path": "assets/art/characters/01-ivo/expression-study-v032/reference-crop.png",
+        "sha256": "ae8796f0202024e2a17506ea1056cefe2269234c0eede4887d7f5f8dc46561ea",
+        "role": "photographic identity and natural expression"
+      }
+    ]
+  }
+}

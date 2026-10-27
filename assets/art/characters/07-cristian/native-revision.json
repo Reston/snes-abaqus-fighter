@@ -2,7 +2,7 @@
   "schema": 1,
   "fighter_id": 7,
   "slug": "cristian",
-  "revision": "photo-model-v031",
+  "revision": "eye-expression-v032",
   "baseline": {
     "file": "assets/art/roster-baseline-v0.8.json",
     "sha256": "386a430db966c7f5c843811d78d9e06043838d8893f166bdc58637ddde773bd5"
@@ -35,33 +35,37 @@
   },
   "new_sources": {
     "legacy": {
-      "file": "assets/art/characters/07-cristian/atlas-v4.png",
-      "sha256": "6c18c84321b7043b786ac97a9e0659e75990e68f1179b3a1ce6c11817352ef29"
+      "file": "assets/art/characters/07-cristian/atlas-v6.png",
+      "sha256": "ca588233e70e71857a1f974805251f79240cf7d137eb6933096de6a3ace5f1b3"
     },
     "motion": {
-      "file": "assets/art/characters/07-cristian/animation-motion-v4.png",
-      "sha256": "58ad552cc7815c7b5971e72044cfe0333b5cf1d54b36bf454b30046a3f38e485"
+      "file": "assets/art/characters/07-cristian/animation-motion-v6.png",
+      "sha256": "c7c44352b8ab1cefbd68a2b372aedae35415899ca5f9e2d30911c0e02b4fd623"
     },
     "actions": {
-      "file": "assets/art/characters/07-cristian/animation-actions-v4.png",
-      "sha256": "72cd4459da210077e5fd06568b487c318fa879c7e8bf83240a38ceb3b0c3abe4"
+      "file": "assets/art/characters/07-cristian/animation-actions-v6.png",
+      "sha256": "e2ab9d82c63ba8f351f42b800b723a8b4f11ae3bd5f1c8c78fb04e66181d3d69"
     },
     "airborne": {
-      "file": "assets/art/characters/07-cristian/animation-airborne-v4.png",
-      "sha256": "35666ec4e84b6175214b2625817173cfbe334c256b9bdc36de81a3e3be4f29e4"
+      "file": "assets/art/characters/07-cristian/animation-airborne-v6.png",
+      "sha256": "d750ca264247c4536b392a2d09c6d3a624bcc68fd124b540b952593a1dc5bfa2"
     },
     "airborne_metadata": {
-      "file": "assets/art/characters/07-cristian/animation-airborne-v4.json",
-      "sha256": "b65925d192d9dc6ca89f80cc84396848dde90c4745453a1c388b7cca925ee72c"
+      "file": "assets/art/characters/07-cristian/animation-airborne-v6.json",
+      "sha256": "c5059c76df05ede1889dfb69e2e2200ed2de52aecee5d32dfb8d93a77915106c"
     }
+  },
+  "portrait_source": {
+    "file": "assets/art/characters/07-cristian/expression-study-v032/head.png",
+    "sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5"
   },
   "normalization_policy": "neutral-height",
   "normalization_reference_height": 316,
   "source_normalization": {
-    "legacy": 1.0604026845637584,
-    "motion": 0.9132947976878613,
-    "actions": 0.9028571428571428,
-    "airborne": 0.9028571428571428
+    "legacy": 1.0193548387096774,
+    "motion": 0.9106628242074928,
+    "actions": 0.9002849002849003,
+    "airborne": 0.8876404494382022
   },
   "old_native": {
     "frame_hashes": [
@@ -138,72 +142,72 @@
   },
   "expected_native": {
     "frame_hashes": [
-      "a139163b16f721eaed9404631dfba56459f4ced831e64fbc1dabe12ef99b6918",
-      "c0c7560404110d89769cf5d61c164d8b94f15da4c00d5e0eafae165ed0ee84b7",
-      "21bf5c6ed54294a691f92c44605e06cb6f8e71142202a5577990ba951ef96123",
-      "0c973fe79fbdd3d0d451b819100dd0526316e19b3089db0dbe5345b83ce9b652",
-      "d3b89a42338417cbc3310a560da7033e18f2df12c822f2b4831c3e2ab4ff0e12",
-      "666bc4147b6df756ef1d2394570fa7ea7168d2f4e61bf25e7751ddda24bbf8a4",
-      "2142191af6ce84631bf5849aec59997a924f305df599a3a99da5dea3f7a228c9",
-      "4d269b9d2a496e4e1f914654283375eb70fe7b37b39e9c3c0f4f3772c56eb177",
-      "73e70813477d5749045a677e1aec443dd60b753e7e145d0f47f5cd3fd885a2ae",
-      "692b948c1da8684c5509df75493c98f534c93cd0f85e1d6c41fa0ba68c0690a2",
-      "f70b80a92be6d8e469ad5b3721fc16566941d468cc62a8f87704e89ffc7fafd8",
-      "a2a4038a2648835974556c227de8f01fa77a61ef7745c7601e9a2760a1f23552",
-      "8c4d176ac6bb11eba076b8e04ea77a538112d094660899a62da044173e72ba6e",
-      "787777b510a4602b40b9a8c541b2ba1f6819e5ba75a23798dbbd05eaaf45a9e7",
-      "65ace08c4d9dc226526fdd76751c23e6fc9372f1ca3d8065e7698cb15c9ae113",
-      "62c3ca6a0e4465f46ec82464cb68bf1ff8f3df488f37040d36f31c8f869dc3e1",
-      "e9d18d2d0845a070779ac2bfe5bae23c2b4566454901e6b51ac9dfc2acdc7498",
-      "5d695fd549815535b65b0c0b10751a3cefd1fbcdf4bd1da7edec42376804ffd6",
-      "08add95c86189ff13047d4109e19726fbe33897bd5afbfe61cd7c76206144c60",
-      "b70be12dfe5e94669019d92f96ec19dddc77158ec94b3ad593e3da0b9d3bb4ea",
-      "25addfb0b7215188f77a5d3e24d466d7ff4195a40ca0cd4563da44da74b361b5",
-      "1052711f85bc034b912905777aff16cd0437a0f1a495f730c02ca05a7889b67e",
-      "56ba002f86722d15b117949a0aeac4c34795be3fbb3e5ff4f8981e9b236fc213",
-      "632f0a99857e2c13f9adaca7cebb3e568f25b4a974f78560aeb100feb7e75af0",
-      "b9b20630062eaaa57e5c0a512aae2740beebc65c5b36025e7e67d293507a4d5f",
-      "48c8641e3aa33e0ca5ce8f7b7996a2985125673e39121e1a24460ae1e70d62d7",
-      "ac81392d4c057036d3e7bf11b15b6972ed0b944915bbad54c99e88abd7f44eba",
-      "f670361a1ef274f3270f5b982b16e4bc496d983cb9f932e8cbeaf33e8355c080",
-      "889a115108d6224df931c6fb3e1bd5e7feab8dd5f6be112bbac10eab902d524c",
-      "ed289f308c6105de579ca4e2176e05db877620f0baf1155caaa1abb25f861152",
-      "cd9430805caa465730789d46782791337d4ba546a31eb5efeed269e76554cb68",
-      "e61428fe0b49915b1b7af9156a05a8b8be9f69657538a3c94d6c5b9809c1f728",
-      "2b59e2e5855eda08a870223a6ce25638fee458504c301d5bf80bf442f2d712ec",
-      "42d1822235f6edc934b0ba70bb0f1ae5b4260190168a48044a39ef902f8fccac",
-      "7dd7ab48f1227e2d9e9edbac02c85bbbc9452ada532c8155af817ac6417157de",
-      "70d0d3b6e358a595028024f00e4ab880ffd46b804bf8cac3dd63211b7807349c",
-      "a17e53504b4b7ec17a994a0f91ae2358e5e54631d95510226ebbd1d906b0ea2f",
-      "b51ac63e98c875c0dba89c08334fafe0eaf1771351eaa4c59b310eeeefdaba6b",
-      "4f7a2246a51e9a387504c939700b3d36b1381479b1edda300b06006538add6d5",
-      "ca95007091f7f98180fc08a16b3f5ebdc94002a838b13424985a1f001fcc115d",
-      "08077c24b5c11b0abf866bf6b2648c153edaf356fb9a5d9041e727c590d568dd",
-      "0c0dda287419e8b55f683aba0df97b8d96f196f5ea2cabade2ea28bb8d314ab1",
-      "82c83a9edd09d0dfdb82d6288dec2482b764272705d38de13e8e4867dd0df30b",
-      "ee1bf3eeb2d968521ec94f1c617a5a2bdf83e80a1f40161b92c182bda058bb99",
-      "17281f54078d92e8782bf38bbe7a5425681fdc186ded59de8bb50bf4aeb8b143",
-      "d0f6a800e7262d7904ba6a871abc79811014acabd8fd8043474d0d81be8d8992",
-      "6adf607e9d66ebd18a4580599fc4344ad8cee2523d73ac117cd36ba2f3879752",
-      "bba8eb5e604b1cac14765773b74f1adefde76da5d42cae24f84c1b6f54f4446c",
-      "76801ffbb92362c6a4f6a478e24a476b688c82e52d6d6edb097e776fe769e902",
-      "3f05e025c7627978f630fb75ec180303b02cdd3b1af325cb39fb532d3e66f2fa",
-      "ae86cbd722ef93a0cf7e2759d3e3377aba9df33382f15a49cab6552538aeee49",
-      "2a51720a55aff28144823af2d4280d9bf3b4b5e582a235adfa299cc8d427271a",
-      "5f86bfe04a5a464634a6c87dcb79f7b0d9b4e7b6139f350791c3bce4366864e3",
-      "9b8d620580867f6e67981fe34b9fc1f36b40c3dc1f47185d1cef94f5a040105d",
-      "77537aa5bf34e6aa6628e8b6b2f607113b369a506a1577462e18a05ba2e4d503",
-      "8cef6a155b8bc94137d5c4b45012af655d8496e189bab1b5534cff8091797c7d",
-      "56d7003d75f040d3246abe5000ec3350f6096ae387f4d383dbdb6ed19c1a9e60",
-      "b4f72f5e698d63086074f9654e59e6ae1ca80b6f48e8039003cade890e342bfe",
-      "09877ac02b774cf2d1a7b39eb38cd343b811614e57cdeda0f27d4c72e1c1d052",
-      "9d2aa47294bdc92c31f5b73d46962c1d7f06973e93d63ca87d6f3c5b75b8281e",
-      "350db77515c4070887275219852e23d1e648c3192b64b8fd726e9a276cac187d",
-      "1281e16383711641bf4a8809bc27addc9a32a512317a69d5898566f880315634",
-      "8a3ac749b9b5c04d30554869340fc5775511f285055d303cd073268c5cd4b955",
-      "61abe633d5d4ab391bb211fbc51ef4f2ca69f11f5f002d5f644a0793d62f4d41"
+      "17e44d8f7b159bade575708d8c171cab5a5541c3d7252d867e4505d0e000e041",
+      "d87332f4591b2306680e4ed75436a04cd25a3c4660c22fb3031eaf38c610533f",
+      "da0e526baa61dc187ce5dadca66f249f18f0a85593beb0f38b1593d3a25ebdad",
+      "6e634ef72bf76e336ed35df6a6e178793306630650f9ed4def014354b6476d81",
+      "3465d86d03eb6c704bfef5d339fee638b4d67b74bb5409128e4703f51a6b0bf3",
+      "57a325d6c2e91afee5a97cf96d7073af9094c93d42a281ef20b0bfa00e4ad7ab",
+      "5b3e9e2b6ec3b30ce48af84a79d96bc923364b3fde6b5cf255ac07250d4b4bd0",
+      "163539e66ef4d2f0ce123cfcc29d0ea940dbd844826147724649d5abbcd3eb80",
+      "210fbcf45a5b813c6bf45542faa9e8e1c9c75e75a1ad24063ca3928feed26eb7",
+      "287c5e4988008d805a0791c1dc422a93bd091915dd7acb923b2c0e951ced2c5f",
+      "b709a20316fe8f2564c17708551d805032746a6519620e244e5d7689b52c7a1c",
+      "8b4bdfadbafaf25f3f532581cea5344f3f050405773d4dc322a5a32c13115f8b",
+      "574c0f2af3120e9c1a75647ee8feb965af1b495a0f88480e2e58053398686cde",
+      "db37fa422a4dd8b440b5724a188e4317d6416b53f88e3b3d9dee79b9166d1813",
+      "7e6c4b273d9ec87512a373b1c0e3cadbdf828d26e80851d88bdf804332de4fe5",
+      "c376153778d3904c9555ceef357d2bbec24ec8a388f213b38f22b5e87b6bf908",
+      "5ed2cc2534e1e887947ca460c7032d8e636d28f3dc7dce7a3961e842eec4f947",
+      "b15af784faeb4103cec41f94ec3aa2e776b4a474c2e10a05e6a38fa846769a6e",
+      "b3f7420609d2a57668c0f2398177835b53acb4ec20a943047babfe56164d94df",
+      "ac5cf4bb2b9e8a9cbf42c3b45266fe8ff59cfc1e0ed5d633f14f9d5150ac96da",
+      "80ee392b8670c697f0dbd3a748d9194897b06d746ff613bd5b78be052d6bc889",
+      "674cd076661d5066458bcd996e2df7165bc7457488c937bc8f56d3363909c7b6",
+      "2db8f194f4b2c7947d63b88ecd6b862ca7004a2c7fb5d496e1ca90dbd8926a68",
+      "5e8fae445bd540b8c1d9a28594f02dd4326a1cdfe7d697cc6ecf7d898b9a6a95",
+      "4fba01865627791cbd643d437078d1b9bd1335f622dcac1aac0287500cdc4fda",
+      "312171375fc1db8ee1db509d8101742b4936af4aebacdf2f5dad2a0c64a0067c",
+      "54ebe4031ac68d5ba1de3de9ed5fe928f55108ca4d517aab9c71106dae01c37b",
+      "75ec4547802e85e2fe89065469bc8f19806b3b723e26ea0470013a04c6330598",
+      "3d74eb5acb81cdd59c10a16938272f77774526eb3874b79fc0918e24e4fb0132",
+      "1abb7384ff24ec929ad1656959d6da1af2875cabb9bce2ec9306c8c57d68c4b7",
+      "e080cff3b3eeac71390486cfa9d717b1af6435da1b8550d0cbba69fc7b7cb2c7",
+      "3dab489d15d79637afe09f26cbd193d77324f2fa36b72bb311feb7fa24158d77",
+      "d777e4068e99e370720206177aca43651e8fd60f1ff6d8ac8c2892b5b9e5b8a3",
+      "d3439fce6ee9d2a95071fea7b7b8c60ed1aa3c4f951f1f9a885e391e47bb056b",
+      "e53233f3000b833153a74ea27140964220b43ac172b80755d016e0051603d6f4",
+      "a9cd17e2db55b71d670006ff2feaff91b6ea56c03dfbe36a907befcdbb3a5165",
+      "ef26fa0e1aaee5c3c40163fb19202b91386968967e9fccc1963050f78813f4fd",
+      "741627b384d17235402059f317a674ef1f2770dc5b58990fa1b323aaa2adf9bc",
+      "579ba736b53337f07ff42d732bc7989b293b11cf0181748ee6c233df041d094c",
+      "ea05fbde63a3ee23c8e993e99b4c8cf0ec8911040da9b93400502f17826f23dc",
+      "3218529f3fddb5c8279f710873b57d2fe466813e92462ad08ee46b4d08fbe32b",
+      "ad6b0003f4d35f5436560126886ec77ce05b89f826613cd43691026d7b0f6d1b",
+      "074dfee7c7ecabca674f95899bb0dce32263f570a04b1a707f7ef3e216bcfecd",
+      "7d621f5313c823db03852407bcc2923eb8c535b7572aaed1a17ddd439e1a5451",
+      "28425995b269cbf888f44251b4995e60b5c5f24a0249acbb7a39bcdcc8256a8a",
+      "32923e4a3de798f1ba78e28797f4d1b08df10ac46ca569c5933601dc44ed4bda",
+      "f80b3dd5c30aebe464e253950943469c950f79b06b826ac3bde73ee94c32f84f",
+      "e25a929789744e7d871bb5dbf15e2b0f7e3caab1668c6c95e6b9d1290415858d",
+      "7cbe70183c832625ec2bfe4fe1c5b2a012947201dc91609d04c52dbdd9bd3975",
+      "e8f8c4f33b984f570b037b04600f1ab4374201236f9216b413b9c736fe905c93",
+      "9beeea1b473f338e5506c2adc51978213f631675a09689daed845d947d689be2",
+      "7fa027efa1fa220c850dbcf3c2ba96d369a3ec30783c54ba0b1dfef67d2b893c",
+      "adca3ed7afd6c2b571223a127d71abf1db769a5c7f37f4792b26ea9be2e8d4a5",
+      "12a77ae9882fb5898a0c9ee582fefc2cf672d084cbefcea688347755204a4507",
+      "b1f0af23b6a08ff03275efa5947c7151430ab79e17f2f7788a39a5bed196ef1f",
+      "3fd371478dde88b274ab1a34cc8604c8162a2804c63d085348121880aef60d9d",
+      "5f8b221519ebc4727591683d0b99d668fcdf641731dbf55fc0d687ce70037016",
+      "f9158e80c722757c4a9614041cf1d16b9bacfcc21fbda4c812ab47f062104cd7",
+      "3f1153820c26092f2a4fd8ad6028bb9a402020bc67ac0d15a24ae9e4339bba8b",
+      "5639a6fcee72848d720fbeda2343257609afc70da79e15b73d0769d706a25666",
+      "fae54246084b113ad0bf750f3d6fef61f465e76d0da0992367493cb8bdad1f93",
+      "346faa152d84545a94cd1512cad48ebb721fbc881b95d7553fa6107fcf13b549",
+      "4b6eed4e1353c1be062d941a7ccfcf0533c30d46144b7428281960d94e83d92e",
+      "1fe49b5f6077b59b2708c71c022e93888ce4d8579535987a7359062336094379"
     ],
-    "frame_hashes_sha256": "43abf66375fe9a2d0b6a65d8aee7f7958fcfae05446cd0f97e07fe37cdd630be",
+    "frame_hashes_sha256": "85361a59378a8c34d86dd9e317d4c0f21b13c205aa48afb5e87a99515ae2e4de",
     "palette_hex": "0000000c21104314611c8420a328a620e62ce72c072d72297b3ebf2e5e5b5a6f",
     "palette_sha256": "5488f08bd6b0b18a4d65a681f3a88257f93ac2e55c9fafa5834af4f52b55b069",
     "uniform_scale": 0.2310126582278481,
@@ -211,22 +215,25 @@
   },
   "provenance_files": [
     {
-      "file": "assets/art/characters/07-cristian/likeness-v4.json",
-      "sha256": "302422ffecf6f3f7b67b577f09539d5f50f193f581af86ac1344c30b3cd6a71b"
+      "file": "assets/art/characters/07-cristian/likeness-v6.json",
+      "sha256": "747a8f2355e0d6e7e92029871c304faa3d58ec7cbda2d72a421cb569a55403ab"
     },
     {
-      "file": "assets/art/characters/07-cristian/animation-v4.json",
-      "sha256": "a819a64ddd68f6d7f1973e19c84eb998cd83af61fe550c82ce59b043f017fc45"
+      "file": "assets/art/characters/07-cristian/animation-v6.json",
+      "sha256": "a48ab9a00f7a4941da77d80f70bd0c50809c54dfb4496cf321257dfa7b1c38b5"
     },
     {
-      "file": "assets/art/characters/07-cristian/animation-airborne-v4.json",
-      "sha256": "b65925d192d9dc6ca89f80cc84396848dde90c4745453a1c388b7cca925ee72c"
+      "file": "assets/art/characters/07-cristian/animation-airborne-v6.json",
+      "sha256": "c5059c76df05ede1889dfb69e2e2200ed2de52aecee5d32dfb8d93a77915106c"
     }
   ],
   "review": {
-    "request": "Improve likeness of Ivo, Fernando and Cristian from their photographed identities.",
-    "mode": "agent source and native visual review",
+    "request": "Apply the approved natural eyes and expression throughout Ivo, Fernando and Cristian animations.",
+    "reference_direction_approval": {
+      "quote": "Yes, use this direction",
+      "scope": "photographed eye and expression references for Ivo, Fernando and Cristian; not final native likeness or merge approval"
+    },
     "human_approval": null,
-    "scope": "complete photo-based body/face model across all 64 poses; original palette, physical height and move roles"
+    "scope": "face-focused full-body edits; retain v0.31 body design, palette, physical height and move roles"
   }
 }

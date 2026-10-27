@@ -1,0 +1,78 @@
+{
+  "status": "passed",
+  "version": "0.32.0",
+  "rom_sha256": "096170836066bcfae2e4a03849ff62cd9feadc42cc9a765a6da43ffb27eb385f",
+  "baseline_commit": "961214932f2ff0cef388635f16ca883e688b3668",
+  "baseline_rom_sha256": "187a327c8854bfe568184dcc46c6c59f7d1d3460a60c02a6c1aeb18151b39579",
+  "ram_labels": 1331,
+  "generated_total": 237,
+  "generated_preserved": 192,
+  "generated_changed": [
+    "assets/generated/assets.h",
+    "assets/generated/character-manifest.json",
+    "assets/generated/fighter01.bin",
+    "assets/generated/fighter01.png",
+    "assets/generated/fighter01b.bin",
+    "assets/generated/fighter01c.bin",
+    "assets/generated/fighter01d.bin",
+    "assets/generated/fighter01e.bin",
+    "assets/generated/fighter01f.bin",
+    "assets/generated/fighter01g.bin",
+    "assets/generated/fighter01h.bin",
+    "assets/generated/fighter06.bin",
+    "assets/generated/fighter06.png",
+    "assets/generated/fighter06b.bin",
+    "assets/generated/fighter06c.bin",
+    "assets/generated/fighter06d.bin",
+    "assets/generated/fighter06e.bin",
+    "assets/generated/fighter06f.bin",
+    "assets/generated/fighter06g.bin",
+    "assets/generated/fighter06h.bin",
+    "assets/generated/fighter07.bin",
+    "assets/generated/fighter07.png",
+    "assets/generated/fighter07b.bin",
+    "assets/generated/fighter07c.bin",
+    "assets/generated/fighter07d.bin",
+    "assets/generated/fighter07e.bin",
+    "assets/generated/fighter07f.bin",
+    "assets/generated/fighter07g.bin",
+    "assets/generated/fighter07h.bin",
+    "assets/generated/portrait01-large.png",
+    "assets/generated/portrait01.png",
+    "assets/generated/portrait01_pal.bin",
+    "assets/generated/portrait01_tiles.bin",
+    "assets/generated/portrait06-large.png",
+    "assets/generated/portrait06.png",
+    "assets/generated/portrait06_pal.bin",
+    "assets/generated/portrait06_tiles.bin",
+    "assets/generated/portrait07-large.png",
+    "assets/generated/portrait07.png",
+    "assets/generated/portrait07_pal.bin",
+    "assets/generated/portrait07_tiles.bin",
+    "assets/generated/select.png",
+    "assets/generated/select_map.bin",
+    "assets/generated/select_pal.bin",
+    "assets/generated/select_tiles.bin"
+  ],
+  "geometry_bytes": 12288,
+  "contact_geometry_changes": [
+    {
+      "fighter": 1,
+      "changed_bytes": 250
+    },
+    {
+      "fighter": 6,
+      "changed_bytes": 240
+    },
+    {
+      "fighter": 7,
+      "changed_bytes": 249
+    }
+  ],
+  "other_fighter_geometry_blocks_exact": 9,
+  "hardware_trace_asm_exact": [
+    "src/hardware.asm",
+    "src/trace.asm"
+  ],
+  "native_rules_except_version_exact": true
+}

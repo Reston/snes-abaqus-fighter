@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "fighter_id": 7,
+  "scope": "jump-v1",
+  "palette_sha256": "5488f08bd6b0b18a4d65a681f3a88257f93ac2e55c9fafa5834af4f52b55b069",
+  "anchor": {
+    "source": 0,
+    "pose": 0
+  },
+  "height_target": 73,
+  "reference": "assets/art/characters/07-cristian/expression-study-v032/head.png",
+  "reference_sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5",
+  "revises": "assets/art/characters/07-cristian/jump-v031.json",
+  "pose_contract_sha256": "60e7b5c771b263b4a359c946f83b2d3708d8a1a136adfd14418e3a1e7c1ea990",
+  "generation_edits": [
+    {
+      "source": "assets/art/characters/07-cristian/jump-v032.png",
+      "sha256": "59cbe4724841c26f2f922024db6ca8d2be93bea6054d6d40f34d6831d59ee0e6",
+      "selected_final": "assets/art/characters/07-cristian/jump-v032.png",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-c71ec6a6-9680-4c34-91c1-32e5a596e232.png",
+      "raw_output_sha256": "59cbe4724841c26f2f922024db6ca8d2be93bea6054d6d40f34d6831d59ee0e6",
+      "prompt": "Use case: identity-preserve. FACE AND EXPRESSION EDIT to an existing complete production fighting animation sheet.\nImage1 EDIT TARGET is the EXACT body/pose/costume/layout guide. Preserve every complete body drawing, stance, arm/leg motion, proportions, costume and colors. This is NOT permission to redesign the bodies or animation.\nImage2 is this SPECIFIC MAN'S USER-APPROVED FACE/EXPRESSION reference. Image3 is his photographic face. Carefully replace the target's old generic stern eyes/expression with the actual eyelid opening, eye distance, gaze, brows, nose, cheek/jaw shape, hair and relaxed closed mouth of Image2.\nKeep his individual small natural eye/brow asymmetries. Calm ready expression in movement/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining the same identity. No stock hero scowl, diagonal angry brows, dark eye sockets, black eye-mask stripe, glaring anime eyes, long downward eye tails, childish dot eyes, exaggerated chin or clenched lips. A guard pose should NOT automatically make him angry. Keep head naturally integrated with neck and torso, same head size and full-body physical scale.\nNative use: 67-73 pixels tall, so the approved face must become a few deliberate BROAD CEL COLOR PLANES with separate small eye marks, softer middle-tone brows and clear light skin between eyebrow and eye. Short nose and understated relaxed mouth. Keep cheeks bright; no fine skin texture, micro-wrinkles, black face shadows or noisy dithering. Retain the target's original 1992 arcade cartoon body rendering and full clothing details. No photographic pasted head and no chibi body.\nEXACTLY 16 independent COMPLETE full-body figures on the same FOUR-COLUMN by 4-ROW square atlas. Row-major pose contract, matching Image1:\nROW1: neutral-anchor; takeoff-compression; upward-extension; landing-compression\nROW2: air-punch-windup; air-punch-contact; air-punch-recovery; air-kick-windup\nROW3: air-kick-contact; kick-recovery-extra; apex-guard; descent-landing-release\nROW4: neutral-extra; air-guard-extra; landing-extra; neutral-extra-2\nEvery pose stays in its original cell and keeps the original silhouette/action role. First figure retains the original neutral/anchor scale. Crouching/airborne/floor drawings remain genuinely lower than upright poses; never stretch all poses to equal height. Preserve complete feet/hands and generous transparent separation so no figures touch.\nNo added poses, duplicate floating head studies, captions, grid lines, frame, background, cast shadows, energy/projectile FX, props or cropping. True transparent PNG.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "size": [
+        1261,
+        1247
+      ],
+      "references": [
+        {
+          "path": "assets/art/characters/07-cristian/jump-v031.png",
+          "sha256": "96feeee9853741b3b073d4b815b61c73e02e2c47dd5b0e36bb95d01bb53d877e",
+          "role": "v0.31 body, costume, pose and layout edit target"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/head.png",
+          "sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5",
+          "role": "user-approved eye and expression direction"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/reference-crop.png",
+          "sha256": "c95086b9ef274e6d5fe3ffb4853bf91762241403422116c68ee7c5b872ad43f0",
+          "role": "photographic identity and natural expression"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "count": 16,
+      "poses": [
+        "neutral-anchor",
+        "takeoff-compression",
+        "upward-extension",
+        "landing-compression",
+        "air-punch-windup",
+        "air-punch-contact",
+        "air-punch-recovery",
+        "air-kick-windup",
+        "air-kick-contact",
+        "kick-recovery-extra",
+        "apex-guard",
+        "descent-landing-release",
+        "neutral-extra",
+        "air-guard-extra",
+        "landing-extra",
+        "neutral-extra-2"
+      ],
+      "frames": [
+        null,
+        29,
+        30,
+        31,
+        49,
+        50,
+        51,
+        52,
+        53,
+        null,
+        55,
+        54,
+        null,
+        null,
+        null,
+        null
+      ],
+      "file": "assets/art/characters/07-cristian/jump-v032.png",
+      "sha256": "59cbe4724841c26f2f922024db6ca8d2be93bea6054d6d40f34d6831d59ee0e6"
+    }
+  ]
+}

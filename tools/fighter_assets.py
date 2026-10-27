@@ -68,11 +68,13 @@ NATIVE_BASELINE_SHA256 = '386a430db966c7f5c843811d78d9e06043838d8893f166bdc58637
 NATIVE_REVISION_REGISTRY = {
     7: {
         'contract_file': 'assets/art/characters/07-cristian/native-revision.json',
-        'contract_sha256': '76ee73991b65aa8f477fcb701cae14b027d8b1e3255039d7c03ba23dc7518d58',
+        'source_version': 'v6',
+        'contract_sha256': '59a12dba4ca2c06cba0837f8f8d1e31c59bd4430ad923cbba9c1f03795883fea',
     },
     1: {
         'contract_file': 'assets/art/characters/01-ivo/native-revision.json',
-        'contract_sha256': '10f492e7d73a7beb38e3ed86cb357f3edb5432babcea37915dce7a52edbdb22c',
+        'source_version': 'v6',
+        'contract_sha256': 'a14e497dbeae3fb5a61369bbeae4837659a28f90cfbb0c82d7bd05e12b5cddad',
     },
     0: {
         'contract_file': 'assets/art/characters/00-damian/native-revision.json',
@@ -81,8 +83,8 @@ NATIVE_REVISION_REGISTRY = {
     },
     6: {
         'contract_file': 'assets/art/characters/06-fernando/native-revision.json',
-        'source_version': 'v5',
-        'contract_sha256': '322d43f496156df10e1f2ef83174f95d22becdb28b2cea8e13e1015b4d7cfb72',
+        'source_version': 'v6',
+        'contract_sha256': 'f79bba26ade95510e9434c0cafefc40c2b415903ad5719efadb882c66248f4b0',
     },
     9: {
         'contract_file': 'assets/art/characters/09-reston/native-revision.json',
@@ -503,7 +505,7 @@ def _load_revision_sources(root, fighter, slug, directory, baseline_entry):
     """Resolve an explicitly allowlisted four-atlas revision, if present."""
     registry = NATIVE_REVISION_REGISTRY.get(fighter)
     source_version = registry.get('source_version', 'v4') if registry else 'v4'
-    if source_version not in ('v4', 'v5'):
+    if source_version not in ('v4', 'v5', 'v6'):
         raise AssertionError(f'{slug}: unsupported registered source version')
     candidates = [directory / f'{stem}-{source_version}{suffix}'
                   for stem, suffix in (('atlas', '.png'),
@@ -537,6 +539,11 @@ def _load_revision_sources(root, fighter, slug, directory, baseline_entry):
         raise AssertionError()
     if not (contract.get('baseline', {}).get('sha256') == NATIVE_BASELINE_SHA256):
         raise AssertionError()
+    portrait_source = None
+    if source_version == 'v6':
+        portrait_source = _resolve_checked_source(
+            root, directory, contract.get('portrait_source'),
+            f'{slug} approved expression portrait')
     provenance_files = contract.get('provenance_files')
     expected_provenance_names = (
         f'likeness-{source_version}.json', f'animation-{source_version}.json',
@@ -620,6 +627,7 @@ def _load_revision_sources(root, fighter, slug, directory, baseline_entry):
         'expected_native': expected_native,
         'source_normalization': scales,
         'provenance_files': provenance_paths,
+        'portrait_source': portrait_source,
     }
 
 
@@ -1032,8 +1040,20 @@ def prepare_roster(root, output):
             raise AssertionError(f'{slug}: legacy key poses were duplicated')
         pending_images.append((output / f'fighter{fighter:02}.png', preview))
 
-        # Reuse the same illustrated face and costume for the select portrait.
-        portrait_pair = build_portrait_pair(figures[0], backdrop=colors[0])
+        # Older fighters derive the portrait from idle; v6 pins the separately
+        # authored expression master while keeping both native portrait sizes.
+        portrait_source = revision.get('portrait_source') if revision else None
+        if portrait_source:
+            portrait_master = Image.open(portrait_source).convert('RGBA')
+            portrait_master.putalpha(portrait_master.getchannel('A').point(
+                lambda value: 255 if value > 200 else 0))
+            portrait_pair = build_portrait_pair(
+                portrait_master, backdrop=colors[0], full_head=True)
+            portrait_pair['metadata'].update(
+                source_file=str(portrait_source.relative_to(root)).replace('\\', '/'),
+                source_sha256=_sha256(portrait_source))
+        else:
+            portrait_pair = build_portrait_pair(figures[0], backdrop=colors[0])
         backdrop = portrait_pair['small']
         backdrop_large = portrait_pair['large']
         pending_images.append((output / f'portrait{fighter:02}.png', backdrop))

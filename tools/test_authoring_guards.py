@@ -245,7 +245,8 @@ class AuthoringGuards(unittest.TestCase):
     def test_registered_source_version(self):
         baseline = fighters._load_native_baseline(ROOT)
         for fighter, slug, version in ((0, 'damian', 'v5'), (9, 'reston', 'v4'),
-                                       (11, 'lars', 'v4')):
+                                       (11, 'lars', 'v4'), (1, 'ivo', 'v6'),
+                                       (6, 'fernando', 'v6'), (7, 'cristian', 'v6')):
             directory = ROOT / f'assets/art/characters/{fighter:02}-{slug}'
             revision = fighters._load_revision_sources(ROOT, fighter, slug, directory,
                                                        baseline[fighter])
@@ -271,10 +272,39 @@ class AuthoringGuards(unittest.TestCase):
                                                            {0:registration}):
                 with self.assertRaisesRegex(AssertionError, 'registered v5|same-folder likeness-v5'):
                     fighters._load_revision_sources(self.root, 0, 'damian', directory, baseline[0])
-        registration = {**fighters.NATIVE_REVISION_REGISTRY[0], 'source_version':'v6'}
+        registration = {**fighters.NATIVE_REVISION_REGISTRY[0], 'source_version':'v7'}
         with mock.patch.dict(fighters.NATIVE_REVISION_REGISTRY, {0:registration}):
             with self.assertRaisesRegex(AssertionError, 'unsupported registered source version'):
                 fighters._load_revision_sources(self.root, 0, 'damian', directory, baseline[0])
+
+    def test_registered_head_portrait_mutations(self):
+        baseline = fighters._load_native_baseline(ROOT)[1]
+        directory = self.root / 'assets/art/characters/01-ivo'
+        directory.mkdir(parents=True)
+        path = directory / 'native-revision.json'
+        original = json.loads((ROOT / path.relative_to(self.root)).read_text())
+        outside = directory.parent / 'outside-head.png'
+        outside.write_bytes(b'unapproved external portrait')
+        for label, value in (
+            ('missing', None),
+            ('hash', {**original['portrait_source'], 'sha256':'0' * 64}),
+            ('escape', {'file':'assets/art/characters/outside-head.png',
+                        'sha256':sha(outside.read_bytes())}),
+        ):
+            record = copy.deepcopy(original)
+            record['portrait_source'] = value
+            if label == 'hash':
+                master = self.root / value['file']
+                master.parent.mkdir(parents=True, exist_ok=True)
+                master.write_bytes((ROOT / value['file']).read_bytes())
+            write_json(path, record)
+            registration = {**fighters.NATIVE_REVISION_REGISTRY[1],
+                            'contract_sha256':sha(path.read_bytes())}
+            with self.subTest(mutation=label), mock.patch.dict(
+                    fighters.NATIVE_REVISION_REGISTRY, {1:registration}):
+                with self.assertRaisesRegex(AssertionError,
+                        'source descriptor|source hash changed|source escapes'):
+                    fighters._load_revision_sources(self.root, 1, 'ivo', directory, baseline)
 
     def test_native_frame_and_palette_shapes(self):
         frames, palette, block, expected = self.native_fixture()

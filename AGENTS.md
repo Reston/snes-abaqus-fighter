@@ -7,13 +7,14 @@ across 128 banks.
 Preserve the native emulator requirement when extending the project.
 
 <!-- v031-agent:start -->
-- **Latest visual feedback:** the user liked the body improvement but rejected
-  the faces, specifically **eyes and expression**. PR #36 remains unmerged.
-  Three photo-faithful head studies under each affected fighter's
-  `expression-study-v032/` directory are review references only, not selected
-  game inputs or a v0.32 release. Do not treat them as approved or propagated.
-  See docs/FACE-EXPRESSION-REVIEW.md and docs/likeness31-feedback.json. Keep the
-  v0.31 bodies and all other fighters while resolving this feedback.
+- **v0.32 expression direction is user-approved:** "Yes, use this direction"
+  authorizes applying the photographed eye/expression studies to Ivo, Fernando
+  and Cristian across all animations. It is not final likeness or merge approval.
+  Preserve the v0.31 body designs, original palettes/heights and other nine
+  fighters. New v6 core atlases and v032 whole-body animation edits retain all
+  old masters. The approved head masters also fill existing portrait slots.
+  Current implementation/verification is in progress on PR #36; main/public
+  remain v0.30. See docs/FACE-EXPRESSION-REVIEW.md.
 - **v0.31.0 is a technically verified three-model review candidate**, branch
   `feature/roster-likeness-v031`. Main/public game remain v0.30. The user asked
   for better Ivo, Fernando and Cristian likenesses. This supersedes their prior

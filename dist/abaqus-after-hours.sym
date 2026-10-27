@@ -5552,8 +5552,8 @@
 00a7f980 SECTIONEND_asset_title_pal
 00e58000 SECTIONSTART_asset_select_tiles
 00e58000 select_tiles
-00e5c1a0 select_tiles_end
-00e5c1a0 SECTIONEND_asset_select_tiles
+00e5c100 select_tiles_end
+00e5c100 SECTIONEND_asset_select_tiles
 0084f800 SECTIONSTART_asset_select_map
 0084f800 select_map
 00850000 select_map_end
@@ -5562,10 +5562,10 @@
 00a7f800 select_pal
 00a7f8c0 select_pal_end
 00a7f8c0 SECTIONEND_asset_select_pal
-00e5c1a0 SECTIONSTART_asset_arenas_tiles
-00e5c1a0 arenas_tiles
-00e5ffa0 arenas_tiles_end
-00e5ffa0 SECTIONEND_asset_arenas_tiles
+00e5c100 SECTIONSTART_asset_arenas_tiles
+00e5c100 arenas_tiles
+00e5ff00 arenas_tiles_end
+00e5ff00 SECTIONEND_asset_arenas_tiles
 0086f800 SECTIONSTART_asset_arenas_map
 0086f800 arenas_map
 00870000 arenas_map_end

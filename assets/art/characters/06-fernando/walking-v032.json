@@ -1,0 +1,43 @@
+{
+  "fighter_id": 6,
+  "palette_sha256": "8157261a8813a14f129fe05c4cd41d219ec1d8213fda5e9de62173601a680a1c",
+  "native_frame_range": [
+    20,
+    27
+  ],
+  "native_foot_baseline": 78,
+  "scope": "coordinated-full-body",
+  "source": "assets/art/characters/06-fernando/walking-v032.png",
+  "sha256": "b3da38c8ff95bf33b4f8f93abf84c0d71470ed8c148549415753935cb25bc965",
+  "selected_final": "assets/art/characters/06-fernando/walking-v032.png",
+  "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-f9265938-1990-40a8-97c0-1c486125ad21.png",
+  "raw_output_sha256": "b3da38c8ff95bf33b4f8f93abf84c0d71470ed8c148549415753935cb25bc965",
+  "prompt": "Use case: identity-preserve. FACE AND EXPRESSION EDIT to an existing complete production fighting animation sheet.\nImage1 EDIT TARGET is the EXACT body/pose/costume/layout guide. Preserve every complete body drawing, stance, arm/leg motion, proportions, costume and colors. This is NOT permission to redesign the bodies or animation.\nImage2 is this SPECIFIC MAN'S USER-APPROVED FACE/EXPRESSION reference. Image3 is his photographic face. Carefully replace the target's old generic stern eyes/expression with the actual eyelid opening, eye distance, gaze, brows, nose, cheek/jaw shape, hair and relaxed closed mouth of Image2.\nKeep his individual small natural eye/brow asymmetries. Calm ready expression in movement/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining the same identity. No stock hero scowl, diagonal angry brows, dark eye sockets, black eye-mask stripe, glaring anime eyes, long downward eye tails, childish dot eyes, exaggerated chin or clenched lips. A guard pose should NOT automatically make him angry. Keep head naturally integrated with neck and torso, same head size and full-body physical scale.\nNative use: 67-73 pixels tall, so the approved face must become a few deliberate BROAD CEL COLOR PLANES with separate small eye marks, softer middle-tone brows and clear light skin between eyebrow and eye. Short nose and understated relaxed mouth. Keep cheeks bright; no fine skin texture, micro-wrinkles, black face shadows or noisy dithering. Retain the target's original 1992 arcade cartoon body rendering and full clothing details. No photographic pasted head and no chibi body.\nEXACTLY 8 independent COMPLETE full-body figures on the same FOUR-COLUMN by 2-ROW wide atlas. Row-major pose contract, matching Image1:\nROW1: left contact; left recoil; right pass; right extension\nROW2: right contact; right recoil; left pass; left extension\nEvery pose stays in its original cell and keeps the original silhouette/action role. First figure retains the original neutral/anchor scale. Crouching/airborne/floor drawings remain genuinely lower than upright poses; never stretch all poses to equal height. Preserve complete feet/hands and generous transparent separation so no figures touch.\nNo added poses, duplicate floating head studies, captions, grid lines, frame, background, cast shadows, energy/projectile FX, props or cropping. True transparent PNG.",
+  "mode": "built-in image_gen",
+  "transparent_background": true,
+  "size": [
+    1774,
+    887
+  ],
+  "references": [
+    {
+      "path": "assets/art/characters/06-fernando/walking-v031.png",
+      "sha256": "b417c4108e3ba4b4d8ffc85db5ab8191b3f8d78a826cbbad1c21c62839e1482b",
+      "role": "v0.31 body, costume, pose and layout edit target"
+    },
+    {
+      "path": "assets/art/characters/06-fernando/expression-study-v032/head.png",
+      "sha256": "1732ef5bfa8325117eacff2a63e7d563b63aeaba8f4137ad0ad0af9f28a7bac3",
+      "role": "user-approved eye and expression direction"
+    },
+    {
+      "path": "assets/art/characters/06-fernando/expression-study-v032/reference-crop.png",
+      "sha256": "848609ee027127920567502c6d9ed032eb8f3ffa10d86b1c14f27db04b8e0e36",
+      "role": "photographic identity and natural expression"
+    }
+  ],
+  "reference": "assets/art/characters/06-fernando/expression-study-v032/head.png",
+  "reference_sha256": "1732ef5bfa8325117eacff2a63e7d563b63aeaba8f4137ad0ad0af9f28a7bac3",
+  "supersedes": "assets/art/characters/06-fernando/walking-v031.json",
+  "pose_contract_sha256": "8d74c9c8a1d564c128e6e91d3272c01cbb6103744f38ae11d956f1d23515c97c"
+}

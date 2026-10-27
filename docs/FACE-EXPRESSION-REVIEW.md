@@ -23,7 +23,10 @@ fighter's original OBJ colors. They demonstrate that the facial marks still
 need deliberate adaptation at fighting-sprite size; they are not approved
 native faces. No heads were pasted onto existing bodies.
 
-The `v032` directory suffix versions the studies only. There is no v0.32 game
-candidate. All production art selections, generated files and the v0.31 ROM
-remain unchanged. No new emulation or release-validation claim applies to
-these studies. PR #36 awaits the next facial revision and visual acceptance.
+The user approved this reference direction with **"Yes, use this direction"**.
+The v0.32 implementation carries it through nine full-body atlas edits for each
+fighter and uses each complete head master in the existing portrait slots.
+The native fighter reductions are independently authored whole figures; the
+diagnostic small-head tests are not inserted into them. Original body designs,
+palettes and physical heights remain. Final native likeness review and merge
+approval remain separate from this reference-direction approval.

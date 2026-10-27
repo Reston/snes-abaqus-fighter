@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "expression-study-awaiting-visual-review",
+  "status": "reference-direction-approved",
   "fighter_id": 7,
   "slug": "cristian",
   "user_feedback": "Bodies improved, faces still off; eyes and expression specifically.",
@@ -53,6 +53,15 @@
     "portrait-64x80.png": "077fa6d26fc9239a89fb8d1fd088f02b6874d78d2594cbb2f65899df4bc7628b",
     "reference-crop.png": "c95086b9ef274e6d5fe3ffb4853bf91762241403422116c68ee7c5b872ad43f0"
   },
-  "integrated_into_game": false,
-  "human_approval": null
+  "integrated_into_game": true,
+  "human_approval": {
+    "quote": "Yes, use this direction",
+    "scope": "photographed eye and expression references for Ivo, Fernando and Cristian; not final native likeness or merge approval"
+  },
+  "native_usage": {
+    "revision": "0.32.0",
+    "portrait": "complete approved head master, scaled into existing native portrait slots",
+    "animation": "reference for nine full-body atlas edits; no head pasted onto body",
+    "final_likeness_approval": null
+  }
 }

@@ -158,8 +158,9 @@ def _rasterize(source: Image.Image, crop_box, size, backdrop):
 
 def build_portrait_pair(source: Image.Image,
                         *,
-                        backdrop=NAVY_BACKDROP):
-    """Return ``small``, ``large`` and framing metadata for one idle figure.
+                        backdrop=NAVY_BACKDROP,
+                        full_head=False):
+    """Return both native sizes and framing for an idle figure or head master.
 
     ``source`` may be any RGBA extracted idle figure.  Both portraits use the
     exact same source crop and composition anchor.  The result dictionary is
@@ -168,7 +169,12 @@ def build_portrait_pair(source: Image.Image,
     """
 
     rgba = source.convert("RGBA")
-    crop_box, head_box = _composition_box(rgba)
+    # A separately authored and pinned head master already contains the entire
+    # portrait composition. Do not apply the full-body crop to it.
+    if full_head:
+        crop_box = head_box = _alpha_bbox(rgba)
+    else:
+        crop_box, head_box = _composition_box(rgba)
     left, top, right, bottom = crop_box
     head_left, head_top, head_right, head_bottom = head_box
     small, small_render = _rasterize(rgba, crop_box, PORTRAIT_SIZE, backdrop)
@@ -191,7 +197,8 @@ def build_portrait_pair(source: Image.Image,
         "resampling": "nearest",
         "shared_composition": True,
         "head_clipped": False,
-        "source_figure": "legacy_idle_frame0",
+        "source_figure": ("registered_head_master" if full_head
+                          else "legacy_idle_frame0"),
     }
     return {
         "small": small,

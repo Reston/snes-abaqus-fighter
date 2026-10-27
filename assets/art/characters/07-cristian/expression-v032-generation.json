@@ -1,0 +1,295 @@
+{
+  "schema": 1,
+  "fighter_id": 7,
+  "revision": "eye-expression-v032",
+  "assets": [
+    {
+      "source": "assets/art/characters/07-cristian/animation-actions-v6.png",
+      "sha256": "e2ab9d82c63ba8f351f42b800b723a8b4f11ae3bd5f1c8c78fb04e66181d3d69",
+      "selected_final": "assets/art/characters/07-cristian/animation-actions-v6.png",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-e94e9b6f-2eb4-4862-9e67-072d7c667ffd.png",
+      "raw_output_sha256": "e2ab9d82c63ba8f351f42b800b723a8b4f11ae3bd5f1c8c78fb04e66181d3d69",
+      "prompt": "Use case: identity-preserve. FACE AND EXPRESSION EDIT to an existing complete production fighting animation sheet.\nImage1 EDIT TARGET is the EXACT body/pose/costume/layout guide. Preserve every complete body drawing, stance, arm/leg motion, proportions, costume and colors. This is NOT permission to redesign the bodies or animation.\nImage2 is this SPECIFIC MAN'S USER-APPROVED FACE/EXPRESSION reference. Image3 is his photographic face. Carefully replace the target's old generic stern eyes/expression with the actual eyelid opening, eye distance, gaze, brows, nose, cheek/jaw shape, hair and relaxed closed mouth of Image2.\nKeep his individual small natural eye/brow asymmetries. Calm ready expression in movement/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining the same identity. No stock hero scowl, diagonal angry brows, dark eye sockets, black eye-mask stripe, glaring anime eyes, long downward eye tails, childish dot eyes, exaggerated chin or clenched lips. A guard pose should NOT automatically make him angry. Keep head naturally integrated with neck and torso, same head size and full-body physical scale.\nNative use: 67-73 pixels tall, so the approved face must become a few deliberate BROAD CEL COLOR PLANES with separate small eye marks, softer middle-tone brows and clear light skin between eyebrow and eye. Short nose and understated relaxed mouth. Keep cheeks bright; no fine skin texture, micro-wrinkles, black face shadows or noisy dithering. Retain the target's original 1992 arcade cartoon body rendering and full clothing details. No photographic pasted head and no chibi body.\nEXACTLY 16 independent COMPLETE full-body figures on the same FOUR-COLUMN by 4-ROW square atlas. Row-major pose contract, matching Image1:\nROW1: ready-guard; jab-retract; cross-windup; cross-retract\nROW2: kick-windup; kick-retract; sweep-windup; sweep-recovery\nROW3: block-impact; hurt-recovery; special-charge; cast-recovery\nROW4: uppercut-anticipation; uppercut-recovery; victory-transition; knockout-fall\nEvery pose stays in its original cell and keeps the original silhouette/action role. First figure retains the original neutral/anchor scale. Crouching/airborne/floor drawings remain genuinely lower than upright poses; never stretch all poses to equal height. Preserve complete feet/hands and generous transparent separation so no figures touch.\nNo added poses, duplicate floating head studies, captions, grid lines, frame, background, cast shadows, energy/projectile FX, props or cropping. True transparent PNG.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "size": [
+        1267,
+        1241
+      ],
+      "references": [
+        {
+          "path": "assets/art/characters/07-cristian/animation-actions-v4.png",
+          "sha256": "72cd4459da210077e5fd06568b487c318fa879c7e8bf83240a38ceb3b0c3abe4",
+          "role": "v0.31 body, costume, pose and layout edit target"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/head.png",
+          "sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5",
+          "role": "user-approved eye and expression direction"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/reference-crop.png",
+          "sha256": "c95086b9ef274e6d5fe3ffb4853bf91762241403422116c68ee7c5b872ad43f0",
+          "role": "photographic identity and natural expression"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/characters/07-cristian/animation-airborne-v6.png",
+      "sha256": "d750ca264247c4536b392a2d09c6d3a624bcc68fd124b540b952593a1dc5bfa2",
+      "selected_final": "assets/art/characters/07-cristian/animation-airborne-v6.png",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-9a5bacae-4a59-40ad-9870-7dd635f3036a.png",
+      "raw_output_sha256": "d750ca264247c4536b392a2d09c6d3a624bcc68fd124b540b952593a1dc5bfa2",
+      "prompt": "Use case: identity-preserve. FACE AND EXPRESSION EDIT to an existing complete production fighting animation sheet.\nImage1 EDIT TARGET is the EXACT body/pose/costume/layout guide. Preserve every complete body drawing, stance, arm/leg motion, proportions, costume and colors. This is NOT permission to redesign the bodies or animation.\nImage2 is this SPECIFIC MAN'S USER-APPROVED FACE/EXPRESSION reference. Image3 is his photographic face. Carefully replace the target's old generic stern eyes/expression with the actual eyelid opening, eye distance, gaze, brows, nose, cheek/jaw shape, hair and relaxed closed mouth of Image2.\nKeep his individual small natural eye/brow asymmetries. Calm ready expression in movement/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining the same identity. No stock hero scowl, diagonal angry brows, dark eye sockets, black eye-mask stripe, glaring anime eyes, long downward eye tails, childish dot eyes, exaggerated chin or clenched lips. A guard pose should NOT automatically make him angry. Keep head naturally integrated with neck and torso, same head size and full-body physical scale.\nNative use: 67-73 pixels tall, so the approved face must become a few deliberate BROAD CEL COLOR PLANES with separate small eye marks, softer middle-tone brows and clear light skin between eyebrow and eye. Short nose and understated relaxed mouth. Keep cheeks bright; no fine skin texture, micro-wrinkles, black face shadows or noisy dithering. Retain the target's original 1992 arcade cartoon body rendering and full clothing details. No photographic pasted head and no chibi body.\nEXACTLY 16 independent COMPLETE full-body figures on the same FOUR-COLUMN by 4-ROW square atlas. Row-major pose contract, matching Image1:\nROW1: upright-neutral; air-punch-anticipation; air-punch-active; air-punch-recovery\nROW2: air-kick-anticipation; air-kick-active; air-kick-recovery; compact-apex-guard\nROW3: thrower-grip; thrower-release; victim-lift; victim-impact\nROW4: knockdown-launch; knockdown-fall; grounded-getup; wakeup-guard\nEvery pose stays in its original cell and keeps the original silhouette/action role. First figure retains the original neutral/anchor scale. Crouching/airborne/floor drawings remain genuinely lower than upright poses; never stretch all poses to equal height. Preserve complete feet/hands and generous transparent separation so no figures touch.\nNo added poses, duplicate floating head studies, captions, grid lines, frame, background, cast shadows, energy/projectile FX, props or cropping. True transparent PNG.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "size": [
+        1289,
+        1221
+      ],
+      "references": [
+        {
+          "path": "assets/art/characters/07-cristian/animation-airborne-v4.png",
+          "sha256": "35666ec4e84b6175214b2625817173cfbe334c256b9bdc36de81a3e3be4f29e4",
+          "role": "v0.31 body, costume, pose and layout edit target"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/head.png",
+          "sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5",
+          "role": "user-approved eye and expression direction"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/reference-crop.png",
+          "sha256": "c95086b9ef274e6d5fe3ffb4853bf91762241403422116c68ee7c5b872ad43f0",
+          "role": "photographic identity and natural expression"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/characters/07-cristian/attack-a-v032.png",
+      "sha256": "cfa3dfc4f1de1fa73f511a2fdf4fc9b16c68e70cf3553c8d3d32b7cb0921191d",
+      "selected_final": "assets/art/characters/07-cristian/attack-a-v032.png",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-b7051253-7f77-47e1-a5c4-8f3015ae2b82.png",
+      "raw_output_sha256": "cfa3dfc4f1de1fa73f511a2fdf4fc9b16c68e70cf3553c8d3d32b7cb0921191d",
+      "prompt": "Use case: identity-preserve. FACE AND EXPRESSION EDIT to an existing complete production fighting animation sheet.\nImage1 EDIT TARGET is the EXACT body/pose/costume/layout guide. Preserve every complete body drawing, stance, arm/leg motion, proportions, costume and colors. This is NOT permission to redesign the bodies or animation.\nImage2 is this SPECIFIC MAN'S USER-APPROVED FACE/EXPRESSION reference. Image3 is his photographic face. Carefully replace the target's old generic stern eyes/expression with the actual eyelid opening, eye distance, gaze, brows, nose, cheek/jaw shape, hair and relaxed closed mouth of Image2.\nKeep his individual small natural eye/brow asymmetries. Calm ready expression in movement/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining the same identity. No stock hero scowl, diagonal angry brows, dark eye sockets, black eye-mask stripe, glaring anime eyes, long downward eye tails, childish dot eyes, exaggerated chin or clenched lips. A guard pose should NOT automatically make him angry. Keep head naturally integrated with neck and torso, same head size and full-body physical scale.\nNative use: 67-73 pixels tall, so the approved face must become a few deliberate BROAD CEL COLOR PLANES with separate small eye marks, softer middle-tone brows and clear light skin between eyebrow and eye. Short nose and understated relaxed mouth. Keep cheeks bright; no fine skin texture, micro-wrinkles, black face shadows or noisy dithering. Retain the target's original 1992 arcade cartoon body rendering and full clothing details. No photographic pasted head and no chibi body.\nEXACTLY 16 independent COMPLETE full-body figures on the same FOUR-COLUMN by 4-ROW square atlas. Row-major pose contract, matching Image1:\nROW1: ready-guard; jab-active; jab-retract; cross-windup\nROW2: cross-active; cross-retract; kick-windup; kick-active\nROW3: kick-retract; sweep-windup; sweep-active; sweep-recovery\nROW4: block-impact; block-hold; hurt-impact; hurt-recovery\nEvery pose stays in its original cell and keeps the original silhouette/action role. First figure retains the original neutral/anchor scale. Crouching/airborne/floor drawings remain genuinely lower than upright poses; never stretch all poses to equal height. Preserve complete feet/hands and generous transparent separation so no figures touch.\nNo added poses, duplicate floating head studies, captions, grid lines, frame, background, cast shadows, energy/projectile FX, props or cropping. True transparent PNG.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "size": [
+        1351,
+        1164
+      ],
+      "references": [
+        {
+          "path": "assets/art/characters/07-cristian/attack-a-v031.png",
+          "sha256": "2dfdd45be911f70cdbdd55a377a319ccd33895f9161a61aa2961ea362e660354",
+          "role": "v0.31 body, costume, pose and layout edit target"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/head.png",
+          "sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5",
+          "role": "user-approved eye and expression direction"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/reference-crop.png",
+          "sha256": "c95086b9ef274e6d5fe3ffb4853bf91762241403422116c68ee7c5b872ad43f0",
+          "role": "photographic identity and natural expression"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/characters/07-cristian/attack-b-v032.png",
+      "sha256": "fcb84b1f643d02b6dc4205f3568c836bb5ac53052695171c828dcbafa304fb1f",
+      "selected_final": "assets/art/characters/07-cristian/attack-b-v032.png",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-50ffdf2e-fe74-480f-b7d9-fabb14a463f6.png",
+      "raw_output_sha256": "fcb84b1f643d02b6dc4205f3568c836bb5ac53052695171c828dcbafa304fb1f",
+      "prompt": "Use case: identity-preserve. FACE AND EXPRESSION EDIT to an existing complete production fighting animation sheet.\nImage1 EDIT TARGET is the EXACT body/pose/costume/layout guide. Preserve every complete body drawing, stance, arm/leg motion, proportions, costume and colors. This is NOT permission to redesign the bodies or animation.\nImage2 is this SPECIFIC MAN'S USER-APPROVED FACE/EXPRESSION reference. Image3 is his photographic face. Carefully replace the target's old generic stern eyes/expression with the actual eyelid opening, eye distance, gaze, brows, nose, cheek/jaw shape, hair and relaxed closed mouth of Image2.\nKeep his individual small natural eye/brow asymmetries. Calm ready expression in movement/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining the same identity. No stock hero scowl, diagonal angry brows, dark eye sockets, black eye-mask stripe, glaring anime eyes, long downward eye tails, childish dot eyes, exaggerated chin or clenched lips. A guard pose should NOT automatically make him angry. Keep head naturally integrated with neck and torso, same head size and full-body physical scale.\nNative use: 67-73 pixels tall, so the approved face must become a few deliberate BROAD CEL COLOR PLANES with separate small eye marks, softer middle-tone brows and clear light skin between eyebrow and eye. Short nose and understated relaxed mouth. Keep cheeks bright; no fine skin texture, micro-wrinkles, black face shadows or noisy dithering. Retain the target's original 1992 arcade cartoon body rendering and full clothing details. No photographic pasted head and no chibi body.\nEXACTLY 16 independent COMPLETE full-body figures on the same FOUR-COLUMN by 4-ROW square atlas. Row-major pose contract, matching Image1:\nROW1: special-charge; cast-active; cast-recovery; uppercut-anticipation\nROW2: uppercut-active; uppercut-recovery; rush-active; knockout-fall\nROW3: unused-neutral-a; unused-cross-load; unused-block; unused-guard-return\nROW4: unused-neutral-b; unused-low-guard; unused-weight-return; unused-neutral-c\nEvery pose stays in its original cell and keeps the original silhouette/action role. First figure retains the original neutral/anchor scale. Crouching/airborne/floor drawings remain genuinely lower than upright poses; never stretch all poses to equal height. Preserve complete feet/hands and generous transparent separation so no figures touch.\nNo added poses, duplicate floating head studies, captions, grid lines, frame, background, cast shadows, energy/projectile FX, props or cropping. True transparent PNG.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "references": [
+        {
+          "path": "assets/art/characters/07-cristian/attack-b-v031.png",
+          "sha256": "a496325a1050c6afdc6a179f08cba5721c778bee41e0fe019e84170126fa66ad",
+          "role": "v0.31 body, costume, pose and layout edit target"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/head.png",
+          "sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5",
+          "role": "user-approved eye and expression direction"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/reference-crop.png",
+          "sha256": "c95086b9ef274e6d5fe3ffb4853bf91762241403422116c68ee7c5b872ad43f0",
+          "role": "photographic identity and natural expression"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/characters/07-cristian/jump-v032.png",
+      "sha256": "59cbe4724841c26f2f922024db6ca8d2be93bea6054d6d40f34d6831d59ee0e6",
+      "selected_final": "assets/art/characters/07-cristian/jump-v032.png",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-c71ec6a6-9680-4c34-91c1-32e5a596e232.png",
+      "raw_output_sha256": "59cbe4724841c26f2f922024db6ca8d2be93bea6054d6d40f34d6831d59ee0e6",
+      "prompt": "Use case: identity-preserve. FACE AND EXPRESSION EDIT to an existing complete production fighting animation sheet.\nImage1 EDIT TARGET is the EXACT body/pose/costume/layout guide. Preserve every complete body drawing, stance, arm/leg motion, proportions, costume and colors. This is NOT permission to redesign the bodies or animation.\nImage2 is this SPECIFIC MAN'S USER-APPROVED FACE/EXPRESSION reference. Image3 is his photographic face. Carefully replace the target's old generic stern eyes/expression with the actual eyelid opening, eye distance, gaze, brows, nose, cheek/jaw shape, hair and relaxed closed mouth of Image2.\nKeep his individual small natural eye/brow asymmetries. Calm ready expression in movement/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining the same identity. No stock hero scowl, diagonal angry brows, dark eye sockets, black eye-mask stripe, glaring anime eyes, long downward eye tails, childish dot eyes, exaggerated chin or clenched lips. A guard pose should NOT automatically make him angry. Keep head naturally integrated with neck and torso, same head size and full-body physical scale.\nNative use: 67-73 pixels tall, so the approved face must become a few deliberate BROAD CEL COLOR PLANES with separate small eye marks, softer middle-tone brows and clear light skin between eyebrow and eye. Short nose and understated relaxed mouth. Keep cheeks bright; no fine skin texture, micro-wrinkles, black face shadows or noisy dithering. Retain the target's original 1992 arcade cartoon body rendering and full clothing details. No photographic pasted head and no chibi body.\nEXACTLY 16 independent COMPLETE full-body figures on the same FOUR-COLUMN by 4-ROW square atlas. Row-major pose contract, matching Image1:\nROW1: neutral-anchor; takeoff-compression; upward-extension; landing-compression\nROW2: air-punch-windup; air-punch-contact; air-punch-recovery; air-kick-windup\nROW3: air-kick-contact; kick-recovery-extra; apex-guard; descent-landing-release\nROW4: neutral-extra; air-guard-extra; landing-extra; neutral-extra-2\nEvery pose stays in its original cell and keeps the original silhouette/action role. First figure retains the original neutral/anchor scale. Crouching/airborne/floor drawings remain genuinely lower than upright poses; never stretch all poses to equal height. Preserve complete feet/hands and generous transparent separation so no figures touch.\nNo added poses, duplicate floating head studies, captions, grid lines, frame, background, cast shadows, energy/projectile FX, props or cropping. True transparent PNG.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "size": [
+        1261,
+        1247
+      ],
+      "references": [
+        {
+          "path": "assets/art/characters/07-cristian/jump-v031.png",
+          "sha256": "96feeee9853741b3b073d4b815b61c73e02e2c47dd5b0e36bb95d01bb53d877e",
+          "role": "v0.31 body, costume, pose and layout edit target"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/head.png",
+          "sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5",
+          "role": "user-approved eye and expression direction"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/reference-crop.png",
+          "sha256": "c95086b9ef274e6d5fe3ffb4853bf91762241403422116c68ee7c5b872ad43f0",
+          "role": "photographic identity and natural expression"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/characters/07-cristian/atlas-v6.png",
+      "sha256": "ca588233e70e71857a1f974805251f79240cf7d137eb6933096de6a3ace5f1b3",
+      "selected_final": "assets/art/characters/07-cristian/atlas-v6.png",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-bfb0ac02-77d4-4f86-872f-3dbd647f1468.png",
+      "raw_output_sha256": "ca588233e70e71857a1f974805251f79240cf7d137eb6933096de6a3ace5f1b3",
+      "prompt": "Use case: identity-preserve. FACE-EXPRESSION CORRECTION of an existing production game atlas.\nImage1 is the EDIT TARGET and the exact 16-POSE/BODY/COSTUME/LAYOUT contract. Keep every body drawing, limb, stance, size, clothing color and pose composition.\nImage2 is the USER-APPROVED FACE/EXPRESSION reference of this specific man. Image3 is his real photographic face, supporting identity.\nReplace the rejected generic stern facial design in EVERY figure with this SAME man's actual eyes, eyelid opening, gaze, eyebrows, cheek/jaw shape, nose, hair and relaxed closed mouth from Image2. Faithful identity and expression take priority over conventional hero features. Especially preserve the photo's individual small eye/brow asymmetries. Do not add scowling diagonal brows, dark eye sockets, black eye-mask bands, anime eyes, long downward eye tails, clenched lips or an exaggerated jaw. Natural calm ready expression in idle/walk/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining identity. A fighting stance must NOT turn the photographed expression into an angry stock fighter.\nKeep the target's complete body, physical scale, palette character, costume, anatomical continuity and all sixteen actions. Head remains naturally attached to neck, same size. In forward poses use near-frontal three-quarter head so both eyes can read, not a razor profile.\nThe result is reduced to a 67-73 PIXEL-TALL sprite. Adapt the approved face into SIMPLE BROAD CEL PLANES with small separate eye marks, softer middle-tone eyebrows, clear light skin between brow and eye, short nose and a subtle relaxed mouth. Keep the cheeks open and bright. 2-3 flat skin tones, restrained outlines around features; no microscopic skin texture, noisy wrinkles or heavy black eye details. Match the target's original 1992 arcade cartoon body style, not the head study's high-resolution photographic texture. No chibi/childish expression.\nExact 4x4 row-major poses, preserve target compositions:\nROW1 idle guard, forward walking step, retreat walking step, deep crouch guard.\nROW2 tucked airborne jump, full right jab, full right rear-hand cross, extended right high side kick.\nROW3 right low sweep, standing block, struck backward torso recoil, upright two-fist victory.\nROW4 forward two-palm cast NO FX, compact raised-fist uppercut, horizontal knockout head LEFT feet RIGHT, right shoulder rush.\nExactly SIXTEEN complete separate full-body figures, generous transparent gutters. Keep uniform scale across the sheet, crouch/jump/floor poses genuinely lower. No extra floating heads, studies, labels, grid, backgrounds, cast shadows, projectiles or effects. No cropping. True transparent PNG.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "references": [
+        {
+          "path": "assets/art/characters/07-cristian/atlas-v4.png",
+          "sha256": "6c18c84321b7043b786ac97a9e0659e75990e68f1179b3a1ce6c11817352ef29",
+          "role": "v0.31 body, costume, pose and layout edit target"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/head.png",
+          "sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5",
+          "role": "user-approved eye and expression direction"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/reference-crop.png",
+          "sha256": "c95086b9ef274e6d5fe3ffb4853bf91762241403422116c68ee7c5b872ad43f0",
+          "role": "photographic identity and natural expression"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/characters/07-cristian/animation-motion-v6.png",
+      "sha256": "c7c44352b8ab1cefbd68a2b372aedae35415899ca5f9e2d30911c0e02b4fd623",
+      "selected_final": "assets/art/characters/07-cristian/animation-motion-v6.png",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-406b39b8-563d-4b79-aa34-7c367a0844fd.png",
+      "raw_output_sha256": "c7c44352b8ab1cefbd68a2b372aedae35415899ca5f9e2d30911c0e02b4fd623",
+      "prompt": "Use case: identity-preserve. FACE AND EXPRESSION EDIT to an existing complete production fighting animation sheet.\nImage1 EDIT TARGET is the EXACT body/pose/costume/layout guide. Preserve every complete body drawing, stance, arm/leg motion, proportions, costume and colors. This is NOT permission to redesign the bodies or animation.\nImage2 is this SPECIFIC MAN'S USER-APPROVED FACE/EXPRESSION reference. Image3 is his photographic face. Carefully replace the target's old generic stern eyes/expression with the actual eyelid opening, eye distance, gaze, brows, nose, cheek/jaw shape, hair and relaxed closed mouth of Image2.\nKeep his individual small natural eye/brow asymmetries. Calm ready expression in movement/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining the same identity. No stock hero scowl, diagonal angry brows, dark eye sockets, black eye-mask stripe, glaring anime eyes, long downward eye tails, childish dot eyes, exaggerated chin or clenched lips. A guard pose should NOT automatically make him angry. Keep head naturally integrated with neck and torso, same head size and full-body physical scale.\nNative use: 67-73 pixels tall, so the approved face must become a few deliberate BROAD CEL COLOR PLANES with separate small eye marks, softer middle-tone brows and clear light skin between eyebrow and eye. Short nose and understated relaxed mouth. Keep cheeks bright; no fine skin texture, micro-wrinkles, black face shadows or noisy dithering. Retain the target's original 1992 arcade cartoon body rendering and full clothing details. No photographic pasted head and no chibi body.\nEXACTLY 16 independent COMPLETE full-body figures on the same FOUR-COLUMN by 4-ROW square atlas. Row-major pose contract, matching Image1:\nROW1: breath-neutral; breath-inhale; breath-exhale; breath-return\nROW2: walk-forward-contact; walk-forward-pass; walk-forward-rear-pass; walk-forward-opposite\nROW3: walk-back-contact; walk-back-pass; walk-back-lead-pass; walk-back-opposite\nROW4: crouch-halfway; jump-anticipation; jump-extension; landing-compression\nEvery pose stays in its original cell and keeps the original silhouette/action role. First figure retains the original neutral/anchor scale. Crouching/airborne/floor drawings remain genuinely lower than upright poses; never stretch all poses to equal height. Preserve complete feet/hands and generous transparent separation so no figures touch.\nNo added poses, duplicate floating head studies, captions, grid lines, frame, background, cast shadows, energy/projectile FX, props or cropping. True transparent PNG.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "size": [
+        1254,
+        1254
+      ],
+      "references": [
+        {
+          "path": "assets/art/characters/07-cristian/animation-motion-v4.png",
+          "sha256": "58ad552cc7815c7b5971e72044cfe0333b5cf1d54b36bf454b30046a3f38e485",
+          "role": "v0.31 body, costume, pose and layout edit target"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/head.png",
+          "sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5",
+          "role": "user-approved eye and expression direction"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/reference-crop.png",
+          "sha256": "c95086b9ef274e6d5fe3ffb4853bf91762241403422116c68ee7c5b872ad43f0",
+          "role": "photographic identity and natural expression"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/characters/07-cristian/super-v032.png",
+      "sha256": "ffbe7ca837b9729d07f6b268285c62bd5f58ae33b281809958d533ffbfe88824",
+      "selected_final": "assets/art/characters/07-cristian/super-v032.png",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-705ffd6a-08be-4b95-81c2-5a06d4460f8d.png",
+      "raw_output_sha256": "ffbe7ca837b9729d07f6b268285c62bd5f58ae33b281809958d533ffbfe88824",
+      "prompt": "Use case: identity-preserve. FACE AND EXPRESSION EDIT to an existing complete production fighting animation sheet.\nImage1 EDIT TARGET is the EXACT body/pose/costume/layout guide. Preserve every complete body drawing, stance, arm/leg motion, proportions, costume and colors. This is NOT permission to redesign the bodies or animation.\nImage2 is this SPECIFIC MAN'S USER-APPROVED FACE/EXPRESSION reference. Image3 is his photographic face. Carefully replace the target's old generic stern eyes/expression with the actual eyelid opening, eye distance, gaze, brows, nose, cheek/jaw shape, hair and relaxed closed mouth of Image2.\nKeep his individual small natural eye/brow asymmetries. Calm ready expression in movement/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining the same identity. No stock hero scowl, diagonal angry brows, dark eye sockets, black eye-mask stripe, glaring anime eyes, long downward eye tails, childish dot eyes, exaggerated chin or clenched lips. A guard pose should NOT automatically make him angry. Keep head naturally integrated with neck and torso, same head size and full-body physical scale.\nNative use: 67-73 pixels tall, so the approved face must become a few deliberate BROAD CEL COLOR PLANES with separate small eye marks, softer middle-tone brows and clear light skin between eyebrow and eye. Short nose and understated relaxed mouth. Keep cheeks bright; no fine skin texture, micro-wrinkles, black face shadows or noisy dithering. Retain the target's original 1992 arcade cartoon body rendering and full clothing details. No photographic pasted head and no chibi body.\nEXACTLY 8 independent COMPLETE full-body figures on the same FOUR-COLUMN by 2-ROW wide atlas. Row-major pose contract, matching Image1:\nROW1: neutral-anchor; cristian-super-charge; cristian-super-strike; cristian-super-recovery\nROW2: unused-guard-4; unused-guard-5; unused-guard-6; unused-guard-7\nEvery pose stays in its original cell and keeps the original silhouette/action role. First figure retains the original neutral/anchor scale. Crouching/airborne/floor drawings remain genuinely lower than upright poses; never stretch all poses to equal height. Preserve complete feet/hands and generous transparent separation so no figures touch.\nNo added poses, duplicate floating head studies, captions, grid lines, frame, background, cast shadows, energy/projectile FX, props or cropping. True transparent PNG.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "size": [
+        1774,
+        887
+      ],
+      "references": [
+        {
+          "path": "assets/art/characters/07-cristian/super-v031.png",
+          "sha256": "06d9a8a90c15683c9d3a1676b2731b0a5493d6b381bc69f0034c97cd6feb6418",
+          "role": "v0.31 body, costume, pose and layout edit target"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/head.png",
+          "sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5",
+          "role": "user-approved eye and expression direction"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/reference-crop.png",
+          "sha256": "c95086b9ef274e6d5fe3ffb4853bf91762241403422116c68ee7c5b872ad43f0",
+          "role": "photographic identity and natural expression"
+        }
+      ]
+    },
+    {
+      "source": "assets/art/characters/07-cristian/walking-v032.png",
+      "sha256": "b7a839358964529a7e158e36ac44e1f2941847f727782e2c075d5bd993383051",
+      "selected_final": "assets/art/characters/07-cristian/walking-v032.png",
+      "raw_output_path": "C:\\Users\\user\\.codex\\generated_images\\01a160f4-3e59-7980-b2d2-8db765944eeb\\exec-9b48266b-f0be-4ccb-b5d7-028bce07565e.png",
+      "raw_output_sha256": "b7a839358964529a7e158e36ac44e1f2941847f727782e2c075d5bd993383051",
+      "prompt": "Use case: identity-preserve. FACE AND EXPRESSION EDIT to an existing complete production fighting animation sheet.\nImage1 EDIT TARGET is the EXACT body/pose/costume/layout guide. Preserve every complete body drawing, stance, arm/leg motion, proportions, costume and colors. This is NOT permission to redesign the bodies or animation.\nImage2 is this SPECIFIC MAN'S USER-APPROVED FACE/EXPRESSION reference. Image3 is his photographic face. Carefully replace the target's old generic stern eyes/expression with the actual eyelid opening, eye distance, gaze, brows, nose, cheek/jaw shape, hair and relaxed closed mouth of Image2.\nKeep his individual small natural eye/brow asymmetries. Calm ready expression in movement/guard/attacks; appropriate recoil/victory/closed knockout eyes while retaining the same identity. No stock hero scowl, diagonal angry brows, dark eye sockets, black eye-mask stripe, glaring anime eyes, long downward eye tails, childish dot eyes, exaggerated chin or clenched lips. A guard pose should NOT automatically make him angry. Keep head naturally integrated with neck and torso, same head size and full-body physical scale.\nNative use: 67-73 pixels tall, so the approved face must become a few deliberate BROAD CEL COLOR PLANES with separate small eye marks, softer middle-tone brows and clear light skin between eyebrow and eye. Short nose and understated relaxed mouth. Keep cheeks bright; no fine skin texture, micro-wrinkles, black face shadows or noisy dithering. Retain the target's original 1992 arcade cartoon body rendering and full clothing details. No photographic pasted head and no chibi body.\nEXACTLY 8 independent COMPLETE full-body figures on the same FOUR-COLUMN by 2-ROW wide atlas. Row-major pose contract, matching Image1:\nROW1: left contact; left recoil; right pass; right extension\nROW2: right contact; right recoil; left pass; left extension\nEvery pose stays in its original cell and keeps the original silhouette/action role. First figure retains the original neutral/anchor scale. Crouching/airborne/floor drawings remain genuinely lower than upright poses; never stretch all poses to equal height. Preserve complete feet/hands and generous transparent separation so no figures touch.\nNo added poses, duplicate floating head studies, captions, grid lines, frame, background, cast shadows, energy/projectile FX, props or cropping. True transparent PNG.",
+      "mode": "built-in image_gen",
+      "transparent_background": true,
+      "size": [
+        1774,
+        887
+      ],
+      "references": [
+        {
+          "path": "assets/art/characters/07-cristian/walking-v031.png",
+          "sha256": "53d759109e170d5e6b2b141bfa2070c377cb7ff990ddd573014777f0cd87f1e8",
+          "role": "v0.31 body, costume, pose and layout edit target"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/head.png",
+          "sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5",
+          "role": "user-approved eye and expression direction"
+        },
+        {
+          "path": "assets/art/characters/07-cristian/expression-study-v032/reference-crop.png",
+          "sha256": "c95086b9ef274e6d5fe3ffb4853bf91762241403422116c68ee7c5b872ad43f0",
+          "role": "photographic identity and natural expression"
+        }
+      ]
+    }
+  ],
+  "portrait_source": {
+    "file": "assets/art/characters/07-cristian/expression-study-v032/head.png",
+    "sha256": "8c57069fc475e71ed09addaef46f1a77b6f09ce822f7d14bd3002f4ff33a50d5"
+  },
+  "reference_direction_approval": {
+    "quote": "Yes, use this direction",
+    "scope": "photographed eye and expression references for Ivo, Fernando and Cristian; not final native likeness or merge approval"
+  },
+  "human_approval": null
+}
