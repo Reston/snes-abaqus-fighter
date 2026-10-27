@@ -213,13 +213,16 @@ class AuthoringGuards(unittest.TestCase):
                 fighters._load_native_baseline(self.root)
 
     def test_unapproved_revision_mutations(self):
-        slug = 'ivo'
-        directory = self.root / 'assets/art/characters/01-ivo'
+        # Ivo now has an explicitly registered likeness revision. Exercise
+        # the same rejection against Cristobal's still-unregistered slot.
+        fighter_id, slug = 2, 'cristobal'
+        self.assertNotIn(fighter_id, fighters.NATIVE_REVISION_REGISTRY)
+        directory = self.root / 'assets/art/characters/02-cristobal'
         directory.mkdir(parents=True)
-        self.assertIsNone(fighters._load_revision_sources(self.root, 1, slug, directory, {}))
+        self.assertIsNone(fighters._load_revision_sources(self.root, fighter_id, slug, directory, {}))
         (directory / 'atlas-v4.png').write_bytes(b'unapproved art')
         with self.assertRaisesRegex(AssertionError, 'no approved revision slot'):
-            fighters._load_revision_sources(self.root, 1, slug, directory, {})
+            fighters._load_revision_sources(self.root, fighter_id, slug, directory, {})
         relative = fighters.NATIVE_REVISION_REGISTRY[9]['contract_file']
         path = self.root / relative
         contract = json.loads((ROOT / relative).read_text())
